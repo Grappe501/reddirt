@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Libre_Baskerville, Inter } from "next/font/google";
 import { AnalyticsProvider } from "@/components/AnalyticsProvider";
+import { PublicLayoutMain } from "@/components/layout/PublicLayoutMain";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { siteConfig } from "@/config/site";
@@ -47,7 +48,7 @@ export default function RootLayout({
         <AnalyticsProvider>
           <SiteHeader />
           <main id="main-content" className="flex-1">
-            {children}
+            <PublicLayoutMain>{children}</PublicLayoutMain>
           </main>
           <SiteFooter />
         </AnalyticsProvider>

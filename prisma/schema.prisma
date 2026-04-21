@@ -19,9 +19,26 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  volunteerProfile VolunteerProfile?
-  commitments      Commitment[]
-  submissions      Submission[]
+  volunteerProfile     VolunteerProfile?
+  commitments          Commitment[]
+  submissions          Submission[]
+  teamRoleAssignments  TeamRoleAssignment[]
+  eventsOwned          CampaignEvent[]   @relation("EventOwner")
+  tasksAssigned        CampaignTask[]     @relation("TaskAssignee")
+  tasksCreated         CampaignTask[]     @relation("TaskCreator")
+  volunteerAsksCreated VolunteerAsk[]
+  mediaIngestBatches   MediaIngestBatch[]
+  ownedMediaAnnotationsOwned OwnedMediaAnnotation[] @relation("AnnotationAuthor")
+  /// Optional: voter roll row linked for campaign assistance (admin-approved intake).
+  linkedVoterRecordId String?
+  linkedVoterRecord   VoterRecord?  @relation("UserVoterLink", fields: [linkedVoterRecordId], references: [id], onDelete: SetNull)
+  volunteerSignupIntakes SignupSheetDocument[]
+  intakeMatchedEntries SignupSheetEntry[]
+  communicationThreads   CommunicationThread[]  @relation("ThreadPrimaryUser")
+  threadsAssigned        CommunicationThread[]  @relation("ThreadAssignee")
+  messagesSent           CommunicationMessage[] @relation("MessageSentBy")
+  queueItemsCreated     CommunicationActionQueue[] @relation("QueueCreatedBy")
+  queueItemsTarget      CommunicationActionQueue[] @relation("QueueTargetUser")
 }
 
 model VolunteerProfile {
@@ -31,6 +48,9 @@ model VolunteerProfile {
   availability       String?
   skills             String?
   leadershipInterest Boolean @default(false)
+  eventSignups       EventSignup[]
+  communicationThreads   CommunicationThread[]
+  queueAsTarget     CommunicationActionQueue[] @relation("QueueTargetVolunteer")
 }
 
 model Commitment {
@@ -477,6 +497,17 @@ enum QuoteReviewStatus {
   REJECTED
 }
 
+enum OwnedMediaNoteType {
+  DESCRIPTION
+  PEOPLE
+  LOCATION
+  EVENT_CONTEXT
+  MESSAGE_ANGLE
+  CAPTION
+  TRANSCRIPT_CORRECTION
+  INTERNAL_NOTE
+}
+
 /// Canonical row for campaign-owned media (`OwnedMediaAsset` in app code; not renamed to `media_assets` in DB to avoid a breaking table rename).
 model OwnedMediaAsset {
   id     String @id @default(cuid())
@@ -526,6 +557,15 @@ model OwnedMediaAsset {
   consentCampaignUse Boolean?
   uploaderName  String?
   uploaderEmail String?
+  /// Staff-only operational notes (not necessarily public-facing).
+  operatorNotes  String? @db.Text
+  /// Draft social / press caption; distinct from structured annotation rows.
+  captionDraft   String? @db.Text
+  /// When EXIF `capturedAt` is wrong, override the “shot at” time for this asset.
+  shootDateOverride DateTime?
+  /// Optional link to a scheduled campaign event (rally, canvass launch, etc.).
+  linkedCampaignEventId String?
+  linkedCampaignEvent     CampaignEvent? @relation("OwnedMediaCampaignEvent", fields: [linkedCampaignEventId], references: [id], onDelete: SetNull)
   /// Non-canonical: suggested tags, model hints, run timestamps. Never overwrites `OwnedMediaTranscript` text.
   enrichmentMetadata Json?
   transcriptJobStatus TranscriptionJobStatus @default(NOT_REQUESTED)
@@ -534,12 +574,17 @@ model OwnedMediaAsset {
   ingestContentSha256  String?            @unique
   /// Set by local folder watcher: original relative path (audit).
   localIngestRelativePath String?
+  /// Optional bulk import session (folder / device ingest).
+  mediaIngestBatchId String?
+  mediaIngestBatch   MediaIngestBatch? @relation(fields: [mediaIngestBatchId], references: [id], onDelete: SetNull)
   createdBy   String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
   transcripts     OwnedMediaTranscript[]
   quoteCandidates OwnedMediaQuoteCandidate[]
+  annotations     OwnedMediaAnnotation[]
+  signupSheetDocuments SignupSheetDocument[]
 
   @@index([countySlug, eventDate])
   @@index([countySlug, capturedAt])
@@ -553,6 +598,26 @@ model OwnedMediaAsset {
   @@index([kind, capturedAt])
   @@index([needsGeoReview])
   @@index([gpsLat, gpsLng])
+  @@index([linkedCampaignEventId])
+  @@index([mediaIngestBatchId, reviewStatus])
+}
+
+model OwnedMediaAnnotation {
+  id           String  @id @default(cuid())
+  ownedMediaId String
+  ownedMedia   OwnedMediaAsset @relation(fields: [ownedMediaId], references: [id], onDelete: Cascade)
+  authorUserId String?
+  author       User?   @relation("AnnotationAuthor", fields: [authorUserId], references: [id], onDelete: SetNull)
+  noteType     OwnedMediaNoteType
+  noteText     String  @db.Text
+  tagsJson     Json?
+  isSearchable Boolean @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([ownedMediaId, createdAt])
+  @@index([ownedMediaId, noteType])
+  @@index([isSearchable])
 }
 
 model OwnedMediaTranscript {
@@ -651,6 +716,13 @@ model County {
   countyVoterMetrics  CountyVoterMetrics[]
   voterRecords        VoterRecord[]
   voterSnapshotChanges VoterSnapshotChange[]
+  campaignEvents      CampaignEvent[]
+  campaignTasks       CampaignTask[]
+  volunteerAsks       VolunteerAsk[]
+  eventSignups        EventSignup[]
+  teamRoleAssignments TeamRoleAssignment[]
+  signupSheetEntries  SignupSheetEntry[]
+  communicationThreads CommunicationThread[]
 
   @@index([published, sortOrder])
 }
@@ -826,12 +898,22 @@ model VoterRecord {
   droppedOffAt DateTime?
   /// Denormalized from latest import: present in last completed snapshot’s file
   inLatestCompletedFile Boolean @default(true)
+  /// Filled when voter file import includes name columns; enables signup-sheet and assist matching.
+  firstName  String? @db.Text
+  lastName   String? @db.Text
+  /// 10-digit US phone digits only, when import provides a phone column.
+  phone10    String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   snapshotChanges VoterSnapshotChange[]
+  userLinks       User[] @relation("UserVoterLink")
+  volunteerMatchCandidates VolunteerMatchCandidate[]
+  signupEntriesMatched SignupSheetEntry[] @relation("SignupEntryMatchedVoter")
 
   @@index([countyId, inLatestCompletedFile])
+  @@index([countyId, lastName, firstName])
+  @@index([phone10])
   @@index([countySlug])
   @@index([countyFips])
   @@index([registrationDate])
@@ -856,4 +938,603 @@ model VoterSnapshotChange {
   @@index([voterFileSnapshotId, changeType])
   @@index([countySlug, voterFileSnapshotId])
   @@index([voterFileKey])
+}
+
+// --- Campaign operations: workbench, events, tasks, workflows, asks (Slice 1) ---
+
+enum CampaignEventType {
+  RALLY
+  APPEARANCE
+  TRAINING
+  MEETING
+  CANVASS
+  PHONE_BANK
+  FUNDRAISER
+  PRESS
+  DEADLINE
+  ORIENTATION
+  OTHER
+}
+
+enum CampaignEventStatus {
+  DRAFT
+  SCHEDULED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum CampaignEventVisibility {
+  INTERNAL
+  STAFF
+  PUBLIC_STAFF
+}
+
+enum CampaignTaskType {
+  PREP
+  COMMS
+  FIELD
+  DATA
+  VOLUNTEER
+  MEDIA
+  ADMIN
+  FOLLOW_UP
+  OTHER
+}
+
+enum CampaignTaskStatus {
+  TODO
+  IN_PROGRESS
+  BLOCKED
+  DONE
+  CANCELLED
+}
+
+enum CampaignTaskPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum WorkflowTemplateTrigger {
+  EVENT_CREATED
+  EVENT_SIGNUP_CREATED
+  MENTION_REVIEWED
+  MANUAL
+}
+
+enum WorkflowRunStatus {
+  PENDING
+  RUNNING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+enum VolunteerAskType {
+  SHARE
+  RSVP
+  CANVASS
+  PHONE_BANK
+  HOST
+  RECRUIT
+  AMPLIFY
+  OTHER
+}
+
+enum VolunteerAskStatus {
+  DRAFT
+  ACTIVE
+  PAUSED
+  COMPLETED
+  CANCELLED
+}
+
+enum EventSignupAttendeeStatus {
+  REGISTERED
+  CONFIRMED
+  CANCELLED
+  ATTENDED
+  NO_SHOW
+}
+
+enum MediaIngestBatchStatus {
+  STARTED
+  COMPLETE
+  PARTIAL
+  FAILED
+}
+
+model CampaignEvent {
+  id          String  @id @default(cuid())
+  slug        String  @unique
+  title       String
+  description String? @db.Text
+  eventType   CampaignEventType
+  status      CampaignEventStatus  @default(SCHEDULED)
+  visibility  CampaignEventVisibility @default(INTERNAL)
+  countyId   String?
+  county     County?  @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  locationName String?
+  address     String? @db.Text
+  startAt     DateTime
+  endAt       DateTime
+  timezone    String  @default("America/Chicago")
+  ownerUserId String?
+  ownerUser   User?   @relation("EventOwner", fields: [ownerUserId], references: [id], onDelete: SetNull)
+  relatedInboundContentId String?
+  relatedSyncedPostId     String?
+  relatedOwnedMediaAssetId String?
+  notes       String? @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  signups EventSignup[]
+  tasks   CampaignTask[]
+  asks    VolunteerAsk[]
+  /// Media assets logically tied to this campaign event (rally, etc.).
+  linkedOwnedMediaAssets OwnedMediaAsset[] @relation("OwnedMediaCampaignEvent")
+
+  @@index([startAt, status])
+  @@index([countyId, startAt])
+  @@index([status, startAt])
+}
+
+model CampaignTask {
+  id              String  @id @default(cuid())
+  title           String
+  description     String? @db.Text
+  taskType        CampaignTaskType @default(OTHER)
+  status          CampaignTaskStatus @default(TODO)
+  priority        CampaignTaskPriority @default(MEDIUM)
+  dueAt           DateTime?
+  startAt         DateTime?
+  assignedUserId  String?
+  assignee        User?   @relation("TaskAssignee", fields: [assignedUserId], references: [id], onDelete: SetNull)
+  assignedRole   String?
+  countyId        String?
+  county          County?  @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  eventId         String?
+  event           CampaignEvent? @relation(fields: [eventId], references: [id], onDelete: SetNull)
+  workflowRunId  String?
+  workflowRun    WorkflowRun?  @relation(fields: [workflowRunId], references: [id], onDelete: SetNull)
+  parentTaskId   String?
+  parentTask     CampaignTask? @relation("Subtasks", fields: [parentTaskId], references: [id], onDelete: SetNull)
+  subtasks       CampaignTask[] @relation("Subtasks")
+  createdByUserId String?
+  creator        User?   @relation("TaskCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  completionNotes String? @db.Text
+  completedAt     DateTime?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([status, dueAt])
+  @@index([assignedUserId, status])
+  @@index([eventId])
+  @@index([dueAt, status])
+}
+
+model WorkflowTemplate {
+  id          String  @id @default(cuid())
+  key         String  @unique
+  title       String
+  description String? @db.Text
+  triggerType WorkflowTemplateTrigger
+  isActive    Boolean @default(true)
+  configJson  Json    @default("{}")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  tasks WorkflowTemplateTask[]
+  runs  WorkflowRun[]
+}
+
+model WorkflowTemplateTask {
+  id                 String  @id @default(cuid())
+  workflowTemplateId String
+  workflowTemplate   WorkflowTemplate @relation(fields: [workflowTemplateId], references: [id], onDelete: Cascade)
+  taskKey            String
+  titleTemplate      String
+  descriptionTemplate String? @db.Text
+  offsetMinutes      Int     @default(0)
+  roleTarget         String?
+  taskType           CampaignTaskType @default(OTHER)
+  priority           CampaignTaskPriority @default(MEDIUM)
+  required           Boolean @default(true)
+  dependsOnTaskKey  String?
+  configJson         Json?  @default("{}")
+
+  @@unique([workflowTemplateId, taskKey])
+  @@index([workflowTemplateId])
+}
+
+model WorkflowRun {
+  id                 String  @id @default(cuid())
+  workflowTemplateId String
+  workflowTemplate   WorkflowTemplate @relation(fields: [workflowTemplateId], references: [id], onDelete: Restrict)
+  triggerType        WorkflowTemplateTrigger
+  triggerSourceType  String
+  triggerSourceId   String
+  status             WorkflowRunStatus @default(RUNNING)
+  startedAt          DateTime @default(now())
+  completedAt        DateTime?
+  contextJson        Json?    @default("{}")
+  errorMessage       String?  @db.Text
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  tasks         CampaignTask[]
+  volunteerAsks VolunteerAsk[]
+
+  @@unique([workflowTemplateId, triggerSourceType, triggerSourceId])
+  @@index([status, createdAt])
+}
+
+model VolunteerAsk {
+  id                 String  @id @default(cuid())
+  title              String
+  description        String? @db.Text
+  askType            VolunteerAskType
+  status             VolunteerAskStatus @default(DRAFT)
+  priority           Int     @default(0)
+  countyId           String?
+  county             County? @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  eventId            String?
+  event              CampaignEvent? @relation(fields: [eventId], references: [id], onDelete: SetNull)
+  workflowRunId      String?
+  workflowRun        WorkflowRun?  @relation(fields: [workflowRunId], references: [id], onDelete: SetNull)
+  startsAt           DateTime?
+  endsAt             DateTime?
+  recurrenceRule     String?
+  targetAudienceJson Json?   @default("{}")
+  actionUrl          String?
+  completionMode     String  @default("HONOR_SYSTEM")
+  createdByUserId   String?
+  createdBy         User?   @relation(fields: [createdByUserId], references: [id], onDelete: SetNull)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([status, startsAt])
+  @@index([countyId, status])
+}
+
+model EventSignup {
+  id                 String  @id @default(cuid())
+  eventId            String
+  event              CampaignEvent @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  userId             String?
+  volunteerProfileId String?
+  volunteerProfile   VolunteerProfile? @relation(fields: [volunteerProfileId], references: [id], onDelete: SetNull)
+  firstName         String
+  lastName          String
+  email             String
+  mobilePhone      String?
+  countyId         String?
+  county           County? @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  signupSource     String  @default("web")
+  notes            String? @db.Text
+  status           EventSignupAttendeeStatus @default(REGISTERED)
+  attendedAt      DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([eventId, createdAt])
+  @@index([email])
+}
+
+model TeamRoleAssignment {
+  id         String  @id @default(cuid())
+  userId     String
+  user       User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  roleKey   String
+  countyId  String?
+  county    County?  @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  isPrimary  Boolean @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([userId, roleKey])
+  @@index([countyId, roleKey])
+}
+
+model MediaIngestBatch {
+  id              String  @id @default(cuid())
+  sourceType      String
+  sourceLabel     String
+  ingestPath      String? @db.Text
+  status          MediaIngestBatchStatus @default(STARTED)
+  importedCount   Int     @default(0)
+  duplicateCount  Int     @default(0)
+  failedCount     Int     @default(0)
+  startedAt       DateTime @default(now())
+  finishedAt      DateTime?
+  notes           String? @db.Text
+  createdByUserId String?
+  createdBy       User?   @relation(fields: [createdByUserId], references: [id], onDelete: SetNull)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  assets OwnedMediaAsset[]
+
+  @@index([status, createdAt])
+}
+
+// --- Volunteer signup sheet intake (image/PDF → rows → voter match → admin approval) ---
+
+enum SignupSheetDocumentStatus {
+  DRAFT
+  QUEUED
+  EXTRACTING
+  EXTRACTED
+  PARTIAL
+  FAILED
+}
+
+enum SignupSheetExtractionStatus {
+  PENDING
+  SUCCEEDED
+  FAILED
+}
+
+enum SignupSheetEntryStatus {
+  PENDING_REVIEW
+  APPROVED
+  REJECTED
+  SKIPPED
+}
+
+model SignupSheetDocument {
+  id          String   @id @default(cuid())
+  ownedMediaId String  @unique
+  ownedMedia   OwnedMediaAsset @relation(fields: [ownedMediaId], references: [id], onDelete: Cascade)
+  status      SignupSheetDocumentStatus @default(DRAFT)
+  lastExtractionId String?
+  lastExtraction   SignupSheetExtraction? @relation("DocumentLastExtraction", fields: [lastExtractionId], references: [id], onDelete: SetNull)
+  notes       String? @db.Text
+  createdByUserId String?
+  createdBy     User?   @relation(fields: [createdByUserId], references: [id], onDelete: SetNull)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  extractions SignupSheetExtraction[] @relation("DocumentExtractions")
+  entries     SignupSheetEntry[]
+
+  @@index([status, updatedAt])
+}
+
+model SignupSheetExtraction {
+  id          String   @id @default(cuid())
+  documentId String
+  document    SignupSheetDocument @relation("DocumentExtractions", fields: [documentId], references: [id], onDelete: Cascade)
+  status      SignupSheetExtractionStatus @default(PENDING)
+  model       String?
+  rawOcrText  String? @db.Text
+  parsedOutputJson Json?
+  errorMessage String? @db.Text
+  avgConfidence Float?
+  createdAt   DateTime @default(now())
+
+  entries     SignupSheetEntry[]
+  documentAsLast SignupSheetDocument[] @relation("DocumentLastExtraction")
+
+  @@index([documentId, createdAt])
+}
+
+model SignupSheetEntry {
+  id          String   @id @default(cuid())
+  documentId  String
+  document    SignupSheetDocument @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  extractionId String
+  extraction   SignupSheetExtraction @relation(fields: [extractionId], references: [id], onDelete: Cascade)
+  rowIndex    Int
+
+  firstName   String? @db.Text
+  lastName    String? @db.Text
+  phone       String? @db.Text
+  email       String? @db.Text
+  address     String? @db.Text
+  countyText  String? @db.Text
+  countyId    String?
+  county      County? @relation(fields: [countyId], references: [id], onDelete: SetNull)
+
+  rawRowText  String  @db.Text
+  parsedJson  Json?
+  confidenceScore Float?
+
+  approvalStatus SignupSheetEntryStatus @default(PENDING_REVIEW)
+  matchedVoterRecordId String?
+  matchedVoterRecord   VoterRecord? @relation("SignupEntryMatchedVoter", fields: [matchedVoterRecordId], references: [id], onDelete: SetNull)
+  matchedUserId        String?
+  matchedUser          User?   @relation(fields: [matchedUserId], references: [id], onDelete: SetNull)
+  notes       String? @db.Text
+  decidedAt   DateTime?
+  decisionNote String? @db.Text
+
+  matchCandidates VolunteerMatchCandidate[]
+
+  @@index([documentId, approvalStatus])
+  @@index([extractionId, rowIndex])
+  @@index([approvalStatus, confidenceScore])
+}
+
+model VolunteerMatchCandidate {
+  id          String   @id @default(cuid())
+  entryId     String
+  entry       SignupSheetEntry @relation(fields: [entryId], references: [id], onDelete: Cascade)
+  voterRecordId String
+  voterRecord   VoterRecord @relation(fields: [voterRecordId], references: [id], onDelete: Cascade)
+  score       Float
+  reasonJson  Json    @default("{}")
+  rank        Int     @default(0)
+
+  createdAt   DateTime @default(now())
+
+  @@index([entryId, score])
+  @@unique([entryId, voterRecordId])
+}
+
+// --- CampaignOS Step 1: Communications engine ---
+
+enum CommunicationChannel {
+  SMS
+  EMAIL
+}
+
+enum CommunicationThreadStatus {
+  ACTIVE
+  NEEDS_REPLY
+  FOLLOW_UP
+  CLOSED
+  ARCHIVED
+}
+
+enum MessageDirection {
+  INBOUND
+  OUTBOUND
+}
+
+enum CommsSendProvider {
+  TWILIO
+  SENDGRID
+  MANUAL
+  SYSTEM
+}
+
+enum MessageDeliveryStatus {
+  QUEUED
+  SENT
+  DELIVERED
+  FAILED
+  OPENED
+  CLICKED
+  RECEIVED
+}
+
+enum CommunicationActionType {
+  SEND_SMS
+  SEND_EMAIL
+  SEND_REMINDER
+  AI_SUGGEST_FOLLOWUP
+}
+
+enum CommsQueueStatus {
+  PENDING
+  PROCESSING
+  COMPLETE
+  FAILED
+  CANCELED
+}
+
+model CommunicationThread {
+  id                 String  @id @default(cuid())
+  userId             String?
+  user               User?   @relation("ThreadPrimaryUser", fields: [userId], references: [id], onDelete: SetNull)
+  volunteerProfileId String?
+  volunteerProfile  VolunteerProfile? @relation(fields: [volunteerProfileId], references: [id], onDelete: SetNull)
+  primaryEmail      String?
+  primaryPhone      String?
+  preferredChannel  CommunicationChannel?
+  threadStatus      CommunicationThreadStatus @default(ACTIVE)
+  lastInboundAt     DateTime?
+  lastOutboundAt    DateTime?
+  lastMessageAt     DateTime?
+  unreadCount       Int     @default(0)
+  priorityScore     Int     @default(0)
+  countyId          String?
+  county            County? @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  assignedUserId   String?
+  assignee         User?   @relation("ThreadAssignee", fields: [assignedUserId], references: [id], onDelete: SetNull)
+  assignedRoleKey  String?
+  notes             String? @db.Text
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  messages      CommunicationMessage[]
+  actionQueue  CommunicationActionQueue[]
+  tagAssignments CommunicationThreadTag[]
+
+  @@index([threadStatus, lastMessageAt])
+  @@index([unreadCount, priorityScore])
+  @@index([countyId, threadStatus])
+  @@index([userId])
+  @@index([lastMessageAt])
+}
+
+model CommunicationMessage {
+  id                String  @id @default(cuid())
+  threadId          String
+  thread            CommunicationThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  channel           CommunicationChannel
+  direction         MessageDirection
+  provider          CommsSendProvider
+  providerMessageId String?
+  fromAddress       String?
+  toAddress         String?
+  subject           String?
+  bodyText          String  @db.Text
+  bodyHtml          String? @db.Text
+  deliveryStatus    MessageDeliveryStatus @default(QUEUED)
+  openedAt         DateTime?
+  clickedAt        DateTime?
+  failedAt         DateTime?
+  errorMessage     String? @db.Text
+  aiGenerated      Boolean @default(false)
+  aiPromptSummary  String? @db.Text
+  sentByUserId     String?
+  sentBy          User?   @relation("MessageSentBy", fields: [sentByUserId], references: [id], onDelete: SetNull)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([threadId, createdAt])
+  @@index([provider, providerMessageId])
+}
+
+model CommunicationActionQueue {
+  id                        String  @id @default(cuid())
+  actionType                CommunicationActionType
+  threadId                 String?
+  thread                   CommunicationThread? @relation(fields: [threadId], references: [id], onDelete: SetNull)
+  targetUserId              String?
+  targetUser                 User?   @relation("QueueTargetUser", fields: [targetUserId], references: [id], onDelete: SetNull)
+  targetVolunteerProfileId String?
+  targetVolunteer           VolunteerProfile? @relation("QueueTargetVolunteer", fields: [targetVolunteerProfileId], references: [id], onDelete: SetNull)
+  payloadJson              Json     @default("{}")
+  queueStatus              CommsQueueStatus @default(PENDING)
+  scheduledAt              DateTime?
+  startedAt                DateTime?
+  completedAt              DateTime?
+  failedAt                 DateTime?
+  attemptCount             Int     @default(0)
+  lastError                String? @db.Text
+  createdByUserId          String?
+  createdBy                User?   @relation("QueueCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  createdAt                DateTime @default(now())
+  updatedAt                DateTime @updatedAt
+
+  @@index([queueStatus, scheduledAt])
+  @@index([threadId])
+  @@index([queueStatus, createdAt])
+}
+
+model CommunicationTag {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  label     String
+  color     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  threads CommunicationThreadTag[]
+}
+
+model CommunicationThreadTag {
+  threadId String
+  thread   CommunicationThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  tagId    String
+  tag      CommunicationTag @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@id([threadId, tagId])
+  @@index([tagId])
 }

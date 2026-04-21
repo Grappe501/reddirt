@@ -22,6 +22,13 @@ function mimeForPath(fileName: string, fallback: string): string {
     ".mp3": "audio/mpeg",
     ".wav": "audio/wav",
     ".pdf": "application/pdf",
+    ".docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    ".doc": "application/msword",
+    ".txt": "text/plain",
+    ".csv": "text/csv",
+    ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    ".xls": "application/vnd.ms-excel",
+    ".pptx": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
   };
   return map[ext] ?? fallback;
 }

@@ -43,6 +43,7 @@ export default async function PrioritiesPage() {
   return (
     <>
       <PageHero
+        tone="plan"
         eyebrow={hero?.eyebrow ?? "The work of the office"}
         title={hero?.title ?? "What the Secretary of State actually touches"}
         subtitle={

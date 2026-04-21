@@ -23,13 +23,30 @@ const ALLOWED_MIME = new Set([
   "audio/webm",
   "application/pdf",
   "text/plain",
+  "text/csv",
+  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  "application/vnd.ms-excel",
+  "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "application/msword",
 ]);
 
 function inferOwnedMediaKind(mime: string): "IMAGE" | "VIDEO" | "AUDIO" | "DOCUMENT" | "OTHER" {
   if (mime.startsWith("image/")) return "IMAGE";
   if (mime.startsWith("video/")) return "VIDEO";
   if (mime.startsWith("audio/")) return "AUDIO";
-  if (mime === "application/pdf" || mime.startsWith("text/")) return "DOCUMENT";
+  if (
+    mime === "application/pdf" ||
+    mime.startsWith("text/") ||
+    mime === "text/csv" ||
+    mime === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ||
+    mime === "application/vnd.ms-excel" ||
+    mime === "application/vnd.openxmlformats-officedocument.presentationml.presentation" ||
+    mime === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+    mime === "application/msword"
+  ) {
+    return "DOCUMENT";
+  }
   return "OTHER";
 }
 

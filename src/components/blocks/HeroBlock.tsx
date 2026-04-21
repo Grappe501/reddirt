@@ -9,6 +9,8 @@ type HeroBlockProps = {
   className?: string;
   align?: "left" | "center";
   size?: "home" | "page";
+  /** Navy / photo header context (e.g. “The Plan”) */
+  variant?: "default" | "onDark";
 };
 
 export function HeroBlock({
@@ -19,7 +21,9 @@ export function HeroBlock({
   className,
   align = "left",
   size = "home",
+  variant = "default",
 }: HeroBlockProps) {
+  const onDark = variant === "onDark";
   return (
     <div
       className={cn(
@@ -30,13 +34,19 @@ export function HeroBlock({
       )}
     >
       {eyebrow ? (
-        <p className="max-w-prose font-body text-xs font-bold uppercase tracking-[0.22em] text-red-dirt">
+        <p
+          className={cn(
+            "max-w-prose font-body text-xs font-bold uppercase tracking-[0.22em]",
+            onDark ? "text-sunlight-gold" : "text-red-dirt",
+          )}
+        >
           {eyebrow}
         </p>
       ) : null}
       <h1
         className={cn(
-          "font-heading font-bold tracking-tight text-deep-soil",
+          "font-heading font-bold tracking-tight",
+          onDark ? "text-civic-mist" : "text-deep-soil",
           size === "home" &&
             "max-w-[22ch] text-[clamp(2.5rem,6vw,4.75rem)] leading-[1.05] lg:max-w-[18ch]",
           size === "page" &&
@@ -48,7 +58,8 @@ export function HeroBlock({
       {subtitle ? (
         <div
           className={cn(
-            "max-w-2xl font-body text-lg leading-relaxed text-deep-soil/85 lg:text-xl",
+            "max-w-2xl font-body text-lg leading-relaxed lg:text-xl",
+            onDark ? "text-civic-mist/88" : "text-deep-soil/85",
             align === "center" && "mx-auto",
           )}
         >

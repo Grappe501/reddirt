@@ -17,7 +17,8 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "static1.squarespace.com", pathname: "/**" },
     ],
   },
-  serverExternalPackages: ["@prisma/client"],
+  // pdf-parse must stay external: its test harness references missing test/ PDFs and breaks the bundler.
+  serverExternalPackages: ["@prisma/client", "pdf-parse"],
 };
 
 export default nextConfig;

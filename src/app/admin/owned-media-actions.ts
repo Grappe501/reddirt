@@ -5,6 +5,7 @@ import { revalidatePath } from "next/cache";
 import {
   GeoMetadataSource,
   OwnedMediaKind,
+  OwnedMediaNoteType,
   OwnedMediaReviewStatus,
   OwnedMediaRole,
   OwnedMediaSourceType,
@@ -192,6 +193,16 @@ export async function updateOwnedMediaAction(formData: FormData) {
   const needsGeoReview = formData.get("needsGeoReview") === "on";
   const confirmGeo = formData.get("confirmGeo") === "on";
 
+  const operatorNotes = String(formData.get("operatorNotes") ?? "").trim() || null;
+  const captionDraft = String(formData.get("captionDraft") ?? "").trim() || null;
+  const shootOverrideRaw = String(formData.get("shootDateOverride") ?? "").trim();
+  const shootDateOverride = shootOverrideRaw ? new Date(shootOverrideRaw) : null;
+  if (shootDateOverride && Number.isNaN(shootDateOverride.getTime())) {
+    redirect(`/admin/owned-media/${id}?error=date`);
+  }
+  const linkedEventRaw = String(formData.get("linkedCampaignEventId") ?? "").trim();
+  const linkedCampaignEventId = linkedEventRaw || null;
+
   const geoData = confirmGeo
     ? {
         geoSource: GeoMetadataSource.MANUAL,
@@ -234,12 +245,21 @@ export async function updateOwnedMediaAction(formData: FormData) {
       isPublic,
       durationSeconds: durationSeconds != null && Number.isFinite(durationSeconds) ? durationSeconds : null,
       eventDate: eventDate && !Number.isNaN(eventDate.getTime()) ? eventDate : null,
+      operatorNotes,
+      captionDraft,
+      shootDateOverride: shootDateOverride && !Number.isNaN(shootDateOverride.getTime()) ? shootDateOverride : null,
+      linkedCampaignEventId,
     },
   });
 
   revalidatePath("/admin/owned-media");
   revalidatePath(`/admin/owned-media/${id}`);
   revalidatePath(`/api/owned-campaign-media/${id}/file`, "page");
+  const a = await prisma.ownedMediaAsset.findUnique({ where: { id }, select: { mediaIngestBatchId: true } });
+  if (a?.mediaIngestBatchId) {
+    revalidatePath("/admin/owned-media/batches");
+    revalidatePath(`/admin/owned-media/batches/${a.mediaIngestBatchId}`);
+  }
   redirect(`/admin/owned-media/${id}?saved=1`);
 }
 
@@ -352,4 +372,151 @@ export async function updateQuoteReviewAction(formData: FormData) {
   await prisma.ownedMediaQuoteCandidate.update({ where: { id }, data: { reviewStatus } });
   revalidatePath(`/admin/owned-media/${ownedMediaId}`);
   redirect(`/admin/owned-media/${ownedMediaId}?qrev=1`);
+}
+
+/** Bulk update by explicit asset ids (newline or comma separated). */
+export async function bulkUpdateOwnedMediaByIdsAction(formData: FormData) {
+  await requireAdminAction();
+  const raw = String(formData.get("ids") ?? "");
+  const ids = raw
+    .split(/[\s,]+/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+  if (ids.length === 0) {
+    redirect("/admin/owned-media?error=bulk_ids");
+  }
+  const reviewStatus = parseEnum(
+    String(formData.get("reviewStatus") ?? "PENDING_REVIEW"),
+    Object.values(OwnedMediaReviewStatus),
+    OwnedMediaReviewStatus.PENDING_REVIEW
+  );
+  const isPublic = String(formData.get("isPublic") ?? "false") === "true";
+  const r = await prisma.ownedMediaAsset.updateMany({
+    where: { id: { in: ids } },
+    data: { reviewStatus, isPublic },
+  });
+  revalidatePath("/admin/owned-media");
+  revalidatePath("/resources");
+  redirect(`/admin/owned-media?bulk=${r.count}`);
+}
+
+/** All assets linked to a `MediaIngestBatch` (folder/device ingest). */
+export async function bulkUpdateOwnedMediaByIngestBatchAction(formData: FormData) {
+  await requireAdminAction();
+  const mediaIngestBatchId = String(formData.get("mediaIngestBatchId") ?? "").trim();
+  if (!mediaIngestBatchId) {
+    redirect("/admin/owned-media?error=bulk_batch");
+  }
+  const reviewStatus = parseEnum(
+    String(formData.get("reviewStatus") ?? "PENDING_REVIEW"),
+    Object.values(OwnedMediaReviewStatus),
+    OwnedMediaReviewStatus.PENDING_REVIEW
+  );
+  const isPublic = String(formData.get("isPublic") ?? "false") === "true";
+  const r = await prisma.ownedMediaAsset.updateMany({
+    where: { mediaIngestBatchId },
+    data: { reviewStatus, isPublic },
+  });
+  revalidatePath("/admin/owned-media");
+  revalidatePath("/resources");
+  redirect(`/admin/owned-media?bulkBatch=${r.count}`);
+}
+
+export async function quickReviewOwnedMediaAction(formData: FormData) {
+  await requireAdminAction();
+  const id = String(formData.get("id") ?? "").trim();
+  if (!id) redirect("/admin/owned-media?error=id");
+  const reviewStatus = parseEnum(
+    String(formData.get("reviewStatus") ?? "PENDING_REVIEW"),
+    Object.values(OwnedMediaReviewStatus),
+    OwnedMediaReviewStatus.PENDING_REVIEW
+  );
+  const isPublic = formData.get("isPublic") === "on";
+  await prisma.ownedMediaAsset.update({ where: { id }, data: { reviewStatus, isPublic } });
+
+  revalidatePath("/admin/owned-media");
+  revalidatePath(`/admin/owned-media/${id}`);
+  const batchId = String(formData.get("returnBatchId") ?? "").trim();
+  if (batchId) revalidatePath(`/admin/owned-media/batches/${batchId}`);
+  const nextId = String(formData.get("nextId") ?? "").trim();
+  if (nextId && batchId) {
+    redirect(`/admin/owned-media/${nextId}?batch=${encodeURIComponent(batchId)}&reviewed=1`);
+  }
+  if (batchId) redirect(`/admin/owned-media/batches/${batchId}?reviewed=1`);
+  redirect(`/admin/owned-media/${id}?saved=1`);
+}
+
+export async function addOwnedMediaAnnotationAction(formData: FormData) {
+  await requireAdminAction();
+  const ownedMediaId = String(formData.get("ownedMediaId") ?? "").trim();
+  if (!ownedMediaId) redirect("/admin/owned-media?error=media");
+  const noteText = String(formData.get("noteText") ?? "").trim();
+  if (!noteText) redirect(`/admin/owned-media/${ownedMediaId}?error=note`);
+  const noteType = parseEnum(
+    String(formData.get("noteType") ?? "INTERNAL_NOTE"),
+    Object.values(OwnedMediaNoteType),
+    OwnedMediaNoteType.INTERNAL_NOTE
+  );
+  const isSearchable = formData.get("isSearchable") === "on";
+  await prisma.ownedMediaAnnotation.create({
+    data: { ownedMediaId, noteType, noteText, isSearchable },
+  });
+  revalidatePath(`/admin/owned-media/${ownedMediaId}`);
+  const b = String(formData.get("returnBatchId") ?? "").trim();
+  if (b) revalidatePath(`/admin/owned-media/batches/${b}`);
+  if (b) redirect(`/admin/owned-media/${ownedMediaId}?note=1&batch=${encodeURIComponent(b)}`);
+  redirect(`/admin/owned-media/${ownedMediaId}?note=1`);
+}
+
+export async function deleteOwnedMediaAnnotationAction(formData: FormData) {
+  await requireAdminAction();
+  const annotationId = String(formData.get("annotationId") ?? "").trim();
+  const ownedMediaId = String(formData.get("ownedMediaId") ?? "").trim();
+  if (!annotationId || !ownedMediaId) redirect("/admin/owned-media?error=note");
+  await prisma.ownedMediaAnnotation.delete({ where: { id: annotationId } });
+  revalidatePath(`/admin/owned-media/${ownedMediaId}`);
+  const batch = String(formData.get("returnBatchId") ?? "").trim();
+  if (batch) redirect(`/admin/owned-media/${ownedMediaId}?note=1&batch=${encodeURIComponent(batch)}`);
+  redirect(`/admin/owned-media/${ownedMediaId}?note=1`);
+}
+
+/** Batch apply: review, visibility, optional county + campaign event (ingest batch only). */
+export async function bulkUpdateOwnedMediaByIngestBatchExtendedAction(formData: FormData) {
+  await requireAdminAction();
+  const mediaIngestBatchId = String(formData.get("mediaIngestBatchId") ?? "").trim();
+  if (!mediaIngestBatchId) {
+    redirect("/admin/owned-media/batches?error=batch");
+  }
+  const reviewStatus = parseEnum(
+    String(formData.get("reviewStatus") ?? "PENDING_REVIEW"),
+    Object.values(OwnedMediaReviewStatus),
+    OwnedMediaReviewStatus.PENDING_REVIEW
+  );
+  const isPublic = String(formData.get("isPublic") ?? "false") === "true";
+  const applyCounty = formData.get("applyCounty") === "on";
+  const applyEvent = formData.get("applyEvent") === "on";
+  const countySlug = String(formData.get("countySlug") ?? "").trim() || null;
+  const countyFips = String(formData.get("countyFips") ?? "").trim() || null;
+  const linkedRaw = String(formData.get("linkedCampaignEventId") ?? "").trim();
+
+  const data: Prisma.OwnedMediaAssetUncheckedUpdateManyWithoutMediaIngestBatchInput = {
+    reviewStatus,
+    isPublic,
+  };
+  if (applyCounty) {
+    data.countySlug = countySlug;
+    data.countyFips = countyFips;
+  }
+  if (applyEvent) {
+    data.linkedCampaignEventId = linkedRaw === "" || linkedRaw === "__clear__" ? null : linkedRaw;
+  }
+
+  const r = await prisma.ownedMediaAsset.updateMany({
+    where: { mediaIngestBatchId },
+    data,
+  });
+  revalidatePath("/admin/owned-media");
+  revalidatePath(`/admin/owned-media/batches/${mediaIngestBatchId}`);
+  revalidatePath("/resources");
+  redirect(`/admin/owned-media/batches/${mediaIngestBatchId}?bulk=${r.count}`);
 }

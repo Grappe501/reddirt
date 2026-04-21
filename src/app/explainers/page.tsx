@@ -21,6 +21,7 @@ export default async function ExplainersIndexPage() {
   return (
     <>
       <PageHero
+        tone="plan"
         eyebrow="Clarity"
         title="Explainers"
         subtitle="Complex doesn’t have to mean confusing. These pieces are built for neighbors who deserve to understand the rules without being talked down to—or scared into silence."

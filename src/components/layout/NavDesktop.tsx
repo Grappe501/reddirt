@@ -14,12 +14,16 @@ function groupActive(pathname: string, items: { href: string }[]) {
   return items.some((i) => navItemActive(pathname, i.href));
 }
 
+type NavTheme = "light" | "dark";
+
 type NavMenuProps = {
   group: NavGroup;
   pathname: string;
+  theme?: NavTheme;
 };
 
-function NavMenu({ group, pathname }: NavMenuProps) {
+function NavMenu({ group, pathname, theme = "light" }: NavMenuProps) {
+  const dark = theme === "dark";
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const menuId = useId();
@@ -48,8 +52,10 @@ function NavMenu({ group, pathname }: NavMenuProps) {
       <button
         type="button"
         className={cn(
-          "flex items-center gap-1 rounded-md px-2 py-2 font-body text-xs font-semibold uppercase tracking-wider transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-dirt/40 xl:px-2.5 xl:text-sm",
-          active ? "text-red-dirt" : "text-deep-soil/80 hover:text-red-dirt",
+          "flex items-center gap-1 rounded-md px-2 py-2 font-body text-xs font-semibold uppercase tracking-wider transition focus-visible:outline-none focus-visible:ring-2 xl:px-2.5 xl:text-sm",
+          dark
+            ? "focus-visible:ring-civic-gold/50 " + (active ? "text-sunlight-gold" : "text-civic-mist/85 hover:text-sunlight-gold")
+            : "focus-visible:ring-red-dirt/40 " + (active ? "text-red-dirt" : "text-deep-soil/80 hover:text-red-dirt"),
         )}
         aria-expanded={open}
         aria-haspopup="true"
@@ -98,13 +104,14 @@ function NavMenu({ group, pathname }: NavMenuProps) {
 export type NavDesktopProps = {
   groups: NavGroup[];
   pathname: string;
+  theme?: NavTheme;
 };
 
-export function NavDesktop({ groups, pathname }: NavDesktopProps) {
+export function NavDesktop({ groups, pathname, theme = "light" }: NavDesktopProps) {
   return (
     <div className="flex flex-nowrap items-center justify-end gap-x-0.5 xl:gap-x-1">
       {groups.map((g) => (
-        <NavMenu key={g.id} group={g} pathname={pathname} />
+        <NavMenu key={g.id} group={g} pathname={pathname} theme={theme} />
       ))}
     </div>
   );

@@ -1,9 +1,10 @@
 import OpenAI from "openai";
-import type { OpenAIEnvConfig } from "./types";
 
-let _client: OpenAI | null = null;
+export function getOpenAIClient(): OpenAI {
+  return new OpenAI({ apiKey: process.env.OPENAI_API_KEY?.trim() ?? "" });
+}
 
-export function getOpenAIConfigFromEnv(): OpenAIEnvConfig {
+export function getOpenAIConfigFromEnv() {
   return {
     apiKey: process.env.OPENAI_API_KEY?.trim() ?? "",
     model: process.env.OPENAI_MODEL?.trim() || "gpt-4o-mini",
@@ -12,16 +13,5 @@ export function getOpenAIConfigFromEnv(): OpenAIEnvConfig {
 }
 
 export function isOpenAIConfigured(): boolean {
-  return Boolean(getOpenAIConfigFromEnv().apiKey);
-}
-
-export function getOpenAIClient(): OpenAI {
-  const { apiKey } = getOpenAIConfigFromEnv();
-  if (!apiKey) {
-    throw new Error("OPENAI_API_KEY is not configured.");
-  }
-  if (!_client) {
-    _client = new OpenAI({ apiKey });
-  }
-  return _client;
+  return Boolean(process.env.OPENAI_API_KEY?.trim());
 }

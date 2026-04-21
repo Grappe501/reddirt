@@ -23,6 +23,7 @@ export default async function EditorialIndexPage() {
   return (
     <>
       <PageHero
+        tone="plan"
         eyebrow="Essays"
         title="Editorial"
         subtitle="This is where we slow down—enough to admit complexity, enough to refuse cynicism. No jargon trophies. Just Arkansas-grounded reasoning you can argue with at a kitchen table."

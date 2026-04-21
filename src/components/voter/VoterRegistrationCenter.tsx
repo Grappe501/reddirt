@@ -14,6 +14,7 @@ import { getCampaignRegistrationBaselineDisplayCentral } from "@/config/campaign
 import { getJoinCampaignHref } from "@/config/external-campaign";
 import { canEmbedOfficialArkansasVoterLookup, getVoterLookupUiMode } from "@/lib/voter-file/lookup-config";
 import type { County, VoterFileSnapshot } from "@prisma/client";
+import type { StatewideVoterRollup } from "@/lib/voter-file/queries";
 import { cn } from "@/lib/utils";
 
 const card =
@@ -23,9 +24,11 @@ type Props = {
   counties: Pick<County, "id" | "slug" | "displayName" | "regionLabel" | "leadName" | "leadTitle">[];
   focusCounty: Pick<County, "slug" | "displayName" | "regionLabel" | "leadName" | "leadTitle"> | null;
   latestSnapshot: VoterFileSnapshot | null;
+  /** Rolled up from the same snapshot the county command pages use */
+  statewide: StatewideVoterRollup | null;
 };
 
-export function VoterRegistrationCenter({ counties, focusCounty, latestSnapshot }: Props) {
+export function VoterRegistrationCenter({ counties, focusCounty, latestSnapshot, statewide }: Props) {
   const officialUrl = getArVoterRegistrationLookupUrl();
   const mode = getVoterLookupUiMode();
   const embedFeasible = canEmbedOfficialArkansasVoterLookup();
@@ -99,10 +102,30 @@ export function VoterRegistrationCenter({ counties, focusCounty, latestSnapshot 
             lookup.
           </p>
           {latestSnapshot ? (
-            <p className="mt-2 text-sm text-deep-soil/65">
-              Latest processed file in our system: <strong>{latestSnapshot.fileAsOfDate.toLocaleDateString()}</strong>{" "}
-              (imported {latestSnapshot.importedAt.toLocaleDateString()})
-            </p>
+            <>
+              <p className="mt-2 text-sm text-deep-soil/65">
+                Latest processed file in our system: <strong>{latestSnapshot.fileAsOfDate.toLocaleDateString()}</strong>{" "}
+                (imported {latestSnapshot.importedAt.toLocaleDateString()})
+              </p>
+              {statewide ? (
+                <p className="mt-2 max-w-3xl text-sm leading-relaxed text-deep-soil/80">
+                  <span className="text-deep-soil/70">Statewide (from the warehouse, all counties, same file):</span>{" "}
+                  <strong>{statewide.newRegistrationsSinceBaseline.toLocaleString()}</strong> new registrations since
+                  the campaign baseline; since the prior snapshot,{" "}
+                  <strong>+{statewide.newRegistrationsSincePreviousSnapshot.toLocaleString()}</strong> in-file gains /{" "}
+                  <strong>−{statewide.droppedSincePreviousSnapshot.toLocaleString()}</strong> no longer in file (net{" "}
+                  {statewide.netChangeSincePreviousSnapshot >= 0 ? "+" : ""}
+                  {statewide.netChangeSincePreviousSnapshot.toLocaleString()}) on{" "}
+                  <strong>{statewide.snapshot.fileAsOfDate.toLocaleDateString()}</strong>
+                  {statewide.totalRegisteredCount > 0 ? (
+                    <>
+                      . Registered voters in file (sum of counties):{" "}
+                      <strong>{statewide.totalRegisteredCount.toLocaleString()}</strong>.
+                    </>
+                  ) : null}
+                </p>
+              ) : null}
+            </>
           ) : (
             <p className="mt-2 text-sm text-amber-900/80">
               A completed voter file snapshot is not in the database yet—county numbers will show “pending” until the first

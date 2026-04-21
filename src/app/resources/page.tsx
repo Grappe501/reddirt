@@ -14,6 +14,7 @@ import { media } from "@/content/media/registry";
 import { allExplainers } from "@/content/explainers";
 import { pageMeta } from "@/lib/seo/metadata";
 import { getPageBlockPayload, type HeroBlockPayload } from "@/lib/content/page-blocks";
+import { CampaignBriefingLibrary } from "@/components/campaign/CampaignBriefingLibrary";
 
 export const metadata: Metadata = pageMeta({
   title: "Resources",
@@ -96,6 +97,12 @@ export default async function ResourcesPage() {
         attribution="Design standard"
         variant="gold-band"
       />
+
+      <FullBleedSection padY className="bg-washed-canvas/80" aria-labelledby="briefing-records">
+        <ContentContainer>
+          <CampaignBriefingLibrary />
+        </ContentContainer>
+      </FullBleedSection>
 
       <FullBleedSection variant="subtle" padY aria-labelledby="pillars-heading">
         <ContentContainer>

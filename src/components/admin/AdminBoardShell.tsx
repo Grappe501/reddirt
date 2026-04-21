@@ -12,9 +12,18 @@ const siteLinks: { href: string; label: string }[] = [
   { href: "/admin/explainers", label: "Explainers" },
   { href: "/admin/media", label: "Media" },
   { href: "/admin/owned-media", label: "Owned media" },
+  { href: "/admin/owned-media/batches", label: "Media ingest batches" },
   { href: "/admin/counties", label: "Counties" },
   { href: "/admin/blog", label: "Blog sync" },
   { href: "/admin/settings", label: "Settings" },
+];
+
+const operationsLinks: { href: string; label: string }[] = [
+  { href: "/admin/workbench", label: "Campaign workbench" },
+  { href: "/admin/events", label: "Events" },
+  { href: "/admin/tasks", label: "Tasks" },
+  { href: "/admin/asks", label: "Volunteer asks" },
+  { href: "/admin/volunteers/intake", label: "Volunteer sheet intake" },
 ];
 
 const orchestratorLinks: { href: string; label: string }[] = [
@@ -28,6 +37,7 @@ const orchestratorLinks: { href: string; label: string }[] = [
   { href: "/admin/settings/platforms", label: "Platform settings" },
   { href: "/admin/media-library", label: "Media library" },
   { href: "/admin/insights", label: "Insights" },
+  { href: "/admin/voter-import", label: "Voter file" },
 ];
 
 export function AdminBoardShell({ children }: { children: ReactNode }) {
@@ -44,6 +54,22 @@ export function AdminBoardShell({ children }: { children: ReactNode }) {
           </p>
         </div>
         <nav className="flex flex-1 flex-col gap-4 overflow-y-auto px-3 py-4" aria-label="Admin">
+          <div>
+            <p className="px-3 pb-1 font-body text-[10px] font-bold uppercase tracking-[0.22em] text-cream-canvas/45">
+              Campaign operations
+            </p>
+            <div className="flex flex-col gap-0.5">
+              {operationsLinks.map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="rounded-md px-3 py-2.5 font-body text-sm font-medium text-cream-canvas/90 transition hover:bg-cream-canvas/10 hover:text-cream-canvas"
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </div>
+          </div>
           <div>
             <p className="px-3 pb-1 font-body text-[10px] font-bold uppercase tracking-[0.22em] text-cream-canvas/45">
               Site content

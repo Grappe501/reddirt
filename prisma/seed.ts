@@ -3,12 +3,15 @@
  * Safe to run multiple times (idempotent upserts).
  */
 import {
+  CampaignTaskPriority,
+  CampaignTaskType,
   ContentPlatform,
   CountyContentReviewStatus,
   PlatformConnectionStatus,
   PrismaClient,
   PublicDemographicsSource,
   VoterFileIngestStatus,
+  WorkflowTemplateTrigger,
 } from "@prisma/client";
 import { getCampaignRegistrationBaselineUtc } from "../src/config/campaign-registration-baseline";
 
@@ -235,7 +238,128 @@ async function main() {
     });
   }
 
-  console.log("Seed complete: siteSettings, homepageConfig, platformConnection, County + voter file demo rows.");
+  // --- Operations: workflow templates (idempotent) ---
+  const appearance = await prisma.workflowTemplate.upsert({
+    where: { key: "candidate_appearance" },
+    create: {
+      key: "candidate_appearance",
+      title: "Candidate appearance / rally prep",
+      description: "Comms, field, and volunteer follow-through when a field event is scheduled.",
+      triggerType: WorkflowTemplateTrigger.EVENT_CREATED,
+      isActive: true,
+      configJson: { eventTypes: ["APPEARANCE", "RALLY", "PRESS", "FUNDRAISER", "ORIENTATION"] },
+    },
+    update: {
+      title: "Candidate appearance / rally prep",
+      configJson: { eventTypes: ["APPEARANCE", "RALLY", "PRESS", "FUNDRAISER", "ORIENTATION"] },
+    },
+  });
+  await prisma.workflowTemplateTask.deleteMany({ where: { workflowTemplateId: appearance.id } });
+  await prisma.workflowTemplateTask.createMany({
+    data: [
+      {
+        workflowTemplateId: appearance.id,
+        taskKey: "comms_prep",
+        titleTemplate: "Comms prep: talking points for {{event.title}}",
+        descriptionTemplate: "Draft/confirm 3 bullets + photo plan before {{event.startAt}}.",
+        offsetMinutes: -10080,
+        roleTarget: "COMMS_DIRECTOR",
+        taskType: CampaignTaskType.COMMS,
+        priority: CampaignTaskPriority.HIGH,
+        required: true,
+      },
+      {
+        workflowTemplateId: appearance.id,
+        taskKey: "field_signage",
+        titleTemplate: "Field kit & signage: {{event.title}} @ {{event.locationName}}",
+        descriptionTemplate: "Confirm wayfinding + backup printed materials for {{event.title}}.",
+        offsetMinutes: -2880,
+        roleTarget: "FIELD_DIRECTOR",
+        taskType: CampaignTaskType.FIELD,
+        priority: CampaignTaskPriority.MEDIUM,
+        required: true,
+      },
+      {
+        workflowTemplateId: appearance.id,
+        taskKey: "rsvp_ask",
+        titleTemplate: "Release RSVP / volunteer ask for {{event.title}}",
+        descriptionTemplate: "Coordinate volunteer and supporter RSVP asks tied to the event.",
+        offsetMinutes: -1440,
+        roleTarget: "VOLUNTEER_COORDINATOR",
+        taskType: CampaignTaskType.VOLUNTEER,
+        priority: CampaignTaskPriority.MEDIUM,
+        required: false,
+      },
+      {
+        workflowTemplateId: appearance.id,
+        taskKey: "day_of_capture",
+        titleTemplate: "Day-of media capture: {{event.title}}",
+        descriptionTemplate: "Assign photographer + social clips at {{event.locationName}}.",
+        offsetMinutes: -120,
+        roleTarget: "COMMS_DIRECTOR",
+        taskType: CampaignTaskType.MEDIA,
+        priority: CampaignTaskPriority.HIGH,
+        required: true,
+      },
+    ],
+  });
+
+  const signupT = await prisma.workflowTemplate.upsert({
+    where: { key: "event_signup" },
+    create: {
+      key: "event_signup",
+      title: "Event signup follow-up",
+      description: "Reminders and host tasks when someone registers for an event.",
+      triggerType: WorkflowTemplateTrigger.EVENT_SIGNUP_CREATED,
+      isActive: true,
+      configJson: {},
+    },
+    update: { title: "Event signup follow-up" },
+  });
+  await prisma.workflowTemplateTask.deleteMany({ where: { workflowTemplateId: signupT.id } });
+  await prisma.workflowTemplateTask.createMany({
+    data: [
+      {
+        workflowTemplateId: signupT.id,
+        taskKey: "confirm",
+        titleTemplate: "Send confirmation: {{event.title}} registration",
+        descriptionTemplate: "Send confirmation and calendar hold for this signup (due shortly after registration).",
+        offsetMinutes: 5,
+        roleTarget: "EVENT_LEAD",
+        taskType: CampaignTaskType.FOLLOW_UP,
+        priority: CampaignTaskPriority.MEDIUM,
+        required: true,
+      },
+      {
+        workflowTemplateId: signupT.id,
+        taskKey: "remind",
+        titleTemplate: "24h check-in: {{event.title}}",
+        descriptionTemplate: "Text/email the registrant; event is at {{event.startAt}} at {{event.locationName}}.",
+        offsetMinutes: 1500,
+        roleTarget: "VOLUNTEER_COORDINATOR",
+        taskType: CampaignTaskType.FOLLOW_UP,
+        priority: CampaignTaskPriority.LOW,
+        required: true,
+      },
+    ],
+  });
+
+  await prisma.workflowTemplate.upsert({
+    where: { key: "media_mention" },
+    create: {
+      key: "media_mention",
+      title: "Media mention response",
+      description: "Clip, amplify, and assign county follow-up (trigger when inbound item is marked reviewed).",
+      triggerType: WorkflowTemplateTrigger.MENTION_REVIEWED,
+      isActive: true,
+      configJson: {},
+    },
+    update: { title: "Media mention response" },
+  });
+
+  console.log(
+    "Seed complete: siteSettings, homepageConfig, platformConnection, County + voter file demo rows + workflow templates."
+  );
 }
 
 main()

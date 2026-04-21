@@ -7,7 +7,11 @@ import {
   OwnedMediaStorageBackend,
   TranscriptionJobStatus,
 } from "@prisma/client";
-import { uploadOwnedMediaAction } from "@/app/admin/owned-media-actions";
+import {
+  bulkUpdateOwnedMediaByIdsAction,
+  bulkUpdateOwnedMediaByIngestBatchAction,
+  uploadOwnedMediaAction,
+} from "@/app/admin/owned-media-actions";
 import { prisma } from "@/lib/db";
 import { getOwnedFilePublicPath } from "@/lib/owned-media/storage";
 
@@ -32,12 +36,15 @@ export default async function AdminOwnedMediaPage({ searchParams }: Props) {
       : null;
   const countyFilter = sp.county?.trim() || null;
 
-  const all = await prisma.ownedMediaAsset
-    .findMany({
-      orderBy: { updatedAt: "desc" },
-      include: { _count: { select: { transcripts: true, quoteCandidates: true } } },
-    })
-    .catch(() => []);
+  const [all, batches] = await Promise.all([
+    prisma.ownedMediaAsset
+      .findMany({
+        orderBy: { updatedAt: "desc" },
+        include: { _count: { select: { transcripts: true, quoteCandidates: true } } },
+      })
+      .catch(() => []),
+    prisma.mediaIngestBatch.findMany({ orderBy: { createdAt: "desc" }, take: 30 }).catch(() => []),
+  ]);
 
   const assets = all.filter((a) => {
     if (kindFilter && a.kind !== kindFilter) return false;
@@ -52,7 +59,11 @@ export default async function AdminOwnedMediaPage({ searchParams }: Props) {
       <p className="mt-3 max-w-2xl font-body text-sm text-deep-soil/75">
         Uploads are stored on disk (see <code className="rounded bg-deep-soil/5 px-1">data/owned-campaign-media</code> by
         default) with metadata in Postgres. This is the memory layer for photos, A/V, speeches, and transcripts — not
-        the URL-first <Link href="/admin/media">media register</Link>.
+        the URL-first <Link href="/admin/media">media register</Link>.{" "}
+        <Link href="/admin/owned-media/batches" className="text-washed-denim underline">
+          Ingest batch history
+        </Link>{" "}
+        (folder and device runs).
       </p>
 
       {sp.error === "upload" ? (
@@ -165,6 +176,72 @@ export default async function AdminOwnedMediaPage({ searchParams }: Props) {
           Upload and save
         </button>
       </form>
+
+      <div className="mt-10 grid gap-6 rounded-card border border-deep-soil/10 bg-cream-canvas p-6 md:grid-cols-2">
+        <form action={bulkUpdateOwnedMediaByIngestBatchAction} className="space-y-3 text-sm">
+          <h2 className="font-heading text-base font-bold text-deep-soil">Bulk: by ingest batch</h2>
+          <p className="text-xs text-deep-soil/60">
+            Updates every asset that shares a folder / device `MediaIngestBatch` (from `npm run ingest:folder`). Finance rows
+            should stay private until reviewed.
+          </p>
+          <label className="block">
+            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Batch</span>
+            <select name="mediaIngestBatchId" required className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm">
+              <option value="">— choose batch —</option>
+              {batches.map((b) => (
+                <option key={b.id} value={b.id}>
+                  {b.sourceLabel} · {b.startedAt.toLocaleString()} · {b.importedCount} new
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="block">
+            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Review status</span>
+            <select name="reviewStatus" className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm" defaultValue="APPROVED">
+              {Object.values(OwnedMediaReviewStatus).map((s) => (
+                <option key={s} value={s}>
+                  {s}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="flex items-center gap-2 text-sm">
+            <input type="checkbox" name="isPublic" value="true" className="rounded border-deep-soil/25" />
+            Public on site (record room / downloads)
+          </label>
+          <button type="submit" className="rounded-btn border border-deep-soil/20 bg-white px-4 py-2 text-sm font-semibold text-deep-soil">
+            Apply to whole batch
+          </button>
+        </form>
+        <form action={bulkUpdateOwnedMediaByIdsAction} className="space-y-3 text-sm">
+          <h2 className="font-heading text-base font-bold text-deep-soil">Bulk: by asset IDs</h2>
+          <p className="text-xs text-deep-soil/60">One ID per line or comma-separated (from the list below).</p>
+          <textarea
+            name="ids"
+            rows={5}
+            required
+            placeholder="cuid…"
+            className="w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 font-mono text-xs"
+          />
+          <label className="block">
+            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Review status</span>
+            <select name="reviewStatus" className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm" defaultValue="APPROVED">
+              {Object.values(OwnedMediaReviewStatus).map((s) => (
+                <option key={s} value={s}>
+                  {s}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="flex items-center gap-2 text-sm">
+            <input type="checkbox" name="isPublic" value="true" className="rounded border-deep-soil/25" />
+            Public on site
+          </label>
+          <button type="submit" className="rounded-btn border border-deep-soil/20 bg-white px-4 py-2 text-sm font-semibold text-deep-soil">
+            Apply to listed IDs
+          </button>
+        </form>
+      </div>
 
       <div className="mt-10 flex flex-wrap items-center gap-2 text-xs">
         <span className="font-semibold text-deep-soil/55">Filters</span>

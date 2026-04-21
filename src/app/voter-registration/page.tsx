@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { VoterRegistrationCenter } from "@/components/voter/VoterRegistrationCenter";
 import { listPublishedCounties } from "@/lib/county/get-county-command-data";
-import { getLatestVoterFileSnapshot } from "@/lib/voter-file/queries";
+import { getLatestVoterFileSnapshot, getStatewideVoterRollupFromLatestSnapshot } from "@/lib/voter-file/queries";
 import { prisma } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
@@ -18,9 +18,10 @@ export default async function VoterRegistrationPage({ searchParams }: Props) {
   const { county: countyParam } = await searchParams;
   const slug = countyParam?.trim();
 
-  const [rows, latestSnapshot, focusCounty] = await Promise.all([
+  const [rows, latestSnapshot, statewide, focusCounty] = await Promise.all([
     listPublishedCounties(),
     getLatestVoterFileSnapshot(),
+    getStatewideVoterRollupFromLatestSnapshot(),
     slug
       ? prisma.county.findFirst({
           where: { slug, published: true },
@@ -30,6 +31,11 @@ export default async function VoterRegistrationPage({ searchParams }: Props) {
   ]);
 
   return (
-    <VoterRegistrationCenter counties={rows} focusCounty={focusCounty} latestSnapshot={latestSnapshot} />
+    <VoterRegistrationCenter
+      counties={rows}
+      focusCounty={focusCounty}
+      latestSnapshot={latestSnapshot}
+      statewide={statewide}
+    />
   );
 }

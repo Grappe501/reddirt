@@ -1,24 +1,8 @@
 /**
- * Voter file warehouse — **orchestration skeleton** for SOS imports. Replace throws with
- * streaming parsers, batch upserts, and background workers in production.
- *
- * ## Ingest flow (intended)
- * 1. `createSnapshot` — `VoterFileSnapshot` (RECEIVED) + `fileReceivedAt`, `fileAsOfDate`, `sourceFileHash`, `previousSnapshotId` = last COMPLETE
- * 2. `ingestRawRows` — stream file, normalize columns; optional staging table
- * 3. `diffAgainstPrevious` — set of keys in prev vs new
- * 4. `writeVoterSnapshotChanges` — one `VoterSnapshotChange` per NEW / UPDATED / REMOVED / REACTIVATED
- * 5. `upsertVoterRecords` — update `VoterRecord` + `countySlug` from `County` lookup
- * 6. `recomputeCountyVoterMetrics` — for each county: totals, new since `getCampaignRegistrationBaselineUtc()`, deltas vs previous snapshot, goals, `progressPercent`
- * 7. `finalizeSnapshot` — status COMPLETE; optional mirror into `CountyCampaignStats`
- * 8. `runCampaignAssist` — *never* in this path for truth; no OpenAI in counting
- *
- * ## What’s deferred
- * - File parsers for actual SOS layout
- * - Batched Prisma $transaction for millions of rows
- * - S3 / blob storage of raw files
- * - `VoterRecord` backfill for historical snapshots
+ * Voter file warehouse — `createSnapshotRecord` is used by `runVoterFileImportFromBuffer` (CLI
+ * and server paths). `finalizeSnapshotOrFail` is a convenience for scripts that use this module only.
  */
-import { VoterFileIngestStatus, VoterSnapshotChangeType, type Prisma } from "@prisma/client";
+import { VoterFileIngestStatus } from "@prisma/client";
 import { getCampaignRegistrationBaselineUtc } from "@/config/campaign-registration-baseline";
 import { prisma } from "@/lib/db";
 import { markVoterFileSnapshotStatus } from "./ingest-voter-snapshot";
@@ -53,28 +37,7 @@ export async function createSnapshotRecord(input: {
   return row.id;
 }
 
-/**
- * Recompute a single county’s `CountyVoterMetrics` for a completed diff — call after
- * `VoterSnapshotChange` rows exist or from aggregate SQL.
- */
-export async function recomputeCountyMetricsStub(_args: {
-  countyId: string;
-  countySlug: string;
-  voterFileSnapshotId: string;
-}): Promise<never> {
-  throw new Error("recomputeCountyMetricsStub — implement with aggregates + County.registration goal.");
-}
-
-export async function recordChangeStub(_row: {
-  snapshotId: string;
-  changeType: VoterSnapshotChangeType;
-  voterFileKey: string;
-  countyId: string;
-  countySlug: string;
-  summaryJson?: Prisma.InputJsonValue;
-}): Promise<never> {
-  throw new Error("recordChangeStub — implement batch insert of VoterSnapshotChange.");
-}
+export { recomputeAllCountyVoterMetricsForSnapshot } from "./recompute-county-voter-metrics";
 
 export async function finalizeSnapshotOrFail(snapshotId: string, err?: Error) {
   if (err) {

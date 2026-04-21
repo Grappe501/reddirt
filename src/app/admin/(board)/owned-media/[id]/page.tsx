@@ -1,19 +1,23 @@
 import Link from "next/link";
 import {
+  GeoMetadataSource,
   OwnedMediaKind,
+  OwnedMediaNoteType,
   OwnedMediaReviewStatus,
   OwnedMediaRole,
   OwnedMediaSourceType,
   OwnedMediaStorageBackend,
-  GeoMetadataSource,
   QuoteCandidateType,
   QuoteReviewStatus,
   TranscriptReviewStatus,
   TranscriptSource,
 } from "@prisma/client";
 import {
+  addOwnedMediaAnnotationAction,
   addQuoteCandidateAction,
   addTranscriptAction,
+  deleteOwnedMediaAnnotationAction,
+  quickReviewOwnedMediaAction,
   requestTranscriptionAction,
   updateOwnedMediaAction,
   updateQuoteReviewAction,
@@ -29,14 +33,51 @@ function dateInputValue(d: Date | null | undefined): string {
   return d.toISOString().slice(0, 10);
 }
 
+function datetimeLocalValue(d: Date | null | undefined): string {
+  if (!d) return "";
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
+
 export default async function AdminOwnedMediaDetailPage({ params, searchParams }: Props) {
   const { id } = await params;
   const sp = await searchParams;
 
-  const asset = await prisma.ownedMediaAsset.findUnique({
-    where: { id },
-    include: { transcripts: { orderBy: { createdAt: "desc" } }, quoteCandidates: { orderBy: { createdAt: "desc" } } },
-  });
+  const [asset, events, siblingIds] = await Promise.all([
+    prisma.ownedMediaAsset.findUnique({
+      where: { id },
+      include: {
+        transcripts: { orderBy: { createdAt: "desc" } },
+        quoteCandidates: { orderBy: { createdAt: "desc" } },
+        annotations: { orderBy: { createdAt: "asc" } },
+        linkedCampaignEvent: { select: { id: true, title: true, startAt: true, slug: true } },
+        mediaIngestBatch: { select: { id: true, sourceLabel: true, sourceType: true } },
+      },
+    }),
+    prisma.campaignEvent.findMany({
+      orderBy: { startAt: "desc" },
+      take: 200,
+      select: { id: true, title: true, startAt: true, slug: true },
+    }),
+    (async () => {
+      const row = await prisma.ownedMediaAsset.findUnique({
+        where: { id },
+        select: { mediaIngestBatchId: true },
+      });
+      if (!row?.mediaIngestBatchId) return { prev: null as string | null, next: null as string | null, batchId: null as string | null };
+      const sibs = await prisma.ownedMediaAsset.findMany({
+        where: { mediaIngestBatchId: row.mediaIngestBatchId },
+        orderBy: { createdAt: "asc" },
+        select: { id: true },
+      });
+      const i = sibs.findIndex((s) => s.id === id);
+      return {
+        batchId: row.mediaIngestBatchId,
+        prev: i > 0 ? sibs[i - 1]!.id : null,
+        next: i >= 0 && i < sibs.length - 1 ? sibs[i + 1]!.id : null,
+      };
+    })(),
+  ]);
   if (!asset) {
     return (
       <div>
@@ -52,15 +93,36 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
     asset.publicUrl ||
     (asset.storageBackend === OwnedMediaStorageBackend.LOCAL_DISK ? getOwnedFilePublicPath(asset.id) : "#");
 
+  const returnBatch = sp.batch ?? sp.returnBatch;
+  const batchIdForNav = returnBatch ?? siblingIds.batchId ?? undefined;
+  const meta = asset.metadataJson as { deviceIngestMirror?: string } | null;
+
   return (
-    <div className="mx-auto max-w-3xl space-y-10">
+    <div className="mx-auto max-w-4xl space-y-10">
       <div>
-        <Link href="/admin/owned-media" className="text-sm text-washed-denim hover:underline">
-          ← Campaign-owned media
-        </Link>
+        <div className="flex flex-wrap gap-3 text-sm">
+          <Link href="/admin/owned-media" className="text-washed-denim hover:underline">
+            ← Campaign-owned media
+          </Link>
+          {batchIdForNav ? (
+            <Link
+              href={`/admin/owned-media/batches/${batchIdForNav}`}
+              className="text-washed-denim hover:underline"
+            >
+              ← Ingest batch
+            </Link>
+          ) : asset.mediaIngestBatch ? (
+            <Link
+              href={`/admin/owned-media/batches/${asset.mediaIngestBatch.id}`}
+              className="text-washed-denim hover:underline"
+            >
+              Open batch
+            </Link>
+          ) : null}
+        </div>
         <h1 className="mt-2 font-heading text-2xl font-bold text-deep-soil">{asset.title}</h1>
         <p className="mt-1 font-mono text-[11px] text-deep-soil/50">{asset.id}</p>
-        {sp.uploaded || sp.saved || sp.transcript || sp.quote ? (
+        {sp.uploaded || sp.saved || sp.transcript || sp.quote || sp.note || sp.reviewed ? (
           <p className="mt-2 rounded-md border border-emerald-600/20 bg-emerald-50/80 px-3 py-2 text-sm text-emerald-900">Saved.</p>
         ) : null}
         {sp.error ? (
@@ -76,6 +138,47 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
             A machine transcript row was created (pending review).
           </p>
         ) : null}
+        {siblingIds.batchId && (siblingIds.prev || siblingIds.next) ? (
+          <div className="mt-3 flex flex-wrap gap-2 text-sm">
+            {siblingIds.prev ? (
+              <Link
+                href={`/admin/owned-media/${siblingIds.prev}?batch=${encodeURIComponent(siblingIds.batchId)}`}
+                className="rounded-md border border-deep-soil/20 bg-white px-3 py-1.5 font-medium text-deep-soil"
+              >
+                ← Previous in batch
+              </Link>
+            ) : null}
+            {siblingIds.next ? (
+              <Link
+                href={`/admin/owned-media/${siblingIds.next}?batch=${encodeURIComponent(siblingIds.batchId)}`}
+                className="rounded-md border border-deep-soil/20 bg-white px-3 py-1.5 font-medium text-deep-soil"
+              >
+                Next in batch →
+              </Link>
+            ) : null}
+          </div>
+        ) : null}
+        <div className="mt-3 flex flex-wrap gap-2">
+          <form action={quickReviewOwnedMediaAction} className="flex flex-wrap gap-2">
+            <input type="hidden" name="id" value={asset.id} />
+            {siblingIds.batchId ? <input type="hidden" name="returnBatchId" value={siblingIds.batchId} /> : null}
+            {siblingIds.next ? <input type="hidden" name="nextId" value={siblingIds.next} /> : null}
+            <input type="hidden" name="reviewStatus" value="APPROVED" />
+            <input type="hidden" name="isPublic" value="on" />
+            <button type="submit" className="rounded-md bg-emerald-800 px-3 py-1.5 text-xs font-bold text-cream-canvas">
+              Approve + public
+            </button>
+          </form>
+          <form action={quickReviewOwnedMediaAction} className="flex flex-wrap gap-2">
+            <input type="hidden" name="id" value={asset.id} />
+            {siblingIds.batchId ? <input type="hidden" name="returnBatchId" value={siblingIds.batchId} /> : null}
+            {siblingIds.next ? <input type="hidden" name="nextId" value={siblingIds.next} /> : null}
+            <input type="hidden" name="reviewStatus" value="PENDING_REVIEW" />
+            <button type="submit" className="rounded-md border border-deep-soil/25 bg-white px-3 py-1.5 text-xs font-semibold text-deep-soil">
+              Keep private
+            </button>
+          </form>
+        </div>
         <a
           href={fileUrl}
           target="_blank"
@@ -101,6 +204,9 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
           ) : null}
           {asset.localIngestRelativePath ? (
             <p className="mt-1 text-xs">Folder ingest path: {asset.localIngestRelativePath}</p>
+          ) : null}
+          {meta?.deviceIngestMirror ? (
+            <p className="mt-1 break-all text-xs">Device mirror: {meta.deviceIngestMirror}</p>
           ) : null}
           {asset.ingestContentSha256 ? (
             <p className="mt-0.5 font-mono text-[10px]">sha256: {asset.ingestContentSha256}</p>
@@ -146,6 +252,36 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
           <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Description</span>
           <textarea name="description" rows={3} defaultValue={asset.description ?? ""} className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm" />
         </label>
+        <label className="block text-sm">
+          <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Operator notes (internal)</span>
+          <textarea name="operatorNotes" rows={2} defaultValue={asset.operatorNotes ?? ""} className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm" />
+        </label>
+        <label className="block text-sm">
+          <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Caption draft</span>
+          <textarea name="captionDraft" rows={2} defaultValue={asset.captionDraft ?? ""} className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm" />
+        </label>
+        <div className="grid gap-4 md:grid-cols-2">
+          <label className="block text-sm">
+            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Shoot date override</span>
+            <input
+              name="shootDateOverride"
+              type="datetime-local"
+              defaultValue={datetimeLocalValue(asset.shootDateOverride)}
+              className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm"
+            />
+          </label>
+          <label className="block text-sm">
+            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Linked campaign event</span>
+            <select name="linkedCampaignEventId" className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm" defaultValue={asset.linkedCampaignEventId ?? ""}>
+              <option value="">— None —</option>
+              {events.map((e) => (
+                <option key={e.id} value={e.id}>
+                  {e.startAt.toLocaleDateString()} — {e.title}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
             <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Kind</span>
@@ -329,6 +465,59 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
           Save metadata
         </button>
       </form>
+
+      <section className="rounded-card border border-deep-soil/10 bg-cream-canvas p-6 shadow-[var(--shadow-soft)]">
+        <h2 className="font-heading text-lg font-bold text-deep-soil">Field notes and recall</h2>
+        <p className="mt-1 text-sm text-deep-soil/70">
+          Structured context for search and storytelling (separate from the public description). Searchable notes can feed assistant recall later.
+        </p>
+        <ul className="mt-4 space-y-4">
+          {asset.annotations.map((a) => (
+            <li key={a.id} className="border-t border-deep-soil/10 pt-3 first:border-0 first:pt-0">
+              <p className="font-mono text-[10px] text-deep-soil/45">
+                {a.noteType} · {a.isSearchable ? "searchable" : "hidden from search"}{" "}
+                · {a.createdAt.toLocaleString()}
+              </p>
+              <p className="mt-1 whitespace-pre-wrap text-sm text-deep-soil/90">{a.noteText}</p>
+              <form action={deleteOwnedMediaAnnotationAction} className="mt-2">
+                <input type="hidden" name="annotationId" value={a.id} />
+                <input type="hidden" name="ownedMediaId" value={asset.id} />
+                {batchIdForNav ? <input type="hidden" name="returnBatchId" value={batchIdForNav} /> : null}
+                <button type="submit" className="text-xs text-red-800 underline">
+                  Delete
+                </button>
+              </form>
+            </li>
+          ))}
+        </ul>
+        <form action={addOwnedMediaAnnotationAction} className="mt-4 space-y-2 border-t border-deep-soil/10 pt-4">
+          <input type="hidden" name="ownedMediaId" value={asset.id} />
+          {batchIdForNav ? <input type="hidden" name="returnBatchId" value={batchIdForNav} /> : null}
+          <div className="grid gap-2 md:grid-cols-2">
+            <label className="block text-sm">
+              <span className="text-xs text-deep-soil/55">Type</span>
+              <select name="noteType" className="mt-1 w-full rounded border border-deep-soil/15 bg-white px-2 py-1 text-sm">
+                {Object.values(OwnedMediaNoteType).map((k) => (
+                  <option key={k} value={k}>
+                    {k}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="mt-6 flex items-center gap-2 text-sm">
+              <input type="checkbox" name="isSearchable" defaultChecked className="h-4 w-4" />
+              <span>Searchable (for recall / assistant context)</span>
+            </label>
+          </div>
+          <label className="block text-sm">
+            <span className="text-xs text-deep-soil/55">Note</span>
+            <textarea name="noteText" required rows={3} className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm" />
+          </label>
+          <button type="submit" className="rounded-btn bg-red-dirt px-4 py-2 text-sm font-bold text-cream-canvas">
+            Add note
+          </button>
+        </form>
+      </section>
 
       <section className="rounded-card border border-deep-soil/10 bg-cream-canvas p-6 shadow-[var(--shadow-soft)]">
         <h2 className="font-heading text-lg font-bold text-deep-soil">Transcription pipeline</h2>

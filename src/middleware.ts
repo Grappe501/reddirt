@@ -2,20 +2,29 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
 /**
- * Lightweight guard: admin routes are never “wide open” in production without ADMIN_SECRET.
- * Full session checks happen in the `(board)` layout; this only blocks missing configuration early.
+ * 1) Pass `x-pathname` to the root layout (PublicLayoutMain) for the sitewide “road” band.
+ * 2) Block misconfigured admin (no ADMIN_SECRET) except /admin/login.
  */
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  if (!pathname.startsWith("/admin") || pathname.startsWith("/admin/login")) {
-    return NextResponse.next();
+
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-pathname", pathname);
+
+  if (pathname.startsWith("/admin") && !pathname.startsWith("/admin/login")) {
+    if (!process.env.ADMIN_SECRET?.trim()) {
+      return NextResponse.redirect(new URL("/admin/login?error=config", request.url));
+    }
   }
-  if (!process.env.ADMIN_SECRET?.trim()) {
-    return NextResponse.redirect(new URL("/admin/login?error=config", request.url));
-  }
-  return NextResponse.next();
+
+  return NextResponse.next({ request: { headers: requestHeaders } });
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: [
+    /*
+     * Match all pathnames except static assets and Next internals.
+     */
+    "/((?!_next/static|_next/image|favicon\\.ico|.*\\.(?:ico|png|jpg|jpeg|gif|svg|webp|avif|woff2?|ttf|eot)).*)",
+  ],
 };
