@@ -1,0 +1,859 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  phone     String?
+  zip       String?
+  county    String?
+  interests String[] @default([])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  volunteerProfile VolunteerProfile?
+  commitments      Commitment[]
+  submissions      Submission[]
+}
+
+model VolunteerProfile {
+  id                 String  @id @default(cuid())
+  userId             String  @unique
+  user               User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  availability       String?
+  skills             String?
+  leadershipInterest Boolean @default(false)
+}
+
+model Commitment {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      String
+  metadata  Json?
+  createdAt DateTime @default(now())
+}
+
+model Submission {
+  id             String   @id @default(cuid())
+  userId         String?
+  user           User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  type           String
+  content        String   @db.Text
+  structuredData Json?
+  createdAt      DateTime @default(now())
+}
+
+model SearchChunk {
+  id         String   @id @default(cuid())
+  path       String
+  title      String?
+  chunkIndex Int
+  content    String   @db.Text
+  embedding  String   @db.Text
+  createdAt  DateTime @default(now())
+
+  @@unique([path, chunkIndex])
+}
+
+model AnalyticsEvent {
+  id        String   @id @default(cuid())
+  name      String
+  payload   Json?
+  path      String?
+  sessionId String?
+  createdAt DateTime @default(now())
+}
+
+// --- Website admin content board (Script 6) — public site CMS only ---
+
+enum MediaKind {
+  IMAGE
+  VIDEO_EMBED
+}
+
+enum ContentCollection {
+  STORY
+  EDITORIAL
+  EXPLAINER
+}
+
+enum BlogDisplayMode {
+  SUMMARY_LINK
+  EXCERPT_LINK
+  INTERNAL_MIRROR_TODO
+}
+
+// --- Script 6.5 orchestrator enums (referenced by MediaAsset + inbound models) ---
+
+enum ContentPlatform {
+  SUBSTACK
+  FACEBOOK
+  INSTAGRAM
+  YOUTUBE
+}
+
+enum PlatformConnectionStatus {
+  INACTIVE
+  CONFIGURED
+  SYNCING
+  ERROR
+  OK
+}
+
+enum InboundSourceType {
+  ARTICLE
+  POST
+  NOTE
+  VIDEO
+  REEL
+  SHORT
+  COMMENT
+  PODCAST_EPISODE
+  LIVE
+  OTHER
+}
+
+enum InboundReviewStatus {
+  PENDING
+  REVIEWED
+  FEATURED
+  SUPPRESSED
+  ARCHIVED
+}
+
+enum ContentRoutingDestination {
+  NONE
+  HOMEPAGE_RAIL
+  PUBLIC_UPDATES
+  BLOG
+  STORIES_SEED
+  EDITORIAL_SEED
+  MEDIA_LIBRARY
+  CAMPAIGN_BRIEF
+}
+
+enum ContentDecisionStatus {
+  NEW
+  REVIEWED
+  FEATURED
+  SUPPRESSED
+  ARCHIVED
+  ROUTED
+}
+
+/// Editorial / hub routing kind (Phase 1 content hub). Distinct from `InboundSourceType` (connector shape).
+enum ContentHubKind {
+  VIDEO
+  STORY
+  SPEECH
+  ROAD_UPDATE
+  EXPLAINER
+  INTERVIEW
+}
+
+model MediaAsset {
+  id         String    @id @default(cuid())
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  url        String
+  kind       MediaKind @default(IMAGE)
+  width      Int?
+  height     Int?
+  alt        String?
+  caption    String?
+  tags       String[]  @default([])
+  usageNotes String?   @db.Text
+  /// Optional lineage for connector-ingested media references (not necessarily uploaded here).
+  originPlatform   ContentPlatform?
+  originExternalId String?
+
+  syncedPostHeroes SyncedPost[]           @relation("SyncedPostHeroMedia")
+  contentOverrides ContentItemOverride[]   @relation("ContentOverrideHeroMedia")
+  inboundItems     InboundContentItem[]
+}
+
+/// Synced external blog posts (Substack via RSS). Not a second blog CMS — editorial control only.
+model SyncedPost {
+  id               String          @id @default(cuid())
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  lastSyncedAt     DateTime        @default(now())
+  source           String          @default("substack")
+  feedGuid         String?         @unique
+  slug             String          @unique
+  canonicalUrl     String
+  title            String
+  summary          String          @db.Text
+  author           String?
+  publishedAt      DateTime?
+  featuredImageUrl String?
+  tagsFromFeed     String[]        @default([])
+  localCategories  String[]        @default([])
+  localTags        String[]        @default([])
+  /// Issue / policy tags for hubs and future filters (editorial).
+  issueTags        String[]        @default([])
+  countySlug       String?
+  countyFips       String?
+  city             String?
+  campaignPhase    String?
+  contentSeries    String?
+  playlistId       String?
+  featuredWeight   Int?
+  contentKind      ContentHubKind?
+  /// Pin for homepage “From the Road” preview rail.
+  featuredRoadPreview Boolean      @default(false)
+  featured         Boolean         @default(false)
+  hidden           Boolean         @default(false)
+  teaserOverride   String?         @db.Text
+  heroMediaId      String?
+  heroMedia        MediaAsset?     @relation("SyncedPostHeroMedia", fields: [heroMediaId], references: [id], onDelete: SetNull)
+  displayMode      BlogDisplayMode @default(SUMMARY_LINK)
+  showOnHomepage   Boolean         @default(false)
+  showOnBlogLanding Boolean        @default(true)
+  rawItem          Json?
+  inboundItem      InboundContentItem?
+
+  @@index([publishedAt])
+  @@index([hidden, featured])
+  @@index([hidden, contentKind, publishedAt])
+}
+
+/// Page-scoped content blocks (hero, quote band, CTAs, etc.) — JSON payload by blockType.
+model AdminContentBlock {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  pageKey   String
+  blockKey  String
+  blockType String
+  payload   Json
+  label     String?
+
+  @@unique([pageKey, blockKey])
+  @@index([pageKey])
+}
+
+/// Singleton-style homepage composition + copy overrides (merged with `src/content/homepage.ts` defaults).
+model HomepageConfig {
+  id                     String   @id @default("default")
+  hero                   Json?
+  sectionOrder           Json?
+  heardItems             Json?
+  movementBeliefs        Json?
+  pathwayCards           Json?
+  splitDemocracy         Json?
+  splitLabor             Json?
+  arkansasBand           Json?
+  quoteBand              Json?
+  finalCta               Json?
+  featuredStorySlugs         String[] @default([])
+  featuredEditorialSlugs     String[] @default([])
+  featuredSyncedPostSlugs    String[] @default([])
+  featuredExplainerSlugs     String[] @default([])
+  /// Curated `InboundContentItem.id` for homepage featured YouTube module (optional).
+  featuredHomepageVideoInboundId String?
+  updatedAt                DateTime @updatedAt
+}
+
+/// Visibility / teaser / hero overrides for static story, editorial, explainer entries.
+model ContentItemOverride {
+  id             String            @id @default(cuid())
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+  collection     ContentCollection
+  slug           String
+  hidden         Boolean           @default(false)
+  featured       Boolean           @default(false)
+  teaserOverride String?           @db.Text
+  summaryOverride String?          @db.Text
+  heroMediaId    String?
+  heroMedia      MediaAsset?       @relation("ContentOverrideHeroMedia", fields: [heroMediaId], references: [id], onDelete: SetNull)
+
+  @@unique([collection, slug])
+}
+
+model SiteSettings {
+  id                    String    @id @default("default")
+  substackFeedUrl       String?   @db.Text
+  canonicalSiteUrlNote  String?   @db.Text
+  adminNotes            String?   @db.Text
+  lastSubstackSyncAt    DateTime?
+  lastSubstackSyncOk    Boolean?
+  lastSubstackSyncError String?   @db.Text
+  updatedAt             DateTime  @updatedAt
+}
+
+// --- Script 6.5 — Content orchestrator (intake / normalization / routing; not movement ops) ---
+
+/// One row per connected surface (Substack feed, FB Page, IG account, YT channel).
+model PlatformConnection {
+  id                 String                   @id @default(cuid())
+  createdAt          DateTime                 @default(now())
+  updatedAt          DateTime                 @updatedAt
+  platform           ContentPlatform          @unique
+  status             PlatformConnectionStatus @default(INACTIVE)
+  externalAccountId  String?
+  accountName        String?
+  syncEnabled        Boolean                  @default(false)
+  lastSyncedAt       DateTime?
+  lastSyncError      String?                  @db.Text
+  /// Non-secret hints: page id, channel id. Secrets stay in env (see docs).
+  metadata           Json?
+  metricSnapshots    PlatformMetricSnapshot[]
+
+  @@index([platform, status])
+}
+
+/// Normalized inbound item from any connector. Substack posts also remain in `SyncedPost`.
+model InboundContentItem {
+  id               String              @id @default(cuid())
+  createdAt        DateTime            @default(now())
+  updatedAt        DateTime            @updatedAt
+  sourcePlatform   ContentPlatform
+  sourceType       InboundSourceType   @default(ARTICLE)
+  externalId       String
+  authorName       String?
+  title            String?
+  body             String?             @db.Text
+  excerpt          String?             @db.Text
+  canonicalUrl     String?
+  publishedAt      DateTime?
+  mediaAssetId     String?
+  mediaAsset       MediaAsset?         @relation(fields: [mediaAssetId], references: [id], onDelete: SetNull)
+  tags             String[]            @default([])
+  issueTags        String[]            @default([])
+  countySlug       String?
+  countyFips       String?
+  city             String?
+  campaignPhase    String?
+  contentSeries    String?
+  playlistId       String?
+  featuredWeight   Int?
+  contentKind      ContentHubKind?
+  /// Quick hide from public hub pages without changing review workflow.
+  siteHidden       Boolean             @default(false)
+  metrics          Json?
+  rawPayload       Json?
+  syncTimestamp    DateTime            @default(now())
+  reviewStatus     InboundReviewStatus @default(PENDING)
+  /// Website distribution flags (human-approved; Substack /blog can still use `SyncedPost` independently).
+  visibleOnUpdatesPage     Boolean @default(false)
+  visibleOnHomepageRail    Boolean @default(false)
+  routeToBlog              Boolean @default(false)
+  storySeed                Boolean @default(false)
+  editorialSeed            Boolean @default(false)
+  /// Future outbound social — do not enable without audit (see docs).
+  publishCandidate         Boolean @default(false)
+  syncedPostId     String?             @unique
+  syncedPost       SyncedPost?         @relation(fields: [syncedPostId], references: [id], onDelete: SetNull)
+  decisions        ContentDecision[]
+
+  @@unique([sourcePlatform, externalId])
+  @@index([sourcePlatform, reviewStatus])
+  @@index([reviewStatus, visibleOnUpdatesPage])
+  @@index([publishedAt])
+  @@index([sourcePlatform, siteHidden, reviewStatus])
+}
+
+model ContentDecision {
+  id             String                   @id @default(cuid())
+  createdAt      DateTime                 @default(now())
+  inboundItemId  String
+  inboundItem    InboundContentItem       @relation(fields: [inboundItemId], references: [id], onDelete: Cascade)
+  status         ContentDecisionStatus
+  destination    ContentRoutingDestination @default(NONE)
+  notes          String?                  @db.Text
+  editor         String?
+}
+
+model PlatformMetricSnapshot {
+  id                   String             @id @default(cuid())
+  capturedAt           DateTime           @default(now())
+  platformConnectionId String
+  connection           PlatformConnection @relation(fields: [platformConnectionId], references: [id], onDelete: Cascade)
+  metrics              Json
+
+  @@index([platformConnectionId, capturedAt])
+}
+
+// --- Campaign-owned media (uploads / DAM memory — distinct from `MediaAsset` URL register) ---
+
+/// Image, video, audio, or document uploaded and stored in our storage layer.
+enum OwnedMediaKind {
+  IMAGE
+  VIDEO
+  AUDIO
+  DOCUMENT
+  OTHER
+}
+
+enum OwnedMediaRole {
+  SPEECH
+  ROAD_CLIP
+  PHOTO
+  EVENT
+  AD_CREATIVE
+  B_ROLL
+  GRAPHIC
+  INTERVIEW
+  OTHER
+}
+
+enum OwnedMediaSourceType {
+  DIRECT_UPLOAD
+  UPLOADED_CAMPAIGN
+  IMPORT
+  MIGRATED
+  SUPPORTER_UPLOAD
+  OTHER
+}
+
+/// Where the binary for this row lives. `SUPABASE` uses `storageKey` as the object key in the campaign bucket.
+enum OwnedMediaStorageBackend {
+  LOCAL_DISK
+  SUPABASE
+}
+
+/// How geographic fields were set. Advisory until `needsGeoReview` is cleared in admin.
+enum GeoMetadataSource {
+  NONE
+  EXIF
+  MANUAL
+  INFERRED
+  REVERSE_GEO
+}
+
+enum OwnedMediaReviewStatus {
+  DRAFT
+  PENDING_REVIEW
+  APPROVED
+  REJECTED
+  ARCHIVED
+}
+
+enum TranscriptionJobStatus {
+  NOT_REQUESTED
+  QUEUED
+  IN_PROGRESS
+  SUCCEEDED
+  FAILED
+}
+
+enum TranscriptSource {
+  HUMAN
+  ASR
+  ASR_DRAFT
+  IMPORT
+  OTHER
+}
+
+enum TranscriptReviewStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  NEEDS_EDIT
+}
+
+enum QuoteCandidateType {
+  SUGGESTED
+  EDITOR_PICK
+  SOCIAL_CROP
+  PRESS
+  OTHER
+}
+
+enum QuoteReviewStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+/// Canonical row for campaign-owned media (`OwnedMediaAsset` in app code; not renamed to `media_assets` in DB to avoid a breaking table rename).
+model OwnedMediaAsset {
+  id     String @id @default(cuid())
+  /// Storage object key. Local: `campaign-owned/...` · Supabase: `media/{year}/{month}/...` in the campaign bucket.
+  storageKey  String  @unique
+  storageBackend OwnedMediaStorageBackend @default(LOCAL_DISK)
+  /// Optional public URL (Supabase public bucket URL, signed URL cache, or CDN). Local rows often use API route when null.
+  publicUrl   String?
+  /// Optional small preview in the same or sibling bucket path.
+  thumbStorageKey  String?
+  thumbPublicUrl   String?
+  fileName    String
+  fileSizeBytes Int
+  mimeType    String
+  kind        OwnedMediaKind
+  role        OwnedMediaRole         @default(OTHER)
+  title       String
+  description String?                @db.Text
+  /// Duration in seconds (video/audio) when known.
+  durationSeconds Int?
+  width  Int?
+  height Int?
+  /// EXIF/embedded “taken at” (device). Distinct from editorial `eventDate`.
+  capturedAt  DateTime?
+  eventDate   DateTime?
+  /// GPS from EXIF when present (WGS84).
+  gpsLat      Float?
+  gpsLng      Float?
+  geoSource   GeoMetadataSource        @default(NONE)
+  /// 0–1 when inferred/reverse-mapped; null if unknown.
+  geoConfidence   Float?
+  /// True if county/city/geo should be confirmed before publishing to county pages.
+  needsGeoReview  Boolean         @default(false)
+  countySlug  String?
+  countyFips  String?
+  city        String?
+  issueTags   String[] @default([])
+  campaignPhase String?
+  contentSeries String?
+  speakerName   String?
+  /// Raw EXIF / container / Nominatim audit tail (see `ingress` in JSON). AI or model suggestions use `enrichmentMetadata`, not this field.
+  metadataJson  Json?
+  sourceType  OwnedMediaSourceType    @default(DIRECT_UPLOAD)
+  reviewStatus OwnedMediaReviewStatus @default(PENDING_REVIEW)
+  isPublic     Boolean                 @default(false)
+  /// For supporter-facing uploads later: explicit opt-in to campaign use.
+  consentCampaignUse Boolean?
+  uploaderName  String?
+  uploaderEmail String?
+  /// Non-canonical: suggested tags, model hints, run timestamps. Never overwrites `OwnedMediaTranscript` text.
+  enrichmentMetadata Json?
+  transcriptJobStatus TranscriptionJobStatus @default(NOT_REQUESTED)
+  transcriptionLastError String?         @db.Text
+  /// SHA-256 of file bytes; dedupes folder-ingest and future supporter uploads.
+  ingestContentSha256  String?            @unique
+  /// Set by local folder watcher: original relative path (audit).
+  localIngestRelativePath String?
+  createdBy   String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  transcripts     OwnedMediaTranscript[]
+  quoteCandidates OwnedMediaQuoteCandidate[]
+
+  @@index([countySlug, eventDate])
+  @@index([countySlug, capturedAt])
+  @@index([city, capturedAt])
+  @@index([capturedAt])
+  @@index([eventDate])
+  @@index([reviewStatus])
+  @@index([transcriptJobStatus])
+  @@index([isPublic, reviewStatus])
+  @@index([sourceType, reviewStatus])
+  @@index([kind, capturedAt])
+  @@index([needsGeoReview])
+  @@index([gpsLat, gpsLng])
+}
+
+model OwnedMediaTranscript {
+  id            String  @id @default(cuid())
+  ownedMediaId  String
+  ownedMedia    OwnedMediaAsset @relation(fields: [ownedMediaId], references: [id], onDelete: Cascade)
+  transcriptText String @db.Text
+  source         TranscriptSource
+  language       String?
+  confidence     Float?
+  /// Raw ASR or provider segments (start/end, text). Kept for audit; not the canonical "human truth" if edited elsewhere.
+  segmentsJson   Json?
+  reviewStatus   TranscriptReviewStatus @default(PENDING)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  quoteCandidates OwnedMediaQuoteCandidate[]
+
+  @@index([ownedMediaId, reviewStatus])
+}
+
+model OwnedMediaQuoteCandidate {
+  id             String  @id @default(cuid())
+  ownedMediaId   String
+  ownedMedia     OwnedMediaAsset @relation(fields: [ownedMediaId], references: [id], onDelete: Cascade)
+  transcriptId   String?
+  transcript     OwnedMediaTranscript? @relation(fields: [transcriptId], references: [id], onDelete: SetNull)
+  quoteText      String  @db.Text
+  startSeconds   Float?
+  endSeconds     Float?
+  issueTags      String[] @default([])
+  countySlug     String?
+  quoteType      QuoteCandidateType @default(SUGGESTED)
+  reviewStatus   QuoteReviewStatus  @default(PENDING)
+  featuredWeight Int?
+  /// Non-canonical AI or heuristic suggestions; review gates approval.
+  enrichmentMetadata Json?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([ownedMediaId, reviewStatus])
+  @@index([transcriptId])
+  @@index([countySlug])
+}
+
+// --- County command pages (public organizing intelligence + reviewable data) ---
+
+enum CountyContentReviewStatus {
+  DRAFT
+  PENDING_REVIEW
+  APPROVED
+}
+
+enum ElectedJurisdiction {
+  FEDERAL
+  STATE
+  COUNTY
+  LOCAL
+}
+
+enum PublicDemographicsSource {
+  CENSUS_ACS
+  CENSUS_DECENNIAL
+  MANUAL
+  OTHER
+}
+
+/// Canonical US county for Arkansas campaign command pages (`/counties/[slug]`).
+model County {
+  id          String  @id @default(cuid())
+  slug        String  @unique
+  fips        String  @unique
+  displayName String
+  regionLabel String?
+  sortOrder   Int     @default(0)
+  /// Hero kicker, e.g. "Central Arkansas"
+  heroEyebrow String?
+  /// When null, UI uses a short generic line + region label.
+  heroIntro   String?  @db.Text
+  /// Who is leading here?
+  leadName     String?
+  leadTitle    String?
+  leadBio      String?  @db.Text
+  leadPhotoUrl String?
+  /// Curated `events` slugs for “upcoming on this page”
+  featuredEventSlugs String[] @default([])
+  showOnStatewideMap Boolean  @default(true)
+  published        Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  campaignStats CountyCampaignStats?
+  demographics  CountyPublicDemographics?
+  elected       CountyElectedOfficial[]
+
+  countyVoterMetrics  CountyVoterMetrics[]
+  voterRecords        VoterRecord[]
+  voterSnapshotChanges VoterSnapshotChange[]
+
+  @@index([published, sortOrder])
+}
+
+/// Campaign metrics — voter file fields structurally ready; null until pipeline syncs.
+model CountyCampaignStats {
+  id        String  @id @default(cuid())
+  countyId  String  @unique
+  county    County  @relation(fields: [countyId], references: [id], onDelete: Cascade)
+
+  registrationGoal   Int?
+  /// Actual new registrations since baseline (voter file); null = not yet synced
+  newRegistrationsSinceBaseline Int?
+  /// Baseline date for the “new since” number (campaign: 2025-11-25; mirrored from voter-file metrics)
+  registrationBaselineDate DateTime?
+  volunteerTarget Int?
+  volunteerCount  Int?
+  campaignVisits  Int?
+  /// e.g. voter_file_nightly, manual_import
+  dataPipelineSource  String?
+  pipelineLastSyncAt  DateTime?
+  pipelineError       String? @db.Text
+  reviewStatus        CountyContentReviewStatus @default(PENDING_REVIEW)
+  updatedAt     DateTime @updatedAt
+}
+
+/// Trusted public / Census-style snapshot — always label source and review state.
+model CountyPublicDemographics {
+  id       String  @id @default(cuid())
+  countyId String  @unique
+  county   County  @relation(fields: [countyId], references: [id], onDelete: Cascade)
+
+  population               Int?
+  votingAgePopulation      Int?
+  medianHouseholdIncome    Int?
+  povertyRatePercent       Float?
+  bachelorsOrHigherPercent Float?
+  laborEmploymentNote      String? @db.Text
+  source     PublicDemographicsSource @default(CENSUS_ACS)
+  sourceDetail String?
+  asOfYear   Int?
+  fetchedAt  DateTime?
+  reviewStatus CountyContentReviewStatus @default(PENDING_REVIEW)
+  updatedAt  DateTime @updatedAt
+}
+
+/// Reviewable elected roster — can be hand-entered, imported, or later Google Civic.
+model CountyElectedOfficial {
+  id             String  @id @default(cuid())
+  countyId       String
+  county         County  @relation(fields: [countyId], references: [id], onDelete: Cascade)
+  jurisdiction   ElectedJurisdiction
+  officeTitle    String
+  name           String
+  party          String?
+  termEnd        String?
+  sourceUrl      String?
+  sourceLabel    String?
+  externalId     String?
+  sortOrder      Int     @default(0)
+  reviewStatus   CountyContentReviewStatus @default(PENDING_REVIEW)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([countyId, jurisdiction, sortOrder])
+}
+
+// --- Voter file pipeline (SOS raw files → snapshots → per-county metrics → optional canonical voters) ---
+
+enum VoterFileIngestStatus {
+  RECEIVED
+  PROCESSING
+  COMPLETE
+  FAILED
+}
+
+enum VoterSnapshotChangeType {
+  NEW
+  UPDATED
+  REMOVED
+  REACTIVATED
+}
+
+/// One row per SOS file import / snapshot used for diffs and county rollups.
+model VoterFileSnapshot {
+  id        String  @id @default(cuid())
+  createdAt DateTime @default(now())
+  /// When the raw file was first received by our systems (optional)
+  fileReceivedAt DateTime?
+  /// When the file was ingested into our system
+  importedAt DateTime @default(now())
+  /// "As of" date represented by the export (often file generation / voter roll pull date)
+  fileAsOfDate DateTime
+  /// Prior snapshot this import was diffed against (if any)
+  previousSnapshotId String?
+  previousSnapshot  VoterFileSnapshot?  @relation("VoterFileSnapshotChain", fields: [previousSnapshotId], references: [id], onDelete: SetNull)
+  nextSnapshots     VoterFileSnapshot[] @relation("VoterFileSnapshotChain")
+  sourceFilename    String?
+  /// SHA-256 of raw file bytes for idempotency
+  sourceFileHash     String? @unique
+  rowCountProcessed  Int?
+  status             VoterFileIngestStatus @default(RECEIVED)
+  errorMessage       String?  @db.Text
+  /// Optional notes for operators (e.g. special election cut)
+  operatorNotes     String?  @db.Text
+
+  countyMetrics   CountyVoterMetrics[]
+  firstSeenVoters VoterRecord[]      @relation("VoterFirstSeen")
+  lastSeenVoters  VoterRecord[]      @relation("VoterLastSeen")
+  droppedVoters   VoterRecord[]      @relation("VoterDropped")
+  updatedVoters   VoterRecord[]      @relation("VoterUpdatedFrom")
+  snapshotChanges VoterSnapshotChange[]
+
+  @@index([fileAsOfDate])
+  @@index([status, fileAsOfDate])
+}
+
+/// Precomputed per-county rollups for a given voter file snapshot (field program + public county pages).
+model CountyVoterMetrics {
+  id        String  @id @default(cuid())
+  countyId  String
+  county    County  @relation(fields: [countyId], references: [id], onDelete: Cascade)
+  /// Denormalized from `County.slug` for warehouse exports and public APIs
+  countySlug  String
+  voterFileSnapshotId String
+  /// Source snapshot for this rollup (alias semantically: “source snapshot”)
+  snapshot  VoterFileSnapshot @relation(fields: [voterFileSnapshotId], references: [id], onDelete: Cascade)
+  /// Denormalized: same as snapshot.fileAsOfDate for fast reads
+  asOfDate  DateTime
+  /// Must match `getCampaignRegistrationBaselineUtc()` from server config when row is written
+  registrationBaselineDate DateTime
+  /// Total active registrants in file for this county at asOfDate (nullable until ETL fills)
+  totalRegisteredCount Int?
+  newRegistrationsSinceBaseline Int @default(0)
+  newRegistrationsSincePreviousSnapshot Int @default(0)
+  droppedSincePreviousSnapshot       Int @default(0)
+  netChangeSincePreviousSnapshot     Int @default(0)
+  countyGoal  Int?
+  /// 0–100; null if goal unknown
+  progressPercent Float?
+  computedAt DateTime @default(now())
+  reviewStatus CountyContentReviewStatus @default(PENDING_REVIEW)
+
+  @@unique([countyId, voterFileSnapshotId])
+  @@index([countySlug, asOfDate])
+  @@index([asOfDate])
+  @@index([countyId, asOfDate])
+}
+
+/// Canonical voter key from SOS file — used for per-import diffs and assistance tooling (not official SOS UI).
+model VoterRecord {
+  id        String  @id @default(cuid())
+  /// **Canonical identifier:** opaque stable key from the SOS / vendor voter file (VRN / state id—map to your column).
+  voterFileKey  String  @unique
+  countyFips   String
+  countyId     String
+  county       County  @relation(fields: [countyId], references: [id], onDelete: Cascade)
+  /// Denormalized public county slug (matches `County.slug`)
+  countySlug   String
+  city         String?
+  precinct     String?
+  registrationDate DateTime?
+  firstSeenSnapshotId String
+  firstSeen  VoterFileSnapshot @relation("VoterFirstSeen", fields: [firstSeenSnapshotId], references: [id], onDelete: Restrict)
+  lastSeenSnapshotId String
+  lastSeen  VoterFileSnapshot @relation("VoterLastSeen", fields: [lastSeenSnapshotId], references: [id], onDelete: Restrict)
+  updatedFromSnapshotId String?
+  updatedFrom VoterFileSnapshot? @relation("VoterUpdatedFrom", fields: [updatedFromSnapshotId], references: [id], onDelete: SetNull)
+  /// When the voter no longer appears in the most recent file we have processed
+  droppedAtSnapshotId String?
+  droppedAt  VoterFileSnapshot? @relation("VoterDropped", fields: [droppedAtSnapshotId], references: [id], onDelete: SetNull)
+  /// Civil date / moment we treat as “dropped off” the roll (denormalized for reporting)
+  droppedOffAt DateTime?
+  /// Denormalized from latest import: present in last completed snapshot’s file
+  inLatestCompletedFile Boolean @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  snapshotChanges VoterSnapshotChange[]
+
+  @@index([countyId, inLatestCompletedFile])
+  @@index([countySlug])
+  @@index([countyFips])
+  @@index([registrationDate])
+}
+
+/// Per-voter delta rows for a snapshot (audit + recompute). Heavy table at full state scale—archive old snapshots as needed.
+model VoterSnapshotChange {
+  id        String  @id @default(cuid())
+  voterFileSnapshotId String
+  snapshot  VoterFileSnapshot @relation(fields: [voterFileSnapshotId], references: [id], onDelete: Cascade)
+  voterRecordId String?
+  voterRecord  VoterRecord? @relation(fields: [voterRecordId], references: [id], onDelete: SetNull)
+  /// Always store the SOS key for traceability even if `voterRecordId` is null in edge cases
+  voterFileKey String
+  changeType   VoterSnapshotChangeType
+  countyId     String
+  county       County @relation(fields: [countyId], references: [id], onDelete: Cascade)
+  countySlug   String
+  summaryJson  Json?
+  createdAt    DateTime @default(now())
+
+  @@index([voterFileSnapshotId, changeType])
+  @@index([countySlug, voterFileSnapshotId])
+  @@index([voterFileKey])
+}

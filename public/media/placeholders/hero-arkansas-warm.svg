@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100" role="img" aria-label="">
+  <defs>
+    <linearGradient id="sky" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#5A6C7D"/>
+      <stop offset="40%" stop-color="#A3472A" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#F5EFE6"/>
+    </linearGradient>
+    <linearGradient id="field" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6B7F5E" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#2B1E1A" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1100" fill="url(#sky)"/>
+  <path d="M0 720 Q400 620 800 680 T1600 640 V1100 H0Z" fill="url(#field)"/>
+  <ellipse cx="200" cy="280" rx="120" ry="80" fill="#F5EFE6" opacity="0.12"/>
+</svg>

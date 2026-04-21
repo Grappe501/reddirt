@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: reddirt
+      POSTGRES_PASSWORD: reddirt
+      POSTGRES_DB: reddirt
+    ports:
+      # Use 5433 on host to avoid clashing with a local PostgreSQL install on 5432
+      - "5433:5432"
+    volumes:
+      - reddirt_pg:/var/lib/postgresql/data
+
+volumes:
+  reddirt_pg:

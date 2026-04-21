@@ -1,0 +1,242 @@
+import { prisma } from "@/lib/db";
+import { sanitizePlainText } from "@/lib/security/sanitize";
+import { classifyIntake } from "@/lib/openai/classify";
+import { isOpenAIConfigured } from "@/lib/openai/client";
+import type { FormSubmissionInput } from "./schemas";
+
+function buildSummary(data: FormSubmissionInput): string {
+  switch (data.formType) {
+    case "join_movement":
+      return [
+        `Name: ${data.name}`,
+        `Email: ${data.email}`,
+        data.phone ? `Phone: ${data.phone}` : "",
+        `ZIP: ${data.zip}`,
+        data.county ? `County: ${data.county}` : "",
+        data.interests?.length ? `Interests: ${data.interests.join(", ")}` : "",
+        data.message ? `Message: ${data.message}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n");
+    case "volunteer":
+      return [
+        `Name: ${data.name}`,
+        `Email: ${data.email}`,
+        data.phone ? `Phone: ${data.phone}` : "",
+        `ZIP: ${data.zip}`,
+        data.county ? `County: ${data.county}` : "",
+        data.availability ? `Availability: ${data.availability}` : "",
+        data.skills ? `Skills: ${data.skills}` : "",
+        `Leadership interest: ${data.leadershipInterest ? "yes" : "no"}`,
+        data.interests?.length ? `Interests: ${data.interests.join(", ")}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n");
+    case "local_team":
+      return [
+        `Name: ${data.name}`,
+        `Email: ${data.email}`,
+        data.phone ? `Phone: ${data.phone}` : "",
+        `ZIP: ${data.zip}`,
+        data.county ? `County: ${data.county}` : "",
+        `Community: ${data.community}`,
+        data.teamGoal ? `Goal: ${data.teamGoal}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n");
+    case "direct_democracy_commitment":
+      return [
+        `Name: ${data.name}`,
+        `Email: ${data.email}`,
+        data.phone ? `Phone: ${data.phone}` : "",
+        `ZIP: ${data.zip}`,
+        `County: ${data.county}`,
+        `Referendum opt-in: ${data.referendumOptIn ? "yes" : "no"}`,
+        `SMS opt-in: ${data.smsOptIn ? "yes" : "no"}`,
+      ].join("\n");
+    case "story_submission":
+      return [
+        `Name: ${data.name}`,
+        `Email: ${data.email}`,
+        data.phone ? `Phone: ${data.phone}` : "",
+        data.county ? `County: ${data.county}` : "",
+        `Title: ${data.title}`,
+        `Story: ${data.story}`,
+      ].join("\n");
+    case "host_gathering":
+      return [
+        `Name: ${data.name}`,
+        `Email: ${data.email}`,
+        data.phone ? `Phone: ${data.phone}` : "",
+        `ZIP: ${data.zip}`,
+        data.county ? `County: ${data.county}` : "",
+        `Community: ${data.community}`,
+        `Gathering type: ${data.gatheringType}${data.gatheringType === "other" && data.gatheringTypeOther ? ` (${data.gatheringTypeOther})` : ""}`,
+        data.preferredTiming ? `Preferred timing: ${data.preferredTiming}` : "",
+        data.expectedGuests ? `Expected guests: ${data.expectedGuests}` : "",
+        data.needs ? `Support needed: ${data.needs}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n");
+    default:
+      return "";
+  }
+}
+
+export type PersistResult = { submissionId: string; userId: string | null };
+
+export async function persistFormSubmission(data: FormSubmissionInput): Promise<PersistResult> {
+  const summary = buildSummary(data);
+  let classification = null as Awaited<ReturnType<typeof classifyIntake>> | null;
+  if (isOpenAIConfigured()) {
+    try {
+      classification = await classifyIntake({ formType: data.formType, summaryText: summary });
+    } catch {
+      classification = null;
+    }
+  }
+
+  const structuredBase = classification
+    ? { ai: classification, formType: data.formType }
+    : { formType: data.formType };
+
+  if (data.formType === "story_submission") {
+    const storyBody = sanitizePlainText(data.story, 12000);
+    const title = sanitizePlainText(data.title, 200);
+    const email = data.email.toLowerCase().trim();
+    const user = await prisma.user.upsert({
+      where: { email },
+      create: {
+        email,
+        name: sanitizePlainText(data.name, 120),
+        phone: data.phone?.trim() || null,
+        county: data.county ? sanitizePlainText(data.county, 80) : null,
+        interests: ["story_submission"],
+      },
+      update: {
+        name: sanitizePlainText(data.name, 120),
+        phone: data.phone?.trim() || undefined,
+        county: data.county ? sanitizePlainText(data.county, 80) : undefined,
+      },
+    });
+
+    const sub = await prisma.submission.create({
+      data: {
+        userId: user.id,
+        type: "story",
+        content: `${title}\n\n${storyBody}`,
+        structuredData: {
+          ...structuredBase,
+          title,
+          consentPublic: data.consentPublic,
+        } as object,
+      },
+    });
+    return { submissionId: sub.id, userId: user.id };
+  }
+
+  const email = data.email.toLowerCase().trim();
+  const interests =
+    data.formType === "join_movement" || data.formType === "volunteer"
+      ? data.interests ?? []
+      : [];
+
+  const user = await prisma.user.upsert({
+    where: { email },
+    create: {
+      email,
+      name: sanitizePlainText(data.name, 120),
+      phone: data.phone?.trim() || null,
+      zip: "zip" in data ? sanitizePlainText(data.zip, 12) : null,
+      county:
+        "county" in data && data.county
+          ? sanitizePlainText(data.county, 80)
+          : data.formType === "direct_democracy_commitment"
+            ? sanitizePlainText(data.county, 80)
+            : null,
+      interests,
+    },
+    update: {
+      name: sanitizePlainText(data.name, 120),
+      phone: data.phone?.trim() || undefined,
+      zip: "zip" in data ? sanitizePlainText(data.zip, 12) : undefined,
+      county:
+        "county" in data && data.county
+          ? sanitizePlainText(data.county, 80)
+          : data.formType === "direct_democracy_commitment"
+            ? sanitizePlainText(data.county, 80)
+            : undefined,
+      interests: interests.length ? interests : undefined,
+    },
+  });
+
+  if (data.formType === "volunteer") {
+    await prisma.volunteerProfile.upsert({
+      where: { userId: user.id },
+      create: {
+        userId: user.id,
+        availability: data.availability ? sanitizePlainText(data.availability, 500) : null,
+        skills: data.skills ? sanitizePlainText(data.skills, 2000) : null,
+        leadershipInterest: data.leadershipInterest,
+      },
+      update: {
+        availability: data.availability ? sanitizePlainText(data.availability, 500) : null,
+        skills: data.skills ? sanitizePlainText(data.skills, 2000) : null,
+        leadershipInterest: data.leadershipInterest,
+      },
+    });
+    await prisma.commitment.create({
+      data: {
+        userId: user.id,
+        type: "volunteer",
+        metadata: { source: "volunteer_form" } as object,
+      },
+    });
+  }
+
+  if (data.formType === "direct_democracy_commitment") {
+    await prisma.commitment.create({
+      data: {
+        userId: user.id,
+        type: "referendum",
+        metadata: {
+          referendumOptIn: data.referendumOptIn,
+          smsOptIn: data.smsOptIn,
+        } as object,
+      },
+    });
+  }
+
+  const submissionType =
+    data.formType === "join_movement"
+      ? "join_movement"
+      : data.formType === "volunteer"
+        ? "volunteer"
+        : data.formType === "local_team"
+          ? "local_team"
+          : data.formType === "direct_democracy_commitment"
+            ? "direct_democracy_commitment"
+            : data.formType === "host_gathering"
+              ? "host_gathering"
+              : "contact";
+
+  const content = sanitizePlainText(summary, 8000);
+
+  const sub = await prisma.submission.create({
+    data: {
+      userId: user.id,
+      type: submissionType,
+      content,
+      structuredData: {
+        ...structuredBase,
+        raw: redactPII(summary),
+      } as object,
+    },
+  });
+
+  return { submissionId: sub.id, userId: user.id };
+}
+
+function redactPII(text: string): string {
+  return text.replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, "[email]");
+}

@@ -1,0 +1,16 @@
+# Red Dirt — Netlify
+# Requires DATABASE_URL (and optional OPENAI_* for runtime AI/search).
+# Ingest (npm run ingest) is manual or scheduled — not part of build.
+
+[build]
+  command = "npx prisma migrate deploy && npm run build"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Optional: document dev port alignment
+# [dev]
+#   command = "npm run dev"

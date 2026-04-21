@@ -1,0 +1,545 @@
+import Image from "next/image";
+import Link from "next/link";
+import { PageHero } from "@/components/blocks/PageHero";
+import { SectionHeading } from "@/components/blocks/SectionHeading";
+import { ContentContainer } from "@/components/layout/ContentContainer";
+import { FullBleedSection } from "@/components/layout/FullBleedSection";
+import { Button } from "@/components/ui/Button";
+import { roadPostExcerpt, roadPostImageSrc } from "@/lib/content/content-hub-queries";
+import type { CountyPageSnapshot } from "@/lib/county/get-county-command-data";
+import {
+  getArVoterRegistrationLookupUrl,
+  getCountyRegistrationTeamHref,
+  getHostOrVisitRequestHref,
+  getLocalIssueSubmissionHref,
+  getReferForRegistrationHelpHref,
+  getRegistrationHelpHref,
+  getVoterRegistrationCenterHref,
+  getVolunteerInCountyHref,
+} from "@/lib/county/official-links";
+import { getCampaignRegistrationBaselineDisplayCentral } from "@/config/campaign-registration-baseline";
+import { cn } from "@/lib/utils";
+import { EventCard } from "@/components/organizing/EventCard";
+
+const introFallback =
+  "Kelly’s Arkansas campaign runs through all 75 counties—this page is your field sheet: who’s leading, what’s happening, and how we’re growing the electorate where you live.";
+
+const card =
+  "rounded-2xl border border-deep-soil/10 bg-cream-canvas p-5 shadow-sm transition hover:border-red-dirt/25 hover:shadow-elevated";
+
+const fmt = (n: number | null | undefined) =>
+  n == null || Number.isNaN(n) ? "—" : n.toLocaleString("en-US");
+
+const fmtDate = (d: string | null | undefined) => {
+  if (!d) return "—";
+  try {
+    return new Date(d).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+  } catch {
+    return d;
+  }
+};
+
+const fmtDateLong = (d: Date | string) => {
+  const x = typeof d === "string" ? new Date(d) : d;
+  return x.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+};
+
+function formatDistanceAgo(d: Date) {
+  const sec = Math.floor((Date.now() - d.getTime()) / 1000);
+  if (sec < 60) return "just now";
+  const min = Math.floor(sec / 60);
+  if (min < 60) return `${min}m ago`;
+  const hr = Math.floor(min / 60);
+  if (hr < 48) return `${hr}h ago`;
+  const day = Math.floor(hr / 24);
+  return `${day}d ago`;
+}
+
+export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) {
+  const { county, latestVoterMetrics, latestVisitPost, latestStoryPost, mediaGallery, nextEvent, upcomingEvents } = data;
+  const stats = county.campaignStats;
+  const vm = latestVoterMetrics;
+  const demo = county.demographics;
+  const centralBaselineLabel = getCampaignRegistrationBaselineDisplayCentral();
+  const regSinceLabel = `New registrations since ${centralBaselineLabel} (campaign baseline)`;
+  const voterUrl = getArVoterRegistrationLookupUrl();
+  const newSinceBaseline =
+    vm?.newRegistrationsSinceBaseline ?? stats?.newRegistrationsSinceBaseline ?? null;
+  const regGoal = vm?.countyGoal ?? stats?.registrationGoal ?? null;
+  const progressPct = vm?.progressPercent ?? null;
+
+  const federal = county.elected.filter((o) => o.jurisdiction === "FEDERAL");
+  const state = county.elected.filter((o) => o.jurisdiction === "STATE");
+  const countyLocal = county.elected.filter(
+    (o) => o.jurisdiction === "COUNTY" || o.jurisdiction === "LOCAL"
+  );
+
+  return (
+    <>
+      <PageHero
+        eyebrow={county.heroEyebrow ?? county.regionLabel ?? "Arkansas county command"}
+        title={county.displayName}
+        subtitle={county.heroIntro?.trim() || introFallback}
+      >
+        {county.leadName ? (
+          <p className="max-w-2xl text-base font-bold text-red-dirt/95">
+            County lead: {county.leadName}
+            {county.leadTitle ? <span className="font-medium text-deep-soil/90"> — {county.leadTitle}</span> : null}
+          </p>
+        ) : null}
+        <div className="flex w-full max-w-3xl flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-2">
+          <Button href={getVoterRegistrationCenterHref(county.slug)} variant="primary" className="w-full min-[480px]:w-auto">
+            Voter registration center
+          </Button>
+          <Button href={voterUrl} variant="secondary" className="w-full min-[480px]:w-auto">
+            State lookup (official)
+          </Button>
+          <Button href={getRegistrationHelpHref()} variant="outline" className="w-full min-[480px]:w-auto">
+            Get registration help
+          </Button>
+          <Button href={getVolunteerInCountyHref(county.slug)} variant="outline" className="w-full min-[480px]:w-auto">
+            Volunteer here
+          </Button>
+          <Button href={getHostOrVisitRequestHref()} variant="subtle" className="w-full min-[480px]:w-auto">
+            Host a gathering / request a visit
+          </Button>
+        </div>
+      </PageHero>
+
+      <FullBleedSection padY className="bg-washed-canvas" aria-labelledby="scoreboard-title">
+        <ContentContainer>
+          <SectionHeading
+            id="scoreboard-title"
+            align="left"
+            eyebrow="Field metrics"
+            title="County scoreboard"
+            subtitle="Numbers come from our voter file warehouse when a snapshot completes: baseline date is campaign-wide (see voter center). If a row is pending, the pipeline is still catching up."
+          />
+          <p className="mt-4 text-xs text-deep-soil/60">
+            Campaign baseline (all counties): <strong>{centralBaselineLabel}</strong>
+            {vm ? (
+              <>
+                {" "}
+                · File as of: <strong>{fmtDateLong(vm.asOfDate)}</strong>
+              </>
+            ) : null}
+          </p>
+          <ul className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-7" role="list">
+            <ScoreItem label="Registration goal" value={fmt(regGoal)} />
+            <ScoreItem
+              label={regSinceLabel}
+              value={newSinceBaseline == null ? "Pending sync" : fmt(newSinceBaseline)}
+            />
+            <ScoreItem
+              label="Registered voters (last file)"
+              value={vm?.totalRegisteredCount == null ? "—" : fmt(vm.totalRegisteredCount)}
+              hint="From SOS-imported roll in warehouse"
+            />
+            <ScoreItem
+              label="Progress to goal"
+              value={progressPct == null ? "—" : `${Math.round(progressPct)}%`}
+              hint={regGoal ? `Goal ${fmt(regGoal)}` : undefined}
+            />
+            <ScoreItem label="Campaign visits" value={fmt(stats?.campaignVisits)} />
+            <ScoreItem
+              label="Active volunteers (field)"
+              value={stats?.volunteerCount == null ? "—" : fmt(stats.volunteerCount)}
+              hint={stats?.volunteerTarget ? `Target ${fmt(stats.volunteerTarget)}` : undefined}
+            />
+            <ScoreItem label="Upcoming events" value={upcomingEvents.length > 0 ? String(upcomingEvents.length) : "0"} />
+          </ul>
+          {vm ? (
+            <p className="mt-4 text-xs text-deep-soil/55">
+              Voter file as of {fmtDateLong(vm.asOfDate)} · Last import: +{fmt(vm.newRegistrationsSincePreviousSnapshot)} new
+              registrants / {fmt(vm.droppedSincePreviousSnapshot)} no longer in file vs previous snapshot · Net{" "}
+              {vm.netChangeSincePreviousSnapshot >= 0 ? "+" : ""}
+              {fmt(vm.netChangeSincePreviousSnapshot)}. Review: {vm.reviewStatus.toLowerCase().replace(/_/g, " ")}.
+            </p>
+          ) : stats?.dataPipelineSource ? (
+            <p className="mt-4 text-xs text-deep-soil/55">
+              Data pipeline: {stats.dataPipelineSource}
+              {stats.pipelineLastSyncAt ? ` · Last attempt ${formatDistanceAgo(stats.pipelineLastSyncAt)}` : null}
+            </p>
+          ) : null}
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection padY aria-labelledby="happenings-title">
+        <ContentContainer>
+          <SectionHeading
+            id="happenings-title"
+            align="left"
+            eyebrow="Momentum"
+            title="What’s happening here"
+            subtitle="Latest field notes, story, and media in this county—plus the next time we’re on the ground together."
+          />
+          <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
+            <HappenCard
+              kicker="Latest campaign stop"
+              post={latestVisitPost}
+              empty="When we announce a visit or stop, it will show here (tag the county on road posts, or set kind to Road update)."
+            />
+            <HappenCard
+              kicker="Latest road story"
+              post={latestStoryPost}
+              empty="Subscribe to field updates in this county—stories with this county’s tag will surface automatically."
+            />
+            <div className={cn(card, "lg:col-span-2")}>
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-red-dirt/90">Photo &amp; video</p>
+              {mediaGallery.length > 0 ? (
+                <ul className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                  {mediaGallery.map((m) => (
+                    <li key={m.id} className="relative aspect-square overflow-hidden rounded-xl border border-deep-soil/10">
+                      {m.kind === "IMAGE" && m.publicUrl ? (
+                        <Image src={m.publicUrl} alt={m.title ?? "County media"} fill className="object-cover" unoptimized={m.publicUrl.startsWith("http")} />
+                      ) : (
+                        <div className="flex h-full items-center justify-center bg-deep-soil/5 p-2 text-center text-xs text-deep-soil/60">
+                          {m.kind} · {m.title ?? "Media"}
+                        </div>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="mt-2 text-sm text-deep-soil/70">
+                  The gallery will fill in as we publish approved, county-tagged media from the campaign library.
+                </p>
+              )}
+            </div>
+            <div className="lg:col-span-2">
+              {nextEvent ? (
+                <div>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-red-dirt/90">Next event</p>
+                  <div className="mt-2 max-w-2xl">
+                    <EventCard event={nextEvent} />
+                  </div>
+                </div>
+              ) : (
+                <div className={card}>
+                  <p className="text-sm text-deep-soil/80">
+                    No upcoming events listed for this county yet. Check{" "}
+                    <Link className="font-semibold text-red-dirt underline-offset-2 hover:underline" href="/events">
+                      statewide events
+                    </Link>{" "}
+                    or ask the county lead to add one.
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection padY className="bg-washed-canvas" aria-labelledby="intel-title">
+        <ContentContainer>
+          <SectionHeading
+            id="intel-title"
+            align="left"
+            eyebrow="Trusted context"
+            title="What matters here"
+            subtitle="Public, cited snapshots—so organizers understand scale and need. Replaced with verified Census/ACS or SOS pulls as the research queue clears."
+          />
+          {demo ? (
+            <>
+              <p className="text-xs text-deep-soil/55">
+                Source: {demo.source}
+                {demo.sourceDetail ? ` — ${demo.sourceDetail}` : ""}
+                {demo.asOfYear ? ` · ${demo.asOfYear}` : ""} · Data review: {demo.reviewStatus.toLowerCase().replace(/_/g, " ")} ·
+                {demo.fetchedAt ? ` Fetched ${fmtDate(demo.fetchedAt.toISOString())} ·` : " "}
+                {demo.updatedAt && `Row updated ${fmtDateLong(demo.updatedAt)}`}
+              </p>
+              <ul className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" role="list">
+                <IntelCard label="Population" value={fmt(demo.population)} />
+                <IntelCard label="Voting-age population" value={fmt(demo.votingAgePopulation)} />
+                <IntelCard label="Median household income" value={demo.medianHouseholdIncome != null ? `$${fmt(demo.medianHouseholdIncome)}` : "—"} />
+                <IntelCard
+                  label="Poverty rate"
+                  value={demo.povertyRatePercent == null ? "—" : `${demo.povertyRatePercent.toFixed(1)}%`}
+                />
+                <IntelCard
+                  label="Bachelor’s+ (approx.)"
+                  value={demo.bachelorsOrHigherPercent == null ? "—" : `${demo.bachelorsOrHigherPercent.toFixed(1)}%`}
+                />
+                <IntelCard
+                  label="Labor & employment"
+                  value={demo.laborEmploymentNote ? demo.laborEmploymentNote : "Add a short, cited snapshot when available."}
+                  multiline
+                />
+              </ul>
+            </>
+          ) : (
+            <p className="mt-4 text-sm text-deep-soil/70">Demographics for this county are not in the system yet.</p>
+          )}
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection padY aria-labelledby="elected-title">
+        <ContentContainer>
+          <SectionHeading
+            id="elected-title"
+            align="left"
+            eyebrow="Representation"
+            title="Elected officials"
+            subtitle="Rows are reviewable, sourced, and can be filled from multiple workflows—manual entry, imports, and future connector passes (e.g. Civic). Nothing here is a substitute for the SOS voter roll."
+          />
+          {federal.length + state.length + countyLocal.length > 0 ? (
+            <div className="mt-8 space-y-10">
+              {federal.length > 0 ? <OfficialBlock key="federal" title="Federal officials" rows={federal} /> : null}
+              {state.length > 0 ? <OfficialBlock key="state" title="State officials" rows={state} /> : null}
+              {countyLocal.length > 0 ? <OfficialBlock key="c" title="County & local officials" rows={countyLocal} /> : null}
+            </div>
+          ) : (
+            <div className={cn(card, "mt-8")}>
+              <p className="text-sm text-deep-soil/80">
+                We are building a verified, sourced roster for this county. If you are logged into the team console, you can
+                approve official rows as they are imported. Until then, this section stays blank—no guesswork in public.
+              </p>
+            </div>
+          )}
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection padY className="bg-deep-soil text-cream-canvas" aria-labelledby="voteraction-title">
+        <ContentContainer>
+          <h2 className="font-heading text-2xl font-bold tracking-tight" id="voteraction-title">
+            Voter action
+          </h2>
+          <p className="mt-1 max-w-2xl text-sm text-cream-canvas/80">
+            Start from the campaign’s voter registration center for this county—then use the state’s official lookup to
+            confirm. We help with questions and follow-up.
+          </p>
+          <ul className="mt-6 flex max-w-3xl flex-col gap-3 sm:flex-row sm:flex-wrap" role="list">
+            <li>
+              <Button href={getVoterRegistrationCenterHref(county.slug)} variant="primary" className="w-full min-[400px]:w-auto">
+                Voter registration center
+              </Button>
+            </li>
+            <li>
+              <Button href={voterUrl} variant="secondary" className="w-full min-[400px]:w-auto">
+                Official state lookup
+              </Button>
+            </li>
+            <li>
+              <Button href={getRegistrationHelpHref()} variant="outline" className="w-full min-[400px]:w-auto">
+                Registration help
+              </Button>
+            </li>
+            <li>
+              <Button href={getReferForRegistrationHelpHref()} variant="outline" className="w-full min-[400px]:w-auto">
+                Refer someone for help
+              </Button>
+            </li>
+            <li>
+              <Button
+                href={getCountyRegistrationTeamHref(county.slug)}
+                variant="subtle"
+                className="border border-cream-canvas/20 bg-cream-canvas/5 text-cream-canvas hover:bg-cream-canvas/10"
+              >
+                Join the registration team
+              </Button>
+            </li>
+          </ul>
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection padY aria-labelledby="org-title">
+        <ContentContainer>
+          <SectionHeading
+            id="org-title"
+            align="left"
+            eyebrow="Build locally"
+            title="Organize in this county"
+            subtitle="Clear paths: lead contact, volunteers, small gatherings, and a channel for what you are seeing on the ground."
+          />
+          <ul className="mt-6 grid max-w-4xl grid-cols-1 gap-3 sm:grid-cols-2" role="list">
+            <li>
+              <Link
+                className={cn(card, "block h-full no-underline hover:-translate-y-0.5")}
+                href={getVoterRegistrationCenterHref(county.slug)}
+              >
+                <span className="text-sm font-bold text-red-dirt">County lead & registration</span>
+                <p className="mt-1 text-sm text-deep-soil/80">
+                  {county.leadName
+                    ? `${county.leadName}${county.leadTitle ? ` — ${county.leadTitle}` : ""} — see the voter center for this county.`
+                    : "Lead assignment in progress. The voter center links you to help and the county volunteer path."}
+                </p>
+              </Link>
+            </li>
+            <li>
+              <Button href={getVolunteerInCountyHref(county.slug)} variant="primary" className="h-full w-full justify-center py-6">
+                Volunteer path
+              </Button>
+            </li>
+            <li>
+              <Button href="/start-a-local-team" variant="outline" className="h-full w-full justify-center py-6">
+                Host a coffee meetup
+              </Button>
+            </li>
+            <li>
+              <Button href={getHostOrVisitRequestHref()} variant="outline" className="h-full w-full justify-center py-6">
+                Request a local event / visit
+              </Button>
+            </li>
+            <li className="sm:col-span-2">
+              <Button href={getLocalIssueSubmissionHref()} variant="subtle" className="w-full justify-center py-4">
+                Submit a local issue for the team
+              </Button>
+            </li>
+          </ul>
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection padY className="bg-washed-canvas" aria-labelledby="media-block-title">
+        <ContentContainer>
+          <SectionHeading
+            id="media-block-title"
+            align="left"
+            eyebrow="Stories &amp; social proof"
+            title="Media & story (coming in hot)"
+            subtitle="Gallery, videos, and highlights will roll in as we connect county tags, supporter uploads, and social clips through review."
+          />
+          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div className={card}>
+              <h3 className="font-heading text-lg font-bold text-deep-soil">Photo gallery</h3>
+              <p className="mt-1 text-sm text-deep-soil/70">
+                Curated, county-tagged stills from the road and community hosts—same source as the strip above, expanded
+                here with captions when ready.
+              </p>
+            </div>
+            <div className={card}>
+              <h3 className="font-heading text-lg font-bold text-deep-soil">Video</h3>
+              <p className="mt-1 text-sm text-deep-soil/70">
+                Short clips, testimonial bites, and event reels—pulled from approved owned media and reviewed YouTube
+                when tagged to this county.
+              </p>
+            </div>
+            <div className={card}>
+              <h3 className="font-heading text-lg font-bold text-deep-soil">Key quotes &amp; transcripts</h3>
+              <p className="mt-1 text-sm text-deep-soil/70">
+                Reserve space for vetted lines from town halls, press, and roundtables. Hook: quote candidates from the media
+                library when reviewed.
+              </p>
+            </div>
+            <div className={card}>
+              <h3 className="font-heading text-lg font-bold text-deep-soil">Supporter uploads</h3>
+              <p className="mt-1 text-sm text-deep-soil/70">
+                Future lane for neighbor-submitted media with a moderation queue. Layout is ready; intake rules ship with the
+                volunteer portal update.
+              </p>
+            </div>
+          </div>
+        </ContentContainer>
+      </FullBleedSection>
+    </>
+  );
+}
+
+function ScoreItem({ label, value, hint }: { label: string; value: string; hint?: string }) {
+  return (
+    <li className={card}>
+      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-red-dirt/90">{label}</p>
+      <p className="mt-1 font-heading text-2xl font-bold tabular-nums text-deep-soil">{value}</p>
+      {hint ? <p className="mt-0.5 text-xs text-deep-soil/55">{hint}</p> : null}
+    </li>
+  );
+}
+
+function IntelCard({ label, value, multiline }: { label: string; value: string; multiline?: boolean }) {
+  return (
+    <li className={card} role="listitem">
+      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-red-dirt/90">{label}</p>
+      <p className={cn("mt-1 font-heading text-lg font-bold text-deep-soil", multiline && "text-base font-medium leading-relaxed")}>
+        {value}
+      </p>
+    </li>
+  );
+}
+
+function HappenCard({
+  kicker,
+  post,
+  empty,
+}: {
+  kicker: string;
+  post: import("@/lib/content/content-hub-queries").RoadPostCard | null;
+  empty: string;
+}) {
+  if (!post) {
+    return (
+      <div className={card}>
+        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-red-dirt/90">{kicker}</p>
+        <p className="mt-2 text-sm text-deep-soil/70">{empty}</p>
+      </div>
+    );
+  }
+  const img = roadPostImageSrc(post);
+  const excerpt = roadPostExcerpt(post);
+  return (
+    <article className={cn(card, "overflow-hidden p-0")}>
+      {img ? (
+        <div className="relative aspect-[16/9] w-full">
+          <Image src={img} alt="" fill className="object-cover" unoptimized={img.startsWith("http")} />
+        </div>
+      ) : null}
+      <div className="p-5">
+        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-red-dirt/90">{kicker}</p>
+        <h3 className="mt-2 font-heading text-lg font-bold leading-snug text-deep-soil">
+          <Link className="hover:text-red-dirt" href={post.canonicalUrl} target="_blank" rel="noreferrer">
+            {post.title}
+          </Link>
+        </h3>
+        {post.publishedAt ? (
+          <p className="mt-1 text-xs text-deep-soil/55">
+            {new Date(post.publishedAt).toLocaleDateString("en-US", {
+              weekday: "long",
+              month: "long",
+              day: "numeric",
+              year: "numeric",
+            })}
+          </p>
+        ) : null}
+        <p className="mt-2 line-clamp-3 text-sm text-deep-soil/75">{excerpt}</p>
+        <p className="mt-3">
+          <a className="text-sm font-semibold text-red-dirt" href={post.canonicalUrl} target="_blank" rel="noreferrer">
+            Read on Substack
+          </a>
+        </p>
+      </div>
+    </article>
+  );
+}
+
+type Official = import("@prisma/client").CountyElectedOfficial;
+
+function OfficialBlock({ title, rows }: { title: string; rows: Official[] }) {
+  return (
+    <div>
+      <h3 className="font-heading text-sm font-bold uppercase tracking-[0.18em] text-deep-soil/60">{title}</h3>
+      <ul className="mt-3 space-y-2" role="list">
+        {rows.map((o) => (
+          <li key={o.id} className={cn(card, "py-3")}>
+            <p className="text-xs font-bold uppercase tracking-wide text-red-dirt/90">{o.officeTitle}</p>
+            <p className="text-lg font-bold text-deep-soil">
+              {o.name} {o.party ? <span className="text-base font-medium text-deep-soil/70">({o.party})</span> : null}
+            </p>
+            {o.termEnd ? <p className="text-sm text-deep-soil/60">Term: {o.termEnd}</p> : null}
+            {o.sourceUrl || o.sourceLabel ? (
+              <p className="mt-1 text-xs text-deep-soil/50">
+                {o.sourceLabel}
+                {o.sourceUrl ? (
+                  <>
+                    {" · "}
+                    <a className="font-medium text-red-dirt" href={o.sourceUrl} target="_blank" rel="noreferrer">
+                      source
+                    </a>
+                  </>
+                ) : null}
+              </p>
+            ) : null}
+            <p className="mt-1 text-[10px] text-deep-soil/45">Review: {o.reviewStatus.toLowerCase().replace(/_/g, " ")}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}

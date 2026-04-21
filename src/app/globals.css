@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Brand palette — field layer + command-brand elevation (see command brand system) */
+  --color-primary: #a3472a;
+  --color-text-primary: #2b1e1a;
+  --color-bg: #f5efe6;
+  --color-secondary: #5a6c7d;
+  --color-success: #6e7f5f;
+  --color-accent: #c8a45a;
+
+  /* Civic premium — midnight / gold / editorial neutrals (homepage elevation) */
+  --civic-midnight: #0c1222;
+  --civic-deep: #141e33;
+  --civic-blue: #1e2f4d;
+  --civic-slate: #2a3d5c;
+  --civic-gold: #c9a227;
+  --civic-gold-soft: #d4b24a;
+  --civic-mist: #e4e1d8;
+  --civic-fog: #f0eee8;
+  --civic-ink: #1a1f2e;
+
+  --color-surface-elevated: #fffdf8;
+  --color-border-subtle: rgba(43, 30, 26, 0.12);
+
+  --max-content-width: 1280px;
+  --section-padding-y: clamp(3rem, 6vw, 5.5rem);
+  --section-padding-y-lg: clamp(4rem, 8vw, 7rem);
+  --gutter-x: clamp(1rem, 4vw, 2.5rem);
+
+  --transition-fast: 150ms;
+  --transition-normal: 250ms;
+  --transition-slow: 400ms;
+
+  --shadow-card: 0 12px 40px rgba(43, 30, 26, 0.08);
+  --shadow-soft: 0 4px 24px rgba(43, 30, 26, 0.06);
+
+  /* Homepage journey — chapter rhythm (beats, not one feed) */
+  --journey-beat-pad: clamp(2.5rem, 8vw, 4.5rem);
+  --journey-beat-pad-lg: clamp(3.5rem, 10vw, 6rem);
+
+  /* Command brand — semantic aliases (field palette preserved; elevation via hierarchy) */
+  --brand-primary: var(--color-primary);
+  --brand-authority: var(--civic-midnight);
+  --brand-surface: var(--civic-fog);
+  --brand-accent: var(--civic-gold);
+  --text-primary: var(--color-text-primary);
+  --text-secondary: var(--color-secondary);
+  --border-subtle: var(--color-border-subtle);
+  --border-strong: rgba(43, 30, 26, 0.22);
+  --action-primary: var(--color-primary);
+  --action-secondary: var(--civic-blue);
+  --radius-card: 12px;
+  --radius-button: 8px;
+  --shadow-elevated: var(--shadow-card);
+  --space-section-sm: clamp(2.5rem, 5vw, 4rem);
+  --space-section-md: var(--section-padding-y);
+  --space-section-lg: var(--section-padding-y-lg);
+  --font-display: var(--font-heading);
+  --font-ui: var(--font-body);
+  --transition-standard: var(--transition-normal);
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-cream-canvas font-body text-deep-soil antialiased;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-red-dirt;
+  }
+}
