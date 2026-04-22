@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CampaignPaidForBar } from "@/components/layout/CampaignPaidForBar";
+import { SocialFooterIcons } from "@/components/layout/SocialFooterIcons";
 import { getJoinCampaignHref } from "@/config/external-campaign";
 import { footerNavGroups } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
@@ -28,6 +29,10 @@ export function SiteFooter() {
             >
               Volunteer sign-up →
             </Link>
+            <p className="mt-8 font-body text-xs font-bold uppercase tracking-[0.2em] text-cream-canvas/50">
+              Follow the campaign
+            </p>
+            <SocialFooterIcons className="mt-3" />
           </div>
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 lg:col-span-8">
             {footerNavGroups.map((group) => (
@@ -57,11 +62,13 @@ export function SiteFooter() {
             ))}
           </div>
         </div>
-        <div className="mt-12 space-y-4 border-t border-cream-canvas/15 pt-8">
-          <CampaignPaidForBar variant="dark" />
-          <p className="text-center font-body text-sm text-cream-canvas/50 sm:text-left">
-            © {year} {siteConfig.name}. All rights reserved.
-          </p>
+        <div className="mt-12 border-t border-cream-canvas/15 pt-8">
+          <div className="mx-auto flex max-w-2xl flex-col items-center gap-2 text-center">
+            <CampaignPaidForBar variant="dark" />
+            <p className="font-body text-[9px] leading-snug text-cream-canvas/45">
+              © {year} {siteConfig.name}. All rights reserved.
+            </p>
+          </div>
         </div>
       </ContentContainer>
     </footer>

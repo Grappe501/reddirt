@@ -1,10 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useId, useState } from "react";
-import { brandMediaFromLegacySite } from "@/config/brand-media";
+import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { getJoinCampaignHref } from "@/config/external-campaign";
 import { primaryNavGroups } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
@@ -12,6 +10,7 @@ import { isExternalHref } from "@/lib/href";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { SearchDialog } from "@/components/search/SearchDialog";
+import { HeaderRoundLogo } from "@/components/layout/HeaderRoundLogo";
 import { NavDesktop } from "@/components/layout/NavDesktop";
 
 function navItemActive(pathname: string, href: string) {
@@ -26,6 +25,25 @@ export function SiteHeader() {
   const panelId = useId();
   const joinCampaignHref = getJoinCampaignHref();
   const joinExternal = isExternalHref(joinCampaignHref);
+  const headerRootRef = useRef<HTMLElement | null>(null);
+
+  /** Sets `--site-header-h` (px) so `globals.css` can compute `--site-header-shim` for the layout shim. */
+  useLayoutEffect(() => {
+    const el = headerRootRef.current;
+    if (!el) return;
+    const apply = () => {
+      // Extra px accounts for subpixel layout, box-shadow, and border stacks vs. a bare height read.
+      const h = Math.ceil(el.getBoundingClientRect().height) + 10;
+      document.documentElement.style.setProperty("--site-header-h", `${h}px`);
+    };
+    apply();
+    const ro = new ResizeObserver(apply);
+    ro.observe(el);
+    return () => {
+      ro.disconnect();
+      document.documentElement.style.removeProperty("--site-header-h");
+    };
+  }, []);
 
   useEffect(() => {
     try {
@@ -64,7 +82,10 @@ export function SiteHeader() {
   }, [searchOpen]);
 
   return (
-    <header className="sticky top-0 z-50 w-full isolate border-b border-civic-gold/20 bg-civic-midnight shadow-[0_8px_32px_rgba(12,18,34,0.25)]">
+    <header
+      ref={headerRootRef}
+      className="fixed left-0 right-0 top-0 z-50 w-full isolate border-b border-civic-gold/20 bg-civic-midnight shadow-[0_8px_32px_rgba(12,18,34,0.25)]"
+    >
       <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
       <div className="relative z-10 border-b border-civic-gold/20 bg-civic-midnight">
         <div className="mx-auto flex w-full max-w-[100vw] items-center justify-between gap-2 px-[var(--gutter-x)] py-3 sm:py-3.5 lg:gap-3 lg:py-4">
@@ -73,15 +94,10 @@ export function SiteHeader() {
           aria-label={`${siteConfig.name} — home`}
           className="group flex min-w-0 max-w-[min(100%,18rem)] shrink-0 items-center gap-2.5 sm:max-w-md sm:gap-3 lg:max-w-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-civic-gold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-civic-midnight"
         >
-          <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-civic-gold/30 bg-civic-blue/50 sm:h-12 sm:w-12">
-            <Image
-              src={brandMediaFromLegacySite.kellyPortrait}
-              alt=""
-              width={120}
-              height={120}
-              className="h-full w-full object-cover"
-              priority
-              unoptimized
+          <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-civic-gold/25 bg-civic-blue/40 shadow-[0_0_0_1px_rgba(201,162,39,0.12)_inset] sm:h-12 sm:w-12">
+            <HeaderRoundLogo
+              className="h-full w-full shrink-0 transition duration-200 group-hover:brightness-110"
+              aria-hidden
             />
           </span>
           <span className="min-w-0 flex flex-col leading-tight text-white">

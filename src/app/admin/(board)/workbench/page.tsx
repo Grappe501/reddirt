@@ -21,6 +21,8 @@ import { canSendEmail, canSendSms } from "@/lib/comms/preferences";
 import { getAdminActorUserId } from "@/lib/admin/actor";
 import { prisma } from "@/lib/db";
 import { CommsSendProvider } from "@prisma/client";
+import { countPendingFestivalIngests } from "@/lib/festivals/admin-queries";
+import { listAdminStrategyReferenceAssets } from "@/lib/campaign-ops/admin-strategy-reference";
 
 type Props = {
   searchParams: Promise<{ county?: string; thread?: string; error?: string; lane?: string }>;
@@ -52,7 +54,8 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
 
   const counties = await getCountiesForOpsFilter();
   const actorId = await getAdminActorUserId();
-  const [data, comms, activeThread, recentForRail, staffGmail] = await Promise.all([
+  const [data, comms, activeThread, recentForRail, staffGmail, pendingFestivalIngest, adminStrategyRefs] =
+    await Promise.all([
     getWorkbenchData({ countyId }),
     getCommsWorkbenchData({ countyId, lane }),
     activeThreadId ? getThreadForWorkbench(activeThreadId) : Promise.resolve(null),
@@ -62,6 +65,8 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
           where: { userId: actorId, isActive: true },
         })
       : Promise.resolve(null),
+    countPendingFestivalIngests().catch(() => 0),
+    listAdminStrategyReferenceAssets().catch(() => []),
   ]);
 
   const seenThread = new Set<string>();
@@ -247,6 +252,12 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
             >
               Calendar HQ
             </Link>
+            <Link
+              href="/admin/workbench/festivals"
+              className="rounded border border-deep-soil/20 bg-white px-1.5 py-0.5 text-[10px] font-bold text-deep-soil"
+            >
+              Community events{pendingFestivalIngest > 0 ? ` (${pendingFestivalIngest})` : ""}
+            </Link>
           </div>
         </div>
       </div>
@@ -315,6 +326,15 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
           <p className="font-heading text-lg font-bold text-deep-soil">{data.pendingMediaReview.length}</p>
           <Link href="/admin/owned-media?status=PENDING_REVIEW" className="text-[10px] font-semibold text-civic-slate">
             →
+          </Link>
+        </div>
+        <div className={card}>
+          <p className={h2}>Events ingest</p>
+          <p className={`font-heading text-lg font-bold ${pendingFestivalIngest > 0 ? "text-amber-900" : "text-deep-soil"}`}>
+            {pendingFestivalIngest}
+          </p>
+          <Link href="/admin/workbench/festivals" className="text-[10px] font-semibold text-civic-slate">
+            Review
           </Link>
         </div>
       </div>
@@ -674,7 +694,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
         </aside>
       </div>
 
-      <div className="mt-0 grid grid-cols-1 gap-1 border-b border-deep-soil/10 bg-cream-canvas/60 px-1 py-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-0 grid grid-cols-1 gap-1 border-b border-deep-soil/10 bg-cream-canvas/60 px-1 py-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
         <div className={card}>
           <h2 className="font-heading text-xs font-bold text-deep-soil">Tasks due today</h2>
           <ul className="mt-0.5 max-h-28 overflow-y-auto text-[10px]">
@@ -717,7 +737,30 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
             <Link className="text-civic-slate" href="/admin/owned-media/batches">
               Batches
             </Link>
+            <Link className="text-civic-slate" href="/admin/owned-media/grid">
+              Grid
+            </Link>
           </div>
+        </div>
+        <div className={card}>
+          <h2 className="font-heading text-xs font-bold text-deep-soil">Strategy & coordination</h2>
+          <p className="mt-0.5 text-[10px] text-deep-soil/60">
+            Staff playbooks (e.g. DNC) — not public. Run{" "}
+            <code className="rounded bg-deep-soil/5 px-0.5">npm run ingest:dnc-playbook</code> after updating the file.
+          </p>
+          <ul className="mt-0.5 max-h-20 overflow-y-auto text-[10px]">
+            {adminStrategyRefs.length === 0 ? (
+              <li className="text-deep-soil/50">None ingested yet</li>
+            ) : (
+              adminStrategyRefs.map((a) => (
+                <li key={a.id} className="truncate border-b border-deep-soil/5 py-0.5">
+                  <Link href={`/admin/owned-media/${a.id}`} className="text-civic-slate" title={a.fileName}>
+                    {a.title}
+                  </Link>
+                </li>
+              ))
+            )}
+          </ul>
         </div>
       </div>
     </div>

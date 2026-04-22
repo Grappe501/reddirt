@@ -35,11 +35,12 @@ const ACTIONS = [
 ] as const;
 
 export function HomeGetInvolvedSection() {
-  const joinHref = getJoinCampaignHref();
-  const joinExternal = isExternalHref(joinHref);
-
   return (
-    <section className="bg-white py-section-y lg:py-section-y-lg" aria-labelledby="get-involved-heading">
+    <div
+      className="bg-white py-section-y lg:py-section-y-lg"
+      role="region"
+      aria-labelledby="get-involved-heading"
+    >
       <ContentContainer>
         <FadeInWhenVisible className="mx-auto max-w-3xl text-center">
           <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-red-dirt">{GET_INVOLVED_SECTION.eyebrow}</p>
@@ -77,31 +78,7 @@ export function HomeGetInvolvedSection() {
             </FadeInWhenVisible>
           ))}
         </div>
-        <FadeInWhenVisible className="mt-14 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-4" delay={0.1}>
-          <Link
-            href={joinHref}
-            target={joinExternal ? "_blank" : undefined}
-            rel={joinExternal ? "noopener noreferrer" : undefined}
-            className="inline-flex min-h-[52px] flex-1 items-center justify-center rounded-btn bg-civic-midnight px-8 py-3.5 text-center text-sm font-bold uppercase tracking-wider text-civic-mist sm:flex-none hover:bg-civic-deep"
-          >
-            Volunteer sign-up
-          </Link>
-          <Link
-            href={siteConfig.donateHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-[52px] flex-1 items-center justify-center rounded-btn bg-civic-gold px-8 py-3.5 text-center text-sm font-bold uppercase tracking-wider text-civic-midnight sm:flex-none hover:bg-civic-gold-soft"
-          >
-            Donate
-          </Link>
-          <Link
-            href="/get-involved#join"
-            className="inline-flex min-h-[52px] flex-1 items-center justify-center rounded-btn border-2 border-civic-ink/20 bg-transparent px-8 py-3.5 text-center text-sm font-bold uppercase tracking-wider text-civic-ink sm:flex-none hover:border-civic-gold"
-          >
-            Command HQ sign-up
-          </Link>
-        </FadeInWhenVisible>
       </ContentContainer>
-    </section>
+    </div>
   );
 }

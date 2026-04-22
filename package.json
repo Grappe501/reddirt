@@ -23,10 +23,15 @@
     "ingest:interactive": "node scripts/ingest-prompt-key.cjs",
     "ingest:watch": "tsx scripts/campaign-media-ingest-watcher.ts",
     "voter-file:import": "tsx scripts/voter-file-import.ts",
+    "ingest:campaign-info-folder": "tsx scripts/ingest-campaign-folder.ts --dir \"H:/SOSWebsite/campaign information for ingestion\" --community-training --include-zips",
     "ingest:briefings": "tsx scripts/ingest-briefing-zip.ts",
     "ingest:folder": "tsx scripts/ingest-campaign-folder.ts",
     "ingest:device": "tsx scripts/ingest-campaign-device.ts",
-    "ingest:campaign-brain": "tsx scripts/ingest-campaign-brain.ts"
+    "ingest:campaign-brain": "tsx scripts/ingest-campaign-brain.ts",
+    "ingest:volunteer-onboarding": "tsx scripts/ingest-volunteer-onboarding-docs.ts",
+    "ingest:dnc-playbook": "tsx scripts/ingest-dnc-playbook.ts",
+    "import:may-2026-calendar-snapshot": "tsx scripts/import-kelly-calendar-may-2026-snapshot.ts",
+    "import:kelly-calendar-2026-sweep": "tsx scripts/import-kelly-calendar-2026-sweep.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -34,8 +39,11 @@
     "@sendgrid/eventwebhook": "^8.0.0",
     "@sendgrid/mail": "^8.1.6",
     "@supabase/supabase-js": "^2.104.0",
+    "@vis.gl/react-google-maps": "^1.8.3",
     "chokidar": "^5.0.0",
     "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "date-fns-tz": "^3.2.0",
     "exifr": "^7.1.3",
     "framer-motion": "^11.18.2",
     "google-auth-library": "^10.6.2",

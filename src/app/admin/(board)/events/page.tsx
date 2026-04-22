@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { CampaignEventStatus, CampaignEventType, CampaignEventVisibility } from "@prisma/client";
 import { createCampaignEventAction } from "@/app/admin/ops-actions";
+import { countPendingPublicFormFestivalIngests } from "@/lib/festivals/admin-queries";
 import { prisma } from "@/lib/db";
 import { CAMPAIGN_ROLE_KEYS, formatRoleLabel } from "@/lib/ops/roles";
 
 export default async function AdminEventsPage() {
-  const [events, counties] = await Promise.all([
+  const [events, counties, publicSuggestPending] = await Promise.all([
     prisma.campaignEvent.findMany({
       orderBy: { startAt: "asc" },
       take: 80,
       include: { county: { select: { displayName: true, slug: true } } },
     }),
     prisma.county.findMany({ orderBy: { sortOrder: "asc" }, select: { id: true, displayName: true } }),
+    countPendingPublicFormFestivalIngests().catch(() => 0),
   ]);
 
   return (
@@ -20,6 +22,30 @@ export default async function AdminEventsPage() {
       <p className="mt-2 font-body text-sm text-deep-soil/75">
         Create campaign events. Saving runs workflow templates (appearance prep, etc.) for matching types.
       </p>
+
+      {publicSuggestPending > 0 ? (
+        <div className="mt-5 rounded-md border border-amber-200 bg-amber-50/80 px-4 py-3 font-body text-sm text-amber-950">
+          <p className="font-semibold">
+            {publicSuggestPending} public event suggestion{publicSuggestPending === 1 ? "" : "s"} to review
+          </p>
+          <p className="mt-1 text-amber-900/90">
+            From the Movement /events “Suggest a fair or festival” form. Approve to show on the site-wide community feed
+            and campaign trail.
+          </p>
+          <p className="mt-2">
+            <Link href="/admin/events/community-suggestions" className="font-bold text-red-900 underline">
+              Open public suggestions queue →
+            </Link>
+          </p>
+        </div>
+      ) : (
+        <p className="mt-4 text-xs text-deep-soil/50">
+          <Link href="/admin/events/community-suggestions" className="text-civic-slate underline">
+            Public event suggestions
+          </Link>{" "}
+          (Movement /events form)
+        </p>
+      )}
 
       <form
         action={createCampaignEventAction}

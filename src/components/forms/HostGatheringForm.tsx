@@ -21,7 +21,13 @@ const gatheringLabels: Record<(typeof gatheringTypeValues)[number], string> = {
   other: "Something else (tell us)",
 };
 
-export function HostGatheringForm({ id }: { id?: string }) {
+type HostGatheringFormProps = {
+  id?: string;
+  /** When set (e.g. on `/listening-sessions`), the gather type defaults to this value. */
+  initialGatheringType?: (typeof gatheringTypeValues)[number];
+};
+
+export function HostGatheringForm({ id, initialGatheringType = "living_room" }: HostGatheringFormProps) {
   const [serverError, setServerError] = useState<string | null>(null);
   const [showSuccess, setShowSuccess] = useState(false);
   const [started, setStarted] = useState(false);
@@ -36,7 +42,7 @@ export function HostGatheringForm({ id }: { id?: string }) {
       zip: "",
       county: "",
       community: "",
-      gatheringType: "living_room",
+      gatheringType: initialGatheringType,
       gatheringTypeOther: "",
       preferredTiming: "",
       expectedGuests: "",
@@ -79,7 +85,7 @@ export function HostGatheringForm({ id }: { id?: string }) {
       zip: "",
       county: "",
       community: "",
-      gatheringType: "living_room",
+      gatheringType: initialGatheringType,
       gatheringTypeOther: "",
       preferredTiming: "",
       expectedGuests: "",

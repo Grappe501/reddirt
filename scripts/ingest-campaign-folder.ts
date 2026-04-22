@@ -3,9 +3,11 @@
  * Uses loadRedDirtEnv: put OPENAI_API_KEY in .env.local to override a placeholder in .env.
  *
  * Usage (from RedDirt root):
- *   npx tsx scripts/ingest-campaign-folder.ts --dir "H:\SOSWebsite\campaign information for ingestion" [--public] [--comms] [--include-zips]
+ *   npx tsx scripts/ingest-campaign-folder.ts --dir "H:\SOSWebsite\campaign information for ingestion" [--public] [--comms] [--include-zips] [--include-elearning-bundles]
  *
  * --include-zips  Also open each .zip in the tree and ingest entries (same as ingest-briefing-zip per archive).
+ * By default, skips e-learning *player* paths (`content/lib/`, `__MACOSX/`) so SCORM/Rise runtimes are not ingested.
+ *   --include-elearning-bundles  Disable that skip (not recommended — mostly .js/.woff with no RAG value).
  * Skips: .crdownload, Thumbs.db, .DS_Store, __MACOSX, node_modules, .git
  */
 import { readdir, readFile } from "node:fs/promises";
@@ -19,6 +21,7 @@ import {
   supportedIngestExt,
 } from "./ingest-campaign-files-core";
 import { loadRedDirtEnv } from "./load-red-dirt-env";
+import { isBundledElearningPath } from "../src/lib/ingest/campaign-folder-skip";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
@@ -65,11 +68,12 @@ async function main() {
   const dirPath = arg("--dir");
   const publish = process.argv.includes("--public");
   const includeZips = process.argv.includes("--include-zips");
+  const includeElearningBundles = process.argv.includes("--include-elearning-bundles");
   const preset = resolvePreset();
   if (!dirPath) {
     // eslint-disable-next-line no-console
     console.error(
-      "Usage: npx tsx scripts/ingest-campaign-folder.ts --dir <path> [--public] [--comms] [--community-training] [--include-zips]"
+      "Usage: npx tsx scripts/ingest-campaign-folder.ts --dir <path> [--public] [--comms] [--community-training] [--include-zips] [--include-elearning-bundles]"
     );
     process.exit(1);
   }
@@ -121,6 +125,11 @@ async function main() {
         const data = await file.async("nodebuffer");
         if (!(data instanceof Buffer) || data.length === 0) continue;
         const entryPath = `${relPosix}/${name.split(path.sep).join("/")}`;
+        if (!includeElearningBundles && isBundledElearningPath(entryPath)) {
+          // eslint-disable-next-line no-console
+          console.log(`[ingest:${preset}] skip (e-learning bundle): ${entryPath}`);
+          continue;
+        }
         // eslint-disable-next-line no-console
         console.log(`[ingest:${preset}] ${entryPath} (${data.length} bytes)…`);
         const result = await ingestCampaignFileBuffer(data, name, {
@@ -144,6 +153,11 @@ async function main() {
 
     const buf = await readFile(abs);
     if (buf.length === 0) continue;
+    if (!includeElearningBundles && isBundledElearningPath(relPosix)) {
+      // eslint-disable-next-line no-console
+      console.log(`[ingest:${preset}] skip (e-learning bundle): ${relPosix}`);
+      continue;
+    }
     // eslint-disable-next-line no-console
     console.log(`[ingest:${preset}] ${relPosix} (${buf.length} bytes)…`);
     const result = await ingestCampaignFileBuffer(buf, path.basename(abs), {
@@ -177,6 +191,7 @@ async function main() {
         publish,
         preset,
         includeZips,
+        includeElearningBundles,
         root: absRoot,
         imported,
         duplicates,

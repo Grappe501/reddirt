@@ -43,7 +43,7 @@ export const JOURNEY_BEAT_DEFINITIONS: JourneyBeat[] = [
   },
 ];
 
-/** Homepage (`/`): hero + pathway cards + closing CTA only */
+/** Homepage (`/`): hero, trust ribbon, pathway cards, Step in (get involved) */
 export const LANDING_JOURNEY_BEATS: JourneyBeat[] = JOURNEY_BEAT_DEFINITIONS.filter(
   (b) => b.id === "beat-arrival" || b.id === "beat-act",
 );

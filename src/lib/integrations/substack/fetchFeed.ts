@@ -10,7 +10,12 @@ export class SubstackFeedError extends Error {
   }
 }
 
-export async function fetchSubstackFeedXml(feedUrl: string, timeoutMs = DEFAULT_TIMEOUT_MS): Promise<string> {
+export async function fetchSubstackFeedXml(
+  feedUrl: string,
+  timeoutMs = DEFAULT_TIMEOUT_MS,
+  /** Set for public pages; omit (default) so admin sync always sees fresh XML. */
+  cache?: { revalidate: number },
+): Promise<string> {
   const url = feedUrl.trim();
   if (!url) {
     throw new SubstackFeedError("Substack feed URL is not configured.", "missing_url");
@@ -23,7 +28,7 @@ export async function fetchSubstackFeedXml(feedUrl: string, timeoutMs = DEFAULT_
         Accept: "application/rss+xml, application/xml, text/xml, */*",
         "User-Agent": "RedDirtSite/1.0 (content sync)",
       },
-      next: { revalidate: 0 },
+      next: cache ? { revalidate: cache.revalidate } : { revalidate: 0 },
       signal: AbortSignal.timeout(timeoutMs),
     });
   } catch {

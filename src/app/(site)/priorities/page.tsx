@@ -9,6 +9,7 @@ import { CTASection } from "@/components/blocks/CTASection";
 import { Button } from "@/components/ui/Button";
 import { pageMeta } from "@/lib/seo/metadata";
 import { getPageBlockPayload, type HeroBlockPayload } from "@/lib/content/page-blocks";
+import { getHostOrVisitRequestHref } from "@/lib/county/official-links";
 
 export const metadata: Metadata = pageMeta({
   title: "Priorities for the office",
@@ -54,7 +55,7 @@ export default async function PrioritiesPage() {
         <Button href="/get-involved" variant="primary">
           Get involved
         </Button>
-        <Button href="/direct-democracy" variant="outline">
+        <Button href="/direct-democracy" variant="outlineOnDark">
           Ballot access & initiatives
         </Button>
       </PageHero>
@@ -112,7 +113,7 @@ export default async function PrioritiesPage() {
         description="Republican, Democratic, or civic—we want to talk with Arkansans where they already gather about how this office can serve you fairly."
         variant="primary-band"
       >
-        <Button href="/get-involved" variant="secondary">
+        <Button href={getHostOrVisitRequestHref()} variant="secondary">
           Request a visit
         </Button>
         <Button href="/about" variant="outline" className="border-cream-canvas/50 text-cream-canvas hover:bg-cream-canvas/10">

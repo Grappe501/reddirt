@@ -7,6 +7,7 @@ import { StorySubmissionForm } from "@/components/forms/StorySubmissionForm";
 import { StoriesHub } from "@/components/content/StoriesHub";
 import { pageMeta } from "@/lib/seo/metadata";
 import { featuredPublicStories, listPublicStoriesMerged } from "@/lib/content/public-catalog";
+import { listPublicSubstackPosts } from "@/lib/integrations/substack/list-public-posts";
 
 export const metadata: Metadata = pageMeta({
   title: "Stories",
@@ -18,7 +19,13 @@ export const metadata: Metadata = pageMeta({
 
 export default async function StoriesPage() {
   const stories = await listPublicStoriesMerged();
-  const featured = await featuredPublicStories(2);
+  let substackPosts: Awaited<ReturnType<typeof listPublicSubstackPosts>> = [];
+  try {
+    substackPosts = await listPublicSubstackPosts();
+  } catch (err) {
+    console.error("[stories] Substack notebook feed failed:", err);
+  }
+  const featured = substackPosts.length > 0 ? [] : await featuredPublicStories(2);
 
   return (
     <>
@@ -34,10 +41,10 @@ export default async function StoriesPage() {
             id="stories-archive-heading"
             align="left"
             eyebrow="Archive"
-            title="Read by theme—or start at the featured voices"
-            subtitle="Filters help you find your lane. Every story here is permissioned truth—not a stump speech."
+            title="Notebook on Substack, then Arkansas voices on this site"
+            subtitle="The top section pulls live posts from Kelly’s Substack (full articles open there). Below, filters apply to on-site stories—permissioned voices from the archive, not a stump speech."
           />
-          <StoriesHub stories={stories} featured={featured} />
+          <StoriesHub stories={stories} featured={featured} substackPosts={substackPosts} />
         </ContentContainer>
       </FullBleedSection>
 

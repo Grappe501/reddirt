@@ -779,6 +779,7 @@ model County {
   signupSheetEntries      SignupSheetEntry[]
   communicationThreads    CommunicationThread[]
   eventAnalyticsSnapshots EventAnalyticsSnapshot[]
+  arkansasFestivalIngests ArkansasFestivalIngest[]
 
   @@index([published, sortOrder])
 }
@@ -1009,6 +1010,8 @@ enum CampaignEventType {
   PRESS
   DEADLINE
   ORIENTATION
+  /// Third-party fair, festival, or community gathering (often after promotion from ingest).
+  FESTIVAL
   OTHER
 }
 
@@ -1087,6 +1090,26 @@ enum EventApprovalState {
   PENDING
   APPROVED
   REJECTED
+}
+
+/// Ingested fairs / festivals — review before public site + optional promotion to `CampaignEvent`.
+enum FestivalIngestReviewStatus {
+  PENDING_REVIEW
+  APPROVED
+  REJECTED
+  DUPLICATE
+}
+
+enum FestivalSourceChannel {
+  RSS
+  WEB
+  FACEBOOK
+  INSTAGRAM
+  GOOGLE
+  MANUAL
+  OTHER
+  /// Submitted from the public Movement /events form — pending staff review.
+  PUBLIC_FORM
 }
 
 enum EventSyncDirection {
@@ -1269,6 +1292,8 @@ model CampaignEvent {
   analyticsSnapshots     EventAnalyticsSnapshot[]
   weeklyBigRock          WeeklyBigRock?             @relation("BigRockEvent")
   communicationCampaigns CommunicationCampaign[]
+  /// When this event was created by promoting an ingested fair/festival.
+  festivalPromotionSource ArkansasFestivalIngest? @relation("FestivalPromotion")
 
   @@index([startAt, status])
   @@index([countyId, startAt])
@@ -1277,6 +1302,71 @@ model CampaignEvent {
   @@index([isPublicOnWebsite, eventWorkflowState, startAt])
   @@index([googleEventId])
   @@index([googleSyncState, updatedAt])
+}
+
+/// Batch record for festival ingest runs (cron / manual).
+model FestivalIngestRun {
+  id          String    @id @default(cuid())
+  startedAt   DateTime  @default(now())
+  finishedAt  DateTime?
+  label       String?
+  summaryJson Json?
+  inserted    Int       @default(0)
+  updated     Int       @default(0)
+  skipped     Int       @default(0)
+  error       String?   @db.Text
+  festivals   ArkansasFestivalIngest[]
+}
+
+/// Fair, festival, or large community gathering discovered via ingest — not a campaign event until reviewed / promoted.
+model ArkansasFestivalIngest {
+  id                 String   @id @default(cuid())
+  name               String
+  shortDescription   String?  @db.Text
+  startAt            DateTime
+  endAt              DateTime
+  timezone           String   @default("America/Chicago")
+  city               String?
+  countyId           String?
+  county             County?  @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  latitude           Float?
+  longitude          Float?
+  venueName          String?
+  sourceChannel      FestivalSourceChannel
+  /// Deduplication key: canonical public URL for the listing when available.
+  sourceUrl          String   @unique
+  sourceFingerprint  String?
+  rawPayload         Json?
+  /// When source is `PUBLIC_FORM`, optional more-info link the submitter provided.
+  submitterInfoUrl   String?
+  /// Name/email from the public suggestion form (never shown on site; admin only).
+  submitterName      String?
+  submitterEmail     String?
+  reviewStatus       FestivalIngestReviewStatus @default(PENDING_REVIEW)
+  /// When true and `reviewStatus` is APPROVED, show on public campaign trail feed.
+  isVisibleOnSite    Boolean  @default(false)
+  estimatedAttendance Int?
+  promotedCampaignEventId String?  @unique
+  promotedCampaignEvent   CampaignEvent? @relation("FestivalPromotion", fields: [promotedCampaignEventId], references: [id], onDelete: SetNull)
+  ingestRunId        String?
+  ingestRun          FestivalIngestRun? @relation(fields: [ingestRunId], references: [id], onDelete: SetNull)
+  lastSeenInIngestAt DateTime @default(now())
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@index([startAt, reviewStatus])
+  @@index([countyId, startAt])
+  @@index([isVisibleOnSite, startAt, reviewStatus])
+}
+
+/// Cached AI output: weekend coverage + volunteer routing suggestions.
+model FestivalCoveragePlanSnapshot {
+  id          String   @id @default(cuid())
+  generatedAt DateTime @default(now())
+  validFrom   DateTime
+  validTo     DateTime
+  modelName   String?
+  payload     Json
 }
 
 model CampaignTask {

@@ -86,26 +86,46 @@ export function CampaignGuideDock() {
           pathname: typeof window !== "undefined" ? window.location.pathname : "/",
         }),
       });
-      const json = (await res.json()) as {
+
+      const raw = await res.text();
+      let json: {
         reply?: string;
         suggestions?: Suggestion[];
         error?: string;
         message?: string;
-      };
-      if (!res.ok) {
-        setError(json.message || json.error || "The guide couldn’t answer that right now.");
+      } = {};
+      try {
+        json = raw ? (JSON.parse(raw) as typeof json) : {};
+      } catch {
+        setError("The server returned an unexpected response.");
         setMessages((m) => [
           ...m,
           {
             role: "assistant",
             text:
-              json.message ||
-              json.error ||
-              "Something went wrong. Try again, or use the journey menu to find a page.",
+              "The guide service didn’t return JSON—often a deploy or proxy issue. Try again, or check the browser Network tab for /api/assistant.",
           },
         ]);
         return;
       }
+
+      if (!res.ok) {
+        const assistantText =
+          json.message ||
+          (json.error === "not_configured"
+            ? "OpenAI isn’t configured on the server. Add OPENAI_API_KEY to .env and restart."
+            : json.error === "search_failed"
+              ? "Couldn’t load or embed site content. Confirm DATABASE_URL, migrations, and OPENAI_API_KEY."
+              : json.error === "openai_chat_failed"
+                ? "The AI model request failed (quota, model name, or key)."
+                : json.error === "assistant_failed"
+                  ? "Something went wrong in the guide service. Check server logs."
+                  : json.error || "The guide couldn’t answer that right now.");
+        setError(assistantText);
+        setMessages((m) => [...m, { role: "assistant", text: assistantText }]);
+        return;
+      }
+
       setLastSuggestions(json.suggestions ?? []);
       setMessages((m) => [...m, { role: "assistant", text: json.reply ?? "No reply returned." }]);
     } catch {

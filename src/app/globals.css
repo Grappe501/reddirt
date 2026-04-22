@@ -61,11 +61,26 @@
   --font-display: var(--font-heading);
   --font-ui: var(--font-body);
   --transition-standard: var(--transition-normal);
+
+  /**
+   * Fixed public site header. `--site-header-h` is a baseline; JS on `html` overwrites with measured
+   * px. `--site-header-shim` is the larger of a safe floor and the live height (avoids underlap).
+   */
+  --site-header-h: 6.5rem;
+  --site-header-shim: max(6.5rem, var(--site-header-h));
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --site-header-h: 7rem;
+    --site-header-shim: max(7rem, var(--site-header-h));
+  }
 }
 
 @layer base {
   html {
     @apply scroll-smooth;
+    scroll-padding-top: var(--site-header-shim);
   }
 
   body {

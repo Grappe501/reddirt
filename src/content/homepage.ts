@@ -6,15 +6,15 @@
 export const heardItems = [
   {
     title: "Voters want the office to feel fair—not performative",
-    body: "Across Arkansas, people aren’t asking for a personality cult. They want consistent rules, clear answers, and election administration that doesn’t look like it’s picking winners before the ballots are counted.",
+    body: "Across Arkansas, people aren’t asking for a personality cult. They want consistent rules, clear answers, and election administration that doesn’t look like it’s picking winners before the ballots are counted. They expect the same instructions in every county, paperwork that matches the law as written, and timely public information when something changes. When rules are explained in plain language and applied evenly—rural and urban, big county and small—that’s when confidence comes back. Fairness here is operational: honest checklists for clerks, audits that are actually designed to learn, and a front office that treats every voter’s question as legitimate. That’s the bar this campaign is built to meet.",
   },
   {
     title: "Small businesses and nonprofits need the SOS to be legible",
-    body: "Filings, registrations, and public records touch real deadlines. When systems are confusing or opaque, the cost lands on local people trying to do things the right way.",
+    body: "Filings, registrations, and public records touch real deadlines. When systems are confusing or opaque, the cost lands on local people trying to do things the right way. A missed annual report, a misfiled UCC, or a form that sends you in circles isn’t a footnote—it can mean fees, delays, or doors that should stay open suddenly closing. Owners and treasurers shouldn’t need a lawyer on speed-dial to understand what the state already requires. The office should publish clear examples, keep phone and online help actually answerable, and treat business services as economic infrastructure—not an afterthought buried in PDFs from 2011. Legibility is how Arkansas keeps employers and civic groups moving.",
   },
   {
     title: "Disengagement is often a design problem",
-    body: "Neighbors step back when the process feels rigged, confusing, or humiliating. Meeting people where they are—with respect—is how we rebuild trust in democratic institutions.",
+    body: "Neighbors step back when the process feels rigged, confusing, or humiliating. Meeting people where they are—with respect—is how we rebuild trust in democratic institutions. That starts with materials that read like they were written for humans, not for compliance officers, and with outreach that reaches small towns and night shifts—not just press releases aimed at Little Rock. When people can’t find accurate information, or they get punished for honest mistakes, they don’t become “apathetic”; they get smart about protecting their time. Fixing that is leadership: fewer dead ends, clearer paths, and an office that assumes good faith until proven otherwise. Trust returns when the process stops punishing curiosity.",
   },
 ] as const;
 

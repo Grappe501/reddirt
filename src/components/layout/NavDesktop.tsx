@@ -47,28 +47,63 @@ function NavMenu({ group, pathname, theme = "light" }: NavMenuProps) {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
+  const landing = group.groupLandingHref;
+  const landingActive = landing ? navItemActive(pathname, landing) : false;
+  const labelActive = active || landingActive;
+
+  const labelClass = cn(
+    "rounded-md px-2 py-2 font-body text-xs font-semibold tracking-wide transition focus-visible:outline-none focus-visible:ring-2 xl:px-2.5 xl:text-sm",
+    dark
+      ? "focus-visible:ring-civic-gold/50 " +
+          (labelActive ? "text-sunlight-gold" : "text-white hover:text-sunlight-gold")
+      : "focus-visible:ring-red-dirt/40 uppercase tracking-wider " +
+          (labelActive ? "text-red-dirt" : "text-deep-soil/80 hover:text-red-dirt"),
+  );
+
   return (
     <div className="relative flex-shrink-0" ref={rootRef}>
-      <button
-        type="button"
-        className={cn(
-          "flex items-center gap-1 rounded-md px-2 py-2 font-body text-xs font-semibold tracking-wide transition focus-visible:outline-none focus-visible:ring-2 xl:px-2.5 xl:text-sm",
-          dark
-            ? "focus-visible:ring-civic-gold/50 " +
-                (active ? "text-sunlight-gold" : "text-white hover:text-sunlight-gold")
-            : "focus-visible:ring-red-dirt/40 uppercase tracking-wider " +
-                (active ? "text-red-dirt" : "text-deep-soil/80 hover:text-red-dirt"),
-        )}
-        aria-expanded={open}
-        aria-haspopup="true"
-        aria-controls={menuId}
-        onClick={() => setOpen((v) => !v)}
-      >
-        {group.label}
-        <span className="text-[10px] opacity-70" aria-hidden>
-          ▾
-        </span>
-      </button>
+      {landing ? (
+        <div className="flex items-stretch">
+          <Link
+            href={landing}
+            className={cn(labelClass, "inline-flex items-center")}
+            aria-current={landingActive ? "page" : undefined}
+            onClick={() => setOpen(false)}
+          >
+            {group.label}
+          </Link>
+          <button
+            type="button"
+            className={cn(
+              "flex items-center rounded-r-md px-1.5 font-body text-[10px] opacity-90 transition focus-visible:outline-none focus-visible:ring-2 xl:px-2",
+              dark
+                ? "border-l border-white/15 text-white hover:bg-white/10 focus-visible:ring-civic-gold/50"
+                : "border-l border-deep-soil/15 text-deep-soil hover:bg-deep-soil/[0.06] focus-visible:ring-red-dirt/40",
+            )}
+            aria-expanded={open}
+            aria-haspopup="true"
+            aria-controls={menuId}
+            aria-label={`${group.label} submenu`}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span aria-hidden>▾</span>
+          </button>
+        </div>
+      ) : (
+        <button
+          type="button"
+          className={cn(labelClass, "flex items-center gap-1")}
+          aria-expanded={open}
+          aria-haspopup="true"
+          aria-controls={menuId}
+          onClick={() => setOpen((v) => !v)}
+        >
+          {group.label}
+          <span className="text-[10px] opacity-70" aria-hidden>
+            ▾
+          </span>
+        </button>
+      )}
       {open ? (
         <div
           id={menuId}

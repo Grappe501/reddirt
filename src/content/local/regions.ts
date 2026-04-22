@@ -65,7 +65,7 @@ export const regions: RegionPage[] = [
   {
     slug: "northwest-arkansas",
     name: "Northwest Arkansas",
-    region: "NWA Region",
+    region: "Northwest Arkansas",
     status: "coming_soon",
     summary:
       "A multi-county region with distinct towns and shared economic gravity. We’re laying groundwork for a regional hub that respects local identities.",

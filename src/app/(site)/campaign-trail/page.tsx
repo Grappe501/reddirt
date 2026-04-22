@@ -15,6 +15,7 @@ import type { EditorialPiece } from "@/content/editorial/types";
 import { ContentCollection } from "@prisma/client";
 import { brandMediaFromLegacySite } from "@/config/brand-media";
 import { listUpcomingPublicCampaignEventsForHomepage } from "@/lib/calendar/public-events";
+import { getLatestCoveragePlan, listPublicFestivalFeed } from "@/lib/festivals/queries";
 import {
   getFeaturedYoutubeForHub,
   listRoadPreviewPosts,
@@ -55,10 +56,12 @@ export default async function CampaignTrailPage() {
   const orchestratorItems = await listHomepageOrchestratorRail(6);
   const orchestratorRail = orchestratorItems.map(toFeedCardVM);
 
-  const [featuredYoutube, roadPreviewPosts, upcomingPublicEvents] = await Promise.all([
+  const [featuredYoutube, roadPreviewPosts, upcomingPublicEvents, festivalFeed, coverageSnap] = await Promise.all([
     getFeaturedYoutubeForHub(homepage.featuredHomepageVideoInboundId),
     listRoadPreviewPosts(6),
     listUpcomingPublicCampaignEventsForHomepage(3),
+    listPublicFestivalFeed(24),
+    getLatestCoveragePlan(),
   ]);
 
   return (
@@ -71,6 +74,8 @@ export default async function CampaignTrailPage() {
       featuredYoutube={featuredYoutube}
       roadPreviewPosts={roadPreviewPosts}
       upcomingPublicEvents={upcomingPublicEvents}
+      festivalFeed={festivalFeed}
+      festivalCoveragePayload={coverageSnap?.payload ?? null}
     />
   );
 }

@@ -53,40 +53,45 @@ function toYoutubeCard(row: InboundContentItem & { mediaAsset: MediaAsset | null
 export async function getFeaturedYoutubeForHub(
   featuredHomepageVideoInboundId: string | null,
 ): Promise<YoutubeCardVM | null> {
-  if (featuredHomepageVideoInboundId) {
-    const row = await prisma.inboundContentItem.findFirst({
+  try {
+    if (featuredHomepageVideoInboundId) {
+      const row = await prisma.inboundContentItem.findFirst({
+        where: {
+          id: featuredHomepageVideoInboundId,
+          ...inboundYoutubePublicWhere,
+        },
+        include: { mediaAsset: true },
+      });
+      const vm = row ? toYoutubeCard(row) : null;
+      if (vm) return vm;
+    }
+
+    const featured = await prisma.inboundContentItem.findFirst({
       where: {
-        id: featuredHomepageVideoInboundId,
         ...inboundYoutubePublicWhere,
+        reviewStatus: InboundReviewStatus.FEATURED,
       },
       include: { mediaAsset: true },
+      orderBy: [{ featuredWeight: "desc" }, { publishedAt: "desc" }],
     });
-    const vm = row ? toYoutubeCard(row) : null;
-    if (vm) return vm;
-  }
+    if (featured) {
+      const vm = toYoutubeCard(featured);
+      if (vm) return vm;
+    }
 
-  const featured = await prisma.inboundContentItem.findFirst({
-    where: {
-      ...inboundYoutubePublicWhere,
-      reviewStatus: InboundReviewStatus.FEATURED,
-    },
-    include: { mediaAsset: true },
-    orderBy: [{ featuredWeight: "desc" }, { publishedAt: "desc" }],
-  });
-  if (featured) {
-    const vm = toYoutubeCard(featured);
-    if (vm) return vm;
+    const fallback = await prisma.inboundContentItem.findFirst({
+      where: {
+        ...inboundYoutubePublicWhere,
+        OR: [{ contentKind: { in: VIDEO_KINDS } }, { contentKind: null }],
+      },
+      include: { mediaAsset: true },
+      orderBy: [{ featuredWeight: "desc" }, { publishedAt: "desc" }],
+    });
+    return fallback ? toYoutubeCard(fallback) : null;
+  } catch {
+    /** DB unavailable (e.g. local dev without Postgres) — page still renders without featured video. */
+    return null;
   }
-
-  const fallback = await prisma.inboundContentItem.findFirst({
-    where: {
-      ...inboundYoutubePublicWhere,
-      OR: [{ contentKind: { in: VIDEO_KINDS } }, { contentKind: null }],
-    },
-    include: { mediaAsset: true },
-    orderBy: [{ featuredWeight: "desc" }, { publishedAt: "desc" }],
-  });
-  return fallback ? toYoutubeCard(fallback) : null;
 }
 
 export async function listRoadPreviewPosts(limit = 6): Promise<RoadPostCard[]> {

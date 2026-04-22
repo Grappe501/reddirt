@@ -75,6 +75,8 @@ export function mimeForCampaignFileName(fileName: string): string {
   if (ext === ".jpg" || ext === ".jpeg") return "image/jpeg";
   if (ext === ".gif") return "image/gif";
   if (ext === ".webp") return "image/webp";
+  if (ext === ".heic") return "image/heic";
+  if (ext === ".heif") return "image/heif";
   if (ext === ".mp4") return "video/mp4";
   if (ext === ".webm") return "video/webm";
   if (ext === ".mov") return "video/quicktime";
@@ -85,7 +87,7 @@ export function mimeForCampaignFileName(fileName: string): string {
 }
 
 export function isImageExt(ext: string): boolean {
-  return [".png", ".jpg", ".jpeg", ".gif", ".webp"].includes(ext);
+  return [".png", ".jpg", ".jpeg", ".gif", ".webp", ".heic", ".heif"].includes(ext);
 }
 
 export function isVideoExt(ext: string): boolean {

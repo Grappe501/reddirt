@@ -55,7 +55,15 @@ export default async function AdminOwnedMediaPage({ searchParams }: Props) {
 
   return (
     <div className="mx-auto max-w-4xl">
-      <h1 className="font-heading text-3xl font-bold text-deep-soil">Campaign-owned media</h1>
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <h1 className="font-heading text-3xl font-bold text-deep-soil">Campaign-owned media</h1>
+        <Link
+          href="/admin/owned-media/grid"
+          className="font-body text-sm font-bold text-red-dirt underline underline-offset-2"
+        >
+          Grid view (search & density)
+        </Link>
+      </div>
       <p className="mt-3 max-w-2xl font-body text-sm text-deep-soil/75">
         Uploads are stored on disk (see <code className="rounded bg-deep-soil/5 px-1">data/owned-campaign-media</code> by
         default) with metadata in Postgres. This is the memory layer for photos, A/V, speeches, and transcripts — not

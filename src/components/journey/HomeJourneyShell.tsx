@@ -11,8 +11,10 @@ import type { MergedHomepageConfig } from "@/lib/content/homepage-merge";
 
 type HomeJourneyShellProps = {
   homepage: MergedHomepageConfig;
-  /** Journey beats below the pathway cards (e.g. `beat-act`) */
-  children: ReactNode;
+  /** Rendered immediately after the four pathway cards (e.g. Step in / get involved). */
+  afterGateway?: ReactNode;
+  /** Optional extra beats below (full-width column). */
+  children?: ReactNode;
 };
 
 /**
@@ -20,7 +22,7 @@ type HomeJourneyShellProps = {
  * Component) so `HomePathwayGateway` stays under `JourneyProvider` in the client tree—avoids
  * `useJourney` running without context after hydration.
  */
-export function HomeJourneyShell({ homepage, children }: HomeJourneyShellProps) {
+export function HomeJourneyShell({ homepage, afterGateway, children }: HomeJourneyShellProps) {
   return (
     <JourneyProvider beats={LANDING_JOURNEY_BEATS}>
       <div className="relative pb-10">
@@ -29,9 +31,12 @@ export function HomeJourneyShell({ homepage, children }: HomeJourneyShellProps) 
           <HomeTrustRibbonSection />
           <HomePathwayGateway />
         </div>
-        <div className="mx-auto w-full max-w-[100vw] px-[var(--gutter-x)] xl:max-w-[min(100%,1600px)]">
-          {children}
-        </div>
+        {afterGateway}
+        {children ? (
+          <div className="mx-auto w-full max-w-[100vw] px-[var(--gutter-x)] xl:max-w-[min(100%,1600px)]">
+            {children}
+          </div>
+        ) : null}
         <CampaignGuideDock />
       </div>
     </JourneyProvider>

@@ -2,13 +2,18 @@ import Link from "next/link";
 import type { EventItem } from "@/content/types";
 import { formatEventWhen } from "@/lib/format/eventDisplay";
 import { cn } from "@/lib/utils";
+import { fairFieldCardClass, getFieldAttendance } from "@/lib/festivals/field-attendance-style";
 
 export function EventCard({ event, className }: { event: EventItem; className?: string }) {
   const when = formatEventWhen(event);
+  const fairAtt = event.type === "Fairs and Festivals" ? getFieldAttendance(event) : null;
   return (
     <article
       className={cn(
-        "flex h-full flex-col justify-between rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-7",
+        "flex h-full flex-col justify-between rounded-card p-6 shadow-[var(--shadow-soft)] md:p-7",
+        event.type === "Fairs and Festivals" && fairAtt
+          ? fairFieldCardClass(fairAtt)
+          : "border border-deep-soil/10 bg-[var(--color-surface-elevated)]",
         className,
       )}
     >
@@ -27,6 +32,21 @@ export function EventCard({ event, className }: { event: EventItem; className?: 
           >
             {event.status === "upcoming" ? "Upcoming" : "Past"}
           </span>
+          {fairAtt === "suggested" ? (
+            <span className="rounded-full border border-amber-600/35 bg-amber-100/90 px-2.5 py-0.5 font-body text-[11px] font-bold uppercase tracking-wider text-deep-soil">
+              Suggested route
+            </span>
+          ) : null}
+          {fairAtt === "tentative" ? (
+            <span className="rounded-full border border-blue-600/35 bg-blue-100/80 px-2.5 py-0.5 font-body text-[11px] font-bold uppercase tracking-wider text-deep-soil">
+              Tentative
+            </span>
+          ) : null}
+          {fairAtt === "confirmed" ? (
+            <span className="rounded-full border border-field-green/45 bg-field-green/25 px-2.5 py-0.5 font-body text-[11px] font-bold uppercase tracking-wider text-deep-soil">
+              Confirmed
+            </span>
+          ) : null}
         </div>
         <h3 className="mt-4 font-heading text-xl font-bold text-deep-soil lg:text-2xl">
           <Link href={`/events/${event.slug}`} className="hover:text-red-dirt focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-dirt/40">
@@ -34,6 +54,9 @@ export function EventCard({ event, className }: { event: EventItem; className?: 
           </Link>
         </h3>
         <p className="mt-2 font-body text-sm font-semibold text-deep-soil/70">{when.primary}</p>
+        {when.secondary ? (
+          <p className="mt-0.5 font-body text-sm text-deep-soil/70">{when.secondary}</p>
+        ) : null}
         <p className="mt-1 font-body text-sm text-deep-soil/60">{event.locationLabel}</p>
         <p className="mt-4 font-body text-base leading-relaxed text-deep-soil/75">{event.summary}</p>
       </div>

@@ -146,3 +146,54 @@ export type LocalTeamInput = z.infer<typeof localTeamSchema>;
 export type DirectDemocracyCommitmentInput = z.infer<typeof directDemocracyCommitmentSchema>;
 export type StorySubmissionInput = z.infer<typeof storySubmissionSchema>;
 export type HostGatheringInput = z.infer<typeof hostGatheringSchema>;
+
+const dateYmd = z
+  .string()
+  .regex(/^\d{4}-\d{2}-\d{2}$/, "Use a valid date.");
+const timeHm = z
+  .string()
+  .regex(/^\d{2}:\d{2}$/, "Use 24h time (HH:MM).");
+const optionalHttpsUrl = z
+  .string()
+  .max(2000)
+  .optional()
+  .transform((v) => (v?.trim() ? v.trim() : undefined))
+  .superRefine((v, ctx) => {
+    if (v && !z.string().url().safeParse(v).success) {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, message: "Use a full link (https://…).", path: [] });
+    }
+  });
+const countyIdOptional = z
+  .string()
+  .optional()
+  .transform((v) => (v && v.length > 0 ? v : undefined))
+  .refine((v) => v === undefined || /^c[a-z0-9]+$/i.test(v), "Pick a valid county if listed.");
+
+export const suggestCommunityEventSchema = z
+  .object({
+    eventName: z
+      .string()
+      .min(3, "Event name is required.")
+      .max(200, "Name is a bit long — shorten?"),
+    shortDescription: z.string().max(2000).optional(),
+    startDate: dateYmd,
+    startTime: timeHm,
+    endDate: dateYmd,
+    endTime: timeHm,
+    city: z.string().max(120).optional(),
+    countyId: countyIdOptional,
+    venueName: z.string().max(200).optional(),
+    infoUrl: optionalHttpsUrl,
+    submitterName: name,
+    submitterEmail: email,
+    website: honeypot,
+  })
+  .superRefine((d, ctx) => {
+    const a = d.startDate + d.startTime;
+    const b = d.endDate + d.endTime;
+    if (b < a) {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, message: "End must be on or after start.", path: ["endTime"] });
+    }
+  });
+
+export type SuggestCommunityEventInput = z.infer<typeof suggestCommunityEventSchema>;

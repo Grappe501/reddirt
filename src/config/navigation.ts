@@ -8,6 +8,11 @@ export type NavItem = {
 export type NavGroup = {
   id: string;
   label: string;
+  /**
+   * When set, the group label is a direct link (e.g. Meet Kelly → /about). The ▾ control still opens the full
+   * submenu so “Understand the office” and siblings stay one click away.
+   */
+  groupLandingHref?: string;
   items: NavItem[];
 };
 
@@ -16,12 +21,12 @@ export const primaryNavGroups: NavGroup[] = [
   {
     id: "meet",
     label: "Meet Kelly",
+    groupLandingHref: "/about",
     items: [
-      { label: "About", href: "/about" },
+      { label: "About (full story)", href: "/about" },
       { label: "Understand the office", href: "/understand" },
       { label: "What we stand for", href: "/what-we-believe" },
       { label: "Why we're running", href: "/why-this-movement" },
-      { label: "The Arkansas we know", href: "/the-arkansas-we-know" },
     ],
   },
   {
@@ -64,6 +69,7 @@ export const primaryNavGroups: NavGroup[] = [
       { label: "Voter registration", href: "/voter-registration" },
       { label: "Tools & sign-up (this site)", href: "/get-involved" },
       { label: "Events", href: "/events" },
+      { label: "Election listening sessions", href: "/listening-sessions" },
       { label: "Local organizing", href: "/local-organizing" },
       { label: "Host a gathering", href: "/host-a-gathering" },
       { label: "Start a local team", href: "/start-a-local-team" },
@@ -89,6 +95,7 @@ export const footerNavGroups: { title: string; items: NavItem[] }[] = [
     title: "News & act",
     items: [
       ...primaryNavGroups[3].items,
+      { label: "Election listening sessions", href: "/listening-sessions" },
       { label: "Get involved", href: "/get-involved" },
       { label: "Donate", href: "/donate" },
     ],

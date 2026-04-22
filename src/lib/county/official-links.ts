@@ -26,8 +26,9 @@ export function getVolunteerInCountyHref(countySlug: string): string {
   return `/get-involved?ref_county=${encodeURIComponent(countySlug)}#volunteer`;
 }
 
+/** Public “invite us / request a stop” intake — host & event request form (not the volunteer sign-up). */
 export function getHostOrVisitRequestHref(): string {
-  return "/host-a-gathering";
+  return "/host-a-gathering#host-form";
 }
 
 export function getReferForRegistrationHelpHref(): string {

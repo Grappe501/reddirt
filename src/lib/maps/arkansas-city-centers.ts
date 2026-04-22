@@ -1,0 +1,72 @@
+/**
+ * Approximate city/ town centers (°N, °W) for map pins. Used for fair & festival
+ * cards where we don’t have a full street address geocode yet.
+ * Keys: lowercase, trimmed (matches festival `city` field).
+ */
+export const ARKANSAS_CITY_CENTER: Record<string, { lat: number; lng: number }> = {
+  "el dorado": { lat: 33.2076, lng: -92.6663 },
+  "hot springs": { lat: 34.5037, lng: -93.0552 },
+  sidney: { lat: 36.0065, lng: -91.6404 },
+  hampton: { lat: 33.5379, lng: -92.4602 },
+  bentonville: { lat: 36.3729, lng: -94.2088 },
+  dyess: { lat: 35.5934, lng: -90.2106 },
+  mcneil: { lat: 33.1007, lng: -93.2016 },
+  wilson: { lat: 35.5645, lng: -90.1076 },
+  cabot: { lat: 34.9784, lng: -92.0126 },
+  "little rock": { lat: 34.7465, lng: -92.2896 },
+  "mountain view": { lat: 35.8695, lng: -92.1006 },
+  ozark: { lat: 35.487, lng: -93.8207 },
+  booneville: { lat: 35.1401, lng: -93.9216 },
+  "fort smith": { lat: 35.3859, lng: -94.3985 },
+  manila: { lat: 35.8884, lng: -90.2001 },
+  texarkana: { lat: 33.4251, lng: -94.0477 },
+  hamburg: { lat: 33.2221, lng: -91.7988 },
+  fayetteville: { lat: 36.0617, lng: -94.1608 },
+  conway: { lat: 35.0917, lng: -92.4438 },
+  "bald knob": { lat: 35.3064, lng: -91.5604 },
+  cotter: { lat: 36.2784, lng: -92.1285 },
+  "de queen": { lat: 34.0379, lng: -94.3413 },
+  nashville: { lat: 33.9457, lng: -93.8471 },
+  springdale: { lat: 36.1867, lng: -94.1288 },
+  "fairfield bay": { lat: 35.5942, lng: -92.2658 },
+  paragould: { lat: 36.0562, lng: -90.5559 },
+  atkins: { lat: 35.2465, lng: -92.9338 },
+  magnolia: { lat: 33.2671, lng: -93.2393 },
+  osceola: { lat: 35.7051, lng: -90.0006 },
+  norfork: { lat: 36.1976, lng: -92.1804 },
+  mccrory: { lat: 35.2557, lng: -91.2015 },
+  wynne: { lat: 35.2506, lng: -90.7898 },
+  "eureka springs": { lat: 36.4012, lng: -93.7377 },
+  "greers ferry": { lat: 35.4956, lng: -92.1504 },
+  russellville: { lat: 35.2784, lng: -93.1338 },
+  hartman: { lat: 35.4306, lng: -93.6105 },
+  benton: { lat: 34.5645, lng: -92.5868 },
+  "north little rock": { lat: 34.7553, lng: -92.2666 },
+  sheridan: { lat: 34.3081, lng: -92.4013 },
+  "siloam springs": { lat: 36.1882, lng: -94.5404 },
+  fordyce: { lat: 33.8153, lng: -92.4121 },
+  fouke: { lat: 33.261, lng: -93.8881 },
+  /** Historic Washington, Hempstead County */
+  washington: { lat: 33.7765, lng: -93.681 },
+  "cherokee village": { lat: 36.2951, lng: -91.5501 },
+  elkins: { lat: 36.0012, lng: -93.9988 },
+  jonesboro: { lat: 35.822, lng: -90.7056 },
+  morrilton: { lat: 35.1501, lng: -92.7444 },
+  mena: { lat: 34.5809, lng: -94.2397 },
+  newport: { lat: 35.608, lng: -91.2498 },
+  harrisburg: { lat: 35.5653, lng: -90.7229 },
+  lavaca: { lat: 35.333, lng: -94.1924 },
+  waldron: { lat: 34.9004, lng: -94.0908 },
+  berryville: { lat: 36.3654, lng: -93.5646 },
+  jasper: { lat: 36.0079, lng: -93.1861 },
+  "west memphis": { lat: 35.1485, lng: -90.1841 },
+  "pine bluff": { lat: 34.2209, lng: -92.0036 },
+  greenwood: { lat: 35.2015, lng: -94.2558 },
+  gravette: { lat: 36.4215, lng: -94.4527 },
+  "rose bud": { lat: 35.3215, lng: -92.0816 },
+};
+
+export function getArkansasCityCenter(city: string): { lat: number; lng: number } | null {
+  const k = city.trim().toLowerCase();
+  return ARKANSAS_CITY_CENTER[k] ?? null;
+}

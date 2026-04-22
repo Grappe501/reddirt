@@ -19,12 +19,16 @@ export type RegionPage = {
 
 export type EventStatus = "upcoming" | "past";
 
+/** Movement calendar: coverage suggestion vs. human confirmation (fairs & festivals). */
+export type FieldAttendance = "unscheduled" | "suggested" | "tentative" | "confirmed";
+
 export type EventType =
   | "Town Hall"
   | "Community Conversation"
   | "House Gathering"
   | "Volunteer Training"
   | "Direct Democracy Briefing"
+  | "Fairs and Festivals"
   | "Labor / Worker Roundtable"
   | "Youth Civic Session"
   | "Listening Session";
@@ -33,6 +37,7 @@ export type EventItem = {
   slug: string;
   title: string;
   type: EventType;
+  /** Must match a label from `listMovementEventRegionFilterLabels()` in `content/arkansas-movement-regions`. */
   region: string;
   /** County slug when tied to a region page, optional */
   countySlug?: string;
@@ -52,6 +57,13 @@ export type EventItem = {
   audienceTags?: string[];
   relatedEventSlugs: string[];
   relatedResourceHrefs: Array<{ label: string; href: string }>;
+  /** Approximate map point (usually city center) for the movement /events map. */
+  mapCoordinates?: { lat: number; lng: number };
+  /**
+   * Fairs & festivals only. Card + map: default white (`unscheduled`), coverage optimizer → orange (`suggested`),
+   * staff intent → blue (`tentative`) or green (`confirmed`). Non-festivals may omit.
+   */
+  fieldAttendance?: FieldAttendance;
 };
 
 export type ResourceItem = {

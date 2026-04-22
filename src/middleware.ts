@@ -2,7 +2,7 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
 /**
- * 1) Pass `x-pathname` to the root layout (PublicLayoutMain) for the sitewide road imagery band.
+ * 1) Pass `x-pathname` on the request (available to server code if needed for pathname-aware content).
  * 2) Block misconfigured admin (no ADMIN_SECRET) except /admin/login.
  */
 export function middleware(request: NextRequest) {
@@ -23,8 +23,10 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     /*
-     * Match all pathnames except static assets and Next internals.
+     * Next.js–recommended pattern: do not run middleware on API routes, static files, image
+     * optimization, dev HMR, or favicon. Running on `_next/*` or mutating those requests can
+     * prevent CSS/JS from loading (page renders unstyled).
      */
-    "/((?!_next/static|_next/image|favicon\\.ico|.*\\.(?:ico|png|jpg|jpeg|gif|svg|webp|avif|woff2?|ttf|eot)).*)",
+    "/((?!api|_next/static|_next/image|_next/webpack-hmr|favicon.ico).*)",
   ],
 };

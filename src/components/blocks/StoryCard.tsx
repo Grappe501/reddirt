@@ -12,6 +12,8 @@ type StoryCardProps = {
   imageSrc?: string;
   imageAlt?: string;
   featured?: boolean;
+  /** Off-site link (e.g. Substack); opens in a new tab. */
+  external?: boolean;
 };
 
 export function StoryCard({
@@ -24,6 +26,7 @@ export function StoryCard({
   imageSrc,
   imageAlt,
   featured,
+  external,
 }: StoryCardProps) {
   return (
     <article
@@ -61,13 +64,20 @@ export function StoryCard({
             featured ? "text-2xl lg:text-3xl" : "text-xl lg:text-2xl",
           )}
         >
-          <Link href={href} className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-dirt/40">
+          <Link
+            href={href}
+            target={external ? "_blank" : undefined}
+            rel={external ? "noopener noreferrer" : undefined}
+            className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-dirt/40"
+          >
             {title}
           </Link>
         </h3>
         <p className="mt-3 flex-1 font-body text-base leading-relaxed text-deep-soil/75">{excerpt}</p>
         <Link
           href={href}
+          target={external ? "_blank" : undefined}
+          rel={external ? "noopener noreferrer" : undefined}
           className="mt-6 inline-flex font-body text-sm font-semibold text-red-dirt underline-offset-4 hover:underline"
         >
           {ctaLabel}

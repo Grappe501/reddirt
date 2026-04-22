@@ -6,6 +6,7 @@ import { EventCard } from "@/components/organizing/EventCard";
 import { EventFilterBar, type EventFiltersState } from "@/components/organizing/EventFilterBar";
 import type { EventType } from "@/content/types";
 import { Button } from "@/components/ui/Button";
+import { MovementFairsMap } from "@/components/organizing/MovementFairsMap";
 
 type EventsHubProps = {
   events: EventItem[];
@@ -13,9 +14,11 @@ type EventsHubProps = {
   regions: string[];
   audienceTags: string[];
   initialFilters?: Partial<EventFiltersState>;
+  /** Google Maps key (server can pass `GOOGLE_MAPS_API_KEY` or `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY`). */
+  mapsApiKey?: string | null;
 };
 
-export function EventsHub({ events, types, regions, audienceTags, initialFilters }: EventsHubProps) {
+export function EventsHub({ events, types, regions, audienceTags, initialFilters, mapsApiKey = null }: EventsHubProps) {
   const [filters, setFilters] = useState<EventFiltersState>({
     type: initialFilters?.type ?? "all",
     region: initialFilters?.region ?? "all",
@@ -48,6 +51,8 @@ export function EventsHub({ events, types, regions, audienceTags, initialFilters
         value={filters}
         onChange={setFilters}
       />
+
+      <MovementFairsMap apiKey={mapsApiKey} events={filtered} />
 
       {filtered.length === 0 ? (
         <div

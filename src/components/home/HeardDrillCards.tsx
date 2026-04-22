@@ -8,6 +8,9 @@ import type { heardItems } from "@/content/homepage";
 
 type Item = (typeof heardItems)[number];
 
+/** Below this, four lines usually hold the full text—no expand affordance. */
+const EXPAND_MEANINGFUL_MIN_CHARS = 320;
+
 const DEEP_LINKS: Record<string, { href: string; label: string }> = {
   "Voters want the office to feel fair—not performative": { href: "/priorities", label: "Read office priorities" },
   "Small businesses and nonprofits need the SOS to be legible": { href: "/resources", label: "Resources & clarity" },
@@ -22,6 +25,7 @@ export function HeardDrillCards({ items }: { items: readonly Item[] | Item[] }) 
       {items.map((item, i) => {
         const expanded = open === item.title;
         const deep = DEEP_LINKS[item.title];
+        const canExpand = item.body.length >= EXPAND_MEANINGFUL_MIN_CHARS;
         return (
           <FadeInWhenVisible key={item.title} delay={0.06 * i}>
             <article
@@ -32,17 +36,25 @@ export function HeardDrillCards({ items }: { items: readonly Item[] | Item[] }) 
               )}
             >
               <h3 className="font-heading text-lg font-bold leading-snug text-civic-ink md:text-xl">{item.title}</h3>
-              <p className="mt-4 font-body text-sm leading-relaxed text-civic-slate/95 md:text-base">
-                {expanded ? item.body : `${item.body.slice(0, 140)}${item.body.length > 140 ? "…" : ""}`}
+              <p
+                className={cn(
+                  "mt-4 font-body text-sm leading-relaxed text-civic-slate/95 md:text-base",
+                  canExpand && !expanded && "line-clamp-4",
+                )}
+              >
+                {item.body}
               </p>
               <div className="mt-5 flex flex-wrap items-center gap-3 border-t border-civic-ink/8 pt-4">
-                <button
-                  type="button"
-                  onClick={() => setOpen((v) => (v === item.title ? null : item.title))}
-                  className="font-body text-sm font-bold uppercase tracking-wider text-red-dirt hover:text-civic-blue"
-                >
-                  {expanded ? "Collapse" : "Expand insight"}
-                </button>
+                {canExpand ? (
+                  <button
+                    type="button"
+                    aria-expanded={expanded}
+                    onClick={() => setOpen((v) => (v === item.title ? null : item.title))}
+                    className="font-body text-sm font-bold uppercase tracking-wider text-red-dirt hover:text-civic-blue"
+                  >
+                    {expanded ? "Collapse" : "Expand insight"}
+                  </button>
+                ) : null}
                 {deep ? (
                   <Link href={deep.href} className="font-body text-sm font-semibold text-civic-blue underline-offset-4 hover:underline">
                     {deep.label} →

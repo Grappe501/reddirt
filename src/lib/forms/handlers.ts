@@ -222,15 +222,24 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
 
   const content = sanitizePlainText(summary, 8000);
 
+  // When `listeningSessionHostInterest` is true, workbench can filter for tour planning; future WorkflowTemplate
+  // `listening_session_town_plan` (see `src/lib/campaign-ops/listening-session-host-workflow.ts`) can attach task packs.
+  const submissionStructured =
+    data.formType === "host_gathering"
+      ? {
+          ...structuredBase,
+          gatheringType: data.gatheringType,
+          listeningSessionHostInterest: data.gatheringType === "listening_session",
+          raw: redactPII(summary),
+        }
+      : { ...structuredBase, raw: redactPII(summary) };
+
   const sub = await prisma.submission.create({
     data: {
       userId: user.id,
       type: submissionType,
       content,
-      structuredData: {
-        ...structuredBase,
-        raw: redactPII(summary),
-      } as object,
+      structuredData: submissionStructured as object,
     },
   });
 

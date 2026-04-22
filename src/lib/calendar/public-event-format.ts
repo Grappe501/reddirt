@@ -12,6 +12,7 @@ const TYPE_LABEL: Record<CampaignEventType, string> = {
   PRESS: "Press",
   DEADLINE: "Deadline",
   ORIENTATION: "Orientation",
+  FESTIVAL: "Fair / festival",
   OTHER: "Event",
 };
 

@@ -5,15 +5,26 @@ import type { StoryCategory, StoryEntry } from "@/content/stories";
 import { storyCategoryFilters } from "@/content/stories";
 import { StoryCard } from "@/components/blocks/StoryCard";
 import { cn } from "@/lib/utils";
+import { getCampaignBlogUrl } from "@/config/external-campaign";
+import type { PublicSubstackPost } from "@/lib/integrations/substack/list-public-posts";
 
 const PAGE_SIZE = 6;
+
+function formatNotebookDate(iso: string | null): string | null {
+  if (!iso) return null;
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return null;
+  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+}
 
 type StoriesHubProps = {
   stories: StoryEntry[];
   featured: StoryEntry[];
+  /** Live Substack / campaign notebook posts (RSS). When non-empty, replaces static “featured” rail. */
+  substackPosts?: PublicSubstackPost[];
 };
 
-export function StoriesHub({ stories, featured }: StoriesHubProps) {
+export function StoriesHub({ stories, featured, substackPosts = [] }: StoriesHubProps) {
   const [category, setCategory] = useState<StoryCategory | "all">("all");
   const [visible, setVisible] = useState(PAGE_SIZE);
 
@@ -29,6 +40,9 @@ export function StoriesHub({ stories, featured }: StoriesHubProps) {
     }
     return filtered;
   }, [category, filtered, featured]);
+
+  const notebookFeatured = substackPosts.slice(0, 2);
+  const notebookRest = substackPosts.slice(2);
 
   const shown = gridSource.slice(0, visible);
   const hasMore = gridSource.length > shown.length;
@@ -65,8 +79,85 @@ export function StoriesHub({ stories, featured }: StoriesHubProps) {
         })}
       </div>
 
-      {category === "all" && featured.length ? (
+      {category === "all" && substackPosts.length ? (
+        <div className="space-y-4 rounded-card border border-deep-soil/15 bg-white/60 p-6 shadow-[var(--shadow-soft)] md:p-8">
+          <div>
+            <p className="font-body text-[11px] font-bold uppercase tracking-[0.2em] text-red-dirt/90">Campaign notebook</p>
+            <h2 className="mt-2 font-heading text-xl font-bold text-deep-soil md:text-2xl">From Kelly’s Substack</h2>
+            <p className="mt-3 max-w-3xl font-body text-sm leading-relaxed text-deep-soil/75">
+              These summaries are pulled from our live RSS feed and updated automatically. Each card links to the{" "}
+              <strong className="font-semibold text-deep-soil/90">full post on Substack</strong> (opens in a new tab)—not
+              the on-site story pages below.
+            </p>
+            <p className="mt-2 font-body text-xs text-deep-soil/60">
+              <a
+                href={getCampaignBlogUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-red-dirt underline-offset-2 hover:underline"
+              >
+                Open the notebook home →
+              </a>
+            </p>
+          </div>
+          {notebookFeatured.length ? (
+            <ul className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+              {notebookFeatured.map((p) => {
+                const when = formatNotebookDate(p.publishedAtIso);
+                const metaBits = [when, p.author, "Substack"].filter(Boolean);
+                return (
+                  <li key={p.slug}>
+                    <StoryCard
+                      featured
+                      external
+                      title={p.title}
+                      excerpt={p.summary}
+                      href={p.canonicalUrl}
+                      meta={metaBits.join(" · ")}
+                      imageSrc={p.featuredImageUrl ?? undefined}
+                      imageAlt=""
+                      ctaLabel="Read on Substack"
+                    />
+                  </li>
+                );
+              })}
+            </ul>
+          ) : null}
+          {notebookRest.length ? (
+            <div className="space-y-4 pt-2">
+              <h3 className="font-heading text-lg font-bold text-deep-soil">More notebook posts</h3>
+              <ul className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+                {notebookRest.map((p) => {
+                  const when = formatNotebookDate(p.publishedAtIso);
+                  const metaBits = [when, p.author, "Substack"].filter(Boolean);
+                  return (
+                    <li key={p.slug}>
+                      <StoryCard
+                        external
+                        title={p.title}
+                        excerpt={p.summary}
+                        href={p.canonicalUrl}
+                        meta={metaBits.join(" · ")}
+                        imageSrc={p.featuredImageUrl ?? undefined}
+                        imageAlt=""
+                        ctaLabel="Read on Substack"
+                      />
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+
+      {category === "all" && !substackPosts.length && featured.length ? (
         <div className="space-y-4">
+          <div className="rounded-lg border border-amber-700/25 bg-amber-50/90 px-4 py-3 font-body text-sm text-deep-soil/85">
+            <strong className="font-semibold text-deep-soil">Placeholder featured stories.</strong> The Substack notebook
+            feed did not load—showing on-site archive picks instead. Refresh later or check{" "}
+            <code className="rounded bg-deep-soil/10 px-1 text-xs">SUBSTACK_FEED_URL</code> / network access.
+          </div>
           <h2 className="font-heading text-xl font-bold text-deep-soil">Featured</h2>
           <ul className="grid grid-cols-1 gap-8 lg:grid-cols-2">
             {featured.map((s) => (

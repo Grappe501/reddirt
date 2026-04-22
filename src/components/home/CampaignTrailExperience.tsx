@@ -20,8 +20,10 @@ import { HomeJournalSection } from "@/components/home/sections/HomeJournalSectio
 import { HomeHomepageQuoteSection } from "@/components/home/sections/HomeHomepageQuoteSection";
 import { HomeFromTheRoadPreviewSection } from "@/components/home/sections/HomeFromTheRoadPreviewSection";
 import { HomeUpcomingCalendarSection } from "@/components/home/sections/HomeUpcomingCalendarSection";
+import { HomeArkansasFestivalsSection } from "@/components/home/sections/HomeArkansasFestivalsSection";
 import type { RoadPostCard, YoutubeCardVM } from "@/lib/content/content-hub-queries";
 import type { PublicCampaignEvent } from "@/lib/calendar/public-event-types";
+import type { PublicFestivalCard } from "@/lib/festivals/types";
 
 export type CampaignTrailExperienceProps = {
   homepage: MergedHomepageConfig;
@@ -32,6 +34,8 @@ export type CampaignTrailExperienceProps = {
   featuredYoutube: YoutubeCardVM | null;
   roadPreviewPosts: RoadPostCard[];
   upcomingPublicEvents: PublicCampaignEvent[];
+  festivalFeed: PublicFestivalCard[];
+  festivalCoveragePayload: unknown | null;
 };
 
 export function CampaignTrailExperience({
@@ -43,6 +47,8 @@ export function CampaignTrailExperience({
   featuredYoutube,
   roadPreviewPosts,
   upcomingPublicEvents,
+  festivalFeed,
+  festivalCoveragePayload,
 }: CampaignTrailExperienceProps) {
   const { sectionOrder, arkansasBand, quoteBand } = homepage;
   const so = sectionOrder;
@@ -66,6 +72,7 @@ export function CampaignTrailExperience({
       >
         <HomeStatewideSection />
         {upcomingPublicEvents.length ? <HomeUpcomingCalendarSection events={upcomingPublicEvents} /> : null}
+        <HomeArkansasFestivalsSection festivals={festivalFeed} coveragePayload={festivalCoveragePayload} />
         {roadPreviewPosts.length ? <HomeFromTheRoadPreviewSection posts={roadPreviewPosts} /> : null}
         <HomeVideoSection omitMainEmbed={Boolean(featuredYoutube)} />
         {isHomepageSectionEnabled(so, "arkansas") ? <HomeArkansasBandSection band={arkansasBand} /> : null}

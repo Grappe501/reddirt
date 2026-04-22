@@ -6,13 +6,12 @@ import { useCallback, useEffect, useId, useState } from "react";
 import { createPortal } from "react-dom";
 import { brandMediaFromLegacySite } from "@/config/brand-media";
 import { siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
 
 const STORAGE_KEY = "reddirt_home_donate_floating_dismissed";
 
 /**
- * Homepage-only full-viewport donate prompt: opaque backdrop, centered square portrait,
- * Donate CTA or explicit close (X). Dismissal is remembered for the browser session.
+ * Homepage-only full-viewport donate prompt: opaque backdrop, centered Kelly portrait,
+ * Donate CTA and explicit close (X). Dismissal is remembered for the browser session.
  */
 export function HomeDonateFloatingGate() {
   const titleId = useId();
@@ -57,43 +56,32 @@ export function HomeDonateFloatingGate() {
       aria-modal="true"
       aria-labelledby={titleId}
     >
-      <div
-        className={cn(
-          "relative w-full max-w-[min(100%,20rem)] rounded-3xl border border-white/15 bg-civic-deep/95 p-5 shadow-[0_32px_80px_rgba(0,0,0,0.55)]",
-          "sm:max-w-sm sm:p-6",
-        )}
+      <h2 id={titleId} className="sr-only">
+        Support the campaign — donate
+      </h2>
+      <button
+        type="button"
+        onClick={dismiss}
+        className="fixed right-3 top-3 z-[101] flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-civic-midnight/80 text-xl font-light leading-none text-white transition hover:border-sunlight-gold/50 hover:bg-civic-blue/80 hover:text-sunlight-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sunlight-gold sm:right-4 sm:top-4"
+        aria-label="Close and continue to the site"
       >
-        <button
-          type="button"
-          onClick={dismiss}
-          className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-civic-midnight/80 text-xl font-light leading-none text-white transition hover:border-sunlight-gold/50 hover:bg-civic-blue/80 hover:text-sunlight-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sunlight-gold"
-          aria-label="Close and continue to the site"
-        >
-          ×
-        </button>
+        ×
+      </button>
 
-        <div className="pt-2 text-center">
-          <p id={titleId} className="font-heading text-lg font-bold text-white sm:text-xl">
-            Chip in to fuel the campaign
-          </p>
-          <p className="mt-2 font-body text-sm leading-relaxed text-white/85">
-            Fair elections for Arkansas take resources. If you’re able, help us reach every county.
-          </p>
-        </div>
-
-        <div className="relative mx-auto mt-6 aspect-square w-[min(100%,14rem)] overflow-hidden rounded-2xl border-2 border-sunlight-gold/40 shadow-lg sm:w-[15.5rem]">
+      <div className="flex w-full max-w-md flex-col items-center">
+        <div className="relative aspect-square w-full max-w-[min(100%,18.5rem)] overflow-hidden rounded-full border-2 border-sunlight-gold/40 shadow-[0_24px_80px_rgba(0,0,0,0.5)] sm:max-w-[20rem]">
           <Image
             src={brandMediaFromLegacySite.kellyPortrait}
             alt={brandMediaFromLegacySite.kellyPortraitAlt}
-            width={480}
-            height={480}
+            width={800}
+            height={800}
             className="h-full w-full object-cover"
             priority
             unoptimized
           />
         </div>
 
-        <div className="mt-8">
+        <div className="mt-10 w-full max-w-sm">
           <Link
             href={siteConfig.donateHref}
             {...(donateExternal
