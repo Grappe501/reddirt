@@ -9,7 +9,10 @@ import {
 } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { findOrCreateThreadForInboundPhone, touchThreadAfterInbound } from "@/lib/comms/threads";
+import { markCampaignReplyForThread } from "@/lib/comms/campaign-reply";
+import { handleTwilioOptOutKeywords } from "@/lib/comms/preferences";
 import { getTwilioEnv } from "@/lib/integrations/twilio/env";
+import { syncCampaignRecipientFromOutboundMessage } from "@/lib/comms/campaign-webhook-sync";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -82,6 +85,15 @@ async function handleInboundOrEcho(params: Record<string, string>) {
       deliveryStatus: MessageDeliveryStatus.RECEIVED,
     },
   });
+  void markCampaignReplyForThread(thread.id);
+
+  const p =
+    handleTwilioOptOutKeywords({
+      threadId: thread.id,
+      body,
+      optOutType: params.OptOutType?.trim() || null,
+    }) ?? null;
+  if (p) await p;
 
   const existingSuggest = await prisma.communicationActionQueue.findFirst({
     where: {
@@ -132,5 +144,8 @@ async function handleStatus(params: Record<string, string>) {
       failedAt: st === MessageDeliveryStatus.FAILED ? new Date() : null,
       errorMessage: params.ErrorMessage ?? (params.ErrorCode ? `code ${params.ErrorCode}` : null),
     },
+  });
+  void syncCampaignRecipientFromOutboundMessage(message.id, {
+    errorMessage: params.ErrorMessage ?? (params.ErrorCode ? `code ${params.ErrorCode}` : null),
   });
 }

@@ -1,5 +1,6 @@
 import { headers } from "next/headers";
 import { RoadAtmosphereStrip } from "@/components/layout/RoadAtmosphereStrip";
+import { isCampaignHomePath } from "@/config/campaign-brand";
 
 type Props = { children: React.ReactNode };
 
@@ -17,9 +18,11 @@ export async function PublicLayoutMain({ children }: Props) {
   if (path.startsWith("/api") || path.startsWith("/_next")) {
     return <>{children}</>;
   }
+  // Home already has a full-bleed hero; omit the road band so the fold is nav → hero, not stacked strips.
+  const showRoadBand = !isCampaignHomePath(path);
   return (
     <>
-      <RoadAtmosphereStrip pathname={path} />
+      {showRoadBand ? <RoadAtmosphereStrip pathname={path} /> : null}
       {children}
     </>
   );

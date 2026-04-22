@@ -11,8 +11,8 @@ export type JourneyBeatProps = {
 };
 
 const variants = {
-  light: "bg-white",
-  mist: "bg-civic-fog/80",
+  light: "bg-white text-civic-ink",
+  mist: "bg-civic-fog/80 text-civic-ink",
   deep: "bg-civic-deep text-civic-mist",
   midnight: "bg-civic-midnight text-civic-mist",
 } as const;

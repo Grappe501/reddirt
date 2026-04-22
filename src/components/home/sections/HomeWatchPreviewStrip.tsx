@@ -3,7 +3,11 @@ import { ContentContainer } from "@/components/layout/ContentContainer";
 
 export function HomeWatchPreviewStrip() {
   return (
-    <section className="border-y border-civic-ink/10 bg-white py-10" aria-label="Watch Kelly">
+    <section
+      id="hear-kelly"
+      className="border-y border-civic-ink/10 bg-white py-10 scroll-mt-[5.5rem]"
+      aria-label="Watch Kelly"
+    >
       <ContentContainer>
         <div className="flex flex-col items-start justify-between gap-6 rounded-card border border-civic-ink/10 bg-civic-fog/80 px-6 py-6 md:flex-row md:items-center md:px-8">
           <div>

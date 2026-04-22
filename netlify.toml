@@ -1,9 +1,11 @@
 # Red Dirt — Netlify
-# Requires DATABASE_URL (and optional OPENAI_* for runtime AI/search).
-# Ingest (npm run ingest) is manual or scheduled — not part of build.
+# Production build: `scripts/netlify-build.sh` runs Prisma migrations then `next build`.
+# Prisma needs DATABASE_URL at build time. Set it in Netlify env, or rely on Neon’s
+# NETLIFY_DATABASE_URL (the script maps it to DATABASE_URL).
+# Optional at runtime: OPENAI_* for AI/search. Ingest is manual/scheduled — not in build.
 
 [build]
-  command = "npx prisma migrate deploy && npm run build"
+  command = "bash scripts/netlify-build.sh"
 
 [build.environment]
   NODE_VERSION = "20"

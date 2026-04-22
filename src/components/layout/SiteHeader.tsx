@@ -13,7 +13,6 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { SearchDialog } from "@/components/search/SearchDialog";
 import { NavDesktop } from "@/components/layout/NavDesktop";
-import { HeaderCampaignStrip } from "@/components/layout/HeaderCampaignStrip";
 
 function navItemActive(pathname: string, href: string) {
   return pathname === href || (href.length > 1 && pathname.startsWith(`${href}/`));
@@ -25,6 +24,8 @@ export function SiteHeader() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [pathway, setPathway] = useState<string | null>(null);
   const panelId = useId();
+  const joinCampaignHref = getJoinCampaignHref();
+  const joinExternal = isExternalHref(joinCampaignHref);
 
   useEffect(() => {
     try {
@@ -63,15 +64,14 @@ export function SiteHeader() {
   }, [searchOpen]);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-civic-gold/20 shadow-[0_8px_32px_rgba(12,18,34,0.25)]">
+    <header className="sticky top-0 z-50 w-full isolate border-b border-civic-gold/20 bg-civic-midnight shadow-[0_8px_32px_rgba(12,18,34,0.25)]">
       <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
-      <HeaderCampaignStrip />
-      <div className="border-b border-civic-gold/20 bg-civic-midnight/95 backdrop-blur-md supports-[backdrop-filter]:bg-civic-midnight/90">
+      <div className="relative z-10 border-b border-civic-gold/20 bg-civic-midnight">
         <div className="mx-auto flex w-full max-w-[100vw] items-center justify-between gap-2 px-[var(--gutter-x)] py-3 sm:py-3.5 lg:gap-3 lg:py-4">
         <Link
           href="/"
           aria-label={`${siteConfig.name} — home`}
-          className="group flex min-w-0 max-w-[min(100%,18rem)] flex-shrink items-center gap-2.5 sm:max-w-md sm:gap-3 lg:max-w-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-civic-gold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-civic-midnight"
+          className="group flex min-w-0 max-w-[min(100%,18rem)] shrink-0 items-center gap-2.5 sm:max-w-md sm:gap-3 lg:max-w-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-civic-gold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-civic-midnight"
         >
           <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-civic-gold/30 bg-civic-blue/50 sm:h-12 sm:w-12">
             <Image
@@ -84,11 +84,11 @@ export function SiteHeader() {
               unoptimized
             />
           </span>
-          <span className="min-w-0 flex flex-col leading-tight">
-            <span className="font-heading text-sm font-bold tracking-tight text-civic-mist transition group-hover:text-sunlight-gold sm:text-base lg:text-lg">
+          <span className="min-w-0 flex flex-col leading-tight text-white">
+            <span className="font-heading text-sm font-bold tracking-tight transition group-hover:text-sunlight-gold sm:text-base lg:text-lg">
             {siteConfig.name}
             </span>
-            <span className="mt-0.5 hidden font-body text-[9px] font-medium uppercase tracking-[0.16em] text-civic-mist/55 sm:line-clamp-2 sm:text-[10px] lg:text-[11px]">
+            <span className="mt-0.5 hidden font-body text-[9px] font-medium uppercase tracking-[0.14em] text-white/90 sm:line-clamp-2 sm:text-[10px] lg:text-[11px]">
             {siteConfig.tagline}
             </span>
           </span>
@@ -100,15 +100,15 @@ export function SiteHeader() {
         >
           <Button
             type="button"
-            variant="ghost"
-            className="flex-shrink-0 px-2 py-2 text-xs font-semibold uppercase tracking-wider text-civic-mist/80 hover:text-sunlight-gold xl:px-3"
+            variant="ghostOnDark"
+            className="flex-shrink-0 px-2 py-2 text-xs font-semibold tracking-wide xl:px-3"
             onClick={() => setSearchOpen(true)}
           >
             Search
           </Button>
           <NavDesktop groups={primaryNavGroups} pathname={pathname} theme="dark" />
           <Button
-            href={getJoinCampaignHref()}
+            href={joinCampaignHref}
             variant="primary"
             className="ml-0.5 hidden flex-shrink-0 border border-red-dirt/20 px-3 py-2 text-xs font-bold uppercase tracking-wider shadow-soft xl:inline-flex xl:px-4 xl:text-sm"
           >
@@ -116,8 +116,8 @@ export function SiteHeader() {
           </Button>
           <Button
             href={siteConfig.donateHref}
-            variant="outline"
-            className="hidden flex-shrink-0 border-2 border-sunlight-gold/80 bg-sunlight-gold/10 px-3 py-2 text-xs font-bold uppercase tracking-wider text-civic-mist hover:border-sunlight-gold hover:bg-sunlight-gold/20 xl:inline-flex xl:px-4 xl:text-sm"
+            variant="outlineOnDark"
+            className="hidden flex-shrink-0 border-2 border-sunlight-gold/85 bg-sunlight-gold/15 px-3 py-2 text-xs font-bold uppercase tracking-wider text-white hover:border-sunlight-gold hover:bg-sunlight-gold/25 xl:inline-flex xl:px-4 xl:text-sm"
           >
             Donate
           </Button>
@@ -131,16 +131,16 @@ export function SiteHeader() {
         <div className="flex flex-shrink-0 items-center gap-2 lg:hidden">
           <Button
             type="button"
-            variant="outline"
-            className="border-civic-mist/25 bg-civic-midnight px-3 py-2 text-xs text-civic-mist hover:bg-civic-blue/50"
+            variant="outlineOnDark"
+            className="px-3 py-2 text-xs"
             onClick={() => setSearchOpen(true)}
           >
             Search
           </Button>
           <Button
             type="button"
-            variant="outline"
-            className="border-civic-mist/25 bg-civic-midnight px-4 py-2 text-xs text-civic-mist hover:bg-civic-blue/50"
+            variant="outlineOnDark"
+            className="px-4 py-2 text-xs"
             aria-expanded={open}
             aria-controls={panelId}
             onClick={() => setOpen((v) => !v)}
@@ -165,7 +165,7 @@ export function SiteHeader() {
 
       <div
         className={cn(
-          "fixed inset-y-0 right-0 z-50 w-[min(100%,420px)] border-l border-civic-gold/20 bg-civic-midnight text-civic-mist shadow-2xl transition duration-normal lg:hidden",
+          "fixed inset-y-0 right-0 z-50 w-[min(100%,420px)] border-l border-civic-gold/20 bg-civic-midnight text-white shadow-2xl transition duration-normal lg:hidden",
           open ? "translate-x-0" : "translate-x-full",
         )}
         id={`${panelId}-drawer`}
@@ -174,20 +174,15 @@ export function SiteHeader() {
       >
         <div className="flex h-full flex-col px-[var(--gutter-x)] py-6">
           <div className="flex items-center justify-between border-b border-civic-gold/20 pb-4">
-            <span className="font-heading text-lg font-bold text-civic-mist">Menu</span>
-            <Button
-              type="button"
-              variant="ghost"
-              className="text-civic-mist hover:text-sunlight-gold"
-              onClick={() => setOpen(false)}
-            >
+            <span className="font-heading text-lg font-bold text-white">Menu</span>
+            <Button type="button" variant="ghostOnDark" onClick={() => setOpen(false)}>
               Close
             </Button>
           </div>
           <nav className="mt-4 flex flex-1 flex-col gap-1 overflow-y-auto" aria-label="Mobile primary">
             {primaryNavGroups.map((group) => (
               <div key={group.id} className="pt-4 first:pt-2">
-                <p className="px-3 font-body text-[11px] font-bold uppercase tracking-[0.2em] text-civic-mist/45">
+                <p className="px-3 font-body text-[11px] font-bold tracking-wide text-white/85">
                   {group.label}
                 </p>
                 <div className="mt-2 flex flex-col gap-0.5">
@@ -205,7 +200,7 @@ export function SiteHeader() {
                           "rounded-btn px-3 py-3 font-body text-base font-medium",
                           active
                             ? "bg-civic-blue/60 text-sunlight-gold"
-                            : "text-civic-mist/90 hover:bg-civic-blue/40",
+                            : "text-white hover:bg-civic-blue/40",
                         )}
                         onClick={() => setOpen(false)}
                       >
@@ -217,26 +212,26 @@ export function SiteHeader() {
               </div>
             ))}
             <Link
-              href={getJoinCampaignHref()}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={joinCampaignHref}
+              target={joinExternal ? "_blank" : undefined}
+              rel={joinExternal ? "noopener noreferrer" : undefined}
               className="mt-6 rounded-btn bg-red-dirt px-3 py-3 text-center font-body text-base font-bold text-cream-canvas"
               onClick={() => setOpen(false)}
             >
-              Volunteer · KellyGrappe.com
+              Volunteer sign-up
             </Link>
             <Link
               href={siteConfig.donateHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-btn border-2 border-sunlight-gold/70 bg-sunlight-gold/10 px-3 py-3 text-center font-body text-base font-bold text-civic-mist"
+              className="rounded-btn border-2 border-sunlight-gold/70 bg-sunlight-gold/10 px-3 py-3 text-center font-body text-base font-bold text-white"
               onClick={() => setOpen(false)}
             >
               Donate
             </Link>
             <Link
               href="/get-involved"
-              className="rounded-btn border border-civic-mist/25 px-3 py-3 text-center font-body text-base font-semibold text-civic-mist/95"
+              className="rounded-btn border border-white/35 px-3 py-3 text-center font-body text-base font-semibold text-white"
               onClick={() => setOpen(false)}
             >
               Command HQ · this site

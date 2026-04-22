@@ -51,7 +51,7 @@ export function StoryCard({
       ) : null}
       <div className="flex flex-1 flex-col p-6 md:p-7">
         {meta ? (
-          <p className="font-body text-xs font-semibold uppercase tracking-wider text-washed-denim">
+          <p className="font-body text-xs font-semibold uppercase tracking-wider text-civic-slate">
             {meta}
           </p>
         ) : null}
@@ -76,3 +76,4 @@ export function StoryCard({
     </article>
   );
 }
+

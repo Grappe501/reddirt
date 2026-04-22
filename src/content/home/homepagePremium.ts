@@ -2,7 +2,10 @@
  * Homepage premium layer — static copy + CMS injection points.
  * Replace or extend via admin/API later; merge helpers combine live + placeholder.
  */
+import type { EditorialPiece } from "@/content/editorial/types";
 import type { StoryEntry } from "@/content/stories";
+import type { HomepageBlogCard } from "@/lib/content/blog-public";
+import type { PublicFeedCardVM } from "@/lib/orchestrator/public-feed";
 
 export const TRUST_RIBBON_ITEMS = [
   {
@@ -231,6 +234,61 @@ export type VoiceCardVM =
       meta: string;
       href: string;
     };
+
+/** Live journal rail cards (orchestrator + blog + editorial) before placeholder fill. */
+export function buildJournalTrailLive(
+  orchestratorRail: PublicFeedCardVM[],
+  blogPosts: HomepageBlogCard[],
+  editorialPieces: EditorialPiece[],
+): JournalCardVM[] {
+  const out: JournalCardVM[] = [];
+
+  for (const p of orchestratorRail.slice(0, 3)) {
+    out.push({
+      key: p.id,
+      title: p.title,
+      excerpt: p.excerpt,
+      href: p.href,
+      meta: p.meta,
+      cta: p.ctaLabel,
+      imageSrc: p.imageSrc,
+      imageAlt: p.imageAlt,
+    });
+  }
+  let bi = 0;
+  while (out.length < 3 && bi < blogPosts.length) {
+    const p = blogPosts[bi];
+    bi += 1;
+    out.push({
+      key: `blog-${p.slug}`,
+      title: p.title,
+      excerpt: p.excerpt,
+      href: p.href,
+      meta: p.publishedAt
+        ? `${p.publishedAt.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })} · Notebook`
+        : "Notebook",
+      cta: "Read",
+      imageSrc: p.imageSrc,
+      imageAlt: p.imageAlt,
+    });
+  }
+  let ei = 0;
+  while (out.length < 3 && ei < editorialPieces.length) {
+    const p = editorialPieces[ei];
+    ei += 1;
+    out.push({
+      key: `ed-${p.slug}`,
+      title: p.title,
+      excerpt: p.summary,
+      href: `/editorial/${p.slug}`,
+      meta: p.category,
+      cta: "Read essay",
+      imageSrc: p.image.src,
+      imageAlt: p.image.alt,
+    });
+  }
+  return out;
+}
 
 export function buildVoiceCards(stories: StoryEntry[], max = 3): VoiceCardVM[] {
   const out: VoiceCardVM[] = stories.slice(0, max).map((s) => ({

@@ -155,7 +155,7 @@ export default async function AdminMediaPage({ searchParams }: Props) {
                   <p className="font-body text-xs text-deep-soil/55">Tags: {a.tags.join(", ")}</p>
                 ) : null}
                 {a.originPlatform || a.originExternalId ? (
-                  <p className="font-body text-xs text-washed-denim">
+                  <p className="font-body text-xs text-civic-slate">
                     Origin: {a.originPlatform ?? "—"}
                     {a.originExternalId ? ` · ${a.originExternalId}` : ""}
                   </p>
@@ -173,3 +173,4 @@ export default async function AdminMediaPage({ searchParams }: Props) {
     </div>
   );
 }
+

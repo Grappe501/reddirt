@@ -81,3 +81,40 @@ export async function summarizeThreadForPrompt(params: {
   if (!params.lines.length) return "(no messages yet)";
   return params.lines.slice(-24).join("\n");
 }
+
+/**
+ * Triage view: short summary + a single next step for staff (stored on the thread for the right rail).
+ */
+export async function generateThreadSummaryAndNextAction(params: {
+  lines: string[];
+}): Promise<{ summary: string; nextAction: string } | { error: string }> {
+  if (!params.lines.length) return { error: "No messages in thread yet." };
+  if (!isOpenAIConfigured()) return { error: "OpenAI is not configured (OPENAI_API_KEY)." };
+  const client = getOpenAIClient();
+  const { model } = getOpenAIConfigFromEnv();
+  const text = params.lines.slice(-32).join("\n---\n");
+  const res = await client.chat.completions.create({
+    model,
+    temperature: 0.35,
+    max_tokens: 400,
+    messages: [
+      {
+        role: "system",
+        content:
+          "You help U.S. campaign staff triage one-to-one voter/volunteer message threads. Reply with a single JSON object only: {\"summary\":\"...\",\"nextAction\":\"...\"}. summary: at most 2 short sentences. nextAction: one short imperative for staff (e.g. \"Call to confirm event RSVP\"). No markdown, no code fences.",
+      },
+      { role: "user", content: `Messages (oldest to newest):\n${text}` },
+    ],
+  });
+  const raw = res.choices[0]?.message?.content?.trim() ?? "";
+  const cleaned = raw.replace(/^```[a-z]*\n?/i, "").replace(/\n?```\s*$/i, "");
+  try {
+    const j = JSON.parse(cleaned) as { summary?: string; nextAction?: string };
+    const summary = j.summary?.trim();
+    const nextAction = j.nextAction?.trim();
+    if (!summary || !nextAction) return { error: "Model returned an incomplete result." };
+    return { summary, nextAction };
+  } catch {
+    return { error: "Could not parse AI result." };
+  }
+}

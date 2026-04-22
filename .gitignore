@@ -60,3 +60,5 @@ campaign-media/processed/
 campaign-media/failed/
 campaign-media/duplicate/
 campaign-media/ingest.log
+# USB phone imports (local only)
+campaign-media/phone-import/

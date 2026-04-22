@@ -19,7 +19,7 @@ export default async function VolunteerIntakeListPage({ searchParams }: Props) {
   return (
     <div className="mx-auto max-w-4xl space-y-8">
       <div>
-        <Link href="/admin/workbench" className="text-sm text-washed-denim hover:underline">
+        <Link href="/admin/workbench" className="text-sm text-civic-slate hover:underline">
           ← Workbench
         </Link>
         <h1 className="mt-2 font-heading text-3xl font-bold text-deep-soil">Volunteer signup sheet intake</h1>
@@ -40,7 +40,7 @@ export default async function VolunteerIntakeListPage({ searchParams }: Props) {
       <section className="rounded-card border border-deep-soil/10 bg-cream-canvas p-6 shadow-[var(--shadow-soft)]">
         <h2 className="font-heading text-lg font-bold text-deep-soil">Start from owned media</h2>
         <p className="mt-1 text-xs text-deep-soil/60">
-          Upload the sheet in <Link href="/admin/owned-media" className="text-washed-denim underline">Owned media</Link>{" "}
+          Upload the sheet in <Link href="/admin/owned-media" className="text-civic-slate underline">Owned media</Link>{" "}
           first, then paste the asset id here.
         </p>
         <form action={createSignupDocumentFromOwnedMediaAction} className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-end">
@@ -75,7 +75,7 @@ export default async function VolunteerIntakeListPage({ searchParams }: Props) {
                   </p>
                   <p className="font-mono text-[10px] text-deep-soil/45">{d.id}</p>
                 </div>
-                <span className="mt-2 text-xs font-semibold text-washed-denim sm:mt-0">Open →</span>
+                <span className="mt-2 text-xs font-semibold text-civic-slate sm:mt-0">Open →</span>
               </Link>
             </li>
           ))}
@@ -87,3 +87,4 @@ export default async function VolunteerIntakeListPage({ searchParams }: Props) {
     </div>
   );
 }
+

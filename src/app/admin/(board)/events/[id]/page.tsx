@@ -37,7 +37,7 @@ export default async function AdminEventDetailPage({ params }: Props) {
   return (
     <div className="mx-auto max-w-4xl">
       <p className="font-body text-xs text-deep-soil/55">
-        <Link href="/admin/events" className="text-washed-denim hover:underline">
+        <Link href="/admin/events" className="text-civic-slate hover:underline">
           ← Events
         </Link>
       </p>

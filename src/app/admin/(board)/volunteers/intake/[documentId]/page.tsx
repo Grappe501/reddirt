@@ -37,7 +37,7 @@ export default async function VolunteerIntakeDocumentPage({ params, searchParams
     return (
       <div>
         <p>Not found.</p>
-        <Link href="/admin/volunteers/intake" className="text-washed-denim underline">
+        <Link href="/admin/volunteers/intake" className="text-civic-slate underline">
           Back
         </Link>
       </div>
@@ -58,7 +58,7 @@ export default async function VolunteerIntakeDocumentPage({ params, searchParams
   return (
     <div className="mx-auto max-w-5xl space-y-10 pb-12">
       <div>
-        <Link href="/admin/volunteers/intake" className="text-sm text-washed-denim hover:underline">
+        <Link href="/admin/volunteers/intake" className="text-sm text-civic-slate hover:underline">
           ← Intake list
         </Link>
         <h1 className="mt-2 font-heading text-2xl font-bold text-deep-soil">{doc.ownedMedia.title}</h1>
@@ -101,7 +101,7 @@ export default async function VolunteerIntakeDocumentPage({ params, searchParams
               <img src={fileUrl} alt="" className="mx-auto max-h-[520px] w-auto object-contain" />
             ) : (
               <p className="text-sm text-deep-soil/70">
-                Preview: <a href={fileUrl} className="text-washed-denim underline" target="_blank" rel="noreferrer">
+                Preview: <a href={fileUrl} className="text-civic-slate underline" target="_blank" rel="noreferrer">
                   Open file
                 </a>{" "}
                 (PDF or non-image)

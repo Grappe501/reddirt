@@ -8,6 +8,7 @@ import {
 import { prisma } from "@/lib/db";
 import { getTwilioEnv, isTwilioConfigured } from "./env";
 import { normalizeUsPhone } from "@/lib/comms/phone";
+import { getEffectivePreferenceForThread, canSendSms } from "@/lib/comms/preferences";
 import { touchThreadAfterOutbound } from "@/lib/comms/threads";
 
 export type SendSmsResult =
@@ -22,13 +23,45 @@ export async function sendSmsAndRecord(params: {
   to: string;
   body: string;
   sentByUserId: string | null;
+  /** Broadcast sends (optional). */
+  communicationCampaignId?: string;
+  communicationCampaignRecipientId?: string;
 }): Promise<SendSmsResult> {
+  const cExtra: { communicationCampaignId?: string; communicationCampaignRecipientId?: string } = {};
+  if (params.communicationCampaignId) cExtra.communicationCampaignId = params.communicationCampaignId;
+  if (params.communicationCampaignRecipientId) cExtra.communicationCampaignRecipientId = params.communicationCampaignRecipientId;
   const to = normalizeUsPhone(params.to);
   if (!to) return { ok: false, error: "Invalid destination phone number." };
+  const thread = await prisma.communicationThread.findUnique({ where: { id: params.threadId } });
+  if (!thread) return { ok: false, error: "Thread not found." };
+  {
+    const p = await getEffectivePreferenceForThread(thread);
+    const gate = canSendSms(p);
+    if (!gate.ok) {
+      await prisma.communicationMessage.create({
+        data: {
+          threadId: params.threadId,
+          ...cExtra,
+          channel: CommunicationChannel.SMS,
+          direction: MessageDirection.OUTBOUND,
+          provider: CommsSendProvider.TWILIO,
+          toAddress: to,
+          bodyText: params.body,
+          deliveryStatus: MessageDeliveryStatus.FAILED,
+          errorMessage: gate.reason,
+          failedAt: new Date(),
+          sentByUserId: params.sentByUserId ?? undefined,
+        },
+      });
+      return { ok: false, error: gate.reason };
+    }
+  }
+
   if (!isTwilioConfigured()) {
     const row = await prisma.communicationMessage.create({
       data: {
         threadId: params.threadId,
+        ...cExtra,
         channel: CommunicationChannel.SMS,
         direction: MessageDirection.OUTBOUND,
         provider: CommsSendProvider.TWILIO,
@@ -50,6 +83,7 @@ export async function sendSmsAndRecord(params: {
   const msgRow = await prisma.communicationMessage.create({
     data: {
       threadId: params.threadId,
+      ...cExtra,
       channel: CommunicationChannel.SMS,
       direction: MessageDirection.OUTBOUND,
       provider: CommsSendProvider.TWILIO,

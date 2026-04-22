@@ -4,6 +4,7 @@ import {
   type Prisma,
 } from "@prisma/client";
 import { prisma } from "@/lib/db";
+import { resolveAndLinkNewThread } from "@/lib/comms/preferences";
 import { normalizeUsPhone } from "./phone";
 
 export const threadListInclude = {
@@ -39,14 +40,19 @@ export async function findOrCreateThreadForInboundPhone(params: {
     throw new Error("Unrecognized from phone; cannot open thread");
   }
   const existing = await findThreadByPhone(params.from);
-  if (existing) return existing;
-  return prisma.communicationThread.create({
+  if (existing) {
+    await resolveAndLinkNewThread(existing.id, { email: existing.primaryEmail, phone: existing.primaryPhone });
+    return existing;
+  }
+  const created = await prisma.communicationThread.create({
     data: {
       primaryPhone: fromNorm,
       preferredChannel: "SMS",
       threadStatus: CommunicationThreadStatus.NEEDS_REPLY,
     },
   });
+  await resolveAndLinkNewThread(created.id, { email: null, phone: fromNorm });
+  return created;
 }
 
 export async function touchThreadAfterInbound(threadId: string) {
@@ -55,6 +61,7 @@ export async function touchThreadAfterInbound(threadId: string) {
     data: {
       lastInboundAt: new Date(),
       lastMessageAt: new Date(),
+      lastTouchedAt: new Date(),
       threadStatus: CommunicationThreadStatus.NEEDS_REPLY,
       unreadCount: { increment: 1 },
     },
@@ -67,6 +74,7 @@ export async function touchThreadAfterOutbound(threadId: string) {
     data: {
       lastOutboundAt: new Date(),
       lastMessageAt: new Date(),
+      lastTouchedAt: new Date(),
     },
   });
 }

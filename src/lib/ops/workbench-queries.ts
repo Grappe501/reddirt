@@ -1,6 +1,7 @@
 import {
   CampaignEventStatus,
   CampaignTaskStatus,
+  CampaignTaskType,
   OwnedMediaReviewStatus,
   VolunteerAskStatus,
 } from "@prisma/client";
@@ -20,6 +21,37 @@ const dayEnd = (d: Date) => {
 };
 
 export type WorkbenchFilters = { countyId?: string | null };
+
+const OPEN_TASK: CampaignTaskStatus[] = [
+  CampaignTaskStatus.TODO,
+  CampaignTaskStatus.IN_PROGRESS,
+  CampaignTaskStatus.BLOCKED,
+];
+
+/** High-signal event-linked work for the workbench priority rail (Slice 4). */
+export async function getEventTaskPriorityForWorkbench(countyId?: string | null) {
+  const now = new Date();
+  const in48h = new Date(now.getTime() + 48 * 3600);
+  return prisma.campaignTask.findMany({
+    where: {
+      eventId: { not: null },
+      status: { in: OPEN_TASK },
+      OR: [
+        { dueAt: { lt: now } },
+        { blocksReadiness: true, dueAt: { not: null, lte: in48h } },
+        { taskType: CampaignTaskType.MEDIA, event: { endAt: { lt: now } } },
+        { taskType: CampaignTaskType.FOLLOW_UP, dueAt: { lt: now } },
+        { taskType: CampaignTaskType.PREP, event: { startAt: { gt: now } }, dueAt: { lt: now } },
+      ],
+      ...(countyId ? { countyId } : {}),
+    },
+    orderBy: { dueAt: "asc" },
+    take: 20,
+    include: {
+      event: { select: { id: true, title: true, startAt: true, endAt: true, eventWorkflowState: true } },
+    },
+  });
+}
 
 export async function getWorkbenchData(filters: WorkbenchFilters) {
   const now = new Date();
@@ -49,6 +81,7 @@ export async function getWorkbenchData(filters: WorkbenchFilters) {
     lowConfidenceSignupRows,
     signupRowsNoCandidates,
     commsSummary,
+    eventTaskPriority,
   ] = await Promise.all([
     prisma.campaignTask.findMany({
       where: {
@@ -124,6 +157,7 @@ export async function getWorkbenchData(filters: WorkbenchFilters) {
       },
     }),
     getCommsSummary({ countyId: filters.countyId ?? null }),
+    getEventTaskPriorityForWorkbench(filters.countyId ?? null),
   ]);
 
   return {
@@ -139,6 +173,7 @@ export async function getWorkbenchData(filters: WorkbenchFilters) {
     lowConfidenceSignupRows,
     signupRowsNoCandidates,
     commsSummary,
+    eventTaskPriority,
   };
 }
 

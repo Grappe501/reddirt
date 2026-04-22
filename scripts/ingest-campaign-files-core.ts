@@ -19,6 +19,7 @@ import type { Prisma } from "@prisma/client";
 import { chunkTextForSearch } from "../src/lib/campaign-briefings/chunk-for-search";
 import { extractTextFromDocxBuffer } from "../src/lib/campaign-briefings/extract-docx";
 import { BRIEFING_TAG, COMMS_TAG, COMMUNITY_TRAINING_TAG } from "../src/lib/campaign-briefings/briefing-queries";
+import { extractPdfText, htmlToPlainText } from "../src/lib/ingest/extract-document-text";
 import { classifyIngestPath, resolveIngestVisibility } from "../src/lib/ingest/sensitive-classification";
 import { prisma } from "../src/lib/db";
 import { embedTexts } from "../src/lib/openai/embeddings";
@@ -46,6 +47,8 @@ export type IngestCampaignFileOptions = {
   mediaIngestBatchId?: string | null;
   /** Relative path under the data root for a preserved mirror copy (device ingest). */
   deviceIngestMirrorRelativePath?: string | null;
+  /** Merged into `issueTags` and prepended to chunks for the brain (e.g. path-derived brain-* tags). */
+  extraIssueTags?: string[] | null;
 };
 
 function recordTags(preset: CampaignIngestPreset): string[] {
@@ -62,6 +65,7 @@ export function mimeForCampaignFileName(fileName: string): string {
   const ext = path.extname(fileName).toLowerCase();
   if (ext === ".docx") return DOCX;
   if (ext === ".pdf") return PDF;
+  if (ext === ".html" || ext === ".htm") return "text/html; charset=utf-8";
   if (ext === ".txt" || ext === ".md") return "text/plain";
   if (ext === ".csv") return "text/csv";
   if (ext === ".xlsx") return "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
@@ -93,7 +97,7 @@ export function isAudioExt(ext: string): boolean {
 }
 
 export function isDocumentExt(ext: string): boolean {
-  return [".docx", ".pdf", ".txt", ".md", ".csv", ".xlsx", ".xls", ".pptx"].includes(ext);
+  return [".docx", ".pdf", ".html", ".htm", ".txt", ".md", ".csv", ".xlsx", ".xls", ".pptx"].includes(ext);
 }
 
 export function supportedIngestExt(ext: string): boolean {
@@ -148,8 +152,10 @@ export async function ingestCampaignFileBuffer(
   const reviewStatus =
     vis.reviewStatus === "APPROVED" ? OwnedMediaReviewStatus.APPROVED : OwnedMediaReviewStatus.PENDING_REVIEW;
   const isPublic = vis.isPublic;
+  const extra = options.extraIssueTags?.filter((t) => typeof t === "string" && t.trim().length > 0) ?? [];
   const tags = [
     ...recordTags(options.preset),
+    ...extra,
     ...(classification.level === "SENSITIVE_ADMIN" ? (["ingest-sensitive-review"] as const) : []),
   ];
   const metaBase: Prisma.InputJsonValue = {
@@ -266,8 +272,19 @@ export async function ingestCampaignFileBuffer(
       // eslint-disable-next-line no-console
       console.warn(`[ingest] spreadsheet text extract failed: ${fileName}`, e);
     }
+  } else if (ext === ".html" || ext === ".htm") {
+    try {
+      text = htmlToPlainText(buffer.toString("utf8"));
+    } catch (e) {
+      text = "";
+      // eslint-disable-next-line no-console
+      console.warn(`[ingest] html to text failed: ${fileName}`, e);
+    }
   } else if (ext === ".pdf") {
-    text = "[PDF ingested; search uses file presence. Add pdf text extraction in a follow-up for full RAG.]";
+    text = await extractPdfText(buffer);
+    if (!text.length) {
+      text = "[PDF: no extractable text (scanned or failed extraction). File is still stored.]";
+    }
   } else if (ext === ".pptx") {
     text = `[PowerPoint: ${fileName} — file stored. Export to PDF for full text extraction in a follow-up.]`;
   }
@@ -318,11 +335,14 @@ export async function ingestCampaignFileBuffer(
 
   if (isOpenAIConfigured() && text.length > 80) {
     try {
-      const chunkSource = `Source: ${options.sourceBundle} / ${rel}\n\n${text}`;
+      const tagLine = extra.length ? `Tags: ${extra.join(", ")}\n` : "";
+      const chunkSource = `${tagLine}Source: ${options.sourceBundle} / ${rel}\n\n${text}`;
       const chunks = chunkTextForSearch(chunkSource, 1800);
       const chunkCount = chunks.length;
-      const basePath =
-        options.preset === "comms"
+      const isBrain = extra.includes("campaign-brain");
+      const basePath = isBrain
+        ? `brain-doc:${asset.id}`
+        : options.preset === "comms"
           ? `comms-doc:${asset.id}`
           : options.preset === "community-training"
             ? `community-training-doc:${asset.id}`
@@ -334,11 +354,14 @@ export async function ingestCampaignFileBuffer(
           : options.preset === "community-training"
             ? "Community support training"
             : "Campaign briefing";
+      const tagHint = extra.length ? `${extra.slice(0, 10).join(", ")}. ` : "";
       const batch = 12;
       for (let i = 0; i < chunks.length; i += batch) {
         const slice = chunks.slice(i, i + batch);
         const embed = await embedTexts(
-          slice.map((c) => `${embedLabel} [${options.sourceBundle}]: ${titleForChunk}\n\n${c}`)
+          slice.map(
+            (c) => `${embedLabel} [${options.sourceBundle}]: ${titleForChunk}\n${tagHint}\n\n${c}`
+          )
         );
         for (let j = 0; j < slice.length; j += 1) {
           const chunkIndex = i + j;

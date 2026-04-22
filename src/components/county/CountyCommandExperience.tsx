@@ -19,7 +19,7 @@ import {
 } from "@/lib/county/official-links";
 import { getCampaignRegistrationBaselineDisplayCentral } from "@/config/campaign-registration-baseline";
 import { cn } from "@/lib/utils";
-import { EventCard } from "@/components/organizing/EventCard";
+import { PublicCampaignEventCard } from "@/components/calendar/PublicCampaignEventCard";
 
 const introFallback =
   "Kelly’s Arkansas campaign runs through all 75 counties—this page is your field sheet: who’s leading, what’s happening, and how we’re growing the electorate where you live.";
@@ -56,7 +56,8 @@ function formatDistanceAgo(d: Date) {
 }
 
 export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) {
-  const { county, latestVoterMetrics, latestVisitPost, latestStoryPost, mediaGallery, nextEvent, upcomingEvents } = data;
+  const { county, latestVoterMetrics, latestVisitPost, latestStoryPost, mediaGallery, nextPublicCampaignEvent, upcomingPublicCampaignEvents } =
+    data;
   const stats = county.campaignStats;
   const vm = latestVoterMetrics;
   const demo = county.demographics;
@@ -146,7 +147,10 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
               value={stats?.volunteerCount == null ? "—" : fmt(stats.volunteerCount)}
               hint={stats?.volunteerTarget ? `Target ${fmt(stats.volunteerTarget)}` : undefined}
             />
-            <ScoreItem label="Upcoming events" value={upcomingEvents.length > 0 ? String(upcomingEvents.length) : "0"} />
+            <ScoreItem
+              label="Upcoming events"
+              value={upcomingPublicCampaignEvents.length > 0 ? String(upcomingPublicCampaignEvents.length) : "0"}
+            />
           </ul>
           {vm ? (
             <p className="mt-4 text-xs text-deep-soil/55">
@@ -207,21 +211,33 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
               )}
             </div>
             <div className="lg:col-span-2">
-              {nextEvent ? (
+              {nextPublicCampaignEvent ? (
                 <div>
-                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-red-dirt/90">Next event</p>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-red-dirt/90">Next on the public calendar</p>
+                  <p className="mt-0.5 text-xs text-deep-soil/55">
+                    Pulled from CampaignOS—only events published for the public site in this county.
+                  </p>
                   <div className="mt-2 max-w-2xl">
-                    <EventCard event={nextEvent} />
+                    <PublicCampaignEventCard event={nextPublicCampaignEvent} />
                   </div>
+                  {upcomingPublicCampaignEvents.length > 1 ? (
+                    <p className="mt-2 text-sm text-deep-soil/70">
+                      {upcomingPublicCampaignEvents.length - 1} more on the{" "}
+                      <Link className="font-semibold text-red-dirt hover:underline" href="/campaign-calendar">
+                        campaign calendar
+                      </Link>
+                      .
+                    </p>
+                  ) : null}
                 </div>
               ) : (
                 <div className={card}>
                   <p className="text-sm text-deep-soil/80">
-                    No upcoming events listed for this county yet. Check{" "}
-                    <Link className="font-semibold text-red-dirt underline-offset-2 hover:underline" href="/events">
-                      statewide events
+                    No published public events in this county yet. Browse the full{" "}
+                    <Link className="font-semibold text-red-dirt underline-offset-2 hover:underline" href="/campaign-calendar">
+                      campaign calendar
                     </Link>{" "}
-                    or ask the county lead to add one.
+                    for statewide stops, or ask field staff to publish when a date is set.
                   </p>
                 </div>
               )}

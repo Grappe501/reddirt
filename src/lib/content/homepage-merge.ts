@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/db";
-import { getJoinCampaignHref } from "@/config/external-campaign";
+import { getVolunteerSignupHref } from "@/config/external-campaign";
 import {
   heardItems as defaultHeard,
   movementBeliefs as defaultMovement,
@@ -46,9 +46,9 @@ const DEFAULT_HERO: HomepageHeroMerged = {
   subtitle:
     "Arkansas deserves a Secretary of State’s office that is transparent, secure, and accountable to the people in all 75 counties.",
   ctaPrimaryLabel: "Join the Campaign",
-  ctaPrimaryHref: getJoinCampaignHref(),
+  ctaPrimaryHref: getVolunteerSignupHref(),
   ctaSecondaryLabel: "Watch Kelly Speak",
-  ctaSecondaryHref: "#hear-kelly",
+  ctaSecondaryHref: "/understand#hear-kelly",
 };
 
 /** All narrative sections on by default; disable in admin if you need a shorter page. */
@@ -115,7 +115,7 @@ const DEFAULT_FINAL_CTA = {
   description:
     "This campaign is about restoring trust, protecting the people’s voice, and building a Secretary of State’s office that answers to Arkansas. Not the insiders. Not the noise. The people.",
   primaryLabel: "Join the Campaign",
-  primaryHref: getJoinCampaignHref(),
+  primaryHref: getVolunteerSignupHref(),
   secondaryLabel: "Donate Today",
   secondaryHref: "/donate",
 };
@@ -197,9 +197,9 @@ export async function getMergedHomepageConfig(): Promise<MergedHomepageConfig> {
     const row = await prisma.homepageConfig.findUnique({ where: { id: "default" } });
 
     const heroRaw = row?.hero as Partial<HomepageHeroMerged> | null | undefined;
-    let hero: HomepageHeroMerged = { ...DEFAULT_HERO, ...heroRaw };
-    if (hero.ctaPrimaryHref === "/get-involved") {
-      hero = { ...hero, ctaPrimaryHref: getJoinCampaignHref() };
+    let hero: HomepageHeroMerged = normalizeHeroJoinCta({ ...DEFAULT_HERO, ...heroRaw });
+    if (hero.ctaSecondaryHref.trim() === "#hear-kelly") {
+      hero = { ...hero, ctaSecondaryHref: "/understand#hear-kelly" };
     }
 
     const heardRaw = row?.heardItems as unknown;
@@ -230,13 +230,7 @@ export async function getMergedHomepageConfig(): Promise<MergedHomepageConfig> {
       splitLabor: mergeSplit(row?.splitLabor, DEFAULT_SPLIT_LABOR),
       arkansasBand: mergeArkansasBand(row?.arkansasBand, DEFAULT_ARKANSAS_BAND),
       quoteBand: parseJson(row?.quoteBand, DEFAULT_QUOTE),
-      finalCta: (() => {
-        let fc = parseJson(row?.finalCta, DEFAULT_FINAL_CTA);
-        if (fc.primaryHref === "/get-involved") {
-          fc = { ...fc, primaryHref: getJoinCampaignHref() };
-        }
-        return fc;
-      })(),
+      finalCta: normalizeFinalCtaJoin(parseJson(row?.finalCta, DEFAULT_FINAL_CTA)),
       featuredStorySlugs:
         row?.featuredStorySlugs?.length ? row.featuredStorySlugs : [...defaultStorySlugs],
       featuredEditorialSlugs:
@@ -272,4 +266,39 @@ export function isHomepageSectionEnabled(
 ): boolean {
   const hit = order.find((s) => s.id === id);
   return hit ? hit.enabled : true;
+}
+
+/** Legacy hero saves pointed “Join” at the Squarespace home, not a form — send users to on-site volunteer intake. */
+function normalizeHeroJoinCta(hero: HomepageHeroMerged): HomepageHeroMerged {
+  const href = hero.ctaPrimaryHref.trim().replace(/\/$/, "");
+  if (href === "/get-involved") {
+    return { ...hero, ctaPrimaryHref: getVolunteerSignupHref() };
+  }
+  try {
+    const u = new URL(href);
+    const host = u.hostname.replace(/^www\./, "");
+    if (host === "kellygrappe.com" && (u.pathname === "" || u.pathname === "/")) {
+      return { ...hero, ctaPrimaryHref: getVolunteerSignupHref() };
+    }
+  } catch {
+    /* relative paths — leave as-is */
+  }
+  return hero;
+}
+
+function normalizeFinalCtaJoin(fc: typeof DEFAULT_FINAL_CTA): typeof DEFAULT_FINAL_CTA {
+  const href = fc.primaryHref.trim().replace(/\/$/, "");
+  if (href === "/get-involved") {
+    return { ...fc, primaryHref: getVolunteerSignupHref() };
+  }
+  try {
+    const u = new URL(href);
+    const host = u.hostname.replace(/^www\./, "");
+    if (host === "kellygrappe.com" && (u.pathname === "" || u.pathname === "/")) {
+      return { ...fc, primaryHref: getVolunteerSignupHref() };
+    }
+  } catch {
+    /* relative */
+  }
+  return fc;
 }

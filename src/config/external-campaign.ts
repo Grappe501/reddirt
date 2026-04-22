@@ -12,11 +12,23 @@ export function getLegacyPublicSiteUrl(): string {
   return process.env.NEXT_PUBLIC_LEGACY_SITE_URL?.trim().replace(/\/$/, "") || LEGACY_SITE;
 }
 
-/** Primary “join / volunteer” surface hosted on the legacy public site until forms unify here. */
+/** On-site volunteer intake (`VolunteerForm` on get-involved). */
+export const VOLUNTEER_SIGNUP_HREF = "/get-involved#volunteer" as const;
+
+export function getVolunteerSignupHref(): string {
+  const o = process.env.NEXT_PUBLIC_VOLUNTEER_SIGNUP_URL?.trim();
+  if (o) return o;
+  return VOLUNTEER_SIGNUP_HREF;
+}
+
+/**
+ * “Join the campaign” / primary volunteer CTA.
+ * Defaults to the on-site volunteer form; set `NEXT_PUBLIC_JOIN_CAMPAIGN_URL` to use an external page instead.
+ */
 export function getJoinCampaignHref(): string {
   const o = process.env.NEXT_PUBLIC_JOIN_CAMPAIGN_URL?.trim().replace(/\/$/, "");
   if (o) return o;
-  return getLegacyPublicSiteUrl();
+  return getVolunteerSignupHref();
 }
 
 export function getCampaignBlogUrl(): string {

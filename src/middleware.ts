@@ -2,7 +2,7 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
 /**
- * 1) Pass `x-pathname` to the root layout (PublicLayoutMain) for the sitewide “road” band.
+ * 1) Pass `x-pathname` to the root layout (PublicLayoutMain) for the sitewide road imagery band.
  * 2) Block misconfigured admin (no ADMIN_SECRET) except /admin/login.
  */
 export function middleware(request: NextRequest) {

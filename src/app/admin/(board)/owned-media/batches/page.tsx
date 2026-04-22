@@ -24,7 +24,7 @@ export default async function MediaIngestBatchesPage({ searchParams }: Props) {
   return (
     <div className="mx-auto max-w-4xl space-y-8">
       <div>
-        <Link href="/admin/owned-media" className="text-sm text-washed-denim hover:underline">
+        <Link href="/admin/owned-media" className="text-sm text-civic-slate hover:underline">
           ← Campaign-owned media
         </Link>
         <h1 className="mt-2 font-heading text-2xl font-bold text-deep-soil">Media ingest batches</h1>
@@ -78,3 +78,4 @@ export default async function MediaIngestBatchesPage({ searchParams }: Props) {
     </div>
   );
 }
+

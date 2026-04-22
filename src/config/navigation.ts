@@ -18,6 +18,7 @@ export const primaryNavGroups: NavGroup[] = [
     label: "Meet Kelly",
     items: [
       { label: "About", href: "/about" },
+      { label: "Understand the office", href: "/understand" },
       { label: "What we stand for", href: "/what-we-believe" },
       { label: "Why we're running", href: "/why-this-movement" },
       { label: "The Arkansas we know", href: "/the-arkansas-we-know" },
@@ -28,6 +29,7 @@ export const primaryNavGroups: NavGroup[] = [
     label: "The Office",
     items: [
       { label: "Priorities", href: "/priorities" },
+      { label: "Civic depth", href: "/civic-depth" },
       { label: "Ballot access & initiatives", href: "/direct-democracy" },
       { label: "Resources", href: "/resources" },
     ],
@@ -47,7 +49,8 @@ export const primaryNavGroups: NavGroup[] = [
     items: [
       { label: "Watch Kelly", href: "/watch" },
       { label: "From the Road", href: "/from-the-road" },
-      { label: "Campaign trail", href: "/updates" },
+      { label: "Campaign trail", href: "/campaign-trail" },
+      { label: "Updates hub", href: "/updates" },
       { label: "Stories", href: "/stories" },
       { label: "Notebook", href: "/blog" },
       { label: "Substack (direct)", href: getCampaignBlogUrl() },
@@ -57,7 +60,7 @@ export const primaryNavGroups: NavGroup[] = [
     id: "involved",
     label: "Get Involved",
     items: [
-      { label: "Volunteer · KellyGrappe.com", href: getJoinCampaignHref() },
+      { label: "Volunteer sign-up", href: getJoinCampaignHref() },
       { label: "Voter registration", href: "/voter-registration" },
       { label: "Tools & sign-up (this site)", href: "/get-involved" },
       { label: "Events", href: "/events" },

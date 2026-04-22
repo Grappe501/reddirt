@@ -52,10 +52,12 @@ function NavMenu({ group, pathname, theme = "light" }: NavMenuProps) {
       <button
         type="button"
         className={cn(
-          "flex items-center gap-1 rounded-md px-2 py-2 font-body text-xs font-semibold uppercase tracking-wider transition focus-visible:outline-none focus-visible:ring-2 xl:px-2.5 xl:text-sm",
+          "flex items-center gap-1 rounded-md px-2 py-2 font-body text-xs font-semibold tracking-wide transition focus-visible:outline-none focus-visible:ring-2 xl:px-2.5 xl:text-sm",
           dark
-            ? "focus-visible:ring-civic-gold/50 " + (active ? "text-sunlight-gold" : "text-civic-mist/85 hover:text-sunlight-gold")
-            : "focus-visible:ring-red-dirt/40 " + (active ? "text-red-dirt" : "text-deep-soil/80 hover:text-red-dirt"),
+            ? "focus-visible:ring-civic-gold/50 " +
+                (active ? "text-sunlight-gold" : "text-white hover:text-sunlight-gold")
+            : "focus-visible:ring-red-dirt/40 uppercase tracking-wider " +
+                (active ? "text-red-dirt" : "text-deep-soil/80 hover:text-red-dirt"),
         )}
         aria-expanded={open}
         aria-haspopup="true"

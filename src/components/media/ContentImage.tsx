@@ -6,6 +6,8 @@ import type { MediaRef } from "@/content/media/registry";
 type ContentImageProps = {
   media: MediaRef;
   className?: string;
+  /** Applied to the underlying img / next/image (e.g. object-top). */
+  mediaClassName?: string;
   priority?: boolean;
   sizes?: string;
   warmOverlay?: boolean;
@@ -14,12 +16,13 @@ type ContentImageProps = {
 export function ContentImage({
   media: m,
   className,
+  mediaClassName,
   priority,
   sizes = "(max-width: 768px) 100vw, 1200px",
   warmOverlay,
 }: ContentImageProps) {
   const isSvg = m.src.endsWith(".svg");
-  const imgClass = "h-full w-full object-cover";
+  const imgClass = cn("h-full w-full object-cover", mediaClassName);
 
   const inner = isSvg ? (
     // SVG placeholders in /public — next/image SVG optimization not enabled; explicit dimensions prevent CLS.

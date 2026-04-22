@@ -1,3 +1,5 @@
+"use client";
+
 import { TRUST_RIBBON_ITEMS } from "@/content/home/homepagePremium";
 import { FadeInWhenVisible } from "@/components/home/FadeInWhenVisible";
 
@@ -14,7 +16,7 @@ export function HomeTrustRibbonSection() {
               <p className="font-body text-[10px] font-bold uppercase tracking-[0.24em] text-civic-gold md:text-[11px]">
                 {item.label}
               </p>
-              <p className="mt-2.5 max-w-[22rem] font-body text-sm leading-relaxed text-civic-mist/75">
+              <p className="mt-2.5 max-w-[22rem] font-body text-sm leading-relaxed text-civic-mist/90">
                 {item.detail}
               </p>
             </div>

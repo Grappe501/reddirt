@@ -1,7 +1,8 @@
 import { cn } from "@/lib/utils";
 
 const variants = {
-  default: "bg-cream-canvas",
+  /** Explicit ink so nested content never inherits a light-on-light or wrong tone from upstream. */
+  default: "bg-cream-canvas text-deep-soil",
   soil: "bg-deep-soil text-cream-canvas",
   denim: "bg-washed-denim text-cream-canvas",
   green: "bg-field-green text-cream-canvas",

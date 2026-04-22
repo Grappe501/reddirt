@@ -67,7 +67,7 @@ export default async function AdminDistributionPage({ searchParams }: Props) {
                   href={item.canonicalUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-xs font-semibold text-washed-denim underline-offset-2 hover:underline"
+                  className="text-xs font-semibold text-civic-slate underline-offset-2 hover:underline"
                 >
                   Open source ↗
                 </a>
@@ -137,3 +137,4 @@ export default async function AdminDistributionPage({ searchParams }: Props) {
     </div>
   );
 }
+

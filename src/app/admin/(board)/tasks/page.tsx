@@ -71,7 +71,7 @@ export default async function AdminTasksPage() {
                 </td>
                 <td className="py-2 pr-2 align-top text-xs">
                   {t.event ? (
-                    <Link href={`/admin/events/${t.event.id}`} className="text-washed-denim hover:underline">
+                    <Link href={`/admin/events/${t.event.id}`} className="text-civic-slate hover:underline">
                       {t.event.title}
                     </Link>
                   ) : (
@@ -108,3 +108,4 @@ export default async function AdminTasksPage() {
     </div>
   );
 }
+

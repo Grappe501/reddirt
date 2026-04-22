@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CommunicationThreadStatus } from "@prisma/client";
+import { CommunicationThreadStatus, EmailOptInStatus, SmsOptInStatus } from "@prisma/client";
 import { getWorkbenchData, getCountiesForOpsFilter } from "@/lib/ops/workbench-queries";
 import { formatRoleLabel } from "@/lib/ops/roles";
 import {
@@ -13,12 +13,20 @@ import {
   markThreadReadAction,
   updateCommunicationThreadAction,
   createScheduledSmsReminderAction,
+  refreshThreadAiInsightAction,
+  updateContactPreferenceFromWorkbenchAction,
 } from "@/app/admin/workbench-comms-actions";
 import { WorkbenchMessageComposer } from "@/components/admin/workbench/WorkbenchMessageComposer";
+import { canSendEmail, canSendSms } from "@/lib/comms/preferences";
+import { getAdminActorUserId } from "@/lib/admin/actor";
+import { prisma } from "@/lib/db";
+import { CommsSendProvider } from "@prisma/client";
 
 type Props = {
-  searchParams: Promise<{ county?: string; thread?: string; error?: string }>;
+  searchParams: Promise<{ county?: string; thread?: string; error?: string; lane?: string }>;
 };
+
+type WorkbenchLane = "all" | "calendar" | "orchestration";
 
 const card =
   "rounded-md border border-deep-soil/10 bg-cream-canvas px-2 py-1.5 shadow-sm min-w-0";
@@ -30,13 +38,30 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
   const countyId = sp.county?.trim() || null;
   const activeThreadId = sp.thread?.trim() || null;
   const err = sp.error;
+  const lane: WorkbenchLane =
+    sp.lane === "calendar" ? "calendar" : sp.lane === "orchestration" ? "orchestration" : "all";
+  const workbenchQ = (opts: { county?: string | null; thread?: string | null; lane?: WorkbenchLane }) => {
+    const u = new URLSearchParams();
+    if (opts.county) u.set("county", opts.county);
+    if (opts.thread) u.set("thread", opts.thread);
+    if (opts.lane === "calendar") u.set("lane", "calendar");
+    if (opts.lane === "orchestration") u.set("lane", "orchestration");
+    const s = u.toString();
+    return s ? `?${s}` : "";
+  };
 
   const counties = await getCountiesForOpsFilter();
-  const [data, comms, activeThread, recentForRail] = await Promise.all([
+  const actorId = await getAdminActorUserId();
+  const [data, comms, activeThread, recentForRail, staffGmail] = await Promise.all([
     getWorkbenchData({ countyId }),
-    getCommsWorkbenchData({ countyId }),
+    getCommsWorkbenchData({ countyId, lane }),
     activeThreadId ? getThreadForWorkbench(activeThreadId) : Promise.resolve(null),
     listRecentThreads(countyId, 20),
+    actorId
+      ? prisma.staffGmailAccount.findUnique({
+          where: { userId: actorId, isActive: true },
+        })
+      : Promise.resolve(null),
   ]);
 
   const seenThread = new Set<string>();
@@ -48,20 +73,84 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
     urgent?: boolean;
     selectThreadId: string | null;
   }[] = [];
+  const calPrefix = countyId ? `&countyId=${encodeURIComponent(countyId)}` : "";
+
+  for (const s of comms.orchestrationShells) {
+    if (lane === "calendar") break;
+    combinedRail.push({
+      id: `orch-${s.id}`,
+      label: s.name,
+      sub: `Auto campaign · ${s.campaignType} · ${s.status}${s.eventTitle ? ` · ${s.eventTitle}` : ""}`,
+      href: `/admin/workbench/comms/broadcasts/${s.id}`,
+      urgent: s.status === "APPROVAL_NEEDED",
+      selectThreadId: null,
+    });
+  }
+  if (lane === "orchestration") {
+    for (const t of comms.unreadThreads) {
+      if (seenThread.has(t.id)) continue;
+      seenThread.add(t.id);
+      combinedRail.push({
+        id: t.id,
+        label: t.primaryPhone ?? t.primaryEmail ?? "Thread",
+        sub: t.threadStatus,
+        href: `/admin/workbench${workbenchQ({ thread: t.id, county: countyId, lane })}`,
+        urgent: t.unreadCount > 0,
+        selectThreadId: t.id,
+      });
+    }
+    for (const t of recentForRail) {
+      if (seenThread.has(t.id)) continue;
+      seenThread.add(t.id);
+      combinedRail.push({
+        id: t.id,
+        label: t.primaryPhone ?? t.primaryEmail ?? t.id.slice(0, 8),
+        sub: t.threadStatus,
+        href: `/admin/workbench${workbenchQ({ thread: t.id, county: countyId, lane })}`,
+        selectThreadId: t.id,
+      });
+    }
+  } else {
+  for (const et of data.eventTaskPriority) {
+    const eid = et.eventId;
+    if (!eid || !et.event) continue;
+    const overdue = et.dueAt && et.dueAt < new Date();
+    const sub = et.blocksReadiness
+      ? "Event task · blocker"
+      : overdue
+        ? "Event task · overdue"
+        : et.taskType === "MEDIA" && et.event.endAt < new Date()
+          ? "Event task · media (post-event)"
+          : "Event task · due soon";
+    combinedRail.push({
+      id: `etask-${et.id}`,
+      label: `${et.event.title} — ${et.title}`,
+      sub,
+      href: `/admin/workbench/calendar?event=${encodeURIComponent(eid)}&view=week${calPrefix}`,
+      urgent: true,
+      selectThreadId: null,
+    });
+  }
   for (const q of comms.priorityQueue) {
     const selectThreadId = q.threadId ?? null;
+    const calHref = q.eventId
+      ? `/admin/workbench/calendar?event=${encodeURIComponent(q.eventId)}&view=queue${countyId ? `&countyId=${encodeURIComponent(countyId)}` : ""}`
+      : null;
     combinedRail.push({
       id: `q-${q.id}`,
       label: formatQueueItemLabel({
         actionType: q.actionType,
+        event: q.event,
         thread: q.thread
           ? { primaryPhone: q.thread.primaryPhone, primaryEmail: q.thread.primaryEmail }
           : null,
       }),
       sub: String(q.actionType).replaceAll("_", " "),
-      href: selectThreadId
-        ? `/admin/workbench?thread=${encodeURIComponent(selectThreadId)}${countyId ? `&county=${encodeURIComponent(countyId)}` : ""}`
-        : "/admin/workbench",
+      href:
+        calHref ||
+        (selectThreadId
+          ? `/admin/workbench${workbenchQ({ thread: selectThreadId, county: countyId, lane })}`
+          : `/admin/workbench${workbenchQ({ county: countyId, lane })}`),
       urgent: true,
       selectThreadId,
     });
@@ -74,7 +163,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
       id: t.id,
       label: t.primaryPhone ?? t.primaryEmail ?? "Thread",
       sub: t.threadStatus,
-      href: `/admin/workbench?thread=${encodeURIComponent(t.id)}${countyId ? `&county=${encodeURIComponent(countyId)}` : ""}`,
+      href: `/admin/workbench${workbenchQ({ thread: t.id, county: countyId, lane })}`,
       urgent: t.unreadCount > 0,
       selectThreadId: t.id,
     });
@@ -86,9 +175,10 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
       id: t.id,
       label: t.primaryPhone ?? t.primaryEmail ?? t.id.slice(0, 8),
       sub: t.threadStatus,
-      href: `/admin/workbench?thread=${encodeURIComponent(t.id)}${countyId ? `&county=${encodeURIComponent(countyId)}` : ""}`,
+      href: `/admin/workbench${workbenchQ({ thread: t.id, county: countyId, lane })}`,
       selectThreadId: t.id,
     });
+  }
   }
 
   const active =
@@ -96,6 +186,14 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
   const canSms = Boolean(active?.primaryPhone);
   const canEmail = Boolean(active?.primaryEmail);
   const defaultMode = canSms ? "SMS" : "EMAIL";
+  const effPref = active?.effectivePreference ?? null;
+  const smsGate = canSendSms(effPref);
+  const emailGate = canSendEmail(effPref);
+  const lastGmailOut =
+    active?.messages
+      .slice()
+      .reverse()
+      .find((m) => m.provider === CommsSendProvider.GMAIL && m.direction === "OUTBOUND") ?? null;
 
   return (
     <div className={breakOut}>
@@ -109,15 +207,15 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
           </div>
           <div className="flex flex-wrap gap-0.5">
             <Link
-              href="/admin/workbench"
-              className={`rounded px-1.5 py-0.5 text-[10px] font-semibold ${!countyId ? "bg-deep-soil text-cream-canvas" : "border border-deep-soil/20 bg-white"}`}
+              href={`/admin/workbench${workbenchQ({ county: null, lane })}`}
+              className={`rounded px-1.5 py-0.5 text-[10px] font-semibold ${!countyId && lane === "all" ? "bg-deep-soil text-cream-canvas" : "border border-deep-soil/20 bg-white"}`}
             >
               All
             </Link>
             {counties.map((c) => (
               <Link
                 key={c.id}
-                href={`/admin/workbench?county=${encodeURIComponent(c.id)}`}
+                href={`/admin/workbench${workbenchQ({ county: c.id, lane })}`}
                 className={`rounded px-1.5 py-0.5 text-[10px] font-semibold ${
                   countyId === c.id ? "bg-deep-soil text-cream-canvas" : "border border-deep-soil/20 bg-white"
                 }`}
@@ -125,6 +223,30 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                 {c.displayName}
               </Link>
             ))}
+            <Link
+              href={`/admin/workbench${workbenchQ({ county: countyId, lane: "all" })}`}
+              className={`rounded px-1.5 py-0.5 text-[10px] font-bold ${lane === "all" ? "bg-washed-denim text-cream-canvas" : "border border-washed-denim/30 bg-washed-denim/10 text-civic-slate"}`}
+            >
+              Queue all
+            </Link>
+            <Link
+              href={`/admin/workbench${workbenchQ({ county: countyId, lane: "calendar" })}`}
+              className={`rounded px-1.5 py-0.5 text-[10px] font-bold ${lane === "calendar" ? "bg-washed-denim text-cream-canvas" : "border border-washed-denim/30 bg-washed-denim/10 text-civic-slate"}`}
+            >
+              Calendar ops
+            </Link>
+            <Link
+              href={`/admin/workbench${workbenchQ({ county: countyId, lane: "orchestration" })}`}
+              className={`rounded px-1.5 py-0.5 text-[10px] font-bold ${lane === "orchestration" ? "bg-deep-soil text-cream-canvas" : "border border-deep-soil/20 bg-white"}`}
+            >
+              Automations
+            </Link>
+            <Link
+              href="/admin/workbench/calendar"
+              className="rounded border border-washed-denim/40 bg-washed-denim/10 px-1.5 py-0.5 text-[10px] font-bold text-civic-slate"
+            >
+              Calendar HQ
+            </Link>
           </div>
         </div>
       </div>
@@ -133,10 +255,13 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
         <p className="px-2 py-1 font-body text-xs text-red-800 md:px-3">
           {err === "contact" ? "Add a phone or email to open a new thread." : null}
           {err === "phone" ? "Could not parse phone; use 10 digits or E.164." : null}
+          {err === "ai" ? "AI summary could not be generated. Check OpenAI and try again." : null}
+          {err === "gmail_not_configured" ? "Gmail OAuth is not configured (set GOOGLE_GMAIL_* or Calendar client + redirect for /api/gmail/oauth/callback)." : null}
+          {err === "gmail_needs_actor" ? "Set ADMIN_ACTOR_USER_EMAIL to a User to connect Gmail, then use Connect Gmail in the workbench." : null}
         </p>
       ) : null}
 
-      <div className="grid grid-cols-2 gap-1 border-b border-deep-soil/10 bg-cream-canvas/80 px-1 py-1 md:grid-cols-4 lg:grid-cols-8">
+      <div className="grid grid-cols-2 gap-1 border-b border-deep-soil/10 bg-cream-canvas/80 px-1 py-1 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-9">
         <div className={card}>
           <p className={h2}>Needs reply</p>
           <p className="font-heading text-lg font-bold text-red-dirt">{data.commsSummary.needsReplyCount}</p>
@@ -150,13 +275,30 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
           <p className="font-heading text-lg font-bold text-deep-soil">{data.commsSummary.pendingQueueCount}</p>
         </div>
         <div className={card}>
+          <p className={h2}>Cal queue</p>
+          <p className="font-heading text-lg font-bold text-civic-slate">{data.commsSummary.calendarQueuePending}</p>
+          <Link href={`/admin/workbench${workbenchQ({ county: countyId, lane: "calendar" })}`} className="text-[10px] font-semibold text-civic-slate">
+            →
+          </Link>
+        </div>
+        <div className={card}>
+          <p className={h2}>Auto campaigns</p>
+          <p className="font-heading text-lg font-bold text-deep-soil">{data.commsSummary.automationShellCount}</p>
+          <Link
+            href={`/admin/workbench${workbenchQ({ county: countyId, lane: "orchestration" })}`}
+            className="text-[10px] font-semibold text-civic-slate"
+          >
+            Orchestrate
+          </Link>
+        </div>
+        <div className={card}>
           <p className={h2}>Msg volume today</p>
           <p className="font-heading text-lg font-bold text-deep-soil">{data.commsSummary.messagesTodayCount}</p>
         </div>
         <div className={card}>
           <p className={h2}>Open tasks</p>
           <p className="font-heading text-lg font-bold text-red-dirt">{data.openTaskCount}</p>
-          <Link href="/admin/tasks" className="text-[10px] font-semibold text-washed-denim">
+          <Link href="/admin/tasks" className="text-[10px] font-semibold text-civic-slate">
             →
           </Link>
         </div>
@@ -171,7 +313,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
         <div className={card}>
           <p className={h2}>Media review</p>
           <p className="font-heading text-lg font-bold text-deep-soil">{data.pendingMediaReview.length}</p>
-          <Link href="/admin/owned-media?status=PENDING_REVIEW" className="text-[10px] font-semibold text-washed-denim">
+          <Link href="/admin/owned-media?status=PENDING_REVIEW" className="text-[10px] font-semibold text-civic-slate">
             →
           </Link>
         </div>
@@ -180,8 +322,14 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
       <div className="grid min-h-[520px] grid-cols-1 divide-y divide-deep-soil/10 border-b border-deep-soil/10 xl:min-h-[calc(100vh-220px)] xl:grid-cols-[minmax(260px,360px)_1fr_minmax(260px,360px)] xl:divide-x xl:divide-y-0">
         <aside className="flex max-h-[50vh] flex-col overflow-hidden bg-cream-canvas/50 xl:max-h-none">
           <div className="border-b border-deep-soil/10 px-2 py-1">
-            <p className={h2}>Priority queue + threads</p>
-            <p className="mt-0.5 font-body text-[10px] text-deep-soil/55">Queue first, then unread, then recency.</p>
+            <p className={h2}>
+              {lane === "orchestration" ? "Automation shells + threads" : "Priority queue + threads"}
+            </p>
+            <p className="mt-0.5 font-body text-[10px] text-deep-soil/55">
+              {lane === "orchestration"
+                ? "Event-linked auto campaigns (not sent) first; then recent threads."
+                : "Queue first, then unread, then recency."}
+            </p>
           </div>
           <ul className="min-h-0 flex-1 overflow-y-auto p-1 text-[11px]">
             {combinedRail.length === 0 ? (
@@ -259,6 +407,34 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                   </button>
                 </form>
               </div>
+              <div className="border-b border-deep-soil/10 bg-cream-canvas/40 px-2 py-1.5 text-[10px] text-deep-soil/80">
+                <p className={h2}>AI triage (refresh to update)</p>
+                {active.aiThreadSummary || active.aiNextBestAction ? (
+                  <div className="mt-0.5 space-y-0.5">
+                    {active.aiThreadSummary ? <p className="whitespace-pre-wrap font-body">{active.aiThreadSummary}</p> : null}
+                    {active.aiNextBestAction ? (
+                      <p className="font-semibold text-civic-slate">Next: {active.aiNextBestAction}</p>
+                    ) : null}
+                  </div>
+                ) : (
+                  <p className="text-deep-soil/50">No summary yet. Use the button below the composer.</p>
+                )}
+                <form action={refreshThreadAiInsightAction} className="mt-1">
+                  <input type="hidden" name="threadId" value={active.id} />
+                  <input type="hidden" name="countyId" value={countyId ?? ""} />
+                  <button
+                    type="submit"
+                    className="rounded border border-washed-denim/30 bg-white px-1.5 py-0.5 text-[9px] font-bold text-civic-slate"
+                  >
+                    Refresh AI summary + next step
+                  </button>
+                </form>
+                {active.nextActionDueAt ? (
+                  <p className="mt-0.5 text-[9px] text-deep-soil/55">
+                    Staff due: {active.nextActionDueAt.toLocaleString()}
+                  </p>
+                ) : null}
+              </div>
               <ul className="min-h-0 max-h-[min(50vh,420px)] flex-1 overflow-y-auto border-b border-deep-soil/10 p-1 font-mono text-[10px] leading-relaxed md:max-h-[min(45vh,520px)]">
                 {active.messages.map((m) => (
                   <li
@@ -268,7 +444,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                     }`}
                   >
                     <span className="text-deep-soil/45">
-                      {m.channel} {m.direction} {m.deliveryStatus}{" "}
+                      {m.channel} {m.provider} {m.direction} {m.deliveryStatus}{" "}
                       {m.createdAt.toLocaleString()}
                     </span>
                     {m.subject ? <span className="block font-semibold text-deep-soil/80">Subj: {m.subject}</span> : null}
@@ -282,7 +458,28 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                 canEmail={canEmail}
                 defaultMode={defaultMode}
                 initialSubject="Following up from the campaign"
+                smsBlocked={smsGate.ok ? null : smsGate.reason}
+                emailBlocked={emailGate.ok ? null : emailGate.reason}
+                gmailConnected={Boolean(staffGmail)}
+                gmailSendAs={staffGmail?.sendAsEmail ?? null}
+                gmailReplyAnchorId={lastGmailOut?.id ?? null}
               />
+              <p className="mt-0.5 px-2 text-[9px] text-deep-soil/50">
+                {staffGmail ? (
+                  <span>
+                    Staff Gmail: <span className="font-mono">{staffGmail.sendAsEmail}</span>
+                  </span>
+                ) : (
+                  <a
+                    className="font-semibold text-civic-slate"
+                    href="/api/gmail/oauth/start"
+                    target="_self"
+                  >
+                    Connect staff Gmail
+                  </a>
+                )}{" "}
+                · SendGrid = broadcast/structured. Gmail = human 1:1.
+              </p>
             </>
           ) : (
             <div className="p-3 font-body text-xs text-deep-soil/60">
@@ -312,12 +509,25 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                 {active.user ? (
                   <p>
                     <span className="text-deep-soil/45">User:</span> {active.user.name ?? active.user.email}
+                    {active.user.phone ? <span className="ml-1 font-mono">· {active.user.phone}</span> : null}
+                  </p>
+                ) : null}
+                {active.user?.linkedVoterRecord ? (
+                  <p>
+                    <span className="text-deep-soil/45">Voter file:</span> {active.user.linkedVoterRecord.countySlug}{" "}
+                    {[active.user.linkedVoterRecord.firstName, active.user.linkedVoterRecord.lastName]
+                      .filter(Boolean)
+                      .join(" ") || "—"}
+                    {active.user.linkedVoterRecord.precinct ? ` · p${active.user.linkedVoterRecord.precinct}` : ""}
                   </p>
                 ) : null}
                 {active.volunteerProfile ? (
                   <p>
                     <span className="text-deep-soil/45">Volunteer:</span>{" "}
                     {active.volunteerProfile.user.name ?? active.volunteerProfile.user.email}
+                    {active.volunteerProfile.user.phone ? (
+                      <span className="ml-1 font-mono">· {active.volunteerProfile.user.phone}</span>
+                    ) : null}
                   </p>
                 ) : null}
                 {active.county ? (
@@ -339,6 +549,56 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                 ) : (
                   <p className="text-[10px] text-deep-soil/50">No tags (seed CommunicationTag + assign later).</p>
                 )}
+
+                <div className="mt-1 space-y-0.5 border-t border-deep-soil/10 pt-1">
+                  <p className="text-[9px] font-bold uppercase text-deep-soil/45">Contact compliance</p>
+                  <p className="text-[9px] text-deep-soil/55">
+                    Email: {effPref?.emailOptInStatus ?? "—"} · SMS: {effPref?.smsOptInStatus ?? "—"}{" "}
+                    {effPref?.globalUnsubscribeAt ? "· global email unsub" : ""}
+                    {effPref?.smsOptOutAt ? "· SMS opt-out at " + effPref.smsOptOutAt.toLocaleString() : ""}
+                  </p>
+                  <form action={updateContactPreferenceFromWorkbenchAction} className="grid gap-0.5">
+                    <input type="hidden" name="threadId" value={active.id} />
+                    <div className="flex flex-wrap gap-1">
+                      <label className="text-[9px] text-deep-soil/45">
+                        Email
+                        <select
+                          name="emailOptInStatus"
+                          defaultValue={effPref?.emailOptInStatus ?? EmailOptInStatus.UNKNOWN}
+                          className="ml-0.5 border border-deep-soil/15 bg-white text-[9px]"
+                        >
+                          {Object.values(EmailOptInStatus).map((s) => (
+                            <option key={s} value={s}>
+                              {s}
+                            </option>
+                          ))}
+                        </select>
+                      </label>
+                      <label className="text-[9px] text-deep-soil/45">
+                        SMS
+                        <select
+                          name="smsOptInStatus"
+                          defaultValue={effPref?.smsOptInStatus ?? SmsOptInStatus.UNKNOWN}
+                          className="ml-0.5 border border-deep-soil/15 bg-white text-[9px]"
+                        >
+                          {Object.values(SmsOptInStatus).map((s) => (
+                            <option key={s} value={s}>
+                              {s}
+                            </option>
+                          ))}
+                        </select>
+                      </label>
+                    </div>
+                    <label className="flex items-center gap-0.5 text-[9px] text-deep-soil/55">
+                      <input type="checkbox" name="globalUnsubscribe" defaultChecked={Boolean(effPref?.globalUnsubscribeAt)} />
+                      Global email unsubscribe
+                    </label>
+                    <button type="submit" className="w-fit rounded border border-deep-soil/20 bg-white px-1 py-0.5 text-[9px] font-bold">
+                      Save opt-in / suppression
+                    </button>
+                  </form>
+                </div>
+
                 <form action={updateCommunicationThreadAction} className="mt-1 space-y-0.5 border-t border-deep-soil/10 pt-1">
                   <input type="hidden" name="threadId" value={active.id} />
                   <label className="block text-[9px] text-deep-soil/45">Thread status</label>
@@ -366,6 +626,19 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                     rows={3}
                     defaultValue={active.notes ?? ""}
                     className="w-full border border-deep-soil/15 bg-white p-0.5 text-[10px]"
+                  />
+                  <label className="mt-0.5 block text-[9px] text-deep-soil/45">Next action due (staff)</label>
+                  <input
+                    name="nextActionDueAt"
+                    type="datetime-local"
+                    defaultValue={
+                      active.nextActionDueAt
+                        ? new Date(active.nextActionDueAt.getTime() - active.nextActionDueAt.getTimezoneOffset() * 60000)
+                            .toISOString()
+                            .slice(0, 16)
+                        : ""
+                    }
+                    className="w-full border border-deep-soil/15 bg-white px-0.5 text-[10px]"
                   />
                   <button
                     type="submit"
@@ -424,7 +697,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
             ) : (
               data.upcomingEvents.map((e) => (
                 <li key={e.id} className="truncate">
-                  <Link href={`/admin/events/${e.id}`} className="text-washed-denim">
+                  <Link href={`/admin/events/${e.id}`} className="text-civic-slate">
                     {e.title}
                   </Link>
                 </li>
@@ -438,10 +711,10 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
             Pending rows: {data.pendingSignupIntakeRows} · Media inbox: {data.pendingMediaReview.length}
           </p>
           <div className="mt-0.5 flex flex-wrap gap-1 text-[10px]">
-            <Link className="text-washed-denim" href="/admin/volunteers/intake">
+            <Link className="text-civic-slate" href="/admin/volunteers/intake">
               Intake
             </Link>
-            <Link className="text-washed-denim" href="/admin/owned-media/batches">
+            <Link className="text-civic-slate" href="/admin/owned-media/batches">
               Batches
             </Link>
           </div>
@@ -450,3 +723,4 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
     </div>
   );
 }
+

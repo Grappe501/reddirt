@@ -1,33 +1,21 @@
 /**
- * Homepage journey architecture — beats group related sections so the page reads as chapters,
- * not one continuous feed. IDs power scroll-spy nav + assistant context.
+ * Journey beat definitions — scroll anchors (`data-journey-beat`) + assistant copy.
+ * Landing page only mounts a subset; full trail lives on `/campaign-trail`.
  */
 export type JourneyBeat = {
   id: string;
   navLabel: string;
   navShort: string;
-  /** Human-readable for AI + screen readers */
   description: string;
 };
 
-export const HOME_JOURNEY_BEATS: JourneyBeat[] = [
+/** Full list — `beatById`, assistant, and docs */
+export const JOURNEY_BEAT_DEFINITIONS: JourneyBeat[] = [
   {
     id: "beat-arrival",
     navLabel: "Arrival",
     navShort: "Start",
     description: "Hero, trust commitments, and choosing a path into the site.",
-  },
-  {
-    id: "beat-educate",
-    navLabel: "Understand",
-    navShort: "Learn",
-    description: "What we hear in Arkansas, who Kelly is, movement spine, office stakes, and pathways deeper.",
-  },
-  {
-    id: "beat-civic",
-    navLabel: "Civic depth",
-    navShort: "Civic",
-    description: "Ballot access, proof of organization, and filings / public service.",
   },
   {
     id: "beat-field",
@@ -55,6 +43,19 @@ export const HOME_JOURNEY_BEATS: JourneyBeat[] = [
   },
 ];
 
+/** Homepage (`/`): hero + pathway cards + closing CTA only */
+export const LANDING_JOURNEY_BEATS: JourneyBeat[] = JOURNEY_BEAT_DEFINITIONS.filter(
+  (b) => b.id === "beat-arrival" || b.id === "beat-act",
+);
+
+/** Former middle of homepage — field, voices, conviction */
+export const CAMPAIGN_TRAIL_JOURNEY_BEATS: JourneyBeat[] = JOURNEY_BEAT_DEFINITIONS.filter((b) =>
+  ["beat-field", "beat-people", "beat-conviction"].includes(b.id),
+);
+
+/** @deprecated Use JOURNEY_BEAT_DEFINITIONS — alias for assistant compatibility */
+export const HOME_JOURNEY_BEATS = JOURNEY_BEAT_DEFINITIONS;
+
 export function beatById(id: string): JourneyBeat | undefined {
-  return HOME_JOURNEY_BEATS.find((b) => b.id === id);
+  return JOURNEY_BEAT_DEFINITIONS.find((b) => b.id === id);
 }

@@ -60,7 +60,7 @@ export default async function AdminOwnedMediaPage({ searchParams }: Props) {
         Uploads are stored on disk (see <code className="rounded bg-deep-soil/5 px-1">data/owned-campaign-media</code> by
         default) with metadata in Postgres. This is the memory layer for photos, A/V, speeches, and transcripts — not
         the URL-first <Link href="/admin/media">media register</Link>.{" "}
-        <Link href="/admin/owned-media/batches" className="text-washed-denim underline">
+        <Link href="/admin/owned-media/batches" className="text-civic-slate underline">
           Ingest batch history
         </Link>{" "}
         (folder and device runs).
@@ -278,7 +278,7 @@ export default async function AdminOwnedMediaPage({ searchParams }: Props) {
             return (
               <li key={a.id} className="rounded-lg border border-deep-soil/10 bg-white/80 px-4 py-3">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <Link href={`/admin/owned-media/${a.id}`} className="font-heading text-base font-semibold text-washed-denim hover:underline">
+                  <Link href={`/admin/owned-media/${a.id}`} className="font-heading text-base font-semibold text-civic-slate hover:underline">
                     {a.title}
                   </Link>
                   <span className="font-mono text-[10px] text-deep-soil/45">{a.id}</span>
@@ -292,7 +292,7 @@ export default async function AdminOwnedMediaPage({ searchParams }: Props) {
                 <p className="mt-1 font-mono text-[11px] text-deep-soil/55">
                   T: {a._count.transcripts} · Quotes: {a._count.quoteCandidates} · {a.fileSizeBytes} bytes · {a.storageKey}
                 </p>
-                <a href={hrefFile} className="mt-1 inline-block text-xs text-washed-denim underline" target="_blank" rel="noreferrer">
+                <a href={hrefFile} className="mt-1 inline-block text-xs text-civic-slate underline" target="_blank" rel="noreferrer">
                   Open file (admin or public-approved)
                 </a>
               </li>
@@ -308,3 +308,4 @@ export default async function AdminOwnedMediaPage({ searchParams }: Props) {
     </div>
   );
 }
+

@@ -82,7 +82,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
     return (
       <div>
         <p>Not found.</p>
-        <Link href="/admin/owned-media" className="text-washed-denim underline">
+        <Link href="/admin/owned-media" className="text-civic-slate underline">
           Back
         </Link>
       </div>
@@ -101,20 +101,20 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
     <div className="mx-auto max-w-4xl space-y-10">
       <div>
         <div className="flex flex-wrap gap-3 text-sm">
-          <Link href="/admin/owned-media" className="text-washed-denim hover:underline">
+          <Link href="/admin/owned-media" className="text-civic-slate hover:underline">
             ← Campaign-owned media
           </Link>
           {batchIdForNav ? (
             <Link
               href={`/admin/owned-media/batches/${batchIdForNav}`}
-              className="text-washed-denim hover:underline"
+              className="text-civic-slate hover:underline"
             >
               ← Ingest batch
             </Link>
           ) : asset.mediaIngestBatch ? (
             <Link
               href={`/admin/owned-media/batches/${asset.mediaIngestBatch.id}`}
-              className="text-washed-denim hover:underline"
+              className="text-civic-slate hover:underline"
             >
               Open batch
             </Link>
@@ -183,14 +183,14 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
           href={fileUrl}
           target="_blank"
           rel="noreferrer"
-          className="mt-2 inline-block text-sm text-washed-denim underline"
+          className="mt-2 inline-block text-sm text-civic-slate underline"
         >
           Open file
         </a>
         {asset.thumbPublicUrl ? (
           <p className="mt-1 text-xs text-deep-soil/60">
             Thumbnail:{" "}
-            <a href={asset.thumbPublicUrl} className="text-washed-denim underline" target="_blank" rel="noreferrer">
+            <a href={asset.thumbPublicUrl} className="text-civic-slate underline" target="_blank" rel="noreferrer">
               preview
             </a>
           </p>

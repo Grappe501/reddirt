@@ -112,7 +112,7 @@ export default async function AdminEventsPage() {
         <ul className="mt-4 space-y-2">
           {events.map((e) => (
             <li key={e.id} className="rounded-lg border border-deep-soil/10 bg-white/80 px-4 py-3">
-              <Link href={`/admin/events/${e.id}`} className="font-heading text-base font-semibold text-washed-denim hover:underline">
+              <Link href={`/admin/events/${e.id}`} className="font-heading text-base font-semibold text-civic-slate hover:underline">
                 {e.title}
               </Link>
               <p className="mt-1 text-xs text-deep-soil/60">
@@ -126,3 +126,4 @@ export default async function AdminEventsPage() {
     </div>
   );
 }
+

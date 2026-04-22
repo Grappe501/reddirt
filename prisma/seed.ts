@@ -3,6 +3,12 @@
  * Safe to run multiple times (idempotent upserts).
  */
 import {
+  CalendarProvider,
+  CalendarSourceType,
+  CalendarSourceVisibility,
+  CampaignEventStatus,
+  CampaignEventVisibility,
+  EventWorkflowState,
   CampaignTaskPriority,
   CampaignTaskType,
   ContentPlatform,
@@ -14,6 +20,7 @@ import {
   WorkflowTemplateTrigger,
 } from "@prisma/client";
 import { getCampaignRegistrationBaselineUtc } from "../src/config/campaign-registration-baseline";
+import { seedSlice4WorkflowTemplates } from "./seed-slice4-workflows";
 
 const prisma = new PrismaClient();
 
@@ -357,8 +364,125 @@ async function main() {
     update: { title: "Media mention response" },
   });
 
+  await seedSlice4WorkflowTemplates(prisma);
+
+  const slice5Sources: Array<{
+    label: string;
+    displayName: string;
+    sourceType: CalendarSourceType;
+    isPublicFacing: boolean;
+    externalCalendarId: string;
+    color: string;
+    syncEnabled: boolean;
+  }> = [
+    {
+      label: "GCal — primary (OAuth)",
+      displayName: "Campaign master / internal",
+      sourceType: CalendarSourceType.CAMPAIGN_MASTER,
+      isPublicFacing: false,
+      externalCalendarId: "primary",
+      color: "#1a73e8",
+      syncEnabled: true,
+    },
+    {
+      label: "S5 — Candidate public (set calendar id)",
+      displayName: "Candidate public appearances",
+      sourceType: CalendarSourceType.CANDIDATE_PUBLIC_APPEARANCES,
+      isPublicFacing: true,
+      externalCalendarId: "configure-candidate-public-calendar-id",
+      color: "#c5221f",
+      syncEnabled: false,
+    },
+    {
+      label: "S5 — Travel & logistics (set id)",
+      displayName: "Travel / logistics",
+      sourceType: CalendarSourceType.TRAVEL_LOGISTICS,
+      isPublicFacing: false,
+      externalCalendarId: "configure-travel-calendar-id",
+      color: "#f9ab00",
+      syncEnabled: false,
+    },
+    {
+      label: "S5 — Internal staff (set id)",
+      displayName: "Internal staff planning",
+      sourceType: CalendarSourceType.INTERNAL_STAFF_PLANNING,
+      isPublicFacing: false,
+      externalCalendarId: "configure-internal-staff-calendar-id",
+      color: "#5f6368",
+      syncEnabled: false,
+    },
+    {
+      label: "S5 — Content & media (set id)",
+      displayName: "Content / media",
+      sourceType: CalendarSourceType.CONTENT_MEDIA,
+      isPublicFacing: false,
+      externalCalendarId: "configure-content-media-calendar-id",
+      color: "#34a853",
+      syncEnabled: false,
+    },
+    {
+      label: "S5 — Personal overlay (set id)",
+      displayName: "Personal overlay (permitted)",
+      sourceType: CalendarSourceType.PERSONAL_OVERLAY,
+      isPublicFacing: false,
+      externalCalendarId: "configure-personal-calendar-id",
+      color: "#9334e6",
+      syncEnabled: false,
+    },
+  ];
+  for (const s of slice5Sources) {
+    const ex =
+      (await prisma.calendarSource.findFirst({ where: { label: s.label } })) ||
+      (s.externalCalendarId === "primary"
+        ? await prisma.calendarSource.findFirst({ where: { externalCalendarId: "primary" } })
+        : null);
+    if (ex) {
+      await prisma.calendarSource.update({
+        where: { id: ex.id },
+        data: {
+          label: s.label,
+          displayName: s.displayName,
+          sourceType: s.sourceType,
+          isPublicFacing: s.isPublicFacing,
+          color: s.color,
+          ...(s.externalCalendarId === "primary" ? {} : { externalCalendarId: s.externalCalendarId }),
+        },
+      });
+    } else {
+      await prisma.calendarSource.create({
+        data: {
+          label: s.label,
+          displayName: s.displayName,
+          sourceType: s.sourceType,
+          isPublicFacing: s.isPublicFacing,
+          provider: CalendarProvider.GOOGLE,
+          externalCalendarId: s.externalCalendarId,
+          visibility: s.isPublicFacing ? CalendarSourceVisibility.PUBLIC_CONNECTOR : CalendarSourceVisibility.STAFF,
+          color: s.color,
+          syncEnabled: s.syncEnabled,
+        },
+      });
+    }
+  }
+
+  // Backfill workflow for existing events created before Calendar HQ (keep scheduled items usable).
+  await prisma.campaignEvent.updateMany({
+    where: {
+      eventWorkflowState: EventWorkflowState.DRAFT,
+      status: { in: [CampaignEventStatus.SCHEDULED, CampaignEventStatus.IN_PROGRESS] },
+    },
+    data: { eventWorkflowState: EventWorkflowState.APPROVED },
+  });
+  await prisma.campaignEvent.updateMany({
+    where: {
+      eventWorkflowState: { in: [EventWorkflowState.APPROVED, EventWorkflowState.PUBLISHED] },
+      visibility: CampaignEventVisibility.PUBLIC_STAFF,
+    },
+    data: { isPublicOnWebsite: true, eventWorkflowState: EventWorkflowState.PUBLISHED },
+  });
+
   console.log(
-    "Seed complete: siteSettings, homepageConfig, platformConnection, County + voter file demo rows + workflow templates."
+    "Seed complete: siteSettings, homepageConfig, platformConnection, County + voter file demo rows + workflow templates, Slice 4 + Slice 5 calendar sources."
   );
 }
 

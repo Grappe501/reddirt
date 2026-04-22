@@ -81,7 +81,9 @@ export async function createCampaignEventAction(formData: FormData) {
   await runEventCreatedWorkflows(ev.id);
 
   revalidatePath("/admin/workbench");
+  revalidatePath("/admin/workbench/calendar");
   revalidatePath("/admin/events");
+  revalidatePath("/campaign-calendar");
   redirect(`/admin/events/${ev.id}`);
 }
 

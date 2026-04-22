@@ -4,6 +4,8 @@ import type { NextConfig } from "next";
  * Default Next.js build so App Router API routes work on Netlify via @netlify/plugin-nextjs.
  */
 const nextConfig: NextConfig = {
+  /** Hide the corner dev badge on a clean marketing hero; errors still surface in the overlay. */
+  devIndicators: false,
   experimental: {
     serverActions: {
       /** Campaign-owned video/audio uploads (keep aligned with OWNED_MEDIA_MAX_BYTES). */

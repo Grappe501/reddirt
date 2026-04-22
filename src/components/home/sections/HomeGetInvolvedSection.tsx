@@ -10,9 +10,9 @@ import { cn } from "@/lib/utils";
 const ACTIONS = [
   {
     title: "Volunteer",
-    body: "Connect through the public campaign site—the same path thousands of Arkansans already use.",
+    body: "Sign up on this site—tell us how you’d like to help locally or online.",
     href: getJoinCampaignHref(),
-    cta: "Go to KellyGrappe.com",
+    cta: "Open volunteer form",
   },
   {
     title: "Become an Organizer",
@@ -35,6 +35,9 @@ const ACTIONS = [
 ] as const;
 
 export function HomeGetInvolvedSection() {
+  const joinHref = getJoinCampaignHref();
+  const joinExternal = isExternalHref(joinHref);
+
   return (
     <section className="bg-white py-section-y lg:py-section-y-lg" aria-labelledby="get-involved-heading">
       <ContentContainer>
@@ -76,12 +79,12 @@ export function HomeGetInvolvedSection() {
         </div>
         <FadeInWhenVisible className="mt-14 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-4" delay={0.1}>
           <Link
-            href={getJoinCampaignHref()}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={joinHref}
+            target={joinExternal ? "_blank" : undefined}
+            rel={joinExternal ? "noopener noreferrer" : undefined}
             className="inline-flex min-h-[52px] flex-1 items-center justify-center rounded-btn bg-civic-midnight px-8 py-3.5 text-center text-sm font-bold uppercase tracking-wider text-civic-mist sm:flex-none hover:bg-civic-deep"
           >
-            Volunteer · KellyGrappe.com
+            Volunteer sign-up
           </Link>
           <Link
             href={siteConfig.donateHref}

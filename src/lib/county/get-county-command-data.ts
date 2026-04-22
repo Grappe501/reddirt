@@ -1,10 +1,11 @@
 import { ContentHubKind, OwnedMediaReviewStatus, Prisma } from "@prisma/client";
-import { events as allEvents } from "@/content/events";
 import { roadPostPublicWhere } from "@/lib/content/content-hub-visibility";
 import { prisma } from "@/lib/db";
 import type { RoadPostCard } from "@/lib/content/content-hub-queries";
 import type { CountyVoterMetricsWithSnapshot } from "@/lib/voter-file/queries";
 import { getLatestCountyVoterMetrics } from "@/lib/voter-file/queries";
+import { listUpcomingPublicCampaignEventsForCountySlug } from "@/lib/calendar/public-events";
+import type { PublicCampaignEvent } from "@/lib/calendar/public-event-types";
 
 const countyWithRelations = Prisma.validator<Prisma.CountyDefaultArgs>()({
   include: {
@@ -43,8 +44,9 @@ export type CountyPageSnapshot = {
   latestVisitPost: RoadPostCard | null;
   latestStoryPost: RoadPostCard | null;
   mediaGallery: Awaited<ReturnType<typeof loadCountyOwnedMediaPreview>>;
-  upcomingEvents: import("@/content/types").EventItem[];
-  nextEvent: import("@/content/types").EventItem | null;
+  /** Public CampaignOS events for this county (PUBLISHED + isPublicOnWebsite + not canceled) */
+  upcomingPublicCampaignEvents: PublicCampaignEvent[];
+  nextPublicCampaignEvent: PublicCampaignEvent | null;
 };
 
 function roadWhereForCounty(slug: string): Prisma.SyncedPostWhereInput {
@@ -109,16 +111,8 @@ export async function getCountyPageSnapshot(slug: string): Promise<CountyPageSna
     getLatestCountyVoterMetrics(county.id),
   ]);
 
-  const now = new Date();
-  const featured = new Set(county.featuredEventSlugs);
-  const upcomingEvents = allEvents
-    .filter(
-      (e) =>
-        e.status === "upcoming" && new Date(e.startsAt) > now && (e.countySlug === slug || featured.has(e.slug))
-    )
-    .sort((a, b) => +new Date(a.startsAt) - +new Date(b.startsAt));
-
-  const nextEvent = upcomingEvents[0] ?? null;
+  const publicEv = await listUpcomingPublicCampaignEventsForCountySlug(slug, 20);
+  const nextPublicCampaignEvent = publicEv[0] ?? null;
 
   return {
     county,
@@ -126,7 +120,7 @@ export async function getCountyPageSnapshot(slug: string): Promise<CountyPageSna
     latestVisitPost: visit,
     latestStoryPost: story,
     mediaGallery,
-    upcomingEvents,
-    nextEvent,
+    upcomingPublicCampaignEvents: publicEv,
+    nextPublicCampaignEvent,
   };
 }

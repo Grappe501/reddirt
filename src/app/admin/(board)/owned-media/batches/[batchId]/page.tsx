@@ -55,7 +55,7 @@ export default async function MediaIngestBatchDetailPage({ params, searchParams 
     return (
       <div>
         <p>Batch not found.</p>
-        <Link href="/admin/owned-media/batches" className="text-washed-denim underline">
+        <Link href="/admin/owned-media/batches" className="text-civic-slate underline">
           Back
         </Link>
       </div>
@@ -73,10 +73,10 @@ export default async function MediaIngestBatchDetailPage({ params, searchParams 
     <div className="mx-auto max-w-6xl space-y-8 px-1 pb-10">
       <div>
         <div className="flex flex-wrap gap-3 text-sm">
-          <Link href="/admin/owned-media/batches" className="text-washed-denim hover:underline">
+          <Link href="/admin/owned-media/batches" className="text-civic-slate hover:underline">
             ← Batches
           </Link>
-          <Link href="/admin/owned-media" className="text-washed-denim hover:underline">
+          <Link href="/admin/owned-media" className="text-civic-slate hover:underline">
             Owned media
           </Link>
         </div>
@@ -229,7 +229,7 @@ export default async function MediaIngestBatchDetailPage({ params, searchParams 
                 </div>
                 <Link
                   href={`/admin/owned-media/${a.id}?batch=${encodeURIComponent(batchId)}`}
-                  className="text-[11px] text-washed-denim underline"
+                  className="text-[11px] text-civic-slate underline"
                 >
                   Open detail
                 </Link>

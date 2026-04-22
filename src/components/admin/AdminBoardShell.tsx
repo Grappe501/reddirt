@@ -20,6 +20,8 @@ const siteLinks: { href: string; label: string }[] = [
 
 const operationsLinks: { href: string; label: string }[] = [
   { href: "/admin/workbench", label: "Campaign workbench" },
+  { href: "/admin/workbench/comms", label: "Comms hub" },
+  { href: "/admin/workbench/calendar", label: "Calendar HQ" },
   { href: "/admin/events", label: "Events" },
   { href: "/admin/tasks", label: "Tasks" },
   { href: "/admin/asks", label: "Volunteer asks" },
@@ -42,7 +44,7 @@ const orchestratorLinks: { href: string; label: string }[] = [
 
 export function AdminBoardShell({ children }: { children: ReactNode }) {
   return (
-    <div className="flex min-h-screen bg-[#f2ebe2] text-deep-soil">
+    <div className="flex min-h-screen bg-transparent text-deep-soil">
       <aside className="flex w-[min(100%,280px)] flex-col border-r border-deep-soil/15 bg-deep-soil text-cream-canvas">
         <div className="border-b border-cream-canvas/10 px-5 py-6">
           <p className="font-body text-[10px] font-bold uppercase tracking-[0.28em] text-cream-canvas/55">

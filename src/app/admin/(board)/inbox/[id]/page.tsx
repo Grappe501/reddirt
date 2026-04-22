@@ -55,7 +55,7 @@ export default async function AdminInboundDetailPage({ params, searchParams }: P
             href={item.canonicalUrl}
             target="_blank"
             rel="noreferrer"
-            className="font-body text-sm font-semibold text-washed-denim underline-offset-2 hover:underline"
+            className="font-body text-sm font-semibold text-civic-slate underline-offset-2 hover:underline"
           >
             Canonical URL ↗
           </a>

@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { createPortal } from "react-dom";
 import { useJourney } from "@/components/journey/journey-context";
 import { beatById } from "@/content/home/journey";
@@ -11,9 +12,12 @@ type ChatMessage = { role: "user" | "assistant"; text: string };
 type Suggestion = { label: string; href: string };
 
 export function CampaignGuideDock() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const panelId = useId();
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [open, setOpen] = useState(false);
+  const [dockVisible, setDockVisible] = useState(!isHome);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -25,6 +29,21 @@ export function CampaignGuideDock() {
   ]);
   const [lastSuggestions, setLastSuggestions] = useState<Suggestion[]>([]);
   const { activeBeatId } = useJourney();
+
+  useEffect(() => {
+    if (!isHome) {
+      setDockVisible(true);
+      return;
+    }
+    setDockVisible(false);
+    const threshold = () => Math.min(window.innerHeight * 0.72, 640);
+    const onScroll = () => {
+      if (window.scrollY >= threshold()) setDockVisible(true);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isHome]);
 
   useEffect(() => {
     if (!open) return;
@@ -99,11 +118,12 @@ export function CampaignGuideDock() {
 
   const dock = (
     <>
+      {dockVisible ? (
       <button
         type="button"
         onClick={() => setOpen(true)}
         className={cn(
-          "fixed z-[45] flex items-center gap-2 rounded-full border-2 border-civic-gold/80 bg-civic-midnight px-4 py-3 font-body text-sm font-bold uppercase tracking-wider text-civic-mist shadow-xl transition hover:bg-civic-deep",
+          "fixed z-[45] flex items-center gap-2 rounded-full border border-civic-mist/35 bg-civic-midnight/95 px-3.5 py-2.5 font-body text-sm font-semibold tracking-wide text-civic-mist shadow-lg backdrop-blur-sm transition hover:border-civic-gold/50 hover:bg-civic-deep",
           "bottom-[4.5rem] right-4 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8",
         )}
         aria-expanded={open}
@@ -112,6 +132,7 @@ export function CampaignGuideDock() {
         <span className="hidden sm:inline">Ask the guide</span>
         <span className="sm:hidden">Guide</span>
       </button>
+      ) : null}
 
       {open
         ? createPortal(

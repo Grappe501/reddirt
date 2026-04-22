@@ -8,6 +8,8 @@ import { isExternalHref } from "@/lib/href";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
+  const joinHref = getJoinCampaignHref();
+  const joinExternal = isExternalHref(joinHref);
 
   return (
     <footer className="w-full border-t border-civic-gold/20 bg-civic-midnight text-cream-canvas">
@@ -19,12 +21,12 @@ export function SiteFooter() {
               {siteConfig.description}
             </p>
             <Link
-              href={getJoinCampaignHref()}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={joinHref}
+              target={joinExternal ? "_blank" : undefined}
+              rel={joinExternal ? "noopener noreferrer" : undefined}
               className="mt-6 inline-flex rounded-btn border border-cream-canvas/25 bg-cream-canvas/10 px-4 py-2.5 font-body text-sm font-semibold text-cream-canvas transition hover:border-sunlight-gold/50 hover:bg-cream-canvas/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sunlight-gold"
             >
-              Volunteer · KellyGrappe.com →
+              Volunteer sign-up →
             </Link>
           </div>
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 lg:col-span-8">
