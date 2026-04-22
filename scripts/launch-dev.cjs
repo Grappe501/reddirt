@@ -9,6 +9,7 @@
 const { execSync, spawn } = require("child_process");
 const fs = require("fs");
 const path = require("path");
+const { waitForPostgres } = require("./wait-for-postgres.cjs");
 
 const root = path.join(__dirname, "..");
 process.chdir(root);
@@ -38,14 +39,27 @@ if (!hasEnvFile()) {
   console.log("✓ Environment file present\n");
 }
 
+let composeOk = false;
 console.log("→ Docker Compose (database)…");
+console.log(
+  "  (Hang here? Start Docker Desktop, wait for “Engine running”, then Ctrl+C and run dev:full again.)\n",
+);
 try {
   run("docker compose up -d");
   console.log("✓ Compose services up\n");
+  composeOk = true;
 } catch {
   console.warn(
-    "\x1b[33m⚠ docker compose failed — start Docker Desktop or run: npm run dev:db\x1b[0m\n",
+    "\x1b[33m⚠ docker compose failed — start Docker Desktop or run: npm run stack:up\x1b[0m\n",
   );
+}
+
+if (composeOk) {
+  if (!waitForPostgres({ cwd: root })) {
+    console.warn(
+      "\x1b[33m⚠ Postgres not ready after wait — prisma may fail. Check: docker compose logs db\x1b[0m\n",
+    );
+  }
 }
 
 console.log("→ prisma generate…");

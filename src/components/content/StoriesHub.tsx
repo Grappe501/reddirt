@@ -47,6 +47,9 @@ export function StoriesHub({ stories, featured, substackPosts = [] }: StoriesHub
   const shown = gridSource.slice(0, visible);
   const hasMore = gridSource.length > shown.length;
 
+  /** On “All” with a live Substack block, the archive grid below is omitted (no duplicate “more voices” rail). */
+  const hideOnSiteGridAfterSubstack = category === "all" && substackPosts.length > 0;
+
   return (
     <div className="space-y-10">
       <div
@@ -178,7 +181,7 @@ export function StoriesHub({ stories, featured, substackPosts = [] }: StoriesHub
         </div>
       ) : null}
 
-      {filtered.length === 0 ? (
+      {!hideOnSiteGridAfterSubstack && filtered.length === 0 ? (
         <p className="rounded-card border border-dashed border-deep-soil/25 p-10 text-center font-body text-deep-soil/75" role="status">
           No stories in this category yet. Try another filter—or{" "}
           <a className="font-semibold text-red-dirt underline" href="#share">
@@ -186,7 +189,7 @@ export function StoriesHub({ stories, featured, substackPosts = [] }: StoriesHub
           </a>
           .
         </p>
-      ) : (
+      ) : !hideOnSiteGridAfterSubstack ? (
         <>
           {category === "all" ? (
             <h2 className="font-heading text-xl font-bold text-deep-soil">More voices</h2>
@@ -217,7 +220,7 @@ export function StoriesHub({ stories, featured, substackPosts = [] }: StoriesHub
             </div>
           ) : null}
         </>
-      )}
+      ) : null}
     </div>
   );
 }

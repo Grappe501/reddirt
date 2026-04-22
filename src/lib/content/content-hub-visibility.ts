@@ -17,7 +17,7 @@ import { ContentHubKind, ContentPlatform, InboundReviewStatus, Prisma } from "@p
  * | **Suppressed / archived** | `SUPPRESSED`, `ARCHIVED` | Never public on hubs. |
  * | **Hidden from site** | `siteHidden: true` | Never public on hubs (operational hide without changing review enum). |
  *
- * **Public-visible for video hubs** (`/watch`, hero fallbacks, rail cards):
+ * **Public-visible for video hubs** (featured video on campaign trail, understand, hero fallbacks, etc.):
  * - `sourcePlatform === YOUTUBE`
  * - `siteHidden === false`
  * - `reviewStatus` ∈ { `REVIEWED`, `FEATURED` }
@@ -27,7 +27,7 @@ import { ContentHubKind, ContentPlatform, InboundReviewStatus, Prisma } from "@p
  * 2. Else: first **FEATURED** public-visible YouTube row (by `featuredWeight` desc, `publishedAt` desc).
  * 3. Else: first **REVIEWED** public-visible YouTube row with `contentKind` in video-like kinds or `null`.
  *
- * **Pending** items never appear on `/watch` or homepage hero until a reviewer sets `REVIEWED` or `FEATURED` in Admin → Inbox.
+ * **Pending** items never appear on public video surfaces or homepage hero until a reviewer sets `REVIEWED` or `FEATURED` in Admin → Inbox.
  *
  * ---
  *
@@ -45,9 +45,15 @@ import { ContentHubKind, ContentPlatform, InboundReviewStatus, Prisma } from "@p
  * **`/from-the-road` page** (`listFromTheRoadPosts`):
  * - Same public road filter **+** `orderBy: publishedAt desc`, larger limit.
  *
- * ---
+ * ## Inbound Facebook & Instagram (field posts on `/from-the-road`)
  *
- * No Instagram/Facebook logic here yet — extend this module when those connectors ship.
+ * - `sourcePlatform` ∈ { `FACEBOOK`, `INSTAGRAM` }
+ * - `siteHidden === false`
+ * - `reviewStatus` ∈ { `REVIEWED`, `FEATURED` } (same review bar as public YouTube)
+ *
+ * Ingested via admin platform sync; posts stay `PENDING` until an editor approves in Admin → Inbox.
+ *
+ * ---
  */
 
 /** Never shown on public video hubs. */
@@ -57,7 +63,7 @@ export const INBOUND_VIDEO_REVIEW_EXCLUDED: InboundReviewStatus[] = [
   InboundReviewStatus.ARCHIVED,
 ];
 
-/** Shown on `/watch`, rails, and homepage/watch hero when combined with `siteHidden: false` and YouTube platform. */
+/** Shown on public video hubs and homepage/featured video when combined with `siteHidden: false` and YouTube platform. */
 export const INBOUND_VIDEO_REVIEW_PUBLIC: InboundReviewStatus[] = [
   InboundReviewStatus.REVIEWED,
   InboundReviewStatus.FEATURED,
@@ -77,4 +83,11 @@ export const roadPostPublicWhere: Prisma.SyncedPostWhereInput = {
     { contentKind: null },
     { contentKind: { in: [ContentHubKind.STORY, ContentHubKind.ROAD_UPDATE] } },
   ],
+};
+
+/** Facebook + Instagram: approved for the public /from-the-road field grid (same review band as YouTube on hubs). */
+export const inboundSocialFromRoadWhere: Prisma.InboundContentItemWhereInput = {
+  sourcePlatform: { in: [ContentPlatform.FACEBOOK, ContentPlatform.INSTAGRAM] },
+  siteHidden: false,
+  reviewStatus: { in: INBOUND_VIDEO_REVIEW_PUBLIC },
 };

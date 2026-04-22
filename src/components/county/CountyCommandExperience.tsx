@@ -69,12 +69,6 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
   const regGoal = vm?.countyGoal ?? stats?.registrationGoal ?? null;
   const progressPct = vm?.progressPercent ?? null;
 
-  const federal = county.elected.filter((o) => o.jurisdiction === "FEDERAL");
-  const state = county.elected.filter((o) => o.jurisdiction === "STATE");
-  const countyLocal = county.elected.filter(
-    (o) => o.jurisdiction === "COUNTY" || o.jurisdiction === "LOCAL"
-  );
-
   return (
     <>
       <PageHero
@@ -289,32 +283,6 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
         </ContentContainer>
       </FullBleedSection>
 
-      <FullBleedSection padY aria-labelledby="elected-title">
-        <ContentContainer>
-          <SectionHeading
-            id="elected-title"
-            align="left"
-            eyebrow="Representation"
-            title="Elected officials"
-            subtitle="Rows are reviewable, sourced, and can be filled from multiple workflows—manual entry, imports, and future connector passes (e.g. Civic). Nothing here is a substitute for the SOS voter roll."
-          />
-          {federal.length + state.length + countyLocal.length > 0 ? (
-            <div className="mt-8 space-y-10">
-              {federal.length > 0 ? <OfficialBlock key="federal" title="Federal officials" rows={federal} /> : null}
-              {state.length > 0 ? <OfficialBlock key="state" title="State officials" rows={state} /> : null}
-              {countyLocal.length > 0 ? <OfficialBlock key="c" title="County & local officials" rows={countyLocal} /> : null}
-            </div>
-          ) : (
-            <div className={cn(card, "mt-8")}>
-              <p className="text-sm text-deep-soil/80">
-                We are building a verified, sourced roster for this county. If you are logged into the team console, you can
-                approve official rows as they are imported. Until then, this section stays blank—no guesswork in public.
-              </p>
-            </div>
-          )}
-        </ContentContainer>
-      </FullBleedSection>
-
       <FullBleedSection padY className="bg-deep-soil text-cream-canvas" aria-labelledby="voteraction-title">
         <ContentContainer>
           <h2 className="font-heading text-2xl font-bold tracking-tight" id="voteraction-title">
@@ -522,40 +490,5 @@ function HappenCard({
         </p>
       </div>
     </article>
-  );
-}
-
-type Official = import("@prisma/client").CountyElectedOfficial;
-
-function OfficialBlock({ title, rows }: { title: string; rows: Official[] }) {
-  return (
-    <div>
-      <h3 className="font-heading text-sm font-bold uppercase tracking-[0.18em] text-deep-soil/60">{title}</h3>
-      <ul className="mt-3 space-y-2" role="list">
-        {rows.map((o) => (
-          <li key={o.id} className={cn(card, "py-3")}>
-            <p className="text-xs font-bold uppercase tracking-wide text-red-dirt/90">{o.officeTitle}</p>
-            <p className="text-lg font-bold text-deep-soil">
-              {o.name} {o.party ? <span className="text-base font-medium text-deep-soil/70">({o.party})</span> : null}
-            </p>
-            {o.termEnd ? <p className="text-sm text-deep-soil/60">Term: {o.termEnd}</p> : null}
-            {o.sourceUrl || o.sourceLabel ? (
-              <p className="mt-1 text-xs text-deep-soil/50">
-                {o.sourceLabel}
-                {o.sourceUrl ? (
-                  <>
-                    {" · "}
-                    <a className="font-medium text-red-dirt" href={o.sourceUrl} target="_blank" rel="noreferrer">
-                      source
-                    </a>
-                  </>
-                ) : null}
-              </p>
-            ) : null}
-            <p className="mt-1 text-[10px] text-deep-soil/45">Review: {o.reviewStatus.toLowerCase().replace(/_/g, " ")}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 }

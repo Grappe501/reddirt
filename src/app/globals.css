@@ -21,6 +21,11 @@
   --civic-mist: #e4e1d8;
   --civic-fog: #f0eee8;
   --civic-ink: #1a1f2e;
+  /* Copper — matches small “READ MORE” accent; bright variant for body type on `bg-civic-blue` */
+  --civic-copper: #b87333;
+  --civic-copper-bright: #ecc49b;
+  /** Section wash — used by FullBleedSection + home rails; must exist for `bg-washed-canvas` utilities. */
+  --washed-canvas: #e8e4dc;
 
   --color-surface-elevated: #fffdf8;
   --color-border-subtle: rgba(43, 30, 26, 0.12);
@@ -93,4 +98,18 @@
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-red-dirt;
   }
+}
+
+/* Leaflet custom divIcon pins — drop default white tile behind markers */
+.leaflet-div-icon.reddirt-leaflet-pin {
+  background: transparent !important;
+  border: none !important;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 0.75rem;
+}
+
+.leaflet-popup-content {
+  margin: 0.75rem 0.9rem;
 }

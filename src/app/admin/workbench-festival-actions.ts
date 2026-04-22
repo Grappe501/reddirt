@@ -8,7 +8,7 @@ import { requireAdminAction } from "@/app/admin/owned-media-auth";
 import { FESTIVAL_REVIEW_FORM_REDIRECT_BASES } from "@/app/admin/workbench-festival-constants";
 
 function revalidateFestivalSurfaces() {
-  revalidatePath("/campaign-trail");
+  revalidatePath("/from-the-road");
   revalidatePath("/events");
   revalidatePath("/admin/workbench/festivals");
   revalidatePath("/admin/events/community-suggestions");
@@ -21,7 +21,7 @@ function redirectAfterAction(formData: FormData, query: string) {
   redirect(`${base}${query}`);
 }
 
-/** Approve for public /campaign-trail community feed. */
+/** Approve for public /from-the-road community feed. */
 export async function approveArkansasFestivalIngestAction(formData: FormData) {
   await requireAdminAction();
   const id = String(formData.get("id") ?? "").trim();

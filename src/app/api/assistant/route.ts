@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getOpenAIClient, getOpenAIConfigFromEnv, isOpenAIConfigured } from "@/lib/openai/client";
-import { semanticSearch, buildContextBlock } from "@/lib/openai/search";
+import { searchChunks, buildContextBlock } from "@/lib/openai/search";
 import { pathToHref } from "@/lib/search/paths";
 import { RAG_ANSWER_SYSTEM_PROMPT } from "@/lib/openai/prompts";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
@@ -75,9 +75,9 @@ export async function POST(req: Request) {
 
   let hits;
   try {
-    hits = await semanticSearch(message, 8);
+    hits = await searchChunks(message, 8);
   } catch (e) {
-    console.error("[assistant] semanticSearch", e);
+    console.error("[assistant] searchChunks", e);
     const hint =
       e instanceof Error && /prisma|database|connect/i.test(e.message)
         ? " Check DATABASE_URL and run migrations (`npx prisma migrate deploy`)."
@@ -101,6 +101,7 @@ export async function POST(req: Request) {
       suggestions: [
         { label: "Office priorities", href: "/priorities" },
         { label: "Direct democracy", href: "/direct-democracy" },
+        { label: "Arkansas ballot initiative process", href: "/direct-democracy/ballot-initiative-process" },
         { label: "Get involved", href: "/get-involved" },
       ],
     });

@@ -11,6 +11,12 @@ services:
       - "5433:5432"
     volumes:
       - reddirt_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U reddirt -d reddirt"]
+      interval: 3s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
 
 volumes:
   reddirt_pg:

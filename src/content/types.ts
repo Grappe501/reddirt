@@ -29,6 +29,8 @@ export type EventType =
   | "Volunteer Training"
   | "Direct Democracy Briefing"
   | "Fairs and Festivals"
+  /** Multi-day, overnight stay: deep local time (library hours, county clerk, meals, planning evenings). */
+  | "Immersion"
   | "Labor / Worker Roundtable"
   | "Youth Civic Session"
   | "Listening Session";
@@ -59,11 +61,23 @@ export type EventItem = {
   relatedResourceHrefs: Array<{ label: string; href: string }>;
   /** Approximate map point (usually city center) for the movement /events map. */
   mapCoordinates?: { lat: number; lng: number };
+  /** How precise the pin is — calendar fallbacks often use region centroids. */
+  mapPinQuality?: "exact" | "region";
   /**
    * Fairs & festivals only. Card + map: default white (`unscheduled`), coverage optimizer → orange (`suggested`),
    * staff intent → blue (`tentative`) or green (`confirmed`). Non-festivals may omit.
    */
   fieldAttendance?: FieldAttendance;
+  /** Default `/events/{slug}`. Calendar rows use `/campaign-calendar/{slug}`. */
+  detailHref?: string;
+  /** `calendar` when merged from CampaignOS public query; omit for static movement content. */
+  eventSource?: "movement" | "calendar";
+  /** Field / editorial flags for ops transparency on public cards. */
+  opsFlags?: {
+    missingPublicSummary?: boolean;
+    missingCounty?: boolean;
+    missingCoordinates?: boolean;
+  };
 };
 
 export type ResourceItem = {

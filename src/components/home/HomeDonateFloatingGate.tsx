@@ -73,9 +73,9 @@ export function HomeDonateFloatingGate() {
           <Image
             src={brandMediaFromLegacySite.kellyPortrait}
             alt={brandMediaFromLegacySite.kellyPortraitAlt}
-            width={800}
-            height={800}
-            className="h-full w-full object-cover"
+            width={2000}
+            height={1125}
+            className="h-full w-full object-cover object-[50%_22%]"
             priority
             unoptimized
           />

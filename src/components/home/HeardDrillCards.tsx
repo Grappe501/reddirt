@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { FadeInWhenVisible } from "@/components/home/FadeInWhenVisible";
 import { cn } from "@/lib/utils";
 import type { heardItems } from "@/content/homepage";
@@ -11,12 +10,6 @@ type Item = (typeof heardItems)[number];
 /** Below this, four lines usually hold the full text—no expand affordance. */
 const EXPAND_MEANINGFUL_MIN_CHARS = 320;
 
-const DEEP_LINKS: Record<string, { href: string; label: string }> = {
-  "Voters want the office to feel fair—not performative": { href: "/priorities", label: "Read office priorities" },
-  "Small businesses and nonprofits need the SOS to be legible": { href: "/resources", label: "Resources & clarity" },
-  "Disengagement is often a design problem": { href: "/why-this-movement", label: "Why this campaign" },
-};
-
 export function HeardDrillCards({ items }: { items: readonly Item[] | Item[] }) {
   const [open, setOpen] = useState<string | null>(null);
 
@@ -24,7 +17,6 @@ export function HeardDrillCards({ items }: { items: readonly Item[] | Item[] }) 
     <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
       {items.map((item, i) => {
         const expanded = open === item.title;
-        const deep = DEEP_LINKS[item.title];
         const canExpand = item.body.length >= EXPAND_MEANINGFUL_MIN_CHARS;
         return (
           <FadeInWhenVisible key={item.title} delay={0.06 * i}>
@@ -44,8 +36,8 @@ export function HeardDrillCards({ items }: { items: readonly Item[] | Item[] }) 
               >
                 {item.body}
               </p>
-              <div className="mt-5 flex flex-wrap items-center gap-3 border-t border-civic-ink/8 pt-4">
-                {canExpand ? (
+              {canExpand ? (
+                <div className="mt-5 border-t border-civic-ink/8 pt-4">
                   <button
                     type="button"
                     aria-expanded={expanded}
@@ -54,13 +46,8 @@ export function HeardDrillCards({ items }: { items: readonly Item[] | Item[] }) 
                   >
                     {expanded ? "Collapse" : "Expand insight"}
                   </button>
-                ) : null}
-                {deep ? (
-                  <Link href={deep.href} className="font-body text-sm font-semibold text-civic-blue underline-offset-4 hover:underline">
-                    {deep.label} →
-                  </Link>
-                ) : null}
-              </div>
+                </div>
+              ) : null}
             </article>
           </FadeInWhenVisible>
         );

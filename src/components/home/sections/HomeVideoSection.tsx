@@ -59,7 +59,7 @@ export function HomeVideoSection({ omitMainEmbed = false }: HomeVideoSectionProp
           <FadeInWhenVisible className="mt-8 md:mt-10" delay={0.06}>
             <p className="mx-auto max-w-2xl text-center font-body text-base text-civic-slate">
               The featured conversation plays in <strong className="text-civic-ink">Understand</strong> above—browse themed clips
-              here or open the full <Link href="/watch" className="font-semibold text-civic-blue underline-offset-2 hover:underline">Watch Kelly</Link> library.
+              here or open <Link href="/from-the-road" className="font-semibold text-civic-blue underline-offset-2 hover:underline">From the Road</Link>.
             </p>
           </FadeInWhenVisible>
         )}

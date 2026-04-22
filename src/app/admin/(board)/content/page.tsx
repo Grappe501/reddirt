@@ -12,7 +12,7 @@ export default function AdminContentOverviewPage() {
           <Link href="/admin/orchestrator" className="font-semibold text-red-dirt underline-offset-2 hover:underline">
             Content orchestrator
           </Link>{" "}
-          — inbound inbox, platform sync, distribution to <code className="text-xs">/updates</code> and homepage rail.
+          — inbound inbox, platform sync, distribution to <code className="text-xs">/from-the-road</code> and homepage rail.
         </li>
         <li>
           <Link href="/admin/homepage" className="font-semibold text-red-dirt underline-offset-2 hover:underline">

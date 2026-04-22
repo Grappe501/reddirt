@@ -44,6 +44,9 @@ type U = {
   publishToWebsite: boolean;
   notes: string | null;
   skipTask?: boolean;
+  /** Google (or other source) removed the event—re-import sets status CANCELLED, unpublishes, workflow CANCELED. */
+  cancelled?: boolean;
+  cancellationReason?: string | null;
 };
 
 const STUB_COUNTIES: Array<{
@@ -239,18 +242,23 @@ const SWEEP: U[] = [
   },
   {
     slug: "marion-county-field-2026-05-23",
-    title: "Marion County (field / travel block)",
+    title: "CANCELLED — Marion County (field / travel block) May 23",
     startAt: new Date("2026-05-23T13:00:00.000Z"),
     endAt: new Date("2026-05-24T01:00:00.000Z"),
     eventType: CampaignEventType.CANVASS,
     countySlug: "marion-county",
     locationName: "Marion County, AR (TBD)",
     address: null,
-    publicSummary: "All-day / long field block — public stops TBD; confirm with field director.",
-    description: "8:00am–8:00pm Central May 23 (from event card).",
-    internalSummary: BATCH,
-    publishToWebsite: true,
-    notes: "Long block may include drive time; split into public stops in Calendar HQ as needed.",
+    publicSummary: null,
+    description:
+      "Was 8:00 a.m.–8:00 p.m. Central May 23, 2026. Canceled: removed from Google Calendar. Former Meet: meet.google.com/tcd-zhxv-rwu; phone (US) +1 585-491-9351, PIN 633403345 (archive only—not a live bridge).",
+    internalSummary: `${BATCH} Canceled in Google Calendar Apr 21, 2026.`,
+    publishToWebsite: false,
+    notes: "Superseded: organizer removed event from Google Calendar. Keep slug for import idempotency.",
+    skipTask: true,
+    cancelled: true,
+    cancellationReason:
+      "Event cancelled and removed from Google Calendar (deletion notice email, Apr 21 2026). Former title/label: Marion county.",
   },
   {
     slug: "desha-county-memorial-2026-05-23",
@@ -327,7 +335,8 @@ const SWEEP: U[] = [
     description: "May 28–30, 2026 (all-day band on calendar).",
     internalSummary: BATCH,
     publishToWebsite: true,
-    notes: "Layer booth / speaking windows under this parent event or as child tasks.",
+    notes:
+      "Layer booth / speaking windows under this parent event or as child tasks. A separate Google item “Wynne farm fest” on Sat May 23, 2026 was removed from calendar (Apr 2026)—not this May 28–30 block.",
   },
   // —— June ——
   {
@@ -637,7 +646,21 @@ async function main() {
       // eslint-disable-next-line no-console
       console.warn("County not found:", ev.countySlug, ev.slug);
     }
-    const published = ev.publishToWebsite;
+    const isCancelled = Boolean(ev.cancelled);
+    const published = isCancelled ? false : ev.publishToWebsite;
+    const status = isCancelled ? CampaignEventStatus.CANCELLED : CampaignEventStatus.SCHEDULED;
+    const workflowState = isCancelled
+      ? EventWorkflowState.CANCELED
+      : published
+        ? EventWorkflowState.PUBLISHED
+        : EventWorkflowState.APPROVED;
+    const visibility = isCancelled
+      ? CampaignEventVisibility.INTERNAL
+      : published
+        ? CampaignEventVisibility.PUBLIC_STAFF
+        : CampaignEventVisibility.INTERNAL;
+    const cancellationReason =
+      isCancelled ? (ev.cancellationReason?.trim() || "Removed from source calendar (import marked cancelled).") : null;
     const row = await prisma.campaignEvent.upsert({
       where: { slug: ev.slug },
       create: {
@@ -645,8 +668,8 @@ async function main() {
         title: ev.title,
         description: ev.description,
         eventType: ev.eventType,
-        status: CampaignEventStatus.SCHEDULED,
-        visibility: published ? CampaignEventVisibility.PUBLIC_STAFF : CampaignEventVisibility.INTERNAL,
+        status,
+        visibility,
         countyId: countyId ?? null,
         locationName: ev.locationName,
         address: ev.address,
@@ -654,33 +677,35 @@ async function main() {
         endAt: ev.endAt,
         timezone: "America/Chicago",
         notes: ev.notes,
-        eventWorkflowState: published ? EventWorkflowState.PUBLISHED : EventWorkflowState.APPROVED,
+        eventWorkflowState: workflowState,
         isPublicOnWebsite: published,
-        publicSummary: ev.publicSummary,
+        publicSummary: isCancelled ? null : ev.publicSummary,
         internalSummary: ev.internalSummary,
-        submittedForReviewAt: published ? new Date() : null,
+        submittedForReviewAt: published && !isCancelled ? new Date() : null,
         approvedAt: new Date(),
+        cancellationReason,
       },
       update: {
         title: ev.title,
         description: ev.description,
         eventType: ev.eventType,
-        status: CampaignEventStatus.SCHEDULED,
-        visibility: published ? CampaignEventVisibility.PUBLIC_STAFF : CampaignEventVisibility.INTERNAL,
+        status,
+        visibility,
         countyId: countyId ?? null,
         locationName: ev.locationName,
         address: ev.address,
         startAt: ev.startAt,
         endAt: ev.endAt,
         notes: ev.notes,
-        eventWorkflowState: published ? EventWorkflowState.PUBLISHED : EventWorkflowState.APPROVED,
+        eventWorkflowState: workflowState,
         isPublicOnWebsite: published,
-        publicSummary: ev.publicSummary,
+        publicSummary: isCancelled ? null : ev.publicSummary,
         internalSummary: ev.internalSummary,
+        cancellationReason,
       },
     });
 
-    if (!ev.skipTask) {
+    if (!ev.skipTask && !isCancelled) {
       const taskTitle = `${TASK_PREFIX} Complete details: ${ev.title}`;
       const taskBody = [TZ_NOTE, ev.notes, BATCH].filter(Boolean).join(" ");
       const taskDue = new Date(row.startAt.getTime() - 3 * 24 * 60 * 60 * 1000);

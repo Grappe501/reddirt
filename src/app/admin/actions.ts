@@ -69,7 +69,7 @@ export async function triggerSubstackSyncAction() {
   revalidatePath("/admin/orchestrator");
   revalidatePath("/admin/inbox");
   revalidatePath("/admin/platforms");
-  revalidatePath("/updates");
+  revalidatePath("/from-the-road");
   revalidatePath("/");
   revalidatePath("/from-the-road");
   redirect("/admin/blog?sync=1");
@@ -276,7 +276,7 @@ export async function saveHomepageAction(formData: FormData) {
   });
 
   revalidatePath("/");
-  revalidatePath("/watch");
+  revalidatePath("/from-the-road");
   revalidatePath("/admin/homepage");
   redirect("/admin/homepage?saved=1");
 }

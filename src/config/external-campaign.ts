@@ -12,6 +12,9 @@ export function getLegacyPublicSiteUrl(): string {
   return process.env.NEXT_PUBLIC_LEGACY_SITE_URL?.trim().replace(/\/$/, "") || LEGACY_SITE;
 }
 
+/** On-site “stay connected” form (`JoinMovementForm` on get-involved). */
+export const STAY_CONNECTED_HREF = "/get-involved#join" as const;
+
 /** On-site volunteer intake (`VolunteerForm` on get-involved). */
 export const VOLUNTEER_SIGNUP_HREF = "/get-involved#volunteer" as const;
 
@@ -29,6 +32,22 @@ export function getJoinCampaignHref(): string {
   const o = process.env.NEXT_PUBLIC_JOIN_CAMPAIGN_URL?.trim().replace(/\/$/, "");
   if (o) return o;
   return getVolunteerSignupHref();
+}
+
+/**
+ * “Join the campaign” on content hub cards: same `NEXT_PUBLIC_JOIN_CAMPAIGN_URL` override as
+ * `getJoinCampaignHref`, but defaults to `#join` (contact) so it does not duplicate the volunteer card’s
+ * `#volunteer` target.
+ */
+export function getContentHubJoinHref(): string {
+  const o = process.env.NEXT_PUBLIC_JOIN_CAMPAIGN_URL?.trim().replace(/\/$/, "");
+  if (o) return o;
+  return STAY_CONNECTED_HREF;
+}
+
+/** Use `target="_blank"` + rel only for off-site (or `mailto:`) links — not same-site app routes. */
+export function isOffSitePublicHref(href: string): boolean {
+  return /^(https?:|mailto:|tel:)/i.test(href.trim());
 }
 
 export function getCampaignBlogUrl(): string {

@@ -142,12 +142,6 @@ export default function LocalOrganizingPage() {
               href="/events"
               ctaLabel="Browse events"
             />
-            <PathwayCard
-              title="Share what your community needs"
-              description="Stories ground policy in real life. Tell us what you’re seeing—and what a fair Arkansas would look like."
-              href="/stories"
-              ctaLabel="Share a story"
-            />
           </div>
         </ContentContainer>
       </FullBleedSection>

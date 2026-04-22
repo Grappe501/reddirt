@@ -26,39 +26,6 @@ export const TRUST_RIBBON_ITEMS = [
   },
 ] as const;
 
-export const MEET_KELLY = {
-  eyebrow: "Candidate",
-  title: "Meet Kelly Grappe",
-  body: "Kelly Grappe is running for Secretary of State to put the office back where it belongs: in service to the people of Arkansas. With experience in leadership, systems-building, civic education, and community engagement, she brings both heart and discipline to one of the state’s most important public offices.",
-  traits: [
-    { title: "Proven Leadership", body: "Tested judgment when the stakes are public trust—not a photo op." },
-    { title: "Systems Thinker", body: "Builds processes, manuals, and teams that still work when the news cycle moves on." },
-    { title: "Public Trust First", body: "Filters decisions through service to voters and clerks—not insider convenience." },
-    { title: "Service to All Arkansans", body: "Democrats, Republicans, independents: this office belongs to you." },
-  ],
-  ctaLabel: "Read Kelly’s Story",
-  ctaHref: "/about",
-} as const;
-
-export const OFFICE_MATTERS = [
-  {
-    title: "Protect the Vote",
-    body: "Secure systems, public trust, and transparent election processes.",
-  },
-  {
-    title: "Defend Ballot Rights",
-    body: "Arkansans deserve a fair path to direct democracy and citizen-led change.",
-  },
-  {
-    title: "Serve Every County",
-    body: "This office should work for rural communities, small towns, and growing cities alike.",
-  },
-  {
-    title: "Make Government Understandable",
-    body: "The people should be able to see how the system works and how decisions are made.",
-  },
-] as const;
-
 export const FIGHT_FOR = [
   {
     title: "Transparency Under the Hood",
@@ -110,7 +77,7 @@ export const STATEWIDE_SECTION = {
   title: "Showing Up Across Arkansas",
   body: "Serving Arkansas starts with listening. This campaign is committed to showing up, learning from communities, and earning trust across all 75 counties.",
   ctaLabel: "Follow the Statewide Campaign",
-  ctaHref: "/updates",
+  ctaHref: "/from-the-road",
 } as const;
 
 export const VIDEO_SECTION = {
@@ -118,12 +85,12 @@ export const VIDEO_SECTION = {
   title: "Hear Kelly in Her Own Words",
   intro: "Watch the speeches, answers, and campaign moments shaping a people-first vision for Arkansas.",
   ctaLabel: "Watch More Videos",
-  ctaHref: "/watch",
-  /** Secondary clips — deep-link into themed rails on /watch */
+  ctaHref: "/from-the-road",
+  /** Themed clips — /watch redirects to From the Road */
   secondaryClips: [
-    { category: "Why I’m Running", title: "The reason I’m asking for your trust", href: "/watch#why_im_running", thumbHint: "Curated on Watch Kelly" },
-    { category: "People Over Politics", title: "This office isn’t a party prize", href: "/watch#people_over_politics", thumbHint: "Curated on Watch Kelly" },
-    { category: "Election Transparency", title: "What transparency actually looks like", href: "/watch#election_transparency", thumbHint: "Curated on Watch Kelly" },
+    { category: "Why I’m Running", title: "The reason I’m asking for your trust", href: "/from-the-road", thumbHint: "From the Road" },
+    { category: "People Over Politics", title: "This office isn’t a party prize", href: "/from-the-road", thumbHint: "From the Road" },
+    { category: "Election Transparency", title: "What transparency actually looks like", href: "/from-the-road", thumbHint: "From the Road" },
   ],
 } as const;
 
@@ -166,7 +133,7 @@ export const JOURNAL_SECTION = {
   title: "From the Campaign Trail",
   intro: "Notes from the road—policy, people, and the work of earning trust one county at a time.",
   ctaLabel: "Read the Latest",
-  ctaHref: "/updates",
+  ctaHref: "/from-the-road",
 } as const;
 
 export const PLACEHOLDER_JOURNAL = [
@@ -185,7 +152,7 @@ export const PLACEHOLDER_JOURNAL = [
     excerpt:
       "Three themes we heard last week: clarity on deadlines, respect for local election workers, and frustration with jargon-heavy notices.",
     meta: "Field note · County visit",
-    href: "/updates",
+    href: "/from-the-road",
     cta: "Read",
   },
   {

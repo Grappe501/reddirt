@@ -17,7 +17,7 @@ OAuth may be required later for private or member-only content.
 
 ## Public site
 
-Approved items can surface on `/updates` and future **video rails** once `visibleOnUpdatesPage` / `visibleOnHomepageRail` are set in the orchestrator.
+Approved items can surface on `/campaign-trail` and future **video rails** once `visibleOnUpdatesPage` / `visibleOnHomepageRail` are set in the orchestrator.
 
 ## Future
 

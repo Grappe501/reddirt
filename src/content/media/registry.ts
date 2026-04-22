@@ -35,8 +35,8 @@ export const media = {
   arkansasPorch: {
     src: brandMediaFromLegacySite.kellyPortrait,
     alt: brandMediaFromLegacySite.kellyPortraitAlt,
-    width: 1500,
-    height: 1000,
+    width: 2000,
+    height: 1125,
   },
   storyWarehouse: {
     src: "/media/placeholders/story-shift-floor.svg",

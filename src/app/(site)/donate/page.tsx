@@ -3,6 +3,7 @@ import { PageHero } from "@/components/blocks/PageHero";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
+import { DASS_ARKANSAS_2026 } from "@/config/campaign-partners";
 import { siteConfig } from "@/config/site";
 import { pageMeta } from "@/lib/seo/metadata";
 
@@ -37,6 +38,27 @@ export default function DonatePage() {
           Read the plan
         </Button>
       </PageHero>
+      <FullBleedSection padY>
+        <ContentContainer className="max-w-2xl rounded-card border border-deep-soil/10 bg-white/60 px-6 py-7 shadow-sm md:px-8">
+          <p className="font-body text-[11px] font-bold uppercase tracking-[0.2em] text-red-dirt/90">National map</p>
+          <h2 className="mt-2 font-heading text-lg font-bold text-deep-soil md:text-xl">
+            {DASS_ARKANSAS_2026.orgName}
+          </h2>
+          <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/80 md:text-base">
+            DASS spotlights the Arkansas Secretary of State race on its 2026 state page—useful context for anyone following
+            pro-voter, pro-democracy work nationwide.
+          </p>
+          <a
+            href={DASS_ARKANSAS_2026.href}
+            className="mt-4 inline-flex font-body text-sm font-semibold text-red-dirt underline-offset-2 hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {DASS_ARKANSAS_2026.linkLabel} (demsofstate.org) ↗
+          </a>
+        </ContentContainer>
+      </FullBleedSection>
+
       <FullBleedSection variant="subtle" padY>
         <ContentContainer className="max-w-2xl space-y-4 font-body text-base leading-relaxed text-deep-soil/80">
           <p>

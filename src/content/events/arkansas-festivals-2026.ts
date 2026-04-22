@@ -133,7 +133,7 @@ function toEvent(r: FestRow): EventItem {
       ...(officialHref
         ? [{ label: "Primary listing (organizer / guide link)", href: officialHref }]
         : []),
-      { label: "Campaign trail community feed", href: "/campaign-trail" },
+      { label: "From the Road (community feed)", href: "/from-the-road" },
     ],
     mapCoordinates,
     fieldAttendance:
@@ -196,7 +196,16 @@ const ROWS: FestRow[] = [
   { slug: "fayetteville-strawberry-2026", title: "Fayetteville Strawberry Festival", s: { m: 5, d: 17 }, city: "Fayetteville", countySlug: "washington-county" },
   { slug: "old-fort-days-rodeo-2026", title: "Old Fort Days Futurity and Rodeo", s: { m: 5, d: 25 }, e: { m: 5, d: 30 }, city: "Fort Smith", countySlug: "sebastian-county" },
   { slug: "mosquito-fest-mccrory-2026", title: "Mosquito Fest", s: { m: 5, d: 28 }, e: { m: 5, d: 30 }, city: "McCrory", countySlug: "woodruff-county" },
-  { slug: "wynne-farmfest-2026", title: "Wynne FarmFest", s: { m: 5, d: 28 }, e: { m: 5, d: 30 }, city: "Wynne", countySlug: "cross-county" },
+  {
+    slug: "wynne-farmfest-2026",
+    title: "Wynne FarmFest",
+    s: { m: 5, d: 28 },
+    e: { m: 5, d: 30 },
+    city: "Wynne",
+    countySlug: "cross-county",
+    note:
+      "A mistaken personal-calendar hold for “Wynne farm fest” on an earlier May Saturday (e.g. May 23) is not the same as this festival weekend—this row follows the public May 28–30 dates.",
+  },
   { slug: "eureka-blues-party-2026", title: "Eureka Springs Blues Party", s: { m: 5, d: 28 }, e: { m: 5, d: 31 }, city: "Eureka Springs", countySlug: "carroll-county" },
   { slug: "greers-ferry-lake-fest-2026", title: "Greers Ferry Lake Fest", s: { m: 5, d: 29 }, e: { m: 5, d: 30 }, city: "Greers Ferry", countySlug: "cleburne-county" },
   { slug: "river-valley-food-truck-russellville-2026", title: "River Valley Food Truck Festival", s: { m: 5, d: 29 }, e: { m: 5, d: 30 }, city: "Russellville", countySlug: "pope-county" },

@@ -72,9 +72,9 @@ export async function runPlatformSyncAction(formData: FormData) {
   revalidatePath("/admin/platforms");
   revalidatePath("/admin/orchestrator");
   revalidatePath("/admin/inbox");
-  revalidatePath("/updates");
+  revalidatePath("/from-the-road");
   revalidatePath("/");
-  revalidatePath("/watch");
+  revalidatePath("/from-the-road");
   revalidatePath("/from-the-road");
   redirect(`/admin/platforms?sync=${encodeURIComponent(platform)}`);
 }
@@ -125,9 +125,9 @@ export async function updateInboundReviewAction(formData: FormData) {
   revalidatePath("/admin/inbox");
   revalidatePath("/admin/review-queue");
   revalidatePath("/admin/distribution");
-  revalidatePath("/updates");
+  revalidatePath("/from-the-road");
   revalidatePath("/");
-  revalidatePath("/watch");
+  revalidatePath("/from-the-road");
   revalidatePath("/from-the-road");
   redirect(`/admin/inbox/${id}?saved=1`);
 }
@@ -188,10 +188,10 @@ export async function updateInboundDistributionAction(formData: FormData) {
 
   revalidatePath("/admin/distribution");
   revalidatePath("/admin/inbox");
-  revalidatePath("/updates");
+  revalidatePath("/from-the-road");
   revalidatePath("/blog");
   revalidatePath("/");
-  revalidatePath("/watch");
+  revalidatePath("/from-the-road");
   revalidatePath("/from-the-road");
   redirect(`/admin/distribution?saved=${encodeURIComponent(id)}`);
 }
@@ -249,7 +249,7 @@ export async function updateInboundHubMetaAction(formData: FormData) {
 
   revalidatePath("/admin/inbox");
   revalidatePath("/");
-  revalidatePath("/watch");
+  revalidatePath("/from-the-road");
   revalidatePath("/from-the-road");
   redirect(`/admin/inbox/${id}?saved=1`);
 }

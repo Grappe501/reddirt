@@ -8,23 +8,49 @@ import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { pageMeta } from "@/lib/seo/metadata";
 import { getJoinCampaignHref } from "@/config/external-campaign";
 import { siteConfig } from "@/config/site";
+import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
 
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const t = await resolvePublicEventTitleForMetadata(slug);
-  if (!t) return { title: "Event" };
-  return pageMeta({
-    title: t,
-    description: `Public event · ${siteConfig.shortName} campaign calendar.`,
-    path: `/campaign-calendar/${slug}`,
-  });
+  try {
+    const t = await resolvePublicEventTitleForMetadata(slug);
+    if (!t) return { title: "Event" };
+    return pageMeta({
+      title: t,
+      description: `Public event · ${siteConfig.shortName} campaign calendar.`,
+      path: `/campaign-calendar/${slug}`,
+    });
+  } catch (e) {
+    if (isPrismaDatabaseUnavailable(e)) return { title: "Campaign calendar" };
+    throw e;
+  }
 }
 
 export default async function CampaignCalendarDetailPage({ params }: Props) {
   const { slug } = await params;
-  const r = await resolvePublicEventPageBySlug(slug);
+  let r: Awaited<ReturnType<typeof resolvePublicEventPageBySlug>>;
+  try {
+    r = await resolvePublicEventPageBySlug(slug);
+  } catch (e) {
+    if (!isPrismaDatabaseUnavailable(e)) throw e;
+    logPrismaDatabaseUnavailable("campaign-calendar/[slug]/resolvePublicEventPageBySlug", e);
+    return (
+      <FullBleedSection padY>
+        <ContentContainer className="max-w-2xl">
+          <h1 className="font-heading text-2xl font-bold text-deep-soil">Calendar temporarily unavailable</h1>
+          <p className="mt-2 font-body text-deep-soil/80">
+            The app can&apos;t reach the database (for example, Postgres on port 5433). Start the database and refresh—your
+            event data is still there.
+          </p>
+          <Link href="/campaign-calendar" className="mt-6 inline-block font-semibold text-red-dirt underline">
+            ← Back to calendar
+          </Link>
+        </ContentContainer>
+      </FullBleedSection>
+    );
+  }
   if (!r) notFound();
   const join = getJoinCampaignHref();
 

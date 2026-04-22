@@ -86,6 +86,8 @@ export const gatheringTypeValues = [
   "coffee_meetup",
   "listening_session",
   "issue_briefing",
+  "postcard_party",
+  "phone_bank_party",
   "other",
 ] as const;
 

@@ -21,7 +21,6 @@ export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [pathway, setPathway] = useState<string | null>(null);
   const panelId = useId();
   const joinCampaignHref = getJoinCampaignHref();
   const joinExternal = isExternalHref(joinCampaignHref);
@@ -44,14 +43,6 @@ export function SiteHeader() {
       document.documentElement.style.removeProperty("--site-header-h");
     };
   }, []);
-
-  useEffect(() => {
-    try {
-      setPathway(window.localStorage.getItem("reddirt_pathway"));
-    } catch {
-      setPathway(null);
-    }
-  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -92,7 +83,7 @@ export function SiteHeader() {
         <Link
           href="/"
           aria-label={`${siteConfig.name} — home`}
-          className="group flex min-w-0 max-w-[min(100%,18rem)] shrink-0 items-center gap-2.5 sm:max-w-md sm:gap-3 lg:max-w-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-civic-gold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-civic-midnight"
+          className="group flex min-w-0 max-w-[min(100%,18rem)] shrink-0 items-center gap-2.5 sm:max-w-md sm:gap-3 lg:max-w-[20rem] xl:max-w-md 2xl:max-w-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-civic-gold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-civic-midnight"
         >
           <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-civic-gold/25 bg-civic-blue/40 shadow-[0_0_0_1px_rgba(201,162,39,0.12)_inset] sm:h-12 sm:w-12">
             <HeaderRoundLogo
@@ -111,44 +102,67 @@ export function SiteHeader() {
         </Link>
 
         <nav
-          className="hidden min-w-0 flex-1 items-center justify-end gap-x-0.5 lg:flex xl:gap-x-1.5"
+          className="hidden min-w-0 flex-1 items-center justify-end gap-2 text-civic-fog lg:flex lg:gap-3 xl:gap-2.5 2xl:gap-3"
           aria-label="Primary"
         >
+          {/*
+            Put dropdown nav before Search: the nav cluster is justify-end inside flex-1, so it grows left
+            within the free column. If Search sits to the *left* of that column, the cluster overlaps the
+            Search label. Order: [nav flex-1] [Search] [CTAs] so labels stay in separate flex tracks.
+            Do not use overflow-x-auto on a parent of dropdowns — it can clip (position: absolute) menus.
+          */}
+          <div className="flex min-w-0 flex-1 min-h-0 items-center justify-end overflow-visible pr-0.5">
+            <NavDesktop groups={primaryNavGroups} pathname={pathname} theme="dark" />
+          </div>
           <Button
             type="button"
             variant="ghostOnDark"
-            className="flex-shrink-0 px-2 py-2 text-xs font-semibold tracking-wide xl:px-3"
+            className="shrink-0 px-2 py-2 text-xs font-semibold tracking-wide xl:px-3"
             onClick={() => setSearchOpen(true)}
           >
             Search
           </Button>
-          <NavDesktop groups={primaryNavGroups} pathname={pathname} theme="dark" />
           <Button
             href={joinCampaignHref}
             variant="primary"
-            className="ml-0.5 hidden flex-shrink-0 border border-red-dirt/20 px-3 py-2 text-xs font-bold uppercase tracking-wider shadow-soft xl:inline-flex xl:px-4 xl:text-sm"
+            className="ml-1 hidden min-h-11 flex-shrink-0 border border-red-dirt/20 px-3.5 py-2.5 text-xs font-extrabold uppercase tracking-wide shadow-md ring-1 ring-white/10 hover:ring-white/20 lg:inline-flex lg:px-4 lg:text-sm"
+            aria-label="Volunteer — sign up to help the campaign"
           >
             Volunteer
           </Button>
           <Button
             href={siteConfig.donateHref}
             variant="outlineOnDark"
-            className="hidden flex-shrink-0 border-2 border-sunlight-gold/85 bg-sunlight-gold/15 px-3 py-2 text-xs font-bold uppercase tracking-wider text-white hover:border-sunlight-gold hover:bg-sunlight-gold/25 xl:inline-flex xl:px-4 xl:text-sm"
+            className="hidden min-h-11 min-w-0 flex-shrink-0 border-2 border-sunlight-gold/90 bg-sunlight-gold/20 px-3.5 py-2.5 text-xs font-extrabold uppercase tracking-wide text-white shadow-md hover:border-sunlight-gold hover:bg-sunlight-gold/30 lg:inline-flex lg:px-4 lg:text-sm"
+            aria-label="Donate to the campaign"
           >
             Donate
           </Button>
-          {pathway ? (
-            <span className="max-w-[10rem] truncate rounded-full border border-sunlight-gold/30 bg-civic-blue/50 px-2.5 py-1 font-body text-[10px] font-semibold uppercase tracking-wider text-sunlight-gold/95 xl:max-w-[12rem]">
-              {pathway}
-            </span>
-          ) : null}
         </nav>
 
-        <div className="flex flex-shrink-0 items-center gap-2 lg:hidden">
+        <div className="flex max-w-[min(100%,18rem)] flex-shrink-0 flex-wrap items-center justify-end gap-1.5 sm:max-w-none sm:gap-2 sm:justify-end text-civic-fog lg:hidden">
+          <Button
+            href={joinCampaignHref}
+            target={joinExternal ? "_blank" : undefined}
+            rel={joinExternal ? "noopener noreferrer" : undefined}
+            variant="primary"
+            className="px-2.5 py-2 text-[10px] font-extrabold uppercase tracking-wide shadow-md sm:px-3.5 sm:text-xs"
+            aria-label="Volunteer — sign up"
+          >
+            Volunteer
+          </Button>
+          <Button
+            href={siteConfig.donateHref}
+            variant="outlineOnDark"
+            className="border-2 border-sunlight-gold/90 bg-sunlight-gold/15 px-2.5 py-2 text-[10px] font-extrabold uppercase tracking-wide text-white sm:px-3.5 sm:text-xs"
+            aria-label="Donate"
+          >
+            Donate
+          </Button>
           <Button
             type="button"
             variant="outlineOnDark"
-            className="px-3 py-2 text-xs"
+            className="px-2.5 py-2 text-[10px] sm:px-3 sm:text-xs"
             onClick={() => setSearchOpen(true)}
           >
             Search
@@ -156,7 +170,7 @@ export function SiteHeader() {
           <Button
             type="button"
             variant="outlineOnDark"
-            className="px-4 py-2 text-xs"
+            className="px-2.5 py-2 text-[10px] sm:px-3 sm:text-xs"
             aria-expanded={open}
             aria-controls={panelId}
             onClick={() => setOpen((v) => !v)}

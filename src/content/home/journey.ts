@@ -1,6 +1,6 @@
 /**
  * Journey beat definitions — scroll anchors (`data-journey-beat`) + assistant copy.
- * Landing page only mounts a subset; full trail lives on `/campaign-trail`.
+ * Landing page only mounts a subset; field + media hub lives on `/from-the-road`.
  */
 export type JourneyBeat = {
   id: string;

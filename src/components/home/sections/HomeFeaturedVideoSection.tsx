@@ -7,7 +7,7 @@ import { ContentLocality } from "@/components/content/ContentLocality";
 
 export type HomeFeaturedVideoSectionProps = {
   video: YoutubeCardVM;
-  /** When set, section is the primary in-page anchor for “Watch Kelly” jumps */
+  /** When set, section is the primary in-page anchor for featured-video jumps */
   anchorId?: string;
 };
 
@@ -29,8 +29,8 @@ export function HomeFeaturedVideoSection({ video, anchorId = "home-featured-vide
           </h2>
           <p className="mt-4 font-body text-lg leading-relaxed text-civic-slate md:text-xl">
             Start with a featured moment—then explore the full library on{" "}
-            <Link href="/watch" className="font-semibold text-civic-blue underline-offset-2 hover:underline">
-              Watch Kelly
+            <Link href="/from-the-road" className="font-semibold text-civic-blue underline-offset-2 hover:underline">
+              From the Road
             </Link>
             .
           </p>

@@ -1,5 +1,6 @@
 import { FestivalIngestReviewStatus, FestivalSourceChannel, Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
+import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
 import type { PublicFestivalCard } from "./types";
 
 function isHttpUrl(s: string): boolean {
@@ -59,7 +60,11 @@ export async function listPublicFestivalFeed(limit = 24): Promise<PublicFestival
     });
     return rows.map(toCard);
   } catch (e) {
-    console.error("[festivals] listPublicFestivalFeed", e);
+    if (isPrismaDatabaseUnavailable(e)) {
+      logPrismaDatabaseUnavailable("listPublicFestivalFeed", e);
+    } else {
+      console.error("[festivals] listPublicFestivalFeed", e);
+    }
     return [];
   }
 }

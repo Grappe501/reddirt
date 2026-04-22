@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { isOpenAIConfigured, getOpenAIClient, getOpenAIConfigFromEnv } from "@/lib/openai/client";
-import { semanticSearch, buildContextBlock } from "@/lib/openai/search";
+import { prisma } from "@/lib/db";
+import { searchChunks, buildContextBlock } from "@/lib/openai/search";
 import { RAG_ANSWER_SYSTEM_PROMPT } from "@/lib/openai/prompts";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
 import { databaseUnavailableResponse, isDatabaseConfigured } from "@/lib/env";
@@ -14,9 +15,19 @@ const bodySchema = z.object({
 });
 
 export async function GET() {
+  let chunkCount = 0;
+  if (isDatabaseConfigured()) {
+    try {
+      chunkCount = await prisma.searchChunk.count();
+    } catch {
+      chunkCount = 0;
+    }
+  }
   return NextResponse.json({
     ok: true,
     route: "search",
+    database: isDatabaseConfigured(),
+    chunkCount,
     openai: isOpenAIConfigured(),
   });
 }
@@ -47,7 +58,7 @@ export async function POST(req: Request) {
   }
 
   try {
-    const hits = await semanticSearch(query, 10);
+    const hits = await searchChunks(query, 10);
     const results = hits.map((h) => ({
       path: h.path,
       title: h.title,
@@ -57,35 +68,38 @@ export async function POST(req: Request) {
 
     let answer: string | null = null;
     if (includeAnswer && isOpenAIConfigured() && hits.length) {
-      const client = getOpenAIClient();
-      const { model } = getOpenAIConfigFromEnv();
-      const context = buildContextBlock(hits, 10000);
-      const completion = await client.chat.completions.create({
-        model,
-        temperature: 0.3,
-        messages: [
-          { role: "system", content: RAG_ANSWER_SYSTEM_PROMPT },
-          {
-            role: "user",
-            content: `CONTEXT:\n${context}\n\nQUESTION:\n${query}\n\nAnswer using CONTEXT only. If insufficient, say what is missing and suggest a page path from CONTEXT.`,
-          },
-        ],
-      });
-      answer = completion.choices[0]?.message?.content?.trim() ?? null;
+      try {
+        const client = getOpenAIClient();
+        const { model } = getOpenAIConfigFromEnv();
+        const context = buildContextBlock(hits, 10000);
+        const completion = await client.chat.completions.create({
+          model,
+          temperature: 0.3,
+          messages: [
+            { role: "system", content: RAG_ANSWER_SYSTEM_PROMPT },
+            {
+              role: "user",
+              content: `CONTEXT:\n${context}\n\nQUESTION:\n${query}\n\nAnswer using CONTEXT only. If insufficient, say what is missing and suggest a page path from CONTEXT.`,
+            },
+          ],
+        });
+        answer = completion.choices[0]?.message?.content?.trim() ?? null;
+      } catch (ansErr) {
+        console.error("[search] answer generation failed:", ansErr);
+      }
     }
 
     return NextResponse.json({ ok: true, results, answer });
   } catch (e) {
-    console.error(e);
-    if (!isOpenAIConfigured()) {
-      return NextResponse.json(
-        {
-          error: "not_configured",
-          message: "OPENAI_API_KEY required for semantic search embeddings.",
-        },
-        { status: 503 },
-      );
-    }
-    return NextResponse.json({ error: "search_failed" }, { status: 500 });
+    console.error("[search]", e);
+    const detail = e instanceof Error ? e.message : "unknown error";
+    return NextResponse.json(
+      {
+        ok: false,
+        error: "search_failed",
+        message: `Search failed: ${detail}. Check DATABASE_URL, run migrations, and try \`npm run ingest\` to populate the index.`,
+      },
+      { status: 500 },
+    );
   }
 }

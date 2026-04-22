@@ -6,7 +6,7 @@ Server-only. Never import `client.ts`, `classify.ts`, `embeddings.ts`, or `searc
 
 See `.env.example`:
 
-- `OPENAI_API_KEY` — required for embeddings, classification, and RAG answers.
+- `OPENAI_API_KEY` — required for embeddings, classification, and RAG **answers**; site search still does keyword matching on `SearchChunk` without it.
 - `OPENAI_MODEL` — chat model (default `gpt-4o-mini`).
 - `OPENAI_EMBEDDING_MODEL` — default `text-embedding-3-small`.
 
@@ -17,7 +17,7 @@ See `.env.example`:
 | `client.ts` | Singleton OpenAI client |
 | `embeddings.ts` | Batch + query embeddings, cosine similarity helpers |
 | `classify.ts` | Structured JSON classification of form intake |
-| `search.ts` | Prisma-backed semantic search over `SearchChunk` rows |
+| `search.ts` | Keyword + semantic search over `SearchChunk` (blend / fallback) |
 | `prompts.ts` | System prompts for classifier + RAG |
 
 ## Indexing content
@@ -28,7 +28,7 @@ See `.env.example`:
 
 ## API routes
 
-- `POST /api/search` — `{ query, includeAnswer? }` → `{ results, answer? }`
+- `POST /api/search` — `{ query, includeAnswer? }` → `{ results, answer? }` (`answer` needs OpenAI; `results` do not)
 - `POST /api/assistant` — `{ message }` → grounded `{ reply, suggestions }`
 - `POST /api/forms` — validated movement forms → Prisma + optional classification
 

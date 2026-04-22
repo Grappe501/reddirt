@@ -11,6 +11,7 @@ import { DirectDemocracyCommitmentForm } from "@/components/forms/DirectDemocrac
 import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/config/site";
 import { getPageBlockPayload, type HeroBlockPayload } from "@/lib/content/page-blocks";
+import { CirculatingInitiativesSection } from "@/components/direct-democracy/CirculatingInitiativesSection";
 
 export const metadata: Metadata = {
   title: "Ballot access & initiatives",
@@ -67,8 +68,8 @@ export default async function DirectDemocracyPage() {
         <Button href="#commitment-network" variant="primary">
           Join the commitment network
         </Button>
-        <Button href="/resources" variant="outline">
-          Learn how the process works
+        <Button href="/direct-democracy/ballot-initiative-process" variant="outline">
+          Arkansas ballot process (state rules)
         </Button>
       </PageHero>
 
@@ -145,6 +146,8 @@ export default async function DirectDemocracyPage() {
           <ProcessSteps className="mt-12" steps={[...pipelineSteps]} id="initiative-pipeline" />
         </ContentContainer>
       </FullBleedSection>
+
+      <CirculatingInitiativesSection />
 
       <FullBleedSection variant="elevated" aria-labelledby="priority-heading">
         <ContentContainer>

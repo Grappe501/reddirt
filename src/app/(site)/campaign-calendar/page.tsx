@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { listPublishedCounties } from "@/lib/county/get-county-command-data";
+import { safePublishedCountyOptionsWithSlug } from "@/lib/county/safe-published-county-options";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { pageMeta } from "@/lib/seo/metadata";
@@ -18,7 +18,7 @@ export const metadata: Metadata = pageMeta({
 export default async function CampaignCalendarPage({ searchParams }: Props) {
   const sp = await searchParams;
   const state = parsePublicCalendarParams(sp);
-  const counties = await listPublishedCounties();
+  const counties = await safePublishedCountyOptionsWithSlug();
   const countyOpts = counties.map((c) => ({ slug: c.slug, displayName: c.displayName }));
 
   return (
@@ -37,6 +37,12 @@ export default async function CampaignCalendarPage({ searchParams }: Props) {
       </FullBleedSection>
       <FullBleedSection padY>
         <ContentContainer>
+          {countyOpts.length === 0 ? (
+            <p className="mb-4 rounded-md border border-amber-200/80 bg-amber-50/90 px-3 py-2 font-body text-sm text-amber-950/90" role="status">
+              County filters are offline (database unreachable). Event listings below still load when available—try “All
+              counties.”
+            </p>
+          ) : null}
           <CampaignCalendarView state={state} counties={countyOpts} />
         </ContentContainer>
       </FullBleedSection>

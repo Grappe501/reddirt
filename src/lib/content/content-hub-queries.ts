@@ -1,5 +1,6 @@
 import {
   ContentHubKind,
+  ContentPlatform,
   InboundReviewStatus,
   Prisma,
   type InboundContentItem,
@@ -7,8 +8,12 @@ import {
 } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { youtubeVideoIdFromExternalId } from "@/lib/media/youtube-id";
-import { WATCH_RAIL_DEFS, type WatchRailDef } from "@/lib/content/watch-rails";
-import { inboundYoutubePublicWhere, roadPostPublicWhere } from "@/lib/content/content-hub-visibility";
+import {
+  inboundSocialFromRoadWhere,
+  inboundYoutubePublicWhere,
+  roadPostPublicWhere,
+} from "@/lib/content/content-hub-visibility";
+import { platformLabel, sourceTypeLabel } from "@/lib/orchestrator/public-feed";
 
 const roadPostInclude = { heroMedia: true } as const;
 export type RoadPostCard = Prisma.SyncedPostGetPayload<{ include: typeof roadPostInclude }>;
@@ -49,7 +54,7 @@ function toYoutubeCard(row: InboundContentItem & { mediaAsset: MediaAsset | null
   };
 }
 
-/** @see content-hub-visibility.ts — homepage + /watch hero selection rules. */
+/** @see content-hub-visibility.ts — featured video for hubs (homepage, campaign trail, understand, etc.). */
 export async function getFeaturedYoutubeForHub(
   featuredHomepageVideoInboundId: string | null,
 ): Promise<YoutubeCardVM | null> {
@@ -95,54 +100,96 @@ export async function getFeaturedYoutubeForHub(
 }
 
 export async function listRoadPreviewPosts(limit = 6): Promise<RoadPostCard[]> {
-  return prisma.syncedPost.findMany({
-    where: roadPostPublicWhere,
-    orderBy: [{ featuredRoadPreview: "desc" }, { publishedAt: "desc" }],
-    take: limit,
-    include: roadPostInclude,
-  });
+  try {
+    return await prisma.syncedPost.findMany({
+      where: roadPostPublicWhere,
+      orderBy: [{ featuredRoadPreview: "desc" }, { publishedAt: "desc" }],
+      take: limit,
+      include: roadPostInclude,
+    });
+  } catch {
+    return [];
+  }
 }
 
 export async function listFromTheRoadPosts(limit = 48): Promise<RoadPostCard[]> {
-  return prisma.syncedPost.findMany({
-    where: roadPostPublicWhere,
-    orderBy: { publishedAt: "desc" },
-    take: limit,
-    include: roadPostInclude,
-  });
+  try {
+    return await prisma.syncedPost.findMany({
+      where: roadPostPublicWhere,
+      orderBy: { publishedAt: "desc" },
+      take: limit,
+      include: roadPostInclude,
+    });
+  } catch {
+    return [];
+  }
 }
 
-function railWhere(def: WatchRailDef): Prisma.InboundContentItemWhereInput {
-  const parts: Prisma.InboundContentItemWhereInput[] = [];
-  if (def.contentSeries) {
-    parts.push({ contentSeries: def.contentSeries });
-  }
-  if (def.issueTags?.length) {
-    parts.push({ issueTags: { hasSome: def.issueTags } });
-  }
+export type RoadSocialCardVM = {
+  id: string;
+  platform: ContentPlatform;
+  platformLabel: string;
+  sourceTypeLabel: string;
+  title: string;
+  excerpt: string;
+  href: string;
+  imageSrc: string | null;
+  imageAlt: string;
+  publishedAt: Date | null;
+  countySlug: string | null;
+  city: string | null;
+};
+
+function toRoadSocialCard(row: InboundContentItem & { mediaAsset: MediaAsset | null }): RoadSocialCardVM {
+  const body = row.body?.trim() ?? "";
+  const fromBody =
+    body.length > 0 ? (body.length > 220 ? `${body.slice(0, 220)}…` : body) : "";
   return {
-    ...inboundYoutubePublicWhere,
-    OR: parts.length ? parts : [{ id: "__none__" }],
+    id: row.id,
+    platform: row.sourcePlatform,
+    platformLabel: platformLabel(row.sourcePlatform),
+    sourceTypeLabel: sourceTypeLabel(String(row.sourceType)),
+    title: row.title?.trim() || "Field update",
+    excerpt: row.excerpt?.trim() || fromBody,
+    href: row.canonicalUrl?.trim() || "#",
+    imageSrc: row.mediaAsset?.url?.trim() || null,
+    imageAlt: row.title?.trim() || "Campaign post",
+    publishedAt: row.publishedAt,
+    countySlug: row.countySlug?.trim() || null,
+    city: row.city?.trim() || null,
   };
 }
 
-export async function listWatchRailVideos(def: WatchRailDef, limit = 12): Promise<YoutubeCardVM[]> {
-  const rows = await prisma.inboundContentItem.findMany({
-    where: railWhere(def),
-    include: { mediaAsset: true },
-    orderBy: [{ featuredWeight: "desc" }, { publishedAt: "desc" }],
-    take: limit,
-  });
-  return rows.map(toYoutubeCard).filter((v): v is YoutubeCardVM => Boolean(v));
+/**
+ * Public Facebook + Instagram field posts (after sync + Inbox review). Requires connector env in production.
+ */
+export async function listFromTheRoadSocialItems(limit = 32): Promise<RoadSocialCardVM[]> {
+  try {
+    const rows = await prisma.inboundContentItem.findMany({
+      where: inboundSocialFromRoadWhere,
+      include: { mediaAsset: true },
+      orderBy: [{ publishedAt: "desc" }, { syncTimestamp: "desc" }],
+      take: limit,
+    });
+    return rows.map(toRoadSocialCard);
+  } catch {
+    return [];
+  }
 }
 
-export async function loadAllWatchRails(): Promise<{ def: WatchRailDef; videos: YoutubeCardVM[] }[]> {
-  const out: { def: WatchRailDef; videos: YoutubeCardVM[] }[] = [];
-  for (const def of WATCH_RAIL_DEFS) {
-    const videos = await listWatchRailVideos(def, 12);
-    out.push({ def, videos });
+/** YouTube items approved for public video hubs; latest moments for the /from-the-road “on camera” row. */
+export async function listFromTheRoadYoutubeMoments(limit = 8): Promise<YoutubeCardVM[]> {
+  try {
+    const rows = await prisma.inboundContentItem.findMany({
+      where: inboundYoutubePublicWhere,
+      include: { mediaAsset: true },
+      orderBy: [{ publishedAt: "desc" }, { syncTimestamp: "desc" }],
+      take: limit,
+    });
+    return rows.map(toYoutubeCard).filter((v): v is YoutubeCardVM => Boolean(v));
+  } catch {
+    return [];
   }
-  return out;
 }
 
 export function roadPostExcerpt(post: RoadPostCard): string {

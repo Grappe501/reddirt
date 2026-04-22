@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/Button";
 import { pageMeta } from "@/lib/seo/metadata";
 import { getPageBlockPayload, type HeroBlockPayload } from "@/lib/content/page-blocks";
 import { getHostOrVisitRequestHref } from "@/lib/county/official-links";
+import { TrailPhotosShowcase } from "@/components/campaign-trail/TrailPhotosShowcase";
+import { campaignTrailPhotos } from "@/content/media/campaign-trail-photos";
 
 export const metadata: Metadata = pageMeta({
   title: "Priorities for the office",
@@ -59,6 +61,21 @@ export default async function PrioritiesPage() {
           Ballot access & initiatives
         </Button>
       </PageHero>
+
+      {campaignTrailPhotos.slice(9, 12).length > 0 ? (
+        <FullBleedSection variant="subtle" className="!pt-[calc(var(--section-padding-y)*0.65)] !pb-0 lg:!pt-[calc(var(--section-padding-y-lg)*0.65)] lg:!pb-0">
+          <ContentContainer wide>
+            <TrailPhotosShowcase
+              variant="inline"
+              className="!border-t-0 !py-6 md:!py-10"
+              photos={campaignTrailPhotos.slice(9, 12)}
+              eyebrow="Presence"
+              title="Showing up is part of the job"
+              intro="The Secretary of State’s office touches every county—these moments are what showing up looks like on the trail."
+            />
+          </ContentContainer>
+        </FullBleedSection>
+      ) : null}
 
       <FullBleedSection variant="subtle" padY aria-labelledby="pillars-heading">
         <ContentContainer>

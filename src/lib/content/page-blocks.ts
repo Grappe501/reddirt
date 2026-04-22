@@ -2,14 +2,12 @@ import { prisma } from "@/lib/db";
 
 export type PageKey =
   | "what-we-believe"
-  | "why-this-movement"
   | "resources"
   | "direct-democracy"
   | "priorities";
 
 export const PAGE_KEYS: PageKey[] = [
   "what-we-believe",
-  "why-this-movement",
   "resources",
   "direct-democracy",
   "priorities",

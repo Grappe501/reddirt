@@ -7,12 +7,10 @@ import { Button } from "@/components/ui/Button";
 import {
   getArVoterRegistrationLookupUrl,
   getReferForRegistrationHelpHref,
-  getVoterRegistrationCenterHref,
   getVolunteerInCountyHref,
 } from "@/lib/county/official-links";
 import { getCampaignRegistrationBaselineDisplayCentral } from "@/config/campaign-registration-baseline";
 import { getJoinCampaignHref } from "@/config/external-campaign";
-import { canEmbedOfficialArkansasVoterLookup, getVoterLookupUiMode } from "@/lib/voter-file/lookup-config";
 import type { County, VoterFileSnapshot } from "@prisma/client";
 import type { StatewideVoterRollup } from "@/lib/voter-file/queries";
 import { cn } from "@/lib/utils";
@@ -26,12 +24,21 @@ type Props = {
   latestSnapshot: VoterFileSnapshot | null;
   /** Rolled up from the same snapshot the county command pages use */
   statewide: StatewideVoterRollup | null;
+  /**
+   * When the database is unreachable, we still render this hub but skip Prisma-backed lists/metrics.
+   * Explains the situation so copy is not mistaken for “no counties” / “no snapshot yet”.
+   */
+  liveMetricsUnavailableMessage?: string | null;
 };
 
-export function VoterRegistrationCenter({ counties, focusCounty, latestSnapshot, statewide }: Props) {
+export function VoterRegistrationCenter({
+  counties,
+  focusCounty,
+  latestSnapshot,
+  statewide,
+  liveMetricsUnavailableMessage = null,
+}: Props) {
   const officialUrl = getArVoterRegistrationLookupUrl();
-  const mode = getVoterLookupUiMode();
-  const embedFeasible = canEmbedOfficialArkansasVoterLookup();
   const baselineLabel = getCampaignRegistrationBaselineDisplayCentral();
 
   return (
@@ -41,6 +48,11 @@ export function VoterRegistrationCenter({ counties, focusCounty, latestSnapshot,
         title="Voter registration center"
         subtitle="Kelly’s team built this hub so Arkansans aren’t alone in a maze of forms and deadlines. We’ll show you how we count new registrations, where your county stands, and how to reach a real person when you need paper-and-ink help—because Arkansas still doesn’t offer full online registration. Official confirmation stays with the state; we make the path human."
       >
+        {liveMetricsUnavailableMessage ? (
+          <p className="max-w-2xl rounded-xl border border-amber-300/80 bg-amber-50 px-4 py-3 text-sm leading-relaxed text-amber-950/90">
+            <strong className="font-bold">Live metrics temporarily unavailable.</strong> {liveMetricsUnavailableMessage}
+          </p>
+        ) : null}
         {focusCounty ? (
           <p className="max-w-2xl rounded-xl border border-red-dirt/20 bg-red-dirt/5 px-4 py-3 text-sm text-deep-soil/90">
             <span className="font-bold text-red-dirt">Local focus: {focusCounty.displayName}</span>
@@ -128,43 +140,11 @@ export function VoterRegistrationCenter({ counties, focusCounty, latestSnapshot,
             </>
           ) : (
             <p className="mt-2 text-sm text-amber-900/80">
-              A completed voter file snapshot is not in the database yet—county numbers will show “pending” until the first
-              import runs.
+              {liveMetricsUnavailableMessage
+                ? "Could not load voter file dates or statewide rollups—see the notice at the top of the page."
+                : "A completed voter file snapshot is not in the database yet—county numbers will show “pending” until the first import runs."}
             </p>
           )}
-        </ContentContainer>
-      </FullBleedSection>
-
-      <FullBleedSection padY id="official" aria-labelledby="official-title">
-        <ContentContainer>
-          <SectionHeading
-            id="official-title"
-            align="left"
-            eyebrow="State confirmation"
-            title="Arkansas official registration lookup"
-            subtitle="We can’t frame the state’s tool inside this site—VoterView sends X-Frame-Options: SAMEORIGIN—so the experience stays native here and hands you off in a new tab to the real system."
-          />
-          <div className={cn(card, "mt-6 max-w-3xl")}>
-            <p className="text-sm text-deep-soil/80">
-              <strong>Embedding:</strong> {embedFeasible ? "Available" : "Not available"} (SAMEORIGIN blocks iframes on
-              this domain). <strong>Recommended pattern:</strong> handoff in a new tab to the official tool.
-            </p>
-            {mode === "campaign_assist_only" ? (
-              <p className="mt-2 text-sm text-deep-soil/75">
-                This build is set to emphasize campaign assistance data first; the official link is still required for final
-                confirmation.
-              </p>
-            ) : null}
-            <p className="mt-4">
-              <Button href={officialUrl} variant="primary">
-                Open VoterView (official lookup)
-              </Button>
-            </p>
-            <p className="mt-3 text-xs text-deep-soil/55">
-              If the state moves this URL, we update{" "}
-              <code className="rounded bg-deep-soil/5 px-1">NEXT_PUBLIC_AR_VOTER_LOOKUP_URL</code>.
-            </p>
-          </div>
         </ContentContainer>
       </FullBleedSection>
 
@@ -179,7 +159,11 @@ export function VoterRegistrationCenter({ counties, focusCounty, latestSnapshot,
           />
           <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3" role="list">
             {counties.length === 0 ? (
-              <li className="text-sm text-deep-soil/70">No published counties yet.</li>
+              <li className="text-sm text-deep-soil/70">
+                {liveMetricsUnavailableMessage
+                  ? "County list could not be loaded. When the database is available again, published counties will appear here."
+                  : "No published counties yet."}
+              </li>
             ) : (
               counties.map((c) => (
                 <li key={c.id}>
@@ -194,12 +178,9 @@ export function VoterRegistrationCenter({ counties, focusCounty, latestSnapshot,
                       {c.regionLabel ?? "Arkansas"}
                     </p>
                     <p className="font-heading text-lg font-bold text-deep-soil">{c.displayName}</p>
-                    <div className="mt-auto flex flex-col gap-2 sm:flex-row sm:flex-wrap">
-                      <Button href={getVoterRegistrationCenterHref(c.slug)} variant="primary" className="w-full sm:w-auto">
-                        Focus this county
-                      </Button>
-                      <Button href={`/counties/${c.slug}`} variant="outline" className="w-full sm:w-auto">
-                        County command
+                    <div className="mt-auto">
+                      <Button href={`/counties/${c.slug}`} variant="primary" className="w-full sm:w-auto">
+                        County Command
                       </Button>
                     </div>
                   </div>
@@ -265,27 +246,6 @@ export function VoterRegistrationCenter({ counties, focusCounty, latestSnapshot,
               Get involved (all paths)
             </Button>
           </div>
-        </ContentContainer>
-      </FullBleedSection>
-
-      <FullBleedSection padY className="bg-washed-canvas" id="lookup-assist" aria-labelledby="assist-title">
-        <ContentContainer>
-          <SectionHeading
-            id="assist-title"
-            align="left"
-            eyebrow="Campaign assistance (coming)"
-            title="Person-level lookup — help, not a state seal"
-          />
-          <p className="mt-2 max-w-3xl text-sm text-deep-soil/80">
-            We’re preparing a separate flow for volunteers to help voters using <strong>campaign-side</strong> voter file
-            data—clearly labeled, always with a path to the official lookup. It will never claim to be live state
-            confirmation.
-          </p>
-          <p className="mt-4">
-            <Button href="/voter-registration/assistance" variant="outline">
-              Campaign assistance lookup (preview)
-            </Button>
-          </p>
         </ContentContainer>
       </FullBleedSection>
 

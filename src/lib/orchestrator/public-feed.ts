@@ -10,7 +10,7 @@ export type PublicOrchestratorItem = InboundContentItem & {
   syncedPost: SyncedPost | null;
 };
 
-/** Shape for homepage rail + /updates cards (no Prisma types in client-heavy trees). */
+/** Shape for public feed / journal cards (no Prisma types in client-heavy trees). */
 export type PublicFeedCardVM = {
   id: string;
   title: string;
@@ -28,7 +28,7 @@ export function toFeedCardVM(item: PublicOrchestratorItem): PublicFeedCardVM {
     item.excerpt?.trim() ||
     item.body?.trim().slice(0, 280) ||
     "Syndicated movement update — open the source link for the full piece.";
-  const href = item.canonicalUrl?.trim() || "/updates";
+  const href = item.canonicalUrl?.trim() || "/from-the-road";
   const plat = platformLabel(item.sourcePlatform);
   const type = sourceTypeLabel(item.sourceType);
   const date =
@@ -45,31 +45,16 @@ export function toFeedCardVM(item: PublicOrchestratorItem): PublicFeedCardVM {
     meta,
     imageSrc,
     imageAlt: item.syncedPost?.title ?? title,
-    ctaLabel: item.canonicalUrl ? "View source" : "See all updates",
+    ctaLabel: item.canonicalUrl ? "View source" : "Open campaign trail",
   };
 }
 
-export async function listPublicUpdatesFeed(limit = 48): Promise<PublicOrchestratorItem[]> {
-  try {
-    return await prisma.inboundContentItem.findMany({
-      where: {
-        visibleOnUpdatesPage: true,
-        reviewStatus: { in: [InboundReviewStatus.REVIEWED, InboundReviewStatus.FEATURED] },
-      },
-      include: { syncedPost: true },
-      orderBy: [{ publishedAt: "desc" }, { syncTimestamp: "desc" }],
-      take: limit,
-    });
-  } catch {
-    return [];
-  }
-}
-
+/** Items approved for the campaign trail / journal: homepage rail and/or the former “updates” surface (same flag, merged). */
 export async function listHomepageOrchestratorRail(limit = 6): Promise<PublicOrchestratorItem[]> {
   try {
     return await prisma.inboundContentItem.findMany({
       where: {
-        visibleOnHomepageRail: true,
+        OR: [{ visibleOnHomepageRail: true }, { visibleOnUpdatesPage: true }],
         reviewStatus: { in: [InboundReviewStatus.REVIEWED, InboundReviewStatus.FEATURED] },
       },
       include: { syncedPost: true },

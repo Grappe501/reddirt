@@ -1,60 +1,85 @@
 "use client";
 
-import { useMemo } from "react";
-import { useRouter } from "next/navigation";
-import { APIProvider, Map as GoogleMap, Marker } from "@vis.gl/react-google-maps";
+import { useEffect, useMemo, useRef } from "react";
+import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
+import L from "leaflet";
+import type { LatLngExpression } from "leaflet";
 import type { EventItem, FieldAttendance } from "@/content/types";
 import { FIELD_PIN, getFieldAttendance } from "@/lib/festivals/field-attendance-style";
+import { formatEventWhen } from "@/lib/format/eventDisplay";
 
-const ARK_CENTER = { lat: 34.75, lng: -92.35 };
+import "leaflet/dist/leaflet.css";
+
+const ARK_CENTER: LatLngExpression = [34.75, -92.35];
 const DEFAULT_ZOOM = 6.7;
 
-function pinIconDataUrl(color: string): string {
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 36" width="24" height="36">
-<path fill="${color}" stroke="#2b1e1a" stroke-width="1.2" d="M12 0C5.4 0 0 5.1 0 11.4c0 6.3 12 24.6 12 24.6s12-18.3 12-24.6C24 5.1 18.6 0 12 0z"/>
-<circle fill="#fff" cx="12" cy="11" r="3.5"/>
-</svg>`;
-  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
-}
+/** Static movement / content events */
+const MOVEMENT_EVENT_PIN = "#991b1b";
+/** Published CampaignOS events merged onto the same map */
+const CALENDAR_OPS_PIN = "#1d4ed8";
 
 export type MapPin = {
   slug: string;
   title: string;
-  position: { lat: number; lng: number };
+  type: string;
+  position: LatLngExpression;
   fieldAttendance: FieldAttendance;
+  fillColor: string;
+  detailHref: string;
+  whenLine: string;
+  summary: string;
+  mapPinQuality?: EventItem["mapPinQuality"];
+  eventSource?: EventItem["eventSource"];
 };
 
 function pinZ(att: FieldAttendance): number {
   switch (att) {
     case "confirmed":
-      return 60;
+      return 600;
     case "tentative":
-      return 50;
+      return 500;
     case "suggested":
-      return 40;
+      return 400;
     default:
-      return 10;
+      return 100;
   }
 }
 
+function pinFill(event: EventItem, att: FieldAttendance): string {
+  if (event.eventSource === "calendar") {
+    if (event.type === "Fairs and Festivals") return FIELD_PIN[att];
+    return CALENDAR_OPS_PIN;
+  }
+  if (event.type === "Fairs and Festivals") return FIELD_PIN[att];
+  return MOVEMENT_EVENT_PIN;
+}
+
 function buildPins(events: EventItem[]): MapPin[] {
-  const fairs = events.filter(
-    (e) => e.type === "Fairs and Festivals" && e.mapCoordinates && e.status === "upcoming",
-  );
+  const mappable = events.filter((e) => e.status === "upcoming" && e.mapCoordinates);
   const atPoint = new Map<string, number>();
 
-  return fairs.map((e) => {
+  return mappable.map((e) => {
     const c = e.mapCoordinates!;
     const k = `${c.lat.toFixed(3)}_${c.lng.toFixed(3)}`;
     const n = atPoint.get(k) ?? 0;
     atPoint.set(k, n + 1);
     const fieldAttendance = getFieldAttendance(e);
+    const fillColor = pinFill(e, fieldAttendance);
+    const when = formatEventWhen(e);
+    const detailHref = e.detailHref ?? `/events/${e.slug}`;
     if (n === 0) {
       return {
         slug: e.slug,
         title: e.title,
-        position: c,
+        type: e.type,
+        position: [c.lat, c.lng],
         fieldAttendance,
+        fillColor,
+        detailHref,
+        whenLine: when.primary,
+        summary: e.summary,
+        mapPinQuality: e.mapPinQuality,
+        eventSource: e.eventSource,
       };
     }
     const step = 0.012;
@@ -62,106 +87,231 @@ function buildPins(events: EventItem[]): MapPin[] {
     return {
       slug: e.slug,
       title: e.title,
-      position: { lat: c.lat + step * Math.sin(angle), lng: c.lng + step * Math.cos(angle) },
+      type: e.type,
+      position: [c.lat + step * Math.sin(angle), c.lng + step * Math.cos(angle)],
       fieldAttendance,
+      fillColor,
+      detailHref,
+      whenLine: when.primary,
+      summary: e.summary,
+      mapPinQuality: e.mapPinQuality,
+      eventSource: e.eventSource,
     };
   });
 }
 
+function makeDivIcon(fillColor: string, zIndexOffset: number): L.DivIcon {
+  return L.divIcon({
+    className: "reddirt-leaflet-pin",
+    html: `<div style="background:${fillColor};width:16px;height:16px;border-radius:50%;border:2px solid #2b1e1a;box-shadow:0 1px 4px rgba(0,0,0,.28);z-index:${zIndexOffset}"></div>`,
+    iconSize: [16, 16],
+    iconAnchor: [8, 8],
+  });
+}
+
+function FitMap({ pins, boundsKey }: { pins: MapPin[]; boundsKey: string }) {
+  const map = useMap();
+  useEffect(() => {
+    if (pins.length === 0) {
+      map.setView(ARK_CENTER, DEFAULT_ZOOM);
+      return;
+    }
+    if (pins.length === 1) {
+      map.setView(pins[0].position, 9);
+      return;
+    }
+    const b = L.latLngBounds(pins.map((p) => L.latLng(p.position)));
+    map.fitBounds(b, { padding: [48, 48], maxZoom: 11 });
+  }, [map, boundsKey, pins]);
+  return null;
+}
+
+function PanToSelected({ selectedSlug, pins }: { selectedSlug: string | null; pins: MapPin[] }) {
+  const map = useMap();
+  useEffect(() => {
+    if (!selectedSlug) return;
+    const p = pins.find((x) => x.slug === selectedSlug);
+    if (!p) return;
+    map.flyTo(p.position, Math.max(map.getZoom(), 9), { duration: 0.4 });
+  }, [selectedSlug, pins, map]);
+  return null;
+}
+
+function MapPinMarker({
+  pin,
+  icon,
+  z,
+  isSelected,
+  onSelect,
+}: {
+  pin: MapPin;
+  icon: L.DivIcon;
+  z: number;
+  isSelected: boolean;
+  onSelect: (slug: string) => void;
+}) {
+  const ref = useRef<L.Marker>(null);
+  useEffect(() => {
+    if (isSelected) ref.current?.openPopup();
+  }, [isSelected, pin.slug]);
+  return (
+    <Marker
+      ref={ref}
+      position={pin.position}
+      icon={icon}
+      zIndexOffset={z}
+      eventHandlers={{
+        click: () => onSelect(pin.slug),
+      }}
+    >
+      <Popup className="reddirt-event-popup">
+        <div className="min-w-[200px] max-w-[280px] font-body text-deep-soil">
+          <p className="text-[10px] font-bold uppercase tracking-wider text-deep-soil/55">{pin.type}</p>
+          <p className="mt-1 font-heading text-base font-bold leading-snug">{pin.title}</p>
+          <p className="mt-1 text-xs font-semibold text-deep-soil/75">{pin.whenLine}</p>
+          {pin.mapPinQuality === "region" ? (
+            <p className="mt-1 text-[11px] text-amber-900/90">Approximate region pin — confirm address on the detail page.</p>
+          ) : null}
+          {pin.eventSource === "calendar" ? (
+            <p className="mt-1 text-[11px] text-civic-blue">Campaign HQ calendar — staff-published only.</p>
+          ) : null}
+          <p className="mt-2 line-clamp-4 text-xs leading-relaxed text-deep-soil/80">{pin.summary}</p>
+          <a
+            href={pin.detailHref}
+            className="mt-3 inline-block text-sm font-bold text-red-dirt underline"
+          >
+            Open detail page →
+          </a>
+        </div>
+      </Popup>
+    </Marker>
+  );
+}
+
 type MovementFairsMapProps = {
-  apiKey: string | null;
   events: EventItem[];
+  selectedSlug?: string | null;
+  onSelectSlug?: (slug: string | null) => void;
 };
 
-export function MovementFairsMap({ apiKey, events }: MovementFairsMapProps) {
-  const router = useRouter();
+export function MovementFairsMap({ events, selectedSlug = null, onSelectSlug }: MovementFairsMapProps) {
   const pins = useMemo(() => buildPins(events), [events]);
-  const icons = useMemo(() => {
-    const m: Record<FieldAttendance, string> = {
-      unscheduled: pinIconDataUrl(FIELD_PIN.unscheduled),
-      suggested: pinIconDataUrl(FIELD_PIN.suggested),
-      tentative: pinIconDataUrl(FIELD_PIN.tentative),
-      confirmed: pinIconDataUrl(FIELD_PIN.confirmed),
-    };
+  const boundsKey = useMemo(
+    () =>
+      pins
+        .map((p) => {
+          const [lat, lng] = p.position as [number, number];
+          return `${p.slug}:${lat},${lng}`;
+        })
+        .join("|"),
+    [pins],
+  );
+  const markerIcons = useMemo(() => {
+    const m = new Map<string, L.DivIcon>();
+    for (const p of pins) {
+      const z = pinZ(p.fieldAttendance);
+      const key = `${p.fillColor}-${z}`;
+      if (!m.has(key)) m.set(key, makeDivIcon(p.fillColor, z));
+    }
     return m;
-  }, []);
+  }, [pins]);
 
-  if (!apiKey) {
-    return (
-      <div
-        className="rounded-2xl border border-dashed border-deep-soil/20 bg-deep-soil/[0.04] p-6 text-center"
-        role="status"
-      >
-        <p className="font-heading text-base font-bold text-deep-soil">Map unavailable</p>
-        <p className="mt-2 font-body text-sm text-deep-soil/75">
-          Add <code className="rounded bg-deep-soil/10 px-1.5 py-0.5 font-mono text-xs">GOOGLE_MAPS_API_KEY</code> (or{" "}
-          <code className="font-mono text-xs">NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code>) in{" "}
-          <code className="font-mono text-xs">.env</code> with Maps JavaScript API enabled and HTTP referrer limits set for
-          this site.
-        </p>
-      </div>
-    );
-  }
+  const legend = (
+    <div className="flex flex-col gap-2 text-sm text-deep-soil/85 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4 sm:gap-y-2">
+      <span className="font-body font-semibold">Legend</span>
+      <span className="inline-flex items-center gap-2">
+        <span
+          className="inline-block h-3 w-3 shrink-0 rounded-full border border-deep-soil/20 shadow-sm"
+          style={{ background: MOVEMENT_EVENT_PIN }}
+        />
+        <span className="font-body">Movement site events</span>
+      </span>
+      <span className="inline-flex items-center gap-2">
+        <span
+          className="inline-block h-3 w-3 shrink-0 rounded-full border border-deep-soil/20 shadow-sm"
+          style={{ background: CALENDAR_OPS_PIN }}
+        />
+        <span className="font-body">HQ calendar (published)</span>
+      </span>
+      <span className="inline-flex items-center gap-2">
+        <span
+          className="inline-block h-3 w-3 shrink-0 rounded-full border border-deep-soil/20 shadow-sm"
+          style={{ background: FIELD_PIN.unscheduled }}
+        />
+        <span className="font-body">Fair / festival · listed</span>
+      </span>
+      <span className="inline-flex items-center gap-2">
+        <span
+          className="inline-block h-3 w-3 shrink-0 rounded-full border border-deep-soil/15 shadow-sm"
+          style={{ background: FIELD_PIN.suggested }}
+        />
+        <span className="font-body">Fair · suggested</span>
+      </span>
+      <span className="inline-flex items-center gap-2">
+        <span
+          className="inline-block h-3 w-3 shrink-0 rounded-full border border-deep-soil/15 shadow-sm"
+          style={{ background: FIELD_PIN.tentative }}
+        />
+        <span className="font-body">Fair · tentative</span>
+      </span>
+      <span className="inline-flex items-center gap-2">
+        <span
+          className="inline-block h-3 w-3 shrink-0 rounded-full border border-deep-soil/15 shadow-sm"
+          style={{ background: FIELD_PIN.confirmed }}
+        />
+        <span className="font-body">Fair · confirmed</span>
+      </span>
+    </div>
+  );
 
-  if (pins.length === 0) {
-    return null;
-  }
+  const onSelect = (slug: string) => {
+    onSelectSlug?.(slug);
+    requestAnimationFrame(() => {
+      document.getElementById(`event-card-${slug}`)?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  };
 
   return (
     <div className="space-y-3">
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-deep-soil/85">
-        <span className="font-body font-semibold">Fairs &amp; festivals</span>
-        <span className="inline-flex items-center gap-2">
-          <span className="inline-block h-3 w-3 rounded-full border border-deep-soil/20 shadow-sm" style={{ background: FIELD_PIN.unscheduled }} />
-          <span className="font-body">Listed</span>
-        </span>
-        <span className="inline-flex items-center gap-2">
-          <span className="inline-block h-3 w-3 rounded-full border border-deep-soil/15 shadow-sm" style={{ background: FIELD_PIN.suggested }} />
-          <span className="font-body">Suggested route</span>
-        </span>
-        <span className="inline-flex items-center gap-2">
-          <span className="inline-block h-3 w-3 rounded-full border border-deep-soil/15 shadow-sm" style={{ background: FIELD_PIN.tentative }} />
-          <span className="font-body">Tentative</span>
-        </span>
-        <span className="inline-flex items-center gap-2">
-          <span className="inline-block h-3 w-3 rounded-full border border-deep-soil/15 shadow-sm" style={{ background: FIELD_PIN.confirmed }} />
-          <span className="font-body">Confirmed</span>
-        </span>
-      </div>
+      {legend}
       <div className="overflow-hidden rounded-2xl border border-deep-soil/10 shadow-[var(--shadow-soft)]">
-        <APIProvider apiKey={apiKey} region="US" language="en">
-          <GoogleMap
-            className="h-[min(55vh,480px)] w-full min-h-[320px]"
-            defaultCenter={ARK_CENTER}
-            defaultZoom={DEFAULT_ZOOM}
-            gestureHandling="greedy"
-            disableDefaultUI={false}
-            zoomControl
-            mapTypeControl={false}
-            streetViewControl={false}
-            fullscreenControl
-          >
-            {pins.map((p) => (
-              <Marker
-                key={p.slug}
-                position={p.position}
-                title={p.title}
-                onClick={() => {
-                  router.push(`/events/${p.slug}`);
-                }}
-                zIndex={pinZ(p.fieldAttendance)}
-                icon={{
-                  url: icons[p.fieldAttendance],
-                }}
-              />
-            ))}
-          </GoogleMap>
-        </APIProvider>
+        <MapContainer
+          center={ARK_CENTER}
+          zoom={DEFAULT_ZOOM}
+          className="z-0 h-[min(58vh,520px)] w-full min-h-[260px] touch-manipulation sm:min-h-[320px]"
+          scrollWheelZoom
+          worldCopyJump
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <FitMap pins={pins} boundsKey={boundsKey} />
+          <PanToSelected selectedSlug={selectedSlug} pins={pins} />
+          {pins.map((p) => (
+            <MapPinMarker
+              key={p.slug}
+              pin={p}
+              icon={markerIcons.get(`${p.fillColor}-${pinZ(p.fieldAttendance)}`)!}
+              z={pinZ(p.fieldAttendance)}
+              isSelected={selectedSlug === p.slug}
+              onSelect={onSelect}
+            />
+          ))}
+        </MapContainer>
       </div>
-      <p className="font-body text-xs text-deep-soil/60">
-        Pins use city centers. Orange marks are from a same-day coverage model (~2h on site + drive time between stops). Set
-        <code className="mx-1 font-mono">fieldAttendance</code> in content to override (tentative / confirmed).
-      </p>
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <p className="font-body text-xs text-deep-soil/60">
+          OpenStreetMap + Leaflet — operational field view. Pins without coordinates stay in the list only until staff
+          add a point or county.
+        </p>
+        <a
+          href="/campaign-calendar"
+          className="shrink-0 font-body text-xs font-bold uppercase tracking-wider text-red-dirt underline-offset-2 hover:underline"
+        >
+          Full HQ calendar →
+        </a>
+      </div>
     </div>
   );
 }

@@ -42,7 +42,7 @@ export default async function WorkbenchFestivalsPage({ searchParams }: Props) {
             Public form queue
           </Link>
           <span className="text-deep-soil/35">|</span>
-          <a href="/campaign-trail" className="font-semibold text-red-dirt hover:underline" target="_blank" rel="noreferrer">
+          <a href="/from-the-road" className="font-semibold text-red-dirt hover:underline" target="_blank" rel="noreferrer">
             View public feed →
           </a>
         </p>

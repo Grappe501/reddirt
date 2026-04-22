@@ -13,7 +13,7 @@ import { SupportList } from "@/components/organizing/SupportList";
 export const metadata: Metadata = {
   title: "Host a gathering",
   description:
-    "Host a porch, living room, or coffee-circle conversation about the Secretary of State’s office—with mentor support and a neighbor-led tone.",
+    "Host a porch, living room, coffee circle, postcard party, or phone bank about the Secretary of State’s office—with mentor support and a neighbor-led tone.",
 };
 
 export default function HostAGatheringPage() {
@@ -74,7 +74,7 @@ export default function HostAGatheringPage() {
             id="types-heading"
             eyebrow="Formats"
             title="Gatherings people host with us"
-            subtitle="If your idea fits in a living room—or on a porch—you’re probably in the right place."
+            subtitle="If your idea fits in a living room, a porch, a kitchen table with postcards, or a phone-bank huddle—you’re probably in the right place."
           />
           <ResponsiveGrid cols="2" className="mt-12">
             {[
@@ -83,6 +83,14 @@ export default function HostAGatheringPage() {
               { t: "Coffee meetup", b: "Public enough to feel safe; small enough to finish sentences." },
               { t: "Local listening session", b: "Facilitated rounds—neighbor voice first, organizer voice last." },
               { t: "Issue briefing", b: "Teach the process: what a referendum is, how a petition works, what comes next." },
+              {
+                t: "Postcard writing party",
+                b: "Simple scripts, shared stamps, a pile of paper—turn quiet supporters into a visible, voter-facing wave.",
+              },
+              {
+                t: "Phone bank party",
+                b: "Headsets optional, coffee required—pair up so first-timers sit next to someone who’s made the call before.",
+              },
             ].map((x) => (
               <div
                 key={x.t}

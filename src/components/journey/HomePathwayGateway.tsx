@@ -37,8 +37,8 @@ const PATHWAYS: PathwayCard[] = [
     key: "field",
     title: "See the field operation",
     line: "Proof, counties, and Kelly in her own words—not a brochure, a running campaign.",
-    chapterHref: "/campaign-trail",
-    href: "/campaign-trail",
+    chapterHref: "/from-the-road",
+    href: "/from-the-road",
     hrefLabel: "Campaign trail",
   },
   {

@@ -29,7 +29,7 @@ Existing site board routes (`/admin/content`, homepage, blog sync, etc.) remain 
 1. Connectors write or update `InboundContentItem` (and Substack still updates `SyncedPost`).
 2. Editors work **Review queue** or **Inbox** → set `reviewStatus`.
 3. For items that should surface publicly, open **Distribution** (or the detail panel) and set:
-   - `visibleOnUpdatesPage` → `/updates`
+   - `visibleOnUpdatesPage` → `/campaign-trail` (merged with rail items; no separate `/updates` page)
    - `visibleOnHomepageRail` → homepage “From the movement” section
    - `routeToBlog` → toggles `SyncedPost.showOnBlogLanding` when linked
    - `storySeed` / `editorialSeed` → internal creative buckets
@@ -39,7 +39,7 @@ Existing site board routes (`/admin/content`, homepage, blog sync, etc.) remain 
 
 ## Public surfaces
 
-- `/updates` — cards from items with `visibleOnUpdatesPage` and review `REVIEWED` or `FEATURED`.
+- `/campaign-trail` — includes items with `visibleOnHomepageRail` and/or `visibleOnUpdatesPage` (review `REVIEWED` or `FEATURED`). The `/updates` URL redirects here.
 - Homepage section `updates` — same data when `visibleOnHomepageRail` is set (section can be ordered in `/admin/homepage`).
 
 ## Deferred (by design)

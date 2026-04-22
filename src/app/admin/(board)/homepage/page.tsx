@@ -187,7 +187,7 @@ export default async function AdminHomepagePage({ searchParams }: Props) {
               placeholder="cuid from Admin → Inbox (YouTube item)"
             />
             <span className="mt-1 block font-body text-xs text-deep-soil/55">
-              Optional. When set, homepage + /watch hero prefer this curated clip. Leave empty to fall back to a featured
+              Optional. When set, homepage, campaign trail, and understand use this clip first. Leave empty to fall back to a featured
               or latest reviewed YouTube inbound row.
             </span>
           </label>

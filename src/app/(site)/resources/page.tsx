@@ -19,7 +19,7 @@ import { CampaignBriefingLibrary } from "@/components/campaign/CampaignBriefingL
 export const metadata: Metadata = pageMeta({
   title: "Resources",
   description:
-    "Organizing toolkits, civic explainers, downloads-in-progress, and links into long-form clarity—built for living rooms and breakrooms.",
+    "Organizing toolkits, Kelly messaging guide, civic explainers, and field education for living rooms and breakrooms.",
   path: "/resources",
   imageSrc: "/media/placeholders/explainer-steps.svg",
 });
@@ -82,12 +82,17 @@ export default async function ResourcesPage() {
             id="toolkit-heading"
             align="left"
             eyebrow="Organizing toolkit"
-            title="Guides for hosts, facilitators, and team starters"
-            subtitle="Reusable agendas and field habits—built to be photocopied, texted, and adapted locally."
+            title="Guides for hosts, facilitators, team starters, and messengers"
+            subtitle="Reusable agendas and field habits—plus a full messaging program for how to talk about Kelly, the office, and tough political gaps without losing the relationship."
           />
           <ResourceGrid items={organizingToolkit} className="mt-12" />
           <p className="mt-8 max-w-3xl font-body text-sm text-deep-soil/60">
-            PDFs, translated one-pagers, and facilitator decks attach to these cards as they’re finalized—URLs stay stable.
+            <Link href="/resources/talking-about-kelly" className="font-semibold text-red-dirt hover:underline">
+              Talking about Kelly
+            </Link>{" "}
+            is the dense comms + field education module—opener lines, red-state honesty, and recovery when the conversation
+            goes national. PDFs, translated one-pagers, and facilitator decks attach to other cards as they’re
+            finalized—URLs stay stable.
           </p>
         </ContentContainer>
       </FullBleedSection>
@@ -119,6 +124,11 @@ export default async function ResourcesPage() {
                 t: "Direct democracy",
                 h: "/direct-democracy",
                 b: "Initiatives, referendums, and why ballot access is civic infrastructure—not a hobby for lawyers.",
+              },
+              {
+                t: "How initiatives reach the ballot",
+                h: "/direct-democracy/ballot-initiative-process",
+                b: "Attorney General title review, signature thresholds, Secretary of State filing, and official trackers.",
               },
               {
                 t: "Office priorities",

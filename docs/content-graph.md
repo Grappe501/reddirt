@@ -45,4 +45,4 @@ Unchanged as the Substack mirror; orchestrator **adds** `InboundContentItem` for
 
 ## Public read path
 
-`src/lib/orchestrator/public-feed.ts` exposes `listPublicUpdatesFeed` and `listHomepageOrchestratorRail` with explicit visibility + review filters so the site never leaks unreviewed items.
+`src/lib/orchestrator/public-feed.ts` exposes `listHomepageOrchestratorRail` (homepage rail and/or `visibleOnUpdatesPage`) with explicit visibility + review filters so the site never leaks unreviewed items.

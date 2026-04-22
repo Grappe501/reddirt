@@ -116,7 +116,7 @@ export default async function AdminInboundDetailPage({ params, searchParams }: P
           <input type="hidden" name="id" value={item.id} />
           <label className="flex items-center gap-2 text-sm">
             <input type="checkbox" name="visibleOnUpdatesPage" defaultChecked={item.visibleOnUpdatesPage} />
-            <code className="text-xs">/updates</code> page
+            <code className="text-xs">/from-the-road</code> (journal / mixed feed)
           </label>
           <label className="flex items-center gap-2 text-sm">
             <input type="checkbox" name="visibleOnHomepageRail" defaultChecked={item.visibleOnHomepageRail} />
@@ -157,7 +157,7 @@ export default async function AdminInboundDetailPage({ params, searchParams }: P
       <section className="mt-10 rounded-card border border-deep-soil/10 bg-white p-6 shadow-[var(--shadow-soft)]">
         <h2 className="font-heading text-lg font-bold text-deep-soil">Content hub tagging</h2>
         <p className="mt-2 font-body text-xs text-deep-soil/60">
-          Used for /watch rails, future filters, and inbound memory. Substack-linked rows also update the synced post
+          Used for themed video grouping, future filters, and inbound memory. Substack-linked rows also update the synced post
           when you save here.
         </p>
         <form action={updateInboundHubMetaAction} className="mt-4 space-y-4">

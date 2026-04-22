@@ -55,7 +55,7 @@ function NavMenu({ group, pathname, theme = "light" }: NavMenuProps) {
     "rounded-md px-2 py-2 font-body text-xs font-semibold tracking-wide transition focus-visible:outline-none focus-visible:ring-2 xl:px-2.5 xl:text-sm",
     dark
       ? "focus-visible:ring-civic-gold/50 " +
-          (labelActive ? "text-sunlight-gold" : "text-white hover:text-sunlight-gold")
+          (labelActive ? "!text-sunlight-gold" : "!text-civic-fog hover:!text-sunlight-gold")
       : "focus-visible:ring-red-dirt/40 uppercase tracking-wider " +
           (labelActive ? "text-red-dirt" : "text-deep-soil/80 hover:text-red-dirt"),
   );
@@ -77,7 +77,7 @@ function NavMenu({ group, pathname, theme = "light" }: NavMenuProps) {
             className={cn(
               "flex items-center rounded-r-md px-1.5 font-body text-[10px] opacity-90 transition focus-visible:outline-none focus-visible:ring-2 xl:px-2",
               dark
-                ? "border-l border-white/15 text-white hover:bg-white/10 focus-visible:ring-civic-gold/50"
+                ? "border-l border-white/15 !text-civic-fog hover:!text-sunlight-gold hover:bg-white/10 focus-visible:ring-civic-gold/50"
                 : "border-l border-deep-soil/15 text-deep-soil hover:bg-deep-soil/[0.06] focus-visible:ring-red-dirt/40",
             )}
             aria-expanded={open}
@@ -108,7 +108,7 @@ function NavMenu({ group, pathname, theme = "light" }: NavMenuProps) {
         <div
           id={menuId}
           role="menu"
-          className="absolute left-1/2 top-full z-50 mt-2 min-w-[13.5rem] max-w-[min(92vw,18rem)] -translate-x-1/2 rounded-card border border-deep-soil/12 bg-cream-canvas py-2 shadow-[var(--shadow-card)]"
+          className="absolute left-1/2 top-full z-[60] mt-2 min-w-[13.5rem] max-w-[min(92vw,18rem)] -translate-x-1/2 rounded-card border border-deep-soil/12 bg-cream-canvas py-2 shadow-[var(--shadow-card)]"
         >
           {group.items.map((item) => {
             const itemActive = navItemActive(pathname, item.href);
@@ -146,7 +146,7 @@ export type NavDesktopProps = {
 
 export function NavDesktop({ groups, pathname, theme = "light" }: NavDesktopProps) {
   return (
-    <div className="flex flex-nowrap items-center justify-end gap-x-0.5 xl:gap-x-1">
+    <div className="flex flex-nowrap items-center justify-end gap-x-1.5 xl:gap-x-2">
       {groups.map((g) => (
         <NavMenu key={g.id} group={g} pathname={pathname} theme={theme} />
       ))}

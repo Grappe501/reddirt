@@ -11,10 +11,6 @@ const countyWithRelations = Prisma.validator<Prisma.CountyDefaultArgs>()({
   include: {
     campaignStats: true,
     demographics: true,
-    elected: {
-      where: { reviewStatus: "APPROVED" },
-      orderBy: [{ jurisdiction: "asc" }, { sortOrder: "asc" }],
-    },
   },
 });
 

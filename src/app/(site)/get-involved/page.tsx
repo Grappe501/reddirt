@@ -6,6 +6,8 @@ import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
 import { JoinMovementForm } from "@/components/forms/JoinMovementForm";
 import { VolunteerForm } from "@/components/forms/VolunteerForm";
+import { TrailPhotosShowcase } from "@/components/campaign-trail/TrailPhotosShowcase";
+import { campaignTrailPhotos } from "@/content/media/campaign-trail-photos";
 
 export const metadata: Metadata = {
   title: "Get involved",
@@ -28,6 +30,21 @@ export default function GetInvolvedPage() {
           Volunteer
         </Button>
       </PageHero>
+
+      {campaignTrailPhotos.slice(3, 9).length > 0 ? (
+        <FullBleedSection variant="subtle" className="!pt-0" aria-label="Campaign trail photography">
+          <ContentContainer wide>
+            <TrailPhotosShowcase
+              variant="inline"
+              className="!border-t-0 !py-10 md:!py-14"
+              photos={campaignTrailPhotos.slice(3, 9)}
+              eyebrow="Field energy"
+              title="Democracy still happens in real rooms"
+              intro="A few snapshots from the trail—hosting, listening, and showing up where Arkansas already gathers."
+            />
+          </ContentContainer>
+        </FullBleedSection>
+      ) : null}
 
       <FullBleedSection id="join" aria-labelledby="join-heading">
         <ContentContainer>

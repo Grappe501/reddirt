@@ -4,7 +4,8 @@ import { cn } from "@/lib/utils";
 
 const iconClass = "h-5 w-5 shrink-0";
 
-function SocialGlyph({ id }: { id: PublicSocialId }) {
+/** Shared SVGs for campaign social platforms (footer, /from-the-road hub, etc.). */
+export function SocialGlyph({ id }: { id: PublicSocialId }) {
   switch (id) {
     case "facebook":
       return (

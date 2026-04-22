@@ -26,7 +26,6 @@ export const primaryNavGroups: NavGroup[] = [
       { label: "About (full story)", href: "/about" },
       { label: "Understand the office", href: "/understand" },
       { label: "What we stand for", href: "/what-we-believe" },
-      { label: "Why we're running", href: "/why-this-movement" },
     ],
   },
   {
@@ -36,28 +35,18 @@ export const primaryNavGroups: NavGroup[] = [
       { label: "Priorities", href: "/priorities" },
       { label: "Civic depth", href: "/civic-depth" },
       { label: "Ballot access & initiatives", href: "/direct-democracy" },
+      { label: "How initiatives reach the ballot", href: "/direct-democracy/ballot-initiative-process" },
       { label: "Resources", href: "/resources" },
-    ],
-  },
-  {
-    id: "plan",
-    label: "The Plan",
-    items: [
-      { label: "See the plan", href: "/priorities" },
-      { label: "Explainers", href: "/explainers" },
-      { label: "Editorial", href: "/editorial" },
     ],
   },
   {
     id: "news",
     label: "News",
     items: [
-      { label: "Watch Kelly", href: "/watch" },
       { label: "From the Road", href: "/from-the-road" },
-      { label: "Campaign trail", href: "/campaign-trail" },
-      { label: "Updates hub", href: "/updates" },
+      { label: "Press coverage", href: "/press-coverage" },
       { label: "Stories", href: "/stories" },
-      { label: "Notebook", href: "/blog" },
+      { label: "Editorial", href: "/editorial" },
       { label: "Substack (direct)", href: getCampaignBlogUrl() },
     ],
   },
@@ -67,7 +56,7 @@ export const primaryNavGroups: NavGroup[] = [
     items: [
       { label: "Volunteer sign-up", href: getJoinCampaignHref() },
       { label: "Voter registration", href: "/voter-registration" },
-      { label: "Tools & sign-up (this site)", href: "/get-involved" },
+      { label: "Stay Connected", href: "/get-involved" },
       { label: "Events", href: "/events" },
       { label: "Election listening sessions", href: "/listening-sessions" },
       { label: "Local organizing", href: "/local-organizing" },
@@ -85,7 +74,7 @@ export const footerNavGroups: { title: string; items: NavItem[] }[] = [
     items: [...primaryNavGroups[0].items],
   },
   {
-    title: "The Office & plan",
+    title: "The Office",
     items: [
       ...primaryNavGroups[1].items,
       { label: "Explainers", href: "/explainers" },
@@ -94,7 +83,7 @@ export const footerNavGroups: { title: string; items: NavItem[] }[] = [
   {
     title: "News & act",
     items: [
-      ...primaryNavGroups[3].items,
+      ...primaryNavGroups[2].items,
       { label: "Election listening sessions", href: "/listening-sessions" },
       { label: "Get involved", href: "/get-involved" },
       { label: "Donate", href: "/donate" },

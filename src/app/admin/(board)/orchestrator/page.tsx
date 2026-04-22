@@ -86,7 +86,7 @@ export default async function AdminOrchestratorHomePage() {
         <div className="rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)]">
           <p className="font-body text-xs font-bold uppercase tracking-wider text-deep-soil/50">Routed to site</p>
           <p className="mt-2 font-heading text-3xl font-bold text-deep-soil">{featuredVisible}</p>
-          <p className="mt-1 font-body text-xs text-deep-soil/55">Updates page or homepage rail</p>
+          <p className="mt-1 font-body text-xs text-deep-soil/55">Campaign trail or homepage rail</p>
         </div>
         <div className="rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)] sm:col-span-2">
           <p className="font-body text-xs font-bold uppercase tracking-wider text-deep-soil/50">Inbound by platform</p>

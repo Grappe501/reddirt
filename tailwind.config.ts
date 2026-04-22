@@ -12,6 +12,7 @@ const config: Config = {
         "red-dirt": "var(--color-primary)",
         "deep-soil": "var(--color-text-primary)",
         "cream-canvas": "var(--color-bg)",
+        "washed-canvas": "var(--washed-canvas)",
         "washed-denim": "var(--color-secondary)",
         "field-green": "var(--color-success)",
         "sunlight-gold": "var(--color-accent)",
@@ -24,6 +25,8 @@ const config: Config = {
         "civic-mist": "var(--civic-mist)",
         "civic-fog": "var(--civic-fog)",
         "civic-ink": "var(--civic-ink)",
+        "civic-copper": "var(--civic-copper)",
+        "civic-copper-bright": "var(--civic-copper-bright)",
       },
       fontFamily: {
         heading: ["var(--font-heading)", "Georgia", "serif"],

@@ -206,8 +206,111 @@ const movementEventsCore: EventItem[] = [
       "User category: lunch/brunch event. Calendar title: “Brunch with Teresa.” Organizer: Kelly Grappe (per invite).",
     rsvpHref: "https://meet.google.com/vwv-nerr-gdo",
     audienceTags: ["Brunch", "Central Arkansas"],
-    relatedEventSlugs: ["faith-visit-tabernacle-of-faith-wynne-2026", "listening-session-little-rock"],
+    relatedEventSlugs: [
+      "faith-visit-tabernacle-of-faith-wynne-2026",
+      "listening-session-little-rock",
+      "501-fest-little-rock-2026",
+    ],
     relatedResourceHrefs: [{ label: "Get involved", href: "/get-involved" }],
+  },
+  {
+    slug: "501-fest-little-rock-2026",
+    title: "501 fest — Little Rock",
+    type: "Fairs and Festivals",
+    region: "Central Arkansas",
+    countySlug: "pulaski-county",
+    status: "upcoming",
+    startsAt: "2026-05-09T11:00:00",
+    endsAt: "2026-05-09T18:00:00",
+    timezone: "America/Chicago",
+    locationLabel: "Little Rock (venue TBA — confirm with host or on calendar thread)",
+    addressLine: "Little Rock, AR (festival site and parking to be confirmed with organizers)",
+    summary:
+      "**501 fest** in the Little Rock / 501 area: a **11:00 a.m.–6:00 p.m. Central** block on **Saturday, May 9, 2026** from the campaign calendar. Use the **Google Meet** on the original invite to coordinate; confirm the in-person site before publishing a map pin for the public.",
+    description:
+      "Sourced from the Google Calendar item **“501 fest Little Rock”** with **Kelly Grappe** as organizer. The invite includes **Join with Google Meet** at **https://meet.google.com/air-qbnc-zdc** and the phone bridge **(US) +1 570-399-3896, PIN 525034250** (as on the thread). **Guests** on the copy included **kelly@kellygrappe.com** and **grappe4arkansas@gmail.com**. This is a **third-party or community festival context** for field planning unless the host names the campaign on signage; the site lists it so volunteers see the same **all-day** window as the internal calendar. **Note:** the same day also shows **“Brunch with Teresa” 11:00 a.m.–2:00 p.m. Central** on the personal calendar—resolve coverage and in-person plan with the team; they are **separate** events.",
+    whatToExpect: [
+      "Festival-style day—booths, food, and crowd flow per host rules once the venue is public",
+      "Meet link often used for staff/Volunteer coordination before and during the day",
+    ],
+    whoItsFor: "501 / Little Rock area neighbors, volunteers, and field teams tracking public gatherings and candidate time.",
+    organizerNote:
+      "Calendar title: “501 fest Little Rock.” May 9, 2026, 11:00 a.m.–6:00 p.m. Central. Organizer: Kelly Grappe. Conflicts: overlaps same calendar date with “Brunch with Teresa” (11:00 a.m.–2:00 p.m.) per user’s schedule note.",
+    rsvpHref: "https://meet.google.com/air-qbnc-zdc",
+    audienceTags: ["501", "Little Rock", "Festival", "Pulaski County", "Central Arkansas"],
+    relatedEventSlugs: ["brunch-with-teresa-2026", "listening-session-little-rock"],
+    relatedResourceHrefs: [
+      { label: "Events calendar", href: "/events" },
+      { label: "Get involved", href: "/get-involved" },
+    ],
+    mapCoordinates: { lat: 34.7465, lng: -92.2896 },
+    fieldAttendance: "tentative",
+  },
+  {
+    slug: "arkansas-times-tacos-tequilas-2026-05-21",
+    title: "Arkansas Times — Tacos and Tequilas (Meet)",
+    type: "Community Conversation",
+    region: "Central Arkansas",
+    countySlug: "pulaski-county",
+    status: "upcoming",
+    startsAt: "2026-05-21T17:00:00",
+    endsAt: "2026-05-21T21:00:00",
+    timezone: "America/Chicago",
+    locationLabel: "Virtual — Google Meet (Arkansas Times / Little Rock area context)",
+    addressLine: "Little Rock, AR (organizer; confirm in-person components on the original thread if any)",
+    summary:
+      "**Google Meet** on the calendar thread for **5:00–9:00 p.m. Central,** same evening as **Arkansas Times** Tacos and Tequilas—use for host/partner coordination; not a campaign-run street festival unless the program names the campaign.",
+    description:
+      "Updated Google Calendar invite: **“Arkansas times tacos and tequilas,”** **Thursday, May 21, 2026,** was extended to **5:00–9:00 p.m. Central** (previously 8:00–9:00 p.m. on an earlier version). Kelly Grappe is organizer. Phone bridge (US) **+1 813-370-0618,** PIN **213915799**; Meet: **https://meet.google.com/bvj-zyzi-xmy.**",
+    whatToExpect: [
+      "Longer evening window on the calendar—join times may be flexible; confirm on the host thread",
+      "If Arkansas Times has an in-person ticketed block the same name/date, use their public listing for the physical venue",
+    ],
+    whoItsFor:
+      "Little Rock / Pulaski County neighbors tracking culture calendars, volunteers, and anyone invited on the host thread.",
+    organizerNote:
+      "Update notice (Apr 21, 2026): time changed to 5:00–9:00 p.m. CDT. kelly@kellygrappe.com; grappe4arkansas@gmail.com. Meet: bvj-zyzi-xmy.",
+    rsvpHref: "https://meet.google.com/bvj-zyzi-xmy",
+    audienceTags: ["Little Rock", "Pulaski County", "Central Arkansas", "Arkansas Times"],
+    relatedEventSlugs: ["501-fest-little-rock-2026", "ar-times-spring-margarita-2026"],
+    relatedResourceHrefs: [
+      { label: "Events calendar", href: "/events" },
+      { label: "Get involved", href: "/get-involved" },
+    ],
+    mapCoordinates: { lat: 34.7465, lng: -92.2896 },
+  },
+  {
+    slug: "magnolia-fest-immersion-weekend-2026",
+    title: "Magnolia fest & immersion weekend",
+    type: "Immersion",
+    region: "Southwest Arkansas",
+    countySlug: "columbia-county",
+    status: "upcoming",
+    startsAt: "2026-05-16T08:00:00",
+    endsAt: "2026-05-18T20:00:00",
+    timezone: "America/Chicago",
+    locationLabel: "Magnolia, Columbia County (multi-day — stays + venues coordinated on thread)",
+    addressLine: "Magnolia, AR and Columbia County (confirm lodging and public stops with the team)",
+    summary:
+      "**Immersion** = more than a drive-through: at least one overnight, structured days in town (e.g. library work time, county clerk or lunch with a local), and evenings to plan. Great window to **invite Kelly to church**, **host a dinner or small get-together**, or **grab coffee**—this calendar block ties to **Magnolia Blossom** weekend in town.",
+    description:
+      "Google Calendar: **“Magnolia fest and immersion weekend,”** **Saturday, May 16 – Monday, May 18, 2026,** with Kelly as organizer. Public times on this site are a **reasonable multi-day block** in Central time (start of Saturday through early Monday evening) so the map and list match field reality—refine with the internal invite if your calendar uses different all-day flags. The **Magnolia Blossom Festival** is already on the public fair feed for the area; this entry is the **field immersion** layer: who shows up, where Kelly posts up, and how neighbors can **open their table** during the stay.",
+    whatToExpect: [
+      "A multi-day stay—not a single speech stop",
+      "Room for work at the library, civic and relationship meetings by day, debriefs and planning in the evening",
+    ],
+    whoItsFor:
+      "Southwest Arkansas neighbors, hosts, and faith and civic friends who can offer a real welcome—worship, a meal, or a small circle in Magnolia and Columbia County.",
+    organizerNote:
+      "Internal calendar title: “Magnolia fest and immersion weekend.” May 16–18, 2026. Organizer: kelly@kellygrappe.com; guest line on the thread can include grappe4arkansas@gmail.com. **Immersion** is the movement term for this trip style.",
+    rsvpHref: undefined,
+    audienceTags: ["Immersion", "Columbia County", "Magnolia", "Southwest Arkansas", "Faith", "Hospitality"],
+    relatedEventSlugs: ["magnolia-blossom-2026", "501-fest-little-rock-2026"],
+    relatedResourceHrefs: [
+      { label: "Host a gathering", href: "/host-a-gathering" },
+      { label: "Get involved", href: "/get-involved" },
+    ],
+    mapCoordinates: { lat: 33.269, lng: -93.2373 },
   },
   {
     slug: "faith-visit-tabernacle-of-faith-wynne-2026",
@@ -293,20 +396,22 @@ const movementEventsCore: EventItem[] = [
     region: "Central Arkansas",
     countySlug: "garland-county",
     status: "upcoming",
-    startsAt: "2026-05-26T17:30:00",
+    startsAt: "2026-05-26T17:00:00",
     endsAt: "2026-05-26T21:00:00",
     timezone: "America/Chicago",
     locationLabel: "The Jewish Center, Hot Springs",
     addressLine: "300 Quapaw Ave, Hot Springs, AR",
-    summary: "“Elections: Fair and Secure?” — a community program with local partners (VCK). Arrive 5:30; program at 6:00 p.m.",
+    summary:
+      "“Elections: Fair and Secure?” / Hot Springs Election Conversation — 5:00–9:00 p.m. Central, with local partners (VCK). (Program may start after doors open; follow host’s day-of flow.)",
     description:
       "In-person at The Jewish Center. A Google Meet line is on the original invite (meet.google.com) for those who need remote access; phone dial-in is also on the calendar invite. Details were coordinated by community organizers, including Kelly Grappe. Contact 501-620-0427 with questions (per host outreach).",
     whatToExpect: [
-      "Doors 5:30, program on time at 6:00 p.m. Central",
+      "Calendar block 5:00–9:00 p.m. Central (matches Google Calendar invite from kelly@kellygrappe.com)",
       "Space for discussion on elections, integrity, and what fair process looks like locally",
     ],
     whoItsFor: "Garland County and Hot Springs area neighbors, including partners promoting the program.",
-    organizerNote: "Community partner program; titles on invites may list “Hot Springs Election Conversation.”",
+    organizerNote:
+      "Google Calendar: “Hot Springs Election Conversation,” Tue May 26, 2026, 5:00–9:00 p.m. CDT. Organizer: Kelly Grappe (kelly@kellygrappe.com / calendar grappe4arkansas@gmail.com). Titles on invites may list “Hot Springs Election Conversation.”",
     rsvpHref: "https://meet.google.com/utc-cnjr-fwh",
     audienceTags: ["Garland County", "Hot Springs"],
     relatedEventSlugs: [
@@ -486,6 +591,7 @@ export const eventTypes = [
   "Volunteer Training",
   "Direct Democracy Briefing",
   "Fairs and Festivals",
+  "Immersion",
   "Labor / Worker Roundtable",
   "Youth Civic Session",
   "Listening Session",

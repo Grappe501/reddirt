@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { volunteerSchema, type VolunteerInput } from "@/lib/forms/schemas";
+import { getToolkitTitleForResourceSlug } from "@/content/resources/toolkit";
 import { FormField } from "@/components/forms/FormField";
 import { FormLabel } from "@/components/forms/FormLabel";
 import { Input } from "@/components/forms/Input";
@@ -13,7 +14,7 @@ import { Button } from "@/components/ui/Button";
 import { FormErrorSummary, FormSuccessPanel } from "@/components/forms/FormMessages";
 import { trackFormComplete, trackFormStart } from "@/lib/analytics/track";
 
-export function VolunteerForm({ id }: { id?: string }) {
+export function VolunteerForm({ id, prefillResource }: { id?: string; prefillResource?: string }) {
   const [serverError, setServerError] = useState<string | null>(null);
   const [showSuccess, setShowSuccess] = useState(false);
   const [started, setStarted] = useState(false);
@@ -34,6 +35,15 @@ export function VolunteerForm({ id }: { id?: string }) {
       website: "",
     },
   });
+
+  useEffect(() => {
+    if (!prefillResource) return;
+    const token = `resource:${prefillResource}`;
+    const current = form.getValues("interests");
+    if (!current.includes(token)) {
+      form.setValue("interests", [...current, token], { shouldDirty: true });
+    }
+  }, [prefillResource, form]);
 
   const submit = form.handleSubmit(async (data) => {
     setServerError(null);
@@ -112,6 +122,17 @@ export function VolunteerForm({ id }: { id?: string }) {
       }}
     >
       <input type="text" tabIndex={-1} autoComplete="off" className="sr-only" aria-hidden {...form.register("website")} />
+      {prefillResource ? (
+        <div className="rounded-md border border-field-green/30 bg-field-green/10 p-4 font-body text-sm text-deep-soil/90">
+          <p>
+            You opened this form from:{" "}
+            <span className="font-semibold">
+              {getToolkitTitleForResourceSlug(prefillResource) ?? "a toolkit guide"}
+            </span>
+            . We will tag your signup so a coordinator can follow up in this lane.
+          </p>
+        </div>
+      ) : null}
       {serverError ? <FormErrorSummary errors={{ server: serverError }} /> : null}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <FormField>

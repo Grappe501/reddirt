@@ -1,5 +1,6 @@
 import type { ContentCollection, ContentItemOverride, MediaAsset } from "@prisma/client";
 import { prisma } from "@/lib/db";
+import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
 import type { EditorialPiece } from "@/content/editorial/types";
 import type { ExplainerEntry } from "@/content/explainers/types";
 import type { StoryEntry } from "@/content/stories/types";
@@ -30,7 +31,12 @@ async function loadOverrideMap(): Promise<OverrideMap> {
     }
     cached = { at: now, map };
     return map;
-  } catch {
+  } catch (e) {
+    if (isPrismaDatabaseUnavailable(e)) {
+      logPrismaDatabaseUnavailable("loadOverrideMap", e);
+    } else {
+      console.error("[loadOverrideMap]", e);
+    }
     const map: OverrideMap = new Map();
     cached = { at: now, map };
     return map;

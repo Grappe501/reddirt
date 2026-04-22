@@ -1,5 +1,5 @@
 /**
- * Curated topic rails on `/watch`. Match videos by `InboundContentItem.contentSeries`
+ * Curated topic rails (reserved for a future public `/watch` page). Match videos by `InboundContentItem.contentSeries`
  * or a single `issueTags` entry (editorial slugs / labels).
  */
 export type WatchRailDef = {

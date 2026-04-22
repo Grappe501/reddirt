@@ -17,6 +17,15 @@ fi
 echo "→ Docker Compose…"
 if docker compose up -d; then
   echo "✓ Compose up"
+  echo -n "→ waiting for Postgres"
+  for _ in $(seq 1 45); do
+    if docker compose exec -T db pg_isready -U reddirt -d reddirt >/dev/null 2>&1; then
+      echo " — ready."
+      break
+    fi
+    echo -n "."
+    sleep 2
+  done
 else
   echo "⚠ docker compose failed — start Docker?"
 fi

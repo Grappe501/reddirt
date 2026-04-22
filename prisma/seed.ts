@@ -233,11 +233,25 @@ async function main() {
         progressPercent: progress,
       },
     });
-    await prisma.countyCampaignStats.update({
+    await prisma.countyCampaignStats.upsert({
       where: { countyId: c.id },
-      data: {
+      create: {
+        countyId: c.id,
+        registrationGoal: goal,
         newRegistrationsSinceBaseline: newSince,
         registrationBaselineDate: baseline,
+        volunteerTarget: 200 + i * 20,
+        volunteerCount: 12 + i * 3,
+        campaignVisits: 2 + i,
+        dataPipelineSource: "voter_file_snapshot_seed",
+        pipelineLastSyncAt: new Date(),
+        pipelineError: null,
+        reviewStatus: CountyContentReviewStatus.PENDING_REVIEW,
+      },
+      update: {
+        newRegistrationsSinceBaseline: newSince,
+        registrationBaselineDate: baseline,
+        registrationGoal: goal,
         dataPipelineSource: "voter_file_snapshot_seed",
         pipelineLastSyncAt: new Date(),
         pipelineError: null,

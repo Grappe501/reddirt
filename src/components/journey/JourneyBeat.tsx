@@ -12,7 +12,8 @@ export type JourneyBeatProps = {
 
 const variants = {
   light: "bg-white text-civic-ink",
-  mist: "bg-civic-fog/80 text-civic-ink",
+  /** Solid fog — /80 was letting the sitewide body gradient read as “blue + black” on long pages. */
+  mist: "bg-civic-fog text-civic-ink",
   deep: "bg-civic-deep text-civic-mist",
   midnight: "bg-civic-midnight text-civic-mist",
 } as const;

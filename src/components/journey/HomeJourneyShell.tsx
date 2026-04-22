@@ -11,6 +11,8 @@ import type { MergedHomepageConfig } from "@/lib/content/homepage-merge";
 
 type HomeJourneyShellProps = {
   homepage: MergedHomepageConfig;
+  /** Optional band between pathway cards and the “after gateway” region (e.g. trail photos). */
+  trailBand?: ReactNode;
   /** Rendered immediately after the four pathway cards (e.g. Step in / get involved). */
   afterGateway?: ReactNode;
   /** Optional extra beats below (full-width column). */
@@ -22,7 +24,7 @@ type HomeJourneyShellProps = {
  * Component) so `HomePathwayGateway` stays under `JourneyProvider` in the client tree—avoids
  * `useJourney` running without context after hydration.
  */
-export function HomeJourneyShell({ homepage, afterGateway, children }: HomeJourneyShellProps) {
+export function HomeJourneyShell({ homepage, trailBand, afterGateway, children }: HomeJourneyShellProps) {
   return (
     <JourneyProvider beats={LANDING_JOURNEY_BEATS}>
       <div className="relative pb-10">
@@ -31,6 +33,7 @@ export function HomeJourneyShell({ homepage, afterGateway, children }: HomeJourn
           <HomeTrustRibbonSection />
           <HomePathwayGateway />
         </div>
+        {trailBand}
         {afterGateway}
         {children ? (
           <div className="mx-auto w-full max-w-[100vw] px-[var(--gutter-x)] xl:max-w-[min(100%,1600px)]">

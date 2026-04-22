@@ -12,8 +12,13 @@ import type { EventFiltersState } from "@/components/organizing/EventFilterBar";
 import type { EventStatus, EventType } from "@/content/types";
 import { listPublicFestivalFeed } from "@/lib/festivals/queries";
 import { listMovementEventRegionFilterLabels, listMovementRegionInfo } from "@/content/arkansas-movement-regions";
-import { prisma } from "@/lib/db";
+import { queryPublicCampaignEvents } from "@/lib/calendar/public-events";
+import { mergeMovementAndCalendarEvents } from "@/lib/events/calendar-to-movement-event";
+import { safePublishedCountyOptions } from "@/lib/county/safe-published-county-options";
+import type { EventSchedulePreset } from "@/lib/format/event-schedule-in-zone";
 import { cn } from "@/lib/utils";
+import { TrailPhotosShowcase } from "@/components/campaign-trail/TrailPhotosShowcase";
+import { campaignTrailPhotos } from "@/content/media/campaign-trail-photos";
 
 export const metadata: Metadata = {
   title: "Events",
@@ -35,10 +40,12 @@ export default async function EventsPage({
 }) {
   const sp = (await searchParams) ?? {};
   const suggestOk = pickParam(sp, "ok");
-  const [counties, communityFeed] = await Promise.all([
-    prisma.county.findMany({ orderBy: { sortOrder: "asc" }, select: { id: true, displayName: true } }),
-    listPublicFestivalFeed(6).catch(() => []),
+  const [counties, communityFeed, calendarRows] = await Promise.all([
+    safePublishedCountyOptions(),
+    listPublicFestivalFeed(6),
+    queryPublicCampaignEvents({ range: "all_upcoming" }, { take: 200 }),
   ]);
+  const mergedEvents = mergeMovementAndCalendarEvents(events, calendarRows);
   const typeRaw = pickParam(sp, "type");
   const regionRaw = pickParam(sp, "region");
   const statusRaw = pickParam(sp, "status");
@@ -58,7 +65,18 @@ export default async function EventsPage({
   const audience: EventFiltersState["audience"] =
     audienceDecoded !== "all" && audienceTags.includes(audienceDecoded) ? audienceDecoded : "all";
 
-  const filterKey = JSON.stringify({ type, region, status, audience });
+  const scheduleParam = pickParam(sp, "when");
+  const schedule: EventSchedulePreset =
+    scheduleParam === "today"
+      ? "today"
+      : scheduleParam === "week"
+        ? "this_week"
+        : scheduleParam === "ahead"
+          ? "upcoming"
+          : "all";
+  const includeCalendar = pickParam(sp, "cal") !== "0";
+
+  const filterKey = JSON.stringify({ type, region, status, audience, schedule, includeCalendar });
 
   return (
     <>
@@ -79,6 +97,24 @@ export default async function EventsPage({
           Local organizing hub
         </Button>
       </PageHero>
+
+      {campaignTrailPhotos.slice(18, 21).length > 0 ? (
+        <FullBleedSection
+          variant="subtle"
+          className="!pt-[calc(var(--section-padding-y)*0.45)] !pb-0 lg:!pt-[calc(var(--section-padding-y-lg)*0.45)] lg:!pb-0"
+        >
+          <ContentContainer wide>
+            <TrailPhotosShowcase
+              variant="inline"
+              className="!border-t-0 !py-6 md:!py-8"
+              photos={campaignTrailPhotos.slice(18, 21)}
+              eyebrow="Field"
+              title="Moments between the calendar lines"
+              intro="Trainings and meetups are only part of the story—these are the faces and places in between."
+            />
+          </ContentContainer>
+        </FullBleedSection>
+      ) : null}
 
       <FullBleedSection
         padY
@@ -161,12 +197,11 @@ export default async function EventsPage({
         <ContentContainer wide>
           <EventsHub
             key={filterKey}
-            events={events}
+            events={mergedEvents}
             types={[...eventTypes]}
             regions={allMovementRegions}
             audienceTags={audienceTags}
-            initialFilters={{ type, region, status, audience }}
-            mapsApiKey={process.env.GOOGLE_MAPS_API_KEY ?? process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? null}
+            initialFilters={{ type, region, status, audience, schedule, includeCalendar }}
           />
         </ContentContainer>
       </FullBleedSection>
@@ -183,8 +218,8 @@ export default async function EventsPage({
             <p className="mt-2 max-w-2xl font-body text-sm text-deep-soil/75">
               Fairs, festivals, and public gatherings the team has approved for the site-wide feed. Full list and field map
               on the{" "}
-              <Link href="/campaign-trail" className="font-semibold text-red-dirt underline">
-                campaign trail
+              <Link href="/from-the-road" className="font-semibold text-red-dirt underline">
+                From the Road
               </Link>
               .
             </p>
@@ -239,6 +274,12 @@ export default async function EventsPage({
           {suggestOk === "suggest" ? (
             <p className="mt-3 rounded-md border border-field-green/30 bg-field-green/10 px-3 py-2 font-body text-sm text-deep-soil" role="status">
               Thanks — we received your suggestion. The team will review it before anything goes live.
+            </p>
+          ) : null}
+          {counties.length === 0 ? (
+            <p className="mt-3 rounded-md border border-amber-200/80 bg-amber-50/90 px-3 py-2 font-body text-sm text-amber-950/90" role="status">
+              County pick-list is unavailable (database offline). You can still describe the location in your message—staff
+              will match it manually.
             </p>
           ) : null}
           <SuggestCommunityEventForm counties={counties} idPrefix="suggest" />

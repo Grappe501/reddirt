@@ -2,6 +2,7 @@
 
 import { useId } from "react";
 import type { EventStatus, EventType } from "@/content/types";
+import type { EventSchedulePreset } from "@/lib/format/event-schedule-in-zone";
 import { cn } from "@/lib/utils";
 
 export type EventFiltersState = {
@@ -9,6 +10,10 @@ export type EventFiltersState = {
   region: string | "all";
   status: EventStatus | "all";
   audience: string | "all";
+  /** Central Time windows for field scheduling */
+  schedule: EventSchedulePreset;
+  /** Merge published CampaignOS events onto the movement map (same gating as /campaign-calendar). */
+  includeCalendar: boolean;
 };
 
 type EventFilterBarProps = {
@@ -62,6 +67,18 @@ export function EventFilterBar({
           { label: "Past", value: "past" },
         ]}
       />
+      <FilterSelect
+        id={`${baseId}-schedule`}
+        label="Schedule window"
+        value={value.schedule}
+        onChange={(v) => onChange({ ...value, schedule: v as EventFiltersState["schedule"] })}
+        options={[
+          { label: "Any day", value: "all" },
+          { label: "Today (CT)", value: "today" },
+          { label: "This week (CT)", value: "this_week" },
+          { label: "Still ahead", value: "upcoming" },
+        ]}
+      />
       {audienceTags.length ? (
         <FilterSelect
           id={`${baseId}-audience`}
@@ -74,6 +91,18 @@ export function EventFilterBar({
           ]}
         />
       ) : null}
+      <label className="flex min-w-[14rem] cursor-pointer items-center gap-2 rounded-btn border border-deep-soil/15 bg-cream-canvas px-3 py-2.5 font-body text-sm text-deep-soil shadow-sm">
+        <input
+          type="checkbox"
+          className="h-4 w-4 rounded border-deep-soil/30 text-red-dirt focus:ring-red-dirt/30"
+          checked={value.includeCalendar}
+          onChange={(e) => onChange({ ...value, includeCalendar: e.target.checked })}
+        />
+        <span>
+          <span className="font-bold">Campaign calendar</span>
+          <span className="block text-xs text-deep-soil/65">Published HQ events on the same map</span>
+        </span>
+      </label>
       <div className="lg:ml-auto">
         <button
           type="button"
@@ -84,6 +113,8 @@ export function EventFilterBar({
               region: "all",
               status: "all",
               audience: "all",
+              schedule: "all",
+              includeCalendar: true,
             })
           }
         >

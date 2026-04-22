@@ -19,6 +19,7 @@ import {
   isSameCalendarMonthInZone,
   ymdInTimeZone,
 } from "@/lib/calendar/public-event-format";
+import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
 
 const JOIN = () => getJoinCampaignHref();
 
@@ -180,28 +181,37 @@ export async function queryPublicCampaignEvents(
   filters: PublicEventListFilters = {},
   opts: { take: number; skip?: number } = { take: 120 }
 ): Promise<PublicCampaignEvent[]> {
-  const joinHref = JOIN();
-  const andParts: Prisma.CampaignEventWhereInput[] = [whereLivePublicOnWebsite(), prismaWindowForFilters(filters)];
+  try {
+    const joinHref = JOIN();
+    const andParts: Prisma.CampaignEventWhereInput[] = [whereLivePublicOnWebsite(), prismaWindowForFilters(filters)];
 
-  if (filters.countySlug) {
-    andParts.push({ county: { slug: filters.countySlug } });
+    if (filters.countySlug) {
+      andParts.push({ county: { slug: filters.countySlug } });
+    }
+    if (filters.eventType) {
+      andParts.push({ eventType: filters.eventType });
+    }
+
+    const rows = await prisma.campaignEvent.findMany({
+      where: { AND: andParts },
+      orderBy: { startAt: "asc" },
+      take: 500,
+      skip: opts.skip ?? 0,
+      select: publicCampaignEventSelect,
+    });
+
+    const mapped = rows
+      .filter((r) => rowPassesFilters(r, filters))
+      .map((r) => toPublicDto(r, joinHref));
+    return mapped.slice(0, opts.take);
+  } catch (e) {
+    if (isPrismaDatabaseUnavailable(e)) {
+      logPrismaDatabaseUnavailable("queryPublicCampaignEvents", e);
+    } else {
+      console.error("[queryPublicCampaignEvents]", e);
+    }
+    return [];
   }
-  if (filters.eventType) {
-    andParts.push({ eventType: filters.eventType });
-  }
-
-  const rows = await prisma.campaignEvent.findMany({
-    where: { AND: andParts },
-    orderBy: { startAt: "asc" },
-    take: 500,
-    skip: opts.skip ?? 0,
-    select: publicCampaignEventSelect,
-  });
-
-  const mapped = rows
-    .filter((r) => rowPassesFilters(r, filters))
-    .map((r) => toPublicDto(r, joinHref));
-  return mapped.slice(0, opts.take);
 }
 
 export async function listUpcomingPublicCampaignEventsForHomepage(take: number) {

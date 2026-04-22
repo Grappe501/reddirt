@@ -12,7 +12,8 @@ function ItemBlock({ item, nested }: { item: ExternalMediaItem; nested?: boolean
       className={nested ? "ml-0 border-l-2 border-red-dirt/30 pl-4" : "rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)] md:p-6"}
     >
       <p className="font-body text-[11px] font-bold uppercase tracking-wider text-deep-soil/50">
-        {formatEditorialDate(item.publishedAt)} · {item.kind === "op-ed" ? "Op-ed" : item.kind}
+        {formatEditorialDate(item.publishedAt)} ·{" "}
+        {item.kind === "op-ed" ? "Op-ed" : item.kind === "interview" ? "Interview" : item.kind === "note" ? "Press" : item.kind}
       </p>
       <h3
         className={nested ? "mt-2 font-heading text-lg font-bold text-deep-soil" : "mt-2 font-heading text-xl font-bold text-deep-soil md:text-2xl"}
@@ -87,9 +88,10 @@ export function EditorialMediaArchive({ sinceNov2025, earlier }: Props) {
 
       {earlier.length > 0 ? (
         <div className="border-t border-deep-soil/10 pt-10">
-          <h3 className="font-heading text-lg font-bold text-deep-soil">Earlier op-eds in the same papers</h3>
+          <h3 className="font-heading text-lg font-bold text-deep-soil">Earlier bylines, interviews &amp; press</h3>
           <p className="mt-2 max-w-3xl font-body text-sm text-deep-soil/70">
-            Same writer and outlets; published before the November 2025 window above.
+            Opinion columns, interviews, and press coverage from state and regional outlets, published before the November
+            2025 window above.
           </p>
           <ul className="mt-6 list-none space-y-4 p-0">
             {earlier.map((item) => (

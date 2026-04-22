@@ -23,6 +23,7 @@ import { prisma } from "@/lib/db";
 import { CommsSendProvider } from "@prisma/client";
 import { countPendingFestivalIngests } from "@/lib/festivals/admin-queries";
 import { listAdminStrategyReferenceAssets } from "@/lib/campaign-ops/admin-strategy-reference";
+import { getPressMonitorWorkbenchSummary } from "@/lib/media-monitor/workbench-queries";
 
 type Props = {
   searchParams: Promise<{ county?: string; thread?: string; error?: string; lane?: string }>;
@@ -54,7 +55,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
 
   const counties = await getCountiesForOpsFilter();
   const actorId = await getAdminActorUserId();
-  const [data, comms, activeThread, recentForRail, staffGmail, pendingFestivalIngest, adminStrategyRefs] =
+  const [data, comms, activeThread, recentForRail, staffGmail, pendingFestivalIngest, adminStrategyRefs, pressMonitor] =
     await Promise.all([
     getWorkbenchData({ countyId }),
     getCommsWorkbenchData({ countyId, lane }),
@@ -67,6 +68,14 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
       : Promise.resolve(null),
     countPendingFestivalIngests().catch(() => 0),
     listAdminStrategyReferenceAssets().catch(() => []),
+    getPressMonitorWorkbenchSummary().catch(() => ({
+      mentionsToday: 0,
+      editorialsOpinion: 0,
+      tvMentions: 0,
+      responseNeeded: 0,
+      needsAmplification: 0,
+      pendingReview: 0,
+    })),
   ]);
 
   const seenThread = new Set<string>();
@@ -272,7 +281,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
         </p>
       ) : null}
 
-      <div className="grid grid-cols-2 gap-1 border-b border-deep-soil/10 bg-cream-canvas/80 px-1 py-1 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-9">
+      <div className="grid grid-cols-2 gap-1 border-b border-deep-soil/10 bg-cream-canvas/80 px-1 py-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-12">
         <div className={card}>
           <p className={h2}>Needs reply</p>
           <p className="font-heading text-lg font-bold text-red-dirt">{data.commsSummary.needsReplyCount}</p>
@@ -335,6 +344,31 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
           </p>
           <Link href="/admin/workbench/festivals" className="text-[10px] font-semibold text-civic-slate">
             Review
+          </Link>
+        </div>
+        <div className={card}>
+          <p className={h2}>Press today</p>
+          <p className="font-heading text-lg font-bold text-deep-soil">{pressMonitor.mentionsToday}</p>
+          <Link href="/admin/media-monitor" className="text-[10px] font-semibold text-civic-slate">
+            Monitor
+          </Link>
+        </div>
+        <div className={card}>
+          <p className={h2}>Press · review</p>
+          <p className={`font-heading text-lg font-bold ${pressMonitor.pendingReview > 0 ? "text-amber-900" : "text-deep-soil"}`}>
+            {pressMonitor.pendingReview}
+          </p>
+          <Link href="/admin/media-monitor?review=PENDING" className="text-[10px] font-semibold text-civic-slate">
+            Queue
+          </Link>
+        </div>
+        <div className={card}>
+          <p className={h2}>Press · respond</p>
+          <p className={`font-heading text-lg font-bold ${pressMonitor.responseNeeded > 0 ? "text-red-dirt" : "text-deep-soil"}`}>
+            {pressMonitor.responseNeeded}
+          </p>
+          <Link href="/admin/media-monitor?flags=response" className="text-[10px] font-semibold text-civic-slate">
+            Filter
           </Link>
         </div>
       </div>
@@ -694,7 +728,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
         </aside>
       </div>
 
-      <div className="mt-0 grid grid-cols-1 gap-1 border-b border-deep-soil/10 bg-cream-canvas/60 px-1 py-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
+      <div className="mt-0 grid grid-cols-1 gap-1 border-b border-deep-soil/10 bg-cream-canvas/60 px-1 py-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
         <div className={card}>
           <h2 className="font-heading text-xs font-bold text-deep-soil">Tasks due today</h2>
           <ul className="mt-0.5 max-h-28 overflow-y-auto text-[10px]">
@@ -739,6 +773,31 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
             </Link>
             <Link className="text-civic-slate" href="/admin/owned-media/grid">
               Grid
+            </Link>
+          </div>
+        </div>
+        <div className={card}>
+          <h2 className="font-heading text-xs font-bold text-deep-soil">Earned media (press)</h2>
+          <p className="mt-0.5 text-[10px] leading-snug text-deep-soil/70">
+            New today: <strong>{pressMonitor.mentionsToday}</strong> · Editorials/op-eds:{" "}
+            <strong>{pressMonitor.editorialsOpinion}</strong> · TV rows: <strong>{pressMonitor.tvMentions}</strong> ·
+            Amplify flagged: <strong>{pressMonitor.needsAmplification}</strong>
+          </p>
+          <div className="mt-0.5 flex flex-wrap gap-1 text-[10px]">
+            <Link className="text-civic-slate" href="/admin/media-monitor">
+              All mentions
+            </Link>
+            <Link className="text-civic-slate" href="/admin/media-monitor?type=TV">
+              TV
+            </Link>
+            <Link className="text-civic-slate" href="/admin/media-monitor?flags=editorial">
+              Editorial/opinion
+            </Link>
+            <Link className="text-civic-slate" href="/admin/media-monitor?flags=amplify">
+              Amplify
+            </Link>
+            <Link className="text-civic-slate" href="/press-coverage" target="_blank" rel="noreferrer">
+              Public page
             </Link>
           </div>
         </div>

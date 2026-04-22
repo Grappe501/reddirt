@@ -18,6 +18,8 @@ const gatheringLabels: Record<(typeof gatheringTypeValues)[number], string> = {
   coffee_meetup: "Coffee meetup",
   listening_session: "Local listening session",
   issue_briefing: "Issue briefing",
+  postcard_party: "Postcard writing party",
+  phone_bank_party: "Phone bank party",
   other: "Something else (tell us)",
 };
 

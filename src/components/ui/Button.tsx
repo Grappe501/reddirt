@@ -15,11 +15,14 @@ const variants = {
     "border-2 border-deep-soil/25 bg-transparent text-deep-soil hover:border-deep-soil/50 hover:bg-deep-soil/[0.04] focus-visible:outline-deep-soil",
   ghost:
     "bg-transparent text-deep-soil underline-offset-4 hover:underline focus-visible:outline-red-dirt",
-  /** For civic-midnight header / dark surfaces — avoids `text-deep-soil` on dark blue */
+  /**
+   * For civic-midnight header / dark surfaces.
+   * Use `!` for color so we beat `body` / inherited `text-deep-soil` (buttons often inherit).
+   */
   ghostOnDark:
-    "border-0 bg-transparent text-white underline-offset-4 hover:underline hover:text-sunlight-gold focus-visible:outline-civic-gold/60",
+    "border-0 bg-transparent !text-civic-fog underline-offset-4 hover:underline hover:!text-sunlight-gold focus-visible:outline-civic-gold/60",
   outlineOnDark:
-    "border-2 border-white/40 bg-civic-midnight text-white hover:border-white/60 hover:bg-civic-blue/50 focus-visible:outline-white",
+    "border-2 border-white/40 bg-civic-midnight/90 !text-civic-fog hover:!text-white hover:border-white/60 hover:bg-civic-blue/55 focus-visible:outline-white",
   subtle:
     "bg-deep-soil/[0.06] text-deep-soil hover:bg-deep-soil/10 focus-visible:outline-red-dirt",
 } as const;

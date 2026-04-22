@@ -17,11 +17,26 @@ if (-not (Test-Path ".env.local") -and -not (Test-Path ".env")) {
 }
 
 Write-Host "→ Docker Compose…"
-try {
-    docker compose up -d
+$composeOk = $false
+docker compose up -d
+if ($LASTEXITCODE -eq 0) {
+    $composeOk = $true
     Write-Host "✓ Compose up" -ForegroundColor Green
-} catch {
+} else {
     Write-Host "⚠ Docker Compose failed — start Docker Desktop?" -ForegroundColor Yellow
+}
+if ($composeOk) {
+    Write-Host "→ waiting for Postgres (pg_isready)…" -NoNewline
+    $ready = $false
+    for ($i = 0; $i -lt 45; $i++) {
+        docker compose exec -T db pg_isready -U reddirt -d reddirt 2>$null | Out-Null
+        if ($LASTEXITCODE -eq 0) { $ready = $true; break }
+        Write-Host "." -NoNewline
+        Start-Sleep -Seconds 2
+    }
+    Write-Host ""
+    if ($ready) { Write-Host "✓ Postgres ready" -ForegroundColor Green }
+    else { Write-Host "⚠ Postgres not ready — check: docker compose logs db" -ForegroundColor Yellow }
 }
 Write-Host ""
 

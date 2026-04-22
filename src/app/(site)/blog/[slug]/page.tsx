@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { articleMeta } from "@/lib/seo/metadata";
 import { getPublicBlogPostBySlug, toBlogCard } from "@/lib/content/blog-public";
 import { prisma } from "@/lib/db";
+import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -17,7 +18,12 @@ export async function generateStaticParams() {
       select: { slug: true },
     });
     return slugs.map((s) => ({ slug: s.slug }));
-  } catch {
+  } catch (e) {
+    if (isPrismaDatabaseUnavailable(e)) {
+      logPrismaDatabaseUnavailable("blog/generateStaticParams", e);
+    } else {
+      console.error("[blog/generateStaticParams]", e);
+    }
     return [];
   }
 }

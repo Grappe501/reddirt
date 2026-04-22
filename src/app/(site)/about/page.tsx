@@ -9,6 +9,9 @@ import { CTASection } from "@/components/blocks/CTASection";
 import { QuoteBand } from "@/components/blocks/QuoteBand";
 import { pageMeta } from "@/lib/seo/metadata";
 import { KellyFullStory } from "@/components/about/KellyFullStory";
+import { TalkBusinessKellySection } from "@/components/about/TalkBusinessKellySection";
+import { TrailPhotosShowcase } from "@/components/campaign-trail/TrailPhotosShowcase";
+import { campaignTrailPhotos } from "@/content/media/campaign-trail-photos";
 
 export const metadata: Metadata = pageMeta({
   title: "Meet Kelly — full story",
@@ -32,6 +35,9 @@ export default function AboutPage() {
         <Button href="/priorities" variant="outline">
           Office priorities
         </Button>
+        <Button href="#talk-business-kelly" variant="outline">
+          Talk Business &amp; Politics
+        </Button>
         <Button href="#kelly-full-story" variant="outline">
           Read the full biography
         </Button>
@@ -45,7 +51,22 @@ export default function AboutPage() {
         padY
         className="!pt-0 md:!pt-1 lg:!pt-2"
       >
-        <ContentContainer className="max-w-3xl">
+        <ContentContainer className="max-w-3xl space-y-12">
+          <TalkBusinessKellySection />
+        </ContentContainer>
+        {campaignTrailPhotos.slice(12, 18).length > 0 ? (
+          <ContentContainer wide className="mt-12 md:mt-16">
+            <TrailPhotosShowcase
+              variant="inline"
+              className="!border-t-0 !py-0"
+              photos={campaignTrailPhotos.slice(12, 18)}
+              eyebrow="With Arkansans"
+              title="The people you meet on the trail"
+              intro="Neighbors, hosts, and volunteers—the statewide campaign is built from these rooms."
+            />
+          </ContentContainer>
+        ) : null}
+        <ContentContainer className="max-w-3xl space-y-12">
           <KellyFullStory />
         </ContentContainer>
       </FullBleedSection>

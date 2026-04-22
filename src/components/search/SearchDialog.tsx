@@ -4,7 +4,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
-import { pathToHref } from "@/lib/search/paths";
+import { pathKindLabel, pathToHref } from "@/lib/search/paths";
 
 type SearchResult = { path: string; title: string | null; snippet: string; score: number };
 
@@ -19,6 +19,11 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
   const [results, setResults] = useState<SearchResult[]>([]);
   const [answer, setAnswer] = useState<string | null>(null);
   const [searched, setSearched] = useState(false);
+  const [indexStatus, setIndexStatus] = useState<{
+    chunkCount: number;
+    openai: boolean;
+    database: boolean;
+  } | null>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -50,6 +55,32 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open, onClose]);
+
+  useEffect(() => {
+    if (!open) return;
+    let cancelled = false;
+    void (async () => {
+      try {
+        const res = await fetch("/api/search");
+        const json = (await res.json()) as {
+          chunkCount?: number;
+          openai?: boolean;
+          database?: boolean;
+        };
+        if (cancelled) return;
+        setIndexStatus({
+          chunkCount: typeof json.chunkCount === "number" ? json.chunkCount : 0,
+          openai: Boolean(json.openai),
+          database: Boolean(json.database),
+        });
+      } catch {
+        if (!cancelled) setIndexStatus(null);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [open]);
 
   const runSearch = async () => {
     setLoading(true);
@@ -101,15 +132,48 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
               Search the movement
             </h2>
             <p id={descId} className="mt-1 font-body text-sm text-deep-soil/65">
-              Semantic search across indexed pages and docs. Answers stay grounded in published content when OpenAI is
-              configured.
+              Keyword + semantic search over the ingested index. Grounded answers need OpenAI; matching pages still
+              surface without it.
             </p>
+            {indexStatus ? (
+              <p className="mt-2 font-body text-xs text-deep-soil/50">
+                Index:{" "}
+                <strong className="text-deep-soil/70">
+                  {indexStatus.chunkCount.toLocaleString()} excerpt{indexStatus.chunkCount === 1 ? "" : "s"}
+                </strong>
+                {indexStatus.database ? "" : " · Database offline in env"}
+                {indexStatus.openai ? " · Embeddings on" : " · Embeddings off (keyword mode)"}
+                {indexStatus.chunkCount === 0 && indexStatus.database ? (
+                  <span className="mt-1 block text-amber-900/90">
+                    With zero excerpts, search has nothing to read—run ingest once so this isn’t an empty library.
+                  </span>
+                ) : null}
+              </p>
+            ) : null}
           </div>
           <Button type="button" variant="ghost" onClick={onClose} aria-label="Close search dialog">
             Close
           </Button>
         </div>
         <div className="max-h-[min(72vh,720px)] space-y-4 overflow-y-auto px-6 py-6 md:px-8">
+          {indexStatus?.chunkCount === 0 && indexStatus.database ? (
+            <div
+              className="rounded-lg border border-amber-300/80 bg-amber-50 px-4 py-3 font-body text-sm leading-relaxed text-amber-950/95"
+              role="status"
+            >
+              <strong className="font-bold">The index is empty.</strong> Answers and snippets come from ingested site
+              pages—not from “smarts” alone. After you run{" "}
+              <code className="rounded bg-amber-100/80 px-1.5 py-0.5 font-mono text-xs">npm run ingest</code> with{" "}
+              <code className="rounded bg-amber-100/80 px-1.5 py-0.5 font-mono text-xs">DATABASE_URL</code>
+              {indexStatus.openai ? (
+                <>
+                  {" "}
+                  and <code className="rounded bg-amber-100/80 px-1.5 py-0.5 font-mono text-xs">OPENAI_API_KEY</code>
+                </>
+              ) : null}
+              , try again.
+            </div>
+          ) : null}
           <div className="flex flex-col gap-3 md:flex-row">
             <label htmlFor={`${titleId}-q`} className="sr-only">
               Search query
@@ -136,7 +200,7 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
               checked={includeAnswer}
               onChange={(e) => setIncludeAnswer(e.target.checked)}
             />
-            Include a short grounded answer (OpenAI + indexed content)
+            Include a short grounded answer (requires OpenAI + excerpts)
           </label>
           {loading ? (
             <p className="rounded-btn border border-deep-soil/10 bg-deep-soil/[0.04] px-4 py-3 font-body text-sm text-deep-soil/75" role="status" aria-live="polite">
@@ -161,11 +225,31 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
                 className="rounded-card border border-dashed border-deep-soil/20 bg-deep-soil/[0.03] px-4 py-6 text-center"
                 role="status"
               >
-                <p className="font-body text-sm font-medium text-deep-soil">No matching excerpts yet.</p>
-                <p className="mt-2 font-body text-sm text-deep-soil/65">
-                  Run <code className="rounded bg-deep-soil/10 px-1.5 py-0.5 font-mono text-xs">npm run ingest</code> after
-                  content changes, and ensure the database is running.
-                </p>
+                {indexStatus && indexStatus.chunkCount === 0 ? (
+                  <>
+                    <p className="font-body text-sm font-medium text-deep-soil">Nothing to search yet.</p>
+                    <p className="mt-2 font-body text-sm text-deep-soil/65">
+                      The assistant is fine—it needs indexed page excerpts first. From the project root, run{" "}
+                      <code className="rounded bg-deep-soil/10 px-1.5 py-0.5 font-mono text-xs">npm run ingest</code> with{" "}
+                      <code className="rounded bg-deep-soil/10 px-1.5 py-0.5 font-mono text-xs">DATABASE_URL</code>
+                      {indexStatus.openai ? (
+                        <>
+                          {" "}
+                          and <code className="rounded bg-deep-soil/10 px-1.5 py-0.5 font-mono text-xs">OPENAI_API_KEY</code>
+                        </>
+                      ) : null}{" "}
+                      (embeddings optional for keyword-only), then search again.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p className="font-body text-sm font-medium text-deep-soil">No matching pages for that query.</p>
+                    <p className="mt-2 font-body text-sm text-deep-soil/65">
+                      Try different keywords, or use the nav—your index already has {indexStatus?.chunkCount ?? "some"}{" "}
+                      excerpt{(indexStatus?.chunkCount ?? 0) === 1 ? "" : "s"}.
+                    </p>
+                  </>
+                )}
               </div>
             ) : null}
             {!searched && !loading ? (
@@ -184,7 +268,12 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
                     {r.title || r.path}
                   </Link>
                   <p className="mt-2 font-body text-sm leading-relaxed text-deep-soil/75">{r.snippet}</p>
-                  <p className="mt-2 font-mono text-xs text-deep-soil/45">{r.path}</p>
+                  <p className="mt-2 font-mono text-xs text-deep-soil/45">
+                    <span className="mr-2 rounded bg-deep-soil/10 px-1.5 py-0.5 font-body text-[10px] font-semibold uppercase tracking-wide text-deep-soil/60">
+                      {pathKindLabel(r.path)}
+                    </span>
+                    {r.path}
+                  </p>
                 </li>
               ))}
             </ul>

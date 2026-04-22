@@ -4,10 +4,7 @@ import type { NextConfig } from "next";
  * Default Next.js build so App Router API routes work on Netlify via @netlify/plugin-nextjs.
  */
 const nextConfig: NextConfig = {
-  /**
-   * Expose the Maps key to the client bundle. Google Maps only runs in the browser; the key must
-   * be public and restricted by HTTP referrer in Google Cloud. Mirrors GOOGLE_MAPS_API_KEY if set.
-   */
+  /** Optional: legacy client env if you add Google Maps elsewhere; /events uses OpenStreetMap + Leaflet. */
   env: {
     NEXT_PUBLIC_GOOGLE_MAPS_API_KEY:
       process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? process.env.GOOGLE_MAPS_API_KEY ?? "",
@@ -33,6 +30,36 @@ const nextConfig: NextConfig = {
         source: "/the-arkansas-we-know",
         destination: "/",
         permanent: true,
+      },
+      {
+        source: "/why-this-movement",
+        destination: "/understand",
+        permanent: true,
+      },
+      {
+        source: "/resources/direct-democracy-basics",
+        destination: "/resources/direct-democracy-guide",
+        permanent: true,
+      },
+      {
+        source: "/resources/arkansas-ballot-initiative-process",
+        destination: "/resources/direct-democracy-guide",
+        permanent: true,
+      },
+      {
+        source: "/campaign-trail",
+        destination: "/from-the-road",
+        permanent: false,
+      },
+      {
+        source: "/updates",
+        destination: "/from-the-road",
+        permanent: true,
+      },
+      {
+        source: "/watch",
+        destination: "/from-the-road",
+        permanent: false,
       },
     ];
   },

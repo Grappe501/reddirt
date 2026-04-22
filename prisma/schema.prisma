@@ -780,6 +780,7 @@ model County {
   communicationThreads    CommunicationThread[]
   eventAnalyticsSnapshots EventAnalyticsSnapshot[]
   arkansasFestivalIngests ArkansasFestivalIngest[]
+  externalMediaMentions   ExternalMediaMention[]
 
   @@index([published, sortOrder])
 }
@@ -1294,6 +1295,7 @@ model CampaignEvent {
   communicationCampaigns CommunicationCampaign[]
   /// When this event was created by promoting an ingested fair/festival.
   festivalPromotionSource ArkansasFestivalIngest? @relation("FestivalPromotion")
+  externalMediaMentions   ExternalMediaMention[]
 
   @@index([startAt, status])
   @@index([countyId, startAt])
@@ -2234,4 +2236,157 @@ model EventAnalyticsSnapshot {
   @@index([day, scope])
   @@index([countyId, day])
   @@index([eventId, day])
+}
+
+// --- External press / earned media monitoring (Arkansas outlets, Kelly Grappe) ---
+
+enum ExternalMediaSourceType {
+  NEWSPAPER
+  NEWS_MAGAZINE
+  DIGITAL_LOCAL
+  TV
+  RADIO
+  BLOG
+  OTHER
+}
+
+enum ExternalMediaMentionType {
+  NEWS_ARTICLE
+  EDITORIAL
+  OPINION
+  LETTER_TO_EDITOR
+  TV_WEB_STORY
+  CANDIDATE_LISTING
+  EVENT_RECAP
+  ENDORSEMENT
+  OTHER
+}
+
+enum ExternalMediaReviewStatus {
+  PENDING
+  NEEDS_REVIEW
+  APPROVED
+  REJECTED
+}
+
+enum ExternalMediaIngestMethod {
+  RSS
+  SITEMAP
+  SEARCH_PAGE
+  MANUAL_SEED
+  HOMEPAGE_SECTION
+  TAG_PAGE
+  CATEGORY_PAGE
+}
+
+enum ExternalMediaMatchTier {
+  DEFINITE
+  LIKELY
+  UNCERTAIN
+  NOT_RELEVANT
+}
+
+/// Registry row synced from `src/lib/media-monitor/sources` seeds (editable in DB for overrides).
+model ExternalMediaSource {
+  id                 String                @id @default(cuid())
+  slug               String                @unique
+  name               String
+  sourceType         ExternalMediaSourceType
+  region             String
+  coveredCities      String[]              @default([])
+  homepage           String
+  priority           Int                   @default(5)
+  rssUrl             String?
+  sitemapUrl         String?
+  searchUrlTemplate  String?               @db.Text
+  discoveryMethods   String[]              @default([])
+  notes              String?               @db.Text
+  isActive           Boolean               @default(true)
+  lastFetchedAt      DateTime?
+  createdAt          DateTime              @default(now())
+  updatedAt          DateTime              @updatedAt
+
+  mentions ExternalMediaMention[]
+
+  @@index([isActive, priority])
+}
+
+model ExternalMediaMention {
+  id            String @id @default(cuid())
+  sourceId      String
+  source        ExternalMediaSource @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+  /// Denormalized for exports and UI when source row changes.
+  sourceName    String
+  sourceType    ExternalMediaSourceType
+  sourceRegion  String?
+  cityCoverage  String[]              @default([])
+
+  title         String
+  url           String
+  canonicalUrl  String
+  /// Stable dedupe: normalized URL hash + optional title/date fingerprint.
+  dedupeKey     String                @unique
+
+  publishedAt   DateTime?
+  author        String?
+  section       String?
+  summary       String?               @db.Text
+  fullText      String?               @db.Text
+  transcriptText String?              @db.Text
+  transcriptMissing Boolean           @default(false)
+
+  mentionType   ExternalMediaMentionType @default(NEWS_ARTICLE)
+  confidenceScore Float?
+  matchTier     ExternalMediaMatchTier
+  matchedEntityName String            @default("Kelly Grappe")
+  matchedPersonName String?
+  isOpinion     Boolean               @default(false)
+  isEditorial   Boolean               @default(false)
+  sentimentHint String?
+
+  ingestionMethod ExternalMediaIngestMethod
+  discoveredAt    DateTime              @default(now())
+  lastCheckedAt   DateTime              @updatedAt
+
+  reviewStatus  ExternalMediaReviewStatus @default(PENDING)
+  campaignSummary String?               @db.Text
+  markForSocialShare            Boolean @default(false)
+  markForEmailRoundup           Boolean @default(false)
+  markForSurrogateAmplification Boolean @default(false)
+  responseNeeded                Boolean @default(false)
+  needsAmplification            Boolean @default(false)
+  showOnPublicSite              Boolean @default(false)
+
+  relatedEventId  String?
+  relatedEvent    CampaignEvent? @relation(fields: [relatedEventId], references: [id], onDelete: SetNull)
+  relatedCountyId String?
+  relatedCounty   County?        @relation(fields: [relatedCountyId], references: [id], onDelete: SetNull)
+
+  openAiRefined   Boolean @default(false)
+  rawPayload      Json?
+
+  @@index([sourceId, publishedAt])
+  @@index([reviewStatus, publishedAt])
+  @@index([matchTier, publishedAt])
+  @@index([showOnPublicSite, publishedAt])
+  @@index([relatedCountyId])
+  @@index([relatedEventId])
+}
+
+model ExternalMediaIngestRun {
+  id               String    @id @default(cuid())
+  startedAt        DateTime  @default(now())
+  finishedAt       DateTime?
+  label            String?
+  dryRun           Boolean   @default(false)
+  sourceSlug       String?
+  incrementalSince DateTime?
+  summaryJson      Json?
+  itemsDiscovered  Int       @default(0)
+  itemsInserted    Int       @default(0)
+  itemsUpdated     Int       @default(0)
+  errorsJson       Json?
+  error            String?   @db.Text
+
+  @@index([startedAt])
 }

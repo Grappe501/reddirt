@@ -77,7 +77,7 @@ export default async function AdminDistributionPage({ searchParams }: Props) {
               <input type="hidden" name="id" value={item.id} />
               <label className="flex items-center gap-2 font-body text-sm">
                 <input type="checkbox" name="visibleOnUpdatesPage" defaultChecked={item.visibleOnUpdatesPage} />
-                Public <code className="text-xs">/updates</code> feed
+                Public <code className="text-xs">/from-the-road</code> feed
               </label>
               <label className="flex items-center gap-2 font-body text-sm">
                 <input type="checkbox" name="visibleOnHomepageRail" defaultChecked={item.visibleOnHomepageRail} />

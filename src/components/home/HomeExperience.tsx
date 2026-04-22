@@ -1,4 +1,5 @@
 import { HomeJourneyShell } from "@/components/journey/HomeJourneyShell";
+import { HomeTrailPhotosBand } from "@/components/home/HomeTrailPhotosBand";
 import { HomeGetInvolvedSection } from "@/components/home/sections/HomeGetInvolvedSection";
 import { HomeDonateFloatingGate } from "@/components/home/HomeDonateFloatingGate";
 import { type MergedHomepageConfig } from "@/lib/content/homepage-merge";
@@ -13,6 +14,7 @@ export function HomeExperience({ homepage }: HomeExperienceProps) {
       <HomeDonateFloatingGate />
       <HomeJourneyShell
         homepage={homepage}
+        trailBand={<HomeTrailPhotosBand />}
         afterGateway={
           <div key="home-after-gateway">
             {/* Old `/#hear-kelly` bookmarks land near Step in after the watch strip was removed */}

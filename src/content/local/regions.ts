@@ -14,7 +14,12 @@ export const regions: RegionPage[] = [
       "Neighbors feel unheard on development and safety decisions made downtown—not with them.",
     ],
     priorityIssues: ["Housing stability", "Public schools", "Transparent planning"],
-    upcomingEventSlugs: ["listening-session-little-rock", "volunteer-training-central-ark"],
+    upcomingEventSlugs: [
+      "501-fest-little-rock-2026",
+      "arkansas-times-tacos-tequilas-2026-05-21",
+      "listening-session-little-rock",
+      "volunteer-training-central-ark",
+    ],
     organizingContactNote:
       "Placeholder contact routing—Phase 5 can map to a real county lead inbox or Mobilize chapter.",
     stories: [
@@ -24,7 +29,7 @@ export const regions: RegionPage[] = [
       },
     ],
     resourceLinks: [
-      { label: "Direct democracy basics", href: "/resources#toolkit" },
+      { label: "Direct democracy & ballot process (guide)", href: "/resources/direct-democracy-guide" },
       { label: "Host a gathering", href: "/host-a-gathering" },
     ],
     cta: {
