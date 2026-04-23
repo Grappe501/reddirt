@@ -8,10 +8,7 @@ import { getAdminActorUserId } from "@/lib/admin/actor";
 import { getMediaRefsForSocialContentItem, queryMediaLibrary } from "@/lib/media-library/queries";
 import type { MediaLibraryListResult } from "@/lib/media-library/dto";
 import type { MediaLibraryListFilters } from "@/lib/media-library/types";
-import { indexLocalMediaRootsFromEnv } from "@/lib/owned-media/index-local-roots";
-import { getAllowedMediaIndexRootsFromEnv } from "@/lib/owned-media/index-local-roots";
-
-export { getAllowedMediaIndexRootsFromEnv } from "@/lib/owned-media/index-local-roots";
+import { getAllowedMediaIndexRootsFromEnv, indexLocalMediaRootsFromEnv } from "@/lib/owned-media/index-local-roots";
 
 export async function listMediaLibraryAction(input: MediaLibraryListFilters): Promise<MediaLibraryListResult> {
   await requireAdminAction();

@@ -743,6 +743,41 @@ export function SocialWorkbenchLive({
               )}
 
               {detail && !detailLoading ? (
+                <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50/50 p-3">
+                  <p className="mb-1 text-[10px] font-bold uppercase text-slate-500">Author Studio — saved alternate drafts</p>
+                  <p className="mb-2 text-[10px] text-slate-500">
+                    Structured <code className="rounded bg-slate-100 px-0.5">SocialContentDraft</code> rows; full actions live on the Studio tab.
+                  </p>
+                  {detail.drafts.length === 0 ? (
+                    <p className="text-xs text-slate-600">No saved drafts for this work item. Use &quot;Save as alternate draft&quot; in the Studio → Compose tab.</p>
+                  ) : (
+                    <ul className="max-h-48 space-y-2 overflow-y-auto pr-1">
+                      {detail.drafts.map((d) => (
+                        <li key={d.id} className="rounded-lg border border-slate-200/90 bg-white px-2.5 py-2">
+                          <div className="flex flex-wrap items-baseline justify-between gap-1 text-xs">
+                            <span className="font-semibold text-slate-800">
+                              {d.title?.trim() || d.sourceIntent || "Draft"}
+                            </span>
+                            <span className="shrink-0 text-[10px] text-slate-500">
+                              {new Date(d.createdAt).toLocaleString()}
+                              {d.isApplied ? " · applied" : ""}
+                            </span>
+                          </div>
+                          {d.createdByName || d.createdByEmail ? (
+                            <p className="mt-0.5 text-[10px] text-slate-500">By {d.createdByName ?? d.createdByEmail}</p>
+                          ) : null}
+                          <p className="mt-1 line-clamp-3 whitespace-pre-wrap font-mono text-[10px] text-slate-700">{d.bodyCopy}</p>
+                          <p className="mt-1 text-[9px] text-slate-400">
+                            {d.sourceRoute ?? "—"} · {d.sourceIntent ?? "—"}
+                          </p>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ) : null}
+
+              {detail && !detailLoading ? (
                 <SocialWorkbenchAttachedMediaSection
                   socialContentItemId={detail.id}
                   mediaRefs={detail.mediaRefs}

@@ -28,6 +28,12 @@ import { runTranscriptionForOwnedAsset } from "@/lib/owned-media/transcription/r
 import { prisma } from "@/lib/db";
 import { getAdminActorUserId } from "@/lib/admin/actor";
 import { requireAdminAction } from "@/app/admin/owned-media-auth";
+import { bulkMediaCenterGovernanceFormSchema } from "@/lib/owned-media/media-center-schemas";
+import {
+  appendOwnedMediaReviewLog,
+  logMediaCenterGovernanceDiffs,
+  OwnedMediaReviewAction,
+} from "@/lib/owned-media/review-log";
 
 function splitComma(name: string, formData: FormData): string[] {
   return String(formData.get(name) ?? "")
@@ -545,6 +551,38 @@ export async function updateMediaCenterTriageAction(formData: FormData) {
   await requireAdminAction();
   const id = String(formData.get("ownedMediaId") ?? "").trim();
   if (!id) return;
+  const actor = await getAdminActorUserId();
+  let beforeRow: {
+    rating: number | null;
+    pickStatus: OwnedMediaPickStatus;
+    colorLabel: OwnedMediaColorLabel;
+    isFavorite: boolean;
+    approvedForPress: boolean;
+    approvedForPublicSite: boolean;
+    approvedForSocial: boolean;
+    reviewNotes: string | null;
+    staffReviewNotes: string | null;
+  } | null = null;
+  try {
+    beforeRow = await prisma.ownedMediaAsset.findUnique({
+      where: { id },
+      select: {
+        rating: true,
+        pickStatus: true,
+        colorLabel: true,
+        isFavorite: true,
+        approvedForPress: true,
+        approvedForPublicSite: true,
+        approvedForSocial: true,
+        reviewNotes: true,
+        staffReviewNotes: true,
+      },
+    });
+  } catch {
+    return;
+  }
+  if (!beforeRow) return;
+
   const ratingRaw = String(formData.get("rating") ?? "").trim();
   let rating: number | null = null;
   if (ratingRaw !== "") {
@@ -566,6 +604,20 @@ export async function updateMediaCenterTriageAction(formData: FormData) {
   const approvedForPublicSite = formData.get("approvedForPublicSite") === "on";
   const approvedForSocial = formData.get("approvedForSocial") === "on";
   const reviewNotes = String(formData.get("reviewNotes") ?? "").trim() || null;
+  const staffReviewNotes = String(formData.get("staffReviewNotes") ?? "").trim() || null;
+
+  const afterRow = {
+    rating,
+    pickStatus,
+    colorLabel,
+    isFavorite,
+    approvedForPress,
+    approvedForPublicSite,
+    approvedForSocial,
+    reviewNotes,
+    staffReviewNotes,
+  };
+
   try {
     await prisma.ownedMediaAsset.update({
       where: { id },
@@ -578,11 +630,13 @@ export async function updateMediaCenterTriageAction(formData: FormData) {
         approvedForPublicSite,
         approvedForSocial,
         reviewNotes,
+        staffReviewNotes,
       },
     });
   } catch {
     return;
   }
+  await logMediaCenterGovernanceDiffs(actor, id, beforeRow, afterRow);
   revalidatePath(MC_PATH);
   revalidatePath("/admin/owned-campaign-library");
   revalidatePath(`/admin/owned-media/${id}`);
@@ -595,7 +649,15 @@ export async function setMediaCenterReviewedAction(formData: FormData) {
   const mark = String(formData.get("markReviewed") ?? "");
   const setReviewed = mark === "1";
   const actor = await getAdminActorUserId();
+  let prevReviewedAt: Date | null = null;
+  let prevReviewer: string | null = null;
   try {
+    const prev = await prisma.ownedMediaAsset.findUnique({
+      where: { id },
+      select: { reviewedAt: true, reviewedByUserId: true },
+    });
+    prevReviewedAt = prev?.reviewedAt ?? null;
+    prevReviewer = prev?.reviewedByUserId ?? null;
     await prisma.ownedMediaAsset.update({
       where: { id },
       data: setReviewed
@@ -605,6 +667,18 @@ export async function setMediaCenterReviewedAction(formData: FormData) {
   } catch {
     return;
   }
+  await appendOwnedMediaReviewLog({
+    ownedMediaId: id,
+    userId: actor,
+    action: setReviewed ? OwnedMediaReviewAction.MARK_REVIEWED : OwnedMediaReviewAction.CLEAR_REVIEWED,
+    fromSnapshot: {
+      reviewedAt: prevReviewedAt ? prevReviewedAt.toISOString() : null,
+      reviewedByUserId: prevReviewer,
+    },
+    toSnapshot: setReviewed
+      ? { reviewedAt: new Date().toISOString(), reviewedByUserId: actor }
+      : { reviewedAt: null, reviewedByUserId: null },
+  });
   revalidatePath(MC_PATH);
   revalidatePath(`/admin/owned-media/${id}`);
 }
@@ -614,15 +688,283 @@ export async function addOwnedMediaToCollectionAction(formData: FormData) {
   const ownedMediaId = String(formData.get("ownedMediaId") ?? "").trim();
   const collectionId = String(formData.get("collectionId") ?? "").trim();
   if (!ownedMediaId || !collectionId) return;
+  const actor = await getAdminActorUserId();
+  let colName: string | null = null;
   try {
+    const col = await prisma.ownedMediaCollection.findUnique({
+      where: { id: collectionId },
+      select: { name: true },
+    });
+    colName = col?.name ?? null;
+    const already = await prisma.ownedMediaCollectionItem.findUnique({
+      where: { collectionId_ownedMediaId: { collectionId, ownedMediaId } },
+      select: { id: true },
+    });
     await prisma.ownedMediaCollectionItem.upsert({
       where: { collectionId_ownedMediaId: { collectionId, ownedMediaId } },
       create: { collectionId, ownedMediaId },
       update: {},
     });
+    if (!already) {
+      await appendOwnedMediaReviewLog({
+        ownedMediaId,
+        userId: actor,
+        action: OwnedMediaReviewAction.COLLECTION_ADD,
+        toSnapshot: { collectionId, collectionName: colName },
+        note: colName ? `Added to collection “${colName}”` : `Added to collection ${collectionId}`,
+      });
+    }
   } catch {
     return;
   }
   revalidatePath(MC_PATH);
   revalidatePath("/admin/owned-campaign-library");
+}
+
+export async function bulkMediaCenterGovernanceAction(formData: FormData) {
+  await requireAdminAction();
+  const actor = await getAdminActorUserId();
+  const pickRaw = String(formData.get("pickStatus") ?? "").trim();
+  const colorRaw = String(formData.get("colorLabel") ?? "").trim();
+  const parsed = bulkMediaCenterGovernanceFormSchema.safeParse({
+    assetIds: String(formData.get("assetIds") ?? ""),
+    returnPath: String(formData.get("returnPath") ?? MC_PATH),
+    intent: String(formData.get("intent") ?? ""),
+    pickStatus:
+      pickRaw && Object.values(OwnedMediaPickStatus).includes(pickRaw as OwnedMediaPickStatus)
+        ? pickRaw
+        : undefined,
+    colorLabel:
+      colorRaw && Object.values(OwnedMediaColorLabel).includes(colorRaw as OwnedMediaColorLabel)
+        ? colorRaw
+        : undefined,
+    collectionId: String(formData.get("collectionId") ?? "").trim() || undefined,
+  });
+  if (!parsed.success) {
+    redirect(MC_PATH);
+  }
+  const { assetIds, intent, returnPath } = parsed.data;
+  const safeReturn = returnPath.startsWith("/admin/owned-media/grid") ? returnPath : MC_PATH;
+
+  for (const id of assetIds) {
+    const row = await prisma.ownedMediaAsset.findUnique({ where: { id } });
+    if (!row) continue;
+
+    switch (intent) {
+      case "favorite_on": {
+        if (!row.isFavorite) {
+          await prisma.ownedMediaAsset.update({ where: { id }, data: { isFavorite: true } });
+          await appendOwnedMediaReviewLog({
+            ownedMediaId: id,
+            userId: actor,
+            action: OwnedMediaReviewAction.FAVORITE,
+            fromSnapshot: { isFavorite: false },
+            toSnapshot: { isFavorite: true },
+            note: "Bulk: favorite on",
+          });
+        }
+        break;
+      }
+      case "favorite_off": {
+        if (row.isFavorite) {
+          await prisma.ownedMediaAsset.update({ where: { id }, data: { isFavorite: false } });
+          await appendOwnedMediaReviewLog({
+            ownedMediaId: id,
+            userId: actor,
+            action: OwnedMediaReviewAction.FAVORITE,
+            fromSnapshot: { isFavorite: true },
+            toSnapshot: { isFavorite: false },
+            note: "Bulk: favorite off",
+          });
+        }
+        break;
+      }
+      case "set_pick": {
+        const ps = parsed.data.pickStatus!;
+        if (row.pickStatus !== ps) {
+          await prisma.ownedMediaAsset.update({ where: { id }, data: { pickStatus: ps } });
+          await appendOwnedMediaReviewLog({
+            ownedMediaId: id,
+            userId: actor,
+            action: OwnedMediaReviewAction.PICK_STATUS,
+            fromSnapshot: { pickStatus: row.pickStatus },
+            toSnapshot: { pickStatus: ps },
+            note: "Bulk: pick status",
+          });
+        }
+        break;
+      }
+      case "set_color": {
+        const cl = parsed.data.colorLabel!;
+        if (row.colorLabel !== cl) {
+          await prisma.ownedMediaAsset.update({ where: { id }, data: { colorLabel: cl } });
+          await appendOwnedMediaReviewLog({
+            ownedMediaId: id,
+            userId: actor,
+            action: OwnedMediaReviewAction.COLOR_LABEL,
+            fromSnapshot: { colorLabel: row.colorLabel },
+            toSnapshot: { colorLabel: cl },
+            note: "Bulk: color label",
+          });
+        }
+        break;
+      }
+      case "press_on": {
+        if (!row.approvedForPress) {
+          await prisma.ownedMediaAsset.update({ where: { id }, data: { approvedForPress: true } });
+          await appendOwnedMediaReviewLog({
+            ownedMediaId: id,
+            userId: actor,
+            action: OwnedMediaReviewAction.APPROVED_PRESS,
+            fromSnapshot: { approvedForPress: false },
+            toSnapshot: { approvedForPress: true },
+            note: "Bulk: press on",
+          });
+        }
+        break;
+      }
+      case "press_off": {
+        if (row.approvedForPress) {
+          await prisma.ownedMediaAsset.update({ where: { id }, data: { approvedForPress: false } });
+          await appendOwnedMediaReviewLog({
+            ownedMediaId: id,
+            userId: actor,
+            action: OwnedMediaReviewAction.APPROVED_PRESS,
+            fromSnapshot: { approvedForPress: true },
+            toSnapshot: { approvedForPress: false },
+            note: "Bulk: press off",
+          });
+        }
+        break;
+      }
+      case "site_on": {
+        if (!row.approvedForPublicSite) {
+          await prisma.ownedMediaAsset.update({ where: { id }, data: { approvedForPublicSite: true } });
+          await appendOwnedMediaReviewLog({
+            ownedMediaId: id,
+            userId: actor,
+            action: OwnedMediaReviewAction.APPROVED_PUBLIC_SITE,
+            fromSnapshot: { approvedForPublicSite: false },
+            toSnapshot: { approvedForPublicSite: true },
+            note: "Bulk: public site on",
+          });
+        }
+        break;
+      }
+      case "site_off": {
+        if (row.approvedForPublicSite) {
+          await prisma.ownedMediaAsset.update({ where: { id }, data: { approvedForPublicSite: false } });
+          await appendOwnedMediaReviewLog({
+            ownedMediaId: id,
+            userId: actor,
+            action: OwnedMediaReviewAction.APPROVED_PUBLIC_SITE,
+            fromSnapshot: { approvedForPublicSite: true },
+            toSnapshot: { approvedForPublicSite: false },
+            note: "Bulk: public site off",
+          });
+        }
+        break;
+      }
+      case "mark_reviewed": {
+        if (!row.reviewedAt) {
+          await prisma.ownedMediaAsset.update({
+            where: { id },
+            data: { reviewedAt: new Date(), reviewedByUserId: actor },
+          });
+          await appendOwnedMediaReviewLog({
+            ownedMediaId: id,
+            userId: actor,
+            action: OwnedMediaReviewAction.MARK_REVIEWED,
+            fromSnapshot: { reviewedAt: null, reviewedByUserId: null },
+            toSnapshot: { reviewedAt: new Date().toISOString(), reviewedByUserId: actor },
+            note: "Bulk: mark reviewed",
+          });
+        }
+        break;
+      }
+      case "clear_reviewed": {
+        if (row.reviewedAt) {
+          await prisma.ownedMediaAsset.update({
+            where: { id },
+            data: { reviewedAt: null, reviewedByUserId: null },
+          });
+          await appendOwnedMediaReviewLog({
+            ownedMediaId: id,
+            userId: actor,
+            action: OwnedMediaReviewAction.CLEAR_REVIEWED,
+            fromSnapshot: {
+              reviewedAt: row.reviewedAt.toISOString(),
+              reviewedByUserId: row.reviewedByUserId,
+            },
+            toSnapshot: { reviewedAt: null, reviewedByUserId: null },
+            note: "Bulk: clear reviewed",
+          });
+        }
+        break;
+      }
+      case "clear_pick_and_color": {
+        const touched =
+          row.pickStatus !== OwnedMediaPickStatus.UNRATED || row.colorLabel !== OwnedMediaColorLabel.NONE;
+        if (touched) {
+          await prisma.ownedMediaAsset.update({
+            where: { id },
+            data: { pickStatus: OwnedMediaPickStatus.UNRATED, colorLabel: OwnedMediaColorLabel.NONE },
+          });
+          if (row.pickStatus !== OwnedMediaPickStatus.UNRATED) {
+            await appendOwnedMediaReviewLog({
+              ownedMediaId: id,
+              userId: actor,
+              action: OwnedMediaReviewAction.PICK_STATUS,
+              fromSnapshot: { pickStatus: row.pickStatus },
+              toSnapshot: { pickStatus: OwnedMediaPickStatus.UNRATED },
+              note: "Bulk: clear pick",
+            });
+          }
+          if (row.colorLabel !== OwnedMediaColorLabel.NONE) {
+            await appendOwnedMediaReviewLog({
+              ownedMediaId: id,
+              userId: actor,
+              action: OwnedMediaReviewAction.COLOR_LABEL,
+              fromSnapshot: { colorLabel: row.colorLabel },
+              toSnapshot: { colorLabel: OwnedMediaColorLabel.NONE },
+              note: "Bulk: clear color",
+            });
+          }
+        }
+        break;
+      }
+      case "add_to_collection": {
+        const collectionId = parsed.data.collectionId!;
+        const col = await prisma.ownedMediaCollection.findUnique({
+          where: { id: collectionId },
+          select: { name: true },
+        });
+        const already = await prisma.ownedMediaCollectionItem.findUnique({
+          where: { collectionId_ownedMediaId: { collectionId, ownedMediaId: id } },
+          select: { id: true },
+        });
+        await prisma.ownedMediaCollectionItem.upsert({
+          where: { collectionId_ownedMediaId: { collectionId, ownedMediaId: id } },
+          create: { collectionId, ownedMediaId: id },
+          update: {},
+        });
+        if (!already) {
+          await appendOwnedMediaReviewLog({
+            ownedMediaId: id,
+            userId: actor,
+            action: OwnedMediaReviewAction.COLLECTION_ADD,
+            toSnapshot: { collectionId, collectionName: col?.name ?? null },
+            note: col?.name ? `Bulk: add to “${col.name}”` : "Bulk: add to collection",
+          });
+        }
+        break;
+      }
+      default:
+        break;
+    }
+  }
+
+  revalidatePath(MC_PATH);
+  revalidatePath("/admin/owned-campaign-library");
+  redirect(safeReturn);
 }

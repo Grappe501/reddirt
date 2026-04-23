@@ -2,9 +2,11 @@
 
 import { revalidatePath } from "next/cache";
 import {
+  AnalyticsRecommendationOutcomeStatus,
   CampaignTaskPriority,
   CampaignTaskStatus,
   CampaignTaskType,
+  Prisma,
   SocialContentKind,
   SocialContentStatus,
   SocialMessageTacticMode,
@@ -13,7 +15,9 @@ import {
   SocialPlatform,
   SocialStrategicFollowupType,
   SocialVariantStatus,
+  WorkflowIntakeStatus,
 } from "@prisma/client";
+import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { requireAdminAction } from "@/app/admin/owned-media-auth";
 import { getAdminActorUserId } from "@/lib/admin/actor";
@@ -26,6 +30,16 @@ import {
 } from "@/lib/social/social-analytics-aggregates";
 import { computeMeaningfulEngagementScore100 } from "@/lib/social/engagement-score";
 import { parseDatetimeLocalToUtc } from "@/lib/social/date-input";
+import {
+  buildAnalyticsProvenancePayload,
+  createWorkflowIntakeFromAnalyticsInputSchema,
+  parseSocialAnalyticsAggregates,
+} from "@/lib/social/analytics-recommendation-provenance";
+import {
+  evaluateAnalyticsRecommendationOutcome,
+  outcomeJsonFromEvaluation,
+} from "@/lib/social/analytics-recommendation-evaluation";
+import { registerAnalyticFollowUpDraftOutcome } from "@/lib/social/analytics-recommendation-outcome-helpers";
 import type { SocialContentWorkbenchDetail } from "@/lib/social/social-workbench-dto";
 
 const KINDS = new Set<string>(Object.values(SocialContentKind));
@@ -780,7 +794,7 @@ export async function createAnalyticFollowUpWorkItemAction(formData: FormData): 
       title: true,
       campaignEventId: true,
       messageToneMode: true,
-      strategicInsight: { select: { recommendedNextTone: true } },
+      strategicInsight: { select: { recommendedNextTone: true, confidenceScore: true } },
     },
   });
   if (!source) return { ok: false, error: "Source work item not found." };
@@ -816,6 +830,20 @@ export async function createAnalyticFollowUpWorkItemAction(formData: FormData): 
       createdByUserId: actor,
     },
   });
+  try {
+    await registerAnalyticFollowUpDraftOutcome({
+      sourceSocialContentItemId: sourceId,
+      createdSocialContentItemId: row.id,
+      template,
+      title,
+      kind,
+      tone: tone,
+      campaignEventId: source.campaignEventId,
+      confidence: source.strategicInsight?.confidenceScore ?? null,
+    });
+  } catch (e) {
+    console.error("registerAnalyticFollowUpDraftOutcome failed (draft still created):", e);
+  }
   revalidatePath("/admin/workbench/social");
   revalidatePath("/admin/workbench");
   return { ok: true, id: row.id };
@@ -859,4 +887,279 @@ export async function createEventPromoFromAnalytics(formData: FormData): Promise
 export async function createPostEventRecapFromAnalytics(formData: FormData): Promise<AnalyticFollowUpResult> {
   const id = String(formData.get("sourceSocialContentItemId") ?? "").trim();
   return createAnalyticFollowUpWorkItemAction(formWithTemplate(id, "post_event_recap"));
+}
+
+export type CreateWorkflowIntakeFromAnalyticsResult =
+  | { ok: true; workflowIntakeId: string; outcomeId: string }
+  | { ok: false; error: string };
+
+/**
+ * Creates a `WorkflowIntake` from the analytics panel with full provenance on `metadata.analyticsProvenance`
+ * and a linked `AnalyticsRecommendationOutcome` (INTAKE_CREATED).
+ */
+export async function createWorkflowIntakeFromAnalyticsAction(
+  input: unknown
+): Promise<CreateWorkflowIntakeFromAnalyticsResult> {
+  await requireAdminAction();
+  const parsed = createWorkflowIntakeFromAnalyticsInputSchema.safeParse(input);
+  if (!parsed.success) {
+    return { ok: false, error: parsed.error.issues.map((i) => i.message).join(" · ") || "Invalid request." };
+  }
+  const p = parsed.data;
+  let aggregate: ReturnType<typeof parseSocialAnalyticsAggregates>;
+  try {
+    aggregate = parseSocialAnalyticsAggregates(p.aggregateContext);
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : "Invalid aggregateContext." };
+  }
+  const source = await prisma.socialContentItem.findUnique({
+    where: { id: p.sourceSocialContentItemId },
+    select: { id: true, campaignEventId: true, kind: true, messageToneMode: true },
+  });
+  if (!source) {
+    return { ok: false, error: "Source work item not found." };
+  }
+  const prov = buildAnalyticsProvenancePayload({
+    recommendationType: p.recommendationType,
+    headline: p.headline,
+    confidence: p.confidence,
+    reasoning: p.reasoning,
+    dateRange: { start: new Date(p.dateRange.start), end: new Date(p.dateRange.end) },
+    aggregate,
+    platform: p.platform ?? null,
+    contentKind: p.contentKind ?? source.kind,
+    toneMode: p.toneMode ?? source.messageToneMode,
+    eventId: p.eventId ?? source.campaignEventId,
+    sourceSocialContentItemId: p.sourceSocialContentItemId,
+    heuristicVersion: p.heuristicVersion,
+  });
+  const summary = typeof p.reasoning === "string" ? p.reasoning : JSON.stringify(p.reasoning, null, 2);
+  const title = p.headline.length > 200 ? `${p.headline.slice(0, 197)}…` : p.headline;
+  const metadata: Prisma.JsonObject = {
+    source: "analytics",
+    requestSummary: summary.slice(0, 20_000),
+    analyticsProvenance: prov as unknown as Prisma.JsonValue,
+  };
+  try {
+    const out = await prisma.$transaction(async (tx) => {
+      const intake = await tx.workflowIntake.create({
+        data: {
+          title,
+          source: "analytics",
+          status: WorkflowIntakeStatus.PENDING,
+          metadata,
+        },
+      });
+      const outcome = await tx.analyticsRecommendationOutcome.create({
+        data: {
+          source: "analytics",
+          recommendationType: p.recommendationType,
+          headline: p.headline,
+          confidence: p.confidence,
+          heuristicVersion: prov.heuristicVersion,
+          status: AnalyticsRecommendationOutcomeStatus.INTAKE_CREATED,
+          dateRangeStart: new Date(p.dateRange.start),
+          dateRangeEnd: new Date(p.dateRange.end),
+          platform: p.platform,
+          contentKind: p.contentKind ?? source.kind,
+          toneMode: p.toneMode ?? source.messageToneMode,
+          eventId: p.eventId ?? source.campaignEventId,
+          sourceSocialContentItemId: p.sourceSocialContentItemId,
+          provenanceJson: prov as unknown as Prisma.JsonObject,
+          createdWorkflowIntakeId: intake.id,
+        },
+      });
+      return { workflowIntakeId: intake.id, outcomeId: outcome.id };
+    });
+    revalidatePath("/admin/workbench/social");
+    revalidatePath("/admin/workbench");
+    return { ok: true, ...out };
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : "Could not create workflow intake." };
+  }
+}
+
+export type AnalyticsOutcomeListItem = {
+  id: string;
+  status: (typeof AnalyticsRecommendationOutcomeStatus)[keyof typeof AnalyticsRecommendationOutcomeStatus];
+  recommendationType: string;
+  headline: string;
+  confidence: number | null;
+  createdAt: string;
+  evaluatedAt: string | null;
+  createdWorkflowIntakeId: string | null;
+  createdSocialContentItemId: string | null;
+  outcomeLabel: string | null;
+};
+
+export type ListAnalyticsOutcomesForSourceResult =
+  | { ok: true; items: AnalyticsOutcomeListItem[] }
+  | { ok: false; error: string };
+
+function outcomeLabelFromJson(
+  o: { classification?: string; reason?: string } | null
+): string | null {
+  if (!o || typeof o !== "object") return null;
+  if (o.classification && o.reason) return `${o.classification}: ${o.reason.slice(0, 120)}`;
+  if (o.classification) return o.classification;
+  return null;
+}
+
+export async function listAnalyticsRecommendationOutcomesForSourceAction(
+  socialContentItemId: string
+): Promise<ListAnalyticsOutcomesForSourceResult> {
+  await requireAdminAction();
+  const id = String(socialContentItemId ?? "").trim();
+  if (!id) {
+    return { ok: false, error: "Missing work item id." };
+  }
+  const rows = await prisma.analyticsRecommendationOutcome.findMany({
+    where: { sourceSocialContentItemId: id },
+    orderBy: { createdAt: "desc" },
+    take: 15,
+    select: {
+      id: true,
+      status: true,
+      recommendationType: true,
+      headline: true,
+      confidence: true,
+      createdAt: true,
+      evaluatedAt: true,
+      createdWorkflowIntakeId: true,
+      createdSocialContentItemId: true,
+      outcomeJson: true,
+    },
+  });
+  const items: AnalyticsOutcomeListItem[] = rows.map((r) => {
+    const oj = r.outcomeJson as { classification?: string; reason?: string } | null;
+    return {
+      id: r.id,
+      status: r.status,
+      recommendationType: r.recommendationType,
+      headline: r.headline,
+      confidence: r.confidence,
+      createdAt: r.createdAt.toISOString(),
+      evaluatedAt: r.evaluatedAt ? r.evaluatedAt.toISOString() : null,
+      createdWorkflowIntakeId: r.createdWorkflowIntakeId,
+      createdSocialContentItemId: r.createdSocialContentItemId,
+      outcomeLabel: outcomeLabelFromJson(oj),
+    };
+  });
+  return { ok: true, items };
+}
+
+export type EvaluateAnalyticsOutcomeResult =
+  | { ok: true; outcomeId: string; classification: string; reason: string }
+  | { ok: false; error: string };
+
+export async function evaluateAnalyticsRecommendationOutcomeAction(
+  outcomeId: string
+): Promise<EvaluateAnalyticsOutcomeResult> {
+  await requireAdminAction();
+  const id = String(outcomeId ?? "").trim();
+  if (!id) {
+    return { ok: false, error: "Missing outcome id." };
+  }
+  const ev = await evaluateAnalyticsRecommendationOutcome(id);
+  if (!ev.ok) {
+    return { ok: false, error: ev.error };
+  }
+  const j = outcomeJsonFromEvaluation(ev.result);
+  const current = await prisma.analyticsRecommendationOutcome.findUnique({
+    where: { id: ev.outcomeId },
+    select: { executedSocialContentItemId: true },
+  });
+  const fillExecuted =
+    !current?.executedSocialContentItemId && ev.result.resolvedSocialContentItemId
+      ? { executedSocialContentItemId: ev.result.resolvedSocialContentItemId }
+      : {};
+  await prisma.analyticsRecommendationOutcome.update({
+    where: { id: ev.outcomeId },
+    data: {
+      status: AnalyticsRecommendationOutcomeStatus.EVALUATED,
+      evaluatedAt: new Date(),
+      outcomeJson: j,
+      ...fillExecuted,
+    },
+  });
+  revalidatePath("/admin/workbench/social");
+  revalidatePath("/admin/workbench");
+  return {
+    ok: true,
+    outcomeId: ev.outcomeId,
+    classification: ev.result.classification,
+    reason: ev.result.reason,
+  };
+}
+
+export type EvaluateBatchAnalyticsOutcomesResult =
+  | { ok: true; outcomeIds: string[]; failed: { id: string; error: string }[] }
+  | { ok: false; error: string };
+
+/**
+ * Re-evaluate outcomes that are not yet `EVALUATED` and have a published primary work item to score.
+ */
+export async function evaluateEligibleAnalyticsRecommendationOutcomesAction(
+  _unused?: unknown
+): Promise<EvaluateBatchAnalyticsOutcomesResult> {
+  await requireAdminAction();
+  const candidates = await prisma.analyticsRecommendationOutcome.findMany({
+    where: {
+      status: { in: [AnalyticsRecommendationOutcomeStatus.DRAFT_CREATED, AnalyticsRecommendationOutcomeStatus.INTAKE_CREATED] },
+      evaluatedAt: null,
+      OR: [
+        { executedSocialContentItemId: { not: null } },
+        { createdSocialContentItem: { status: SocialContentStatus.PUBLISHED } },
+      ],
+    },
+    select: { id: true },
+    take: 40,
+  });
+  const failed: { id: string; error: string }[] = [];
+  const okIds: string[] = [];
+  for (const c of candidates) {
+    const r = await evaluateAnalyticsRecommendationOutcomeAction(c.id);
+    if (r.ok) {
+      okIds.push(r.outcomeId);
+    } else {
+      failed.push({ id: c.id, error: r.error });
+    }
+  }
+  return { ok: true, outcomeIds: okIds, failed };
+}
+
+export type LinkExecutedAnalyticsOutcomeResult = { ok: true } | { ok: false; error: string };
+
+/** Optional: tie an outcome to a different published work item for evaluation (e.g. intake produced a new row). */
+export async function linkAnalyticsRecommendationExecutedContentAction(
+  input: unknown
+): Promise<LinkExecutedAnalyticsOutcomeResult> {
+  await requireAdminAction();
+  const s = z
+    .object({
+      outcomeId: z.string().min(1),
+      socialContentItemId: z.string().min(1),
+    })
+    .safeParse(input);
+  if (!s.success) {
+    return { ok: false, error: "Invalid request." };
+  }
+  const exists = await prisma.socialContentItem.findUnique({ where: { id: s.data.socialContentItemId }, select: { id: true } });
+  if (!exists) {
+    return { ok: false, error: "Work item not found." };
+  }
+  try {
+    await prisma.analyticsRecommendationOutcome.update({
+      where: { id: s.data.outcomeId },
+      data: {
+        executedSocialContentItemId: s.data.socialContentItemId,
+        status: AnalyticsRecommendationOutcomeStatus.EXECUTED,
+      },
+    });
+  } catch {
+    return { ok: false, error: "Could not link outcome to work item." };
+  }
+  revalidatePath("/admin/workbench/social");
+  revalidatePath("/admin/workbench");
+  return { ok: true };
 }

@@ -166,6 +166,17 @@ enum EventRequestStatus {
   CANCELLED
 }
 
+/// Lifecycle for analytics-originated recommendations and downstream work / evaluation.
+enum AnalyticsRecommendationOutcomeStatus {
+  GENERATED
+  DRAFT_CREATED
+  INTAKE_CREATED
+  EXECUTED
+  EVALUATED
+  DISMISSED
+  EXPIRED
+}
+
 /// Master queue row for intakes; links optional `Submission` and optional 1:1 `EventRequest`.
 model WorkflowIntake {
   id             String               @id @default(cuid())
@@ -191,6 +202,8 @@ model WorkflowIntake {
   socialContentItems        SocialContentItem[]
   /// Routed from public conversation opportunities (action spine).
   conversationOpportunities ConversationOpportunity[] @relation("OppWorkflowIntake")
+  /// When this intake was created from social analytics (one-to-one from outcome).
+  analyticsRecommendationOutcome AnalyticsRecommendationOutcome?
 
   @@index([status, createdAt])
   @@index([assignedUserId, status])
@@ -370,6 +383,12 @@ model SocialContentItem {
   conversationOpportunitiesAsSocial ConversationOpportunity[]      @relation("OppSocialContentItem")
   /// Author Studio — saved compose alternates and applied-master snapshots.
   drafts                            SocialContentDraft[]
+  /// Analytics workbench: recommendations attributed to this work item.
+  analyticsRecommendationOutcomesSourced  AnalyticsRecommendationOutcome[] @relation("ArOutcomeSource")
+  /// This draft/post was created as a follow-up from an analytics recommendation.
+  analyticsRecommendationOutcomeAsCreated   AnalyticsRecommendationOutcome?  @relation("ArOutcomeCreated")
+  /// Published (or final) post used to measure an analytics-originated outcome.
+  analyticsRecommendationOutcomesAsExecuted AnalyticsRecommendationOutcome[] @relation("ArOutcomeExecuted")
 
   @@index([workflowIntakeId, status])
   @@index([campaignEventId, status])
@@ -377,6 +396,51 @@ model SocialContentItem {
   @@index([messageToneMode, kind, updatedAt])
   @@index([messageTacticMode, kind, updatedAt])
   @@index([createdByUserId])
+}
+
+/// Durable record for a single analytics recommendation instance, linked artifacts, and optional evaluation.
+model AnalyticsRecommendationOutcome {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  source             String  @default("analytics")
+  recommendationType String
+  headline           String  @db.Text
+  confidence         Float?
+  heuristicVersion   String  @default("v1")
+
+  status AnalyticsRecommendationOutcomeStatus @default(GENERATED)
+
+  dateRangeStart DateTime
+  dateRangeEnd   DateTime
+
+  platform    SocialPlatform?
+  contentKind SocialContentKind?
+  toneMode    SocialMessageToneMode?
+  eventId     String?
+
+  sourceSocialContentItemId String?
+  sourceSocialContentItem  SocialContentItem? @relation("ArOutcomeSource", fields: [sourceSocialContentItemId], references: [id], onDelete: SetNull)
+
+  provenanceJson Json @default("{}")
+
+  createdSocialContentItemId String?            @unique
+  createdSocialContentItem   SocialContentItem? @relation("ArOutcomeCreated", fields: [createdSocialContentItemId], references: [id], onDelete: SetNull)
+
+  createdWorkflowIntakeId String?            @unique
+  createdWorkflowIntake     WorkflowIntake? @relation(fields: [createdWorkflowIntakeId], references: [id], onDelete: SetNull)
+
+  executedSocialContentItemId String?
+  executedSocialContentItem   SocialContentItem? @relation("ArOutcomeExecuted", fields: [executedSocialContentItemId], references: [id], onDelete: SetNull)
+
+  evaluatedAt DateTime?
+  outcomeJson Json?
+  notes       String? @db.Text
+
+  @@index([sourceSocialContentItemId, createdAt])
+  @@index([status, createdAt])
+  @@index([recommendationType, createdAt])
 }
 
 /// Saved Author Studio compose output for a work item (reuse, audit, optional “applied” marker).

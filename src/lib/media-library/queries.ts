@@ -1,9 +1,19 @@
 import type { Prisma } from "@prisma/client";
-import { OwnedMediaKind, OwnedMediaSourceType } from "@prisma/client";
+import {
+  OwnedMediaDerivativeJobStatus,
+  OwnedMediaKind,
+  OwnedMediaSourceType,
+} from "@prisma/client";
 import { prisma } from "@/lib/db";
 import type { MediaLibraryListFilters } from "./types";
 import { ownedMediaPreviewUrl } from "./public-urls";
-import type { MediaLibraryListItem, MediaLibraryListResult, MediaRefListItem } from "./dto";
+import type {
+  MediaLibraryInspectDetail,
+  MediaLibraryDerivativeJobSummary,
+  MediaLibraryListItem,
+  MediaLibraryListResult,
+  MediaRefListItem,
+} from "./dto";
 
 export type { MediaLibraryListFilters } from "./types";
 
@@ -43,6 +53,7 @@ function mapRow(
     rootAssetId: a.rootAssetId ?? null,
     reviewedAt: a.reviewedAt ? a.reviewedAt.toISOString() : null,
     reviewNotes: a.reviewNotes ?? null,
+    staffReviewNotes: a.staffReviewNotes ?? null,
     rating: a.rating ?? null,
     pickStatus: a.pickStatus,
     colorLabel: a.colorLabel,
@@ -54,8 +65,31 @@ function mapRow(
   };
 }
 
+function mapDerivativeJobRow(r: {
+  id: string;
+  targetDerivativeType: MediaLibraryDerivativeJobSummary["targetDerivativeType"];
+  status: MediaLibraryDerivativeJobSummary["status"];
+  createdAt: Date;
+  updatedAt: Date;
+  startedAt: Date | null;
+  finishedAt: Date | null;
+  lastError: string | null;
+}): MediaLibraryDerivativeJobSummary {
+  return {
+    id: r.id,
+    targetDerivativeType: r.targetDerivativeType,
+    status: r.status,
+    createdAt: r.createdAt.toISOString(),
+    updatedAt: r.updatedAt.toISOString(),
+    startedAt: r.startedAt ? r.startedAt.toISOString() : null,
+    finishedAt: r.finishedAt ? r.finishedAt.toISOString() : null,
+    lastError: r.lastError ?? null,
+  };
+}
+
 function buildWhere(f: MediaLibraryListFilters): Prisma.OwnedMediaAssetWhereInput {
   const w: Prisma.OwnedMediaAssetWhereInput = {};
+  const andExtras: Prisma.OwnedMediaAssetWhereInput[] = [];
   if (f.issueTag) w.issueTags = { has: f.issueTag };
   if (f.q && f.q.trim()) {
     const q = f.q.trim();
@@ -103,6 +137,46 @@ function buildWhere(f: MediaLibraryListFilters): Prisma.OwnedMediaAssetWhereInpu
   if (f.isUnreviewed) {
     w.pickStatus = "UNRATED";
     if (f.approvedForSocial == null) w.approvedForSocial = false;
+  }
+  if (f.needsPressApproval) w.approvedForPress = false;
+  if (f.needsPublicSiteApproval) w.approvedForPublicSite = false;
+  if (f.hasImportIssueSignals) {
+    w.importDuplicateNote = { not: null };
+  }
+  if (f.hasPendingDerivativeJobs) {
+    w.derivativeJobsPlanned = {
+      some: {
+        status: {
+          in: [
+            OwnedMediaDerivativeJobStatus.PLANNED,
+            OwnedMediaDerivativeJobStatus.QUEUED,
+            OwnedMediaDerivativeJobStatus.RUNNING,
+          ],
+        },
+      },
+    };
+  }
+  if (f.videoMissingTranscript) {
+    andExtras.push({ kind: OwnedMediaKind.VIDEO, transcripts: { none: {} } });
+  }
+  if (f.lowRatedPicks) {
+    andExtras.push({
+      pickStatus: "PICK",
+      OR: [{ rating: { lte: 2 } }, { rating: null }],
+    });
+  }
+  if (f.reviewedWithoutAnyApproval) {
+    andExtras.push({
+      reviewedAt: { not: null },
+      approvedForSocial: false,
+      approvedForPress: false,
+      approvedForPublicSite: false,
+    });
+  }
+  if (andExtras.length) {
+    const existing = w.AND;
+    const merged = [...(Array.isArray(existing) ? existing : existing ? [existing] : []), ...andExtras];
+    w.AND = merged;
   }
   return w;
 }
@@ -153,6 +227,39 @@ export async function getMediaLibraryRowById(id: string): Promise<MediaLibraryLi
     const a = await prisma.ownedMediaAsset.findUnique({ where: { id }, include: listInclude });
     if (!a) return null;
     return mapRow(a);
+  } catch {
+    return null;
+  }
+}
+
+const inspectDerivativeSelect = {
+  id: true,
+  targetDerivativeType: true,
+  status: true,
+  createdAt: true,
+  updatedAt: true,
+  startedAt: true,
+  finishedAt: true,
+  lastError: true,
+} as const;
+
+export async function getMediaLibraryInspectDetail(id: string): Promise<MediaLibraryInspectDetail | null> {
+  if (!id) return null;
+  try {
+    const a = await prisma.ownedMediaAsset.findUnique({
+      where: { id },
+      include: {
+        ...listInclude,
+        derivativeJobsPlanned: { orderBy: { updatedAt: "desc" }, select: inspectDerivativeSelect },
+      },
+    });
+    if (!a) return null;
+    const { derivativeJobsPlanned, ...rest } = a;
+    const row = mapRow(rest as Prisma.OwnedMediaAssetGetPayload<{ include: typeof listInclude }>);
+    return {
+      ...row,
+      derivativeJobs: derivativeJobsPlanned.map(mapDerivativeJobRow),
+    };
   } catch {
     return null;
   }

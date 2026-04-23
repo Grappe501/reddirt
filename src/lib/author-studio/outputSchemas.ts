@@ -6,7 +6,7 @@
  * - Use `mode: "preview"` to return the same `produces` + `data` without Prisma writes; `mode: "apply"` (default) runs persistence.
  * - `context` + `input` (see `authorStudioRequestBody.ts`) are merged to legacy flat fields before validation; TODO: migrate remaining 8 routes to the same shell.
  * - `SocialContentItem.bodyCopy` — `compose/*` (via `persistenceIntent` + legacy `mode` / `applyToWorkItem`) and platform-pack `applyMasterToWorkItem` (when `mode === "apply"`).
- * - `SocialContentDraft` — `compose/*` with `persistenceIntent: "save_draft"` (optional `draftTitle`); structured `persistence` echo on `draft_set` `data` when not preview.
+ * - `SocialContentDraft` — `compose/*` with `persistenceIntent: "save_draft" | "save_alternate"` (optional `draftTitle`); structured `persistence` echo on `draft_set` `data` when not preview.
  * - `SocialPlatformVariant` — `transform/platform-pack` with `persistVariants` when `mode === "apply"`.
  * - `CampaignTask` — `package/create-tasks` when `mode === "apply"`.
  */
@@ -40,13 +40,14 @@ const composePersistenceIntentSchema = z.enum([
   "apply_to_master",
   "replace_master",
   "save_draft",
+  "save_alternate",
 ]);
 
 const composeDraftRequestBaseSchema = authorStudioRequestEnvelopeSchema.extend({
   mode: z.enum(["preview", "apply"]).default("apply"),
   /** When set, drives DB writes; legacy `mode` + `applyToWorkItem` are still honored via server resolution. */
   persistenceIntent: composePersistenceIntentSchema.optional(),
-  /** Optional label when `persistenceIntent` is `save_draft`. */
+  /** Optional label when `persistenceIntent` is `save_draft` or `save_alternate`. */
   draftTitle: z.string().max(240).optional(),
   /** Matches UI and server heuristics (`style_transform`, `persist_brief`, `from_brief`, etc.). */
   intent: z.string().min(1).default("from_brief"),

@@ -623,7 +623,7 @@ export function MasterAuthorTabPanels({
                     intent: "from_brief",
                     brief: briefForCompose,
                     compose: { master: compose.master },
-                    persistenceIntent: "save_draft",
+                    persistenceIntent: "save_alternate",
                     draftTitle: studioDraftLabel.trim() || "Alternate draft",
                   },
                   "apply"
@@ -637,10 +637,10 @@ export function MasterAuthorTabPanels({
               variant="ghost"
               className="text-xs text-slate-500"
               type="button"
-              onClick={() => saveAsAlternateDraft(compose.master, studioDraftLabel.trim() || "Local alternate")}
-              title="Local session only; use “Save as alternate draft” to persist to the work item"
+              onClick={() => saveAsAlternateDraft(compose.master, studioDraftLabel.trim() || "Local compare row")}
+              title="Adds a row to the list below for side-by-side compare; not stored in the database"
             >
-              Local alternate only
+              Session-only compare row
             </UiButton>
           </div>
           {compose.compareMode ? (
@@ -669,26 +669,19 @@ export function MasterAuthorTabPanels({
             </div>
           )}
           <div>
-            <span className={lab}>Alternate drafts</span>
-            <ul className="space-y-2">
-              {compose.alternates.map((d) => (
-                <li key={d.id} className="rounded-xl border border-slate-200 bg-white p-2">
-                  <div className="mb-1 flex items-center justify-between text-xs">
-                    <UiBadge>{d.label}</UiBadge>
-                    <span className="text-slate-400">{d.createdAt}</span>
-                  </div>
-                  <p className="text-sm text-slate-700">{d.body}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-          {persistedContentDrafts.length > 0 ? (
-            <div>
-              <span className={lab}>Saved drafts (work item)</span>
-              <p className="mb-2 text-[10px] text-slate-500">
-                Use in editor loads text only. Apply as master runs compose/draft with <code className="text-[9px]">selectedContentDraftId</code> (server applies
-                that copy to <code className="text-[9px]">bodyCopy</code>).
+            <span className={lab}>Saved drafts (work item)</span>
+            <p className="mb-2 text-[10px] text-slate-500">
+              Persisted <code className="text-[9px]">SocialContentDraft</code> rows — refetched with workbench after save. Preview runs compose/draft in preview
+              mode with <code className="text-[9px]">selectedContentDraftId</code> (validates the row and returns a fresh <code className="text-[9px]">draft_set</code>
+              without writing the master).
+            </p>
+            {!socialContentItemId ? (
+              <p className="text-xs text-amber-800/90">Select a queue item to save and list server drafts for that work item.</p>
+            ) : persistedContentDrafts.length === 0 ? (
+              <p className="rounded-lg border border-dashed border-slate-200 bg-slate-50/80 px-3 py-2 text-xs text-slate-600">
+                No saved drafts yet. Use &quot;Save as alternate draft&quot; (compose) or &quot;Save rewrite as draft&quot; (rewrite) to persist.
               </p>
+            ) : (
               <ul className="space-y-2">
                 {persistedContentDrafts.map((d) => (
                   <li key={d.id} className="rounded-xl border border-emerald-200/80 bg-emerald-50/40 p-2">
@@ -722,6 +715,30 @@ export function MasterAuthorTabPanels({
                       </UiButton>
                       <UiButton
                         size="sm"
+                        variant="outline"
+                        className="h-7 text-[10px]"
+                        type="button"
+                        disabled={actionPending || !socialContentItemId}
+                        onClick={() =>
+                          void runBackendAction(
+                            "composeDraft",
+                            "Preview saved draft (draft_set)",
+                            {
+                              intent: "from_brief",
+                              brief: briefForCompose,
+                              compose: { master: d.bodyCopy },
+                              selectedContentDraftId: d.id,
+                              persistenceIntent: "preview",
+                            },
+                            "preview"
+                          )
+                        }
+                        title="Server loads this draft and returns a preview draft_set (no DB write)"
+                      >
+                        Preview saved draft
+                      </UiButton>
+                      <UiButton
+                        size="sm"
                         variant="default"
                         className="h-7 text-[10px]"
                         disabled={actionPending || !socialContentItemId}
@@ -739,7 +756,7 @@ export function MasterAuthorTabPanels({
                             "apply"
                           )
                         }
-                        title="POST compose/draft: apply_to_master with selectedContentDraftId"
+                        title="Applies this saved copy to bodyCopy via compose/draft (selectedContentDraftId)"
                       >
                         Apply as master
                       </UiButton>
@@ -747,8 +764,23 @@ export function MasterAuthorTabPanels({
                   </li>
                 ))}
               </ul>
-            </div>
-          ) : null}
+            )}
+          </div>
+          <div>
+            <span className={lab}>Alternate blocks (this session, last response)</span>
+            <p className="mb-1 text-[10px] text-slate-500">From the most recent <code className="text-[9px]">draft_set</code> (preview or apply). For durable alternates, use saved drafts above.</p>
+            <ul className="space-y-2">
+              {compose.alternates.map((d) => (
+                <li key={d.id} className="rounded-xl border border-slate-200 bg-white p-2">
+                  <div className="mb-1 flex items-center justify-between text-xs">
+                    <UiBadge>{d.label}</UiBadge>
+                    <span className="text-slate-400">{d.createdAt}</span>
+                  </div>
+                  <p className="text-sm text-slate-700">{d.body}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
           <div>
             <span className={lab}>Quick style (preview only — use Apply to master / Save as alternate draft to persist)</span>
             <div className="mt-1 flex flex-wrap gap-1">

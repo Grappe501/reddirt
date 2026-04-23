@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { socialEnumLabel } from "@/lib/social/enum-labels";
 import { ownedMediaPreviewUrl } from "@/lib/media-library/public-urls";
-import type { MediaLibraryListItem } from "@/lib/media-library/dto";
+import type { MediaLibraryInspectDetail } from "@/lib/media-library/dto";
 import { MediaCenterWorkbenchAttach } from "@/components/admin/owned-media/media-center-workbench-attach";
 import {
   addOwnedMediaToCollectionAction,
@@ -12,7 +12,7 @@ import {
 type Col = { id: string; name: string; isSmart: boolean };
 
 type Props = {
-  asset: MediaLibraryListItem | null;
+  asset: MediaLibraryInspectDetail | null;
   missing?: boolean;
   /** For collection membership control */
   collections: Col[];
@@ -157,6 +157,16 @@ export function MediaCenterInspector({ asset, missing, collections }: Props) {
             placeholder="Short triage / handoff"
           />
         </label>
+        <label className="block text-[10px] text-deep-soil/70">
+          Staff review notes
+          <textarea
+            name="staffReviewNotes"
+            defaultValue={asset.staffReviewNotes ?? ""}
+            rows={3}
+            className="mt-0.5 w-full rounded border border-deep-soil/15 bg-white px-1.5 py-1 text-xs"
+            placeholder="Internal DAM / comms notes"
+          />
+        </label>
         <button type="submit" className="w-full rounded-md bg-deep-soil py-1.5 text-xs font-semibold text-cream-canvas">
           Save triage
         </button>
@@ -242,6 +252,43 @@ export function MediaCenterInspector({ asset, missing, collections }: Props) {
         ) : null}
       </dl>
 
+      <div className="mt-3 border-t border-deep-soil/10 pt-3">
+        <h4 className="font-body text-[10px] font-bold uppercase tracking-wider text-deep-soil/50">Derivative jobs</h4>
+        {asset.derivativeJobs.length === 0 ? (
+          <p className="mt-1 text-[10px] text-deep-soil/50">
+            No queued jobs for this source asset. Workers will create rows here when rendering proxies and crops.
+          </p>
+        ) : (
+          <ul className="mt-1.5 space-y-1.5">
+            {asset.derivativeJobs.map((job) => (
+              <li
+                key={job.id}
+                className="rounded-md border border-deep-soil/10 bg-deep-soil/[0.02] px-2 py-1.5 text-[10px] text-deep-soil/85"
+              >
+                <div className="flex flex-wrap items-center justify-between gap-1">
+                  <span className="font-mono font-semibold">{socialEnumLabel(job.targetDerivativeType)}</span>
+                  <span className="rounded bg-deep-soil/10 px-1 font-mono text-[9px] uppercase">{job.status}</span>
+                </div>
+                <div className="mt-0.5 text-[9px] text-deep-soil/55">
+                  Updated {new Date(job.updatedAt).toLocaleString()}
+                  {job.startedAt ? ` · Started ${new Date(job.startedAt).toLocaleString()}` : ""}
+                  {job.finishedAt ? ` · Finished ${new Date(job.finishedAt).toLocaleString()}` : ""}
+                </div>
+                {job.lastError ? (
+                  <p className="mt-1 text-[9px] text-red-800/90" title={job.lastError}>
+                    {job.lastError.slice(0, 120)}
+                    {job.lastError.length > 120 ? "…" : ""}
+                  </p>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        )}
+        <p className="mt-2 text-[9px] text-deep-soil/45">
+          When jobs finish, child rows link back via parent asset id and derivative type on the asset record.
+        </p>
+      </div>
+
       <MediaCenterWorkbenchAttach
         ownedMediaId={asset.id}
         approvedForSocial={asset.approvedForSocial}
@@ -255,7 +302,6 @@ export function MediaCenterInspector({ asset, missing, collections }: Props) {
         >
           Open full detail
         </Link>
-        <p className="mt-2 text-[9px] text-deep-soil/45">TODO: one-click `OwnedMediaDerivativeJob` enqueue from here when workers land.</p>
       </div>
     </aside>
   );

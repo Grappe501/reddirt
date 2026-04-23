@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { OwnedMediaKind, OwnedMediaSourceType } from "@prisma/client";
+import { MediaCenterSelectAllOnPage } from "@/components/admin/owned-media/media-center-bulk";
 
 type BatchOpt = { id: string; label: string; started: string };
 type CountyOpt = { id: string; displayName: string };
@@ -29,6 +30,7 @@ type Props = {
   resultCount: number;
   extraPreserved?: Record<string, string | undefined>;
   communityTag: string;
+  pageAssetIds?: string[];
 };
 
 function buildSearchParams(
@@ -72,6 +74,7 @@ export function OwnedMediaGridToolbar(props: Props) {
     resultCount,
     extraPreserved,
     communityTag,
+    pageAssetIds = [],
   } = props;
   const base: Record<string, string | undefined> = {
     q: defaultQ || undefined,
@@ -97,6 +100,18 @@ export function OwnedMediaGridToolbar(props: Props) {
     fav: extraPreserved?.fav,
     collection: extraPreserved?.collection,
     color: extraPreserved?.color,
+    viewUnreviewed: extraPreserved?.viewUnreviewed,
+    viewFav: extraPreserved?.viewFav,
+    viewNeedPress: extraPreserved?.viewNeedPress,
+    viewNeedSite: extraPreserved?.viewNeedSite,
+    viewApPress: extraPreserved?.viewApPress,
+    viewApSite: extraPreserved?.viewApSite,
+    viewImport: extraPreserved?.viewImport,
+    viewDeriv: extraPreserved?.viewDeriv,
+    viewVidNoTr: extraPreserved?.viewVidNoTr,
+    viewLowPick: extraPreserved?.viewLowPick,
+    viewRevNoAp: extraPreserved?.viewRevNoAp,
+    viewPickQueue: extraPreserved?.viewPickQueue,
   };
 
   return (
@@ -288,15 +303,47 @@ export function OwnedMediaGridToolbar(props: Props) {
         {extraPreserved?.fav ? <input type="hidden" name="fav" value={extraPreserved.fav} /> : null}
         {extraPreserved?.collection ? <input type="hidden" name="collection" value={extraPreserved.collection} /> : null}
         {extraPreserved?.color ? <input type="hidden" name="color" value={extraPreserved.color} /> : null}
+        {extraPreserved?.viewUnreviewed ? (
+          <input type="hidden" name="viewUnreviewed" value={extraPreserved.viewUnreviewed} />
+        ) : null}
+        {extraPreserved?.viewFav ? <input type="hidden" name="viewFav" value={extraPreserved.viewFav} /> : null}
+        {extraPreserved?.viewNeedPress ? (
+          <input type="hidden" name="viewNeedPress" value={extraPreserved.viewNeedPress} />
+        ) : null}
+        {extraPreserved?.viewNeedSite ? (
+          <input type="hidden" name="viewNeedSite" value={extraPreserved.viewNeedSite} />
+        ) : null}
+        {extraPreserved?.viewApPress ? (
+          <input type="hidden" name="viewApPress" value={extraPreserved.viewApPress} />
+        ) : null}
+        {extraPreserved?.viewApSite ? (
+          <input type="hidden" name="viewApSite" value={extraPreserved.viewApSite} />
+        ) : null}
+        {extraPreserved?.viewImport ? (
+          <input type="hidden" name="viewImport" value={extraPreserved.viewImport} />
+        ) : null}
+        {extraPreserved?.viewDeriv ? (
+          <input type="hidden" name="viewDeriv" value={extraPreserved.viewDeriv} />
+        ) : null}
+        {extraPreserved?.viewVidNoTr ? (
+          <input type="hidden" name="viewVidNoTr" value={extraPreserved.viewVidNoTr} />
+        ) : null}
+        {extraPreserved?.viewLowPick ? (
+          <input type="hidden" name="viewLowPick" value={extraPreserved.viewLowPick} />
+        ) : null}
+        {extraPreserved?.viewRevNoAp ? (
+          <input type="hidden" name="viewRevNoAp" value={extraPreserved.viewRevNoAp} />
+        ) : null}
+        {extraPreserved?.viewPickQueue ? (
+          <input type="hidden" name="viewPickQueue" value={extraPreserved.viewPickQueue} />
+        ) : null}
         <button
           type="submit"
           className="rounded-md bg-deep-soil px-3 py-1.5 font-body text-sm font-semibold text-cream-canvas"
         >
           Apply
         </button>
-        <span className="self-center text-[10px] text-deep-soil/45" title="Batch actions: use grid selection + workbench for multi-asset ops (roadmap)">
-          TODO: batch triage
-        </span>
+        <MediaCenterSelectAllOnPage pageIds={pageAssetIds} />
       </form>
 
       <div className="flex flex-wrap items-center gap-2 text-deep-soil/70">

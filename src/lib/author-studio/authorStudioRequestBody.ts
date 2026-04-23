@@ -56,6 +56,16 @@ export function mergeAuthorStudioV2WithLegacy(raw: unknown): unknown {
     return raw;
   }
   const o = raw as Record<string, unknown>;
+  const asPersistence = new Set([
+    "preview",
+    "apply_to_master",
+    "replace_master",
+    "save_draft",
+    "save_alternate",
+  ]);
+  const rootIntentPersistence =
+    typeof o.intent === "string" && asPersistence.has(o.intent.trim()) ? o.intent.trim() : null;
+
   const out: Record<string, unknown> = { ...o };
 
   const ctx = o.context;
@@ -70,6 +80,13 @@ export function mergeAuthorStudioV2WithLegacy(raw: unknown): unknown {
     for (const [k, v] of Object.entries(o.input as Record<string, unknown>)) {
       out[k] = v;
     }
+  }
+
+  if (rootIntentPersistence != null && out.persistenceIntent == null) {
+    out.persistenceIntent = rootIntentPersistence;
+  }
+  if (typeof out.intent === "string" && asPersistence.has(out.intent.trim())) {
+    delete out.intent;
   }
   return out;
 }

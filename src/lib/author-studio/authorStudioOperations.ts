@@ -369,9 +369,8 @@ export async function saveSocialContentDraft(input: {
       socialContentItemId: input.socialContentItemId,
       bodyCopy: text,
       title: input.title?.trim() ? input.title.trim() : null,
-      // Prefer null in DB when optional (after migrate + generate); `""` keeps Prisma 5.x client happy if types lag.
-      sourceRoute: input.sourceRoute?.trim() ?? "",
-      sourceIntent: input.sourceIntent?.trim() ?? "",
+      sourceRoute: input.sourceRoute?.trim() || null,
+      sourceIntent: input.sourceIntent?.trim() || null,
       createdByUserId: input.createdByUserId ?? actor,
       isApplied: input.isApplied ?? false,
     },

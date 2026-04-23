@@ -1,5 +1,6 @@
 import type {
   OwnedMediaColorLabel,
+  OwnedMediaDerivativeJobStatus,
   OwnedMediaDerivativeType,
   OwnedMediaKind,
   OwnedMediaPickStatus,
@@ -37,6 +38,7 @@ export type MediaLibraryListItem = {
   rootAssetId: string | null;
   reviewedAt: string | null;
   reviewNotes: string | null;
+  staffReviewNotes: string | null;
   rating: number | null;
   pickStatus: OwnedMediaPickStatus;
   colorLabel: OwnedMediaColorLabel;
@@ -45,6 +47,22 @@ export type MediaLibraryListItem = {
   approvedForPublicSite: boolean;
   derivativeType: OwnedMediaDerivativeType;
   createdAt: string;
+};
+
+export type MediaLibraryDerivativeJobSummary = {
+  id: string;
+  targetDerivativeType: OwnedMediaDerivativeType;
+  status: OwnedMediaDerivativeJobStatus;
+  createdAt: string;
+  updatedAt: string;
+  startedAt: string | null;
+  finishedAt: string | null;
+  lastError: string | null;
+};
+
+/** Inspector: list row plus derivative queue rows for the asset (as source). */
+export type MediaLibraryInspectDetail = MediaLibraryListItem & {
+  derivativeJobs: MediaLibraryDerivativeJobSummary[];
 };
 
 export type MediaLibraryListResult = {

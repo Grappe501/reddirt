@@ -172,7 +172,7 @@ export function useMasterAuthorState(options?: { workbenchContext?: MasterAuthor
           ],
         },
       }));
-      setLastAction(`OK: saved as alternate draft (“${label}”) in local state.`);
+      setLastAction(`OK: added session-only compare row (“${label}”) — not saved to the work item.`);
     },
     []
   );

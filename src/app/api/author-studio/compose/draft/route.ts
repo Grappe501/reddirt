@@ -61,16 +61,16 @@ export async function POST(req: Request) {
       );
     }
 
-    if (resolved === "save_draft") {
+    if (resolved === "save_draft" || resolved === "save_alternate") {
       if (!body.socialContentItemId) {
-        return authorStudioRequestError(route, "save_draft requires `context.socialContentItemId`", 400);
+        return authorStudioRequestError(route, "saving a draft requires `context.socialContentItemId`", 400);
       }
       const saved = await saveSocialContentDraft({
         socialContentItemId: body.socialContentItemId,
         bodyCopy: data.compose.master,
         title: body.draftTitle,
         sourceRoute: route,
-        sourceIntent: "save_draft",
+        sourceIntent: resolved,
       });
       return authorStudioSuccess(
         route,
@@ -81,7 +81,7 @@ export async function POST(req: Request) {
             workbenchRefetch: true,
             didSaveDraft: true,
             savedDraftId: saved.id,
-            appliedIntent: "save_draft",
+            appliedIntent: resolved,
           },
         },
         "Saved alternate draft on the work item (structured SocialContentDraft row)."

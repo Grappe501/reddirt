@@ -2,10 +2,16 @@ import Link from "next/link";
 import { OwnedMediaKind, OwnedMediaSourceType } from "@prisma/client";
 import type { OwnedMediaColorLabel, OwnedMediaPickStatus } from "@prisma/client";
 import { getOwnedFilePublicPath } from "@/lib/owned-media/storage";
-import { getMediaLibraryRowById, queryMediaLibrary } from "@/lib/media-library/queries";
+import { getMediaLibraryInspectDetail, queryMediaLibrary } from "@/lib/media-library/queries";
+import type { MediaLibraryListFilters } from "@/lib/media-library/types";
 import { MediaCenterInspector } from "@/components/admin/owned-media/media-center-inspector";
 import { MediaCenterSidebar } from "@/components/admin/owned-media/media-center-sidebar";
+import { MediaCenterBulkProvider, MediaCenterSelectCheckbox } from "@/components/admin/owned-media/media-center-bulk";
 import { listMediaCenterCollections } from "@/lib/owned-media/collections";
+import {
+  activeSmartViewFromQuery,
+  smartViewParamToFilters,
+} from "@/lib/owned-media/media-center-smart-views";
 import { prisma } from "@/lib/db";
 import { COMMUNITY_TRAINING_TAG } from "@/lib/campaign-briefings/briefing-queries";
 import { OwnedMediaGridToolbar } from "./toolbar";
@@ -36,6 +42,18 @@ type Props = {
     df?: string;
     dt?: string;
     dateField?: string;
+    viewUnreviewed?: string;
+    viewFav?: string;
+    viewNeedPress?: string;
+    viewNeedSite?: string;
+    viewApPress?: string;
+    viewApSite?: string;
+    viewImport?: string;
+    viewDeriv?: string;
+    viewVidNoTr?: string;
+    viewLowPick?: string;
+    viewRevNoAp?: string;
+    viewPickQueue?: string;
   }>;
 };
 
@@ -87,7 +105,26 @@ export default async function OwnedMediaGridPage({ searchParams }: Props) {
   const dateTo = sp.dt?.trim() || undefined;
   const dateField = sp.dateField === "created" ? ("created" as const) : ("captured" as const);
 
-  const { items: assets, total: resultTotal } = await queryMediaLibrary({
+  const smartHint = activeSmartViewFromQuery(sp);
+  const smartFilters = smartViewParamToFilters(smartHint?.key);
+  const smartActive = Object.keys(smartFilters).length > 0;
+
+  const triageToolbarKeys: (keyof MediaLibraryListFilters)[] = [
+    "isReviewed",
+    "isUnreviewed",
+    "approvedForPress",
+    "approvedForPublicSite",
+    "isFavorite",
+    "needsPressApproval",
+    "needsPublicSiteApproval",
+    "hasPendingDerivativeJobs",
+    "hasImportIssueSignals",
+    "videoMissingTranscript",
+    "lowRatedPicks",
+    "reviewedWithoutAnyApproval",
+  ];
+
+  const toolbarFilters: MediaLibraryListFilters = {
     q: q || undefined,
     issueTag: tag,
     mediaIngestBatchId: batch,
@@ -110,6 +147,17 @@ export default async function OwnedMediaGridPage({ searchParams }: Props) {
     dateField,
     sort,
     take: 500,
+  };
+
+  if (smartActive) {
+    for (const k of triageToolbarKeys) {
+      delete toolbarFilters[k];
+    }
+  }
+
+  const { items: assets, total: resultTotal } = await queryMediaLibrary({
+    ...toolbarFilters,
+    ...smartFilters,
   });
 
   const [collections, batches, counties, events, inspectRow] = await Promise.all([
@@ -119,7 +167,7 @@ export default async function OwnedMediaGridPage({ searchParams }: Props) {
     prisma.campaignEvent
       .findMany({ orderBy: { startAt: "desc" }, take: 200, select: { id: true, title: true } })
       .catch(() => []),
-    inspect ? getMediaLibraryRowById(inspect) : Promise.resolve(null),
+    inspect ? getMediaLibraryInspectDetail(inspect) : Promise.resolve(null),
   ]);
   const inspectMissing = Boolean(inspect) && !inspectRow;
 
@@ -151,7 +199,25 @@ export default async function OwnedMediaGridPage({ searchParams }: Props) {
     dt: dateTo,
     dateField: sp.dateField === "created" ? "created" : undefined,
     inspect: undefined,
+    viewUnreviewed: sp.viewUnreviewed === "1" ? "1" : undefined,
+    viewFav: sp.viewFav === "1" ? "1" : undefined,
+    viewNeedPress: sp.viewNeedPress === "1" ? "1" : undefined,
+    viewNeedSite: sp.viewNeedSite === "1" ? "1" : undefined,
+    viewApPress: sp.viewApPress === "1" ? "1" : undefined,
+    viewApSite: sp.viewApSite === "1" ? "1" : undefined,
+    viewImport: sp.viewImport === "1" ? "1" : undefined,
+    viewDeriv: sp.viewDeriv === "1" ? "1" : undefined,
+    viewVidNoTr: sp.viewVidNoTr === "1" ? "1" : undefined,
+    viewLowPick: sp.viewLowPick === "1" ? "1" : undefined,
+    viewRevNoAp: sp.viewRevNoAp === "1" ? "1" : undefined,
+    viewPickQueue: sp.viewPickQueue === "1" ? "1" : undefined,
   };
+
+  const fullGridQs = buildPreservedQuery({
+    ...preserved,
+    inspect: inspect || undefined,
+  });
+  const gridReturnPath = fullGridQs ? `/admin/owned-media/grid?${fullGridQs}` : "/admin/owned-media/grid";
 
   return (
     <div className="mx-auto max-w-[1920px] px-2 pb-8 pt-2 md:px-4">
@@ -177,25 +243,30 @@ export default async function OwnedMediaGridPage({ searchParams }: Props) {
           basePath="/admin/owned-media/grid"
           preserved={preserved}
           activeHint={
-            unreviewed
-              ? { key: "unreviewed", value: "1" }
-              : approvedForSocial
-                ? { key: "approvedForSocial", value: "1" }
-                : isReviewed === true
-                  ? { key: "reviewed", value: "1" }
-                  : pick
-                    ? { key: "pick", value: pick }
-                    : isFavorite
-                      ? { key: "fav", value: "1" }
-                      : batch
-                        ? { key: "batch", value: batch }
-                        : undefined
+            smartHint
+              ? { key: smartHint.key, value: smartHint.value }
+              : unreviewed
+                ? { key: "unreviewed", value: "1" }
+                : approvedForSocial
+                  ? { key: "approvedForSocial", value: "1" }
+                  : isReviewed === true
+                    ? { key: "reviewed", value: "1" }
+                    : pick
+                      ? { key: "pick", value: pick }
+                      : isFavorite
+                        ? { key: "fav", value: "1" }
+                        : batch
+                          ? { key: "batch", value: batch }
+                          : collection
+                            ? { key: "collection", value: collection }
+                            : undefined
           }
           collections={collections}
           batches={batches.map((b) => ({ id: b.id, label: b.sourceLabel, started: b.startedAt.toISOString() }))}
         />
 
-        <div className="min-w-0 flex-1">
+        <MediaCenterBulkProvider returnPath={gridReturnPath} collections={collections}>
+        <div className="min-w-0 flex-1 pb-16">
           <OwnedMediaGridToolbar
             defaultQ={q}
             size={size}
@@ -220,6 +291,7 @@ export default async function OwnedMediaGridPage({ searchParams }: Props) {
             resultCount={resultTotal}
             extraPreserved={preserved}
             communityTag={COMMUNITY_TRAINING_TAG}
+            pageAssetIds={assets.map((a) => a.id)}
           />
 
           {view === "list" ? (
@@ -227,6 +299,9 @@ export default async function OwnedMediaGridPage({ searchParams }: Props) {
               <table className="w-full min-w-[48rem] border-collapse text-left text-xs">
                 <thead className="border-b border-deep-soil/10 bg-deep-soil/[0.04] font-semibold text-deep-soil/70">
                   <tr>
+                    <th className="w-8 p-2">
+                      <span className="sr-only">Select</span>
+                    </th>
                     <th className="p-2">Preview</th>
                     <th className="p-2">Title</th>
                     <th className="p-2">Kind</th>
@@ -243,6 +318,9 @@ export default async function OwnedMediaGridPage({ searchParams }: Props) {
                     const href = `/admin/owned-media/grid${qs ? `?${qs}` : ""}`;
                     return (
                       <tr key={a.id} className="border-b border-deep-soil/5 odd:bg-cream-canvas/50">
+                        <td className="p-1 align-middle">
+                          <MediaCenterSelectCheckbox assetId={a.id} />
+                        </td>
                         <td className="p-1">
                           <Link href={href} scroll={false} className="block h-10 w-14 overflow-hidden rounded bg-deep-soil/5">
                             {a.kind === "IMAGE" ? (
@@ -284,7 +362,10 @@ export default async function OwnedMediaGridPage({ searchParams }: Props) {
                 const qs = buildPreservedQuery({ ...preserved, inspect: a.id, size, q: q || undefined, view, sort });
                 const href = `/admin/owned-media/grid${qs ? `?${qs}` : ""}`;
                 return (
-                  <li key={a.id}>
+                  <li key={a.id} className="relative">
+                    <div className="absolute left-1 top-1 z-10 rounded bg-cream-canvas/90 p-0.5 shadow-sm">
+                      <MediaCenterSelectCheckbox assetId={a.id} />
+                    </div>
                     <Link
                       href={href}
                       scroll={false}
@@ -342,6 +423,7 @@ export default async function OwnedMediaGridPage({ searchParams }: Props) {
             </p>
           ) : null}
         </div>
+        </MediaCenterBulkProvider>
 
         <MediaCenterInspector
           asset={inspectRow}

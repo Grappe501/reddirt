@@ -2,16 +2,24 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useState, useTransition } from "react";
-import { CampaignTaskType, SocialMessageToneMode, SocialStrategicFollowupType } from "@prisma/client";
+import { useCallback, useEffect, useMemo, useState, useTransition } from "react";
 import {
+  CampaignTaskType,
+  SocialMessageToneMode,
+  SocialStrategicFollowupType,
+} from "@prisma/client";
+import {
+  type AnalyticsOutcomeListItem,
   applyHeuristicStrategicRecommendationsAction,
   createClarificationPostFromAnalytics,
   createCountyVariantFromAnalytics,
   createFollowupSocialItemFromAnalytics,
   createSocialPerformanceSnapshotAction,
+  createWorkflowIntakeFromAnalyticsAction,
   createVolunteerCtaFromAnalytics,
+  evaluateAnalyticsRecommendationOutcomeAction,
   getSocialAnalyticsTimingIntelligenceAction,
+  listAnalyticsRecommendationOutcomesForSourceAction,
   upsertSocialStrategicInsightAction,
 } from "@/app/admin/workbench-social-actions";
 import { socialEnumLabel } from "@/lib/social/enum-labels";
@@ -48,6 +56,14 @@ function pickPrimarySnapshot(snapshots: SocialPerformanceSnapshotDto[]): SocialP
   const rollup = snapshots.find((s) => !s.socialPlatformVariantId);
   return rollup ?? snapshots[0] ?? null;
 }
+
+type IntakeOpportunity = {
+  key: string;
+  recommendationType: string;
+  headline: string;
+  reasoning: string;
+  displayLine: string;
+};
 
 const CONVERSION_TASK_TYPES: CampaignTaskType[] = [
   CampaignTaskType.VOLUNTEER,
@@ -678,6 +694,15 @@ export function SocialWorkbenchAnalyticsPanel({
   const [aggErr, setAggErr] = useState<string | null>(null);
   const [heuristicPending, startHeuristic] = useTransition();
   const [followPending, startFollow] = useTransition();
+  const [intakePending, startIntake] = useTransition();
+  const [evalPending, startEval] = useTransition();
+  const [outcomes, setOutcomes] = useState<AnalyticsOutcomeListItem[]>([]);
+
+  const loadOutcomes = useCallback(() => {
+    void listAnalyticsRecommendationOutcomesForSourceAction(detail.id).then((r) => {
+      if (r.ok) setOutcomes(r.items);
+    });
+  }, [detail.id]);
 
   useEffect(() => {
     let cancelled = false;
@@ -691,6 +716,10 @@ export function SocialWorkbenchAnalyticsPanel({
       cancelled = true;
     };
   }, [detail.id]);
+
+  useEffect(() => {
+    loadOutcomes();
+  }, [loadOutcomes]);
 
   const windowEntry = timing?.windows[winIdx] ?? timing?.windows[1] ?? timing?.windows[0];
   const agg = windowEntry?.aggregates ?? null;
@@ -723,30 +752,100 @@ export function SocialWorkbenchAnalyticsPanel({
   );
 
   const rec = detail.strategicInsight;
-  const followupOpportunityNotes = useMemo(() => {
-    if (!agg) return [] as string[];
-    const out: string[] = [];
+  const intakeOpportunities = useMemo((): IntakeOpportunity[] => {
+    if (!agg) return [];
+    const out: IntakeOpportunity[] = [];
     const { withEvent, withoutEvent } = agg.eventSplit;
     if (withEvent.n >= 1 && withoutEvent.n >= 1) {
       const w = withEvent.avgScore;
       const wo = withoutEvent.avgScore;
       if (Math.abs(w - wo) > 0.5) {
-        out.push(
+        const line =
           w > wo
             ? "Event-anchored posts are outperforming in meaningful score — good moment for a recap or sign-up nudge."
-            : "Non-event posts are leading on trust-weighted score — a standalone clarity or values piece may land well."
-        );
+            : "Non-event posts are leading on trust-weighted score — a standalone clarity or values piece may land well.";
+        out.push({
+          key: "event_split",
+          recommendationType: "opportunity_event_split",
+          headline: w > wo ? "Double down: event-anchored narrative" : "Test a non-event clarity / values post",
+          reasoning: line,
+          displayLine: line,
+        });
       }
     }
     if (agg.byTone[0] && (agg.byTone[0]!.n ?? 0) >= 2) {
-      out.push(
-        `Top tone in recent data: ${socialEnumLabel(agg.byTone[0]!.tone)} (n=${agg.byTone[0]!.n}). Test the next run in that voice if it fits this campaign.`
-      );
+      const line = `Top tone in recent data: ${socialEnumLabel(agg.byTone[0]!.tone)} (n=${agg.byTone[0]!.n}). Test the next run in that voice if it fits this campaign.`;
+      out.push({
+        key: "top_tone",
+        recommendationType: "opportunity_top_tone",
+        headline: `Emphasize ${socialEnumLabel(agg.byTone[0]!.tone)} voice`,
+        reasoning: line,
+        displayLine: line,
+      });
     } else {
-      out.push("Label a few more posts with message tone so the system can recommend tone A/B with confidence.");
+      out.push({
+        key: "label_tones",
+        recommendationType: "opportunity_label_tones",
+        headline: "Improve tone label coverage for A/B learning",
+        reasoning:
+          "Label a few more posts with message tone so the system can recommend tone A/B with confidence.",
+        displayLine:
+          "Label a few more posts with message tone so the system can recommend tone A/B with confidence.",
+      });
     }
     return out.slice(0, 3);
   }, [agg]);
+
+  const buildIntakeDateRange = () => {
+    const dayRange = windowEntry?.dayRange ?? 30;
+    const end = new Date();
+    const start = new Date();
+    start.setUTCDate(start.getUTCDate() - dayRange);
+    return { start: start.toISOString(), end: end.toISOString(), dayRange };
+  };
+
+  const sendToIntake = (params: {
+    recommendationType: string;
+    headline: string;
+    reasoning: string | Record<string, unknown>;
+    confidence: number;
+    eventId?: string;
+    toneMode?: SocialMessageToneMode;
+  }) => {
+    if (!agg) {
+      window.alert("Load cross-post timing aggregates first (time window buttons above).");
+      return;
+    }
+    const dr = buildIntakeDateRange();
+    const aggregateContext = {
+      ...agg,
+      confidenceHint: windowConfidence,
+    } as const;
+    startIntake(async () => {
+      const r = await createWorkflowIntakeFromAnalyticsAction({
+        sourceSocialContentItemId: detail.id,
+        recommendationType: params.recommendationType,
+        headline: params.headline,
+        reasoning: params.reasoning,
+        confidence: params.confidence,
+        aggregateContext,
+        dateRange: { start: dr.start, end: dr.end },
+        eventId: params.eventId ?? detail.campaignEventId ?? undefined,
+        toneMode: params.toneMode ?? undefined,
+        contentKind: detail.kind,
+        heuristicVersion: "v1",
+      });
+      if (r.ok) {
+        loadOutcomes();
+        onRefresh();
+        window.alert(
+          `Workflow Intake created (id …${r.workflowIntakeId.slice(-6)}). Outcome ${r.outcomeId.slice(-6)} linked with provenance.`
+        );
+      } else {
+        window.alert(r.error);
+      }
+    });
+  };
 
   const runFollow = (which: "followup" | "county" | "volunteer" | "clarification") => {
     const fd = new FormData();
@@ -760,6 +859,7 @@ export function SocialWorkbenchAnalyticsPanel({
     startFollow(async () => {
       const r = await run();
       if (r.ok) {
+        loadOutcomes();
         onRefresh();
         router.refresh();
         window.alert(`Created draft work item. Open the queue and select the new row (id ends …${r.id.slice(-6)}).`);
@@ -835,9 +935,42 @@ export function SocialWorkbenchAnalyticsPanel({
 
       {rec ? (
         <Card className="rounded-3xl border-emerald-200/80 bg-emerald-50/20">
-          <CardHeader>
-            <CardTitle className="text-base">Recommended next move</CardTitle>
-            <CardDescription>Structured, campaign-safe. Confidence {rec.confidenceScore != null ? rec.confidenceScore.toFixed(2) : "—"}.</CardDescription>
+          <CardHeader className="flex flex-row flex-wrap items-start justify-between gap-2">
+            <div>
+              <CardTitle className="text-base">Recommended next move</CardTitle>
+              <CardDescription>
+                Structured, campaign-safe. Confidence {rec.confidenceScore != null ? rec.confidenceScore.toFixed(2) : "—"}.
+              </CardDescription>
+            </div>
+            <UiButton
+              type="button"
+              size="sm"
+              variant="outline"
+              className="shrink-0 rounded-xl border-emerald-300 bg-white"
+              disabled={intakePending || !agg}
+              title={!agg ? "Select a timing window and wait for aggregates to load" : "Create Workflow Intake with analytics provenance"}
+              onClick={() => {
+                const conf = rec.confidenceScore != null ? Math.min(1, Math.max(0, rec.confidenceScore)) : 0.5;
+                sendToIntake({
+                  recommendationType: "strategic_next_move",
+                  headline: `Next: ${socialEnumLabel(rec.recommendedFollowupType)}${
+                    rec.recommendedNextTone ? ` · ${socialEnumLabel(rec.recommendedNextTone)}` : ""
+                  }`,
+                  reasoning: {
+                    recommendedNextTone: rec.recommendedNextTone,
+                    recommendedFollowupType: rec.recommendedFollowupType,
+                    recommendedBestWindow: rec.recommendedBestWindow,
+                    recommendedCountyFocus: rec.recommendedCountyFocus,
+                    recommendedCtaType: rec.recommendedCtaType,
+                  },
+                  confidence: conf,
+                  eventId: detail.campaignEventId ?? undefined,
+                  toneMode: rec.recommendedNextTone ?? undefined,
+                });
+              }}
+            >
+              {intakePending ? "…" : "Send to Intake"}
+            </UiButton>
           </CardHeader>
           <CardContent className="grid gap-2 text-sm sm:grid-cols-2">
             <p>
@@ -874,10 +1007,31 @@ export function SocialWorkbenchAnalyticsPanel({
           <CardDescription>Signals from recent snapshots — pair with a draft action below, not a reach scoreboard.</CardDescription>
         </CardHeader>
         <CardContent>
-          {followupOpportunityNotes.length ? (
-            <ul className="list-inside list-disc space-y-1.5 text-sm text-slate-700">
-              {followupOpportunityNotes.map((line, i) => (
-                <li key={i}>{line}</li>
+          {intakeOpportunities.length ? (
+            <ul className="space-y-3 text-sm text-slate-700">
+              {intakeOpportunities.map((o) => (
+                <li key={o.key} className="flex flex-wrap items-start justify-between gap-2 border-b border-slate-100 pb-2 last:border-0 last:pb-0">
+                  <span className="min-w-0 flex-1">{o.displayLine}</span>
+                  <UiButton
+                    type="button"
+                    size="sm"
+                    variant="outline"
+                    className="h-8 shrink-0 rounded-lg text-xs"
+                    disabled={intakePending || !agg}
+                    onClick={() =>
+                      sendToIntake({
+                        recommendationType: o.recommendationType,
+                        headline: o.headline,
+                        reasoning: o.reasoning,
+                        confidence: rec?.confidenceScore != null ? Math.min(1, Math.max(0, rec.confidenceScore)) : 0.45,
+                        eventId: detail.campaignEventId ?? undefined,
+                        toneMode: rec?.recommendedNextTone ?? undefined,
+                      })
+                    }
+                  >
+                    {intakePending ? "…" : "Send to Intake"}
+                  </UiButton>
+                </li>
               ))}
             </ul>
           ) : (
@@ -886,9 +1040,62 @@ export function SocialWorkbenchAnalyticsPanel({
         </CardContent>
       </Card>
 
+      {outcomes.length > 0 ? (
+        <Card className="rounded-3xl border-slate-200">
+          <CardHeader>
+            <CardTitle className="text-base">Analytics recommendation outcomes</CardTitle>
+            <CardDescription>
+              Traces for this work item: drafts, intake rows, and evaluation vs peer baseline (when run).
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ul className="space-y-2 text-xs text-slate-700">
+              {outcomes.slice(0, 8).map((o) => (
+                <li key={o.id} className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-2 last:border-0 last:pb-0">
+                  <div className="min-w-0">
+                    <UiBadge className="mb-0.5 border-slate-200 text-[9px] text-slate-600">{o.status}</UiBadge>
+                    <p className="line-clamp-2 font-medium text-slate-800">{o.headline}</p>
+                    <p className="text-[9px] text-slate-500">
+                      {o.recommendationType}
+                      {o.outcomeLabel ? ` · ${o.outcomeLabel}` : ""}
+                    </p>
+                  </div>
+                  {o.status !== "EVALUATED" && o.status !== "EXPIRED" && o.status !== "DISMISSED" ? (
+                    <UiButton
+                      type="button"
+                      size="sm"
+                      variant="ghost"
+                      className="h-7 shrink-0 text-[10px]"
+                      disabled={evalPending}
+                      onClick={() => {
+                        startEval(async () => {
+                          const r = await evaluateAnalyticsRecommendationOutcomeAction(o.id);
+                          if (r.ok) {
+                            loadOutcomes();
+                            onRefresh();
+                            window.alert(`Evaluated: ${r.classification}. ${r.reason.slice(0, 280)}`);
+                          } else {
+                            window.alert(r.error);
+                          }
+                        });
+                      }}
+                    >
+                      {evalPending ? "…" : "Evaluate"}
+                    </UiButton>
+                  ) : null}
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      ) : null}
+
       <div>
         <h3 className="mb-2 text-sm font-semibold text-slate-900">Create follow-up in queue</h3>
-        <p className="mb-2 text-xs text-slate-600">Draft <code className="rounded bg-slate-100 px-1">SocialContentItem</code> in the workbench. Copies linked event when present. Does not open Workflow Intake; extend here if you need intake rows.</p>
+        <p className="mb-2 text-xs text-slate-600">
+          Draft <code className="rounded bg-slate-100 px-1">SocialContentItem</code> in the workbench. Copies linked event when present. Use <strong>Send to Intake</strong> above
+          for a <code className="rounded bg-slate-100 px-1">WorkflowIntake</code> with analytics provenance.
+        </p>
         <div className="flex flex-wrap gap-2">
           <UiButton type="button" size="sm" className="rounded-xl" disabled={followPending} onClick={() => runFollow("followup")}>
             Follow-up post

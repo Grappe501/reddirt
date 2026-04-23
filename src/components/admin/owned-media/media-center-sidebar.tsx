@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { MEDIA_CENTER_VIEW_QUERY_KEYS } from "@/lib/owned-media/media-center-smart-views";
 
 type BatchOpt = { id: string; label: string; started: string };
 type Col = { id: string; slug: string; name: string; isSmart: boolean; isPinned: boolean };
@@ -12,6 +13,19 @@ function href(base: string, next: Record<string, string | undefined>) {
   return s ? `${base}?${s}` : base;
 }
 
+function hrefSmartView(
+  base: string,
+  preserved: Record<string, string | undefined>,
+  viewKey: (typeof MEDIA_CENTER_VIEW_QUERY_KEYS)[number]
+) {
+  const p = { ...preserved };
+  for (const k of MEDIA_CENTER_VIEW_QUERY_KEYS) {
+    delete p[k];
+  }
+  p[viewKey] = "1";
+  return href(base, p);
+}
+
 const navClass =
   "block rounded-lg px-2 py-1.5 text-left text-sm text-deep-soil/90 hover:bg-deep-soil/5 aria-[current=true]:bg-red-dirt/10 aria-[current=true]:font-semibold";
 
@@ -19,7 +33,7 @@ type Props = {
   basePath: string;
   /** Current query to preserve (e.g. size, q) */
   preserved: Record<string, string | undefined>;
-  /** Active param keys for aria-current (best-effort). */
+  /** Active param keys for aria-current (smart views use `view*` keys). */
   activeHint?: { key: string; value?: string };
   collections: Col[];
   batches: BatchOpt[];
@@ -34,13 +48,92 @@ export function MediaCenterSidebar({ basePath, preserved, activeHint, collection
     <aside className="w-full shrink-0 border-r border-deep-soil/10 bg-cream-canvas/80 pb-4 pr-2 pt-1 md:w-56">
       <h2 className="mb-2 px-2 font-body text-[10px] font-bold uppercase tracking-wider text-deep-soil/45">Library</h2>
       <nav className="space-y-0.5" aria-label="Media center views">
+        <p className="px-2 pb-1 font-body text-[9px] font-bold uppercase tracking-wide text-deep-soil/40">Smart views</p>
         <Link
-          href={href(basePath, { ...p, unreviewed: "1" })}
+          href={hrefSmartView(basePath, p, "viewUnreviewed")}
           className={navClass}
-          aria-current={activeHint?.key === "unreviewed" && activeHint.value === "1" ? "true" : undefined}
+          aria-current={activeHint?.key === "viewUnreviewed" ? "true" : undefined}
         >
           Unreviewed
         </Link>
+        <Link
+          href={hrefSmartView(basePath, p, "viewFav")}
+          className={navClass}
+          aria-current={activeHint?.key === "viewFav" ? "true" : undefined}
+        >
+          Favorites
+        </Link>
+        <Link
+          href={hrefSmartView(basePath, p, "viewNeedPress")}
+          className={navClass}
+          aria-current={activeHint?.key === "viewNeedPress" ? "true" : undefined}
+        >
+          Needs press approval
+        </Link>
+        <Link
+          href={hrefSmartView(basePath, p, "viewNeedSite")}
+          className={navClass}
+          aria-current={activeHint?.key === "viewNeedSite" ? "true" : undefined}
+        >
+          Needs public site approval
+        </Link>
+        <Link
+          href={hrefSmartView(basePath, p, "viewApPress")}
+          className={navClass}
+          aria-current={activeHint?.key === "viewApPress" ? "true" : undefined}
+        >
+          Approved for press
+        </Link>
+        <Link
+          href={hrefSmartView(basePath, p, "viewApSite")}
+          className={navClass}
+          aria-current={activeHint?.key === "viewApSite" ? "true" : undefined}
+        >
+          Approved for public site
+        </Link>
+        <Link
+          href={hrefSmartView(basePath, p, "viewImport")}
+          className={navClass}
+          aria-current={activeHint?.key === "viewImport" ? "true" : undefined}
+        >
+          Import / duplicate notes
+        </Link>
+        <Link
+          href={hrefSmartView(basePath, p, "viewDeriv")}
+          className={navClass}
+          aria-current={activeHint?.key === "viewDeriv" ? "true" : undefined}
+        >
+          Pending derivative jobs
+        </Link>
+        <Link
+          href={hrefSmartView(basePath, p, "viewVidNoTr")}
+          className={navClass}
+          aria-current={activeHint?.key === "viewVidNoTr" ? "true" : undefined}
+        >
+          Video · no transcript
+        </Link>
+        <Link
+          href={hrefSmartView(basePath, p, "viewLowPick")}
+          className={navClass}
+          aria-current={activeHint?.key === "viewLowPick" ? "true" : undefined}
+        >
+          Low-rated picks
+        </Link>
+        <Link
+          href={hrefSmartView(basePath, p, "viewRevNoAp")}
+          className={navClass}
+          aria-current={activeHint?.key === "viewRevNoAp" ? "true" : undefined}
+        >
+          Reviewed · not approved anywhere
+        </Link>
+        <Link
+          href={hrefSmartView(basePath, p, "viewPickQueue")}
+          className={navClass}
+          aria-current={activeHint?.key === "viewPickQueue" ? "true" : undefined}
+        >
+          Unrated pick queue
+        </Link>
+        <p className="mt-3 px-2 pb-1 font-body text-[9px] font-bold uppercase tracking-wide text-deep-soil/40">Shortcuts</p>
         <Link
           href={href(basePath, { ...p, approvedForSocial: "1" })}
           className={navClass}
@@ -61,13 +154,6 @@ export function MediaCenterSidebar({ basePath, preserved, activeHint, collection
           aria-current={activeHint?.key === "pick" && activeHint.value === "REJECT" ? "true" : undefined}
         >
           Rejects
-        </Link>
-        <Link
-          href={href(basePath, { ...p, fav: "1" })}
-          className={navClass}
-          aria-current={activeHint?.key === "fav" && activeHint.value === "1" ? "true" : undefined}
-        >
-          Favorites
         </Link>
         <Link
           href={href(basePath, { ...p, reviewed: "1" })}
