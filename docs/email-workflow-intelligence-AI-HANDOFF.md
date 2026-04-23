@@ -4,7 +4,9 @@
 
 **How to use:** Paste this file’s path into a new AI thread, or say: *“Read `@docs/email-workflow-intelligence-AI-HANDOFF.md` and continue from there.”*
 
-**Related system architecture (Packet SYS-1+ / CM-1+):** [`workbench-build-map.md`](./workbench-build-map.md) · [`public-site-system-map.md`](./public-site-system-map.md) · [`system-domain-flow-map.md`](./system-domain-flow-map.md) · [`campaign-manager-orchestration-map.md`](./campaign-manager-orchestration-map.md) · [`incoming-work-matrix.md`](./incoming-work-matrix.md) · **Foundation (FND-1):** [`unified-campaign-engine-foundation.md`](./unified-campaign-engine-foundation.md) · [`shared-rails-matrix.md`](./shared-rails-matrix.md) · `src/lib/campaign-engine/` · **AI brain (BRAIN-1):** [`ai-agent-brain-map.md`](./ai-agent-brain-map.md) · [`ai-integration-matrix.md`](./ai-integration-matrix.md) · `ai-brain.ts`, `ai-context.ts` · **Alignment + overrides (ALIGN-1):** [`campaign-brain-alignment-foundation.md`](./campaign-brain-alignment-foundation.md) · [`automation-override-and-impact-foundation.md`](./automation-override-and-impact-foundation.md) · [`user-scoped-ai-context-foundation.md`](./user-scoped-ai-context-foundation.md) · `alignment.ts`, `overrides.ts`, `user-context.ts` · **Positions (ROLE-1):** [`position-system-foundation.md`](./position-system-foundation.md) · [`workbench-job-definitions.md`](./workbench-job-definitions.md) · [`position-hierarchy-map.md`](./position-hierarchy-map.md) · `src/lib/campaign-engine/positions.ts` · **Talent / training (TALENT-1):** [`talent-intelligence-foundation.md`](./talent-intelligence-foundation.md) · [`position-development-matrix.md`](./position-development-matrix.md) · [`talent-recommendation-flow.md`](./talent-recommendation-flow.md) · `src/lib/campaign-engine/talent.ts`, `training.ts` · **Assignment + position inbox (ASSIGN-1):** [`assignment-rail-foundation.md`](./assignment-rail-foundation.md) · [`position-inbox-foundation.md`](./position-inbox-foundation.md) · [`unified-open-work-foundation.md`](./unified-open-work-foundation.md) · `assignment.ts`, `open-work.ts` · **Unified incoming work read (UWR-1):** [`unified-incoming-work-read-model.md`](./unified-incoming-work-read-model.md) — `getOpenWorkForCampaignManager` / `getOpenWorkForUser` in `open-work.ts` · `UnifiedOpenWorkSection` on `/admin/workbench` · **Position workbenches (WB-CORE-1):** [`position-workbench-foundation.md`](./position-workbench-foundation.md) · `position-inbox.ts` · `personalized-workbench.ts` (types) · `/admin/workbench/positions/*`
+**Full-project continuity (all rails, packets, capabilities):** For a **fresh AI thread** covering the **entire** RedDirt campaign engine—not email alone—start with **[`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md)** (MASTER-MAP-1). **Blueprint alignment / division maturity (pause & audit):** [`system-division-map.md`](./system-division-map.md) · [`system-maturity-map.md`](./system-maturity-map.md) · [`system-integration-map.md`](./system-integration-map.md) · [`goals-system-status.md`](./goals-system-status.md) · [`next-build-sequence.md`](./next-build-sequence.md) (**BLUEPRINT-LOCK-1**). Use this handoff when the task is **email workflow / queue-first comms** depth; use the master map for **orientation and build protocol**.
+
+**Related system architecture (Packet SYS-1+ / CM-1+):** [`workbench-build-map.md`](./workbench-build-map.md) · [`public-site-system-map.md`](./public-site-system-map.md) · [`system-domain-flow-map.md`](./system-domain-flow-map.md) · [`campaign-manager-orchestration-map.md`](./campaign-manager-orchestration-map.md) · [`incoming-work-matrix.md`](./incoming-work-matrix.md) · **Foundation (FND-1):** [`unified-campaign-engine-foundation.md`](./unified-campaign-engine-foundation.md) · [`shared-rails-matrix.md`](./shared-rails-matrix.md) · `src/lib/campaign-engine/` · **Relational organizing (REL-1 / ROE — docs only):** [`relational-organizing-foundation.md`](./relational-organizing-foundation.md) · [`relational-ai-assist-foundation.md`](./relational-ai-assist-foundation.md) (AI **assists** volunteers; **same** non-auto-send / no-impersonation posture as E-1/E-2) · **Volunteer progression (GAME-1 / VPE — docs only):** [`volunteer-progression-foundation.md`](./volunteer-progression-foundation.md) · [`gamification-ai-assist.md`](./gamification-ai-assist.md) (AI quests/coaching **without** manipulation) · **Volunteer system core (VOL-CORE-1 — docs only):** [`volunteer-philosophy-foundation.md`](./volunteer-philosophy-foundation.md) · [`volunteer-ai-guidance.md`](./volunteer-ai-guidance.md) (calm tone; **must** / **must not** for volunteer-facing AI) · **AI brain (BRAIN-1):** [`ai-agent-brain-map.md`](./ai-agent-brain-map.md) · [`ai-integration-matrix.md`](./ai-integration-matrix.md) · `ai-brain.ts`, `ai-context.ts` · **Alignment + overrides (ALIGN-1):** [`campaign-brain-alignment-foundation.md`](./campaign-brain-alignment-foundation.md) · [`automation-override-and-impact-foundation.md`](./automation-override-and-impact-foundation.md) · [`user-scoped-ai-context-foundation.md`](./user-scoped-ai-context-foundation.md) · `alignment.ts`, `overrides.ts`, `user-context.ts` · **Positions (ROLE-1):** [`position-system-foundation.md`](./position-system-foundation.md) · [`workbench-job-definitions.md`](./workbench-job-definitions.md) · [`position-hierarchy-map.md`](./position-hierarchy-map.md) · `src/lib/campaign-engine/positions.ts` · **Talent / training (TALENT-1):** [`talent-intelligence-foundation.md`](./talent-intelligence-foundation.md) · [`position-development-matrix.md`](./position-development-matrix.md) · [`talent-recommendation-flow.md`](./talent-recommendation-flow.md) · `src/lib/campaign-engine/talent.ts`, `training.ts` · **Assignment + position inbox (ASSIGN-1):** [`assignment-rail-foundation.md`](./assignment-rail-foundation.md) · [`position-inbox-foundation.md`](./position-inbox-foundation.md) · [`unified-open-work-foundation.md`](./unified-open-work-foundation.md) · `assignment.ts`, `open-work.ts` · **Unified incoming work read (UWR-1):** [`unified-incoming-work-read-model.md`](./unified-incoming-work-read-model.md) — `getOpenWorkForCampaignManager` / `getOpenWorkForUser` in `open-work.ts` · `UnifiedOpenWorkSection` on `/admin/workbench` · **Position workbenches (WB-CORE-1):** [`position-workbench-foundation.md`](./position-workbench-foundation.md) · `position-inbox.ts` · `personalized-workbench.ts` (types) · `/admin/workbench/positions/*`
 
 ---
 
@@ -952,5 +954,53 @@ npx prisma migrate deploy   # when database is up
 **Intentionally not built:** any schema change; automated merge of field names to FIPS. See `packet_geo1` in the JSON handoff block.
 
 *Last updated: Packet GEO-1.*
+
+---
+
+## 32. Packet GOALS-VERIFY-1 — County registration goals verification
+
+**What shipped (docs + read-only code):** [`county-registration-goals-verification.md`](./county-registration-goals-verification.md) — **no** committed **xlsx**/**csv** “master” goals file in the repo; **`CountyCampaignStats.registrationGoal`** = **source of truth**; **`CountyVoterMetrics.countyGoal`** = snapshot mirror from `recomputeAllCountyVoterMetricsForSnapshot` · `src/lib/campaign-engine/county-goals.ts` — `listCountyRegistrationGoals`, `getCountyRegistrationGoalByCountyId`.
+
+**Relevance to email / comms:** In-repo, goals surface on **public county pages** and **admin**; there is **no** dedicated “email county their goal” workflow in code. Tier-1 / workbench / broadcast paths were **not** extended in this packet.
+
+**Intentionally not built:** spreadsheet import for goals, volunteer-level quotas, outbound packet generation.
+
+*Last updated: Packet GOALS-VERIFY-1.*
+
+---
+
+## 33. Packet GAME-1 — Volunteer Progression Engine (VPE) foundation
+
+**What shipped (docs only):** [`volunteer-progression-foundation.md`](./volunteer-progression-foundation.md) — VPE north star, XP/levels/unlocks/momentum definitions, principles, **repo inspection** (models, gaps, GAME-2 scope). [`volunteer-leveling-system.md`](./volunteer-leveling-system.md) · [`volunteer-xp-model.md`](./volunteer-xp-model.md) (REL-1 KPI mapping) · [`volunteer-unlock-system.md`](./volunteer-unlock-system.md) · [`volunteer-identity-evolution.md`](./volunteer-identity-evolution.md) · [`gamification-ai-assist.md`](./gamification-ai-assist.md).
+
+**Relevance to email / comms:** Progression **does not** change queue-first email rules. Future VPE **quests** may **reference** open work (including email workflow items) as **context** for volunteer coaching; AI assist remains **advisory** and **non-auto-send**, consistent with REL-1 and E-1/E-2.
+
+**Intentionally not built:** XP persistence, unlock enforcement, volunteer-facing UI.
+
+*Last updated: Packet GAME-1.*
+
+---
+
+## 34. Packet VOL-CORE-1 — Volunteer System Foundation (culture + structure + integration)
+
+**What shipped (docs only):** [`volunteer-philosophy-foundation.md`](./volunteer-philosophy-foundation.md) — philosophy → system behavior; **non-siloed** integration with REL-1, GAME-1, ROLE-1, FIELD-1; repo inspection (incl. overlap questions). [`volunteer-role-system.md`](./volunteer-role-system.md) · [`volunteer-onboarding-flow.md`](./volunteer-onboarding-flow.md) · [`power-of-5-system-integration.md`](./power-of-5-system-integration.md) · [`volunteer-county-integration.md`](./volunteer-county-integration.md) · [`volunteer-ai-guidance.md`](./volunteer-ai-guidance.md).
+
+**Relevance to email / comms:** Volunteer AI **must not** auto-send or apply **pressure** tactics; aligns with E-1/E-2 and REL-1. **Onboarding** and **ambassador** flows remain **human-governed** for outbound; email workflow **does not** become volunteer progression state machine.
+
+**Intentionally not built:** volunteer journey persistence, new prompts code—**normative** spec for future `prompts.ts` / `user-context.ts` registration only.
+
+*Last updated: Packet VOL-CORE-1.*
+
+---
+
+## 35. Packet BLUEPRINT-LOCK-1 — System alignment + division maturity map
+
+**What shipped (docs only):** [`system-division-map.md`](./system-division-map.md) · [`system-maturity-map.md`](./system-maturity-map.md) · [`system-integration-map.md`](./system-integration-map.md) · [`goals-system-status.md`](./goals-system-status.md) (county goals **DB + code** paths; **`county-goals.ts`** **no** importers in `src/`) · [`next-build-sequence.md`](./next-build-sequence.md).
+
+**Relevance to email / comms:** Comms/email are **ahead** of field/relational integration; blueprint **deprioritizes** new comms **execution** without **named** organizing beneficiary. Queue-first and governance **unchanged**.
+
+**Intentionally not built:** any product code—**audit + sequencing** only.
+
+*Last updated: Packet BLUEPRINT-LOCK-1.*
 
 ---

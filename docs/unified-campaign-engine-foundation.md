@@ -2,7 +2,9 @@
 
 **Packet FND-1.** **Canonical** architecture doc for a **fresh** unified campaign operating system: not “the admin app we have,” but the **target shape** the codebase should **grow into**. Existing routes and workbenches are **evidence and migration inputs**, not the final topology.
 
-**Cross-ref:** [`shared-rails-matrix.md`](./shared-rails-matrix.md) · [`ai-agent-brain-map.md`](./ai-agent-brain-map.md) · [`ai-integration-matrix.md`](./ai-integration-matrix.md) · [`campaign-brain-alignment-foundation.md`](./campaign-brain-alignment-foundation.md) · [`automation-override-and-impact-foundation.md`](./automation-override-and-impact-foundation.md) · [`user-scoped-ai-context-foundation.md`](./user-scoped-ai-context-foundation.md) · [`position-system-foundation.md`](./position-system-foundation.md) · [`workbench-job-definitions.md`](./workbench-job-definitions.md) · [`assignment-rail-foundation.md`](./assignment-rail-foundation.md) · [`position-inbox-foundation.md`](./position-inbox-foundation.md) · [`position-workbench-foundation.md`](./position-workbench-foundation.md) · [`unified-open-work-foundation.md`](./unified-open-work-foundation.md) · [`unified-incoming-work-read-model.md`](./unified-incoming-work-read-model.md) · [`talent-intelligence-foundation.md`](./talent-intelligence-foundation.md) · [`campaign-manager-orchestration-map.md`](./campaign-manager-orchestration-map.md) · [`incoming-work-matrix.md`](./incoming-work-matrix.md) · [`system-domain-flow-map.md`](./system-domain-flow-map.md) · `src/lib/campaign-engine/README.md`
+**New AI thread — start here first:** **[`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md)** (MASTER-MAP-1) is the **single drag-and-drop continuity file** for packet history, rails status, work protocol with Cursor, code-grounded capabilities, and curated doc order. This foundation doc remains the **deep** target-architecture reference; the master map **orients** before you read every section below.
+
+**Cross-ref:** [`shared-rails-matrix.md`](./shared-rails-matrix.md) · [`ai-agent-brain-map.md`](./ai-agent-brain-map.md) · [`ai-integration-matrix.md`](./ai-integration-matrix.md) · [`campaign-brain-alignment-foundation.md`](./campaign-brain-alignment-foundation.md) · [`automation-override-and-impact-foundation.md`](./automation-override-and-impact-foundation.md) · [`user-scoped-ai-context-foundation.md`](./user-scoped-ai-context-foundation.md) · [`position-system-foundation.md`](./position-system-foundation.md) · [`workbench-job-definitions.md`](./workbench-job-definitions.md) · [`assignment-rail-foundation.md`](./assignment-rail-foundation.md) · [`position-inbox-foundation.md`](./position-inbox-foundation.md) · [`position-workbench-foundation.md`](./position-workbench-foundation.md) · [`unified-open-work-foundation.md`](./unified-open-work-foundation.md) · [`unified-incoming-work-read-model.md`](./unified-incoming-work-read-model.md) · [`talent-intelligence-foundation.md`](./talent-intelligence-foundation.md) · [`campaign-manager-orchestration-map.md`](./campaign-manager-orchestration-map.md) · [`incoming-work-matrix.md`](./incoming-work-matrix.md) · [`system-domain-flow-map.md`](./system-domain-flow-map.md) · **Relational organizing (REL-1 / ROE):** [`relational-organizing-foundation.md`](./relational-organizing-foundation.md) · [`pod-system-foundation.md`](./pod-system-foundation.md) · [`relationship-data-model-foundation.md`](./relationship-data-model-foundation.md) · [`relational-voter-integration.md`](./relational-voter-integration.md) · [`relational-kpi-foundation.md`](./relational-kpi-foundation.md) · [`relational-ai-assist-foundation.md`](./relational-ai-assist-foundation.md) · **Volunteer progression (GAME-1 / VPE):** [`volunteer-progression-foundation.md`](./volunteer-progression-foundation.md) · [`volunteer-leveling-system.md`](./volunteer-leveling-system.md) · [`volunteer-xp-model.md`](./volunteer-xp-model.md) · [`volunteer-unlock-system.md`](./volunteer-unlock-system.md) · [`volunteer-identity-evolution.md`](./volunteer-identity-evolution.md) · [`gamification-ai-assist.md`](./gamification-ai-assist.md) · **Volunteer system core (VOL-CORE-1):** [`volunteer-philosophy-foundation.md`](./volunteer-philosophy-foundation.md) · [`volunteer-role-system.md`](./volunteer-role-system.md) · [`volunteer-onboarding-flow.md`](./volunteer-onboarding-flow.md) · [`power-of-5-system-integration.md`](./power-of-5-system-integration.md) · [`volunteer-county-integration.md`](./volunteer-county-integration.md) · [`volunteer-ai-guidance.md`](./volunteer-ai-guidance.md) · **Blueprint alignment (BLUEPRINT-LOCK-1):** [`system-division-map.md`](./system-division-map.md) · [`system-maturity-map.md`](./system-maturity-map.md) · [`system-integration-map.md`](./system-integration-map.md) · [`goals-system-status.md`](./goals-system-status.md) · [`next-build-sequence.md`](./next-build-sequence.md) · `src/lib/campaign-engine/README.md`
 
 ---
 
@@ -320,4 +322,60 @@ Each rail: **defined** in the matrix (where applicable); **evidence** and **gaps
 
 ---
 
-*Last updated: Packets FND-1, ROLE-1, TALENT-1, BRAIN-1, ALIGN-1, ASSIGN-1, UWR-1, WB-CORE-1, SEAT-1, SKILL-1+ASSIGN-2, FUND-1, COMP-1, POLICY-1+COMP-2+BUDGET-1, FIN-1, BUDGET-2, FIN-2, FIELD-1, YOUTH-1, DATA-1, COMMS-UNIFY-1, IDENTITY-1, **DBMAP-1, LAUNCH-1, GEO-1**.*
+## 28. Packet GOALS-VERIFY-1 — County registration goals verification + source-of-truth map
+
+**What shipped (docs):** [`county-registration-goals-verification.md`](./county-registration-goals-verification.md) — no original goals **spreadsheet** in-repo; **DB** fields `CountyCampaignStats.registrationGoal` (authoritative) and **`CountyVoterMetrics.countyGoal`** (per-snapshot mirror from recompute); admin write path; voter import **does not** ingest goals from file.
+
+**Code:** `src/lib/campaign-engine/county-goals.ts` — **read-only** `listCountyRegistrationGoals`, `getCountyRegistrationGoalByCountyId` (no schema change).
+
+**Intentionally not built:** import from **xlsx** for goals, volunteer-level goal persistence, or email/export of per-county goal packets in this packet.
+
+---
+
+## 29. Packet REL-1 — Relational Organizing Engine (ROE) foundation
+
+**What shipped (docs only):** [`relational-organizing-foundation.md`](./relational-organizing-foundation.md) — north star, core model (volunteer, relationship, network, Power of 5, POD), system principles, **repo inspection answers** (Part G). [`pod-system-foundation.md`](./pod-system-foundation.md) — POD Leader, Core 5, extended network, reporting, ties to **county / `FieldUnit` / positions**. [`relationship-data-model-foundation.md`](./relationship-data-model-foundation.md) — future **RelationalContact** field sketch (no migration). [`relational-voter-integration.md`](./relational-voter-integration.md) — expected match/registration **flow** (no new matcher). [`relational-kpi-foundation.md`](./relational-kpi-foundation.md) — volunteer KPIs + county roll-up honesty. [`relational-ai-assist-foundation.md`](./relational-ai-assist-foundation.md) — AI scripts/coaching **constraints** (no auto-send, no impersonation).
+
+**How it fits FND-1:** ROE is a **horizontal growth rail**: identity (`User` / `VolunteerProfile`), geography (`County`, FIELD-1), voter file (`VoterRecord`), comms execution (human-sent), and **future** relational rows. It **does not** replace `CommsPlanAudienceSegment` or E-1; it names **volunteer-owned trust networks** as first-class **concept** before schema.
+
+**Shared rails:** New matrix row in [`shared-rails-matrix.md`](./shared-rails-matrix.md) (**Relational organizing REL-1+**).
+
+**Intentionally not built in REL-1:** Prisma models, UI, matching logic, auto-send, REACH-style mobile app, third-party sync.
+
+---
+
+## 30. Packet GAME-1 — Volunteer Progression Engine (VPE) foundation
+
+**What shipped (docs only):** [`volunteer-progression-foundation.md`](./volunteer-progression-foundation.md) — north star, core concepts (XP, levels, achievements, unlocks, momentum), principles, **repo inspection answers**. [`volunteer-leveling-system.md`](./volunteer-leveling-system.md) — six organizer maturity levels (New Volunteer through Regional Leader), unlocks and advancement gates. [`volunteer-xp-model.md`](./volunteer-xp-model.md) — action catalog tied to **REL-1 KPIs**. [`volunteer-unlock-system.md`](./volunteer-unlock-system.md) — tools, capacity, training, leadership powers, visibility. [`volunteer-identity-evolution.md`](./volunteer-identity-evolution.md) — profile narrative stages; ties to `VolunteerProfile`, future `RelationalContact`, positions/seats. [`gamification-ai-assist.md`](./gamification-ai-assist.md) — AI coaching/quests with **no manipulation** constraints.
+
+**How it fits FND-1:** VPE is a **horizontal engagement rail**: identity (`VolunteerProfile`), relational outcomes (REL-1 / future REL-2), geography and accountability (FIELD-1, `FieldAssignment`), formal authority (ROLE-1 / SEAT-1), development posture (TALENT-1), and **advisory** AI (BRAIN-1, REL-AI). It does **not** auto-assign seats or send comms.
+
+**Shared rails:** New matrix row in [`shared-rails-matrix.md`](./shared-rails-matrix.md) (**Volunteer progression GAME-1+**).
+
+**Intentionally not built in GAME-1:** Prisma migrations, XP ledger tables, volunteer-facing UI, automated promotion.
+
+---
+
+## 31. Packet VOL-CORE-1 — Volunteer System Foundation (culture + structure + integration)
+
+**What shipped (docs only):** [`volunteer-philosophy-foundation.md`](./volunteer-philosophy-foundation.md) — core beliefs grounded in [`philosophy/`](./philosophy/README.md), system implications (trust, suggest-don’t-command, empowering onboarding, AI tone), **tight integration** with REL-1 / GAME-1 / ROLE-1 / FIELD-1, **repo inspection** (Parts G & J). [`volunteer-role-system.md`](./volunteer-role-system.md) — County Captain, Power-of-5 Evangelist, Fundraising Leader, Campaign Ambassador, Event Manager mapped to **`PositionId`**. [`volunteer-onboarding-flow.md`](./volunteer-onboarding-flow.md) — entry, path selection, first action, Power-of-5 entry, continued engagement. [`power-of-5-system-integration.md`](./power-of-5-system-integration.md) — Core 5 ↔ REL-1 / GAME-1 / county goals. [`volunteer-county-integration.md`](./volunteer-county-integration.md) — `FieldUnit`, `CountyCampaignStats`, captains. [`volunteer-ai-guidance.md`](./volunteer-ai-guidance.md) — volunteer AI **must** / **must not**.
+
+**How it fits FND-1:** VOL-CORE-1 is the **volunteer existence layer**: how culture becomes **rules** that connect identity (`User` / `VolunteerProfile`), **relational** program (REL-1), **earned capability** (GAME-1), **org accountability** (ROLE-1 / SEAT-1), and **geography** (FIELD-1 / `County`). **Not** a workflow engine; **not** UI.
+
+**Shared rails:** New matrix row in [`shared-rails-matrix.md`](./shared-rails-matrix.md) (**Volunteer system core VOL-CORE-1+**).
+
+**Intentionally not built in VOL-CORE-1:** Prisma migrations, unified volunteer onboarding route, REL-2, XP ledger.
+
+---
+
+## 32. Packet BLUEPRINT-LOCK-1 — System alignment + division maturity map
+
+**What shipped (docs only):** [`system-division-map.md`](./system-division-map.md) — eight Level-3 divisions (CM, Comms, Field/Organizing, Data, Finance, Compliance, Talent, Youth), purpose + success. [`system-maturity-map.md`](./system-maturity-map.md) — **repo-grounded** ratings, ahead/behind, **repo inspection** (strongest/weakest, overbuild, blockers, volunteer UX readiness, next packets pointer). [`system-integration-map.md`](./system-integration-map.md) — connected vs isolated seams (REL/FIELD/goals, GAME/assignment, VOL-CORE, comms/targeting, etc.). [`goals-system-status.md`](./goals-system-status.md) — **`CountyCampaignStats.registrationGoal`** truth: admin + public + recompute paths; **`county-goals.ts` unused** by other modules; **no** volunteer/FieldUnit FK to goals. [`next-build-sequence.md`](./next-build-sequence.md) — balanced **3–5** packet sequence; anti-drift rule for comms.
+
+**How it fits FND-1:** Pauses **feature expansion** narrative; forces **honest** cross-system view before the next build wave. Complements [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) (orientation) with **division maturity + integration audit**.
+
+**Intentionally not built in BLUEPRINT-LOCK-1:** code, schema, UI.
+
+---
+
+*Last updated: Packets FND-1, ROLE-1, TALENT-1, BRAIN-1, ALIGN-1, ASSIGN-1, UWR-1, WB-CORE-1, SEAT-1, SKILL-1+ASSIGN-2, FUND-1, COMP-1, POLICY-1+COMP-2+BUDGET-1, FIN-1, BUDGET-2, FIN-2, FIELD-1, YOUTH-1, DATA-1, COMMS-UNIFY-1, IDENTITY-1, **DBMAP-1, LAUNCH-1, GEO-1, GOALS-VERIFY-1, REL-1, GAME-1, VOL-CORE-1, BLUEPRINT-LOCK-1**.*

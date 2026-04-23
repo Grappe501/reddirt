@@ -2,7 +2,7 @@
 
 Concise planning doc: what workbenches exist, what to reuse, what to build next, and where we risk one-off debt.
 
-**Cross-references (Packet SYS-1+ / CM-1+ / FND-1+ / ROLE-1 / WB-CORE-1 / SEAT-1 / SKILL-1+ASSIGN-2 / FUND-1 / COMP-1 / POLICY-1+COMP-2+BUDGET-1 / FIN-1 / BUDGET-2):** [`email-workflow-intelligence-AI-HANDOFF.md`](./email-workflow-intelligence-AI-HANDOFF.md) (email queue intel) · [`public-site-system-map.md`](./public-site-system-map.md) (public routes, forms, APIs) · [`system-domain-flow-map.md`](./system-domain-flow-map.md) (domain ↔ workbench, missing rails) · [`campaign-manager-orchestration-map.md`](./campaign-manager-orchestration-map.md) (orchestration layer, subordinate workbenches) · [`incoming-work-matrix.md`](./incoming-work-matrix.md) (matrix of all incoming sources) · [`unified-campaign-engine-foundation.md`](./unified-campaign-engine-foundation.md) · [`shared-rails-matrix.md`](./shared-rails-matrix.md) · **ROLE-1:** [`position-system-foundation.md`](./position-system-foundation.md) · [`workbench-job-definitions.md`](./workbench-job-definitions.md) · [`position-hierarchy-map.md`](./position-hierarchy-map.md) · `src/lib/campaign-engine/positions.ts` · **WB-CORE-1:** [`position-workbench-foundation.md`](./position-workbench-foundation.md) · `src/lib/campaign-engine/position-inbox.ts` · **SEAT-1:** [`position-seating-foundation.md`](./position-seating-foundation.md) · [`delegation-and-coverage-foundation.md`](./delegation-and-coverage-foundation.md) · `src/lib/campaign-engine/seating.ts` · `prisma/schema.prisma` (`PositionSeat`) · **ASSIGN-2+SKILL-1:** [`seat-aware-assignment-foundation.md`](./seat-aware-assignment-foundation.md) · [`agent-skill-framework.md`](./agent-skill-framework.md) · [`agent-knowledge-ingest-map.md`](./agent-knowledge-ingest-map.md) · `open-work.ts` (seat-aware helpers) · `skills.ts` · **FUND-1:** [`fundraising-desk-foundation.md`](./fundraising-desk-foundation.md) + linked FUND-1 `docs` · `src/lib/campaign-engine/fundraising.ts` (no route in repo yet) · **COMP-1 (compliance rail):** [`compliance-governance-foundation.md`](./compliance-governance-foundation.md) + linked `compliance-*.md` · `src/lib/campaign-engine/compliance.ts` (no compliance workbench route in repo yet) · **BUDGET-2:** [`budget-structure-foundation.md`](./budget-structure-foundation.md) · `budget-queries.ts` · `…/admin/budgets`
+**Cross-references (Packet SYS-1+ / CM-1+ / FND-1+ / ROLE-1 / WB-CORE-1 / SEAT-1 / SKILL-1+ASSIGN-2 / FUND-1 / COMP-1 / POLICY-1+COMP-2+BUDGET-1 / FIN-1 / BUDGET-2 / REL-1 / GAME-1 / VOL-CORE-1):** [`relational-organizing-foundation.md`](./relational-organizing-foundation.md) (ROE bundle) · [`volunteer-progression-foundation.md`](./volunteer-progression-foundation.md) (VPE / gamification bundle) · [`volunteer-philosophy-foundation.md`](./volunteer-philosophy-foundation.md) (volunteer system core bundle) · [`email-workflow-intelligence-AI-HANDOFF.md`](./email-workflow-intelligence-AI-HANDOFF.md) (email queue intel) · [`public-site-system-map.md`](./public-site-system-map.md) (public routes, forms, APIs) · [`system-domain-flow-map.md`](./system-domain-flow-map.md) (domain ↔ workbench, missing rails) · [`campaign-manager-orchestration-map.md`](./campaign-manager-orchestration-map.md) (orchestration layer, subordinate workbenches) · [`incoming-work-matrix.md`](./incoming-work-matrix.md) (matrix of all incoming sources) · [`unified-campaign-engine-foundation.md`](./unified-campaign-engine-foundation.md) · [`shared-rails-matrix.md`](./shared-rails-matrix.md) · **ROLE-1:** [`position-system-foundation.md`](./position-system-foundation.md) · [`workbench-job-definitions.md`](./workbench-job-definitions.md) · [`position-hierarchy-map.md`](./position-hierarchy-map.md) · `src/lib/campaign-engine/positions.ts` · **WB-CORE-1:** [`position-workbench-foundation.md`](./position-workbench-foundation.md) · `src/lib/campaign-engine/position-inbox.ts` · **SEAT-1:** [`position-seating-foundation.md`](./position-seating-foundation.md) · [`delegation-and-coverage-foundation.md`](./delegation-and-coverage-foundation.md) · `src/lib/campaign-engine/seating.ts` · `prisma/schema.prisma` (`PositionSeat`) · **ASSIGN-2+SKILL-1:** [`seat-aware-assignment-foundation.md`](./seat-aware-assignment-foundation.md) · [`agent-skill-framework.md`](./agent-skill-framework.md) · [`agent-knowledge-ingest-map.md`](./agent-knowledge-ingest-map.md) · `open-work.ts` (seat-aware helpers) · `skills.ts` · **FUND-1:** [`fundraising-desk-foundation.md`](./fundraising-desk-foundation.md) + linked FUND-1 `docs` · `src/lib/campaign-engine/fundraising.ts` (no route in repo yet) · **COMP-1 (compliance rail):** [`compliance-governance-foundation.md`](./compliance-governance-foundation.md) + linked `compliance-*.md` · `src/lib/campaign-engine/compliance.ts` (no compliance workbench route in repo yet) · **BUDGET-2:** [`budget-structure-foundation.md`](./budget-structure-foundation.md) · `budget-queries.ts` · `…/admin/budgets`
 
 ---
 
@@ -15,6 +15,7 @@ Concise planning doc: what workbenches exist, what to reuse, what to build next,
 | **Position seats / coverage (SEAT-1)** | `…/workbench/seats` | `PositionSeat` staffing metadata: filled/vacant/acting/shadow; **optional** save per row; links to position workbench; not permissions or routing. |
 | **Position workbench (ASSIGN-2)** | `…/workbench/positions/[positionId]` (same page) | **Read-only** **slice** vs **seat** **occupant** alignment (counts, global open for occupant); no auto-rebind. |
 | **Fundraising desk (FUND-1+)** | *planned* `…/workbench/fundraising` (not in build) | Blueprint only in [`fundraising-desk-foundation.md`](./fundraising-desk-foundation.md): prospects, call lists, contactability, research, **KPIs;** `fundraising.ts` **types;** no dialer. |
+| **Relational organizing / ROE desk (REL-1+)** | *planned* `…/workbench/relational` or volunteer-area expansion (not in build) | [`relational-organizing-foundation.md`](./relational-organizing-foundation.md) + POD/relationship/KPI/AI/voter docs — Power of 5, PODs, future **`RelationalContact`**; **no** route or schema in REL-1. |
 | **Compliance governance rail (COMP-1)** | *no* dedicated route — overlay | [`compliance-governance-foundation.md`](./compliance-governance-foundation.md) + `compliance.ts`: horizontal **policy** + future paperwork prep; not a full compliance workbench. |
 | **Compliance document intake (COMP-2, minimal)** | `…/compliance-documents` | [`compliance-document-ingest-foundation.md`](./compliance-document-ingest-foundation.md) + Prisma `ComplianceDocument` + `saveOwnedMediaFile`; `approvedForAiReference` (off by default). Not RAG yet. |
 | **Campaign policy (POLICY-1) + spend rail (BUDGET-1 + BUDGET-2)** | `policy.ts` + `budget.ts` + Prisma `BudgetPlan`/`BudgetLine` | [`campaign-policy-foundation.md`](./campaign-policy-foundation.md), [`budget-and-spend-governance-foundation.md`](./budget-and-spend-governance-foundation.md), [`budget-structure-foundation.md`](./budget-structure-foundation.md) — light admin budgets, not a full finance desk. |
@@ -161,3 +162,39 @@ Concise planning doc: what workbenches exist, what to reuse, what to build next,
 **Intentionally not built:** new migrations, a single `CountyDashboard` view, or auto-linking `FieldUnit` names to FIPS.
 
 *Last updated: Packet GEO-1.*
+
+---
+
+## 12. Packet REL-1 — Relational Organizing Engine (ROE) foundation
+
+**What shipped:** **Documentation only** — [`relational-organizing-foundation.md`](./relational-organizing-foundation.md) (north star, core model, principles, repo inspection answers), [`pod-system-foundation.md`](./pod-system-foundation.md), [`relationship-data-model-foundation.md`](./relationship-data-model-foundation.md), [`relational-voter-integration.md`](./relational-voter-integration.md), [`relational-kpi-foundation.md`](./relational-kpi-foundation.md), [`relational-ai-assist-foundation.md`](./relational-ai-assist-foundation.md). **Shared rails:** new row in [`shared-rails-matrix.md`](./shared-rails-matrix.md).
+
+**Workbench impact:** §1 adds a **planned** relational desk row; no new admin URL in REL-1.
+
+**Intentionally not built:** Prisma `RelationalContact` (or equivalent), volunteer network UI, voter match automation, REACH-style integrations.
+
+*Last updated: Packet REL-1.*
+
+---
+
+## 13. Packet GAME-1 — Volunteer Progression Engine (VPE) foundation
+
+**What shipped:** **Documentation only** — [`volunteer-progression-foundation.md`](./volunteer-progression-foundation.md) (north star, concepts, principles, repo inspection), [`volunteer-leveling-system.md`](./volunteer-leveling-system.md), [`volunteer-xp-model.md`](./volunteer-xp-model.md), [`volunteer-unlock-system.md`](./volunteer-unlock-system.md), [`volunteer-identity-evolution.md`](./volunteer-identity-evolution.md), [`gamification-ai-assist.md`](./gamification-ai-assist.md). **Shared rails:** new row in [`shared-rails-matrix.md`](./shared-rails-matrix.md).
+
+**Workbench impact:** No new admin URL; future **GAME-2+** may add read-only **progress audit** for ops or a volunteer-facing area tied to REL-2.
+
+**Intentionally not built:** XP ledger, `VolunteerProfile` progression fields, unlock enforcement in code, volunteer UI.
+
+*Last updated: Packet GAME-1.*
+
+---
+
+## 14. Packet VOL-CORE-1 — Volunteer System Foundation (culture + structure + integration)
+
+**What shipped:** **Documentation only** — [`volunteer-philosophy-foundation.md`](./volunteer-philosophy-foundation.md) (beliefs, system rules, REL-1/GAME-1 integration spine, repo inspection), [`volunteer-role-system.md`](./volunteer-role-system.md), [`volunteer-onboarding-flow.md`](./volunteer-onboarding-flow.md), [`power-of-5-system-integration.md`](./power-of-5-system-integration.md), [`volunteer-county-integration.md`](./volunteer-county-integration.md), [`volunteer-ai-guidance.md`](./volunteer-ai-guidance.md). **Shared rails:** new row in [`shared-rails-matrix.md`](./shared-rails-matrix.md).
+
+**Workbench impact:** No new routes; defines how **movement roles** map to **`PositionId`** for future staffing UIs and volunteer-facing shells.
+
+**Intentionally not built:** onboarding wizard, volunteer home, REL-2, new position keys for fundraising volunteer lead.
+
+*Last updated: Packet VOL-CORE-1.*
