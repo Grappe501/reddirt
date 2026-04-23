@@ -85,4 +85,6 @@ When **precinct** is null or unreliable, **county** is the **stable** fallback *
 
 ---
 
+**Follow-on (DATA-2):** [`targeting-data-inventory.md`](./targeting-data-inventory.md) — full model inventory + read helpers in `src/lib/campaign-engine/targeting.ts`.
+
 *Last updated: Packet DATA-1.*
