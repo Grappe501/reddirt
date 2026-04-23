@@ -34,6 +34,13 @@ export default function CommsWorkbenchHubPage() {
             Open broadcast hub
           </Link>
         </li>
+        <li className={card}>
+          <p className={h2}>Social workbench</p>
+          <Link href="/admin/workbench/social" className="mt-0.5 inline-block text-sm font-semibold text-civic-slate">
+            Post sets and platform variants
+          </Link>
+          <p className="mt-0.5 text-[10px] text-deep-soil/50">Same campaign spine as tasks; not a replacement for comms threads.</p>
+        </li>
       </ul>
     </div>
   );

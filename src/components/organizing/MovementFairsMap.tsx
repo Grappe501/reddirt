@@ -280,7 +280,8 @@ export function MovementFairsMap({ events, selectedSlug = null, onSelectSlug }: 
           center={ARK_CENTER}
           zoom={DEFAULT_ZOOM}
           className="z-0 h-[min(58vh,520px)] w-full min-h-[260px] touch-manipulation sm:min-h-[320px]"
-          scrollWheelZoom
+          /** Off on long pages so wheel/trackpad scrolls the document, not the map (avoids “scroll trap”). */
+          scrollWheelZoom={false}
           worldCopyJump
         >
           <TileLayer
@@ -303,8 +304,8 @@ export function MovementFairsMap({ events, selectedSlug = null, onSelectSlug }: 
       </div>
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <p className="font-body text-xs text-deep-soil/60">
-          OpenStreetMap + Leaflet — operational field view. Pins without coordinates stay in the list only until staff
-          add a point or county.
+          OpenStreetMap + Leaflet — operational field view. Use the map’s +/− buttons to zoom (scroll moves the page).
+          Pins without coordinates stay in the list only until staff add a point or county.
         </p>
         <Link
           href="/campaign-calendar"

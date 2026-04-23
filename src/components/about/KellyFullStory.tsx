@@ -10,6 +10,7 @@ import {
   initiativesPetitionTrailPhotos,
 } from "@/content/media/campaign-trail-photo-use";
 import { cn } from "@/lib/utils";
+import { siteConfig } from "@/config/site";
 
 const H_STORY = "/about/story";
 const H_BUSINESS = "/about/business";
@@ -26,6 +27,26 @@ const lead = "font-body text-lg leading-relaxed text-deep-soil/88";
 const body = "font-body text-base leading-relaxed text-deep-soil/82";
 const callout = "font-body text-sm text-deep-soil/75";
 const calloutGreen = "font-body text-sm text-deep-soil/80";
+
+/** Featured Kelly video — same source as homepage (`NEXT_PUBLIC_FEATURE_VIDEO_EMBED_URL`). */
+function ForevermostLeadVideo() {
+  const src = siteConfig.featureVideoEmbedUrl?.trim();
+  if (!src) return null;
+  return (
+    <div className="mb-8 mt-6 overflow-hidden rounded-card border border-deep-soil/10 shadow-[var(--shadow-soft)]">
+      <div className="relative aspect-video w-full bg-black">
+        <iframe
+          title="Kelly Grappe — in her own words (featured video)"
+          src={src}
+          className="absolute inset-0 h-full w-full"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        />
+      </div>
+    </div>
+  );
+}
 
 const sections: { id: string; moreHref: string; eyebrow: string; title: string; children: ReactNode }[] = [
   {
@@ -356,6 +377,7 @@ export function KellyFullStory({ trailPeoplePhotos = [] }: KellyFullStoryProps) 
             <p className="font-body text-xs font-bold uppercase tracking-[0.2em] text-red-dirt/90">{s.eyebrow}</p>
             <h2 className={h2}>{s.title}</h2>
             <div className="mt-4 md:mt-5">
+              {s.id === "forevermost" ? <ForevermostLeadVideo /> : null}
               {s.children}
               {s.id === "forevermost" && forevermostPhotos.length > 0 ? (
                 <div

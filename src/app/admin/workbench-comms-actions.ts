@@ -38,8 +38,12 @@ export async function createCommunicationThreadAction(formData: FormData) {
   const phone = String(formData.get("primaryPhone") ?? "").trim();
   const email = String(formData.get("primaryEmail") ?? "").trim();
   const channelRaw = String(formData.get("preferredChannel") ?? "SMS");
-  const countyId = String(formData.get("countyId") ?? "").trim() || null;
+  let countyId = String(formData.get("countyId") ?? "").trim() || null;
   if (!phone && !email) redirect("/admin/workbench?error=contact");
+  if (countyId) {
+    const ok = await prisma.county.findFirst({ where: { id: countyId }, select: { id: true } });
+    if (!ok) countyId = null;
+  }
 
   const nPhone = phone ? normalizeUsPhone(phone) : null;
   if (phone && !nPhone) redirect("/admin/workbench?error=phone");

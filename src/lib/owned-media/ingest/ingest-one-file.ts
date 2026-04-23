@@ -152,6 +152,7 @@ export async function ingestFileFromPath(params: {
         thumbStorageKey,
         thumbPublicUrl,
         fileName: baseName,
+        originalFileName: baseName,
         fileSizeBytes: buffer.length,
         mimeType: mime,
         kind,

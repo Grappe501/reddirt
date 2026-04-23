@@ -1,4 +1,5 @@
 import type { CampaignTrailPhoto } from "@/content/media/campaign-trail-photos";
+import { kellymediaWebPicks } from "@/content/media/kellymedia-web-picks.generated";
 
 /**
  * Editorial tags for synced trail stills. The sync script overwrites `campaign-trail-photos.ts`;
@@ -69,5 +70,11 @@ export function initiativesPetitionTrailPhotos(photos: readonly CampaignTrailPho
  * Pair with `trailPhotosForSlot` so each page draws a non-overlapping slice as the library grows.
  */
 export function peopleTrailPool(photos: readonly CampaignTrailPhoto[]): CampaignTrailPhoto[] {
-  return withoutFarmLifeTrailPhotos(photos).filter((p) => !EXCLUDE_FROM_PEOPLE_TRAIL_IDS.has(p.id));
+  const base = withoutFarmLifeTrailPhotos(photos).filter((p) => !EXCLUDE_FROM_PEOPLE_TRAIL_IDS.has(p.id));
+  const fromKellymedia: CampaignTrailPhoto[] = kellymediaWebPicks.map((p) => ({
+    id: p.id,
+    src: p.src,
+    alt: p.alt,
+  }));
+  return [...fromKellymedia, ...base];
 }

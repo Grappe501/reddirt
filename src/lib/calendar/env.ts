@@ -1,8 +1,34 @@
+function calendarCred(value: string | undefined): string {
+  const t = value?.trim() ?? "";
+  if (!t) return "";
+  const lower = t.toLowerCase();
+  if (
+    lower === "your_client_id" ||
+    lower === "your_client_secret" ||
+    lower.startsWith("your_") ||
+    lower === "xxx" ||
+    lower === "changeme"
+  ) {
+    return "";
+  }
+  return t;
+}
+
 /** Google Calendar OAuth + API — set in `.env` (never commit secrets). */
 export function getGoogleCalendarEnv() {
+  const clientId =
+    calendarCred(process.env.GOOGLE_CALENDAR_CLIENT_ID) ||
+    calendarCred(process.env.GOOGLE_GMAIL_CLIENT_ID) ||
+    calendarCred(process.env.GOOGLE_CLIENT_ID) ||
+    "";
+  const clientSecret =
+    calendarCred(process.env.GOOGLE_CALENDAR_CLIENT_SECRET) ||
+    calendarCred(process.env.GOOGLE_GMAIL_CLIENT_SECRET) ||
+    calendarCred(process.env.GOOGLE_CLIENT_SECRET) ||
+    "";
   return {
-    clientId: process.env.GOOGLE_CALENDAR_CLIENT_ID?.trim() ?? "",
-    clientSecret: process.env.GOOGLE_CALENDAR_CLIENT_SECRET?.trim() ?? "",
+    clientId,
+    clientSecret,
     redirectUri:
       process.env.GOOGLE_CALENDAR_REDIRECT_URI?.trim() ??
       (process.env.NEXT_PUBLIC_SITE_URL

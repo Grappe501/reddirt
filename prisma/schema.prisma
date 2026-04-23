@@ -19,40 +19,49 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  volunteerProfile           VolunteerProfile?
-  commitments                Commitment[]
-  submissions                Submission[]
-  teamRoleAssignments        TeamRoleAssignment[]
-  eventsOwned                CampaignEvent[]            @relation("EventOwner")
-  tasksAssigned              CampaignTask[]             @relation("TaskAssignee")
-  tasksCreated               CampaignTask[]             @relation("TaskCreator")
-  volunteerAsksCreated       VolunteerAsk[]
-  mediaIngestBatches         MediaIngestBatch[]
-  ownedMediaAnnotationsOwned OwnedMediaAnnotation[]     @relation("AnnotationAuthor")
+  volunteerProfile                 VolunteerProfile?
+  commitments                      Commitment[]
+  submissions                      Submission[]
+  teamRoleAssignments              TeamRoleAssignment[]
+  eventsOwned                      CampaignEvent[]                  @relation("EventOwner")
+  tasksAssigned                    CampaignTask[]                   @relation("TaskAssignee")
+  tasksCreated                     CampaignTask[]                   @relation("TaskCreator")
+  volunteerAsksCreated             VolunteerAsk[]
+  mediaIngestBatches               MediaIngestBatch[]
+  ownedMediaAnnotationsOwned       OwnedMediaAnnotation[]           @relation("AnnotationAuthor")
   /// Optional: voter roll row linked for campaign assistance (admin-approved intake).
-  linkedVoterRecordId        String?
-  linkedVoterRecord          VoterRecord?               @relation("UserVoterLink", fields: [linkedVoterRecordId], references: [id], onDelete: SetNull)
-  volunteerSignupIntakes     SignupSheetDocument[]
-  intakeMatchedEntries       SignupSheetEntry[]
-  communicationThreads       CommunicationThread[]      @relation("ThreadPrimaryUser")
-  threadsAssigned            CommunicationThread[]      @relation("ThreadAssignee")
-  messagesSent               CommunicationMessage[]     @relation("MessageSentBy")
-  queueItemsCreated          CommunicationActionQueue[] @relation("QueueCreatedBy")
-  queueItemsTarget           CommunicationActionQueue[] @relation("QueueTargetUser")
-  eventApprovalsSubmitted    EventApproval[]            @relation("ApprovalSubmittedBy")
-  eventApprovalsDecided      EventApproval[]            @relation("ApprovalDecidedBy")
-  eventStageChangesActed     EventStageChangeLog[]     @relation("EventStageChangeActor")
-  eventsApprovedAsStaff      CampaignEvent[]            @relation("EventApprovedByStaff")
-  calendarSourcesOwned       CalendarSource[]           @relation("CalendarSourceOwner")
-  contactPreference          ContactPreference?
-  communicationTemplatesCreated  CommunicationTemplate[]  @relation("TemplateAuthor")
-  audienceSegmentsCreated        AudienceSegment[]      @relation("SegmentAuthor")
-  communicationCampaignsCreated  CommunicationCampaign[]  @relation("CampaignAuthor")
-  communicationCampaignsApproved CommunicationCampaign[] @relation("CampaignApprover")
-  eventSignups                   EventSignup[]            @relation("UserEventSignups")
-  communicationCampaignRecipients CommunicationCampaignRecipient[]
+  linkedVoterRecordId              String?
+  linkedVoterRecord                VoterRecord?                     @relation("UserVoterLink", fields: [linkedVoterRecordId], references: [id], onDelete: SetNull)
+  volunteerSignupIntakes           SignupSheetDocument[]
+  intakeMatchedEntries             SignupSheetEntry[]
+  communicationThreads             CommunicationThread[]            @relation("ThreadPrimaryUser")
+  threadsAssigned                  CommunicationThread[]            @relation("ThreadAssignee")
+  messagesSent                     CommunicationMessage[]           @relation("MessageSentBy")
+  queueItemsCreated                CommunicationActionQueue[]       @relation("QueueCreatedBy")
+  queueItemsTarget                 CommunicationActionQueue[]       @relation("QueueTargetUser")
+  eventApprovalsSubmitted          EventApproval[]                  @relation("ApprovalSubmittedBy")
+  eventApprovalsDecided            EventApproval[]                  @relation("ApprovalDecidedBy")
+  eventStageChangesActed           EventStageChangeLog[]            @relation("EventStageChangeActor")
+  eventsApprovedAsStaff            CampaignEvent[]                  @relation("EventApprovedByStaff")
+  calendarSourcesOwned             CalendarSource[]                 @relation("CalendarSourceOwner")
+  contactPreference                ContactPreference?
+  communicationTemplatesCreated    CommunicationTemplate[]          @relation("TemplateAuthor")
+  audienceSegmentsCreated          AudienceSegment[]                @relation("SegmentAuthor")
+  communicationCampaignsCreated    CommunicationCampaign[]          @relation("CampaignAuthor")
+  communicationCampaignsApproved   CommunicationCampaign[]          @relation("CampaignApprover")
+  eventSignups                     EventSignup[]                    @relation("UserEventSignups")
+  communicationCampaignRecipients  CommunicationCampaignRecipient[]
   /// Staff “human” Gmail rail (at most one linked mailbox; OAuth in `StaffGmailAccount`).
-  staffGmailAccount            StaffGmailAccount?
+  staffGmailAccount                StaffGmailAccount?
+  workflowIntakesAssigned          WorkflowIntake[]                 @relation("WorkflowIntakeAssignee")
+  workflowActionsPerformed         WorkflowAction[]                 @relation("WorkflowActionActor")
+  socialContentItemsAuthored       SocialContentItem[]              @relation("SocialContentAuthor")
+  socialContentMediaRefsCreated    SocialContentMediaRef[]          @relation("SocialMediaRefCreator")
+  conversationWatchlistsCreated    ConversationWatchlist[]          @relation("WatchlistCreator")
+  conversationOpportunitiesCreated ConversationOpportunity[]        @relation("OpportunityCreator")
+  ownedMediaReviewLogs             OwnedMediaReviewLog[]
+  ownedMediaAssetsReviewed         OwnedMediaAsset[]                @relation("OwnedMediaReviewedBy")
+  socialContentDraftsCreated       SocialContentDraft[]             @relation("SocialContentDraftAuthor")
 }
 
 enum EmailOptInStatus {
@@ -77,34 +86,34 @@ model ContactPreference {
   volunteerProfile   VolunteerProfile? @relation(fields: [volunteerProfileId], references: [id], onDelete: SetNull)
 
   /// Standalone thread (no User/VolunteerProfile) — e.g. SMS-only before resolution.
-  communicationThreadId String?         @unique
+  communicationThreadId String?              @unique
   thread                CommunicationThread? @relation(fields: [communicationThreadId], references: [id], onDelete: Cascade)
 
-  emailOptInStatus EmailOptInStatus @default(UNKNOWN)
-  smsOptInStatus   SmsOptInStatus   @default(UNKNOWN)
+  emailOptInStatus         EmailOptInStatus @default(UNKNOWN)
+  smsOptInStatus           SmsOptInStatus   @default(UNKNOWN)
   /// Marketing / bulk email: treat as do-not-mail when set.
-  globalUnsubscribeAt DateTime?
-  smsOptOutAt         DateTime?
+  globalUnsubscribeAt      DateTime?
+  smsOptOutAt              DateTime?
   /// Raw SendGrid / Twilio / vendor signals for debugging and audits.
-  sendgridSuppressionState Json?    @default("{}")
+  sendgridSuppressionState Json?            @default("{}")
   twilioOptOutState        String?
   source                   String?
-  notes                    String?  @db.Text
-  createdAt                DateTime @default(now())
-  updatedAt                DateTime @updatedAt
+  notes                    String?          @db.Text
+  createdAt                DateTime         @default(now())
+  updatedAt                DateTime         @updatedAt
 }
 
 model VolunteerProfile {
-  id                   String                     @id @default(cuid())
-  userId               String                     @unique
-  user                 User                       @relation(fields: [userId], references: [id], onDelete: Cascade)
-  availability         String?
-  skills               String?
-  leadershipInterest   Boolean                    @default(false)
-  eventSignups         EventSignup[]
-  communicationThreads CommunicationThread[]
-  contactPreference   ContactPreference?
-  queueAsTarget        CommunicationActionQueue[] @relation("QueueTargetVolunteer")
+  id                              String                           @id @default(cuid())
+  userId                          String                           @unique
+  user                            User                             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  availability                    String?
+  skills                          String?
+  leadershipInterest              Boolean                          @default(false)
+  eventSignups                    EventSignup[]
+  communicationThreads            CommunicationThread[]
+  contactPreference               ContactPreference?
+  queueAsTarget                   CommunicationActionQueue[]       @relation("QueueTargetVolunteer")
   communicationCampaignRecipients CommunicationCampaignRecipient[]
 }
 
@@ -125,6 +134,707 @@ model Submission {
   content        String   @db.Text
   structuredData Json?
   createdAt      DateTime @default(now())
+
+  /// At most one workflow intake per submission (queue entry for CampaignOS Phase 1).
+  workflowIntake WorkflowIntake?
+}
+
+// --- CampaignOS Phase 1: unified intake queue (extend; do not replace Submission / events / comms) ---
+
+enum WorkflowIntakeStatus {
+  PENDING
+  IN_REVIEW
+  AWAITING_INFO
+  READY_FOR_CALENDAR
+  CONVERTED
+  DECLINED
+  ARCHIVED
+}
+
+enum WorkflowActionKind {
+  STATUS_CHANGE
+  ASSIGNMENT
+  NOTE
+  DECISION
+  EVENT_LINKED
+  OTHER
+}
+
+enum EventRequestStatus {
+  OPEN
+  FULFILLED
+  CANCELLED
+}
+
+/// Master queue row for intakes; links optional `Submission` and optional 1:1 `EventRequest`.
+model WorkflowIntake {
+  id             String               @id @default(cuid())
+  /// When created from a public/admin form `Submission` (at most one intake per submission).
+  submissionId   String?              @unique
+  submission     Submission?          @relation(fields: [submissionId], references: [id], onDelete: SetNull)
+  /// Staff or volunteer owner in the work queue.
+  assignedUserId String?
+  assignedUser   User?                @relation("WorkflowIntakeAssignee", fields: [assignedUserId], references: [id], onDelete: SetNull)
+  countyId       String?
+  county         County?              @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  status         WorkflowIntakeStatus @default(PENDING)
+  /// Short label for the queue (e.g. event title or host name).
+  title          String?
+  /// Origin hint: mirrors `Submission.type` or source system key.
+  source         String?
+  metadata       Json?                @default("{}")
+  createdAt      DateTime             @default(now())
+  updatedAt      DateTime             @updatedAt
+
+  eventRequest              EventRequest?
+  actions                   WorkflowAction[]
+  socialContentItems        SocialContentItem[]
+  /// Routed from public conversation opportunities (action spine).
+  conversationOpportunities ConversationOpportunity[] @relation("OppWorkflowIntake")
+
+  @@index([status, createdAt])
+  @@index([assignedUserId, status])
+  @@index([countyId, status])
+}
+
+/// Scheduling bridge: required parent `WorkflowIntake`, optional `CampaignEvent` once scheduled.
+model EventRequest {
+  id String @id @default(cuid())
+
+  workflowIntakeId String         @unique
+  workflowIntake   WorkflowIntake @relation(fields: [workflowIntakeId], references: [id], onDelete: Cascade)
+  /// Set when an existing or new `CampaignEvent` fulfills this request.
+  campaignEventId  String?
+  campaignEvent    CampaignEvent? @relation(fields: [campaignEventId], references: [id], onDelete: SetNull)
+
+  status EventRequestStatus @default(OPEN)
+
+  requestedStartAt DateTime?
+  requestedEndAt   DateTime?
+  timezone         String    @default("America/Chicago")
+  locationName     String?
+  address          String?   @db.Text
+  /// Free-form: audience, host needs, special instructions.
+  requestDetails   String?   @db.Text
+  metadata         Json?     @default("{}")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status, createdAt])
+  @@index([campaignEventId])
+}
+
+/// Audit / decision log for a `WorkflowIntake`.
+model WorkflowAction {
+  id String @id @default(cuid())
+
+  workflowIntakeId String
+  workflowIntake   WorkflowIntake @relation(fields: [workflowIntakeId], references: [id], onDelete: Cascade)
+
+  actorUserId String?
+  actorUser   User?   @relation("WorkflowActionActor", fields: [actorUserId], references: [id], onDelete: SetNull)
+
+  kind       WorkflowActionKind    @default(OTHER)
+  fromStatus WorkflowIntakeStatus?
+  toStatus   WorkflowIntakeStatus?
+  /// Human-readable decision or note; optional structured data in `metadata`.
+  summary    String?               @db.Text
+  metadata   Json?                 @default("{}")
+
+  createdAt DateTime @default(now())
+
+  @@index([workflowIntakeId, createdAt])
+  @@index([actorUserId, createdAt])
+}
+
+// --- CampaignOS Phase 2: Social Workbench (additive; does not replace comms, events, or task engine) ---
+
+/// Posting / asset destination (e.g. campaign X account, official FB page). Distinct from Script 6.5 `ContentPlatform`.
+enum SocialPlatform {
+  FACEBOOK
+  INSTAGRAM
+  X
+  TIKTOK
+  YOUTUBE
+  BLUESKY
+  THREADS
+  OTHER
+}
+
+/// Lifecycle of a conceptual post or post family (may span many platform variants).
+enum SocialContentStatus {
+  DRAFT
+  IN_REVIEW
+  APPROVED
+  SCHEDULED
+  PUBLISHING
+  PUBLISHED
+  ARCHIVED
+  CANCELLED
+}
+
+/// Per-channel variant state.
+enum SocialVariantStatus {
+  DRAFT
+  READY
+  SCHEDULED
+  PUBLISHED
+  FAILED
+  CANCELLED
+}
+
+/// Why this work exists — drives which `WorkflowTemplate` / `sourceTemplateTaskKey` you attach on `CampaignTask`.
+enum SocialContentKind {
+  EVENT_PROMO
+  RAPID_RESPONSE
+  POST_EVENT_RECAP
+  CLIP_REPURPOSE
+  ORGANIC
+  OTHER
+}
+
+/// Messaging style / tactic for learning (non-negative, trust-oriented set). Distinct from Author Studio "voice" presets.
+enum SocialMessageToneMode {
+  CALM_CLARIFICATION
+  COMMUNITY_STORYTELLING
+  FAITH_CENTERED
+  ISSUE_EDUCATION
+  BOLD_CONTRAST
+  INVITATIONAL_CTA
+}
+
+/// How the post is framed for learning (distinct from `SocialMessageToneMode` voice). Nullable until staff set.
+enum SocialMessageTacticMode {
+  NARRATIVE
+  ISSUE_BRIEF
+  VALUES_STORY
+  INVITE_ACTION
+  RUMOR_CLARIFY
+  OTHER
+}
+
+/// Suggested follow-up *shape* (campaign-safe, stored on strategic insight). No outrage lanes.
+enum SocialStrategicFollowupType {
+  NONE
+  GENERAL_ENGAGEMENT
+  COUNTY_STORY
+  VOLUNTEER_PATHWAY
+  CLARIFICATION
+  RAPID_RESPONSE
+  CLARIFICATION_POST
+  COUNTY_VARIANT
+  VOLUNTEER_CTA
+  EVENT_PROMO
+  POST_EVENT_RECAP
+  NO_ACTION
+}
+
+/// Canonical row for a social post plan (intake- or event-anchored; variants are per platform/account).
+model SocialContentItem {
+  id String @id @default(cuid())
+
+  /// Optional: created from a `WorkflowIntake` (rapid response, request queue, approvals).
+  workflowIntakeId String?
+  workflowIntake   WorkflowIntake? @relation(fields: [workflowIntakeId], references: [id], onDelete: SetNull)
+  /// Optional: anchor to a calendar event (promo, recap, live coverage).
+  campaignEventId  String?
+  campaignEvent    CampaignEvent?  @relation(fields: [campaignEventId], references: [id], onDelete: SetNull)
+
+  kind            SocialContentKind      @default(OTHER)
+  status          SocialContentStatus    @default(DRAFT)
+  /// Classified message tactic for tone / timing learning (optional until staff set).
+  messageToneMode SocialMessageToneMode?
+  /// Message framing (story vs explainer vs clarifier, etc.) for analytics. Optional.
+  messageTacticMode SocialMessageTacticMode?
+  /// Working title in the workbench.
+  title           String?
+  /// Master or default copy; per-platform may override in `SocialPlatformVariant`.
+  bodyCopy        String?                @db.Text
+  /// Hook for assets (e.g. owned media id, Canva link, video asset ref).
+  metadata        Json?                  @default("{}")
+
+  createdByUserId String?
+  createdByUser   User?   @relation("SocialContentAuthor", fields: [createdByUserId], references: [id], onDelete: SetNull)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  platformVariants                  SocialPlatformVariant[]
+  tasks                             CampaignTask[]
+  /// Campaign-owned media (`OwnedMediaAsset`) linked to this work item or to a specific platform variant.
+  mediaLibraryRefs                  SocialContentMediaRef[]
+  performanceSnapshots              SocialPerformanceSnapshot[]
+  strategicInsight                  SocialContentStrategicInsight?
+  /// If this work item was created from a public conversation opportunity.
+  conversationOpportunitiesAsSocial ConversationOpportunity[]      @relation("OppSocialContentItem")
+  /// Author Studio — saved compose alternates and applied-master snapshots.
+  drafts                            SocialContentDraft[]
+
+  @@index([workflowIntakeId, status])
+  @@index([campaignEventId, status])
+  @@index([status, kind, createdAt])
+  @@index([messageToneMode, kind, updatedAt])
+  @@index([messageTacticMode, kind, updatedAt])
+  @@index([createdByUserId])
+}
+
+/// Saved Author Studio compose output for a work item (reuse, audit, optional “applied” marker).
+model SocialContentDraft {
+  id                  String   @id @default(cuid())
+  socialContentItemId String
+  socialContentItem   SocialContentItem @relation(fields: [socialContentItemId], references: [id], onDelete: Cascade)
+  title               String?
+  sourceRoute         String?
+  sourceIntent        String?
+  bodyCopy            String   @db.Text
+  createdByUserId     String?
+  createdByUser       User?    @relation("SocialContentDraftAuthor", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  isApplied           Boolean  @default(false)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@index([socialContentItemId, createdAt])
+  @@index([createdByUserId])
+}
+
+/// A single channel-specific slice of a `SocialContentItem` (copy, schedule, post id when published).
+model SocialPlatformVariant {
+  id String @id @default(cuid())
+
+  socialContentItemId String
+  socialContentItem   SocialContentItem @relation(fields: [socialContentItemId], references: [id], onDelete: Cascade)
+  /// Optional: target account; when null, `platform` still identifies intended network for drafts.
+  socialAccountId     String?
+  socialAccount       SocialAccount?    @relation(fields: [socialAccountId], references: [id], onDelete: SetNull)
+  platform            SocialPlatform
+
+  status         SocialVariantStatus @default(DRAFT)
+  /// Per-channel copy, thread text, or caption.
+  copyText       String?             @db.Text
+  /// Planned send time (staff timezone or UTC per product convention).
+  scheduledAt    DateTime?
+  publishedAt    DateTime?
+  /// External id when published (API scope — engagement ingestion is Phase+ later).
+  externalPostId String?
+  metadata       Json?               @default("{}")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  mediaLibraryRefs     SocialContentMediaRef[]
+  performanceSnapshots SocialPerformanceSnapshot[]
+
+  @@index([socialContentItemId, platform])
+  @@index([status, scheduledAt])
+  @@index([socialAccountId, status])
+  @@index([platform, status])
+}
+
+/// Audience / thread classification for learning (trust-building, not pile-ons).
+enum SocialSentimentType {
+  SUPPORTER
+  CURIOUS
+  SKEPTICAL
+  CONFUSED
+  HOSTILE
+  MEDIA
+  UNKNOWN
+}
+
+enum SocialPerformanceDataSource {
+  MANUAL
+  API_IMPORT
+  ESTIMATE
+  AGGREGATOR
+}
+
+/// Time-bucketed performance for a work item (whole-item or per-platform variant). Meaningful rates over raw vanity totals.
+model SocialPerformanceSnapshot {
+  id String @id @default(cuid())
+
+  socialContentItemId     String
+  socialContentItem       SocialContentItem      @relation(fields: [socialContentItemId], references: [id], onDelete: Cascade)
+  /// Null = rollup across all variants; set for per-channel cut.
+  socialPlatformVariantId String?
+  socialPlatformVariant   SocialPlatformVariant? @relation(fields: [socialPlatformVariantId], references: [id], onDelete: Cascade)
+
+  periodStart DateTime
+  periodEnd   DateTime
+
+  impressions         Int?
+  likes               Int?
+  comments            Int?
+  shares              Int?
+  saves               Int?
+  /// Outbound or tracked link clicks (platform-dependent).
+  clickThroughs       Int?
+  /// CTR 0–1 when impressions known; optional if only clicks available.
+  clickThroughRate    Float?
+  /// Watch-through for video, 0–1.
+  videoCompletionRate Float?
+
+  /// Composite “meaningful engagement” 0–100 (staff or model-defined formula).
+  engagementQualityScore    Float?
+  /// Rough mix of thread tone for this period.
+  dominantSentiment         SocialSentimentType?
+  /// Counts by `SocialSentimentType`, e.g. { "SUPPORTER": 12, "CURIOUS": 3 }.
+  sentimentBreakdownJson    Json?                @default("{}")
+  /// Optional tie for conversion story (e.g. event promo → signups).
+  conversionCampaignEventId String?
+  conversionCampaignEvent   CampaignEvent?       @relation("SocialSnapshotConversion", fields: [conversionCampaignEventId], references: [id], onDelete: SetNull)
+  /// Soft signal: volunteer / interest DMs (manual or CRM hook).
+  volunteerLeadCount        Int?
+
+  dataSource SocialPerformanceDataSource @default(MANUAL)
+  /// Staff / importer notes; not a chart title.
+  notes      String?                     @db.Text
+  createdAt  DateTime                    @default(now())
+  updatedAt  DateTime                    @updatedAt
+
+  @@index([socialContentItemId, periodStart])
+  @@index([socialPlatformVariantId, periodStart])
+  @@index([conversionCampaignEventId])
+}
+
+/// One insight row per work item: strategic narrative + AI placeholders (no generic dashboard).
+model SocialContentStrategicInsight {
+  id                  String            @id @default(cuid())
+  /// 1:1 with work item
+  socialContentItemId String            @unique
+  socialContentItem   SocialContentItem @relation(fields: [socialContentItemId], references: [id], onDelete: Cascade)
+
+  /// Best windows observed / hypothesized (local time notes).
+  timingInsight    String? @db.Text
+  /// Which voice / tone over-indexed for trust and replies.
+  tonePerformance  String? @db.Text
+  /// Saves, replays, thread depth — what helps people stay with the message.
+  retentionSignal  String? @db.Text
+  /// RSVPs, volunteer taps, `CampaignEvent` links when set on snapshots.
+  conversionSignal String? @db.Text
+
+  /// TODO: call OpenAI / moderation to classify recent comments; store summary here.
+  aiCommentClassifyStub      String?   @db.Text
+  /// TODO: summarize this item’s performance vs goals.
+  aiSummarizePerformanceStub String?   @db.Text
+  /// TODO: next experiments / copy tweaks.
+  aiSuggestImprovementsStub  String?   @db.Text
+  lastAiRunAt                DateTime?
+
+  /// Actionable, structured recommendations (0–1 confidence). Narrative text remains in the four `*Insight` fields above.
+  recommendedNextTone     SocialMessageToneMode?
+  recommendedBestWindow   String?                     @db.Text
+  recommendedFollowupType SocialStrategicFollowupType @default(NONE)
+  /// Freeform county or region label when follow-up is county-scoped; optional `County` FK in a later pass.
+  recommendedCountyFocus  String?                     @db.Text
+  /// Short label, e.g. "reply", "link_in_bio", "rsvp" — keep human-readable.
+  recommendedCtaType      String?                     @db.Text
+  /// Model / heuristic confidence in the block above, 0–1.
+  confidenceScore         Float?
+
+  updatedAt DateTime @updatedAt
+}
+
+// --- Public conversation monitoring (signals, not individuals — no PII vault) ---
+
+/// Where a normalized `ConversationItem` was observed (public sources only).
+enum ConversationSourceKind {
+  SOCIAL_PLATFORM
+  NEWS_SITE
+  RSS
+  PRESS_RELEASE
+  MANUAL_ENTRY
+  API_IMPORT
+}
+
+/// Coarse actor boundary for public signal (not used to track private people).
+enum ConversationSignalActorType {
+  OFFICIAL_ORG
+  PRESS
+  ELECTED_OR_COMMENTARY
+  COMMUNITY_THREAD
+  UNKNOWN
+}
+
+enum ConversationItemStatus {
+  NEW
+  ENRICHED
+  CLUSTERED
+  DISMISSED
+  ARCHIVED
+}
+
+enum ConversationClassification {
+  ISSUE_ECONOMY
+  ISSUE_HEALTH
+  ISSUE_EDUCATION
+  ISSUE_INFRA
+  ISSUE_VOTING
+  ISSUE_LOCAL
+  MISINFO_RISK
+  QUESTION
+  SUPPORT
+  CRITIQUE
+  NEUTRAL_REPORT
+  OTHER
+  UNKNOWN
+}
+
+enum ConversationSentimentLabel {
+  POSITIVE
+  NEUTRAL
+  MIXED
+  NEGATIVE
+  UNKNOWN
+}
+
+enum ConversationUrgency {
+  LOW
+  MEDIUM
+  HIGH
+  BREAKING
+}
+
+enum ConversationSuggestedTone {
+  CALM
+  FACTUAL
+  EMPATHETIC
+  FIRM
+  CELEBRATORY
+  DEFERRING
+  OTHER
+}
+
+enum ConversationWatchlistStatus {
+  ACTIVE
+  PAUSED
+  ARCHIVED
+}
+
+enum ConversationClusterStatus {
+  ACTIVE
+  MERGED
+  ARCHIVED
+}
+
+enum ConversationOpportunityStatus {
+  OPEN
+  ROUTED
+  CONVERTED
+  DISMISSED
+}
+
+/// Named filter set for public-source monitoring (keywords, channels — no individual targets).
+model ConversationWatchlist {
+  id              String                      @id @default(cuid())
+  name            String
+  description     String?                     @db.Text
+  status          ConversationWatchlistStatus @default(ACTIVE)
+  /// JSON: keyword groups, allowed channels, hashtags, etc.
+  filterSpec      Json                        @default("{}")
+  countyId        String?
+  county          County?                     @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  createdByUserId String?
+  createdBy       User?                       @relation("WatchlistCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  createdAt       DateTime                    @default(now())
+  updatedAt       DateTime                    @updatedAt
+
+  items ConversationItem[]
+
+  @@index([countyId, status])
+  @@index([status, updatedAt])
+}
+
+/// One normalized public post, comment thread, or article (aggregated content; no private DMs).
+model ConversationItem {
+  id              String                      @id @default(cuid())
+  sourceKind      ConversationSourceKind
+  /// Adapter idempotency key (post id, URL hash, etc.); optional for one-off manual rows.
+  externalKey     String?
+  publicPermalink String?                     @db.Text
+  channel         String
+  title           String?
+  bodyText        String                      @db.Text
+  signalActorType ConversationSignalActorType @default(UNKNOWN)
+  publishedAt     DateTime?
+  countyId        String?
+  county          County?                     @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  watchlistId     String?
+  watchlist       ConversationWatchlist?      @relation(fields: [watchlistId], references: [id], onDelete: SetNull)
+  status          ConversationItemStatus      @default(NEW)
+  /// Ingest metadata (API version, search id) — must not store PII.
+  rawMetadata     Json?                       @default("{}")
+  ingestedAt      DateTime                    @default(now())
+  createdAt       DateTime                    @default(now())
+  updatedAt       DateTime                    @updatedAt
+
+  analysis             ConversationAnalysis?
+  clusterMemberships   ConversationClusterItem[]
+  opportunityAsPrimary ConversationOpportunity?  @relation("OppPrimaryItem")
+
+  @@unique([sourceKind, externalKey])
+  @@index([sourceKind, publishedAt])
+  @@index([countyId, status])
+  @@index([status, createdAt])
+  @@index([watchlistId, createdAt])
+}
+
+/// AI / rules enrichment for a `ConversationItem` (latest analysis; re-run overwrites).
+model ConversationAnalysis {
+  id                 String           @id @default(cuid())
+  conversationItemId String           @unique
+  conversationItem   ConversationItem @relation(fields: [conversationItemId], references: [id], onDelete: Cascade)
+
+  summary             String?                    @db.Text
+  classification      ConversationClassification @default(UNKNOWN)
+  sentiment           ConversationSentimentLabel @default(UNKNOWN)
+  urgency             ConversationUrgency        @default(MEDIUM)
+  suggestedTone       ConversationSuggestedTone  @default(FACTUAL)
+  issueTags           String[]                   @default([])
+  countyInferenceNote String?                    @db.Text
+  suggestedAction     String?                    @db.Text
+  confidenceJson      Json?                      @default("{}")
+  analyzerVersion     String?
+  analyzedAt          DateTime                   @default(now())
+  createdAt           DateTime                   @default(now())
+  updatedAt           DateTime                   @updatedAt
+
+  @@index([classification, urgency])
+  @@index([analyzedAt])
+}
+
+/// Correlation group for similar public signals (e.g. same misinfo wave).
+model ConversationCluster {
+  id         String                    @id @default(cuid())
+  title      String
+  summary    String?                   @db.Text
+  status     ConversationClusterStatus @default(ACTIVE)
+  /// Optional dedupe / embedding key (future).
+  clusterKey String?
+  countyId   String?
+  county     County?                   @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  createdAt  DateTime                  @default(now())
+  updatedAt  DateTime                  @updatedAt
+
+  items         ConversationClusterItem[]
+  opportunities ConversationOpportunity[]
+
+  @@index([countyId, status])
+  @@index([status, updatedAt])
+}
+
+/// Bridge: which items belong to a cluster and how strongly.
+model ConversationClusterItem {
+  id                 String              @id @default(cuid())
+  clusterId          String
+  cluster            ConversationCluster @relation(fields: [clusterId], references: [id], onDelete: Cascade)
+  conversationItemId String
+  conversationItem   ConversationItem    @relation(fields: [conversationItemId], references: [id], onDelete: Cascade)
+  similarity         Float?
+  addedAt            DateTime            @default(now())
+
+  @@unique([clusterId, conversationItemId])
+  @@index([conversationItemId])
+}
+
+/// Actionable “response opportunity” — can route to `WorkflowIntake` and/or `SocialContentItem`.
+model ConversationOpportunity {
+  id                        String                        @id @default(cuid())
+  title                     String
+  summary                   String?                       @db.Text
+  status                    ConversationOpportunityStatus @default(OPEN)
+  urgency                   ConversationUrgency           @default(MEDIUM)
+  suggestedTone             ConversationSuggestedTone     @default(FACTUAL)
+  /// Intent for CampaignOS: RAPID_RESPONSE, CLARIFICATION, FAQ, BRIEF_NOTE, etc.
+  actionTemplate            String?
+  countyId                  String?
+  county                    County?                       @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  /// Primary signal this opportunity was created from.
+  primaryConversationItemId String?                       @unique
+  primaryItem               ConversationItem?             @relation("OppPrimaryItem", fields: [primaryConversationItemId], references: [id], onDelete: SetNull)
+  clusterId                 String?
+  cluster                   ConversationCluster?          @relation(fields: [clusterId], references: [id], onDelete: SetNull)
+  workflowIntakeId          String?
+  workflowIntake            WorkflowIntake?               @relation("OppWorkflowIntake", fields: [workflowIntakeId], references: [id], onDelete: SetNull)
+  socialContentItemId       String?
+  socialContentItem         SocialContentItem?            @relation("OppSocialContentItem", fields: [socialContentItemId], references: [id], onDelete: SetNull)
+  createdByUserId           String?
+  createdBy                 User?                         @relation("OpportunityCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  metadata                  Json?                         @default("{}")
+  convertedAt               DateTime?
+  createdAt                 DateTime                      @default(now())
+  updatedAt                 DateTime                      @updatedAt
+
+  @@index([status, urgency])
+  @@index([countyId, status])
+  @@index([workflowIntakeId])
+  @@index([socialContentItemId])
+  @@index([clusterId])
+}
+
+/// Why a piece of `OwnedMediaAsset` is associated with a social work item.
+enum SocialContentMediaRefPurpose {
+  /// General planning / library attachment on the work item.
+  SOCIAL_PLAN
+  /// Candidate source for repurpose (video) workflows — TODO: timecodes + clip index.
+  VIDEO_REPURPOSE
+  /// Image/graphic/quote workflow input — TODO: crop / template ids.
+  VISUAL
+  /// Pin to a specific `SocialPlatformVariant` (e.g. Reels vs Shorts).
+  PLATFORM_VARIANT
+}
+
+/// Join table: `OwnedMediaAsset` ↔ social workbench without duplicating file rows.
+model SocialContentMediaRef {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  ownedMediaId String
+  ownedMedia   OwnedMediaAsset @relation(fields: [ownedMediaId], references: [id], onDelete: Cascade)
+
+  socialContentItemId String
+  socialContentItem   SocialContentItem @relation(fields: [socialContentItemId], references: [id], onDelete: Cascade)
+
+  /// When set, asset is associated with a specific cut of this item (e.g. Instagram vs X).
+  socialPlatformVariantId String?
+  socialPlatformVariant   SocialPlatformVariant? @relation(fields: [socialPlatformVariantId], references: [id], onDelete: SetNull)
+
+  purpose   SocialContentMediaRefPurpose
+  /// Optional staff context (e.g. “8–22s b-roll”); structured clip refs stay TODO for AI.
+  note      String?                      @db.Text
+  sortOrder Int                          @default(0)
+
+  createdByUserId String?
+  createdBy       User?   @relation("SocialMediaRefCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
+
+  @@index([socialContentItemId, purpose, sortOrder])
+  @@index([ownedMediaId])
+  @@index([socialPlatformVariantId])
+  @@index([createdAt])
+}
+
+/// Registered outbound identity for the campaign (one row per account/handle you manage).
+model SocialAccount {
+  id         String         @id @default(cuid())
+  platform   SocialPlatform
+  label      String
+  /// Handle without @, or page name slug as stored by staff.
+  handle     String?
+  /// Vendor / network page id, useful when wiring APIs.
+  externalId String?
+  profileUrl String?
+  isActive   Boolean        @default(true)
+  notes      String?        @db.Text
+  metadata   Json?          @default("{}")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  variants SocialPlatformVariant[]
+
+  @@index([platform, isActive])
+  @@index([handle, platform])
 }
 
 model SearchChunk {
@@ -486,6 +1196,8 @@ enum OwnedMediaRole {
 enum OwnedMediaSourceType {
   DIRECT_UPLOAD
   UPLOADED_CAMPAIGN
+  /// Registered by server-side index of an approved on-disk root (not browser FS).
+  LOCAL_INDEXED
   IMPORT
   MIGRATED
   SUPPORTER_UPLOAD
@@ -552,6 +1264,46 @@ enum QuoteReviewStatus {
   REJECTED
 }
 
+/// Culling / triage, distinct from `OwnedMediaReviewStatus` (operational review pipeline).
+enum OwnedMediaPickStatus {
+  UNRATED
+  PICK
+  REJECT
+}
+
+/// Lightroom-style color labels (asset organization).
+enum OwnedMediaColorLabel {
+  NONE
+  RED
+  YELLOW
+  GREEN
+  BLUE
+  PURPLE
+}
+
+/// How this file relates to a capture master (original vs delivered derivative).
+enum OwnedMediaDerivativeType {
+  ORIGINAL
+  THUMBNAIL
+  WEB_JPEG
+  CROP_SQUARE
+  CROP_PORTRAIT
+  CROP_STORY
+  VIDEO_PROXY
+  VIDEO_POSTER
+  OTHER
+}
+
+/// Planned or completed derivative job (thumbnails, crops, web renditions).
+enum OwnedMediaDerivativeJobStatus {
+  PLANNED
+  QUEUED
+  RUNNING
+  SUCCEEDED
+  FAILED
+  SKIPPED
+}
+
 enum OwnedMediaNoteType {
   DESCRIPTION
   PEOPLE
@@ -598,6 +1350,9 @@ model OwnedMediaAsset {
   needsGeoReview          Boolean                  @default(false)
   countySlug              String?
   countyFips              String?
+  /// Optional FK to `County` (filter chips); may lag `countySlug` until backfilled.
+  countyId                String?
+  county                  County?                  @relation(fields: [countyId], references: [id], onDelete: SetNull)
   city                    String?
   issueTags               String[]                 @default([])
   campaignPhase           String?
@@ -629,18 +1384,62 @@ model OwnedMediaAsset {
   ingestContentSha256     String?                  @unique
   /// Set by local folder watcher: original relative path (audit).
   localIngestRelativePath String?
-  /// Optional bulk import session (folder / device ingest).
+  /// Label of the approved index root (env-configured) that produced this row — not a raw full path.
+  indexSourceLabel        String?
+  /// Filename as imported or captured (audit); `fileName` / `title` may follow campaign naming rules.
+  originalFileName        String?
+  /// Deterministic, human-readable campaign name (stems from `campaign-filename`); not a client filesystem path.
+  canonicalFileName       String?
+  /// Triage: 0–5 stars, null = not rated.
+  rating                  Int?
+  pickStatus              OwnedMediaPickStatus     @default(UNRATED)
+  colorLabel              OwnedMediaColorLabel     @default(NONE)
+  isFavorite              Boolean                  @default(false)
+  /// Stack / burst group (shared id = same stack); originals and picks can share a stack id.
+  stackGroupId            String?
+  /// Direct parent in a derivative tree (e.g. web JPEG from camera original).
+  parentAssetId           String?
+  parentAsset             OwnedMediaAsset?         @relation("OwnedMediaDerivation", fields: [parentAssetId], references: [id], onDelete: SetNull)
+  derivedChildren         OwnedMediaAsset[]        @relation("OwnedMediaDerivation")
+  /// Top-most source asset in a lineage; null = this row is a root original.
+  rootAssetId             String?
+  rootAsset               OwnedMediaAsset?         @relation("OwnedMediaRoot", fields: [rootAssetId], references: [id], onDelete: SetNull)
+  sameRootAssets          OwnedMediaAsset[]        @relation("OwnedMediaRoot")
+  derivativeType          OwnedMediaDerivativeType @default(ORIGINAL)
+  /// Governance: in addition to `approvedForSocial` (workbench) — press kit / website use.
+  approvedForPress        Boolean                  @default(false)
+  approvedForPublicSite   Boolean                  @default(false)
+  /// Staff triage and review, distinct from public description.
+  staffReviewNotes        String?                  @db.Text
+  /// Idempotent import / hash collision notes.
+  importDuplicateNote     String?                  @db.Text
+  /// When staff marks media safe to reference from Social Workbench / public use (governance).
+  approvedForSocial       Boolean                  @default(false)
+  /// Optional bulk import session (folder / device ingest). Same as campaign “import batch” in UI copy.
+  /// App/docs alias: `importBatchId` in API and integration notes = this FK to `MediaIngestBatch` (not a second table).
   mediaIngestBatchId      String?
   mediaIngestBatch        MediaIngestBatch?        @relation(fields: [mediaIngestBatchId], references: [id], onDelete: SetNull)
+  /// Last Media Center / staff “reviewed at” (distinct from `reviewStatus` lifecycle).
+  reviewedAt              DateTime?
+  reviewedByUserId        String?
+  reviewedBy              User?                    @relation("OwnedMediaReviewedBy", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
+  /// Short triage / handoff note for Media Center (separate from `staffReviewNotes` / `operatorNotes`).
+  reviewNotes             String?                  @db.Text
   createdBy               String?
   createdAt               DateTime                 @default(now())
   updatedAt               DateTime                 @updatedAt
 
-  transcripts          OwnedMediaTranscript[]
-  quoteCandidates      OwnedMediaQuoteCandidate[]
-  annotations          OwnedMediaAnnotation[]
-  signupSheetDocuments SignupSheetDocument[]
+  transcripts           OwnedMediaTranscript[]
+  quoteCandidates       OwnedMediaQuoteCandidate[]
+  annotations           OwnedMediaAnnotation[]
+  signupSheetDocuments  SignupSheetDocument[]
+  socialContentLinks    SocialContentMediaRef[]
+  collectionItems       OwnedMediaCollectionItem[]
+  reviewLogs            OwnedMediaReviewLog[]
+  derivativeJobsPlanned OwnedMediaDerivativeJob[]  @relation("DerivativeSourceJobs")
 
+  @@index([countyId, capturedAt])
+  @@index([approvedForSocial, kind])
   @@index([countySlug, eventDate])
   @@index([countySlug, capturedAt])
   @@index([city, capturedAt])
@@ -655,6 +1454,19 @@ model OwnedMediaAsset {
   @@index([gpsLat, gpsLng])
   @@index([linkedCampaignEventId])
   @@index([mediaIngestBatchId, reviewStatus])
+  @@index([stackGroupId])
+  @@index([pickStatus, reviewStatus])
+  @@index([colorLabel])
+  @@index([rating])
+  @@index([isFavorite])
+  @@index([parentAssetId])
+  @@index([rootAssetId])
+  @@index([derivativeType])
+  @@index([approvedForPress])
+  @@index([approvedForPublicSite])
+  @@index([reviewedAt])
+  @@index([reviewedByUserId])
+  @@index([countyId, pickStatus, capturedAt])
 }
 
 model OwnedMediaAnnotation {
@@ -768,19 +1580,25 @@ model County {
   demographics  CountyPublicDemographics?
   elected       CountyElectedOfficial[]
 
-  countyVoterMetrics      CountyVoterMetrics[]
-  voterRecords            VoterRecord[]
-  voterSnapshotChanges    VoterSnapshotChange[]
-  campaignEvents          CampaignEvent[]
-  campaignTasks           CampaignTask[]
-  volunteerAsks           VolunteerAsk[]
-  eventSignups            EventSignup[]
-  teamRoleAssignments     TeamRoleAssignment[]
-  signupSheetEntries      SignupSheetEntry[]
-  communicationThreads    CommunicationThread[]
-  eventAnalyticsSnapshots EventAnalyticsSnapshot[]
-  arkansasFestivalIngests ArkansasFestivalIngest[]
-  externalMediaMentions   ExternalMediaMention[]
+  countyVoterMetrics        CountyVoterMetrics[]
+  voterRecords              VoterRecord[]
+  voterSnapshotChanges      VoterSnapshotChange[]
+  campaignEvents            CampaignEvent[]
+  campaignTasks             CampaignTask[]
+  volunteerAsks             VolunteerAsk[]
+  eventSignups              EventSignup[]
+  teamRoleAssignments       TeamRoleAssignment[]
+  signupSheetEntries        SignupSheetEntry[]
+  ownedMediaByCounty        OwnedMediaAsset[]
+  communicationThreads      CommunicationThread[]
+  eventAnalyticsSnapshots   EventAnalyticsSnapshot[]
+  arkansasFestivalIngests   ArkansasFestivalIngest[]
+  externalMediaMentions     ExternalMediaMention[]
+  conversationWatchlists    ConversationWatchlist[]
+  conversationItems         ConversationItem[]
+  conversationClusters      ConversationCluster[]
+  conversationOpportunities ConversationOpportunity[]
+  workflowIntakes           WorkflowIntake[]
 
   @@index([published, sortOrder])
 }
@@ -1229,11 +2047,11 @@ model CampaignEvent {
   /// When the event was submitted for review (DRAFT → PENDING_APPROVAL).
   submittedForReviewAt     DateTime?
   /// When the event was approved (PENDING_APPROVAL → APPROVED).
-  approvedAt                 DateTime?
+  approvedAt               DateTime?
   approvedByUserId         String?
   approvedByUser           User?                   @relation("EventApprovedByStaff", fields: [approvedByUserId], references: [id], onDelete: SetNull)
   /// When the event was marked completed in workflow (APPROVED/PUBLISHED → COMPLETED).
-  completedAt                DateTime?
+  completedAt              DateTime?
   /// When set with APPROVED/PUBLISHED + visibility, drives public /campaign-calendar.
   publicSummary            String?                 @db.Text
   calendarSourceId         String?
@@ -1268,34 +2086,40 @@ model CampaignEvent {
   prepReadiness            EventReadinessStatus    @default(UNKNOWN)
   followupReadiness        EventReadinessStatus    @default(UNKNOWN)
   /// Reminder / touchpoint plan for this event (Slice 3 calendar comms).
-  reminderPlanStatus        EventReadinessStatus    @default(UNKNOWN)
+  reminderPlanStatus       EventReadinessStatus    @default(UNKNOWN)
   /// RSVP / invite / pre-event attendee messaging track.
-  attendeeCommsStatus       EventReadinessStatus    @default(UNKNOWN)
+  attendeeCommsStatus      EventReadinessStatus    @default(UNKNOWN)
   /// Post-event thank-you and volunteer follow-up track.
-  followupCommsStatus       EventReadinessStatus    @default(UNKNOWN)
-  lastReminderSentAt         DateTime?
-  nextReminderDueAt          DateTime?
-  lastAttendeeNoticeAt       DateTime?
-  lastCancellationNoticeAt  DateTime?
-  thankYouQueuedAt          DateTime?
+  followupCommsStatus      EventReadinessStatus    @default(UNKNOWN)
+  lastReminderSentAt       DateTime?
+  nextReminderDueAt        DateTime?
+  lastAttendeeNoticeAt     DateTime?
+  lastCancellationNoticeAt DateTime?
+  thankYouQueuedAt         DateTime?
   createdAt                DateTime                @default(now())
   updatedAt                DateTime                @updatedAt
 
-  signups                EventSignup[]
-  tasks                  CampaignTask[]
-  asks                   VolunteerAsk[]
+  signups                                 EventSignup[]
+  tasks                                   CampaignTask[]
+  asks                                    VolunteerAsk[]
   /// Media assets logically tied to this campaign event (rally, etc.).
-  linkedOwnedMediaAssets OwnedMediaAsset[]          @relation("OwnedMediaCampaignEvent")
-  commsQueueItems        CommunicationActionQueue[]
-  eventApprovals         EventApproval[]
-  stageChangeLogs        EventStageChangeLog[]
-  syncLogs               EventSyncLog[]             @relation("EventSyncForEvent")
-  analyticsSnapshots     EventAnalyticsSnapshot[]
-  weeklyBigRock          WeeklyBigRock?             @relation("BigRockEvent")
-  communicationCampaigns CommunicationCampaign[]
+  linkedOwnedMediaAssets                  OwnedMediaAsset[]           @relation("OwnedMediaCampaignEvent")
+  commsQueueItems                         CommunicationActionQueue[]
+  eventApprovals                          EventApproval[]
+  stageChangeLogs                         EventStageChangeLog[]
+  syncLogs                                EventSyncLog[]              @relation("EventSyncForEvent")
+  analyticsSnapshots                      EventAnalyticsSnapshot[]
+  weeklyBigRock                           WeeklyBigRock?              @relation("BigRockEvent")
+  communicationCampaigns                  CommunicationCampaign[]
   /// When this event was created by promoting an ingested fair/festival.
-  festivalPromotionSource ArkansasFestivalIngest? @relation("FestivalPromotion")
-  externalMediaMentions   ExternalMediaMention[]
+  festivalPromotionSource                 ArkansasFestivalIngest?     @relation("FestivalPromotion")
+  externalMediaMentions                   ExternalMediaMention[]
+  /// Scheduling requests that were fulfilled by creating or linking this event (CampaignOS Phase 1).
+  sourceEventRequests                     EventRequest[]
+  /// Optional linked social workbench content (event promo, recap, etc.).
+  socialContentItems                      SocialContentItem[]
+  /// Performance rows that attribute conversion narrative to this event.
+  socialPerformanceSnapshotsForConversion SocialPerformanceSnapshot[] @relation("SocialSnapshotConversion")
 
   @@index([startAt, status])
   @@index([countyId, startAt])
@@ -1308,53 +2132,53 @@ model CampaignEvent {
 
 /// Batch record for festival ingest runs (cron / manual).
 model FestivalIngestRun {
-  id          String    @id @default(cuid())
-  startedAt   DateTime  @default(now())
+  id          String                   @id @default(cuid())
+  startedAt   DateTime                 @default(now())
   finishedAt  DateTime?
   label       String?
   summaryJson Json?
-  inserted    Int       @default(0)
-  updated     Int       @default(0)
-  skipped     Int       @default(0)
-  error       String?   @db.Text
+  inserted    Int                      @default(0)
+  updated     Int                      @default(0)
+  skipped     Int                      @default(0)
+  error       String?                  @db.Text
   festivals   ArkansasFestivalIngest[]
 }
 
 /// Fair, festival, or large community gathering discovered via ingest — not a campaign event until reviewed / promoted.
 model ArkansasFestivalIngest {
-  id                 String   @id @default(cuid())
-  name               String
-  shortDescription   String?  @db.Text
-  startAt            DateTime
-  endAt              DateTime
-  timezone           String   @default("America/Chicago")
-  city               String?
-  countyId           String?
-  county             County?  @relation(fields: [countyId], references: [id], onDelete: SetNull)
-  latitude           Float?
-  longitude          Float?
-  venueName          String?
-  sourceChannel      FestivalSourceChannel
+  id                      String                     @id @default(cuid())
+  name                    String
+  shortDescription        String?                    @db.Text
+  startAt                 DateTime
+  endAt                   DateTime
+  timezone                String                     @default("America/Chicago")
+  city                    String?
+  countyId                String?
+  county                  County?                    @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  latitude                Float?
+  longitude               Float?
+  venueName               String?
+  sourceChannel           FestivalSourceChannel
   /// Deduplication key: canonical public URL for the listing when available.
-  sourceUrl          String   @unique
-  sourceFingerprint  String?
-  rawPayload         Json?
+  sourceUrl               String                     @unique
+  sourceFingerprint       String?
+  rawPayload              Json?
   /// When source is `PUBLIC_FORM`, optional more-info link the submitter provided.
-  submitterInfoUrl   String?
+  submitterInfoUrl        String?
   /// Name/email from the public suggestion form (never shown on site; admin only).
-  submitterName      String?
-  submitterEmail     String?
-  reviewStatus       FestivalIngestReviewStatus @default(PENDING_REVIEW)
+  submitterName           String?
+  submitterEmail          String?
+  reviewStatus            FestivalIngestReviewStatus @default(PENDING_REVIEW)
   /// When true and `reviewStatus` is APPROVED, show on public campaign trail feed.
-  isVisibleOnSite    Boolean  @default(false)
-  estimatedAttendance Int?
-  promotedCampaignEventId String?  @unique
-  promotedCampaignEvent   CampaignEvent? @relation("FestivalPromotion", fields: [promotedCampaignEventId], references: [id], onDelete: SetNull)
-  ingestRunId        String?
-  ingestRun          FestivalIngestRun? @relation(fields: [ingestRunId], references: [id], onDelete: SetNull)
-  lastSeenInIngestAt DateTime @default(now())
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
+  isVisibleOnSite         Boolean                    @default(false)
+  estimatedAttendance     Int?
+  promotedCampaignEventId String?                    @unique
+  promotedCampaignEvent   CampaignEvent?             @relation("FestivalPromotion", fields: [promotedCampaignEventId], references: [id], onDelete: SetNull)
+  ingestRunId             String?
+  ingestRun               FestivalIngestRun?         @relation(fields: [ingestRunId], references: [id], onDelete: SetNull)
+  lastSeenInIngestAt      DateTime                   @default(now())
+  createdAt               DateTime                   @default(now())
+  updatedAt               DateTime                   @updatedAt
 
   @@index([startAt, reviewStatus])
   @@index([countyId, startAt])
@@ -1372,57 +2196,61 @@ model FestivalCoveragePlanSnapshot {
 }
 
 model CampaignTask {
-  id                 String               @id @default(cuid())
-  title              String
-  description        String?              @db.Text
-  taskType           CampaignTaskType     @default(OTHER)
-  status             CampaignTaskStatus   @default(TODO)
-  priority           CampaignTaskPriority @default(MEDIUM)
-  dueAt              DateTime?
-  startAt            DateTime?
-  assignedUserId     String?
-  assignee           User?                @relation("TaskAssignee", fields: [assignedUserId], references: [id], onDelete: SetNull)
-  assignedRole       String?
+  id                    String               @id @default(cuid())
+  title                 String
+  description           String?              @db.Text
+  taskType              CampaignTaskType     @default(OTHER)
+  status                CampaignTaskStatus   @default(TODO)
+  priority              CampaignTaskPriority @default(MEDIUM)
+  dueAt                 DateTime?
+  startAt               DateTime?
+  assignedUserId        String?
+  assignee              User?                @relation("TaskAssignee", fields: [assignedUserId], references: [id], onDelete: SetNull)
+  assignedRole          String?
   /// When true, incomplete state drags event execution / readiness (Slice 4).
-  blocksReadiness    Boolean              @default(false)
+  blocksReadiness       Boolean              @default(false)
   /// Idempotency: `WorkflowTemplateTask.taskKey` that created this row.
   sourceTemplateTaskKey String?
-  countyId           String?
-  county             County?              @relation(fields: [countyId], references: [id], onDelete: SetNull)
-  eventId            String?
-  event              CampaignEvent?       @relation(fields: [eventId], references: [id], onDelete: SetNull)
-  workflowRunId      String?
-  workflowRun        WorkflowRun?         @relation(fields: [workflowRunId], references: [id], onDelete: SetNull)
-  parentTaskId       String?
-  parentTask         CampaignTask?        @relation("Subtasks", fields: [parentTaskId], references: [id], onDelete: SetNull)
-  subtasks           CampaignTask[]       @relation("Subtasks")
-  createdByUserId    String?
-  creator            User?                @relation("TaskCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
-  completionNotes    String?              @db.Text
-  completedAt        DateTime?
-  timeMatrixQuadrant TimeMatrixQuadrant?
-  createdAt          DateTime             @default(now())
-  updatedAt          DateTime             @updatedAt
+  countyId              String?
+  county                County?              @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  eventId               String?
+  event                 CampaignEvent?       @relation(fields: [eventId], references: [id], onDelete: SetNull)
+  /// Optional: Social Workbench item (approvals, schedule, monitor, follow-up for that post set).
+  socialContentItemId   String?
+  socialContentItem     SocialContentItem?   @relation(fields: [socialContentItemId], references: [id], onDelete: SetNull)
+  workflowRunId         String?
+  workflowRun           WorkflowRun?         @relation(fields: [workflowRunId], references: [id], onDelete: SetNull)
+  parentTaskId          String?
+  parentTask            CampaignTask?        @relation("Subtasks", fields: [parentTaskId], references: [id], onDelete: SetNull)
+  subtasks              CampaignTask[]       @relation("Subtasks")
+  createdByUserId       String?
+  creator               User?                @relation("TaskCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  completionNotes       String?              @db.Text
+  completedAt           DateTime?
+  timeMatrixQuadrant    TimeMatrixQuadrant?
+  createdAt             DateTime             @default(now())
+  updatedAt             DateTime             @updatedAt
 
   @@index([status, dueAt])
   @@index([assignedUserId, status])
   @@index([eventId])
   @@index([eventId, sourceTemplateTaskKey])
   @@index([dueAt, status])
+  @@index([socialContentItemId, status])
 }
 
 model WorkflowTemplate {
-  id          String                  @id @default(cuid())
-  key         String                  @unique
-  title       String
-  description String?                 @db.Text
-  triggerType WorkflowTemplateTrigger
+  id                String                  @id @default(cuid())
+  key               String                  @unique
+  title             String
+  description       String?                 @db.Text
+  triggerType       WorkflowTemplateTrigger
   /// When set, this template is the default pack for calendar events of this type (Slice 4).
   campaignEventType CampaignEventType?
-  isActive    Boolean                 @default(true)
-  configJson  Json                    @default("{}")
-  createdAt   DateTime                @default(now())
-  updatedAt   DateTime                @updatedAt
+  isActive          Boolean                 @default(true)
+  configJson        Json                    @default("{}")
+  createdAt         DateTime                @default(now())
+  updatedAt         DateTime                @updatedAt
 
   tasks WorkflowTemplateTask[]
   runs  WorkflowRun[]
@@ -1545,6 +2373,8 @@ model TeamRoleAssignment {
 
 model MediaIngestBatch {
   id              String                 @id @default(cuid())
+  /// Human-friendly import session code (display in Media Center sidebars).
+  clientBatchCode String?                @unique
   sourceType      String
   sourceLabel     String
   ingestPath      String?                @db.Text
@@ -1555,6 +2385,8 @@ model MediaIngestBatch {
   startedAt       DateTime               @default(now())
   finishedAt      DateTime?
   notes           String?                @db.Text
+  /// Append-only import diagnostics (e.g. duplicate paths, skipped files).
+  metadataJson    Json?
   createdByUserId String?
   createdBy       User?                  @relation(fields: [createdByUserId], references: [id], onDelete: SetNull)
   createdAt       DateTime               @default(now())
@@ -1563,6 +2395,76 @@ model MediaIngestBatch {
   assets OwnedMediaAsset[]
 
   @@index([status, createdAt])
+}
+
+/// User-defined or smart (rule-based) sets for the Media Center — membership is this join table, not a copy of files.
+model OwnedMediaCollection {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  description String?  @db.Text
+  isSmart     Boolean  @default(false)
+  /// When `isSmart`, optional JSON filter spec evaluated in app (e.g. county + event + tags).
+  filterJson  Json?
+  sortOrder   Int      @default(0)
+  isPinned    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  items OwnedMediaCollectionItem[]
+
+  @@index([sortOrder, name])
+}
+
+model OwnedMediaCollectionItem {
+  id           String               @id @default(cuid())
+  collectionId String
+  collection   OwnedMediaCollection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  ownedMediaId String
+  ownedMedia   OwnedMediaAsset      @relation(fields: [ownedMediaId], references: [id], onDelete: Cascade)
+  sortOrder    Int                  @default(0)
+  addedAt      DateTime             @default(now())
+
+  @@unique([collectionId, ownedMediaId])
+  @@index([ownedMediaId])
+  @@index([collectionId, sortOrder])
+}
+
+/// Audit log for triage and governance changes (optional; not required for every edit).
+model OwnedMediaReviewLog {
+  id           String          @id @default(cuid())
+  ownedMediaId String
+  ownedMedia   OwnedMediaAsset @relation(fields: [ownedMediaId], references: [id], onDelete: Cascade)
+  userId       String?
+  user         User?           @relation(fields: [userId], references: [id], onDelete: SetNull)
+  /// Short action key, e.g. PICK, RATE, APPROVE_SOCIAL, APPROVE_PRESS.
+  action       String
+  fromSnapshot Json?
+  toSnapshot   Json?
+  note         String?         @db.Text
+  createdAt    DateTime        @default(now())
+
+  @@index([ownedMediaId, createdAt])
+  @@index([userId, createdAt])
+}
+
+/// Queue / scaffolding for generated renditions; workers create new `OwnedMediaAsset` children with `derivativeType` + `parentAssetId`.
+model OwnedMediaDerivativeJob {
+  id                   String                        @id @default(cuid())
+  sourceAssetId        String
+  sourceAsset          OwnedMediaAsset               @relation("DerivativeSourceJobs", fields: [sourceAssetId], references: [id], onDelete: Cascade)
+  targetDerivativeType OwnedMediaDerivativeType
+  status               OwnedMediaDerivativeJobStatus @default(PLANNED)
+  priority             Int                           @default(0)
+  payloadJson          Json?
+  lastError            String?                       @db.Text
+  startedAt            DateTime?
+  finishedAt           DateTime?
+  createdAt            DateTime                      @default(now())
+  updatedAt            DateTime                      @updatedAt
+
+  @@index([sourceAssetId, status])
+  @@index([status, priority])
 }
 
 // --- Volunteer signup sheet intake (image/PDF → rows → voter match → admin approval) ---
@@ -1776,7 +2678,7 @@ model CommunicationThread {
   actionQueue             CommunicationActionQueue[]
   tagAssignments          CommunicationThreadTag[]
   contactPreferenceRecord ContactPreference?
-  campaignRecipients  CommunicationCampaignRecipient[]
+  campaignRecipients      CommunicationCampaignRecipient[]
 
   @@index([threadStatus, lastMessageAt])
   @@index([unreadCount, priorityScore])
@@ -1786,38 +2688,38 @@ model CommunicationThread {
 }
 
 model CommunicationMessage {
-  id                String                @id @default(cuid())
-  threadId          String
-  thread            CommunicationThread   @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  id                               String                          @id @default(cuid())
+  threadId                         String
+  thread                           CommunicationThread             @relation(fields: [threadId], references: [id], onDelete: Cascade)
   /// Broadcast/campaign (Tier 2): optional when send is from a `CommunicationCampaign`.
-  communicationCampaignId String?
-  communicationCampaign  CommunicationCampaign? @relation(fields: [communicationCampaignId], references: [id], onDelete: SetNull)
+  communicationCampaignId          String?
+  communicationCampaign            CommunicationCampaign?          @relation(fields: [communicationCampaignId], references: [id], onDelete: SetNull)
   /// Link back to the campaign recipient row (1:1 when sent through broadcast).
-  communicationCampaignRecipientId String?  @unique
-  campaignRecipient    CommunicationCampaignRecipient? @relation("MsgCampaignRecipient", fields: [communicationCampaignRecipientId], references: [id], onDelete: SetNull)
-  channel           CommunicationChannel
-  direction         MessageDirection
-  provider          CommsSendProvider
-  providerMessageId String?
-  fromAddress       String?
-  toAddress         String?
-  subject           String?
-  bodyText          String                @db.Text
-  bodyHtml          String?               @db.Text
-  deliveryStatus    MessageDeliveryStatus @default(QUEUED)
-  openedAt          DateTime?
-  clickedAt         DateTime?
-  failedAt          DateTime?
-  errorMessage      String?               @db.Text
-  aiGenerated       Boolean               @default(false)
-  aiPromptSummary   String?               @db.Text
-  sentByUserId      String?
-  sentBy            User?                 @relation("MessageSentBy", fields: [sentByUserId], references: [id], onDelete: SetNull)
+  communicationCampaignRecipientId String?                         @unique
+  campaignRecipient                CommunicationCampaignRecipient? @relation("MsgCampaignRecipient", fields: [communicationCampaignRecipientId], references: [id], onDelete: SetNull)
+  channel                          CommunicationChannel
+  direction                        MessageDirection
+  provider                         CommsSendProvider
+  providerMessageId                String?
+  fromAddress                      String?
+  toAddress                        String?
+  subject                          String?
+  bodyText                         String                          @db.Text
+  bodyHtml                         String?                         @db.Text
+  deliveryStatus                   MessageDeliveryStatus           @default(QUEUED)
+  openedAt                         DateTime?
+  clickedAt                        DateTime?
+  failedAt                         DateTime?
+  errorMessage                     String?                         @db.Text
+  aiGenerated                      Boolean                         @default(false)
+  aiPromptSummary                  String?                         @db.Text
+  sentByUserId                     String?
+  sentBy                           User?                           @relation("MessageSentBy", fields: [sentByUserId], references: [id], onDelete: SetNull)
   /// Gmail API identifiers when `provider` is GMAIL (thread continuity for staff replies).
-  gmailMessageId    String?               @db.Text
-  gmailThreadId     String?               @db.Text
-  createdAt         DateTime              @default(now())
-  updatedAt         DateTime              @updatedAt
+  gmailMessageId                   String?                         @db.Text
+  gmailThreadId                    String?                         @db.Text
+  createdAt                        DateTime                        @default(now())
+  updatedAt                        DateTime                        @updatedAt
 
   @@index([threadId, createdAt])
   @@index([provider, providerMessageId])
@@ -1881,90 +2783,90 @@ enum CampaignRecipientSendStatus {
 }
 
 model CommunicationTemplate {
-  id             String                 @id @default(cuid())
-  name           String
-  channel        CommunicationChannel
-  templateType   CommunicationTemplateType @default(BROADCAST)
-  subjectTemplate String?               @db.Text
-  bodyTemplate   String                 @db.Text
-  tone           String?
-  isAiSeeded     Boolean                @default(false)
-  isSystem       Boolean                @default(false)
-  eventType      CampaignEventType?
+  id              String                    @id @default(cuid())
+  name            String
+  channel         CommunicationChannel
+  templateType    CommunicationTemplateType @default(BROADCAST)
+  subjectTemplate String?                   @db.Text
+  bodyTemplate    String                    @db.Text
+  tone            String?
+  isAiSeeded      Boolean                   @default(false)
+  isSystem        Boolean                   @default(false)
+  eventType       CampaignEventType?
   createdByUserId String?
-  createdBy        User?                 @relation("TemplateAuthor", fields: [createdByUserId], references: [id], onDelete: SetNull)
-  createdAt        DateTime              @default(now())
-  updatedAt        DateTime              @updatedAt
-  campaigns        CommunicationCampaign[]
+  createdBy       User?                     @relation("TemplateAuthor", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  createdAt       DateTime                  @default(now())
+  updatedAt       DateTime                  @updatedAt
+  campaigns       CommunicationCampaign[]
 
   @@index([templateType, channel])
 }
 
 model AudienceSegment {
-  id               String  @id @default(cuid())
-  name             String
-  definitionJson   Json   @default("{}")
-  estimatedCount   Int?
-  isDynamic        Boolean @default(true)
-  createdByUserId  String?
-  createdBy         User?   @relation("SegmentAuthor", fields: [createdByUserId], references: [id], onDelete: SetNull)
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-  campaigns         CommunicationCampaign[]
+  id              String                  @id @default(cuid())
+  name            String
+  definitionJson  Json                    @default("{}")
+  estimatedCount  Int?
+  isDynamic       Boolean                 @default(true)
+  createdByUserId String?
+  createdBy       User?                   @relation("SegmentAuthor", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  createdAt       DateTime                @default(now())
+  updatedAt       DateTime                @updatedAt
+  campaigns       CommunicationCampaign[]
 
   @@index([name])
 }
 
 model CommunicationCampaign {
-  id                   String                      @id @default(cuid())
-  name                 String
-  channel              CommunicationCampaignChannel
-  campaignType         CommunicationCampaignType   @default(BROADCAST)
-  status               CommunicationCampaignStatus   @default(DRAFT)
-  templateId           String?
-  template             CommunicationTemplate?        @relation(fields: [templateId], references: [id], onDelete: SetNull)
-  audienceDefinitionJson Json                      @default("{}")
-  audienceSegmentId    String?
-  audienceSegment      AudienceSegment?            @relation(fields: [audienceSegmentId], references: [id], onDelete: SetNull)
+  id                          String                                @id @default(cuid())
+  name                        String
+  channel                     CommunicationCampaignChannel
+  campaignType                CommunicationCampaignType             @default(BROADCAST)
+  status                      CommunicationCampaignStatus           @default(DRAFT)
+  templateId                  String?
+  template                    CommunicationTemplate?                @relation(fields: [templateId], references: [id], onDelete: SetNull)
+  audienceDefinitionJson      Json                                  @default("{}")
+  audienceSegmentId           String?
+  audienceSegment             AudienceSegment?                      @relation(fields: [audienceSegmentId], references: [id], onDelete: SetNull)
   /// Copy from template at send time or ad-hoc content when no template.
-  subjectText          String?                     @db.Text
-  bodyText             String?                     @db.Text
-  eventId              String?
-  event                CampaignEvent?              @relation(fields: [eventId], references: [id], onDelete: SetNull)
-  createdByUserId      String?
-  createdBy            User?                       @relation("CampaignAuthor", fields: [createdByUserId], references: [id], onDelete: SetNull)
-  approvedByUserId     String?
-  approvedBy            User?                      @relation("CampaignApprover", fields: [approvedByUserId], references: [id], onDelete: SetNull)
-  scheduledAt          DateTime?
-  startedAt            DateTime?
-  completedAt          DateTime?
+  subjectText                 String?                               @db.Text
+  bodyText                    String?                               @db.Text
+  eventId                     String?
+  event                       CampaignEvent?                        @relation(fields: [eventId], references: [id], onDelete: SetNull)
+  createdByUserId             String?
+  createdBy                   User?                                 @relation("CampaignAuthor", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  approvedByUserId            String?
+  approvedBy                  User?                                 @relation("CampaignApprover", fields: [approvedByUserId], references: [id], onDelete: SetNull)
+  scheduledAt                 DateTime?
+  startedAt                   DateTime?
+  completedAt                 DateTime?
   /// Denormalized for dashboard (also derived from `recipients` when needed).
-  totalRecipients      Int                         @default(0)
-  suppressedCount      Int                         @default(0)
-  sentCount            Int                         @default(0)
-  deliveredCount       Int                         @default(0)
-  failedCount          Int                         @default(0)
-  replyCount           Int                         @default(0)
-  optOutCount          Int                         @default(0)
+  totalRecipients             Int                                   @default(0)
+  suppressedCount             Int                                   @default(0)
+  sentCount                   Int                                   @default(0)
+  deliveredCount              Int                                   @default(0)
+  failedCount                 Int                                   @default(0)
+  replyCount                  Int                                   @default(0)
+  optOutCount                 Int                                   @default(0)
   /// First open / click (email engagement via SendGrid webhooks) — denormalized counts.
-  engagementOpenCount  Int                         @default(0)
-  engagementClickCount Int                         @default(0)
-  statsJson            Json?                       @default("{}")
-  notes                String?                     @db.Text
-  lastProcessError     String?                     @db.Text
-  processingLockUntil  DateTime?
+  engagementOpenCount         Int                                   @default(0)
+  engagementClickCount        Int                                   @default(0)
+  statsJson                   Json?                                 @default("{}")
+  notes                       String?                               @db.Text
+  lastProcessError            String?                               @db.Text
+  processingLockUntil         DateTime?
   /// Idempotency for cron worker picking up the same job.
-  lastProcessedAt      DateTime?
+  lastProcessedAt             DateTime?
   /// Tier 3B: stable `event:{eventId}:{kind}` to prevent duplicate auto shells.
-  orchestrationIdempotencyKey String?    @unique
-  triggerSourceType          String?
-  triggerSourceId            String?
-  generatedFromTemplateKey  String?     @db.Text
-  automationStatus           CommunicationCampaignAutomationStatus @default(NONE)
-  createdAt            DateTime                    @default(now())
-  updatedAt            DateTime                    @updatedAt
-  recipients           CommunicationCampaignRecipient[]
-  messages             CommunicationMessage[]
+  orchestrationIdempotencyKey String?                               @unique
+  triggerSourceType           String?
+  triggerSourceId             String?
+  generatedFromTemplateKey    String?                               @db.Text
+  automationStatus            CommunicationCampaignAutomationStatus @default(NONE)
+  createdAt                   DateTime                              @default(now())
+  updatedAt                   DateTime                              @updatedAt
+  recipients                  CommunicationCampaignRecipient[]
+  messages                    CommunicationMessage[]
 
   @@index([status, scheduledAt])
   @@index([eventId, status])
@@ -1974,34 +2876,34 @@ model CommunicationCampaign {
 }
 
 model CommunicationCampaignRecipient {
-  id                      String   @id @default(cuid())
-  communicationCampaignId String
-  campaign                 CommunicationCampaign @relation(fields: [communicationCampaignId], references: [id], onDelete: Cascade)
-  userId                  String?
-  user                    User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
-  volunteerProfileId     String?
-  volunteerProfile        VolunteerProfile? @relation(fields: [volunteerProfileId], references: [id], onDelete: SetNull)
-  communicationThreadId   String?
-  thread                  CommunicationThread? @relation(fields: [communicationThreadId], references: [id], onDelete: SetNull)
-  channel                 CommunicationChannel
-  recipientEmail          String?
-  recipientPhone         String?
-  personalizationJson   Json   @default("{}")
-  sendStatus              CampaignRecipientSendStatus @default(PENDING)
-  providerMessageId      String?
-  deliveredAt            DateTime?
-  failedAt               DateTime?
-  responseAt             DateTime?
-  unsubscribeStateSnapshot Json? @default("{}")
-  lastError              String? @db.Text
-  attemptCount            Int   @default(0)
-  idempotencyKey         String? @unique
+  id                       String                      @id @default(cuid())
+  communicationCampaignId  String
+  campaign                 CommunicationCampaign       @relation(fields: [communicationCampaignId], references: [id], onDelete: Cascade)
+  userId                   String?
+  user                     User?                       @relation(fields: [userId], references: [id], onDelete: SetNull)
+  volunteerProfileId       String?
+  volunteerProfile         VolunteerProfile?           @relation(fields: [volunteerProfileId], references: [id], onDelete: SetNull)
+  communicationThreadId    String?
+  thread                   CommunicationThread?        @relation(fields: [communicationThreadId], references: [id], onDelete: SetNull)
+  channel                  CommunicationChannel
+  recipientEmail           String?
+  recipientPhone           String?
+  personalizationJson      Json                        @default("{}")
+  sendStatus               CampaignRecipientSendStatus @default(PENDING)
+  providerMessageId        String?
+  deliveredAt              DateTime?
+  failedAt                 DateTime?
+  responseAt               DateTime?
+  unsubscribeStateSnapshot Json?                       @default("{}")
+  lastError                String?                     @db.Text
+  attemptCount             Int                         @default(0)
+  idempotencyKey           String?                     @unique
   /// Email engagement (from SendGrid open/click webhooks) — one timestamp each (first / last).
-  engagementOpenedAt     DateTime?
-  engagementClickedAt     DateTime?
-  createdAt              DateTime @default(now())
-  updatedAt              DateTime @updatedAt
-  linkedOutMessage        CommunicationMessage? @relation("MsgCampaignRecipient")
+  engagementOpenedAt       DateTime?
+  engagementClickedAt      DateTime?
+  createdAt                DateTime                    @default(now())
+  updatedAt                DateTime                    @updatedAt
+  linkedOutMessage         CommunicationMessage?       @relation("MsgCampaignRecipient")
 
   @@index([communicationCampaignId, sendStatus])
   @@index([communicationCampaignId, id])
@@ -2063,14 +2965,14 @@ model CommunicationThreadTag {
 
 /// OAuth-linked Google mailbox for 1:1 human email from the workbench (Gmail API). Not used for SendGrid broadcast.
 model StaffGmailAccount {
-  id         String  @id @default(cuid())
-  userId     String  @unique
-  user       User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   /// Workspace / Gmail “send as” address (usually same as `User.email`).
   sendAsEmail String
-  oauthJson   Json   @default("{}")
-  isActive    Boolean @default(true)
-  lastError   String? @db.Text
+  oauthJson   Json     @default("{}")
+  isActive    Boolean  @default(true)
+  lastError   String?  @db.Text
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
@@ -2189,16 +3091,16 @@ model EventApproval {
 
 /// Append-only audit of workflow transitions (operational history).
 model EventStageChangeLog {
-  id            String                @id @default(cuid())
-  eventId       String
-  event         CampaignEvent         @relation(fields: [eventId], references: [id], onDelete: Cascade)
-  fromState     EventWorkflowState?
-  toState       EventWorkflowState
-  actorUserId   String?
-  actor         User?                 @relation("EventStageChangeActor", fields: [actorUserId], references: [id], onDelete: SetNull)
+  id          String              @id @default(cuid())
+  eventId     String
+  event       CampaignEvent       @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  fromState   EventWorkflowState?
+  toState     EventWorkflowState
+  actorUserId String?
+  actor       User?               @relation("EventStageChangeActor", fields: [actorUserId], references: [id], onDelete: SetNull)
   /// Staff note on this transition (approval note, send-back reason, cancel reason ref, etc.).
-  note          String?               @db.Text
-  createdAt     DateTime              @default(now())
+  note        String?             @db.Text
+  createdAt   DateTime            @default(now())
 
   @@index([eventId, createdAt])
   @@index([toState, createdAt])
@@ -2288,23 +3190,23 @@ enum ExternalMediaMatchTier {
 
 /// Registry row synced from `src/lib/media-monitor/sources` seeds (editable in DB for overrides).
 model ExternalMediaSource {
-  id                 String                @id @default(cuid())
-  slug               String                @unique
-  name               String
-  sourceType         ExternalMediaSourceType
-  region             String
-  coveredCities      String[]              @default([])
-  homepage           String
-  priority           Int                   @default(5)
-  rssUrl             String?
-  sitemapUrl         String?
-  searchUrlTemplate  String?               @db.Text
-  discoveryMethods   String[]              @default([])
-  notes              String?               @db.Text
-  isActive           Boolean               @default(true)
-  lastFetchedAt      DateTime?
-  createdAt          DateTime              @default(now())
-  updatedAt          DateTime              @updatedAt
+  id                String                  @id @default(cuid())
+  slug              String                  @unique
+  name              String
+  sourceType        ExternalMediaSourceType
+  region            String
+  coveredCities     String[]                @default([])
+  homepage          String
+  priority          Int                     @default(5)
+  rssUrl            String?
+  sitemapUrl        String?
+  searchUrlTemplate String?                 @db.Text
+  discoveryMethods  String[]                @default([])
+  notes             String?                 @db.Text
+  isActive          Boolean                 @default(true)
+  lastFetchedAt     DateTime?
+  createdAt         DateTime                @default(now())
+  updatedAt         DateTime                @updatedAt
 
   mentions ExternalMediaMention[]
 
@@ -2312,58 +3214,58 @@ model ExternalMediaSource {
 }
 
 model ExternalMediaMention {
-  id            String @id @default(cuid())
-  sourceId      String
-  source        ExternalMediaSource @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+  id           String                  @id @default(cuid())
+  sourceId     String
+  source       ExternalMediaSource     @relation(fields: [sourceId], references: [id], onDelete: Cascade)
   /// Denormalized for exports and UI when source row changes.
-  sourceName    String
-  sourceType    ExternalMediaSourceType
-  sourceRegion  String?
-  cityCoverage  String[]              @default([])
+  sourceName   String
+  sourceType   ExternalMediaSourceType
+  sourceRegion String?
+  cityCoverage String[]                @default([])
 
-  title         String
-  url           String
-  canonicalUrl  String
+  title        String
+  url          String
+  canonicalUrl String
   /// Stable dedupe: normalized URL hash + optional title/date fingerprint.
-  dedupeKey     String                @unique
+  dedupeKey    String @unique
 
-  publishedAt   DateTime?
-  author        String?
-  section       String?
-  summary       String?               @db.Text
-  fullText      String?               @db.Text
-  transcriptText String?              @db.Text
-  transcriptMissing Boolean           @default(false)
+  publishedAt       DateTime?
+  author            String?
+  section           String?
+  summary           String?   @db.Text
+  fullText          String?   @db.Text
+  transcriptText    String?   @db.Text
+  transcriptMissing Boolean   @default(false)
 
-  mentionType   ExternalMediaMentionType @default(NEWS_ARTICLE)
-  confidenceScore Float?
-  matchTier     ExternalMediaMatchTier
-  matchedEntityName String            @default("Kelly Grappe")
+  mentionType       ExternalMediaMentionType @default(NEWS_ARTICLE)
+  confidenceScore   Float?
+  matchTier         ExternalMediaMatchTier
+  matchedEntityName String                   @default("Kelly Grappe")
   matchedPersonName String?
-  isOpinion     Boolean               @default(false)
-  isEditorial   Boolean               @default(false)
-  sentimentHint String?
+  isOpinion         Boolean                  @default(false)
+  isEditorial       Boolean                  @default(false)
+  sentimentHint     String?
 
   ingestionMethod ExternalMediaIngestMethod
-  discoveredAt    DateTime              @default(now())
-  lastCheckedAt   DateTime              @updatedAt
+  discoveredAt    DateTime                  @default(now())
+  lastCheckedAt   DateTime                  @updatedAt
 
-  reviewStatus  ExternalMediaReviewStatus @default(PENDING)
-  campaignSummary String?               @db.Text
-  markForSocialShare            Boolean @default(false)
-  markForEmailRoundup           Boolean @default(false)
-  markForSurrogateAmplification Boolean @default(false)
-  responseNeeded                Boolean @default(false)
-  needsAmplification            Boolean @default(false)
-  showOnPublicSite              Boolean @default(false)
+  reviewStatus                  ExternalMediaReviewStatus @default(PENDING)
+  campaignSummary               String?                   @db.Text
+  markForSocialShare            Boolean                   @default(false)
+  markForEmailRoundup           Boolean                   @default(false)
+  markForSurrogateAmplification Boolean                   @default(false)
+  responseNeeded                Boolean                   @default(false)
+  needsAmplification            Boolean                   @default(false)
+  showOnPublicSite              Boolean                   @default(false)
 
   relatedEventId  String?
   relatedEvent    CampaignEvent? @relation(fields: [relatedEventId], references: [id], onDelete: SetNull)
   relatedCountyId String?
   relatedCounty   County?        @relation(fields: [relatedCountyId], references: [id], onDelete: SetNull)
 
-  openAiRefined   Boolean @default(false)
-  rawPayload      Json?
+  openAiRefined Boolean @default(false)
+  rawPayload    Json?
 
   @@index([sourceId, publishedAt])
   @@index([reviewStatus, publishedAt])

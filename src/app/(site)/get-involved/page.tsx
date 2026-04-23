@@ -10,6 +10,7 @@ import { EditorialCampaignPhoto, EditorialPhotoPair } from "@/components/about/E
 import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
 import { RepresentLocalEventPanel } from "@/components/organizing/RepresentLocalEventPanel";
 import { representLocalEventVolunteerHref } from "@/config/navigation";
+import { isValidResourceVolunteerSlug } from "@/content/resources/toolkit";
 
 export const metadata: Metadata = {
   title: "Get involved",
@@ -24,6 +25,13 @@ function pickLane(sp: Record<string, string | string[] | undefined>): string | u
   return undefined;
 }
 
+function pickResource(sp: Record<string, string | string[] | undefined>): string | undefined {
+  const v = sp.resource;
+  if (typeof v === "string") return v;
+  if (Array.isArray(v)) return v[0];
+  return undefined;
+}
+
 export default async function GetInvolvedPage({
   searchParams,
 }: {
@@ -31,6 +39,9 @@ export default async function GetInvolvedPage({
 }) {
   const sp = (await searchParams) ?? {};
   const laneParam = pickLane(sp);
+  const resourceParam = pickResource(sp);
+  const volunteerPrefillResource =
+    resourceParam && isValidResourceVolunteerSlug(resourceParam) ? resourceParam : undefined;
   const volunteerPrefillLane =
     laneParam === "event_representation" ? ("event_representation" as const) : undefined;
 
@@ -116,8 +127,25 @@ export default async function GetInvolvedPage({
             title="Help locally or digitally"
             subtitle="Tell us your availability and skills. If you can host county meetings or help with voter education, say so—we’ll follow up with concrete next steps."
           />
+          <p className="mt-4 max-w-3xl font-body text-sm leading-relaxed text-deep-soil/75">
+            <span className="font-semibold text-deep-soil/90">Postcards, calls, and texts: </span>
+            start with the step-by-step guides, then use the form below (or check the matching boxes) so we can tag your
+            signup—{" "}
+            <a className="font-semibold text-red-dirt underline" href="/resources/postcard-outreach">
+              handwritten postcards
+            </a>
+            ,{" "}
+            <a className="font-semibold text-red-dirt underline" href="/resources/phone-banking">
+              phone banking (dialer coming)
+            </a>
+            ,{" "}
+            <a className="font-semibold text-red-dirt underline" href="/resources/text-banking">
+              peer-to-peer text banking
+            </a>
+            .
+          </p>
           <div className="mt-10 max-w-3xl">
-            <VolunteerForm prefillLane={volunteerPrefillLane} />
+            <VolunteerForm prefillLane={volunteerPrefillLane} prefillResource={volunteerPrefillResource} />
           </div>
         </ContentContainer>
       </FullBleedSection>

@@ -25,6 +25,7 @@ const operationsLinks: { href: string; label: string }[] = [
   { href: "/admin/workbench/comms", label: "Comms hub" },
   { href: "/admin/workbench/calendar", label: "Calendar HQ" },
   { href: "/admin/workbench/festivals", label: "Community events feed" },
+  { href: "/admin/workbench/social", label: "Social workbench" },
   { href: "/admin/events/community-suggestions", label: "Public event suggestions" },
   { href: "/admin/events", label: "Events" },
   { href: "/admin/tasks", label: "Tasks" },

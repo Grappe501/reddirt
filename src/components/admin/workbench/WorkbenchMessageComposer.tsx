@@ -46,9 +46,18 @@ export function WorkbenchMessageComposer(p: Props) {
 
   async function send() {
     setErr(null);
+    const trimmed = body.trim();
+    if (!trimmed) {
+      setErr("Add message text before sending.");
+      return;
+    }
+    if (mode === "SMS" && trimmed.length > 1600) {
+      setErr("SMS is very long (over 1600 chars); consider email or split.");
+      return;
+    }
     const fd = new FormData();
     fd.set("threadId", p.threadId);
-    fd.set("body", body);
+    fd.set("body", trimmed);
     if (mode === "EMAIL") {
       fd.set("subject", subject);
       start(async () => {
@@ -186,9 +195,16 @@ export function WorkbenchMessageComposer(p: Props) {
         value={body}
         onChange={(e) => setBody(e.target.value)}
         rows={4}
+        maxLength={mode === "SMS" ? 2000 : 100000}
         placeholder={mode === "SMS" ? "SMS body…" : mode === "GMAIL" ? "Gmail body (human)…" : "SendGrid body…"}
         className="w-full resize-y border border-deep-soil/15 bg-white p-1.5 font-mono text-xs"
+        aria-label="Message body"
       />
+      {mode === "SMS" ? (
+        <p className="mt-0.5 text-[10px] text-deep-soil/45">
+          {body.length} / 2000 · long SMS may split into multiple segments
+        </p>
+      ) : null}
       <div className="mt-1 flex flex-wrap items-center gap-1">
         <button
           type="button"
@@ -201,7 +217,7 @@ export function WorkbenchMessageComposer(p: Props) {
           onClick={send}
           className="rounded border border-red-dirt/30 bg-red-dirt px-2 py-0.5 font-body text-xs font-bold text-cream-canvas disabled:opacity-40"
         >
-          {pending ? "…" : "Send"}
+          {pending ? "Sending…" : "Send"}
         </button>
         <button
           type="button"

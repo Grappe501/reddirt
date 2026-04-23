@@ -24,6 +24,8 @@ import { CommsSendProvider } from "@prisma/client";
 import { countPendingFestivalIngests } from "@/lib/festivals/admin-queries";
 import { listAdminStrategyReferenceAssets } from "@/lib/campaign-ops/admin-strategy-reference";
 import { getPressMonitorWorkbenchSummary } from "@/lib/media-monitor/workbench-queries";
+import { getSocialWorkbenchSummary } from "@/lib/social/social-workbench-queries";
+import { resolveWorkbenchCountyId, isPlausibleId } from "@/lib/workbench/county";
 
 type Props = {
   searchParams: Promise<{ county?: string; thread?: string; error?: string; lane?: string }>;
@@ -36,47 +38,103 @@ const card =
 const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-deep-soil/55";
 const breakOut = "-mx-6 -mt-10 -mb-10 w-[calc(100%+3rem)] max-w-[calc(100vw-280px-3rem)] min-w-0 px-0 pt-0 pb-6 lg:-mx-12 lg:mt-0 lg:mb-0 lg:w-[calc(100%+6rem)] lg:max-w-none";
 
+function workbenchQ(opts: { county?: string | null; thread?: string | null; lane?: WorkbenchLane }) {
+  const u = new URLSearchParams();
+  if (opts.county) u.set("county", opts.county);
+  if (opts.thread) u.set("thread", opts.thread);
+  if (opts.lane === "calendar") u.set("lane", "calendar");
+  if (opts.lane === "orchestration") u.set("lane", "orchestration");
+  const s = u.toString();
+  return s ? `?${s}` : "";
+}
+
 export default async function AdminWorkbenchPage({ searchParams }: Props) {
   const sp = await searchParams;
-  const countyId = sp.county?.trim() || null;
-  const activeThreadId = sp.thread?.trim() || null;
   const err = sp.error;
   const lane: WorkbenchLane =
     sp.lane === "calendar" ? "calendar" : sp.lane === "orchestration" ? "orchestration" : "all";
-  const workbenchQ = (opts: { county?: string | null; thread?: string | null; lane?: WorkbenchLane }) => {
-    const u = new URLSearchParams();
-    if (opts.county) u.set("county", opts.county);
-    if (opts.thread) u.set("thread", opts.thread);
-    if (opts.lane === "calendar") u.set("lane", "calendar");
-    if (opts.lane === "orchestration") u.set("lane", "orchestration");
-    const s = u.toString();
-    return s ? `?${s}` : "";
-  };
+  const activeThreadId = sp.thread?.trim() || null;
+  const cleanThreadId = activeThreadId && isPlausibleId(activeThreadId) ? activeThreadId : null;
+  const badThreadParam = Boolean(activeThreadId) && !cleanThreadId;
 
-  const counties = await getCountiesForOpsFilter();
-  const actorId = await getAdminActorUserId();
-  const [data, comms, activeThread, recentForRail, staffGmail, pendingFestivalIngest, adminStrategyRefs, pressMonitor] =
-    await Promise.all([
-    getWorkbenchData({ countyId }),
-    getCommsWorkbenchData({ countyId, lane }),
-    activeThreadId ? getThreadForWorkbench(activeThreadId) : Promise.resolve(null),
-    listRecentThreads(countyId, 20),
-    actorId
-      ? prisma.staffGmailAccount.findUnique({
-          where: { userId: actorId, isActive: true },
-        })
-      : Promise.resolve(null),
-    countPendingFestivalIngests().catch(() => 0),
-    listAdminStrategyReferenceAssets().catch(() => []),
-    getPressMonitorWorkbenchSummary().catch(() => ({
-      mentionsToday: 0,
-      editorialsOpinion: 0,
-      tvMentions: 0,
-      responseNeeded: 0,
-      needsAmplification: 0,
-      pendingReview: 0,
-    })),
-  ]);
+  let counties: Awaited<ReturnType<typeof getCountiesForOpsFilter>>;
+  let countyId: string | null;
+  let invalidCounty: boolean;
+  let data: Awaited<ReturnType<typeof getWorkbenchData>>;
+  let comms: Awaited<ReturnType<typeof getCommsWorkbenchData>>;
+  let activeThread: Awaited<ReturnType<typeof getThreadForWorkbench>>;
+  let recentForRail: Awaited<ReturnType<typeof listRecentThreads>>;
+  let staffGmail: Awaited<ReturnType<typeof prisma.staffGmailAccount.findUnique>>;
+  let pendingFestivalIngest: number;
+  let adminStrategyRefs: Awaited<ReturnType<typeof listAdminStrategyReferenceAssets>>;
+  let pressMonitor: Awaited<ReturnType<typeof getPressMonitorWorkbenchSummary>>;
+  let socialSum: Awaited<ReturnType<typeof getSocialWorkbenchSummary>>;
+
+  try {
+    counties = await getCountiesForOpsFilter();
+    const validCounty = new Set(counties.map((c) => c.id));
+    const r = resolveWorkbenchCountyId(sp.county, validCounty);
+    countyId = r.countyId;
+    invalidCounty = r.invalidParam;
+
+    const actorId = await getAdminActorUserId();
+    [
+      data,
+      comms,
+      activeThread,
+      recentForRail,
+      staffGmail,
+      pendingFestivalIngest,
+      adminStrategyRefs,
+      pressMonitor,
+      socialSum,
+    ] = await Promise.all([
+      getWorkbenchData({ countyId }),
+      getCommsWorkbenchData({ countyId, lane }),
+      cleanThreadId ? getThreadForWorkbench(cleanThreadId) : Promise.resolve(null),
+      listRecentThreads(countyId, 20),
+      actorId
+        ? prisma.staffGmailAccount.findUnique({
+            where: { userId: actorId, isActive: true },
+          })
+        : Promise.resolve(null),
+      countPendingFestivalIngests().catch(() => 0),
+      listAdminStrategyReferenceAssets().catch(() => []),
+      getPressMonitorWorkbenchSummary().catch(() => ({
+        mentionsToday: 0,
+        editorialsOpinion: 0,
+        tvMentions: 0,
+        responseNeeded: 0,
+        needsAmplification: 0,
+        pendingReview: 0,
+      })),
+      getSocialWorkbenchSummary().catch(() => ({ inPipeline: 0, inReview: 0, published: 0 })),
+    ]);
+  } catch (e) {
+    console.error("AdminWorkbenchPage load", e);
+    return (
+      <div className="border border-red-200/80 bg-red-50/60 px-4 py-5">
+        <h1 className="font-heading text-lg font-bold text-deep-soil">Campaign workbench</h1>
+        <p className="mt-1 font-body text-sm text-red-900">
+          Could not load this page. Check database connectivity, then refresh. If the problem continues, see server logs.
+        </p>
+        <pre className="mt-2 max-h-32 overflow-auto rounded border border-red-200/50 bg-white/80 p-2 font-mono text-xs text-red-800">
+          {e instanceof Error ? e.message : "Unknown error"}
+        </pre>
+        <a
+          href="/admin/workbench"
+          className="mt-3 inline-block rounded border border-deep-soil/20 bg-white px-2 py-1 text-sm font-semibold"
+        >
+          Reset URL and retry
+        </a>
+      </div>
+    );
+  }
+
+  const threadNotFound = Boolean(cleanThreadId) && !activeThread;
+  const active =
+    activeThread && (!countyId || !activeThread.countyId || activeThread.countyId === countyId) ? activeThread : null;
+  const threadCountyHidden = Boolean(cleanThreadId) && Boolean(activeThread) && !active;
 
   const seenThread = new Set<string>();
   const combinedRail: {
@@ -195,8 +253,6 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
   }
   }
 
-  const active =
-    activeThread && (!countyId || !activeThread.countyId || activeThread.countyId === countyId) ? activeThread : null;
   const canSms = Boolean(active?.primaryPhone);
   const canEmail = Boolean(active?.primaryEmail);
   const defaultMode = canSms ? "SMS" : "EMAIL";
@@ -267,17 +323,36 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
             >
               Community events{pendingFestivalIngest > 0 ? ` (${pendingFestivalIngest})` : ""}
             </Link>
+            <Link
+              href="/admin/workbench/social"
+              className="rounded border border-washed-denim/30 bg-cream-canvas px-1.5 py-0.5 text-[10px] font-bold text-civic-slate"
+            >
+              Social{socialSum.inPipeline + socialSum.inReview > 0 ? ` (${socialSum.inPipeline + socialSum.inReview})` : ""}
+            </Link>
           </div>
         </div>
       </div>
 
       {err ? (
-        <p className="px-2 py-1 font-body text-xs text-red-800 md:px-3">
+        <p className="px-2 py-1 font-body text-xs text-red-800 md:px-3" role="alert">
           {err === "contact" ? "Add a phone or email to open a new thread." : null}
           {err === "phone" ? "Could not parse phone; use 10 digits or E.164." : null}
           {err === "ai" ? "AI summary could not be generated. Check OpenAI and try again." : null}
           {err === "gmail_not_configured" ? "Gmail OAuth is not configured (set GOOGLE_GMAIL_* or Calendar client + redirect for /api/gmail/oauth/callback)." : null}
           {err === "gmail_needs_actor" ? "Set ADMIN_ACTOR_USER_EMAIL to a User to connect Gmail, then use Connect Gmail in the workbench." : null}
+          {!["contact", "phone", "ai", "gmail_not_configured", "gmail_needs_actor"].includes(String(err))
+            ? `Error code: ${String(err).replace(/[<>\"']/g, "")}`
+            : null}
+        </p>
+      ) : null}
+      {invalidCounty ? (
+        <p className="px-2 py-0.5 font-body text-xs text-amber-900 md:px-3" role="status">
+          Unknown county in URL — filter cleared. Pick a county chip above.
+        </p>
+      ) : null}
+      {badThreadParam ? (
+        <p className="px-2 py-0.5 font-body text-xs text-amber-900 md:px-3" role="status">
+          Invalid thread id in URL — open a thread from the left rail.
         </p>
       ) : null}
 
@@ -344,6 +419,15 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
           </p>
           <Link href="/admin/workbench/festivals" className="text-[10px] font-semibold text-civic-slate">
             Review
+          </Link>
+        </div>
+        <div className={card}>
+          <p className={h2}>Social workbench</p>
+          <p className="font-heading text-lg font-bold text-deep-soil">
+            {socialSum.inPipeline + socialSum.inReview > 0 ? socialSum.inPipeline + socialSum.inReview : "—"}
+          </p>
+          <Link href="/admin/workbench/social" className="text-[10px] font-semibold text-civic-slate">
+            Open
           </Link>
         </div>
         <div className={card}>
@@ -415,11 +499,15 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
               <input
                 name="primaryPhone"
                 placeholder="Phone"
+                maxLength={32}
+                autoComplete="off"
                 className="w-full border border-deep-soil/15 bg-white px-1 font-mono text-[10px]"
               />
               <input
                 name="primaryEmail"
                 type="email"
+                maxLength={320}
+                autoComplete="off"
                 placeholder="Email"
                 className="w-full border border-deep-soil/15 bg-white px-1 font-mono text-[10px]"
               />
@@ -537,6 +625,29 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
             </>
           ) : (
             <div className="p-3 font-body text-xs text-deep-soil/60">
+              {threadNotFound && !badThreadParam ? (
+                <p className="mb-2 rounded border border-amber-200/80 bg-amber-50/80 px-2 py-1 text-amber-950">
+                  Thread not found (id may have been deleted or pasted incorrectly).{" "}
+                  <Link
+                    className="font-semibold text-civic-slate underline"
+                    href={`/admin/workbench${workbenchQ({ county: countyId, lane })}`}
+                  >
+                    Clear thread
+                  </Link>
+                </p>
+              ) : null}
+              {threadCountyHidden ? (
+                <p className="mb-2 rounded border border-amber-200/80 bg-amber-50/80 px-2 py-1 text-amber-950">
+                  This thread is in another county.{" "}
+                  <Link
+                    className="font-semibold text-civic-slate underline"
+                    href={`/admin/workbench${workbenchQ({ thread: cleanThreadId, county: null, lane })}`}
+                  >
+                    View without county filter
+                  </Link>{" "}
+                  or change the county tab above.
+                </p>
+              ) : null}
               Select a thread in the left rail, or open a new one. Webhooks:{" "}
               <code className="rounded bg-cream-canvas px-0.5">/api/webhooks/twilio</code>,{" "}
               <code className="rounded bg-cream-canvas px-0.5">/api/webhooks/sendgrid</code>.
@@ -728,7 +839,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
         </aside>
       </div>
 
-      <div className="mt-0 grid grid-cols-1 gap-1 border-b border-deep-soil/10 bg-cream-canvas/60 px-1 py-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+      <div className="mt-0 grid grid-cols-1 gap-1 border-b border-deep-soil/10 bg-cream-canvas/60 px-1 py-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-6">
         <div className={card}>
           <h2 className="font-heading text-xs font-bold text-deep-soil">Tasks due today</h2>
           <ul className="mt-0.5 max-h-28 overflow-y-auto text-[10px]">

@@ -151,6 +151,24 @@ export default function LocalOrganizingPage() {
               href={representLocalEventVolunteerHref}
               ctaLabel="Volunteer for field presence"
             />
+            <PathwayCard
+              title="Handwritten postcard batches"
+              description="We supply the cards and a vetted list; you write, pay postage, and mail. Good for people who like paper and a personal touch."
+              href="/resources/postcard-outreach"
+              ctaLabel="Read the postcard guide"
+            />
+            <PathwayCard
+              title="Phone banking"
+              description="A full phone bank system is in the works. Use the resource to sign up and know what to expect when shifts go live."
+              href="/resources/phone-banking"
+              ctaLabel="Phone bank roadmap & signup"
+            />
+            <PathwayCard
+              title="Text banking (peer-to-peer)"
+              description="We provide numbers and scripts; you text from a Google Voice or second line so your personal number stays private."
+              href="/resources/text-banking"
+              ctaLabel="Read the P2P text guide"
+            />
           </div>
         </ContentContainer>
       </FullBleedSection>

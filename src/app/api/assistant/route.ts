@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { getOpenAIClient, getOpenAIConfigFromEnv, isOpenAIConfigured } from "@/lib/openai/client";
+import {
+  formatOpenAIErrorForClient,
+  getOpenAIClient,
+  getOpenAIConfigFromEnv,
+  isOpenAIConfigured,
+} from "@/lib/openai/client";
 import { buildContextBlock, prioritizeHitsForAssistant, searchChunks } from "@/lib/openai/search";
 import { pathToHref } from "@/lib/search/paths";
 import {
@@ -135,12 +140,12 @@ export async function POST(req: Request) {
         : e instanceof Error && /401|API key|invalid/i.test(e.message)
           ? " Check OPENAI_API_KEY is valid."
           : "";
+    const detail = formatOpenAIErrorForClient(e);
     return NextResponse.json(
       {
         error: "search_failed",
         version: ASSISTANT_API_VERSION,
-        message:
-          `Could not search site content.${hint} Details: ${e instanceof Error ? e.message : "unknown error"}`,
+        message: `Could not search site content.${hint} Details: ${detail}`,
       },
       { status: 503 },
     );
@@ -193,7 +198,7 @@ export async function POST(req: Request) {
       }
     } catch (e) {
       console.error("[assistant] chat.completions", e);
-      const msg = e instanceof Error ? e.message : "OpenAI request failed.";
+      const msg = formatOpenAIErrorForClient(e);
       return NextResponse.json(
         {
           error: "openai_chat_failed",

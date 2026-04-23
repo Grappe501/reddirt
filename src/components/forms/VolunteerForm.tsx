@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { volunteerSchema, type VolunteerInput } from "@/lib/forms/schemas";
 import { getToolkitTitleForResourceSlug } from "@/content/resources/toolkit";
+import type { OutreachResourceSlug } from "@/content/resources/toolkit";
 import { FormField } from "@/components/forms/FormField";
 import { FormLabel } from "@/components/forms/FormLabel";
 import { Input } from "@/components/forms/Input";
@@ -13,6 +14,32 @@ import { Textarea } from "@/components/forms/Textarea";
 import { Button } from "@/components/ui/Button";
 import { FormErrorSummary, FormSuccessPanel } from "@/components/forms/FormMessages";
 import { trackFormComplete, trackFormStart } from "@/lib/analytics/track";
+
+const OUTREACH_OPTION_COPY: {
+  slug: OutreachResourceSlug;
+  label: string;
+  hint: string;
+}[] = [
+  {
+    slug: "postcard-outreach",
+    label: "Handwritten postcards",
+    hint: "We supply cards and a targeted list; you write, pay postage, and mail.",
+  },
+  {
+    slug: "phone-banking",
+    label: "Phone banking",
+    hint: "Full dialer system in development—sign up now so we can place you when shifts open.",
+  },
+  {
+    slug: "text-banking",
+    label: "Peer-to-peer text banking",
+    hint: "We provide numbers and scripts; you text from a Google Voice or similar line to protect your personal number.",
+  },
+];
+
+function resourceToken(slug: OutreachResourceSlug) {
+  return `resource:${slug}` as const;
+}
 
 export type VolunteerPrefillLane = "event_representation";
 
@@ -214,6 +241,45 @@ export function VolunteerForm({
           I’m open to leadership training (hosting, captaining, or mentoring others).
         </FormLabel>
       </FormField>
+      <div className="rounded-md border border-deep-soil/10 bg-cream-canvas/30 p-4">
+        <p className="font-body text-xs font-bold uppercase tracking-wide text-deep-soil/55">Ways to help (optional)</p>
+        <p className="mt-1 font-body text-sm text-deep-soil/70">
+          Check any lane that fits—coordinators use this to match you faster.{" "}
+          <Link className="font-semibold text-red-dirt underline" href="/resources#toolkit">
+            Full how-to guides
+          </Link>{" "}
+          live in resources.
+        </p>
+        <ul className="mt-3 space-y-2">
+          {OUTREACH_OPTION_COPY.map(({ slug, label, hint }) => {
+            const id = `vf-outreach-${slug}`;
+            const token = resourceToken(slug);
+            const checked = form.watch("interests").includes(token);
+            return (
+              <li key={slug} className="flex flex-row items-start gap-3">
+                <input
+                  id={id}
+                  type="checkbox"
+                  className="mt-1 h-4 w-4 rounded border-deep-soil/30 text-red-dirt"
+                  checked={checked}
+                  onChange={(e) => {
+                    const next = e.target.checked
+                      ? Array.from(new Set([...form.getValues("interests"), token]))
+                      : form.getValues("interests").filter((t) => t !== token);
+                    form.setValue("interests", next, { shouldDirty: true });
+                  }}
+                />
+                <div>
+                  <FormLabel htmlFor={id} className="font-normal text-deep-soil/90">
+                    {label}
+                  </FormLabel>
+                  <p className="mt-0.5 font-body text-xs text-deep-soil/60">{hint}</p>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
       <Button type="submit" variant="primary" disabled={form.formState.isSubmitting}>
         {form.formState.isSubmitting ? "Sending…" : "Volunteer"}
       </Button>

@@ -1,11 +1,14 @@
 "use server";
 
+import path from "node:path";
 import { randomUUID } from "node:crypto";
 import { revalidatePath } from "next/cache";
 import {
   GeoMetadataSource,
+  OwnedMediaColorLabel,
   OwnedMediaKind,
   OwnedMediaNoteType,
+  OwnedMediaPickStatus,
   OwnedMediaReviewStatus,
   OwnedMediaRole,
   OwnedMediaSourceType,
@@ -18,10 +21,12 @@ import {
 } from "@prisma/client";
 import type { Prisma } from "@prisma/client";
 import { redirect } from "next/navigation";
+import { buildIngestOriginalCanonicalName } from "@/lib/owned-media/campaign-filename";
 import { extractOwnedMediaMetadata } from "@/lib/owned-media/metadata/extract-owned-media-metadata";
 import { saveOwnedMediaFile } from "@/lib/owned-media/storage";
 import { runTranscriptionForOwnedAsset } from "@/lib/owned-media/transcription/run";
 import { prisma } from "@/lib/db";
+import { getAdminActorUserId } from "@/lib/admin/actor";
 import { requireAdminAction } from "@/app/admin/owned-media-auth";
 
 function splitComma(name: string, formData: FormData): string[] {
@@ -89,13 +94,26 @@ export async function uploadOwnedMediaAction(formData: FormData) {
     fileStat: { birthtime: lm, mtime: lm, ctime: lm },
   });
   const tagSet = new Set([...issueTags, ...meta.issueTagsFromFilename]);
+  const origName = (file as File).name || saved.fileName;
+  const anchor = meta.capturedAt ?? lm;
+  const { fileName: canonicalName } = buildIngestOriginalCanonicalName({
+    originalBaseName: origName,
+    anchorDate: anchor,
+    ext: path.extname(origName) || path.extname(saved.fileName) || ".bin",
+    ingestMode: "upload",
+    countySlug: countySlug ?? meta.countySlug,
+    subjectHint: title,
+    uniquenessKey: id,
+  });
 
   await prisma.ownedMediaAsset.create({
     data: {
       id,
       storageKey: saved.storageKey,
       storageBackend: OwnedMediaStorageBackend.LOCAL_DISK,
-      fileName: saved.fileName,
+      fileName: canonicalName,
+      originalFileName: origName,
+      canonicalFileName: canonicalName,
       fileSizeBytes: saved.fileSizeBytes,
       mimeType: saved.mimeType,
       kind,
@@ -519,4 +537,92 @@ export async function bulkUpdateOwnedMediaByIngestBatchExtendedAction(formData: 
   revalidatePath(`/admin/owned-media/batches/${mediaIngestBatchId}`);
   revalidatePath("/resources");
   redirect(`/admin/owned-media/batches/${mediaIngestBatchId}?bulk=${r.count}`);
+}
+
+const MC_PATH = "/admin/owned-media/grid";
+
+export async function updateMediaCenterTriageAction(formData: FormData) {
+  await requireAdminAction();
+  const id = String(formData.get("ownedMediaId") ?? "").trim();
+  if (!id) return;
+  const ratingRaw = String(formData.get("rating") ?? "").trim();
+  let rating: number | null = null;
+  if (ratingRaw !== "") {
+    const n = Math.floor(Number(ratingRaw));
+    if (!Number.isNaN(n) && n >= 1 && n <= 5) rating = n;
+  }
+  const pickStatus = parseEnum(
+    String(formData.get("pickStatus") ?? "UNRATED"),
+    Object.values(OwnedMediaPickStatus),
+    OwnedMediaPickStatus.UNRATED
+  );
+  const colorLabel = parseEnum(
+    String(formData.get("colorLabel") ?? "NONE"),
+    Object.values(OwnedMediaColorLabel),
+    OwnedMediaColorLabel.NONE
+  );
+  const isFavorite = formData.get("isFavorite") === "on";
+  const approvedForPress = formData.get("approvedForPress") === "on";
+  const approvedForPublicSite = formData.get("approvedForPublicSite") === "on";
+  const approvedForSocial = formData.get("approvedForSocial") === "on";
+  const reviewNotes = String(formData.get("reviewNotes") ?? "").trim() || null;
+  try {
+    await prisma.ownedMediaAsset.update({
+      where: { id },
+      data: {
+        rating,
+        pickStatus,
+        colorLabel,
+        isFavorite,
+        approvedForPress,
+        approvedForPublicSite,
+        approvedForSocial,
+        reviewNotes,
+      },
+    });
+  } catch {
+    return;
+  }
+  revalidatePath(MC_PATH);
+  revalidatePath("/admin/owned-campaign-library");
+  revalidatePath(`/admin/owned-media/${id}`);
+}
+
+export async function setMediaCenterReviewedAction(formData: FormData) {
+  await requireAdminAction();
+  const id = String(formData.get("ownedMediaId") ?? "").trim();
+  if (!id) return;
+  const mark = String(formData.get("markReviewed") ?? "");
+  const setReviewed = mark === "1";
+  const actor = await getAdminActorUserId();
+  try {
+    await prisma.ownedMediaAsset.update({
+      where: { id },
+      data: setReviewed
+        ? { reviewedAt: new Date(), reviewedByUserId: actor }
+        : { reviewedAt: null, reviewedByUserId: null },
+    });
+  } catch {
+    return;
+  }
+  revalidatePath(MC_PATH);
+  revalidatePath(`/admin/owned-media/${id}`);
+}
+
+export async function addOwnedMediaToCollectionAction(formData: FormData) {
+  await requireAdminAction();
+  const ownedMediaId = String(formData.get("ownedMediaId") ?? "").trim();
+  const collectionId = String(formData.get("collectionId") ?? "").trim();
+  if (!ownedMediaId || !collectionId) return;
+  try {
+    await prisma.ownedMediaCollectionItem.upsert({
+      where: { collectionId_ownedMediaId: { collectionId, ownedMediaId } },
+      create: { collectionId, ownedMediaId },
+      update: {},
+    });
+  } catch {
+    return;
+  }
+  revalidatePath(MC_PATH);
+  revalidatePath("/admin/owned-campaign-library");
 }

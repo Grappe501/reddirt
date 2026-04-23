@@ -148,7 +148,7 @@ export function EventsHub({ events, types, regions, audienceTags, initialFilters
           )}
         </div>
 
-        <div className="order-2 xl:sticky xl:top-[calc(var(--site-header-shim,5rem)+0.75rem)] xl:order-1 xl:self-start">
+        <div className="order-2 xl:order-1">
           <div className="mb-2">
             <h3 className="font-heading text-lg font-bold text-deep-soil">Field map</h3>
             <p className="mt-1 font-body text-sm text-deep-soil/70">

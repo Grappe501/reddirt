@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { VIDEO_SECTION } from "@/content/home/homepagePremium";
+import { kellySpeakIngestClips } from "@/content/media/kelly-speak-clips.generated";
 import { siteConfig } from "@/config/site";
 import { FadeInWhenVisible } from "@/components/home/FadeInWhenVisible";
 import { cn } from "@/lib/utils";
@@ -66,6 +67,35 @@ export function HomeVideoSection({ omitMainEmbed = false }: HomeVideoSectionProp
             </p>
           </FadeInWhenVisible>
         )}
+
+        {kellySpeakIngestClips.length > 0 ? (
+          <FadeInWhenVisible className="mt-10" delay={0.06}>
+            <p className="mb-4 text-center font-body text-xs font-bold uppercase tracking-wider text-civic-slate/70">
+              Kellymedia — recent speech & B-roll
+            </p>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {kellySpeakIngestClips.slice(0, 9).map((c) => (
+                <div
+                  key={c.id}
+                  className="overflow-hidden rounded-card border border-civic-ink/10 bg-black shadow-lg shadow-black/20"
+                >
+                  <video
+                    src={c.src}
+                    controls
+                    playsInline
+                    preload="metadata"
+                    className="aspect-video w-full"
+                    title={c.title}
+                  />
+                  <p className="border-t border-white/10 bg-civic-midnight px-3 py-2 font-body text-xs text-civic-mist/90">
+                    {c.title}
+                    {c.countyLabel ? ` · ${c.countyLabel.replace(/-/g, " ")}` : ""}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </FadeInWhenVisible>
+        ) : null}
 
         <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
           {clips.map((clip, i) => (

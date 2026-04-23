@@ -26,10 +26,12 @@
     "sync:team-positions": "tsx scripts/sync-campaign-team-positions.ts",
     "check:openai": "tsx scripts/check-openai-key.ts",
     "set:openai": "node scripts/set-openai-key.cjs",
+    "set:google-calendar-env": "node scripts/set-google-calendar-env.cjs",
     "photos:sync": "tsx scripts/sync-website-photos.ts",
     "ingest:interactive": "node scripts/ingest-prompt-key.cjs",
     "ingest:watch": "tsx scripts/campaign-media-ingest-watcher.ts",
     "voter-file:import": "tsx scripts/voter-file-import.ts",
+    "ingest:kellymedia": "tsx scripts/ingest-kellymedia.ts",
     "ingest:campaign-info-folder": "tsx scripts/ingest-campaign-folder.ts --dir \"H:/SOSWebsite/campaign information for ingestion\" --community-training --include-zips --public",
     "ingest:briefings": "tsx scripts/ingest-briefing-zip.ts",
     "ingest:folder": "tsx scripts/ingest-campaign-folder.ts",
@@ -46,7 +48,9 @@
     "owned-media:privacy-scan": "tsx scripts/ai-privatize-sensitive-owned-media.ts",
     "owned-media:privacy-scan:apply": "tsx scripts/ai-privatize-sensitive-owned-media.ts --apply",
     "photos:ai-curate-kelly-groups": "tsx scripts/ai-curate-kelly-groups-images.ts",
-    "photos:ai-curate-kelly-groups:apply": "tsx scripts/ai-curate-kelly-groups-images.ts --apply"
+    "photos:ai-curate-kelly-groups:apply": "tsx scripts/ai-curate-kelly-groups-images.ts --apply",
+    "media:index-roots": "tsx scripts/index-campaign-media-roots.ts",
+    "media:index-roots:dry": "tsx scripts/index-campaign-media-roots.ts --dry-run"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -64,6 +68,7 @@
     "googleapis": "^171.4.0",
     "jszip": "^3.10.1",
     "leaflet": "^1.9.4",
+    "lucide-react": "^0.460.0",
     "mammoth": "^1.12.0",
     "next": "^15.1.6",
     "openai": "^4.77.0",

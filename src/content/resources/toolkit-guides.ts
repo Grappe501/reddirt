@@ -488,6 +488,145 @@ const guides: ToolkitGuide[] = [
     ],
   },
   {
+    slug: "postcard-outreach",
+    title: "Postcard outreach (we supply, you send)",
+    tag: "Field",
+    shortDescription:
+      "We provide postcard stock and a targeted list; you hand-write messages, pay postage, and put them in the mail. A tangible lane for neighbors who like paper and a personal touch.",
+    intro:
+      "Postcards still work for voter contact when the tone is local, legible, and respectful. The campaign’s postcard lane is simple on purpose: we supply the cards and a list matched to a program, you add your own handwriting in your own words within guardrails a coordinator will share, and you cover postage so the program stays sustainable for volunteers. Nothing here replaces the official mail from election offices—this is campaign-to-neighbor contact with consent and care.",
+    anyOneCan: [
+      "You can do this at a kitchen table in short shifts—you do not need a call center voice or a perfect pen.",
+      "If handwriting is hard for you, say so: we can pair you with a buddy or a different lane.",
+      "Stamps and envelopes (if your packet uses them) are on you, which keeps the model honest and local.",
+    ],
+    sections: [
+      {
+        heading: "How the lane works (plain terms)",
+        paragraphs: [
+          "You sign up, a coordinator places you in a batch, and you receive postcard stock from the campaign plus instructions for the message window (what to stress, what to avoid, and how to keep it truthful).",
+          "We also provide the addresses for that batch—the list is not for copying into your own tool or reusing outside the program. It exists so neighbors get one thoughtful note, not three duplicates from the same name.",
+        ],
+        bullets: [
+          "We supply the postcards (design and print through the campaign).",
+          "You write in ink, sign as yourself unless a script says otherwise, and you pay to mail them.",
+          "You send only to the list we provide for your packet—no additions from private spreadsheets or purchased lists.",
+        ],
+        callout: "If you run out of time or cannot finish a batch, tell the coordinator so we reassign the addresses—no shame, no guilt.",
+      },
+      {
+        heading: "Voice and respect (the trust part)",
+        paragraphs: [
+          "Handwriting signals that a real person cared enough to sit down and write. Keep facts inside what the program gives you; if you are unsure about a date or a rule, leave it for the next training link rather than guessing.",
+        ],
+        bullets: [
+          "Be warm and neighborly, not pushy. No threats, no shame, no impersonation of a government office.",
+          "If someone returns mail or asks to be left alone, that request is final for this program and we note it in coordination.",
+        ],
+      },
+      {
+        heading: "Postage, timing, and proof",
+        paragraphs: [
+          "Buy stamps at the rate your packet specifies; oversized cards may need extra ounce postage. If you are mailing close to a deadline, ask for a clear “mail-by” date when you pick up the packet.",
+        ],
+        bullets: [
+          "Track how many you sent when we ask for closeout numbers—it helps the field team learn without becoming a vanity scoreboard.",
+        ],
+      },
+    ],
+    goDeeper: [
+      { label: "Text banking (peer-to-peer, numbers we provide)", href: "/resources/text-banking" },
+      { label: "Phone banking (road map and signup)", href: "/resources/phone-banking" },
+      { label: "Volunteer (tagged from this guide)", href: "/get-involved?resource=postcard-outreach#volunteer" },
+    ],
+  },
+  {
+    slug: "phone-banking",
+    title: "Phone banking (system on the way)",
+    tag: "Remote",
+    shortDescription:
+      "We are building a full phone-banking system with coach support and compliant dial workflows. For now, this page is your signup and training bookmark—so you are first in line when the stack is ready.",
+    intro:
+      "Phone conversations still move people when they are consented, time-bounded, and human. A professional campaign phone program needs a real dialer track, not a pile of personal cell phones blasting random numbers. We are planning that system with the same trust standards as the rest of the field. Until it ships, use this resource to know what to expect, how to prepare, and how to stay on the list so coordinators can place you the moment shifts open.",
+    anyOneCan: [
+      "If you are comfortable on the phone, you are already in the right zip code. Coaching will cover openers, opt-outs, and the nuts and bolts of Arkansas-specific scripts.",
+      "If night calling does not work for you, we will not treat that as a character flaw—say so and we will look at daytime batches or a different lane like postcards or P2P text.",
+    ],
+    sections: [
+      {
+        heading: "What is coming (so you are not left guessing)",
+        paragraphs: [
+          "Expect a real workflow: contact lists with permission, scripts tied to the Secretary of State race, call dispositions, and a path for do-not-call requests that we honor immediately. We are not publishing vendor names before contracts are final, but the goal is a single place to log in, receive training, and take supervised shifts.",
+        ],
+        bullets: [
+          "Coaches and recorded practices before your first live calls.",
+          "Clear rules for ID, time zones, and what to do when someone is confused or angry.",
+        ],
+        callout: "Bookmark this page; we will update it when the first pilot shifts go live. Until then, sign the volunteer form and note phone banking so routing is easy.",
+      },
+      {
+        heading: "What you can do right now",
+        paragraphs: [
+          "Use the volunteer form to raise your hand. In skills or availability, name windows that work, whether you are bilingual, and if you have used a virtual phone bank before.",
+        ],
+        bullets: [
+          "Pair with postcard or P2P text if you need something tangible while you wait for dialer access.",
+        ],
+      },
+    ],
+    goDeeper: [
+      { label: "Text banking (P2P now)", href: "/resources/text-banking" },
+      { label: "Postcard outreach (handwritten)", href: "/resources/postcard-outreach" },
+      { label: "Volunteer (tag for phone bank)", href: "/get-involved?resource=phone-banking#volunteer" },
+    ],
+  },
+  {
+    slug: "text-banking",
+    title: "Text banking (peer-to-peer, protect your number)",
+    tag: "Remote",
+    shortDescription:
+      "We provide numbers and message flows; you send peer-to-peer texts from a separate line—like Google Voice—so your personal phone number stays out of the blast radius.",
+    intro:
+      "Peer-to-peer texting is a conversation, not a robocall. The campaign can supply phone numbers, segments, and approved scripts, and you send messages one at a time from your device. Because your personal line deserves protection, we teach volunteers to set up a Google Voice number or another service that gives you a dedicated outbound number. That habit keeps your family’s phone from becoming the return path for a stranger with a grudge, and it keeps the program clean when someone opts out.",
+    anyOneCan: [
+      "If you can text your cousin, you can learn P2P—training covers consent, opt-out language, and when to hand off to a human.",
+      "If you have zero patience for new apps, say so; we can match you to postcards or event representation instead.",
+    ],
+    sections: [
+      {
+        heading: "What the campaign provides",
+        paragraphs: [
+          "We give you the numbers to contact (within the program), the copy approved for that round, and training on the tone we want: local, direct, and honest about who you are.",
+        ],
+        bullets: [
+          "You send; you are not “the campaign robot.” That is the whole point of P2P.",
+        ],
+      },
+      {
+        heading: "Hide your personal number (seriously)",
+        paragraphs: [
+          "Before you send a single assigned text, set up a separate number. Google Voice is a common free option on Android and iOS; other VoIP and second-line services work too. Use that number only for this work so replies and opt-outs do not follow you home.",
+        ],
+        bullets: [
+          "Never paste the voter file into a personal group chat or a for-profit blast tool. Stay inside the workflow we give you.",
+          "If someone says stop, you stop and mark it in the system—no debate, no second message from another number.",
+        ],
+        callout: "We will walk through the setup in training. If a tool changes, the principle does not: one campaign-facing line, not your family cell.",
+      },
+      {
+        heading: "Tone and safety",
+        paragraphs: [
+          "Be short. Be true. If you do not know an election rule, do not improvise—point to official sources or a coordinator.",
+        ],
+      },
+    ],
+    goDeeper: [
+      { label: "Phone banking (dialer—road map)", href: "/resources/phone-banking" },
+      { label: "Postcard outreach (paper lane)", href: "/resources/postcard-outreach" },
+      { label: "Volunteer (tag for text bank)", href: "/get-involved?resource=text-banking#volunteer" },
+    ],
+  },
+  {
     slug: "sos-office-brief",
     title: "Secretary of State 101",
     tag: "Civic",
@@ -525,6 +664,10 @@ const guides: ToolkitGuide[] = [
     ],
   },
 ];
+
+/** Toolkit slugs shown as optional volunteer interest checkboxes (see VolunteerForm). */
+export const OUTREACH_RESOURCE_SLUGS = ["postcard-outreach", "phone-banking", "text-banking"] as const;
+export type OutreachResourceSlug = (typeof OUTREACH_RESOURCE_SLUGS)[number];
 
 const bySlug = Object.fromEntries(guides.map((g) => [g.slug, g])) as Record<string, ToolkitGuide>;
 
