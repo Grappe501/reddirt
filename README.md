@@ -63,6 +63,17 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) and [docs/deployment.md](./docs/deploym
 - [docs/deployment.md](./docs/deployment.md) — Netlify & production
 - [docs/decisions/](./docs/decisions/) — architecture ADRs
 - [docs/future-pipelines.md](./docs/future-pipelines.md) — planned integrations (stubs only)
+- [docs/field-structure-foundation.md](./docs/field-structure-foundation.md) — FIELD-1 field units + assignments (positions / seats)
+- [docs/youth-pipeline-foundation.md](./docs/youth-pipeline-foundation.md) — YOUTH-1 youth roles + governance (types in `src/lib/campaign-engine/youth.ts`)
+- [docs/youth-agent-ingest-map.md](./docs/youth-agent-ingest-map.md) — YOUTH-1 agent / RAG guardrails
+- [docs/data-targeting-foundation.md](./docs/data-targeting-foundation.md) — DATA-1 county/voter goals vs schema reality
+- [docs/communications-unification-foundation.md](./docs/communications-unification-foundation.md) — COMMS-UNIFY-1 map of threads, broadcast, workbench, social
+- [docs/message-workbench-analysis.md](./docs/message-workbench-analysis.md) — Comms workbench plan/draft/send structure
+- [docs/identity-and-voter-link-foundation.md](./docs/identity-and-voter-link-foundation.md) — IDENTITY-1 `User` ↔ `VoterRecord`
+- [docs/volunteer-data-gap-analysis.md](./docs/volunteer-data-gap-analysis.md) — VolunteerProfile capabilities and gaps
+- [docs/database-table-inventory.md](./docs/database-table-inventory.md) — DBMAP-1: all 105 Prisma models, grouped by domain
+- [docs/launch-reengagement-foundation.md](./docs/launch-reengagement-foundation.md) — LAUNCH-1: first-wave re-engagement on existing rails
+- [docs/launch-segmentation-and-response-foundation.md](./docs/launch-segmentation-and-response-foundation.md) — LAUNCH-1: honest segments + response routing
 
 ## Connect Git / first push
 

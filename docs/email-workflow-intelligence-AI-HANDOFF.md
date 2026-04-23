@@ -487,7 +487,33 @@ npx prisma migrate deploy   # when database is up
       "auto_ledger_from_all_submissions",
       "nlp_amount_parsing"
     ],
-    "direction": "FIN-2 create/edit, confirm flow, import from submissions, audit actor columns, contribution types"
+    "direction": "FIN-2 landed (confirm + CONTRIBUTION; import/reconciliation still future)"
+  },
+  "packet_fin2_field1_youth1": {
+    "status": "ledger_confirm_contribution_field_units_youth_types",
+    "docs": [
+      "docs/financial-ledger-foundation.md (FIN-2 section)",
+      "docs/field-structure-foundation.md",
+      "docs/youth-pipeline-foundation.md",
+      "docs/youth-agent-ingest-map.md"
+    ],
+    "code": [
+      "prisma/schema.prisma + migration 20260512120000_fin2_field1_youth1_foundation",
+      "src/lib/campaign-engine/financial-ledger.ts",
+      "src/lib/campaign-engine/field.ts",
+      "src/lib/campaign-engine/youth.ts",
+      "src/lib/campaign-engine/budget-queries.ts (CONTRIBUTION excluded from actuals)",
+      "src/app/admin/financial-transaction-actions.ts",
+      "src/app/admin/(board)/financial-transactions/page.tsx (minimal create + confirm)"
+    ],
+    "not_built": [
+      "full_finance_workbench",
+      "bank_fec_sos_reconciliation",
+      "gis_districts",
+      "county_to_fieldunit_sync",
+      "youth_lms_or_routing"
+    ],
+    "direction": "FIELD-2 optional County FK; YOUTH-2 position ids + consent ops; FIN-3 import from submissions with review"
   },
   "packet_budget2": {
     "status": "budget_structure_plan_vs_actual_foundation",
@@ -511,6 +537,60 @@ npx prisma migrate deploy   # when database is up
       "status_enforced_edit_guards"
     ],
     "direction": "BUDGET-3: advisory alerts, optional commitments, tighter event-level attribution when ledger links exist"
+  },
+  "packet_dbmap1_launch1": {
+    "status": "full_prisma_inventory_plus_launch_reengagement_foundation",
+    "docs": [
+      "docs/database-table-inventory.md",
+      "docs/launch-reengagement-foundation.md",
+      "docs/launch-segmentation-and-response-foundation.md"
+    ],
+    "code": [
+      "scripts/print-prisma-inventory.mjs",
+      "src/lib/campaign-engine/launch.ts (types + countLaunchAudienceByKind, listLaunchReadySupporters — read-only)"
+    ],
+    "not_built": [
+      "marketing_automation",
+      "launch_status_column",
+      "auto_segment_ml",
+      "unified_send_engine"
+    ],
+    "direction": "LAUNCH-2: optional runbook metadata; consent audit checklist; one chosen send path per wave documented in admin"
+  },
+  "packet_geo1": {
+    "status": "county_and_media_geographic_mapping_foundation",
+    "docs": [
+      "docs/geographic-county-mapping.md",
+      "docs/county-media-mapping.md",
+      "docs/geographic-unification-foundation.md",
+      "docs/county-dashboard-foundation.md"
+    ],
+    "code": [],
+    "not_built": [
+      "prisma_migrations",
+      "fieldunit_to_county_fk",
+      "unified_countydashboard_sql_view",
+      "precinct_master_table"
+    ],
+    "direction": "GEO-2: optional FieldUnit↔County mapping table or app service; backfill owned media countyId; document segment JSON schema for county; read-only county dashboard prototype using joins"
+  },
+  "packet_data1_comms_unify1_identity1": {
+    "status": "documentation_targeting_comms_map_identity_volunteer_gaps",
+    "docs": [
+      "docs/data-targeting-foundation.md",
+      "docs/communications-unification-foundation.md",
+      "docs/message-workbench-analysis.md",
+      "docs/identity-and-voter-link-foundation.md",
+      "docs/volunteer-data-gap-analysis.md"
+    ],
+    "code": [],
+    "not_built": [
+      "unified_message_persistence",
+      "persuasion_turnout_universe_in_prisma",
+      "precinct_geometry",
+      "single_send_engine_merge"
+    ],
+    "direction": "DATA-2 optional targeting contract; COMMS-UNIFY-2 cross-surface campaignMessageKey; IDENTITY-2 public voter portal auth (if product)"
   },
   "packet_fund1": {
     "status": "blueprint_fundraising_desk_ingest_contactability",
@@ -824,5 +904,53 @@ npx prisma migrate deploy   # when database is up
 **Intentionally not built:** Commitments, forecasting, perfect attribution, bank/vendor hooks, filing automation, RBAC on budget routes beyond existing admin gate.
 
 *Last updated: Packet BUDGET-2. See `packet_budget2` in the JSON handoff block.*
+
+---
+
+## 28. Packets FIN-2 + FIELD-1 + YOUTH-1 — Ledger use, field rails, youth vocabulary
+
+**What shipped (FIN-2) —** [`financial-ledger-foundation.md`](./financial-ledger-foundation.md) (§6) · `FinancialTransaction` **columns** `confirmedByUserId` / `confirmedAt` · enum **`CONTRIBUTION`** · `financial-ledger.ts` · `financial-transaction-actions.ts` · admin **`/admin/financial-transactions`** minimal create + **Confirm**; confirming user from **`getAdminActorUserId`** / **`ADMIN_ACTOR_USER_EMAIL`**. **BUDGET-2** actuals **ignore** `CONTRIBUTION` in `budget-queries.ts`.
+
+**What shipped (FIELD-1) —** [`field-structure-foundation.md`](./field-structure-foundation.md) · Prisma **`FieldUnit`** / **`FieldAssignment`** (optional `positionSeatId`) · `field.ts` (read-only queries).
+
+**What shipped (YOUTH-1) —** [`youth-pipeline-foundation.md`](./youth-pipeline-foundation.md) · [`youth-agent-ingest-map.md`](./youth-agent-ingest-map.md) · `youth.ts` (types only).
+
+**Intentionally not built —** finance import/recon · **GIS** · **youth** **automation** / **LMS** · **mandatory** **County**↔`FieldUnit` **link** in DB.
+
+*Last updated: Packets FIN-2, FIELD-1, YOUTH-1. See `packet_fin2_field1_youth1` in the JSON handoff block.*
+
+---
+
+## 29. Packets DATA-1 + COMMS-UNIFY-1 + IDENTITY-1 — Targeting truth, comms map, identity
+
+**What shipped (docs only):** [`data-targeting-foundation.md`](./data-targeting-foundation.md) (county goals, **no** P/T/B universes in schema; `VoterRecord.precinct` string when imported; what is missing) · [`communications-unification-foundation.md`](./communications-unification-foundation.md) (threads, Tier 2 broadcast, **Comms workbench** plan/draft/send, social, inbound content, E-1, **MediaOutreachItem**) · [`message-workbench-analysis.md`](./message-workbench-analysis.md) (workbench **structure** + **reuse** + AI **touch** points) · [`identity-and-voter-link-foundation.md`](./identity-and-voter-link-foundation.md) (`User` ↔ `VoterRecord`, fallbacks) · [`volunteer-data-gap-analysis.md`](./volunteer-data-gap-analysis.md).
+
+**Intentionally not built:** **New** **tables**; **voter** **scoring**; **merging** **Send** and **Thread** into **one** **implementation**; **precinct** **GIS**.
+
+*Last updated: Packets DATA-1, COMMS-UNIFY-1, IDENTITY-1. See `packet_data1_comms_unify1_identity1` in the JSON handoff block.*
+
+---
+
+## 30. Packets DBMAP-1 + LAUNCH-1 — Prisma inventory + re-engagement launch foundation
+
+**What shipped (DBMAP-1):** [`database-table-inventory.md`](./database-table-inventory.md) — all **105** models with purpose, domain, and launch relevance; `scripts/print-prisma-inventory.mjs` to re-verify the model count.
+
+**What shipped (LAUNCH-1):** [`launch-reengagement-foundation.md`](./launch-reengagement-foundation.md) and [`launch-segmentation-and-response-foundation.md`](./launch-segmentation-and-response-foundation.md); `src/lib/campaign-engine/launch.ts` — types (`LaunchResponseIntent`, etc.) and read-only `countLaunchAudienceByKind` / `listLaunchReadySupporters` (not a send path).
+
+**Intentionally not built:** journey automation, ML segments, schema for re-engagement waves, or implicit opt-in.
+
+*Last updated: Packets DBMAP-1, LAUNCH-1. See `packet_dbmap1_launch1` in the JSON handoff block.*
+
+---
+
+## 31. Packet GEO-1 — County + media mapping + geographic unification foundation
+
+**What shipped (docs only):** [`geographic-county-mapping.md`](./geographic-county-mapping.md) (full inventory of county-related fields in `schema.prisma`) · [`county-media-mapping.md`](./county-media-mapping.md) (media/comms social vs string vs inferred) · [`geographic-unification-foundation.md`](./geographic-unification-foundation.md) (conceptual hierarchy: state → county → precinct string) · [`county-dashboard-foundation.md`](./county-dashboard-foundation.md) (future county dashboard = existing models).
+
+**Fragmentation documented:** `User.county` string vs `County` FK; `FieldUnit` / `FieldAssignment` not linked to `County`; workbench and Tier-2 comms without direct `countyId` on every row; `SocialContentItem` and `MediaOutreachItem` limitations.
+
+**Intentionally not built:** any schema change; automated merge of field names to FIPS. See `packet_geo1` in the JSON handoff block.
+
+*Last updated: Packet GEO-1.*
 
 ---

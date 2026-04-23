@@ -92,6 +92,10 @@ model User {
   complianceDocumentsUploaded    ComplianceDocument[]              @relation("ComplianceDocumentUploader")
   /// FIN-1: optional “related party” for a ledger line (e.g. submitter) — not exclusive owner of the row.
   financialTransactionsRelated   FinancialTransaction[]            @relation("FinancialTransactionRelatedUser")
+  /// FIN-2: user who confirmed a ledger line (status DRAFT → CONFIRMED).
+  financialTransactionsConfirmed FinancialTransaction[]            @relation("FinancialTransactionConfirmedBy")
+  /// FIELD-1: optional geographic/field coverage assignment (one row = one field scope × position anchor).
+  fieldAssignments                 FieldAssignment[]
 }
 
 /// COMP-2: classification for dashboard-uploaded compliance knowledge files.
@@ -141,6 +145,7 @@ model ComplianceDocument {
 enum FinancialTransactionType {
   EXPENSE
   REIMBURSEMENT
+  CONTRIBUTION
   OTHER
 }
 
@@ -176,6 +181,10 @@ model FinancialTransaction {
   relatedEvent     CampaignEvent? @relation(fields: [relatedEventId], references: [id], onDelete: SetNull)
   notes            String?  @db.Text
   status           FinancialTransactionStatus @default(DRAFT)
+  /// FIN-2: staff who confirmed the row; set only when status is CONFIRMED.
+  confirmedByUserId String?
+  confirmedBy      User?    @relation("FinancialTransactionConfirmedBy", fields: [confirmedByUserId], references: [id], onDelete: SetNull)
+  confirmedAt      DateTime?
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 
@@ -183,6 +192,48 @@ model FinancialTransaction {
   @@index([sourceType, sourceId])
   @@index([category, transactionDate])
   @@index([status, transactionDate])
+  @@index([confirmedByUserId])
+}
+
+/// FIELD-1: minimal geographic/field hierarchy (campaign-owned labels; not GIS).
+enum FieldUnitType {
+  COUNTY
+  REGION
+}
+
+/// FIELD-1: named field geography node (e.g. county or multi-county region). Optional `parent` for nesting.
+model FieldUnit {
+  id        String        @id @default(cuid())
+  name      String
+  type      FieldUnitType
+  parentId  String?
+  parent    FieldUnit?   @relation("FieldUnitHierarchy", fields: [parentId], references: [id], onDelete: SetNull)
+  children  FieldUnit[]  @relation("FieldUnitHierarchy")
+  createdAt DateTime     @default(now())
+
+  assignments FieldAssignment[]
+
+  @@index([type, name])
+  @@index([parentId])
+}
+
+/// FIELD-1: link a `PositionId` string (`positions.ts`) and optional `User` / `PositionSeat` to a field unit.
+model FieldAssignment {
+  id         String   @id @default(cuid())
+  fieldUnitId String
+  fieldUnit  FieldUnit @relation(fields: [fieldUnitId], references: [id], onDelete: Cascade)
+  /// `PositionId` from `src/lib/campaign-engine/positions.ts` (string slug); not a Prisma FK.
+  positionId String
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  /// Optional link to the operational org seat (SEAT-1); should match `positionId` on the seat’s `positionKey` when set.
+  positionSeatId String?
+  positionSeat   PositionSeat? @relation(fields: [positionSeatId], references: [id], onDelete: SetNull)
+  createdAt      DateTime  @default(now())
+
+  @@index([fieldUnitId, positionId])
+  @@index([userId])
+  @@index([positionSeatId])
 }
 
 /// BUDGET-2: campaign-internal budget plan (not the ledger; not a filing).
@@ -252,6 +303,8 @@ model PositionSeat {
   metadataJson Json?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  fieldAssignments FieldAssignment[]
 
   @@index([userId])
   @@index([status, positionKey])

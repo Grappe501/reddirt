@@ -137,3 +137,27 @@ Concise planning doc: what workbenches exist, what to reuse, what to build next,
 ---
 
 *Last updated: Packets ROLE-1, SEAT-1 (seating table + admin coverage; `positions.ts` still ROLE-1 seam); **BUDGET-2** (`…/budgets`).*
+
+---
+
+## 10. Packets DBMAP-1 + LAUNCH-1 — Full Prisma inventory + launch re-engagement foundation
+
+**What shipped (DBMAP-1):** [`database-table-inventory.md`](./database-table-inventory.md) — **105** Prisma models in one **alphabetical** inventory (purpose, domain, relations, active/legacy heuristic, launch relevance). `scripts/print-prisma-inventory.mjs` regenerates the sorted model list for drift checks.
+
+**What shipped (LAUNCH-1):** [`launch-reengagement-foundation.md`](./launch-reengagement-foundation.md) and [`launch-segmentation-and-response-foundation.md`](./launch-segmentation-and-response-foundation.md) — honest **~100+** supporter re-engagement story on **existing** rails (no automation engine). `src/lib/campaign-engine/launch.ts` — **types** + **read-only** `countLaunchAudienceByKind` / `listLaunchReadySupporters` (planning only; **not** consent to send).
+
+**Intentionally not built:** marketing automation, ML segmentation, new “launch status” columns, or merging all comms send paths.
+
+*Last updated: Packets DBMAP-1, LAUNCH-1.*
+
+---
+
+## 11. Packet GEO-1 — County / media geographic mapping (docs only)
+
+**What shipped:** [`geographic-county-mapping.md`](./geographic-county-mapping.md) (all models with `County` FK, `countySlug` / `countyFips`, `User.county`, `VoterRecord.precinct` string, `FieldUnit` / `FieldAssignment` vs `County`) · [`county-media-mapping.md`](./county-media-mapping.md) (which media/comms models are direct vs inferred vs JSON) · [`geographic-unification-foundation.md`](./geographic-unification-foundation.md) (spine, **no** schema) · [`county-dashboard-foundation.md`](./county-dashboard-foundation.md) (future county dashboard = join existing tables).
+
+**Fragmentation called out:** **`FieldUnit`** is not FK-linked to **`County`**; comms workbench and social often need **joins** to `CampaignEvent` / `WorkflowIntake` for county; **Tier-2** broadcast uses **JSON** for audience. **`MediaOutreachItem`** has no county column.
+
+**Intentionally not built:** new migrations, a single `CountyDashboard` view, or auto-linking `FieldUnit` names to FIPS.
+
+*Last updated: Packet GEO-1.*

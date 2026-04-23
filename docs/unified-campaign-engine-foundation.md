@@ -276,4 +276,48 @@ Each rail: **defined** in the matrix (where applicable); **evidence** and **gaps
 
 ---
 
-*Last updated: Packets FND-1, ROLE-1, TALENT-1, BRAIN-1, ALIGN-1, ASSIGN-1, UWR-1, WB-CORE-1, SEAT-1, SKILL-1+ASSIGN-2, FUND-1, COMP-1, POLICY-1+COMP-2+BUDGET-1, FIN-1, BUDGET-2.*
+## 24. Packets FIN-2 + FIELD-1 + YOUTH-1 — Ledger use, field geography, youth pipeline (foundation)
+
+**What shipped (FIN-2) —** [`financial-ledger-foundation.md`](./financial-ledger-foundation.md) (FIN-2 section) · Prisma: `confirmedByUserId` / `confirmedAt`, enum **`CONTRIBUTION`** · `src/lib/campaign-engine/financial-ledger.ts` (`createFinancialTransaction`, `confirmFinancialTransaction`) · `src/app/admin/financial-transaction-actions.ts` · `src/app/admin/(board)/financial-transactions/page.tsx` (minimal create + per-row confirm) · BUDGET-2 **actuals** **exclude** `CONTRIBUTION` **type** in `budget-queries.ts`.
+
+**What shipped (FIELD-1) —** [`field-structure-foundation.md`](./field-structure-foundation.md) · Prisma **`FieldUnit`** / **`FieldAssignment`** (optional `positionSeatId`) · `src/lib/campaign-engine/field.ts` (`listFieldUnits`, `getFieldAssignments`, `getFieldLeadersByCounty` — read-only).
+
+**What shipped (YOUTH-1) —** [`youth-pipeline-foundation.md`](./youth-pipeline-foundation.md) · [`youth-agent-ingest-map.md`](./youth-agent-ingest-map.md) · `src/lib/campaign-engine/youth.ts` (`YouthStage`, `YouthRoleType`, `YouthEngagementSignal` — **types only**).
+
+**Intentionally not built:** **Finance** **dashboard,** import, reconciliation · **GIS,** **districts,** public **`County` ↔ `FieldUnit` sync** · **youth** **LMS,** **auto**-routing, **new** `PositionId` **values,** any **scoring** **engine**. **FND-1** **§8** build sequence is **unchanged** — these packets **widen** **rails,** not **orchestrate** the whole OS.
+
+---
+
+## 25. Packets DATA-1 + COMMS-UNIFY-1 + IDENTITY-1 — Targeting facts, comms surface map, identity story (documentation)
+
+**What shipped (DATA-1) —** [`data-targeting-foundation.md`](./data-targeting-foundation.md) — **county** registration goals and rollups; **optional** `VoterRecord.precinct` **string**; **no** P/T/B universe model in Prisma; **volunteer** **goals** not on **`VolunteerProfile`**.
+
+**What shipped (COMMS-UNIFY-1) —** [`communications-unification-foundation.md`](./communications-unification-foundation.md) + [`message-workbench-analysis.md`](./message-workbench-analysis.md) — **one** **orchestration** **story** (intent / targeting input / execution output) **mapped** to **existing** **threads,** **broadcast,** **Comms** **workbench,** **social,** **inbound** **content,** **E-1,** **earned/press** — **not** a **unified** **DB** **table** **in** **this** **packet**.
+
+**What shipped (IDENTITY-1) —** [`identity-and-voter-link-foundation.md`](./identity-and-voter-link-foundation.md) + [`volunteer-data-gap-analysis.md`](./volunteer-data-gap-analysis.md) — **`VoterRecord`** **vs** **`User`** **link**; **volunteer** **data** **gaps** for **goals/performance** **narrative** **without** **schema** **changes** **here**.
+
+**Intentionally not built in this packet:** New **migrations**; **voter** **modeling** **engine**; **single** **send** **codepath**; **login** **product** for **voters**.
+
+---
+
+## 26. Packets DBMAP-1 + LAUNCH-1 — Full table inventory + launch re-engagement foundation
+
+**What shipped (DBMAP-1):** [`database-table-inventory.md`](./database-table-inventory.md) — all **105** Prisma models with purpose, domain grouping, and launch-relevance notes; `scripts/print-prisma-inventory.mjs` for drift checks on the sorted model list.
+
+**What shipped (LAUNCH-1):** [`launch-reengagement-foundation.md`](./launch-reengagement-foundation.md) and [`launch-segmentation-and-response-foundation.md`](./launch-segmentation-and-response-foundation.md). Types and read-only helpers `countLaunchAudienceByKind` and `listLaunchReadySupporters` in `src/lib/campaign-engine/launch.ts` (no send path, no schema change).
+
+**Intentionally not built:** marketing automation, ML segments, a persisted re-engagement status column, or merging all comms into one send engine.
+
+---
+
+## 27. Packet GEO-1 — County & media geographic mapping + unification foundation
+
+**What shipped (docs only):** [`geographic-county-mapping.md`](./geographic-county-mapping.md) (every `County` / `countyId` / `countySlug` / precinct-string model in `schema.prisma`) · [`county-media-mapping.md`](./county-media-mapping.md) (social, inbound, owned media, comms, press) · [`geographic-unification-foundation.md`](./geographic-unification-foundation.md) (conceptual spine; **no** migration) · [`county-dashboard-foundation.md`](./county-dashboard-foundation.md) (future per-county dashboard by existing tables).
+
+**What was mapped:** FK vs string vs JSON; **`FieldUnit`** / **`FieldAssignment`** vs canonical **`County`**; gaps for **`SocialContentItem`**, **`MediaOutreachItem`**, Tier-2 broadcast; **`VoterRecord.precinct`** as string only.
+
+**Intentionally not built:** new tables, `FieldUnit`→`County` FK, or a unified geography dimension beyond documentation.
+
+---
+
+*Last updated: Packets FND-1, ROLE-1, TALENT-1, BRAIN-1, ALIGN-1, ASSIGN-1, UWR-1, WB-CORE-1, SEAT-1, SKILL-1+ASSIGN-2, FUND-1, COMP-1, POLICY-1+COMP-2+BUDGET-1, FIN-1, BUDGET-2, FIN-2, FIELD-1, YOUTH-1, DATA-1, COMMS-UNIFY-1, IDENTITY-1, **DBMAP-1, LAUNCH-1, GEO-1**.*

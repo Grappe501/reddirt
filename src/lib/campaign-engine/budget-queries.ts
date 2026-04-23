@@ -4,7 +4,7 @@
  * @see docs/budget-structure-foundation.md
  */
 
-import { FinancialTransactionStatus } from "@prisma/client";
+import { FinancialTransactionStatus, FinancialTransactionType } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { BUDGET2_PACKET, getBudgetWireForTransaction } from "./budget";
 
@@ -43,6 +43,7 @@ export async function getBudgetPlanDetail(planId: string) {
 
 /**
  * Sum of **CONFIRMED** ledger amounts grouped by cost-bearing wire (after category mapping).
+ * **`CONTRIBUTION` rows are excluded** — they are inflows, not BUDGET-2 **spend** actuals.
  * When the plan has `startDate` / `endDate`, only `transactionDate` days inside that inclusive window count.
  */
 export async function getBudgetActualsByWire(planId: string): Promise<{
@@ -58,7 +59,10 @@ export async function getBudgetActualsByWire(planId: string): Promise<{
   }
 
   const txs = await prisma.financialTransaction.findMany({
-    where: { status: FinancialTransactionStatus.CONFIRMED },
+    where: {
+      status: FinancialTransactionStatus.CONFIRMED,
+      transactionType: { not: FinancialTransactionType.CONTRIBUTION },
+    },
     select: { amount: true, category: true, transactionDate: true },
   });
 

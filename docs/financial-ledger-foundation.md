@@ -63,4 +63,11 @@
 
 ---
 
-*Last updated: Packet FIN-1.*
+## 6. Packet FIN-2 (extensions)
+
+- **Enum:** **`FinancialTransactionType.CONTRIBUTION`** — inflows and structured gifts; **BUDGET-2** spend actuals **exclude** `CONTRIBUTION` (not spend).
+- **Audit:** optional **`confirmedByUserId`**, **`confirmedAt`** set only when **status** moves **DRAFT → CONFIRMED** (no auto-confirm).
+- **Code:** `src/lib/campaign-engine/financial-ledger.ts` — `createFinancialTransaction`, `confirmFinancialTransaction` · `src/app/admin/financial-transaction-actions.ts` — **admin** create + confirm (actor from `getAdminActorUserId` / `ADMIN_ACTOR_USER_EMAIL` when set).
+- **Intentionally not in FIN-2:** import pipelines, bank reconciliation, bulk edit, FEC/SOS export.
+
+*Last updated: Packets FIN-1, FIN-2.*
