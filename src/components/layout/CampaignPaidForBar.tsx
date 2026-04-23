@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
+import { CAMPAIGN_POLICY_V1 } from "@/lib/campaign-engine/policy";
 
 type Props = {
   /** Dark background (footer) vs light band (admin) */
@@ -8,7 +9,7 @@ type Props = {
 
 /**
  * FEC-style “paid for” line — required on every public and admin surface.
- * Optional `NEXT_PUBLIC_COMMITTEE_SITE_URL` links “the campaign” to your preferred site (e.g. RedDirt / main domain).
+ * Wording comes from `CAMPAIGN_POLICY_V1` (POLICY-1); optional `NEXT_PUBLIC_COMMITTEE_SITE_URL` links the campaign site.
  */
 function linkLabelForHref(href: string): string {
   try {
@@ -32,7 +33,7 @@ export function CampaignPaidForBar({ variant = "dark" }: Props) {
           : "text-center font-body text-[10px] font-medium uppercase tracking-[0.12em] text-deep-soil/55"
       }
     >
-      Paid for by the Committee to Elect Kelly Grappe ·{" "}
+      {CAMPAIGN_POLICY_V1.disclaimers.pageFooterPaidForLine} ·{" "}
       <Link
         href={committeeHref}
         className={

@@ -62,6 +62,157 @@ model User {
   ownedMediaReviewLogs             OwnedMediaReviewLog[]
   ownedMediaAssetsReviewed         OwnedMediaAsset[]                @relation("OwnedMediaReviewedBy")
   socialContentDraftsCreated       SocialContentDraft[]             @relation("SocialContentDraftAuthor")
+  /// Comms Workbench (ops layer)
+  commsPlansOwned                  CommunicationPlan[]              @relation("CommsPlanOwner")
+  commsPlansRequested              CommunicationPlan[]              @relation("CommsPlanRequester")
+  commsDraftsCreated               CommunicationDraft[]             @relation("CommsDraftCreator")
+  commsDraftsUpdated               CommunicationDraft[]             @relation("CommsDraftUpdater")
+  commsDraftReviewRequests         CommunicationDraft[]             @relation("CommsDraftReviewRequester")
+  commsDraftReviews                CommunicationDraft[]             @relation("CommsDraftReviewer")
+  commsVariantReviewRequests       CommunicationVariant[]           @relation("CommsVariantReviewRequester")
+  commsVariantReviews              CommunicationVariant[]           @relation("CommsVariantReviewer")
+  commsSendsSent                   CommunicationSend[]              @relation("CommsSendSender")
+  commsSendsQueued                 CommunicationSend[]              @relation("CommsSendQueuedBy")
+  commsSendsLastRetried            CommunicationSend[]              @relation("CommsSendLastRetriedBy")
+  /// Message-plan audience segments (Comms workbench; CE-1) — not broadcast `AudienceSegment`.
+  commsPlanSegmentsCreated         CommsPlanAudienceSegment[]       @relation("CommsPlanSegmentCreatedBy")
+  commsPlanSegmentsUpdated         CommsPlanAudienceSegment[]       @relation("CommsPlanSegmentUpdatedBy")
+  commsPlanSegmentMembersAdded     CommsPlanAudienceSegmentMember[] @relation("CommsPlanSegmentMemberAddedBy")
+  commsPlanSegmentMemberSubjects   CommsPlanAudienceSegmentMember[] @relation("CommsPlanSegmentMemberSubject")
+  workbenchCommunicationRecipients CommunicationRecipient[]         @relation("CommunicationRecipientUser")
+  /// E-1+ Email Workflow Intelligence (distinct from `CommunicationActionQueue` AI/ops queue).
+  emailWorkflowItemsCreated  EmailWorkflowItem[] @relation("EmailWorkflowItemCreatedBy")
+  emailWorkflowItemsAssigned EmailWorkflowItem[] @relation("EmailWorkflowItemAssignedTo")
+  emailWorkflowItemsReviewed EmailWorkflowItem[] @relation("EmailWorkflowItemReviewedBy")
+  /// Contact / counterpart user on a workflow item (optional).
+  emailWorkflowItemsContact  EmailWorkflowItem[] @relation("EmailWorkflowItemContactUser")
+  /// SEAT-1: at most one primary row per `positionKey` in `PositionSeat` (operational org seat; not permissions).
+  positionSeatsOccupied          PositionSeat[]                   @relation("PositionSeatOccupant")
+  /// COMP-2: compliance documents uploaded from admin (metadata + file pointer; not auto-trusted for AI).
+  complianceDocumentsUploaded    ComplianceDocument[]              @relation("ComplianceDocumentUploader")
+  /// FIN-1: optional “related party” for a ledger line (e.g. submitter) — not exclusive owner of the row.
+  financialTransactionsRelated   FinancialTransaction[]            @relation("FinancialTransactionRelatedUser")
+}
+
+/// COMP-2: classification for dashboard-uploaded compliance knowledge files.
+enum ComplianceDocumentType {
+  SOS_ETHICS_FORM
+  FILING_INSTRUCTIONS
+  PRIOR_SUBMITTED_REPORT
+  RECEIPT
+  REIMBURSEMENT
+  BANK_OR_EXPORT_STATEMENT
+  POLICY_MEMO
+  COUNSEL_GUIDANCE
+  DEADLINE_CALENDAR
+  DISCLAIMER_OR_TEMPLATE
+  OTHER
+}
+
+/// COMP-2: admin-uploaded compliance documents (local disk storage key; RAG/index wiring is a later packet).
+model ComplianceDocument {
+  id       String  @id @default(cuid())
+  /// Path segment from `saveOwnedMediaFile` (same data dir pattern as owned media).
+  storageKey       String
+  fileName         String
+  originalFileName String?
+  mimeType         String
+  fileSizeBytes    Int
+  title            String
+  documentType     ComplianceDocumentType @default(OTHER)
+  /// Free text (e.g. "Q1 2026", "Pre-primary") — not validated as a legal period.
+  reportingPeriod  String?
+  /// Optional single anchor date (reporting or document date).
+  periodDate       DateTime?
+  notes            String? @db.Text
+  /// Staff must opt in; uploads default false (uploaded ≠ trusted for RAG).
+  approvedForAiReference Boolean @default(false)
+  uploadedByUserId       String?
+  uploadedBy               User?   @relation("ComplianceDocumentUploader", fields: [uploadedByUserId], references: [id], onDelete: SetNull)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([documentType, createdAt])
+  @@index([createdAt])
+  @@index([approvedForAiReference, createdAt])
+}
+
+/// FIN-1: internal ledger line — not a bank feed, not an official filing record.
+enum FinancialTransactionType {
+  EXPENSE
+  REIMBURSEMENT
+  OTHER
+}
+
+/// FIN-1: how the row was created (provenance for audit).
+enum FinancialSourceType {
+  MANUAL
+  SUBMISSION
+  DOCUMENT
+  FUTURE_INTEGRATION
+}
+
+/// FIN-1: human confirmation (drafts are not treated as final spend truth).
+enum FinancialTransactionStatus {
+  DRAFT
+  CONFIRMED
+}
+
+/// FIN-1: minimal durable financial activity row (campaign-internal; auditable, reversible by correction rows later).
+model FinancialTransaction {
+  id     String  @id @default(cuid())
+  amount Decimal @db.Decimal(14, 2)
+  transactionType  FinancialTransactionType
+  /// Category slug or label (e.g. `event`, `software_platform`) — map to `CostBearingWireKind` in `budget.ts` for governance views.
+  category         String
+  description      String   @db.Text
+  sourceType       FinancialSourceType
+  /// Id in the source system: submission id, compliance document id, import batch id, etc. — not globally unique across types; pair with `sourceType`.
+  sourceId         String?
+  transactionDate  DateTime
+  relatedUserId    String?
+  relatedUser      User?    @relation("FinancialTransactionRelatedUser", fields: [relatedUserId], references: [id], onDelete: SetNull)
+  relatedEventId   String?
+  relatedEvent     CampaignEvent? @relation(fields: [relatedEventId], references: [id], onDelete: SetNull)
+  notes            String?  @db.Text
+  status           FinancialTransactionStatus @default(DRAFT)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([transactionDate, status])
+  @@index([sourceType, sourceId])
+  @@index([category, transactionDate])
+  @@index([status, transactionDate])
+}
+
+/// SEAT-1: one operational seat per `ROLE-1` position key (v1: single fillable slot per position in the tree).
+/// Staffing metadata only: does not assign UWR-1 work, does not grant route access, does not run automation.
+enum PositionSeatStatus {
+  VACANT
+  FILLED
+  /// Temporary coverage; optional `actingForPositionKey` may name the seat being backfilled.
+  ACTING
+  /// Co-pilot / trainee: occupant is not the primary owner; still for visibility and training rails only.
+  SHADOW
+}
+
+model PositionSeat {
+  id        String   @id @default(cuid())
+  /// Matches `PositionId` string in `src/lib/campaign-engine/positions.ts` (not a Prisma enum — additive).
+  positionKey String  @unique
+  userId    String?
+  user      User?    @relation("PositionSeatOccupant", fields: [userId], references: [id], onDelete: SetNull)
+  status    PositionSeatStatus @default(VACANT)
+  /// When status is ACTING, optional position key the occupant is covering (e.g. backfill for a vacant sub-seat).
+  actingForPositionKey String?
+  notes     String?  @db.Text
+  /// Optional structured notes (e.g. source of truth ref); no product logic reads this in SEAT-1.
+  metadataJson Json?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([status, positionKey])
 }
 
 enum EmailOptInStatus {
@@ -115,6 +266,9 @@ model VolunteerProfile {
   contactPreference               ContactPreference?
   queueAsTarget                   CommunicationActionQueue[]       @relation("QueueTargetVolunteer")
   communicationCampaignRecipients CommunicationCampaignRecipient[]
+  commsPlanAudienceSegmentMembers CommsPlanAudienceSegmentMember[] @relation("CommsPlanSegmentMemberVolunteer")
+  communicationRecipients         CommunicationRecipient[]
+  emailWorkflowItems              EmailWorkflowItem[]                @relation("EmailWorkflowItemVolunteer")
 }
 
 model Commitment {
@@ -197,13 +351,17 @@ model WorkflowIntake {
   createdAt      DateTime             @default(now())
   updatedAt      DateTime             @updatedAt
 
-  eventRequest              EventRequest?
-  actions                   WorkflowAction[]
-  socialContentItems        SocialContentItem[]
+  eventRequest                   EventRequest?
+  actions                        WorkflowAction[]
+  socialContentItems             SocialContentItem[]
   /// Routed from public conversation opportunities (action spine).
-  conversationOpportunities ConversationOpportunity[] @relation("OppWorkflowIntake")
+  conversationOpportunities      ConversationOpportunity[]       @relation("OppWorkflowIntake")
   /// When this intake was created from social analytics (one-to-one from outcome).
   analyticsRecommendationOutcome AnalyticsRecommendationOutcome?
+  /// Comms Workbench plans that cite this intake as their source.
+  communicationPlansSourced      CommunicationPlan[]             @relation("CommsPlanSourceIntake")
+  mediaOutreachItems             MediaOutreachItem[]             @relation("MediaOutreachSourceIntake")
+  emailWorkflowItems             EmailWorkflowItem[]             @relation("EmailWorkflowItemIntake")
 
   @@index([status, createdAt])
   @@index([assignedUserId, status])
@@ -354,18 +512,18 @@ model SocialContentItem {
   campaignEventId  String?
   campaignEvent    CampaignEvent?  @relation(fields: [campaignEventId], references: [id], onDelete: SetNull)
 
-  kind            SocialContentKind      @default(OTHER)
-  status          SocialContentStatus    @default(DRAFT)
+  kind              SocialContentKind        @default(OTHER)
+  status            SocialContentStatus      @default(DRAFT)
   /// Classified message tactic for tone / timing learning (optional until staff set).
-  messageToneMode SocialMessageToneMode?
+  messageToneMode   SocialMessageToneMode?
   /// Message framing (story vs explainer vs clarifier, etc.) for analytics. Optional.
   messageTacticMode SocialMessageTacticMode?
   /// Working title in the workbench.
-  title           String?
+  title             String?
   /// Master or default copy; per-platform may override in `SocialPlatformVariant`.
-  bodyCopy        String?                @db.Text
+  bodyCopy          String?                  @db.Text
   /// Hook for assets (e.g. owned media id, Canva link, video asset ref).
-  metadata        Json?                  @default("{}")
+  metadata          Json?                    @default("{}")
 
   createdByUserId String?
   createdByUser   User?   @relation("SocialContentAuthor", fields: [createdByUserId], references: [id], onDelete: SetNull)
@@ -373,22 +531,25 @@ model SocialContentItem {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  platformVariants                  SocialPlatformVariant[]
-  tasks                             CampaignTask[]
+  platformVariants                          SocialPlatformVariant[]
+  tasks                                     CampaignTask[]
   /// Campaign-owned media (`OwnedMediaAsset`) linked to this work item or to a specific platform variant.
-  mediaLibraryRefs                  SocialContentMediaRef[]
-  performanceSnapshots              SocialPerformanceSnapshot[]
-  strategicInsight                  SocialContentStrategicInsight?
+  mediaLibraryRefs                          SocialContentMediaRef[]
+  performanceSnapshots                      SocialPerformanceSnapshot[]
+  strategicInsight                          SocialContentStrategicInsight?
   /// If this work item was created from a public conversation opportunity.
-  conversationOpportunitiesAsSocial ConversationOpportunity[]      @relation("OppSocialContentItem")
+  conversationOpportunitiesAsSocial         ConversationOpportunity[]        @relation("OppSocialContentItem")
   /// Author Studio — saved compose alternates and applied-master snapshots.
-  drafts                            SocialContentDraft[]
+  drafts                                    SocialContentDraft[]
   /// Analytics workbench: recommendations attributed to this work item.
-  analyticsRecommendationOutcomesSourced  AnalyticsRecommendationOutcome[] @relation("ArOutcomeSource")
+  analyticsRecommendationOutcomesSourced    AnalyticsRecommendationOutcome[] @relation("ArOutcomeSource")
   /// This draft/post was created as a follow-up from an analytics recommendation.
   analyticsRecommendationOutcomeAsCreated   AnalyticsRecommendationOutcome?  @relation("ArOutcomeCreated")
   /// Published (or final) post used to measure an analytics-originated outcome.
   analyticsRecommendationOutcomesAsExecuted AnalyticsRecommendationOutcome[] @relation("ArOutcomeExecuted")
+  /// Comms Workbench plans that cite this social item as their source.
+  communicationPlansSourced                 CommunicationPlan[]              @relation("CommsPlanSourceSocial")
+  emailWorkflowItems                        EmailWorkflowItem[]                @relation("EmailWorkflowItemSocial")
 
   @@index([workflowIntakeId, status])
   @@index([campaignEventId, status])
@@ -404,11 +565,11 @@ model AnalyticsRecommendationOutcome {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  source             String  @default("analytics")
+  source             String @default("analytics")
   recommendationType String
-  headline           String  @db.Text
+  headline           String @db.Text
   confidence         Float?
-  heuristicVersion   String  @default("v1")
+  heuristicVersion   String @default("v1")
 
   status AnalyticsRecommendationOutcomeStatus @default(GENERATED)
 
@@ -421,22 +582,22 @@ model AnalyticsRecommendationOutcome {
   eventId     String?
 
   sourceSocialContentItemId String?
-  sourceSocialContentItem  SocialContentItem? @relation("ArOutcomeSource", fields: [sourceSocialContentItemId], references: [id], onDelete: SetNull)
+  sourceSocialContentItem   SocialContentItem? @relation("ArOutcomeSource", fields: [sourceSocialContentItemId], references: [id], onDelete: SetNull)
 
   provenanceJson Json @default("{}")
 
   createdSocialContentItemId String?            @unique
   createdSocialContentItem   SocialContentItem? @relation("ArOutcomeCreated", fields: [createdSocialContentItemId], references: [id], onDelete: SetNull)
 
-  createdWorkflowIntakeId String?            @unique
-  createdWorkflowIntake     WorkflowIntake? @relation(fields: [createdWorkflowIntakeId], references: [id], onDelete: SetNull)
+  createdWorkflowIntakeId String?         @unique
+  createdWorkflowIntake   WorkflowIntake? @relation(fields: [createdWorkflowIntakeId], references: [id], onDelete: SetNull)
 
   executedSocialContentItemId String?
   executedSocialContentItem   SocialContentItem? @relation("ArOutcomeExecuted", fields: [executedSocialContentItemId], references: [id], onDelete: SetNull)
 
   evaluatedAt DateTime?
   outcomeJson Json?
-  notes       String? @db.Text
+  notes       String?   @db.Text
 
   @@index([sourceSocialContentItemId, createdAt])
   @@index([status, createdAt])
@@ -445,18 +606,18 @@ model AnalyticsRecommendationOutcome {
 
 /// Saved Author Studio compose output for a work item (reuse, audit, optional “applied” marker).
 model SocialContentDraft {
-  id                  String   @id @default(cuid())
+  id                  String            @id @default(cuid())
   socialContentItemId String
   socialContentItem   SocialContentItem @relation(fields: [socialContentItemId], references: [id], onDelete: Cascade)
   title               String?
   sourceRoute         String?
   sourceIntent        String?
-  bodyCopy            String   @db.Text
+  bodyCopy            String            @db.Text
   createdByUserId     String?
-  createdByUser       User?    @relation("SocialContentDraftAuthor", fields: [createdByUserId], references: [id], onDelete: SetNull)
-  isApplied           Boolean  @default(false)
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
+  createdByUser       User?             @relation("SocialContentDraftAuthor", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  isApplied           Boolean           @default(false)
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
 
   @@index([socialContentItemId, createdAt])
   @@index([createdByUserId])
@@ -828,6 +989,8 @@ model ConversationOpportunity {
   convertedAt               DateTime?
   createdAt                 DateTime                      @default(now())
   updatedAt                 DateTime                      @updatedAt
+  mediaOutreachItems        MediaOutreachItem[]           @relation("MediaOutreachSourceOpp")
+  emailWorkflowItems        EmailWorkflowItem[]            @relation("EmailWorkflowItemOpp")
 
   @@index([status, urgency])
   @@index([countyId, status])
@@ -2184,6 +2347,10 @@ model CampaignEvent {
   socialContentItems                      SocialContentItem[]
   /// Performance rows that attribute conversion narrative to this event.
   socialPerformanceSnapshotsForConversion SocialPerformanceSnapshot[] @relation("SocialSnapshotConversion")
+  /// Comms Workbench plans that cite this event as their source.
+  communicationPlansSourced               CommunicationPlan[]         @relation("CommsPlanSourceEvent")
+  /// FIN-1: optional cost attribution to this event.
+  financialTransactions                  FinancialTransaction[]
 
   @@index([startAt, status])
   @@index([countyId, startAt])
@@ -2260,40 +2427,43 @@ model FestivalCoveragePlanSnapshot {
 }
 
 model CampaignTask {
-  id                    String               @id @default(cuid())
-  title                 String
-  description           String?              @db.Text
-  taskType              CampaignTaskType     @default(OTHER)
-  status                CampaignTaskStatus   @default(TODO)
-  priority              CampaignTaskPriority @default(MEDIUM)
-  dueAt                 DateTime?
-  startAt               DateTime?
-  assignedUserId        String?
-  assignee              User?                @relation("TaskAssignee", fields: [assignedUserId], references: [id], onDelete: SetNull)
-  assignedRole          String?
+  id                        String               @id @default(cuid())
+  title                     String
+  description               String?              @db.Text
+  taskType                  CampaignTaskType     @default(OTHER)
+  status                    CampaignTaskStatus   @default(TODO)
+  priority                  CampaignTaskPriority @default(MEDIUM)
+  dueAt                     DateTime?
+  startAt                   DateTime?
+  assignedUserId            String?
+  assignee                  User?                @relation("TaskAssignee", fields: [assignedUserId], references: [id], onDelete: SetNull)
+  assignedRole              String?
   /// When true, incomplete state drags event execution / readiness (Slice 4).
-  blocksReadiness       Boolean              @default(false)
+  blocksReadiness           Boolean              @default(false)
   /// Idempotency: `WorkflowTemplateTask.taskKey` that created this row.
-  sourceTemplateTaskKey String?
-  countyId              String?
-  county                County?              @relation(fields: [countyId], references: [id], onDelete: SetNull)
-  eventId               String?
-  event                 CampaignEvent?       @relation(fields: [eventId], references: [id], onDelete: SetNull)
+  sourceTemplateTaskKey     String?
+  countyId                  String?
+  county                    County?              @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  eventId                   String?
+  event                     CampaignEvent?       @relation(fields: [eventId], references: [id], onDelete: SetNull)
   /// Optional: Social Workbench item (approvals, schedule, monitor, follow-up for that post set).
-  socialContentItemId   String?
-  socialContentItem     SocialContentItem?   @relation(fields: [socialContentItemId], references: [id], onDelete: SetNull)
-  workflowRunId         String?
-  workflowRun           WorkflowRun?         @relation(fields: [workflowRunId], references: [id], onDelete: SetNull)
-  parentTaskId          String?
-  parentTask            CampaignTask?        @relation("Subtasks", fields: [parentTaskId], references: [id], onDelete: SetNull)
-  subtasks              CampaignTask[]       @relation("Subtasks")
-  createdByUserId       String?
-  creator               User?                @relation("TaskCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
-  completionNotes       String?              @db.Text
-  completedAt           DateTime?
-  timeMatrixQuadrant    TimeMatrixQuadrant?
-  createdAt             DateTime             @default(now())
-  updatedAt             DateTime             @updatedAt
+  socialContentItemId       String?
+  socialContentItem         SocialContentItem?   @relation(fields: [socialContentItemId], references: [id], onDelete: SetNull)
+  workflowRunId             String?
+  workflowRun               WorkflowRun?         @relation(fields: [workflowRunId], references: [id], onDelete: SetNull)
+  parentTaskId              String?
+  parentTask                CampaignTask?        @relation("Subtasks", fields: [parentTaskId], references: [id], onDelete: SetNull)
+  subtasks                  CampaignTask[]       @relation("Subtasks")
+  createdByUserId           String?
+  creator                   User?                @relation("TaskCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  completionNotes           String?              @db.Text
+  completedAt               DateTime?
+  timeMatrixQuadrant        TimeMatrixQuadrant?
+  createdAt                 DateTime             @default(now())
+  updatedAt                 DateTime             @updatedAt
+  /// Comms Workbench plans that cite this task as their source.
+  communicationPlansSourced CommunicationPlan[]  @relation("CommsPlanSourceTask")
+  emailWorkflowItems        EmailWorkflowItem[]   @relation("EmailWorkflowItemTask")
 
   @@index([status, dueAt])
   @@index([assignedUserId, status])
@@ -2743,6 +2913,8 @@ model CommunicationThread {
   tagAssignments          CommunicationThreadTag[]
   contactPreferenceRecord ContactPreference?
   campaignRecipients      CommunicationCampaignRecipient[]
+  workbenchRecipients     CommunicationRecipient[]         @relation("WorkbenchRecipientThread")
+  emailWorkflowItems      EmailWorkflowItem[]              @relation("EmailWorkflowItemThread")
 
   @@index([threadStatus, lastMessageAt])
   @@index([unreadCount, priorityScore])
@@ -2784,6 +2956,8 @@ model CommunicationMessage {
   gmailThreadId                    String?                         @db.Text
   createdAt                        DateTime                        @default(now())
   updatedAt                        DateTime                        @updatedAt
+
+  emailWorkflowItems EmailWorkflowItem[] @relation("EmailWorkflowItemMessage")
 
   @@index([threadId, createdAt])
   @@index([provider, providerMessageId])
@@ -3025,6 +3199,683 @@ model CommunicationThreadTag {
 
   @@id([threadId, tagId])
   @@index([tagId])
+}
+
+// --- Comms Workbench: plans, drafts, sends, media outreach (ops layer; distinct from Tier 1/2 `CommunicationThread` / `CommunicationCampaign`) ---
+// Channel enum is `CommsWorkbenchChannel` because `CommunicationChannel` is already used for SMS/EMAIL on message rows.
+
+enum CommunicationObjective {
+  VOLUNTEER_RECRUITMENT
+  VOLUNTEER_ACTIVATION
+  EVENT_PROMOTION
+  EVENT_REMINDER
+  POST_EVENT_FOLLOWUP
+  RAPID_RESPONSE
+  CLARIFICATION
+  SUPPORTER_MOBILIZATION
+  DONOR_ENGAGEMENT
+  INTERNAL_COORDINATION
+  PRESS_OUTREACH
+  MEDIA_RESPONSE
+  GENERAL_UPDATE
+}
+
+enum CommsWorkbenchChannel {
+  EMAIL
+  SMS
+  INTERNAL_NOTICE
+  PRESS_OUTREACH
+  PHONE_SCRIPT
+  TALKING_POINTS
+}
+
+enum CommunicationPlanStatus {
+  DRAFT
+  PLANNING
+  READY_FOR_REVIEW
+  APPROVED
+  SCHEDULED
+  ACTIVE
+  COMPLETED
+  CANCELED
+  ARCHIVED
+}
+
+enum CommunicationDraftStatus {
+  DRAFT
+  READY_FOR_REVIEW
+  APPROVED
+  REJECTED
+  ARCHIVED
+}
+
+enum CommunicationSendStatus {
+  DRAFT
+  QUEUED
+  SCHEDULED
+  SENDING
+  SENT
+  PARTIALLY_SENT
+  FAILED
+  CANCELED
+}
+
+enum MediaOutreachStatus {
+  NEW
+  RESEARCHING
+  READY
+  CONTACTED
+  FOLLOW_UP_DUE
+  RESPONDED
+  CLOSED
+  ARCHIVED
+}
+
+enum CommunicationReviewDecision {
+  APPROVED
+  REJECTED
+  CHANGES_REQUESTED
+}
+
+enum CommunicationVariantStatus {
+  DRAFT
+  /// Legacy; prefer `READY_FOR_REVIEW`. New review requests use `READY_FOR_REVIEW`.
+  READY
+  READY_FOR_REVIEW
+  REJECTED
+  APPROVED
+  ARCHIVED
+}
+
+/// How a `CommunicationVariant` differs from its parent draft (segmentation, copy, channel).
+enum CommunicationVariantType {
+  AUDIENCE_SEGMENT
+  COPY_ALT
+  CHANNEL_OVERRIDE
+  AB_TEST
+  OTHER
+}
+
+/// Optional send classification; tracking-only in early packets.
+enum CommunicationSendType {
+  BROADCAST
+  SCHEDULED
+  TEST
+  AD_HOC
+  RETRY
+  OTHER
+}
+
+enum MediaOutreachItemType {
+  INQUIRY
+  PITCH
+  FOLLOW_UP
+  OPPORTUNITY
+  CRISIS
+  OTHER
+}
+
+model CommunicationPlan {
+  id                        String                  @id @default(cuid())
+  title                     String
+  objective                 CommunicationObjective
+  status                    CommunicationPlanStatus @default(DRAFT)
+  /// Reuses the shared campaign task priority scale (single-tenant / campaign-local deployment).
+  priority                  CampaignTaskPriority    @default(MEDIUM)
+  summary                   String?                 @db.Text
+  ownerUserId               String?
+  ownerUser                 User?                   @relation("CommsPlanOwner", fields: [ownerUserId], references: [id], onDelete: SetNull)
+  requestedByUserId         String?
+  requestedByUser           User?                   @relation("CommsPlanRequester", fields: [requestedByUserId], references: [id], onDelete: SetNull)
+  /// Optional provenance: why this plan exists (e.g. `INTAKE`, `TASK`); see also FKs and `metadataJson`.
+  sourceType                String?
+  sourceWorkflowIntakeId    String?
+  sourceWorkflowIntake      WorkflowIntake?         @relation("CommsPlanSourceIntake", fields: [sourceWorkflowIntakeId], references: [id], onDelete: SetNull)
+  sourceCampaignTaskId      String?
+  sourceCampaignTask        CampaignTask?           @relation("CommsPlanSourceTask", fields: [sourceCampaignTaskId], references: [id], onDelete: SetNull)
+  sourceEventId             String?
+  sourceEvent               CampaignEvent?          @relation("CommsPlanSourceEvent", fields: [sourceEventId], references: [id], onDelete: SetNull)
+  sourceSocialContentItemId String?
+  sourceSocialContentItem   SocialContentItem?      @relation("CommsPlanSourceSocial", fields: [sourceSocialContentItemId], references: [id], onDelete: SetNull)
+  dueAt                     DateTime?
+  scheduledAt               DateTime?
+  approvedAt                DateTime?
+  metadataJson              Json                    @default("{}")
+  createdAt                 DateTime                @default(now())
+  updatedAt                 DateTime                @updatedAt
+
+  drafts                    CommunicationDraft[]
+  sends                     CommunicationSend[]
+  mediaOutreachItems        MediaOutreachItem[]
+  /// Campaign-local (message-plan) audience segments; CE-1+ engagement layer.
+  commsPlanAudienceSegments CommsPlanAudienceSegment[]
+  /// E-1: email workflow items referencing this plan.
+  emailWorkflowItems        EmailWorkflowItem[]         @relation("EmailWorkflowItemPlan")
+
+  @@index([status, updatedAt])
+  @@index([objective, status])
+  @@index([scheduledAt])
+  @@index([ownerUserId])
+  @@index([status, scheduledAt])
+  @@index([sourceWorkflowIntakeId])
+  @@index([sourceCampaignTaskId])
+  @@index([sourceEventId])
+  @@index([sourceSocialContentItemId])
+}
+
+model CommunicationDraft {
+  id                      String                       @id @default(cuid())
+  communicationPlanId     String
+  plan                    CommunicationPlan            @relation(fields: [communicationPlanId], references: [id], onDelete: Cascade)
+  channel                 CommsWorkbenchChannel
+  title                   String?
+  subjectLine             String?                      @db.Text
+  previewText             String?                      @db.Text
+  bodyCopy                String                       @default("") @db.Text
+  shortCopy               String?                      @db.Text
+  /// Aligns with Social / Author learning dimensions where applicable.
+  messageToneMode         SocialMessageToneMode?
+  messageTacticMode       SocialMessageTacticMode?
+  ctaType                 String?
+  status                  CommunicationDraftStatus     @default(DRAFT)
+  createdByUserId         String?
+  createdByUser           User?                        @relation("CommsDraftCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  updatedByUserId         String?
+  updatedByUser           User?                        @relation("CommsDraftUpdater", fields: [updatedByUserId], references: [id], onDelete: SetNull)
+  isPrimary               Boolean                      @default(false)
+  reviewRequestedAt       DateTime?
+  reviewRequestedByUserId String?
+  reviewRequestedByUser   User?                        @relation("CommsDraftReviewRequester", fields: [reviewRequestedByUserId], references: [id], onDelete: SetNull)
+  reviewedAt              DateTime?
+  reviewedByUserId        String?
+  reviewedByUser          User?                        @relation("CommsDraftReviewer", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
+  reviewDecision          CommunicationReviewDecision?
+  reviewNotes             String?                      @db.Text
+  metadataJson            Json                         @default("{}")
+  createdAt               DateTime                     @default(now())
+  updatedAt               DateTime                     @updatedAt
+
+  variants CommunicationVariant[]
+  sends    CommunicationSend[]
+
+  @@index([communicationPlanId])
+  @@index([status])
+  @@index([channel])
+  @@index([isPrimary])
+  @@index([messageToneMode])
+  @@index([messageTacticMode])
+}
+
+model CommunicationVariant {
+  id                      String                       @id @default(cuid())
+  communicationDraftId    String
+  draft                   CommunicationDraft           @relation(fields: [communicationDraftId], references: [id], onDelete: Cascade)
+  variantType             CommunicationVariantType     @default(OTHER)
+  /// Opaque id or external segment key; no CRM engine integration in this packet.
+  targetSegmentId         String?
+  targetSegmentLabel      String?
+  channelOverride         CommsWorkbenchChannel?
+  subjectLineOverride     String?                      @db.Text
+  bodyCopyOverride        String?                      @db.Text
+  ctaOverride             String?                      @db.Text
+  status                  CommunicationVariantStatus   @default(DRAFT)
+  reviewRequestedAt       DateTime?
+  reviewRequestedByUserId String?
+  reviewRequestedByUser   User?                        @relation("CommsVariantReviewRequester", fields: [reviewRequestedByUserId], references: [id], onDelete: SetNull)
+  reviewedAt              DateTime?
+  reviewedByUserId        String?
+  reviewedByUser          User?                        @relation("CommsVariantReviewer", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
+  reviewDecision          CommunicationReviewDecision?
+  reviewNotes             String?                      @db.Text
+  metadataJson            Json                         @default("{}")
+  createdAt               DateTime                     @default(now())
+  updatedAt               DateTime                     @updatedAt
+
+  sends CommunicationSend[]
+
+  @@index([communicationDraftId])
+  @@index([targetSegmentId])
+  @@index([status])
+  @@index([reviewRequestedByUserId])
+  @@index([reviewedByUserId])
+}
+
+model CommunicationSend {
+  id                           String                        @id @default(cuid())
+  communicationPlanId          String
+  plan                         CommunicationPlan             @relation(fields: [communicationPlanId], references: [id], onDelete: Cascade)
+  communicationDraftId         String
+  draft                        CommunicationDraft            @relation(fields: [communicationDraftId], references: [id], onDelete: Cascade)
+  communicationVariantId       String?
+  variant                      CommunicationVariant?         @relation(fields: [communicationVariantId], references: [id], onDelete: SetNull)
+  channel                      CommsWorkbenchChannel
+  sendType                     CommunicationSendType?
+  /// Opaque segment reference for targeting traceability; no engine in this packet.
+  targetSegmentId              String?
+  status                       CommunicationSendStatus       @default(DRAFT)
+  scheduledAt                  DateTime?
+  /// Set when an operator queues the send for execution (handoff intent; no worker in Packet 9).
+  queuedAt                     DateTime?
+  queuedByUserId               String?
+  queuedByUser                 User?                         @relation("CommsSendQueuedBy", fields: [queuedByUserId], references: [id], onDelete: SetNull)
+  sentAt                       DateTime?
+  completedAt                  DateTime?
+  sentByUserId                 String?
+  sentByUser                   User?                         @relation("CommsSendSender", fields: [sentByUserId], references: [id], onDelete: SetNull)
+  outcomeSummaryJson           Json?
+  /// Reserved for future provider reconciliation; no integration in this packet.
+  providerMessageId            String?
+  /// Operator retry re-queues after FAILED (Packet 12A). Counts re-queue events, not the first execution.
+  retryCount                   Int                           @default(0)
+  lastRetriedAt                DateTime?
+  lastRetriedByUserId          String?
+  lastRetriedByUser            User?                         @relation("CommsSendLastRetriedBy", fields: [lastRetriedByUserId], references: [id], onDelete: SetNull)
+  metadataJson                 Json                          @default("{}")
+  createdAt                    DateTime                      @default(now())
+  updatedAt                    DateTime                      @updatedAt
+  /// One row per targeted contact/address for this send; normalized engagement lives in `CommunicationRecipientEvent`.
+  communicationRecipients      CommunicationRecipient[]
+  communicationLinkDefinitions CommunicationLinkDefinition[]
+  /// E-1: optional link from queue item to a workbench send.
+  emailWorkflowItems           EmailWorkflowItem[]              @relation("EmailWorkflowItemSend")
+
+  @@index([communicationPlanId])
+  @@index([communicationDraftId])
+  @@index([communicationVariantId])
+  @@index([status])
+  @@index([scheduledAt])
+  @@index([channel])
+  @@index([queuedByUserId])
+  @@index([providerMessageId])
+  @@index([lastRetriedByUserId])
+}
+
+// --- Email Workflow Intelligence (E-1+): campaign email ops queue; queue-first, no auto-send/approval in E-1. ---
+
+enum EmailWorkflowStatus {
+  NEW
+  /// E-2A: deterministic interpretation completed; item still queue-first (not approved or sent).
+  ENRICHED
+  IN_REVIEW
+  READY_TO_RESPOND
+  APPROVED
+  ESCALATED
+  SPAM
+  CLOSED
+  ARCHIVED
+}
+
+enum EmailWorkflowPriority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
+enum EmailWorkflowSourceType {
+  INBOUND_EMAIL
+  OUTBOUND_FOLLOWUP
+  WORKFLOW_TRIGGER
+  SEGMENT_TRIGGER
+  VOLUNTEER_TRIGGER
+  EVENT_TRIGGER
+  MANUAL
+  OTHER
+}
+
+enum EmailWorkflowTriggerType {
+  MANUAL
+  INBOUND_MESSAGE
+  OUTBOUND_DRAFT
+  SCHEDULED
+  MONITORING
+  INTAKE
+  OTHER
+}
+
+enum EmailWorkflowIntent {
+  QUESTION
+  VOLUNTEER_INTEREST
+  COMPLAINT
+  SUPPORT
+  MEDIA_INQUIRY
+  UNSUBSCRIBE
+  SPAM
+  FOLLOW_UP
+  UNKNOWN
+}
+
+enum EmailWorkflowTone {
+  SUPPORTIVE
+  CURIOUS
+  CONFUSED
+  FRUSTRATED
+  HOSTILE
+  NEUTRAL
+  UNKNOWN
+}
+
+enum EmailWorkflowEscalationLevel {
+  NONE
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum EmailWorkflowSpamDisposition {
+  UNKNOWN
+  CLEAN
+  SUSPECTED_SPAM
+  CONFIRMED_SPAM
+  SUPPRESSED
+}
+
+/// One queued email-related workflow unit (context-rich; operator review before any send — E-1 default).
+model EmailWorkflowItem {
+  id     String @id @default(cuid())
+  /// Queue-first: new items are never auto-approved or auto-sent (policy comes in later packets).
+  status EmailWorkflowStatus @default(NEW)
+  /// Priority for triage; does not bypass review in E-1.
+  priority EmailWorkflowPriority @default(NORMAL)
+
+  sourceType  EmailWorkflowSourceType  @default(MANUAL)
+  triggerType EmailWorkflowTriggerType @default(MANUAL)
+
+  /// Optional short list label.
+  title       String? @db.VarChar(500)
+  queueReason String? @db.Text
+
+  whoSummary   String? @db.Text
+  whatSummary  String? @db.Text
+  whenSummary  String? @db.Text
+  whereSummary String? @db.Text
+  whySummary   String? @db.Text
+  /// Campaign / program impact.
+  impactSummary                String? @db.Text
+  recommendedResponseSummary   String? @db.Text
+  recommendedResponseRationale String? @db.Text
+
+  /// Freeform classifier until E-2+ structured sentiment.
+  sentiment String? @db.VarChar(120)
+
+  tone              EmailWorkflowTone                 @default(UNKNOWN)
+  intent            EmailWorkflowIntent               @default(UNKNOWN)
+  escalationLevel   EmailWorkflowEscalationLevel      @default(NONE)
+  spamDisposition   EmailWorkflowSpamDisposition      @default(UNKNOWN)
+  /// Placeholder 0..1; automation deferred.
+  spamScore         Float?
+  needsDeescalation Boolean @default(false)
+
+  /// Optional machine time for sorting (e.g. inbound time); `whenSummary` is operator-facing.
+  occurredAt DateTime?
+
+  userId            String?
+  user              User?   @relation("EmailWorkflowItemContactUser", fields: [userId], references: [id], onDelete: SetNull)
+  volunteerProfileId String?
+  volunteerProfile  VolunteerProfile? @relation("EmailWorkflowItemVolunteer", fields: [volunteerProfileId], references: [id], onDelete: SetNull)
+  communicationThreadId String?
+  thread            CommunicationThread? @relation("EmailWorkflowItemThread", fields: [communicationThreadId], references: [id], onDelete: SetNull)
+  communicationPlanId  String?
+  plan                 CommunicationPlan?  @relation("EmailWorkflowItemPlan", fields: [communicationPlanId], references: [id], onDelete: SetNull)
+  communicationSendId  String?
+  send                 CommunicationSend?  @relation("EmailWorkflowItemSend", fields: [communicationSendId], references: [id], onDelete: SetNull)
+  workflowIntakeId     String?
+  workflowIntake      WorkflowIntake? @relation("EmailWorkflowItemIntake", fields: [workflowIntakeId], references: [id], onDelete: SetNull)
+  campaignTaskId      String?
+  campaignTask        CampaignTask? @relation("EmailWorkflowItemTask", fields: [campaignTaskId], references: [id], onDelete: SetNull)
+  conversationOpportunityId String?
+  conversationOpportunity  ConversationOpportunity? @relation("EmailWorkflowItemOpp", fields: [conversationOpportunityId], references: [id], onDelete: SetNull)
+  socialContentItemId  String?
+  socialContentItem    SocialContentItem? @relation("EmailWorkflowItemSocial", fields: [socialContentItemId], references: [id], onDelete: SetNull)
+  comsPlanAudienceSegmentId String?
+  comsPlanAudienceSegment   CommsPlanAudienceSegment? @relation("EmailWorkflowItemSegment", fields: [comsPlanAudienceSegmentId], references: [id], onDelete: SetNull)
+  communicationMessageId String?
+  communicationMessage  CommunicationMessage? @relation("EmailWorkflowItemMessage", fields: [communicationMessageId], references: [id], onDelete: SetNull)
+
+  assignedToUserId  String?
+  assignedToUser    User?   @relation("EmailWorkflowItemAssignedTo", fields: [assignedToUserId], references: [id], onDelete: SetNull)
+  createdByUserId   String?
+  createdBy         User?   @relation("EmailWorkflowItemCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  reviewedByUserId String?
+  reviewedBy         User?   @relation("EmailWorkflowItemReviewedBy", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
+  reviewedAt         DateTime?
+
+  metadataJson Json @default("{}")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status, priority, createdAt])
+  @@index([assignedToUserId, status])
+  @@index([sourceType, status])
+  @@index([communicationThreadId])
+  @@index([communicationPlanId])
+  @@index([escalationLevel, status])
+  @@index([spamDisposition, status])
+  @@index([createdAt])
+}
+
+// --- Contact engagement + segmentation (Comms workbench, campaign-local; CE-1) ---
+// `CommunicationSend` is the message-level object; `CommunicationRecipient` is the per-recipient bridge.
+// Distinct from Tier 2 `AudienceSegment` / `CommunicationCampaign` broadcast segments.
+
+/// Lifecycle of a recipient row for a workbench send (aggregated/rolled up from events over time).
+enum CommunicationRecipientStatus {
+  PLANNED
+  SENT
+  DELIVERED
+  OPENED
+  CLICKED
+  REPLIED
+  FAILED
+  BOUNCED
+  UNSUBSCRIBED
+  CANCELED
+}
+
+/// Normalized engagement and bridge events (provider + future web/landing; CE-3+ ingestion).
+enum CommunicationRecipientEventType {
+  SENT
+  DELIVERED
+  OPENED
+  CLICKED
+  REPLIED
+  FAILED
+  BOUNCED
+  UNSUBSCRIBED
+  OPTED_OUT_SMS
+  WEB_VISIT
+  FORM_SUBMITTED
+}
+
+/// Best-known delivery state for a recipient row (recomputed from events + consent where applicable).
+enum CommsDeliveryHealthStatus {
+  HEALTHY
+  SUPPRESSED
+  UNSUBSCRIBED
+  INVALID_EMAIL
+  INVALID_PHONE
+  HARD_BOUNCED
+  SMS_OPT_OUT
+  UNKNOWN
+}
+
+enum CommsPlanAudienceSegmentType {
+  STATIC
+  DYNAMIC
+  SYSTEM
+}
+
+enum CommsPlanAudienceSegmentStatus {
+  ACTIVE
+  ARCHIVED
+}
+
+enum CommsPlanAudienceSegmentMemberSource {
+  MANUAL
+  IMPORT
+  DYNAMIC_SNAPSHOT
+  API
+  OTHER
+}
+
+model CommunicationRecipient {
+  id                        String                       @id @default(cuid())
+  communicationSendId       String
+  send                      CommunicationSend            @relation(fields: [communicationSendId], references: [id], onDelete: Cascade)
+  /// Optional link to a message-plan audience segment (CE-6+); null when not segment-targeted.
+  comsPlanAudienceSegmentId String?
+  comsPlanAudienceSegment   CommsPlanAudienceSegment?    @relation(fields: [comsPlanAudienceSegmentId], references: [id], onDelete: SetNull)
+  channel                   CommsWorkbenchChannel
+  /// Normalized address used for this attempt (email, E.164 phone, or opaque id if stored that way).
+  addressUsed               String
+  /// Opaque contact key (external/CRM-scoped string). Use when no `User`/`VolunteerProfile`/thread row applies yet.
+  crmContactKey             String?
+  userId                    String?
+  user                      User?                        @relation("CommunicationRecipientUser", fields: [userId], references: [id], onDelete: SetNull)
+  volunteerProfileId        String?
+  volunteerProfile          VolunteerProfile?            @relation(fields: [volunteerProfileId], references: [id], onDelete: SetNull)
+  communicationThreadId     String?
+  thread                    CommunicationThread?         @relation("WorkbenchRecipientThread", fields: [communicationThreadId], references: [id], onDelete: SetNull)
+  /// Echo of send-level segment hint for traceability.
+  targetSegmentId           String?
+  targetSegmentLabel        String?
+  status                    CommunicationRecipientStatus @default(PLANNED)
+  providerRecipientId       String?
+  deliveryHealthStatus      CommsDeliveryHealthStatus    @default(UNKNOWN)
+  metadataJson              Json                         @default("{}")
+  createdAt                 DateTime                     @default(now())
+  updatedAt                 DateTime                     @updatedAt
+
+  events CommunicationRecipientEvent[]
+
+  @@index([communicationSendId])
+  @@index([comsPlanAudienceSegmentId])
+  @@index([userId])
+  @@index([volunteerProfileId])
+  @@index([communicationThreadId])
+  @@index([status, updatedAt])
+  @@index([crmContactKey])
+  @@index([deliveryHealthStatus])
+  @@index([targetSegmentId])
+  /// CE-3: one workbench target per send+channel+normalized address (no duplicate expansion rows).
+  @@unique([communicationSendId, channel, addressUsed])
+}
+
+model CommunicationRecipientEvent {
+  id                       String                          @id @default(cuid())
+  communicationRecipientId String
+  recipient                CommunicationRecipient          @relation(fields: [communicationRecipientId], references: [id], onDelete: Cascade)
+  eventType                CommunicationRecipientEventType
+  occurredAt               DateTime
+  providerEventId          String?
+  providerName             String?
+  linkUrl                  String?                         @db.Text
+  linkLabel                String?
+  metadataJson             Json                            @default("{}")
+  createdAt                DateTime                        @default(now())
+
+  @@index([communicationRecipientId, occurredAt])
+  @@index([eventType, occurredAt])
+  @@index([providerEventId])
+}
+
+/// Tracked link on a workbench send (click bridge; optional in CE-1, used by CE-3+ / CE-8).
+model CommunicationLinkDefinition {
+  id                  String            @id @default(cuid())
+  communicationSendId String
+  send                CommunicationSend @relation(fields: [communicationSendId], references: [id], onDelete: Cascade)
+  label               String
+  url                 String            @db.Text
+  /// Stable id for click correlation (query param or provider token).
+  trackingKey         String
+  createdAt           DateTime          @default(now())
+
+  @@unique([communicationSendId, trackingKey])
+  @@index([communicationSendId])
+}
+
+/// Reusable group within a single message plan (distinct from broadcast `AudienceSegment`).
+model CommsPlanAudienceSegment {
+  id                  String                         @id @default(cuid())
+  communicationPlanId String
+  plan                CommunicationPlan              @relation(fields: [communicationPlanId], references: [id], onDelete: Cascade)
+  name                String
+  description         String?                        @db.Text
+  segmentType         CommsPlanAudienceSegmentType   @default(STATIC)
+  status              CommsPlanAudienceSegmentStatus @default(ACTIVE)
+  /// Dynamic rule payload (CE-4+); for STATIC segments may store hints or match keys.
+  ruleDefinitionJson  Json                           @default("{}")
+  isDynamic           Boolean                        @default(false)
+  createdByUserId     String?
+  createdBy           User?                          @relation("CommsPlanSegmentCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  updatedByUserId     String?
+  updatedBy           User?                          @relation("CommsPlanSegmentUpdatedBy", fields: [updatedByUserId], references: [id], onDelete: SetNull)
+  createdAt           DateTime                       @default(now())
+  updatedAt           DateTime                       @updatedAt
+
+  members                 CommsPlanAudienceSegmentMember[]
+  communicationRecipients CommunicationRecipient[]
+  emailWorkflowItems      EmailWorkflowItem[]         @relation("EmailWorkflowItemSegment")
+
+  @@index([communicationPlanId])
+  @@index([status])
+  @@index([segmentType])
+  @@index([isDynamic])
+  @@index([name])
+  @@index([createdByUserId])
+}
+
+model CommsPlanAudienceSegmentMember {
+  id                        String                               @id @default(cuid())
+  comsPlanAudienceSegmentId String
+  segment                   CommsPlanAudienceSegment             @relation(fields: [comsPlanAudienceSegmentId], references: [id], onDelete: Cascade)
+  /// At least one identity field should be set (enforced in application / later CHECK).
+  userId                    String?
+  user                      User?                                @relation("CommsPlanSegmentMemberSubject", fields: [userId], references: [id], onDelete: Cascade)
+  volunteerProfileId        String?
+  segmentVolunteerProfile   VolunteerProfile?                    @relation("CommsPlanSegmentMemberVolunteer", fields: [volunteerProfileId], references: [id], onDelete: Cascade)
+  crmContactKey             String?
+  sourceType                CommsPlanAudienceSegmentMemberSource @default(MANUAL)
+  addedByUserId             String?
+  addedBy                   User?                                @relation("CommsPlanSegmentMemberAddedBy", fields: [addedByUserId], references: [id], onDelete: SetNull)
+  createdAt                 DateTime                             @default(now())
+
+  /// One membership row per segment per user when `userId` is set (NULL userId allowed for crm-only rows).
+  @@unique([comsPlanAudienceSegmentId, userId])
+  @@index([comsPlanAudienceSegmentId])
+  @@index([userId])
+  @@index([volunteerProfileId])
+  @@index([crmContactKey])
+}
+
+model MediaOutreachItem {
+  id                              String                   @id @default(cuid())
+  type                            MediaOutreachItemType
+  title                           String
+  contactName                     String?
+  outletName                      String?
+  status                          MediaOutreachStatus      @default(NEW)
+  /// Reuse conversation monitoring urgency scale for ops consistency.
+  urgency                         ConversationUrgency?
+  linkedCommunicationPlanId       String?
+  linkedCommunicationPlan         CommunicationPlan?       @relation(fields: [linkedCommunicationPlanId], references: [id], onDelete: SetNull)
+  linkedWorkflowIntakeId          String?
+  linkedWorkflowIntake            WorkflowIntake?          @relation("MediaOutreachSourceIntake", fields: [linkedWorkflowIntakeId], references: [id], onDelete: SetNull)
+  linkedConversationOpportunityId String?
+  linkedConversationOpportunity   ConversationOpportunity? @relation("MediaOutreachSourceOpp", fields: [linkedConversationOpportunityId], references: [id], onDelete: SetNull)
+  notes                           String?                  @db.Text
+  metadataJson                    Json                     @default("{}")
+  createdAt                       DateTime                 @default(now())
+  updatedAt                       DateTime                 @updatedAt
+
+  @@index([status, updatedAt])
+  @@index([type, status])
+  @@index([linkedCommunicationPlanId])
+  @@index([linkedWorkflowIntakeId])
+  @@index([linkedConversationOpportunityId])
+  @@index([updatedAt])
 }
 
 /// OAuth-linked Google mailbox for 1:1 human email from the workbench (Gmail API). Not used for SendGrid broadcast.

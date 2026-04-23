@@ -31,6 +31,8 @@ const operationsLinks: { href: string; label: string }[] = [
   { href: "/admin/tasks", label: "Tasks" },
   { href: "/admin/asks", label: "Volunteer asks" },
   { href: "/admin/volunteers/intake", label: "Volunteer sheet intake" },
+  { href: "/admin/compliance-documents", label: "Compliance documents" },
+  { href: "/admin/financial-transactions", label: "Financial transactions (ledger)" },
 ];
 
 const orchestratorLinks: { href: string; label: string }[] = [

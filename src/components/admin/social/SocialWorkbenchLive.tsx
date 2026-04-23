@@ -712,6 +712,21 @@ export function SocialWorkbenchLive({
                   >
                     Open task board
                   </Link>
+                  <Link
+                    href={`/admin/workbench/comms/plans/new?socialItemId=${selectedListRow.id}`}
+                    className="inline-flex h-8 items-center justify-center rounded-md border border-civic-slate/30 bg-civic-slate/5 px-3 text-sm font-bold text-civic-slate hover:bg-civic-slate/10"
+                  >
+                    Create comms plan
+                  </Link>
+                  {detail?.workflowIntakeId ? (
+                    <Link
+                      href={`/admin/workbench/comms/plans/new?intakeId=${detail.workflowIntakeId}`}
+                      className="inline-flex h-8 items-center justify-center rounded-md border border-civic-slate/30 bg-civic-slate/5 px-3 text-sm font-bold text-civic-slate hover:bg-civic-slate/10"
+                      title="Source the new plan from the linked WorkflowIntake (not the social row)"
+                    >
+                      Comms from intake
+                    </Link>
+                  ) : null}
                   <UiButton
                     type="button"
                     variant="outline"

@@ -57,6 +57,7 @@ export default async function AdminTasksPage() {
               <th className="py-2 pr-2">Task</th>
               <th className="py-2 pr-2">Event</th>
               <th className="py-2 pr-2">Due</th>
+              <th className="py-2 pr-2">Comms</th>
               <th className="py-2 pr-2">Status</th>
             </tr>
           </thead>
@@ -79,6 +80,14 @@ export default async function AdminTasksPage() {
                   )}
                 </td>
                 <td className="py-2 pr-2 align-top text-xs text-deep-soil/70">{t.dueAt ? t.dueAt.toLocaleString() : "—"}</td>
+                <td className="py-2 pr-2 align-top text-xs">
+                  <Link
+                    href={`/admin/workbench/comms/plans/new?taskId=${t.id}`}
+                    className="font-semibold text-civic-slate hover:underline"
+                  >
+                    New plan
+                  </Link>
+                </td>
                 <td className="py-2 align-top">
                   <form action={updateTaskStatusAction} className="flex flex-col gap-1 sm:flex-row sm:items-center">
                     <input type="hidden" name="id" value={t.id} />

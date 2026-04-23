@@ -4,10 +4,13 @@ import {
   CommsQueueStatus,
   CommunicationChannel,
   CommsSendProvider,
+  CommsWorkbenchChannel,
   MessageDeliveryStatus,
   MessageDirection,
 } from "@prisma/client";
 import { prisma } from "@/lib/db";
+import { applyTwilioStatusToCommsSendOutcome } from "@/lib/comms-workbench/send-status-updates";
+import { ingestTwilioCommsWorkbenchStatus } from "@/lib/contact-engagement/ingestion";
 import { findOrCreateThreadForInboundPhone, touchThreadAfterInbound } from "@/lib/comms/threads";
 import { markCampaignReplyForThread } from "@/lib/comms/campaign-reply";
 import { handleTwilioOptOutKeywords } from "@/lib/comms/preferences";
@@ -44,7 +47,9 @@ export async function POST(request: Request) {
   }
 
   if (params.MessageStatus) {
-    await handleStatus(params);
+    const url = new URL(request.url);
+    const workbenchSendIdFromQuery = url.searchParams.get("commsWorkbenchSendId");
+    await handleStatus(params, workbenchSendIdFromQuery);
     return new Response("ok", { status: 200 });
   }
 
@@ -126,11 +131,47 @@ function mapTwilioMessageStatus(
   return null;
 }
 
-async function handleStatus(params: Record<string, string>) {
+async function handleStatus(
+  params: Record<string, string>,
+  workbenchSendIdFromQuery: string | null
+) {
   const sid = params.MessageSid;
   if (!sid) return;
   const st = mapTwilioMessageStatus(params.MessageStatus);
   if (!st) return;
+
+  const errLine = params.ErrorMessage ?? (params.ErrorCode ? `code ${params.ErrorCode}` : null);
+
+  let workbench = await prisma.communicationSend.findFirst({
+    where: { providerMessageId: sid, channel: CommsWorkbenchChannel.SMS },
+    select: { id: true, outcomeSummaryJson: true },
+  });
+  if (!workbench && workbenchSendIdFromQuery) {
+    workbench = await prisma.communicationSend.findFirst({
+      where: { id: workbenchSendIdFromQuery, providerMessageId: sid },
+      select: { id: true, outcomeSummaryJson: true },
+    });
+  }
+  if (workbench) {
+    const { outcome, newStatus } = applyTwilioStatusToCommsSendOutcome(
+      workbench.outcomeSummaryJson,
+      params.MessageStatus,
+      errLine
+    );
+    await prisma.communicationSend.update({
+      where: { id: workbench.id },
+      data: {
+        outcomeSummaryJson: outcome as object,
+        ...(newStatus ? { status: newStatus, completedAt: new Date() } : {}),
+      },
+    });
+    await ingestTwilioCommsWorkbenchStatus({
+      messageSid: sid,
+      messageStatus: params.MessageStatus ?? "",
+      errorCode: params.ErrorCode,
+      errorMessage: errLine,
+    });
+  }
 
   const message = await prisma.communicationMessage.findFirst({
     where: { provider: CommsSendProvider.TWILIO, providerMessageId: sid, direction: MessageDirection.OUTBOUND },
@@ -142,10 +183,10 @@ async function handleStatus(params: Record<string, string>) {
     data: {
       deliveryStatus: st,
       failedAt: st === MessageDeliveryStatus.FAILED ? new Date() : null,
-      errorMessage: params.ErrorMessage ?? (params.ErrorCode ? `code ${params.ErrorCode}` : null),
+      errorMessage: errLine,
     },
   });
   void syncCampaignRecipientFromOutboundMessage(message.id, {
-    errorMessage: params.ErrorMessage ?? (params.ErrorCode ? `code ${params.ErrorCode}` : null),
+    errorMessage: errLine,
   });
 }

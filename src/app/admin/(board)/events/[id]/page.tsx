@@ -44,6 +44,18 @@ export default async function AdminEventDetailPage({ params }: Props) {
       <h1 className="mt-2 font-heading text-3xl font-bold text-deep-soil">{event.title}</h1>
       <p className="mt-1 font-mono text-xs text-deep-soil/45">{event.slug}</p>
 
+      <p className="mt-3">
+        <Link
+          href={`/admin/workbench/comms/plans/new?eventId=${event.id}`}
+          className="inline-flex rounded border border-civic-slate/30 bg-civic-slate/5 px-3 py-1.5 text-sm font-bold text-civic-slate hover:bg-civic-slate/10"
+        >
+          Create comms plan from this event
+        </Link>
+        <span className="ml-2 font-body text-xs text-deep-soil/50">
+          Pre-fills a CommunicationPlan with this event as provenance.
+        </span>
+      </p>
+
       <form
         action={updateCampaignEventAction}
         className="mt-8 space-y-4 rounded-card border border-deep-soil/10 bg-cream-canvas p-6 shadow-[var(--shadow-soft)]"

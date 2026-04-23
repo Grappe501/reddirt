@@ -1,5 +1,7 @@
-import { MessageDeliveryStatus } from "@prisma/client";
+import { CommsWorkbenchChannel, MessageDeliveryStatus } from "@prisma/client";
 import { prisma } from "@/lib/db";
+import { applySendgridEventToCommsSendOutcome } from "@/lib/comms-workbench/send-status-updates";
+import { ingestSendgridCommsWorkbenchEvent } from "@/lib/contact-engagement/ingestion";
 import { applySendgridEventToContactPreference } from "@/lib/comms/preferences";
 import { syncCampaignRecipientFromOutboundMessage } from "@/lib/comms/campaign-webhook-sync";
 import {
@@ -19,6 +21,8 @@ type SgEvent = {
   sg_message_id?: string;
   "smtp-id"?: string;
   commMsgId?: string;
+  /** `custom_args` from outbound mail — Comms Workbench (Packet 10+). */
+  commsWorkbenchSendId?: string;
   reason?: string;
 };
 
@@ -67,6 +71,27 @@ export async function POST(request: Request) {
   }
 
   for (const ev of parsed as SgEvent[]) {
+    if (ev.commsWorkbenchSendId) {
+      const workbenchSend = await prisma.communicationSend.findUnique({
+        where: { id: ev.commsWorkbenchSendId },
+        select: { id: true, channel: true, outcomeSummaryJson: true },
+      });
+      if (workbenchSend && workbenchSend.channel === CommsWorkbenchChannel.EMAIL) {
+        const { outcome, newStatus } = applySendgridEventToCommsSendOutcome(
+          workbenchSend.outcomeSummaryJson,
+          ev
+        );
+        await prisma.communicationSend.update({
+          where: { id: workbenchSend.id },
+          data: {
+            outcomeSummaryJson: outcome as object,
+            ...(newStatus ? { status: newStatus, completedAt: new Date() } : {}),
+          },
+        });
+        await ingestSendgridCommsWorkbenchEvent(ev);
+      }
+    }
+
     const st = mapEvent(ev.event);
     if (st) {
       let msg = null;

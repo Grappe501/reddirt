@@ -26,6 +26,8 @@ import { listAdminStrategyReferenceAssets } from "@/lib/campaign-ops/admin-strat
 import { getPressMonitorWorkbenchSummary } from "@/lib/media-monitor/workbench-queries";
 import { getSocialWorkbenchSummary } from "@/lib/social/social-workbench-queries";
 import { resolveWorkbenchCountyId, isPlausibleId } from "@/lib/workbench/county";
+import { getOpenWorkForCampaignManager } from "@/lib/campaign-engine/open-work";
+import { UnifiedOpenWorkSection } from "@/components/admin/workbench/UnifiedOpenWorkSection";
 
 type Props = {
   searchParams: Promise<{ county?: string; thread?: string; error?: string; lane?: string }>;
@@ -69,6 +71,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
   let adminStrategyRefs: Awaited<ReturnType<typeof listAdminStrategyReferenceAssets>>;
   let pressMonitor: Awaited<ReturnType<typeof getPressMonitorWorkbenchSummary>>;
   let socialSum: Awaited<ReturnType<typeof getSocialWorkbenchSummary>>;
+  let uwr1OpenWork: Awaited<ReturnType<typeof getOpenWorkForCampaignManager>>;
 
   try {
     counties = await getCountiesForOpsFilter();
@@ -88,6 +91,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
       adminStrategyRefs,
       pressMonitor,
       socialSum,
+      uwr1OpenWork,
     ] = await Promise.all([
       getWorkbenchData({ countyId }),
       getCommsWorkbenchData({ countyId, lane }),
@@ -109,6 +113,9 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
         pendingReview: 0,
       })),
       getSocialWorkbenchSummary().catch(() => ({ inPipeline: 0, inReview: 0, published: 0 })),
+      getOpenWorkForCampaignManager({ limitPerSource: 8, maxTotal: 20 }).catch((): Awaited<
+        ReturnType<typeof getOpenWorkForCampaignManager>
+      > => []),
     ]);
   } catch (e) {
     console.error("AdminWorkbenchPage load", e);
@@ -267,6 +274,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
 
   return (
     <div className={breakOut}>
+      {/* CM-1: De facto Campaign Manager / orchestration hub — see docs/campaign-manager-orchestration-map.md */}
       <div className="border-b border-deep-soil/10 bg-washed-canvas px-2 py-1.5 md:px-3">
         <div className="flex flex-col gap-1.5 md:flex-row md:items-center md:justify-between">
           <div>
@@ -329,6 +337,24 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
             >
               Social{socialSum.inPipeline + socialSum.inReview > 0 ? ` (${socialSum.inPipeline + socialSum.inReview})` : ""}
             </Link>
+            <Link
+              href="/admin/workbench/email-queue"
+              className="rounded border border-washed-denim/20 bg-cream-canvas px-1.5 py-0.5 text-[10px] font-bold text-civic-slate"
+            >
+              Email workflow
+            </Link>
+            <Link
+              href="/admin/workbench/positions"
+              className="rounded border border-deep-soil/15 bg-cream-canvas px-1.5 py-0.5 text-[10px] font-bold text-deep-soil"
+            >
+              By position
+            </Link>
+            <Link
+              href="/admin/workbench/seats"
+              className="rounded border border-deep-soil/15 bg-cream-canvas px-1.5 py-0.5 text-[10px] font-bold text-deep-soil"
+            >
+              Seats
+            </Link>
           </div>
         </div>
       </div>
@@ -355,6 +381,8 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
           Invalid thread id in URL — open a thread from the left rail.
         </p>
       ) : null}
+
+      <UnifiedOpenWorkSection items={uwr1OpenWork} />
 
       <div className="grid grid-cols-2 gap-1 border-b border-deep-soil/10 bg-cream-canvas/80 px-1 py-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-12">
         <div className={card}>
