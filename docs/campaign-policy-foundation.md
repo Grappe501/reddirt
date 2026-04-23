@@ -2,8 +2,8 @@
 
 **POLICY-1** defines **campaign policy** as the **governed** source of truth for how the operation presents itself, sets **defaults**, and aligns **compliance- and spend-adjacent** rules **before** those rules become a dedicated settings product. This is **not** a substitute for **law** or **official filings**; it is the **org-authored** **baseline** that **RAG, UI, and the agent** should prefer when **versioned** policy exists.
 
-**Code:** `src/lib/campaign-engine/policy.ts` — `CAMPAIGN_POLICY_V1` (v1 defaults), `CampaignPolicyCategory`, `ReimbursementScope`.  
-**Cross-ref:** [`compliance-governance-foundation.md`](./compliance-governance-foundation.md) · [`compliance-paperwork-simplification-foundation.md`](./compliance-paperwork-simplification-foundation.md) · [`user-scoped-ai-context-foundation.md`](./user-scoped-ai-context-foundation.md) · [`campaign-brain-alignment-foundation.md`](./campaign-brain-alignment-foundation.md) · `docs/ai-agent-brain-map.md`
+**Code:** `src/lib/campaign-engine/policy.ts` — `CAMPAIGN_POLICY_V1` (v1 defaults), `CampaignPolicyCategory`, `ReimbursementScope`, **BUDGET-2** `SpendApprovalTier`, `spendBudget` on `CAMPAIGN_POLICY_V1`, `CAMPAIGN_BUDGET_APPROVAL_DEFAULTS_V1`.  
+**Cross-ref:** [`budget-structure-foundation.md`](./budget-structure-foundation.md) · [`compliance-governance-foundation.md`](./compliance-governance-foundation.md) · [`compliance-paperwork-simplification-foundation.md`](./compliance-paperwork-simplification-foundation.md) · [`user-scoped-ai-context-foundation.md`](./user-scoped-ai-context-foundation.md) · [`campaign-brain-alignment-foundation.md`](./campaign-brain-alignment-foundation.md) · `docs/ai-agent-brain-map.md`
 
 ---
 
@@ -34,6 +34,9 @@ These are **initial campaign policy defaults** in **`CAMPAIGN_POLICY_V1`** (`pol
 | **Page disclaimer (public + admin footers)** | “Paid for by Kelly Grappe for Secretary of State” (see `CampaignPaidForBar`, sourced from `CAMPAIGN_POLICY_V1`) |
 | **Mileage reimbursement (internal default)** | **$0.725** per mile |
 | **Reimbursement scope (internal default)** | **Candidate expenses only** (`ReimbursementScope.CANDIDATE_EXPENSES_ONLY`) |
+| **Spend approval bands (BUDGET-2, narrative only)** | `CAMPAIGN_POLICY_V1.spendBudget.approvalThresholds` — small / medium / high **USD ceilings** with **SOP** copy; **no** software enforcement |
+
+**`spendBudget` block:** `posture` (`SpendingPosture.STANDARD` in v1), `approvalThresholds` (see `CAMPAIGN_BUDGET_APPROVAL_DEFAULTS_V1`), and `budgetStructureChangeOnActivePlanRequiresHumanApproval: true`. These are **campaign defaults**, not legal conclusions.
 
 ---
 
@@ -47,7 +50,7 @@ These are **initial campaign policy defaults** in **`CAMPAIGN_POLICY_V1`** (`pol
 | **approvals** | Who signs what (narrative; not RBAC in this packet) |
 | **channel_comms** | Email/SMS/call posture alongside `ContactPreference` and comms SOPs |
 | **compliance_escalation** | When to tag compliance; ties **federal-state** [doc](federal-state-coordination-foundation.md) |
-| **spend_budget** | Plan vs commit vs actual, thresholds, variance (BUDGET-1) |
+| **spend_budget** | Plan vs actual, thresholds, variance — **BUDGET-2** persistence (`BudgetPlan` / `BudgetLine`) + **POLICY-1** approval band **defaults** |
 | **fundraising_goals** | Goal language and pacing narrative (FUND-1) |
 
 `defaultPolicyCategoryComplianceDomain` in `policy.ts` maps some categories to **`ComplianceDomain`** for cross-rail **tagging** **only** **(no** **enforcement** **in** **POLICY-1) **.
@@ -75,4 +78,4 @@ Later packets should add:
 
 ---
 
-*Last updated: Packet POLICY-1 (with COMP-2 + BUDGET-1 foundation run).*
+*Last updated: POLICY-1 + BUDGET-2 spend defaults (`spendBudget` on `CAMPAIGN_POLICY_V1`).*

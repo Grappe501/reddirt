@@ -264,4 +264,16 @@ Each rail: **defined** in the matrix (where applicable); **evidence** and **gaps
 
 ---
 
-*Last updated: Packets FND-1, ROLE-1, TALENT-1, BRAIN-1, ALIGN-1, ASSIGN-1, UWR-1, WB-CORE-1, SEAT-1, SKILL-1+ASSIGN-2, FUND-1, COMP-1, POLICY-1+COMP-2+BUDGET-1, FIN-1.*
+## 23. Packet BUDGET-2 — Budget structure + budget-vs-actual foundation
+
+**What shipped (docs):** [`budget-structure-foundation.md`](./budget-structure-foundation.md) (north star, core concepts, rails, governance, out of scope). **Updates:** [`budget-and-spend-governance-foundation.md`](./budget-and-spend-governance-foundation.md) (persistence + next packets).
+
+**Schema / code:** Prisma **`BudgetPlan`**, **`BudgetPlanStatus`**, **`BudgetLine`** (migration `20260511120000_budget2_budget_plan_line`). **`src/lib/campaign-engine/budget.ts`** — `BUDGET2_PACKET`, `COST_BEARING_WIRE_OPTIONS`, `isCostBearingWireKindId`. **`src/lib/campaign-engine/budget-queries.ts`** — `listBudgetPlans`, `getBudgetPlanDetail`, `getBudgetActualsByWire`, `getBudgetVarianceByLine` (**CONFIRMED** actuals, category → wire, optional plan date window). **`src/lib/campaign-engine/policy.ts`** — `SpendApprovalTier`, `BudgetApprovalThreshold` / `BudgetApprovalThresholds`, `SpendingPosture`, `CAMPAIGN_POLICY_V1.spendBudget`, `CAMPAIGN_BUDGET_APPROVAL_DEFAULTS_V1`. **Admin:** `/admin/budgets`, `/admin/budgets/[id]` (create plan + line; read variance).
+
+**How it fits:** FIN-1 ledger remains **source** for **actual** dollars; budget is **plan** and **internal control** view. **No** filing, **no** bank, **no** auto authorization.
+
+**Intentionally not built:** Commitments table, forecasting, multi-campaign rollup, **per-line** actual split when multiple lines share a wire, enforcement by status, compliance auto-checks.
+
+---
+
+*Last updated: Packets FND-1, ROLE-1, TALENT-1, BRAIN-1, ALIGN-1, ASSIGN-1, UWR-1, WB-CORE-1, SEAT-1, SKILL-1+ASSIGN-2, FUND-1, COMP-1, POLICY-1+COMP-2+BUDGET-1, FIN-1, BUDGET-2.*

@@ -2,8 +2,8 @@
 
 **BUDGET-1** defines **budget and spend** as a **horizontal rail**: every **cost-bearing** **wire** in the product should **eventually** **declare** a **governance** **category** and **contribute** to **plan** **/ actual** / **variance** **stories** **. **This** **packet** is **not** a **full** **budget** **workbench,** **not** a **ledger,** and **not** any **bank** or **ad**-**platform** **integration** **.
 
-**Code (types** **only):** `src/lib/campaign-engine/budget.ts` — `BUDGET1_PACKET`, `CostBearingWireKind`, `BudgetEnforcementStage`.  
-**Cross-ref:** [`compliance-governance-foundation.md`](./compliance-governance-foundation.md) · [`fundraising-desk-foundation.md`](./fundraising-desk-foundation.md) · [`compliance-paperwork-simplification-foundation.md`](./compliance-paperwork-simplification-foundation.md) · [`federal-state-coordination-foundation.md`](./federal-state-coordination-foundation.md) · [`workbench-build-map.md`](./workbench-build-map.md) · `docs/ai-agent-brain-map.md`
+**Code:** `src/lib/campaign-engine/budget.ts` — `BUDGET1_PACKET`, `BUDGET2_PACKET`, `CostBearingWireKind`, `getBudgetWireForTransaction`, `BudgetEnforcementStage`. **BUDGET-2:** `budget-queries.ts` (planned vs actual), Prisma `BudgetPlan` / `BudgetLine`, admin `…/budgets`.  
+**Cross-ref:** [`budget-structure-foundation.md`](./budget-structure-foundation.md) · [`compliance-governance-foundation.md`](./compliance-governance-foundation.md) · [`fundraising-desk-foundation.md`](./fundraising-desk-foundation.md) · [`compliance-paperwork-simplification-foundation.md`](./compliance-paperwork-simplification-foundation.md) · [`federal-state-coordination-foundation.md`](./federal-state-coordination-foundation.md) · [`workbench-build-map.md`](./workbench-build-map.md) · `docs/ai-agent-brain-map.md`
 
 ---
 
@@ -35,7 +35,7 @@ Examples (grounded in **domain** **;** not every wire exists in the **Prisma** *
 ## 3. Budget model (conceptual)
 
 - **Categories** — map to `CostBearingWireKind` and **future** **COA** **(chart** of **accounts) **in **RAG** / policy **,** not **only** in **one** **workbench** **. **
-- **Budgets vs actuals** — **planned** **caps** and **realized** **outlays**; **BUDGET-1** does **not** **persist** **. **
+- **Budgets vs actuals** — **BUDGET-2** persists **`BudgetPlan`** + **`BudgetLine`** (`plannedAmount`); **actuals** derive from **CONFIRMED** **`FinancialTransaction`** rows via **`getBudgetWireForTransaction`** (see [`budget-structure-foundation.md`](./budget-structure-foundation.md)). **BUDGET-1** was types-only; superseded for persistence by BUDGET-2.
 - **Commitments** — e.g. **signed** **IO** or **verbal** **“go** **”** **(human**-**entered) **, **future** **. **
 - **Reimbursement tracking** — **receipts** and **policy**-**scoped** **mileage**; **COM**-**2** **files** are **evidence,** not **auto**-**booked** **. **
 - **Approval thresholds** — **align** to **Policy** and **seating** **(who** **can** **approve) **, **not** **RBAC** in **BUDGET-1** **. **
@@ -67,13 +67,13 @@ Examples (grounded in **domain** **;** not every wire exists in the **Prisma** *
 
 ---
 
-## 6. Next packets (after BUDGET-1)
+## 6. Next packets
 
-- **BUDGET-2** — **Spending** / **commitment** **rows** in **DB** **(narrow** **MVP) **+ **link** to **compliance** **docs** **. **
-- **BUDGET-3** — **Plan** **vs** **actual** **dashboard** **(workbench) **+ **alerts** **(advisory) **. **
+- **BUDGET-2 (shipped)** — Prisma **`BudgetPlan`** / **`BudgetLine`**; **`budget-queries.ts`**; light admin **`/admin/budgets`**; **POLICY-1** **`spendBudget`** approval bands (narrative only). **Not** commitments, **not** perfect attribution.
+- **BUDGET-3** — **Deeper** **workbench** **(optional) **: **alerts** **(advisory) **, **commitment** **placeholder** **persistence** **, **event**-**level** **attribution** **when** **ledger** **links** **exist** **. **
 - **FUND-2+** — **Revenue** **+** **fee** **reconciliation** **(processor** **exports) **, **read-only** where **safe** **. **
 - **AD**-**1** — **Digital** **ad** **workbench** **+** **mandatory** **budget** **rail** **tag** **(when** **built) **. **
 
 ---
 
-*Last updated: Packet BUDGET-1 (with POLICY-1 + COMP-2 foundation run).*
+*Last updated: Packet BUDGET-2 (+ FIN-1 + POLICY-1 spend defaults).*

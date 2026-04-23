@@ -1,12 +1,14 @@
 /**
- * BUDGET-1 + FIN-1: Budget / spend governance and **category → wire** mapping for ledger lines.
+ * BUDGET-1 + BUDGET-2 + FIN-1: Budget / spend governance, **category → wire** mapping, persisted plans/lines.
  * No vendor APIs, no ad platform hooks in this packet.
  * @see docs/budget-and-spend-governance-foundation.md
+ * @see docs/budget-structure-foundation.md
  * @see docs/budget-agent-ingest-map.md
  * @see docs/financial-ledger-foundation.md
  */
 
 export const BUDGET1_PACKET = "BUDGET-1" as const;
+export const BUDGET2_PACKET = "BUDGET-2" as const;
 
 /** Cost-bearing areas every future wire should eventually tag (governance + variance). */
 export const CostBearingWireKind = {
@@ -23,6 +25,24 @@ export const CostBearingWireKind = {
 } as const;
 export type CostBearingWireKindId =
   (typeof CostBearingWireKind)[keyof typeof CostBearingWireKind];
+
+/** Ordered list for admin `<select>`s and docs (stable sort by label). */
+export const COST_BEARING_WIRE_OPTIONS: { id: CostBearingWireKindId; label: string }[] = [
+  { id: CostBearingWireKind.FUNDRAISING_VENDOR, label: "Fundraising vendor" },
+  { id: CostBearingWireKind.DIGITAL_ADVERTISING, label: "Digital advertising" },
+  { id: CostBearingWireKind.TEXT_CALL_EMAIL_VENDOR, label: "Text / call / email vendor" },
+  { id: CostBearingWireKind.EVENT_COST, label: "Event cost" },
+  { id: CostBearingWireKind.TRAVEL_MILEAGE_REIMBURSEMENT, label: "Travel / mileage / reimbursement" },
+  { id: CostBearingWireKind.CONTENT_MEDIA, label: "Content / media" },
+  { id: CostBearingWireKind.SOFTWARE_PLATFORM, label: "Software / platform" },
+  { id: CostBearingWireKind.CONSULTANT_CONTRACTOR, label: "Consultant / contractor" },
+  { id: CostBearingWireKind.PRINT_MAIL, label: "Print / mail" },
+  { id: CostBearingWireKind.OTHER, label: "Other" },
+];
+
+export function isCostBearingWireKindId(s: string): s is CostBearingWireKindId {
+  return (Object.values(CostBearingWireKind) as string[]).includes(s);
+}
 
 /** Conceptual planning vs execution — persistence later. */
 export const BudgetEnforcementStage = {

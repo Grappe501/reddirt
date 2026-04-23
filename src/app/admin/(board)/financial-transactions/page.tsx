@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { prisma } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
@@ -17,7 +18,11 @@ export default async function FinancialTransactionsListPage() {
       <h1 className="mt-2 font-heading text-3xl font-bold">Financial transactions</h1>
       <p className="mt-2 max-w-2xl font-body text-sm text-deep-soil/70">
         Internal ledger (draft vs confirmed in DB). <strong>Not</strong> a bank statement, <strong>not</strong> a filing. No
-        edits here; population is via future admin flows or data migration.
+        edits here; population is via future admin flows or data migration. Planned vs actual:{" "}
+        <Link href="/admin/budgets" className="font-semibold underline">
+          budget plans (BUDGET-2)
+        </Link>
+        .
       </p>
 
       {rows.length === 0 ? (

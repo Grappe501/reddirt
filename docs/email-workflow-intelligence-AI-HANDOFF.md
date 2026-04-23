@@ -489,6 +489,29 @@ npx prisma migrate deploy   # when database is up
     ],
     "direction": "FIN-2 create/edit, confirm flow, import from submissions, audit actor columns, contribution types"
   },
+  "packet_budget2": {
+    "status": "budget_structure_plan_vs_actual_foundation",
+    "docs": [
+      "docs/budget-structure-foundation.md",
+      "docs/budget-and-spend-governance-foundation.md (updated)"
+    ],
+    "code": [
+      "prisma/schema.prisma (BudgetPlan, BudgetLine, BudgetPlanStatus; migration 20260511120000_budget2_budget_plan_line)",
+      "src/lib/campaign-engine/budget.ts (BUDGET2_PACKET, wire helpers)",
+      "src/lib/campaign-engine/budget-queries.ts (actuals + variance)",
+      "src/lib/campaign-engine/policy.ts (SpendApprovalTier, spendBudget on CAMPAIGN_POLICY_V1)",
+      "src/app/admin/(board)/budgets/ (list + detail + budget-actions.ts)"
+    ],
+    "not_built": [
+      "commitment_encumbrance_persistence",
+      "forecasting_engine",
+      "per_line_split_when_shared_wire",
+      "bank_or_vendor_sync",
+      "filing_or_report_automation",
+      "status_enforced_edit_guards"
+    ],
+    "direction": "BUDGET-3: advisory alerts, optional commitments, tighter event-level attribution when ledger links exist"
+  },
   "packet_fund1": {
     "status": "blueprint_fundraising_desk_ingest_contactability",
     "docs": [
@@ -787,5 +810,19 @@ npx prisma migrate deploy   # when database is up
 **Intentionally not built:** **Finance** **dashboard;** **reporting;** **bank** / **FEC** / **SOS** **integration;** **auto**-**materialize** **all** **submissions) **. **
 
 *Last updated: Packet FIN-1. See `packet_fin1` in the JSON handoff block.*
+
+---
+
+## 27. Packet BUDGET-2 — Budget structure + planned vs actual (governed, minimal)
+
+**What shipped (documentation):** [`budget-structure-foundation.md`](./budget-structure-foundation.md) — budget as **internal** plan/control vs ledger vs filings; period, line, planned/actual/remaining/variance; approval thresholds and posture; rails; governance; out of scope.
+
+**What shipped (schema + code):** Prisma **`BudgetPlan`** / **`BudgetLine`** / **`BudgetPlanStatus`** (migration **`20260511120000_budget2_budget_plan_line`**). **`budget-queries.ts`** — list/detail, **CONFIRMED**-only actuals by **`getBudgetWireForTransaction`**, optional plan date window, variance rows with **duplicate-wire** caveat. **`policy.ts`** — **`SpendApprovalTier`**, **`CAMPAIGN_POLICY_V1.spendBudget`** (threshold narratives; **no** product enforcement). **`budget.ts`** — **`BUDGET2_PACKET`**, wire **`select`** options, **`isCostBearingWireKindId`**.
+
+**Admin:** **`/admin/budgets`** (create plan), **`/admin/budgets/[id]`** (add line, table planned/actual/remaining/variance, policy aside). **Nav:** `AdminBoardShell` operations link.
+
+**Intentionally not built:** Commitments, forecasting, perfect attribution, bank/vendor hooks, filing automation, RBAC on budget routes beyond existing admin gate.
+
+*Last updated: Packet BUDGET-2. See `packet_budget2` in the JSON handoff block.*
 
 ---

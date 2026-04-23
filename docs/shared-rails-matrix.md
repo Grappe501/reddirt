@@ -23,4 +23,4 @@
 - **“First step”** should stay **small**: **read** path or **doc** or **one** new column—**not** a framework rewrite.
 - **Campaign Manager (CM) packets** should **read** this matrix in **orchestration** and **triage** design.
 
-*Last updated: Packets FND-1, TALENT-1, BRAIN-1, ALIGN-1, ASSIGN-1, UWR-1, WB-CORE-1, SEAT-1, SKILL-1+ASSIGN-2, FUND-1, COMP-1, POLICY-1+COMP-2+BUDGET-1, FIN-1 (Prisma `FinancialTransaction` + `financial-ingest.ts` + `getBudgetWireForTransaction` + read-only `…/financial-transactions`; not bank, not official filing, no full finance dashboard).*
+*Last updated: Packets FND-1, TALENT-1, BRAIN-1, ALIGN-1, ASSIGN-1, UWR-1, WB-CORE-1, SEAT-1, SKILL-1+ASSIGN-2, FUND-1, COMP-1, POLICY-1+COMP-2+BUDGET-1, FIN-1, **BUDGET-2** (Prisma `BudgetPlan` / `BudgetLine`; `budget-queries.ts` planned vs **CONFIRMED** actuals by wire; light admin `…/budgets`; still no bank, filing automation, or full finance dashboard).*

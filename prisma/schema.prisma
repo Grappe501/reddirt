@@ -185,6 +185,48 @@ model FinancialTransaction {
   @@index([status, transactionDate])
 }
 
+/// BUDGET-2: campaign-internal budget plan (not the ledger; not a filing).
+enum BudgetPlanStatus {
+  DRAFT
+  ACTIVE
+  ARCHIVED
+}
+
+model BudgetPlan {
+  id          String           @id @default(cuid())
+  name        String
+  periodLabel String
+  startDate   DateTime?
+  endDate     DateTime?
+  status      BudgetPlanStatus @default(DRAFT)
+  notes       String?          @db.Text
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  lines BudgetLine[]
+
+  @@index([status, createdAt])
+}
+
+model BudgetLine {
+  id String @id @default(cuid())
+
+  budgetPlanId String
+  budgetPlan   BudgetPlan @relation(fields: [budgetPlanId], references: [id], onDelete: Cascade)
+
+  /// Must match a value from `CostBearingWireKind` in `src/lib/campaign-engine/budget.ts` (string for forward compatibility).
+  costBearingWireKind String
+  label               String
+  plannedAmount       Decimal @db.Decimal(14, 2)
+  notes               String? @db.Text
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([budgetPlanId])
+  @@index([costBearingWireKind])
+}
+
 /// SEAT-1: one operational seat per `ROLE-1` position key (v1: single fillable slot per position in the tree).
 /// Staffing metadata only: does not assign UWR-1 work, does not grant route access, does not run automation.
 enum PositionSeatStatus {
