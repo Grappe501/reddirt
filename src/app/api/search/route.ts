@@ -2,8 +2,11 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { isOpenAIConfigured, getOpenAIClient, getOpenAIConfigFromEnv } from "@/lib/openai/client";
 import { prisma } from "@/lib/db";
-import { searchChunks, buildContextBlock } from "@/lib/openai/search";
-import { RAG_ANSWER_SYSTEM_PROMPT } from "@/lib/openai/prompts";
+import { buildContextBlock, prioritizeHitsForAssistant, searchChunks } from "@/lib/openai/search";
+import {
+  KELLY_PUBLIC_CONTACT_EMAIL,
+  SEARCH_DIALOG_GUIDE_PROMPT,
+} from "@/lib/openai/prompts";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
 import { databaseUnavailableResponse, isDatabaseConfigured } from "@/lib/env";
 
@@ -58,7 +61,9 @@ export async function POST(req: Request) {
   }
 
   try {
-    const hits = await searchChunks(query, 10);
+    const SEARCH_RESULT_LIMIT = 10;
+    const wide = await searchChunks(query, 18);
+    const hits = prioritizeHitsForAssistant(wide, SEARCH_RESULT_LIMIT);
     const results = hits.map((h) => ({
       path: h.path,
       title: h.title,
@@ -67,25 +72,56 @@ export async function POST(req: Request) {
     }));
 
     let answer: string | null = null;
-    if (includeAnswer && isOpenAIConfigured() && hits.length) {
-      try {
-        const client = getOpenAIClient();
-        const { model } = getOpenAIConfigFromEnv();
-        const context = buildContextBlock(hits, 10000);
-        const completion = await client.chat.completions.create({
-          model,
-          temperature: 0.3,
-          messages: [
-            { role: "system", content: RAG_ANSWER_SYSTEM_PROMPT },
-            {
-              role: "user",
-              content: `CONTEXT:\n${context}\n\nQUESTION:\n${query}\n\nAnswer using CONTEXT only. If insufficient, say what is missing and suggest a page path from CONTEXT.`,
-            },
-          ],
-        });
-        answer = completion.choices[0]?.message?.content?.trim() ?? null;
-      } catch (ansErr) {
-        console.error("[search] answer generation failed:", ansErr);
+    if (includeAnswer) {
+      const titlesLine = hits.length
+        ? hits
+            .slice(0, 8)
+            .map((h) => h.title || h.path)
+            .join(" · ")
+        : "";
+
+      if (hits.length === 0) {
+        answer =
+          `I couldn’t line up a strong match in Kelly’s site library for that search—try different keywords, a shorter phrase, or the main menu. ` +
+          `If you’re after something specific about Kelly or this race, email ${KELLY_PUBLIC_CONTACT_EMAIL} and a real human can help. ` +
+          `We hope we can earn your vote in November. If you’re able, donating through this site keeps the campaign reaching every county—and we’d love to have you on the team via Get involved.`;
+      } else if (!isOpenAIConfigured()) {
+        answer =
+          `Here are the on-site pages that best matched your search (see Sources below). A full conversational summary needs the AI service enabled on the server—for now, open a title that looks right. ` +
+          `Still stuck? ${KELLY_PUBLIC_CONTACT_EMAIL}. We’re building a campaign that shows up for all 75 counties, and we hope we can earn your vote in November. Chip in on Donate if you can, and Get involved if you want to join us.`;
+      } else {
+        try {
+          const client = getOpenAIClient();
+          const { model } = getOpenAIConfigFromEnv();
+          const context = buildContextBlock(hits, 10000);
+          const completion = await client.chat.completions.create({
+            model,
+            temperature: 0.36,
+            messages: [
+              { role: "system", content: SEARCH_DIALOG_GUIDE_PROMPT },
+              {
+                role: "user",
+                content:
+                  "RETRIEVAL: CONTEXT is re-ranked so on-site campaign excerpts (route:, brief:, docs/) come before external: background when both matched. Prefer citing those for Kelly / this race; use external excerpts only as supporting color.\n\n" +
+                  `CONTEXT:\n${context}\n\nVISITOR SEARCH / QUESTION:\n${query}\n\nTOP RESULT TITLES THEY WILL SEE (for orientation only; ground claims in CONTEXT):\n${titlesLine}`,
+              },
+            ],
+          });
+          answer = completion.choices[0]?.message?.content?.trim() ?? null;
+        } catch (ansErr) {
+          console.error("[search] answer generation failed:", ansErr);
+          answer =
+            `I found pages that match your search (below), but I couldn’t write up a guided summary just now—technology had a moment. ` +
+            `Click through the sources that look closest to what you need. ` +
+            `If you’re still empty-handed, email ${KELLY_PUBLIC_CONTACT_EMAIL} with what you were trying to find. ` +
+            `We hope we can earn your vote in November—pitch in on Donate if you’re able, and check Get involved to join the team.`;
+        }
+        if (!answer?.length) {
+          answer =
+            `Here’s what the site turned up (see Sources). Open a link for the full picture. ` +
+            `Want more? Run another search or ask at ${KELLY_PUBLIC_CONTACT_EMAIL}. ` +
+            `We hope we can earn your vote in November—Get involved and Donate if Kelly’s your kind of public servant.`;
+        }
       }
     }
 

@@ -25,6 +25,8 @@ const ALLOWED_MIME = new Set([
   "audio/webm",
   "application/pdf",
   "text/plain",
+  "text/html",
+  "text/html; charset=utf-8",
   "text/csv",
   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
   "application/vnd.ms-excel",

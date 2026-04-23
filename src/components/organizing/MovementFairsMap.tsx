@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useMemo, useRef } from "react";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import L from "leaflet";
@@ -305,12 +306,12 @@ export function MovementFairsMap({ events, selectedSlug = null, onSelectSlug }: 
           OpenStreetMap + Leaflet — operational field view. Pins without coordinates stay in the list only until staff
           add a point or county.
         </p>
-        <a
+        <Link
           href="/campaign-calendar"
           className="shrink-0 font-body text-xs font-bold uppercase tracking-wider text-red-dirt underline-offset-2 hover:underline"
         >
           Full HQ calendar →
-        </a>
+        </Link>
       </div>
     </div>
   );

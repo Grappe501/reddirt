@@ -9,6 +9,31 @@ export type SearchHit = {
   score: number;
 };
 
+/**
+ * Retrieval tier for the campaign assistant: prefer on-site and internal briefs over external
+ * background domains so answers anchor to the campaign site when both match.
+ */
+export function assistantPathTier(path: string): number {
+  if (path.startsWith("route:")) return 0;
+  if (path.startsWith("brief:")) return 1;
+  const n = path.replace(/\\/g, "/").toLowerCase();
+  if (n.startsWith("docs/")) return 2;
+  if (path.startsWith("external:")) return 4;
+  return 3;
+}
+
+/** Re-rank merged hits for /api/assistant: tier ascending, then similarity score descending. */
+export function prioritizeHitsForAssistant(hits: SearchHit[], limit: number): SearchHit[] {
+  if (hits.length === 0) return [];
+  const enriched = hits.map((h, i) => ({ h, i, tier: assistantPathTier(h.path) }));
+  enriched.sort((a, b) => {
+    if (a.tier !== b.tier) return a.tier - b.tier;
+    if (b.h.score !== a.h.score) return b.h.score - a.h.score;
+    return a.i - b.i;
+  });
+  return enriched.slice(0, limit).map((x) => x.h);
+}
+
 const SEMANTIC_WEAK_THRESHOLD = 0.18;
 
 type ChunkRow = { path: string; title: string | null; content: string; embedding: string };

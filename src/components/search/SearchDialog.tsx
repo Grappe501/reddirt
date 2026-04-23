@@ -200,11 +200,11 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
               checked={includeAnswer}
               onChange={(e) => setIncludeAnswer(e.target.checked)}
             />
-            Include a short grounded answer (requires OpenAI + excerpts)
+            Include a conversational search guide (grounded in results; vote / team / donate friendly)
           </label>
           {loading ? (
             <p className="rounded-btn border border-deep-soil/10 bg-deep-soil/[0.04] px-4 py-3 font-body text-sm text-deep-soil/75" role="status" aria-live="polite">
-              Searching the index…
+              {includeAnswer ? "Searching the site and drafting your guide…" : "Searching the index…"}
             </p>
           ) : null}
           {error ? (
@@ -212,10 +212,43 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
               {error}
             </p>
           ) : null}
-          {answer ? (
-            <div className="rounded-card border border-field-green/30 bg-field-green/10 p-5">
-              <p className="font-body text-xs font-bold uppercase tracking-wider text-field-green">Answer</p>
-              <p className="mt-2 whitespace-pre-wrap font-body text-base leading-relaxed text-deep-soil">{answer}</p>
+          {includeAnswer && searched && !loading && answer ? (
+            <div
+              className="rounded-card border border-civic-blue/25 bg-gradient-to-b from-civic-fog/90 to-white p-5 shadow-[var(--shadow-soft)]"
+              role="region"
+              aria-label="Search guide message"
+            >
+              <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-civic-blue">Your search guide</p>
+              <p className="mt-1 font-body text-xs text-deep-soil/55">
+                One friendly read on what you searched—then dig into the sources underneath.
+              </p>
+              <p className="mt-4 whitespace-pre-wrap font-body text-base leading-relaxed text-deep-soil">{answer}</p>
+              <div className="mt-5 flex flex-wrap gap-2 border-t border-deep-soil/10 pt-4">
+                <Link
+                  href="/get-involved"
+                  className="rounded-full border border-red-dirt/30 bg-red-dirt/10 px-3 py-1.5 font-body text-xs font-semibold text-red-dirt hover:border-red-dirt/50"
+                >
+                  Get involved
+                </Link>
+                <Link
+                  href="/donate"
+                  className="rounded-full border border-civic-gold/40 bg-sunlight-gold/20 px-3 py-1.5 font-body text-xs font-semibold text-deep-soil hover:bg-sunlight-gold/35"
+                >
+                  Donate
+                </Link>
+                <a
+                  href="mailto:kelly@kellygrappe.com"
+                  className="rounded-full border border-deep-soil/15 bg-white px-3 py-1.5 font-body text-xs font-semibold text-deep-soil/85 hover:border-civic-blue/30"
+                >
+                  Email Kelly
+                </a>
+              </div>
+            </div>
+          ) : null}
+          {includeAnswer && searched && !loading && !answer && results.length > 0 ? (
+            <div className="rounded-card border border-amber-200/80 bg-amber-50/90 p-4 font-body text-sm text-deep-soil">
+              We found pages below but no summary came back—try opening a source, toggling the guide off and on, or email
+              kelly@kellygrappe.com.
             </div>
           ) : null}
           <div className="space-y-3">
@@ -229,16 +262,7 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
                   <>
                     <p className="font-body text-sm font-medium text-deep-soil">Nothing to search yet.</p>
                     <p className="mt-2 font-body text-sm text-deep-soil/65">
-                      The assistant is fine—it needs indexed page excerpts first. From the project root, run{" "}
-                      <code className="rounded bg-deep-soil/10 px-1.5 py-0.5 font-mono text-xs">npm run ingest</code> with{" "}
-                      <code className="rounded bg-deep-soil/10 px-1.5 py-0.5 font-mono text-xs">DATABASE_URL</code>
-                      {indexStatus.openai ? (
-                        <>
-                          {" "}
-                          and <code className="rounded bg-deep-soil/10 px-1.5 py-0.5 font-mono text-xs">OPENAI_API_KEY</code>
-                        </>
-                      ) : null}{" "}
-                      (embeddings optional for keyword-only), then search again.
+                      Site search isn&apos;t available on this build. Use the menu or check back later.
                     </p>
                   </>
                 ) : (
@@ -253,7 +277,7 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
               </div>
             ) : null}
             {!searched && !loading ? (
-              <p className="font-body text-sm text-deep-soil/55">Run a search to see excerpts and links.</p>
+              <p className="font-body text-sm text-deep-soil/55">Search to see matching pages and excerpts.</p>
             ) : null}
             <ul className="space-y-3">
               {results.map((r) => (

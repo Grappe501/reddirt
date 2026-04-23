@@ -208,7 +208,7 @@ export async function runExternalMediaIngest(
 
         const robotsItem = await isUrlAllowedByRobots(link);
         let fullText: string | null = null;
-        let transcriptMissing = dbSource.sourceType === ExternalMediaSourceType.TV;
+        const transcriptMissing = dbSource.sourceType === ExternalMediaSourceType.TV;
         if (robotsItem.ok) {
           await sleep(450);
           const fetched = await fetchArticlePlainText(link);

@@ -21,7 +21,7 @@ import {
 import { pageMeta } from "@/lib/seo/metadata";
 import { brandMediaFromLegacySite } from "@/config/brand-media";
 import { TrailPhotosShowcase } from "@/components/campaign-trail/TrailPhotosShowcase";
-import { campaignTrailPhotos } from "@/content/media/campaign-trail-photos";
+import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = pageMeta({
@@ -39,11 +39,12 @@ export default async function FromTheRoadPage() {
     listFromTheRoadSocialItems(32),
     listFromTheRoadYoutubeMoments(8),
   ]);
+  const trailGallery = trailPhotosForSlot("fromTheRoad", { fromTheRoadMax: 96 });
   const hasEmbeds = fromTheRoadHasLiveEmbeds(embedsConfig);
   const hasFieldSocial = social.length > 0;
   const hasNotebook = posts.length > 0;
   const hasYoutube = youtube.length > 0;
-  const hasTrailPhotos = campaignTrailPhotos.length > 0;
+  const hasTrailPhotos = trailGallery.length > 0;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-civic-fog/90 via-white to-civic-fog/50 pb-16 pt-10 md:pb-24 md:pt-14">
@@ -55,15 +56,8 @@ export default async function FromTheRoadPage() {
           </h1>
           <p className="mt-6 font-body text-lg leading-relaxed text-civic-slate md:text-xl">
             <strong className="text-civic-ink">One bookmark for the whole trail:</strong> Facebook, Instagram, X,
-            YouTube, TikTok, and the Substack notebook open from the hub below—then live windows and editor-approved field
-            posts stack underneath, so neighbors can follow along without juggling apps or mystery algorithms.
-          </p>
-          <p className="mt-4 font-body text-sm leading-relaxed text-civic-slate/80 md:text-base md:text-civic-slate/90">
-            Channel URLs and optional embeds are driven by{" "}
-            <code className="rounded bg-civic-ink/5 px-1 font-mono text-[0.85em]">NEXT_PUBLIC_SOCIAL_*</code> and{" "}
-            <code className="rounded bg-civic-ink/5 px-1 font-mono text-[0.85em]">NEXT_PUBLIC_FTR_*</code> in deployment
-            env (see <code className="rounded bg-civic-ink/5 px-1 font-mono text-[0.85em]">.env.example</code>)—the same
-            values power the site footer.
+            YouTube, TikTok, and the Substack notebook open from the hub below—then live windows and field updates stack
+            underneath, so neighbors can follow along without juggling apps or mystery algorithms.
           </p>
           <p className="mt-5 font-body text-sm text-civic-slate/85">
             <a href="#channels" className="font-semibold text-civic-blue underline-offset-2 hover:underline">
@@ -118,18 +112,18 @@ export default async function FromTheRoadPage() {
 
         <div className="mt-10 md:mt-12" aria-hidden />
 
+        <FromTheRoadSocialHub />
+
         {hasTrailPhotos ? (
           <TrailPhotosShowcase
             sectionId="trail-photos"
-            variant="full"
-            className="!border-t-0 !pt-2 md:!pt-4"
-            photos={campaignTrailPhotos}
+            variant="woven"
+            className="!border-t border-civic-ink/10 !border-b-0 !pt-14 md:!pt-20"
+            photos={trailGallery}
             title="Trail photos — Arkansas, in the room"
-            intro="Editor-approved stills from the field: gatherings, counties, and the people who make the movement real. The same library also powers moments on the homepage, About, and Get involved."
+            intro="Moments from counties and gatherings across Arkansas—real rooms and real neighbors."
           />
         ) : null}
-
-        <FromTheRoadSocialHub />
 
         <div className="mt-10 md:mt-14" aria-hidden />
 
@@ -137,8 +131,7 @@ export default async function FromTheRoadPage() {
           <section id="live-embeds" className="scroll-mt-24 border-t border-civic-ink/8 pt-16 md:pt-20" aria-label="Live embeds">
             <h2 className="font-heading text-2xl font-bold text-civic-ink md:text-3xl">Live from our channels</h2>
             <p className="mt-3 max-w-3xl font-body text-base leading-relaxed text-civic-slate md:text-lg">
-              Official embeds load here: Facebook page timeline, hand-picked TikTok clips, optional YouTube uploads
-              playlist, and spotlight Instagram posts—set ids in env so this section fills in without extra code deploys.
+              Official embeds load here when available—Facebook, TikTok, YouTube, and Instagram highlights in one place.
             </p>
             <FromTheRoadLiveEmbeds config={embedsConfig} />
             <p className="mt-6 max-w-3xl font-body text-xs leading-relaxed text-civic-slate/55">
@@ -154,8 +147,7 @@ export default async function FromTheRoadPage() {
           <section id="field" className="scroll-mt-24 border-t border-civic-ink/8 pt-16 md:pt-20" aria-label="Field posts">
             <h2 className="font-heading text-2xl font-bold text-civic-ink md:text-3xl">In the field (Facebook &amp; Instagram)</h2>
             <p className="mt-3 max-w-3xl font-body text-base leading-relaxed text-civic-slate md:text-lg">
-              Short updates from the trail—synced from our pages and shown here after a human review in Admin. Follow the
-              original post for comments and the full context.
+              Short updates from the trail on Facebook and Instagram. Open a post for the full thread and comments.
             </p>
             <div className="mt-10 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
               {social.map((s) => (
@@ -163,13 +155,6 @@ export default async function FromTheRoadPage() {
               ))}
             </div>
           </section>
-        ) : null}
-
-        {hasFieldSocial && !hasNotebook ? (
-          <p className="mx-auto mt-10 max-w-2xl border border-civic-ink/8 bg-civic-midnight/4 px-5 py-4 font-body text-sm leading-relaxed text-civic-slate/90 md:mt-14">
-            <strong className="text-civic-ink">Field posts use admin sync + review.</strong> After Facebook/Instagram
-            connectors run, editors mark items <strong>Reviewed</strong> in Admin → Inbox so they can appear here.
-          </p>
         ) : null}
 
         {hasNotebook ? (
@@ -189,15 +174,7 @@ export default async function FromTheRoadPage() {
 
         {!hasNotebook && !hasFieldSocial && !hasYoutube && !hasEmbeds ? (
           <p className="mx-auto mt-16 max-w-lg text-center font-body text-civic-slate/75">
-            There isn&apos;t public road content to show yet. After Substack sync and/or social connectors run—and items
-            are approved in the inbox—writing and field updates will show up in the sections above.
-          </p>
-        ) : null}
-
-        {hasNotebook && !hasFieldSocial ? (
-          <p className="mx-auto mt-8 max-w-2xl font-body text-sm text-civic-slate/70 md:mt-10">
-            <strong className="text-civic-ink/90">Field posts (Facebook/Instagram):</strong> set connector env in
-            production, run platform sync, then mark posts reviewed to surface them in the first section of this page.
+            Trail writing and updates will appear here as they&apos;re published. Check back soon.
           </p>
         ) : null}
 

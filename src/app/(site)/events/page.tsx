@@ -17,8 +17,10 @@ import { mergeMovementAndCalendarEvents } from "@/lib/events/calendar-to-movemen
 import { safePublishedCountyOptions } from "@/lib/county/safe-published-county-options";
 import type { EventSchedulePreset } from "@/lib/format/event-schedule-in-zone";
 import { cn } from "@/lib/utils";
-import { TrailPhotosShowcase } from "@/components/campaign-trail/TrailPhotosShowcase";
-import { campaignTrailPhotos } from "@/content/media/campaign-trail-photos";
+import { EditorialCampaignPhoto } from "@/components/about/EditorialCampaignPhoto";
+import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
+import { RepresentLocalEventPanel } from "@/components/organizing/RepresentLocalEventPanel";
+import { representLocalEventVolunteerHref } from "@/config/navigation";
 
 export const metadata: Metadata = {
   title: "Events",
@@ -77,18 +79,22 @@ export default async function EventsPage({
   const includeCalendar = pickParam(sp, "cal") !== "0";
 
   const filterKey = JSON.stringify({ type, region, status, audience, schedule, includeCalendar });
+  const calendarMoment = trailPhotosForSlot("events")[0];
 
   return (
     <>
       <PageHero
         eyebrow="Gather"
         title="Movement events"
-        subtitle="Not a generic calendar—a weave of trainings, listening sessions, and community conversations built for Arkansas’s scale and pace."
+        subtitle="This is the front door: join what is scheduled, host something new, tell us what is happening in your town, or raise your hand to represent the campaign where you already show up."
         className="!pb-[calc(var(--section-padding-y)*0.5)] lg:!pb-[calc(var(--section-padding-y-lg)*0.5)]"
         contentClassName="pt-10 pb-5 lg:pt-14 lg:pb-7"
       >
         <Button href="/host-a-gathering" variant="primary">
           Host a gathering
+        </Button>
+        <Button href={representLocalEventVolunteerHref} variant="outline">
+          Represent us locally
         </Button>
         <Button href="/listening-sessions" variant="outline">
           Election listening tour
@@ -98,23 +104,38 @@ export default async function EventsPage({
         </Button>
       </PageHero>
 
-      {campaignTrailPhotos.slice(18, 21).length > 0 ? (
+      {calendarMoment ? (
         <FullBleedSection
           variant="subtle"
           className="!pt-[calc(var(--section-padding-y)*0.45)] !pb-0 lg:!pt-[calc(var(--section-padding-y-lg)*0.45)] lg:!pb-0"
         >
-          <ContentContainer wide>
-            <TrailPhotosShowcase
-              variant="inline"
-              className="!border-t-0 !py-6 md:!py-8"
-              photos={campaignTrailPhotos.slice(18, 21)}
-              eyebrow="Field"
-              title="Moments between the calendar lines"
-              intro="Trainings and meetups are only part of the story—these are the faces and places in between."
-            />
+          <ContentContainer wide className="py-6 md:py-8">
+            <EditorialCampaignPhoto variant="breakout" photo={calendarMoment} kicker="Field" />
           </ContentContainer>
         </FullBleedSection>
       ) : null}
+
+      <FullBleedSection
+        id="represent-locally"
+        padY
+        aria-labelledby="represent-locally-heading"
+        className="!pt-[calc(var(--section-padding-y)*0.65)] lg:!pt-[calc(var(--section-padding-y-lg)*0.65)]"
+      >
+        <ContentContainer>
+          <h2
+            id="represent-locally-heading"
+            className="font-heading text-xl font-bold text-deep-soil md:text-2xl"
+          >
+            Can you represent the campaign at something on your local calendar?
+          </h2>
+          <p className="mt-2 max-w-3xl font-body text-sm text-deep-soil/75 md:text-base">
+            Volunteers ask for real tasks—here is one. Fairs, festivals, party meetings, and civic nights need neighbors
+            who can listen, hand out vetted information, and invite people into the movement without turning a public
+            event into a debate stage.
+          </p>
+          <RepresentLocalEventPanel className="mt-8 max-w-3xl" />
+        </ContentContainer>
+      </FullBleedSection>
 
       <FullBleedSection
         padY
@@ -128,11 +149,7 @@ export default async function EventsPage({
           <p className="mt-2 max-w-3xl font-body text-deep-soil/75">
             Every county sits in one of nine geographic regions (aligned to how field teams and tourism maps talk about
             the state) plus a <strong>Statewide</strong> label for online or multi-area programs. Tap a tag to jump the
-            filters—keyboard-friendly selects are below.{" "}
-            <span className="text-deep-soil/55">
-              {/* TODO(Script 5): Mobilize-powered RSVPs + live capacity */}
-              RSVP plumbing syncs when Mobilize integration ships.
-            </span>
+            filters—keyboard-friendly selects are below.
           </p>
           <div className="mt-6 flex flex-wrap gap-2" aria-label="Quick filters by event type">
             {eventTypes.map((t) => (
@@ -289,11 +306,18 @@ export default async function EventsPage({
       <CTASection
         eyebrow="Make the next opening"
         title="The calendar belongs to hosts"
-        description="If you don’t see your town yet, you might be the person who makes the first dot on the map."
+        description="If you don’t see your town yet, you might be the person who makes the first dot on the map—or the neighbor who represents us where the community already gathers."
         variant="soil"
       >
         <Button href="/host-a-gathering" variant="primary" className="bg-cream-canvas text-deep-soil hover:bg-cream-canvas/90">
           Host a gathering
+        </Button>
+        <Button
+          href={representLocalEventVolunteerHref}
+          variant="outline"
+          className="border-cream-canvas/40 text-cream-canvas hover:bg-cream-canvas/10"
+        >
+          Represent locally
         </Button>
         <Button href="/start-a-local-team" variant="outline" className="border-cream-canvas/40 text-cream-canvas hover:bg-cream-canvas/10">
           Start a local team

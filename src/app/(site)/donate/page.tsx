@@ -62,15 +62,15 @@ export default function DonatePage() {
       <FullBleedSection variant="subtle" padY>
         <ContentContainer className="max-w-2xl space-y-4 font-body text-base leading-relaxed text-deep-soil/80">
           <p>
-            The site defaults to the GoodChange link used on{" "}
+            Contributions are processed securely through the same trusted link used on{" "}
             <a className="font-semibold text-red-dirt underline" href="https://www.kellygrappe.com" target="_blank" rel="noopener noreferrer">
               KellyGrappe.com
             </a>
-            . Override with{" "}
-            <code className="rounded bg-deep-soil/10 px-1.5 py-0.5 font-mono text-sm">NEXT_PUBLIC_DONATE_EXTERNAL_URL</code>{" "}
-            if the processor URL changes.
+            .
           </p>
-          <p className="text-sm text-deep-soil/60">Paid-for-by language belongs in the footer and on this page—replace placeholders before launch.</p>
+          <p className="text-sm text-deep-soil/60">
+            Paid for by the committee—details appear in the footer on every page.
+          </p>
           <p className="text-sm text-deep-soil/50">{siteConfig.name}</p>
         </ContentContainer>
       </FullBleedSection>

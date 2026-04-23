@@ -11,7 +11,7 @@ export function normalizeCanonicalUrl(raw: string): string {
   u.hash = "";
   const drop = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "fbclid", "gclid"];
   for (const k of drop) u.searchParams.delete(k);
-  let path = u.pathname.replace(/\/+$/, "") || "/";
+  const path = u.pathname.replace(/\/+$/, "") || "/";
   u.pathname = path;
   return u.toString().toLowerCase();
 }

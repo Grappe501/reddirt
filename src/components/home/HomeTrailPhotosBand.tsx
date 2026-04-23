@@ -1,10 +1,8 @@
 import { TrailPhotosShowcase } from "@/components/campaign-trail/TrailPhotosShowcase";
-import { campaignTrailPhotos } from "@/content/media/campaign-trail-photos";
-
-const HOME_TRAIL_COUNT = 9;
+import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
 
 export function HomeTrailPhotosBand() {
-  const photos = campaignTrailPhotos.slice(0, HOME_TRAIL_COUNT);
+  const photos = trailPhotosForSlot("home");
   if (photos.length === 0) return null;
 
   return (
@@ -13,7 +11,7 @@ export function HomeTrailPhotosBand() {
         variant="home"
         photos={photos}
         title="The movement, in real rooms"
-        intro="Snapshots from counties and gatherings—proof the campaign shows up where Arkansas actually lives."
+        intro="Field photos from real counties and gatherings—not stock imagery."
       />
     </div>
   );

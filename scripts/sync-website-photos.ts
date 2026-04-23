@@ -87,6 +87,8 @@ function emitTs(entries: { id: string; src: string; alt: string }[]): string {
   return `/**
  * Campaign trail photos — copied to public/media/campaign-trail/ by \`npm run photos:sync\`.
  * Do not edit by hand; re-run the sync script after adding or renaming source images.
+ * Farm/animal-focused stills: tag ids in src/content/media/campaign-trail-photo-use.ts.
+ * Page-specific slices: adjust counts in src/content/media/campaign-trail-assignments.ts so photos don’t repeat across routes.
  */
 export type CampaignTrailPhoto = {
   id: string;

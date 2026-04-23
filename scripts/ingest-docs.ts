@@ -1,7 +1,8 @@
 /**
  * Usage: npm run ingest  (from repo root)
  * Requires DATABASE_URL + OPENAI_API_KEY
- * Loads: markdown under docs/, structured site content (explainers, stories, editorial, events, regions, homepage/toolkit/press extras), and route seeds.
+ * Loads: markdown under docs/ (including docs/background/campaign-team-positions/ after `npm run sync:team-positions`),
+ * structured site content (explainers, stories, editorial, events, regions, homepage/toolkit/press extras), and route seeds.
  */
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -13,6 +14,9 @@ import { embedTexts } from "../src/lib/openai/embeddings";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "..");
+/** Prefer .env / .env.local over a stale shell or Windows user OPENAI_API_KEY. */
+const shellOpenAiKey = process.env.OPENAI_API_KEY?.trim();
+delete process.env.OPENAI_API_KEY;
 loadEnvConfig(repoRoot);
 
 const pageSeeds = [
@@ -162,7 +166,10 @@ const pageSeeds = [
 async function main() {
   if (!process.env.DATABASE_URL) throw new Error("DATABASE_URL required");
 
-  const openaiKey = process.env.OPENAI_API_KEY?.trim();
+  const openaiKey = process.env.OPENAI_API_KEY?.trim() || shellOpenAiKey;
+  if (openaiKey) {
+    process.env.OPENAI_API_KEY = openaiKey;
+  }
   const skipEmbeddings =
     process.env.INGEST_SKIP_EMBEDDINGS === "1" || process.env.INGEST_KEYWORD_ONLY === "1" || !openaiKey;
   if (skipEmbeddings) {

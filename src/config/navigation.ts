@@ -1,5 +1,8 @@
 import { getCampaignBlogUrl, getJoinCampaignHref } from "@/config/external-campaign";
 
+/** Volunteer form tagged for tabling / representing at third-party local events. */
+export const representLocalEventVolunteerHref = "/get-involved?lane=event_representation#volunteer";
+
 export type NavItem = {
   label: string;
   href: string;
@@ -51,13 +54,25 @@ export const primaryNavGroups: NavGroup[] = [
     ],
   },
   {
+    id: "events",
+    label: "Events",
+    groupLandingHref: "/events",
+    items: [
+      { label: "Events hub & calendar", href: "/events" },
+      { label: "Represent us locally", href: representLocalEventVolunteerHref },
+      { label: "Host a gathering", href: "/host-a-gathering" },
+      { label: "Election listening sessions", href: "/listening-sessions" },
+      { label: "From the Road", href: "/from-the-road" },
+      { label: "Suggest a public event", href: "/events#suggest" },
+    ],
+  },
+  {
     id: "involved",
     label: "Get Involved",
     items: [
       { label: "Volunteer sign-up", href: getJoinCampaignHref() },
       { label: "Voter registration", href: "/voter-registration" },
       { label: "Stay Connected", href: "/get-involved" },
-      { label: "Events", href: "/events" },
       { label: "Election listening sessions", href: "/listening-sessions" },
       { label: "Local organizing", href: "/local-organizing" },
       { label: "Host a gathering", href: "/host-a-gathering" },
@@ -84,6 +99,8 @@ export const footerNavGroups: { title: string; items: NavItem[] }[] = [
     title: "News & act",
     items: [
       ...primaryNavGroups[2].items,
+      { label: "Events", href: "/events" },
+      { label: "Represent at local events", href: representLocalEventVolunteerHref },
       { label: "Election listening sessions", href: "/listening-sessions" },
       { label: "Get involved", href: "/get-involved" },
       { label: "Donate", href: "/donate" },

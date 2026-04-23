@@ -2,7 +2,6 @@
 
 import type { ReactNode } from "react";
 import { JourneyProvider } from "@/components/journey/journey-context";
-import { CampaignGuideDock } from "@/components/campaign-guide/CampaignGuideDock";
 import { HomePathwayGateway } from "@/components/journey/HomePathwayGateway";
 import { HomeHeroSection } from "@/components/home/sections/HomeHeroSection";
 import { HomeTrustRibbonSection } from "@/components/home/sections/HomeTrustRibbonSection";
@@ -40,7 +39,6 @@ export function HomeJourneyShell({ homepage, trailBand, afterGateway, children }
             {children}
           </div>
         ) : null}
-        <CampaignGuideDock />
       </div>
     </JourneyProvider>
   );

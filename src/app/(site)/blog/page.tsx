@@ -31,13 +31,10 @@ export default async function BlogIndexPage() {
         <ContentContainer wide>
           {cards.length === 0 ? (
             <div className="rounded-card border border-dashed border-deep-soil/25 bg-cream-canvas/80 p-10 text-center">
-              <p className="font-heading text-lg font-bold text-deep-soil">No posts synced yet</p>
+              <p className="font-heading text-lg font-bold text-deep-soil">New posts soon</p>
               <p className="mt-3 font-body text-deep-soil/70">
-                Configure <code className="rounded bg-deep-soil/5 px-1.5 py-0.5 text-sm">SUBSTACK_FEED_URL</code> in
-                environment or admin settings, then run a sync from the admin content board.
-              </p>
-              <p className="mt-4 font-body text-sm text-deep-soil/55">
-                Admins: <Link href="/admin/blog" className="font-semibold text-red-dirt underline">/admin/blog</Link>
+                Longer writing from the trail is also on our notebook—use the Substack link in the site footer when you want
+                the full feed.
               </p>
             </div>
           ) : (

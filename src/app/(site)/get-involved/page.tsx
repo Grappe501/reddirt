@@ -6,8 +6,10 @@ import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
 import { JoinMovementForm } from "@/components/forms/JoinMovementForm";
 import { VolunteerForm } from "@/components/forms/VolunteerForm";
-import { TrailPhotosShowcase } from "@/components/campaign-trail/TrailPhotosShowcase";
-import { campaignTrailPhotos } from "@/content/media/campaign-trail-photos";
+import { EditorialCampaignPhoto, EditorialPhotoPair } from "@/components/about/EditorialCampaignPhoto";
+import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
+import { RepresentLocalEventPanel } from "@/components/organizing/RepresentLocalEventPanel";
+import { representLocalEventVolunteerHref } from "@/config/navigation";
 
 export const metadata: Metadata = {
   title: "Get involved",
@@ -15,7 +17,27 @@ export const metadata: Metadata = {
     "Volunteer, invite Kelly to your county or party meeting, and stay connected with the Arkansas Secretary of State campaign.",
 };
 
-export default function GetInvolvedPage() {
+function pickLane(sp: Record<string, string | string[] | undefined>): string | undefined {
+  const v = sp.lane;
+  if (typeof v === "string") return v;
+  if (Array.isArray(v)) return v[0];
+  return undefined;
+}
+
+export default async function GetInvolvedPage({
+  searchParams,
+}: {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const sp = (await searchParams) ?? {};
+  const laneParam = pickLane(sp);
+  const volunteerPrefillLane =
+    laneParam === "event_representation" ? ("event_representation" as const) : undefined;
+
+  const pair = trailPhotosForSlot("getInvolved");
+  const left = pair[0];
+  const right = pair[1];
+
   return (
     <>
       <PageHero
@@ -29,19 +51,26 @@ export default function GetInvolvedPage() {
         <Button href="#volunteer" variant="outline">
           Volunteer
         </Button>
+        <Button href="#represent-event" variant="outline">
+          Represent at an event
+        </Button>
       </PageHero>
 
-      {campaignTrailPhotos.slice(3, 9).length > 0 ? (
+      {left && right ? (
         <FullBleedSection variant="subtle" className="!pt-0" aria-label="Campaign trail photography">
-          <ContentContainer wide>
-            <TrailPhotosShowcase
-              variant="inline"
-              className="!border-t-0 !py-10 md:!py-14"
-              photos={campaignTrailPhotos.slice(3, 9)}
-              eyebrow="Field energy"
-              title="Democracy still happens in real rooms"
-              intro="A few snapshots from the trail—hosting, listening, and showing up where Arkansas already gathers."
+          <ContentContainer wide className="py-10 md:py-14">
+            <EditorialPhotoPair
+              left={left}
+              right={right}
+              kicker="Field energy"
+              caption="Same campaign, two zip codes—because politics refuses to fit in one JPEG."
             />
+          </ContentContainer>
+        </FullBleedSection>
+      ) : left ? (
+        <FullBleedSection variant="subtle" className="!pt-0" aria-label="Campaign trail photography">
+          <ContentContainer wide className="py-10 md:py-14">
+            <EditorialCampaignPhoto variant="breakout" photo={left} kicker="Field energy" />
           </ContentContainer>
         </FullBleedSection>
       ) : null}
@@ -60,6 +89,25 @@ export default function GetInvolvedPage() {
         </ContentContainer>
       </FullBleedSection>
 
+      <FullBleedSection id="represent-event" aria-labelledby="represent-event-heading">
+        <ContentContainer>
+          <SectionHeading
+            id="represent-event-heading"
+            eyebrow="Field"
+            title="Show up for the campaign where you live"
+            subtitle="Many volunteers want a clear assignment. If you can table, greet, or simply be a steady presence at something already on the community calendar, start here—we will match you with training and materials."
+          />
+          <RepresentLocalEventPanel className="mt-10 max-w-3xl" />
+          <p className="mt-6 max-w-3xl font-body text-sm text-deep-soil/70">
+            Ready to send the form?{" "}
+            <a className="font-semibold text-red-dirt underline" href={representLocalEventVolunteerHref}>
+              Open the volunteer signup with this lane tagged
+            </a>{" "}
+            or scroll to the full form below.
+          </p>
+        </ContentContainer>
+      </FullBleedSection>
+
       <FullBleedSection variant="subtle" id="volunteer" aria-labelledby="volunteer-heading">
         <ContentContainer>
           <SectionHeading
@@ -69,7 +117,7 @@ export default function GetInvolvedPage() {
             subtitle="Tell us your availability and skills. If you can host county meetings or help with voter education, say so—we’ll follow up with concrete next steps."
           />
           <div className="mt-10 max-w-3xl">
-            <VolunteerForm />
+            <VolunteerForm prefillLane={volunteerPrefillLane} />
           </div>
         </ContentContainer>
       </FullBleedSection>

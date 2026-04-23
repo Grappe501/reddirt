@@ -1,9 +1,13 @@
+import Image from "next/image";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { ContentImage } from "@/components/media/ContentImage";
 import { FadeInWhenVisible } from "@/components/home/FadeInWhenVisible";
+import { DEMOCRACY_SPLIT_TRAIL_PHOTO_ID, LABOR_SPLIT_TRAIL_PHOTO_ID } from "@/content/home/split-section-visuals";
 import { media } from "@/content/media/registry";
 import type { HomepageSplitCopy } from "@/lib/content/homepage-merge";
 import type { MediaRef } from "@/content/media/registry";
+import { campaignTrailPhotos } from "@/content/media/campaign-trail-photos";
+import { trailPhotoWittyCaption } from "@/content/media/campaign-trail-wit";
 
 export type HomeSplitSectionProps = {
   variant: "democracy" | "labor";
@@ -14,6 +18,44 @@ const SPLIT_MEDIA: Record<HomeSplitSectionProps["variant"], MediaRef> = {
   democracy: media.splitDemocracy,
   labor: media.splitLabor,
 };
+
+function SplitTrailVisual({
+  photoId,
+  fallbackMedia,
+  fallbackWarmOverlay = false,
+}: {
+  photoId: string;
+  fallbackMedia: MediaRef;
+  fallbackWarmOverlay?: boolean;
+}) {
+  const photo = campaignTrailPhotos.find((p) => p.id === photoId);
+  if (!photo) {
+    return (
+      <ContentImage media={fallbackMedia} warmOverlay={fallbackWarmOverlay} className="absolute inset-0 min-h-full" />
+    );
+  }
+  const caption = trailPhotoWittyCaption(photo);
+  const unoptimized = photo.src.includes("/api/owned-campaign-media/");
+  return (
+    <>
+      <Image
+        src={photo.src}
+        alt={photo.alt}
+        fill
+        className="object-cover object-center"
+        sizes="(max-width: 1024px) 100vw, 50vw"
+        unoptimized={unoptimized}
+        priority={false}
+      />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-civic-midnight/55 via-transparent to-civic-midnight/15" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-civic-midnight/92 via-civic-midnight/65 to-transparent px-4 pb-3 pt-16">
+        <p className="line-clamp-3 text-left font-body text-[11px] leading-snug text-civic-mist/95 md:text-xs">
+          {caption}
+        </p>
+      </div>
+    </>
+  );
+}
 
 export function HomeSplitSection({ variant, copy }: HomeSplitSectionProps) {
   const image = SPLIT_MEDIA[variant];
@@ -53,7 +95,15 @@ export function HomeSplitSection({ variant, copy }: HomeSplitSectionProps) {
           </FadeInWhenVisible>
           <FadeInWhenVisible className="order-1 lg:order-2" delay={0.08}>
             <div className="relative min-h-[260px] overflow-hidden rounded-card border border-civic-ink/10 shadow-[var(--shadow-card)] lg:min-h-[380px]">
-              <ContentImage media={image} warmOverlay={variant === "democracy"} className="absolute inset-0 min-h-full" />
+              {variant === "democracy" ? (
+                <SplitTrailVisual
+                  photoId={DEMOCRACY_SPLIT_TRAIL_PHOTO_ID}
+                  fallbackMedia={media.splitDemocracy}
+                  fallbackWarmOverlay
+                />
+              ) : (
+                <SplitTrailVisual photoId={LABOR_SPLIT_TRAIL_PHOTO_ID} fallbackMedia={media.splitLabor} />
+              )}
             </div>
           </FadeInWhenVisible>
         </div>

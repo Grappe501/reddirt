@@ -1,13 +1,18 @@
 import { SectionHeading } from "@/components/blocks/SectionHeading";
-import { LazyYouTubeEmbed } from "@/components/media/LazyYouTubeEmbed";
 import { TALK_BUSINESS_ELECTION_2026 } from "@/config/campaign-partners";
-import { getTalkBusinessKellyInterviewVideoId } from "@/config/talk-business-media";
+import { resolveTalkBusinessEmbedSrc } from "@/config/talk-business-media";
+import { talkBusinessKellyInterviewSummary } from "@/content/press/talk-business-kelly-interview-summary";
+
+export type TalkBusinessKellySectionProps = {
+  /** When env embed vars are empty, uses featured / inbound YouTube from the campaign library (Admin). */
+  fallbackYoutubeVideoId?: string | null;
+};
 
 /**
- * Talk Business & Politics: 2026 candidate list + optional lazy YouTube interview embed (env-driven).
+ * Talk Business & Politics: candidate list link, interview summary, and embed (iframe — env or DB fallback).
  */
-export function TalkBusinessKellySection() {
-  const videoId = getTalkBusinessKellyInterviewVideoId();
+export function TalkBusinessKellySection({ fallbackYoutubeVideoId }: TalkBusinessKellySectionProps) {
+  const { src, title } = resolveTalkBusinessEmbedSrc({ fallbackYoutubeVideoId });
 
   return (
     <section
@@ -19,10 +24,15 @@ export function TalkBusinessKellySection() {
         align="left"
         eyebrow="Press"
         title="Talk Business &amp; Politics"
-        subtitle="Kelly is listed on Talk Business’s rolling 2026 candidate list. When a YouTube video id is configured for this site, the long-form interview plays below—load-on-click, same as our other video embeds."
+        subtitle="Long-form interview on the 2026 race and the work of the Secretary of State’s office."
         className="max-w-2xl"
       />
-      <p className="mt-4 max-w-2xl font-body text-sm leading-relaxed text-deep-soil/85">
+
+      <p className="mt-6 max-w-3xl font-body text-base leading-relaxed text-deep-soil/88 md:text-[1.05rem]">
+        {talkBusinessKellyInterviewSummary}
+      </p>
+
+      <p className="mt-5 max-w-2xl font-body text-sm leading-relaxed text-deep-soil/80">
         <a
           href={TALK_BUSINESS_ELECTION_2026.href}
           className="font-semibold text-red-dirt underline-offset-2 hover:underline"
@@ -30,25 +40,24 @@ export function TalkBusinessKellySection() {
           rel="noopener noreferrer"
         >
           {TALK_BUSINESS_ELECTION_2026.linkLabel}
-        </a>{" "}
-        (new tab) — includes constitutional offices, legislature, and Congress; verify filings with the{" "}
-        <strong className="font-semibold text-deep-soil/90">Arkansas Secretary of State</strong> for the official record.
+        </a>
       </p>
-      {videoId ? (
+
+      {src ? (
         <div className="mt-8 max-w-3xl overflow-hidden rounded-card border border-deep-soil/10 bg-civic-midnight shadow-lg">
-          <LazyYouTubeEmbed
-            videoId={videoId}
-            title="Kelly Grappe — Talk Business &amp; Politics"
-            posterUrl={null}
-          />
+          <div className="relative aspect-video w-full">
+            <iframe
+              src={src}
+              title={title}
+              className="absolute inset-0 h-full w-full border-0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
+          </div>
         </div>
-      ) : (
-        <p className="mt-6 rounded-lg border border-dashed border-deep-soil/20 bg-cream-canvas/50 px-4 py-3 font-body text-sm text-deep-soil/70">
-          The on-site YouTube interview will show here after your deploy sets the video id (see{" "}
-          <code className="rounded bg-deep-soil/10 px-1.5 font-mono text-xs">.env.example</code>). Until then, open the
-          list link above and watch on YouTube.
-        </p>
-      )}
+      ) : null}
     </section>
   );
 }

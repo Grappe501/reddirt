@@ -2,10 +2,14 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { createPortal } from "react-dom";
+import { usePathname } from "next/navigation";
 import { useJourney } from "@/components/journey/journey-context";
 import { beatById } from "@/content/home/journey";
+import { CAMPAIGN_GUIDE_OPENING } from "@/content/tone-nuggets";
+import { normalizeHistory } from "@/lib/assistant/conversation";
+import { ASSISTANT_API_VERSION } from "@/lib/assistant/version";
+import { consumeAssistantSse } from "@/lib/campaign-guide/assistant-sse";
 import { cn } from "@/lib/utils";
 
 type ChatMessage = { role: "user" | "assistant"; text: string };
@@ -13,37 +17,28 @@ type Suggestion = { label: string; href: string };
 
 export function CampaignGuideDock() {
   const pathname = usePathname();
-  const isHome = pathname === "/";
   const panelId = useId();
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [open, setOpen] = useState(false);
-  const [dockVisible, setDockVisible] = useState(!isHome);
+  const [journeyBeatOnPage, setJourneyBeatOnPage] = useState<string | null>(null);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [messages, setMessages] = useState<ChatMessage[]>([
-    {
-      role: "assistant",
-      text: "I’m the campaign guide—grounded in the site’s content when it’s indexed. Ask about the office, ballot access, volunteering, or where to read more. Where should we start?",
-    },
+    { role: "assistant", text: CAMPAIGN_GUIDE_OPENING },
   ]);
   const [lastSuggestions, setLastSuggestions] = useState<Suggestion[]>([]);
+  const [responseStyle, setResponseStyle] = useState<"concise" | "normal" | "detailed">("concise");
   const { activeBeatId } = useJourney();
 
   useEffect(() => {
-    if (!isHome) {
-      setDockVisible(true);
+    if (!activeBeatId) {
+      setJourneyBeatOnPage(null);
       return;
     }
-    setDockVisible(false);
-    const threshold = () => Math.min(window.innerHeight * 0.72, 640);
-    const onScroll = () => {
-      if (window.scrollY >= threshold()) setDockVisible(true);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [isHome]);
+    const el = document.querySelector<HTMLElement>(`[data-journey-beat="${activeBeatId}"]`);
+    setJourneyBeatOnPage(el ? activeBeatId : null);
+  }, [activeBeatId, pathname, open]);
 
   useEffect(() => {
     if (!open) return;
@@ -69,6 +64,13 @@ export function CampaignGuideDock() {
     if (!text || loading) return;
     setInput("");
     setError(null);
+
+    const historySource =
+      messages.length > 1 && messages[0]?.role === "assistant"
+        ? messages.slice(1)
+        : [...messages];
+    const history = normalizeHistory(historySource.map((m) => ({ role: m.role, text: m.text })));
+
     setMessages((m) => [...m, { role: "user", text }]);
     setLoading(true);
     setLastSuggestions([]);
@@ -77,9 +79,16 @@ export function CampaignGuideDock() {
       const beat = activeBeatId ? beatById(activeBeatId) : undefined;
       const res = await fetch("/api/assistant", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "X-Assistant-Version": ASSISTANT_API_VERSION,
+        },
         body: JSON.stringify({
           message: text,
+          history,
+          version: ASSISTANT_API_VERSION,
+          stream: true,
+          responseStyle,
           journeyBeatId: activeBeatId ?? undefined,
           journeyBeatLabel: beat?.navLabel,
           journeyBeatDescription: beat?.description,
@@ -87,8 +96,48 @@ export function CampaignGuideDock() {
         }),
       });
 
+      const contentType = res.headers.get("content-type") ?? "";
+
+      if (res.ok && contentType.includes("text/event-stream")) {
+        let firstDelta = true;
+        await consumeAssistantSse(res, {
+          onDelta: (d) => {
+            if (firstDelta) {
+              firstDelta = false;
+              setMessages((m) => [...m, { role: "assistant", text: d }]);
+            } else {
+              setMessages((m) => {
+                const x = [...m];
+                const last = x[x.length - 1];
+                if (last?.role === "assistant") {
+                  x[x.length - 1] = { ...last, text: last.text + d };
+                }
+                return x;
+              });
+            }
+          },
+          onDone: (suggestions) => setLastSuggestions(suggestions),
+          onError: (msg) => {
+            setError(msg);
+            setMessages((m) => {
+              const x = [...m];
+              const last = x[x.length - 1];
+              if (last?.role === "assistant") {
+                x[x.length - 1] = { ...last, text: `${last.text}\n\n— ${msg}` };
+                return x;
+              }
+              return [...m, { role: "assistant", text: msg }];
+            });
+          },
+        });
+        return;
+      }
+
       const raw = await res.text();
       let json: {
+        version?: string;
+        playbook?: string;
+        toolsUsed?: string[];
         reply?: string;
         suggestions?: Suggestion[];
         error?: string;
@@ -115,12 +164,12 @@ export function CampaignGuideDock() {
           (json.error === "not_configured"
             ? "OpenAI isn’t configured on the server. Add OPENAI_API_KEY to .env and restart."
             : json.error === "search_failed"
-              ? "Couldn’t load or embed site content. Confirm DATABASE_URL, migrations, and OPENAI_API_KEY."
+              ? "Couldn’t reach the site’s knowledge base—try browsing the menu, or email kelly@kellygrappe.com with what you needed."
               : json.error === "openai_chat_failed"
-                ? "The AI model request failed (quota, model name, or key)."
+                ? "The AI model request failed (quota, model name, or key). If it keeps happening, email kelly@kellygrappe.com."
                 : json.error === "assistant_failed"
-                  ? "Something went wrong in the guide service. Check server logs."
-                  : json.error || "The guide couldn’t answer that right now.");
+                  ? "Something went wrong on our end. Try again—or email kelly@kellygrappe.com if it persists."
+                  : json.error || "The guide couldn’t answer that right now. Email kelly@kellygrappe.com if you need a human.");
         setError(assistantText);
         setMessages((m) => [...m, { role: "assistant", text: assistantText }]);
         return;
@@ -138,21 +187,23 @@ export function CampaignGuideDock() {
 
   const dock = (
     <>
-      {dockVisible ? (
       <button
         type="button"
         onClick={() => setOpen(true)}
         className={cn(
-          "fixed z-[45] flex items-center gap-2 rounded-full border border-civic-mist/35 bg-civic-midnight/95 px-3.5 py-2.5 font-body text-sm font-semibold tracking-wide text-civic-mist shadow-lg backdrop-blur-sm transition hover:border-civic-gold/50 hover:bg-civic-deep",
-          "bottom-[4.5rem] right-4 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8",
+          "fixed z-[45] flex max-w-[calc(100vw-1.5rem)] items-center gap-1.5 rounded-full border border-deep-soil/12 bg-cream-canvas/95 px-3 py-2 font-body text-xs font-semibold text-deep-soil shadow-md backdrop-blur-md transition",
+          "hover:border-red-dirt/35 hover:bg-white hover:shadow-lg",
+          "bottom-[max(1rem,env(safe-area-inset-bottom,0px))] right-[max(1rem,env(safe-area-inset-right,0px))] sm:bottom-6 sm:right-6",
         )}
         aria-expanded={open}
         aria-controls={panelId}
+        aria-label="Ask Kelly — open the site guide chat"
       >
-        <span className="hidden sm:inline">Ask the guide</span>
-        <span className="sm:hidden">Guide</span>
+        <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-dirt/15 text-[11px] font-bold text-red-dirt" aria-hidden>
+          KG
+        </span>
+        <span className="pr-0.5 tracking-wide">Ask Kelly</span>
       </button>
-      ) : null}
 
       {open
         ? createPortal(
@@ -165,14 +216,35 @@ export function CampaignGuideDock() {
                 id={panelId}
                 role="dialog"
                 aria-modal="true"
-                aria-label="Campaign guide"
+                aria-label="Ask Kelly — campaign guide"
                 className="flex h-[min(100dvh,640px)] w-full max-w-lg flex-col rounded-t-2xl border border-civic-ink/15 bg-cream-canvas shadow-2xl sm:h-[min(92vh,720px)] sm:rounded-2xl"
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="flex items-center justify-between border-b border-deep-soil/10 px-4 py-3">
                   <div>
-                    <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-red-dirt">Campaign guide</p>
-                    <p className="font-body text-xs text-deep-soil/60">RAG + OpenAI · grows with your content</p>
+                    <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-red-dirt">Ask Kelly</p>
+                    <p className="font-body text-xs text-deep-soil/60">
+                      Guide v{ASSISTANT_API_VERSION} · streaming · citations · {responseStyle} answers · 3/min ·
+                      kelly@kellygrappe.com if I’m stumped
+                    </p>
+                    <div className="mt-1.5 flex flex-wrap gap-1.5">
+                      {(["concise", "normal", "detailed"] as const).map((s) => (
+                        <button
+                          key={s}
+                          type="button"
+                          disabled={loading}
+                          onClick={() => setResponseStyle(s)}
+                          className={cn(
+                            "rounded-full px-2.5 py-0.5 font-body text-[10px] font-semibold uppercase tracking-wide",
+                            responseStyle === s
+                              ? "bg-red-dirt/20 text-red-dirt ring-1 ring-red-dirt/35"
+                              : "bg-deep-soil/5 text-deep-soil/65 hover:bg-deep-soil/10",
+                          )}
+                        >
+                          {s}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                   <button
                     type="button"
@@ -183,10 +255,10 @@ export function CampaignGuideDock() {
                   </button>
                 </div>
 
-                {activeBeatId && beatById(activeBeatId) ? (
+                {journeyBeatOnPage && beatById(journeyBeatOnPage) ? (
                   <p className="border-b border-deep-soil/8 bg-civic-fog/50 px-4 py-2 font-body text-xs text-civic-slate">
-                    <span className="font-semibold text-civic-ink">You’re in:</span> {beatById(activeBeatId)?.navLabel} —{" "}
-                    {beatById(activeBeatId)?.description}
+                    <span className="font-semibold text-civic-ink">You’re in:</span> {beatById(journeyBeatOnPage)?.navLabel} —{" "}
+                    {beatById(journeyBeatOnPage)?.description}
                   </p>
                 ) : null}
 
@@ -203,7 +275,9 @@ export function CampaignGuideDock() {
                     </div>
                   ))}
                   {loading ? (
-                    <p className="font-body text-sm italic text-deep-soil/50">Thinking with site context…</p>
+                    <p className="font-body text-sm italic text-deep-soil/50">
+                      Digging through what the campaign taught me…
+                    </p>
                   ) : null}
                   {error ? <p className="text-sm text-red-700">{error}</p> : null}
                   {lastSuggestions.length > 0 ? (
@@ -234,7 +308,7 @@ export function CampaignGuideDock() {
                       }
                     }}
                     rows={2}
-                    placeholder="Ask about the office, ballot access, or how to help…"
+                    placeholder="Ask anything on this site—or something specific about Kelly…"
                     className="w-full resize-none rounded-lg border border-deep-soil/15 bg-white px-3 py-2 font-body text-sm text-deep-soil outline-none focus:ring-2 focus:ring-red-dirt/30"
                   />
                   <button

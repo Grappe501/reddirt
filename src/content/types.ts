@@ -78,6 +78,12 @@ export type EventItem = {
     missingCounty?: boolean;
     missingCoordinates?: boolean;
   };
+  /**
+   * When true, this event is listed on `/listening-sessions` under “Events planned,” alongside every
+   * event whose `type` is `Listening Session`. Set on partner or special-format stops that match the
+   * election & ballot-access tour but use another `type` (e.g. Town Hall).
+   */
+  listeningSessionSeries?: boolean;
 };
 
 export type ResourceItem = {

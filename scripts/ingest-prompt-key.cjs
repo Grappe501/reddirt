@@ -9,6 +9,8 @@
  *   node scripts/ingest-prompt-key.cjs --no-save  # never write .env.local
  *
  * If OPENAI_API_KEY is already set, you can pass --use-env to skip the prompt.
+ *
+ * To only save and verify the key (no ingest), use: npm run set:openai
  */
 const fs = require("fs");
 const path = require("path");

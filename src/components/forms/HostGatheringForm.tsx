@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,6 +11,7 @@ import { Input } from "@/components/forms/Input";
 import { Textarea } from "@/components/forms/Textarea";
 import { Button } from "@/components/ui/Button";
 import { FormErrorSummary, FormSuccessPanel } from "@/components/forms/FormMessages";
+import { HostPlanningCalendarHelper } from "@/components/planning/HostPlanningCalendarHelper";
 import { trackFormComplete, trackFormStart } from "@/lib/analytics/track";
 
 const gatheringLabels: Record<(typeof gatheringTypeValues)[number], string> = {
@@ -105,9 +107,9 @@ export function HostGatheringForm({ id, initialGatheringType = "living_room" }: 
         </p>
         <p>
           Want backup while you wait? Skim{" "}
-          <a className="font-semibold text-red-dirt underline" href="/resources#toolkit">
+          <Link className="font-semibold text-red-dirt underline" href="/resources#toolkit">
             the toolkit
-          </a>{" "}
+          </Link>{" "}
           for facilitation prompts you can reuse tonight.
         </p>
         <Button type="button" variant="outline" onClick={() => setShowSuccess(false)}>
@@ -192,6 +194,7 @@ export function HostGatheringForm({ id, initialGatheringType = "living_room" }: 
           ) : null}
         </FormField>
       ) : null}
+      <HostPlanningCalendarHelper countyFieldId="hg-county" />
       <FormField>
         <FormLabel htmlFor="hg-timing">Preferred timing (optional)</FormLabel>
         <Input id="hg-timing" {...form.register("preferredTiming")} placeholder="e.g. weeknight in May" />

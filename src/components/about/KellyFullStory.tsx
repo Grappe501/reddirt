@@ -1,6 +1,14 @@
 import type { ReactNode } from "react";
+import { Fragment } from "react";
 import Link from "next/link";
 import { ReadMoreLink } from "@/components/about/ReadMoreLink";
+import { EditorialCampaignPhoto } from "@/components/about/EditorialCampaignPhoto";
+import type { CampaignTrailPhoto } from "@/content/media/campaign-trail-photos";
+import { campaignTrailPhotos } from "@/content/media/campaign-trail-photos";
+import {
+  forevermostFarmTrailPhotos,
+  initiativesPetitionTrailPhotos,
+} from "@/content/media/campaign-trail-photo-use";
 import { cn } from "@/lib/utils";
 
 const H_STORY = "/about/story";
@@ -329,19 +337,62 @@ const sections: { id: string; moreHref: string; eyebrow: string; title: string; 
   },
 ];
 
-/**
- * One-page “Meet Kelly” long story (incl. LEARNS & petitions). One “READ MORE” (copper) at the end of each section, not
- * on the intro paragraph.
- */
-export function KellyFullStory() {
+export type KellyFullStoryProps = {
+  /** Two breakouts: after “The story we share” and after Stand Up (farm stills stay in the Forevermost block). */
+  trailPeoplePhotos?: CampaignTrailPhoto[];
+};
+
+/** One-page Meet Kelly narrative, trail breakouts, Forevermost and initiatives photo blocks. */
+export function KellyFullStory({ trailPeoplePhotos = [] }: KellyFullStoryProps) {
+  const forevermostPhotos = forevermostFarmTrailPhotos(campaignTrailPhotos);
+  const initiativesPhotos = initiativesPetitionTrailPhotos(campaignTrailPhotos);
+  const [afterStoryPhoto, afterStandupPhoto] = trailPeoplePhotos;
+
   return (
     <div id="kelly-full-story" className="scroll-mt-20 space-y-16 md:space-y-20">
       {sections.map((s) => (
-        <section key={s.id} id={s.id} className="scroll-mt-20">
-          <p className="font-body text-xs font-bold uppercase tracking-[0.2em] text-red-dirt/90">{s.eyebrow}</p>
-          <h2 className={h2}>{s.title}</h2>
-          <div className="mt-4 md:mt-5">{s.children}</div>
-        </section>
+        <Fragment key={s.id}>
+          <section id={s.id} className="scroll-mt-20">
+            <p className="font-body text-xs font-bold uppercase tracking-[0.2em] text-red-dirt/90">{s.eyebrow}</p>
+            <h2 className={h2}>{s.title}</h2>
+            <div className="mt-4 md:mt-5">
+              {s.children}
+              {s.id === "forevermost" && forevermostPhotos.length > 0 ? (
+                <div
+                  className="mt-10 w-full border-t border-deep-soil/10 pt-10"
+                  aria-label="Forevermost Farms — field photography"
+                >
+                  <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-deep-soil/50">
+                    At Forevermost
+                  </p>
+                  <div className="mt-6 flex w-full flex-col gap-8">
+                    {forevermostPhotos.map((p) => (
+                      <EditorialCampaignPhoto key={p.id} photo={p} variant="fluid" />
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+              {s.id === "initiatives-petitions" && initiativesPhotos.length > 0 ? (
+                <div
+                  className="mt-10 w-full border-t border-deep-soil/10 pt-10"
+                  aria-label="Ballot and education organizing"
+                >
+                  {initiativesPhotos.map((p) => (
+                    <EditorialCampaignPhoto key={p.id} photo={p} variant="fluid" kicker="On the ground" />
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          </section>
+
+          {s.id === "story" && afterStoryPhoto ? (
+            <EditorialCampaignPhoto variant="breakout" photo={afterStoryPhoto} kicker="With Arkansans" />
+          ) : null}
+
+          {s.id === "standup" && afterStandupPhoto ? (
+            <EditorialCampaignPhoto variant="breakout" photo={afterStandupPhoto} kicker="Civic Arkansas" />
+          ) : null}
+        </Fragment>
       ))}
     </div>
   );

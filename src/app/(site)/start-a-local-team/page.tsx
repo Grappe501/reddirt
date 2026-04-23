@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { LocalTeamForm } from "@/components/forms/LocalTeamForm";
 import { FAQAccordion } from "@/components/organizing/FAQAccordion";
 import { ProcessSteps } from "@/components/blocks/ProcessSteps";
+import { representLocalEventVolunteerHref } from "@/config/navigation";
 
 export const metadata: Metadata = {
   title: "Start a local team",
@@ -48,6 +49,9 @@ export default function StartALocalTeamPage() {
         </Button>
         <Button href="/resources#toolkit" variant="outline">
           Read starter guides
+        </Button>
+        <Button href={representLocalEventVolunteerHref} variant="outline">
+          Represent at local events
         </Button>
       </PageHero>
 
@@ -189,6 +193,13 @@ export default function StartALocalTeamPage() {
         </Button>
         <Button href="/events" variant="outline" className="border-cream-canvas/40 text-cream-canvas hover:bg-cream-canvas/10">
           Trainings calendar
+        </Button>
+        <Button
+          href={representLocalEventVolunteerHref}
+          variant="outline"
+          className="border-cream-canvas/40 text-cream-canvas hover:bg-cream-canvas/10"
+        >
+          Represent locally
         </Button>
       </CTASection>
     </>

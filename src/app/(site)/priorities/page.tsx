@@ -10,8 +10,8 @@ import { Button } from "@/components/ui/Button";
 import { pageMeta } from "@/lib/seo/metadata";
 import { getPageBlockPayload, type HeroBlockPayload } from "@/lib/content/page-blocks";
 import { getHostOrVisitRequestHref } from "@/lib/county/official-links";
-import { TrailPhotosShowcase } from "@/components/campaign-trail/TrailPhotosShowcase";
-import { campaignTrailPhotos } from "@/content/media/campaign-trail-photos";
+import { EditorialCampaignPhoto } from "@/components/about/EditorialCampaignPhoto";
+import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
 
 export const metadata: Metadata = pageMeta({
   title: "Priorities for the office",
@@ -42,6 +42,7 @@ const pillars = [
 
 export default async function PrioritiesPage() {
   const hero = await getPageBlockPayload<HeroBlockPayload>("priorities", "hero");
+  const presence = trailPhotosForSlot("priorities")[0];
 
   return (
     <>
@@ -62,16 +63,14 @@ export default async function PrioritiesPage() {
         </Button>
       </PageHero>
 
-      {campaignTrailPhotos.slice(9, 12).length > 0 ? (
+      {presence ? (
         <FullBleedSection variant="subtle" className="!pt-[calc(var(--section-padding-y)*0.65)] !pb-0 lg:!pt-[calc(var(--section-padding-y-lg)*0.65)] lg:!pb-0">
-          <ContentContainer wide>
-            <TrailPhotosShowcase
-              variant="inline"
-              className="!border-t-0 !py-6 md:!py-10"
-              photos={campaignTrailPhotos.slice(9, 12)}
-              eyebrow="Presence"
-              title="Showing up is part of the job"
-              intro="The Secretary of State’s office touches every county—these moments are what showing up looks like on the trail."
+          <ContentContainer wide className="py-6 md:py-10">
+            <EditorialCampaignPhoto
+              variant="breakout"
+              photo={presence}
+              kicker="Presence"
+              caption="They say politics is getting down in the mud—in Arkansas, sometimes that means a literal meet-and-greet with the pigs."
             />
           </ContentContainer>
         </FullBleedSection>

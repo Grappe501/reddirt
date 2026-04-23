@@ -13,7 +13,7 @@ export type KellyMatchResult = {
 function classifyFromPath(pathname: string): Pick<KellyMatchResult, "mentionType" | "isOpinion" | "isEditorial"> {
   const p = pathname.toLowerCase();
   let isOpinion = /\/opinion\b|\/voices\b|\/columns?\b/.test(p);
-  let isEditorial = /\/editorial\b/.test(p);
+  const isEditorial = /\/editorial\b/.test(p);
   let mentionType: ExternalMediaMentionType = ExternalMediaMentionType.NEWS_ARTICLE;
   if (/\/letter|letters-to-the-editor|letter-to-the-editor/.test(p)) {
     mentionType = ExternalMediaMentionType.LETTER_TO_EDITOR;

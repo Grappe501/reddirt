@@ -1,7 +1,43 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { PROOF_SECTION } from "@/content/home/homepagePremium";
+import { PROOF_SECTION_PHOTO_IDS } from "@/content/home/proof-section-visuals";
 import { FadeInWhenVisible } from "@/components/home/FadeInWhenVisible";
+import { campaignTrailPhotos } from "@/content/media/campaign-trail-photos";
+import { trailPhotoWittyCaption } from "@/content/media/campaign-trail-wit";
+
+function ProofBlockVisual({ blockTitle }: { blockTitle: (typeof PROOF_SECTION.blocks)[number]["title"] }) {
+  const id = PROOF_SECTION_PHOTO_IDS[blockTitle];
+  const photo = id ? campaignTrailPhotos.find((p) => p.id === id) : undefined;
+  if (!photo) {
+    return (
+      <div
+        className="relative h-[160px] w-full shrink-0 bg-gradient-to-br from-civic-blue/50 to-civic-midnight md:h-[180px]"
+        aria-hidden
+      />
+    );
+  }
+  const caption = trailPhotoWittyCaption(photo);
+  const unoptimized = photo.src.includes("/api/owned-campaign-media/");
+  return (
+    <div className="relative h-[160px] w-full shrink-0 overflow-hidden md:h-[180px]">
+      <Image
+        src={photo.src}
+        alt={photo.alt}
+        fill
+        className="object-cover object-center"
+        sizes="(max-width: 1024px) 100vw, 50vw"
+        unoptimized={unoptimized}
+      />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-civic-midnight/95 via-civic-midnight/75 to-transparent px-3 pb-2.5 pt-10">
+        <p className="line-clamp-2 text-left font-body text-[10px] leading-snug text-civic-mist/95 md:text-[11px]">
+          {caption}
+        </p>
+      </div>
+    </div>
+  );
+}
 
 export function HomeProofSection() {
   return (
@@ -23,13 +59,7 @@ export function HomeProofSection() {
           {PROOF_SECTION.blocks.map((b, i) => (
             <FadeInWhenVisible key={b.title} delay={0.08 * i}>
               <div className="flex h-full flex-col overflow-hidden rounded-card border border-civic-gold/15 bg-civic-deep/80 shadow-xl shadow-black/20">
-                {/* MEDIA: dashboard screenshot, workflow diagram, field photo, or rally still */}
-                <div className="relative flex min-h-[160px] items-center justify-center bg-gradient-to-br from-civic-blue/50 to-civic-midnight px-4 py-10 md:min-h-[180px]">
-                  <div className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a227' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }} />
-                  <span className="relative font-body text-xs font-semibold uppercase tracking-[0.2em] text-civic-gold/80">
-                    Visual asset · CMS
-                  </span>
-                </div>
+                <ProofBlockVisual blockTitle={b.title} />
                 <div className="flex flex-1 flex-col p-6 md:p-8">
                   <h3 className="font-heading text-xl font-bold text-civic-mist">{b.title}</h3>
                   <p className="mt-3 flex-1 font-body text-base leading-relaxed text-civic-mist/75">{b.body}</p>

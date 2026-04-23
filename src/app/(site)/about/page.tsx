@@ -8,10 +8,11 @@ import { Button } from "@/components/ui/Button";
 import { CTASection } from "@/components/blocks/CTASection";
 import { QuoteBand } from "@/components/blocks/QuoteBand";
 import { pageMeta } from "@/lib/seo/metadata";
+import { getFeaturedYoutubeForHub } from "@/lib/content/content-hub-queries";
+import { getMergedHomepageConfig } from "@/lib/content/homepage-merge";
 import { KellyFullStory } from "@/components/about/KellyFullStory";
 import { TalkBusinessKellySection } from "@/components/about/TalkBusinessKellySection";
-import { TrailPhotosShowcase } from "@/components/campaign-trail/TrailPhotosShowcase";
-import { campaignTrailPhotos } from "@/content/media/campaign-trail-photos";
+import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
 
 export const metadata: Metadata = pageMeta({
   title: "Meet Kelly — full story",
@@ -21,13 +22,17 @@ export const metadata: Metadata = pageMeta({
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const homepage = await getMergedHomepageConfig();
+  const featuredYoutube = await getFeaturedYoutubeForHub(homepage.featuredHomepageVideoInboundId);
+  const storyTrailPhotos = trailPhotosForSlot("aboutStory");
+
   return (
     <>
       <PageHero
         eyebrow="Meet Kelly"
         title="A Secretary of State who serves the people"
-        subtitle="Before we talk about systems and statutes, you deserve the whole picture—her business background, the land and civic work, and why she is asking for more than a vote. Read the story. Then we’ll get to work together."
+        subtitle="Before we talk about systems and statutes, you deserve the whole picture—her business background, the land and civic work, and why she is asking for more than a vote."
       >
         <Button href="/get-involved" variant="primary">
           Get involved
@@ -51,23 +56,14 @@ export default function AboutPage() {
         padY
         className="!pt-0 md:!pt-1 lg:!pt-2"
       >
-        <ContentContainer className="max-w-3xl space-y-12">
-          <TalkBusinessKellySection />
-        </ContentContainer>
-        {campaignTrailPhotos.slice(12, 18).length > 0 ? (
-          <ContentContainer wide className="mt-12 md:mt-16">
-            <TrailPhotosShowcase
-              variant="inline"
-              className="!border-t-0 !py-0"
-              photos={campaignTrailPhotos.slice(12, 18)}
-              eyebrow="With Arkansans"
-              title="The people you meet on the trail"
-              intro="Neighbors, hosts, and volunteers—the statewide campaign is built from these rooms."
-            />
-          </ContentContainer>
-        ) : null}
-        <ContentContainer className="max-w-3xl space-y-12">
-          <KellyFullStory />
+        <ContentContainer wide>
+          <div className="mx-auto max-w-3xl">
+            <TalkBusinessKellySection fallbackYoutubeVideoId={featuredYoutube?.videoId ?? null} />
+          </div>
+
+          <div className="mx-auto mt-10 max-w-3xl md:mt-14">
+            <KellyFullStory trailPeoplePhotos={storyTrailPhotos} />
+          </div>
         </ContentContainer>
       </FullBleedSection>
 
@@ -130,7 +126,7 @@ export default function AboutPage() {
       <CTASection
         eyebrow="Next step"
         title="You know the person. Now bring someone into the work."
-        description="When you are ready, we will meet you with concrete ways to help—this county, this week, this conversation. Paid-for-by and compliance details stay available for reporters and the secretary of state’s filing rules; ask if you need them."
+        description="When you’re ready, we’ll connect you with concrete ways to help—starting in your county, on your timeline."
         variant="soil"
       >
         <Button href="/get-involved" variant="primary" className="bg-cream-canvas text-deep-soil hover:bg-cream-canvas/90">

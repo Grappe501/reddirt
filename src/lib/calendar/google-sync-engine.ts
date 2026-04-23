@@ -22,9 +22,28 @@ import {
 } from "@/lib/integrations/google/calendar";
 import { prisma } from "@/lib/db";
 import type { CalendarSource } from "@prisma/client";
+import { isGoogleCalendarAutoPublishPublicFacingIngestEnabled } from "@/lib/calendar/env";
 
 function newSlug() {
   return `gcal-${randomBytes(6).toString("hex")}`;
+}
+
+/** Google → website without a manual publish step (opt-in via env + public-facing calendar source). */
+function sourceEligibleForAutoWebsitePublish(source: CalendarSource): boolean {
+  return (
+    source.isPublicFacing &&
+    source.isActive &&
+    source.syncEnabled &&
+    isGoogleCalendarAutoPublishPublicFacingIngestEnabled()
+  );
+}
+
+const PUBLIC_SUMMARY_MAX = 2000;
+
+function publicSummaryFromGoogleDescription(g: calendar_v3.Schema$Event): string | null {
+  const d = (g.description ?? "").trim();
+  if (!d) return null;
+  return d.length > PUBLIC_SUMMARY_MAX ? d.slice(0, PUBLIC_SUMMARY_MAX) : d;
 }
 
 function toDateTime(ga: calendar_v3.Schema$Event): { startAt: Date; endAt: Date; timezone: string } | null {
@@ -237,7 +256,8 @@ export async function processInboundGoogleEvent(
   const existing = await findLocalByGoogleId(source.id, googleEventId);
   if (g.status === "cancelled") {
     if (!existing) return;
-    if (existing.eventWorkflowState === EventWorkflowState.PUBLISHED) {
+    const autoPub = sourceEligibleForAutoWebsitePublish(source);
+    if (existing.eventWorkflowState === EventWorkflowState.PUBLISHED && !autoPub) {
       await prisma.campaignEvent.update({
         where: { id: existing.id },
         data: { syncReviewNeeded: true, googleSyncState: GoogleEventSyncState.CONFLICT, googleSyncError: "Cancelled in Google — confirm" },
@@ -248,6 +268,7 @@ export async function processInboundGoogleEvent(
         data: {
           status: CampaignEventStatus.CANCELLED,
           eventWorkflowState: EventWorkflowState.CANCELED,
+          isPublicOnWebsite: false,
           googleSyncState: GoogleEventSyncState.SYNCED,
           lastGoogleSyncAt: new Date(),
         },
@@ -271,6 +292,9 @@ export async function processInboundGoogleEvent(
   if (existing) {
     const tChanged = timesChanged(existing);
     const title = g.summary || existing.title;
+    const autoPub = sourceEligibleForAutoWebsitePublish(source);
+    const loc = g.location?.trim();
+    const summaryFromDesc = publicSummaryFromGoogleDescription(g);
     await prisma.campaignEvent.update({
       where: { id: existing.id },
       data: {
@@ -278,11 +302,22 @@ export async function processInboundGoogleEvent(
         startAt: when.startAt,
         endAt: when.endAt,
         timezone: when.timezone,
+        ...(loc ? { locationName: loc } : {}),
+        ...(g.description !== undefined && g.description !== null
+          ? {
+              description: g.description,
+              ...(autoPub || existing.isPublicOnWebsite
+                ? { publicSummary: summaryFromDesc ?? existing.publicSummary }
+                : {}),
+            }
+          : {}),
         googleEtag: g.etag ?? existing.googleEtag,
         lastGoogleSyncAt: new Date(),
         googleSyncState: GoogleEventSyncState.SYNCED,
         syncReviewNeeded:
-          tChanged && (existing.isPublicOnWebsite || existing.eventWorkflowState === EventWorkflowState.PUBLISHED)
+          !autoPub &&
+          tChanged &&
+          (existing.isPublicOnWebsite || existing.eventWorkflowState === EventWorkflowState.PUBLISHED)
             ? true
             : existing.syncReviewNeeded,
         inboundTimeChangedAt: tChanged ? new Date() : existing.inboundTimeChangedAt,
@@ -306,24 +341,31 @@ export async function processInboundGoogleEvent(
   }
 
   // New Google-only event
+  const autoPub = sourceEligibleForAutoWebsitePublish(source);
+  const loc = g.location?.trim();
+  const summaryFromDesc = publicSummaryFromGoogleDescription(g);
   const created = await prisma.campaignEvent.create({
     data: {
       slug: newSlug(),
       title: g.summary || "Imported event",
       eventType: CampaignEventType.OTHER,
       status: CampaignEventStatus.SCHEDULED,
-      visibility: CampaignEventVisibility.INTERNAL,
+      visibility: autoPub ? CampaignEventVisibility.PUBLIC_STAFF : CampaignEventVisibility.INTERNAL,
       startAt: when.startAt,
       endAt: when.endAt,
       timezone: when.timezone,
-      eventWorkflowState: EventWorkflowState.DRAFT,
+      locationName: loc || null,
+      description: g.description ?? null,
+      publicSummary: autoPub ? summaryFromDesc ?? g.summary ?? null : null,
+      eventWorkflowState: autoPub ? EventWorkflowState.PUBLISHED : EventWorkflowState.DRAFT,
+      isPublicOnWebsite: autoPub,
       calendarSourceId: source.id,
       googleEventId,
       googleEtag: g.etag ?? null,
       lastGoogleSyncAt: new Date(),
       googleSyncState: GoogleEventSyncState.SYNCED,
       notes: g.description || null,
-      syncReviewNeeded: true,
+      syncReviewNeeded: !autoPub,
     },
   });
   await prisma.eventSyncLog.create({

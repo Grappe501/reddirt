@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -80,13 +81,13 @@ export function DirectDemocracyCommitmentForm({ id }: { id?: string }) {
         </p>
         <p>
           Until then, read how the{" "}
-          <a className="font-semibold text-red-dirt underline" href="/direct-democracy#initiative-pipeline">
+          <Link className="font-semibold text-red-dirt underline" href="/direct-democracy#initiative-pipeline">
             initiative pipeline
-          </a>{" "}
+          </Link>{" "}
           works and share the{" "}
-          <a className="font-semibold text-red-dirt underline" href="/resources">
+          <Link className="font-semibold text-red-dirt underline" href="/resources">
             civic education
-          </a>{" "}
+          </Link>{" "}
           resources with a neighbor.
         </p>
         <Button type="button" variant="outline" onClick={() => setShowSuccess(false)}>

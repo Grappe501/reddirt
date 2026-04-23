@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { AskKellyLayout } from "@/components/campaign-guide/AskKellyLayout";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { PublicLayoutMain } from "@/components/layout/PublicLayoutMain";
@@ -30,6 +31,7 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
         <PublicLayoutMain>{children}</PublicLayoutMain>
       </main>
       <SiteFooter />
+      <AskKellyLayout />
     </>
   );
 }

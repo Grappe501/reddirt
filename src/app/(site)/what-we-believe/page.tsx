@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { EditorialCampaignPhoto } from "@/components/about/EditorialCampaignPhoto";
 import { PageHero } from "@/components/blocks/PageHero";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
@@ -9,6 +10,8 @@ import { SplitFeatureSection } from "@/components/blocks/SplitFeatureSection";
 import { CTASection } from "@/components/blocks/CTASection";
 import { Button } from "@/components/ui/Button";
 import { ContentImage } from "@/components/media/ContentImage";
+import { WHAT_WE_BELIEVE_CROWD_PHOTO_ID } from "@/content/media/campaign-trail-photo-use";
+import { campaignTrailPhotos } from "@/content/media/campaign-trail-photos";
 import { media } from "@/content/media/registry";
 import { pageMeta } from "@/lib/seo/metadata";
 import { getPageBlockPayload, type HeroBlockPayload } from "@/lib/content/page-blocks";
@@ -42,6 +45,7 @@ const commitments = [
 
 export default async function WhatWeBelievePage() {
   const hero = await getPageBlockPayload<HeroBlockPayload>("what-we-believe", "hero");
+  const crowdPhoto = campaignTrailPhotos.find((p) => p.id === WHAT_WE_BELIEVE_CROWD_PHOTO_ID);
 
   return (
     <>
@@ -110,6 +114,22 @@ export default async function WhatWeBelievePage() {
           </ResponsiveGrid>
         </ContentContainer>
       </FullBleedSection>
+
+      {crowdPhoto ? (
+        <section
+          className="border-t border-deep-soil/10 bg-[var(--color-surface-elevated)] py-10 md:py-14"
+          aria-label="On the trail with Arkansans"
+        >
+          <ContentContainer wide>
+            <EditorialCampaignPhoto
+              photo={crowdPhoto}
+              variant="fluid"
+              kicker="With Arkansans"
+              caption="Capitol lawn, neighbor-to-neighbor organizing, and the crowd that holds democracy accountable."
+            />
+          </ContentContainer>
+        </section>
+      ) : null}
 
       <QuoteBand
         quote="People over politics. Always."

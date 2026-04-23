@@ -23,12 +23,14 @@
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
     "ingest": "tsx scripts/ingest-docs.ts",
+    "sync:team-positions": "tsx scripts/sync-campaign-team-positions.ts",
     "check:openai": "tsx scripts/check-openai-key.ts",
+    "set:openai": "node scripts/set-openai-key.cjs",
     "photos:sync": "tsx scripts/sync-website-photos.ts",
     "ingest:interactive": "node scripts/ingest-prompt-key.cjs",
     "ingest:watch": "tsx scripts/campaign-media-ingest-watcher.ts",
     "voter-file:import": "tsx scripts/voter-file-import.ts",
-    "ingest:campaign-info-folder": "tsx scripts/ingest-campaign-folder.ts --dir \"H:/SOSWebsite/campaign information for ingestion\" --community-training --include-zips",
+    "ingest:campaign-info-folder": "tsx scripts/ingest-campaign-folder.ts --dir \"H:/SOSWebsite/campaign information for ingestion\" --community-training --include-zips --public",
     "ingest:briefings": "tsx scripts/ingest-briefing-zip.ts",
     "ingest:folder": "tsx scripts/ingest-campaign-folder.ts",
     "ingest:device": "tsx scripts/ingest-campaign-device.ts",
@@ -40,7 +42,11 @@
     "ingest:external-media": "tsx scripts/ingest-external-media.ts",
     "audit:campaign-ingestion": "tsx scripts/audit-campaign-ingestion.ts",
     "reconcile:campaign-folder": "tsx scripts/reconcile-campaign-folder-vs-db.ts",
-    "repair:campaign-ingestion": "tsx scripts/repair-campaign-ingestion.ts"
+    "repair:campaign-ingestion": "tsx scripts/repair-campaign-ingestion.ts",
+    "owned-media:privacy-scan": "tsx scripts/ai-privatize-sensitive-owned-media.ts",
+    "owned-media:privacy-scan:apply": "tsx scripts/ai-privatize-sensitive-owned-media.ts --apply",
+    "photos:ai-curate-kelly-groups": "tsx scripts/ai-curate-kelly-groups-images.ts",
+    "photos:ai-curate-kelly-groups:apply": "tsx scripts/ai-curate-kelly-groups-images.ts --apply"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

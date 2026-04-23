@@ -24,6 +24,11 @@ import { kellyFriendInviteScripts } from "../../content/resources/kelly-friend-i
 import { publishedMediaEarlier, publishedMediaSince2025_11 } from "../../content/editorial/external-media";
 import { listMovementRegionInfo } from "../../content/arkansas-movement-regions";
 import { campaignTrailPhotos } from "../../content/media/campaign-trail-photos";
+import { trailPhotoWittyCaption } from "../../content/media/campaign-trail-wit";
+import { loadForevermostFarmsSearchChunks } from "../../content/background/forevermost-farms";
+import { loadStandUpArkansasSearchChunks } from "../../content/background/stand-up-arkansas";
+import { loadStrategicMessagingTrustReformChunks } from "../../content/background/strategic-messaging-trust-reform";
+import { loadYouthEngagementStrategyChunks } from "../../content/background/youth-engagement-strategy";
 
 const MAX = 12_000;
 
@@ -235,6 +240,7 @@ export function loadFullSiteSearchChunks(): DocChunk[] {
   for (const ph of campaignTrailPhotos) {
     const text = [
       ph.alt,
+      trailPhotoWittyCaption(ph),
       ph.caption,
       "Kelly for Arkansas Secretary of State — campaign trail photography from the field.",
       `Public image path: ${ph.src}`,
@@ -249,5 +255,11 @@ export function loadFullSiteSearchChunks(): DocChunk[] {
     });
   }
 
-  return out.filter((c) => c.content.length >= 40);
+  return [
+    ...out,
+    ...loadForevermostFarmsSearchChunks(),
+    ...loadStandUpArkansasSearchChunks(),
+    ...loadStrategicMessagingTrustReformChunks(),
+    ...loadYouthEngagementStrategyChunks(),
+  ].filter((c) => c.content.length >= 40);
 }

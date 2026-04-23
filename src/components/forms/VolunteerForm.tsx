@@ -14,7 +14,17 @@ import { Button } from "@/components/ui/Button";
 import { FormErrorSummary, FormSuccessPanel } from "@/components/forms/FormMessages";
 import { trackFormComplete, trackFormStart } from "@/lib/analytics/track";
 
-export function VolunteerForm({ id, prefillResource }: { id?: string; prefillResource?: string }) {
+export type VolunteerPrefillLane = "event_representation";
+
+export function VolunteerForm({
+  id,
+  prefillResource,
+  prefillLane,
+}: {
+  id?: string;
+  prefillResource?: string;
+  prefillLane?: VolunteerPrefillLane;
+}) {
   const [serverError, setServerError] = useState<string | null>(null);
   const [showSuccess, setShowSuccess] = useState(false);
   const [started, setStarted] = useState(false);
@@ -44,6 +54,15 @@ export function VolunteerForm({ id, prefillResource }: { id?: string; prefillRes
       form.setValue("interests", [...current, token], { shouldDirty: true });
     }
   }, [prefillResource, form]);
+
+  useEffect(() => {
+    if (prefillLane !== "event_representation") return;
+    const token = "lane:event_representation";
+    const current = form.getValues("interests");
+    if (!current.includes(token)) {
+      form.setValue("interests", [...current, token], { shouldDirty: true });
+    }
+  }, [prefillLane, form]);
 
   const submit = form.handleSubmit(async (data) => {
     setServerError(null);
@@ -122,6 +141,16 @@ export function VolunteerForm({ id, prefillResource }: { id?: string; prefillRes
       }}
     >
       <input type="text" tabIndex={-1} autoComplete="off" className="sr-only" aria-hidden {...form.register("website")} />
+      {prefillLane === "event_representation" ? (
+        <div className="rounded-md border border-field-green/30 bg-field-green/10 p-4 font-body text-sm text-deep-soil/90">
+          <p>
+            You are signing up to <span className="font-semibold">represent the campaign</span> at local fairs,
+            festivals, party or civic meetings, or other public gatherings. Add anything you already know—dates, venues,
+            organizations—in availability or skills. Coordinators will follow up with tabling basics and approved
+            materials.
+          </p>
+        </div>
+      ) : null}
       {prefillResource ? (
         <div className="rounded-md border border-field-green/30 bg-field-green/10 p-4 font-body text-sm text-deep-soil/90">
           <p>

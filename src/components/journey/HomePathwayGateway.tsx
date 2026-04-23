@@ -36,8 +36,8 @@ const PATHWAYS: PathwayCard[] = [
   {
     key: "field",
     title: "See the field operation",
-    line: "Proof, counties, and Kelly in her own words—not a brochure, a running campaign.",
-    chapterHref: "/from-the-road",
+    line: "The full trail photo gallery, social hubs, and field updates—everything in one chapter so the home page stays focused.",
+    chapterHref: "/from-the-road#trail-photos",
     href: "/from-the-road",
     hrefLabel: "Campaign trail",
   },
@@ -89,7 +89,7 @@ export function HomePathwayGateway() {
                   href={p.href}
                   className="font-body text-sm font-semibold text-civic-slate underline-offset-4 hover:text-civic-blue hover:underline"
                 >
-                  {p.hrefLabel} (full page)
+                  {p.hrefLabel}
                 </a>
               </div>
             </div>

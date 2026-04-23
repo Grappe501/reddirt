@@ -9,6 +9,7 @@ import { CTASection } from "@/components/blocks/CTASection";
 import { Button } from "@/components/ui/Button";
 import { HostGatheringForm } from "@/components/forms/HostGatheringForm";
 import { SupportList } from "@/components/organizing/SupportList";
+import { representLocalEventVolunteerHref } from "@/config/navigation";
 
 export const metadata: Metadata = {
   title: "Host a gathering",
@@ -29,6 +30,9 @@ export default function HostAGatheringPage() {
         </Button>
         <Button href="/events" variant="outline">
           See what’s scheduled
+        </Button>
+        <Button href={representLocalEventVolunteerHref} variant="outline">
+          Represent at a public event
         </Button>
       </PageHero>
 
@@ -184,8 +188,12 @@ export default function HostAGatheringPage() {
               If you’re not ready to host yet, that’s fine. You can still{" "}
               <Link className="font-semibold text-red-dirt underline" href="/events">
                 join an event
-              </Link>{" "}
-              or{" "}
+              </Link>
+              ,{" "}
+              <Link className="font-semibold text-red-dirt underline" href={representLocalEventVolunteerHref}>
+                volunteer to represent the campaign at a fair or civic night
+              </Link>
+              , or{" "}
               <Link className="font-semibold text-red-dirt underline" href="/start-a-local-team">
                 start a team
               </Link>{" "}
@@ -206,6 +214,9 @@ export default function HostAGatheringPage() {
         </Button>
         <Button href="/local-organizing" variant="outline">
           Explore local hubs
+        </Button>
+        <Button href={representLocalEventVolunteerHref} variant="outline">
+          Represent locally
         </Button>
       </CTASection>
     </>

@@ -123,7 +123,7 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
             <ScoreItem label="Registration goal" value={fmt(regGoal)} />
             <ScoreItem
               label={regSinceLabel}
-              value={newSinceBaseline == null ? "Pending sync" : fmt(newSinceBaseline)}
+              value={newSinceBaseline == null ? "—" : fmt(newSinceBaseline)}
             />
             <ScoreItem
               label="Registered voters (last file)"
@@ -386,29 +386,25 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
             <div className={card}>
               <h3 className="font-heading text-lg font-bold text-deep-soil">Photo gallery</h3>
               <p className="mt-1 text-sm text-deep-soil/70">
-                Curated, county-tagged stills from the road and community hosts—same source as the strip above, expanded
-                here with captions when ready.
+                Stills from the trail and community hosts tied to this county.
               </p>
             </div>
             <div className={card}>
               <h3 className="font-heading text-lg font-bold text-deep-soil">Video</h3>
               <p className="mt-1 text-sm text-deep-soil/70">
-                Short clips, testimonial bites, and event reels—pulled from approved owned media and reviewed YouTube
-                when tagged to this county.
+                Short clips, testimonials, and event reels from visits and conversations in this area.
               </p>
             </div>
             <div className={card}>
               <h3 className="font-heading text-lg font-bold text-deep-soil">Key quotes &amp; transcripts</h3>
               <p className="mt-1 text-sm text-deep-soil/70">
-                Reserve space for vetted lines from town halls, press, and roundtables. Hook: quote candidates from the media
-                library when reviewed.
+                Lines and excerpts from town halls, press, and roundtables as they&apos;re added for this county.
               </p>
             </div>
             <div className={card}>
               <h3 className="font-heading text-lg font-bold text-deep-soil">Supporter uploads</h3>
               <p className="mt-1 text-sm text-deep-soil/70">
-                Future lane for neighbor-submitted media with a moderation queue. Layout is ready; intake rules ship with the
-                volunteer portal update.
+                A future home for neighbor-submitted photos and clips, moderated for quality and respect.
               </p>
             </div>
           </div>

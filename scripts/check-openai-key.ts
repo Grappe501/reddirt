@@ -6,14 +6,24 @@ import { fileURLToPath } from "node:url";
 import { loadEnvConfig } from "@next/env";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+
+/**
+ * Next’s loader never applies file values for keys already in `process.env`. Drop the shell
+ * copy before loading so `.env.local` wins; then fall back to the shell value if no file set it
+ * (CI / one-off export).
+ */
+const shellKey = process.env.OPENAI_API_KEY?.trim();
+delete process.env.OPENAI_API_KEY;
 loadEnvConfig(root);
 
-const key = process.env.OPENAI_API_KEY?.trim();
-const model = process.env.OPENAI_EMBEDDING_MODEL?.trim() || "text-embedding-3-small";
-
 async function main() {
+  const key = process.env.OPENAI_API_KEY?.trim() || shellKey;
+  const model = process.env.OPENAI_EMBEDDING_MODEL?.trim() || "text-embedding-3-small";
+
   if (!key) {
-    console.error("No OPENAI_API_KEY found in .env or .env.local (after loadEnvConfig).");
+    console.error(
+      "No OPENAI_API_KEY in .env / .env.local or the shell. Run `npm run set:openai` or export the key.",
+    );
     process.exit(1);
   }
 

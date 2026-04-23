@@ -15,3 +15,13 @@ export function isGoogleCalendarConfigured(): boolean {
   const e = getGoogleCalendarEnv();
   return Boolean(e.clientId && e.clientSecret && e.redirectUri);
 }
+
+/**
+ * When true, events **ingested** from a `CalendarSource` with `isPublicFacing` are published to the
+ * public site immediately (and Google remains the copy source for title/time/location/description).
+ * Requires cron or webhook sync to be running. Off by default so staff can review first.
+ */
+export function isGoogleCalendarAutoPublishPublicFacingIngestEnabled(): boolean {
+  const v = process.env.GOOGLE_CALENDAR_AUTO_PUBLISH_PUBLIC_FACING?.trim().toLowerCase();
+  return v === "1" || v === "true" || v === "yes";
+}

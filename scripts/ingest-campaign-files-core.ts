@@ -61,6 +61,62 @@ function normalizeRelPath(p: string): string {
   return p.split(path.sep).join("/");
 }
 
+/** One SearchChunk per binary so site search / assistant can find photos and videos by title + path. */
+async function indexCampaignBinaryForSearch(input: {
+  assetId: string;
+  preset: CampaignIngestPreset;
+  sourceBundle: string;
+  relativePath: string;
+  title: string;
+  description: string;
+  kind: "image" | "video" | "audio";
+}): Promise<void> {
+  if (!isOpenAIConfigured()) {
+    return;
+  }
+  const presetLabel =
+    input.preset === "comms"
+      ? "Campaign communications media"
+      : input.preset === "community-training"
+        ? "Community support training media"
+        : "Campaign briefing media";
+  const kindLabel = input.kind === "image" ? "Image" : input.kind === "video" ? "Video" : "Audio";
+  const content = [
+    `${presetLabel} (${kindLabel}): ${input.title}`,
+    input.description,
+    `Source bundle: ${input.sourceBundle}`,
+    `Path: ${input.relativePath}`,
+    "Library asset — retrieve via owned campaign media API; embedding uses metadata only.",
+  ].join("\n\n");
+  const basePath = `campaign-media:${input.assetId}`;
+  try {
+    const [embedding] = await embedTexts([`${input.title}\n\n${content}`]);
+    await prisma.searchChunk.upsert({
+      where: { path_chunkIndex: { path: basePath, chunkIndex: 0 } },
+      create: {
+        path: basePath,
+        title: `${kindLabel}: ${input.title}`,
+        chunkIndex: 0,
+        content: `${input.title}\n\n${content}`,
+        embedding: JSON.stringify(embedding),
+      },
+      update: {
+        title: `${kindLabel}: ${input.title}`,
+        content: `${input.title}\n\n${content}`,
+        embedding: JSON.stringify(embedding),
+      },
+    });
+    // eslint-disable-next-line no-console
+    console.log(`[ingest] search: 1 metadata chunk for ${input.kind} ${input.title}`);
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      `[ingest] embedding failed (${input.kind} still saved): ${input.title}`,
+      e instanceof Error ? e.message : e,
+    );
+  }
+}
+
 export function mimeForCampaignFileName(fileName: string): string {
   const ext = path.extname(fileName).toLowerCase();
   if (ext === ".docx") return DOCX;
@@ -212,6 +268,15 @@ export async function ingestCampaignFileBuffer(
         mediaIngestBatchId: batchId || undefined,
       },
     });
+    await indexCampaignBinaryForSearch({
+      assetId: asset.id,
+      preset: options.preset,
+      sourceBundle: options.sourceBundle,
+      relativePath: rel,
+      title: baseTitle,
+      description: desc,
+      kind: "image",
+    });
     return { id: asset.id, title: baseTitle };
   }
 
@@ -245,6 +310,15 @@ export async function ingestCampaignFileBuffer(
         localIngestRelativePath: rel,
         mediaIngestBatchId: batchId || undefined,
       },
+    });
+    await indexCampaignBinaryForSearch({
+      assetId: asset.id,
+      preset: options.preset,
+      sourceBundle: options.sourceBundle,
+      relativePath: rel,
+      title: baseTitle,
+      description: desc,
+      kind: isVid ? "video" : "audio",
     });
     return { id: asset.id, title: baseTitle };
   }

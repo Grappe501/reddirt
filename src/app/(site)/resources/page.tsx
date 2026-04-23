@@ -163,22 +163,6 @@ export default async function ResourcesPage() {
         </ContentContainer>
       </FullBleedSection>
 
-      <FullBleedSection padY aria-labelledby="ingest-heading">
-        <ContentContainer>
-          <SectionHeading
-            id="ingest-heading"
-            align="left"
-            eyebrow="Search + assistant"
-            title="Keep the machine honest"
-            subtitle="When long-form content changes, refresh embeddings so search and the assistant don’t confidently lie."
-          />
-          <p className="mt-6 max-w-3xl font-body text-deep-soil/80">
-            Run{" "}
-            <code className="rounded bg-deep-soil/10 px-2 py-1 font-mono text-sm">npm run ingest</code> after major
-            content updates.
-          </p>
-        </ContentContainer>
-      </FullBleedSection>
     </>
   );
 }

@@ -29,11 +29,26 @@ export type SearchResponseBody = {
 /** POST /api/assistant — guided help / navigation answers */
 export type AssistantRequestBody = {
   message: string;
-  /** Optional session id for multi-turn (Phase 3) */
-  sessionId?: string;
+  /** v2: prior turns before this `message` (each text capped server-side). */
+  history?: Array<{ role: "user" | "assistant"; text: string }>;
+  /** Declared client version; server responds with its `version`. */
+  version?: string;
+  /** v3: receive `text/event-stream` with JSON `data:` events. */
+  stream?: boolean;
+  /** v3: concise | normal | detailed */
+  responseStyle?: "concise" | "normal" | "detailed";
+  journeyBeatId?: string;
+  journeyBeatLabel?: string;
+  journeyBeatDescription?: string;
+  pathname?: string;
 };
 
 export type AssistantResponseBody = {
+  /** API contract version (currently `"2"`). */
+  version?: string;
+  /** Intent playbook id used for CTAs and tone. */
+  playbook?: string;
+  toolsUsed?: string[];
   reply: string;
   /** Suggested links internal to the site */
   suggestions?: Array<{ label: string; href: string }>;

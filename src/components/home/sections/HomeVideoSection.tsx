@@ -48,8 +48,11 @@ export function HomeVideoSection({ omitMainEmbed = false }: HomeVideoSectionProp
                     ▶
                   </span>
                   <p className="max-w-lg font-body text-sm leading-relaxed text-civic-mist/75 md:text-base">
-                    Set <code className="rounded bg-civic-mist/10 px-1.5 py-0.5 font-mono text-xs text-civic-gold">NEXT_PUBLIC_FEATURE_VIDEO_EMBED_URL</code>{" "}
-                    for a fallback embed, or curate video in admin + run YouTube sync.
+                    Featured video will appear here when available—meanwhile, browse clips on{" "}
+                    <Link href="/from-the-road" className="font-semibold text-civic-gold underline-offset-2 hover:underline">
+                      From the Road
+                    </Link>
+                    .
                   </p>
                 </div>
               )}

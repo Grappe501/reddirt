@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -78,9 +79,9 @@ export function LocalTeamForm({ id }: { id?: string }) {
         </p>
         <p>
           While you wait, skim the{" "}
-          <a className="font-semibold text-red-dirt underline" href="/resources">
+          <Link className="font-semibold text-red-dirt underline" href="/resources">
             resources
-          </a>{" "}
+          </Link>{" "}
           library for facilitation tips and civic explainers you can reuse locally.
         </p>
         <Button type="button" variant="outline" onClick={() => setShowSuccess(false)}>

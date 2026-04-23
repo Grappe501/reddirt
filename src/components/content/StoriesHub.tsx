@@ -157,9 +157,8 @@ export function StoriesHub({ stories, featured, substackPosts = [] }: StoriesHub
       {category === "all" && !substackPosts.length && featured.length ? (
         <div className="space-y-4">
           <div className="rounded-lg border border-amber-700/25 bg-amber-50/90 px-4 py-3 font-body text-sm text-deep-soil/85">
-            <strong className="font-semibold text-deep-soil">Placeholder featured stories.</strong> The Substack notebook
-            feed did not load—showing on-site archive picks instead. Refresh later or check{" "}
-            <code className="rounded bg-deep-soil/10 px-1 text-xs">SUBSTACK_FEED_URL</code> / network access.
+            <strong className="font-semibold text-deep-soil">Featured from the archive.</strong> The live notebook feed
+            isn&apos;t available right now—these are stories we&apos;ve published on this site.
           </div>
           <h2 className="font-heading text-xl font-bold text-deep-soil">Featured</h2>
           <ul className="grid grid-cols-1 gap-8 lg:grid-cols-2">

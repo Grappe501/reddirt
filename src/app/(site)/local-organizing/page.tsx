@@ -15,6 +15,7 @@ import { OrganizingStepBand } from "@/components/organizing/OrganizingStepBand";
 import { ResourceGrid } from "@/components/organizing/ResourceGrid";
 import { regions } from "@/content/local/regions";
 import { organizingToolkit } from "@/content/resources/toolkit";
+import { representLocalEventVolunteerHref } from "@/config/navigation";
 
 export const metadata: Metadata = {
   title: "Local organizing hub",
@@ -26,8 +27,7 @@ function MapPlaceholderGrid() {
   return (
     <div className="relative h-full min-h-[280px] overflow-hidden rounded-card border border-deep-soil/10 bg-gradient-to-br from-washed-denim/15 via-cream-canvas to-field-green/10 shadow-[var(--shadow-soft)] lg:min-h-[360px]">
       <p className="absolute left-4 top-4 z-10 max-w-[14rem] rounded-full bg-cream-canvas/90 px-3 py-1 font-body text-[10px] font-bold uppercase tracking-wider text-deep-soil/55 shadow-sm">
-        {/* TODO(Script 5): interactive territory map + Mobilize chapter pins */}
-        Map placeholder — territory view
+        Organizing by region
       </p>
       <div className="max-h-[min(520px,70vh)] space-y-4 overflow-y-auto p-6 pt-14">
         {regions.map((r) => (
@@ -63,6 +63,9 @@ export default function LocalOrganizingPage() {
         </Button>
         <Button href="/events" variant="outline">
           See upcoming events
+        </Button>
+        <Button href={representLocalEventVolunteerHref} variant="outline">
+          Represent at a local event
         </Button>
       </PageHero>
 
@@ -142,6 +145,12 @@ export default function LocalOrganizingPage() {
               href="/events"
               ctaLabel="Browse events"
             />
+            <PathwayCard
+              title="Represent us at a local gathering"
+              description="Fairs, festivals, party meetings, civic nights—raise your hand to table or greet with approved materials and coach support."
+              href={representLocalEventVolunteerHref}
+              ctaLabel="Volunteer for field presence"
+            />
           </div>
         </ContentContainer>
       </FullBleedSection>
@@ -191,6 +200,9 @@ export default function LocalOrganizingPage() {
             <Button href="/host-a-gathering" variant="outline">
               Plan a gathering
             </Button>
+            <Button href={representLocalEventVolunteerHref} variant="outline">
+              Represent at an event
+            </Button>
           </div>
         </ContentContainer>
       </FullBleedSection>
@@ -207,6 +219,13 @@ export default function LocalOrganizingPage() {
         </Button>
         <Button href="/events" variant="outline" className="border-cream-canvas/40 text-cream-canvas hover:bg-cream-canvas/10">
           Join an event
+        </Button>
+        <Button
+          href={representLocalEventVolunteerHref}
+          variant="outline"
+          className="border-cream-canvas/40 text-cream-canvas hover:bg-cream-canvas/10"
+        >
+          Represent locally
         </Button>
       </CTASection>
     </>
