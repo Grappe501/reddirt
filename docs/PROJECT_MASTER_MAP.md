@@ -99,7 +99,7 @@ Status legend: **Doc** = documented only · **Scaffold** = types/stubs/minimal c
 |------|------|-------------------|--------|
 | **AI brain / alignment** | RAG, assistant, comms AI, E-2 heuristics; ALIGN-1 types | **Partial** + **Scaffold** | Runtime: `src/lib/openai/`, `assistant/`, `comms/ai.ts`; alignment **types** in `alignment.ts` / `overrides.ts` — **no** alignment version table |
 | **Assignment** | `assignedToUserId` patterns, open-work helpers | **Partial** | UWR-1 + seat-aware **read**; **no** `positionId` on source rows |
-| **Unified incoming work** | Merged list for CM | **Partial** | `getOpenWorkForCampaignManager` — email workflow + intake + task; **not** submissions/festival/review in v1 list |
+| **Unified incoming work** | Merged list for CM | **Partial** | **UWR-2:** `getOpenWorkForCampaignManager` — email + intake + task + **actionable threads** + **pending festival ingests**; **`Submission`** still **out** (no triage state); see [`unified-open-work-expansion-notes.md`](./unified-open-work-expansion-notes.md) |
 | **Position system** | Org tree, job defs | **Scaffold** + **Doc** | `positions.ts` tree; docs are canonical until DB-backed |
 | **Seating** | Who sits where | **Partial** | `PositionSeat` + `/admin/workbench/seats`; **staffing metadata**, not RBAC |
 | **Talent / training** | Advisory development | **Scaffold** | `talent.ts` / `training.ts` types only |
@@ -110,7 +110,7 @@ Status legend: **Doc** = documented only · **Scaffold** = types/stubs/minimal c
 | **Identity / voter link** | User ↔ voter file | **Partial** + **Doc** | `linkedVoterRecordId`; volunteer matching helpers; IDENTITY-1 narrative |
 | **Launch activation** | Re-engagement planning | **Scaffold** + **Doc** | `launch.ts` read-only counts/lists; **no** send automation |
 | **Communications unification** | Single story across surfaces | **Doc** | COMMS-UNIFY-1 maps concepts; **no** unified `Message` table |
-| **Data / targeting** | County goals, voter file | **Partial** + **Doc** | `VoterRecord`, metrics, precinct **string** only; no P/T/B universe in Prisma |
+| **Data / targeting** | County goals, voter file, **election tabulation ingest**, **voter signals + provisional tiers + interaction log** | **Partial** + **Doc** | `VoterRecord`, **`VoterSignal`**, **`VoterModelClassification`**, **`VoterInteraction`**, **`VoterVotePlan`** (VOTER-MODEL-1 + INTERACTION-1); metrics, precinct **string** only; **DATA-4** tabulation (no per-voter vote history); precinct crosswalk still **not** solved |
 
 ---
 
@@ -118,7 +118,7 @@ Status legend: **Doc** = documented only · **Scaffold** = types/stubs/minimal c
 
 | Domain | Maturity | What already exists | Biggest gap | Likely next step |
 |--------|----------|---------------------|-------------|------------------|
-| **Campaign Manager** | **Doc + partial UI** | CM-1 maps; **`/admin/workbench`** hub; **UnifiedOpenWorkSection**; orchestrator page for inbound content | Dedicated CM v2 shell; **unified work index** in DB | UWR-2: more sources + filters; CM home cards tied to real counts |
+| **Campaign Manager** | **Partial UI → thin L3 bands** | CM-1 maps; **`/admin/workbench`** hub; **CM-2** **`CampaignManagerDashboardBands`** (truth / warnings / governance / division grid); **UnifiedOpenWorkSection**; **UWR-2** wider open-work read | Dedicated CM shell; **unified work index** in DB; actor-scoped hub | **CM-3:** “for me” band + drill-downs; **UWR-3:** county filter, governed **Submission** queue if status exists |
 | **Communications** | **Strong** | Comms workbench (plans, drafts, sends, recipients), Tier-2 broadcast, threads + AI hints, email workflow queue | One **orchestrated** “intent → execution” **metadata** story across Tier 1/2/social | Deep links from plan/send failure → E-1 item; glossary per COMMS-UNIFY-1 |
 | **Field / organizing** | **Mid** | Events, festivals, tasks, county pages, **FieldUnit** / **FieldAssignment** (read) | **FieldUnit ↔ County** linkage; precinct ops; volunteer **pipeline** cohesion | GEO-2 or field admin UI on assignments; festival → intake automation (policy) |
 | **Finance / fundraising** | **Early** | FIN-1/2 ledger + BUDGET-2; FUND-1 **types** | Fundraising **desk** UI; donor workflows; commitments | FUND-2 persistence + desk route when ready |
@@ -143,6 +143,7 @@ Packets are **the project’s memory**. Below: **what moved** system-wide, not j
 
 - **SYS-1** — [`public-site-system-map.md`](./public-site-system-map.md), [`system-domain-flow-map.md`](./system-domain-flow-map.md): public vs admin flows, form persistence, gaps (**`WorkflowIntake`** not universal on all forms).
 - **CM-1** — [`campaign-manager-orchestration-map.md`](./campaign-manager-orchestration-map.md), [`incoming-work-matrix.md`](./incoming-work-matrix.md): CM as layer above workbenches; fragmentation made explicit.
+- **CM-2** — [`campaign-manager-dashboard-bands.md`](./campaign-manager-dashboard-bands.md): thin **read-only** dashboard bands on **`/admin/workbench`** consuming **`getTruthSnapshot()`** (no new metrics); division grid + honest gaps.
 
 ### Foundation engine
 
@@ -151,11 +152,16 @@ Packets are **the project’s memory**. Below: **what moved** system-wide, not j
 - **TALENT-1** — Advisory talent + training **types** and rich docs; **no** engine.
 - **BRAIN-1** — `ai-brain.ts`, `ai-context.ts` + brain/integration **docs**; maps existing AI touchpoints.
 - **ALIGN-1** — `alignment.ts`, `overrides.ts`, `user-context.ts` + docs; **no** persistence for overrides.
+- **BRAIN-OPS-1** — `truth.ts` + deterministic brain **docs** (truth classes / governance vocabulary; **no** resolver).
+- **BRAIN-OPS-2** — `truth-snapshot.ts` **`getTruthSnapshot`** — repo-grounded health read model; thin JSON on **`/admin/workbench`**.
+- **BRAIN-OPS-3** — **Same file:** county goal **mirror** check (`registrationGoal` vs latest COMPLETE snapshot **`countyGoal`**), **stale** signals (pipelineError, compliance AI gate, draft-only ledger, CM-subtree vacancies), **conflicts** for numeric mirror mismatch; **`warningGroups`**.
+- **PROTO-1** — [`progressive-build-protocol.md`](./progressive-build-protocol.md), [`master-blueprint-expansion-rules.md`](./master-blueprint-expansion-rules.md) — progressive packet discipline + blueprint expansion **obligations**.
 
 ### Assignment, work, seating
 
 - **ASSIGN-1** — Assignment rail **docs** + types; conceptual position inbox.
 - **UWR-1** — **`getOpenWorkForCampaignManager`** / user variants; **`UnifiedOpenWorkSection`** on main workbench; merges **email workflow + intake + tasks** (read-only, bounded).
+- **UWR-2** — [`unified-open-work-expansion-notes.md`](./unified-open-work-expansion-notes.md): **`ArkansasFestivalIngest` `PENDING_REVIEW`** in CM merge + counts; **`CommunicationThread` `NEEDS_REPLY`/`FOLLOW_UP`** in user/unassigned + CM paths; **`Submission`** rejected until governed status/`href` exist.
 - **WB-CORE-1** — **`/admin/workbench/positions`**, **`[positionId]`**; `position-inbox.ts` heuristics; read-only **lens** into UWR-1-style data.
 - **SEAT-1** — **`PositionSeat`** Prisma model; **`/admin/workbench/seats`**; seating helpers in `seating.ts`; links from position pages.
 - **SKILL-1 + ASSIGN-2** — `skills.ts` ingest constants; seat-aware **read** alignment on position page; **no** auto-assign.
@@ -176,16 +182,18 @@ Packets are **the project’s memory**. Below: **what moved** system-wide, not j
 - **DATA-1** — [`data-targeting-foundation.md`](./data-targeting-foundation.md): honest targeting story (county goals, optional precinct string).
 - **COMMS-UNIFY-1** — [`communications-unification-foundation.md`](./communications-unification-foundation.md), [`message-workbench-analysis.md`](./message-workbench-analysis.md): conceptual map of message surfaces.
 - **IDENTITY-1** — [`identity-and-voter-link-foundation.md`](./identity-and-voter-link-foundation.md), [`volunteer-data-gap-analysis.md`](./volunteer-data-gap-analysis.md).
-- **DBMAP-1** — [`database-table-inventory.md`](./database-table-inventory.md) (**105** models), `scripts/print-prisma-inventory.mjs`.
+- **DBMAP-1** — [`database-table-inventory.md`](./database-table-inventory.md) (**115** models), `scripts/print-prisma-inventory.mjs`.
 - **LAUNCH-1** — Launch **docs** + `launch.ts` **read-only** helpers (`countLaunchAudienceByKind`, `listLaunchReadySupporters`).
 - **GEO-1** — County/geo **mapping docs** only (**no** schema migration).
 - **GOALS-VERIFY-1** — County registration goal **source-of-truth** doc + `county-goals.ts` read helpers.
+- **DATA-4 + ELECTION-INGEST-1** — Prisma **`ElectionResultSource`** + related tabulation tables (migration `20260513120000_data4_election_ingest_foundation`); variant-aware JSON ingest `scripts/ingest-election-results-json.ts` + `npm run ingest:election-results -- --file …` (**one election JSON per run**; default folder only if it contains a single `*.json`); read helpers `election-results.ts`; **BRAIN-OPS** truth snapshot consumes **`getElectionResultCoverageSummary()`**; docs [`election-results-schema-and-ingest.md`](./election-results-schema-and-ingest.md), [`gotv-strategic-readiness-foundation.md`](./gotv-strategic-readiness-foundation.md) (GOTV **planning only**).
+- **VOTER-MODEL-1 + INTERACTION-1** — Prisma **`VoterSignal`**, **`VoterModelClassification`**, **`VoterInteraction`**, **`VoterVotePlan`** (migration `20260514120000_voter_model_1_interaction_1_foundation`); helpers `voter-model.ts` (rule output only), `voter-model-queries.ts`, `voter-interactions.ts`; read-only admin **`/admin/voters/[id]/model`**; doc [`voter-model-implementation-foundation.md`](./voter-model-implementation-foundation.md); plan sketch [`modeling-database-implementation-plan.md`](./modeling-database-implementation-plan.md). **No** auto-classification jobs, **no** canvassing UI, **no** win probabilities.
 
 ---
 
 ## 8. Current real capabilities (code-grounded)
 
-**Workbench hub:** `src/app/admin/(board)/workbench/page.tsx` — county/comms/calendar/orchestration cards + **Unified open work** (UWR-1).
+**Workbench hub:** `src/app/admin/(board)/workbench/page.tsx` — county/comms/calendar/orchestration cards + **CM-2** truth/warning/governance/**division** bands (`CampaignManagerDashboardBands`) + **Unified open work** (**UWR-1 + UWR-2**) + collapsible **BRAIN-OPS-2/3** truth snapshot JSON (mirror / truth / health / governance; includes **`openWorkCounts`** on snapshot type).
 
 **Position + seats:** `…/workbench/positions`, `…/workbench/positions/[positionId]`, `…/workbench/seats` — read-only position **lens**, seat banner, ASSIGN-2 alignment block, seat staffing **save** (metadata only).
 
@@ -207,6 +215,10 @@ Packets are **the project’s memory**. Below: **what moved** system-wide, not j
 
 **Voter file:** `…/admin/voter-import` — import pipeline; **`VoterRecord`** warehouse; **public** voter registration **center** links to **official** Arkansas VoterView URL (`getArVoterRegistrationLookupUrl`) — **not** a campaign-owned replacement for state lookup.
 
+**Voter model (read-only admin):** `…/admin/voters/[id]/model` — signals, current **`VoterModelClassification`**, interactions, latest vote plan; **provisional** layer only.
+
+**Election results (ingest):** `npm run ingest:election-results -- --file <path>` — **one election JSON per run** (default folder / `--path` only if that directory has exactly one `*.json`); raw path `H:\SOSWebsite\campaign information for ingestion\electionResults`; **`ElectionResultSource`** + contests / counties / candidates / precinct-location rows; **`election-results.ts`** read-only helpers; **no** turnout targeting math.
+
 **Volunteer ↔ voter matching:** `src/lib/volunteer-intake/match-entries-to-voters.ts` — heuristic matching for intake rows against **`VoterRecord`**.
 
 **Campaign “assistance lookup”:** `src/lib/voter-file/campaign-assist-lookup.ts` — **stub only** (`campaignAssistLookupStub` throws); future bounded feature, explicitly **not** official confirmation.
@@ -226,12 +238,13 @@ Packets are **the project’s memory**. Below: **what moved** system-wide, not j
 | Area | Representative models / assets |
 |------|--------------------------------|
 | **Identity / contact** | `User`, `VolunteerProfile`, `ContactPreference`, `Commitment` |
-| **Voter file** | `VoterRecord`, `VoterFileSnapshot`, `CountyVoterMetrics`, `CountyCampaignStats` |
+| **Voter file + modeling (VOTER-MODEL-1)** | `VoterRecord`, `VoterSignal`, `VoterModelClassification`, `VoterInteraction`, `VoterVotePlan`, `VoterFileSnapshot`, `CountyVoterMetrics`, `CountyCampaignStats` |
 | **Communications** | `CommunicationPlan`, `CommunicationDraft`, `CommunicationSend`, `CommunicationRecipient*`, `CommunicationThread`, `CommunicationMessage`, Tier-2 `CommunicationCampaign*` |
 | **Workflow / tasks** | `WorkflowIntake`, `CampaignTask`, `Submission`, `EmailWorkflowItem` |
 | **Seat / position** | `PositionSeat` (+ `PositionSeatStatus`); position **tree** in code (`positions.ts`) |
 | **Finance / compliance / budget** | `FinancialTransaction`, `BudgetPlan`, `BudgetLine`, `ComplianceDocument` |
 | **Field / geography** | `County`, `FieldUnit`, `FieldAssignment`, `CampaignEvent`, `EventSignup` |
+| **Election tabulation (DATA-4)** | `ElectionResultSource`, `ElectionContestResult`, `ElectionCountyResult`, `ElectionCandidateResult`, `ElectionPrecinctResult`, `ElectionPrecinctCandidateResult` |
 | **Social / content / media** | `SocialContentItem`, `InboundContentItem`, `OwnedMediaAsset`, `ConversationOpportunity`, monitoring/cluster tables |
 
 ---
@@ -282,7 +295,7 @@ Packets are **the project’s memory**. Below: **what moved** system-wide, not j
 - **Volunteer pipeline** — intake → tasking → measurement not fully closed; see volunteer gap analysis.
 - **County / field unification** — `FieldUnit` not FK’d to `County`; three county representations in places (GEO-1).
 - **True position routing** — no `positionId` on `EmailWorkflowItem` / intake / tasks; seat is **visibility**, not router.
-- **Precinct-level ops** — optional `VoterRecord.precinct` string only; no precinct goal table.
+- **Precinct-level ops** — optional `VoterRecord.precinct` string only; no precinct goal table; **election** precinct/location rows are **raw ingest** until **PRECINCT-1** crosswalk.
 - **Unified budget commitments** — plans vs actuals exist; **commitments** table / forecasting out of scope for BUDGET-2.
 - **Launch automation** — LAUNCH-1 is **doctrine + read helpers**, not a runner.
 - **Compliance / legal depth** — uploads exist; no rules engine, no filing automation.
@@ -342,13 +355,17 @@ See **[`agent-knowledge-ingest-map.md`](./agent-knowledge-ingest-map.md)** (SKIL
 
 Practical ordering (adjust with campaign priorities):
 
-1. **UWR-2** — expand unified list (e.g. `Submission`, festival pending, review queue) + filters (county, “for me” on hub).
-2. **E-3 stub (read-only policy)** — implement `policyRoutingHookE3` as **logging-only** to `metadataJson` (no side effects) when product is ready.
-3. **Comms ↔ email workflow linking** — drill-down from failed send / stuck plan to **existing** `EmailWorkflowItem` creation pattern (human-triggered).
-4. **GEO-2 or FIELD-2** — explicit `FieldUnit`↔`County` mapping strategy (app-level or FK) + admin UX.
-5. **GOALS-BREAKDOWN / VOL-GOAL-1** — county goal → volunteer/field decomposition (per GOALS-VERIFY-1 suggestion).
-6. **FUND-2** — first fundraising desk persistence + route (after compliance review for donor PII handling).
-7. **ALIGN-2 / OVR-1** — first persisted override log on one touchpoint (likely E-2 or comms AI) when governance demands it.
+1. **PRECINCT-1** — normalization / crosswalk for voter `precinct` strings vs SOS location keys (follows DATA-4 ingest grains).
+2. **GOTV-1** — phased GOTV **read model** + docs (no scheduler automation in first slice); see [`gotv-strategic-readiness-foundation.md`](./gotv-strategic-readiness-foundation.md).
+3. **UWR-3** — county filter on unified queries; governed **`Submission`** / review-queue inclusion **only** with explicit status + admin `href` (see [`unified-open-work-expansion-notes.md`](./unified-open-work-expansion-notes.md)).
+4. **CM-3** — actor-scoped band (`getOpenWorkForUser` for signed-in admin) + optional drill-down links from truth cards (still read-only).
+5. **E-3 stub (read-only policy)** — implement `policyRoutingHookE3` as **logging-only** to `metadataJson` (no side effects) when product is ready.
+6. **Comms ↔ email workflow linking** — drill-down from failed send / stuck plan to **existing** `EmailWorkflowItem` creation pattern (human-triggered).
+7. **GEO-2 or FIELD-2** — explicit `FieldUnit`↔`County` mapping strategy (app-level or FK) + admin UX; county/precinct **staffing** toward GOTV.
+8. **GOALS-BREAKDOWN / VOL-GOAL-1** — county goal → volunteer/field decomposition (per GOALS-VERIFY-1 suggestion).
+9. **REL-2** — persisted relational contacts (unblocks relational GOTV universes).
+10. **FUND-2** — first fundraising desk persistence + route (after compliance review for donor PII handling).
+11. **ALIGN-2 / OVR-1** — first persisted override log on one touchpoint (likely E-2 or comms AI) when governance demands it.
 
 **Rule:** Pick **one** packet; ship **docs + code** with explicit *out of scope*.
 
@@ -375,4 +392,4 @@ Practical ordering (adjust with campaign priorities):
 
 ---
 
-*MASTER-MAP-1 — Canonical project handoff + build protocol map. Last updated: 2026-04-23.*
+*MASTER-MAP-1 — Canonical project handoff + build protocol map. Last updated: 2026-04-23 (VOTER-MODEL-1 + INTERACTION-1; DATA-4 + GOTV readiness retained).*

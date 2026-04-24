@@ -4,7 +4,7 @@
 
 **How to use:** Paste this file’s path into a new AI thread, or say: *“Read `@docs/email-workflow-intelligence-AI-HANDOFF.md` and continue from there.”*
 
-**Full-project continuity (all rails, packets, capabilities):** For a **fresh AI thread** covering the **entire** RedDirt campaign engine—not email alone—start with **[`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md)** (MASTER-MAP-1). **Blueprint alignment / division maturity (pause & audit):** [`system-division-map.md`](./system-division-map.md) · [`system-maturity-map.md`](./system-maturity-map.md) · [`system-integration-map.md`](./system-integration-map.md) · [`goals-system-status.md`](./goals-system-status.md) · [`next-build-sequence.md`](./next-build-sequence.md) (**BLUEPRINT-LOCK-1**). **Data targeting (DATA-2 / DATA-3):** [`targeting-data-inventory.md`](./targeting-data-inventory.md) · [`path-to-45-foundation.md`](./path-to-45-foundation.md) · **DATA-3 (election ingest foundation):** [`election-results-foundation.md`](./election-results-foundation.md) · [`election-data-ingest-strategy.md`](./election-data-ingest-strategy.md) · [`targeting-signals-foundation.md`](./targeting-signals-foundation.md) · [`targeting-integration-foundation.md`](./targeting-integration-foundation.md) · `src/lib/campaign-engine/targeting.ts` (read-only seams). Use this handoff when the task is **email workflow / queue-first comms** depth; use the master map for **orientation and build protocol**.
+**Full-project continuity (all rails, packets, capabilities):** For a **fresh AI thread** covering the **entire** RedDirt campaign engine—not email alone—start with **[`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md)** (MASTER-MAP-1). **Blueprint alignment / division maturity (pause & audit):** [`system-division-map.md`](./system-division-map.md) · [`system-maturity-map.md`](./system-maturity-map.md) · [`system-integration-map.md`](./system-integration-map.md) · [`goals-system-status.md`](./goals-system-status.md) · [`next-build-sequence.md`](./next-build-sequence.md) (**BLUEPRINT-LOCK-1**). **Data targeting (DATA-2 / DATA-3 / DATA-4 / VOTER-MODEL-1):** [`targeting-data-inventory.md`](./targeting-data-inventory.md) · [`path-to-45-foundation.md`](./path-to-45-foundation.md) · **DATA-3 (election ingest foundation, docs):** [`election-results-foundation.md`](./election-results-foundation.md) · [`election-data-ingest-strategy.md`](./election-data-ingest-strategy.md) · [`targeting-signals-foundation.md`](./targeting-signals-foundation.md) · [`targeting-integration-foundation.md`](./targeting-integration-foundation.md) · **DATA-4 + ELECTION-INGEST-1:** [`election-results-schema-and-ingest.md`](./election-results-schema-and-ingest.md) · [`gotv-strategic-readiness-foundation.md`](./gotv-strategic-readiness-foundation.md) (GOTV **planning** only) · `npm run ingest:election-results` · `src/lib/campaign-engine/election-results.ts` · `src/lib/campaign-engine/targeting.ts` (read-only seams) · **VOTER-MODEL-1 + INTERACTION-1:** [`voter-model-implementation-foundation.md`](./voter-model-implementation-foundation.md) · `src/lib/campaign-engine/voter-model.ts` · `voter-model-queries.ts` · `voter-interactions.ts` · `/admin/voters/[id]/model` (**provisional** tiers — **not** vote totals). Use this handoff when the task is **email workflow / queue-first comms** depth; use the master map for **orientation and build protocol**.
 
 **Related system architecture (Packet SYS-1+ / CM-1+):** [`workbench-build-map.md`](./workbench-build-map.md) · [`public-site-system-map.md`](./public-site-system-map.md) · [`system-domain-flow-map.md`](./system-domain-flow-map.md) · [`campaign-manager-orchestration-map.md`](./campaign-manager-orchestration-map.md) · [`incoming-work-matrix.md`](./incoming-work-matrix.md) · **Foundation (FND-1):** [`unified-campaign-engine-foundation.md`](./unified-campaign-engine-foundation.md) · [`shared-rails-matrix.md`](./shared-rails-matrix.md) · `src/lib/campaign-engine/` · **Relational organizing (REL-1 / ROE — docs only):** [`relational-organizing-foundation.md`](./relational-organizing-foundation.md) · [`relational-ai-assist-foundation.md`](./relational-ai-assist-foundation.md) (AI **assists** volunteers; **same** non-auto-send / no-impersonation posture as E-1/E-2) · **Volunteer progression (GAME-1 / VPE — docs only):** [`volunteer-progression-foundation.md`](./volunteer-progression-foundation.md) · [`gamification-ai-assist.md`](./gamification-ai-assist.md) (AI quests/coaching **without** manipulation) · **Volunteer system core (VOL-CORE-1 — docs only):** [`volunteer-philosophy-foundation.md`](./volunteer-philosophy-foundation.md) · [`volunteer-ai-guidance.md`](./volunteer-ai-guidance.md) (calm tone; **must** / **must not** for volunteer-facing AI) · **AI brain (BRAIN-1):** [`ai-agent-brain-map.md`](./ai-agent-brain-map.md) · [`ai-integration-matrix.md`](./ai-integration-matrix.md) · `ai-brain.ts`, `ai-context.ts` · **Alignment + overrides (ALIGN-1):** [`campaign-brain-alignment-foundation.md`](./campaign-brain-alignment-foundation.md) · [`automation-override-and-impact-foundation.md`](./automation-override-and-impact-foundation.md) · [`user-scoped-ai-context-foundation.md`](./user-scoped-ai-context-foundation.md) · `alignment.ts`, `overrides.ts`, `user-context.ts` · **Positions (ROLE-1):** [`position-system-foundation.md`](./position-system-foundation.md) · [`workbench-job-definitions.md`](./workbench-job-definitions.md) · [`position-hierarchy-map.md`](./position-hierarchy-map.md) · `src/lib/campaign-engine/positions.ts` · **Talent / training (TALENT-1):** [`talent-intelligence-foundation.md`](./talent-intelligence-foundation.md) · [`position-development-matrix.md`](./position-development-matrix.md) · [`talent-recommendation-flow.md`](./talent-recommendation-flow.md) · `src/lib/campaign-engine/talent.ts`, `training.ts` · **Assignment + position inbox (ASSIGN-1):** [`assignment-rail-foundation.md`](./assignment-rail-foundation.md) · [`position-inbox-foundation.md`](./position-inbox-foundation.md) · [`unified-open-work-foundation.md`](./unified-open-work-foundation.md) · `assignment.ts`, `open-work.ts` · **Unified incoming work read (UWR-1):** [`unified-incoming-work-read-model.md`](./unified-incoming-work-read-model.md) — `getOpenWorkForCampaignManager` / `getOpenWorkForUser` in `open-work.ts` · `UnifiedOpenWorkSection` on `/admin/workbench` · **Position workbenches (WB-CORE-1):** [`position-workbench-foundation.md`](./position-workbench-foundation.md) · `position-inbox.ts` · `personalized-workbench.ts` (types) · `/admin/workbench/positions/*`
 
@@ -1026,5 +1026,125 @@ npx prisma migrate deploy   # when database is up
 **Intentionally not built:** Prisma schema, ingest jobs, auto audiences from results, numeric strength engine.
 
 *Last updated: Packet DATA-3 (multi-signal + election ingest).*
+
+---
+
+## 38. Packets OFFICIAL-INGEST-1 + INGEST-OPS-1 — SOS/ethics source mapping + election JSON intake
+
+**What shipped:** **OFFICIAL-INGEST-1:** [`official-source-ingest-foundation.md`](./official-source-ingest-foundation.md) · [`sos-ethics-resource-inventory.md`](./sos-ethics-resource-inventory.md) · [`election-results-ingest-foundation.md`](./election-results-ingest-foundation.md) · [`official-document-ingest-strategy.md`](./official-document-ingest-strategy.md). **INGEST-OPS-1:** [`sos-for-candidates-ingest-map.md`](./sos-for-candidates-ingest-map.md) · [`official-candidate-resource-inventory.md`](./official-candidate-resource-inventory.md) · [`raw-election-results-intake-map.md`](./raw-election-results-intake-map.md) · [`election-results-implementation-plan.md`](./election-results-implementation-plan.md). **`ingest-sources.ts`** — types/consts only.
+
+**Relevance to email / comms:** **Do not** imply filings are complete or compliant from AI or docs. **Official** URLs and **uploaded** mirrors are **reference** only until humans say otherwise. Election **results** in copy must trace to **ingested** data when claiming numbers.
+
+**Intentionally not built:** filing automation, SOS crawlers, results ingest code, RAG auto-index on compliance upload.
+
+*Last updated: Packets OFFICIAL-INGEST-1 + INGEST-OPS-1.*
+
+---
+
+## 39. Packet BRAIN-OPS-1 — Deterministic truth engine + CM Workbench spec + Discord posture
+
+**What shipped:** [`deterministic-brain-foundation.md`](./deterministic-brain-foundation.md) · [`truth-governance-ownership-map.md`](./truth-governance-ownership-map.md) · [`campaign-manager-workbench-spec.md`](./campaign-manager-workbench-spec.md) · [`division-workbench-alignment.md`](./division-workbench-alignment.md) · [`discord-integration-foundation.md`](./discord-integration-foundation.md) · **`truth.ts`** (types only). Raw election inputs: **`H:\SOSWebsite\campaign information for ingestion\electionResults`** — **not** DB truth until ingest packet.
+
+**Relevance to email / comms:** E-2 and RAG outputs are **ADVISORY_ONLY** until operator alignment; **no** truth panel may cite **SearchChunk** or Discord as authority. Queue-first and **compliance AI flag** rules unchanged.
+
+**Intentionally not built:** full CM truth panel UI, workbench shell refactor, Discord bot, auto-routing.
+
+*Last updated: Packet BRAIN-OPS-1.*
+
+---
+
+## 40. Packet BRAIN-OPS-2 — Truth Snapshot Engine (read model)
+
+**What shipped:** **`src/lib/campaign-engine/truth-snapshot.ts`** — `getTruthSnapshot()` returns `TruthSnapshot` (`truth.*` as `TruthMetric` with `TruthClassId` from `truth.ts`, plus `health` / `governance` arrays). Signals: `County` + `CountyCampaignStats.registrationGoal`, **`electionData`** coverage via **`getElectionResultCoverageSummary()`** (**DATA-4** `ElectionResultSource` + children — tabulation rows, not turnout models), `ComplianceDocument` totals + `approvedForAiReference`, `getCoverageSummary()` (SEAT-1), `FinancialTransaction` status `groupBy`, `getOpenWorkCountsBySource()`, **`governance.advisoryOnly`** notes for **missing vs present** **`VoterModelClassification`** (**VOTER-MODEL-1** — inferred tiers, not votes). **Workbench:** `/admin/workbench` includes a collapsible JSON block (debug-style).
+
+**Relevance to email / comms:** Open-work counts include `EmailWorkflowItem` and actionable `CommunicationThread` statuses (same semantics as ASSIGN-1 health counts); snapshot is **read-only** and **does not** change queue-first policy.
+
+**Intentionally not built:** REL-2 relational contacts (see **BRAIN-OPS-3** for mirror/stale without relational model). Election ingest **logic** ships in **DATA-4** (separate packet line in §42b).
+
+*Last updated: Packet BRAIN-OPS-2.*
+
+---
+
+## 41. Packet PROTO-1 — Progressive build protocol + blueprint expansion rules
+
+**What shipped:** [`progressive-build-protocol.md`](./progressive-build-protocol.md) — packet **north star**, **rules**, **scaling** (1 / 2 / 3 / 5+ packets), **lane levels L0–L5**, **drift check**. [`master-blueprint-expansion-rules.md`](./master-blueprint-expansion-rules.md) — per-pass **blueprint** strengthening checklist (doctrine, FND-1, rails matrix, `PROJECT_MASTER_MAP`, reuse).
+
+**Relevance to email / comms:** Same **queue-first** and **truth** guardrails apply; PROTO-1 requires **explicit** “lanes not disturbed” in each packet (e.g. E-* does not merge triage and send).
+
+*Last updated: Packet PROTO-1.*
+
+---
+
+## 42. Packet BRAIN-OPS-3 — Truth conflict / staleness layer
+
+**What shipped:** **`truth-snapshot.ts`** — **`countyGoalMirror`** (latest **COMPLETE** `VoterFileSnapshot`: missing row, null `countyGoal`, numeric mismatch vs `registrationGoal`); **`staleData`** (no snapshot, compliance gate, draft-only ledger, CM-subtree seat vacancies, `pipelineError` counties); **`conflicts`** (numeric mirror only); **`warningGroups`** + flat **`warnings`**; **`governance.reviewRequired`** adds mirror reconciliation when mismatched. Workbench: **sectioned** JSON (`/admin/workbench`).
+
+**Relevance to email / comms:** Read-only; does not change E-1/E-2 policy. Open-work **volume** hint in `warningGroups.other` when total queued counts > 50 (triage load, not a defect).
+
+**Intentionally not built:** time-based staleness thresholds; auto-recompute; full truth panel.
+
+*Last updated: Packet BRAIN-OPS-3.*
+
+---
+
+## 42a. Packets CM-2 + UWR-2 — CM dashboard bands + unified open work (PROTO-1 bundle)
+
+**What shipped:** **`CampaignManagerDashboardBands`** on **`/admin/workbench`** — consumes **`getTruthSnapshot()`** (truth metrics, **`warningGroups`**, governance, **`openWorkCounts`**); division grid uses static maturity + honest gaps. **`open-work.ts` (UWR-2)** — festival **`PENDING_REVIEW`** in CM merge + counts; actionable threads (**`NEEDS_REPLY`**, **`FOLLOW_UP`**) in user/unassigned/CM paths. **`truth-snapshot`** exposes **`openWorkCounts`** on **`TruthSnapshot`**.
+
+**Relevance to email / comms:** Queue-first **unchanged**. Thread open-work semantics are **narrow**; do not expand to **`ACTIVE`** without a product rule. Email workflow rows remain the **triage** rail — CM bands are **read-only** context.
+
+**Intentionally not built:** **`Submission`** unified rows, auto-routing, schema.
+
+**Docs:** [`campaign-manager-dashboard-bands.md`](./campaign-manager-dashboard-bands.md), [`unified-open-work-expansion-notes.md`](./unified-open-work-expansion-notes.md).
+
+*Last updated: Packets CM-2 + UWR-2.*
+
+---
+
+## 42b. PROTO-1 bundle — DATA-4 + ELECTION-INGEST-1 + GOTV strategic readiness (foundation)
+
+**What shipped:** Prisma **election tabulation** models + migration; **`npm run ingest:election-results`** (Arkansas JSON variants **`legacy_election_info`** / **`preferential_election_data`**); read helpers **`election-results.ts`**; **`truth-snapshot`** **`electionData`** reflects **`ElectionResultSource`** rows and county FK coverage (**PROVISIONAL** vs **AUTHORITATIVE** tied to `isOfficial` — still **not** certification). Docs: [`election-results-schema-and-ingest.md`](./election-results-schema-and-ingest.md), [`gotv-strategic-readiness-foundation.md`](./gotv-strategic-readiness-foundation.md) (GOTV **planning** only).
+
+**Relevance to email / comms:** **None** directly — preserves **queue-first** and send boundaries; election ingest is **data plane** only.
+
+**Lanes advanced:** DATA / Targeting, ELECTION-INGEST, BRAIN-OPS truth inputs, GOTV **planning** doc.
+
+**Lanes intentionally not disturbed:** REL-2, volunteer UI, GAME/XP, auto-routing, comms sends, compliance filing automation.
+
+**Why safe as a 2-packet bundle:** Schema + CLI + narrow reads + snapshot + blueprint docs — no execution paths that touch **`CommunicationSend`** or **`EmailWorkflowItem`** automation.
+
+**Unlocks next:** PRECINCT-1; GOTV-1 read model; FIELD-2; REL-2; GOALS-BREAKDOWN-1.
+
+**Intentionally not built:** GOTV UI/schedulers; turnout math; precinct normalization; voter-level vote history.
+
+*Last updated: DATA-4 + ELECTION-INGEST-1 + GOTV readiness doc.*
+
+---
+
+## 42c. VOTER-MODEL-1 + INTERACTION-1 — voter signals, provisional classifications, interaction + vote-plan log
+
+**What shipped:** Prisma **`VoterSignal`**, **`VoterModelClassification`**, **`VoterInteraction`**, **`VoterVotePlan`** (+ migration `20260514120000_voter_model_1_interaction_1_foundation` — **apply when DB available**). **`voter-model.ts`** — `classifyVoterFromSignals()` (**suggestion only**; **no** auto-persist). **`voter-model-queries.ts`**, **`voter-interactions.ts`**. Read-only **`/admin/voters/[id]/model`**. Docs: [`voter-model-implementation-foundation.md`](./voter-model-implementation-foundation.md), [`modeling-database-implementation-plan.md`](./modeling-database-implementation-plan.md).
+
+**Relevance to email / comms:** **None** for send automation — preserves queue-first. If future comms segments reference voter tiers, treat **`VoterModelClassification`** as **PROVISIONAL** (handoff + `truth-snapshot` advisory).
+
+**Lanes advanced:** DATA / targeting (provenance), GOTV planning seed (vote plan row), field (interaction log), BRAIN-OPS advisory.
+
+**Lanes intentionally not disturbed:** E-1/E-2 automation boundaries, **`CommunicationSend`**, REL-2 table, canvassing UI, black-box scoring.
+
+**Unlocks next:** REL-2 → emit `VoterInteraction` / `VoterSignal`; PRECINCT-1; GOTV-1 product flows.
+
+*Last updated: VOTER-MODEL-1 + INTERACTION-1.*
+
+---
+
+## 43. Candidate county brief (visit prep) — email + workbench target
+
+**Spec:** [`candidate-county-brief-foundation.md`](./candidate-county-brief-foundation.md) — **day-before** email with **summary** (authoritative DB demographics + registration context + **clearly labeled** any modeled youth/HS numbers) and link/collapse for **unabridged** Wikipedia-backed context; same artifact on **CM workbench** when BRIEF-* packets land.
+
+**Relevance to email / comms:** Use **governed** send path (template + review if policy requires); **never** imply census or school counts are verified unless sourced; Wikipedia **CC BY-SA** in footer when excerpting.
+
+**Not built:** `VisitBrief` model, renderer, scheduler, workbench panel.
+
+*Last updated: candidate county brief (handoff stub).*
 
 ---

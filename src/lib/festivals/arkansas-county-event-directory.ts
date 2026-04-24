@@ -6,6 +6,9 @@
  *
  * **What we do NOT automate here:** mass scraping of social networks or city sites without per-source agreements.
  * Add RSS/API modules under `ingest/sources/`; use this file for human review checklists and AI prompt context.
+ *
+ * **Wikipedia (county articles):** `npm run ingest:county-wikipedia` uses this list for FIPS/slugs and writes
+ * `docs/ingested/county-wikipedia/*.md` for `npm run ingest` → `SearchChunk`. See `docs/county-wikipedia-reference-ingest.md`.
  */
 
 export type ArkansasTourismRegion =

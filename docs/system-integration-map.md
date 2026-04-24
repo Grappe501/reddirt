@@ -28,7 +28,7 @@
 | **DATA → voter file → decisions** | **Partial** | Import + `CountyVoterMetrics` feed **public** county experience components; **campaign “decisions”** (who to text at scale) **not** one governed pipeline in code. |
 | **FINANCE → budget → decisions** | **Weak tie** | Budget vs **CONFIRMED** ledger actuals in admin; **not** automatically gating sends/events in product (policy **human**). |
 | **Identity (`User`) → all divisions** | **Connected** | Forms, comms recipients, tasks, volunteer profile **hang** off `User`. |
-| **UWR-1 → workbenches** | **Partial** | Hub shows merged open work; **not** all incoming matrix sources; deep links vary by domain. |
+| **UWR-1 + UWR-2 → workbenches** | **Partial** | Hub shows merged open work (**CM-2** bands + **UWR-2** lists: email, intake, task, actionable threads, festival pending in CM merge); **`Submission`** still out; deep links vary by domain. |
 | **ROLE-1 positions → routing** | **Doc-only** | `PositionId` on **`FieldAssignment`** only (FIELD-1); **no** `positionId` on `EmailWorkflowItem` / `CampaignTask` in schema. |
 | **SEAT-1 → inbox** | **Weak tie** | Seat **metadata** and position page **read** alignment; **no** auto-route by seat. |
 

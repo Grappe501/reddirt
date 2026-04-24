@@ -10,7 +10,7 @@ Concise planning doc: what workbenches exist, what to reuse, what to build next,
 
 | Surface | Route / area | Purpose (one line) |
 |--------|----------------|-------------------|
-| Main workbench hub | `src/app/admin/(board)/workbench/page.tsx` | County + comms rail, calendar/orchestration lanes, thread rail, cards. |
+| Main workbench hub | `src/app/admin/(board)/workbench/page.tsx` | County + comms rail, calendar/orchestration lanes, thread rail, cards; **CM-2** **`CampaignManagerDashboardBands`** (truth / warnings / governance / division grid) + collapsible BRAIN-OPS JSON + **UWR-2** unified open work. |
 | Position workbenches (WB-CORE-1) | `…/workbench/positions`, `…/workbench/positions/[positionId]` | Read-only role lens: UWR-1 inbox slice (where heuristics exist) + org context + deep links; **SEAT-1** seat banner when `PositionSeat` / vacant; no RBAC. |
 | **Position seats / coverage (SEAT-1)** | `…/workbench/seats` | `PositionSeat` staffing metadata: filled/vacant/acting/shadow; **optional** save per row; links to position workbench; not permissions or routing. |
 | **Position workbench (ASSIGN-2)** | `…/workbench/positions/[positionId]` (same page) | **Read-only** **slice** vs **seat** **occupant** alignment (counts, global open for occupant); no auto-rebind. |
@@ -39,7 +39,7 @@ Concise planning doc: what workbenches exist, what to reuse, what to build next,
 | Distribution | `…/distribution/page.tsx` | Distribution. |
 | Content / editorial | `content`, `editorial`, `stories`, `blog`, `homepage` | Content ops. |
 | Settings / platforms | `settings/*`, `platforms` | Config. |
-| Other | `asks`, `volunteers/intake`, `voter-import`, `insights` (placeholder) | Specialized tools. |
+| Other | `asks`, `volunteers/intake`, `voter-import`, `voters/[id]/model` (read-only voter model), `insights` (placeholder) | Specialized tools. |
 
 **Layout / auth shell:** `src/app/admin/(board)/layout.tsx` → `requireAdminPage` + `AdminBoardShell`. **Actions:** `requireAdminAction` in `src/app/admin/owned-media-auth.ts` (used across server actions). **Actor attribution:** `getAdminActorUserId` in `src/lib/admin/actor.ts` where a `User` is needed.
 
@@ -59,11 +59,12 @@ Concise planning doc: what workbenches exist, what to reuse, what to build next,
 
 ## 3. Recommended next workbench sequence (leverage-ordered)
 
-1. **Email workflow queue (continued):** list filters, badges for `ENRICHED` / triage, optional assignment — builds on E-1/E-2; highest ROI for comms operators already linked to `CommunicationThread` / plan / send.
-2. **Comms plan execution health:** already has sends/outcomes; surface failures + queue drill-down from `CommunicationPlan` into email workflow or thread — reuses DTOs in `src/lib/comms-workbench/`.
-3. **Conversation / opportunity → workflow:** tighten routing from `ConversationOpportunity` / monitoring into `WorkflowIntake` and optional `EmailWorkflowItem` creation (policy later, not auto-send).
-4. **Main workbench triage cards:** align metrics with email workflow counts when models exist; avoid a second “truth” for pending work.
-5. **Review queue + owned media:** where approvals meet outbound comms, reuse the same `WorkbenchPill` + “run action” + provenance pattern.
+1. **Election results ingest (DATA-4 / ELECTION-INGEST-1):** operator CLI `npm run ingest:election-results -- --file <path>` — **one election per run**; **no** workbench UI in this packet; truth snapshot reflects DB coverage.
+2. **Email workflow queue (continued):** list filters, badges for `ENRICHED` / triage, optional assignment — builds on E-1/E-2; highest ROI for comms operators already linked to `CommunicationThread` / plan / send.
+3. **Comms plan execution health:** already has sends/outcomes; surface failures + queue drill-down from `CommunicationPlan` into email workflow or thread — reuses DTOs in `src/lib/comms-workbench/`.
+4. **Conversation / opportunity → workflow:** tighten routing from `ConversationOpportunity` / monitoring into `WorkflowIntake` and optional `EmailWorkflowItem` creation (policy later, not auto-send).
+5. **Main workbench triage cards:** **CM-2** aligns **truth snapshot** bands with **`getOpenWorkCountsBySource` (UWR-2)** — avoid inventing parallel “health” metrics; extend snapshot + open-work read model first.
+6. **Review queue + owned media:** where approvals meet outbound comms, reuse the same `WorkbenchPill` + “run action” + provenance pattern.
 
 ---
 
@@ -137,7 +138,7 @@ Concise planning doc: what workbenches exist, what to reuse, what to build next,
 
 ---
 
-*Last updated: Packets ROLE-1, SEAT-1 (seating table + admin coverage; `positions.ts` still ROLE-1 seam); **BUDGET-2** (`…/budgets`).*
+*Last updated: Packets ROLE-1, SEAT-1 (seating table + admin coverage; `positions.ts` still ROLE-1 seam); **BUDGET-2** (`…/budgets`); **CM-2** (dashboard bands on main workbench) + **UWR-2** (festival + actionable threads in `open-work.ts`).*
 
 ---
 
@@ -198,3 +199,27 @@ Concise planning doc: what workbenches exist, what to reuse, what to build next,
 **Intentionally not built:** onboarding wizard, volunteer home, REL-2, new position keys for fundraising volunteer lead.
 
 *Last updated: Packet VOL-CORE-1.*
+
+---
+
+## 15. Packet DATA-4 + ELECTION-INGEST-1 — election results ingest (operator CLI)
+
+**What shipped:** Prisma election tabulation models + **`npm run ingest:election-results -- --file …`** (one JSON per run); read helpers **`election-results.ts`**; **`truth-snapshot`** **`electionData`** uses ingested rows. Docs: [`election-results-schema-and-ingest.md`](./election-results-schema-and-ingest.md), [`gotv-strategic-readiness-foundation.md`](./gotv-strategic-readiness-foundation.md).
+
+**Workbench impact:** **No** new admin route — operators run CLI; CM-2 bands pick up snapshot **honesty** only.
+
+**Intentionally not built:** GOTV UI, precinct assignment, turnout math.
+
+*Last updated: DATA-4 + ELECTION-INGEST-1.*
+
+---
+
+## 16. Packet VOTER-MODEL-1 + INTERACTION-1 — voter modeling + interaction log (foundation)
+
+**What shipped:** Prisma **`VoterSignal`**, **`VoterModelClassification`**, **`VoterInteraction`**, **`VoterVotePlan`**; helpers under `src/lib/campaign-engine/voter-*.ts`; read-only **`/admin/voters/[id]/model`**. **`classifyVoterFromSignals`** returns a suggestion only — **no** cron, **no** auto-persist.
+
+**Workbench impact:** Narrow **admin** detail route; **not** voter search, **not** canvassing.
+
+**Intentionally not built:** REL-2 relational table, Power-of-5 UI, GOTV runner, area rollups.
+
+*Last updated: VOTER-MODEL-1 + INTERACTION-1.*

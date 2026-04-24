@@ -27,7 +27,9 @@ import { getPressMonitorWorkbenchSummary } from "@/lib/media-monitor/workbench-q
 import { getSocialWorkbenchSummary } from "@/lib/social/social-workbench-queries";
 import { resolveWorkbenchCountyId, isPlausibleId } from "@/lib/workbench/county";
 import { getOpenWorkForCampaignManager } from "@/lib/campaign-engine/open-work";
+import { getTruthSnapshot } from "@/lib/campaign-engine/truth-snapshot";
 import { UnifiedOpenWorkSection } from "@/components/admin/workbench/UnifiedOpenWorkSection";
+import { CampaignManagerDashboardBands } from "@/components/admin/workbench/CampaignManagerDashboardBands";
 
 type Props = {
   searchParams: Promise<{ county?: string; thread?: string; error?: string; lane?: string }>;
@@ -72,6 +74,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
   let pressMonitor: Awaited<ReturnType<typeof getPressMonitorWorkbenchSummary>>;
   let socialSum: Awaited<ReturnType<typeof getSocialWorkbenchSummary>>;
   let uwr1OpenWork: Awaited<ReturnType<typeof getOpenWorkForCampaignManager>>;
+  let truthSnapshot: Awaited<ReturnType<typeof getTruthSnapshot>>;
 
   try {
     counties = await getCountiesForOpsFilter();
@@ -92,6 +95,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
       pressMonitor,
       socialSum,
       uwr1OpenWork,
+      truthSnapshot,
     ] = await Promise.all([
       getWorkbenchData({ countyId }),
       getCommsWorkbenchData({ countyId, lane }),
@@ -116,6 +120,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
       getOpenWorkForCampaignManager({ limitPerSource: 8, maxTotal: 20 }).catch((): Awaited<
         ReturnType<typeof getOpenWorkForCampaignManager>
       > => []),
+      getTruthSnapshot(),
     ]);
   } catch (e) {
     console.error("AdminWorkbenchPage load", e);
@@ -381,6 +386,51 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
           Invalid thread id in URL — open a thread from the left rail.
         </p>
       ) : null}
+
+      <CampaignManagerDashboardBands snapshot={truthSnapshot} />
+
+      <details className="mx-2 mb-1 rounded border border-deep-soil/10 bg-cream-canvas/90 px-2 py-1 md:mx-3">
+        <summary className="cursor-pointer font-body text-[10px] font-semibold text-deep-soil/70">
+          BRAIN-OPS-2 / BRAIN-OPS-3 truth snapshot (read-only)
+        </summary>
+        <div className="mt-1 space-y-1.5">
+          <div>
+            <p className={h2}>County goal mirror</p>
+            <pre className="max-h-32 overflow-auto rounded border border-deep-soil/5 bg-white/80 px-1 py-0.5 font-mono text-[9px] leading-snug text-deep-soil/85">
+              {JSON.stringify(truthSnapshot.countyGoalMirror, null, 2)}
+            </pre>
+          </div>
+          <div>
+            <p className={h2}>Truth metrics</p>
+            <pre className="max-h-36 overflow-auto rounded border border-deep-soil/5 bg-white/80 px-1 py-0.5 font-mono text-[9px] leading-snug text-deep-soil/85">
+              {JSON.stringify(truthSnapshot.truth, null, 2)}
+            </pre>
+          </div>
+          <div>
+            <p className={h2}>Health</p>
+            <pre className="max-h-40 overflow-auto rounded border border-deep-soil/5 bg-white/80 px-1 py-0.5 font-mono text-[9px] leading-snug text-deep-soil/85">
+              {JSON.stringify(
+                {
+                  missingData: truthSnapshot.health.missingData,
+                  staleData: truthSnapshot.health.staleData,
+                  conflicts: truthSnapshot.health.conflicts,
+                  warnings: truthSnapshot.health.warnings,
+                  warningGroups: truthSnapshot.health.warningGroups,
+                },
+                null,
+                2,
+              )}
+            </pre>
+          </div>
+          <div>
+            <p className={h2}>Governance</p>
+            <pre className="max-h-28 overflow-auto rounded border border-deep-soil/5 bg-white/80 px-1 py-0.5 font-mono text-[9px] leading-snug text-deep-soil/85">
+              {JSON.stringify(truthSnapshot.governance, null, 2)}
+            </pre>
+          </div>
+          <p className="font-mono text-[8px] text-deep-soil/50">generatedAt: {truthSnapshot.generatedAt.toISOString()}</p>
+        </div>
+      </details>
 
       <UnifiedOpenWorkSection items={uwr1OpenWork} />
 

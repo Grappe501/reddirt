@@ -1,6 +1,6 @@
 # Database / Prisma model inventory (DBMAP-1) (RedDirt)
 
-**Source:** `prisma/schema.prisma` · **Model count:** **105** (verified by script `scripts/print-prisma-inventory.mjs`).
+**Source:** `prisma/schema.prisma` · **Model count:** **115** (verified by script `scripts/print-prisma-inventory.mjs`; includes VOTER-MODEL-1 + INTERACTION-1 tables).
 
 ---
 
@@ -112,8 +112,12 @@ This inventory **lists every** persisted Prisma **model** so engineers and opera
 | `VolunteerMatchCandidate` | Scored Voter match for signup entry | Voter + volunteer | Voter, Signup entry | Active | M |
 | `VolunteerProfile` | 1:1 extension for volunteer; skills text | **Identity / volunteer** | User | **Core** for volunteers | **H** |
 | `VoterFileSnapshot` | One voter file import batch | Voter / data | Voter, metrics | **Core** ETL | M |
+| `VoterInteraction` | Staff-logged touchpoint (channel, type, optional support) | Voter / field (VOTER-MODEL-1) | VoterRecord?, User (contact + volunteer) | **New**; provisional | M |
+| `VoterModelClassification` | Tier label + confidence + provenance (`isCurrent`) | Voter / data (VOTER-MODEL-1) | VoterRecord, User? override | **New**; inferred unless human | M |
 | `VoterRecord` | Voter file row: `voterFileKey`, county, **precinct?** | **Voter (core)** | County, User links | **Core** | M |
+| `VoterSignal` | Provenance signal row (kind, strength, source) | Voter / data (VOTER-MODEL-1) | VoterRecord?, User? | **New** | M |
 | `VoterSnapshotChange` | Row-level diff in a snapshot | Voter / data | Snapshot, Voter, County | Active ETL | L |
+| `VoterVotePlan` | Vote-plan seed (status, reminders) | GOTV / field (INTERACTION-1) | VoterRecord, User? | **New** | M |
 | `WeeklyBigRock` | Big rock in weekly plan (CM planning) | Ops / planning | WeeklyCampaignPlan | Active | L |
 | `WeeklyCampaignPlan` | Week-at-a-glance plan | Ops / planning | User | Active | L |
 | `WorkflowAction` | Audit action on a `WorkflowIntake` | Workflow / tasks | Intake, User | Active | M |
@@ -122,14 +126,14 @@ This inventory **lists every** persisted Prisma **model** so engineers and opera
 | `WorkflowTemplate` | Reusable event workflow template | Events / tasks | tasks | Active | M |
 | `WorkflowTemplateTask` | Task definition in a template | Events / tasks | template | Active | M |
 
-*End of 105 models.*
+*End of 115 models.*
 
 ---
 
 ## 3. Domain grouping (all models)
 
 - **Identity / people:** `User`, `VolunteerProfile`, `ContactPreference`, `Commitment`, `TeamRoleAssignment`, `StaffGmailAccount`, `EventSignup` (PII)
-- **Voter file / targeting:** `VoterRecord`, `VoterFileSnapshot`, `VoterSnapshotChange`, `CountyVoterMetrics`, `VolunteerMatchCandidate` (join), `SignupSheetEntry` (match)
+- **Voter file / targeting:** `VoterRecord`, `VoterFileSnapshot`, `VoterSnapshotChange`, `CountyVoterMetrics`, `VoterSignal`, `VoterModelClassification`, `VoterInteraction`, `VoterVotePlan`, `VolunteerMatchCandidate` (join), `SignupSheetEntry` (match)
 - **Communications (multi-rail):** `CommunicationThread`, `CommunicationMessage`, `CommunicationCampaign`, `CommunicationTemplate`, `AudienceSegment`, `CommunicationCampaignRecipient`, `CommunicationActionQueue`, `CommunicationTag`, `CommunicationThreadTag`, `CommunicationPlan`, `CommunicationDraft`, `CommunicationVariant`, `CommunicationSend`, `CommunicationRecipient`, `CommunicationRecipientEvent`, `CommunicationLinkDefinition`, `CommsPlanAudienceSegment`, `CommsPlanAudienceSegmentMember`, `EmailWorkflowItem`, `MediaOutreachItem`
 - **Email workflow (distinct product):** `EmailWorkflowItem` (also under comms) — **triage** rail
 - **Workflow / tasks:** `WorkflowIntake`, `WorkflowAction`, `EventRequest`, `CampaignTask`, `WorkflowTemplate`, `WorkflowTemplateTask`, `WorkflowRun`, `Submission`

@@ -1,9 +1,11 @@
 /**
- * DATA-2: read-only helpers for **targeting foundation** — county goals, voter-file rollups,
- * optional demographics. No scoring engine, no writes.
+ * DATA-2 + DATA-4 + VOTER-MODEL-1 seam: read-only helpers for **targeting foundation** — county goals, voter-file rollups,
+ * optional demographics, **election tabulation** pointers (`election-results.ts`), **provisional** voter modeling tables. No scoring engine, no writes here.
  *
  * @see docs/targeting-data-inventory.md
  * @see docs/goals-system-status.md
+ * @see docs/election-results-schema-and-ingest.md (DATA-4 / ELECTION-INGEST-1)
+ * @see docs/voter-model-implementation-foundation.md (VOTER-MODEL-1 + INTERACTION-1)
  */
 
 import { prisma } from "@/lib/db";
@@ -46,6 +48,26 @@ export const TARGETING_DATA_SOURCES: readonly TargetingDataSourceRow[] = [
     voteGoalPlanningRoles: ["registration", "geography", "precinct_string_optional"],
   },
   {
+    prismaModel: "VoterSignal",
+    purpose: "Provenance signal row (kind/strength/source); not a vote claim",
+    voteGoalPlanningRoles: ["modeling_provenance"],
+  },
+  {
+    prismaModel: "VoterModelClassification",
+    purpose: "Tier + confidence + `isCurrent`; inferred unless human-confirmed",
+    voteGoalPlanningRoles: ["modeling_provisional"],
+  },
+  {
+    prismaModel: "VoterInteraction",
+    purpose: "Staff touch log; support only if `supportLevel` set",
+    voteGoalPlanningRoles: ["field_contact_history"],
+  },
+  {
+    prismaModel: "VoterVotePlan",
+    purpose: "GOTV vote-plan seed (status, reminders); operational not predictive",
+    voteGoalPlanningRoles: ["gotv_planning_seed"],
+  },
+  {
     prismaModel: "VoterSnapshotChange",
     purpose: "Registration churn audit between snapshots",
     voteGoalPlanningRoles: ["registration"],
@@ -59,6 +81,11 @@ export const TARGETING_DATA_SOURCES: readonly TargetingDataSourceRow[] = [
     prismaModel: "FieldUnit / FieldAssignment",
     purpose: "Operational field geography and staffing (no County FK)",
     voteGoalPlanningRoles: ["capacity_overlay"],
+  },
+  {
+    prismaModel: "ElectionResultSource / ElectionContestResult / ElectionCountyResult / …",
+    purpose: "Ingested Arkansas SOS-style JSON tabulation (provenance + county/precinct grains); **not** turnout math",
+    voteGoalPlanningRoles: ["historical_election_tabulation"],
   },
 ] as const;
 

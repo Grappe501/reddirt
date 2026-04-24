@@ -14,6 +14,7 @@ import {
   EmailWorkflowEscalationLevel,
   EmailWorkflowPriority,
   EmailWorkflowStatus,
+  FestivalIngestReviewStatus,
   WorkflowIntakeStatus,
 } from "@prisma/client";
 import { prisma } from "../db";
@@ -24,6 +25,9 @@ import { getSeatForPosition } from "./seating";
 
 export { UWR1_PACKET } from "./assignment";
 export type { OpenWorkItemRef } from "./assignment";
+
+/** UWR-2: widen read model (festival ingest + actionable threads); still read-only, no schema. */
+export const UWR2_PACKET = "UWR-2" as const;
 
 /**
  * v1: fields required for CM / “for me” lists. Extends the ASSIGN-1 ref with
@@ -71,6 +75,17 @@ const OPEN_TASK: CampaignTaskStatus[] = [
   CampaignTaskStatus.BLOCKED,
 ];
 
+/** UWR-2: only statuses that clearly mean “staff must act” on the thread (not ACTIVE / CLOSED, etc.). */
+const ACTIONABLE_THREAD_STATUSES: CommunicationThreadStatus[] = [
+  CommunicationThreadStatus.NEEDS_REPLY,
+  CommunicationThreadStatus.FOLLOW_UP,
+];
+
+const WB_EMAIL = "/admin/workbench/email-queue";
+const WB_INTAKE = "/admin/workbench/comms/plans/new";
+const WB_TASKS = "/admin/tasks";
+const WB_FESTIVALS = "/admin/workbench/festivals";
+
 function keyOf(r: OpenWorkItemRef): string {
   return `${r.source}:${r.id}`;
 }
@@ -87,9 +102,14 @@ function taskHref(id: string): string {
   return `/admin/workbench/comms/plans/new?taskId=${encodeURIComponent(id)}`;
 }
 
-const WB_EMAIL = "/admin/workbench/email-queue";
-const WB_INTAKE = "/admin/workbench/comms/plans/new";
-const WB_TASKS = "/admin/tasks";
+function threadHref(id: string): string {
+  return `/admin/workbench?thread=${encodeURIComponent(id)}`;
+}
+
+/** Pending festival ingests share one queue URL until a per-row detail route exists. */
+function pendingFestivalQueueHref(): string {
+  return `${WB_FESTIVALS}?filter=pending`;
+}
 
 function emailTitle(r: { title: string | null; queueReason: string | null; whatSummary: string | null }): string {
   return (r.title?.trim() || r.queueReason?.trim() || r.whatSummary?.trim() || "Email workflow item") ?? "Email workflow item";
@@ -198,6 +218,72 @@ function toUnifiedFromIntake(
   };
 }
 
+function toUnifiedFromFestivalIngest(r: {
+  id: string;
+  name: string;
+  startAt: Date;
+  countyId: string | null;
+  reviewStatus: FestivalIngestReviewStatus;
+  createdAt: Date;
+}): UnifiedOpenWorkItem {
+  const occurred = r.startAt;
+  return {
+    source: OpenWorkSourceModel.ArkansasFestivalIngest,
+    id: r.id,
+    statusLabel: r.reviewStatus,
+    title: r.name,
+    createdAt: r.createdAt.toISOString(),
+    assignedUserId: null,
+    positionId: null,
+    countyId: r.countyId,
+    href: pendingFestivalQueueHref(),
+    workbenchRouteHint: WB_FESTIVALS,
+    rawStatus: r.reviewStatus,
+    escalationLabel: null,
+    summaryLine: `Community event ingest · ${r.name}`,
+    occurredAt: r.startAt.toISOString(),
+    occurredOrCreatedAt: occurred.toISOString(),
+    _uwr1SortKey: _uwr1SortKey({ occurred, esc: 0, pri: 3 }),
+  };
+}
+
+function toUnifiedFromThread(r: {
+  id: string;
+  threadStatus: CommunicationThreadStatus;
+  primaryEmail: string | null;
+  primaryPhone: string | null;
+  assignedUserId: string | null;
+  createdAt: Date;
+  lastMessageAt: Date | null;
+  countyId: string | null;
+  unreadCount: number;
+  priorityScore: number;
+}): UnifiedOpenWorkItem {
+  const occurred = r.lastMessageAt ?? r.createdAt;
+  const label =
+    (r.primaryPhone?.trim() || r.primaryEmail?.trim() || "Communication thread") ?? "Communication thread";
+  const unreadEsc = r.unreadCount > 0 ? 2 : 0;
+  const priBoost = Math.min(3, 1 + Math.floor(Math.min(r.priorityScore, 99) / 33));
+  return {
+    source: OpenWorkSourceModel.CommunicationThread,
+    id: r.id,
+    statusLabel: r.threadStatus,
+    title: label,
+    createdAt: r.createdAt.toISOString(),
+    assignedUserId: r.assignedUserId,
+    positionId: null,
+    countyId: r.countyId,
+    href: threadHref(r.id),
+    workbenchRouteHint: "/admin/workbench",
+    rawStatus: r.threadStatus,
+    escalationLabel: r.unreadCount > 0 ? `${r.unreadCount} unread` : null,
+    summaryLine: `${label} · ${r.threadStatus}`,
+    occurredAt: r.lastMessageAt?.toISOString() ?? null,
+    occurredOrCreatedAt: occurred.toISOString(),
+    _uwr1SortKey: _uwr1SortKey({ occurred, esc: unreadEsc, pri: priBoost }),
+  };
+}
+
 function toUnifiedFromTask(
   r: {
     id: string;
@@ -289,13 +375,45 @@ const taskSelect = {
   countyId: true,
 } as const;
 
+const threadSelect = {
+  id: true,
+  threadStatus: true,
+  primaryEmail: true,
+  primaryPhone: true,
+  assignedUserId: true,
+  createdAt: true,
+  lastMessageAt: true,
+  countyId: true,
+  unreadCount: true,
+  priorityScore: true,
+} as const;
+
+const festivalOpenSelect = {
+  id: true,
+  name: true,
+  startAt: true,
+  countyId: true,
+  reviewStatus: true,
+  createdAt: true,
+} as const;
+
+async function listPendingFestivalOpenWorkItems(limit: number): Promise<UnifiedOpenWorkItem[]> {
+  const rows = await prisma.arkansasFestivalIngest.findMany({
+    where: { reviewStatus: FestivalIngestReviewStatus.PENDING_REVIEW },
+    orderBy: { startAt: "asc" },
+    take: limit,
+    select: festivalOpenSelect,
+  });
+  return rows.map((r) => toUnifiedFromFestivalIngest(r));
+}
+
 export async function getOpenWorkForUser(
   userId: string,
   options?: UnifiedOpenWorkQueryOptions,
 ): Promise<UnifiedOpenWorkItem[]> {
   const lim = options?.limitPerSource ?? DEFAULT_LIMIT;
   const max = options?.maxTotal ?? DEFAULT_MAX;
-  const [emails, intakes, tasks] = await Promise.all([
+  const [emails, intakes, tasks, threads] = await Promise.all([
     prisma.emailWorkflowItem.findMany({
       where: { assignedToUserId: userId, status: { in: OPEN_EMAIL } },
       orderBy: [{ occurredAt: "desc" }, { createdAt: "desc" }],
@@ -314,11 +432,21 @@ export async function getOpenWorkForUser(
       take: lim,
       select: taskSelect,
     }),
+    prisma.communicationThread.findMany({
+      where: {
+        assignedUserId: userId,
+        threadStatus: { in: ACTIONABLE_THREAD_STATUSES },
+      },
+      orderBy: [{ lastMessageAt: "desc" }, { createdAt: "desc" }],
+      take: lim,
+      select: threadSelect,
+    }),
   ]);
   const merged: UnifiedOpenWorkItem[] = [
     ...emails.map((r) => toUnifiedFromEmail(r)),
     ...intakes.map((r) => toUnifiedFromIntake(r)),
     ...tasks.map((r) => toUnifiedFromTask(r)),
+    ...threads.map((r) => toUnifiedFromThread(r)),
   ];
   return cap(sortUnified(merged), max);
 }
@@ -326,7 +454,7 @@ export async function getOpenWorkForUser(
 export async function getUnassignedOpenWork(options?: UnifiedOpenWorkQueryOptions): Promise<UnifiedOpenWorkItem[]> {
   const lim = options?.limitPerSource ?? DEFAULT_LIMIT;
   const max = options?.maxTotal ?? DEFAULT_MAX;
-  const [emails, intakes, tasks] = await Promise.all([
+  const [emails, intakes, tasks, threads] = await Promise.all([
     prisma.emailWorkflowItem.findMany({
       where: { assignedToUserId: null, status: { in: OPEN_EMAIL } },
       orderBy: [{ occurredAt: "desc" }, { createdAt: "desc" }],
@@ -345,11 +473,21 @@ export async function getUnassignedOpenWork(options?: UnifiedOpenWorkQueryOption
       take: lim,
       select: taskSelect,
     }),
+    prisma.communicationThread.findMany({
+      where: {
+        assignedUserId: null,
+        threadStatus: { in: ACTIONABLE_THREAD_STATUSES },
+      },
+      orderBy: [{ lastMessageAt: "desc" }, { createdAt: "desc" }],
+      take: lim,
+      select: threadSelect,
+    }),
   ]);
   const merged: UnifiedOpenWorkItem[] = [
     ...emails.map((r) => toUnifiedFromEmail(r)),
     ...intakes.map((r) => toUnifiedFromIntake(r)),
     ...tasks.map((r) => toUnifiedFromTask(r)),
+    ...threads.map((r) => toUnifiedFromThread(r)),
   ];
   return cap(sortUnified(merged), max);
 }
@@ -383,8 +521,13 @@ export async function getEscalatedOpenWork(options?: UnifiedOpenWorkQueryOptions
 export async function getOpenWorkForCampaignManager(
   options?: UnifiedOpenWorkQueryOptions,
 ): Promise<UnifiedOpenWorkItem[]> {
-  const [un, esc] = await Promise.all([getUnassignedOpenWork(options), getEscalatedOpenWork(options)]);
-  return cap(dedupeMaxSort([...un, ...esc]), options?.maxTotal ?? DEFAULT_MAX);
+  const lim = options?.limitPerSource ?? DEFAULT_LIMIT;
+  const [un, esc, festivals] = await Promise.all([
+    getUnassignedOpenWork(options),
+    getEscalatedOpenWork(options),
+    listPendingFestivalOpenWorkItems(lim),
+  ]);
+  return cap(dedupeMaxSort([...un, ...esc, ...festivals]), options?.maxTotal ?? DEFAULT_MAX);
 }
 
 /**
@@ -471,31 +614,38 @@ export async function getSeatInboxWorkAlignment(
 export { getSeatAssignmentContext } from "./seating";
 export type { SeatAssignmentContext, SeatInboxWorkAlignment } from "./assignment";
 
-// --- Counts (ASSIGN-1) — still includes threads for health only; v1 list queries exclude threads. ---
+// --- Counts (ASSIGN-1 + UWR-2): repo-grounded per-source totals for health / snapshot. ---
 
 export type OpenWorkCountBySource = {
   emailWorkflowItem: number;
   workflowIntake: number;
   campaignTask: number;
   communicationThread: number;
+  /** UWR-2: `FestivalIngestReviewStatus.PENDING_REVIEW` only. */
+  arkansasFestivalIngest: number;
 };
 
-const ACTIONABLE_THREAD_STATUSES: CommunicationThreadStatus[] = [
-  CommunicationThreadStatus.NEEDS_REPLY,
-  CommunicationThreadStatus.FOLLOW_UP,
-];
-
 /**
- * Read-only snapshot for dashboards / health; thread semantics are narrow (not part of UWR-1 v1 list).
+ * Read-only snapshot for dashboards / health; threads use NEEDS_REPLY + FOLLOW_UP only (UWR-2).
  */
 export async function getOpenWorkCountsBySource(): Promise<OpenWorkCountBySource> {
-  const [emailWorkflowItem, workflowIntake, campaignTask, communicationThread] = await Promise.all([
-    prisma.emailWorkflowItem.count({ where: { status: { in: OPEN_EMAIL } } }),
-    prisma.workflowIntake.count({ where: { status: { in: OPEN_INTAKE } } }),
-    prisma.campaignTask.count({ where: { status: { in: OPEN_TASK } } }),
-    prisma.communicationThread.count({
-      where: { threadStatus: { in: ACTIONABLE_THREAD_STATUSES } },
-    }),
-  ]);
-  return { emailWorkflowItem, workflowIntake, campaignTask, communicationThread };
+  const [emailWorkflowItem, workflowIntake, campaignTask, communicationThread, arkansasFestivalIngest] =
+    await Promise.all([
+      prisma.emailWorkflowItem.count({ where: { status: { in: OPEN_EMAIL } } }),
+      prisma.workflowIntake.count({ where: { status: { in: OPEN_INTAKE } } }),
+      prisma.campaignTask.count({ where: { status: { in: OPEN_TASK } } }),
+      prisma.communicationThread.count({
+        where: { threadStatus: { in: ACTIONABLE_THREAD_STATUSES } },
+      }),
+      prisma.arkansasFestivalIngest.count({
+        where: { reviewStatus: FestivalIngestReviewStatus.PENDING_REVIEW },
+      }),
+    ]);
+  return {
+    emailWorkflowItem,
+    workflowIntake,
+    campaignTask,
+    communicationThread,
+    arkansasFestivalIngest,
+  };
 }

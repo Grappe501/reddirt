@@ -1,7 +1,8 @@
 /**
  * Usage: npm run ingest  (from repo root)
  * Requires DATABASE_URL + OPENAI_API_KEY
- * Loads: markdown under docs/ (including docs/background/campaign-team-positions/ after `npm run sync:team-positions`),
+ * Loads: markdown under docs/ (including docs/ingested/county-wikipedia/ after `npm run ingest:county-wikipedia`),
+ *         docs/background/campaign-team-positions/ after `npm run sync:team-positions`,
  * structured site content (explainers, stories, editorial, events, regions, homepage/toolkit/press extras), and route seeds.
  */
 import path from "node:path";

@@ -35,7 +35,7 @@ Geography: **`countyId`** on intake, task, thread, and related User — filter d
 ## 3. Minimal read model
 
 - **No** giant new table.  
-- **UWR-1 + WB-CORE-1 deliver:** `getOpenWorkForUser`, `getOpenWorkForCampaignManager`, `getUnassignedOpenWork`, `getEscalatedOpenWork` (see [`unified-incoming-work-read-model.md`](./unified-incoming-work-read-model.md)); **`getInboxForPosition` / `getOpenWorkForPosition`** (alias) in `position-inbox.ts` — **position-narrowed** UWR-1 where heuristics exist (see [`position-workbench-foundation.md`](./position-workbench-foundation.md)). `getOpenWorkCountsBySource` **still** four parallel `count` queries (includes threads for health; v1 list queries **do not** merge threads). Read-only workbench: CM triage block + **position** pages.
+- **UWR-1 + UWR-2 + WB-CORE-1 deliver:** `getOpenWorkForUser`, `getOpenWorkForCampaignManager`, `getUnassignedOpenWork`, `getEscalatedOpenWork` (see [`unified-incoming-work-read-model.md`](./unified-incoming-work-read-model.md), [`unified-open-work-expansion-notes.md`](./unified-open-work-expansion-notes.md)); **`getInboxForPosition` / `getOpenWorkForPosition`** (alias) in `position-inbox.ts` — **position-narrowed** heuristics where defined (see [`position-workbench-foundation.md`](./position-workbench-foundation.md)). `getOpenWorkCountsBySource` — **five** domain counts (email, intake, task, actionable thread, **pending festival ingest**). **UWR-2** merges **threads** + adds **festival** rows to CM triage. Read-only workbench: CM triage block + **CM-2** bands + **position** pages.
 
 This matches FND-1 §6.2: a **contract** in code (here) before one mega-UI.
 

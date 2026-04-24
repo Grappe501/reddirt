@@ -49,6 +49,8 @@ export const OpenWorkSourceModel = {
   WorkflowIntake: "WorkflowIntake",
   CampaignTask: "CampaignTask",
   CommunicationThread: "CommunicationThread",
+  /** UWR-2: `reviewStatus === PENDING_REVIEW` only; deep-link is pending list (no per-row admin URL). */
+  ArkansasFestivalIngest: "ArkansasFestivalIngest",
 } as const;
 
 export type OpenWorkSourceModelId =

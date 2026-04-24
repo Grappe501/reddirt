@@ -4,7 +4,7 @@
 
 **Prerequisite:** [`targeting-data-inventory.md`](./targeting-data-inventory.md) (DATA-2) — confirms **no** election-result models exist today.
 
-**Cross-ref:** [`election-data-ingest-strategy.md`](./election-data-ingest-strategy.md) · [`targeting-signals-foundation.md`](./targeting-signals-foundation.md) · [`targeting-integration-foundation.md`](./targeting-integration-foundation.md) · [`geographic-county-mapping.md`](./geographic-county-mapping.md) · **DATA-3 sibling (multi-signal):** [`voter-signal-inventory.md`](./voter-signal-inventory.md) · [`targeting-future-layers.md`](./targeting-future-layers.md)
+**Cross-ref:** [`election-data-ingest-strategy.md`](./election-data-ingest-strategy.md) · [`election-results-ingest-foundation.md`](./election-results-ingest-foundation.md) (Arkansas JSON shapes + grains) · [`election-results-implementation-plan.md`](./election-results-implementation-plan.md) · [`raw-election-results-intake-map.md`](./raw-election-results-intake-map.md) · [`targeting-signals-foundation.md`](./targeting-signals-foundation.md) · [`targeting-integration-foundation.md`](./targeting-integration-foundation.md) · [`geographic-county-mapping.md`](./geographic-county-mapping.md) · **DATA-3 sibling (multi-signal):** [`voter-signal-inventory.md`](./voter-signal-inventory.md) · [`targeting-future-layers.md`](./targeting-future-layers.md)
 
 ---
 

@@ -96,6 +96,12 @@ model User {
   financialTransactionsConfirmed FinancialTransaction[]            @relation("FinancialTransactionConfirmedBy")
   /// FIELD-1: optional geographic/field coverage assignment (one row = one field scope × position anchor).
   fieldAssignments                 FieldAssignment[]
+  /// VOTER-MODEL-1: optional linkage when signal is about a `User` (CRM) rather than only `VoterRecord`.
+  voterSignals                     VoterSignal[]
+  voterClassificationsOverridden   VoterModelClassification[] @relation("VoterClassificationOverride")
+  voterInteractionsAsContact       VoterInteraction[]         @relation("VoterInteractionContactedBy")
+  voterInteractionsAsVolunteer     VoterInteraction[]         @relation("VoterInteractionRelatedVolunteer")
+  voterVotePlansCreated            VoterVotePlan[]            @relation("VoterVotePlanCreatedBy")
 }
 
 /// COMP-2: classification for dashboard-uploaded compliance knowledge files.
@@ -1921,8 +1927,148 @@ model County {
   conversationClusters      ConversationCluster[]
   conversationOpportunities ConversationOpportunity[]
   workflowIntakes           WorkflowIntake[]
+  electionCountyResults    ElectionCountyResult[]
+  electionPrecinctResults  ElectionPrecinctResult[]
 
   @@index([published, sortOrder])
+}
+
+// --- DATA-4 + ELECTION-INGEST-1: Arkansas election result JSON ingest (provenance + tabulation rows) ---
+
+enum ElectionResultSourceType {
+  JSON_FILE
+  MANUAL_UPLOAD
+  OFFICIAL_EXPORT
+  UNKNOWN
+}
+
+/// One import run from a file or export (provenance anchor for all child rows).
+model ElectionResultSource {
+  id                 String                   @id @default(cuid())
+  sourceName         String
+  /// Absolute or normalized path to the ingested file (for dedupe / audit).
+  sourcePath         String                   @db.Text
+  sourceType         ElectionResultSourceType @default(UNKNOWN)
+  electionName       String
+  electionDate       DateTime
+  electionIdExternal String?
+  isOfficial         Boolean?
+  /// e.g. legacy_election_info | preferential_election_data
+  parserVariant      String
+  importedAt         DateTime                 @default(now())
+  metadataJson       Json?
+  createdAt          DateTime                 @default(now())
+  updatedAt          DateTime                 @updatedAt
+
+  contests        ElectionContestResult[]
+  countyResults   ElectionCountyResult[]
+  precinctResults ElectionPrecinctResult[]
+
+  @@index([electionDate])
+  @@index([sourcePath])
+}
+
+model ElectionContestResult {
+  id                String   @id @default(cuid())
+  sourceId          String
+  source            ElectionResultSource @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+  contestName       String
+  contestType       String?
+  jurisdictionLevel String?
+  totalVotes        Int?
+  metadataJson      Json?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  countyResults    ElectionCountyResult[]
+  candidateResults ElectionCandidateResult[]
+  precinctResults  ElectionPrecinctResult[]
+
+  @@index([sourceId])
+}
+
+model ElectionCountyResult {
+  id               String   @id @default(cuid())
+  sourceId         String
+  source           ElectionResultSource @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+  contestId        String?
+  contest          ElectionContestResult? @relation(fields: [contestId], references: [id], onDelete: Cascade)
+  countyId         String?
+  county           County?  @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  countyNameRaw    String
+  countyFips       String?
+  totalVotes       Int?
+  registeredVoters Int?
+  ballotsCast      Int?
+  votePercent      Decimal? @db.Decimal(9, 4)
+  reportingPercent Decimal? @db.Decimal(9, 4)
+  metadataJson     Json?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  candidateResults ElectionCandidateResult[]
+
+  @@index([sourceId])
+  @@index([contestId])
+  @@index([countyId])
+}
+
+model ElectionCandidateResult {
+  id             String   @id @default(cuid())
+  contestId      String
+  contest        ElectionContestResult @relation(fields: [contestId], references: [id], onDelete: Cascade)
+  countyResultId String?
+  countyResult   ElectionCountyResult? @relation(fields: [countyResultId], references: [id], onDelete: Cascade)
+  candidateName  String
+  partyName      String?
+  totalVotes     Int
+  metadataJson   Json?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([contestId])
+  @@index([countyResultId])
+}
+
+model ElectionPrecinctResult {
+  id                 String   @id @default(cuid())
+  sourceId           String
+  source             ElectionResultSource @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+  contestId          String?
+  contest            ElectionContestResult? @relation(fields: [contestId], references: [id], onDelete: Cascade)
+  countyId           String?
+  county             County?  @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  countyNameRaw      String?
+  countyFips         String?
+  precinctNameRaw    String?
+  precinctExternalId String?
+  totalVotes         Int?
+  registeredVoters   Int?
+  ballotsCast        Int?
+  votePercent        Decimal? @db.Decimal(9, 4)
+  metadataJson       Json?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  candidateResults ElectionPrecinctCandidateResult[]
+
+  @@index([sourceId])
+  @@index([contestId])
+  @@index([countyId])
+}
+
+model ElectionPrecinctCandidateResult {
+  id               String   @id @default(cuid())
+  precinctResultId String
+  precinctResult   ElectionPrecinctResult @relation(fields: [precinctResultId], references: [id], onDelete: Cascade)
+  candidateName    String
+  partyName        String?
+  totalVotes       Int
+  metadataJson     Json?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([precinctResultId])
 }
 
 /// Campaign metrics — voter file fields structurally ready; null until pipeline syncs.
@@ -2002,6 +2148,109 @@ enum VoterSnapshotChangeType {
   UPDATED
   REMOVED
   REACTIVATED
+}
+
+// --- VOTER-MODEL-1 + INTERACTION-1: signals, provisional classifications, interaction log, vote-plan seed ---
+
+enum VoterSignalKind {
+  DONOR
+  VOLUNTEER
+  EVENT_ATTENDEE
+  INITIATIVE_SIGNER
+  RELATIONAL_CONTACT
+  CONTACT_LIST
+  VOTER_HISTORY
+  POLLING
+  MANUAL_NOTE
+  OTHER
+}
+
+enum VoterSignalSource {
+  INTERNAL
+  UPLOADED_FILE
+  VOTER_FILE
+  ELECTION_RESULTS
+  FEC
+  STATE_DONOR_DATA
+  RELATIONAL_ORGANIZING
+  MANUAL
+  OTHER
+}
+
+enum VoterSignalStrength {
+  STRONG
+  MODERATE
+  WEAK
+  NEGATIVE
+  UNKNOWN
+}
+
+enum ModelConfidence {
+  LOW
+  MEDIUM
+  HIGH
+  HUMAN_CONFIRMED
+}
+
+enum VoterClassification {
+  STRONG_BASE
+  LIKELY_SUPPORTER
+  LEANING_SUPPORTER
+  PERSUADABLE
+  LOW_PROPENSITY_SUPPORTER
+  UNKNOWN
+  UNLIKELY_OR_OPPOSED
+}
+
+enum ModelGeneratedBy {
+  HUMAN
+  RULE_BASED
+  AI_ASSISTED
+  IMPORTED
+}
+
+enum VoterInteractionType {
+  INTRODUCTION
+  REGISTRATION_CHECK
+  ISSUE_CONVERSATION
+  SUPPORT_ID
+  VOLUNTEER_ASK
+  DONATION_ASK
+  EVENT_INVITE
+  GOTV_CONTACT
+  VOTE_PLAN
+  FOLLOW_UP
+  OTHER
+}
+
+enum VoterInteractionChannel {
+  IN_PERSON
+  PHONE
+  TEXT
+  EMAIL
+  SOCIAL_DM
+  EVENT
+  DOOR
+  OTHER
+}
+
+enum VoterSupportLevel {
+  STRONG_SUPPORT
+  LEAN_SUPPORT
+  PERSUADABLE
+  UNDECIDED
+  LEAN_OPPOSE
+  STRONG_OPPOSE
+  UNKNOWN
+}
+
+enum VotePlanStatus {
+  NOT_STARTED
+  NEEDS_PLAN
+  PLAN_CREATED
+  NEEDS_REMINDER
+  VOTED_CONFIRMED
+  UNKNOWN
 }
 
 /// One row per SOS file import / snapshot used for diffs and county rollups.
@@ -2108,6 +2357,10 @@ model VoterRecord {
   userLinks                User[]                    @relation("UserVoterLink")
   volunteerMatchCandidates VolunteerMatchCandidate[]
   signupEntriesMatched     SignupSheetEntry[]        @relation("SignupEntryMatchedVoter")
+  voterSignals             VoterSignal[]
+  voterModelClassifications VoterModelClassification[]
+  voterInteractions        VoterInteraction[]
+  voterVotePlans           VoterVotePlan[]
 
   @@index([countyId, inLatestCompletedFile])
   @@index([countyId, lastName, firstName])
@@ -2115,6 +2368,101 @@ model VoterRecord {
   @@index([countySlug])
   @@index([countyFips])
   @@index([registrationDate])
+}
+
+/// Provenance row for a modeled influence signal (not a vote claim).
+model VoterSignal {
+  id             String              @id @default(cuid())
+  voterRecordId  String?
+  voterRecord    VoterRecord?        @relation(fields: [voterRecordId], references: [id], onDelete: Cascade)
+  userId         String?
+  user           User?               @relation(fields: [userId], references: [id], onDelete: SetNull)
+  signalKind     VoterSignalKind
+  signalSource   VoterSignalSource
+  signalStrength VoterSignalStrength
+  signalDate     DateTime?
+  confidence     ModelConfidence
+  notes          String?             @db.Text
+  metadataJson   Json?
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+
+  @@index([voterRecordId])
+  @@index([userId])
+  @@index([signalKind])
+}
+
+/// Current and historical tier assignments; `isCurrent` marks the active row per voter for read helpers.
+model VoterModelClassification {
+  id                 String              @id @default(cuid())
+  voterRecordId      String
+  voterRecord        VoterRecord         @relation(fields: [voterRecordId], references: [id], onDelete: Cascade)
+  classification     VoterClassification
+  confidence         ModelConfidence
+  sourceSummary      String?             @db.Text
+  modelVersion       String              @default("voter-model-v1")
+  generatedBy        ModelGeneratedBy
+  generatedAt        DateTime            @default(now())
+  isCurrent          Boolean             @default(true)
+  overriddenByUserId String?
+  overriddenBy       User?               @relation("VoterClassificationOverride", fields: [overriddenByUserId], references: [id], onDelete: SetNull)
+  overriddenAt       DateTime?
+  overrideReason     String?             @db.Text
+  metadataJson       Json?
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+
+  @@index([voterRecordId])
+  @@index([voterRecordId, isCurrent])
+}
+
+/// Human- or staff-logged touchpoint; does not auto-imply support unless `supportLevel` is set.
+model VoterInteraction {
+  id                     String                  @id @default(cuid())
+  voterRecordId          String?
+  voterRecord            VoterRecord?            @relation(fields: [voterRecordId], references: [id], onDelete: Cascade)
+  contactedByUserId      String?
+  contactedBy            User?                   @relation("VoterInteractionContactedBy", fields: [contactedByUserId], references: [id], onDelete: SetNull)
+  relatedVolunteerUserId String?
+  relatedVolunteer       User?                   @relation("VoterInteractionRelatedVolunteer", fields: [relatedVolunteerUserId], references: [id], onDelete: SetNull)
+  interactionType        VoterInteractionType
+  interactionChannel     VoterInteractionChannel
+  interactionDate        DateTime                @default(now())
+  supportLevel           VoterSupportLevel?
+  registrationChecked    Boolean                 @default(false)
+  registrationStatusAtContact String?
+  wantsFollowUp          Boolean                 @default(false)
+  followUpNotes          String?                 @db.Text
+  votePlanStatus         VotePlanStatus?
+  notes                  String?                 @db.Text
+  metadataJson           Json?
+  createdAt              DateTime                @default(now())
+  updatedAt              DateTime                @updatedAt
+
+  @@index([voterRecordId])
+  @@index([contactedByUserId])
+  @@index([relatedVolunteerUserId])
+  @@index([interactionDate])
+}
+
+/// One row per voter for vote-plan tracking (multiple rows allowed; consumers should prefer latest by `updatedAt`).
+model VoterVotePlan {
+  id                   String         @id @default(cuid())
+  voterRecordId        String
+  voterRecord          VoterRecord    @relation(fields: [voterRecordId], references: [id], onDelete: Cascade)
+  createdByUserId      String?
+  createdBy            User?          @relation("VoterVotePlanCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  planStatus           VotePlanStatus @default(NEEDS_PLAN)
+  votingMethod         String?
+  plannedVoteDate      DateTime?
+  pollingPlaceNotes    String?        @db.Text
+  transportationNeeded Boolean        @default(false)
+  reminderNeeded       Boolean        @default(true)
+  notes                String?        @db.Text
+  createdAt            DateTime       @default(now())
+  updatedAt            DateTime       @updatedAt
+
+  @@index([voterRecordId])
 }
 
 /// Per-voter delta rows for a snapshot (audit + recompute). Heavy table at full state scale—archive old snapshots as needed.

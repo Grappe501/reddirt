@@ -51,9 +51,12 @@ const SUPPORTED: Partial<Record<PositionId, PositionInboxConfig>> = {
       "EmailWorkflowItem",
       "WorkflowIntake",
       "CampaignTask",
+      "CommunicationThread",
+      "ArkansasFestivalIngest",
     ] as (keyof typeof OpenWorkSourceModel)[],
     heuristic: "cm_triage",
-    heuristicNote: "CM triage slice = unassigned (all v1 sources) + escalated / risk-flagged email; same as UWR-1 CM view.",
+    heuristicNote:
+      "CM triage slice = UWR-2 `getOpenWorkForCampaignManager`: unassigned (email, intake, task, actionable threads) + escalated email + pending festival ingests.",
   },
   communications_director: {
     positionId: "communications_director",

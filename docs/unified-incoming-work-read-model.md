@@ -1,6 +1,6 @@
-# Unified incoming work — read model (UWR-1) (RedDirt)
+# Unified incoming work — read model (UWR-1 + UWR-2) (RedDirt)
 
-**Packet UWR-1** implements the first **code-first, read-only, cross-source** “incoming work” layer: **normalized list rows** built from **independent** Prisma queries, merged in memory—**no** master table, **no** routing automation, **no** new migrations.
+**Packet UWR-1** implements the first **code-first, read-only, cross-source** “incoming work” layer: **normalized list rows** built from **independent** Prisma queries, merged in memory—**no** master table, **no** routing automation, **no** new migrations. **Packet UWR-2** widens the same read model with **actionable** `CommunicationThread` statuses and **`ArkansasFestivalIngest` `PENDING_REVIEW`** in the CM merge + counts—see [`unified-open-work-expansion-notes.md`](./unified-open-work-expansion-notes.md).
 
 **Cross-ref:** [`unified-campaign-engine-foundation.md`](./unified-campaign-engine-foundation.md) · [`unified-open-work-foundation.md`](./unified-open-work-foundation.md) · [`assignment-rail-foundation.md`](./assignment-rail-foundation.md) · [`position-inbox-foundation.md`](./position-inbox-foundation.md) · [`email-workflow-intelligence-AI-HANDOFF.md`](./email-workflow-intelligence-AI-HANDOFF.md) · `src/lib/campaign-engine/open-work.ts` · `src/lib/campaign-engine/assignment.ts`
 
@@ -12,20 +12,22 @@
 
 ---
 
-## 2. v1 sources (strict set)
+## 2. Sources (UWR-1 core + UWR-2 extensions)
 
-UWR-1 only includes models with **clear “open” status enums** and **assignee** columns:
+**UWR-1** only included models with **clear “open” status enums** and **assignee** columns. **UWR-2** adds two extensions with **documented** filters.
 
-| Source | Rationale | “Open” definition (UWR-1) |
-|--------|------------|----------------------------|
+| Source | Rationale | “Open” definition |
+|--------|------------|-------------------|
 | `EmailWorkflowItem` | Queue-first story; E-1/E-2; escalation + assignee in schema | Status in `NEW`, `ENRICHED`, `IN_REVIEW`, `READY_TO_RESPOND`, `APPROVED`, `ESCALATED` — **not** `CLOSED`, `ARCHIVED`, `SPAM` |
 | `WorkflowIntake` | `assignedUserId` + `status` on row | `PENDING`, `IN_REVIEW`, `AWAITING_INFO`, `READY_FOR_CALENDAR` |
 | `CampaignTask` | `assignedUserId` + `status` + priority | `TODO`, `IN_PROGRESS`, `BLOCKED` |
+| `CommunicationThread` (**UWR-2**) | Staff-action states only — avoids `ACTIVE` flood | **`NEEDS_REPLY`**, **`FOLLOW_UP`**; merged in **`getOpenWorkForUser`**, **`getUnassignedOpenWork`**, CM triage |
+| `ArkansasFestivalIngest` (**UWR-2**) | Matches festival review UI (`PENDING_REVIEW`) | **`PENDING_REVIEW`**; merged in **`getOpenWorkForCampaignManager`** + **`getOpenWorkCountsBySource`**; `href` is pending **queue** URL (no per-row detail route) |
 
-**Not in v1 (on purpose):**
+**Still not merged (on purpose):**
 
-- **`CommunicationThread`** — *Actionable* is product-sensitive (`NEEDS_REPLY` only vs `ACTIVE` + unread); still counted in `getOpenWorkCountsBySource` for health, **not** merged into unified **list** functions in this packet.
-- **Submissions, festival ingests, inbound content, review queues** — “open” is domain-specific; add in UWR-2+ with honest filters and deep links.
+- **`Submission`** — no row-level triage state / admin `href`; see [`unified-open-work-expansion-notes.md`](./unified-open-work-expansion-notes.md).
+- **Inbound content, generic review queues** — domain-specific; future UWR-3+ with honest filters.
 - **Volunteer `SignupSheetDocument` route** at `/admin/volunteers/intake` is a **different** object from `WorkflowIntake` (Prisma) — do not conflate in this read model.
 
 ---

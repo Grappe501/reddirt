@@ -2,7 +2,7 @@
 
 **Packet CM-1.** Blueprint for the **Campaign Manager Workbench** as the top **orchestration** layer in the repo, with all other workbenches as **subordinate** operational systems. This doc does **not** implement features, permissions, or routing logic.
 
-**Cross-ref:** [`incoming-work-matrix.md`](./incoming-work-matrix.md) · [`unified-campaign-engine-foundation.md`](./unified-campaign-engine-foundation.md) · [`shared-rails-matrix.md`](./shared-rails-matrix.md) · [`workbench-build-map.md`](./workbench-build-map.md) · [`system-domain-flow-map.md`](./system-domain-flow-map.md) · [`public-site-system-map.md`](./public-site-system-map.md) · [`email-workflow-intelligence-AI-HANDOFF.md`](./email-workflow-intelligence-AI-HANDOFF.md)
+**Cross-ref:** [`campaign-manager-workbench-spec.md`](./campaign-manager-workbench-spec.md) (BRAIN-OPS-1 command-center bands) · [`deterministic-brain-foundation.md`](./deterministic-brain-foundation.md) · [`incoming-work-matrix.md`](./incoming-work-matrix.md) · [`unified-campaign-engine-foundation.md`](./unified-campaign-engine-foundation.md) · [`shared-rails-matrix.md`](./shared-rails-matrix.md) · [`workbench-build-map.md`](./workbench-build-map.md) · [`system-domain-flow-map.md`](./system-domain-flow-map.md) · [`public-site-system-map.md`](./public-site-system-map.md) · [`email-workflow-intelligence-AI-HANDOFF.md`](./email-workflow-intelligence-AI-HANDOFF.md)
 
 ---
 
