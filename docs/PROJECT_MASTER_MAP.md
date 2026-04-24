@@ -3,8 +3,9 @@
 **Purpose:** Single **canonical continuity document** for a **new AI thread** or expert collaborator working in **`RedDirt/`**.
 
 **Orientation (read first):** **[`THREAD_HANDOFF_MASTER_MAP.md`](./THREAD_HANDOFF_MASTER_MAP.md)** (**THREAD-HANDOFF-1**) is the **first** orientation doc — vision, loop, guardrails, lane table, next paths.  
-**Operating protocol:** **[`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md)** (**PROTO-2** + **BLUEPRINT-OPS-1**) — return formats, packet scaling, preflight, drift checks.  
-**Blueprint rule:** **Every** packet should **update** blueprint status here, in the thread handoff, and in any lane doc the packet claims.
+**Operating protocol:** **[`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md)** (**PROTO-2** + **BLUEPRINT-OPS-1** + **DIV-OPS-1** + **DIV-OPS-2**) — return formats, **Build steering decision** (target / reason / non-target), **division** status, packet scaling, preflight, drift checks.  
+**Division registry (required):** **[`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md)** — every division at **L0–L5** and **Priority level**; **check balance** + **steering** **before** selecting the next packet; keep **aligned** with the ledger table below.  
+**Blueprint rule:** **Every** packet should **update** blueprint status here, the **registry** (when a division moves), the thread handoff, and any lane doc the packet claims.
 
 Use this file as the **primary** `@` reference for **packet** history and code-grounded lists; use the **thread handoff** when **onboarding a fresh** ChatGPT thread with **no** prior chat.
 
@@ -53,20 +54,22 @@ Use this file as the **primary** `@` reference for **packet** history and code-g
 
 ## Blueprint Progress Ledger
 
-Compact **lane** status for **blueprint** continuity (maturity = **L0–L5**; see [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md)). Update this table when a packet **materially** advances a lane.
+**Alignment:** This ledger **must** remain **aligned** with [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) (**DIV-OPS-1**). When a **division** row changes, update **both**; **Cursor** returns must include a **Build steering decision** + **division status** per [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) (**DIV-OPS-2** / **DIV-OPS-1**). Maturity = **L0–L5**. **All packets** must include a **Build steering decision** (target / reason / non-target) **tied to this ledger** and registry **Priority** — not optional narrative.
 
-| Lane | Current status (Apr 2026) |
-|------|---------------------------|
-| **Email Workflow Intelligence** | **Strongest** lane. **Queue-first**, **approval-first**; E-1/E-2 in code; **policy-gated** automation still needed for any no-review send. |
-| **Relational Organizing** | **REL-2** at **L2** (persistence, admin seam, truth snapshot advisory). **REL-3** (volunteer home, rollups, dedupe) **pending**; **migration** apply per environment. |
-| **GOTV / Voter File** | **Persistence** + import **foundations** exist (voter file, models, election ingest, signals); **turnout planning read models** (e.g. **GOTV-1**) still **pending** relative to full GOTV doc vision. |
-| **Workbench** | **Hierarchy** and many **surfaces** exist; **operator workflows** still **expanding** toward CM orchestration spec. |
-| **Truth Snapshot / Deterministic Brain** | **Advisory** governance **layer** in code (`truth` / `getTruthSnapshot`); **must not** become an **authority** tier over data or policy. |
-| **AJAX Organizing Hub / Discord** | **Communication** infrastructure (concept + foundation docs); **not** system source of truth. |
-| **Finance / Compliance** | **Must** remain **approval-** and **audit-first**; ledger/budget/compliance paths are **governed**, not auto-executing. |
-| **Volunteer / Field** | Needs **volunteer-facing UX** and **county** / relational **rollups** in product (per REL / VOL / FIELD packets). |
-| **Content / Author Studio** | Exists in **pieces** across comms, editorial, media; **queue / publishing** governance must stay explicit. |
-| **Data inventory** | [`database-table-inventory.md`](./database-table-inventory.md) **table count** may **drift**; **refresh** after **schema** changes. |
+| Division name | Priority | Level | Primary lane(s) | Status | Gap note |
+|---------------|----------|-------|------------------|--------|----------|
+| **Comms / Email Workflow Intelligence** | **MEDIUM** | **L2–L3** (emerging) | E-1, E-2, COMMS-UNIFY | **Partial** / **Active** | **Queue-first**; do **not** **expand** without **steering**; **L4+** needs **justification** if **CRITICAL** divisions lag. |
+| **Relational Organizing** | **HIGH** | **L2** | REL-2, REL-3+ | **Partial** / **Active** | **REL-3** **ready** to schedule; **migration** per env. |
+| **GOTV / Turnout System** | **CRITICAL** | **L1–L2** | DATA-4, VOTER-MODEL, GOTV-1 (doc) | **Partial** | **Turnout** read models **not** end-to-end — **do not** **neglect** vs **comms** depth. |
+| **Volunteer / Field Operations** | **CRITICAL** | **L1–L2** | VOL-CORE, FIELD-1, REL-1 | **Partial** | **No** cohesive **volunteer** UX — **balance** **against** admin-heavy work. |
+| **Workbench / Operator System** | **MEDIUM** | **L2–L3** | UWR, WB-CORE, SEAT, CM-2 | **Partial** / **Active** | **Many** routes; **steer** new work to **gaps**, not only **convenience**. |
+| **Truth Snapshot / Deterministic Brain** | **MEDIUM** | **L2** (advisory) | BRAIN-OPS | **Partial** / **Active** | **Advisory** only. |
+| **Data Layer / Voter File / Ingest** | **MEDIUM** | **L2** (strong) | DATA-1–4, ELECTION-INGEST | **Partial** / **Active** | **PRECINCT-1** / **inventory** refresh as needed. |
+| **Content / Author Studio** | **HIGH** | **L1–L2** | (scattered) | **Partial** / **Fragmented** | **Not** one unified **author** product. |
+| **Finance / Compliance** | **MEDIUM** (guarded) | **L1** | POLICY, COMP, FIN, BUDGET | **Partial** | **Approval-** / **audit-first** always. |
+| **AJAX Organizing Hub (Discord)** | **LOW** | **L1** | Discord docs | **Docs** / **Partial** | **Not** org **source of truth**. |
+| **Campaign Intelligence / Reporting** | **HIGH** | **L1–L2** | Analytics, rollups, DBMAP | **Partial** | **No** single **productized** intel **layer**. |
+| **Data inventory (meta)** | — | N/A (maintenance) | DBMAP-1 | **Partial** | [`database-table-inventory.md`](./database-table-inventory.md) — **refresh** after **schema** changes. |
 
 ---
 

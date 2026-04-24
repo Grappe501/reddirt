@@ -2,13 +2,14 @@
 
 This folder is the **source of truth** for vision, philosophy, brand, and how the public site should evolve. Update these docs as the movement grows; the website should be changed to match what’s locked here.
 
-**New AI thread, engineer, or Cursor session — read in this order:** (1) **[`THREAD_HANDOFF_MASTER_MAP.md`](THREAD_HANDOFF_MASTER_MAP.md)** (THREAD-HANDOFF-1) — full orientation, vision, **ChatGPT↔Cursor** loop, guardrails, lane table, next paths. (2) **[`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md)** (PROTO-2 + BLUEPRINT-OPS-1) — **durable** return formats, packet scaling, preflight, drift and new-thread checklists. (3) **[`PROJECT_MASTER_MAP.md`](PROJECT_MASTER_MAP.md)** (MASTER-MAP-1) — packet map, **Blueprint Progress Ledger**, code-grounded **§8** capabilities, gaps, reading order.
+**New AI thread, engineer, or Cursor session — read in this order:** (1) **[`THREAD_HANDOFF_MASTER_MAP.md`](THREAD_HANDOFF_MASTER_MAP.md)** (THREAD-HANDOFF-1) — full orientation, **Build steering** (§0.9), **division** balance (§0.8). (2) **[`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md)** (PROTO-2 + DIV-OPS-1 + **DIV-OPS-2**) — **Build steering decision** (mandatory) + **division status**, preflight, drift. (3) **[`DIVISION_MASTER_REGISTRY.md`](DIVISION_MASTER_REGISTRY.md)** — **L0–L5** + **Priority**; **no** next packet without **balance** + **target division**. (4) **[`PROJECT_MASTER_MAP.md`](PROJECT_MASTER_MAP.md)** (MASTER-MAP-1) — **Blueprint Progress Ledger** (tied to **steering**), **§8** capabilities.
 
 ## How to use
 
 | You need… | Open… |
 |-----------|--------|
-| **New thread or engineer — orientation stack (in order)** | (1) [`THREAD_HANDOFF_MASTER_MAP.md`](THREAD_HANDOFF_MASTER_MAP.md) (**THREAD-HANDOFF-1** — vision, **§0** loop, guardrails) · (2) [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) (**PROTO-2** + **BLUEPRINT-OPS-1** — return formats, preflight) · (3) [`PROJECT_MASTER_MAP.md`](PROJECT_MASTER_MAP.md) (**MASTER-MAP-1** — ledger, packets, **§8** capabilities) |
+| **New thread or engineer — orientation stack (in order)** | (1) [`THREAD_HANDOFF_MASTER_MAP.md`](THREAD_HANDOFF_MASTER_MAP.md) · (2) [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) — **check division balance (DIV-OPS-1)** · (3) [`DIVISION_MASTER_REGISTRY.md`](DIVISION_MASTER_REGISTRY.md) — **before** next packet · (4) [`PROJECT_MASTER_MAP.md`](PROJECT_MASTER_MAP.md) (ledger **aligned** with registry) |
+| **Division list + L0–L5 + balance (DIV-OPS-1)** | [`DIVISION_MASTER_REGISTRY.md`](DIVISION_MASTER_REGISTRY.md) (must match [`PROJECT_MASTER_MAP.md`](PROJECT_MASTER_MAP.md) **Blueprint Progress Ledger**) |
 | Why we exist and how we think | [`philosophy/`](philosophy/README.md) |
 | Public narrative & manifesto | [`narrative/`](narrative/README.md) |
 | Visual system & tokens for build | [`brand/`](brand/README.md) |

@@ -7,7 +7,7 @@
 
 **How to use this file:** This is a **single drag-and-drop** artifact for a **new ChatGPT thread, Cursor session, or human hire**. It orients, audits, and routes—**it does not replace** reading `prisma/schema.prisma` and key code when implementing. If anything here conflicts with **code** or **migrations**, **code wins**; update this file after you verify.
 
-**Durable one-page protocol (preflight, checklists, return formats):** [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) (**PROTO-2** + **BLUEPRINT-OPS-1**).
+**Durable one-page protocol** (preflight, checklists, return formats, division balance, active **build steering**): [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) (**PROTO-2** + **BLUEPRINT-OPS-1** + **DIV-OPS-1** + **DIV-OPS-2**). **Division registry** (balance + **Priority level**): [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) — **required** before the next packet; **check** parity, **CRITICAL** gaps, and **Build steering** vs [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) **Blueprint Progress Ledger**.
 
 ---
 
@@ -33,6 +33,8 @@ Every Cursor return should include:
 - **FILES** — Paths touched; migrations named if applicable.
 - **BUILD PROGRESS UPDATE** — Packets, rails, and behavior delta vs before.
 - **BLUEPRINT PROGRESS UPDATE** — What is now real in code vs docs-only; next safe packet.
+- **BUILD STEERING DECISION** (DIV-OPS-2) — **TARGET DIVISION**; **REASON**; **NON-TARGET DIVISIONS** (and why not). **Mandatory** every pass; see [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) and **§0.9** below.
+- **DIVISION STATUS UPDATE** (DIV-OPS-1) — For each **relevant** division: **level (L0–L5)**; **what changed**; **imbalance / risk**.
 - **DRIFT CHECK** — Stayed on rails? Any overreach or scope creep?
 - **LANE LEVEL UPDATE** — Which lanes moved **L0–L5** (use the lane table in §0.5).
 - **WHAT IS STILL MISSING** — Honest gaps; dependencies before automation.
@@ -92,6 +94,20 @@ On each pass, the blueprint should record **lane maturity** using this scale (al
 - **REL-2 (relational contact foundation)** is **implemented** as **L2** — relational **persistence** and **admin** seam (`RelationalContact`, `VoterInteraction` / `VoterSignal` links, `relational-contacts.ts`, `relational-matching.ts`, admin pages, truth snapshot advisory counts). **`npx prisma generate`** and **`npx tsc --noEmit`** have passed when last run; **migration file exists** and **must** be **applied per environment** when the database is available (`npx prisma migrate deploy` or dev equivalent).
 - **Next likely REL packet:** **REL-3** — volunteer relational **home** + **rollups** + **dedupe** — *or* **GOTV-1** read model, depending on campaign priority (see [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) **Blueprint Progress Ledger**).
 - **Email workflow** remains **queue-first**, **approval-first**; no change to that doctrine in this pass.
+
+### 0.8 Division balance system (DIV-OPS-1)
+
+- **Divisions** (top-level campaign OS areas) are listed and leveled in [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md). They must be **reviewed** on **every** pass as part of the **division status** return — not only the lane you edited.
+- **ChatGPT** may **redirect** the next build to a **lagging** division if **imbalance** is unsafe (e.g. automation in one area while a **foundational** division is still **L1**) — **document the rationale** if you intentionally **skew**.
+- **Cursor** must **not** assume the “obvious” next packet without **checking** division **gaps** in the **registry** + [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) **Blueprint Progress Ledger** (they **must** stay **aligned**).
+- **Balance rule:** no division should hit **L4+** while another **critical** division is stuck at **L1** without **explicit** justification; **foundational** divisions should be at **L2** before **dependent** **automation** elsewhere. Full doctrine: [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) **Division tracking & balance (DIV-OPS-1)**.
+
+### 0.9 Build steering system (DIV-OPS-2)
+
+- **ChatGPT** selects **direction** using **imbalance** + **Priority level** in [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) (e.g. **CRITICAL** = Volunteer / Field, GOTV); **Cursor** is expected to **execute within** the **script’s** **target** division **unless** the script explicitly authorizes a pivot.  
+- **Cursor** must **not** **silently** redirect a build to an **easier** or **familiar** lane (e.g. more **Comms** or **Workbench** polish while **GOTV** or **volunteer** lags) without stating it in the **Build steering decision**.  
+- If **Cursor** detects a **better** **alternative** than the script’s target: **propose** it **explicitly** in **BUILD STEERING DECISION** (REASON + NON-TARGET) — do **not** **assume** the redirect; the **user** / **ChatGPT** confirms next pass.  
+- **Enforcement** (declarations, L3+ justification): [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) **Build steering doctrine (DIV-OPS-2)**.
 
 ---
 
