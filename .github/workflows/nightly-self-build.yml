@@ -1,0 +1,56 @@
+# AUTO-BUILD-2 — Nightly scheduled self-build runner (verification + handoff artifact only)
+#
+# Target local time: 2:30 AM America/Chicago (roughly; see cron note).
+# GitHub Actions schedule uses UTC only.
+# - 07:30 UTC ≈ 2:30 AM Central Daylight Time (CDT, UTC-5 in summer).
+# - 08:30 UTC ≈ 2:30 AM Central Standard Time (CST, UTC-6 in winter).
+# Central time shifts with DST; review this schedule seasonally.
+#
+# This workflow does NOT: deploy, migrate, push to main, send mail, call campaign APIs, or write production data.
+# Repository root = RedDirt/ (this git repo).
+
+name: Nightly self-build (AUTO-BUILD-2)
+
+on:
+  schedule:
+    - cron: "30 7 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nightly-self-build
+  cancel-in-progress: false
+
+jobs:
+  nightly-self-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Preflight (AUTO-BUILD-2 handoff)
+        run: npm run nightly:self-build:preflight
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Upload handoff artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nightly-self-build-handoff-${{ github.run_id }}
+          path: .nightly-self-build/nightly-self-build-*.md
+          if-no-files-found: warn

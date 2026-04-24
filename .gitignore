@@ -62,3 +62,6 @@ campaign-media/duplicate/
 campaign-media/ingest.log
 # USB phone imports (local only)
 campaign-media/phone-import/
+
+# AUTO-BUILD-2: generated nightly handoff markdown (keep .nightly-self-build/.gitkeep)
+.nightly-self-build/nightly-self-build-*.md

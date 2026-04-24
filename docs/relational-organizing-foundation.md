@@ -1,6 +1,6 @@
 # Relational organizing — foundation (REL-1) (RedDirt)
 
-**Packet REL-1** defines the **Relational Organizing Engine (ROE)** as a **first-class** concept: volunteer-owned networks, structured scaling (Power of 5, PODs), honest voter-file touchpoints, and **AI-assisted** (never auto-sent) messaging. **Packet REL-2** (see [`relational-contact-implementation-foundation.md`](./relational-contact-implementation-foundation.md)) adds **minimal** Prisma + helpers + admin list/detail—no volunteer product UI, no auto-matching.
+**Packet REL-1** defines the **Relational Organizing Engine (ROE)** as a **first-class** concept: volunteer-owned networks, structured scaling (Power of 5, PODs), honest voter-file touchpoints, and **AI-assisted** (never auto-sent) messaging. **Packet REL-2** (see [`relational-contact-implementation-foundation.md`](./relational-contact-implementation-foundation.md)) adds **minimal** Prisma + helpers + admin list/detail. **Packet REL-3** adds the **volunteer-facing** relational home at **`/relational`** (signed-in **User**): list/detail, create/update own contacts, **`getUserRelationalSummary`** rollups, **`findPotentialDuplicates`** (read-only signals), **`recordRelationalTouch`** — still **no** auto-matching, **no** messaging, **no** classification.
 
 **Cross-ref:** [`relational-contact-implementation-foundation.md`](./relational-contact-implementation-foundation.md) (REL-2) · [`pod-system-foundation.md`](./pod-system-foundation.md) · [`relationship-data-model-foundation.md`](./relationship-data-model-foundation.md) · [`relational-voter-integration.md`](./relational-voter-integration.md) · [`relational-kpi-foundation.md`](./relational-kpi-foundation.md) · [`relational-ai-assist-foundation.md`](./relational-ai-assist-foundation.md) · [`unified-campaign-engine-foundation.md`](./unified-campaign-engine-foundation.md) · [`shared-rails-matrix.md`](./shared-rails-matrix.md) · [`identity-and-voter-link-foundation.md`](./identity-and-voter-link-foundation.md) · [`field-structure-foundation.md`](./field-structure-foundation.md) · [`county-registration-goals-verification.md`](./county-registration-goals-verification.md)
 
@@ -85,8 +85,8 @@
 - **Helpers:** `relational-contacts.ts` (CRUD, summary, `recordRelationalTouch`); `relational-matching.ts` (read-only suggestions, `setRelationalContactVoterMatch`).
 - **Admin:** `/admin/relational-contacts` (list + minimal create) and `/admin/relational-contacts/[id]` (read + suggestions; **not** auto-apply).
 
-**Likely next (REL-3+):** county rollups, dedupe when two volunteers name the same person, volunteer-facing UI, XP hooks (GAME-2).
+**REL-3 (shipped):** volunteer UI at `/relational`, `relational-rollups.ts`, `relational-dedupe.ts`, `relational-user-session.ts` (email sign-in to existing `User`). **Still next (REL-4+):** cross-volunteer county rollups, GAME-2 XP hooks, richer auth.
 
 ---
 
-*Last updated: Packet REL-1 (concepts) + **REL-2** (persistence and docs cross-links).*
+*Last updated: Packet REL-1 (concepts) + **REL-2** (persistence) + **REL-3** (volunteer relational home + rollups + dedupe signals).*

@@ -7,7 +7,7 @@
 
 **How to use this file:** This is a **single drag-and-drop** artifact for a **new ChatGPT thread, Cursor session, or human hire**. It orients, audits, and routes—**it does not replace** reading `prisma/schema.prisma` and key code when implementing. If anything here conflicts with **code** or **migrations**, **code wins**; update this file after you verify.
 
-**Durable one-page protocol** (preflight, checklists, return formats, division balance, active **build steering**): [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) (**PROTO-2** + **BLUEPRINT-OPS-1** + **DIV-OPS-1** + **DIV-OPS-2**). **Division registry** (balance + **Priority level**): [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) — **required** before the next packet; **check** parity, **CRITICAL** gaps, and **Build steering** vs [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) **Blueprint Progress Ledger**.
+**Durable one-page protocol** (preflight, checklists, return formats, division balance, active **build steering**): [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) (**PROTO-2** + **BLUEPRINT-OPS-1** + **DIV-OPS-1** + **DIV-OPS-2** + **BLUEPRINT-EXP-1**). **Unattended / self-build (overnight) rails:** [`AUTO_BUILD_PROTOCOL.md`](./AUTO_BUILD_PROTOCOL.md) (**AUTO-BUILD-1** policy, **AUTO-BUILD-2** nightly **GitHub** **workflow** + **preflight** **artifact**). **Division registry** (balance + **Priority** + **forward path** per division): [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) — **required** before the next packet; **check** parity, **CRITICAL** gaps, **Build steering** / **next-stage** **unlocks** vs [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) **Blueprint Progress Ledger** + **Future-state blueprint**.
 
 ---
 
@@ -92,7 +92,7 @@ On each pass, the blueprint should record **lane maturity** using this scale (al
 ### 0.7 Current latest build state (Apr 2026)
 
 - **REL-2 (relational contact foundation)** is **implemented** as **L2** — relational **persistence** and **admin** seam (`RelationalContact`, `VoterInteraction` / `VoterSignal` links, `relational-contacts.ts`, `relational-matching.ts`, admin pages, truth snapshot advisory counts). **`npx prisma generate`** and **`npx tsc --noEmit`** have passed when last run; **migration file exists** and **must** be **applied per environment** when the database is available (`npx prisma migrate deploy` or dev equivalent).
-- **Next likely REL packet:** **REL-3** — volunteer relational **home** + **rollups** + **dedupe** — *or* **GOTV-1** read model, depending on campaign priority (see [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) **Blueprint Progress Ledger**).
+- **REL-3 (volunteer relational surface)** is **partially** **implemented** — organizer **`/relational`**, **rollups** / **dedupe** **signals**, **`recordRelationalTouch`**; **county**-scale **cross-volunteer** **rollups** and **governed** **merge** **workflow** remain **forward** **path** (see **Division forward path** in [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md)). **GOTV-1** read model remains a **separate** **CRITICAL** **track** (same map).
 - **Email workflow** remains **queue-first**, **approval-first**; no change to that doctrine in this pass.
 
 ### 0.8 Division balance system (DIV-OPS-1)
@@ -108,6 +108,21 @@ On each pass, the blueprint should record **lane maturity** using this scale (al
 - **Cursor** must **not** **silently** redirect a build to an **easier** or **familiar** lane (e.g. more **Comms** or **Workbench** polish while **GOTV** or **volunteer** lags) without stating it in the **Build steering decision**.  
 - If **Cursor** detects a **better** **alternative** than the script’s target: **propose** it **explicitly** in **BUILD STEERING DECISION** (REASON + NON-TARGET) — do **not** **assume** the redirect; the **user** / **ChatGPT** confirms next pass.  
 - **Enforcement** (declarations, L3+ justification): [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) **Build steering doctrine (DIV-OPS-2)**.
+
+### 0.10 Blueprint forward vision (BLUEPRINT-EXP-1)
+
+- **Every** **thread** (ChatGPT and Cursor) should weigh **not only** **current** **maturity** (**L0–L5**, **imbalance**) but the **next** **documented** **stage** for the **relevant** **division(s)** in [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) **Division forward path**.  
+- **ChatGPT** may **choose** the **next** **Cursor** **script** / **packet** to **unlock** a **named** **horizon** (e.g. **GOTV** read model, **comms** **triage** **depth**, **workbench** **panels**) **even** when **pure** **lane** **imbalance** would **suggest** a **different** **lane** — **if** the **unlock** is **stated** in the **script** and **registry** (no **blind** **builds**; see [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) **Blueprint Expansion Doctrine (BLUEPRINT-EXP-1)** and [`shared-rails-matrix.md`](./shared-rails-matrix.md) **Blueprint must lead**).  
+- **Cursor** should **name** **which** **next** **stage** **moved** in **BUILD PROGRESS** / **DIVISION STATUS** when work **materially** **advances** a **forward-path** **bullet**.  
+
+### 0.11 Controlled self-build / overnight mode (AUTO-BUILD-1)
+
+- **When:** A **user** (or **ChatGPT** **script** ) authorizes **Cursor** to run **unattended** (e.g. **overnight**) with **low**-**risk** **scope**.  
+- **Not:** **Autonomous** **campaign** **control**. Self-build is **not** a license to **send**, **publish**, **mutate** **money**/**compliance**, or **add** **migrations** without **human** **review** (unless a **script** **explicitly** assigns **that** **migration** **this** **cycle**).  
+- **Must read (each cycle before coding):** [`THREAD_HANDOFF_MASTER_MAP.md`](./THREAD_HANDOFF_MASTER_MAP.md) (this file, **at least** **§0** + **0.11**), [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md), [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md). **Choose** only the **next** **approved** **packet** from the **blueprint** / [**Approved Self-Build Queue**](./AUTO_BUILD_PROTOCOL.md#3-approved-self-build-queue) in [`AUTO_BUILD_PROTOCOL.md`](./AUTO_BUILD_PROTOCOL.md).  
+- **Must do:** **Declare** **Build steering decision**; **update** **blueprint** **docs** when **material**; **run** **checks** (e.g. `tsc` for **touched** **code**); **stop** after **one** **packet**; **produce** a **handoff** **report** (packet, **target** **division**, **files**, **checks**, **risks**, **human** **approval** still **needed**, **next** **packet**).  
+- **Hard stop** (escalate to **human** **before** **continuing**): **auth**/**security**; **schema** **migration** (unless **assigned** this cycle); any **outbound** **action**; **conflicting** **docs**; **`tsc`** **fails** after **reasonable** **fix**; **scope** **exceeds** **one** **primary** **division** + **doc** **sync** — see [`AUTO_BUILD_PROTOCOL.md`](./AUTO_BUILD_PROTOCOL.md) **§6**.  
+- **AUTO-BUILD-2 (nightly runner):** [`.github/workflows/nightly-self-build.yml`](../.github/workflows/nightly-self-build.yml) runs on **schedule** ( **~2:30 AM** **America/Chicago** **during** **CDT** **via** **07:30 UTC** **cron** — **see** **workflow** **for** **DST**); **preflight** + **`tsc`**, **handoff** **upload**; **no** **deploy** / **migrate** / **push** / **send** / **classify** / **score** / **production** **writes** — not **autonomous** **ops**.  
 
 ---
 
@@ -580,18 +595,19 @@ Maturity is **evidence-based**; full tables: `system-division-map.md`, `system-m
 
 ## 25. NEW THREAD QUICKSTART CHECKLIST (DO THIS FIRST)
 
-1. **Read** `docs/THREAD_HANDOFF_MASTER_MAP.md` (this file).  
-2. **Read** `docs/PROJECT_MASTER_MAP.md` (continuity + packet list + §8 capabilities).  
-3. **Read** `docs/progressive-build-protocol.md` (PROTO-1) + `docs/master-blueprint-expansion-rules.md`.  
-4. **Read** `docs/deterministic-brain-foundation.md` + `docs/truth-governance-ownership-map.md`.  
-5. **Read** `docs/campaign-manager-workbench-spec.md` (CM bar spec) at least skim.  
-6. **Read** `docs/modeling-database-implementation-plan.md` (data sketch).  
-7. **Inspect** `prisma/schema.prisma` (source of model truth).  
-8. **Inspect** `src/lib/campaign-engine/README.md` and list **`src/lib/campaign-engine/*.ts`**.  
-9. **Skim** `docs/workbench-build-map.md` (routes that **exist**).  
-10. **For email workflow:** `docs/email-workflow-intelligence-AI-HANDOFF.md` (E-1/E-2 invariants).  
-11. **Ask the user** for the **latest Cursor result** or active branch/PR before writing the **next** packet.  
-12. **Grep** before new tables: `database-table-inventory.md` + `schema.prisma`.  
+1. **Read** `docs/THREAD_HANDOFF_MASTER_MAP.md` (this file, including **§0.10**).  
+2. **Read** `docs/PROJECT_MASTER_MAP.md` (continuity + packet list + **Future-state** under **Blueprint** + §8 capabilities).  
+3. **Read** `docs/DIVISION_MASTER_REGISTRY.md` — **summary table** + **Division forward path** (BLUEPRINT-EXP-1).  
+4. **Read** `docs/progressive-build-protocol.md` (PROTO-1) + `docs/master-blueprint-expansion-rules.md`.  
+5. **Read** `docs/deterministic-brain-foundation.md` + `docs/truth-governance-ownership-map.md`.  
+6. **Read** `docs/campaign-manager-workbench-spec.md` (CM bar spec) at least skim.  
+7. **Read** `docs/modeling-database-implementation-plan.md` (data sketch).  
+8. **Inspect** `prisma/schema.prisma` (source of model truth).  
+9. **Inspect** `src/lib/campaign-engine/README.md` and list **`src/lib/campaign-engine/*.ts`**.  
+10. **Skim** `docs/workbench-build-map.md` (routes that **exist**).  
+11. **For email workflow:** `docs/email-workflow-intelligence-AI-HANDOFF.md` (E-1/E-2 invariants).  
+12. **Ask the user** for the **latest Cursor result** or active branch/PR before writing the **next** packet.  
+13. **Grep** before new tables: `database-table-inventory.md` + `schema.prisma`.  
 
 **Philosophy/brand (voice):** `docs/philosophy/README.md`, `docs/narrative/README.md`, `docs/brand/README.md`
 

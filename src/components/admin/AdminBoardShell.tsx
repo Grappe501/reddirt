@@ -32,6 +32,7 @@ const operationsLinks: { href: string; label: string }[] = [
   { href: "/admin/asks", label: "Volunteer asks" },
   { href: "/admin/volunteers/intake", label: "Volunteer sheet intake" },
   { href: "/admin/relational-contacts", label: "Relational contacts (REL-2)" },
+  { href: "/admin/gotv", label: "GOTV" },
   { href: "/admin/compliance-documents", label: "Compliance documents" },
   { href: "/admin/financial-transactions", label: "Financial transactions (ledger)" },
   { href: "/admin/budgets", label: "Budget plans (BUDGET-2)" },

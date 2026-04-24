@@ -210,6 +210,16 @@ export async function getRelationalContactDetail(id: string) {
   });
 }
 
+/**
+ * Same as getRelationalContactDetail but enforces the volunteer/owner id (REL-3).
+ * Returns null if missing or not owned.
+ */
+export async function getRelationalContactDetailForOwner(id: string, ownerUserId: string) {
+  const contact = await getRelationalContactDetail(id);
+  if (!contact || contact.ownerUserId !== ownerUserId) return null;
+  return contact;
+}
+
 export async function listCoreFiveForUser(ownerUserId: string) {
   return prisma.relationalContact.findMany({
     where: { ownerUserId, isCoreFive: true },

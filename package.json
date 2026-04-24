@@ -1,6 +1,6 @@
 {
   "name": "reddirt-site",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -16,6 +16,7 @@
     "lint": "next lint",
     "lint:all": "next lint",
     "typecheck": "tsc --noEmit",
+    "nightly:self-build:preflight": "node scripts/nightly-self-build-preflight.mjs",
     "check": "npm run lint:all && npm run typecheck && npm run build",
     "harden": "npm run check",
     "postinstall": "prisma generate",

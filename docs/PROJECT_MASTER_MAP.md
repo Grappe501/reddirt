@@ -3,9 +3,10 @@
 **Purpose:** Single **canonical continuity document** for a **new AI thread** or expert collaborator working in **`RedDirt/`**.
 
 **Orientation (read first):** **[`THREAD_HANDOFF_MASTER_MAP.md`](./THREAD_HANDOFF_MASTER_MAP.md)** (**THREAD-HANDOFF-1**) is the **first** orientation doc — vision, loop, guardrails, lane table, next paths.  
-**Operating protocol:** **[`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md)** (**PROTO-2** + **BLUEPRINT-OPS-1** + **DIV-OPS-1** + **DIV-OPS-2**) — return formats, **Build steering decision** (target / reason / non-target), **division** status, packet scaling, preflight, drift checks.  
-**Division registry (required):** **[`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md)** — every division at **L0–L5** and **Priority level**; **check balance** + **steering** **before** selecting the next packet; keep **aligned** with the ledger table below.  
-**Blueprint rule:** **Every** packet should **update** blueprint status here, the **registry** (when a division moves), the thread handoff, and any lane doc the packet claims.
+**Operating protocol:** **[`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md)** (**PROTO-2** + **BLUEPRINT-OPS-1** + **DIV-OPS-1** + **DIV-OPS-2** + **BLUEPRINT-EXP-1**) — return formats, **Build steering decision** (target / reason / non-target), **division** status, **forward path** (next stage / unlocks), packet scaling, preflight, drift checks.  
+**Unattended / self-build (optional):** **[`AUTO_BUILD_PROTOCOL.md`](./AUTO_BUILD_PROTOCOL.md)** (**AUTO-BUILD-1** policy, **AUTO-BUILD-2** nightly **CI** runner) — **controlled** **overnight** **continuation** only (docs, tests, read-only UI, **approved** **queue** items); **not** **autonomous** **campaign** **control**; **hard** **stops** for **auth**, **migrations** (unless **assigned**), **outbound** **actions**, **doc** **conflicts**, **failed** **`tsc`**, **excess** **scope**. **AUTO-BUILD-2** adds **`.github/workflows/nightly-self-build.yml`**: **~2:30 AM** **America/Chicago** **target** (**07:30 UTC** during **CDT**; **DST** **review** in **workflow**), **preflight** **+** **typecheck**, **handoff** **artifact** — **no** **deploy** / **migrate** / **push** / **send** / **production** **writes**.  
+**Division registry (required):** **[`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md)** — every division at **L0–L5**, **Priority level**, and **Division forward path**; **check balance** + **steering** + **unlocks** **before** selecting the next packet; keep **aligned** with the ledger table below.  
+**Blueprint rule:** **Every** packet should **update** blueprint status here, the **registry** (when a division moves), the thread handoff, and any lane doc the packet claims. **Self-build** **cycles** must still **synchronize** the **ledger** if they **change** what is **“real in code**.”
 
 Use this file as the **primary** `@` reference for **packet** history and code-grounded lists; use the **thread handoff** when **onboarding a fresh** ChatGPT thread with **no** prior chat.
 
@@ -18,7 +19,8 @@ Use this file as the **primary** `@` reference for **packet** history and code-g
 ## Table of contents
 
 1. [What this project is](#1-what-this-project-is)
-2. [Blueprint Progress Ledger](#blueprint-progress-ledger)
+1b. [AUTO-BUILD-1 (controlled self-build)](#auto-build-1-controlled-self-build) — see [`AUTO_BUILD_PROTOCOL.md`](./AUTO_BUILD_PROTOCOL.md)
+2. [Blueprint Progress Ledger](#blueprint-progress-ledger) — [Future-state blueprint (BLUEPRINT-EXP-1)](#future-state-blueprint-blueprint-exp-1)
 3. [Core build philosophy](#2-core-build-philosophy)
 4. [Work protocol with Cursor](#3-work-protocol-with-cursor)
 5. [System north star](#4-system-north-star)
@@ -50,6 +52,12 @@ Use this file as the **primary** `@` reference for **packet** history and code-g
 
 **Honest boundary:** Philosophy and narrative live in `docs/` and `src/content/`; **code reality** is the admin app + Prisma models. When they diverge, **prefer honest “doc intent vs code today”** language (this file tries to do that throughout).
 
+## AUTO-BUILD-1 (controlled self-build)
+
+Unattended or **overnight** **Cursor** runs use **[`AUTO_BUILD_PROTOCOL.md`](./AUTO_BUILD_PROTOCOL.md)** (**AUTO-BUILD-1**): **Approved Self-Build Queue**, **one** **packet** (or one **doc** **sync** / **test** pass) per **cycle**, **mandatory** **handoff** **report**, and **hard** **stops** (auth, **migrations** unless **explicitly** **assigned**, **outbound** **actions**, **doc** **conflicts**, **failed** `tsc`, **oversized** **scope**). **Self-build** is a **controlled** **overnight** mode, **not** **autonomous** **campaign** **control**. **Blueprint** **updates** in **this** **file** and the **registry** are **required** when a **self-build** pass **moves** **reality** in code.
+
+**AUTO-BUILD-2 (nightly scheduled runner):** [`.github/workflows/nightly-self-build.yml`](../.github/workflows/nightly-self-build.yml) runs **on** **UTC** **cron** ( **07:30 UTC** for **2:30 AM** **Central** during **CDT** — **DST** **note** **in** **file**), **`npm run nightly:self-build:preflight`** (writes **`.nightly-self-build/nightly-self-build-*.md`**) and **`npm run typecheck`**, **uploads** **handoff** **artifact**; **does** **not** **deploy**, **migrate**, **push** to **default** **branch**, **send** **email**, **publish**, **score** **voters**, or **bypass** **human** **approval** for **sensitive** **work**.
+
 ---
 
 ## Blueprint Progress Ledger
@@ -59,9 +67,9 @@ Use this file as the **primary** `@` reference for **packet** history and code-g
 | Division name | Priority | Level | Primary lane(s) | Status | Gap note |
 |---------------|----------|-------|------------------|--------|----------|
 | **Comms / Email Workflow Intelligence** | **MEDIUM** | **L2–L3** (emerging) | E-1, E-2, COMMS-UNIFY | **Partial** / **Active** | **Queue-first**; do **not** **expand** without **steering**; **L4+** needs **justification** if **CRITICAL** divisions lag. |
-| **Relational Organizing** | **HIGH** | **L2** | REL-2, REL-3+ | **Partial** / **Active** | **REL-3** **ready** to schedule; **migration** per env. |
-| **GOTV / Turnout System** | **CRITICAL** | **L1–L2** | DATA-4, VOTER-MODEL, GOTV-1 (doc) | **Partial** | **Turnout** read models **not** end-to-end — **do not** **neglect** vs **comms** depth. |
-| **Volunteer / Field Operations** | **CRITICAL** | **L1–L2** | VOL-CORE, FIELD-1, REL-1 | **Partial** | **No** cohesive **volunteer** UX — **balance** **against** admin-heavy work. |
+| **Relational Organizing** | **HIGH** | **L2–L3** (partial) | REL-2, REL-3 | **Partial** / **Active** | Volunteer **`/relational`** home **shipped**; **county** cross-volunteer rollups **still** future. **Migration** apply per env. |
+| **GOTV / Turnout System** | **CRITICAL** | **L2** | DATA-4, VOTER-MODEL, **GOTV-1** (read model + `…/gotv` + preview seam) | **Partial** / **Active** | **GOTV-1** read **only** — **no** prediction/scoring; **GOTV-2** queues next. |
+| **Volunteer / Field Operations** | **CRITICAL** | **L2–L3** (partial) | VOL-CORE, FIELD-1, REL-1, **REL-3** | **Partial** / **Active** | **`/relational`** **organizer** UX **exists**; **not** full VOL-CORE journey. |
 | **Workbench / Operator System** | **MEDIUM** | **L2–L3** | UWR, WB-CORE, SEAT, CM-2 | **Partial** / **Active** | **Many** routes; **steer** new work to **gaps**, not only **convenience**. |
 | **Truth Snapshot / Deterministic Brain** | **MEDIUM** | **L2** (advisory) | BRAIN-OPS | **Partial** / **Active** | **Advisory** only. |
 | **Data Layer / Voter File / Ingest** | **MEDIUM** | **L2** (strong) | DATA-1–4, ELECTION-INGEST | **Partial** / **Active** | **PRECINCT-1** / **inventory** refresh as needed. |
@@ -70,6 +78,42 @@ Use this file as the **primary** `@` reference for **packet** history and code-g
 | **AJAX Organizing Hub (Discord)** | **LOW** | **L1** | Discord docs | **Docs** / **Partial** | **Not** org **source of truth**. |
 | **Campaign Intelligence / Reporting** | **HIGH** | **L1–L2** | Analytics, rollups, DBMAP | **Partial** | **No** single **productized** intel **layer**. |
 | **Data inventory (meta)** | — | N/A (maintenance) | DBMAP-1 | **Partial** | [`database-table-inventory.md`](./database-table-inventory.md) — **refresh** after **schema** changes. |
+
+### Future-state blueprint (BLUEPRINT-EXP-1)
+
+**Intent:** The blueprint is a **map** of **how** the OS **grows** — not only **where** it is **today** (ledger **L0–L5**). **Per-division** **next stage**, **unlock conditions**, and **dependencies** live in [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) **Division forward path**. **Doctrine:** [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) **Blueprint Expansion Doctrine (BLUEPRINT-EXP-1)**.
+
+**How divisions connect (feeds / fed by)**
+
+- **Data layer** and **Identity** are **under** most surfaces; **PRECINCT-1** / **normalization** **unlock** **cleaner** **county** and **signal** **stories**.  
+- **Relational** **feeds** **GOTV** and **comms** **targeting** **narratives** (universes, people — not vote **totals** as **canon**).  
+- **Volunteer / field** **depends on** **relational** **depth**; **GOTV** **depends** on **relational** **activity** + **data** **read** **models** before it **drives** **comms** and **field** **plans**.  
+- **Comms** is **driven** by **GOTV** + **relational** + **segmentation**; stays **governed** by **queue-first** and **Finance/Compliance** for **sensitive** paths.  
+- **Campaign intelligence** **pulls** **interactions** + **comms** + **data**; **advisory** to **workbench** — **not** a **new** **source of truth**.  
+- **Workbench** is the **unified** **command** **view**; **displays** **all** **divisions**; **does not** **replace** **Truth** or **DB** **authority**.  
+- **Truth snapshot** **informs** **workbench** and **governance** **narrative**; **stays** **advisory** **unless** product **tightens** **contracts** **explicitly**.  
+- **Content / Author** **feeds** **comms**; **hinges** on **queues** and **governance** **when** **outbound** **aligns** with **ops**.  
+- **Finance / Compliance** **gates** **spend**-**sensitive** **comms** and **automation** **as** **the** **blueprint** **matures**.  
+- **AJAX (Discord)** **remains** **external** **community**; **intake** **only** when **integration** **strategy** **locks** — **not** org **DB** **truth**.
+
+**High-level pipeline (intent, not a rigid waterfall)**
+
+```text
+Data (+ normalization)  ─┐
+Identity / geospatial    ─┼──►  Relational  ──►  Volunteer / Field
+                           │         │                    │
+                           │         └──────┬─────────────┘
+                           │                ▼
+                           └──────────►  GOTV  ──►  Comms
+                                              │
+                                              ├─►  Campaign intel  ──►  Workbench
+                                              │
+Truth snapshot ◄── metrics / policy ──── Content ───┘
+Finance / Compliance  ◄── gates spend & high-risk automations
+AJAX  ◄── external layer (when wired)
+```
+
+**Rule of thumb:** **Define** the **next** **stage** in the **registry** **before** **large** **implementation**; **steering** may pick **unlocks** **ahead** of **pure** **imbalance** **if** the **path** is **named** ([`shared-rails-matrix.md`](./shared-rails-matrix.md) **Blueprint must lead**).
 
 ---
 
@@ -386,7 +430,7 @@ See **[`agent-knowledge-ingest-map.md`](./agent-knowledge-ingest-map.md)** (SKIL
 Practical ordering (adjust with campaign priorities):
 
 1. **PRECINCT-1** — normalization / crosswalk for voter `precinct` strings vs SOS location keys (follows DATA-4 ingest grains).
-2. **GOTV-1** — phased GOTV **read model** + docs (no scheduler automation in first slice); see [`gotv-strategic-readiness-foundation.md`](./gotv-strategic-readiness-foundation.md).
+2. **GOTV-2** — **contact** **plan** **queues** + **assignment** **review** (after **GOTV-1** read model). **GOTV-1** **shipped:** `gotv-read-model.ts`, `gotv-contact-plan.ts` (preview only), `/admin/gotv` — see [`model-to-field-gotv-connection.md`](./model-to-field-gotv-connection.md).
 3. **UWR-3** — county filter on unified queries; governed **`Submission`** / review-queue inclusion **only** with explicit status + admin `href` (see [`unified-open-work-expansion-notes.md`](./unified-open-work-expansion-notes.md)).
 4. **CM-3** — actor-scoped band (`getOpenWorkForUser` for signed-in admin) + optional drill-down links from truth cards (still read-only).
 5. **E-3 stub (read-only policy)** — implement `policyRoutingHookE3` as **logging-only** to `metadataJson` (no side effects) when product is ready.
@@ -406,6 +450,7 @@ Practical ordering (adjust with campaign priorities):
 **Suggested order:**
 
 0. **[`THREAD_HANDOFF_MASTER_MAP.md`](./THREAD_HANDOFF_MASTER_MAP.md)** — THREAD-HANDOFF-1 (complete transition map)
+0b. **[`AUTO_BUILD_PROTOCOL.md`](./AUTO_BUILD_PROTOCOL.md)** — **AUTO-BUILD-1** / **AUTO-BUILD-2** (policy + nightly **CI** **handoff**; **not** autonomous campaign control)
 1. **This file** — `docs/PROJECT_MASTER_MAP.md`
 2. [`unified-campaign-engine-foundation.md`](./unified-campaign-engine-foundation.md)
 3. [`shared-rails-matrix.md`](./shared-rails-matrix.md)
@@ -423,4 +468,4 @@ Practical ordering (adjust with campaign priorities):
 
 ---
 
-*MASTER-MAP-1 — Canonical project handoff + build protocol map. Last updated: 2026-04-23 (THREAD-HANDOFF-1 `THREAD_HANDOFF_MASTER_MAP.md`; REL-2 relational contact foundation; VOTER-MODEL-1 + INTERACTION-1; DATA-4 + GOTV readiness retained).*
+*MASTER-MAP-1 — Canonical project handoff + build protocol map. Last updated: 2026-04-24 (**AUTO-BUILD-2** nightly **GitHub** **workflow** + `nightly:self-build:preflight`; **AUTO-BUILD-1** policy; **GOTV-1**; REL-2/REL-3; VOTER-MODEL-1 + INTERACTION-1; DATA-4).*

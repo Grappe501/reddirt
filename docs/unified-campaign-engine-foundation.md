@@ -464,6 +464,16 @@ Each rail: **defined** in the matrix (where applicable); **evidence** and **gaps
 
 ---
 
+## 36c. GOTV-1 — Turnout priority read model + contact-plan preview (no prediction)
+
+**What shipped (read-only helpers + admin + docs, no schema):** **`gotv-read-model.ts`** — `getGotvPriorityUniverse` / `getGotvSummary` from **`VoterRecord`**, **`RelationalContact`**, **`VoterInteraction`** (optional filters: `countyId`, `precinct`, `fieldUnitId` on contacts). **Explainable** `priorityReason` tags only (relational link, recent interaction, geography slice without recent touch, missing interaction history). **`gotv-contact-plan.ts`** — `buildGotvContactPlanPreview` (overlapping **buckets** for discussion: relational-first, needs-touch, recently-contacted, missing-data) — **preview** only; **no** queues, **no** assignment **mutation**, **no** sends. **Admin** **`/admin/gotv`** + nav **GOTV** in `AdminBoardShell`. **Not** built: **turnout** **prediction**, support **scoring**, auto **outreach**; **GOTV-2** = queues + review; **GOTV-3** = field execution UI; **GOTV-4** = **governed** automation after approval rails.
+
+**Lanes advanced:** **GOTV** (honest **operational** **read** from **existing** **REL-3** + file + **INTERACTION-1**).
+
+**Intentionally not built:** per-voter campaign **automation**; **claims** that relational **contacts** = **votes**; **queue** **persistence** for contact plans.
+
+---
+
 ## 37. Packet BRAIN-OPS-1 — Deterministic truth engine + Campaign Manager Workbench spec
 
 **What shipped (docs + types only):** [`deterministic-brain-foundation.md`](./deterministic-brain-foundation.md) — truth layer north star, what the brain decides / does not decide, order of operations, **truth classes** + **governance states**, canonical raw election path `H:\SOSWebsite\campaign information for ingestion\electionResults`. [`truth-governance-ownership-map.md`](./truth-governance-ownership-map.md) — source-of-truth examples (`CountyCampaignStats.registrationGoal`, `CountyVoterMetrics.countyGoal`, CONFIRMED ledger, seats, compliance AI flag), ownership + AI eligibility, **repo inspection**. [`campaign-manager-workbench-spec.md`](./campaign-manager-workbench-spec.md) — **Command Bar → Strategic Recommendations** bands, nav hierarchy, what must never show as truth. [`division-workbench-alignment.md`](./division-workbench-alignment.md) — eight divisions vs workbenches + maturity. [`discord-integration-foundation.md`](./discord-integration-foundation.md) — L0–L3 integration posture; Discord **not** source of truth. **`truth.ts`** — `TruthClass`, `GovernanceState`, `OwnershipResolutionKind`, `RecommendationEligibility` (**no** resolver implementation).
@@ -522,4 +532,4 @@ Each rail: **defined** in the matrix (where applicable); **evidence** and **gaps
 
 ---
 
-*Last updated: Packets FND-1, ROLE-1, TALENT-1, BRAIN-1, ALIGN-1, ASSIGN-1, UWR-1, **CM-2, UWR-2**, WB-CORE-1, SEAT-1, SKILL-1+ASSIGN-2, FUND-1, COMP-1, POLICY-1+COMP-2+BUDGET-1, FIN-1, BUDGET-2, FIN-2, FIELD-1, YOUTH-1, DATA-1, **DATA-2, DATA-3** (multi-signal voter strength + election ingest **docs**), **DATA-4 + ELECTION-INGEST-1** (Prisma tabulation + JSON ingest + **`gotv-strategic-readiness-foundation.md`**), **VOTER-MODEL-1 + INTERACTION-1**, **OFFICIAL-INGEST-1, INGEST-OPS-1**, **BRAIN-OPS-1**, **BRAIN-OPS-2**, **BRAIN-OPS-3**, **PROTO-1**, COMMS-UNIFY-1, IDENTITY-1, **DBMAP-1, LAUNCH-1, GEO-1, GOALS-VERIFY-1, REL-1, GAME-1, VOL-CORE-1, BLUEPRINT-LOCK-1** + **candidate county brief** doc.*
+*Last updated: Packets FND-1, ROLE-1, TALENT-1, BRAIN-1, ALIGN-1, ASSIGN-1, UWR-1, **CM-2, UWR-2**, WB-CORE-1, SEAT-1, SKILL-1+ASSIGN-2, FUND-1, COMP-1, POLICY-1+COMP-2+BUDGET-1, FIN-1, BUDGET-2, FIN-2, FIELD-1, YOUTH-1, DATA-1, **DATA-2, DATA-3** (multi-signal voter strength + election ingest **docs**), **DATA-4 + ELECTION-INGEST-1** (Prisma tabulation + JSON ingest + **`gotv-strategic-readiness-foundation.md`**), **VOTER-MODEL-1 + INTERACTION-1**, **GOTV-1** (turnout **priority** read model + **preview** contact **seam** + **`/admin/gotv`**), **OFFICIAL-INGEST-1, INGEST-OPS-1**, **BRAIN-OPS-1**, **BRAIN-OPS-2**, **BRAIN-OPS-3**, **PROTO-1**, COMMS-UNIFY-1, IDENTITY-1, **DBMAP-1, LAUNCH-1, GEO-1, GOALS-VERIFY-1, REL-1, GAME-1, VOL-CORE-1, BLUEPRINT-LOCK-1** + **candidate county brief** doc.*

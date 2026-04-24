@@ -1,11 +1,11 @@
 # Build protocol and blueprint audit
 
-**Packets:** **PROTO-2** · **BLUEPRINT-OPS-1** · **DIV-OPS-1** · **DIV-OPS-2**  
+**Packets:** **PROTO-2** · **BLUEPRINT-OPS-1** · **DIV-OPS-1** · **DIV-OPS-2** · **BLUEPRINT-EXP-1** · **AUTO-BUILD-1** (policy) · **AUTO-BUILD-2** (nightly **CI** preflight + **artifact** — see below)  
 **File:** `docs/BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`
 
 **Purpose:** A **single-page, durable** protocol so **ChatGPT ↔ Cursor** passes behave like a **direct engineering** conversation: the user is the courier; **Cursor** preserves context, reports **exactly** what changed, and keeps the **blueprint self-constructing** until the full campaign operating system is build-ready.
 
-**Full orientation map:** [`THREAD_HANDOFF_MASTER_MAP.md`](./THREAD_HANDOFF_MASTER_MAP.md) (**THREAD-HANDOFF-1**). **Project map + packet history:** [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) (**MASTER-MAP-1**). **Division registry (required for balance + steering):** [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) (**DIV-OPS-1** / **DIV-OPS-2**).
+**Full orientation map:** [`THREAD_HANDOFF_MASTER_MAP.md`](./THREAD_HANDOFF_MASTER_MAP.md) (**THREAD-HANDOFF-1**). **Project map + packet history:** [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) (**MASTER-MAP-1**). **Division registry (balance + steering + **forward path** per division):** [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) (**DIV-OPS-1** / **DIV-OPS-2** / **BLUEPRINT-EXP-1**). **Unattended / overnight continuation (read before leaving Cursor alone):** [`AUTO_BUILD_PROTOCOL.md`](./AUTO_BUILD_PROTOCOL.md) (**AUTO-BUILD-1**).
 
 ---
 
@@ -77,6 +77,49 @@ A **division** is a **top-level system area** of the campaign operating system. 
 
 ---
 
+## Blueprint Expansion Doctrine (BLUEPRINT-EXP-1)
+
+**Forward vision:** The blueprint is not only **current-state** (ledger + L levels) but a **mapped** **future-state** architecture per division — see **Division forward path** in [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) and **Future-state blueprint** in [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md).
+
+### 1. Requirement
+
+**Every** division in the **registry** must document:
+
+| Field | Meaning |
+|-------|---------|
+| **CURRENT STATE** | What **exists** in code/docs/ops **today** (honest). |
+| **NEXT STAGE** | What **L3+ / L4** looks like for this division (concrete, not a slogan). |
+| **UNLOCK CONDITIONS** | What must **exist** before the division may **advance** (deps, data, policy, auth). |
+| **DEPENDENCIES** | What **other** divisions or rails **rely on** this one, or that this one **feeds**. |
+
+### 2. Purpose
+
+- **Reduce reactive** building (only fixing imbalance) without a **named** next horizon.  
+- **Ensure** future **architecture** is **named** before large implementation.  
+- Let **build steering** choose from **known** **paths** and **unlocks** instead of **guessing** in chat.  
+
+### 3. Rule
+
+- **No** division is **advanced** in implementation **without** a **defined** **NEXT STAGE** in the **registry** (or an **explicit** packet that **adds** that row and **then** implements).  
+- The **blueprint** should **lead** the build: **docs + registry** update **first** for material scope, **then** code — except **tiny** hotfixes (still report in returns).  
+- Pairs with **DIV-OPS-2**: **target** division should cite **which** **next stage** the packet **moves toward**.  
+
+---
+
+## Controlled self-build (AUTO-BUILD-1)
+
+**What it is:** A **doc-defined** mode for when **Cursor** may **continue** with **no** human in the loop (e.g. **overnight**). **Self-build** is a **controlled** **overnight** mode: it **stays** inside **low-risk** work and **stops** when **forbidden** scope or **hard stops** apply. It is **not** **autonomous** **campaign** **control** and **not** a bypass for **approval-first** on **sends**, **publishes**, **money**, or **migrations**.
+
+**Canonical doc:** [`AUTO_BUILD_PROTOCOL.md`](./AUTO_BUILD_PROTOCOL.md) — **allowed** / **forbidden** work, **Approved Self-Build Queue**, **required handoff** output, **cycle** **rules**, and **hard stops** (auth, migration, outbound action, **doc** **conflict**, `tsc` **failure** after **reasonable** **fix**, **scope** **> 1** **division** + **docs**). Every cycle: **one** **packet** (or one **doc** **sync** / **test** pass), then **handoff** **report** and **stop**.
+
+**Relationship to this file:** All **return** **formats**, **Build steering**, **division** **status**, **approval-first** **doctrine**, and **packet** **scaling** in **PROTO-2** still **apply** when **self-build** **touches** **code**; self-build only **restricts** **what** may be **attempted** **unattended**.
+
+### AUTO-BUILD-2 (nightly scheduled runner — not production execution)
+
+**Repo:** [`.github/workflows/nightly-self-build.yml`](../.github/workflows/nightly-self-build.yml) (this **repository** **root** = **`RedDirt/`**) runs **daily** on a **UTC** **cron** ( **07:30 UTC** to match **2:30 AM** **Central** during **CDT** — **see** **comment** in **workflow** for **DST** / **review**). It runs **`npm run nightly:self-build:preflight`** (writes **`.nightly-self-build/nightly-self-build-YYYY-MM-DD.md`**) and **`npm run typecheck`**, then **uploads** the **handoff** as a **CI** **artifact**. It **does** **not** **deploy**, **migrate**, **push** **to** **main**, **send** **mail**, or **mutate** **production** **data** — same **safety** **rules** as **AUTO-BUILD-1** **policy**; see [`AUTO_BUILD_PROTOCOL.md`](./AUTO_BUILD_PROTOCOL.md) **§9**.
+
+---
+
 ## Roles
 
 | Role | Responsibility |
@@ -97,10 +140,11 @@ A **division** is a **top-level system area** of the campaign operating system. 
 4. **BLUEPRINT PROGRESS UPDATE**  
 5. **BUILD STEERING DECISION** (DIV-OPS-2) — **MANDATORY** for every build:  
    - **TARGET DIVISION:**  
-   - **REASON:** (balance, dependency, unlock, or script-locked exception)  
+   - **REASON:** (balance, dependency, **unlock** / **future** **path** (**BLUEPRINT-EXP-1**), or script-locked exception)  
    - **NON-TARGET DIVISIONS:** (not selected this pass + brief why)  
-   Tied to [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) **Blueprint Progress Ledger** + [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md). If targeting **L3+** in a **strong** division, explain **skipped** **lower** divisions.  
-6. **DIVISION STATUS UPDATE** (DIV-OPS-1) — For **each** **relevant** division: **level (L0–L5)**; **what changed**; **imbalance** / risk.  
+   - **NEXT STAGE (optional but encouraged):** which **forward-path** **bullet** in the **registry** this pass **moves** toward (if **material**).  
+   Tied to [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) **Blueprint Progress Ledger** + **Future-state** + [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md). If targeting **L3+** in a **strong** division, explain **skipped** **lower** divisions.  
+6. **DIVISION STATUS UPDATE** (DIV-OPS-1) — For **each** **relevant** division: **level (L0–L5)**; **what changed**; **imbalance** / risk; **next** **stage** **unchanged** vs **updated** ( **BLUEPRINT-EXP-1** ) when **relevant**.  
 7. **DRIFT CHECK**  
 8. **LANE LEVEL UPDATE**  
 9. **WHAT IS STILL MISSING**  
@@ -184,6 +228,7 @@ A **division** is a **top-level system area** of the campaign operating system. 
 - [ ] **Migration** (if any) is **named**, **reviewed**, and **applied** per environment.  
 - [ ] **Blueprint** maps updated: [`THREAD_HANDOFF_MASTER_MAP.md`](./THREAD_HANDOFF_MASTER_MAP.md), [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md), and any lane doc touched by the packet.  
 - [ ] If a **division** moved: [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) and **Blueprint Progress Ledger** stay **aligned**.  
+- [ ] **Next stage** / **unlock** fields still **accurate** for **target** division (**BLUEPRINT-EXP-1**).  
 - [ ] **Build steering decision** present: **target** division, **reason**, **non-target** divisions (DIV-OPS-2).
 
 ---
@@ -193,7 +238,8 @@ A **division** is a **top-level system area** of the campaign operating system. 
 - [ ] Read [`THREAD_HANDOFF_MASTER_MAP.md`](./THREAD_HANDOFF_MASTER_MAP.md).  
 - [ ] Read [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md).  
 - [ ] Read **this** file.  
-- [ ] Read [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) — **balance** (DIV-OPS-1) + **priority** (DIV-OPS-2) before locking the next packet.  
+- [ ] If using **unattended** / **self-build** mode: read [`AUTO_BUILD_PROTOCOL.md`](./AUTO_BUILD_PROTOCOL.md) (**AUTO-BUILD-1**) and pick **only** from the **Approved Self-Build Queue** (or a **script**-locked, **low-risk** **packet**).  
+- [ ] Read [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) — **balance** (DIV-OPS-1) + **priority** (DIV-OPS-2) + **forward path** / **unlocks** (**BLUEPRINT-EXP-1**) before locking the next packet.  
 - [ ] Skim [`workbench-build-map.md`](./workbench-build-map.md) if the task touches **admin** surfaces.  
 - [ ] Note **REL-2** / email **queue-first** invariants if touching those lanes.  
 
@@ -204,7 +250,8 @@ A **division** is a **top-level system area** of the campaign operating system. 
 1. Read [`THREAD_HANDOFF_MASTER_MAP.md`](./THREAD_HANDOFF_MASTER_MAP.md).  
 2. Read [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md).  
 3. Read [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) (this file).  
-4. Read [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md); state **Build steering decision** (target, reason, non-target) **before** implementation; align with **Priority level** and **imbalance** (DIV-OPS-1/2).  
+4. Read [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md); state **Build steering decision** (target, reason, non-target) **before** implementation; align with **Priority level**, **imbalance** (DIV-OPS-1/2), and **which** **next** **stage** the packet **advances** (**BLUEPRINT-EXP-1**).  
+4a. If **self-build** / **unattended**: read [`AUTO_BUILD_PROTOCOL.md`](./AUTO_BUILD_PROTOCOL.md); **do** **not** start if work **violates** **allowed** work or **triggers** a **hard stop**; **one** **packet** per cycle.  
 5. Inspect `prisma/schema.prisma` when models or relations may be involved.  
 6. Inspect `src/lib/campaign-engine/` when rails, truth, or engine seams are involved.  
 7. Check **latest migration** names under `prisma/migrations/`.  
@@ -212,4 +259,4 @@ A **division** is a **top-level system area** of the campaign operating system. 
 
 ---
 
-*Stack (ground truth):* Next.js App Router · Prisma · PostgreSQL · `reddirt-site` under `RedDirt/`. *Quality gate for code pushes:* `npm run check` (see `RedDirt/README.md`).
+*Stack (ground truth):* Next.js App Router · Prisma · PostgreSQL · `reddirt-site` under `RedDirt/`. *Quality gate for code pushes:* `npm run check` (see `RedDirt/README.md`). *Unattended / self-build:* [`AUTO_BUILD_PROTOCOL.md`](./AUTO_BUILD_PROTOCOL.md) (**AUTO-BUILD-1** / **AUTO-BUILD-2** nightly **workflow**; see **§9**).
