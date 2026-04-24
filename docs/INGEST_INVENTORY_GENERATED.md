@@ -1,6 +1,6 @@
 # Ingest inventory (generated)
 
-**Generated:** 2026-04-24T04:03:26.860Z · **Script:** `scripts/ingest-inventory.mjs` · **INGEST-OPS-2**
+**Generated:** 2026-04-24T04:07:50.291Z · **Script:** `scripts/ingest-inventory.mjs` · **INGEST-OPS-2**
 
 > **Do not edit by hand** — re-run `npm run ingest:inventory` from `RedDirt/`. See [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md).
 

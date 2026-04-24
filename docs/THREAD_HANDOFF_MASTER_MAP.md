@@ -100,6 +100,10 @@ On each pass, the blueprint should record **lane maturity** using this scale (al
 
 **Source of truth:** [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md) · generated [`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md) via `npm run ingest:inventory` from `RedDirt/`.
 
+### 0.6b Election Ingest Gate (INGEST-OPS-3)
+
+**Full rule:** [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) **Election Ingest Gate (INGEST-OPS-3)**. **Authoritative** disk vs DB audit: [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md); helper: `npm run ingest:election-audit`. **GOTV** (beyond read model), **comms automation** tied to election coverage, and **intelligence** **modeling** that assumes complete tabulation are **gated** until **COMPLETE** or **explicit** **waiver** — see that section.
+
 ### 0.7 Current latest build state (Apr 2026)
 
 - **REL-2 (relational contact foundation)** is **implemented** as **L2** — relational **persistence** and **admin** seam (`RelationalContact`, `VoterInteraction` / `VoterSignal` links, `relational-contacts.ts`, `relational-matching.ts`, admin pages, truth snapshot advisory counts). **`npx prisma generate`** and **`npx tsc --noEmit`** have passed when last run; **migration file exists** and **must** be **applied per environment** when the database is available (`npx prisma migrate deploy` or dev equivalent).

@@ -1,6 +1,6 @@
 {
   "name": "reddirt-site",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -54,7 +54,8 @@
     "photos:ai-curate-kelly-groups:apply": "tsx scripts/ai-curate-kelly-groups-images.ts --apply",
     "media:index-roots": "tsx scripts/index-campaign-media-roots.ts",
     "media:index-roots:dry": "tsx scripts/index-campaign-media-roots.ts --dry-run",
-    "ingest:inventory": "node scripts/ingest-inventory.mjs"
+    "ingest:inventory": "node scripts/ingest-inventory.mjs",
+    "ingest:election-audit": "node scripts/ingest-election-audit.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

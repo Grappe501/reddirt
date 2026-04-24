@@ -1,9 +1,9 @@
-# Ingest status and backlog (INGEST-OPS-2)
+# Ingest status and backlog (INGEST-OPS-2 + INGEST-OPS-3)
 
-**Packet:** **INGEST-OPS-2** — Election ingest status, brain/source backlog, standing queue protocol.  
+**Packet:** **INGEST-OPS-2** — Election ingest status, brain/source backlog, standing queue protocol. **INGEST-OPS-3** — **Authoritative** election file ↔ DB comparison: [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) (refresh after DB verification).  
 **File:** `docs/INGEST_STATUS_AND_BACKLOG.md`  
 **Stack:** `RedDirt/` (Next.js + Prisma; ingest CLIs in `scripts/`).  
-**Cross-ref:** [`election-results-schema-and-ingest.md`](./election-results-schema-and-ingest.md) · [`raw-election-results-intake-map.md`](./raw-election-results-intake-map.md) · [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) — **INGEST-OPS-2 standing rule** · **Generated file inventory** → [`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md) (run `npm run ingest:inventory` from `RedDirt/`).
+**Cross-ref:** [`election-results-schema-and-ingest.md`](./election-results-schema-and-ingest.md) · [`raw-election-results-intake-map.md`](./raw-election-results-intake-map.md) · [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) — **INGEST-OPS-2 standing rule** · **Election Ingest Gate (INGEST-OPS-3)** · **Generated file inventory** → [`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md) (run `npm run ingest:inventory` from `RedDirt/`).
 
 **Safety:** This document is **blueprint and inspection** only. **Do not** run production imports or mutate campaign data from this file. Use **`--dry-run`** on election ingest first; use dedicated scripts only as documented.
 
@@ -60,7 +60,40 @@ npm run ingest:election-results -- --dry-run --file "H:\SOSWebsite\campaign info
 
 Then remove `--dry-run` only when the dry-run counts look sane and DB is the correct environment.
 
-**Packet ID:** This operational sequence is the practical **“election ingest completion”** work; blueprint **INGEST-OPS-3** = formal **audit** of that completion (see [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) future path).
+**Packet ID:** This operational sequence is the practical **“election ingest completion”** work; **INGEST-OPS-3** = formal **audit** — log + comparison table: [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md), helper `npm run ingest:election-audit`.
+
+### 2.4 Active Election Ingest Queue (until DB verification completes)
+
+**Rule:** When [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) shows a file as **ingested** with no **suspected_partial** follow-up, remove it from this queue in a doc pass (or move to a short **“Completed (verified)”** list there).
+
+**Current queue:** All **13** canonical JSONs under `…\electionResults\` are **pending** definitive DB confirmation in each environment. No files are moved to **completed** in this document until the audit table is updated from a live `ElectionResultSource` read.
+
+| Priority (newest → oldest) | file_name |
+|-----------------------------|-----------|
+| 1 | `2026_Preferential_Primary.json` |
+| 2 | `2024_General.json` |
+| 3 | `2024_Primary.json` |
+| 4 | `2022_General.json` |
+| 5 | `2022_Primary.json` |
+| 6 | `2021_Special.json` |
+| 7 | `2020_Primary_Runoff.json` |
+| 8 | `2020_Preferential_Primary.json` |
+| 9 | `2020_General.json` |
+| 10 | `2018_Preferential_Primary.json` |
+| 11 | `2018_General.json` |
+| 12 | `2016_Preferential_Primary.json` |
+| 13 | `2016_General.json` |
+
+**Next actions (per file, after audit dry-run looks sane):**
+
+```text
+cd RedDirt
+npm run dev:db
+npm run ingest:election-audit
+npm run ingest:election-results -- --dry-run --file "H:\SOSWebsite\campaign information for ingestion\electionResults\<file>.json"
+```
+
+Then, only for the **intended** database, drop `--dry-run` and run the same command once per file. Use `--replace` if re-importing the same path.
 
 ---
 
@@ -175,7 +208,7 @@ See **[`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md)** (refr
 | Packet | Description |
 |--------|-------------|
 | **INGEST-OPS-2** | This doc + inventory script + protocol hooks (**current**). |
-| **INGEST-OPS-3** | Election ingest **completion audit** (per-environment checklist: which `ElectionResultSource` rows exist vs raw folder). |
+| **INGEST-OPS-3** | Election ingest **completion audit** — **[`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md)** + `npm run ingest:election-audit` (per-environment: disk vs `ElectionResultSource`). |
 | **INGEST-OPS-4** | **Normalized manifest** of brain/source files (versioned list + domains). |
 | **INGEST-OPS-5** | **First** safe **non-election** ingest parser (single file family; dry-run). |
 | **INGEST-OPS-6** | **Provenance + ingest review** UI (read-heavy). |
@@ -190,4 +223,4 @@ See **[`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md)** (refr
 
 ---
 
-*Last updated: **INGEST-OPS-2** — inspection + backlog protocol; election complete **operationally** per environment, not a single code flag.*
+*Last updated: **INGEST-OPS-3** — **Active Election Ingest Queue** + audit cross-refs; **election COMPLETE** only when [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) is updated from DB truth (or explicit waiver), not this paragraph alone.*

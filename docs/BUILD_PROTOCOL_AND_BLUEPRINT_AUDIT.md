@@ -86,6 +86,16 @@ A **division** is a **top-level system area** of the campaign operating system. 
 
 **Canonical backlog + architecture:** [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md). **Inventory:** `npm run ingest:inventory` → [`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md). **Do not** **treat** **absence** of **check** as **neutral** when data work is **in** **scope**.
 
+### Election Ingest Gate (INGEST-OPS-3)
+
+**No** build packet may **advance** the following **until** **election ingest** is **COMPLETE** (per [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) and `ElectionResultSource` truth in the **intended** environment) **or** the program **explicitly** **waives** the gate in writing (e.g. time-boxed spike, different data strategy):
+
+- **GOTV** — beyond **read model** / planning (no new execution runners, schedulers, or scale-up that assume full election tabulation coverage).  
+- **Comms** — **automation** that depends on **election result** coverage or cross-election analytics as **ground truth**.  
+- **Campaign intelligence** — **modeling** or **rollups** that **assume** a **closed** **election** **tabulation** set for targeting or narrative (document **PARTIAL** + limits instead).
+
+**Authoritative check:** `npm run ingest:election-audit` (with DB up) and/or the read-only SQL in **§B.2** of [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md). **GOTV** / **comms** / **intelligence** **read** paths that **do not** **assert** **complete** **election** **ingest** may continue when labeled **advisory** / **gapped** per existing brain docs.
+
 ---
 
 ## Blueprint Expansion Doctrine (BLUEPRINT-EXP-1)

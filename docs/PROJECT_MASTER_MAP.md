@@ -86,7 +86,7 @@ Unattended or **overnight** **Cursor** runs use **[`AUTO_BUILD_PROTOCOL.md`](./A
 **How divisions connect (feeds / fed by)**
 
 - **Data layer** and **Identity** are **under** most surfaces; **PRECINCT-1** / **normalization** **unlock** **cleaner** **county** and **signal** **stories**.  
-- **Ingest (INGEST-OPS-2):** **election JSON first** (see [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md)); then **incremental brain/source groups**; **INGEST-OPS-3** = completion audit; **INGEST-OPS-4–6** = manifest → first non-election parser → provenance UI.  
+- **Ingest (INGEST-OPS-2):** **election JSON first** (see [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md)); then **incremental brain/source groups**; **INGEST-OPS-3** = completion audit — [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) + `npm run ingest:election-audit`; **INGEST-OPS-4–6** = manifest → first non-election parser → provenance UI.  
 - **Relational** **feeds** **GOTV** and **comms** **targeting** **narratives** (universes, people — not vote **totals** as **canon**).  
 - **Volunteer / field** **depends on** **relational** **depth**; **GOTV** **depends** on **relational** **activity** + **data** **read** **models** before it **drives** **comms** and **field** **plans**.  
 - **Comms** is **driven** by **GOTV** + **relational** + **segmentation**; stays **governed** by **queue-first** and **Finance/Compliance** for **sensitive** paths.  
@@ -430,7 +430,7 @@ See **[`agent-knowledge-ingest-map.md`](./agent-knowledge-ingest-map.md)** (SKIL
 
 Practical ordering (adjust with campaign priorities):
 
-0. **INGEST-OPS-3** (when **election** **CLI** is **ready** in **ops**) — **audit** which **`ElectionResultSource`** rows **exist** vs `…\electionResults\` raw files (per **DB** / **env**). **INGEST-OPS-2** **status** **doc** is [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md). **INGEST-OPS-4–6** follow that file’s **forward** table.  
+0. **INGEST-OPS-3** — **audit** which **`ElectionResultSource`** rows **exist** vs `…\electionResults\` raw files: **[`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md)** · `npm run ingest:election-audit` (per **DB** / **env**). **INGEST-OPS-2** **status** + queue: [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md). **INGEST-OPS-4–6** follow that file’s **forward** table.  
 1. **PRECINCT-1** — normalization / crosswalk for voter `precinct` strings vs SOS location keys (follows DATA-4 ingest grains).
 2. **GOTV-2** — **contact** **plan** **queues** + **assignment** **review** (after **GOTV-1** read model). **GOTV-1** **shipped:** `gotv-read-model.ts`, `gotv-contact-plan.ts` (preview only), `/admin/gotv` — see [`model-to-field-gotv-connection.md`](./model-to-field-gotv-connection.md).
 3. **UWR-3** — county filter on unified queries; governed **`Submission`** / review-queue inclusion **only** with explicit status + admin `href` (see [`unified-open-work-expansion-notes.md`](./unified-open-work-expansion-notes.md)).
