@@ -29,4 +29,16 @@
 
 ---
 
-*Last updated: REL-2 + **REL-3** + **GOTV-1** + **GOTV-2** (`…/gotv` contact-plan review + read-only CSV preview; election gate `COMPLETE` on local dev before this slice — verify per DB).*
+## COUNTY-PROFILE-ENGINE-1 — County political profile (read path)
+
+- **`buildCountyPoliticalProfile`** in **`src/lib/campaign-engine/county-political-profile.ts`** joins **DATA-4** election rows (by **County.id** or **FIPS** / **countyNameRaw** fallback) with **aggregate** **relational** / **voter** / **volunteer** **ask** **counts** when a real **County** **id** exists.
+- **Power of Five** / **`isCoreFive`** / **`powerOfFiveSlot`** on **`RelationalContact`** are referenced in **`engagementPlan.relationalOrganizing`** for **briefing** **text** — **no** **PII** on **public** **`/county-briefings/pope`** or **static** **zip**.
+- **GOTV bridge:** profile’s **pathToVictory** and **volunteerAndContactProfile** are **planning** **only**; **GOTV-1/2** remain the **operational** **read** **models** for **contact** **plan** **previews**.
+
+## COUNTY-INTEL-2 — Workbench + static (aggregate)
+
+- **Workbench:** **`/admin/county-intelligence`** — 50K progress, file registration summary, **aggregate** **drop-off**, “how we win” narrative, Hammer title buckets — **not** a substitute for person-level field lists (those stay in governed tools).
+- **Static zip:** all volunteer CTAs point to **kellygrappe.com**’s volunteer URL — no local intake.
+- **GOTV:** unchanged — **GOTV-1/2** for operational review; **COUNTY-INTEL-2** does **not** add public voter scores.
+
+*Last updated: REL-2 + **REL-3** + **GOTV-1** + **GOTV-2** + **COUNTY-PROFILE-ENGINE-1** + **COUNTY-INTEL-2** (`…/gotv` contact-plan review + read-only CSV preview; election gate `COMPLETE` on local dev before this slice — verify per DB).*

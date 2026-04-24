@@ -15,6 +15,8 @@ const siteLinks: { href: string; label: string }[] = [
   { href: "/admin/owned-media/grid", label: "Media library grid" },
   { href: "/admin/owned-media/batches", label: "Media ingest batches" },
   { href: "/admin/counties", label: "Counties" },
+  { href: "/admin/county-profiles", label: "County profiles" },
+  { href: "/admin/county-intelligence", label: "County intel" },
   { href: "/admin/blog", label: "Blog sync" },
   { href: "/admin/settings", label: "Settings" },
 ];

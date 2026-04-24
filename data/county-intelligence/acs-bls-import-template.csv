@@ -1,0 +1,2 @@
+countyName,countyFips,source,sourceYear,population,medianIncome,povertyRate,bachelorsPlusRate,under18Rate,over65Rate,unemploymentRate,topIndustriesJson,raceEthnicityJson,notes
+Pope,05115,Census_ACS,2022,,,,,,,,,,"Header row: fill with verified public figures; keep JSON on one line in real imports or use TSV/quoted CSV."

@@ -4,6 +4,8 @@
 **Stack:** `RedDirt/` — future implementation will live under **Campaign Intelligence / Reporting** and related lanes.  
 **Cross-ref:** [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) · [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) · [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) · [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md) (**§6.5** Competitor Intelligence Ingest Queue; **§6.6** Competitor Intelligence Sources) · [`COMPETITOR_INTELLIGENCE_MANIFEST.md`](./COMPETITOR_INTELLIGENCE_MANIFEST.md) (**INTEL-2**) · [`AUTO_BUILD_PROTOCOL.md`](./AUTO_BUILD_PROTOCOL.md)
 
+**POPE-BRIEF-SITE-1 (2026-04-24, content product):** A **read-only** **static** **briefing** **site** at **`H:\SOSWebsite\dist-pope-briefing\`** packages **`arkleg-hammer` dry-run** **legislation** (same **title-metadata** / **no** **vote** **fabrication** **rules** as **INTEL-BRIEF-2**), **Pope** **turnout** **from** **ingested** **SOS** **JSONs**, and **Wikipedia-sourced** **county** **snapshot** text — **for** **internal** **convention** **use**; **not** a **scraper**, **not** a **DB** **write** **path** — **POPE-BRIEF-SITE-2** can **wire** **optional** **refreshed** **aggregates**.
+
 **Core rule:** **Public, lawful, source-backed** information only. **No** fabrication. **Human review** before anything is used **externally** or drives **campaign action**. **Broad automated ingest** of opposition-related source material is **gated** behind **election ingest COMPLETE** (or **explicit waiver**) per [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) and [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md) — **INTEL-1** (manual entry + citations) is **not** blocked by that gate.
 
 ---

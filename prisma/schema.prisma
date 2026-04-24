@@ -1909,6 +1909,8 @@ model County {
 
   campaignStats CountyCampaignStats?
   demographics  CountyPublicDemographics?
+  registrationSnapshots CountyRegistrationSnapshot[]
+  strategyKpis          CountyStrategyKpi[]
   elected       CountyElectedOfficial[]
 
   countyVoterMetrics        CountyVoterMetrics[]
@@ -2109,12 +2111,60 @@ model CountyPublicDemographics {
   povertyRatePercent       Float?
   bachelorsOrHigherPercent Float?
   laborEmploymentNote      String?                   @db.Text
+  /// Optional JSON: age band → percent or count (not individual records).
+  ageBandsJson             Json?
+  /// Optional race / ethnicity table from ACS (aggregate only).
+  raceEthnicityJson        Json?
+  /// Optional education breakdown (aggregate).
+  educationJson            Json?
+  /// BLS or ACS employment mix (aggregate).
+  employmentJson           Json?
+  /// County unemployment rate (BLS / ACS) when available.
+  unemploymentRatePercent  Float?
+  /// Top industry shares — JSON, aggregate.
+  blsIndustryMixJson       Json?
   source                   PublicDemographicsSource  @default(CENSUS_ACS)
   sourceDetail             String?
   asOfYear                 Int?
   fetchedAt                DateTime?
   reviewStatus             CountyContentReviewStatus @default(PENDING_REVIEW)
   updatedAt                DateTime                  @updatedAt
+}
+
+/// Aggregate registered-voter file snapshot for a county (not individual voters).
+model CountyRegistrationSnapshot {
+  id        String  @id @default(cuid())
+  countyId  String
+  county    County  @relation(fields: [countyId], references: [id], onDelete: Cascade)
+  sourceFile  String? @db.Text
+  snapshotDate DateTime
+  totalRegistered  Int
+  activeRegistered  Int?
+  inactiveRegistered Int?
+  metadataJson   Json? @default("{}")
+  createdAt   DateTime @default(now())
+
+  @@index([countyId, snapshotDate])
+}
+
+/// Store aggregate KPIs for county strategy (one row per key or version).
+model CountyStrategyKpi {
+  id         String  @id @default(cuid())
+  countyId   String?
+  county     County? @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  countyName String?
+  metricKey  String
+  metricValue String? @db.Text
+  metricNumber Float?
+  metricLabel  String? @db.Text
+  source      String?
+  confidence  String?
+  metadataJson Json?  @default("{}")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([countyId, metricKey])
+  @@index([metricKey])
 }
 
 /// Reviewable elected roster — can be hand-entered, imported, or later Google Civic.
@@ -2145,6 +2195,14 @@ enum VoterFileIngestStatus {
   PROCESSING
   COMPLETE
   FAILED
+}
+
+/// Where a participation boolean came from (vendor column vs staff).
+enum VoterParticipationProvenance {
+  VENDOR_VOTER_FILE
+  IMPORT_CSV
+  STAFF
+  OTHER
 }
 
 enum VoterSnapshotChangeType {
@@ -2415,6 +2473,8 @@ model VoterRecord {
   voterInteractions        VoterInteraction[]
   voterVotePlans           VoterVotePlan[]
   relationalContacts       RelationalContact[]
+  /// Optional per-contest participation from vendor / import (not vote choice).
+  electionParticipations   VoterElectionParticipation[]
 
   @@index([countyId, inLatestCompletedFile])
   @@index([countyId, lastName, firstName])
@@ -2422,6 +2482,26 @@ model VoterRecord {
   @@index([countySlug])
   @@index([countyFips])
   @@index([registrationDate])
+}
+
+/// Per-voter participation flags for specific elections (yes/no — not how they voted).
+/// `contestKey` should match ingest / vendor labels, e.g. `2022_GENERAL`, `2020_PREFERENTIAL_PRIMARY`.
+model VoterElectionParticipation {
+  id                 String                     @id @default(cuid())
+  voterRecordId      String
+  voterRecord        VoterRecord                @relation(fields: [voterRecordId], references: [id], onDelete: Cascade)
+  contestKey         String
+  participated       Boolean
+  /// If the source lists which primary ballot was taken (D/R). Null = unknown or not a primary.
+  primaryBallotParty String?
+  provenance         VoterParticipationProvenance @default(VENDOR_VOTER_FILE)
+  createdAt          DateTime                   @default(now())
+  updatedAt          DateTime                   @updatedAt
+
+  @@unique([voterRecordId, contestKey])
+  @@index([voterRecordId])
+  @@index([contestKey, participated])
+  @@index([contestKey, primaryBallotParty])
 }
 
 /// Provenance row for a modeled influence signal (not a vote claim).

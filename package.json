@@ -62,6 +62,8 @@
     "ingest:brain-manifest": "node scripts/build-brain-source-manifest.mjs",
     "ingest:election-audit": "node scripts/ingest-election-audit.mjs",
     "ingest:election-audit:json": "node scripts/ingest-election-audit.mjs --json",
+    "ingest:county-demographics": "tsx scripts/import-county-public-demographics.ts",
+    "emit:pope-county-intel": "tsx scripts/emit-pope-county-intel-site.ts",
     "ingest:opposition-intel": "tsx scripts/import-opposition-intelligence-json.ts",
     "ingest:arkleg-opposition": "tsx scripts/ingest-arkleg-legislator-opposition.ts",
     "brief:kim-hammer": "tsx scripts/build-kim-hammer-brief-packet.ts",
