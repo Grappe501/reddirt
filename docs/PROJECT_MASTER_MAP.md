@@ -76,7 +76,7 @@ Unattended or **overnight** **Cursor** runs use **[`AUTO_BUILD_PROTOCOL.md`](./A
 | **Content / Author Studio** | **HIGH** | **L1–L2** | (scattered) | **Partial** / **Fragmented** | **Not** one unified **author** product. |
 | **Finance / Compliance** | **MEDIUM** (guarded) | **L1** | POLICY, COMP, FIN, BUDGET | **Partial** | **Approval-** / **audit-first** always. |
 | **AJAX Organizing Hub (Discord)** | **LOW** | **L1** | Discord docs | **Docs** / **Partial** | **Not** org **source of truth**. |
-| **Campaign Intelligence / Reporting** | **HIGH** | **L1–L2** | Analytics, rollups, DBMAP | **Partial** | **No** single **productized** intel **layer**. |
+| **Campaign Intelligence / Reporting** | **HIGH** | **L1–L2** | Analytics, rollups, DBMAP, **INTEL-OPS-1** | **Partial** | **No** single **productized** intel **layer**; **[`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md)** defines **Opp** **Intel** **roadmap** (**INTEL-1+**). |
 | **Data inventory (meta)** | — | N/A (maintenance) | DBMAP-1 | **Partial** | [`database-table-inventory.md`](./database-table-inventory.md) — **refresh** after **schema** changes. |
 
 ### Future-state blueprint (BLUEPRINT-EXP-1)
@@ -90,7 +90,7 @@ Unattended or **overnight** **Cursor** runs use **[`AUTO_BUILD_PROTOCOL.md`](./A
 - **Relational** **feeds** **GOTV** and **comms** **targeting** **narratives** (universes, people — not vote **totals** as **canon**).  
 - **Volunteer / field** **depends on** **relational** **depth**; **GOTV** **depends** on **relational** **activity** + **data** **read** **models** before it **drives** **comms** and **field** **plans**.  
 - **Comms** is **driven** by **GOTV** + **relational** + **segmentation**; stays **governed** by **queue-first** and **Finance/Compliance** for **sensitive** paths.  
-- **Campaign intelligence** **pulls** **interactions** + **comms** + **data**; **advisory** to **workbench** — **not** a **new** **source of truth**.  
+- **Campaign intelligence** **pulls** **interactions** + **comms** + **data**; **advisory** to **workbench** — **not** a **new** **source of truth**. **Opposition** **Intelligence** **Engine** (**INTEL-OPS-1**): [`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md) — **public** **lawful** **sources** **only**; **broad** **ingest** **automation** for **opp** **archives** **after** **election** **ingest** **COMPLETE** (or **waiver**); **INTEL-1** **manual** / **cited** **work** can **proceed** **earlier**.  
 - **Workbench** is the **unified** **command** **view**; **displays** **all** **divisions**; **does not** **replace** **Truth** or **DB** **authority**.  
 - **Truth snapshot** **informs** **workbench** and **governance** **narrative**; **stays** **advisory** **unless** product **tightens** **contracts** **explicitly**.  
 - **Content / Author** **feeds** **comms**; **hinges** on **queues** and **governance** **when** **outbound** **aligns** with **ops**.  
@@ -431,6 +431,7 @@ See **[`agent-knowledge-ingest-map.md`](./agent-knowledge-ingest-map.md)** (SKIL
 Practical ordering (adjust with campaign priorities):
 
 0. **INGEST-OPS-3** / **INGEST-OPS-3B** — **audit** (disk vs `ElectionResultSource`) + **operator** **runbook** [`ELECTION_INGEST_OPERATOR_RUNBOOK.md`](./ELECTION_INGEST_OPERATOR_RUNBOOK.md) + `ingest:election-audit:json` / `ingest:election-audit:doc` — **[`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md)**. **Gate** **stays** **until** **COMPLETE** (or **waiver**). **INGEST-OPS-4** = **next** (manifest) **after** **COMPLETE**; if **PARTIAL**, **only** **election** **missing-file** **ingests**. **INGEST-OPS-2** **+** **queue** [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md). **INGEST-OPS-5–6** follow.  
+0b. **INTEL-OPS-1** — **Opposition** **Intelligence** **Engine** **blueprint** (docs) — [`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md); **implementation** **INTEL-1+** by **build** **steering**; **no** **voter** **scoring**; **gated** **bulk** **opp** **ingest** with **election** **gate** per that doc.  
 1. **PRECINCT-1** — normalization / crosswalk for voter `precinct` strings vs SOS location keys (follows DATA-4 ingest grains).
 2. **GOTV-2** — **contact** **plan** **queues** + **assignment** **review** (after **GOTV-1** read model). **GOTV-1** **shipped:** `gotv-read-model.ts`, `gotv-contact-plan.ts` (preview only), `/admin/gotv` — see [`model-to-field-gotv-connection.md`](./model-to-field-gotv-connection.md).
 3. **UWR-3** — county filter on unified queries; governed **`Submission`** / review-queue inclusion **only** with explicit status + admin `href` (see [`unified-open-work-expansion-notes.md`](./unified-open-work-expansion-notes.md)).
@@ -460,7 +461,8 @@ Practical ordering (adjust with campaign priorities):
 5. [`email-workflow-intelligence-AI-HANDOFF.md`](./email-workflow-intelligence-AI-HANDOFF.md)
 6. [`campaign-manager-orchestration-map.md`](./campaign-manager-orchestration-map.md) + [`incoming-work-matrix.md`](./incoming-work-matrix.md)
 7. [`database-table-inventory.md`](./database-table-inventory.md)
-7b. **[`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md)** — **INGEST-OPS-2** election + brain **queue**; optional **[`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md)** (`npm run ingest:inventory`)
+7b. **[`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md)** — **INGEST-OPS-2** election + brain **queue**; optional **[`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md)** (`npm run ingest:inventory`)  
+7c. **[`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md)** — **INTEL-OPS-1** opposition intel **roadmap** + **ethics**; **gated** **bulk** **ingest** with **election** **ingest** per **backlog** / **protocol**
 8. [`public-site-system-map.md`](./public-site-system-map.md) + [`system-domain-flow-map.md`](./system-domain-flow-map.md)
 9. [`launch-reengagement-foundation.md`](./launch-reengagement-foundation.md)
 10. [`identity-and-voter-link-foundation.md`](./identity-and-voter-link-foundation.md)

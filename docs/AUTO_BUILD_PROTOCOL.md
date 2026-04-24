@@ -31,6 +31,19 @@ Self-build is allowed **only** for work that fits **all** of:
 | **Blueprint synchronization** | Aligning `PROJECT_MASTER_MAP` ↔ `DIVISION_MASTER_REGISTRY` ↔ `THREAD_HANDOFF` ↔ lane docs |
 | **Named packets** | Packets **already** listed in the **master** map / **recommended** list / **forward path** — not **invented** scope |
 
+### 1.1 Opposition intelligence (self-build — INTEL-OPS-1 / [`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md))
+
+When the **self-build** **cycle** is **explicitly** **scoped** to **docs** or **low-risk** **organizing** of **opposition** **intel** **artefacts** (per **approved** **queue** / **user** **script**), **in addition** to the **table** **above** **self-build** **MAY**:
+
+- **Organize** **source** **documents** in **repo**-**constrained** **ways** (folder **layout** **suggestions** in **docs**, **naming** **conventions**, **checklists** **only** — **no** **new** **secrets** in **git**).  
+- **Refresh** **or** **extend** the **ingest** **intelligence** **inventory** **narrative** in **docs** (e.g. **cross-links** to [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md) **§6.4**).  
+- **Draft** **internal**-**facing** **source** **summaries** in **markdown** with **citations** to **public** **URLs** or **filing** **ids** (still **not** **final** **opposition** **claims** for **voters**).
+
+**Self-build** **MUST** **NOT** (see also **§2.1**):
+
+- **Scrape** **or** **ingest** **external** **sources** into **app** **DB** **without** **explicit** **user** / **build** **approval** in **that** **cycle**.  
+- **Run** **bulk** **opposition**-**source** **ingest** **scripts** that **bypass** the **election** **ingest** **gate** in [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md) **§6.4** **unless** the **user** **script** **names** a **waiver** or **proves** **election** **COMPLETE** for the **intended** **env**.
+
 ---
 
 ## 2. What self-build must not do (forbidden)
@@ -49,6 +62,16 @@ Self-build is allowed **only** for work that fits **all** of:
 | **Scope** beyond **one** **division** (primary target) **plus** **docs** **sync** | [Hard stop](#6-hard-stops--escalation-to-human) |
 
 *If a task **touches** a forbidden area for **review** only* (e.g. read how sends work) — **docs** only; **no** behavior change in self-build.
+
+### 2.1 Opposition intelligence (self-build — hard limits)
+
+**Self-build** **MAY** **NOT** (even if **inspired** by [`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md)):
+
+- **Generate** **final** **opposition** **claims** for **voters**, **press**, or **public** **site** ( **drafts** in **docs** only when **cited** and **labeled** **review**-**pending** ).  
+- **Publish** **research** to **any** **public** **or** **volunteer**-**facing** **surface** from **an** **unattended** **run**.  
+- **Create** **attack** **content** ( **paid** or **unpaid** ) or **messaging** **ready** for **sends** **without** **human** **review**.  
+- **Act** on **intelligence** ( **ledger** **moves** , **sends** , **assignments** ) — **out** of **scope** for **self**-**build** per **§2** **forbidden** **table**.  
+- **Scrape** or **ingest** **external** **opposition** **sources** **into** **Postgres** / **RAG** **targets** **without** **explicit** **user**-**approved** **ingest** **packet** in **that** **run**; **gated** **backlog** **per** **§1.1** and [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md).
 
 ---
 
@@ -153,4 +176,4 @@ After a **hard stop**, the **handoff** **must** state **which** **condition** **
 
 ---
 
-*Last updated: **AUTO-BUILD-1** + **AUTO-BUILD-2** (policy + nightly schedule / handoff artifact; no production side effects by design) + **INGEST-OPS-2** (approved **ingest:inventory** / dry-run / read-only **status** **docs**; no prod import).*
+*Last updated: **AUTO-BUILD-1** + **AUTO-BUILD-2** (policy + nightly schedule / handoff artifact; no production side effects by design) + **INGEST-OPS-2** (approved **ingest:inventory** / dry-run / read-only **status** **docs**; no prod import) + **INTEL-OPS-1** (**§1.1** / **§2.1** **opposition** **intel** **self**-**build** **rules**).*

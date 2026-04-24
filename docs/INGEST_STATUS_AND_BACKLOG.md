@@ -1,4 +1,4 @@
-# Ingest status and backlog (INGEST-OPS-2 + INGEST-OPS-3 + INGEST-OPS-3B)
+# Ingest status and backlog (INGEST-OPS-2 + INGEST-OPS-3 + INGEST-OPS-3B + INTEL-OPS-1 pointer)
 
 **Packet:** **INGEST-OPS-2** — Election ingest status, brain/source backlog, standing queue protocol. **INGEST-OPS-3** — election file ↔ DB comparison: [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md). **INGEST-OPS-3B** — **operator runbook** [`ELECTION_INGEST_OPERATOR_RUNBOOK.md`](./ELECTION_INGEST_OPERATOR_RUNBOOK.md), `--json` / `--write-doc` audit output, and **completion rules** (BLOCKED ≠ PARTIAL).  
 **File:** `docs/INGEST_STATUS_AND_BACKLOG.md`  
@@ -97,6 +97,13 @@ npm run ingest:election-results -- --dry-run --file "H:\SOSWebsite\campaign info
 
 Then, only for the **intended** database, drop `--dry-run` and run the same command once per file. Use `--replace` if re-importing the same path.
 
+### 2.5 DB-OPS-1 — local audit visibility (still **BLOCKED**)
+
+A **DB-OPS-1** pass attempted to bring **Postgres** up and re-run the election audit. **Result:** `ingest:election-audit:json` remains **`status: BLOCKED`** because **Docker** did not start the **db** service (Docker Desktop engine not running). **No** **COMPLETE** or **PARTIAL** determination is possible until **`dbReachable: true`**.
+
+- **Blocker (documented):** start **Docker Desktop**, then `npm run dev:db` from `RedDirt/`, then re-run **`ingest:election-audit:json`** / **`:doc`**. Details: [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) **§ DB-OPS-1**.  
+- **INGEST-OPS-4** (manifest) and **post-election** **brain** **queue** **expansion** remain **gated** per existing rules until the audit can report **PARTIAL** or **COMPLETE** with a live **DB** (or an **explicit** **waiver**).
+
 ---
 
 ## 3. Existing scripts and tools (inventory)
@@ -147,6 +154,7 @@ Then, only for the **intended** database, drop `--dry-run` and run the same comm
 | **Voter file** | Snapshots, import CLI | Ongoing file deliveries; not this packet’s scope |
 | **Brain / loose files** | Many **scripts** for docs/media | **No** single normalized **manifest** of all non-repo files; **INGEST-OPS-4** |
 | **Provenance (non-election)** | Pattern exists in several domains | **INGEST-OPS-5/6** for unified **parser version + review UI** |
+| **Opposition intelligence sources** (queue) | **Blueprint** [`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md) (**INTEL-OPS-1**) | **Queue** **after** **election** **ingest** **COMPLETE** (or **explicit** **waiver** of the **election** **gate** for a **defined** **scope**); **always** require **source** **provenance** — see **§6.4** |
 
 ---
 
@@ -181,6 +189,23 @@ See **[`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md)** (refr
 | **Compliance** | `compliance`, `ethics`, `fec`, `handbook` |
 | **Unknown** | Default when no match |
 
+### 6.4 Opposition intelligence sources (ingest queue — INTEL-OPS-1)
+
+**Category label:** **Opposition intelligence** — **public** **lawful** **material** for **analyst** **work** per **[`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md)** (allowed / prohibited / AI **guardrails**).
+
+**What belongs in this queue (examples):**
+
+- **Public** **campaign** **finance** **exports** and **filing** **pulls** (FEC, AEC, SOS **as** **applicable**)  
+- **Public** **campaign** **literature** (mailers, handbills) **scanned** / **dropped** by **operators**  
+- **Public** **ads** and **ad**-**library** **saves**  
+- **News** / **media** **archive** (URLs + **capture** **metadata**)  
+- **Candidate** / **PAC** / **org** **public** **statements** and **press** **releases**  
+- **User**-**lawfully**-**obtained** **documents** (label **provenance**)
+
+**Queue rule:** **Promote** **this** **category** in the **ingest** **backlog** **after** **election** **ingest** is **COMPLETE** (see [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) / `ingest:election-audit:json`) **or** the **program** **explicitly** **waives** the **automation** **order** in **writing** — so **broad** **ingest** **automation** does **not** **race** **ahead** of **core** **election** **data** without **a** **decision**. **Exception:** **INTEL-1**-style **manual** **cited** **entry** in **app** or **spreadsheet** (when **implemented**) does **not** require **solving** the **full** **ingest** **queue** **first**; the **backlog** **rule** targets **scripted** / **batch** / **RAG**-**scale** **pipelines** **from** the **brain** **folder** **or** **equivalent**.
+
+**Provenance (required for every** **queued** **item**): **source** **type** (filing, URL, file path), **retrieval** **timestamp**, **operator** or **script** **id** **as** **appropriate**; **confidence** and **review** **status** per the **opposition** **doc**.
+
 ---
 
 ## 7. Post-election brain ingest queue (standing rules)
@@ -193,7 +218,7 @@ See **[`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md)** (refr
 4. **No destructive** imports; prefer **`--dry-run`** (election) or **read-only** audit scripts when available.  
 5. **Provenance** target (when building parsers): **source file path**, **ingest timestamp**, **parser/version**, **confidence/status**, **free-text notes** — aligns with `ElectionResultSource` pattern and compliance docs posture.
 
-**Queue categories (backlog tags):** Financials · Volunteer lists · County assets · Election data · Research / strategy · Communications · Compliance · **Unknown / needs review**.
+**Queue categories (backlog tags):** Financials · Volunteer lists · County assets · Election data · **Opposition intelligence** · Research / strategy · Communications · Compliance · **Unknown / needs review**.
 
 | Category | Next action (typical) |
 |----------|------------------------|
@@ -201,6 +226,7 @@ See **[`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md)** (refr
 | **Volunteer lists** | Match to `VolunteerProfile` / intake — **human review**; no auto outreach |
 | **County assets** | `ingest:county-wikipedia` / owned media / county pages as existing scripts allow |
 | **Election data** | `ingest:election-results` per file |
+| **Opposition intelligence** | See **§6.4** and [`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md); **batch** / **RAG**-**scale** **after** **election** **ingest** **gate**; **provenance** **required** |
 | **Research / strategy** | `ingest:docs` / `ingest:campaign-folder` subsets with **operator** choice |
 | **Communications** | RAG and content pipelines — **no** send automation |
 | **Compliance** | `ComplianceDocument` upload path per existing product |
@@ -224,9 +250,9 @@ See **[`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md)** (refr
 ## 9. Division note (ingest / intelligence)
 
 - **Data layer / voter file / ingest** remains **L2** until **PRECINCT-1** or **sustained** ingest tooling lifts **operator** **confidence** — **per** [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md).  
-- **Campaign intelligence** stays **L1–L2**; may move when **INGEST-OPS-4+** and **honest** rollups exist — **not** on docs alone.  
+- **Campaign intelligence** stays **L1–L2**; **INTEL-OPS-1** adds **[`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md)**; may move when **INGEST-OPS-4+** and **honest** rollups exist — **not** on docs alone. **Opp** **intel** **bulk** **ingest** **is** **ordered** **after** **election** **ingest** **COMPLETE** (or **waiver**) per **§6.4**.  
 - **Finance** / **volunteer** product levels **unchanged** here (no new financial or volunteer **actions** in this packet).
 
 ---
 
-*Last updated: **INGEST-OPS-3B** — runbook + JSON/doc audit; **BLOCKED** must not be misread as **PARTIAL**; **INGEST-OPS-4** after **COMPLETE**; **election COMPLETE** only when [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) reflects `ingest:election-audit:json` with `dbReachable: true` (or explicit waiver), not this paragraph alone.*
+*Last updated: **DB-OPS-1** (local audit still **BLOCKED** — Docker/Postgres; see **§2.5**) + **INTEL-OPS-1** / **INGEST-OPS-3B**; **INGEST-OPS-4** after **COMPLETE**; **election COMPLETE** only with `dbReachable: true` per [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) (or explicit waiver), not this paragraph alone.*

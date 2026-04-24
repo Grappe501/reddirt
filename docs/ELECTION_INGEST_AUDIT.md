@@ -11,6 +11,22 @@
 
 ---
 
+## DB-OPS-1 — latest visibility check (local dev)
+
+**Election Ingest Status from audit JSON:** **BLOCKED** (database unreachable for Prisma read).
+
+| Check | Result |
+|-------|--------|
+| `docker compose up -d` from `RedDirt/` (`npm run dev:db`) | **Did not start** — Docker Desktop **engine** not reachable (typical fix: **start Docker Desktop** on Windows, wait until running, then retry). |
+| `DATABASE_URL` in `.env` (non-secret summary) | Points to host `127.0.0.1`, port `5433`, database `reddirt` — **aligned** with `docker-compose.yml` mapping `5433:5432` when the **db** service is up. |
+| `npm run ingest:election-audit:json` | `dbReachable: false`, `status: "BLOCKED"` — **no** `ingestedCount` / `missingCount`. |
+
+**Unblock (operator):** (1) Start **Docker Desktop**. (2) `cd RedDirt` → `npm run dev:db`. (3) Optional: `npm run db:ping`. (4) `npm run ingest:election-audit:json` → `npm run ingest:election-audit:doc`. **Migrations** were **not** run in this pass; if `migrate status` later shows **pending** in *your* environment, follow normal **`prisma migrate deploy`** / operator procedure—**not** auto-applied here.
+
+**Production:** not used; this note describes **local** **visibility** only.
+
+---
+
 ## How to complete this audit
 
 1. **Preconditions:** Postgres reachable from this machine, `DATABASE_URL` set in `RedDirt/.env` (or environment), and the `electionResults` folder present (see runbook).  
@@ -167,7 +183,7 @@ Election Ingest Status:
 - **BLOCKED**
 
 Last verified:
-- `2026-04-24T04:12:55.703Z` (script-generated ISO time)
+- `2026-04-24T04:17:33.949Z` (script-generated ISO time)
 
 Verified against:
 - (set `ELECTION_AUDIT_VERIFIED_AGAINST` when running `ingest:election-audit:doc` — e.g. `local Docker postgres reddirt` or production name)
@@ -189,4 +205,4 @@ Notes:
 
 ---
 
-*Last updated: INGEST-OPS-3B — auto sections via `ingest:election-audit:doc`; see [`ELECTION_INGEST_OPERATOR_RUNBOOK.md`](./ELECTION_INGEST_OPERATOR_RUNBOOK.md).*
+*Last updated: **DB-OPS-1** (BLOCKED: Docker/Postgres not up locally) + **INGEST-OPS-3B** auto sections; see [`ELECTION_INGEST_OPERATOR_RUNBOOK.md`](./ELECTION_INGEST_OPERATOR_RUNBOOK.md).*

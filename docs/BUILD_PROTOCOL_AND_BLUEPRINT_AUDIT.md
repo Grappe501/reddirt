@@ -96,6 +96,14 @@ A **division** is a **top-level system area** of the campaign operating system. 
 
 **Authoritative check:** `npm run ingest:election-audit` (with DB up) and/or the read-only SQL in **§B** of [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) · **INGEST-OPS-3B:** `npm run ingest:election-audit:json` (and optional `ingest:election-audit:doc` to refresh the audit doc) — see [`ELECTION_INGEST_OPERATOR_RUNBOOK.md`](./ELECTION_INGEST_OPERATOR_RUNBOOK.md). **Do not** **treat** **BLOCKED** (DB unreachable) as **PARTIAL** or **COMPLETE** in any build report. **If** `status` is **PARTIAL**, continue **targeted** `ingest:election-results` for **missing** files only. **INGEST-OPS-4** (manifest) is the **next** ingest line **after** **COMPLETE** (or **explicit** **waiver** of this gate for a scope). **GOTV** / **comms** / **intelligence** **read** paths that **do not** **assert** **complete** **election** **ingest** may continue when labeled **advisory** / **gapped** per existing brain docs.
 
+### Opposition Intelligence (INTEL-OPS-1)
+
+**Opposition** **Intelligence** is a **core** **capability** of **Campaign** **Intelligence** / **Reporting**, defined in **[`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md)**. It **remains** **ethically** and **architecturally** **distinct** from **voter** **targeting** and **GOTV** **scoring**.
+
+- **Gating:** **Broad** **automated** **ingest** of **opposition**-**related** **source** **archives** (and **queue**-scale **ingest** **pipelines** tied to that backlog) is **gated** **behind** **election** **ingest** **COMPLETE** (or an **explicit** **waiver** of the **Election** **Ingest** **Gate** for a **named** **scope**), as reflected in [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md). **INTEL-1** may be **manual** **entry** and **source**-**backed** **notes** **only** **without** **waiting** on that **automation** **milestone**.  
+- **Comms** / **outbound** / **field** **action:** **No** **external** **publishing** or **campaign** **action** that **cites** **or** **depends** on **opposition** **intel** **without** **human** **review** and **existing** **approval** **doctrine** (comms, compliance **as** **needed**).  
+- **Next** after **mature** **sourced** **intel** **discipline** (per **INTEL-** packet **line** in the **opposition** **doc**): **INTEL-2+** **persistence** and **views**; **ingest** **lines** **stay** **coherent** with **INGEST-OPS-4+** when **manifest**-**driven** **brain** **ingest** **expands**.
+
 ---
 
 ## Blueprint Expansion Doctrine (BLUEPRINT-EXP-1)
@@ -281,4 +289,4 @@ A **division** is a **top-level system area** of the campaign operating system. 
 
 ---
 
-*Stack (ground truth):* Next.js App Router · Prisma · PostgreSQL · `reddirt-site` under `RedDirt/`. *Quality gate for code pushes:* `npm run check` (see `RedDirt/README.md`). *Unattended / self-build:* [`AUTO_BUILD_PROTOCOL.md`](./AUTO_BUILD_PROTOCOL.md) (**AUTO-BUILD-1** / **AUTO-BUILD-2** nightly **workflow**; see **§9**). *Ingest backlog / election+brain protocol:* **INGEST-OPS-2** in [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md).
+*Stack (ground truth):* Next.js App Router · Prisma · PostgreSQL · `reddirt-site` under `RedDirt/`. *Quality gate for code pushes:* `npm run check` (see `RedDirt/README.md`). *Unattended / self-build:* [`AUTO_BUILD_PROTOCOL.md`](./AUTO_BUILD_PROTOCOL.md) (**AUTO-BUILD-1** / **AUTO-BUILD-2** nightly **workflow**; see **§9**). *Ingest backlog / election+brain protocol:* **INGEST-OPS-2** in [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md). *Opposition intelligence blueprint:* [`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md) (**INTEL-OPS-1**).

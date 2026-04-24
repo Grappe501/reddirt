@@ -29,7 +29,7 @@
 | **8. Content / Author** | **HIGH** | Editorial, media, stories. | Content routes, owned media | (scattered) | **L1–L2** | **Partial** / **Fragmented** | Review, comms | Publishing governance |
 | **9. Finance / Compliance** | **MEDIUM** (guarded) | Budget, ledger, compliance — approval-first. | `BudgetPlan`, `FinancialTransaction`, `ComplianceDocument` | POLICY, COMP, FIN, BUDGET | **L1** (partial) | **Partial** | Human approval, audit | FIN/COMP packets |
 | **10. AJAX Organizing Hub** | **LOW** | Discord; not DB truth. | Discord **docs** | Discord | **L1** | **Docs** / **Partial** | Policy, voice | Integration when steered |
-| **11. Campaign intelligence** | **HIGH** | Cross-cutting metrics, analytics. | Analytics, rollups, DBMAP | LAUNCH, DBMAP, ad hoc | **L1–L2** | **Partial** | Truth, data; **INGEST-OPS-4+** **manifest** when **source** **inventory** **stabilizes** | Honest reporting layer |
+| **11. Campaign intelligence** | **HIGH** | Cross-cutting metrics, **analytics**, **opposition** **intelligence** ( **INTEL-OPS-1+** **blueprint**). | Analytics, rollups, DBMAP, **[`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md)** | LAUNCH, DBMAP, **INTEL-1–6** (roadmap), ad hoc | **L1–L2** | **Partial** | Truth, data; **INGEST-OPS-4+** **manifest** when **source** **inventory** **stabilizes**; **broad** **opp** **ingest** **automation** **gated** with **election** **ingest** | Honest reporting + **sourced** **opposition** **intel** |
 
 ---
 
@@ -74,10 +74,10 @@ Each division: **current state** · **next stage** · **unlock conditions** · *
 
 ### 6. Campaign intelligence / reporting
 
-- **Current state:** **Fragmented** **insights**, **ad** **hoc** **routes**; **L1–L2**. **INGEST-OPS-2** / **4** = **source** **file** **inventory** **and** **manifest** when **ready** (does **not** **alone** **raise** **L3**).  
-- **Next stage:** **Unified** **reporting**; **recommendation**-style **summaries** (**advisory** only — not **authority**).  
+- **Current state:** **Fragmented** **insights**, **ad** **hoc** **routes**; **L1–L2**. **INGEST-OPS-2** / **4** = **source** **file** **inventory** **and** **manifest** when **ready** (does **not** **alone** **raise** **L3**). **INTEL-OPS-1** defines the **Opposition** **Intelligence** **Engine** (docs): **[`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md)** — **lawful** **public** **sources** **only**, **confidence** **+** **review**, **no** **voter** **scoring**; **broad** **opposition**-**related** **ingest** **automation** **waits** on **election** **ingest** **COMPLETE** (or **waiver**); **INTEL-1** **manual** / **cited** **entry** is **in** **scope** **earlier**.  
+- **Next stage:** **Unified** **reporting**; **recommendation**-style **summaries** (**advisory** only — not **authority**); **phased** **INTEL-1**–**INTEL-6** per blueprint.  
 - **Unlock conditions:** **Data** + **interactions** + **comms** **enough** for **honest** **rollups**; **truth** **snapshot** **fields** **trusted**; **ingest** **provenance** **disciplined** (election **+** **brain** **queues** in [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md)).  
-- **Dependencies:** **Feeds** **workbench** **decisions**; **must** **not** **replace** **deterministic** **brain** or **DB**.  
+- **Dependencies:** **Feeds** **workbench** **decisions**; **must** **not** **replace** **deterministic** **brain** or **DB**; **comms** **and** **finance** **consume** **intel** **only** with **governance** **per** **INTEL-OPS-1**.  
 
 ### 7. Content / Author studio
 
@@ -125,4 +125,4 @@ Each division: **current state** · **next stage** · **unlock conditions** · *
 
 ---
 
-*Last updated: **BLUEPRINT-EXP-1** (forward path per division) + **DIV-OPS-2** + **AUTO-BUILD-1** (registry pointer for self-build) + **INGEST-OPS-2/3/3B** (data layer / **ingest** **queue** / **ELECTION_INGEST_OPERATOR_RUNBOOK**).*
+*Last updated: **BLUEPRINT-EXP-1** (forward path per division) + **DIV-OPS-2** + **AUTO-BUILD-1** (registry pointer for self-build) + **INGEST-OPS-2/3/3B** + **INTEL-OPS-1** ( **opposition** **intelligence** **engine** **blueprint** ).*
