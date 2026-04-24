@@ -102,6 +102,8 @@ model User {
   voterInteractionsAsContact       VoterInteraction[]         @relation("VoterInteractionContactedBy")
   voterInteractionsAsVolunteer     VoterInteraction[]         @relation("VoterInteractionRelatedVolunteer")
   voterVotePlansCreated            VoterVotePlan[]            @relation("VoterVotePlanCreatedBy")
+  /// REL-2: relational network owned by this volunteer user (not a permission model).
+  relationalContactsOwned          RelationalContact[]        @relation("RelationalContactOwner")
 }
 
 /// COMP-2: classification for dashboard-uploaded compliance knowledge files.
@@ -217,7 +219,8 @@ model FieldUnit {
   children  FieldUnit[]  @relation("FieldUnitHierarchy")
   createdAt DateTime     @default(now())
 
-  assignments FieldAssignment[]
+  assignments     FieldAssignment[]
+  relationalContacts RelationalContact[]
 
   @@index([type, name])
   @@index([parentId])
@@ -1929,6 +1932,7 @@ model County {
   workflowIntakes           WorkflowIntake[]
   electionCountyResults    ElectionCountyResult[]
   electionPrecinctResults  ElectionPrecinctResult[]
+  relationalContacts        RelationalContact[]
 
   @@index([published, sortOrder])
 }
@@ -2244,6 +2248,55 @@ enum VoterSupportLevel {
   UNKNOWN
 }
 
+// --- REL-2: relational contact + power-of-5 (human-entered; optional voter match) ---
+
+enum RelationalRelationshipType {
+  FAMILY
+  FRIEND
+  NEIGHBOR
+  COWORKER
+  CHURCH_COMMUNITY
+  SCHOOL_COMMUNITY
+  COMMUNITY_GROUP
+  ONLINE
+  OTHER
+  UNKNOWN
+}
+
+enum RelationalRelationshipCloseness {
+  VERY_CLOSE
+  CLOSE
+  FAMILIAR
+  WEAK_TIE
+  UNKNOWN
+}
+
+enum RelationalMatchStatus {
+  UNMATCHED
+  POSSIBLE_MATCH
+  MATCHED
+  CONFLICT
+  NOT_REGISTERED
+  NEEDS_REVIEW
+}
+
+enum RelationalOrganizingStatus {
+  IDENTIFIED
+  NEEDS_REGISTRATION_CHECK
+  REGISTRATION_CHECKED
+  CONTACTED
+  ENGAGED
+  SUPPORT_ASSESSED
+  FOLLOW_UP_NEEDED
+  VOTE_PLAN_NEEDED
+  VOTE_PLAN_CREATED
+  INVITED_TO_POWER_OF_FIVE
+  INVITED_TO_VOLUNTEER
+  NOT_INTERESTED
+  DO_NOT_CONTACT
+  UNKNOWN
+}
+
 enum VotePlanStatus {
   NOT_STARTED
   NEEDS_PLAN
@@ -2361,6 +2414,7 @@ model VoterRecord {
   voterModelClassifications VoterModelClassification[]
   voterInteractions        VoterInteraction[]
   voterVotePlans           VoterVotePlan[]
+  relationalContacts       RelationalContact[]
 
   @@index([countyId, inLatestCompletedFile])
   @@index([countyId, lastName, firstName])
@@ -2377,6 +2431,9 @@ model VoterSignal {
   voterRecord    VoterRecord?        @relation(fields: [voterRecordId], references: [id], onDelete: Cascade)
   userId         String?
   user           User?               @relation(fields: [userId], references: [id], onDelete: SetNull)
+  /// REL-2: optional provenance link to a relational contact (manual / seam writes only).
+  relationalContactId String?
+  relationalContact  RelationalContact? @relation(fields: [relationalContactId], references: [id], onDelete: SetNull)
   signalKind     VoterSignalKind
   signalSource   VoterSignalSource
   signalStrength VoterSignalStrength
@@ -2389,6 +2446,7 @@ model VoterSignal {
 
   @@index([voterRecordId])
   @@index([userId])
+  @@index([relationalContactId])
   @@index([signalKind])
 }
 
@@ -2421,6 +2479,9 @@ model VoterInteraction {
   id                     String                  @id @default(cuid())
   voterRecordId          String?
   voterRecord            VoterRecord?            @relation(fields: [voterRecordId], references: [id], onDelete: Cascade)
+  /// REL-2: optional link to a volunteer's relational contact (provenance; not auto-set).
+  relationalContactId    String?
+  relationalContact      RelationalContact?      @relation(fields: [relationalContactId], references: [id], onDelete: SetNull)
   contactedByUserId      String?
   contactedBy            User?                   @relation("VoterInteractionContactedBy", fields: [contactedByUserId], references: [id], onDelete: SetNull)
   relatedVolunteerUserId String?
@@ -2440,9 +2501,51 @@ model VoterInteraction {
   updatedAt              DateTime                @updatedAt
 
   @@index([voterRecordId])
+  @@index([relationalContactId])
   @@index([contactedByUserId])
   @@index([relatedVolunteerUserId])
   @@index([interactionDate])
+}
+
+/// REL-2: durable relational organizing contact for a volunteer owner; optional voter roll match (reviewed).
+model RelationalContact {
+  id                   String                       @id @default(cuid())
+  ownerUserId          String
+  owner                User                         @relation("RelationalContactOwner", fields: [ownerUserId], references: [id], onDelete: Cascade)
+  matchedVoterRecordId String?
+  matchedVoterRecord   VoterRecord?                 @relation(fields: [matchedVoterRecordId], references: [id], onDelete: SetNull)
+  countyId             String?
+  county               County?                      @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  fieldUnitId          String?
+  fieldUnit            FieldUnit?                   @relation(fields: [fieldUnitId], references: [id], onDelete: SetNull)
+  firstName            String?                      @db.Text
+  lastName             String?                      @db.Text
+  displayName          String
+  phone                String?
+  email                String?                    @db.Text
+  relationshipType     RelationalRelationshipType
+  relationshipCloseness RelationalRelationshipCloseness?
+  matchStatus          RelationalMatchStatus         @default(UNMATCHED)
+  matchConfidence      ModelConfidence?
+  organizingStatus     RelationalOrganizingStatus    @default(IDENTIFIED)
+  supportLevel         VoterSupportLevel?
+  isCoreFive           Boolean                       @default(false)
+  powerOfFiveSlot      Int?
+  lastContactedAt      DateTime?
+  nextFollowUpAt       DateTime?
+  notes                String?                     @db.Text
+  metadataJson         Json?
+  createdAt            DateTime                     @default(now())
+  updatedAt            DateTime                     @updatedAt
+
+  voterInteractions    VoterInteraction[]
+  voterSignals         VoterSignal[]
+
+  @@index([ownerUserId])
+  @@index([matchedVoterRecordId])
+  @@index([countyId])
+  @@index([fieldUnitId])
+  @@index([matchStatus, organizingStatus])
 }
 
 /// One row per voter for vote-plan tracking (multiple rows allowed; consumers should prefer latest by `updatedAt`).

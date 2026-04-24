@@ -17,7 +17,7 @@
 | `CommunityEffectivenessSnapshot` | Penetration / engagement / momentum snapshots over time. |
 | `VolunteerImpactSnapshot` | Capacity + outcomes rollup (ties GAME-1 / TALENT-1 narratives). |
 | `DonorModelProfile` | Tier + affinity sketch (**donor blueprint**); compliance remains separate. |
-| `RelationalContact` | **REL-2** — persisted relational organizing row (owner, optional `VoterRecord` match). |
+| `RelationalContact` | **Shipped (REL-2)** — owner `User`, optional county/field, optional `VoterRecord` match, power-of-5 fields, seams on `VoterInteraction` / `VoterSignal`. |
 
 ---
 
@@ -35,7 +35,7 @@
 
 1. **DATA-4 / ELECTION-INGEST-1** — operational ingest of reported results (**done**).
 2. **PRECINCT-1** — normalization / crosswalk for `VoterRecord.precinct` ↔ ingest precinct keys.
-3. **REL-2** — relational contact model + optional voter match + minimal UI/admin list.
+3. **REL-2** — relational contact model + optional voter match + admin list + touch/signal seams (**done**).
 4. **VOTER-MODEL-1** — signal + classification schema + rule helper + read helpers (**done**).
 5. **INTERACTION-1** — interaction log + vote-plan seed (**done**).
 6. **AREA-MODEL-1** — area profile read model + documented grains (city / township / non-city).
@@ -43,4 +43,4 @@
 
 ---
 
-*Last updated: VOTER-MODEL-1 + INTERACTION-1 (schema + helpers + docs).*
+*Last updated: VOTER-MODEL-1 + INTERACTION-1 + REL-2 (schema + helpers + docs).*

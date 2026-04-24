@@ -1,8 +1,8 @@
 # Power of 5 — system integration (VOL-CORE-1) (RedDirt)
 
-**Packet VOL-CORE-1 (Part D).** Binds **Power of 5** to **REL-1**, **GAME-1**, and **FIELD-1**: commitments, ownership, communication responsibility, and **optional** coding conventions. **Docs only**—no migrations.
+**Packet VOL-CORE-1 (Part D).** Binds **Power of 5** to **REL-1**, **REL-2**, **GAME-1**, and **FIELD-1**: commitments, ownership, communication responsibility, and **optional** coding conventions. **REL-2** adds **`RelationalContact.isCoreFive`** / **`powerOfFiveSlot`** in the database (no volunteer product UI in that packet).
 
-**Cross-ref:** [`pod-system-foundation.md`](./pod-system-foundation.md) (REL-1) · [`relationship-data-model-foundation.md`](./relationship-data-model-foundation.md) · [`relational-kpi-foundation.md`](./relational-kpi-foundation.md) · [`volunteer-xp-model.md`](./volunteer-xp-model.md) (GAME-1) · [`field-structure-foundation.md`](./field-structure-foundation.md) · [`county-registration-goals-verification.md`](./county-registration-goals-verification.md)
+**Cross-ref:** [`relational-contact-implementation-foundation.md`](./relational-contact-implementation-foundation.md) (REL-2) · [`pod-system-foundation.md`](./pod-system-foundation.md) (REL-1) · [`relationship-data-model-foundation.md`](./relationship-data-model-foundation.md) · [`relational-kpi-foundation.md`](./relational-kpi-foundation.md) · [`volunteer-xp-model.md`](./volunteer-xp-model.md) (GAME-1) · [`field-structure-foundation.md`](./field-structure-foundation.md) · [`county-registration-goals-verification.md`](./county-registration-goals-verification.md)
 
 ---
 
@@ -23,13 +23,13 @@
 | **Not PII** | Codes are **categories**, not substitutes for secure name/phone storage. |
 | **Coach-facing** | Help POD leaders ask “how is slot **3** doing?” without exposing details in group settings. |
 
-If implemented in software, store as **metadata** on future **`RelationalContact`** rows (REL-2), namespaced and **consent-aware**.
+Optional A–E / role tags can live in **`RelationalContact.metadataJson`** (REL-2), namespaced and **consent-aware**; core-five **slots** use `isCoreFive` + `powerOfFiveSlot` (1–5 when set).
 
 ---
 
 ## 3. Relationship ownership
 
-- **Owner** = **`User`** / **`VolunteerProfile`** who created and maintains the row (future `volunteerUserId` on `RelationalContact`).
+- **Owner** = **`User`** via **`RelationalContact.ownerUserId`** (REL-2).
 - **One primary owner** per relational row for KPI attribution; **shared** outreach only with explicit SOP (REL-3 dedupe).
 
 ---

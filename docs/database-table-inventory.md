@@ -1,6 +1,6 @@
 # Database / Prisma model inventory (DBMAP-1) (RedDirt)
 
-**Source:** `prisma/schema.prisma` · **Model count:** **115** (verified by script `scripts/print-prisma-inventory.mjs`; includes VOTER-MODEL-1 + INTERACTION-1 tables).
+**Source:** `prisma/schema.prisma` · **Model count:** **116** (verified by script `scripts/print-prisma-inventory.mjs`; includes VOTER-MODEL-1 + INTERACTION-1 + REL-2 tables).
 
 ---
 
@@ -91,6 +91,7 @@ This inventory **lists every** persisted Prisma **model** so engineers and opera
 | `PlatformConnection` | Social/platform connector (FB/IG/YT/Substack) | Content orchestration | `PlatformMetricSnapshot` | Active | L |
 | `PlatformMetricSnapshot` | Metrics for a connected platform | Content | PlatformConnection | Active | L |
 | `PositionSeat` | One seat per ROLE-1 `positionKey` (staffing metadata) | Positions / SEAT-1 | User | Active | M |
+| `RelationalContact` | Volunteer-owned named contact; optional voter match; power-of-5 flags | Field / REL-2 | User (owner), VoterRecord?, County?, FieldUnit? | **New**; human-entered | M |
 | `SearchChunk` | Vector RAG `SearchChunk` for assistant | AI / RAG | — | **Core** for search | M |
 | `SignupSheetDocument` | Scanned sign-in sheet | Field / vol intake | User volunteer, entries | Active | M |
 | `SignupSheetEntry` | One row; match to Voter / User | Field / vol intake | VoterRecord?, User? | Active | M |
@@ -112,10 +113,10 @@ This inventory **lists every** persisted Prisma **model** so engineers and opera
 | `VolunteerMatchCandidate` | Scored Voter match for signup entry | Voter + volunteer | Voter, Signup entry | Active | M |
 | `VolunteerProfile` | 1:1 extension for volunteer; skills text | **Identity / volunteer** | User | **Core** for volunteers | **H** |
 | `VoterFileSnapshot` | One voter file import batch | Voter / data | Voter, metrics | **Core** ETL | M |
-| `VoterInteraction` | Staff-logged touchpoint (channel, type, optional support) | Voter / field (VOTER-MODEL-1) | VoterRecord?, User (contact + volunteer) | **New**; provisional | M |
+| `VoterInteraction` | Staff-logged touchpoint (channel, type, optional support) | Voter / field (VOTER-MODEL-1) | VoterRecord?, User (contact + volunteer), RelationalContact? | **New**; provisional | M |
 | `VoterModelClassification` | Tier label + confidence + provenance (`isCurrent`) | Voter / data (VOTER-MODEL-1) | VoterRecord, User? override | **New**; inferred unless human | M |
 | `VoterRecord` | Voter file row: `voterFileKey`, county, **precinct?** | **Voter (core)** | County, User links | **Core** | M |
-| `VoterSignal` | Provenance signal row (kind, strength, source) | Voter / data (VOTER-MODEL-1) | VoterRecord?, User? | **New** | M |
+| `VoterSignal` | Provenance signal row (kind, strength, source) | Voter / data (VOTER-MODEL-1) | VoterRecord?, User?, RelationalContact? | **New** | M |
 | `VoterSnapshotChange` | Row-level diff in a snapshot | Voter / data | Snapshot, Voter, County | Active ETL | L |
 | `VoterVotePlan` | Vote-plan seed (status, reminders) | GOTV / field (INTERACTION-1) | VoterRecord, User? | **New** | M |
 | `WeeklyBigRock` | Big rock in weekly plan (CM planning) | Ops / planning | WeeklyCampaignPlan | Active | L |
@@ -126,7 +127,7 @@ This inventory **lists every** persisted Prisma **model** so engineers and opera
 | `WorkflowTemplate` | Reusable event workflow template | Events / tasks | tasks | Active | M |
 | `WorkflowTemplateTask` | Task definition in a template | Events / tasks | template | Active | M |
 
-*End of 115 models.*
+*End of 116 models.*
 
 ---
 

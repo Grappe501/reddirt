@@ -2,7 +2,11 @@
 
 Concise planning doc: what workbenches exist, what to reuse, what to build next, and where we risk one-off debt.
 
-**Cross-references (Packet SYS-1+ / CM-1+ / FND-1+ / ROLE-1 / WB-CORE-1 / SEAT-1 / SKILL-1+ASSIGN-2 / FUND-1 / COMP-1 / POLICY-1+COMP-2+BUDGET-1 / FIN-1 / BUDGET-2 / REL-1 / GAME-1 / VOL-CORE-1):** [`relational-organizing-foundation.md`](./relational-organizing-foundation.md) (ROE bundle) · [`volunteer-progression-foundation.md`](./volunteer-progression-foundation.md) (VPE / gamification bundle) · [`volunteer-philosophy-foundation.md`](./volunteer-philosophy-foundation.md) (volunteer system core bundle) · [`email-workflow-intelligence-AI-HANDOFF.md`](./email-workflow-intelligence-AI-HANDOFF.md) (email queue intel) · [`public-site-system-map.md`](./public-site-system-map.md) (public routes, forms, APIs) · [`system-domain-flow-map.md`](./system-domain-flow-map.md) (domain ↔ workbench, missing rails) · [`campaign-manager-orchestration-map.md`](./campaign-manager-orchestration-map.md) (orchestration layer, subordinate workbenches) · [`incoming-work-matrix.md`](./incoming-work-matrix.md) (matrix of all incoming sources) · [`unified-campaign-engine-foundation.md`](./unified-campaign-engine-foundation.md) · [`shared-rails-matrix.md`](./shared-rails-matrix.md) · **ROLE-1:** [`position-system-foundation.md`](./position-system-foundation.md) · [`workbench-job-definitions.md`](./workbench-job-definitions.md) · [`position-hierarchy-map.md`](./position-hierarchy-map.md) · `src/lib/campaign-engine/positions.ts` · **WB-CORE-1:** [`position-workbench-foundation.md`](./position-workbench-foundation.md) · `src/lib/campaign-engine/position-inbox.ts` · **SEAT-1:** [`position-seating-foundation.md`](./position-seating-foundation.md) · [`delegation-and-coverage-foundation.md`](./delegation-and-coverage-foundation.md) · `src/lib/campaign-engine/seating.ts` · `prisma/schema.prisma` (`PositionSeat`) · **ASSIGN-2+SKILL-1:** [`seat-aware-assignment-foundation.md`](./seat-aware-assignment-foundation.md) · [`agent-skill-framework.md`](./agent-skill-framework.md) · [`agent-knowledge-ingest-map.md`](./agent-knowledge-ingest-map.md) · `open-work.ts` (seat-aware helpers) · `skills.ts` · **FUND-1:** [`fundraising-desk-foundation.md`](./fundraising-desk-foundation.md) + linked FUND-1 `docs` · `src/lib/campaign-engine/fundraising.ts` (no route in repo yet) · **COMP-1 (compliance rail):** [`compliance-governance-foundation.md`](./compliance-governance-foundation.md) + linked `compliance-*.md` · `src/lib/campaign-engine/compliance.ts` (no compliance workbench route in repo yet) · **BUDGET-2:** [`budget-structure-foundation.md`](./budget-structure-foundation.md) · `budget-queries.ts` · `…/admin/budgets`
+**Cross-references (Packet SYS-1+ / CM-1+ / FND-1+ / ROLE-1 / WB-CORE-1 / SEAT-1 / SKILL-1+ASSIGN-2 / FUND-1 / COMP-1 / POLICY-1+COMP-2+BUDGET-1 / FIN-1 / BUDGET-2 / REL-1+REL-2 / GAME-1 / VOL-CORE-1):** [`relational-organizing-foundation.md`](./relational-organizing-foundation.md) · [`relational-contact-implementation-foundation.md`](./relational-contact-implementation-foundation.md) (REL-2) · [`volunteer-progression-foundation.md`](./volunteer-progression-foundation.md) (VPE / gamification bundle) · [`volunteer-philosophy-foundation.md`](./volunteer-philosophy-foundation.md) (volunteer system core bundle) · [`email-workflow-intelligence-AI-HANDOFF.md`](./email-workflow-intelligence-AI-HANDOFF.md) (email queue intel) · [`public-site-system-map.md`](./public-site-system-map.md) (public routes, forms, APIs) · [`system-domain-flow-map.md`](./system-domain-flow-map.md) (domain ↔ workbench, missing rails) · [`campaign-manager-orchestration-map.md`](./campaign-manager-orchestration-map.md) (orchestration layer, subordinate workbenches) · [`incoming-work-matrix.md`](./incoming-work-matrix.md) (matrix of all incoming sources) · [`unified-campaign-engine-foundation.md`](./unified-campaign-engine-foundation.md) · [`shared-rails-matrix.md`](./shared-rails-matrix.md) · [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) (PROTO-2) · **ROLE-1:** [`position-system-foundation.md`](./position-system-foundation.md) · [`workbench-job-definitions.md`](./workbench-job-definitions.md) · [`position-hierarchy-map.md`](./position-hierarchy-map.md) · `src/lib/campaign-engine/positions.ts` · **WB-CORE-1:** [`position-workbench-foundation.md`](./position-workbench-foundation.md) · `src/lib/campaign-engine/position-inbox.ts` · **SEAT-1:** [`position-seating-foundation.md`](./position-seating-foundation.md) · [`delegation-and-coverage-foundation.md`](./delegation-and-coverage-foundation.md) · `src/lib/campaign-engine/seating.ts` · `prisma/schema.prisma` (`PositionSeat`) · **ASSIGN-2+SKILL-1:** [`seat-aware-assignment-foundation.md`](./seat-aware-assignment-foundation.md) · [`agent-skill-framework.md`](./agent-skill-framework.md) · [`agent-knowledge-ingest-map.md`](./agent-knowledge-ingest-map.md) · `open-work.ts` (seat-aware helpers) · `skills.ts` · **FUND-1:** [`fundraising-desk-foundation.md`](./fundraising-desk-foundation.md) + linked FUND-1 `docs` · `src/lib/campaign-engine/fundraising.ts` (no route in repo yet) · **COMP-1 (compliance rail):** [`compliance-governance-foundation.md`](./compliance-governance-foundation.md) + linked `compliance-*.md` · `src/lib/campaign-engine/compliance.ts` (no compliance workbench route in repo yet) · **BUDGET-2:** [`budget-structure-foundation.md`](./budget-structure-foundation.md) · `budget-queries.ts` · `…/admin/budgets`
+
+## Protocol dependency (PROTO-2 + BLUEPRINT-OPS-1)
+
+Workbench-related **packets** should cite, in the packet or PR description: [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) expectations — at minimum **lane maturity** (L0–L5), **approval rule** (what a human must still approve), **queue rule** (e.g. email **queue-first**), **source of truth** (which tier: DB, ops, advisory AI, narrative), and **next operator action** (what a human does next in the UI). Cross-ref [`THREAD_HANDOFF_MASTER_MAP.md`](./THREAD_HANDOFF_MASTER_MAP.md) **§0** and [`shared-rails-matrix.md`](./shared-rails-matrix.md).
 
 ---
 
@@ -15,7 +19,8 @@ Concise planning doc: what workbenches exist, what to reuse, what to build next,
 | **Position seats / coverage (SEAT-1)** | `…/workbench/seats` | `PositionSeat` staffing metadata: filled/vacant/acting/shadow; **optional** save per row; links to position workbench; not permissions or routing. |
 | **Position workbench (ASSIGN-2)** | `…/workbench/positions/[positionId]` (same page) | **Read-only** **slice** vs **seat** **occupant** alignment (counts, global open for occupant); no auto-rebind. |
 | **Fundraising desk (FUND-1+)** | *planned* `…/workbench/fundraising` (not in build) | Blueprint only in [`fundraising-desk-foundation.md`](./fundraising-desk-foundation.md): prospects, call lists, contactability, research, **KPIs;** `fundraising.ts` **types;** no dialer. |
-| **Relational organizing / ROE desk (REL-1+)** | *planned* `…/workbench/relational` or volunteer-area expansion (not in build) | [`relational-organizing-foundation.md`](./relational-organizing-foundation.md) + POD/relationship/KPI/AI/voter docs — Power of 5, PODs, future **`RelationalContact`**; **no** route or schema in REL-1. |
+| **Relational contacts (REL-2)** | `…/relational-contacts`, `…/relational-contacts/[id]` | Admin list + detail + minimal create; **`RelationalContact`** Prisma model, `recordRelationalTouch` seam. **Not** the planned “ROE desk” under workbench (`…/workbench/relational` still future). |
+| **Relational organizing / ROE desk (REL-1+)** | *planned* `…/workbench/relational` or volunteer-area expansion (not in build) | [`relational-organizing-foundation.md`](./relational-organizing-foundation.md) — Power of 5, PODs; **REL-2** adds persistence (see above). |
 | **Compliance governance rail (COMP-1)** | *no* dedicated route — overlay | [`compliance-governance-foundation.md`](./compliance-governance-foundation.md) + `compliance.ts`: horizontal **policy** + future paperwork prep; not a full compliance workbench. |
 | **Compliance document intake (COMP-2, minimal)** | `…/compliance-documents` | [`compliance-document-ingest-foundation.md`](./compliance-document-ingest-foundation.md) + Prisma `ComplianceDocument` + `saveOwnedMediaFile`; `approvedForAiReference` (off by default). Not RAG yet. |
 | **Campaign policy (POLICY-1) + spend rail (BUDGET-1 + BUDGET-2)** | `policy.ts` + `budget.ts` + Prisma `BudgetPlan`/`BudgetLine` | [`campaign-policy-foundation.md`](./campaign-policy-foundation.md), [`budget-and-spend-governance-foundation.md`](./budget-and-spend-governance-foundation.md), [`budget-structure-foundation.md`](./budget-structure-foundation.md) — light admin budgets, not a full finance desk. |
@@ -170,11 +175,23 @@ Concise planning doc: what workbenches exist, what to reuse, what to build next,
 
 **What shipped:** **Documentation only** — [`relational-organizing-foundation.md`](./relational-organizing-foundation.md) (north star, core model, principles, repo inspection answers), [`pod-system-foundation.md`](./pod-system-foundation.md), [`relationship-data-model-foundation.md`](./relationship-data-model-foundation.md), [`relational-voter-integration.md`](./relational-voter-integration.md), [`relational-kpi-foundation.md`](./relational-kpi-foundation.md), [`relational-ai-assist-foundation.md`](./relational-ai-assist-foundation.md). **Shared rails:** new row in [`shared-rails-matrix.md`](./shared-rails-matrix.md).
 
-**Workbench impact:** §1 adds a **planned** relational desk row; no new admin URL in REL-1.
+**Workbench impact:** §1 documents a **planned** full ROE desk; **REL-2** added a separate **admin** relational table (not under `/workbench`).
 
-**Intentionally not built:** Prisma `RelationalContact` (or equivalent), volunteer network UI, voter match automation, REACH-style integrations.
+**Intentionally not built in REL-1:** Prisma (addressed in **REL-2**); full volunteer network UI; auto-match; REACH-style integrations.
 
-*Last updated: Packet REL-1.*
+*Last updated: REL-1 + cross-ref REL-2.*
+
+---
+
+## 12A. Packet REL-2 — Relational contact + power-of-5 persistence
+
+**What shipped:** [`relational-contact-implementation-foundation.md`](./relational-contact-implementation-foundation.md) — Prisma **`RelationalContact`**, interaction/signal optional FKs, helpers, admin **`/admin/relational-contacts`**.
+
+**Workbench impact:** New **admin** routes (operations nav); **not** `…/workbench/relational`.
+
+**Intentionally not built:** Volunteer UI, auto-matching, messaging.
+
+*Last updated: REL-2.*
 
 ---
 
@@ -196,7 +213,7 @@ Concise planning doc: what workbenches exist, what to reuse, what to build next,
 
 **Workbench impact:** No new routes; defines how **movement roles** map to **`PositionId`** for future staffing UIs and volunteer-facing shells.
 
-**Intentionally not built:** onboarding wizard, volunteer home, REL-2, new position keys for fundraising volunteer lead.
+**Intentionally not built:** onboarding wizard, volunteer home, volunteer-facing relational home (post–REL-2), new position keys for fundraising volunteer lead.
 
 *Last updated: Packet VOL-CORE-1.*
 
@@ -220,6 +237,6 @@ Concise planning doc: what workbenches exist, what to reuse, what to build next,
 
 **Workbench impact:** Narrow **admin** detail route; **not** voter search, **not** canvassing.
 
-**Intentionally not built:** REL-2 relational table, Power-of-5 UI, GOTV runner, area rollups.
+**Intentionally not built:** volunteer Power-of-5 **UI** (REL-2 stores flags only), GOTV runner, area rollups.
 
 *Last updated: VOTER-MODEL-1 + INTERACTION-1.*

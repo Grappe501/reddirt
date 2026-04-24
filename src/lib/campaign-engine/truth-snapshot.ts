@@ -102,6 +102,8 @@ export async function getTruthSnapshot(): Promise<TruthSnapshot> {
     electionCoverage,
     electionOfficialFlags,
     currentVoterClassificationCount,
+    relationalContactCount,
+    relationalCoreFiveCount,
   ] = await Promise.all([
     prisma.county.count(),
     prisma.countyCampaignStats.count({
@@ -129,6 +131,8 @@ export async function getTruthSnapshot(): Promise<TruthSnapshot> {
     getElectionResultCoverageSummary(),
     prisma.electionResultSource.findMany({ select: { isOfficial: true } }),
     prisma.voterModelClassification.count({ where: { isCurrent: true } }),
+    prisma.relationalContact.count(),
+    prisma.relationalContact.count({ where: { isCoreFive: true } }),
   ]);
 
   const draftCount =
@@ -335,9 +339,11 @@ export async function getTruthSnapshot(): Promise<TruthSnapshot> {
   missingData.push(
     "No per-volunteer goals breakdown in schema (VolunteerProfile has no goal fields; county-level targets on CountyCampaignStats only)",
   );
-  missingData.push(
-    "No relational organizing network table (REL-1: no RelationalContact-equivalent model in Prisma)",
-  );
+  if (relationalContactCount === 0) {
+    missingData.push(
+      "Relational organizing: no RelationalContact rows (REL-2 network layer is empty — not a data defect, optional until volunteers populate)",
+    );
+  }
 
   const staleData: string[] = [];
   if (couldNotEvaluateMirror && countiesWithRegistrationGoal > 0) {
@@ -483,6 +489,15 @@ export async function getTruthSnapshot(): Promise<TruthSnapshot> {
   } else {
     advisoryOnly.push(
       `Voter model: ${currentVoterClassificationCount} current VoterModelClassification row(s) — all tiers are inferred/provisional unless explicitly human-confirmed; never treat as vote totals or guaranteed support`,
+    );
+  }
+  if (relationalContactCount === 0) {
+    advisoryOnly.push(
+      "Relational contacts (REL-2): no rows — missing volunteer relational network layer; when populated, treat counts and core-five counts as operational network metadata only (not votes, not auto-support)",
+    );
+  } else {
+    advisoryOnly.push(
+      `Relational contacts (REL-2): ${relationalContactCount} contact row(s), ${relationalCoreFiveCount} marked core-five — operational / inferred network size only; not vote totals, not automatic supporter classification, not registration verification unless separately confirmed`,
     );
   }
 

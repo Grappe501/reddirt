@@ -1,8 +1,8 @@
 # Relational organizing — foundation (REL-1) (RedDirt)
 
-**Packet REL-1.** Defines the **Relational Organizing Engine (ROE)** as a **first-class** concept in the unified campaign system: volunteer-owned networks, structured scaling (Power of 5, PODs), honest voter-file touchpoints, and **AI-assisted** (never auto-sent) messaging. **No** Prisma migrations, **no** UI in this packet—conceptual architecture aligned with FND-1, FIELD-1, IDENTITY-1, DATA-1, and queue-first comms.
+**Packet REL-1** defines the **Relational Organizing Engine (ROE)** as a **first-class** concept: volunteer-owned networks, structured scaling (Power of 5, PODs), honest voter-file touchpoints, and **AI-assisted** (never auto-sent) messaging. **Packet REL-2** (see [`relational-contact-implementation-foundation.md`](./relational-contact-implementation-foundation.md)) adds **minimal** Prisma + helpers + admin list/detail—no volunteer product UI, no auto-matching.
 
-**Cross-ref:** [`pod-system-foundation.md`](./pod-system-foundation.md) · [`relationship-data-model-foundation.md`](./relationship-data-model-foundation.md) · [`relational-voter-integration.md`](./relational-voter-integration.md) · [`relational-kpi-foundation.md`](./relational-kpi-foundation.md) · [`relational-ai-assist-foundation.md`](./relational-ai-assist-foundation.md) · [`unified-campaign-engine-foundation.md`](./unified-campaign-engine-foundation.md) · [`shared-rails-matrix.md`](./shared-rails-matrix.md) · [`identity-and-voter-link-foundation.md`](./identity-and-voter-link-foundation.md) · [`field-structure-foundation.md`](./field-structure-foundation.md) · [`county-registration-goals-verification.md`](./county-registration-goals-verification.md)
+**Cross-ref:** [`relational-contact-implementation-foundation.md`](./relational-contact-implementation-foundation.md) (REL-2) · [`pod-system-foundation.md`](./pod-system-foundation.md) · [`relationship-data-model-foundation.md`](./relationship-data-model-foundation.md) · [`relational-voter-integration.md`](./relational-voter-integration.md) · [`relational-kpi-foundation.md`](./relational-kpi-foundation.md) · [`relational-ai-assist-foundation.md`](./relational-ai-assist-foundation.md) · [`unified-campaign-engine-foundation.md`](./unified-campaign-engine-foundation.md) · [`shared-rails-matrix.md`](./shared-rails-matrix.md) · [`identity-and-voter-link-foundation.md`](./identity-and-voter-link-foundation.md) · [`field-structure-foundation.md`](./field-structure-foundation.md) · [`county-registration-goals-verification.md`](./county-registration-goals-verification.md)
 
 ---
 
@@ -23,7 +23,7 @@
 | Concept | Definition (system terms) |
 |---------|---------------------------|
 | **Volunteer** | A **`User`** with a **`VolunteerProfile`** (and optional `linkedVoterRecordId`). Owns outreach intent, commitments, and (future) a **network** of relational contacts. Not every `User` is a volunteer; not every relational contact is a `User`. |
-| **Relationship (relational contact)** | A **person the volunteer names** as part of their outreach universe—friend, family, coworker, church member, etc. **Future persisted entity** (see [`relationship-data-model-foundation.md`](./relationship-data-model-foundation.md)); today only loosely representable via `Commitment.metadata` or notes—not a substitute for a first-class row. |
+| **Relationship (relational contact)** | A **person the volunteer names** as part of their outreach universe. **REL-2:** persisted as **`RelationalContact`** (owner `User`, optional `VoterRecord` match, power-of-5 flags). `Commitment.metadata` remains a poor substitute for ad hoc only. |
 | **Network** | The **set of relational contacts** attributed to one volunteer (plus optional nested attribution under POD structure). **Measurable** as counts, match rates, and funnel stages—not as surveillance of private message text by default. |
 | **Power-of-5 structure** | Each volunteer maintains a **core** of ~5 high-intent relationships they will actually work; the system plans coaching and reminders around that **small** set to protect quality. |
 | **POD structure** | A **POD Leader** supports multiple volunteers; each volunteer holds a **Core 5**; **extended** layers (e.g. 25 → 125) are **organizing math** for capacity planning, not a requirement that every volunteer hit exact multiples. See [`pod-system-foundation.md`](./pod-system-foundation.md). |
@@ -45,7 +45,8 @@
 ### 1. What existing models could support relational organizing today?
 
 - **`User` + `VolunteerProfile`** — spine for **who** is organizing.
-- **`Commitment`** — generic `type` + **`metadata` JSON** could hold **ad hoc** relational-contact blobs until REL-2 defines a real table (high friction, no queries across volunteers).
+- **`RelationalContact` (REL-2)** — first-class **owner** FK, optional **county/field** and **voter** match, interaction/signal **seams**; see [`relational-contact-implementation-foundation.md`](./relational-contact-implementation-foundation.md).
+- **`Commitment`** — generic `type` + **`metadata` JSON** for **ad hoc** blobs only; not the primary relational contact store once REL-2 is in use.
 - **`VoterRecord` + `User.linkedVoterRecordId`** — voter spine for **volunteer** and (future) **contact** match.
 - **`County`, `CountyCampaignStats`, `CountyVoterMetrics`** — county goals and progress for **rollup narrative**.
 - **`FieldUnit` / `FieldAssignment` (FIELD-1)** — geographic/team structure for **where** PODs sit operationally.
@@ -76,14 +77,16 @@
 - **Rollups** from contacts to county goals (beyond aggregate voter file metrics).
 - **Optional:** native integration with third-party relational apps (import/export, webhooks)—not in repo today.
 
-### 6. What should REL-2 implement next?
+### 6. What REL-2 implemented (persistence + seams)
 
-**Suggested sequence (pick one thin vertical):**
+**Shipped in REL-2** (see [`relational-contact-implementation-foundation.md`](./relational-contact-implementation-foundation.md)):
 
-1. **Schema:** `RelationalContact` (or equivalent) with `volunteerUserId`, display name, channel hints, `relationshipType`, optional `matchedVoterRecordId`, soft enums for status/persuasion/contact—**plus** migration and minimal admin list (or volunteer-facing form).
-2. **Read model:** county rollup query: contacts per county (via volunteer’s `User.county` / `County` resolution) vs `CountyCampaignStats.registrationGoal` for **contribution** narrative—honest about double-count risk if two volunteers name same person (REL-3 dedupe).
-3. **Reuse** `buildMatchCandidatesForEntry` patterns in a **dedicated** “suggest voter match” server path with audit logging—**no** auto-link without human confirm.
+- **Schema:** `RelationalContact` + optional `VoterInteraction.relationalContactId` / `VoterSignal.relationalContactId`.
+- **Helpers:** `relational-contacts.ts` (CRUD, summary, `recordRelationalTouch`); `relational-matching.ts` (read-only suggestions, `setRelationalContactVoterMatch`).
+- **Admin:** `/admin/relational-contacts` (list + minimal create) and `/admin/relational-contacts/[id]` (read + suggestions; **not** auto-apply).
+
+**Likely next (REL-3+):** county rollups, dedupe when two volunteers name the same person, volunteer-facing UI, XP hooks (GAME-2).
 
 ---
 
-*Last updated: Packet REL-1 (documentation only).*
+*Last updated: Packet REL-1 (concepts) + **REL-2** (persistence and docs cross-links).*

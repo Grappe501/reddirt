@@ -17,6 +17,8 @@ export const INTERACTION_1_PACKET = "INTERACTION-1" as const;
 
 export type CreateVoterInteractionInput = {
   voterRecordId?: string | null;
+  /// REL-2: optional link to a relational contact row.
+  relationalContactId?: string | null;
   contactedByUserId?: string | null;
   relatedVolunteerUserId?: string | null;
   interactionType: VoterInteractionType;
@@ -65,6 +67,9 @@ export async function createVoterInteraction(input: CreateVoterInteractionInput)
 
   if (input.voterRecordId) {
     data.voterRecord = { connect: { id: input.voterRecordId } };
+  }
+  if (input.relationalContactId) {
+    data.relationalContact = { connect: { id: input.relationalContactId } };
   }
   if (input.contactedByUserId) {
     data.contactedBy = { connect: { id: input.contactedByUserId } };

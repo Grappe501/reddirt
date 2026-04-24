@@ -1,6 +1,12 @@
 # RedDirt — PROJECT MASTER MAP (MASTER-MAP-1)
 
-**Purpose:** Single **canonical continuity document** for a **new AI thread** or expert collaborator working in **`RedDirt/`**. Use it as the **first** paste or `@` reference before proposing architecture, new tables, or duplicate features.
+**Purpose:** Single **canonical continuity document** for a **new AI thread** or expert collaborator working in **`RedDirt/`**.
+
+**Orientation (read first):** **[`THREAD_HANDOFF_MASTER_MAP.md`](./THREAD_HANDOFF_MASTER_MAP.md)** (**THREAD-HANDOFF-1**) is the **first** orientation doc — vision, loop, guardrails, lane table, next paths.  
+**Operating protocol:** **[`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md)** (**PROTO-2** + **BLUEPRINT-OPS-1**) — return formats, packet scaling, preflight, drift checks.  
+**Blueprint rule:** **Every** packet should **update** blueprint status here, in the thread handoff, and in any lane doc the packet claims.
+
+Use this file as the **primary** `@` reference for **packet** history and code-grounded lists; use the **thread handoff** when **onboarding a fresh** ChatGPT thread with **no** prior chat.
 
 **Stack (ground truth):** Next.js App Router · Prisma · PostgreSQL · optional OpenAI / RAG · package `reddirt-site`.
 
@@ -11,22 +17,23 @@
 ## Table of contents
 
 1. [What this project is](#1-what-this-project-is)
-2. [Core build philosophy](#2-core-build-philosophy)
-3. [Work protocol with Cursor](#3-work-protocol-with-cursor)
-4. [System north star](#4-system-north-star)
-5. [Major foundation rails](#5-major-foundation-rails)
-6. [Major departments / level-3 domains](#6-major-departments--level-3-domains)
-7. [What has been built so far (packet map)](#7-what-has-been-built-so-far-packet-map)
-8. [Current real capabilities (code-grounded)](#8-current-real-capabilities-code-grounded)
-9. [Major models / tables / system assets](#9-major-models--tables--system-assets)
-10. [Source-of-truth notes](#10-source-of-truth-notes)
-11. [Known strengths of the current repo](#11-known-strengths-of-the-current-repo)
-12. [Known gaps / fragmentation](#12-known-gaps--fragmentation)
-13. [Launch strategy](#13-launch-strategy)
-14. [Agent knowledge / ingest strategy](#14-agent-knowledge--ingest-strategy)
-15. [What a new AI thread should do first](#15-what-a-new-ai-thread-should-do-first)
-16. [Recommended next packets](#16-recommended-next-packets)
-17. [Appendix: key docs to read next](#appendix-key-docs-to-read-next)
+2. [Blueprint Progress Ledger](#blueprint-progress-ledger)
+3. [Core build philosophy](#2-core-build-philosophy)
+4. [Work protocol with Cursor](#3-work-protocol-with-cursor)
+5. [System north star](#4-system-north-star)
+6. [Major foundation rails](#5-major-foundation-rails)
+7. [Major departments / level-3 domains](#6-major-departments--level-3-domains)
+8. [What has been built so far (packet map)](#7-what-has-been-built-so-far-packet-map)
+9. [Current real capabilities (code-grounded)](#8-current-real-capabilities-code-grounded)
+10. [Major models / tables / system assets](#9-major-models--tables--system-assets)
+11. [Source-of-truth notes](#10-source-of-truth-notes)
+12. [Known strengths of the current repo](#11-known-strengths-of-the-current-repo)
+13. [Known gaps / fragmentation](#12-known-gaps--fragmentation)
+14. [Launch strategy](#13-launch-strategy)
+15. [Agent knowledge / ingest strategy](#14-agent-knowledge--ingest-strategy)
+16. [What a new AI thread should do first](#15-what-a-new-ai-thread-should-do-first)
+17. [Recommended next packets](#16-recommended-next-packets)
+18. [Appendix: key docs to read next](#appendix-key-docs-to-read-next)
 
 ---
 
@@ -41,6 +48,25 @@
 **Bottom-up philosophy.** Organizing is meant to meet people **where they are**—county pages, local proof points, field rails, volunteer intake—without collapsing everything into a single generic national template. Public tone aims to be **calm**, direct, and human (see `docs/philosophy/`, `docs/narrative/`, `docs/brand/`).
 
 **Honest boundary:** Philosophy and narrative live in `docs/` and `src/content/`; **code reality** is the admin app + Prisma models. When they diverge, **prefer honest “doc intent vs code today”** language (this file tries to do that throughout).
+
+---
+
+## Blueprint Progress Ledger
+
+Compact **lane** status for **blueprint** continuity (maturity = **L0–L5**; see [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md)). Update this table when a packet **materially** advances a lane.
+
+| Lane | Current status (Apr 2026) |
+|------|---------------------------|
+| **Email Workflow Intelligence** | **Strongest** lane. **Queue-first**, **approval-first**; E-1/E-2 in code; **policy-gated** automation still needed for any no-review send. |
+| **Relational Organizing** | **REL-2** at **L2** (persistence, admin seam, truth snapshot advisory). **REL-3** (volunteer home, rollups, dedupe) **pending**; **migration** apply per environment. |
+| **GOTV / Voter File** | **Persistence** + import **foundations** exist (voter file, models, election ingest, signals); **turnout planning read models** (e.g. **GOTV-1**) still **pending** relative to full GOTV doc vision. |
+| **Workbench** | **Hierarchy** and many **surfaces** exist; **operator workflows** still **expanding** toward CM orchestration spec. |
+| **Truth Snapshot / Deterministic Brain** | **Advisory** governance **layer** in code (`truth` / `getTruthSnapshot`); **must not** become an **authority** tier over data or policy. |
+| **AJAX Organizing Hub / Discord** | **Communication** infrastructure (concept + foundation docs); **not** system source of truth. |
+| **Finance / Compliance** | **Must** remain **approval-** and **audit-first**; ledger/budget/compliance paths are **governed**, not auto-executing. |
+| **Volunteer / Field** | Needs **volunteer-facing UX** and **county** / relational **rollups** in product (per REL / VOL / FIELD packets). |
+| **Content / Author Studio** | Exists in **pieces** across comms, editorial, media; **queue / publishing** governance must stay explicit. |
+| **Data inventory** | [`database-table-inventory.md`](./database-table-inventory.md) **table count** may **drift**; **refresh** after **schema** changes. |
 
 ---
 
@@ -339,6 +365,7 @@ See **[`agent-knowledge-ingest-map.md`](./agent-knowledge-ingest-map.md)** (SKIL
 
 ## 15. What a new AI thread should do first
 
+0. **Read** [`THREAD_HANDOFF_MASTER_MAP.md`](./THREAD_HANDOFF_MASTER_MAP.md) (THREAD-HANDOFF-1) for **full** orientation, protocol, guardrails, and lane table—especially if you have **no** access to prior chat.
 1. **Read this file** (`docs/PROJECT_MASTER_MAP.md`) end-to-end once.
 2. **Skim** [`unified-campaign-engine-foundation.md`](./unified-campaign-engine-foundation.md) + [`shared-rails-matrix.md`](./shared-rails-matrix.md) for rail vocabulary.
 3. **Skim** [`workbench-build-map.md`](./workbench-build-map.md) for **routes that already exist**.
@@ -363,7 +390,7 @@ Practical ordering (adjust with campaign priorities):
 6. **Comms ↔ email workflow linking** — drill-down from failed send / stuck plan to **existing** `EmailWorkflowItem` creation pattern (human-triggered).
 7. **GEO-2 or FIELD-2** — explicit `FieldUnit`↔`County` mapping strategy (app-level or FK) + admin UX; county/precinct **staffing** toward GOTV.
 8. **GOALS-BREAKDOWN / VOL-GOAL-1** — county goal → volunteer/field decomposition (per GOALS-VERIFY-1 suggestion).
-9. **REL-2** — persisted relational contacts (unblocks relational GOTV universes).
+9. **REL-3+** — volunteer-facing relational UI + county network rollups + dedupe (REL-2 **shipped**: `RelationalContact`, admin `/admin/relational-contacts`, helpers in `relational-contacts.ts` / `relational-matching.ts`).
 10. **FUND-2** — first fundraising desk persistence + route (after compliance review for donor PII handling).
 11. **ALIGN-2 / OVR-1** — first persisted override log on one touchpoint (likely E-2 or comms AI) when governance demands it.
 
@@ -375,6 +402,7 @@ Practical ordering (adjust with campaign priorities):
 
 **Suggested order:**
 
+0. **[`THREAD_HANDOFF_MASTER_MAP.md`](./THREAD_HANDOFF_MASTER_MAP.md)** — THREAD-HANDOFF-1 (complete transition map)
 1. **This file** — `docs/PROJECT_MASTER_MAP.md`
 2. [`unified-campaign-engine-foundation.md`](./unified-campaign-engine-foundation.md)
 3. [`shared-rails-matrix.md`](./shared-rails-matrix.md)
@@ -392,4 +420,4 @@ Practical ordering (adjust with campaign priorities):
 
 ---
 
-*MASTER-MAP-1 — Canonical project handoff + build protocol map. Last updated: 2026-04-23 (VOTER-MODEL-1 + INTERACTION-1; DATA-4 + GOTV readiness retained).*
+*MASTER-MAP-1 — Canonical project handoff + build protocol map. Last updated: 2026-04-23 (THREAD-HANDOFF-1 `THREAD_HANDOFF_MASTER_MAP.md`; REL-2 relational contact foundation; VOTER-MODEL-1 + INTERACTION-1; DATA-4 + GOTV readiness retained).*
