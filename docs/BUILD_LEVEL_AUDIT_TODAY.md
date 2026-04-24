@@ -6,7 +6,7 @@
 
 **Authoritative rails:** [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) · [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) · [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) · [`THREAD_HANDOFF_MASTER_MAP.md`](./THREAD_HANDOFF_MASTER_MAP.md) · [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md) · [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md).
 
-**Status snapshot (this doc pass):** `npm run ingest:election-audit:json` → **`COMPLETE`** (**13** / **13**, `dbReachable: true`) on **this** **local** **dev** **database** — **election** **gate** **was** **`COMPLETE`** **before** **GOTV-2** **contact-plan** **review** **work** **(verify** **per** **environment** **for** **other** **DBs**). `npm run test:openai-key` → **SUCCESS**. `npm run ingest:brain-manifest` → **refreshed** [`BRAIN_SOURCE_MANIFEST.md`](./BRAIN_SOURCE_MANIFEST.md) (**284** files). **INTEL-2:** [`COMPETITOR_INTELLIGENCE_MANIFEST.md`](./COMPETITOR_INTELLIGENCE_MANIFEST.md) **(docs** **implemented**). **INTEL-3:** Prisma opposition tables + `src/lib/campaign-engine/opposition-intelligence.ts` + read-only **`/admin/intelligence`** (apply migration `20260424180000_intel3_opposition_intelligence_schema` per env). **Verify** **other** **environments** independently.
+**Status snapshot (this doc pass):** `npm run ingest:election-audit:json` → **`COMPLETE`** (**13** / **13**, `dbReachable: true`) on **this** **local** **dev** **database** — **election** **gate** **was** **`COMPLETE`** **before** **GOTV-2** **contact-plan** **review** **work** **(verify** **per** **environment** **for** **other** **DBs**). `npm run test:openai-key` → **SUCCESS**. `npm run ingest:brain-manifest` → **refreshed** [`BRAIN_SOURCE_MANIFEST.md`](./BRAIN_SOURCE_MANIFEST.md) (**284** files). **INTEL-2:** [`COMPETITOR_INTELLIGENCE_MANIFEST.md`](./COMPETITOR_INTELLIGENCE_MANIFEST.md) **(docs** **implemented**). **INTEL-3** + **INTEL-4A:** Prisma opposition tables (migration `20260424180000_intel3_opposition_intelligence_schema` **applied** on **this** local dev DB) + `opposition-intelligence.ts` (full create helpers) + read-only **`/admin/intelligence`** + manual JSON **`ingest:opposition-intel`**, `data/intelligence/*` — **no** scraping, **no** bulk unvetted external ingest. **Verify** **other** **environments** independently.
 
 ---
 
@@ -25,7 +25,7 @@
 - **Docs / blueprint** sync (this audit, registry, ledger).
 - **Read-only** or **review-only** **UI** and **read** **models** that **do** **not** **mutate** **money**, **send** **messages**, or **commit** **migrations** without an explicit packet.
 - **INGEST-OPS-4** refresh (`ingest:brain-manifest`, `ingest:inventory`) — **read-only** **disk** **scans**.
-- **INTEL-2** [**`COMPETITOR_INTELLIGENCE_MANIFEST.md`**](./COMPETITOR_INTELLIGENCE_MANIFEST.md) **(done** **as** **docs**); **INTEL-3** **persistence** **shell** **shipped** (schema + helpers + admin list); **FINANCE-1** / **VOL-DATA-1** as **mapping** **docs** until parsers exist; **INTEL-4+** when **steered**.
+- **INTEL-2** [**`COMPETITOR_INTELLIGENCE_MANIFEST.md`**](./COMPETITOR_INTELLIGENCE_MANIFEST.md) **(done** **as** **docs**); **INTEL-3** + **INTEL-4A** **shipped** (schema + migration per env, helpers, admin list, `ingest:opposition-intel`); **FINANCE-1** / **VOL-DATA-1** as **mapping** **docs** until parsers exist; **INTEL-4B+** when **steered**.
 - **GOTV-2** is **already** **shipped** (review-only contact plan); **GOTV-3** **design** or **thin** **read** **helpers** — **not** **assignment** **execution** **without** **packet**.
 
 **AJAX Organizing Hub (Discord):** **Removed** from **active** **RedDirt** **build** **path** — **external** / **separate** **project** (see **Division table** and registry). **Historical** **mentions** in docs remain; **do** **not** **prioritize** **Discord** **integration** **in** **this** **repo’s** **queue**.
@@ -42,7 +42,7 @@
 | **GOTV** | **L2** | **L3** (assignment handoff) | **GOTV-1** read model; **GOTV-2** **`/admin/gotv`** **review-only** | **GOTV-3** **not** **shipped**; **election** **gate** **must** **hold** **for** **execution** **automation** | **Design** **GOTV-3**; **validate** **contact** **plan** **preview** **on** **real** **DB** | **GOTV-3** **planning** (docs + thin code when packeted) |
 | **Comms / Email** | **L2–L3** (partial) | **L3** | E-1/E-2 **queue** **patterns** | **Policy** **for** **auto-send** | **Queue** **triage** **docs**; **no** **blind** **send** **automation** | **COMMS** **depth** per steering |
 | **Workbench / Operator** | **L2–L3** (partial) | **L3** | **UWR**, **CM** **bands**, **positions** | **Unified** **command** **story** **still** **partial** | **Read-only** **panels**; **ledger** **sync** **docs** | **WB-CORE** / **CM-2** **consumers** |
-| **Campaign intelligence / Opposition intelligence** | **L1–L2** | **L2+** **pipelines** / **analysis** | **INTEL-OPS-1**; **INTEL-2** [`COMPETITOR_INTELLIGENCE_MANIFEST.md`](./COMPETITOR_INTELLIGENCE_MANIFEST.md); **INTEL-3** **tables** + helpers; **INGEST-OPS-4** | **Bulk** **INTEL** **ingest** **gated**; **no** **closed** **parser** **for** **opp** **corpus** | **INTEL-4** **parser** **wiring**; **cited** **rows** **only** | **INTEL-4** |
+| **Campaign intelligence / Opposition intelligence** | **L1–L2** | **L2+** **pipelines** / **analysis** | **INTEL-OPS-1**; **INTEL-2** [`COMPETITOR_INTELLIGENCE_MANIFEST.md`](./COMPETITOR_INTELLIGENCE_MANIFEST.md); **INTEL-3** + **INTEL-4A** **tables** + helpers + `ingest:opposition-intel`; **INGEST-OPS-4** | **Bulk** **unvetted** **INTEL** **ingest** **gated**; **INTEL-4B** **parsers** **not** **shipped** | **INTEL-4B** **governed** **import**; **cited** **rows** **only** | **INTEL-4B** |
 | **Content / Author Studio** | **L1–L2** | **L2** | Scattered **routes** / **owned** **media** | **Unified** **author** **product** **missing** | **Governance** **alignment** **with** **comms** | **Content** packet when steered |
 | **Finance / Compliance** | **L1** (guarded) | **L2** | **BudgetPlan**, **FinancialTransaction**, **ComplianceDocument** | **No** **bulk** **governed** **import** **CLI** **in** **repo** | **FINANCE-1** **mapping** **doc** **only** | **FINANCE-1** |
 | **AJAX Organizing Hub** | **—** (**DROPPED**) | **N/A** (external) | **Historical** **Discord** **refs** in docs | **Out** **of** **RedDirt** **active** **build** | **None** **in** **this** **repo** — track **elsewhere** | *External project* |
@@ -56,7 +56,7 @@
 2. **OpenAI / embeddings:** If **`test:openai-key`** **fails**, **do** **not** **schedule** **bulk** **`SearchChunk`** **repair** or **RAG** **expansion** **that** **depends** **on** **embeddings** — fix **env** **first** (**OPENAI-KEY-OPS-1**).
 3. **Brain manifest:** After **election** **COMPLETE** (for that env), **refresh** **`ingest:brain-manifest`** (and optionally **`ingest:inventory`**) before **treating** **brain** **folder** **expansion** **as** **unblocked**.
 4. **GOTV-2:** **Not** **blocked** **by** **gate** **for** **read**/**review** — **already** **shipped**. **GOTV-3+** **execution** **remains** **governed** **by** **protocol** **and** **explicit** **packets**.
-5. **INTEL-2** / **INTEL-3:** [`COMPETITOR_INTELLIGENCE_MANIFEST.md`](./COMPETITOR_INTELLIGENCE_MANIFEST.md) **(docs)** + **INTEL-3** **schema** / **helpers** / **`/admin/intelligence`**; **INTEL-4+** **follows** **steering**; **automated** **opp** **ingest** **follows** **§6.4** **/** **§6.5** **/** **§6.6** **in** [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md).
+5. **INTEL-2** / **INTEL-3** / **INTEL-4A:** [`COMPETITOR_INTELLIGENCE_MANIFEST.md`](./COMPETITOR_INTELLIGENCE_MANIFEST.md) **(docs)** + **INTEL-3** **schema** / **helpers** / **`/admin/intelligence`** + **`ingest:opposition-intel`** (manual **JSON**; **no** **scraping**); **INTEL-4B+** **follows** **steering**; **automated** **opp** **ingest** **follows** **§6.4** **/** **§6.5** **/** **§6.6** **in** [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md).
 6. **Finance:** **FINANCE-1** **stays** **mapping** **and** **policy** **until** **a** **named** **parser** **packet** **exists**.
 
 ---
@@ -70,7 +70,7 @@ DB migrated (per env)
   → Brain manifest normalized (ingest:brain-manifest) + ingest backlog honest (INGEST_STATUS…)
   → GOTV-2 review plan in use; GOTV-3 design toward assignment handoff
   → INTEL-2 competitor source manifest (docs) — see [`COMPETITOR_INTELLIGENCE_MANIFEST.md`](./COMPETITOR_INTELLIGENCE_MANIFEST.md)
-  → INTEL-3 schema + helpers (shipped) → INTEL-4 parsers / ingest → INTEL-5 analysis / dashboards (steered)
+  → INTEL-3 schema + helpers (shipped) + INTEL-4A manual JSON CLI (shipped) → INTEL-4B parsers / governed ingest → INTEL-5 analysis / dashboards (steered)
   → FINANCE-1 finance source mapping (governed)
   → VOL-DATA-1 volunteer list mapping (PII-aware)
 ```
@@ -93,12 +93,12 @@ DB migrated (per env)
 | **4** | **GOTV-2** | **Use** **existing** **`/admin/gotv`** **review** **surface**; **gather** **operator** **feedback** **→** **GOTV-3** **spec** |
 | **5** | **INTEL-2** | **Complete** — [`COMPETITOR_INTELLIGENCE_MANIFEST.md`](./COMPETITOR_INTELLIGENCE_MANIFEST.md) |
 | **5b** | **INTEL-3** | **Complete** — Prisma migration `20260424180000_intel3_opposition_intelligence_schema` + `opposition-intelligence.ts` + **`/admin/intelligence`** |
-| **5c** | **INTEL-4** | **Parser** + **ingestion** **pipelines** (**when** **steered**) |
+| **5c** | **INTEL-4B** | **Governed** **public-source** import / **parsers** (**when** **steered**); **INTEL-4A** **manual** **JSON** path **shipped** |
 | **5d** | **INTEL-5** | **Analysis** + **dashboard** **layer** (**when** **steered**) |
 | **6** | **FINANCE-1** | **Finance** **source** **mapping** **(docs)** — **no** **bulk** **RAG** **of** **raw** **exports** |
 | **7** | **VOL-DATA-1** | **Volunteer** **list** / **field** **spreadsheet** **mapping** **(PII** **review)** |
 
-**Local dev note (2026-04-24):** **Packet** **2** **(election** **audit)** **is** **satisfied** **here** (**`COMPLETE`**). **INTEL-2** **manifest** + **INTEL-3** **schema** **/** **helpers** **landed** **this** **pass**. **Next** **concrete** **work** **tends** **to** **shift** **to** **INGEST-OPS-5** / **INTEL-4** / **FINANCE-1** / **VOL-DATA-1** **and** **multi-env** **verification**.
+**Local dev note (2026-04-24):** **Packet** **2** **(election** **audit)** **is** **satisfied** **here** (**`COMPLETE`**). **INTEL-2** **manifest** + **INTEL-3** + **INTEL-4A** (**migration** **applied**; **helpers**; **`ingest:opposition-intel`**) **landed** **this** **pass**. **Next** **concrete** **work** **tends** **to** **shift** **to** **INGEST-OPS-5** / **INTEL-4B** / **FINANCE-1** / **VOL-DATA-1** **and** **multi-env** **verification**.
 
 ---
 

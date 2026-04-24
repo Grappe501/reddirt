@@ -1,5 +1,5 @@
 /**
- * INTEL-3: Source-backed opposition intelligence persistence helpers.
+ * INTEL-3 + INTEL-4A: Source-backed opposition intelligence persistence helpers.
  * No scraping, no publication, no AI conclusions, no voter-level fields.
  * @see docs/COMPETITOR_INTELLIGENCE_MANIFEST.md · docs/opposition-intelligence-engine.md
  */
@@ -260,6 +260,162 @@ export async function createOppositionAccountabilityItem(
       impact: data.impact?.trim() || null,
       billNumber: data.billNumber?.trim() || null,
       actionDate: data.actionDate ?? null,
+      confidence: data.confidence ?? DEFAULT_CONFIDENCE,
+      reviewStatus: data.reviewStatus ?? DEFAULT_REVIEW,
+      notes: data.notes?.trim() || null,
+      metadataJson: data.metadataJson ?? {},
+    },
+  });
+}
+
+export type CreateOppositionMessageRecordInput = {
+  entityId: string;
+  sourceId?: string | null;
+  messageType?: string | null;
+  topic?: string | null;
+  summary?: string | null;
+  tone?: string | null;
+  messageDate?: Date | null;
+  confidence?: OppositionConfidence;
+  reviewStatus?: OppositionReviewStatus;
+  notes?: string | null;
+  metadataJson?: Prisma.InputJsonValue;
+};
+
+export async function createOppositionMessageRecord(
+  data: CreateOppositionMessageRecordInput,
+  db: Pick<PrismaClient, "oppositionMessageRecord"> = prisma
+) {
+  warnMissingSource("createOppositionMessageRecord", data.sourceId);
+  return db.oppositionMessageRecord.create({
+    data: {
+      entityId: data.entityId,
+      sourceId: data.sourceId?.trim() || null,
+      messageType: data.messageType?.trim() || null,
+      topic: data.topic?.trim() || null,
+      summary: data.summary?.trim() || null,
+      tone: data.tone?.trim() || null,
+      messageDate: data.messageDate ?? null,
+      confidence: data.confidence ?? DEFAULT_CONFIDENCE,
+      reviewStatus: data.reviewStatus ?? DEFAULT_REVIEW,
+      notes: data.notes?.trim() || null,
+      metadataJson: data.metadataJson ?? {},
+    },
+  });
+}
+
+export type CreateOppositionVideoRecordInput = {
+  entityId: string;
+  sourceId?: string | null;
+  eventType?: string | null;
+  topic?: string | null;
+  billNumber?: string | null;
+  videoDate?: Date | null;
+  timestampLabel?: string | null;
+  transcriptStatus?: string | null;
+  confidence?: OppositionConfidence;
+  reviewStatus?: OppositionReviewStatus;
+  notes?: string | null;
+  metadataJson?: Prisma.InputJsonValue;
+};
+
+export async function createOppositionVideoRecord(
+  data: CreateOppositionVideoRecordInput,
+  db: Pick<PrismaClient, "oppositionVideoRecord"> = prisma
+) {
+  warnMissingSource("createOppositionVideoRecord", data.sourceId);
+  return db.oppositionVideoRecord.create({
+    data: {
+      entityId: data.entityId,
+      sourceId: data.sourceId?.trim() || null,
+      eventType: data.eventType?.trim() || null,
+      topic: data.topic?.trim() || null,
+      billNumber: data.billNumber?.trim() || null,
+      videoDate: data.videoDate ?? null,
+      timestampLabel: data.timestampLabel?.trim() || null,
+      transcriptStatus: data.transcriptStatus?.trim() || null,
+      confidence: data.confidence ?? DEFAULT_CONFIDENCE,
+      reviewStatus: data.reviewStatus ?? DEFAULT_REVIEW,
+      notes: data.notes?.trim() || null,
+      metadataJson: data.metadataJson ?? {},
+    },
+  });
+}
+
+export type CreateOppositionNewsMentionInput = {
+  entityId: string;
+  sourceId?: string | null;
+  outlet?: string | null;
+  headline?: string | null;
+  topic?: string | null;
+  sentiment?: string | null;
+  mentionDate?: Date | null;
+  confidence?: OppositionConfidence;
+  reviewStatus?: OppositionReviewStatus;
+  notes?: string | null;
+  metadataJson?: Prisma.InputJsonValue;
+};
+
+export async function createOppositionNewsMention(
+  data: CreateOppositionNewsMentionInput,
+  db: Pick<PrismaClient, "oppositionNewsMention"> = prisma
+) {
+  warnMissingSource("createOppositionNewsMention", data.sourceId);
+  return db.oppositionNewsMention.create({
+    data: {
+      entityId: data.entityId,
+      sourceId: data.sourceId?.trim() || null,
+      outlet: data.outlet?.trim() || null,
+      headline: data.headline?.trim() || null,
+      topic: data.topic?.trim() || null,
+      sentiment: data.sentiment?.trim() || null,
+      mentionDate: data.mentionDate ?? null,
+      confidence: data.confidence ?? DEFAULT_CONFIDENCE,
+      reviewStatus: data.reviewStatus ?? DEFAULT_REVIEW,
+      notes: data.notes?.trim() || null,
+      metadataJson: data.metadataJson ?? {},
+    },
+  });
+}
+
+export type CreateOppositionElectionPatternInput = {
+  entityId: string;
+  sourceId?: string | null;
+  electionYear?: number | null;
+  county?: string | null;
+  voteShare?: number | null;
+  turnout?: number | null;
+  comparisonGroup?: string | null;
+  confidence?: OppositionConfidence;
+  reviewStatus?: OppositionReviewStatus;
+  notes?: string | null;
+  metadataJson?: Prisma.InputJsonValue;
+};
+
+export async function createOppositionElectionPattern(
+  data: CreateOppositionElectionPatternInput,
+  db: Pick<PrismaClient, "oppositionElectionPattern"> = prisma
+) {
+  warnMissingSource("createOppositionElectionPattern", data.sourceId);
+  let voteShare: number | null = null;
+  if (data.voteShare != null) {
+    if (!Number.isFinite(data.voteShare)) throw new Error("opposition_election_pattern_voteShare_invalid");
+    voteShare = data.voteShare;
+  }
+  let turnout: number | null = null;
+  if (data.turnout != null) {
+    if (!Number.isFinite(data.turnout)) throw new Error("opposition_election_pattern_turnout_invalid");
+    turnout = data.turnout;
+  }
+  return db.oppositionElectionPattern.create({
+    data: {
+      entityId: data.entityId,
+      sourceId: data.sourceId?.trim() || null,
+      electionYear: data.electionYear ?? null,
+      county: data.county?.trim() || null,
+      voteShare,
+      turnout,
+      comparisonGroup: data.comparisonGroup?.trim() || null,
       confidence: data.confidence ?? DEFAULT_CONFIDENCE,
       reviewStatus: data.reviewStatus ?? DEFAULT_REVIEW,
       notes: data.notes?.trim() || null,

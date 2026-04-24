@@ -2,9 +2,11 @@
 
 **Packet:** **INTEL-2** — Structured, **source-backed** **manifest** for **Campaign Intelligence / Reporting** (opponent and related public-record lanes). **Docs only** in this packet: **no** bulk DB ingest, **no** publishing, **no** migrations.
 
-**INTEL-3 (implemented):** Prisma schema + migration `20260424180000_intel3_opposition_intelligence_schema` + safe create/list helpers in `src/lib/campaign-engine/opposition-intelligence.ts` + read-only admin **`/admin/intelligence`**. **Still** **no** scraping, **no** external publication, **no** AI conclusions — rows are **human-entered** or **future** **INTEL-4** parsers only.
+**INTEL-3 (implemented):** Prisma schema + migration `20260424180000_intel3_opposition_intelligence_schema` + safe create/list helpers in `src/lib/campaign-engine/opposition-intelligence.ts` + read-only admin **`/admin/intelligence`**. **Apply** the migration per environment (`npx prisma migrate deploy`); local dev should have it applied for a usable admin surface.
 
-**Cross-ref:** [`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md) (**INTEL-OPS-1** / **INTEL-OPS-2**) · [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md) **§6.4–6.5** · [`BRAIN_SOURCE_MANIFEST.md`](./BRAIN_SOURCE_MANIFEST.md) (filesystem inventory) · **Forward:** **INTEL-4** (parser and source ingestion pipelines) · **INTEL-5** (analysis and dashboard layer).
+**INTEL-4A (implemented):** Manual **JSON** **template** `data/intelligence/manual-opposition-intel-template.json`, operator README `data/intelligence/README.md`, and CLI **`npm run ingest:opposition-intel -- --file <path> [--dry-run]`** — validates shape, creates entities then sources then records in a transaction, defaults **NEEDS_REVIEW** / **UNVERIFIED**, **no** auto-approval, **no** generated conclusions. **No** **scraping**, **no** **bulk** **unvetted** **external** **ingest** — **source-backed** **curated** **drops** only.
+
+**Cross-ref:** [`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md) (**INTEL-OPS-1** / **INTEL-OPS-2**) · [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md) **§6.4–6.5** · [`BRAIN_SOURCE_MANIFEST.md`](./BRAIN_SOURCE_MANIFEST.md) (filesystem inventory) · **Forward:** **INTEL-4B** (first governed **public-source** import packet / parsers) · **INTEL-5** (analysis and dashboard layer).
 
 ---
 

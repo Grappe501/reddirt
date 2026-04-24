@@ -62,6 +62,7 @@
     "ingest:brain-manifest": "node scripts/build-brain-source-manifest.mjs",
     "ingest:election-audit": "node scripts/ingest-election-audit.mjs",
     "ingest:election-audit:json": "node scripts/ingest-election-audit.mjs --json",
+    "ingest:opposition-intel": "tsx scripts/import-opposition-intelligence-json.ts",
     "ingest:election-audit:doc": "node scripts/ingest-election-audit.mjs --write-doc",
     "brain:storage:plan": "node scripts/campaign-brain-storage-plan.mjs",
     "brain:ingest:tree:briefing": "tsx scripts/ingest-campaign-folder.ts --dir \"H:/SOSWebsite/campaign information for ingestion\" --include-zips --brain-governed",

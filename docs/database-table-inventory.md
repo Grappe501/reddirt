@@ -1,6 +1,6 @@
 # Database / Prisma model inventory (DBMAP-1) (RedDirt)
 
-**Source:** `prisma/schema.prisma` · **Model count:** **116** (verified by script `scripts/print-prisma-inventory.mjs`; includes VOTER-MODEL-1 + INTERACTION-1 + REL-2 tables).
+**Source:** `prisma/schema.prisma` · **Model count:** **126** (verified by script `scripts/print-prisma-inventory.mjs`; includes INTEL-3 opposition models + VOTER-MODEL-1 + INTERACTION-1 + REL-2 tables).
 
 ---
 
@@ -80,6 +80,16 @@ This inventory **lists every** persisted Prisma **model** so engineers and opera
 | `MediaAsset` | URL-registered media (images, oEmbed) | Media / content | Inbound, owned refs | **Core** | L |
 | `MediaIngestBatch` | Batch tracking for media ingest | Media | User | Active | L |
 | `MediaOutreachItem` | Press pitch / follow-up w/ plan + intake + opp | PR + comms | CommunicationPlan, Intake, ConversationOpp | Active | M |
+| `OppositionAccountabilityItem` | Curated accountability thread (source-backed, reviewable) | Campaign intel / INTEL-3 | OppositionEntity, OppositionSource? | Active | L |
+| `OppositionBillRecord` | Legislative/bill fact row | Campaign intel / INTEL-3 | OppositionEntity, OppositionSource? | Active | L |
+| `OppositionElectionPattern` | Aggregate election/geography pattern (no voter rows) | Campaign intel / INTEL-3 | OppositionEntity, OppositionSource? | Active | L |
+| `OppositionEntity` | Opponent / PAC / org anchor | Campaign intel / INTEL-3 | many `Opposition*` children | Active | L |
+| `OppositionFinanceRecord` | Filing-backed money fact | Campaign intel / INTEL-3 | OppositionEntity, OppositionSource? | Active | L |
+| `OppositionMessageRecord` | Public statement / messaging metadata | Campaign intel / INTEL-3 | OppositionEntity, OppositionSource? | Active | L |
+| `OppositionNewsMention` | News article reference | Campaign intel / INTEL-3 | OppositionEntity, OppositionSource? | Active | L |
+| `OppositionSource` | Bibliography / provenance row | Campaign intel / INTEL-3 | back-refs to record tables | Active | L |
+| `OppositionVideoRecord` | Video / hearing metadata | Campaign intel / INTEL-3 | OppositionEntity, OppositionSource? | Active | L |
+| `OppositionVoteRecord` | Vote / roll-call row | Campaign intel / INTEL-3 | OppositionEntity, OppositionSource? | Active | L |
 | `OwnedMediaAnnotation` | Region/mark on `OwnedMediaAsset` | Media / DAM | OwnedMedia | Active | L |
 | `OwnedMediaAsset` | Campaign DAM binary metadata | Media / DAM | County, many refs | **Core** for creative | M |
 | `OwnedMediaCollection` | Grouping for DAM | Media / DAM | items | Active | L |
