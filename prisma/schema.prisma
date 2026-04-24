@@ -4753,3 +4753,284 @@ model ExternalMediaIngestRun {
 
   @@index([startedAt])
 }
+
+// --- INTEL-3: Opposition intelligence (source-backed, reviewable; no AI conclusion / voter fields) ---
+
+enum OppositionEntityType {
+  CANDIDATE
+  OFFICEHOLDER
+  PAC
+  ORGANIZATION
+  DONOR
+  INFLUENCER
+  MEDIA_OUTLET
+  OTHER
+}
+
+enum OppositionConfidence {
+  VERIFIED
+  LIKELY
+  UNVERIFIED
+  DISPUTED
+}
+
+enum OppositionReviewStatus {
+  DRAFT
+  NEEDS_REVIEW
+  REVIEWED
+  APPROVED
+  ARCHIVED
+}
+
+enum OppositionSourceType {
+  PUBLIC_FILING
+  LEGISLATIVE_RECORD
+  VIDEO
+  NEWS
+  WEBSITE
+  SOCIAL_MEDIA
+  USER_PROVIDED_DOCUMENT
+  OTHER
+}
+
+model OppositionEntity {
+  id            String               @id @default(cuid())
+  name          String
+  type          OppositionEntityType
+  description   String?              @db.Text
+  currentOffice String?
+  party         String?
+  geography     String?
+  tagsJson      Json                 @default("[]")
+  metadataJson  Json                 @default("{}")
+  createdAt     DateTime             @default(now())
+  updatedAt     DateTime             @updatedAt
+
+  billRecords         OppositionBillRecord[]
+  voteRecords         OppositionVoteRecord[]
+  financeRecords      OppositionFinanceRecord[]
+  messageRecords      OppositionMessageRecord[]
+  videoRecords        OppositionVideoRecord[]
+  newsMentions        OppositionNewsMention[]
+  electionPatterns    OppositionElectionPattern[]
+  accountabilityItems OppositionAccountabilityItem[]
+
+  @@index([name])
+  @@index([type])
+}
+
+model OppositionSource {
+  id           String                 @id @default(cuid())
+  title        String
+  sourceType   OppositionSourceType
+  sourceUrl    String?                @db.Text
+  sourcePath   String?                @db.Text
+  publisher    String?
+  publishedAt  DateTime?
+  accessedAt   DateTime?
+  confidence   OppositionConfidence   @default(UNVERIFIED)
+  reviewStatus OppositionReviewStatus @default(NEEDS_REVIEW)
+  notes        String?                @db.Text
+  metadataJson Json                   @default("{}")
+  createdAt    DateTime               @default(now())
+  updatedAt    DateTime               @updatedAt
+
+  billRecords         OppositionBillRecord[]
+  voteRecords         OppositionVoteRecord[]
+  financeRecords      OppositionFinanceRecord[]
+  messageRecords      OppositionMessageRecord[]
+  videoRecords        OppositionVideoRecord[]
+  newsMentions        OppositionNewsMention[]
+  electionPatterns    OppositionElectionPattern[]
+  accountabilityItems OppositionAccountabilityItem[]
+
+  @@index([sourceType])
+  @@index([reviewStatus])
+  @@index([publishedAt])
+}
+
+model OppositionBillRecord {
+  id            String                 @id @default(cuid())
+  entityId      String
+  entity        OppositionEntity       @relation(fields: [entityId], references: [id], onDelete: Cascade)
+  sourceId      String?
+  source        OppositionSource?      @relation(fields: [sourceId], references: [id], onDelete: SetNull)
+  billNumber    String?
+  title         String?
+  summary       String?                @db.Text
+  role          String?
+  policyArea    String?
+  impactArea    String?
+  session       String?
+  status        String?
+  introducedAt  DateTime?
+  lastActionAt  DateTime?
+  confidence    OppositionConfidence   @default(UNVERIFIED)
+  reviewStatus  OppositionReviewStatus @default(NEEDS_REVIEW)
+  notes         String?                @db.Text
+  metadataJson  Json                   @default("{}")
+  createdAt     DateTime               @default(now())
+  updatedAt     DateTime               @updatedAt
+
+  @@index([entityId])
+  @@index([sourceId])
+}
+
+model OppositionVoteRecord {
+  id           String                 @id @default(cuid())
+  entityId     String
+  entity       OppositionEntity       @relation(fields: [entityId], references: [id], onDelete: Cascade)
+  sourceId     String?
+  source       OppositionSource?      @relation(fields: [sourceId], references: [id], onDelete: SetNull)
+  billNumber   String?
+  vote         String?
+  voteDate     DateTime?
+  chamber      String?
+  category     String?
+  impactGroup  String?
+  confidence   OppositionConfidence   @default(UNVERIFIED)
+  reviewStatus OppositionReviewStatus @default(NEEDS_REVIEW)
+  notes        String?                @db.Text
+  metadataJson Json                   @default("{}")
+  createdAt    DateTime               @default(now())
+  updatedAt    DateTime               @updatedAt
+
+  @@index([entityId])
+  @@index([sourceId])
+}
+
+model OppositionFinanceRecord {
+  id           String                 @id @default(cuid())
+  entityId     String
+  entity       OppositionEntity       @relation(fields: [entityId], references: [id], onDelete: Cascade)
+  sourceId     String?
+  source       OppositionSource?      @relation(fields: [sourceId], references: [id], onDelete: SetNull)
+  donorName    String?
+  donorType    String?
+  amount       Decimal?               @db.Decimal(14, 2)
+  date         DateTime?
+  employer     String?
+  industry     String?
+  geography    String?
+  confidence   OppositionConfidence   @default(UNVERIFIED)
+  reviewStatus OppositionReviewStatus @default(NEEDS_REVIEW)
+  notes        String?                @db.Text
+  metadataJson Json                   @default("{}")
+  createdAt    DateTime               @default(now())
+  updatedAt    DateTime               @updatedAt
+
+  @@index([entityId])
+  @@index([sourceId])
+}
+
+model OppositionMessageRecord {
+  id           String                 @id @default(cuid())
+  entityId     String
+  entity       OppositionEntity       @relation(fields: [entityId], references: [id], onDelete: Cascade)
+  sourceId     String?
+  source       OppositionSource?      @relation(fields: [sourceId], references: [id], onDelete: SetNull)
+  messageType  String?
+  topic        String?
+  summary      String?                @db.Text
+  tone         String?
+  messageDate  DateTime?
+  confidence   OppositionConfidence   @default(UNVERIFIED)
+  reviewStatus OppositionReviewStatus @default(NEEDS_REVIEW)
+  notes        String?                @db.Text
+  metadataJson Json                   @default("{}")
+  createdAt    DateTime               @default(now())
+  updatedAt    DateTime               @updatedAt
+
+  @@index([entityId])
+  @@index([sourceId])
+}
+
+model OppositionVideoRecord {
+  id                String                 @id @default(cuid())
+  entityId          String
+  entity            OppositionEntity       @relation(fields: [entityId], references: [id], onDelete: Cascade)
+  sourceId          String?
+  source            OppositionSource?      @relation(fields: [sourceId], references: [id], onDelete: SetNull)
+  eventType         String?
+  topic             String?
+  billNumber        String?
+  videoDate         DateTime?
+  timestampLabel    String?
+  transcriptStatus  String?
+  confidence        OppositionConfidence   @default(UNVERIFIED)
+  reviewStatus      OppositionReviewStatus @default(NEEDS_REVIEW)
+  notes             String?                @db.Text
+  metadataJson      Json                   @default("{}")
+  createdAt         DateTime               @default(now())
+  updatedAt         DateTime               @updatedAt
+
+  @@index([entityId])
+  @@index([sourceId])
+}
+
+model OppositionNewsMention {
+  id           String                 @id @default(cuid())
+  entityId     String
+  entity       OppositionEntity       @relation(fields: [entityId], references: [id], onDelete: Cascade)
+  sourceId     String?
+  source       OppositionSource?      @relation(fields: [sourceId], references: [id], onDelete: SetNull)
+  outlet       String?
+  headline     String?
+  topic        String?
+  sentiment    String?
+  mentionDate  DateTime?
+  confidence   OppositionConfidence   @default(UNVERIFIED)
+  reviewStatus OppositionReviewStatus @default(NEEDS_REVIEW)
+  notes        String?                @db.Text
+  metadataJson Json                   @default("{}")
+  createdAt    DateTime               @default(now())
+  updatedAt    DateTime               @updatedAt
+
+  @@index([entityId])
+  @@index([sourceId])
+}
+
+model OppositionElectionPattern {
+  id               String                 @id @default(cuid())
+  entityId         String
+  entity           OppositionEntity       @relation(fields: [entityId], references: [id], onDelete: Cascade)
+  sourceId         String?
+  source           OppositionSource?      @relation(fields: [sourceId], references: [id], onDelete: SetNull)
+  electionYear     Int?
+  county           String?
+  voteShare        Float?
+  turnout          Float?
+  comparisonGroup  String?
+  confidence       OppositionConfidence   @default(UNVERIFIED)
+  reviewStatus     OppositionReviewStatus @default(NEEDS_REVIEW)
+  notes            String?                @db.Text
+  metadataJson     Json                   @default("{}")
+  createdAt        DateTime               @default(now())
+  updatedAt        DateTime               @updatedAt
+
+  @@index([entityId])
+  @@index([sourceId])
+}
+
+model OppositionAccountabilityItem {
+  id           String                 @id @default(cuid())
+  entityId     String
+  entity       OppositionEntity       @relation(fields: [entityId], references: [id], onDelete: Cascade)
+  sourceId     String?
+  source       OppositionSource?      @relation(fields: [sourceId], references: [id], onDelete: SetNull)
+  title        String?
+  category     String?
+  description  String?                @db.Text
+  impact       String?                @db.Text
+  billNumber   String?
+  actionDate   DateTime?
+  confidence   OppositionConfidence   @default(UNVERIFIED)
+  reviewStatus OppositionReviewStatus @default(NEEDS_REVIEW)
+  notes        String?                @db.Text
+  metadataJson Json                   @default("{}")
+  createdAt    DateTime               @default(now())
+  updatedAt    DateTime               @updatedAt
+
+  @@index([entityId])
+  @@index([sourceId])
+}

@@ -2,7 +2,7 @@
 
 **Packets:** **INTEL-OPS-1** — Blueprint + protocol for **Campaign Intelligence** (opposition research), **docs only** (no app code in this packet). **INTEL-OPS-2** — **Competitor** **intelligence** **expansion**: **public-record** **requirements**, **source** **rules**, **conceptual** **data** **model**, **ingest** **queue** cross-ref (implementation still future).  
 **Stack:** `RedDirt/` — future implementation will live under **Campaign Intelligence / Reporting** and related lanes.  
-**Cross-ref:** [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) · [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) · [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) · [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md) (**§6.5** Competitor Intelligence Ingest Queue) · [`AUTO_BUILD_PROTOCOL.md`](./AUTO_BUILD_PROTOCOL.md)
+**Cross-ref:** [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) · [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) · [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) · [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md) (**§6.5** Competitor Intelligence Ingest Queue; **§6.6** Competitor Intelligence Sources) · [`COMPETITOR_INTELLIGENCE_MANIFEST.md`](./COMPETITOR_INTELLIGENCE_MANIFEST.md) (**INTEL-2**) · [`AUTO_BUILD_PROTOCOL.md`](./AUTO_BUILD_PROTOCOL.md)
 
 **Core rule:** **Public, lawful, source-backed** information only. **No** fabrication. **Human review** before anything is used **externally** or drives **campaign action**. **Broad automated ingest** of opposition-related source material is **gated** behind **election ingest COMPLETE** (or **explicit waiver**) per [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) and [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md) — **INTEL-1** (manual entry + citations) is **not** blocked by that gate.
 
@@ -72,7 +72,7 @@ It exists to support **internal** planning, **message awareness**, **finance map
 
 ---
 
-## 6. Conceptual models (definitions only — no Prisma schema in INTEL-OPS-1; see §10 for INTEL-OPS-2 table list)
+## 6. Conceptual models (definitions only — no Prisma schema in INTEL-OPS-1; **INTEL-3** adds Prisma tables + helpers; see §10 for INTEL-OPS-2 table list)
 
 Each **model** is a **future** **persisted** **shape**. **Common** **attributes** (all **rows** or **all** **first-class** **objects** where applicable): **source** (link, filing ref, or document id) · **timestamp** (captured/observed) · **confidence** (see §5) · **tags** (free or controlled vocabulary) · **notes** (analyst) · **review** **status** (e.g. draft / reviewed / released-for-internal / blocked).
 
@@ -204,9 +204,9 @@ The engine must support **lawful**, **public**, **source-backed** tracking ( **n
 
 ---
 
-## 10. Future data model — conceptual tables (no Prisma schema in this packet)
+## 10. Future data model — conceptual tables (INTEL-3 = persisted subset)
 
-**Conceptual** **only** — names and intent for a **future** **competitor** **intelligence** **schema**; **no** **SQL** or **migration** **here**.
+**Conceptual** names below informed **INTEL-3** Prisma models (`OppositionEntity`, `OppositionSource`, bill/vote/finance/message/video/news/election-pattern/accountability rows). **INTEL-3** does **not** add AI conclusion fields, voter-level fields, or automated ingest — see migration `prisma/migrations/20260424180000_intel3_opposition_intelligence_schema` and `src/lib/campaign-engine/opposition-intelligence.ts`.
 
 | Conceptual table | Role |
 |------------------|------|
@@ -225,7 +225,7 @@ The engine must support **lawful**, **public**, **source-backed** tracking ( **n
 | **OppositionAccountabilityItem** | Curated **key** **vote** / **action** / **finance** **thread** for **review** **queues**. |
 | **OppositionSource** | Canonical **bibliography** row: URL, hash, retrieval time, **trust** **tier**. |
 
-These complement **§6** definitions (e.g. **OppositionEntity**); implementation may merge or split tables in a later **INTEL-3** schema packet.
+These complement **§6** definitions (e.g. **OppositionEntity**); **INTEL-3** implements the core anchor + record tables aligned to **INTEL-2** row shapes; optional merges (e.g. donor/PAC split) remain future steering.
 
 ---
 
@@ -234,13 +234,13 @@ These complement **§6** definitions (e.g. **OppositionEntity**); implementation
 | Phase | ID | Description |
 |-------|----|-------------|
 | **1** | **INTEL-1** | **Manual** **entry** + **source-backed** **notes** + **citations**; **no** **required** **schema** **beyond** what **compliance** **needs** for **storing** **links** **safely** |
-| **2** | **INTEL-2** | **Competitor** **source** **manifest** ( **what** **to** **collect**, **where**, **cadence**, **owner** ) — aligns with [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md) **§6.5** |
-| **3** | **INTEL-3** | **Bill** / **vote** / **campaign-finance** **schema** **proposal** ( **Prisma**-**ready** **draft** — **separate** **packet** **only** **when** **explicitly** **requested** ) |
-| **4** | **INTEL-4** | **Official** **video** / **transcript** **index** ( **URLs**, **timestamps**, **transcript** **provenance** ) |
-| **5** | **INTEL-5** | **County** **election** **behavior** **analysis** ( **public** **data** **only**; **honest** **limits** ) |
-| **6+** | **INTEL-6+** | **Persistence** **views**, **network** **maps**, **AI-assisted** **summaries** **with** **mandatory** **human** **review**, **internal** **dashboards** — **after** **source** **manifest** and **schema** **discipline** **exist** |
+| **2** | **INTEL-2** | **Competitor** **source** **manifest** — **implemented** ( [`COMPETITOR_INTELLIGENCE_MANIFEST.md`](./COMPETITOR_INTELLIGENCE_MANIFEST.md) ): **typed** **tables** (legislative, votes, finance, statements, news, video, **election/geography**, **direct** **democracy** ), **local** **file** **scan** **appendix**, **rules** for **provenance**; **no** **DB** **ingest** **in** **this** **packet** |
+| **3** | **INTEL-3** | **Implemented** — Prisma schema + migration + safe library helpers + read-only **`/admin/intelligence`**; **bill** / **vote** / **finance** / **message** / **video** / **news** / **election** **pattern** / **accountability** rows + **`OppositionSource`**; **no** scraping / **no** auto-approve / **no** AI conclusions |
+| **4** | **INTEL-4** | **Parser** and **source** **ingestion** **pipelines** ( **governed** **CLIs** / **connectors** ) from **public** **sources** and **approved** **file** **drops** into **INTEL-3** **tables** ( **not** **bulk** **RAG** **as** **fact** ) |
+| **5** | **INTEL-5** | **Analysis** **and** **dashboard** **layer** — **rollups**, **comparisons**, **county** / **turnout** **slices** ( **aggregates** **only**; **no** **voter**-**level** **inference** ), **optional** **video** / **transcript** **indexing** **as** a **sub-epic** **inside** **governed** **pipelines** |
+| **6+** | **INTEL-6+** | **Persistence** **views**, **network** **maps**, **AI-assisted** **summaries** **with** **mandatory** **human** **review**, **internal** **dashboards** — **after** **INTEL-3**–**INTEL-5** **discipline** **exists** |
 
-**Ordering relative to other rails:** **INTEL-1** may **proceed** **without** **waiting** on **bulk** **ingest** **automation**. **INTEL-2**–**INTEL-5** **batch** **work** **waits** on **election** **ingest** **COMPLETE** (or **explicit** **waiver**) per **Election** **Ingest** **Gate**. **No** **AI-generated** **factual** **claims** **without** **stored** **source** **citations**.
+**Ordering relative to other rails:** **INTEL-1** may **proceed** **without** **waiting** on **bulk** **ingest** **automation**. **INTEL-2** is **in** **the** **repo** **as** **docs**. **INTEL-3** **schema** / **helpers** / **admin** **read** **surface** **shipped**; **INTEL-4**–**INTEL-5** **follow** **steering**. **Broad** **batch** **ingest** **per** **§6.4** / **§6.5** still **assumes** **election** **ingest** **COMPLETE** (or **explicit** **waiver**) per **Election** **Ingest** **Gate**. **No** **AI-generated** **factual** **claims** **without** **stored** **source** **citations**.
 
 ---
 
@@ -252,4 +252,4 @@ These complement **§6** definitions (e.g. **OppositionEntity**); implementation
 
 ---
 
-*INTEL-OPS-1 / **INTEL-OPS-2** — Opposition / **competitor** **intelligence** blueprint. **Docs only**; no runtime behavior added by this file.*
+*INTEL-OPS-1 / **INTEL-OPS-2** — Opposition / **competitor** **intelligence** blueprint. **Runtime:** **INTEL-3** adds DB + helpers + read-only admin only; this file remains the policy / domain contract.*

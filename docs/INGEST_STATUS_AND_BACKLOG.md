@@ -3,7 +3,7 @@
 **Packet:** **INGEST-OPS-2** — Election ingest status, brain/source backlog, standing queue protocol. **INGEST-OPS-3** — election file ↔ DB comparison: [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md). **INGEST-OPS-3B** — **operator runbook** [`ELECTION_INGEST_OPERATOR_RUNBOOK.md`](./ELECTION_INGEST_OPERATOR_RUNBOOK.md), `--json` / `--write-doc` audit output, and **completion rules** (BLOCKED ≠ PARTIAL).  
 **File:** `docs/INGEST_STATUS_AND_BACKLOG.md`  
 **Stack:** `RedDirt/` (Next.js + Prisma; ingest CLIs in `scripts/`).  
-**Cross-ref:** [`election-results-schema-and-ingest.md`](./election-results-schema-and-ingest.md) · [`raw-election-results-intake-map.md`](./raw-election-results-intake-map.md) · [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) — **INGEST-OPS-2 standing rule** · **Election Ingest Gate (INGEST-OPS-3)** · **Generated file inventory** → [`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md) (run `npm run ingest:inventory` from `RedDirt/`) · **Normalized brain manifest (INGEST-OPS-4)** → [`BRAIN_SOURCE_MANIFEST.md`](./BRAIN_SOURCE_MANIFEST.md) (`npm run ingest:brain-manifest`) · per-folder writeups in `docs/source-ingest/*-manifest.md` + **§2.7** root loose files.
+**Cross-ref:** [`election-results-schema-and-ingest.md`](./election-results-schema-and-ingest.md) · [`raw-election-results-intake-map.md`](./raw-election-results-intake-map.md) · [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) — **INGEST-OPS-2 standing rule** · **Election Ingest Gate (INGEST-OPS-3)** · **Generated file inventory** → [`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md) (run `npm run ingest:inventory` from `RedDirt/`) · **Normalized brain manifest (INGEST-OPS-4)** → [`BRAIN_SOURCE_MANIFEST.md`](./BRAIN_SOURCE_MANIFEST.md) (`npm run ingest:brain-manifest`) · **Competitor source manifest (INTEL-2)** → [`COMPETITOR_INTELLIGENCE_MANIFEST.md`](./COMPETITOR_INTELLIGENCE_MANIFEST.md) · per-folder writeups in `docs/source-ingest/*-manifest.md` + **§2.7** root loose files.
 
 **Safety:** This document is **blueprint and inspection** only. **Do not** run production imports or mutate campaign data from this file. Use **`--dry-run`** on election ingest first; use dedicated scripts only as documented.
 
@@ -100,7 +100,7 @@ Then, only for the **intended** database, drop `--dry-run` and run the same comm
 **MIGRATE-OPS-1** + **INGEST-OPS-3C** + **INGEST-OPS-3D** (operator-approved **local** **only**): **`npm run db:ping`** OK · **`npx prisma migrate deploy`** applied **all** pending migrations (**schema** **up** **to** **date**; includes **`20260513120000_data4_election_ingest_foundation`**). **`npx prisma generate`** OK · **`ingest:election-audit:json`** / **`:doc`:** **`status: COMPLETE`**, `dbReachable: true`, **`ingestedCount: 13`**, **`missingCount: 0`**, **`totalFiles: 13`** — all canonical JSONs in **[`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md)** **§A** / **§C** present in **`ElectionResultSource`** on **this** DB.
 
 - **Repo fixes during deploy:** removed **untracked** empty migration dir **`20260423120000_email_workflow_status_enriched`** ( **P3015** ); split **`20260431180000_comms_packet7_variant_review_fields`** enum **UPDATE** into **`20260431185000_comms_packet7_variant_status_backfill`** after **`migrate resolve --rolled-back`** ( **P3018** ). See [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) **§ MIGRATE-OPS-1**.  
-- **Election Ingest Gate:** **satisfied** on **this** DB — **`INGEST-OPS-4`**, **`GOTV-2`**, and **`INTEL-2`** are **unlocked** for **blueprint** **prioritization**. **INGEST-OPS-4** **normalized manifest** is **implemented** (**§2.8**); **INTEL-2** remains **blueprint** until **steered**.  
+- **Election Ingest Gate:** **satisfied** on **this** DB — **`INGEST-OPS-4`**, **`GOTV-2`**, **`INTEL-2`** ([`COMPETITOR_INTELLIGENCE_MANIFEST.md`](./COMPETITOR_INTELLIGENCE_MANIFEST.md)), and **`INTEL-3`** (**opposition** **Prisma** **tables** + **`opposition-intelligence.ts`** + **`/admin/intelligence`**) are **in** **the** **blueprint** **set**. **INGEST-OPS-4** **normalized manifest** is **implemented** (**§2.8**). **INTEL-4+** **bulk** **pipelines** **await** **steering** (**§6.6**).  
 - **Competitor Intelligence Ingest Queue** (below): **canonical** **election** **tabulation** **gate** **cleared** **here**; **§6.4** **batch** **rules** **still** require **provenance** **and** **human** **review** **per** **INTEL-OPS-1**.
 
 ### 2.6 SOURCE-INGEST-FOLDER-TEMPLATE (controlled per-folder manifests)
@@ -133,7 +133,7 @@ Then, only for the **intended** database, drop `--dry-run` and run the same comm
 
 **Hard gate:** **`npm run ingest:election-audit:json`** → **`COMPLETE`** before treating ingest expansion as unblocked for an environment (same as **§2.6**).
 
-**Next safe paths (blueprint):** **INGEST-OPS-5** (first governed non-election parser) · **INTEL-2** (competitor source manifest) · **FINANCE-1** (finance source mapping) · **VOL-DATA-1** (volunteer list / field spreadsheet mapping).
+**Next safe paths (blueprint):** **INGEST-OPS-5** (first governed non-election parser) · **INTEL-2** **(done** — [`COMPETITOR_INTELLIGENCE_MANIFEST.md`](./COMPETITOR_INTELLIGENCE_MANIFEST.md)) · **INTEL-3** **(done** — schema + helpers + read-only admin) · **INTEL-4** / **INTEL-5** (when **steered**) · **FINANCE-1** (finance source mapping) · **VOL-DATA-1** (volunteer list / field spreadsheet mapping).
 
 ---
 
@@ -260,6 +260,20 @@ Structured **lawful** **public-record** **competitor** **intelligence** (see **[
 
 **Queue rules:** **Ingest** **automation** / **bulk** **load** **after** [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) reports **COMPLETE** for the **intended** DB (or **explicit** **operator** **waiver**). **Public** **sources** **only**. **Every** **stored** **claim** needs **source** **URL** **or** **file**, **date** **accessed**, **confidence**, **fact** / **inference** / **recommendation** **separation**, and **review** **status** (per opposition doc).
 
+### 6.6 Competitor Intelligence Sources (INTEL-2 backlog line)
+
+**Manifest doc (implemented):** [`COMPETITOR_INTELLIGENCE_MANIFEST.md`](./COMPETITOR_INTELLIGENCE_MANIFEST.md) — **structured** **tables** **+** **rules**; **local** **file** **appendix** **(paths** **only**, **no** **content** **claims**).
+
+| Backlog category | Maps to manifest § | Status |
+|------------------|-------------------|--------|
+| **Legislative data** | §3.A (Legislative record) | **Manifest** **created**; **row** **ingest** **pending** |
+| **Finance filings** | §3.C (Campaign finance) | **Manifest** **created**; **ingest** **pending** |
+| **News archive** | §3.E (News mentions) | **Manifest** **created**; **ingest** **pending** |
+| **Official videos** | §3.F (Official videos) | **Manifest** **created**; **ingest** **pending** |
+| **County election data** | §3.G (Election / geographic patterns) + canonical **`electionResults`** JSON | **Manifest** **+** **election** **JSON** **path** **documented**; **aggregated** **intel** **ingest** **pending** |
+
+**Gating:** **INTEL-3** **schema** **exists** — **manual** / **helper** **creates** **are** **allowed**; **DB** **bulk** **ingest** / **automation** **for** **manifest** **rows** **remains** **pending** **until** **INTEL-4** (**parsers** / **pipelines**) **per** [`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md) **§11** — **no** **bulk** **loads** **from** **this** **doc** **alone**; **no** **scraping** / **no** **AI** **conclusions** **in** **product**.
+
 ---
 
 ## 7. Post-election brain ingest queue (standing rules)
@@ -304,9 +318,9 @@ Structured **lawful** **public-record** **competitor** **intelligence** (see **[
 ## 9. Division note (ingest / intelligence)
 
 - **Data layer / voter file / ingest** remains **L2** until **PRECINCT-1** or **sustained** ingest tooling lifts **operator** **confidence** — **per** [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md).  
-- **Campaign intelligence** stays **L1–L2**; **INTEL-OPS-1** adds **[`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md)**; may move when **INGEST-OPS-4+** and **honest** rollups exist — **not** on docs alone. **Election** **Ingest** **Gate** **satisfied** on **canonical** **13** **JSONs** **here** — **INTEL-2**+ **batch** **work** **no** **longer** **blocked** **by** **that** **gate** on **this** **DB**; **§6.4** **guardrails** **unchanged**.  
+- **Campaign intelligence** stays **L1–L2**; **INTEL-OPS-1** + **INTEL-2** ([`COMPETITOR_INTELLIGENCE_MANIFEST.md`](./COMPETITOR_INTELLIGENCE_MANIFEST.md)) + **INTEL-3** (**persistence** **shell**) + **[`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md)**; may move when **INGEST-OPS-4+** and **honest** rollups exist — **not** on docs alone. **Election** **Ingest** **Gate** **satisfied** on **canonical** **13** **JSONs** **here** — **INTEL-4+** **pipelines** **not** **blocked** **by** **election** **gate** on **this** **DB** (**separate** **steering**); **§6.4** / **§6.6** **guardrails** **unchanged**.  
 - **Finance** / **volunteer** product levels **unchanged** here (no new financial or volunteer **actions** in this packet).
 
 ---
 
-*Last updated: **OPENAI-KEY-OPS-1** — **`setup:openai-key`** / **`test:openai-key`** added; **BRAIN-EMBED-1** root loose batch **`cmoct5jcv0000zc8by1za6udc`** still needs **live** **`SearchChunk`** repair after a **passing** **`test:openai-key`**. **MIGRATE-OPS-1** (migrations applied; audit **`COMPLETE`** **13**/ **13** on **this** local dev DB; see **§2.5**) + **INTEL-OPS-1** / **INTEL-OPS-2** (**§6.5**) / **INGEST-OPS-3B**; **Election Ingest Gate** **satisfied** here; **INGEST-OPS-4** (**§2.8**) + **GOTV-2** **implemented** — verify **other** **environments** with `ingest:election-audit:json`. **§2.6** **SOURCE-INGEST-FOLDER-TEMPLATE:** [`source-ingest/zine-content-20260421t210959z-manifest.md`](./source-ingest/zine-content-20260421t210959z-manifest.md); **§2.7** **SOURCE-INGEST-LOOSE-FILES:** [`source-ingest/root-loose-files-manifest.md`](./source-ingest/root-loose-files-manifest.md); **§2.8** [`BRAIN_SOURCE_MANIFEST.md`](./BRAIN_SOURCE_MANIFEST.md) (`ingest:brain-manifest`).*
+*Last updated: **OPENAI-KEY-OPS-1** — **`setup:openai-key`** / **`test:openai-key`**; **INTEL-2** [`COMPETITOR_INTELLIGENCE_MANIFEST.md`](./COMPETITOR_INTELLIGENCE_MANIFEST.md) + **INTEL-3** **opposition** **schema** + **§6.6**; **BRAIN-EMBED-1** root loose batch **`cmoct5jcv0000zc8by1za6udc`** may still need **`SearchChunk`** repair after a **passing** **`test:openai-key`**. **MIGRATE-OPS-1** (migrations applied; audit **`COMPLETE`** **13**/ **13** on **this** local dev DB; see **§2.5**) + **INTEL-OPS-1** / **INTEL-OPS-2** (**§6.5**–**§6.6**) / **INGEST-OPS-3B**; **Election Ingest Gate** **satisfied** here; **INGEST-OPS-4** (**§2.8**) + **GOTV-2** **implemented** — verify **other** **environments** with `ingest:election-audit:json`. **§2.6** **SOURCE-INGEST-FOLDER-TEMPLATE:** [`source-ingest/zine-content-20260421t210959z-manifest.md`](./source-ingest/zine-content-20260421t210959z-manifest.md); **§2.7** **SOURCE-INGEST-LOOSE-FILES:** [`source-ingest/root-loose-files-manifest.md`](./source-ingest/root-loose-files-manifest.md); **§2.8** [`BRAIN_SOURCE_MANIFEST.md`](./BRAIN_SOURCE_MANIFEST.md) (`ingest:brain-manifest`).*

@@ -21,6 +21,7 @@ const siteLinks: { href: string; label: string }[] = [
 
 const operationsLinks: { href: string; label: string }[] = [
   { href: "/admin/workbench", label: "Campaign workbench" },
+  { href: "/admin/intelligence", label: "Opposition intelligence (INTEL-3)" },
   { href: "/admin/media-monitor", label: "Press monitor" },
   { href: "/admin/workbench/comms", label: "Comms hub" },
   { href: "/admin/workbench/calendar", label: "Calendar HQ" },
