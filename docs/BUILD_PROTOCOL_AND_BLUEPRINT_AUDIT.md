@@ -94,7 +94,7 @@ A **division** is a **top-level system area** of the campaign operating system. 
 - **Comms** — **automation** that depends on **election result** coverage or cross-election analytics as **ground truth**.  
 - **Campaign intelligence** — **modeling** or **rollups** that **assume** a **closed** **election** **tabulation** set for targeting or narrative (document **PARTIAL** + limits instead).
 
-**Authoritative check:** `npm run ingest:election-audit` (with DB up) and/or the read-only SQL in **§B.2** of [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md). **GOTV** / **comms** / **intelligence** **read** paths that **do not** **assert** **complete** **election** **ingest** may continue when labeled **advisory** / **gapped** per existing brain docs.
+**Authoritative check:** `npm run ingest:election-audit` (with DB up) and/or the read-only SQL in **§B** of [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) · **INGEST-OPS-3B:** `npm run ingest:election-audit:json` (and optional `ingest:election-audit:doc` to refresh the audit doc) — see [`ELECTION_INGEST_OPERATOR_RUNBOOK.md`](./ELECTION_INGEST_OPERATOR_RUNBOOK.md). **Do not** **treat** **BLOCKED** (DB unreachable) as **PARTIAL** or **COMPLETE** in any build report. **If** `status` is **PARTIAL**, continue **targeted** `ingest:election-results` for **missing** files only. **INGEST-OPS-4** (manifest) is the **next** ingest line **after** **COMPLETE** (or **explicit** **waiver** of this gate for a scope). **GOTV** / **comms** / **intelligence** **read** paths that **do not** **assert** **complete** **election** **ingest** may continue when labeled **advisory** / **gapped** per existing brain docs.
 
 ---
 

@@ -1,12 +1,37 @@
-# Election ingest completion audit (INGEST-OPS-3)
+# Election ingest completion audit (INGEST-OPS-3 + INGEST-OPS-3B)
 
-**Packet:** INGEST-OPS-3 — Files on disk vs `ElectionResultSource` records.  
+**Packet:** **INGEST-OPS-3** / **INGEST-OPS-3B** — Files on disk vs `ElectionResultSource` records; operator runbook and machine-readable output.  
 **Scope:** `*.json` under the canonical **election results** folder (SOS-style Arkansas exports). **Not** SOS certification; in-app tabulation only.
 
-**Raw folder (host-specific):** `H:\SOSWebsite\campaign information for ingestion\electionResults`  
-(Override for tools: `ELECTION_AUDIT_DIR` when running `npm run ingest:election-audit`.)
+**Operator runbook:** [`ELECTION_INGEST_OPERATOR_RUNBOOK.md`](./ELECTION_INGEST_OPERATOR_RUNBOOK.md) — commands, status meanings, and safe ingest order.
+
+**Raw folder (host-specific):** `H:\SOSWebsite\campaign information for ingestion\electionResults` (override: `ELECTION_AUDIT_DIR` when running the audit script.)
 
 **Non-JSON in folder:** A handbook-style PDF (e.g. `2025-Running-for-Public-Office-…-small.pdf`) is **out of scope** for this table—track under compliance / brain ingest, not `ElectionResult*`.
+
+---
+
+## How to complete this audit
+
+1. **Preconditions:** Postgres reachable from this machine, `DATABASE_URL` set in `RedDirt/.env` (or environment), and the `electionResults` folder present (see runbook).  
+2. **Run (machine-readable):** `cd RedDirt` → `npm run ingest:election-audit:json` — check `status`.  
+3. **Run (update this doc):** `npm run ingest:election-audit:doc` — refreshes the **auto** sections between HTML comment markers. Optional env: `ELECTION_AUDIT_VERIFIED_AGAINST`, `ELECTION_AUDIT_OPERATOR`, `ELECTION_AUDIT_NOTES`.  
+4. **If `status` is PARTIAL:** ingest **missing** files only: **`--dry-run` first**, then `ingest:election-results` per file (newest → oldest).  
+5. **If `status` is COMPLETE:** record the completion marker (auto block below) and any human notes; then consider **INGEST-OPS-4** (manifest) for brain/source files.  
+6. **If `status` is BLOCKED:** you **cannot** know ingested/missing counts — do **not** report PARTIAL or COMPLETE until DB is up.
+
+**Do not** treat **BLOCKED** as **PARTIAL** or **COMPLETE** in build reports or backlogs.
+
+---
+
+## Operator checklist
+
+- [ ] `npm run dev:db` (or your Postgres) and `npx prisma db ping` / app health as you prefer  
+- [ ] `npm run ingest:election-audit:json` — capture `status` and `files[]`  
+- [ ] `npm run ingest:election-audit:doc` (with optional env for operator/verified-against)  
+- [ ] If PARTIAL: dry-run then apply only missing JSONs per runbook; no blind `--replace` on unknown rows  
+- [ ] Commit updated `docs/ELECTION_INGEST_AUDIT.md` or paste handoff block for ChatGPT (see runbook)  
+- [ ] **Brain / source** ingest (post-election RAG, etc.): do **not** **promote** missing campaign files to “done” in [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md) until election ingest is at least **not BLOCKED** and ideally **COMPLETE** (per policy in that file)
 
 ---
 
@@ -36,16 +61,7 @@
 
 **Model:** `ElectionResultSource` (`prisma/schema.prisma`) — key fields: `id`, `sourcePath`, `sourceName`, `electionName`, `electionDate`, `parserVariant`, `importedAt`, `metadataJson`, `isOfficial`, etc.
 
-### B.1 Audit run (this pass)
-
-| Condition | Value |
-|-----------|--------|
-| **DB reachable during audit** | **No** — local `DATABASE_URL` target was not accepting connections (e.g. Docker Postgres not running). **Per-environment truth** requires a successful read against the **intended** database. |
-| **Authoritative row dump** | Re-run: `cd RedDirt && npm run ingest:election-audit` with Postgres up (`npm run dev:db` or your env). |
-
-### B.2 SQL (read-only) — run in Prisma/Postgres
-
-Use this to list provenance for manual comparison or CI:
+### B.1 SQL (read-only) — run in Prisma/Postgres
 
 ```sql
 SELECT
@@ -66,49 +82,103 @@ Match **disk → DB** on normalized absolute `sourcePath` (the ingest CLI stores
 
 ---
 
-## C. Comparison table (file vs DB)
+## C. Comparison table (file vs DB) — **auto-updated**
 
-`exists_in_db` and `ingest_status` are **not verified** for this document revision because the database was unavailable. Re-run the audit script or SQL above, then update this table.
+*Do not hand-edit between the marker comments. Run `npm run ingest:election-audit:doc`.*
+
+**Ingest status values (script output):**
+
+- **unknown** — DB unreachable (`BLOCKED`).  
+- **missing** — no matching `ElectionResultSource` row.  
+- **ingested** — row present.  
+- **suspected_partial** — reserved for future QA (low county mapping, etc.); not set by the script today.
+
+<!-- ELECTION_AUDIT_TABLE_AUTO:START -->
 
 | file_name | file_path | expected_year | exists_in_db | db_record_id | ingest_status | notes |
 |-----------|-----------|---------------|--------------|--------------|---------------|-------|
-| `2016_General.json` | `H:\SOSWebsite\…\2016_General.json` | 2016 | **verify** | — | **unknown** | Populate after DB read |
-| `2016_Preferential_Primary.json` | `…\2016_Preferential_Primary.json` | 2016 | **verify** | — | **unknown** | |
-| `2018_General.json` | `…\2018_General.json` | 2018 | **verify** | — | **unknown** | |
-| `2018_Preferential_Primary.json` | `…\2018_Preferential_Primary.json` | 2018 | **verify** | — | **unknown** | |
-| `2020_General.json` | `…\2020_General.json` | 2020 | **verify** | — | **unknown** | |
-| `2020_Preferential_Primary.json` | `…\2020_Preferential_Primary.json` | 2020 | **verify** | — | **unknown** | |
-| `2020_Primary_Runoff.json` | `…\2020_Primary_Runoff.json` | 2020 | **verify** | — | **unknown** | |
-| `2021_Special.json` | `…\2021_Special.json` | 2021 | **verify** | — | **unknown** | |
-| `2022_General.json` | `…\2022_General.json` | 2022 | **verify** | — | **unknown** | |
-| `2022_Primary.json` | `…\2022_Primary.json` | 2022 | **verify** | — | **unknown** | |
-| `2024_General.json` | `…\2024_General.json` | 2024 | **verify** | — | **unknown** | |
-| `2024_Primary.json` | `…\2024_Primary.json` | 2024 | **verify** | — | **unknown** | |
-| `2026_Preferential_Primary.json` | `…\2026_Preferential_Primary.json` | 2026 | **verify** | — | **unknown** | Preferential parser branch |
+| `2016_General.json` | `H:\SOSWebsite\campaign information for ingestion\electionResults\2016_General.json` | 2016 | unknown | — | **unknown** | Database unreachable — re-run with Postgres or use SQL in ELECTION_INGEST_AUDIT.md |
+| `2016_Preferential_Primary.json` | `H:\SOSWebsite\campaign information for ingestion\electionResults\2016_Preferential_Primary.json` | 2016 | unknown | — | **unknown** | Database unreachable — re-run with Postgres or use SQL in ELECTION_INGEST_AUDIT.md |
+| `2018_General.json` | `H:\SOSWebsite\campaign information for ingestion\electionResults\2018_General.json` | 2018 | unknown | — | **unknown** | Database unreachable — re-run with Postgres or use SQL in ELECTION_INGEST_AUDIT.md |
+| `2018_Preferential_Primary.json` | `H:\SOSWebsite\campaign information for ingestion\electionResults\2018_Preferential_Primary.json` | 2018 | unknown | — | **unknown** | Database unreachable — re-run with Postgres or use SQL in ELECTION_INGEST_AUDIT.md |
+| `2020_General.json` | `H:\SOSWebsite\campaign information for ingestion\electionResults\2020_General.json` | 2020 | unknown | — | **unknown** | Database unreachable — re-run with Postgres or use SQL in ELECTION_INGEST_AUDIT.md |
+| `2020_Preferential_Primary.json` | `H:\SOSWebsite\campaign information for ingestion\electionResults\2020_Preferential_Primary.json` | 2020 | unknown | — | **unknown** | Database unreachable — re-run with Postgres or use SQL in ELECTION_INGEST_AUDIT.md |
+| `2020_Primary_Runoff.json` | `H:\SOSWebsite\campaign information for ingestion\electionResults\2020_Primary_Runoff.json` | 2020 | unknown | — | **unknown** | Database unreachable — re-run with Postgres or use SQL in ELECTION_INGEST_AUDIT.md |
+| `2021_Special.json` | `H:\SOSWebsite\campaign information for ingestion\electionResults\2021_Special.json` | 2021 | unknown | — | **unknown** | Database unreachable — re-run with Postgres or use SQL in ELECTION_INGEST_AUDIT.md |
+| `2022_General.json` | `H:\SOSWebsite\campaign information for ingestion\electionResults\2022_General.json` | 2022 | unknown | — | **unknown** | Database unreachable — re-run with Postgres or use SQL in ELECTION_INGEST_AUDIT.md |
+| `2022_Primary.json` | `H:\SOSWebsite\campaign information for ingestion\electionResults\2022_Primary.json` | 2022 | unknown | — | **unknown** | Database unreachable — re-run with Postgres or use SQL in ELECTION_INGEST_AUDIT.md |
+| `2024_General.json` | `H:\SOSWebsite\campaign information for ingestion\electionResults\2024_General.json` | 2024 | unknown | — | **unknown** | Database unreachable — re-run with Postgres or use SQL in ELECTION_INGEST_AUDIT.md |
+| `2024_Primary.json` | `H:\SOSWebsite\campaign information for ingestion\electionResults\2024_Primary.json` | 2024 | unknown | — | **unknown** | Database unreachable — re-run with Postgres or use SQL in ELECTION_INGEST_AUDIT.md |
+| `2026_Preferential_Primary.json` | `H:\SOSWebsite\campaign information for ingestion\electionResults\2026_Preferential_Primary.json` | 2026 | unknown | — | **unknown** | Database unreachable — re-run with Postgres or use SQL in ELECTION_INGEST_AUDIT.md |
 
-**Ingest status values (for updates):**
-
-- **missing** — no `ElectionResultSource` row whose `sourcePath` matches the file (normalized).  
-- **ingested** — row present; child contest/county/precinct rows created per import.  
-- **suspected_partial** — row present but **anomaly** (e.g. from app: low `countyId` mapping ratio in `getElectionResultCoverageSummary` / truth snapshot warnings, or dry-run count mismatch vs re-import). **Flag during QA**, not assumed here.
+<!-- ELECTION_AUDIT_TABLE_AUTO:END -->
 
 ---
 
-## D. Election ingest status (summary)
+## D. Election ingest status (summary) — **auto-updated**
+
+*Do not hand-edit between the marker comments. Run `npm run ingest:election-audit:doc`.*
+
+<!-- ELECTION_AUDIT_SUMMARY_AUTO:START -->
 
 | Metric | Value |
 |--------|--------|
-| **Election Ingest Status** | **BLOCKED** — **cannot** assert COMPLETE or PARTIAL until a successful DB read confirms `ElectionResultSource` rows for the **target** environment. |
-| **Total JSON files (expected set)** | 13 |
-| **Ingested count** | **Unknown** (DB unreachable) |
-| **Missing count** | **Unknown** (DB unreachable) |
-| **Required next step** | Start DB → `npm run ingest:election-audit` or run §B.2 SQL → update this doc’s comparison table. |
+| **Election Ingest Status** | **BLOCKED** |
+| **DB reachable** | no |
+| **Ingested (matched) count** | — (unknown until DB is reachable) |
+| **Missing count** | — (unknown until DB is reachable) |
+| **Total files scanned** | 13 |
+| **Next** | Start Postgres (`npm run dev:db`), set `DATABASE_URL`, then re-run `npm run ingest:election-audit:doc` or `ingest:election-audit:json`. |
 
-**Definitions:**
+<!-- ELECTION_AUDIT_SUMMARY_AUTO:END -->
 
-- **COMPLETE** — all **required** JSONs for the campaign have a matching `ElectionResultSource` (and no blocking QA flags), or a **documented** waiver.  
-- **PARTIAL** — at least one required file **missing** or **suspected_partial** with an open follow-up.  
-- **BLOCKED** — **cannot** read DB (or no **authoritative** environment chosen).
+**Definitions (manual):**
+
+- **COMPLETE** — DB reachable, **all** scanned JSONs have a matching `ElectionResultSource` by path, and no open **suspected_partial** / waiver issue you care about.  
+- **PARTIAL** — DB reachable, **at least one** file **missing** from the DB.  
+- **BLOCKED** — DB **not** readable; ingested/missing counts are **indeterminate** — do **not** conflate with PARTIAL.
+
+---
+
+## Completion marker (script + env)
+
+*Auto block below: filled by `npm run ingest:election-audit:doc`. Set `ELECTION_AUDIT_VERIFIED_AGAINST`, `ELECTION_AUDIT_OPERATOR`, `ELECTION_AUDIT_NOTES` as needed for handoff.*
+
+Format for human copy/paste (mirrors the auto block):
+
+```text
+Election Ingest Status:
+- BLOCKED | PARTIAL | COMPLETE
+Last verified:
+- <ISO timestamp>
+Verified against:
+- <database / environment name>
+Operator:
+- <name or initials>
+Notes:
+- <free text>
+```
+
+<!-- ELECTION_AUDIT_MARKER_AUTO:START -->
+
+**Completion marker (auto — edit env vars to fill operator line before handoff if needed)**
+
+Election Ingest Status:
+- **BLOCKED**
+
+Last verified:
+- `2026-04-24T04:12:55.703Z` (script-generated ISO time)
+
+Verified against:
+- (set `ELECTION_AUDIT_VERIFIED_AGAINST` when running `ingest:election-audit:doc` — e.g. `local Docker postgres reddirt` or production name)
+
+Operator:
+- _(set `ELECTION_AUDIT_OPERATOR` — initials or name)_
+
+Notes:
+- —
+
+<!-- ELECTION_AUDIT_MARKER_AUTO:END -->
 
 ---
 
@@ -119,4 +189,4 @@ Match **disk → DB** on normalized absolute `sourcePath` (the ingest CLI stores
 
 ---
 
-*Last updated: INGEST-OPS-3 — audit doc created; **DB state BLOCKED** at initial write. Refresh table after `npm run ingest:election-audit` with a live database.*
+*Last updated: INGEST-OPS-3B — auto sections via `ingest:election-audit:doc`; see [`ELECTION_INGEST_OPERATOR_RUNBOOK.md`](./ELECTION_INGEST_OPERATOR_RUNBOOK.md).*

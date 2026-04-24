@@ -1,11 +1,13 @@
-# Ingest status and backlog (INGEST-OPS-2 + INGEST-OPS-3)
+# Ingest status and backlog (INGEST-OPS-2 + INGEST-OPS-3 + INGEST-OPS-3B)
 
-**Packet:** **INGEST-OPS-2** — Election ingest status, brain/source backlog, standing queue protocol. **INGEST-OPS-3** — **Authoritative** election file ↔ DB comparison: [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) (refresh after DB verification).  
+**Packet:** **INGEST-OPS-2** — Election ingest status, brain/source backlog, standing queue protocol. **INGEST-OPS-3** — election file ↔ DB comparison: [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md). **INGEST-OPS-3B** — **operator runbook** [`ELECTION_INGEST_OPERATOR_RUNBOOK.md`](./ELECTION_INGEST_OPERATOR_RUNBOOK.md), `--json` / `--write-doc` audit output, and **completion rules** (BLOCKED ≠ PARTIAL).  
 **File:** `docs/INGEST_STATUS_AND_BACKLOG.md`  
 **Stack:** `RedDirt/` (Next.js + Prisma; ingest CLIs in `scripts/`).  
 **Cross-ref:** [`election-results-schema-and-ingest.md`](./election-results-schema-and-ingest.md) · [`raw-election-results-intake-map.md`](./raw-election-results-intake-map.md) · [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) — **INGEST-OPS-2 standing rule** · **Election Ingest Gate (INGEST-OPS-3)** · **Generated file inventory** → [`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md) (run `npm run ingest:inventory` from `RedDirt/`).
 
 **Safety:** This document is **blueprint and inspection** only. **Do not** run production imports or mutate campaign data from this file. Use **`--dry-run`** on election ingest first; use dedicated scripts only as documented.
+
+**INGEST-OPS-3B rule (builds + backlog):** **BLOCKED** (database unreachable) is **not** “almost done” and **must not** be reported or treated as **PARTIAL** or **COMPLETE** in the backlog, gate, or division status. Only **`npm run ingest:election-audit:json`** with `dbReachable: true` supports those labels. **Brain / non-election** ingest expansion (queuing more source files) should wait until election ingest is at least **not BLOCKED** for the **intended** environment, and per standing rules **ideally** **COMPLETE** before shifting priority away from the election missing-file queue (see **Election Ingest Gate** in [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md)).
 
 ---
 
@@ -112,6 +114,9 @@ Then, only for the **intended** database, drop `--dry-run` and run the same comm
 | `npm run media:index-roots` / `media:index-roots:dry` | Media roots | No / read | **Dry** variant safe. |
 | `npm run audit:campaign-ingestion` / `reconcile:campaign-folder` | Audit | Read-heavy | |
 | `npm run ingest:inventory` | **Inventory** | **No** | Writes **`docs/INGEST_INVENTORY_GENERATED.md`** only. |
+| `npm run ingest:election-audit` | Election audit | **Read** (if DB up) | Human-readable disk vs `ElectionResultSource`. |
+| `npm run ingest:election-audit:json` | Election audit | **Read** (if DB up) | **JSON** for CI/handoff; exit **0** if **BLOCKED**. |
+| `npm run ingest:election-audit:doc` | Election audit | **Read** (if DB up) | Updates auto sections in **[`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md)**. See **[`ELECTION_INGEST_OPERATOR_RUNBOOK.md`](./ELECTION_INGEST_OPERATOR_RUNBOOK.md)**. |
 
 **Import-json (election):** `src/lib/campaign-engine/election-results-ingest/import-json.ts` — not a standalone binary; used by the election CLI.
 
@@ -208,8 +213,9 @@ See **[`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md)** (refr
 | Packet | Description |
 |--------|-------------|
 | **INGEST-OPS-2** | This doc + inventory script + protocol hooks (**current**). |
-| **INGEST-OPS-3** | Election ingest **completion audit** — **[`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md)** + `npm run ingest:election-audit` (per-environment: disk vs `ElectionResultSource`). |
-| **INGEST-OPS-4** | **Normalized manifest** of brain/source files (versioned list + domains). |
+| **INGEST-OPS-3** | Election ingest **audit** — **[`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md)** + `npm run ingest:election-audit` (per-environment: disk vs `ElectionResultSource`). |
+| **INGEST-OPS-3B** | **Operator runbook** [`ELECTION_INGEST_OPERATOR_RUNBOOK.md`](./ELECTION_INGEST_OPERATOR_RUNBOOK.md) · `ingest:election-audit:json` / `ingest:election-audit:doc` · BLOCKED / PARTIAL / **COMPLETE** workflow. |
+| **INGEST-OPS-4** | **Normalized manifest** of brain/source files (versioned list + domains) — **next** after **COMPLETE** (or **explicit** waiver) on election queue; if **PARTIAL**, stay on targeted election ingests only. |
 | **INGEST-OPS-5** | **First** safe **non-election** ingest parser (single file family; dry-run). |
 | **INGEST-OPS-6** | **Provenance + ingest review** UI (read-heavy). |
 
@@ -223,4 +229,4 @@ See **[`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md)** (refr
 
 ---
 
-*Last updated: **INGEST-OPS-3** — **Active Election Ingest Queue** + audit cross-refs; **election COMPLETE** only when [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) is updated from DB truth (or explicit waiver), not this paragraph alone.*
+*Last updated: **INGEST-OPS-3B** — runbook + JSON/doc audit; **BLOCKED** must not be misread as **PARTIAL**; **INGEST-OPS-4** after **COMPLETE**; **election COMPLETE** only when [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) reflects `ingest:election-audit:json` with `dbReachable: true` (or explicit waiver), not this paragraph alone.*

@@ -25,7 +25,7 @@
 | **4. Volunteer / Field** | **CRITICAL** | Volunteer experience, field, counties. | `VolunteerProfile`, `/relational`, `FieldUnit` | VOL-CORE, FIELD, REL-3 | **L2–L3** (partial) | **Partial** / **Active** | REL-3, auth | **VOL-CORE-2** / field GEO |
 | **5. Workbench** | **MEDIUM** | CM hub, open work, positions. | `workbench/*`, UWR, `CampaignManagerDashboardBands` | UWR, WB-CORE, SEAT, CM-2 | **L2–L3** | **Active** / **Partial** | Truth, identity | CM depth per steering |
 | **6. Truth snapshot** | **MEDIUM** | Advisory `getTruthSnapshot`, bands. | `truth.ts`, `truth-snapshot.ts` | BRAIN-OPS | **L2** (advisory) | **Active** / **Partial** | Data, policy, seats | CM-3 / snapshot fields |
-| **7. Data layer** | **MEDIUM** | Voter file, ingest, metrics. | `VoterRecord`, CLIs, `targeting.ts` | DATA-1–4, ELECTION-INGEST, **INGEST-OPS-2+** | **L2** (strong) | **Active** / **Partial** | — (foundation) | **INGEST-OPS-3** election audit; PRECINCT-1; inventory QA |
+| **7. Data layer** | **MEDIUM** | Voter file, ingest, metrics. | `VoterRecord`, CLIs, `targeting.ts` | DATA-1–4, ELECTION-INGEST, **INGEST-OPS-2+** | **L2** (strong) | **Active** / **Partial** | — (foundation) | **INGEST-OPS-3** / **3B** election audit + runbook; **Election Ingest Gate** active until **COMPLETE**; then **INGEST-OPS-4**; PRECINCT-1; inventory QA |
 | **8. Content / Author** | **HIGH** | Editorial, media, stories. | Content routes, owned media | (scattered) | **L1–L2** | **Partial** / **Fragmented** | Review, comms | Publishing governance |
 | **9. Finance / Compliance** | **MEDIUM** (guarded) | Budget, ledger, compliance — approval-first. | `BudgetPlan`, `FinancialTransaction`, `ComplianceDocument` | POLICY, COMP, FIN, BUDGET | **L1** (partial) | **Partial** | Human approval, audit | FIN/COMP packets |
 | **10. AJAX Organizing Hub** | **LOW** | Discord; not DB truth. | Discord **docs** | Discord | **L1** | **Docs** / **Partial** | Policy, voice | Integration when steered |
@@ -89,7 +89,7 @@ Each division: **current state** · **next stage** · **unlock conditions** · *
 ### 8. Data layer / Voter file / Ingest
 
 - **Current state:** **Strong** **ingest** + **schema** relative to **greenfield**; **L2** **strong**. **INGEST-OPS-2** adds a **standing** **election-first** + **brain/source** **queue** ([`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md)).  
-- **Next stage:** **Clean** **read** **model** **abstractions**; **stable** **contracts** for **county** / **precinct** / **signals**; **normalization** where **product** **locks** **rules**; **INGEST-OPS-3** **audit** of **election** **coverage** **per** **environment**.  
+- **Next stage:** **Clean** **read** **model** **abstractions**; **stable** **contracts** for **county** / **precinct** / **signals**; **normalization** where **product** **locks** **rules**; **INGEST-OPS-3/3B** **audit** + **operator** **runbook**; **if** **PARTIAL**, **only** **missing** **election** **JSONs**; **if** **COMPLETE**, **INGEST-OPS-4** **manifest**.  
 - **Unlock conditions:** **Ingest** **QA**; **PRECINCT-1** / **crosswalk** as **needed**; **inventory** **fresh** (`npm run ingest:inventory` **→** [`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md)).  
 - **Dependencies:** **Feeds** **all** **divisions**; **not** a **substitute** for **field** or **relational** **truth**.  
 
@@ -125,4 +125,4 @@ Each division: **current state** · **next stage** · **unlock conditions** · *
 
 ---
 
-*Last updated: **BLUEPRINT-EXP-1** (forward path per division) + **DIV-OPS-2** + **AUTO-BUILD-1** (registry pointer for self-build) + **INGEST-OPS-2** (data layer / **ingest** **queue** **+** **INGEST-OPS-3** **pointer**).*
+*Last updated: **BLUEPRINT-EXP-1** (forward path per division) + **DIV-OPS-2** + **AUTO-BUILD-1** (registry pointer for self-build) + **INGEST-OPS-2/3/3B** (data layer / **ingest** **queue** / **ELECTION_INGEST_OPERATOR_RUNBOOK**).*
