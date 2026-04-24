@@ -1,6 +1,9 @@
 import Link from "next/link";
 
-import { buildGotvContactPlanPreview } from "@/lib/campaign-engine/gotv-contact-plan";
+import {
+  buildGotvContactPlanPreview,
+  buildGotvContactPlanReview,
+} from "@/lib/campaign-engine/gotv-contact-plan";
 import {
   getGotvPriorityUniverse,
   getGotvSummary,
@@ -28,10 +31,11 @@ export default async function AdminGotvPage({ searchParams }: Props) {
 
   const scope = { countyId, precinct, fieldUnitId };
 
-  const [summary, rows, planPreview, counties, fieldUnits] = await Promise.all([
+  const [summary, rows, planPreview, planReview, counties, fieldUnits] = await Promise.all([
     getGotvSummary(scope),
     getGotvPriorityUniverse({ ...scope, limit: 150, offset: 0 }),
     buildGotvContactPlanPreview(scope),
+    buildGotvContactPlanReview({ ...scope, limit: 450, maxRowsPerBucket: 50 }),
     prisma.county.findMany({
       where: { published: true },
       orderBy: { sortOrder: "asc" },
@@ -56,7 +60,7 @@ export default async function AdminGotvPage({ searchParams }: Props) {
   return (
     <div className="max-w-6xl text-deep-soil">
       <p className="font-body text-xs font-bold uppercase tracking-[0.2em] text-red-dirt/80">
-        Field / turnout · GOTV-1
+        Field / turnout · GOTV-1 + GOTV-2
       </p>
       <h1 className="mt-2 font-heading text-3xl font-bold">GOTV priority (read-only)</h1>
       <p className="mt-2 max-w-3xl font-body text-sm text-deep-soil/70">
@@ -64,6 +68,15 @@ export default async function AdminGotvPage({ searchParams }: Props) {
         <strong>No</strong> vote prediction, <strong>no</strong> automated outreach, <strong>no</strong> support
         scores. Relational contacts are people in the organizing graph — not vote totals.
       </p>
+
+      <div
+        className="mt-6 rounded-lg border border-amber-700/25 bg-amber-50/90 px-4 py-3 text-sm text-deep-soil/90"
+        role="note"
+      >
+        <strong className="text-amber-900">Review-only.</strong> This page does not send messages, assign voters to
+        volunteers, or predict support. Contact-plan buckets use explainable rules from stored relational and
+        interaction rows only.
+      </div>
 
       <form
         method="get"
@@ -160,7 +173,98 @@ export default async function AdminGotvPage({ searchParams }: Props) {
       </div>
 
       <section className="mt-10">
-        <h2 className="font-heading text-xl font-bold">Contact plan preview (GOTV-2 seam)</h2>
+        <h2 className="font-heading text-xl font-bold">Contact plan review (GOTV-2)</h2>
+        <p className="mt-1 text-sm text-deep-soil/65">
+          Mutually exclusive buckets for operator preview. Counts cover the full filtered universe; tables sample up to
+          50 rows per bucket from the first 450 voters loaded (sorted by county + voter key).
+        </p>
+        <ul className="mt-2 list-inside list-disc text-xs text-deep-soil/55">
+          {planReview.notes.map((n) => (
+            <li key={n}>{n}</li>
+          ))}
+        </ul>
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {planReview.buckets.map((b) => (
+            <div key={b.key} className="rounded-card border border-deep-soil/10 bg-cream-canvas p-4">
+              <p className="text-xs font-bold uppercase tracking-wider text-deep-soil/50">{b.label}</p>
+              <p className="mt-1 font-heading text-2xl font-bold tabular-nums">{b.count}</p>
+              <p className="mt-1 text-xs text-deep-soil/60">{b.description}</p>
+              <p className="mt-2 font-mono text-[10px] text-deep-soil/45">{b.key}</p>
+            </div>
+          ))}
+        </div>
+
+        {planReview.buckets.map((b) => (
+          <div key={`table-${b.key}`} className="mt-8">
+            <h3 className="font-heading text-lg font-bold">
+              {b.label}{" "}
+              <span className="font-mono text-sm font-normal text-deep-soil/50">
+                ({b.rows.length} shown / {b.count} in universe)
+              </span>
+            </h3>
+            <div className="mt-3 overflow-x-auto rounded-card border border-deep-soil/10">
+              <table className="min-w-full border-collapse text-left text-sm">
+                <thead>
+                  <tr className="border-b border-deep-soil/10 bg-deep-soil/5">
+                    <th className="px-3 py-2 font-semibold">Voter</th>
+                    <th className="px-3 py-2 font-semibold">Geography</th>
+                    <th className="px-3 py-2 font-semibold">Rel.</th>
+                    <th className="px-3 py-2 font-semibold">Ix</th>
+                    <th className="px-3 py-2 font-semibold">Last ix</th>
+                    <th className="px-3 py-2 font-semibold">Reasons</th>
+                    <th className="px-3 py-2 font-semibold">Links</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {b.rows.length === 0 ? (
+                    <tr>
+                      <td colSpan={7} className="px-3 py-6 text-center text-deep-soil/55">
+                        No rows in this sample.
+                      </td>
+                    </tr>
+                  ) : (
+                    b.rows.map((r) => (
+                      <tr key={`${b.key}-${r.voterRecordId}`} className="border-b border-deep-soil/5">
+                        <td className="px-3 py-2 align-top">
+                          <div className="font-mono text-xs text-deep-soil/70">{r.voterFileKey}</div>
+                          <div>{r.voterName}</div>
+                        </td>
+                        <td className="px-3 py-2 align-top text-xs">
+                          {r.countySlug}
+                          {r.precinct ? ` · p${r.precinct}` : ""}
+                          {r.city ? <span className="block text-deep-soil/70">{r.city}</span> : null}
+                        </td>
+                        <td className="px-3 py-2 align-top tabular-nums">{r.relationalContactCount}</td>
+                        <td className="px-3 py-2 align-top tabular-nums">{r.interactionCount}</td>
+                        <td className="px-3 py-2 align-top font-mono text-xs">
+                          {r.lastInteractionAt
+                            ? r.lastInteractionAt.toISOString().slice(0, 10)
+                            : "—"}
+                        </td>
+                        <td className="px-3 py-2 align-top text-xs">
+                          <ul className="list-inside list-disc text-deep-soil/80">
+                            {r.priorityReason.map((code) => (
+                              <li key={code}>{REASON_LABEL[code] ?? code}</li>
+                            ))}
+                          </ul>
+                        </td>
+                        <td className="px-3 py-2 align-top text-xs">
+                          <Link className="text-red-dirt underline" href={`/admin/voters/${r.voterRecordId}/model`}>
+                            Voter record
+                          </Link>
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ))}
+      </section>
+
+      <section className="mt-10">
+        <h2 className="font-heading text-xl font-bold">Contact plan preview (GOTV-1 overlapping buckets)</h2>
         <p className="mt-1 text-sm text-deep-soil/65">
           Suggested buckets for discussion — {planPreview.notes[0]}
         </p>
@@ -264,6 +368,11 @@ export default async function AdminGotvPage({ searchParams }: Props) {
           </p>
         ) : null}
       </section>
+
+      <p className="mt-10 text-xs text-deep-soil/50">
+        CSV export for contact-plan samples is deferred to <strong>GOTV-3</strong> if product wants a governed export
+        rail.
+      </p>
     </div>
   );
 }

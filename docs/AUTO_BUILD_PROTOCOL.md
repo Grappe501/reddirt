@@ -6,7 +6,15 @@
 
 **What this is — and is not:** **Self-build** is a **controlled** mode for **continuing implementation** when a human is not in the loop (e.g. overnight). It uses **the same** docs-first rails and **stops** before **high-risk** changes. It is **not** autonomous campaign control, **not** a license to run **sends**, **publishes**, **financial** actions, or **unreviewed** **schema** changes. **Self-build is a controlled overnight mode, not autonomous campaign control.**
 
-**Canonical handoff + packet maps (read in full before any self-build cycle):** [`THREAD_HANDOFF_MASTER_MAP.md`](./THREAD_HANDOFF_MASTER_MAP.md) · [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) · [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) · [`shared-rails-matrix.md`](./shared-rails-matrix.md)
+**Canonical handoff + packet maps (read in full before any self-build cycle):** [`THREAD_HANDOFF_MASTER_MAP.md`](./THREAD_HANDOFF_MASTER_MAP.md) · [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) · [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) · [`shared-rails-matrix.md`](./shared-rails-matrix.md) · **[`BUILD_LEVEL_AUDIT_TODAY.md`](./BUILD_LEVEL_AUDIT_TODAY.md)** (**optional** **routing** — **safe** **packets** **only** **per** **gates** **below**).
+
+---
+
+## 0. BUILD_LEVEL_AUDIT_TODAY — safe routing for overnight / self-build
+
+**Self-build** **may** **consult** **[`BUILD_LEVEL_AUDIT_TODAY.md`](./BUILD_LEVEL_AUDIT_TODAY.md)** (**BLUEPRINT-AUDIT-LEVEL-PATH-1**) **only** **to** **pick** **work** **that** **remains** **allowed** **after** **applying** **its** **conditionals** — **e.g.** **do** **not** **queue** **GOTV** **execution** **automation** **or** **intel** **that** **assumes** **full** **election** **tabulation** **when** **`ingest:election-audit:json`** **is** **not** **`COMPLETE`** **for** **the** **target** **DB**; **do** **not** **run** **bulk** **embedding** **repair** **when** **`test:openai-key`** **fails**; **ensure** **`ingest:brain-manifest`** **exists** **before** **treating** **INGEST-OPS-4** **as** **unblocked**. **Never** **use** **the** **audit** **to** **justify** **skipping** **[hard stops](#6-hard-stops--escalation-to-human)** **or** **forbidden** **[§2](#2-what-self-build-must-not-do-forbidden)** **work**.
+
+**AJAX Organizing Hub:** **Not** **part** **of** **this** **project’s** **self-build** **queue** — **Discord** **/** **AJAX** **integration** **is** **external** **/** **separate**; **do** **not** **schedule** **or** **implement** **it** **in** **unattended** **RedDirt** **cycles**.
 
 ---
 
@@ -31,13 +39,15 @@ Self-build is allowed **only** for work that fits **all** of:
 | **Blueprint synchronization** | Aligning `PROJECT_MASTER_MAP` ↔ `DIVISION_MASTER_REGISTRY` ↔ `THREAD_HANDOFF` ↔ lane docs |
 | **Named packets** | Packets **already** listed in the **master** map / **recommended** list / **forward path** — not **invented** scope |
 
-### 1.1 Opposition intelligence (self-build — INTEL-OPS-1 / [`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md))
+### 1.1 Opposition intelligence (self-build — INTEL-OPS-1 / INTEL-OPS-2 / [`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md))
 
-When the **self-build** **cycle** is **explicitly** **scoped** to **docs** or **low-risk** **organizing** of **opposition** **intel** **artefacts** (per **approved** **queue** / **user** **script**), **in addition** to the **table** **above** **self-build** **MAY**:
+When the **self-build** **cycle** is **explicitly** **scoped** to **docs** or **low-risk** **organizing** of **competitor** / **opposition** **intel** **artefacts** (per **approved** **queue** / **user** **script**), **in addition** to the **table** **above** **self-build** **MAY**:
 
 - **Organize** **source** **documents** in **repo**-**constrained** **ways** (folder **layout** **suggestions** in **docs**, **naming** **conventions**, **checklists** **only** — **no** **new** **secrets** in **git**).  
-- **Refresh** **or** **extend** the **ingest** **intelligence** **inventory** **narrative** in **docs** (e.g. **cross-links** to [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md) **§6.4**).  
-- **Draft** **internal**-**facing** **source** **summaries** in **markdown** with **citations** to **public** **URLs** or **filing** **ids** (still **not** **final** **opposition** **claims** for **voters**).
+- **Refresh** **or** **extend** the **ingest** **intelligence** **inventory** **narrative** in **docs** (e.g. **cross-links** to [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md) **§6.4** and **§6.5** **Competitor** **Intelligence** **Ingest** **Queue**).  
+- **Draft** **internal**-**facing** **source** **summaries** in **markdown** with **citations** to **public** **URLs** or **filing** **ids** (still **not** **final** **opposition** **claims** for **voters** or **press**).
+
+**Hard** **alignment:** **Public-record** **only**; **no** **unreviewed** **publish**; **no** **AI** **claims** **without** **citations** — same **posture** as **[`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md)** **Opposition** **Intelligence**.
 
 **Self-build** **MUST** **NOT** (see also **§2.1**):
 
@@ -81,12 +91,12 @@ When the **self-build** **cycle** is **explicitly** **scoped** to **docs** or **
 
 | Queue item | Notes |
 |------------|--------|
-| **GOTV-1** | Only if the **read model** + **admin** seam in the **master map** are **not** yet **done**; otherwise **retire** from queue or replace with **GOTV-2** when **defined**. |
+| **GOTV-3** planning / docs | **Assignment** workflow **design** **only** — **no** **mutation** **rails** **in** **self-build** **unless** **explicitly** **packeted**. **GOTV-2** **review** **UI** is **shipped**. |
 | **REL county rollups preview** | Read-only **county**-scale **relational** **rollups** / **preview** where **packeted** in **registry** / **PROJECT_MASTER_MAP** (no **merge** workflow). |
 | **Read-only reporting panels** | **Admin** or **workbench** **panels** that **aggregate** **existing** data **only**. |
 | **Docs sync passes** | **Ledger** ↔ **registry** ↔ **thread handoff** **parity**; **no** new product scope. |
 | **Test coverage passes** | Add/adjust **tests** for **existing** **behavior**; **no** new features. |
-| **Ingest backlog inventory refresh** | Run `npm run ingest:inventory` (no DB); refresh [`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md); keep [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md) cross-links honest. **INGEST-OPS-2** |
+| **Ingest backlog inventory refresh** | Run `npm run ingest:inventory` (no DB); refresh [`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md). Optionally `npm run ingest:brain-manifest` → [`BRAIN_SOURCE_MANIFEST.md`](./BRAIN_SOURCE_MANIFEST.md). Keep [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md) cross-links honest. **INGEST-OPS-2** / **INGEST-OPS-4** |
 | **Parser dry-run tests** | Exercise **`--dry-run`** on `ingest:election-results` (or other scripts that support it) against **local** **fixtures** only — no production import. |
 | **Read-only ingest status reports** | Update **checklist** rows in `INGEST_STATUS…` for **which** **election** files are **logically** “done” per operator — **not** a live DB **probe** in CI without credentials. |
 | **Docs sync for completed ingests** | When an ingest **completes**, **link** the **script** and **provenance** fields in the **master** map or lane doc. |
@@ -119,7 +129,7 @@ When the **self-build** **cycle** is **explicitly** **scoped** to **docs** or **
 
 1. **Read** [`THREAD_HANDOFF_MASTER_MAP.md`](./THREAD_HANDOFF_MASTER_MAP.md) (at least **§0** + **hard stops** in this file).  
 2. **Read** [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) (return formats, approval-first, packet scaling).  
-3. **Read** [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) ( **Priority** , **forward path** , **imbalance** ).  
+3. **Read** [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) ( **Priority** , **forward path** , **imbalance** ). **Optionally** read [`BUILD_LEVEL_AUDIT_TODAY.md`](./BUILD_LEVEL_AUDIT_TODAY.md) **for** **today’s** **gated** **packet** **order** — **only** **execute** **items** **that** **pass** **[§0](#0-build_level_audit_today--safe-routing-for-overnight--self-build)** **and** **[§2](#2-what-self-build-must-not-do-forbidden)**.  
 4. **Choose** **only** the **next** **approved** **packet** (one **queue** item or **script-locked** scope).  
 5. **Declare** a **BUILD STEERING DECISION** ( **target** division, **reason** , **non-target** ).  
 6. **Update** **blueprint** **docs** when the work **moves** a **division** or **retires** a **queue** item.  
@@ -163,6 +173,7 @@ After a **hard stop**, the **handoff** **must** state **which** **condition** **
 | [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) | **Ledger**; **self-build** must **not** **fork** the **blueprint** without **edits** **here** when **reality** **changes** |
 | [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) | **Steering** and **one** **target** **division** |
 | [`shared-rails-matrix.md`](./shared-rails-matrix.md) | **Rails** **honesty**; **no** **hidden** **outbound** |
+| [`BUILD_LEVEL_AUDIT_TODAY.md`](./BUILD_LEVEL_AUDIT_TODAY.md) | **Optional** **today** **pathway**; **gates** **must** **be** **honored**; **no** **AJAX** **/** **Discord** **queue** **here** |
 
 ---
 
@@ -176,4 +187,4 @@ After a **hard stop**, the **handoff** **must** state **which** **condition** **
 
 ---
 
-*Last updated: **AUTO-BUILD-1** + **AUTO-BUILD-2** (policy + nightly schedule / handoff artifact; no production side effects by design) + **INGEST-OPS-2** (approved **ingest:inventory** / dry-run / read-only **status** **docs**; no prod import) + **INTEL-OPS-1** (**§1.1** / **§2.1** **opposition** **intel** **self**-**build** **rules**).*
+*Last updated: **AUTO-BUILD-1** + **AUTO-BUILD-2** (policy + nightly schedule / handoff artifact; no production side effects by design) + **INGEST-OPS-2** (approved **ingest:inventory** / dry-run / read-only **status** **docs**; no prod import) + **INTEL-OPS-1** (**§1.1** / **§2.1** **opposition** **intel** **self**-**build** **rules**) + **BLUEPRINT-AUDIT-LEVEL-PATH-1** (**§0** **`BUILD_LEVEL_AUDIT_TODAY`** **routing**; **AJAX** **out** **of** **this** **project’s** **queue**).*

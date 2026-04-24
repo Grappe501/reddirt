@@ -1,8 +1,8 @@
-# Opposition Intelligence Engine (INTEL-OPS-1)
+# Opposition Intelligence Engine (INTEL-OPS-1 + INTEL-OPS-2)
 
-**Packet:** **INTEL-OPS-1** — Blueprint + protocol for **Campaign Intelligence** (opposition research), **docs only** (no app code in this packet).  
+**Packets:** **INTEL-OPS-1** — Blueprint + protocol for **Campaign Intelligence** (opposition research), **docs only** (no app code in this packet). **INTEL-OPS-2** — **Competitor** **intelligence** **expansion**: **public-record** **requirements**, **source** **rules**, **conceptual** **data** **model**, **ingest** **queue** cross-ref (implementation still future).  
 **Stack:** `RedDirt/` — future implementation will live under **Campaign Intelligence / Reporting** and related lanes.  
-**Cross-ref:** [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) · [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) · [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) · [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md) · [`AUTO_BUILD_PROTOCOL.md`](./AUTO_BUILD_PROTOCOL.md)
+**Cross-ref:** [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) · [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) · [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) · [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md) (**§6.5** Competitor Intelligence Ingest Queue) · [`AUTO_BUILD_PROTOCOL.md`](./AUTO_BUILD_PROTOCOL.md)
 
 **Core rule:** **Public, lawful, source-backed** information only. **No** fabrication. **Human review** before anything is used **externally** or drives **campaign action**. **Broad automated ingest** of opposition-related source material is **gated** behind **election ingest COMPLETE** (or **explicit waiver**) per [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) and [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md) — **INTEL-1** (manual entry + citations) is **not** blocked by that gate.
 
@@ -72,7 +72,7 @@ It exists to support **internal** planning, **message awareness**, **finance map
 
 ---
 
-## 6. Conceptual models (definitions only — no schema in INTEL-OPS-1)
+## 6. Conceptual models (definitions only — no Prisma schema in INTEL-OPS-1; see §10 for INTEL-OPS-2 table list)
 
 Each **model** is a **future** **persisted** **shape**. **Common** **attributes** (all **rows** or **all** **first-class** **objects** where applicable): **source** (link, filing ref, or document id) · **timestamp** (captured/observed) · **confidence** (see §5) · **tags** (free or controlled vocabulary) · **notes** (analyst) · **review** **status** (e.g. draft / reviewed / released-for-internal / blocked).
 
@@ -103,22 +103,148 @@ Each **model** is a **future** **persisted** **shape**. **Common** **attributes*
 
 ---
 
-## 8. Build roadmap (future packets — not commitments)
+## 8. Comprehensive Competitor Intelligence Requirements
+
+The engine must support **lawful**, **public**, **source-backed** tracking ( **no** illegal scraping, **no** private surveillance data, **no** publishing claims without **human** **review** ). Below: **domain** requirements for a **full** **public-record** **competitor** **intelligence** **system** — **not** a commitment to build all at once.
+
+### 8.1 Candidate / officeholder profile
+
+- Biography **as stated** in **public** records or **official** sites  
+- Offices held ( **public** **election** / **appointment** **records** )  
+- Committee assignments ( **legislature** / **official** **directories** )  
+- **Public** statements ( **cited** URLs, dates, context )  
+- **Public-record** timeline ( filings, votes, releases — each **sourced** )
+
+### 8.2 Campaign finance
+
+- Donors, PACs, industries ( **from** **disclosed** **filings** **only** )  
+- Geography of money ( **reported** **addresses** / **jurisdictions** **as** **filed** )  
+- Filing dates, amendments, trends over time  
+- **Relationship** **graph** **between** donors, PACs, employers, and organizations — **inference** **allowed** **only** with **confidence** + **review** ( **no** **fabricated** **links** )
+
+### 8.3 Legislative record
+
+- Every bill **authored** / **sponsored** / **co-sponsored** ( **official** **index** )  
+- Bill status, topic tags ( **controlled** or **analyst** tags **labeled** )  
+- Committee path, **public** **hearing** references where applicable  
+- Vote outcomes ( **linked** to **official** **vote** **records** )  
+- **Flag** **categories** for **analyst** **work**: direct democracy; election administration; county finance / governance; finance / taxation / budget — **always** **bill**-**level** **facts** **from** **primary** **sources**
+
+### 8.4 Key votes
+
+- Votes **selected** for **accountability** **framing** ( **analyst** **curated** )  
+- Vote date, bill number, policy area, affected groups ( **described** **from** **public** **material** **only** )  
+- **Public** explanation ( **official** **statement** or **on-the-record** **quote** — **cited** )  
+- **Mandatory** **source** **citation** per vote row
+
+### 8.5 Public video archive
+
+- State Senate / House / SOS / **official** **legislative** **video** **hosts**  
+- Bill presentations, committee testimony, floor speeches  
+- Direct democracy bill introductions ( **where** **captured** **publicly** )  
+- Transcript status ( **official** / **third-party** / **none** — **labeled** )  
+- Clip timestamps and **canonical** **source** **URLs**
+
+### 8.6 News monitoring
+
+- **Public** **news** **mentions** — **every** **stored** **item** has **source**, **date**, **topic**, **geography**  
+- **Sentiment** tag ( **analyst** / **model** — **not** **voter** **mind**-**reading** )  
+- **Claim** **verification** **status** ( **pending** / **verified** / **disputed** ) before reuse in **external** **materials**
+
+### 8.7 Geographic sentiment
+
+- County- and region-level **aggregates** **where** **sources** **support** **geographic** **coding**  
+- Issue-level sentiment ( **public** **polling** or **consistent** **press** **pattern** — **still** **sourced** )  
+- **Confidence** score; **never** infer **private** **voter** **beliefs** **without** **explicit** **data**
+
+### 8.8 Election history and voter behavior analysis
+
+- County-level **primary** / **general** **results** ( **public** **results** **files** )  
+- Turnout collapse, **three**-**way** primary comparison, runoff / low-turnout analysis  
+- Vote dropoff by county, historical patterns **by** **county**  
+- Precinct-level analysis **only** **where** **public** **data** **exists** — **no** **synthetic** **precinct** **claims**
+
+### 8.9 Direct democracy accountability file
+
+- All bills affecting ballot initiatives, petitions, referenda  
+- Sponsor role, **stated** rationale ( **quoted** **or** **linked** ), **practical** **effect** **as** **documented**  
+- **Public** testimony references, vote record, video **if** **publicly** **available**
+
+### 8.10 County and finance record
+
+- County-impact legislation, county funding positions **as** **disclosed**  
+- Fiscal notes ( **official** **where** **published** )  
+- County association positions **if** **public**  
+- **Local** **news** **response** — **cited** **articles** **only**
+
+---
+
+## 9. Source rules (INTEL-OPS-2 — allowed sources and claim hygiene)
+
+### 9.1 Allowed sources (collection)
+
+- **Arkansas Secretary of State** **public** **records** (elections, business, **disclosed** **filings** **as** **applicable**)  
+- **Arkansas Legislature** bill / vote / calendar **public** **endpoints**  
+- **Official** committee / chamber **videos** and **indexes**  
+- **Campaign** **finance** **reports** ( **state** / **FEC** **as** **applicable** )  
+- **FEC** / **state** **filings** **reachable** **without** **privileged** **access**  
+- **Public** **news**  
+- **Public** **campaign** **websites**  
+- **Public** **social** **media** ( **respect** **platform** **ToS** and **rate** **limits**; **no** **illegal** **scraping** )  
+- **Public** **county** **election** **results**  
+- **User-provided** **documents** the campaign **lawfully** **holds** ( **still** **full** **provenance** )
+
+### 9.2 Required for every claim (storage / review contract)
+
+- **Source** URL **or** file reference  
+- **Date** accessed / retrieved  
+- **Confidence** level (see §5)  
+- **Fact** vs **inference** vs **recommendation** — **explicitly** **separated**  
+- **Review** **status** (draft / reviewed / blocked / cleared-for-internal, etc.)
+
+---
+
+## 10. Future data model — conceptual tables (no Prisma schema in this packet)
+
+**Conceptual** **only** — names and intent for a **future** **competitor** **intelligence** **schema**; **no** **SQL** or **migration** **here**.
+
+| Conceptual table | Role |
+|------------------|------|
+| **OppositionEntity** | Person, committee, org, or **normalized** **public** **identifier** anchor. |
+| **OppositionOffice** | Seat / jurisdiction / term **as** **disclosed** **publicly**. |
+| **OppositionFinanceRecord** | Row-level **money** **fact** from a **cited** **filing**. |
+| **OppositionDonor** | **Disclosed** contributor entity; **links** to filings. |
+| **OppositionPAC** | **Disclosed** committee / PAC **profile**. |
+| **OppositionBillRecord** | Bill metadata + status path + tags. |
+| **OppositionVoteRecord** | Roll-call or outcome row **with** **bill** **link**. |
+| **OppositionVideoRecord** | **Official** **or** **licensed** **public** **video** **segment** **metadata**. |
+| **OppositionNewsMention** | Article / story reference + verification state. |
+| **OppositionSentimentObservation** | **Aggregate** or **analyst** sentiment **with** **geography** / **issue** **scope** and **confidence**. |
+| **OppositionElectionResult** | **Public** **results** **slice** ( **may** **align** with `ElectionResult*` **or** **reference** **externally** ). |
+| **OppositionCountyPattern** | Derived **county**-**level** **pattern** **statistics** — **labeled** **inference** **where** **not** **raw** **fact**. |
+| **OppositionAccountabilityItem** | Curated **key** **vote** / **action** / **finance** **thread** for **review** **queues**. |
+| **OppositionSource** | Canonical **bibliography** row: URL, hash, retrieval time, **trust** **tier**. |
+
+These complement **§6** definitions (e.g. **OppositionEntity**); implementation may merge or split tables in a later **INTEL-3** schema packet.
+
+---
+
+## 11. Build roadmap (future packets — not commitments)
 
 | Phase | ID | Description |
 |-------|----|-------------|
 | **1** | **INTEL-1** | **Manual** **entry** + **source-backed** **notes** + **citations**; **no** **required** **schema** **beyond** what **compliance** **needs** for **storing** **links** **safely** |
-| **2** | **INTEL-2** | **Entity** and **relationship** **persistence** (Prisma or equivalent) with **provenance** **fields** |
-| **3** | **INTEL-3** | **Network** **map** **views** (read-mostly) |
-| **4** | **INTEL-4** | **Timeline** / **activity** **tracker** |
-| **5** | **INTEL-5** | **AI-assisted** **summaries** with **mandatory** **human** **review** **queue** |
-| **6** | **INTEL-6** | **Decision** **support** **dashboards** (internal) |
+| **2** | **INTEL-2** | **Competitor** **source** **manifest** ( **what** **to** **collect**, **where**, **cadence**, **owner** ) — aligns with [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md) **§6.5** |
+| **3** | **INTEL-3** | **Bill** / **vote** / **campaign-finance** **schema** **proposal** ( **Prisma**-**ready** **draft** — **separate** **packet** **only** **when** **explicitly** **requested** ) |
+| **4** | **INTEL-4** | **Official** **video** / **transcript** **index** ( **URLs**, **timestamps**, **transcript** **provenance** ) |
+| **5** | **INTEL-5** | **County** **election** **behavior** **analysis** ( **public** **data** **only**; **honest** **limits** ) |
+| **6+** | **INTEL-6+** | **Persistence** **views**, **network** **maps**, **AI-assisted** **summaries** **with** **mandatory** **human** **review**, **internal** **dashboards** — **after** **source** **manifest** and **schema** **discipline** **exist** |
 
-**Ordering relative to other rails:** **INTEL-1** may **proceed** as **ops**-**driven** **docs** + **light** **tooling** **without** **waiting** on **ingest** **automation**; **INTEL-2+** should **plan** for **ingest** **and** **election** **gate** **alignment** where **bulky** **files** are **involved**.
+**Ordering relative to other rails:** **INTEL-1** may **proceed** **without** **waiting** on **bulk** **ingest** **automation**. **INTEL-2**–**INTEL-5** **batch** **work** **waits** on **election** **ingest** **COMPLETE** (or **explicit** **waiver**) per **Election** **Ingest** **Gate**. **No** **AI-generated** **factual** **claims** **without** **stored** **source** **citations**.
 
 ---
 
-## 9. Gating and approvals (summary)
+## 12. Gating and approvals (summary)
 
 - **Election Ingest Gate** (see [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md)) **applies** to **broad** **ingest** **automation** and **queue**-**scale** **brain** **folder** **processing** — **not** to **a** **human** **typing** a **cited** **note** in **INTEL-1**.  
 - **No** **external** **publishing** or **electioneering** **action** that **cites** **this** **system** **without** **approval** **workflow** (comms + compliance **as** **appropriate**).  
@@ -126,4 +252,4 @@ Each **model** is a **future** **persisted** **shape**. **Common** **attributes*
 
 ---
 
-*INTEL-OPS-1 — Opposition Intelligence Engine blueprint. **Docs only**; no runtime behavior added by this file.*
+*INTEL-OPS-1 / **INTEL-OPS-2** — Opposition / **competitor** **intelligence** blueprint. **Docs only**; no runtime behavior added by this file.*

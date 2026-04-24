@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { OWNED_MEDIA_SERVER_ACTION_BODY_LIMIT } from "./src/lib/owned-media/limits";
 
 /**
  * Default Next.js build so App Router API routes work on Netlify via @netlify/plugin-nextjs.
@@ -13,8 +14,8 @@ const nextConfig: NextConfig = {
   devIndicators: false,
   experimental: {
     serverActions: {
-      /** Campaign-owned video/audio uploads (keep aligned with OWNED_MEDIA_MAX_BYTES). */
-      bodySizeLimit: "500mb",
+      /** Campaign-owned video/audio uploads — must be ≥ `ABSOLUTE_OWNED_MEDIA_MAX_BYTES` in `src/lib/owned-media/limits.ts`. */
+      bodySizeLimit: OWNED_MEDIA_SERVER_ACTION_BODY_LIMIT,
     },
   },
   images: {

@@ -1,10 +1,11 @@
 import { mkdir, writeFile, readFile, stat } from "node:fs/promises";
 import path from "node:path";
+import { ABSOLUTE_OWNED_MEDIA_MAX_BYTES, DEFAULT_OWNED_MEDIA_MAX_BYTES } from "./limits";
 import { buildOwnedStorageKey, storageKeyToAbsoluteFilePath } from "./paths";
 
 const MAX_UPLOAD_BYTES = Math.min(
-  Number(process.env.OWNED_MEDIA_MAX_BYTES) || 500 * 1024 * 1024,
-  2000 * 1024 * 1024
+  Number(process.env.OWNED_MEDIA_MAX_BYTES) || DEFAULT_OWNED_MEDIA_MAX_BYTES,
+  ABSOLUTE_OWNED_MEDIA_MAX_BYTES
 );
 
 const ALLOWED_MIME = new Set([

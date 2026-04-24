@@ -5,8 +5,8 @@
 ALTER TYPE "CommunicationVariantStatus" ADD VALUE 'READY_FOR_REVIEW';
 ALTER TYPE "CommunicationVariantStatus" ADD VALUE 'REJECTED';
 
--- Data: legacy READY (inbox) → READY_FOR_REVIEW
-UPDATE "CommunicationVariant" SET status = 'READY_FOR_REVIEW'::"CommunicationVariantStatus" WHERE status = 'READY'::"CommunicationVariantStatus";
+-- Data backfill (READY → READY_FOR_REVIEW) lives in 20260431185000_comms_packet7_variant_status_backfill
+-- so PostgreSQL commits new enum values before they are used in UPDATE.
 
 -- AlterTable
 ALTER TABLE "CommunicationVariant" ADD COLUMN "reviewRequestedAt" TIMESTAMP(3);

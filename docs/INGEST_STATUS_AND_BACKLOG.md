@@ -1,9 +1,9 @@
-# Ingest status and backlog (INGEST-OPS-2 + INGEST-OPS-3 + INGEST-OPS-3B + INTEL-OPS-1 pointer)
+# Ingest status and backlog (INGEST-OPS-2 + INGEST-OPS-3 + INGEST-OPS-3B + INTEL-OPS-1 + INTEL-OPS-2 pointer)
 
 **Packet:** **INGEST-OPS-2** — Election ingest status, brain/source backlog, standing queue protocol. **INGEST-OPS-3** — election file ↔ DB comparison: [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md). **INGEST-OPS-3B** — **operator runbook** [`ELECTION_INGEST_OPERATOR_RUNBOOK.md`](./ELECTION_INGEST_OPERATOR_RUNBOOK.md), `--json` / `--write-doc` audit output, and **completion rules** (BLOCKED ≠ PARTIAL).  
 **File:** `docs/INGEST_STATUS_AND_BACKLOG.md`  
 **Stack:** `RedDirt/` (Next.js + Prisma; ingest CLIs in `scripts/`).  
-**Cross-ref:** [`election-results-schema-and-ingest.md`](./election-results-schema-and-ingest.md) · [`raw-election-results-intake-map.md`](./raw-election-results-intake-map.md) · [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) — **INGEST-OPS-2 standing rule** · **Election Ingest Gate (INGEST-OPS-3)** · **Generated file inventory** → [`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md) (run `npm run ingest:inventory` from `RedDirt/`).
+**Cross-ref:** [`election-results-schema-and-ingest.md`](./election-results-schema-and-ingest.md) · [`raw-election-results-intake-map.md`](./raw-election-results-intake-map.md) · [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) — **INGEST-OPS-2 standing rule** · **Election Ingest Gate (INGEST-OPS-3)** · **Generated file inventory** → [`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md) (run `npm run ingest:inventory` from `RedDirt/`) · **Normalized brain manifest (INGEST-OPS-4)** → [`BRAIN_SOURCE_MANIFEST.md`](./BRAIN_SOURCE_MANIFEST.md) (`npm run ingest:brain-manifest`) · per-folder writeups in `docs/source-ingest/*-manifest.md` + **§2.7** root loose files.
 
 **Safety:** This document is **blueprint and inspection** only. **Do not** run production imports or mutate campaign data from this file. Use **`--dry-run`** on election ingest first; use dedicated scripts only as documented.
 
@@ -46,12 +46,10 @@
 
 **Goal:** Close **coverage** and **parser confidence** for **all election JSONs** the campaign cares about, using **safe sequencing**.
 
-1. **`2024_General.json`** (if not already in target DB) — exercises full legacy path + official flags as documented.  
-2. **`2024_Primary.json`** — multi-contest + party-labeled names.  
-3. **One historical spot-check** (e.g. `2020_General.json`) — regression for stable legacy shape.  
-4. **`2026_Preferential_Primary.json`** — explicit **preferential** branch; validate row counts in **`--dry-run`** first.  
-5. **Remaining JSONs** in [`raw-election-results-intake-map.md`](./raw-election-results-intake-map.md) — one file per CLI invocation; re-run **dry-run** if upstream files change.  
-6. **Handbook PDF** — **exclude** from `ElectionResult*` path; track under **compliance** queue if needed.
+**Done (local dev, INGEST-OPS-3C + INGEST-OPS-3D):** all **13** canonical files under the audited **`electionResults`** folder — **`2026_Preferential_Primary.json`** through **`2016_General.json`** — ingested after **`--dry-run`**; see [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) **§C** and **SLICE-13** note **15**. (**Legacy** generals / primaries: **unmatched county names** in CLI when JSON uses alternate casing; **`countyId`** may be null until mapping improves. **2021 Special** had **0** unmatched counties in CLI. **`2020_Preferential_Primary.json`**, **`2018_Preferential_Primary.json`**, and **`2016_Preferential_Primary.json`** use the **legacy** parser branch — audit notes **10**, **12**, and **14**.)
+
+1. **Remaining JSONs** in [`raw-election-results-intake-map.md`](./raw-election-results-intake-map.md) (outside this **13-file** canonical set) — one file per CLI invocation; re-run **dry-run** if upstream files change.  
+2. **Handbook PDF** — **exclude** from `ElectionResult*` path; track under **compliance** queue if needed.
 
 **Command template:**
 
@@ -68,23 +66,23 @@ Then remove `--dry-run` only when the dry-run counts look sane and DB is the cor
 
 **Rule:** When [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) shows a file as **ingested** with no **suspected_partial** follow-up, remove it from this queue in a doc pass (or move to a short **“Completed (verified)”** list there).
 
-**Current queue:** All **13** canonical JSONs under `…\electionResults\` are **pending** definitive DB confirmation in each environment. No files are moved to **completed** in this document until the audit table is updated from a live `ElectionResultSource` read.
+**Current queue:** **0** canonical JSONs **missing** on **this** **local** **dev** DB (**13** / **13** ingested — verify **other** environments with `ingest:election-audit:json`). **Election Ingest Gate** **satisfied** here per [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md).
 
 | Priority (newest → oldest) | file_name |
 |-----------------------------|-----------|
-| 1 | `2026_Preferential_Primary.json` |
-| 2 | `2024_General.json` |
-| 3 | `2024_Primary.json` |
-| 4 | `2022_General.json` |
-| 5 | `2022_Primary.json` |
-| 6 | `2021_Special.json` |
-| 7 | `2020_Primary_Runoff.json` |
-| 8 | `2020_Preferential_Primary.json` |
-| 9 | `2020_General.json` |
-| 10 | `2018_Preferential_Primary.json` |
-| 11 | `2018_General.json` |
-| 12 | `2016_Preferential_Primary.json` |
-| 13 | `2016_General.json` |
+| ~~1~~ | ~~`2026_Preferential_Primary.json`~~ — **ingested** (local dev; see audit) |
+| ~~2~~ | ~~`2024_General.json`~~ — **ingested** (local dev; see audit) |
+| ~~3~~ | ~~`2024_Primary.json`~~ — **ingested** (local dev; see audit) |
+| ~~4~~ | ~~`2022_General.json`~~ — **ingested** (local dev; see audit) |
+| ~~5~~ | ~~`2022_Primary.json`~~ — **ingested** (local dev; see audit) |
+| ~~6~~ | ~~`2021_Special.json`~~ — **ingested** (local dev; see audit) |
+| ~~7~~ | ~~`2020_Primary_Runoff.json`~~ — **ingested** (local dev; see audit) |
+| ~~8~~ | ~~`2020_Preferential_Primary.json`~~ — **ingested** (local dev; see audit) |
+| ~~9~~ | ~~`2020_General.json`~~ — **ingested** (local dev; see audit) |
+| ~~10~~ | ~~`2018_Preferential_Primary.json`~~ — **ingested** (local dev; see audit) |
+| ~~11~~ | ~~`2018_General.json`~~ — **ingested** (local dev; see audit) |
+| ~~12~~ | ~~`2016_Preferential_Primary.json`~~ — **ingested** (local dev; see audit) |
+| ~~13~~ | ~~`2016_General.json`~~ — **ingested** (local dev; see audit **SLICE-13**) |
 
 **Next actions (per file, after audit dry-run looks sane):**
 
@@ -97,12 +95,45 @@ npm run ingest:election-results -- --dry-run --file "H:\SOSWebsite\campaign info
 
 Then, only for the **intended** database, drop `--dry-run` and run the same command once per file. Use `--replace` if re-importing the same path.
 
-### 2.5 DB-OPS-1 — local audit visibility (still **BLOCKED**)
+### 2.5 MIGRATE-OPS-1 — local dev migrations + audit (**COMPLETE** — canonical **13** JSONs)
 
-A **DB-OPS-1** pass attempted to bring **Postgres** up and re-run the election audit. **Result:** `ingest:election-audit:json` remains **`status: BLOCKED`** because **Docker** did not start the **db** service (Docker Desktop engine not running). **No** **COMPLETE** or **PARTIAL** determination is possible until **`dbReachable: true`**.
+**MIGRATE-OPS-1** + **INGEST-OPS-3C** + **INGEST-OPS-3D** (operator-approved **local** **only**): **`npm run db:ping`** OK · **`npx prisma migrate deploy`** applied **all** pending migrations (**schema** **up** **to** **date**; includes **`20260513120000_data4_election_ingest_foundation`**). **`npx prisma generate`** OK · **`ingest:election-audit:json`** / **`:doc`:** **`status: COMPLETE`**, `dbReachable: true`, **`ingestedCount: 13`**, **`missingCount: 0`**, **`totalFiles: 13`** — all canonical JSONs in **[`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md)** **§A** / **§C** present in **`ElectionResultSource`** on **this** DB.
 
-- **Blocker (documented):** start **Docker Desktop**, then `npm run dev:db` from `RedDirt/`, then re-run **`ingest:election-audit:json`** / **`:doc`**. Details: [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) **§ DB-OPS-1**.  
-- **INGEST-OPS-4** (manifest) and **post-election** **brain** **queue** **expansion** remain **gated** per existing rules until the audit can report **PARTIAL** or **COMPLETE** with a live **DB** (or an **explicit** **waiver**).
+- **Repo fixes during deploy:** removed **untracked** empty migration dir **`20260423120000_email_workflow_status_enriched`** ( **P3015** ); split **`20260431180000_comms_packet7_variant_review_fields`** enum **UPDATE** into **`20260431185000_comms_packet7_variant_status_backfill`** after **`migrate resolve --rolled-back`** ( **P3018** ). See [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) **§ MIGRATE-OPS-1**.  
+- **Election Ingest Gate:** **satisfied** on **this** DB — **`INGEST-OPS-4`**, **`GOTV-2`**, and **`INTEL-2`** are **unlocked** for **blueprint** **prioritization**. **INGEST-OPS-4** **normalized manifest** is **implemented** (**§2.8**); **INTEL-2** remains **blueprint** until **steered**.  
+- **Competitor Intelligence Ingest Queue** (below): **canonical** **election** **tabulation** **gate** **cleared** **here**; **§6.4** **batch** **rules** **still** require **provenance** **and** **human** **review** **per** **INTEL-OPS-1**.
+
+### 2.6 SOURCE-INGEST-FOLDER-TEMPLATE (controlled per-folder manifests)
+
+**Purpose:** Inventory **one** subtree under `H:\SOSWebsite\campaign information for ingestion\<folder>` into `docs/source-ingest/<safe-name>-manifest.md`, classify files, and record parser / readiness — **no** moves, **no** deletes, **no** production, **no** migrations.
+
+**Hard gate:** **`npm run ingest:election-audit:json`** must return **`status: COMPLETE`** before scanning **non-election** brain folders for ingest expansion. If **not** **COMPLETE**, **stop** (same rule as election queue).
+
+**Index:** [`BRAIN_SOURCE_MANIFEST.md`](./BRAIN_SOURCE_MANIFEST.md). **Latest folder run:** [`source-ingest/zine-content-20260421t210959z-manifest.md`](./source-ingest/zine-content-20260421t210959z-manifest.md) — **`Zine content-20260421T210959Z-3-001`** (**1** **DOCX**). **Prior:** [`source-ingest/website-photos-20260421t211003z-manifest.md`](./source-ingest/website-photos-20260421t211003z-manifest.md). **Next folder:** e.g. **`Kellymedia`**, **`26PMONRO_PROOF4`**, or any subtree not yet manifest-scanned — see pick list in [`source-ingest/pending-active-folder-manifest.md`](./source-ingest/pending-active-folder-manifest.md); **`ingest:inventory`** optional for drift.
+
+**Script note:** **`npm run ingest:brain-manifest`** regenerates the **normalized** table in [`BRAIN_SOURCE_MANIFEST.md`](./BRAIN_SOURCE_MANIFEST.md) (read-only scan; **§2.8**). **`npm run ingest:inventory`** writes [`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md) (lighter heuristic).
+
+### 2.7 SOURCE-INGEST-LOOSE-FILES (root-level files only)
+
+**Purpose:** Inventory **only** files sitting **directly** under `H:\SOSWebsite\campaign information for ingestion\` ( **no** subfolders such as `electionResults\`). Classify by **filename heuristics**; **no** DB writes; **no** finance ingest.
+
+**Hard gate:** Same as **§2.6** — **`npm run ingest:election-audit:json`** must return **`status: COMPLETE`** before expanding this backlog line.
+
+**Manifest:** [`source-ingest/root-loose-files-manifest.md`](./source-ingest/root-loose-files-manifest.md) — **2026-04-23** scan: **72** loose files (**17** finance-classified, **11** media, **36** DOCX, **2** quarantined **`.crdownload`**). **INGEST-OPS-4** / normalized brain list should **cross-link** this slice so root drops are not invisible next to per-folder manifests.
+
+**BRAIN-EMBED-1 (root loose comms — DB repair):** `npm run ingest:campaign-root-loose` imported **47** **`OwnedMediaAsset`** rows linked to **`MediaIngestBatch`** id **`cmoct5jcv0000zc8by1za6udc`** (root-level files only; **`.xlsx` / `.xls`** intentionally **not** ingested). Initial run hit **OpenAI 401** on embeddings, so **`SearchChunk`** rows were missing. **Repair CLI:** `npm run repair:owned-media-embeddings -- --batch-id cmoct5jcv0000zc8by1za6udc` (optional **`--dry-run`**). **Embedding repair completion** depends on a **valid** key (see **OPENAI-KEY-OPS-1** below). (Cross-ref: root loose inventory in this doc under **SOURCE-INGEST-LOOSE-FILES** above.)
+
+**OPENAI-KEY-OPS-1 (local secret wiring):** Interactive **`npm run setup:openai-key`** writes **`OPENAI_API_KEY`** to **`.env`** and **`.env.local`** (hidden input on TTY; prints only **`sk-...` + last 4**); adds **`OPENAI_EMBEDDING_MODEL=text-embedding-3-small`** when missing. **`npm run test:openai-key`** merges **`.env`** then **`.env.local`** (local wins), runs one embeddings smoke test, prints **model** + **vector dimension** — **no** key material. **`.gitignore`** lists **`.env`**, **`.env.local`**, and **`*.local`** patterns so secrets are not committed. **Embedding test status:** run **`test:openai-key`** after each key rotation; then **`repair:owned-media-embeddings`** for batch **`cmoct5jcv0000zc8by1za6udc`** if **`SearchChunk`** backfill is still outstanding. Older helpers: **`npm run set:openai`**, **`npm run check:openai`**.
+
+**BRAIN-STORAGE-1 (governed brain material):** Multi-lane storage for the campaign ingest tree—**RAG** via **`OwnedMedia` + `SearchChunk`**, **election JSON** via **`ElectionResultSource`**, **finance** via **`FinancialTransaction` / `ComplianceDocument`** (not bulk spreadsheet embeddings). Runbook: [`CAMPAIGN_BRAIN_STORAGE_RUNBOOK.md`](./CAMPAIGN_BRAIN_STORAGE_RUNBOOK.md). **`ingest-campaign-folder`** supports **`--brain-governed`** (skips **`electionResults`**, filing-detail folders, and obvious finance filenames) and repeatable **`--skip-path-prefix`**. **`npm run brain:storage:plan`** prints the operator checklist; **`brain:ingest:tree:briefing` / `:comms` / `:training`** run governed full-tree ingests with **`--include-zips`** (host path in **`package.json`**; override with a local command if the tree moves).
+
+### 2.8 INGEST-OPS-4 — Normalized brain / source manifest (**implemented**)
+
+**Purpose:** One **file-grain** manifest of the brain/source tree (`manifestId`, path, domain, ingest hints, next packet) — **read-only** scan via **`npm run ingest:brain-manifest`** → [`BRAIN_SOURCE_MANIFEST.md`](./BRAIN_SOURCE_MANIFEST.md). **No** DB, **no** network, **no** moves.
+
+**Hard gate:** **`npm run ingest:election-audit:json`** → **`COMPLETE`** before treating ingest expansion as unblocked for an environment (same as **§2.6**).
+
+**Next safe paths (blueprint):** **INGEST-OPS-5** (first governed non-election parser) · **INTEL-2** (competitor source manifest) · **FINANCE-1** (finance source mapping) · **VOL-DATA-1** (volunteer list / field spreadsheet mapping).
 
 ---
 
@@ -121,9 +152,15 @@ A **DB-OPS-1** pass attempted to bring **Postgres** up and re-run the election a
 | `npm run media:index-roots` / `media:index-roots:dry` | Media roots | No / read | **Dry** variant safe. |
 | `npm run audit:campaign-ingestion` / `reconcile:campaign-folder` | Audit | Read-heavy | |
 | `npm run ingest:inventory` | **Inventory** | **No** | Writes **`docs/INGEST_INVENTORY_GENERATED.md`** only. |
+| `npm run ingest:brain-manifest` | **INGEST-OPS-4** | **No** | Writes **`docs/BRAIN_SOURCE_MANIFEST.md`** (normalized file table + per-folder index). |
 | `npm run ingest:election-audit` | Election audit | **Read** (if DB up) | Human-readable disk vs `ElectionResultSource`. |
 | `npm run ingest:election-audit:json` | Election audit | **Read** (if DB up) | **JSON** for CI/handoff; exit **0** if **BLOCKED**. |
 | `npm run ingest:election-audit:doc` | Election audit | **Read** (if DB up) | Updates auto sections in **[`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md)**. See **[`ELECTION_INGEST_OPERATOR_RUNBOOK.md`](./ELECTION_INGEST_OPERATOR_RUNBOOK.md)**. |
+| `npm run repair:owned-media-embeddings` | Campaign media / brain search | Yes | **`--batch-id`** + optional **`--dry-run`** — backfills **`SearchChunk`** + embeddings for an existing ingest batch (see **BRAIN-EMBED-1** under **SOURCE-INGEST-LOOSE-FILES** above). |
+| `npm run setup:openai-key` | Local env | **Writes** **`.env` / `.env.local`** | **OPENAI-KEY-OPS-1** — prompt for key (masked output only). |
+| `npm run test:openai-key` | OpenAI | Network | **OPENAI-KEY-OPS-1** — smoke-test embeddings from merged env files; **no** key print. |
+| `npm run brain:storage:plan` | Brain / ops | No | **BRAIN-STORAGE-1** — prints governed storage checklist ([`CAMPAIGN_BRAIN_STORAGE_RUNBOOK.md`](./CAMPAIGN_BRAIN_STORAGE_RUNBOOK.md)). |
+| `npm run brain:ingest:tree:briefing` / `:comms` / `:training` | Campaign media + RAG | Yes | **BRAIN-STORAGE-1** — full-tree ingest with **`--brain-governed`** + **`--include-zips`** (see runbook). |
 
 **Import-json (election):** `src/lib/campaign-engine/election-results-ingest/import-json.ts` — not a standalone binary; used by the election CLI.
 
@@ -152,7 +189,7 @@ A **DB-OPS-1** pass attempted to bring **Postgres** up and re-run the election a
 | **Election JSON → DB** | Code path, migration, dry-run, replace | **Run** ingest for each desired file per environment; **QA** county matching + preferential file |
 | **Truth / reporting consumption** | `getElectionResultCoverageSummary` in snapshot | **None** (by design) for “turnout math” — not built |
 | **Voter file** | Snapshots, import CLI | Ongoing file deliveries; not this packet’s scope |
-| **Brain / loose files** | Many **scripts** for docs/media | **No** single normalized **manifest** of all non-repo files; **INGEST-OPS-4** |
+| **Brain / loose files** | Many **scripts** for docs/media | **INGEST-OPS-4** **manifest** [`BRAIN_SOURCE_MANIFEST.md`](./BRAIN_SOURCE_MANIFEST.md) (**regenerate** with **`ingest:brain-manifest`**) |
 | **Provenance (non-election)** | Pattern exists in several domains | **INGEST-OPS-5/6** for unified **parser version + review UI** |
 | **Opposition intelligence sources** (queue) | **Blueprint** [`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md) (**INTEL-OPS-1**) | **Queue** **after** **election** **ingest** **COMPLETE** (or **explicit** **waiver** of the **election** **gate** for a **defined** **scope**); **always** require **source** **provenance** — see **§6.4** |
 
@@ -206,6 +243,23 @@ See **[`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md)** (refr
 
 **Provenance (required for every** **queued** **item**): **source** **type** (filing, URL, file path), **retrieval** **timestamp**, **operator** or **script** **id** **as** **appropriate**; **confidence** and **review** **status** per the **opposition** **doc**.
 
+### 6.5 Competitor Intelligence Ingest Queue (**INTEL-OPS-2** — public record)
+
+Structured **lawful** **public-record** **competitor** **intelligence** (see **[`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md)** — **no** illegal scraping, **no** private data, **no** unreviewed **publication**).
+
+| # | Category | Notes |
+|---|----------|--------|
+| 1 | **Campaign finance filings** | FEC / state (e.g. AEC) / SOS-disclosed committees — filing id + URL + retrieval date. |
+| 2 | **Bill sponsorship records** | Legislature **public** bill index — author, sponsor, co-sponsor, status. |
+| 3 | **Vote records** | Official roll-call / vote exports — bill linkage, date, chamber. |
+| 4 | **Official videos** | Senate / House / SOS / committee **public** streams or archives — URL, timestamp, transcript status. |
+| 5 | **News archive** | **Public** journalism — URL, date, topic; **claim** **verification** **status** required before reuse. |
+| 6 | **County election results** | SOS / county **public** results — align with election JSON ingest **provenance** patterns. |
+| 7 | **Direct democracy legislation set** | Bills affecting initiatives, petitions, referenda — **source-backed** **only**. |
+| 8 | **County finance legislation set** | County-impact fiscal / governance bills — fiscal notes and **public** **position** **disclosures** **only**. |
+
+**Queue rules:** **Ingest** **automation** / **bulk** **load** **after** [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) reports **COMPLETE** for the **intended** DB (or **explicit** **operator** **waiver**). **Public** **sources** **only**. **Every** **stored** **claim** needs **source** **URL** **or** **file**, **date** **accessed**, **confidence**, **fact** / **inference** / **recommendation** **separation**, and **review** **status** (per opposition doc).
+
 ---
 
 ## 7. Post-election brain ingest queue (standing rules)
@@ -241,7 +295,7 @@ See **[`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md)** (refr
 | **INGEST-OPS-2** | This doc + inventory script + protocol hooks (**current**). |
 | **INGEST-OPS-3** | Election ingest **audit** — **[`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md)** + `npm run ingest:election-audit` (per-environment: disk vs `ElectionResultSource`). |
 | **INGEST-OPS-3B** | **Operator runbook** [`ELECTION_INGEST_OPERATOR_RUNBOOK.md`](./ELECTION_INGEST_OPERATOR_RUNBOOK.md) · `ingest:election-audit:json` / `ingest:election-audit:doc` · BLOCKED / PARTIAL / **COMPLETE** workflow. |
-| **INGEST-OPS-4** | **Normalized manifest** of brain/source files (versioned list + domains) — **next** after **COMPLETE** (or **explicit** waiver) on election queue; if **PARTIAL**, stay on targeted election ingests only. |
+| **INGEST-OPS-4** | **Normalized manifest** of brain/source files — **implemented** (`npm run ingest:brain-manifest` → [`BRAIN_SOURCE_MANIFEST.md`](./BRAIN_SOURCE_MANIFEST.md)). **Unlocked** once audit **`status: COMPLETE`** on canonical **13** JSONs; **re-run** after large folder drops. |
 | **INGEST-OPS-5** | **First** safe **non-election** ingest parser (single file family; dry-run). |
 | **INGEST-OPS-6** | **Provenance + ingest review** UI (read-heavy). |
 
@@ -250,9 +304,9 @@ See **[`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md)** (refr
 ## 9. Division note (ingest / intelligence)
 
 - **Data layer / voter file / ingest** remains **L2** until **PRECINCT-1** or **sustained** ingest tooling lifts **operator** **confidence** — **per** [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md).  
-- **Campaign intelligence** stays **L1–L2**; **INTEL-OPS-1** adds **[`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md)**; may move when **INGEST-OPS-4+** and **honest** rollups exist — **not** on docs alone. **Opp** **intel** **bulk** **ingest** **is** **ordered** **after** **election** **ingest** **COMPLETE** (or **waiver**) per **§6.4**.  
+- **Campaign intelligence** stays **L1–L2**; **INTEL-OPS-1** adds **[`opposition-intelligence-engine.md`](./opposition-intelligence-engine.md)**; may move when **INGEST-OPS-4+** and **honest** rollups exist — **not** on docs alone. **Election** **Ingest** **Gate** **satisfied** on **canonical** **13** **JSONs** **here** — **INTEL-2**+ **batch** **work** **no** **longer** **blocked** **by** **that** **gate** on **this** **DB**; **§6.4** **guardrails** **unchanged**.  
 - **Finance** / **volunteer** product levels **unchanged** here (no new financial or volunteer **actions** in this packet).
 
 ---
 
-*Last updated: **DB-OPS-1** (local audit still **BLOCKED** — Docker/Postgres; see **§2.5**) + **INTEL-OPS-1** / **INGEST-OPS-3B**; **INGEST-OPS-4** after **COMPLETE**; **election COMPLETE** only with `dbReachable: true` per [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md) (or explicit waiver), not this paragraph alone.*
+*Last updated: **OPENAI-KEY-OPS-1** — **`setup:openai-key`** / **`test:openai-key`** added; **BRAIN-EMBED-1** root loose batch **`cmoct5jcv0000zc8by1za6udc`** still needs **live** **`SearchChunk`** repair after a **passing** **`test:openai-key`**. **MIGRATE-OPS-1** (migrations applied; audit **`COMPLETE`** **13**/ **13** on **this** local dev DB; see **§2.5**) + **INTEL-OPS-1** / **INTEL-OPS-2** (**§6.5**) / **INGEST-OPS-3B**; **Election Ingest Gate** **satisfied** here; **INGEST-OPS-4** (**§2.8**) + **GOTV-2** **implemented** — verify **other** **environments** with `ingest:election-audit:json`. **§2.6** **SOURCE-INGEST-FOLDER-TEMPLATE:** [`source-ingest/zine-content-20260421t210959z-manifest.md`](./source-ingest/zine-content-20260421t210959z-manifest.md); **§2.7** **SOURCE-INGEST-LOOSE-FILES:** [`source-ingest/root-loose-files-manifest.md`](./source-ingest/root-loose-files-manifest.md); **§2.8** [`BRAIN_SOURCE_MANIFEST.md`](./BRAIN_SOURCE_MANIFEST.md) (`ingest:brain-manifest`).*

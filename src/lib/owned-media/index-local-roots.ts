@@ -22,12 +22,13 @@ import {
 } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { buildIngestOriginalCanonicalName } from "@/lib/owned-media/campaign-filename";
+import { ABSOLUTE_OWNED_MEDIA_MAX_BYTES, DEFAULT_OWNED_MEDIA_MAX_BYTES } from "@/lib/owned-media/limits";
 import { buildOwnedStorageKey, getDataRootDir, storageKeyToAbsoluteFilePath } from "@/lib/owned-media/paths";
 import { kindFromMime } from "@/lib/owned-media/ingest/mime";
 
 const MAX_BYTES = Math.min(
-  Number(process.env.CAMPAIGN_MEDIA_INDEX_MAX_BYTES) || 500 * 1024 * 1024,
-  2 * 1024 * 1024 * 1024
+  Number(process.env.CAMPAIGN_MEDIA_INDEX_MAX_BYTES) || DEFAULT_OWNED_MEDIA_MAX_BYTES,
+  ABSOLUTE_OWNED_MEDIA_MAX_BYTES
 );
 const MAX_DEPTH = Math.min(Number(process.env.CAMPAIGN_MEDIA_INDEX_MAX_DEPTH) || 8, 20);
 

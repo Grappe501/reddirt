@@ -92,7 +92,8 @@ export function buildGotvVoterScopeWhere(
   return { where: { AND: and }, hasGeographyFilter };
 }
 
-function priorityReasonsForVoter(
+/** Explainable codes only — exported for GOTV-2 review rows (no scoring). */
+export function getGotvExplainablePriorityReasons(
   input: {
     relationalContactCount: number;
     interactionCount: number;
@@ -200,7 +201,7 @@ export async function getGotvPriorityUniverse(
       lastInteractionAt,
       interactionCount,
       hasRelationalConnection,
-      priorityReason: priorityReasonsForVoter(
+      priorityReason: getGotvExplainablePriorityReasons(
         {
           relationalContactCount,
           interactionCount,

@@ -17,12 +17,16 @@
 
 ## GOTV-1 — Turnout priority read model (operational, not predictive)
 
-- **Code:** `src/lib/campaign-engine/gotv-read-model.ts` — `getGotvPriorityUniverse`, `getGotvSummary` (filters: `countyId`, `precinct`, `FieldUnit` via **relational** links). **Reasons** are **only** from **relational** count, **interaction** recency, **geography** filter context, and **missing** **history** — **no** AI **scoring**, **no** support **inference**, **no** **turnout** **math** **unless** **explicit** **historical** **fields** **already** **exist** **elsewhere** (this packet does **not** add any).
-- **`gotv-contact-plan.ts`:** `buildGotvContactPlanPreview` — **scope** **summary** + **suggested** **buckets** (**relational-first**, **needs-touch**, **recently-contacted**, **missing-data**); **no** **send**, **no** **queue** **rows**, **no** **assignments** (**GOTV-2** **seam**).
-- **Admin:** `/admin/gotv` (read-only table + **links** to `…/voters/[id]/model` and **relational** **contact** when present).
+- **Code:** `src/lib/campaign-engine/gotv-read-model.ts` — `getGotvPriorityUniverse`, `getGotvSummary`, `getGotvExplainablePriorityReasons` (filters: `countyId`, `precinct`, `FieldUnit` via **relational** links). **Reasons** are **only** from **relational** count, **interaction** recency, **geography** filter context, and **missing** **history** — **no** AI **scoring**, **no** support **inference**, **no** hidden ranking.
 
-**Forward path:** **GOTV-2** = queues + assignment review · **GOTV-3** = field execution dashboard · **GOTV-4** = governed automation only after approval rails.
+## GOTV-2 — Contact plan review (read-only operator preview)
+
+- **`gotv-contact-plan.ts`:** `buildGotvContactPlanPreview` — overlapping **discussion** buckets (counts can overlap). **`buildGotvContactPlanReview`** — **mutually** **exclusive** **review** **buckets** (**relational_first**, **needs_first_touch**, **needs_follow_up**, **recently_contacted**, **missing_data**) with **capped** row samples; **`priorityReason`** on each row matches **GOTV-1** explainability rules.
+- **Admin:** `/admin/gotv` — **summary** cards, **bucket** counts, **per-bucket** tables, **banner**: review-only (no send, no assignment, no support prediction).
+- **Not built:** CSV export (**GOTV-3** optional), persisted queues, volunteer assignment.
+
+**Forward path:** **GOTV-3** = reviewed assignment workflow · **GOTV-4** = field execution dashboard · **GOTV-5** = governed automation only after approval rails.
 
 ---
 
-*Last updated: REL-2 + **REL-3** + **GOTV-1** (read model + preview seam + `…/gotv`).*
+*Last updated: REL-2 + **REL-3** + **GOTV-1** + **GOTV-2** (`…/gotv` contact-plan review).*

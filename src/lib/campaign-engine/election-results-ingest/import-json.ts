@@ -96,6 +96,18 @@ function parseWhen(s: unknown): Date {
   return Number.isNaN(d.getTime()) ? new Date() : d;
 }
 
+/** SOS JSON often sends `ElectionID` as a number; `ElectionResultSource.electionIdExternal` is `String?`. */
+function externalElectionId(raw: unknown): string | null {
+  if (raw == null || raw === "") return null;
+  if (typeof raw === "string") {
+    const t = raw.trim();
+    return t.length ? t : null;
+  }
+  if (typeof raw === "number" && Number.isFinite(raw)) return String(raw);
+  if (typeof raw === "bigint") return String(raw);
+  return null;
+}
+
 async function removeSourceChain(tx: Prisma.TransactionClient, sourceId: string) {
   await tx.electionResultSource.delete({ where: { id: sourceId } });
 }
@@ -181,32 +193,38 @@ export async function importElectionResultsJsonFile(options: {
     return summary;
   }
 
-  await prisma.$transaction(async (tx) => {
-    if (existing && replace) {
-      await removeSourceChain(tx, existing.id);
-      summary.replacedExistingSourceId = existing.id;
-    }
+  await prisma.$transaction(
+    async (tx) => {
+      if (existing && replace) {
+        await removeSourceChain(tx, existing.id);
+        summary.replacedExistingSourceId = existing.id;
+      }
 
-    if (variant === ELECTION_INGEST_PARSER_LEGACY) {
-      await ingestLegacy(tx, json as LegacyRoot, {
-        absolutePath,
-        sourceNameFallback,
-        fileHash,
-        idx,
-        unmatched,
-        summary,
-      });
-    } else {
-      await ingestPreferential(tx, json as PrefRoot, {
-        absolutePath,
-        sourceNameFallback,
-        fileHash,
-        idx,
-        unmatched,
-        summary,
-      });
-    }
-  });
+      if (variant === ELECTION_INGEST_PARSER_LEGACY) {
+        await ingestLegacy(tx, json as LegacyRoot, {
+          absolutePath,
+          sourceNameFallback,
+          fileHash,
+          idx,
+          unmatched,
+          summary,
+        });
+      } else {
+        await ingestPreferential(tx, json as PrefRoot, {
+          absolutePath,
+          sourceNameFallback,
+          fileHash,
+          idx,
+          unmatched,
+          summary,
+        });
+      }
+    },
+    {
+      maxWait: 60_000,
+      timeout: 10 * 60_000,
+    },
+  );
 
   summary.unmatchedCountyNames = [...unmatched].sort();
   return summary;
@@ -325,7 +343,7 @@ async function ingestLegacy(
       sourceType: ElectionResultSourceType.JSON_FILE,
       electionName: ei.ElectionName ?? ctx.sourceNameFallback,
       electionDate,
-      electionIdExternal: ei.ElectionID ?? null,
+      electionIdExternal: externalElectionId(ei.ElectionID),
       isOfficial: ei.IsOfficial ?? null,
       parserVariant: ELECTION_INGEST_PARSER_LEGACY,
       metadataJson: {
@@ -547,7 +565,7 @@ async function ingestPreferential(
       sourceType: ElectionResultSourceType.JSON_FILE,
       electionName: ctx.sourceNameFallback,
       electionDate: new Date(),
-      electionIdExternal: ed.ElectionID ?? null,
+      electionIdExternal: externalElectionId(ed.ElectionID),
       isOfficial: ed.IsOfficial ?? null,
       parserVariant: ELECTION_INGEST_PARSER_PREFERENTIAL,
       metadataJson: {

@@ -24,7 +24,7 @@ import { classifyIngestPath, resolveIngestVisibility } from "../src/lib/ingest/s
 import { prisma } from "../src/lib/db";
 import { embedTexts } from "../src/lib/openai/embeddings";
 import { isOpenAIConfigured } from "../src/lib/openai/client";
-import { saveOwnedMediaFile } from "../src/lib/owned-media/storage";
+import { MAX_UPLOAD_BYTES, saveOwnedMediaFile } from "../src/lib/owned-media/storage";
 
 const DOCX = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
 const PDF = "application/pdf";
@@ -187,6 +187,14 @@ export async function ingestCampaignFileBuffer(
 
   if (!supportedIngestExt(ext)) {
     return { id: "", title: fileName, skipped: "unsupported extension" };
+  }
+
+  if (buffer.length > MAX_UPLOAD_BYTES) {
+    return {
+      id: "",
+      title: fileName,
+      skipped: `file too large (${buffer.length} bytes; max ${MAX_UPLOAD_BYTES}; set OWNED_MEDIA_MAX_BYTES to raise cap)`,
+    };
   }
 
   const contentHash = createHash("sha256").update(buffer).digest("hex");

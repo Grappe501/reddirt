@@ -86,7 +86,9 @@ export default async function AdminOwnedMediaPage({ searchParams }: Props) {
 
       <form action={uploadOwnedMediaAction} className="mt-8 space-y-4 rounded-card border border-deep-soil/10 bg-cream-canvas p-6 shadow-[var(--shadow-soft)]" encType="multipart/form-data">
         <h2 className="font-heading text-lg font-bold text-deep-soil">Upload</h2>
-        <p className="text-xs text-deep-soil/60">Max size defaults to 500MB (override with OWNED_MEDIA_MAX_BYTES).</p>
+        <p className="text-xs text-deep-soil/60">
+          Max size defaults to 2GB (cap 4GB; override with OWNED_MEDIA_MAX_BYTES).
+        </p>
         <label className="block text-sm">
           <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">File</span>
           <input
