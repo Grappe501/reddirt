@@ -75,6 +75,17 @@ A **division** is a **top-level system area** of the campaign operating system. 
 - **No defaulting** to the **easiest** lane. **System balance** and **declared** **priority** (registry) **override** **developer convenience**.  
 - **ChatGPT** may set **direction** in the **Cursor script**; **Cursor** implements **that** direction **or** **explicitly** proposes an alternative in the **Build steering decision** (do **not** **silently** pick a different division).  
 
+### INGEST-OPS-2 standing rule (election + brain backlog)
+
+**Every** regular build pass **must** **check** and **report** (in the structured return or handoff):
+
+1. **Is election ingest complete** for the **intended** environment (target JSONs ingested or **documented** skip)?  
+2. **If not**, does **this** packet **advance** election ingest (CLI run, dry-run validation, mapping fix, or **doc** explaining **blocker**)?  
+3. **If election ingest is complete**, does **this** packet **ingest** or **prepare** **one** **brain/source** file **group** (or **improve** schema/mapping for **one** group), **or** explain **why not**?  
+4. If **neither** applies, state **status** anyway — **do** **not** **force** ingest into **unrelated** **high-risk** packets.
+
+**Canonical backlog + architecture:** [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md). **Inventory:** `npm run ingest:inventory` → [`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md). **Do not** **treat** **absence** of **check** as **neutral** when data work is **in** **scope**.
+
 ---
 
 ## Blueprint Expansion Doctrine (BLUEPRINT-EXP-1)
@@ -229,7 +240,8 @@ A **division** is a **top-level system area** of the campaign operating system. 
 - [ ] **Blueprint** maps updated: [`THREAD_HANDOFF_MASTER_MAP.md`](./THREAD_HANDOFF_MASTER_MAP.md), [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md), and any lane doc touched by the packet.  
 - [ ] If a **division** moved: [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) and **Blueprint Progress Ledger** stay **aligned**.  
 - [ ] **Next stage** / **unlock** fields still **accurate** for **target** division (**BLUEPRINT-EXP-1**).  
-- [ ] **Build steering decision** present: **target** division, **reason**, **non-target** divisions (DIV-OPS-2).
+- [ ] **Build steering decision** present: **target** division, **reason**, **non-target** divisions (DIV-OPS-2).  
+- [ ] If **data** / **ingest** / **targeting** touched: **INGEST-OPS-2** **status** (election complete? brain queue advanced?) or **explicit** N/A.  
 
 ---
 
@@ -259,4 +271,4 @@ A **division** is a **top-level system area** of the campaign operating system. 
 
 ---
 
-*Stack (ground truth):* Next.js App Router · Prisma · PostgreSQL · `reddirt-site` under `RedDirt/`. *Quality gate for code pushes:* `npm run check` (see `RedDirt/README.md`). *Unattended / self-build:* [`AUTO_BUILD_PROTOCOL.md`](./AUTO_BUILD_PROTOCOL.md) (**AUTO-BUILD-1** / **AUTO-BUILD-2** nightly **workflow**; see **§9**).
+*Stack (ground truth):* Next.js App Router · Prisma · PostgreSQL · `reddirt-site` under `RedDirt/`. *Quality gate for code pushes:* `npm run check` (see `RedDirt/README.md`). *Unattended / self-build:* [`AUTO_BUILD_PROTOCOL.md`](./AUTO_BUILD_PROTOCOL.md) (**AUTO-BUILD-1** / **AUTO-BUILD-2** nightly **workflow**; see **§9**). *Ingest backlog / election+brain protocol:* **INGEST-OPS-2** in [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md).

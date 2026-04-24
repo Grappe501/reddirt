@@ -89,6 +89,17 @@ On each pass, the blueprint should record **lane maturity** using this scale (al
 - **Five or more:** only for **docs-only** or **reference / indexing** work—not for hiding large behavior change.
 - **Never** hide large behavior changes inside **“cleanup.”**
 
+### 0.6a INGEST-OPS-2 — Election + brain backlog check
+
+**Every** regular build pass should **account** for **ingest** **status** (see full rule in [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) **INGEST-OPS-2**):
+
+1. Is **election** JSON ingest **complete** (for the **intended** DB) or **documented** as **skipped**?  
+2. If **not** complete, does **this** packet **advance** it (ingest, dry-run, **fix**, or **named** **blocker**)?  
+3. If **complete**, does **this** packet take **one** **safe** **brain/source** file **group** (ingest, mapping, or **queue** **update**)? If **no**, **why**?  
+4. **Do** **not** **force** data work into **unrelated** **high-risk** passes — but **report** the **line**.
+
+**Source of truth:** [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md) · generated [`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md) via `npm run ingest:inventory` from `RedDirt/`.
+
 ### 0.7 Current latest build state (Apr 2026)
 
 - **REL-2 (relational contact foundation)** is **implemented** as **L2** — relational **persistence** and **admin** seam (`RelationalContact`, `VoterInteraction` / `VoterSignal` links, `relational-contacts.ts`, `relational-matching.ts`, admin pages, truth snapshot advisory counts). **`npx prisma generate`** and **`npx tsc --noEmit`** have passed when last run; **migration file exists** and **must** be **applied per environment** when the database is available (`npx prisma migrate deploy` or dev equivalent).
@@ -385,7 +396,7 @@ Maturity is **evidence-based**; full tables: `system-division-map.md`, `system-m
 - **REL-1** — ROE **docs** (no Prisma in REL-1). **D**  
 - **GAME-1, VOL-CORE-1** — Progression + volunteer system **docs**. **D**  
 - **BLUEPRINT-LOCK-1** — Division/maturity/integration maps. **D**  
-- **DATA-2/3, OFFICIAL-INGEST-1, INGEST-OPS-1** — Targeting + official ingest **strategies** (various). **D (+ some types)**  
+- **DATA-2/3, OFFICIAL-INGEST-1, INGEST-OPS-1, INGEST-OPS-2** — Targeting + official ingest **strategies** (various); **INGEST-OPS-2** = **election+brain** **backlog** + `ingest:inventory` + [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md). **D (+ some types)**  
 - **BRAIN-OPS-1/2/3** — `truth.ts`, `truth-snapshot`, CM-2 consumer. **C+U**  
 - **CM-2 / UWR-2** — Dashboard bands + expanded open work. **C+U**  
 - **DATA-4 + ELECTION-INGEST-1** — Election tabulation Prisma + CLI + `election-results.ts`. **S+C**  

@@ -63,6 +63,12 @@ Self-build is allowed **only** for work that fits **all** of:
 | **Read-only reporting panels** | **Admin** or **workbench** **panels** that **aggregate** **existing** data **only**. |
 | **Docs sync passes** | **Ledger** ↔ **registry** ↔ **thread handoff** **parity**; **no** new product scope. |
 | **Test coverage passes** | Add/adjust **tests** for **existing** **behavior**; **no** new features. |
+| **Ingest backlog inventory refresh** | Run `npm run ingest:inventory` (no DB); refresh [`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md); keep [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md) cross-links honest. **INGEST-OPS-2** |
+| **Parser dry-run tests** | Exercise **`--dry-run`** on `ingest:election-results` (or other scripts that support it) against **local** **fixtures** only — no production import. |
+| **Read-only ingest status reports** | Update **checklist** rows in `INGEST_STATUS…` for **which** **election** files are **logically** “done” per operator — **not** a live DB **probe** in CI without credentials. |
+| **Docs sync for completed ingests** | When an ingest **completes**, **link** the **script** and **provenance** fields in the **master** map or lane doc. |
+
+**Unattended / overnight — still forbidden (unchanged):** **production** **bulk** **imports**; **Prisma** **migrations**; **destructive** **cleanup**; **ledger** **confirm** / **financial** **execution**; **volunteer** **contact** **activation** / **sends** — see §2. **INGEST-OPS-2** **requires** **status** in **returns**; it does **not** **authorize** **unsafe** **automation**.
 
 **Rule:** A **self-build** run **chooses the single next** item that is **(a)** in this **queue** or a **script**- **named** **packet**, **(b)** **allowed** per §1, and **(c)** **not** blocked by a [hard stop](#6-hard-stops--escalation-to-human).
 
@@ -147,4 +153,4 @@ After a **hard stop**, the **handoff** **must** state **which** **condition** **
 
 ---
 
-*Last updated: **AUTO-BUILD-1** + **AUTO-BUILD-2** (policy + nightly schedule / handoff artifact; no production side effects by design).*
+*Last updated: **AUTO-BUILD-1** + **AUTO-BUILD-2** (policy + nightly schedule / handoff artifact; no production side effects by design) + **INGEST-OPS-2** (approved **ingest:inventory** / dry-run / read-only **status** **docs**; no prod import).*

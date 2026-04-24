@@ -72,7 +72,7 @@ Unattended or **overnight** **Cursor** runs use **[`AUTO_BUILD_PROTOCOL.md`](./A
 | **Volunteer / Field Operations** | **CRITICAL** | **L2–L3** (partial) | VOL-CORE, FIELD-1, REL-1, **REL-3** | **Partial** / **Active** | **`/relational`** **organizer** UX **exists**; **not** full VOL-CORE journey. |
 | **Workbench / Operator System** | **MEDIUM** | **L2–L3** | UWR, WB-CORE, SEAT, CM-2 | **Partial** / **Active** | **Many** routes; **steer** new work to **gaps**, not only **convenience**. |
 | **Truth Snapshot / Deterministic Brain** | **MEDIUM** | **L2** (advisory) | BRAIN-OPS | **Partial** / **Active** | **Advisory** only. |
-| **Data Layer / Voter File / Ingest** | **MEDIUM** | **L2** (strong) | DATA-1–4, ELECTION-INGEST | **Partial** / **Active** | **PRECINCT-1** / **inventory** refresh as needed. |
+| **Data Layer / Voter File / Ingest** | **MEDIUM** | **L2** (strong) | DATA-1–4, ELECTION-INGEST, **INGEST-OPS-2+** | **Partial** / **Active** | **PRECINCT-1**; **election** JSON **coverage** per env; **INGEST-OPS-2** **queue** + [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md). |
 | **Content / Author Studio** | **HIGH** | **L1–L2** | (scattered) | **Partial** / **Fragmented** | **Not** one unified **author** product. |
 | **Finance / Compliance** | **MEDIUM** (guarded) | **L1** | POLICY, COMP, FIN, BUDGET | **Partial** | **Approval-** / **audit-first** always. |
 | **AJAX Organizing Hub (Discord)** | **LOW** | **L1** | Discord docs | **Docs** / **Partial** | **Not** org **source of truth**. |
@@ -86,6 +86,7 @@ Unattended or **overnight** **Cursor** runs use **[`AUTO_BUILD_PROTOCOL.md`](./A
 **How divisions connect (feeds / fed by)**
 
 - **Data layer** and **Identity** are **under** most surfaces; **PRECINCT-1** / **normalization** **unlock** **cleaner** **county** and **signal** **stories**.  
+- **Ingest (INGEST-OPS-2):** **election JSON first** (see [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md)); then **incremental brain/source groups**; **INGEST-OPS-3** = completion audit; **INGEST-OPS-4–6** = manifest → first non-election parser → provenance UI.  
 - **Relational** **feeds** **GOTV** and **comms** **targeting** **narratives** (universes, people — not vote **totals** as **canon**).  
 - **Volunteer / field** **depends on** **relational** **depth**; **GOTV** **depends** on **relational** **activity** + **data** **read** **models** before it **drives** **comms** and **field** **plans**.  
 - **Comms** is **driven** by **GOTV** + **relational** + **segmentation**; stays **governed** by **queue-first** and **Finance/Compliance** for **sensitive** paths.  
@@ -429,6 +430,7 @@ See **[`agent-knowledge-ingest-map.md`](./agent-knowledge-ingest-map.md)** (SKIL
 
 Practical ordering (adjust with campaign priorities):
 
+0. **INGEST-OPS-3** (when **election** **CLI** is **ready** in **ops**) — **audit** which **`ElectionResultSource`** rows **exist** vs `…\electionResults\` raw files (per **DB** / **env**). **INGEST-OPS-2** **status** **doc** is [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md). **INGEST-OPS-4–6** follow that file’s **forward** table.  
 1. **PRECINCT-1** — normalization / crosswalk for voter `precinct` strings vs SOS location keys (follows DATA-4 ingest grains).
 2. **GOTV-2** — **contact** **plan** **queues** + **assignment** **review** (after **GOTV-1** read model). **GOTV-1** **shipped:** `gotv-read-model.ts`, `gotv-contact-plan.ts` (preview only), `/admin/gotv` — see [`model-to-field-gotv-connection.md`](./model-to-field-gotv-connection.md).
 3. **UWR-3** — county filter on unified queries; governed **`Submission`** / review-queue inclusion **only** with explicit status + admin `href` (see [`unified-open-work-expansion-notes.md`](./unified-open-work-expansion-notes.md)).
@@ -458,6 +460,7 @@ Practical ordering (adjust with campaign priorities):
 5. [`email-workflow-intelligence-AI-HANDOFF.md`](./email-workflow-intelligence-AI-HANDOFF.md)
 6. [`campaign-manager-orchestration-map.md`](./campaign-manager-orchestration-map.md) + [`incoming-work-matrix.md`](./incoming-work-matrix.md)
 7. [`database-table-inventory.md`](./database-table-inventory.md)
+7b. **[`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md)** — **INGEST-OPS-2** election + brain **queue**; optional **[`INGEST_INVENTORY_GENERATED.md`](./INGEST_INVENTORY_GENERATED.md)** (`npm run ingest:inventory`)
 8. [`public-site-system-map.md`](./public-site-system-map.md) + [`system-domain-flow-map.md`](./system-domain-flow-map.md)
 9. [`launch-reengagement-foundation.md`](./launch-reengagement-foundation.md)
 10. [`identity-and-voter-link-foundation.md`](./identity-and-voter-link-foundation.md)
@@ -468,4 +471,4 @@ Practical ordering (adjust with campaign priorities):
 
 ---
 
-*MASTER-MAP-1 — Canonical project handoff + build protocol map. Last updated: 2026-04-24 (**AUTO-BUILD-2** nightly **GitHub** **workflow** + `nightly:self-build:preflight`; **AUTO-BUILD-1** policy; **GOTV-1**; REL-2/REL-3; VOTER-MODEL-1 + INTERACTION-1; DATA-4).*
+*MASTER-MAP-1 — Canonical project handoff + build protocol map. Last updated: 2026-04-23 (**INGEST-OPS-2** + **AUTO-BUILD-2** nightly **GitHub** **workflow** + `nightly:self-build:preflight`; **AUTO-BUILD-1** policy; **GOTV-1**; REL-2/REL-3; VOTER-MODEL-1 + INTERACTION-1; DATA-4).*
