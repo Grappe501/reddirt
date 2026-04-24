@@ -6,7 +6,7 @@
 
 **Authoritative rails:** [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) · [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) · [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) · [`THREAD_HANDOFF_MASTER_MAP.md`](./THREAD_HANDOFF_MASTER_MAP.md) · [`INGEST_STATUS_AND_BACKLOG.md`](./INGEST_STATUS_AND_BACKLOG.md) · [`ELECTION_INGEST_AUDIT.md`](./ELECTION_INGEST_AUDIT.md).
 
-**Status snapshot (this doc pass):** `npm run ingest:election-audit:json` → **`COMPLETE`** (**13** / **13**, `dbReachable: true`) on **this** **local** **dev** **database**. `npm run test:openai-key` → **SUCCESS**. `npm run ingest:brain-manifest` → **refreshed** [`BRAIN_SOURCE_MANIFEST.md`](./BRAIN_SOURCE_MANIFEST.md) (**284** files). **Verify** **other** **environments** independently.
+**Status snapshot (this doc pass):** `npm run ingest:election-audit:json` → **`COMPLETE`** (**13** / **13**, `dbReachable: true`) on **this** **local** **dev** **database** — **election** **gate** **was** **`COMPLETE`** **before** **GOTV-2** **contact-plan** **review** **work** **(verify** **per** **environment** **for** **other** **DBs**). `npm run test:openai-key` → **SUCCESS**. `npm run ingest:brain-manifest` → **refreshed** [`BRAIN_SOURCE_MANIFEST.md`](./BRAIN_SOURCE_MANIFEST.md) (**284** files). **Verify** **other** **environments** independently.
 
 ---
 

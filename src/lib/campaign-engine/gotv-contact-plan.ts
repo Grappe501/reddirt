@@ -429,3 +429,55 @@ export async function buildGotvContactPlanReview(
     ],
   };
 }
+
+function escapeGotvCsvField(value: string | number | null | undefined): string {
+  if (value == null) return '""';
+  const s = String(value);
+  if (/[",\n\r]/.test(s)) {
+    return `"${s.replace(/"/g, '""')}"`;
+  }
+  return s;
+}
+
+/**
+ * Read-only string for copy/paste preview — does not enqueue work, create files, or assign voters.
+ * Includes bucket key/label and semicolon-joined `priorityReason` codes per row.
+ */
+export function formatGotvContactPlanReviewAsCsv(review: GotvContactPlanReview): string {
+  const header = [
+    "bucket_key",
+    "bucket_label",
+    "voterRecordId",
+    "voterFileKey",
+    "voterName",
+    "countyId",
+    "precinct",
+    "city",
+    "relationalContactCount",
+    "interactionCount",
+    "lastInteractionAt",
+    "priorityReasonCodes",
+  ];
+  const lines: string[] = [header.map(escapeGotvCsvField).join(",")];
+  for (const b of review.buckets) {
+    for (const r of b.rows) {
+      const codeStr = r.priorityReason.join(";");
+      const row = [
+        b.key,
+        b.label,
+        r.voterRecordId,
+        r.voterFileKey,
+        r.voterName,
+        r.countyId,
+        r.precinct ?? "",
+        r.city ?? "",
+        r.relationalContactCount,
+        r.interactionCount,
+        r.lastInteractionAt ? r.lastInteractionAt.toISOString() : "",
+        codeStr,
+      ];
+      lines.push(row.map((c) => escapeGotvCsvField(c as string | number)).join(","));
+    }
+  }
+  return lines.join("\n");
+}

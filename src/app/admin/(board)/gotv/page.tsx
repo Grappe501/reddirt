@@ -3,6 +3,7 @@ import Link from "next/link";
 import {
   buildGotvContactPlanPreview,
   buildGotvContactPlanReview,
+  formatGotvContactPlanReviewAsCsv,
 } from "@/lib/campaign-engine/gotv-contact-plan";
 import {
   getGotvPriorityUniverse,
@@ -44,6 +45,8 @@ export default async function AdminGotvPage({ searchParams }: Props) {
     prisma.fieldUnit.findMany({ orderBy: { name: "asc" }, select: { id: true, name: true, type: true } }),
   ]);
 
+  const contactPlanCsvPreview = formatGotvContactPlanReviewAsCsv(planReview);
+
   const filterQs = new URLSearchParams();
   if (countyId) {
     filterQs.set("countyId", countyId);
@@ -73,9 +76,13 @@ export default async function AdminGotvPage({ searchParams }: Props) {
         className="mt-6 rounded-lg border border-amber-700/25 bg-amber-50/90 px-4 py-3 text-sm text-deep-soil/90"
         role="note"
       >
-        <strong className="text-amber-900">Review-only.</strong> This page does not send messages, assign voters to
-        volunteers, or predict support. Contact-plan buckets use explainable rules from stored relational and
-        interaction rows only.
+        <p className="text-amber-900">
+          <strong>This is review-only.</strong> It does not send messages, assign voters, or predict support.
+        </p>
+        <p className="mt-2 text-deep-soil/85">
+          Contact-plan buckets use explainable rules from stored relational and interaction rows only (no support scores
+          or hidden ranking).
+        </p>
       </div>
 
       <form
@@ -172,8 +179,11 @@ export default async function AdminGotvPage({ searchParams }: Props) {
         </div>
       </div>
 
-      <section className="mt-10">
-        <h2 className="font-heading text-xl font-bold">Contact plan review (GOTV-2)</h2>
+      <section className="mt-10" aria-labelledby="gotv-contact-plan-review-heading">
+        <h2 id="gotv-contact-plan-review-heading" className="font-heading text-xl font-bold">
+          Contact Plan Review
+        </h2>
+        <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-deep-soil/50">GOTV-2</p>
         <p className="mt-1 text-sm text-deep-soil/65">
           Mutually exclusive buckets for operator preview. Counts cover the full filtered universe; tables sample up to
           50 rows per bucket from the first 450 voters loaded (sorted by county + voter key).
@@ -194,6 +204,19 @@ export default async function AdminGotvPage({ searchParams }: Props) {
           ))}
         </div>
 
+        <details className="mt-8 rounded-card border border-deep-soil/10 bg-cream-canvas/50 p-4 open:bg-cream-canvas">
+          <summary className="cursor-pointer font-body text-sm font-semibold text-deep-soil">
+            CSV preview (read-only, copy to clipboard) — {contactPlanCsvPreview.split("\n").length - 1} data rows
+          </summary>
+          <p className="mt-2 text-xs text-deep-soil/60">
+            Same rows as the tables below, one line per row; includes bucket and semicolon-joined reason codes. No
+            server export, no queue, no assignment.
+          </p>
+          <pre className="mt-3 max-h-80 overflow-auto rounded border border-deep-soil/10 bg-white/80 p-3 font-mono text-[11px] leading-relaxed text-deep-soil/90 [overflow-wrap:anywhere]">
+            {contactPlanCsvPreview}
+          </pre>
+        </details>
+
         {planReview.buckets.map((b) => (
           <div key={`table-${b.key}`} className="mt-8">
             <h3 className="font-heading text-lg font-bold">
@@ -207,6 +230,7 @@ export default async function AdminGotvPage({ searchParams }: Props) {
                 <thead>
                   <tr className="border-b border-deep-soil/10 bg-deep-soil/5">
                     <th className="px-3 py-2 font-semibold">Voter</th>
+                    <th className="px-3 py-2 font-semibold">County</th>
                     <th className="px-3 py-2 font-semibold">Geography</th>
                     <th className="px-3 py-2 font-semibold">Rel.</th>
                     <th className="px-3 py-2 font-semibold">Ix</th>
@@ -218,7 +242,7 @@ export default async function AdminGotvPage({ searchParams }: Props) {
                 <tbody>
                   {b.rows.length === 0 ? (
                     <tr>
-                      <td colSpan={7} className="px-3 py-6 text-center text-deep-soil/55">
+                      <td colSpan={8} className="px-3 py-6 text-center text-deep-soil/55">
                         No rows in this sample.
                       </td>
                     </tr>
@@ -229,6 +253,7 @@ export default async function AdminGotvPage({ searchParams }: Props) {
                           <div className="font-mono text-xs text-deep-soil/70">{r.voterFileKey}</div>
                           <div>{r.voterName}</div>
                         </td>
+                        <td className="px-3 py-2 align-top font-mono text-xs text-deep-soil/80">{r.countyId}</td>
                         <td className="px-3 py-2 align-top text-xs">
                           {r.countySlug}
                           {r.precinct ? ` · p${r.precinct}` : ""}
@@ -370,8 +395,8 @@ export default async function AdminGotvPage({ searchParams }: Props) {
       </section>
 
       <p className="mt-10 text-xs text-deep-soil/50">
-        CSV export for contact-plan samples is deferred to <strong>GOTV-3</strong> if product wants a governed export
-        rail.
+        <strong>CSV</strong>: read-only preview is in Contact Plan Review above. A governed download or outbound sheet
+        rail can ship with <strong>GOTV-3+</strong> if product requires it.
       </p>
     </div>
   );
