@@ -1,0 +1,1174 @@
+{
+  "controversial": [
+    {
+      "billNumber": "HB1245",
+      "session": "2019/2019R",
+      "role": "Primary Sponsor for House",
+      "title": "TO INCLUDE A PODIATRIST WITHIN THE DEFINITION OF \"PHYSICIAN\" FOR PURPOSES OF THE SALES TAX EXEMPTION FOR DURABLE MEDICAL EQUIPMENT, MOBILITY ENHANCING EQUIPMENT, PROSTHETIC DEVICES, AND DISPOSABLE MEDICAL SUPPLIES.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "HB1300",
+      "session": "2019/2019R",
+      "role": "Primary Sponsor for House",
+      "title": "TO ELIMINATE THE INCOME TAX DEDUCTION FOR GAMBLING LOSSES; AND TO DEDICATE THE SAVINGS FROM THE ELIMINATION OF THE INCOME TAX DEDUCTION FOR GAMBLING LOSSES TO BE USED FOR HIGHWAYS AND ROADWAYS IN THE STATE.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "HB1653",
+      "session": "2019/2019R",
+      "role": "Primary Sponsor for House",
+      "title": "TO ELIMINATE THE INCOME TAX DEDUCTION FOR GAMBLING LOSSES; AND TO DEDICATE THE SAVINGS FROM THE ELIMINATION OF THE INCOME TAX DEDUCTION FOR GAMBLING LOSSES TO BE USED FOR REDUCING THE DEVELOPMENTAL DISABILITIES WAITING LIST.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "HCR1010",
+      "session": "2019/2019R",
+      "role": "CoSponsor for House",
+      "title": "TO RECOGNIZE THAT ABUSE AND NEGLECT OF CHILDREN IS A SIGNIFICANT PUBLIC HEALTH PROBLEM; TO COMMEND THE IMPORTANT WORK BEING DONE TO COMBAT THE PROBLEM; AND TO PROCLAIM APRIL 11, 2019, AS “CHILDREN’S ADVOCACY CENTER DAY”.",
+      "topics": [
+        "PUBLIC_HEALTH_EMERGENCY"
+      ],
+      "impactHint": "EXECUTIVE_POWER_HEALTH"
+    },
+    {
+      "billNumber": "SB149",
+      "session": "2019/2019R",
+      "role": "CoSponsor",
+      "title": "TO CREATE THE ARKANSAS HUMAN LIFE PROTECTION ACT; AND TO ABOLISH ABORTION IN ARKANSAS AND PROTECT THE LIVES OF UNBORN CHILDREN.",
+      "topics": [
+        "ABORTION_REPRODUCTIVE"
+      ],
+      "impactHint": "CULTURE_WAR"
+    },
+    {
+      "billNumber": "SB235",
+      "session": "2019/2019R",
+      "role": "Primary Sponsor",
+      "title": "TO ALLOW SCHOOL EMPLOYEES TO ACT AS ELECTION OFFICIALS; AND TO AMEND THE LAW CONCERNING ELECTION ADMINISTRATION.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB640",
+      "session": "2019/2019R",
+      "role": "CoSponsor",
+      "title": "TO ELIMINATE THE INCOME TAX DEDUCTION FOR GAMBLING LOSSES; AND TO DEDICATE THE SAVINGS FROM THE ELIMINATION OF THE INCOME TAX DEDUCTION FOR GAMBLING LOSSES TO BE USED FOR REDUCING THE DEVELOPMENTAL DISABILITIES WAITING LIST.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "HB1338",
+      "session": "2021/2021R",
+      "role": "CoSponsor for House",
+      "title": "TO AMEND ELECTION LAW; TO AMEND THE PETITION PROCESS TO BE ON THE BALLOT AS A CANDIDATE FOR PRESIDENT OR VICE PRESIDENT OF THE UNITED STATES; AND TO INCREASE THE NUMBER OF SIGNATURES REQUIRED TO BE LISTED ON THE BALLOT.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "HB1361",
+      "session": "2021/2021R",
+      "role": "CoSponsor for House",
+      "title": "TO PROVIDE FOR THE TAX TREATMENT OF CERTAIN LOANS, PAYMENTS, AND EXPENSES RELATED TO CORONAVIRUS 2019 (COVID-19) RELIEF PROGRAMS; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "PUBLIC_HEALTH_EMERGENCY"
+      ],
+      "impactHint": "EXECUTIVE_POWER_HEALTH"
+    },
+    {
+      "billNumber": "HB1546",
+      "session": "2021/2021R",
+      "role": "CoSponsor for House",
+      "title": "TO PHASE OUT THE SOFT DRINK TAX; AND TO PROVIDE FOR ADDITIONAL AMOUNTS TO BE DISTRIBUTED TO OFFSET THE REVENUE REDUCTION RESULTING FROM THE PHASEOUT OF THE SOFT DRINK TAX.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "HB1547",
+      "session": "2021/2021R",
+      "role": "CoSponsor for House",
+      "title": "TO PROHIBIT THE STATE FROM MANDATING A VACCINE OR IMMUNIZATION FOR CORONAVIRUS 2019 (COVID-19); TO GOVERN REQUIREMENTS FOR A VACCINE OR IMMUNIZATION FOR CORONAVIRUS 2019 (COVID-19); AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "PUBLIC_HEALTH_EMERGENCY"
+      ],
+      "impactHint": "EXECUTIVE_POWER_HEALTH"
+    },
+    {
+      "billNumber": "HB1595",
+      "session": "2021/2021R",
+      "role": "Primary Sponsor for House",
+      "title": "TO AMEND ARKANSAS LAW CONCERNING VOTING MACHINES.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "HB1615",
+      "session": "2021/2021R",
+      "role": "Primary Sponsor for House",
+      "title": "TO AMEND ELECTION PROCEDURES; TO AMEND THE REQUIREMENTS FOR ELECTION OFFICIALS; TO AMEND THE LOCATION OF POLLING PLACES; AND TO AMEND THE LAW CONCERNING THE INFORMATION CONTAINED IN THE VOTER REGISTRATION LIST.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "HB1659",
+      "session": "2021/2021R",
+      "role": "CoSponsor for House",
+      "title": "TO AMEND THE DEATH CERTIFICATE REGISTRATION PROCESS FOR THE SIGNATURE OF THE MEDICAL CERTIFICATE.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "HB1715",
+      "session": "2021/2021R",
+      "role": "Primary Sponsor for House",
+      "title": "TO AMEND ARKANSAS LAW CONCERNING ABSENTEE BALLOTS; TO AMEND ELECTION LAW; TO AMEND THE LAW CONCERNING VOTING BY ABSENTEE BALLOT; AND TO AMEND THE LAW CONCERNING SPOILED BALLOTS.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "HB1957",
+      "session": "2021/2021R",
+      "role": "CoSponsor for House",
+      "title": "CONCERNING THE ENFORCEMENT OF FEDERAL FIREARM BANS WITHIN THE STATE OF ARKANSAS; AND CONCERNING STATE CONSTITUTIONAL RIGHTS.",
+      "topics": [
+        "FIREARMS"
+      ],
+      "impactHint": "SECOND_AMENDMENT"
+    },
+    {
+      "billNumber": "HB1977",
+      "session": "2021/2021R",
+      "role": "CoSponsor for House",
+      "title": "TO PROVIDE EMPLOYEE EXEMPTIONS FROM FEDERAL MANDATES AND EMPLOYER MANDATES RELATED TO CORONAVIRUS 2019 (COVID-19); AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "PUBLIC_HEALTH_EMERGENCY"
+      ],
+      "impactHint": "EXECUTIVE_POWER_HEALTH"
+    },
+    {
+      "billNumber": "SB236",
+      "session": "2021/2021R",
+      "role": "CoSponsor",
+      "title": "TO EXEMPT UNEMPLOYMENT COMPENSATION BENEFITS FROM INCOME TAX DURING A CERTAIN TIME PERIOD; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "SB244",
+      "session": "2021/2021R",
+      "role": "Primary Sponsor",
+      "title": "TO AMEND THE DEFINITION OF “INSTRUCTIONAL MATERIALS” FOR PURPOSES OF THE SALES TAX EXEMPTION FOR INSTRUCTIONAL MATERIALS PURCHASED BY A SCHOOL; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "SB254",
+      "session": "2021/2021R",
+      "role": "Primary Sponsor",
+      "title": "TO ENSURE THAT BUSINESSES ARE NOT PENALIZED BY THE DEPARTMENT OF HEALTH FOR THE BEHAVIOR OF THEIR PATRONS OR CUSTOMERS DURING THE CORONAVIRUS 2019 (COVID-19) PUBLIC HEALTH EMERGENCY; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "PUBLIC_HEALTH_EMERGENCY"
+      ],
+      "impactHint": "EXECUTIVE_POWER_HEALTH"
+    },
+    {
+      "billNumber": "SB300",
+      "session": "2021/2021R",
+      "role": "CoSponsor",
+      "title": "PROHIBITING PAROLE FOR A PERSON CONVICTED OF THE OFFENSE OF POSSESSION OF A FIREARM BY CERTAIN PERSONS UNDER CERTAIN CIRCUMSTANCES; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "FIREARMS",
+        "CRIMINAL_JUSTICE"
+      ],
+      "impactHint": "SECOND_AMENDMENT"
+    },
+    {
+      "billNumber": "SB304",
+      "session": "2021/2021R",
+      "role": "CoSponsor",
+      "title": "TO CREATE AN INCOME TAX CREDIT FOR CERTAIN FULL-TIME LAW ENFORCEMENT OFFICERS.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "SB378",
+      "session": "2021/2021R",
+      "role": "Primary Sponsor",
+      "title": "TO AMEND ARKANSAS LAW CONCERNING UNANTICIPATED DISCRETIONARY FEDERAL FUNDS RELATED TO A STATEWIDE STATE OF DISASTER EMERGENCY RELATED TO PUBLIC HEALTH; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "PUBLIC_HEALTH_EMERGENCY"
+      ],
+      "impactHint": "EXECUTIVE_POWER_HEALTH"
+    },
+    {
+      "billNumber": "SB379",
+      "session": "2021/2021R",
+      "role": "Primary Sponsor",
+      "title": "CONCERNING THE PROCESS FOR EMERGENCY DECLARATIONS AND DIRECTIVES ADDRESSING A STATEWIDE STATE OF DISASTER EMERGENCY RELATED TO PUBLIC HEALTH; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "PUBLIC_HEALTH_EMERGENCY"
+      ],
+      "impactHint": "EXECUTIVE_POWER_HEALTH"
+    },
+    {
+      "billNumber": "SB417",
+      "session": "2021/2021R",
+      "role": "Primary Sponsor",
+      "title": "PERMITTING A PERSON CONVICTED OF AN ANTITRUST VIOLATION OR OTHER UNLAWFUL BUSINESS PRACTICE TO LAWFULLY POSSESS A FIREARM UNDER STATE LAW.",
+      "topics": [
+        "FIREARMS"
+      ],
+      "impactHint": "SECOND_AMENDMENT"
+    },
+    {
+      "billNumber": "SB485",
+      "session": "2021/2021R",
+      "role": "Primary Sponsor",
+      "title": "TO AMEND ARKANSAS LAW CONCERNING EARLY VOTING; AND TO AMEND ARKANSAS LAW CONCERNING ELECTIONS.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB486",
+      "session": "2021/2021R",
+      "role": "Primary Sponsor",
+      "title": "TO AMEND THE LAW CONCERNING ELECTIONEERING; AND TO AMEND THE LAW CONCERNING PENALTIES FOR MISDEMEANOR OFFENSES RELATED TO VOTING.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB487",
+      "session": "2021/2021R",
+      "role": "Primary Sponsor",
+      "title": "CONCERNING THE ESTABLISHMENT AND ALTERATION OF PRECINCT BOUNDARIES, POLLING SITES, AND VOTE CENTERS; AND TO AMEND ARKANSAS ELECTION LAW.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB498",
+      "session": "2021/2021R",
+      "role": "CoSponsor",
+      "title": "TO AMEND THE ARKANSAS LAW CONCERNING THE ENFORCEMENT OF ELECTION LAWS.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB556",
+      "session": "2021/2021R",
+      "role": "CoSponsor",
+      "title": "TO CREATE THE ARKANSAS ELECTION INTEGRITY ACT OF 2021; TO AMEND THE LAW CONCERNING THE STATE BOARD OF ELECTION COMMISSIONERS; AND TO CREATE A PROCESS FOR THE STATE BOARD OF ELECTION COMMISSIONERS TO CONDUCT AN ELECTION.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB557",
+      "session": "2021/2021R",
+      "role": "CoSponsor",
+      "title": "TO AMEND ELECTION LAW; TO AMEND THE DUTIES OF MEMBERS OF A COUNTY BOARD OF ELECTION COMMISSIONERS; AND TO CLARIFY THE DUTIES OF COUNTY EMPLOYEES DESIGNATED AS ELECTION OFFICIALS.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB582",
+      "session": "2021/2021R",
+      "role": "Primary Sponsor",
+      "title": "TO AMEND ARKANSAS LAW CONCERNING COUNTY BOARDS OF ELECTION COMMISSIONERS; TO AMEND HOW COUNTY BOARDS OF ELECTION COMMISSIONERS TAKE THE OATH; AND TO AMEND ARKANSAS LAW CONCERNING ELECTIONS.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB6",
+      "session": "2021/2021R",
+      "role": "CoSponsor",
+      "title": "TO CREATE THE ARKANSAS UNBORN CHILD PROTECTION ACT; TO ABOLISH ABORTION IN ARKANSAS AND PROTECT THE LIVES OF UNBORN CHILDREN; AND TO PROTECT ALL HUMAN LIFE.",
+      "topics": [
+        "ABORTION_REPRODUCTIVE"
+      ],
+      "impactHint": "CULTURE_WAR"
+    },
+    {
+      "billNumber": "SB644",
+      "session": "2021/2021R",
+      "role": "Primary Sponsor",
+      "title": "CONCERNING THE INVESTIGATION OF VIOLATIONS OF ELECTION LAW; AND TO ESTABLISH AN ELECTION LAW VIOLATION HOTLINE.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB739",
+      "session": "2021/2021R",
+      "role": "Primary Sponsor",
+      "title": "TO PROVIDE EMPLOYEE EXEMPTIONS FROM FEDERAL MANDATES AND EMPLOYER MANDATES RELATED TO CORONAVIRUS 2019 (COVID-19); AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "PUBLIC_HEALTH_EMERGENCY"
+      ],
+      "impactHint": "EXECUTIVE_POWER_HEALTH"
+    },
+    {
+      "billNumber": "HB1001",
+      "session": "2021/2021S2",
+      "role": "CoSponsor for House",
+      "title": "TO AMEND THE STATE INCOME TAX; TO CHANGE THE NAME AND FUNDING OF THE LONG TERM RESERVE FUND; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "HB1008",
+      "session": "2021/2021S2",
+      "role": "CoSponsor for House",
+      "title": "TO CREATE AN INCOME TAX CREDIT FOR CERTAIN FULL-TIME LAW ENFORCEMENT OFFICERS.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "HB1010",
+      "session": "2021/2021S2",
+      "role": "CoSponsor for House",
+      "title": "TO CREATE THE ARKANSAS HUMAN HEARTBEAT AND HUMAN LIFE CIVIL JUSTICE ACT; TO SAVE THE LIVES OF UNBORN CHILDREN AND PROTECT THE HEALTH OF WOMEN THROUGH CIVIL LIABILITY; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "ABORTION_REPRODUCTIVE"
+      ],
+      "impactHint": "CULTURE_WAR"
+    },
+    {
+      "billNumber": "HB1012",
+      "session": "2021/2021S2",
+      "role": "CoSponsor for House",
+      "title": "TO CREATE THE ARKANSAS HUMAN HEARTBEAT AND HUMAN LIFE CIVIL JUSTICE ACT; TO SAVE THE LIVES OF UNBORN CHILDREN AND PROTECT THE HEALTH OF WOMEN THROUGH CIVIL LIABILITY; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "ABORTION_REPRODUCTIVE"
+      ],
+      "impactHint": "CULTURE_WAR"
+    },
+    {
+      "billNumber": "SB1",
+      "session": "2021/2021S2",
+      "role": "CoSponsor",
+      "title": "TO AMEND THE STATE INCOME TAX; TO CHANGE THE NAME AND FUNDING OF THE LONG TERM RESERVE FUND; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "SB13",
+      "session": "2021/2021S2",
+      "role": "CoSponsor",
+      "title": "TO CREATE THE ARKANSAS HUMAN HEARTBEAT AND HUMAN LIFE CIVIL JUSTICE ACT; TO SAVE THE LIVES OF UNBORN CHILDREN AND PROTECT THE HEALTH OF WOMEN THROUGH CIVIL LIABILITY; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "ABORTION_REPRODUCTIVE"
+      ],
+      "impactHint": "CULTURE_WAR"
+    },
+    {
+      "billNumber": "SB14",
+      "session": "2021/2021S2",
+      "role": "CoSponsor",
+      "title": "TO CREATE THE ARKANSAS HUMAN HEARTBEAT AND HUMAN LIFE CIVIL JUSTICE ACT; TO SAVE THE LIVES OF UNBORN CHILDREN AND PROTECT THE HEALTH OF WOMEN THROUGH CIVIL LIABILITY; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "ABORTION_REPRODUCTIVE"
+      ],
+      "impactHint": "CULTURE_WAR"
+    },
+    {
+      "billNumber": "SB15",
+      "session": "2021/2021S2",
+      "role": "CoSponsor",
+      "title": "TO CREATE THE ARKANSAS HUMAN HEARTBEAT AND HUMAN LIFE CIVIL JUSTICE ACT; TO SAVE THE LIVES OF UNBORN CHILDREN AND PROTECT THE HEALTH OF WOMEN THROUGH CIVIL LIABILITY; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "ABORTION_REPRODUCTIVE"
+      ],
+      "impactHint": "CULTURE_WAR"
+    },
+    {
+      "billNumber": "SB9",
+      "session": "2021/2021S2",
+      "role": "CoSponsor",
+      "title": "TO CREATE AN INCOME TAX CREDIT FOR CERTAIN FULL-TIME LAW ENFORCEMENT OFFICERS.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "HB1002",
+      "session": "2021/2022S3",
+      "role": "CoSponsor for House",
+      "title": "TO REDUCE ARKANSAS INCOME TAXES; TO ADOPT FEDERAL LAW ON DEPRECIATION AND EXPENSING OF PROPERTY; TO CREATE AN INCOME-TAX CREDIT FOR CERTAIN TAXPAYERS; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "SB1",
+      "session": "2021/2022S3",
+      "role": "CoSponsor",
+      "title": "TO REDUCE ARKANSAS INCOME TAXES; TO ADOPT FEDERAL LAW ON DEPRECIATION AND EXPENSING OF PROPERTY; TO CREATE AN INCOME-TAX CREDIT FOR CERTAIN TAXPAYERS; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "HB1031",
+      "session": "2023/2023R",
+      "role": "Primary Sponsor for House",
+      "title": "TO AMEND THE ARKANSAS HIGHWAY REVENUE DISTRIBUTION LAW CONCERNING DISTRIBUTIONS TO COUNTY AID FUNDS AND MUNICIPAL AID FUNDS.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "HB1032",
+      "session": "2023/2023R",
+      "role": "CoSponsor for House",
+      "title": "TO INCREASE THE AMOUNT OF THE HOMESTEAD PROPERTY TAX CREDIT.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "HB1123",
+      "session": "2023/2023R",
+      "role": "Primary Sponsor for House",
+      "title": "TO AMEND LAWS CONCERNING CONCEALED CARRY PERMITS; AND TO AUTHORIZE AN INDIVIDUAL WHO HAS SOUGHT VOLUNTARY MENTAL HEALTH TREATMENT TO OBTAIN A CONCEALED CARRY PERMIT AFTER A CERTAIN TIME PERIOD.",
+      "topics": [
+        "FIREARMS"
+      ],
+      "impactHint": "SECOND_AMENDMENT"
+    },
+    {
+      "billNumber": "HB1148",
+      "session": "2023/2023R",
+      "role": "Primary Sponsor for House",
+      "title": "TO PROVIDE AN INCOME TAX CREDIT FOR CERTAIN EXPENSES FOR BABY SUPPLIES.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "HB1404",
+      "session": "2023/2023R",
+      "role": "CoSponsor for House",
+      "title": "TO AMEND ELECTION PROCEDURES CONCERNING BALLOT TABULATORS.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "HB1405",
+      "session": "2023/2023R",
+      "role": "CoSponsor for House",
+      "title": "TO AMEND THE DEFINITION OF ELECTION MEDIA; AND TO AMEND THE DEFINITION UNDER ELECTION LAW.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "HB1411",
+      "session": "2023/2023R",
+      "role": "CoSponsor for House",
+      "title": "TO AMEND THE PROHIBITION ON THE DELIVERY OF UNSOLICITED ABSENTEE BALLOT APPLICATIONS TO ELECTORS; AND TO AMEND THE LAW CONCERNING ABSENTEE BALLOTS.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "HB1423",
+      "session": "2023/2023R",
+      "role": "CoSponsor for House",
+      "title": "TO AMEND THE LAW CONCERNING THE RECOUNT OF BALLOTS; AND TO AMEND ELECTION PROCEDURES.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "HB1457",
+      "session": "2023/2023R",
+      "role": "Primary Sponsor for House",
+      "title": "TO ESTABLISH THE ARKANSAS POLL WATCHERS BILL OF RIGHTS ACT OF 2023; TO AMEND THE LAW CONCERNING POLL WATCHERS; AND TO AMEND THE LAW CONCERNING ELECTION PROCEDURES.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "HB1461",
+      "session": "2023/2023R",
+      "role": "CoSponsor for House",
+      "title": "TO REQUIRE LEGISLATIVE REVIEW OF NEW FEDERAL ELECTION GUIDANCE; AND TO AMEND THE DUTIES OF THE SECRETARY OF STATE.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "HB1464",
+      "session": "2023/2023R",
+      "role": "Primary Sponsor for House",
+      "title": "TO AMEND THE LAW CONCERNING COMPLAINTS OF ELECTION LAW VIOLATIONS; AND TO AMEND THE LAW CONCERNING THE STATE BOARD OF ELECTION COMMISSIONERS.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "HB1469",
+      "session": "2023/2023R",
+      "role": "CoSponsor for House",
+      "title": "TO AMEND THE ELECTION PROCEDURES OF MUNICIPALITIES.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "HB1487",
+      "session": "2023/2023R",
+      "role": "Primary Sponsor for House",
+      "title": "TO CREATE THE BALLOT SECURITY ACT OF 2023; AND TO AMEND ELECTION LAW CONCERNING THE HANDLING OF ELECTION BALLOTS.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "HB1513",
+      "session": "2023/2023R",
+      "role": "CoSponsor for House",
+      "title": "TO CREATE THE ELECTION INTEGRITY UNIT WITHIN THE ATTORNEY GENERAL'S OFFICE; TO AMEND THE DUTIES OF THE STATE BOARD OF ELECTION COMMISSIONERS; AND TO AMEND THE LAW CONCERNING VIOLATIONS OF ELECTION LAW.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "HB1541",
+      "session": "2023/2023R",
+      "role": "Primary Sponsor for House",
+      "title": "TO INCREASE AMOUNTS PAID BY QUORUM COURTS FOR THE CONTINUING EDUCATION OF COUNTY OFFICIALS; AND TO INCREASE THE AMOUNT OF REAL PROPERTY TRANSFER TAX REVENUE DISTRIBUTED FOR CONTINUING EDUCATION OF COUNTY OFFICIALS.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "HB1687",
+      "session": "2023/2023R",
+      "role": "Primary Sponsor for House",
+      "title": "CONCERNING PAPER BALLOTS; TO AMEND THE LAW CONCERNING PAPER BALLOTS AND THE MARKING AND COUNTING OF PAPER BALLOTS; TO AMEND THE LAW CONCERNING THE DECLARATION OF ELECTION RESULTS; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "HJR1007",
+      "session": "2023/2023R",
+      "role": "Primary Sponsor for House",
+      "title": "A CONSTITUTIONAL AMENDMENT TO LEVY AN EXCISE TAX ON CERTAIN TAXABLE SALES TO REIMBURSE COUNTIES FOR THE HOMESTEAD PROPERTY TAX CREDIT AND ADMINISTER THE APPLICATION OF THE HOMESTEAD PROPERTY TAX CREDIT.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "SB250",
+      "session": "2023/2023R",
+      "role": "Primary Sponsor",
+      "title": "TO AMEND THE LAW CONCERNING PAPER BALLOTS; TO AMEND THE LAW CONCERNING MARKING AND COUNTING PAPER BALLOTS; TO AMEND THE LAW CONCERNING THE DECLARATION OF ELECTION RESULTS; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB253",
+      "session": "2023/2023R",
+      "role": "CoSponsor",
+      "title": "TO AMEND THE LAW CONCERNING DAMAGED BALLOTS; AND TO AMEND THE LAW CONCERNING ELECTION PROCEDURES.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB254",
+      "session": "2023/2023R",
+      "role": "CoSponsor",
+      "title": "AN ACT TO ELIMINATE WRITE-IN CANDIDATES IN ELECTIONS; TO AMEND ELECTION PROCEDURES; AND TO AMEND THE LAW CONCERNING ELECTION.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB255",
+      "session": "2023/2023R",
+      "role": "CoSponsor",
+      "title": "TO AMEND THE LAW CONCERNING THE ALLOCATION OF ELECTION EXPENSES; AND TO RESTRICT THE SOURCE OF ELECTION FUNDING.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB258",
+      "session": "2023/2023R",
+      "role": "CoSponsor",
+      "title": "TO AMEND THE METHOD OF VOTING ABSENTEE; AND TO PROHIBIT THE USE OF ABSENTEE BALLOT DROP BOXES.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB272",
+      "session": "2023/2023R",
+      "role": "CoSponsor",
+      "title": "TO CREATE AN ELECTION INTEGRITY REVIEW PROCESS; TO AMEND THE DUTIES OF THE STATE BOARD OF ELECTION COMMISSIONERS; AND TO AMEND THE LAW CONCERNING ELECTION LAW VIOLATIONS.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB273",
+      "session": "2023/2023R",
+      "role": "CoSponsor",
+      "title": "TO AMEND ELECTION LAW CONCERNING POLLING SITES; AND TO AMEND THE LOCATION OF VOTE CENTERS.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB275",
+      "session": "2023/2023R",
+      "role": "Primary Sponsor",
+      "title": "TO AMEND THE LAW CONCERNING ELECTIONEERING; TO AMEND THE LAW CONCERNING POLLING SITES AND VOTE CENTERS; AND TO AMEND THE LAW CONCERNING THE DESIGNATION OF POLLING SITES BY COUNTY BOARDS OF ELECTION COMMISSIONERS.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB292",
+      "session": "2023/2023R",
+      "role": "CoSponsor",
+      "title": "TO AMEND THE COMPENSATION OF A MEMBER OF A COUNTY BOARD OF ELECTION COMMISSIONERS; AND TO AMEND THE DUTIES OF A MEMBER OF A COUNTY BOARD OF ELECTION COMMISSIONERS.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB293",
+      "session": "2023/2023R",
+      "role": "CoSponsor",
+      "title": "TO AMEND THE LAW CONCERNING THE CORRECTION OF ERRORS ON BALLOTS; TO AMEND THE LAW CONCERNING ELECTION PROCEDURES; AND TO CREATE A PROCEDURE FOR CANDIDATE REVIEW OF BALLOTS.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB307",
+      "session": "2023/2023R",
+      "role": "Primary Sponsor",
+      "title": "TO CREATE A MONUMENT TO THE UNBORN; TO CREATE A MONUMENT ON STATE CAPITOL GROUNDS; AND TO AMEND THE LAW CONCERNING THE DUTIES OF THE SECRETARY OF STATE.",
+      "topics": [
+        "ABORTION_REPRODUCTIVE"
+      ],
+      "impactHint": "CULTURE_WAR"
+    },
+    {
+      "billNumber": "SB377",
+      "session": "2023/2023R",
+      "role": "Primary Sponsor",
+      "title": "TO AMEND THE LAW CONCERNING INITIATIVE PETITIONS; TO CREATE A MISDEMEANOR OFFENSE CONCERNING INITIATIVE PETITION SIGNATURES; AND TO ESTABLISH THE DEFINITION OF AND REGULATE PAID PETITION BLOCKERS.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB495",
+      "session": "2023/2023R",
+      "role": "CoSponsor",
+      "title": "TO CREATE THE PROTECT ARKANSAS ACT; TO AMEND ARKANSAS LAW CONCERNING SENTENCING AND PAROLE; TO AMEND ARKANSAS LAW CONCERNING CERTAIN CRIMINAL OFFENSES; AND TO CREATE THE LEGISLATIVE RECIDIVISM REDUCTION TASK FORCE.",
+      "topics": [
+        "CRIMINAL_JUSTICE"
+      ],
+      "impactHint": "CRIMINAL_LAW"
+    },
+    {
+      "billNumber": "SB549",
+      "session": "2023/2023R",
+      "role": "CoSponsor",
+      "title": "TO REDUCE THE INCOME TAX RATES APPLICABLE TO INDIVIDUALS, TRUSTS, ESTATES, AND CORPORATIONS.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "HB1001",
+      "session": "2023/2023S1",
+      "role": "CoSponsor for House",
+      "title": "TO REDUCE THE INCOME TAX RATES APPLICABLE TO INDIVIDUALS, TRUSTS, ESTATES, AND CORPORATIONS; TO CREATE AN INFLATIONARY RELIEF INCOME TAX CREDIT FOR CERTAIN TAXPAYERS; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "HB1002",
+      "session": "2023/2023S1",
+      "role": "CoSponsor for House",
+      "title": "TO PROHIBIT THE GOVERNMENT FROM MANDATING A VACCINATION OR IMMUNIZATION FOR CORONAVIRUS 2019 (COVID-19) OR ANY SUBVARIANTS OF CORONAVIRUS 2019 (COVID-19), OR BOTH; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "PUBLIC_HEALTH_EMERGENCY"
+      ],
+      "impactHint": "EXECUTIVE_POWER_HEALTH"
+    },
+    {
+      "billNumber": "HB1007",
+      "session": "2023/2023S1",
+      "role": "CoSponsor for House",
+      "title": "TO REDUCE THE INCOME TAX RATES APPLICABLE TO INDIVIDUALS, TRUSTS, ESTATES, AND CORPORATIONS; TO CREATE AN INFLATIONARY RELIEF INCOME TAX CREDIT FOR CERTAIN TAXPAYERS; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "SB2",
+      "session": "2023/2023S1",
+      "role": "CoSponsor",
+      "title": "TO REDUCE THE INCOME TAX RATES APPLICABLE TO INDIVIDUALS, TRUSTS, ESTATES, AND CORPORATIONS; TO CREATE AN INFLATIONARY RELIEF INCOME TAX CREDIT FOR CERTAIN TAXPAYERS; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "SB3",
+      "session": "2023/2023S1",
+      "role": "CoSponsor",
+      "title": "TO PROHIBIT THE GOVERNMENT FROM MANDATING A VACCINATION OR IMMUNIZATION FOR CORONAVIRUS 2019 (COVID-19) OR ANY SUBVARIANTS OF CORONAVIRUS 2019 (COVID-19), OR BOTH; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "PUBLIC_HEALTH_EMERGENCY"
+      ],
+      "impactHint": "EXECUTIVE_POWER_HEALTH"
+    },
+    {
+      "billNumber": "SB8",
+      "session": "2023/2023S1",
+      "role": "CoSponsor",
+      "title": "TO REDUCE THE INCOME TAX RATES APPLICABLE TO INDIVIDUALS, TRUSTS, ESTATES, AND CORPORATIONS; TO CREATE AN INFLATIONARY RELIEF INCOME TAX CREDIT FOR CERTAIN TAXPAYERS; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "HB1001",
+      "session": "2023/2024S2",
+      "role": "CoSponsor for House",
+      "title": "TO REDUCE THE INCOME TAX LEVIED ON INDIVIDUALS, TRUSTS, ESTATES, AND CORPORATIONS; TO TRANSFER SURPLUS FUNDS TO THE ARKANSAS RESERVE FUND SET-ASIDE; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "HB1002",
+      "session": "2023/2024S2",
+      "role": "CoSponsor for House",
+      "title": "TO INCREASE THE HOMESTEAD PROPERTY TAX CREDIT; AND TO REQUIRE A REPORT CONCERNING THE HOMESTEAD PROPERTY TAX CREDIT AND THE BALANCE OF THE PROPERTY TAX RELIEF TRUST FUND.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "SB1",
+      "session": "2023/2024S2",
+      "role": "CoSponsor",
+      "title": "TO REDUCE THE INCOME TAX LEVIED ON INDIVIDUALS, TRUSTS, ESTATES, AND CORPORATIONS; TO TRANSFER SURPLUS FUNDS TO THE ARKANSAS RESERVE FUND SET-ASIDE; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "SB3",
+      "session": "2023/2024S2",
+      "role": "CoSponsor",
+      "title": "TO INCREASE THE HOMESTEAD PROPERTY TAX CREDIT; AND TO REQUIRE A REPORT CONCERNING THE HOMESTEAD PROPERTY TAX CREDIT AND THE BALANCE OF THE PROPERTY TAX RELIEF TRUST FUND.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "HB1222",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor for House",
+      "title": "TO REQUIRE THE ATTORNEY GENERAL TO REVIEW BALLOT TITLES FOR CONFLICTS WITH THE UNITED STATES CONSTITUTION AND FEDERAL STATUTES; AND TO PROHIBIT THE SUBMISSION OF CONFLICTING INITIATIVE PETITIONS AND REFERENDUM PETITIONS.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "HB1303",
+      "session": "2025/2025R",
+      "role": "CoSponsor for House",
+      "title": "TO CREATE THE SUSTAINABLE AVIATION FUEL INCENTIVE ACT; AND TO CREATE AN INCOME TAX CREDIT RELATED TO SUSTAINABLE AVIATION FUEL.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "HB1534",
+      "session": "2025/2025R",
+      "role": "CoSponsor for House",
+      "title": "TO INCREASE THE HOMESTEAD PROPERTY TAX CREDIT.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "HB1693",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor for House",
+      "title": "TO AMEND THE LAW CONCERNING DAMAGED OR DEFECTIVE BALLOTS; AND TO ALLOW THE STATE BOARD OF ELECTION COMMISSIONERS TO PROMULGATE RULES REGARDING THE DUPLICATION OF DAMAGED OR DEFECTIVE BALLOTS.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "HB1713",
+      "session": "2025/2025R",
+      "role": "CoSponsor for House",
+      "title": "TO REQUIRE BALLOT TITLES FOR INITIATED MEASURES TO BE AT OR UNDER A CERTAIN READING LEVEL; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "HB1732",
+      "session": "2025/2025R",
+      "role": "CoSponsor for House",
+      "title": "TO INCREASE THE AMOUNT OF THE INCOME TAX DEDUCTION ALLOWED FOR A TEACHER'S CLASSROOM INVESTMENT.",
+      "topics": [
+        "TAX_FISCAL",
+        "EDUCATION_CURRICULUM"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "HB1837",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor for House",
+      "title": "TO AMEND THE LAW CONCERNING DISCLOSURE FOR MATTERS REFERRED TO VOTERS; AND TO BAN FOREIGN FUNDING FOR BALLOT MEASURES; TO AMEND PORTIONS OF THE ARKANSAS CODE THAT RESULTED FROM INITIATED ACT 1 OF 1996.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB207",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "title": "TO AMEND THE LAW CONCERNING INITIATIVE AND REFERENDUM PETITIONS; TO REQUIRE A CANVASSER TO DISCLOSE THAT PETITION FRAUD IS A CRIMINAL OFFENSE; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB208",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "title": "TO AMEND THE LAW CONCERNING INITIATIVE AND REFERENDUM PETITIONS; TO VIEW A CANVASSER TO REQUEST PHOTO IDENTIFICATION BEFORE OBTAINING A SIGNATURE; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB210",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "title": "TO REQUIRE THE SIGNER TO READ THE BALLOT TITLE OF THE PETITION IN THE PRESENCE OF A CANVASSER; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB211",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "title": "TO AMEND THE LAW CONCERNING INITIATIVE PETITIONS AND REFERENDUM PETITIONS; TO REQUIRE A CANVASSER TO SUBMIT AN AFFIDAVIT BEFORE SIGNATURES CAN BE COUNTED; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB263",
+      "session": "2025/2025R",
+      "role": "CoSponsor",
+      "title": "TO INCREASE THE HOMESTEAD PROPERTY TAX CREDIT.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    },
+    {
+      "billNumber": "SB291",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "title": "TO AMEND THE LAW CONCERNING COMPLAINTS OF ELECTION LAW VIOLATIONS; AND TO AMEND THE DEADLINES FOR COMPLAINTS OF ELECTION LAW VIOLATIONS.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB292",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "title": "TO AMEND THE LAW CONCERNING THE DATE OF AN ANNUAL SCHOOL ELECTION; TO MOVE THE ANNUAL SCHOOL ELECTION IF THE ANNUAL SCHOOL ELECTION IS SCHEDULED ON A STATE HOLIDAY IN CERTAIN INSTANCES; AND TO DECLARE AN EMERGENCY.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB293",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "title": "TO AMEND THE LAW CONCERNING THE REQUIRED POSTINGS AT A POLLING SITE; AND TO AMEND THE LIST CONCERNING REQUIRED POSTING OF NOTICES, INFORMATION, AND MATERIAL AT A POLLING SITE ON ELECTION DAY.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB294",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "title": "TO AMEND THE LAW CONCERNING ELECTION AUDITS; AND TO ALLOW THE STATE BOARD OF ELECTION COMMISSIONERS TO AUDIT A COUNTY IN THE PRECEDING ELECTION IN CERTAIN CIRCUMSTANCES.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB295",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "title": "TO AMEND THE LAW CONCERNING APPROPRIATION FOR ELECTION EXPENSES; AND TO ALLOW COMPENSATION FOR A CERTIFIED ELECTION MONITOR AS AN ELECTION EXPENSE.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB296",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "title": "TO AMEND THE LAW CONCERNING THE DESIGNATION OF AN EARLY VOTING LOCATION BY THE COUNTY CLERK.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB297",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "title": "TO AMEND THE LAW CONCERNING MUNICIPALITIES CHOOSING TO ELECT COUNCIL MEMBERS; AND TO REQUIRE FILING OF THE ORDINANCE DESCRIBING THE ELECTION OF CITY COUNCIL MEMBERS WITH THE COUNTY CLERK.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB299",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "title": "TO REQUIRE A STAFF MEMBER TO WITNESS AN ADMINISTRATOR ASSISTING A RESIDENT OF A LONG-TERM RESIDENTIAL CARE FACILITY WITH ABSENTEE VOTING.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB414",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "title": "TO AMEND THE ELECTION LAWS OF THE STATE OF ARKANSAS; AND TO AMEND ARKANSAS LAW CONCERNING NOTICES RELATED TO THE ELECTION PROCESS.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB482",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "title": "TO REPEAL THE ARKANSAS OPPORTUNITY PUBLIC SCHOOL CHOICE ACT; TO AMEND THE LAW RELATING TO TRANSFERS OF STUDENTS BETWEEN PUBLIC SCHOOLS AND SCHOOL DISTRICTS; AND TO AMEND THE PUBLIC SCHOOL CHOICE ACT OF 2015.",
+      "topics": [
+        "EDUCATION_CURRICULUM"
+      ],
+      "impactHint": "EDUCATION"
+    },
+    {
+      "billNumber": "SB517",
+      "session": "2025/2025R",
+      "role": "CoSponsor",
+      "title": "TO AMEND THE LAW CONCERNING CONDUCT OF ELECTIONS; AND TO ALLOW A COUNTY BOARD OF ELECTION COMMISSIONERS TO DESIGNATE A RESTROOM FOR CAMPAIGN WORKERS AND VOLUNTEERS.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB551",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "title": "TO AMEND THE LAW CONCERNING CANVASSING FOR A PETITION FOR A LOCAL OPTION ELECTION.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "SB584",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "title": "TO AMEND THE LAW CONCERNING LOCAL INITIATIVE AND REFERENDUM PETITIONS.",
+      "topics": [
+        "ELECTIONS_AND_BALLOTS"
+      ],
+      "impactHint": "ELECTION_LAW"
+    },
+    {
+      "billNumber": "HB1103",
+      "session": "2025/2026F",
+      "role": "CoSponsor for House",
+      "title": "TO INCREASE THE HOMESTEAD PROPERTY TAX CREDIT.",
+      "topics": [
+        "TAX_FISCAL"
+      ],
+      "impactHint": "TAX_POLICY"
+    }
+  ],
+  "billsSample": [
+    {
+      "billNumber": "SR22",
+      "title": "TO RECOGNIZE AND COMMEND THE LEGACY KEEPERS NURSE HONOR GUARD OF ARKANSAS FOR OUTSTANDING SERVICE TO THE PROFESSION OF NURSING THROUGHOUT THE STATE OF ARKANSAS.",
+      "detailHref": "https://www.arkleg.state.ar.us/Bills/Detail?id=SR22&ddBienniumSession=2025%2F2026F",
+      "roleSection": "Primary Sponsor",
+      "sessionCode": "2025/2026F"
+    },
+    {
+      "billNumber": "SR23",
+      "title": "TO HONOR JOHN PENDLETON REED FOR HIS EXEMPLARY AND DEDICATED SERVICE TO THE SENATE AND TO THE STATE OF ARKANSAS.",
+      "detailHref": "https://www.arkleg.state.ar.us/Bills/Detail?id=SR23&ddBienniumSession=2025%2F2026F",
+      "roleSection": "Primary Sponsor",
+      "sessionCode": "2025/2026F"
+    },
+    {
+      "billNumber": "SR24",
+      "title": "TO HONOR MISS ARKANSAS' TEEN 2025 AMELIA LISOWE.",
+      "detailHref": "https://www.arkleg.state.ar.us/Bills/Detail?id=SR24&ddBienniumSession=2025%2F2026F",
+      "roleSection": "Primary Sponsor",
+      "sessionCode": "2025/2026F"
+    },
+    {
+      "billNumber": "SMR1",
+      "title": "IN RESPECTFUL MEMORY OF SENATOR GARY DON STUBBLEFIELD AND IN RECOGNITION OF HIS MANY CONTRIBUTIONS TO THE STATE OF ARKANSAS AND HIS LOCAL COMMUNITY.",
+      "detailHref": "https://www.arkleg.state.ar.us/Bills/Detail?id=SMR1&ddBienniumSession=2025%2F2026F",
+      "roleSection": "CoSponsor",
+      "sessionCode": "2025/2026F"
+    },
+    {
+      "billNumber": "SMR2",
+      "title": "IN RESPECTFUL MEMORY OF SENATOR LUTHER BOYD \"LU\" HARDIN AND IN RECOGNITION OF HIS MANY CONTRIBUTIONS TO THE STATE OF ARKANSAS AND TO HIS LOCAL COMMUNITY.",
+      "detailHref": "https://www.arkleg.state.ar.us/Bills/Detail?id=SMR2&ddBienniumSession=2025%2F2026F",
+      "roleSection": "CoSponsor",
+      "sessionCode": "2025/2026F"
+    }
+  ],
+  "totalUniqueBillRows": 545
+}

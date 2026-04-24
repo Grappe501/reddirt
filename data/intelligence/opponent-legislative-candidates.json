@@ -1,0 +1,542 @@
+{
+  "entities": [
+    {
+      "localKey": "intel_seed_arkleg_legislator",
+      "name": "Kim Hammer",
+      "type": "OFFICEHOLDER",
+      "currentOffice": "Arkansas State Senator (District 16)",
+      "party": "Republican",
+      "reviewStatus": "DRAFT",
+      "metadataJson": {
+        "arklegMember": "K.+Hammer",
+        "INTEL_4B_3": "candidate_bridge_entity",
+        "curatorNote": "Candidate row generated from arkleg shortlist; requires human verification before live ingest."
+      }
+    }
+  ],
+  "sources": [
+    {
+      "localKey": "src_arkleg_portal_candidate",
+      "title": "Arkansas State Legislature (official portal)",
+      "sourceType": "LEGISLATIVE_RECORD",
+      "sourceUrl": "https://www.arkleg.state.ar.us/",
+      "publisher": "Arkansas Bureau of Legislative Research",
+      "accessedAt": "2026-04-24T15:52:53.374Z",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "INTEL_4B_3": "portal_bookmark"
+      }
+    }
+  ],
+  "billRecords": [
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1222&ddBienniumSession=2025%2F2025R",
+      "billNumber": "HB1222",
+      "title": "TO REQUIRE THE ATTORNEY GENERAL TO REVIEW BALLOT TITLES FOR CONFLICTS WITH THE UNITED STATES CONSTITUTION AND FEDERAL STATUTES; AND TO PROHIBIT THE SUBMISSION OF CONFLICTING INITIATIVE PETITIONS AND REFERENDUM PETITIONS.",
+      "role": "Primary Sponsor for House",
+      "policyArea": "ELECTIONS_AND_BALLOTS",
+      "impactArea": "ELECTION_LAW",
+      "session": "2025/2025R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2025/2025R|HB1222|Primary_Sponsor_for_House",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    },
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1449&ddBienniumSession=2025%2F2025R",
+      "billNumber": "HB1449",
+      "title": "TO AMEND THE LAW CONCERNING REPORTS OF CONTRIBUTIONS FOR A CANDIDATE FOR STATE OR DISTRICT OFFICE; TO EXTEND THE DEADLINE FOR FINAL REPORTS; AND TO AMEND PORTIONS OF LAW RESULTING FROM INITIATED ACT 1 OF 1990.",
+      "role": "Primary Sponsor for House",
+      "policyArea": "UNCLASSIFIED_TITLE_KEYWORDS",
+      "impactArea": "ELECTION_OR_BALLOT_TOPIC",
+      "session": "2025/2025R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2025/2025R|HB1449|Primary_Sponsor_for_House",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    },
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1693&ddBienniumSession=2025%2F2025R",
+      "billNumber": "HB1693",
+      "title": "TO AMEND THE LAW CONCERNING DAMAGED OR DEFECTIVE BALLOTS; AND TO ALLOW THE STATE BOARD OF ELECTION COMMISSIONERS TO PROMULGATE RULES REGARDING THE DUPLICATION OF DAMAGED OR DEFECTIVE BALLOTS.",
+      "role": "Primary Sponsor for House",
+      "policyArea": "ELECTIONS_AND_BALLOTS",
+      "impactArea": "ELECTION_LAW",
+      "session": "2025/2025R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2025/2025R|HB1693|Primary_Sponsor_for_House",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    },
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1707&ddBienniumSession=2025%2F2025R",
+      "billNumber": "HB1707",
+      "title": "TO REQUIRE CERTAIN CANDIDATES TO FILE REPORTS WITH THE SECRETARY OF STATE; TO AMEND PORTIONS OF INITIATED ACT 1 OF 1996; AND TO DECLARE AN EMERGENCY.",
+      "role": "Primary Sponsor for House",
+      "policyArea": "UNCLASSIFIED_TITLE_KEYWORDS",
+      "impactArea": "ELECTION_OR_BALLOT_TOPIC",
+      "session": "2025/2025R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2025/2025R|HB1707|Primary_Sponsor_for_House",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    },
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1837&ddBienniumSession=2025%2F2025R",
+      "billNumber": "HB1837",
+      "title": "TO AMEND THE LAW CONCERNING DISCLOSURE FOR MATTERS REFERRED TO VOTERS; AND TO BAN FOREIGN FUNDING FOR BALLOT MEASURES; TO AMEND PORTIONS OF THE ARKANSAS CODE THAT RESULTED FROM INITIATED ACT 1 OF 1996.",
+      "role": "Primary Sponsor for House",
+      "policyArea": "ELECTIONS_AND_BALLOTS",
+      "impactArea": "ELECTION_LAW",
+      "session": "2025/2025R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2025/2025R|HB1837|Primary_Sponsor_for_House",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    },
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB207&ddBienniumSession=2025%2F2025R",
+      "billNumber": "SB207",
+      "title": "TO AMEND THE LAW CONCERNING INITIATIVE AND REFERENDUM PETITIONS; TO REQUIRE A CANVASSER TO DISCLOSE THAT PETITION FRAUD IS A CRIMINAL OFFENSE; AND TO DECLARE AN EMERGENCY.",
+      "role": "Primary Sponsor",
+      "policyArea": "ELECTIONS_AND_BALLOTS",
+      "impactArea": "ELECTION_LAW",
+      "session": "2025/2025R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2025/2025R|SB207|Primary_Sponsor",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    },
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB208&ddBienniumSession=2025%2F2025R",
+      "billNumber": "SB208",
+      "title": "TO AMEND THE LAW CONCERNING INITIATIVE AND REFERENDUM PETITIONS; TO VIEW A CANVASSER TO REQUEST PHOTO IDENTIFICATION BEFORE OBTAINING A SIGNATURE; AND TO DECLARE AN EMERGENCY.",
+      "role": "Primary Sponsor",
+      "policyArea": "ELECTIONS_AND_BALLOTS",
+      "impactArea": "ELECTION_LAW",
+      "session": "2025/2025R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2025/2025R|SB208|Primary_Sponsor",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    },
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB210&ddBienniumSession=2025%2F2025R",
+      "billNumber": "SB210",
+      "title": "TO REQUIRE THE SIGNER TO READ THE BALLOT TITLE OF THE PETITION IN THE PRESENCE OF A CANVASSER; AND TO DECLARE AN EMERGENCY.",
+      "role": "Primary Sponsor",
+      "policyArea": "ELECTIONS_AND_BALLOTS",
+      "impactArea": "ELECTION_LAW",
+      "session": "2025/2025R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2025/2025R|SB210|Primary_Sponsor",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    },
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB211&ddBienniumSession=2025%2F2025R",
+      "billNumber": "SB211",
+      "title": "TO AMEND THE LAW CONCERNING INITIATIVE PETITIONS AND REFERENDUM PETITIONS; TO REQUIRE A CANVASSER TO SUBMIT AN AFFIDAVIT BEFORE SIGNATURES CAN BE COUNTED; AND TO DECLARE AN EMERGENCY.",
+      "role": "Primary Sponsor",
+      "policyArea": "ELECTIONS_AND_BALLOTS",
+      "impactArea": "ELECTION_LAW",
+      "session": "2025/2025R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2025/2025R|SB211|Primary_Sponsor",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    },
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB291&ddBienniumSession=2025%2F2025R",
+      "billNumber": "SB291",
+      "title": "TO AMEND THE LAW CONCERNING COMPLAINTS OF ELECTION LAW VIOLATIONS; AND TO AMEND THE DEADLINES FOR COMPLAINTS OF ELECTION LAW VIOLATIONS.",
+      "role": "Primary Sponsor",
+      "policyArea": "ELECTIONS_AND_BALLOTS",
+      "impactArea": "ELECTION_LAW",
+      "session": "2025/2025R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2025/2025R|SB291|Primary_Sponsor",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    },
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB292&ddBienniumSession=2025%2F2025R",
+      "billNumber": "SB292",
+      "title": "TO AMEND THE LAW CONCERNING THE DATE OF AN ANNUAL SCHOOL ELECTION; TO MOVE THE ANNUAL SCHOOL ELECTION IF THE ANNUAL SCHOOL ELECTION IS SCHEDULED ON A STATE HOLIDAY IN CERTAIN INSTANCES; AND TO DECLARE AN EMERGENCY.",
+      "role": "Primary Sponsor",
+      "policyArea": "ELECTIONS_AND_BALLOTS",
+      "impactArea": "ELECTION_LAW",
+      "session": "2025/2025R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2025/2025R|SB292|Primary_Sponsor",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    },
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB293&ddBienniumSession=2025%2F2025R",
+      "billNumber": "SB293",
+      "title": "TO AMEND THE LAW CONCERNING THE REQUIRED POSTINGS AT A POLLING SITE; AND TO AMEND THE LIST CONCERNING REQUIRED POSTING OF NOTICES, INFORMATION, AND MATERIAL AT A POLLING SITE ON ELECTION DAY.",
+      "role": "Primary Sponsor",
+      "policyArea": "ELECTIONS_AND_BALLOTS",
+      "impactArea": "ELECTION_LAW",
+      "session": "2025/2025R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2025/2025R|SB293|Primary_Sponsor",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    },
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB294&ddBienniumSession=2025%2F2025R",
+      "billNumber": "SB294",
+      "title": "TO AMEND THE LAW CONCERNING ELECTION AUDITS; AND TO ALLOW THE STATE BOARD OF ELECTION COMMISSIONERS TO AUDIT A COUNTY IN THE PRECEDING ELECTION IN CERTAIN CIRCUMSTANCES.",
+      "role": "Primary Sponsor",
+      "policyArea": "ELECTIONS_AND_BALLOTS",
+      "impactArea": "ELECTION_LAW",
+      "session": "2025/2025R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2025/2025R|SB294|Primary_Sponsor",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    },
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB295&ddBienniumSession=2025%2F2025R",
+      "billNumber": "SB295",
+      "title": "TO AMEND THE LAW CONCERNING APPROPRIATION FOR ELECTION EXPENSES; AND TO ALLOW COMPENSATION FOR A CERTIFIED ELECTION MONITOR AS AN ELECTION EXPENSE.",
+      "role": "Primary Sponsor",
+      "policyArea": "ELECTIONS_AND_BALLOTS",
+      "impactArea": "ELECTION_LAW",
+      "session": "2025/2025R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2025/2025R|SB295|Primary_Sponsor",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    },
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB296&ddBienniumSession=2025%2F2025R",
+      "billNumber": "SB296",
+      "title": "TO AMEND THE LAW CONCERNING THE DESIGNATION OF AN EARLY VOTING LOCATION BY THE COUNTY CLERK.",
+      "role": "Primary Sponsor",
+      "policyArea": "ELECTIONS_AND_BALLOTS",
+      "impactArea": "ELECTION_LAW",
+      "session": "2025/2025R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2025/2025R|SB296|Primary_Sponsor",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    },
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB297&ddBienniumSession=2025%2F2025R",
+      "billNumber": "SB297",
+      "title": "TO AMEND THE LAW CONCERNING MUNICIPALITIES CHOOSING TO ELECT COUNCIL MEMBERS; AND TO REQUIRE FILING OF THE ORDINANCE DESCRIBING THE ELECTION OF CITY COUNCIL MEMBERS WITH THE COUNTY CLERK.",
+      "role": "Primary Sponsor",
+      "policyArea": "ELECTIONS_AND_BALLOTS",
+      "impactArea": "ELECTION_LAW",
+      "session": "2025/2025R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2025/2025R|SB297|Primary_Sponsor",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    },
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB299&ddBienniumSession=2025%2F2025R",
+      "billNumber": "SB299",
+      "title": "TO REQUIRE A STAFF MEMBER TO WITNESS AN ADMINISTRATOR ASSISTING A RESIDENT OF A LONG-TERM RESIDENTIAL CARE FACILITY WITH ABSENTEE VOTING.",
+      "role": "Primary Sponsor",
+      "policyArea": "ELECTIONS_AND_BALLOTS",
+      "impactArea": "ELECTION_LAW",
+      "session": "2025/2025R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2025/2025R|SB299|Primary_Sponsor",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    },
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB414&ddBienniumSession=2025%2F2025R",
+      "billNumber": "SB414",
+      "title": "TO AMEND THE ELECTION LAWS OF THE STATE OF ARKANSAS; AND TO AMEND ARKANSAS LAW CONCERNING NOTICES RELATED TO THE ELECTION PROCESS.",
+      "role": "Primary Sponsor",
+      "policyArea": "ELECTIONS_AND_BALLOTS",
+      "impactArea": "ELECTION_LAW",
+      "session": "2025/2025R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2025/2025R|SB414|Primary_Sponsor",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    },
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB551&ddBienniumSession=2025%2F2025R",
+      "billNumber": "SB551",
+      "title": "TO AMEND THE LAW CONCERNING CANVASSING FOR A PETITION FOR A LOCAL OPTION ELECTION.",
+      "role": "Primary Sponsor",
+      "policyArea": "ELECTIONS_AND_BALLOTS",
+      "impactArea": "ELECTION_LAW",
+      "session": "2025/2025R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2025/2025R|SB551|Primary_Sponsor",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    },
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB584&ddBienniumSession=2025%2F2025R",
+      "billNumber": "SB584",
+      "title": "TO AMEND THE LAW CONCERNING LOCAL INITIATIVE AND REFERENDUM PETITIONS.",
+      "role": "Primary Sponsor",
+      "policyArea": "ELECTIONS_AND_BALLOTS",
+      "impactArea": "ELECTION_LAW",
+      "session": "2025/2025R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2025/2025R|SB584|Primary_Sponsor",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    },
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1457&ddBienniumSession=2023%2F2023R",
+      "billNumber": "HB1457",
+      "title": "TO ESTABLISH THE ARKANSAS POLL WATCHERS BILL OF RIGHTS ACT OF 2023; TO AMEND THE LAW CONCERNING POLL WATCHERS; AND TO AMEND THE LAW CONCERNING ELECTION PROCEDURES.",
+      "role": "Primary Sponsor for House",
+      "policyArea": "ELECTIONS_AND_BALLOTS",
+      "impactArea": "ELECTION_LAW",
+      "session": "2023/2023R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2023/2023R|HB1457|Primary_Sponsor_for_House",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    },
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1464&ddBienniumSession=2023%2F2023R",
+      "billNumber": "HB1464",
+      "title": "TO AMEND THE LAW CONCERNING COMPLAINTS OF ELECTION LAW VIOLATIONS; AND TO AMEND THE LAW CONCERNING THE STATE BOARD OF ELECTION COMMISSIONERS.",
+      "role": "Primary Sponsor for House",
+      "policyArea": "ELECTIONS_AND_BALLOTS",
+      "impactArea": "ELECTION_LAW",
+      "session": "2023/2023R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2023/2023R|HB1464|Primary_Sponsor_for_House",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    },
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1487&ddBienniumSession=2023%2F2023R",
+      "billNumber": "HB1487",
+      "title": "TO CREATE THE BALLOT SECURITY ACT OF 2023; AND TO AMEND ELECTION LAW CONCERNING THE HANDLING OF ELECTION BALLOTS.",
+      "role": "Primary Sponsor for House",
+      "policyArea": "ELECTIONS_AND_BALLOTS",
+      "impactArea": "ELECTION_LAW",
+      "session": "2023/2023R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2023/2023R|HB1487|Primary_Sponsor_for_House",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    },
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1687&ddBienniumSession=2023%2F2023R",
+      "billNumber": "HB1687",
+      "title": "CONCERNING PAPER BALLOTS; TO AMEND THE LAW CONCERNING PAPER BALLOTS AND THE MARKING AND COUNTING OF PAPER BALLOTS; TO AMEND THE LAW CONCERNING THE DECLARATION OF ELECTION RESULTS; AND TO DECLARE AN EMERGENCY.",
+      "role": "Primary Sponsor for House",
+      "policyArea": "ELECTIONS_AND_BALLOTS",
+      "impactArea": "ELECTION_LAW",
+      "session": "2023/2023R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2023/2023R|HB1687|Primary_Sponsor_for_House",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    },
+    {
+      "entityLocalKey": "intel_seed_arkleg_legislator",
+      "sourceLocalKey": "src_arkleg_portal_candidate",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB250&ddBienniumSession=2023%2F2023R",
+      "billNumber": "SB250",
+      "title": "TO AMEND THE LAW CONCERNING PAPER BALLOTS; TO AMEND THE LAW CONCERNING MARKING AND COUNTING PAPER BALLOTS; TO AMEND THE LAW CONCERNING THE DECLARATION OF ELECTION RESULTS; AND TO DECLARE AN EMERGENCY.",
+      "role": "Primary Sponsor",
+      "policyArea": "ELECTIONS_AND_BALLOTS",
+      "impactArea": "ELECTION_LAW",
+      "session": "2023/2023R",
+      "confidence": "UNVERIFIED",
+      "reviewStatus": "DRAFT",
+      "notes": "Candidate row generated from arkleg shortlist; requires human verification before live ingest.",
+      "metadataJson": {
+        "shortlistLocalKey": "ARKLEG|2023/2023R|SB250|Primary_Sponsor",
+        "verificationStatus": "NEEDS_HUMAN_VERIFICATION",
+        "recommendedManifestCategory": "billRecord",
+        "ingestPipeline": "INTEL-4B-3-candidate-bridge"
+      }
+    }
+  ],
+  "voteRecords": [],
+  "financeRecords": [],
+  "messageRecords": [],
+  "videoRecords": [],
+  "newsMentions": [],
+  "electionPatterns": [],
+  "accountabilityItems": []
+}

@@ -1,0 +1,73 @@
+{
+  "entities": [
+    {
+      "localKey": "opponent_1",
+      "name": "<FILL MANUALLY — public candidate/officeholder name only>",
+      "type": "OFFICEHOLDER",
+      "party": null,
+      "currentOffice": "Arkansas Secretary of State Candidate",
+      "reviewStatus": "NEEDS_REVIEW",
+      "metadataJson": {
+        "TODO": "Fill opponent name from public filing/source (e.g. SOS candidate list, qualifying paperwork). Do not guess.",
+        "curatorNote": "Set name and party from official filings or SOS candidate lists. Omit party if unknown.",
+        "INTEL_4B_2": "No billRecords yet — local repo files did not contain verified bill number + title + official URL triples for this race. Use docs/intelligence-source-collection-checklist.md then add sources[] + billRecords[] with sourceLocalKey."
+      }
+    }
+  ],
+  "sources": [
+    {
+      "localKey": "src_official_arkleg_home",
+      "title": "Arkansas State Legislature — official site (navigation)",
+      "sourceType": "LEGISLATIVE_RECORD",
+      "sourceUrl": "https://www.arkleg.state.ar.us/",
+      "publisher": "Arkansas Bureau of Legislative Research",
+      "publishedAt": null,
+      "accessedAt": "2026-04-24T00:00:00.000Z",
+      "confidence": "VERIFIED",
+      "reviewStatus": "NEEDS_REVIEW",
+      "notes": "Bookmark only. Use Legislators / Bills search after opponent is named from a public filing.",
+      "metadataJson": {
+        "INTEL_4B_2": "portal",
+        "noSpecificBill": true
+      }
+    },
+    {
+      "localKey": "src_official_arkleg_legislators",
+      "title": "Arkansas State Legislature — Legislators section",
+      "sourceType": "LEGISLATIVE_RECORD",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Legislators",
+      "publisher": "Arkansas Bureau of Legislative Research",
+      "publishedAt": null,
+      "accessedAt": "2026-04-24T00:00:00.000Z",
+      "confidence": "VERIFIED",
+      "reviewStatus": "NEEDS_REVIEW",
+      "notes": "Entry point for member detail pages (session-specific bill grids). Replace or supplement when SOS race opponent is fixed.",
+      "metadataJson": {
+        "INTEL_4B_2": "portal"
+      }
+    },
+    {
+      "localKey": "src_official_sos_elections",
+      "title": "Arkansas Secretary of State — Elections",
+      "sourceType": "PUBLIC_FILING",
+      "sourceUrl": "https://www.sos.arkansas.gov/elections",
+      "publisher": "Arkansas Secretary of State",
+      "publishedAt": null,
+      "accessedAt": "2026-04-24T00:00:00.000Z",
+      "confidence": "VERIFIED",
+      "reviewStatus": "NEEDS_REVIEW",
+      "notes": "Candidate lists and election publications — cite specific sub-URL when adding rows.",
+      "metadataJson": {
+        "INTEL_4B_2": "portal"
+      }
+    }
+  ],
+  "billRecords": [],
+  "accountabilityItems": [],
+  "videoRecords": [],
+  "voteRecords": [],
+  "financeRecords": [],
+  "messageRecords": [],
+  "newsMentions": [],
+  "electionPatterns": []
+}

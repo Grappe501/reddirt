@@ -1,0 +1,34 @@
+{
+  "entities": [
+    {
+      "localKey": "opponent_1",
+      "name": "<FILL MANUALLY — public candidate/officeholder name only>",
+      "type": "OFFICEHOLDER",
+      "party": null,
+      "currentOffice": "Arkansas Secretary of State Candidate",
+      "reviewStatus": "NEEDS_REVIEW",
+      "metadataJson": {
+        "curatorNote": "Mirror entity key with opponent-legislative-seed.json or replace after verified name is known."
+      }
+    }
+  ],
+  "sources": [],
+  "videoRecords": [
+    {
+      "entityLocalKey": "opponent_1",
+      "topic": "TODO: public hearing / floor speech / official event topic (from state senate or SOS-hosted video index)",
+      "billNumber": null,
+      "eventType": "TODO",
+      "transcriptStatus": "NOT_STARTED",
+      "reviewStatus": "DRAFT",
+      "notes": "Add sourceUrl when a single official archive URL is verified. Do not invent timestamps or quotes."
+    }
+  ],
+  "billRecords": [],
+  "voteRecords": [],
+  "financeRecords": [],
+  "messageRecords": [],
+  "newsMentions": [],
+  "electionPatterns": [],
+  "accountabilityItems": []
+}

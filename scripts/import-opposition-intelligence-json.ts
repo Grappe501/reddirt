@@ -1,12 +1,20 @@
 /**
- * INTEL-4A — Manual, source-backed opposition intelligence JSON import (no scraping, no conclusions).
+ * INTEL-4A + INTEL-4B-1 — Manual, source-backed opposition intelligence JSON import (no scraping, no conclusions).
  *
  * Usage (from RedDirt/):
  *   npm run ingest:opposition-intel -- --file data/intelligence/manual-opposition-intel-template.json --dry-run
  *   npm run ingest:opposition-intel -- --file path/to/bundle.json
+ *   npm run ingest:opposition-intel -- --file path/to/bundle.json --require-approved
  *
  * Order: entities (localKey → id) → sources (localKey → id) → record arrays with entityLocalKey/sourceLocalKey.
  * Defaults: reviewStatus NEEDS_REVIEW, confidence UNVERIFIED when omitted. Nothing is auto-approved.
+ *
+ * INTEL-4B-3: `--require-approved` blocks **live** import unless every entity, source, and record row has
+ * `reviewStatus: APPROVED`. `--dry-run` still validates shape and prints what would be blocked.
+ *
+ * INTEL-4B-1: Non-DRAFT records should cite provenance (bundle `OppositionSource` URL/path or per-row
+ * `sourceUrl` / `sourcePath`, echoed into `metadataJson` when not linked to a source row). Loud console
+ * warnings when that is missing; import summary after dry-run or commit.
  */
 import { readFileSync } from "node:fs";
 import path from "node:path";
@@ -41,6 +49,7 @@ const REPO = path.resolve(__dirname, "..");
 
 /** CLI log prefix (helpers still tag warnings with INTEL3_PACKET). */
 const LOG = "[INTEL-4A] opposition-intel import";
+const WARN = "[INTEL-4A] ⚠️  PROVENANCE WARNING";
 
 const DEFAULT_CONF: OppositionConfidence = "UNVERIFIED";
 const DEFAULT_REVIEW: OppositionReviewStatus = "NEEDS_REVIEW";
@@ -69,6 +78,26 @@ function asJson(r: unknown): Prisma.InputJsonValue {
   return r as Prisma.InputJsonValue;
 }
 
+/** Merges optional per-row `sourceUrl` / `sourcePath` into JSON for audit (not FK columns). */
+function recordMetadata(row: {
+  metadataJson?: unknown;
+  sourceUrl?: string | null;
+  sourcePath?: string | null;
+}): Prisma.InputJsonValue {
+  const base =
+    row.metadataJson !== undefined &&
+    row.metadataJson !== null &&
+    typeof row.metadataJson === "object" &&
+    !Array.isArray(row.metadataJson)
+      ? { ...(row.metadataJson as Record<string, unknown>) }
+      : {};
+  const u = row.sourceUrl?.trim();
+  const p = row.sourcePath?.trim();
+  if (u) base.recordSourceUrl = u;
+  if (p) base.recordSourcePath = p;
+  return base as Prisma.InputJsonValue;
+}
+
 const entityRow = z
   .object({
     localKey: z.string().min(1),
@@ -78,6 +107,8 @@ const entityRow = z
     currentOffice: z.string().nullable().optional(),
     party: z.string().nullable().optional(),
     geography: z.string().nullable().optional(),
+    /** No DB column on `OppositionEntity`; folded into `metadataJson.entityReviewStatus` on import. */
+    reviewStatus: z.nativeEnum(OppositionReviewStatus).optional(),
     tagsJson: z.unknown().optional(),
     metadataJson: z.unknown().optional(),
   })
@@ -105,6 +136,9 @@ const linkFields = {
   entityId: z.string().optional(),
   sourceLocalKey: z.string().optional(),
   sourceId: z.string().nullable().optional(),
+  /** Optional inline citation; not a DB column — copied into `metadataJson` on each record type. */
+  sourceUrl: z.string().nullable().optional(),
+  sourcePath: z.string().nullable().optional(),
 };
 
 const billRecordRow = z
@@ -276,6 +310,120 @@ const bundleSchema = z
   })
   .strict();
 
+type BundleData = z.infer<typeof bundleSchema>;
+
+type ReviewableRow = { reviewStatus?: OppositionReviewStatus };
+
+function effectiveReviewStatus(row: ReviewableRow): OppositionReviewStatus {
+  return row.reviewStatus ?? DEFAULT_REVIEW;
+}
+
+/** Every bundle row that persists or declares reviewStatus must be APPROVED when `--require-approved` is set. */
+function collectRequireApprovedViolations(data: BundleData): string[] {
+  const violations: string[] = [];
+  const add = (label: string, index: number, status: OppositionReviewStatus) => {
+    violations.push(`${label}[${index}]: reviewStatus=${status}`);
+  };
+
+  data.entities.forEach((e, i) => {
+    const s = effectiveReviewStatus(e);
+    if (s !== OppositionReviewStatus.APPROVED) add("entities", i, s);
+  });
+  data.sources.forEach((s, i) => {
+    const st = effectiveReviewStatus(s);
+    if (st !== OppositionReviewStatus.APPROVED) add("sources", i, st);
+  });
+
+  const blocks: [string, ReviewableRow[]][] = [
+    ["billRecords", data.billRecords],
+    ["voteRecords", data.voteRecords],
+    ["financeRecords", data.financeRecords],
+    ["messageRecords", data.messageRecords],
+    ["videoRecords", data.videoRecords],
+    ["newsMentions", data.newsMentions],
+    ["electionPatterns", data.electionPatterns],
+    ["accountabilityItems", data.accountabilityItems],
+  ];
+  for (const [label, rows] of blocks) {
+    rows.forEach((r, i) => {
+      const st = effectiveReviewStatus(r);
+      if (st !== OppositionReviewStatus.APPROVED) add(label, i, st);
+    });
+  }
+  return violations;
+}
+
+function warnNonDraftRecordProvenance(
+  label: string,
+  rows: Array<{
+    reviewStatus?: OppositionReviewStatus;
+    sourceLocalKey?: string;
+    sourceId?: string | null;
+    sourceUrl?: string | null;
+    sourcePath?: string | null;
+  }>,
+  sourceByLocalKey: Map<string, BundleData["sources"][number]>
+) {
+  rows.forEach((row, index) => {
+    const status = row.reviewStatus ?? DEFAULT_REVIEW;
+    if (status === OppositionReviewStatus.DRAFT) return;
+
+    const inline = Boolean(row.sourceUrl?.trim() || row.sourcePath?.trim());
+    const lk = row.sourceLocalKey?.trim();
+    let linkedHasLoc = false;
+    if (lk) {
+      const s = sourceByLocalKey.get(lk);
+      if (!s) {
+        console.warn(`${WARN} [${label}[${index}]] sourceLocalKey "${lk}" not found in bundle sources[]`);
+        return;
+      }
+      linkedHasLoc = Boolean(s.sourceUrl?.trim() || s.sourcePath?.trim());
+    }
+    const hasSourceId =
+      row.sourceId !== undefined && row.sourceId !== null && String(row.sourceId).trim() !== "";
+
+    if (inline || linkedHasLoc) return;
+
+    if (hasSourceId) {
+      console.warn(
+        `${WARN} [${label}[${index}]] reviewStatus=${status}: sourceId is set but this JSON bundle does not include sourceUrl/sourcePath — confirm the linked OppositionSource in the database has provenance before external use.`
+      );
+      return;
+    }
+
+    console.warn(
+      `${WARN} [${label}[${index}]] reviewStatus=${status}: missing sourceUrl/sourcePath on the row and no linked source with URL/path in this file — add a row in sources[] with sourceUrl or sourcePath, add per-row sourceUrl/sourcePath, or set reviewStatus DRAFT for scratch rows.`
+    );
+  });
+}
+
+function warnAllRecordProvenance(data: BundleData) {
+  const sourceByLocalKey = new Map(data.sources.map((s) => [s.localKey, s]));
+  warnNonDraftRecordProvenance("billRecords", data.billRecords, sourceByLocalKey);
+  warnNonDraftRecordProvenance("voteRecords", data.voteRecords, sourceByLocalKey);
+  warnNonDraftRecordProvenance("financeRecords", data.financeRecords, sourceByLocalKey);
+  warnNonDraftRecordProvenance("messageRecords", data.messageRecords, sourceByLocalKey);
+  warnNonDraftRecordProvenance("videoRecords", data.videoRecords, sourceByLocalKey);
+  warnNonDraftRecordProvenance("newsMentions", data.newsMentions, sourceByLocalKey);
+  warnNonDraftRecordProvenance("electionPatterns", data.electionPatterns, sourceByLocalKey);
+  warnNonDraftRecordProvenance("accountabilityItems", data.accountabilityItems, sourceByLocalKey);
+}
+
+function printImportSummary(data: BundleData, dryRun: boolean) {
+  const headline = dryRun ? "Dry-run summary (no DB writes)" : "Import summary (transaction committed)";
+  console.log(`${LOG} — ${headline}`);
+  console.log(`  entities: ${data.entities.length}`);
+  console.log(`  sources: ${data.sources.length}`);
+  console.log(`  billRecords: ${data.billRecords.length}`);
+  console.log(`  voteRecords: ${data.voteRecords.length}`);
+  console.log(`  financeRecords: ${data.financeRecords.length}`);
+  console.log(`  messageRecords: ${data.messageRecords.length}`);
+  console.log(`  videoRecords: ${data.videoRecords.length}`);
+  console.log(`  newsMentions: ${data.newsMentions.length}`);
+  console.log(`  electionPatterns: ${data.electionPatterns.length}`);
+  console.log(`  accountabilityItems: ${data.accountabilityItems.length}`);
+}
+
 type EntityMap = Map<string, string>;
 type SourceMap = Map<string, string>;
 
@@ -311,9 +459,36 @@ function resolveSourceId(
   return null;
 }
 
-async function runImport(dryRun: boolean, data: z.infer<typeof bundleSchema>) {
+async function runImport(dryRun: boolean, data: BundleData, opts: { requireApproved: boolean }) {
+  const { requireApproved } = opts;
   const entityMap: EntityMap = new Map();
   const sourceMap: SourceMap = new Map();
+
+  warnAllRecordProvenance(data);
+
+  const requireApprovedViolations = collectRequireApprovedViolations(data);
+  if (requireApproved) {
+    if (dryRun) {
+      console.log(
+        JSON.stringify(
+          {
+            requireApproved: true,
+            dryRun: true,
+            blockedRowCount: requireApprovedViolations.length,
+            blocked: requireApprovedViolations,
+          },
+          null,
+          2
+        )
+      );
+    } else if (requireApprovedViolations.length) {
+      const head = requireApprovedViolations.slice(0, 48).join("\n");
+      const more = requireApprovedViolations.length > 48 ? `\n… (${requireApprovedViolations.length} total)` : "";
+      throw new Error(
+        `${LOG} --require-approved: refusing live import — non-APPROVED rows present.\n${head}${more}`
+      );
+    }
+  }
 
   if (dryRun) {
     console.log(
@@ -337,11 +512,21 @@ async function runImport(dryRun: boolean, data: z.infer<typeof bundleSchema>) {
         2
       )
     );
+    printImportSummary(data, true);
     return;
   }
 
   const run = async (db: Db) => {
     for (const e of data.entities) {
+      const meta: Record<string, unknown> =
+        e.metadataJson !== undefined &&
+        e.metadataJson !== null &&
+        typeof e.metadataJson === "object" &&
+        !Array.isArray(e.metadataJson)
+          ? { ...(e.metadataJson as Record<string, unknown>) }
+          : {};
+      if (e.reviewStatus !== undefined) meta.entityReviewStatus = e.reviewStatus;
+
       const created = await createOppositionEntity(
         {
           name: e.name,
@@ -351,7 +536,7 @@ async function runImport(dryRun: boolean, data: z.infer<typeof bundleSchema>) {
           party: e.party ?? null,
           geography: e.geography ?? null,
           tagsJson: asJson(e.tagsJson ?? []),
-          metadataJson: asJson(e.metadataJson),
+          metadataJson: Object.keys(meta).length ? asJson(meta) : asJson(undefined),
         },
         db
       );
@@ -398,7 +583,7 @@ async function runImport(dryRun: boolean, data: z.infer<typeof bundleSchema>) {
           confidence: r.confidence ?? DEFAULT_CONF,
           reviewStatus: r.reviewStatus ?? DEFAULT_REVIEW,
           notes: r.notes ?? null,
-          metadataJson: asJson(r.metadataJson),
+          metadataJson: recordMetadata(r),
         },
         db
       );
@@ -418,7 +603,7 @@ async function runImport(dryRun: boolean, data: z.infer<typeof bundleSchema>) {
           confidence: r.confidence ?? DEFAULT_CONF,
           reviewStatus: r.reviewStatus ?? DEFAULT_REVIEW,
           notes: r.notes ?? null,
-          metadataJson: asJson(r.metadataJson),
+          metadataJson: recordMetadata(r),
         },
         db
       );
@@ -439,7 +624,7 @@ async function runImport(dryRun: boolean, data: z.infer<typeof bundleSchema>) {
           confidence: r.confidence ?? DEFAULT_CONF,
           reviewStatus: r.reviewStatus ?? DEFAULT_REVIEW,
           notes: r.notes ?? null,
-          metadataJson: asJson(r.metadataJson),
+          metadataJson: recordMetadata(r),
         },
         db
       );
@@ -458,7 +643,7 @@ async function runImport(dryRun: boolean, data: z.infer<typeof bundleSchema>) {
           confidence: r.confidence ?? DEFAULT_CONF,
           reviewStatus: r.reviewStatus ?? DEFAULT_REVIEW,
           notes: r.notes ?? null,
-          metadataJson: asJson(r.metadataJson),
+          metadataJson: recordMetadata(r),
         },
         db
       );
@@ -478,7 +663,7 @@ async function runImport(dryRun: boolean, data: z.infer<typeof bundleSchema>) {
           confidence: r.confidence ?? DEFAULT_CONF,
           reviewStatus: r.reviewStatus ?? DEFAULT_REVIEW,
           notes: r.notes ?? null,
-          metadataJson: asJson(r.metadataJson),
+          metadataJson: recordMetadata(r),
         },
         db
       );
@@ -497,7 +682,7 @@ async function runImport(dryRun: boolean, data: z.infer<typeof bundleSchema>) {
           confidence: r.confidence ?? DEFAULT_CONF,
           reviewStatus: r.reviewStatus ?? DEFAULT_REVIEW,
           notes: r.notes ?? null,
-          metadataJson: asJson(r.metadataJson),
+          metadataJson: recordMetadata(r),
         },
         db
       );
@@ -516,7 +701,7 @@ async function runImport(dryRun: boolean, data: z.infer<typeof bundleSchema>) {
           confidence: r.confidence ?? DEFAULT_CONF,
           reviewStatus: r.reviewStatus ?? DEFAULT_REVIEW,
           notes: r.notes ?? null,
-          metadataJson: asJson(r.metadataJson),
+          metadataJson: recordMetadata(r),
         },
         db
       );
@@ -536,7 +721,7 @@ async function runImport(dryRun: boolean, data: z.infer<typeof bundleSchema>) {
           confidence: r.confidence ?? DEFAULT_CONF,
           reviewStatus: r.reviewStatus ?? DEFAULT_REVIEW,
           notes: r.notes ?? null,
-          metadataJson: asJson(r.metadataJson),
+          metadataJson: recordMetadata(r),
         },
         db
       );
@@ -545,6 +730,7 @@ async function runImport(dryRun: boolean, data: z.infer<typeof bundleSchema>) {
 
   await prisma.$transaction((tx) => run(tx as unknown as PrismaClient));
   console.log(`${LOG} import committed.`);
+  printImportSummary(data, false);
 }
 
 async function main() {
@@ -566,12 +752,13 @@ async function main() {
 
   const data = bundleSchema.parse(parsed);
   const dryRun = hasFlag("--dry-run");
+  const requireApproved = hasFlag("--require-approved");
 
   if (dryRun) {
     console.log(`${LOG} --dry-run: validating and reporting counts (no DB writes).`);
   }
 
-  await runImport(dryRun, data);
+  await runImport(dryRun, data, { requireApproved });
 }
 
 main().catch((e) => {

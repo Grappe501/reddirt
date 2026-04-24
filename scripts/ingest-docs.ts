@@ -3,13 +3,19 @@
  * Requires DATABASE_URL + OPENAI_API_KEY
  * Loads: markdown under docs/ (including docs/ingested/county-wikipedia/ after `npm run ingest:county-wikipedia`),
  *         docs/background/campaign-team-positions/ after `npm run sync:team-positions`,
- * structured site content (explainers, stories, editorial, events, regions, homepage/toolkit/press extras), and route seeds.
+ * structured site content (explainers, stories, editorial, events, regions, homepage/toolkit/press extras), route seeds,
+ * `data/intelligence/generated/arkleg-hammer-all-bills.dryrun.json` (full grid) + `opponent-legislative-candidates.json`
+ * as `intel:opposition:legislative-candidate:*` chunks (shortlist overwrites same paths; all labeled unverified).
  */
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { loadEnvConfig } from "@next/env";
 import { prisma } from "../src/lib/db";
 import { loadAllDocChunks } from "../src/lib/content/loadDocs";
+import {
+  loadArklegAllGridBillSearchChunks,
+  loadOppositionLegislativeCandidateChunks,
+} from "../src/lib/content/oppositionIntelSearchChunks";
 import { loadStructuredSiteChunks } from "../src/lib/content/structuredSearchChunks";
 import { embedTexts } from "../src/lib/openai/embeddings";
 
@@ -181,6 +187,9 @@ async function main() {
 
   const docChunks = await loadAllDocChunks(repoRoot);
   const structuredChunks = loadStructuredSiteChunks();
+  const arklegGridChunks = loadArklegAllGridBillSearchChunks(repoRoot);
+  const oppositionCandidateChunks = loadOppositionLegislativeCandidateChunks(repoRoot);
+  const oppositionChunks = [...arklegGridChunks, ...oppositionCandidateChunks];
   const seeded = pageSeeds.map((p) => ({
     path: p.path,
     title: p.title,
@@ -188,9 +197,9 @@ async function main() {
     content: p.content,
   }));
 
-  const all = [...docChunks, ...structuredChunks, ...seeded];
+  const all = [...docChunks, ...structuredChunks, ...oppositionChunks, ...seeded];
   console.log(
-    `Ingesting ${all.length} chunks (docs: ${docChunks.length}, structured: ${structuredChunks.length}, route seeds: ${seeded.length})…`,
+    `Ingesting ${all.length} chunks (docs: ${docChunks.length}, structured: ${structuredChunks.length}, opposition (arkleg grid + candidates): ${oppositionChunks.length}, route seeds: ${seeded.length})…`,
   );
 
   await prisma.searchChunk.deleteMany();

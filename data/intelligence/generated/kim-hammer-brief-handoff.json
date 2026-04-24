@@ -1,0 +1,44 @@
+{
+  "packet": "INTEL-BRIEF-2",
+  "generatedAt": "2026-04-24T15:58:14.285Z",
+  "sourceFilesUsed": [
+    "data/intelligence/generated/arkleg-hammer-all-bills.dryrun.json",
+    "data/intelligence/generated/kim-hammer-sos-brief-source-report.json",
+    "docs/kim-hammer-sos-brief-source-report.md",
+    "docs/arkleg-intelligence-verification-worksheet.md",
+    "data/intelligence/generated/arkleg-review-shortlist.json"
+  ],
+  "topFindings": [
+    "Arkleg legislator bill grid lists 545 unique bill-role rows for Kim Hammer (sessions present in export: 12; keyword filter matched 109 rows touching at least one SOS-relevance bucket).",
+    "Direct democracy / ballot-process titles appear on 25 grid rows — review official bill text before any public citation.",
+    "Rows whose titles reference Secretary of State, election boards, canvass, or voter registration: 36.",
+    "County / local election administration keywords: 13 rows.",
+    "Voting systems / tabulation / audit keywords: 1 rows.",
+    "Business services / corporate filing keywords: 8 rows.",
+    "Public education (excluding ceremonial resolutions): 39 rows."
+  ],
+  "watchlistCounts": {
+    "directDemocracy": 25,
+    "sosElectionAuthority": 36,
+    "countyElectionAdmin": 13,
+    "votingSystems": 1,
+    "publicEducation": 39,
+    "electionFinance": 2,
+    "capitolBuildingGroundsManagement": 2,
+    "businessServicesCorporationsFilings": 8,
+    "recordsArchivesAdministrativeDuties": 2,
+    "totalGridRows": 545,
+    "rowsMatchingAnyCategory": 109
+  },
+  "verificationWarnings": [
+    "All bill substance here is from arkleg grid titles + URLs only — not verified bill text.",
+    "Complete docs/arkleg-intelligence-verification-worksheet.md before any public or paid use.",
+    "Do not imply motive, corruption, or bad faith from titles alone.",
+    "INTEL-BRIEF-2 briefs are internal campaign preparation — not for external publishing without compliance review."
+  ],
+  "recommendedNextResearch": [
+    "Open each high-priority officialBillUrl and confirm short title, sponsors, and final disposition.",
+    "Cross-check SOS candidate filing and official biography for office and district.",
+    "Add committee / floor video citations only after timestamp verification."
+  ]
+}

@@ -1,0 +1,1587 @@
+{
+  "candidate": "Kim Hammer",
+  "summary": {
+    "totalBillsAnalyzed": 545,
+    "relevantBillsFound": 109,
+    "sourceUsed": "data/intelligence/generated/arkleg-hammer-all-bills.dryrun.json (+ optional arkleg-review-shortlist.json for cross-check)",
+    "generatedAt": "2026-04-24T15:58:14.281Z"
+  },
+  "categories": {
+    "directDemocracy": [
+      {
+        "billNumber": "SB207",
+        "title": "TO AMEND THE LAW CONCERNING INITIATIVE AND REFERENDUM PETITIONS; TO REQUIRE A CANVASSER TO DISCLOSE THAT PETITION FRAUD IS A CRIMINAL OFFENSE; AND TO DECLARE AN EMERGENCY.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB207&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "SB208",
+        "title": "TO AMEND THE LAW CONCERNING INITIATIVE AND REFERENDUM PETITIONS; TO VIEW A CANVASSER TO REQUEST PHOTO IDENTIFICATION BEFORE OBTAINING A SIGNATURE; AND TO DECLARE AN EMERGENCY.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB208&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "SB210",
+        "title": "TO REQUIRE THE SIGNER TO READ THE BALLOT TITLE OF THE PETITION IN THE PRESENCE OF A CANVASSER; AND TO DECLARE AN EMERGENCY.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB210&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "SB211",
+        "title": "TO AMEND THE LAW CONCERNING INITIATIVE PETITIONS AND REFERENDUM PETITIONS; TO REQUIRE A CANVASSER TO SUBMIT AN AFFIDAVIT BEFORE SIGNATURES CAN BE COUNTED; AND TO DECLARE AN EMERGENCY.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB211&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "SB551",
+        "title": "TO AMEND THE LAW CONCERNING CANVASSING FOR A PETITION FOR A LOCAL OPTION ELECTION.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB551&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "SB584",
+        "title": "TO AMEND THE LAW CONCERNING LOCAL INITIATIVE AND REFERENDUM PETITIONS.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB584&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "HB1221",
+        "title": "TO AMEND ARKANSAS LAW CONCERNING INITIATIVES, REFERENDA, AND CONSTITUTIONAL AMENDMENTS; AND TO DECLARE AN EMERGENCY.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1221&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "HB1222",
+        "title": "TO REQUIRE THE ATTORNEY GENERAL TO REVIEW BALLOT TITLES FOR CONFLICTS WITH THE UNITED STATES CONSTITUTION AND FEDERAL STATUTES; AND TO PROHIBIT THE SUBMISSION OF CONFLICTING INITIATIVE PETITIONS AND REFERENDUM PETITIONS.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1222&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "HB1449",
+        "title": "TO AMEND THE LAW CONCERNING REPORTS OF CONTRIBUTIONS FOR A CANDIDATE FOR STATE OR DISTRICT OFFICE; TO EXTEND THE DEADLINE FOR FINAL REPORTS; AND TO AMEND PORTIONS OF LAW RESULTING FROM INITIATED ACT 1 OF 1990.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1449&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "HB1707",
+        "title": "TO REQUIRE CERTAIN CANDIDATES TO FILE REPORTS WITH THE SECRETARY OF STATE; TO AMEND PORTIONS OF INITIATED ACT 1 OF 1996; AND TO DECLARE AN EMERGENCY.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1707&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "HB1837",
+        "title": "TO AMEND THE LAW CONCERNING DISCLOSURE FOR MATTERS REFERRED TO VOTERS; AND TO BAN FOREIGN FUNDING FOR BALLOT MEASURES; TO AMEND PORTIONS OF THE ARKANSAS CODE THAT RESULTED FROM INITIATED ACT 1 OF 1996.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1837&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "HB1713",
+        "title": "TO REQUIRE BALLOT TITLES FOR INITIATED MEASURES TO BE AT OR UNDER A CERTAIN READING LEVEL; AND TO DECLARE AN EMERGENCY.",
+        "session": "2025/2025R",
+        "role": "CoSponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1713&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "SB377",
+        "title": "TO AMEND THE LAW CONCERNING INITIATIVE PETITIONS; TO CREATE A MISDEMEANOR OFFENSE CONCERNING INITIATIVE PETITION SIGNATURES; AND TO ESTABLISH THE DEFINITION OF AND REGULATE PAID PETITION BLOCKERS.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB377&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "SB543",
+        "title": "TO AMEND ARKANSAS LAW CONCERNING SCHOOL DISTRICT BOARDS OF DIRECTORS AND AMENDING A PORTION OF LAW RESULTING FROM INITIATED ACT 1 OF 1990.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB543&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "SJR14",
+        "title": "A CONSTITUTIONAL AMENDMENT TO AMEND ARKANSAS CONSTITUTION, AMENDMENT 78, § 2, TO ALLOW ADDITIONAL OPTIONS FOR THE FINANCING OF FIRE EQUIPMENT.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SJR14&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1487",
+        "title": "TO CREATE THE BALLOT SECURITY ACT OF 2023; AND TO AMEND ELECTION LAW CONCERNING THE HANDLING OF ELECTION BALLOTS.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1487&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HJR1007",
+        "title": "A CONSTITUTIONAL AMENDMENT TO LEVY AN EXCISE TAX ON CERTAIN TAXABLE SALES TO REIMBURSE COUNTIES FOR THE HOMESTEAD PROPERTY TAX CREDIT AND ADMINISTER THE APPLICATION OF THE HOMESTEAD PROPERTY TAX CREDIT.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HJR1007&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "SB258",
+        "title": "TO AMEND THE METHOD OF VOTING ABSENTEE; AND TO PROHIBIT THE USE OF ABSENTEE BALLOT DROP BOXES.",
+        "session": "2023/2023R",
+        "role": "CoSponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB258&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1404",
+        "title": "TO AMEND ELECTION PROCEDURES CONCERNING BALLOT TABULATORS.",
+        "session": "2023/2023R",
+        "role": "CoSponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1404&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1411",
+        "title": "TO AMEND THE PROHIBITION ON THE DELIVERY OF UNSOLICITED ABSENTEE BALLOT APPLICATIONS TO ELECTORS; AND TO AMEND THE LAW CONCERNING ABSENTEE BALLOTS.",
+        "session": "2023/2023R",
+        "role": "CoSponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1411&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1423",
+        "title": "TO AMEND THE LAW CONCERNING THE RECOUNT OF BALLOTS; AND TO AMEND ELECTION PROCEDURES.",
+        "session": "2023/2023R",
+        "role": "CoSponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1423&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1715",
+        "title": "TO AMEND ARKANSAS LAW CONCERNING ABSENTEE BALLOTS; TO AMEND ELECTION LAW; TO AMEND THE LAW CONCERNING VOTING BY ABSENTEE BALLOT; AND TO AMEND THE LAW CONCERNING SPOILED BALLOTS.",
+        "session": "2021/2021R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1715&ddBienniumSession=2021%2F2021R"
+      },
+      {
+        "billNumber": "HB1338",
+        "title": "TO AMEND ELECTION LAW; TO AMEND THE PETITION PROCESS TO BE ON THE BALLOT AS A CANDIDATE FOR PRESIDENT OR VICE PRESIDENT OF THE UNITED STATES; AND TO INCREASE THE NUMBER OF SIGNATURES REQUIRED TO BE LISTED ON THE BALLOT.",
+        "session": "2021/2021R",
+        "role": "CoSponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1338&ddBienniumSession=2021%2F2021R"
+      },
+      {
+        "billNumber": "HB1659",
+        "title": "TO AMEND THE DEATH CERTIFICATE REGISTRATION PROCESS FOR THE SIGNATURE OF THE MEDICAL CERTIFICATE.",
+        "session": "2021/2021R",
+        "role": "CoSponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1659&ddBienniumSession=2021%2F2021R"
+      },
+      {
+        "billNumber": "HJR1018",
+        "title": "A CONSTITUTIONAL AMENDMENT TO PROVIDE THAT LOTTERY PROCEEDS MAY BE USED TO FUND OR PROVIDE SCHOLARSHIPS AND GRANTS TO ARKANSAS CITIZENS ENROLLED IN VOCATIONAL-TECHNICAL SCHOOLS AND TECHNICAL INSTITUTES.",
+        "session": "2021/2021R",
+        "role": "CoSponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HJR1018&ddBienniumSession=2021%2F2021R"
+      }
+    ],
+    "sosElectionAuthority": [
+      {
+        "billNumber": "SB207",
+        "title": "TO AMEND THE LAW CONCERNING INITIATIVE AND REFERENDUM PETITIONS; TO REQUIRE A CANVASSER TO DISCLOSE THAT PETITION FRAUD IS A CRIMINAL OFFENSE; AND TO DECLARE AN EMERGENCY.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB207&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "SB208",
+        "title": "TO AMEND THE LAW CONCERNING INITIATIVE AND REFERENDUM PETITIONS; TO VIEW A CANVASSER TO REQUEST PHOTO IDENTIFICATION BEFORE OBTAINING A SIGNATURE; AND TO DECLARE AN EMERGENCY.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB208&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "SB209",
+        "title": "TO DISQUALIFY SIGNATURES OBTAINED BY A CANVASSER UNDER CERTAIN CIRCUMSTANCES; AND TO DECLARE AN EMERGENCY.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB209&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "SB210",
+        "title": "TO REQUIRE THE SIGNER TO READ THE BALLOT TITLE OF THE PETITION IN THE PRESENCE OF A CANVASSER; AND TO DECLARE AN EMERGENCY.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB210&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "SB211",
+        "title": "TO AMEND THE LAW CONCERNING INITIATIVE PETITIONS AND REFERENDUM PETITIONS; TO REQUIRE A CANVASSER TO SUBMIT AN AFFIDAVIT BEFORE SIGNATURES CAN BE COUNTED; AND TO DECLARE AN EMERGENCY.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB211&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "SB291",
+        "title": "TO AMEND THE LAW CONCERNING COMPLAINTS OF ELECTION LAW VIOLATIONS; AND TO AMEND THE DEADLINES FOR COMPLAINTS OF ELECTION LAW VIOLATIONS.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB291&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "SB294",
+        "title": "TO AMEND THE LAW CONCERNING ELECTION AUDITS; AND TO ALLOW THE STATE BOARD OF ELECTION COMMISSIONERS TO AUDIT A COUNTY IN THE PRECEDING ELECTION IN CERTAIN CIRCUMSTANCES.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB294&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "SB551",
+        "title": "TO AMEND THE LAW CONCERNING CANVASSING FOR A PETITION FOR A LOCAL OPTION ELECTION.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB551&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "HB1222",
+        "title": "TO REQUIRE THE ATTORNEY GENERAL TO REVIEW BALLOT TITLES FOR CONFLICTS WITH THE UNITED STATES CONSTITUTION AND FEDERAL STATUTES; AND TO PROHIBIT THE SUBMISSION OF CONFLICTING INITIATIVE PETITIONS AND REFERENDUM PETITIONS.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1222&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "HB1574",
+        "title": "TO AMEND THE LAW CONCERNING PAID CANVASSERS; AND TO REQUIRE DOMICILE IN ARKANSAS.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1574&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "HB1693",
+        "title": "TO AMEND THE LAW CONCERNING DAMAGED OR DEFECTIVE BALLOTS; AND TO ALLOW THE STATE BOARD OF ELECTION COMMISSIONERS TO PROMULGATE RULES REGARDING THE DUPLICATION OF DAMAGED OR DEFECTIVE BALLOTS.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1693&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "HB1707",
+        "title": "TO REQUIRE CERTAIN CANDIDATES TO FILE REPORTS WITH THE SECRETARY OF STATE; TO AMEND PORTIONS OF INITIATED ACT 1 OF 1996; AND TO DECLARE AN EMERGENCY.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1707&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "HB1714",
+        "title": "TO AMEND THE DEFINITION OF PAID CANVASSER.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1714&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "SB517",
+        "title": "TO AMEND THE LAW CONCERNING CONDUCT OF ELECTIONS; AND TO ALLOW A COUNTY BOARD OF ELECTION COMMISSIONERS TO DESIGNATE A RESTROOM FOR CAMPAIGN WORKERS AND VOLUNTEERS.",
+        "session": "2025/2025R",
+        "role": "CoSponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB517&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "SB275",
+        "title": "TO AMEND THE LAW CONCERNING ELECTIONEERING; TO AMEND THE LAW CONCERNING POLLING SITES AND VOTE CENTERS; AND TO AMEND THE LAW CONCERNING THE DESIGNATION OF POLLING SITES BY COUNTY BOARDS OF ELECTION COMMISSIONERS.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB275&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "SB276",
+        "title": "TO AMEND THE CANDIDATE FILING PERIOD FOR A POSITION ON A SCHOOL DISTRICT BOARD OF DIRECTORS; AND TO DECLARE AN EMERGENCY.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB276&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "SB307",
+        "title": "TO CREATE A MONUMENT TO THE UNBORN; TO CREATE A MONUMENT ON STATE CAPITOL GROUNDS; AND TO AMEND THE LAW CONCERNING THE DUTIES OF THE SECRETARY OF STATE.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB307&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1464",
+        "title": "TO AMEND THE LAW CONCERNING COMPLAINTS OF ELECTION LAW VIOLATIONS; AND TO AMEND THE LAW CONCERNING THE STATE BOARD OF ELECTION COMMISSIONERS.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1464&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1487",
+        "title": "TO CREATE THE BALLOT SECURITY ACT OF 2023; AND TO AMEND ELECTION LAW CONCERNING THE HANDLING OF ELECTION BALLOTS.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1487&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "SB272",
+        "title": "TO CREATE AN ELECTION INTEGRITY REVIEW PROCESS; TO AMEND THE DUTIES OF THE STATE BOARD OF ELECTION COMMISSIONERS; AND TO AMEND THE LAW CONCERNING ELECTION LAW VIOLATIONS.",
+        "session": "2023/2023R",
+        "role": "CoSponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB272&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "SB273",
+        "title": "TO AMEND ELECTION LAW CONCERNING POLLING SITES; AND TO AMEND THE LOCATION OF VOTE CENTERS.",
+        "session": "2023/2023R",
+        "role": "CoSponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB273&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "SB292",
+        "title": "TO AMEND THE COMPENSATION OF A MEMBER OF A COUNTY BOARD OF ELECTION COMMISSIONERS; AND TO AMEND THE DUTIES OF A MEMBER OF A COUNTY BOARD OF ELECTION COMMISSIONERS.",
+        "session": "2023/2023R",
+        "role": "CoSponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB292&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1405",
+        "title": "TO AMEND THE DEFINITION OF ELECTION MEDIA; AND TO AMEND THE DEFINITION UNDER ELECTION LAW.",
+        "session": "2023/2023R",
+        "role": "CoSponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1405&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1407",
+        "title": "TO CREATE THE VOTER REGISTRATION AND SECURE VOTER RECORDS ACT OF 2023; TO AMEND ARKANSAS CONSTITUTION, AMENDMENT 51; AND TO AMEND THE DUTIES OF THE SECRETARY OF STATE.",
+        "session": "2023/2023R",
+        "role": "CoSponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1407&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1461",
+        "title": "TO REQUIRE LEGISLATIVE REVIEW OF NEW FEDERAL ELECTION GUIDANCE; AND TO AMEND THE DUTIES OF THE SECRETARY OF STATE.",
+        "session": "2023/2023R",
+        "role": "CoSponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1461&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1513",
+        "title": "TO CREATE THE ELECTION INTEGRITY UNIT WITHIN THE ATTORNEY GENERAL'S OFFICE; TO AMEND THE DUTIES OF THE STATE BOARD OF ELECTION COMMISSIONERS; AND TO AMEND THE LAW CONCERNING VIOLATIONS OF ELECTION LAW.",
+        "session": "2023/2023R",
+        "role": "CoSponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1513&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "SB487",
+        "title": "CONCERNING THE ESTABLISHMENT AND ALTERATION OF PRECINCT BOUNDARIES, POLLING SITES, AND VOTE CENTERS; AND TO AMEND ARKANSAS ELECTION LAW.",
+        "session": "2021/2021R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB487&ddBienniumSession=2021%2F2021R"
+      },
+      {
+        "billNumber": "SB582",
+        "title": "TO AMEND ARKANSAS LAW CONCERNING COUNTY BOARDS OF ELECTION COMMISSIONERS; TO AMEND HOW COUNTY BOARDS OF ELECTION COMMISSIONERS TAKE THE OATH; AND TO AMEND ARKANSAS LAW CONCERNING ELECTIONS.",
+        "session": "2021/2021R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB582&ddBienniumSession=2021%2F2021R"
+      },
+      {
+        "billNumber": "SB644",
+        "title": "CONCERNING THE INVESTIGATION OF VIOLATIONS OF ELECTION LAW; AND TO ESTABLISH AN ELECTION LAW VIOLATION HOTLINE.",
+        "session": "2021/2021R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB644&ddBienniumSession=2021%2F2021R"
+      },
+      {
+        "billNumber": "HB1615",
+        "title": "TO AMEND ELECTION PROCEDURES; TO AMEND THE REQUIREMENTS FOR ELECTION OFFICIALS; TO AMEND THE LOCATION OF POLLING PLACES; AND TO AMEND THE LAW CONCERNING THE INFORMATION CONTAINED IN THE VOTER REGISTRATION LIST.",
+        "session": "2021/2021R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1615&ddBienniumSession=2021%2F2021R"
+      },
+      {
+        "billNumber": "HB1715",
+        "title": "TO AMEND ARKANSAS LAW CONCERNING ABSENTEE BALLOTS; TO AMEND ELECTION LAW; TO AMEND THE LAW CONCERNING VOTING BY ABSENTEE BALLOT; AND TO AMEND THE LAW CONCERNING SPOILED BALLOTS.",
+        "session": "2021/2021R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1715&ddBienniumSession=2021%2F2021R"
+      },
+      {
+        "billNumber": "SB556",
+        "title": "TO CREATE THE ARKANSAS ELECTION INTEGRITY ACT OF 2021; TO AMEND THE LAW CONCERNING THE STATE BOARD OF ELECTION COMMISSIONERS; AND TO CREATE A PROCESS FOR THE STATE BOARD OF ELECTION COMMISSIONERS TO CONDUCT AN ELECTION.",
+        "session": "2021/2021R",
+        "role": "CoSponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB556&ddBienniumSession=2021%2F2021R"
+      },
+      {
+        "billNumber": "SB557",
+        "title": "TO AMEND ELECTION LAW; TO AMEND THE DUTIES OF MEMBERS OF A COUNTY BOARD OF ELECTION COMMISSIONERS; AND TO CLARIFY THE DUTIES OF COUNTY EMPLOYEES DESIGNATED AS ELECTION OFFICIALS.",
+        "session": "2021/2021R",
+        "role": "CoSponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB557&ddBienniumSession=2021%2F2021R"
+      },
+      {
+        "billNumber": "HB1338",
+        "title": "TO AMEND ELECTION LAW; TO AMEND THE PETITION PROCESS TO BE ON THE BALLOT AS A CANDIDATE FOR PRESIDENT OR VICE PRESIDENT OF THE UNITED STATES; AND TO INCREASE THE NUMBER OF SIGNATURES REQUIRED TO BE LISTED ON THE BALLOT.",
+        "session": "2021/2021R",
+        "role": "CoSponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1338&ddBienniumSession=2021%2F2021R"
+      },
+      {
+        "billNumber": "SB235",
+        "title": "TO ALLOW SCHOOL EMPLOYEES TO ACT AS ELECTION OFFICIALS; AND TO AMEND THE LAW CONCERNING ELECTION ADMINISTRATION.",
+        "session": "2019/2019R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB235&ddBienniumSession=2019%2F2019R"
+      },
+      {
+        "billNumber": "HB1152",
+        "title": "TO AMEND THE LAW CONCERNING THE FILING DEADLINES FOR ELECTIONS INVOLVING AN INDEPENDENT CANDIDATE.",
+        "session": "2019/2019R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1152&ddBienniumSession=2019%2F2019R"
+      }
+    ],
+    "countyElectionAdmin": [
+      {
+        "billNumber": "SB296",
+        "title": "TO AMEND THE LAW CONCERNING THE DESIGNATION OF AN EARLY VOTING LOCATION BY THE COUNTY CLERK.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB296&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "SB297",
+        "title": "TO AMEND THE LAW CONCERNING MUNICIPALITIES CHOOSING TO ELECT COUNCIL MEMBERS; AND TO REQUIRE FILING OF THE ORDINANCE DESCRIBING THE ELECTION OF CITY COUNCIL MEMBERS WITH THE COUNTY CLERK.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB297&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "SB299",
+        "title": "TO REQUIRE A STAFF MEMBER TO WITNESS AN ADMINISTRATOR ASSISTING A RESIDENT OF A LONG-TERM RESIDENTIAL CARE FACILITY WITH ABSENTEE VOTING.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB299&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "SB517",
+        "title": "TO AMEND THE LAW CONCERNING CONDUCT OF ELECTIONS; AND TO ALLOW A COUNTY BOARD OF ELECTION COMMISSIONERS TO DESIGNATE A RESTROOM FOR CAMPAIGN WORKERS AND VOLUNTEERS.",
+        "session": "2025/2025R",
+        "role": "CoSponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB517&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "HB1512",
+        "title": "TO AMEND THE LAW CONCERNING ABSENTEE BALLOTS OF QUALIFIED ELECTORS OUTSIDE OF THE UNITED STATES; AND TO AMEND THE LAW CONCERNING ABSENTEE BALLOTS.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1512&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "SB258",
+        "title": "TO AMEND THE METHOD OF VOTING ABSENTEE; AND TO PROHIBIT THE USE OF ABSENTEE BALLOT DROP BOXES.",
+        "session": "2023/2023R",
+        "role": "CoSponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB258&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "SB292",
+        "title": "TO AMEND THE COMPENSATION OF A MEMBER OF A COUNTY BOARD OF ELECTION COMMISSIONERS; AND TO AMEND THE DUTIES OF A MEMBER OF A COUNTY BOARD OF ELECTION COMMISSIONERS.",
+        "session": "2023/2023R",
+        "role": "CoSponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB292&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1411",
+        "title": "TO AMEND THE PROHIBITION ON THE DELIVERY OF UNSOLICITED ABSENTEE BALLOT APPLICATIONS TO ELECTORS; AND TO AMEND THE LAW CONCERNING ABSENTEE BALLOTS.",
+        "session": "2023/2023R",
+        "role": "CoSponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1411&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "SB485",
+        "title": "TO AMEND ARKANSAS LAW CONCERNING EARLY VOTING; AND TO AMEND ARKANSAS LAW CONCERNING ELECTIONS.",
+        "session": "2021/2021R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB485&ddBienniumSession=2021%2F2021R"
+      },
+      {
+        "billNumber": "SB487",
+        "title": "CONCERNING THE ESTABLISHMENT AND ALTERATION OF PRECINCT BOUNDARIES, POLLING SITES, AND VOTE CENTERS; AND TO AMEND ARKANSAS ELECTION LAW.",
+        "session": "2021/2021R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB487&ddBienniumSession=2021%2F2021R"
+      },
+      {
+        "billNumber": "SB643",
+        "title": "TO AMEND ARKANSAS LAW CONCERNING ABSENTEE BALLOTS; AND TO AMEND ARKANSAS LAW CONCERNING ELECTIONS.",
+        "session": "2021/2021R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB643&ddBienniumSession=2021%2F2021R"
+      },
+      {
+        "billNumber": "HB1715",
+        "title": "TO AMEND ARKANSAS LAW CONCERNING ABSENTEE BALLOTS; TO AMEND ELECTION LAW; TO AMEND THE LAW CONCERNING VOTING BY ABSENTEE BALLOT; AND TO AMEND THE LAW CONCERNING SPOILED BALLOTS.",
+        "session": "2021/2021R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1715&ddBienniumSession=2021%2F2021R"
+      },
+      {
+        "billNumber": "SB557",
+        "title": "TO AMEND ELECTION LAW; TO AMEND THE DUTIES OF MEMBERS OF A COUNTY BOARD OF ELECTION COMMISSIONERS; AND TO CLARIFY THE DUTIES OF COUNTY EMPLOYEES DESIGNATED AS ELECTION OFFICIALS.",
+        "session": "2021/2021R",
+        "role": "CoSponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB557&ddBienniumSession=2021%2F2021R"
+      }
+    ],
+    "votingSystems": [
+      {
+        "billNumber": "SB294",
+        "title": "TO AMEND THE LAW CONCERNING ELECTION AUDITS; AND TO ALLOW THE STATE BOARD OF ELECTION COMMISSIONERS TO AUDIT A COUNTY IN THE PRECEDING ELECTION IN CERTAIN CIRCUMSTANCES.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB294&ddBienniumSession=2025%2F2025R"
+      }
+    ],
+    "publicEducation": [
+      {
+        "billNumber": "SB362",
+        "title": "AN ACT FOR THE DEPARTMENT OF EDUCATION - DIVISION OF ELEMENTARY AND SECONDARY EDUCATION YOUTH ORGANIZATION GRANTS APPROPRIATION FOR THE 2025-2026 FISCAL YEAR.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB362&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "SB413",
+        "title": "TO AMEND THE LAW CONCERNING A SCHOOL DISTRICT BOARD OF DIRECTORS; AND TO AMEND THE LAW CONCERNING THE CERTIFICATION OF AN OATH FOR A SCHOOL BOARD DIRECTOR.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB413&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "SB482",
+        "title": "TO REPEAL THE ARKANSAS OPPORTUNITY PUBLIC SCHOOL CHOICE ACT; TO AMEND THE LAW RELATING TO TRANSFERS OF STUDENTS BETWEEN PUBLIC SCHOOLS AND SCHOOL DISTRICTS; AND TO AMEND THE PUBLIC SCHOOL CHOICE ACT OF 2015.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB482&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "HB1154",
+        "title": "TO ENACT THE ARKANSAS TEACHER RETIREMENT SYSTEM'S GENERAL OMNIBUS; AND TO DECLARE AN EMERGENCY.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1154&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "HB1156",
+        "title": "TO AMEND THE LAW CONCERNING THE ELIGIBILITY OF A SURVIVING SPOUSE FOR SURVIVOR ANNUITY BENEFITS UNDER THE ARKANSAS TEACHER RETIREMENT SYSTEM; AND TO DECLARE AN EMERGENCY.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1156&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "HB1326",
+        "title": "TO AMEND THE LAW CONCERNING SPECIAL ALLOWANCES TO ENCOURAGE EARLY RETIREMENT AND MANAGE EARLY RETIREMENT WINDOW INCENTIVES FOR EMPLOYEES OF INSTITUTIONS OF HIGHER EDUCATION; AND TO DECLARE AN EMERGENCY.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1326&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "HB1347",
+        "title": "TO ALLOW THE ARKANSAS TEACHER RETIREMENT SYSTEM TO PAY AN ANNUITY OR BENEFIT OWED TO A PERSON TO A SPECIAL NEEDS TRUST ESTABLISHED FOR THE BENEFIT OF THE PERSON.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1347&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "HB1354",
+        "title": "TO REGULATE PHARMACY BENEFITS MANAGERS; TO AMEND THE LAW CONCERNING THE STATE AND PUBLIC SCHOOL LIFE AND HEALTH INSURANCE PROGRAM; AND TO AMEND THE LAW CONCERNING CERTAIN HEALTH BENEFIT PLANS.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1354&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "HB1805",
+        "title": "TO AMEND THE DEFINITION OF \"BULLYING\"; AND TO CREATE A PROCESS WHEREBY A PUBLIC SCHOOL MAY CONDUCT MULTIPLE, SIMULTANEOUS INVESTIGATIONS INTO THE SAME ALLEGATION OF BULLYING UNDER CERTAIN CIRCUMSTANCES.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1805&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "SB142",
+        "title": "TO CREATE THE BELL TO BELL, NO CELL ACT; AND TO AMEND THE REQUIREMENTS FOR PUBLIC SCHOOL DISCIPLINE POLICIES WITH REGARD TO STUDENT USE OF PERSONAL ELECTRONIC DEVICES.",
+        "session": "2025/2025R",
+        "role": "CoSponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB142&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "HB1213",
+        "title": "TO AMEND THE ARKANSAS ATHLETIC TRAINERS ACT; TO CLARIFY THE DEFINITION OF \"ATHLETE\"; AND TO DEFINE \"HEALTHCARE PROVIDER\" REGARDING STUDENT ATHLETE CONCUSSION EDUCATION.",
+        "session": "2025/2025R",
+        "role": "CoSponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1213&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "HB1732",
+        "title": "TO INCREASE THE AMOUNT OF THE INCOME TAX DEDUCTION ALLOWED FOR A TEACHER'S CLASSROOM INVESTMENT.",
+        "session": "2025/2025R",
+        "role": "CoSponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1732&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "SB115",
+        "title": "TO AMEND AND UPDATE THE LAW CONCERNING SURVIVOR ANNUITY BENEFITS UNDER THE ARKANSAS TEACHER RETIREMENT SYSTEM; AND TO DECLARE AN EMERGENCY.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB115&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "SB116",
+        "title": "TO ALLOW THE PURCHASE OF PERMISSIVE SERVICE CREDIT UNDER THE ARKANSAS TEACHER RETIREMENT SYSTEM; AND TO DECLARE AN EMERGENCY.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB116&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "SB117",
+        "title": "TO AMEND THE LAW CONCERNING THE TERMINATION SEPARATION PERIOD UNDER THE ARKANSAS TEACHER RETIREMENT SYSTEM; AND TO DECLARE AN EMERGENCY.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB117&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "SB505",
+        "title": "TO ESTABLISH A MEANS BY WHICH A PUBLIC SCHOOL MAY AWARD A STUDENT A HIGH SCHOOL DIPLOMA BEFORE THE STUDENT GRADUATES UNDER CERTAIN CIRCUMSTANCES; AND TO DECLARE AN EMERGENCY.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB505&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1183",
+        "title": "TO AMEND AND UPDATE PROVISIONS FOR OUTSOURCING UNDER THE ARKANSAS TEACHER RETIREMENT SYSTEM; AND TO DECLARE AN EMERGENCY.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1183&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1184",
+        "title": "TO AMEND THE LAW CONCERNING THE MEMBERSHIP STATUS OF CERTAIN MEMBERS OF THE ARKANSAS TEACHER RETIREMENT SYSTEM; AND TO DECLARE AN EMERGENCY.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1184&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1186",
+        "title": "TO AMEND AND UPDATE THE LAW CONCERNING ANNUITY OPTIONS UNDER THE ARKANSAS TEACHER RETIREMENT SYSTEM; AND TO DECLARE AN EMERGENCY.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1186&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1187",
+        "title": "TO AMEND AND UPDATE THE LAW CONCERNING THE LUMP-SUM DEATH BENEFIT UNDER THE ARKANSAS TEACHER RETIREMENT SYSTEM; AND TO DECLARE AN EMERGENCY.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1187&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1188",
+        "title": "TO AMEND AND UPDATE THE LAW CONCERNING THE FINAL AVERAGE SALARY UNDER THE ARKANSAS TEACHER RETIREMENT SYSTEM; AND TO DECLARE AN EMERGENCY.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1188&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1199",
+        "title": "TO PERMIT A REFUND OF UNUSED PURCHASED SERVICE CREDIT UNDER THE ARKANSAS TEACHER RETIREMENT SYSTEM; AND TO DECLARE AN EMERGENCY.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1199&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1200",
+        "title": "CONCERNING AN INACTIVE MEMBER'S ELIGIBILITY FOR FREE MILITARY SERVICE CREDIT AND ABILITY TO PURCHASE MILITARY, CONTRIBUTORY, AND FEDERAL SERVICE CREDIT IN THE ARKANSAS TEACHER RETIREMENT SYSTEM; AND TO DECLARE AN EMERGENCY.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1200&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1201",
+        "title": "TO ENACT THE ARKANSAS TEACHER RETIREMENT SYSTEM’S GENERAL OMNIBUS ACT; AND TO DECLARE AN EMERGENCY.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1201&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1202",
+        "title": "TO AMEND THE LAW CONCERNING THE MULTIPLIER USED TO CALCULATE A LIFE ANNUITY UNDER THE ARKANSAS TEACHER RETIREMENT SYSTEM; AND TO DECLARE AN EMERGENCY.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1202&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1254",
+        "title": "TO AMEND THE STATE FINANCIAL PARTICIPATION AMOUNT BY USING THE BASIC PROJECT COST PER SQUARE FOOT FOR PUBLIC SCHOOL NEW CONSTRUCTION PROJECTS.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1254&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1337",
+        "title": "TO CLASSIFY A BUILDING OR SPACE USED FOR A PUBLIC EARLY CHILDHOOD EDUCATION PROGRAM OR FOR A SAFE ROOM FOR STUDENTS AS AN ACADEMIC FACILITY UNDER THE ARKANSAS PUBLIC SCHOOL ACADEMIC FACILITIES FUNDING ACT.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1337&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1559",
+        "title": "CONCERNING IMPLICIT BIAS TRAINING REQUIRED BY A PUBLIC SCHOOL OR STATE-SUPPORTED INSTITUTION OF HIGHER EDUCATION.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1559&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1668",
+        "title": "TO AMEND THE PUBLIC SCHOOL FUNDING ACT OF 2003; AND TO AMEND THE TARGET AVERAGE ANNUAL TEACHER SALARY FOR PURPOSES OF TEACHER SALARY EQUALIZATION FUNDING.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1668&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "SB294",
+        "title": "TO CREATE THE LEARNS ACT; TO AMEND VARIOUS PROVISIONS OF THE ARKANSAS CODE AS THEY RELATE TO EARLY CHILDHOOD THROUGH GRADE TWELVE EDUCATION IN THE STATE OF ARKANSAS; AND TO DECLARE AN EMERGENCY.",
+        "session": "2023/2023R",
+        "role": "CoSponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB294&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "SB68",
+        "title": "TO AMEND THE LAW THAT REQUIRES HOLOCAUST EDUCATION; AND TO ESTABLISH HOLOCAUST EDUCATION WEEK IN THE PUBLIC SCHOOLS OF THE STATE OF ARKANSAS.",
+        "session": "2023/2023R",
+        "role": "CoSponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB68&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "HB1514",
+        "title": "TO REQUIRE THAT OPIOID OVERDOSE RESCUE KITS BE LOCATED ON EACH CAMPUS OF EACH PUBLIC HIGH SCHOOL AND STATE-SUPPORTED INSTITUTION OF HIGHER EDUCATION.",
+        "session": "2023/2023R",
+        "role": "CoSponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1514&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "SB2",
+        "title": "AN ACT FOR THE DEPARTMENT OF EDUCATION - SCHOOL SAFETY GRANTS APPROPRIATION AND SCHOOL SAFETY SET-ASIDE OR CONTINGENCY VOTE 3/5 SET-ASIDE FOR THE 2022-2023 FISCAL YEAR.",
+        "session": "2021/2022S3",
+        "role": "CoSponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB2&ddBienniumSession=2021%2F2022S3"
+      },
+      {
+        "billNumber": "HB1299",
+        "title": "TO AMEND PROVISIONS OF THE ARKANSAS CODE CONCERNING THE ARKANSAS TEACHER RETIREMENT SYSTEM.",
+        "session": "2021/2021R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1299&ddBienniumSession=2021%2F2021R"
+      },
+      {
+        "billNumber": "HB1300",
+        "title": "CONCERNING THE MEMBERSHIP OF PARTICIPANTS IN SUMMER YOUTH WORK PROGRAMS IN THE ARKANSAS TEACHER RETIREMENT SYSTEM; AND TO AMEND THE DEFINITION OF \"EMPLOYEE\".",
+        "session": "2021/2021R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1300&ddBienniumSession=2021%2F2021R"
+      },
+      {
+        "billNumber": "SB232",
+        "title": "TO CREATE THE FREEDOM OF CONTRACT IN HIGHER EDUCATION ACT.",
+        "session": "2019/2019R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB232&ddBienniumSession=2019%2F2019R"
+      },
+      {
+        "billNumber": "SB668",
+        "title": "CONCERNING A PUBLIC SCHOOL DISTRICT THAT IS CLASSIFIED AS BEING IN NEED OF LEVEL 5 - INTENSIVE SUPPORT; AND TO ALLOW THE STATE BOARD OF EDUCATION TO GRANT EXTENSIONS OF ITS ASSUMPTION OF AUTHORITY IN CERTAIN SITUATIONS.",
+        "session": "2019/2019R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB668&ddBienniumSession=2019%2F2019R"
+      },
+      {
+        "billNumber": "SB509",
+        "title": "TO DISTRIBUTE FUNDS FROM THE EDUCATIONAL EXCELLENCE TRUST FUND TO CERTAIN FOUR-YEAR STATE-SUPPORTED INSTITUTIONS OF HIGHER EDUCATION BASED ON AN INSTITUTION'S IN-STATE FULL-TIME EQUIVALENT ENROLLMENT.",
+        "session": "2019/2019R",
+        "role": "CoSponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB509&ddBienniumSession=2019%2F2019R"
+      },
+      {
+        "billNumber": "HB1569",
+        "title": "TO ALLOW EXCESS FOOD DISTRIBUTION BY A PUBLIC SCHOOL OR OPEN-ENROLLMENT PUBLIC CHARTER SCHOOL TO A STUDENT WHO IS ENROLLED IN THE PUBLIC SCHOOL OR OPEN-ENROLLMENT PUBLIC CHARTER SCHOOL.",
+        "session": "2019/2019R",
+        "role": "CoSponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1569&ddBienniumSession=2019%2F2019R"
+      }
+    ],
+    "electionFinance": [
+      {
+        "billNumber": "SB295",
+        "title": "TO AMEND THE LAW CONCERNING APPROPRIATION FOR ELECTION EXPENSES; AND TO ALLOW COMPENSATION FOR A CERTIFIED ELECTION MONITOR AS AN ELECTION EXPENSE.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB295&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "SB255",
+        "title": "TO AMEND THE LAW CONCERNING THE ALLOCATION OF ELECTION EXPENSES; AND TO RESTRICT THE SOURCE OF ELECTION FUNDING.",
+        "session": "2023/2023R",
+        "role": "CoSponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB255&ddBienniumSession=2023%2F2023R"
+      }
+    ],
+    "capitolBuildingGroundsManagement": [
+      {
+        "billNumber": "SB307",
+        "title": "TO CREATE A MONUMENT TO THE UNBORN; TO CREATE A MONUMENT ON STATE CAPITOL GROUNDS; AND TO AMEND THE LAW CONCERNING THE DUTIES OF THE SECRETARY OF STATE.",
+        "session": "2023/2023R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB307&ddBienniumSession=2023%2F2023R"
+      },
+      {
+        "billNumber": "SB553",
+        "title": "TO CREATE THE ARKANSAS STATE CAPITOL AND HISTORICAL MONUMENT PROTECTION ACT; AND TO DECLARE AN EMERGENCY.",
+        "session": "2021/2021R",
+        "role": "CoSponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB553&ddBienniumSession=2021%2F2021R"
+      }
+    ],
+    "businessServicesCorporationsFilings": [
+      {
+        "billNumber": "SB552",
+        "title": "TO CLARIFY THE DEFINITION OF \"PRINCIPAL OFFICE\" USED UNDER THE ARKANSAS BUSINESS CORPORATION ACT OF 1987 AND THE UNIFORM LIMITED LIABILITY COMPANY ACT.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB552&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "SB1",
+        "title": "TO REDUCE THE INCOME TAX LEVIED ON INDIVIDUALS, TRUSTS, ESTATES, AND CORPORATIONS; TO TRANSFER SURPLUS FUNDS TO THE ARKANSAS RESERVE FUND SET-ASIDE; AND TO DECLARE AN EMERGENCY.",
+        "session": "2023/2024S2",
+        "role": "CoSponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB1&ddBienniumSession=2023%2F2024S2"
+      },
+      {
+        "billNumber": "HB1001",
+        "title": "TO REDUCE THE INCOME TAX LEVIED ON INDIVIDUALS, TRUSTS, ESTATES, AND CORPORATIONS; TO TRANSFER SURPLUS FUNDS TO THE ARKANSAS RESERVE FUND SET-ASIDE; AND TO DECLARE AN EMERGENCY.",
+        "session": "2023/2024S2",
+        "role": "CoSponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1001&ddBienniumSession=2023%2F2024S2"
+      },
+      {
+        "billNumber": "SB2",
+        "title": "TO REDUCE THE INCOME TAX RATES APPLICABLE TO INDIVIDUALS, TRUSTS, ESTATES, AND CORPORATIONS; TO CREATE AN INFLATIONARY RELIEF INCOME TAX CREDIT FOR CERTAIN TAXPAYERS; AND TO DECLARE AN EMERGENCY.",
+        "session": "2023/2023S1",
+        "role": "CoSponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB2&ddBienniumSession=2023%2F2023S1"
+      },
+      {
+        "billNumber": "SB8",
+        "title": "TO REDUCE THE INCOME TAX RATES APPLICABLE TO INDIVIDUALS, TRUSTS, ESTATES, AND CORPORATIONS; TO CREATE AN INFLATIONARY RELIEF INCOME TAX CREDIT FOR CERTAIN TAXPAYERS; AND TO DECLARE AN EMERGENCY.",
+        "session": "2023/2023S1",
+        "role": "CoSponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB8&ddBienniumSession=2023%2F2023S1"
+      },
+      {
+        "billNumber": "HB1001",
+        "title": "TO REDUCE THE INCOME TAX RATES APPLICABLE TO INDIVIDUALS, TRUSTS, ESTATES, AND CORPORATIONS; TO CREATE AN INFLATIONARY RELIEF INCOME TAX CREDIT FOR CERTAIN TAXPAYERS; AND TO DECLARE AN EMERGENCY.",
+        "session": "2023/2023S1",
+        "role": "CoSponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1001&ddBienniumSession=2023%2F2023S1"
+      },
+      {
+        "billNumber": "HB1007",
+        "title": "TO REDUCE THE INCOME TAX RATES APPLICABLE TO INDIVIDUALS, TRUSTS, ESTATES, AND CORPORATIONS; TO CREATE AN INFLATIONARY RELIEF INCOME TAX CREDIT FOR CERTAIN TAXPAYERS; AND TO DECLARE AN EMERGENCY.",
+        "session": "2023/2023S1",
+        "role": "CoSponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1007&ddBienniumSession=2023%2F2023S1"
+      },
+      {
+        "billNumber": "SB549",
+        "title": "TO REDUCE THE INCOME TAX RATES APPLICABLE TO INDIVIDUALS, TRUSTS, ESTATES, AND CORPORATIONS.",
+        "session": "2023/2023R",
+        "role": "CoSponsor",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB549&ddBienniumSession=2023%2F2023R"
+      }
+    ],
+    "recordsArchivesAdministrativeDuties": [
+      {
+        "billNumber": "HB1608",
+        "title": "TO AMEND THE LAW CONCERNING THE MANAGEMENT OF PUBLIC RECORDS AND ARCHIVES; AND TO REQUIRE APPROVAL OF THE ARKANSAS STATE ARCHIVES PRIOR TO THE DESTRUCTION OF CERTAIN DOCUMENTS.",
+        "session": "2025/2025R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1608&ddBienniumSession=2025%2F2025R"
+      },
+      {
+        "billNumber": "HB1431",
+        "title": "TO AMEND ARKANSAS LAW CONCERNING ADMINISTRATIVE RULES.",
+        "session": "2019/2019R",
+        "role": "Primary Sponsor for House",
+        "officialBillUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1431&ddBienniumSession=2019%2F2019R"
+      }
+    ]
+  },
+  "topFindings": [
+    "Arkleg legislator bill grid lists 545 unique bill-role rows for Kim Hammer (sessions present in export: 12; keyword filter matched 109 rows touching at least one SOS-relevance bucket).",
+    "Direct democracy / ballot-process titles appear on 25 grid rows — review official bill text before any public citation.",
+    "Rows whose titles reference Secretary of State, election boards, canvass, or voter registration: 36.",
+    "County / local election administration keywords: 13 rows.",
+    "Voting systems / tabulation / audit keywords: 1 rows.",
+    "Business services / corporate filing keywords: 8 rows.",
+    "Public education (excluding ceremonial resolutions): 39 rows."
+  ],
+  "patterns": [
+    {
+      "label": "Repeated legislative attention to ballot initiatives, petitions, referendum, or ballot-title process",
+      "billNumbers": [
+        "SB207",
+        "SB208",
+        "SB210",
+        "SB211",
+        "SB551",
+        "SB584",
+        "HB1221",
+        "HB1222",
+        "HB1449",
+        "HB1707",
+        "HB1837",
+        "HB1713",
+        "SB377",
+        "SB543",
+        "SJR14",
+        "HB1487",
+        "HJR1007",
+        "SB258",
+        "HB1404",
+        "HB1411",
+        "HB1423",
+        "HB1715",
+        "HB1338",
+        "HB1659",
+        "HJR1018"
+      ]
+    },
+    {
+      "label": "Multiple bills referencing Secretary of State, election commissions/boards, canvass, or voter registration",
+      "billNumbers": [
+        "SB207",
+        "SB208",
+        "SB209",
+        "SB210",
+        "SB211",
+        "SB291",
+        "SB294",
+        "SB551",
+        "HB1222",
+        "HB1574",
+        "HB1693",
+        "HB1707",
+        "HB1714",
+        "SB517",
+        "SB275",
+        "SB276",
+        "SB307",
+        "HB1464",
+        "HB1487",
+        "SB272",
+        "SB273",
+        "SB292",
+        "HB1405",
+        "HB1407",
+        "HB1461",
+        "HB1513",
+        "SB487",
+        "SB582",
+        "SB644",
+        "HB1615",
+        "HB1715",
+        "SB556",
+        "SB557",
+        "HB1338",
+        "SB235",
+        "HB1152"
+      ]
+    },
+    {
+      "label": "Recurring county / local election administration topics (clerks, precincts, absentee, early voting)",
+      "billNumbers": [
+        "SB296",
+        "SB297",
+        "SB299",
+        "SB517",
+        "HB1512",
+        "SB258",
+        "SB292",
+        "HB1411",
+        "SB485",
+        "SB487",
+        "SB643",
+        "HB1715",
+        "SB557"
+      ]
+    },
+    {
+      "label": "Recurring business-entity / filing / UCC / notary-class topics that overlap traditional SOS business services",
+      "billNumbers": [
+        "SB552",
+        "SB1",
+        "HB1001",
+        "SB2",
+        "SB8",
+        "HB1007",
+        "SB549"
+      ]
+    },
+    {
+      "label": "Education-policy bills (non-ceremonial title matches only)",
+      "billNumbers": [
+        "SB362",
+        "SB413",
+        "SB482",
+        "HB1154",
+        "HB1156",
+        "HB1326",
+        "HB1347",
+        "HB1354",
+        "HB1805",
+        "SB142",
+        "HB1213",
+        "HB1732",
+        "SB115",
+        "SB116",
+        "SB117",
+        "SB505",
+        "HB1183",
+        "HB1184",
+        "HB1186",
+        "HB1187",
+        "HB1188",
+        "HB1199",
+        "HB1200",
+        "HB1201",
+        "HB1202",
+        "HB1254",
+        "HB1337",
+        "HB1559",
+        "HB1668",
+        "SB294",
+        "SB68",
+        "HB1514",
+        "SB2",
+        "HB1299",
+        "HB1300",
+        "SB232",
+        "SB668",
+        "SB509",
+        "HB1569"
+      ]
+    }
+  ],
+  "notableBills": [
+    {
+      "billNumber": "SB207",
+      "title": "TO AMEND THE LAW CONCERNING INITIATIVE AND REFERENDUM PETITIONS; TO REQUIRE A CANVASSER TO DISCLOSE THAT PETITION FRAUD IS A CRIMINAL OFFENSE; AND TO DECLARE AN EMERGENCY.",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB207&ddBienniumSession=2025%2F2025R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "SB208",
+      "title": "TO AMEND THE LAW CONCERNING INITIATIVE AND REFERENDUM PETITIONS; TO VIEW A CANVASSER TO REQUEST PHOTO IDENTIFICATION BEFORE OBTAINING A SIGNATURE; AND TO DECLARE AN EMERGENCY.",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB208&ddBienniumSession=2025%2F2025R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "SB210",
+      "title": "TO REQUIRE THE SIGNER TO READ THE BALLOT TITLE OF THE PETITION IN THE PRESENCE OF A CANVASSER; AND TO DECLARE AN EMERGENCY.",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB210&ddBienniumSession=2025%2F2025R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "SB211",
+      "title": "TO AMEND THE LAW CONCERNING INITIATIVE PETITIONS AND REFERENDUM PETITIONS; TO REQUIRE A CANVASSER TO SUBMIT AN AFFIDAVIT BEFORE SIGNATURES CAN BE COUNTED; AND TO DECLARE AN EMERGENCY.",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB211&ddBienniumSession=2025%2F2025R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "SB551",
+      "title": "TO AMEND THE LAW CONCERNING CANVASSING FOR A PETITION FOR A LOCAL OPTION ELECTION.",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB551&ddBienniumSession=2025%2F2025R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "SB584",
+      "title": "TO AMEND THE LAW CONCERNING LOCAL INITIATIVE AND REFERENDUM PETITIONS.",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB584&ddBienniumSession=2025%2F2025R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "HB1221",
+      "title": "TO AMEND ARKANSAS LAW CONCERNING INITIATIVES, REFERENDA, AND CONSTITUTIONAL AMENDMENTS; AND TO DECLARE AN EMERGENCY.",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor for House",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1221&ddBienniumSession=2025%2F2025R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "HB1222",
+      "title": "TO REQUIRE THE ATTORNEY GENERAL TO REVIEW BALLOT TITLES FOR CONFLICTS WITH THE UNITED STATES CONSTITUTION AND FEDERAL STATUTES; AND TO PROHIBIT THE SUBMISSION OF CONFLICTING INITIATIVE PETITIONS AND REFERENDUM PETITIONS.",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor for House",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1222&ddBienniumSession=2025%2F2025R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "HB1449",
+      "title": "TO AMEND THE LAW CONCERNING REPORTS OF CONTRIBUTIONS FOR A CANDIDATE FOR STATE OR DISTRICT OFFICE; TO EXTEND THE DEADLINE FOR FINAL REPORTS; AND TO AMEND PORTIONS OF LAW RESULTING FROM INITIATED ACT 1 OF 1990.",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor for House",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1449&ddBienniumSession=2025%2F2025R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "HB1707",
+      "title": "TO REQUIRE CERTAIN CANDIDATES TO FILE REPORTS WITH THE SECRETARY OF STATE; TO AMEND PORTIONS OF INITIATED ACT 1 OF 1996; AND TO DECLARE AN EMERGENCY.",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor for House",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1707&ddBienniumSession=2025%2F2025R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "HB1837",
+      "title": "TO AMEND THE LAW CONCERNING DISCLOSURE FOR MATTERS REFERRED TO VOTERS; AND TO BAN FOREIGN FUNDING FOR BALLOT MEASURES; TO AMEND PORTIONS OF THE ARKANSAS CODE THAT RESULTED FROM INITIATED ACT 1 OF 1996.",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor for House",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1837&ddBienniumSession=2025%2F2025R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "HB1713",
+      "title": "TO REQUIRE BALLOT TITLES FOR INITIATED MEASURES TO BE AT OR UNDER A CERTAIN READING LEVEL; AND TO DECLARE AN EMERGENCY.",
+      "session": "2025/2025R",
+      "role": "CoSponsor for House",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1713&ddBienniumSession=2025%2F2025R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "SB377",
+      "title": "TO AMEND THE LAW CONCERNING INITIATIVE PETITIONS; TO CREATE A MISDEMEANOR OFFENSE CONCERNING INITIATIVE PETITION SIGNATURES; AND TO ESTABLISH THE DEFINITION OF AND REGULATE PAID PETITION BLOCKERS.",
+      "session": "2023/2023R",
+      "role": "Primary Sponsor",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB377&ddBienniumSession=2023%2F2023R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "SB543",
+      "title": "TO AMEND ARKANSAS LAW CONCERNING SCHOOL DISTRICT BOARDS OF DIRECTORS AND AMENDING A PORTION OF LAW RESULTING FROM INITIATED ACT 1 OF 1990.",
+      "session": "2023/2023R",
+      "role": "Primary Sponsor",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB543&ddBienniumSession=2023%2F2023R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "SJR14",
+      "title": "A CONSTITUTIONAL AMENDMENT TO AMEND ARKANSAS CONSTITUTION, AMENDMENT 78, § 2, TO ALLOW ADDITIONAL OPTIONS FOR THE FINANCING OF FIRE EQUIPMENT.",
+      "session": "2023/2023R",
+      "role": "Primary Sponsor",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SJR14&ddBienniumSession=2023%2F2023R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "HB1487",
+      "title": "TO CREATE THE BALLOT SECURITY ACT OF 2023; AND TO AMEND ELECTION LAW CONCERNING THE HANDLING OF ELECTION BALLOTS.",
+      "session": "2023/2023R",
+      "role": "Primary Sponsor for House",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1487&ddBienniumSession=2023%2F2023R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "HJR1007",
+      "title": "A CONSTITUTIONAL AMENDMENT TO LEVY AN EXCISE TAX ON CERTAIN TAXABLE SALES TO REIMBURSE COUNTIES FOR THE HOMESTEAD PROPERTY TAX CREDIT AND ADMINISTER THE APPLICATION OF THE HOMESTEAD PROPERTY TAX CREDIT.",
+      "session": "2023/2023R",
+      "role": "Primary Sponsor for House",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HJR1007&ddBienniumSession=2023%2F2023R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "SB258",
+      "title": "TO AMEND THE METHOD OF VOTING ABSENTEE; AND TO PROHIBIT THE USE OF ABSENTEE BALLOT DROP BOXES.",
+      "session": "2023/2023R",
+      "role": "CoSponsor",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB258&ddBienniumSession=2023%2F2023R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "HB1404",
+      "title": "TO AMEND ELECTION PROCEDURES CONCERNING BALLOT TABULATORS.",
+      "session": "2023/2023R",
+      "role": "CoSponsor for House",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1404&ddBienniumSession=2023%2F2023R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "HB1411",
+      "title": "TO AMEND THE PROHIBITION ON THE DELIVERY OF UNSOLICITED ABSENTEE BALLOT APPLICATIONS TO ELECTORS; AND TO AMEND THE LAW CONCERNING ABSENTEE BALLOTS.",
+      "session": "2023/2023R",
+      "role": "CoSponsor for House",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1411&ddBienniumSession=2023%2F2023R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "HB1423",
+      "title": "TO AMEND THE LAW CONCERNING THE RECOUNT OF BALLOTS; AND TO AMEND ELECTION PROCEDURES.",
+      "session": "2023/2023R",
+      "role": "CoSponsor for House",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1423&ddBienniumSession=2023%2F2023R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "HB1715",
+      "title": "TO AMEND ARKANSAS LAW CONCERNING ABSENTEE BALLOTS; TO AMEND ELECTION LAW; TO AMEND THE LAW CONCERNING VOTING BY ABSENTEE BALLOT; AND TO AMEND THE LAW CONCERNING SPOILED BALLOTS.",
+      "session": "2021/2021R",
+      "role": "Primary Sponsor for House",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1715&ddBienniumSession=2021%2F2021R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "HB1338",
+      "title": "TO AMEND ELECTION LAW; TO AMEND THE PETITION PROCESS TO BE ON THE BALLOT AS A CANDIDATE FOR PRESIDENT OR VICE PRESIDENT OF THE UNITED STATES; AND TO INCREASE THE NUMBER OF SIGNATURES REQUIRED TO BE LISTED ON THE BALLOT.",
+      "session": "2021/2021R",
+      "role": "CoSponsor for House",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1338&ddBienniumSession=2021%2F2021R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "HB1659",
+      "title": "TO AMEND THE DEATH CERTIFICATE REGISTRATION PROCESS FOR THE SIGNATURE OF THE MEDICAL CERTIFICATE.",
+      "session": "2021/2021R",
+      "role": "CoSponsor for House",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1659&ddBienniumSession=2021%2F2021R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "HJR1018",
+      "title": "A CONSTITUTIONAL AMENDMENT TO PROVIDE THAT LOTTERY PROCEEDS MAY BE USED TO FUND OR PROVIDE SCHOLARSHIPS AND GRANTS TO ARKANSAS CITIZENS ENROLLED IN VOCATIONAL-TECHNICAL SCHOOLS AND TECHNICAL INSTITUTES.",
+      "session": "2021/2021R",
+      "role": "CoSponsor for House",
+      "category": "directDemocracy",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HJR1018&ddBienniumSession=2021%2F2021R",
+      "whyItMatters": "Touches ballot access, initiatives, or referendum process — areas that intersect with how voters place measures on the ballot.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "SB209",
+      "title": "TO DISQUALIFY SIGNATURES OBTAINED BY A CANVASSER UNDER CERTAIN CIRCUMSTANCES; AND TO DECLARE AN EMERGENCY.",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "category": "sosElectionAuthority",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB209&ddBienniumSession=2025%2F2025R",
+      "whyItMatters": "References offices or processes that align with Secretary of State election-administration duties — verify scope on the official bill page.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "SB291",
+      "title": "TO AMEND THE LAW CONCERNING COMPLAINTS OF ELECTION LAW VIOLATIONS; AND TO AMEND THE DEADLINES FOR COMPLAINTS OF ELECTION LAW VIOLATIONS.",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "category": "sosElectionAuthority",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB291&ddBienniumSession=2025%2F2025R",
+      "whyItMatters": "References offices or processes that align with Secretary of State election-administration duties — verify scope on the official bill page.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "SB294",
+      "title": "TO AMEND THE LAW CONCERNING ELECTION AUDITS; AND TO ALLOW THE STATE BOARD OF ELECTION COMMISSIONERS TO AUDIT A COUNTY IN THE PRECEDING ELECTION IN CERTAIN CIRCUMSTANCES.",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor",
+      "category": "sosElectionAuthority",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB294&ddBienniumSession=2025%2F2025R",
+      "whyItMatters": "References offices or processes that align with Secretary of State election-administration duties — verify scope on the official bill page.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "HB1574",
+      "title": "TO AMEND THE LAW CONCERNING PAID CANVASSERS; AND TO REQUIRE DOMICILE IN ARKANSAS.",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor for House",
+      "category": "sosElectionAuthority",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1574&ddBienniumSession=2025%2F2025R",
+      "whyItMatters": "References offices or processes that align with Secretary of State election-administration duties — verify scope on the official bill page.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "HB1693",
+      "title": "TO AMEND THE LAW CONCERNING DAMAGED OR DEFECTIVE BALLOTS; AND TO ALLOW THE STATE BOARD OF ELECTION COMMISSIONERS TO PROMULGATE RULES REGARDING THE DUPLICATION OF DAMAGED OR DEFECTIVE BALLOTS.",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor for House",
+      "category": "sosElectionAuthority",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1693&ddBienniumSession=2025%2F2025R",
+      "whyItMatters": "References offices or processes that align with Secretary of State election-administration duties — verify scope on the official bill page.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "HB1714",
+      "title": "TO AMEND THE DEFINITION OF PAID CANVASSER.",
+      "session": "2025/2025R",
+      "role": "Primary Sponsor for House",
+      "category": "sosElectionAuthority",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1714&ddBienniumSession=2025%2F2025R",
+      "whyItMatters": "References offices or processes that align with Secretary of State election-administration duties — verify scope on the official bill page.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "SB517",
+      "title": "TO AMEND THE LAW CONCERNING CONDUCT OF ELECTIONS; AND TO ALLOW A COUNTY BOARD OF ELECTION COMMISSIONERS TO DESIGNATE A RESTROOM FOR CAMPAIGN WORKERS AND VOLUNTEERS.",
+      "session": "2025/2025R",
+      "role": "CoSponsor",
+      "category": "sosElectionAuthority",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB517&ddBienniumSession=2025%2F2025R",
+      "whyItMatters": "References offices or processes that align with Secretary of State election-administration duties — verify scope on the official bill page.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "SB275",
+      "title": "TO AMEND THE LAW CONCERNING ELECTIONEERING; TO AMEND THE LAW CONCERNING POLLING SITES AND VOTE CENTERS; AND TO AMEND THE LAW CONCERNING THE DESIGNATION OF POLLING SITES BY COUNTY BOARDS OF ELECTION COMMISSIONERS.",
+      "session": "2023/2023R",
+      "role": "Primary Sponsor",
+      "category": "sosElectionAuthority",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB275&ddBienniumSession=2023%2F2023R",
+      "whyItMatters": "References offices or processes that align with Secretary of State election-administration duties — verify scope on the official bill page.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "SB276",
+      "title": "TO AMEND THE CANDIDATE FILING PERIOD FOR A POSITION ON A SCHOOL DISTRICT BOARD OF DIRECTORS; AND TO DECLARE AN EMERGENCY.",
+      "session": "2023/2023R",
+      "role": "Primary Sponsor",
+      "category": "sosElectionAuthority",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB276&ddBienniumSession=2023%2F2023R",
+      "whyItMatters": "References offices or processes that align with Secretary of State election-administration duties — verify scope on the official bill page.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "SB307",
+      "title": "TO CREATE A MONUMENT TO THE UNBORN; TO CREATE A MONUMENT ON STATE CAPITOL GROUNDS; AND TO AMEND THE LAW CONCERNING THE DUTIES OF THE SECRETARY OF STATE.",
+      "session": "2023/2023R",
+      "role": "Primary Sponsor",
+      "category": "sosElectionAuthority",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB307&ddBienniumSession=2023%2F2023R",
+      "whyItMatters": "References offices or processes that align with Secretary of State election-administration duties — verify scope on the official bill page.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "HB1464",
+      "title": "TO AMEND THE LAW CONCERNING COMPLAINTS OF ELECTION LAW VIOLATIONS; AND TO AMEND THE LAW CONCERNING THE STATE BOARD OF ELECTION COMMISSIONERS.",
+      "session": "2023/2023R",
+      "role": "Primary Sponsor for House",
+      "category": "sosElectionAuthority",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1464&ddBienniumSession=2023%2F2023R",
+      "whyItMatters": "References offices or processes that align with Secretary of State election-administration duties — verify scope on the official bill page.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "SB272",
+      "title": "TO CREATE AN ELECTION INTEGRITY REVIEW PROCESS; TO AMEND THE DUTIES OF THE STATE BOARD OF ELECTION COMMISSIONERS; AND TO AMEND THE LAW CONCERNING ELECTION LAW VIOLATIONS.",
+      "session": "2023/2023R",
+      "role": "CoSponsor",
+      "category": "sosElectionAuthority",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB272&ddBienniumSession=2023%2F2023R",
+      "whyItMatters": "References offices or processes that align with Secretary of State election-administration duties — verify scope on the official bill page.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "SB273",
+      "title": "TO AMEND ELECTION LAW CONCERNING POLLING SITES; AND TO AMEND THE LOCATION OF VOTE CENTERS.",
+      "session": "2023/2023R",
+      "role": "CoSponsor",
+      "category": "sosElectionAuthority",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB273&ddBienniumSession=2023%2F2023R",
+      "whyItMatters": "References offices or processes that align with Secretary of State election-administration duties — verify scope on the official bill page.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "SB292",
+      "title": "TO AMEND THE COMPENSATION OF A MEMBER OF A COUNTY BOARD OF ELECTION COMMISSIONERS; AND TO AMEND THE DUTIES OF A MEMBER OF A COUNTY BOARD OF ELECTION COMMISSIONERS.",
+      "session": "2023/2023R",
+      "role": "CoSponsor",
+      "category": "sosElectionAuthority",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB292&ddBienniumSession=2023%2F2023R",
+      "whyItMatters": "References offices or processes that align with Secretary of State election-administration duties — verify scope on the official bill page.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "HB1405",
+      "title": "TO AMEND THE DEFINITION OF ELECTION MEDIA; AND TO AMEND THE DEFINITION UNDER ELECTION LAW.",
+      "session": "2023/2023R",
+      "role": "CoSponsor for House",
+      "category": "sosElectionAuthority",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1405&ddBienniumSession=2023%2F2023R",
+      "whyItMatters": "References offices or processes that align with Secretary of State election-administration duties — verify scope on the official bill page.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "HB1407",
+      "title": "TO CREATE THE VOTER REGISTRATION AND SECURE VOTER RECORDS ACT OF 2023; TO AMEND ARKANSAS CONSTITUTION, AMENDMENT 51; AND TO AMEND THE DUTIES OF THE SECRETARY OF STATE.",
+      "session": "2023/2023R",
+      "role": "CoSponsor for House",
+      "category": "sosElectionAuthority",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1407&ddBienniumSession=2023%2F2023R",
+      "whyItMatters": "References offices or processes that align with Secretary of State election-administration duties — verify scope on the official bill page.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "HB1461",
+      "title": "TO REQUIRE LEGISLATIVE REVIEW OF NEW FEDERAL ELECTION GUIDANCE; AND TO AMEND THE DUTIES OF THE SECRETARY OF STATE.",
+      "session": "2023/2023R",
+      "role": "CoSponsor for House",
+      "category": "sosElectionAuthority",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1461&ddBienniumSession=2023%2F2023R",
+      "whyItMatters": "References offices or processes that align with Secretary of State election-administration duties — verify scope on the official bill page.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "HB1513",
+      "title": "TO CREATE THE ELECTION INTEGRITY UNIT WITHIN THE ATTORNEY GENERAL'S OFFICE; TO AMEND THE DUTIES OF THE STATE BOARD OF ELECTION COMMISSIONERS; AND TO AMEND THE LAW CONCERNING VIOLATIONS OF ELECTION LAW.",
+      "session": "2023/2023R",
+      "role": "CoSponsor for House",
+      "category": "sosElectionAuthority",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1513&ddBienniumSession=2023%2F2023R",
+      "whyItMatters": "References offices or processes that align with Secretary of State election-administration duties — verify scope on the official bill page.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "SB487",
+      "title": "CONCERNING THE ESTABLISHMENT AND ALTERATION OF PRECINCT BOUNDARIES, POLLING SITES, AND VOTE CENTERS; AND TO AMEND ARKANSAS ELECTION LAW.",
+      "session": "2021/2021R",
+      "role": "Primary Sponsor",
+      "category": "sosElectionAuthority",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB487&ddBienniumSession=2021%2F2021R",
+      "whyItMatters": "References offices or processes that align with Secretary of State election-administration duties — verify scope on the official bill page.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "SB582",
+      "title": "TO AMEND ARKANSAS LAW CONCERNING COUNTY BOARDS OF ELECTION COMMISSIONERS; TO AMEND HOW COUNTY BOARDS OF ELECTION COMMISSIONERS TAKE THE OATH; AND TO AMEND ARKANSAS LAW CONCERNING ELECTIONS.",
+      "session": "2021/2021R",
+      "role": "Primary Sponsor",
+      "category": "sosElectionAuthority",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB582&ddBienniumSession=2021%2F2021R",
+      "whyItMatters": "References offices or processes that align with Secretary of State election-administration duties — verify scope on the official bill page.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "SB644",
+      "title": "CONCERNING THE INVESTIGATION OF VIOLATIONS OF ELECTION LAW; AND TO ESTABLISH AN ELECTION LAW VIOLATION HOTLINE.",
+      "session": "2021/2021R",
+      "role": "Primary Sponsor",
+      "category": "sosElectionAuthority",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB644&ddBienniumSession=2021%2F2021R",
+      "whyItMatters": "References offices or processes that align with Secretary of State election-administration duties — verify scope on the official bill page.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "HB1615",
+      "title": "TO AMEND ELECTION PROCEDURES; TO AMEND THE REQUIREMENTS FOR ELECTION OFFICIALS; TO AMEND THE LOCATION OF POLLING PLACES; AND TO AMEND THE LAW CONCERNING THE INFORMATION CONTAINED IN THE VOTER REGISTRATION LIST.",
+      "session": "2021/2021R",
+      "role": "Primary Sponsor for House",
+      "category": "sosElectionAuthority",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1615&ddBienniumSession=2021%2F2021R",
+      "whyItMatters": "References offices or processes that align with Secretary of State election-administration duties — verify scope on the official bill page.",
+      "confidence": "title_metadata_only"
+    },
+    {
+      "billNumber": "SB556",
+      "title": "TO CREATE THE ARKANSAS ELECTION INTEGRITY ACT OF 2021; TO AMEND THE LAW CONCERNING THE STATE BOARD OF ELECTION COMMISSIONERS; AND TO CREATE A PROCESS FOR THE STATE BOARD OF ELECTION COMMISSIONERS TO CONDUCT AN ELECTION.",
+      "session": "2021/2021R",
+      "role": "CoSponsor",
+      "category": "sosElectionAuthority",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB556&ddBienniumSession=2021%2F2021R",
+      "whyItMatters": "References offices or processes that align with Secretary of State election-administration duties — verify scope on the official bill page.",
+      "confidence": "title_metadata_only"
+    }
+  ],
+  "potentialConcerns": [
+    "Title-only classification can miss nuance; opposing readings of the same bill are possible until bill text is reviewed.",
+    "Ceremonial resolutions were filtered out of the education bucket where the pattern matched; other buckets may still include low-substance titles — spot-check before use.",
+    "Do not attribute motive or electoral strategy from titles alone."
+  ],
+  "bio": {
+    "roles": [
+      "Identified in export as Arkansas legislator with bill grid spanning multiple biennia (see session list in summary).",
+      "Public-facing chamber/title (e.g., Senator) should be confirmed on the official Arkansas Senate / SOS candidate filing page before external use."
+    ],
+    "tenure": "Bill-grid export includes sessions: 2019/2019R, 2021/2021R, 2021/2021S1, 2021/2021S2, 2021/2022F, 2021/2022S3, 2023/2023R, 2023/2023S1, … — verify dates and district on official sources.",
+    "knownFocusAreas": [
+      "Repeated legislative attention to ballot initiatives, petitions, referendum, or ballot-title process",
+      "Multiple bills referencing Secretary of State, election commissions/boards, canvass, or voter registration",
+      "Recurring county / local election administration topics (clerks, precincts, absentee, early voting)",
+      "Recurring business-entity / filing / UCC / notary-class topics that overlap traditional SOS business services",
+      "Education-policy bills (non-ceremonial title matches only)",
+      "Full grid includes many ceremonial resolutions; SOS-relevance scan is title-keyword-based only."
+    ],
+    "sourceNotes": [
+      "Arkansas Legislature arkleg.state.ar.us legislator detail / bill grid (exported via ingest:arkleg-opposition dry-run).",
+      "No Senate biography text ingested in this packet; add official bio URL to worksheet if needed."
+    ]
+  }
+}
