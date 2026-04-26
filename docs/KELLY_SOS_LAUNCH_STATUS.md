@@ -2,7 +2,7 @@
 
 **Repository:** `H:\SOSWebsite\RedDirt`  
 **Truth:** This repo is the **Kelly Grappe for Arkansas Secretary of State** **production site** and **campaign engine** (public `(site)`, organizer `/relational`, `/admin` workbench, Prisma/Postgres, APIs). The folder name `RedDirt` is **legacy**; ownership is **Kelly SOS**.  
-**Last updated:** 2026-04-26 — **Day 6 Section 1 (deploy QA + CI) complete** ([`KELLY_SOS_DAY_6_SECTION_1_REPORT.md`](./KELLY_SOS_DAY_6_SECTION_1_REPORT.md), [`KELLY_SOS_BUILD_LOG.md`](./KELLY_SOS_BUILD_LOG.md)). **Day 3** intake E2E proven locally. **Next:** Section 2 — counsel/treasurer + hosted **preview** intake smoke when Netlify URL is fixed; Section 3 — launch lock ([`KELLY_SOS_DEMO_AND_DEPLOY.md`](./KELLY_SOS_DEMO_AND_DEPLOY.md)).
+**Last updated:** 2026-04-26 — **Section 3 launch lock packet** ([`KELLY_SOS_SECTION_3_LAUNCH_LOCK.md`](./KELLY_SOS_SECTION_3_LAUNCH_LOCK.md)) — go/no-go table, P0/P1/P2, post-launch backlog, optional git tag. **Formal counsel/treasurer initials** still pending; **Netlify preview** smoke still recommended before apex. **Cursor next pass:** **maintenance** ([`KELLY_SOS_NEXT_PASS_SCRIPT.md`](./KELLY_SOS_NEXT_PASS_SCRIPT.md)).
 
 ---
 
@@ -63,8 +63,8 @@
 | **Intake / contact / volunteer** | **`POST /api/forms`** canonical; multiple public forms (`get-involved`, events suggest, host gathering, local team, story submit, direct democracy commitment, etc.). |
 | **Donation / compliance** | External GoodChange default in `external-campaign.ts`; paid-for bar via policy module + env; treasurer review for live URLs. |
 | **Comms / email / SMS** | **SLA defaults** in [`KELLY_SOS_COMMS_READINESS.md`](./KELLY_SOS_COMMS_READINESS.md) §5; auto-confirm **deferred**; keys + staging E2E still a risk. |
-| **Deployment** | `docs/deployment.md` + **Day 5** table (`ADMIN_SECRET`, `DATABASE_URL`, optional comms); **Day 6** parity check next. |
-| **Legal / compliance** | `/privacy`, `/terms` **draft**; `/disclaimer` + paid-for; **counsel** to finalize. |
+| **Deployment** | `docs/deployment.md` + CI **`check.yml`**; **Section 1** report done; **Netlify deploy-preview** smoke optional before apex ([`KELLY_SOS_BUILD_LOG.md`](./KELLY_SOS_BUILD_LOG.md)). |
+| **Legal / compliance** | `/privacy`, `/terms` **draft**; `/disclaimer` + paid-for; **counsel** to finalize. **Section 2:** procedure in [`KELLY_SOS_SECTION_2_DEEP_BUILD.md`](./KELLY_SOS_SECTION_2_DEEP_BUILD.md). |
 
 ## Known risks (rolling)
 
@@ -75,6 +75,11 @@
 5. **Missing integration keys** → silent feature loss.
 6. **Admin breadth** — not every lane hardened for untrained users.
 7. **Sister app confusion** — countyWorkbench vs RedDirt counties.
+8. **Formal signatures** — counsel/treasurer initials on [`KELLY_SOS_SECTION_2_SIGNOFF_LOG.md`](./KELLY_SOS_SECTION_2_SIGNOFF_LOG.md) still pending (waiver in place for technical gate).
+
+## Post-launch backlog (Kelly SOS — maintenance)
+
+Tracked in detail in [`KELLY_SOS_SECTION_3_LAUNCH_LOCK.md`](./KELLY_SOS_SECTION_3_LAUNCH_LOCK.md) § Post-launch backlog: **template extraction deferred**, auto-confirm email deferred, OpenAI / `sos-public` domain / RBAC hardening as separate packets. No cross-lane imports without Steve’s integration packet.
 
 ## Next six sprint days (summary)
 
@@ -121,7 +126,7 @@ Detail: [`KELLY_SOS_7_DAY_LAUNCH_MASTER_BUILD_PLAN.md`](./KELLY_SOS_7_DAY_LAUNCH
 - [x] **Legal** routes + footer; [`KELLY_SOS_DAY_5_COMPLETION_REPORT.md`](./KELLY_SOS_DAY_5_COMPLETION_REPORT.md).
 - [x] **`docs/deployment.md`** — `ADMIN_SECRET` + comms in env table.
 - [x] **Cross-lane** grep: no code imports of PhatLip/AJAX; `countyWorkbench` = link/config only.
-- [ ] **Counsel** — final privacy & terms copy.
+- [ ] **Counsel** — final privacy & terms copy (draft **waiver** logged in [`KELLY_SOS_SECTION_2_SIGNOFF_LOG.md`](./KELLY_SOS_SECTION_2_SIGNOFF_LOG.md) pending formal review).
 
 ## Quick links
 
@@ -141,3 +146,6 @@ Detail: [`KELLY_SOS_7_DAY_LAUNCH_MASTER_BUILD_PLAN.md`](./KELLY_SOS_7_DAY_LAUNCH
 - [Intake smoke](./KELLY_SOS_INTAKE_SMOKE.md)
 - [Demo & deploy (Days 6–7)](./KELLY_SOS_DEMO_AND_DEPLOY.md)
 - [Day 6 Section 1 report](./KELLY_SOS_DAY_6_SECTION_1_REPORT.md)
+- [Section 2 deep build](./KELLY_SOS_SECTION_2_DEEP_BUILD.md)
+- [Section 2 sign-off log](./KELLY_SOS_SECTION_2_SIGNOFF_LOG.md)
+- [Section 3 launch lock](./KELLY_SOS_SECTION_3_LAUNCH_LOCK.md)

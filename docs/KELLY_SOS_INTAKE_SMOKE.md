@@ -28,6 +28,14 @@ Invoke-RestMethod -Method POST -Uri "$base/api/forms" -Body $body -ContentType "
 
 **Expected:** HTTP 200, JSON with `ok: true`. Honeypot: omit `website` or leave empty (real browsers leave it blank; bots may fill it).
 
+## Alternative: PowerShell bundle (GET + POST)
+
+For deploy previews, you can run:
+
+`.\scripts\section2-preview-smoke.ps1 -BaseUrl "https://YOUR-PREVIEW.netlify.app"`
+
+Use `-SkipPost` for GET-only checks. See [`KELLY_SOS_SECTION_2_DEEP_BUILD.md`](./KELLY_SOS_SECTION_2_DEEP_BUILD.md) Track C.
+
 ## Verify in admin
 
 1. Log in to `/admin` with `ADMIN_SECRET`.

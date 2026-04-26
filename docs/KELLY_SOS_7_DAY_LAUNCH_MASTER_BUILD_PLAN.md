@@ -366,7 +366,7 @@ Launch-ready **for Kelly SOS** means all of the following are **true** (or **doc
 
 ## 10. Exact next Cursor pass
 
-Paste **[`KELLY_SOS_NEXT_PASS_SCRIPT.md`](./KELLY_SOS_NEXT_PASS_SCRIPT.md)** into Cursor. It tracks the **current** sprint slice (as of the file’s “Updated” line — **Day 5** after Day 4 comms/readiness). Earlier Day 1–4 tasks in this document are **historical**; use the next-pass file as source of truth for the next implementation block.
+Paste **[`KELLY_SOS_NEXT_PASS_SCRIPT.md`](./KELLY_SOS_NEXT_PASS_SCRIPT.md)** into Cursor. It tracks the **current** operating mode (as of the file’s **Updated** line — **post-launch / maintenance** after Sections 1–3). Earlier day-by-day tasks in this document are **historical**; the next-pass file is the live handoff.
 
 ---
 

@@ -2,7 +2,9 @@
 
 **Doc ID:** KELLY-COMPLIANCE-1  
 **Scope:** `H:\SOSWebsite\RedDirt`  
-**Last updated:** 2026-04-27
+**Last updated:** 2026-04-26
+
+**Section 2 deep build:** counsel/treasurer workflows, hosted smoke, demo — [`KELLY_SOS_SECTION_2_DEEP_BUILD.md`](./KELLY_SOS_SECTION_2_DEEP_BUILD.md).
 
 ## Footer & public legal
 

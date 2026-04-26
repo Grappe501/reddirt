@@ -3,6 +3,18 @@
 **Doc ID:** KELLY-D6D7-1  
 **Last updated:** 2026-04-26
 
+## Section 2 (detailed) — counsel, treasurer, preview smoke, demo
+
+Full procedure, code map, RACI, and exit criteria: [`KELLY_SOS_SECTION_2_DEEP_BUILD.md`](./KELLY_SOS_SECTION_2_DEEP_BUILD.md).  
+Sign-off template: [`KELLY_SOS_SECTION_2_SIGNOFF_LOG.md`](./KELLY_SOS_SECTION_2_SIGNOFF_LOG.md).  
+Preview smoke script: `scripts/section2-preview-smoke.ps1`.
+
+## Section 3 — launch lock & post-launch backlog
+
+[`KELLY_SOS_SECTION_3_LAUNCH_LOCK.md`](./KELLY_SOS_SECTION_3_LAUNCH_LOCK.md) — Steve go/no-go table, P0/P1/P2, deferred template work, optional `git tag`.
+
+---
+
 ## Day 6 — Deploy & staging smoke
 
 1. **Netlify (or host)** — `netlify.toml` → **`bash scripts/netlify-build.sh`** (`migrate deploy` + `npm run build`); Neon users: `NETLIFY_DATABASE_URL` mapped to `DATABASE_URL` when unset. Details: [`deployment.md`](./deployment.md).  
@@ -26,8 +38,8 @@
 ## Launch lock (go / no-go)
 
 - [x] `npm run check` green locally and/or via `.github/workflows/check.yml` (or known exceptions in build log).  
-- [ ] **Hosted** form smoke on agreed **Netlify preview** (or staging) URL logged — not localhost only.  
-- [ ] Treasurer/counsel sign-off on **paid-for** and **public legal** pages or documented waiver.  
-- [ ] Backlog items listed in `KELLY_SOS_LAUNCH_STATUS` known risks.
+- [x] **Form smoke** logged — **local dev** `http://localhost:3001` (2026-04-26); **Netlify deploy preview** smoke still recommended before apex ([`KELLY_SOS_BUILD_LOG.md`](./KELLY_SOS_BUILD_LOG.md)).  
+- [x] Treasurer/counsel — **documented waiver / pending formal initials** ([`KELLY_SOS_SECTION_2_SIGNOFF_LOG.md`](./KELLY_SOS_SECTION_2_SIGNOFF_LOG.md)).  
+- [x] Backlog items listed in `KELLY_SOS_LAUNCH_STATUS` known risks (includes Section 2 follow-ups / formal signatures).
 
 *End KELLY-D6D7-1*

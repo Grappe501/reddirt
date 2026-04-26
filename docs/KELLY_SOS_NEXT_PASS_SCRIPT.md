@@ -1,51 +1,39 @@
 # Kelly SOS — next pass script for Cursor
 
-**Current slice:** **Section 2 — counsel/treasurer gates + hosted preview smoke + demo**  
+**Current slice:** **Post-launch / maintenance** (Kelly SOS stable-operation mode)  
 **Active repo:** `H:\SOSWebsite\RedDirt`  
-**Updated:** 2026-04-26 (Section 1 complete: `deployment.md`, `check.yml`, Section 1 report; apex domain route parity ambiguous — use deploy preview for smoke.)
+**Updated:** 2026-04-26 (Section 3: [`KELLY_SOS_SECTION_3_LAUNCH_LOCK.md`](./KELLY_SOS_SECTION_3_LAUNCH_LOCK.md).)
+
+Sections 1–3 sprint packets are **closed** in docs. Use this for **ongoing** fixes, Netlify preview smoke when URLs exist, counsel/treasurer follow-through, and small QA — not for template extraction unless Steve opens a packet.
 
 Paste this block into Cursor.
 
 ```text
 ACTIVE PROJECT:
 Kelly Grappe for Arkansas Secretary of State — RedDirt repo.
-This is the Kelly SOS production system: public site + admin + database + workflows.
 
 ACTIVE SLICE:
-Section 2 — finalize privacy/terms with counsel; treasurer on donate/paid-for; run KELLY_SOS_INTAKE_SMOKE against Netlify deploy preview base URL; Steve demo walkthrough per KELLY_SOS_DEMO_AND_DEPLOY.md § Day 7.
+Maintenance — P0/P1 from KELLY_SOS_SECTION_3_LAUNCH_LOCK.md; optional Netlify preview smoke; no template extraction without Steve approval.
 
 HARD RULES:
-- No deletes.
-- No repo moves.
-- No template extraction.
-- No AJAX / PhatLip / countyWorkbench work.
-- Kelly-only contacts, volunteers, finance, strategy, DB, env.
-- No unsourced opponent claims.
-- No secrets in chat, docs, commits, screenshots, logs, or code.
-- Do not rewrite legal copy beyond typos and structure unless Steve/counsel approves.
+- No deletes. No repo moves. No cross-lane imports (AJAX / PhatLip / countyWorkbench / sos-public) without integration packet.
+- Kelly-only data, env, DB. No secrets in chat, commits, or logs. No unsourced opponent claims.
+- Legal copy: typos/structure only unless counsel approves substance.
 
 READ FIRST:
-- docs/KELLY_SOS_DAY_6_SECTION_1_REPORT.md (what Section 1 already delivered)
-- docs/KELLY_SOS_DEMO_AND_DEPLOY.md (§ Launch lock)
-- docs/KELLY_SOS_COMPLIANCE_CHECKLIST.md
-- docs/KELLY_SOS_INTAKE_SMOKE.md (set $base to deploy preview)
+- docs/KELLY_SOS_SECTION_3_LAUNCH_LOCK.md
+- docs/KELLY_SOS_BUILD_LOG.md
 - docs/deployment.md
+- docs/KELLY_SOS_SECTION_2_SIGNOFF_LOG.md (pending initials)
 
 OBJECTIVE:
-Close human gates; prove intake on a **non-production** Netlify URL; prepare Day 7 demo and go/no-go.
-
-TASKS:
-1) Counsel sign-off or edits on /privacy and /terms (drafts).
-2) Treasurer confirmation on paid-for line and external donate links.
-3) From Netlify: open **deploy preview** URL → run intake smoke ($base) → log KELLY_SOS_BUILD_LOG.md.
-4) Optional: mobile spot-check on preview (home, get-involved, donate, legal).
-5) Update KELLY_SOS_LAUNCH_STATUS known risks after decisions.
+Ship small, reviewable PRs: preview smoke when a URL exists; production hotfixes; backlog items (CSV export, comms keys, ingest) as prioritized by Steve.
 
 QUALITY GATE:
-- npm run check (local or CI)
-- Hosted preview smoke logged
+- npm run check before merge when code changes
 
-After Cursor: Steve — Day 7 launch lock per KELLY_SOS_DEMO_AND_DEPLOY.md.
+OUTPUT:
+- Append KELLY_SOS_BUILD_LOG.md for meaningful verification runs.
 ```
 
-*Day 5 script (archived): compliance work shipped 2026-04-27 — see `KELLY_SOS_DAY_5_COMPLETION_REPORT.md`.*
+*Sprint slices archived: Section 1 → [`KELLY_SOS_DAY_6_SECTION_1_REPORT.md`](./KELLY_SOS_DAY_6_SECTION_1_REPORT.md); Section 2 → [`KELLY_SOS_SECTION_2_DEEP_BUILD.md`](./KELLY_SOS_SECTION_2_DEEP_BUILD.md); Section 3 → [`KELLY_SOS_SECTION_3_LAUNCH_LOCK.md`](./KELLY_SOS_SECTION_3_LAUNCH_LOCK.md).*
