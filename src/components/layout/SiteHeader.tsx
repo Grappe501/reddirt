@@ -146,7 +146,7 @@ export function SiteHeader() {
             target={joinExternal ? "_blank" : undefined}
             rel={joinExternal ? "noopener noreferrer" : undefined}
             variant="primary"
-            className="px-2.5 py-2 text-[10px] font-extrabold uppercase tracking-wide shadow-md sm:px-3.5 sm:text-xs"
+            className="min-h-11 px-2.5 py-2 text-[10px] font-extrabold uppercase tracking-wide shadow-md sm:px-3.5 sm:text-xs"
             aria-label="Volunteer — sign up"
           >
             Volunteer
@@ -154,7 +154,7 @@ export function SiteHeader() {
           <Button
             href={siteConfig.donateHref}
             variant="outlineOnDark"
-            className="border-2 border-sunlight-gold/90 bg-sunlight-gold/15 px-2.5 py-2 text-[10px] font-extrabold uppercase tracking-wide text-white sm:px-3.5 sm:text-xs"
+            className="min-h-11 border-2 border-sunlight-gold/90 bg-sunlight-gold/15 px-2.5 py-2 text-[10px] font-extrabold uppercase tracking-wide text-white sm:px-3.5 sm:text-xs"
             aria-label="Donate"
           >
             Donate
@@ -162,7 +162,7 @@ export function SiteHeader() {
           <Button
             type="button"
             variant="outlineOnDark"
-            className="px-2.5 py-2 text-[10px] sm:px-3 sm:text-xs"
+            className="min-h-11 px-2.5 py-2 text-[10px] sm:px-3 sm:text-xs"
             onClick={() => setSearchOpen(true)}
           >
             Search
@@ -170,7 +170,7 @@ export function SiteHeader() {
           <Button
             type="button"
             variant="outlineOnDark"
-            className="px-2.5 py-2 text-[10px] sm:px-3 sm:text-xs"
+            className="min-h-11 px-2.5 py-2 text-[10px] sm:px-3 sm:text-xs"
             aria-expanded={open}
             aria-controls={panelId}
             onClick={() => setOpen((v) => !v)}
@@ -264,7 +264,7 @@ export function SiteHeader() {
               className="rounded-btn border border-white/35 px-3 py-3 text-center font-body text-base font-semibold text-white"
               onClick={() => setOpen(false)}
             >
-              Command HQ · this site
+              Get involved on this site
             </Link>
             <Link
               href="/"

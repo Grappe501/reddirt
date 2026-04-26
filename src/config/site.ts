@@ -20,4 +20,9 @@ export const siteConfig = {
   heroVideoSrc: process.env.NEXT_PUBLIC_HERO_VIDEO_URL?.trim() || "",
   /** Optional YouTube embed URL (https://www.youtube.com/embed/...) for featured video block */
   featureVideoEmbedUrl: process.env.NEXT_PUBLIC_FEATURE_VIDEO_EMBED_URL?.trim() || "",
+  /**
+   * Sister app: county coordination hub (Pope-first portal, 75-county index). Separate Netlify deploy.
+   * Set in env for footer / county-briefings hub; empty = show copy-only (no dead link).
+   */
+  countyWorkbenchUrl: (process.env.NEXT_PUBLIC_COUNTY_WORKBENCH_URL ?? "").replace(/\/$/, ""),
 };

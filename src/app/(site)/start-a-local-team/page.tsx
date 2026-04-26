@@ -127,7 +127,7 @@ export default function StartALocalTeamPage() {
             <li>Pathways into statewide issue campaigns without dissolving local identity.</li>
           </ul>
           <p className="mt-6 max-w-3xl font-body text-sm text-deep-soil/60">
-            {/* TODO(Script 5): training calendar sync + LMS stubs */}
+            {/* Future: training calendar sync + learning stubs */}
             Deeper LMS modules and certification flows are intentionally deferred.
           </p>
         </ContentContainer>

@@ -71,7 +71,7 @@ export async function CampaignBriefingLibrary() {
         })}
       </ul>
       <p className="mt-4 text-xs text-deep-soil/55">
-        The Secretary of State’s office is built on <strong>records and public trust</strong>—our site mirrors
+        The Secretary of State’s office is built on <strong>records and public trust</strong>—this site follows
         that habit: if we brief it, it belongs in the record where Arkansans can see it. More materials will appear
         as they’re reviewed. Nothing here replaces a government filing; this is the campaign’s working library.
       </p>

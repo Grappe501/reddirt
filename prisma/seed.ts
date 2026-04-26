@@ -68,6 +68,16 @@ async function main() {
     lead: { name: string; title: string };
   }> = [
     {
+      slug: "pope-county",
+      fips: "05115",
+      displayName: "Pope County",
+      region: "North Central",
+      eyebrow: "Russellville, Atkins, and the River Valley",
+      intro:
+        "Pope County is the first fully wired pilot for county political profiles and the sister county coordination hub. Strong civic anchors and a clear path to field organizing.",
+      lead: { name: "TBD", title: "Pope County lead" },
+    },
+    {
       slug: "pulaski-county",
       fips: "05119",
       displayName: "Pulaski County",

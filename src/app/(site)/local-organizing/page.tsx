@@ -187,7 +187,7 @@ export default function LocalOrganizingPage() {
           subtitle="Tap a place to see what we’re hearing, what’s coming up, and how to plug in. More maps and live RSVPs arrive with the next integration pass."
         />
         <p className="mt-6 font-body text-base leading-relaxed text-deep-soil/75">
-          {/* TODO(Script 5): county-level analytics tiles for organizers */}
+          {/* Future: optional county-level summary tiles for organizers */}
           Each hub page tracks a simple story: what neighbors name as urgent, what we’re scheduling next, and where
           to begin.
         </p>

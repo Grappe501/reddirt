@@ -11,7 +11,7 @@ type Props = { searchParams: Promise<Record<string, string | string[] | undefine
 
 export const metadata: Metadata = pageMeta({
   title: "Campaign calendar",
-  description: `Where ${siteConfig.shortName} is on the road—published events from the campaign operations system.`,
+  description: `Where ${siteConfig.shortName} is on the road—published public events from the campaign calendar.`,
   path: "/campaign-calendar",
 });
 
@@ -39,8 +39,7 @@ export default async function CampaignCalendarPage({ searchParams }: Props) {
         <ContentContainer>
           {countyOpts.length === 0 ? (
             <p className="mb-4 rounded-md border border-amber-200/80 bg-amber-50/90 px-3 py-2 font-body text-sm text-amber-950/90" role="status">
-              County filters are offline (database unreachable). Event listings below still load when available—try “All
-              counties.”
+              County filters are temporarily unavailable. Event listings below still load when available—try “All counties.”
             </p>
           ) : null}
           <CampaignCalendarView state={state} counties={countyOpts} />

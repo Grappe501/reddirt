@@ -1,0 +1,22 @@
+{
+  "schema": "v1",
+  "description": "Starter list for admin/dashboard wiring — NOT verified production data. See HAMMER_BALLOT_INITIATIVE_BILLS_MASTER.md.",
+  "subject": "Kim Hammer",
+  "generated": "2026-04-27",
+  "bills": [
+    { "session": "2025/2025R", "id": "SB207", "role": "primary_senate", "category": "initiative_petition", "arkleg": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB207&ddBienniumSession=2025%2F2025R", "status": "needs_verification" },
+    { "session": "2025/2025R", "id": "SB208", "role": "primary_senate", "category": "initiative_petition", "arkleg": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB208&ddBienniumSession=2025%2F2025R", "status": "needs_verification" },
+    { "session": "2025/2025R", "id": "SB209", "role": "primary_senate", "category": "initiative_petition", "arkleg": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB209&ddBienniumSession=2025%2F2025R", "status": "needs_verification" },
+    { "session": "2025/2025R", "id": "SB210", "role": "primary_senate", "category": "initiative_petition", "arkleg": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB210&ddBienniumSession=2025%2F2025R", "status": "needs_verification" },
+    { "session": "2025/2025R", "id": "SB211", "role": "primary_senate", "category": "initiative_petition", "arkleg": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB211&ddBienniumSession=2025%2F2025R", "status": "needs_verification" },
+    { "session": "2025/2025R", "id": "SB551", "role": "primary_senate", "category": "initiative_petition", "arkleg": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB551&ddBienniumSession=2025%2F2025R", "status": "needs_verification" },
+    { "session": "2025/2025R", "id": "SB584", "role": "primary_senate", "category": "initiative_petition", "arkleg": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB584&ddBienniumSession=2025%2F2025R", "status": "needs_verification" },
+    { "session": "2025/2025R", "id": "HB1221", "role": "house_primary", "category": "initiative_petition", "arkleg": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1221&ddBienniumSession=2025%2F2025R", "status": "needs_verification" },
+    { "session": "2025/2025R", "id": "HB1222", "role": "house_primary", "category": "initiative_petition", "arkleg": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1222&ddBienniumSession=2025%2F2025R", "status": "needs_verification" },
+    { "session": "2025/2025R", "id": "HB1837", "role": "house_primary", "category": "initiative_petition", "arkleg": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1837&ddBienniumSession=2025%2F2025R", "status": "needs_verification" },
+    { "session": "2023/2023R", "id": "SB377", "role": "primary_senate", "category": "initiative_petition", "arkleg": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB377&ddBienniumSession=2023%2F2023R", "status": "needs_verification" },
+    { "session": "2023/2023R", "id": "SB307", "role": "primary_senate", "category": "capitol_sos", "arkleg": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB307&ddBienniumSession=2023%2F2023R", "status": "needs_verification" },
+    { "session": "2025/2025R", "id": "SB294", "role": "primary_senate", "category": "elections", "arkleg": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB294&ddBienniumSession=2025%2F2025R", "status": "needs_verification" },
+    { "session": "2025/2025R", "id": "SB552", "role": "primary_senate", "category": "business_filings", "arkleg": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB552&ddBienniumSession=2025%2F2025R", "status": "needs_verification" }
+  ]
+}

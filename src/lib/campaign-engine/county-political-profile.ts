@@ -436,17 +436,18 @@ export async function buildCountyPoliticalProfile(
           aggregateCoreFiveCount: null,
           aggregateFollowUpCount: null,
           technicalCapabilities: [
-            "Relational contacts and GOTV-2 read models in RedDirt",
-            "Optional core-five flags on relational rows (PII-stays-internal)",
-            "County pages as briefing surfaces for verified strategy",
+            "Relational contacts and GOTV planning in secure campaign tools",
+            "Optional core-five flags on relational rows (PII stays internal)",
+            "County briefing pages built from verified public and aggregate data",
           ],
-          howItHelpsWin: "Converts private trust into turnout where mail alone cannot; scales as the team engine ships.",
+          howItHelpsWin:
+            "Converts private trust into turnout where mail alone cannot; scales as organizers grow trusted local networks.",
           confidence: "unavailable",
         },
         thisWeek: [],
         kellyGrappeCom: "https://www.kellygrappe.com",
         engineRoadmap:
-          "The public site is the front door; the in-repo operator stack (workbench, GOTV, intelligence) matures into coordinated county dashboards and approval-based workflows.",
+          "The public site is the front door; behind the scenes the campaign matures coordinated county dashboards, GOTV planning, and approval-based messaging—always with private data off public pages.",
       },
       missingDataWarnings: missing,
       sources,
@@ -733,35 +734,36 @@ export async function buildCountyPoliticalProfile(
       ],
     },
     pathToVictory:
-      "1) Grow trusted contacts (relational + power of five). 2) Register and chase turnout, especially in low-turnout slices. 3) Use verified opposition record (SOS-relevant legislation) in town halls. 4) Build toward majority-capable support while planning for plausible plurality if three-way. 5) Feed everything back into the team engine (GOTV, intelligence) as it matures — no private list dumping on a static public page.",
+      "1) Grow trusted contacts (relational + power of five). 2) Register and chase turnout, especially in low-turnout slices. 3) Use verified opposition record (SOS-relevant legislation) in town halls. 4) Build toward majority-capable support while planning for plausible plurality if three-way. 5) Feed everything back into coordinated GOTV and research workflows as they mature — never dump private lists on a static public page.",
     engagementPlan: {
       relationalOrganizing: {
         summary:
-          "The campaign combines GOTV, relational networks, and the Power of Five (each person bringing five) — operationalized in-app with fields like isCoreFive / powerOfFiveSlot for organizers with access.",
+          "The campaign combines GOTV, relational networks, and the Power of Five (each core supporter bringing five conversations) — tracked securely for organizers with access, with only aggregates on public pages.",
         powerOfFiveDefinition:
           "Five conversations per core supporter — scalable, private, and measurable as aggregates only in public materials.",
         aggregateRelationalCount: relCount > 0 ? relCount : null,
         aggregateCoreFiveCount: coreFive > 0 ? coreFive : null,
         aggregateFollowUpCount: followUps > 0 ? followUps : null,
         technicalCapabilities: [
-          "Prisma-backed relational and voter tables (read-only admin)",
-          "GOTV-2 contact plan preview (field)",
-          "Opposition title scan from arkleg dry-run (verify before public)",
-          "County political profile (this engine) for local briefings",
+          "Secure relational and voter roll summaries for staff (no public PII)",
+          "GOTV contact plan previews for the field",
+          "Opposition research from public bill metadata (verify full text before claims)",
+          "County political profiles for local briefings",
         ],
         howItHelpsWin:
-          "Converts one-to-one trust into net votes; the database counts show depth where broadcast cannot. As the public hub (kellygrappe.com) pairs with the internal engine, the same data discipline scales county-by-county.",
+          "Converts one-to-one trust into net votes; aggregate counts show depth where broadcast cannot. kellygrappe.com is the public front door while staff tools keep the same discipline—county by county, with private data off the open web.",
         confidence: relCount + coreFive > 0 ? "db-derived" : "unavailable",
       },
       thisWeek: [
-        "Export this county profile from admin for a leader huddle (internal).",
+        "Export this county profile from the secure campaign dashboard for a leader huddle (internal).",
         "Log relational touches in the approved internal tool (no PII in static drops).",
         "Pick one opposition category (initiative, audit, etc.) to verify on Arkleg.",
-        "Schedule one in-person follow-up in the highest-precinct cluster from Data tab when precinct data exists.",
+        "Schedule one in-person follow-up in the highest-precinct cluster when precinct data exists.",
       ],
-      kellyGrappeCom: "https://www.kellygrappe.com — public sign-up, events, and messaging while the full team engine matures in RedDirt.",
+      kellyGrappeCom:
+        "https://www.kellygrappe.com — public sign-up, events, and volunteer paths while staff coordination tools catch up behind the scenes.",
       engineRoadmap:
-        "Today: manual coordination, verified research, and operator dashboards. On launch: deeper county dashboards, contact plans, task queues, and approval-based messaging — this profile is a bridge artifact.",
+        "Today: manual coordination, verified research, and secure staff dashboards. Tomorrow: deeper county views, contact plans, task queues, and approval-based messaging—this profile is a bridge artifact.",
     },
     missingDataWarnings: Array.from(
       new Set(

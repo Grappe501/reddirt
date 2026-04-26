@@ -108,7 +108,7 @@ export default async function EventDetailPage({ params }: Props) {
                 <h2 className="font-heading text-lg font-bold text-deep-soil">Organizer note</h2>
                 <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">{event.organizerNote}</p>
                 <p className="mt-4 font-body text-xs text-deep-soil/55">
-                  {/* TODO: replace with named host + verified contact when CRM/Mobilize sync exists */}
+                  {/* Future: named host + verified contact when event sync is available */}
                   Public organizer bios and verified contacts land in the next integration pass.
                 </p>
               </div>

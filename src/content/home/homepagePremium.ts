@@ -41,7 +41,7 @@ export const FIGHT_FOR = [
   },
   {
     title: "A People-Focused Office",
-    body: "The office should work for everyday Arkansans, not political insiders or special interests.",
+    body: "The office should work for everyday Arkansans, not political insiders or special interests—reform you can read in the rules, not just hear in a speech.",
   },
 ] as const;
 

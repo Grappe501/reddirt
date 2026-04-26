@@ -101,7 +101,7 @@
 }
 
 /* Leaflet custom divIcon pins — drop default white tile behind markers */
-.leaflet-div-icon.reddirt-leaflet-pin {
+.leaflet-div-icon.sos-leaflet-pin {
   background: transparent !important;
   border: none !important;
 }

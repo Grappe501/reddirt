@@ -295,8 +295,8 @@ export default async function EventsPage({
           ) : null}
           {counties.length === 0 ? (
             <p className="mt-3 rounded-md border border-amber-200/80 bg-amber-50/90 px-3 py-2 font-body text-sm text-amber-950/90" role="status">
-              County pick-list is unavailable (database offline). You can still describe the location in your message—staff
-              will match it manually.
+              County pick-list is temporarily unavailable. You can still describe the location in your message—staff will match
+              it manually.
             </p>
           ) : null}
           <SuggestCommunityEventForm counties={counties} idPrefix="suggest" />

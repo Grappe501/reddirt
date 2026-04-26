@@ -103,7 +103,7 @@ function buildPins(events: EventItem[]): MapPin[] {
 
 function makeDivIcon(fillColor: string, zIndexOffset: number): L.DivIcon {
   return L.divIcon({
-    className: "reddirt-leaflet-pin",
+    className: "sos-leaflet-pin",
     html: `<div style="background:${fillColor};width:16px;height:16px;border-radius:50%;border:2px solid #2b1e1a;box-shadow:0 1px 4px rgba(0,0,0,.28);z-index:${zIndexOffset}"></div>`,
     iconSize: [16, 16],
     iconAnchor: [8, 8],
@@ -165,7 +165,7 @@ function MapPinMarker({
         click: () => onSelect(pin.slug),
       }}
     >
-      <Popup className="reddirt-event-popup">
+      <Popup className="sos-event-popup">
         <div className="min-w-[200px] max-w-[280px] font-body text-deep-soil">
           <p className="text-[10px] font-bold uppercase tracking-wider text-deep-soil/55">{pin.type}</p>
           <p className="mt-1 font-heading text-base font-bold leading-snug">{pin.title}</p>

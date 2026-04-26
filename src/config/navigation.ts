@@ -75,6 +75,7 @@ export const primaryNavGroups: NavGroup[] = [
       { label: "Stay Connected", href: "/get-involved" },
       { label: "Election listening sessions", href: "/listening-sessions" },
       { label: "Local organizing", href: "/local-organizing" },
+      { label: "County planning briefings", href: "/county-briefings" },
       { label: "Host a gathering", href: "/host-a-gathering" },
       { label: "Start a local team", href: "/start-a-local-team" },
     ],

@@ -154,9 +154,9 @@ export default function BallotInitiativeProcessPage() {
             </li>
           </ul>
           <p className="mt-8 max-w-3xl font-body text-sm leading-relaxed text-deep-soil/65">
-            This campaign does not maintain a live database of every petition in the field. For which measures are
-            actively circulating today, rely on sponsor announcements and the Attorney General’s published certifications
-            for the election you care about.
+            This campaign does not maintain a real-time list of every petition in the field. For which measures are actively
+            circulating today, rely on sponsor announcements and the Attorney General’s published certifications for the
+            election you care about.
           </p>
         </ContentContainer>
       </FullBleedSection>

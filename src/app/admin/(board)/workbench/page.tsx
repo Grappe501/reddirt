@@ -993,7 +993,14 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
         <div className={card}>
           <h2 className="font-heading text-xs font-bold text-deep-soil">Strategy & coordination</h2>
           <p className="mt-0.5 text-[10px] text-deep-soil/60">
-            Staff playbooks (e.g. DNC) — not public. Run{" "}
+            <Link href="/admin/candidate-briefs" className="font-semibold text-civic-slate hover:underline">
+              Candidate briefs
+            </Link>
+            {" · "}
+            <Link href="/admin/style-guide" className="font-semibold text-civic-slate hover:underline">
+              Style &amp; content hub
+            </Link>{" "}
+            (regional field one-pagers; voice/governance index) · Staff playbooks (e.g. DNC) — not public. Run{" "}
             <code className="rounded bg-deep-soil/5 px-0.5">npm run ingest:dnc-playbook</code> after updating the file.
           </p>
           <ul className="mt-0.5 max-h-20 overflow-y-auto text-[10px]">

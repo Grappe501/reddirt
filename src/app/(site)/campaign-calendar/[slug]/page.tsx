@@ -41,8 +41,8 @@ export default async function CampaignCalendarDetailPage({ params }: Props) {
         <ContentContainer className="max-w-2xl">
           <h1 className="font-heading text-2xl font-bold text-deep-soil">Calendar temporarily unavailable</h1>
           <p className="mt-2 font-body text-deep-soil/80">
-            This calendar can&apos;t load right now. Please try again in a moment. If you&apos;re on the team and need
-            access, make sure the campaign database is running and refresh the page.
+            This calendar can&apos;t load right now—please try again in a moment. If you&apos;re on the campaign team, confirm the
+            live events service is available, then refresh.
           </p>
           <Link href="/campaign-calendar" className="mt-6 inline-block font-semibold text-red-dirt underline">
             ← Back to calendar

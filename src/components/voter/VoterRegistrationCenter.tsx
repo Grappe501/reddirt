@@ -101,6 +101,47 @@ export function VoterRegistrationCenter({
         </ContentContainer>
       </FullBleedSection>
 
+      <FullBleedSection padY className="bg-washed-canvas" aria-labelledby="voter-ed-hub-title">
+        <ContentContainer>
+          <SectionHeading
+            id="voter-ed-hub-title"
+            align="left"
+            eyebrow="Future service model"
+            title="A voter education hub, not a scavenger hunt"
+            subtitle="Kelly believes the Secretary of State should be proactive about voter education: clear dates, clear steps, plain-language ballot information, and explanations people can replay or share."
+          />
+          <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-4">
+            <div className={cn(card, "bg-white")}>
+              <h3 className="font-heading text-base font-bold text-deep-soil">Key dates</h3>
+              <p className="mt-2 text-sm leading-relaxed text-deep-soil/75">
+                Registration deadlines, early voting windows, election day hours, and filing calendars should be easy to find in one place.
+              </p>
+            </div>
+            <div className={cn(card, "bg-cream-canvas")}>
+              <h3 className="font-heading text-base font-bold text-deep-soil">What is on the ballot</h3>
+              <p className="mt-2 text-sm leading-relaxed text-deep-soil/75">
+                Voters deserve plain-language explanations of offices, measures, and what a vote can actually change.
+              </p>
+            </div>
+            <div className={cn(card, "bg-white")}>
+              <h3 className="font-heading text-base font-bold text-deep-soil">How voting works</h3>
+              <p className="mt-2 text-sm leading-relaxed text-deep-soil/75">
+                Early voting, absentee voting, ID questions, polling places, county clerk roles, and election commission roles should be explained before confusion spreads.
+              </p>
+            </div>
+            <div className={cn(card, "bg-cream-canvas")}>
+              <h3 className="font-heading text-base font-bold text-deep-soil">Results and trust</h3>
+              <p className="mt-2 text-sm leading-relaxed text-deep-soil/75">
+                Public education should explain counting timelines, certification, safeguards, and audits in language people can understand.
+              </p>
+            </div>
+          </div>
+          <p className="mt-6 max-w-3xl text-sm leading-relaxed text-deep-soil/70">
+            The goal is service, not spin: a modern office should help Arkansans understand how to use their vote and where official answers live.
+          </p>
+        </ContentContainer>
+      </FullBleedSection>
+
       <FullBleedSection padY className="bg-washed-canvas" aria-labelledby="asof-explain">
         <ContentContainer>
           <h2 className="font-heading text-lg font-bold text-deep-soil" id="asof-explain">

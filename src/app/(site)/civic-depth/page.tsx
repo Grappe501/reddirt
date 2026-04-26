@@ -20,7 +20,7 @@ export default async function CivicDepthPage() {
       <PageHero
         eyebrow="Civic depth"
         title="Democracy tools and proof of organization"
-        subtitle="Drill into ballot access and the systems that should serve every county—then see how this campaign is built, not just branded."
+        subtitle="Drill into ballot access and the systems that should serve every county—and how this campaign explains the office in plain language."
       />
 
       <JourneyBeat id="civic-spine" variant="light" className="scroll-mt-24 border-t-0 !py-6 lg:!py-10">

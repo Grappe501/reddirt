@@ -31,13 +31,13 @@ export function buildCountyWinStrategy(profile: CountyPoliticalProfileResult): C
     registrationOpportunity:
       "Expand the denominator of possible voters with legal, nonpartisan registration work where the law allows, neighbor drives, and coalition tables — see the 50K statewide goal as a field organizing anchor, with county share estimated from file totals when the pipeline is current.",
     volunteerOpportunity:
-      "Build capacity through hosts, sign-up links on kellygrappe.com, and local leaders who can train others — the internal engine in RedDirt is for coordinated tasks and **aggregate** review, not person-level public targeting.",
+      "Build capacity through hosts, sign-up links on kellygrappe.com, and local leaders who can train others — staff-only tools handle coordinated tasks and **aggregate** review, not person-level public targeting.",
     coalitionOpportunity:
       "Unite good-government, small-business, faith, and civic groups around transparent elections and professional administration of the SoS office — all messaging stays verifiable; opposition research is title/metadata until Arkleg text review.",
     messageFrame: `People over politics — a Secretary of State who runs elections and public records with competence and transparency, starting with ${county}’s own turnout story, not with imported spin.`,
     next7Days: [
       "Publish this briefing to leaders with sources attached.",
-      "One public verification pass on a Hammer bill (title to text).",
+      "One public verification pass on a flagged bill (title to full text on Arkleg).",
       "One registration or civic partner touch (nonpartisan where required by context).",
       "Log aggregate volunteer asks only in approved tools; no PII in static sites.",
     ],

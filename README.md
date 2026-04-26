@@ -1,5 +1,7 @@
 # Red Dirt Democrats — site
 
+**Current classification:** This repository is the **Kelly Grappe for Arkansas Secretary of State** production site and campaign engine (Next.js, Prisma/Postgres, admin workbench, integrations). Future **template extraction** is a separate phase and must **not** include Kelly campaign data, PII, finance, or internal strategy artifacts.
+
 Arkansas-rooted movement site: Next.js App Router, Prisma/Postgres, semantic search + optional OpenAI RAG, forms, analytics, local organizing, editorial content.
 
 **Current package version:** see `package.json` (stabilization track post–Script 5.5).

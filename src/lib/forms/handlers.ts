@@ -83,7 +83,78 @@ function buildSummary(data: FormSubmissionInput): string {
   }
 }
 
-export type PersistResult = { submissionId: string; userId: string | null };
+export type PersistResult = { submissionId: string; userId: string | null; workflowIntakeId: string };
+
+function formTypeLabel(formType: FormSubmissionInput["formType"]): string {
+  switch (formType) {
+    case "join_movement":
+      return "Join movement";
+    case "volunteer":
+      return "Volunteer";
+    case "local_team":
+      return "Local team";
+    case "direct_democracy_commitment":
+      return "Direct democracy commitment";
+    case "story_submission":
+      return "Story submission";
+    case "host_gathering":
+      return "Host gathering";
+  }
+}
+
+function publicFormIntakeTitle(data: FormSubmissionInput): string {
+  const label = formTypeLabel(data.formType);
+  const countyHint = "county" in data && data.county ? sanitizePlainText(data.county, 80) : null;
+  if (countyHint) return `${label} public form - ${countyHint} County`;
+  if ("zip" in data && data.zip) return `${label} public form - ZIP ${sanitizePlainText(data.zip, 12)}`;
+  return `${label} public form`;
+}
+
+function publicFormIntakeMetadata(
+  data: FormSubmissionInput,
+  classification: Awaited<ReturnType<typeof classifyIntake>> | null,
+) {
+  return {
+    source: "public_form",
+    formType: data.formType,
+    county: "county" in data && data.county ? sanitizePlainText(data.county, 80) : null,
+    zip: "zip" in data ? sanitizePlainText(data.zip, 12) : null,
+    interests:
+      (data.formType === "join_movement" || data.formType === "volunteer") && data.interests?.length
+        ? data.interests.map((interest) => sanitizePlainText(interest, 80)).slice(0, 20)
+        : [],
+    leadershipInterest: data.formType === "volunteer" ? data.leadershipInterest : null,
+    hostGatheringType: data.formType === "host_gathering" ? data.gatheringType : null,
+    listeningSessionHostInterest: data.formType === "host_gathering" ? data.gatheringType === "listening_session" : null,
+    storyConsentPublic: data.formType === "story_submission" ? data.consentPublic : null,
+    ai: classification
+      ? {
+          intent: classification.intent,
+          interestArea: classification.interestArea,
+          urgency: classification.urgency,
+          leadershipPotential: classification.leadershipPotential,
+          tags: classification.tags,
+        }
+      : null,
+  };
+}
+
+async function createWorkflowIntakeForSubmission(input: {
+  submissionId: string;
+  data: FormSubmissionInput;
+  classification: Awaited<ReturnType<typeof classifyIntake>> | null;
+}) {
+  return prisma.workflowIntake.create({
+    data: {
+      submissionId: input.submissionId,
+      status: "PENDING",
+      title: publicFormIntakeTitle(input.data),
+      source: input.data.formType,
+      metadata: publicFormIntakeMetadata(input.data, input.classification),
+    },
+    select: { id: true },
+  });
+}
 
 export async function persistFormSubmission(data: FormSubmissionInput): Promise<PersistResult> {
   const summary = buildSummary(data);
@@ -132,7 +203,8 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
         } as object,
       },
     });
-    return { submissionId: sub.id, userId: user.id };
+    const intake = await createWorkflowIntakeForSubmission({ submissionId: sub.id, data, classification });
+    return { submissionId: sub.id, userId: user.id, workflowIntakeId: intake.id };
   }
 
   const email = data.email.toLowerCase().trim();
@@ -243,7 +315,9 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
     },
   });
 
-  return { submissionId: sub.id, userId: user.id };
+  const intake = await createWorkflowIntakeForSubmission({ submissionId: sub.id, data, classification });
+
+  return { submissionId: sub.id, userId: user.id, workflowIntakeId: intake.id };
 }
 
 function redactPII(text: string): string {

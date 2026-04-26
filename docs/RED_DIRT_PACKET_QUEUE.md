@@ -10,7 +10,7 @@ Status: `pending` | `active` | `done` | `blocked`
 
 | ID | Objective | Depends on | Acceptance criteria | Status |
 |----|-----------|------------|---------------------|--------|
-| **RD-1** | Public copy & developer-language sweep (`(site)` + `/county-briefings/pope`) | — | No repo paths, gate labels, or maintainer jargon on user-visible strings; spot-check blog mirror states; `npm run build` | pending |
+| **RD-1** | Public copy & developer-language sweep (`(site)` + `/county-briefings/pope`) | — | No repo paths, gate labels, or maintainer jargon on user-visible strings; spot-check blog mirror states; `npm run build` | **done** (2026-04-26) — see `docs/KELLY_SOS_DAY_2_PUBLIC_POLISH_REPORT.md`; residual non-rendered `{/* TODO(Script 5) */}` comments only |
 | **RD-2** | Production data path for counties + Pope briefing | DB available | Published county(ies); Pope page graceful empty state + honest messaging; `npm run build` | pending |
 | **RD-3** | Staging deploy checklist | RD-1, RD-2 | `docs/deployment.md` + short STAGING.md or section: env list, smoke steps; `npm run build` | pending |
 

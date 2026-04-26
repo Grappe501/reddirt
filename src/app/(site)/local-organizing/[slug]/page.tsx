@@ -116,7 +116,7 @@ export default async function LocalRegionPage({ params }: Props) {
               >
                 <h3 className="font-heading text-xl font-bold text-deep-soil">{issue}</h3>
                 <p className="mt-3 font-body text-sm text-deep-soil/70">
-                  {/* TODO(Script 5): link issue tiles to policy explainers or story filters */}
+                  {/* Future: link issue tiles to policy explainers or story filters */}
                   Ground-truth theme from listening work—detail pages can deepen later.
                 </p>
               </div>
@@ -239,7 +239,7 @@ export default async function LocalRegionPage({ params }: Props) {
             ))}
           </ResponsiveGrid>
           <div className="mt-10 rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)]">
-            <h3 className="font-heading text-lg font-bold text-deep-soil">Organizing contact (placeholder)</h3>
+            <h3 className="font-heading text-lg font-bold text-deep-soil">Regional organizing contact</h3>
             <p className="mt-2 font-body text-deep-soil/75">{region.organizingContactNote}</p>
           </div>
         </ContentContainer>
@@ -249,7 +249,7 @@ export default async function LocalRegionPage({ params }: Props) {
         <RelatedLinksSection
           id="region-resources"
           title="Resources that match this terrain"
-          subtitle="Starter links—expand into downloads and facilitator decks in Script 5."
+          subtitle="Starter links—more downloads and facilitator decks will roll out as the field program grows."
           links={region.resourceLinks.map((l) => ({ label: l.label, href: l.href }))}
         />
       </ContentContainer>
