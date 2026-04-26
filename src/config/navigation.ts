@@ -107,4 +107,12 @@ export const footerNavGroups: { title: string; items: NavItem[] }[] = [
       { label: "Donate", href: "/donate" },
     ],
   },
+  {
+    title: "Legal",
+    items: [
+      { label: "Privacy", href: "/privacy" },
+      { label: "Terms of use", href: "/terms" },
+      { label: "Disclaimer", href: "/disclaimer" },
+    ],
+  },
 ];

@@ -80,6 +80,8 @@ Use these as working names only until legal, partner, and field review:
 - **Arkansas Civic Challenge** — voluntary participation challenge for colleges, community colleges, trade schools, high schools, and local organizations.
 - **Arkansas Civic Pipeline Initiative** — high school senior readiness, college campus partnerships, and first-time voter onboarding.
 - **Arkansas Students Vote** — campus ambassador and student-life civic engagement track, adapted for Arkansas institutions.
+- **Senior Sign-Up Challenge** — opt-in high school senior voter-readiness drive that recognizes participation steps, not partisan outcomes.
+- **Campus Civic Cup** — college and trade-school version of the challenge model, built around civic learning, registration checks, election service, and student-life partnerships.
 - **County Civic Cup** — county-based recognition model around registration checks, first-time voter education, civic volunteerism, and public education events.
 - **Future Voters Arkansas** — youth-facing education and first-time voter toolkit track.
 - **Student Poll Worker Pipeline** — youth and college service pathway into election work, with training and mentorship.
@@ -94,6 +96,8 @@ Guardrails:
 - Use institutional language: participation, engagement, outreach, leadership, service, and history.
 - Avoid national partisan framing or fear-based democracy language when a skills-based Arkansas frame works better.
 - Frame the long-term goal as lifelong voter formation, not one-cycle turnout.
+- Treat Vermont and California models as comparative inputs only; source independently before public citation.
+- Keep school and campus challenge metrics opt-in, privacy-aware, and clear about what data is collected.
 
 ### History layer
 

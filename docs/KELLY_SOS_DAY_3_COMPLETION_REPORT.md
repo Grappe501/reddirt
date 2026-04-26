@@ -13,7 +13,7 @@ public form -> /api/forms -> Kelly DB -> Submission + WorkflowIntake -> admin/op
 
 ## Status
 
-**Partially complete.** The code bridge from public form submissions to `WorkflowIntake` is implemented and typechecked. Full DB smoke remains pending because the local Docker/Postgres check was not completed in this session.
+**Complete for local E2E (2026-04-26).** Code path is implemented and **verified** with Docker Postgres: `join_movement` and `volunteer` POSTs → `User`, `Submission`, `WorkflowIntake` (PENDING), `VolunteerProfile` for volunteer. Evidence: [`KELLY_SOS_BUILD_LOG.md`](./KELLY_SOS_BUILD_LOG.md). **Staging URL** smoke is deferred to Day 6 ([`KELLY_SOS_DEMO_AND_DEPLOY.md`](./KELLY_SOS_DEMO_AND_DEPLOY.md)). **Workbench browser login** was not repeated in the proof session; open-work rows exist at the data layer.
 
 ## What changed
 
@@ -54,17 +54,18 @@ No broad CSV export was added in this pass. For Day 3, the safe operator path is
 
 | Command | Result |
 |---------|--------|
-| `npm run typecheck` | Exit 0 |
-| `npm run db:ping` | Exit 1 in sandbox: Docker config access denied / compose flag issue |
-| `npm run db:ping` with elevated Docker access | Not completed in this session |
-| `npm run check` | Exit 1: lint + typecheck completed, build blocked by sandbox `spawn EPERM` |
-| `npm run build` with elevated worker access | Exit 1: compiled successfully, then failed reading `.next/build-manifest.json`; likely stale/interrupted `.next` artifact from prior timed-out build; not cleaned because no-delete rule is active |
+| `npm run dev:db` | Exit 0 — Postgres container running |
+| `npx prisma migrate deploy` | Exit 0 — no pending migrations (`prisma generate` may EPERM-rename query engine on Windows) |
+| `npm run db:ping` | Exit 0 |
+| `npm run dev` + `POST /api/forms` | See [`KELLY_SOS_INTAKE_SMOKE.md`](./KELLY_SOS_INTAKE_SMOKE.md) — `ok: true` with IDs |
+| `npm run typecheck` | Exit 0 (historical) |
+| `npm run check` | Run after pulls; prior sessions hit sandbox `spawn EPERM` on `next build` |
 
 ## Remaining blockers
 
-1. **DB smoke pending:** run Docker/Postgres, `npm run dev:prepare`, then submit one fake public form.
-2. **Admin proof pending:** confirm the new `WorkflowIntake` appears on `/admin/workbench`.
-3. **Export decision pending:** decide whether Day 4–7 needs a CSV export or a manual admin workflow is enough for launch.
+1. **Staging/production smoke:** repeat [`KELLY_SOS_INTAKE_SMOKE.md`](./KELLY_SOS_INTAKE_SMOKE.md) against **staging URL** (Day 6).
+2. **Admin UI pass (optional):** log into `/admin/workbench` once with `ADMIN_SECRET` and visually confirm new intakes in open work (data already present locally).
+3. **Export decision:** CSV export remains backlog unless ops require a spreadsheet before launch (workbench review is the documented path).
 
 ## Required smoke test
 
@@ -87,4 +88,4 @@ Confirm in DB:
 
 ## Compression call
 
-**Days 4–7 compression is not safe yet** until DB smoke proves the full Day 3 chain. The implementation is ready for proof; the environment verification is the gate.
+**Local Day 3 chain is proven.** Days 4–7 doc work was already advanced in calendar time; **staging deploy + smoke** remains the integration gate before launch lock.

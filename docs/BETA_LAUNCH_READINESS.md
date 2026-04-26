@@ -18,9 +18,9 @@
 | Admin workbench (ops) | 15% | 68 | Broad surface; not all lanes production-hardened |
 | Build / deploy | 10% | 80 | `npm run build` expected green; Netlify env docs exist |
 | Mobile / a11y / perf | 10% | 65 | Not formally audited for beta |
-| Data integrity / legal copy | 5% | 70 | Honest disclaimers present; ingest env-specific |
+| Data integrity / legal + footer | 5% | **78** | `/privacy`, `/terms`, `/disclaimer`; Legal column in footer; paid-for in policy; counsel to finalize copy |
 
-**Weighted approximate beta readiness: ~73%** for RedDirt-only beta as defined above.
+**Weighted approximate beta readiness: ~74%** for RedDirt-only beta as defined above (Day 5 pass, 2026-04-27). *One row re-scored (legal + footer).*
 
 ---
 
@@ -37,7 +37,7 @@
 | Candidate brief system | Partially in sister app; RedDirt has intel/briefing lanes | admin county intel, pope briefing | 65 | Split brain | Pilot: Pope + one other | Unified product decision | P1 |
 | Campaign / county manager pages | CM dashboard bands, workbench | `truth-snapshot`, `/admin/workbench` | 72 | Env + data | Truth snapshot non-empty in demo | Full governance workflows | P1 |
 | Volunteer flow | Get involved, events, forms | `(site)/get-involved`, forms, `actions/*` | 75 | Spam, missing keys | End-to-end smoke on staging | CRM handoff if any | P0 |
-| Navigation and footer | Site nav + admin nav | `content/site.ts`, admin shells | 82 | Drift | No broken links in smoke | IA sign-off | P1 |
+| Navigation and footer | Site nav + admin nav + **Legal** footer | `navigation.ts`, `SiteFooter.tsx` | **84** | UTM on donate TBD | No broken links in smoke | IA sign-off | P1 |
 | Public source/resource cleanup | Resources, editorial | `(site)/resources/*` | 76 | Long tail | No embarrassing stubs | Full library | P1 |
 | Data generation scripts | Rich `scripts/` | `scripts/*`, `package.json` | 75 | Local paths in package.json | Ops doc only; no public H:\ leaks | CI + path portability | P2 |
 | County asset/storage strategy | DB + owned media + static emits | `owned-media`, `emit:*` scripts | 70 | Privacy / batch hygiene | Document who runs what | Automated privacy scans | P1 |

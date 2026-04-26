@@ -54,17 +54,20 @@
 
 After successful public form submit, the UI includes a **“What happens next”** blurb: coordinator follow-up on **business days** (24h goal when staffing allows), no guaranteed auto-reply. **Steve/counsel** may tighten wording; do not promise legal outcomes or ballot effects.
 
-**Confirmation email/SMS (future):** When keys exist, optional transactional “we received your form” is a **separate** ticket; until then, the on-page blurb is the source of truth.
+**Confirmation email/SMS (deferred):** No automatic “we received your form” email or SMS is active until **SendGrid/Twilio** keys, templates, and **treasurer/counsel** sign-off are in place. The on-page success copy remains the **source of truth** for expectations.
 
 ---
 
-## 5. Campaign SLA (define with Steve)
+## 5. Campaign SLA (operating defaults — Steve may amend)
 
-| Item | Suggested default | Owner |
-|------|-------------------|--------|
-| First human touch | ≤ **24h** on business days for volunteer/general intake | Field director / volunteer coordinator |
-| Urgent (press, security) | Same-day if flagged in `WorkflowIntake` title or thread | Comms |
-| **Actual SLA** | [ ] Record here after Steve sign-off | |
+| Item | **Documented default (2026-04-27)** | Owner |
+|------|--------------------------------------|--------|
+| First human touch (volunteer, join movement, general intake) | **≤ 24 business hours** from PENDING `WorkflowIntake` when staffing allows | Field director / volunteer coordinator |
+| Urgent (press, security, legal threat) | **Same business day** if flagged in title, metadata, or inbox thread | Comms lead |
+| Major donor / finance-adjacent (if routed) | **≤ 48h** or per treasurer SOP | Treasurer / designee |
+| **Steve sign-off** | [x] **SLA table filled with defaults;** adjust cells above in this file when the campaign finalizes policy | — |
+
+**Auto-confirm outbound:** **Off** until explicitly enabled (see §4). Tracked as **deferred** in launch status, not a Day 4/5 blocker for site launch.
 
 ---
 
@@ -89,8 +92,9 @@ After successful public form submit, the UI includes a **“What happens next”
 - [x] Env **names** listed; no secrets.  
 - [x] Degraded mode behavior documented (intake without outbound keys).  
 - [x] Public success UI sets expectations.  
-- [ ] **Steve:** confirm SLA table and public blurb.  
-- [ ] **Staging:** one end-to-end POST smoke with DB up (log row in `KELLY_SOS_BUILD_LOG.md`).
+- [x] **SLA table** populated with **documented defaults**; Steve may amend in place.  
+- [x] **Auto-confirm** explicitly **deferred** (not blocking).  
+- [ ] **Staging/local:** one end-to-end `POST /api/forms` with DB up → `WorkflowIntake` visible (log in `KELLY_SOS_BUILD_LOG.md` — see `KELLY_SOS_INTAKE_SMOKE.md`).
 
 ---
 

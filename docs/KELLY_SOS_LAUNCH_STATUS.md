@@ -2,7 +2,7 @@
 
 **Repository:** `H:\SOSWebsite\RedDirt`  
 **Truth:** This repo is the **Kelly Grappe for Arkansas Secretary of State** **production site** and **campaign engine** (public `(site)`, organizer `/relational`, `/admin` workbench, Prisma/Postgres, APIs). The folder name `RedDirt` is **legacy**; ownership is **Kelly SOS**.  
-**Last updated:** 2026-04-27 — **Day 4 comms + follow-up pass** (see [`KELLY_SOS_COMMS_READINESS.md`](./KELLY_SOS_COMMS_READINESS.md)).
+**Last updated:** 2026-04-26 — **Day 6 Section 1 (deploy QA + CI) complete** ([`KELLY_SOS_DAY_6_SECTION_1_REPORT.md`](./KELLY_SOS_DAY_6_SECTION_1_REPORT.md), [`KELLY_SOS_BUILD_LOG.md`](./KELLY_SOS_BUILD_LOG.md)). **Day 3** intake E2E proven locally. **Next:** Section 2 — counsel/treasurer + hosted **preview** intake smoke when Netlify URL is fixed; Section 3 — launch lock ([`KELLY_SOS_DEMO_AND_DEPLOY.md`](./KELLY_SOS_DEMO_AND_DEPLOY.md)).
 
 ---
 
@@ -19,7 +19,7 @@
 ## In scope for launch (this sprint)
 
 - Kelly-only **public** quality (copy, CTAs, mobile smoke, metadata).
-- **Intake** → **Kelly DB** → **admin** visibility/export path documented and tested on staging.
+- **Intake** → **Kelly DB** → **admin** visibility/export path documented; **local** E2E done; **hosted** `POST` smoke on **Netlify preview** still recommended before launch.
 - **Compliance** footer/policies/paid-for line aligned with treasurer/counsel.
 - **Deploy** path and env **names** documented; `npm run check` green with known DB caveats documented.
 - **Firewall** docs and **no cross-lane** data mixing.
@@ -35,21 +35,23 @@
 
 | Lens | Estimate | Source |
 |------|----------|--------|
-| Beta-weighted (RedDirt-only) | **~73%** | [`BETA_LAUNCH_READINESS.md`](./BETA_LAUNCH_READINESS.md) — rescore after RD-4/6 |
-| **Public surface (post Day 2–4)** | **~80%** | RD-1 + Day 4 public form “what happens next” expectations + comms runbook in docs |
-| Full public + engine (engineering) | **~74–76%** | `npm run check` green; DB seed/migrate pending local Docker |
+| Beta-weighted (RedDirt-only) | **~74%** | [`BETA_LAUNCH_READINESS.md`](./BETA_LAUNCH_READINESS.md) — Day 5 legal/footer pass |
+| **Public surface (post Day 2–5)** | **~82%** | RD-1 + comms + **Legal routes** + draft privacy/terms + disclaimer |
+| Full public + engine (engineering) | **~77–78%** | `npm run check` green; staging E2E + keys still the lift |
 
 ## Daily notes
 
 **Day 2 (2026-04-26):** RD-1 executed on voter-visible copy: Pope briefing, calendar/events offline messages, ballot explainer, local organizing region page, priorities (new accountability pillar + section). Mobile: header `min-h-11`, drawer link “Get involved on this site.” Map: `sos-leaflet-pin`. **`npm run dev:prepare` failed** (no Postgres on 5433)—start `npm run dev:db` then re-run prepare + optional `db:seed`. **Strategic add-on (same day):** Rockefeller/keeper-of-records/sourced-contrast **research** + `strategicThemes` + **tentative** EHC **intel** file (not public events). Minimal public copy: homepage `FIGHT_FOR` + `/about` hero subtitle. Reports: [`KELLY_SOS_DAY_2_PUBLIC_POLISH_REPORT.md`](./KELLY_SOS_DAY_2_PUBLIC_POLISH_REPORT.md), [`KELLY_SOS_DAY_2_COMPLETION_REPORT.md`](./KELLY_SOS_DAY_2_COMPLETION_REPORT.md), integration plan: [`KELLY_SOS_STRATEGIC_THEME_INTEGRATION_PLAN.md`](./KELLY_SOS_STRATEGIC_THEME_INTEGRATION_PLAN.md).
 
-**Day 3 coordination (2026-04-26):** Codex verified root alignment with Cursor markers and switched the active lane to `RedDirt/`. `npm run check` passes when Next worker spawning is allowed; local DB is still unreachable at `127.0.0.1:5433`, so build logs DB-unavailable fallbacks. Code inspection found the Day 3 operational gap: `/api/forms` persists `Submission` and volunteer profile data, but public form submissions do not appear to create `WorkflowIntake`; `/admin/volunteers/intake` is uploaded signup-sheet intake, not the public form queue. Cursor should execute [`KELLY_SOS_NEXT_PASS_SCRIPT.md`](./KELLY_SOS_NEXT_PASS_SCRIPT.md); compression rules are in [`KELLY_SOS_DAY_3_TO_7_EXECUTION_BOARD.md`](./KELLY_SOS_DAY_3_TO_7_EXECUTION_BOARD.md).
+**Day 3 coordination (2026-04-26):** Codex verified root alignment with Cursor markers and switched the active lane to `RedDirt/`. `npm run check` passes when Next worker spawning is allowed.
 
-**Day 3 implementation (2026-04-26):** Public form persistence now creates a linked `WorkflowIntake` for every successful `Submission`; `npm run typecheck` passes. A transparency vision section was added to `/priorities` for a searchable Secretary of State public-records / FOIA request library, framed as future office leadership starting with Kelly's own office. Full Day 3 smoke remains pending until Postgres is reachable and a fake form submission confirms `User` + `Submission` + `WorkflowIntake` + admin visibility. Report: [`KELLY_SOS_DAY_3_COMPLETION_REPORT.md`](./KELLY_SOS_DAY_3_COMPLETION_REPORT.md).
+**Day 3 implementation + E2E (2026-04-26):** Public form persistence creates a linked `WorkflowIntake` for each successful `Submission`. **Local proof:** Docker Postgres on `127.0.0.1:5433`, `POST /api/forms` for **`join_movement`** and **`volunteer`** → `User`, `Submission`, `WorkflowIntake` (PENDING); **`VolunteerProfile`** for volunteer path. Logged in [`KELLY_SOS_BUILD_LOG.md`](./KELLY_SOS_BUILD_LOG.md). **`/admin/volunteers/intake`** remains uploaded-sheet intake (distinct from public JSON queue); operators use **`/admin/workbench`** open-work / `WorkflowIntake`. Report: [`KELLY_SOS_DAY_3_COMPLETION_REPORT.md`](./KELLY_SOS_DAY_3_COMPLETION_REPORT.md).
 
 **Community equity (2026-04-27):** Master plan for **Hispanic, Marshallese, and Muslim** outreach (not a side track): [`docs/campaign-ops/COMMUNITY_EQUITY_OUTREACH_MASTER_PLAN.md`](./campaign-ops/COMMUNITY_EQUITY_OUTREACH_MASTER_PLAN.md) · admin hub **`/admin/campaign-ops/community-equity`** · Calendar workflow `s4_event_faith_venue_polling_v1` for **mosque polling place** (apply to a **MEETING** after `db:seed` / deploy seed).
 
-**Day 4 (2026-04-27):** [`KELLY_SOS_COMMS_READINESS.md`](./KELLY_SOS_COMMS_READINESS.md) documents the follow-up path (workbench, webhooks, env **names** only, manual 3×/day fallback). Public `FormSuccessPanel` default includes a business-day / 24h expectation blurb; volunteer form keeps its own coordinator copy (blurb suppressed there to avoid duplication). **Automatic** confirmation email for every submit is still **out of scope** until templates + keys are review-approved. Report: [`KELLY_SOS_DAY_4_COMPLETION_REPORT.md`](./KELLY_SOS_DAY_4_COMPLETION_REPORT.md). **Next:** Day 5 compliance + security pass.
+**Day 4 (2026-04-27):** [`KELLY_SOS_COMMS_READINESS.md`](./KELLY_SOS_COMMS_READINESS.md) documents the follow-up path (workbench, webhooks, env **names** only, manual 3×/day fallback). Public `FormSuccessPanel` default includes a business-day / 24h expectation blurb; volunteer form keeps its own coordinator copy (blurb suppressed there to avoid duplication). **Automatic** confirmation email for every submit is still **out of scope** until templates + keys are review-approved. Report: [`KELLY_SOS_DAY_4_COMPLETION_REPORT.md`](./KELLY_SOS_DAY_4_COMPLETION_REPORT.md).
+
+**Day 5 (2026-04-27):** Public **Legal** group in footer: `/privacy`, `/terms`, `/disclaimer` (drafts for **counsel** on privacy/terms; disclaimer uses `CAMPAIGN_POLICY_V1` paid-for line). [`KELLY_SOS_COMPLIANCE_CHECKLIST.md`](./KELLY_SOS_COMPLIANCE_CHECKLIST.md) · [`KELLY_SOS_DAY_5_COMPLETION_REPORT.md`](./KELLY_SOS_DAY_5_COMPLETION_REPORT.md). **Comms:** SLA table filled with **operating defaults**; auto-confirm **deferred**. **Deployment** env table: `ADMIN_SECRET` + comms. **Intake:** [`KELLY_SOS_INTAKE_SMOKE.md`](./KELLY_SOS_INTAKE_SMOKE.md). **Next:** **Day 6** staging smoke + Netlify env parity per [`KELLY_SOS_DEMO_AND_DEPLOY.md`](./KELLY_SOS_DEMO_AND_DEPLOY.md).
 
 ## Area status (rolling)
 
@@ -60,8 +62,9 @@
 | **Database / Prisma** | Mature schema; local/staging must run Postgres for faithful SSG and forms; builds may log Prisma connection errors if DB down (see build log). |
 | **Intake / contact / volunteer** | **`POST /api/forms`** canonical; multiple public forms (`get-involved`, events suggest, host gathering, local team, story submit, direct democracy commitment, etc.). |
 | **Donation / compliance** | External GoodChange default in `external-campaign.ts`; paid-for bar via policy module + env; treasurer review for live URLs. |
-| **Comms / email / SMS** | **Day 4 runbook** in [`KELLY_SOS_COMMS_READINESS.md`](./KELLY_SOS_COMMS_READINESS.md); SendGrid/Twilio webhooks + workbench; **keys** and staging E2E still a risk. |
-| **Deployment** | Netlify pattern documented in `docs/deployment.md`; env parity to be verified Day 6. |
+| **Comms / email / SMS** | **SLA defaults** in [`KELLY_SOS_COMMS_READINESS.md`](./KELLY_SOS_COMMS_READINESS.md) §5; auto-confirm **deferred**; keys + staging E2E still a risk. |
+| **Deployment** | `docs/deployment.md` + **Day 5** table (`ADMIN_SECRET`, `DATABASE_URL`, optional comms); **Day 6** parity check next. |
+| **Legal / compliance** | `/privacy`, `/terms` **draft**; `/disclaimer` + paid-for; **counsel** to finalize. |
 
 ## Known risks (rolling)
 
@@ -104,13 +107,21 @@ Detail: [`KELLY_SOS_7_DAY_LAUNCH_MASTER_BUILD_PLAN.md`](./KELLY_SOS_7_DAY_LAUNCH
 ## Day 3 exit criteria (intake chain)
 
 - [x] `WorkflowIntake` created for public `/api/forms` success paths (see `handlers.ts`).
-- [ ] Staging smoke: one fake POST with DB up → visible in admin workbench (operator proof — optional local).
+- [x] **Operator proof:** [`KELLY_SOS_INTAKE_SMOKE.md`](./KELLY_SOS_INTAKE_SMOKE.md) run locally (DB + `npm run dev`); results in [`KELLY_SOS_BUILD_LOG.md`](./KELLY_SOS_BUILD_LOG.md). **Staging URL** smoke still follow-up for Day 6.
 
 ## Day 4 exit criteria (comms + follow-up)
 
 - [x] Runbook: [`KELLY_SOS_COMMS_READINESS.md`](./KELLY_SOS_COMMS_READINESS.md).
 - [x] Public expectation copy on `FormSuccessPanel` (volunteer form opts out; has its own text).
-- [ ] Steve: SLA table + auto-confirm email decision.
+- [x] **SLA** defaults documented (Steve may edit in place); **auto-confirm** explicitly **deferred**.
+
+## Day 5 exit criteria (compliance + security)
+
+- [x] [`KELLY_SOS_COMPLIANCE_CHECKLIST.md`](./KELLY_SOS_COMPLIANCE_CHECKLIST.md) created; paid-for, admin gate, financial routes under `requireAdminPage` recorded.
+- [x] **Legal** routes + footer; [`KELLY_SOS_DAY_5_COMPLETION_REPORT.md`](./KELLY_SOS_DAY_5_COMPLETION_REPORT.md).
+- [x] **`docs/deployment.md`** — `ADMIN_SECRET` + comms in env table.
+- [x] **Cross-lane** grep: no code imports of PhatLip/AJAX; `countyWorkbench` = link/config only.
+- [ ] **Counsel** — final privacy & terms copy.
 
 ## Quick links
 
@@ -125,3 +136,8 @@ Detail: [`KELLY_SOS_7_DAY_LAUNCH_MASTER_BUILD_PLAN.md`](./KELLY_SOS_7_DAY_LAUNCH
 - [Day 2 completion](./KELLY_SOS_DAY_2_COMPLETION_REPORT.md)
 - [Comms & follow-up (Day 4)](./KELLY_SOS_COMMS_READINESS.md)
 - [Day 4 completion](./KELLY_SOS_DAY_4_COMPLETION_REPORT.md)
+- [Day 5 completion](./KELLY_SOS_DAY_5_COMPLETION_REPORT.md)
+- [Compliance checklist](./KELLY_SOS_COMPLIANCE_CHECKLIST.md)
+- [Intake smoke](./KELLY_SOS_INTAKE_SMOKE.md)
+- [Demo & deploy (Days 6–7)](./KELLY_SOS_DEMO_AND_DEPLOY.md)
+- [Day 6 Section 1 report](./KELLY_SOS_DAY_6_SECTION_1_REPORT.md)

@@ -34,6 +34,9 @@
 | `/civic-depth` | `src/app/(site)/civic-depth/page.tsx` | Civic depth | needs polish | Y | N | unknown | |
 | `/donate` | `src/app/(site)/donate/page.tsx` | Donate explainer + external CTA | ready | Y | N | page metadata | GoodChange default |
 | `/get-involved` | `src/app/(site)/get-involved/page.tsx` | Volunteer + stay connected | ready | Y | **Y** | page metadata | `JoinMovementForm`, `VolunteerForm` → `/api/forms` |
+| `/privacy` | `src/app/(site)/privacy/page.tsx` | Privacy (draft; counsel) | needs polish | Y | N | page metadata | Legal footer |
+| `/terms` | `src/app/(site)/terms/page.tsx` | Terms of use (draft; counsel) | needs polish | Y | N | page metadata | Legal footer |
+| `/disclaimer` | `src/app/(site)/disclaimer/page.tsx` | Disclaimer (campaign / not SoS) | needs polish | Y | N | page metadata | Legal footer; uses `CAMPAIGN_POLICY_V1` line |
 | `/listening-sessions` | `src/app/(site)/listening-sessions/page.tsx` | Listening sessions | needs polish | Y | **Y** | page metadata | `HostGatheringForm` |
 | `/host-a-gathering` | `src/app/(site)/host-a-gathering/page.tsx` | Host gathering | needs polish | Y | **Y** | page metadata | `HostGatheringForm` |
 | `/start-a-local-team` | `src/app/(site)/start-a-local-team/page.tsx` | Local team | needs polish | Y | **Y** | page metadata | `LocalTeamForm` |

@@ -13,21 +13,21 @@
 | Day 1 | Complete per launch status. |
 | Day 2 / RD-1 | Complete for voter-visible public polish. Existing modified files are active Cursor/Steve work. |
 | Quality gate | `npm run check` passes when worker spawning is allowed. Lint warnings remain. |
-| DB local truth | Local Postgres on `127.0.0.1:5433` is currently not reachable in this Codex session; build falls back with Prisma warnings. |
-| Day 3 code | `WorkflowIntake` is created for public `/api/forms` successes (see `handlers.ts`). **Staging smoke** (fake POST → admin visibility) is still the proof gate. `/admin/volunteers/intake` remains **uploaded** sheet intake, not the public JSON form queue. **Day 4** runbook: `KELLY_SOS_COMMS_READINESS.md`. |
+| DB local truth | Docker Postgres on `127.0.0.1:5433` verified 2026-04-26 (`npm run dev:db`, `db:ping`). Builds without DB still log Prisma warnings. |
+| Day 3 + Day 6 Section 1 | Public **`/api/forms`** → **`WorkflowIntake`** proven locally 2026-04-26. **Section 1:** `deployment.md` / Netlify script parity, **`check.yml`**, intake smoke `$base`, report [`KELLY_SOS_DAY_6_SECTION_1_REPORT.md`](./KELLY_SOS_DAY_6_SECTION_1_REPORT.md). **Next:** **Section 2** — counsel/treasurer + **preview** hosted smoke ([`KELLY_SOS_NEXT_PASS_SCRIPT.md`](./KELLY_SOS_NEXT_PASS_SCRIPT.md)). |
 
 ## Slice 3 Gate
 
 Days 4–7 compression is allowed only after all of these are true or explicitly waived by Steve:
 
-- [ ] DB reachable in the target environment.
-- [ ] `npm run dev:prepare` succeeds in that environment.
-- [ ] A safe public form POST to `/api/forms` succeeds.
-- [ ] The POST creates or links `User`, `Submission`, and `WorkflowIntake`.
-- [ ] `volunteer` submissions create/update `VolunteerProfile`.
-- [ ] Operator can see the resulting intake in an admin route.
-- [ ] Review/export/report path is documented.
-- [ ] `npm run check` passes or exception is logged.
+- [x] DB reachable in the target environment. *(local Docker: `127.0.0.1:5433` — 2026-04-26; **staging/prod** still Day 6.)*
+- [x] `npm run dev:prepare` succeeds in that environment. *(migrate deploy OK; Windows may log EPERM on `prisma generate` rename — retry or close locking processes.)*
+- [x] A safe public form POST to `/api/forms` succeeds.
+- [x] The POST creates or links `User`, `Submission`, and `WorkflowIntake`.
+- [x] `volunteer` submissions create/update `VolunteerProfile`.
+- [x] Operator can see the resulting intake in an admin route. *(data layer + doc path: `/admin/workbench` open work / `WorkflowIntake`; browser login not re-run this session.)*
+- [x] Review/export/report path is documented. *(workbench review; CSV export remains backlog per Day 3 report.)*
+- [x] `npm run check` passes or exception is logged. *(historical rows in build log; re-run after major pulls.)*
 
 ## Cursor Owns Next
 

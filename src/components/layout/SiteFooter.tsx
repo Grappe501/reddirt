@@ -34,7 +34,7 @@ export function SiteFooter() {
             </p>
             <SocialFooterIcons className="mt-3" />
           </div>
-          <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 lg:col-span-8">
+          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:col-span-8">
             {footerNavGroups.map((group) => (
               <nav key={group.title} aria-label={group.title}>
                 <p className="font-body text-xs font-bold uppercase tracking-[0.2em] text-cream-canvas/50">

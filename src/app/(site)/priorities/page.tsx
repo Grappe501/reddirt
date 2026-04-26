@@ -58,6 +58,10 @@ const pillars = [
     title: "Civic education with Arkansas educators",
     body: "Kelly will work with the Arkansas Education Association and the broader public school community to help strengthen nonpartisan civic education—so young people connect with voting and the democratic process earlier, with accurate, plain-language resources. The Capitol and the Secretary of State’s office can help: public events, age-appropriate materials, and a clear on-ramp to registration and participation before a first ballot. Curriculum and standards belong to local districts and the state; this office’s job is to be a willing partner and trusted information source, not a substitute for the classroom.",
   },
+  {
+    title: "Welcome Arkansans into the People's House",
+    body: "The State Capitol should feel like it belongs to all 75 counties. Within the office's responsibilities and in partnership with the right public authorities, Kelly wants the Capitol to be more welcoming, educational, and rooted in Arkansas life.",
+  },
 ] as const;
 
 export default async function PrioritiesPage() {
@@ -146,6 +150,13 @@ export default async function PrioritiesPage() {
               </p>
             </div>
             <div className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-deep-soil">Voter flow designed from real patterns</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+                Early voting should use turnout patterns, role clarity, clear signage, and line support so voters face
+                less confusion and workers are not left absorbing avoidable bottlenecks.
+              </p>
+            </div>
+            <div className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-[var(--shadow-soft)]">
               <h3 className="font-heading text-lg font-bold text-deep-soil">Public confidence through clarity</h3>
               <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
                 Voters should understand how elections are administered, how safeguards work, and who is responsible for each step. Visibility builds trust before misinformation fills the gap.
@@ -176,6 +187,13 @@ export default async function PrioritiesPage() {
               <h3 className="font-heading text-lg font-bold text-deep-soil">Meeting records in one place</h3>
               <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
                 Public calendars should point people to agendas, minutes, recordings, and follow-up records whenever those materials can legally be shared.
+              </p>
+            </div>
+            <div className="rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-deep-soil">Audit reports people can understand</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+                When election audits or process reviews are complete, voters should be able to find what was checked,
+                what was found, and what the result means in plain language.
               </p>
             </div>
             <div className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-[var(--shadow-soft)]">
@@ -224,6 +242,42 @@ export default async function PrioritiesPage() {
               <h3 className="font-heading text-lg font-bold text-deep-soil">Education before mistakes</h3>
               <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
                 Short explainers, reminders, and workshops can reduce confusion while still respecting the law, campaign-finance rules, and the neutral role of the office.
+              </p>
+            </div>
+          </div>
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection padY aria-labelledby="peoples-house-heading">
+        <ContentContainer className="max-w-4xl">
+          <SectionHeading
+            id="peoples-house-heading"
+            align="left"
+            eyebrow="People's House"
+            title="The Capitol should feel like it belongs to Arkansas"
+            subtitle="The Secretary of State's public-facing responsibilities should invite people into civic life. Kelly wants the Capitol and public records work to reflect service, education, and belonging for all 75 counties."
+            className="max-w-3xl"
+          />
+          <div className="mt-8 grid gap-5 sm:grid-cols-3">
+            <div className="rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-deep-soil">All counties visible</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+                Public spaces should help Arkansans from small towns, rural communities, and city neighborhoods see
+                themselves in state government.
+              </p>
+            </div>
+            <div className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-deep-soil">Learning in public</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+                Capitol visits, exhibits, records, and age-appropriate civic education can help people understand how
+                Arkansas government works.
+              </p>
+            </div>
+            <div className="rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-deep-soil">Explore welcoming grounds</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+                Ideas like rural-rooted plantings, pollinator spaces, and public gathering areas deserve review with the
+                proper legal, security, and facilities partners.
               </p>
             </div>
           </div>

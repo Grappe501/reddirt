@@ -358,4 +358,141 @@ Thread 13: **Shared Chat**.
 
 ## Next Thread
 
-Thread 14: **Festivals**. Likely integration target: events/admin workflow and field calendar.
+Thread 14: **Festivals**.
+
+**Source:** `https://chatgpt.com/s/t_69ee44df5cb481918747a4481fcc5ea9`  
+**Core thought:** The shared page title says "Festivals," but the usable content is a website platform backbone: protect voting rights, transparency, local election support, direct democracy, responsible modernization, civic education, business service, official records, and the State Capitol as the People's House.
+
+**Build impact now:**
+
+- Do not treat this as an events/festival workflow thread unless the user provides a different festival-specific packet.
+- Add the missing People's House / Capitol stewardship vision to public priorities with jurisdictional caution.
+- Store the platform backbone as internal strategy memory.
+
+**Implemented now:**
+
+- `/priorities` now includes "Welcome Arkansans into the People's House."
+- `/priorities` now includes a People's House section with all-county visibility, civic learning, and cautious grounds ideas.
+- `docs/platform/website-platform-backbone.md` created.
+
+**Research needed before stronger claims:**
+
+- Exact SOS authority and partner requirements for Capitol grounds, public spaces, events, exhibits, security, and facilities.
+- Which Capitol ideas are administrative, legislative, facilities, or external-partner work.
+- Whether "Rural Roots Garden" or pollinator habitat belongs in platform, transition plan, or only long-range vision.
+
+## Next Thread
+
+Thread 15: **Early Voting Efficiency Tips**.
+
+**Source:** `https://chatgpt.com/share/69ee3c6f-936c-83ea-85ba-4bd0f5a9cf7a`  
+**Core thought:** Early voting efficiency is an operations and systems problem: staffing should match turnout patterns, workers need role clarity, line triage can reduce bottlenecks, flexible staffing can support peaks, training should be role-specific, and wait-time transparency may improve voter experience.
+
+**Build impact now:**
+
+- Add a public priority card on voter flow built from real patterns.
+- Store operational ideas in an internal campaign ops research note.
+- Keep exact claims about line-time reduction, county authority, and statewide tools internal until sourced.
+
+**Implemented now:**
+
+- `/priorities` now includes "Voter flow designed from real patterns."
+- `docs/campaign-ops/early-voting-efficiency.md` created.
+
+**Research needed before stronger claims:**
+
+- SOS, State Board, county clerk, and county election commission authority boundaries.
+- Arkansas early voting staffing data and cost benchmarks.
+- States/counties with wait-time reporting and queue-management models.
+
+## Next Thread
+
+Thread 16: **Audit Section Overview**.
+
+**Source:** `https://chatgpt.com/share/69ee3d2e-ba64-83ea-951a-8c6a4573264f`  
+**Core thought:** Audit transparency is a major trust-building lane. Voters need plain-language explanations of what audits are, what they check, where reports live, how vote-center safeguards work, and what audit results do or do not mean. The campaign should avoid election-denial framing and also avoid status-quo defensiveness.
+
+**Build impact now:**
+
+- Add public copy that audit reports should be findable and understandable.
+- Store audit models, cost claims, authority questions, and performance-index references in research/ops only.
+
+**Implemented now:**
+
+- `/priorities` now includes "Audit reports people can understand."
+- `docs/campaign-ops/election-audit-transparency.md` created.
+
+**Research needed before stronger claims:**
+
+- Primary-source Arkansas audit law and rules.
+- Current report locations, formats, and publication cadence.
+- Verified cost and implementation models for current audits, hand-count proposals, risk-limiting audits, and hybrid models.
+- SOS/SBEC/county authority boundaries.
+
+## Next Thread
+
+Thread 17: **Research Assistance Offered**.
+
+**Source:** `https://chatgpt.com/share/69ee3e5e-9318-83ea-acc1-30e0d4404e9f`  
+**Core thought:** The usable strategic concept is information asymmetry: voters may distrust election systems because procedures, audits, voter-roll maintenance, machine testing, and chain-of-custody safeguards are hard to find or understand. The thread also points toward the official county election procedures manual, voter-roll education, and RLA research.
+
+**Build impact now:**
+
+- Fold into the audit transparency research note.
+- No new public copy needed beyond Thread 16's audit transparency card.
+- Keep details on fixed-percentage audits, RLA states, costs, survey figures, rights restoration, and federal voter-roll law in research until independently sourced.
+
+**Implemented now:**
+
+- `docs/campaign-ops/election-audit-transparency.md` now includes Thread 17 as a source, information asymmetry framing, voter-roll education, procedures-manual locations, and RLA/research guardrails.
+
+**Research needed before stronger claims:**
+
+- Official Arkansas County Board of Election Commissioners procedures manual current URL and sections.
+- Primary legal sources for voter roll maintenance.
+- Verified RLA adoption and cost data by state.
+- Whether rights restoration belongs in the SOS campaign lane.
+
+## Next Thread
+
+Thread 18: **Vermont vs California Voter Models**.
+
+**Source:** `https://chatgpt.com/share/69ee3ecf-31b8-83ea-bf1f-22b11085a0fa`  
+**Core thought:** Comparative youth voter models point toward an Arkansas-specific blend: high school senior voter-readiness challenges, campus civic participation challenges, student election-service pathways, and long-term leadership tracks. The thread frames this as participation infrastructure, not partisan turnout.
+
+**Build impact now:**
+
+- Add the specific senior and campus challenge models to the civic participation platform memory.
+- Keep public copy broad for now; do not cite Vermont or California models publicly until independently sourced.
+- Add privacy and opt-in guardrails for any school/campus recognition model.
+
+**Implemented now:**
+
+- `docs/platform/civic-participation.md` now includes Senior Sign-Up Challenge and Campus Civic Cup.
+- `docs/platform/civic-participation.md` now includes comparative-model sourcing and student privacy guardrails.
+
+**Research needed before stronger claims:**
+
+- Primary-source details for Vermont, California, and any other youth voter model referenced in public materials.
+- Arkansas school, higher-ed, privacy, and election-law boundaries for recognition programs.
+- Potential nonpartisan partners and whether each belongs in campaign, transition, or official-office planning.
+
+## Next Thread
+
+Thread 19: **Untitled final shared thread**.
+
+**Source:** `https://chatgpt.com/share/69ee3fd4-7d90-83ea-869a-1c1b3e3edc4e9f`  
+**Fetch result:** The shared URL returned "Can't load shared conversation 69ee3fd4-7d90-83ea-869a-1c1b3e3edc4e9f."
+
+**Build impact now:**
+
+- No implementation from this source because the content was unavailable.
+- Do not infer or invent Kelly's position from an inaccessible thread.
+
+**Needed from user if this thread matters:**
+
+- Re-share the conversation, paste the transcript, or identify the intended topic so it can be integrated in the same one-thread-at-a-time process.
+
+## Current Integration Status
+
+All accessible Kelly shared threads provided in the current batch have been reviewed and integrated where they created a concrete build, platform, communications, or research impact. Duplicate links were treated as already integrated, and inaccessible links were logged rather than guessed.

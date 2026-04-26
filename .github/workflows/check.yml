@@ -1,0 +1,60 @@
+# Quality gate — lint, typecheck, production build (with Postgres for Prisma SSG)
+# Does not deploy or touch production. RedDirt repo root must contain package-lock.json.
+
+name: Quality gate (npm run check)
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: check-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_USER: reddirt
+          POSTGRES_PASSWORD: reddirt
+          POSTGRES_DB: reddirt
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U reddirt -d reddirt"
+          --health-interval 3s
+          --health-timeout 5s
+          --health-retries 20
+
+    env:
+      DATABASE_URL: postgresql://reddirt:reddirt@127.0.0.1:5432/reddirt
+      # Admin middleware may read this at build for some code paths; value is non-secret placeholder for CI.
+      ADMIN_SECRET: ci-placeholder-not-for-production
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Prisma migrate
+        run: npx prisma migrate deploy
+
+      - name: Full check (lint + tsc + next build)
+        run: npm run check
