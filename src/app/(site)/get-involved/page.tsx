@@ -87,6 +87,37 @@ export default async function GetInvolvedPage({
         </FullBleedSection>
       ) : null}
 
+      <FullBleedSection aria-labelledby="pathway-heading">
+        <ContentContainer>
+          <SectionHeading
+            id="pathway-heading"
+            eyebrow="Civic pathways"
+            title="Arkansans are not checked out. Too many have been checked out of the process."
+            subtitle="This campaign starts from respect: people help neighbors, show up for community, and talk about what matters. Our job is to make the formal pathways clearer, more local, and easier to act on."
+          />
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            <div className="rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-deep-soil">Meet people where they are</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+                County visits, listening sessions, church basements, school gyms, local festivals, and kitchen-table conversations all count. Civic engagement should not require insider access.
+              </p>
+            </div>
+            <div className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-deep-soil">Make action simple</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+                Registration forms, deadlines, voting steps, candidate filing, and ballot-measure rules should be explained plainly enough for one neighbor to help another.
+              </p>
+            </div>
+            <div className="rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-deep-soil">Trust is local</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+                People are more likely to participate when information comes through trusted relationships and when government explains itself clearly.
+              </p>
+            </div>
+          </div>
+        </ContentContainer>
+      </FullBleedSection>
+
       <FullBleedSection id="join" aria-labelledby="join-heading">
         <ContentContainer>
           <SectionHeading

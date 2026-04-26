@@ -116,4 +116,28 @@ Thread 03: **Arkansas Candidate Strategy**.
 
 ## Next Thread
 
-Thread 04: **Civic Health Index Summary**. Likely integration target: civic trust / participation framing, with source review before numerical claims.
+Thread 04: **Civic Health Index Summary**.
+
+**Source:** `https://chatgpt.com/share/69ee3c1b-7890-83ea-b6ae-2240206e5a28`  
+**Core thought:** Arkansas should not be framed as apathetic. The stronger diagnosis is a civic pathway problem: neighbors help neighbors, but formal participation is harder to access, understand, or trust. Kelly's lane is civic infrastructure: transparency, local trust, practical access, voter education, and neighbor-to-neighbor action.
+
+**Build impact now:**
+
+- Add public organizing language that avoids blaming voters.
+- Do not publish civic-health percentages/rankings until source review.
+- Place message where it drives action: get involved.
+
+**Implemented now:**
+
+- `/get-involved` includes "Arkansans are not checked out. Too many have been checked out of the process."
+- The section turns the insight into three action principles: meet people where they are, make action simple, trust is local.
+
+**Research needed before stronger claims:**
+
+- Verify civic-health statistics and sources.
+- Decide which data belongs in public copy versus internal strategy.
+- Map a future civic-health dashboard only after source and methodology review.
+
+## Next Thread
+
+Thread 05: **Student Mock Election Overview**. Likely integration target: youth civic education / mock-election program vision.
