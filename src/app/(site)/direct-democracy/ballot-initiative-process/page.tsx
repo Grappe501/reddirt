@@ -90,6 +90,14 @@ export default function BallotInitiativeProcessPage() {
               Treat signature gathering as a responsibility: one honest signature at a time, with no shortcuts around
               witness rules or eligibility.
             </p>
+            <p className="mt-4 rounded-card border border-red-dirt/20 bg-cream-canvas p-5 text-sm leading-relaxed text-deep-soil/85 shadow-[var(--shadow-soft)]">
+              <span className="font-heading font-bold text-deep-soil">Campaign position. </span>
+              We believe the ballot initiative process should use <strong>volunteers only</strong> to collect
+              signatures—committees can raise and spend for marketing, training, and materials, but not to pay canvassers
+              by the signature or the hour. In our view, paid canvassing is the same class of problem as dark money: it
+              lets cash substitute for real consent. What statute allows today is for the General Assembly and voters to
+              decide; this is the standard we will advocate for in public and support in law.
+            </p>
           </div>
         </ContentContainer>
       </FullBleedSection>

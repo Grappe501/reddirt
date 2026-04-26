@@ -78,14 +78,32 @@ Strategic line: *The Secretary of State's office should not only process electio
 Use these as working names only until legal, partner, and field review:
 
 - **Arkansas Civic Challenge** — voluntary participation challenge for colleges, community colleges, trade schools, high schools, and local organizations.
+- **Arkansas Civic Pipeline Initiative** — high school senior readiness, college campus partnerships, and first-time voter onboarding.
+- **Arkansas Students Vote** — campus ambassador and student-life civic engagement track, adapted for Arkansas institutions.
 - **County Civic Cup** — county-based recognition model around registration checks, first-time voter education, civic volunteerism, and public education events.
 - **Future Voters Arkansas** — youth-facing education and first-time voter toolkit track.
+- **Student Poll Worker Pipeline** — youth and college service pathway into election work, with training and mentorship.
+- **Rural Civic Ambassador Program** — leadership track for students and young adults in underserved counties.
+- **Arkansas Civic Leadership Fellows** — longer-form civic leadership cohort connected to history, archives, local government, and election service.
 
 Guardrails:
 
 - Voluntary partnerships only; no claim that SOS controls school curriculum.
 - Avoid public rankings or turnout claims unless data source, privacy rules, and methodology are locked.
 - Recognition should reward civic learning and verified participation steps, not partisan outcome goals.
+- Use institutional language: participation, engagement, outreach, leadership, service, and history.
+- Avoid national partisan framing or fear-based democracy language when a skills-based Arkansas frame works better.
+- Frame the long-term goal as lifelong voter formation, not one-cycle turnout.
+
+### History layer
+
+Civic education should feel rooted in Arkansas, not imported. Program materials can draw from:
+
+- Arkansas constitutional history and `Regnat Populus`
+- State archives and public records
+- Direct-democracy and ballot-access history
+- Civil-rights history, including Little Rock and local county histories
+- Rural organizing and community service traditions
 
 ## What we’re building (infrastructure)
 

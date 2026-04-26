@@ -48,11 +48,15 @@ const pillars = [
   },
   {
     title: "Back voters, not dark money",
-    body: "Kelly will do everything the law and this office allow—and use her platform as Secretary of State—to fight secret spending and make money in politics easier to see. Overturning Citizens United is national and constitutional work; she will work alongside everyone pushing for that change, while she pushes just as hard on transparency and public integrity in Arkansas. She supports citizens using the ballot initiative and referendum to strengthen state campaign-finance law, and the same democratic tools for collective bargaining and other reforms when communities lead those measures. The job is a fair, understandable process and neutral administration—not picking winners on the issues.",
+    body: "Kelly will do everything the law and this office allow—and use her platform as Secretary of State—to fight secret spending and make money in politics easier to see. Overturning Citizens United is national and constitutional work; she will work alongside everyone pushing for that change, while she pushes just as hard on transparency and public integrity in Arkansas. She supports citizens using the ballot initiative and referendum to strengthen state campaign-finance law, and the same democratic tools for collective bargaining and other reforms when communities lead those measures. On the initiative process itself, she believes signature gathering should be volunteer-only: spend on education, training, and outreach—not paid canvassers, which she treats as another way money can distort the work at the door. The job is a fair, understandable process and neutral administration—not picking winners on the issues.",
   },
   {
     title: "Support the people who run elections",
     body: "Election workers and local officials carry high-stakes responsibilities. They deserve clear guidance, practical training, reliable tools, and public respect.",
+  },
+  {
+    title: "Civic education with Arkansas educators",
+    body: "Kelly will work with the Arkansas Education Association and the broader public school community to help strengthen nonpartisan civic education—so young people connect with voting and the democratic process earlier, with accurate, plain-language resources. The Capitol and the Secretary of State’s office can help: public events, age-appropriate materials, and a clear on-ramp to registration and participation before a first ballot. Curriculum and standards belong to local districts and the state; this office’s job is to be a willing partner and trusted information source, not a substitute for the classroom.",
   },
 ] as const;
 

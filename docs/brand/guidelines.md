@@ -54,6 +54,12 @@ DEMOCRATS
 
 **Avoid:** donkey icon, flag-heavy clip art, aggressive protest stock, partisan gimmicks.
 
+## Official seal and motto
+
+`Regnat Populus` is safe as civic education and constitutional framing: explain it, quote it, and connect it to the idea that the people rule.
+
+Do not use the official Arkansas state seal as campaign branding. The seal belongs in official-state or educational context, not as a campaign logo, badge, watermark, or decorative shortcut. If a design needs the same spirit, create an original mark inspired by Arkansas civic themes without copying official seals or county marks.
+
 ## Color psychology (summary)
 
 - **Red Dirt** — earth, labor, foundation; warm, not aggressive.  

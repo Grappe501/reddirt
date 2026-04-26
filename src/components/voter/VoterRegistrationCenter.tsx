@@ -139,6 +139,43 @@ export function VoterRegistrationCenter({
           <p className="mt-6 max-w-3xl text-sm leading-relaxed text-deep-soil/70">
             The goal is service, not spin: a modern office should help Arkansans understand how to use their vote and where official answers live.
           </p>
+          <div className="mt-10 border-t border-deep-soil/10 pt-8">
+            <h3 className="font-heading text-xl font-bold text-deep-soil">Did You Know Arkansas?</h3>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-deep-soil/75">
+              A future Secretary of State voter education series should answer one useful question at a time, send people
+              to official sources, and make the process feel understandable before misinformation has room to grow.
+            </p>
+            <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+              <div className={cn(card, "bg-white")}>
+                <h4 className="font-heading text-base font-bold text-deep-soil">One clear action</h4>
+                <p className="mt-2 text-sm leading-relaxed text-deep-soil/75">
+                  Registration checks, absentee deadlines, polling place lookup, and voter plans should each get their
+                  own simple explainer.
+                </p>
+              </div>
+              <div className={cn(card, "bg-cream-canvas")}>
+                <h4 className="font-heading text-base font-bold text-deep-soil">Official trust signals</h4>
+                <p className="mt-2 text-sm leading-relaxed text-deep-soil/75">
+                  Every post, video, and flyer should train voters to use official links and local election offices for
+                  final answers.
+                </p>
+              </div>
+              <div className={cn(card, "bg-white")}>
+                <h4 className="font-heading text-base font-bold text-deep-soil">Myth clarification</h4>
+                <p className="mt-2 text-sm leading-relaxed text-deep-soil/75">
+                  Plain-language FAQs can explain audits, chain of custody, certification, voting machines, and what
+                  happens after polls close.
+                </p>
+              </div>
+              <div className={cn(card, "bg-cream-canvas")}>
+                <h4 className="font-heading text-base font-bold text-deep-soil">Election snapshots</h4>
+                <p className="mt-2 text-sm leading-relaxed text-deep-soil/75">
+                  After elections, visual summaries can show how Arkansans participated, how reporting moved, and what
+                  the numbers mean.
+                </p>
+              </div>
+            </div>
+          </div>
         </ContentContainer>
       </FullBleedSection>
 

@@ -10,7 +10,7 @@ import { pageMeta } from "@/lib/seo/metadata";
 export const metadata: Metadata = pageMeta({
   title: "Civic depth",
   description:
-    "Ballot access, proof of organization, and how the Secretary of State’s office should serve every county—off the homepage, in one place.",
+    "Ballot access, proof of organization, and partnerships with schools and the Arkansas Education Association to strengthen civic education and voter resources—grounded in what the Secretary of State’s office can support.",
   path: "/civic-depth",
 });
 
@@ -40,13 +40,20 @@ export default async function CivicDepthPage() {
                 The Secretary of State’s office should not only process elections. It should help build a culture
                 of participation: practical, nonpartisan, local, and easy to understand.
               </p>
+              <p className="mt-4 font-body text-base leading-relaxed text-deep-soil/75">
+                That includes working with the Arkansas Education Association and Arkansas’s public school community to
+                put stronger civic learning alongside trusted voter resources—using the State Capitol, when law and
+                schedules allow, as a public place to welcome young people into the process: how elections work, how
+                to register, and how to make a plan to vote. Educators set instruction; the office can help with clarity
+                and access.
+              </p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
               <article className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-sm">
-                <h3 className="font-heading text-base font-bold text-deep-soil">Campus and community partners</h3>
+                <h3 className="font-heading text-base font-bold text-deep-soil">AEA, schools, and community partners</h3>
                 <p className="mt-2 font-body text-sm leading-relaxed text-deep-soil/70">
-                  Colleges, libraries, schools, civic groups, and local hosts can help turn public information into
-                  real participation.
+                  Colleges, libraries, the Arkansas Education Association, public school leaders, and local hosts can help
+                  turn public information into real participation and earlier civic connection for students.
                 </p>
               </article>
               <article className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-sm">
@@ -54,6 +61,13 @@ export default async function CivicDepthPage() {
                 <p className="mt-2 font-body text-sm leading-relaxed text-deep-soil/70">
                   Clear resources should explain registration, ballot questions, results, audits, and where official
                   answers live.
+                </p>
+              </article>
+              <article className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-sm">
+                <h3 className="font-heading text-base font-bold text-deep-soil">Arkansas history as the anchor</h3>
+                <p className="mt-2 font-body text-sm leading-relaxed text-deep-soil/70">
+                  Civic education should draw from the Arkansas Constitution, direct-democracy history, public archives,
+                  civil-rights history, and rural organizing traditions.
                 </p>
               </article>
               <article className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-sm">

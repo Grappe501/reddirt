@@ -236,4 +236,126 @@ Thread 08: **Civic Engagement Program**.
 
 ## Next Thread
 
-Thread 09: **Social Media Templates**. Likely integration target: comms backlog, social templates, and public copy only if source-safe.
+Thread 09: **Social Media Templates**.
+
+**Source:** `https://chatgpt.com/share/69ee414d-b7f4-83ea-ac69-963227d34c17`  
+**Core thought:** Kelly wants a service-office model that equips county clerks and local election officials with practical, nonpartisan communication tools. The thread also reinforces transparency by default, meeting-record access, FOIA reduction through proactive publishing, and careful use of `Regnat Populus` without misusing the official state seal.
+
+**Build impact now:**
+
+- Add a public priority that local offices need ready-to-use communication kits.
+- Add meeting-record access to the transparency section.
+- Store the county clerk social toolkit as campaign ops intelligence, not yet public official-office copy.
+- Add brand guardrail around the Arkansas state seal.
+
+**Implemented now:**
+
+- `/priorities` now includes "Communication kits counties can use."
+- `/priorities` transparency now includes "Meeting records in one place."
+- `docs/campaign-ops/county-clerk-social-toolkit.md` created with template families and compliance guardrails.
+- `docs/brand/guidelines.md` now warns against using the official state seal as campaign branding while allowing `Regnat Populus` as civic education.
+
+**Research needed before stronger claims:**
+
+- SOS authority over county communication standards versus voluntary support.
+- County clerk / election commission approval process for official templates.
+- Final legal review for seal, county marks, school logos, and official-office template use.
+
+## Next Thread
+
+Thread 10: **Civic Engagement Strategy**.
+
+**Source:** `https://chatgpt.com/share/69ee41f0-6dd4-83ea-b153-3fd80de3ff55`  
+**Core thought:** Youth civic engagement should be nonpartisan, institutional, skills-based, and rooted in state pride, not national partisan language. Arkansas can build a civic challenge model around history, rural access, direct-democracy literacy, student leadership, poll worker pathways, mock elections, and civic service.
+
+**Build impact now:**
+
+- Add Arkansas history as the anchor for civic participation.
+- Store the program ladder internally so future build phases can choose specific products without over-promising today.
+- Keep tone positive and institutional.
+
+**Implemented now:**
+
+- `/civic-depth` now includes "Arkansas history as the anchor."
+- `docs/platform/civic-participation.md` now includes Student Poll Worker Pipeline, Rural Civic Ambassador Program, Arkansas Civic Leadership Fellows, and the history layer.
+
+**Research needed before stronger claims:**
+
+- Age, training, and legal limits for student poll worker pathways.
+- Archive/curriculum partnership permissions.
+- Which youth leadership programs are campaign, nonprofit, or future SOS-office work.
+
+## Next Thread
+
+Thread 11: **Voter Engagement Best Practices**.
+
+**Source:** `https://chatgpt.com/share/69ee423b-470c-83ea-97a2-918ef079e1b5`  
+**Core thought:** Strong SOS voter education is pure service: one clear action, one official link, simple visuals, and good-faith "Did you know?" framing. This can become an Arkansas civic information infrastructure: social posts, short videos, myth clarification, county toolkits, election calendar reminders, audit explainers, and business filing education.
+
+**Build impact now:**
+
+- Add the "Did You Know Arkansas?" communication pattern to the voter education hub.
+- Create an ops document for civic information infrastructure.
+- Keep best-practice claims internal until external examples are sourced separately.
+
+**Implemented now:**
+
+- `/voter-registration` now includes "Did You Know Arkansas?" with one-action, official-link, and myth-clarification framing.
+- `docs/campaign-ops/civic-information-infrastructure.md` created.
+
+**Research needed before stronger claims:**
+
+- Official Arkansas source links for every voter-education topic.
+- Legal review of deadline/right-to-vote language.
+- Visual standards and accessibility checklist for nonpartisan explainer graphics.
+
+## Next Thread
+
+Thread 12: **Election Strategy Insights**.
+
+**Source:** `https://chatgpt.com/share/69ee4292-d274-83ea-b877-1df89ab15dd4`  
+**Core thought:** Modern SOS communication can use data visualization as trust architecture. A post-election or annual "Arkansas Election Snapshot" can make turnout, voting methods, county reporting, certification, audit milestones, and youth participation understandable and reassuring without partisan persuasion.
+
+**Build impact now:**
+
+- Extend the voter education hub with election snapshots.
+- Add the election snapshot model to the civic information infrastructure doc.
+- Keep actual metrics out of public copy until sourced and methodology is locked.
+
+**Implemented now:**
+
+- `/voter-registration` now includes "Election snapshots."
+- `docs/campaign-ops/civic-information-infrastructure.md` now includes the Arkansas election snapshot model.
+
+**Research needed before stronger claims:**
+
+- Which election metrics are public, reliable, and legally safe to visualize.
+- Data timing for unofficial, certified, audited, and post-election reporting.
+- Privacy and methodology rules for first-time/youth/rural participation summaries.
+
+## Next Thread
+
+Thread 13: **Shared Chat**.
+
+**Source:** `https://chatgpt.com/share/69ee430a-4790-83ea-a21e-bd64286782df`  
+**Core thought:** This thread is a higher-ed and youth pipeline model. The strongest refinement is "lifelong voter" framing: the Secretary of State can be a convener, educator, and connector with high schools, colleges, student organizations, civic groups, and community partners so young Arkansans learn how to participate before their first high-stakes election.
+
+**Build impact now:**
+
+- Fold youth pipeline names and lifelong-voter framing into the internal civic participation program model.
+- Do not duplicate public page copy already covered by `/civic-depth`, `/direct-democracy`, and `/voter-registration`.
+
+**Implemented now:**
+
+- `docs/platform/civic-participation.md` now includes Arkansas Civic Pipeline Initiative and Arkansas Students Vote.
+- The same doc now frames the long-term goal as lifelong voter formation, not one-cycle turnout.
+
+**Research needed before stronger claims:**
+
+- Partnership authority and nonpartisan guardrails for high schools, colleges, and student organizations.
+- Whether the campaign, a nonprofit partner, or future SOS office should own each pipeline component.
+- Names and program designs after educator/student input.
+
+## Next Thread
+
+Thread 14: **Festivals**. Likely integration target: events/admin workflow and field calendar.

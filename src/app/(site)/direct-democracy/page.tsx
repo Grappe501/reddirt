@@ -16,7 +16,7 @@ import { CirculatingInitiativesSection } from "@/components/direct-democracy/Cir
 export const metadata: Metadata = {
   title: "Ballot access & initiatives",
   description:
-    "Direct democracy, campaign finance reform, and using Arkansas’s ballot tools—including initiatives on money in politics and collective bargaining when the law allows. The Secretary of State’s role is fair process and clarity.",
+    "Direct democracy, campaign finance, and a volunteer-only standard for initiative signatures—spend on training and marketing, not paid canvassers. The Secretary of State’s role is fair process and clarity.",
 };
 
 const pipelineSteps = [
@@ -42,7 +42,7 @@ const pipelineSteps = [
     step: 4,
     title: "Signature collection",
     description:
-      "Organized, respectful canvassing with legal guardrails—dignity for signers and volunteers alike.",
+      "Volunteer-only signatures. Organized, respectful canvassing with legal guardrails—dignity for signers and volunteers. Spend on education, training, and marketing; do not pay people per signature or by the hour to collect them. Paid canvassers are another way money can distort the process—no better, in this campaign’s view, than dark money at the door.",
   },
   {
     step: 5,
@@ -94,6 +94,12 @@ export default async function DirectDemocracyPage() {
               <p>
                 Used responsibly, ballot initiatives and referendums can restore negotiation power: when
                 elected leaders know the public can act, they govern differently.
+              </p>
+              <p>
+                We believe the initiative process should keep signature collection in volunteers’ hands—money for
+                ads, events, and training, yes; paying people to harvest signatures, no. When campaigns buy canvassers
+                instead of organizing neighbors, it is the same class of problem as dark money: power from whoever can
+                write the checks, not from consent at the door.
               </p>
               <p className="rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-6 font-heading text-xl font-bold text-deep-soil shadow-[var(--shadow-soft)]">
                 If the people can act, power has to listen.
@@ -165,14 +171,21 @@ export default async function DirectDemocracyPage() {
                 of our politics. <em>Citizens United</em> is a federal landmark—reversing it is bigger than one
                 state office—Arkansas can still lead on disclosure, enforcement of state rules, and a Secretary of
                 State who will not look away. We also back voters who use the ballot initiative to pass stronger
-                state campaign-finance law when the process is clear and community-led.
+                state campaign-finance law when the process is clear and community-led. For initiatives themselves,
+                we believe signature gathering should be volunteer-only: you can fund training, materials, and
+                outreach, but not paid canvassers—another pipeline where money can drown out authentic neighbor-to-neighbor
+                work.
               </p>
             </article>
             <article className="rounded-card border border-deep-soil/10 bg-cream-canvas p-7 shadow-[var(--shadow-soft)] md:p-8">
               <h3 className="font-heading text-xl font-bold text-deep-soil">Youth civic participation</h3>
               <p className="mt-3 font-body text-base leading-relaxed text-deep-soil/75">
-                Explore responsible models—like school-board participation for older students—so young people
-                learn democracy by practicing it where decisions hit home.
+                Kelly will work with the Arkansas Education Association and the public school system to strengthen
+                nonpartisan civic education and to supply practical resources students and teachers can trust. The
+                State Capitol and this office can be part of the invitation—age-appropriate briefings, registration
+                basics, and pathways into voting and service—so more young people connect with the process earlier.
+                We will still explore responsible models—like school-board participation for older students—so
+                young people learn democracy by practicing it where decisions hit home.
               </p>
             </article>
             <article className="rounded-card border border-deep-soil/10 bg-cream-canvas p-7 shadow-[var(--shadow-soft)] md:p-8">
@@ -202,6 +215,12 @@ export default async function DirectDemocracyPage() {
                 className="max-w-2xl"
               />
               <div className="mt-6 space-y-4 font-body text-base leading-relaxed text-deep-soil/78 lg:text-lg">
+                <p>
+                  Partnership with the Arkansas Education Association, district leaders, and classroom educators comes
+                  first. Kelly wants the Capitol and the Secretary of State’s office to be open doors for youth
+                  learning—public information, not partisan curriculum—so students meet elections and registration
+                  with clarity and confidence.
+                </p>
                 <p>
                   We’re interested in models from other jurisdictions (for example, approaches discussed in states
                   like Maryland) as <strong>starting points for study</strong>—not promises of immediate
@@ -263,7 +282,7 @@ export default async function DirectDemocracyPage() {
                 id="civic-ed-heading"
                 eyebrow="Civic education"
                 title="Participation works when people understand the process"
-                subtitle="We’re investing in plain-language explainers, community briefings, and resources that turn confusing jargon into shared knowledge."
+                subtitle="We’re investing in plain-language explainers, community briefings, and resources that turn confusing jargon into shared knowledge—and working with Arkansas educators to reach students, including through the State Capitol as a public venue for learning about democracy in action."
                 align="left"
                 className="max-w-2xl text-cream-canvas [&_h2]:text-cream-canvas [&_p]:text-cream-canvas/85 [&_p.mb-3]:text-sunlight-gold"
               />
