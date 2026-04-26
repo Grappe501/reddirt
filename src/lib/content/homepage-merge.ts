@@ -277,7 +277,10 @@ function normalizeHeroJoinCta(hero: HomepageHeroMerged): HomepageHeroMerged {
   try {
     const u = new URL(href);
     const host = u.hostname.replace(/^www\./, "");
-    if (host === "kellygrappe.com" && (u.pathname === "" || u.pathname === "/")) {
+    if (
+      (host === "kellygrappe.com" || host === "kgrappe.netlify.app") &&
+      (u.pathname === "" || u.pathname === "/")
+    ) {
       return { ...hero, ctaPrimaryHref: getVolunteerSignupHref() };
     }
   } catch {
@@ -294,7 +297,10 @@ function normalizeFinalCtaJoin(fc: typeof DEFAULT_FINAL_CTA): typeof DEFAULT_FIN
   try {
     const u = new URL(href);
     const host = u.hostname.replace(/^www\./, "");
-    if (host === "kellygrappe.com" && (u.pathname === "" || u.pathname === "/")) {
+    if (
+      (host === "kellygrappe.com" || host === "kgrappe.netlify.app") &&
+      (u.pathname === "" || u.pathname === "/")
+    ) {
       return { ...fc, primaryHref: getVolunteerSignupHref() };
     }
   } catch {

@@ -9,8 +9,8 @@ export const siteConfig = {
   tagline: "The People Rule. · Arkansas",
   description:
     "Kelly Grappe is running to serve every Arkansan as Secretary of State: fair elections, ballot access you can understand, and a front office that works for all 75 counties—not just the loudest voices.",
-  /** Strip trailing slash; set NEXT_PUBLIC_SITE_URL in deploy for accurate OG URLs. */
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.kellygrappe.com").replace(/\/$/, ""),
+  /** Strip trailing slash; set NEXT_PUBLIC_SITE_URL in Netlify for accurate OG URLs (defaults to Kelly Netlify launch host). */
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.kgrappe.netlify.app").replace(/\/$/, ""),
   /**
    * Fundraising — defaults to GoodChange URL used on www.kellygrappe.com.
    * Override with NEXT_PUBLIC_DONATE_EXTERNAL_URL. Internal `/donate` page still explains the redirect.

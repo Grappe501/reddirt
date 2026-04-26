@@ -18,7 +18,7 @@ Configured in `netlify.toml`:
 | `OPENAI_API_KEY` | Optional | Search RAG + form intake classification |
 | `OPENAI_MODEL` | Optional | Defaults in `.env.example` |
 | `OPENAI_EMBEDDING_MODEL` | Optional | For ingest + query embeddings |
-| `NEXT_PUBLIC_SITE_URL` | Recommended | Canonical site URL for Open Graph (no trailing slash) |
+| `NEXT_PUBLIC_SITE_URL` | Recommended | Canonical site URL for Open Graph (no trailing slash). Kelly Netlify launch default in code: `https://www.kgrappe.netlify.app`. |
 | `SENDGRID_*` / `TWILIO_*` | Optional | Comms; see [`.env.example`](../.env.example); intake still saves without them |
 
 Never expose server secrets via `NEXT_PUBLIC_*`.

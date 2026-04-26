@@ -215,7 +215,7 @@
 | **Stay connected** | `STAY_CONNECTED_HREF` | `/get-involved#join` | |
 | **Campaign blog** | `getCampaignBlogUrl()` | Substack kellygrappesos | `NEXT_PUBLIC_CAMPAIGN_BLOG_URL` |
 | **Contact mailto** | `getContactMailto()` | `kelly@kellygrappe.com` | `NEXT_PUBLIC_CONTACT_EMAIL` |
-| **Site URL / OG** | `siteConfig.url` | `https://www.kellygrappe.com` | `NEXT_PUBLIC_SITE_URL` |
+| **Site URL / OG** | `siteConfig.url` | `https://www.kgrappe.netlify.app` (default) | `NEXT_PUBLIC_SITE_URL` |
 | **Social** | `getPublicSocialLinks()` | Facebook, Instagram, … | `NEXT_PUBLIC_SOCIAL_*` |
 | **Paid-for / committee** | `CampaignPaidForBar` | policy + `NEXT_PUBLIC_COMMITTEE_SITE_URL` | |
 
