@@ -55,12 +55,45 @@ More than single policies—**rebuild a culture of participation:**
 
 - More people in civic life → more responsive government → stronger communities.
 
+## Arkansas Civic Participation Initiative
+
+Thread source: Kelly shared ChatGPT thread `69ee40bb-d614-83ea-aca3-91c62dad4f5f`.
+
+Position this as future civic infrastructure for the Secretary of State's office, not a one-off campaign event. The office can use its public education role to connect:
+
+- Youth engagement and first-time voter education
+- Campus and community partnerships
+- Voter registration education
+- Democracy literacy and plain-language process explainers
+- Volunteerism and local civic service
+- Election worker recruitment and respect
+- Candidate education and leadership development
+
+The Arkansas version should stay community-first. Comparative state models can inspire structure, but public language should emphasize local hosts, rural access, libraries, colleges, workforce centers, churches, festivals, and county-level trust.
+
+Strategic line: *The Secretary of State's office should not only process elections. It should help build a culture of participation.*
+
+### Program models to evaluate
+
+Use these as working names only until legal, partner, and field review:
+
+- **Arkansas Civic Challenge** — voluntary participation challenge for colleges, community colleges, trade schools, high schools, and local organizations.
+- **County Civic Cup** — county-based recognition model around registration checks, first-time voter education, civic volunteerism, and public education events.
+- **Future Voters Arkansas** — youth-facing education and first-time voter toolkit track.
+
+Guardrails:
+
+- Voluntary partnerships only; no claim that SOS controls school curriculum.
+- Avoid public rankings or turnout claims unless data source, privacy rules, and methodology are locked.
+- Recognition should reward civic learning and verified participation steps, not partisan outcome goals.
+
 ## What we’re building (infrastructure)
 
 - Rapid-response referendum network  
 - Ballot initiative engine  
 - Civic education layer  
 - Participation pipeline starting with youth  
+- Civic participation partnerships across community spaces, campuses, libraries, and election service pathways
 
 **Framing:** people-powered governance—not a campaign-only tactic.
 

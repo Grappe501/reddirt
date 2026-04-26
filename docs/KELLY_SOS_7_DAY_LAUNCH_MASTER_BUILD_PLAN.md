@@ -3,7 +3,7 @@
 **Doc ID:** KELLY-7DAY-1  
 **Scope:** `H:\SOSWebsite\RedDirt` — **Kelly SOS production** site, campaign engine, admin, database, and launch platform.  
 **Folder name `RedDirt` is legacy;** all sprint work assumes **Kelly Grappe for SOS** ownership.  
-**Last updated:** 2026-04-26
+**Last updated:** 2026-04-27 (§10 next-pass now points at live `KELLY_SOS_NEXT_PASS_SCRIPT.md` → Day 5)
 
 **Related reads:** [`README.md`](../README.md) · [`RED_DIRT_BUILD_PROTOCOL.md`](./RED_DIRT_BUILD_PROTOCOL.md) · [`RED_DIRT_OPERATING_SYSTEM_MAP.md`](./RED_DIRT_OPERATING_SYSTEM_MAP.md) · [`RED_DIRT_PACKET_QUEUE.md`](./RED_DIRT_PACKET_QUEUE.md) · [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) · [`BETA_LAUNCH_READINESS.md`](./BETA_LAUNCH_READINESS.md) · [`H:\SOSWebsite\KELLY_SOS_RECLASSIFICATION_AND_MIGRATION_MAP.md`](../../KELLY_SOS_RECLASSIFICATION_AND_MIGRATION_MAP.md) · [`H:\SOSWebsite\brands\kelly-grappe-sos\LAUNCH_STATUS_REPORT.md`](../../brands/kelly-grappe-sos/LAUNCH_STATUS_REPORT.md)
 
@@ -366,7 +366,7 @@ Launch-ready **for Kelly SOS** means all of the following are **true** (or **doc
 
 ## 10. Exact next Cursor pass
 
-Paste the contents of **[`KELLY_SOS_NEXT_PASS_SCRIPT.md`](./KELLY_SOS_NEXT_PASS_SCRIPT.md)** into Cursor after Steve reviews this plan. It encodes **Day 1** tasks (README Kelly block, route map completion, `npm run check`, dashboard + build log updates).
+Paste **[`KELLY_SOS_NEXT_PASS_SCRIPT.md`](./KELLY_SOS_NEXT_PASS_SCRIPT.md)** into Cursor. It tracks the **current** sprint slice (as of the file’s “Updated” line — **Day 5** after Day 4 comms/readiness). Earlier Day 1–4 tasks in this document are **historical**; use the next-pass file as source of truth for the next implementation block.
 
 ---
 

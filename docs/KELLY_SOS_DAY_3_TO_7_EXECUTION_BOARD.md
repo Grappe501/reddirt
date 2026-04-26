@@ -14,7 +14,7 @@
 | Day 2 / RD-1 | Complete for voter-visible public polish. Existing modified files are active Cursor/Steve work. |
 | Quality gate | `npm run check` passes when worker spawning is allowed. Lint warnings remain. |
 | DB local truth | Local Postgres on `127.0.0.1:5433` is currently not reachable in this Codex session; build falls back with Prisma warnings. |
-| Day 3 key gap | `/api/forms` persists `Submission` and `VolunteerProfile`, but does not currently create `WorkflowIntake`; `/admin/volunteers/intake` is uploaded signup-sheet intake, not public form intake. |
+| Day 3 code | `WorkflowIntake` is created for public `/api/forms` successes (see `handlers.ts`). **Staging smoke** (fake POST → admin visibility) is still the proof gate. `/admin/volunteers/intake` remains **uploaded** sheet intake, not the public JSON form queue. **Day 4** runbook: `KELLY_SOS_COMMS_READINESS.md`. |
 
 ## Slice 3 Gate
 

@@ -164,4 +164,76 @@ Thread 05: **Student Mock Election Overview**.
 
 ## Next Thread
 
-Thread 06: **Arkansas Voter Engagement Strategy**. Likely integration target: voter education / county engagement / trust-building program vision.
+Thread 06: **Arkansas Voter Engagement Strategy**.
+
+**Source:** `https://chatgpt.com/share/69ee4071-7bec-83ea-b0ee-6fb8e22fbbd8`  
+**Core thought:** Kelly's Arkansas voter-engagement model should be broader than a school or registration program. The campaign can build a traveling civic education model that meets people in churches, fish fries, libraries, fairs, coffee shops, colleges, workforce centers, and local festivals. The message is practical: understand the system, trust what deserves trust, and know how to change what needs changing.
+
+**Build impact now:**
+
+- Add public events copy that turns civic education into field practice.
+- Keep it Arkansas-rooted and community-hosted, not an imported state program.
+- Avoid public opponent comparisons from the thread; use positive differentiation only.
+
+**Implemented now:**
+
+- `/events` now includes "Take the process to the places Arkansans already gather."
+- The section names community spaces, process open houses, and future people-powered civic engagement weeks.
+
+**Research needed before stronger claims:**
+
+- Determine whether a future "Arkansas Civic Engagement Week" can be created administratively, by proclamation, by partnership, or only legislatively.
+- Build an internal checklist for election process open houses: equipment, chain of custody, audits, county permissions, and nonpartisan staffing.
+- Confirm what can be demonstrated publicly without violating security procedures or vendor rules.
+
+## Next Thread
+
+Thread 07: **SOS Strategy Breakdown**.
+
+**Source:** `https://chatgpt.com/share/69ee40bb-d614-83ea-aca3-91c62dad4f5f`  
+**Core thought:** A comparative Secretary of State voter-engagement summit model points to a larger Kelly governing idea: turn the office into Arkansas' civic participation platform. The Arkansas version should not simply copy a campus summit. It should connect campuses, libraries, schools, community hosts, voter education, youth engagement, election-worker recruitment, candidate education, and leadership development through a community-first model.
+
+**Build impact now:**
+
+- Add an umbrella civic-participation initiative to the public civic-depth page.
+- Add internal platform language so future AI/strategy work treats this as infrastructure.
+- Avoid public claims about specific partners until relationships, permissions, and authority are confirmed.
+
+**Implemented now:**
+
+- `/civic-depth` now includes "Arkansas Civic Participation Initiative."
+- `docs/platform/civic-participation.md` now records the initiative and its strategic line.
+
+**Research needed before stronger claims:**
+
+- Confirm SOS authority for statewide civic education partnerships.
+- Define nonpartisan guardrails for campus/community programming.
+- Decide whether pilot workshops before Election Day should live in public events, internal field ops, or both.
+
+## Next Thread
+
+Thread 08: **Civic Engagement Program**.
+
+**Source:** `https://chatgpt.com/share/69ee40fe-5948-83ea-90fc-3dca80a1dcdf`  
+**Core thought:** A structured civic-engagement program can use voluntary challenges and recognition to encourage registration checks, voter plans, youth participation, campus engagement, county pride, and civic service. The Arkansas version should be broader than a college competition: colleges, trade schools, high schools, churches, community organizations, counties, and youth programs could opt in.
+
+**Build impact now:**
+
+- Extend the civic participation initiative with voluntary civic challenges.
+- Keep public language positive and nonpartisan.
+- Keep metrics, rankings, and partner names internal until methodology and permissions are locked.
+
+**Implemented now:**
+
+- `/civic-depth` now includes "Voluntary civic challenges."
+- `docs/platform/civic-participation.md` now records working models: Arkansas Civic Challenge, County Civic Cup, and Future Voters Arkansas.
+
+**Research needed before stronger claims:**
+
+- Privacy and data methodology for any challenge tracking.
+- Authority and partner rules for schools, colleges, counties, nonprofits, and faith-based groups.
+- Whether recognition can be administered by SOS, a nonprofit partner, the campaign, or only as a future office proposal.
+
+## Next Thread
+
+Thread 09: **Social Media Templates**. Likely integration target: comms backlog, social templates, and public copy only if source-safe.

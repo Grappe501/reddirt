@@ -15,6 +15,7 @@ Append a row per meaningful verification run. Do not paste secret values.
 | **2026-04-26** | Codex | (local dirty worktree) | — | `npm run db:ping` | **Exit 1** | Sandbox Docker access issue: config access denied and compose `-T` flag issue. Elevated Docker check was not completed in this session. |
 | **2026-04-26** | Codex | (local dirty worktree) | — | `npm run check` | **Exit 1** | Lint + typecheck completed; `next build` failed with sandbox `spawn EPERM` when creating worker processes. |
 | **2026-04-26** | Codex | (local dirty worktree) | — | `npm run build` | **Exit 1** | Elevated build compiled successfully, then failed at page-data phase with `ENOENT .next/build-manifest.json`, likely residue from prior timed-out build. Per no-delete rule, `.next` was not cleaned in this session. |
+| **2026-04-27** | Cursor | (local) | — | (Day 4 doc + `FormSuccessPanel` blurb) | **Pending** | Run **`npm run check`** to verify after pull; no secrets. Day 4 deliverables: [`KELLY_SOS_COMMS_READINESS.md`](./KELLY_SOS_COMMS_READINESS.md), [`KELLY_SOS_DAY_4_COMPLETION_REPORT.md`](./KELLY_SOS_DAY_4_COMPLETION_REPORT.md). |
 | | | | | | | |
 
 ### Commands not re-run separately (Day 1)

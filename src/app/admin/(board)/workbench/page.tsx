@@ -999,8 +999,15 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
             {" · "}
             <Link href="/admin/style-guide" className="font-semibold text-civic-slate hover:underline">
               Style &amp; content hub
+            </Link>
+            {" · "}
+            <Link
+              href="/admin/campaign-ops/community-equity"
+              className="font-semibold text-civic-slate hover:underline"
+            >
+              Community equity
             </Link>{" "}
-            (regional field one-pagers; voice/governance index) · Staff playbooks (e.g. DNC) — not public. Run{" "}
+            (Hispanic, Marshallese, Muslim — mosque polling workflow) · Staff playbooks (e.g. DNC) — not public. Run{" "}
             <code className="rounded bg-deep-soil/5 px-0.5">npm run ingest:dnc-playbook</code> after updating the file.
           </p>
           <ul className="mt-0.5 max-h-20 overflow-y-auto text-[10px]">

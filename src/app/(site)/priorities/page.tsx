@@ -47,6 +47,10 @@ const pillars = [
     body: "Voters and county clerks should see how decisions are made—not surprise rule changes, opaque rollouts, or favors for narrow interests. The Secretary of State should answer to the public, with clear standards and honest timelines.",
   },
   {
+    title: "Back voters, not dark money",
+    body: "Kelly will do everything the law and this office allow—and use her platform as Secretary of State—to fight secret spending and make money in politics easier to see. Overturning Citizens United is national and constitutional work; she will work alongside everyone pushing for that change, while she pushes just as hard on transparency and public integrity in Arkansas. She supports citizens using the ballot initiative and referendum to strengthen state campaign-finance law, and the same democratic tools for collective bargaining and other reforms when communities lead those measures. The job is a fair, understandable process and neutral administration—not picking winners on the issues.",
+  },
+  {
     title: "Support the people who run elections",
     body: "Election workers and local officials carry high-stakes responsibilities. They deserve clear guidance, practical training, reliable tools, and public respect.",
   },
@@ -118,11 +122,17 @@ export default async function PrioritiesPage() {
             subtitle="Trustworthy elections depend on people as much as machines, forms, and statutes. The Secretary of State should help local officials and election workers do a hard job with clearer systems and stronger support."
             className="max-w-3xl"
           />
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
             <div className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-[var(--shadow-soft)]">
               <h3 className="font-heading text-lg font-bold text-deep-soil">Training that travels</h3>
               <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
                 Counties should not have to reinvent the basics. Kelly will push for plain-language guidance, reusable training materials, and practical support that works in rural and urban election offices alike.
+              </p>
+            </div>
+            <div className="rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-deep-soil">Communication kits counties can use</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+                Local offices should have ready-to-adapt voter education posts, public notice checklists, and crisis communication basics so accurate information can move faster than rumors.
               </p>
             </div>
             <div className="rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)]">
@@ -151,11 +161,17 @@ export default async function PrioritiesPage() {
             subtitle="A transparent office should not make Arkansans repeat the same request just because the answer is buried in a file cabinet, an inbox, or a hard-to-search archive."
             className="max-w-3xl"
           />
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
             <div className="rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)]">
               <h3 className="font-heading text-lg font-bold text-deep-soil">Publish the request trail</h3>
               <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
                 When the Secretary of State&apos;s office receives and fulfills a public-records request, the public should be able to see that a request was made, what records were released, and where to find them when disclosure is allowed by law.
+              </p>
+            </div>
+            <div className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-deep-soil">Meeting records in one place</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+                Public calendars should point people to agendas, minutes, recordings, and follow-up records whenever those materials can legally be shared.
               </p>
             </div>
             <div className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-[var(--shadow-soft)]">

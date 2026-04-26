@@ -35,6 +35,16 @@ const HUB: HubItem[] = [
     file: "docs/briefs/COUNTY_CANDIDATE_BRIEF_75_COUNTY_ROLLOUT.md",
     note: "How we scale the same pattern as Pope and NWA — data, comms, and staff gates.",
   },
+  {
+    label: "Comms & follow-up (Day 4)",
+    file: "docs/KELLY_SOS_COMMS_READINESS.md",
+    note: "Intake → WorkflowIntake → workbench; SendGrid/Twilio env names; manual fallback; SLA placeholders.",
+  },
+  {
+    label: "Community equity (Hispanic, Marshallese, Muslim)",
+    file: "docs/campaign-ops/COMMUNITY_EQUITY_OUTREACH_MASTER_PLAN.md",
+    note: "Full outreach plan; Muslim 25K/10K goals; Get Loud; mosque polling → Calendar MEETING + s4_event_faith_venue_polling_v1.",
+  },
 ];
 
 const UI = [
@@ -51,6 +61,14 @@ export default function AdminStyleGuideHubPage() {
         One place for <strong>voice</strong>, <strong>governance</strong>, and <strong>UI patterns</strong> for Kelly SOS — not a
         full Storybook. Paths are repo-relative (open in your editor or GitHub).
       </p>
+
+      <section className="mt-8" id="comms">
+        <h2 className="font-heading text-lg font-bold text-deep-soil">Comms &amp; public intake (ops)</h2>
+        <p className="mt-2 text-sm text-deep-soil/70">
+          Full runbook: <code className="text-xs">docs/KELLY_SOS_COMMS_READINESS.md</code> — workbench, webhooks, 24h follow-up
+          expectations on form success, and what happens when API keys are missing.
+        </p>
+      </section>
 
       <section className="mt-8" id="public">
         <h2 className="font-heading text-lg font-bold text-deep-soil">Content &amp; brand</h2>

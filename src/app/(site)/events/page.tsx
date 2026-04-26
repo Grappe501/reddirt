@@ -137,6 +137,49 @@ export default async function EventsPage({
         </ContentContainer>
       </FullBleedSection>
 
+      <FullBleedSection variant="subtle" padY aria-labelledby="civic-roadshow-heading">
+        <ContentContainer>
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
+            <div className="lg:col-span-5">
+              <p className="font-body text-xs font-bold uppercase text-red-dirt">
+                Civic education
+              </p>
+              <h2 id="civic-roadshow-heading" className="mt-3 font-heading text-2xl font-bold text-deep-soil md:text-3xl">
+                Take the process to the places Arkansans already gather
+              </h2>
+              <p className="mt-4 font-body text-base leading-relaxed text-deep-soil/75">
+                Kelly’s voter engagement model is not a school-only program or a one-week slogan. It is a traveling,
+                plain-language approach: understand the system, trust what deserves trust, and know how to change what
+                needs changing.
+              </p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-3 lg:col-span-7">
+              <article className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-sm">
+                <h3 className="font-heading text-base font-bold text-deep-soil">Community spaces</h3>
+                <p className="mt-2 font-body text-sm leading-relaxed text-deep-soil/70">
+                  Churches, fish fries, libraries, county fairs, coffee shops, colleges, and workforce centers are all
+                  civic classrooms when neighbors are invited with respect.
+                </p>
+              </article>
+              <article className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-sm">
+                <h3 className="font-heading text-base font-bold text-deep-soil">Process open houses</h3>
+                <p className="mt-2 font-body text-sm leading-relaxed text-deep-soil/70">
+                  Public demonstrations of ballots, equipment, audits, chain of custody, and results reporting can make
+                  trust visible instead of asking people to take it on faith.
+                </p>
+              </article>
+              <article className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-sm">
+                <h3 className="font-heading text-base font-bold text-deep-soil">People-powered weeks</h3>
+                <p className="mt-2 font-body text-sm leading-relaxed text-deep-soil/70">
+                  Future civic engagement weeks should be Arkansas-rooted: local hosts, practical voter education, and a
+                  clear path from curiosity to participation.
+                </p>
+              </article>
+            </div>
+          </div>
+        </ContentContainer>
+      </FullBleedSection>
+
       <FullBleedSection
         padY
         aria-labelledby="event-tags-heading"

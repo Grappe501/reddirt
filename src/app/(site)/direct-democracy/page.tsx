@@ -16,7 +16,7 @@ import { CirculatingInitiativesSection } from "@/components/direct-democracy/Cir
 export const metadata: Metadata = {
   title: "Ballot access & initiatives",
   description:
-    "How initiatives and referenda connect to the Secretary of State’s role—education, process, and voter access without confusion.",
+    "Direct democracy, campaign finance reform, and using Arkansas’s ballot tools—including initiatives on money in politics and collective bargaining when the law allows. The Secretary of State’s role is fair process and clarity.",
 };
 
 const pipelineSteps = [
@@ -159,10 +159,13 @@ export default async function DirectDemocracyPage() {
           />
           <ResponsiveGrid cols="3" className="mt-12">
             <article className="rounded-card border border-deep-soil/10 bg-cream-canvas p-7 shadow-[var(--shadow-soft)] md:p-8">
-              <h3 className="font-heading text-xl font-bold text-deep-soil">Funding transparency</h3>
+              <h3 className="font-heading text-xl font-bold text-deep-soil">End dark money, confront Citizens United</h3>
               <p className="mt-3 font-body text-base leading-relaxed text-deep-soil/75">
-                Shine a light on dark money and undisclosed spending so elections belong to voters—not hidden
-                networks.
+                This campaign is committed to doing everything Kelly can, within the law, to get secret money out
+                of our politics. <em>Citizens United</em> is a federal landmark—reversing it is bigger than one
+                state office—Arkansas can still lead on disclosure, enforcement of state rules, and a Secretary of
+                State who will not look away. We also back voters who use the ballot initiative to pass stronger
+                state campaign-finance law when the process is clear and community-led.
               </p>
             </article>
             <article className="rounded-card border border-deep-soil/10 bg-cream-canvas p-7 shadow-[var(--shadow-soft)] md:p-8">
@@ -173,10 +176,13 @@ export default async function DirectDemocracyPage() {
               </p>
             </article>
             <article className="rounded-card border border-deep-soil/10 bg-cream-canvas p-7 shadow-[var(--shadow-soft)] md:p-8">
-              <h3 className="font-heading text-xl font-bold text-deep-soil">Future people-power reforms</h3>
+              <h3 className="font-heading text-xl font-bold text-deep-soil">Civic tools for workers and communities</h3>
               <p className="mt-3 font-body text-base leading-relaxed text-deep-soil/75">
-                Reserve space for additional ballot fronts as communities organize: accessibility, ethics, and
-                anti-corruption measures with Arkansas specifics.
+                The same initiative and referendum process that can strengthen finance law can also carry
+                collective bargaining, worker power, and other issues Arkansans choose to run—if the law allows the
+                measure on the ballot. This campaign supports citizens using those tools to write state policy, with
+                legal design and local ownership. The Secretary of State’s role stays neutral: a fair, understandable
+                process—forms, titles, and timelines—so voters know what they are signing and what can qualify.
               </p>
             </article>
           </ResponsiveGrid>

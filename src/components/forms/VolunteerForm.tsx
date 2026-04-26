@@ -132,7 +132,7 @@ export function VolunteerForm({
 
   if (showSuccess) {
     return (
-      <FormSuccessPanel title="Thank you—this is how campaigns actually run.">
+      <FormSuccessPanel title="Thank you—this is how campaigns actually run." showResponseExpectation={false}>
         <p>
           A coordinator will follow up with shifts that match what you shared. If you flagged leadership
           interest, we may invite you to a short training call—no pressure, no jargon.

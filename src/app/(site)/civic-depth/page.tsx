@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/blocks/PageHero";
+import { FullBleedSection } from "@/components/layout/FullBleedSection";
+import { ContentContainer } from "@/components/layout/ContentContainer";
 import { CivicBeatSections } from "@/components/home/CivicBeatSections";
 import { JourneyBeat } from "@/components/journey/JourneyBeat";
 import { getMergedHomepageConfig } from "@/lib/content/homepage-merge";
@@ -22,6 +24,63 @@ export default async function CivicDepthPage() {
         title="Democracy tools and proof of organization"
         subtitle="Drill into ballot access and the systems that should serve every county—and how this campaign explains the office in plain language."
       />
+
+      <FullBleedSection variant="subtle" padY aria-labelledby="participation-initiative-heading">
+        <ContentContainer>
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
+            <div className="lg:col-span-5">
+              <p className="font-body text-xs font-bold uppercase text-red-dirt">Future office vision</p>
+              <h2
+                id="participation-initiative-heading"
+                className="mt-3 font-heading text-2xl font-bold text-deep-soil md:text-3xl"
+              >
+                Arkansas Civic Participation Initiative
+              </h2>
+              <p className="mt-4 font-body text-base leading-relaxed text-deep-soil/75">
+                The Secretary of State’s office should not only process elections. It should help build a culture
+                of participation: practical, nonpartisan, local, and easy to understand.
+              </p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
+              <article className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-sm">
+                <h3 className="font-heading text-base font-bold text-deep-soil">Campus and community partners</h3>
+                <p className="mt-2 font-body text-sm leading-relaxed text-deep-soil/70">
+                  Colleges, libraries, schools, civic groups, and local hosts can help turn public information into
+                  real participation.
+                </p>
+              </article>
+              <article className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-sm">
+                <h3 className="font-heading text-base font-bold text-deep-soil">Voter education that travels</h3>
+                <p className="mt-2 font-body text-sm leading-relaxed text-deep-soil/70">
+                  Clear resources should explain registration, ballot questions, results, audits, and where official
+                  answers live.
+                </p>
+              </article>
+              <article className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-sm">
+                <h3 className="font-heading text-base font-bold text-deep-soil">Election service pipeline</h3>
+                <p className="mt-2 font-body text-sm leading-relaxed text-deep-soil/70">
+                  Civic education should connect willing Arkansans to volunteer roles, poll worker pathways, and
+                  respectful local service.
+                </p>
+              </article>
+              <article className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-sm">
+                <h3 className="font-heading text-base font-bold text-deep-soil">Voluntary civic challenges</h3>
+                <p className="mt-2 font-body text-sm leading-relaxed text-deep-soil/70">
+                  Campuses, counties, and community groups could opt into positive participation challenges that reward
+                  registration checks, voter plans, and local civic service.
+                </p>
+              </article>
+              <article className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-sm">
+                <h3 className="font-heading text-base font-bold text-deep-soil">Leadership development</h3>
+                <p className="mt-2 font-body text-sm leading-relaxed text-deep-soil/70">
+                  Future voters, candidates, election workers, and community educators all need a front door into the
+                  process.
+                </p>
+              </article>
+            </div>
+          </div>
+        </ContentContainer>
+      </FullBleedSection>
 
       <JourneyBeat id="civic-spine" variant="light" className="scroll-mt-24 border-t-0 !py-6 lg:!py-10">
         <CivicBeatSections homepage={homepage} />
