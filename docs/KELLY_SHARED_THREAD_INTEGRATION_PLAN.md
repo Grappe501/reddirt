@@ -140,4 +140,28 @@ Thread 04: **Civic Health Index Summary**.
 
 ## Next Thread
 
-Thread 05: **Student Mock Election Overview**. Likely integration target: youth civic education / mock-election program vision.
+Thread 05: **Student Mock Election Overview**.
+
+**Source:** `https://chatgpt.com/share/69ee4026-1060-83ea-8b72-14a4dc0b0fb2`  
+**Core thought:** The Secretary of State's office can educate as well as administer. A future Arkansas model could offer optional, nonpartisan student mock-election tools, first-time voter resources, teacher-ready materials, and youth service pathways in partnership with educators and local election officials. This should be framed as civic preparation, not a curriculum mandate or partisan program.
+
+**Build impact now:**
+
+- Add youth civic education vision where the site already discusses direct democracy and student participation.
+- Keep the language optional, educator-informed, legally cautious, and future-facing.
+- Avoid implying an existing official state mock-election program or a new statewide mandate.
+
+**Implemented now:**
+
+- `/direct-democracy` now includes optional mock-election tools, first-time voter tools, and youth service pathways.
+- The responsible-framing box now explicitly says educator partnership comes before any statewide program.
+
+**Research needed before stronger claims:**
+
+- Confirm SOS authority and partnership boundaries with the Department of Education, schools, county clerks, and county election commissions.
+- Source comparable student mock-election programs before naming them publicly.
+- Decide whether this belongs in the campaign platform, future office transition plan, or education interview packet.
+
+## Next Thread
+
+Thread 06: **Arkansas Voter Engagement Strategy**. Likely integration target: voter education / county engagement / trust-building program vision.

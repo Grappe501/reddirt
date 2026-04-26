@@ -206,11 +206,35 @@ export default async function DirectDemocracyPage() {
                   students want for their communities.
                 </p>
               </div>
+              <div className="mt-8 grid gap-4 sm:grid-cols-3">
+                <article className="rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-5 shadow-[var(--shadow-soft)]">
+                  <h3 className="font-heading text-base font-bold text-deep-soil">Optional mock elections</h3>
+                  <p className="mt-2 font-body text-sm leading-relaxed text-deep-soil/70">
+                    Schools that want to participate should have nonpartisan ballots, process guides, and
+                    classroom-ready materials without a new mandate.
+                  </p>
+                </article>
+                <article className="rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-5 shadow-[var(--shadow-soft)]">
+                  <h3 className="font-heading text-base font-bold text-deep-soil">First-time voter tools</h3>
+                  <p className="mt-2 font-body text-sm leading-relaxed text-deep-soil/70">
+                    Young Arkansans should be able to find clear, practical resources before their first ballot,
+                    not after confusion sets in.
+                  </p>
+                </article>
+                <article className="rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-5 shadow-[var(--shadow-soft)]">
+                  <h3 className="font-heading text-base font-bold text-deep-soil">Youth service pathways</h3>
+                  <p className="mt-2 font-body text-sm leading-relaxed text-deep-soil/70">
+                    Civic education can connect students with age-appropriate election service, mentorship, and
+                    local learning opportunities.
+                  </p>
+                </article>
+              </div>
             </div>
             <aside className="rounded-card border border-deep-soil/10 bg-deep-soil/[0.03] p-8 lg:col-span-5">
               <h3 className="font-heading text-lg font-bold text-deep-soil">Responsible framing</h3>
               <ul className="mt-4 list-disc space-y-3 pl-5 font-body text-sm leading-relaxed text-deep-soil/70">
                 <li>No legal specifics claimed on this page until counsel signs off.</li>
+                <li>Educator partnership comes before any statewide program.</li>
                 <li>Youth leadership should be mentorship-heavy and safety-conscious.</li>
                 <li>Education comes before signature gathering—always.</li>
               </ul>
