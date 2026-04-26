@@ -4,6 +4,13 @@
 **Truth:** This repo is the **Kelly Grappe for Arkansas Secretary of State** **production site** and **campaign engine** (public `(site)`, organizer `/relational`, `/admin` workbench, Prisma/Postgres, APIs). The folder name `RedDirt` is **legacy**; ownership is **Kelly SOS**.  
 **Last updated:** 2026-04-26 — **Section 3 launch lock packet** ([`KELLY_SOS_SECTION_3_LAUNCH_LOCK.md`](./KELLY_SOS_SECTION_3_LAUNCH_LOCK.md)) — go/no-go table, P0/P1/P2, post-launch backlog, optional git tag. **Formal counsel/treasurer initials** still pending; **Netlify preview** smoke still recommended before apex. **Cursor next pass:** **maintenance** ([`KELLY_SOS_NEXT_PASS_SCRIPT.md`](./KELLY_SOS_NEXT_PASS_SCRIPT.md)).
 
+## Next actions toward launch (P0 — in order)
+
+1. **Ship code to Netlify** — Open/merge a PR from `build/reddirt-public-copy-pass-03` to the branch Netlify builds (usually `main`), or confirm Netlify already tracks this branch. Without a deploy, the public site does not update.
+2. **Deploy-preview smoke** — In Netlify, open the **Deploy preview** URL for that PR → run `.\scripts\section2-preview-smoke.ps1 -BaseUrl "https://…"` → append [`KELLY_SOS_BUILD_LOG.md`](./KELLY_SOS_BUILD_LOG.md). Confirms the **same** app you tested locally is what the internet sees.
+3. **Treasurer + counsel** — Confirm paid-for + GoodChange / `NEXT_PUBLIC_DONATE_EXTERNAL_URL` on the **production** site context; finalize or waive `/privacy` + `/terms` per [`KELLY_SOS_SECTION_2_SIGNOFF_LOG.md`](./KELLY_SOS_SECTION_2_SIGNOFF_LOG.md).
+4. **Cutover** — Point **DNS / apex** at the Netlify site that serves this RedDirt build (only when 1–3 are acceptable). Treat [`KELLY_SOS_DECISION_LOG.md`](./KELLY_SOS_DECISION_LOG.md) “canonical public domain” when ready.
+
 ---
 
 ## Clear statement (non-negotiable)
