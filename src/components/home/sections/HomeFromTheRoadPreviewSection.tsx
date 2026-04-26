@@ -10,11 +10,6 @@ export type HomeFromTheRoadPreviewSectionProps = {
   posts: RoadPostCard[];
 };
 
-function locality(post: RoadPostCard): string | null {
-  const parts = [post.countySlug, post.city].filter((p): p is string => Boolean(p?.trim()));
-  return parts.length ? parts.join(" · ") : null;
-}
-
 export function HomeFromTheRoadPreviewSection({ posts }: HomeFromTheRoadPreviewSectionProps) {
   if (!posts.length) return null;
 
@@ -27,10 +22,10 @@ export function HomeFromTheRoadPreviewSection({ posts }: HomeFromTheRoadPreviewS
             id="road-preview-heading"
             className="mt-4 font-heading text-[clamp(1.55rem,3vw,2.15rem)] font-bold text-civic-ink"
           >
-            Latest stops &amp; notebook entries
+            Latest stops &amp; updates
           </h2>
           <p className="mt-4 font-body text-lg text-civic-slate">
-            Campaign movement across Arkansas—readable here first, sourced from the trail notebook.
+            Moments from the campaign trail across Arkansas—shared here so neighbors can follow along.
           </p>
         </FadeInWhenVisible>
 
@@ -59,7 +54,7 @@ export function HomeFromTheRoadPreviewSection({ posts }: HomeFromTheRoadPreviewS
                         <img src={img} alt="" className="h-full w-full object-cover" loading="lazy" />
                       ) : (
                         <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-civic-blue/25 to-civic-midnight/40 font-body text-xs text-civic-mist/80">
-                          Notebook
+                          From the road
                         </div>
                       )}
                     </div>

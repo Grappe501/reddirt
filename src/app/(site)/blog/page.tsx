@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { PageHero } from "@/components/blocks/PageHero";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
@@ -8,9 +7,9 @@ import { listPublicBlogPosts, toBlogCard } from "@/lib/content/blog-public";
 import { pageMeta } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = pageMeta({
-  title: "Notebook",
+  title: "Writing",
   description:
-    "Movement writing syndicated from Substack—summaries on-site, full essays at the canonical link.",
+    "Essays and updates from Kelly’s Substack—browse summaries here, then read the full piece where it was published.",
   path: "/blog",
   imageSrc: "/media/placeholders/editorial-ink-field.svg",
 });
@@ -22,9 +21,9 @@ export default async function BlogIndexPage() {
   return (
     <>
       <PageHero
-        eyebrow="Notebook"
+        eyebrow="Writing"
         title="Movement writing"
-        subtitle="These pieces originate on Substack. We mirror summaries here so neighbors can browse without leaving the movement site—then read the full essay where it lives."
+        subtitle="These pieces start on Substack. We share short summaries here so you can browse in one place—then open the full essay where it was published."
       />
 
       <FullBleedSection variant="subtle" padY>
@@ -33,8 +32,7 @@ export default async function BlogIndexPage() {
             <div className="rounded-card border border-dashed border-deep-soil/25 bg-cream-canvas/80 p-10 text-center">
               <p className="font-heading text-lg font-bold text-deep-soil">New posts soon</p>
               <p className="mt-3 font-body text-deep-soil/70">
-                Longer writing from the trail is also on our notebook—use the Substack link in the site footer when you want
-                the full feed.
+                Longer writing from the trail is on Substack—use the link in the site footer when you want the full feed.
               </p>
             </div>
           ) : (

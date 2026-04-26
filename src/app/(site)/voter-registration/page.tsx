@@ -48,7 +48,7 @@ export default async function VoterRegistrationPage({ searchParams }: Props) {
     if (!isPrismaDatabaseUnavailable(err)) throw err;
     logPrismaDatabaseUnavailable("voter-registration", err);
     liveMetricsUnavailableMessage =
-      "The app could not connect to Postgres (check that your database is running and DATABASE_URL is correct—for local dev, see docker-compose and port 5433). Official VoterView, paper registration guidance, and the rest of this page still work.";
+      "Live registration metrics could not be loaded right now. Official VoterView, paper registration guidance, and the rest of this page still work.";
   }
 
   return (

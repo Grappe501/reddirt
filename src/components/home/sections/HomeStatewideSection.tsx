@@ -48,8 +48,8 @@ export function HomeStatewideSection() {
                   Arkansas presence map
                 </p>
                 <p className="mt-4 max-w-md font-body text-base leading-relaxed text-civic-gold-soft/95">
-                  County markers will show visit dates, photos, notes heard, and upcoming returns—interactive layer
-                  plugs in here.
+                  A fuller map of visits, photos, and return dates is on the way—see counties and regions here for now,
+                  and follow From the Road for the latest.
                 </p>
                 <div className="mt-8 grid w-full max-w-sm grid-cols-3 gap-2">
                   {["NW", "River", "Delta", "Central", "SW", "NE"].map((r) => (

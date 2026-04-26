@@ -16,7 +16,6 @@ import {
   roadPostImageSrc,
   type RoadPostCard,
   type RoadSocialCardVM,
-  type YoutubeCardVM,
 } from "@/lib/content/content-hub-queries";
 import { pageMeta } from "@/lib/seo/metadata";
 import { brandMediaFromLegacySite } from "@/config/brand-media";
@@ -27,7 +26,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = pageMeta({
   title: "From the Road",
   description:
-    "Official social channels, live embeds, notebook, and field updates in one place—follow the trail without living inside an algorithm.",
+    "Official social channels, live video, writing from the trail, and field updates in one bookmark—follow along without living inside an algorithm.",
   path: "/from-the-road",
   imageSrc: brandMediaFromLegacySite.statewideBanner,
 });
@@ -50,14 +49,14 @@ export default async function FromTheRoadPage() {
     <div className="min-h-screen bg-gradient-to-b from-civic-fog/90 via-white to-civic-fog/50 pb-16 pt-10 md:pb-24 md:pt-14">
       <ContentContainer>
         <header className="mx-auto max-w-3xl text-center">
-          <p className="font-body text-[11px] font-bold uppercase tracking-[0.24em] text-civic-gold">Field journal + trail</p>
+          <p className="font-body text-[11px] font-bold uppercase tracking-[0.24em] text-civic-gold">Trail hub</p>
           <h1 className="mt-4 font-heading text-[clamp(1.95rem,4.2vw,3rem)] font-bold tracking-tight text-civic-ink">
             From the Road
           </h1>
           <p className="mt-6 font-body text-lg leading-relaxed text-civic-slate md:text-xl">
             <strong className="text-civic-ink">One bookmark for the whole trail:</strong> Facebook, Instagram, X,
-            YouTube, TikTok, and the Substack notebook open from the hub below—then live windows and field updates stack
-            underneath, so neighbors can follow along without juggling apps or mystery algorithms.
+            YouTube, TikTok, and Kelly’s Substack writing open from the hub below—then live video and field updates follow,
+            so neighbors can keep up without juggling apps or mystery algorithms.
           </p>
           <p className="mt-5 font-body text-sm text-civic-slate/85">
             <a href="#channels" className="font-semibold text-civic-blue underline-offset-2 hover:underline">
@@ -83,7 +82,7 @@ export default async function FromTheRoadPage() {
               <>
                 {" · "}
                 <a href="#notebook" className="font-semibold text-civic-blue underline-offset-2 hover:underline">
-                  Notebook
+                  Writing
                 </a>
               </>
             ) : null}
@@ -158,8 +157,8 @@ export default async function FromTheRoadPage() {
         ) : null}
 
         {hasNotebook ? (
-          <section id="notebook" className="scroll-mt-24 border-t border-civic-ink/8 pt-16 md:pt-20" aria-label="Campaign notebook">
-            <h2 className="font-heading text-2xl font-bold text-civic-ink md:text-3xl">The notebook (Substack)</h2>
+          <section id="notebook" className="scroll-mt-24 border-t border-civic-ink/8 pt-16 md:pt-20" aria-label="Writing on Substack">
+            <h2 className="font-heading text-2xl font-bold text-civic-ink md:text-3xl">Writing on Substack</h2>
             <p className="mt-3 max-w-3xl font-body text-base leading-relaxed text-civic-slate md:text-lg">
               Longer writing from the road—stories, explainers, and the voice you can share without a platform account
               watching over your shoulder.
@@ -251,7 +250,7 @@ function RoadJournalCard({ post }: { post: RoadPostCard }) {
         </div>
       ) : (
         <div className="flex aspect-[16/10] items-center justify-center bg-gradient-to-br from-civic-blue/15 to-civic-midnight/25 font-body text-xs font-medium text-civic-ink/70">
-          Trail notebook
+          From the trail
         </div>
       )}
       <div className="flex flex-1 flex-col p-5 md:p-6">

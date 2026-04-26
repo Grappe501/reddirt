@@ -149,8 +149,8 @@ export default function HostAGatheringPage() {
             ]}
           />
           <p className="mt-8 max-w-3xl font-body text-sm text-deep-soil/60">
-            {/* TODO(Script 5): chapter dashboards for host pipelines */}
-            Future organizer dashboards will track mentor assignments without turning public pages into admin UI.
+            When you host with us, a field mentor can help with pairings and follow-up—without turning this page into a
+            long checklist.
           </p>
         </ContentContainer>
       </FullBleedSection>

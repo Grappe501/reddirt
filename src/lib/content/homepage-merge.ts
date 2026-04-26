@@ -77,7 +77,7 @@ const DEFAULT_SPLIT_DEMOCRACY: HomepageSplitCopy = {
 const DEFAULT_SPLIT_LABOR: HomepageSplitCopy = {
   kicker: "Filings & public records",
   title: "When systems are confusing, local people pay the cost",
-  body: "Businesses, nonprofits, and neighbors rely on the Secretary of State’s office for filings, registrations, and access. Confusion isn’t neutral—it hits small operators first.",
+  body: "Businesses, nonprofits, and neighbors rely on the Secretary of State’s office for filings, registrations, and access. Confusion isn’t neutral—it hits small businesses and community groups first.",
   bullets: [
     "Predictable processes and reachable help",
     "Public records that are actually easy to use",

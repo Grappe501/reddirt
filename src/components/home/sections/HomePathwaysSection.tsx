@@ -12,12 +12,12 @@ export function HomePathwaysSection({ cards }: { cards: readonly Card[] | Card[]
     <section className="border-y border-civic-ink/10 bg-cream-canvas py-section-y lg:py-section-y-lg" aria-labelledby="pathways-heading">
       <ContentContainer>
         <FadeInWhenVisible className="mx-auto max-w-3xl text-center">
-          <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-civic-blue">Command center</p>
+          <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-civic-blue">Take a next step</p>
           <h2 id="pathways-heading" className="mt-4 font-heading text-[clamp(1.75rem,3.8vw,2.65rem)] font-bold tracking-tight text-civic-ink">
-            Pathways into the work
+            Ways to go deeper
           </h2>
           <p className="mt-5 font-body text-lg leading-relaxed text-civic-slate md:text-xl">
-            Every lane here ties to real pages—priorities, ballot tools, organizing, and stories from Arkansas.
+            Each card links to a real page—priorities, ballot access, local organizing, and stories from Arkansas.
           </p>
         </FadeInWhenVisible>
         <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">

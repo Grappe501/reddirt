@@ -12,9 +12,9 @@ export function HomeBlogHighlightSection({ posts }: { posts: HomepageBlogCard[] 
       <ContentContainer>
         <FadeInWhenVisible className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-red-dirt">Notebook</p>
+            <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-red-dirt">Writing</p>
             <h2 id="blog-highlight-heading" className="mt-3 font-heading text-2xl font-bold tracking-tight text-civic-ink md:text-3xl">
-              Synced posts & updates
+              Latest posts &amp; updates
             </h2>
           </div>
           <Link href="/blog" className="font-body text-sm font-semibold text-civic-blue hover:underline">
@@ -33,7 +33,7 @@ export function HomeBlogHighlightSection({ posts }: { posts: HomepageBlogCard[] 
                 <p className="font-body text-xs font-semibold uppercase tracking-wider text-civic-slate/70">
                   {p.publishedAt
                     ? p.publishedAt.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
-                    : "Notebook"}
+                    : "Post"}
                 </p>
                 <h3 className="mt-2 font-heading text-lg font-bold text-civic-ink group-hover:text-red-dirt">{p.title}</h3>
                 <p className="mt-2 line-clamp-3 font-body text-sm text-civic-slate/90">{p.excerpt}</p>

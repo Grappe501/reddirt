@@ -36,7 +36,7 @@ export function HomeJournalSection({ cards }: HomeJournalSectionProps) {
                 ) : (
                   <div className="flex aspect-[16/10] items-center justify-center bg-gradient-to-br from-civic-blue/20 to-civic-midnight/10 px-4">
                     <span className="text-center font-body text-[10px] font-bold uppercase tracking-[0.2em] text-civic-slate/45">
-                      Trail photo / CMS
+                      Photo coming soon
                     </span>
                   </div>
                 )}

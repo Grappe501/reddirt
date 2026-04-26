@@ -28,7 +28,7 @@ export default async function PressCoveragePage() {
     logPrismaDatabaseUnavailable("press-coverage/getPressCoverageFeed", err);
     mentions = getPressCoverageCuratedOnly(80);
     listUnavailableMessage =
-      "Staff-curated clips below are still shown. Approved monitor items from the database could not be loaded — start Postgres (docker-compose, port 5433) or fix DATABASE_URL to merge those listings. Campaign updates are on From the Road.";
+      "Hand-picked coverage below still appears. Some live listings could not be loaded—try again later, or follow From the Road for the latest.";
   }
 
   return (
@@ -40,7 +40,7 @@ export default async function PressCoveragePage() {
             Press coverage
           </h1>
           <p className="mt-6 font-body text-lg leading-relaxed text-civic-slate md:text-xl">
-            Earned-media clips from Arkansas outlets (staff-approved from our monitor), curated newspaper links, and
+            Earned-media clips from Arkansas outlets (selected by our communications team), curated newspaper links, and
             third-party election guides below. We respect outlet terms and link to originals rather than reproducing
             paywalled text.
           </p>

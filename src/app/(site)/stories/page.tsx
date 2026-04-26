@@ -41,8 +41,8 @@ export default async function StoriesPage() {
             id="stories-archive-heading"
             align="left"
             eyebrow="Archive"
-            title="Notebook on Substack, then Arkansas voices on this site"
-            subtitle="The top section pulls live posts from Kelly’s Substack (full articles open there). Below, filters apply to on-site stories—permissioned voices from the archive, not a stump speech."
+            title="Kelly’s writing on Substack, then Arkansas voices on this site"
+            subtitle="The top section pulls recent posts from Kelly’s Substack (full articles open there). Below, you can filter stories published here—neighbor voices, not talking points."
           />
           <StoriesHub stories={stories} featured={featured} substackPosts={substackPosts} />
         </ContentContainer>

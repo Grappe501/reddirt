@@ -10,12 +10,12 @@ export function HomeMovementSection({ items }: { items: readonly Belief[] | Beli
     <section className="bg-civic-midnight py-section-y text-civic-mist lg:py-section-y-lg" aria-labelledby="movement-heading">
       <ContentContainer>
         <FadeInWhenVisible className="mx-auto max-w-3xl text-center">
-          <p className="font-body text-[11px] font-bold uppercase tracking-[0.26em] text-civic-gold-soft">Movement spine</p>
+          <p className="font-body text-[11px] font-bold uppercase tracking-[0.26em] text-civic-gold-soft">What guides us</p>
           <h2 id="movement-heading" className="mt-4 font-heading text-[clamp(1.75rem,3.8vw,2.65rem)] font-bold tracking-tight text-civic-mist">
             What this campaign is accountable to
           </h2>
           <p className="mt-5 font-body text-base leading-relaxed text-civic-mist/75 md:text-lg">
-            The same through-line you’ll see on the trail, in filings, and in how we treat clerks and voters.
+            The same commitments you’ll hear on the trail and in how we talk with clerks, voters, and neighbors.
           </p>
         </FadeInWhenVisible>
         <ul className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4 xl:gap-6">

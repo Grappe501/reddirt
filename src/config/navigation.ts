@@ -26,7 +26,7 @@ export const primaryNavGroups: NavGroup[] = [
     label: "Meet Kelly",
     groupLandingHref: "/about",
     items: [
-      { label: "About (full story)", href: "/about" },
+      { label: "About Kelly", href: "/about" },
       { label: "Understand the office", href: "/understand" },
       { label: "What we stand for", href: "/what-we-believe" },
     ],
@@ -50,7 +50,7 @@ export const primaryNavGroups: NavGroup[] = [
       { label: "Press coverage", href: "/press-coverage" },
       { label: "Stories", href: "/stories" },
       { label: "Editorial", href: "/editorial" },
-      { label: "Substack (direct)", href: getCampaignBlogUrl() },
+      { label: "Kelly’s Substack", href: getCampaignBlogUrl() },
     ],
   },
   {
@@ -96,7 +96,7 @@ export const footerNavGroups: { title: string; items: NavItem[] }[] = [
     ],
   },
   {
-    title: "News & act",
+    title: "News & action",
     items: [
       ...primaryNavGroups[2].items,
       { label: "Events", href: "/events" },

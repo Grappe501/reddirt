@@ -35,11 +35,11 @@ const PATHWAYS: PathwayCard[] = [
   },
   {
     key: "field",
-    title: "See the field operation",
-    line: "The full trail photo gallery, social hubs, and field updates—everything in one chapter so the home page stays focused.",
+    title: "Follow the campaign trail",
+    line: "Photos, social updates, and notes from counties across Arkansas—so you can see the work in real rooms, not just headlines.",
     chapterHref: "/from-the-road#trail-photos",
     href: "/from-the-road",
-    hrefLabel: "Campaign trail",
+    hrefLabel: "From the Road hub",
   },
   {
     key: "act",
@@ -74,7 +74,7 @@ export function HomePathwayGateway() {
                     href={p.chapterHref}
                     className="text-left font-body text-sm font-bold uppercase tracking-wider text-red-dirt transition hover:text-civic-blue"
                   >
-                    Open this chapter →
+                    Open this section →
                   </Link>
                 ) : p.beatId ? (
                   <button
@@ -82,7 +82,7 @@ export function HomePathwayGateway() {
                     onClick={() => scrollToBeat(p.beatId!)}
                     className="text-left font-body text-sm font-bold uppercase tracking-wider text-red-dirt transition hover:text-civic-blue"
                   >
-                    Continue this chapter →
+                    Jump to ways to help →
                   </button>
                 ) : null}
                 <a

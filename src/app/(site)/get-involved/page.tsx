@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageHero } from "@/components/blocks/PageHero";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
@@ -74,7 +75,7 @@ export default async function GetInvolvedPage({
               left={left}
               right={right}
               kicker="Field energy"
-              caption="Same campaign, two zip codes—because politics refuses to fit in one JPEG."
+              caption="Same campaign, different counties—because Arkansas doesn’t fit in a single snapshot."
             />
           </ContentContainer>
         </FullBleedSection>
@@ -131,17 +132,17 @@ export default async function GetInvolvedPage({
             <span className="font-semibold text-deep-soil/90">Postcards, calls, and texts: </span>
             start with the step-by-step guides, then use the form below (or check the matching boxes) so we can tag your
             signup—{" "}
-            <a className="font-semibold text-red-dirt underline" href="/resources/postcard-outreach">
+            <Link className="font-semibold text-red-dirt underline" href="/resources/postcard-outreach">
               handwritten postcards
-            </a>
+            </Link>
             ,{" "}
-            <a className="font-semibold text-red-dirt underline" href="/resources/phone-banking">
+            <Link className="font-semibold text-red-dirt underline" href="/resources/phone-banking">
               phone banking (dialer coming)
-            </a>
+            </Link>
             ,{" "}
-            <a className="font-semibold text-red-dirt underline" href="/resources/text-banking">
+            <Link className="font-semibold text-red-dirt underline" href="/resources/text-banking">
               peer-to-peer text banking
-            </a>
+            </Link>
             .
           </p>
           <div className="mt-10 max-w-3xl">

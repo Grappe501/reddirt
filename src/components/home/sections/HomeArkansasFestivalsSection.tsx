@@ -37,18 +37,17 @@ export function HomeArkansasFestivalsSection({ festivals, coveragePayload }: Pro
           Fairs & festivals (Arkansas feed)
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-center font-body text-sm text-deep-soil/75 md:text-base">
-          Ingested from whitelisted sources and staff review—not the same as published campaign stops. Use the field plan
-          below to line up candidate travel with volunteer coverage.
+          Sourced from trusted public feeds and staff review—not the same as published campaign stops. Use the calendar
+          notes below to line up travel with volunteer coverage.
         </p>
 
         {festivals.length === 0 ? (
           <p className="mx-auto mt-8 max-w-xl rounded-lg border border-dashed border-deep-soil/25 bg-white/70 p-5 text-center font-body text-sm text-deep-soil/70" role="status">
-            No approved community events on the public feed yet. Run ingest (cron), approve rows in the workbench, or review
-            suggestions from the{" "}
+            No approved community events on the public feed yet. Suggest a fair or festival through the{" "}
             <Link href="/events#suggest" className="font-semibold text-red-dirt underline">
-              Movement /events form
+              events form
             </Link>
-            .
+            , and check back as we add more.
           </p>
         ) : (
           <ul className="mt-8 grid list-none grid-cols-1 gap-4 md:grid-cols-2">

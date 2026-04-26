@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { PageHero } from "@/components/blocks/PageHero";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
@@ -301,33 +300,22 @@ export default async function ListeningSessionsPage() {
           <ContentContainer>
             <SectionHeading
               id="workflow-heading"
-              eyebrow="For organizers &amp; staff"
-              title="Planning, tasks, and the workbench"
-              subtitle="Host interest isn’t a one-line note—it’s the start of a plan: date windows, partners, comms, accessibility, and day-of checklists."
+              eyebrow="After you raise your hand"
+              title="What happens next"
+              subtitle="Hosting interest isn’t a one-line note—it’s the start of a plan: timing, partners, accessibility, materials, and respectful follow-up with everyone who shows up."
             />
             <div className="mt-6 max-w-3xl space-y-4 font-body text-sm leading-relaxed text-deep-soil/80">
               <p>
-                When someone requests a local session, the campaign team can
-                route the details through the <strong>workbench</strong> for
-                scheduling, volunteer touches, and follow-up. Structured task
-                lists (venue confirm, local partner outreach, material prep,
-                RSVP flow) are designed to connect to the same{" "}
-                <strong>operations</strong> spine as rallies and field events—so
-                nothing falls through the cracks as we scale the tour.
+                When you submit the form, the campaign team uses it to line up
+                dates, confirm venues, coordinate volunteers, and make sure
+                hosts have what they need—without losing the human details that
+                make a listening room feel safe and serious.
               </p>
               <p className="mt-4">
-                <strong>Staff (signed in):</strong> use{" "}
-                <Link
-                  href="/admin/workbench"
-                  className="font-semibold text-civic-slate underline"
-                >
-                  Campaign workbench
-                </Link>{" "}
-                to line up event stages, comms, and task ownership. Public
-                submissions from this form include a flag for{" "}
-                <strong>listening session host</strong> interest in structured
-                data to make filtering and workflow automation easier as your
-                templates go live.
+                If you already volunteer with the campaign, use the tools and
+                contacts your organizer shared with you for scheduling and
+                follow-up. New hosts can expect a real person to reach out—not an
+                impersonal auto-reply.
               </p>
             </div>
           </ContentContainer>

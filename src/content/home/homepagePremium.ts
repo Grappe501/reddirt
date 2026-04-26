@@ -28,7 +28,7 @@ export const TRUST_RIBBON_ITEMS = [
 
 export const FIGHT_FOR = [
   {
-    title: "Transparency Under the Hood",
+    title: "Transparency people can see",
     body: "Arkansans deserve clear answers about how election systems work, how they are tested, and what happens when something needs to be fixed.",
   },
   {
@@ -46,29 +46,29 @@ export const FIGHT_FOR = [
 ] as const;
 
 export const PROOF_SECTION = {
-  eyebrow: "Infrastructure",
-  title: "This Campaign Is Building Something Real",
+  eyebrow: "How we work",
+  title: "Built to show up for Arkansas",
   intro:
-    "This is more than a message. It is an operation built to organize, communicate, and serve people across Arkansas.",
+    "This campaign is organized to listen county by county, answer honestly, and meet people where they are—in person and online.",
   blocks: [
     {
-      title: "Campaign Infrastructure",
-      body: "Volunteer intake, compliance-aware workflows, and a content engine that keeps counties informed—not guessing.",
+      title: "Volunteers and coordination",
+      body: "Clear ways to sign up, get matched to local needs, and stay in touch so counties aren’t left guessing.",
     },
     {
-      title: "Field Organizing",
+      title: "Field organizing",
       body: "County visits, trained hosts, and neighbor-to-neighbor outreach you can see in public—not just on paper.",
     },
     {
-      title: "Digital Readiness",
-      body: "Fast, accessible web, syndicated updates, and media that respects intelligence and time.",
+      title: "Clear information online",
+      body: "A fast, accessible site with updates and media that respect your time and intelligence.",
     },
     {
-      title: "Public Engagement",
-      body: "Kelly taking questions, listening first, and explaining the office in language real people use.",
+      title: "Public engagement",
+      body: "Kelly taking questions, listening first, and explaining the office in plain language.",
     },
   ],
-  ctaLabel: "Join the Team Building It",
+  ctaLabel: "Join the team",
   ctaHref: "/get-involved",
 } as const;
 
@@ -76,7 +76,7 @@ export const STATEWIDE_SECTION = {
   eyebrow: "Presence",
   title: "Showing Up Across Arkansas",
   body: "Serving Arkansas starts with listening. This campaign is committed to showing up, learning from communities, and earning trust across all 75 counties.",
-  ctaLabel: "Follow the Statewide Campaign",
+  ctaLabel: "See updates from the trail",
   ctaHref: "/from-the-road",
 } as const;
 
@@ -139,7 +139,7 @@ export const JOURNAL_SECTION = {
 export const PLACEHOLDER_JOURNAL = [
   {
     id: "ph-journal-1",
-    title: "Notebook: What “secure” should mean to a voter",
+    title: "What “secure” should mean to a voter",
     excerpt:
       "Security isn’t a vibe—it’s testing, documentation, and culture. A short framework we’re using when we talk with clerks and the public.",
     meta: "Campaign journal · Civic explainer",
@@ -168,8 +168,8 @@ export const PLACEHOLDER_JOURNAL = [
 
 export const GET_INVOLVED_SECTION = {
   eyebrow: "Step in",
-  title: "This Is a Campaign for the People. Join It.",
-  subtitle: "High-trust work needs high-trust people. Pick a lane—we’ll meet you with training and respect.",
+  title: "This is a campaign for the people. Join it.",
+  subtitle: "Choose a way to help—we’ll meet you with training, backup, and respect for your time.",
 } as const;
 
 export type JournalCardVM = {
@@ -232,8 +232,8 @@ export function buildJournalTrailLive(
       excerpt: p.excerpt,
       href: p.href,
       meta: p.publishedAt
-        ? `${p.publishedAt.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })} · Notebook`
-        : "Notebook",
+        ? `${p.publishedAt.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })} · Blog`
+        : "Blog",
       cta: "Read",
       imageSrc: p.imageSrc,
       imageAlt: p.imageAlt,

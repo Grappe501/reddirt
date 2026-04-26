@@ -27,7 +27,7 @@ export const JOURNEY_BEAT_DEFINITIONS: JourneyBeat[] = [
     id: "beat-people",
     navLabel: "Voices",
     navShort: "People",
-    description: "Stories, editorial, notebook, and campaign trail.",
+    description: "Stories, editorial, writing from the trail, and campaign updates.",
   },
   {
     id: "beat-conviction",
