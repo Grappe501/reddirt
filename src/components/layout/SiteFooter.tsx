@@ -27,14 +27,14 @@ export function SiteFooter() {
               rel={joinExternal ? "noopener noreferrer" : undefined}
               className="mt-6 inline-flex rounded-btn border border-cream-canvas/25 bg-cream-canvas/10 px-4 py-2.5 font-body text-sm font-semibold text-cream-canvas transition hover:border-sunlight-gold/50 hover:bg-cream-canvas/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sunlight-gold"
             >
-              Volunteer sign-up →
+              Start as a Volunteer →
             </Link>
             <p className="mt-8 font-body text-xs font-bold uppercase tracking-[0.2em] text-cream-canvas/50">
               Follow the campaign
             </p>
             <SocialFooterIcons className="mt-3" />
           </div>
-          <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 lg:col-span-8">
+          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:col-span-8">
             {footerNavGroups.map((group) => (
               <nav key={group.title} aria-label={group.title}>
                 <p className="font-body text-xs font-bold uppercase tracking-[0.2em] text-cream-canvas/50">

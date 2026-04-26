@@ -6,16 +6,19 @@ import { type MergedHomepageConfig } from "@/lib/content/homepage-merge";
 
 export type HomeExperienceProps = {
   homepage: MergedHomepageConfig;
-  /** Optional band between pathway cards and “Get involved” (trail gallery lives on /from-the-road). */
+  /** Pass 02: four-path funnel section (typically `HomeEntryFunnelSection`). */
+  entryFunnel?: ReactNode;
+  /** Optional band between funnel and “Get involved” (trail gallery lives on /from-the-road). */
   trailBand?: ReactNode;
 };
 
-export function HomeExperience({ homepage, trailBand }: HomeExperienceProps) {
+export function HomeExperience({ homepage, entryFunnel, trailBand }: HomeExperienceProps) {
   return (
     <>
       <HomeDonateFloatingGate />
       <HomeJourneyShell
         homepage={homepage}
+        entryFunnel={entryFunnel}
         trailBand={trailBand}
         afterGateway={
           <div key="home-after-gateway">

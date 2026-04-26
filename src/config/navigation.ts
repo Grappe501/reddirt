@@ -19,90 +19,111 @@ export type NavGroup = {
   items: NavItem[];
 };
 
-/** Top nav per blueprint: compact groups + Donate as distinct control in header */
+/**
+ * Pass 02 — top nav: Home, About, Priorities, Blog, Counties, Get Involved.
+ * “Get Involved” reflects four canonical pathways (volunteer, county, candidate, events) plus shared hubs.
+ */
 export const primaryNavGroups: NavGroup[] = [
   {
-    id: "meet",
-    label: "Meet Kelly",
+    id: "home",
+    label: "Home",
+    groupLandingHref: "/",
+    items: [{ label: "Home", href: "/" }],
+  },
+  {
+    id: "about",
+    label: "About",
     groupLandingHref: "/about",
     items: [
-      { label: "About (full story)", href: "/about" },
+      { label: "Meet Kelly — full story", href: "/about" },
       { label: "Understand the office", href: "/understand" },
       { label: "What we stand for", href: "/what-we-believe" },
     ],
   },
   {
-    id: "office",
-    label: "The Office",
+    id: "priorities",
+    label: "Priorities",
+    groupLandingHref: "/priorities",
     items: [
-      { label: "Priorities", href: "/priorities" },
+      { label: "Priorities for the office", href: "/priorities" },
       { label: "Civic depth", href: "/civic-depth" },
       { label: "Ballot access & initiatives", href: "/direct-democracy" },
       { label: "How initiatives reach the ballot", href: "/direct-democracy/ballot-initiative-process" },
-      { label: "Resources", href: "/resources" },
+      { label: "Resources & toolkits", href: "/resources" },
     ],
   },
   {
-    id: "news",
-    label: "News",
+    id: "blog",
+    label: "Blog",
+    groupLandingHref: "/blog",
     items: [
-      { label: "From the Road", href: "/from-the-road" },
-      { label: "Press coverage", href: "/press-coverage" },
+      { label: "Campaign blog", href: "/blog" },
+      { label: "Substack (direct)", href: getCampaignBlogUrl() },
       { label: "Stories", href: "/stories" },
       { label: "Editorial", href: "/editorial" },
-      { label: "Substack (direct)", href: getCampaignBlogUrl() },
+      { label: "From the Road", href: "/from-the-road" },
+      { label: "Press coverage", href: "/press-coverage" },
     ],
   },
   {
-    id: "events",
-    label: "Events",
-    groupLandingHref: "/events",
+    id: "counties",
+    label: "Counties",
+    groupLandingHref: "/counties",
     items: [
-      { label: "Events hub & calendar", href: "/events" },
-      { label: "Represent us locally", href: representLocalEventVolunteerHref },
-      { label: "Host a gathering", href: "/host-a-gathering" },
-      { label: "Election listening sessions", href: "/listening-sessions" },
-      { label: "From the Road", href: "/from-the-road" },
-      { label: "Suggest a public event", href: "/events#suggest" },
+      { label: "All counties", href: "/counties" },
+      { label: "Local organizing", href: "/local-organizing" },
+      { label: "Start a local team", href: "/start-a-local-team" },
     ],
   },
   {
     id: "involved",
     label: "Get Involved",
+    groupLandingHref: "/get-involved",
     items: [
-      { label: "Volunteer sign-up", href: getJoinCampaignHref() },
+      { label: "Start as a Volunteer", href: getJoinCampaignHref() },
+      { label: "Lead in Your County", href: "/local-organizing" },
+      { label: "Run for Office — toolkits", href: "/resources" },
+      { label: "Events", href: "/events" },
+      { label: "Command HQ (all ways in)", href: "/get-involved" },
       { label: "Voter registration", href: "/voter-registration" },
-      { label: "Stay Connected", href: "/get-involved" },
-      { label: "Election listening sessions", href: "/listening-sessions" },
-      { label: "Local organizing", href: "/local-organizing" },
       { label: "Host a gathering", href: "/host-a-gathering" },
-      { label: "Start a local team", href: "/start-a-local-team" },
+      { label: "Listening sessions", href: "/listening-sessions" },
+      { label: "Represent at local events", href: representLocalEventVolunteerHref },
     ],
   },
 ];
 
 export const allPrimaryNavItems: NavItem[] = primaryNavGroups.flatMap((g) => g.items);
 
+/** Footer mirrors primary pathways; compliance block unchanged in SiteFooter. */
 export const footerNavGroups: { title: string; items: NavItem[] }[] = [
   {
-    title: "Meet Kelly",
-    items: [...primaryNavGroups[0].items],
+    title: "About",
+    items: [...primaryNavGroups[1].items],
   },
   {
-    title: "The Office",
+    title: "Priorities & issues",
+    items: [...primaryNavGroups[2].items],
+  },
+  {
+    title: "Blog & news",
     items: [
-      ...primaryNavGroups[1].items,
-      { label: "Explainers", href: "/explainers" },
+      { label: "Campaign blog", href: "/blog" },
+      { label: "Stories", href: "/stories" },
+      { label: "Editorial", href: "/editorial" },
+      { label: "From the Road", href: "/from-the-road" },
+      { label: "Press coverage", href: "/press-coverage" },
+      { label: "Substack (direct)", href: getCampaignBlogUrl() },
     ],
   },
   {
-    title: "News & act",
+    title: "Ways to plug in",
     items: [
-      ...primaryNavGroups[2].items,
+      { label: "Start as a Volunteer", href: getJoinCampaignHref() },
+      { label: "Lead in Your County", href: "/local-organizing" },
+      { label: "Run for Office — toolkits", href: "/resources" },
       { label: "Events", href: "/events" },
-      { label: "Represent at local events", href: representLocalEventVolunteerHref },
-      { label: "Election listening sessions", href: "/listening-sessions" },
-      { label: "Get involved", href: "/get-involved" },
+      { label: "Counties", href: "/counties" },
       { label: "Donate", href: "/donate" },
     ],
   },

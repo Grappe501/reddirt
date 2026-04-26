@@ -1,5 +1,20 @@
 # Red Dirt Democrats — site
 
+## Start Here for Red Dirt Build Threads
+
+**You are in the SOS / statewide campaign repo (`RedDirt/`), not `ajax/` or `countyWorkbench/`.**
+
+1. **Protocol:** [`docs/RED_DIRT_BUILD_PROTOCOL.md`](docs/RED_DIRT_BUILD_PROTOCOL.md) — ChatGPT pilots, Steve copies messages, Cursor builds; no scope drift; every pass updates the map/queue and ends with a completion report.
+2. **Operating system map:** [`docs/RED_DIRT_OPERATING_SYSTEM_MAP.md`](docs/RED_DIRT_OPERATING_SYSTEM_MAP.md) — routes, admin, APIs, data, scripts, sister-app boundaries.
+3. **Beta readiness:** [`docs/BETA_LAUNCH_READINESS.md`](docs/BETA_LAUNCH_READINESS.md) — score, must-fix, risks.
+4. **Next work:** [`docs/RED_DIRT_PACKET_QUEUE.md`](docs/RED_DIRT_PACKET_QUEUE.md) — **RD-1, RD-2, …** packets (execute top pending P0 first).
+5. **History & ledger:** [`docs/PROJECT_MASTER_MAP.md`](docs/PROJECT_MASTER_MAP.md) + [`docs/THREAD_HANDOFF_MASTER_MAP.md`](docs/THREAD_HANDOFF_MASTER_MAP.md).
+6. **Public site + engine funnel:** [`docs/REDDIRT_SITE_AND_ENGINE_FUNNEL_PLAN.md`](docs/REDDIRT_SITE_AND_ENGINE_FUNNEL_PLAN.md) — Pass 02 wires entry pathways on `/`, `navigation.ts`, header/footer (**no sibling-repo imports**). Control ledger: [`docs/AI_MIGRATION_CONTROL_CENTER.md`](docs/AI_MIGRATION_CONTROL_CENTER.md).
+
+**Quality gate:** `npm run check` before significant pushes (lint + `tsc` + build). Minimum: `npm run build`.
+
+---
+
 Arkansas-rooted movement site: Next.js App Router, Prisma/Postgres, semantic search + optional OpenAI RAG, forms, analytics, local organizing, editorial content.
 
 **Current package version:** see `package.json` (stabilization track post–Script 5.5).

@@ -125,10 +125,11 @@ export function SiteHeader() {
           <Button
             href={joinCampaignHref}
             variant="primary"
-            className="ml-1 hidden min-h-11 flex-shrink-0 border border-red-dirt/20 px-3.5 py-2.5 text-xs font-extrabold uppercase tracking-wide shadow-md ring-1 ring-white/10 hover:ring-white/20 lg:inline-flex lg:px-4 lg:text-sm"
-            aria-label="Volunteer — sign up to help the campaign"
+            className="ml-1 hidden min-h-11 min-w-0 flex-shrink-0 border border-red-dirt/20 px-3 py-2.5 text-[11px] font-extrabold uppercase tracking-wide shadow-md ring-1 ring-white/10 hover:ring-white/20 lg:inline-flex lg:px-3.5 lg:text-xs xl:text-sm"
+            aria-label="Start as a Volunteer — sign up to help the campaign"
           >
-            Volunteer
+            <span className="hidden xl:inline">Start as a Volunteer</span>
+            <span className="xl:hidden">Volunteer</span>
           </Button>
           <Button
             href={siteConfig.donateHref}
@@ -147,7 +148,7 @@ export function SiteHeader() {
             rel={joinExternal ? "noopener noreferrer" : undefined}
             variant="primary"
             className="px-2.5 py-2 text-[10px] font-extrabold uppercase tracking-wide shadow-md sm:px-3.5 sm:text-xs"
-            aria-label="Volunteer — sign up"
+            aria-label="Start as a Volunteer"
           >
             Volunteer
           </Button>
@@ -248,7 +249,7 @@ export function SiteHeader() {
               className="mt-6 rounded-btn bg-red-dirt px-3 py-3 text-center font-body text-base font-bold text-cream-canvas"
               onClick={() => setOpen(false)}
             >
-              Volunteer sign-up
+              Start as a Volunteer
             </Link>
             <Link
               href={siteConfig.donateHref}
@@ -264,7 +265,7 @@ export function SiteHeader() {
               className="rounded-btn border border-white/35 px-3 py-3 text-center font-body text-base font-semibold text-white"
               onClick={() => setOpen(false)}
             >
-              Command HQ · this site
+              Explore the work — Command HQ
             </Link>
             <Link
               href="/"

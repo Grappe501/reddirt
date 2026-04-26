@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * @deprecated Pass 02 — homepage gateway cards moved to `HomeEntryFunnelSection` + `page.tsx`.
+ * Kept temporarily for reference; not mounted in `HomeJourneyShell`.
+ */
 import Link from "next/link";
 import { useJourney } from "@/components/journey/journey-context";
 import { cn } from "@/lib/utils";
