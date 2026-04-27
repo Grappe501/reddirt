@@ -1,7 +1,17 @@
 import { notFound } from "next/navigation";
 
+import { RelationalOrganizingAdminCard } from "@/components/admin/RelationalOrganizingAdminCard";
+import { AdminProfileConversationToolsSection } from "@/components/message-engine/AdminProfileConversationToolsSection";
 import { listVoterInteractions } from "@/lib/campaign-engine/voter-interactions";
+import {
+  formatCountySlugForConversationContext,
+  formatRelationalClosenessForStaff,
+  formatRelationalRelationshipTypeForStaff,
+  mapRelationalRelationshipForMessageEngine,
+} from "@/lib/campaign-engine/relational-message-context";
+import { listRelationalOrganizingLinksForVoter } from "@/lib/campaign-engine/voter-relational-organizing";
 import { getVoterModelProfile, listVoterSignals } from "@/lib/campaign-engine/voter-model-queries";
+import { buildAdminProfileConversationToolsPayload } from "@/lib/message-engine/admin-profile-conversation-tools";
 
 export const dynamic = "force-dynamic";
 
@@ -10,9 +20,58 @@ export default async function AdminVoterModelDetailPage({ params }: { params: Pr
   const profile = await getVoterModelProfile(id);
   if (!profile) notFound();
 
-  const [signals, interactions] = await Promise.all([listVoterSignals(id), listVoterInteractions(id)]);
+  const [signals, interactions, relationalLinks] = await Promise.all([
+    listVoterSignals(id),
+    listVoterInteractions(id),
+    listRelationalOrganizingLinksForVoter(id),
+  ]);
 
   const name = [profile.voter.firstName, profile.voter.lastName].filter(Boolean).join(" ") || "—";
+
+  const countyDisplay = formatCountySlugForConversationContext(profile.voter.countySlug);
+  const primaryLink = relationalLinks[0];
+  const primaryCloseness = primaryLink
+    ? formatRelationalClosenessForStaff(primaryLink.relationshipCloseness)
+    : null;
+  const relationshipContext = primaryLink
+    ? [
+        `This voter file row links to REL-2: ${formatRelationalRelationshipTypeForStaff(primaryLink.relationshipType)}${
+          primaryCloseness ? ` · ${primaryCloseness}` : ""
+        }.`,
+        relationalLinks.length > 1
+          ? `${relationalLinks.length} REL-2 records match this file row — confirm the active organizer before using personal detail.`
+          : "One REL-2 record matches this file row.",
+        `County label from file (for local examples only): ${countyDisplay}.`,
+        "Classifications and signals on this page are operational modeling — do not repeat them as facts in conversation.",
+      ].join(" ")
+    : [
+        "No REL-2 contact linked to this voter file row.",
+        `County label from file (for local examples only): ${countyDisplay}.`,
+        "Scripts stay generic until a trusted organizer owns the relationship in REL-2.",
+      ].join(" ");
+
+  const pipelineSummary = primaryLink
+    ? `Organizing pipeline: ${primaryLink.pipelineStage}.${
+        primaryLink.activity.nextFollowUpAt
+          ? ` Next follow-up: ${primaryLink.activity.nextFollowUpAt.toLocaleString()}.`
+          : ""
+      }`
+    : "Create or link REL-2 coverage before assigning relational pipeline steps.";
+
+  const conversationPayload = buildAdminProfileConversationToolsPayload(
+    {
+      geographyScope: "county",
+      countyDisplayName: countyDisplay,
+      relationship: primaryLink
+        ? mapRelationalRelationshipForMessageEngine(primaryLink.relationshipType)
+        : undefined,
+    },
+    {
+      surface: "voter_model",
+      relationshipContext,
+      pipelineSummary,
+    },
+  );
 
   return (
     <div className="mx-auto max-w-4xl">
@@ -48,6 +107,30 @@ export default async function AdminVoterModelDetailPage({ params }: { params: Pr
           </div>
         </dl>
       </section>
+
+      <section className="mt-6 space-y-4">
+        <div>
+          <h2 className="font-heading text-lg font-semibold text-kelly-text">Relational organizing</h2>
+          <p className="mt-1 text-xs text-kelly-text/60">
+            REL-2 + Power of 5 context when this voter is matched to a relational contact. Shown only in admin — never on public pages.
+          </p>
+        </div>
+        {relationalLinks.length === 0 ? (
+          <p className="rounded-card border border-kelly-text/10 bg-kelly-page p-4 text-sm text-kelly-text/70">
+            No relational contact matched to this voter file row. Link a REL-2 record from the contact detail page when appropriate.
+          </p>
+        ) : (
+          <div className="space-y-4">
+            {relationalLinks.map((row) => (
+              <RelationalOrganizingAdminCard key={row.relationalContactId} row={row} showRelationalContactLink />
+            ))}
+          </div>
+        )}
+      </section>
+
+      <div className="mt-6">
+        <AdminProfileConversationToolsSection payload={conversationPayload} />
+      </div>
 
       <section className="mt-6 rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
         <h2 className="font-heading text-lg font-semibold text-kelly-text">Current classification</h2>

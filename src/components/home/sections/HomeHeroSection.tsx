@@ -125,8 +125,8 @@ export function HomeHeroSection({ hero }: HomeHeroSectionProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.36, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className="text-kelly-gold">People over politics</span>
-            <span className="text-white">—always.</span>
+            <span className="text-kelly-gold">Neighbor to neighbor</span>
+            <span className="text-white">—that’s how Arkansas wins.</span>
           </motion.p>
           <motion.p
             className="mt-8 max-w-md border-l-2 border-kelly-gold/70 pl-4 font-body text-[11px] font-semibold uppercase leading-relaxed tracking-[0.22em] text-white/85 md:text-xs"

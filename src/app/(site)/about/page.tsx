@@ -25,13 +25,17 @@ export const metadata: Metadata = pageMeta({
 export default async function AboutPage() {
   const homepage = await getMergedHomepageConfig();
   const featuredYoutube = await getFeaturedYoutubeForHub(homepage.featuredHomepageVideoInboundId);
+  /** Public Heifer/Forevermost field video — also set `NEXT_PUBLIC_FOREVERMOST_HEIFER_YOUTUBE_VIDEO_ID` on the host to override. */
+  const DEFAULT_FOREVERMOST_HEIFER_YOUTUBE_VIDEO_ID = "rjC12iRSI90";
+
   const heiferInbound = await getPublicYoutubeByInboundId(
     process.env.NEXT_PUBLIC_FOREVERMOST_HEIFER_INBOUND_ID,
   );
   const heiferEnvId = process.env.NEXT_PUBLIC_FOREVERMOST_HEIFER_YOUTUBE_VIDEO_ID?.trim();
   const forevermostHeiferVideoId =
     heiferInbound?.videoId ??
-    (heiferEnvId && /^[a-zA-Z0-9_-]{11}$/.test(heiferEnvId) ? heiferEnvId : null);
+    (heiferEnvId && /^[a-zA-Z0-9_-]{11}$/.test(heiferEnvId) ? heiferEnvId : null) ??
+    DEFAULT_FOREVERMOST_HEIFER_YOUTUBE_VIDEO_ID;
   const forevermostHeiferTitle =
     heiferInbound?.title?.trim() ||
     process.env.NEXT_PUBLIC_FOREVERMOST_HEIFER_IFRAME_TITLE?.trim() ||

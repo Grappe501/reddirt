@@ -1,43 +1,41 @@
 import Link from "next/link";
+import { CountyCommandHub } from "@/components/county/CountyCommandHub";
+import { ContentContainer } from "@/components/layout/ContentContainer";
 import { requireAdminAction } from "@/app/admin/owned-media-auth";
-import { prisma } from "@/lib/db";
+import { listArkansasCountyCommandRoster } from "@/lib/county/get-county-command-data";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminCountiesPage() {
   await requireAdminAction();
-  const rows = await prisma.county.findMany({
-    orderBy: { sortOrder: "asc" },
-    include: { campaignStats: true, demographics: true },
-  });
+  const rows = await listArkansasCountyCommandRoster();
+
   return (
     <div>
-      <h1 className="font-heading text-2xl font-bold text-kelly-text">County command pages</h1>
-      <p className="mt-2 max-w-2xl text-sm text-kelly-text/70">
-        Public county intelligence at <code className="rounded bg-kelly-text/5 px-1">/counties/[slug]</code>. Edit copy,
-        campaign metrics, and demographics here; elected rosters are database-backed and should be filled via an import
-        pipeline or direct DB until the elected editor ships.
+      <h1 className="font-heading text-2xl font-bold text-kelly-text">County command — master workbench</h1>
+      <p className="mt-2 max-w-3xl text-sm text-kelly-text/70">
+        All <strong>75</strong> Arkansas counties (normalized list + FIPS) match public routes at{" "}
+        <code className="rounded bg-kelly-text/5 px-1">/counties/[slug]</code> and the{" "}
+        <Link href="/counties" className="font-semibold text-kelly-navy hover:underline" target="_blank" rel="noreferrer">
+          public workbench
+        </Link>
+        . <strong>CMS</strong> links open this admin editor; add DB rows for missing counties with{" "}
+        <code className="rounded bg-kelly-text/5 px-1">npx prisma db seed</code> from the RedDirt folder (or create rows in Prisma) so
+        every county can carry metrics and copy.
       </p>
-      <ul className="mt-8 divide-y divide-kelly-text/10 border-y border-kelly-text/10" role="list">
-        {rows.map((c) => (
-          <li key={c.id} className="flex flex-wrap items-center justify-between gap-3 py-4">
-            <div>
-              <p className="font-bold text-kelly-text">{c.displayName}</p>
-              <p className="text-xs text-kelly-text/55">
-                {c.slug} · FIPS {c.fips} · {c.published ? "Published" : "Draft"}
-              </p>
-            </div>
-            <div className="flex gap-3">
-              <Link className="text-sm font-semibold text-kelly-navy" href={`/counties/${c.slug}`} target="_blank" rel="noreferrer">
-                View public
-              </Link>
-              <Link className="text-sm font-semibold text-kelly-text" href={`/admin/counties/${c.slug}`}>
-                Edit
-              </Link>
-            </div>
-          </li>
-        ))}
-      </ul>
+
+      <div className="mt-8 rounded-card border border-kelly-text/10 bg-kelly-page/80 p-4 text-sm text-kelly-text/80">
+        <p>
+          <strong>Regions</strong> are the eight field buckets in <code>arkansas-county-registry.ts</code>—use that file to adjust labels or
+          move a county between regions if field ops reassigns coverage.
+        </p>
+      </div>
+
+      <div className="mt-8">
+        <ContentContainer wide>
+          <CountyCommandHub counties={rows} mode="admin" />
+        </ContentContainer>
+      </div>
     </div>
   );
 }

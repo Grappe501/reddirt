@@ -23,7 +23,7 @@ export function PolicyDetailCard({ title, body, tone = "ivory", className }: Pol
   return (
     <article
       className={cn(
-        "group relative overflow-hidden rounded-2xl border border-kelly-navy/10 bg-gradient-to-br p-6 shadow-md shadow-kelly-navy/[0.06] transition duration-300",
+        "group relative overflow-hidden rounded-2xl border border-kelly-navy/10 bg-gradient-to-br p-4 shadow-md shadow-kelly-navy/[0.06] transition duration-300 sm:p-6",
         "hover:-translate-y-0.5 hover:border-kelly-gold/25 hover:shadow-lg hover:shadow-kelly-navy/[0.08]",
         "focus-within:ring-2 focus-within:ring-kelly-gold/30",
         toneClass[tone],

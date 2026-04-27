@@ -47,6 +47,7 @@ Thumbs.db
 
 # logs
 *.log
+stack-verify-last-run.txt
 .pnpm-debug.log*
 
 # prisma local (if ever used)

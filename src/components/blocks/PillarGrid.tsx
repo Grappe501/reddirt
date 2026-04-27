@@ -24,7 +24,7 @@ export function PillarGrid({ items, cols = "2", className }: PillarGridProps) {
           <article
             key={item.id ?? item.title}
             className={cn(
-              "group relative overflow-hidden rounded-2xl border p-7 md:p-8",
+              "group relative overflow-hidden rounded-2xl border p-4 sm:p-6 md:p-8",
               "border-kelly-navy/12 bg-gradient-to-br from-white via-white to-[var(--kelly-mist)]/35",
               "shadow-md shadow-kelly-navy/[0.07] transition duration-300",
               "hover:-translate-y-1 hover:border-kelly-gold/30 hover:shadow-xl hover:shadow-kelly-navy/10",
@@ -35,10 +35,12 @@ export function PillarGrid({ items, cols = "2", className }: PillarGridProps) {
               aria-hidden
             />
             <span className={cn("relative mb-3 block h-1 w-10 rounded-full", bar)} aria-hidden />
-            <h3 className="relative font-heading text-xl font-bold tracking-tight text-kelly-text lg:text-2xl">
+            <h3 className="relative font-heading text-lg font-bold tracking-tight text-kelly-text sm:text-xl lg:text-2xl">
               {item.title}
             </h3>
-            <p className="relative mt-4 font-body text-base leading-[1.65] text-kelly-text/78">{item.body}</p>
+            <p className="relative mt-3 font-body text-sm leading-[1.6] text-kelly-text/78 sm:mt-4 sm:text-base sm:leading-[1.65]">
+              {item.body}
+            </p>
           </article>
         );
       })}

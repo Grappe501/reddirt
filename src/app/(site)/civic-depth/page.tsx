@@ -6,6 +6,8 @@ import { CivicBeatSections } from "@/components/home/CivicBeatSections";
 import { JourneyBeat } from "@/components/journey/JourneyBeat";
 import { getMergedHomepageConfig } from "@/lib/content/homepage-merge";
 import { pageMeta } from "@/lib/seo/metadata";
+import { EditorialCampaignPhoto } from "@/components/about/EditorialCampaignPhoto";
+import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
 
 export const metadata: Metadata = pageMeta({
   title: "Civic depth",
@@ -16,6 +18,7 @@ export const metadata: Metadata = pageMeta({
 
 export default async function CivicDepthPage() {
   const homepage = await getMergedHomepageConfig();
+  const [civicTrail] = trailPhotosForSlot("civicDepth");
 
   return (
     <>
@@ -24,6 +27,19 @@ export default async function CivicDepthPage() {
         title="Democracy tools and proof of organization"
         subtitle="Drill into ballot access and the systems that should serve every county—and how this campaign explains the office in plain language."
       />
+
+      {civicTrail ? (
+        <FullBleedSection variant="subtle" className="!pt-0" aria-label="Campaign trail photography">
+          <ContentContainer wide className="py-8 md:py-10">
+            <EditorialCampaignPhoto
+              variant="breakout"
+              photo={civicTrail}
+              kicker="Civic Arkansas"
+              caption="Democracy isn’t only the ballot box—it’s classrooms, breakrooms, and county lines where people learn the process together."
+            />
+          </ContentContainer>
+        </FullBleedSection>
+      ) : null}
 
       <FullBleedSection variant="subtle" padY aria-labelledby="participation-initiative-heading">
         <ContentContainer>

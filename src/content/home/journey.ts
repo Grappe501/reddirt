@@ -15,7 +15,7 @@ export const JOURNEY_BEAT_DEFINITIONS: JourneyBeat[] = [
     id: "beat-arrival",
     navLabel: "Arrival",
     navShort: "Start",
-    description: "Hero, trust commitments, and choosing a path into the site.",
+    description: "Hero, three organizing pathways, and the conversion band into Power of 5, counties, and stories.",
   },
   {
     id: "beat-field",
@@ -43,7 +43,7 @@ export const JOURNEY_BEAT_DEFINITIONS: JourneyBeat[] = [
   },
 ];
 
-/** Homepage (`/`): hero, trust ribbon, pathway cards, Step in (get involved) */
+/** Homepage (`/`): hero, organizing pathways, conversion band, Step in (get involved) */
 export const LANDING_JOURNEY_BEATS: JourneyBeat[] = JOURNEY_BEAT_DEFINITIONS.filter(
   (b) => b.id === "beat-arrival" || b.id === "beat-act",
 );

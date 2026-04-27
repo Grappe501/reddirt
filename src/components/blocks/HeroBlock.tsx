@@ -27,9 +27,9 @@ export function HeroBlock({
   return (
     <div
       className={cn(
-        "flex flex-col gap-6",
+        "flex flex-col gap-4 sm:gap-6",
         align === "center" && "items-center text-center",
-        size === "home" && "gap-8 lg:gap-10",
+        size === "home" && "gap-6 sm:gap-8 lg:gap-10",
         className,
       )}
     >
@@ -52,7 +52,7 @@ export function HeroBlock({
           size === "home" &&
             "max-w-[22ch] text-[clamp(2.5rem,6vw,4.75rem)] leading-[1.05] lg:max-w-[18ch]",
           size === "page" &&
-            "max-w-3xl text-[clamp(2.05rem,4.5vw,3.35rem)] leading-[1.1]",
+            "max-w-3xl text-[clamp(1.7rem,5.2vw,3.35rem)] leading-[1.12] sm:leading-[1.1]",
         )}
       >
         {title}
@@ -60,8 +60,8 @@ export function HeroBlock({
       {subtitle ? (
         <div
           className={cn(
-            "max-w-2xl font-body text-lg leading-relaxed lg:text-xl",
-            onDark ? "text-kelly-mist/88" : "text-kelly-text/85",
+            "max-w-2xl font-body text-base leading-relaxed sm:text-lg lg:text-xl",
+            onDark ? "text-kelly-mist/92" : "text-kelly-text/85",
             align === "center" && "mx-auto",
           )}
         >
@@ -71,7 +71,7 @@ export function HeroBlock({
       {children ? (
         <div
           className={cn(
-            "flex flex-wrap gap-4",
+            "flex flex-wrap gap-3 sm:gap-4",
             align === "center" && "justify-center",
           )}
         >

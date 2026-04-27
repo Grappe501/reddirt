@@ -132,8 +132,8 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
               Search the movement
             </h2>
             <p id={descId} className="mt-1 font-body text-sm text-kelly-text/65">
-              Keyword + semantic search over the ingested index. Grounded answers need OpenAI; matching pages still
-              surface without it.
+              Keyword + semantic search over the ingested index. Organizing insights and grounded answers use the full index when semantic search is on;
+              matching pages still surface in keyword-only mode.
             </p>
             {indexStatus ? (
               <p className="mt-2 font-body text-xs text-kelly-text/50">
@@ -142,7 +142,7 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
                   {indexStatus.chunkCount.toLocaleString()} excerpt{indexStatus.chunkCount === 1 ? "" : "s"}
                 </strong>
                 {indexStatus.database ? "" : " · Database offline in env"}
-                {indexStatus.openai ? " · Embeddings on" : " · Embeddings off (keyword mode)"}
+                {indexStatus.openai ? " · Semantic index on" : " · Keyword-only mode"}
                 {indexStatus.chunkCount === 0 && indexStatus.database ? (
                   <span className="mt-1 block text-amber-900/90">
                     With zero excerpts, search has nothing to read—run ingest once so this isn’t an empty library.
@@ -165,12 +165,7 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
               pages—not from “smarts” alone. After you run{" "}
               <code className="rounded bg-amber-100/80 px-1.5 py-0.5 font-mono text-xs">npm run ingest</code> with{" "}
               <code className="rounded bg-amber-100/80 px-1.5 py-0.5 font-mono text-xs">DATABASE_URL</code>
-              {indexStatus.openai ? (
-                <>
-                  {" "}
-                  and <code className="rounded bg-amber-100/80 px-1.5 py-0.5 font-mono text-xs">OPENAI_API_KEY</code>
-                </>
-              ) : null}
+              {indexStatus.openai ? <> and semantic indexing enabled for this deploy</> : null}
               , try again.
             </div>
           ) : null}

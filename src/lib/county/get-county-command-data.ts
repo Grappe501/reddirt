@@ -1,4 +1,4 @@
-import { ContentHubKind, OwnedMediaReviewStatus, Prisma } from "@prisma/client";
+import { ContentHubKind, OwnedMediaReviewStatus, Prisma, type CountyCampaignStats } from "@prisma/client";
 import { roadPostPublicWhere } from "@/lib/content/content-hub-visibility";
 import { prisma } from "@/lib/db";
 import type { RoadPostCard } from "@/lib/content/content-hub-queries";
@@ -6,6 +6,12 @@ import type { CountyVoterMetricsWithSnapshot } from "@/lib/voter-file/queries";
 import { getLatestCountyVoterMetrics } from "@/lib/voter-file/queries";
 import { listUpcomingPublicCampaignEventsForCountySlug } from "@/lib/calendar/public-events";
 import type { PublicCampaignEvent } from "@/lib/calendar/public-event-types";
+import {
+  ARKANSAS_COUNTY_REGISTRY,
+  getRegistryCountyBySlug,
+  regionMetaForId,
+  type ArkansasRegistryCounty,
+} from "@/lib/county/arkansas-county-registry";
 
 const countyWithRelations = Prisma.validator<Prisma.CountyDefaultArgs>()({
   include: {
@@ -16,21 +22,131 @@ const countyWithRelations = Prisma.validator<Prisma.CountyDefaultArgs>()({
 
 export type CountyCommandRecord = Prisma.CountyGetPayload<typeof countyWithRelations>;
 
-export async function listPublishedCounties() {
-  return prisma.county.findMany({
-    where: { published: true },
-    orderBy: { sortOrder: "asc" },
-    include: {
-      campaignStats: true,
-    },
+/**
+ * In-memory record when a county is in the Arkansas registry but not yet in the DB
+ * (or before seed). Same shape as a Prisma row for the public command UI.
+ */
+function buildRegistryStubCountyCommandRecord(reg: ArkansasRegistryCounty): CountyCommandRecord {
+  const rlab = regionMetaForId(reg.regionId)?.shortLabel ?? reg.regionId;
+  return {
+    id: `registry:${reg.slug}`,
+    slug: reg.slug,
+    fips: reg.fips,
+    displayName: reg.displayName,
+    regionLabel: rlab,
+    sortOrder: reg.sortOrder,
+    heroEyebrow: null,
+    heroIntro: null,
+    leadName: null,
+    leadTitle: null,
+    leadBio: null,
+    leadPhotoUrl: null,
+    featuredEventSlugs: [],
+    showOnStatewideMap: true,
+    published: true,
+    createdAt: new Date(0),
+    updatedAt: new Date(0),
+    campaignStats: null,
+    demographics: null,
+  };
+}
+
+/**
+ * Resolves a public command row: live DB (must be `published`) or stub from the 75-county master registry.
+ */
+export async function resolveCountyCommandBySlug(slug: string): Promise<CountyCommandRecord | null> {
+  const inDb = await prisma.county.findFirst({
+    where: { slug },
+    include: countyWithRelations.include,
+  });
+  if (inDb) {
+    if (!inDb.published) return null;
+    return inDb;
+  }
+  const reg = getRegistryCountyBySlug(slug);
+  if (!reg) return null;
+  return buildRegistryStubCountyCommandRecord(reg);
+}
+
+export type CountyRosterListItem = {
+  id: string;
+  slug: string;
+  fips: string;
+  displayName: string;
+  regionLabel: string | null;
+  leadName: string | null;
+  leadTitle: string | null;
+  /** false when a draft DB row blocks the public page (rare) */
+  hasPublicPage: boolean;
+  campaignStats: CountyCampaignStats | null;
+};
+
+/**
+ * Static 75-county roster for offline/DB-failure UIs (no Prisma). Same field shape as the merged list.
+ */
+export function listArkansasCountyCommandRosterFromRegistryOnly(): CountyRosterListItem[] {
+  return ARKANSAS_COUNTY_REGISTRY.map((reg) => {
+    const rlab = regionMetaForId(reg.regionId)?.shortLabel ?? null;
+    return {
+      id: `registry:${reg.slug}`,
+      slug: reg.slug,
+      fips: reg.fips,
+      displayName: reg.displayName,
+      regionLabel: rlab,
+      leadName: null,
+      leadTitle: null,
+      hasPublicPage: true,
+      campaignStats: null,
+    } satisfies CountyRosterListItem;
   });
 }
 
-export async function getCountyCommandBySlug(slug: string): Promise<CountyCommandRecord | null> {
-  return prisma.county.findFirst({
-    where: { slug, published: true },
-    include: countyWithRelations.include,
+/**
+ * All 75 counties for /counties, voter registration roster, and admin workbench.
+ * Merges DB (when present) with the master registry. One row per Arkansas county, FIPS order.
+ */
+export async function listArkansasCountyCommandRoster(): Promise<CountyRosterListItem[]> {
+  const inDb = await prisma.county.findMany({
+    include: { campaignStats: true },
   });
+  const bySlug = new Map(inDb.map((c) => [c.slug, c]));
+  return ARKANSAS_COUNTY_REGISTRY.map((reg) => {
+    const row = bySlug.get(reg.slug);
+    const rlab = row?.regionLabel?.trim() || regionMetaForId(reg.regionId)?.shortLabel || null;
+    if (row) {
+      return {
+        id: row.id,
+        slug: row.slug,
+        fips: row.fips,
+        displayName: row.displayName,
+        regionLabel: rlab,
+        leadName: row.leadName,
+        leadTitle: row.leadTitle,
+        hasPublicPage: row.published,
+        campaignStats: row.campaignStats,
+      } satisfies CountyRosterListItem;
+    }
+    return {
+      id: `registry:${reg.slug}`,
+      slug: reg.slug,
+      fips: reg.fips,
+      displayName: reg.displayName,
+      regionLabel: rlab,
+      leadName: null,
+      leadTitle: null,
+      hasPublicPage: true,
+      campaignStats: null,
+    } satisfies CountyRosterListItem;
+  });
+}
+
+/** @deprecated Prefer `listArkansasCountyCommandRoster` — kept for a few call sites. */
+export async function listPublishedCounties() {
+  return listArkansasCountyCommandRoster();
+}
+
+export async function getCountyCommandBySlug(slug: string): Promise<CountyCommandRecord | null> {
+  return resolveCountyCommandBySlug(slug);
 }
 
 export type CountyPageSnapshot = {
@@ -98,7 +214,7 @@ async function loadCountyOwnedMediaPreview(countySlug: string) {
  * Composes public county page: DB county row + events content + (optional) road + owned media.
  */
 export async function getCountyPageSnapshot(slug: string): Promise<CountyPageSnapshot | null> {
-  const county = await getCountyCommandBySlug(slug);
+  const county = await resolveCountyCommandBySlug(slug);
   if (!county) return null;
 
   const [{ visit, story }, mediaGallery, latestVoterMetrics] = await Promise.all([

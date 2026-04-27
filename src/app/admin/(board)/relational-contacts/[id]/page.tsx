@@ -1,8 +1,17 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { RelationalOrganizingAdminCard } from "@/components/admin/RelationalOrganizingAdminCard";
+import { AdminProfileConversationToolsSection } from "@/components/message-engine/AdminProfileConversationToolsSection";
 import { getRelationalContactDetail } from "@/lib/campaign-engine/relational-contacts";
+import {
+  formatRelationalClosenessForStaff,
+  formatRelationalRelationshipTypeForStaff,
+  mapRelationalRelationshipForMessageEngine,
+} from "@/lib/campaign-engine/relational-message-context";
 import { suggestVoterMatchesForRelationalContact } from "@/lib/campaign-engine/relational-matching";
+import { relationalOrganizingSnapshotFromContactDetail } from "@/lib/campaign-engine/voter-relational-organizing";
+import { buildAdminProfileConversationToolsPayload } from "@/lib/message-engine/admin-profile-conversation-tools";
 
 export const dynamic = "force-dynamic";
 
@@ -14,6 +23,36 @@ export default async function AdminRelationalContactDetailPage({ params }: Props
   if (!contact) notFound();
 
   const suggestions = await suggestVoterMatchesForRelationalContact(id, 15);
+  const organizingRow = relationalOrganizingSnapshotFromContactDetail(contact);
+
+  const closenessLabel = formatRelationalClosenessForStaff(contact.relationshipCloseness);
+  const countyLine = contact.county
+    ? `${contact.county.displayName} (${contact.county.slug})`
+    : "County not set on this REL-2 row";
+  const relationshipContext = [
+    `REL-2 relationship: ${formatRelationalRelationshipTypeForStaff(contact.relationshipType)}${
+      closenessLabel ? ` · ${closenessLabel}` : ""
+    }.`,
+    `Place posture for scripts: ${countyLine}.`,
+    "Use only what this person already chose to share with the listed organizer; conversation tools do not add new private facts.",
+  ].join(" ");
+
+  const pipelineBits = [`Organizing pipeline stage: ${organizingRow.pipelineStage}.`];
+  if (contact.nextFollowUpAt) {
+    pipelineBits.push(`Next follow-up on file: ${contact.nextFollowUpAt.toLocaleString()}.`);
+  }
+  const conversationPayload = buildAdminProfileConversationToolsPayload(
+    {
+      geographyScope: contact.county ? "county" : undefined,
+      countyDisplayName: contact.county?.displayName,
+      relationship: mapRelationalRelationshipForMessageEngine(contact.relationshipType),
+    },
+    {
+      surface: "relational_contact",
+      relationshipContext,
+      pipelineSummary: pipelineBits.join(" "),
+    },
+  );
 
   return (
     <div className="max-w-4xl text-kelly-text">
@@ -60,34 +99,34 @@ export default async function AdminRelationalContactDetailPage({ params }: Props
         </dl>
       </section>
 
-      <section className="mt-6 space-y-2 rounded-card border border-kelly-text/10 p-6">
-        <h2 className="font-heading text-lg font-bold">Organizing</h2>
-        <p className="text-sm">
-          <span className="text-kelly-text/60">Relationship:</span> {contact.relationshipType}{" "}
-          {contact.relationshipCloseness ? ` / ${contact.relationshipCloseness}` : ""}
-        </p>
-        <p className="text-sm">
-          <span className="text-kelly-text/60">Match:</span> {contact.matchStatus}{" "}
-          {contact.matchConfidence ? `· ${contact.matchConfidence}` : ""}
-        </p>
-        <p className="text-sm">
-          <span className="text-kelly-text/60">Organizing status:</span> {contact.organizingStatus}
-        </p>
-        <p className="text-sm">
-          <span className="text-kelly-text/60">Core five:</span> {contact.isCoreFive ? "yes" : "no"}{" "}
-          {contact.powerOfFiveSlot != null ? `· slot ${contact.powerOfFiveSlot}` : ""}
-        </p>
-        {contact.notes ? (
-          <p className="mt-2 text-sm text-kelly-text/85">
-            <span className="text-kelly-text/60">Notes:</span> {contact.notes}
+      <section className="mt-6 space-y-4">
+        <RelationalOrganizingAdminCard row={organizingRow} />
+        <div className="space-y-2 rounded-card border border-kelly-text/10 p-6">
+          <h2 className="font-heading text-lg font-bold">Relationship &amp; match</h2>
+          <p className="text-sm">
+            <span className="text-kelly-text/60">Relationship:</span> {contact.relationshipType}{" "}
+            {contact.relationshipCloseness ? ` / ${contact.relationshipCloseness}` : ""}
           </p>
-        ) : null}
-        {contact.metadataJson != null ? (
-          <pre className="mt-3 max-h-48 overflow-auto rounded border border-kelly-text/10 bg-kelly-text/5 p-3 font-mono text-xs">
-            {JSON.stringify(contact.metadataJson, null, 2)}
-          </pre>
-        ) : null}
+          <p className="text-sm">
+            <span className="text-kelly-text/60">Match:</span> {contact.matchStatus}{" "}
+            {contact.matchConfidence ? `· ${contact.matchConfidence}` : ""}
+          </p>
+          {contact.notes ? (
+            <p className="mt-2 text-sm text-kelly-text/85">
+              <span className="text-kelly-text/60">Notes:</span> {contact.notes}
+            </p>
+          ) : null}
+          {contact.metadataJson != null ? (
+            <pre className="mt-3 max-h-48 overflow-auto rounded border border-kelly-text/10 bg-kelly-text/5 p-3 font-mono text-xs">
+              {JSON.stringify(contact.metadataJson, null, 2)}
+            </pre>
+          ) : null}
+        </div>
       </section>
+
+      <div className="mt-6">
+        <AdminProfileConversationToolsSection payload={conversationPayload} />
+      </div>
 
       <section className="mt-6 space-y-2 rounded-card border border-kelly-text/10 p-6">
         <h2 className="font-heading text-lg font-bold">Voter match</h2>

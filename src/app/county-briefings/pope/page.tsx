@@ -12,6 +12,11 @@ export default async function PopeCountyPublicBriefingPage() {
         <a className="text-kelly-slate underline hover:text-kelly-text" href="/county-briefings">
           ← County planning briefings
         </a>
+        {" "}
+        ·{" "}
+        <a className="text-kelly-slate underline hover:text-kelly-text" href="/county-briefings/pope/v2">
+          County dashboard v2 (prototype)
+        </a>
       </p>
       <p className="text-xs font-bold uppercase tracking-widest text-kelly-text/50">Pope County political profile</p>
       <h1 className="font-heading mt-2 text-3xl font-bold">Kelly Grappe for Secretary of State</h1>

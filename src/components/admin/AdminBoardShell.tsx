@@ -17,6 +17,7 @@ const siteLinks: { href: string; label: string }[] = [
   { href: "/admin/counties", label: "Counties" },
   { href: "/admin/county-profiles", label: "County profiles" },
   { href: "/admin/county-intelligence", label: "County intel" },
+  { href: "/admin/organizing-intelligence", label: "Organizing intelligence (OIS)" },
   { href: "/admin/blog", label: "Blog sync" },
   { href: "/admin/settings", label: "Settings" },
 ];
@@ -29,6 +30,7 @@ const operationsLinks: { href: string; label: string }[] = [
   { href: "/admin/intelligence", label: "Opposition intelligence (INTEL-3)" },
   { href: "/admin/media-monitor", label: "Press monitor" },
   { href: "/admin/workbench/comms", label: "Comms hub" },
+  { href: "/admin/narrative-distribution", label: "Narrative distribution" },
   { href: "/admin/workbench/calendar", label: "Calendar HQ" },
   { href: "/admin/workbench/festivals", label: "Community events feed" },
   { href: "/admin/workbench/social", label: "Social workbench" },

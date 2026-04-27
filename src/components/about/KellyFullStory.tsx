@@ -27,8 +27,9 @@ const body = "font-body text-base leading-relaxed text-kelly-text/82";
 const callout = "font-body text-sm text-kelly-text/75";
 const calloutGreen = "font-body text-sm text-kelly-text/80";
 
-function youtubeNocookieEmbedSrc(videoId: string): string {
-  return `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?rel=0`;
+/** Standard youtube.com embed (matches YouTube’s share dialog; more reliable for some clients than youtube-nocookie). */
+function youtubeEmbedSrc(videoId: string): string {
+  return `https://www.youtube.com/embed/${encodeURIComponent(videoId)}?rel=0`;
 }
 
 /** Heifer / Forevermost Farms field video — above “The land & the work” (env or Admin inbound id from parent). */
@@ -38,7 +39,7 @@ function ForevermostHeiferVideo({ videoId, iframeTitle }: { videoId: string; ifr
       <div className="relative aspect-video w-full">
         <iframe
           title={iframeTitle}
-          src={youtubeNocookieEmbedSrc(videoId)}
+          src={youtubeEmbedSrc(videoId)}
           className="absolute inset-0 h-full w-full border-0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
@@ -382,7 +383,7 @@ export function KellyFullStory({
   const [afterStoryPhoto, afterStandupPhoto] = trailPeoplePhotos;
 
   return (
-    <div id="kelly-full-story" className="scroll-mt-20 space-y-16 md:space-y-20">
+    <div id="kelly-full-story" className="scroll-mt-20 space-y-10 sm:space-y-14 md:space-y-20">
       {sections.map((s) => (
         <Fragment key={s.id}>
           <section id={s.id} className="scroll-mt-20">

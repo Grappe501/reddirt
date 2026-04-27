@@ -23,7 +23,7 @@ export function CTASection({
 }: CTASectionProps) {
   return (
     <FullBleedSection variant={variant} id={id} className={className}>
-      <ContentContainer className="flex flex-col items-start gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
+      <ContentContainer className="flex flex-col items-start gap-5 sm:gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
         <SectionHeading
           eyebrow={eyebrow}
           title={title}

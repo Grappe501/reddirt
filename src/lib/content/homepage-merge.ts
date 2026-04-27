@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/db";
 import { getVolunteerSignupHref } from "@/config/external-campaign";
+import { countyDashboardSampleHref, powerOf5OnboardingHref } from "@/config/navigation";
 import {
   heardItems as defaultHeard,
   movementBeliefs as defaultMovement,
@@ -40,15 +41,15 @@ export type HomepageSectionId = (typeof HOMEPAGE_SECTION_IDS)[number];
 
 const DEFAULT_HERO: HomepageHeroMerged = {
   eyebrow: "Kelly Grappe · Secretary of State",
-  titleBefore: "The People",
-  titleAccent: "Rule.",
+  titleBefore: "People-Powered",
+  titleAccent: "Organizing",
   titleAfter: "",
   subtitle:
-    "Arkansas deserves a Secretary of State’s office that is transparent, secure, and accountable to the people in all 75 counties.",
-  ctaPrimaryLabel: "Join the Campaign",
-  ctaPrimaryHref: getVolunteerSignupHref(),
-  ctaSecondaryLabel: "Watch Kelly Speak",
-  ctaSecondaryHref: "/understand#hear-kelly",
+    "The front door to Arkansas-wide field work: start your five, find your county on the map, and plug into the same public intelligence organizers use from the River Valley to Texarkana.",
+  ctaPrimaryLabel: "Start Power of 5",
+  ctaPrimaryHref: powerOf5OnboardingHref,
+  ctaSecondaryLabel: "View County Dashboard",
+  ctaSecondaryHref: countyDashboardSampleHref,
 };
 
 /** All narrative sections on by default; disable in admin if you need a shorter page. */
@@ -111,13 +112,13 @@ function mergeArkansasBand(
 
 const DEFAULT_FINAL_CTA = {
   eyebrow: "Regnat Populus",
-  title: "The People Rule.",
+  title: "Step in—your county needs organizers.",
   description:
-    "This campaign is about restoring trust, protecting the people’s voice, and building a Secretary of State’s office that answers to Arkansas. Not the insiders. Not the noise. The people.",
-  primaryLabel: "Join the Campaign",
-  primaryHref: getVolunteerSignupHref(),
-  secondaryLabel: "Donate Today",
-  secondaryHref: "/donate",
+    "Pick up the Power of 5 flow, open your county workbench, or browse the message hub. Every link here is a real route: training-first demos today, live hydration as your county comes online.",
+  primaryLabel: "Start Power of 5",
+  primaryHref: powerOf5OnboardingHref,
+  secondaryLabel: "View County Dashboard",
+  secondaryHref: countyDashboardSampleHref,
 };
 
 function parseJson<T>(value: unknown, fallback: T): T {

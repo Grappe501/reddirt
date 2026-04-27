@@ -237,6 +237,20 @@ export function loadFullSiteSearchChunks(): DocChunk[] {
     content: cap(regText),
   });
 
+  out.push({
+    path: "route:/privacy-and-trust",
+    title: "Trust & organizing data",
+    chunkIndex: nextChunkIndex("route:/privacy-and-trust", idx),
+    content: cap(
+      [
+        "# How we protect people",
+        "Power of 5, public organizing intelligence, voter-file reference tools, consent, and what stays private.",
+        "No public household maps. No public voter-file browsing. Questions via Get involved or Privacy (counsel draft).",
+        "Link: /privacy-and-trust",
+      ].join("\n\n"),
+    ),
+  });
+
   for (const ph of campaignTrailPhotos) {
     const text = [
       ph.alt,

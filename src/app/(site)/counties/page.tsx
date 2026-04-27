@@ -1,28 +1,32 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/blocks/PageHero";
+import { CountyCommandHub } from "@/components/county/CountyCommandHub";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
-import { listPublishedCounties } from "@/lib/county/get-county-command-data";
+import { listArkansasCountyCommandRoster } from "@/lib/county/get-county-command-data";
 import { getVoterRegistrationCenterHref } from "@/lib/county/official-links";
+import { pageMeta } from "@/lib/seo/metadata";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-  title: "County command",
+export const metadata: Metadata = pageMeta({
+  title: "Arkansas counties — command & organizing workbench",
   description:
-    "County-level campaign intelligence: who is leading, what is happening, and what you can do—organized for Arkansas’s field program.",
-};
+    "All 75 Arkansas counties in one public workbench: region, dashboard status, organizing notes, and suggested next steps. Pope includes a full sample dashboard; other counties gain depth as packets ship.",
+  path: "/counties",
+  imageSrc: "/media/placeholders/og-default.svg",
+});
 
 export default async function CountiesIndexPage() {
-  const rows = await listPublishedCounties();
+  const rows = await listArkansasCountyCommandRoster();
 
   return (
     <>
       <PageHero
         eyebrow="Arkansas field"
-        title="County command pages"
-        subtitle="Pick a county for registration goals, field metrics, and local ways to help—grounded in trusted public data and campaign-run organizing tools."
+        title="County command & intelligence"
+        subtitle="All 75 counties in one workbench: each card shows region, dashboard status, organizing status, and a suggested next action. Pope carries the gold-sample Dashboard v2 prototype; Benton and Washington are marked next build; every other county stays on command + organizing-intelligence placeholders until its packet lands—no 75 bespoke dashboards required."
       />
       <FullBleedSection className="border-b border-kelly-text/10 py-6">
         <ContentContainer>
@@ -35,33 +39,8 @@ export default async function CountiesIndexPage() {
         </ContentContainer>
       </FullBleedSection>
       <FullBleedSection padY>
-        <ContentContainer>
-          {rows.length === 0 ? (
-            <p className="text-kelly-text/75">No counties are published yet. Check back soon.</p>
-          ) : (
-            <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3" role="list">
-              {rows.map((c) => (
-                <li key={c.id}>
-                  <Link
-                    href={`/counties/${c.slug}`}
-                    className="block rounded-2xl border border-kelly-text/10 bg-kelly-page p-5 shadow-sm transition hover:border-kelly-navy/30 hover:shadow-elevated"
-                  >
-                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-kelly-navy/90">
-                      {c.regionLabel ?? "Arkansas"}
-                    </p>
-                    <h2 className="mt-1 font-heading text-xl font-bold text-kelly-text">{c.displayName}</h2>
-                    {c.campaignStats?.volunteerCount != null ? (
-                      <p className="mt-2 text-sm text-kelly-text/60">
-                        Field volunteers (approx.): {c.campaignStats.volunteerCount}
-                      </p>
-                    ) : (
-                      <p className="mt-2 text-sm text-kelly-text/60">Open command page for goals and next steps</p>
-                    )}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
+        <ContentContainer wide>
+          <CountyCommandHub counties={rows} mode="public" />
         </ContentContainer>
       </FullBleedSection>
     </>

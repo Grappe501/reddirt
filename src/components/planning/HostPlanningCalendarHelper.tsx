@@ -36,7 +36,7 @@ type AvailabilityPayload = {
 export function HostPlanningCalendarHelper({
   countyFieldId = "hg-county",
 }: {
-  /** Optional: read county hint for AI from this input id */
+  /** Optional: read county hint for the planning helper from this input id */
   countyFieldId?: string;
 }) {
   const [date, setDate] = useState("");
@@ -80,7 +80,7 @@ export function HostPlanningCalendarHelper({
   const runAi = useCallback(async () => {
     const notes = aiNotes.trim();
     if (!notes) {
-      setAiError("Add a short note (timing, county, audience) so AI can suggest dates.");
+      setAiError("Add a short note (timing, county, audience) so we can suggest dates.");
       return;
     }
     setAiError(null);
@@ -106,7 +106,7 @@ export function HostPlanningCalendarHelper({
         message?: string;
       };
       if (!res.ok || !json.ok) {
-        setAiError(json.message ?? json.error ?? "AI request failed.");
+        setAiError(json.message ?? json.error ?? "Could not complete that request.");
         return;
       }
       setAiResult({
@@ -197,13 +197,13 @@ export function HostPlanningCalendarHelper({
       ) : null}
 
       <div className="mt-8 border-t border-kelly-text/10 pt-6">
-        <p className="font-heading text-base font-bold text-kelly-text">Optional: AI date ideas</p>
+        <p className="font-heading text-base font-bold text-kelly-text">Optional: Organizing insights — date ideas</p>
         <p className="mt-1 font-body text-sm text-kelly-text/70">
           Describe what you need (e.g. “weeknight in Garland County in June, 15–25 people”). We send your note plus the
-          next ~90 days of busy/open digest to the model—no guarantee, always confirm with the team.
+          next ~90 days of busy/open digest to our planning helper—no guarantee, always confirm with the team.
         </p>
         <Textarea
-          id="host-plan-ai-notes"
+          id="host-plan-helper-notes"
           className="mt-3"
           rows={3}
           value={aiNotes}

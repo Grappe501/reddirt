@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 
 const variants = {
   /** Default page wash */
-  default: "bg-kelly-page text-kelly-text",
+  default: "bg-kelly-page text-kelly-text max-sm:bg-kelly-wash/80",
   /** Dark text color as background band (footer-style blocks) */
   "ink-band": "bg-kelly-text text-kelly-page",
   /** Muted slate band */
@@ -11,8 +11,8 @@ const variants = {
   "success-band": "bg-kelly-success text-kelly-page",
   "gold-band": "bg-kelly-gold/35 text-kelly-text",
   "primary-band": "bg-kelly-navy text-kelly-white",
-  subtle: "bg-kelly-text/[0.04] text-kelly-text",
-  elevated: "bg-[var(--color-surface-elevated)] text-kelly-text",
+  subtle: "bg-kelly-text/[0.04] text-kelly-text max-sm:bg-kelly-text/[0.07]",
+  elevated: "bg-[var(--color-surface-elevated)] text-kelly-text max-sm:bg-kelly-fog",
   "band-navy": "bg-kelly-navy text-kelly-mist",
   "band-fog": "bg-kelly-fog text-kelly-ink",
   "band-blue": "bg-kelly-blue text-kelly-mist",

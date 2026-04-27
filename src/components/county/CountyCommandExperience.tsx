@@ -17,6 +17,7 @@ import {
   getVoterRegistrationCenterHref,
   getVolunteerInCountyHref,
 } from "@/lib/county/official-links";
+import { getCountyIntelligenceEntryForSlug } from "@/lib/county/county-intelligence-catalog";
 import { getCampaignRegistrationBaselineDisplayCentral } from "@/config/campaign-registration-baseline";
 import { cn } from "@/lib/utils";
 import { PublicCampaignEventCard } from "@/components/calendar/PublicCampaignEventCard";
@@ -58,6 +59,7 @@ function formatDistanceAgo(d: Date) {
 export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) {
   const { county, latestVoterMetrics, latestVisitPost, latestStoryPost, mediaGallery, nextPublicCampaignEvent, upcomingPublicCampaignEvents } =
     data;
+  const countyIntel = getCountyIntelligenceEntryForSlug(county.slug);
   const stats = county.campaignStats;
   const vm = latestVoterMetrics;
   const demo = county.demographics;
@@ -100,6 +102,34 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
           </Button>
         </div>
       </PageHero>
+
+      {countyIntel ? (
+        <FullBleedSection className="border-b border-kelly-text/10 bg-kelly-navy/[0.03] py-6">
+          <ContentContainer>
+            <div className="rounded-2xl border border-kelly-text/10 bg-white/90 p-5 shadow-sm">
+              <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-kelly-navy/70">County intelligence</p>
+              <h2 className="font-heading mt-2 text-lg font-bold text-kelly-navy">How this county fits the intelligence model</h2>
+              <p className="mt-2 max-w-3xl text-sm leading-relaxed text-kelly-text/80">
+                <strong className="text-kelly-text">{countyIntel.dashboardStatusLabel}.</strong> {countyIntel.organizingStatusLabel} Suggested next
+                step: {countyIntel.nextActionLabel}
+              </p>
+              <div className="mt-4 flex w-full max-w-3xl flex-col gap-2 sm:flex-row sm:flex-wrap">
+                <Button href={countyIntel.intelligenceHref} variant="outline" className="w-full min-[480px]:w-auto">
+                  Organizing intelligence (placeholder)
+                </Button>
+                {countyIntel.countyDashboardV2Href ? (
+                  <Button href={countyIntel.countyDashboardV2Href} variant="primary" className="w-full min-[480px]:w-auto">
+                    Dashboard v2 (prototype)
+                  </Button>
+                ) : null}
+                <Button href="/organizing-intelligence" variant="subtle" className="w-full min-[480px]:w-auto">
+                  State organizing intelligence
+                </Button>
+              </div>
+            </div>
+          </ContentContainer>
+        </FullBleedSection>
+      ) : null}
 
       <FullBleedSection padY className="bg-kelly-wash" aria-labelledby="scoreboard-title">
         <ContentContainer>

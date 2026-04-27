@@ -1,0 +1,387 @@
+=== 04/27/2026 11:00:50 ===
+BRANCH: build/reddirt-public-copy-pass-03
+On branch build/reddirt-public-copy-pass-03
+Your branch is up to date with 'origin/build/reddirt-public-copy-pass-03'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   .env.example
+	modified:   .gitignore
+	new file:   campaign-system-manual/BRAND_AND_PRESENTATION_INDEX.md
+	new file:   campaign-system-manual/CAMPAIGN_STRATEGY_AND_LIFECYCLE_MANUAL.md
+	new file:   campaign-system-manual/COUNTY_PARTY_AND_RURAL_ORGANIZING_PLAN.md
+	new file:   campaign-system-manual/COUNTY_PARTY_MEETING_TOUR_SYSTEM.md
+	new file:   campaign-system-manual/DATA_AND_PRIVACY_INDEX.md
+	new file:   campaign-system-manual/ENDORSEMENT_AND_NATIONAL_ATTENTION_PROGRAM.md
+	new file:   campaign-system-manual/FEATURE_INVENTORY_INDEX.md
+	new file:   campaign-system-manual/FOCUS_CATEGORY_ORGANIZING_PLAN.md
+	new file:   campaign-system-manual/FUNDRAISING_AND_VOLUNTEER_ACCELERATION_PLAN.md
+	new file:   campaign-system-manual/MANUAL_BUILD_PLAN.md
+	new file:   campaign-system-manual/MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md
+	new file:   campaign-system-manual/MANUAL_PASS_2_COMPLETION_REPORT.md
+	new file:   campaign-system-manual/MANUAL_PASS_3B_COMPLETION_REPORT.md
+	new file:   campaign-system-manual/MANUAL_PASS_3C_COMPLETION_REPORT.md
+	new file:   campaign-system-manual/MANUAL_PASS_3D_COMPLETION_REPORT.md
+	new file:   campaign-system-manual/MANUAL_PASS_3E_COMPLETION_REPORT.md
+	new file:   campaign-system-manual/MANUAL_PASS_3F_COMPLETION_REPORT.md
+	new file:   campaign-system-manual/MANUAL_PASS_3_COMPLETION_REPORT.md
+	new file:   campaign-system-manual/MANUAL_STYLE_GUIDE.md
+	new file:   campaign-system-manual/MANUAL_TABLE_OF_CONTENTS.md
+	new file:   campaign-system-manual/NAACP_AND_COMMUNITY_BRANCH_RELATIONSHIP_PLAN.md
+	new file:   campaign-system-manual/PAID_MEDIA_AND_LONG_TERM_INFRASTRUCTURE_PLAN.md
+	new file:   campaign-system-manual/PRECINCT_PATH_TO_VICTORY_AND_CANVASSING_PLAN.md
+	new file:   campaign-system-manual/README.md
+	new file:   campaign-system-manual/ROLE_MANUAL_INDEX.md
+	new file:   campaign-system-manual/ROUTE_INVENTORY_INDEX.md
+	new file:   campaign-system-manual/SIMULATION_AND_FORECASTING_SYSTEM_PLAN.md
+	new file:   campaign-system-manual/SYSTEM_CROSS_WIRING_REPORT.md
+	new file:   campaign-system-manual/SYSTEM_MAP_INDEX.md
+	new file:   campaign-system-manual/SYSTEM_READINESS_REPORT.md
+	new file:   campaign-system-manual/WEEKLY_TRAVEL_AND_EVENT_PROJECTION_SYSTEM.md
+	new file:   campaign-system-manual/WORKFLOW_INDEX.md
+	new file:   campaign-system-manual/YOUTH_CAMPUS_AND_STUDENT_ORGANIZING_PLAN.md
+	new file:   campaign-system-manual/chapters/00-executive-overview/README.md
+	new file:   campaign-system-manual/chapters/01-system-vision/README.md
+	new file:   campaign-system-manual/chapters/02-campaign-operating-system/README.md
+	new file:   campaign-system-manual/chapters/03-user-journey-from-first-email/README.md
+	new file:   campaign-system-manual/chapters/04-role-based-manuals/README.md
+	new file:   campaign-system-manual/chapters/05-power-of-5/README.md
+	new file:   campaign-system-manual/chapters/06-dashboard-hierarchy/README.md
+	new file:   campaign-system-manual/chapters/07-workbench-and-approvals/README.md
+	new file:   campaign-system-manual/chapters/08-message-engine/README.md
+	new file:   campaign-system-manual/chapters/09-narrative-distribution/README.md
+	new file:   campaign-system-manual/chapters/10-field-organizing/README.md
+	new file:   campaign-system-manual/chapters/11-county-city-precinct-system/README.md
+	new file:   campaign-system-manual/chapters/12-candidate-and-campaign-manager-system/README.md
+	new file:   campaign-system-manual/chapters/13-training-and-leadership-development/README.md
+	new file:   campaign-system-manual/chapters/14-kpis-and-scorecards/README.md
+	new file:   campaign-system-manual/chapters/15-data-privacy-and-permissions/README.md
+	new file:   campaign-system-manual/chapters/16-administration-and-operations/README.md
+	new file:   campaign-system-manual/chapters/17-technical-architecture/README.md
+	new file:   campaign-system-manual/chapters/18-production-readiness/README.md
+	new file:   campaign-system-manual/chapters/19-future-build-roadmap/README.md
+	new file:   campaign-system-manual/chapters/20-campaign-companion/README.md
+	new file:   campaign-system-manual/chapters/21-adaptive-campaign-strategy/README.md
+	new file:   campaign-system-manual/chapters/22-election-day-command/README.md
+	new file:   campaign-system-manual/chapters/23-pathway-campaign/README.md
+	new file:   campaign-system-manual/inventories/BUILD_REPORTS_INDEX.md
+	new file:   campaign-system-manual/inventories/COMPONENT_INVENTORY.md
+	new file:   campaign-system-manual/inventories/DASHBOARD_INVENTORY.md
+	new file:   campaign-system-manual/inventories/DATA_MODEL_INVENTORY.md
+	new file:   campaign-system-manual/inventories/DOCUMENTATION_INVENTORY.md
+	new file:   campaign-system-manual/inventories/FEATURE_INVENTORY.md
+	new file:   campaign-system-manual/inventories/ROUTE_INVENTORY.md
+	new file:   campaign-system-manual/inventories/UNUSED_STUBS_AND_DEAD_ENDS.md
+	new file:   campaign-system-manual/maps/APPROVAL_FLOW_MAP.md
+	new file:   campaign-system-manual/maps/DASHBOARD_MAP.md
+	new file:   campaign-system-manual/maps/DATA_FLOW_MAP.md
+	new file:   campaign-system-manual/maps/MESSAGE_AND_DISTRIBUTION_MAP.md
+	new file:   campaign-system-manual/maps/POWER_OF_5_MAP.md
+	new file:   campaign-system-manual/maps/ROLE_MAP.md
+	new file:   campaign-system-manual/maps/SYSTEM_MAP.md
+	new file:   campaign-system-manual/maps/WORKFLOW_MAP.md
+	new file:   campaign-system-manual/roles/README.md
+	new file:   campaign-system-manual/roles/_PASS2_23_SECTION_TEMPLATE.md
+	new file:   campaign-system-manual/roles/admin/README.md
+	new file:   campaign-system-manual/roles/campaign-manager/README.md
+	new file:   campaign-system-manual/roles/candidate/README.md
+	new file:   campaign-system-manual/roles/city-captain/README.md
+	new file:   campaign-system-manual/roles/communications-lead/README.md
+	new file:   campaign-system-manual/roles/compliance-lead/README.md
+	new file:   campaign-system-manual/roles/county-leader/README.md
+	new file:   campaign-system-manual/roles/data-lead/README.md
+	new file:   campaign-system-manual/roles/event-lead/README.md
+	new file:   campaign-system-manual/roles/field-manager/README.md
+	new file:   campaign-system-manual/roles/finance-lead/README.md
+	new file:   campaign-system-manual/roles/gotv-lead/README.md
+	new file:   campaign-system-manual/roles/message-lead/README.md
+	new file:   campaign-system-manual/roles/narrative-distribution-lead/README.md
+	new file:   campaign-system-manual/roles/neighborhood-block-captain/README.md
+	new file:   campaign-system-manual/roles/new-volunteer/README.md
+	new file:   campaign-system-manual/roles/owner/README.md
+	new file:   campaign-system-manual/roles/power-of-1-volunteer/README.md
+	new file:   campaign-system-manual/roles/power-of-5-member/README.md
+	new file:   campaign-system-manual/roles/power-team-leader/README.md
+	new file:   campaign-system-manual/roles/precinct-captain/README.md
+	new file:   campaign-system-manual/roles/regional-organizer/README.md
+	new file:   campaign-system-manual/roles/sign-holder-captain/README.md
+	new file:   campaign-system-manual/roles/volunteer-coordinator/README.md
+	new file:   campaign-system-manual/roles/volunteer/README.md
+	new file:   campaign-system-manual/roles/voter-file-data-steward/README.md
+	new file:   campaign-system-manual/web-presentation/README.md
+	new file:   campaign-system-manual/web-presentation/WEB_MANUAL_INFORMATION_ARCHITECTURE.md
+	new file:   campaign-system-manual/web-presentation/WEB_MANUAL_ROUTE_PLAN.md
+	new file:   campaign-system-manual/web-presentation/WEB_MANUAL_VISUAL_DESIGN_NOTES.md
+	new file:   campaign-system-manual/workflows/CAMPAIGN_MANAGER_ONBOARDING.md
+	new file:   campaign-system-manual/workflows/CANDIDATE_AND_CAMPAIGN_MANAGER_INTAKE_GAP_ANALYSIS.md
+	new file:   campaign-system-manual/workflows/CANDIDATE_ONBOARDING.md
+	new file:   campaign-system-manual/workflows/COUNTY_LEADER_ONBOARDING.md
+	new file:   campaign-system-manual/workflows/DAY_ONE_TO_ELECTION_DAY_CAMPAIGN_LIFECYCLE.md
+	new file:   campaign-system-manual/workflows/FIELD_REPORTING_TO_DASHBOARD_ROLLUP.md
+	new file:   campaign-system-manual/workflows/FIRST_EMAIL_TO_ACTIVE_VOLUNTEER.md
+	new file:   campaign-system-manual/workflows/MESSAGE_CREATION_TO_DISTRIBUTION.md
+	new file:   campaign-system-manual/workflows/POWER_OF_5_ONBOARDING.md
+	new file:   campaign-system-manual/workflows/PRECINCT_SIGN_HOLDER_AND_VISIBILITY_PROGRAM.md
+	new file:   campaign-system-manual/workflows/TASK_QUEUE_AND_APPROVALS.md
+	new file:   campaign-system-manual/workflows/VOLUNTEER_TO_LEADER_PATHWAY.md
+	new file:   docs/CENTRAL_AND_NORTHEAST_REGION_DASHBOARDS_REPORT.md
+	new file:   docs/COUNTY_DASHBOARD_SHARED_SHELL_BUILD_REPORT.md
+	new file:   docs/COUNTY_INTELLIGENCE_SYSTEM_PLAN.md
+	new file:   docs/DELTA_SOUTHEAST_SOUTHWEST_REGION_DASHBOARDS_REPORT.md
+	new file:   docs/MESSAGE_CONTENT_ENGINE_SYSTEM_PLAN.md
+	new file:   docs/MESSAGE_ENGINE_DASHBOARD_INTEGRATION_REPORT.md
+	new file:   docs/MESSAGE_ENGINE_FEEDBACK_LOOP_REPORT.md
+	new file:   docs/MESSAGE_ENGINE_PERSONAL_PANEL_REPORT.md
+	new file:   docs/MESSAGE_ENGINE_TYPES_AND_TEMPLATE_REGISTRY_REPORT.md
+	new file:   docs/MESSAGE_ENGINE_VOTER_PROFILE_INTEGRATION_PLAN.md
+	new file:   docs/MESSAGE_ENGINE_VOTER_PROFILE_INTEGRATION_REPORT.md
+	new file:   docs/MESSAGE_RECOMMENDATION_ENGINE_REPORT.md
+	new file:   docs/MESSAGE_SYSTEM_LANGUAGE_AUDIT_REPORT.md
+	new file:   docs/NARRATIVE_ADMIN_COMMAND_CENTER_REPORT.md
+	new file:   docs/NARRATIVE_DISTRIBUTION_ENGINE_SYSTEM_PLAN.md
+	new file:   docs/NARRATIVE_DISTRIBUTION_TYPES_REPORT.md
+	new file:   docs/NARRATIVE_PACKET_BUILDER_REPORT.md
+	new file:   docs/NARRATIVE_PUBLIC_MEMBER_HUB_REPORT.md
+	new file:   docs/NWA_REGION_DASHBOARD_REPORT.md
+	new file:   docs/ORGANIZING_INTELLIGENCE_DASHBOARD_SYSTEM_FINAL_REPORT.md
+	new file:   docs/POPE_COUNTY_DASHBOARD_POLISH_REPORT.md
+	new file:   docs/POPE_COUNTY_DASHBOARD_V2_BUILD_REPORT.md
+	new file:   docs/POWER5_MESSAGE_NARRATIVE_INTEGRATION_REPORT.md
+	new file:   docs/POWER_OF_5_DASHBOARD_INTEGRATION.md
+	new file:   docs/POWER_OF_5_DATA_MODEL.md
+	new file:   docs/POWER_OF_5_GAMIFICATION.md
+	new file:   docs/POWER_OF_5_KPI_ENGINE.md
+	new file:   docs/POWER_OF_5_LEADER_DASHBOARD.md
+	new file:   docs/POWER_OF_5_ONBOARDING_PROTOTYPE_REPORT.md
+	new file:   docs/POWER_OF_5_PERSONAL_DASHBOARD.md
+	new file:   docs/POWER_OF_5_PIPELINES.md
+	new file:   docs/POWER_OF_5_POPE_SEED_REPORT.md
+	new file:   docs/POWER_OF_5_RELATIONAL_ORGANIZING_SYSTEM_PLAN.md
+	new file:   docs/POWER_OF_5_VOTER_PROFILE_INTEGRATION.md
+	modified:   docs/README.md
+	new file:   docs/RED_DIRT_ORGANIZING_INTELLIGENCE_SYSTEM_PLAN.md
+	new file:   docs/REGION_DASHBOARD_SHARED_SHELL_REPORT.md
+	new file:   docs/REGION_TAXONOMY_BUILD_REPORT.md
+	new file:   docs/RIVER_VALLEY_REGION_DASHBOARD_REPORT.md
+	new file:   docs/STATE_ORGANIZING_INTELLIGENCE_DASHBOARD_REPORT.md
+	new file:   docs/WEBSITE_PASS_01_NAVIGATION_REPORT.md
+	new file:   docs/WEBSITE_PASS_02_HOMEPAGE_REPORT.md
+	new file:   docs/WEBSITE_PASS_03_GET_INVOLVED_REPORT.md
+	new file:   docs/WEBSITE_PASS_04_COUNTY_STANDARDIZATION_REPORT.md
+	new file:   docs/WEBSITE_PASS_05_PRIVACY_TRUST_REPORT.md
+	new file:   docs/WEBSITE_PASS_06_CONVERSATIONS_STORIES_REPORT.md
+	new file:   docs/WEBSITE_PASS_07_REGIONAL_PAGES_REPORT.md
+	new file:   docs/WEBSITE_PASS_08_MOBILE_ACCESSIBILITY_REPORT.md
+	new file:   docs/WEBSITE_PASS_09_SEO_METADATA_REPORT.md
+	new file:   docs/WEBSITE_UPGRADE_PASSES_AFTER_MESSAGE_SYSTEM.md
+	new file:   docs/WEBSITE_UPGRADE_STACK_FINAL_REPORT.md
+	new file:   docs/audits/DASHBOARD_HIERARCHY_COMPLETION_AUDIT.md
+	new file:   docs/audits/MESSAGE_AND_NARRATIVE_DISTRIBUTION_SYSTEM_AUDIT.md
+	new file:   docs/audits/POWER_OF_5_FULL_SYSTEM_AUDIT.md
+	modified:   next.config.ts
+	modified:   package.json
+	modified:   prisma/seed.ts
+	new file:   scripts/message-recommendation-engine-self-check.ts
+	new file:   scripts/stack-verify.cjs
+	modified:   src/app/(site)/about/page.tsx
+	modified:   src/app/(site)/civic-depth/page.tsx
+	modified:   src/app/(site)/counties/page.tsx
+	new file:   src/app/(site)/dashboard/leader/page.tsx
+	new file:   src/app/(site)/dashboard/page.tsx
+	modified:   src/app/(site)/direct-democracy/page.tsx
+	modified:   src/app/(site)/get-involved/page.tsx
+	new file:   src/app/(site)/messages/page.tsx
+	modified:   src/app/(site)/page.tsx
+	modified:   src/app/(site)/priorities/page.tsx
+	new file:   src/app/(site)/privacy-and-trust/page.tsx
+	modified:   src/app/(site)/resources/page.tsx
+	modified:   src/app/(site)/voter-registration/page.tsx
+	new file:   src/app/admin/(board)/organizing-intelligence/page.tsx
+	modified:   src/app/admin/(board)/relational-contacts/[id]/page.tsx
+	modified:   src/app/admin/(board)/voters/[id]/model/page.tsx
+	modified:   src/app/admin/counties/page.tsx
+	new file:   src/app/admin/narrative-distribution/page.tsx
+	modified:   src/app/api/assistant/route.ts
+	modified:   src/app/api/planning/suggest-dates/route.ts
+	modified:   src/app/api/search/route.ts
+	modified:   src/app/county-briefings/page.tsx
+	modified:   src/app/county-briefings/pope/page.tsx
+	new file:   src/app/county-briefings/pope/v2/page.tsx
+	modified:   src/app/globals.css
+	modified:   src/app/layout.tsx
+	new file:   src/app/onboarding/layout.tsx
+	new file:   src/app/onboarding/power-of-5/page.tsx
+	new file:   src/app/organizing-intelligence/counties/[countySlug]/page.tsx
+	new file:   src/app/organizing-intelligence/layout.tsx
+	new file:   src/app/organizing-intelligence/page.tsx
+	new file:   src/app/organizing-intelligence/regions/[slug]/page.tsx
+	new file:   src/app/organizing-intelligence/regions/central-arkansas/page.tsx
+	new file:   src/app/organizing-intelligence/regions/delta-eastern-arkansas/page.tsx
+	new file:   src/app/organizing-intelligence/regions/north-central-ozarks/page.tsx
+	new file:   src/app/organizing-intelligence/regions/northeast-arkansas/page.tsx
+	new file:   src/app/organizing-intelligence/regions/northwest-arkansas/page.tsx
+	new file:   src/app/organizing-intelligence/regions/river-valley/page.tsx
+	new file:   src/app/organizing-intelligence/regions/southeast-arkansas/page.tsx
+	new file:   src/app/organizing-intelligence/regions/southwest-arkansas/page.tsx
+	modified:   src/components/about/KellyFullStory.tsx
+	modified:   src/components/admin/AdminBoardShell.tsx
+	new file:   src/components/admin/RelationalOrganizingAdminCard.tsx
+	modified:   src/components/blocks/CTASection.tsx
+	modified:   src/components/blocks/HeroBlock.tsx
+	modified:   src/components/blocks/PageHero.tsx
+	modified:   src/components/blocks/PillarGrid.tsx
+	modified:   src/components/blocks/PolicyDetailCard.tsx
+	modified:   src/components/blocks/PrincipleBand.tsx
+	modified:   src/components/blocks/QuoteBand.tsx
+	modified:   src/components/blocks/SectionHeading.tsx
+	modified:   src/components/campaign-guide/CampaignGuideDock.tsx
+	modified:   src/components/county/CountyCommandExperience.tsx
+	new file:   src/components/county/CountyCommandHub.tsx
+	new file:   src/components/county/dashboard/CountyActionPanel.tsx
+	new file:   src/components/county/dashboard/CountyBattlefieldPanel.tsx
+	new file:   src/components/county/dashboard/CountyChartPanel.tsx
+	new file:   src/components/county/dashboard/CountyDashboardShell.tsx
+	new file:   src/components/county/dashboard/CountyDataGapsPanel.tsx
+	new file:   src/components/county/dashboard/CountyDrilldownGrid.tsx
+	new file:   src/components/county/dashboard/CountyKpiStrip.tsx
+	new file:   src/components/county/dashboard/CountyPowerOf5Panel.tsx
+	new file:   src/components/county/dashboard/CountyRegionalContextPanel.tsx
+	new file:   src/components/county/dashboard/CountyRiskPanel.tsx
+	new file:   src/components/county/dashboard/CountySectionHeader.tsx
+	new file:   src/components/county/dashboard/CountyStrategyPanel.tsx
+	new file:   src/components/county/dashboard/countyDashboardClassNames.ts
+	new file:   src/components/county/dashboard/countyDashboardFormat.tsx
+	new file:   src/components/county/dashboard/index.ts
+	new file:   src/components/county/pope/PopeBattlefieldTabs.tsx
+	new file:   src/components/county/pope/PopeCountyDashboardV2View.tsx
+	new file:   src/components/county/pope/PopeIntelligenceStack.tsx
+	new file:   src/components/county/pope/PopeRelationalGraphDemoPanel.tsx
+	new file:   src/components/dashboard/leader/PowerOf5LeaderDashboardView.tsx
+	new file:   src/components/dashboard/leader/index.ts
+	new file:   src/components/dashboard/personal/GamificationPanel.tsx
+	new file:   src/components/dashboard/personal/MyFivePanel.tsx
+	new file:   src/components/dashboard/personal/MyImpactPanel.tsx
+	new file:   src/components/dashboard/personal/MyTasksPanel.tsx
+	new file:   src/components/dashboard/personal/MyTeamPanel.tsx
+	new file:   src/components/dashboard/personal/PersonalDashboardView.tsx
+	new file:   src/components/dashboard/personal/index.ts
+	modified:   src/components/home/HomeExperience.tsx
+	new file:   src/components/home/HomeOrganizingConversionBand.tsx
+	modified:   src/components/home/sections/HomeArkansasFestivalsSection.tsx
+	modified:   src/components/home/sections/HomeHeroSection.tsx
+	new file:   src/components/integrations/MessageHubLinkCard.tsx
+	new file:   src/components/integrations/NarrativeDistributionSummaryPanel.tsx
+	new file:   src/components/journey/GetInvolvedPathwaySystem.tsx
+	modified:   src/components/journey/HomeJourneyShell.tsx
+	modified:   src/components/journey/HomePathwayGateway.tsx
+	modified:   src/components/journey/JourneyBeat.tsx
+	modified:   src/components/layout/FullBleedSection.tsx
+	modified:   src/components/layout/NavDesktop.tsx
+	modified:   src/components/layout/PublicLayoutMain.tsx
+	modified:   src/components/layout/ResponsiveGrid.tsx
+	modified:   src/components/layout/SiteFooter.tsx
+	modified:   src/components/layout/SiteHeader.tsx
+	new file:   src/components/message-engine/AdminProfileConversationToolsSection.tsx
+	new file:   src/components/message-engine/ConversationOutcomeDemo.tsx
+	new file:   src/components/message-engine/MessageCard.tsx
+	new file:   src/components/message-engine/MessageContextControls.tsx
+	new file:   src/components/message-engine/MessageIntelligencePanel.tsx
+	new file:   src/components/message-engine/MessagePerformancePreview.tsx
+	new file:   src/components/message-engine/NarrativeGapPanel.tsx
+	new file:   src/components/message-engine/WhatToSayPanel.tsx
+	new file:   src/components/message-engine/index.ts
+	new file:   src/components/narrative-distribution/admin/NarrativeAdminKpiStrip.tsx
+	new file:   src/components/narrative-distribution/admin/NarrativeAdminSection.tsx
+	new file:   src/components/narrative-distribution/admin/NarrativeAmplificationQueue.tsx
+	new file:   src/components/narrative-distribution/admin/NarrativeChannelReadinessGrid.tsx
+	new file:   src/components/narrative-distribution/admin/NarrativeCountyPacketList.tsx
+	new file:   src/components/narrative-distribution/admin/NarrativeDistributionCommandCenter.tsx
+	new file:   src/components/narrative-distribution/admin/NarrativeEditorialStatusBoard.tsx
+	new file:   src/components/narrative-distribution/admin/NarrativeFeedbackNeedsPanel.tsx
+	new file:   src/components/narrative-distribution/admin/NarrativeRegionPacketList.tsx
+	new file:   src/components/narrative-distribution/admin/NarrativeStoryPipeline.tsx
+	new file:   src/components/narrative-distribution/admin/PowerOf5LaunchIntegrationPanel.tsx
+	new file:   src/components/narrative-distribution/admin/index.ts
+	new file:   src/components/narrative-distribution/public/NarrativeMemberHubConversationLab.tsx
+	new file:   src/components/narrative-distribution/public/NarrativeMemberHubView.tsx
+	new file:   src/components/onboarding/power-of-5/PowerOf5FirstActionDemo.tsx
+	new file:   src/components/onboarding/power-of-5/PowerOf5ImpactPanel.tsx
+	new file:   src/components/onboarding/power-of-5/PowerOf5NetworkPreview.tsx
+	new file:   src/components/onboarding/power-of-5/PowerOf5OnboardingFlow.tsx
+	new file:   src/components/onboarding/power-of-5/PowerOf5OnboardingView.tsx
+	new file:   src/components/onboarding/power-of-5/PowerOf5StepCard.tsx
+	new file:   src/components/onboarding/power-of-5/index.ts
+	new file:   src/components/organizing-intelligence/StateOrganizingIntelligenceView.tsx
+	modified:   src/components/planning/HostPlanningCalendarHelper.tsx
+	new file:   src/components/power-of-5/PowerOf5DashboardPanel.tsx
+	new file:   src/components/power-of-5/PowerOf5PipelineVisualization.tsx
+	new file:   src/components/power-of-5/PowerOf5RelationalCharts.tsx
+	new file:   src/components/power-of-5/index.ts
+	new file:   src/components/regions/dashboard/RegionActionPanel.tsx
+	new file:   src/components/regions/dashboard/RegionComparisonTable.tsx
+	new file:   src/components/regions/dashboard/RegionCountyGrid.tsx
+	new file:   src/components/regions/dashboard/RegionDashboardShell.tsx
+	new file:   src/components/regions/dashboard/RegionDashboardView.tsx
+	new file:   src/components/regions/dashboard/RegionKpiStrip.tsx
+	new file:   src/components/regions/dashboard/RegionMapPanel.tsx
+	new file:   src/components/regions/dashboard/RegionNextCountiesToBuildPanel.tsx
+	new file:   src/components/regions/dashboard/RegionOrganizingGatewayBand.tsx
+	new file:   src/components/regions/dashboard/RegionPowerOf5Panel.tsx
+	new file:   src/components/regions/dashboard/RegionPrimaryComparisonCards.tsx
+	new file:   src/components/regions/dashboard/RegionRiskPanel.tsx
+	new file:   src/components/regions/dashboard/RegionStrategyPanel.tsx
+	new file:   src/components/regions/dashboard/index.ts
+	modified:   src/components/search/SearchDialog.tsx
+	new file:   src/components/teaching/DefineTerm.tsx
+	new file:   src/components/teaching/GlossaryTerm.tsx
+	new file:   src/components/teaching/SelfTeachingHintBanner.tsx
+	new file:   src/components/theme/ThemeProvider.tsx
+	new file:   src/components/theme/ThemeToggle.tsx
+	modified:   src/components/voter/VoterRegistrationCenter.tsx
+	modified:   src/config/navigation.ts
+	modified:   src/content/home/journey.ts
+	new file:   src/content/journey/get-involved-pathways.ts
+	modified:   src/content/media/campaign-trail-assignments.ts
+	new file:   src/lib/campaign-engine/county-dashboards/pope-county-dashboard.ts
+	new file:   src/lib/campaign-engine/county-dashboards/types.ts
+	new file:   src/lib/campaign-engine/power-of-5/build-leader-dashboard-demo.ts
+	new file:   src/lib/campaign-engine/regions/arkansas-campaign-regions.ts
+	new file:   src/lib/campaign-engine/regions/build-region-dashboard.ts
+	new file:   src/lib/campaign-engine/regions/region-gateway-copy.ts
+	new file:   src/lib/campaign-engine/regions/types.ts
+	modified:   src/lib/campaign-engine/relational-contacts.ts
+	new file:   src/lib/campaign-engine/relational-message-context.ts
+	new file:   src/lib/campaign-engine/state-organizing-intelligence/build-state-oi-dashboard.ts
+	new file:   src/lib/campaign-engine/voter-relational-organizing.ts
+	modified:   src/lib/content/fullSiteSearchChunks.ts
+	modified:   src/lib/content/homepage-merge.ts
+	new file:   src/lib/county/arkansas-county-registry.ts
+	new file:   src/lib/county/county-intelligence-catalog.ts
+	modified:   src/lib/county/get-county-command-data.ts
+	new file:   src/lib/message-engine/admin-profile-conversation-tools.ts
+	new file:   src/lib/message-engine/feedback.ts
+	new file:   src/lib/message-engine/index.ts
+	new file:   src/lib/message-engine/message-intelligence-dashboard.ts
+	new file:   src/lib/message-engine/recommendations.ts
+	new file:   src/lib/message-engine/templates.ts
+	new file:   src/lib/message-engine/types.ts
+	new file:   src/lib/narrative-distribution/assets.ts
+	new file:   src/lib/narrative-distribution/demo-admin-command-center.ts
+	new file:   src/lib/narrative-distribution/index.ts
+	new file:   src/lib/narrative-distribution/packet-builder.ts
+	new file:   src/lib/narrative-distribution/public-member-hub.ts
+	new file:   src/lib/narrative-distribution/types.ts
+	new file:   src/lib/power-of-5/demo/pope-seed.ts
+	new file:   src/lib/power-of-5/gamification.ts
+	new file:   src/lib/power-of-5/kpi.ts
+	new file:   src/lib/power-of-5/onboarding-demo.ts
+	new file:   src/lib/power-of-5/personal-dashboard-demo.ts
+	new file:   src/lib/power-of-5/pipelines.ts
+	new file:   src/lib/power-of-5/relational-chart-demos.ts
+	new file:   src/lib/power-of-5/types.ts
+	modified:   src/lib/seo/metadata.ts
+	new file:   src/lib/teaching/glossary.ts
+	modified:   src/lib/utils.ts
+	modified:   tailwind.config.ts
+
+Untracked files not listed (use -u option to show untracked files)

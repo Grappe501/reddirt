@@ -13,6 +13,10 @@ import { peopleTrailPool } from "@/content/media/campaign-trail-photo-use";
  * | priorities  | 1  | single breakout                             |
  * | events      | 1  | single breakout                             |
  * | fromTheRoad | rest (capped) | gallery after fixed slots      |
+ * | voterRegistration | 1  | /voter-registration (below hero)  |
+ * | directDemocracy   | 1  | /direct-democracy                   |
+ * | civicDepth        | 1  | /civic-depth                        |
+ * | resources         | 1  | /resources (field still)         |
  */
 export type TrailPhotoSlot =
   | "home"
@@ -20,6 +24,10 @@ export type TrailPhotoSlot =
   | "getInvolved"
   | "priorities"
   | "events"
+  | "voterRegistration"
+  | "directDemocracy"
+  | "civicDepth"
+  | "resources"
   | "fromTheRoad";
 
 const FIXED_SLOTS: { key: Exclude<TrailPhotoSlot, "fromTheRoad">; count: number }[] = [
@@ -28,6 +36,10 @@ const FIXED_SLOTS: { key: Exclude<TrailPhotoSlot, "fromTheRoad">; count: number 
   { key: "getInvolved", count: 2 },
   { key: "priorities", count: 1 },
   { key: "events", count: 1 },
+  { key: "voterRegistration", count: 1 },
+  { key: "directDemocracy", count: 1 },
+  { key: "civicDepth", count: 1 },
+  { key: "resources", count: 1 },
 ];
 
 export function trailPhotosFixedSliceEnd(): number {

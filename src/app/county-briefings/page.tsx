@@ -19,6 +19,12 @@ const BRIEFINGS: {
     blurb: "Political profile, GOTV illustration, relational organizing — first pilot on this site.",
     status: "live",
   },
+  {
+    href: "/county-briefings/pope/v2",
+    name: "Pope County — dashboard v2 (prototype)",
+    blurb: "Visual-first county intelligence shell with Power of 5 command center, drilldowns, and labeled demo/seed data.",
+    status: "live",
+  },
 ];
 
 export default function CountyBriefingsHubPage() {

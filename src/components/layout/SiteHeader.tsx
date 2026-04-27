@@ -4,7 +4,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { getJoinCampaignHref } from "@/config/external-campaign";
-import { primaryNavGroups } from "@/config/navigation";
+import {
+  allPrimaryNavItems,
+  countyDashboardSampleHref,
+  powerOf5OnboardingHref,
+  primaryNavGroups,
+} from "@/config/navigation";
 import { siteConfig } from "@/config/site";
 import { isExternalHref } from "@/lib/href";
 import { cn } from "@/lib/utils";
@@ -12,6 +17,7 @@ import { Button } from "@/components/ui/Button";
 import { SearchDialog } from "@/components/search/SearchDialog";
 import { HeaderRoundLogo } from "@/components/layout/HeaderRoundLogo";
 import { NavDesktop } from "@/components/layout/NavDesktop";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 function navItemActive(pathname: string, href: string) {
   return pathname === href || (href.length > 1 && pathname.startsWith(`${href}/`));
@@ -24,6 +30,8 @@ export function SiteHeader() {
   const panelId = useId();
   const joinCampaignHref = getJoinCampaignHref();
   const joinExternal = isExternalHref(joinCampaignHref);
+  const p5External = isExternalHref(powerOf5OnboardingHref);
+  const countyDashExternal = isExternalHref(countyDashboardSampleHref);
   const headerRootRef = useRef<HTMLElement | null>(null);
 
   /** Sets `--site-header-h` (px) so `globals.css` can compute `--site-header-shim` for the layout shim. */
@@ -114,6 +122,7 @@ export function SiteHeader() {
           <div className="flex min-w-0 flex-1 min-h-0 items-center justify-end overflow-visible pr-0.5">
             <NavDesktop groups={primaryNavGroups} pathname={pathname} theme="dark" />
           </div>
+          <ThemeToggle variant="header" />
           <Button
             type="button"
             variant="ghostOnDark"
@@ -123,12 +132,20 @@ export function SiteHeader() {
             Search
           </Button>
           <Button
-            href={joinCampaignHref}
+            href={powerOf5OnboardingHref}
             variant="primary"
-            className="ml-1 hidden min-h-11 flex-shrink-0 border border-kelly-navy/25 px-3.5 py-2.5 text-xs font-extrabold uppercase tracking-wide shadow-md ring-1 ring-white/10 hover:ring-white/20 lg:inline-flex lg:px-4 lg:text-sm"
-            aria-label="Volunteer — sign up to help the campaign"
+            className="ml-1 hidden min-h-11 flex-shrink-0 border border-kelly-navy/25 px-3 py-2.5 text-[10px] font-extrabold uppercase tracking-wide shadow-md ring-1 ring-white/10 hover:ring-white/20 lg:inline-flex xl:px-3.5 xl:text-xs 2xl:text-sm"
+            aria-label="Start Power of 5 — relational organizing onboarding"
           >
-            Volunteer
+            Start Power of 5
+          </Button>
+          <Button
+            href={countyDashboardSampleHref}
+            variant="outlineOnDark"
+            className="hidden min-h-11 min-w-0 flex-shrink-0 border-2 border-white/55 bg-kelly-navy/20 px-2.5 py-2.5 text-[10px] font-extrabold uppercase tracking-wide text-white shadow-md hover:border-kelly-gold/80 hover:bg-kelly-navy/35 lg:inline-flex xl:px-3.5 xl:text-xs 2xl:text-sm"
+            aria-label="View sample county dashboard (demo data)"
+          >
+            View County Dashboard
           </Button>
           <Button
             href={siteConfig.donateHref}
@@ -142,14 +159,24 @@ export function SiteHeader() {
 
         <div className="flex max-w-[min(100%,18rem)] flex-shrink-0 flex-wrap items-center justify-end gap-1.5 sm:max-w-none sm:gap-2 sm:justify-end text-kelly-fog lg:hidden">
           <Button
-            href={joinCampaignHref}
-            target={joinExternal ? "_blank" : undefined}
-            rel={joinExternal ? "noopener noreferrer" : undefined}
+            href={powerOf5OnboardingHref}
+            target={p5External ? "_blank" : undefined}
+            rel={p5External ? "noopener noreferrer" : undefined}
             variant="primary"
-            className="min-h-11 px-2.5 py-2 text-[10px] font-extrabold uppercase tracking-wide shadow-md sm:px-3.5 sm:text-xs"
-            aria-label="Volunteer — sign up"
+            className="min-h-11 px-2 py-2 text-[9px] font-extrabold uppercase leading-tight tracking-wide shadow-md xs:px-2.5 xs:text-[10px] sm:px-3.5 sm:text-xs"
+            aria-label="Start Power of 5"
           >
-            Volunteer
+            Power of 5
+          </Button>
+          <Button
+            href={countyDashboardSampleHref}
+            target={countyDashExternal ? "_blank" : undefined}
+            rel={countyDashExternal ? "noopener noreferrer" : undefined}
+            variant="outlineOnDark"
+            className="min-h-11 border-2 border-white/50 bg-kelly-navy/15 px-2 py-2 text-[9px] font-extrabold uppercase leading-tight tracking-wide text-white xs:px-2.5 xs:text-[10px] sm:px-3.5 sm:text-xs"
+            aria-label="View county dashboard"
+          >
+            County
           </Button>
           <Button
             href={siteConfig.donateHref}
@@ -159,6 +186,7 @@ export function SiteHeader() {
           >
             Donate
           </Button>
+          <ThemeToggle variant="header" />
           <Button
             type="button"
             variant="outlineOnDark"
@@ -210,42 +238,49 @@ export function SiteHeader() {
             </Button>
           </div>
           <nav className="mt-4 flex flex-1 flex-col gap-1 overflow-y-auto" aria-label="Mobile primary">
-            {primaryNavGroups.map((group) => (
-              <div key={group.id} className="pt-4 first:pt-2">
-                <p className="px-3 font-body text-[11px] font-bold tracking-wide text-white/85">
-                  {group.label}
-                </p>
-                <div className="mt-2 flex flex-col gap-0.5">
-                  {group.items.map((item) => {
-                    const active = navItemActive(pathname, item.href);
-                    const ext = isExternalHref(item.href);
-                    return (
-                      <Link
-                        key={`${group.id}-${item.label}-${item.href}`}
-                        href={item.href}
-                        target={ext ? "_blank" : undefined}
-                        rel={ext ? "noopener noreferrer" : undefined}
-                        aria-current={active ? "page" : undefined}
-                        className={cn(
-                          "rounded-btn px-3 py-3 font-body text-base font-medium",
-                          active
-                            ? "bg-kelly-blue/60 text-kelly-gold"
-                            : "text-white hover:bg-kelly-blue/40",
-                        )}
-                        onClick={() => setOpen(false)}
-                      >
-                        {item.label}
-                      </Link>
-                    );
-                  })}
-                </div>
-              </div>
-            ))}
+            {allPrimaryNavItems.map((item) => {
+              const active = navItemActive(pathname, item.href);
+              const ext = isExternalHref(item.href);
+              return (
+                <Link
+                  key={`${item.label}-${item.href}`}
+                  href={item.href}
+                  target={ext ? "_blank" : undefined}
+                  rel={ext ? "noopener noreferrer" : undefined}
+                  aria-current={active ? "page" : undefined}
+                  className={cn(
+                    "rounded-btn px-3 py-3 font-body text-base font-medium",
+                    active ? "bg-kelly-blue/60 text-kelly-gold" : "text-white hover:bg-kelly-blue/40",
+                  )}
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+            <Link
+              href={powerOf5OnboardingHref}
+              target={p5External ? "_blank" : undefined}
+              rel={p5External ? "noopener noreferrer" : undefined}
+              className="mt-6 rounded-btn bg-kelly-gold px-3 py-3 text-center font-body text-base font-bold text-kelly-navy"
+              onClick={() => setOpen(false)}
+            >
+              Start Power of 5
+            </Link>
+            <Link
+              href={countyDashboardSampleHref}
+              target={countyDashExternal ? "_blank" : undefined}
+              rel={countyDashExternal ? "noopener noreferrer" : undefined}
+              className="rounded-btn border-2 border-white/60 bg-kelly-navy/30 px-3 py-3 text-center font-body text-base font-bold text-white"
+              onClick={() => setOpen(false)}
+            >
+              View County Dashboard
+            </Link>
             <Link
               href={joinCampaignHref}
               target={joinExternal ? "_blank" : undefined}
               rel={joinExternal ? "noopener noreferrer" : undefined}
-              className="mt-6 rounded-btn bg-kelly-gold px-3 py-3 text-center font-body text-base font-bold text-kelly-navy"
+              className="rounded-btn border border-white/35 px-3 py-3 text-center font-body text-base font-semibold text-white"
               onClick={() => setOpen(false)}
             >
               Volunteer sign-up
@@ -259,20 +294,13 @@ export function SiteHeader() {
             >
               Donate
             </Link>
-            <Link
-              href="/get-involved"
-              className="rounded-btn border border-white/35 px-3 py-3 text-center font-body text-base font-semibold text-white"
-              onClick={() => setOpen(false)}
-            >
-              Get involved on this site
-            </Link>
-            <Link
-              href="/"
-              className="rounded-btn px-3 py-3 font-body text-base font-medium text-kelly-gold/95 hover:bg-kelly-blue/30"
-              onClick={() => setOpen(false)}
-            >
-              Home
-            </Link>
+            <div className="mt-6 border-t border-kelly-gold/20 pt-5">
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/45">Reading theme</p>
+              <p className="mt-1 text-xs text-white/70">Light, dark, or match your device—same as the sun/moon control on desktop.</p>
+              <div className="mt-3 flex justify-stretch">
+                <ThemeToggle variant="header" layout="full" className="w-full border border-white/25 py-2.5" />
+              </div>
+            </div>
           </nav>
         </div>
       </div>

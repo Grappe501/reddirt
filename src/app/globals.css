@@ -76,6 +76,54 @@
    */
   --site-header-h: 6.5rem;
   --site-header-shim: max(6.5rem, var(--site-header-h));
+
+  color-scheme: light;
+}
+
+/**
+ * Dark reading mode — default remains light (`:root` above). Toggle adds `class="dark"` on `html`.
+ * Tokens mirror light semantics so `text-kelly-text`, `bg-kelly-page`, etc. flip via CSS variables.
+ */
+html.dark {
+  color-scheme: dark;
+
+  --color-text-primary: #e8eaf6;
+  --color-secondary: #9aa8d4;
+  --color-bg: #0b0e22;
+  --color-success: #5c8f6c;
+  --color-border-subtle: rgba(232, 196, 122, 0.14);
+  --color-surface-elevated: #141a32;
+
+  --kelly-deep: #03051a;
+  --kelly-blue: #121a4a;
+  --kelly-slate: #a4b0dc;
+  --kelly-gold-soft: #d4a85a;
+  --kelly-mist: #1a223c;
+  --kelly-fog: #12182e;
+  --kelly-ink: #f0f2ff;
+  --kelly-copper: #c9a06a;
+  --kelly-copper-bright: #f0d9b0;
+  --kelly-band-wash: #12182c;
+
+  --shadow-card: 0 14px 48px rgba(0, 0, 0, 0.45);
+  --shadow-soft: 0 6px 28px rgba(0, 0, 0, 0.35);
+
+  --brand-surface: var(--kelly-fog);
+  --border-strong: rgba(232, 196, 122, 0.22);
+}
+
+/**
+ * Mobile-first: most public traffic is on phones. Tighter section rhythm + gutters
+ * reduces “endless white scroll”; slightly richer page wash keeps long pages from reading flat.
+ */
+@media (max-width: 639px) {
+  :root {
+    --section-padding-y: clamp(1.75rem, 4.8vw, 2.5rem);
+    --section-padding-y-lg: clamp(2.1rem, 5.5vw, 3rem);
+    --gutter-x: clamp(0.875rem, 4vw, 1.15rem);
+    --journey-beat-pad: clamp(1.5rem, 4.5vw, 2.25rem);
+    --journey-beat-pad-lg: clamp(1.75rem, 5vw, 2.5rem);
+  }
 }
 
 @media (min-width: 1024px) {
@@ -105,8 +153,52 @@
     background-attachment: fixed;
   }
 
+  @media (max-width: 639px) {
+    body {
+      /* Slightly more saturated through the stack so long mobile scrolls stay “in” the brand wash */
+      background: linear-gradient(
+        168deg,
+        #b5cff0 0%,
+        #c7daf4 10%,
+        #d3e2f6 24%,
+        #dde9f7 40%,
+        #e4edf7 55%,
+        #ebf1fa 78%,
+        #eff4fb 100%
+      );
+      background-attachment: scroll;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     body {
+      background-attachment: scroll;
+    }
+  }
+
+  html.dark body {
+    background: linear-gradient(
+      168deg,
+      #0a0d1e 0%,
+      #0c1028 14%,
+      #0e1430 32%,
+      #121a38 58%,
+      #141c3c 78%,
+      #161e3e 100%
+    );
+    background-attachment: fixed;
+  }
+
+  @media (max-width: 639px) {
+    html.dark body {
+      background: linear-gradient(
+        168deg,
+        #080b18 0%,
+        #0a0e22 18%,
+        #0d122a 40%,
+        #101632 72%,
+        #121838 100%
+      );
       background-attachment: scroll;
     }
   }
@@ -144,6 +236,22 @@
     border-radius: 9999px;
     background: rgba(10, 10, 122, 0.08);
     filter: blur(64px);
+  }
+
+  @media (max-width: 639px) {
+    .wow-section-mesh::before {
+      height: min(50vh, 360px);
+      width: 100vw;
+      max-width: none;
+      left: -20%;
+      background: rgba(202, 145, 61, 0.12);
+    }
+    .wow-section-mesh::after {
+      height: min(45vh, 300px);
+      width: 85vw;
+      right: -30%;
+      background: rgba(10, 10, 122, 0.1);
+    }
   }
 }
 

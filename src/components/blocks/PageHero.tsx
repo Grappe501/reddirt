@@ -28,9 +28,9 @@ export function PageHero({
   if (tone === "plan") {
     return (
       <FullBleedSection variant="band-blue" padY={false} className={cn("border-b border-kelly-gold/25", className)}>
-        <div className="border-l-4 border-kelly-gold/90">
+        <div className="border-l-4 border-kelly-gold/90 max-sm:border-l-[3px]">
           <ContentContainer
-            className={cn("pt-5 pb-10 sm:pt-6 sm:pb-12 lg:pt-8 lg:pb-14", contentClassName)}
+            className={cn("pt-4 pb-7 sm:pt-6 sm:pb-12 lg:pt-8 lg:pb-14", contentClassName)}
           >
             <HeroBlock eyebrow={eyebrow} title={title} subtitle={subtitle} size="page" variant="onDark">
               {children}
@@ -43,7 +43,7 @@ export function PageHero({
   return (
     <FullBleedSection variant="subtle" padY={false} className={cn("border-b border-kelly-text/10", className)}>
       <ContentContainer
-        className={cn("pt-5 pb-10 sm:pt-6 sm:pb-12 lg:pt-8 lg:pb-14", contentClassName)}
+        className={cn("pt-4 pb-7 sm:pt-6 sm:pb-12 lg:pt-8 lg:pb-14", contentClassName)}
       >
         <HeroBlock eyebrow={eyebrow} title={title} subtitle={subtitle} size="page">
           {children}

@@ -75,3 +75,21 @@ export function pageMeta(opts: {
     },
   };
 }
+
+/**
+ * Standard metadata for `/organizing-intelligence/regions/[slug]` dashboards.
+ * Keeps Open Graph URLs and titles consistent for regional share previews.
+ */
+export function organizingIntelligenceRegionPageMeta(opts: {
+  /** Human label, e.g. "River Valley" */
+  regionTitle: string;
+  /** URL segment, e.g. "river-valley" */
+  slug: string;
+  description: string;
+}): Metadata {
+  return pageMeta({
+    title: `${opts.regionTitle} — Arkansas organizing intelligence`,
+    description: opts.description,
+    path: `/organizing-intelligence/regions/${opts.slug}`,
+  });
+}

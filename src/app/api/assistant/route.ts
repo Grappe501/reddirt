@@ -74,7 +74,7 @@ export async function POST(req: Request) {
         error: "not_configured",
         version: ASSISTANT_API_VERSION,
         message:
-          "The campaign guide needs OPENAI_API_KEY in the server environment (.env). Add your key and restart the dev server.",
+          "Message support isn’t available on this site build yet—browse the menu or email kelly@kellygrappe.com.",
       },
       { status: 503 },
     );
@@ -138,7 +138,7 @@ export async function POST(req: Request) {
       e instanceof Error && /prisma|database|connect/i.test(e.message)
         ? " Check DATABASE_URL and run migrations (`npx prisma migrate deploy`)."
         : e instanceof Error && /401|API key|invalid/i.test(e.message)
-          ? " Check OPENAI_API_KEY is valid."
+          ? " Check the server search configuration."
           : "";
     const detail = formatOpenAIErrorForClient(e);
     return NextResponse.json(
@@ -203,7 +203,7 @@ export async function POST(req: Request) {
         {
           error: "openai_chat_failed",
           version: ASSISTANT_API_VERSION,
-          message: `The model could not answer: ${msg}`,
+          message: `The guide could not finish that reply: ${msg}`,
         },
         { status: 502 },
       );

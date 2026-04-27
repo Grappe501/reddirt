@@ -11,7 +11,10 @@ import {
 } from "@/lib/county/official-links";
 import { getCampaignRegistrationBaselineDisplayCentral } from "@/config/campaign-registration-baseline";
 import { getJoinCampaignHref } from "@/config/external-campaign";
+import { EditorialCampaignPhoto } from "@/components/about/EditorialCampaignPhoto";
+import type { CampaignTrailPhoto } from "@/content/media/campaign-trail-photos";
 import type { County, VoterFileSnapshot } from "@prisma/client";
+import type { CountyRosterListItem } from "@/lib/county/get-county-command-data";
 import type { StatewideVoterRollup } from "@/lib/voter-file/queries";
 import { cn } from "@/lib/utils";
 
@@ -19,7 +22,7 @@ const card =
   "rounded-2xl border border-kelly-text/10 bg-kelly-page p-5 shadow-sm transition hover:border-kelly-navy/25 hover:shadow-elevated";
 
 type Props = {
-  counties: Pick<County, "id" | "slug" | "displayName" | "regionLabel" | "leadName" | "leadTitle">[];
+  counties: CountyRosterListItem[];
   focusCounty: Pick<County, "slug" | "displayName" | "regionLabel" | "leadName" | "leadTitle"> | null;
   latestSnapshot: VoterFileSnapshot | null;
   /** Rolled up from the same snapshot the county command pages use */
@@ -29,6 +32,8 @@ type Props = {
    * Explains the situation so copy is not mistaken for “no counties” / “no snapshot yet”.
    */
   liveMetricsUnavailableMessage?: string | null;
+  /** Optional campaign still — assigned via `trailPhotosForSlot("voterRegistration")` */
+  trailPhoto?: CampaignTrailPhoto | null;
 };
 
 export function VoterRegistrationCenter({
@@ -37,6 +42,7 @@ export function VoterRegistrationCenter({
   latestSnapshot,
   statewide,
   liveMetricsUnavailableMessage = null,
+  trailPhoto = null,
 }: Props) {
   const officialUrl = getArVoterRegistrationLookupUrl();
   const baselineLabel = getCampaignRegistrationBaselineDisplayCentral();
@@ -78,6 +84,19 @@ export function VoterRegistrationCenter({
           </Button>
         </div>
       </PageHero>
+
+      {trailPhoto ? (
+        <FullBleedSection variant="subtle" className="!pt-0" aria-label="Campaign trail photography">
+          <ContentContainer wide className="py-8 md:py-10">
+            <EditorialCampaignPhoto
+              variant="breakout"
+              photo={trailPhoto}
+              kicker="With Arkansans"
+              caption="Every registration story is local—paper, patience, and people who help neighbors get across the line."
+            />
+          </ContentContainer>
+        </FullBleedSection>
+      ) : null}
 
       <FullBleedSection padY className="border-b border-kelly-text/10 bg-kelly-page" aria-labelledby="paper-title">
         <ContentContainer>
@@ -327,18 +346,18 @@ export function VoterRegistrationCenter({
         </ContentContainer>
       </FullBleedSection>
 
-      <FullBleedSection padY id="ai-assist" aria-labelledby="ai-title">
+      <FullBleedSection padY id="message-support" aria-labelledby="message-support-title">
         <ContentContainer>
           <SectionHeading
-            id="ai-title"
+            id="message-support-title"
             align="left"
             eyebrow="Guidance (future)"
             title="Helper & guided flows"
-            subtitle="A future release can use AI to explain steps, plain-language Q&A, and routes—without ever storing or inferring your official registration status. OpenAI is not the source of truth."
+            subtitle="A future release can add conversation tools and message support for plain-language Q&A and routes—without ever storing or inferring your official registration status. Arkansas’s official voter systems remain the source of truth for registration."
           />
           <div className={cn(card, "mt-4 max-w-2xl")}>
             <p className="text-sm text-kelly-text/80">
-              Placeholder for a guided assistant. It will be labeled as <strong>non-official</strong> and will always defer
+              Placeholder for guided organizing support. It will be labeled as <strong>non-official</strong> and will always defer
               confirmation to VoterView or, when available, clearly labeled <strong>campaign file assistance</strong> (see
               compliance copy below).
             </p>

@@ -12,6 +12,8 @@ import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/config/site";
 import { getPageBlockPayload, type HeroBlockPayload } from "@/lib/content/page-blocks";
 import { CirculatingInitiativesSection } from "@/components/direct-democracy/CirculatingInitiativesSection";
+import { EditorialCampaignPhoto } from "@/components/about/EditorialCampaignPhoto";
+import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
 
 export const metadata: Metadata = {
   title: "Ballot access & initiatives",
@@ -54,6 +56,7 @@ const pipelineSteps = [
 
 export default async function DirectDemocracyPage() {
   const hero = await getPageBlockPayload<HeroBlockPayload>("direct-democracy", "hero");
+  const [ddTrail] = trailPhotosForSlot("directDemocracy");
 
   return (
     <>
@@ -72,6 +75,19 @@ export default async function DirectDemocracyPage() {
           Arkansas ballot process (state rules)
         </Button>
       </PageHero>
+
+      {ddTrail ? (
+        <FullBleedSection variant="subtle" className="!pt-0" aria-label="Campaign trail photography">
+          <ContentContainer wide className="py-8 md:py-10">
+            <EditorialCampaignPhoto
+              variant="breakout"
+              photo={ddTrail}
+              kicker="In the work"
+              caption="Initiatives start with neighbors, not with secret rooms—clarity, discipline, and respect for the ballot."
+            />
+          </ContentContainer>
+        </FullBleedSection>
+      ) : null}
 
       <FullBleedSection aria-labelledby="why-dd-heading">
         <ContentContainer>

@@ -87,7 +87,7 @@ export async function POST(req: Request) {
           `We hope we can earn your vote in November. If you’re able, donating through this site keeps the campaign reaching every county—and we’d love to have you on the team via Get involved.`;
       } else if (!isOpenAIConfigured()) {
         answer =
-          `Here are the on-site pages that best matched your search (see Sources below). A full conversational summary needs the AI service enabled on the server—for now, open a title that looks right. ` +
+          `Here are the on-site pages that best matched your search (see Sources below). A full conversational summary needs the semantic index and message support enabled on the server—for now, open a title that looks right. ` +
           `Still stuck? ${KELLY_PUBLIC_CONTACT_EMAIL}. We’re building a campaign that shows up for all 75 counties, and we hope we can earn your vote in November. Chip in on Donate if you can, and Get involved if you want to join us.`;
       } else {
         try {

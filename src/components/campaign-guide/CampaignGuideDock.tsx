@@ -163,11 +163,11 @@ export function CampaignGuideDock() {
         const assistantText =
           json.message ||
           (json.error === "not_configured"
-            ? "OpenAI isn’t configured on the server. Add OPENAI_API_KEY to .env and restart."
+            ? "The conversation tool isn’t available on this site build yet—browse the menu or email kelly@kellygrappe.com."
             : json.error === "search_failed"
               ? "Couldn’t reach the site’s knowledge base—try browsing the menu, or email kelly@kellygrappe.com with what you needed."
               : json.error === "openai_chat_failed"
-                ? "The AI model request failed (quota, model name, or key). If it keeps happening, email kelly@kellygrappe.com."
+                ? "The guide couldn’t finish that request (service limit or site configuration). If it keeps happening, email kelly@kellygrappe.com."
                 : json.error === "assistant_failed"
                   ? "Something went wrong on our end. Try again—or email kelly@kellygrappe.com if it persists."
                   : json.error || "The guide couldn’t answer that right now. Email kelly@kellygrappe.com if you need a human.");
@@ -209,7 +209,7 @@ export function CampaignGuideDock() {
         </span>
         <span className="pr-0.5">Ask Kelly</span>
         <span className="hidden rounded-full bg-kelly-gold/25 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-kelly-navy sm:inline">
-          AI guide
+          Message support
         </span>
       </button>
 

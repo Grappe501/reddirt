@@ -17,7 +17,7 @@ const bodySchema = z.object({
 });
 
 /**
- * AI-assisted date ideas using the same live calendar digest hosts see (public + movement).
+ * Calendar-aware host date suggestions using the same live digest hosts see (public + movement).
  */
 export async function POST(request: Request) {
   const ip = clientIp(request);
@@ -28,7 +28,11 @@ export async function POST(request: Request) {
 
   if (!isOpenAIConfigured()) {
     return NextResponse.json(
-      { ok: false, error: "openai_unconfigured", message: "AI suggestions require OPENAI_API_KEY on the server." },
+      {
+        ok: false,
+        error: "openai_unconfigured",
+        message: "Date suggestions aren’t available on this site build yet—the planning helper needs the server-side search service enabled.",
+      },
       { status: 503 },
     );
   }
@@ -102,7 +106,7 @@ Rules:
     return NextResponse.json({
       ok: true,
       suggestions: [] as { date: string; reason: string }[],
-      caveat: "Could not parse AI response; try again or pick a date with the calendar helper above.",
+      caveat: "Could not parse the planning response; try again or pick a date with the calendar helper above.",
       raw,
     });
   }

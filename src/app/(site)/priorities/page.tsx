@@ -13,6 +13,8 @@ import { getPageBlockPayload, type HeroBlockPayload } from "@/lib/content/page-b
 import { getHostOrVisitRequestHref } from "@/lib/county/official-links";
 import { EditorialCampaignPhoto } from "@/components/about/EditorialCampaignPhoto";
 import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
+import { ContentImage } from "@/components/media/ContentImage";
+import { media } from "@/content/media/registry";
 
 export const metadata: Metadata = pageMeta({
   title: "Priorities for the office",
@@ -189,6 +191,27 @@ export default async function PrioritiesPage() {
           />
           <div className="mt-12">
             <PillarGrid items={[...pillars]} cols="2" />
+          </div>
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection padY className="border-y border-kelly-text/10" aria-label="Civic and economic context">
+        <ContentContainer wide>
+          <div className="grid gap-6 md:grid-cols-2 md:gap-8">
+            <div className="relative min-h-[200px] overflow-hidden rounded-card border border-kelly-text/10 shadow-[var(--shadow-soft)] sm:min-h-[240px]">
+              <ContentImage
+                media={media.splitDemocracy}
+                warmOverlay
+                className="absolute inset-0 h-full w-full min-h-full object-cover"
+              />
+            </div>
+            <div className="relative min-h-[200px] overflow-hidden rounded-card border border-kelly-text/10 shadow-[var(--shadow-soft)] sm:min-h-[240px]">
+              <ContentImage
+                media={media.splitLabor}
+                warmOverlay
+                className="absolute inset-0 h-full w-full min-h-full object-cover"
+              />
+            </div>
           </div>
         </ContentContainer>
       </FullBleedSection>

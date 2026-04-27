@@ -202,6 +202,7 @@ export async function getRelationalContactDetail(id: string) {
           contactedBy: { select: { id: true, email: true, name: true } },
         },
       },
+      _count: { select: { voterInteractions: true } },
       voterSignals: {
         orderBy: { createdAt: "desc" },
         take: 50,

@@ -62,6 +62,12 @@ const nextConfig: NextConfig = {
         destination: "/from-the-road",
         permanent: false,
       },
+      /** Canonical hub is `/messages` (Pass 06); alias for bookmarks and external links. */
+      {
+        source: "/conversations",
+        destination: "/messages",
+        permanent: true,
+      },
     ];
   },
   // pdf-parse must stay external: its test harness references missing test/ PDFs and breaks the bundler.

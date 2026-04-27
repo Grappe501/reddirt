@@ -20,6 +20,7 @@ import {
   WorkflowTemplateTrigger,
 } from "@prisma/client";
 import { getCampaignRegistrationBaselineUtc } from "../src/config/campaign-registration-baseline";
+import { ARKANSAS_COUNTY_REGISTRY, regionMetaForId } from "../src/lib/county/arkansas-county-registry";
 import { seedSlice4WorkflowTemplates } from "./seed-slice4-workflows";
 
 const prisma = new PrismaClient();
@@ -188,6 +189,23 @@ async function main() {
       update: {
         sourceDetail: "ACS 5-year (demo) — not verified",
         asOfYear: 2022,
+      },
+    });
+  }
+
+  const seededSlugs = new Set((await prisma.county.findMany({ select: { slug: true } })).map((r) => r.slug));
+  for (const reg of ARKANSAS_COUNTY_REGISTRY) {
+    if (seededSlugs.has(reg.slug)) continue;
+    const short = regionMetaForId(reg.regionId)?.shortLabel ?? null;
+    await prisma.county.create({
+      data: {
+        slug: reg.slug,
+        fips: reg.fips,
+        displayName: reg.displayName,
+        regionLabel: short,
+        sortOrder: 200 + reg.sortOrder,
+        showOnStatewideMap: true,
+        published: true,
       },
     });
   }
