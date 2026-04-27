@@ -174,4 +174,27 @@ See `CAMPAIGN_STRATEGY_AND_LIFECYCLE_MANUAL.md` **§7** **(Floor** 250, **Base**
 - **Rural** **counties** **in** **the** **tour** **increase** **house** **party** **and** **coordinator** **prospect** **pipeline** **when** **48–72h** **follow**-**up** **exists** **—** **applause**-**only** **does** **not** **count** **as** **acceleration.**  
 - **Pair** **meeting** **nights** **with** **travel** **and** **paid** **earned** **local** **touch** **per** **`WEEKLY_TRAVEL_AND_EVENT_PROJECTION_SYSTEM.md` §22** **+** **`PAID_MEDIA_AND_LONG_TERM_INFRASTRUCTURE_PLAN.md` §15.**
 
-**Last updated:** 2026-04-27 (Pass 3B + 3C + 3D + **3E** + **3F**)
+---
+
+## Pass 3G — Structured call time, drive-time calls, visibility lanes, **proposed** ambassador model, list-driven asks
+
+**Chapters:** `CALL_TIME_AND_CANDIDATE_FUNDRAISING_EXECUTION_PLAN.md`, `POSTCARDS_SIGNS_BANNERS_AND_VISIBILITY_FUNDRAISING_PLAN.md`, `GRASSROOTS_FUNDRAISING_AMBASSADOR_AND_COMMISSION_MODEL.md`, `CONTACT_LIST_INTAKE_AND_RELATIONSHIP_DATABASE_PLAN.md`, `IMMERSION_STOPS_AND_LOCAL_HOST_SYSTEM.md` (as relevant).
+
+- **Structured** **call** **time** **(candidate):** **drive-time** where **safe** **+** **practical;** **one** **recurring** **after-work** **evening** **/ week** (CM/treasurer); see `CALL_TIME...` **+** `MANUAL_INFORMATION_REQUESTS` **§**28.  
+- **Postcards,** **yard** **signs,** **3×6** **/ 4×8** **banners,** **billboard**-**style** **\—** **sponsor** **ask** **lane** (treasurer) **+** **MCE/NDE** **(copy);** **\~$200** **banner** **as** **planning** **bracket,** **not** a **signed** **price** **(verify).**  
+- **Grassroots** **fundraising** **ambassador** **/** **incentive: **\—** **proposed** **\—** **pending** **treasurer,** **counsel,** **Arkansas** **finance** **review;** **no** **operational** **commission** **until** **signed** \— `GRASSROOTS_...`  
+- **County** **party** **contact** **list** **\→** **warm** **Dem** **\→** **asks** only **with** **consent** **/ provenance** **\—** `CONTACT_LIST...` **+** `MANUAL_INFORMATION_REQUESTS` **§**26.  
+- **Event** **host** **+** **immersion** **stops** **\→** **house** **party** **/ donor** **follow-up: **\—** `IMMERSION_...` **+** **3F** **tour** **discipline.**
+
+---
+
+## Pass 3H — Database financial records, weekly raises, early spend lanes
+
+**Chapter:** `FINANCIAL_BASELINE_AND_BUDGET_CALIBRATION_PLAN.md` **+** `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` **§**36**.**
+
+- **Database** **`FinancialTransaction`** **(CONFIRMED)** **supersedes** **rough** **narrative** **estimates** **in** **this** **plan** **and** **strategy** **§2** **where** **they** **conflict** **—** **DRAFT** **rows** **are** **not** **operational** **truth** **until** **confirmed** **(see** **`truth-snapshot` / `budget-queries`).**  
+- **Fundraising** **progression** **should** **be** **charted** **by** **week** **(or** **treasurer** **reporting** **period)** **using** **reconciled** **inflows** **—** **not** **a** **single** **flat** **rate** **from** **startup** **to** **August.**  
+- **Last** **three** **weeks** **acceleration** **should** **be** **modeled** **as** **its** **own** **segment** **(higher** **/ lower** **/ flat** **weekly** **raise)** **vs** **early** **baseline** **—** **do** **not** **annualize** **a** **lump** **or** **one**-**off** **event** **week.**  
+- **Early** **spend** **categories** **(mapped** **to** `CostBearingWireKind` **via** `FinancialTransaction.category`) **inform** **next** **asks** **and** **budget** **lanes** **(see** `FINANCIAL_BASELINE_AND_BUDGET_CALIBRATION_PLAN.md` **§7** **and** **§**10**–**16**).**
+
+**Last updated:** 2026-04-28 (Pass 3B + 3C + 3D + **3E** + **3F** + **3G** + **3H**)

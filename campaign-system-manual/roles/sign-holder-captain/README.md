@@ -1,5 +1,7 @@
 # Role manual — Sign holder / visibility captain
 
+**Pass 4 book-style playbook:** [sign-holder-captain.md](../../playbooks/roles/sign-holder-captain.md)
+
 ## 1. Role purpose
 Coordinate **lawn/road** **visibility** in **geography**-scoped way without **doxxing** **homes** (see `PRECINCT_SIGN_HOLDER...` **workflow**).
 

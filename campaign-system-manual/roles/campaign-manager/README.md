@@ -1,5 +1,7 @@
 # Role manual — Campaign manager
 
+**Pass 4 book-style playbook:** [campaign-manager.md](../../playbooks/roles/campaign-manager.md)
+
 ## 1. Role purpose
 Day-to-day execution: priorities, triage, field/comms/finance handoffs — primary human owner of the Workbench queue culture.
 

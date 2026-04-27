@@ -1,5 +1,7 @@
 # Role manual — Owner
 
+**Pass 4 book-style playbook:** [owner.md](../../playbooks/roles/owner.md)
+
 ## 1. Role purpose
 Policy, final authority, break-glass, vendor and legal posture for the Campaign Operating System — not the default daily Workbench triage unless the campaign is a solo or tiny operation.
 

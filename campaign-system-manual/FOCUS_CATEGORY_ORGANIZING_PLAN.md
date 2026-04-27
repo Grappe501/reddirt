@@ -143,8 +143,9 @@
 - **Counties** with **pre**-**existing** EHC or **civic** **ties** the **owner** can **name**.  
 - **Off**-**limits** or **sensitive** **groups** for **this** **cycle**.  
 - **Message** **boundaries** by **category** (internal style guide).  
-- **Tie** to `FOCUS_CATEGORY` **+** `WEEKLY_TRAVEL` **priority** **scores**; **Pass** **3F** **adds** **county**-**party** **/** **rural** **pairing** **inputs** **in** **weekly** **travel** **§22** **and** **the** **county** **rural** **plan.**
+- **Tie** to `FOCUS_CATEGORY` **+** `WEEKLY_TRAVEL` **priority** **scores**; **Pass** **3F** **adds** **county**-**party** **/** **rural** **pairing** **inputs** **in** **weekly** **travel** **§22** **and** **the** **county** **rural** **plan.**  
+- **Pass** **3G** **adds:** **60+** **postcard** **/ senior** **touch** **(with** `POSTCARDS_...` **+** **MCE);** **faith** **/ community** **venue** **lane** **(invitation** **\—** `FAITH_FIRE_...`);** **VFD** **and** **rural** **chamber** **lanes;** **senior** **/ veteran** **/ caregiver** **overlap** **(no** **monolith);** **local** **host** **pathway** **\—** `IMMERSION_...`
 
 ---
 
-**Last updated:** 2026-04-27 (Pass 3E + **3F**)
+**Last updated:** 2026-04-28 (Pass 3E + **3F** + **3G**)

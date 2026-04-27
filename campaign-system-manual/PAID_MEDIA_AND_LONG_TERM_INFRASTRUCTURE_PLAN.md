@@ -190,4 +190,21 @@ A **full** **community** **team** **(aspirational** **per** **county,** **not** 
 
 ---
 
-**Last updated:** 2026-04-27 (Pass 3C + 3D + **3E** + **3F**)
+## 16. Pass 3G — Direct mail (60+), visibility sponsors, local promotion packages, listening tour
+
+**Companions:** `POSTCARDS_SIGNS_BANNERS_AND_VISIBILITY_FUNDRAISING_PLAN.md`, `COMMUNITY_ELECTION_INTEGRITY_AND_BALLOT_INITIATIVE_LISTENING_TOUR.md`, this file §2–8 (governance), `WEEKLY_TRAVEL_AND_EVENT_PROJECTION_SYSTEM.md` §23.
+
+- **60+** **postcards** / **direct** **mail:** MCE/NDE on **copy;** **treasurer** on **solicitation** and **disclosure;** use **match** **codes,** not fake precision on response rates.  
+- **Visibility** **(banner,** **sign** **sponsors,** **kits):** `POSTCARDS_SIGNS_BANNERS...` **+** **treasurer;** local **vendors** **/ quotes** not in this repo.  
+- **Local** **promotion** **per** **event:** **only** when **a** **named** **follow-up** **owner** exists (V.C. / county / comms)—no “boost” to empty handoffs.  
+- **Press** / **comms** for **listening** **tour** **\—** `COMMUNITY_ELECTION_INTEGRITY...` **+** **earned** first, **compliant** **paid** as **governed** **(§2–8).**  
+
+---
+
+## 17. Pass 3H — Cross-link: financial gate before any paid escalation
+
+**Companion:** `FINANCIAL_BASELINE_AND_BUDGET_CALIBRATION_PLAN.md` (ledger rules, **CONFIRMED** **actuals,** COH, budget scenarios, stretch **unlock**).
+
+**Rule:** **No** paid **media,** **postcard,** **banner,** **billboard,** **sign,** or **visibility** **escalation** should **be** **treated** **as** **funded** **until** **checked** **against** **CONFIRMED** **ledger** **actuals** (`FinancialTransaction` **per** `getBudgetActualsByWire` in `budget-queries.ts` **and** `FINANCIAL_BASELINE_AND_BUDGET_CALIBRATION_PLAN.md` **+** **strategy** **Part** **H**), **treasurer** **COH,** **active** **budget** **scenario** (survival / base / momentum / **stretch**), **and** **stretch**-**unlock** **status** **(two**-**consecutive** **reporting** **periods,** **strategy** **Part** **B).** **“Approved** **to** **plan”** **≠** **“cash** **cleared** **to** **spend.”**
+
+**Last updated:** 2026-04-28 (Pass 3C + 3D + **3E** + **3F** + **3G** + **3H**)

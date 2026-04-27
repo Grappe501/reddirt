@@ -213,4 +213,23 @@ Risks: | Conflicts w/ public calendar:
 
 ---
 
-**Last updated:** 2026-04-27 (Pass 3E + **3F**)
+## 23. Pass 3G addendum — Candidate windows, immersion, hosts, faith/listening tour, 75×3, Google Calendar
+
+**Companions:** `IMMERSION_STOPS_AND_LOCAL_HOST_SYSTEM.md`, `FAITH_FIRE_CHAMBER_AND_COMMUNITY_EVENT_OUTREACH_PLAN.md`, `COMMUNITY_ELECTION_INTEGRITY_AND_BALLOT_INITIATIVE_LISTENING_TOUR.md`, `GOOGLE_CALENDAR_AND_EVENT_PIPELINE_OPERATING_SYSTEM.md`.
+
+- **Candidate** **windows** (breakfast, lunch, after-5; limited PTO) **\—** adjust **§5–6** scores with **CM,** not infinite daytime stops (`IMMERSION_...`, `MANUAL_INFORMATION_REQUESTS` §28).  
+- **2–3** **day** **immersion** **\—** require **local** **host/handler**; if missing, **down-rank** or **delay** (no OIS “heat” without people).  
+- **Faith** **/ VFD** **/ chamber** **/ community** **\—** per `FAITH_FIRE_CHAMBER...` (invitation-first for worship spaces).  
+- **Community** **election** **integrity** **listening** **tour** (May through early Aug) **\—** separate travel **band,** `COMMUNITY_ELECTION_INTEGRITY...`  
+- **75** **counties** **×** **≥3** **visits** **\—** planning coverage map; honest **TBD**; tie to `GOOGLE_CALENDAR...` and `SIMULATION_...` §24.  
+- **Google** **Calendar** **statuses** **\→** `CampaignEvent` **\—** reconciliation SOP; **no** public claim of full auto-sync (`GOOGLE_CALENDAR...` §17).
+
+## 24. Pass 3H addendum — Travel spend from ledger, ROI discipline
+
+**Companion:** `FINANCIAL_BASELINE_AND_BUDGET_CALIBRATION_PLAN.md` **(Pass** **3H)**, **`FinancialTransaction`** **`relatedEventId`**, `MANUAL_INFORMATION_REQUESTS` **§**36**.**
+
+- **Actual** **financial** **travel** **spend** **(`category` **→** **travel** **/ **mileage** **/ **reimbursement** **→** **`travel_mileage_reimbursement` **wire) **should** **calibrate** **future** **weekly** **travel** **caps** **and** **per-mile** **/ **per-trip** **budgets** **—** **treasurer** **sets** **the** **policy** **math**, **not** **this** **manual.**  
+- **Early** **travel** **and** **related** **materials** **should** **be** **linked** **to** **`CampaignEvent`** **where** **possible** **via** **`relatedEventId`** **on** **CONFIRMED** **rows** **so** **travel** **ROI** **is** **not** **invented** **from** **OIS** **heat** **alone.**  
+- **Travel** **ROI** **discipline** **=** **actual** **database** **financial** **records** **where** **populated,** **plus** **Workbench** **/ **ladder** **/ **P5** **proxies,** **not** **a** **single** **fictional** **multiplier.**
+
+**Last updated:** 2026-04-28 (Pass 3E + **3F** + **3G** + **3H**)

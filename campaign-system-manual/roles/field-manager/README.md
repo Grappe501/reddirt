@@ -1,5 +1,7 @@
 # Role manual — Field manager
 
+**Pass 4 book-style playbook:** [field-manager.md](../../playbooks/roles/field-manager.md)
+
 ## 1. Role purpose
 Own field capacity: captains, turf keys (honest to DATA-1), event throughput vs plan — not voter microtargeting to volunteers on public web.
 

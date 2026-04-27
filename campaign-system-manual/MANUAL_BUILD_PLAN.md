@@ -74,23 +74,58 @@
 - **Report:** `MANUAL_PASS_3F_COMPLETION_REPORT.md`  
 - **No** application code, **no** DB/auth/migrations/deps; **no** invented meeting dates or chairs; **county party meeting mapping required** when schedules are unverified
 
-## Pass 4 (recommended next): Role playbooks, training, dashboard attachment
+## Pass 3G (complete): Immersion, contact lists, call time, institutional outreach, listening tour, visibility fundraising, training, path-to-win data, calendar pipeline
+
+**Script name:** *Manual Pass 3G — Immersion Stops, Contact Intake, Call Time, Faith/Fire/Chamber, Listening Tour, Visibility Fundraising, Grassroots Ambassador Model, Training, Political Analysis, Google Calendar Pipeline*  
+
+- **Delivered:** `IMMERSION_STOPS_AND_LOCAL_HOST_SYSTEM.md`, `CONTACT_LIST_INTAKE_AND_RELATIONSHIP_DATABASE_PLAN.md`, `CALL_TIME_AND_CANDIDATE_FUNDRAISING_EXECUTION_PLAN.md`, `FAITH_FIRE_CHAMBER_AND_COMMUNITY_EVENT_OUTREACH_PLAN.md`, `COMMUNITY_ELECTION_INTEGRITY_AND_BALLOT_INITIATIVE_LISTENING_TOUR.md`, `POSTCARDS_SIGNS_BANNERS_AND_VISIBILITY_FUNDRAISING_PLAN.md`, `GRASSROOTS_FUNDRAISING_AMBASSADOR_AND_COMMISSION_MODEL.md` (proposed only — legal banner in file), `TRAINING_AND_TRAINER_CERTIFICATION_SYSTEM.md`, `POLITICAL_ANALYSIS_AND_PATH_TO_WIN_DATA_MODEL.md`, `GOOGLE_CALENDAR_AND_EVENT_PIPELINE_OPERATING_SYSTEM.md`  
+- **Updated:** `CAMPAIGN_STRATEGY_AND_LIFECYCLE_MANUAL.md` (Part G), `FUNDRAISING_AND_VOLUNTEER_ACCELERATION_PLAN.md`, `WEEKLY_TRAVEL_AND_EVENT_PROJECTION_SYSTEM.md`, `COUNTY_PARTY_AND_RURAL_ORGANIZING_PLAN.md`, `COUNTY_PARTY_MEETING_TOUR_SYSTEM.md`, `SIMULATION_AND_FORECASTING_SYSTEM_PLAN.md`, `PAID_MEDIA_AND_LONG_TERM_INFRASTRUCTURE_PLAN.md`, `PRECINCT_PATH_TO_VICTORY_AND_CANVASSING_PLAN.md`, `FOCUS_CATEGORY_ORGANIZING_PLAN.md`, `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` (§**26**–**35**), indexes, this build plan, `SYSTEM_READINESS_REPORT.md`  
+- **Report:** `MANUAL_PASS_3G_COMPLETION_REPORT.md`  
+- **No** application code, **no** DB/auth/migrations/deps; **no** real PII samples; **no** unsourced opponent claims; commission / ambassador model **uncounseled** until treasurer + counsel
+
+## Pass 3H (complete): Financial baseline, burn rate, fundraising progression, budget-to-field calibration (evidence rules)
+
+**Script name:** *Manual Pass 3H — Financial Baseline, Burn-Rate, Fundraising Progression, and Budget-to-Field Calibration*  
+
+- **Delivered:** `FINANCIAL_BASELINE_AND_BUDGET_CALIBRATION_PLAN.md` (22 sections: executive summary, ledger rules, spend categories, burn, COH, field/paid/travel/visibility/ask links, budget scenarios, weekly rhythm, dashboard spec, simulation inputs, gaps, Steve list — **no** **invented** **dollar** **totals;** **repo** **inspection** found **no** `FinancialTransaction` **amounts** in `prisma/seed.ts`)  
+- **Updated:** `CAMPAIGN_STRATEGY_AND_LIFECYCLE_MANUAL.md` (**Part** **H**), `FUNDRAISING_AND_VOLUNTEER_ACCELERATION_PLAN.md` (Pass 3H addendum), `SIMULATION_AND_FORECASTING_SYSTEM_PLAN.md` (§**25**), `WEEKLY_TRAVEL_AND_EVENT_PROJECTION_SYSTEM.md` (§**24**), `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` (§**36** + footer), indexes, `SYSTEM_READINESS_REPORT.md`  
+- **Read for evidence (paths only, no app edits):** `prisma/schema.prisma` (`FinancialTransaction`, `BudgetPlan`); `src/lib/campaign-engine/budget-queries.ts`, `budget.ts`, `src/lib/campaign-engine/truth-snapshot.ts` (ledger status); `prisma/seed.ts` (no financial seed rows)  
+- **Report:** `MANUAL_PASS_3H_COMPLETION_REPORT.md`  
+- **No** application code, **no** DB/migrations; **no** public finance claims from raw `FinancialTransaction` without treasurer/counsel
+
+## Pass 4 (complete, markdown): Role playbooks, training index, dashboard rules, authority / escalation
 
 **Script name:** *Manual Pass 4 — Role Playbooks, Training Modules, and Dashboard Attachment*  
 
-- Turn priority roles into **deeper** book-style chapters (beyond Pass 2 operational role READMEs)  
-- **Training** modules by role; **onboarding** checklists  
-- **Dashboard** / **manual** attachment **rules** (first 24h, 7d, 30d **task** templates)  
-- **Promotion** / **sideways** **pathway** **logic** (procedural, not app code)  
-- **Prepare** the **web** **manual** **presentation** **structure** for **role-based** **navigation** (`web-presentation/WEB_MANUAL_*`)  
-- **Pass 3B + 3C + 3D + 3E + 3F — 27-role** priority for Pass 4 depth: **(1–23)** per `MANUAL_PASS_3E_COMPLETION_REPORT.md` **(same** **numbered** **list** **as** **3D** **eighteen** **+** **five** 3E **roles)** **+** **(24)** **county** **party** **relationship** **steward** **—** **(25)** **rural** **organizing** **lead** **—** **(26)** **county** **party** **meeting** **scheduler** **—** **(27)** **surrogate** **/** **volunteer** **presenter** **coordinator** **(titles** **with** **CM** **in** **Pass** **4).** **Canonical** **order:** `MANUAL_PASS_3F_COMPLETION_REPORT.md`.
+- **Delivered:** `playbooks/README.md` and index/authority docs (`ROLE_PLAYBOOK_INDEX`, `DASHBOARD_ATTACHMENT_RULES`, `TRAINING_MODULE_INDEX`, `TASK_TEMPLATE_INDEX`, `ROLE_KPI_INDEX`, `APPROVAL_AUTHORITY_MATRIX`, `ESCALATION_PATHS`, `PROMOTION_AND_SIDEWAYS_PATHWAYS`, `ROLE_READINESS_MATRIX`); **41** × `playbooks/roles/*.md` (25 sections each, Pass 4 book-style; generator `playbooks/_gen_role_playbooks.py` optional)  
+- **Updated:** `CAMPAIGN_STRATEGY_AND_LIFECYCLE_MANUAL.md` **Part I**; `TRAINING_AND_TRAINER_CERTIFICATION_SYSTEM.md` (Pass 4 pointer); `MANUAL_TABLE_OF_CONTENTS.md`, `WORKFLOW_INDEX.md`, `SYSTEM_READINESS_REPORT.md` (headers / cross-refs), `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` **§**37; `roles/*/**/README.md` where 1:1 match to a playbook filename (link only)  
+- **Report:** `MANUAL_PASS_4_COMPLETION_REPORT.md`  
+- **Not in Pass 4:** app code, Prisma, secrets, or workflow redrafts (Pass 5+)
 
-(Older optional track: *workflow second drafts* with redacted screenshot placeholders and Prisma map — can merge with Pass 4 or run as Pass 4b.)
+## Pass 4B (complete, markdown): Interactive strategy Workbench, scenario sliders, segmentation, iPad/desktop UX
 
-## Pass 5: Message Engine + Narrative Distribution
+**Script name:** *Manual Pass 4B — Interactive Strategy Workbench, Scenario Sliders, Segmented Targeting, KPI Impact Modeling, and iPad-First Dashboard Design*  
 
-- Chapters 08–09 expanded from `docs/MESSAGE_CONTENT_ENGINE_SYSTEM_PLAN.md` and `docs/NARRATIVE_DISTRIBUTION_ENGINE_SYSTEM_PLAN.md`  
-- Align vocabulary with `docs/MESSAGE_SYSTEM_LANGUAGE_AUDIT_REPORT.md`
+- **Delivered:** `INTERACTIVE_STRATEGY_WORKBENCH_AND_SCENARIO_SLIDER_SYSTEM.md` (18 slider rows + SOPs), `SEGMENTED_CAMPAIGN_TARGETING_AND_MESSAGE_STRATEGY_PLAN.md`, `IPAD_MOBILE_AND_DESKTOP_DASHBOARD_DESIGN_REQUIREMENTS.md`, `CANDIDATE_AND_CAMPAIGN_MANAGER_STRATEGY_DASHBOARD_REQUIREMENTS.md`  
+- **Updated:** `SIMULATION_AND_FORECASTING_SYSTEM_PLAN.md` (§**26**), `CAMPAIGN_STRATEGY_AND_LIFECYCLE_MANUAL.md` (Part J), `playbooks/DASHBOARD_ATTACHMENT_RULES.md`, `playbooks/APPROVAL_AUTHORITY_MATRIX.md`, `playbooks/ROLE_KPI_INDEX.md`, `playbooks/README.md`, `MANUAL_TABLE_OF_CONTENTS.md`, `WORKFLOW_INDEX.md`, `SYSTEM_READINESS_REPORT.md`, `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` (§**38**)  
+- **Report:** `MANUAL_PASS_4B_COMPLETION_REPORT.md`  
+- **Not in 4B:** app code, DB, auth, migrations, dependencies, secrets, commits; **no** new voter **segments** or “app **ready**” **claims** **without** `SYSTEM_READINESS_REPORT.md`
+
+## Pass 5 (complete, markdown): Workbench operator runbooks, strategy-to-task, CM/candidate SOP, segmented distribution
+
+**Script name:** *Manual Pass 5 — Workflow SOPs, Workbench Runbooks, and Strategy-to-Task Automation*  
+
+- **Delivered:** `WORKBENCH_OPERATOR_RUNBOOK.md`, `STRATEGY_TO_TASK_EXECUTION_RUNBOOK.md`, `CM_DAILY_AND_WEEKLY_OPERATING_SYSTEM.md`, `CANDIDATE_DASHBOARD_AND_DECISION_RUNBOOK.md`, `SEGMENTED_MESSAGE_AND_DISTRIBUTION_SOP.md`  
+- **Updated:** `MANUAL_TABLE_OF_CONTENTS.md`, `WORKFLOW_INDEX.md`, `SYSTEM_READINESS_REPORT.md`, `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` (§**39**), `MANUAL_BUILD_PLAN.md` (this file)  
+- **Report:** `MANUAL_PASS_5_COMPLETION_REPORT.md`  
+- **Not in Pass 5:** app code, Prisma, or new workflow routes; **not** a claim that 4B slider UI or iPad-hardening is complete for all admin flows
+
+## Pass 5B (recommended next, markdown): Message Engine + Narrative Distribution depth
+
+- Expand manual chapters 08–09 from `RedDirt/docs/MESSAGE_CONTENT_ENGINE_SYSTEM_PLAN.md` and `RedDirt/docs/NARRATIVE_DISTRIBUTION_ENGINE_SYSTEM_PLAN.md`; align vocabulary with `RedDirt/docs/MESSAGE_SYSTEM_LANGUAGE_AUDIT_REPORT.md`  
+- **Or** (owner choice): **Pass 6** (county / OIS productization) per below — **or** P5 **engineering** build tickets (outside this manual lane)
+
+(Older optional track: *workflow second drafts* with redacted screenshot placeholders and Prisma map — can merge with **Pass 5B** or run as 5b.)
 
 ## Pass 6: County / OIS productization
 

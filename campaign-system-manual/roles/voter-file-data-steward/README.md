@@ -1,5 +1,7 @@
 # Role manual — Voter file / data steward (day-to-day)
 
+**Pass 4 book-style playbook:** [voter-file-data-steward.md](../../playbooks/roles/voter-file-data-steward.md)
+
 ## 1. Role purpose
 Execute **import**, **hygiene**, **match** **QA**, and **pre-export** checks under **data** lead’s policy — not **strategy** or **messaging** ownership.
 

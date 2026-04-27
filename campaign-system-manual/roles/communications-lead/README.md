@@ -1,5 +1,7 @@
 # Role manual — Communications lead
 
+**Pass 4 book-style playbook:** [communications-lead.md](../../playbooks/roles/communications-lead.md)
+
 ## 1. Role purpose
 Own channel mix, calendar, and comms workbench health — co-parent of Message Engine and Narrative distribution with message lead and NDE lead.
 

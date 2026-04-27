@@ -1,8 +1,8 @@
 # Simulation and forecasting system — plan (future build)
 
 **Lane:** `RedDirt/` (design only)  
-**Date:** 2026-04-27  
-**Status:** **Manual Pass 3** + **3B** + **3C** + **3D** + **3E** — **not** application code. **No** “prediction certainty.” Use: **forecast**, **scenario**, **projection**, **readiness model**, **simulation** (private/staff). **Public** product language: **Campaign Companion**, **Guided Campaign System**, **Field Intelligence** — not “AI” as a brand for this layer.
+**Date:** 2026-04-28  
+**Status:** **Manual Pass 3** + **3B** + **3C** + **3D** + **3E** + **3F** + **3G** + **3H** + **4B** — **not** application code. **No** “prediction certainty.” Use: **forecast**, **scenario**, **projection**, **readiness model**, **simulation** (private/staff). **Public** product language: **Campaign Companion**, **Guided Campaign System**, **Field Intelligence** — not “AI” as a brand for this layer. **Pass** **4B** (§**26**): **slider**-**driven** **scenarios,** **assumptions** **registry,** **iPad**-**first** **UX** **design** **—** **docs** only **unless** product **build** **completes** **(see** **`INTERACTIVE_STRATEGY_WORKBENCH_...`**) **.**
 
 ---
 
@@ -187,4 +187,59 @@ Give **CM**, **owner**, and **leads** a **shared, honest** way to:
 
 **Gaps (3F):** **No** `CountyParty` **or** **dedicated** **meeting** **log** **model;** **SOP** **+** `CampaignEvent` **+** **spreadsheets.**
 
-**Last updated:** 2026-04-27 (Pass 3 + 3B + 3C + 3D + **3E** + **3F**)
+## 24. Pass 3G extensions (adaptive doctrine, lists, call time, visibility, pipeline, 75×3, training, politics)
+
+**Manual sources:** `CONTACT_LIST_INTAKE_AND_RELATIONSHIP_DATABASE_PLAN.md`, `CALL_TIME_AND_CANDIDATE_FUNDRAISING_EXECUTION_PLAN.md`, `POSTCARDS_SIGNS_BANNERS_AND_VISIBILITY_FUNDRAISING_PLAN.md`, `GOOGLE_CALENDAR_AND_EVENT_PIPELINE_OPERATING_SYSTEM.md`, `POLITICAL_ANALYSIS_AND_PATH_TO_WIN_DATA_MODEL.md`, `IMMERSION_STOPS_AND_LOCAL_HOST_SYSTEM.md`, `GRASSROOTS_FUNDRAISING_AMBASSADOR_AND_COMMISSION_MODEL.md` (commission **proposed** only), `TRAINING_AND_TRAINER_CERTIFICATION_SYSTEM.md`, `COMMUNITY_ELECTION_INTEGRITY_AND_BALLOT_INITIATIVE_LISTENING_TOUR.md`. **Directional** only; **no** invented vote totals or **guaranteed** ambassador payouts.
+
+| Model element | Notes |
+|---------------|--------|
+| **Adaptive plan updates** | Rebaseline when certified results, sourced polls, or major field truth changes; CM + analyst own review cadence (`MANUAL_INFORMATION_REQUESTS` §35). |
+| **Contact list import** | Rows with provenance and consent tier; null / blocked where import not cleared. |
+| **Call-time yield** | Connect rate, pledged $ (treasurer system only—no public dump). |
+| **Postcard response** | Match codes; suppress small-N public claims. |
+| **Banner / sign visibility** | Placements and units; no fake “impressions.” |
+| **Event pipeline load** | Count of events in `needs follow-up` / overdue tasks (GCal + Workbench SOP). |
+| **75 × 3 coverage** | % counties with ≥3 meaningful touches (define in ops); **unknown** if data thin. |
+| **Immersion ROI** | Intakes, $, ladder moves per immersion block (honest denominators). |
+| **Trainer capacity** | Certified trainers vs. training demand (scarcity input). |
+| **Grassroots ambassador** | Scenario table only; if commission not approved, model = 0 incentive or recognition-only per counsel. |
+| **Political / path-to-win** | Sourced baselines; LP and GOP-primary sensitivity as toggles, not invented margins. |
+
+**Gaps (3G):** Full automation of GCal↔`CampaignEvent`, list import UI, and ambassador accounting may not exist—SOP + spreadsheets until product.
+
+## 25. Pass 3H — Financial record ingestion, burn, and affordability (ledger + treasurer)
+
+**Manual:** `FINANCIAL_BASELINE_AND_BUDGET_CALIBRATION_PLAN.md` **(no** **invented** **dollars;** **repo** **seed** **has** **no** **fixture** **FinancialTransaction** **amounts** **in** **Pass** **3H** **inspection** **).**
+
+| Model element | Notes |
+|---------------|--------|
+| **Ledger ingestion assumptions** | **CONFIRMED** `FinancialTransaction` **rows** = **candidates** for **spend** **series**; **DRAFT** = **excluded** from **fiscal** **“actuals”** per `budget-queries.ts` / `truth-snapshot.ts`. **CONTRIBUTION** **type** = **inflow,** not **in** **spend**-**wire** **sum** in `getBudgetActualsByWire`. **Bank** **/** **processor** **/** **COH** = **treasurer** **inputs,** not **inferred** **from** **Git.** |
+| **Weekly raise progression** | **r_week** from **reconciled** **treasury** **+** **ledger** **(or** **processor** **exports** **joined** **to** **weeks** **)** — **separate** **windows** for **“early** **startup”** **vs** **“last** **three** **weeks”** **vs** **steady** **state.** |
+| **Burn-rate model** | **Sum** of **outflow**-**typed** **rows** **per** **period** **+** **by** **wire** **(after** **category** **→** **wire** **map).** |
+| **Field-plan affordability** | **OPEX** **trajectory** **+** **field** **event** **density** **(from** **events,** not **$** **alone).** |
+| **Volunteer-launch cost model** | **Software,** **training,** **merch** **batches** **in** **ledger** **wires;** **ramp** **only** when **V.C.** **capacity** **funded.** |
+| **Paid media ramp affordability** | `digital_advertising` **+** **print** **actuals** **vs** **COH** **floor;** **align** **Pass** **3C** **governance.** |
+| **Cash-on-hand floor** | **From** **treasurer**; **triggers** **to** **pause** **new** **buys** **(strategy** **Part** **B).** |
+| **“Last** **three** **weeks”** **acceleration** | **Boolean** or **mult** on **trailing** **3** **periods;** **do** **not** **treat** **as** **permanent** **slope** **without** **Steve** **/ **data** **confirm.** |
+
+**Gaps (3H):** **No** **automated** **bank** **feed;** **fees,** **refunds,** **pledges,** **in-kind,** **debts** **need** **treasury** **columns** **outside** **this** **repo** **or** **explicit** **ledger** **rows.**
+
+## 26. Pass 4B — Interactive strategy Workbench, scenario sliders, assumptions registry, and dashboard integration (manual)
+
+**Manual sources (Pass 4B, design only, no new app code in this pass):** `INTERACTIVE_STRATEGY_WORKBENCH_AND_SCENARIO_SLIDER_SYSTEM.md`, `CANDIDATE_AND_CAMPAIGN_MANAGER_STRATEGY_DASHBOARD_REQUIREMENTS.md`, `IPAD_MOBILE_AND_DESKTOP_DASHBOARD_DESIGN_REQUIREMENTS.md`, `SEGMENTED_CAMPAIGN_TARGETING_AND_MESSAGE_STRATEGY_PLAN.md`, `CAMPAIGN_STRATEGY_AND_LIFECYCLE_MANUAL.md` (Part J). **Vocabulary** remains **field**-only “simulation / scenario / forecast / readiness” — **not** public “AI prediction” or vote certainty.
+
+| Element | What it is | Guardrails |
+|---------|------------|------------|
+| **Scenario slider model** | 18+ levers in §22 of the interactive workbench doc (fundraising pace, call time, travel, capacity, spend classes, field programs, data completeness, candidate time) — each maps to **KPIs**, **readiness** layers, and **plan** sections. | **Preview** only until **LQA** approves **operational** use; **$**-linked to **treasurer** + **3H**; no auto-vendor, auto-export, or auto-**GOTV** **audience** |
+| **Editable assumptions registry** | Versioned key/value/owner/approver/downstream/audit (conceptual; spreadsheet until product). | **No** PII; **voter** universes = **compliance** **metadata** only |
+| **Candidate / CM dashboard integration** | Future **admin** (and scoped **candidate** brief) **panels** for **master** plan, **assumptions**, **A/B** scenarios, **KPI** movement. | **Candidate** = fewer **edits** by default; **see** `MANUAL_INFORMATION` **§**38 |
+| **KPI impact explanation** | Plain “what moved, first vs second order, confidence, data age” for each **slider** move. | **No** fake **precision**; show **stale** **data** state |
+| **Strategy impact preview** | Compare **readiness** and **resourcing** between **saved** scenarios. | **Not** “**win** **probability**” or **public** **vote** **claims** |
+| **Recruit / persuade / GOTV inputs** | **Lane** and **geography** **metadata** (aggregate) for **message** and **program** design — from `SEGMENTED_CAMPAIGN_TARGETING...`. | **No** **protected**-trait; **all** file/paid = **LQA** |
+| **iPad-first simulation interface** | **Touch** **sliders**, **Preview** on **tablet**; **approvals** may **default** to **desktop** for **complex** **multi-**lever **changes** until **policy** says otherwise. | **MDM** / **device** **rules** — MI **§**38 |
+| **Confidence bands** | Extend §13: every **row** in **output** = **L/M/H** **confidence** + **reason** (sample size, **stale** **treasurer** **data**). | No **single** point **as** “truth” |
+| **Approval gates** | **Propose** → **LQA** per **`playbooks/APPROVAL_AUTHORITY_MATRIX.md`** (Pass 4B **additions** for **strategy** and **targeting**). | **Override** to **O/C/T** as **already** **defined** in **matrix** |
+
+**Gaps (4B, honest):** **No** new **Prisma** **entity** in **this** **markdown** **pass**; **no** **guarantee** that **any** **slider** **UI** **exists** in **production**; **iPad**-optimized **admin** **strategy** **routes** are **TBD** **build** work; **KPI** **explainer** is **SOP+design** only until **implemented**.
+
+**Last updated:** 2026-04-28 (Pass 3 + 3B + 3C + 3D + 3E + 3F + **3G** + **3H** + **4B**)

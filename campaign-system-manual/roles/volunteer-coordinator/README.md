@@ -1,5 +1,7 @@
 # Role manual — Volunteer coordinator
 
+**Pass 4 book-style playbook:** [volunteer-coordinator.md](../../playbooks/roles/volunteer-coordinator.md)
+
 ## 1. Role purpose
 Move signups to active, well-matched roles; partner with VAN/list policy (no public VAN) through data lead when matching.
 

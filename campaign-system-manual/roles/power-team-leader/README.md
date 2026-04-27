@@ -1,5 +1,7 @@
 # Role manual — Power team leader
 
+**Pass 4 book-style playbook (index filename):** [power-of-5-leader.md](../../playbooks/roles/power-of-5-leader.md)
+
 ## 1. Role purpose
 **Coach** a **P5** **team** roster (consent-scoped) and **follow-up** latency.
 

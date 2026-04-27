@@ -180,4 +180,13 @@ If county **C** is on a strategic list (Steve) and precinct completeness is low,
 - **Rural** **and** **county**-**party**-**forward** **counties** **(see** `COUNTY_PARTY_AND_RURAL_ORGANIZING_PLAN.md` **+** `COUNTY_PARTY_MEETING_TOUR_SYSTEM.md` **)** **are** **often** **the** **same** **places** **where** **full** **precinct** **path** **modeling** **is** **blocked** **—** **use** **the** **existing** **county**-**first** **path** **and** **acquisition** **flags** **(§1–2),** **not** **OIS** **“heat** **without** **data**.”**  
 - **GOTV** **readiness** **tied** **to** **meeting** **/ **EHC** **/ **P5** **/ **V.C. **ladder** **moves;** **no** **claim** **that** **a** **county** **meeting** **=** **precinct** **dominance.**
 
-**Last updated:** 2026-04-27 (Pass 3D + **3E** + **3F**)
+## 24. Pass 3G — Political analysis inputs, primaries, LP scenario, data acquisition
+
+**Companions:** `POLITICAL_ANALYSIS_AND_PATH_TO_WIN_DATA_MODEL.md`, `SIMULATION_AND_FORECASTING_SYSTEM_PLAN.md` §24.
+
+- **Past** **election** **baselines** **and** **trends:** **sourced** **only;** **canvass** **intensity** **follows** **data** **confidence,** **not** **OIS** **heat** **without** **walk** **lists.**  
+- **Libertarian** **/ multi-candidate** **scenarios:** **only** **when** **ballot** **status** **is** **certified;** **no** **invented** **margins** **(see** `POLITICAL_...` **§4–6).**  
+- **GOP** **primary,** **runoff,** **public** **litigation** **\—** **use** **official** **results** **and** **docket** **/ counsel** **briefs,** **not** **uncorroborated** **chat** **(see** `POLITICAL_...` **§6–8).**  
+- **Precinct** **data** **acquisition** **priority:** **align** `POLITICAL_...` **and** **CM** **\—** **import** **where** **path-to-win** **requires** **precinct** **keys;** **weight** **rural** **/ campus** **segments** **per** **strategy.**
+
+**Last updated:** 2026-04-28 (Pass 3D + 3E + 3F + **3G**)

@@ -167,8 +167,13 @@ Assuming **support**; **alienating** chairs; **overpromising** **state** party *
 
 ## 18. Steve decision list
 
-See **`MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` §25** (contacts, schedules, chairs, sensitivities, rural priority, personal vs surrogate attendance, fundraising at meetings, neutrality/endorsement, **CRM** later, public **appearance** rules, rural **message** boundaries).
+See **`MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` §25** (Pass 3F) **and** **§26–35** (Pass 3G **—** contact lists, immersion, call time, tour handoffs): contacts, schedules, chairs, sensitivities, rural priority, personal vs surrogate attendance, fundraising at meetings, neutrality/endorsement, CRM later, public appearance rules, rural message boundaries.
 
----
+## Pass 3G — County party contact lists, warm Democrats, call time, immersion
 
-**Last updated:** 2026-04-27 (Pass 3F)
+- **Contact** **list** **request** **workflow** **—** `CONTACT_LIST_INTAKE_AND_RELATIONSHIP_DATABASE_PLAN.md` **(consent,** **provenance,** **counsel** **—** **no** **import** **without** **sign-off).**  
+- **Warm** **Democrat** **follow-up** **—** **recruitment** **/ host** **asks** **with** **MCE/NDE** **—** **not** **a** **substitute** **for** **lawful** **voter** **file** **use.**  
+- **Meeting** **→** **call-time** **list** **—** hand **to** `CALL_TIME_AND_CANDIDATE_FUNDRAISING_EXECUTION_PLAN.md` **after** **debrief** **(private** **lists** **only).**  
+- **Meeting** **→** **immersion** **planning** **—** `IMMERSION_STOPS_AND_LOCAL_HOST_SYSTEM.md` **pairs** **stops** **with** **host** **teams** **and** **calendar** **SOP.**
+
+**Last updated:** 2026-04-28 (Pass 3F + **3G**)

@@ -1,5 +1,7 @@
 # Role manual — Narrative distribution lead (NDE)
 
+**Pass 4 book-style playbook:** [narrative-distribution-lead.md](../../playbooks/roles/narrative-distribution-lead.md)
+
 ## 1. Role purpose
 Own **Narrative distribution** **waves**: **reach**, **checklists**, and **readiness** across channels — *not* the same job as “write the sentence” (message lead) alone.
 

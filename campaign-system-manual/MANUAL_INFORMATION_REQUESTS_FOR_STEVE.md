@@ -1,6 +1,6 @@
 # Manual — information requests (for Steve and senior builders)
 
-**Purpose:** The **Campaign Operating System Manual** and **system map** are **constrained** until these **decisions and artifacts** exist. This list is **not** an accusation; it is a **dependency register** for Pass 3+. **Pass 3B** operating goals in manuals: $250,000 base by Aug 31, 2026; $500,000 stretch (unlock per `CAMPAIGN_STRATEGY_AND_LIFECYCLE_MANUAL.md` §3); 5,000 active volunteers (stretch) — **confirm** with treasurer / owner. **Pass 3C** adds Arkansas Press Association (APA) vendor / paid media (price sheet and scope pending). **Pass 3D** adds endorsement program, national attention strategy, and precinct / path-to-victory *operational* doctrine — **no** invented endorsers or precinct statistics in the repo; **strategic** counties without precinct-level data require acquisition before full path-to-victory **modeling** (see `PRECINCT_PATH_TO_VICTORY_AND_CANVASSING_PLAN.md`). **Pass 3E** adds youth/campus organizing, **NAACP** branch **relationships** (map-first), Extension Homemakers and **focus** **categories,** and **weekly** **travel** **/ **event** **projection** — no invented **active** **campus** **chapters,** **no** **NAACP** **branch** list until **verified,** no assumed **EHC/affinity** **support** (see `YOUTH_CAMPUS...`, `NAACP_...`, `FOCUS_CATEGORY...`, `WEEKLY_TRAVEL...`).
+**Purpose:** The **Campaign Operating System Manual** and **system map** are **constrained** until these **decisions and artifacts** exist. This list is **not** an accusation; it is a **dependency register** for Pass 3+. **Pass 3B** operating goals in manuals: $250,000 base by Aug 31, 2026; $500,000 stretch (unlock per `CAMPAIGN_STRATEGY_AND_LIFECYCLE_MANUAL.md` §3); 5,000 active volunteers (stretch) — **confirm** with treasurer / owner. **Pass 3C** adds Arkansas Press Association (APA) vendor / paid media (price sheet and scope pending). **Pass 3D** adds endorsement program, national attention strategy, and precinct / path-to-victory *operational* doctrine — **no** invented endorsers or precinct statistics in the repo; **strategic** counties without precinct-level data require acquisition before full path-to-victory **modeling** (see `PRECINCT_PATH_TO_VICTORY_AND_CANVASSING_PLAN.md`). **Pass 3E** adds youth/campus organizing, **NAACP** branch **relationships** (map-first), Extension Homemakers and **focus** **categories,** and **weekly** **travel** **/ **event** **projection** — no invented **active** **campus** **chapters,** **no** **NAACP** **branch** list until **verified,** no assumed **EHC/affinity** **support** (see `YOUTH_CAMPUS...`, `NAACP_...`, `FOCUS_CATEGORY...`, `WEEKLY_TRAVEL...`). **Pass 3G** adds **county** **/ **relational** **list** **policy,** **immersion,** **call** **time,** **faith** **+** **VFD** **+** **chamber,** **listening** **tour,** **visibility** **fundraising,** **proposed** **ambassador/commission,** **training,** **path**-**to**-**win** **data,** and **GCal** **/** `CampaignEvent` **—** **§**26**–**35** **(see** **Pass** **3G** **manuals** **in** `MANUAL_PASS_3G_COMPLETION_REPORT.md` **).** **Pass** **3H** **adds** **§**36** **(financial** **records,** **COH,** **fees,** **public** **claims** **—** `FINANCIAL_BASELINE_AND_BUDGET_CALIBRATION_PLAN.md` **).** **Pass** **4** **adds** **§**37** **(role** **playbooks,** **training** **access,** **operator** **roster** **—** **see** **`playbooks/`** **).** **Pass** **4B** **adds** **§**38** **(interactive** **strategy** **dashboard,** **segmentation,** **device** **/ iPad** **—** see **`INTERACTIVE_STRATEGY_WORKBENCH_...`**, **`SEGMENTED_CAMPAIGN_TARGETING_...`**, **`IPAD_MOBILE_...`**, **`CANDIDATE_AND_CAMPAIGN_MANAGER_...`** **).** **Pass** **5** **adds** **§**39** **(operator** **SOP,** **WIP,** **SLA,** **weekly** **baseline,** **closeout) **.**
 
 **Rule:** None of the below should live in this repo with **secret** values, **uncounseled** legal claims, or **PII samples**.
 
@@ -174,8 +174,103 @@
 - **Donation** **/** **ask** **boundaries** **at** **party** **meetings** **(treasurer,** **neutral** **venue** **rules,** **disclaimers) **—** **same** **lane** **as** **other** **in-person** **asks.**  
 - **Urgent** **counties** **for** **first** **90** **days** **of** **tour** **(if** **any)** **or** **explicit** **“no** **priority** **list** **yet**.”**
 
+## 26. Contact lists and warm Democrat follow-up (Pass 3G)
+
+- **What** **(if** **anything)** the **campaign** **may** **request** of **county** **parties** **in** **writing** for **name/contact** **lists,** and **how** **consent** **+** **provenance** are **documented** (see `CONTACT_LIST_INTAKE_AND_RELATIONSHIP_DATABASE_PLAN.md` **+** `COUNTY_PARTY_AND_RURAL_ORGANIZING_PLAN.md` **Pass** **3G** **).**  
+- **Boundary** between **lawful** **relational** / **“warm** **Democrat”** **recruitment** and **voter** **file** / **MCE** **work** **—** **one** **sentence** **owner** **policy** so **ops** do **not** **blur** **lanes**.  
+- **Import** **compliance** **gate:** **who** **signs** before **any** **spreadsheet** **or** **CRM** **import** (treasurer/CM/counsel **as** **applies).
+
+## 27. Immersion stops and local host system (Pass 3G)
+
+- **Geography** **priority** **and** **cadence** **caps** for **immersion** **(how** **many** **/** **quarter,** **rural** **weight).**  
+- **Host** **team** **minimums** and **MCE/NDE** **fit** **for** **Kelly**-present **vs** **surrogate** **stops** (see `IMMERSION_STOPS_AND_LOCAL_HOST_SYSTEM.md` **).**  
+- **Failure** **mode** **(weather,** **low** **turnout) **—** **reschedule** **rule** **and** **comms** **owner**.
+
+## 28. Call time and in-person/candidate asks (Pass 3G)
+
+- **Private** **list** **handling** for **call-time** **(who** **may** **see** **names,** **retention) **+** **when** a **prospect** **moves** to **treasurer** **/** **compliance** **(see** `CALL_TIME_AND_CANDIDATE_FUNDRAISING_EXECUTION_PLAN.md` **).**  
+- **Dollar** **/** **soft**-**commit** **logging** **SOP** **for** **candidate**-**led** **asks** **post**-**tour** **or** **post**-**event.**
+
+## 29. Faith, VFD, chamber, and community event outreach (Pass 3G)
+
+- **Which** **institutional** **lanes** are **in**-**scope** **for** **this** **cycle** (faith, VFD, chamber, **other) **+** **neutrality** / **optics** **red** **lines.**  
+- **Who** **pre**-**clears** **invites** and **messaging** **at** **non**-**party** **venues** (see `FAITH_FIRE_CHAMBER_AND_COMMUNITY_EVENT_OUTREACH_PLAN.md` **).**
+
+## 30. Community election integrity and ballot initiative listening (Pass 3G)
+
+- **In**-**room** **scope** for **“listening** **tour**” **threads** **(security,** **transparency,** **initiatives) **+** **what** is **out**-**of**-**scope** **without** **counsel.**  
+- **Routing** when **a** **local** **ballot** **question** **needs** **escalation** **(CM** **vs** **counsel)** **(see** `COMMUNITY_ELECTION_INTEGRITY_AND_BALLOT_INITIATIVE_LISTENING_TOUR.md` **).**
+
+## 31. Postcards, signs, banners, and visibility fundraising (Pass 3G)
+
+- **Vendors,** **treasurer** **rules,** **and** **in**-**kind** **/** **match** **for** **visibility** **bundles** (see `POSTCARDS_SIGNS_BANNERS_AND_VISIBILITY_FUNDRAISING_PLAN.md` **).**  
+- **Statewide** **vs** **county**-**specific** **inventory** **priority** if **funds** are **tight**.
+
+## 32. Grassroots fundraising ambassador/commission (Pass 3G) — *proposed only*
+
+- **If** **this** **model** **is** **ever** **considered,** **binary** **owner** **go/no**-**go** **+** **treasurer** **+** **counsel** **before** **any** **public** **pilot** (see `GRASSROOTS_FUNDRAISING_AMBASSADOR_AND_COMMISSION_MODEL.md` **legal** **banner** **).**  
+- **“No** **pilot**” **is** **a** **valid** **answer** **—** then **the** **manual** **stays** **hypothetical** **only.**
+
+## 33. Training and trainer certification (Pass 3G)
+
+- **Who** **certifies** **trainers,** **how** **often** **materials** **re**-**lock,** **and** **MCE/NDE** **coverage** in **curriculum** (see `TRAINING_AND_TRAINER_CERTIFICATION_SYSTEM.md` **).**  
+- **Threshold** for **in**-**person** **vs** **self**-**serve** **(Zoom** **/** **recorded** **).**
+
+## 34. Political analysis and path-to-win data (Pass 3G)
+
+- **What** **external** **data** the **campaign** **will** **license** or **use** **(no** **invented** **precinct** **totals) **+** **owner** of **reconciliation** to `SIMULATION_AND_FORECASTING_SYSTEM_PLAN.md` **(see** `POLITICAL_ANALYSIS_AND_PATH_TO_WIN_DATA_MODEL.md` **).**  
+- **Red** **lines** for **opposition** / **narrative** **in** the **“path** **to** **win”** **view** **(sourcing).**
+
+## 35. Google Calendar and event pipeline (Pass 3G)
+
+- **System** of **record** **(Google** **only,** **DB** **only,** or **hybrid) **+** **who** **edits** **what** and **OIS** **/** `CampaignEvent` **sync** **expectations** (see `GOOGLE_CALENDAR_AND_EVENT_PIPELINE_OPERATING_SYSTEM.md` **).**  
+- **SLA** for **publishing** **/** **cancelling** **public** **events** **(minutes** **to** **site** **/** **comms** **).**
+
+## 36. Financial records, fundraising progression, and budget calibration (Pass 3H)
+
+- **Source** of **truth** for **inflows,** **outflows,** **and** **COH:** **Is** the **internal** **ledger** (`FinancialTransaction`) **100%** **complete** **for** **operational** **use,** **or** **must** **treasurer** **/ **bank** **/ **ActBlue-**style** **exports** **always** **win?** **Order** of **reconciliation** **(daily** **/ weekly).  
+- **Categories** and `CostBearingWireKind` **mapping:** **required** **category** **labels** **for** **new** **rows;** **who** **may** **override** **defaults** in `src/lib/campaign-engine/budget.ts` **(future** **code** **—** **manual** **tags** **until** **then** **).**  
+- **Refunds,** **chargebacks,** **pledges,** **in-kind,** **loans,** **unpaid** **obligations,** **and** **processing** **fees** **—** **where** **captured** **(ledger** **rows** **vs** **separate** **spreadsheets** **vs** **bank** **only** **).**  
+- **Authoritative** **cash** **on** **hand** **number** **(date** **stamped) **+** **who** **may** **cite** it **(owner** **/ treasurer** **only** **in** **public** **contexts** **?** **).**  
+- **Last** **three** **weeks** **fundraising** **acceleration** **—** **confirm** **magnitude** **and** **whether** **to** **model** as **a** **new** **regime** in **simulation** **(vs** **noise** **).**  
+- **Vendor** **/ **payment** **platform** **fees** **(Stripe,** **ActBlue,** **etc.) **—** **as** **%** **or** **fixed,** **and** **ledger** **treatment** **(e.g.** **`processor_fee`** **category** **).**  
+- **Travel** **reimbursements** **and** **unpaid** **volunteer** **/ **staff** **obligations** **—** **RACI** **and** **where** **recorded** **(before** **public** **“burn”** **charts** **).**  
+- **Which** **aggregates** from **this** **system** may **appear** in **public**-**facing** **claims** **(if** **any** **) **—** **counsel** **+** **treasurer** **sign-off** **list** **(FEC** **/ **ethics** **/ **opposition** **rules** **).**
+
+## 37. Role playbooks, training access, and operator roster (Pass 4)
+
+- **Canonical** **public** **titles** **vs** **internal** **Workbench** **roles** **—** **where** **they** **may** **differ** **(county** **“leader”** **vs** **coordinator,** **etc.)** **and** **who** **may** **grant** **each** **badge** **(see** **`playbooks/ROLE_READINESS_MATRIX.md`** **).**  
+- **Which** **roles** **receive** **PII** **/ **voter** **file** **views,** **exports,** **or** **bulk** **download** **—** **and** **minimum** **training** **module** **IDs** **before** **unlock** **(see** **`playbooks/TRAINING_MODULE_INDEX.md`** **+** **`ROLE_KPI_INDEX.md`** **).**  
+- **Trainer** **/** **training** **director** **scope** **when** **no** **LMS** **exists** **—** **paper** **/** **call** **/** **in**-**person** **only** **vs** **Workbench** **tasks** **only** **(align** **`TRAINING_AND_TRAINER_CERTIFICATION_SYSTEM.md`** **).**  
+- **Operator** **/** **admin** **queue** **—** **who** **may** **approve** **WorkflowIntake** **or** **task** **types** **by** **category** **(see** **`playbooks/APPROVAL_AUTHORITY_MATRIX.md`**, **`ESCALATION_PATHS.md`** **).**  
+- **Dashboard** **attachments** **—** **which** **KPI** **packs** **ship** **for** **which** **roles** **(see** **`playbooks/DASHBOARD_ATTACHMENT_RULES.md`** **).**  
+- **Sideways** **/** **promotion** **narrative** **—** **what** **may** **be** **said** **publicly** **about** **“growth”** **without** **implying** **employment** **(see** **`playbooks/PROMOTION_AND_SIDEWAYS_PATHWAYS.md`** **).**
+
+## 38. Interactive strategy dashboard, segmentation, and device policy (Pass 4B)
+
+- **Who** may **propose,** **edit,** and **lock** **interactive** **strategy** **assumptions** and **scenarios** (sliders) on **candidate** and **CM** **surfaces,** and **who** may **only** **view** **previews** **(see** **`INTERACTIVE_STRATEGY_WORKBENCH_AND_SCENARIO_SLIDER_SYSTEM.md`**, **`playbooks/APPROVAL_AUTHORITY_MATRIX.md`** **Pass** **4B** **rows) **.  
+- **Who** may **approve** **a** **published** **scenario** as **this** **week’s** **operating** **baseline** (vs. **“draft** **/ preview**”) **.  
+- **Whether** the **candidate** may **directly** **change** **assumptions** that **affect** **$**, **time**, or **GOTV**-**adjacent** **programs,** or **must** **request** **through** **CM/owner** **with** **LQA** **(treasurer,** **counsel,** **data) **.  
+- **Which** **KPIs** are **“candidate**-**facing**” (time, **message** **load,** **rest)** **vs** “**CM**-**facing**” (**queue,** **stretch** **unlock,** **field** **thinness)** for **narrative** in **readiness** **strips** **(see** **`CANDIDATE_AND_CAMPAIGN_MANAGER_STRATEGY_DASHBOARD_REQUIREMENTS.md`**, **`playbooks/ROLE_KPI_INDEX.md`** **4B) **.  
+- **Preferred** **named** **scenario** **labels** (e.g. **Floor,** **Base,** **Momentum,** **Stretch,** custom list) **.  
+- **Allowed** **segmentation** **categories** for **field** and **comms** **planning;** **explicitly** **prohibited** **categories;** **voter**-**file** and **paid**-**media** **audience** **policy;** **GOTV** **targeting** **policy** **(see** **`SEGMENTED_CAMPAIGN_TARGETING_AND_MESSAGE_STRATEGY_PLAN.md`**) **.  
+- **iPad** **/ tablet** **budget** **(3**–**5** **devices),** **MDM,** **device** **assignment,** and **on**-**device** **export** / **data** **rules** **(see** **`IPAD_MOBILE_AND_DESKTOP_DASHBOARD_DESIGN_REQUIREMENTS.md`**) **.  
+- **Dashboard** **access** **rules** for **projections**-**only** **users** (finance **viewer,** field **leads) ** vs **assumption** **editors;** **and** **whether** **mobile** may **propose** **vs** **read** **only** **(MI** **§**38 **+** **owner** **policy) **.  
+
+## 39. Workbench, CM, and strategy SOPs — operational decisions (Pass 5)
+
+- **CM** **daily** **operating** **authority** **vs** **owner** (what **can** **CM** **lock** in **a** day **vs** what **always** **requires** **O**+**M**+**T**+**C** **) **.  
+- **WIP** **limits** per **role** and **pooled** **admin** (defaults in `WORKBENCH_OPERATOR_RUNBOOK.md` — **confirm**).  
+- **SLA** for **P0,** P1, **&gt;**72h **intake** (replace TBD with numbers).  
+- **Who** can name a **“Locked** **baseline”** for the operating week (M+O+T for $-**linked,** as policy).  
+- **Candidate** **dashboard** **visibility** class (what is default-on) + read-only **vs** request-only on 4B levers (see §38).  
+- **Final** recruit / persuade / GOTV **lane** **names** in MCE/NDE if **rebranding** is desired.  
+- **Per**-**template** **TT-**01…** **ownership** (who** **picks** up** **a** **new** class** **of** work) and **naming** of **strategic** **task** **prefixes** (e.g. `STRATEGY-…`).  
+- **Workbench** **intake** **and** `CampaignTask` **closeout** **—** when **a** week **is** not **shippable,** do **all** open **tickets** **get** a **deferred** **or** **declined** **line**? **(see** `WORKBENCH_…` **parking** **lot) **.  
+- **Emergency** **escalation** **windows** (e.g. **E**D,** **press**),** **on**-**call** **rotation,** and **bypass** of **WIP** **(owner-only) **.  
+
 ---
 
-**When this list is addressed:** update **`CAMPAIGN_STRATEGY_AND_LIFECYCLE_MANUAL.md`** §2–3, §8–9, §14–16, **Parts** **E** **+** **F,** and §**22**–**23** with **Steve-approved** numbers and **policy** phrasing; **re**‑baseline `SIMULATION_AND_FORECASTING_SYSTEM_PLAN.md` §6, §21, §**22,** and §**23** (3E/3F). (Pass 3 v1 of the strategy tome and simulation plan is **in** repo as of 2026-04-27; answers **replace** assumptions.)
+**When** **this** **list** **is** **addressed:** **update** **`CAMPAIGN_STRATEGY_...` **§2–3,** §8–9,** §14–16,** **Part** **E,** **Part** **F,** **Part** **G,** **Part** **H,** **Part** **J** **(4B),** and §**22**–**23** **with** **Steve**-**approved** **numbers** and **policy** **phrasing;** **re**-**baseline** `SIMULATION_...` **§6,** §**21,** **§**22**–**26,** **4B** **§**26 **(sliders) **+** **cross**-**ref** `FINANCIAL_BASELINE_AND_BUDGET_CALIBRATION_PLAN.md` **and** **Pass** **3G,** **4B,** and **5** **runbooks** **as** **needed.** (Pass 3 v1 of strategy and simulation is in repo; **answers** replace **assumptions**.) **Operator SOP (Pass 5) + SLA (§39)** replace default TBDs in `WORKBENCH_OPERATOR_RUNBOOK.md` where Steve approves.
 
-**Last updated:** 2026-04-27 (Pass 3 + 3B + 3C + 3D + **3E** + **3F**)
+**Last** **updated:** **2026-04-28** **(Pass** **3** **+** **3B** **+** **3C** **+** **3D** **+** **3E** **+** **3F** **+** **3G** **+** **3H** **+** **4** **+** **4B** **+** **5**)

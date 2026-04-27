@@ -1,5 +1,7 @@
 # Role manual — County leader
 
+**Pass 4 book-style playbook (same org role; index filename):** [county-coordinator.md](../../playbooks/roles/county-coordinator.md)
+
 ## 1. Role purpose
 **Cultural+strategic** point for a **county** in **public** and **ops**; **not** a **micromanager** of **VAN** in app (no public VAN).
 

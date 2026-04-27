@@ -115,6 +115,11 @@ Use when **travel** **cost** **exceeds** **value** for the **ladder** **upside,*
 
 **Document** **as** **SOP** **until** **product:** **dedicated** **county**-**party** **entity** **in** **data** **(not** **in** **Prisma** **today);** **automated** **chair** **/** **schedule** **sync;** **native** **UTM** **on** **all** **`WorkflowIntake`** **rows** **(field** **names** **only** **if** **Pass** **3F** **code** **ships).** **Current** **path:** **`CampaignEvent`** **+** **`WorkflowIntake`** **+** **`CampaignTask`** **+** **governed** **spreadsheet.**
 
----
+## Pass 3G addendum — Lists, warm follow-up, call time, immersion
 
-**Last updated:** 2026-04-27 (Pass 3F)
+- **County** **party** **contact** **list** **request** **and** **import** **compliance** **—** `CONTACT_LIST_INTAKE_AND_RELATIONSHIP_DATABASE_PLAN.md` **+** `COUNTY_PARTY_AND_RURAL_ORGANIZING_PLAN.md` **Pass** **3G** **section.**  
+- **Warm** **Democrat** **follow-up** **after** **meetings** **—** **same** **72h** **discipline** **—** **feeds** **V.C.** **and** **optional** **call-time** **pool** **(lawful** **only).**  
+- **Meeting** **notes** **→** **call-time** **priority** **—** `CALL_TIME_AND_CANDIDATE_FUNDRAISING_EXECUTION_PLAN.md` **(private** **lists).**  
+- **Meeting** **→** **immersion** **routing** **—** `IMMERSION_STOPS_AND_LOCAL_HOST_SYSTEM.md` **+** `GOOGLE_CALENDAR_AND_EVENT_PIPELINE_OPERATING_SYSTEM.md` **statuses.**
+
+**Last updated:** 2026-04-28 (Pass 3F + **3G**)

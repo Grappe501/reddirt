@@ -1,10 +1,25 @@
 # Campaign strategy, lifecycle baseline, and simulation readiness
 
-**Lane:** `RedDirt/` · **Pass 3** + **3B (acceleration)** + **3C (paid media & long-term infrastructure)** + **3D (endorsements & precinct path)** + **3E (youth, NAACP, focus categories, travel projection)** · **2026-04-27**  
+**Lane:** `RedDirt/` · **Pass 3** + **3B–3H** + **Pass 4** + **4B (Part J)** · **2026-04-28**  
 **Audience:** Owner, campaign manager (CM), leads, operators  
 **Public language:** **Campaign Companion**, **Guided Campaign System**, **Organizing Guide**, **Field Intelligence**, **Message Engine**, **Campaign Operating System**, **Workbench**, **Pathway Guide** — **not** “AI” as a product name for guided features.
 
 **Scope:** Strategy, operations design, and readiness **documentation** only. **No** application code changes. **Forecasts are directional** — ranges, scenarios, **not** certainty.
+
+---
+
+## Part I — Campaign Companion and the Guided Campaign System (Pass 4)
+
+*Naming note: This is the strategy manual’s Part I. The print-book outline’s “Part I: System vision” in `MANUAL_TABLE_OF_CONTENTS.md` is a separate chapter plan — they reinforce each other, not duplicate page numbers.*
+
+**Part I (this addendum) is the vision layer for the operating model described in the manual and in `playbooks/`.** It does **not** add product code.
+
+- **Guided Campaign System** is the name for the documented interaction model: intakes, tasks, Pathway, Workbench, and the Message Engine *as designed* in RedDirt — not a consumer “AI product” name in public copy. Use **Campaign Companion** for volunteer-facing and **Organizing Guide** for training/enablement.  
+- **Pathway and Pathway Guide** name progression from first touch to lead roles; **Field Intelligence** is honest reporting, not a guaranteed predictive score in production until `SYSTEM_READINESS_REPORT.md` and simulation docs say so.  
+- **Role depth:** Pass 4 `playbooks/roles/*.md` files (25-section playbooks) sit **next to** Pass 2 `roles/*` READMEs; the playbooks are the **book-style** treatment; READMEs stay the short operational index. **Approval, escalation, promotion, and dashboard attachment** rules live in `playbooks/` (`APPROVAL_AUTHORITY_MATRIX`, `ESCALATION_PATHS`, `PROMOTION_AND_SIDEWAYS_PATHWAYS`, `DASHBOARD_ATTACHMENT_RULES`, `ROLE_READINESS_MATRIX`).  
+- **Unanswered policy** (titles, PII, trainer access) remains in `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` through **§**37 until the owner locks decisions.
+
+**Alignment:** Part I supports §8–**10,** the Workbench rhythm, and Parts **B–H**; it does **not** change fundraising math or **CONFIRMED** ledger rules (Part H / 3H).
 
 ---
 
@@ -14,7 +29,7 @@
 
 - A **broad** RedDirt stack: public site, **Workbench** (`open-work` merges intakes, tasks, email), form intake (`POST /api/forms` → handlers → `WorkflowIntake`), **Message Engine** and **Narrative Distribution** admin paths, OIS/region/county public surfaces, events, comms, finance and compliance **objects** in Prisma (see `SYSTEM_READINESS_REPORT.md`).
 - **Fundraising and field momentum** off-paper: house parties, in-person events, organic support; **leads** identified for social, fundraising, and events; **4–5 county coordinators**; **~100** volunteer signups, **~70** in the organizing hub, **~10** **active** there (per Steve, **as of 2026-04-27**).
-- **Money:** **~$55,000** total raised; **~$15,000** cash on hand; spend to date **directionally** on lift/setup, road and event materials, banners, yard signs, shirts, palm cards, business cards, tablecloth, visibility (exact ledger categories belong in treasurer workflow).
+- **Money:** **~$55,000** total raised; **~$15,000** cash on hand; spend to date **directionally** on lift/setup, road and event materials, banners, yard signs, shirts, palm cards, business cards, tablecloth, visibility (exact ledger categories belong in treasurer workflow). **Pass** **3H:** **confirmed** **`FinancialTransaction`** **+** **bank**/**FEC** **treasurer** **records** **supersede** **rough** **narrative** **where** **they** **differ** — see **Part** **H** **and** `FINANCIAL_BASELINE_AND_BUDGET_CALIBRATION_PLAN.md` **(do** **not** **treat** **DRAFT** **ledger** **rows** **as** **public** **truth**).
 
 ### What is strong
 
@@ -633,7 +648,7 @@ Vocabulary: **forecast**, **scenario**, **projection**, **readiness model**. **N
 
 **Fundraising** **lead** **dashboard** **(requirements,** when **built):** **(1) **$** to **$250K** **base** **by** week **(range) **(2) **trailing** **2**-**and** **4**-**week** **(3) **party** & **tour** **count** **(4) **donor** **stage** **ages** **(5) **stretch** **unlock** **eligibility** **(manual) **(6) **V.C.**-**linked** **“asks** **in** **progress” **(7) **compliance** **queue** for **any** **paid** / **contrast. **. **
 
-**Finance** / **compliance** **boundaries: **(see** `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` **—** no **unattributed** **contrast,** no **unconfirmed** `FinancialTransaction` **as** “real” **spend,** no **GOTV** or **regulated** text **from** a **model** without **sign**-**off** **(see** **§3** **unlock** and **ch** **14).**
+**Finance** / **compliance** **boundaries: **(see** `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` **—** no **unattributed** **contrast,** no **unconfirmed** `FinancialTransaction` **as** “real” **spend,** no **GOTV** or **regulated** text **from** a **model** without **sign**-**off** **(see** **§3** **unlock** and **ch** **14).** **Pass** **3H** **/ **§**36** **—** **treasurer** **truth** **for** **COH,** **fees,** **and** **public** **claims;** **Part** **H** **+** `FINANCIAL_BASELINE_AND_BUDGET_CALIBRATION_PLAN.md` **.**
 
 ### B.2 5,000 active volunteers by end of August (stretch, not a promise)
 
@@ -718,9 +733,53 @@ Vocabulary: **forecast**, **scenario**, **projection**, **readiness model**. **N
 
 ---
 
+## Part G — Pass 3G: Immersion, contact lists, call time, faith/community, listening tour, visibility fundraising, training, analysis, calendar pipeline
+
+**Canonical chapters (manual only):** `IMMERSION_STOPS_AND_LOCAL_HOST_SYSTEM.md`, `CONTACT_LIST_INTAKE_AND_RELATIONSHIP_DATABASE_PLAN.md`, `CALL_TIME_AND_CANDIDATE_FUNDRAISING_EXECUTION_PLAN.md`, `FAITH_FIRE_CHAMBER_AND_COMMUNITY_EVENT_OUTREACH_PLAN.md`, `COMMUNITY_ELECTION_INTEGRITY_AND_BALLOT_INITIATIVE_LISTENING_TOUR.md`, `POSTCARDS_SIGNS_BANNERS_AND_VISIBILITY_FUNDRAISING_PLAN.md`, `GRASSROOTS_FUNDRAISING_AMBASSADOR_AND_COMMISSION_MODEL.md` (commission structure **proposed** — not approved until treasurer + counsel), `TRAINING_AND_TRAINER_CERTIFICATION_SYSTEM.md`, `POLITICAL_ANALYSIS_AND_PATH_TO_WIN_DATA_MODEL.md`, `GOOGLE_CALENDAR_AND_EVENT_PIPELINE_OPERATING_SYSTEM.md`.
+
+- **Immersion (2–3 day) + local host/handler teams:** max touches in breakfast / lunch / after-5 windows; Kelly’s full-time L\&D role is a **strength** narrative, not unlimited daytime availability.  
+- **County party contact lists:** request where permitted; ingest only under steward + counsel — `CONTACT_LIST_INTAKE...`, `MANUAL_INFORMATION_REQUESTS` §26.  
+- **Call time:** structured; drive-time where safe; one after-work evening / week default — `CALL_TIME...`, §28.  
+- **Faith / VFD / chamber / community:** invitation-only for worship spaces; listening posture — `FAITH_FIRE_CHAMBER...`  
+- **Community election integrity & ballot initiative listening tour:** May → early Aug; locally owned, nonpartisan-feeling design — `COMMUNITY_ELECTION_INTEGRITY...`  
+- **Postcards, signs, banners, visibility fundraising:** `POSTCARDS_SIGNS_BANNERS...` (~$200 banner = planning bracket; verify vendor + treasurer).  
+- **Grassroots ambassador + commission:** design and controls only; **not** live until signed — `GRASSROOTS_FUNDRAISING_AMBASSADOR...` (legal banner at file top).  
+- **Training and trainer pathways:** `TRAINING_AND_TRAINER_CERTIFICATION_SYSTEM.md` (deeper in Pass 4).  
+- **Political / path-to-win:** sourced data only — `POLITICAL_ANALYSIS...`, `PRECINCT_PATH...`, `SIMULATION...` §24.  
+- **Google Calendar + event pipeline:** statuses + support workflows; reconcile to `CampaignEvent` — `GOOGLE_CALENDAR...`  
+- **75 counties × ≥3 visits:** planning target — not a completeness claim without field truth; tie to `GOOGLE_CALENDAR...` and `WEEKLY_TRAVEL...` §23 (Pass 3G).
+
+---
+
+## Part H — Pass 3H: Financial baseline, burn rate, fundraising progression, and budget-to-field calibration
+
+**Canonical chapter:** `FINANCIAL_BASELINE_AND_BUDGET_CALIBRATION_PLAN.md` (manual and **evidence** rules; **not** a substitute for **treasurer** / **bank** / **filing**).
+
+- **Database financial records as guide:** The **`FinancialTransaction`** model (`prisma/schema.prisma`, FIN-1) is the **in-app** ledger. **`CONFIRMED`** rows (not **DRAFT**) are what **governance** helpers use for **spend** **actuals** by “wire” in `getBudgetActualsByWire` (`src/lib/campaign-engine/budget-queries.ts`); **`CONTRIBUTION`** **rows** are **inflows,** not **spend** **rails.** The **Git** **repository** **snapshot** used for Pass 3H **does** **not** **contain** **seeded** **dollar** **rows** in `prisma/seed.ts` **—** so **this** **manual** **pass** **does** **not** **assert** **totals** **from** **the** **repo;** **operators** use **a** **live** **DB** or **treasurer** **export** to **fill** **tables.**  
+- **Startup spend** **before** **field**/**volunteer** **launch** **(segmentation):** **define** `T0` with CM, then **compare** **periods** **before/after** **using** **confirmed** **ledger** **dates** **+** **event** **links** **where** **`relatedEventId`** is **set** **(see** `FINANCIAL_...` §3).  
+- **Fundraising** **from** **zero** **to** **current:** **narrative** in **Part** **B** and **§2** **remains** **the** **story** **shape** **until** **superseded** by **reconciled** **processor** + **ledger** **+** **COH** from **treasurer** **(Pass** **3H** **framework** in §4–6 **of** **that** **chapter**).  
+- **Last** **three** **weeks** **acceleration** **(fundraising):** **model** **as** a **separate** **regime** from **early** **baseline** **(simulation** and **fundraising** plan **3H** addenda) **—** **do** **not** **annualize** a **lump** **week.**  
+- **Early** **spend** **→** **next** **budget,** **field,** **volunteers,** **paid,** **travel,** **visibility,** **asks** **(§**10**–**16** **in** `FINANCIAL_...` **)** **use** **category** **/ wire** **actuals,** not **invented** **multipliers.**  
+- **Scenarios,** **weekly** **review,** **dashboard** **spec,** **simulation** **inputs,** **gaps,** **and** **Steve** **list:** `FINANCIAL_...` **and** `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` **§**36**.**
+
+---
+
+## Part J — Pass 4B: Interactive strategy Workbench, scenario sliders, segmented targeting, and iPad-first dashboards (manual + design)
+
+**Canonical chapters (manual only; not shipped product in this pass):** `INTERACTIVE_STRATEGY_WORKBENCH_AND_SCENARIO_SLIDER_SYSTEM.md`, `CANDIDATE_AND_CAMPAIGN_MANAGER_STRATEGY_DASHBOARD_REQUIREMENTS.md`, `IPAD_MOBILE_AND_DESKTOP_DASHBOARD_DESIGN_REQUIREMENTS.md`, `SEGMENTED_CAMPAIGN_TARGETING_AND_MESSAGE_STRATEGY_PLAN.md`. **Simulation layer:** `SIMULATION_AND_FORECASTING_SYSTEM_PLAN.md` **§**26. **No** new Prisma in **this** **markdown** **pass**; **no** **vote** **certainty** **claims**; **no** **voter** **row** **in** **volunteer** **strategy** **tiles** **.  
+
+- **Interactive strategy Workbench (conceptual):** **Master** plan **excerpts,** **editable** **assumptions** **registry,** and **slider**-driven **scenarios** that **recompute** **readiness,** **trajectory,** and **KPI** **deltas** **—** with **RACI** and **`APPROVAL_AUTHORITY_MATRIX`** (Pass 4B **additions) **for **anything** that **affects** **$**, **GOTV/Paid,** or **voter**-**linked** **audiences** **.  
+- **Candidate & CM strategy surfaces (future product):** **Shared** **master** plan **panel,** **assumptions,** **A/B** **scenarios,** **KPI** **movement,** **cash** **gate,** **volunteer** **capacity,** **county/precinct** **path,** **message** / **targeting** **(aggregate)**, **calendar/travel,** **training** **readiness,** and **“what** **changed** / **ahead** or **behind** / **recommended** **next**” **strips** **—** per **`CANDIDATE_AND_..._REQUIREMENTS.md`**.  
+- **KPI impact explanations:** **Plain**-**language** **deltas,** **confidence** **bands,** and **stale**-**data** **warnings** **(see** `SIMULATION_...` **§**26) **.  
+- **Segmented campaign strategy:** **Recruit** / **persuade** / **GOTV** **lanes,** **geography**-**first** **planning,** **ethics** **and** **compliance** **for** **any** file-**based** or **paid** program **—** `SEGMENTED_CAMPAIGN_TARGETING...` **.  
+- **iPad**-**first** and **device** **budget:** plan **3**–**5** iPads, **landscape-**leaning **admin** and **brief** UIs, **touch** **targets,** **offline** **degradation**; **MDM/assignment** **TBD** **(MI** **§**38) **.  
+- **Public** **language:** **Guided** **Campaign** **System,** **Workbench,** **Field** **Intelligence** **—** **not** “**AI**” **as** a **name** for **this** **layer** **.  
+
+---
+
 ## 23. Steve decision list (from MANUAL_INFORMATION_REQUESTS + new from Pass 3)
 
-**Incorporate** the full set in `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` (§1–**25**). **Additions** from **Pass 3, 3B, 3C, 3D, 3E, 3F** include:
+**Incorporate** the full set in `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` (§1–**38**). **Additions** from **Pass 3, 3B, 3C, 3D, 3E, 3F, 3G,** and **4B** include:
 
 - **Confirm** **definition** of “active volunteer” (14d vs 30d; one meaningful action — see **§7**).  
 - **Confirm** **$250K** **base** (Aug 31) and **$500K** **stretch;** **treasurer**-agreed **reporting** **period** for **two**-**consecutive**-**week** **stretch** **unlock** (replaces ad hoc “Aug 1 vs 31 on $500K only” as the primary question). **Rough** **attribution** of **$55K** to pre– vs post–Mar 4.  
@@ -732,6 +791,9 @@ Vocabulary: **forecast**, **scenario**, **projection**, **readiness model**. **N
 - **Pass 3C** (paid media + long-term infrastructure): Arkansas Press Association price sheet and contract scope; authorized channels; dollar thresholds; paid social ramp cap; UTM/source tags; compliance disclaimers; retargeting policy (if any); 2028/2030 pipeline expectations; “full community team” definition; target offices/seats list when available — not in repo with PII.  
 - **Pass 3D** (endorsements + precinct path): Endorsement priority list, off-limits orgs, who may ask, quote/announcement rules, national press targets (separate from repo if needed). Precinct: priority county order, voter file as-of, canvass contact definition, turf access per role, counties where county-only modeling is accepted vs. where precinct acquisition is mandatory. **No** fabricated endorsements or precinct data in the manual.  
 - **Pass 3E** (youth, NAACP, EHC / focus, travel): Campus contact list and true **status** labels; high school / youth **rules**; **NAACP** **mapping** **source** and **relationship** **owner**; EHC and focus **lane** (listening vs partnership); **calendar** of record; “places we’ve been” reconciliation; **travel** cap and **who** **moves** the **week**; see **`MANUAL_INFORMATION_REQUESTS` §21–24**.  
-- **Pass 3F** (county party + rural + meeting tour): **Rural** **priority** **weighting** **and** **county**-**party** **inputs** **to** **travel** (`WEEKLY_TRAVEL_AND_EVENT_PROJECTION_SYSTEM.md` §22); **75**-**county** **meeting** **map** **owner** **and** **verification** **rules;** **surrogate** **/** **presenter** **policy;** see **`MANUAL_INFORMATION_REQUESTS` §25** and **Part** **F** **above.**
+- **Pass 3F** (county party + rural + meeting tour): **Rural** **priority** **weighting** **and** **county**-**party** **inputs** **to** **travel** (`WEEKLY_TRAVEL_AND_EVENT_PROJECTION_SYSTEM.md` §22); **75**-**county** **meeting** **map** **owner** **and** **verification** **rules;** **surrogate** **/** **presenter** **policy;** see **`MANUAL_INFORMATION_REQUESTS` §25** and **Part** **F** **above.**  
+- **Pass 3G** (immersion, lists, call time, faith/VFD/chamber, listening tour, visibility fundraising, **proposed** ambassador model, training, political analysis, GCal pipeline): see **Part** **G** and **`MANUAL_INFORMATION_REQUESTS` §26–35**; **commission** **/ incentive** pay **=** **not** **approved** **in** this **pass.**
+- **Pass 3H** (financial baseline, burn, fundraising progression, budget-to-field calibration): see **Part** **H,** `FINANCIAL_BASELINE_AND_BUDGET_CALIBRATION_PLAN.md`**,** **`MANUAL_INFORMATION_REQUESTS` §36**; **use** **confirmed** **ledger** **+** **treasurer** **where** **repo** has **no** **fixture** **dollars.**
+- **Pass 4B** (interactive strategy, sliders, segmentation, iPad design): see **Part** **J,** `MANUAL_INFORMATION_REQUESTS` **§**38, `SIMULATION_AND_FORECASTING_SYSTEM_PLAN` **§**26; **manual** **only,** no **4B** **app** code **in** **this** pass **.**
 
-**Last updated:** 2026-04-27 (Pass 3 + 3B + 3C + 3D + **3E** + **3F**)
+**Last updated:** 2026-04-28 (Pass 3 + 3B + 3C + 3D + **3E** + **3F** + **3G** + **3H** + **4** + **4B**)

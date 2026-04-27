@@ -1,5 +1,7 @@
 # Role manual — Candidate
 
+**Pass 4 book-style playbook:** [candidate.md](../../playbooks/roles/candidate.md)
+
 ## 1. Role purpose
 **Public** **principal**; **own** the **moral** line; **not** the **triage** **operator** for `WorkflowIntake` unless the campaign is **solo**.
 
