@@ -73,6 +73,28 @@ case "${DATABASE_URL}" in
     ;;
 esac
 
+# Supabase session pooler (Supavisor) expects user postgres.<project-ref>, not plain "postgres".
+if [[ "${DATABASE_URL}" == *"pooler.supabase.com"* ]]; then
+  uinfo="${DATABASE_URL#*://}"
+  uinfo="${uinfo%%@*}"
+  db_user="${uinfo%%:*}"
+  if [ "${db_user}" = "postgres" ]; then
+    echo ""
+    echo "========================================================================"
+    echo "  Build failed: Supabase session pooler URL uses user \"postgres\" only."
+    echo ""
+    echo "  Prisma/Postgres P1000 often means: wrong pooler *username* (not the password)."
+    echo "  In Supabase → Connect → Session pooler, the user must look like:"
+    echo "    postgres.yourProjectRef   (not just postgres)"
+    echo "  Paste the full URI from that screen into Netlify DATABASE_URL."
+    echo "  Reset the DB password in Supabase if the password was exposed or mangled"
+    echo "  (e.g. \$ in a password in Netlify env can break the string)."
+    echo "========================================================================"
+    echo ""
+    exit 1
+  fi
+fi
+
 echo ">>> prisma generate"
 npx prisma generate
 
