@@ -24,6 +24,7 @@
     "db:seed": "prisma db seed",
     "netlify:build": "bash scripts/netlify-build.sh",
     "db:studio": "prisma studio",
+    "test:db:prompt": "node scripts/prompt-and-test-db.mjs",
     "ingest": "tsx scripts/ingest-docs.ts",
     "ingest:county-wikipedia": "tsx scripts/ingest-county-wikipedia.ts",
     "sync:team-positions": "tsx scripts/sync-campaign-team-positions.ts",
