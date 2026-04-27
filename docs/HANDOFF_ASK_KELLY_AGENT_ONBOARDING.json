@@ -55,6 +55,13 @@
     },
     "submission_structuredData_json_mirrors": "Same stable keys: askKelly, beta, owner, finalAuthority, category, pagePath, source, launchMode (plus formType in handlers)."
   },
+  "elevenlabs_candidate_onboarding_tts": {
+    "route": "POST /api/ask-kelly/tts",
+    "env_required": ["ELEVENLABS_API_KEY", "ELEVENLABS_VOICE_ID"],
+    "security": "Server-only: assertAdminApi() on every request; keys read from process.env only; never bundled in client.",
+    "ui": "AskKellyReadAloudButton on /admin/ask-kelly welcome section; static onboarding copy only (ASK_KELLY_ONBOARDING_WELCOME_READ_ALOUD).",
+    "netlify": "Add ELEVENLABS_API_KEY and ELEVENLABS_VOICE_ID in Netlify → Environment variables, then redeploy. Do not commit .env or .env.local; see RedDirt .gitignore and docs/deployment.md."
+  },
   "key_files": {
     "form_schema": "src/lib/forms/schemas.ts",
     "form_persist": "src/lib/forms/handlers.ts",
@@ -66,6 +73,9 @@
     "api_forms": "src/app/api/forms/route.ts",
     "api_assistant_rag": "src/app/api/assistant/route.ts (no Phase 1 rewrite — fallbacks in dock when this fails)",
     "admin_triage_page": "src/app/admin/(board)/workbench/ask-kelly-beta/page.tsx",
+    "admin_candidate_onboarding": "src/app/admin/(board)/ask-kelly/page.tsx",
+    "api_ask_kelly_tts": "src/app/api/ask-kelly/tts/route.ts",
+    "ask_kelly_read_aloud_button": "src/components/admin/ask-kelly/AskKellyReadAloudButton.tsx",
     "admin_nav": "src/components/admin/AdminBoardShell.tsx (link: Ask Kelly (beta) triage)",
     "roadmap_doc": "docs/STEP_6_ENGINEERING_ROADMAP_AND_CURSOR_HANDOFF.md"
   },

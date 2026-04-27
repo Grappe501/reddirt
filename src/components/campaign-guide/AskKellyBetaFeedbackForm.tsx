@@ -1,13 +1,21 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useId, useEffect, useState } from "react";
 import {
   ASK_KELLY_CATEGORY_LABELS,
   ASK_KELLY_FEEDBACK_FORM_INTRO,
   ASK_KELLY_FEEDBACK_SUCCESS,
 } from "@/content/ask-kelly-beta-public-copy";
+import {
+  ASK_KELLY_BETA_FEEDBACK_DRAFT_KEY,
+  askKellyDraftDiffersFromDefaults,
+  parseAskKellyBetaLocalDraft,
+  type AskKellyBetaLocalDraftV1,
+} from "@/lib/browser/kelly-local-drafts";
 import { askKellyBetaCategoryValues } from "@/lib/forms/schemas";
 import { cn } from "@/lib/utils";
+
+const DRAFT_REASSURANCE = "Nothing was lost. Your draft is still saved in this browser.";
 
 type Result = { ok: true; message: string } | { ok: false; message: string; fields?: Record<string, string> };
 
@@ -29,8 +37,73 @@ export function AskKellyBetaFeedbackForm({ defaultPagePath = "", className }: Pr
   const [feedback, setFeedback] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "done">("idle");
   const [result, setResult] = useState<Result | null>(null);
+  const [localDraftRead, setLocalDraftRead] = useState(false);
+  const [recoveryOpen, setRecoveryOpen] = useState(false);
+  const [recoveryDraft, setRecoveryDraft] = useState<AskKellyBetaLocalDraftV1 | null>(null);
 
   const resetPagePath = () => setPagePath(defaultPagePath);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    setLocalDraftRead(false);
+    let raw: string | null = null;
+    try {
+      raw = localStorage.getItem(ASK_KELLY_BETA_FEEDBACK_DRAFT_KEY);
+    } catch {
+      setLocalDraftRead(true);
+      return;
+    }
+    const draft = parseAskKellyBetaLocalDraft(raw);
+    if (!draft) {
+      setRecoveryOpen(false);
+      setRecoveryDraft(null);
+      setLocalDraftRead(true);
+      return;
+    }
+    if (!askKellyDraftDiffersFromDefaults(draft, defaultPagePath, initialCategory)) {
+      try {
+        localStorage.removeItem(ASK_KELLY_BETA_FEEDBACK_DRAFT_KEY);
+      } catch {
+        /* ignore */
+      }
+      setRecoveryOpen(false);
+      setRecoveryDraft(null);
+      setLocalDraftRead(true);
+      return;
+    }
+    setRecoveryDraft(draft);
+    setRecoveryOpen(true);
+    setLocalDraftRead(true);
+  }, [defaultPagePath]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!localDraftRead) return;
+    if (recoveryOpen) return;
+    const now = {
+      v: 1 as const,
+      name,
+      email,
+      phone,
+      category,
+      pagePath,
+      feedback,
+      savedAt: new Date().toISOString(),
+    };
+    if (!askKellyDraftDiffersFromDefaults(now, defaultPagePath, initialCategory)) {
+      try {
+        localStorage.removeItem(ASK_KELLY_BETA_FEEDBACK_DRAFT_KEY);
+      } catch {
+        /* ignore */
+      }
+      return;
+    }
+    try {
+      localStorage.setItem(ASK_KELLY_BETA_FEEDBACK_DRAFT_KEY, JSON.stringify(now));
+    } catch {
+      /* ignore */
+    }
+  }, [name, email, phone, category, pagePath, feedback, localDraftRead, recoveryOpen, defaultPagePath]);
 
   const submit = async () => {
     setResult(null);
@@ -53,6 +126,11 @@ export function AskKellyBetaFeedbackForm({ defaultPagePath = "", className }: Pr
       const json: unknown = await res.json().catch(() => ({}));
       const obj = json && typeof json === "object" ? (json as Record<string, unknown>) : {};
       if (res.status === 200 && obj.ok === true) {
+        try {
+          localStorage.removeItem(ASK_KELLY_BETA_FEEDBACK_DRAFT_KEY);
+        } catch {
+          /* ignore */
+        }
         setResult({ ok: true, message: ASK_KELLY_FEEDBACK_SUCCESS });
         setStatus("done");
         return;
@@ -103,9 +181,60 @@ export function AskKellyBetaFeedbackForm({ defaultPagePath = "", className }: Pr
       }}
     >
       <p className="font-body text-xs leading-relaxed text-kelly-text/80">{ASK_KELLY_FEEDBACK_FORM_INTRO}</p>
+      {recoveryOpen && recoveryDraft ? (
+        <div className="rounded-lg border border-kelly-navy/25 bg-kelly-fog/80 px-3 py-2.5 text-sm text-kelly-text" role="status">
+          <p className="font-semibold text-kelly-navy">Recovered an unsaved draft from this browser.</p>
+          <p className="mt-1 text-xs text-kelly-text/75">Your answers were not sent automatically. Choose below.</p>
+          <div className="mt-2 flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => {
+                const d = recoveryDraft;
+                setName(d.name);
+                setEmail(d.email);
+                setPhone(d.phone);
+                setCategory(d.category);
+                setPagePath(d.pagePath);
+                setFeedback(d.feedback);
+                setRecoveryOpen(false);
+                setRecoveryDraft(null);
+              }}
+              className="rounded-md bg-kelly-navy px-2.5 py-1.5 text-xs font-bold text-kelly-mist"
+            >
+              Restore draft
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                try {
+                  localStorage.removeItem(ASK_KELLY_BETA_FEEDBACK_DRAFT_KEY);
+                } catch {
+                  /* ignore */
+                }
+                setName("");
+                setEmail("");
+                setPhone("");
+                setCategory(initialCategory);
+                setPagePath(defaultPagePath);
+                setFeedback("");
+                setRecoveryOpen(false);
+                setRecoveryDraft(null);
+              }}
+              className="rounded-md border border-kelly-text/20 bg-white px-2.5 py-1.5 text-xs font-semibold text-kelly-text"
+            >
+              Discard draft
+            </button>
+          </div>
+        </div>
+      ) : null}
       {result && !result.ok ? (
-        <p id={errId} className="rounded-md border border-red-200/80 bg-red-50/90 px-3 py-2 font-body text-sm text-red-900" role="alert">
-          {result.message}
+        <p
+          id={errId}
+          className="rounded-md border border-red-200/80 bg-red-50/90 px-3 py-2 font-body text-sm text-red-900"
+          role="alert"
+        >
+          <span>{result.message}</span>
+          <span className="mt-2 block text-xs text-red-900/90">{DRAFT_REASSURANCE}</span>
         </p>
       ) : null}
       {status === "submitting" ? (
@@ -201,11 +330,14 @@ export function AskKellyBetaFeedbackForm({ defaultPagePath = "", className }: Pr
       </div>
       <button
         type="submit"
-        disabled={status === "submitting"}
+        disabled={status === "submitting" || (recoveryOpen && Boolean(recoveryDraft))}
         className="w-full rounded-lg bg-kelly-navy py-2.5 font-body text-sm font-bold uppercase tracking-wider text-kelly-mist disabled:opacity-50"
       >
         {status === "submitting" ? "Sending…" : "Send feedback"}
       </button>
+      {recoveryOpen && recoveryDraft ? (
+        <p className="text-center text-[10px] text-kelly-text/60">Choose Restore or Discard before you can send.</p>
+      ) : null}
     </form>
   );
 }

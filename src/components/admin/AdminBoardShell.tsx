@@ -23,6 +23,7 @@ const siteLinks: { href: string; label: string }[] = [
 ];
 
 const operationsLinks: { href: string; label: string }[] = [
+  { href: "/admin/ask-kelly", label: "Ask Kelly / onboarding" },
   { href: "/admin/workbench", label: "Campaign workbench" },
   { href: "/admin/workbench/ask-kelly-beta", label: "Ask Kelly (beta) triage" },
   { href: "/admin/candidate-briefs", label: "Candidate briefs" },

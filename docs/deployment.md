@@ -31,8 +31,14 @@ If the repo is **only** the `RedDirt` project, leave base directory empty.
 | `OPENAI_EMBEDDING_MODEL` | Optional | For ingest + query embeddings |
 | `NEXT_PUBLIC_SITE_URL` | Recommended | Canonical site URL for Open Graph (no trailing slash). On Netlify’s default `*.netlify.app` hostname, **do not use `www.`** — the certificate covers `kgrappe.netlify.app` only; `www.kgrappe.netlify.app` breaks TLS (`ERR_CERT_COMMON_NAME_INVALID`). |
 | `SENDGRID_*` / `TWILIO_*` | Optional | Comms; see [`.env.example`](../.env.example); intake still saves without them |
+| `ELEVENLABS_API_KEY` | Optional | Admin-only TTS: `POST /api/ask-kelly/tts` (ElevenLabs). Omit if you do not need read-aloud on `/admin/ask-kelly`. |
+| `ELEVENLABS_VOICE_ID` | Optional | Required **with** `ELEVENLABS_API_KEY` for TTS. Choose a voice in the ElevenLabs library. |
 
 Never expose server secrets via `NEXT_PUBLIC_*`.
+
+**Secrets hygiene:** Do **not** commit `.env`, `.env.local`, or any file containing real API keys. Keep templates in [`.env.example`](../.env.example) with empty or placeholder values only.
+
+**After changing environment variables in the Netlify UI** (any site): trigger a new **deploy** so serverless functions and the build see the new values; variable-only changes do not always hot-reload an existing deploy.
 
 ## After first deploy
 

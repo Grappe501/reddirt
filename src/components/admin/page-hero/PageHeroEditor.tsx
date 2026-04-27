@@ -15,6 +15,12 @@ import {
   KELLY_HERO_WELCOME_COMPACT,
   KELLY_HERO_WHY_DOUBLE_CONFIRM,
 } from "@/content/admin-kelly-page-hero-copy";
+import {
+  pageHeroDraftDiffersFromInitial,
+  pageHeroDraftStorageKey,
+  parsePageHeroLocalDraft,
+  type PageHeroLocalDraftV1,
+} from "@/lib/browser/kelly-local-drafts";
 import type { HeroBlockPayload, PageKey } from "@/lib/content/page-blocks";
 import { cn } from "@/lib/utils";
 
@@ -67,6 +73,11 @@ export function PageHeroEditor({ pageKey, initial, showSaved }: Props) {
     title: "none",
     subtitle: "none",
   });
+  const [heroLocalDraftRead, setHeroLocalDraftRead] = useState(false);
+  const [heroRecovery, setHeroRecovery] = useState<{
+    status: "pending" | "ready";
+    draft: PageHeroLocalDraftV1 | null;
+  }>({ status: "ready", draft: null });
 
   const currentEyebrow = initial?.eyebrow ?? "";
   const currentTitle = initial?.title ?? "";
@@ -85,6 +96,76 @@ export function PageHeroEditor({ pageKey, initial, showSaved }: Props) {
     const early = n <= EARLY_EXPLANATION_MAX_VISITS;
     setExplanationMode(early ? "early" : "late");
   }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    setHeroLocalDraftRead(false);
+    if (showSaved) {
+      try {
+        localStorage.removeItem(pageHeroDraftStorageKey(pageKey));
+      } catch {
+        /* ignore */
+      }
+      setHeroRecovery({ status: "ready", draft: null });
+      setHeroLocalDraftRead(true);
+      return;
+    }
+    const key = pageHeroDraftStorageKey(pageKey);
+    let raw: string | null = null;
+    try {
+      raw = localStorage.getItem(key);
+    } catch {
+      setHeroRecovery({ status: "ready", draft: null });
+      setHeroLocalDraftRead(true);
+      return;
+    }
+    const draft = parsePageHeroLocalDraft(raw);
+    if (!draft) {
+      setHeroRecovery({ status: "ready", draft: null });
+      setHeroLocalDraftRead(true);
+      return;
+    }
+    if (!pageHeroDraftDiffersFromInitial(draft, initial)) {
+      try {
+        localStorage.removeItem(key);
+      } catch {
+        /* ignore */
+      }
+      setHeroRecovery({ status: "ready", draft: null });
+      setHeroLocalDraftRead(true);
+      return;
+    }
+    setHeroRecovery({ status: "pending", draft });
+    setHeroLocalDraftRead(true);
+  }, [pageKey, initial, showSaved]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!heroLocalDraftRead) return;
+    if (showSaved) return;
+    if (heroRecovery.status === "pending") return;
+    const key = pageHeroDraftStorageKey(pageKey);
+    const body: PageHeroLocalDraftV1 = {
+      v: 1,
+      eyebrow,
+      title,
+      subtitle,
+      savedAt: new Date().toISOString(),
+    };
+    if (!pageHeroDraftDiffersFromInitial(body, initial)) {
+      try {
+        localStorage.removeItem(key);
+      } catch {
+        /* ignore */
+      }
+      return;
+    }
+    try {
+      localStorage.setItem(key, JSON.stringify(body));
+    } catch {
+      /* ignore quota / private mode */
+    }
+  }, [eyebrow, title, subtitle, pageKey, initial, showSaved, heroLocalDraftRead, heroRecovery.status]);
 
   const setFieldOpenFor = (key: FieldKey, next: FieldOpen) => {
     setFieldOpen((prev) => {
@@ -123,13 +204,57 @@ export function PageHeroEditor({ pageKey, initial, showSaved }: Props) {
         </p>
       ) : null}
 
-      {state?.error ? (
-        <p
-          className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-900"
-          role="alert"
+      {heroRecovery.status === "pending" && heroRecovery.draft ? (
+        <div
+          className="rounded-lg border border-kelly-navy/25 bg-kelly-fog/80 px-4 py-3 text-sm text-kelly-text"
+          role="status"
         >
-          {state.error}
-        </p>
+          <p className="font-semibold text-kelly-navy">Recovered an unsaved draft from this browser.</p>
+          <p className="mt-1 text-xs text-kelly-text/75">This is only on your device. Review it, then save from step 3 when you are online.</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => {
+                const d = heroRecovery.draft;
+                if (!d) return;
+                setEyebrow(d.eyebrow);
+                setTitle(d.title);
+                setSubtitle(d.subtitle);
+                setStep("edit");
+                setHeroRecovery({ status: "ready", draft: null });
+              }}
+              className="rounded-md bg-kelly-navy px-3 py-1.5 text-xs font-bold text-kelly-page"
+            >
+              Restore draft
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                const k = pageHeroDraftStorageKey(pageKey);
+                try {
+                  localStorage.removeItem(k);
+                } catch {
+                  /* ignore */
+                }
+                setEyebrow(initial?.eyebrow ?? "");
+                setTitle(initial?.title ?? "");
+                setSubtitle(initial?.subtitle ?? "");
+                setStep("edit");
+                setHeroRecovery({ status: "ready", draft: null });
+              }}
+              className="rounded-md border border-kelly-text/20 bg-white px-3 py-1.5 text-xs font-semibold text-kelly-text"
+            >
+              Discard draft
+            </button>
+          </div>
+        </div>
+      ) : null}
+
+      {state?.error ? (
+        <div className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-900" role="alert">
+          <p>{state.error}</p>
+          <p className="mt-2 text-xs text-red-900/90">Nothing was lost. Your draft is still saved in this browser.</p>
+        </div>
       ) : null}
 
       {hasNoSavedRow ? (
@@ -265,11 +390,16 @@ export function PageHeroEditor({ pageKey, initial, showSaved }: Props) {
               onClick={() => {
                 setStep("review");
               }}
-              className="rounded-btn bg-kelly-navy px-5 py-2.5 text-sm font-bold text-kelly-page"
+              disabled={heroRecovery.status === "pending"}
+              className="rounded-btn bg-kelly-navy px-5 py-2.5 text-sm font-bold text-kelly-page disabled:cursor-not-allowed disabled:opacity-50"
             >
               Review change
             </button>
-            <span className="text-xs text-kelly-text/50">Next you’ll see current vs. new, then a final check before any save.</span>
+            <span className="text-xs text-kelly-text/50">
+              {heroRecovery.status === "pending"
+                ? "Use Restore or Discard on the draft banner above first."
+                : "Next you’ll see current vs. new, then a final check before any save."}
+            </span>
           </div>
         </div>
 

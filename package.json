@@ -31,6 +31,7 @@
     "sync:team-positions": "tsx scripts/sync-campaign-team-positions.ts",
     "check:openai": "tsx scripts/check-openai-key.ts",
     "set:openai": "node scripts/set-openai-key.cjs",
+    "set:elevenlabs": "node scripts/set-elevenlabs-env.cjs",
     "setup:openai-key": "node scripts/setup-openai-key.mjs",
     "test:openai-key": "node scripts/test-openai-key.mjs",
     "set:google-calendar-env": "node scripts/set-google-calendar-env.cjs",
