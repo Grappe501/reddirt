@@ -143,9 +143,9 @@ export default async function GetInvolvedPage({
           <RepresentLocalEventPanel className="mt-10 max-w-3xl" />
           <p className="mt-6 max-w-3xl font-body text-sm text-kelly-text/70">
             Ready to send the form?{" "}
-            <a className="font-semibold text-kelly-navy underline" href={representLocalEventVolunteerHref}>
+            <Link className="font-semibold text-kelly-navy underline" href={representLocalEventVolunteerHref}>
               Open the volunteer signup with this lane tagged
-            </a>{" "}
+            </Link>{" "}
             or scroll to the full form below.
           </p>
         </ContentContainer>
