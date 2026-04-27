@@ -4,19 +4,19 @@ import type { MediaOutreachListItem } from "@/lib/comms-workbench/dto";
 import { getMediaOutreachStatusDisplay, commsStatusBadgeClass } from "@/lib/comms-workbench/status-display";
 import { formatCommsFieldLabel } from "@/lib/comms-workbench/ui-labels";
 
-const th = "border-b border-deep-soil/10 px-2 py-1.5 text-left font-heading text-[10px] font-bold uppercase tracking-wider text-deep-soil/55";
-const td = "border-b border-deep-soil/5 px-2 py-2 text-sm";
+const th = "border-b border-kelly-text/10 px-2 py-1.5 text-left font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
+const td = "border-b border-kelly-text/5 px-2 py-2 text-sm";
 
 export function MediaOutreachListTable({ items }: { items: MediaOutreachListItem[] }) {
   if (items.length === 0) {
     return (
-      <p className="rounded border border-dashed border-deep-soil/20 bg-cream-canvas/50 px-4 py-8 text-center font-body text-sm text-deep-soil/65">
+      <p className="rounded border border-dashed border-kelly-text/20 bg-kelly-page/50 px-4 py-8 text-center font-body text-sm text-kelly-text/65">
         No media outreach items yet. PR tracking will appear here when rows exist in the workbench graph.
       </p>
     );
   }
   return (
-    <div className="overflow-x-auto rounded border border-deep-soil/10 bg-white">
+    <div className="overflow-x-auto rounded border border-kelly-text/10 bg-white">
       <table className="w-full min-w-[640px] border-collapse">
         <thead>
           <tr>
@@ -33,9 +33,9 @@ export function MediaOutreachListTable({ items }: { items: MediaOutreachListItem
           {items.map((m) => {
             const st = getMediaOutreachStatusDisplay(m.status);
             return (
-            <tr key={m.id} className="hover:bg-cream-canvas/30">
+            <tr key={m.id} className="hover:bg-kelly-page/30">
               <td className={td}>
-                <Link href={commsMediaPath(m.id)} className="font-semibold text-civic-slate hover:underline">
+                <Link href={commsMediaPath(m.id)} className="font-semibold text-kelly-slate hover:underline">
                   {m.title}
                 </Link>
               </td>
@@ -46,14 +46,14 @@ export function MediaOutreachListTable({ items }: { items: MediaOutreachListItem
               <td className={td}>{m.urgency ? formatCommsFieldLabel(m.urgency) : "—"}</td>
               <td className={`${td} text-xs`}>
                 {m.outletName ?? "—"}
-                {m.contactName ? <span className="block text-deep-soil/55">{m.contactName}</span> : null}
+                {m.contactName ? <span className="block text-kelly-text/55">{m.contactName}</span> : null}
               </td>
               <td className={`${td} text-xs`}>
                 {m.linkedPlanTitle ? <span>Plan: {m.linkedPlanTitle}</span> : null}
                 {m.linkedIntakeTitle ? <span className="mt-0.5 block">Intake: {m.linkedIntakeTitle}</span> : null}
                 {!m.linkedPlanTitle && !m.linkedIntakeTitle ? "—" : null}
               </td>
-              <td className={`${td} text-[10px] text-deep-soil/60`}>
+              <td className={`${td} text-[10px] text-kelly-text/60`}>
                 <time dateTime={m.updatedAt}>{new Date(m.updatedAt).toLocaleString()}</time>
               </td>
             </tr>

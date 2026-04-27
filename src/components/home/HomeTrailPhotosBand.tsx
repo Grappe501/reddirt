@@ -6,7 +6,7 @@ export function HomeTrailPhotosBand() {
   if (photos.length === 0) return null;
 
   return (
-    <div className="border-b border-civic-ink/10 bg-gradient-to-b from-white via-civic-fog/40 to-civic-fog/20">
+    <div className="border-b border-kelly-ink/10 bg-gradient-to-b from-white via-kelly-fog/40 to-kelly-fog/20">
       <TrailPhotosShowcase
         variant="home"
         photos={photos}

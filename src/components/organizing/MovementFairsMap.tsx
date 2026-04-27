@@ -104,7 +104,7 @@ function buildPins(events: EventItem[]): MapPin[] {
 function makeDivIcon(fillColor: string, zIndexOffset: number): L.DivIcon {
   return L.divIcon({
     className: "sos-leaflet-pin",
-    html: `<div style="background:${fillColor};width:16px;height:16px;border-radius:50%;border:2px solid #2b1e1a;box-shadow:0 1px 4px rgba(0,0,0,.28);z-index:${zIndexOffset}"></div>`,
+    html: `<div style="background:${fillColor};width:16px;height:16px;border-radius:50%;border:2px solid #000066;box-shadow:0 1px 4px rgba(0,0,102,.22);z-index:${zIndexOffset}"></div>`,
     iconSize: [16, 16],
     iconAnchor: [8, 8],
   });
@@ -166,20 +166,20 @@ function MapPinMarker({
       }}
     >
       <Popup className="sos-event-popup">
-        <div className="min-w-[200px] max-w-[280px] font-body text-deep-soil">
-          <p className="text-[10px] font-bold uppercase tracking-wider text-deep-soil/55">{pin.type}</p>
+        <div className="min-w-[200px] max-w-[280px] font-body text-kelly-text">
+          <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">{pin.type}</p>
           <p className="mt-1 font-heading text-base font-bold leading-snug">{pin.title}</p>
-          <p className="mt-1 text-xs font-semibold text-deep-soil/75">{pin.whenLine}</p>
+          <p className="mt-1 text-xs font-semibold text-kelly-text/75">{pin.whenLine}</p>
           {pin.mapPinQuality === "region" ? (
             <p className="mt-1 text-[11px] text-amber-900/90">Approximate region pin — confirm address on the detail page.</p>
           ) : null}
           {pin.eventSource === "calendar" ? (
-            <p className="mt-1 text-[11px] text-civic-blue">Campaign HQ calendar — staff-published only.</p>
+            <p className="mt-1 text-[11px] text-kelly-blue">Campaign HQ calendar — staff-published only.</p>
           ) : null}
-          <p className="mt-2 line-clamp-4 text-xs leading-relaxed text-deep-soil/80">{pin.summary}</p>
+          <p className="mt-2 line-clamp-4 text-xs leading-relaxed text-kelly-text/80">{pin.summary}</p>
           <a
             href={pin.detailHref}
-            className="mt-3 inline-block text-sm font-bold text-red-dirt underline"
+            className="mt-3 inline-block text-sm font-bold text-kelly-navy underline"
           >
             Open detail page →
           </a>
@@ -218,46 +218,46 @@ export function MovementFairsMap({ events, selectedSlug = null, onSelectSlug }: 
   }, [pins]);
 
   const legend = (
-    <div className="flex flex-col gap-2 text-sm text-deep-soil/85 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4 sm:gap-y-2">
+    <div className="flex flex-col gap-2 text-sm text-kelly-text/85 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4 sm:gap-y-2">
       <span className="font-body font-semibold">Legend</span>
       <span className="inline-flex items-center gap-2">
         <span
-          className="inline-block h-3 w-3 shrink-0 rounded-full border border-deep-soil/20 shadow-sm"
+          className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/20 shadow-sm"
           style={{ background: MOVEMENT_EVENT_PIN }}
         />
         <span className="font-body">Movement site events</span>
       </span>
       <span className="inline-flex items-center gap-2">
         <span
-          className="inline-block h-3 w-3 shrink-0 rounded-full border border-deep-soil/20 shadow-sm"
+          className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/20 shadow-sm"
           style={{ background: CALENDAR_OPS_PIN }}
         />
         <span className="font-body">HQ calendar (published)</span>
       </span>
       <span className="inline-flex items-center gap-2">
         <span
-          className="inline-block h-3 w-3 shrink-0 rounded-full border border-deep-soil/20 shadow-sm"
+          className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/20 shadow-sm"
           style={{ background: FIELD_PIN.unscheduled }}
         />
         <span className="font-body">Fair / festival · listed</span>
       </span>
       <span className="inline-flex items-center gap-2">
         <span
-          className="inline-block h-3 w-3 shrink-0 rounded-full border border-deep-soil/15 shadow-sm"
+          className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/15 shadow-sm"
           style={{ background: FIELD_PIN.suggested }}
         />
         <span className="font-body">Fair · suggested</span>
       </span>
       <span className="inline-flex items-center gap-2">
         <span
-          className="inline-block h-3 w-3 shrink-0 rounded-full border border-deep-soil/15 shadow-sm"
+          className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/15 shadow-sm"
           style={{ background: FIELD_PIN.tentative }}
         />
         <span className="font-body">Fair · tentative</span>
       </span>
       <span className="inline-flex items-center gap-2">
         <span
-          className="inline-block h-3 w-3 shrink-0 rounded-full border border-deep-soil/15 shadow-sm"
+          className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/15 shadow-sm"
           style={{ background: FIELD_PIN.confirmed }}
         />
         <span className="font-body">Fair · confirmed</span>
@@ -275,7 +275,7 @@ export function MovementFairsMap({ events, selectedSlug = null, onSelectSlug }: 
   return (
     <div className="space-y-3">
       {legend}
-      <div className="overflow-hidden rounded-2xl border border-deep-soil/10 shadow-[var(--shadow-soft)]">
+      <div className="overflow-hidden rounded-2xl border border-kelly-text/10 shadow-[var(--shadow-soft)]">
         <MapContainer
           center={ARK_CENTER}
           zoom={DEFAULT_ZOOM}
@@ -303,13 +303,13 @@ export function MovementFairsMap({ events, selectedSlug = null, onSelectSlug }: 
         </MapContainer>
       </div>
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-        <p className="font-body text-xs text-deep-soil/60">
+        <p className="font-body text-xs text-kelly-text/60">
           OpenStreetMap + Leaflet — operational field view. Use the map’s +/− buttons to zoom (scroll moves the page).
           Pins without coordinates stay in the list only until staff add a point or county.
         </p>
         <Link
           href="/campaign-calendar"
-          className="shrink-0 font-body text-xs font-bold uppercase tracking-wider text-red-dirt underline-offset-2 hover:underline"
+          className="shrink-0 font-body text-xs font-bold uppercase tracking-wider text-kelly-navy underline-offset-2 hover:underline"
         >
           Full HQ calendar →
         </Link>

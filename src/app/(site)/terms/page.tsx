@@ -21,7 +21,7 @@ export default function TermsPage() {
         subtitle="A placeholder structure for how visitors may use this site. Counsel review is required before relying on this text."
       />
       <FullBleedSection padY>
-        <ContentContainer className="max-w-2xl space-y-6 font-body text-base leading-relaxed text-deep-soil/85">
+        <ContentContainer className="max-w-2xl space-y-6 font-body text-base leading-relaxed text-kelly-text/85">
           <p>
             <strong>Status.</strong> The campaign will publish full terms of use after review. In general, you agree
             to use the site lawfully, not to attempt to disrupt it, and not to misrepresent your identity on forms or

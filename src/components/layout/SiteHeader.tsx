@@ -75,24 +75,24 @@ export function SiteHeader() {
   return (
     <header
       ref={headerRootRef}
-      className="fixed left-0 right-0 top-0 z-50 w-full isolate border-b border-civic-gold/20 bg-civic-midnight shadow-[0_8px_32px_rgba(12,18,34,0.25)]"
+      className="fixed left-0 right-0 top-0 z-50 w-full isolate border-b border-kelly-gold/25 bg-kelly-navy shadow-[0_8px_32px_rgba(0,0,102,0.35)]"
     >
       <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
-      <div className="relative z-10 border-b border-civic-gold/20 bg-civic-midnight">
+      <div className="relative z-10 border-b border-kelly-gold/20 bg-kelly-navy">
         <div className="mx-auto flex w-full max-w-[100vw] items-center justify-between gap-2 px-[var(--gutter-x)] py-3 sm:py-3.5 lg:gap-3 lg:py-4">
         <Link
           href="/"
           aria-label={`${siteConfig.name} — home`}
-          className="group flex min-w-0 max-w-[min(100%,18rem)] shrink-0 items-center gap-2.5 sm:max-w-md sm:gap-3 lg:max-w-[20rem] xl:max-w-md 2xl:max-w-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-civic-gold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-civic-midnight"
+          className="group flex min-w-0 max-w-[min(100%,18rem)] shrink-0 items-center gap-2.5 sm:max-w-md sm:gap-3 lg:max-w-[20rem] xl:max-w-md 2xl:max-w-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kelly-gold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-kelly-navy"
         >
-          <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-civic-gold/25 bg-civic-blue/40 shadow-[0_0_0_1px_rgba(201,162,39,0.12)_inset] sm:h-12 sm:w-12">
+          <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-kelly-gold/25 bg-kelly-blue/40 shadow-[0_0_0_1px_rgba(201,162,39,0.12)_inset] sm:h-12 sm:w-12">
             <HeaderRoundLogo
               className="h-full w-full shrink-0 transition duration-200 group-hover:brightness-110"
               aria-hidden
             />
           </span>
           <span className="min-w-0 flex flex-col leading-tight text-white">
-            <span className="font-heading text-sm font-bold tracking-tight transition group-hover:text-sunlight-gold sm:text-base lg:text-lg">
+            <span className="font-heading text-sm font-bold tracking-tight transition group-hover:text-kelly-gold sm:text-base lg:text-lg">
             {siteConfig.name}
             </span>
             <span className="mt-0.5 hidden font-body text-[9px] font-medium uppercase tracking-[0.14em] text-white/90 sm:line-clamp-2 sm:text-[10px] lg:text-[11px]">
@@ -102,7 +102,7 @@ export function SiteHeader() {
         </Link>
 
         <nav
-          className="hidden min-w-0 flex-1 items-center justify-end gap-2 text-civic-fog lg:flex lg:gap-3 xl:gap-2.5 2xl:gap-3"
+          className="hidden min-w-0 flex-1 items-center justify-end gap-2 text-kelly-fog lg:flex lg:gap-3 xl:gap-2.5 2xl:gap-3"
           aria-label="Primary"
         >
           {/*
@@ -125,7 +125,7 @@ export function SiteHeader() {
           <Button
             href={joinCampaignHref}
             variant="primary"
-            className="ml-1 hidden min-h-11 flex-shrink-0 border border-red-dirt/20 px-3.5 py-2.5 text-xs font-extrabold uppercase tracking-wide shadow-md ring-1 ring-white/10 hover:ring-white/20 lg:inline-flex lg:px-4 lg:text-sm"
+            className="ml-1 hidden min-h-11 flex-shrink-0 border border-kelly-navy/25 px-3.5 py-2.5 text-xs font-extrabold uppercase tracking-wide shadow-md ring-1 ring-white/10 hover:ring-white/20 lg:inline-flex lg:px-4 lg:text-sm"
             aria-label="Volunteer — sign up to help the campaign"
           >
             Volunteer
@@ -133,14 +133,14 @@ export function SiteHeader() {
           <Button
             href={siteConfig.donateHref}
             variant="outlineOnDark"
-            className="hidden min-h-11 min-w-0 flex-shrink-0 border-2 border-sunlight-gold/90 bg-sunlight-gold/20 px-3.5 py-2.5 text-xs font-extrabold uppercase tracking-wide text-white shadow-md hover:border-sunlight-gold hover:bg-sunlight-gold/30 lg:inline-flex lg:px-4 lg:text-sm"
+            className="hidden min-h-11 min-w-0 flex-shrink-0 border-2 border-kelly-gold/90 bg-kelly-gold/20 px-3.5 py-2.5 text-xs font-extrabold uppercase tracking-wide text-white shadow-md hover:border-kelly-gold hover:bg-kelly-gold/30 lg:inline-flex lg:px-4 lg:text-sm"
             aria-label="Donate to the campaign"
           >
             Donate
           </Button>
         </nav>
 
-        <div className="flex max-w-[min(100%,18rem)] flex-shrink-0 flex-wrap items-center justify-end gap-1.5 sm:max-w-none sm:gap-2 sm:justify-end text-civic-fog lg:hidden">
+        <div className="flex max-w-[min(100%,18rem)] flex-shrink-0 flex-wrap items-center justify-end gap-1.5 sm:max-w-none sm:gap-2 sm:justify-end text-kelly-fog lg:hidden">
           <Button
             href={joinCampaignHref}
             target={joinExternal ? "_blank" : undefined}
@@ -154,7 +154,7 @@ export function SiteHeader() {
           <Button
             href={siteConfig.donateHref}
             variant="outlineOnDark"
-            className="min-h-11 border-2 border-sunlight-gold/90 bg-sunlight-gold/15 px-2.5 py-2 text-[10px] font-extrabold uppercase tracking-wide text-white sm:px-3.5 sm:text-xs"
+            className="min-h-11 border-2 border-kelly-gold/90 bg-kelly-gold/15 px-2.5 py-2 text-[10px] font-extrabold uppercase tracking-wide text-white sm:px-3.5 sm:text-xs"
             aria-label="Donate"
           >
             Donate
@@ -187,7 +187,7 @@ export function SiteHeader() {
         aria-modal="true"
         aria-label="Site navigation"
         className={cn(
-          "fixed inset-0 z-40 bg-civic-midnight/70 transition duration-normal lg:hidden",
+          "fixed inset-0 z-40 bg-kelly-navy/70 transition duration-normal lg:hidden",
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
         )}
         onClick={() => setOpen(false)}
@@ -195,7 +195,7 @@ export function SiteHeader() {
 
       <div
         className={cn(
-          "fixed inset-y-0 right-0 z-50 w-[min(100%,420px)] border-l border-civic-gold/20 bg-civic-midnight text-white shadow-2xl transition duration-normal lg:hidden",
+          "fixed inset-y-0 right-0 z-50 w-[min(100%,420px)] border-l border-kelly-gold/20 bg-kelly-navy text-white shadow-2xl transition duration-normal lg:hidden",
           open ? "translate-x-0" : "translate-x-full",
         )}
         id={`${panelId}-drawer`}
@@ -203,7 +203,7 @@ export function SiteHeader() {
         role="presentation"
       >
         <div className="flex h-full flex-col px-[var(--gutter-x)] py-6">
-          <div className="flex items-center justify-between border-b border-civic-gold/20 pb-4">
+          <div className="flex items-center justify-between border-b border-kelly-gold/20 pb-4">
             <span className="font-heading text-lg font-bold text-white">Menu</span>
             <Button type="button" variant="ghostOnDark" onClick={() => setOpen(false)}>
               Close
@@ -229,8 +229,8 @@ export function SiteHeader() {
                         className={cn(
                           "rounded-btn px-3 py-3 font-body text-base font-medium",
                           active
-                            ? "bg-civic-blue/60 text-sunlight-gold"
-                            : "text-white hover:bg-civic-blue/40",
+                            ? "bg-kelly-blue/60 text-kelly-gold"
+                            : "text-white hover:bg-kelly-blue/40",
                         )}
                         onClick={() => setOpen(false)}
                       >
@@ -245,7 +245,7 @@ export function SiteHeader() {
               href={joinCampaignHref}
               target={joinExternal ? "_blank" : undefined}
               rel={joinExternal ? "noopener noreferrer" : undefined}
-              className="mt-6 rounded-btn bg-red-dirt px-3 py-3 text-center font-body text-base font-bold text-cream-canvas"
+              className="mt-6 rounded-btn bg-kelly-gold px-3 py-3 text-center font-body text-base font-bold text-kelly-navy"
               onClick={() => setOpen(false)}
             >
               Volunteer sign-up
@@ -254,7 +254,7 @@ export function SiteHeader() {
               href={siteConfig.donateHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-btn border-2 border-sunlight-gold/70 bg-sunlight-gold/10 px-3 py-3 text-center font-body text-base font-bold text-white"
+              className="rounded-btn border-2 border-kelly-gold/70 bg-kelly-gold/10 px-3 py-3 text-center font-body text-base font-bold text-white"
               onClick={() => setOpen(false)}
             >
               Donate
@@ -268,7 +268,7 @@ export function SiteHeader() {
             </Link>
             <Link
               href="/"
-              className="rounded-btn px-3 py-3 font-body text-base font-medium text-sunlight-gold/95 hover:bg-civic-blue/30"
+              className="rounded-btn px-3 py-3 font-body text-base font-medium text-kelly-gold/95 hover:bg-kelly-blue/30"
               onClick={() => setOpen(false)}
             >
               Home

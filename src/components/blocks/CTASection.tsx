@@ -7,7 +7,7 @@ type CTASectionProps = {
   title: string;
   description?: string;
   children?: React.ReactNode;
-  variant?: "primary-band" | "soil" | "denim";
+  variant?: "primary-band" | "ink-band" | "muted-band";
   className?: string;
   id?: string;
 };
@@ -29,7 +29,7 @@ export function CTASection({
           title={title}
           subtitle={description}
           align="left"
-          className="max-w-2xl text-cream-canvas [&_h2]:text-cream-canvas [&_p.mb-3]:text-sunlight-gold [&_p]:text-cream-canvas/85"
+          className="max-w-2xl text-kelly-page [&_h2]:text-kelly-page [&_p.mb-3]:text-kelly-gold [&_p]:text-kelly-page/85"
         />
         <div className="flex flex-shrink-0 flex-wrap gap-4">{children}</div>
       </ContentContainer>

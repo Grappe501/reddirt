@@ -4,10 +4,21 @@
 
 Configured in `netlify.toml`:
 
-- **Build command:** `bash scripts/netlify-build.sh` (runs `npx prisma migrate deploy` then `npm run build`)
+- **Build command:** `bash scripts/netlify-build.sh` — runs **`prisma generate`** → **`prisma migrate deploy`** → **`prisma db seed`** (unless skipped) → **`next build`**.
 - **DATABASE_URL:** required before Prisma runs. On Netlify, the **Neon** integration often injects `NETLIFY_DATABASE_URL`; the script copies it to `DATABASE_URL` when the latter is unset (see `scripts/netlify-build.sh`).
+- **Seed:** The production build runs `prisma db seed` by default so a fresh hosted database gets baseline rows (site settings, demo county scaffolding, workflow templates — idempotent upserts). To **skip** seed (faster CI or DB already seeded), set **`SKIP_DB_SEED=1`** in Netlify environment variables.
 - **Plugin:** `@netlify/plugin-nextjs`
 - **Node:** 20 (see `[build.environment]` in `netlify.toml`)
+
+### Monorepo (`SOSWebsite` root on GitHub)
+
+If the Git repo root contains **both** `sos-public/` and `RedDirt/`, in Netlify:
+
+1. **Site settings → Build & deploy → Continuous deployment → Build settings**
+2. Set **Base directory** to **`RedDirt`** (so Netlify reads `RedDirt/netlify.toml` and runs commands from that folder).
+3. **Publish directory** is managed by `@netlify/plugin-nextjs`; do not set a custom publish dir unless Netlify docs require it for your plugin version.
+
+If the repo is **only** the `RedDirt` project, leave base directory empty.
 
 ## Required environment variables (production)
 

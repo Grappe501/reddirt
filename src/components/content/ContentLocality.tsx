@@ -32,9 +32,9 @@ export function ContentLocality({
   const chipClass = cn(
     "inline-flex max-w-full items-center rounded-full border font-semibold transition",
     isJournal
-      ? "border-civic-ink/20 bg-white px-3 py-1.5 text-xs uppercase tracking-wider text-civic-ink shadow-sm"
-      : "border-red-dirt/25 bg-red-dirt/5 px-2.5 py-0.5 text-[11px] uppercase tracking-wider text-red-dirt",
-    linkCounty && c && "hover:border-civic-gold/45 hover:bg-white",
+      ? "border-kelly-ink/20 bg-white px-3 py-1.5 text-xs uppercase tracking-wider text-kelly-ink shadow-sm"
+      : "border-kelly-navy/25 bg-kelly-navy/5 px-2.5 py-0.5 text-[11px] uppercase tracking-wider text-kelly-navy",
+    linkCounty && c && "hover:border-kelly-gold/45 hover:bg-white",
   );
 
   const countyInner = countyLabel ? (
@@ -44,7 +44,7 @@ export function ContentLocality({
       {needsCountySuffix ? (
         <span
           className={cn(
-            "font-body font-normal normal-case tracking-normal text-civic-slate/75",
+            "font-body font-normal normal-case tracking-normal text-kelly-slate/75",
             isJournal ? "ml-1 text-[11px]" : "ml-1 text-[10px]",
           )}
         >
@@ -70,8 +70,8 @@ export function ContentLocality({
         )
       ) : null}
       {ct ? (
-        <span className={cn("font-body text-civic-slate", isJournal ? "text-sm font-medium text-civic-ink/90" : "text-xs")}>
-          {c ? <span className="mr-1.5 text-civic-slate/35" aria-hidden>·</span> : null}
+        <span className={cn("font-body text-kelly-slate", isJournal ? "text-sm font-medium text-kelly-ink/90" : "text-xs")}>
+          {c ? <span className="mr-1.5 text-kelly-slate/35" aria-hidden>·</span> : null}
           <span className="sr-only">City: </span>
           {ct}
         </span>

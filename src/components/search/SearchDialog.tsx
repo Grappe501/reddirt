@@ -118,27 +118,27 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
   if (!open) return null;
 
   const node = (
-    <div className="fixed inset-0 z-[200] flex items-start justify-center bg-deep-soil/70 px-[var(--gutter-x)] py-10 backdrop-blur-sm md:items-center md:py-16">
+    <div className="fixed inset-0 z-[200] flex items-start justify-center bg-kelly-text/70 px-[var(--gutter-x)] py-10 backdrop-blur-sm md:items-center md:py-16">
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
         aria-describedby={descId}
-        className="relative max-h-[min(92vh,880px)] w-full max-w-3xl overflow-hidden rounded-card border border-deep-soil/15 bg-cream-canvas shadow-2xl"
+        className="relative max-h-[min(92vh,880px)] w-full max-w-3xl overflow-hidden rounded-card border border-kelly-text/15 bg-kelly-page shadow-2xl"
       >
-        <div className="flex items-start justify-between gap-4 border-b border-deep-soil/10 px-6 py-4 md:px-8">
+        <div className="flex items-start justify-between gap-4 border-b border-kelly-text/10 px-6 py-4 md:px-8">
           <div>
-            <h2 id={titleId} className="font-heading text-xl font-bold text-deep-soil md:text-2xl">
+            <h2 id={titleId} className="font-heading text-xl font-bold text-kelly-text md:text-2xl">
               Search the movement
             </h2>
-            <p id={descId} className="mt-1 font-body text-sm text-deep-soil/65">
+            <p id={descId} className="mt-1 font-body text-sm text-kelly-text/65">
               Keyword + semantic search over the ingested index. Grounded answers need OpenAI; matching pages still
               surface without it.
             </p>
             {indexStatus ? (
-              <p className="mt-2 font-body text-xs text-deep-soil/50">
+              <p className="mt-2 font-body text-xs text-kelly-text/50">
                 Index:{" "}
-                <strong className="text-deep-soil/70">
+                <strong className="text-kelly-text/70">
                   {indexStatus.chunkCount.toLocaleString()} excerpt{indexStatus.chunkCount === 1 ? "" : "s"}
                 </strong>
                 {indexStatus.database ? "" : " · Database offline in env"}
@@ -181,7 +181,7 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
             <input
               id={`${titleId}-q`}
               ref={inputRef}
-              className="w-full flex-1 rounded-btn border border-deep-soil/20 bg-[var(--color-surface-elevated)] px-4 py-3 font-body text-deep-soil shadow-sm transition focus:border-red-dirt focus:outline-none focus:ring-2 focus:ring-red-dirt/25"
+              className="w-full flex-1 rounded-btn border border-kelly-text/20 bg-[var(--color-surface-elevated)] px-4 py-3 font-body text-kelly-text shadow-sm transition focus:border-kelly-navy focus:outline-none focus:ring-2 focus:ring-kelly-navy/25"
               placeholder="Ask a question or type keywords…"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -193,52 +193,52 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
               {loading ? "Searching…" : "Search"}
             </Button>
           </div>
-          <label className="flex cursor-pointer items-center gap-2 font-body text-sm text-deep-soil/75">
+          <label className="flex cursor-pointer items-center gap-2 font-body text-sm text-kelly-text/75">
             <input
               type="checkbox"
-              className="h-4 w-4 rounded border-deep-soil/30 text-red-dirt focus:ring-red-dirt/30"
+              className="h-4 w-4 rounded border-kelly-text/30 text-kelly-navy focus:ring-kelly-navy/30"
               checked={includeAnswer}
               onChange={(e) => setIncludeAnswer(e.target.checked)}
             />
             Include a conversational search guide (grounded in results; vote / team / donate friendly)
           </label>
           {loading ? (
-            <p className="rounded-btn border border-deep-soil/10 bg-deep-soil/[0.04] px-4 py-3 font-body text-sm text-deep-soil/75" role="status" aria-live="polite">
+            <p className="rounded-btn border border-kelly-text/10 bg-kelly-text/[0.04] px-4 py-3 font-body text-sm text-kelly-text/75" role="status" aria-live="polite">
               {includeAnswer ? "Searching the site and drafting your guide…" : "Searching the index…"}
             </p>
           ) : null}
           {error ? (
-            <p className="rounded-btn border border-red-dirt/30 bg-red-dirt/10 px-4 py-3 font-body text-sm text-deep-soil" role="alert">
+            <p className="rounded-btn border border-kelly-navy/30 bg-kelly-navy/10 px-4 py-3 font-body text-sm text-kelly-text" role="alert">
               {error}
             </p>
           ) : null}
           {includeAnswer && searched && !loading && answer ? (
             <div
-              className="rounded-card border border-civic-blue/25 bg-gradient-to-b from-civic-fog/90 to-white p-5 shadow-[var(--shadow-soft)]"
+              className="rounded-card border border-kelly-blue/25 bg-gradient-to-b from-kelly-fog/90 to-white p-5 shadow-[var(--shadow-soft)]"
               role="region"
               aria-label="Search guide message"
             >
-              <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-civic-blue">Your search guide</p>
-              <p className="mt-1 font-body text-xs text-deep-soil/55">
+              <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-blue">Your search guide</p>
+              <p className="mt-1 font-body text-xs text-kelly-text/55">
                 One friendly read on what you searched—then dig into the sources underneath.
               </p>
-              <p className="mt-4 whitespace-pre-wrap font-body text-base leading-relaxed text-deep-soil">{answer}</p>
-              <div className="mt-5 flex flex-wrap gap-2 border-t border-deep-soil/10 pt-4">
+              <p className="mt-4 whitespace-pre-wrap font-body text-base leading-relaxed text-kelly-text">{answer}</p>
+              <div className="mt-5 flex flex-wrap gap-2 border-t border-kelly-text/10 pt-4">
                 <Link
                   href="/get-involved"
-                  className="rounded-full border border-red-dirt/30 bg-red-dirt/10 px-3 py-1.5 font-body text-xs font-semibold text-red-dirt hover:border-red-dirt/50"
+                  className="rounded-full border border-kelly-navy/30 bg-kelly-navy/10 px-3 py-1.5 font-body text-xs font-semibold text-kelly-navy hover:border-kelly-navy/50"
                 >
                   Get involved
                 </Link>
                 <Link
                   href="/donate"
-                  className="rounded-full border border-civic-gold/40 bg-sunlight-gold/20 px-3 py-1.5 font-body text-xs font-semibold text-deep-soil hover:bg-sunlight-gold/35"
+                  className="rounded-full border border-kelly-gold/40 bg-kelly-gold/20 px-3 py-1.5 font-body text-xs font-semibold text-kelly-text hover:bg-kelly-gold/35"
                 >
                   Donate
                 </Link>
                 <a
                   href="mailto:kelly@kellygrappe.com"
-                  className="rounded-full border border-deep-soil/15 bg-white px-3 py-1.5 font-body text-xs font-semibold text-deep-soil/85 hover:border-civic-blue/30"
+                  className="rounded-full border border-kelly-text/15 bg-white px-3 py-1.5 font-body text-xs font-semibold text-kelly-text/85 hover:border-kelly-blue/30"
                 >
                   Email Kelly
                 </a>
@@ -246,29 +246,29 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
             </div>
           ) : null}
           {includeAnswer && searched && !loading && !answer && results.length > 0 ? (
-            <div className="rounded-card border border-amber-200/80 bg-amber-50/90 p-4 font-body text-sm text-deep-soil">
+            <div className="rounded-card border border-amber-200/80 bg-amber-50/90 p-4 font-body text-sm text-kelly-text">
               We found pages below but no summary came back—try opening a source, toggling the guide off and on, or email
               kelly@kellygrappe.com.
             </div>
           ) : null}
           <div className="space-y-3">
-            <p className="font-body text-xs font-bold uppercase tracking-wider text-deep-soil/50">Sources</p>
+            <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-text/50">Sources</p>
             {searched && !loading && results.length === 0 && !error ? (
               <div
-                className="rounded-card border border-dashed border-deep-soil/20 bg-deep-soil/[0.03] px-4 py-6 text-center"
+                className="rounded-card border border-dashed border-kelly-text/20 bg-kelly-text/[0.03] px-4 py-6 text-center"
                 role="status"
               >
                 {indexStatus && indexStatus.chunkCount === 0 ? (
                   <>
-                    <p className="font-body text-sm font-medium text-deep-soil">Nothing to search yet.</p>
-                    <p className="mt-2 font-body text-sm text-deep-soil/65">
+                    <p className="font-body text-sm font-medium text-kelly-text">Nothing to search yet.</p>
+                    <p className="mt-2 font-body text-sm text-kelly-text/65">
                       Site search isn&apos;t available on this build. Use the menu or check back later.
                     </p>
                   </>
                 ) : (
                   <>
-                    <p className="font-body text-sm font-medium text-deep-soil">No matching pages for that query.</p>
-                    <p className="mt-2 font-body text-sm text-deep-soil/65">
+                    <p className="font-body text-sm font-medium text-kelly-text">No matching pages for that query.</p>
+                    <p className="mt-2 font-body text-sm text-kelly-text/65">
                       Try different keywords, or use the nav—your index already has {indexStatus?.chunkCount ?? "some"}{" "}
                       excerpt{(indexStatus?.chunkCount ?? 0) === 1 ? "" : "s"}.
                     </p>
@@ -277,23 +277,23 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
               </div>
             ) : null}
             {!searched && !loading ? (
-              <p className="font-body text-sm text-deep-soil/55">Search to see matching pages and excerpts.</p>
+              <p className="font-body text-sm text-kelly-text/55">Search to see matching pages and excerpts.</p>
             ) : null}
             <ul className="space-y-3">
               {results.map((r) => (
                 <li
                   key={`${r.path}-${r.snippet.slice(0, 24)}`}
-                  className="rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-4 shadow-[var(--shadow-soft)] transition hover:border-red-dirt/20"
+                  className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-4 shadow-[var(--shadow-soft)] transition hover:border-kelly-navy/20"
                 >
                   <Link
                     href={pathToHref(r.path)}
-                    className="font-heading text-lg font-bold text-red-dirt hover:underline focus-visible:outline focus-visible:ring-2 focus-visible:ring-red-dirt/40"
+                    className="font-heading text-lg font-bold text-kelly-navy hover:underline focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-navy/40"
                   >
                     {r.title || r.path}
                   </Link>
-                  <p className="mt-2 font-body text-sm leading-relaxed text-deep-soil/75">{r.snippet}</p>
-                  <p className="mt-2 font-mono text-xs text-deep-soil/45">
-                    <span className="mr-2 rounded bg-deep-soil/10 px-1.5 py-0.5 font-body text-[10px] font-semibold uppercase tracking-wide text-deep-soil/60">
+                  <p className="mt-2 font-body text-sm leading-relaxed text-kelly-text/75">{r.snippet}</p>
+                  <p className="mt-2 font-mono text-xs text-kelly-text/45">
+                    <span className="mr-2 rounded bg-kelly-text/10 px-1.5 py-0.5 font-body text-[10px] font-semibold uppercase tracking-wide text-kelly-text/60">
                       {pathKindLabel(r.path)}
                     </span>
                     {r.path}

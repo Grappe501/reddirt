@@ -139,11 +139,11 @@ export function VolunteerForm({
         </p>
         <p>
           Want to go deeper now? Browse{" "}
-          <Link className="font-semibold text-red-dirt underline" href="/local-organizing">
+          <Link className="font-semibold text-kelly-navy underline" href="/local-organizing">
             local organizing
           </Link>{" "}
           or learn about{" "}
-          <Link className="font-semibold text-red-dirt underline" href="/direct-democracy">
+          <Link className="font-semibold text-kelly-navy underline" href="/direct-democracy">
             direct democracy tools
           </Link>
           .
@@ -169,7 +169,7 @@ export function VolunteerForm({
     >
       <input type="text" tabIndex={-1} autoComplete="off" className="sr-only" aria-hidden {...form.register("website")} />
       {prefillLane === "event_representation" ? (
-        <div className="rounded-md border border-field-green/30 bg-field-green/10 p-4 font-body text-sm text-deep-soil/90">
+        <div className="rounded-md border border-kelly-success/30 bg-kelly-success/10 p-4 font-body text-sm text-kelly-text/90">
           <p>
             You are signing up to <span className="font-semibold">represent the campaign</span> at local fairs,
             festivals, party or civic meetings, or other public gatherings. Add anything you already know—dates, venues,
@@ -179,7 +179,7 @@ export function VolunteerForm({
         </div>
       ) : null}
       {prefillResource ? (
-        <div className="rounded-md border border-field-green/30 bg-field-green/10 p-4 font-body text-sm text-deep-soil/90">
+        <div className="rounded-md border border-kelly-success/30 bg-kelly-success/10 p-4 font-body text-sm text-kelly-text/90">
           <p>
             You opened this form from:{" "}
             <span className="font-semibold">
@@ -195,14 +195,14 @@ export function VolunteerForm({
           <FormLabel htmlFor="vf-name">Full name</FormLabel>
           <Input id="vf-name" {...form.register("name")} autoComplete="name" />
           {form.formState.errors.name ? (
-            <p className="text-sm text-red-dirt">{form.formState.errors.name.message}</p>
+            <p className="text-sm text-kelly-navy">{form.formState.errors.name.message}</p>
           ) : null}
         </FormField>
         <FormField>
           <FormLabel htmlFor="vf-email">Email</FormLabel>
           <Input id="vf-email" type="email" {...form.register("email")} autoComplete="email" />
           {form.formState.errors.email ? (
-            <p className="text-sm text-red-dirt">{form.formState.errors.email.message}</p>
+            <p className="text-sm text-kelly-navy">{form.formState.errors.email.message}</p>
           ) : null}
         </FormField>
         <FormField>
@@ -213,7 +213,7 @@ export function VolunteerForm({
           <FormLabel htmlFor="vf-zip">ZIP</FormLabel>
           <Input id="vf-zip" {...form.register("zip")} autoComplete="postal-code" />
           {form.formState.errors.zip ? (
-            <p className="text-sm text-red-dirt">{form.formState.errors.zip.message}</p>
+            <p className="text-sm text-kelly-navy">{form.formState.errors.zip.message}</p>
           ) : null}
         </FormField>
       </div>
@@ -233,19 +233,19 @@ export function VolunteerForm({
         <input
           id="vf-lead"
           type="checkbox"
-          className="mt-1 h-4 w-4 rounded border-deep-soil/30 text-red-dirt"
+          className="mt-1 h-4 w-4 rounded border-kelly-text/30 text-kelly-navy"
           checked={form.watch("leadershipInterest")}
           onChange={(e) => form.setValue("leadershipInterest", e.target.checked)}
         />
-        <FormLabel htmlFor="vf-lead" className="font-normal text-deep-soil/80">
+        <FormLabel htmlFor="vf-lead" className="font-normal text-kelly-text/80">
           I’m open to leadership training (hosting, captaining, or mentoring others).
         </FormLabel>
       </FormField>
-      <div className="rounded-md border border-deep-soil/10 bg-cream-canvas/30 p-4">
-        <p className="font-body text-xs font-bold uppercase tracking-wide text-deep-soil/55">Ways to help (optional)</p>
-        <p className="mt-1 font-body text-sm text-deep-soil/70">
+      <div className="rounded-md border border-kelly-text/10 bg-kelly-page/30 p-4">
+        <p className="font-body text-xs font-bold uppercase tracking-wide text-kelly-text/55">Ways to help (optional)</p>
+        <p className="mt-1 font-body text-sm text-kelly-text/70">
           Check any lane that fits—coordinators use this to match you faster.{" "}
-          <Link className="font-semibold text-red-dirt underline" href="/resources#toolkit">
+          <Link className="font-semibold text-kelly-navy underline" href="/resources#toolkit">
             Full how-to guides
           </Link>{" "}
           live in resources.
@@ -260,7 +260,7 @@ export function VolunteerForm({
                 <input
                   id={id}
                   type="checkbox"
-                  className="mt-1 h-4 w-4 rounded border-deep-soil/30 text-red-dirt"
+                  className="mt-1 h-4 w-4 rounded border-kelly-text/30 text-kelly-navy"
                   checked={checked}
                   onChange={(e) => {
                     const next = e.target.checked
@@ -270,10 +270,10 @@ export function VolunteerForm({
                   }}
                 />
                 <div>
-                  <FormLabel htmlFor={id} className="font-normal text-deep-soil/90">
+                  <FormLabel htmlFor={id} className="font-normal text-kelly-text/90">
                     {label}
                   </FormLabel>
-                  <p className="mt-0.5 font-body text-xs text-deep-soil/60">{hint}</p>
+                  <p className="mt-0.5 font-body text-xs text-kelly-text/60">{hint}</p>
                 </div>
               </li>
             );

@@ -17,7 +17,7 @@ export function TalkBusinessKellySection({ fallbackYoutubeVideoId }: TalkBusines
   return (
     <section
       id="talk-business-kelly"
-      className="scroll-mt-24 rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8"
+      className="scroll-mt-24 rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8"
       aria-label="Talk Business and Politics"
     >
       <SectionHeading
@@ -28,14 +28,14 @@ export function TalkBusinessKellySection({ fallbackYoutubeVideoId }: TalkBusines
         className="max-w-2xl"
       />
 
-      <p className="mt-6 max-w-3xl font-body text-base leading-relaxed text-deep-soil/88 md:text-[1.05rem]">
+      <p className="mt-6 max-w-3xl font-body text-base leading-relaxed text-kelly-text/88 md:text-[1.05rem]">
         {talkBusinessKellyInterviewSummary}
       </p>
 
-      <p className="mt-5 max-w-2xl font-body text-sm leading-relaxed text-deep-soil/80">
+      <p className="mt-5 max-w-2xl font-body text-sm leading-relaxed text-kelly-text/80">
         <a
           href={TALK_BUSINESS_ELECTION_2026.href}
-          className="font-semibold text-red-dirt underline-offset-2 hover:underline"
+          className="font-semibold text-kelly-navy underline-offset-2 hover:underline"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -44,7 +44,7 @@ export function TalkBusinessKellySection({ fallbackYoutubeVideoId }: TalkBusines
       </p>
 
       {src ? (
-        <div className="mt-8 max-w-3xl overflow-hidden rounded-card border border-deep-soil/10 bg-civic-midnight shadow-lg">
+        <div className="mt-8 max-w-3xl overflow-hidden rounded-card border border-kelly-text/10 bg-kelly-navy shadow-lg">
           <div className="relative aspect-video w-full">
             <iframe
               src={src}

@@ -15,14 +15,14 @@ export type CommsStatusTone = "neutral" | "info" | "amber" | "success" | "danger
 
 const toneToClass: Record<CommsStatusTone, string> = {
   neutral:
-    "rounded border border-deep-soil/15 bg-cream-canvas/90 px-1.5 py-0.5 text-[10px] font-semibold tracking-wide text-deep-soil/90",
+    "rounded border border-kelly-text/15 bg-kelly-page/90 px-1.5 py-0.5 text-[10px] font-semibold tracking-wide text-kelly-text/90",
   info: "rounded border border-sky-200/80 bg-sky-50/90 px-1.5 py-0.5 text-[10px] font-semibold text-sky-950",
   amber:
     "rounded border border-amber-200/80 bg-amber-50/90 px-1.5 py-0.5 text-[10px] font-semibold text-amber-950",
   success:
     "rounded border border-emerald-200/80 bg-emerald-50/90 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-950",
   danger: "rounded border border-rose-200/80 bg-rose-50/90 px-1.5 py-0.5 text-[10px] font-semibold text-rose-950",
-  muted: "rounded border border-deep-soil/10 bg-white px-1.5 py-0.5 text-[10px] font-semibold text-deep-soil/55",
+  muted: "rounded border border-kelly-text/10 bg-white px-1.5 py-0.5 text-[10px] font-semibold text-kelly-text/55",
 };
 
 export function commsStatusBadgeClass(tone: CommsStatusTone, extra = ""): string {

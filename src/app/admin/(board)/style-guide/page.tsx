@@ -48,7 +48,7 @@ const HUB: HubItem[] = [
 ];
 
 const UI = [
-  { label: "Tailwind + design tokens", note: "globals.css, tailwind.config — cream canvas, red dirt, deep soil, civic slate." },
+  { label: "Tailwind + design tokens", note: "globals.css + tailwind.config — Kelly Grappe SOS (`kelly-*` tokens only)." },
   { label: "Layout primitives", note: "SiteHeader, SiteFooter, CampaignPaidForBar — keep tap targets min-h-11 on mobile." },
   { label: "Admin shell", note: "AdminBoardShell — operations vs site content vs orchestrator groupings." },
 ] as const;
@@ -56,31 +56,31 @@ const UI = [
 export default function AdminStyleGuideHubPage() {
   return (
     <div className="mx-auto max-w-3xl">
-      <h1 className="font-heading text-3xl font-bold text-deep-soil">Style & content hub</h1>
-      <p className="mt-3 font-body text-sm text-deep-soil/75">
+      <h1 className="font-heading text-3xl font-bold text-kelly-text">Style & content hub</h1>
+      <p className="mt-3 font-body text-sm text-kelly-text/75">
         One place for <strong>voice</strong>, <strong>governance</strong>, and <strong>UI patterns</strong> for Kelly SOS — not a
         full Storybook. Paths are repo-relative (open in your editor or GitHub).
       </p>
 
       <section className="mt-8" id="comms">
-        <h2 className="font-heading text-lg font-bold text-deep-soil">Comms &amp; public intake (ops)</h2>
-        <p className="mt-2 text-sm text-deep-soil/70">
+        <h2 className="font-heading text-lg font-bold text-kelly-text">Comms &amp; public intake (ops)</h2>
+        <p className="mt-2 text-sm text-kelly-text/70">
           Full runbook: <code className="text-xs">docs/KELLY_SOS_COMMS_READINESS.md</code> — workbench, webhooks, 24h follow-up
           expectations on form success, and what happens when API keys are missing.
         </p>
       </section>
 
       <section className="mt-8" id="public">
-        <h2 className="font-heading text-lg font-bold text-deep-soil">Content &amp; brand</h2>
+        <h2 className="font-heading text-lg font-bold text-kelly-text">Content &amp; brand</h2>
         <ul className="mt-3 space-y-2">
           {HUB.map((item) => (
             <li
               key={item.label}
-              className="rounded-md border border-deep-soil/10 bg-cream-canvas/90 px-4 py-3 text-sm text-deep-soil/85"
+              className="rounded-md border border-kelly-text/10 bg-kelly-page/90 px-4 py-3 text-sm text-kelly-text/85"
             >
-              <div className="font-semibold text-deep-soil">
+              <div className="font-semibold text-kelly-text">
                 {item.href ? (
-                  <Link href={item.href} className="text-civic-slate underline">
+                  <Link href={item.href} className="text-kelly-slate underline">
                     {item.label}
                   </Link>
                 ) : (
@@ -88,34 +88,34 @@ export default function AdminStyleGuideHubPage() {
                 )}
               </div>
               {"file" in item && (
-                <p className="mt-1 font-mono text-[11px] text-deep-soil/55">
+                <p className="mt-1 font-mono text-[11px] text-kelly-text/55">
                   {item.file}
                 </p>
               )}
-              <p className="mt-1 text-deep-soil/70">{item.note}</p>
+              <p className="mt-1 text-kelly-text/70">{item.note}</p>
             </li>
           ))}
         </ul>
       </section>
 
       <section className="mt-8">
-        <h2 className="font-heading text-lg font-bold text-deep-soil">UI &amp; code</h2>
-        <ul className="mt-2 list-inside list-disc text-sm text-deep-soil/75">
+        <h2 className="font-heading text-lg font-bold text-kelly-text">UI &amp; code</h2>
+        <ul className="mt-2 list-inside list-disc text-sm text-kelly-text/75">
           {UI.map((u) => (
             <li key={u.label}>
-              <strong className="text-deep-soil">{u.label}.</strong> {u.note}
+              <strong className="text-kelly-text">{u.label}.</strong> {u.note}
             </li>
           ))}
         </ul>
       </section>
 
-      <section className="mt-8 rounded-md border border-deep-soil/10 bg-deep-soil/[0.03] px-4 py-3 text-sm text-deep-soil/70">
-        <strong className="text-deep-soil">Bilingual (future):</strong> see workspace{" "}
+      <section className="mt-8 rounded-md border border-kelly-text/10 bg-kelly-text/[0.03] px-4 py-3 text-sm text-kelly-text/70">
+        <strong className="text-kelly-text">Bilingual (future):</strong> see workspace{" "}
         <code className="text-xs">HISPANIC_SPANISH_LOCALE_LAYER_PLAN.md</code> (repo root) for the Spanish toggle layer; glossary
         and <code className="text-xs">es-US</code> copy review before shipping voter-facing legal lines.
       </section>
 
-      <p className="mt-6 text-xs text-deep-soil/50">
+      <p className="mt-6 text-xs text-kelly-text/50">
         Repo pointer (if mirrored): <span className="font-mono">{REPO}</span> — match branch to your deploy.
       </p>
     </div>

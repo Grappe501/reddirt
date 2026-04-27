@@ -8,9 +8,9 @@ const copy: Record<RegionStatus, string> = {
 };
 
 const styles: Record<RegionStatus, string> = {
-  active: "border-field-green/40 bg-field-green/15 text-deep-soil",
-  building: "border-sunlight-gold/45 bg-sunlight-gold/15 text-deep-soil",
-  coming_soon: "border-deep-soil/20 bg-deep-soil/[0.06] text-deep-soil/80",
+  active: "border-kelly-success/40 bg-kelly-success/15 text-kelly-text",
+  building: "border-kelly-gold/45 bg-kelly-gold/15 text-kelly-text",
+  coming_soon: "border-kelly-text/20 bg-kelly-text/[0.06] text-kelly-text/80",
 };
 
 export function StatusBadge({ status, className }: { status: RegionStatus; className?: string }) {

@@ -19,9 +19,9 @@ export default async function RelationalHomePage({ searchParams }: Props) {
   return (
     <div className="space-y-8">
       <div>
-        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-red-dirt/80">REL-3</p>
+        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-kelly-navy/80">REL-3</p>
         <h1 className="mt-1 font-heading text-3xl font-bold">Relational home</h1>
-        <p className="mt-2 text-sm text-deep-soil/70">
+        <p className="mt-2 text-sm text-kelly-text/70">
           Your network of people — queue-first, no auto-messaging. Add contacts you are responsible
           for organizing.
         </p>
@@ -38,21 +38,21 @@ export default async function RelationalHomePage({ searchParams }: Props) {
         </p>
       ) : null}
 
-      <section className="grid gap-3 rounded-card border border-deep-soil/10 bg-cream-canvas p-4 sm:grid-cols-2">
+      <section className="grid gap-3 rounded-card border border-kelly-text/10 bg-kelly-page p-4 sm:grid-cols-2">
         <div>
-          <p className="text-[10px] font-bold uppercase tracking-wide text-deep-soil/50">Total contacts</p>
+          <p className="text-[10px] font-bold uppercase tracking-wide text-kelly-text/50">Total contacts</p>
           <p className="font-heading text-2xl font-bold">{summary.totalContacts}</p>
         </div>
         <div>
-          <p className="text-[10px] font-bold uppercase tracking-wide text-deep-soil/50">Core five</p>
+          <p className="text-[10px] font-bold uppercase tracking-wide text-kelly-text/50">Core five</p>
           <p className="font-heading text-2xl font-bold">{summary.coreFiveCount}</p>
         </div>
         <div>
-          <p className="text-[10px] font-bold uppercase tracking-wide text-deep-soil/50">Matched to file</p>
+          <p className="text-[10px] font-bold uppercase tracking-wide text-kelly-text/50">Matched to file</p>
           <p className="font-heading text-2xl font-bold">{summary.matchedCount}</p>
         </div>
         <div>
-          <p className="text-[10px] font-bold uppercase tracking-wide text-deep-soil/50">
+          <p className="text-[10px] font-bold uppercase tracking-wide text-kelly-text/50">
             Touches (last 7 days)
           </p>
           <p className="font-heading text-2xl font-bold">{summary.last7DayTouches}</p>
@@ -63,29 +63,29 @@ export default async function RelationalHomePage({ searchParams }: Props) {
         <h2 className="font-heading text-lg font-bold">People</h2>
         <Link
           href="/relational/new"
-          className="rounded bg-red-dirt px-4 py-2 text-sm font-semibold text-cream-canvas hover:opacity-95"
+          className="rounded bg-kelly-navy px-4 py-2 text-sm font-semibold text-kelly-page hover:opacity-95"
         >
           Add person
         </Link>
       </div>
 
       {contacts.length === 0 ? (
-        <p className="rounded border border-dashed border-deep-soil/20 px-4 py-8 text-center text-sm text-deep-soil/60">
+        <p className="rounded border border-dashed border-kelly-text/20 px-4 py-8 text-center text-sm text-kelly-text/60">
           No contacts yet. Add someone you are organizing.
         </p>
       ) : (
-        <ul className="divide-y divide-deep-soil/10 rounded-card border border-deep-soil/10">
+        <ul className="divide-y divide-kelly-text/10 rounded-card border border-kelly-text/10">
           {contacts.map((c) => (
             <li key={c.id}>
               <Link
                 href={`/relational/${c.id}`}
-                className="flex flex-col gap-1 px-4 py-3 hover:bg-deep-soil/[0.03] sm:flex-row sm:items-center sm:justify-between"
+                className="flex flex-col gap-1 px-4 py-3 hover:bg-kelly-text/[0.03] sm:flex-row sm:items-center sm:justify-between"
               >
                 <div>
                   <span className="font-medium">{c.displayName}</span>
-                  <span className="ml-2 text-xs text-deep-soil/55">{c.relationshipType}</span>
+                  <span className="ml-2 text-xs text-kelly-text/55">{c.relationshipType}</span>
                 </div>
-                <div className="text-xs text-deep-soil/60">
+                <div className="text-xs text-kelly-text/60">
                   {c.isCoreFive ? "Core five" : "—"} · {c.matchStatus} ·
                   {c.lastContactedAt
                     ? ` Last contact ${c.lastContactedAt.toLocaleDateString()}`

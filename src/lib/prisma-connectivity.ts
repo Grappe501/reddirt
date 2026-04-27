@@ -12,5 +12,5 @@ export function isPrismaDatabaseUnavailable(err: unknown): boolean {
 export function logPrismaDatabaseUnavailable(context: string, err: unknown): void {
   if (!isPrismaDatabaseUnavailable(err)) return;
   const msg = err instanceof Error ? err.message : String(err);
-  console.error(`[reddirt:db-unavailable] ${context}: ${msg}`);
+  console.error(`[kelly-sos:db-unavailable] ${context}: ${msg}`);
 }

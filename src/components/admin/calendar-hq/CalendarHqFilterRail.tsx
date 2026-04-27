@@ -2,9 +2,9 @@ import Link from "next/link";
 import { CampaignEventType, EventWorkflowState, type CalendarSourceType } from "@prisma/client";
 import { calendarFiltersToSearchParams, type CalendarHqFilters } from "@/lib/calendar/hq-filters";
 
-const h = "text-[7px] font-bold uppercase text-deep-soil/45";
-const linkBase = "block rounded border border-deep-soil/10 bg-white px-1.5 py-0.5 text-[9px] text-deep-soil hover:border-red-dirt/25";
-const active = "border-red-dirt/40 bg-amber-50/50 font-bold";
+const h = "text-[7px] font-bold uppercase text-kelly-text/45";
+const linkBase = "block rounded border border-kelly-text/10 bg-white px-1.5 py-0.5 text-[9px] text-kelly-text hover:border-kelly-navy/25";
+const active = "border-kelly-navy/40 bg-amber-50/50 font-bold";
 
 export function CalendarHqFilterRail({
   filters,
@@ -54,13 +54,13 @@ export function CalendarHqFilterRail({
   };
 
   return (
-    <div className="flex max-h-[min(78vh,920px)] flex-col gap-2 overflow-y-auto border-b border-deep-soil/10 bg-washed-canvas/30 p-2 text-[10px] xl:border-b-0 xl:border-r">
-      <p className="font-heading text-[9px] font-bold uppercase tracking-wide text-deep-soil/60">Filters</p>
+    <div className="flex max-h-[min(78vh,920px)] flex-col gap-2 overflow-y-auto border-b border-kelly-text/10 bg-kelly-wash/30 p-2 text-[10px] xl:border-b-0 xl:border-r">
+      <p className="font-heading text-[9px] font-bold uppercase tracking-wide text-kelly-text/60">Filters</p>
       <Link href={`/admin/workbench/calendar?${qo(clear)}`} className={`${linkBase} text-center`}>
         Clear all
       </Link>
       <p className={h}>Saved (v1)</p>
-      <p className="text-[8px] text-deep-soil/40">Presets ship in Slice 9.</p>
+      <p className="text-[8px] text-kelly-text/40">Presets ship in Slice 9.</p>
 
       <p className={h}>Sources</p>
       <div className="flex flex-col gap-0.5">
@@ -76,11 +76,11 @@ export function CalendarHqFilterRail({
                 <span className="h-2.5 w-2.5 shrink-0 rounded-sm" style={{ backgroundColor: s.color }} title={s.sourceType} />
               ) : null}
               <span className="truncate">{s.displayName || s.label}</span>
-              {s.isPublicFacing ? <span className="text-[6px] text-civic-slate">PUB</span> : null}
+              {s.isPublicFacing ? <span className="text-[6px] text-kelly-slate">PUB</span> : null}
             </Link>
           );
         })}
-        {sources.length === 0 ? <span className="text-[8px] text-deep-soil/40">No CalendarSource rows</span> : null}
+        {sources.length === 0 ? <span className="text-[8px] text-kelly-text/40">No CalendarSource rows</span> : null}
       </div>
 
       <p className={h}>County</p>

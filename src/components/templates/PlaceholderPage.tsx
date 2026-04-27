@@ -33,9 +33,9 @@ export function PlaceholderPage({
                 {[1, 2, 3].map((k) => (
                   <div
                     key={k}
-                    className="min-h-[160px] rounded-card border border-dashed border-deep-soil/25 bg-deep-soil/[0.02] p-6"
+                    className="min-h-[160px] rounded-card border border-dashed border-kelly-text/25 bg-kelly-text/[0.02] p-6"
                   >
-                    <p className="font-body text-sm text-deep-soil/50">Content block {k}</p>
+                    <p className="font-body text-sm text-kelly-text/50">Content block {k}</p>
                   </div>
                 ))}
               </ResponsiveGrid>

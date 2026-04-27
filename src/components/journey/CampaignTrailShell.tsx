@@ -7,8 +7,8 @@ import { CAMPAIGN_TRAIL_JOURNEY_BEATS } from "@/content/home/journey";
 export function CampaignTrailShell({ children }: { children: ReactNode }) {
   return (
     <JourneyProvider beats={CAMPAIGN_TRAIL_JOURNEY_BEATS}>
-      {/* Opaque field layer: avoids sitewide body blue gradient + dark default text reading as “black on blue.” */}
-      <div className="relative bg-civic-fog text-civic-ink pb-10">
+      {/* Opaque panel: avoids sitewide body gradient + body text reading as low-contrast on the wash. */}
+      <div className="relative bg-kelly-fog text-kelly-ink pb-10">
         <div className="mx-auto w-full max-w-[100vw] px-[var(--gutter-x)] xl:max-w-[min(100%,1600px)]">
           {children}
         </div>

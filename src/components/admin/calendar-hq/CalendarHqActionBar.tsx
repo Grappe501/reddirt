@@ -7,7 +7,7 @@ import {
 import { calendarFiltersToSearchParams, type CalendarHqFilters } from "@/lib/calendar/hq-filters";
 
 const btn =
-  "whitespace-nowrap rounded border border-deep-soil/20 bg-white px-2 py-1 text-[10px] font-bold text-deep-soil shadow-sm hover:border-red-dirt/30 hover:bg-cream-canvas";
+  "whitespace-nowrap rounded border border-kelly-text/20 bg-white px-2 py-1 text-[10px] font-bold text-kelly-text shadow-sm hover:border-kelly-navy/30 hover:bg-kelly-page";
 
 export function CalendarHqActionBar({
   filters,
@@ -28,8 +28,8 @@ export function CalendarHqActionBar({
     return opts.hash ? `/admin/workbench/calendar?${s}${opts.hash}` : `/admin/workbench/calendar?${s}`;
   };
   return (
-    <div className="flex flex-wrap items-center gap-1 border-b border-deep-soil/10 bg-deep-soil/[0.06] px-2 py-1.5 md:px-3">
-      <span className="text-[8px] font-bold uppercase tracking-wider text-deep-soil/45">Actions</span>
+    <div className="flex flex-wrap items-center gap-1 border-b border-kelly-text/10 bg-kelly-text/[0.06] px-2 py-1.5 md:px-3">
+      <span className="text-[8px] font-bold uppercase tracking-wider text-kelly-text/45">Actions</span>
       <Link href="/admin/events" className={btn}>
         New event
       </Link>

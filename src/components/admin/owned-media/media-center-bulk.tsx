@@ -65,14 +65,14 @@ export function MediaCenterBulkProvider({
     <Ctx.Provider value={value}>
       {children}
       {n > 0 ? (
-        <div className="sticky bottom-0 z-20 mt-3 border-t border-deep-soil/15 bg-cream-canvas/95 px-2 py-2 shadow-[0_-4px_12px_rgba(0,0,0,0.06)] backdrop-blur-sm">
+        <div className="sticky bottom-0 z-20 mt-3 border-t border-kelly-text/15 bg-kelly-page/95 px-2 py-2 shadow-[0_-4px_12px_rgba(0,0,0,0.06)] backdrop-blur-sm">
           <div className="mx-auto flex max-w-[1920px] flex-col gap-2 md:flex-row md:flex-wrap md:items-center md:gap-3">
-            <span className="font-body text-xs font-semibold text-deep-soil">
+            <span className="font-body text-xs font-semibold text-kelly-text">
               {n} selected
             </span>
             <button
               type="button"
-              className="rounded border border-deep-soil/20 px-2 py-1 text-[10px] font-semibold text-deep-soil"
+              className="rounded border border-kelly-text/20 px-2 py-1 text-[10px] font-semibold text-kelly-text"
               onClick={() => clear()}
             >
               Clear selection
@@ -127,7 +127,7 @@ export function MediaCenterBulkProvider({
                 <select
                   name="collectionId"
                   required
-                  className="max-w-[10rem] rounded border border-deep-soil/20 bg-white px-1 py-0.5 text-[10px]"
+                  className="max-w-[10rem] rounded border border-kelly-text/20 bg-white px-1 py-0.5 text-[10px]"
                 >
                   <option value="">Collection…</option>
                   {manualCollections.map((c) => (
@@ -138,7 +138,7 @@ export function MediaCenterBulkProvider({
                 </select>
                 <button
                   type="submit"
-                  className="rounded bg-deep-soil px-2 py-0.5 text-[10px] font-semibold text-cream-canvas"
+                  className="rounded bg-kelly-text px-2 py-0.5 text-[10px] font-semibold text-kelly-page"
                 >
                   Add
                 </button>
@@ -178,7 +178,7 @@ function BulkMiniForm({
       <input type="hidden" name="intent" value={intent} />
       <button
         type="submit"
-        className="rounded border border-deep-soil/25 bg-white px-2 py-0.5 text-[10px] font-semibold text-deep-soil hover:bg-deep-soil/5"
+        className="rounded border border-kelly-text/25 bg-white px-2 py-0.5 text-[10px] font-semibold text-kelly-text hover:bg-kelly-text/5"
       >
         {label}
       </button>
@@ -194,7 +194,7 @@ function BulkPickForm({ idList, returnPath }: { idList: string; returnPath: stri
       <input type="hidden" name="intent" value="set_pick" />
       <select
         name="pickStatus"
-        className="rounded border border-deep-soil/20 bg-white px-1 py-0.5 text-[10px]"
+        className="rounded border border-kelly-text/20 bg-white px-1 py-0.5 text-[10px]"
         defaultValue={OwnedMediaPickStatus.UNRATED}
       >
         {(Object.values(OwnedMediaPickStatus) as OwnedMediaPickStatus[]).map((p) => (
@@ -205,7 +205,7 @@ function BulkPickForm({ idList, returnPath }: { idList: string; returnPath: stri
       </select>
       <button
         type="submit"
-        className="rounded bg-civic-slate/90 px-2 py-0.5 text-[10px] font-semibold text-cream-canvas"
+        className="rounded bg-kelly-slate/90 px-2 py-0.5 text-[10px] font-semibold text-kelly-page"
       >
         Apply
       </button>
@@ -221,7 +221,7 @@ function BulkColorForm({ idList, returnPath }: { idList: string; returnPath: str
       <input type="hidden" name="intent" value="set_color" />
       <select
         name="colorLabel"
-        className="rounded border border-deep-soil/20 bg-white px-1 py-0.5 text-[10px]"
+        className="rounded border border-kelly-text/20 bg-white px-1 py-0.5 text-[10px]"
         defaultValue={OwnedMediaColorLabel.NONE}
       >
         {(Object.values(OwnedMediaColorLabel) as OwnedMediaColorLabel[]).map((c) => (
@@ -232,7 +232,7 @@ function BulkColorForm({ idList, returnPath }: { idList: string; returnPath: str
       </select>
       <button
         type="submit"
-        className="rounded bg-civic-slate/90 px-2 py-0.5 text-[10px] font-semibold text-cream-canvas"
+        className="rounded bg-kelly-slate/90 px-2 py-0.5 text-[10px] font-semibold text-kelly-page"
       >
         Apply
       </button>
@@ -256,7 +256,7 @@ export function MediaCenterSelectCheckbox({
       checked={checked}
       onChange={() => ctx.toggle(assetId)}
       onClick={(e) => e.stopPropagation()}
-      className={`h-3.5 w-3.5 cursor-pointer rounded border-deep-soil/40 text-deep-soil ${className}`}
+      className={`h-3.5 w-3.5 cursor-pointer rounded border-kelly-text/40 text-kelly-text ${className}`}
       aria-label={`Select asset ${assetId.slice(0, 8)}`}
     />
   );
@@ -268,7 +268,7 @@ export function MediaCenterSelectAllOnPage({ pageIds }: { pageIds: string[] }) {
   return (
     <button
       type="button"
-      className="rounded border border-deep-soil/20 px-2 py-0.5 text-[10px] font-semibold text-deep-soil"
+      className="rounded border border-kelly-text/20 px-2 py-0.5 text-[10px] font-semibold text-kelly-text"
       onClick={() => ctx.selectAll(pageIds)}
     >
       Select all on page ({pageIds.length})

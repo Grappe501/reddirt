@@ -2,8 +2,8 @@ import Link from "next/link";
 import { COMMS_PLAN_SECTION, commsPlanPath } from "@/lib/comms-workbench/comms-nav";
 import type { CommunicationPlanDetail } from "@/lib/comms-workbench/dto";
 
-const card = "rounded-md border border-deep-soil/10 bg-amber-50/35 p-3 shadow-sm";
-const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-deep-soil/55";
+const card = "rounded-md border border-kelly-text/10 bg-amber-50/35 p-3 shadow-sm";
+const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
 
 export function PlanDetailAttentionBlock({ plan }: { plan: CommunicationPlanDetail }) {
   const { review, sendSummary, opsSummary } = plan;
@@ -51,16 +51,16 @@ export function PlanDetailAttentionBlock({ plan }: { plan: CommunicationPlanDeta
     <section id={COMMS_PLAN_SECTION.attention} className={card} aria-label="What needs attention">
       <h2 className={h2}>What needs attention</h2>
       {items.length === 0 ? (
-        <p className="mt-1 text-sm text-deep-soil/75">Nothing urgent on this plan—review, queue, and send as needed.</p>
+        <p className="mt-1 text-sm text-kelly-text/75">Nothing urgent on this plan—review, queue, and send as needed.</p>
       ) : (
-        <ul className="mt-1.5 space-y-1.5 text-sm text-deep-soil/90">
+        <ul className="mt-1.5 space-y-1.5 text-sm text-kelly-text/90">
           {items.map((it) => (
             <li key={it.key} className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-2">
               <span>{it.text}</span>
               {it.action ? (
                 <Link
                   href={it.action.href}
-                  className="shrink-0 text-xs font-semibold text-civic-slate hover:underline"
+                  className="shrink-0 text-xs font-semibold text-kelly-slate hover:underline"
                   prefetch={false}
                 >
                   {it.action.label} →

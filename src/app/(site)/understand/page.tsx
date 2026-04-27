@@ -41,7 +41,7 @@ export default async function UnderstandTheOfficePage() {
           bridgeBeforeMovement={
             movementBridgePhoto ? (
               <section
-                className="border-t border-civic-ink/[0.06] bg-white py-10 md:py-14"
+                className="border-t border-kelly-ink/[0.06] bg-white py-10 md:py-14"
                 aria-label="Campaign trail moment"
               >
                 <ContentContainer wide>

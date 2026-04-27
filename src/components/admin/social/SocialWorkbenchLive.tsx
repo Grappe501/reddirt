@@ -694,7 +694,7 @@ export function SocialWorkbenchLive({
                         {" "}
                         · Event:{" "}
                         {detail?.campaignEventId ? (
-                          <Link className="text-civic-slate underline" href={`/admin/events/${detail.campaignEventId}`}>
+                          <Link className="text-kelly-slate underline" href={`/admin/events/${detail.campaignEventId}`}>
                             {detail?.campaignEventTitle ?? "View"}
                           </Link>
                         ) : (
@@ -714,14 +714,14 @@ export function SocialWorkbenchLive({
                   </Link>
                   <Link
                     href={`/admin/workbench/comms/plans/new?socialItemId=${selectedListRow.id}`}
-                    className="inline-flex h-8 items-center justify-center rounded-md border border-civic-slate/30 bg-civic-slate/5 px-3 text-sm font-bold text-civic-slate hover:bg-civic-slate/10"
+                    className="inline-flex h-8 items-center justify-center rounded-md border border-kelly-slate/30 bg-kelly-slate/5 px-3 text-sm font-bold text-kelly-slate hover:bg-kelly-slate/10"
                   >
                     Create comms plan
                   </Link>
                   {detail?.workflowIntakeId ? (
                     <Link
                       href={`/admin/workbench/comms/plans/new?intakeId=${detail.workflowIntakeId}`}
-                      className="inline-flex h-8 items-center justify-center rounded-md border border-civic-slate/30 bg-civic-slate/5 px-3 text-sm font-bold text-civic-slate hover:bg-civic-slate/10"
+                      className="inline-flex h-8 items-center justify-center rounded-md border border-kelly-slate/30 bg-kelly-slate/5 px-3 text-sm font-bold text-kelly-slate hover:bg-kelly-slate/10"
                       title="Source the new plan from the linked WorkflowIntake (not the social row)"
                     >
                       Comms from intake

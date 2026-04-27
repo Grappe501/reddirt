@@ -21,7 +21,7 @@ export default function PrivacyPage() {
         subtitle="This page is a public-facing structure for campaign counsel to finalize. Do not treat it as legal advice."
       />
       <FullBleedSection padY>
-        <ContentContainer className="max-w-2xl space-y-6 font-body text-base leading-relaxed text-deep-soil/85">
+        <ContentContainer className="max-w-2xl space-y-6 font-body text-base leading-relaxed text-kelly-text/85">
           <p>
             <strong>Status.</strong> The campaign intends to describe what information may be collected through this
             website (for example, when you submit forms, sign up to volunteer, or contact us), how it is used, how long
@@ -36,7 +36,7 @@ export default function PrivacyPage() {
           <p>
             <strong>Updates.</strong> When a final policy is adopted, it will be posted here with an updated effective
             date. Questions may be directed through{" "}
-            <a className="font-semibold text-civic-slate underline" href="/get-involved">
+            <a className="font-semibold text-kelly-slate underline" href="/get-involved">
               Get involved
             </a>
             .

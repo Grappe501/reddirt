@@ -6,7 +6,7 @@ import { updateEventCommsStatusFieldsAction, recordEventCommsMilestoneAction, en
 import type { CalendarHqEventDetail } from "@/lib/calendar/hq-data";
 import { EventCommsDraftsClient } from "./EventCommsDraftsClient";
 
-const h2 = "font-heading text-[9px] font-bold uppercase tracking-wider text-deep-soil/50";
+const h2 = "font-heading text-[9px] font-bold uppercase tracking-wider text-kelly-text/50";
 
 function lastSentLine(e: {
   lastReminderSentAt: Date | null;
@@ -28,18 +28,18 @@ export function EventCommsPanelServer({ detail }: { detail: CalendarHqEventDetai
   return (
     <div>
       <p className={h2}>Communications (calendar)</p>
-      <p className="mt-0.5 text-[8px] text-deep-soil/55">
-        Stage mode: <span className="font-bold text-deep-soil/80">{mode}</span> · Comms badge:{" "}
+      <p className="mt-0.5 text-[8px] text-kelly-text/55">
+        Stage mode: <span className="font-bold text-kelly-text/80">{mode}</span> · Comms badge:{" "}
         <span className="font-mono text-[8px]">{String(detail.commsReadiness)}</span> · plan / attendee / F/U:{" "}
         {String(detail.reminderPlanStatus)} / {String(detail.attendeeCommsStatus)} / {String(detail.followupCommsStatus)}
       </p>
-      <p className="mt-0.5 text-[8px] text-deep-soil/60">Next comm due: {detail.nextReminderDueAt ? detail.nextReminderDueAt.toLocaleString() : "— (set below or publish)"}</p>
-      <p className="text-[8px] text-deep-soil/50">Last: {lastSentLine(detail)}</p>
-      <p className="mt-0.5 text-[8px] text-deep-soil/55">
+      <p className="mt-0.5 text-[8px] text-kelly-text/60">Next comm due: {detail.nextReminderDueAt ? detail.nextReminderDueAt.toLocaleString() : "— (set below or publish)"}</p>
+      <p className="text-[8px] text-kelly-text/50">Last: {lastSentLine(detail)}</p>
+      <p className="mt-0.5 text-[8px] text-kelly-text/55">
         Audience: {rsvpN} signups{detail.publicSummary ? " · has public blurb" : ""} · {detail.visibility} visibility
       </p>
       {detail.commsQueueItems.length > 0 ? (
-        <ul className="mt-0.5 max-h-20 overflow-y-auto text-[7px] text-deep-soil/60">
+        <ul className="mt-0.5 max-h-20 overflow-y-auto text-[7px] text-kelly-text/60">
           {detail.commsQueueItems.map((q) => (
             <li key={q.id}>
               {q.actionType}
@@ -49,7 +49,7 @@ export function EventCommsPanelServer({ detail }: { detail: CalendarHqEventDetai
           ))}
         </ul>
       ) : null}
-      <p className="mt-0.5 text-[7px] text-deep-soil/40">
+      <p className="mt-0.5 text-[7px] text-kelly-text/40">
         {detail.eventWorkflowState === EventWorkflowState.DRAFT || detail.eventWorkflowState === EventWorkflowState.PENDING_APPROVAL
           ? "Outward attendee comms are restricted — internal prep and queue items only."
           : null}
@@ -62,7 +62,7 @@ export function EventCommsPanelServer({ detail }: { detail: CalendarHqEventDetai
 
       {isOpenAIConfigured() ? (
         <>
-          <p className="mt-1 text-[7px] font-bold uppercase text-deep-soil/45">AI drafts (OpenAI)</p>
+          <p className="mt-1 text-[7px] font-bold uppercase text-kelly-text/45">AI drafts (OpenAI)</p>
           <EventCommsDraftsClient eventId={detail.id} />
         </>
       ) : (
@@ -85,13 +85,13 @@ export function EventCommsPanelServer({ detail }: { detail: CalendarHqEventDetai
           <form key={key} action={enqueueEventCalendarCommsNudgeAction}>
             <input type="hidden" name="eventId" value={detail.id} />
             <input type="hidden" name="queue" value={key} />
-            <button type="submit" className="rounded border border-deep-soil/12 bg-cream-canvas px-1 py-0.5 text-[7px] font-bold text-deep-soil/85">
+            <button type="submit" className="rounded border border-kelly-text/12 bg-kelly-page px-1 py-0.5 text-[7px] font-bold text-kelly-text/85">
               + {label}
             </button>
           </form>
         ))}
       </div>
-      <Link className="mt-0.5 inline-block text-[7px] text-civic-slate underline" href="/admin/workbench?lane=calendar">
+      <Link className="mt-0.5 inline-block text-[7px] text-kelly-slate underline" href="/admin/workbench?lane=calendar">
         Open calendar comms queue →
       </Link>
 
@@ -108,7 +108,7 @@ export function EventCommsPanelServer({ detail }: { detail: CalendarHqEventDetai
           ).map(([name, short, v]) => (
             <label key={name} className="block">
               {short}
-              <select name={name} defaultValue={String(v)} className="mt-0.5 w-full border border-deep-soil/12 bg-white text-[7px]">
+              <select name={name} defaultValue={String(v)} className="mt-0.5 w-full border border-kelly-text/12 bg-white text-[7px]">
                 {Object.values(EventReadinessStatus).map((x) => (
                   <option key={x} value={x}>
                     {x}
@@ -118,16 +118,16 @@ export function EventCommsPanelServer({ detail }: { detail: CalendarHqEventDetai
             </label>
           ))}
         </div>
-        <label className="text-[7px] text-deep-soil/50">
+        <label className="text-[7px] text-kelly-text/50">
           Next reminder due (local)
           <input
             type="datetime-local"
             name="nextReminderDueAt"
             defaultValue={detail.nextReminderDueAt ? toLocal(detail.nextReminderDueAt) : ""}
-            className="mt-0.5 w-full border border-deep-soil/12 bg-white text-[7px]"
+            className="mt-0.5 w-full border border-kelly-text/12 bg-white text-[7px]"
           />
         </label>
-        <button type="submit" className="w-full rounded border border-deep-soil/15 py-0.5 text-[8px] font-bold">
+        <button type="submit" className="w-full rounded border border-kelly-text/15 py-0.5 text-[8px] font-bold">
           Save comms status
         </button>
       </form>

@@ -42,7 +42,7 @@ export function EditorialCampaignPhoto({
     >
       <div
         className={cn(
-          "overflow-hidden rounded-md bg-deep-soil/[0.06] shadow-[0_2px_24px_rgba(28,25,23,0.08)] ring-1 ring-deep-soil/[0.06]",
+          "overflow-hidden rounded-md bg-kelly-text/[0.06] shadow-[0_2px_24px_rgba(28,25,23,0.08)] ring-1 ring-kelly-text/[0.06]",
           variant === "breakout" && "aspect-[16/10] sm:aspect-[21/9]",
           variant === "inline" && "aspect-[4/3]",
           variant === "thumb" && "aspect-[4/3]",
@@ -71,11 +71,11 @@ export function EditorialCampaignPhoto({
           )}
         />
       </div>
-      <figcaption className="mt-3 max-w-none border-l-2 border-red-dirt/35 pl-3">
+      <figcaption className="mt-3 max-w-none border-l-2 border-kelly-navy/35 pl-3">
         {kicker ? (
-          <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-deep-soil/50">{kicker}</p>
+          <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-kelly-text/50">{kicker}</p>
         ) : null}
-        <p className={cn("font-body leading-snug text-deep-soil/75", kicker ? "mt-1 text-sm" : "text-sm")}>{cap}</p>
+        <p className={cn("font-body leading-snug text-kelly-text/75", kicker ? "mt-1 text-sm" : "text-sm")}>{cap}</p>
       </figcaption>
     </figure>
   );
@@ -95,11 +95,11 @@ export function EditorialPhotoPair({ left, right, kicker, caption, className }: 
   return (
     <div className={cn("mx-auto w-full max-w-[min(100%,56rem)]", className)}>
       {(kicker || caption) && (
-        <div className="mb-4 max-w-2xl border-l-2 border-red-dirt/35 pl-3">
+        <div className="mb-4 max-w-2xl border-l-2 border-kelly-navy/35 pl-3">
           {kicker ? (
-            <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-deep-soil/50">{kicker}</p>
+            <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-kelly-text/50">{kicker}</p>
           ) : null}
-          {caption ? <p className="mt-1 font-body text-sm leading-snug text-deep-soil/75">{caption}</p> : null}
+          {caption ? <p className="mt-1 font-body text-sm leading-snug text-kelly-text/75">{caption}</p> : null}
         </div>
       )}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">

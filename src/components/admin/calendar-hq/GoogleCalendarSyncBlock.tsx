@@ -7,7 +7,7 @@ import {
 import { isGoogleCalendarConfigured } from "@/lib/calendar/env";
 import type { CalendarHqEventDetail } from "@/lib/calendar/hq-data";
 
-const h2 = "font-heading text-[9px] font-bold uppercase tracking-wider text-deep-soil/50";
+const h2 = "font-heading text-[9px] font-bold uppercase tracking-wider text-kelly-text/50";
 
 export function GoogleCalendarSyncBlock({ detail }: { detail: CalendarHqEventDetail }) {
   const src = detail.calendarSource;
@@ -15,12 +15,12 @@ export function GoogleCalendarSyncBlock({ detail }: { detail: CalendarHqEventDet
   return (
     <div>
       <p className={h2}>Google Calendar (Slice 5)</p>
-      <p className="mt-0.5 text-[8px] text-deep-soil/70">
+      <p className="mt-0.5 text-[8px] text-kelly-text/70">
         CampaignOS is source of truth; Google mirrors. Stage + public gating select the rail.
       </p>
-      <dl className="mt-1 space-y-0.5 text-[8px] text-deep-soil/85">
+      <dl className="mt-1 space-y-0.5 text-[8px] text-kelly-text/85">
         <div>
-          <dt className="inline text-deep-soil/45">Source: </dt>
+          <dt className="inline text-kelly-text/45">Source: </dt>
           <dd className="inline">
             {src
               ? `${src.displayName || src.label} · ${src.sourceType}${src.isPublicFacing ? " · public rail" : ""}`
@@ -28,11 +28,11 @@ export function GoogleCalendarSyncBlock({ detail }: { detail: CalendarHqEventDet
           </dd>
         </div>
         <div>
-          <dt className="inline text-deep-soil/45">State: </dt>
+          <dt className="inline text-kelly-text/45">State: </dt>
           <dd className="inline">{String(detail.googleSyncState)}</dd>
         </div>
         <div>
-          <dt className="inline text-deep-soil/45">Last sync: </dt>
+          <dt className="inline text-kelly-text/45">Last sync: </dt>
           <dd className="inline">{detail.lastGoogleSyncAt ? detail.lastGoogleSyncAt.toLocaleString() : "—"}</dd>
         </div>
         {detail.googleSyncError ? (
@@ -47,7 +47,7 @@ export function GoogleCalendarSyncBlock({ detail }: { detail: CalendarHqEventDet
           <p className="text-[8px] text-amber-900/90">Timing last changed externally: {detail.inboundTimeChangedAt.toLocaleString()}</p>
         ) : null}
       </dl>
-      <ul className="mt-0.5 max-h-20 list-inside list-disc overflow-y-auto text-[7px] text-deep-soil/55">
+      <ul className="mt-0.5 max-h-20 list-inside list-disc overflow-y-auto text-[7px] text-kelly-text/55">
         {(detail.syncLogs ?? []).slice(0, 6).map((l) => (
           <li key={l.id}>
             {l.createdAt.toLocaleString()} {l.direction} {l.status} — {l.message}
@@ -60,7 +60,7 @@ export function GoogleCalendarSyncBlock({ detail }: { detail: CalendarHqEventDet
             <input type="hidden" name="eventId" value={detail.id} />
             <button
               type="submit"
-              className="w-full rounded border border-washed-denim/40 bg-cream-canvas py-0.5 text-[8px] font-bold text-civic-slate"
+              className="w-full rounded border border-kelly-muted/40 bg-kelly-page py-0.5 text-[8px] font-bold text-kelly-slate"
             >
               Push to Google
             </button>
@@ -70,7 +70,7 @@ export function GoogleCalendarSyncBlock({ detail }: { detail: CalendarHqEventDet
               <input type="hidden" name="eventId" value={detail.id} />
               <button
                 type="submit"
-                className="w-full rounded border border-deep-soil/20 py-0.5 text-[8px] font-semibold text-deep-soil/85"
+                className="w-full rounded border border-kelly-text/20 py-0.5 text-[8px] font-semibold text-kelly-text/85"
               >
                 Pull from Google
               </button>
@@ -79,14 +79,14 @@ export function GoogleCalendarSyncBlock({ detail }: { detail: CalendarHqEventDet
           {detail.googleSyncError || detail.googleSyncState === GoogleEventSyncState.ERROR ? (
             <form action={clearEventGoogleErrorAction}>
               <input type="hidden" name="eventId" value={detail.id} />
-              <button type="submit" className="w-full text-[7px] text-deep-soil/50 underline">
+              <button type="submit" className="w-full text-[7px] text-kelly-text/50 underline">
                 Clear local error
               </button>
             </form>
           ) : null}
         </div>
       ) : (
-        <p className="mt-0.5 text-[7px] text-deep-soil/45">Set GOOGLE_CALENDAR_CLIENT_ID/SECRET in .env to enable push.</p>
+        <p className="mt-0.5 text-[7px] text-kelly-text/45">Set GOOGLE_CALENDAR_CLIENT_ID/SECRET in .env to enable push.</p>
       )}
     </div>
   );

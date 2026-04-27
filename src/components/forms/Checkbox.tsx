@@ -5,7 +5,7 @@ export function Checkbox({ className, ...props }: React.ComponentProps<"input">)
     <input
       type="checkbox"
       className={cn(
-        "h-4 w-4 rounded border-deep-soil/30 text-red-dirt focus:ring-red-dirt/40",
+        "h-4 w-4 rounded border-kelly-text/30 text-kelly-navy focus:ring-kelly-navy/40",
         className,
       )}
       {...props}

@@ -51,15 +51,15 @@ export async function CampaignCalendarView({
 
   return (
     <div className="min-w-0 space-y-6">
-      <form method="get" className="flex flex-col gap-3 rounded-md border border-deep-soil/10 bg-cream-canvas/50 p-3 md:flex-row md:flex-wrap md:items-end">
+      <form method="get" className="flex flex-col gap-3 rounded-md border border-kelly-text/10 bg-kelly-page/50 p-3 md:flex-row md:flex-wrap md:items-end">
         {state.view === "month" ? <input type="hidden" name="view" value="month" /> : null}
         {state.view === "month" ? <input type="hidden" name="m" value={state.calMonth || defaultCalMonthYmd()} /> : null}
-        <label className="flex min-w-[10rem] flex-1 flex-col text-[10px] font-bold uppercase tracking-wider text-deep-soil/55">
+        <label className="flex min-w-[10rem] flex-1 flex-col text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">
           County
           <select
             name="county"
             defaultValue={state.county}
-            className="mt-0.5 rounded border border-deep-soil/15 bg-white px-2 py-1.5 text-xs text-deep-soil"
+            className="mt-0.5 rounded border border-kelly-text/15 bg-white px-2 py-1.5 text-xs text-kelly-text"
           >
             <option value="">All counties</option>
             {counties.map((c) => (
@@ -69,12 +69,12 @@ export async function CampaignCalendarView({
             ))}
           </select>
         </label>
-        <label className="flex min-w-[9rem] flex-1 flex-col text-[10px] font-bold uppercase tracking-wider text-deep-soil/55">
+        <label className="flex min-w-[9rem] flex-1 flex-col text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">
           Event type
           <select
             name="type"
             defaultValue={state.type}
-            className="mt-0.5 rounded border border-deep-soil/15 bg-white px-2 py-1.5 text-xs text-deep-soil"
+            className="mt-0.5 rounded border border-kelly-text/15 bg-white px-2 py-1.5 text-xs text-kelly-text"
           >
             <option value="ALL">All types</option>
             {Object.values(CampaignEventType).map((t) => (
@@ -84,24 +84,24 @@ export async function CampaignCalendarView({
             ))}
           </select>
         </label>
-        <label className="flex min-w-[9rem] flex-1 flex-col text-[10px] font-bold uppercase tracking-wider text-deep-soil/55">
+        <label className="flex min-w-[9rem] flex-1 flex-col text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">
           When
           <select
             name="range"
             defaultValue={state.range}
-            className="mt-0.5 rounded border border-deep-soil/15 bg-white px-2 py-1.5 text-xs text-deep-soil"
+            className="mt-0.5 rounded border border-kelly-text/15 bg-white px-2 py-1.5 text-xs text-kelly-text"
           >
             <option value="all_upcoming">All upcoming</option>
             <option value="this_week">This week</option>
             <option value="this_month">This calendar month</option>
           </select>
         </label>
-        <label className="flex min-w-[8rem] flex-1 flex-col text-[10px] font-bold uppercase tracking-wider text-deep-soil/55">
+        <label className="flex min-w-[8rem] flex-1 flex-col text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">
           Format
           <select
             name="venue"
             defaultValue={state.venue}
-            className="mt-0.5 rounded border border-deep-soil/15 bg-white px-2 py-1.5 text-xs text-deep-soil"
+            className="mt-0.5 rounded border border-kelly-text/15 bg-white px-2 py-1.5 text-xs text-kelly-text"
           >
             <option value="all">All</option>
             <option value="in_person">In person</option>
@@ -112,21 +112,21 @@ export async function CampaignCalendarView({
         <div className="flex gap-2">
           <button
             type="submit"
-            className="rounded-md bg-red-dirt px-3 py-1.5 font-body text-sm font-semibold text-cream-canvas hover:bg-red-dirt/90"
+            className="rounded-md bg-kelly-gold px-3 py-1.5 font-body text-sm font-semibold text-kelly-navy hover:brightness-105"
           >
             Apply
           </button>
         </div>
       </form>
 
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-deep-soil/10 pb-2">
-        <p className="text-[10px] font-bold uppercase tracking-wider text-deep-soil/45">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-kelly-text/10 pb-2">
+        <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-text/45">
           {events.length} event{events.length === 1 ? "" : "s"} · CampaignOS, published &amp; public only
         </p>
         <div className="flex gap-1">
           <Link
             className={`rounded-md px-2 py-1 text-xs font-semibold ${
-              state.view === "list" ? "bg-red-dirt/15 text-deep-soil" : "text-deep-soil/70 hover:bg-deep-soil/5"
+              state.view === "list" ? "bg-kelly-navy/15 text-kelly-text" : "text-kelly-text/70 hover:bg-kelly-text/5"
             }`}
             href={buildCalendarHref({ ...current, view: "list" })}
             prefetch={false}
@@ -135,7 +135,7 @@ export async function CampaignCalendarView({
           </Link>
           <Link
             className={`rounded-md px-2 py-1 text-xs font-semibold ${
-              state.view === "month" ? "bg-red-dirt/15 text-deep-soil" : "text-deep-soil/70 hover:bg-deep-soil/5"
+              state.view === "month" ? "bg-kelly-navy/15 text-kelly-text" : "text-kelly-text/70 hover:bg-kelly-text/5"
             }`}
             href={buildCalendarHref({ ...current, view: "month", calMonth: state.calMonth || defaultCalMonthYmd() })}
             prefetch={false}
@@ -156,10 +156,10 @@ export async function CampaignCalendarView({
             }}
           />
           <div className="min-w-0 space-y-3">
-            <p className="text-[10px] font-bold uppercase tracking-wider text-deep-soil/45">This month (list)</p>
+            <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-text/45">This month (list)</p>
             <ul className="space-y-3">
               {events.length === 0 ? (
-                <li className="rounded-md border border-dashed border-deep-soil/15 p-4 text-sm text-deep-soil/65">
+                <li className="rounded-md border border-dashed border-kelly-text/15 p-4 text-sm text-kelly-text/65">
                   No public events in this view. Loosen filters or pick another month.
                 </li>
               ) : (
@@ -175,9 +175,9 @@ export async function CampaignCalendarView({
       ) : (
         <ul className="space-y-4">
           {events.length === 0 ? (
-            <li className="rounded-md border border-dashed border-deep-soil/15 p-6 text-center">
-              <p className="font-heading text-base font-semibold text-deep-soil">Nothing on the public schedule yet</p>
-              <p className="mt-1 font-body text-sm text-deep-soil/65">
+            <li className="rounded-md border border-dashed border-kelly-text/15 p-6 text-center">
+              <p className="font-heading text-base font-semibold text-kelly-text">Nothing on the public schedule yet</p>
+              <p className="mt-1 font-body text-sm text-kelly-text/65">
                 When the campaign publishes events to the site, they&rsquo;ll show up here first—no extra calendar
                 services required.
               </p>
@@ -192,7 +192,7 @@ export async function CampaignCalendarView({
         </ul>
       )}
 
-      <p className="text-[10px] text-deep-soil/45">
+      <p className="text-[10px] text-kelly-text/45">
         Internal briefings, drafts, and staff-only details never appear here. Canceled or completed items roll off
         automatically when staff update CampaignOS.
       </p>

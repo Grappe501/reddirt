@@ -25,7 +25,7 @@ const introFallback =
   "Kelly’s Arkansas campaign runs through all 75 counties—this page is your field sheet: who’s leading, what’s happening, and how we’re growing the electorate where you live.";
 
 const card =
-  "rounded-2xl border border-deep-soil/10 bg-cream-canvas p-5 shadow-sm transition hover:border-red-dirt/25 hover:shadow-elevated";
+  "rounded-2xl border border-kelly-text/10 bg-kelly-page p-5 shadow-sm transition hover:border-kelly-navy/25 hover:shadow-elevated";
 
 const fmt = (n: number | null | undefined) =>
   n == null || Number.isNaN(n) ? "—" : n.toLocaleString("en-US");
@@ -77,9 +77,9 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
         subtitle={county.heroIntro?.trim() || introFallback}
       >
         {county.leadName ? (
-          <p className="max-w-2xl text-base font-bold text-red-dirt/95">
+          <p className="max-w-2xl text-base font-bold text-kelly-navy/95">
             County lead: {county.leadName}
-            {county.leadTitle ? <span className="font-medium text-deep-soil/90"> — {county.leadTitle}</span> : null}
+            {county.leadTitle ? <span className="font-medium text-kelly-text/90"> — {county.leadTitle}</span> : null}
           </p>
         ) : null}
         <div className="flex w-full max-w-3xl flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-2">
@@ -101,7 +101,7 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
         </div>
       </PageHero>
 
-      <FullBleedSection padY className="bg-washed-canvas" aria-labelledby="scoreboard-title">
+      <FullBleedSection padY className="bg-kelly-wash" aria-labelledby="scoreboard-title">
         <ContentContainer>
           <SectionHeading
             id="scoreboard-title"
@@ -110,7 +110,7 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
             title="County scoreboard"
             subtitle="Numbers come from our voter file warehouse when a snapshot completes: baseline date is campaign-wide (see voter center). If a row is pending, the pipeline is still catching up."
           />
-          <p className="mt-4 text-xs text-deep-soil/60">
+          <p className="mt-4 text-xs text-kelly-text/60">
             Campaign baseline (all counties): <strong>{centralBaselineLabel}</strong>
             {vm ? (
               <>
@@ -147,14 +147,14 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
             />
           </ul>
           {vm ? (
-            <p className="mt-4 text-xs text-deep-soil/55">
+            <p className="mt-4 text-xs text-kelly-text/55">
               Voter file as of {fmtDateLong(vm.asOfDate)} · Last import: +{fmt(vm.newRegistrationsSincePreviousSnapshot)} new
               registrants / {fmt(vm.droppedSincePreviousSnapshot)} no longer in file vs previous snapshot · Net{" "}
               {vm.netChangeSincePreviousSnapshot >= 0 ? "+" : ""}
               {fmt(vm.netChangeSincePreviousSnapshot)}. Review: {vm.reviewStatus.toLowerCase().replace(/_/g, " ")}.
             </p>
           ) : stats?.dataPipelineSource ? (
-            <p className="mt-4 text-xs text-deep-soil/55">
+            <p className="mt-4 text-xs text-kelly-text/55">
               Data pipeline: {stats.dataPipelineSource}
               {stats.pipelineLastSyncAt ? ` · Last attempt ${formatDistanceAgo(stats.pipelineLastSyncAt)}` : null}
             </p>
@@ -183,15 +183,15 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
               empty="Subscribe to field updates in this county—stories with this county’s tag will surface automatically."
             />
             <div className={cn(card, "lg:col-span-2")}>
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-red-dirt/90">Photo &amp; video</p>
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-kelly-navy/90">Photo &amp; video</p>
               {mediaGallery.length > 0 ? (
                 <ul className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
                   {mediaGallery.map((m) => (
-                    <li key={m.id} className="relative aspect-square overflow-hidden rounded-xl border border-deep-soil/10">
+                    <li key={m.id} className="relative aspect-square overflow-hidden rounded-xl border border-kelly-text/10">
                       {m.kind === "IMAGE" && m.publicUrl ? (
                         <Image src={m.publicUrl} alt={m.title ?? "County media"} fill className="object-cover" unoptimized={m.publicUrl.startsWith("http")} />
                       ) : (
-                        <div className="flex h-full items-center justify-center bg-deep-soil/5 p-2 text-center text-xs text-deep-soil/60">
+                        <div className="flex h-full items-center justify-center bg-kelly-text/5 p-2 text-center text-xs text-kelly-text/60">
                           {m.kind} · {m.title ?? "Media"}
                         </div>
                       )}
@@ -199,7 +199,7 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
                   ))}
                 </ul>
               ) : (
-                <p className="mt-2 text-sm text-deep-soil/70">
+                <p className="mt-2 text-sm text-kelly-text/70">
                   The gallery will fill in as we publish approved, county-tagged media from the campaign library.
                 </p>
               )}
@@ -207,17 +207,17 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
             <div className="lg:col-span-2">
               {nextPublicCampaignEvent ? (
                 <div>
-                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-red-dirt/90">Next on the public calendar</p>
-                  <p className="mt-0.5 text-xs text-deep-soil/55">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-kelly-navy/90">Next on the public calendar</p>
+                  <p className="mt-0.5 text-xs text-kelly-text/55">
                     Pulled from CampaignOS—only events published for the public site in this county.
                   </p>
                   <div className="mt-2 max-w-2xl">
                     <PublicCampaignEventCard event={nextPublicCampaignEvent} />
                   </div>
                   {upcomingPublicCampaignEvents.length > 1 ? (
-                    <p className="mt-2 text-sm text-deep-soil/70">
+                    <p className="mt-2 text-sm text-kelly-text/70">
                       {upcomingPublicCampaignEvents.length - 1} more on the{" "}
-                      <Link className="font-semibold text-red-dirt hover:underline" href="/campaign-calendar">
+                      <Link className="font-semibold text-kelly-navy hover:underline" href="/campaign-calendar">
                         campaign calendar
                       </Link>
                       .
@@ -226,9 +226,9 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
                 </div>
               ) : (
                 <div className={card}>
-                  <p className="text-sm text-deep-soil/80">
+                  <p className="text-sm text-kelly-text/80">
                     No published public events in this county yet. Browse the full{" "}
-                    <Link className="font-semibold text-red-dirt underline-offset-2 hover:underline" href="/campaign-calendar">
+                    <Link className="font-semibold text-kelly-navy underline-offset-2 hover:underline" href="/campaign-calendar">
                       campaign calendar
                     </Link>{" "}
                     for statewide stops, or ask field staff to publish when a date is set.
@@ -240,7 +240,7 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
         </ContentContainer>
       </FullBleedSection>
 
-      <FullBleedSection padY className="bg-washed-canvas" aria-labelledby="intel-title">
+      <FullBleedSection padY className="bg-kelly-wash" aria-labelledby="intel-title">
         <ContentContainer>
           <SectionHeading
             id="intel-title"
@@ -251,7 +251,7 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
           />
           {demo ? (
             <>
-              <p className="text-xs text-deep-soil/55">
+              <p className="text-xs text-kelly-text/55">
                 Source: {demo.source}
                 {demo.sourceDetail ? ` — ${demo.sourceDetail}` : ""}
                 {demo.asOfYear ? ` · ${demo.asOfYear}` : ""} · Data review: {demo.reviewStatus.toLowerCase().replace(/_/g, " ")} ·
@@ -278,17 +278,17 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
               </ul>
             </>
           ) : (
-            <p className="mt-4 text-sm text-deep-soil/70">Demographics for this county are not in the system yet.</p>
+            <p className="mt-4 text-sm text-kelly-text/70">Demographics for this county are not in the system yet.</p>
           )}
         </ContentContainer>
       </FullBleedSection>
 
-      <FullBleedSection padY className="bg-deep-soil text-cream-canvas" aria-labelledby="voteraction-title">
+      <FullBleedSection padY className="bg-kelly-text text-kelly-page" aria-labelledby="voteraction-title">
         <ContentContainer>
           <h2 className="font-heading text-2xl font-bold tracking-tight" id="voteraction-title">
             Voter action
           </h2>
-          <p className="mt-1 max-w-2xl text-sm text-cream-canvas/80">
+          <p className="mt-1 max-w-2xl text-sm text-kelly-page/80">
             Start from the campaign’s voter registration center for this county—then use the state’s official lookup to
             confirm. We help with questions and follow-up.
           </p>
@@ -317,7 +317,7 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
               <Button
                 href={getCountyRegistrationTeamHref(county.slug)}
                 variant="subtle"
-                className="border border-cream-canvas/20 bg-cream-canvas/5 text-cream-canvas hover:bg-cream-canvas/10"
+                className="border border-kelly-page/20 bg-kelly-page/5 text-kelly-page hover:bg-kelly-page/10"
               >
                 Join the registration team
               </Button>
@@ -341,8 +341,8 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
                 className={cn(card, "block h-full no-underline hover:-translate-y-0.5")}
                 href={getVoterRegistrationCenterHref(county.slug)}
               >
-                <span className="text-sm font-bold text-red-dirt">County lead & registration</span>
-                <p className="mt-1 text-sm text-deep-soil/80">
+                <span className="text-sm font-bold text-kelly-navy">County lead & registration</span>
+                <p className="mt-1 text-sm text-kelly-text/80">
                   {county.leadName
                     ? `${county.leadName}${county.leadTitle ? ` — ${county.leadTitle}` : ""} — see the voter center for this county.`
                     : "Lead assignment in progress. The voter center links you to help and the county volunteer path."}
@@ -373,7 +373,7 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
         </ContentContainer>
       </FullBleedSection>
 
-      <FullBleedSection padY className="bg-washed-canvas" aria-labelledby="media-block-title">
+      <FullBleedSection padY className="bg-kelly-wash" aria-labelledby="media-block-title">
         <ContentContainer>
           <SectionHeading
             id="media-block-title"
@@ -384,26 +384,26 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
           />
           <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
             <div className={card}>
-              <h3 className="font-heading text-lg font-bold text-deep-soil">Photo gallery</h3>
-              <p className="mt-1 text-sm text-deep-soil/70">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Photo gallery</h3>
+              <p className="mt-1 text-sm text-kelly-text/70">
                 Stills from the trail and community hosts tied to this county.
               </p>
             </div>
             <div className={card}>
-              <h3 className="font-heading text-lg font-bold text-deep-soil">Video</h3>
-              <p className="mt-1 text-sm text-deep-soil/70">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Video</h3>
+              <p className="mt-1 text-sm text-kelly-text/70">
                 Short clips, testimonials, and event reels from visits and conversations in this area.
               </p>
             </div>
             <div className={card}>
-              <h3 className="font-heading text-lg font-bold text-deep-soil">Key quotes &amp; transcripts</h3>
-              <p className="mt-1 text-sm text-deep-soil/70">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Key quotes &amp; transcripts</h3>
+              <p className="mt-1 text-sm text-kelly-text/70">
                 Lines and excerpts from town halls, press, and roundtables as they&apos;re added for this county.
               </p>
             </div>
             <div className={card}>
-              <h3 className="font-heading text-lg font-bold text-deep-soil">Supporter uploads</h3>
-              <p className="mt-1 text-sm text-deep-soil/70">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Supporter uploads</h3>
+              <p className="mt-1 text-sm text-kelly-text/70">
                 A future home for neighbor-submitted photos and clips, moderated for quality and respect.
               </p>
             </div>
@@ -417,9 +417,9 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
 function ScoreItem({ label, value, hint }: { label: string; value: string; hint?: string }) {
   return (
     <li className={card}>
-      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-red-dirt/90">{label}</p>
-      <p className="mt-1 font-heading text-2xl font-bold tabular-nums text-deep-soil">{value}</p>
-      {hint ? <p className="mt-0.5 text-xs text-deep-soil/55">{hint}</p> : null}
+      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-kelly-navy/90">{label}</p>
+      <p className="mt-1 font-heading text-2xl font-bold tabular-nums text-kelly-text">{value}</p>
+      {hint ? <p className="mt-0.5 text-xs text-kelly-text/55">{hint}</p> : null}
     </li>
   );
 }
@@ -427,8 +427,8 @@ function ScoreItem({ label, value, hint }: { label: string; value: string; hint?
 function IntelCard({ label, value, multiline }: { label: string; value: string; multiline?: boolean }) {
   return (
     <li className={card} role="listitem">
-      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-red-dirt/90">{label}</p>
-      <p className={cn("mt-1 font-heading text-lg font-bold text-deep-soil", multiline && "text-base font-medium leading-relaxed")}>
+      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-kelly-navy/90">{label}</p>
+      <p className={cn("mt-1 font-heading text-lg font-bold text-kelly-text", multiline && "text-base font-medium leading-relaxed")}>
         {value}
       </p>
     </li>
@@ -447,8 +447,8 @@ function HappenCard({
   if (!post) {
     return (
       <div className={card}>
-        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-red-dirt/90">{kicker}</p>
-        <p className="mt-2 text-sm text-deep-soil/70">{empty}</p>
+        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-kelly-navy/90">{kicker}</p>
+        <p className="mt-2 text-sm text-kelly-text/70">{empty}</p>
       </div>
     );
   }
@@ -462,14 +462,14 @@ function HappenCard({
         </div>
       ) : null}
       <div className="p-5">
-        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-red-dirt/90">{kicker}</p>
-        <h3 className="mt-2 font-heading text-lg font-bold leading-snug text-deep-soil">
-          <Link className="hover:text-red-dirt" href={post.canonicalUrl} target="_blank" rel="noreferrer">
+        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-kelly-navy/90">{kicker}</p>
+        <h3 className="mt-2 font-heading text-lg font-bold leading-snug text-kelly-text">
+          <Link className="hover:text-kelly-navy" href={post.canonicalUrl} target="_blank" rel="noreferrer">
             {post.title}
           </Link>
         </h3>
         {post.publishedAt ? (
-          <p className="mt-1 text-xs text-deep-soil/55">
+          <p className="mt-1 text-xs text-kelly-text/55">
             {new Date(post.publishedAt).toLocaleDateString("en-US", {
               weekday: "long",
               month: "long",
@@ -478,9 +478,9 @@ function HappenCard({
             })}
           </p>
         ) : null}
-        <p className="mt-2 line-clamp-3 text-sm text-deep-soil/75">{excerpt}</p>
+        <p className="mt-2 line-clamp-3 text-sm text-kelly-text/75">{excerpt}</p>
         <p className="mt-3">
-          <a className="text-sm font-semibold text-red-dirt" href={post.canonicalUrl} target="_blank" rel="noreferrer">
+          <a className="text-sm font-semibold text-kelly-navy" href={post.canonicalUrl} target="_blank" rel="noreferrer">
             Read on Substack
           </a>
         </p>

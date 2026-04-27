@@ -14,7 +14,7 @@ import {
 import { computeEventExecutionReadiness, isTaskOpen } from "@/lib/calendar/event-readiness";
 import type { CalendarHqEventDetail } from "@/lib/calendar/hq-data";
 
-const h2 = "font-heading text-[9px] font-bold uppercase tracking-wider text-deep-soil/50";
+const h2 = "font-heading text-[9px] font-bold uppercase tracking-wider text-kelly-text/50";
 
 type ExecutionReadiness = ReturnType<typeof computeEventExecutionReadiness>;
 
@@ -49,7 +49,7 @@ export function EventTaskWorkflowSection({
   const terminal = detail.eventWorkflowState === "CANCELED" || detail.eventWorkflowState === "COMPLETED";
 
   return (
-    <div className="space-y-2 border-t border-deep-soil/10 pt-2">
+    <div className="space-y-2 border-t border-kelly-text/10 pt-2">
       <div>
         <p className={h2}>Execution readiness (Slice 4)</p>
         <div className="mt-1 flex flex-wrap items-center gap-1">
@@ -59,19 +59,19 @@ export function EventTaskWorkflowSection({
           >
             {readiness.label} · {readiness.score0to100}/100
           </span>
-          <span className="text-[8px] text-deep-soil/55">
+          <span className="text-[8px] text-kelly-text/55">
             Blockers {readiness.blockerCount} · Overdue {readiness.overdueCount}
           </span>
         </div>
         {readiness.nextRequiredAction ? (
-          <p className="mt-0.5 text-[9px] font-medium text-deep-soil/85">Next: {readiness.nextRequiredAction}</p>
+          <p className="mt-0.5 text-[9px] font-medium text-kelly-text/85">Next: {readiness.nextRequiredAction}</p>
         ) : null}
       </div>
 
       <div>
         <p className={h2}>Workflow templates</p>
         {workflowRuns.length > 0 ? (
-          <ul className="mt-0.5 text-[8px] text-deep-soil/65">
+          <ul className="mt-0.5 text-[8px] text-kelly-text/65">
             {workflowRuns.map((r) => (
               <li key={r.id}>
                 {r.workflowTemplate.title} · {r.status}
@@ -79,13 +79,13 @@ export function EventTaskWorkflowSection({
             ))}
           </ul>
         ) : (
-          <p className="mt-0.5 text-[8px] text-deep-soil/45">No workflow pack applied yet.</p>
+          <p className="mt-0.5 text-[8px] text-kelly-text/45">No workflow pack applied yet.</p>
         )}
         {!terminal ? (
           <form action={applyEventWorkflowTemplateAction} className="mt-1 flex flex-col gap-0.5">
             <input type="hidden" name="eventId" value={detail.id} />
-            <label className="text-[7px] uppercase text-deep-soil/40">Apply / refresh pack</label>
-            <select name="templateId" className="w-full border border-deep-soil/15 bg-white text-[8px]">
+            <label className="text-[7px] uppercase text-kelly-text/40">Apply / refresh pack</label>
+            <select name="templateId" className="w-full border border-kelly-text/15 bg-white text-[8px]">
               <option value="">— choose template —</option>
               {templateChoices.map((t) => (
                 <option key={t.id} value={t.id}>
@@ -96,7 +96,7 @@ export function EventTaskWorkflowSection({
             </select>
             <button
               type="submit"
-              className="w-full rounded border border-washed-denim/40 bg-cream-canvas py-0.5 text-[9px] font-bold text-civic-slate"
+              className="w-full rounded border border-kelly-muted/40 bg-kelly-page py-0.5 text-[9px] font-bold text-kelly-slate"
             >
               Apply workflow to event
             </button>
@@ -107,7 +107,7 @@ export function EventTaskWorkflowSection({
             <input type="hidden" name="eventId" value={detail.id} />
             <button
               type="submit"
-              className="w-full rounded border border-deep-soil/20 py-0.5 text-[8px] font-semibold text-deep-soil/80"
+              className="w-full rounded border border-kelly-text/20 py-0.5 text-[8px] font-semibold text-kelly-text/80"
               title="Updates due dates and missing lines from all packs already applied; does not duplicate completed work."
             >
               Re-sync tasks from applied packs
@@ -119,7 +119,7 @@ export function EventTaskWorkflowSection({
       <div>
         <p className={h2}>Blocking & overdue (event)</p>
         {blocked.length === 0 && overdue.length === 0 ? (
-          <p className="text-[8px] text-field-green/90">No blocking or overdue open tasks.</p>
+          <p className="text-[8px] text-kelly-success/90">No blocking or overdue open tasks.</p>
         ) : null}
         {blocked.length > 0 ? (
           <ul className="mb-0.5 list-inside list-disc text-[8px] text-rose-900/95">
@@ -135,7 +135,7 @@ export function EventTaskWorkflowSection({
               .slice(0, 6)
               .map((t) => (
                 <li key={t.id}>
-                  {t.title} {t.dueAt ? <span className="text-deep-soil/50">· was {t.dueAt.toLocaleString()}</span> : null}
+                  {t.title} {t.dueAt ? <span className="text-kelly-text/50">· was {t.dueAt.toLocaleString()}</span> : null}
                 </li>
               ))}
           </ul>
@@ -146,15 +146,15 @@ export function EventTaskWorkflowSection({
         <p className={h2}>All linked tasks</p>
         <ul className="mt-0.5 max-h-36 space-y-0.5 overflow-y-auto">
           {openTasks.length === 0 && detail.tasks.every((t) => !isTaskOpen(t)) ? (
-            <li className="text-[8px] text-deep-soil/40">— (all done or cancelled)</li>
+            <li className="text-[8px] text-kelly-text/40">— (all done or cancelled)</li>
           ) : null}
           {detail.tasks.map((t) => (
-            <li key={t.id} className="rounded border border-deep-soil/8 bg-white/50 px-1 py-0.5 text-[8px] text-deep-soil/88">
+            <li key={t.id} className="rounded border border-kelly-text/8 bg-white/50 px-1 py-0.5 text-[8px] text-kelly-text/88">
               <div className="font-semibold">
                 {t.title}
                 {t.blocksReadiness ? <span className="ml-1 text-[7px] text-rose-800">· blocks</span> : null}
               </div>
-              <div className="text-deep-soil/50">
+              <div className="text-kelly-text/50">
                 {t.status}
                 {t.taskType ? ` · ${t.taskType}` : ""}
                 {t.dueAt ? ` · due ${t.dueAt.toLocaleString()}` : ""}
@@ -168,7 +168,7 @@ export function EventTaskWorkflowSection({
                     <select
                       name="assignedUserId"
                       defaultValue={t.assignedUserId ?? "__none"}
-                      className="max-w-[160px] border border-deep-soil/12 text-[7px]"
+                      className="max-w-[160px] border border-kelly-text/12 text-[7px]"
                     >
                       <option value="__none">Assign…</option>
                       {assignUsers.map((u) => (
@@ -177,13 +177,13 @@ export function EventTaskWorkflowSection({
                         </option>
                       ))}
                     </select>
-                    <button type="submit" className="rounded border border-deep-soil/15 px-0.5 text-[7px] font-bold">
+                    <button type="submit" className="rounded border border-kelly-text/15 px-0.5 text-[7px] font-bold">
                       Set
                     </button>
                   </form>
                   <form action={completeEventTaskAction}>
                     <input type="hidden" name="taskId" value={t.id} />
-                    <button type="submit" className="rounded border border-field-green/40 bg-field-green/10 px-0.5 text-[7px] font-bold text-field-green/95">
+                    <button type="submit" className="rounded border border-kelly-success/40 bg-kelly-success/10 px-0.5 text-[7px] font-bold text-kelly-success/95">
                       Done
                     </button>
                   </form>
@@ -192,7 +192,7 @@ export function EventTaskWorkflowSection({
             </li>
           ))}
         </ul>
-        <Link className="mt-0.5 inline-block text-[8px] text-civic-slate underline" href="/admin/tasks">
+        <Link className="mt-0.5 inline-block text-[8px] text-kelly-slate underline" href="/admin/tasks">
           All campaign tasks →
         </Link>
       </div>
@@ -204,12 +204,12 @@ export function EventTaskWorkflowSection({
             <input type="hidden" name="eventId" value={detail.id} />
             <input
               name="title"
-              className="w-full border border-deep-soil/12 bg-white px-1 text-[8px]"
+              className="w-full border border-kelly-text/12 bg-white px-1 text-[8px]"
               placeholder="Title"
               required
             />
             <div className="grid grid-cols-2 gap-0.5">
-              <label className="text-[7px] text-deep-soil/45">
+              <label className="text-[7px] text-kelly-text/45">
                 Type
                 <select name="taskType" defaultValue={CampaignTaskType.PREP} className="mt-0.5 w-full border text-[7px]">
                   {Object.values(CampaignTaskType).map((x) => (
@@ -219,7 +219,7 @@ export function EventTaskWorkflowSection({
                   ))}
                 </select>
               </label>
-              <label className="text-[7px] text-deep-soil/45">
+              <label className="text-[7px] text-kelly-text/45">
                 Priority
                 <select name="priority" defaultValue={CampaignTaskPriority.MEDIUM} className="mt-0.5 w-full border text-[7px]">
                   {Object.values(CampaignTaskPriority).map((x) => (
@@ -230,7 +230,7 @@ export function EventTaskWorkflowSection({
                 </select>
               </label>
             </div>
-            <label className="text-[7px] text-deep-soil/45">
+            <label className="text-[7px] text-kelly-text/45">
               Due offset (minutes from event start, negative = before)
               <input
                 name="dueOffsetMinutes"
@@ -239,11 +239,11 @@ export function EventTaskWorkflowSection({
                 defaultValue={-1440}
               />
             </label>
-            <label className="flex items-center gap-1 text-[7px] text-deep-soil/55">
+            <label className="flex items-center gap-1 text-[7px] text-kelly-text/55">
               <input type="checkbox" name="blocksReadiness" className="h-2.5 w-2.5" />
               Blocks readiness when open
             </label>
-            <button type="submit" className="w-full rounded border border-deep-soil/20 py-0.5 text-[8px] font-bold">
+            <button type="submit" className="w-full rounded border border-kelly-text/20 py-0.5 text-[8px] font-bold">
               Add task
             </button>
           </form>

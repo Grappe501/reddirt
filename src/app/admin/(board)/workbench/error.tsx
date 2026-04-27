@@ -16,18 +16,18 @@ export default function WorkbenchError({
 
   return (
     <div className="mx-auto max-w-lg p-4">
-      <h1 className="font-heading text-lg font-bold text-deep-soil">Campaign workbench</h1>
+      <h1 className="font-heading text-lg font-bold text-kelly-text">Campaign workbench</h1>
       <p className="mt-2 font-body text-sm text-red-800">Something went wrong loading this view.</p>
-      <p className="mt-1 font-mono text-xs text-deep-soil/60">{error.message || "Error"}</p>
+      <p className="mt-1 font-mono text-xs text-kelly-text/60">{error.message || "Error"}</p>
       <div className="mt-4 flex flex-wrap gap-2">
         <button
           type="button"
           onClick={reset}
-          className="rounded border border-deep-soil/20 bg-white px-2 py-1 font-body text-sm font-semibold"
+          className="rounded border border-kelly-text/20 bg-white px-2 py-1 font-body text-sm font-semibold"
         >
           Try again
         </button>
-        <Link href="/admin/workbench" className="rounded border border-washed-denim/30 bg-cream-canvas px-2 py-1 font-body text-sm font-semibold text-civic-slate">
+        <Link href="/admin/workbench" className="rounded border border-kelly-muted/30 bg-kelly-page px-2 py-1 font-body text-sm font-semibold text-kelly-slate">
           Back to workbench
         </Link>
       </div>

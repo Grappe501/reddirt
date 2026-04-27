@@ -450,7 +450,7 @@ function CenterDetailPanel({
             {detail.title ? <h3 className="text-lg font-semibold text-slate-900">{detail.title}</h3> : null}
             <p className="whitespace-pre-wrap text-slate-800">{detail.bodyText}</p>
             {detail.publicPermalink ? (
-              <a href={detail.publicPermalink} target="_blank" rel="noreferrer" className="text-civic-slate text-xs underline break-all">
+              <a href={detail.publicPermalink} target="_blank" rel="noreferrer" className="text-kelly-slate text-xs underline break-all">
                 {detail.publicPermalink}
               </a>
             ) : null}
@@ -636,7 +636,7 @@ function IntelligenceActionRail({
             />
             <Link
               href="/admin/workbench/social"
-              className="mt-1 inline-block text-center text-xs text-civic-slate underline"
+              className="mt-1 inline-block text-center text-xs text-kelly-slate underline"
             >
               Open social queue (work items)
             </Link>

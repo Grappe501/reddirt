@@ -26,23 +26,23 @@ export default async function WorkbenchFestivalsPage({ searchParams }: Props) {
 
   return (
     <div className="min-w-0 p-2 md:p-4">
-      <div className="border-b border-deep-soil/10 pb-3">
-        <h1 className="font-heading text-lg font-bold text-deep-soil md:text-xl">Community events (ingest review)</h1>
-        <p className="mt-1 font-body text-[11px] text-deep-soil/70">
-          Approve rows you trust: sets <code className="rounded bg-deep-soil/5 px-1">reviewStatus = APPROVED</code> and{" "}
-          <code className="rounded bg-deep-soil/5 px-1">isVisibleOnSite = true</code> for the public feed on the campaign
+      <div className="border-b border-kelly-text/10 pb-3">
+        <h1 className="font-heading text-lg font-bold text-kelly-text md:text-xl">Community events (ingest review)</h1>
+        <p className="mt-1 font-body text-[11px] text-kelly-text/70">
+          Approve rows you trust: sets <code className="rounded bg-kelly-text/5 px-1">reviewStatus = APPROVED</code> and{" "}
+          <code className="rounded bg-kelly-text/5 px-1">isVisibleOnSite = true</code> for the public feed on the campaign
           trail and suggested events. Use <strong>Public form</strong> to see submissions from the Movement /events page.
         </p>
         <p className="mt-2 flex flex-wrap gap-2 text-[10px]">
-          <Link href="/admin/workbench" className="font-semibold text-civic-slate hover:underline">
+          <Link href="/admin/workbench" className="font-semibold text-kelly-slate hover:underline">
             ← Workbench
           </Link>
-          <span className="text-deep-soil/35">|</span>
-          <Link href="/admin/events/community-suggestions" className="font-semibold text-civic-slate hover:underline">
+          <span className="text-kelly-text/35">|</span>
+          <Link href="/admin/events/community-suggestions" className="font-semibold text-kelly-slate hover:underline">
             Public form queue
           </Link>
-          <span className="text-deep-soil/35">|</span>
-          <a href="/from-the-road" className="font-semibold text-red-dirt hover:underline" target="_blank" rel="noreferrer">
+          <span className="text-kelly-text/35">|</span>
+          <a href="/from-the-road" className="font-semibold text-kelly-navy hover:underline" target="_blank" rel="noreferrer">
             View public feed →
           </a>
         </p>
@@ -55,16 +55,16 @@ export default async function WorkbenchFestivalsPage({ searchParams }: Props) {
         <p className="mt-2 font-body text-xs text-emerald-800">Row approved and shown on site.</p>
       ) : null}
       {sp.ok === "hidden" ? (
-        <p className="mt-2 font-body text-xs text-deep-soil/80">Removed from public feed (still approved in DB).</p>
+        <p className="mt-2 font-body text-xs text-kelly-text/80">Removed from public feed (still approved in DB).</p>
       ) : null}
       {sp.ok === "visible" ? (
         <p className="mt-2 font-body text-xs text-emerald-800">Shown on public feed.</p>
       ) : null}
       {sp.ok === "rejected" ? (
-        <p className="mt-2 font-body text-xs text-deep-soil/80">Row rejected.</p>
+        <p className="mt-2 font-body text-xs text-kelly-text/80">Row rejected.</p>
       ) : null}
       {sp.ok === "reset" ? (
-        <p className="mt-2 font-body text-xs text-deep-soil/80">Reset to pending review.</p>
+        <p className="mt-2 font-body text-xs text-kelly-text/80">Reset to pending review.</p>
       ) : null}
 
       <div className="mt-4 flex flex-wrap gap-1">
@@ -80,7 +80,7 @@ export default async function WorkbenchFestivalsPage({ searchParams }: Props) {
             key={f}
             href={link(f, channel)}
             className={`rounded border px-2 py-0.5 text-[10px] font-semibold ${
-              filter === f ? "border-deep-soil bg-deep-soil text-cream-canvas" : "border-deep-soil/20 bg-white text-deep-soil"
+              filter === f ? "border-kelly-text bg-kelly-text text-kelly-page" : "border-kelly-text/20 bg-white text-kelly-text"
             }`}
           >
             {label}
@@ -88,7 +88,7 @@ export default async function WorkbenchFestivalsPage({ searchParams }: Props) {
         ))}
       </div>
 
-      <p className="mt-2 font-body text-[10px] text-deep-soil/55">Source</p>
+      <p className="mt-2 font-body text-[10px] text-kelly-text/55">Source</p>
       <div className="mt-1 flex flex-wrap gap-1">
         {(
           [
@@ -101,7 +101,7 @@ export default async function WorkbenchFestivalsPage({ searchParams }: Props) {
             key={c}
             href={link(filter, c)}
             className={`rounded border px-2 py-0.5 text-[10px] font-semibold ${
-              channel === c ? "border-civic-slate bg-civic-slate text-cream-canvas" : "border-deep-soil/20 bg-white text-deep-soil"
+              channel === c ? "border-kelly-slate bg-kelly-slate text-kelly-page" : "border-kelly-text/20 bg-white text-kelly-text"
             }`}
           >
             {label}

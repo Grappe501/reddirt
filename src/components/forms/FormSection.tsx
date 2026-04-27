@@ -17,7 +17,7 @@ export function FormSection({ title, description, children, className }: FormSec
   return (
     <section
       className={cn(
-        "rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8",
+        "rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8",
         className,
       )}
       aria-labelledby={headingId}

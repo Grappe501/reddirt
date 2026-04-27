@@ -21,13 +21,13 @@ export function RelatedLinksSection({ id, title, subtitle, links, className }: R
           <li key={l.href}>
             <Link
               href={l.href}
-              className="block rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-5 shadow-[var(--shadow-soft)] transition hover:-translate-y-0.5 hover:border-red-dirt/30"
+              className="block rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-5 shadow-[var(--shadow-soft)] transition hover:-translate-y-0.5 hover:border-kelly-navy/30"
             >
-              <span className="font-heading text-lg font-bold text-deep-soil">{l.label}</span>
+              <span className="font-heading text-lg font-bold text-kelly-text">{l.label}</span>
               {l.description ? (
-                <span className="mt-2 block font-body text-sm text-deep-soil/70">{l.description}</span>
+                <span className="mt-2 block font-body text-sm text-kelly-text/70">{l.description}</span>
               ) : null}
-              <span className="mt-3 inline-flex items-center gap-2 font-body text-sm font-semibold text-red-dirt">
+              <span className="mt-3 inline-flex items-center gap-2 font-body text-sm font-semibold text-kelly-navy">
                 Go
                 <span aria-hidden>→</span>
               </span>

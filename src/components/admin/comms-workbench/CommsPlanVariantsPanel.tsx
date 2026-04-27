@@ -17,10 +17,10 @@ import { formatCommsFieldLabel } from "@/lib/comms-workbench/ui-labels";
 
 const VARIANT_TYPES = Object.values(CommunicationVariantType);
 
-const label = "mb-0.5 block text-[10px] font-bold uppercase tracking-wider text-deep-soil/55";
-const input = "w-full rounded border border-deep-soil/15 bg-white px-2 py-1.5 text-sm text-deep-soil";
-const h3 = "font-heading text-xs font-bold text-deep-soil";
-const subCard = "rounded border border-deep-soil/10 bg-cream-canvas/40 p-3";
+const label = "mb-0.5 block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
+const input = "w-full rounded border border-kelly-text/15 bg-white px-2 py-1.5 text-sm text-kelly-text";
+const h3 = "font-heading text-xs font-bold text-kelly-text";
+const subCard = "rounded border border-kelly-text/10 bg-kelly-page/40 p-3";
 
 type Props = { planId: string; drafts: CommunicationDraftDetail[] };
 
@@ -57,10 +57,10 @@ export function CommsPlanVariantsPanel({ planId, drafts }: Props) {
   if (drafts.length === 0) {
     return (
       <div className="space-y-2">
-        <p className="rounded border border-dashed border-deep-soil/15 bg-cream-canvas/50 px-3 py-3 text-sm text-deep-soil/60">
+        <p className="rounded border border-dashed border-kelly-text/15 bg-kelly-page/50 px-3 py-3 text-sm text-kelly-text/60">
           Add at least one message draft before creating audience or channel variants.
         </p>
-        <p className="text-[10px] text-deep-soil/45">plan: {planId}</p>
+        <p className="text-[10px] text-kelly-text/45">plan: {planId}</p>
       </div>
     );
   }
@@ -73,14 +73,14 @@ export function CommsPlanVariantsPanel({ planId, drafts }: Props) {
         </p>
       ) : null}
 
-      <p className="text-[10px] leading-relaxed text-deep-soil/55">
-        <strong className="text-deep-soil/70">Draft vs variant:</strong> the draft is the authored message. Each variant is a
+      <p className="text-[10px] leading-relaxed text-kelly-text/55">
+        <strong className="text-kelly-text/70">Draft vs variant:</strong> the draft is the authored message. Each variant is a
         targeting/derivation row (audience, channel override, copy tweaks). Empty override fields mean “use the base draft” at
         read time—no merge engine in this packet.
       </p>
 
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <p className="text-[10px] text-deep-soil/50">
+        <p className="text-[10px] text-kelly-text/50">
           {variantCount} variant{variantCount === 1 ? "" : "s"} across {drafts.length} draft{drafts.length === 1 ? "" : "s"}.
         </p>
         <button
@@ -89,7 +89,7 @@ export function CommsPlanVariantsPanel({ planId, drafts }: Props) {
             setError(null);
             setShowAdd((v) => !v);
           }}
-          className="rounded border border-civic-slate/30 bg-civic-slate/10 px-2 py-1 text-xs font-semibold text-civic-slate"
+          className="rounded border border-kelly-slate/30 bg-kelly-slate/10 px-2 py-1 text-xs font-semibold text-kelly-slate"
         >
           {showAdd ? "Close add form" : "Add variant"}
         </button>
@@ -115,9 +115,9 @@ export function CommsPlanVariantsPanel({ planId, drafts }: Props) {
             <p className={h3}>
               Base draft: {draftLabel(d)} · {formatCommsFieldLabel(d.channel)}
             </p>
-            <p className="mt-0.5 font-mono text-[10px] text-deep-soil/45">{d.id}</p>
+            <p className="mt-0.5 font-mono text-[10px] text-kelly-text/45">{d.id}</p>
             {d.variants.length === 0 ? (
-              <p className="mt-2 text-xs text-deep-soil/55">{COMMS_EMPTY.noVariants}</p>
+              <p className="mt-2 text-xs text-kelly-text/55">{COMMS_EMPTY.noVariants}</p>
             ) : (
               <ul className="mt-2 space-y-3">
                 {d.variants.map((v) => (
@@ -173,7 +173,7 @@ function AddVariantForm({
         onDone(true);
       }}
     >
-      <p className="font-heading text-sm font-bold text-deep-soil">New variant</p>
+      <p className="font-heading text-sm font-bold text-kelly-text">New variant</p>
       <div>
         <label className={label} htmlFor="nv-draft">
           Base draft
@@ -254,7 +254,7 @@ function AddVariantForm({
       <button
         type="submit"
         disabled={disabled}
-        className="rounded border border-civic-slate/40 bg-civic-slate/15 px-3 py-1.5 text-sm font-semibold text-civic-slate"
+        className="rounded border border-kelly-slate/40 bg-kelly-slate/15 px-3 py-1.5 text-sm font-semibold text-kelly-slate"
       >
         Create variant
       </button>
@@ -278,7 +278,7 @@ function VariantEditCard({
   const [editing, setEditing] = useState(false);
 
   return (
-    <div className="rounded border border-deep-soil/12 bg-white p-2 text-sm">
+    <div className="rounded border border-kelly-text/12 bg-white p-2 text-sm">
       <CommsWorkbenchReviewBlock
         kind="variant"
         entityId={v.id}
@@ -293,15 +293,15 @@ function VariantEditCard({
       />
       <div className="mt-2 flex flex-wrap items-start justify-between gap-2">
         <div>
-          <p className="flex flex-wrap items-center gap-1.5 text-xs font-semibold text-deep-soil">
+          <p className="flex flex-wrap items-center gap-1.5 text-xs font-semibold text-kelly-text">
             <span>{formatCommsFieldLabel(v.variantType)}</span>
             <CommsStatusBadge segment="variant" status={v.status} />
           </p>
-          <p className="text-[10px] text-deep-soil/55">
+          <p className="text-[10px] text-kelly-text/55">
             Target: {v.targetSegmentLabel?.trim() || "—"}{" "}
             {v.targetSegmentId ? <span className="font-mono">· id: {v.targetSegmentId}</span> : null}
           </p>
-          <p className="text-[10px] text-deep-soil/55">
+          <p className="text-[10px] text-kelly-text/55">
             Effective channel: {effectiveChannel(draft, v)} {" · "}Overrides: {overrideSummary(v)}
           </p>
         </div>
@@ -312,7 +312,7 @@ function VariantEditCard({
               onError(null);
               setEditing((e) => !e);
             }}
-            className="rounded border border-deep-soil/15 bg-cream-canvas px-2 py-0.5 text-xs font-semibold text-deep-soil"
+            className="rounded border border-kelly-text/15 bg-kelly-page px-2 py-0.5 text-xs font-semibold text-kelly-text"
           >
             {editing ? "Close" : "Edit"}
           </button>
@@ -321,7 +321,7 @@ function VariantEditCard({
 
       {editing ? (
         <form
-          className="mt-2 space-y-2 border-t border-deep-soil/10 pt-2"
+          className="mt-2 space-y-2 border-t border-kelly-text/10 pt-2"
           onSubmit={async (e) => {
             e.preventDefault();
             onError(null);
@@ -354,7 +354,7 @@ function VariantEditCard({
                 </option>
               ))}
             </select>
-            <p className="mt-0.5 text-[10px] text-deep-soil/45">Status and review are managed in the review panel above.</p>
+            <p className="mt-0.5 text-[10px] text-kelly-text/45">Status and review are managed in the review panel above.</p>
           </div>
           <div className="grid gap-2 sm:grid-cols-2">
             <div>
@@ -403,7 +403,7 @@ function VariantEditCard({
             <button
               type="submit"
               disabled={disabled}
-              className="rounded border border-civic-slate/40 bg-civic-slate/15 px-3 py-1 text-sm font-semibold text-civic-slate"
+              className="rounded border border-kelly-slate/40 bg-kelly-slate/15 px-3 py-1 text-sm font-semibold text-kelly-slate"
             >
               Save
             </button>

@@ -81,11 +81,11 @@ export function DirectDemocracyCommitmentForm({ id }: { id?: string }) {
         </p>
         <p>
           Until then, read how the{" "}
-          <Link className="font-semibold text-red-dirt underline" href="/direct-democracy#initiative-pipeline">
+          <Link className="font-semibold text-kelly-navy underline" href="/direct-democracy#initiative-pipeline">
             initiative pipeline
           </Link>{" "}
           works and share the{" "}
-          <Link className="font-semibold text-red-dirt underline" href="/resources">
+          <Link className="font-semibold text-kelly-navy underline" href="/resources">
             civic education
           </Link>{" "}
           resources with a neighbor.
@@ -116,14 +116,14 @@ export function DirectDemocracyCommitmentForm({ id }: { id?: string }) {
           <FormLabel htmlFor="ddc-name">Full name</FormLabel>
           <Input id="ddc-name" {...form.register("name")} autoComplete="name" />
           {form.formState.errors.name ? (
-            <p className="text-sm text-red-dirt">{form.formState.errors.name.message}</p>
+            <p className="text-sm text-kelly-navy">{form.formState.errors.name.message}</p>
           ) : null}
         </FormField>
         <FormField>
           <FormLabel htmlFor="ddc-email">Email</FormLabel>
           <Input id="ddc-email" type="email" {...form.register("email")} autoComplete="email" />
           {form.formState.errors.email ? (
-            <p className="text-sm text-red-dirt">{form.formState.errors.email.message}</p>
+            <p className="text-sm text-kelly-navy">{form.formState.errors.email.message}</p>
           ) : null}
         </FormField>
         <FormField>
@@ -134,7 +134,7 @@ export function DirectDemocracyCommitmentForm({ id }: { id?: string }) {
           <FormLabel htmlFor="ddc-zip">ZIP</FormLabel>
           <Input id="ddc-zip" {...form.register("zip")} autoComplete="postal-code" />
           {form.formState.errors.zip ? (
-            <p className="text-sm text-red-dirt">{form.formState.errors.zip.message}</p>
+            <p className="text-sm text-kelly-navy">{form.formState.errors.zip.message}</p>
           ) : null}
         </FormField>
       </div>
@@ -142,18 +142,18 @@ export function DirectDemocracyCommitmentForm({ id }: { id?: string }) {
         <FormLabel htmlFor="ddc-county">County</FormLabel>
         <Input id="ddc-county" {...form.register("county")} autoComplete="address-level2" />
         {form.formState.errors.county ? (
-          <p className="text-sm text-red-dirt">{form.formState.errors.county.message}</p>
+          <p className="text-sm text-kelly-navy">{form.formState.errors.county.message}</p>
         ) : null}
       </FormField>
       <FormField className="flex flex-row items-start gap-3">
         <input
           id="ddc-ref"
           type="checkbox"
-          className="mt-1 h-4 w-4 rounded border-deep-soil/30 text-red-dirt"
+          className="mt-1 h-4 w-4 rounded border-kelly-text/30 text-kelly-navy"
           checked={form.watch("referendumOptIn")}
           onChange={(e) => form.setValue("referendumOptIn", e.target.checked)}
         />
-        <FormLabel htmlFor="ddc-ref" className="font-normal text-deep-soil/80">
+        <FormLabel htmlFor="ddc-ref" className="font-normal text-kelly-text/80">
           Notify me when a referendum petition needs signatures to protect voter power.
         </FormLabel>
       </FormField>
@@ -161,11 +161,11 @@ export function DirectDemocracyCommitmentForm({ id }: { id?: string }) {
         <input
           id="ddc-sms"
           type="checkbox"
-          className="mt-1 h-4 w-4 rounded border-deep-soil/30 text-red-dirt"
+          className="mt-1 h-4 w-4 rounded border-kelly-text/30 text-kelly-navy"
           checked={form.watch("smsOptIn")}
           onChange={(e) => form.setValue("smsOptIn", e.target.checked)}
         />
-        <FormLabel htmlFor="ddc-sms" className="font-normal text-deep-soil/80">
+        <FormLabel htmlFor="ddc-sms" className="font-normal text-kelly-text/80">
           Text me for urgent civic actions (carrier rates may apply).
         </FormLabel>
       </FormField>

@@ -8,9 +8,9 @@ import { createCommsPlanAudienceSegmentAction } from "@/app/admin/contact-engage
 import { commsPlanSegmentPath } from "@/lib/comms-workbench/comms-nav";
 import type { CommsPlanAudienceSegmentListItem } from "@/lib/contact-engagement/dto";
 
-const label = "mb-0.5 block text-[10px] font-bold uppercase tracking-wider text-deep-soil/55";
-const input = "w-full rounded border border-deep-soil/15 bg-white px-2 py-1.5 text-sm text-deep-soil";
-const empty = "rounded border border-dashed border-deep-soil/15 bg-cream-canvas/50 px-3 py-3 text-sm text-deep-soil/60";
+const label = "mb-0.5 block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
+const input = "w-full rounded border border-kelly-text/15 bg-white px-2 py-1.5 text-sm text-kelly-text";
+const empty = "rounded border border-dashed border-kelly-text/15 bg-kelly-page/50 px-3 py-3 text-sm text-kelly-text/60";
 
 const DEFAULT_DYNAMIC_RULE = `{
   "version": "1",
@@ -88,14 +88,14 @@ export function CommsPlanSegmentsPanel({ planId, segments }: Props) {
             setError(null);
             setOpen((o) => !o);
           }}
-          className="rounded border border-civic-slate/30 bg-civic-slate/10 px-2 py-1 text-xs font-semibold text-civic-slate"
+          className="rounded border border-kelly-slate/30 bg-kelly-slate/10 px-2 py-1 text-xs font-semibold text-kelly-slate"
         >
           {open ? "Close" : "Create segment"}
         </button>
       </div>
       {open ? (
-        <form onSubmit={onCreate} className="max-w-xl space-y-2 rounded border border-deep-soil/10 bg-cream-canvas/20 p-3">
-          <p className="text-[10px] text-deep-soil/55">
+        <form onSubmit={onCreate} className="max-w-xl space-y-2 rounded border border-kelly-text/10 bg-kelly-page/20 p-3">
+          <p className="text-[10px] text-kelly-text/55">
             Static = manual members. Dynamic = rules stored only (not evaluated yet).
           </p>
           <div>
@@ -134,7 +134,7 @@ export function CommsPlanSegmentsPanel({ planId, segments }: Props) {
           <button
             type="submit"
             disabled={isPending}
-            className="rounded border border-deep-soil/20 bg-deep-soil px-3 py-1.5 text-xs font-semibold text-cream-canvas disabled:opacity-50"
+            className="rounded border border-kelly-text/20 bg-kelly-text px-3 py-1.5 text-xs font-semibold text-kelly-page disabled:opacity-50"
           >
             {isPending ? "…" : "Create & open detail"}
           </button>
@@ -145,22 +145,22 @@ export function CommsPlanSegmentsPanel({ planId, segments }: Props) {
       ) : (
         <ul className="space-y-1.5">
           {segments.map((s) => (
-            <li key={s.id} className="flex flex-wrap items-baseline justify-between gap-2 rounded border border-deep-soil/8 bg-white px-2 py-1.5 text-sm">
+            <li key={s.id} className="flex flex-wrap items-baseline justify-between gap-2 rounded border border-kelly-text/8 bg-white px-2 py-1.5 text-sm">
               <div>
                 <Link
-                  className="font-semibold text-civic-slate hover:underline"
+                  className="font-semibold text-kelly-slate hover:underline"
                   href={commsPlanSegmentPath(planId, s.id)}
                   onClick={refresh}
                 >
                   {s.name}
                 </Link>
-                <span className="ml-2 text-[10px] text-deep-soil/50">
+                <span className="ml-2 text-[10px] text-kelly-text/50">
                   {s.status} · {s.isDynamic ? "Dynamic" : "Not dynamic"} · {s.segmentType}
                 </span>
                 {s.isDynamic ? (
                   <span className="ml-1 text-[10px] font-semibold text-amber-800">Membership unevaluated</span>
                 ) : (
-                  <span className="ml-1 text-[10px] text-deep-soil/45">
+                  <span className="ml-1 text-[10px] text-kelly-text/45">
                     Members: {s.memberCount != null ? s.memberCount : "—"} ({s.memberCountNote})
                   </span>
                 )}

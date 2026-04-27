@@ -45,22 +45,22 @@ function PlannedEventNavTile({ event, className }: { event: EventItem; className
       href={href}
       aria-label={label}
       className={cn(
-        "group flex aspect-square w-full flex-col justify-between rounded-lg border-2 border-deep-soil/15 bg-[var(--color-surface-elevated)] p-3.5 shadow-[var(--shadow-soft)] transition",
-        "hover:border-red-dirt/45 hover:shadow-md",
-        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-dirt",
+        "group flex aspect-square w-full flex-col justify-between rounded-lg border-2 border-kelly-text/15 bg-[var(--color-surface-elevated)] p-3.5 shadow-[var(--shadow-soft)] transition",
+        "hover:border-kelly-navy/45 hover:shadow-md",
+        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-navy",
         className,
       )}
     >
       <div className="min-h-0">
-        <p className="font-body text-[10px] font-bold uppercase tracking-wider text-civic-slate/90">Where</p>
-        <p className="mt-1.5 line-clamp-4 font-heading text-[0.95rem] font-bold leading-snug text-deep-soil sm:text-base group-hover:text-red-dirt">
+        <p className="font-body text-[10px] font-bold uppercase tracking-wider text-kelly-slate/90">Where</p>
+        <p className="mt-1.5 line-clamp-4 font-heading text-[0.95rem] font-bold leading-snug text-kelly-text sm:text-base group-hover:text-kelly-navy">
           {event.locationLabel}
         </p>
       </div>
-      <div className="shrink-0 border-t border-deep-soil/10 pt-2.5">
-        <p className="font-body text-[10px] font-bold uppercase tracking-wider text-civic-slate/90">When</p>
-        <p className="mt-1 font-body text-sm font-semibold text-deep-soil">{dateLine}</p>
-        <p className="mt-0.5 font-body text-xs tabular-nums text-deep-soil/80">{timeLine}</p>
+      <div className="shrink-0 border-t border-kelly-text/10 pt-2.5">
+        <p className="font-body text-[10px] font-bold uppercase tracking-wider text-kelly-slate/90">When</p>
+        <p className="mt-1 font-body text-sm font-semibold text-kelly-text">{dateLine}</p>
+        <p className="mt-0.5 font-body text-xs tabular-nums text-kelly-text/80">{timeLine}</p>
       </div>
     </Link>
   );
@@ -80,11 +80,11 @@ export function ListeningSessionsFloatingEventNav({ events }: { events: EventIte
     >
       <div
         className={cn(
-          "pointer-events-auto flex max-h-full flex-col gap-3 overflow-y-auto overflow-x-hidden rounded-xl border-2 border-deep-soil/15",
-          "bg-cream-canvas/95 p-3 shadow-lg backdrop-blur-md supports-[backdrop-filter]:bg-cream-canvas/88",
+          "pointer-events-auto flex max-h-full flex-col gap-3 overflow-y-auto overflow-x-hidden rounded-xl border-2 border-kelly-text/15",
+          "bg-kelly-page/95 p-3 shadow-lg backdrop-blur-md supports-[backdrop-filter]:bg-kelly-page/88",
         )}
       >
-        <p className="shrink-0 font-body text-[10px] font-bold uppercase tracking-wider text-civic-slate/90">
+        <p className="shrink-0 font-body text-[10px] font-bold uppercase tracking-wider text-kelly-slate/90">
           Events planned
         </p>
         <div className="flex min-h-0 flex-col gap-3">
@@ -110,20 +110,20 @@ export function PlannedListeningEventsSection({ events, id = "events-planned" }:
         />
 
         {events.length === 0 ? (
-          <p className="mt-8 max-w-2xl rounded-lg border border-deep-soil/10 bg-deep-soil/[0.03] px-4 py-3 font-body text-sm text-deep-soil/80">
+          <p className="mt-8 max-w-2xl rounded-lg border border-kelly-text/10 bg-kelly-text/[0.03] px-4 py-3 font-body text-sm text-kelly-text/80">
             Nothing in this curated list is upcoming yet—check the{" "}
-            <Link href="/events" className="font-semibold text-red-dirt underline">
+            <Link href="/events" className="font-semibold text-kelly-navy underline">
               full events hub
             </Link>{" "}
             or raise your hand to{" "}
-            <Link href="#your-town" className="font-semibold text-red-dirt underline">
+            <Link href="#your-town" className="font-semibold text-kelly-navy underline">
               host a session
             </Link>
             .
           </p>
         ) : (
           <>
-            <p className="mt-8 max-w-2xl font-body text-base leading-relaxed text-deep-soil/85 lg:mt-10">
+            <p className="mt-8 max-w-2xl font-body text-base leading-relaxed text-kelly-text/85 lg:mt-10">
               On desktop, use the <strong>floating squares</strong> at left (place, date, time) to open each full event
               page. On mobile, tiles are below.
             </p>
@@ -135,9 +135,9 @@ export function PlannedListeningEventsSection({ events, id = "events-planned" }:
           </>
         )}
 
-        <p className="mt-10 max-w-2xl font-body text-sm text-deep-soil/70">
+        <p className="mt-10 max-w-2xl font-body text-sm text-kelly-text/70">
           Prefer the map and filters?{" "}
-          <Link href="/events" className="font-semibold text-civic-slate underline">
+          <Link href="/events" className="font-semibold text-kelly-slate underline">
             Browse all movement events
           </Link>
           .

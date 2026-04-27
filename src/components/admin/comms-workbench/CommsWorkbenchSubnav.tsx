@@ -20,14 +20,14 @@ const links: { href: string; label: string; match: (path: string) => boolean }[]
 
 const base =
   "rounded border px-2 py-1 text-xs font-semibold transition sm:px-2.5 sm:py-1.5";
-const activeCls = "border-civic-slate/40 bg-civic-slate/10 text-civic-slate";
-const idleCls = "border-deep-soil/15 bg-white text-civic-slate hover:border-deep-soil/25";
+const activeCls = "border-kelly-slate/40 bg-kelly-slate/10 text-kelly-slate";
+const idleCls = "border-kelly-text/15 bg-white text-kelly-slate hover:border-kelly-text/25";
 
 export function CommsWorkbenchSubnav() {
   const pathname = usePathname() ?? "";
   return (
     <nav
-      className="flex flex-wrap items-center gap-1.5 border-b border-deep-soil/10 bg-cream-canvas/90 pb-2"
+      className="flex flex-wrap items-center gap-1.5 border-b border-kelly-text/10 bg-kelly-page/90 pb-2"
       aria-label="Comms workbench"
     >
       {links.map((l) => (

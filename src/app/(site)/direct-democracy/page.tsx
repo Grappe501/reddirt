@@ -86,7 +86,7 @@ export default async function DirectDemocracyPage() {
                 className="max-w-xl"
               />
             </div>
-            <div className="space-y-6 font-body text-lg leading-relaxed text-deep-soil/80 lg:col-span-7">
+            <div className="space-y-6 font-body text-lg leading-relaxed text-kelly-text/80 lg:col-span-7">
               <p>
                 Arkansas families shouldn’t need a law degree to understand what changed overnight. And voters
                 shouldn’t be treated like spectators while power consolidates in back rooms.
@@ -101,7 +101,7 @@ export default async function DirectDemocracyPage() {
                 instead of organizing neighbors, it is the same class of problem as dark money: power from whoever can
                 write the checks, not from consent at the door.
               </p>
-              <p className="rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-6 font-heading text-xl font-bold text-deep-soil shadow-[var(--shadow-soft)]">
+              <p className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 font-heading text-xl font-bold text-kelly-text shadow-[var(--shadow-soft)]">
                 If the people can act, power has to listen.
               </p>
             </div>
@@ -118,9 +118,9 @@ export default async function DirectDemocracyPage() {
             subtitle="We’re building a large-scale network of Arkansans who pledge to sign referendum petitions when the legislature crosses clear lines on voter power—so issues can reach the ballot."
           />
           <div className="mt-10 max-w-3xl space-y-4">
-            <div className="rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8">
-              <h3 className="font-heading text-2xl font-bold text-deep-soil">Raise your hand—responsibly</h3>
-              <p className="mt-3 font-body text-base leading-relaxed text-deep-soil/75">
+            <div className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8">
+              <h3 className="font-heading text-2xl font-bold text-kelly-text">Raise your hand—responsibly</h3>
+              <p className="mt-3 font-body text-base leading-relaxed text-kelly-text/75">
                 This isn’t agreement on every issue. It’s a shared promise to protect the public’s right to decide
                 when power tries to slip away.
               </p>
@@ -128,12 +128,12 @@ export default async function DirectDemocracyPage() {
                 <DirectDemocracyCommitmentForm />
               </div>
             </div>
-            <p className="font-body text-sm leading-relaxed text-deep-soil/60">
+            <p className="font-body text-sm leading-relaxed text-kelly-text/60">
               Legal thresholds, petition language, and compliance will be finalized with counsel before any
               signature collection begins.
             </p>
           </div>
-          <p className="mt-8 max-w-3xl font-body text-sm leading-relaxed text-deep-soil/60">
+          <p className="mt-8 max-w-3xl font-body text-sm leading-relaxed text-kelly-text/60">
             Target scale for organizing conversations: roughly <strong>65,000</strong> Arkansans committed to
             defend ballot access—large enough to signal seriousness and rebuild public leverage. Exact targets
             follow legal guidance.
@@ -164,9 +164,9 @@ export default async function DirectDemocracyPage() {
             subtitle="These are early coalition fronts. Each will require research, legal design, and community ownership."
           />
           <ResponsiveGrid cols="3" className="mt-12">
-            <article className="rounded-card border border-deep-soil/10 bg-cream-canvas p-7 shadow-[var(--shadow-soft)] md:p-8">
-              <h3 className="font-heading text-xl font-bold text-deep-soil">End dark money, confront Citizens United</h3>
-              <p className="mt-3 font-body text-base leading-relaxed text-deep-soil/75">
+            <article className="rounded-card border border-kelly-text/10 bg-kelly-page p-7 shadow-[var(--shadow-soft)] md:p-8">
+              <h3 className="font-heading text-xl font-bold text-kelly-text">End dark money, confront Citizens United</h3>
+              <p className="mt-3 font-body text-base leading-relaxed text-kelly-text/75">
                 This campaign is committed to doing everything Kelly can, within the law, to get secret money out
                 of our politics. <em>Citizens United</em> is a federal landmark—reversing it is bigger than one
                 state office—Arkansas can still lead on disclosure, enforcement of state rules, and a Secretary of
@@ -177,9 +177,9 @@ export default async function DirectDemocracyPage() {
                 work.
               </p>
             </article>
-            <article className="rounded-card border border-deep-soil/10 bg-cream-canvas p-7 shadow-[var(--shadow-soft)] md:p-8">
-              <h3 className="font-heading text-xl font-bold text-deep-soil">Youth civic participation</h3>
-              <p className="mt-3 font-body text-base leading-relaxed text-deep-soil/75">
+            <article className="rounded-card border border-kelly-text/10 bg-kelly-page p-7 shadow-[var(--shadow-soft)] md:p-8">
+              <h3 className="font-heading text-xl font-bold text-kelly-text">Youth civic participation</h3>
+              <p className="mt-3 font-body text-base leading-relaxed text-kelly-text/75">
                 Kelly will work with the Arkansas Education Association and the public school system to strengthen
                 nonpartisan civic education and to supply practical resources students and teachers can trust. The
                 State Capitol and this office can be part of the invitation—age-appropriate briefings, registration
@@ -188,9 +188,9 @@ export default async function DirectDemocracyPage() {
                 young people learn democracy by practicing it where decisions hit home.
               </p>
             </article>
-            <article className="rounded-card border border-deep-soil/10 bg-cream-canvas p-7 shadow-[var(--shadow-soft)] md:p-8">
-              <h3 className="font-heading text-xl font-bold text-deep-soil">Civic tools for workers and communities</h3>
-              <p className="mt-3 font-body text-base leading-relaxed text-deep-soil/75">
+            <article className="rounded-card border border-kelly-text/10 bg-kelly-page p-7 shadow-[var(--shadow-soft)] md:p-8">
+              <h3 className="font-heading text-xl font-bold text-kelly-text">Civic tools for workers and communities</h3>
+              <p className="mt-3 font-body text-base leading-relaxed text-kelly-text/75">
                 The same initiative and referendum process that can strengthen finance law can also carry
                 collective bargaining, worker power, and other issues Arkansans choose to run—if the law allows the
                 measure on the ballot. This campaign supports citizens using those tools to write state policy, with
@@ -214,7 +214,7 @@ export default async function DirectDemocracyPage() {
                 align="left"
                 className="max-w-2xl"
               />
-              <div className="mt-6 space-y-4 font-body text-base leading-relaxed text-deep-soil/78 lg:text-lg">
+              <div className="mt-6 space-y-4 font-body text-base leading-relaxed text-kelly-text/78 lg:text-lg">
                 <p>
                   Partnership with the Arkansas Education Association, district leaders, and classroom educators comes
                   first. Kelly wants the Capitol and the Secretary of State’s office to be open doors for youth
@@ -232,32 +232,32 @@ export default async function DirectDemocracyPage() {
                 </p>
               </div>
               <div className="mt-8 grid gap-4 sm:grid-cols-3">
-                <article className="rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-5 shadow-[var(--shadow-soft)]">
-                  <h3 className="font-heading text-base font-bold text-deep-soil">Optional mock elections</h3>
-                  <p className="mt-2 font-body text-sm leading-relaxed text-deep-soil/70">
+                <article className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-5 shadow-[var(--shadow-soft)]">
+                  <h3 className="font-heading text-base font-bold text-kelly-text">Optional mock elections</h3>
+                  <p className="mt-2 font-body text-sm leading-relaxed text-kelly-text/70">
                     Schools that want to participate should have nonpartisan ballots, process guides, and
                     classroom-ready materials without a new mandate.
                   </p>
                 </article>
-                <article className="rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-5 shadow-[var(--shadow-soft)]">
-                  <h3 className="font-heading text-base font-bold text-deep-soil">First-time voter tools</h3>
-                  <p className="mt-2 font-body text-sm leading-relaxed text-deep-soil/70">
+                <article className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-5 shadow-[var(--shadow-soft)]">
+                  <h3 className="font-heading text-base font-bold text-kelly-text">First-time voter tools</h3>
+                  <p className="mt-2 font-body text-sm leading-relaxed text-kelly-text/70">
                     Young Arkansans should be able to find clear, practical resources before their first ballot,
                     not after confusion sets in.
                   </p>
                 </article>
-                <article className="rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-5 shadow-[var(--shadow-soft)]">
-                  <h3 className="font-heading text-base font-bold text-deep-soil">Youth service pathways</h3>
-                  <p className="mt-2 font-body text-sm leading-relaxed text-deep-soil/70">
+                <article className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-5 shadow-[var(--shadow-soft)]">
+                  <h3 className="font-heading text-base font-bold text-kelly-text">Youth service pathways</h3>
+                  <p className="mt-2 font-body text-sm leading-relaxed text-kelly-text/70">
                     Civic education can connect students with age-appropriate election service, mentorship, and
                     local learning opportunities.
                   </p>
                 </article>
               </div>
             </div>
-            <aside className="rounded-card border border-deep-soil/10 bg-deep-soil/[0.03] p-8 lg:col-span-5">
-              <h3 className="font-heading text-lg font-bold text-deep-soil">Responsible framing</h3>
-              <ul className="mt-4 list-disc space-y-3 pl-5 font-body text-sm leading-relaxed text-deep-soil/70">
+            <aside className="rounded-card border border-kelly-text/10 bg-kelly-text/[0.03] p-8 lg:col-span-5">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Responsible framing</h3>
+              <ul className="mt-4 list-disc space-y-3 pl-5 font-body text-sm leading-relaxed text-kelly-text/70">
                 <li>No legal specifics claimed on this page until counsel signs off.</li>
                 <li>Educator partnership comes before any statewide program.</li>
                 <li>Youth leadership should be mentorship-heavy and safety-conscious.</li>
@@ -274,7 +274,7 @@ export default async function DirectDemocracyPage() {
         variant="gold-band"
       />
 
-      <FullBleedSection variant="denim" aria-labelledby="civic-ed-heading">
+      <FullBleedSection variant="muted-band" aria-labelledby="civic-ed-heading">
         <ContentContainer>
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-14">
             <div className="lg:col-span-7">
@@ -284,7 +284,7 @@ export default async function DirectDemocracyPage() {
                 title="Participation works when people understand the process"
                 subtitle="We’re investing in plain-language explainers, community briefings, and resources that turn confusing jargon into shared knowledge—and working with Arkansas educators to reach students, including through the State Capitol as a public venue for learning about democracy in action."
                 align="left"
-                className="max-w-2xl text-cream-canvas [&_h2]:text-cream-canvas [&_p]:text-cream-canvas/85 [&_p.mb-3]:text-sunlight-gold"
+                className="max-w-2xl text-kelly-page [&_h2]:text-kelly-page [&_p]:text-kelly-page/85 [&_p.mb-3]:text-kelly-gold"
               />
             </div>
             <div className="flex flex-col gap-4 lg:col-span-5 lg:items-start">
@@ -294,7 +294,7 @@ export default async function DirectDemocracyPage() {
               <Button
                 href="/events"
                 variant="outline"
-                className="border-cream-canvas/45 text-cream-canvas hover:bg-cream-canvas/10"
+                className="border-kelly-page/45 text-kelly-page hover:bg-kelly-page/10"
               >
                 Join a briefing
               </Button>
@@ -312,7 +312,7 @@ export default async function DirectDemocracyPage() {
         <Button href="#commitment-network" variant="secondary">
           Commitment network
         </Button>
-        <Button href="/get-involved" variant="outline" className="border-cream-canvas/50 text-cream-canvas hover:bg-cream-canvas/10">
+        <Button href="/get-involved" variant="outline" className="border-kelly-page/50 text-kelly-page hover:bg-kelly-page/10">
           Get involved
         </Button>
       </CTASection>

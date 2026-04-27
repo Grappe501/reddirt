@@ -24,7 +24,7 @@ import { formatCommsFieldLabel } from "@/lib/comms-workbench/ui-labels";
 
 const btn =
   "rounded border px-2 py-1 text-xs font-semibold transition disabled:opacity-50";
-const noteInput = "mt-1 w-full rounded border border-deep-soil/15 bg-white px-2 py-1.5 text-xs text-deep-soil";
+const noteInput = "mt-1 w-full rounded border border-kelly-text/15 bg-white px-2 py-1.5 text-xs text-kelly-text";
 
 function variantInReview(s: CommunicationVariantStatus): boolean {
   return s === "READY_FOR_REVIEW" || s === "READY";
@@ -82,10 +82,10 @@ export function CommsWorkbenchReviewBlock(props: Props) {
   const decisionDisplay = reviewDecision != null ? getReviewDecisionDisplay(reviewDecision) : null;
 
   return (
-    <div className="mt-2 space-y-2 rounded border border-deep-soil/10 bg-amber-50/40 p-2 text-sm">
+    <div className="mt-2 space-y-2 rounded border border-kelly-text/10 bg-amber-50/40 p-2 text-sm">
       {error ? <p className="text-xs text-red-800">{error}</p> : null}
-      <div className="flex flex-wrap items-center gap-1.5 text-xs text-deep-soil">
-        <span className="font-bold text-deep-soil/70">Review</span>
+      <div className="flex flex-wrap items-center gap-1.5 text-xs text-kelly-text">
+        <span className="font-bold text-kelly-text/70">Review</span>
         {kind === "draft" ? (
           <CommsStatusBadge segment="draft" status={status} />
         ) : (
@@ -103,25 +103,25 @@ export function CommsWorkbenchReviewBlock(props: Props) {
         ) : null}
       </div>
       {props.reviewRequestedAt ? (
-        <p className="text-[10px] text-deep-soil/65">
+        <p className="text-[10px] text-kelly-text/65">
           Requested {new Date(props.reviewRequestedAt).toLocaleString()} · {name(props.reviewRequestedBy)}
         </p>
       ) : null}
       {props.reviewedAt ? (
-        <p className="text-[10px] text-deep-soil/65">
+        <p className="text-[10px] text-kelly-text/65">
           Last review {new Date(props.reviewedAt).toLocaleString()} · {name(props.reviewedBy)}
         </p>
       ) : null}
       {reviewNotes ? (
-        <p className="whitespace-pre-wrap font-body text-xs text-deep-soil/80">
+        <p className="whitespace-pre-wrap font-body text-xs text-kelly-text/80">
           <span className="font-semibold">Notes: </span>
           {reviewNotes}
         </p>
       ) : null}
 
       {kind === "draft" && (status === "DRAFT" || status === "REJECTED") ? (
-        <div className="border-t border-deep-soil/10 pt-2">
-          <p className="text-[10px] font-bold uppercase text-deep-soil/50">Request review</p>
+        <div className="border-t border-kelly-text/10 pt-2">
+          <p className="text-[10px] font-bold uppercase text-kelly-text/50">Request review</p>
           <textarea
             className={noteInput}
             rows={2}
@@ -133,7 +133,7 @@ export function CommsWorkbenchReviewBlock(props: Props) {
           <button
             type="button"
             disabled={disabled}
-            className={`${btn} border-civic-slate/30 bg-civic-slate/10 text-civic-slate mt-1`}
+            className={`${btn} border-kelly-slate/30 bg-kelly-slate/10 text-kelly-slate mt-1`}
             onClick={async () => {
               setError(null);
               const r = await requestCommunicationDraftReviewAction({
@@ -154,10 +154,10 @@ export function CommsWorkbenchReviewBlock(props: Props) {
       ) : null}
 
       {kind === "draft" && status === "READY_FOR_REVIEW" ? (
-        <div className="space-y-2 border-t border-deep-soil/10 pt-2">
-          <p className="text-[10px] font-bold uppercase text-deep-soil/50">Reviewer actions</p>
+        <div className="space-y-2 border-t border-kelly-text/10 pt-2">
+          <p className="text-[10px] font-bold uppercase text-kelly-text/50">Reviewer actions</p>
           <div>
-            <span className="text-[10px] text-deep-soil/50">Approve (optional note)</span>
+            <span className="text-[10px] text-kelly-text/50">Approve (optional note)</span>
             <textarea className={noteInput} rows={1} value={apprNote} onChange={(e) => setApprNote(e.target.value)} disabled={disabled} />
             <button
               type="button"
@@ -178,7 +178,7 @@ export function CommsWorkbenchReviewBlock(props: Props) {
             </button>
           </div>
           <div>
-            <span className="text-[10px] text-deep-soil/50">Reject (note required)</span>
+            <span className="text-[10px] text-kelly-text/50">Reject (note required)</span>
             <textarea className={noteInput} rows={2} value={rejNote} onChange={(e) => setRejNote(e.target.value)} disabled={disabled} required />
             <button
               type="button"
@@ -200,7 +200,7 @@ export function CommsWorkbenchReviewBlock(props: Props) {
             </button>
           </div>
           <div>
-            <span className="text-[10px] text-deep-soil/50">Request changes (note required)</span>
+            <span className="text-[10px] text-kelly-text/50">Request changes (note required)</span>
             <textarea className={noteInput} rows={2} value={chgNote} onChange={(e) => setChgNote(e.target.value)} disabled={disabled} required />
             <button
               type="button"
@@ -225,8 +225,8 @@ export function CommsWorkbenchReviewBlock(props: Props) {
       ) : null}
 
       {kind === "variant" && (status === "DRAFT" || status === "REJECTED") ? (
-        <div className="border-t border-deep-soil/10 pt-2">
-          <p className="text-[10px] font-bold uppercase text-deep-soil/50">Request review</p>
+        <div className="border-t border-kelly-text/10 pt-2">
+          <p className="text-[10px] font-bold uppercase text-kelly-text/50">Request review</p>
           <textarea
             className={noteInput}
             rows={2}
@@ -238,7 +238,7 @@ export function CommsWorkbenchReviewBlock(props: Props) {
           <button
             type="button"
             disabled={disabled}
-            className={`${btn} border-civic-slate/30 bg-civic-slate/10 text-civic-slate mt-1`}
+            className={`${btn} border-kelly-slate/30 bg-kelly-slate/10 text-kelly-slate mt-1`}
             onClick={async () => {
               setError(null);
               const r = await requestCommunicationVariantReviewAction({
@@ -259,14 +259,14 @@ export function CommsWorkbenchReviewBlock(props: Props) {
       ) : null}
 
       {(kind === "draft" && status === "ARCHIVED") || (kind === "variant" && status === "ARCHIVED") ? (
-        <p className="border-t border-deep-soil/10 pt-2 text-[10px] text-deep-soil/55">Archived in this workbench. Open a new draft or variant if you need a fresh review cycle.</p>
+        <p className="border-t border-kelly-text/10 pt-2 text-[10px] text-kelly-text/55">Archived in this workbench. Open a new draft or variant if you need a fresh review cycle.</p>
       ) : null}
 
       {kind === "variant" && variantInReview(status) ? (
-        <div className="space-y-2 border-t border-deep-soil/10 pt-2">
-          <p className="text-[10px] font-bold uppercase text-deep-soil/50">Reviewer actions</p>
+        <div className="space-y-2 border-t border-kelly-text/10 pt-2">
+          <p className="text-[10px] font-bold uppercase text-kelly-text/50">Reviewer actions</p>
           <div>
-            <span className="text-[10px] text-deep-soil/50">Approve (optional note)</span>
+            <span className="text-[10px] text-kelly-text/50">Approve (optional note)</span>
             <textarea className={noteInput} rows={1} value={apprNote} onChange={(e) => setApprNote(e.target.value)} disabled={disabled} />
             <button
               type="button"
@@ -290,7 +290,7 @@ export function CommsWorkbenchReviewBlock(props: Props) {
             </button>
           </div>
           <div>
-            <span className="text-[10px] text-deep-soil/50">Reject (note required)</span>
+            <span className="text-[10px] text-kelly-text/50">Reject (note required)</span>
             <textarea className={noteInput} rows={2} value={rejNote} onChange={(e) => setRejNote(e.target.value)} disabled={disabled} />
             <button
               type="button"
@@ -312,7 +312,7 @@ export function CommsWorkbenchReviewBlock(props: Props) {
             </button>
           </div>
           <div>
-            <span className="text-[10px] text-deep-soil/50">Request changes (note required)</span>
+            <span className="text-[10px] text-kelly-text/50">Request changes (note required)</span>
             <textarea className={noteInput} rows={2} value={chgNote} onChange={(e) => setChgNote(e.target.value)} disabled={disabled} />
             <button
               type="button"

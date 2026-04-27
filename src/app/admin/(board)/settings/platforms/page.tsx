@@ -26,31 +26,31 @@ const rows: { env: string; platforms: string; note: string }[] = [
 export default function AdminPlatformSettingsPage() {
   return (
     <div className="mx-auto max-w-3xl">
-      <h1 className="font-heading text-3xl font-bold text-deep-soil">Platform settings</h1>
-      <p className="mt-3 font-body text-sm text-deep-soil/75">
+      <h1 className="font-heading text-3xl font-bold text-kelly-text">Platform settings</h1>
+      <p className="mt-3 font-body text-sm text-kelly-text/75">
         Non-secret configuration lives in the database (`PlatformConnection` metadata) when needed. Access tokens and API
         keys must stay in deployment environment variables — never in the admin UI.
       </p>
-      <p className="mt-4 font-body text-sm text-deep-soil/75">
-        Copy variable names from <code className="rounded bg-deep-soil/10 px-1.5 text-xs">.env.example</code>. Outbound
+      <p className="mt-4 font-body text-sm text-kelly-text/75">
+        Copy variable names from <code className="rounded bg-kelly-text/10 px-1.5 text-xs">.env.example</code>. Outbound
         posting is intentionally not implemented in this script.
       </p>
 
-      <div className="mt-10 overflow-x-auto rounded-card border border-deep-soil/10 bg-white shadow-[var(--shadow-soft)]">
-        <table className="min-w-full divide-y divide-deep-soil/10 font-body text-sm">
-          <thead className="bg-deep-soil/[0.04] text-left text-xs font-bold uppercase tracking-wider text-deep-soil/55">
+      <div className="mt-10 overflow-x-auto rounded-card border border-kelly-text/10 bg-white shadow-[var(--shadow-soft)]">
+        <table className="min-w-full divide-y divide-kelly-text/10 font-body text-sm">
+          <thead className="bg-kelly-text/[0.04] text-left text-xs font-bold uppercase tracking-wider text-kelly-text/55">
             <tr>
               <th className="px-4 py-3">Platform</th>
               <th className="px-4 py-3">Environment</th>
               <th className="px-4 py-3">Notes</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-deep-soil/10 text-deep-soil/85">
+          <tbody className="divide-y divide-kelly-text/10 text-kelly-text/85">
             {rows.map((r) => (
               <tr key={r.env}>
                 <td className="px-4 py-3 font-semibold">{r.platforms}</td>
-                <td className="px-4 py-3 font-mono text-xs text-deep-soil/75">{r.env}</td>
-                <td className="px-4 py-3 text-xs text-deep-soil/70">{r.note}</td>
+                <td className="px-4 py-3 font-mono text-xs text-kelly-text/75">{r.env}</td>
+                <td className="px-4 py-3 text-xs text-kelly-text/70">{r.note}</td>
               </tr>
             ))}
           </tbody>
@@ -58,12 +58,12 @@ export default function AdminPlatformSettingsPage() {
       </div>
 
       <div className="mt-8 flex flex-wrap gap-3">
-        <Link href="/admin/platforms" className="rounded-btn bg-red-dirt px-4 py-2 text-sm font-bold text-cream-canvas">
+        <Link href="/admin/platforms" className="rounded-btn bg-kelly-navy px-4 py-2 text-sm font-bold text-kelly-page">
           Back to platforms
         </Link>
         <Link
           href="/admin/settings"
-          className="rounded-btn border border-deep-soil/20 px-4 py-2 text-sm font-semibold text-deep-soil"
+          className="rounded-btn border border-kelly-text/20 px-4 py-2 text-sm font-semibold text-kelly-text"
         >
           Site settings
         </Link>

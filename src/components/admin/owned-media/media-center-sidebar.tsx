@@ -27,7 +27,7 @@ function hrefSmartView(
 }
 
 const navClass =
-  "block rounded-lg px-2 py-1.5 text-left text-sm text-deep-soil/90 hover:bg-deep-soil/5 aria-[current=true]:bg-red-dirt/10 aria-[current=true]:font-semibold";
+  "block rounded-lg px-2 py-1.5 text-left text-sm text-kelly-text/90 hover:bg-kelly-text/5 aria-[current=true]:bg-kelly-navy/10 aria-[current=true]:font-semibold";
 
 type Props = {
   basePath: string;
@@ -45,10 +45,10 @@ type Props = {
 export function MediaCenterSidebar({ basePath, preserved, activeHint, collections, batches }: Props) {
   const p = { ...preserved };
   return (
-    <aside className="w-full shrink-0 border-r border-deep-soil/10 bg-cream-canvas/80 pb-4 pr-2 pt-1 md:w-56">
-      <h2 className="mb-2 px-2 font-body text-[10px] font-bold uppercase tracking-wider text-deep-soil/45">Library</h2>
+    <aside className="w-full shrink-0 border-r border-kelly-text/10 bg-kelly-page/80 pb-4 pr-2 pt-1 md:w-56">
+      <h2 className="mb-2 px-2 font-body text-[10px] font-bold uppercase tracking-wider text-kelly-text/45">Library</h2>
       <nav className="space-y-0.5" aria-label="Media center views">
-        <p className="px-2 pb-1 font-body text-[9px] font-bold uppercase tracking-wide text-deep-soil/40">Smart views</p>
+        <p className="px-2 pb-1 font-body text-[9px] font-bold uppercase tracking-wide text-kelly-text/40">Smart views</p>
         <Link
           href={hrefSmartView(basePath, p, "viewUnreviewed")}
           className={navClass}
@@ -133,7 +133,7 @@ export function MediaCenterSidebar({ basePath, preserved, activeHint, collection
         >
           Unrated pick queue
         </Link>
-        <p className="mt-3 px-2 pb-1 font-body text-[9px] font-bold uppercase tracking-wide text-deep-soil/40">Shortcuts</p>
+        <p className="mt-3 px-2 pb-1 font-body text-[9px] font-bold uppercase tracking-wide text-kelly-text/40">Shortcuts</p>
         <Link
           href={href(basePath, { ...p, approvedForSocial: "1" })}
           className={navClass}
@@ -170,7 +170,7 @@ export function MediaCenterSidebar({ basePath, preserved, activeHint, collection
 
       {collections.length > 0 ? (
         <>
-          <h2 className="mb-2 mt-5 px-2 font-body text-[10px] font-bold uppercase tracking-wider text-deep-soil/45">
+          <h2 className="mb-2 mt-5 px-2 font-body text-[10px] font-bold uppercase tracking-wider text-kelly-text/45">
             Collections
           </h2>
           <nav className="space-y-0.5">
@@ -185,12 +185,12 @@ export function MediaCenterSidebar({ basePath, preserved, activeHint, collection
         </>
       ) : null}
 
-      <h2 className="mb-2 mt-5 px-2 font-body text-[10px] font-bold uppercase tracking-wider text-deep-soil/45">
+      <h2 className="mb-2 mt-5 px-2 font-body text-[10px] font-bold uppercase tracking-wider text-kelly-text/45">
         Import batches
       </h2>
       <nav className="max-h-48 space-y-0.5 overflow-y-auto">
         {batches.length === 0 ? (
-          <p className="px-2 text-xs text-deep-soil/50">No batches yet</p>
+          <p className="px-2 text-xs text-kelly-text/50">No batches yet</p>
         ) : (
           batches.map((b) => (
             <Link

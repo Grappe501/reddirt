@@ -26,12 +26,12 @@ export default async function ComplianceDocumentsPage({ searchParams }: Props) {
   });
 
   return (
-    <div className="max-w-4xl text-deep-soil">
-      <p className="font-body text-xs font-bold uppercase tracking-[0.2em] text-red-dirt/80">
+    <div className="max-w-4xl text-kelly-text">
+      <p className="font-body text-xs font-bold uppercase tracking-[0.2em] text-kelly-navy/80">
         Governance · COMP-2
       </p>
       <h1 className="mt-2 font-heading text-3xl font-bold">Compliance documents</h1>
-      <p className="mt-2 max-w-2xl font-body text-sm text-deep-soil/70">
+      <p className="mt-2 max-w-2xl font-body text-sm text-kelly-text/70">
         Uploads are stored on the campaign file store and listed here for staff.{" "}
         <strong>Uploaded ≠ trusted for AI</strong> until a reviewer marks &quot;Approved for AI reference&quot; (RAG / index
         wiring is a later packet; see <code className="text-xs">docs/compliance-document-ingest-foundation.md</code> in the
@@ -61,23 +61,23 @@ export default async function ComplianceDocumentsPage({ searchParams }: Props) {
 
       <form
         action={uploadComplianceDocumentAction}
-        className="mt-8 space-y-4 rounded-card border border-deep-soil/10 bg-cream-canvas p-6 shadow-[var(--shadow-soft)]"
+        className="mt-8 space-y-4 rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]"
         encType="multipart/form-data"
       >
         <h2 className="font-heading text-lg font-bold">Upload a document</h2>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">File</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">File</span>
           <input name="file" type="file" required className="mt-1 w-full text-sm" />
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Title</span>
-          <input name="title" type="text" className="mt-1 w-full rounded border border-deep-soil/15 px-2 py-1.5 text-sm" />
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Title</span>
+          <input name="title" type="text" className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm" />
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Document type</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Document type</span>
           <select
             name="documentType"
-            className="mt-1 w-full rounded border border-deep-soil/15 px-2 py-1.5 text-sm"
+            className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm"
             defaultValue="OTHER"
           >
             {ORDER.map((k) => (
@@ -89,22 +89,22 @@ export default async function ComplianceDocumentsPage({ searchParams }: Props) {
         </label>
         <div className="grid gap-4 sm:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Reporting period (text)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Reporting period (text)</span>
             <input
               name="reportingPeriod"
               type="text"
               placeholder="e.g. Q1 2026"
-              className="mt-1 w-full rounded border border-deep-soil/15 px-2 py-1.5 text-sm"
+              className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm"
             />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Period / document date</span>
-            <input name="periodDate" type="date" className="mt-1 w-full rounded border border-deep-soil/15 px-2 py-1.5 text-sm" />
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Period / document date</span>
+            <input name="periodDate" type="date" className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm" />
           </label>
         </div>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Notes</span>
-          <textarea name="notes" rows={3} className="mt-1 w-full rounded border border-deep-soil/15 px-2 py-1.5 text-sm" />
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Notes</span>
+          <textarea name="notes" rows={3} className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm" />
         </label>
         <label className="flex items-start gap-2 text-sm">
           <input type="checkbox" name="approvedForAi" className="mt-0.5" />
@@ -112,7 +112,7 @@ export default async function ComplianceDocumentsPage({ searchParams }: Props) {
         </label>
         <button
           type="submit"
-          className="rounded-md bg-red-dirt px-4 py-2 font-body text-sm font-semibold text-cream-canvas hover:opacity-95"
+          className="rounded-md bg-kelly-navy px-4 py-2 font-body text-sm font-semibold text-kelly-page hover:opacity-95"
         >
           Upload
         </button>
@@ -121,14 +121,14 @@ export default async function ComplianceDocumentsPage({ searchParams }: Props) {
       <div className="mt-10">
         <h2 className="font-heading text-lg font-bold">Recent uploads</h2>
         {rows.length === 0 ? (
-          <p className="mt-2 text-sm text-deep-soil/60">No documents yet.</p>
+          <p className="mt-2 text-sm text-kelly-text/60">No documents yet.</p>
         ) : (
-          <ul className="mt-3 divide-y divide-deep-soil/10 rounded border border-deep-soil/10 bg-cream-canvas">
+          <ul className="mt-3 divide-y divide-kelly-text/10 rounded border border-kelly-text/10 bg-kelly-page">
             {rows.map((r) => (
               <li key={r.id} className="flex flex-col gap-2 p-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p className="font-medium">{r.title}</p>
-                  <p className="text-xs text-deep-soil/60">
+                  <p className="text-xs text-kelly-text/60">
                     {complianceDocumentTypeLabel[r.documentType]} · {r.fileName} ·{" "}
                     {r.approvedForAiReference ? (
                       <span className="text-emerald-800">AI ref OK</span>
@@ -137,7 +137,7 @@ export default async function ComplianceDocumentsPage({ searchParams }: Props) {
                     )}
                   </p>
                   {r.reportingPeriod || r.periodDate ? (
-                    <p className="text-xs text-deep-soil/50">
+                    <p className="text-xs text-kelly-text/50">
                       {r.reportingPeriod}
                       {r.reportingPeriod && r.periodDate ? " · " : ""}
                       {r.periodDate ? r.periodDate.toISOString().slice(0, 10) : ""}
@@ -147,7 +147,7 @@ export default async function ComplianceDocumentsPage({ searchParams }: Props) {
                 <div className="flex flex-wrap items-center gap-2">
                   <a
                     href={`/api/compliance-documents/${encodeURIComponent(r.id)}/file`}
-                    className="text-sm font-medium text-red-dirt underline"
+                    className="text-sm font-medium text-kelly-navy underline"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -156,7 +156,7 @@ export default async function ComplianceDocumentsPage({ searchParams }: Props) {
                   <form action={setComplianceDocumentAiApprovalAction} className="flex items-center gap-1 text-xs">
                     <input type="hidden" name="id" value={r.id} />
                     <input type="hidden" name="approvedForAi" value={r.approvedForAiReference ? "" : "on"} />
-                    <button type="submit" className="rounded border border-deep-soil/20 px-2 py-1 hover:bg-deep-soil/5">
+                    <button type="submit" className="rounded border border-kelly-text/20 px-2 py-1 hover:bg-kelly-text/5">
                       {r.approvedForAiReference ? "Revoke AI ref" : "Mark AI ref OK"}
                     </button>
                   </form>

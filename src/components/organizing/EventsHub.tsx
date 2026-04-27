@@ -19,9 +19,9 @@ const MovementFairsMap = dynamic(
         role="status"
         aria-live="polite"
       >
-        <div className="h-4 w-40 animate-pulse rounded bg-deep-soil/10" />
-        <div className="flex flex-1 animate-pulse rounded-2xl bg-gradient-to-br from-deep-soil/[0.07] to-deep-soil/[0.12]" />
-        <p className="font-body text-xs text-deep-soil/55">Loading Arkansas map…</p>
+        <div className="h-4 w-40 animate-pulse rounded bg-kelly-text/10" />
+        <div className="flex flex-1 animate-pulse rounded-2xl bg-gradient-to-br from-kelly-text/[0.07] to-kelly-text/[0.12]" />
+        <p className="font-body text-xs text-kelly-text/55">Loading Arkansas map…</p>
       </div>
     ),
   },
@@ -103,10 +103,10 @@ export function EventsHub({ events, types, regions, audienceTags, initialFilters
           {filtered.length === 0 ? (
             <div
               role="status"
-              className="rounded-card border border-dashed border-deep-soil/25 bg-deep-soil/[0.03] p-8 text-center md:p-10"
+              className="rounded-card border border-dashed border-kelly-text/25 bg-kelly-text/[0.03] p-8 text-center md:p-10"
             >
-              <h2 className="font-heading text-xl font-bold text-deep-soil md:text-2xl">No events match those filters</h2>
-              <p className="mx-auto mt-3 max-w-prose font-body text-base text-deep-soil/75">
+              <h2 className="font-heading text-xl font-bold text-kelly-text md:text-2xl">No events match those filters</h2>
+              <p className="mx-auto mt-3 max-w-prose font-body text-base text-kelly-text/75">
                 {emptyByRegion
                   ? "We’re still scheduling gatherings in that region. Host something small—we’ll help you plan."
                   : "Try widening the filters, or host a gathering to create the next opening on the map."}
@@ -150,8 +150,8 @@ export function EventsHub({ events, types, regions, audienceTags, initialFilters
 
         <div className="order-2 xl:order-1">
           <div className="mb-2">
-            <h3 className="font-heading text-lg font-bold text-deep-soil">Field map</h3>
-            <p className="mt-1 font-body text-sm text-deep-soil/70">
+            <h3 className="font-heading text-lg font-bold text-kelly-text">Field map</h3>
+            <p className="mt-1 font-body text-sm text-kelly-text/70">
               Click a pin or card to sync the view. Filters apply to both.
             </p>
           </div>
@@ -160,9 +160,9 @@ export function EventsHub({ events, types, regions, audienceTags, initialFilters
             selectedSlug={selectedSlug}
             onSelectSlug={setSelectedSlug}
           />
-          <div className="mt-4 rounded-lg border border-deep-soil/10 bg-deep-soil/[0.03] px-4 py-3 font-body text-sm text-deep-soil/80">
-            <p className="font-semibold text-deep-soil">Request Kelly in your town</p>
-            <p className="mt-1 text-deep-soil/75">
+          <div className="mt-4 rounded-lg border border-kelly-text/10 bg-kelly-text/[0.03] px-4 py-3 font-body text-sm text-kelly-text/80">
+            <p className="font-semibold text-kelly-text">Request Kelly in your town</p>
+            <p className="mt-1 text-kelly-text/75">
               Don’t see your county yet? Start a host conversation—we’ll help with format, timing, and follow-up.
             </p>
             <div className="mt-3 flex flex-wrap gap-2">

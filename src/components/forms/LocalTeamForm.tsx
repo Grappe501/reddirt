@@ -79,7 +79,7 @@ export function LocalTeamForm({ id }: { id?: string }) {
         </p>
         <p>
           While you wait, skim the{" "}
-          <Link className="font-semibold text-red-dirt underline" href="/resources">
+          <Link className="font-semibold text-kelly-navy underline" href="/resources">
             resources
           </Link>{" "}
           library for facilitation tips and civic explainers you can reuse locally.
@@ -110,14 +110,14 @@ export function LocalTeamForm({ id }: { id?: string }) {
           <FormLabel htmlFor="lt-name">Full name</FormLabel>
           <Input id="lt-name" {...form.register("name")} autoComplete="name" />
           {form.formState.errors.name ? (
-            <p className="text-sm text-red-dirt">{form.formState.errors.name.message}</p>
+            <p className="text-sm text-kelly-navy">{form.formState.errors.name.message}</p>
           ) : null}
         </FormField>
         <FormField>
           <FormLabel htmlFor="lt-email">Email</FormLabel>
           <Input id="lt-email" type="email" {...form.register("email")} autoComplete="email" />
           {form.formState.errors.email ? (
-            <p className="text-sm text-red-dirt">{form.formState.errors.email.message}</p>
+            <p className="text-sm text-kelly-navy">{form.formState.errors.email.message}</p>
           ) : null}
         </FormField>
         <FormField>
@@ -128,7 +128,7 @@ export function LocalTeamForm({ id }: { id?: string }) {
           <FormLabel htmlFor="lt-zip">ZIP</FormLabel>
           <Input id="lt-zip" {...form.register("zip")} autoComplete="postal-code" />
           {form.formState.errors.zip ? (
-            <p className="text-sm text-red-dirt">{form.formState.errors.zip.message}</p>
+            <p className="text-sm text-kelly-navy">{form.formState.errors.zip.message}</p>
           ) : null}
         </FormField>
       </div>
@@ -140,7 +140,7 @@ export function LocalTeamForm({ id }: { id?: string }) {
         <FormLabel htmlFor="lt-community">Town or community</FormLabel>
         <Input id="lt-community" {...form.register("community")} />
         {form.formState.errors.community ? (
-          <p className="text-sm text-red-dirt">{form.formState.errors.community.message}</p>
+          <p className="text-sm text-kelly-navy">{form.formState.errors.community.message}</p>
         ) : null}
       </FormField>
       <FormField>

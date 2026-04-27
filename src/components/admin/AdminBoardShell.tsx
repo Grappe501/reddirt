@@ -60,20 +60,20 @@ const orchestratorLinks: { href: string; label: string }[] = [
 
 export function AdminBoardShell({ children }: { children: ReactNode }) {
   return (
-    <div className="flex min-h-screen bg-transparent text-deep-soil">
-      <aside className="flex w-[min(100%,280px)] flex-col border-r border-deep-soil/15 bg-deep-soil text-cream-canvas">
-        <div className="border-b border-cream-canvas/10 px-5 py-6">
-          <p className="font-body text-[10px] font-bold uppercase tracking-[0.28em] text-cream-canvas/55">
+    <div className="flex min-h-screen bg-transparent text-kelly-text">
+      <aside className="flex w-[min(100%,280px)] flex-col border-r border-kelly-text/15 bg-kelly-text text-kelly-page">
+        <div className="border-b border-kelly-page/10 px-5 py-6">
+          <p className="font-body text-[10px] font-bold uppercase tracking-[0.28em] text-kelly-page/55">
             Campaign site admin
           </p>
           <p className="mt-2 font-heading text-lg font-bold leading-tight">Content command center</p>
-          <p className="mt-2 font-body text-xs leading-relaxed text-cream-canvas/65">
+          <p className="mt-2 font-body text-xs leading-relaxed text-kelly-page/65">
             Site copy, media, and public-content orchestration — not movement ops dashboards.
           </p>
         </div>
         <nav className="flex flex-1 flex-col gap-4 overflow-y-auto px-3 py-4" aria-label="Admin">
           <div>
-            <p className="px-3 pb-1 font-body text-[10px] font-bold uppercase tracking-[0.22em] text-cream-canvas/45">
+            <p className="px-3 pb-1 font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-page/45">
               Campaign operations
             </p>
             <div className="flex flex-col gap-0.5">
@@ -81,7 +81,7 @@ export function AdminBoardShell({ children }: { children: ReactNode }) {
                 <Link
                   key={l.href}
                   href={l.href}
-                  className="rounded-md px-3 py-2.5 font-body text-sm font-medium text-cream-canvas/90 transition hover:bg-cream-canvas/10 hover:text-cream-canvas"
+                  className="rounded-md px-3 py-2.5 font-body text-sm font-medium text-kelly-page/90 transition hover:bg-kelly-page/10 hover:text-kelly-page"
                 >
                   {l.label}
                 </Link>
@@ -89,7 +89,7 @@ export function AdminBoardShell({ children }: { children: ReactNode }) {
             </div>
           </div>
           <div>
-            <p className="px-3 pb-1 font-body text-[10px] font-bold uppercase tracking-[0.22em] text-cream-canvas/45">
+            <p className="px-3 pb-1 font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-page/45">
               Site content
             </p>
             <div className="flex flex-col gap-0.5">
@@ -97,7 +97,7 @@ export function AdminBoardShell({ children }: { children: ReactNode }) {
                 <Link
                   key={l.href}
                   href={l.href}
-                  className="rounded-md px-3 py-2.5 font-body text-sm font-medium text-cream-canvas/85 transition hover:bg-cream-canvas/10 hover:text-cream-canvas"
+                  className="rounded-md px-3 py-2.5 font-body text-sm font-medium text-kelly-page/85 transition hover:bg-kelly-page/10 hover:text-kelly-page"
                 >
                   {l.label}
                 </Link>
@@ -105,7 +105,7 @@ export function AdminBoardShell({ children }: { children: ReactNode }) {
             </div>
           </div>
           <div>
-            <p className="px-3 pb-1 font-body text-[10px] font-bold uppercase tracking-[0.22em] text-cream-canvas/45">
+            <p className="px-3 pb-1 font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-page/45">
               Orchestrator
             </p>
             <div className="flex flex-col gap-0.5">
@@ -113,7 +113,7 @@ export function AdminBoardShell({ children }: { children: ReactNode }) {
                 <Link
                   key={l.href}
                   href={l.href}
-                  className="rounded-md px-3 py-2.5 font-body text-sm font-medium text-cream-canvas/85 transition hover:bg-cream-canvas/10 hover:text-cream-canvas"
+                  className="rounded-md px-3 py-2.5 font-body text-sm font-medium text-kelly-page/85 transition hover:bg-kelly-page/10 hover:text-kelly-page"
                 >
                   {l.label}
                 </Link>
@@ -121,18 +121,18 @@ export function AdminBoardShell({ children }: { children: ReactNode }) {
             </div>
           </div>
         </nav>
-        <div className="border-t border-cream-canvas/10 p-4">
+        <div className="border-t border-kelly-page/10 p-4">
           <form action={adminLogoutAction}>
             <button
               type="submit"
-              className="w-full rounded-md border border-cream-canvas/25 px-3 py-2 font-body text-xs font-semibold uppercase tracking-wider text-cream-canvas/90 transition hover:bg-cream-canvas/10"
+              className="w-full rounded-md border border-kelly-page/25 px-3 py-2 font-body text-xs font-semibold uppercase tracking-wider text-kelly-page/90 transition hover:bg-kelly-page/10"
             >
               Sign out
             </button>
           </form>
           <Link
             href="/"
-            className="mt-3 block text-center font-body text-xs text-cream-canvas/55 underline-offset-2 hover:text-cream-canvas hover:underline"
+            className="mt-3 block text-center font-body text-xs text-kelly-page/55 underline-offset-2 hover:text-kelly-page hover:underline"
           >
             View public site
           </Link>
@@ -140,7 +140,7 @@ export function AdminBoardShell({ children }: { children: ReactNode }) {
       </aside>
       <div className="flex min-h-screen flex-1 flex-col">
         <main className="flex-1 px-6 py-10 lg:px-12 lg:py-12">{children}</main>
-        <div className="border-t border-deep-soil/10 bg-washed-canvas px-6 py-3 lg:px-12">
+        <div className="border-t border-kelly-text/10 bg-kelly-wash px-6 py-3 lg:px-12">
           <CampaignPaidForBar variant="light" />
         </div>
       </div>

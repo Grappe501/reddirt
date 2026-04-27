@@ -136,15 +136,15 @@ export function WorkbenchMessageComposer(p: Props) {
   }
 
   return (
-    <div className="border-t border-deep-soil/10 bg-cream-canvas/50 p-2">
+    <div className="border-t border-kelly-text/10 bg-kelly-page/50 p-2">
       {err ? <p className="mb-1 font-body text-xs text-red-800">{err}</p> : null}
-      <div className="flex flex-wrap items-center gap-1 border-b border-deep-soil/10 pb-1">
+      <div className="flex flex-wrap items-center gap-1 border-b border-kelly-text/10 pb-1">
         {p.canSms ? (
           <button
             type="button"
             onClick={() => setMode("SMS")}
             className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${
-              mode === "SMS" ? "bg-deep-soil text-cream-canvas" : "bg-white/60 text-deep-soil/70"
+              mode === "SMS" ? "bg-kelly-text text-kelly-page" : "bg-white/60 text-kelly-text/70"
             }`}
           >
             SMS
@@ -155,7 +155,7 @@ export function WorkbenchMessageComposer(p: Props) {
             type="button"
             onClick={() => setMode("EMAIL")}
             className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${
-              mode === "EMAIL" ? "bg-deep-soil text-cream-canvas" : "bg-white/60 text-deep-soil/70"
+              mode === "EMAIL" ? "bg-kelly-text text-kelly-page" : "bg-white/60 text-kelly-text/70"
             }`}
           >
             SendGrid
@@ -166,14 +166,14 @@ export function WorkbenchMessageComposer(p: Props) {
             type="button"
             onClick={() => setMode("GMAIL")}
             className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${
-              mode === "GMAIL" ? "bg-washed-denim text-cream-canvas" : "bg-white/60 text-deep-soil/70"
+              mode === "GMAIL" ? "bg-kelly-muted text-kelly-page" : "bg-white/60 text-kelly-text/70"
             }`}
             title="Human email via your connected Gmail/Workspace (not for broadcasts)"
           >
             Gmail
           </button>
         ) : null}
-        <span className="ml-auto text-[10px] text-deep-soil/50">
+        <span className="ml-auto text-[10px] text-kelly-text/50">
           {mode === "SMS" && !p.canSms ? "Add phone to thread" : null}
           {(mode === "EMAIL" || mode === "GMAIL") && !p.canEmail ? "Add email to thread" : null}
           {mode === "SMS" && p.smsBlocked ? ` · ${p.smsBlocked}` : null}
@@ -187,7 +187,7 @@ export function WorkbenchMessageComposer(p: Props) {
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
           placeholder="Subject"
-          className="mb-1 mt-1 w-full border border-deep-soil/15 bg-white px-1.5 py-0.5 font-body text-xs"
+          className="mb-1 mt-1 w-full border border-kelly-text/15 bg-white px-1.5 py-0.5 font-body text-xs"
         />
       ) : null}
       <textarea
@@ -197,11 +197,11 @@ export function WorkbenchMessageComposer(p: Props) {
         rows={4}
         maxLength={mode === "SMS" ? 2000 : 100000}
         placeholder={mode === "SMS" ? "SMS body…" : mode === "GMAIL" ? "Gmail body (human)…" : "SendGrid body…"}
-        className="w-full resize-y border border-deep-soil/15 bg-white p-1.5 font-mono text-xs"
+        className="w-full resize-y border border-kelly-text/15 bg-white p-1.5 font-mono text-xs"
         aria-label="Message body"
       />
       {mode === "SMS" ? (
-        <p className="mt-0.5 text-[10px] text-deep-soil/45">
+        <p className="mt-0.5 text-[10px] text-kelly-text/45">
           {body.length} / 2000 · long SMS may split into multiple segments
         </p>
       ) : null}
@@ -215,7 +215,7 @@ export function WorkbenchMessageComposer(p: Props) {
             (mode === "GMAIL" && !p.gmailConnected)
           }
           onClick={send}
-          className="rounded border border-red-dirt/30 bg-red-dirt px-2 py-0.5 font-body text-xs font-bold text-cream-canvas disabled:opacity-40"
+          className="rounded border border-kelly-gold/40 bg-kelly-gold px-2 py-0.5 font-body text-xs font-bold text-kelly-navy disabled:opacity-40"
         >
           {pending ? "Sending…" : "Send"}
         </button>
@@ -223,7 +223,7 @@ export function WorkbenchMessageComposer(p: Props) {
           type="button"
           disabled={pending}
           onClick={draft}
-          className="rounded border border-deep-soil/20 bg-white px-2 py-0.5 font-body text-xs font-semibold text-deep-soil"
+          className="rounded border border-kelly-text/20 bg-white px-2 py-0.5 font-body text-xs font-semibold text-kelly-text"
         >
           AI draft
         </button>
@@ -231,7 +231,7 @@ export function WorkbenchMessageComposer(p: Props) {
           type="button"
           disabled={pending}
           onClick={rewrite}
-          className="rounded border border-deep-soil/20 bg-white px-2 py-0.5 font-body text-xs font-semibold text-deep-soil"
+          className="rounded border border-kelly-text/20 bg-white px-2 py-0.5 font-body text-xs font-semibold text-kelly-text"
         >
           AI rewrite
         </button>
@@ -241,7 +241,7 @@ export function WorkbenchMessageComposer(p: Props) {
             type="button"
             disabled={pending}
             onClick={() => rewriteWithTone(t.id)}
-            className="rounded border border-deep-soil/10 bg-white/80 px-1.5 py-0.5 font-body text-[10px] text-deep-soil/80"
+            className="rounded border border-kelly-text/10 bg-white/80 px-1.5 py-0.5 font-body text-[10px] text-kelly-text/80"
             title="Rewrite with tone"
           >
             {t.label}

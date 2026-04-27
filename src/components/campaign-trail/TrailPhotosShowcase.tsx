@@ -39,7 +39,7 @@ export function TrailPhotosShowcase({
   if (photos.length === 0) return null;
 
   const headingClass = cn(
-    "font-heading font-bold tracking-tight text-civic-ink",
+    "font-heading font-bold tracking-tight text-kelly-ink",
     variant === "inline" || variant === "strip" || variant === "woven"
       ? "mt-2 text-2xl md:text-3xl"
       : "mt-4 text-[clamp(1.65rem,3.5vw,2.35rem)]",
@@ -54,7 +54,7 @@ export function TrailPhotosShowcase({
         <div
           className={cn(
             "mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-3 [-ms-overflow-style:none] [scrollbar-width:thin]",
-            "[&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-civic-ink/20",
+            "[&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-kelly-ink/20",
           )}
         >
           {photos.map((p, i) => (
@@ -85,13 +85,13 @@ export function TrailPhotosShowcase({
   const body = (
     <>
       {eyebrow ? (
-        <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-civic-gold">{eyebrow}</p>
+        <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-kelly-gold">{eyebrow}</p>
       ) : null}
       <h2 id="trail-photos-heading" className={headingClass}>
         {title}
       </h2>
       {intro ? (
-        <p className="mt-4 max-w-3xl font-body text-base leading-relaxed text-civic-slate md:text-lg">{intro}</p>
+        <p className="mt-4 max-w-3xl font-body text-base leading-relaxed text-kelly-slate md:text-lg">{intro}</p>
       ) : null}
 
       {media}
@@ -100,7 +100,7 @@ export function TrailPhotosShowcase({
         <p className="mt-12 text-center">
           <Link
             href={moreHref}
-            className="inline-flex font-body text-sm font-bold uppercase tracking-[0.18em] text-red-dirt underline-offset-4 hover:underline"
+            className="inline-flex font-body text-sm font-bold uppercase tracking-[0.18em] text-kelly-navy underline-offset-4 hover:underline"
           >
             {moreLabel} →
           </Link>
@@ -110,7 +110,7 @@ export function TrailPhotosShowcase({
   );
 
   const sectionPad =
-    variant === "inline" || variant === "strip" || variant === "woven" ? "py-10 md:py-12" : "border-t border-civic-ink/10 py-14 md:py-20";
+    variant === "inline" || variant === "strip" || variant === "woven" ? "py-10 md:py-12" : "border-t border-kelly-ink/10 py-14 md:py-20";
 
   return (
     <section

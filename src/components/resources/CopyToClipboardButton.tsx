@@ -51,7 +51,7 @@ export function CopyToClipboardButton({ text, label, className }: CopyToClipboar
       onClick={onCopy}
       title={label}
       className={cn(
-        "inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md border border-deep-soil/15 bg-cream-canvas text-deep-soil/70 transition hover:border-red-dirt/35 hover:text-red-dirt",
+        "inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md border border-kelly-text/15 bg-kelly-page text-kelly-text/70 transition hover:border-kelly-navy/35 hover:text-kelly-navy",
         className,
       )}
       aria-label={label}

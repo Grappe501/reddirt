@@ -21,19 +21,19 @@ const H_SOS = "/about/why-secretary-of-state";
 const H_ASK = "/about/your-part";
 
 const linkOut =
-  "font-semibold text-red-dirt underline decoration-red-dirt/30 underline-offset-2 transition hover:decoration-red-dirt";
-const h2 = "font-heading text-2xl font-bold text-deep-soil md:text-3xl";
-const lead = "font-body text-lg leading-relaxed text-deep-soil/88";
-const body = "font-body text-base leading-relaxed text-deep-soil/82";
-const callout = "font-body text-sm text-deep-soil/75";
-const calloutGreen = "font-body text-sm text-deep-soil/80";
+  "font-semibold text-kelly-navy underline decoration-kelly-navy/30 underline-offset-2 transition hover:decoration-kelly-navy";
+const h2 = "font-heading text-2xl font-bold text-kelly-text md:text-3xl";
+const lead = "font-body text-lg leading-relaxed text-kelly-text/88";
+const body = "font-body text-base leading-relaxed text-kelly-text/82";
+const callout = "font-body text-sm text-kelly-text/75";
+const calloutGreen = "font-body text-sm text-kelly-text/80";
 
 /** Featured Kelly video — same source as homepage (`NEXT_PUBLIC_FEATURE_VIDEO_EMBED_URL`). */
 function ForevermostLeadVideo() {
   const src = siteConfig.featureVideoEmbedUrl?.trim();
   if (!src) return null;
   return (
-    <div className="mb-8 mt-6 overflow-hidden rounded-card border border-deep-soil/10 shadow-[var(--shadow-soft)]">
+    <div className="mb-8 mt-6 overflow-hidden rounded-card border border-kelly-text/10 shadow-[var(--shadow-soft)]">
       <div className="relative aspect-video w-full bg-black">
         <iframe
           title="Kelly Grappe — in her own words (featured video)"
@@ -62,7 +62,7 @@ const sections: { id: string; moreHref: string; eyebrow: string; title: string; 
           Kelly is: where she comes from, what she has already put on the line for this state, and why she is asking
           for your time—not just your vote.
         </p>
-        <p className="font-body text-base leading-relaxed text-deep-soil/78">
+        <p className="font-body text-base leading-relaxed text-kelly-text/78">
           Below, the career that shaped how she thinks about systems, the land and market work that grounded her in
           small business, and the civics organization she helps lead. Read in order or jump ahead; the thread is the
           same: <em>public service in plain sight.</em> <ReadMoreLink href={H_STORY} />
@@ -99,8 +99,8 @@ const sections: { id: string; moreHref: string; eyebrow: string; title: string; 
           small-business ground truth are not opposites; they are what you want in someone who will help the office
           <strong> serve employers and employees fairly</strong> in all 75 counties.
         </p>
-        <p className={cn("rounded-xl border border-deep-soil/10 bg-deep-soil/[0.04] p-4", callout)}>
-          <span className="font-bold text-deep-soil">Career background: </span>
+        <p className={cn("rounded-xl border border-kelly-text/10 bg-kelly-text/[0.04] p-4", callout)}>
+          <span className="font-bold text-kelly-text">Career background: </span>
           <a
             href="https://www.linkedin.com/in/kelly-grappe-48b6aa51/"
             target="_blank"
@@ -148,8 +148,8 @@ const sections: { id: string; moreHref: string; eyebrow: string; title: string; 
           State must bring: <strong>steward what you are given</strong>, tell the truth when the math changes, and
           don’t walk away from obligations just because the road got hard.
         </p>
-        <p className={cn("rounded-xl border border-deep-soil/10 bg-deep-soil/[0.04] p-4", callout)}>
-          <span className="font-bold text-deep-soil">More of the day-to-day: </span>
+        <p className={cn("rounded-xl border border-kelly-text/10 bg-kelly-text/[0.04] p-4", callout)}>
+          <span className="font-bold text-kelly-text">More of the day-to-day: </span>
           <a
             href="https://www.forevermostfarms.com"
             target="_blank"
@@ -197,8 +197,8 @@ const sections: { id: string; moreHref: string; eyebrow: string; title: string; 
           insiders, but as <strong>infrastructure the public can understand and use</strong>—with clarity, patience, and
           respect for every county’s clerks, voters, and business filers.
         </p>
-        <p className={cn("rounded-xl border border-field-green/25 bg-field-green/[0.06] p-4", calloutGreen)}>
-          <span className="font-bold text-deep-soil">Explore the org: </span>
+        <p className={cn("rounded-xl border border-kelly-success/25 bg-kelly-success/[0.06] p-4", calloutGreen)}>
+          <span className="font-bold text-kelly-text">Explore the org: </span>
           <a
             href="https://www.standuparkansas.com/civic-education-hub"
             target="_blank"
@@ -265,42 +265,42 @@ const sections: { id: string; moreHref: string; eyebrow: string; title: string; 
           <strong>patience</strong> with people who are new to a process, and <strong>fierce protectiveness</strong> of
           public trust when cynicism is the easy out.
         </p>
-        <ul className="list-none space-y-3 font-body text-base leading-relaxed text-deep-soil/85">
+        <ul className="list-none space-y-3 font-body text-base leading-relaxed text-kelly-text/85">
           <li className="flex gap-3">
-            <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-red-dirt" aria-hidden />
+            <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-kelly-navy" aria-hidden />
             <span>
-              <strong className="text-deep-soil">Telecom operations</strong> taught her how to <strong>run big
+              <strong className="text-kelly-text">Telecom operations</strong> taught her how to <strong>run big
               teams</strong>, see <strong>process</strong> clearly, and improve systems so customers—and in this case,{" "}
               <strong>filers and businesses</strong>—are not left paying the price for avoidable confusion.
             </span>
           </li>
           <li className="flex gap-3">
-            <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-red-dirt" aria-hidden />
+            <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-kelly-navy" aria-hidden />
             <span>
-              <strong className="text-deep-soil">Farming and a small market</strong> taught her that{" "}
+              <strong className="text-kelly-text">Farming and a small market</strong> taught her that{" "}
               <strong>neglect and favoritism</strong> both have consequences you cannot spin away—and that{" "}
               <strong>small operators feel every friction</strong> in fees, time, and paperwork.
             </span>
           </li>
           <li className="flex gap-3">
-            <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-red-dirt" aria-hidden />
+            <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-kelly-navy" aria-hidden />
             <span>
-              <strong className="text-deep-soil">Civic work</strong> taught her that <strong>democracy is a skill</strong>
+              <strong className="text-kelly-text">Civic work</strong> taught her that <strong>democracy is a skill</strong>
               —and that Arkansans will step up if someone meets them with respect and training, not condescension.
             </span>
           </li>
           <li className="flex gap-3">
-            <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-red-dirt" aria-hidden />
+            <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-kelly-navy" aria-hidden />
             <span>
-              <strong className="text-deep-soil">Ballot initiatives and petition campaigns</strong> taught her that{" "}
+              <strong className="text-kelly-text">Ballot initiatives and petition campaigns</strong> taught her that{" "}
               <strong>direct democracy is logistics</strong>—volunteers, notaries, deadlines, and a process that only works
               when it stays <strong>centered on citizens</strong>, not outside money.
             </span>
           </li>
           <li className="flex gap-3">
-            <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-red-dirt" aria-hidden />
+            <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-kelly-navy" aria-hidden />
             <span>
-              <strong className="text-deep-soil">The SoS role</strong> is where those threads meet: the{" "}
+              <strong className="text-kelly-text">The SoS role</strong> is where those threads meet: the{" "}
               <strong>systems</strong> that make elections, records, and commerce legible to real people, in all 75
               counties, day after day.
             </span>
@@ -327,7 +327,7 @@ const sections: { id: string; moreHref: string; eyebrow: string; title: string; 
           one uncomfortable thing: <strong>bring someone with you</strong> into a conversation they would rather skip.
           Kelly is asking for your <strong>time</strong> and your <strong>voice</strong> in that order.
         </p>
-        <ol className="list-decimal space-y-3 pl-5 font-body text-base leading-relaxed text-deep-soil/85">
+        <ol className="list-decimal space-y-3 pl-5 font-body text-base leading-relaxed text-kelly-text/85">
           <li>
             <strong>Know the story</strong>—her business and farm experience, Stand Up, ballot and initiative work, the
             office—enough to
@@ -342,7 +342,7 @@ const sections: { id: string; moreHref: string; eyebrow: string; title: string; 
             the work. Momentum is <strong>reciprocal</strong>: when you act, you give others permission to act.
           </li>
         </ol>
-        <p className="font-body text-base text-deep-soil/78">
+        <p className="font-body text-base text-kelly-text/78">
           Questions that need a person, not a page:{" "}
           <a href="mailto:kelly@kellygrappe.com" className={linkOut}>
             kelly@kellygrappe.com
@@ -374,17 +374,17 @@ export function KellyFullStory({ trailPeoplePhotos = [] }: KellyFullStoryProps) 
       {sections.map((s) => (
         <Fragment key={s.id}>
           <section id={s.id} className="scroll-mt-20">
-            <p className="font-body text-xs font-bold uppercase tracking-[0.2em] text-red-dirt/90">{s.eyebrow}</p>
+            <p className="font-body text-xs font-bold uppercase tracking-[0.2em] text-kelly-navy/90">{s.eyebrow}</p>
             <h2 className={h2}>{s.title}</h2>
             <div className="mt-4 md:mt-5">
               {s.id === "forevermost" ? <ForevermostLeadVideo /> : null}
               {s.children}
               {s.id === "forevermost" && forevermostPhotos.length > 0 ? (
                 <div
-                  className="mt-10 w-full border-t border-deep-soil/10 pt-10"
+                  className="mt-10 w-full border-t border-kelly-text/10 pt-10"
                   aria-label="Forevermost Farms — field photography"
                 >
-                  <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-deep-soil/50">
+                  <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-kelly-text/50">
                     At Forevermost
                   </p>
                   <div className="mt-6 flex w-full flex-col gap-8">
@@ -396,7 +396,7 @@ export function KellyFullStory({ trailPeoplePhotos = [] }: KellyFullStoryProps) 
               ) : null}
               {s.id === "initiatives-petitions" && initiativesPhotos.length > 0 ? (
                 <div
-                  className="mt-10 w-full border-t border-deep-soil/10 pt-10"
+                  className="mt-10 w-full border-t border-kelly-text/10 pt-10"
                   aria-label="Ballot and education organizing"
                 >
                   {initiativesPhotos.map((p) => (

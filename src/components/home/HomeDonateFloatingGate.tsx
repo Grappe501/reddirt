@@ -7,7 +7,7 @@ import { createPortal } from "react-dom";
 import { brandMediaFromLegacySite } from "@/config/brand-media";
 import { siteConfig } from "@/config/site";
 
-const STORAGE_KEY = "reddirt_home_donate_floating_dismissed";
+const STORAGE_KEY = "kelly_sos_home_donate_floating_dismissed";
 
 /**
  * Homepage-only full-viewport donate prompt: opaque backdrop, centered Kelly portrait,
@@ -51,7 +51,7 @@ export function HomeDonateFloatingGate() {
 
   const node = (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto overscroll-contain bg-civic-midnight/97 px-4 py-10 backdrop-blur-md"
+      className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto overscroll-contain bg-kelly-navy/97 px-4 py-10 backdrop-blur-md"
       role="dialog"
       aria-modal="true"
       aria-labelledby={titleId}
@@ -62,14 +62,14 @@ export function HomeDonateFloatingGate() {
       <button
         type="button"
         onClick={dismiss}
-        className="fixed right-3 top-3 z-[101] flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-civic-midnight/80 text-xl font-light leading-none text-white transition hover:border-sunlight-gold/50 hover:bg-civic-blue/80 hover:text-sunlight-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sunlight-gold sm:right-4 sm:top-4"
+        className="fixed right-3 top-3 z-[101] flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-kelly-navy/80 text-xl font-light leading-none text-white transition hover:border-kelly-gold/50 hover:bg-kelly-blue/80 hover:text-kelly-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold sm:right-4 sm:top-4"
         aria-label="Close and continue to the site"
       >
         ×
       </button>
 
       <div className="flex w-full max-w-md flex-col items-center">
-        <div className="relative aspect-square w-full max-w-[min(100%,18.5rem)] overflow-hidden rounded-full border-2 border-sunlight-gold/40 shadow-[0_24px_80px_rgba(0,0,0,0.5)] sm:max-w-[20rem]">
+        <div className="relative aspect-square w-full max-w-[min(100%,18.5rem)] overflow-hidden rounded-full border-2 border-kelly-gold/40 shadow-[0_24px_80px_rgba(0,0,0,0.5)] sm:max-w-[20rem]">
           <Image
             src={brandMediaFromLegacySite.kellyPortrait}
             alt={brandMediaFromLegacySite.kellyPortraitAlt}
@@ -87,7 +87,7 @@ export function HomeDonateFloatingGate() {
             {...(donateExternal
               ? { target: "_blank", rel: "noopener noreferrer" }
               : {})}
-            className="flex min-h-[52px] w-full items-center justify-center rounded-btn bg-civic-gold px-6 py-3.5 text-center text-sm font-bold uppercase tracking-[0.12em] text-civic-midnight shadow-lg transition hover:bg-civic-gold-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-civic-gold"
+            className="flex min-h-[52px] w-full items-center justify-center rounded-btn bg-kelly-gold px-6 py-3.5 text-center text-sm font-bold uppercase tracking-[0.12em] text-kelly-navy shadow-lg transition hover:bg-kelly-gold-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold"
           >
             Donate
           </Link>

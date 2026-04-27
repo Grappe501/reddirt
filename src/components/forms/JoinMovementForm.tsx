@@ -97,11 +97,11 @@ export function JoinMovementForm({ id }: { id?: string }) {
         </p>
         <p>
           <strong>What happens next:</strong> watch your inbox. Explore{" "}
-          <Link className="font-semibold text-red-dirt underline" href="/priorities">
+          <Link className="font-semibold text-kelly-navy underline" href="/priorities">
             office priorities
           </Link>{" "}
           or{" "}
-          <Link className="font-semibold text-red-dirt underline" href="/local-organizing">
+          <Link className="font-semibold text-kelly-navy underline" href="/local-organizing">
             local organizing
           </Link>
           .
@@ -132,14 +132,14 @@ export function JoinMovementForm({ id }: { id?: string }) {
           <FormLabel htmlFor="jm-name">Full name</FormLabel>
           <Input id="jm-name" {...form.register("name")} autoComplete="name" />
           {form.formState.errors.name ? (
-            <p className="text-sm text-red-dirt">{form.formState.errors.name.message}</p>
+            <p className="text-sm text-kelly-navy">{form.formState.errors.name.message}</p>
           ) : null}
         </FormField>
         <FormField>
           <FormLabel htmlFor="jm-email">Email</FormLabel>
           <Input id="jm-email" type="email" {...form.register("email")} autoComplete="email" />
           {form.formState.errors.email ? (
-            <p className="text-sm text-red-dirt">{form.formState.errors.email.message}</p>
+            <p className="text-sm text-kelly-navy">{form.formState.errors.email.message}</p>
           ) : null}
         </FormField>
         <FormField>
@@ -150,7 +150,7 @@ export function JoinMovementForm({ id }: { id?: string }) {
           <FormLabel htmlFor="jm-zip">ZIP</FormLabel>
           <Input id="jm-zip" {...form.register("zip")} autoComplete="postal-code" />
           {form.formState.errors.zip ? (
-            <p className="text-sm text-red-dirt">{form.formState.errors.zip.message}</p>
+            <p className="text-sm text-kelly-navy">{form.formState.errors.zip.message}</p>
           ) : null}
         </FormField>
       </div>
@@ -162,10 +162,10 @@ export function JoinMovementForm({ id }: { id?: string }) {
         <FormLabel>How you want to help (optional)</FormLabel>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           {interestOptions.map((opt) => (
-            <label key={opt.id} className="flex items-center gap-3 font-body text-sm text-deep-soil">
+            <label key={opt.id} className="flex items-center gap-3 font-body text-sm text-kelly-text">
               <input
                 type="checkbox"
-                className="h-4 w-4 rounded border-deep-soil/30 text-red-dirt"
+                className="h-4 w-4 rounded border-kelly-text/30 text-kelly-navy"
                 checked={interests.includes(opt.id)}
                 onChange={() => toggleInterest(opt.id)}
               />

@@ -5,13 +5,13 @@ import { siteConfig } from "@/config/site";
 
 export default function NotFound() {
   return (
-    <FullBleedSection variant="subtle" padY className="min-h-[min(70vh,640px)] border-b border-deep-soil/10">
+    <FullBleedSection variant="subtle" padY className="min-h-[min(70vh,640px)] border-b border-kelly-text/10">
       <ContentContainer className="flex flex-col items-start justify-center py-16 lg:py-24">
-        <p className="font-body text-xs font-bold uppercase tracking-[0.22em] text-red-dirt">404</p>
-        <h1 className="mt-4 max-w-2xl font-heading text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-tight text-deep-soil">
+        <p className="font-body text-xs font-bold uppercase tracking-[0.22em] text-kelly-navy">404</p>
+        <h1 className="mt-4 max-w-2xl font-heading text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-tight text-kelly-text">
           That page isn’t here—but the campaign site is.
         </h1>
-        <p className="mt-6 max-w-xl font-body text-lg leading-relaxed text-deep-soil/78">
+        <p className="mt-6 max-w-xl font-body text-lg leading-relaxed text-kelly-text/78">
           The URL may have moved. Try home, priorities for the office, or get involved—or use search from the header.
         </p>
         <div className="mt-10 flex flex-wrap gap-4">
@@ -25,7 +25,7 @@ export default function NotFound() {
             Stories
           </Button>
         </div>
-        <p className="mt-12 font-body text-sm text-deep-soil/50">{siteConfig.name}</p>
+        <p className="mt-12 font-body text-sm text-kelly-text/50">{siteConfig.name}</p>
       </ContentContainer>
     </FullBleedSection>
   );

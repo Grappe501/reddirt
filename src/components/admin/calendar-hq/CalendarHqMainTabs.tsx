@@ -3,7 +3,7 @@ import { calendarFiltersToSearchParams, type CalendarHqFilters } from "@/lib/cal
 import { addWeeks, DEFAULT_CAMPAIGN_TZ } from "@/lib/calendar/weekly-time";
 
 const tabCls = (on: boolean) =>
-  `rounded px-1.5 py-0.5 text-[9px] font-bold uppercase ${on ? "bg-deep-soil text-cream-canvas" : "bg-white text-deep-soil/70"}`;
+  `rounded px-1.5 py-0.5 text-[9px] font-bold uppercase ${on ? "bg-kelly-text text-kelly-page" : "bg-white text-kelly-text/70"}`;
 
 export function CalendarHqMainTabs({
   filters,
@@ -40,7 +40,7 @@ export function CalendarHqMainTabs({
   ];
 
   return (
-    <div className="flex flex-wrap items-center gap-0.5 border-b border-deep-soil/10 bg-deep-soil/[0.04] px-1 py-1">
+    <div className="flex flex-wrap items-center gap-0.5 border-b border-kelly-text/10 bg-kelly-text/[0.04] px-1 py-1">
       {tabs.map(([v, label]) => (
         <Link key={v} href={`/admin/workbench/calendar?${qs(v)}`} className={tabCls(view === v)}>
           {label}
@@ -96,20 +96,20 @@ export function CalendarHqMonthNav({
   };
 
   return (
-    <div className="space-y-1 border-b border-deep-soil/10 py-1.5">
-      <p className="text-[7px] font-bold uppercase text-deep-soil/45">Navigator</p>
-      <p className="text-[9px] font-bold text-deep-soil/80">{label}</p>
+    <div className="space-y-1 border-b border-kelly-text/10 py-1.5">
+      <p className="text-[7px] font-bold uppercase text-kelly-text/45">Navigator</p>
+      <p className="text-[9px] font-bold text-kelly-text/80">{label}</p>
       <div className="flex flex-wrap gap-0.5 text-[8px]">
-        <Link className="rounded border border-deep-soil/15 bg-white px-1 py-0.5" href={`/admin/workbench/calendar?${weekHref(addWeeks(weekKey, -1))}`}>
+        <Link className="rounded border border-kelly-text/15 bg-white px-1 py-0.5" href={`/admin/workbench/calendar?${weekHref(addWeeks(weekKey, -1))}`}>
           −Week
         </Link>
-        <Link className="rounded border border-deep-soil/15 bg-white px-1 py-0.5" href={`/admin/workbench/calendar?${weekHref(addWeeks(weekKey, 1))}`}>
+        <Link className="rounded border border-kelly-text/15 bg-white px-1 py-0.5" href={`/admin/workbench/calendar?${weekHref(addWeeks(weekKey, 1))}`}>
           +Week
         </Link>
-        <Link className="rounded border border-deep-soil/15 bg-white px-1 py-0.5" href={monthHref(prevM)}>
+        <Link className="rounded border border-kelly-text/15 bg-white px-1 py-0.5" href={monthHref(prevM)}>
           « {prevM}
         </Link>
-        <Link className="rounded border border-deep-soil/15 bg-white px-1 py-0.5" href={monthHref(nextM)}>
+        <Link className="rounded border border-kelly-text/15 bg-white px-1 py-0.5" href={monthHref(nextM)}>
           {nextM} »
         </Link>
       </div>

@@ -13,12 +13,12 @@ export function PlanListSearchForm({ baseQuery }: { baseQuery: Record<string, st
         name="q"
         defaultValue={q}
         placeholder="Search title or summary…"
-        className="min-w-[12rem] flex-1 rounded border border-deep-soil/15 bg-white px-2 py-1 text-sm text-deep-soil"
+        className="min-w-[12rem] flex-1 rounded border border-kelly-text/15 bg-white px-2 py-1 text-sm text-kelly-text"
         aria-label="Search plans"
       />
       <button
         type="submit"
-        className="rounded border border-civic-slate/30 bg-civic-slate/10 px-2 py-1 text-xs font-semibold text-civic-slate"
+        className="rounded border border-kelly-slate/30 bg-kelly-slate/10 px-2 py-1 text-xs font-semibold text-kelly-slate"
       >
         Search
       </button>

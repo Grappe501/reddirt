@@ -46,26 +46,26 @@ export default async function FromTheRoadPage() {
   const hasTrailPhotos = trailGallery.length > 0;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-civic-fog/90 via-white to-civic-fog/50 pb-16 pt-10 md:pb-24 md:pt-14">
+    <div className="min-h-screen bg-gradient-to-b from-kelly-fog/90 via-white to-kelly-fog/50 pb-16 pt-10 md:pb-24 md:pt-14">
       <ContentContainer>
         <header className="mx-auto max-w-3xl text-center">
-          <p className="font-body text-[11px] font-bold uppercase tracking-[0.24em] text-civic-gold">Trail hub</p>
-          <h1 className="mt-4 font-heading text-[clamp(1.95rem,4.2vw,3rem)] font-bold tracking-tight text-civic-ink">
+          <p className="font-body text-[11px] font-bold uppercase tracking-[0.24em] text-kelly-gold">Trail hub</p>
+          <h1 className="mt-4 font-heading text-[clamp(1.95rem,4.2vw,3rem)] font-bold tracking-tight text-kelly-ink">
             From the Road
           </h1>
-          <p className="mt-6 font-body text-lg leading-relaxed text-civic-slate md:text-xl">
-            <strong className="text-civic-ink">One bookmark for the whole trail:</strong> Facebook, Instagram, X,
+          <p className="mt-6 font-body text-lg leading-relaxed text-kelly-slate md:text-xl">
+            <strong className="text-kelly-ink">One bookmark for the whole trail:</strong> Facebook, Instagram, X,
             YouTube, TikTok, and Kelly’s Substack writing open from the hub below—then live video and field updates follow,
             so neighbors can keep up without juggling apps or mystery algorithms.
           </p>
-          <p className="mt-5 font-body text-sm text-civic-slate/85">
-            <a href="#channels" className="font-semibold text-civic-blue underline-offset-2 hover:underline">
+          <p className="mt-5 font-body text-sm text-kelly-slate/85">
+            <a href="#channels" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
               All channels
             </a>
             {hasEmbeds ? (
               <>
                 {" · "}
-                <a href="#live-embeds" className="font-semibold text-civic-blue underline-offset-2 hover:underline">
+                <a href="#live-embeds" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
                   Live windows
                 </a>
               </>
@@ -73,7 +73,7 @@ export default async function FromTheRoadPage() {
             {hasFieldSocial ? (
               <>
                 {" · "}
-                <a href="#field" className="font-semibold text-civic-blue underline-offset-2 hover:underline">
+                <a href="#field" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
                   Field posts
                 </a>
               </>
@@ -81,7 +81,7 @@ export default async function FromTheRoadPage() {
             {hasNotebook ? (
               <>
                 {" · "}
-                <a href="#notebook" className="font-semibold text-civic-blue underline-offset-2 hover:underline">
+                <a href="#notebook" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
                   Writing
                 </a>
               </>
@@ -89,7 +89,7 @@ export default async function FromTheRoadPage() {
             {hasYoutube ? (
               <>
                 {" · "}
-                <a href="#on-camera" className="font-semibold text-civic-blue underline-offset-2 hover:underline">
+                <a href="#on-camera" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
                   On camera
                 </a>
               </>
@@ -97,13 +97,13 @@ export default async function FromTheRoadPage() {
             {hasTrailPhotos ? (
               <>
                 {" · "}
-                <a href="#trail-photos" className="font-semibold text-civic-blue underline-offset-2 hover:underline">
+                <a href="#trail-photos" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
                   Trail photos
                 </a>
               </>
             ) : null}
             {" · "}
-            <Link href="#take-action" className="font-semibold text-civic-blue underline-offset-2 hover:underline">
+            <Link href="#take-action" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
               Take action
             </Link>
           </p>
@@ -117,7 +117,7 @@ export default async function FromTheRoadPage() {
           <TrailPhotosShowcase
             sectionId="trail-photos"
             variant="woven"
-            className="!border-t border-civic-ink/10 !border-b-0 !pt-14 md:!pt-20"
+            className="!border-t border-kelly-ink/10 !border-b-0 !pt-14 md:!pt-20"
             photos={trailGallery}
             title="Trail photos — Arkansas, in the room"
             intro="Moments from counties and gatherings across Arkansas—real rooms and real neighbors."
@@ -127,13 +127,13 @@ export default async function FromTheRoadPage() {
         <div className="mt-10 md:mt-14" aria-hidden />
 
         {hasEmbeds ? (
-          <section id="live-embeds" className="scroll-mt-24 border-t border-civic-ink/8 pt-16 md:pt-20" aria-label="Live embeds">
-            <h2 className="font-heading text-2xl font-bold text-civic-ink md:text-3xl">Live from our channels</h2>
-            <p className="mt-3 max-w-3xl font-body text-base leading-relaxed text-civic-slate md:text-lg">
+          <section id="live-embeds" className="scroll-mt-24 border-t border-kelly-ink/8 pt-16 md:pt-20" aria-label="Live embeds">
+            <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">Live from our channels</h2>
+            <p className="mt-3 max-w-3xl font-body text-base leading-relaxed text-kelly-slate md:text-lg">
               Official embeds load here when available—Facebook, TikTok, YouTube, and Instagram highlights in one place.
             </p>
             <FromTheRoadLiveEmbeds config={embedsConfig} />
-            <p className="mt-6 max-w-3xl font-body text-xs leading-relaxed text-civic-slate/55">
+            <p className="mt-6 max-w-3xl font-body text-xs leading-relaxed text-kelly-slate/55">
               If a widget is blank, third-party cookies or strict privacy modes can block Facebook, Instagram, or TikTok.
               The channel buttons above always open the native site.
             </p>
@@ -143,9 +143,9 @@ export default async function FromTheRoadPage() {
         <div className="mt-10 md:mt-14" aria-hidden />
 
         {hasFieldSocial ? (
-          <section id="field" className="scroll-mt-24 border-t border-civic-ink/8 pt-16 md:pt-20" aria-label="Field posts">
-            <h2 className="font-heading text-2xl font-bold text-civic-ink md:text-3xl">In the field (Facebook &amp; Instagram)</h2>
-            <p className="mt-3 max-w-3xl font-body text-base leading-relaxed text-civic-slate md:text-lg">
+          <section id="field" className="scroll-mt-24 border-t border-kelly-ink/8 pt-16 md:pt-20" aria-label="Field posts">
+            <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">In the field (Facebook &amp; Instagram)</h2>
+            <p className="mt-3 max-w-3xl font-body text-base leading-relaxed text-kelly-slate md:text-lg">
               Short updates from the trail on Facebook and Instagram. Open a post for the full thread and comments.
             </p>
             <div className="mt-10 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
@@ -157,9 +157,9 @@ export default async function FromTheRoadPage() {
         ) : null}
 
         {hasNotebook ? (
-          <section id="notebook" className="scroll-mt-24 border-t border-civic-ink/8 pt-16 md:pt-20" aria-label="Writing on Substack">
-            <h2 className="font-heading text-2xl font-bold text-civic-ink md:text-3xl">Writing on Substack</h2>
-            <p className="mt-3 max-w-3xl font-body text-base leading-relaxed text-civic-slate md:text-lg">
+          <section id="notebook" className="scroll-mt-24 border-t border-kelly-ink/8 pt-16 md:pt-20" aria-label="Writing on Substack">
+            <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">Writing on Substack</h2>
+            <p className="mt-3 max-w-3xl font-body text-base leading-relaxed text-kelly-slate md:text-lg">
               Longer writing from the road—stories, explainers, and the voice you can share without a platform account
               watching over your shoulder.
             </p>
@@ -172,7 +172,7 @@ export default async function FromTheRoadPage() {
         ) : null}
 
         {!hasNotebook && !hasFieldSocial && !hasYoutube && !hasEmbeds ? (
-          <p className="mx-auto mt-16 max-w-lg text-center font-body text-civic-slate/75">
+          <p className="mx-auto mt-16 max-w-lg text-center font-body text-kelly-slate/75">
             Trail writing and updates will appear here as they&apos;re published. Check back soon.
           </p>
         ) : null}
@@ -180,11 +180,11 @@ export default async function FromTheRoadPage() {
         {hasYoutube ? (
           <section
             id="on-camera"
-            className="scroll-mt-24 border-t border-civic-ink/8 pt-16 md:pt-20"
+            className="scroll-mt-24 border-t border-kelly-ink/8 pt-16 md:pt-20"
             aria-label="YouTube from the road"
           >
-            <h2 className="font-heading text-2xl font-bold text-civic-ink md:text-3xl">On camera (YouTube)</h2>
-            <p className="mt-3 max-w-3xl font-body text-base leading-relaxed text-civic-slate md:text-lg">
+            <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">On camera (YouTube)</h2>
+            <p className="mt-3 max-w-3xl font-body text-base leading-relaxed text-kelly-slate md:text-lg">
               Speeches, answers, and short clips that carry the same voice you&apos;d hear in a county room—play only
               when you opt in, here on the page.
             </p>
@@ -192,18 +192,18 @@ export default async function FromTheRoadPage() {
               {youtube.map((v) => (
                 <article
                   key={v.inboundId}
-                  className="overflow-hidden rounded-card border border-civic-ink/10 bg-white shadow-sm"
+                  className="overflow-hidden rounded-card border border-kelly-ink/10 bg-white shadow-sm"
                 >
                   <LazyYouTubeEmbed videoId={v.videoId} title={v.title} posterUrl={v.posterUrl} className="!rounded-none" />
                   <div className="p-4">
-                    <h3 className="font-heading text-base font-bold text-civic-ink">{v.title}</h3>
+                    <h3 className="font-heading text-base font-bold text-kelly-ink">{v.title}</h3>
                     <ContentLocality countySlug={v.countySlug} city={v.city} variant="compact" />
                     {v.canonicalUrl ? (
                       <a
                         href={v.canonicalUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="mt-3 inline-block font-body text-xs font-semibold text-civic-blue hover:underline"
+                        className="mt-3 inline-block font-body text-xs font-semibold text-kelly-blue hover:underline"
                       >
                         Open on YouTube ↗
                       </a>
@@ -220,7 +220,7 @@ export default async function FromTheRoadPage() {
             id="take-action"
             title="The trail doesn’t end on the page"
             intro="Reading is a start—democracy still lives in rooms with real chairs. Host, volunteer, or invite us to yours. We’ll bring the respect; you bring the place."
-            className="scroll-mt-28 border-civic-ink/15"
+            className="scroll-mt-28 border-kelly-ink/15"
           />
         </div>
       </ContentContainer>
@@ -241,32 +241,32 @@ function RoadJournalCard({ post }: { post: RoadPostCard }) {
   return (
     <article
       id={`post-${post.slug}`}
-      className="flex flex-col overflow-hidden rounded-card border border-civic-ink/12 bg-white/95 shadow-md shadow-civic-ink/5"
+      className="flex flex-col overflow-hidden rounded-card border border-kelly-ink/12 bg-white/95 shadow-md shadow-kelly-ink/5"
     >
       {img ? (
-        <div className="relative aspect-[16/10] bg-civic-midnight/10">
+        <div className="relative aspect-[16/10] bg-kelly-navy/10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={img} alt="" className="h-full w-full object-cover" loading="lazy" />
         </div>
       ) : (
-        <div className="flex aspect-[16/10] items-center justify-center bg-gradient-to-br from-civic-blue/15 to-civic-midnight/25 font-body text-xs font-medium text-civic-ink/70">
+        <div className="flex aspect-[16/10] items-center justify-center bg-gradient-to-br from-kelly-blue/15 to-kelly-navy/25 font-body text-xs font-medium text-kelly-ink/70">
           From the trail
         </div>
       )}
       <div className="flex flex-1 flex-col p-5 md:p-6">
-        {date ? <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-civic-slate/50">{date}</p> : null}
+        {date ? <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-kelly-slate/50">{date}</p> : null}
         <ContentLocality countySlug={post.countySlug} city={post.city} variant="journal" />
-        <h3 className="mt-3 font-heading text-lg font-bold leading-snug text-civic-ink md:text-xl">
-          <Link href={post.canonicalUrl} target="_blank" rel="noreferrer" className="hover:text-civic-blue">
+        <h3 className="mt-3 font-heading text-lg font-bold leading-snug text-kelly-ink md:text-xl">
+          <Link href={post.canonicalUrl} target="_blank" rel="noreferrer" className="hover:text-kelly-blue">
             {post.title}
           </Link>
         </h3>
-        {excerpt ? <p className="mt-3 line-clamp-4 font-body text-sm leading-relaxed text-civic-slate md:text-[0.9375rem]">{excerpt}</p> : null}
+        {excerpt ? <p className="mt-3 line-clamp-4 font-body text-sm leading-relaxed text-kelly-slate md:text-[0.9375rem]">{excerpt}</p> : null}
         <Link
           href={post.canonicalUrl}
           target="_blank"
           rel="noreferrer"
-          className="mt-5 inline-flex text-sm font-bold uppercase tracking-wider text-civic-blue hover:underline"
+          className="mt-5 inline-flex text-sm font-bold uppercase tracking-wider text-kelly-blue hover:underline"
         >
           Read the full entry →
         </Link>
@@ -287,23 +287,23 @@ function SocialFieldCard({ item }: { item: RoadSocialCardVM }) {
   return (
     <article
       className={cn(
-        "flex flex-col overflow-hidden rounded-card border border-civic-ink/12 bg-white/95 shadow-md shadow-civic-ink/5",
-        item.platform === ContentPlatform.FACEBOOK && "ring-1 ring-civic-slate/10",
-        item.platform === ContentPlatform.INSTAGRAM && "ring-1 ring-civic-copper/15",
+        "flex flex-col overflow-hidden rounded-card border border-kelly-ink/12 bg-white/95 shadow-md shadow-kelly-ink/5",
+        item.platform === ContentPlatform.FACEBOOK && "ring-1 ring-kelly-slate/10",
+        item.platform === ContentPlatform.INSTAGRAM && "ring-1 ring-kelly-copper/15",
       )}
     >
       {item.imageSrc ? (
-        <div className="relative aspect-[16/10] bg-civic-midnight/10">
+        <div className="relative aspect-[16/10] bg-kelly-navy/10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={item.imageSrc} alt={item.imageAlt} className="h-full w-full object-cover" loading="lazy" />
         </div>
       ) : (
         <div
           className={cn(
-            "flex aspect-[16/10] items-center justify-center font-body text-xs font-medium text-civic-ink/60",
+            "flex aspect-[16/10] items-center justify-center font-body text-xs font-medium text-kelly-ink/60",
             item.platform === ContentPlatform.INSTAGRAM
               ? "bg-gradient-to-br from-fuchsia-900/20 to-amber-900/25"
-              : "bg-gradient-to-br from-civic-blue/20 to-civic-midnight/30",
+              : "bg-gradient-to-br from-kelly-blue/20 to-kelly-navy/30",
           )}
         >
           {item.platformLabel}
@@ -311,15 +311,15 @@ function SocialFieldCard({ item }: { item: RoadSocialCardVM }) {
       )}
       <div className="flex flex-1 flex-col p-5 md:p-6">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <span className="inline-flex rounded-full border border-civic-ink/12 bg-civic-midnight/4 px-2 py-0.5 font-body text-[10px] font-bold uppercase tracking-wider text-civic-slate/80">
+          <span className="inline-flex rounded-full border border-kelly-ink/12 bg-kelly-navy/4 px-2 py-0.5 font-body text-[10px] font-bold uppercase tracking-wider text-kelly-slate/80">
             {item.platformLabel} · {item.sourceTypeLabel}
           </span>
-          {date ? <span className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-civic-slate/45">{date}</span> : null}
+          {date ? <span className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-kelly-slate/45">{date}</span> : null}
         </div>
         <ContentLocality countySlug={item.countySlug} city={item.city} variant="journal" />
-        <h3 className="mt-3 font-heading text-lg font-bold leading-snug text-civic-ink md:text-xl">
+        <h3 className="mt-3 font-heading text-lg font-bold leading-snug text-kelly-ink md:text-xl">
           {canOpen ? (
-            <a href={item.href} target="_blank" rel="noreferrer" className="hover:text-civic-blue">
+            <a href={item.href} target="_blank" rel="noreferrer" className="hover:text-kelly-blue">
               {item.title}
             </a>
           ) : (
@@ -327,14 +327,14 @@ function SocialFieldCard({ item }: { item: RoadSocialCardVM }) {
           )}
         </h3>
         {item.excerpt ? (
-          <p className="mt-3 line-clamp-4 font-body text-sm leading-relaxed text-civic-slate md:text-[0.9375rem]">{item.excerpt}</p>
+          <p className="mt-3 line-clamp-4 font-body text-sm leading-relaxed text-kelly-slate md:text-[0.9375rem]">{item.excerpt}</p>
         ) : null}
         {canOpen ? (
           <a
             href={item.href}
             target="_blank"
             rel="noreferrer"
-            className="mt-5 inline-flex text-sm font-bold uppercase tracking-wider text-civic-blue hover:underline"
+            className="mt-5 inline-flex text-sm font-bold uppercase tracking-wider text-kelly-blue hover:underline"
           >
             Open on {item.platformLabel} ↗
           </a>

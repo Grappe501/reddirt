@@ -16,7 +16,7 @@ export function BroadcastAudiencePreview(p: Props) {
       <button
         type="button"
         disabled={pending}
-        className="rounded border border-washed-denim/30 bg-white px-1.5 py-0.5 text-[9px] font-bold text-civic-slate"
+        className="rounded border border-kelly-muted/30 bg-white px-1.5 py-0.5 text-[9px] font-bold text-kelly-slate"
         onClick={() => {
           const fd = new FormData();
           const el = document.querySelector<HTMLTextAreaElement>("#broadcast-audience-json");
@@ -39,7 +39,7 @@ export function BroadcastAudiencePreview(p: Props) {
       >
         {pending ? "…" : "Preview audience"}
       </button>
-      {out ? <p className="text-[9px] text-deep-soil/70">{out}</p> : null}
+      {out ? <p className="text-[9px] text-kelly-text/70">{out}</p> : null}
     </div>
   );
 }

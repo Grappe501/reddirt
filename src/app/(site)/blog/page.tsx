@@ -29,9 +29,9 @@ export default async function BlogIndexPage() {
       <FullBleedSection variant="subtle" padY>
         <ContentContainer wide>
           {cards.length === 0 ? (
-            <div className="rounded-card border border-dashed border-deep-soil/25 bg-cream-canvas/80 p-10 text-center">
-              <p className="font-heading text-lg font-bold text-deep-soil">New posts soon</p>
-              <p className="mt-3 font-body text-deep-soil/70">
+            <div className="rounded-card border border-dashed border-kelly-text/25 bg-kelly-page/80 p-10 text-center">
+              <p className="font-heading text-lg font-bold text-kelly-text">New posts soon</p>
+              <p className="mt-3 font-body text-kelly-text/70">
                 Longer writing from the trail is on Substack—use the link in the site footer when you want the full feed.
               </p>
             </div>

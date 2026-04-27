@@ -24,24 +24,24 @@ type Props = {
 export function MediaCenterInspector({ asset, missing, collections }: Props) {
   if (missing) {
     return (
-      <aside className="hidden w-80 shrink-0 border-l border-deep-soil/10 bg-amber-50/40 p-3 text-sm text-amber-900 xl:block">
+      <aside className="hidden w-80 shrink-0 border-l border-kelly-text/10 bg-amber-50/40 p-3 text-sm text-amber-900 xl:block">
         <p>That asset was not found (wrong id or deleted).</p>
       </aside>
     );
   }
   if (!asset) {
     return (
-      <aside className="hidden w-80 shrink-0 border-l border-deep-soil/10 bg-white/60 p-3 text-sm text-deep-soil/60 xl:block">
+      <aside className="hidden w-80 shrink-0 border-l border-kelly-text/10 bg-white/60 p-3 text-sm text-kelly-text/60 xl:block">
         <p className="font-body text-sm">Select an asset in the grid to triage, approve, and attach to social work items.</p>
-        <p className="mt-2 text-xs text-deep-soil/45">TODO: smart collection rule preview (filter JSON) · full-text transcript search in library · server-side derivative rendering.</p>
+        <p className="mt-2 text-xs text-kelly-text/45">TODO: smart collection rule preview (filter JSON) · full-text transcript search in library · server-side derivative rendering.</p>
         <p className="mt-2 text-xs">Author Studio and drawers reuse the same `MediaLibraryListItem` + preview URLs.</p>
       </aside>
     );
   }
 
   return (
-    <aside className="hidden w-96 max-w-[100vw] shrink-0 border-l border-deep-soil/10 bg-white/95 p-3 shadow-sm xl:block">
-      <div className="mb-2 aspect-video w-full overflow-hidden rounded-lg bg-deep-soil/5">
+    <aside className="hidden w-96 max-w-[100vw] shrink-0 border-l border-kelly-text/10 bg-white/95 p-3 shadow-sm xl:block">
+      <div className="mb-2 aspect-video w-full overflow-hidden rounded-lg bg-kelly-text/5">
         {asset.kind === "IMAGE" ? (
           <img
             src={ownedMediaPreviewUrl(asset.id)}
@@ -50,25 +50,25 @@ export function MediaCenterInspector({ asset, missing, collections }: Props) {
             loading="lazy"
           />
         ) : (
-          <div className="flex h-full items-center justify-center text-xs text-deep-soil/50">{socialEnumLabel(asset.kind)}</div>
+          <div className="flex h-full items-center justify-center text-xs text-kelly-text/50">{socialEnumLabel(asset.kind)}</div>
         )}
       </div>
-      <h3 className="font-heading text-base font-bold leading-snug text-deep-soil">{asset.title}</h3>
-      <p className="mt-0.5 font-mono text-[10px] text-deep-soil/55 break-all">{asset.fileName}</p>
+      <h3 className="font-heading text-base font-bold leading-snug text-kelly-text">{asset.title}</h3>
+      <p className="mt-0.5 font-mono text-[10px] text-kelly-text/55 break-all">{asset.fileName}</p>
       {asset.canonicalFileName && asset.canonicalFileName !== asset.fileName ? (
-        <p className="mt-0.5 font-mono text-[9px] text-deep-soil/45 break-all">
+        <p className="mt-0.5 font-mono text-[9px] text-kelly-text/45 break-all">
           <span className="font-semibold">Canonical:</span> {asset.canonicalFileName}
         </p>
       ) : null}
       {asset.originalFileName && asset.originalFileName !== asset.fileName ? (
-        <p className="mt-0.5 text-[10px] text-deep-soil/45">
+        <p className="mt-0.5 text-[10px] text-kelly-text/45">
           <span className="font-semibold">Original name:</span> {asset.originalFileName}
         </p>
       ) : null}
       {asset.reviewedAt ? (
         <p className="mt-1 text-[10px] text-emerald-800">Reviewed {new Date(asset.reviewedAt).toLocaleString()}</p>
       ) : (
-        <p className="mt-1 text-[10px] text-deep-soil/45">Not marked reviewed in Media Center</p>
+        <p className="mt-1 text-[10px] text-kelly-text/45">Not marked reviewed in Media Center</p>
       )}
 
       <form action={setMediaCenterReviewedAction} className="mt-2">
@@ -76,21 +76,21 @@ export function MediaCenterInspector({ asset, missing, collections }: Props) {
         <input type="hidden" name="markReviewed" value={asset.reviewedAt ? "0" : "1"} />
         <button
           type="submit"
-          className="w-full rounded-md border border-deep-soil/20 bg-cream-canvas px-2 py-1 text-xs font-semibold text-deep-soil"
+          className="w-full rounded-md border border-kelly-text/20 bg-kelly-page px-2 py-1 text-xs font-semibold text-kelly-text"
         >
           {asset.reviewedAt ? "Clear reviewed" : "Mark reviewed"}
         </button>
       </form>
 
-      <form action={updateMediaCenterTriageAction} className="mt-3 space-y-2 border-t border-deep-soil/10 pt-3">
+      <form action={updateMediaCenterTriageAction} className="mt-3 space-y-2 border-t border-kelly-text/10 pt-3">
         <input type="hidden" name="ownedMediaId" value={asset.id} />
-        <h4 className="font-body text-[10px] font-bold uppercase tracking-wider text-deep-soil/50">Triage</h4>
-        <label className="block text-[10px] text-deep-soil/70">
+        <h4 className="font-body text-[10px] font-bold uppercase tracking-wider text-kelly-text/50">Triage</h4>
+        <label className="block text-[10px] text-kelly-text/70">
           Rating
           <select
             name="rating"
             defaultValue={asset.rating != null ? String(asset.rating) : ""}
-            className="mt-0.5 w-full rounded border border-deep-soil/15 bg-white px-1 py-1 text-xs"
+            className="mt-0.5 w-full rounded border border-kelly-text/15 bg-white px-1 py-1 text-xs"
           >
             <option value="">—</option>
             {[1, 2, 3, 4, 5].map((n) => (
@@ -100,12 +100,12 @@ export function MediaCenterInspector({ asset, missing, collections }: Props) {
             ))}
           </select>
         </label>
-        <label className="block text-[10px] text-deep-soil/70">
+        <label className="block text-[10px] text-kelly-text/70">
           Pick
           <select
             name="pickStatus"
             defaultValue={asset.pickStatus}
-            className="mt-0.5 w-full rounded border border-deep-soil/15 bg-white px-1 py-1 text-xs"
+            className="mt-0.5 w-full rounded border border-kelly-text/15 bg-white px-1 py-1 text-xs"
           >
             {(["UNRATED", "PICK", "REJECT"] as const).map((p) => (
               <option key={p} value={p}>
@@ -114,12 +114,12 @@ export function MediaCenterInspector({ asset, missing, collections }: Props) {
             ))}
           </select>
         </label>
-        <label className="block text-[10px] text-deep-soil/70">
+        <label className="block text-[10px] text-kelly-text/70">
           Color
           <select
             name="colorLabel"
             defaultValue={asset.colorLabel}
-            className="mt-0.5 w-full rounded border border-deep-soil/15 bg-white px-1 py-1 text-xs"
+            className="mt-0.5 w-full rounded border border-kelly-text/15 bg-white px-1 py-1 text-xs"
           >
             {(["NONE", "RED", "YELLOW", "GREEN", "BLUE", "PURPLE"] as const).map((c) => (
               <option key={c} value={c}>
@@ -128,12 +128,12 @@ export function MediaCenterInspector({ asset, missing, collections }: Props) {
             ))}
           </select>
         </label>
-        <label className="flex items-center gap-2 text-[10px] text-deep-soil/80">
+        <label className="flex items-center gap-2 text-[10px] text-kelly-text/80">
           <input type="checkbox" name="isFavorite" value="on" defaultChecked={asset.isFavorite} />
           Favorite
         </label>
         <div className="space-y-1.5 text-[10px]">
-          <span className="block font-bold uppercase tracking-wider text-deep-soil/50">Approvals</span>
+          <span className="block font-bold uppercase tracking-wider text-kelly-text/50">Approvals</span>
           <label className="flex items-center gap-2">
             <input type="checkbox" name="approvedForSocial" value="on" defaultChecked={asset.approvedForSocial} />
             Social (workbench)
@@ -147,37 +147,37 @@ export function MediaCenterInspector({ asset, missing, collections }: Props) {
             Public site
           </label>
         </div>
-        <label className="block text-[10px] text-deep-soil/70">
+        <label className="block text-[10px] text-kelly-text/70">
           Review note
           <textarea
             name="reviewNotes"
             defaultValue={asset.reviewNotes ?? ""}
             rows={2}
-            className="mt-0.5 w-full rounded border border-deep-soil/15 bg-white px-1.5 py-1 text-xs"
+            className="mt-0.5 w-full rounded border border-kelly-text/15 bg-white px-1.5 py-1 text-xs"
             placeholder="Short triage / handoff"
           />
         </label>
-        <label className="block text-[10px] text-deep-soil/70">
+        <label className="block text-[10px] text-kelly-text/70">
           Staff review notes
           <textarea
             name="staffReviewNotes"
             defaultValue={asset.staffReviewNotes ?? ""}
             rows={3}
-            className="mt-0.5 w-full rounded border border-deep-soil/15 bg-white px-1.5 py-1 text-xs"
+            className="mt-0.5 w-full rounded border border-kelly-text/15 bg-white px-1.5 py-1 text-xs"
             placeholder="Internal DAM / comms notes"
           />
         </label>
-        <button type="submit" className="w-full rounded-md bg-deep-soil py-1.5 text-xs font-semibold text-cream-canvas">
+        <button type="submit" className="w-full rounded-md bg-kelly-text py-1.5 text-xs font-semibold text-kelly-page">
           Save triage
         </button>
       </form>
 
       {collections.filter((c) => !c.isSmart).length > 0 ? (
-        <form action={addOwnedMediaToCollectionAction} className="mt-3 border-t border-deep-soil/10 pt-3">
+        <form action={addOwnedMediaToCollectionAction} className="mt-3 border-t border-kelly-text/10 pt-3">
           <input type="hidden" name="ownedMediaId" value={asset.id} />
-          <h4 className="mb-1 font-body text-[10px] font-bold uppercase tracking-wider text-deep-soil/50">Add to collection</h4>
+          <h4 className="mb-1 font-body text-[10px] font-bold uppercase tracking-wider text-kelly-text/50">Add to collection</h4>
           <div className="flex gap-1">
-            <select name="collectionId" className="min-w-0 flex-1 rounded border border-deep-soil/15 bg-white px-1 py-1 text-xs" required>
+            <select name="collectionId" className="min-w-0 flex-1 rounded border border-kelly-text/15 bg-white px-1 py-1 text-xs" required>
               <option value="">Select…</option>
               {collections
                 .filter((c) => !c.isSmart)
@@ -187,22 +187,22 @@ export function MediaCenterInspector({ asset, missing, collections }: Props) {
                   </option>
                 ))}
             </select>
-            <button type="submit" className="shrink-0 rounded border border-deep-soil/20 bg-cream-canvas px-2 text-xs font-semibold">
+            <button type="submit" className="shrink-0 rounded border border-kelly-text/20 bg-kelly-page px-2 text-xs font-semibold">
               Add
             </button>
           </div>
           {collections.some((c) => c.isSmart) ? (
-            <p className="mt-1 text-[9px] text-deep-soil/45">TODO: smart collections (evaluate `filterJson` here).</p>
+            <p className="mt-1 text-[9px] text-kelly-text/45">TODO: smart collections (evaluate `filterJson` here).</p>
           ) : null}
         </form>
       ) : null}
 
-      <dl className="mt-3 space-y-1 border-t border-deep-soil/10 pt-3 font-body text-xs text-deep-soil/80">
+      <dl className="mt-3 space-y-1 border-t border-kelly-text/10 pt-3 font-body text-xs text-kelly-text/80">
         {asset.parentAssetId ? (
           <div className="flex justify-between gap-2">
-            <dt className="text-deep-soil/50">Parent</dt>
+            <dt className="text-kelly-text/50">Parent</dt>
             <dd className="max-w-[12rem] truncate font-mono text-[10px]">
-              <Link href={`/admin/owned-media/grid?inspect=${encodeURIComponent(asset.parentAssetId)}`} className="text-civic-slate underline">
+              <Link href={`/admin/owned-media/grid?inspect=${encodeURIComponent(asset.parentAssetId)}`} className="text-kelly-slate underline">
                 {asset.parentAssetId}
               </Link>
             </dd>
@@ -210,9 +210,9 @@ export function MediaCenterInspector({ asset, missing, collections }: Props) {
         ) : null}
         {asset.rootAssetId && asset.rootAssetId !== asset.id ? (
           <div className="flex justify-between gap-2">
-            <dt className="text-deep-soil/50">Root</dt>
+            <dt className="text-kelly-text/50">Root</dt>
             <dd className="max-w-[12rem] truncate font-mono text-[10px]">
-              <Link href={`/admin/owned-media/grid?inspect=${encodeURIComponent(asset.rootAssetId)}`} className="text-civic-slate underline">
+              <Link href={`/admin/owned-media/grid?inspect=${encodeURIComponent(asset.rootAssetId)}`} className="text-kelly-slate underline">
                 {asset.rootAssetId}
               </Link>
             </dd>
@@ -220,42 +220,42 @@ export function MediaCenterInspector({ asset, missing, collections }: Props) {
         ) : null}
         {asset.mediaIngestBatchId ? (
           <div className="flex justify-between gap-2">
-            <dt className="text-deep-soil/50">Import batch</dt>
+            <dt className="text-kelly-text/50">Import batch</dt>
             <dd className="text-right text-[10px]">
-              <Link href={`/admin/owned-media/batches/${asset.mediaIngestBatchId}`} className="text-civic-slate underline break-all">
+              <Link href={`/admin/owned-media/batches/${asset.mediaIngestBatchId}`} className="text-kelly-slate underline break-all">
                 {asset.mediaIngestBatchId.slice(0, 8)}…
               </Link>
             </dd>
           </div>
         ) : null}
         <div className="flex justify-between gap-2">
-          <dt className="text-deep-soil/50">Kind</dt>
+          <dt className="text-kelly-text/50">Kind</dt>
           <dd>{socialEnumLabel(asset.kind)}</dd>
         </div>
         <div className="flex justify-between gap-2">
-          <dt className="text-deep-soil/50">Source</dt>
+          <dt className="text-kelly-text/50">Source</dt>
           <dd>{socialEnumLabel(asset.sourceType)}</dd>
         </div>
         <div className="flex justify-between gap-2">
-          <dt className="text-deep-soil/50">Derivative</dt>
+          <dt className="text-kelly-text/50">Derivative</dt>
           <dd>{socialEnumLabel(asset.derivativeType)}</dd>
         </div>
         <div className="flex flex-wrap justify-between gap-2">
-          <dt className="text-deep-soil/50">Transcript</dt>
+          <dt className="text-kelly-text/50">Transcript</dt>
           <dd>{asset.hasTranscript ? "Yes" : "No"}</dd>
         </div>
         {asset.countyLabel ? (
           <div className="flex justify-between gap-2">
-            <dt className="text-deep-soil/50">County</dt>
+            <dt className="text-kelly-text/50">County</dt>
             <dd>{asset.countyLabel}</dd>
           </div>
         ) : null}
       </dl>
 
-      <div className="mt-3 border-t border-deep-soil/10 pt-3">
-        <h4 className="font-body text-[10px] font-bold uppercase tracking-wider text-deep-soil/50">Derivative jobs</h4>
+      <div className="mt-3 border-t border-kelly-text/10 pt-3">
+        <h4 className="font-body text-[10px] font-bold uppercase tracking-wider text-kelly-text/50">Derivative jobs</h4>
         {asset.derivativeJobs.length === 0 ? (
-          <p className="mt-1 text-[10px] text-deep-soil/50">
+          <p className="mt-1 text-[10px] text-kelly-text/50">
             No queued jobs for this source asset. Workers will create rows here when rendering proxies and crops.
           </p>
         ) : (
@@ -263,13 +263,13 @@ export function MediaCenterInspector({ asset, missing, collections }: Props) {
             {asset.derivativeJobs.map((job) => (
               <li
                 key={job.id}
-                className="rounded-md border border-deep-soil/10 bg-deep-soil/[0.02] px-2 py-1.5 text-[10px] text-deep-soil/85"
+                className="rounded-md border border-kelly-text/10 bg-kelly-text/[0.02] px-2 py-1.5 text-[10px] text-kelly-text/85"
               >
                 <div className="flex flex-wrap items-center justify-between gap-1">
                   <span className="font-mono font-semibold">{socialEnumLabel(job.targetDerivativeType)}</span>
-                  <span className="rounded bg-deep-soil/10 px-1 font-mono text-[9px] uppercase">{job.status}</span>
+                  <span className="rounded bg-kelly-text/10 px-1 font-mono text-[9px] uppercase">{job.status}</span>
                 </div>
-                <div className="mt-0.5 text-[9px] text-deep-soil/55">
+                <div className="mt-0.5 text-[9px] text-kelly-text/55">
                   Updated {new Date(job.updatedAt).toLocaleString()}
                   {job.startedAt ? ` · Started ${new Date(job.startedAt).toLocaleString()}` : ""}
                   {job.finishedAt ? ` · Finished ${new Date(job.finishedAt).toLocaleString()}` : ""}
@@ -284,7 +284,7 @@ export function MediaCenterInspector({ asset, missing, collections }: Props) {
             ))}
           </ul>
         )}
-        <p className="mt-2 text-[9px] text-deep-soil/45">
+        <p className="mt-2 text-[9px] text-kelly-text/45">
           When jobs finish, child rows link back via parent asset id and derivative type on the asset record.
         </p>
       </div>
@@ -295,10 +295,10 @@ export function MediaCenterInspector({ asset, missing, collections }: Props) {
         collections={collections.map((c) => ({ id: c.id, name: c.name }))}
       />
 
-      <div className="mt-3 border-t border-deep-soil/10 pt-3">
+      <div className="mt-3 border-t border-kelly-text/10 pt-3">
         <Link
           href={`/admin/owned-media/${asset.id}`}
-          className="inline-flex rounded-lg bg-deep-soil px-3 py-1.5 text-xs font-semibold text-cream-canvas"
+          className="inline-flex rounded-lg bg-kelly-text px-3 py-1.5 text-xs font-semibold text-kelly-page"
         >
           Open full detail
         </Link>

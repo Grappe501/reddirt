@@ -2,9 +2,9 @@ import Link from "next/link";
 import type { KellyAboutSlug } from "@/content/about/kelly-about-chapters";
 
 const linkOut =
-  "font-semibold text-red-dirt underline decoration-red-dirt/30 underline-offset-2 transition hover:decoration-red-dirt";
-const lead = "font-body text-lg leading-relaxed text-deep-soil/88";
-const p = "font-body text-base leading-relaxed text-deep-soil/82";
+  "font-semibold text-kelly-navy underline decoration-kelly-navy/30 underline-offset-2 transition hover:decoration-kelly-navy";
+const lead = "font-body text-lg leading-relaxed text-kelly-text/88";
+const p = "font-body text-base leading-relaxed text-kelly-text/82";
 
 type Props = { slug: KellyAboutSlug };
 
@@ -79,8 +79,8 @@ export function KellyChapterBody({ slug }: Props) {
             government</strong> doing what a fair front office is supposed to do: save citizens from paying twice for
             the same simple mistake the system should have prevented.
           </p>
-          <p className="rounded-xl border border-deep-soil/10 bg-deep-soil/[0.04] p-4 font-body text-sm text-deep-soil/75">
-            <span className="font-bold text-deep-soil">Career background: </span>
+          <p className="rounded-xl border border-kelly-text/10 bg-kelly-text/[0.04] p-4 font-body text-sm text-kelly-text/75">
+            <span className="font-bold text-kelly-text">Career background: </span>
             <a
               href="https://www.linkedin.com/in/kelly-grappe-48b6aa51/"
               target="_blank"
@@ -136,8 +136,8 @@ export function KellyChapterBody({ slug }: Props) {
             has nothing to fear from a citizen who read the form twice and still needs a human to answer the
             question—without being talked down to.
           </p>
-          <p className="rounded-xl border border-deep-soil/10 bg-deep-soil/[0.04] p-4 font-body text-sm text-deep-soil/75">
-            <span className="font-bold text-deep-soil">More: </span>
+          <p className="rounded-xl border border-kelly-text/10 bg-kelly-text/[0.04] p-4 font-body text-sm text-kelly-text/75">
+            <span className="font-bold text-kelly-text">More: </span>
             <a href="https://www.forevermostfarms.com" target="_blank" rel="noopener noreferrer" className={linkOut}>
               forevermostfarms.com
             </a>{" "}
@@ -182,8 +182,8 @@ export function KellyChapterBody({ slug }: Props) {
             disposable, this work is not a cute sidebar in Kelly’s biography—it is the <strong>evidence of how she
             leads</strong> when no camera is guaranteed.
           </p>
-          <p className="rounded-xl border border-field-green/25 bg-field-green/[0.06] p-4 font-body text-sm text-deep-soil/80">
-            <span className="font-bold text-deep-soil">Explore: </span>
+          <p className="rounded-xl border border-kelly-success/25 bg-kelly-success/[0.06] p-4 font-body text-sm text-kelly-text/80">
+            <span className="font-bold text-kelly-text">Explore: </span>
             <a
               href="https://www.standuparkansas.com/civic-education-hub"
               target="_blank"
@@ -252,44 +252,44 @@ export function KellyChapterBody({ slug }: Props) {
             <strong>patience</strong> with people who are new to a process, and <strong>fierce protectiveness</strong> of
             public trust when cynicism is the cheap exit.
           </p>
-          <ul className="list-none space-y-3 font-body text-base leading-relaxed text-deep-soil/85">
+          <ul className="list-none space-y-3 font-body text-base leading-relaxed text-kelly-text/85">
             <li className="flex gap-3">
-              <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-red-dirt" aria-hidden />
+              <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-kelly-navy" aria-hidden />
               <span>
-                <strong className="text-deep-soil">Telecom operations</strong> taught her to <strong>run real
+                <strong className="text-kelly-text">Telecom operations</strong> taught her to <strong>run real
                 teams</strong>, to see <strong>process</strong> as something you improve on purpose, and to design
                 service so the next person in line is not paying for the last person’s shortcut.
               </span>
             </li>
             <li className="flex gap-3">
-              <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-red-dirt" aria-hidden />
+              <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-kelly-navy" aria-hidden />
               <span>
-                <strong className="text-deep-soil">Farming and a small market</strong> taught her that{" "}
+                <strong className="text-kelly-text">Farming and a small market</strong> taught her that{" "}
                 <strong>neglect and favoritism</strong> both have consequences you cannot market away—small operators
                 feel <strong>every</strong> friction in fees, time, and paperwork, and the office should be built to
                 reduce that drag without lowering standards.
               </span>
             </li>
             <li className="flex gap-3">
-              <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-red-dirt" aria-hidden />
+              <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-kelly-navy" aria-hidden />
               <span>
-                <strong className="text-deep-soil">Civic work</strong> taught her that <strong>democracy is a
+                <strong className="text-kelly-text">Civic work</strong> taught her that <strong>democracy is a
                 skill</strong>—and that Arkansans will step up when someone meets them with <strong>training and
                 respect</strong>, not a lecture from on high.
               </span>
             </li>
             <li className="flex gap-3">
-              <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-red-dirt" aria-hidden />
+              <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-kelly-navy" aria-hidden />
               <span>
-                <strong className="text-deep-soil">Ballot initiative campaigns</strong> taught her that{" "}
+                <strong className="text-kelly-text">Ballot initiative campaigns</strong> taught her that{" "}
                 <strong>direct democracy is logistics</strong>—petitions, notaries, volunteers, and a process that should
                 stay <strong>centered on citizens</strong>, not dark money and outside interests.
               </span>
             </li>
             <li className="flex gap-3">
-              <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-red-dirt" aria-hidden />
+              <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-kelly-navy" aria-hidden />
               <span>
-                <strong className="text-deep-soil">The Secretary of State role</strong> is where the threads meet:
+                <strong className="text-kelly-text">The Secretary of State role</strong> is where the threads meet:
                 the <strong>systems</strong> that make <strong>elections</strong>, <strong>records</strong>, and{" "}
                 <strong>commerce</strong> legible in real life—<strong>all 75 counties</strong>, year after year.
               </span>
@@ -321,7 +321,7 @@ export function KellyChapterBody({ slug }: Props) {
             asking for your <strong>time</strong> and your <strong>voice</strong> in that order, because a statewide
             campaign that does not <strong>scale through trust</strong> is only noise.
           </p>
-          <ol className="list-decimal space-y-4 pl-5 font-body text-base leading-relaxed text-deep-soil/85">
+          <ol className="list-decimal space-y-4 pl-5 font-body text-base leading-relaxed text-kelly-text/85">
             <li>
               <strong>Know the story</strong> well enough to explain it in one minute to a neighbor who does not follow
               politics: <strong>business and farm</strong> experience, <strong>Stand Up</strong>, ballot and initiative
@@ -344,7 +344,7 @@ export function KellyChapterBody({ slug }: Props) {
             with a link to these chapters and a coffee-table conversation: not to win a debate, but to <strong>replace
             rumor with first-hand copy</strong> people can read for themselves.
           </p>
-          <p className="font-body text-base text-deep-soil/78">
+          <p className="font-body text-base text-kelly-text/78">
             Need a person, not a page:{" "}
             <a href="mailto:kelly@kellygrappe.com" className={linkOut}>
               kelly@kellygrappe.com

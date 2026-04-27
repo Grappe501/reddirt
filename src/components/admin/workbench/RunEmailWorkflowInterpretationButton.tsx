@@ -11,7 +11,7 @@ export function RunEmailWorkflowInterpretationButton({ itemId }: { itemId: strin
 
   return (
     <form
-      className="rounded border border-deep-soil/15 bg-white p-2"
+      className="rounded border border-kelly-text/15 bg-white p-2"
       onSubmit={(e) => {
         e.preventDefault();
         setErr(null);
@@ -27,12 +27,12 @@ export function RunEmailWorkflowInterpretationButton({ itemId }: { itemId: strin
       }}
     >
       <input type="hidden" name="itemId" value={itemId} />
-      <p className="mb-1 font-body text-[10px] text-deep-soil/60">
+      <p className="mb-1 font-body text-[10px] text-kelly-text/60">
         Runs deterministic E-2A heuristics (no AI). Fills empty summary fields by default. Optional overwrites
         require checking the boxes. Does not send mail or auto-approve.
       </p>
       {err ? <p className="mb-1 text-xs text-red-800">{err}</p> : null}
-      <div className="mb-1 flex flex-wrap gap-3 text-[10px] text-deep-soil/75">
+      <div className="mb-1 flex flex-wrap gap-3 text-[10px] text-kelly-text/75">
         <label className="inline-flex items-center gap-1">
           <input type="checkbox" name="forceSummaries" className="h-3 w-3" />
           Overwrite non-empty summary fields
@@ -45,7 +45,7 @@ export function RunEmailWorkflowInterpretationButton({ itemId }: { itemId: strin
       <button
         type="submit"
         disabled={pending}
-        className="rounded border border-washed-denim/30 bg-cream-canvas px-2 py-1 text-xs font-semibold text-civic-slate"
+        className="rounded border border-kelly-muted/30 bg-kelly-page px-2 py-1 text-xs font-semibold text-kelly-slate"
       >
         {pending ? "Running…" : "Run interpretation"}
       </button>

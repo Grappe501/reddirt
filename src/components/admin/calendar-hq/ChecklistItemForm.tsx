@@ -18,12 +18,12 @@ export function ChecklistItemForm({
       <button
         type="submit"
         className={`mt-0.5 h-3.5 w-3.5 shrink-0 rounded border ${
-          item.done ? "border-field-green bg-field-green" : "border-deep-soil/25 bg-white"
+          item.done ? "border-kelly-success bg-kelly-success" : "border-kelly-text/25 bg-white"
         }`}
         aria-pressed={item.done}
         title="Mark done / undo"
       />
-      <span className={item.done ? "text-deep-soil/50 line-through" : "text-deep-soil/90"}>{item.label}</span>
+      <span className={item.done ? "text-kelly-text/50 line-through" : "text-kelly-text/90"}>{item.label}</span>
     </form>
   );
 }

@@ -38,8 +38,8 @@ type Props = {
 type WorkbenchLane = "all" | "calendar" | "orchestration";
 
 const card =
-  "rounded-md border border-deep-soil/10 bg-cream-canvas px-2 py-1.5 shadow-sm min-w-0";
-const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-deep-soil/55";
+  "rounded-md border border-kelly-text/10 bg-kelly-page px-2 py-1.5 shadow-sm min-w-0";
+const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
 const breakOut = "-mx-6 -mt-10 -mb-10 w-[calc(100%+3rem)] max-w-[calc(100vw-280px-3rem)] min-w-0 px-0 pt-0 pb-6 lg:-mx-12 lg:mt-0 lg:mb-0 lg:w-[calc(100%+6rem)] lg:max-w-none";
 
 function workbenchQ(opts: { county?: string | null; thread?: string | null; lane?: WorkbenchLane }) {
@@ -126,7 +126,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
     console.error("AdminWorkbenchPage load", e);
     return (
       <div className="border border-red-200/80 bg-red-50/60 px-4 py-5">
-        <h1 className="font-heading text-lg font-bold text-deep-soil">Campaign workbench</h1>
+        <h1 className="font-heading text-lg font-bold text-kelly-text">Campaign workbench</h1>
         <p className="mt-1 font-body text-sm text-red-900">
           Could not load this page. Check database connectivity, then refresh. If the problem continues, see server logs.
         </p>
@@ -135,7 +135,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
         </pre>
         <a
           href="/admin/workbench"
-          className="mt-3 inline-block rounded border border-deep-soil/20 bg-white px-2 py-1 text-sm font-semibold"
+          className="mt-3 inline-block rounded border border-kelly-text/20 bg-white px-2 py-1 text-sm font-semibold"
         >
           Reset URL and retry
         </a>
@@ -280,18 +280,18 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
   return (
     <div className={breakOut}>
       {/* CM-1: De facto Campaign Manager / orchestration hub — see docs/campaign-manager-orchestration-map.md */}
-      <div className="border-b border-deep-soil/10 bg-washed-canvas px-2 py-1.5 md:px-3">
+      <div className="border-b border-kelly-text/10 bg-kelly-wash px-2 py-1.5 md:px-3">
         <div className="flex flex-col gap-1.5 md:flex-row md:items-center md:justify-between">
           <div>
-            <h1 className="font-heading text-lg font-bold text-deep-soil md:text-xl">Campaign workbench</h1>
-            <p className="font-body text-[11px] text-deep-soil/65">
+            <h1 className="font-heading text-lg font-bold text-kelly-text md:text-xl">Campaign workbench</h1>
+            <p className="font-body text-[11px] text-kelly-text/65">
               Communications · {new Date().toLocaleString()}. Dense layout for full HD; side rails stack on small screens.
             </p>
           </div>
           <div className="flex flex-wrap gap-0.5">
             <Link
               href={`/admin/workbench${workbenchQ({ county: null, lane })}`}
-              className={`rounded px-1.5 py-0.5 text-[10px] font-semibold ${!countyId && lane === "all" ? "bg-deep-soil text-cream-canvas" : "border border-deep-soil/20 bg-white"}`}
+              className={`rounded px-1.5 py-0.5 text-[10px] font-semibold ${!countyId && lane === "all" ? "bg-kelly-text text-kelly-page" : "border border-kelly-text/20 bg-white"}`}
             >
               All
             </Link>
@@ -300,7 +300,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                 key={c.id}
                 href={`/admin/workbench${workbenchQ({ county: c.id, lane })}`}
                 className={`rounded px-1.5 py-0.5 text-[10px] font-semibold ${
-                  countyId === c.id ? "bg-deep-soil text-cream-canvas" : "border border-deep-soil/20 bg-white"
+                  countyId === c.id ? "bg-kelly-text text-kelly-page" : "border border-kelly-text/20 bg-white"
                 }`}
               >
                 {c.displayName}
@@ -308,55 +308,55 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
             ))}
             <Link
               href={`/admin/workbench${workbenchQ({ county: countyId, lane: "all" })}`}
-              className={`rounded px-1.5 py-0.5 text-[10px] font-bold ${lane === "all" ? "bg-washed-denim text-cream-canvas" : "border border-washed-denim/30 bg-washed-denim/10 text-civic-slate"}`}
+              className={`rounded px-1.5 py-0.5 text-[10px] font-bold ${lane === "all" ? "bg-kelly-muted text-kelly-page" : "border border-kelly-muted/30 bg-kelly-muted/10 text-kelly-slate"}`}
             >
               Queue all
             </Link>
             <Link
               href={`/admin/workbench${workbenchQ({ county: countyId, lane: "calendar" })}`}
-              className={`rounded px-1.5 py-0.5 text-[10px] font-bold ${lane === "calendar" ? "bg-washed-denim text-cream-canvas" : "border border-washed-denim/30 bg-washed-denim/10 text-civic-slate"}`}
+              className={`rounded px-1.5 py-0.5 text-[10px] font-bold ${lane === "calendar" ? "bg-kelly-muted text-kelly-page" : "border border-kelly-muted/30 bg-kelly-muted/10 text-kelly-slate"}`}
             >
               Calendar ops
             </Link>
             <Link
               href={`/admin/workbench${workbenchQ({ county: countyId, lane: "orchestration" })}`}
-              className={`rounded px-1.5 py-0.5 text-[10px] font-bold ${lane === "orchestration" ? "bg-deep-soil text-cream-canvas" : "border border-deep-soil/20 bg-white"}`}
+              className={`rounded px-1.5 py-0.5 text-[10px] font-bold ${lane === "orchestration" ? "bg-kelly-text text-kelly-page" : "border border-kelly-text/20 bg-white"}`}
             >
               Automations
             </Link>
             <Link
               href="/admin/workbench/calendar"
-              className="rounded border border-washed-denim/40 bg-washed-denim/10 px-1.5 py-0.5 text-[10px] font-bold text-civic-slate"
+              className="rounded border border-kelly-muted/40 bg-kelly-muted/10 px-1.5 py-0.5 text-[10px] font-bold text-kelly-slate"
             >
               Calendar HQ
             </Link>
             <Link
               href="/admin/workbench/festivals"
-              className="rounded border border-deep-soil/20 bg-white px-1.5 py-0.5 text-[10px] font-bold text-deep-soil"
+              className="rounded border border-kelly-text/20 bg-white px-1.5 py-0.5 text-[10px] font-bold text-kelly-text"
             >
               Community events{pendingFestivalIngest > 0 ? ` (${pendingFestivalIngest})` : ""}
             </Link>
             <Link
               href="/admin/workbench/social"
-              className="rounded border border-washed-denim/30 bg-cream-canvas px-1.5 py-0.5 text-[10px] font-bold text-civic-slate"
+              className="rounded border border-kelly-muted/30 bg-kelly-page px-1.5 py-0.5 text-[10px] font-bold text-kelly-slate"
             >
               Social{socialSum.inPipeline + socialSum.inReview > 0 ? ` (${socialSum.inPipeline + socialSum.inReview})` : ""}
             </Link>
             <Link
               href="/admin/workbench/email-queue"
-              className="rounded border border-washed-denim/20 bg-cream-canvas px-1.5 py-0.5 text-[10px] font-bold text-civic-slate"
+              className="rounded border border-kelly-muted/20 bg-kelly-page px-1.5 py-0.5 text-[10px] font-bold text-kelly-slate"
             >
               Email workflow
             </Link>
             <Link
               href="/admin/workbench/positions"
-              className="rounded border border-deep-soil/15 bg-cream-canvas px-1.5 py-0.5 text-[10px] font-bold text-deep-soil"
+              className="rounded border border-kelly-text/15 bg-kelly-page px-1.5 py-0.5 text-[10px] font-bold text-kelly-text"
             >
               By position
             </Link>
             <Link
               href="/admin/workbench/seats"
-              className="rounded border border-deep-soil/15 bg-cream-canvas px-1.5 py-0.5 text-[10px] font-bold text-deep-soil"
+              className="rounded border border-kelly-text/15 bg-kelly-page px-1.5 py-0.5 text-[10px] font-bold text-kelly-text"
             >
               Seats
             </Link>
@@ -389,26 +389,26 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
 
       <CampaignManagerDashboardBands snapshot={truthSnapshot} />
 
-      <details className="mx-2 mb-1 rounded border border-deep-soil/10 bg-cream-canvas/90 px-2 py-1 md:mx-3">
-        <summary className="cursor-pointer font-body text-[10px] font-semibold text-deep-soil/70">
+      <details className="mx-2 mb-1 rounded border border-kelly-text/10 bg-kelly-page/90 px-2 py-1 md:mx-3">
+        <summary className="cursor-pointer font-body text-[10px] font-semibold text-kelly-text/70">
           BRAIN-OPS-2 / BRAIN-OPS-3 truth snapshot (read-only)
         </summary>
         <div className="mt-1 space-y-1.5">
           <div>
             <p className={h2}>County goal mirror</p>
-            <pre className="max-h-32 overflow-auto rounded border border-deep-soil/5 bg-white/80 px-1 py-0.5 font-mono text-[9px] leading-snug text-deep-soil/85">
+            <pre className="max-h-32 overflow-auto rounded border border-kelly-text/5 bg-white/80 px-1 py-0.5 font-mono text-[9px] leading-snug text-kelly-text/85">
               {JSON.stringify(truthSnapshot.countyGoalMirror, null, 2)}
             </pre>
           </div>
           <div>
             <p className={h2}>Truth metrics</p>
-            <pre className="max-h-36 overflow-auto rounded border border-deep-soil/5 bg-white/80 px-1 py-0.5 font-mono text-[9px] leading-snug text-deep-soil/85">
+            <pre className="max-h-36 overflow-auto rounded border border-kelly-text/5 bg-white/80 px-1 py-0.5 font-mono text-[9px] leading-snug text-kelly-text/85">
               {JSON.stringify(truthSnapshot.truth, null, 2)}
             </pre>
           </div>
           <div>
             <p className={h2}>Health</p>
-            <pre className="max-h-40 overflow-auto rounded border border-deep-soil/5 bg-white/80 px-1 py-0.5 font-mono text-[9px] leading-snug text-deep-soil/85">
+            <pre className="max-h-40 overflow-auto rounded border border-kelly-text/5 bg-white/80 px-1 py-0.5 font-mono text-[9px] leading-snug text-kelly-text/85">
               {JSON.stringify(
                 {
                   missingData: truthSnapshot.health.missingData,
@@ -424,60 +424,60 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
           </div>
           <div>
             <p className={h2}>Governance</p>
-            <pre className="max-h-28 overflow-auto rounded border border-deep-soil/5 bg-white/80 px-1 py-0.5 font-mono text-[9px] leading-snug text-deep-soil/85">
+            <pre className="max-h-28 overflow-auto rounded border border-kelly-text/5 bg-white/80 px-1 py-0.5 font-mono text-[9px] leading-snug text-kelly-text/85">
               {JSON.stringify(truthSnapshot.governance, null, 2)}
             </pre>
           </div>
-          <p className="font-mono text-[8px] text-deep-soil/50">generatedAt: {truthSnapshot.generatedAt.toISOString()}</p>
+          <p className="font-mono text-[8px] text-kelly-text/50">generatedAt: {truthSnapshot.generatedAt.toISOString()}</p>
         </div>
       </details>
 
       <UnifiedOpenWorkSection items={uwr1OpenWork} />
 
-      <div className="grid grid-cols-2 gap-1 border-b border-deep-soil/10 bg-cream-canvas/80 px-1 py-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-12">
+      <div className="grid grid-cols-2 gap-1 border-b border-kelly-text/10 bg-kelly-page/80 px-1 py-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-12">
         <div className={card}>
           <p className={h2}>Needs reply</p>
-          <p className="font-heading text-lg font-bold text-red-dirt">{data.commsSummary.needsReplyCount}</p>
+          <p className="font-heading text-lg font-bold text-kelly-navy">{data.commsSummary.needsReplyCount}</p>
         </div>
         <div className={card}>
           <p className={h2}>Unread threads</p>
-          <p className="font-heading text-lg font-bold text-deep-soil">{data.commsSummary.unreadThreadCount}</p>
+          <p className="font-heading text-lg font-bold text-kelly-text">{data.commsSummary.unreadThreadCount}</p>
         </div>
         <div className={card}>
           <p className={h2}>Queue pending</p>
-          <p className="font-heading text-lg font-bold text-deep-soil">{data.commsSummary.pendingQueueCount}</p>
+          <p className="font-heading text-lg font-bold text-kelly-text">{data.commsSummary.pendingQueueCount}</p>
         </div>
         <div className={card}>
           <p className={h2}>Cal queue</p>
-          <p className="font-heading text-lg font-bold text-civic-slate">{data.commsSummary.calendarQueuePending}</p>
-          <Link href={`/admin/workbench${workbenchQ({ county: countyId, lane: "calendar" })}`} className="text-[10px] font-semibold text-civic-slate">
+          <p className="font-heading text-lg font-bold text-kelly-slate">{data.commsSummary.calendarQueuePending}</p>
+          <Link href={`/admin/workbench${workbenchQ({ county: countyId, lane: "calendar" })}`} className="text-[10px] font-semibold text-kelly-slate">
             →
           </Link>
         </div>
         <div className={card}>
           <p className={h2}>Auto campaigns</p>
-          <p className="font-heading text-lg font-bold text-deep-soil">{data.commsSummary.automationShellCount}</p>
+          <p className="font-heading text-lg font-bold text-kelly-text">{data.commsSummary.automationShellCount}</p>
           <Link
             href={`/admin/workbench${workbenchQ({ county: countyId, lane: "orchestration" })}`}
-            className="text-[10px] font-semibold text-civic-slate"
+            className="text-[10px] font-semibold text-kelly-slate"
           >
             Orchestrate
           </Link>
         </div>
         <div className={card}>
           <p className={h2}>Msg volume today</p>
-          <p className="font-heading text-lg font-bold text-deep-soil">{data.commsSummary.messagesTodayCount}</p>
+          <p className="font-heading text-lg font-bold text-kelly-text">{data.commsSummary.messagesTodayCount}</p>
         </div>
         <div className={card}>
           <p className={h2}>Open tasks</p>
-          <p className="font-heading text-lg font-bold text-red-dirt">{data.openTaskCount}</p>
-          <Link href="/admin/tasks" className="text-[10px] font-semibold text-civic-slate">
+          <p className="font-heading text-lg font-bold text-kelly-navy">{data.openTaskCount}</p>
+          <Link href="/admin/tasks" className="text-[10px] font-semibold text-kelly-slate">
             →
           </Link>
         </div>
         <div className={card}>
           <p className={h2}>Due today</p>
-          <p className="font-heading text-lg font-bold text-deep-soil">{data.tasksDueToday.length}</p>
+          <p className="font-heading text-lg font-bold text-kelly-text">{data.tasksDueToday.length}</p>
         </div>
         <div className={card}>
           <p className={h2}>Overdue</p>
@@ -485,63 +485,63 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
         </div>
         <div className={card}>
           <p className={h2}>Media review</p>
-          <p className="font-heading text-lg font-bold text-deep-soil">{data.pendingMediaReview.length}</p>
-          <Link href="/admin/owned-media?status=PENDING_REVIEW" className="text-[10px] font-semibold text-civic-slate">
+          <p className="font-heading text-lg font-bold text-kelly-text">{data.pendingMediaReview.length}</p>
+          <Link href="/admin/owned-media?status=PENDING_REVIEW" className="text-[10px] font-semibold text-kelly-slate">
             →
           </Link>
         </div>
         <div className={card}>
           <p className={h2}>Events ingest</p>
-          <p className={`font-heading text-lg font-bold ${pendingFestivalIngest > 0 ? "text-amber-900" : "text-deep-soil"}`}>
+          <p className={`font-heading text-lg font-bold ${pendingFestivalIngest > 0 ? "text-amber-900" : "text-kelly-text"}`}>
             {pendingFestivalIngest}
           </p>
-          <Link href="/admin/workbench/festivals" className="text-[10px] font-semibold text-civic-slate">
+          <Link href="/admin/workbench/festivals" className="text-[10px] font-semibold text-kelly-slate">
             Review
           </Link>
         </div>
         <div className={card}>
           <p className={h2}>Social workbench</p>
-          <p className="font-heading text-lg font-bold text-deep-soil">
+          <p className="font-heading text-lg font-bold text-kelly-text">
             {socialSum.inPipeline + socialSum.inReview > 0 ? socialSum.inPipeline + socialSum.inReview : "—"}
           </p>
-          <Link href="/admin/workbench/social" className="text-[10px] font-semibold text-civic-slate">
+          <Link href="/admin/workbench/social" className="text-[10px] font-semibold text-kelly-slate">
             Open
           </Link>
         </div>
         <div className={card}>
           <p className={h2}>Press today</p>
-          <p className="font-heading text-lg font-bold text-deep-soil">{pressMonitor.mentionsToday}</p>
-          <Link href="/admin/media-monitor" className="text-[10px] font-semibold text-civic-slate">
+          <p className="font-heading text-lg font-bold text-kelly-text">{pressMonitor.mentionsToday}</p>
+          <Link href="/admin/media-monitor" className="text-[10px] font-semibold text-kelly-slate">
             Monitor
           </Link>
         </div>
         <div className={card}>
           <p className={h2}>Press · review</p>
-          <p className={`font-heading text-lg font-bold ${pressMonitor.pendingReview > 0 ? "text-amber-900" : "text-deep-soil"}`}>
+          <p className={`font-heading text-lg font-bold ${pressMonitor.pendingReview > 0 ? "text-amber-900" : "text-kelly-text"}`}>
             {pressMonitor.pendingReview}
           </p>
-          <Link href="/admin/media-monitor?review=PENDING" className="text-[10px] font-semibold text-civic-slate">
+          <Link href="/admin/media-monitor?review=PENDING" className="text-[10px] font-semibold text-kelly-slate">
             Queue
           </Link>
         </div>
         <div className={card}>
           <p className={h2}>Press · respond</p>
-          <p className={`font-heading text-lg font-bold ${pressMonitor.responseNeeded > 0 ? "text-red-dirt" : "text-deep-soil"}`}>
+          <p className={`font-heading text-lg font-bold ${pressMonitor.responseNeeded > 0 ? "text-kelly-navy" : "text-kelly-text"}`}>
             {pressMonitor.responseNeeded}
           </p>
-          <Link href="/admin/media-monitor?flags=response" className="text-[10px] font-semibold text-civic-slate">
+          <Link href="/admin/media-monitor?flags=response" className="text-[10px] font-semibold text-kelly-slate">
             Filter
           </Link>
         </div>
       </div>
 
-      <div className="grid min-h-[520px] grid-cols-1 divide-y divide-deep-soil/10 border-b border-deep-soil/10 xl:min-h-[calc(100vh-220px)] xl:grid-cols-[minmax(260px,360px)_1fr_minmax(260px,360px)] xl:divide-x xl:divide-y-0">
-        <aside className="flex max-h-[50vh] flex-col overflow-hidden bg-cream-canvas/50 xl:max-h-none">
-          <div className="border-b border-deep-soil/10 px-2 py-1">
+      <div className="grid min-h-[520px] grid-cols-1 divide-y divide-kelly-text/10 border-b border-kelly-text/10 xl:min-h-[calc(100vh-220px)] xl:grid-cols-[minmax(260px,360px)_1fr_minmax(260px,360px)] xl:divide-x xl:divide-y-0">
+        <aside className="flex max-h-[50vh] flex-col overflow-hidden bg-kelly-page/50 xl:max-h-none">
+          <div className="border-b border-kelly-text/10 px-2 py-1">
             <p className={h2}>
               {lane === "orchestration" ? "Automation shells + threads" : "Priority queue + threads"}
             </p>
-            <p className="mt-0.5 font-body text-[10px] text-deep-soil/55">
+            <p className="mt-0.5 font-body text-[10px] text-kelly-text/55">
               {lane === "orchestration"
                 ? "Event-linked auto campaigns (not sent) first; then recent threads."
                 : "Queue first, then unread, then recency."}
@@ -549,28 +549,28 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
           </div>
           <ul className="min-h-0 flex-1 overflow-y-auto p-1 text-[11px]">
             {combinedRail.length === 0 ? (
-              <li className="px-1 text-deep-soil/55">No items yet. Create a thread below.</li>
+              <li className="px-1 text-kelly-text/55">No items yet. Create a thread below.</li>
             ) : (
               combinedRail.map((row) => (
                 <li key={row.id}>
                   <Link
                     href={row.href}
-                    className={`block rounded border border-transparent px-1 py-0.5 hover:border-deep-soil/15 hover:bg-white/80 ${
+                    className={`block rounded border border-transparent px-1 py-0.5 hover:border-kelly-text/15 hover:bg-white/80 ${
                       row.selectThreadId && activeThreadId && row.selectThreadId === activeThreadId
-                        ? "border-deep-soil/20 bg-white/90"
+                        ? "border-kelly-text/20 bg-white/90"
                         : ""
                     }`}
                   >
-                    <span className={`block truncate font-medium ${row.urgent ? "text-red-dirt" : "text-deep-soil"}`}>
+                    <span className={`block truncate font-medium ${row.urgent ? "text-kelly-navy" : "text-kelly-text"}`}>
                       {row.label}
                     </span>
-                    <span className="text-[9px] text-deep-soil/50">{row.sub}</span>
+                    <span className="text-[9px] text-kelly-text/50">{row.sub}</span>
                   </Link>
                 </li>
               ))
             )}
           </ul>
-          <div className="border-t border-deep-soil/10 p-1">
+          <div className="border-t border-kelly-text/10 p-1">
             <p className={`${h2} mb-0.5`}>New thread</p>
             <form action={createCommunicationThreadAction} className="grid gap-0.5">
               <input type="hidden" name="countyId" value={countyId ?? ""} />
@@ -579,7 +579,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                 placeholder="Phone"
                 maxLength={32}
                 autoComplete="off"
-                className="w-full border border-deep-soil/15 bg-white px-1 font-mono text-[10px]"
+                className="w-full border border-kelly-text/15 bg-white px-1 font-mono text-[10px]"
               />
               <input
                 name="primaryEmail"
@@ -587,11 +587,11 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                 maxLength={320}
                 autoComplete="off"
                 placeholder="Email"
-                className="w-full border border-deep-soil/15 bg-white px-1 font-mono text-[10px]"
+                className="w-full border border-kelly-text/15 bg-white px-1 font-mono text-[10px]"
               />
               <select
                 name="preferredChannel"
-                className="w-full border border-deep-soil/15 bg-white px-0.5 text-[10px]"
+                className="w-full border border-kelly-text/15 bg-white px-0.5 text-[10px]"
                 defaultValue="SMS"
               >
                 <option value="SMS">SMS</option>
@@ -599,7 +599,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
               </select>
               <button
                 type="submit"
-                className="rounded border border-deep-soil/20 bg-deep-soil/90 px-1 py-0.5 text-[10px] font-bold text-cream-canvas"
+                className="rounded border border-kelly-text/20 bg-kelly-text/90 px-1 py-0.5 text-[10px] font-bold text-kelly-page"
               >
                 Open thread
               </button>
@@ -610,10 +610,10 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
         <section className="flex min-h-0 min-w-0 flex-col bg-white/40">
           {active ? (
             <>
-              <div className="flex flex-wrap items-baseline justify-between gap-1 border-b border-deep-soil/10 px-2 py-1">
+              <div className="flex flex-wrap items-baseline justify-between gap-1 border-b border-kelly-text/10 px-2 py-1">
                 <div>
-                  <h2 className="font-heading text-sm font-bold text-deep-soil">Active thread</h2>
-                  <p className="font-mono text-[10px] text-deep-soil/70">
+                  <h2 className="font-heading text-sm font-bold text-kelly-text">Active thread</h2>
+                  <p className="font-mono text-[10px] text-kelly-text/70">
                     {active.primaryPhone ?? "—"} · {active.primaryEmail ?? "—"} · {active.id.slice(0, 12)}…
                   </p>
                 </div>
@@ -621,53 +621,53 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                   <input type="hidden" name="threadId" value={active.id} />
                   <button
                     type="submit"
-                    className="rounded border border-deep-soil/15 bg-cream-canvas px-1.5 py-0.5 text-[10px] font-semibold"
+                    className="rounded border border-kelly-text/15 bg-kelly-page px-1.5 py-0.5 text-[10px] font-semibold"
                   >
                     Mark read
                   </button>
                 </form>
               </div>
-              <div className="border-b border-deep-soil/10 bg-cream-canvas/40 px-2 py-1.5 text-[10px] text-deep-soil/80">
+              <div className="border-b border-kelly-text/10 bg-kelly-page/40 px-2 py-1.5 text-[10px] text-kelly-text/80">
                 <p className={h2}>AI triage (refresh to update)</p>
                 {active.aiThreadSummary || active.aiNextBestAction ? (
                   <div className="mt-0.5 space-y-0.5">
                     {active.aiThreadSummary ? <p className="whitespace-pre-wrap font-body">{active.aiThreadSummary}</p> : null}
                     {active.aiNextBestAction ? (
-                      <p className="font-semibold text-civic-slate">Next: {active.aiNextBestAction}</p>
+                      <p className="font-semibold text-kelly-slate">Next: {active.aiNextBestAction}</p>
                     ) : null}
                   </div>
                 ) : (
-                  <p className="text-deep-soil/50">No summary yet. Use the button below the composer.</p>
+                  <p className="text-kelly-text/50">No summary yet. Use the button below the composer.</p>
                 )}
                 <form action={refreshThreadAiInsightAction} className="mt-1">
                   <input type="hidden" name="threadId" value={active.id} />
                   <input type="hidden" name="countyId" value={countyId ?? ""} />
                   <button
                     type="submit"
-                    className="rounded border border-washed-denim/30 bg-white px-1.5 py-0.5 text-[9px] font-bold text-civic-slate"
+                    className="rounded border border-kelly-muted/30 bg-white px-1.5 py-0.5 text-[9px] font-bold text-kelly-slate"
                   >
                     Refresh AI summary + next step
                   </button>
                 </form>
                 {active.nextActionDueAt ? (
-                  <p className="mt-0.5 text-[9px] text-deep-soil/55">
+                  <p className="mt-0.5 text-[9px] text-kelly-text/55">
                     Staff due: {active.nextActionDueAt.toLocaleString()}
                   </p>
                 ) : null}
               </div>
-              <ul className="min-h-0 max-h-[min(50vh,420px)] flex-1 overflow-y-auto border-b border-deep-soil/10 p-1 font-mono text-[10px] leading-relaxed md:max-h-[min(45vh,520px)]">
+              <ul className="min-h-0 max-h-[min(50vh,420px)] flex-1 overflow-y-auto border-b border-kelly-text/10 p-1 font-mono text-[10px] leading-relaxed md:max-h-[min(45vh,520px)]">
                 {active.messages.map((m) => (
                   <li
                     key={m.id}
                     className={`mb-1 max-w-full whitespace-pre-wrap break-words border-l-2 pl-1 ${
-                      m.direction === "INBOUND" ? "border-washed-denim bg-cream-canvas/30" : "border-red-dirt/30 bg-white/50"
+                      m.direction === "INBOUND" ? "border-kelly-muted bg-kelly-page/30" : "border-kelly-navy/30 bg-white/50"
                     }`}
                   >
-                    <span className="text-deep-soil/45">
+                    <span className="text-kelly-text/45">
                       {m.channel} {m.provider} {m.direction} {m.deliveryStatus}{" "}
                       {m.createdAt.toLocaleString()}
                     </span>
-                    {m.subject ? <span className="block font-semibold text-deep-soil/80">Subj: {m.subject}</span> : null}
+                    {m.subject ? <span className="block font-semibold text-kelly-text/80">Subj: {m.subject}</span> : null}
                     {m.bodyText}
                   </li>
                 ))}
@@ -684,14 +684,14 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                 gmailSendAs={staffGmail?.sendAsEmail ?? null}
                 gmailReplyAnchorId={lastGmailOut?.id ?? null}
               />
-              <p className="mt-0.5 px-2 text-[9px] text-deep-soil/50">
+              <p className="mt-0.5 px-2 text-[9px] text-kelly-text/50">
                 {staffGmail ? (
                   <span>
                     Staff Gmail: <span className="font-mono">{staffGmail.sendAsEmail}</span>
                   </span>
                 ) : (
                   <a
-                    className="font-semibold text-civic-slate"
+                    className="font-semibold text-kelly-slate"
                     href="/api/gmail/oauth/start"
                     target="_self"
                   >
@@ -702,12 +702,12 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
               </p>
             </>
           ) : (
-            <div className="p-3 font-body text-xs text-deep-soil/60">
+            <div className="p-3 font-body text-xs text-kelly-text/60">
               {threadNotFound && !badThreadParam ? (
                 <p className="mb-2 rounded border border-amber-200/80 bg-amber-50/80 px-2 py-1 text-amber-950">
                   Thread not found (id may have been deleted or pasted incorrectly).{" "}
                   <Link
-                    className="font-semibold text-civic-slate underline"
+                    className="font-semibold text-kelly-slate underline"
                     href={`/admin/workbench${workbenchQ({ county: countyId, lane })}`}
                   >
                     Clear thread
@@ -718,7 +718,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                 <p className="mb-2 rounded border border-amber-200/80 bg-amber-50/80 px-2 py-1 text-amber-950">
                   This thread is in another county.{" "}
                   <Link
-                    className="font-semibold text-civic-slate underline"
+                    className="font-semibold text-kelly-slate underline"
                     href={`/admin/workbench${workbenchQ({ thread: cleanThreadId, county: null, lane })}`}
                   >
                     View without county filter
@@ -727,37 +727,37 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                 </p>
               ) : null}
               Select a thread in the left rail, or open a new one. Webhooks:{" "}
-              <code className="rounded bg-cream-canvas px-0.5">/api/webhooks/twilio</code>,{" "}
-              <code className="rounded bg-cream-canvas px-0.5">/api/webhooks/sendgrid</code>.
+              <code className="rounded bg-kelly-page px-0.5">/api/webhooks/twilio</code>,{" "}
+              <code className="rounded bg-kelly-page px-0.5">/api/webhooks/sendgrid</code>.
             </div>
           )}
         </section>
 
-        <aside className="flex flex-col border-t border-deep-soil/10 bg-cream-canvas/40 xl:border-t-0">
+        <aside className="flex flex-col border-t border-kelly-text/10 bg-kelly-page/40 xl:border-t-0">
           {active ? (
             <>
-              <div className="border-b border-deep-soil/10 px-2 py-1">
-                <h3 className="font-heading text-xs font-bold text-deep-soil">Supporter / volunteer context</h3>
+              <div className="border-b border-kelly-text/10 px-2 py-1">
+                <h3 className="font-heading text-xs font-bold text-kelly-text">Supporter / volunteer context</h3>
               </div>
               <div className="min-h-0 flex-1 space-y-1 overflow-y-auto p-1.5 text-[11px]">
                 <p>
-                  <span className="text-deep-soil/45">Status:</span> {active.threadStatus} · u/{active.unreadCount} · p/
+                  <span className="text-kelly-text/45">Status:</span> {active.threadStatus} · u/{active.unreadCount} · p/
                   {active.priorityScore}
                 </p>
                 {active.assignedRoleKey ? (
                   <p>
-                    <span className="text-deep-soil/45">Target role:</span> {formatRoleLabel(active.assignedRoleKey)}
+                    <span className="text-kelly-text/45">Target role:</span> {formatRoleLabel(active.assignedRoleKey)}
                   </p>
                 ) : null}
                 {active.user ? (
                   <p>
-                    <span className="text-deep-soil/45">User:</span> {active.user.name ?? active.user.email}
+                    <span className="text-kelly-text/45">User:</span> {active.user.name ?? active.user.email}
                     {active.user.phone ? <span className="ml-1 font-mono">· {active.user.phone}</span> : null}
                   </p>
                 ) : null}
                 {active.user?.linkedVoterRecord ? (
                   <p>
-                    <span className="text-deep-soil/45">Voter file:</span> {active.user.linkedVoterRecord.countySlug}{" "}
+                    <span className="text-kelly-text/45">Voter file:</span> {active.user.linkedVoterRecord.countySlug}{" "}
                     {[active.user.linkedVoterRecord.firstName, active.user.linkedVoterRecord.lastName]
                       .filter(Boolean)
                       .join(" ") || "—"}
@@ -766,7 +766,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                 ) : null}
                 {active.volunteerProfile ? (
                   <p>
-                    <span className="text-deep-soil/45">Volunteer:</span>{" "}
+                    <span className="text-kelly-text/45">Volunteer:</span>{" "}
                     {active.volunteerProfile.user.name ?? active.volunteerProfile.user.email}
                     {active.volunteerProfile.user.phone ? (
                       <span className="ml-1 font-mono">· {active.volunteerProfile.user.phone}</span>
@@ -775,7 +775,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                 ) : null}
                 {active.county ? (
                   <p>
-                    <span className="text-deep-soil/45">County:</span> {active.county.displayName}
+                    <span className="text-kelly-text/45">County:</span> {active.county.displayName}
                   </p>
                 ) : null}
                 {active.tagAssignments.length ? (
@@ -783,19 +783,19 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                     {active.tagAssignments.map((a) => (
                       <li
                         key={a.tagId}
-                        className="rounded border border-deep-soil/15 bg-white/80 px-1 py-0.5 text-[9px] font-mono"
+                        className="rounded border border-kelly-text/15 bg-white/80 px-1 py-0.5 text-[9px] font-mono"
                       >
                         {a.tag.label}
                       </li>
                     ))}
                   </ul>
                 ) : (
-                  <p className="text-[10px] text-deep-soil/50">No tags (seed CommunicationTag + assign later).</p>
+                  <p className="text-[10px] text-kelly-text/50">No tags (seed CommunicationTag + assign later).</p>
                 )}
 
-                <div className="mt-1 space-y-0.5 border-t border-deep-soil/10 pt-1">
-                  <p className="text-[9px] font-bold uppercase text-deep-soil/45">Contact compliance</p>
-                  <p className="text-[9px] text-deep-soil/55">
+                <div className="mt-1 space-y-0.5 border-t border-kelly-text/10 pt-1">
+                  <p className="text-[9px] font-bold uppercase text-kelly-text/45">Contact compliance</p>
+                  <p className="text-[9px] text-kelly-text/55">
                     Email: {effPref?.emailOptInStatus ?? "—"} · SMS: {effPref?.smsOptInStatus ?? "—"}{" "}
                     {effPref?.globalUnsubscribeAt ? "· global email unsub" : ""}
                     {effPref?.smsOptOutAt ? "· SMS opt-out at " + effPref.smsOptOutAt.toLocaleString() : ""}
@@ -803,12 +803,12 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                   <form action={updateContactPreferenceFromWorkbenchAction} className="grid gap-0.5">
                     <input type="hidden" name="threadId" value={active.id} />
                     <div className="flex flex-wrap gap-1">
-                      <label className="text-[9px] text-deep-soil/45">
+                      <label className="text-[9px] text-kelly-text/45">
                         Email
                         <select
                           name="emailOptInStatus"
                           defaultValue={effPref?.emailOptInStatus ?? EmailOptInStatus.UNKNOWN}
-                          className="ml-0.5 border border-deep-soil/15 bg-white text-[9px]"
+                          className="ml-0.5 border border-kelly-text/15 bg-white text-[9px]"
                         >
                           {Object.values(EmailOptInStatus).map((s) => (
                             <option key={s} value={s}>
@@ -817,12 +817,12 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                           ))}
                         </select>
                       </label>
-                      <label className="text-[9px] text-deep-soil/45">
+                      <label className="text-[9px] text-kelly-text/45">
                         SMS
                         <select
                           name="smsOptInStatus"
                           defaultValue={effPref?.smsOptInStatus ?? SmsOptInStatus.UNKNOWN}
-                          className="ml-0.5 border border-deep-soil/15 bg-white text-[9px]"
+                          className="ml-0.5 border border-kelly-text/15 bg-white text-[9px]"
                         >
                           {Object.values(SmsOptInStatus).map((s) => (
                             <option key={s} value={s}>
@@ -832,23 +832,23 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                         </select>
                       </label>
                     </div>
-                    <label className="flex items-center gap-0.5 text-[9px] text-deep-soil/55">
+                    <label className="flex items-center gap-0.5 text-[9px] text-kelly-text/55">
                       <input type="checkbox" name="globalUnsubscribe" defaultChecked={Boolean(effPref?.globalUnsubscribeAt)} />
                       Global email unsubscribe
                     </label>
-                    <button type="submit" className="w-fit rounded border border-deep-soil/20 bg-white px-1 py-0.5 text-[9px] font-bold">
+                    <button type="submit" className="w-fit rounded border border-kelly-text/20 bg-white px-1 py-0.5 text-[9px] font-bold">
                       Save opt-in / suppression
                     </button>
                   </form>
                 </div>
 
-                <form action={updateCommunicationThreadAction} className="mt-1 space-y-0.5 border-t border-deep-soil/10 pt-1">
+                <form action={updateCommunicationThreadAction} className="mt-1 space-y-0.5 border-t border-kelly-text/10 pt-1">
                   <input type="hidden" name="threadId" value={active.id} />
-                  <label className="block text-[9px] text-deep-soil/45">Thread status</label>
+                  <label className="block text-[9px] text-kelly-text/45">Thread status</label>
                   <select
                     name="threadStatus"
                     defaultValue={active.threadStatus}
-                    className="w-full border border-deep-soil/15 bg-white px-0.5 text-[10px]"
+                    className="w-full border border-kelly-text/15 bg-white px-0.5 text-[10px]"
                   >
                     {Object.values(CommunicationThreadStatus).map((s) => (
                       <option key={s} value={s}>
@@ -856,21 +856,21 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                       </option>
                     ))}
                   </select>
-                  <label className="mt-0.5 block text-[9px] text-deep-soil/45">Assign role (text key)</label>
+                  <label className="mt-0.5 block text-[9px] text-kelly-text/45">Assign role (text key)</label>
                   <input
                     name="assignedRoleKey"
                     defaultValue={active.assignedRoleKey ?? ""}
                     placeholder="e.g. volunteer_coordinator"
-                    className="w-full border border-deep-soil/15 bg-white px-0.5 text-[10px]"
+                    className="w-full border border-kelly-text/15 bg-white px-0.5 text-[10px]"
                   />
-                  <label className="mt-0.5 block text-[9px] text-deep-soil/45">Notes</label>
+                  <label className="mt-0.5 block text-[9px] text-kelly-text/45">Notes</label>
                   <textarea
                     name="notes"
                     rows={3}
                     defaultValue={active.notes ?? ""}
-                    className="w-full border border-deep-soil/15 bg-white p-0.5 text-[10px]"
+                    className="w-full border border-kelly-text/15 bg-white p-0.5 text-[10px]"
                   />
-                  <label className="mt-0.5 block text-[9px] text-deep-soil/45">Next action due (staff)</label>
+                  <label className="mt-0.5 block text-[9px] text-kelly-text/45">Next action due (staff)</label>
                   <input
                     name="nextActionDueAt"
                     type="datetime-local"
@@ -881,51 +881,51 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                             .slice(0, 16)
                         : ""
                     }
-                    className="w-full border border-deep-soil/15 bg-white px-0.5 text-[10px]"
+                    className="w-full border border-kelly-text/15 bg-white px-0.5 text-[10px]"
                   />
                   <button
                     type="submit"
-                    className="mt-0.5 rounded border border-deep-soil/20 bg-white px-1 py-0.5 text-[10px] font-bold"
+                    className="mt-0.5 rounded border border-kelly-text/20 bg-white px-1 py-0.5 text-[10px] font-bold"
                   >
                     Save
                   </button>
                 </form>
-                <form action={createScheduledSmsReminderAction} className="mt-1 border-t border-deep-soil/10 pt-1">
-                  <p className="text-[9px] font-bold uppercase text-deep-soil/45">Schedule reminder (queue row)</p>
+                <form action={createScheduledSmsReminderAction} className="mt-1 border-t border-kelly-text/10 pt-1">
+                  <p className="text-[9px] font-bold uppercase text-kelly-text/45">Schedule reminder (queue row)</p>
                   <input type="hidden" name="threadId" value={active.id} />
                   <input
                     name="scheduledAt"
                     type="datetime-local"
-                    className="mt-0.5 w-full border border-deep-soil/15 bg-white text-[10px]"
+                    className="mt-0.5 w-full border border-kelly-text/15 bg-white text-[10px]"
                   />
                   <button
                     type="submit"
-                    className="mt-0.5 rounded border border-deep-soil/15 bg-cream-canvas px-1 py-0.5 text-[10px] font-semibold"
+                    className="mt-0.5 rounded border border-kelly-text/15 bg-kelly-page px-1 py-0.5 text-[10px] font-semibold"
                   >
                     Add to queue
                   </button>
                 </form>
-                <div className="border-t border-deep-soil/10 pt-1 text-[9px] text-deep-soil/45">
+                <div className="border-t border-kelly-text/10 pt-1 text-[9px] text-kelly-text/45">
                   <p className="font-bold uppercase">Ops snapshot (read-only here)</p>
                   <p>Upcoming: {data.upcomingEvents[0]?.title ?? "—"}</p>
                 </div>
               </div>
             </>
           ) : (
-            <div className="p-2 font-body text-[11px] text-deep-soil/55">Select a thread to see supporter context and notes.</div>
+            <div className="p-2 font-body text-[11px] text-kelly-text/55">Select a thread to see supporter context and notes.</div>
           )}
         </aside>
       </div>
 
-      <div className="mt-0 grid grid-cols-1 gap-1 border-b border-deep-soil/10 bg-cream-canvas/60 px-1 py-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-6">
+      <div className="mt-0 grid grid-cols-1 gap-1 border-b border-kelly-text/10 bg-kelly-page/60 px-1 py-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-6">
         <div className={card}>
-          <h2 className="font-heading text-xs font-bold text-deep-soil">Tasks due today</h2>
+          <h2 className="font-heading text-xs font-bold text-kelly-text">Tasks due today</h2>
           <ul className="mt-0.5 max-h-28 overflow-y-auto text-[10px]">
             {data.tasksDueToday.length === 0 ? (
-              <li className="text-deep-soil/55">None</li>
+              <li className="text-kelly-text/55">None</li>
             ) : (
               data.tasksDueToday.map((t) => (
-                <li key={t.id} className="truncate border-b border-deep-soil/5 py-0.5">
+                <li key={t.id} className="truncate border-b border-kelly-text/5 py-0.5">
                   {t.title}
                 </li>
               ))
@@ -933,14 +933,14 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
           </ul>
         </div>
         <div className={card}>
-          <h2 className="font-heading text-xs font-bold text-deep-soil">Upcoming events</h2>
+          <h2 className="font-heading text-xs font-bold text-kelly-text">Upcoming events</h2>
           <ul className="mt-0.5 max-h-28 overflow-y-auto text-[10px]">
             {data.upcomingEvents.length === 0 ? (
-              <li className="text-deep-soil/55">None</li>
+              <li className="text-kelly-text/55">None</li>
             ) : (
               data.upcomingEvents.map((e) => (
                 <li key={e.id} className="truncate">
-                  <Link href={`/admin/events/${e.id}`} className="text-civic-slate">
+                  <Link href={`/admin/events/${e.id}`} className="text-kelly-slate">
                     {e.title}
                   </Link>
                 </li>
@@ -949,74 +949,74 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
           </ul>
         </div>
         <div className={card}>
-          <h2 className="font-heading text-xs font-bold text-deep-soil">Signup intake / media</h2>
+          <h2 className="font-heading text-xs font-bold text-kelly-text">Signup intake / media</h2>
           <p className="mt-0.5 text-[10px]">
             Pending rows: {data.pendingSignupIntakeRows} · Media inbox: {data.pendingMediaReview.length}
           </p>
           <div className="mt-0.5 flex flex-wrap gap-1 text-[10px]">
-            <Link className="text-civic-slate" href="/admin/volunteers/intake">
+            <Link className="text-kelly-slate" href="/admin/volunteers/intake">
               Intake
             </Link>
-            <Link className="text-civic-slate" href="/admin/owned-media/batches">
+            <Link className="text-kelly-slate" href="/admin/owned-media/batches">
               Batches
             </Link>
-            <Link className="text-civic-slate" href="/admin/owned-media/grid">
+            <Link className="text-kelly-slate" href="/admin/owned-media/grid">
               Grid
             </Link>
           </div>
         </div>
         <div className={card}>
-          <h2 className="font-heading text-xs font-bold text-deep-soil">Earned media (press)</h2>
-          <p className="mt-0.5 text-[10px] leading-snug text-deep-soil/70">
+          <h2 className="font-heading text-xs font-bold text-kelly-text">Earned media (press)</h2>
+          <p className="mt-0.5 text-[10px] leading-snug text-kelly-text/70">
             New today: <strong>{pressMonitor.mentionsToday}</strong> · Editorials/op-eds:{" "}
             <strong>{pressMonitor.editorialsOpinion}</strong> · TV rows: <strong>{pressMonitor.tvMentions}</strong> ·
             Amplify flagged: <strong>{pressMonitor.needsAmplification}</strong>
           </p>
           <div className="mt-0.5 flex flex-wrap gap-1 text-[10px]">
-            <Link className="text-civic-slate" href="/admin/media-monitor">
+            <Link className="text-kelly-slate" href="/admin/media-monitor">
               All mentions
             </Link>
-            <Link className="text-civic-slate" href="/admin/media-monitor?type=TV">
+            <Link className="text-kelly-slate" href="/admin/media-monitor?type=TV">
               TV
             </Link>
-            <Link className="text-civic-slate" href="/admin/media-monitor?flags=editorial">
+            <Link className="text-kelly-slate" href="/admin/media-monitor?flags=editorial">
               Editorial/opinion
             </Link>
-            <Link className="text-civic-slate" href="/admin/media-monitor?flags=amplify">
+            <Link className="text-kelly-slate" href="/admin/media-monitor?flags=amplify">
               Amplify
             </Link>
-            <Link className="text-civic-slate" href="/press-coverage" target="_blank" rel="noreferrer">
+            <Link className="text-kelly-slate" href="/press-coverage" target="_blank" rel="noreferrer">
               Public page
             </Link>
           </div>
         </div>
         <div className={card}>
-          <h2 className="font-heading text-xs font-bold text-deep-soil">Strategy & coordination</h2>
-          <p className="mt-0.5 text-[10px] text-deep-soil/60">
-            <Link href="/admin/candidate-briefs" className="font-semibold text-civic-slate hover:underline">
+          <h2 className="font-heading text-xs font-bold text-kelly-text">Strategy & coordination</h2>
+          <p className="mt-0.5 text-[10px] text-kelly-text/60">
+            <Link href="/admin/candidate-briefs" className="font-semibold text-kelly-slate hover:underline">
               Candidate briefs
             </Link>
             {" · "}
-            <Link href="/admin/style-guide" className="font-semibold text-civic-slate hover:underline">
+            <Link href="/admin/style-guide" className="font-semibold text-kelly-slate hover:underline">
               Style &amp; content hub
             </Link>
             {" · "}
             <Link
               href="/admin/campaign-ops/community-equity"
-              className="font-semibold text-civic-slate hover:underline"
+              className="font-semibold text-kelly-slate hover:underline"
             >
               Community equity
             </Link>{" "}
             (Hispanic, Marshallese, Muslim — mosque polling workflow) · Staff playbooks (e.g. DNC) — not public. Run{" "}
-            <code className="rounded bg-deep-soil/5 px-0.5">npm run ingest:dnc-playbook</code> after updating the file.
+            <code className="rounded bg-kelly-text/5 px-0.5">npm run ingest:dnc-playbook</code> after updating the file.
           </p>
           <ul className="mt-0.5 max-h-20 overflow-y-auto text-[10px]">
             {adminStrategyRefs.length === 0 ? (
-              <li className="text-deep-soil/50">None ingested yet</li>
+              <li className="text-kelly-text/50">None ingested yet</li>
             ) : (
               adminStrategyRefs.map((a) => (
-                <li key={a.id} className="truncate border-b border-deep-soil/5 py-0.5">
-                  <Link href={`/admin/owned-media/${a.id}`} className="text-civic-slate" title={a.fileName}>
+                <li key={a.id} className="truncate border-b border-kelly-text/5 py-0.5">
+                  <Link href={`/admin/owned-media/${a.id}`} className="text-kelly-slate" title={a.fileName}>
                     {a.title}
                   </Link>
                 </li>

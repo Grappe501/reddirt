@@ -77,7 +77,7 @@ export default function BallotInitiativeProcessPage() {
             subtitle="Voters see one ballot—the process behind it is split between review of language and administration of signatures."
             className="max-w-3xl"
           />
-          <div className="mt-10 max-w-3xl space-y-4 font-body text-base leading-relaxed text-deep-soil/82 md:text-lg">
+          <div className="mt-10 max-w-3xl space-y-4 font-body text-base leading-relaxed text-kelly-text/82 md:text-lg">
             <p>
               <strong>Attorney General</strong> certifies the ballot title and popular name so voters are not misled.
               That step must succeed before most committees circulate petitions at scale.
@@ -86,12 +86,12 @@ export default function BallotInitiativeProcessPage() {
               <strong>Secretary of State</strong> receives filed petitions, applies counting and verification rules, and
               operates the election infrastructure that lists qualified measures for voters.
             </p>
-            <p className="rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-5 text-sm text-deep-soil/75 shadow-[var(--shadow-soft)]">
+            <p className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-5 text-sm text-kelly-text/75 shadow-[var(--shadow-soft)]">
               Treat signature gathering as a responsibility: one honest signature at a time, with no shortcuts around
               witness rules or eligibility.
             </p>
-            <p className="mt-4 rounded-card border border-red-dirt/20 bg-cream-canvas p-5 text-sm leading-relaxed text-deep-soil/85 shadow-[var(--shadow-soft)]">
-              <span className="font-heading font-bold text-deep-soil">Campaign position. </span>
+            <p className="mt-4 rounded-card border border-kelly-navy/20 bg-kelly-page p-5 text-sm leading-relaxed text-kelly-text/85 shadow-[var(--shadow-soft)]">
+              <span className="font-heading font-bold text-kelly-text">Campaign position. </span>
               We believe the ballot initiative process should use <strong>volunteers only</strong> to collect
               signatures—committees can raise and spend for marketing, training, and materials, but not to pay canvassers
               by the signature or the hour. In our view, paid canvassing is the same class of problem as dark money: it
@@ -124,11 +124,11 @@ export default function BallotInitiativeProcessPage() {
             subtitle="Independent encyclopedias and state search tools change often—bookmark the official pages first."
             className="max-w-3xl"
           />
-          <ul className="mt-8 max-w-3xl list-disc space-y-3 pl-6 font-body text-base leading-relaxed text-deep-soil/82">
+          <ul className="mt-8 max-w-3xl list-disc space-y-3 pl-6 font-body text-base leading-relaxed text-kelly-text/82">
             <li>
               <a
                 href="https://arkansasag.gov/resources/ballot-initiative-information/"
-                className="font-semibold text-red-dirt underline decoration-red-dirt/30 underline-offset-2 hover:decoration-red-dirt"
+                className="font-semibold text-kelly-navy underline decoration-kelly-navy/30 underline-offset-2 hover:decoration-kelly-navy"
               >
                 Arkansas Attorney General — ballot initiative information
               </a>
@@ -136,7 +136,7 @@ export default function BallotInitiativeProcessPage() {
             <li>
               <a
                 href="https://arkansasag.gov/arkansass-lawyer/opinions-department/attorney-general-opinions-search/"
-                className="font-semibold text-red-dirt underline decoration-red-dirt/30 underline-offset-2 hover:decoration-red-dirt"
+                className="font-semibold text-kelly-navy underline decoration-kelly-navy/30 underline-offset-2 hover:decoration-kelly-navy"
               >
                 Attorney General opinion search
               </a>{" "}
@@ -145,7 +145,7 @@ export default function BallotInitiativeProcessPage() {
             <li>
               <a
                 href="https://www.sos.arkansas.gov/"
-                className="font-semibold text-red-dirt underline decoration-red-dirt/30 underline-offset-2 hover:decoration-red-dirt"
+                className="font-semibold text-kelly-navy underline decoration-kelly-navy/30 underline-offset-2 hover:decoration-kelly-navy"
               >
                 Arkansas Secretary of State
               </a>{" "}
@@ -154,14 +154,14 @@ export default function BallotInitiativeProcessPage() {
             <li>
               <a
                 href="https://ballotpedia.org/Arkansas_2026_ballot_measures"
-                className="font-semibold text-red-dirt underline decoration-red-dirt/30 underline-offset-2 hover:decoration-red-dirt"
+                className="font-semibold text-kelly-navy underline decoration-kelly-navy/30 underline-offset-2 hover:decoration-kelly-navy"
               >
                 Ballotpedia — Arkansas 2026 ballot measures
               </a>{" "}
               (nonprofit tracker: potential citizen measures, legislatively referred items, and context)
             </li>
           </ul>
-          <p className="mt-8 max-w-3xl font-body text-sm leading-relaxed text-deep-soil/65">
+          <p className="mt-8 max-w-3xl font-body text-sm leading-relaxed text-kelly-text/65">
             This campaign does not maintain a real-time list of every petition in the field. For which measures are actively
             circulating today, rely on sponsor announcements and the Attorney General’s published certifications for the
             election you care about.

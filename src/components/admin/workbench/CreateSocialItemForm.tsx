@@ -38,35 +38,35 @@ export function CreateSocialItemForm() {
       }}
     >
       {err ? <p className="text-xs text-red-800">{err}</p> : null}
-      <label className="text-[10px] font-bold uppercase text-deep-soil/45">Title</label>
+      <label className="text-[10px] font-bold uppercase text-kelly-text/45">Title</label>
       <input
         name="title"
         required
         maxLength={200}
-        className="border border-deep-soil/15 bg-white px-1.5 py-0.5 font-body text-sm"
+        className="border border-kelly-text/15 bg-white px-1.5 py-0.5 font-body text-sm"
         placeholder="e.g. Host rally recap — NWA"
         autoComplete="off"
       />
-      <label className="text-[10px] font-bold uppercase text-deep-soil/45">Kind</label>
-      <select name="kind" className="border border-deep-soil/15 bg-white px-1 py-0.5 text-sm" defaultValue={SocialContentKind.OTHER}>
+      <label className="text-[10px] font-bold uppercase text-kelly-text/45">Kind</label>
+      <select name="kind" className="border border-kelly-text/15 bg-white px-1 py-0.5 text-sm" defaultValue={SocialContentKind.OTHER}>
         {KIND_OPTIONS.map((k) => (
           <option key={k.v} value={k.v}>
             {k.label}
           </option>
         ))}
       </select>
-      <label className="text-[10px] font-bold uppercase text-deep-soil/45">Default copy (optional)</label>
+      <label className="text-[10px] font-bold uppercase text-kelly-text/45">Default copy (optional)</label>
       <textarea
         name="bodyCopy"
         rows={3}
         maxLength={50000}
-        className="border border-deep-soil/15 bg-white p-1 font-mono text-xs"
+        className="border border-kelly-text/15 bg-white p-1 font-mono text-xs"
         placeholder="Master draft; per-platform in variants later."
       />
       <button
         type="submit"
         disabled={pending}
-        className="w-fit rounded border border-deep-soil/20 bg-deep-soil px-2 py-1 font-body text-sm font-bold text-cream-canvas disabled:opacity-50"
+        className="w-fit rounded border border-kelly-text/20 bg-kelly-text px-2 py-1 font-body text-sm font-bold text-kelly-page disabled:opacity-50"
       >
         {pending ? "Saving…" : "Create work item"}
       </button>

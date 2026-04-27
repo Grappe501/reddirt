@@ -55,24 +55,24 @@ export function HomePathwayGateway() {
   const { scrollToBeat } = useJourney();
 
   return (
-    <div className="relative border-b border-civic-ink/10 bg-gradient-to-b from-civic-fog via-white to-white py-5 lg:py-6">
+    <div className="relative border-b border-kelly-ink/10 bg-gradient-to-b from-kelly-fog via-white to-white py-5 lg:py-6">
       <div className="mx-auto max-w-content px-[var(--gutter-x)]">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4 xl:gap-5">
           {PATHWAYS.map((p) => (
             <div
               key={p.key}
               className={cn(
-                "group flex flex-col rounded-card border border-civic-ink/10 bg-white/90 p-6 shadow-sm backdrop-blur-sm",
-                "transition duration-300 hover:border-civic-gold/45 hover:shadow-xl",
+                "group flex flex-col rounded-card border border-kelly-ink/10 bg-white/90 p-6 shadow-sm backdrop-blur-sm",
+                "transition duration-300 hover:border-kelly-gold/45 hover:shadow-xl",
               )}
             >
-              <h3 className="font-heading text-lg font-bold text-civic-ink group-hover:text-civic-blue">{p.title}</h3>
-              <p className="mt-3 flex-1 font-body text-sm leading-relaxed text-civic-slate/95">{p.line}</p>
-              <div className="mt-6 flex flex-col gap-2 border-t border-civic-ink/8 pt-5">
+              <h3 className="font-heading text-lg font-bold text-kelly-ink group-hover:text-kelly-blue">{p.title}</h3>
+              <p className="mt-3 flex-1 font-body text-sm leading-relaxed text-kelly-slate/95">{p.line}</p>
+              <div className="mt-6 flex flex-col gap-2 border-t border-kelly-ink/8 pt-5">
                 {p.chapterHref ? (
                   <Link
                     href={p.chapterHref}
-                    className="text-left font-body text-sm font-bold uppercase tracking-wider text-red-dirt transition hover:text-civic-blue"
+                    className="text-left font-body text-sm font-bold uppercase tracking-wider text-kelly-navy transition hover:text-kelly-blue"
                   >
                     Open this section →
                   </Link>
@@ -80,14 +80,14 @@ export function HomePathwayGateway() {
                   <button
                     type="button"
                     onClick={() => scrollToBeat(p.beatId!)}
-                    className="text-left font-body text-sm font-bold uppercase tracking-wider text-red-dirt transition hover:text-civic-blue"
+                    className="text-left font-body text-sm font-bold uppercase tracking-wider text-kelly-navy transition hover:text-kelly-blue"
                   >
                     Jump to ways to help →
                   </button>
                 ) : null}
                 <a
                   href={p.href}
-                  className="font-body text-sm font-semibold text-civic-slate underline-offset-4 hover:text-civic-blue hover:underline"
+                  className="font-body text-sm font-semibold text-kelly-slate underline-offset-4 hover:text-kelly-blue hover:underline"
                 >
                   {p.hrefLabel}
                 </a>

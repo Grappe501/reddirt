@@ -69,9 +69,9 @@ export function SocialFooterIcons({ className }: { className?: string }) {
               rel={isMailto ? undefined : "noopener noreferrer"}
               aria-label={item.label}
               className={cn(
-                "flex h-11 w-11 items-center justify-center rounded-full border border-cream-canvas/20 bg-cream-canvas/5",
-                "text-cream-canvas/85 transition hover:border-sunlight-gold/50 hover:bg-cream-canvas/10 hover:text-sunlight-gold",
-                "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sunlight-gold",
+                "flex h-11 w-11 items-center justify-center rounded-full border border-kelly-page/20 bg-kelly-page/5",
+                "text-kelly-page/85 transition hover:border-kelly-gold/50 hover:bg-kelly-page/10 hover:text-kelly-gold",
+                "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold",
               )}
             >
               <SocialGlyph id={item.id} />

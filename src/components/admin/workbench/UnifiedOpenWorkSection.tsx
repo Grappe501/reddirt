@@ -14,11 +14,11 @@ export function UnifiedOpenWorkSection({ items }: { items: UnifiedOpenWorkItem[]
   if (items.length === 0) return null;
   return (
     <section
-      className="border-b border-deep-soil/10 bg-cream-canvas/60 px-2 py-2 md:px-3"
+      className="border-b border-kelly-text/10 bg-kelly-page/60 px-2 py-2 md:px-3"
       aria-label="Unified open work, read only"
     >
-      <h2 className="font-heading text-[10px] font-bold uppercase tracking-wider text-deep-soil/55">Unified open work</h2>
-      <p className="mt-0.5 max-w-3xl text-[10px] text-deep-soil/55">
+      <h2 className="font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Unified open work</h2>
+      <p className="mt-0.5 max-w-3xl text-[10px] text-kelly-text/55">
         UWR-1 triage slice (unassigned + escalated email). Sources: email workflow, workflow intake, campaign task — not
         every domain.
       </p>
@@ -28,24 +28,24 @@ export function UnifiedOpenWorkSection({ items }: { items: UnifiedOpenWorkItem[]
           return (
             <li
               key={`${row.source}-${row.id}`}
-              className="flex min-w-0 items-start justify-between gap-2 rounded border border-deep-soil/8 bg-cream-canvas/95 px-1.5 py-1 text-[11px] leading-tight"
+              className="flex min-w-0 items-start justify-between gap-2 rounded border border-kelly-text/8 bg-kelly-page/95 px-1.5 py-1 text-[11px] leading-tight"
             >
               <div className="min-w-0">
-                <span className="text-[9px] font-semibold uppercase tracking-tight text-deep-soil/50" title={b.hint}>
+                <span className="text-[9px] font-semibold uppercase tracking-tight text-kelly-text/50" title={b.hint}>
                   {b.label}
                 </span>
                 {row.escalationLabel ? (
                   <span className="ml-1 text-[9px] font-bold text-amber-900">· {row.escalationLabel}</span>
                 ) : null}
                 <br />
-                <Link href={row.href} className="font-medium text-civic-slate [overflow-wrap:anywhere] hover:underline">
+                <Link href={row.href} className="font-medium text-kelly-slate [overflow-wrap:anywhere] hover:underline">
                   {row.summaryLine}
                 </Link>{" "}
-                <span className="whitespace-nowrap text-deep-soil/45">· {row.statusLabel}</span>
+                <span className="whitespace-nowrap text-kelly-text/45">· {row.statusLabel}</span>
               </div>
               <Link
                 href={row.workbenchRouteHint}
-                className="shrink-0 self-center text-[9px] font-semibold text-civic-slate hover:underline"
+                className="shrink-0 self-center text-[9px] font-semibold text-kelly-slate hover:underline"
                 title="Related workbench"
               >
                 {b.label === "Task" ? "Tasks" : b.label === "Intake" ? "Comms" : "Queue"}

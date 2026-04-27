@@ -55,12 +55,12 @@ export default async function AboutChapterPage({ params }: PageProps) {
         </Button>
       </PageHero>
 
-      <FullBleedSection variant="subtle" padY={false} className="border-b border-deep-soil/8">
+      <FullBleedSection variant="subtle" padY={false} className="border-b border-kelly-text/8">
         <ContentContainer className="max-w-3xl py-8 sm:py-10 lg:py-12">
           <KellyChapterBody slug={slug} />
           <AboutKellyChapterNav slug={slug} />
-          <p className="mt-8 font-body text-sm text-deep-soil/65">
-            <Link href="/about" className="font-semibold text-red-dirt underline-offset-2 hover:underline">
+          <p className="mt-8 font-body text-sm text-kelly-text/65">
+            <Link href="/about" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
               Return to the Meet Kelly overview
             </Link>{" "}
             for the full list of chapters.

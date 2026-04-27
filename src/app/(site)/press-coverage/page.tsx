@@ -32,19 +32,19 @@ export default async function PressCoveragePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-civic-fog/90 via-white to-civic-fog/50 pb-16 pt-10 md:pb-24 md:pt-14">
+    <div className="min-h-screen bg-gradient-to-b from-kelly-fog/90 via-white to-kelly-fog/50 pb-16 pt-10 md:pb-24 md:pt-14">
       <ContentContainer>
         <header className="mx-auto max-w-3xl text-center">
-          <p className="font-body text-[11px] font-bold uppercase tracking-[0.24em] text-civic-gold">News · Earned media</p>
-          <h1 className="mt-4 font-heading text-[clamp(1.95rem,4.2vw,3rem)] font-bold tracking-tight text-civic-ink">
+          <p className="font-body text-[11px] font-bold uppercase tracking-[0.24em] text-kelly-gold">News · Earned media</p>
+          <h1 className="mt-4 font-heading text-[clamp(1.95rem,4.2vw,3rem)] font-bold tracking-tight text-kelly-ink">
             Press coverage
           </h1>
-          <p className="mt-6 font-body text-lg leading-relaxed text-civic-slate md:text-xl">
+          <p className="mt-6 font-body text-lg leading-relaxed text-kelly-slate md:text-xl">
             Earned-media clips from Arkansas outlets (selected by our communications team), curated newspaper links, and
             third-party election guides below. We respect outlet terms and link to originals rather than reproducing
             paywalled text.
           </p>
-          <p className="mt-4 font-body text-sm text-civic-slate/85">
+          <p className="mt-4 font-body text-sm text-kelly-slate/85">
             Monitoring runs on a weekly cadence. For questions about a listing, contact the campaign press team.
           </p>
           {listUnavailableMessage ? (
@@ -56,9 +56,9 @@ export default async function PressCoveragePage() {
 
         <ul className="mx-auto mt-12 max-w-3xl space-y-6">
           {mentions.length === 0 && !listUnavailableMessage ? (
-            <li className="rounded-card border border-deep-soil/10 bg-white/90 p-6 text-center font-body text-civic-slate">
+            <li className="rounded-card border border-kelly-text/10 bg-white/90 p-6 text-center font-body text-kelly-slate">
               Approved press clips will appear here after the next ingest and staff review.{" "}
-              <Link href="/from-the-road" className="text-civic-slate underline">
+              <Link href="/from-the-road" className="text-kelly-slate underline">
                 From the Road
               </Link>{" "}
               always has campaign-authored updates.
@@ -69,29 +69,29 @@ export default async function PressCoveragePage() {
               mentions.map((m) => (
                 <li
                   key={m.id}
-                  className="rounded-card border border-deep-soil/10 bg-white/90 p-5 shadow-[var(--shadow-card)]"
+                  className="rounded-card border border-kelly-text/10 bg-white/90 p-5 shadow-[var(--shadow-card)]"
                 >
-                  <p className="font-body text-[10px] font-bold uppercase tracking-[0.18em] text-civic-gold">
+                  <p className="font-body text-[10px] font-bold uppercase tracking-[0.18em] text-kelly-gold">
                     {m.outletName}
                     {m.sourceRegion ? ` · ${m.sourceRegion}` : ""}
                     {m.publishedAt ? ` · ${m.publishedAt.toLocaleDateString("en-US", { timeZone: "America/Chicago" })}` : ""}
                   </p>
-                  <h2 className="mt-2 font-heading text-xl font-bold text-civic-ink">
-                    <a href={m.url} target="_blank" rel="noopener noreferrer" className="hover:text-red-dirt">
+                  <h2 className="mt-2 font-heading text-xl font-bold text-kelly-ink">
+                    <a href={m.url} target="_blank" rel="noopener noreferrer" className="hover:text-kelly-navy">
                       {m.title}
                     </a>
                   </h2>
                   {m.summary ? (
-                    <p className="mt-3 font-body text-sm leading-relaxed text-civic-slate">{m.summary}</p>
+                    <p className="mt-3 font-body text-sm leading-relaxed text-kelly-slate">{m.summary}</p>
                   ) : null}
                   {m.campaignSummary ? (
-                    <p className="mt-3 border-l-2 border-civic-gold/60 pl-3 font-body text-sm italic text-civic-slate/90">
+                    <p className="mt-3 border-l-2 border-kelly-gold/60 pl-3 font-body text-sm italic text-kelly-slate/90">
                       {m.campaignSummary}
                     </p>
                   ) : null}
                   {m.additionalLinks && m.additionalLinks.length > 0 ? (
                     <div className="mt-3">
-                      <p className="font-body text-[10px] font-bold uppercase tracking-wider text-civic-slate/70">
+                      <p className="font-body text-[10px] font-bold uppercase tracking-wider text-kelly-slate/70">
                         Also published as
                       </p>
                       <ul className="mt-1.5 list-none space-y-1 p-0">
@@ -101,7 +101,7 @@ export default async function PressCoveragePage() {
                               href={l.href}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="font-body text-sm text-civic-slate underline-offset-2 hover:text-red-dirt hover:underline"
+                              className="font-body text-sm text-kelly-slate underline-offset-2 hover:text-kelly-navy hover:underline"
                             >
                               {l.label}
                             </a>
@@ -110,18 +110,18 @@ export default async function PressCoveragePage() {
                       </ul>
                     </div>
                   ) : null}
-                  <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-civic-slate/75">
+                  <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-kelly-slate/75">
                     {m.isEditorial ? (
-                      <span className="rounded-full bg-civic-fog/80 px-2 py-0.5">Editorial</span>
+                      <span className="rounded-full bg-kelly-fog/80 px-2 py-0.5">Editorial</span>
                     ) : null}
                     {m.isOpinion ? (
-                      <span className="rounded-full bg-civic-fog/80 px-2 py-0.5">Opinion</span>
+                      <span className="rounded-full bg-kelly-fog/80 px-2 py-0.5">Opinion</span>
                     ) : null}
                     {m.isTvWebStory ? (
-                      <span className="rounded-full bg-civic-fog/80 px-2 py-0.5">TV / video</span>
+                      <span className="rounded-full bg-kelly-fog/80 px-2 py-0.5">TV / video</span>
                     ) : null}
                     {m.relatedCountyDisplayName ? (
-                      <span className="rounded-full bg-civic-fog/80 px-2 py-0.5">{m.relatedCountyDisplayName}</span>
+                      <span className="rounded-full bg-kelly-fog/80 px-2 py-0.5">{m.relatedCountyDisplayName}</span>
                     ) : null}
                   </div>
                 </li>

@@ -16,38 +16,38 @@ export default async function AdminLoginPage({ searchParams }: Props) {
   const configured = Boolean(getAdminSecret());
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-deep-soil px-4 py-16 text-cream-canvas">
-      <div className="w-full max-w-md rounded-card border border-cream-canvas/15 bg-cream-canvas/[0.07] p-8 shadow-2xl backdrop-blur-sm">
-        <p className="font-body text-[10px] font-bold uppercase tracking-[0.28em] text-cream-canvas/50">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-kelly-text px-4 py-16 text-kelly-page">
+      <div className="w-full max-w-md rounded-card border border-kelly-page/15 bg-kelly-page/[0.07] p-8 shadow-2xl backdrop-blur-sm">
+        <p className="font-body text-[10px] font-bold uppercase tracking-[0.28em] text-kelly-page/50">
           Kelly Grappe campaign
         </p>
         <h1 className="mt-3 font-heading text-2xl font-bold">Content board</h1>
-        <p className="mt-3 font-body text-sm leading-relaxed text-cream-canvas/75">
+        <p className="mt-3 font-body text-sm leading-relaxed text-kelly-page/75">
           Sign in with the shared admin passphrase. This area manages public website content and Substack sync
           only.
         </p>
 
         {sp.error === "config" ? (
-          <p className="mt-4 rounded-lg border border-sunlight-gold/40 bg-sunlight-gold/10 px-3 py-2 font-body text-sm text-cream-canvas">
+          <p className="mt-4 rounded-lg border border-kelly-gold/40 bg-kelly-gold/10 px-3 py-2 font-body text-sm text-kelly-page">
             <strong className="font-semibold">Not configured.</strong> Set{" "}
-            <code className="rounded bg-deep-soil/40 px-1">ADMIN_SECRET</code> in the environment, deploy, then
+            <code className="rounded bg-kelly-text/40 px-1">ADMIN_SECRET</code> in the environment, deploy, then
             return here.
           </p>
         ) : null}
         {sp.error === "auth" ? (
-          <p className="mt-4 rounded-lg border border-red-dirt/50 bg-red-dirt/15 px-3 py-2 font-body text-sm">
+          <p className="mt-4 rounded-lg border border-kelly-navy/50 bg-kelly-navy/15 px-3 py-2 font-body text-sm">
             That passphrase did not match. Try again.
           </p>
         ) : null}
 
         {!configured ? (
-          <p className="mt-6 font-body text-xs text-cream-canvas/55">
-            Login is disabled until <code className="rounded bg-deep-soil/40 px-1">ADMIN_SECRET</code> is set.
+          <p className="mt-6 font-body text-xs text-kelly-page/55">
+            Login is disabled until <code className="rounded bg-kelly-text/40 px-1">ADMIN_SECRET</code> is set.
           </p>
         ) : (
           <form action={adminLoginAction} className="mt-6 space-y-4">
             <label className="block">
-              <span className="font-body text-xs font-semibold uppercase tracking-wider text-cream-canvas/60">
+              <span className="font-body text-xs font-semibold uppercase tracking-wider text-kelly-page/60">
                 Passphrase
               </span>
               <input
@@ -55,20 +55,20 @@ export default async function AdminLoginPage({ searchParams }: Props) {
                 name="password"
                 required
                 autoComplete="current-password"
-                className="mt-2 w-full rounded-md border border-cream-canvas/20 bg-deep-soil/40 px-3 py-2.5 font-body text-cream-canvas outline-none ring-red-dirt/0 transition focus:ring-2 focus:ring-red-dirt/40"
+                className="mt-2 w-full rounded-md border border-kelly-page/20 bg-kelly-text/40 px-3 py-2.5 font-body text-kelly-page outline-none ring-kelly-navy/0 transition focus:ring-2 focus:ring-kelly-navy/40"
               />
             </label>
             <button
               type="submit"
-              className="w-full rounded-btn bg-red-dirt px-4 py-3 font-body text-sm font-bold text-cream-canvas shadow-soft transition hover:-translate-y-0.5 hover:bg-[#8f3d24]"
+              className="w-full rounded-btn bg-kelly-gold px-4 py-3 font-body text-sm font-bold text-kelly-navy shadow-soft transition hover:-translate-y-0.5 hover:brightness-105"
             >
               Enter content board
             </button>
           </form>
         )}
 
-        <p className="mt-8 text-center font-body text-xs text-cream-canvas/45">
-          <Link href="/" className="underline-offset-2 hover:text-cream-canvas hover:underline">
+        <p className="mt-8 text-center font-body text-xs text-kelly-page/45">
+          <Link href="/" className="underline-offset-2 hover:text-kelly-page hover:underline">
             Back to site
           </Link>
         </p>

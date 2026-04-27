@@ -107,7 +107,7 @@ export function HostGatheringForm({ id, initialGatheringType = "living_room" }: 
         </p>
         <p>
           Want backup while you wait? Skim{" "}
-          <Link className="font-semibold text-red-dirt underline" href="/resources#toolkit">
+          <Link className="font-semibold text-kelly-navy underline" href="/resources#toolkit">
             the toolkit
           </Link>{" "}
           for facilitation prompts you can reuse tonight.
@@ -138,14 +138,14 @@ export function HostGatheringForm({ id, initialGatheringType = "living_room" }: 
           <FormLabel htmlFor="hg-name">Full name</FormLabel>
           <Input id="hg-name" {...form.register("name")} autoComplete="name" />
           {form.formState.errors.name ? (
-            <p className="text-sm text-red-dirt">{form.formState.errors.name.message}</p>
+            <p className="text-sm text-kelly-navy">{form.formState.errors.name.message}</p>
           ) : null}
         </FormField>
         <FormField>
           <FormLabel htmlFor="hg-email">Email</FormLabel>
           <Input id="hg-email" type="email" {...form.register("email")} autoComplete="email" />
           {form.formState.errors.email ? (
-            <p className="text-sm text-red-dirt">{form.formState.errors.email.message}</p>
+            <p className="text-sm text-kelly-navy">{form.formState.errors.email.message}</p>
           ) : null}
         </FormField>
         <FormField>
@@ -156,7 +156,7 @@ export function HostGatheringForm({ id, initialGatheringType = "living_room" }: 
           <FormLabel htmlFor="hg-zip">ZIP</FormLabel>
           <Input id="hg-zip" {...form.register("zip")} autoComplete="postal-code" />
           {form.formState.errors.zip ? (
-            <p className="text-sm text-red-dirt">{form.formState.errors.zip.message}</p>
+            <p className="text-sm text-kelly-navy">{form.formState.errors.zip.message}</p>
           ) : null}
         </FormField>
       </div>
@@ -168,14 +168,14 @@ export function HostGatheringForm({ id, initialGatheringType = "living_room" }: 
         <FormLabel htmlFor="hg-community">Town or neighborhood</FormLabel>
         <Input id="hg-community" {...form.register("community")} />
         {form.formState.errors.community ? (
-          <p className="text-sm text-red-dirt">{form.formState.errors.community.message}</p>
+          <p className="text-sm text-kelly-navy">{form.formState.errors.community.message}</p>
         ) : null}
       </FormField>
       <FormField>
         <FormLabel htmlFor="hg-type">Gathering type</FormLabel>
         <select
           id="hg-type"
-          className="w-full rounded-btn border border-deep-soil/15 bg-cream-canvas px-3 py-2.5 font-body text-sm text-deep-soil shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-dirt"
+          className="w-full rounded-btn border border-kelly-text/15 bg-kelly-page px-3 py-2.5 font-body text-sm text-kelly-text shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-navy"
           {...form.register("gatheringType")}
         >
           {gatheringTypeValues.map((v) => (
@@ -190,7 +190,7 @@ export function HostGatheringForm({ id, initialGatheringType = "living_room" }: 
           <FormLabel htmlFor="hg-type-other">Describe the gathering</FormLabel>
           <Input id="hg-type-other" {...form.register("gatheringTypeOther")} />
           {form.formState.errors.gatheringTypeOther ? (
-            <p className="text-sm text-red-dirt">{form.formState.errors.gatheringTypeOther.message}</p>
+            <p className="text-sm text-kelly-navy">{form.formState.errors.gatheringTypeOther.message}</p>
           ) : null}
         </FormField>
       ) : null}

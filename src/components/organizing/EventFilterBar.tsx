@@ -38,7 +38,7 @@ export function EventFilterBar({
   return (
     <div
       className={cn(
-        "flex flex-col gap-4 rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-4 shadow-[var(--shadow-soft)] lg:flex-row lg:flex-wrap lg:items-end lg:gap-6 lg:p-6",
+        "flex flex-col gap-4 rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-4 shadow-[var(--shadow-soft)] lg:flex-row lg:flex-wrap lg:items-end lg:gap-6 lg:p-6",
         className,
       )}
     >
@@ -91,22 +91,22 @@ export function EventFilterBar({
           ]}
         />
       ) : null}
-      <label className="flex min-w-[14rem] cursor-pointer items-center gap-2 rounded-btn border border-deep-soil/15 bg-cream-canvas px-3 py-2.5 font-body text-sm text-deep-soil shadow-sm">
+      <label className="flex min-w-[14rem] cursor-pointer items-center gap-2 rounded-btn border border-kelly-text/15 bg-kelly-page px-3 py-2.5 font-body text-sm text-kelly-text shadow-sm">
         <input
           type="checkbox"
-          className="h-4 w-4 rounded border-deep-soil/30 text-red-dirt focus:ring-red-dirt/30"
+          className="h-4 w-4 rounded border-kelly-text/30 text-kelly-navy focus:ring-kelly-navy/30"
           checked={value.includeCalendar}
           onChange={(e) => onChange({ ...value, includeCalendar: e.target.checked })}
         />
         <span>
           <span className="font-bold">Campaign calendar</span>
-          <span className="block text-xs text-deep-soil/65">Published HQ events on the same map</span>
+          <span className="block text-xs text-kelly-text/65">Published HQ events on the same map</span>
         </span>
       </label>
       <div className="lg:ml-auto">
         <button
           type="button"
-          className="rounded-btn border border-deep-soil/20 px-4 py-2.5 font-body text-sm font-semibold text-deep-soil hover:bg-deep-soil/[0.04] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-dirt"
+          className="rounded-btn border border-kelly-text/20 px-4 py-2.5 font-body text-sm font-semibold text-kelly-text hover:bg-kelly-text/[0.04] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-navy"
           onClick={() =>
             onChange({
               type: "all",
@@ -140,14 +140,14 @@ function FilterSelect({
 }) {
   return (
     <div className="min-w-[12rem] flex-1">
-      <label htmlFor={id} className="block font-body text-xs font-bold uppercase tracking-wider text-deep-soil/55">
+      <label htmlFor={id} className="block font-body text-xs font-bold uppercase tracking-wider text-kelly-text/55">
         {label}
       </label>
       <select
         id={id}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="mt-2 w-full rounded-btn border border-deep-soil/15 bg-cream-canvas px-3 py-2.5 font-body text-sm text-deep-soil shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-dirt"
+        className="mt-2 w-full rounded-btn border border-kelly-text/15 bg-kelly-page px-3 py-2.5 font-body text-sm text-kelly-text shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-navy"
       >
         {options.map((o) => (
           <option key={o.value} value={o.value}>

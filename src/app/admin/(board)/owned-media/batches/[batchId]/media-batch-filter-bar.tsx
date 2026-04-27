@@ -50,14 +50,14 @@ export function MediaBatchFilterBar({ batchId, current }: Props) {
   };
 
   return (
-    <section className="rounded-lg border border-deep-soil/10 bg-white/70 p-4 text-sm text-deep-soil">
-      <h3 className="font-heading text-sm font-bold text-deep-soil">Filter</h3>
-      <p className="mt-1 text-xs text-deep-soil/55">Narrow the grid; bulk actions still affect the full batch.</p>
+    <section className="rounded-lg border border-kelly-text/10 bg-white/70 p-4 text-sm text-kelly-text">
+      <h3 className="font-heading text-sm font-bold text-kelly-text">Filter</h3>
+      <p className="mt-1 text-xs text-kelly-text/55">Narrow the grid; bulk actions still affect the full batch.</p>
       <div className="mt-3 flex flex-wrap items-end gap-3">
         <label className="text-xs">
           Type
           <select
-            className="ml-1 mt-0.5 block rounded border border-deep-soil/15 bg-white px-2 py-1"
+            className="ml-1 mt-0.5 block rounded border border-kelly-text/15 bg-white px-2 py-1"
             value={sp.get("kind") ?? current.kind ?? ""}
             onChange={(e) => go({ kind: e.target.value || undefined })}
           >
@@ -72,7 +72,7 @@ export function MediaBatchFilterBar({ batchId, current }: Props) {
         <label className="text-xs">
           Review
           <select
-            className="ml-1 mt-0.5 block rounded border border-deep-soil/15 bg-white px-2 py-1"
+            className="ml-1 mt-0.5 block rounded border border-kelly-text/15 bg-white px-2 py-1"
             value={sp.get("review") ?? current.review ?? ""}
             onChange={(e) => go({ review: e.target.value || undefined })}
           >
@@ -87,7 +87,7 @@ export function MediaBatchFilterBar({ batchId, current }: Props) {
         <label className="text-xs">
           Visibility
           <select
-            className="ml-1 mt-0.5 block rounded border border-deep-soil/15 bg-white px-2 py-1"
+            className="ml-1 mt-0.5 block rounded border border-kelly-text/15 bg-white px-2 py-1"
             value={sp.get("public") ?? current.public ?? ""}
             onChange={(e) => go({ public: e.target.value || undefined })}
           >
@@ -106,7 +106,7 @@ export function MediaBatchFilterBar({ batchId, current }: Props) {
         </label>
         <Link
           href={`/admin/owned-media/batches/${batchId}`}
-          className="rounded border border-deep-soil/20 bg-white px-2 py-1 text-xs font-semibold text-deep-soil"
+          className="rounded border border-kelly-text/20 bg-white px-2 py-1 text-xs font-semibold text-kelly-text"
         >
           Clear filters
         </Link>

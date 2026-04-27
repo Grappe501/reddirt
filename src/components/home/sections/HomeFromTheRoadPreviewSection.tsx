@@ -14,17 +14,17 @@ export function HomeFromTheRoadPreviewSection({ posts }: HomeFromTheRoadPreviewS
   if (!posts.length) return null;
 
   return (
-    <section className="bg-civic-fog py-section-y lg:py-section-y-lg" aria-labelledby="road-preview-heading">
+    <section className="bg-kelly-fog py-section-y lg:py-section-y-lg" aria-labelledby="road-preview-heading">
       <ContentContainer>
         <FadeInWhenVisible className="mx-auto max-w-3xl text-center">
-          <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-civic-gold">From the road</p>
+          <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-kelly-gold">From the road</p>
           <h2
             id="road-preview-heading"
-            className="mt-4 font-heading text-[clamp(1.55rem,3vw,2.15rem)] font-bold text-civic-ink"
+            className="mt-4 font-heading text-[clamp(1.55rem,3vw,2.15rem)] font-bold text-kelly-ink"
           >
             Latest stops &amp; updates
           </h2>
-          <p className="mt-4 font-body text-lg text-civic-slate">
+          <p className="mt-4 font-body text-lg text-kelly-slate">
             Moments from the campaign trail across Arkansas—shared here so neighbors can follow along.
           </p>
         </FadeInWhenVisible>
@@ -43,17 +43,17 @@ export function HomeFromTheRoadPreviewSection({ posts }: HomeFromTheRoadPreviewS
               <FadeInWhenVisible key={post.id} delay={0.04 * i}>
                 <article
                   className={cn(
-                    "flex h-full flex-col overflow-hidden rounded-card border border-civic-ink/10 bg-white shadow-sm transition",
-                    "hover:border-civic-gold/35 hover:shadow-md",
+                    "flex h-full flex-col overflow-hidden rounded-card border border-kelly-ink/10 bg-white shadow-sm transition",
+                    "hover:border-kelly-gold/35 hover:shadow-md",
                   )}
                 >
                   <Link href={`/from-the-road#post-${post.slug}`} className="block shrink-0">
-                    <div className="relative aspect-[16/10] bg-civic-midnight/10">
+                    <div className="relative aspect-[16/10] bg-kelly-navy/10">
                       {img ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img src={img} alt="" className="h-full w-full object-cover" loading="lazy" />
                       ) : (
-                        <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-civic-blue/25 to-civic-midnight/40 font-body text-xs text-civic-mist/80">
+                        <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-kelly-blue/25 to-kelly-navy/40 font-body text-xs text-kelly-mist/80">
                           From the road
                         </div>
                       )}
@@ -61,22 +61,22 @@ export function HomeFromTheRoadPreviewSection({ posts }: HomeFromTheRoadPreviewS
                   </Link>
                   <div className="flex flex-1 flex-col p-5">
                     {date ? (
-                      <p className="font-body text-[10px] font-bold uppercase tracking-wider text-civic-slate/55">{date}</p>
+                      <p className="font-body text-[10px] font-bold uppercase tracking-wider text-kelly-slate/55">{date}</p>
                     ) : null}
                     <ContentLocality countySlug={post.countySlug} city={post.city} variant="compact" />
-                    <h3 className="mt-2 font-heading text-lg font-bold leading-snug text-civic-ink">
-                      <Link href={post.canonicalUrl} target="_blank" rel="noreferrer" className="hover:text-civic-blue">
+                    <h3 className="mt-2 font-heading text-lg font-bold leading-snug text-kelly-ink">
+                      <Link href={post.canonicalUrl} target="_blank" rel="noreferrer" className="hover:text-kelly-blue">
                         {post.title}
                       </Link>
                     </h3>
                     {excerpt ? (
-                      <p className="mt-2 line-clamp-3 flex-1 font-body text-sm leading-relaxed text-civic-slate">{excerpt}</p>
+                      <p className="mt-2 line-clamp-3 flex-1 font-body text-sm leading-relaxed text-kelly-slate">{excerpt}</p>
                     ) : null}
                     <Link
                       href={post.canonicalUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="mt-4 inline-flex text-sm font-bold uppercase tracking-wider text-civic-blue hover:underline"
+                      className="mt-4 inline-flex text-sm font-bold uppercase tracking-wider text-kelly-blue hover:underline"
                     >
                       Read entry →
                     </Link>
@@ -90,7 +90,7 @@ export function HomeFromTheRoadPreviewSection({ posts }: HomeFromTheRoadPreviewS
         <div className="mt-10 flex justify-center">
           <Link
             href="/from-the-road"
-            className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-civic-ink/20 px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-civic-ink transition hover:border-civic-gold hover:bg-white"
+            className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-kelly-ink/20 px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-kelly-ink transition hover:border-kelly-gold hover:bg-white"
           >
             Open From the Road
           </Link>

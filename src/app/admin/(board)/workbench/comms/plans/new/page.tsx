@@ -16,9 +16,9 @@ type Props = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 };
 
-const card = "mt-4 space-y-3 rounded-card border border-deep-soil/10 bg-cream-canvas p-6 shadow-[var(--shadow-soft)]";
-const label = "text-xs font-semibold uppercase tracking-wider text-deep-soil/55";
-const field = "mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm";
+const card = "mt-4 space-y-3 rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]";
+const label = "text-xs font-semibold uppercase tracking-wider text-kelly-text/55";
+const field = "mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm";
 
 function firstParam(v: string | string[] | undefined): string | undefined {
   if (v == null) return undefined;
@@ -121,13 +121,13 @@ export default async function NewCommunicationPlanPage({ searchParams }: Props) 
   return (
     <div className="min-w-0 p-1">
       <CommsWorkbenchSubnav />
-      <p className="mt-2 font-body text-xs text-deep-soil/55">
-        <Link href={COMMS_APP_PATHS.plans} className="text-civic-slate hover:underline">
+      <p className="mt-2 font-body text-xs text-kelly-text/55">
+        <Link href={COMMS_APP_PATHS.plans} className="text-kelly-slate hover:underline">
           ← All message plans
         </Link>
       </p>
-      <h1 className="mt-1 font-heading text-xl font-bold text-deep-soil">New message plan</h1>
-      <p className="mt-1 max-w-2xl font-body text-sm text-deep-soil/70">
+      <h1 className="mt-1 font-heading text-xl font-bold text-kelly-text">New message plan</h1>
+      <p className="mt-1 max-w-2xl font-body text-sm text-kelly-text/70">
         Create a <strong>CommunicationPlan</strong> with a clear upstream source when applicable. The plan is created in
         draft; add and edit message drafts on the plan detail.
       </p>
@@ -151,9 +151,9 @@ export default async function NewCommunicationPlanPage({ searchParams }: Props) 
 
       {intake ? (
         <form action={submitIntakeCommunicationPlanForm} className={card}>
-          <h2 className="font-heading text-lg font-bold text-deep-soil">From workflow intake</h2>
+          <h2 className="font-heading text-lg font-bold text-kelly-text">From workflow intake</h2>
           <input type="hidden" name="workflowIntakeId" value={intake.id} />
-          <p className="text-xs text-deep-soil/60">
+          <p className="text-xs text-kelly-text/60">
             Intake: <span className="font-mono">{intake.id}</span>
             {intake.status ? <span> · {formatCommsFieldLabel(intake.status)}</span> : null}
             {intake.source ? <span> · {intake.source}</span> : null}
@@ -179,7 +179,7 @@ export default async function NewCommunicationPlanPage({ searchParams }: Props) 
           <ObjectiveSelect name="objective" defaultValue={CommunicationObjective.GENERAL_UPDATE} />
           <PrioritySelect name="priority" />
           <DateRow />
-          <button type="submit" className="rounded-btn bg-red-dirt px-5 py-2.5 text-sm font-bold text-cream-canvas">
+          <button type="submit" className="rounded-btn bg-kelly-navy px-5 py-2.5 text-sm font-bold text-kelly-page">
             Create plan from intake
           </button>
         </form>
@@ -187,9 +187,9 @@ export default async function NewCommunicationPlanPage({ searchParams }: Props) 
 
       {task ? (
         <form action={submitTaskCommunicationPlanForm} className={card}>
-          <h2 className="font-heading text-lg font-bold text-deep-soil">From campaign task</h2>
+          <h2 className="font-heading text-lg font-bold text-kelly-text">From campaign task</h2>
           <input type="hidden" name="campaignTaskId" value={task.id} />
-          <p className="text-xs text-deep-soil/60">
+          <p className="text-xs text-kelly-text/60">
             Task: <span className="font-semibold">{task.title}</span> · {formatCommsFieldLabel(task.status)} · plan priority
             matches task priority ({formatCommsFieldLabel(task.priority)}).
           </p>
@@ -203,8 +203,8 @@ export default async function NewCommunicationPlanPage({ searchParams }: Props) 
           </label>
           <ObjectiveSelect name="objective" defaultValue={CommunicationObjective.INTERNAL_COORDINATION} />
           <DateRow defaultDue={task.dueAt ? toInputDateTime(task.dueAt) : undefined} />
-          <p className="text-[11px] text-deep-soil/50">Pre-filled with the task due when available; clear it if the plan should not have a due date.</p>
-          <button type="submit" className="rounded-btn bg-red-dirt px-5 py-2.5 text-sm font-bold text-cream-canvas">
+          <p className="text-[11px] text-kelly-text/50">Pre-filled with the task due when available; clear it if the plan should not have a due date.</p>
+          <button type="submit" className="rounded-btn bg-kelly-navy px-5 py-2.5 text-sm font-bold text-kelly-page">
             Create plan from task
           </button>
         </form>
@@ -212,9 +212,9 @@ export default async function NewCommunicationPlanPage({ searchParams }: Props) 
 
       {event ? (
         <form action={submitEventCommunicationPlanForm} className={card}>
-          <h2 className="font-heading text-lg font-bold text-deep-soil">From campaign event</h2>
+          <h2 className="font-heading text-lg font-bold text-kelly-text">From campaign event</h2>
           <input type="hidden" name="eventId" value={event.id} />
-          <p className="text-xs text-deep-soil/60">
+          <p className="text-xs text-kelly-text/60">
             Event: <span className="font-semibold">{event.title}</span> · {formatCommsFieldLabel(event.status)} ·{" "}
             {formatCommsFieldLabel(event.eventType)}
           </p>
@@ -229,8 +229,8 @@ export default async function NewCommunicationPlanPage({ searchParams }: Props) 
           <ObjectiveSelect name="objective" defaultValue={CommunicationObjective.EVENT_PROMOTION} />
           <PrioritySelect name="priority" />
           <DateRow />
-          <p className="text-[11px] text-deep-soil/50">Pick an objective that matches this plan (reminder, promotion, follow-up, etc.).</p>
-          <button type="submit" className="rounded-btn bg-red-dirt px-5 py-2.5 text-sm font-bold text-cream-canvas">
+          <p className="text-[11px] text-kelly-text/50">Pick an objective that matches this plan (reminder, promotion, follow-up, etc.).</p>
+          <button type="submit" className="rounded-btn bg-kelly-navy px-5 py-2.5 text-sm font-bold text-kelly-page">
             Create plan from event
           </button>
         </form>
@@ -238,9 +238,9 @@ export default async function NewCommunicationPlanPage({ searchParams }: Props) 
 
       {social ? (
         <form action={submitSocialCommunicationPlanForm} className={card}>
-          <h2 className="font-heading text-lg font-bold text-deep-soil">From social work item</h2>
+          <h2 className="font-heading text-lg font-bold text-kelly-text">From social work item</h2>
           <input type="hidden" name="socialContentItemId" value={social.id} />
-          <p className="text-xs text-deep-soil/60">
+          <p className="text-xs text-kelly-text/60">
             Item: <span className="font-mono">{social.id}</span> · {formatCommsFieldLabel(social.kind)} ·{" "}
             {formatCommsFieldLabel(social.status)}
           </p>
@@ -260,17 +260,17 @@ export default async function NewCommunicationPlanPage({ searchParams }: Props) 
           <ObjectiveSelect name="objective" defaultValue={CommunicationObjective.GENERAL_UPDATE} />
           <PrioritySelect name="priority" />
           <DateRow />
-          <p className="text-[11px] text-deep-soil/50">Does not change the social item; only sets provenance on the new plan.</p>
-          <button type="submit" className="rounded-btn bg-red-dirt px-5 py-2.5 text-sm font-bold text-cream-canvas">
+          <p className="text-[11px] text-kelly-text/50">Does not change the social item; only sets provenance on the new plan.</p>
+          <button type="submit" className="rounded-btn bg-kelly-navy px-5 py-2.5 text-sm font-bold text-kelly-page">
             Create plan from social item
           </button>
         </form>
       ) : null}
 
       {intake || task || event || social ? (
-        <p className="mt-4 text-sm text-deep-soil/70">
+        <p className="mt-4 text-sm text-kelly-text/70">
           Want a different flow?{" "}
-          <Link className="font-semibold text-civic-slate hover:underline" href={COMMS_APP_PATHS.plansNew}>
+          <Link className="font-semibold text-kelly-slate hover:underline" href={COMMS_APP_PATHS.plansNew}>
             Open the blank / generic creator
           </Link>
         </p>
@@ -278,8 +278,8 @@ export default async function NewCommunicationPlanPage({ searchParams }: Props) 
 
       {!(intake || task || event || social) ? (
         <form action={submitDirectCommunicationPlanForm} className={card}>
-        <h2 className="font-heading text-lg font-bold text-deep-soil">Blank plan (or optional single source link)</h2>
-        <p className="text-sm text-deep-soil/65">
+        <h2 className="font-heading text-lg font-bold text-kelly-text">Blank plan (or optional single source link)</h2>
+        <p className="text-sm text-kelly-text/65">
           Start from scratch, or set at most <strong>one</strong> upstream id if you are wiring provenance from an existing row.
         </p>
         <label className="block text-sm">
@@ -303,7 +303,7 @@ export default async function NewCommunicationPlanPage({ searchParams }: Props) 
           </label>
         </div>
         <DateRow />
-        <p className="text-xs font-bold uppercase text-deep-soil/55">Link at most one source (optional)</p>
+        <p className="text-xs font-bold uppercase text-kelly-text/55">Link at most one source (optional)</p>
         <div className="grid gap-3 md:grid-cols-2">
           <label className="block text-sm">
             <span className={label}>Workflow intake id</span>
@@ -326,7 +326,7 @@ export default async function NewCommunicationPlanPage({ searchParams }: Props) 
           <span className={label}>Source type label (only if no id above, optional)</span>
           <input name="sourceType" className={field} placeholder="e.g. NOTEBOOK_IMPORT" />
         </label>
-        <button type="submit" className="rounded-btn bg-deep-soil px-5 py-2.5 text-sm font-bold text-cream-canvas">
+        <button type="submit" className="rounded-btn bg-kelly-text px-5 py-2.5 text-sm font-bold text-kelly-page">
           Create plan
         </button>
         </form>

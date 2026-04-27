@@ -13,14 +13,14 @@ import { computeEventExecutionReadiness } from "@/lib/calendar/event-readiness";
 import { EVENT_STAGE_LABEL } from "@/lib/calendar/event-lifecycle";
 import { buildEventCommsChips } from "@/lib/calendar/event-comms-surface";
 
-const h2 = "font-heading text-[9px] font-bold uppercase tracking-wider text-deep-soil/50";
-const card = "rounded border border-deep-soil/10 bg-cream-canvas px-1.5 py-1 text-left text-[10px] shadow-sm min-w-0";
+const h2 = "font-heading text-[9px] font-bold uppercase tracking-wider text-kelly-text/50";
+const card = "rounded border border-kelly-text/10 bg-kelly-page px-1.5 py-1 text-left text-[10px] shadow-sm min-w-0";
 
 const QStyle: Record<string, string> = {
   Q1: "bg-red-800/20 text-red-900 border-red-800/30",
-  Q2: "bg-field-green/20 text-field-green/95 border-field-green/40",
+  Q2: "bg-kelly-success/20 text-kelly-success/95 border-kelly-success/40",
   Q3: "bg-amber-200/50 text-amber-950 border-amber-800/30",
-  Q4: "bg-deep-soil/10 text-deep-soil/70 border-deep-soil/20",
+  Q4: "bg-kelly-text/10 text-kelly-text/70 border-kelly-text/20",
 };
 
 type WeekEvent = CampaignEvent & {
@@ -141,25 +141,25 @@ export async function CalendarCommandView({
 
   return (
     <div className="flex min-h-0 w-full min-w-0 max-w-[1920px] flex-1 flex-col">
-      <div className="flex flex-wrap items-end justify-between gap-2 border-b border-deep-soil/15 bg-gradient-to-r from-cream-canvas via-cream-canvas to-washed-canvas/30 px-2 py-2 md:px-3">
+      <div className="flex flex-wrap items-end justify-between gap-2 border-b border-kelly-text/15 bg-gradient-to-r from-kelly-page via-kelly-page to-kelly-wash/30 px-2 py-2 md:px-3">
         <div className="min-w-0">
-          <p className="font-heading text-[9px] font-bold uppercase tracking-[0.2em] text-red-dirt/90">Week command</p>
-          <h2 className="font-heading text-lg font-bold leading-tight text-deep-soil md:text-xl">
+          <p className="font-heading text-[9px] font-bold uppercase tracking-[0.2em] text-kelly-navy/90">Week command</p>
+          <h2 className="font-heading text-lg font-bold leading-tight text-kelly-text md:text-xl">
             {weekRangeLabel}
           </h2>
-          <p className="mt-0.5 max-w-3xl text-[10px] text-deep-soil/60">
+          <p className="mt-0.5 max-w-3xl text-[10px] text-kelly-text/60">
             Mission-led execution. Big rocks, matrix quadrants, and event intelligence — same data model as Google sync.
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-1.5 text-[10px]">
-          <Link href={calUrl(filters, weekKey, matrixQ, { week: prevWeek })} className="rounded border border-deep-soil/20 bg-white px-2 py-0.5 font-bold">
+          <Link href={calUrl(filters, weekKey, matrixQ, { week: prevWeek })} className="rounded border border-kelly-text/20 bg-white px-2 py-0.5 font-bold">
             ← Week
           </Link>
-          <Link href={calUrl(filters, weekKey, matrixQ, { week: nextWeek })} className="rounded border border-deep-soil/20 bg-white px-2 py-0.5 font-bold">
+          <Link href={calUrl(filters, weekKey, matrixQ, { week: nextWeek })} className="rounded border border-kelly-text/20 bg-white px-2 py-0.5 font-bold">
             Week →
           </Link>
           <Link
-            className="rounded border border-deep-soil/15 bg-white px-2 py-0.5"
+            className="rounded border border-kelly-text/15 bg-white px-2 py-0.5"
             href="/admin/workbench"
           >
             Workbench
@@ -168,7 +168,7 @@ export async function CalendarCommandView({
       </div>
 
       {!hideTabNav ? (
-        <div className="flex flex-wrap gap-0.5 border-b border-deep-soil/10 bg-deep-soil/[0.04] px-1 py-1">
+        <div className="flex flex-wrap gap-0.5 border-b border-kelly-text/10 bg-kelly-text/[0.04] px-1 py-1">
             {(
               [
                 ["week", "Week"],
@@ -182,7 +182,7 @@ export async function CalendarCommandView({
               key={v}
               href={calUrl(filters, weekKey, matrixQ, { view: v })}
               className={`rounded px-2 py-0.5 text-[10px] font-bold uppercase ${
-                (viewMode === v || (v === "week" && (viewMode === "command" || viewMode === "week"))) ? "bg-deep-soil text-cream-canvas" : "bg-white text-deep-soil/70"
+                (viewMode === v || (v === "week" && (viewMode === "command" || viewMode === "week"))) ? "bg-kelly-text text-kelly-page" : "bg-white text-kelly-text/70"
               }`}
             >
               {label}
@@ -198,35 +198,35 @@ export async function CalendarCommandView({
         </div>
       ) : null}
 
-      <div className="grid min-h-0 flex-1 grid-cols-1 gap-0 xl:grid-cols-[minmax(0,1fr)_minmax(280px,320px)] xl:divide-x xl:divide-deep-soil/10">
+      <div className="grid min-h-0 flex-1 grid-cols-1 gap-0 xl:grid-cols-[minmax(0,1fr)_minmax(280px,320px)] xl:divide-x xl:divide-kelly-text/10">
         <div className="flex min-w-0 flex-col overflow-hidden">
-          <div className="shrink-0 space-y-2 border-b border-deep-soil/10 p-2 md:px-3">
+          <div className="shrink-0 space-y-2 border-b border-kelly-text/10 p-2 md:px-3">
             <form action={updateWeeklyPlanAction} className="space-y-1.5">
               <input type="hidden" name="weekKey" value={weekKey} />
               <p className={h2}>Weekly mission & outcomes</p>
               <input
                 name="missionStatement"
                 defaultValue={plan.missionStatement ?? ""}
-                className="w-full border-b border-deep-soil/20 bg-transparent text-[12px] font-heading font-bold text-deep-soil placeholder:text-deep-soil/35"
+                className="w-full border-b border-kelly-text/20 bg-transparent text-[12px] font-heading font-bold text-kelly-text placeholder:text-kelly-text/35"
                 placeholder="This week we win by…"
               />
               <div className="grid grid-cols-1 gap-1 md:grid-cols-3">
                 <input
                   name="outcome1"
                   defaultValue={plan.outcome1 ?? ""}
-                  className="border border-deep-soil/10 bg-white px-1.5 py-0.5 text-[10px]"
+                  className="border border-kelly-text/10 bg-white px-1.5 py-0.5 text-[10px]"
                   placeholder="Outcome 1 (measurable)"
                 />
                 <input
                   name="outcome2"
                   defaultValue={plan.outcome2 ?? ""}
-                  className="border border-deep-soil/10 bg-white px-1.5 py-0.5 text-[10px]"
+                  className="border border-kelly-text/10 bg-white px-1.5 py-0.5 text-[10px]"
                   placeholder="Outcome 2"
                 />
                 <input
                   name="outcome3"
                   defaultValue={plan.outcome3 ?? ""}
-                  className="border border-deep-soil/10 bg-white px-1.5 py-0.5 text-[10px]"
+                  className="border border-kelly-text/10 bg-white px-1.5 py-0.5 text-[10px]"
                   placeholder="Outcome 3"
                 />
               </div>
@@ -234,11 +234,11 @@ export async function CalendarCommandView({
               <div className="grid grid-cols-1 gap-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-7">
                 {ROLE_STRIP_KEYS.map((r) => (
                   <label key={r.key} className="block min-w-0">
-                    <span className="text-[8px] font-bold uppercase text-deep-soil/40">{r.label}</span>
+                    <span className="text-[8px] font-bold uppercase text-kelly-text/40">{r.label}</span>
                     <input
                       name={`role_${r.key}`}
                       defaultValue={rc[r.key] ?? ""}
-                      className="mt-0.5 w-full border border-deep-soil/10 bg-white px-1 py-0.5 text-[9px]"
+                      className="mt-0.5 w-full border border-kelly-text/10 bg-white px-1 py-0.5 text-[9px]"
                       placeholder="Commitment"
                     />
                   </label>
@@ -246,16 +246,16 @@ export async function CalendarCommandView({
               </div>
               <button
                 type="submit"
-                className="rounded border border-deep-soil/25 bg-deep-soil px-2 py-0.5 text-[9px] font-bold text-cream-canvas"
+                className="rounded border border-kelly-text/25 bg-kelly-text px-2 py-0.5 text-[9px] font-bold text-kelly-page"
               >
                 Save week plan
               </button>
             </form>
           </div>
 
-          <div className="shrink-0 border-b border-deep-soil/10 p-2 md:px-3">
+          <div className="shrink-0 border-b border-kelly-text/10 p-2 md:px-3">
             <p className={h2}>Big rocks (3–5 protected priorities)</p>
-            <p className="text-[9px] text-deep-soil/50">Pinned in the week before low-quadrant noise. Link an event to show as a protected block in the grid.</p>
+            <p className="text-[9px] text-kelly-text/50">Pinned in the week before low-quadrant noise. Link an event to show as a protected block in the grid.</p>
             <ul className="mt-1 flex flex-wrap gap-1.5">
               {plan.bigRocks.map((r) => (
                 <li
@@ -274,18 +274,18 @@ export async function CalendarCommandView({
                   </form>
                 </li>
               ))}
-              {plan.bigRocks.length === 0 ? <li className="text-[9px] text-deep-soil/40">No big rocks set yet.</li> : null}
+              {plan.bigRocks.length === 0 ? <li className="text-[9px] text-kelly-text/40">No big rocks set yet.</li> : null}
             </ul>
             {plan.bigRocks.length < 5 ? (
               <form action={addWeeklyBigRockAction} className="mt-1 flex flex-wrap items-end gap-1">
                 <input type="hidden" name="weekKey" value={weekKey} />
                 <div className="min-w-0 flex-1">
-                  <span className="text-[8px] text-deep-soil/40">Title</span>
-                  <input name="title" className="w-full border border-deep-soil/15 bg-white px-1.5 text-[9px]" placeholder="Voter reg push · Tulsa" />
+                  <span className="text-[8px] text-kelly-text/40">Title</span>
+                  <input name="title" className="w-full border border-kelly-text/15 bg-white px-1.5 text-[9px]" placeholder="Voter reg push · Tulsa" />
                 </div>
                 <div>
-                  <span className="text-[8px] text-deep-soil/40">Link event (optional)</span>
-                  <select name="eventId" className="min-w-[120px] border border-deep-soil/15 bg-white text-[9px]">
+                  <span className="text-[8px] text-kelly-text/40">Link event (optional)</span>
+                  <select name="eventId" className="min-w-[120px] border border-kelly-text/15 bg-white text-[9px]">
                     <option value="">—</option>
                     {weekEvents.map((e) => (
                       <option key={e.id} value={e.id}>
@@ -294,18 +294,18 @@ export async function CalendarCommandView({
                     ))}
                   </select>
                 </div>
-                <button type="submit" className="shrink-0 rounded bg-deep-soil px-2 py-1 text-[9px] font-bold text-cream-canvas">
+                <button type="submit" className="shrink-0 rounded bg-kelly-text px-2 py-1 text-[9px] font-bold text-kelly-page">
                   Add
                 </button>
               </form>
             ) : null}
           </div>
 
-          <div className="shrink-0 border-b border-deep-soil/10 px-2 py-1.5 md:px-3">
+          <div className="shrink-0 border-b border-kelly-text/10 px-2 py-1.5 md:px-3">
             <p className={h2}>Time matrix (this week, by duration)</p>
             {matrix.totalH > 0 ? (
               <div className="mt-1">
-                <div className="flex h-2 w-full max-w-2xl overflow-hidden rounded border border-deep-soil/10">
+                <div className="flex h-2 w-full max-w-2xl overflow-hidden rounded border border-kelly-text/10">
                   {(["Q1", "Q2", "Q3", "Q4"] as const).map((k) => {
                     const h = matrix[k] ?? 0;
                     const w = (h / matrix.totalH) * 100;
@@ -314,7 +314,7 @@ export async function CalendarCommandView({
                     ) : null;
                   })}
                 </div>
-                <div className="mt-1 flex flex-wrap gap-2 text-[9px] text-deep-soil/75">
+                <div className="mt-1 flex flex-wrap gap-2 text-[9px] text-kelly-text/75">
                   {(["Q1", "Q2", "Q3", "Q4"] as const).map((k) => (
                     <span key={k}>
                       {k} {((matrix[k] / matrix.totalH) * 100).toFixed(0)}%
@@ -323,9 +323,9 @@ export async function CalendarCommandView({
                 </div>
               </div>
             ) : (
-              <p className="text-[9px] text-deep-soil/50">No events in week — set quadrant on events to see the mix.</p>
+              <p className="text-[9px] text-kelly-text/50">No events in week — set quadrant on events to see the mix.</p>
             )}
-            <p className="mt-1 text-[9px] text-deep-soil/50">
+            <p className="mt-1 text-[9px] text-kelly-text/50">
               Filter grid:{" "}
               {(["ALL", "Q1", "Q2", "Q3", "Q4"] as const).map((qk) => (
                 <Link
@@ -333,8 +333,8 @@ export async function CalendarCommandView({
                   href={calUrl(filters, weekKey, matrixQ, { matrixQ: qk === "ALL" ? "ALL" : qk })}
                   className={`mr-1 font-bold ${
                     (quadrant === qk) || (qk === "ALL" && quadrant === "ALL")
-                      ? "text-red-dirt underline"
-                      : "text-civic-slate"
+                      ? "text-kelly-navy underline"
+                      : "text-kelly-slate"
                   }`}
                 >
                   {qk}
@@ -350,30 +350,30 @@ export async function CalendarCommandView({
           </div>
 
           {showInnerMetricsStrip ? (
-          <div className="grid grid-cols-2 gap-0.5 border-b border-deep-soil/10 bg-deep-soil/[0.02] p-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 xl:grid-cols-8">
+          <div className="grid grid-cols-2 gap-0.5 border-b border-kelly-text/10 bg-kelly-text/[0.02] p-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 xl:grid-cols-8">
             <div className={card}>
               <p className={h2}>Review queue</p>
-              <p className="font-heading text-base font-bold text-red-dirt">{strip.pendingApproval}</p>
+              <p className="font-heading text-base font-bold text-kelly-navy">{strip.pendingApproval}</p>
             </div>
             <div className={card}>
               <p className={h2}>Conflicts</p>
-              <p className="font-heading text-base font-bold text-deep-soil">{strip.conflicts}</p>
+              <p className="font-heading text-base font-bold text-kelly-text">{strip.conflicts}</p>
             </div>
             <div className={card}>
               <p className={h2}>Cancels (7d)</p>
-              <p className="font-heading text-base font-bold text-deep-soil">{strip.cancellWeek}</p>
+              <p className="font-heading text-base font-bold text-kelly-text">{strip.cancellWeek}</p>
             </div>
             <div className={card}>
               <p className={h2}>Travel load</p>
-              <p className="line-clamp-2 text-[9px] font-semibold leading-tight text-deep-soil/85">{strip.travelLoad}</p>
+              <p className="line-clamp-2 text-[9px] font-semibold leading-tight text-kelly-text/85">{strip.travelLoad}</p>
             </div>
             <div className={card}>
               <p className={h2}>Co. gaps</p>
-              <p className="font-heading text-base font-bold text-deep-soil">{strip.countyGapCount}</p>
+              <p className="font-heading text-base font-bold text-kelly-text">{strip.countyGapCount}</p>
             </div>
             <div className={card}>
               <p className={h2}>Sources</p>
-              <p className="text-[9px] font-bold text-deep-soil/80">
+              <p className="text-[9px] font-bold text-kelly-text/80">
                 {sources
                   .filter((s) => s.isActive)
                   .map((s) => s.label)
@@ -382,27 +382,27 @@ export async function CalendarCommandView({
             </div>
             <div className={card}>
               <p className={h2}>Heavy days</p>
-              <p className="line-clamp-2 text-[9px] text-deep-soil/75">{strip.overpacked[0] ?? "—"}</p>
+              <p className="line-clamp-2 text-[9px] text-kelly-text/75">{strip.overpacked[0] ?? "—"}</p>
             </div>
             <div className={card}>
               <p className={h2}>Week hours</p>
-              <p className="font-heading text-base font-bold text-deep-soil">~{matrix.totalH.toFixed(1)}h</p>
+              <p className="font-heading text-base font-bold text-kelly-text">~{matrix.totalH.toFixed(1)}h</p>
             </div>
           </div>
           ) : null}
 
           <div className="min-h-[280px] min-w-0 flex-1 overflow-x-auto p-1 md:p-2">
             <p className={h2 + " mb-1 px-0.5"}>Week grid</p>
-            <div className="grid min-w-[900px] grid-cols-7 gap-0.5 border border-deep-soil/10">
+            <div className="grid min-w-[900px] grid-cols-7 gap-0.5 border border-kelly-text/10">
               {dayYmds.map((ymd) => {
                 const list = byDay.get(ymd) ?? [];
                 const d = new Date(ymd + "T12:00:00.000Z");
                 const dayName = d.toLocaleDateString("en-US", { timeZone: DEFAULT_CAMPAIGN_TZ, weekday: "short" });
                 return (
-                  <div key={ymd} className="flex min-w-0 flex-col border-l border-deep-soil/10 bg-white/90 first:border-l-0">
-                    <div className="sticky top-0 border-b border-deep-soil/10 bg-deep-soil/90 px-1 py-0.5 text-center">
-                      <p className="text-[9px] font-bold text-cream-canvas">{dayName}</p>
-                      <p className="text-[8px] text-cream-canvas/80">{ymd}</p>
+                  <div key={ymd} className="flex min-w-0 flex-col border-l border-kelly-text/10 bg-white/90 first:border-l-0">
+                    <div className="sticky top-0 border-b border-kelly-text/10 bg-kelly-text/90 px-1 py-0.5 text-center">
+                      <p className="text-[9px] font-bold text-kelly-page">{dayName}</p>
+                      <p className="text-[8px] text-kelly-page/80">{ymd}</p>
                     </div>
                     <ul className="space-y-0.5 p-0.5">
                       {list.map((e) => {
@@ -427,15 +427,15 @@ export async function CalendarCommandView({
                           <li key={e.id}>
                             <Link
                               href={calUrl(filters, weekKey, matrixQ, { event: e.id })}
-                              className={`block rounded border px-0.5 py-0.5 text-[9px] leading-tight transition hover:border-red-dirt/40 ${
+                              className={`block rounded border px-0.5 py-0.5 text-[9px] leading-tight transition hover:border-kelly-navy/40 ${
                                 br
                                   ? "border-l-4 border-l-amber-800 bg-amber-50/60 border-amber-800/20"
                                   : atR
-                                    ? "border-rose-800/40 bg-rose-50/50 border-deep-soil/10"
-                                    : "border-deep-soil/10 bg-cream-canvas/30"
+                                    ? "border-rose-800/40 bg-rose-50/50 border-kelly-text/10"
+                                    : "border-kelly-text/10 bg-kelly-page/30"
                               }`}
                             >
-                              <span className="mr-0.5 rounded bg-deep-soil/10 px-0.5 text-[7px] font-bold text-deep-soil/80" title={e.eventWorkflowState}>
+                              <span className="mr-0.5 rounded bg-kelly-text/10 px-0.5 text-[7px] font-bold text-kelly-text/80" title={e.eventWorkflowState}>
                                 {EVENT_STAGE_LABEL[e.eventWorkflowState]}
                               </span>
                               {commsCh.map((c) => (
@@ -448,7 +448,7 @@ export async function CalendarCommandView({
                                 </span>
                               ))}
                               {atR ? <span className="mr-0.5 text-[7px] font-bold text-rose-800">RISK</span> : null}
-                              <span className="text-deep-soil/45">{timeShort(e.startAt)}</span>{" "}
+                              <span className="text-kelly-text/45">{timeShort(e.startAt)}</span>{" "}
                               <span className={`inline-block rounded border px-0.5 text-[8px] font-bold ${QStyle[e.timeMatrixQuadrant]}`}>
                                 {e.timeMatrixQuadrant}
                               </span>
@@ -459,19 +459,19 @@ export async function CalendarCommandView({
                                   title={e.calendarSource.displayName || e.calendarSource.label}
                                 />
                               ) : null}
-                              <span className="ml-0.5 font-semibold text-deep-soil">{e.title}</span>
-                              {e.county ? <span className="ml-0.5 text-[8px] text-civic-slate"> · {e.county.displayName}</span> : null}
+                              <span className="ml-0.5 font-semibold text-kelly-text">{e.title}</span>
+                              {e.county ? <span className="ml-0.5 text-[8px] text-kelly-slate"> · {e.county.displayName}</span> : null}
                             </Link>
                           </li>
                         );
                       })}
                     </ul>
-                    {list.length === 0 ? <p className="p-1 text-[8px] text-deep-soil/40">—</p> : null}
-                    <form action={createDraftEventInSlotAction} className="border-t border-deep-soil/10 p-0.5">
+                    {list.length === 0 ? <p className="p-1 text-[8px] text-kelly-text/40">—</p> : null}
+                    <form action={createDraftEventInSlotAction} className="border-t border-kelly-text/10 p-0.5">
                       <input type="hidden" name="returnSearch" value={draftReturnSearch} />
                       <input type="hidden" name="ymd" value={ymd} />
                       <input type="hidden" name="weekKey" value={weekKey} />
-                      <button type="submit" className="w-full rounded border border-dashed border-deep-soil/25 py-0.5 text-[8px] font-bold text-deep-soil/70 hover:border-red-dirt/30">
+                      <button type="submit" className="w-full rounded border border-dashed border-kelly-text/25 py-0.5 text-[8px] font-bold text-kelly-text/70 hover:border-kelly-navy/30">
                         + Draft slot
                       </button>
                     </form>
@@ -483,7 +483,7 @@ export async function CalendarCommandView({
 
         </div>
 
-        <aside className="flex min-h-0 min-w-0 flex-col border-t border-deep-soil/10 bg-washed-canvas/20 xl:max-w-[360px] xl:border-t-0">
+        <aside className="flex min-h-0 min-w-0 flex-col border-t border-kelly-text/10 bg-kelly-wash/20 xl:max-w-[360px] xl:border-t-0">
           {detail ? (
             <EventExecutionPanel
               detail={detail}
@@ -503,14 +503,14 @@ export async function CalendarCommandView({
               assignUsers={assignUsers}
             />
           ) : (
-            <div className="p-2 text-[10px] text-deep-soil/55">
-              <p className="font-heading text-xs font-bold text-deep-soil">No event selected</p>
+            <div className="p-2 text-[10px] text-kelly-text/55">
+              <p className="font-heading text-xs font-bold text-kelly-text">No event selected</p>
               <p className="mt-1">Select an event in the week grid to load prep, comms, staffing, and follow-up.</p>
             </div>
           )}
-          <div id="ai-briefing" className="shrink-0 border-t border-deep-soil/10 bg-deep-soil/[0.03] p-2">
+          <div id="ai-briefing" className="shrink-0 border-t border-kelly-text/10 bg-kelly-text/[0.03] p-2">
             <p className={h2}>AI command briefing</p>
-            <pre className="mt-0.5 max-h-56 overflow-y-auto whitespace-pre-wrap font-body text-[9px] leading-relaxed text-deep-soil/88">
+            <pre className="mt-0.5 max-h-56 overflow-y-auto whitespace-pre-wrap font-body text-[9px] leading-relaxed text-kelly-text/88">
               {aiText}
             </pre>
           </div>

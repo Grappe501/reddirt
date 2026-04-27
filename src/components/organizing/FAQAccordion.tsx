@@ -18,19 +18,19 @@ export function FAQAccordion({ items, className }: { items: FaqItem[]; className
         return (
           <div
             key={item.q}
-            className="rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] shadow-[var(--shadow-soft)]"
+            className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] shadow-[var(--shadow-soft)]"
           >
-            <h3 className="font-heading text-lg font-bold text-deep-soil">
+            <h3 className="font-heading text-lg font-bold text-kelly-text">
               <button
                 type="button"
                 id={headerId}
                 aria-expanded={isOpen}
                 aria-controls={panelId}
-                className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-dirt md:px-6 md:py-5"
+                className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-navy md:px-6 md:py-5"
                 onClick={() => setOpen(isOpen ? null : i)}
               >
                 <span>{item.q}</span>
-                <span aria-hidden className="text-red-dirt">
+                <span aria-hidden className="text-kelly-navy">
                   {isOpen ? "−" : "+"}
                 </span>
               </button>
@@ -40,9 +40,9 @@ export function FAQAccordion({ items, className }: { items: FaqItem[]; className
               role="region"
               aria-labelledby={headerId}
               hidden={!isOpen}
-              className="border-t border-deep-soil/10 px-5 pb-5 pt-2 md:px-6"
+              className="border-t border-kelly-text/10 px-5 pb-5 pt-2 md:px-6"
             >
-              <p className="font-body text-base leading-relaxed text-deep-soil/80">{item.a}</p>
+              <p className="font-body text-base leading-relaxed text-kelly-text/80">{item.a}</p>
             </div>
           </div>
         );

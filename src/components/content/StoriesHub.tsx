@@ -66,10 +66,10 @@ export function StoriesHub({ stories, featured, substackPosts = [] }: StoriesHub
               role="tab"
               aria-selected={active}
               className={cn(
-                "rounded-full border px-4 py-2 font-body text-xs font-semibold uppercase tracking-wider transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-dirt",
+                "rounded-full border px-4 py-2 font-body text-xs font-semibold uppercase tracking-wider transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-navy",
                 active
-                  ? "border-red-dirt/40 bg-red-dirt/12 text-deep-soil"
-                  : "border-deep-soil/15 bg-deep-soil/[0.04] text-deep-soil/75 hover:border-red-dirt/25",
+                  ? "border-kelly-navy/40 bg-kelly-navy/12 text-kelly-text"
+                  : "border-kelly-text/15 bg-kelly-text/[0.04] text-kelly-text/75 hover:border-kelly-navy/25",
               )}
               onClick={() => {
                 setCategory(c.id);
@@ -83,21 +83,21 @@ export function StoriesHub({ stories, featured, substackPosts = [] }: StoriesHub
       </div>
 
       {category === "all" && substackPosts.length ? (
-        <div className="space-y-4 rounded-card border border-deep-soil/15 bg-white/60 p-6 shadow-[var(--shadow-soft)] md:p-8">
+        <div className="space-y-4 rounded-card border border-kelly-text/15 bg-white/60 p-6 shadow-[var(--shadow-soft)] md:p-8">
           <div>
-            <p className="font-body text-[11px] font-bold uppercase tracking-[0.2em] text-red-dirt/90">Campaign notebook</p>
-            <h2 className="mt-2 font-heading text-xl font-bold text-deep-soil md:text-2xl">From Kelly’s Substack</h2>
-            <p className="mt-3 max-w-3xl font-body text-sm leading-relaxed text-deep-soil/75">
+            <p className="font-body text-[11px] font-bold uppercase tracking-[0.2em] text-kelly-navy/90">Campaign notebook</p>
+            <h2 className="mt-2 font-heading text-xl font-bold text-kelly-text md:text-2xl">From Kelly’s Substack</h2>
+            <p className="mt-3 max-w-3xl font-body text-sm leading-relaxed text-kelly-text/75">
               These summaries are pulled from our live RSS feed and updated automatically. Each card links to the{" "}
-              <strong className="font-semibold text-deep-soil/90">full post on Substack</strong> (opens in a new tab)—not
+              <strong className="font-semibold text-kelly-text/90">full post on Substack</strong> (opens in a new tab)—not
               the on-site story pages below.
             </p>
-            <p className="mt-2 font-body text-xs text-deep-soil/60">
+            <p className="mt-2 font-body text-xs text-kelly-text/60">
               <a
                 href={getCampaignBlogUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-red-dirt underline-offset-2 hover:underline"
+                className="font-semibold text-kelly-navy underline-offset-2 hover:underline"
               >
                 Open the notebook home →
               </a>
@@ -128,7 +128,7 @@ export function StoriesHub({ stories, featured, substackPosts = [] }: StoriesHub
           ) : null}
           {notebookRest.length ? (
             <div className="space-y-4 pt-2">
-              <h3 className="font-heading text-lg font-bold text-deep-soil">More notebook posts</h3>
+              <h3 className="font-heading text-lg font-bold text-kelly-text">More notebook posts</h3>
               <ul className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
                 {notebookRest.map((p) => {
                   const when = formatNotebookDate(p.publishedAtIso);
@@ -156,11 +156,11 @@ export function StoriesHub({ stories, featured, substackPosts = [] }: StoriesHub
 
       {category === "all" && !substackPosts.length && featured.length ? (
         <div className="space-y-4">
-          <div className="rounded-lg border border-amber-700/25 bg-amber-50/90 px-4 py-3 font-body text-sm text-deep-soil/85">
-            <strong className="font-semibold text-deep-soil">Featured from the archive.</strong> The live notebook feed
+          <div className="rounded-lg border border-amber-700/25 bg-amber-50/90 px-4 py-3 font-body text-sm text-kelly-text/85">
+            <strong className="font-semibold text-kelly-text">Featured from the archive.</strong> The live notebook feed
             isn&apos;t available right now—these are stories we&apos;ve published on this site.
           </div>
-          <h2 className="font-heading text-xl font-bold text-deep-soil">Featured</h2>
+          <h2 className="font-heading text-xl font-bold text-kelly-text">Featured</h2>
           <ul className="grid grid-cols-1 gap-8 lg:grid-cols-2">
             {featured.map((s) => (
               <li key={s.slug}>
@@ -181,9 +181,9 @@ export function StoriesHub({ stories, featured, substackPosts = [] }: StoriesHub
       ) : null}
 
       {!hideOnSiteGridAfterSubstack && filtered.length === 0 ? (
-        <p className="rounded-card border border-dashed border-deep-soil/25 p-10 text-center font-body text-deep-soil/75" role="status">
+        <p className="rounded-card border border-dashed border-kelly-text/25 p-10 text-center font-body text-kelly-text/75" role="status">
           No stories in this category yet. Try another filter—or{" "}
-          <a className="font-semibold text-red-dirt underline" href="#share">
+          <a className="font-semibold text-kelly-navy underline" href="#share">
             share yours
           </a>
           .
@@ -191,7 +191,7 @@ export function StoriesHub({ stories, featured, substackPosts = [] }: StoriesHub
       ) : !hideOnSiteGridAfterSubstack ? (
         <>
           {category === "all" ? (
-            <h2 className="font-heading text-xl font-bold text-deep-soil">More voices</h2>
+            <h2 className="font-heading text-xl font-bold text-kelly-text">More voices</h2>
           ) : null}
           <ul className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
             {shown.map((s) => (
@@ -211,7 +211,7 @@ export function StoriesHub({ stories, featured, substackPosts = [] }: StoriesHub
             <div className="flex justify-center">
               <button
                 type="button"
-                className="rounded-btn border-2 border-deep-soil/20 bg-transparent px-6 py-3 font-body text-sm font-semibold text-deep-soil hover:bg-deep-soil/[0.04] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-dirt"
+                className="rounded-btn border-2 border-kelly-text/20 bg-transparent px-6 py-3 font-body text-sm font-semibold text-kelly-text hover:bg-kelly-text/[0.04] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-navy"
                 onClick={() => setVisible((v) => v + PAGE_SIZE)}
               >
                 Load more

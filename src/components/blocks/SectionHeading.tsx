@@ -29,18 +29,18 @@ export function SectionHeading({
       )}
     >
       {eyebrow ? (
-        <p className="mb-3 font-body text-xs font-bold uppercase tracking-[0.2em] text-red-dirt/90">
+        <p className="mb-3 font-body text-xs font-bold uppercase tracking-[0.2em] text-kelly-navy/90">
           {eyebrow}
         </p>
       ) : null}
       <Comp
         id={id}
-        className="font-heading text-3xl font-bold tracking-tight text-deep-soil sm:text-4xl lg:text-[2.75rem] lg:leading-tight"
+        className="font-heading text-3xl font-bold tracking-tight text-kelly-text sm:text-4xl lg:text-[2.75rem] lg:leading-tight"
       >
         {title}
       </Comp>
       {subtitle ? (
-        <p className="mt-4 font-body text-lg leading-relaxed text-deep-soil/80 lg:text-xl">
+        <p className="mt-4 font-body text-lg leading-relaxed text-kelly-text/80 lg:text-xl">
           {subtitle}
         </p>
       ) : null}

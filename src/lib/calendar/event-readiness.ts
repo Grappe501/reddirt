@@ -114,10 +114,10 @@ export function computeEventExecutionReadiness(input: {
     label === "Blocked"
       ? "border-rose-800/40 bg-rose-50/90 text-rose-950"
       : label === "Ready"
-        ? "border-field-green/50 bg-field-green/15 text-field-green/95"
+        ? "border-kelly-success/50 bg-kelly-success/15 text-kelly-success/95"
         : label === "At risk"
           ? "border-amber-800/40 bg-amber-50/90 text-amber-950"
-          : "border-deep-soil/20 bg-deep-soil/10 text-deep-soil/80";
+          : "border-kelly-text/20 bg-kelly-text/10 text-kelly-text/80";
 
   return {
     score0to100,

@@ -7,7 +7,7 @@ export function FormLabel({
 }: React.ComponentProps<"label">) {
   return (
     <label
-      className={cn("text-sm font-semibold text-deep-soil", className)}
+      className={cn("text-sm font-semibold text-kelly-text", className)}
       {...props}
     >
       {children}

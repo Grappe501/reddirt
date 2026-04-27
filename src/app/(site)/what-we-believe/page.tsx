@@ -61,9 +61,9 @@ export default async function WhatWeBelievePage() {
       <SplitFeatureSection
         visualSide="left"
         visual={
-          <div className="relative min-h-[340px] overflow-hidden rounded-card border border-deep-soil/10 shadow-[var(--shadow-card)] lg:min-h-[400px]">
+          <div className="relative min-h-[340px] overflow-hidden rounded-card border border-kelly-text/10 shadow-[var(--shadow-card)] lg:min-h-[400px]">
             <ContentImage media={media.arkansasPorch} warmOverlay className="absolute inset-0 min-h-full" />
-            <div className="relative z-[1] flex h-full min-h-[340px] flex-col justify-end bg-gradient-to-t from-deep-soil/80 to-transparent p-8 text-cream-canvas lg:min-h-[400px]">
+            <div className="relative z-[1] flex h-full min-h-[340px] flex-col justify-end bg-gradient-to-t from-kelly-text/80 to-transparent p-8 text-kelly-page lg:min-h-[400px]">
               <p className="font-heading text-2xl font-bold leading-snug">
                 Belief without practice is advertising. Practice without belief burns people out.
               </p>
@@ -78,17 +78,17 @@ export default async function WhatWeBelievePage() {
           subtitle="We’re not pretending everyone agrees on everything. We are insisting that election administration and public service should feel fair—and that starts with how we treat each other."
           className="max-w-xl"
         />
-        <ul className="mt-8 space-y-4 font-body text-base leading-relaxed text-deep-soil/82">
+        <ul className="mt-8 space-y-4 font-body text-base leading-relaxed text-kelly-text/82">
           <li className="flex gap-3">
-            <span className="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-red-dirt" aria-hidden />
+            <span className="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-kelly-navy" aria-hidden />
             Invite conversations in Republican clubs, Democratic committees, and civic leagues—without stunts.
           </li>
           <li className="flex gap-3">
-            <span className="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-red-dirt" aria-hidden />
+            <span className="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-kelly-navy" aria-hidden />
             Speak plainly about what the office can and cannot do—no false promises on issues outside its role.
           </li>
           <li className="flex gap-3">
-            <span className="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-red-dirt" aria-hidden />
+            <span className="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-kelly-navy" aria-hidden />
             Respect county election officials as partners carrying heavy responsibility.
           </li>
         </ul>
@@ -105,10 +105,10 @@ export default async function WhatWeBelievePage() {
             {commitments.map((c) => (
               <article
                 key={c.title}
-                className="rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-7 shadow-[var(--shadow-soft)] md:p-8"
+                className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-7 shadow-[var(--shadow-soft)] md:p-8"
               >
-                <h3 className="font-heading text-xl font-bold text-deep-soil lg:text-2xl">{c.title}</h3>
-                <p className="mt-3 font-body text-base leading-relaxed text-deep-soil/78">{c.body}</p>
+                <h3 className="font-heading text-xl font-bold text-kelly-text lg:text-2xl">{c.title}</h3>
+                <p className="mt-3 font-body text-base leading-relaxed text-kelly-text/78">{c.body}</p>
               </article>
             ))}
           </ResponsiveGrid>
@@ -117,7 +117,7 @@ export default async function WhatWeBelievePage() {
 
       {crowdPhoto ? (
         <section
-          className="border-t border-deep-soil/10 bg-[var(--color-surface-elevated)] py-10 md:py-14"
+          className="border-t border-kelly-text/10 bg-[var(--color-surface-elevated)] py-10 md:py-14"
           aria-label="On the trail with Arkansans"
         >
           <ContentContainer wide>
@@ -170,7 +170,7 @@ export default async function WhatWeBelievePage() {
         <Button href="/stories#share" variant="secondary">
           Share what you’re seeing
         </Button>
-        <Button href="/priorities" variant="outline" className="border-cream-canvas/50 text-cream-canvas hover:bg-cream-canvas/10">
+        <Button href="/priorities" variant="outline" className="border-kelly-page/50 text-kelly-page hover:bg-kelly-page/10">
           Office priorities
         </Button>
       </CTASection>

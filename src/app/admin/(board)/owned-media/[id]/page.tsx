@@ -82,7 +82,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
     return (
       <div>
         <p>Not found.</p>
-        <Link href="/admin/owned-media" className="text-civic-slate underline">
+        <Link href="/admin/owned-media" className="text-kelly-slate underline">
           Back
         </Link>
       </div>
@@ -101,27 +101,27 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
     <div className="mx-auto max-w-4xl space-y-10">
       <div>
         <div className="flex flex-wrap gap-3 text-sm">
-          <Link href="/admin/owned-media" className="text-civic-slate hover:underline">
+          <Link href="/admin/owned-media" className="text-kelly-slate hover:underline">
             ← Campaign-owned media
           </Link>
           {batchIdForNav ? (
             <Link
               href={`/admin/owned-media/batches/${batchIdForNav}`}
-              className="text-civic-slate hover:underline"
+              className="text-kelly-slate hover:underline"
             >
               ← Ingest batch
             </Link>
           ) : asset.mediaIngestBatch ? (
             <Link
               href={`/admin/owned-media/batches/${asset.mediaIngestBatch.id}`}
-              className="text-civic-slate hover:underline"
+              className="text-kelly-slate hover:underline"
             >
               Open batch
             </Link>
           ) : null}
         </div>
-        <h1 className="mt-2 font-heading text-2xl font-bold text-deep-soil">{asset.title}</h1>
-        <p className="mt-1 font-mono text-[11px] text-deep-soil/50">{asset.id}</p>
+        <h1 className="mt-2 font-heading text-2xl font-bold text-kelly-text">{asset.title}</h1>
+        <p className="mt-1 font-mono text-[11px] text-kelly-text/50">{asset.id}</p>
         {sp.uploaded || sp.saved || sp.transcript || sp.quote || sp.note || sp.reviewed ? (
           <p className="mt-2 rounded-md border border-emerald-600/20 bg-emerald-50/80 px-3 py-2 text-sm text-emerald-900">Saved.</p>
         ) : null}
@@ -143,7 +143,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
             {siblingIds.prev ? (
               <Link
                 href={`/admin/owned-media/${siblingIds.prev}?batch=${encodeURIComponent(siblingIds.batchId)}`}
-                className="rounded-md border border-deep-soil/20 bg-white px-3 py-1.5 font-medium text-deep-soil"
+                className="rounded-md border border-kelly-text/20 bg-white px-3 py-1.5 font-medium text-kelly-text"
               >
                 ← Previous in batch
               </Link>
@@ -151,7 +151,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
             {siblingIds.next ? (
               <Link
                 href={`/admin/owned-media/${siblingIds.next}?batch=${encodeURIComponent(siblingIds.batchId)}`}
-                className="rounded-md border border-deep-soil/20 bg-white px-3 py-1.5 font-medium text-deep-soil"
+                className="rounded-md border border-kelly-text/20 bg-white px-3 py-1.5 font-medium text-kelly-text"
               >
                 Next in batch →
               </Link>
@@ -165,7 +165,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
             {siblingIds.next ? <input type="hidden" name="nextId" value={siblingIds.next} /> : null}
             <input type="hidden" name="reviewStatus" value="APPROVED" />
             <input type="hidden" name="isPublic" value="on" />
-            <button type="submit" className="rounded-md bg-emerald-800 px-3 py-1.5 text-xs font-bold text-cream-canvas">
+            <button type="submit" className="rounded-md bg-emerald-800 px-3 py-1.5 text-xs font-bold text-kelly-page">
               Approve + public
             </button>
           </form>
@@ -174,7 +174,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
             {siblingIds.batchId ? <input type="hidden" name="returnBatchId" value={siblingIds.batchId} /> : null}
             {siblingIds.next ? <input type="hidden" name="nextId" value={siblingIds.next} /> : null}
             <input type="hidden" name="reviewStatus" value="PENDING_REVIEW" />
-            <button type="submit" className="rounded-md border border-deep-soil/25 bg-white px-3 py-1.5 text-xs font-semibold text-deep-soil">
+            <button type="submit" className="rounded-md border border-kelly-text/25 bg-white px-3 py-1.5 text-xs font-semibold text-kelly-text">
               Keep private
             </button>
           </form>
@@ -183,20 +183,20 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
           href={fileUrl}
           target="_blank"
           rel="noreferrer"
-          className="mt-2 inline-block text-sm text-civic-slate underline"
+          className="mt-2 inline-block text-sm text-kelly-slate underline"
         >
           Open file
         </a>
         {asset.thumbPublicUrl ? (
-          <p className="mt-1 text-xs text-deep-soil/60">
+          <p className="mt-1 text-xs text-kelly-text/60">
             Thumbnail:{" "}
-            <a href={asset.thumbPublicUrl} className="text-civic-slate underline" target="_blank" rel="noreferrer">
+            <a href={asset.thumbPublicUrl} className="text-kelly-slate underline" target="_blank" rel="noreferrer">
               preview
             </a>
           </p>
         ) : null}
-        <div className="mt-4 rounded-md border border-deep-soil/10 bg-white/60 p-4 text-sm text-deep-soil/80">
-          <h3 className="font-body text-xs font-bold uppercase tracking-wider text-deep-soil/55">Ingest &amp; storage</h3>
+        <div className="mt-4 rounded-md border border-kelly-text/10 bg-white/60 p-4 text-sm text-kelly-text/80">
+          <h3 className="font-body text-xs font-bold uppercase tracking-wider text-kelly-text/55">Ingest &amp; storage</h3>
           <p className="mt-1 font-mono text-[11px]">storageBackend: {asset.storageBackend}</p>
           <p className="mt-0.5 break-all font-mono text-[11px]">storageKey: {asset.storageKey}</p>
           {asset.publicUrl ? (
@@ -212,20 +212,20 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
             <p className="mt-0.5 font-mono text-[10px]">sha256: {asset.ingestContentSha256}</p>
           ) : null}
         </div>
-        <div className="mt-4 rounded-md border border-amber-200/50 bg-amber-50/40 p-4 text-sm text-deep-soil/85">
-          <h3 className="font-body text-xs font-bold uppercase tracking-wider text-deep-soil/55">Geo snapshot (read-only)</h3>
+        <div className="mt-4 rounded-md border border-amber-200/50 bg-amber-50/40 p-4 text-sm text-kelly-text/85">
+          <h3 className="font-body text-xs font-bold uppercase tracking-wider text-kelly-text/55">Geo snapshot (read-only)</h3>
           <p className="text-xs">
             <strong>needsGeoReview:</strong> {String(asset.needsGeoReview)} · <strong>source:</strong> {asset.geoSource} ·
             {asset.geoConfidence != null ? ` confidence: ${asset.geoConfidence}` : " confidence: —"}
           </p>
-          <p className="text-xs text-deep-soil/65">
+          <p className="text-xs text-kelly-text/65">
             Edit location fields in the form below. Check &quot;Confirm location…&quot; to mark <code className="rounded bg-amber-100/80 px-1">MANUAL</code> and
             clear the review flag for public county use. Raw extraction stays in <strong>metadata.json</strong>.
           </p>
         </div>
         {asset.uploaderName || asset.uploaderEmail || asset.consentCampaignUse != null ? (
-          <div className="mt-4 rounded-md border border-deep-soil/10 p-3 text-sm">
-            <h3 className="font-body text-xs font-bold uppercase tracking-wider text-deep-soil/55">Supporter (future)</h3>
+          <div className="mt-4 rounded-md border border-kelly-text/10 p-3 text-sm">
+            <h3 className="font-body text-xs font-bold uppercase tracking-wider text-kelly-text/55">Supporter (future)</h3>
             <p>
               {asset.uploaderName ?? "—"} · {asset.uploaderEmail ?? "—"} · consent: {String(asset.consentCampaignUse)}
             </p>
@@ -233,46 +233,46 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
         ) : null}
         {asset.metadataJson != null ? (
           <div className="mt-4">
-            <h3 className="font-body text-xs font-bold uppercase tracking-wider text-deep-soil/55">metadata.json (raw)</h3>
-            <pre className="mt-1 max-h-48 overflow-auto rounded border border-deep-soil/10 bg-white/80 p-2 font-mono text-[10px] text-deep-soil/80">
+            <h3 className="font-body text-xs font-bold uppercase tracking-wider text-kelly-text/55">metadata.json (raw)</h3>
+            <pre className="mt-1 max-h-48 overflow-auto rounded border border-kelly-text/10 bg-white/80 p-2 font-mono text-[10px] text-kelly-text/80">
               {JSON.stringify(asset.metadataJson, null, 2)}
             </pre>
           </div>
         ) : null}
       </div>
 
-      <form action={updateOwnedMediaAction} className="space-y-4 rounded-card border border-deep-soil/10 bg-cream-canvas p-6 shadow-[var(--shadow-soft)]">
-        <h2 className="font-heading text-lg font-bold text-deep-soil">Metadata</h2>
+      <form action={updateOwnedMediaAction} className="space-y-4 rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]">
+        <h2 className="font-heading text-lg font-bold text-kelly-text">Metadata</h2>
         <input type="hidden" name="id" value={asset.id} />
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Title</span>
-          <input name="title" required defaultValue={asset.title} className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm" />
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Title</span>
+          <input name="title" required defaultValue={asset.title} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Description</span>
-          <textarea name="description" rows={3} defaultValue={asset.description ?? ""} className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm" />
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Description</span>
+          <textarea name="description" rows={3} defaultValue={asset.description ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Operator notes (internal)</span>
-          <textarea name="operatorNotes" rows={2} defaultValue={asset.operatorNotes ?? ""} className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm" />
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Operator notes (internal)</span>
+          <textarea name="operatorNotes" rows={2} defaultValue={asset.operatorNotes ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Caption draft</span>
-          <textarea name="captionDraft" rows={2} defaultValue={asset.captionDraft ?? ""} className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm" />
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Caption draft</span>
+          <textarea name="captionDraft" rows={2} defaultValue={asset.captionDraft ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Shoot date override</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Shoot date override</span>
             <input
               name="shootDateOverride"
               type="datetime-local"
               defaultValue={datetimeLocalValue(asset.shootDateOverride)}
-              className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm"
+              className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm"
             />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Linked campaign event</span>
-            <select name="linkedCampaignEventId" className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm" defaultValue={asset.linkedCampaignEventId ?? ""}>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Linked campaign event</span>
+            <select name="linkedCampaignEventId" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" defaultValue={asset.linkedCampaignEventId ?? ""}>
               <option value="">— None —</option>
               {events.map((e) => (
                 <option key={e.id} value={e.id}>
@@ -284,8 +284,8 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Kind</span>
-            <select name="kind" defaultValue={asset.kind} className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm">
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Kind</span>
+            <select name="kind" defaultValue={asset.kind} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               {Object.values(OwnedMediaKind).map((k) => (
                 <option key={k} value={k}>
                   {k}
@@ -294,8 +294,8 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
             </select>
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Role</span>
-            <select name="role" defaultValue={asset.role} className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm">
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Role</span>
+            <select name="role" defaultValue={asset.role} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               {Object.values(OwnedMediaRole).map((k) => (
                 <option key={k} value={k}>
                   {k}
@@ -306,36 +306,36 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Event date (editorial)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Event date (editorial)</span>
             <input
               name="eventDate"
               type="date"
               defaultValue={dateInputValue(asset.eventDate)}
-              className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm"
+              className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm"
             />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Captured (device/EXIF)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Captured (device/EXIF)</span>
             <input
               name="capturedAt"
               type="date"
               defaultValue={dateInputValue(asset.capturedAt)}
-              className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm"
+              className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm"
             />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Duration (sec)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Duration (sec)</span>
             <input
               name="durationSeconds"
               type="number"
               min={0}
               defaultValue={asset.durationSeconds ?? ""}
-              className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm"
+              className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm"
             />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Source type</span>
-            <select name="sourceType" defaultValue={asset.sourceType} className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm">
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Source type</span>
+            <select name="sourceType" defaultValue={asset.sourceType} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               {Object.values(OwnedMediaSourceType).map((k) => (
                 <option key={k} value={k}>
                   {k}
@@ -346,46 +346,46 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">GPS latitude</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">GPS latitude</span>
             <input
               name="gpsLat"
               type="text"
               inputMode="decimal"
               defaultValue={asset.gpsLat ?? ""}
-              className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 font-mono text-sm"
+              className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 font-mono text-sm"
               placeholder="e.g. 34.7465"
             />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">GPS longitude</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">GPS longitude</span>
             <input
               name="gpsLng"
               type="text"
               inputMode="decimal"
               defaultValue={asset.gpsLng ?? ""}
-              className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 font-mono text-sm"
+              className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 font-mono text-sm"
               placeholder="e.g. -92.2896"
             />
           </label>
         </div>
         <div className="grid gap-4 md:grid-cols-3">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">County slug</span>
-            <input name="countySlug" defaultValue={asset.countySlug ?? ""} className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm" />
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">County slug</span>
+            <input name="countySlug" defaultValue={asset.countySlug ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">FIPS</span>
-            <input name="countyFips" defaultValue={asset.countyFips ?? ""} className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm" />
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">FIPS</span>
+            <input name="countyFips" defaultValue={asset.countyFips ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">City</span>
-            <input name="city" defaultValue={asset.city ?? ""} className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm" />
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">City</span>
+            <input name="city" defaultValue={asset.city ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Geo source</span>
-            <select name="geoSource" defaultValue={asset.geoSource} className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm">
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Geo source</span>
+            <select name="geoSource" defaultValue={asset.geoSource} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               {Object.values(GeoMetadataSource).map((g) => (
                 <option key={g} value={g}>
                   {g}
@@ -394,13 +394,13 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
             </select>
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Geo confidence (0–1)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Geo confidence (0–1)</span>
             <input
               name="geoConfidence"
               type="text"
               inputMode="decimal"
               defaultValue={asset.geoConfidence ?? ""}
-              className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm"
+              className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm"
             />
           </label>
         </div>
@@ -410,7 +410,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
             <span>Needs geo review (block public location claims until cleared)</span>
           </label>
         </div>
-        <div className="rounded-md border border-emerald-200/60 bg-emerald-50/50 p-3 text-sm text-deep-soil/85">
+        <div className="rounded-md border border-emerald-200/60 bg-emerald-50/50 p-3 text-sm text-kelly-text/85">
           <label className="flex items-start gap-2">
             <input name="confirmGeo" type="checkbox" className="mt-0.5 h-4 w-4" />
             <span>
@@ -420,27 +420,27 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
           </label>
         </div>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Issue tags (comma)</span>
-          <input name="issueTags" defaultValue={asset.issueTags.join(", ")} className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm" />
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Issue tags (comma)</span>
+          <input name="issueTags" defaultValue={asset.issueTags.join(", ")} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Campaign phase</span>
-            <input name="campaignPhase" defaultValue={asset.campaignPhase ?? ""} className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm" />
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Campaign phase</span>
+            <input name="campaignPhase" defaultValue={asset.campaignPhase ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Content series</span>
-            <input name="contentSeries" defaultValue={asset.contentSeries ?? ""} className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm" />
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Content series</span>
+            <input name="contentSeries" defaultValue={asset.contentSeries ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
         </div>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Speaker</span>
-          <input name="speakerName" defaultValue={asset.speakerName ?? ""} className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm" />
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Speaker</span>
+          <input name="speakerName" defaultValue={asset.speakerName ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Review</span>
-            <select name="reviewStatus" defaultValue={asset.reviewStatus} className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm">
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Review</span>
+            <select name="reviewStatus" defaultValue={asset.reviewStatus} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               {Object.values(OwnedMediaReviewStatus).map((k) => (
                 <option key={k} value={k}>
                   {k}
@@ -454,31 +454,31 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
           </label>
         </div>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Editor label</span>
-          <input name="createdBy" defaultValue={asset.createdBy ?? ""} className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm" />
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Editor label</span>
+          <input name="createdBy" defaultValue={asset.createdBy ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
-        <p className="text-xs text-deep-soil/55">
+        <p className="text-xs text-kelly-text/55">
           Storage: {asset.storageKey} · {asset.mimeType} · job {asset.transcriptJobStatus}
           {asset.transcriptionLastError ? ` — ${asset.transcriptionLastError}` : ""}
         </p>
-        <button type="submit" className="rounded-btn bg-red-dirt px-5 py-2.5 text-sm font-bold text-cream-canvas">
+        <button type="submit" className="rounded-btn bg-kelly-navy px-5 py-2.5 text-sm font-bold text-kelly-page">
           Save metadata
         </button>
       </form>
 
-      <section className="rounded-card border border-deep-soil/10 bg-cream-canvas p-6 shadow-[var(--shadow-soft)]">
-        <h2 className="font-heading text-lg font-bold text-deep-soil">Field notes and recall</h2>
-        <p className="mt-1 text-sm text-deep-soil/70">
+      <section className="rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]">
+        <h2 className="font-heading text-lg font-bold text-kelly-text">Field notes and recall</h2>
+        <p className="mt-1 text-sm text-kelly-text/70">
           Structured context for search and storytelling (separate from the public description). Searchable notes can feed assistant recall later.
         </p>
         <ul className="mt-4 space-y-4">
           {asset.annotations.map((a) => (
-            <li key={a.id} className="border-t border-deep-soil/10 pt-3 first:border-0 first:pt-0">
-              <p className="font-mono text-[10px] text-deep-soil/45">
+            <li key={a.id} className="border-t border-kelly-text/10 pt-3 first:border-0 first:pt-0">
+              <p className="font-mono text-[10px] text-kelly-text/45">
                 {a.noteType} · {a.isSearchable ? "searchable" : "hidden from search"}{" "}
                 · {a.createdAt.toLocaleString()}
               </p>
-              <p className="mt-1 whitespace-pre-wrap text-sm text-deep-soil/90">{a.noteText}</p>
+              <p className="mt-1 whitespace-pre-wrap text-sm text-kelly-text/90">{a.noteText}</p>
               <form action={deleteOwnedMediaAnnotationAction} className="mt-2">
                 <input type="hidden" name="annotationId" value={a.id} />
                 <input type="hidden" name="ownedMediaId" value={asset.id} />
@@ -490,13 +490,13 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
             </li>
           ))}
         </ul>
-        <form action={addOwnedMediaAnnotationAction} className="mt-4 space-y-2 border-t border-deep-soil/10 pt-4">
+        <form action={addOwnedMediaAnnotationAction} className="mt-4 space-y-2 border-t border-kelly-text/10 pt-4">
           <input type="hidden" name="ownedMediaId" value={asset.id} />
           {batchIdForNav ? <input type="hidden" name="returnBatchId" value={batchIdForNav} /> : null}
           <div className="grid gap-2 md:grid-cols-2">
             <label className="block text-sm">
-              <span className="text-xs text-deep-soil/55">Type</span>
-              <select name="noteType" className="mt-1 w-full rounded border border-deep-soil/15 bg-white px-2 py-1 text-sm">
+              <span className="text-xs text-kelly-text/55">Type</span>
+              <select name="noteType" className="mt-1 w-full rounded border border-kelly-text/15 bg-white px-2 py-1 text-sm">
                 {Object.values(OwnedMediaNoteType).map((k) => (
                   <option key={k} value={k}>
                     {k}
@@ -510,26 +510,26 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
             </label>
           </div>
           <label className="block text-sm">
-            <span className="text-xs text-deep-soil/55">Note</span>
-            <textarea name="noteText" required rows={3} className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm" />
+            <span className="text-xs text-kelly-text/55">Note</span>
+            <textarea name="noteText" required rows={3} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
-          <button type="submit" className="rounded-btn bg-red-dirt px-4 py-2 text-sm font-bold text-cream-canvas">
+          <button type="submit" className="rounded-btn bg-kelly-navy px-4 py-2 text-sm font-bold text-kelly-page">
             Add note
           </button>
         </form>
       </section>
 
-      <section className="rounded-card border border-deep-soil/10 bg-cream-canvas p-6 shadow-[var(--shadow-soft)]">
-        <h2 className="font-heading text-lg font-bold text-deep-soil">Transcription pipeline</h2>
-        <p className="mt-2 text-sm text-deep-soil/70">
-          Provider: stub (fails closed until you wire an ASR in <code className="rounded bg-deep-soil/5 px-1">get-provider.ts</code>). Add human
+      <section className="rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]">
+        <h2 className="font-heading text-lg font-bold text-kelly-text">Transcription pipeline</h2>
+        <p className="mt-2 text-sm text-kelly-text/70">
+          Provider: stub (fails closed until you wire an ASR in <code className="rounded bg-kelly-text/5 px-1">get-provider.ts</code>). Add human
           transcripts below; they stay separate from the original file.
         </p>
         <form action={requestTranscriptionAction} className="mt-4">
           <input type="hidden" name="id" value={asset.id} />
           <button
             type="submit"
-            className="rounded-md border border-deep-soil/20 bg-white px-4 py-2 text-sm font-semibold text-deep-soil"
+            className="rounded-md border border-kelly-text/20 bg-white px-4 py-2 text-sm font-semibold text-kelly-text"
             disabled={!["VIDEO", "AUDIO"].includes(asset.kind) && !asset.mimeType.startsWith("video/") && !asset.mimeType.startsWith("audio/")}
           >
             Run transcript job (video/audio)
@@ -537,14 +537,14 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
         </form>
       </section>
 
-      <section className="rounded-card border border-deep-soil/10 bg-cream-canvas p-6 shadow-[var(--shadow-soft)]">
-        <h2 className="font-heading text-lg font-bold text-deep-soil">Transcripts</h2>
+      <section className="rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]">
+        <h2 className="font-heading text-lg font-bold text-kelly-text">Transcripts</h2>
         <ul className="mt-4 space-y-4">
           {asset.transcripts.map((t) => (
-            <li key={t.id} className="border-t border-deep-soil/10 pt-4 first:border-0 first:pt-0">
-              <p className="font-mono text-[10px] text-deep-soil/45">{t.id}</p>
-              <p className="mt-1 whitespace-pre-wrap text-sm text-deep-soil/85">{t.transcriptText}</p>
-              <p className="mt-1 text-xs text-deep-soil/55">
+            <li key={t.id} className="border-t border-kelly-text/10 pt-4 first:border-0 first:pt-0">
+              <p className="font-mono text-[10px] text-kelly-text/45">{t.id}</p>
+              <p className="mt-1 whitespace-pre-wrap text-sm text-kelly-text/85">{t.transcriptText}</p>
+              <p className="mt-1 text-xs text-kelly-text/55">
                 {t.source} · {t.reviewStatus}
                 {t.language ? ` · ${t.language}` : ""}
               </p>
@@ -556,7 +556,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
                   <select
                     name="reviewStatus"
                     defaultValue={t.reviewStatus}
-                    className="ml-1 rounded border border-deep-soil/15 bg-white px-2 py-1 text-xs"
+                    className="ml-1 rounded border border-kelly-text/15 bg-white px-2 py-1 text-xs"
                   >
                     {Object.values(TranscriptReviewStatus).map((k) => (
                       <option key={k} value={k}>
@@ -565,24 +565,24 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
                     ))}
                   </select>
                 </label>
-                <button type="submit" className="rounded bg-deep-soil/10 px-2 py-1 text-xs">
+                <button type="submit" className="rounded bg-kelly-text/10 px-2 py-1 text-xs">
                   Update
                 </button>
               </form>
             </li>
           ))}
         </ul>
-        <form action={addTranscriptAction} className="mt-6 space-y-2 border-t border-deep-soil/10 pt-6">
-          <h3 className="font-body text-sm font-bold text-deep-soil">Add transcript (human or import)</h3>
+        <form action={addTranscriptAction} className="mt-6 space-y-2 border-t border-kelly-text/10 pt-6">
+          <h3 className="font-body text-sm font-bold text-kelly-text">Add transcript (human or import)</h3>
           <input type="hidden" name="ownedMediaId" value={asset.id} />
           <label className="block text-sm">
-            <span className="text-xs text-deep-soil/55">Text</span>
-            <textarea name="transcriptText" required rows={4} className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm" />
+            <span className="text-xs text-kelly-text/55">Text</span>
+            <textarea name="transcriptText" required rows={4} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <div className="grid gap-2 md:grid-cols-3">
             <label className="text-sm">
-              <span className="text-xs text-deep-soil/55">Source</span>
-              <select name="transcriptSource" className="mt-1 w-full rounded border border-deep-soil/15 bg-white px-2 py-1 text-sm">
+              <span className="text-xs text-kelly-text/55">Source</span>
+              <select name="transcriptSource" className="mt-1 w-full rounded border border-kelly-text/15 bg-white px-2 py-1 text-sm">
                 {Object.values(TranscriptSource).map((k) => (
                   <option key={k} value={k}>
                     {k}
@@ -591,12 +591,12 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
               </select>
             </label>
             <label className="text-sm">
-              <span className="text-xs text-deep-soil/55">Language</span>
-              <input name="language" className="mt-1 w-full rounded border border-deep-soil/15 bg-white px-2 py-1 text-sm" placeholder="en" />
+              <span className="text-xs text-kelly-text/55">Language</span>
+              <input name="language" className="mt-1 w-full rounded border border-kelly-text/15 bg-white px-2 py-1 text-sm" placeholder="en" />
             </label>
             <label className="text-sm">
-              <span className="text-xs text-deep-soil/55">Review</span>
-              <select name="transcriptReviewStatus" className="mt-1 w-full rounded border border-deep-soil/15 bg-white px-2 py-1 text-sm">
+              <span className="text-xs text-kelly-text/55">Review</span>
+              <select name="transcriptReviewStatus" className="mt-1 w-full rounded border border-kelly-text/15 bg-white px-2 py-1 text-sm">
                 {Object.values(TranscriptReviewStatus).map((k) => (
                   <option key={k} value={k}>
                     {k}
@@ -605,18 +605,18 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
               </select>
             </label>
           </div>
-          <button type="submit" className="rounded-btn bg-red-dirt px-4 py-2 text-sm font-bold text-cream-canvas">Add transcript</button>
+          <button type="submit" className="rounded-btn bg-kelly-navy px-4 py-2 text-sm font-bold text-kelly-page">Add transcript</button>
         </form>
       </section>
 
-      <section className="rounded-card border border-deep-soil/10 bg-cream-canvas p-6 shadow-[var(--shadow-soft)]">
-        <h2 className="font-heading text-lg font-bold text-deep-soil">Quote candidates</h2>
+      <section className="rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]">
+        <h2 className="font-heading text-lg font-bold text-kelly-text">Quote candidates</h2>
         <ul className="mt-4 space-y-4">
           {asset.quoteCandidates.map((q) => (
-            <li key={q.id} className="border-t border-deep-soil/10 pt-4 first:border-0 first:pt-0">
-              <p className="font-mono text-[10px] text-deep-soil/45">{q.id}</p>
-              <p className="mt-1 text-sm text-deep-soil/90">{q.quoteText}</p>
-              <p className="text-xs text-deep-soil/55">
+            <li key={q.id} className="border-t border-kelly-text/10 pt-4 first:border-0 first:pt-0">
+              <p className="font-mono text-[10px] text-kelly-text/45">{q.id}</p>
+              <p className="mt-1 text-sm text-kelly-text/90">{q.quoteText}</p>
+              <p className="text-xs text-kelly-text/55">
                 {q.quoteType} · {q.reviewStatus}
                 {q.startSeconds != null ? ` · ${q.startSeconds}s` : ""}
                 {q.endSeconds != null ? `–${q.endSeconds}s` : ""}
@@ -629,7 +629,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
                   <select
                     name="reviewStatus"
                     defaultValue={q.reviewStatus}
-                    className="ml-1 rounded border border-deep-soil/15 bg-white px-2 py-1 text-xs"
+                    className="ml-1 rounded border border-kelly-text/15 bg-white px-2 py-1 text-xs"
                   >
                     {Object.values(QuoteReviewStatus).map((k) => (
                       <option key={k} value={k}>
@@ -638,23 +638,23 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
                     ))}
                   </select>
                 </label>
-                <button type="submit" className="rounded bg-deep-soil/10 px-2 py-1 text-xs">
+                <button type="submit" className="rounded bg-kelly-text/10 px-2 py-1 text-xs">
                   Update
                 </button>
               </form>
             </li>
           ))}
         </ul>
-        <form action={addQuoteCandidateAction} className="mt-6 space-y-2 border-t border-deep-soil/10 pt-6">
-          <h3 className="font-body text-sm font-bold text-deep-soil">Add quote</h3>
+        <form action={addQuoteCandidateAction} className="mt-6 space-y-2 border-t border-kelly-text/10 pt-6">
+          <h3 className="font-body text-sm font-bold text-kelly-text">Add quote</h3>
           <input type="hidden" name="ownedMediaId" value={asset.id} />
           <label className="block text-sm">
-            <span className="text-xs text-deep-soil/55">Quote</span>
-            <textarea name="quoteText" required rows={2} className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 text-sm" />
+            <span className="text-xs text-kelly-text/55">Quote</span>
+            <textarea name="quoteText" required rows={2} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block text-sm">
-            <span className="text-xs text-deep-soil/55">Link to transcript (optional)</span>
-            <select name="transcriptId" className="mt-1 w-full rounded border border-deep-soil/15 bg-white px-2 py-1 text-sm">
+            <span className="text-xs text-kelly-text/55">Link to transcript (optional)</span>
+            <select name="transcriptId" className="mt-1 w-full rounded border border-kelly-text/15 bg-white px-2 py-1 text-sm">
               <option value="">—</option>
               {asset.transcripts.map((t) => (
                 <option key={t.id} value={t.id}>
@@ -666,15 +666,15 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
           <div className="grid gap-2 md:grid-cols-4">
             <label className="text-sm">
               <span className="text-xs">Start s</span>
-              <input name="startSeconds" type="number" step="0.1" className="mt-1 w-full rounded border border-deep-soil/15 bg-white px-2 py-1 text-sm" />
+              <input name="startSeconds" type="number" step="0.1" className="mt-1 w-full rounded border border-kelly-text/15 bg-white px-2 py-1 text-sm" />
             </label>
             <label className="text-sm">
               <span className="text-xs">End s</span>
-              <input name="endSeconds" type="number" step="0.1" className="mt-1 w-full rounded border border-deep-soil/15 bg-white px-2 py-1 text-sm" />
+              <input name="endSeconds" type="number" step="0.1" className="mt-1 w-full rounded border border-kelly-text/15 bg-white px-2 py-1 text-sm" />
             </label>
             <label className="text-sm">
               <span className="text-xs">Type</span>
-              <select name="quoteType" className="mt-1 w-full rounded border border-deep-soil/15 bg-white px-2 py-1 text-sm">
+              <select name="quoteType" className="mt-1 w-full rounded border border-kelly-text/15 bg-white px-2 py-1 text-sm">
                 {Object.values(QuoteCandidateType).map((k) => (
                   <option key={k} value={k}>
                     {k}
@@ -684,19 +684,19 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
             </label>
             <label className="text-sm">
               <span className="text-xs">Weight</span>
-              <input name="featuredWeight" type="number" className="mt-1 w-full rounded border border-deep-soil/15 bg-white px-2 py-1 text-sm" />
+              <input name="featuredWeight" type="number" className="mt-1 w-full rounded border border-kelly-text/15 bg-white px-2 py-1 text-sm" />
             </label>
           </div>
           <label className="block text-sm">
             <span className="text-xs">Issue tags (comma)</span>
-            <input name="issueTags" className="mt-1 w-full rounded border border-deep-soil/15 bg-white px-2 py-1 text-sm" />
+            <input name="issueTags" className="mt-1 w-full rounded border border-kelly-text/15 bg-white px-2 py-1 text-sm" />
           </label>
           <label className="block text-sm">
             <span className="text-xs">County slug</span>
-            <input name="quoteCountySlug" className="mt-1 w-full rounded border border-deep-soil/15 bg-white px-2 py-1 text-sm" />
+            <input name="quoteCountySlug" className="mt-1 w-full rounded border border-kelly-text/15 bg-white px-2 py-1 text-sm" />
           </label>
           <input type="hidden" name="quoteReviewStatus" value="PENDING" />
-          <button type="submit" className="rounded-btn bg-red-dirt px-4 py-2 text-sm font-bold text-cream-canvas">Add quote</button>
+          <button type="submit" className="rounded-btn bg-kelly-navy px-4 py-2 text-sm font-bold text-kelly-page">Add quote</button>
         </form>
       </section>
     </div>

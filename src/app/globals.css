@@ -3,32 +3,38 @@
 @tailwind utilities;
 
 :root {
-  /* Brand palette — field layer + command-brand elevation (see command brand system) */
-  --color-primary: #a3472a;
-  --color-text-primary: #2b1e1a;
-  --color-bg: #f5efe6;
-  --color-secondary: #5a6c7d;
-  --color-success: #6e7f5f;
-  --color-accent: #c8a45a;
+  /**
+   * Kelly Grappe for Arkansas Secretary of State — official brand.
+   * Reference: brands/kelly-grappe-sos/assets/reference/official-brand-card.png
+   */
+  --kelly-official-navy: #000066;
+  --kelly-official-gold: #ca913d;
+  --kelly-official-sky: #8eb6dc;
+  --kelly-official-white: #ffffff;
 
-  /* Civic premium — midnight / gold / editorial neutrals (homepage elevation) */
-  --civic-midnight: #0c1222;
-  --civic-deep: #141e33;
-  --civic-blue: #1e2f4d;
-  --civic-slate: #2a3d5c;
-  --civic-gold: #c9a227;
-  --civic-gold-soft: #d4b24a;
-  --civic-mist: #e4e1d8;
-  --civic-fog: #f0eee8;
-  --civic-ink: #1a1f2e;
-  /* Copper — matches small “READ MORE” accent; bright variant for body type on `bg-civic-blue` */
-  --civic-copper: #b87333;
-  --civic-copper-bright: #ecc49b;
-  /** Section wash — used by FullBleedSection + home rails; must exist for `bg-washed-canvas` utilities. */
-  --washed-canvas: #e8e4dc;
+  /* Core UI tokens */
+  --color-primary: var(--kelly-official-navy);
+  --color-text-primary: #12124a;
+  --color-bg: #f4f7fc;
+  --color-secondary: #3d4d72;
+  --color-success: #4a6b55;
+  --color-accent: var(--kelly-official-gold);
 
-  --color-surface-elevated: #fffdf8;
-  --color-border-subtle: rgba(43, 30, 26, 0.12);
+  /* Layering — navy / blue / mist (no legacy warm-field names) */
+  --kelly-deep: #07074a;
+  --kelly-blue: #0a0a7a;
+  --kelly-slate: #45518c;
+  --kelly-gold-soft: #e0b56a;
+  --kelly-mist: #dce8f5;
+  --kelly-fog: #e8f0fa;
+  --kelly-ink: #0a0a4a;
+  --kelly-copper: #b87333;
+  --kelly-copper-bright: #e8c99a;
+  /** Section band wash — FullBleedSection + rails */
+  --kelly-band-wash: #e4edf7;
+
+  --color-surface-elevated: #ffffff;
+  --color-border-subtle: rgba(0, 0, 102, 0.1);
 
   --max-content-width: 1280px;
   --section-padding-y: clamp(3rem, 6vw, 5.5rem);
@@ -39,24 +45,22 @@
   --transition-normal: 250ms;
   --transition-slow: 400ms;
 
-  --shadow-card: 0 12px 40px rgba(43, 30, 26, 0.08);
-  --shadow-soft: 0 4px 24px rgba(43, 30, 26, 0.06);
+  --shadow-card: 0 12px 40px rgba(0, 0, 102, 0.08);
+  --shadow-soft: 0 4px 24px rgba(0, 0, 102, 0.06);
 
-  /* Homepage journey — chapter rhythm (beats, not one feed) */
   --journey-beat-pad: clamp(2.5rem, 8vw, 4.5rem);
   --journey-beat-pad-lg: clamp(3.5rem, 10vw, 6rem);
 
-  /* Command brand — semantic aliases (field palette preserved; elevation via hierarchy) */
-  --brand-primary: var(--color-primary);
-  --brand-authority: var(--civic-midnight);
-  --brand-surface: var(--civic-fog);
-  --brand-accent: var(--civic-gold);
+  --brand-primary: var(--kelly-official-navy);
+  --brand-authority: var(--kelly-official-navy);
+  --brand-surface: var(--kelly-fog);
+  --brand-accent: var(--kelly-official-gold);
   --text-primary: var(--color-text-primary);
   --text-secondary: var(--color-secondary);
   --border-subtle: var(--color-border-subtle);
-  --border-strong: rgba(43, 30, 26, 0.22);
-  --action-primary: var(--color-primary);
-  --action-secondary: var(--civic-blue);
+  --border-strong: rgba(0, 0, 102, 0.2);
+  --action-primary: var(--kelly-official-gold);
+  --action-secondary: var(--kelly-blue);
   --radius-card: 12px;
   --radius-button: 8px;
   --shadow-elevated: var(--shadow-card);
@@ -68,8 +72,7 @@
   --transition-standard: var(--transition-normal);
 
   /**
-   * Fixed public site header. `--site-header-h` is a baseline; JS on `html` overwrites with measured
-   * px. `--site-header-shim` is the larger of a safe floor and the live height (avoids underlap).
+   * Fixed public site header height; JS may set `--site-header-h` on `html`.
    */
   --site-header-h: 6.5rem;
   --site-header-shim: max(6.5rem, var(--site-header-h));
@@ -89,18 +92,17 @@
   }
 
   body {
-    @apply font-body text-deep-soil antialiased;
-    /* Sitewide wash: cool civic blue at the top, settling into field cream so inner pages feel like one campaign. */
-    background: linear-gradient(180deg, #e9eef7 0%, #f0e9df 18%, #f5efe6 45%, #f5efe6 100%);
+    @apply font-body text-kelly-text antialiased;
+    background: linear-gradient(180deg, #dbe8f8 0%, #e4edf7 18%, #f4f7fc 45%, #f4f7fc 100%);
     background-attachment: fixed;
   }
 
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-red-dirt;
+    @apply outline-2 outline-offset-2 outline-kelly-gold;
   }
 }
 
-/* Leaflet custom divIcon pins — drop default white tile behind markers */
+/* Leaflet custom divIcon pins */
 .leaflet-div-icon.sos-leaflet-pin {
   background: transparent !important;
   border: none !important;

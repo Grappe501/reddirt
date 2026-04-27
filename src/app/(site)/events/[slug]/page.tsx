@@ -64,7 +64,7 @@ export default async function EventDetailPage({ params }: Props) {
                 title="When, where, and what"
                 subtitle="Plain facts first—then the human stuff underneath."
               />
-              <div className="mt-8 rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8">
+              <div className="mt-8 rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8">
                 <EventMeta event={event} />
               </div>
 
@@ -75,7 +75,7 @@ export default async function EventDetailPage({ params }: Props) {
                 eyebrow="Narrative"
                 title="Why this gathering exists"
               />
-              <p className="mt-6 font-body text-lg leading-relaxed text-deep-soil/85">{event.description}</p>
+              <p className="mt-6 font-body text-lg leading-relaxed text-kelly-text/85">{event.description}</p>
 
               <SectionHeading
                 className="mt-14"
@@ -89,25 +89,25 @@ export default async function EventDetailPage({ params }: Props) {
                   event.whatToExpect.map((line) => (
                     <li
                       key={line}
-                      className="rounded-lg border border-deep-soil/10 bg-deep-soil/[0.03] px-4 py-3 font-body text-deep-soil/85"
+                      className="rounded-lg border border-kelly-text/10 bg-kelly-text/[0.03] px-4 py-3 font-body text-kelly-text/85"
                     >
                       {line}
                     </li>
                   ))
                 ) : (
-                  <li className="font-body text-deep-soil/70">Details were captured outside the public template for this archive.</li>
+                  <li className="font-body text-kelly-text/70">Details were captured outside the public template for this archive.</li>
                 )}
               </ul>
 
               <SectionHeading className="mt-14" align="left" as="h3" eyebrow="Fit" title="Who it’s for" />
-              <p className="mt-6 font-body text-lg leading-relaxed text-deep-soil/85">{event.whoItsFor}</p>
+              <p className="mt-6 font-body text-lg leading-relaxed text-kelly-text/85">{event.whoItsFor}</p>
             </div>
 
             <aside className="space-y-6 lg:sticky lg:top-28">
-              <div className="rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)]">
-                <h2 className="font-heading text-lg font-bold text-deep-soil">Organizer note</h2>
-                <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">{event.organizerNote}</p>
-                <p className="mt-4 font-body text-xs text-deep-soil/55">
+              <div className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)]">
+                <h2 className="font-heading text-lg font-bold text-kelly-text">Organizer note</h2>
+                <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">{event.organizerNote}</p>
+                <p className="mt-4 font-body text-xs text-kelly-text/55">
                   {/* Future: named host + verified contact when event sync is available */}
                   Public organizer bios and verified contacts land in the next integration pass.
                 </p>
@@ -118,7 +118,7 @@ export default async function EventDetailPage({ params }: Props) {
               {county ? (
                 <Link
                   href={`/local-organizing/${county.slug}`}
-                  className="block rounded-card border border-deep-soil/10 bg-deep-soil/[0.03] p-5 font-body text-sm font-semibold text-red-dirt underline-offset-4 hover:underline"
+                  className="block rounded-card border border-kelly-text/10 bg-kelly-text/[0.03] p-5 font-body text-sm font-semibold text-kelly-navy underline-offset-4 hover:underline"
                 >
                   View {county.name} organizing hub →
                 </Link>
@@ -157,9 +157,9 @@ export default async function EventDetailPage({ params }: Props) {
           ) : (
             <div
               role="status"
-              className="mt-10 rounded-card border border-dashed border-deep-soil/25 bg-deep-soil/[0.03] p-8 text-center"
+              className="mt-10 rounded-card border border-dashed border-kelly-text/25 bg-kelly-text/[0.03] p-8 text-center"
             >
-              <p className="font-body text-deep-soil/80">No sibling events linked yet—browse the full hub.</p>
+              <p className="font-body text-kelly-text/80">No sibling events linked yet—browse the full hub.</p>
               <Button href="/events" variant="outline" className="mt-4">
                 Open events hub
               </Button>

@@ -21,16 +21,16 @@ export function FramedTrailPhoto({ photo, priority, density = "default", classNa
   return (
     <figure
       className={cn(
-        "mx-auto w-full max-w-[min(100%,56rem)] rounded-xl bg-gradient-to-b from-civic-mist/50 to-white shadow-[0_12px_40px_rgba(15,23,42,0.08)] ring-1 ring-civic-ink/10",
+        "mx-auto w-full max-w-[min(100%,56rem)] rounded-xl bg-gradient-to-b from-kelly-mist/50 to-white shadow-[0_12px_40px_rgba(15,23,42,0.08)] ring-1 ring-kelly-ink/10",
         compact
-          ? "border-2 border-civic-gold/35 p-1.5"
-          : "border-[3px] border-civic-gold/40 p-2",
+          ? "border-2 border-kelly-gold/35 p-1.5"
+          : "border-[3px] border-kelly-gold/40 p-2",
         className,
       )}
     >
       <div
         className={cn(
-          "relative flex w-full items-center justify-center overflow-hidden rounded-lg bg-civic-ink/[0.04]",
+          "relative flex w-full items-center justify-center overflow-hidden rounded-lg bg-kelly-ink/[0.04]",
           compact ? "min-h-[7rem]" : "min-h-[12rem]",
         )}
       >
@@ -54,7 +54,7 @@ export function FramedTrailPhoto({ photo, priority, density = "default", classNa
       </div>
       <figcaption
         className={cn(
-          "px-1 text-center font-body font-medium leading-snug text-civic-slate/80",
+          "px-1 text-center font-body font-medium leading-snug text-kelly-slate/80",
           compact ? "mt-2 text-[10px] md:text-xs" : "mt-3 text-xs md:text-sm",
         )}
       >

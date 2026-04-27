@@ -4,8 +4,8 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { createEmailWorkflowItemManualAction } from "@/app/admin/email-workflow-actions";
 
-const label = "text-[10px] font-bold uppercase text-deep-soil/45";
-const field = "border border-deep-soil/15 bg-white px-1.5 py-0.5 font-body text-sm";
+const label = "text-[10px] font-bold uppercase text-kelly-text/45";
+const field = "border border-kelly-text/15 bg-white px-1.5 py-0.5 font-body text-sm";
 
 export function CreateEmailWorkflowItemForm() {
   const [err, setErr] = useState<string | null>(null);
@@ -32,7 +32,7 @@ export function CreateEmailWorkflowItemForm() {
       }}
     >
       {err ? <p className="text-xs text-red-800">{err}</p> : null}
-      <p className="font-body text-xs text-deep-soil/60">
+      <p className="font-body text-xs text-kelly-text/60">
         New items require review; nothing is auto-approved or auto-sent (E-1).
       </p>
       <label className={label}>Title</label>
@@ -63,7 +63,7 @@ export function CreateEmailWorkflowItemForm() {
       <button
         type="submit"
         disabled={pending}
-        className="mt-1 w-fit rounded border border-deep-soil/25 bg-cream-canvas px-2 py-1 text-xs font-semibold text-deep-soil"
+        className="mt-1 w-fit rounded border border-kelly-text/25 bg-kelly-page px-2 py-1 text-xs font-semibold text-kelly-text"
       >
         {pending ? "Saving…" : "Create queue item"}
       </button>

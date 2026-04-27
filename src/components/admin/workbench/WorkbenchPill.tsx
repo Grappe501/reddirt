@@ -1,10 +1,10 @@
 import type { ReactNode } from "react";
 
 const styles: Record<"neutral" | "accent" | "warn" | "muted", string> = {
-  neutral: "border-deep-soil/20 bg-cream-canvas text-civic-slate",
-  accent: "border-washed-denim/30 bg-washed-denim/10 text-civic-slate",
+  neutral: "border-kelly-text/20 bg-kelly-page text-kelly-slate",
+  accent: "border-kelly-muted/30 bg-kelly-muted/10 text-kelly-slate",
   warn: "border-amber-200/60 bg-amber-50/80 text-amber-950/90",
-  muted: "border-deep-soil/10 bg-white/80 text-deep-soil/55",
+  muted: "border-kelly-text/10 bg-white/80 text-kelly-text/55",
 };
 
 /**

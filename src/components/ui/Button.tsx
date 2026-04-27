@@ -8,23 +8,23 @@ const base =
 
 const variants = {
   primary:
-    "bg-red-dirt text-cream-canvas shadow-soft hover:-translate-y-0.5 hover:bg-[#8f3d24] focus-visible:outline-red-dirt",
+    "bg-kelly-gold text-kelly-navy shadow-soft hover:-translate-y-0.5 hover:brightness-105 focus-visible:outline-kelly-navy",
   secondary:
-    "bg-washed-denim text-cream-canvas shadow-soft hover:-translate-y-0.5 hover:bg-[#4d5d6c] focus-visible:outline-washed-denim",
+    "bg-kelly-navy text-kelly-white shadow-soft hover:-translate-y-0.5 hover:brightness-110 focus-visible:outline-kelly-gold",
   outline:
-    "border-2 border-deep-soil/25 bg-transparent text-deep-soil hover:border-deep-soil/50 hover:bg-deep-soil/[0.04] focus-visible:outline-deep-soil",
+    "border-2 border-kelly-navy/25 bg-transparent text-kelly-text hover:border-kelly-navy/45 hover:bg-kelly-navy/[0.06] focus-visible:outline-kelly-navy",
   ghost:
-    "bg-transparent text-deep-soil underline-offset-4 hover:underline focus-visible:outline-red-dirt",
+    "bg-transparent text-kelly-text underline-offset-4 hover:underline focus-visible:outline-kelly-gold",
   /**
-   * For civic-midnight header / dark surfaces.
-   * Use `!` for color so we beat `body` / inherited `text-deep-soil` (buttons often inherit).
+   * For kelly-navy header / dark surfaces.
+   * Use `!` for color so we beat `body` / inherited `text-kelly-text` (buttons often inherit).
    */
   ghostOnDark:
-    "border-0 bg-transparent !text-civic-fog underline-offset-4 hover:underline hover:!text-sunlight-gold focus-visible:outline-civic-gold/60",
+    "border-0 bg-transparent !text-kelly-fog underline-offset-4 hover:underline hover:!text-kelly-gold focus-visible:outline-kelly-gold/60",
   outlineOnDark:
-    "border-2 border-white/40 bg-civic-midnight/90 !text-civic-fog hover:!text-white hover:border-white/60 hover:bg-civic-blue/55 focus-visible:outline-white",
+    "border-2 border-white/40 bg-kelly-navy/90 !text-kelly-fog hover:!text-white hover:border-white/60 hover:bg-kelly-blue/55 focus-visible:outline-white",
   subtle:
-    "bg-deep-soil/[0.06] text-deep-soil hover:bg-deep-soil/10 focus-visible:outline-red-dirt",
+    "bg-kelly-text/[0.06] text-kelly-text hover:bg-kelly-navy/[0.08] focus-visible:outline-kelly-gold",
 } as const;
 
 export type ButtonVariant = keyof typeof variants;

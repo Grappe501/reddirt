@@ -23,11 +23,11 @@ export default async function CampaignCalendarPage({ searchParams }: Props) {
 
   return (
     <>
-      <FullBleedSection variant="civic-blue" padY className="border-b border-civic-gold/20">
+      <FullBleedSection variant="band-blue" padY className="border-b border-kelly-gold/20">
         <ContentContainer>
-          <p className="font-body text-xs font-bold uppercase tracking-wider text-sunlight-gold">Show up and participate</p>
-          <h1 className="mt-2 font-heading text-3xl font-bold text-civic-mist md:text-4xl">Campaign calendar</h1>
-          <p className="mt-3 max-w-3xl font-body text-sm leading-relaxed text-civic-mist/90 md:text-base">
+          <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-gold">Show up and participate</p>
+          <h1 className="mt-2 font-heading text-3xl font-bold text-kelly-mist md:text-4xl">Campaign calendar</h1>
+          <p className="mt-3 max-w-3xl font-body text-sm leading-relaxed text-kelly-mist/90 md:text-base">
             This is the live, campaign-owned schedule. Only events the team has <strong>published</strong> and marked{" "}
             <strong>public on the site</strong> appear here—no private briefings, no draft stages, and no third-party
             embed as the main experience. Pick a county, a format, or a time window, then get details, RSVP, and

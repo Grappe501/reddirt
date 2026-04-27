@@ -42,7 +42,7 @@ type RibbonEvent = Awaited<ReturnType<typeof listEventsForWeekByRibbon>>[RibbonB
 
 function QuickActions({ e, column }: { e: RibbonEvent; column: RibbonBucket }) {
   const btn =
-    "w-full rounded border border-deep-soil/15 py-0.5 text-[7px] font-bold leading-tight text-deep-soil/90 hover:border-red-dirt/30";
+    "w-full rounded border border-kelly-text/15 py-0.5 text-[7px] font-bold leading-tight text-kelly-text/90 hover:border-kelly-navy/30";
   if (column === "DRAFT") {
     return (
       <form action={submitEventForReviewAction} className="mt-0.5 space-y-0.5">
@@ -126,11 +126,11 @@ function EventCard({ e, column, toWeekEvent }: { e: RibbonEvent; column: RibbonB
   const onPublicSite = e.eventWorkflowState === EventWorkflowState.PUBLISHED && e.isPublicOnWebsite;
   const v = visLabel[e.visibility];
   return (
-    <li className="rounded border border-deep-soil/8 bg-white/90 px-0.5 py-0.5 shadow-sm">
+    <li className="rounded border border-kelly-text/8 bg-white/90 px-0.5 py-0.5 shadow-sm">
       <Link href={`/admin/workbench/calendar?${toWeekEvent(e.id)}`} className="block">
-        <span className="line-clamp-2 text-[9px] font-semibold text-civic-slate">{e.title}</span>
-        <span className="mt-0.5 block text-[7px] font-mono text-deep-soil/40">{String(e.eventType as CampaignEventType).replaceAll("_", " ")}</span>
-        <span className="mt-0.5 block text-[8px] text-deep-soil/55">
+        <span className="line-clamp-2 text-[9px] font-semibold text-kelly-slate">{e.title}</span>
+        <span className="mt-0.5 block text-[7px] font-mono text-kelly-text/40">{String(e.eventType as CampaignEventType).replaceAll("_", " ")}</span>
+        <span className="mt-0.5 block text-[8px] text-kelly-text/55">
           {e.startAt.toLocaleString("en-US", {
             timeZone: DEFAULT_CAMPAIGN_TZ,
             month: "short",
@@ -140,10 +140,10 @@ function EventCard({ e, column, toWeekEvent }: { e: RibbonEvent; column: RibbonB
           })}{" "}
           {e.county ? `· ${e.county.displayName}` : "· (no co.)"}
         </span>
-        <span className="mt-0.5 block text-[7px] text-deep-soil/50">
+        <span className="mt-0.5 block text-[7px] text-kelly-text/50">
           {v} · {onPublicSite ? "on site" : "not on site"} · {owner}
         </span>
-        <span className="mt-0.5 block text-[7px] text-deep-soil/45" title="Comms / Staff / Prep / Follow-up">
+        <span className="mt-0.5 block text-[7px] text-kelly-text/45" title="Comms / Staff / Prep / Follow-up">
           C{readyDot(e.commsReadiness)} S{readyDot(e.staffingReadiness)} P{readyDot(e.prepReadiness)} F{readyDot(e.followupReadiness)}
         </span>
       </Link>
@@ -171,29 +171,29 @@ export async function CalendarApprovalBoard({
   return (
     <div className="w-full min-w-0 max-w-[1920px] flex-1 flex-col p-1 md:p-2">
       <div className="mb-1 flex flex-wrap items-center justify-between gap-1">
-        <p className="font-heading text-sm font-bold text-deep-soil">Approval & staging (week scoping)</p>
+        <p className="font-heading text-sm font-bold text-kelly-text">Approval & staging (week scoping)</p>
         <div className="flex gap-1 text-[10px]">
-          <Link className="rounded border border-deep-soil/20 bg-white px-2 py-0.5 font-bold" href={`/admin/workbench/calendar?${q("ribbon", addWeeks(weekKey, -1))}`}>
+          <Link className="rounded border border-kelly-text/20 bg-white px-2 py-0.5 font-bold" href={`/admin/workbench/calendar?${q("ribbon", addWeeks(weekKey, -1))}`}>
             ← Week
           </Link>
-          <Link className="rounded border border-deep-soil/20 bg-white px-2 py-0.5 font-bold" href={`/admin/workbench/calendar?${q("ribbon", addWeeks(weekKey, 1))}`}>
+          <Link className="rounded border border-kelly-text/20 bg-white px-2 py-0.5 font-bold" href={`/admin/workbench/calendar?${q("ribbon", addWeeks(weekKey, 1))}`}>
             Week →
           </Link>
-          <Link className="rounded border border-deep-soil/15 bg-white px-2 py-0.5" href={`/admin/workbench/calendar?${q("week")}`}>
+          <Link className="rounded border border-kelly-text/15 bg-white px-2 py-0.5" href={`/admin/workbench/calendar?${q("week")}`}>
             ← Week plan
           </Link>
         </div>
       </div>
-      <p className="mb-2 text-[9px] text-deep-soil/55">
+      <p className="mb-2 text-[9px] text-kelly-text/55">
         Governed stages ({Object.values(EVENT_STAGE_LABEL).join(" · ")}). {weekKey} — cards show county, type, owner, visibility, and readiness. Quick actions use defaults; add notes in the
         event panel.
       </p>
       <div className="grid max-h-[min(70vh,900px)] min-h-[200px] grid-cols-1 gap-1 overflow-y-auto sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
         {(Object.keys(RIBBON_LABEL) as RibbonBucket[]).map((state) => (
-          <div key={state} className="flex min-h-0 min-w-0 flex-col overflow-hidden rounded border border-deep-soil/10 bg-cream-canvas/40">
-            <p className="shrink-0 border-b border-deep-soil/10 bg-deep-soil px-1.5 py-1 text-center text-[9px] font-bold text-cream-canvas">
+          <div key={state} className="flex min-h-0 min-w-0 flex-col overflow-hidden rounded border border-kelly-text/10 bg-kelly-page/40">
+            <p className="shrink-0 border-b border-kelly-text/10 bg-kelly-text px-1.5 py-1 text-center text-[9px] font-bold text-kelly-page">
               {RIBBON_LABEL[state]}{" "}
-              <span className="text-cream-canvas/50">({ribbon[state].length})</span>
+              <span className="text-kelly-page/50">({ribbon[state].length})</span>
             </p>
             <ul className="min-h-0 flex-1 space-y-1 overflow-y-auto p-0.5">
               {ribbon[state].map((e) => (
@@ -203,7 +203,7 @@ export async function CalendarApprovalBoard({
           </div>
         ))}
       </div>
-      <p className="mt-2 text-[8px] text-deep-soil/40">Drag-and-drop not enabled — use actions or the event execution panel for notes.</p>
+      <p className="mt-2 text-[8px] text-kelly-text/40">Drag-and-drop not enabled — use actions or the event execution panel for notes.</p>
     </div>
   );
 }

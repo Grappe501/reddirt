@@ -43,18 +43,18 @@ export default async function EditorialDetailPage({ params }: Props) {
 
   return (
     <>
-      <FullBleedSection padY={false} className="border-b border-deep-soil/10">
+      <FullBleedSection padY={false} className="border-b border-kelly-text/10">
         <div className="relative">
           <ContentImage media={piece.image} priority warmOverlay className="max-h-[min(55vh,520px)] w-full" />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-cream-canvas via-cream-canvas/30 to-transparent" aria-hidden />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-kelly-page via-kelly-page/30 to-transparent" aria-hidden />
         </div>
         <ContentContainer className="relative -mt-20 pb-12 lg:-mt-24">
-          <p className="font-body text-xs font-bold uppercase tracking-[0.22em] text-red-dirt">{piece.category}</p>
-          <h1 className="mt-4 max-w-4xl font-heading text-[clamp(1.85rem,4vw,3.25rem)] font-bold leading-tight text-deep-soil">
+          <p className="font-body text-xs font-bold uppercase tracking-[0.22em] text-kelly-navy">{piece.category}</p>
+          <h1 className="mt-4 max-w-4xl font-heading text-[clamp(1.85rem,4vw,3.25rem)] font-bold leading-tight text-kelly-text">
             {piece.title}
           </h1>
-          <p className="mt-6 max-w-3xl font-body text-xl leading-relaxed text-deep-soil/85">{piece.summary}</p>
-          <time className="mt-4 block font-body text-sm text-deep-soil/55" dateTime={piece.publishedAt}>
+          <p className="mt-6 max-w-3xl font-body text-xl leading-relaxed text-kelly-text/85">{piece.summary}</p>
+          <time className="mt-4 block font-body text-sm text-kelly-text/55" dateTime={piece.publishedAt}>
             {new Date(piece.publishedAt).toLocaleDateString("en-US", {
               month: "long",
               day: "numeric",
@@ -72,7 +72,7 @@ export default async function EditorialDetailPage({ params }: Props) {
 
       <FullBleedSection padY aria-labelledby="related-editorial-heading">
         <ContentContainer>
-          <h2 id="related-editorial-heading" className="font-heading text-2xl font-bold text-deep-soil">
+          <h2 id="related-editorial-heading" className="font-heading text-2xl font-bold text-kelly-text">
             Related essays
           </h2>
           <ul className="mt-8 space-y-4">
@@ -80,7 +80,7 @@ export default async function EditorialDetailPage({ params }: Props) {
               <li key={p.slug}>
                 <Link
                   href={`/editorial/${p.slug}`}
-                  className="block rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-5 font-heading text-lg font-bold text-deep-soil shadow-[var(--shadow-soft)] hover:border-red-dirt/25"
+                  className="block rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-5 font-heading text-lg font-bold text-kelly-text shadow-[var(--shadow-soft)] hover:border-kelly-navy/25"
                 >
                   {p.title}
                 </Link>

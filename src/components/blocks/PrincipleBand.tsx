@@ -5,22 +5,22 @@ type PrincipleBandProps = {
   title: string;
   intro?: string;
   principles: string[];
-  variant?: "green" | "denim" | "subtle";
+  variant?: "success" | "muted" | "subtle";
   className?: string;
   id?: string;
 };
 
 const variants = {
-  green: "bg-field-green text-cream-canvas",
-  denim: "bg-washed-denim text-cream-canvas",
-  subtle: "bg-deep-soil/[0.04] text-deep-soil",
+  success: "bg-kelly-success text-kelly-page",
+  muted: "bg-kelly-muted text-kelly-page",
+  subtle: "bg-kelly-text/[0.04] text-kelly-text",
 } as const;
 
 export function PrincipleBand({
   title,
   intro,
   principles,
-  variant = "green",
+  variant = "success",
   className,
   id,
 }: PrincipleBandProps) {
@@ -41,7 +41,7 @@ export function PrincipleBand({
             <h2
               className={cn(
                 "font-heading text-3xl font-bold tracking-tight sm:text-4xl",
-                isLightText ? "text-cream-canvas" : "text-deep-soil",
+                isLightText ? "text-kelly-page" : "text-kelly-text",
               )}
             >
               {title}
@@ -50,7 +50,7 @@ export function PrincipleBand({
               <p
                 className={cn(
                   "mt-4 font-body text-lg leading-relaxed",
-                  isLightText ? "text-cream-canvas/85" : "text-deep-soil/80",
+                  isLightText ? "text-kelly-page/85" : "text-kelly-text/80",
                 )}
               >
                 {intro}
@@ -64,8 +64,8 @@ export function PrincipleBand({
                 className={cn(
                   "rounded-card border px-5 py-4 font-body text-base leading-relaxed md:text-lg",
                   isLightText
-                    ? "border-cream-canvas/25 bg-cream-canvas/10 text-cream-canvas"
-                    : "border-deep-soil/10 bg-cream-canvas/60 text-deep-soil",
+                    ? "border-kelly-page/25 bg-kelly-page/10 text-kelly-page"
+                    : "border-kelly-text/10 bg-kelly-page/60 text-kelly-text",
                 )}
               >
                 {line}

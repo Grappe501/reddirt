@@ -8,9 +8,9 @@ import type { TruthClassId } from "@/lib/campaign-engine/truth";
 
 export const CM2_PACKET = "CM-2" as const;
 
-const bandBox = "rounded-md border border-deep-soil/10 bg-cream-canvas/90 px-2 py-1.5 shadow-sm";
-const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-deep-soil/55";
-const h3 = "font-heading text-[9px] font-bold uppercase tracking-wide text-deep-soil/45";
+const bandBox = "rounded-md border border-kelly-text/10 bg-kelly-page/90 px-2 py-1.5 shadow-sm";
+const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
+const h3 = "font-heading text-[9px] font-bold uppercase tracking-wide text-kelly-text/45";
 
 type Props = { snapshot: TruthSnapshot };
 
@@ -18,8 +18,8 @@ function statusStyle(status: string): string {
   const base = "rounded px-1 py-0.5 text-[9px] font-bold uppercase";
   if (status === "good") return `${base} bg-emerald-100/90 text-emerald-900`;
   if (status === "partial") return `${base} bg-amber-100/90 text-amber-950`;
-  if (status === "missing") return `${base} bg-deep-soil/10 text-deep-soil/80`;
-  return `${base} bg-washed-denim/15 text-civic-slate`;
+  if (status === "missing") return `${base} bg-kelly-text/10 text-kelly-text/80`;
+  return `${base} bg-kelly-muted/15 text-kelly-slate`;
 }
 
 function truthClassHint(tc: TruthClassId): string {
@@ -142,9 +142,9 @@ export function CampaignManagerDashboardBands({ snapshot }: Props) {
     <div className="mx-2 mb-2 space-y-2 md:mx-3">
       <section className={bandBox} aria-label="Truth and health">
         <p className={h2}>Truth + health (BRAIN-OPS snapshot)</p>
-        <p className="mt-0.5 font-body text-[9px] text-deep-soil/55">
+        <p className="mt-0.5 font-body text-[9px] text-kelly-text/55">
           Generated {snapshot.generatedAt.toISOString()} · read-only aggregate ·{" "}
-          <span className="font-semibold text-deep-soil/70">CM-2</span>
+          <span className="font-semibold text-kelly-text/70">CM-2</span>
         </p>
         <div className="mt-1.5 grid gap-1 sm:grid-cols-2 lg:grid-cols-3">
           {TRUTH_KEYS.map((k) => {
@@ -152,14 +152,14 @@ export function CampaignManagerDashboardBands({ snapshot }: Props) {
             return (
               <div
                 key={k}
-                className="rounded border border-deep-soil/8 bg-white/70 px-1.5 py-1 text-[10px] leading-snug"
+                className="rounded border border-kelly-text/8 bg-white/70 px-1.5 py-1 text-[10px] leading-snug"
               >
                 <div className="flex flex-wrap items-center gap-1">
-                  <span className="font-semibold text-deep-soil">{m.label}</span>
+                  <span className="font-semibold text-kelly-text">{m.label}</span>
                   <span className={statusStyle(m.status)}>{m.status}</span>
                 </div>
-                <p className="mt-0.5 text-deep-soil/75">{m.note}</p>
-                <p className="mt-0.5 font-mono text-[8px] text-deep-soil/50">{truthClassHint(m.truthClass)}</p>
+                <p className="mt-0.5 text-kelly-text/75">{m.note}</p>
+                <p className="mt-0.5 font-mono text-[8px] text-kelly-text/50">{truthClassHint(m.truthClass)}</p>
               </div>
             );
           })}
@@ -182,9 +182,9 @@ export function CampaignManagerDashboardBands({ snapshot }: Props) {
             <div key={label}>
               <p className={h3}>{label}</p>
               {items.length === 0 ? (
-                <p className="font-body text-[10px] text-deep-soil/45">None in this group.</p>
+                <p className="font-body text-[10px] text-kelly-text/45">None in this group.</p>
               ) : (
-                <ul className="list-inside list-disc font-body text-[10px] text-deep-soil/80">
+                <ul className="list-inside list-disc font-body text-[10px] text-kelly-text/80">
                   {items.map((t) => (
                     <li key={t}>{t}</li>
                   ))}
@@ -201,7 +201,7 @@ export function CampaignManagerDashboardBands({ snapshot }: Props) {
           <div>
             <p className={h3}>Review required</p>
             {snapshot.governance.reviewRequired.length === 0 ? (
-              <p className="font-body text-[10px] text-deep-soil/45">None listed.</p>
+              <p className="font-body text-[10px] text-kelly-text/45">None listed.</p>
             ) : (
               <ul className="list-inside list-disc font-body text-[10px] text-amber-950">
                 {snapshot.governance.reviewRequired.map((t) => (
@@ -212,7 +212,7 @@ export function CampaignManagerDashboardBands({ snapshot }: Props) {
           </div>
           <div>
             <p className={h3}>Advisory only</p>
-            <ul className="list-inside list-disc font-body text-[10px] text-deep-soil/75">
+            <ul className="list-inside list-disc font-body text-[10px] text-kelly-text/75">
               {snapshot.governance.advisoryOnly.map((t) => (
                 <li key={t}>{t}</li>
               ))}
@@ -221,7 +221,7 @@ export function CampaignManagerDashboardBands({ snapshot }: Props) {
           <div>
             <p className={h3}>Blocked</p>
             {snapshot.governance.blocked.length === 0 ? (
-              <p className="font-body text-[10px] text-deep-soil/45">None listed (empty is normal).</p>
+              <p className="font-body text-[10px] text-kelly-text/45">None listed (empty is normal).</p>
             ) : (
               <ul className="list-inside list-disc font-body text-[10px] text-red-900">
                 {snapshot.governance.blocked.map((t) => (
@@ -235,14 +235,14 @@ export function CampaignManagerDashboardBands({ snapshot }: Props) {
 
       <section className={bandBox} aria-label="Division command grid">
         <p className={h2}>Division command grid (thin)</p>
-        <p className="mt-0.5 font-body text-[9px] text-deep-soil/55">
-          Maturity from <code className="rounded bg-deep-soil/5 px-0.5">system-maturity-map.md</code>; open-work lines
+        <p className="mt-0.5 font-body text-[9px] text-kelly-text/55">
+          Maturity from <code className="rounded bg-kelly-text/5 px-0.5">system-maturity-map.md</code>; open-work lines
           use global UWR-2 counts, not per-seat roll-ups.
         </p>
         <div className="mt-1 overflow-x-auto">
           <table className="w-full min-w-[520px] border-collapse font-body text-[10px]">
             <thead>
-              <tr className="border-b border-deep-soil/15 text-left text-[9px] uppercase text-deep-soil/50">
+              <tr className="border-b border-kelly-text/15 text-left text-[9px] uppercase text-kelly-text/50">
                 <th className="py-1 pr-2 font-semibold">Division</th>
                 <th className="py-1 pr-2 font-semibold">Maturity</th>
                 <th className="py-1 pr-2 font-semibold">Open work hint</th>
@@ -252,15 +252,15 @@ export function CampaignManagerDashboardBands({ snapshot }: Props) {
             </thead>
             <tbody>
               {divisions.map((d) => (
-                <tr key={d.division} className="border-b border-deep-soil/8 align-top">
-                  <td className="py-1 pr-2 font-semibold text-deep-soil">{d.division}</td>
-                  <td className="py-1 pr-2 text-deep-soil/75">{d.maturity}</td>
-                  <td className="py-1 pr-2 text-deep-soil/80">
-                    {d.openWorkLine ?? <span className="text-deep-soil/45">—</span>}
+                <tr key={d.division} className="border-b border-kelly-text/8 align-top">
+                  <td className="py-1 pr-2 font-semibold text-kelly-text">{d.division}</td>
+                  <td className="py-1 pr-2 text-kelly-text/75">{d.maturity}</td>
+                  <td className="py-1 pr-2 text-kelly-text/80">
+                    {d.openWorkLine ?? <span className="text-kelly-text/45">—</span>}
                   </td>
-                  <td className="py-1 pr-2 text-deep-soil/70">{d.gapNote}</td>
+                  <td className="py-1 pr-2 text-kelly-text/70">{d.gapNote}</td>
                   <td className="py-1">
-                    <Link href={d.primaryHref} className="font-semibold text-civic-slate hover:underline">
+                    <Link href={d.primaryHref} className="font-semibold text-kelly-slate hover:underline">
                       {d.linkLabel}
                     </Link>
                   </td>

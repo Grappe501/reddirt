@@ -66,9 +66,9 @@ export default async function LocalRegionPage({ params }: Props) {
             {region.cta.secondary.label}
           </Button>
         ) : null}
-        <p className="mt-2 max-w-xl text-sm text-deep-soil/75">
+        <p className="mt-2 max-w-xl text-sm text-kelly-text/75">
           <Link
-            className="font-semibold text-red-dirt underline-offset-2 hover:underline"
+            className="font-semibold text-kelly-navy underline-offset-2 hover:underline"
             href={`/counties/${region.slug}`}
           >
             Open the county command page
@@ -90,7 +90,7 @@ export default async function LocalRegionPage({ params }: Props) {
             {region.hearing.map((line) => (
               <li
                 key={line}
-                className="rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-6 font-body text-lg leading-relaxed text-deep-soil/85 shadow-[var(--shadow-soft)]"
+                className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 font-body text-lg leading-relaxed text-kelly-text/85 shadow-[var(--shadow-soft)]"
               >
                 {line}
               </li>
@@ -112,10 +112,10 @@ export default async function LocalRegionPage({ params }: Props) {
             {region.priorityIssues.map((issue) => (
               <div
                 key={issue}
-                className="rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)]"
+                className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)]"
               >
-                <h3 className="font-heading text-xl font-bold text-deep-soil">{issue}</h3>
-                <p className="mt-3 font-body text-sm text-deep-soil/70">
+                <h3 className="font-heading text-xl font-bold text-kelly-text">{issue}</h3>
+                <p className="mt-3 font-body text-sm text-kelly-text/70">
                   {/* Future: link issue tiles to policy explainers or story filters */}
                   Ground-truth theme from listening work—detail pages can deepen later.
                 </p>
@@ -149,10 +149,10 @@ export default async function LocalRegionPage({ params }: Props) {
           ) : (
             <div
               role="status"
-              className="mt-10 rounded-card border border-dashed border-deep-soil/25 bg-deep-soil/[0.03] p-10 text-center"
+              className="mt-10 rounded-card border border-dashed border-kelly-text/25 bg-kelly-text/[0.03] p-10 text-center"
             >
-              <p className="font-heading text-2xl font-bold text-deep-soil">The calendar is open</p>
-              <p className="mx-auto mt-3 max-w-prose font-body text-deep-soil/75">
+              <p className="font-heading text-2xl font-bold text-kelly-text">The calendar is open</p>
+              <p className="mx-auto mt-3 max-w-prose font-body text-kelly-text/75">
                 That’s not failure—it’s an invitation. The first reliable gathering in a county often starts with one
                 brave host.
               </p>
@@ -183,13 +183,13 @@ export default async function LocalRegionPage({ params }: Props) {
               {region.stories.map((s) => (
                 <li
                   key={s.quote}
-                  className="rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-8 shadow-[var(--shadow-soft)]"
+                  className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-8 shadow-[var(--shadow-soft)]"
                 >
-                  <blockquote className="font-heading text-xl font-bold leading-snug text-deep-soil lg:text-2xl">
+                  <blockquote className="font-heading text-xl font-bold leading-snug text-kelly-text lg:text-2xl">
                     “{s.quote}”
                   </blockquote>
                   {s.attribution ? (
-                    <p className="mt-4 font-body text-xs font-semibold uppercase tracking-[0.18em] text-deep-soil/55">
+                    <p className="mt-4 font-body text-xs font-semibold uppercase tracking-[0.18em] text-kelly-text/55">
                       {s.attribution}
                     </p>
                   ) : null}
@@ -197,9 +197,9 @@ export default async function LocalRegionPage({ params }: Props) {
               ))}
             </ul>
           ) : (
-            <p className="mt-8 font-body text-lg text-deep-soil/75">
+            <p className="mt-8 font-body text-lg text-kelly-text/75">
               We’re still collecting voice memos and porch notes—{" "}
-              <Link className="font-semibold text-red-dirt underline" href="/stories">
+              <Link className="font-semibold text-kelly-navy underline" href="/stories">
                 share a story
               </Link>{" "}
               to help this hub feel like home.
@@ -227,20 +227,20 @@ export default async function LocalRegionPage({ params }: Props) {
               <Link
                 key={x.t}
                 href={x.href}
-                className="rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-7 shadow-[var(--shadow-soft)] transition hover:-translate-y-0.5 hover:border-red-dirt/30"
+                className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-7 shadow-[var(--shadow-soft)] transition hover:-translate-y-0.5 hover:border-kelly-navy/30"
               >
-                <h3 className="font-heading text-xl font-bold text-deep-soil">{x.t}</h3>
-                <p className="mt-3 font-body text-base text-deep-soil/75">{x.b}</p>
-                <span className="mt-4 inline-flex items-center gap-2 font-body text-sm font-semibold text-red-dirt">
+                <h3 className="font-heading text-xl font-bold text-kelly-text">{x.t}</h3>
+                <p className="mt-3 font-body text-base text-kelly-text/75">{x.b}</p>
+                <span className="mt-4 inline-flex items-center gap-2 font-body text-sm font-semibold text-kelly-navy">
                   Go
                   <span aria-hidden>→</span>
                 </span>
               </Link>
             ))}
           </ResponsiveGrid>
-          <div className="mt-10 rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)]">
-            <h3 className="font-heading text-lg font-bold text-deep-soil">Regional organizing contact</h3>
-            <p className="mt-2 font-body text-deep-soil/75">{region.organizingContactNote}</p>
+          <div className="mt-10 rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)]">
+            <h3 className="font-heading text-lg font-bold text-kelly-text">Regional organizing contact</h3>
+            <p className="mt-2 font-body text-kelly-text/75">{region.organizingContactNote}</p>
           </div>
         </ContentContainer>
       </FullBleedSection>

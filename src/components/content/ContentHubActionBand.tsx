@@ -62,15 +62,15 @@ export function ContentHubActionBand({
   return (
     <section
       id={id}
-      className={cn("rounded-card border border-civic-ink/10 bg-gradient-to-br from-civic-midnight via-civic-deep to-civic-blue px-5 py-8 text-civic-mist shadow-lg md:px-8 md:py-10", className)}
+      className={cn("rounded-card border border-kelly-ink/10 bg-gradient-to-br from-kelly-navy via-kelly-deep to-kelly-blue px-5 py-8 text-kelly-mist shadow-lg md:px-8 md:py-10", className)}
       aria-labelledby={headingId}
     >
       <div className="mx-auto max-w-3xl text-center">
-        <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-civic-gold/90">{eyebrow}</p>
+        <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-kelly-gold/90">{eyebrow}</p>
         <h2 id={headingId} className="mt-3 font-heading text-xl font-bold text-white md:text-2xl">
           {title}
         </h2>
-        <p className="mt-3 font-body text-sm leading-relaxed text-civic-mist/85 md:text-base">{intro}</p>
+        <p className="mt-3 font-body text-sm leading-relaxed text-kelly-mist/85 md:text-base">{intro}</p>
       </div>
       <ul className="mx-auto mt-8 grid max-w-5xl gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4">
         {actions.map((a) => {
@@ -81,10 +81,10 @@ export function ContentHubActionBand({
                 href={a.href}
                 target={offSite ? "_blank" : undefined}
                 rel={offSite ? "noopener noreferrer" : undefined}
-                className="flex h-full flex-col rounded-lg border border-white/15 bg-white/5 px-4 py-3 transition hover:border-civic-gold/40 hover:bg-white/10"
+                className="flex h-full flex-col rounded-lg border border-white/15 bg-white/5 px-4 py-3 transition hover:border-kelly-gold/40 hover:bg-white/10"
               >
                 <span className="font-heading text-sm font-bold text-white">{a.label}</span>
-                <span className="mt-1 font-body text-xs leading-snug text-civic-mist/75">{a.detail}</span>
+                <span className="mt-1 font-body text-xs leading-snug text-kelly-mist/75">{a.detail}</span>
               </Link>
             </li>
           );

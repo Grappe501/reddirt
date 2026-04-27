@@ -77,7 +77,7 @@ export default async function AboutPage() {
             subtitle="The Secretary of State’s office touches every voter, business, and community in Arkansas. It should feel steady, accessible, and accountable—no matter your party."
             className="max-w-2xl scroll-mt-24"
           />
-          <div className="mt-10 space-y-6 font-body text-lg leading-relaxed text-deep-soil/85">
+          <div className="mt-10 space-y-6 font-body text-lg leading-relaxed text-kelly-text/85">
             <p>
               Leadership in this role isn’t about headlines or ideology. It’s about doing the detailed work of
               administration: supporting county officials, making business services clearer and more efficient, communicating
@@ -92,23 +92,23 @@ export default async function AboutPage() {
               For the long version of the case for this office, read{" "}
               <Link
                 href="/about/why-secretary-of-state"
-                className="font-semibold text-red-dirt underline-offset-2 hover:underline"
+                className="font-semibold text-kelly-navy underline-offset-2 hover:underline"
               >
                 Why this office
               </Link>{" "}
-              or jump to <Link href="#sos-why" className="font-semibold text-red-dirt underline-offset-2 hover:underline">that section</Link>{" "}
+              or jump to <Link href="#sos-why" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">that section</Link>{" "}
               above.
             </p>
-            <p className="rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-6 text-base text-deep-soil/80 shadow-[var(--shadow-soft)]">
+            <p className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 text-base text-kelly-text/80 shadow-[var(--shadow-soft)]">
               Questions? Email{" "}
               <a
                 href="mailto:kelly@kellygrappe.com"
-                className="font-semibold text-red-dirt underline-offset-2 hover:underline"
+                className="font-semibold text-kelly-navy underline-offset-2 hover:underline"
               >
                 kelly@kellygrappe.com
               </a>{" "}
               or reach out through{" "}
-              <Link href="/get-involved" className="font-semibold text-red-dirt underline-offset-2 hover:underline">
+              <Link href="/get-involved" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
                 Get involved
               </Link>
               . Press and compliance details will expand here as the committee filing is finalized.
@@ -127,15 +127,15 @@ export default async function AboutPage() {
         eyebrow="Next step"
         title="You know the person. Now bring someone into the work."
         description="When you’re ready, we’ll connect you with concrete ways to help—starting in your county, on your timeline."
-        variant="soil"
+        variant="ink-band"
       >
-        <Button href="/get-involved" variant="primary" className="bg-cream-canvas text-deep-soil hover:bg-cream-canvas/90">
+        <Button href="/get-involved" variant="primary" className="bg-kelly-page text-kelly-text hover:bg-kelly-page/90">
           Get involved
         </Button>
         <Button
           href="mailto:kelly@kellygrappe.com"
           variant="outline"
-          className="border-cream-canvas/40 text-cream-canvas hover:bg-cream-canvas/10"
+          className="border-kelly-page/40 text-kelly-page hover:bg-kelly-page/10"
         >
           Email Kelly
         </Button>

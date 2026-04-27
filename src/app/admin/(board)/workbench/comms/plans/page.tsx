@@ -23,24 +23,24 @@ export default async function CommsWorkbenchPlansListPage({ searchParams }: Prop
   return (
     <div className="min-w-0 p-1">
       <CommsWorkbenchSubnav />
-      <div className="mt-2 flex flex-wrap items-center justify-between gap-2 border-b border-deep-soil/10 pb-2">
-        <h1 className="font-heading text-xl font-bold text-deep-soil">Message plans</h1>
+      <div className="mt-2 flex flex-wrap items-center justify-between gap-2 border-b border-kelly-text/10 pb-2">
+        <h1 className="font-heading text-xl font-bold text-kelly-text">Message plans</h1>
         <div className="flex flex-wrap items-center gap-2">
           <Link
             href={COMMS_APP_PATHS.plansNew}
-            className="rounded border border-civic-slate/30 bg-civic-slate/10 px-2 py-0.5 text-xs font-bold text-civic-slate"
+            className="rounded border border-kelly-slate/30 bg-kelly-slate/10 px-2 py-0.5 text-xs font-bold text-kelly-slate"
           >
             New message plan
           </Link>
           <Link
             href={COMMS_APP_PATHS.dashboard}
-            className="rounded border border-deep-soil/15 bg-white px-2 py-0.5 text-xs font-semibold text-civic-slate"
+            className="rounded border border-kelly-text/15 bg-white px-2 py-0.5 text-xs font-semibold text-kelly-slate"
           >
             ← Comms operations
           </Link>
         </div>
       </div>
-      <p className="mt-1 max-w-2xl font-body text-sm text-deep-soil/70">
+      <p className="mt-1 max-w-2xl font-body text-sm text-kelly-text/70">
         Communication plans in the new workbench graph. Open a row for drafts, sends, and provenance.
       </p>
 

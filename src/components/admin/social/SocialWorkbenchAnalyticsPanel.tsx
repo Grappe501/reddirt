@@ -1190,7 +1190,7 @@ export function SocialWorkbenchAnalyticsPanel({
             {detail.campaignEventId ? (
               <p>
                 <span className="text-slate-600">Linked event: </span>
-                <Link className="font-medium text-civic-slate underline" href={`/admin/events/${detail.campaignEventId}`}>
+                <Link className="font-medium text-kelly-slate underline" href={`/admin/events/${detail.campaignEventId}`}>
                   {detail.campaignEventTitle ?? "Open event"}
                 </Link>
               </p>
@@ -1200,7 +1200,7 @@ export function SocialWorkbenchAnalyticsPanel({
             {primary?.conversionCampaignEventId && primary.conversionEventTitle ? (
               <p>
                 <span className="text-slate-600">Snapshot attributes conversion to: </span>
-                <Link className="text-civic-slate underline" href={`/admin/events/${primary.conversionCampaignEventId}`}>
+                <Link className="text-kelly-slate underline" href={`/admin/events/${primary.conversionCampaignEventId}`}>
                   {primary.conversionEventTitle}
                 </Link>
               </p>
@@ -1222,7 +1222,7 @@ export function SocialWorkbenchAnalyticsPanel({
                 </ul>
               )}
             </div>
-            <Link href="/admin/tasks" className="inline-block text-sm text-civic-slate underline">
+            <Link href="/admin/tasks" className="inline-block text-sm text-kelly-slate underline">
               Open full task board
             </Link>
           </CardContent>

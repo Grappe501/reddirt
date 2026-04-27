@@ -22,25 +22,25 @@ export default async function AdminDistributionPage({ searchParams }: Props) {
 
   return (
     <div className="mx-auto max-w-5xl">
-      <h1 className="font-heading text-3xl font-bold text-deep-soil">Distribution</h1>
-      <p className="mt-3 font-body text-sm text-deep-soil/75">
+      <h1 className="font-heading text-3xl font-bold text-kelly-text">Distribution</h1>
+      <p className="mt-3 font-body text-sm text-kelly-text/75">
         Human-controlled routing to the public site. Only items marked reviewed or featured appear here. Substack blog
         landing can still follow <code className="text-xs">SyncedPost</code>; toggling “Blog” updates the linked post
         when present.
       </p>
 
       {sp.saved ? (
-        <p className="mt-4 rounded-lg border border-field-green/35 bg-field-green/10 px-3 py-2 text-sm text-deep-soil">
+        <p className="mt-4 rounded-lg border border-kelly-success/35 bg-kelly-success/10 px-3 py-2 text-sm text-kelly-text">
           Saved routing for item <code className="text-xs">{sp.saved}</code>.
         </p>
       ) : null}
 
       <p className="mt-6 font-body text-sm">
-        <Link href="/admin/inbox" className="font-semibold text-red-dirt hover:underline">
+        <Link href="/admin/inbox" className="font-semibold text-kelly-navy hover:underline">
           Inbox
         </Link>{" "}
         ·{" "}
-        <Link href="/admin/review-queue" className="font-semibold text-red-dirt hover:underline">
+        <Link href="/admin/review-queue" className="font-semibold text-kelly-navy hover:underline">
           Review queue
         </Link>
       </p>
@@ -49,16 +49,16 @@ export default async function AdminDistributionPage({ searchParams }: Props) {
         {items.map((item) => (
           <div
             key={item.id}
-            className="rounded-card border border-deep-soil/10 bg-cream-canvas p-6 shadow-[var(--shadow-soft)]"
+            className="rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]"
           >
-            <div className="flex flex-wrap items-start justify-between gap-4 border-b border-deep-soil/10 pb-4">
+            <div className="flex flex-wrap items-start justify-between gap-4 border-b border-kelly-text/10 pb-4">
               <div>
-                <h2 className="font-heading text-lg font-bold text-deep-soil">
-                  <Link href={`/admin/inbox/${item.id}`} className="text-red-dirt hover:underline">
+                <h2 className="font-heading text-lg font-bold text-kelly-text">
+                  <Link href={`/admin/inbox/${item.id}`} className="text-kelly-navy hover:underline">
                     {item.title ?? "(untitled)"}
                   </Link>
                 </h2>
-                <p className="mt-1 font-body text-xs text-deep-soil/55">
+                <p className="mt-1 font-body text-xs text-kelly-text/55">
                   {platformLabel(item.sourcePlatform)} · {sourceTypeLabel(item.sourceType)} · {item.reviewStatus}
                 </p>
               </div>
@@ -67,7 +67,7 @@ export default async function AdminDistributionPage({ searchParams }: Props) {
                   href={item.canonicalUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-xs font-semibold text-civic-slate underline-offset-2 hover:underline"
+                  className="text-xs font-semibold text-kelly-slate underline-offset-2 hover:underline"
                 >
                   Open source ↗
                 </a>
@@ -95,31 +95,31 @@ export default async function AdminDistributionPage({ searchParams }: Props) {
                 <input type="checkbox" name="editorialSeed" defaultChecked={item.editorialSeed} />
                 Editorial follow-up seed
               </label>
-              <label className="flex items-center gap-2 font-body text-sm text-deep-soil/60">
+              <label className="flex items-center gap-2 font-body text-sm text-kelly-text/60">
                 <input type="checkbox" name="publishCandidate" defaultChecked={item.publishCandidate} />
                 Publish candidate (outbound — not enabled)
               </label>
               <label className="md:col-span-2 block text-sm">
-                <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Notes</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Notes</span>
                 <textarea
                   name="notes"
                   rows={2}
-                  className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 font-body text-sm"
+                  className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 font-body text-sm"
                   placeholder="Optional routing note"
                 />
               </label>
               <label className="md:col-span-2 block text-sm">
-                <span className="text-xs font-semibold uppercase tracking-wider text-deep-soil/55">Editor initials</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Editor initials</span>
                 <input
                   name="editor"
-                  className="mt-1 w-full rounded-md border border-deep-soil/15 bg-white px-3 py-2 font-body text-sm"
+                  className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 font-body text-sm"
                   placeholder="Who approved this route"
                 />
               </label>
               <div className="md:col-span-2">
                 <button
                   type="submit"
-                  className="rounded-btn bg-deep-soil px-5 py-2.5 text-sm font-bold text-cream-canvas"
+                  className="rounded-btn bg-kelly-text px-5 py-2.5 text-sm font-bold text-kelly-page"
                 >
                   Save routing
                 </button>
@@ -130,7 +130,7 @@ export default async function AdminDistributionPage({ searchParams }: Props) {
       </div>
 
       {items.length === 0 ? (
-        <p className="mt-10 text-center text-sm text-deep-soil/55">
+        <p className="mt-10 text-center text-sm text-kelly-text/55">
           No reviewed items yet. Clear the review queue first.
         </p>
       ) : null}

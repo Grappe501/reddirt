@@ -121,9 +121,9 @@ export function HostPlanningCalendarHelper({
   }, [aiNotes, countyFieldId]);
 
   return (
-    <div className="rounded-card border border-deep-soil/12 bg-deep-soil/[0.03] p-5 shadow-[var(--shadow-soft)]">
-      <h3 className="font-heading text-lg font-bold text-deep-soil">Plan with the live calendar</h3>
-      <p className="mt-2 font-body text-sm leading-relaxed text-deep-soil/75">
+    <div className="rounded-card border border-kelly-text/12 bg-kelly-text/[0.03] p-5 shadow-[var(--shadow-soft)]">
+      <h3 className="font-heading text-lg font-bold text-kelly-text">Plan with the live calendar</h3>
+      <p className="mt-2 font-body text-sm leading-relaxed text-kelly-text/75">
         We merge the <strong>public campaign calendar</strong> and on-site movement events (Central Time). If a day has
         no published stops, we treat travel baseline as <strong>Rose Bud, Arkansas</strong>—same as the farm home base on
         the site.
@@ -137,34 +137,34 @@ export function HostPlanningCalendarHelper({
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            className="mt-1 w-full max-w-xs rounded-btn border border-deep-soil/15 bg-cream-canvas px-3 py-2.5 font-body text-sm text-deep-soil shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-dirt"
+            className="mt-1 w-full max-w-xs rounded-btn border border-kelly-text/15 bg-kelly-page px-3 py-2.5 font-body text-sm text-kelly-text shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-navy"
           />
         </div>
         <Button type="button" variant="outline" onClick={() => void loadAvailability()} disabled={loading || !date}>
           {loading ? "Checking…" : "Check this date"}
         </Button>
       </div>
-      {fetchError ? <p className="mt-2 text-sm text-red-dirt">{fetchError}</p> : null}
+      {fetchError ? <p className="mt-2 text-sm text-kelly-navy">{fetchError}</p> : null}
 
       {data ? (
-        <div className="mt-5 space-y-4 font-body text-sm text-deep-soil/85">
+        <div className="mt-5 space-y-4 font-body text-sm text-kelly-text/85">
           <div
             className={
               data.proposed.availability === "open"
-                ? "rounded-lg border border-field-green/35 bg-field-green/10 px-3 py-2"
+                ? "rounded-lg border border-kelly-success/35 bg-kelly-success/10 px-3 py-2"
                 : "rounded-lg border border-amber-500/35 bg-amber-50/90 px-3 py-2"
             }
           >
-            <p className="font-heading text-sm font-bold text-deep-soil">
+            <p className="font-heading text-sm font-bold text-kelly-text">
               {data.proposed.weekdayLabel} ({data.proposed.ymd}) —{" "}
               {data.proposed.availability === "open" ? "Looks open" : "Busy on public calendar"}
             </p>
-            <p className="mt-1 text-deep-soil/80">{data.proposed.summary}</p>
+            <p className="mt-1 text-kelly-text/80">{data.proposed.summary}</p>
             {data.proposed.events.length > 0 ? (
-              <ul className="mt-2 list-inside list-disc text-deep-soil/75">
+              <ul className="mt-2 list-inside list-disc text-kelly-text/75">
                 {data.proposed.events.map((e) => (
                   <li key={`${e.href}-${e.title}`}>
-                    <a href={e.href} className="font-semibold text-red-dirt underline">
+                    <a href={e.href} className="font-semibold text-kelly-navy underline">
                       {e.title}
                     </a>{" "}
                     — {e.locationLine}
@@ -175,30 +175,30 @@ export function HostPlanningCalendarHelper({
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2">
-            <div className="rounded-lg border border-deep-soil/10 bg-white/80 px-3 py-2">
-              <p className="text-[10px] font-bold uppercase tracking-wider text-civic-slate/90">Day before</p>
-              <p className="mt-1 font-semibold text-deep-soil">
+            <div className="rounded-lg border border-kelly-text/10 bg-white/80 px-3 py-2">
+              <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-slate/90">Day before</p>
+              <p className="mt-1 font-semibold text-kelly-text">
                 {data.dayBefore.weekdayLabel} · {data.dayBefore.ymd}
               </p>
-              <p className="mt-1 text-deep-soil/75">{data.dayBefore.summary}</p>
+              <p className="mt-1 text-kelly-text/75">{data.dayBefore.summary}</p>
             </div>
-            <div className="rounded-lg border border-deep-soil/10 bg-white/80 px-3 py-2">
-              <p className="text-[10px] font-bold uppercase tracking-wider text-civic-slate/90">Day after</p>
-              <p className="mt-1 font-semibold text-deep-soil">
+            <div className="rounded-lg border border-kelly-text/10 bg-white/80 px-3 py-2">
+              <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-slate/90">Day after</p>
+              <p className="mt-1 font-semibold text-kelly-text">
                 {data.dayAfter.weekdayLabel} · {data.dayAfter.ymd}
               </p>
-              <p className="mt-1 text-deep-soil/75">{data.dayAfter.summary}</p>
+              <p className="mt-1 text-kelly-text/75">{data.dayAfter.summary}</p>
             </div>
           </div>
-          <p className="text-xs text-deep-soil/60">
+          <p className="text-xs text-kelly-text/60">
             Time zone: {data.timezone}. This is a planning aid only—staff still confirms against the full schedule.
           </p>
         </div>
       ) : null}
 
-      <div className="mt-8 border-t border-deep-soil/10 pt-6">
-        <p className="font-heading text-base font-bold text-deep-soil">Optional: AI date ideas</p>
-        <p className="mt-1 font-body text-sm text-deep-soil/70">
+      <div className="mt-8 border-t border-kelly-text/10 pt-6">
+        <p className="font-heading text-base font-bold text-kelly-text">Optional: AI date ideas</p>
+        <p className="mt-1 font-body text-sm text-kelly-text/70">
           Describe what you need (e.g. “weeknight in Garland County in June, 15–25 people”). We send your note plus the
           next ~90 days of busy/open digest to the model—no guarantee, always confirm with the team.
         </p>
@@ -213,13 +213,13 @@ export function HostPlanningCalendarHelper({
         <Button type="button" variant="outline" className="mt-3" onClick={() => void runAi()} disabled={aiLoading}>
           {aiLoading ? "Thinking…" : "Suggest dates"}
         </Button>
-        {aiError ? <p className="mt-2 text-sm text-red-dirt">{aiError}</p> : null}
+        {aiError ? <p className="mt-2 text-sm text-kelly-navy">{aiError}</p> : null}
         {aiResult ? (
-          <div className="mt-4 rounded-lg border border-deep-soil/10 bg-white/90 px-3 py-3">
+          <div className="mt-4 rounded-lg border border-kelly-text/10 bg-white/90 px-3 py-3">
             {aiResult.suggestions.length === 0 ? (
-              <p className="text-sm text-deep-soil/75">No structured suggestions returned—try again or use “Check this date.”</p>
+              <p className="text-sm text-kelly-text/75">No structured suggestions returned—try again or use “Check this date.”</p>
             ) : (
-              <ol className="list-decimal space-y-2 pl-5 text-sm text-deep-soil/85">
+              <ol className="list-decimal space-y-2 pl-5 text-sm text-kelly-text/85">
                 {aiResult.suggestions.map((s) => (
                   <li key={s.date}>
                     <span className="font-semibold tabular-nums">{s.date}</span> — {s.reason}
@@ -227,7 +227,7 @@ export function HostPlanningCalendarHelper({
                 ))}
               </ol>
             )}
-            {aiResult.caveat ? <p className="mt-3 text-xs text-deep-soil/65">{aiResult.caveat}</p> : null}
+            {aiResult.caveat ? <p className="mt-3 text-xs text-kelly-text/65">{aiResult.caveat}</p> : null}
           </div>
         ) : null}
       </div>

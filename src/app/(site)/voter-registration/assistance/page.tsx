@@ -22,25 +22,25 @@ export default function VoterAssistancePreviewPage() {
       />
       <FullBleedSection padY>
         <ContentContainer className="max-w-2xl">
-          <div className="rounded-2xl border border-amber-700/30 bg-amber-50/90 p-6 text-sm text-deep-soil/90">
+          <div className="rounded-2xl border border-amber-700/30 bg-amber-50/90 p-6 text-sm text-kelly-text/90">
             <p className="font-bold text-amber-950">Not built yet</p>
             <p className="mt-2 leading-relaxed">
               When ready, this page will host a structured search (e.g. name + date of birth + county) against our
               warehouse tables, with every result labeled as <strong>campaign assistance data</strong> and a mandatory
               link to{" "}
-              <a className="font-semibold text-red-dirt underline" href={official} target="_blank" rel="noreferrer">
+              <a className="font-semibold text-kelly-navy underline" href={official} target="_blank" rel="noreferrer">
                 Arkansas VoterView
               </a>{" "}
               for official confirmation.
             </p>
           </div>
-          <p className="mt-6 text-sm text-deep-soil/75">
+          <p className="mt-6 text-sm text-kelly-text/75">
             For now, use the{" "}
-            <Link className="font-semibold text-red-dirt underline-offset-2 hover:underline" href="/voter-registration">
+            <Link className="font-semibold text-kelly-navy underline-offset-2 hover:underline" href="/voter-registration">
               voter registration center
             </Link>{" "}
             and request a human through{" "}
-            <Link className="font-semibold text-red-dirt underline-offset-2 hover:underline" href="/get-involved#join">
+            <Link className="font-semibold text-kelly-navy underline-offset-2 hover:underline" href="/get-involved#join">
               get involved
             </Link>
             .

@@ -62,10 +62,10 @@ export default function HostAGatheringPage() {
             ].map((x) => (
               <div
                 key={x.t}
-                className="rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-7 shadow-[var(--shadow-soft)]"
+                className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-7 shadow-[var(--shadow-soft)]"
               >
-                <h3 className="font-heading text-xl font-bold text-deep-soil">{x.t}</h3>
-                <p className="mt-3 font-body text-base leading-relaxed text-deep-soil/75">{x.b}</p>
+                <h3 className="font-heading text-xl font-bold text-kelly-text">{x.t}</h3>
+                <p className="mt-3 font-body text-base leading-relaxed text-kelly-text/75">{x.b}</p>
               </div>
             ))}
           </ResponsiveGrid>
@@ -98,10 +98,10 @@ export default function HostAGatheringPage() {
             ].map((x) => (
               <div
                 key={x.t}
-                className="rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-7 shadow-[var(--shadow-soft)]"
+                className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-7 shadow-[var(--shadow-soft)]"
               >
-                <h3 className="font-heading text-xl font-bold text-deep-soil">{x.t}</h3>
-                <p className="mt-3 font-body text-base text-deep-soil/75">{x.b}</p>
+                <h3 className="font-heading text-xl font-bold text-kelly-text">{x.t}</h3>
+                <p className="mt-3 font-body text-base text-kelly-text/75">{x.b}</p>
               </div>
             ))}
           </ResponsiveGrid>
@@ -148,7 +148,7 @@ export default function HostAGatheringPage() {
               "Follow-up pathways: teams, trainings, or story capture when neighbors want it.",
             ]}
           />
-          <p className="mt-8 max-w-3xl font-body text-sm text-deep-soil/60">
+          <p className="mt-8 max-w-3xl font-body text-sm text-kelly-text/60">
             When you host with us, a field mentor can help with pairings and follow-up—without turning this page into a
             long checklist.
           </p>
@@ -179,22 +179,22 @@ export default function HostAGatheringPage() {
             title="What happens next"
             subtitle="Fast isn’t always possible—kind is."
           />
-          <div className="mt-8 max-w-3xl space-y-4 font-body text-lg leading-relaxed text-deep-soil/85">
+          <div className="mt-8 max-w-3xl space-y-4 font-body text-lg leading-relaxed text-kelly-text/85">
             <p>
               You’ll get a confirmation that we received your note. A human organizer will follow up with a short
               checklist—usually within a few days, faster when we have capacity.
             </p>
             <p>
               If you’re not ready to host yet, that’s fine. You can still{" "}
-              <Link className="font-semibold text-red-dirt underline" href="/events">
+              <Link className="font-semibold text-kelly-navy underline" href="/events">
                 join an event
               </Link>
               ,{" "}
-              <Link className="font-semibold text-red-dirt underline" href={representLocalEventVolunteerHref}>
+              <Link className="font-semibold text-kelly-navy underline" href={representLocalEventVolunteerHref}>
                 volunteer to represent the campaign at a fair or civic night
               </Link>
               , or{" "}
-              <Link className="font-semibold text-red-dirt underline" href="/start-a-local-team">
+              <Link className="font-semibold text-kelly-navy underline" href="/start-a-local-team">
                 start a team
               </Link>{" "}
               with friends.

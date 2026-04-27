@@ -34,19 +34,19 @@ export default async function ExplainersIndexPage() {
               <li key={e.slug}>
                 <Link
                   href={`/explainers/${e.slug}`}
-                  className="group flex h-full flex-col overflow-hidden rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] shadow-[var(--shadow-soft)] transition hover:-translate-y-0.5 hover:border-field-green/35"
+                  className="group flex h-full flex-col overflow-hidden rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] shadow-[var(--shadow-soft)] transition hover:-translate-y-0.5 hover:border-kelly-success/35"
                 >
                   <ContentImage media={e.image} className="aspect-[16/10] max-h-[220px]" />
                   <div className="flex flex-1 flex-col p-6 md:p-7">
-                    <p className="font-body text-[11px] font-bold uppercase tracking-wider text-field-green">{e.category}</p>
-                    <h2 className="mt-2 font-heading text-2xl font-bold text-deep-soil group-hover:text-red-dirt">
+                    <p className="font-body text-[11px] font-bold uppercase tracking-wider text-kelly-success">{e.category}</p>
+                    <h2 className="mt-2 font-heading text-2xl font-bold text-kelly-text group-hover:text-kelly-navy">
                       {e.title}
                     </h2>
-                    <p className="mt-3 flex-1 font-body text-base text-deep-soil/75">{e.summary}</p>
-                    <p className="mt-4 font-body text-sm font-semibold text-deep-soil/55">
+                    <p className="mt-3 flex-1 font-body text-base text-kelly-text/75">{e.summary}</p>
+                    <p className="mt-4 font-body text-sm font-semibold text-kelly-text/55">
                       {e.steps.length} steps · FAQ inside
                     </p>
-                    <span className="mt-4 font-body text-sm font-semibold text-red-dirt">Open explainer →</span>
+                    <span className="mt-4 font-body text-sm font-semibold text-kelly-navy">Open explainer →</span>
                   </div>
                 </Link>
               </li>

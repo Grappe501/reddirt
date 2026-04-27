@@ -1,7 +1,6 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  // Explicit app route groups so Windows/glob edge cases never skip `src/app/(site)/**`.
   content: [
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/(site)/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,27 +8,27 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "red-dirt": "var(--color-primary)",
-        "deep-soil": "var(--color-text-primary)",
-        "cream-canvas": "var(--color-bg)",
-        "washed-canvas": "var(--washed-canvas)",
-        "washed-denim": "var(--color-secondary)",
-        "field-green": "var(--color-success)",
-        "sunlight-gold": "var(--color-accent)",
-        "civic-midnight": "var(--civic-midnight)",
-        "civic-deep": "var(--civic-deep)",
-        "civic-blue": "var(--civic-blue)",
-        "civic-slate": "var(--civic-slate)",
-        "civic-gold": "var(--civic-gold)",
-        "civic-gold-soft": "var(--civic-gold-soft)",
-        "civic-mist": "var(--civic-mist)",
-        "civic-fog": "var(--civic-fog)",
-        "civic-ink": "var(--civic-ink)",
-        "civic-copper": "var(--civic-copper)",
-        "civic-copper-bright": "var(--civic-copper-bright)",
+        "kelly-navy": "var(--kelly-official-navy)",
+        "kelly-gold": "var(--kelly-official-gold)",
+        "kelly-sky": "var(--kelly-official-sky)",
+        "kelly-white": "var(--kelly-official-white)",
+        "kelly-text": "var(--color-text-primary)",
+        "kelly-page": "var(--color-bg)",
+        "kelly-muted": "var(--color-secondary)",
+        "kelly-success": "var(--color-success)",
+        "kelly-wash": "var(--kelly-band-wash)",
+        "kelly-deep": "var(--kelly-deep)",
+        "kelly-blue": "var(--kelly-blue)",
+        "kelly-slate": "var(--kelly-slate)",
+        "kelly-gold-soft": "var(--kelly-gold-soft)",
+        "kelly-mist": "var(--kelly-mist)",
+        "kelly-fog": "var(--kelly-fog)",
+        "kelly-ink": "var(--kelly-ink)",
+        "kelly-copper": "var(--kelly-copper)",
+        "kelly-copper-bright": "var(--kelly-copper-bright)",
       },
       fontFamily: {
-        heading: ["var(--font-heading)", "Georgia", "serif"],
+        heading: ["var(--font-heading)", "system-ui", "sans-serif"],
         body: ["var(--font-body)", "system-ui", "sans-serif"],
       },
       maxWidth: {

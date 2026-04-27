@@ -118,29 +118,29 @@ export function OwnedMediaGridToolbar(props: Props) {
     <div className="mt-2 space-y-3">
       <form method="get" action="/admin/owned-media/grid" className="flex flex-wrap items-end gap-2">
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-deep-soil/55">Search</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Search</span>
           <input
             name="q"
             defaultValue={defaultQ}
             placeholder="Title, filename, canonical…"
-            className="mt-0.5 w-[min(100vw-2rem,18rem)] rounded-md border border-deep-soil/15 bg-white px-2 py-1.5 text-sm"
+            className="mt-0.5 w-[min(100vw-2rem,18rem)] rounded-md border border-kelly-text/15 bg-white px-2 py-1.5 text-sm"
           />
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-deep-soil/55">Tag</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Tag</span>
           <input
             name="tag"
             defaultValue={tag ?? ""}
             placeholder={communityTag}
-            className="mt-0.5 w-40 rounded-md border border-deep-soil/15 bg-white px-2 py-1.5 font-mono text-xs"
+            className="mt-0.5 w-40 rounded-md border border-kelly-text/15 bg-white px-2 py-1.5 font-mono text-xs"
           />
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-deep-soil/55">Ingest</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Ingest</span>
           <select
             name="batch"
             defaultValue={batch ?? ""}
-            className="mt-0.5 max-w-[10rem] rounded-md border border-deep-soil/15 bg-white px-2 py-1.5 text-xs"
+            className="mt-0.5 max-w-[10rem] rounded-md border border-kelly-text/15 bg-white px-2 py-1.5 text-xs"
           >
             <option value="">Any</option>
             {batches.map((b) => (
@@ -151,11 +151,11 @@ export function OwnedMediaGridToolbar(props: Props) {
           </select>
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-deep-soil/55">County</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">County</span>
           <select
             name="county"
             defaultValue={countyId ?? ""}
-            className="mt-0.5 max-w-[9rem] rounded-md border border-deep-soil/15 bg-white px-2 py-1.5 text-xs"
+            className="mt-0.5 max-w-[9rem] rounded-md border border-kelly-text/15 bg-white px-2 py-1.5 text-xs"
           >
             <option value="">Any</option>
             {counties.map((c) => (
@@ -166,11 +166,11 @@ export function OwnedMediaGridToolbar(props: Props) {
           </select>
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-deep-soil/55">Event</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Event</span>
           <select
             name="event"
             defaultValue={campaignEventId ?? ""}
-            className="mt-0.5 max-w-[11rem] rounded-md border border-deep-soil/15 bg-white px-2 py-1.5 text-xs"
+            className="mt-0.5 max-w-[11rem] rounded-md border border-kelly-text/15 bg-white px-2 py-1.5 text-xs"
           >
             <option value="">Any</option>
             {events.map((e) => (
@@ -182,11 +182,11 @@ export function OwnedMediaGridToolbar(props: Props) {
           </select>
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-deep-soil/55">Kind</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Kind</span>
           <select
             name="kind"
             defaultValue={kind ?? ""}
-            className="mt-0.5 rounded-md border border-deep-soil/15 bg-white px-2 py-1.5 text-xs"
+            className="mt-0.5 rounded-md border border-kelly-text/15 bg-white px-2 py-1.5 text-xs"
           >
             <option value="">Any</option>
             {(["IMAGE", "VIDEO", "AUDIO", "DOCUMENT", "OTHER"] as const).map((k) => (
@@ -197,11 +197,11 @@ export function OwnedMediaGridToolbar(props: Props) {
           </select>
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-deep-soil/55">Source</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Source</span>
           <select
             name="src"
             defaultValue={sourceType ?? ""}
-            className="mt-0.5 max-w-[8rem] rounded-md border border-deep-soil/15 bg-white px-2 py-1.5 text-xs"
+            className="mt-0.5 max-w-[8rem] rounded-md border border-kelly-text/15 bg-white px-2 py-1.5 text-xs"
           >
             <option value="">Any</option>
             {(
@@ -222,41 +222,41 @@ export function OwnedMediaGridToolbar(props: Props) {
           </select>
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-deep-soil/55">Transcript</span>
-          <select name="tr" defaultValue={tr === true ? "1" : tr === false ? "0" : ""} className="mt-0.5 rounded-md border border-deep-soil/15 bg-white px-2 py-1.5 text-xs">
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Transcript</span>
+          <select name="tr" defaultValue={tr === true ? "1" : tr === false ? "0" : ""} className="mt-0.5 rounded-md border border-kelly-text/15 bg-white px-2 py-1.5 text-xs">
             <option value="">Any</option>
             <option value="1">Has</option>
             <option value="0">None</option>
           </select>
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-deep-soil/55">Press</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Press</span>
           <select
             name="apPress"
             defaultValue={approvedForPress ? "1" : ""}
-            className="mt-0.5 rounded-md border border-deep-soil/15 bg-white px-1 py-1.5 text-xs"
+            className="mt-0.5 rounded-md border border-kelly-text/15 bg-white px-1 py-1.5 text-xs"
           >
             <option value="">Any</option>
             <option value="1">Yes</option>
           </select>
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-deep-soil/55">Site</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Site</span>
           <select
             name="apSite"
             defaultValue={approvedForPublicSite ? "1" : ""}
-            className="mt-0.5 rounded-md border border-deep-soil/15 bg-white px-1 py-1.5 text-xs"
+            className="mt-0.5 rounded-md border border-kelly-text/15 bg-white px-1 py-1.5 text-xs"
           >
             <option value="">Any</option>
             <option value="1">Yes</option>
           </select>
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-deep-soil/55">Reviewed</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Reviewed</span>
           <select
             name="reviewed"
             defaultValue={isReviewed === true ? "1" : isReviewed === false ? "0" : ""}
-            className="mt-0.5 rounded-md border border-deep-soil/15 bg-white px-1 py-1.5 text-xs"
+            className="mt-0.5 rounded-md border border-kelly-text/15 bg-white px-1 py-1.5 text-xs"
           >
             <option value="">Any</option>
             <option value="1">Yes</option>
@@ -264,29 +264,29 @@ export function OwnedMediaGridToolbar(props: Props) {
           </select>
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-deep-soil/55">From</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">From</span>
           <input
             name="df"
             type="date"
             defaultValue={dateFrom ?? ""}
-            className="mt-0.5 rounded-md border border-deep-soil/15 bg-white px-2 py-1.5 text-xs"
+            className="mt-0.5 rounded-md border border-kelly-text/15 bg-white px-2 py-1.5 text-xs"
           />
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-deep-soil/55">To</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">To</span>
           <input
             name="dt"
             type="date"
             defaultValue={dateTo ?? ""}
-            className="mt-0.5 rounded-md border border-deep-soil/15 bg-white px-2 py-1.5 text-xs"
+            className="mt-0.5 rounded-md border border-kelly-text/15 bg-white px-2 py-1.5 text-xs"
           />
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-deep-soil/55">Date on</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Date on</span>
           <select
             name="dateField"
             defaultValue={dateFieldIsCreated ? "created" : "captured"}
-            className="mt-0.5 rounded-md border border-deep-soil/15 bg-white px-1 py-1.5 text-xs"
+            className="mt-0.5 rounded-md border border-kelly-text/15 bg-white px-1 py-1.5 text-xs"
           >
             <option value="captured">Capture</option>
             <option value="created">Imported</option>
@@ -339,14 +339,14 @@ export function OwnedMediaGridToolbar(props: Props) {
         ) : null}
         <button
           type="submit"
-          className="rounded-md bg-deep-soil px-3 py-1.5 font-body text-sm font-semibold text-cream-canvas"
+          className="rounded-md bg-kelly-text px-3 py-1.5 font-body text-sm font-semibold text-kelly-page"
         >
           Apply
         </button>
         <MediaCenterSelectAllOnPage pageIds={pageAssetIds} />
       </form>
 
-      <div className="flex flex-wrap items-center gap-2 text-deep-soil/70">
+      <div className="flex flex-wrap items-center gap-2 text-kelly-text/70">
         <span className="font-body text-xs">Matching: {resultCount} (max 500) ·</span>
         {(
           [
@@ -359,7 +359,7 @@ export function OwnedMediaGridToolbar(props: Props) {
             key={s}
             href={gridHref(buildSearchParams({ size: s, inspect: "" }, { ...base, inspect: undefined }))}
             className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${
-              size === s ? "bg-red-dirt text-cream-canvas" : "border border-deep-soil/20 text-deep-soil"
+              size === s ? "bg-kelly-navy text-kelly-page" : "border border-kelly-text/20 text-kelly-text"
             }`}
             scroll={false}
           >
@@ -377,7 +377,7 @@ export function OwnedMediaGridToolbar(props: Props) {
             key={v}
             href={gridHref(buildSearchParams({ view: v, inspect: "" }, { ...base, inspect: undefined }))}
             className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${
-              view === v ? "bg-deep-soil text-cream-canvas" : "border border-deep-soil/20 text-deep-soil"
+              view === v ? "bg-kelly-text text-kelly-page" : "border border-kelly-text/20 text-kelly-text"
             }`}
             scroll={false}
           >
@@ -398,7 +398,7 @@ export function OwnedMediaGridToolbar(props: Props) {
             key={s}
             href={gridHref(buildSearchParams({ sort: s, inspect: "" }, { ...base, inspect: undefined }))}
             className={`rounded px-1.5 py-0.5 text-[10px] font-semibold ${
-              sort === s ? "bg-civic-slate/15 text-civic-slate" : "text-deep-soil/60 hover:underline"
+              sort === s ? "bg-kelly-slate/15 text-kelly-slate" : "text-kelly-text/60 hover:underline"
             }`}
             scroll={false}
           >
@@ -409,12 +409,12 @@ export function OwnedMediaGridToolbar(props: Props) {
           href={gridHref(
             buildSearchParams({ tag: communityTag, inspect: "" }, { ...base, tag: communityTag, inspect: undefined })
           )}
-          className="text-xs font-semibold text-civic-slate underline"
+          className="text-xs font-semibold text-kelly-slate underline"
           scroll={false}
         >
           {communityTag}
         </Link>
-        <Link href="/admin/workbench/social" className="ml-1 text-xs font-semibold text-civic-slate underline" scroll={false}>
+        <Link href="/admin/workbench/social" className="ml-1 text-xs font-semibold text-kelly-slate underline" scroll={false}>
           Workbench
         </Link>
       </div>

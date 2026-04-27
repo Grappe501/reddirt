@@ -1,19 +1,18 @@
 import type { Metadata } from "next";
-import { Libre_Baskerville, Inter } from "next/font/google";
+import { League_Spartan, Raleway } from "next/font/google";
 import { AnalyticsProvider } from "@/components/AnalyticsProvider";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
 
-/** Display / conviction — command brand “editorial authority” layer */
-const libreBaskerville = Libre_Baskerville({
-  weight: ["400", "700"],
+/** Primary bold headings — official brand card (all-caps stack / display) */
+const leagueSpartan = League_Spartan({
   subsets: ["latin"],
   variable: "--font-heading",
   display: "swap",
 });
 
-/** Body / operations — dense UI, forms, nav */
-const inter = Inter({
+/** Secondary / body / UI — official brand card */
+const raleway = Raleway({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
@@ -34,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${libreBaskerville.variable} ${inter.variable}`}>
+    <html lang="en" className={`${leagueSpartan.variable} ${raleway.variable}`}>
       <body className="flex min-h-screen flex-col">
         <AnalyticsProvider>{children}</AnalyticsProvider>
       </body>

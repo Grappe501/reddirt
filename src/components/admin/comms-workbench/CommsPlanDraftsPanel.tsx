@@ -17,10 +17,10 @@ import { formatCommsFieldLabel } from "@/lib/comms-workbench/ui-labels";
 const TONE_OPTIONS = Object.values(SocialMessageToneMode);
 const TACTIC_OPTIONS = Object.values(SocialMessageTacticMode);
 
-const label = "mb-0.5 block text-[10px] font-bold uppercase tracking-wider text-deep-soil/55";
-const input = "w-full rounded border border-deep-soil/15 bg-white px-2 py-1.5 text-sm text-deep-soil";
-const h3 = "font-heading text-xs font-bold text-deep-soil";
-const subCard = "rounded border border-deep-soil/10 bg-cream-canvas/30 p-2";
+const label = "mb-0.5 block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
+const input = "w-full rounded border border-kelly-text/15 bg-white px-2 py-1.5 text-sm text-kelly-text";
+const h3 = "font-heading text-xs font-bold text-kelly-text";
+const subCard = "rounded border border-kelly-text/10 bg-kelly-page/30 p-2";
 
 function showEmailFields(ch: CommsWorkbenchChannel) {
   return ch === CommsWorkbenchChannel.EMAIL;
@@ -55,21 +55,21 @@ export function CommsPlanDraftsPanel({ planId, drafts: initialDrafts }: Props) {
       ) : null}
 
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <h2 className="font-heading text-[10px] font-bold uppercase tracking-wider text-deep-soil/55">Drafts (edit)</h2>
+        <h2 className="font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Drafts (edit)</h2>
         <button
           type="button"
           onClick={() => {
             setError(null);
             setShowAdd((v) => !v);
           }}
-          className="rounded border border-civic-slate/30 bg-civic-slate/10 px-2 py-1 text-xs font-semibold text-civic-slate"
+          className="rounded border border-kelly-slate/30 bg-kelly-slate/10 px-2 py-1 text-xs font-semibold text-kelly-slate"
         >
           {showAdd ? "Close add form" : "Add draft"}
         </button>
       </div>
 
       {initialDrafts.length > 0 ? (
-        <p className="text-[10px] text-deep-soil/50">
+        <p className="text-[10px] text-kelly-text/50">
           Primary = one per channel. Marking a draft primary clears primary on other drafts in the same channel.
         </p>
       ) : null}
@@ -90,7 +90,7 @@ export function CommsPlanDraftsPanel({ planId, drafts: initialDrafts }: Props) {
       ) : null}
 
       {initialDrafts.length === 0 && !showAdd ? (
-        <p className="rounded border border-dashed border-deep-soil/15 bg-cream-canvas/50 px-3 py-3 text-sm text-deep-soil/60">
+        <p className="rounded border border-dashed border-kelly-text/15 bg-kelly-page/50 px-3 py-3 text-sm text-kelly-text/60">
           {COMMS_EMPTY.noDrafts} Select <span className="font-semibold">Add draft</span> when you are ready.
         </p>
       ) : null}
@@ -109,12 +109,12 @@ export function CommsPlanDraftsPanel({ planId, drafts: initialDrafts }: Props) {
                 }}
                 className={`rounded border px-2 py-1 text-left text-xs font-medium transition ${
                   editingId === d.id
-                    ? "border-civic-slate/50 bg-civic-slate/10 text-civic-slate"
-                    : "border-deep-soil/10 bg-white text-deep-soil/80 hover:border-deep-soil/25"
+                    ? "border-kelly-slate/50 bg-kelly-slate/10 text-kelly-slate"
+                    : "border-kelly-text/10 bg-white text-kelly-text/80 hover:border-kelly-text/25"
                 }`}
               >
                 {d.title?.trim() || formatCommsFieldLabel(d.channel)}
-                <span className="ml-1 text-[10px] text-deep-soil/45">
+                <span className="ml-1 text-[10px] text-kelly-text/45">
                   {formatCommsFieldLabel(d.channel)} {d.isPrimary ? "· primary" : ""}
                 </span>
               </button>
@@ -125,7 +125,7 @@ export function CommsPlanDraftsPanel({ planId, drafts: initialDrafts }: Props) {
 
       {editing ? (
         <div className={subCard}>
-          <p className="mb-1 text-[10px] text-deep-soil/50">Editing draft · {editing.id}</p>
+          <p className="mb-1 text-[10px] text-kelly-text/50">Editing draft · {editing.id}</p>
           <CommsWorkbenchReviewBlock
             kind="draft"
             entityId={editing.id}
@@ -149,14 +149,14 @@ export function CommsPlanDraftsPanel({ planId, drafts: initialDrafts }: Props) {
             }}
             onError={setError}
           />
-          <div className="mt-2 rounded border border-deep-soil/8 bg-white/50 p-2 text-xs text-deep-soil/75">
-            <p className="text-[10px] font-bold uppercase text-deep-soil/45">Read-only preview</p>
+          <div className="mt-2 rounded border border-kelly-text/8 bg-white/50 p-2 text-xs text-kelly-text/75">
+            <p className="text-[10px] font-bold uppercase text-kelly-text/45">Read-only preview</p>
             {showEmailFields(editing.channel) && editing.subjectLine ? (
               <p className="mt-0.5 font-medium">Subject: {editing.subjectLine}</p>
             ) : null}
             <p className="mt-1 max-h-24 overflow-y-auto whitespace-pre-wrap">{editing.bodyCopy || "—"}</p>
             {editing.shortCopy ? (
-              <p className="mt-1 text-deep-soil/60">
+              <p className="mt-1 text-kelly-text/60">
                 <span className="font-semibold">Short: </span>
                 {editing.shortCopy}
               </p>
@@ -182,7 +182,7 @@ function AddDraftForm({
   const [channel, setChannel] = useState<CommsWorkbenchChannel>(CommsWorkbenchChannel.EMAIL);
   return (
     <form
-      className="space-y-2 rounded border border-civic-slate/20 bg-cream-canvas/50 p-3"
+      className="space-y-2 rounded border border-kelly-slate/20 bg-kelly-page/50 p-3"
       onSubmit={async (e) => {
         e.preventDefault();
         onError(null);
@@ -211,7 +211,7 @@ function AddDraftForm({
         onDone(true, res.draftId);
       }}
     >
-      <p className="font-heading text-sm font-bold text-deep-soil">New draft</p>
+      <p className="font-heading text-sm font-bold text-kelly-text">New draft</p>
       <div>
         <label className={label} htmlFor="new-channel">
           Channel
@@ -268,14 +268,14 @@ function AddDraftForm({
         <textarea id="new-body" name="bodyCopy" className={`${input} min-h-[120px] font-mono text-xs`} required disabled={disabled} />
       </div>
       <ToneTacticRow disabled={disabled} />
-      <label className="flex items-center gap-2 text-sm text-deep-soil">
+      <label className="flex items-center gap-2 text-sm text-kelly-text">
         <input type="checkbox" name="isPrimary" disabled={disabled} />
         Set as primary for this channel
       </label>
       <button
         type="submit"
         disabled={disabled}
-        className="rounded border border-civic-slate/40 bg-civic-slate/15 px-3 py-1.5 text-sm font-semibold text-civic-slate"
+        className="rounded border border-kelly-slate/40 bg-kelly-slate/15 px-3 py-1.5 text-sm font-semibold text-kelly-slate"
       >
         Create draft
       </button>
@@ -425,18 +425,18 @@ function EditDraftForm({
         tone={draft.messageToneMode ?? ""}
         tactic={draft.messageTacticMode ?? ""}
       />
-      <p className="text-[10px] text-deep-soil/55">
+      <p className="text-[10px] text-kelly-text/55">
         Status and review lifecycle are controlled with the <strong>Review</strong> panel above (request, approve, reject, request
         changes).
       </p>
-      <label className="flex items-center gap-2 text-sm text-deep-soil">
+      <label className="flex items-center gap-2 text-sm text-kelly-text">
         <input type="checkbox" name="isPrimary" defaultChecked={draft.isPrimary} disabled={disabled} />
         Primary for this channel
       </label>
       <button
         type="submit"
         disabled={disabled}
-        className="rounded border border-civic-slate/40 bg-civic-slate/15 px-3 py-1.5 text-sm font-semibold text-civic-slate"
+        className="rounded border border-kelly-slate/40 bg-kelly-slate/15 px-3 py-1.5 text-sm font-semibold text-kelly-slate"
       >
         Save draft
       </button>

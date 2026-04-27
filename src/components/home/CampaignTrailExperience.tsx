@@ -63,8 +63,8 @@ export function CampaignTrailExperience({
         variant="mist"
         lead={
           <>
-            <p className="text-center font-body text-[11px] font-bold uppercase tracking-[0.26em] text-civic-gold">In the field</p>
-            <h2 className="mt-4 text-center font-heading text-[clamp(1.65rem,3vw,2.35rem)] font-bold text-civic-ink">
+            <p className="text-center font-body text-[11px] font-bold uppercase tracking-[0.26em] text-kelly-gold">In the field</p>
+            <h2 className="mt-4 text-center font-heading text-[clamp(1.65rem,3vw,2.35rem)] font-bold text-kelly-ink">
               Arkansas-wide presence, human voice
             </h2>
           </>
@@ -83,11 +83,11 @@ export function CampaignTrailExperience({
         variant="light"
         lead={
           <>
-            <p className="text-center font-body text-[11px] font-bold uppercase tracking-[0.26em] text-red-dirt">Voices</p>
-            <h2 className="mt-4 text-center font-heading text-[clamp(1.65rem,3vw,2.35rem)] font-bold text-civic-ink">
+            <p className="text-center font-body text-[11px] font-bold uppercase tracking-[0.26em] text-kelly-navy">Voices</p>
+            <h2 className="mt-4 text-center font-heading text-[clamp(1.65rem,3vw,2.35rem)] font-bold text-kelly-ink">
               Stories, essays, and the trail notebook
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-center font-body text-lg text-civic-slate">
+            <p className="mx-auto mt-4 max-w-2xl text-center font-body text-lg text-kelly-slate">
               Read further on every card—this is the living record of the campaign.
             </p>
           </>
@@ -105,10 +105,10 @@ export function CampaignTrailExperience({
           variant="light"
           lead={
             <>
-              <p className="text-center font-body text-[11px] font-bold uppercase tracking-[0.26em] text-red-dirt">
+              <p className="text-center font-body text-[11px] font-bold uppercase tracking-[0.26em] text-kelly-navy">
                 Conviction
               </p>
-              <h2 className="mt-4 text-center font-heading text-[clamp(1.5rem,2.8vw,2rem)] font-bold text-civic-ink">
+              <h2 className="mt-4 text-center font-heading text-[clamp(1.5rem,2.8vw,2rem)] font-bold text-kelly-ink">
                 The standard we’re asking you to hold us to
               </h2>
             </>

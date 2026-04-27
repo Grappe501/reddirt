@@ -65,28 +65,28 @@ export function PublicCalendarMonthGrid({
   return (
     <div className="w-full min-w-0">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-        <h2 className="font-heading text-lg font-bold text-deep-soil md:text-xl">{monthLabel}</h2>
+        <h2 className="font-heading text-lg font-bold text-kelly-text md:text-xl">{monthLabel}</h2>
         <div className="flex flex-wrap gap-1">
           <Link
             href={hrefForMonth(prevYm)}
-            className="rounded-md border border-deep-soil/12 px-2 py-1 text-xs font-semibold text-deep-soil/80 hover:border-red-dirt/30"
+            className="rounded-md border border-kelly-text/12 px-2 py-1 text-xs font-semibold text-kelly-text/80 hover:border-kelly-navy/30"
             prefetch={false}
           >
             ← Prev
           </Link>
           <Link
             href={hrefForMonth(nextYm)}
-            className="rounded-md border border-deep-soil/12 px-2 py-1 text-xs font-semibold text-deep-soil/80 hover:border-red-dirt/30"
+            className="rounded-md border border-kelly-text/12 px-2 py-1 text-xs font-semibold text-kelly-text/80 hover:border-kelly-navy/30"
             prefetch={false}
           >
             Next →
           </Link>
         </div>
       </div>
-      <p className="mb-2 text-[10px] text-deep-soil/50">
+      <p className="mb-2 text-[10px] text-kelly-text/50">
         The grid is aligned to {Z.replace(/_/g, " ")}. Event cards use each event&rsquo;s own timezone.
       </p>
-      <div className="grid grid-cols-7 gap-0.5 text-center text-[10px] font-bold uppercase tracking-wider text-deep-soil/45">
+      <div className="grid grid-cols-7 gap-0.5 text-center text-[10px] font-bold uppercase tracking-wider text-kelly-text/45">
         {wk.map((d) => (
           <div key={d} className="py-1">
             {d}
@@ -97,22 +97,22 @@ export function PublicCalendarMonthGrid({
         {cells.map((c) => (
           <div
             key={c.key}
-            className={`min-h-[4.5rem] rounded border border-deep-soil/8 p-1 text-left ${
-              c.d == null ? "bg-transparent" : "bg-cream-canvas"
+            className={`min-h-[4.5rem] rounded border border-kelly-text/8 p-1 text-left ${
+              c.d == null ? "bg-transparent" : "bg-kelly-page"
             }`}
           >
             {c.d != null && c.ymd ? (
               <>
-                <span className="text-[11px] font-bold text-deep-soil/70">{c.d}</span>
+                <span className="text-[11px] font-bold text-kelly-text/70">{c.d}</span>
                 <ul className="mt-0.5 space-y-0.5">
                   {c.events.slice(0, 3).map((e) => (
                     <li key={e.id} className="leading-tight">
                       <Link
                         href={e.detailHref}
-                        className="block text-[9px] font-semibold text-red-dirt hover:underline"
+                        className="block text-[9px] font-semibold text-kelly-navy hover:underline"
                         title={e.title}
                       >
-                        <span className="font-mono text-deep-soil/70">
+                        <span className="font-mono text-kelly-text/70">
                           {e.timezone
                             ? new Intl.DateTimeFormat("en-US", {
                                 timeZone: e.timezone,
@@ -129,7 +129,7 @@ export function PublicCalendarMonthGrid({
                   ))}
                 </ul>
                 {c.events.length > 3 ? (
-                  <p className="mt-0.5 text-[8px] text-deep-soil/45">+{c.events.length - 3} more</p>
+                  <p className="mt-0.5 text-[8px] text-kelly-text/45">+{c.events.length - 3} more</p>
                 ) : null}
               </>
             ) : null}

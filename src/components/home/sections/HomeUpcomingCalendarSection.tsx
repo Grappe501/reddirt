@@ -7,18 +7,18 @@ import { FullBleedSection } from "@/components/layout/FullBleedSection";
 export function HomeUpcomingCalendarSection({ events }: { events: PublicCampaignEvent[] }) {
   if (events.length === 0) return null;
   return (
-    <FullBleedSection padY className="bg-washed-canvas/50" aria-labelledby="public-cal-title">
+    <FullBleedSection padY className="bg-kelly-wash/50" aria-labelledby="public-cal-title">
       <ContentContainer>
         <p
           id="public-cal-title"
-          className="text-center font-body text-[11px] font-bold uppercase tracking-[0.24em] text-red-dirt/90"
+          className="text-center font-body text-[11px] font-bold uppercase tracking-[0.24em] text-kelly-navy/90"
         >
           Show up
         </p>
-        <h2 className="mt-2 text-center font-heading text-2xl font-bold text-deep-soil md:text-3xl">
+        <h2 className="mt-2 text-center font-heading text-2xl font-bold text-kelly-text md:text-3xl">
           Upcoming on the public calendar
         </h2>
-        <p className="mx-auto mt-3 max-w-2xl text-center font-body text-sm text-deep-soil/75 md:text-base">
+        <p className="mx-auto mt-3 max-w-2xl text-center font-body text-sm text-kelly-text/75 md:text-base">
           Real stops from our campaign system—no shadow schedules. If it&rsquo;s here, the team has published it for the
           public site. Details, RSVP, and volunteer links on every card.
         </p>
@@ -32,7 +32,7 @@ export function HomeUpcomingCalendarSection({ events }: { events: PublicCampaign
         <p className="mt-6 text-center">
           <Link
             href="/campaign-calendar"
-            className="font-body text-sm font-semibold text-red-dirt hover:underline"
+            className="font-body text-sm font-semibold text-kelly-navy hover:underline"
             prefetch={false}
           >
             Open full campaign calendar →

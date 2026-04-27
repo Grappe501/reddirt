@@ -77,7 +77,7 @@ export function StorySubmissionForm({ id }: { id?: string }) {
         </p>
         <p>
           Want to stay looped in while we build this out?{" "}
-          <a className="font-semibold text-red-dirt underline" href="/get-involved">
+          <a className="font-semibold text-kelly-navy underline" href="/get-involved">
             Get involved
           </a>
           .
@@ -108,14 +108,14 @@ export function StorySubmissionForm({ id }: { id?: string }) {
           <FormLabel htmlFor="ss-name">Name</FormLabel>
           <Input id="ss-name" {...form.register("name")} autoComplete="name" />
           {form.formState.errors.name ? (
-            <p className="text-sm text-red-dirt">{form.formState.errors.name.message}</p>
+            <p className="text-sm text-kelly-navy">{form.formState.errors.name.message}</p>
           ) : null}
         </FormField>
         <FormField>
           <FormLabel htmlFor="ss-email">Email</FormLabel>
           <Input id="ss-email" type="email" {...form.register("email")} autoComplete="email" />
           {form.formState.errors.email ? (
-            <p className="text-sm text-red-dirt">{form.formState.errors.email.message}</p>
+            <p className="text-sm text-kelly-navy">{form.formState.errors.email.message}</p>
           ) : null}
         </FormField>
         <FormField>
@@ -131,31 +131,31 @@ export function StorySubmissionForm({ id }: { id?: string }) {
         <FormLabel htmlFor="ss-title">Story title</FormLabel>
         <Input id="ss-title" {...form.register("title")} />
         {form.formState.errors.title ? (
-          <p className="text-sm text-red-dirt">{form.formState.errors.title.message}</p>
+          <p className="text-sm text-kelly-navy">{form.formState.errors.title.message}</p>
         ) : null}
       </FormField>
       <FormField>
         <FormLabel htmlFor="ss-story">Your story</FormLabel>
         <Textarea id="ss-story" rows={10} {...form.register("story")} />
         {form.formState.errors.story ? (
-          <p className="text-sm text-red-dirt">{form.formState.errors.story.message}</p>
+          <p className="text-sm text-kelly-navy">{form.formState.errors.story.message}</p>
         ) : null}
       </FormField>
       <FormField className="flex flex-row items-start gap-3">
         <input
           id="ss-consent"
           type="checkbox"
-          className="mt-1 h-4 w-4 rounded border-deep-soil/30 text-red-dirt"
+          className="mt-1 h-4 w-4 rounded border-kelly-text/30 text-kelly-navy"
           checked={form.watch("consentPublic")}
           onChange={(e) => form.setValue("consentPublic", e.target.checked, { shouldValidate: true })}
         />
-        <FormLabel htmlFor="ss-consent" className="font-normal text-deep-soil/80">
+        <FormLabel htmlFor="ss-consent" className="font-normal text-kelly-text/80">
           It’s OK for organizers to follow up about this story. I understand nothing will be published without my
           permission.
         </FormLabel>
       </FormField>
       {form.formState.errors.consentPublic ? (
-        <p className="text-sm text-red-dirt">{form.formState.errors.consentPublic.message}</p>
+        <p className="text-sm text-kelly-navy">{form.formState.errors.consentPublic.message}</p>
       ) : null}
       <Button type="submit" variant="primary" disabled={form.formState.isSubmitting}>
         {form.formState.isSubmitting ? "Sending…" : "Submit story"}

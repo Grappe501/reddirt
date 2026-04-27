@@ -45,17 +45,17 @@ export default async function AdminPlatformsPage({ searchParams }: Props) {
 
   return (
     <div className="mx-auto max-w-3xl">
-      <h1 className="font-heading text-3xl font-bold text-deep-soil">Platforms</h1>
-      <p className="mt-3 font-body text-sm text-deep-soil/75">
+      <h1 className="font-heading text-3xl font-bold text-kelly-text">Platforms</h1>
+      <p className="mt-3 font-body text-sm text-kelly-text/75">
         Connection status, inbound volume, and manual sync. Secrets stay in environment variables — see{" "}
-        <Link href="/admin/settings/platforms" className="font-semibold text-red-dirt hover:underline">
+        <Link href="/admin/settings/platforms" className="font-semibold text-kelly-navy hover:underline">
           platform settings
         </Link>
         .
       </p>
 
       {sp.sync ? (
-        <p className="mt-4 rounded-lg border border-field-green/35 bg-field-green/10 px-3 py-2 font-body text-sm text-deep-soil">
+        <p className="mt-4 rounded-lg border border-kelly-success/35 bg-kelly-success/10 px-3 py-2 font-body text-sm text-kelly-text">
           Sync requested for <strong>{sp.sync}</strong>. Check connection status and inbox.
         </p>
       ) : null}
@@ -67,22 +67,22 @@ export default async function AdminPlatformsPage({ searchParams }: Props) {
           return (
             <li
               key={c.id}
-              className="rounded-card border border-deep-soil/10 bg-cream-canvas p-6 shadow-[var(--shadow-soft)]"
+              className="rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]"
             >
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
-                  <h2 className="font-heading text-xl font-bold text-deep-soil">{c.accountName ?? c.platform}</h2>
-                  <p className="mt-1 font-body text-xs text-deep-soil/60">
+                  <h2 className="font-heading text-xl font-bold text-kelly-text">{c.accountName ?? c.platform}</h2>
+                  <p className="mt-1 font-body text-xs text-kelly-text/60">
                     Status: <strong>{c.status}</strong> · Mode: {modeLabel(configured, c.status)} · Inbound items:{" "}
                     <strong>{count}</strong>
                   </p>
                   {c.lastSyncedAt ? (
-                    <p className="mt-1 font-body text-xs text-deep-soil/55">
+                    <p className="mt-1 font-body text-xs text-kelly-text/55">
                       Last sync: {c.lastSyncedAt.toLocaleString()}
                     </p>
                   ) : null}
                   {c.lastSyncError ? (
-                    <p className="mt-2 rounded-md border border-red-dirt/25 bg-red-dirt/5 px-3 py-2 font-body text-xs text-red-dirt">
+                    <p className="mt-2 rounded-md border border-kelly-navy/25 bg-kelly-navy/5 px-3 py-2 font-body text-xs text-kelly-navy">
                       {c.lastSyncError}
                     </p>
                   ) : null}
@@ -91,13 +91,13 @@ export default async function AdminPlatformsPage({ searchParams }: Props) {
                   <input type="hidden" name="platform" value={c.platform} />
                   <button
                     type="submit"
-                    className="rounded-btn bg-red-dirt px-4 py-2 text-xs font-bold text-cream-canvas disabled:opacity-50"
+                    className="rounded-btn bg-kelly-navy px-4 py-2 text-xs font-bold text-kelly-page disabled:opacity-50"
                     disabled={c.platform !== ContentPlatform.SUBSTACK && !configured}
                   >
                     Run sync
                   </button>
                   {c.platform !== ContentPlatform.SUBSTACK && !configured ? (
-                    <span className="max-w-[12rem] text-[10px] text-deep-soil/50">
+                    <span className="max-w-[12rem] text-[10px] text-kelly-text/50">
                       Configure env vars before syncing.
                     </span>
                   ) : null}
@@ -108,9 +108,9 @@ export default async function AdminPlatformsPage({ searchParams }: Props) {
         })}
       </ul>
 
-      <p className="mt-10 font-body text-xs text-deep-soil/55">
+      <p className="mt-10 font-body text-xs text-kelly-text/55">
         Substack sync also remains available from{" "}
-        <Link href="/admin/blog" className="text-red-dirt hover:underline">
+        <Link href="/admin/blog" className="text-kelly-navy hover:underline">
           Blog sync
         </Link>
         .

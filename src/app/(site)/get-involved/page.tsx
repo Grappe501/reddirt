@@ -96,21 +96,21 @@ export default async function GetInvolvedPage({
             subtitle="This campaign starts from respect: people help neighbors, show up for community, and talk about what matters. Our job is to make the formal pathways clearer, more local, and easier to act on."
           />
           <div className="mt-10 grid gap-5 md:grid-cols-3">
-            <div className="rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)]">
-              <h3 className="font-heading text-lg font-bold text-deep-soil">Meet people where they are</h3>
-              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+            <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Meet people where they are</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
                 County visits, listening sessions, church basements, school gyms, local festivals, and kitchen-table conversations all count. Civic engagement should not require insider access.
               </p>
             </div>
-            <div className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-[var(--shadow-soft)]">
-              <h3 className="font-heading text-lg font-bold text-deep-soil">Make action simple</h3>
-              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+            <div className="rounded-card border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Make action simple</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
                 Registration forms, deadlines, voting steps, candidate filing, and ballot-measure rules should be explained plainly enough for one neighbor to help another.
               </p>
             </div>
-            <div className="rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)]">
-              <h3 className="font-heading text-lg font-bold text-deep-soil">Trust is local</h3>
-              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+            <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Trust is local</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
                 People are more likely to participate when information comes through trusted relationships and when government explains itself clearly.
               </p>
             </div>
@@ -141,9 +141,9 @@ export default async function GetInvolvedPage({
             subtitle="Many volunteers want a clear assignment. If you can table, greet, or simply be a steady presence at something already on the community calendar, start here—we will match you with training and materials."
           />
           <RepresentLocalEventPanel className="mt-10 max-w-3xl" />
-          <p className="mt-6 max-w-3xl font-body text-sm text-deep-soil/70">
+          <p className="mt-6 max-w-3xl font-body text-sm text-kelly-text/70">
             Ready to send the form?{" "}
-            <a className="font-semibold text-red-dirt underline" href={representLocalEventVolunteerHref}>
+            <a className="font-semibold text-kelly-navy underline" href={representLocalEventVolunteerHref}>
               Open the volunteer signup with this lane tagged
             </a>{" "}
             or scroll to the full form below.
@@ -159,19 +159,19 @@ export default async function GetInvolvedPage({
             title="Help locally or digitally"
             subtitle="Tell us your availability and skills. If you can host county meetings or help with voter education, say so—we’ll follow up with concrete next steps."
           />
-          <p className="mt-4 max-w-3xl font-body text-sm leading-relaxed text-deep-soil/75">
-            <span className="font-semibold text-deep-soil/90">Postcards, calls, and texts: </span>
+          <p className="mt-4 max-w-3xl font-body text-sm leading-relaxed text-kelly-text/75">
+            <span className="font-semibold text-kelly-text/90">Postcards, calls, and texts: </span>
             start with the step-by-step guides, then use the form below (or check the matching boxes) so we can tag your
             signup—{" "}
-            <Link className="font-semibold text-red-dirt underline" href="/resources/postcard-outreach">
+            <Link className="font-semibold text-kelly-navy underline" href="/resources/postcard-outreach">
               handwritten postcards
             </Link>
             ,{" "}
-            <Link className="font-semibold text-red-dirt underline" href="/resources/phone-banking">
+            <Link className="font-semibold text-kelly-navy underline" href="/resources/phone-banking">
               phone banking (dialer coming)
             </Link>
             ,{" "}
-            <Link className="font-semibold text-red-dirt underline" href="/resources/text-banking">
+            <Link className="font-semibold text-kelly-navy underline" href="/resources/text-banking">
               peer-to-peer text banking
             </Link>
             .

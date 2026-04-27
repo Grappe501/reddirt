@@ -14,16 +14,16 @@ export default async function CommsWorkbenchMediaDetailPage({ params }: Props) {
   return (
     <div className="min-w-0 p-1">
       <CommsWorkbenchSubnav />
-      <div className="mt-2 flex flex-wrap items-center gap-2 border-b border-deep-soil/10 pb-2">
+      <div className="mt-2 flex flex-wrap items-center gap-2 border-b border-kelly-text/10 pb-2">
         <Link
           href="/admin/workbench/comms"
-          className="rounded border border-deep-soil/15 bg-white px-2 py-0.5 text-xs font-semibold text-civic-slate"
+          className="rounded border border-kelly-text/15 bg-white px-2 py-0.5 text-xs font-semibold text-kelly-slate"
         >
           Comms
         </Link>
         <Link
           href="/admin/workbench/comms/media"
-          className="rounded border border-deep-soil/15 bg-cream-canvas px-2 py-0.5 text-xs font-semibold text-civic-slate"
+          className="rounded border border-kelly-text/15 bg-kelly-page px-2 py-0.5 text-xs font-semibold text-kelly-slate"
         >
           All media
         </Link>

@@ -64,7 +64,7 @@ export default function StartALocalTeamPage() {
             title="What a local team is"
             subtitle="Not a club for the loudest voices—a small public for your place."
           />
-          <div className="mt-8 max-w-3xl space-y-4 font-body text-lg leading-relaxed text-deep-soil/85">
+          <div className="mt-8 max-w-3xl space-y-4 font-body text-lg leading-relaxed text-kelly-text/85">
             <p>
               A local team is a named group of neighbors who commit to a rhythm: listen, teach what the state won’t
               explain, and act in ways people can see and join.
@@ -102,10 +102,10 @@ export default function StartALocalTeamPage() {
             ].map((x) => (
               <div
                 key={x.t}
-                className="rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-7 shadow-[var(--shadow-soft)]"
+                className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-7 shadow-[var(--shadow-soft)]"
               >
-                <h3 className="font-heading text-xl font-bold text-deep-soil">{x.t}</h3>
-                <p className="mt-3 font-body text-base leading-relaxed text-deep-soil/75">{x.b}</p>
+                <h3 className="font-heading text-xl font-bold text-kelly-text">{x.t}</h3>
+                <p className="mt-3 font-body text-base leading-relaxed text-kelly-text/75">{x.b}</p>
               </div>
             ))}
           </ResponsiveGrid>
@@ -121,12 +121,12 @@ export default function StartALocalTeamPage() {
             title="Support and training you can expect"
             subtitle="We’re not dropping a PDF and vanishing—movement infrastructure means humans answering texts."
           />
-          <ul className="mt-8 max-w-3xl space-y-3 font-body text-lg leading-relaxed text-deep-soil/85">
+          <ul className="mt-8 max-w-3xl space-y-3 font-body text-lg leading-relaxed text-kelly-text/85">
             <li>Field mentors who’ve hosted messy first meetings and lived to tell the story.</li>
             <li>Trainings on facilitation, safety planning, and digital hygiene for organizers.</li>
             <li>Pathways into statewide issue campaigns without dissolving local identity.</li>
           </ul>
-          <p className="mt-6 max-w-3xl font-body text-sm text-deep-soil/60">
+          <p className="mt-6 max-w-3xl font-body text-sm text-kelly-text/60">
             {/* Future: training calendar sync + learning stubs */}
             Deeper LMS modules and certification flows are intentionally deferred.
           </p>
@@ -186,18 +186,18 @@ export default function StartALocalTeamPage() {
         eyebrow="You’re not alone"
         title="Start small, stay public, keep kindness non-negotiable"
         description="We’ll meet you where you are—literally. That’s the point."
-        variant="soil"
+        variant="ink-band"
       >
-        <Button href="#start-team-form" variant="primary" className="bg-cream-canvas text-deep-soil hover:bg-cream-canvas/90">
+        <Button href="#start-team-form" variant="primary" className="bg-kelly-page text-kelly-text hover:bg-kelly-page/90">
           Open the form
         </Button>
-        <Button href="/events" variant="outline" className="border-cream-canvas/40 text-cream-canvas hover:bg-cream-canvas/10">
+        <Button href="/events" variant="outline" className="border-kelly-page/40 text-kelly-page hover:bg-kelly-page/10">
           Trainings calendar
         </Button>
         <Button
           href={representLocalEventVolunteerHref}
           variant="outline"
-          className="border-cream-canvas/40 text-cream-canvas hover:bg-cream-canvas/10"
+          className="border-kelly-page/40 text-kelly-page hover:bg-kelly-page/10"
         >
           Represent locally
         </Button>

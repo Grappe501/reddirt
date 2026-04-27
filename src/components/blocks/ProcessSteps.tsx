@@ -24,17 +24,17 @@ export function ProcessSteps({ steps, className, id }: ProcessStepsProps) {
       {steps.map((s) => (
         <li
           key={`${s.step}-${s.title}`}
-          className="relative flex flex-col gap-4 rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)]"
+          className="relative flex flex-col gap-4 rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)]"
         >
           <span
-            className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-red-dirt font-heading text-base font-bold text-cream-canvas"
+            className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-kelly-gold font-heading text-base font-bold text-kelly-navy"
             aria-hidden
           >
             {s.step}
           </span>
           <div>
-            <h3 className="font-heading text-lg font-bold text-deep-soil lg:text-xl">{s.title}</h3>
-            <p className="mt-2 font-body text-sm leading-relaxed text-deep-soil/75 lg:text-base">
+            <h3 className="font-heading text-lg font-bold text-kelly-text lg:text-xl">{s.title}</h3>
+            <p className="mt-2 font-body text-sm leading-relaxed text-kelly-text/75 lg:text-base">
               {s.description}
             </p>
           </div>

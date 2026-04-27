@@ -102,7 +102,7 @@ export default async function ListeningSessionsPage() {
               title="Why we’re doing this"
               subtitle="There’s a lot of noise about elections. Many Arkansans still have good questions. The Secretary of State’s job includes helping people understand secure, transparent process—not dismissing concern or playing politics with it. These sessions start with listening."
             />
-            <div className="mt-8 max-w-3xl space-y-4 font-body text-base leading-relaxed text-deep-soil/85">
+            <div className="mt-8 max-w-3xl space-y-4 font-body text-base leading-relaxed text-kelly-text/85">
               <p>
                 Kelly Grappe is convening a statewide series of{" "}
                 <strong>
@@ -140,7 +140,7 @@ export default async function ListeningSessionsPage() {
               title="What we hope to learn"
               subtitle="The session is the product—good notes, clear themes, and respect for every chair at the table."
             />
-            <ul className="mt-6 list-inside list-disc space-y-2 font-body text-deep-soil/85">
+            <ul className="mt-6 list-inside list-disc space-y-2 font-body text-kelly-text/85">
               <li>Listen to voters, election workers, and community members</li>
               <li>
                 Understand concerns on voting, elections, and ballot access
@@ -167,18 +167,18 @@ export default async function ListeningSessionsPage() {
               {flowSteps.map((s) => (
                 <div
                   key={s.t}
-                  className="rounded-card border border-deep-soil/10 bg-white p-6 shadow-[var(--shadow-soft)]"
+                  className="rounded-card border border-kelly-text/10 bg-white p-6 shadow-[var(--shadow-soft)]"
                 >
-                  <h3 className="font-heading text-lg font-bold text-deep-soil">
+                  <h3 className="font-heading text-lg font-bold text-kelly-text">
                     {s.t}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-deep-soil/75">
+                  <p className="mt-2 text-sm leading-relaxed text-kelly-text/75">
                     {s.d}
                   </p>
                 </div>
               ))}
             </ResponsiveGrid>
-            <p className="mt-8 max-w-3xl font-body text-sm text-deep-soil/70">
+            <p className="mt-8 max-w-3xl font-body text-sm text-kelly-text/70">
               Participants might include county clerks, election commissioners,
               poll workers, petition circulators, and local leaders. Officials
               are welcome to <strong>attend and listen</strong>—the goal is
@@ -195,13 +195,13 @@ export default async function ListeningSessionsPage() {
               title="A few words you’ll hear in the room"
               subtitle="Process and transparency—not picking a side in every national fight."
             />
-            <blockquote className="mt-6 border-l-4 border-red-dirt/40 pl-5 font-body italic text-deep-soil/85">
+            <blockquote className="mt-6 border-l-4 border-kelly-navy/40 pl-5 font-body italic text-kelly-text/85">
               “If people have questions about our elections, we should not
               ignore them—and we should not politicize them. We should listen,
               understand, and do the work to provide clear, transparent
               information.”
             </blockquote>
-            <p className="mt-4 max-w-3xl font-body text-sm text-deep-soil/75">
+            <p className="mt-4 max-w-3xl font-body text-sm text-kelly-text/75">
               The office doesn’t by itself set voting systems—that sits with law
               and local practice—but the Secretary of State can help make sure
               the public can <strong>see and understand</strong> how the system
@@ -218,7 +218,7 @@ export default async function ListeningSessionsPage() {
               title="From listening to review"
               subtitle="When elected, this feeds a disciplined public process: Listen → Map → Verify → Improve → Report."
             />
-            <p className="mt-4 max-w-3xl font-body text-deep-soil/80">
+            <p className="mt-4 max-w-3xl font-body text-kelly-text/80">
               The campaign’s commitment is to use what we hear in these rooms to
               shape a future{" "}
               <strong>
@@ -241,21 +241,21 @@ export default async function ListeningSessionsPage() {
               <div>
                 <h2
                   id="principles-heading"
-                  className="font-heading text-2xl font-bold text-deep-soil"
+                  className="font-heading text-2xl font-bold text-kelly-text"
                 >
                   Key principles
                 </h2>
-                <ul className="mt-4 list-inside list-disc space-y-2 font-body text-sm text-deep-soil/80">
+                <ul className="mt-4 list-inside list-disc space-y-2 font-body text-sm text-kelly-text/80">
                   {principles.map((p) => (
                     <li key={p}>{p}</li>
                   ))}
                 </ul>
               </div>
               <div>
-                <h2 className="font-heading text-2xl font-bold text-deep-soil">
+                <h2 className="font-heading text-2xl font-bold text-kelly-text">
                   What this is not
                 </h2>
-                <ul className="mt-4 list-inside list-disc space-y-2 font-body text-sm text-deep-soil/80">
+                <ul className="mt-4 list-inside list-disc space-y-2 font-body text-sm text-kelly-text/80">
                   {notThis.map((p) => (
                     <li key={p}>{p}</li>
                   ))}
@@ -273,7 +273,7 @@ export default async function ListeningSessionsPage() {
               title="Bring a session to your town"
               subtitle="We’ll build a calendar region by region. Tell us who you are, where you’re rooted, and what help you need to host a dignified, well-prepared room."
             />
-            <p className="mt-3 max-w-3xl font-body text-sm text-deep-soil/75">
+            <p className="mt-3 max-w-3xl font-body text-sm text-kelly-text/75">
               Use the form below (the same host pipeline as our other local
               gatherings, pre-set to <strong>listening session</strong>). You
               can still adjust the type if you’re also planning something
@@ -281,7 +281,7 @@ export default async function ListeningSessionsPage() {
             </p>
             <div
               id="host-form"
-              className="mt-10 max-w-2xl rounded-card border border-deep-soil/10 bg-cream-canvas p-6 sm:p-8 shadow-[var(--shadow-soft)]"
+              className="mt-10 max-w-2xl rounded-card border border-kelly-text/10 bg-kelly-page p-6 sm:p-8 shadow-[var(--shadow-soft)]"
             >
               <HostGatheringForm
                 id="listening-session-host-form"
@@ -304,7 +304,7 @@ export default async function ListeningSessionsPage() {
               title="What happens next"
               subtitle="Hosting interest isn’t a one-line note—it’s the start of a plan: timing, partners, accessibility, materials, and respectful follow-up with everyone who shows up."
             />
-            <div className="mt-6 max-w-3xl space-y-4 font-body text-sm leading-relaxed text-deep-soil/80">
+            <div className="mt-6 max-w-3xl space-y-4 font-body text-sm leading-relaxed text-kelly-text/80">
               <p>
                 When you submit the form, the campaign team uses it to line up
                 dates, confirm venues, coordinate volunteers, and make sure

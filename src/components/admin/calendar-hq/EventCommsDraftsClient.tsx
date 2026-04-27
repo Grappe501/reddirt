@@ -12,7 +12,7 @@ const initial: EventCommsDraftResult = { ok: false, error: "" };
 type Kind = "reminder_sms" | "reminder_email" | "cancellation" | "thank_you" | "volunteer_followup";
 
 const BTN =
-  "rounded border border-deep-soil/15 bg-white px-1 py-0.5 text-[7px] font-bold leading-tight text-deep-soil/90 hover:border-red-dirt/30";
+  "rounded border border-kelly-text/15 bg-white px-1 py-0.5 text-[7px] font-bold leading-tight text-kelly-text/90 hover:border-kelly-navy/30";
 
 export function EventCommsDraftsClient({ eventId }: { eventId: string }) {
   const [state, formAction] = useFormState(generateEventCommsDraftAction, initial);
@@ -45,7 +45,7 @@ export function EventCommsDraftsClient({ eventId }: { eventId: string }) {
         <textarea
           ref={taRef}
           readOnly
-          className="mt-0.5 min-h-[72px] w-full resize-y border border-field-green/30 bg-white p-1 font-mono text-[8px] text-deep-soil/90"
+          className="mt-0.5 min-h-[72px] w-full resize-y border border-kelly-success/30 bg-white p-1 font-mono text-[8px] text-kelly-text/90"
           value={state.text}
         />
       ) : null}

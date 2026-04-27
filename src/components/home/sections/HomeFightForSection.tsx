@@ -6,13 +6,13 @@ import { cn } from "@/lib/utils";
 
 export function HomeFightForSection() {
   return (
-    <section className="bg-civic-mist/50 py-section-y lg:py-section-y-lg" aria-labelledby="fight-for-heading">
+    <section className="bg-kelly-mist/50 py-section-y lg:py-section-y-lg" aria-labelledby="fight-for-heading">
       <ContentContainer>
         <FadeInWhenVisible className="mx-auto max-w-3xl text-center">
-          <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-red-dirt">Commitments</p>
+          <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-kelly-navy">Commitments</p>
           <h2
             id="fight-for-heading"
-            className="mt-4 font-heading text-[clamp(1.85rem,4vw,2.85rem)] font-bold tracking-tight text-civic-ink"
+            className="mt-4 font-heading text-[clamp(1.85rem,4vw,2.85rem)] font-bold tracking-tight text-kelly-ink"
           >
             What Kelly Will Fight For
           </h2>
@@ -24,9 +24,9 @@ export function HomeFightForSection() {
               delay={0.07 * i}
               className={cn(i % 2 === 1 && "lg:mt-8")}
             >
-              <article className="h-full rounded-card border border-civic-ink/10 bg-white/90 p-7 shadow-sm backdrop-blur-sm md:p-8 lg:p-9">
-                <h3 className="font-heading text-xl font-bold leading-snug text-civic-ink lg:text-2xl">{item.title}</h3>
-                <p className="mt-4 font-body text-base leading-relaxed text-civic-slate/92">{item.body}</p>
+              <article className="h-full rounded-card border border-kelly-ink/10 bg-white/90 p-7 shadow-sm backdrop-blur-sm md:p-8 lg:p-9">
+                <h3 className="font-heading text-xl font-bold leading-snug text-kelly-ink lg:text-2xl">{item.title}</h3>
+                <p className="mt-4 font-body text-base leading-relaxed text-kelly-slate/92">{item.body}</p>
               </article>
             </FadeInWhenVisible>
           ))}
@@ -34,7 +34,7 @@ export function HomeFightForSection() {
         <FadeInWhenVisible className="mt-14 flex justify-center lg:mt-16">
           <Link
             href="/priorities"
-            className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-civic-blue/40 bg-transparent px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-civic-blue transition hover:border-civic-gold hover:bg-white"
+            className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-kelly-blue/40 bg-transparent px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-kelly-blue transition hover:border-kelly-gold hover:bg-white"
           >
             Explore the Priorities
           </Link>

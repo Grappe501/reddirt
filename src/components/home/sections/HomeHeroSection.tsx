@@ -25,7 +25,7 @@ export function HomeHeroSection({ hero }: HomeHeroSectionProps) {
 
   return (
     <section
-      className="relative min-h-[100svh] overflow-hidden border-b border-civic-gold/15 md:min-h-[min(100svh,920px)]"
+      className="relative min-h-[100svh] overflow-hidden border-b border-kelly-gold/15 md:min-h-[min(100svh,920px)]"
       aria-label="Campaign hero"
     >
       {/* MEDIA: full-bleed video or still — swap src via CMS/env */}
@@ -49,21 +49,21 @@ export function HomeHeroSection({ hero }: HomeHeroSectionProps) {
             className="block min-h-full"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-b from-civic-midnight/95 via-civic-deep/88 to-civic-midnight/92" />
+        <div className="absolute inset-0 bg-gradient-to-b from-kelly-navy/95 via-kelly-deep/88 to-kelly-navy/92" />
         {/* Read lane on the right (panel is ml-auto) — left stays lighter so the candidate reads clearly */}
         <div
-          className="absolute inset-0 bg-gradient-to-l from-civic-midnight/97 from-0% via-civic-midnight/82 via-[48%] to-transparent to-[72%]"
+          className="absolute inset-0 bg-gradient-to-l from-kelly-navy/97 from-0% via-kelly-navy/82 via-[48%] to-transparent to-[72%]"
           aria-hidden
         />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_50%_-20%,rgba(201,162,39,0.12),transparent_55%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_100%_50%,rgba(30,47,77,0.5),transparent_45%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_50%_-20%,rgba(202,145,61,0.14),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_100%_50%,rgba(0,0,102,0.45),transparent_45%)]" />
       </div>
 
       <ContentContainer className="relative z-[1] flex min-h-[100svh] flex-col justify-end pb-12 pt-28 md:min-h-[min(100svh,920px)] md:justify-center md:pb-20 md:pt-24 lg:pt-28">
         {/* Right-aligned panel (phone + desktop) so copy clears Kelly — image crop favors left/center */}
-        <div className="ml-auto w-full max-w-[min(100%,22rem)] rounded-3xl border border-white/12 bg-civic-midnight/82 p-5 shadow-[0_24px_60px_rgba(12,18,34,0.55)] backdrop-blur-md xs:max-w-md sm:max-w-lg sm:p-7 md:max-w-xl md:p-8 lg:max-w-[28rem] text-white">
+        <div className="ml-auto w-full max-w-[min(100%,22rem)] rounded-3xl border border-white/12 bg-kelly-navy/82 p-5 shadow-[0_24px_60px_rgba(12,18,34,0.55)] backdrop-blur-md xs:max-w-md sm:max-w-lg sm:p-7 md:max-w-xl md:p-8 lg:max-w-[28rem] text-white">
           <motion.p
-            className="font-body text-[11px] font-bold uppercase tracking-[0.28em] text-sunlight-gold md:text-xs"
+            className="font-body text-[11px] font-bold uppercase tracking-[0.28em] text-kelly-gold md:text-xs"
             {...fadeUp}
             transition={{ ...fadeUp.transition, delay: 0.05 }}
           >
@@ -75,7 +75,7 @@ export function HomeHeroSection({ hero }: HomeHeroSectionProps) {
             transition={{ ...fadeUp.transition, delay: 0.12 }}
           >
             {hero.titleBefore}
-            <span className="text-civic-gold"> {hero.titleAccent}</span>
+            <span className="text-kelly-gold"> {hero.titleAccent}</span>
             {hero.titleAfter ? (
               <span className="mt-1 block text-white/95">{hero.titleAfter}</span>
             ) : null}
@@ -98,8 +98,8 @@ export function HomeHeroSection({ hero }: HomeHeroSectionProps) {
               rel={isExternalHref(hero.ctaPrimaryHref) ? "noopener noreferrer" : undefined}
               className={cn(
                 "inline-flex min-h-[48px] items-center justify-center rounded-btn px-7 py-3.5 text-center text-sm font-bold uppercase tracking-[0.12em]",
-                "bg-civic-gold text-civic-midnight shadow-lg shadow-black/25 transition duration-normal",
-                "hover:bg-civic-gold-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-civic-gold",
+                "bg-kelly-gold text-kelly-navy shadow-lg shadow-black/25 transition duration-normal",
+                "hover:bg-kelly-gold-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold",
               )}
             >
               {hero.ctaPrimaryLabel}
@@ -112,24 +112,24 @@ export function HomeHeroSection({ hero }: HomeHeroSectionProps) {
               target={isExternalHref(hero.ctaSecondaryHref) ? "_blank" : undefined}
               rel={isExternalHref(hero.ctaSecondaryHref) ? "noopener noreferrer" : undefined}
               className={cn(
-                "inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-white/50 bg-civic-midnight/25 px-7 py-3.5 text-center text-sm font-bold uppercase tracking-[0.12em] text-white backdrop-blur-[2px]",
-                "transition hover:border-sunlight-gold/70 hover:bg-civic-midnight/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
+                "inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-white/50 bg-kelly-navy/25 px-7 py-3.5 text-center text-sm font-bold uppercase tracking-[0.12em] text-white backdrop-blur-[2px]",
+                "transition hover:border-kelly-gold/70 hover:bg-kelly-navy/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
               )}
             >
               {hero.ctaSecondaryLabel}
             </Link>
           </motion.div>
           <motion.p
-            className="mt-10 max-w-xl rounded-r-card border-l-[3px] border-sunlight-gold bg-civic-midnight/92 py-4 pl-5 pr-4 font-heading text-lg font-semibold leading-snug text-white shadow-lg shadow-black/20 md:py-5 md:pl-6 md:text-xl"
+            className="mt-10 max-w-xl rounded-r-card border-l-[3px] border-kelly-gold bg-kelly-navy/92 py-4 pl-5 pr-4 font-heading text-lg font-semibold leading-snug text-white shadow-lg shadow-black/20 md:py-5 md:pl-6 md:text-xl"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.36, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className="text-sunlight-gold">People over politics</span>
+            <span className="text-kelly-gold">People over politics</span>
             <span className="text-white">—always.</span>
           </motion.p>
           <motion.p
-            className="mt-8 max-w-md border-l-2 border-sunlight-gold/70 pl-4 font-body text-[11px] font-semibold uppercase leading-relaxed tracking-[0.22em] text-white/85 md:text-xs"
+            className="mt-8 max-w-md border-l-2 border-kelly-gold/70 pl-4 font-body text-[11px] font-semibold uppercase leading-relaxed tracking-[0.22em] text-white/85 md:text-xs"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.45, duration: 0.6 }}

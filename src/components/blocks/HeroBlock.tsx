@@ -37,7 +37,7 @@ export function HeroBlock({
         <p
           className={cn(
             "max-w-prose font-body text-xs font-bold uppercase tracking-[0.22em]",
-            onDark ? "text-sunlight-gold" : "text-red-dirt",
+            onDark ? "text-kelly-gold" : "text-kelly-navy",
           )}
         >
           {eyebrow}
@@ -46,7 +46,7 @@ export function HeroBlock({
       <h1
         className={cn(
           "font-heading font-bold tracking-tight",
-          onDark ? "text-civic-mist" : "text-deep-soil",
+          onDark ? "text-kelly-mist" : "text-kelly-text",
           size === "home" &&
             "max-w-[22ch] text-[clamp(2.5rem,6vw,4.75rem)] leading-[1.05] lg:max-w-[18ch]",
           size === "page" &&
@@ -59,7 +59,7 @@ export function HeroBlock({
         <div
           className={cn(
             "max-w-2xl font-body text-lg leading-relaxed lg:text-xl",
-            onDark ? "text-civic-mist/88" : "text-deep-soil/85",
+            onDark ? "text-kelly-mist/88" : "text-kelly-text/85",
             align === "center" && "mx-auto",
           )}
         >

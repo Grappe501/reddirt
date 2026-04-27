@@ -25,19 +25,19 @@ export const metadata: Metadata = {
 
 function MapPlaceholderGrid() {
   return (
-    <div className="relative h-full min-h-[280px] overflow-hidden rounded-card border border-deep-soil/10 bg-gradient-to-br from-washed-denim/15 via-cream-canvas to-field-green/10 shadow-[var(--shadow-soft)] lg:min-h-[360px]">
-      <p className="absolute left-4 top-4 z-10 max-w-[14rem] rounded-full bg-cream-canvas/90 px-3 py-1 font-body text-[10px] font-bold uppercase tracking-wider text-deep-soil/55 shadow-sm">
+    <div className="relative h-full min-h-[280px] overflow-hidden rounded-card border border-kelly-text/10 bg-gradient-to-br from-kelly-muted/15 via-kelly-page to-kelly-success/10 shadow-[var(--shadow-soft)] lg:min-h-[360px]">
+      <p className="absolute left-4 top-4 z-10 max-w-[14rem] rounded-full bg-kelly-page/90 px-3 py-1 font-body text-[10px] font-bold uppercase tracking-wider text-kelly-text/55 shadow-sm">
         Organizing by region
       </p>
       <div className="max-h-[min(520px,70vh)] space-y-4 overflow-y-auto p-6 pt-14">
         {regions.map((r) => (
           <LocalRegionCard key={r.slug} region={r} />
         ))}
-        <div className="rounded-card border border-dashed border-deep-soil/20 bg-deep-soil/[0.03] p-5">
-          <span className="font-body text-sm font-semibold text-deep-soil/70">More counties & towns</span>
-          <p className="mt-2 font-body text-sm text-deep-soil/55">
+        <div className="rounded-card border border-dashed border-kelly-text/20 bg-kelly-text/[0.03] p-5">
+          <span className="font-body text-sm font-semibold text-kelly-text/70">More counties & towns</span>
+          <p className="mt-2 font-body text-sm text-kelly-text/55">
             Request a hub route through{" "}
-            <Link className="font-semibold text-red-dirt underline" href="/get-involved">
+            <Link className="font-semibold text-kelly-navy underline" href="/get-involved">
               Get Involved
             </Link>
             .
@@ -102,10 +102,10 @@ export default function LocalOrganizingPage() {
             ].map((x) => (
               <div
                 key={x.t}
-                className="rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-7 shadow-[var(--shadow-soft)]"
+                className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-7 shadow-[var(--shadow-soft)]"
               >
-                <h3 className="font-heading text-xl font-bold text-deep-soil">{x.t}</h3>
-                <p className="mt-3 font-body text-base leading-relaxed text-deep-soil/75">{x.b}</p>
+                <h3 className="font-heading text-xl font-bold text-kelly-text">{x.t}</h3>
+                <p className="mt-3 font-body text-base leading-relaxed text-kelly-text/75">{x.b}</p>
               </div>
             ))}
           </ResponsiveGrid>
@@ -186,7 +186,7 @@ export default function LocalOrganizingPage() {
           title="Counties and regions we’re building with"
           subtitle="Tap a place to see what we’re hearing, what’s coming up, and how to plug in. More maps and live RSVPs arrive with the next integration pass."
         />
-        <p className="mt-6 font-body text-base leading-relaxed text-deep-soil/75">
+        <p className="mt-6 font-body text-base leading-relaxed text-kelly-text/75">
           {/* Future: optional county-level summary tiles for organizers */}
           Each hub page tracks a simple story: what neighbors name as urgent, what we’re scheduling next, and where
           to begin.
@@ -230,18 +230,18 @@ export default function LocalOrganizingPage() {
         eyebrow="Belonging"
         title="You don’t need permission to care for your place"
         description="If you’re willing to listen more than you talk—for a season—we already count you as part of this."
-        variant="soil"
+        variant="ink-band"
       >
-        <Button href="/start-a-local-team" variant="primary" className="bg-cream-canvas text-deep-soil hover:bg-cream-canvas/90">
+        <Button href="/start-a-local-team" variant="primary" className="bg-kelly-page text-kelly-text hover:bg-kelly-page/90">
           Start a local team
         </Button>
-        <Button href="/events" variant="outline" className="border-cream-canvas/40 text-cream-canvas hover:bg-cream-canvas/10">
+        <Button href="/events" variant="outline" className="border-kelly-page/40 text-kelly-page hover:bg-kelly-page/10">
           Join an event
         </Button>
         <Button
           href={representLocalEventVolunteerHref}
           variant="outline"
-          className="border-cream-canvas/40 text-cream-canvas hover:bg-cream-canvas/10"
+          className="border-kelly-page/40 text-kelly-page hover:bg-kelly-page/10"
         >
           Represent locally
         </Button>

@@ -24,11 +24,11 @@ export default async function MediaIngestBatchesPage({ searchParams }: Props) {
   return (
     <div className="mx-auto max-w-4xl space-y-8">
       <div>
-        <Link href="/admin/owned-media" className="text-sm text-civic-slate hover:underline">
+        <Link href="/admin/owned-media" className="text-sm text-kelly-slate hover:underline">
           ← Campaign-owned media
         </Link>
-        <h1 className="mt-2 font-heading text-2xl font-bold text-deep-soil">Media ingest batches</h1>
-        <p className="mt-1 text-sm text-deep-soil/70">
+        <h1 className="mt-2 font-heading text-2xl font-bold text-kelly-text">Media ingest batches</h1>
+        <p className="mt-1 text-sm text-kelly-text/70">
           Folder and device import sessions. Open a batch to review assets, apply tags, and run bulk actions.
         </p>
         {sp.error ? (
@@ -41,27 +41,27 @@ export default async function MediaIngestBatchesPage({ searchParams }: Props) {
           <li key={b.id}>
             <Link
               href={`/admin/owned-media/batches/${b.id}`}
-              className="flex flex-col gap-1 rounded-lg border border-deep-soil/10 bg-cream-canvas px-4 py-3 shadow-[var(--shadow-soft)] transition hover:border-deep-soil/25 sm:flex-row sm:items-center sm:justify-between"
+              className="flex flex-col gap-1 rounded-lg border border-kelly-text/10 bg-kelly-page px-4 py-3 shadow-[var(--shadow-soft)] transition hover:border-kelly-text/25 sm:flex-row sm:items-center sm:justify-between"
             >
               <div>
-                <p className="font-heading text-sm font-bold text-deep-soil">
-                  {b.sourceLabel} <span className="font-mono font-normal text-deep-soil/50">· {b.id}</span>
+                <p className="font-heading text-sm font-bold text-kelly-text">
+                  {b.sourceLabel} <span className="font-mono font-normal text-kelly-text/50">· {b.id}</span>
                 </p>
-                <p className="mt-0.5 text-xs text-deep-soil/60">
+                <p className="mt-0.5 text-xs text-kelly-text/60">
                   {b.sourceType} · {b._count.assets} assets · {b.startedAt.toLocaleString()}
                 </p>
-                {b.ingestPath ? <p className="mt-0.5 break-all font-mono text-[10px] text-deep-soil/45">{b.ingestPath}</p> : null}
+                {b.ingestPath ? <p className="mt-0.5 break-all font-mono text-[10px] text-kelly-text/45">{b.ingestPath}</p> : null}
               </div>
               <div className="flex shrink-0 items-center gap-2">
                 <span
                   className={`inline-flex rounded-md px-2 py-0.5 font-body text-xs font-bold uppercase tracking-wide ${
-                    statusClass[b.status] ?? "bg-deep-soil/10"
+                    statusClass[b.status] ?? "bg-kelly-text/10"
                   }`}
                 >
                   {b.status}
                 </span>
                 {b.finishedAt ? (
-                  <span className="text-xs text-deep-soil/50">done {b.finishedAt.toLocaleString()}</span>
+                  <span className="text-xs text-kelly-text/50">done {b.finishedAt.toLocaleString()}</span>
                 ) : null}
               </div>
             </Link>
@@ -70,9 +70,9 @@ export default async function MediaIngestBatchesPage({ searchParams }: Props) {
       </ul>
 
       {batches.length === 0 ? (
-        <p className="rounded-md border border-deep-soil/10 bg-white/60 px-4 py-6 text-sm text-deep-soil/70">
-          No batches yet. Run <code className="rounded bg-deep-soil/5 px-1">npm run ingest:device</code> or{" "}
-          <code className="rounded bg-deep-soil/5 px-1">npm run ingest:folder</code> to create one.
+        <p className="rounded-md border border-kelly-text/10 bg-white/60 px-4 py-6 text-sm text-kelly-text/70">
+          No batches yet. Run <code className="rounded bg-kelly-text/5 px-1">npm run ingest:device</code> or{" "}
+          <code className="rounded bg-kelly-text/5 px-1">npm run ingest:folder</code> to create one.
         </p>
       ) : null}
     </div>

@@ -48,7 +48,7 @@ export default async function ResourcesPage() {
       <FullBleedSection variant="subtle" padY>
         <ContentContainer wide>
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
-            <div className="relative min-h-[260px] overflow-hidden rounded-card border border-deep-soil/10 shadow-[var(--shadow-soft)] lg:min-h-[320px]">
+            <div className="relative min-h-[260px] overflow-hidden rounded-card border border-kelly-text/10 shadow-[var(--shadow-soft)] lg:min-h-[320px]">
               <ContentImage media={media.explainerSteps} warmOverlay className="absolute inset-0 min-h-full" />
             </div>
             <div>
@@ -59,10 +59,10 @@ export default async function ResourcesPage() {
                 subtitle="Explainers walk through referendums, petitions, bargaining basics, and local organizing—without talking down to you."
                 className="max-w-xl"
               />
-              <ul className="mt-6 space-y-3 font-body text-deep-soil/80">
+              <ul className="mt-6 space-y-3 font-body text-kelly-text/80">
                 {allExplainers.slice(0, 3).map((e) => (
                   <li key={e.slug}>
-                    <Link href={`/explainers/${e.slug}`} className="font-semibold text-red-dirt hover:underline">
+                    <Link href={`/explainers/${e.slug}`} className="font-semibold text-kelly-navy hover:underline">
                       {e.title}
                     </Link>
                   </li>
@@ -86,8 +86,8 @@ export default async function ResourcesPage() {
             subtitle="Reusable agendas and field habits—plus a full messaging program for how to talk about Kelly, the office, and tough political gaps without losing the relationship."
           />
           <ResourceGrid items={organizingToolkit} className="mt-12" />
-          <p className="mt-8 max-w-3xl font-body text-sm text-deep-soil/60">
-            <Link href="/resources/talking-about-kelly" className="font-semibold text-red-dirt hover:underline">
+          <p className="mt-8 max-w-3xl font-body text-sm text-kelly-text/60">
+            <Link href="/resources/talking-about-kelly" className="font-semibold text-kelly-navy hover:underline">
               Talking about Kelly
             </Link>{" "}
             is the dense comms + field education module—opener lines, red-state honesty, and recovery when the conversation
@@ -103,7 +103,7 @@ export default async function ResourcesPage() {
         variant="gold-band"
       />
 
-      <FullBleedSection padY className="bg-washed-canvas/80" aria-labelledby="briefing-records">
+      <FullBleedSection padY className="bg-kelly-wash/80" aria-labelledby="briefing-records">
         <ContentContainer>
           <CampaignBriefingLibrary />
         </ContentContainer>
@@ -149,11 +149,11 @@ export default async function ResourcesPage() {
               <Link
                 key={x.h}
                 href={x.h}
-                className="rounded-card border border-deep-soil/10 bg-[var(--color-surface-elevated)] p-7 shadow-[var(--shadow-soft)] transition hover:-translate-y-0.5 hover:border-red-dirt/30"
+                className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-7 shadow-[var(--shadow-soft)] transition hover:-translate-y-0.5 hover:border-kelly-navy/30"
               >
-                <h3 className="font-heading text-xl font-bold text-deep-soil">{x.t}</h3>
-                <p className="mt-3 font-body text-base text-deep-soil/75">{x.b}</p>
-                <span className="mt-4 inline-flex items-center gap-2 font-body text-sm font-semibold text-red-dirt">
+                <h3 className="font-heading text-xl font-bold text-kelly-text">{x.t}</h3>
+                <p className="mt-3 font-body text-base text-kelly-text/75">{x.b}</p>
+                <span className="mt-4 inline-flex items-center gap-2 font-body text-sm font-semibold text-kelly-navy">
                   Open
                   <span aria-hidden>→</span>
                 </span>

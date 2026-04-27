@@ -131,34 +131,34 @@ export default async function PrioritiesPage() {
             className="max-w-3xl"
           />
           <div className="mt-8 grid gap-5 sm:grid-cols-2">
-            <div className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-[var(--shadow-soft)]">
-              <h3 className="font-heading text-lg font-bold text-deep-soil">Training that travels</h3>
-              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+            <div className="rounded-card border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Training that travels</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
                 Counties should not have to reinvent the basics. Kelly will push for plain-language guidance, reusable training materials, and practical support that works in rural and urban election offices alike.
               </p>
             </div>
-            <div className="rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)]">
-              <h3 className="font-heading text-lg font-bold text-deep-soil">Communication kits counties can use</h3>
-              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+            <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Communication kits counties can use</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
                 Local offices should have ready-to-adapt voter education posts, public notice checklists, and crisis communication basics so accurate information can move faster than rumors.
               </p>
             </div>
-            <div className="rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)]">
-              <h3 className="font-heading text-lg font-bold text-deep-soil">Systems, not blame</h3>
-              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+            <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Systems, not blame</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
                 When workers are under-supported, the answer is not to point fingers at the people doing the work. The answer is to fix the system around them: staffing, communication, checklists, tools, and timelines.
               </p>
             </div>
-            <div className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-[var(--shadow-soft)]">
-              <h3 className="font-heading text-lg font-bold text-deep-soil">Voter flow designed from real patterns</h3>
-              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+            <div className="rounded-card border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Voter flow designed from real patterns</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
                 Early voting should use turnout patterns, role clarity, clear signage, and line support so voters face
                 less confusion and workers are not left absorbing avoidable bottlenecks.
               </p>
             </div>
-            <div className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-[var(--shadow-soft)]">
-              <h3 className="font-heading text-lg font-bold text-deep-soil">Public confidence through clarity</h3>
-              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+            <div className="rounded-card border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Public confidence through clarity</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
                 Voters should understand how elections are administered, how safeguards work, and who is responsible for each step. Visibility builds trust before misinformation fills the gap.
               </p>
             </div>
@@ -177,39 +177,39 @@ export default async function PrioritiesPage() {
             className="max-w-3xl"
           />
           <div className="mt-8 grid gap-5 sm:grid-cols-2">
-            <div className="rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)]">
-              <h3 className="font-heading text-lg font-bold text-deep-soil">Publish the request trail</h3>
-              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+            <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Publish the request trail</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
                 When the Secretary of State&apos;s office receives and fulfills a public-records request, the public should be able to see that a request was made, what records were released, and where to find them when disclosure is allowed by law.
               </p>
             </div>
-            <div className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-[var(--shadow-soft)]">
-              <h3 className="font-heading text-lg font-bold text-deep-soil">Meeting records in one place</h3>
-              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+            <div className="rounded-card border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Meeting records in one place</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
                 Public calendars should point people to agendas, minutes, recordings, and follow-up records whenever those materials can legally be shared.
               </p>
             </div>
-            <div className="rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)]">
-              <h3 className="font-heading text-lg font-bold text-deep-soil">Audit reports people can understand</h3>
-              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+            <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Audit reports people can understand</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
                 When election audits or process reviews are complete, voters should be able to find what was checked,
                 what was found, and what the result means in plain language.
               </p>
             </div>
-            <div className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-[var(--shadow-soft)]">
-              <h3 className="font-heading text-lg font-bold text-deep-soil">Search before you ask again</h3>
-              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+            <div className="rounded-card border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Search before you ask again</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
                 Kelly wants a searchable public-records library for her office so Arkansans, reporters, researchers, and local officials can find prior FOIA responses without starting from zero.
               </p>
             </div>
-            <div className="rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)]">
-              <h3 className="font-heading text-lg font-bold text-deep-soil">Build toward smarter access</h3>
-              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+            <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Build toward smarter access</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
                 The long-term vision is a plain-language, searchable tool that helps people understand what has already been requested and released, while protecting privacy, legal exemptions, and sensitive information.
               </p>
             </div>
           </div>
-          <p className="mt-6 max-w-3xl font-body text-sm leading-relaxed text-deep-soil/70">
+          <p className="mt-6 max-w-3xl font-body text-sm leading-relaxed text-kelly-text/70">
             The Secretary of State cannot unilaterally require every agency to use the same system, but the office can lead by example: start with its own records, prove the model works, and invite other public offices to make transparency easier for everyone.
           </p>
         </ContentContainer>
@@ -226,21 +226,21 @@ export default async function PrioritiesPage() {
             className="max-w-3xl"
           />
           <div className="mt-8 grid gap-5 md:grid-cols-3">
-            <div className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-[var(--shadow-soft)]">
-              <h3 className="font-heading text-lg font-bold text-deep-soil">Plain-language filing paths</h3>
-              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+            <div className="rounded-card border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Plain-language filing paths</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
                 Office-specific instructions, deadlines, required forms, and campaign-finance basics should be easier to find and easier to follow.
               </p>
             </div>
-            <div className="rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)]">
-              <h3 className="font-heading text-lg font-bold text-deep-soil">First-time candidate checklists</h3>
-              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+            <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">First-time candidate checklists</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
                 Rural candidates, young leaders, working people, and first-time candidates should not need political connections to understand the paperwork sequence.
               </p>
             </div>
-            <div className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-[var(--shadow-soft)]">
-              <h3 className="font-heading text-lg font-bold text-deep-soil">Education before mistakes</h3>
-              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+            <div className="rounded-card border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Education before mistakes</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
                 Short explainers, reminders, and workshops can reduce confusion while still respecting the law, campaign-finance rules, and the neutral role of the office.
               </p>
             </div>
@@ -259,23 +259,23 @@ export default async function PrioritiesPage() {
             className="max-w-3xl"
           />
           <div className="mt-8 grid gap-5 sm:grid-cols-3">
-            <div className="rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)]">
-              <h3 className="font-heading text-lg font-bold text-deep-soil">All counties visible</h3>
-              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+            <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">All counties visible</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
                 Public spaces should help Arkansans from small towns, rural communities, and city neighborhoods see
                 themselves in state government.
               </p>
             </div>
-            <div className="rounded-card border border-deep-soil/10 bg-white p-5 shadow-[var(--shadow-soft)]">
-              <h3 className="font-heading text-lg font-bold text-deep-soil">Learning in public</h3>
-              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+            <div className="rounded-card border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Learning in public</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
                 Capitol visits, exhibits, records, and age-appropriate civic education can help people understand how
                 Arkansas government works.
               </p>
             </div>
-            <div className="rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)]">
-              <h3 className="font-heading text-lg font-bold text-deep-soil">Explore welcoming grounds</h3>
-              <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+            <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Explore welcoming grounds</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
                 Ideas like rural-rooted plantings, pollinator spaces, and public gathering areas deserve review with the
                 proper legal, security, and facilities partners.
               </p>
@@ -294,17 +294,17 @@ export default async function PrioritiesPage() {
             subtitle="When election rules, ballot access, or business filings move without plain explanation, families, small businesses, and local election officials pay the price. Kelly is running to put transparency, fair notice, and public trust back at the center of the office—especially where recent leadership has leaned toward partisan advantage, corporate favors, or closed-door decisions over accountability."
             className="max-w-3xl"
           />
-          <ul className="mt-8 space-y-3 font-body text-base leading-relaxed text-deep-soil/85">
+          <ul className="mt-8 space-y-3 font-body text-base leading-relaxed text-kelly-text/85">
             <li className="flex gap-3">
-              <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-red-dirt" aria-hidden />
+              <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-kelly-navy" aria-hidden />
               <span>
-                <strong className="text-deep-soil">Record vs. rhetoric.</strong> Where public-record legislation or filings would narrow voter access, shield insider influence, or weaken accountability in how this office runs, Kelly will cite sources and explain the stakes in plain language—because voters should know who is steering the office.
+                <strong className="text-kelly-text">Record vs. rhetoric.</strong> Where public-record legislation or filings would narrow voter access, shield insider influence, or weaken accountability in how this office runs, Kelly will cite sources and explain the stakes in plain language—because voters should know who is steering the office.
               </span>
             </li>
             <li className="flex gap-3">
-              <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-red-dirt" aria-hidden />
+              <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-kelly-navy" aria-hidden />
               <span>
-                <strong className="text-deep-soil">Above board, not soft.</strong> Hard truths belong in the daylight: if a policy helps powerful interests more than everyday Arkansans, Kelly will say so—and point to the public evidence.
+                <strong className="text-kelly-text">Above board, not soft.</strong> Hard truths belong in the daylight: if a policy helps powerful interests more than everyday Arkansans, Kelly will say so—and point to the public evidence.
               </span>
             </li>
           </ul>
@@ -332,17 +332,17 @@ export default async function PrioritiesPage() {
             subtitle="Voters deserve honesty about jurisdiction. Healthcare, K–12 policy, and broad economic platforms belong in races where those decisions are made—not here."
             className="max-w-2xl"
           />
-          <ul className="mt-10 max-w-3xl space-y-4 font-body text-base leading-relaxed text-deep-soil/80">
+          <ul className="mt-10 max-w-3xl space-y-4 font-body text-base leading-relaxed text-kelly-text/80">
             <li className="flex gap-3">
-              <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-red-dirt" aria-hidden />
+              <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-kelly-navy" aria-hidden />
               No pretend authority over issues outside the Secretary of State’s statutory role.
             </li>
             <li className="flex gap-3">
-              <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-red-dirt" aria-hidden />
+              <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-kelly-navy" aria-hidden />
               No confusing voters with national talking points that this office cannot fix.
             </li>
             <li className="flex gap-3">
-              <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-red-dirt" aria-hidden />
+              <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-kelly-navy" aria-hidden />
               Full respect for county officials and local election workers as partners—not punching bags.
             </li>
           </ul>
@@ -358,7 +358,7 @@ export default async function PrioritiesPage() {
         <Button href={getHostOrVisitRequestHref()} variant="secondary">
           Request a visit
         </Button>
-        <Button href="/about" variant="outline" className="border-cream-canvas/50 text-cream-canvas hover:bg-cream-canvas/10">
+        <Button href="/about" variant="outline" className="border-kelly-page/50 text-kelly-page hover:bg-kelly-page/10">
           About Kelly
         </Button>
       </CTASection>

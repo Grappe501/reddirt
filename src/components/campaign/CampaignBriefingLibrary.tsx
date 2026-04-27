@@ -4,7 +4,7 @@ import { listPublicCampaignBriefings } from "@/lib/campaign-briefings/briefing-q
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 
 const card =
-  "rounded-2xl border border-deep-soil/10 bg-cream-canvas p-5 shadow-sm transition hover:border-red-dirt/20";
+  "rounded-2xl border border-kelly-text/10 bg-kelly-page p-5 shadow-sm transition hover:border-kelly-navy/20";
 
 /**
  * Public “record room” for approved campaign files (briefings, comms, logos) for Secretary of
@@ -29,9 +29,9 @@ export async function CampaignBriefingLibrary() {
           const isVideo = d.kind === OwnedMediaKind.VIDEO;
           return (
             <li key={d.id} className={card}>
-              <p className="font-heading text-base font-bold text-deep-soil">{d.title}</p>
+              <p className="font-heading text-base font-bold text-kelly-text">{d.title}</p>
               {isImage ? (
-                <div className="mt-3 overflow-hidden rounded-lg border border-deep-soil/10 bg-washed-canvas">
+                <div className="mt-3 overflow-hidden rounded-lg border border-kelly-text/10 bg-kelly-wash">
                   <img
                     src={d.downloadHref}
                     alt=""
@@ -43,7 +43,7 @@ export async function CampaignBriefingLibrary() {
                 </div>
               ) : null}
               {isVideo ? (
-                <div className="mt-3 overflow-hidden rounded-lg border border-deep-soil/10 bg-washed-canvas p-2">
+                <div className="mt-3 overflow-hidden rounded-lg border border-kelly-text/10 bg-kelly-wash p-2">
                   <video
                     src={d.downloadHref}
                     className="max-h-48 w-full"
@@ -53,16 +53,16 @@ export async function CampaignBriefingLibrary() {
                 </div>
               ) : null}
               {d.description ? (
-                <p className="mt-2 text-sm text-deep-soil/80">{d.description}</p>
+                <p className="mt-2 text-sm text-kelly-text/80">{d.description}</p>
               ) : null}
-              <p className="mt-1 text-xs text-deep-soil/55">
+              <p className="mt-1 text-xs text-kelly-text/55">
                 {d.fileName} ·{" "}
                 {isImage ? "image" : isVideo ? "video" : d.kind === OwnedMediaKind.AUDIO ? "audio" : "document"}{" "}
                 · added {d.createdAt.toLocaleDateString()}
               </p>
               <a
                 href={d.downloadHref}
-                className="mt-3 inline-block text-sm font-semibold text-red-dirt underline-offset-2 hover:underline"
+                className="mt-3 inline-block text-sm font-semibold text-kelly-navy underline-offset-2 hover:underline"
               >
                 Download
               </a>
@@ -70,17 +70,17 @@ export async function CampaignBriefingLibrary() {
           );
         })}
       </ul>
-      <p className="mt-4 text-xs text-deep-soil/55">
+      <p className="mt-4 text-xs text-kelly-text/55">
         The Secretary of State’s office is built on <strong>records and public trust</strong>—this site follows
         that habit: if we brief it, it belongs in the record where Arkansans can see it. More materials will appear
         as they’re reviewed. Nothing here replaces a government filing; this is the campaign’s working library.
       </p>
-      <p className="mt-2 text-xs text-deep-soil/50">
-        <Link href="/voter-registration" className="text-red-dirt/80 underline-offset-2 hover:underline">
+      <p className="mt-2 text-xs text-kelly-text/50">
+        <Link href="/voter-registration" className="text-kelly-navy/80 underline-offset-2 hover:underline">
           Voter registration center
         </Link>{" "}
         for rolls and help ·{" "}
-        <Link href="/priorities" className="text-red-dirt/80 underline-offset-2 hover:underline">
+        <Link href="/priorities" className="text-kelly-navy/80 underline-offset-2 hover:underline">
           Office priorities
         </Link>{" "}
         for the platform.

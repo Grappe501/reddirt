@@ -52,15 +52,15 @@ export default async function BlogDetailPage({ params }: Props) {
 
   return (
     <>
-      <FullBleedSection padY className="border-b border-deep-soil/10">
+      <FullBleedSection padY className="border-b border-kelly-text/10">
         <ContentContainer className="max-w-3xl">
-          <p className="font-body text-xs font-bold uppercase tracking-[0.2em] text-civic-slate">From Substack</p>
-          <h1 className="mt-4 font-heading text-4xl font-bold leading-tight text-deep-soil lg:text-5xl">{post.title}</h1>
+          <p className="font-body text-xs font-bold uppercase tracking-[0.2em] text-kelly-slate">From Substack</p>
+          <h1 className="mt-4 font-heading text-4xl font-bold leading-tight text-kelly-text lg:text-5xl">{post.title}</h1>
           {post.author ? (
-            <p className="mt-3 font-body text-sm text-deep-soil/65">By {post.author}</p>
+            <p className="mt-3 font-body text-sm text-kelly-text/65">By {post.author}</p>
           ) : null}
           {post.publishedAt ? (
-            <p className="mt-2 font-body text-sm text-deep-soil/55">
+            <p className="mt-2 font-body text-sm text-kelly-text/55">
               {post.publishedAt.toLocaleDateString("en-US", {
                 month: "long",
                 day: "numeric",
@@ -73,11 +73,11 @@ export default async function BlogDetailPage({ params }: Props) {
 
       <FullBleedSection variant="subtle" padY>
         <ContentContainer className="max-w-3xl">
-          <div className="rounded-card border border-deep-soil/10 bg-cream-canvas p-8 shadow-[var(--shadow-soft)] md:p-10">
-            <p className="font-body text-lg leading-relaxed text-deep-soil/85">{card.excerpt}</p>
+          <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-8 shadow-[var(--shadow-soft)] md:p-10">
+            <p className="font-body text-lg leading-relaxed text-kelly-text/85">{card.excerpt}</p>
             {isMirrorTodo ? (
-              <p className="mt-6 rounded-lg border border-sunlight-gold/35 bg-sunlight-gold/10 p-4 font-body text-sm text-deep-soil/80">
-                <strong className="text-deep-soil">Full essay on Substack.</strong> This page is a preview for now—open the
+              <p className="mt-6 rounded-lg border border-kelly-gold/35 bg-kelly-gold/10 p-4 font-body text-sm text-kelly-text/80">
+                <strong className="text-kelly-text">Full essay on Substack.</strong> This page is a preview for now—open the
                 link below to read the complete piece.
               </p>
             ) : null}
@@ -89,9 +89,9 @@ export default async function BlogDetailPage({ params }: Props) {
                 Back to writing
               </Button>
             </div>
-            <p className="mt-8 font-body text-xs text-deep-soil/50">
+            <p className="mt-8 font-body text-xs text-kelly-text/50">
               Original post:{" "}
-              <Link href={post.canonicalUrl} className="break-all text-red-dirt underline" rel="noopener noreferrer" target="_blank">
+              <Link href={post.canonicalUrl} className="break-all text-kelly-navy underline" rel="noopener noreferrer" target="_blank">
                 {post.canonicalUrl}
               </Link>
             </p>

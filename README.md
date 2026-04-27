@@ -57,7 +57,22 @@ chmod +x scripts/dev.sh
 npm run check
 ```
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) and [docs/deployment.md](./docs/deployment.md).
+See [CONTRIBUTING.md](./CONTRIBUTING.md) and [docs/deployment.md](./docs/deployment.md). **Netlify first-time / empty DB:** [docs/NETLIFY_FIRST_DEPLOY.md](./docs/NETLIFY_FIRST_DEPLOY.md).
+
+## New AI thread / engineer / Cursor session
+
+**Start a fresh chat with full campaign-OS context** — read **in this order** (or paste the short anchor from [`docs/NEW_THREAD_START_HERE.md`](./docs/NEW_THREAD_START_HERE.md)):
+
+1. [`docs/THREAD_HANDOFF_MASTER_MAP.md`](./docs/THREAD_HANDOFF_MASTER_MAP.md) — **THREAD-HANDOFF-1** (orientation, build steering §0.9, division balance §0.8).
+2. [`docs/BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./docs/BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) — **PROTO-2** + **DIV-OPS-1/2** (steering decision, preflight, drift).
+3. [`docs/DIVISION_MASTER_REGISTRY.md`](./docs/DIVISION_MASTER_REGISTRY.md) — **L0–L5** + priority (check before the next packet).
+4. [`docs/PROJECT_MASTER_MAP.md`](./docs/PROJECT_MASTER_MAP.md) — blueprint progress ledger + §8 capabilities.
+
+**Index of all doc lanes:** [`docs/README.md`](./docs/README.md).
+
+**Quality gate before substantive pushes:** `npm run check` from this folder (lint + `tsc` + build).
+
+---
 
 ## Docs
 

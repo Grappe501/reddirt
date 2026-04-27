@@ -19,12 +19,12 @@ export default async function CommsPlanSegmentDetailPage({ params }: Props) {
   return (
     <div className="min-w-0 p-1">
       <CommsWorkbenchSubnav />
-      <div className="mt-2 border-b border-deep-soil/10 pb-2 text-[11px] text-deep-soil/55">
-        <Link className="font-semibold text-civic-slate" href={commsPlanPath(id, COMMS_PLAN_SECTION.segments)}>
+      <div className="mt-2 border-b border-kelly-text/10 pb-2 text-[11px] text-kelly-text/55">
+        <Link className="font-semibold text-kelly-slate" href={commsPlanPath(id, COMMS_PLAN_SECTION.segments)}>
           Message plan: {plan.title}
         </Link>{" "}
         ·{" "}
-        <Link className="font-semibold text-civic-slate" href={COMMS_APP_PATHS.plans}>
+        <Link className="font-semibold text-kelly-slate" href={COMMS_APP_PATHS.plans}>
           All message plans
         </Link>
       </div>

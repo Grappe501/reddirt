@@ -16,7 +16,7 @@ export default async function NewRelationalContactPage({ searchParams }: Props) 
     <div className="max-w-lg space-y-6">
       <div className="flex items-baseline justify-between gap-2">
         <h1 className="font-heading text-2xl font-bold">Add person</h1>
-        <Link href="/relational" className="text-sm text-red-dirt hover:underline">
+        <Link href="/relational" className="text-sm text-kelly-navy hover:underline">
           ← Back
         </Link>
       </div>
@@ -25,48 +25,48 @@ export default async function NewRelationalContactPage({ searchParams }: Props) 
           {sp.error}
         </p>
       ) : null}
-      <form action={createRelationalContactUserAction} className="space-y-4 rounded-card border border-deep-soil/10 p-6">
+      <form action={createRelationalContactUserAction} className="space-y-4 rounded-card border border-kelly-text/10 p-6">
         <label className="block text-sm">
-          <span className="text-[10px] font-bold uppercase tracking-wide text-deep-soil/55">
+          <span className="text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">
             Display name *
           </span>
           <input
             name="displayName"
             required
-            className="mt-1 w-full rounded border border-deep-soil/15 px-3 py-2 text-sm"
+            className="mt-1 w-full rounded border border-kelly-text/15 px-3 py-2 text-sm"
           />
         </label>
         <div className="grid gap-3 sm:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-[10px] font-bold uppercase tracking-wide text-deep-soil/55">First</span>
-            <input name="firstName" className="mt-1 w-full rounded border border-deep-soil/15 px-3 py-2 text-sm" />
+            <span className="text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">First</span>
+            <input name="firstName" className="mt-1 w-full rounded border border-kelly-text/15 px-3 py-2 text-sm" />
           </label>
           <label className="block text-sm">
-            <span className="text-[10px] font-bold uppercase tracking-wide text-deep-soil/55">Last</span>
-            <input name="lastName" className="mt-1 w-full rounded border border-deep-soil/15 px-3 py-2 text-sm" />
+            <span className="text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">Last</span>
+            <input name="lastName" className="mt-1 w-full rounded border border-kelly-text/15 px-3 py-2 text-sm" />
           </label>
         </div>
         <label className="block text-sm">
-          <span className="text-[10px] font-bold uppercase tracking-wide text-deep-soil/55">Phone</span>
+          <span className="text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">Phone</span>
           <input
             name="phone"
             type="tel"
-            className="mt-1 w-full rounded border border-deep-soil/15 px-3 py-2 text-sm"
+            className="mt-1 w-full rounded border border-kelly-text/15 px-3 py-2 text-sm"
           />
         </label>
         <label className="block text-sm">
-          <span className="text-[10px] font-bold uppercase tracking-wide text-deep-soil/55">Email</span>
+          <span className="text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">Email</span>
           <input
             name="email"
             type="email"
-            className="mt-1 w-full rounded border border-deep-soil/15 px-3 py-2 text-sm"
+            className="mt-1 w-full rounded border border-kelly-text/15 px-3 py-2 text-sm"
           />
         </label>
         <label className="block text-sm">
-          <span className="text-[10px] font-bold uppercase tracking-wide text-deep-soil/55">Relationship</span>
+          <span className="text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">Relationship</span>
           <select
             name="relationshipType"
-            className="mt-1 w-full rounded border border-deep-soil/15 px-3 py-2 text-sm"
+            className="mt-1 w-full rounded border border-kelly-text/15 px-3 py-2 text-sm"
             defaultValue={RelationalRelationshipType.UNKNOWN}
           >
             {Object.values(RelationalRelationshipType).map((v) => (
@@ -78,11 +78,11 @@ export default async function NewRelationalContactPage({ searchParams }: Props) 
         </label>
         <div className="space-y-2">
           <label className="flex items-center gap-2 text-sm">
-            <input type="checkbox" name="isCoreFive" className="rounded border-deep-soil/30" />
+            <input type="checkbox" name="isCoreFive" className="rounded border-kelly-text/30" />
             <span>Part of my core five</span>
           </label>
           <label className="block text-sm">
-            <span className="text-[10px] font-bold uppercase tracking-wide text-deep-soil/55">
+            <span className="text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">
               Power-of-five slot (1–5)
             </span>
             <input
@@ -90,21 +90,21 @@ export default async function NewRelationalContactPage({ searchParams }: Props) 
               type="number"
               min={1}
               max={5}
-              className="mt-1 w-24 rounded border border-deep-soil/15 px-3 py-2 text-sm"
+              className="mt-1 w-24 rounded border border-kelly-text/15 px-3 py-2 text-sm"
             />
           </label>
         </div>
         <label className="block text-sm">
-          <span className="text-[10px] font-bold uppercase tracking-wide text-deep-soil/55">Notes</span>
+          <span className="text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">Notes</span>
           <textarea
             name="notes"
             rows={3}
-            className="mt-1 w-full rounded border border-deep-soil/15 px-3 py-2 text-sm"
+            className="mt-1 w-full rounded border border-kelly-text/15 px-3 py-2 text-sm"
           />
         </label>
         <button
           type="submit"
-          className="w-full rounded bg-red-dirt px-4 py-2.5 text-sm font-semibold text-cream-canvas"
+          className="w-full rounded bg-kelly-navy px-4 py-2.5 text-sm font-semibold text-kelly-page"
         >
           Save
         </button>

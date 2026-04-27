@@ -38,7 +38,7 @@ export function LazyYouTubeEmbed({ videoId, title, posterUrl, className }: LazyY
             <img src={posterUrl} alt="" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
           ) : (
             <div
-              className="absolute inset-0 bg-gradient-to-br from-civic-midnight via-civic-deep to-civic-blue"
+              className="absolute inset-0 bg-gradient-to-br from-kelly-navy via-kelly-deep to-kelly-blue"
               aria-hidden
             />
           )}
@@ -46,10 +46,10 @@ export function LazyYouTubeEmbed({ videoId, title, posterUrl, className }: LazyY
           <button
             type="button"
             onClick={onActivate}
-            className="absolute inset-0 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-civic-gold focus-visible:ring-offset-2 focus-visible:ring-offset-civic-midnight"
+            className="absolute inset-0 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kelly-gold focus-visible:ring-offset-2 focus-visible:ring-offset-kelly-navy"
             aria-label={`Play video: ${title}`}
           >
-            <span className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-civic-gold/80 bg-civic-midnight/55 text-2xl text-civic-gold shadow-lg backdrop-blur-sm transition hover:scale-105">
+            <span className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-kelly-gold/80 bg-kelly-navy/55 text-2xl text-kelly-gold shadow-lg backdrop-blur-sm transition hover:scale-105">
               ▶
             </span>
           </button>

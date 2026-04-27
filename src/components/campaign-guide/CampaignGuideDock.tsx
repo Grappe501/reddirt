@@ -191,15 +191,15 @@ export function CampaignGuideDock() {
         type="button"
         onClick={() => setOpen(true)}
         className={cn(
-          "fixed z-[45] flex max-w-[calc(100vw-1.5rem)] items-center gap-1.5 rounded-full border border-deep-soil/12 bg-cream-canvas/95 px-3 py-2 font-body text-xs font-semibold text-deep-soil shadow-md backdrop-blur-md transition",
-          "hover:border-red-dirt/35 hover:bg-white hover:shadow-lg",
+          "fixed z-[45] flex max-w-[calc(100vw-1.5rem)] items-center gap-1.5 rounded-full border border-kelly-text/12 bg-kelly-page/95 px-3 py-2 font-body text-xs font-semibold text-kelly-text shadow-md backdrop-blur-md transition",
+          "hover:border-kelly-navy/35 hover:bg-white hover:shadow-lg",
           "bottom-[max(1rem,env(safe-area-inset-bottom,0px))] right-[max(1rem,env(safe-area-inset-right,0px))] sm:bottom-6 sm:right-6",
         )}
         aria-expanded={open}
         aria-controls={panelId}
         aria-label="Ask Kelly — open the site guide chat"
       >
-        <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-dirt/15 text-[11px] font-bold text-red-dirt" aria-hidden>
+        <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-kelly-navy/15 text-[11px] font-bold text-kelly-navy" aria-hidden>
           KG
         </span>
         <span className="pr-0.5 tracking-wide">Ask Kelly</span>
@@ -208,7 +208,7 @@ export function CampaignGuideDock() {
       {open
         ? createPortal(
             <div
-              className="fixed inset-0 z-[60] flex items-end justify-end bg-civic-midnight/40 p-0 sm:items-stretch sm:justify-stretch sm:p-4"
+              className="fixed inset-0 z-[60] flex items-end justify-end bg-kelly-navy/40 p-0 sm:items-stretch sm:justify-stretch sm:p-4"
               role="presentation"
               onClick={() => setOpen(false)}
             >
@@ -217,13 +217,13 @@ export function CampaignGuideDock() {
                 role="dialog"
                 aria-modal="true"
                 aria-label="Ask Kelly — campaign guide"
-                className="flex h-[min(100dvh,640px)] w-full max-w-lg flex-col rounded-t-2xl border border-civic-ink/15 bg-cream-canvas shadow-2xl sm:h-[min(92vh,720px)] sm:rounded-2xl"
+                className="flex h-[min(100dvh,640px)] w-full max-w-lg flex-col rounded-t-2xl border border-kelly-ink/15 bg-kelly-page shadow-2xl sm:h-[min(92vh,720px)] sm:rounded-2xl"
                 onClick={(e) => e.stopPropagation()}
               >
-                <div className="flex items-center justify-between border-b border-deep-soil/10 px-4 py-3">
+                <div className="flex items-center justify-between border-b border-kelly-text/10 px-4 py-3">
                   <div>
-                    <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-red-dirt">Ask Kelly</p>
-                    <p className="font-body text-xs text-deep-soil/60">
+                    <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-kelly-navy">Ask Kelly</p>
+                    <p className="font-body text-xs text-kelly-text/60">
                       Guide v{ASSISTANT_API_VERSION} · streaming · citations · {responseStyle} answers · 3/min ·
                       kelly@kellygrappe.com if I’m stumped
                     </p>
@@ -237,8 +237,8 @@ export function CampaignGuideDock() {
                           className={cn(
                             "rounded-full px-2.5 py-0.5 font-body text-[10px] font-semibold uppercase tracking-wide",
                             responseStyle === s
-                              ? "bg-red-dirt/20 text-red-dirt ring-1 ring-red-dirt/35"
-                              : "bg-deep-soil/5 text-deep-soil/65 hover:bg-deep-soil/10",
+                              ? "bg-kelly-navy/20 text-kelly-navy ring-1 ring-kelly-navy/35"
+                              : "bg-kelly-text/5 text-kelly-text/65 hover:bg-kelly-text/10",
                           )}
                         >
                           {s}
@@ -249,15 +249,15 @@ export function CampaignGuideDock() {
                   <button
                     type="button"
                     onClick={() => setOpen(false)}
-                    className="rounded-lg px-3 py-1.5 font-body text-sm font-semibold text-deep-soil hover:bg-deep-soil/5"
+                    className="rounded-lg px-3 py-1.5 font-body text-sm font-semibold text-kelly-text hover:bg-kelly-text/5"
                   >
                     Close
                   </button>
                 </div>
 
                 {journeyBeatOnPage && beatById(journeyBeatOnPage) ? (
-                  <p className="border-b border-deep-soil/8 bg-civic-fog/50 px-4 py-2 font-body text-xs text-civic-slate">
-                    <span className="font-semibold text-civic-ink">You’re in:</span> {beatById(journeyBeatOnPage)?.navLabel} —{" "}
+                  <p className="border-b border-kelly-text/8 bg-kelly-fog/50 px-4 py-2 font-body text-xs text-kelly-slate">
+                    <span className="font-semibold text-kelly-ink">You’re in:</span> {beatById(journeyBeatOnPage)?.navLabel} —{" "}
                     {beatById(journeyBeatOnPage)?.description}
                   </p>
                 ) : null}
@@ -268,14 +268,14 @@ export function CampaignGuideDock() {
                       key={`${msg.role}-${i}`}
                       className={cn(
                         "rounded-xl px-3 py-2.5 font-body text-sm leading-relaxed",
-                        msg.role === "user" ? "ml-6 bg-red-dirt/12 text-deep-soil" : "mr-4 bg-white text-deep-soil shadow-sm",
+                        msg.role === "user" ? "ml-6 bg-kelly-navy/12 text-kelly-text" : "mr-4 bg-white text-kelly-text shadow-sm",
                       )}
                     >
                       {msg.text}
                     </div>
                   ))}
                   {loading ? (
-                    <p className="font-body text-sm italic text-deep-soil/50">
+                    <p className="font-body text-sm italic text-kelly-text/50">
                       Digging through what the campaign taught me…
                     </p>
                   ) : null}
@@ -286,7 +286,7 @@ export function CampaignGuideDock() {
                         <Link
                           key={s.href}
                           href={s.href}
-                          className="rounded-full border border-civic-blue/25 bg-civic-fog/80 px-3 py-1.5 font-body text-xs font-semibold text-civic-blue hover:border-civic-gold"
+                          className="rounded-full border border-kelly-blue/25 bg-kelly-fog/80 px-3 py-1.5 font-body text-xs font-semibold text-kelly-blue hover:border-kelly-gold"
                           onClick={() => setOpen(false)}
                         >
                           {s.label}
@@ -296,7 +296,7 @@ export function CampaignGuideDock() {
                   ) : null}
                 </div>
 
-                <div className="border-t border-deep-soil/10 p-3">
+                <div className="border-t border-kelly-text/10 p-3">
                   <textarea
                     ref={inputRef}
                     value={input}
@@ -309,13 +309,13 @@ export function CampaignGuideDock() {
                     }}
                     rows={2}
                     placeholder="Ask anything on this site—or something specific about Kelly…"
-                    className="w-full resize-none rounded-lg border border-deep-soil/15 bg-white px-3 py-2 font-body text-sm text-deep-soil outline-none focus:ring-2 focus:ring-red-dirt/30"
+                    className="w-full resize-none rounded-lg border border-kelly-text/15 bg-white px-3 py-2 font-body text-sm text-kelly-text outline-none focus:ring-2 focus:ring-kelly-navy/30"
                   />
                   <button
                     type="button"
                     onClick={() => void send()}
                     disabled={loading || !input.trim()}
-                    className="mt-2 w-full rounded-lg bg-civic-midnight py-2.5 font-body text-sm font-bold uppercase tracking-wider text-civic-mist disabled:opacity-50"
+                    className="mt-2 w-full rounded-lg bg-kelly-navy py-2.5 font-body text-sm font-bold uppercase tracking-wider text-kelly-mist disabled:opacity-50"
                   >
                     Send
                   </button>

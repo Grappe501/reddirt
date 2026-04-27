@@ -16,13 +16,13 @@ export default async function AdminReviewQueuePage() {
 
   return (
     <div className="mx-auto max-w-4xl">
-      <h1 className="font-heading text-3xl font-bold text-deep-soil">Review queue</h1>
-      <p className="mt-3 font-body text-sm text-deep-soil/75">
+      <h1 className="font-heading text-3xl font-bold text-kelly-text">Review queue</h1>
+      <p className="mt-3 font-body text-sm text-kelly-text/75">
         Items awaiting human review ({items.length} pending). Approve, feature, suppress, or route from each detail
         page.
       </p>
       <div className="mt-6 flex gap-3">
-        <Link href="/admin/inbox" className="text-sm font-semibold text-red-dirt hover:underline">
+        <Link href="/admin/inbox" className="text-sm font-semibold text-kelly-navy hover:underline">
           Full inbox with filters →
         </Link>
       </div>
@@ -31,24 +31,24 @@ export default async function AdminReviewQueuePage() {
         {items.map((row) => (
           <li
             key={row.id}
-            className="rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)]"
+            className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]"
           >
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
-                <Link href={`/admin/inbox/${row.id}`} className="font-heading text-lg font-bold text-red-dirt hover:underline">
+                <Link href={`/admin/inbox/${row.id}`} className="font-heading text-lg font-bold text-kelly-navy hover:underline">
                   {row.title ?? "(untitled)"}
                 </Link>
-                <p className="mt-1 font-body text-xs text-deep-soil/55">
+                <p className="mt-1 font-body text-xs text-kelly-text/55">
                   {platformLabel(row.sourcePlatform)} · {sourceTypeLabel(row.sourceType)} ·{" "}
                   {(row.publishedAt ?? row.syncTimestamp).toLocaleString()}
                 </p>
                 {row.excerpt ? (
-                  <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">{row.excerpt.slice(0, 280)}</p>
+                  <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">{row.excerpt.slice(0, 280)}</p>
                 ) : null}
               </div>
               <Link
                 href={`/admin/inbox/${row.id}`}
-                className="shrink-0 rounded-btn bg-red-dirt px-4 py-2 text-xs font-bold text-cream-canvas"
+                className="shrink-0 rounded-btn bg-kelly-navy px-4 py-2 text-xs font-bold text-kelly-page"
               >
                 Review
               </Link>
@@ -57,7 +57,7 @@ export default async function AdminReviewQueuePage() {
         ))}
       </ul>
       {items.length === 0 ? (
-        <p className="mt-10 text-center font-body text-sm text-deep-soil/55">Queue is clear.</p>
+        <p className="mt-10 text-center font-body text-sm text-kelly-text/55">Queue is clear.</p>
       ) : null}
     </div>
   );

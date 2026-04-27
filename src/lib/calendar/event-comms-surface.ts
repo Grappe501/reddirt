@@ -33,7 +33,7 @@ export function buildEventCommsChips(
     out.push({ key: "canc", className: "bg-red-800/25 text-red-950", short: "CAN" });
   }
   if (e.endAt.getTime() < now && e.eventWorkflowState === "PUBLISHED" && e.thankYouQueuedAt == null) {
-    out.push({ key: "thx", className: "bg-washed-denim/20 text-civic-slate", short: "THX" });
+    out.push({ key: "thx", className: "bg-kelly-muted/20 text-kelly-slate", short: "THX" });
   }
   return out;
 }

@@ -22,6 +22,7 @@
     "postinstall": "prisma generate",
     "db:migrate": "prisma migrate deploy",
     "db:seed": "prisma db seed",
+    "netlify:build": "bash scripts/netlify-build.sh",
     "db:studio": "prisma studio",
     "ingest": "tsx scripts/ingest-docs.ts",
     "ingest:county-wikipedia": "tsx scripts/ingest-county-wikipedia.ts",

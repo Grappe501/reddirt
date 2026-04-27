@@ -17,29 +17,29 @@ export default async function CommsWorkbenchPlanDetailPage({ params }: Props) {
     <div className="min-w-0 p-1">
       <CommsPlanScrollToHash />
       <CommsWorkbenchSubnav />
-      <div className="mt-2 space-y-1.5 border-b border-deep-soil/10 pb-2">
+      <div className="mt-2 space-y-1.5 border-b border-kelly-text/10 pb-2">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex flex-wrap items-center gap-2">
             <Link
               href={COMMS_APP_PATHS.dashboard}
-              className="rounded border border-deep-soil/15 bg-white px-2 py-0.5 text-xs font-semibold text-civic-slate"
+              className="rounded border border-kelly-text/15 bg-white px-2 py-0.5 text-xs font-semibold text-kelly-slate"
             >
               Comms operations
             </Link>
             <Link
               href={COMMS_APP_PATHS.plans}
-              className="rounded border border-deep-soil/15 bg-cream-canvas px-2 py-0.5 text-xs font-semibold text-civic-slate"
+              className="rounded border border-kelly-text/15 bg-kelly-page px-2 py-0.5 text-xs font-semibold text-kelly-slate"
             >
               All message plans
             </Link>
           </div>
         </div>
-        <p className="text-[11px] text-deep-soil/55">
-          <Link className="font-semibold text-civic-slate" href={commsPlanPath(id, COMMS_PLAN_SECTION.execution)}>
+        <p className="text-[11px] text-kelly-text/55">
+          <Link className="font-semibold text-kelly-slate" href={commsPlanPath(id, COMMS_PLAN_SECTION.execution)}>
             Jump to execution
           </Link>{" "}
           ·{" "}
-          <Link className="font-semibold text-civic-slate" href={commsPlanPath(id, COMMS_PLAN_SECTION.sends)}>
+          <Link className="font-semibold text-kelly-slate" href={commsPlanPath(id, COMMS_PLAN_SECTION.sends)}>
             Jump to planned sends
           </Link>
         </p>

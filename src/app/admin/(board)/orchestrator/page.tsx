@@ -72,25 +72,25 @@ export default async function AdminOrchestratorHomePage() {
 
   return (
     <div className="mx-auto max-w-4xl">
-      <h1 className="font-heading text-3xl font-bold text-deep-soil">Content orchestrator</h1>
-      <p className="mt-3 font-body text-sm leading-relaxed text-deep-soil/75">
+      <h1 className="font-heading text-3xl font-bold text-kelly-text">Content orchestrator</h1>
+      <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
         Intake, normalization, and human routing for public-facing content. Outbound publishing stays off until this
         pipeline is trusted.
       </p>
 
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)]">
-          <p className="font-body text-xs font-bold uppercase tracking-wider text-deep-soil/50">Awaiting review</p>
-          <p className="mt-2 font-heading text-3xl font-bold text-red-dirt">{pendingCount}</p>
+        <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
+          <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-text/50">Awaiting review</p>
+          <p className="mt-2 font-heading text-3xl font-bold text-kelly-navy">{pendingCount}</p>
         </div>
-        <div className="rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)]">
-          <p className="font-body text-xs font-bold uppercase tracking-wider text-deep-soil/50">Routed to site</p>
-          <p className="mt-2 font-heading text-3xl font-bold text-deep-soil">{featuredVisible}</p>
-          <p className="mt-1 font-body text-xs text-deep-soil/55">Campaign trail or homepage rail</p>
+        <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
+          <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-text/50">Routed to site</p>
+          <p className="mt-2 font-heading text-3xl font-bold text-kelly-text">{featuredVisible}</p>
+          <p className="mt-1 font-body text-xs text-kelly-text/55">Campaign trail or homepage rail</p>
         </div>
-        <div className="rounded-card border border-deep-soil/10 bg-cream-canvas p-5 shadow-[var(--shadow-soft)] sm:col-span-2">
-          <p className="font-body text-xs font-bold uppercase tracking-wider text-deep-soil/50">Inbound by platform</p>
-          <ul className="mt-3 space-y-1 font-body text-sm text-deep-soil/80">
+        <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)] sm:col-span-2">
+          <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-text/50">Inbound by platform</p>
+          <ul className="mt-3 space-y-1 font-body text-sm text-kelly-text/80">
             {Object.values(ContentPlatform).map((p) => (
               <li key={p} className="flex justify-between gap-4">
                 <span>{p}</span>
@@ -101,14 +101,14 @@ export default async function AdminOrchestratorHomePage() {
         </div>
       </div>
 
-      <div className="mt-10 rounded-card border border-deep-soil/10 bg-cream-canvas p-6 shadow-[var(--shadow-soft)]">
-        <h2 className="font-heading text-lg font-bold text-deep-soil">Sync health by platform</h2>
-        <ul className="mt-4 divide-y divide-deep-soil/10 font-body text-sm">
+      <div className="mt-10 rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]">
+        <h2 className="font-heading text-lg font-bold text-kelly-text">Sync health by platform</h2>
+        <ul className="mt-4 divide-y divide-kelly-text/10 font-body text-sm">
           {connections.map((c) => (
             <li key={c.id} className="flex flex-wrap items-center justify-between gap-3 py-3 first:pt-0 last:pb-0">
               <div>
-                <p className="font-semibold text-deep-soil">{c.accountName ?? c.platform}</p>
-                <p className="text-xs text-deep-soil/55">
+                <p className="font-semibold text-kelly-text">{c.accountName ?? c.platform}</p>
+                <p className="text-xs text-kelly-text/55">
                   {healthLabel(c.status)}
                   {c.lastSyncedAt
                     ? ` · Last sync ${c.lastSyncedAt.toLocaleString()}`
@@ -117,7 +117,7 @@ export default async function AdminOrchestratorHomePage() {
                       : ""}
                 </p>
               </div>
-              <span className="rounded-full bg-deep-soil/8 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-deep-soil/70">
+              <span className="rounded-full bg-kelly-text/8 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-kelly-text/70">
                 {c.platform}
               </span>
             </li>
@@ -126,19 +126,19 @@ export default async function AdminOrchestratorHomePage() {
         <div className="mt-6 flex flex-wrap gap-3">
           <Link
             href="/admin/platforms"
-            className="rounded-btn bg-red-dirt px-4 py-2 text-sm font-bold text-cream-canvas"
+            className="rounded-btn bg-kelly-navy px-4 py-2 text-sm font-bold text-kelly-page"
           >
             Platforms & sync
           </Link>
           <Link
             href="/admin/inbox"
-            className="rounded-btn border border-deep-soil/20 px-4 py-2 text-sm font-semibold text-deep-soil"
+            className="rounded-btn border border-kelly-text/20 px-4 py-2 text-sm font-semibold text-kelly-text"
           >
             Open inbox
           </Link>
           <Link
             href="/admin/review-queue"
-            className="rounded-btn border border-deep-soil/20 px-4 py-2 text-sm font-semibold text-deep-soil"
+            className="rounded-btn border border-kelly-text/20 px-4 py-2 text-sm font-semibold text-kelly-text"
           >
             Review queue
           </Link>
@@ -147,36 +147,36 @@ export default async function AdminOrchestratorHomePage() {
 
       <div className="mt-10 grid gap-8 lg:grid-cols-2">
         <div>
-          <h2 className="font-heading text-lg font-bold text-deep-soil">Recent sync activity</h2>
-          <ul className="mt-4 space-y-2 font-body text-sm text-deep-soil/85">
+          <h2 className="font-heading text-lg font-bold text-kelly-text">Recent sync activity</h2>
+          <ul className="mt-4 space-y-2 font-body text-sm text-kelly-text/85">
             {recentItems.map((row) => (
               <li key={row.id}>
-                <Link href={`/admin/inbox/${row.id}`} className="font-semibold text-red-dirt hover:underline">
+                <Link href={`/admin/inbox/${row.id}`} className="font-semibold text-kelly-navy hover:underline">
                   {row.title?.slice(0, 80) ?? row.id}
                 </Link>
-                <span className="text-deep-soil/55">
+                <span className="text-kelly-text/55">
                   {" "}
                   · {row.sourcePlatform} · {row.reviewStatus} · {row.syncTimestamp.toLocaleString()}
                 </span>
               </li>
             ))}
-            {recentItems.length === 0 ? <li className="text-deep-soil/55">No inbound items yet.</li> : null}
+            {recentItems.length === 0 ? <li className="text-kelly-text/55">No inbound items yet.</li> : null}
           </ul>
         </div>
         <div>
-          <h2 className="font-heading text-lg font-bold text-deep-soil">Recent decisions</h2>
-          <ul className="mt-4 space-y-2 font-body text-sm text-deep-soil/85">
+          <h2 className="font-heading text-lg font-bold text-kelly-text">Recent decisions</h2>
+          <ul className="mt-4 space-y-2 font-body text-sm text-kelly-text/85">
             {recentDecisions.map((d) => (
               <li key={d.id}>
                 <span className="font-semibold">{d.status}</span>
-                <span className="text-deep-soil/55">
+                <span className="text-kelly-text/55">
                   {" "}
                   → {d.destination} · {d.inboundItem.title?.slice(0, 60) ?? d.inboundItemId} ·{" "}
                   {d.createdAt.toLocaleString()}
                 </span>
               </li>
             ))}
-            {recentDecisions.length === 0 ? <li className="text-deep-soil/55">No audit trail yet.</li> : null}
+            {recentDecisions.length === 0 ? <li className="text-kelly-text/55">No audit trail yet.</li> : null}
           </ul>
         </div>
       </div>

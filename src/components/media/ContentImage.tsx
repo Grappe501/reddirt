@@ -59,7 +59,7 @@ export function ContentImage({
     <span className={cn("relative block h-full w-full overflow-hidden", className)}>
       {inner}
       <span
-        className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-red-dirt/[0.12] via-transparent to-field-green/[0.08] mix-blend-multiply"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-kelly-navy/[0.12] via-transparent to-kelly-success/[0.08] mix-blend-multiply"
         aria-hidden
       />
     </span>

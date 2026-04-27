@@ -24,7 +24,7 @@ export function HomeExperience({ homepage, trailBand }: HomeExperienceProps) {
             <section
               id="beat-act"
               data-journey-beat="beat-act"
-              className="scroll-mt-[5.5rem] border-t border-civic-ink/[0.06]"
+              className="scroll-mt-[5.5rem] border-t border-kelly-ink/[0.06]"
               aria-label="Get involved"
             >
               <HomeGetInvolvedSection />

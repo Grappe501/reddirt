@@ -6,7 +6,7 @@ import {
 } from "@/content/about/kelly-about-chapters";
 
 const linkClass =
-  "font-body text-sm font-semibold text-red-dirt underline decoration-red-dirt/30 underline-offset-2 transition hover:decoration-red-dirt sm:text-base";
+  "font-body text-sm font-semibold text-kelly-navy underline decoration-kelly-navy/30 underline-offset-2 transition hover:decoration-kelly-navy sm:text-base";
 
 type Props = { slug: KellyAboutSlug };
 
@@ -17,7 +17,7 @@ export function AboutKellyChapterNav({ slug }: Props) {
 
   return (
     <nav
-      className="mt-12 flex flex-col gap-4 border-t border-deep-soil/10 pt-8 sm:flex-row sm:items-start sm:justify-between"
+      className="mt-12 flex flex-col gap-4 border-t border-kelly-text/10 pt-8 sm:flex-row sm:items-start sm:justify-between"
       aria-label="Previous and next chapter"
     >
       <div>

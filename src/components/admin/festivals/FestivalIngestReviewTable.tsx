@@ -22,25 +22,25 @@ function fmt(d: Date) {
 function SourceCell({ r }: { r: FestivalIngestAdminRow }) {
   if (r.sourceUrl.startsWith("sos:")) {
     return (
-      <div className="text-deep-soil/85">
-        <span className="font-semibold text-deep-soil">{r.sourceChannel}</span>
+      <div className="text-kelly-text/85">
+        <span className="font-semibold text-kelly-text">{r.sourceChannel}</span>
         {r.submitterInfoUrl ? (
           <a
             href={r.submitterInfoUrl}
-            className="mt-0.5 block break-all text-red-dirt underline"
+            className="mt-0.5 block break-all text-kelly-navy underline"
             target="_blank"
             rel="noopener noreferrer"
           >
             Submitter link
           </a>
         ) : (
-          <span className="mt-0.5 block text-deep-soil/55">(no public URL)</span>
+          <span className="mt-0.5 block text-kelly-text/55">(no public URL)</span>
         )}
       </div>
     );
   }
   return (
-    <a href={r.sourceUrl} className="break-all text-red-dirt underline" target="_blank" rel="noopener noreferrer">
+    <a href={r.sourceUrl} className="break-all text-kelly-navy underline" target="_blank" rel="noopener noreferrer">
       {r.sourceChannel}
     </a>
   );
@@ -56,7 +56,7 @@ export function FestivalIngestReviewTable({ rows, formRedirectBase }: Props) {
     <div className="mt-4 overflow-x-auto">
       <table className="w-full min-w-[800px] border-collapse text-left text-[11px]">
         <thead>
-          <tr className="border-b border-deep-soil/15 bg-cream-canvas/80">
+          <tr className="border-b border-kelly-text/15 bg-kelly-page/80">
             <th className="p-1.5 font-semibold">When (Central)</th>
             <th className="p-1.5 font-semibold">Event</th>
             <th className="p-1.5 font-semibold">Place</th>
@@ -70,38 +70,38 @@ export function FestivalIngestReviewTable({ rows, formRedirectBase }: Props) {
         <tbody>
           {rows.length === 0 ? (
             <tr>
-              <td colSpan={8} className="p-4 text-center text-deep-soil/55">
+              <td colSpan={8} className="p-4 text-center text-kelly-text/55">
                 No rows for this filter.
               </td>
             </tr>
           ) : (
             rows.map((r) => (
-              <tr key={r.id} className="border-b border-deep-soil/10 align-top">
-                <td className="p-1.5 font-mono text-[10px] text-deep-soil/85">
+              <tr key={r.id} className="border-b border-kelly-text/10 align-top">
+                <td className="p-1.5 font-mono text-[10px] text-kelly-text/85">
                   {fmt(r.startAt)}
                   <br />
-                  <span className="text-deep-soil/50">→ {fmt(r.endAt)}</span>
+                  <span className="text-kelly-text/50">→ {fmt(r.endAt)}</span>
                 </td>
-                <td className="p-1.5 font-medium text-deep-soil">{r.name}</td>
-                <td className="p-1.5 text-deep-soil/80">
+                <td className="p-1.5 font-medium text-kelly-text">{r.name}</td>
+                <td className="p-1.5 text-kelly-text/80">
                   {r.city ? `${r.city}` : "—"}
                   {r.county ? (
-                    <span className="text-deep-soil/55">
+                    <span className="text-kelly-text/55">
                       <br />({r.county.displayName})
                     </span>
                   ) : null}
                 </td>
-                <td className="p-1.5 text-[10px] text-deep-soil/80">
+                <td className="p-1.5 text-[10px] text-kelly-text/80">
                   {r.submitterName || r.submitterEmail ? (
                     <>
-                      {r.submitterName ? <span className="block font-medium text-deep-soil">{r.submitterName}</span> : null}
-                      {r.submitterEmail ? <span className="text-deep-soil/65">{r.submitterEmail}</span> : null}
+                      {r.submitterName ? <span className="block font-medium text-kelly-text">{r.submitterName}</span> : null}
+                      {r.submitterEmail ? <span className="text-kelly-text/65">{r.submitterEmail}</span> : null}
                     </>
                   ) : (
                     "—"
                   )}
                 </td>
-                <td className="p-1.5 text-[10px] uppercase tracking-wide text-deep-soil/75">{r.reviewStatus}</td>
+                <td className="p-1.5 text-[10px] uppercase tracking-wide text-kelly-text/75">{r.reviewStatus}</td>
                 <td className="p-1.5">{r.isVisibleOnSite ? "Yes" : "No"}</td>
                 <td className="p-1.5 max-w-[160px]">
                   <SourceCell r={r} />
@@ -125,7 +125,7 @@ export function FestivalIngestReviewTable({ rows, formRedirectBase }: Props) {
                           <input type="hidden" name="next" value={formRedirectBase} />
                           <button
                             type="submit"
-                            className="w-full rounded border border-deep-soil/20 px-1.5 py-0.5 text-left text-[10px] text-deep-soil/80 hover:bg-deep-soil/5"
+                            className="w-full rounded border border-kelly-text/20 px-1.5 py-0.5 text-left text-[10px] text-kelly-text/80 hover:bg-kelly-text/5"
                           >
                             Reject
                           </button>
@@ -165,7 +165,7 @@ export function FestivalIngestReviewTable({ rows, formRedirectBase }: Props) {
                         <input type="hidden" name="next" value={formRedirectBase} />
                         <button
                           type="submit"
-                          className="w-full text-left text-[9px] text-civic-slate underline"
+                          className="w-full text-left text-[9px] text-kelly-slate underline"
                         >
                           Reset to pending
                         </button>

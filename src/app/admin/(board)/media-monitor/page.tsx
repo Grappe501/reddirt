@@ -22,7 +22,7 @@ type Props = {
   }>;
 };
 
-const card = "rounded-md border border-deep-soil/10 bg-cream-canvas px-3 py-2 text-sm";
+const card = "rounded-md border border-kelly-text/10 bg-kelly-page px-3 py-2 text-sm";
 
 export default async function MediaMonitorPage({ searchParams }: Props) {
   const sp = await searchParams;
@@ -80,22 +80,22 @@ export default async function MediaMonitorPage({ searchParams }: Props) {
   };
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8 text-deep-soil">
-      <header className="mb-6 border-b border-deep-soil/10 pb-4">
-        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-deep-soil/45">
+    <div className="mx-auto max-w-6xl px-4 py-8 text-kelly-text">
+      <header className="mb-6 border-b border-kelly-text/10 pb-4">
+        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-text/45">
           Campaign intelligence
         </p>
         <h1 className="font-heading text-2xl font-bold">Press monitor</h1>
-        <p className="mt-2 max-w-3xl font-body text-sm leading-relaxed text-deep-soil/70">
+        <p className="mt-2 max-w-3xl font-body text-sm leading-relaxed text-kelly-text/70">
           Earned-media mentions from the Arkansas registry (RSS-first, robots-aware). Approve items for the public{" "}
-          <Link href="/press-coverage" className="text-civic-slate underline">
+          <Link href="/press-coverage" className="text-kelly-slate underline">
             Press coverage
           </Link>{" "}
           page. Schedule weekly runs via{" "}
-          <code className="rounded bg-deep-soil/5 px-1 text-xs">GET /api/cron/media-monitor?key=…</code>.
+          <code className="rounded bg-kelly-text/5 px-1 text-xs">GET /api/cron/media-monitor?key=…</code>.
         </p>
         {lastRun ? (
-          <p className="mt-2 font-mono text-[11px] text-deep-soil/55">
+          <p className="mt-2 font-mono text-[11px] text-kelly-text/55">
             Last run: {lastRun.startedAt.toISOString()} · inserted {lastRun.itemsInserted} · updated {lastRun.itemsUpdated}{" "}
             · discovered {lastRun.itemsDiscovered}
             {lastRun.error ? ` · error: ${lastRun.error}` : ""}
@@ -106,7 +106,7 @@ export default async function MediaMonitorPage({ searchParams }: Props) {
       </header>
 
       <div className={`mb-4 flex flex-wrap gap-2 ${card}`}>
-        <span className="text-[10px] font-bold uppercase text-deep-soil/45">Filters</span>
+        <span className="text-[10px] font-bold uppercase text-kelly-text/45">Filters</span>
         <FilterLink href={`/admin/media-monitor${q({ source: null })}`} active={!sourceSlug}>
           All sources
         </FilterLink>
@@ -115,7 +115,7 @@ export default async function MediaMonitorPage({ searchParams }: Props) {
             {s.name}
           </FilterLink>
         ))}
-        <Link href="/admin/media-monitor" className="text-[11px] text-civic-slate underline">
+        <Link href="/admin/media-monitor" className="text-[11px] text-kelly-slate underline">
           Clear
         </Link>
       </div>
@@ -146,9 +146,9 @@ export default async function MediaMonitorPage({ searchParams }: Props) {
         </FilterLink>
       </div>
 
-      <div className="overflow-x-auto rounded-md border border-deep-soil/10 bg-white">
+      <div className="overflow-x-auto rounded-md border border-kelly-text/10 bg-white">
         <table className="w-full min-w-[880px] border-collapse text-left text-[11px]">
-          <thead className="border-b border-deep-soil/10 bg-cream-canvas/80 font-bold uppercase tracking-wider text-deep-soil/55">
+          <thead className="border-b border-kelly-text/10 bg-kelly-page/80 font-bold uppercase tracking-wider text-kelly-text/55">
             <tr>
               <th className="p-2">Published</th>
               <th className="p-2">Outlet</th>
@@ -160,40 +160,40 @@ export default async function MediaMonitorPage({ searchParams }: Props) {
           <tbody>
             {mentions.length === 0 ? (
               <tr>
-                <td colSpan={5} className="p-6 text-deep-soil/55">
+                <td colSpan={5} className="p-6 text-kelly-text/55">
                   No mentions match. Run ingestion, or widen filters.
                 </td>
               </tr>
             ) : (
               mentions.map((m) => (
-                <tr key={m.id} className="border-b border-deep-soil/5 align-top">
-                  <td className="p-2 font-mono text-[10px] text-deep-soil/70">
+                <tr key={m.id} className="border-b border-kelly-text/5 align-top">
+                  <td className="p-2 font-mono text-[10px] text-kelly-text/70">
                     {m.publishedAt ? m.publishedAt.toISOString().slice(0, 10) : "—"}
                   </td>
                   <td className="p-2">
                     <div className="font-semibold">{m.source.name}</div>
-                    <div className="text-[10px] text-deep-soil/50">{m.sourceType}</div>
+                    <div className="text-[10px] text-kelly-text/50">{m.sourceType}</div>
                   </td>
                   <td className="p-2 max-w-[280px]">
                     <a
                       href={m.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-medium text-civic-slate underline"
+                      className="font-medium text-kelly-slate underline"
                     >
                       {m.title}
                     </a>
                     {m.summary ? (
-                      <p className="mt-1 line-clamp-3 text-[10px] leading-snug text-deep-soil/65">{m.summary}</p>
+                      <p className="mt-1 line-clamp-3 text-[10px] leading-snug text-kelly-text/65">{m.summary}</p>
                     ) : null}
-                    <p className="mt-1 text-[9px] text-deep-soil/45">
+                    <p className="mt-1 text-[9px] text-kelly-text/45">
                       {m.transcriptMissing ? "Transcript n/a · " : ""}
                       {m.fullText ? "Full text captured" : "Link + snippet only"}
                     </p>
                   </td>
                   <td className="p-2 text-[10px]">
                     <div>{m.matchTier}</div>
-                    <div className="text-deep-soil/55">{m.mentionType}</div>
+                    <div className="text-kelly-text/55">{m.mentionType}</div>
                     {m.confidenceScore != null ? <div>score {m.confidenceScore.toFixed(2)}</div> : null}
                   </td>
                   <td className="p-2 min-w-[200px]">
@@ -202,7 +202,7 @@ export default async function MediaMonitorPage({ searchParams }: Props) {
                       <select
                         name="reviewStatus"
                         defaultValue={m.reviewStatus}
-                        className="w-full border border-deep-soil/15 bg-white px-1 py-0.5 text-[10px]"
+                        className="w-full border border-kelly-text/15 bg-white px-1 py-0.5 text-[10px]"
                       >
                         {Object.values(ExternalMediaReviewStatus).map((r) => (
                           <option key={r} value={r}>
@@ -238,11 +238,11 @@ export default async function MediaMonitorPage({ searchParams }: Props) {
                         />
                         Surrogate
                       </label>
-                      <label className="mt-1 block text-[9px] text-deep-soil/45">County</label>
+                      <label className="mt-1 block text-[9px] text-kelly-text/45">County</label>
                       <select
                         name="relatedCountyId"
                         defaultValue={m.relatedCountyId ?? ""}
-                        className="w-full border border-deep-soil/15 bg-white px-1 text-[10px]"
+                        className="w-full border border-kelly-text/15 bg-white px-1 text-[10px]"
                       >
                         <option value="">—</option>
                         {counties.map((c) => (
@@ -251,11 +251,11 @@ export default async function MediaMonitorPage({ searchParams }: Props) {
                           </option>
                         ))}
                       </select>
-                      <label className="mt-1 block text-[9px] text-deep-soil/45">Event</label>
+                      <label className="mt-1 block text-[9px] text-kelly-text/45">Event</label>
                       <select
                         name="relatedEventId"
                         defaultValue={m.relatedEventId ?? ""}
-                        className="w-full border border-deep-soil/15 bg-white px-1 text-[10px]"
+                        className="w-full border border-kelly-text/15 bg-white px-1 text-[10px]"
                       >
                         <option value="">—</option>
                         {events.map((e) => (
@@ -264,16 +264,16 @@ export default async function MediaMonitorPage({ searchParams }: Props) {
                           </option>
                         ))}
                       </select>
-                      <label className="mt-1 block text-[9px] text-deep-soil/45">Campaign summary</label>
+                      <label className="mt-1 block text-[9px] text-kelly-text/45">Campaign summary</label>
                       <textarea
                         name="campaignSummary"
                         rows={2}
                         defaultValue={m.campaignSummary ?? ""}
-                        className="w-full border border-deep-soil/15 bg-white p-1 text-[10px]"
+                        className="w-full border border-kelly-text/15 bg-white p-1 text-[10px]"
                       />
                       <button
                         type="submit"
-                        className="mt-1 rounded border border-deep-soil/20 bg-deep-soil px-2 py-1 text-[10px] font-bold text-cream-canvas"
+                        className="mt-1 rounded border border-kelly-text/20 bg-kelly-text px-2 py-1 text-[10px] font-bold text-kelly-page"
                       >
                         Save
                       </button>
@@ -302,7 +302,7 @@ function FilterLink({
     <Link
       href={href}
       className={`rounded px-2 py-0.5 text-[11px] font-semibold ${
-        active ? "bg-deep-soil text-cream-canvas" : "border border-deep-soil/15 bg-white text-deep-soil"
+        active ? "bg-kelly-text text-kelly-page" : "border border-kelly-text/15 bg-white text-kelly-text"
       }`}
     >
       {children}

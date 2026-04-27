@@ -42,11 +42,11 @@ export function FromTheRoadLiveEmbeds({ config }: Props) {
       <div className="grid gap-10 lg:grid-cols-2">
         {fbSrc ? (
           <div className="flex min-h-0 flex-col">
-            <div className="mb-2 font-body text-[11px] font-bold uppercase tracking-[0.2em] text-civic-slate/60">
+            <div className="mb-2 font-body text-[11px] font-bold uppercase tracking-[0.2em] text-kelly-slate/60">
               Facebook — live page
             </div>
             <div
-              className="relative w-full max-h-[min(80vh,820px)] overflow-auto rounded-card border border-civic-ink/12 bg-white shadow-inner shadow-civic-ink/5"
+              className="relative w-full max-h-[min(80vh,820px)] overflow-auto rounded-card border border-kelly-ink/12 bg-white shadow-inner shadow-kelly-ink/5"
               role="region"
               aria-label="Facebook page"
             >
@@ -65,10 +65,10 @@ export function FromTheRoadLiveEmbeds({ config }: Props) {
         ) : null}
         {config.tiktokVideoIds.length > 0 ? (
           <div className="flex min-h-0 flex-col">
-            <div className="mb-2 font-body text-[11px] font-bold uppercase tracking-[0.2em] text-civic-slate/60">
+            <div className="mb-2 font-body text-[11px] font-bold uppercase tracking-[0.2em] text-kelly-slate/60">
               TikTok — selected clips
             </div>
-            <ul className="max-h-[min(80vh,900px)] space-y-6 overflow-y-auto rounded-card border border-civic-ink/12 bg-civic-midnight/5 p-3 pr-2 shadow-inner sm:p-4">
+            <ul className="max-h-[min(80vh,900px)] space-y-6 overflow-y-auto rounded-card border border-kelly-ink/12 bg-kelly-navy/5 p-3 pr-2 shadow-inner sm:p-4">
               {config.tiktokVideoIds.map((id) => (
                 <li key={id} className="mx-auto w-full max-w-md overflow-hidden rounded-lg bg-black/80 shadow-lg">
                   <iframe
@@ -88,11 +88,11 @@ export function FromTheRoadLiveEmbeds({ config }: Props) {
 
       {config.youtubePlaylistId ? (
         <div className="flex min-h-0 flex-col">
-          <div className="mb-2 font-body text-[11px] font-bold uppercase tracking-[0.2em] text-civic-slate/60">
+          <div className="mb-2 font-body text-[11px] font-bold uppercase tracking-[0.2em] text-kelly-slate/60">
             YouTube — latest uploads (playlist)
           </div>
           <div
-            className="overflow-hidden rounded-card border border-civic-ink/12 bg-civic-midnight/5 shadow-inner"
+            className="overflow-hidden rounded-card border border-kelly-ink/12 bg-kelly-navy/5 shadow-inner"
             role="region"
             aria-label="YouTube uploads playlist"
           >
@@ -110,14 +110,14 @@ export function FromTheRoadLiveEmbeds({ config }: Props) {
 
       {config.instagramEmbedShortcodes.length > 0 ? (
         <div className="flex min-h-0 flex-col">
-          <div className="mb-2 font-body text-[11px] font-bold uppercase tracking-[0.2em] text-civic-slate/60">
+          <div className="mb-2 font-body text-[11px] font-bold uppercase tracking-[0.2em] text-kelly-slate/60">
             Instagram — featured posts
           </div>
           <ul className="grid gap-6 md:grid-cols-2">
             {config.instagramEmbedShortcodes.map((code) => (
               <li
                 key={code}
-                className="overflow-hidden rounded-card border border-civic-ink/12 bg-white shadow-sm shadow-civic-ink/5"
+                className="overflow-hidden rounded-card border border-kelly-ink/12 bg-white shadow-sm shadow-kelly-ink/5"
               >
                 <iframe
                   title={`Instagram post ${code}`}

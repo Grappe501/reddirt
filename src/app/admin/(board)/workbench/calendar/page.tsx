@@ -39,7 +39,7 @@ import { ensureExecutionChecklist, computeEventHealthScore } from "@/lib/calenda
 
 const breakOut =
   "-mx-6 -mt-10 mb-0 w-[calc(100%+3rem)] max-w-[calc(100vw-280px-3rem)] min-w-0 px-0 pt-0 pb-6 lg:-mx-12 lg:mt-0 lg:w-[calc(100%+6rem)] lg:max-w-none";
-const h2 = "font-heading text-[9px] font-bold uppercase tracking-wider text-deep-soil/50";
+const h2 = "font-heading text-[9px] font-bold uppercase tracking-wider text-kelly-text/50";
 
 type Props = {
   searchParams: Promise<{
@@ -231,18 +231,18 @@ export default async function CalendarHqPage({ searchParams }: Props) {
                 <li key={e.id}>
                   <Link
                     href={eventHref(e.id, "agenda")}
-                    className="flex flex-wrap gap-1 rounded border border-deep-soil/10 bg-white/80 px-1 py-0.5 hover:border-red-dirt/30"
+                    className="flex flex-wrap gap-1 rounded border border-kelly-text/10 bg-white/80 px-1 py-0.5 hover:border-kelly-navy/30"
                   >
-                    <span className="text-[9px] font-bold text-red-dirt/80">{e.timeMatrixQuadrant}</span>
-                    <span className="text-deep-soil/50">{e.startAt.toLocaleString()}</span>
-                    <span className="font-semibold text-deep-soil">{e.title}</span>
-                    <span className="text-deep-soil/45">{e.eventWorkflowState}</span>
-                    {e.county ? <span className="text-civic-slate">{e.county.displayName}</span> : null}
+                    <span className="text-[9px] font-bold text-kelly-navy/80">{e.timeMatrixQuadrant}</span>
+                    <span className="text-kelly-text/50">{e.startAt.toLocaleString()}</span>
+                    <span className="font-semibold text-kelly-text">{e.title}</span>
+                    <span className="text-kelly-text/45">{e.eventWorkflowState}</span>
+                    {e.county ? <span className="text-kelly-slate">{e.county.displayName}</span> : null}
                   </Link>
                 </li>
               ))}
             </ul>
-            {agenda.length === 0 ? <p className="text-[10px] text-deep-soil/50">No events in window.</p> : null}
+            {agenda.length === 0 ? <p className="text-[10px] text-kelly-text/50">No events in window.</p> : null}
           </div>
         );
       case "month":
@@ -254,13 +254,13 @@ export default async function CalendarHqPage({ searchParams }: Props) {
                 .sort(([a], [b]) => a.localeCompare(b))
                 .map(([day, list]) => (
                   <li key={day}>
-                    <p className="text-[8px] font-bold text-deep-soil/60">{day}</p>
+                    <p className="text-[8px] font-bold text-kelly-text/60">{day}</p>
                     <ul className="ml-0 space-y-0.5">
                       {list.map((e) => (
                         <li key={e.id}>
-                          <Link className="text-civic-slate hover:underline" href={eventHref(e.id, "month")}>
+                          <Link className="text-kelly-slate hover:underline" href={eventHref(e.id, "month")}>
                             {e.startAt.toLocaleTimeString("en-US", { timeZone: DEFAULT_CAMPAIGN_TZ, hour: "numeric", minute: "2-digit" })} {e.title}
-                            {e.county ? <span className="text-deep-soil/50"> · {e.county.displayName}</span> : null}
+                            {e.county ? <span className="text-kelly-text/50"> · {e.county.displayName}</span> : null}
                           </Link>
                         </li>
                       ))}
@@ -268,7 +268,7 @@ export default async function CalendarHqPage({ searchParams }: Props) {
                   </li>
                 ))}
             </ul>
-            {monthEvents.length === 0 ? <p className="text-[10px] text-deep-soil/50">No events this month (filters may hide results).</p> : null}
+            {monthEvents.length === 0 ? <p className="text-[10px] text-kelly-text/50">No events this month (filters may hide results).</p> : null}
           </div>
         );
       case "queue":
@@ -280,14 +280,14 @@ export default async function CalendarHqPage({ searchParams }: Props) {
                 <li key={q.id} className="rounded border border-amber-700/20 bg-amber-50/50 px-1 py-0.5">
                   {q.actionType}
                   {q.event ? (
-                    <Link className="ml-1 text-civic-slate" href={eventHref(q.event.id, "queue")}>
+                    <Link className="ml-1 text-kelly-slate" href={eventHref(q.event.id, "queue")}>
                       {q.event.title}
                     </Link>
                   ) : null}
                 </li>
               ))}
             </ul>
-            {queue.length === 0 ? <p className="text-[10px] text-deep-soil/50">Queue empty.</p> : null}
+            {queue.length === 0 ? <p className="text-[10px] text-kelly-text/50">Queue empty.</p> : null}
           </div>
         );
       case "conflicts":
@@ -295,18 +295,18 @@ export default async function CalendarHqPage({ searchParams }: Props) {
           <div className="min-h-0 flex-1 overflow-auto p-1 md:p-2">
             <p className={h2 + " mb-1"}>Overlap detection · {weekKey}</p>
             <ul className="list-inside list-disc text-[10px] text-amber-900/90">
-              {conflictLines.length === 0 ? <li className="text-deep-soil/50">No same-day overlapping blocks in this week (filtered).</li> : null}
+              {conflictLines.length === 0 ? <li className="text-kelly-text/50">No same-day overlapping blocks in this week (filtered).</li> : null}
               {conflictLines.map((line, i) => (
                 <li key={i}>{line}</li>
               ))}
             </ul>
-            <p className="mt-2 text-[8px] text-deep-soil/40">Heuristic: two items same calendar day with intersecting time blocks.</p>
+            <p className="mt-2 text-[8px] text-kelly-text/40">Heuristic: two items same calendar day with intersecting time blocks.</p>
           </div>
         );
       case "analytics":
         return (
           <div className="min-h-0 flex-1 space-y-2 overflow-auto p-1 md:p-2 text-[11px]">
-            <p className="text-deep-soil/60">Month start: {rollup.monthStart.toLocaleDateString()}</p>
+            <p className="text-kelly-text/60">Month start: {rollup.monthStart.toLocaleDateString()}</p>
             <p className={h2}>By workflow (created this month)</p>
             <ul>
               {rollup.byState.map((r) => (
@@ -316,9 +316,9 @@ export default async function CalendarHqPage({ searchParams }: Props) {
               ))}
             </ul>
             <p className={h2 + " pt-1"}>Pending approvals (filtered)</p>
-            <p className="text-deep-soil/70">{pending.length} in queue (see Approvals board for columns).</p>
+            <p className="text-kelly-text/70">{pending.length} in queue (see Approvals board for columns).</p>
             <p className={h2 + " pt-1"}>AI planning (14d) — legacy</p>
-            <pre className="mt-0.5 max-h-40 overflow-auto whitespace-pre-wrap font-body text-[9px] text-deep-soil/80">
+            <pre className="mt-0.5 max-h-40 overflow-auto whitespace-pre-wrap font-body text-[9px] text-kelly-text/80">
               {aiLegacy.text}
             </pre>
           </div>
@@ -342,23 +342,23 @@ export default async function CalendarHqPage({ searchParams }: Props) {
 
   return (
     <div className={breakOut}>
-      <div className="border-b border-deep-soil/10 bg-washed-canvas px-2 py-1.5 md:px-3">
+      <div className="border-b border-kelly-text/10 bg-kelly-wash px-2 py-1.5 md:px-3">
         <div className="flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
           <div>
-            <h1 className="font-heading text-lg font-bold text-deep-soil md:text-xl">Calendar HQ</h1>
-            <p className="font-body text-[11px] text-deep-soil/65">Campaign command calendar — the spine of timing, sequence, and readiness in the workbench.</p>
+            <h1 className="font-heading text-lg font-bold text-kelly-text md:text-xl">Calendar HQ</h1>
+            <p className="font-body text-[11px] text-kelly-text/65">Campaign command calendar — the spine of timing, sequence, and readiness in the workbench.</p>
           </div>
           <div className="flex flex-wrap gap-1 text-[10px]">
-            <Link className="rounded border border-deep-soil/15 bg-white px-2 py-0.5 font-semibold" href="/admin/workbench">
+            <Link className="rounded border border-kelly-text/15 bg-white px-2 py-0.5 font-semibold" href="/admin/workbench">
               ← Workbench
             </Link>
-            <Link className="rounded border border-deep-soil/15 bg-white px-2 py-0.5" href="/admin/events">
+            <Link className="rounded border border-kelly-text/15 bg-white px-2 py-0.5" href="/admin/events">
               All events
             </Link>
-            <Link className="rounded border border-deep-soil/15 bg-white px-2 py-0.5" href="/campaign-calendar" target="_blank" rel="noreferrer">
+            <Link className="rounded border border-kelly-text/15 bg-white px-2 py-0.5" href="/campaign-calendar" target="_blank" rel="noreferrer">
               Public calendar ↗
             </Link>
-            <span className="rounded border border-deep-soil/10 px-1.5 py-0.5 text-deep-soil/45">
+            <span className="rounded border border-kelly-text/10 px-1.5 py-0.5 text-kelly-text/45">
               Google: {isGoogleCalendarConfigured() ? "env OK" : "not configured"}
             </span>
           </div>
@@ -366,13 +366,13 @@ export default async function CalendarHqPage({ searchParams }: Props) {
       </div>
 
       {sp.error ? <p className="px-2 py-1 text-xs text-red-800 md:px-3">Google: {sp.error}</p> : null}
-      {sp.connected ? <p className="px-2 py-1 text-xs text-field-green md:px-3">Google Calendar connected.</p> : null}
+      {sp.connected ? <p className="px-2 py-1 text-xs text-kelly-success md:px-3">Google Calendar connected.</p> : null}
 
       <CalendarHqCommandStrip summary={summary} strip={strip} nowLabel={nowLabel} />
       {summary.recentSyncLogs.length > 0 ? (
-        <div className="border-b border-deep-soil/10 bg-deep-soil/[0.02] px-2 py-1">
-          <p className="font-heading text-[8px] font-bold uppercase tracking-wide text-deep-soil/45">Recent Google sync</p>
-          <ul className="max-h-14 overflow-y-auto font-mono text-[7px] leading-tight text-deep-soil/70">
+        <div className="border-b border-kelly-text/10 bg-kelly-text/[0.02] px-2 py-1">
+          <p className="font-heading text-[8px] font-bold uppercase tracking-wide text-kelly-text/45">Recent Google sync</p>
+          <ul className="max-h-14 overflow-y-auto font-mono text-[7px] leading-tight text-kelly-text/70">
             {summary.recentSyncLogs.slice(0, 8).map((l) => (
               <li key={l.id}>
                 {l.createdAt.toLocaleString()} {l.direction} {l.status}
@@ -385,7 +385,7 @@ export default async function CalendarHqPage({ searchParams }: Props) {
       <CalendarHqActionBar filters={filters} weekKey={weekKey} view={view} eventId={eventId} matrixQ={matrixQ} />
 
       <div className="flex min-h-[min(100vh,1200px)] min-w-0 flex-1 flex-col xl:flex-row xl:items-stretch">
-        <div className="shrink-0 border-b border-deep-soil/10 bg-washed-canvas/20 xl:w-[220px] xl:border-b-0 xl:border-r">
+        <div className="shrink-0 border-b border-kelly-text/10 bg-kelly-wash/20 xl:w-[220px] xl:border-b-0 xl:border-r">
           <div className="p-1.5 xl:sticky xl:top-0 xl:max-h-screen xl:overflow-y-auto">
             <CalendarHqMonthNav weekKey={weekKey} monthYm={monthYm} filters={filters} view={view} eventId={eventId} matrixQ={matrixQ} />
             <CalendarHqFilterRail
@@ -428,12 +428,12 @@ export default async function CalendarHqPage({ searchParams }: Props) {
               executionReadiness={executionReadiness}
             />
           ) : (
-            <div className="grid min-h-0 min-w-0 flex-1 grid-cols-1 xl:grid-cols-[minmax(0,1fr)_minmax(280px,360px)] xl:divide-x xl:divide-deep-soil/10">
-              <div className="flex min-h-0 min-w-0 flex-col overflow-hidden border-b border-deep-soil/10 bg-cream-canvas/20 xl:border-b-0">
+            <div className="grid min-h-0 min-w-0 flex-1 grid-cols-1 xl:grid-cols-[minmax(0,1fr)_minmax(280px,360px)] xl:divide-x xl:divide-kelly-text/10">
+              <div className="flex min-h-0 min-w-0 flex-col overflow-hidden border-b border-kelly-text/10 bg-kelly-page/20 xl:border-b-0">
                 {centerBody}
               </div>
-              <aside className="flex min-h-0 flex-col border-t border-deep-soil/10 bg-cream-canvas/30 xl:max-w-[420px] xl:border-t-0">
-                <div className="shrink-0 border-b border-deep-soil/10 px-2 py-1">
+              <aside className="flex min-h-0 flex-col border-t border-kelly-text/10 bg-kelly-page/30 xl:max-w-[420px] xl:border-t-0">
+                <div className="shrink-0 border-b border-kelly-text/10 px-2 py-1">
                   <p className={h2}>Event / day context</p>
                 </div>
                 {detail ? (
@@ -454,12 +454,12 @@ export default async function CalendarHqPage({ searchParams }: Props) {
                     />
                   </div>
                 ) : (
-                  <p className="p-2 text-[10px] text-deep-soil/55">
+                  <p className="p-2 text-[10px] text-kelly-text/55">
                     Select an event (e.g. from Agenda, Month, or the Approvals board) to load prep, comms, checklists, and tasks in this rail. From Week view, the full
                     command center opens with the same panel.
                     <br />
                     <Link
-                      className="mt-1 inline-block text-civic-slate underline"
+                      className="mt-1 inline-block text-kelly-slate underline"
                       href={`/admin/workbench/calendar?${calendarFiltersToSearchParams(filters, { week: weekKey, view: "week", event: null, q: matrixQ })}`}
                     >
                       Open dense week view →

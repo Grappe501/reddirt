@@ -29,8 +29,8 @@ export function CampaignPaidForBar({ variant = "dark" }: Props) {
     <p
       className={
         isDark
-          ? "text-center font-body text-[11px] font-medium uppercase tracking-[0.12em] text-cream-canvas/55"
-          : "text-center font-body text-[10px] font-medium uppercase tracking-[0.12em] text-deep-soil/55"
+          ? "text-center font-body text-[11px] font-medium uppercase tracking-[0.12em] text-kelly-page/55"
+          : "text-center font-body text-[10px] font-medium uppercase tracking-[0.12em] text-kelly-text/55"
       }
     >
       {CAMPAIGN_POLICY_V1.disclaimers.pageFooterPaidForLine} ·{" "}
@@ -38,8 +38,8 @@ export function CampaignPaidForBar({ variant = "dark" }: Props) {
         href={committeeHref}
         className={
           isDark
-            ? "text-cream-canvas/75 underline-offset-2 hover:text-cream-canvas hover:underline"
-            : "text-red-dirt underline-offset-2 hover:underline"
+            ? "text-kelly-page/75 underline-offset-2 hover:text-kelly-page hover:underline"
+            : "text-kelly-navy underline-offset-2 hover:underline"
         }
       >
         {linkLabelForHref(committeeHref)}

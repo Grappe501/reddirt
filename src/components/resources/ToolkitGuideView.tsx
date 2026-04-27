@@ -23,16 +23,16 @@ function VolunteerCtaBand({ slug, title, variant }: { slug: string; title: strin
     );
   }
   return (
-    <div className="mt-4 rounded-card border border-red-dirt/20 bg-red-dirt/[0.04] p-5 md:p-6">
-      <p className="font-body text-sm font-semibold text-deep-soil">Ready to help with this work?</p>
-      <p className="mt-1 font-body text-sm text-deep-soil/75">
+    <div className="mt-4 rounded-card border border-kelly-navy/20 bg-kelly-navy/[0.04] p-5 md:p-6">
+      <p className="font-body text-sm font-semibold text-kelly-text">Ready to help with this work?</p>
+      <p className="mt-1 font-body text-sm text-kelly-text/75">
         {volunteersNote} Use the same volunteer form everyone else does—we will tag it from this page.
       </p>
       <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
         <Button href={vUrl} variant="primary">
           Open volunteer form
         </Button>
-        <Link href="/get-involved" className="font-body text-sm font-semibold text-red-dirt underline">
+        <Link href="/get-involved" className="font-body text-sm font-semibold text-kelly-navy underline">
           All other ways to get involved
         </Link>
       </div>
@@ -52,8 +52,8 @@ export function ToolkitGuideView({
     <>
       <PageHero eyebrow={guide.tag} title={guide.title} subtitle={guide.intro}>
         <div className="mt-2 max-w-2xl">
-          <p className="font-body text-sm font-semibold uppercase tracking-wide text-deep-soil/60">You can do this</p>
-          <ul className="mt-2 list-disc space-y-1 pl-5 text-left font-body text-base text-deep-soil/80 md:text-lg">
+          <p className="font-body text-sm font-semibold uppercase tracking-wide text-kelly-text/60">You can do this</p>
+          <ul className="mt-2 list-disc space-y-1 pl-5 text-left font-body text-base text-kelly-text/80 md:text-lg">
             {guide.anyOneCan.map((line) => (
               <li key={line.slice(0, 40)}>{line}</li>
             ))}
@@ -71,22 +71,22 @@ export function ToolkitGuideView({
             <div className="space-y-12">
               {guide.sections.map((s) => (
                 <div key={s.heading}>
-                  <h3 className="font-heading text-2xl font-bold text-deep-soil">{s.heading}</h3>
+                  <h3 className="font-heading text-2xl font-bold text-kelly-text">{s.heading}</h3>
                   <div className="mt-4 space-y-4">
                     {s.paragraphs.map((p) => (
-                      <p key={p.slice(0, 48)} className="font-body text-base leading-relaxed text-deep-soil/85 md:text-lg">
+                      <p key={p.slice(0, 48)} className="font-body text-base leading-relaxed text-kelly-text/85 md:text-lg">
                         {p}
                       </p>
                     ))}
                     {s.bullets ? (
-                      <ul className="list-disc space-y-2 pl-5 font-body text-base leading-relaxed text-deep-soil/85 md:text-lg">
+                      <ul className="list-disc space-y-2 pl-5 font-body text-base leading-relaxed text-kelly-text/85 md:text-lg">
                         {s.bullets.map((b) => (
                           <li key={b.slice(0, 40)}>{b}</li>
                         ))}
                       </ul>
                     ) : null}
                     {s.callout ? (
-                      <p className="border-l-4 border-field-green/50 pl-4 font-body text-sm font-medium text-deep-soil/90 md:text-base">
+                      <p className="border-l-4 border-kelly-success/50 pl-4 font-body text-sm font-medium text-kelly-text/90 md:text-base">
                         {s.callout}
                       </p>
                     ) : null}
@@ -111,16 +111,16 @@ export function ToolkitGuideView({
             title="Primary sources and next steps"
             subtitle="Use these when you are teaching, tabling, or writing a local letter to the editor."
           />
-          <ul className="mt-6 max-w-2xl space-y-3 font-body text-base text-deep-soil/85">
+          <ul className="mt-6 max-w-2xl space-y-3 font-body text-base text-kelly-text/85">
             {guide.goDeeper.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="font-semibold text-red-dirt hover:underline">
+                <Link href={l.href} className="font-semibold text-kelly-navy hover:underline">
                   {l.label}
                 </Link>
               </li>
             ))}
             <li>
-              <Link href="/get-involved" className="font-semibold text-red-dirt hover:underline">
+              <Link href="/get-involved" className="font-semibold text-kelly-navy hover:underline">
                 Get involved — all ways to help
               </Link>
             </li>
