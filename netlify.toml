@@ -9,6 +9,8 @@
 
 [build.environment]
   NODE_VERSION = "20"
+  # next build (tsc + eslint) can exceed default ~2GB heap on this app
+  NODE_OPTIONS = "--max-old-space-size=6144"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
