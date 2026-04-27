@@ -14,7 +14,7 @@
 | Day 2 / RD-1 | Complete for voter-visible public polish. Existing modified files are active Cursor/Steve work. |
 | Quality gate | `npm run check` passes when worker spawning is allowed. Lint warnings remain. |
 | DB local truth | Docker Postgres on `127.0.0.1:5433` verified 2026-04-26 (`npm run dev:db`, `db:ping`). Builds without DB still log Prisma warnings. |
-| Launch lock | **Section 3** doc shipped ([`KELLY_SOS_SECTION_3_LAUNCH_LOCK.md`](./KELLY_SOS_SECTION_3_LAUNCH_LOCK.md)). **Maintenance** handoff in [`KELLY_SOS_NEXT_PASS_SCRIPT.md`](./KELLY_SOS_NEXT_PASS_SCRIPT.md). P0: Netlify preview smoke, formal counsel/treasurer when available. |
+| Launch lock | **Section 3** doc shipped ([`KELLY_SOS_SECTION_3_LAUNCH_LOCK.md`](./KELLY_SOS_SECTION_3_LAUNCH_LOCK.md)). **Maintenance** handoff in [`KELLY_SOS_NEXT_PASS_SCRIPT.md`](./KELLY_SOS_NEXT_PASS_SCRIPT.md). **Day 6 (2026-04-27):** production Netlify green; local `npm run check` green — **hosted GET + intake smoke + demo** still operator-run ([`KELLY_SOS_BUILD_LOG.md`](./KELLY_SOS_BUILD_LOG.md), [`KELLY_SOS_DEMO_AND_DEPLOY.md`](./KELLY_SOS_DEMO_AND_DEPLOY.md)). P0: preview/apex smoke parity, formal counsel/treasurer when available. |
 
 ## Slice 3 Gate
 

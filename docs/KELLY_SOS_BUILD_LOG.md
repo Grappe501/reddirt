@@ -4,6 +4,7 @@ Append a row per meaningful verification run. Do not paste secret values.
 
 | Date (UTC) | Operator | Branch | Node / npm | Command | Result | Notes |
 |------------|----------|--------|------------|---------|--------|-------|
+| **2026-04-27** | Cursor | `main` @ production Netlify | — | **Day 6 — Deploy + QA** (per [`KELLY_SOS_DEMO_AND_DEPLOY.md`](./KELLY_SOS_DEMO_AND_DEPLOY.md) §Day 6) | **In progress → log** | **Hosted:** Netlify build green after Supabase `DATABASE_URL`, `NODE_OPTIONS` heap, `NEXT_PUBLIC_SITE_URL` normalization (`site.ts`), `main` merge, `<Link>` fix. **Local:** `docker compose` healthy; **`npm run check`** → **Exit 0** (ESLint warnings only). **Operator follow-up:** run **`scripts/section2-preview-smoke.ps1`** (or manual GETs) against **production `https://…` URL**; **`KELLY_SOS_INTAKE_SMOKE.md`** POST with fake data; **admin** login + workbench; **Day 7** demo script when Steve is ready ([`KELLY_SOS_DEMO_AND_DEPLOY.md`](./KELLY_SOS_DEMO_AND_DEPLOY.md) §Day 7). |
 | 2026-04-26 | Cursor | — | — | `npm run lint:all` | Exit 0 | ESLint warnings only |
 | 2026-04-26 | Cursor | — | — | `npm run typecheck` | Exit 0 | `tsc --noEmit` |
 | 2026-04-26 | (prior) | — | — | `npm run check` | Exit 0 | Prisma DB unreachable in some runs during SSG |
