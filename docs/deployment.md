@@ -58,6 +58,16 @@ Use after a Netlify **production** or **deploy-preview** build:
 
 *The public apex domain may lag a Netlify deploy or point at a different stack; always smoke the exact hostname you intend to launch.*
 
+## Supabase + Netlify (P1001 “Can’t reach database server”)
+
+Supabase’s **direct** connection string (`db.<project>.supabase.co:5432`) uses **IPv6 by default**. Many CI hosts (including Netlify builds) only route **IPv4**, so Prisma fails with **P1001** before auth.
+
+**Fix:** In the Supabase dashboard, open **Connect** and copy the **Session pooler** URI (host like `aws-0-<region>.pooler.supabase.com`, port **5432**, username `postgres.<project-ref>`). Use that as **`DATABASE_URL`** in Netlify (keep `sslmode=require` / password encoding as shown in the dashboard).
+
+Alternatives: enable Supabase’s **[IPv4 add-on](https://supabase.com/docs/guides/platform/ipv4-address)** for direct connections, or use **Transaction pooler** (port **6543**) for serverless runtime only — Prisma needs `?pgbouncer=true` there; for **`prisma migrate deploy`** on Netlify, prefer **Session pooler** unless Supabase’s docs for your tier say otherwise.
+
+Also confirm the Supabase project is **not paused** (free-tier pause can look like a reachability failure).
+
 ## Runtime caveats
 
 - API routes need `DATABASE_URL` at runtime on Netlify (serverless functions).
