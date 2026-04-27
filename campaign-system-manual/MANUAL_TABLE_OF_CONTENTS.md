@@ -1,6 +1,6 @@
 # Manual — Table of Contents (book-first, 500–1000+ pages)
 
-**Version:** Pass 2B + Pass 3 + Pass 3B + Pass 3C + Pass 3D + **Pass 3E** + **Pass 3F** + **Pass 3G** + **Pass 3H** + **Pass 4** + **Pass 4B** + **Pass 5** (2026-04-28). **Pass 4** adds `playbooks/` (41 role playbooks + index/authority **docs**) and **Part I** in `CAMPAIGN_STRATEGY_AND_LIFECYCLE_MANUAL.md`. **Pass 4B** adds **Part** **J,** `SIMULATION_AND_FORECASTING_SYSTEM_PLAN.md` **§**26, and four 4B design manuals + **`MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` **§**38. **Pass 5** adds operator runbooks: **`WORKBENCH_OPERATOR_RUNBOOK.md`**, **`STRATEGY_TO_TASK_EXECUTION_RUNBOOK.md`**, **`CM_DAILY_AND_WEEKLY_OPERATING_SYSTEM.md`**, **`CANDIDATE_DASHBOARD_AND_DECISION_RUNBOOK.md`**, **`SEGMENTED_MESSAGE_AND_DISTRIBUTION_SOP.md`**, **`MANUAL_PASS_5_COMPLETION_REPORT.md`**, and **`MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` **§**39.** Chapters 20–23 are operating extensions. **Pass 3B** adds `FUNDRAISING_AND_VOLUNTEER_ACCELERATION_PLAN.md` and Part B in `CAMPAIGN_STRATEGY_AND_LIFECYCLE_MANUAL.md`. **Pass 3C** adds `PAID_MEDIA_AND_LONG_TERM_INFRASTRUCTURE_PLAN.md`, Part C, `MANUAL_PASS_3C_COMPLETION_REPORT.md`, and updates the simulation plan and `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` §18. **Pass 3D** adds `ENDORSEMENT_AND_NATIONAL_ATTENTION_PROGRAM.md`, `PRECINCT_PATH_TO_VICTORY_AND_CANVASSING_PLAN.md`, Part D, `SIMULATION_AND_FORECASTING_SYSTEM_PLAN.md` §21, and `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` §19–20. **Pass 3E** adds Part E in the strategy manual, `YOUTH_CAMPUS_AND_STUDENT_ORGANIZING_PLAN.md`, `NAACP_AND_COMMUNITY_BRANCH_RELATIONSHIP_PLAN.md`, `FOCUS_CATEGORY_ORGANIZING_PLAN.md`, `WEEKLY_TRAVEL_AND_EVENT_PROJECTION_SYSTEM.md`, `SIMULATION_AND_FORECASTING_SYSTEM_PLAN.md` §22, `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` §21–24, and `MANUAL_PASS_3E_COMPLETION_REPORT.md` (no invented campus/NAACP facts; **NAACP branch mapping required** when unverified). **Pass 3F** adds Part F, `COUNTY_PARTY_AND_RURAL_ORGANIZING_PLAN.md`, `COUNTY_PARTY_MEETING_TOUR_SYSTEM.md`, `WEEKLY_TRAVEL_AND_EVENT_PROJECTION_SYSTEM.md` §22, `SIMULATION_AND_FORECASTING_SYSTEM_PLAN.md` §23, `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` §25, and `MANUAL_PASS_3F_COMPLETION_REPORT.md` (no invented meeting dates or chairs; **county party meeting mapping required** when unverified). **Pass 3G** adds **Part** **G,** the Pass 3G **standalone** manuals (immersion, contact intake, call time, faith/chamber, listening tour, visibility fundraising, **proposed** ambassador/commission, training, path-to-win data, GCal pipeline), `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` **§**26**–**35**, and `MANUAL_PASS_3G_COMPLETION_REPORT.md` (commission/ambassador and county lists remain **uncounseled** until sign-off). **Pass 3H** adds **Part** **H,** `FINANCIAL_BASELINE_AND_BUDGET_CALIBRATION_PLAN.md`, `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` **§**36**,** `SIMULATION_AND_FORECASTING_SYSTEM_PLAN.md` **§**25**,** `WEEKLY_TRAVEL_AND_EVENT_PROJECTION_SYSTEM.md` **§**24**, and `MANUAL_PASS_3H_COMPLETION_REPORT.md` (**no** invented **ledger** **totals** **from** **Git;** **CONFIRMED** **`FinancialTransaction`** **+** **treasurer** **are** **truth** **when** **available** **).** **Vocabulary** in public copy: **Campaign Companion**, **Guided Campaign System**, **Organizing Guide**, **Field Intelligence**, **Message Engine**, **Campaign Operating System**, **Workbench**, **Pathway Guide** — not “AI” as a product name.
+**Version:** Pass 2B + Pass 3 + Pass 3B + Pass 3C + Pass 3D + **Pass 3E** + **Pass 3F** + **Pass 3G** + **Pass 3H** + **Pass 4** + **Pass 4B** + **Pass 5** + **Pass 5C** (2026-04-28). **Pass 4** adds `playbooks/` (41 role playbooks + index/authority **docs**) and **Part I** in `CAMPAIGN_STRATEGY_AND_LIFECYCLE_MANUAL.md`. **Pass 4B** adds **Part** **J,** `SIMULATION_AND_FORECASTING_SYSTEM_PLAN.md` **§**26, and four 4B design manuals + **`MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` **§**38. **Pass 5** adds operator runbooks: **`WORKBENCH_OPERATOR_RUNBOOK.md`**, **`STRATEGY_TO_TASK_EXECUTION_RUNBOOK.md`**, **`CM_DAILY_AND_WEEKLY_OPERATING_SYSTEM.md`**, **`CANDIDATE_DASHBOARD_AND_DECISION_RUNBOOK.md`**, **`SEGMENTED_MESSAGE_AND_DISTRIBUTION_SOP.md`**, **`MANUAL_PASS_5_COMPLETION_REPORT.md`**, and **`MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` **§**39. **Pass 5C** adds progressive onboarding / UX doctrine: `PROGRESSIVE_ONBOARDING_AND_UNLOCK_SYSTEM.md`, `ROLE_BASED_UNLOCK_LADDERS.md`, `GUIDED_REPORT_BUILDER_AND_ASSISTED_QUERY_SYSTEM.md`, `USER_FRIENDLY_WORKBENCH_UX_REQUIREMENTS.md`, `WORKBENCH_LEARNING_GAMEPLAY_MODEL.md`, `MANUAL_PASS_5C_COMPLETION_REPORT.md`, and `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` **§**40.** Chapters 20–23 are operating extensions. **Pass 3B** adds `FUNDRAISING_AND_VOLUNTEER_ACCELERATION_PLAN.md` and Part B in `CAMPAIGN_STRATEGY_AND_LIFECYCLE_MANUAL.md`. **Pass 3C** adds `PAID_MEDIA_AND_LONG_TERM_INFRASTRUCTURE_PLAN.md`, Part C, `MANUAL_PASS_3C_COMPLETION_REPORT.md`, and updates the simulation plan and `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` §18. **Pass 3D** adds `ENDORSEMENT_AND_NATIONAL_ATTENTION_PROGRAM.md`, `PRECINCT_PATH_TO_VICTORY_AND_CANVASSING_PLAN.md`, Part D, `SIMULATION_AND_FORECASTING_SYSTEM_PLAN.md` §21, and `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` §19–20. **Pass 3E** adds Part E in the strategy manual, `YOUTH_CAMPUS_AND_STUDENT_ORGANIZING_PLAN.md`, `NAACP_AND_COMMUNITY_BRANCH_RELATIONSHIP_PLAN.md`, `FOCUS_CATEGORY_ORGANIZING_PLAN.md`, `WEEKLY_TRAVEL_AND_EVENT_PROJECTION_SYSTEM.md`, `SIMULATION_AND_FORECASTING_SYSTEM_PLAN.md` §22, `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` §21–24, and `MANUAL_PASS_3E_COMPLETION_REPORT.md` (no invented campus/NAACP facts; **NAACP branch mapping required** when unverified). **Pass 3F** adds Part F, `COUNTY_PARTY_AND_RURAL_ORGANIZING_PLAN.md`, `COUNTY_PARTY_MEETING_TOUR_SYSTEM.md`, `WEEKLY_TRAVEL_AND_EVENT_PROJECTION_SYSTEM.md` §22, `SIMULATION_AND_FORECASTING_SYSTEM_PLAN.md` §23, `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` §25, and `MANUAL_PASS_3F_COMPLETION_REPORT.md` (no invented meeting dates or chairs; **county party meeting mapping required** when unverified). **Pass 3G** adds **Part** **G,** the Pass 3G **standalone** manuals (immersion, contact intake, call time, faith/chamber, listening tour, visibility fundraising, **proposed** ambassador/commission, training, path-to-win data, GCal pipeline), `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` **§**26**–**35**, and `MANUAL_PASS_3G_COMPLETION_REPORT.md` (commission/ambassador and county lists remain **uncounseled** until sign-off). **Pass 3H** adds **Part** **H,** `FINANCIAL_BASELINE_AND_BUDGET_CALIBRATION_PLAN.md`, `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` **§**36**,** `SIMULATION_AND_FORECASTING_SYSTEM_PLAN.md` **§**25**,** `WEEKLY_TRAVEL_AND_EVENT_PROJECTION_SYSTEM.md` **§**24**, and `MANUAL_PASS_3H_COMPLETION_REPORT.md` (**no** invented **ledger** **totals** **from** **Git;** **CONFIRMED** **`FinancialTransaction`** **+** **treasurer** **are** **truth** **when** **available** **).** **Vocabulary** in public copy: **Campaign Companion**, **Guided Campaign System**, **Organizing Guide**, **Field Intelligence**, **Message Engine**, **Campaign Operating System**, **Workbench**, **Pathway Guide** — not “AI” as a product name.
 
 ---
 
@@ -32,7 +32,7 @@
 ## Part III: User journey — `chapters/03`
 
 - **Volunteer entry by email** and forms → Workbench (see `workflows/FIRST_EMAIL...`)  
-- *Subchapters:* Day One / first 72h follow-up, consent, re-engagement, LAUNCH-1 segmentation
+- *Subchapters:* Day One / first 72h follow-up, consent, re-engagement, LAUNCH-1 segmentation; **Pass 5C** progressive **starter** **deck** and **unlocks** (`PROGRESSIVE_ONBOARDING_AND_UNLOCK_SYSTEM.md`, `ROLE_BASED_UNLOCK_LADDERS.md`)
 
 ---
 
@@ -55,7 +55,7 @@
 ## Part VI: Dashboards and KPIs — `chapters/06`, `14`
 
 - Hierarchy; **role-based** dashboards (when built)  
-- *Subchapters:* demo vs live, **Pathway** KPIs, **Field Intelligence** vs internal metrics
+- *Subchapters:* demo vs live, **Pathway** KPIs, **Field Intelligence** vs internal metrics; **Pass 5C** `USER_FRIENDLY_WORKBENCH_UX_REQUIREMENTS.md` and progressive **card** **visibility** (see `playbooks/DASHBOARD_ATTACHMENT_RULES.md`)
 
 ---
 
@@ -63,7 +63,7 @@
 
 - `TASK_QUEUE_AND_APPROVALS` workflow; **RACI** for intake  
 - *Subchapters:* **Task queue** and **approval** **system** (SOP, not a single `Approval` table for everything)  
-- **Workbench** operations: email, intakes, tasks, comms, festivals, threads
+- **Workbench** operations: email, intakes, tasks, comms, festivals, threads; **Pass 5C** guided **help** and **Report** **Assistant** design (`USER_FRIENDLY_WORKBENCH_UX_REQUIREMENTS.md`, `GUIDED_REPORT_BUILDER_AND_ASSISTED_QUERY_SYSTEM.md`)
 
 ---
 
@@ -94,7 +94,7 @@
 ## Part XI: Training — `chapters/13`
 
 - **Organizing Guide**; leadership development  
-- *Subchapters:* **by role**, **by phase**
+- *Subchapters:* **by role**, **by phase**; **Pass 5C** `WORKBENCH_LEARNING_GAMEPLAY_MODEL.md` (internal metaphor) + unlock **gates** tied to `playbooks/TRAINING_MODULE_INDEX.md`
 
 ---
 
@@ -177,14 +177,19 @@
 - **Pass 4 (complete) —** `playbooks/`, 41 `playbooks/roles/*.md`, `MANUAL_PASS_4_COMPLETION_REPORT.md`  
 - **Pass 4B (complete) —** `INTERACTIVE_STRATEGY_WORKBENCH_AND_SCENARIO_SLIDER_SYSTEM.md` + `SEGMENTED_CAMPAIGN_TARGETING_AND_MESSAGE_STRATEGY_PLAN.md` + `IPAD_MOBILE_AND_DESKTOP_DASHBOARD_DESIGN_REQUIREMENTS.md` + `CANDIDATE_AND_CAMPAIGN_MANAGER_STRATEGY_DASHBOARD_REQUIREMENTS.md` + `CAMPAIGN_STRATEGY_...` Part **J** + `SIMULATION_...` **§**26 + `MANUAL_INFORMATION_REQUESTS` **§**38 + `MANUAL_PASS_4B_COMPLETION_REPORT.md` (design only; not shipped app)  
 - **Pass 5 (complete) —** `WORKBENCH_OPERATOR_RUNBOOK.md` + `STRATEGY_TO_TASK_EXECUTION_RUNBOOK.md` + `CM_DAILY_AND_WEEKLY_OPERATING_SYSTEM.md` + `CANDIDATE_DASHBOARD_AND_DECISION_RUNBOOK.md` + `SEGMENTED_MESSAGE_AND_DISTRIBUTION_SOP.md` + `MANUAL_PASS_5_COMPLETION_REPORT.md` + `MANUAL_INFORMATION_REQUESTS` **§**39 (SOP; not new `workflows/*` code)
+- **Pass 5C (complete) —** `PROGRESSIVE_ONBOARDING_AND_UNLOCK_SYSTEM.md` + `ROLE_BASED_UNLOCK_LADDERS.md` + `GUIDED_REPORT_BUILDER_AND_ASSISTED_QUERY_SYSTEM.md` + `USER_FRIENDLY_WORKBENCH_UX_REQUIREMENTS.md` + `WORKBENCH_LEARNING_GAMEPLAY_MODEL.md` + `MANUAL_PASS_5C_COMPLETION_REPORT.md` + `MANUAL_INFORMATION_REQUESTS` **§**40 (design/UX; not shipped app)
 
-## **Message Engine / Workbench operations** (Pass 5 runbooks; future Pass 5B chapter depth)
+## **Message Engine / Workbench operations** (Pass 5 + 5C runbooks; future Pass 5B chapter depth)
 
 - **Workbench** — `WORKBENCH_OPERATOR_RUNBOOK.md` (daily/weekly SOP)  
 - **Strategy → task** — `STRATEGY_TO_TASK_EXECUTION_RUNBOOK.md` (4B **Preview/Propose/Lock** to `WorkflowIntake` / `CampaignTask`)  
 - **CM** — `CM_DAILY_AND_WEEKLY_OPERATING_SYSTEM.md`  
 - **Candidate** — `CANDIDATE_DASHBOARD_AND_DECISION_RUNBOOK.md`  
 - **Segmented** **messaging** — `SEGMENTED_MESSAGE_AND_DISTRIBUTION_SOP.md`  
+- **Progressive** **onboarding** / **unlocks** — `PROGRESSIVE_ONBOARDING_AND_UNLOCK_SYSTEM.md` · **Role** **ladders** — `ROLE_BASED_UNLOCK_LADDERS.md`  
+- **Guided** **Report** **Builder** (design) — `GUIDED_REPORT_BUILDER_AND_ASSISTED_QUERY_SYSTEM.md`  
+- **User**-**friendly** **Workbench** **UX** — `USER_FRIENDLY_WORKBENCH_UX_REQUIREMENTS.md`  
+- **Learning** **/ **gameplay** **metaphor** (internal) — `WORKBENCH_LEARNING_GAMEPLAY_MODEL.md`  
 - **MCE/NDE** chapter depth (**Pass 5B** TBD): `RedDirt/docs/MESSAGE_CONTENT_ENGINE_SYSTEM_PLAN.md` and `RedDirt/docs/NARRATIVE_DISTRIBUTION_ENGINE_SYSTEM_PLAN.md` (see `MANUAL_BUILD_PLAN.md`)
 
 ---
@@ -217,4 +222,4 @@
 - X — Pass 3G pack — `MANUAL_PASS_3G_COMPLETION_REPORT` + `IMMERSION_STOPS_AND_LOCAL_HOST_SYSTEM` + `CONTACT_LIST_INTAKE_AND_RELATIONSHIP_DATABASE_PLAN` + `CALL_TIME_AND_CANDIDATE_FUNDRAISING_EXECUTION_PLAN` + `FAITH_FIRE_CHAMBER_AND_COMMUNITY_EVENT_OUTREACH_PLAN` + `COMMUNITY_ELECTION_INTEGRITY_AND_BALLOT_INITIATIVE_LISTENING_TOUR` + `POSTCARDS_SIGNS_BANNERS_AND_VISIBILITY_FUNDRAISING_PLAN` + `GRASSROOTS_FUNDRAISING_AMBASSADOR_AND_COMMISSION_MODEL` + `TRAINING_AND_TRAINER_CERTIFICATION_SYSTEM` + `POLITICAL_ANALYSIS_AND_PATH_TO_WIN_DATA_MODEL` + `GOOGLE_CALENDAR_AND_EVENT_PIPELINE_OPERATING_SYSTEM` (see report for **Pass 4** role expansion)  
 - Y — Pass 3H — `FINANCIAL_BASELINE_AND_BUDGET_CALIBRATION_PLAN` + `MANUAL_PASS_3H_COMPLETION_REPORT` (Prisma `FinancialTransaction` / `BudgetPlan` rules; no fixture dollars in repo seed)
 
-**Last updated:** 2026-04-28 (Pass 3C + 3D + 3E + 3F + **3G** + **3H**)
+**Last updated:** 2026-04-28 (Pass 3C + 3D + 3E + 3F + **3G** + **3H** + **4** + **4B** + **5** + **5C**)

@@ -120,10 +120,19 @@
 - **Report:** `MANUAL_PASS_5_COMPLETION_REPORT.md`  
 - **Not in Pass 5:** app code, Prisma, or new workflow routes; **not** a claim that 4B slider UI or iPad-hardening is complete for all admin flows
 
-## Pass 5B (recommended next, markdown): Message Engine + Narrative Distribution depth
+## Pass 5C (complete, markdown): Progressive onboarding, unlocks, and guided Workbench UX doctrine
+
+**Script name:** *Manual Pass 5C / UX Doctrine — Progressive Onboarding, Unlocks, and Guided Workbench*
+
+- **Delivered:** `PROGRESSIVE_ONBOARDING_AND_UNLOCK_SYSTEM.md`, `ROLE_BASED_UNLOCK_LADDERS.md`, `GUIDED_REPORT_BUILDER_AND_ASSISTED_QUERY_SYSTEM.md`, `USER_FRIENDLY_WORKBENCH_UX_REQUIREMENTS.md`, `WORKBENCH_LEARNING_GAMEPLAY_MODEL.md`, `MANUAL_PASS_5C_COMPLETION_REPORT.md`
+- **Updated:** `MANUAL_TABLE_OF_CONTENTS.md`, `SYSTEM_READINESS_REPORT.md`, `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` (§40), `playbooks/DASHBOARD_ATTACHMENT_RULES.md`, `playbooks/ROLE_KPI_INDEX.md`, this `MANUAL_BUILD_PLAN.md`
+- **Not in Pass 5C:** app code; no change to 0–6 system grades without code proof; no public “AI” product name; no automatic unlock of voter export, row-level data, $ confirm, public comms, or targeting/GOTV levers
+- **Recommended next engineering packet (owner approval):** Progressive Onboarding + Guided Workbench UX (readiness gating, canned reports, Campaign Companion “what’s next?”, training/demo mode) — *or* manual **Pass 5B** (MCE/NDE) or **Pass 6** (OIS) per below
+
+## Pass 5B (markdown, next manual track option): Message Engine + Narrative Distribution depth
 
 - Expand manual chapters 08–09 from `RedDirt/docs/MESSAGE_CONTENT_ENGINE_SYSTEM_PLAN.md` and `RedDirt/docs/NARRATIVE_DISTRIBUTION_ENGINE_SYSTEM_PLAN.md`; align vocabulary with `RedDirt/docs/MESSAGE_SYSTEM_LANGUAGE_AUDIT_REPORT.md`  
-- **Or** (owner choice): **Pass 6** (county / OIS productization) per below — **or** P5 **engineering** build tickets (outside this manual lane)
+- **Or** (owner choice): **Pass 5C** engineering packet (above) — **or** **Pass 6** (county / OIS productization) — **or** P5 **engineering** build tickets (outside this manual lane)
 
 (Older optional track: *workflow second drafts* with redacted screenshot placeholders and Prisma map — can merge with **Pass 5B** or run as 5b.)
 

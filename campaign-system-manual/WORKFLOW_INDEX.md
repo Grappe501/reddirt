@@ -25,4 +25,6 @@
 
 **Pass 5 (complete, runbooks only — not new code or routes):** `WORKBENCH_OPERATOR_RUNBOOK.md` + `STRATEGY_TO_TASK_EXECUTION_RUNBOOK.md` + `CM_DAILY_AND_WEEKLY_OPERATING_SYSTEM.md` + `CANDIDATE_DASHBOARD_AND_DECISION_RUNBOOK.md` + `SEGMENTED_MESSAGE_AND_DISTRIBUTION_SOP.md` — **maps** `WorkflowIntake` + `CampaignTask` + LQA; **`POST` `/api/forms`** **unchanged**; **`MANUAL_PASS_5_COMPLETION_REPORT.md`**.
 
-**Last updated:** 2026-04-28 (Pass 3C + 3D + 3E + **3F** + **3G** + **3H** + **4** + **4B** + **5**)
+**Pass 5C (complete, doctrine only — not new `workflows/*` or routes):** `PROGRESSIVE_ONBOARDING_AND_UNLOCK_SYSTEM.md` + `ROLE_BASED_UNLOCK_LADDERS.md` + `GUIDED_REPORT_BUILDER_AND_ASSISTED_QUERY_SYSTEM.md` + `USER_FRIENDLY_WORKBENCH_UX_REQUIREMENTS.md` + `WORKBENCH_LEARNING_GAMEPLAY_MODEL.md` + `MANUAL_PASS_5C_COMPLETION_REPORT.md` — **progressive** **unlocks,** **guided** **help** **/ **report** **design,** no **LQA** **bypass;** not a shipped UX claim.
+
+**Last updated:** 2026-04-28 (Pass 3C + 3D + 3E + **3F** + **3G** + **3H** + **4** + **4B** + **5** + **5C**)

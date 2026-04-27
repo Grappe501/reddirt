@@ -2,6 +2,8 @@
 
 **Purpose:** Map **which surface** each **role** uses when the product can support it. Today: **admin Workbench** + **public** pages are **not** a full per-role app for all 41 roles. See `../SYSTEM_READINESS_REPORT.md`. **Public language:** Field Intelligence, Campaign Companion, Workbench, Pathway Guide — not “**AI**.”
 
+**Pass 5C (progressive disclosure):** When **built,** **dashboard** **cards,** **queues,** and **strategy** **/ **sim** **previews** should **unlock** **by** **role** **readiness** and **training** **gates** — **not** **all** **tiles** **on** **day** **one** **(see** `../PROGRESSIVE_ONBOARDING_AND_UNLOCK_SYSTEM.md`**, **`../ROLE_BASED_UNLOCK_LADDERS.md`**, **`../USER_FRIENDLY_WORKBENCH_UX_REQUIREMENTS.md` **).** Locked **surfaces** **must** **explain** **why** **and** **who** **approves** **(see** **`../MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` **§**40**).** **Pass** **5C** **does** **not** **claim** **the** **product** **already** **implements** **this** **for** **every** **route** **.**
+
 **Pass 3H gate (money):** No paid, postcard, sign, visibility, or banner **escalation** is “**funded**” until **CONFIRMED** `FinancialTransaction` actuals, **treasurer** **COH,** **budget** **scenario,** and **stretch-unlock** — `../FINANCIAL_BASELINE_AND_BUDGET_CALIBRATION_PLAN.md`, `../PAID_MEDIA_AND_LONG_TERM_INFRASTRUCTURE_PLAN.md` §**17**, `../POSTCARDS_SIGNS_BANNERS_AND_VISIBILITY_FUNDRAISING_PLAN.md` §**16**.
 
 ## Dashboard and surface types (product truth, Pass 2A)
@@ -57,4 +59,4 @@
 | **Progress** | Ladder, **OIS** (honest), P5; **not** public PII “leaderboards” |
 | **Election Day view** | **Conceptual** in manuals; comms + incident **RACI**; **not** a guaranteed full ED product for every role (`SYSTEM_READINESS_REPORT.md`) |
 
-**Last updated:** 2026-04-28 (Pass 4 + **4B**)
+**Last updated:** 2026-04-28 (Pass 4 + **4B** + **5C**)

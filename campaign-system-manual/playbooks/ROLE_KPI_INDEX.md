@@ -48,6 +48,20 @@
 | **gcal** | overdue+**status**% | 1+ reconcile | SOP | drift w/o FU | cal+**WB** | \— | \— | \— |
 | **analyst** | sim inputs sourced, 0 inv # | 1+ | methodology | unsrc numbers | sim+docs | \— | fake prec % | VFR+src |
 
+## Pass 5C — learning / readiness KPIs (cross-role; not a public leaderboard)
+
+**Purpose:** Measure **safe** **onboarding** **and** **trust** **—** **not** **speed**-**to**-**PII** **or** **vanity** **reach** **(see** `../PROGRESSIVE_ONBOARDING_AND_UNLOCK_SYSTEM.md`**, **`../USER_FRIENDLY_WORKBENCH_UX_REQUIREMENTS.md` **).** **Roll** **up** **to** **CM** / **training** **—** **never** **publish** **ranked** **volunteer** **PII** **lists** **.**
+
+| Signal | Definition (steer with Steve / MI §40) | Danger if high / low |
+|--------|----------------------------------------|----------------------|
+| **Onboarding completion** | M-001 + role path **first** **module** **set** **done** | Stuck at L0 = capacity drain |
+| **First real action** | Time to **first** **closed** **in**-**scope** **task** | \>7d without help = drop-off risk |
+| **Repeat action** | \# **weeks** **with** **≥1** **valid** **contribution** | One-and-done = coaching |
+| **Unlock eligibility** | Readiness level vs role ceiling (`../ROLE_BASED_UNLOCK_LADDERS.md`) | Mismatch = over-scoped access or bottleneck |
+| **Compliance defect rate** | PII/approver/SLA **defects** **/ **touches** (private) | Up = **pause** **promotions** per **5C** **. |
+
+**Not measured as KPI:** public “dials per hour” races, unverified “reach,” or any metric that rewards bypassing LQA per `../MANUAL_PASS_5C_COMPLETION_REPORT.md`.
+
 ## Pass 4B — strategy Workbench, sliders, and review cadence (candidate / CM / owner / analyst)
 
 | Role / surface | Strategy & impact KPIs (examples) | Slider-change KPIs | Dashboard usage KPIs | Scenario review cadence |
@@ -59,4 +73,4 @@
 
 Product does not guarantee these tiles today — design targets in `CANDIDATE_AND_CAMPAIGN_MANAGER_STRATEGY_DASHBOARD_REQUIREMENTS.md`.
 
-**Last updated:** 2026-04-28 (Pass 4 + 4B)
+**Last updated:** 2026-04-28 (Pass 4 + 4B + 5C)
