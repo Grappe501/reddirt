@@ -129,6 +129,15 @@
 - **Not in Pass 5C:** app code; no change to 0–6 system grades without code proof; no public “AI” product name; no automatic unlock of voter export, row-level data, $ confirm, public comms, or targeting/GOTV levers
 - **Recommended next engineering packet (owner approval):** Progressive Onboarding + Guided Workbench UX (readiness gating, canned reports, Campaign Companion “what’s next?”, training/demo mode) — *or* manual **Pass 5B** (MCE/NDE) or **Pass 6** (OIS) per below
 
+## Pass 5D (complete, markdown): Election confidence, transparency, website motion, public FAQ doctrine
+
+**Script name:** *Manual Pass 5D — Election Confidence, Transparency, Website Motion, and Public FAQ Doctrine*
+
+- **Delivered:** `ELECTION_CONFIDENCE_TRANSPARENCY_AND_GET_UNDER_THE_HOOD_DOCTRINE.md`, `KELLY_PUBLIC_TRUST_TALKING_POINTS_AND_FAQ.md`, `WEBSITE_CLEANUP_MOTION_AND_LIVE_PLATFORM_PLAN.md`, `CAMPAIGN_COMPANION_ELECTION_QUESTIONS_POLICY.md`, `MANUAL_PASS_5D_COMPLETION_REPORT.md`
+- **Updated:** `MANUAL_TABLE_OF_CONTENTS.md`, `SYSTEM_READINESS_REPORT.md`, `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` (§41), `WORKFLOW_INDEX.md`, `SEGMENTED_MESSAGE_AND_DISTRIBUTION_SOP.md`, this `MANUAL_BUILD_PLAN.md`
+- **Not in Pass 5D:** app code; no uncounseled legal claims; no overclaim “no fraud ever”; EPI and SBEC language must be verified from **primary** sources at publish; election-security copy is one bounded slice of the public story, not the whole site
+- **Recommended next (owner):** MCE/NDE publish path for vetted FAQ + SOS page; **or** **Pass 5B** (MCE/NDE manual) **or** **Pass 6** (OIS)
+
 ## Pass 5B (markdown, next manual track option): Message Engine + Narrative Distribution depth
 
 - Expand manual chapters 08–09 from `RedDirt/docs/MESSAGE_CONTENT_ENGINE_SYSTEM_PLAN.md` and `RedDirt/docs/NARRATIVE_DISTRIBUTION_ENGINE_SYSTEM_PLAN.md`; align vocabulary with `RedDirt/docs/MESSAGE_SYSTEM_LANGUAGE_AUDIT_REPORT.md`  

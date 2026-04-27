@@ -27,4 +27,6 @@
 
 **Pass 5C (complete, doctrine only — not new `workflows/*` or routes):** `PROGRESSIVE_ONBOARDING_AND_UNLOCK_SYSTEM.md` + `ROLE_BASED_UNLOCK_LADDERS.md` + `GUIDED_REPORT_BUILDER_AND_ASSISTED_QUERY_SYSTEM.md` + `USER_FRIENDLY_WORKBENCH_UX_REQUIREMENTS.md` + `WORKBENCH_LEARNING_GAMEPLAY_MODEL.md` + `MANUAL_PASS_5C_COMPLETION_REPORT.md` — **progressive** **unlocks,** **guided** **help** **/ **report** **design,** no **LQA** **bypass;** not a shipped UX claim.
 
-**Last updated:** 2026-04-28 (Pass 3C + 3D + 3E + **3F** + **3G** + **3H** + **4** + **4B** + **5** + **5C**)
+**Pass 5D (complete, doctrine + comms SOP only — not new `workflows/*`):** `ELECTION_CONFIDENCE_TRANSPARENCY_AND_GET_UNDER_THE_HOOD_DOCTRINE.md` + `KELLY_PUBLIC_TRUST_TALKING_POINTS_AND_FAQ.md` + `WEBSITE_CLEANUP_MOTION_AND_LIVE_PLATFORM_PLAN.md` + `CAMPAIGN_COMPANION_ELECTION_QUESTIONS_POLICY.md` + `MANUAL_PASS_5D_COMPLETION_REPORT.md` + `SEGMENTED_MESSAGE_AND_DISTRIBUTION_SOP` §**19** — public trust, verify SBEC/EPI at publish, no legal advice in repo; `SEGMENTED_...` = low-emphasis election-confidence **lane** (trust/FAQ, not fear).
+
+**Last updated:** 2026-04-28 (Pass 3C + 3D + 3E + **3F** + **3G** + **3H** + **4** + **4B** + **5** + **5C** + **5D**)

@@ -124,4 +124,12 @@
 
 ---
 
-**Last updated:** 2026-04-28 (Pass 5)
+## 19. Election-confidence lane (Pass 5D — low emphasis, trust/FAQ, not fear)
+
+- **Use for:** Public FAQ, SOS / “get under the hood” supporting lines, Pathway or M-001-adjacent tone — **cited,** humble, never dismissive (`ELECTION_CONFIDENCE_TRANSPARENCY_AND_GET_UNDER_THE_HOOD_DOCTRINE.md`, `KELLY_PUBLIC_TRUST_TALKING_POINTS_AND_FAQ.md`).  
+- **Not:** A GOTV-fear, turnout-scare, or doom channel. MCE/NDE + LQA + **C** on sensitive fraud or **alleged**-case rhetoric (`MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` §41).  
+- **Intake:** Prefer `WorkflowIntake` with comms review; no voter rows in unsecured chat; link to vetted static FAQ — do not invent new statistics in DMs (Pass 2A spine).  
+
+---
+
+**Last updated:** 2026-04-28 (Pass 5 + 5D)
