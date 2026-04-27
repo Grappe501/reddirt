@@ -3,7 +3,7 @@
 **Lane:** `RedDirt/campaign-system-manual`  
 **Purpose:** So **no** one opens **Workbench** and **feels** **lost** — every **dashboard** **teaches** **itself** through **Pathway** **Guide**, **Workbench** **Guide**, **Campaign** **Companion** entry points, and **plain** **language**. **Not** a promise that all **UIs** **match** this **spec** **today** (`SYSTEM_READINESS_REPORT.md`).
 
-**Refs:** `IPAD_MOBILE_AND_DESKTOP_DASHBOARD_DESIGN_REQUIREMENTS.md` · `playbooks/DASHBOARD_ATTACHMENT_RULES.md` · `PROGRESSIVE_ONBOARDING_AND_UNLOCK_SYSTEM.md` · `GUIDED_REPORT_BUILDER_AND_ASSISTED_QUERY_SYSTEM.md` · `WORKBENCH_LEARNING_GAMEPLAY_MODEL.md`
+**Refs:** `IPAD_MOBILE_AND_DESKTOP_DASHBOARD_DESIGN_REQUIREMENTS.md` · `playbooks/DASHBOARD_ATTACHMENT_RULES.md` · `PROGRESSIVE_ONBOARDING_AND_UNLOCK_SYSTEM.md` · `GUIDED_REPORT_BUILDER_AND_ASSISTED_QUERY_SYSTEM.md` · `WORKBENCH_LEARNING_GAMEPLAY_MODEL.md` · **Pass** **5H** `ASK_KELLY_EXPLAIN_WHY_GUIDE.md` **(companion** **explainability** **,** not **0**–**6) ** · **Pass** **5I** `DASHBOARD_OBJECTIVE_AND_GET_INVOLVED_CARD_SYSTEM.md` · `THANK_YOU_CARD_AND_APPRECIATION_WORKFLOW.md` · `WORKBENCH_MORNING_BRIEF_AND_DAILY_OBJECTIVE_SYSTEM.md`
 
 ---
 
@@ -12,7 +12,9 @@
 - **One** **focal** **column** (primary work) and **one** **context** **column** (help, next learning, org pulse).  
 - **Progressive** **disclosure:** **advanced** **filters** **behind** “**More**” — default **is** **calm**.  
 - **Branded** **clarity,** not **cluttered** “mission control” for **new** **users**.  
-- **Every** **card** has: **title** (plain English), **one** **line** **why** **it** **matters,** and **if** **locked:** **how** to **unlock** + **who** **approves** (`PROGRESSIVE_ONBOARDING` §7–8).
+- **Every** **card** has: **title** (plain English), **one** **line** **why** **it** **matters,** and **if** **locked:** **how** to **unlock** + **who** **approves** (`PROGRESSIVE_ONBOARDING` §7–8).  
+- **“** **Why** **is** **this** **built** **this** **way?** **”** **(Pass** **5H) **: ** for **public** **and** **beta,** the **companion** **/ ** **Ask** **Kelly** path **can** **explain** **service**-**shaped** **reasons** **(strategy,** **trust,** **onboarding) ** **per** `ASK_KELLY_EXPLAIN_WHY_GUIDE.md` **—** not **0**–**6,** not **VFR,** not **a** **second** **NDE** **bypass. **
+- **Objective** and **get**-**involved** **cards (Pass 5I):** **one**-**line** **today** / **week** / **month** + **P0** **/ ** **blocked,** and **a** **safe** **“** **thank** **someone** **/ ** **get** **involved** **”** **pattern,** not **a** **second** **intelligence** **surface** **(see** `DASHBOARD_...` **+ **`THANK_YOU_...` **).**
 
 ---
 
@@ -117,4 +119,4 @@
 
 ---
 
-**Last updated:** 2026-04-28 (Pass 5C)
+**Last updated:** 2026-04-28 (Pass 5C + 5H + 5I)

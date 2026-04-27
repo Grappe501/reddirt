@@ -132,4 +132,31 @@
 
 ---
 
-**Last updated:** 2026-04-28 (Pass 5 + 5D)
+## 20. Campaign Companion as distribution surface (Pass 5E)
+
+- **Role:** Guided help / Pathway entry — **not** a second NDE “ship” channel and **not** auto-comms. User-visible lines follow `CAMPAIGN_COMPANION_OMNISCIENT_AGENT_ARCHITECTURE.md` (Layer A + B, no system leakage; modes: voter / volunteer / insider).  
+- **MCE/NDE:** Any reply pattern that could read as public messaging (contrast, opponent, stats) = MCE + LQA before it is saved as a template; Companion does not invent ship copy.  
+- **Metrics (if tracked):** defect rate, escalation to human — not “messages per minute” vanity (`playbooks/ROLE_KPI_INDEX.md` Pass 5C).  
+- **Cross-ref:** `CAMPAIGN_COMPANION_ELECTION_QUESTIONS_POLICY.md` (5D); `playbooks/ESCALATION_PATHS.md`; MI §42 (tone + escalation).
+
+---
+
+## 21. Campaign Companion — candidate voice lane and candidate-refinement lane (Pass 5F)
+
+- **Candidate-voice lane (public):** MCE + NDE + LQA govern any outbound or static-facing line that sounds like Kelly; see `ASK_KELLY_CANDIDATE_VOICE_AND_POSITION_SYSTEM.md` (A–D levels) and `CAMPAIGN_COMPANION_ELECTION_QUESTIONS_POLICY.md` / 5D FAQ for the election/trust slice — not a second “ship” bypass. GOP / civic / cross-party tone: listening, service, safety for voters — not pandering (`CAMPAIGN_COMPANION_OMNISCIENT_AGENT_ARCHITECTURE.md` §6). Unapproved contrast or a new stat in a chat = MCE + comms + `playbooks/APPROVAL_AUTHORITY_MATRIX.md` (MI §43).  
+- **Refinement lane (private + ops):** Public question → Level D → candidate + MCE/comms → Level A for public-ready knowledge (`CANDIDATE_REFINEMENT_INTAKE_AND_QUESTION_BANK.md`, `CONTINUOUS_CAMPAIGN_KNOWLEDGE_INGESTION_AND_REFINEMENT_ENGINE.md`). Distribution-adjoining SOP; not one-click send from a model.  
+- **Cross-ref:** `CAMPAIGN_COMPANION_OMNISCIENT_AGENT_ARCHITECTURE.md` (5E); `MANUAL_PASS_5F_COMPLETION_REPORT.md`; `CAMPAIGN_COMPANION_LIVE_INTELLIGENCE_AND_COMMAND_INTERFACE.md` (CM briefings — not GOTV in chat); `CAMPAIGN_COMPANION_PUBLIC_SIMPLE_VIEW_RULES.md` (no internal error strings to voters); sections 1–18 and 4B tables in this file for TT / M / C / A / 4B lanes.
+
+---
+
+## 22. Beta feedback and Ask Kelly suggestion box (Pass 5H — not Recruit / Persuade / GOTV)
+
+- **This** **lane** **is** **clarity** **+** **governance,** not **GOTV** **persuasion,** not **Narrative** **Distribution,** and **not** a **bypass** of **2A,** **LQA,** or **MCE+comms** **(see** `ASK_KELLY_SUGGESTION_BOX_AND_FEEDBACK_INTAKE_RULES.md` **,** `ASK_KELLY_BETA_FEEDBACK_TO_APPROVAL_FEED_WORKFLOW.md` **).**  
+- **Intake** **: ** structured **suggestions,** “**why**” **explanations,** **and** **beta** **tickets** **—** **route** to **admin** **/ ** **candidate** **/ ** **comms** **/ ** **counsel** **/ ** **product** per **`playbooks/APPROVAL_AUTHORITY_MATRIX` **. **  
+- **MCE/NDE:** **Do** **not** **treat** **suggestion** **replies** as **draft** **public** **mail** without **LQA+**; **not** a **new** **send** **channel** for **unvetted** **contrast,** **stats,** or **legal** **claims** **(see** 5B **+ **5D** **).**  
+- **Do** **not** **collect** or **stimulate** **PII** in **a** **public** **or** **beta** **help** path **(no** **voter** **/ ** **donor** **rows) **. **  
+- **Cross**-**ref:** `ASK_KELLY_LAUNCH_PRIORITY_AND_FIRST_RELEASE_SCOPE.md` **,** `BETA_VOLUNTEER_...` **,** `MANUAL_INFORMATION_...` **§**45** **(beta** **list,** **naming) **,** **§**21 **(this** **SOP) **; **5H** is **a** **separate** **row** in **MCEs**’ **minds,** not **a** **fourth** **TT**-**lane** in **the** **recruit** **/ ** **persuade** **/ ** **GOTV** **table** **(§**1** **).** 
+
+---
+
+**Last updated:** 2026-04-28 (Pass 5 + 5D + 5E + 5F + 5H)

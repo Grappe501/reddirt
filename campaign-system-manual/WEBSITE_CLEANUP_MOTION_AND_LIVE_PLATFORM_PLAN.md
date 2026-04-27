@@ -2,9 +2,11 @@
 
 **Lane:** `RedDirt/campaign-system-manual`  
 **Type:** Doctrine for the public **site** and **feeds** — not a substitute for engineering tickets.  
-**Cross-ref:** `ELECTION_CONFIDENCE_TRANSPARENCY_AND_GET_UNDER_THE_HOOD_DOCTRINE.md` (election confidence is one chapter, not the only story)
+**Cross-ref:** `ELECTION_CONFIDENCE_TRANSPARENCY_AND_GET_UNDER_THE_HOOD_DOCTRINE.md` (election confidence is one chapter, not the only story) · **Pass 5G** `CANDIDATE_WEBSITE_REVIEW_WIZARD_AND_APPROVAL_WORKFLOW.md` · `WEBSITE_EDIT_IMPACT_ANALYSIS_AND_DOWNSTREAM_DEPENDENCY_RULES.md` (site edits: **impact** first, **MCE+comms** before publish, no auto-ship on high-impact lines).
 
 **Product honesty:** `SYSTEM_READINESS_REPORT.md` — OIS, member dashboards, and some feeds may be **placeholder** or **mixed** **demo** / **live**; **verify** **provenance** before calling anything “current operations.”
+
+**Pass** **5H** **sequencing (launch path):** **governed** **website** **editing** **+** **Ask** **Kelly** **candidate** **onboarding** **+** **suggestion** **/ ** **beta** **feedback** is **the** **first** **public**-**facing** **build** **priority** after **this** **manual** **;** **broader** **“** **fluid** **live** **platform** **/ ** **everywhere** **at** **once** **”** **motions** **wait** on **that** **readiness** per **`ASK_KELLY_PRODUCTION_GRADE_AGENT_FOUNDATION_CHECKLIST.md` **(not** a **shipped** **claim) **. **
 
 ---
 
@@ -59,4 +61,4 @@
 
 ---
 
-**Last** **updated:** 2026-04-28 (Pass 5D)
+**Last** **updated:** 2026-04-28 (Pass 5D + 5H)

@@ -138,6 +138,51 @@
 - **Not in Pass 5D:** app code; no uncounseled legal claims; no overclaim “no fraud ever”; EPI and SBEC language must be verified from **primary** sources at publish; election-security copy is one bounded slice of the public story, not the whole site
 - **Recommended next (owner):** MCE/NDE publish path for vetted FAQ + SOS page; **or** **Pass 5B** (MCE/NDE manual) **or** **Pass 6** (OIS)
 
+## Pass 5E (complete, markdown): Campaign Companion Layer A/B orchestration and mode doctrine
+
+**Script name:** *Manual Pass 5E — Campaign Companion “omniscient agent” architecture (internal orchestration only)*
+
+- **Delivered:** `CAMPAIGN_COMPANION_OMNISCIENT_AGENT_ARCHITECTURE.md`, `MANUAL_PASS_5E_COMPLETION_REPORT.md`
+- **Updated:** `MANUAL_TABLE_OF_CONTENTS.md`, `SYSTEM_READINESS_REPORT.md`, `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` (§42), `SEGMENTED_MESSAGE_AND_DISTRIBUTION_SOP.md` (§20), `WORKFLOW_INDEX.md`, this `MANUAL_BUILD_PLAN.md`
+- **Not in Pass 5E:** app code; no public “AI” product name; “omniscient” = internal broad read-context for routing, not a user-facing total-knowledge or voter-file claim; no LQA or approval bypass; no claim that full Layer A/B, mode switching, or live “everywhere” wiring is shipped for all surfaces
+- **Recommended next (owner):** Companion build within LQA + MI §42 decisions; **or** **Pass 5B** (MCE/NDE) **or** **Pass 6** (OIS)
+
+## Pass 5F (complete, markdown): Live intelligence, Ask Kelly voice, continuous learning, and voice/IVR doctrine
+
+**Script name:** *Manual Pass 5F — Campaign Companion / Ask Kelly live intelligence, candidate voice, refinement bank, and spoken-agent plan (design only)*
+
+- **Delivered:** `CAMPAIGN_COMPANION_LIVE_INTELLIGENCE_AND_COMMAND_INTERFACE.md`, `ASK_KELLY_CANDIDATE_VOICE_AND_POSITION_SYSTEM.md`, `CANDIDATE_REFINEMENT_INTAKE_AND_QUESTION_BANK.md`, `CONTINUOUS_CAMPAIGN_KNOWLEDGE_INGESTION_AND_REFINEMENT_ENGINE.md`, `ASK_KELLY_VOICE_INTERFACE_AND_SPOKEN_AGENT_PLAN.md`, `CAMPAIGN_COMPANION_PUBLIC_SIMPLE_VIEW_RULES.md`, `MANUAL_PASS_5F_COMPLETION_REPORT.md`
+- **Updated:** `MANUAL_TABLE_OF_CONTENTS.md`, `SYSTEM_READINESS_REPORT.md`, `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` (§43), `WORKFLOW_INDEX.md`, `SEGMENTED_MESSAGE_AND_DISTRIBUTION_SOP.md`, `CAMPAIGN_COMPANION_OMNISCIENT_AGENT_ARCHITECTURE.md`, `CAMPAIGN_COMPANION_ELECTION_QUESTIONS_POLICY.md`, this `MANUAL_BUILD_PLAN.md`
+- **Not in Pass 5F:** app code; no live omniscient product claim; no fabricated Kelly positions; no voter/PII/donor detail in public surfaces; no automated approval, send, or LQA/approval-matrix bypass; no synthetic “Kelly” voice without MI §43 consent; no 0–6 grade lift without product proof
+- **Recommended next (engineering, owner):** **Campaign** **Companion** **/ **Ask** **Kelly** **knowledge** **ingestion** (sanitized) **+** **role**-**aware** **answer** **service** **within** **RACI** **and** **LQA** **—** *or* **manual** **Pass** **5B** (MCE/NDE) **/ **Pass** **6** (OIS) per prior tracks
+
+## Pass 5G (complete, markdown): Website review wizard, admin update packets, edit impact, progressive interview, editing rights, Arkansas history KB roadmap
+
+**Script name:** *Manual Pass 5G — Candidate review wizard, admin approval packet, website edit impact, and Arkansas history knowledge base roadmap (design only)*
+
+- **Delivered:** `CANDIDATE_WEBSITE_REVIEW_WIZARD_AND_APPROVAL_WORKFLOW.md`, `CANDIDATE_TO_ADMIN_UPDATE_PACKET_SYSTEM.md`, `WEBSITE_EDIT_IMPACT_ANALYSIS_AND_DOWNSTREAM_DEPENDENCY_RULES.md`, `CANDIDATE_PROGRESSIVE_INTERVIEW_AND_SITE_WALKTHROUGH_PLAN.md`, `ARKANSAS_HISTORY_CIVICS_AND_POLITICAL_CULTURE_KNOWLEDGE_BASE_ROADMAP.md`, `CANDIDATE_EDITING_RIGHTS_AND_NO_APPROVAL_EXCEPTIONS_POLICY.md`, `MANUAL_PASS_5G_COMPLETION_REPORT.md`
+- **Updated:** `MANUAL_TABLE_OF_CONTENTS.md`, `SYSTEM_READINESS_REPORT.md`, `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` (§44), `WORKFLOW_INDEX.md`, `CAMPAIGN_COMPANION_LIVE_INTELLIGENCE_AND_COMMAND_INTERFACE.md`, `ASK_KELLY_CANDIDATE_VOICE_AND_POSITION_SYSTEM.md`, `CONTINUOUS_CAMPAIGN_KNOWLEDGE_INGESTION_AND_REFINEMENT_ENGINE.md`, `CANDIDATE_REFINEMENT_INTAKE_AND_QUESTION_BANK.md`, `WEBSITE_CLEANUP_MOTION_AND_LIVE_PLATFORM_PLAN.md`, `CAMPAIGN_COMPANION_PUBLIC_SIMPLE_VIEW_RULES.md`, this `MANUAL_BUILD_PLAN.md`
+- **Not in Pass 5G:** app code; no shipped wizard or packet queue; no auto-publish on high-impact lines; no PII, voter rows, or donor data in examples; A–D knowledge states and `APPROVAL_AUTHORITY_MATRIX` still govern public use; Arkansas history KB is post-launch, not a database in repo; no 0–6 grade lift without product proof
+- **Superseded for sequencing by Pass 5H (manual complete):** launch onboarding + suggestion box doctrine — see `ASK_KELLY_LAUNCH_PRIORITY_AND_FIRST_RELEASE_SCOPE.md` and `MANUAL_PASS_5H_COMPLETION_REPORT.md`
+
+## Pass 5H (complete, markdown): Ask Kelly launch onboarding, candidate/beta comms, suggestion box, explain-why, production-grade readiness
+
+**Script name:** *Manual Pass 5H — Ask Kelly first release scope, email templates, beta invite, suggestion box, explain-why guide, and production-grade checklist (design and doctrine only)*
+
+- **Delivered:** `ASK_KELLY_LAUNCH_PRIORITY_AND_FIRST_RELEASE_SCOPE.md`, `CANDIDATE_WEBSITE_EDITING_ONBOARDING_EMAIL.md`, `BETA_VOLUNTEER_ONBOARDING_INVITE_AND_ROLE_EXPLAINER.md`, `ASK_KELLY_SUGGESTION_BOX_AND_FEEDBACK_INTAKE_RULES.md`, `ASK_KELLY_EXPLAIN_WHY_GUIDE.md`, `ASK_KELLY_PRODUCTION_GRADE_AGENT_FOUNDATION_CHECKLIST.md`, `ASK_KELLY_BETA_FEEDBACK_TO_APPROVAL_FEED_WORKFLOW.md`, `MANUAL_PASS_5H_COMPLETION_REPORT.md`
+- **Updated:** `MANUAL_TABLE_OF_CONTENTS.md`, `SYSTEM_READINESS_REPORT.md`, `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` (§45), `WORKFLOW_INDEX.md`, `CANDIDATE_WEBSITE_REVIEW_WIZARD_AND_APPROVAL_WORKFLOW.md`, `CANDIDATE_TO_ADMIN_UPDATE_PACKET_SYSTEM.md`, `CAMPAIGN_COMPANION_PUBLIC_SIMPLE_VIEW_RULES.md`, `USER_FRIENDLY_WORKBENCH_UX_REQUIREMENTS.md`, `WEBSITE_CLEANUP_MOTION_AND_LIVE_PLATFORM_PLAN.md`, `CONTINUOUS_CAMPAIGN_KNOWLEDGE_INGESTION_AND_REFINEMENT_ENGINE.md`, `ASK_KELLY_CANDIDATE_VOICE_AND_POSITION_SYSTEM.md`, `SEGMENTED_MESSAGE_AND_DISTRIBUTION_SOP.md` (§22), this `MANUAL_BUILD_PLAN.md`
+- **Not in Pass 5H:** app code, Prisma, auth, new routes, shipped emails, Netlify deploy configuration in repo; no claim that production-grade Ask Kelly, suggestion queue, or approval feed exists in product; no PII in templates; no public “AI” product naming; A–D + `APPROVAL_AUTHORITY_MATRIX` + LQA still govern; no 0–6 grade lift; beta access only with MCE+owner per MI §45
+- **Superseded in sequencing note by Pass 5I (manual):** `MANUAL_PROJECT_STATUS_AND_REMAINING_WORK_REPORT.md` and `MANUAL_PASS_5I_COMPLETION_REPORT.md` keep **5H** first; **5I** adds **briefs** + **objectives** + **thanks** doctrine **in** **parallel** to **ending** the **manual** **phase,** not **a** **reorder** of **5H** **engineering** **. **
+
+## Pass 5I (complete, markdown): Project status, Workbench morning briefs, objectives, thank-you workflow
+
+**Script name:** *Manual Pass 5I — project status, daily morning brief doctrine, dashboard objective and get-involved cards, template library, thank-you/appreciation SOP (design only)*
+
+- **Delivered:** `MANUAL_PROJECT_STATUS_AND_REMAINING_WORK_REPORT.md`, `WORKBENCH_MORNING_BRIEF_AND_DAILY_OBJECTIVE_SYSTEM.md`, `DASHBOARD_OBJECTIVE_AND_GET_INVOLVED_CARD_SYSTEM.md`, `THANK_YOU_CARD_AND_APPRECIATION_WORKFLOW.md`, `WORKBENCH_DAILY_BRIEF_TEMPLATE_LIBRARY.md`, `MANUAL_PASS_5I_COMPLETION_REPORT.md`
+- **Updated:** `MANUAL_TABLE_OF_CONTENTS.md`, `SYSTEM_READINESS_REPORT.md`, `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` (§46), `WORKFLOW_INDEX.md`, `WORKBENCH_OPERATOR_RUNBOOK.md`, `CM_DAILY_AND_WEEKLY_OPERATING_SYSTEM.md`, `CANDIDATE_DASHBOARD_AND_DECISION_RUNBOOK.md`, `USER_FRIENDLY_WORKBENCH_UX_REQUIREMENTS.md`, `ASK_KELLY_LAUNCH_PRIORITY_AND_FIRST_RELEASE_SCOPE.md`, `CONTINUOUS_CAMPAIGN_KNOWLEDGE_INGESTION_AND_REFINEMENT_ENGINE.md`, `ASK_KELLY_PRODUCTION_GRADE_AGENT_FOUNDATION_CHECKLIST.md`, this `MANUAL_BUILD_PLAN.md`
+- **Not in Pass 5I:** app code, shipped Workbench morning brief, dashboard cards, or thank-you queue; no 0**–**6 grade lift; no voter/donor rows in doc examples; no public “**AI**” naming; 5H Ask Kelly launch path still first engineering sequence before unrelated major work
+- **Recommended next (engineering, owner):** (1) **Ask** **Kelly** **/ ** **candidate** **website** **review** + **suggestion** **/ ** **beta** path **(5H** **) **. **(2) ** **Workbench** **morning** **brief** + **objective** **/ ** **get** **involved** **card** **surfaces** **(5I** **) **. **(3) ** **Thank**-**you** / **appreciation** **task** / **`CampaignTask` **+ **RACI** **(5I** **+ ** **MI** **§**46** **) **. ** *Then* MCE/NDE depth, OIS/brief **wiring,** P5, VFR, **or** **manual** **Pass** **5B** / **6** as **separate** **tracks** **(see** `MANUAL_BUILD_PLAN` **/ **`MANUAL_PROJECT_STATUS_...` **). **
+
 ## Pass 5B (markdown, next manual track option): Message Engine + Narrative Distribution depth
 
 - Expand manual chapters 08–09 from `RedDirt/docs/MESSAGE_CONTENT_ENGINE_SYSTEM_PLAN.md` and `RedDirt/docs/NARRATIVE_DISTRIBUTION_ENGINE_SYSTEM_PLAN.md`; align vocabulary with `RedDirt/docs/MESSAGE_SYSTEM_LANGUAGE_AUDIT_REPORT.md`  

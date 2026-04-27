@@ -4,7 +4,7 @@
 **Audience:** **Candidate** + **CM** + **advance** + **owner** (policy)  
 **Public language:** **Campaign Companion**, **Guided Campaign System**, **Workbench** — not “**AI**” as a product name for planning tools.
 
-**Related:** `CANDIDATE_AND_CAMPAIGN_MANAGER_STRATEGY_DASHBOARD_REQUIREMENTS.md` · `IPAD_MOBILE_AND_DESKTOP_DASHBOARD_DESIGN_REQUIREMENTS.md` · `INTERACTIVE_STRATEGY_WORKBENCH_AND_SCENARIO_SLIDER_SYSTEM.md` · `STRATEGY_TO_TASK_EXECUTION_RUNBOOK.md`
+**Related:** `CANDIDATE_AND_CAMPAIGN_MANAGER_STRATEGY_DASHBOARD_REQUIREMENTS.md` · `IPAD_MOBILE_AND_DESKTOP_DASHBOARD_DESIGN_REQUIREMENTS.md` · `INTERACTIVE_STRATEGY_WORKBENCH_AND_SCENARIO_SLIDER_SYSTEM.md` · `STRATEGY_TO_TASK_EXECUTION_RUNBOOK.md` · **Pass** **5I** `WORKBENCH_MORNING_BRIEF_AND_DAILY_OBJECTIVE_SYSTEM.md` · `DASHBOARD_OBJECTIVE_AND_GET_INVOLVED_CARD_SYSTEM.md` · `THANK_YOU_CARD_AND_APPRECIATION_WORKFLOW.md`
 
 **Honesty:** A **single** **shipped** **“candidate** **strategy** **app**” is **not** guaranteed. **Until** product ships, **emulate** this runbook with **calendar** + **briefing** **doc** + **`CampaignTask`** **routed** through **CM**.
 
@@ -14,7 +14,7 @@
 
 | Time | Check | Owner | Workbench tie |
 |------|--------|--------|----------------|
-| **Start** | **Rest** block **intact?** **Next** **3** **public** **obligations** | Advance + candidate | `CampaignEvent` **+** **brief** |
+| **Start** | **Rest** block; **next** **3** **public** **obligations;** **one**-**line** **today+week** from **CM** or **brief** **(5I)** | Advance + candidate | `CampaignEvent` + brief **;** or **standup** **doc** if **no** **UI** **(MI** **§**46) |
 | **Midday** | **Comms** **defects** **/** **crisis** **holds** | Comms + CM | **No** **ship** **without** **MCE** |
 | **End** | “What moved the plan today?” (one line internal) | CM or self-log | Task or meeting note |
 
@@ -39,6 +39,13 @@
 
 - Ghosts = 0 (see `CM_DAILY_...`); TBD+owner only (3F/3G).  
 - Rural / county stops: tied to OIS-honest ladder, not a sim slider alone.  
+
+---
+
+## 4B. **Thanks** and **appreciation** (Pass 5I — design / emulation)
+
+- **Default:** **Candidate**-**first** thanks (voice; name-in-line outbound = MCE+LQA). If the window is tight, delegate to a named staff surrogate per `THANK_YOU_CARD_AND_APPRECIATION_WORKFLOW.md` — not a generic bot or off-RACI DM.  
+- **Route** repeated or sensitive acknowledgments as **`CampaignTask`** or **`WorkflowIntake`** if they touch $, turf, or a new public promise (STRATEGY_TO_TASK).  
 
 ---
 
@@ -105,4 +112,4 @@
 
 ---
 
-**Last updated:** 2026-04-28 (Pass 5)
+**Last updated:** 2026-04-28 (Pass 5 + 5I)

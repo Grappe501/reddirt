@@ -6,6 +6,8 @@
 
 **Product honesty:** Companion does **not** provide **legal** finality; counsel for edge cases. Any internal model or NLP is **not** labeled “AI” in public copy.
 
+**Pass 5F (broader scope):** Election and trust Q&A in **this** file is **one** **bounded** **subset** of the **larger** **Ask** **Kelly** / **Campaign** **Companion** **candidate**-**voice** **doctrine** — see `ASK_KELLY_CANDIDATE_VOICE_AND_POSITION_SYSTEM.md` (A–D levels, non-SOS issues, **no** **fabrication** of Kelly’s **personal** **views**), `CANDIDATE_REFINEMENT_INTAKE_AND_QUESTION_BANK.md`, and `CONTINUOUS_CAMPAIGN_KNOWLEDGE_INGESTION_AND_REFINEMENT_ENGINE.md`. 5D **citations** and **EPI** **/ **SBEC** **rules** **here** **still** **govern** **election**-**themed** **chats**; **5F** does **not** **relax** **5D** or **MCE/NDE** **for** **unsourced** **stats** or **fraud** **rhetoric** **.**
+
 ---
 
 ## 1. Scope: what Companion may do

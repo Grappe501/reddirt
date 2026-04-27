@@ -5,7 +5,8 @@
 **Public vocabulary:** **Campaign Operating System**, **Workbench**, **Pathway Guide**, **Organizing Guide** — not “**AI**” in public copy. **Internal** `metadata` on `WorkflowIntake` may contain classification keys — do **not** restate as public “scores” on people.
 
 **Canonical refs:** `workflows/TASK_QUEUE_AND_APPROVALS.md` · `playbooks/TASK_TEMPLATE_INDEX.md` · `playbooks/APPROVAL_AUTHORITY_MATRIX.md` · `playbooks/ESCALATION_PATHS.md` · `playbooks/DASHBOARD_ATTACHMENT_RULES.md` · `SYSTEM_READINESS_REPORT.md`  
-**Not** a replacement for `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` or treasurer/counsel **truth**.
+**Not** a replacement for `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` or treasurer/counsel **truth**.  
+**Pass 5I:** `WORKBENCH_MORNING_BRIEF_AND_DAILY_OBJECTIVE_SYSTEM.md` · `DASHBOARD_OBJECTIVE_AND_GET_INVOLVED_CARD_SYSTEM.md` · `WORKBENCH_DAILY_BRIEF_TEMPLATE_LIBRARY.md` · `THANK_YOU_CARD_AND_APPRECIATION_WORKFLOW.md` (design only — not a shipped daily brief) · MI **§**46
 
 ---
 
@@ -19,6 +20,10 @@
 | A place to **link** intakes to **comms** plans and **events** with human judgment | A place to **show** **row**-level **voter** **data** to **untrained** **volunteers** — **forbidden** by policy |
 
 **Honest product status (Pass 5):** Intake + open-work + tasks are **mature** in code terms (`SYSTEM_READINESS_REPORT.md`). **Not** every **role**-specific **dashboard** or **GOTV** / **ED** “command” surface is **shipped** or **audited** to **depth**; **OIS** mixes **live** and **placeholder**; **voter** **UIs** require **DPA** + training for “production-grade.” **Sliders** and **full** **strategy** **UI** from Pass **4B** = **design** + **SOP** until a **separate** **build** **completes**.
+
+### Start of day: morning brief rhythm (Pass 5I — when built)
+
+- **First** **open** of **Workbench** **(or** **#ops** **summary) ** should **land** in **a** **“** **today** / **this** **week** / **this** **month** **”** **frame** + **P0** **/ ** **blocked** / **15m** **/ ** **DNT,** not **a** **stack** **of** **raw** **errors** (see `WORKBENCH_MORNING_BRIEF_...`, `USER_FRIENDLY_...`). **Emulate** with **a** **one**-**page** **doc** **or** **standup** **if** the **UI** is **not** **live** **(MI** **§**46) **. **
 
 ---
 
@@ -174,4 +179,4 @@
 
 ---
 
-**Last updated:** 2026-04-28 (Pass 5)
+**Last updated:** 2026-04-28 (Pass 5 + 5I)

@@ -5,7 +5,7 @@
 **Vocabulary:** **Workbench**, **Pathway Guide**, **Guided Campaign System**, **Field Intelligence** — not “**AI**” **.  
 **RACI** **+** `playbooks/APPROVAL_AUTHORITY_MATRIX.md` always **win** over **one**-**on**-**one** **habit** **.  
 
-**Paired** **docs:** `WORKBENCH_OPERATOR_RUNBOOK.md` · `STRATEGY_TO_TASK_EXECUTION_RUNBOOK.md` · `playbooks/ESCALATION_PATHS.md`
+**Paired** **docs:** `WORKBENCH_OPERATOR_RUNBOOK.md` · `STRATEGY_TO_TASK_EXECUTION_RUNBOOK.md` · `playbooks/ESCALATION_PATHS.md` · **Pass** **5I** `WORKBENCH_MORNING_BRIEF_AND_DAILY_OBJECTIVE_SYSTEM.md` · `WORKBENCH_DAILY_BRIEF_TEMPLATE_LIBRARY.md` (T3, T16)
 
 ---
 
@@ -18,7 +18,9 @@
 | 3 | **Calendar** / **ghost** **events** (no **owner** or **TBD+no** **surname** **) **: **0** or **one** `CampaignTask` to **own** the **fix** **|
 | 4 | **Comms** defects from MCE/NDE (if any): one-line priority order for comms standup | **MCE** queue cap (see WIP) |
 
-**Not** in **first** 30: **new** **creative** **projects,** long **donor** **reads,** or **ad-hoc** **spend** **approval** (that’s **T** + **LQA) **.  
+**Not** in **first** 30: **new** **creative** **projects,** long **donor** **reads,** or **ad-hoc** **spend** **approval** (that’s **T** + **LQA**).
+
+**Morning** **brief (Pass 5I):** Skim **today** / **week** / **month** objectives (one line each) and **P0** / **blocked** before deep work; emulate with a standup **doc** if no brief **card** exists (MI **§**46).
 
 ---
 
@@ -67,6 +69,7 @@
 
 ## 8. **Weekly** **locked**-**baseline** **meeting** (30–60 min, **with** **owner,** T **as** **needed,** MCE/NDE **as** **needed** for **messaging**)
 
+- **5I (week + month):** Set or review this week’s and this month’s stated objectives (see `WORKBENCH_MORNING_BRIEF_AND_DAILY_OBJECTIVE_SYSTEM.md` + `WORKBENCH_DAILY_BRIEF_TEMPLATE_LIBRARY.md` T16–T17) before sliders / sim — design or emulate if no **card** UI (MI **§**46).  
 - **Input:** **Proposed** **scenario** **diffs**; **KPIs** with **data** **labels** (treasury, **V.C.,** OIS).  
 - **Output:** **Dated** **“Locked** **baseline** for **&lt;dates&gt;`”` **in** **notes** + **strategic** `CampaignTask` **or** **intake** **STRATEGY-** as **in** 4B **.  
 - **Who locks:** O+M minimum; T for $-linked; C for narrative risk (see MI §38, §39).  
@@ -149,4 +152,4 @@
 
 ---
 
-**Last updated:** 2026-04-28 (Pass 5)
+**Last updated:** 2026-04-28 (Pass 5 + 5I)
