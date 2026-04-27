@@ -1,9 +1,9 @@
-# Dashboard — objective and “get involved” card system (Manual Pass 5I + 5J + 5K)
+# Dashboard — objective and “get involved” card system (Manual Pass 5I + 5J + 5K + 5L)
 
 **Lane:** `RedDirt/campaign-system-manual`  
 **Type:** **UX** **/ ** **governance** **for** **cards** **that** **teach** **today** **/ ** **week** **/ ** **month** **and** **tangible** **next** **steps** **—** **not** a **shipped** **UI,** **not** **bypassing** **progressive** **unlocks** **(5C) ** **or** **Ask** **Kelly** **first** **release** **(5H) ** **(see** `USER_FRIENDLY_WORKBENCH_UX_REQUIREMENTS` **, **`playbooks/DASHBOARD_ATTACHMENT_RULES` **). **
 
-**Ref:** `PROGRESSIVE_ONBOARDING_AND_UNLOCK_SYSTEM.md` · `WORKBENCH_MORNING_BRIEF_AND_DAILY_OBJECTIVE_SYSTEM.md` · `ASK_KELLY_EXPLAIN_WHY_GUIDE.md` · `ASK_KELLY_SUGGESTION_BOX_AND_FEEDBACK_INTAKE_RULES.md` · `THANK_YOU_CARD_AND_APPRECIATION_WORKFLOW.md`
+**Ref:** `PROGRESSIVE_ONBOARDING_AND_UNLOCK_SYSTEM.md` · `WORKBENCH_MORNING_BRIEF_AND_DAILY_OBJECTIVE_SYSTEM.md` · `ASK_KELLY_EXPLAIN_WHY_GUIDE.md` · `ASK_KELLY_SUGGESTION_BOX_AND_FEEDBACK_INTAKE_RULES.md` · `THANK_YOU_CARD_AND_APPRECIATION_WORKFLOW.md` · `ANYONE_CAN_ONBOARD_CAMPAIGN_CULTURE_AND_PATHWAY_SYSTEM.md` · `PHONE_BANK_TEXT_BANK_AND_CONTACT_FLOW_SYSTEM.md` · `MANUAL_TO_DEVELOPMENT_BLUEPRINT_AND_RETURN_TO_CODE_PLAN.md`
 
 ---
 
@@ -67,4 +67,4 @@
 
 ---
 
-**Last updated:** 2026-04-27 (Pass 5I + 5J + 5K)
+**Last updated:** 2026-04-27 (Pass 5I + 5J + 5K + 5L)

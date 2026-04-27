@@ -24,6 +24,7 @@ const siteLinks: { href: string; label: string }[] = [
 
 const operationsLinks: { href: string; label: string }[] = [
   { href: "/admin/workbench", label: "Campaign workbench" },
+  { href: "/admin/workbench/ask-kelly-beta", label: "Ask Kelly (beta) triage" },
   { href: "/admin/candidate-briefs", label: "Candidate briefs" },
   { href: "/admin/style-guide", label: "Style & content hub" },
   { href: "/admin/campaign-ops/community-equity", label: "Community equity outreach" },

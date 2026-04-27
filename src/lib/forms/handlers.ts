@@ -1,8 +1,10 @@
+import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { sanitizePlainText } from "@/lib/security/sanitize";
 import { classifyIntake } from "@/lib/openai/classify";
 import { isOpenAIConfigured } from "@/lib/openai/client";
-import type { FormSubmissionInput } from "./schemas";
+import { ASK_KELLY_CATEGORY_LABELS } from "@/content/ask-kelly-beta-public-copy";
+import type { AskKellyBetaFeedbackInput, FormSubmissionInput } from "./schemas";
 
 function buildSummary(data: FormSubmissionInput): string {
   switch (data.formType) {
@@ -78,8 +80,21 @@ function buildSummary(data: FormSubmissionInput): string {
       ]
         .filter(Boolean)
         .join("\n");
-    default:
-      return "";
+    case "ask_kelly_beta_feedback":
+      return [
+        `Name: ${data.name}`,
+        `Email: ${data.email}`,
+        data.phone ? `Phone: ${data.phone}` : "",
+        `Category: ${ASK_KELLY_CATEGORY_LABELS[data.category]}`,
+        data.pagePath ? `Page: ${data.pagePath}` : "",
+        `Feedback:\n${data.feedback}`,
+      ]
+        .filter(Boolean)
+        .join("\n");
+    default: {
+      const _n: never = data;
+      return _n;
+    }
   }
 }
 
@@ -99,10 +114,15 @@ function formTypeLabel(formType: FormSubmissionInput["formType"]): string {
       return "Story submission";
     case "host_gathering":
       return "Host gathering";
+    case "ask_kelly_beta_feedback":
+      return "Ask Kelly beta";
   }
 }
 
 function publicFormIntakeTitle(data: FormSubmissionInput): string {
+  if (data.formType === "ask_kelly_beta_feedback") {
+    return `Ask Kelly (invite-only beta) — ${ASK_KELLY_CATEGORY_LABELS[data.category]}`;
+  }
   const label = formTypeLabel(data.formType);
   const countyHint = "county" in data && data.county ? sanitizePlainText(data.county, 80) : null;
   if (countyHint) return `${label} public form - ${countyHint} County`;
@@ -110,10 +130,28 @@ function publicFormIntakeTitle(data: FormSubmissionInput): string {
   return `${label} public form`;
 }
 
+function buildAskKellyBetaMetadata(data: AskKellyBetaFeedbackInput): Prisma.InputJsonValue {
+  return {
+    askKelly: true,
+    beta: true,
+    owner: "Kelly",
+    finalAuthority: "Kelly",
+    category: data.category,
+    pagePath: data.pagePath ?? null,
+    source: "ask_kelly_beta",
+    launchMode: "invite_only_beta",
+    formType: "ask_kelly_beta_feedback",
+    staffNote: "Surface and organize for Kelly. Final call rests with the candidate, not a staff approval step.",
+  };
+}
+
 function publicFormIntakeMetadata(
   data: FormSubmissionInput,
   classification: Awaited<ReturnType<typeof classifyIntake>> | null,
 ) {
+  if (data.formType === "ask_kelly_beta_feedback") {
+    return buildAskKellyBetaMetadata(data) as object;
+  }
   return {
     source: "public_form",
     formType: data.formType,
@@ -150,13 +188,67 @@ async function createWorkflowIntakeForSubmission(input: {
       status: "PENDING",
       title: publicFormIntakeTitle(input.data),
       source: input.data.formType,
-      metadata: publicFormIntakeMetadata(input.data, input.classification),
+      metadata: publicFormIntakeMetadata(input.data, input.classification) as Prisma.InputJsonValue,
     },
     select: { id: true },
   });
 }
 
+async function persistAskKellyBeta(data: AskKellyBetaFeedbackInput): Promise<PersistResult> {
+  const email = data.email.toLowerCase().trim();
+  const summary = buildSummary(data);
+
+  const user = await prisma.user.upsert({
+    where: { email },
+    create: {
+      email,
+      name: sanitizePlainText(data.name, 120),
+      phone: data.phone?.trim() || null,
+      interests: [],
+    },
+    update: {
+      name: sanitizePlainText(data.name, 120),
+      phone: data.phone?.trim() || undefined,
+    },
+  });
+
+  const sub = await prisma.submission.create({
+    data: {
+      userId: user.id,
+      type: "ask_kelly_beta_feedback",
+      content: sanitizePlainText(summary, 8000),
+      structuredData: {
+        formType: "ask_kelly_beta_feedback",
+        askKelly: true,
+        beta: true,
+        owner: "Kelly",
+        finalAuthority: "Kelly",
+        category: data.category,
+        pagePath: data.pagePath ?? null,
+        source: "ask_kelly_beta",
+        launchMode: "invite_only_beta",
+      } as object,
+    },
+  });
+
+  const intake = await prisma.workflowIntake.create({
+    data: {
+      submissionId: sub.id,
+      status: "PENDING",
+      title: `Ask Kelly (invite-only beta) — ${ASK_KELLY_CATEGORY_LABELS[data.category]}`,
+      source: "ask_kelly_beta",
+      metadata: buildAskKellyBetaMetadata(data),
+    },
+    select: { id: true },
+  });
+
+  return { submissionId: sub.id, userId: user.id, workflowIntakeId: intake.id };
+}
+
 export async function persistFormSubmission(data: FormSubmissionInput): Promise<PersistResult> {
+  if (data.formType === "ask_kelly_beta_feedback") {
+    return persistAskKellyBeta(data);
+  }
   const summary = buildSummary(data);
   let classification = null as Awaited<ReturnType<typeof classifyIntake>> | null;
   if (isOpenAIConfigured()) {

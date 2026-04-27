@@ -1,9 +1,9 @@
-# Workbench — morning brief and daily objective system (Manual Pass 5I + 5J + 5K)
+# Workbench — morning brief and daily objective system (Manual Pass 5I + 5J + 5K + 5L)
 
 **Lane:** `RedDirt/campaign-system-manual`  
 **Type:** **Doctrine** for **how** **every** **Workbench**-**facing** **dashboard** **should** **open** **with** a **calm,** **instructive** **morning** **brief** **—** **not** a **shipped** **UI** **claim,** **not** a **bypass** of **`APPROVAL_AUTHORITY_MATRIX` ** **or** **PII** **policy** **(see** `USER_FRIENDLY_WORKBENCH_UX_REQUIREMENTS` **,** `playbooks/ROLE_KPI_INDEX` **,** `MANUAL_INFORMATION_...` **§**46** **). **
 
-**Ref:** `WORKBENCH_OPERATOR_RUNBOOK.md` · `CM_DAILY_AND_WEEKLY_OPERATING_SYSTEM.md` · `CANDIDATE_DASHBOARD_AND_DECISION_RUNBOOK.md` · `DASHBOARD_OBJECTIVE_AND_GET_INVOLVED_CARD_SYSTEM.md` · `WORKBENCH_DAILY_BRIEF_TEMPLATE_LIBRARY.md` · `DAILY_APPROVAL_LAUNCH_AND_TASK_ROUTING_SYSTEM.md` · `TASK_FLOW_FORECASTING_AND_HUMAN_WORK_PLAN.md` · `HUMAN_INTERACTION_TASKS_IN_EVERY_BRIEF.md` · `ADVANCE_TASK_BUY_IN_AND_ESCALATION_LADDER_SYSTEM.md` · `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` (§**46,** §**47,** §**48) **·** `SYSTEM_READINESS_REPORT.md`
+**Ref:** `WORKBENCH_OPERATOR_RUNBOOK.md` · `CM_DAILY_AND_WEEKLY_OPERATING_SYSTEM.md` · `CANDIDATE_DASHBOARD_AND_DECISION_RUNBOOK.md` · `DASHBOARD_OBJECTIVE_AND_GET_INVOLVED_CARD_SYSTEM.md` · `WORKBENCH_DAILY_BRIEF_TEMPLATE_LIBRARY.md` · `DAILY_APPROVAL_LAUNCH_AND_TASK_ROUTING_SYSTEM.md` · `TASK_FLOW_FORECASTING_AND_HUMAN_WORK_PLAN.md` · `HUMAN_INTERACTION_TASKS_IN_EVERY_BRIEF.md` · `ADVANCE_TASK_BUY_IN_AND_ESCALATION_LADDER_SYSTEM.md` · `LEARNING_CULTURE_AND_COMMUNITY_BUILDING_SYSTEM.md` · `MANUAL_TO_DEVELOPMENT_BLUEPRINT_AND_RETURN_TO_CODE_PLAN.md` · `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` (§**46,** §**47,** §**48,** §**49) **·** `SYSTEM_READINESS_REPORT.md`
 
 **Sequencing:** **Ask** **Kelly** **first**-**release** **engineering** **(5H) ** **stays** **first** **before** **unrelated** **major** **work;** **this** **file** **designs** **Work**bench **briefs** **and** **objectives** **as** **the** **next**-**after**-**v1** **/ ** **parallel** **ops** **foundation** **(see** `ASK_KELLY_LAUNCH_PRIORITY_...` **, **`MANUAL_PASS_5I_COMPLETION_REPORT` **). **
 
@@ -140,4 +140,4 @@ Every **brief** **includes** a **“** **Human** **Follow**-**up** **”** **sec
 
 ---
 
-**Last updated:** 2026-04-27 (Pass 5I + 5J + 5K)
+**Last updated:** 2026-04-27 (Pass 5I + 5J + 5K + 5L)

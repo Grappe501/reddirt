@@ -126,6 +126,32 @@ export const hostGatheringSchema = hostGatheringShape.superRefine((data, ctx) =>
   refineHostGatheringOther(data.gatheringType, data.gatheringTypeOther, ctx),
 );
 
+/** Invite-only beta: structured feedback to Kelly (not internal ops jargon). */
+export const askKellyBetaCategoryValues = [
+  "website_issues_ease_of_use",
+  "volunteer_questions_onboarding",
+  "message_content_feedback",
+] as const;
+
+export const askKellyBetaFeedbackSchema = z.object({
+  formType: z.literal("ask_kelly_beta_feedback"),
+  name,
+  email,
+  phone: phone,
+  feedback: z
+    .string()
+    .min(10, "A little more detail helps—at least a sentence or two.")
+    .max(8000, "That’s a lot of text. Try the main points first, then follow up if needed."),
+  category: z.enum(askKellyBetaCategoryValues),
+  /** Optional: where the tester was on the site (path only, no PII in URL params). */
+  pagePath: z
+    .string()
+    .max(500)
+    .optional()
+    .transform((v) => (v?.trim() ? v.trim() : undefined)),
+  website: honeypot,
+});
+
 export const formSubmissionSchema = z
   .discriminatedUnion("formType", [
     joinMovementSchema,
@@ -134,6 +160,7 @@ export const formSubmissionSchema = z
     directDemocracyCommitmentSchema,
     storySubmissionSchema,
     hostGatheringShape,
+    askKellyBetaFeedbackSchema,
   ])
   .superRefine((data, ctx) => {
     if (data.formType === "host_gathering") {
@@ -148,6 +175,7 @@ export type LocalTeamInput = z.infer<typeof localTeamSchema>;
 export type DirectDemocracyCommitmentInput = z.infer<typeof directDemocracyCommitmentSchema>;
 export type StorySubmissionInput = z.infer<typeof storySubmissionSchema>;
 export type HostGatheringInput = z.infer<typeof hostGatheringSchema>;
+export type AskKellyBetaFeedbackInput = z.infer<typeof askKellyBetaFeedbackSchema>;
 
 const dateYmd = z
   .string()

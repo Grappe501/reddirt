@@ -3,7 +3,7 @@
 **Lane:** `RedDirt/campaign-system-manual`  
 **Type:** **Doctrine** **—** **retention** **and** **healthy** **engagement** are **core** **success** **metrics,** **not** **soft** **extras** **;** **not** a **shipped** **CRM** **score,** **not** **0**–**6** on **a** **public** **card** **(5C) ** **,** **not** **row**-**level** **voter** **/ ** **donor** **in** a **general** **brief** **(3H,** **5I) **. **
 
-**Ref:** `ADVANCE_TASK_BUY_IN_AND_ESCALATION_LADDER_SYSTEM.md` · `HUMAN_INTERACTION_TASKS_IN_EVERY_BRIEF.md` · `THANK_YOU_CARD_AND_APPRECIATION_WORKFLOW.md` · `playbooks/ROLE_KPI_INDEX.md` (where **vol** **KPIs** **exist) **· **`WORKBENCH_MORNING_BRIEF_...` **(human** **section) **· **`MANUAL_INFORMATION_REQUESTS_FOR_STEVE` **(§**48** **) **
+**Ref:** `ADVANCE_TASK_BUY_IN_AND_ESCALATION_LADDER_SYSTEM.md` · `HUMAN_INTERACTION_TASKS_IN_EVERY_BRIEF.md` · `THANK_YOU_CARD_AND_APPRECIATION_WORKFLOW.md` · `ANYONE_CAN_ONBOARD_CAMPAIGN_CULTURE_AND_PATHWAY_SYSTEM.md` · `LEARNING_CULTURE_AND_COMMUNITY_BUILDING_SYSTEM.md` · `playbooks/ROLE_KPI_INDEX.md` (where **vol** **KPIs** **exist) **· **`WORKBENCH_MORNING_BRIEF_...` **(human** **section) **· **`MANUAL_INFORMATION_REQUESTS_FOR_STEVE` **(§**48,** **§**49) **
 
 ---
 

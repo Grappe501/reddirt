@@ -23,7 +23,6 @@ export function CountyDataGapsPanel({
     <section className={cn("border-t border-kelly-text/10 pt-6", className)}>
       <CountySectionHeader overline={overline} title={title} description={description} />
       <ul className="mt-2 list-inside list-disc space-y-1 text-sm text-kelly-text/70">
-      <ul className="mt-2 list-inside list-disc space-y-1">
         {dataWarnings.map((w, i) => (
           <li key={i}>{w}</li>
         ))}

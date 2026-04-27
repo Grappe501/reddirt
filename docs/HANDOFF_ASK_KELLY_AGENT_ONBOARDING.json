@@ -1,0 +1,153 @@
+{
+  "meta": {
+    "title": "AI thread handoff — Ask Kelly (Phase 1 / agent onboarding context)",
+    "workspace": "H:\\SOSWebsite",
+    "active_lane": "RedDirt",
+    "do_not_edit_lanes": ["sos-public", "ajax", "phatlip", "countyWorkbench"],
+    "intent": "Enough context to ship or touch up Ask Kelly beta onboarding in ~1 hour; not full repo history.",
+    "date_iso": "2026-04-27"
+  },
+  "current_sprint": {
+    "name": "Ask Kelly first-release foundation (Step 5H / Phase 1 slice)",
+    "goal": "Invite-only beta: structured feedback to Kelly, calm fallbacks when guided help fails, staff triage without final authority (Kelly owns).",
+    "out_of_scope_for_this_slice": [
+      "Phase 2+ (review wizard, full approval automation, deep workbench product)",
+      "New Prisma models or migrations unless explicitly approved",
+      "Cross-lane imports",
+      "Public voter file, donor data, or strategy sliders"
+    ]
+  },
+  "steve_decisions_embedded": {
+    "owner": "Submissions are Kelly's. Staff triage = surface/organize only.",
+    "final_authority": "Kelly (not a staff 'approval' gate for meaning).",
+    "launch_mode": "invite_only_beta",
+    "beta_categories_only": [
+      "website_issues_ease_of_use",
+      "volunteer_questions_onboarding",
+      "message_content_feedback"
+    ],
+    "public_language": "Use Ask Kelly, guidance, feedback, suggestion — do not call it AI in public copy.",
+    "fallback_tone_order": [
+      "Calm, helpful explanation",
+      "Clear path to submit-for-review (Send feedback tab / form)",
+      "Light humor or gentle sarcasm where natural — not flippant, not a joke wall"
+    ],
+    "onboarding_brief": "Site is meant to read like a Secretary of State candidate who understands systems, automation, modern civic infrastructure, and 21c government. Most visitors never leave the first few pages. Deeper diggers are there because they want to be. Beta testers are invited to look closer than a typical voter."
+  },
+  "implementation_ground_truth": {
+    "flow": "POST /api/forms with formType ask_kelly_beta_feedback → persistFormSubmission (special path, no OpenAI classify) → prisma.submission + prisma.workflowIntake",
+    "workflow_intake_filter_key": { "column": "source", "value": "ask_kelly_beta" },
+    "submission_type_string": "ask_kelly_beta_feedback",
+    "migrations": "None added for this slice; uses existing JSON metadata on WorkflowIntake and structuredData on Submission."
+  },
+  "metadata_contract": {
+    "intake_workflowIntake_metadata_json": {
+      "askKelly": true,
+      "beta": true,
+      "owner": "Kelly",
+      "finalAuthority": "Kelly",
+      "category": "string (one of beta_categories_only)",
+      "pagePath": "string or null",
+      "source": "ask_kelly_beta",
+      "launchMode": "invite_only_beta",
+      "formType": "ask_kelly_beta_feedback",
+      "staffNote": "Governance: surface/organize for Kelly; not staff final call."
+    },
+    "submission_structuredData_json_mirrors": "Same stable keys: askKelly, beta, owner, finalAuthority, category, pagePath, source, launchMode (plus formType in handlers)."
+  },
+  "key_files": {
+    "form_schema": "src/lib/forms/schemas.ts",
+    "form_persist": "src/lib/forms/handlers.ts",
+    "types_category": "src/lib/forms/ask-kelly-beta-types.ts",
+    "public_copy_module": "src/content/ask-kelly-beta-public-copy.ts",
+    "beta_form_ui": "src/components/campaign-guide/AskKellyBetaFeedbackForm.tsx",
+    "dock_chat_and_onboarding": "src/components/campaign-guide/CampaignGuideDock.tsx",
+    "sitewire": "src/components/campaign-guide/AskKellyLayout.tsx (mounts dock + journey provider)",
+    "api_forms": "src/app/api/forms/route.ts",
+    "api_assistant_rag": "src/app/api/assistant/route.ts (no Phase 1 rewrite — fallbacks in dock when this fails)",
+    "admin_triage_page": "src/app/admin/(board)/workbench/ask-kelly-beta/page.tsx",
+    "admin_nav": "src/components/admin/AdminBoardShell.tsx (link: Ask Kelly (beta) triage)",
+    "roadmap_doc": "docs/STEP_6_ENGINEERING_ROADMAP_AND_CURSOR_HANDOFF.md"
+  },
+  "public_ux": {
+    "entry": "Floating Ask Kelly button → panel with tabs: Guidance (chat) | Send feedback (invite banner + long onboarding string + form).",
+    "form_fields": "name, email, optional phone, category (enum), optional pagePath, feedback; honeypot website sent as empty string in JSON body.",
+    "assistant_unavailable": "When /api/assistant or SSE errors: show layered text from ask-kelly-beta-public-copy (ASK_KELLY_ASSISTANT_FALLBACK_LAYERS) — not raw server errors, not stack traces."
+  },
+  "admin_ux": {
+    "triage_url": "/admin/workbench/ask-kelly-beta",
+    "table_shows": "title, human category label, WorkflowIntake.status, createdAt, pagePath, owner/final authority Kelly",
+    "does_not_show": "VFR rows, donors, internal IDs in UI, voter tokens"
+  },
+  "governance_donts": [
+    "No public voter file or voter row in chat",
+    "No donor/treasury in Ask Kelly public paths",
+    "No first-person as Kelly in new copy unless pre-approved source already does",
+    "No auto-publishing from feedback",
+    "No unsourced opponent claims"
+  ],
+  "commands": {
+    "from_directory": "RedDirt (owns package.json)",
+    "check_before_merge": "npm run check"
+  },
+  "manual_reads_priority": [
+    "RedDirt/campaign-system-manual/ASK_KELLY_LAUNCH_PRIORITY_AND_FIRST_RELEASE_SCOPE.md",
+    "RedDirt/campaign-system-manual/ASK_KELLY_PRODUCTION_GRADE_AGENT_FOUNDATION_CHECKLIST.md",
+    "RedDirt/campaign-system-manual/ASK_KELLY_SUGGESTION_BOX_AND_FEEDBACK_INTAKE_RULES.md",
+    "RedDirt/campaign-system-manual/ASK_KELLY_BETA_FEEDBACK_TO_APPROVAL_FEED_WORKFLOW.md",
+    "RedDirt/campaign-system-manual/CAMPAIGN_COMPANION_PUBLIC_SIMPLE_VIEW_RULES.md"
+  ],
+  "likely_one_hour_tasks": [
+    "Tighten copy in src/content/ask-kelly-beta-public-copy.ts to match final voice; keep three-layer fallback + beta banner + onboarding string.",
+    "Copy-only: shorten onboarding paragraph if the panel scrolls too much (no behavior change).",
+    "A11y: tab roles/labels on dock if QA flags issues (CampaignGuideDock).",
+    "Smoke: POST /api/forms with ask_kelly_beta_feedback → confirm WorkflowIntake.source = ask_kelly_beta in DB (requires DATABASE_URL).",
+    "If triage page empty: verify filter matches source string exactly; check metadata.category labels for display."
+  ],
+  "open_risks": [
+    "next build may log Prisma connection errors if DATABASE_URL host unreachable — environment issue, not necessarily code.",
+    "Rate limit: forms route uses 12/min per IP; heavy testing may 429."
+  ],
+  "coordination": {
+    "root_protocol": "H:\\SOSWebsite\\CURSOR_CODEX_COORDINATION_PROTOCOL.md",
+    "red_dirt_readme": "H:\\SOSWebsite\\RedDirt\\README.md"
+  },
+  "next_pass_70min": {
+    "codepack_markdown": "H:\\SOSWebsite\\RedDirt\\docs\\HANDOFF_NEXT_PASS_70MIN_CODEPACK.md",
+    "file_merge_paste_mistake_verdict": "ask-kelly-beta-public-copy.ts and CountyDataGapsPanel.tsx are NOT merged on disk; separate paths and distinct imports. If a chat paste mixed them, fix was never saved as one file.",
+    "inlined_full_in_codepack": [
+      "src/components/campaign-guide/CampaignGuideDock.tsx",
+      "src/components/campaign-guide/AskKellyBetaFeedbackForm.tsx",
+      "src/app/admin/(board)/workbench/ask-kelly-beta/page.tsx"
+    ],
+    "read_from_repo_for_full_bytes": [
+      "src/lib/forms/schemas.ts",
+      "src/lib/forms/handlers.ts",
+      "src/app/api/assistant/route.ts"
+    ],
+    "attach_priority_for_new_thread": [
+      "docs/HANDOFF_NEXT_PASS_70MIN_CODEPACK.md",
+      "src/components/campaign-guide/CampaignGuideDock.tsx",
+      "src/app/admin/(board)/workbench/ask-kelly-beta/page.tsx",
+      "src/lib/content/page-blocks.ts",
+      "src/app/admin/(board)/pages/[pageKey]/page.tsx",
+      "src/app/admin/actions.ts (savePageHeroAction only)"
+    ]
+  },
+  "website_content_editing_ground_truth": {
+    "kelly_double_approval_in_code": "Not implemented. Page hero save is admin `savePageHeroAction` → `AdminContentBlock` upsert; no WorkflowIntake, no two-step Kelly queue.",
+    "page_hero_routes": ["/admin/pages", "/admin/pages/[pageKey]"],
+    "page_hero_persistence": "prisma.adminContentBlock (pageKey, blockKey) payload JSON; see src/lib/content/page-blocks.ts PAGE_KEYS",
+    "homepage_persistence": "HomepageConfig singleton id default",
+    "overrides": "ContentItemOverride for story/editorial/explainer slugs — not a general revision system",
+    "ask_kelly_beta_to_site": "WorkflowIntake triage only; does not auto-apply to AdminContentBlock"
+  },
+  "manual_paths_next_build": [
+    "H:\\SOSWebsite\\RedDirt\\campaign-system-manual\\ASK_KELLY_PRODUCTION_GRADE_AGENT_FOUNDATION_CHECKLIST.md",
+    "H:\\SOSWebsite\\RedDirt\\campaign-system-manual\\ASK_KELLY_BETA_FEEDBACK_TO_APPROVAL_FEED_WORKFLOW.md",
+    "H:\\SOSWebsite\\RedDirt\\campaign-system-manual\\CANDIDATE_TO_ADMIN_UPDATE_PACKET_SYSTEM.md",
+    "H:\\SOSWebsite\\RedDirt\\campaign-system-manual\\CANDIDATE_WEBSITE_REVIEW_WIZARD_AND_APPROVAL_WORKFLOW.md",
+    "H:\\SOSWebsite\\RedDirt\\campaign-system-manual\\WEBSITE_EDIT_IMPACT_ANALYSIS_AND_DOWNSTREAM_DEPENDENCY_RULES.md",
+    "H:\\SOSWebsite\\RedDirt\\campaign-system-manual\\playbooks\\APPROVAL_AUTHORITY_MATRIX.md"
+  ]
+}

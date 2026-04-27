@@ -1,9 +1,9 @@
-# Workbench — daily brief template library (Manual Pass 5I + 5J + 5K)
+# Workbench — daily brief template library (Manual Pass 5I + 5J + 5K + 5L)
 
 **Lane:** `RedDirt/campaign-system-manual`  
 **Type:** **Reusable** **outline** **sections** for **`WORKBENCH_MORNING_BRIEF_AND_DAILY_OBJECTIVE_SYSTEM.md` **—** **not** **copy** in **a** **shipped** **app,** **not** a **bypass** of **PII** or **RACI. **
 
-**Ref:** `WORKBENCH_MORNING_BRIEF_AND_DAILY_OBJECTIVE_SYSTEM.md` · `DASHBOARD_OBJECTIVE_AND_GET_INVOLVED_CARD_SYSTEM.md` · `DAILY_APPROVAL_LAUNCH_AND_TASK_ROUTING_SYSTEM.md` · `TASK_FLOW_FORECASTING_AND_HUMAN_WORK_PLAN.md` · `HUMAN_INTERACTION_TASKS_IN_EVERY_BRIEF.md` · `ADVANCE_TASK_BUY_IN_AND_ESCALATION_LADDER_SYSTEM.md` · `VOLUNTEER_RETENTION_ENGAGEMENT_AND_LOW_TURNOVER_SYSTEM.md` · `CANDIDATE_STRATEGY_REFINEMENT_CONSOLE_AND_SLIDER_SYSTEM.md` · `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` **§**46**–**48
+**Ref:** `WORKBENCH_MORNING_BRIEF_AND_DAILY_OBJECTIVE_SYSTEM.md` · `DASHBOARD_OBJECTIVE_AND_GET_INVOLVED_CARD_SYSTEM.md` · `DAILY_APPROVAL_LAUNCH_AND_TASK_ROUTING_SYSTEM.md` · `TASK_FLOW_FORECASTING_AND_HUMAN_WORK_PLAN.md` · `HUMAN_INTERACTION_TASKS_IN_EVERY_BRIEF.md` · `ADVANCE_TASK_BUY_IN_AND_ESCALATION_LADDER_SYSTEM.md` · `VOLUNTEER_RETENTION_ENGAGEMENT_AND_LOW_TURNOVER_SYSTEM.md` · `CANDIDATE_STRATEGY_REFINEMENT_CONSOLE_AND_SLIDER_SYSTEM.md` · `PHONE_BANK_TEXT_BANK_AND_CONTACT_FLOW_SYSTEM.md` · `MANUAL_TO_DEVELOPMENT_BLUEPRINT_AND_RETURN_TO_CODE_PLAN.md` · `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` **§**46**–**49
 
 **Every** **template** **has:** **Header** | **Objectives** (today / week / month) | **Key** **movement** | **What** **changed** | **Priority** **tasks** | **Follow**-**up** **(roles)** | **Approvals** **(matrix) **| **Tangible** **15m** **/ ** **1h** | **Risks** **/ ** **do** **not** **touch** | **Ask** **Kelly** / **suggestion** **prompts** **(if** **role** **is** **appropriate) **
 
@@ -188,4 +188,4 @@
 
 ---
 
-**Last updated:** 2026-04-27 (Pass 5I + 5J + 5K)
+**Last updated:** 2026-04-27 (Pass 5I + 5J + 5K + 5L)

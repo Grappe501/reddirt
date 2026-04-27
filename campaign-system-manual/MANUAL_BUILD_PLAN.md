@@ -201,6 +201,15 @@
 - **Not in Pass 5K:** app code, shipped buy-in/claim/escalation product, or strategy “console” in UI; no **$** or **GOTV** or **A**-**knowledge** from sliders alone; no auto-assignment without buy-in (except emergency/RACI per `ADVANCE_...` / `DAILY_...`); no public “AI” language; 5H first-release order in `ASK_KELLY_LAUNCH_PRIORITY_...` §1 **not** reordered; no 0**–**6 grade lift; no invented metrics or PII in briefs; Steve answers in MI §48
 - **Recommended next (engineering, owner):** (1) **5H** path first **(unchanged) **. **(2) ** **5I/5J** **surfaces. **(3) ** **Governed** **claim/escalation** **tasks** **+** **MCE+** on **sensitive** per **`ADVANCE_...` **. **(4) ** **Staged** **5K** **after** **5H** with **RACI** **(no** VFR/$$ from UI alone) **. **
 
+## Pass 5L (complete, markdown): Anyone-can-onboard, phone/text contact flow, tool-stack map, theory stack, learning culture, return-to-code
+
+**Script name:** *Manual Pass 5L — Onboarding culture, phone/text banking doctrine, full tool-stack map, theory stack, learning and community, development bridge*  
+
+- **Delivered:** `ANYONE_CAN_ONBOARD_CAMPAIGN_CULTURE_AND_PATHWAY_SYSTEM.md`, `PHONE_BANK_TEXT_BANK_AND_CONTACT_FLOW_SYSTEM.md`, `CAMPAIGN_TOOL_STACK_OPERATING_SYSTEM_MAP.md`, `THEORY_STACK_FOR_CAMPAIGN_OPERATING_SYSTEM.md`, `LEARNING_CULTURE_AND_COMMUNITY_BUILDING_SYSTEM.md`, `MANUAL_TO_DEVELOPMENT_BLUEPRINT_AND_RETURN_TO_CODE_PLAN.md`, `MANUAL_PASS_5L_COMPLETION_REPORT.md`  
+- **Updated:** `MANUAL_TABLE_OF_CONTENTS.md`, `SYSTEM_READINESS_REPORT.md`, `WORKFLOW_INDEX.md`, `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` (**§**49), `VOLUNTEER_RETENTION_ENGAGEMENT_AND_LOW_TURNOVER_SYSTEM.md`, `ADVANCE_TASK_BUY_IN_AND_ESCALATION_LADDER_SYSTEM.md`, `DASHBOARD_OBJECTIVE_AND_GET_INVOLVED_CARD_SYSTEM.md`, `WORKBENCH_MORNING_BRIEF_AND_DAILY_OBJECTIVE_SYSTEM.md`, `WORKBENCH_DAILY_BRIEF_TEMPLATE_LIBRARY.md`, `ASK_KELLY_LAUNCH_PRIORITY_AND_FIRST_RELEASE_SCOPE.md`, `CONTINUOUS_CAMPAIGN_KNOWLEDGE_INGESTION_AND_REFINEMENT_ENGINE.md`, this `MANUAL_BUILD_PLAN.md`  
+- **Not in Pass 5L:** app code, Prisma, or dialer/peer-to-peer product claims; no voter-file expansion; no unmanaged bulk texting; no unapproved scripts; no 0**–**6 grade lift; 5H first-release order in `ASK_KELLY_LAUNCH_PRIORITY_...` **§**1 **not** reordered; Steve answers in MI **§**49 (vendors, placement policy, P20 frame, first coding packet)  
+- **Recommended first engineering packet (owner approval, unchanged in principle):** **5H** first-release spine per `ASK_KELLY_LAUNCH_PRIORITY_...` and `MANUAL_TO_DEVELOPMENT_BLUEPRINT_AND_RETURN_TO_CODE_PLAN.md`; **5I/5J** in parallel if capacity; **5L**-class features (onboard, phone/text, retention surfaces) after **5H** with **RACI** and **MI** **§**48**–**49  
+
 ## Pass 5B (markdown, next manual track option): Message Engine + Narrative Distribution depth
 
 - Expand manual chapters 08–09 from `RedDirt/docs/MESSAGE_CONTENT_ENGINE_SYSTEM_PLAN.md` and `RedDirt/docs/NARRATIVE_DISTRIBUTION_ENGINE_SYSTEM_PLAN.md`; align vocabulary with `RedDirt/docs/MESSAGE_SYSTEM_LANGUAGE_AUDIT_REPORT.md`  

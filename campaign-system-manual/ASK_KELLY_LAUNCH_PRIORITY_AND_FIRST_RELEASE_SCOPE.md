@@ -1,4 +1,4 @@
-# Ask Kelly — launch priority and first release scope (Manual Pass 5H)
+# Ask Kelly — launch priority and first release scope (Manual Pass 5H; Pass 5L bridge)
 
 **Lane:** `RedDirt/campaign-system-manual`  
 **Type:** **Doctrine and sequencing** for the **first** **Ask** **Kelly** **/ ** **Campaign** **Companion** **public** **release** **—** **not** a **shipped** **product** **claim,** not **a** **substitute** for **`APPROVAL_AUTHORITY_MATRIX` ** **or** **LQA** **(see** `MANUAL_PASS_5H_COMPLETION_REPORT.md` **,** `ASK_KELLY_PRODUCTION_GRADE_AGENT_FOUNDATION_CHECKLIST.md` **).**
@@ -24,6 +24,8 @@
 **Pass** **5J (ops** **addendum,** not **a** **5H** **reorder) **: **`MANUAL_PASS_5J_...` **, **`BETA_VOLUNTEER_REACTIVATION_...` **+ **`DAILY_APPROVAL_...` **+ **`HUMAN_INTERACTION_...` **(design** and **MCE+** **governance** **only) **. **5H** first-release **§**1** **/ ** **§**2** **(invites) ** is **unchanged;** **reactivation** **language** **is** first-release **comms** when **MCE+owner** **sends,** not **a** **new** **build** **priority** **ahead** of **the** **5H** **list** **(see** `MANUAL_PASS_5J_COMPLETION_REPORT` **).** **
 
 **Pass** **5K (post**-**basic** **onboarding,** not **a** **5H** **blocker) **: **`CANDIDATE_STRATEGY_REFINEMENT_...` **, **`CAMPAIGN_ENGINE_...` **, **`ASK_KELLY_STRATEGY_...` **, **`ADVANCE_...` **, **`VOLUNTEER_RETENTION_...` **— **advance** **buy**-**in,** **escalation** **ladder,** **retention** **doctrine,** and **“** **throw** the **engine** at **her** **”** **refinement** **(design** **only) **. **Lands** **after** **5H** first**-**release **(same** **path** as **progressive** **onboarding) **, **not** **before** **it;** **5H** **§**1** **is** **unchanged** **(see** `MANUAL_PASS_5K_COMPLETION_REPORT` **).** **
+
+**Pass** **5L (doctrine** **+ ** **maps,** not **a** **5H** **reorder) **: **`ANYONE_CAN_ONBOARD_...` **, **`PHONE_BANK_...` **, **`CAMPAIGN_TOOL_STACK_...` **, **`THEORY_STACK_...` **, **`LEARNING_CULTURE_...` **, **`MANUAL_TO_DEVELOPMENT_...` **(see** `MANUAL_PASS_5L_COMPLETION_REPORT` **) **. **Fills** **onboarding** **culture,** **contact** **flows,** **stack** **orientation,** **civic** **theory,** **learning+** **community,** **and** **return**-**to**-**code** **gaps** **;** **5H** **§**1** **unchanged;** **governance** **in** `MANUAL_INFORMATION_REQUESTS` **§**49** **. **
 
 ---
 
@@ -83,4 +85,4 @@
 
 ---
 
-**Last updated:** 2026-04-27 (Pass 5H + 5I + 5J + 5K note)
+**Last updated:** 2026-04-27 (Pass 5H + 5I + 5J + 5K + 5L note)

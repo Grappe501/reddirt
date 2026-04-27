@@ -3,7 +3,7 @@
 **Lane:** `RedDirt/campaign-system-manual`  
 **Type:** **Doctrine** for **asking** **early,** **earning** **buy**-**in,** **giving** **a** **clear** **claim** **landing,** and **escalating** **before** **crisis** **—** **not** a **shipped** **auto**-**assign** **or** **shame** **nudge** **engine;** **RACI** and **`playbooks/APPROVAL_AUTHORITY_MATRIX.md`** + **`playbooks/ESCALATION_PATHS.md`** still **govern** **sends,** **$,** and **compliance** **(see** `DAILY_APPROVAL_LAUNCH_AND_TASK_ROUTING_SYSTEM.md` **,** `WORKBENCH_OPERATOR_RUNBOOK.md` **, **5J** **).**  
 
-**Ref:** `TASK_FLOW_FORECASTING_AND_HUMAN_WORK_PLAN.md` · `HUMAN_INTERACTION_TASKS_IN_EVERY_BRIEF.md` · `VOLUNTEER_RETENTION_ENGAGEMENT_AND_LOW_TURNOVER_SYSTEM.md` · `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` (§**48**)
+**Ref:** `TASK_FLOW_FORECASTING_AND_HUMAN_WORK_PLAN.md` · `HUMAN_INTERACTION_TASKS_IN_EVERY_BRIEF.md` · `VOLUNTEER_RETENTION_ENGAGEMENT_AND_LOW_TURNOVER_SYSTEM.md` · `ANYONE_CAN_ONBOARD_CAMPAIGN_CULTURE_AND_PATHWAY_SYSTEM.md` · `PHONE_BANK_TEXT_BANK_AND_CONTACT_FLOW_SYSTEM.md` · `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` (§**48,** §**49**)
 
 ---
 

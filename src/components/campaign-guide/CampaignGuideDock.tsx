@@ -7,6 +7,12 @@ import { usePathname } from "next/navigation";
 import { useJourney } from "@/components/journey/journey-context";
 import { beatById } from "@/content/home/journey";
 import { CAMPAIGN_GUIDE_QUICK_PROMPTS } from "@/content/campaign-guide-quick-prompts";
+import { AskKellyBetaFeedbackForm } from "@/components/campaign-guide/AskKellyBetaFeedbackForm";
+import {
+  ASK_KELLY_ASSISTANT_FALLBACK_LAYERS,
+  ASK_KELLY_BETA_INVITE_BANNER,
+  ASK_KELLY_BETA_ONBOARDING,
+} from "@/content/ask-kelly-beta-public-copy";
 import { CAMPAIGN_GUIDE_OPENING } from "@/content/tone-nuggets";
 import { normalizeHistory } from "@/lib/assistant/conversation";
 import { ASSISTANT_API_VERSION } from "@/lib/assistant/version";
@@ -16,11 +22,18 @@ import { cn } from "@/lib/utils";
 type ChatMessage = { role: "user" | "assistant"; text: string };
 type Suggestion = { label: string; href: string };
 
+const ASSISTANT_UNAVAILABLE_COPY = [
+  ASK_KELLY_ASSISTANT_FALLBACK_LAYERS.primary,
+  ASK_KELLY_ASSISTANT_FALLBACK_LAYERS.secondary,
+  ASK_KELLY_ASSISTANT_FALLBACK_LAYERS.tertiary,
+].join("\n\n");
+
 export function CampaignGuideDock() {
   const pathname = usePathname();
   const panelId = useId();
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [open, setOpen] = useState(false);
+  const [panelTab, setPanelTab] = useState<"chat" | "feedback">("chat");
   const [journeyBeatOnPage, setJourneyBeatOnPage] = useState<string | null>(null);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -118,16 +131,16 @@ export function CampaignGuideDock() {
             }
           },
           onDone: (suggestions) => setLastSuggestions(suggestions),
-          onError: (msg) => {
-            setError(msg);
+          onError: () => {
+            setError("Guided help is unavailable; see below to send feedback for review.");
             setMessages((m) => {
               const x = [...m];
               const last = x[x.length - 1];
               if (last?.role === "assistant") {
-                x[x.length - 1] = { ...last, text: `${last.text}\n\n— ${msg}` };
+                x[x.length - 1] = { ...last, text: `${last.text}\n\n${ASSISTANT_UNAVAILABLE_COPY}` };
                 return x;
               }
-              return [...m, { role: "assistant", text: msg }];
+              return [...m, { role: "assistant", text: ASSISTANT_UNAVAILABLE_COPY }];
             });
           },
         });
@@ -148,39 +161,21 @@ export function CampaignGuideDock() {
         json = raw ? (JSON.parse(raw) as typeof json) : {};
       } catch {
         setError("The server returned an unexpected response.");
-        setMessages((m) => [
-          ...m,
-          {
-            role: "assistant",
-            text:
-              "The guide service didn’t return JSON—often a deploy or proxy issue. Try again, or check the browser Network tab for /api/assistant.",
-          },
-        ]);
+        setMessages((m) => [...m, { role: "assistant", text: ASSISTANT_UNAVAILABLE_COPY }]);
         return;
       }
 
       if (!res.ok) {
-        const assistantText =
-          json.message ||
-          (json.error === "not_configured"
-            ? "The conversation tool isn’t available on this site build yet—browse the menu or email kelly@kellygrappe.com."
-            : json.error === "search_failed"
-              ? "Couldn’t reach the site’s knowledge base—try browsing the menu, or email kelly@kellygrappe.com with what you needed."
-              : json.error === "openai_chat_failed"
-                ? "The guide couldn’t finish that request (service limit or site configuration). If it keeps happening, email kelly@kellygrappe.com."
-                : json.error === "assistant_failed"
-                  ? "Something went wrong on our end. Try again—or email kelly@kellygrappe.com if it persists."
-                  : json.error || "The guide couldn’t answer that right now. Email kelly@kellygrappe.com if you need a human.");
-        setError(assistantText);
-        setMessages((m) => [...m, { role: "assistant", text: assistantText }]);
+        setError("Guided help is unavailable; you can still send feedback for review on the other tab.");
+        setMessages((m) => [...m, { role: "assistant", text: ASSISTANT_UNAVAILABLE_COPY }]);
         return;
       }
 
       setLastSuggestions(json.suggestions ?? []);
       setMessages((m) => [...m, { role: "assistant", text: json.reply ?? "No reply returned." }]);
     } catch {
-      setError("Network error.");
-      setMessages((m) => [...m, { role: "assistant", text: "Network error. Check your connection and try again." }]);
+      setError("Network error. Feedback tab still works for sending a note.");
+      setMessages((m) => [...m, { role: "assistant", text: ASSISTANT_UNAVAILABLE_COPY }]);
     } finally {
       setLoading(false);
     }
@@ -263,14 +258,43 @@ export function CampaignGuideDock() {
                   </button>
                 </div>
 
-                {journeyBeatOnPage && beatById(journeyBeatOnPage) ? (
+                <div
+                  className="flex border-b border-kelly-text/10 bg-kelly-page/90 px-2 py-1.5"
+                  role="tablist"
+                  aria-label="Ask Kelly panel"
+                >
+                  {(
+                    [
+                      { id: "chat" as const, label: "Guidance" },
+                      { id: "feedback" as const, label: "Send feedback" },
+                    ] as const
+                  ).map((t) => (
+                    <button
+                      key={t.id}
+                      type="button"
+                      role="tab"
+                      aria-selected={panelTab === t.id}
+                      onClick={() => setPanelTab(t.id)}
+                      className={cn(
+                        "flex-1 rounded-lg px-2 py-2 font-body text-xs font-bold uppercase tracking-wide",
+                        panelTab === t.id
+                          ? "bg-kelly-navy/15 text-kelly-navy ring-1 ring-kelly-navy/25"
+                          : "text-kelly-text/55 hover:bg-kelly-text/5",
+                      )}
+                    >
+                      {t.label}
+                    </button>
+                  ))}
+                </div>
+
+                {journeyBeatOnPage && beatById(journeyBeatOnPage) && panelTab === "chat" ? (
                   <p className="border-b border-kelly-text/8 bg-kelly-fog/50 px-4 py-2 font-body text-xs text-kelly-slate">
                     <span className="font-semibold text-kelly-ink">You’re in:</span> {beatById(journeyBeatOnPage)?.navLabel} —{" "}
                     {beatById(journeyBeatOnPage)?.description}
                   </p>
                 ) : null}
 
-                {messages.length === 1 && !loading ? (
+                {panelTab === "chat" && messages.length === 1 && !loading ? (
                   <div className="border-b border-kelly-text/8 bg-kelly-page px-3 py-2">
                     <p className="px-1 font-body text-[10px] font-bold uppercase tracking-wider text-kelly-text/45">
                       Try asking
@@ -290,67 +314,81 @@ export function CampaignGuideDock() {
                         </button>
                       ))}
                     </div>
+                    <p className="mt-2 px-1 font-body text-[10px] text-kelly-text/50">
+                      Invited to the beta? Use <span className="font-semibold text-kelly-navy/80">Send feedback</span> for structured notes to the
+                      candidate.
+                    </p>
                   </div>
                 ) : null}
 
-                <div className="flex-1 space-y-3 overflow-y-auto px-4 py-4">
-                  {messages.map((msg, i) => (
-                    <div
-                      key={`${msg.role}-${i}`}
-                      className={cn(
-                        "rounded-xl px-3 py-2.5 font-body text-sm leading-relaxed",
-                        msg.role === "user" ? "ml-6 bg-kelly-navy/12 text-kelly-text" : "mr-4 bg-white text-kelly-text shadow-sm",
-                      )}
-                    >
-                      {msg.text}
-                    </div>
-                  ))}
-                  {loading ? (
-                    <p className="font-body text-sm italic text-kelly-text/50">
-                      Digging through what the campaign taught me…
+                {panelTab === "chat" ? (
+                  <div className="flex-1 space-y-3 overflow-y-auto px-4 py-4">
+                    {messages.map((msg, i) => (
+                      <div
+                        key={`${msg.role}-${i}`}
+                        className={cn(
+                          "rounded-xl px-3 py-2.5 font-body text-sm leading-relaxed",
+                          msg.role === "user" ? "ml-6 bg-kelly-navy/12 text-kelly-text" : "mr-4 bg-white text-kelly-text shadow-sm",
+                        )}
+                      >
+                        {msg.text}
+                      </div>
+                    ))}
+                    {loading ? (
+                      <p className="font-body text-sm italic text-kelly-text/50">Digging through what the campaign taught me…</p>
+                    ) : null}
+                    {error ? <p className="text-sm text-red-700">{error}</p> : null}
+                    {lastSuggestions.length > 0 ? (
+                      <div className="flex flex-wrap gap-2 pt-1">
+                        {lastSuggestions.map((s) => (
+                          <Link
+                            key={s.href}
+                            href={s.href}
+                            className="rounded-full border border-kelly-blue/25 bg-kelly-fog/80 px-3 py-1.5 font-body text-xs font-semibold text-kelly-blue hover:border-kelly-gold"
+                            onClick={() => setOpen(false)}
+                          >
+                            {s.label}
+                          </Link>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+                ) : (
+                  <div className="flex-1 space-y-4 overflow-y-auto px-4 py-4">
+                    <p className="rounded-lg border border-kelly-gold/35 bg-amber-50/80 px-3 py-2 font-body text-xs font-semibold text-kelly-navy">
+                      {ASK_KELLY_BETA_INVITE_BANNER}
                     </p>
-                  ) : null}
-                  {error ? <p className="text-sm text-red-700">{error}</p> : null}
-                  {lastSuggestions.length > 0 ? (
-                    <div className="flex flex-wrap gap-2 pt-1">
-                      {lastSuggestions.map((s) => (
-                        <Link
-                          key={s.href}
-                          href={s.href}
-                          className="rounded-full border border-kelly-blue/25 bg-kelly-fog/80 px-3 py-1.5 font-body text-xs font-semibold text-kelly-blue hover:border-kelly-gold"
-                          onClick={() => setOpen(false)}
-                        >
-                          {s.label}
-                        </Link>
-                      ))}
-                    </div>
-                  ) : null}
-                </div>
+                    <p className="font-body text-sm leading-relaxed text-kelly-text">{ASK_KELLY_BETA_ONBOARDING}</p>
+                    <AskKellyBetaFeedbackForm key={pathname} defaultPagePath={pathname} />
+                  </div>
+                )}
 
-                <div className="border-t border-kelly-text/10 p-3">
-                  <textarea
-                    ref={inputRef}
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" && !e.shiftKey) {
-                        e.preventDefault();
-                        void send();
-                      }
-                    }}
-                    rows={2}
-                    placeholder="Ask anything on this site—or something specific about Kelly…"
-                    className="w-full resize-none rounded-lg border border-kelly-text/15 bg-white px-3 py-2 font-body text-sm text-kelly-text outline-none focus:ring-2 focus:ring-kelly-navy/30"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => void send()}
-                    disabled={loading || !input.trim()}
-                    className="mt-2 w-full rounded-lg bg-kelly-navy py-2.5 font-body text-sm font-bold uppercase tracking-wider text-kelly-mist disabled:opacity-50"
-                  >
-                    Send
-                  </button>
-                </div>
+                {panelTab === "chat" ? (
+                  <div className="border-t border-kelly-text/10 p-3">
+                    <textarea
+                      ref={inputRef}
+                      value={input}
+                      onChange={(e) => setInput(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" && !e.shiftKey) {
+                          e.preventDefault();
+                          void send();
+                        }
+                      }}
+                      rows={2}
+                      placeholder="Ask anything on this site—or something specific about Kelly…"
+                      className="w-full resize-none rounded-lg border border-kelly-text/15 bg-white px-3 py-2 font-body text-sm text-kelly-text outline-none focus:ring-2 focus:ring-kelly-navy/30"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => void send()}
+                      disabled={loading || !input.trim()}
+                      className="mt-2 w-full rounded-lg bg-kelly-navy py-2.5 font-body text-sm font-bold uppercase tracking-wider text-kelly-mist disabled:opacity-50"
+                    >
+                      Send
+                    </button>
+                  </div>
+                ) : null}
               </div>
             </div>,
             document.body,
