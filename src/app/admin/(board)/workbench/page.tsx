@@ -360,8 +360,26 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
             >
               Seats
             </Link>
+            <Link
+              href="/admin/ask-kelly"
+              className="rounded border-2 border-kelly-forest/45 bg-kelly-fog/90 px-1.5 py-0.5 text-[10px] font-extrabold text-kelly-navy shadow-sm"
+            >
+              Candidate onboarding
+            </Link>
           </div>
         </div>
+      </div>
+
+      <div className="border-b border-kelly-forest/25 bg-kelly-fog/50 px-2 py-2 md:px-3">
+        <p className="font-body text-[10px] font-bold uppercase tracking-wide text-kelly-navy/90">Start here for a candidate</p>
+        <p className="mt-0.5 max-w-4xl font-body text-[11px] leading-snug text-kelly-text/85">
+          Share the onboarding home so they learn page copy, beta feedback, and the safe update flow (or open it while you&apos;re
+          logged in to coach).{" "}
+          <Link href="/admin/ask-kelly" className="font-bold text-kelly-navy underline decoration-kelly-forest/50">
+            /admin/ask-kelly
+          </Link>{" "}
+          — same admin login; copy that URL from the address bar after you open it.
+        </p>
       </div>
 
       {err ? (
