@@ -1,4 +1,4 @@
-# Dashboard — objective and “get involved” card system (Manual Pass 5I)
+# Dashboard — objective and “get involved” card system (Manual Pass 5I + 5J + 5K)
 
 **Lane:** `RedDirt/campaign-system-manual`  
 **Type:** **UX** **/ ** **governance** **for** **cards** **that** **teach** **today** **/ ** **week** **/ ** **month** **and** **tangible** **next** **steps** **—** **not** a **shipped** **UI,** **not** **bypassing** **progressive** **unlocks** **(5C) ** **or** **Ask** **Kelly** **first** **release** **(5H) ** **(see** `USER_FRIENDLY_WORKBENCH_UX_REQUIREMENTS` **, **`playbooks/DASHBOARD_ATTACHMENT_RULES` **). **
@@ -20,8 +20,21 @@
 | **Ask** **Kelly** **/ ** **explain** **why** | **Plain** **answer** **path** **(5H) ** **. ** ** |
 | **Suggest** **an** **improvement** | **Structured** **suggestion** **(5H) ** **. ** ** |
 | **Thank** **someone** | **Triggers** **`THANK_YOU_...` ** **;** not **auto**-**send** **sensitive** **(MI) ** **. ** ** |
+| **Approve today’s plan** (Pass 5J) | **Opens** **daily** **approval** **launch** **—** **internal** **RACI** **only** **(see** `DAILY_APPROVAL_LAUNCH_...` **). ** ** ** ** |
+| **Reassign** **task** (Pass 5J) | **Logged** **reassignment** **with** **reason** **;** **no** **silent** **moves** **(see** `WORKBENCH_OPERATOR_RUNBOOK` **). ** ** ** ** ** |
+| **Schedule** **this** **work** (Pass 5J) | **Set** **blocks,** **due** **dates,** **follow**-**up** **windows** **(see** `TASK_FLOW_...` **). ** ** ** ** ** ** |
+| **Human** **follow**-**up** (Pass 5J) | **At** **least** one **concrete** **touch** per **`HUMAN_INTERACTION_...` **. ** ** ** ** ** ** |
+| **Call** **someone** (Pass 5J) | **Phone** **/ ** **voice** **;** **no** **PII** **on** **unsecured** **lines** **;** **RACI**-**governed** **(see** `CANDIDATE_DASHBOARD_...` **). ** ** ** ** ** ** |
+| **Forecasted** **next** **tasks** (Pass 5J) | **View** **“** **upcoming** **task** **flow** **”** **—** **planning** **aid,** **not** **a** **promise** **(see** `TASK_FLOW_...` **). ** ** ** ** ** ** |
+| **Claim** **this** **task** (Pass 5K) | **Opens** **claim** **landing;** **not** **auto**-**assign** **(see** `ADVANCE_...` **). ** ** ** ** ** ** ** ** |
+| **Ask** **for** **help** (Pass 5K) | **“** **Needs** **help** **”** **routed** up **ladder,** not **a** **public** **flame) **. ** ** ** ** ** ** ** ** ** |
+| **Decline** **with** **reason** (Pass 5K) | **Valid** path; **reassign,** not **guilt) **(see** `ADVANCE_...` **). ** ** ** ** ** ** ** ** ** |
+| **Complete** **task** (Pass 5K) | **Log** **evidence;** **MCE+** for **sensitive** **outbound** **(see** `ADVANCE_...` **). ** ** ** ** ** ** ** ** ** ** |
+| **Escalation** **watch** (Pass 5K) | **Counts** for **stuck** **asks;** **not** a **name**-**wall** in **public) **(see** `WORKBENCH_MORNING_...` **§**11** **) **. ** ** ** ** ** ** ** ** ** ** |
+| **Volunteer** **health** **check** (Pass 5K) | **V.C. **+ **CM** **slice,** `VOLUNTEER_RETENTION_...` **. ** ** ** ** ** ** ** ** ** ** |
+| **Adjust** **strategy** **slider** (Pass 5K) | **Post**-**5H** **refinement,** not **$**+**GOTV) **(see** `CANDIDATE_STRATEGY_...` **). ** ** ** ** ** ** ** ** ** ** |
 
-**Rules:** **One** **clear** **action** **per** **card;** **plain** **English;** **role**-**aware;** **no** **shame;** **no** **clutter;** **progressive** **unlocks;** **mobile** / **iPad**-**friendly** **(5C) **. **
+**Rules:** **One** **clear** **action** **per** **card;** **plain** **English;** **role**-**aware;** **no** **shame;** **no** **clutter;** **progressive** **unlocks;** **mobile** / **iPad**-**friendly** **(5C) **. **5J** + **5K** **cards: ** **internal** **/ ** **governed** **—** not **a** **public** **send,** **$** **confirm,** or **GOTV** from **a** **card. **
 
 ---
 
@@ -54,4 +67,4 @@
 
 ---
 
-**Last updated:** 2026-04-28 (Pass 5I)
+**Last updated:** 2026-04-27 (Pass 5I + 5J + 5K)

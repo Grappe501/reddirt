@@ -1,11 +1,13 @@
-# Workbench — daily brief template library (Manual Pass 5I)
+# Workbench — daily brief template library (Manual Pass 5I + 5J + 5K)
 
 **Lane:** `RedDirt/campaign-system-manual`  
 **Type:** **Reusable** **outline** **sections** for **`WORKBENCH_MORNING_BRIEF_AND_DAILY_OBJECTIVE_SYSTEM.md` **—** **not** **copy** in **a** **shipped** **app,** **not** a **bypass** of **PII** or **RACI. **
 
-**Ref:** `WORKBENCH_MORNING_BRIEF_AND_DAILY_OBJECTIVE_SYSTEM.md` · `DASHBOARD_OBJECTIVE_AND_GET_INVOLVED_CARD_SYSTEM.md` · `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` **§**46
+**Ref:** `WORKBENCH_MORNING_BRIEF_AND_DAILY_OBJECTIVE_SYSTEM.md` · `DASHBOARD_OBJECTIVE_AND_GET_INVOLVED_CARD_SYSTEM.md` · `DAILY_APPROVAL_LAUNCH_AND_TASK_ROUTING_SYSTEM.md` · `TASK_FLOW_FORECASTING_AND_HUMAN_WORK_PLAN.md` · `HUMAN_INTERACTION_TASKS_IN_EVERY_BRIEF.md` · `ADVANCE_TASK_BUY_IN_AND_ESCALATION_LADDER_SYSTEM.md` · `VOLUNTEER_RETENTION_ENGAGEMENT_AND_LOW_TURNOVER_SYSTEM.md` · `CANDIDATE_STRATEGY_REFINEMENT_CONSOLE_AND_SLIDER_SYSTEM.md` · `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` **§**46**–**48
 
 **Every** **template** **has:** **Header** | **Objectives** (today / week / month) | **Key** **movement** | **What** **changed** | **Priority** **tasks** | **Follow**-**up** **(roles)** | **Approvals** **(matrix) **| **Tangible** **15m** **/ ** **1h** | **Risks** **/ ** **do** **not** **touch** | **Ask** **Kelly** / **suggestion** **prompts** **(if** **role** **is** **appropriate) **
+
+**Pass** **5J** **—** add **to** **every** **template** (T1**–**T17** **+** **new** T18**–**T20** **):** **Approval** **needed** **to** **start** **day** | **Suggested** **reassignments** | **Schedule** **today** | **Upcoming** **task** **flow** | **Human** **follow**-**ups** | **Calls** **to** **make** | **Relationship** **touches** | **Tasks** **to** **forecast** **(see** `TASK_FLOW_...` **+ **`HUMAN_INTERACTION_...` **).** **Compact** **5J** **line** for **T1**–**T17: ** *approval · reassign · schedule · task flow · human · calls · relationship · forecast* **. **
 
 ---
 
@@ -21,6 +23,7 @@
 - **Tangible:** 15m open sweep; 1h triage block  
 - **Risks** / **DNT:** Unapproved contrast; high-impact publish without 5G triage  
 - **Ask** **Kelly** **prompts:** (internal) “Summarize suggestion counts by type” not public voter claims  
+- **5J:** *approval to start day · reassignments · schedule today · upcoming task flow · human follow-ups · calls to make · relationship touches · tasks to forecast* — **T2** through **T17** **use** **this** **same** **5J** **row** **unless** a **dedicated** **template** (T18**–**T20) **. **
 
 ---
 
@@ -134,8 +137,55 @@
 ## T17. Monthly objective brief (leadership)
 
 - Month **theme,** sim alignment (4B) without presenting sim as “live truth” in voter space  
-- **DNT** **:** 0**–**6 on public **cards** **. **
+- **DNT** **:** 0**–**6 on public **cards** **. **  
+- **5J** **(same** **eight** **fields** **as** **T1) **. **
 
 ---
 
-**Last updated:** 2026-04-28 (Pass 5I)
+## T18. Daily approval launch brief (Pass 5J)
+
+- **Header:** **Daily** **approval** **launch** **—** [date] [scope: CM / role / all-staff]  
+- **Objectives** **(today** / **week** / **month) ** **unchanged** **from** T1**–**T3** **. ** **  
+- **Full** **5J** **eight** **field** **groups** **expanded** (not** **compact** **only) **. ** **  
+- **Link** **: **`DAILY_APPROVAL_LAUNCH_...` **, **`APPROVAL_AUTHORITY_MATRIX` **, **`ESCALATION_PATHS` **. ** **  
+- **DNT** **: ** **“** **Approved** **brief** **”** **is** **not** **LQA,** not **$** **, ** not **voter** **export** **. **
+
+---
+
+## T19. 72-hour task forecast (Pass 5J)
+
+- **Window:** **Next** **72** **hours** **from** **[TZ** **lock] **. ** **  
+- **Upcoming** **task** **flow** **(honest) **: ** **dependencies,** **gates,** **human**-**touch** **flags** **. ** ** **  
+- **Ref** **: **`TASK_FLOW_FORECASTING_...` **. **
+
+---
+
+## T20. Human follow-up block (Pass 5J)
+
+- **Required** **section** **;** **at** **least** one **line** **with** all **HUMAN**-**BRIEF** **fields** **(see** `HUMAN_INTERACTION_...` **). ** ** **  
+- **DNT** **: ** PII,** **donor** **rows,** or **VFR** **in** a **non**-**R2+** **brief** **. **
+
+---
+
+## T21. Advance ask / claim / escalation brief (Pass 5K)
+
+- **Unclaimed** **(counts),** **upcoming** **asks,** **escalation** **watch;** **5J** **compact** **row** **+ **`ADVANCE_TASK_BUY_IN_AND_ESCALATION_LADDER_SYSTEM.md` **. ** ** ** **  
+- **DNT: ** no **shame,** no **VFR) **. **
+
+---
+
+## T22. Volunteer retention brief (Pass 5K)
+
+- **Health** **slice** (aggregate): **new** / **active** / **at** **risk** **(policy;** **not** a **scored** **name** in **a** **public** **brief) ** per **`VOLUNTEER_RETENTION_...` **. ** ** ** ** ** ** ** **  
+- **Interventions: ** check-in,** **smaller** **task,** **thanks,** **pause** **(see** same **doc) **. **
+
+---
+
+## T23. Candidate strategy slider review (Pass 5K)
+
+- **Lanes** from **`CAMPAIGN_ENGINE_...` **; **sliders** per **`CANDIDATE_STRATEGY_...` **; **packet** **queue** to **`CANDIDATE_TO_ADMIN_...` **. ** ** ** ** ** ** ** ** **  
+- **DNT: ** $** / **GOTV** / **VFR** from **sliders;** **LQA+** for **outbound) **. **
+
+---
+
+**Last updated:** 2026-04-27 (Pass 5I + 5J + 5K)

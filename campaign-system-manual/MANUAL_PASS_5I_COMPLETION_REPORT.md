@@ -71,4 +71,10 @@ Pass **5I** is **doctrine and templates** only. It does **not** ship morning bri
 
 ---
 
-**Last updated:** 2026-04-28 (Pass 5I)
+## Continuation (Pass 5J)
+
+**Pass** **5J** **extends** **this** **slice** with **daily** **approval** **launch,** **task** **forecasting,** **mandatory** **human** **interactions** **in** **briefs,** and **beta** **reactivation** **invites** **—** see **`MANUAL_PASS_5J_COMPLETION_REPORT.md` **(same** **lane,** **markdown** **only) **. **5H** **first**-**release** **engineering** **order** **is** **unchanged** **(see** `ASK_KELLY_LAUNCH_PRIORITY_...` **).** **
+
+---
+
+**Last updated:** 2026-04-27 (Pass 5I; **5J** **→** `MANUAL_PASS_5J_COMPLETION_REPORT` **)

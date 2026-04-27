@@ -1,9 +1,9 @@
-# Beta volunteer — onboarding invite and role explainer (Manual Pass 5H)
+# Beta volunteer — onboarding invite and role explainer (Manual Pass 5H + 5J addendum)
 
 **Lane:** `RedDirt/campaign-system-manual`  
 **Type:** **Prepared** **comms** **(templates)** for **an** **approved** **beta** **cohort** **—** **not** **a** **claim** the **build** is **shipped,** not **a** **bypass** of **opt**-**in,** **list** **governance,** or **MCE** **(see** `MANUAL_INFORMATION_REQUESTS_...` **§**45** **,** **`SEGMENTED_MESSAGE_...` **§**22** **,** `ASK_KELLY_SUGGESTION_BOX_...` **).**  
 
-**Ref:** `ASK_KELLY_LAUNCH_PRIORITY_AND_FIRST_RELEASE_SCOPE.md` · `ASK_KELLY_BETA_FEEDBACK_TO_APPROVAL_FEED_WORKFLOW.md` · `ASK_KELLY_EXPLAIN_WHY_GUIDE.md` · `CAMPAIGN_COMPANION_PUBLIC_SIMPLE_VIEW_RULES.md`
+**Ref:** `ASK_KELLY_LAUNCH_PRIORITY_AND_FIRST_RELEASE_SCOPE.md` · `ASK_KELLY_BETA_FEEDBACK_TO_APPROVAL_FEED_WORKFLOW.md` · `ASK_KELLY_EXPLAIN_WHY_GUIDE.md` · `CAMPAIGN_COMPANION_PUBLIC_SIMPLE_VIEW_RULES.md` · `BETA_VOLUNTEER_REACTIVATION_LANGUAGE_AND_INVITE_UPDATE.md` (Pass 5J — **reactivation** **/ ** **early**-**signup** **narrative** **+ ** **full** **email** / **SMS**)
 
 ---
 
@@ -62,10 +62,18 @@ Thank you for helping us **earn trust the right way** — one honest line at a t
 
 ---
 
+## Reactivation / early sign-up narrative (Pass 5J)
+
+For **returns** to **the** **list** and **long**-**wait** **beta** **invites,** **use** **`BETA_VOLUNTEER_REACTIVATION_LANGUAGE_AND_INVITE_UPDATE.md` ** **—** it **keeps** **governance** from **this** **file** (no PII in tests, suggestions through **Ask** **Kelly,** no unapproved private links, MCE+ before send) and **adds** **grateful,** **honest** **context** for **why** the **volunteer** **network** was **not** **fully** **activated** **until** the **org** was **ready** to **move** **with** **purpose** **(see** `MANUAL_PASS_5J_...` **+ ** **MI** **§**47** **) **. **
+
+**Do** **not** **add** public “**AI**” **as** a **product** **name** in **emails;** **MCE+owner** **for** **final** **wording** **(see** **5H) **. **
+
+---
+
 ## Short SMS / chat version
 
 **Beta** **invite: ** you’re in to **test** **Ask** **Kelly** **/ ** **Campaign** **Companion** **. ** **Use** it **naturally,** **ask** “**why** **?**” **,** **suggest** **in**-**app** (not **random** **texts** **). ** **No** **voter** **/** **donor** **PII. ** **Don’t** **share** **the** **private** **link. ** [Approved short URL when set.]
 
 ---
 
-**Last updated:** 2026-04-28 (Pass 5H)
+**Last updated:** 2026-04-27 (Pass 5H + 5J pointer)

@@ -5,7 +5,7 @@
 **Vocabulary:** **Workbench**, **Pathway Guide**, **Guided Campaign System**, **Field Intelligence** — not “**AI**” **.  
 **RACI** **+** `playbooks/APPROVAL_AUTHORITY_MATRIX.md` always **win** over **one**-**on**-**one** **habit** **.  
 
-**Paired** **docs:** `WORKBENCH_OPERATOR_RUNBOOK.md` · `STRATEGY_TO_TASK_EXECUTION_RUNBOOK.md` · `playbooks/ESCALATION_PATHS.md` · **Pass** **5I** `WORKBENCH_MORNING_BRIEF_AND_DAILY_OBJECTIVE_SYSTEM.md` · `WORKBENCH_DAILY_BRIEF_TEMPLATE_LIBRARY.md` (T3, T16)
+**Paired** **docs:** `WORKBENCH_OPERATOR_RUNBOOK.md` · `STRATEGY_TO_TASK_EXECUTION_RUNBOOK.md` · `playbooks/ESCALATION_PATHS.md` · **Pass** **5I** `WORKBENCH_MORNING_BRIEF_AND_DAILY_OBJECTIVE_SYSTEM.md` · `WORKBENCH_DAILY_BRIEF_TEMPLATE_LIBRARY.md` (T3, T16) · **Pass** **5J** `DAILY_APPROVAL_LAUNCH_AND_TASK_ROUTING_SYSTEM.md` · `TASK_FLOW_FORECASTING_AND_HUMAN_WORK_PLAN.md` · `HUMAN_INTERACTION_TASKS_IN_EVERY_BRIEF.md`
 
 ---
 
@@ -21,6 +21,8 @@
 **Not** in **first** 30: **new** **creative** **projects,** long **donor** **reads,** or **ad-hoc** **spend** **approval** (that’s **T** + **LQA**).
 
 **Morning** **brief (Pass 5I):** Skim **today** / **week** / **month** objectives (one line each) and **P0** / **blocked** before deep work; emulate with a standup **doc** if no brief **card** exists (MI **§**46).
+
+**CM** **approves** **or** **adjusts** **the** **day** (Pass 5J): After **the** **brief,** **CM** (or **RACI**-**set** **delegate) ** **records** **approval** / **rejection** of **suggested** **priorities,** **routing,** and **parking,** and **locks** the **one**-**line** **internal** **operating** **focus** for **today** **(see** `DAILY_APPROVAL_LAUNCH_...` **). ** This **does** **not** **approve** **outbound,** **$,** or **voter** **/ ** **export** **work** **—** `APPROVAL_AUTHORITY_MATRIX` **unchanged. **
 
 ---
 
@@ -69,7 +71,7 @@
 
 ## 8. **Weekly** **locked**-**baseline** **meeting** (30–60 min, **with** **owner,** T **as** **needed,** MCE/NDE **as** **needed** for **messaging**)
 
-- **5I (week + month):** Set or review this week’s and this month’s stated objectives (see `WORKBENCH_MORNING_BRIEF_AND_DAILY_OBJECTIVE_SYSTEM.md` + `WORKBENCH_DAILY_BRIEF_TEMPLATE_LIBRARY.md` T16–T17) before sliders / sim — design or emulate if no **card** UI (MI **§**46).  
+- **5I (week + month):** Set or review this week’s and this month’s stated objectives (see `WORKBENCH_MORNING_BRIEF_AND_DAILY_OBJECTIVE_SYSTEM.md` + `WORKBENCH_DAILY_BRIEF_TEMPLATE_LIBRARY.md` T16–T17) before sliders / sim — design or emulate if no **card** UI (MI **§**46). **5J:** add **a** **72h** and **this**-**week** **task**-**flow** **forecast** line to the **agenda** (see `TASK_FLOW_FORECASTING_AND_HUMAN_WORK_PLAN` — not a **certainty** claim). **5J:** add **a** **human** **follow**-**up** **block** (at least one concrete touch when role-appropriate; see `HUMAN_INTERACTION_TASKS_IN_EVERY_BRIEF`).  
 - **Input:** **Proposed** **scenario** **diffs**; **KPIs** with **data** **labels** (treasury, **V.C.,** OIS).  
 - **Output:** **Dated** **“Locked** **baseline** for **&lt;dates&gt;`”` **in** **notes** + **strategic** `CampaignTask` **or** **intake** **STRATEGY-** as **in** 4B **.  
 - **Who locks:** O+M minimum; T for $-linked; C for narrative risk (see MI §38, §39).  
@@ -152,4 +154,4 @@
 
 ---
 
-**Last updated:** 2026-04-28 (Pass 5 + 5I)
+**Last updated:** 2026-04-27 (Pass 5 + 5I + 5J)

@@ -21,13 +21,17 @@
 
 **Pass** **5I (Workbench** **/ ** **ops** **,** not **a** **5H** **insert):** **Morning** **brief,** **objective** / **get**-**involved** **cards,** and **the** **thank**-**you** / **appreciation** **workflow** are **separate** **design** / **emulation** **artifacts** (`MANUAL_BUILD_PLAN.md` Pass 5I). **Do** **not** **reorder** or **delay** the **5H** list **§**1 **above** to **build** **these** **first;** they **are** **staff**-**facing** **/ ** **CM**-**facing** **foundation** that **can** **land** **after** **or** in **parallel** **with** **production**-**grade** **5H,** with **RACI** **unchanged.**
 
+**Pass** **5J (ops** **addendum,** not **a** **5H** **reorder) **: **`MANUAL_PASS_5J_...` **, **`BETA_VOLUNTEER_REACTIVATION_...` **+ **`DAILY_APPROVAL_...` **+ **`HUMAN_INTERACTION_...` **(design** and **MCE+** **governance** **only) **. **5H** first-release **§**1** **/ ** **§**2** **(invites) ** is **unchanged;** **reactivation** **language** **is** first-release **comms** when **MCE+owner** **sends,** not **a** **new** **build** **priority** **ahead** of **the** **5H** **list** **(see** `MANUAL_PASS_5J_COMPLETION_REPORT` **).** **
+
+**Pass** **5K (post**-**basic** **onboarding,** not **a** **5H** **blocker) **: **`CANDIDATE_STRATEGY_REFINEMENT_...` **, **`CAMPAIGN_ENGINE_...` **, **`ASK_KELLY_STRATEGY_...` **, **`ADVANCE_...` **, **`VOLUNTEER_RETENTION_...` **— **advance** **buy**-**in,** **escalation** **ladder,** **retention** **doctrine,** and **“** **throw** the **engine** at **her** **”** **refinement** **(design** **only) **. **Lands** **after** **5H** first**-**release **(same** **path** as **progressive** **onboarding) **, **not** **before** **it;** **5H** **§**1** **is** **unchanged** **(see** `MANUAL_PASS_5K_COMPLETION_REPORT` **).** **
+
 ---
 
 ## 2. What is in first release (design target)
 
 | Pillar | In scope (when built) |
 |--------|------------------------|
-| **Invites** | **Candidate** **email** to **start** **website** **review** **/ ** **Ask** **Kelly** **onboarding** (`CANDIDATE_WEBSITE_EDITING_ONBOARDING_EMAIL.md`); **beta** **volunteer** **invite** (`BETA_VOLUNTEER_ONBOARDING_INVITE_AND_ROLE_EXPLAINER.md`). |
+| **Invites** | **Candidate** **email** to **start** **website** **review** **/ ** **Ask** **Kelly** **onboarding** (`CANDIDATE_WEBSITE_EDITING_ONBOARDING_EMAIL.md`); **beta** **volunteer** **invite** (`BETA_VOLUNTEER_ONBOARDING_INVITE_AND_ROLE_EXPLAINER.md`); **for** **long**-**wait** **/ ** **reactivation** **copy,** `BETA_VOLUNTEER_REACTIVATION_LANGUAGE_AND_INVITE_UPDATE.md` (Pass 5J) **+ ** MCE+owner. |
 | **Public surface** | **Simple** **Ask** **Kelly** **widget;** **plain** **“** **guided** **help** **”** **/ ** **“** **suggestion** **box** **”** **—** not **“** **AI** **”** in **public** **copy** (`CAMPAIGN_COMPANION_PUBLIC_SIMPLE_VIEW_RULES.md`). |
 | **Modes** | **Candidate** **review** **mode;** **beta** **feedback** **mode;** **suggestion** **intake** **(structured).** |
 | **Content** | **Plain**-**language** **answers** to **“** **why** **is** **this** **built** **this** **way?** **”** **(**`ASK_KELLY_EXPLAIN_WHY_GUIDE.md` **).** |
@@ -79,4 +83,4 @@
 
 ---
 
-**Last updated:** 2026-04-28 (Pass 5H + 5I)
+**Last updated:** 2026-04-27 (Pass 5H + 5I + 5J + 5K note)

@@ -6,7 +6,7 @@
 
 **Canonical refs:** `workflows/TASK_QUEUE_AND_APPROVALS.md` · `playbooks/TASK_TEMPLATE_INDEX.md` · `playbooks/APPROVAL_AUTHORITY_MATRIX.md` · `playbooks/ESCALATION_PATHS.md` · `playbooks/DASHBOARD_ATTACHMENT_RULES.md` · `SYSTEM_READINESS_REPORT.md`  
 **Not** a replacement for `MANUAL_INFORMATION_REQUESTS_FOR_STEVE.md` or treasurer/counsel **truth**.  
-**Pass 5I:** `WORKBENCH_MORNING_BRIEF_AND_DAILY_OBJECTIVE_SYSTEM.md` · `DASHBOARD_OBJECTIVE_AND_GET_INVOLVED_CARD_SYSTEM.md` · `WORKBENCH_DAILY_BRIEF_TEMPLATE_LIBRARY.md` · `THANK_YOU_CARD_AND_APPRECIATION_WORKFLOW.md` (design only — not a shipped daily brief) · MI **§**46
+**Pass 5I / 5J:** `WORKBENCH_MORNING_BRIEF_AND_DAILY_OBJECTIVE_SYSTEM.md` · `DASHBOARD_OBJECTIVE_AND_GET_INVOLVED_CARD_SYSTEM.md` · `WORKBENCH_DAILY_BRIEF_TEMPLATE_LIBRARY.md` · `THANK_YOU_CARD_AND_APPRECIATION_WORKFLOW.md` · `DAILY_APPROVAL_LAUNCH_AND_TASK_ROUTING_SYSTEM.md` · `TASK_FLOW_FORECASTING_AND_HUMAN_WORK_PLAN.md` · `HUMAN_INTERACTION_TASKS_IN_EVERY_BRIEF.md` (design only — not a shipped daily brief) · MI **§**46**–**47
 
 ---
 
@@ -24,6 +24,11 @@
 ### Start of day: morning brief rhythm (Pass 5I — when built)
 
 - **First** **open** of **Workbench** **(or** **#ops** **summary) ** should **land** in **a** **“** **today** / **this** **week** / **this** **month** **”** **frame** + **P0** **/ ** **blocked** / **15m** **/ ** **DNT,** not **a** **stack** **of** **raw** **errors** (see `WORKBENCH_MORNING_BRIEF_...`, `USER_FRIENDLY_...`). **Emulate** with **a** **one**-**page** **doc** **or** **standup** **if** the **UI** is **not** **live** **(MI** **§**46) **. **
+
+### Start of day: daily approval launch (Pass 5J — when built; emulate if not)
+
+- **After** the **brief** is **read,** **run** the **“** **approve** **the** **day** **”** **step** per `DAILY_APPROVAL_LAUNCH_...` **(RACI** **+ **`APPROVAL_AUTHORITY_MATRIX` **). ** **  
+- **No** **work** **starts** before **P0** **/ ** **approval** **sweep: ** do **not** **start** **new** **discretionary** **owned** **work** **until** **P0** **triage** is **touched** **and** the **day** **(or** **role** **slice) ** is **Approved** **for** **today** **/ ** **adjusted** **per** **5J** **(same** **spirit** as **§**2** **“** **no** **new** **work** **before** **P0** **”** **, ** **extended** to **the** **brief** **+ ** **routing) **. **
 
 ---
 
@@ -145,9 +150,10 @@
 ### 12.1 Morning (operator on duty)
 
 - [ ] **Open** **health:** DB **up**; **if** 503 on forms, **ack** in **#ops** (no PII)  
-- [ ] **P0** **sweep:** **press**, **fraud** **suspect**, **contrast** **leaks** **→** comms+CM  
+- [ ] **P0** **sweep** **(no** **new** **work** **before** **this** + **5J** **daily** **approval** **where** **used) **: ** **press**, **fraud** **suspect**, **contrast** **leaks** **→** comms+CM  
 - [ ] **Stale** **&gt;72h** intakes **n**= **counted**; **oldest 5** **assigned** or **escalated**  
-- [ ] **Calendar** **ghosts** (events **TBD** **without** **owner**): **0** or **filed** **under** `CampaignEvent` **SOP**
+- [ ] **Calendar** **ghosts** (events **TBD** **without** **owner**): **0** or **filed** **under** `CampaignEvent` **SOP**  
+- [ ] **Pass** **5J:** **skim** **upcoming** **task** **flow** (today / 72h / week / watch) **per** `TASK_FLOW_...` **(honest) **; **confirm** **human** **follow**-**up** **line** **exists** in **brief** **or** **stand**-**in** **ops** **doc** **(see** `HUMAN_INTERACTION_...` **). **
 
 ### 12.2 Midday
 
@@ -157,7 +163,8 @@
 ### 12.3 Evening (last block)
 
 - [ ] **EOD** handoff **line** in **#ops** or **task** **comment:** **N** P0, **M** P1, **K** new **tickets** **tomorrow**  
-- [ ] **No** **unowned** P0s
+- [ ] **No** **unowned** P0s  
+- [ ] **Pass** **5J:** **note** what **moved** **in** the **72h** **/ ** **week** **forecast;** **re**-**date** or **reassign** **stale** **human**-**follow**-**up** **lines** **(see** `TASK_FLOW_...` **+ **`HUMAN_INTERACTION_...` **). **
 
 ### 12.4 Weekly (Friday or fixed)
 
@@ -179,4 +186,4 @@
 
 ---
 
-**Last updated:** 2026-04-28 (Pass 5 + 5I)
+**Last updated:** 2026-04-27 (Pass 5 + 5I + 5J)

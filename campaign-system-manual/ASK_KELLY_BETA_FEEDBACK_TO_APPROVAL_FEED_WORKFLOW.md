@@ -64,6 +64,13 @@ Per **`APPROVAL_AUTHORITY_MATRIX` **; **not** a **bypass** of **LQA** **/ ** **M
 
 ---
 
+## 4B. **Beta** **suggestion** **follow**-**up** **as** **a** **human** **task** **in** **daily** **briefs** **(Pass** **5J) **
+
+- **Routed** **/ ** **needs**-**more**-**detail** **beta** **items** **can** **appear** as **a** **line** in **“** **Human** **Follow**-**up** **”** **or** **“** **Calls** **/ ** **relationship** **touches** **”** in **`HUMAN_INTERACTION_...` ** **(role**-**governed) **. ** ** **  
+- **Still** **no** **public** **argument** **loop**; **ack** and **governed** **reply** only **(§**5** **) **. **
+
+---
+
 ## 5. Beta user reply templates (public-safe tone)
 
 - **Received:** *Thanks — we captured: [short summary]. The team will review; we can’t guarantee every change, but this helps. *  
@@ -76,4 +83,4 @@ Per **`APPROVAL_AUTHORITY_MATRIX` **; **not** a **bypass** of **LQA** **/ ** **M
 
 ---
 
-**Last updated:** 2026-04-28 (Pass 5H)
+**Last updated:** 2026-04-27 (Pass 5H + 5J)

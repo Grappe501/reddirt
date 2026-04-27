@@ -4,7 +4,7 @@
 **Audience:** **Candidate** + **CM** + **advance** + **owner** (policy)  
 **Public language:** **Campaign Companion**, **Guided Campaign System**, **Workbench** — not “**AI**” as a product name for planning tools.
 
-**Related:** `CANDIDATE_AND_CAMPAIGN_MANAGER_STRATEGY_DASHBOARD_REQUIREMENTS.md` · `IPAD_MOBILE_AND_DESKTOP_DASHBOARD_DESIGN_REQUIREMENTS.md` · `INTERACTIVE_STRATEGY_WORKBENCH_AND_SCENARIO_SLIDER_SYSTEM.md` · `STRATEGY_TO_TASK_EXECUTION_RUNBOOK.md` · **Pass** **5I** `WORKBENCH_MORNING_BRIEF_AND_DAILY_OBJECTIVE_SYSTEM.md` · `DASHBOARD_OBJECTIVE_AND_GET_INVOLVED_CARD_SYSTEM.md` · `THANK_YOU_CARD_AND_APPRECIATION_WORKFLOW.md`
+**Related:** `CANDIDATE_AND_CAMPAIGN_MANAGER_STRATEGY_DASHBOARD_REQUIREMENTS.md` · `IPAD_MOBILE_AND_DESKTOP_DASHBOARD_DESIGN_REQUIREMENTS.md` · `INTERACTIVE_STRATEGY_WORKBENCH_AND_SCENARIO_SLIDER_SYSTEM.md` · `STRATEGY_TO_TASK_EXECUTION_RUNBOOK.md` · **Pass** **5I** `WORKBENCH_MORNING_BRIEF_AND_DAILY_OBJECTIVE_SYSTEM.md` · `DASHBOARD_OBJECTIVE_AND_GET_INVOLVED_CARD_SYSTEM.md` · `THANK_YOU_CARD_AND_APPRECIATION_WORKFLOW.md` · **Pass** **5J** `DAILY_APPROVAL_LAUNCH_AND_TASK_ROUTING_SYSTEM.md` · `HUMAN_INTERACTION_TASKS_IN_EVERY_BRIEF.md` · **Pass** **5K** `CANDIDATE_STRATEGY_REFINEMENT_CONSOLE_AND_SLIDER_SYSTEM.md` · `CAMPAIGN_ENGINE_MENU_FOR_CANDIDATE_REVIEW.md` · `ASK_KELLY_STRATEGY_INTERVIEW_AND_PARTNERSHIP_PROTOCOL.md`
 
 **Honesty:** A **single** **shipped** **“candidate** **strategy** **app**” is **not** guaranteed. **Until** product ships, **emulate** this runbook with **calendar** + **briefing** **doc** + **`CampaignTask`** **routed** through **CM**.
 
@@ -46,6 +46,18 @@
 
 - **Default:** **Candidate**-**first** thanks (voice; name-in-line outbound = MCE+LQA). If the window is tight, delegate to a named staff surrogate per `THANK_YOU_CARD_AND_APPRECIATION_WORKFLOW.md` — not a generic bot or off-RACI DM.  
 - **Route** repeated or sensitive acknowledgments as **`CampaignTask`** or **`WorkflowIntake`** if they touch $, turf, or a new public promise (STRATEGY_TO_TASK).  
+
+### 4B-J. **Candidate** **review** of **personal**-**touch** **opportunities** **(Pass** **5J) **
+
+- The **brief** should **surface** **relationship**-**first** **options** (thank-you, **call,** **host,** **county) ** in **a** **role**-**safe** way **(no** **VFR) **. ** **  
+- **Delegate** **thank**-**yous** and **call**-**to**-**X** follow-ups to **authorized** **staff** with **MCE+** where **governed** **(see** `THANK_YOU_...` **). ** ** **  
+- **Candidate** **approval** **(where** **the** **task** is **candidate**-**specific) ** **starts** that **work** in **the** **queue** **—** it **is** **not** **MCE+** for **unrelated** **comms** **(matrix) **. **
+
+### 4B-K. **Strategy** **console** **and** **slider** **review** **(Pass** **5K) **
+
+- **After** **basic** **Ask** **Kelly** **onboarding** **(5H) ** **,** a **future** **or** **emulated** **surface** **lets** **Kelly** **see** **strategy** **lanes** **(see** `CAMPAIGN_ENGINE_MENU_FOR_CANDIDATE_REVIEW.md` **)** and **set** **intensity** **/ ** **pauses** **per** `CANDIDATE_STRATEGY_REFINEMENT_CONSOLE_AND_SLIDER_SYSTEM.md` **—** **not** **a** **substitute** for **treasurer,** **counsel,** **MCE+** on **contrast,** **VFR,** **or** **$** **(hard** **walls** in **that** **doc) **. ** ** ** ** ** ** ** ** **  
+- **Progressive** **partnership** **interview** **(see** `ASK_KELLY_STRATEGY_INTERVIEW_AND_PARTNERSHIP_PROTOCOL.md` **)** **feeds** **`CANDIDATE_TO_ADMIN_...` ** **packets** **and** **B**-**class** **knowledge,** **not** **auto**-**publish** **(5G) **. ** ** ** ** ** ** ** ** **  
+- **Sequencing: ** **post**-**5H** **first**-**release** **;** **see** `ASK_KELLY_LAUNCH_PRIORITY_...` **. **
 
 ---
 
@@ -112,4 +124,4 @@
 
 ---
 
-**Last updated:** 2026-04-28 (Pass 5 + 5I)
+**Last updated:** 2026-04-27 (Pass 5 + 5I + 5J + 5K)

@@ -3,7 +3,7 @@
 **Lane:** `RedDirt/campaign-system-manual`  
 **Type:** **SOP** **/ ** **governance** **for** **gratitude** **in** **operations,** **starting** **with** the **candidate** **and** **allowing** **delegation** **—** **not** **a** **shipped** **automation,** **not** **auto**-**send** **for** **sensitive** **relationships** **or** **compliance**-**gated** **donor** **messages** **without** **treasurer+** **/ ** **MCE** **(see** `playbooks/APPROVAL_AUTHORITY_MATRIX` **, **`MANUAL_INFORMATION_...` **§**46** **, **3H) **. **
 
-**Ref:** `CM_DAILY_AND_WEEKLY_OPERATING_SYSTEM.md` · `CANDIDATE_DASHBOARD_AND_DECISION_RUNBOOK.md` · `playbooks/TASK_TEMPLATE_INDEX.md` · `STRATEGY_TO_TASK_EXECUTION_RUNBOOK.md` (4B) · `ASK_KELLY_LAUNCH_PRIORITY_...` (sequencing)
+**Ref:** `CM_DAILY_AND_WEEKLY_OPERATING_SYSTEM.md` · `CANDIDATE_DASHBOARD_AND_DECISION_RUNBOOK.md` · `playbooks/TASK_TEMPLATE_INDEX.md` · `STRATEGY_TO_TASK_EXECUTION_RUNBOOK.md` (4B) · `ASK_KELLY_LAUNCH_PRIORITY_...` (sequencing) · **Pass** **5J** `TASK_FLOW_FORECASTING_AND_HUMAN_WORK_PLAN.md` · `HUMAN_INTERACTION_TASKS_IN_EVERY_BRIEF.md` · `WORKBENCH_DAILY_BRIEF_TEMPLATE_LIBRARY.md` (T13) · **Pass** **5K** `VOLUNTEER_RETENTION_...` · `CANDIDATE_STRATEGY_...` · `ADVANCE_...` (MCE+ if sensitive)
 
 **Product honesty:** **This** **pass** does **not** create **a** **thank**-**you** **queue** in **code;** it **creates** **RACI** **and** **triggers** **for** a **future** **build** **or** **emulated** **with** `CampaignTask` **. **
 
@@ -67,6 +67,19 @@
 
 ---
 
+## 7B. **Forecasted** **thank**-**you** **queue** **and** **daily** **brief** **(Pass** **5J) **
+
+- **Upcoming** **appreciation** **/ ** **thanks** **work** can **appear** in **“** **Upcoming** **task** **flow** **”** and **in** the **T13** **/ ** **human** **sections** of **`WORKBENCH_DAILY_BRIEF_...` ** **—** **internal** **only** **, ** **no** **public** **queue** without **MCE+** **. ** ** ** **  
+- **Candidate** **personal** **touch** **flag:** **any** line **needing** **the** **candidate**-**in**-**first**-**person** **(not** **a** **merged** **batch) ** **should** **be** **marked** in **the** **brief** / **task** so **it** is **not** **lost** to **a** **generic** **outbound** **(see** **§**3** **) **. **
+
+### 7B-K. **Completion** **moments,** **retention,** **and** **5K** **(Pass** **5K) **
+
+- **Log** **completion** of **a** **thank**-**you** **/ ** **appreciation** **task** **(audit) ** as **a** **signal** of **dignity**-**sustaining** **work** **(see** `VOLUNTEER_RETENTION_...` **retention** **/ ** **stickiness** **rows,** **not** **a** **score** **/ ** **competition) **. ** ** ** ** ** **  
+- **Milestone,** **first**-**action,** **re**-**engagement** **after** **rest,** **or** **post**-**crisis** **stabilization** **—** use **T13** / ** **brief** **+ **`CampaignTask` ** to **nudge** **thanks** where **MCE+** **governs** **sensitive; ** **do** **not** **tie** **gratitude** to **shame** **(see** `HUMAN_INTERACTION_...` **) **. ** ** ** ** ** **  
+- **Staged** **strategy** / **“** **whole** **engine** **”** **(see** `CANDIDATE_STRATEGY_...` **)** **: ** a **thanked**-**yesterday** / **covered**-**milestone** **line** can **be** a **low**-**pressure** **touch** before **a** **heavier** **interview** **(still** **2A+**RACI,** **not** **auto) **. **
+
+---
+
 ## 8. Ask Kelly integration (future; no “AI” public label)
 
 - *Who* *should* *we* *thank* *today?* (aggregates+** **RACI,** not **VFR) **. ** ** ** ** **  
@@ -86,4 +99,4 @@
 
 ---
 
-**Last updated:** 2026-04-28 (Pass 5I)
+**Last updated:** 2026-04-27 (Pass 5I + 5J + 5K)
