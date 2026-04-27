@@ -19,7 +19,8 @@ If chat ever showed both in one paste, that was **clipboard** only — the repo 
 
 **There is no implemented “double Kelly approval” gate in code** for website edits. Today:
 
-- **Admin page hero editor:** `src/app/admin/(board)/pages/[pageKey]/page.tsx` → server action `savePageHeroAction` in `src/app/admin/actions.ts`.
+- **Admin page hero editor:** `src/app/admin/(board)/pages/[pageKey]/page.tsx` → `PageHeroEditor` client flow, then server action `savePageHeroFormAction` in `src/app/admin/actions.ts`.
+- **Double-confirm before DB write:** Implemented in the **UI** (review + final step); there is **no** server-enforced second token or approval record on the action—only `requireAdminAction()` plus the form only submitting on the final step.
 - **Persistence:** `prisma.adminContentBlock.upsert` with composite key `(pageKey, blockKey)`; `blockKey: "hero"`, `payload` JSON (`eyebrow`, `title`, `subtitle`).
 - **Read path:** `src/lib/content/page-blocks.ts` — `getPageBlockPayload`, `PAGE_KEYS` (only four page keys: `what-we-believe`, `resources`, `direct-democracy`, `priorities`).
 - **Auth:** `requireAdminAction()` on save — **not** a candidate-only or Kelly-two-step flow.
@@ -807,7 +808,7 @@ These are **long**; this codepack inlines **CampaignGuideDock**, **AskKellyBetaF
 1. This file: `docs/HANDOFF_NEXT_PASS_70MIN_CODEPACK.md`  
 2. `src/components/campaign-guide/CampaignGuideDock.tsx`  
 3. `src/app/admin/(board)/workbench/ask-kelly-beta/page.tsx`  
-4. `src/app/admin/(board)/pages/[pageKey]/page.tsx` + `src/lib/content/page-blocks.ts` + `savePageHeroAction` in `src/app/admin/actions.ts` (proves how hero DB updates work today)
+4. `src/app/admin/(board)/pages/[pageKey]/page.tsx` + `src/lib/content/page-blocks.ts` + `savePageHeroFormAction` in `src/app/admin/actions.ts` (proves how hero DB updates work today)
 
 ---
 

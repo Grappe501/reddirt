@@ -77,7 +77,10 @@ export function AskKellyBetaFeedbackForm({ defaultPagePath = "", className }: Pr
       setResult({ ok: false, message: "Couldn’t send that just now. Try again, or email kelly@kellygrappe.com if it keeps happening." });
       setStatus("idle");
     } catch {
-      setResult({ ok: false, message: "Network hiccup. Check your connection and try again." });
+      setResult({
+        ok: false,
+        message: "We couldn’t send that right now. Check your connection and try again—nothing was saved on our side for this try.",
+      });
       setStatus("idle");
     }
   };
@@ -85,14 +88,15 @@ export function AskKellyBetaFeedbackForm({ defaultPagePath = "", className }: Pr
   if (status === "done" && result?.ok) {
     return (
       <div className={cn("rounded-xl border border-kelly-gold/30 bg-kelly-fog/50 px-3 py-3", className)}>
-        <p className="font-body text-sm leading-relaxed text-kelly-text">{result.message}</p>
+        <p className="font-body text-sm leading-relaxed text-kelly-text">{result.message.trim() || "Thanks. Your note was received."}</p>
       </div>
     );
   }
 
   return (
     <form
-      className={cn("space-y-3", className)}
+      className={cn("space-y-4", className)}
+      aria-busy={status === "submitting"}
       onSubmit={(e) => {
         e.preventDefault();
         void submit();
@@ -100,8 +104,13 @@ export function AskKellyBetaFeedbackForm({ defaultPagePath = "", className }: Pr
     >
       <p className="font-body text-xs leading-relaxed text-kelly-text/80">{ASK_KELLY_FEEDBACK_FORM_INTRO}</p>
       {result && !result.ok ? (
-        <p id={errId} className="font-body text-sm text-red-800" role="alert">
+        <p id={errId} className="rounded-md border border-red-200/80 bg-red-50/90 px-3 py-2 font-body text-sm text-red-900" role="alert">
           {result.message}
+        </p>
+      ) : null}
+      {status === "submitting" ? (
+        <p className="font-body text-sm text-kelly-slate" role="status" aria-live="polite">
+          Sending your feedback…
         </p>
       ) : null}
       <div className="space-y-1.5">

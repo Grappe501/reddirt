@@ -281,11 +281,22 @@ export async function saveHomepageAction(formData: FormData) {
   redirect("/admin/homepage?saved=1");
 }
 
-export async function savePageHeroAction(formData: FormData) {
+/** Server action for `useFormState` on the page hero editor. On success, redirects. On failure, returns an error (no DB change, no false success). */
+export type PageHeroFormState = { error: string } | null;
+
+export async function savePageHeroFormAction(
+  _prevState: PageHeroFormState,
+  formData: FormData,
+): Promise<PageHeroFormState> {
   await requireAdminAction();
   const rawKey = String(formData.get("pageKey") ?? "");
   const pageKey = parsePageKey(rawKey);
-  if (!pageKey) redirect("/admin/pages?error=invalid");
+  if (!pageKey) {
+    return {
+      error:
+        "We couldn’t use that page. Nothing was saved, and the public site was not changed. Return to Page copy and pick a page from the list.",
+    };
+  }
 
   const payload: HeroBlockPayload = {
     eyebrow: String(formData.get("eyebrow") ?? "").trim() || undefined,
@@ -293,20 +304,28 @@ export async function savePageHeroAction(formData: FormData) {
     subtitle: String(formData.get("subtitle") ?? "").trim() || undefined,
   };
 
-  await prisma.adminContentBlock.upsert({
-    where: { pageKey_blockKey: { pageKey, blockKey: "hero" } },
-    create: {
-      pageKey,
-      blockKey: "hero",
-      blockType: "hero",
-      payload,
-      label: "Hero",
-    },
-    update: {
-      payload,
-      blockType: "hero",
-    },
-  });
+  try {
+    await prisma.adminContentBlock.upsert({
+      where: { pageKey_blockKey: { pageKey, blockKey: "hero" } },
+      create: {
+        pageKey,
+        blockKey: "hero",
+        blockType: "hero",
+        payload,
+        label: "Hero",
+      },
+      update: {
+        payload,
+        blockType: "hero",
+      },
+    });
+  } catch (e) {
+    console.error("[savePageHeroFormAction]", e);
+    return {
+      error:
+        "We couldn’t save this change. The site was not updated. Nothing on the public page changed—you can try again. If it keeps happening, check your connection and try again later.",
+    };
+  }
 
   const path = `/${pageKey}` as const;
   revalidatePath(path);

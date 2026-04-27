@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { savePageHeroAction } from "@/app/admin/actions";
+import { PageHeroEditor } from "@/components/admin/page-hero/PageHeroEditor";
 import { getPageBlockPayload, parsePageKey, type HeroBlockPayload } from "@/lib/content/page-blocks";
 
 type Props = { params: Promise<{ pageKey: string }>; searchParams: Promise<{ saved?: string }> };
@@ -15,42 +15,28 @@ export default async function AdminPageKeyEditorPage({ params, searchParams }: P
   return (
     <div className="mx-auto max-w-xl">
       <h1 className="font-heading text-2xl font-bold capitalize text-kelly-text">{pageKey.replace(/-/g, " ")}</h1>
-      <p className="mt-2 font-body text-sm text-kelly-text/70">Hero block only · public path: /{pageKey}</p>
-      {sp.saved ? (
-        <p className="mt-4 rounded-lg border border-kelly-success/35 bg-kelly-success/10 px-3 py-2 text-sm">Saved.</p>
-      ) : null}
+      <p className="mt-2 font-body text-sm text-kelly-text/70">
+        Hero text only (database) · public path: <span className="font-mono">/{pageKey}</span>
+      </p>
+      <p className="mt-1 font-body text-xs text-kelly-text/60">
+        Final authority for what goes live: Kelly. Staff can help you find this screen; nothing here auto-pulls from Ask Kelly feedback.
+      </p>
 
-      <form action={savePageHeroAction} className="mt-8 space-y-4 rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]">
-        <input type="hidden" name="pageKey" value={pageKey} />
-        <label className="block">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Eyebrow</span>
-          <input
-            name="eyebrow"
-            defaultValue={hero?.eyebrow ?? ""}
-            className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm"
-          />
-        </label>
-        <label className="block">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Title</span>
-          <input
-            name="title"
-            defaultValue={hero?.title ?? ""}
-            className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm"
-          />
-        </label>
-        <label className="block">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Subtitle</span>
-          <textarea
-            name="subtitle"
-            rows={4}
-            defaultValue={hero?.subtitle ?? ""}
-            className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm"
-          />
-        </label>
-        <button type="submit" className="rounded-btn bg-kelly-navy px-5 py-2.5 text-sm font-bold text-kelly-page">
-          Save hero
-        </button>
-      </form>
+      <div className="mt-4 rounded-lg border border-kelly-text/10 bg-kelly-fog/40 px-3 py-2.5 text-xs text-kelly-text/85">
+        <p className="font-semibold text-kelly-navy/90">If you’re looking for something else</p>
+        <ul className="mt-1.5 list-inside list-disc space-y-0.5 pl-0.5">
+          <li>
+            All page hero editors → <span className="font-mono">/admin/pages</span>
+          </li>
+          <li>
+            Ask Kelly beta feedback (triage) → <span className="font-mono">/admin/workbench/ask-kelly-beta</span>
+          </li>
+        </ul>
+      </div>
+
+      <div className="mt-6">
+        <PageHeroEditor pageKey={pageKey} initial={hero} showSaved={sp.saved === "1"} />
+      </div>
     </div>
   );
 }

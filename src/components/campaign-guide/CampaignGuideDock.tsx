@@ -28,6 +28,12 @@ const ASSISTANT_UNAVAILABLE_COPY = [
   ASK_KELLY_ASSISTANT_FALLBACK_LAYERS.tertiary,
 ].join("\n\n");
 
+function displayAssistantMessage(text: string): string {
+  const t = text.trim();
+  if (t.length > 0) return text;
+  return ASSISTANT_UNAVAILABLE_COPY;
+}
+
 export function CampaignGuideDock() {
   const pathname = usePathname();
   const panelId = useId();
@@ -39,7 +45,7 @@ export function CampaignGuideDock() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: "assistant", text: CAMPAIGN_GUIDE_OPENING },
+    { role: "assistant", text: displayAssistantMessage(CAMPAIGN_GUIDE_OPENING) },
   ]);
   const [lastSuggestions, setLastSuggestions] = useState<Suggestion[]>([]);
   const [responseStyle, setResponseStyle] = useState<"concise" | "normal" | "detailed">("concise");
@@ -172,7 +178,11 @@ export function CampaignGuideDock() {
       }
 
       setLastSuggestions(json.suggestions ?? []);
-      setMessages((m) => [...m, { role: "assistant", text: json.reply ?? "No reply returned." }]);
+      const rawReply = typeof json.reply === "string" ? json.reply : "";
+      setMessages((m) => [
+        ...m,
+        { role: "assistant", text: displayAssistantMessage(rawReply) },
+      ]);
     } catch {
       setError("Network error. Feedback tab still works for sending a note.");
       setMessages((m) => [...m, { role: "assistant", text: ASSISTANT_UNAVAILABLE_COPY }]);
@@ -322,7 +332,7 @@ export function CampaignGuideDock() {
                 ) : null}
 
                 {panelTab === "chat" ? (
-                  <div className="flex-1 space-y-3 overflow-y-auto px-4 py-4">
+                  <div className="flex min-h-[6rem] flex-1 flex-col space-y-3 overflow-y-auto px-4 py-4">
                     {messages.map((msg, i) => (
                       <div
                         key={`${msg.role}-${i}`}
@@ -331,13 +341,19 @@ export function CampaignGuideDock() {
                           msg.role === "user" ? "ml-6 bg-kelly-navy/12 text-kelly-text" : "mr-4 bg-white text-kelly-text shadow-sm",
                         )}
                       >
-                        {msg.text}
+                        {msg.role === "assistant" ? displayAssistantMessage(msg.text) : msg.text}
                       </div>
                     ))}
                     {loading ? (
-                      <p className="font-body text-sm italic text-kelly-text/50">Digging through what the campaign taught me…</p>
+                      <p className="font-body text-sm italic text-kelly-text/60" role="status" aria-live="polite">
+                        Digging through what the campaign taught me…
+                      </p>
                     ) : null}
-                    {error ? <p className="text-sm text-red-700">{error}</p> : null}
+                    {error ? (
+                      <p className="rounded-md border border-red-200/60 bg-red-50/80 px-2 py-1.5 text-sm text-red-800" role="alert">
+                        {error}
+                      </p>
+                    ) : null}
                     {lastSuggestions.length > 0 ? (
                       <div className="flex flex-wrap gap-2 pt-1">
                         {lastSuggestions.map((s) => (
@@ -354,12 +370,14 @@ export function CampaignGuideDock() {
                     ) : null}
                   </div>
                 ) : (
-                  <div className="flex-1 space-y-4 overflow-y-auto px-4 py-4">
+                  <div className="flex min-h-[8rem] flex-1 flex-col space-y-4 overflow-y-auto px-4 py-4">
                     <p className="rounded-lg border border-kelly-gold/35 bg-amber-50/80 px-3 py-2 font-body text-xs font-semibold text-kelly-navy">
                       {ASK_KELLY_BETA_INVITE_BANNER}
                     </p>
                     <p className="font-body text-sm leading-relaxed text-kelly-text">{ASK_KELLY_BETA_ONBOARDING}</p>
-                    <AskKellyBetaFeedbackForm key={pathname} defaultPagePath={pathname} />
+                    <div className="pt-0.5">
+                      <AskKellyBetaFeedbackForm key={pathname} defaultPagePath={pathname} />
+                    </div>
                   </div>
                 )}
 

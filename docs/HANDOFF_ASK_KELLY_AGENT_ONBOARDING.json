@@ -131,11 +131,11 @@
       "src/app/admin/(board)/workbench/ask-kelly-beta/page.tsx",
       "src/lib/content/page-blocks.ts",
       "src/app/admin/(board)/pages/[pageKey]/page.tsx",
-      "src/app/admin/actions.ts (savePageHeroAction only)"
+      "src/app/admin/actions.ts (savePageHeroFormAction only)"
     ]
   },
   "website_content_editing_ground_truth": {
-    "kelly_double_approval_in_code": "Not implemented. Page hero save is admin `savePageHeroAction` → `AdminContentBlock` upsert; no WorkflowIntake, no two-step Kelly queue.",
+    "kelly_double_approval_in_code": "Page hero save is `savePageHeroFormAction` → `AdminContentBlock` upsert. Double-confirm before write is enforced in the PageHeroEditor UI (edit → review summary → final submit), not by a server-side token or second signature. Ask Kelly / WorkflowIntake is separate (triage only).",
     "page_hero_routes": ["/admin/pages", "/admin/pages/[pageKey]"],
     "page_hero_persistence": "prisma.adminContentBlock (pageKey, blockKey) payload JSON; see src/lib/content/page-blocks.ts PAGE_KEYS",
     "homepage_persistence": "HomepageConfig singleton id default",
