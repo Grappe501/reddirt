@@ -75,10 +75,10 @@ export function SiteHeader() {
   return (
     <header
       ref={headerRootRef}
-      className="fixed left-0 right-0 top-0 z-50 w-full isolate border-b border-kelly-gold/25 bg-kelly-navy shadow-[0_8px_32px_rgba(0,0,102,0.35)]"
+      className="fixed left-0 right-0 top-0 z-50 w-full isolate border-b border-kelly-gold/30 bg-kelly-navy/92 shadow-[0_8px_36px_rgba(0,0,102,0.42)] backdrop-blur-md supports-[backdrop-filter]:bg-kelly-navy/88"
     >
       <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
-      <div className="relative z-10 border-b border-kelly-gold/20 bg-kelly-navy">
+      <div className="relative z-10 border-b border-kelly-gold/25 bg-transparent">
         <div className="mx-auto flex w-full max-w-[100vw] items-center justify-between gap-2 px-[var(--gutter-x)] py-3 sm:py-3.5 lg:gap-3 lg:py-4">
         <Link
           href="/"

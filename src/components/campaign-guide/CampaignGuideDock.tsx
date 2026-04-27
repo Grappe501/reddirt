@@ -6,6 +6,7 @@ import { createPortal } from "react-dom";
 import { usePathname } from "next/navigation";
 import { useJourney } from "@/components/journey/journey-context";
 import { beatById } from "@/content/home/journey";
+import { CAMPAIGN_GUIDE_QUICK_PROMPTS } from "@/content/campaign-guide-quick-prompts";
 import { CAMPAIGN_GUIDE_OPENING } from "@/content/tone-nuggets";
 import { normalizeHistory } from "@/lib/assistant/conversation";
 import { ASSISTANT_API_VERSION } from "@/lib/assistant/version";
@@ -191,18 +192,25 @@ export function CampaignGuideDock() {
         type="button"
         onClick={() => setOpen(true)}
         className={cn(
-          "fixed z-[45] flex max-w-[calc(100vw-1.5rem)] items-center gap-1.5 rounded-full border border-kelly-text/12 bg-kelly-page/95 px-3 py-2 font-body text-xs font-semibold text-kelly-text shadow-md backdrop-blur-md transition",
-          "hover:border-kelly-navy/35 hover:bg-white hover:shadow-lg",
+          "fixed z-[45] flex max-w-[calc(100vw-1.5rem)] items-center gap-2 rounded-full border-2 border-kelly-gold/50 bg-gradient-to-r from-kelly-page via-white to-[var(--kelly-mist)]/90 px-3.5 py-2.5 font-body text-xs font-bold tracking-wide text-kelly-text shadow-lg shadow-kelly-navy/15 backdrop-blur-md transition",
+          "hover:border-kelly-gold hover:shadow-xl hover:shadow-kelly-gold/20",
+          "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold",
           "bottom-[max(1rem,env(safe-area-inset-bottom,0px))] right-[max(1rem,env(safe-area-inset-right,0px))] sm:bottom-6 sm:right-6",
         )}
         aria-expanded={open}
         aria-controls={panelId}
         aria-label="Ask Kelly — open the site guide chat"
       >
-        <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-kelly-navy/15 text-[11px] font-bold text-kelly-navy" aria-hidden>
+        <span
+          className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-kelly-navy text-[10px] font-bold text-kelly-mist shadow-inner"
+          aria-hidden
+        >
           KG
         </span>
-        <span className="pr-0.5 tracking-wide">Ask Kelly</span>
+        <span className="pr-0.5">Ask Kelly</span>
+        <span className="hidden rounded-full bg-kelly-gold/25 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-kelly-navy sm:inline">
+          AI guide
+        </span>
       </button>
 
       {open
@@ -220,12 +228,12 @@ export function CampaignGuideDock() {
                 className="flex h-[min(100dvh,640px)] w-full max-w-lg flex-col rounded-t-2xl border border-kelly-ink/15 bg-kelly-page shadow-2xl sm:h-[min(92vh,720px)] sm:rounded-2xl"
                 onClick={(e) => e.stopPropagation()}
               >
-                <div className="flex items-center justify-between border-b border-kelly-text/10 px-4 py-3">
+                <div className="flex items-center justify-between border-b border-kelly-text/10 bg-gradient-to-r from-kelly-fog/80 via-white to-[var(--kelly-mist)]/40 px-4 py-3">
                   <div>
                     <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-kelly-navy">Ask Kelly</p>
                     <p className="font-body text-xs text-kelly-text/60">
-                      Guide v{ASSISTANT_API_VERSION} · streaming · citations · {responseStyle} answers · 3/min ·
-                      kelly@kellygrappe.com if I’m stumped
+                      Site-aware guide · v{ASSISTANT_API_VERSION} · streaming · {responseStyle} · 3/min ·
+                      kelly@kellygrappe.com
                     </p>
                     <div className="mt-1.5 flex flex-wrap gap-1.5">
                       {(["concise", "normal", "detailed"] as const).map((s) => (
@@ -260,6 +268,29 @@ export function CampaignGuideDock() {
                     <span className="font-semibold text-kelly-ink">You’re in:</span> {beatById(journeyBeatOnPage)?.navLabel} —{" "}
                     {beatById(journeyBeatOnPage)?.description}
                   </p>
+                ) : null}
+
+                {messages.length === 1 && !loading ? (
+                  <div className="border-b border-kelly-text/8 bg-kelly-page px-3 py-2">
+                    <p className="px-1 font-body text-[10px] font-bold uppercase tracking-wider text-kelly-text/45">
+                      Try asking
+                    </p>
+                    <div className="mt-1.5 flex flex-wrap gap-1.5">
+                      {CAMPAIGN_GUIDE_QUICK_PROMPTS.map((q) => (
+                        <button
+                          key={q.label}
+                          type="button"
+                          onClick={() => {
+                            setInput(q.message);
+                            inputRef.current?.focus();
+                          }}
+                          className="rounded-full border border-kelly-navy/15 bg-white px-2.5 py-1 text-left font-body text-[11px] font-semibold text-kelly-navy/90 transition hover:border-kelly-gold/50 hover:bg-kelly-fog/80"
+                        >
+                          {q.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 ) : null}
 
                 <div className="flex-1 space-y-3 overflow-y-auto px-4 py-4">

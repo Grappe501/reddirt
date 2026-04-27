@@ -20,7 +20,7 @@ export function QuoteBand({
     <FullBleedSection variant={variant} className={className} id={id}>
       <ContentContainer>
         <figure className="mx-auto max-w-4xl text-center">
-          <blockquote className="font-heading text-2xl font-bold leading-snug text-kelly-text sm:text-3xl lg:text-[2.25rem]">
+          <blockquote className="font-heading text-2xl font-bold leading-snug [text-wrap:balance] sm:text-3xl lg:text-[2.25rem] lg:leading-tight bg-gradient-to-br from-kelly-ink from-[5%] via-kelly-navy/95 to-kelly-slate bg-clip-text text-transparent">
             “{quote}”
           </blockquote>
           {attribution ? (

@@ -20,6 +20,9 @@ const variants = {
 
 export type FullBleedVariant = keyof typeof variants;
 
+/** Light bands get a soft gold/blue mesh so pages feel less flat. */
+const MESH_VARIANTS = new Set<FullBleedVariant>(["default", "subtle", "elevated", "gold-band", "band-fog", "band-blue"]);
+
 type FullBleedSectionProps = {
   variant?: FullBleedVariant;
   className?: string;
@@ -40,18 +43,20 @@ export function FullBleedSection({
   id,
   "aria-labelledby": ariaLabelledBy,
 }: FullBleedSectionProps) {
+  const showMesh = MESH_VARIANTS.has(variant);
   return (
     <section
       id={id}
       aria-labelledby={ariaLabelledBy}
       className={cn(
-        "relative w-full",
+        "relative w-full overflow-hidden",
         variants[variant],
         padY && "py-section-y lg:py-section-y-lg",
         className,
       )}
     >
-      <div className={cn("w-full", innerClassName)}>{children}</div>
+      {showMesh ? <div className="wow-section-mesh" aria-hidden /> : null}
+      <div className={cn("relative z-[1] w-full", innerClassName)}>{children}</div>
     </section>
   );
 }

@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { CTASection } from "@/components/blocks/CTASection";
 import { QuoteBand } from "@/components/blocks/QuoteBand";
 import { pageMeta } from "@/lib/seo/metadata";
-import { getFeaturedYoutubeForHub } from "@/lib/content/content-hub-queries";
+import { getFeaturedYoutubeForHub, getPublicYoutubeByInboundId } from "@/lib/content/content-hub-queries";
 import { getMergedHomepageConfig } from "@/lib/content/homepage-merge";
 import { KellyFullStory } from "@/components/about/KellyFullStory";
 import { TalkBusinessKellySection } from "@/components/about/TalkBusinessKellySection";
@@ -25,6 +25,17 @@ export const metadata: Metadata = pageMeta({
 export default async function AboutPage() {
   const homepage = await getMergedHomepageConfig();
   const featuredYoutube = await getFeaturedYoutubeForHub(homepage.featuredHomepageVideoInboundId);
+  const heiferInbound = await getPublicYoutubeByInboundId(
+    process.env.NEXT_PUBLIC_FOREVERMOST_HEIFER_INBOUND_ID,
+  );
+  const heiferEnvId = process.env.NEXT_PUBLIC_FOREVERMOST_HEIFER_YOUTUBE_VIDEO_ID?.trim();
+  const forevermostHeiferVideoId =
+    heiferInbound?.videoId ??
+    (heiferEnvId && /^[a-zA-Z0-9_-]{11}$/.test(heiferEnvId) ? heiferEnvId : null);
+  const forevermostHeiferTitle =
+    heiferInbound?.title?.trim() ||
+    process.env.NEXT_PUBLIC_FOREVERMOST_HEIFER_IFRAME_TITLE?.trim() ||
+    "Forevermost Farms — Heifer USA";
   const storyTrailPhotos = trailPhotosForSlot("aboutStory");
 
   return (
@@ -62,7 +73,11 @@ export default async function AboutPage() {
           </div>
 
           <div className="mx-auto mt-10 max-w-3xl md:mt-14">
-            <KellyFullStory trailPeoplePhotos={storyTrailPhotos} />
+            <KellyFullStory
+              trailPeoplePhotos={storyTrailPhotos}
+              forevermostHeiferYoutubeVideoId={forevermostHeiferVideoId}
+              forevermostHeiferIframeTitle={forevermostHeiferTitle}
+            />
           </div>
         </ContentContainer>
       </FullBleedSection>

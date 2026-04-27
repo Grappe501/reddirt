@@ -10,7 +10,6 @@ import {
   initiativesPetitionTrailPhotos,
 } from "@/content/media/campaign-trail-photo-use";
 import { cn } from "@/lib/utils";
-import { siteConfig } from "@/config/site";
 
 const H_STORY = "/about/story";
 const H_BUSINESS = "/about/business";
@@ -28,20 +27,23 @@ const body = "font-body text-base leading-relaxed text-kelly-text/82";
 const callout = "font-body text-sm text-kelly-text/75";
 const calloutGreen = "font-body text-sm text-kelly-text/80";
 
-/** Featured Kelly video — same source as homepage (`NEXT_PUBLIC_FEATURE_VIDEO_EMBED_URL`). */
-function ForevermostLeadVideo() {
-  const src = siteConfig.featureVideoEmbedUrl?.trim();
-  if (!src) return null;
+function youtubeNocookieEmbedSrc(videoId: string): string {
+  return `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?rel=0`;
+}
+
+/** Heifer / Forevermost Farms field video — above “The land & the work” (env or Admin inbound id from parent). */
+function ForevermostHeiferVideo({ videoId, iframeTitle }: { videoId: string; iframeTitle: string }) {
   return (
-    <div className="mb-8 mt-6 overflow-hidden rounded-card border border-kelly-text/10 shadow-[var(--shadow-soft)]">
-      <div className="relative aspect-video w-full bg-black">
+    <div className="mb-6 overflow-hidden rounded-card border border-kelly-text/10 bg-kelly-navy shadow-[var(--shadow-soft)] md:mb-8">
+      <div className="relative aspect-video w-full">
         <iframe
-          title="Kelly Grappe — in her own words (featured video)"
-          src={src}
-          className="absolute inset-0 h-full w-full"
+          title={iframeTitle}
+          src={youtubeNocookieEmbedSrc(videoId)}
+          className="absolute inset-0 h-full w-full border-0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen
+          loading="lazy"
         />
       </div>
     </div>
@@ -361,10 +363,20 @@ const sections: { id: string; moreHref: string; eyebrow: string; title: string; 
 export type KellyFullStoryProps = {
   /** Two breakouts: after “The story we share” and after Stand Up (farm stills stay in the Forevermost block). */
   trailPeoplePhotos?: CampaignTrailPhoto[];
+  /**
+   * Forevermost / Heifer USA YouTube (above the “The land & the work” heading). From
+   * `NEXT_PUBLIC_FOREVERMOST_HEIFER_INBOUND_ID` or `NEXT_PUBLIC_FOREVERMOST_HEIFER_YOUTUBE_VIDEO_ID` (see /about page).
+   */
+  forevermostHeiferYoutubeVideoId?: string | null;
+  forevermostHeiferIframeTitle?: string;
 };
 
 /** One-page Meet Kelly narrative, trail breakouts, Forevermost and initiatives photo blocks. */
-export function KellyFullStory({ trailPeoplePhotos = [] }: KellyFullStoryProps) {
+export function KellyFullStory({
+  trailPeoplePhotos = [],
+  forevermostHeiferYoutubeVideoId = null,
+  forevermostHeiferIframeTitle = "Forevermost Farms — Heifer USA",
+}: KellyFullStoryProps) {
   const forevermostPhotos = forevermostFarmTrailPhotos(campaignTrailPhotos);
   const initiativesPhotos = initiativesPetitionTrailPhotos(campaignTrailPhotos);
   const [afterStoryPhoto, afterStandupPhoto] = trailPeoplePhotos;
@@ -374,10 +386,15 @@ export function KellyFullStory({ trailPeoplePhotos = [] }: KellyFullStoryProps) 
       {sections.map((s) => (
         <Fragment key={s.id}>
           <section id={s.id} className="scroll-mt-20">
+            {s.id === "forevermost" && forevermostHeiferYoutubeVideoId ? (
+              <ForevermostHeiferVideo
+                videoId={forevermostHeiferYoutubeVideoId}
+                iframeTitle={forevermostHeiferIframeTitle}
+              />
+            ) : null}
             <p className="font-body text-xs font-bold uppercase tracking-[0.2em] text-kelly-navy/90">{s.eyebrow}</p>
             <h2 className={h2}>{s.title}</h2>
             <div className="mt-4 md:mt-5">
-              {s.id === "forevermost" ? <ForevermostLeadVideo /> : null}
               {s.children}
               {s.id === "forevermost" && forevermostPhotos.length > 0 ? (
                 <div

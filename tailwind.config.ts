@@ -51,6 +51,21 @@ const config: Config = {
         xs: "400px",
         "3xl": "1800px",
       },
+      keyframes: {
+        "wow-drift": {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
+          "33%": { transform: "translate(1.5%, -0.5%) scale(1.02)" },
+          "66%": { transform: "translate(-0.5%, 1%) scale(0.99)" },
+        },
+        "wow-drift-slow": {
+          "0%, 100%": { opacity: "0.5" },
+          "50%": { opacity: "0.75" },
+        },
+      },
+      animation: {
+        "wow-drift": "wow-drift 32s ease-in-out infinite",
+        "wow-drift-slow": "wow-drift-slow 18s ease-in-out infinite",
+      },
     },
   },
   plugins: [],

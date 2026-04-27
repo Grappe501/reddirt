@@ -29,7 +29,7 @@ export const DEFAULT_SOCIAL_INSTAGRAM_URL = "https://www.instagram.com/KellyGrap
  * Defaults use known campaign handles where available; fix in env if a platform URL changes.
  */
 export function getPublicSocialLinks(): PublicSocialLink[] {
-  return [
+  const out: PublicSocialLink[] = [
     {
       id: "facebook",
       label: "Facebook",
@@ -66,4 +66,5 @@ export function getPublicSocialLinks(): PublicSocialLink[] {
       href: getContactMailto(),
     },
   ];
+  return out.filter((l) => typeof l.href === "string" && l.href.trim().length > 1);
 }

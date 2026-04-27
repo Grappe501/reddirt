@@ -99,6 +99,25 @@ export async function getFeaturedYoutubeForHub(
   }
 }
 
+/**
+ * Public YouTube for a specific inbound row (e.g. Forevermost / Heifer on /about). No featured fallback.
+ */
+export async function getPublicYoutubeByInboundId(
+  inboundId: string | null | undefined,
+): Promise<YoutubeCardVM | null> {
+  try {
+    const id = inboundId?.trim();
+    if (!id) return null;
+    const row = await prisma.inboundContentItem.findFirst({
+      where: { id, ...inboundYoutubePublicWhere },
+      include: { mediaAsset: true },
+    });
+    return row ? toYoutubeCard(row) : null;
+  } catch {
+    return null;
+  }
+}
+
 export async function listRoadPreviewPosts(limit = 6): Promise<RoadPostCard[]> {
   try {
     return await prisma.syncedPost.findMany({

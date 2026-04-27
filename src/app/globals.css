@@ -93,12 +93,57 @@
 
   body {
     @apply font-body text-kelly-text antialiased;
-    background: linear-gradient(180deg, #dbe8f8 0%, #e4edf7 18%, #f4f7fc 45%, #f4f7fc 100%);
+    background: linear-gradient(
+      168deg,
+      #cfe2f8 0%,
+      #dce9f7 12%,
+      #e4edf7 28%,
+      #eef2fb 55%,
+      #f4f7fc 78%,
+      #fafcfe 100%
+    );
     background-attachment: fixed;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    body {
+      background-attachment: scroll;
+    }
   }
 
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-kelly-gold;
+  }
+}
+
+/* Sitewide depth: subtle top shine (static, not motion — respects reduced motion by default) */
+@layer components {
+  .wow-section-mesh {
+    @apply pointer-events-none absolute inset-0 z-0 overflow-hidden;
+  }
+  .wow-section-mesh::before {
+    content: "";
+    position: absolute;
+    left: -33%;
+    top: 0;
+    height: min(70vh, 520px);
+    width: 90vw;
+    max-width: 56rem;
+    border-radius: 9999px;
+    background: rgba(202, 145, 61, 0.1);
+    filter: blur(64px);
+  }
+  .wow-section-mesh::after {
+    content: "";
+    position: absolute;
+    right: -25%;
+    bottom: 0;
+    height: min(55vh, 400px);
+    width: 70vw;
+    max-width: 48rem;
+    border-radius: 9999px;
+    background: rgba(10, 10, 122, 0.08);
+    filter: blur(64px);
   }
 }
 

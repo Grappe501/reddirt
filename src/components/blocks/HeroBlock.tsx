@@ -46,11 +46,13 @@ export function HeroBlock({
       <h1
         className={cn(
           "font-heading font-bold tracking-tight",
-          onDark ? "text-kelly-mist" : "text-kelly-text",
+          onDark
+            ? "text-kelly-mist"
+            : "bg-gradient-to-br from-kelly-ink from-[5%] via-kelly-navy to-kelly-slate/95 bg-clip-text text-transparent drop-shadow-sm",
           size === "home" &&
             "max-w-[22ch] text-[clamp(2.5rem,6vw,4.75rem)] leading-[1.05] lg:max-w-[18ch]",
           size === "page" &&
-            "max-w-3xl text-[clamp(2rem,4.5vw,3.25rem)] leading-tight",
+            "max-w-3xl text-[clamp(2.05rem,4.5vw,3.35rem)] leading-[1.1]",
         )}
       >
         {title}
