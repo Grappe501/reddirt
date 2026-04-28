@@ -148,7 +148,7 @@ export function HomeOrganizingConversionBand({ finalCta }: Props) {
       <section className="border-y border-kelly-ink/10 bg-kelly-mist/35 py-section-y lg:py-section-y-lg" aria-labelledby="messages-preview-heading">
         <ContentContainer>
           <FadeInWhenVisible className="mx-auto max-w-3xl text-center">
-            <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-kelly-navy">Conversations &amp; Stories</p>
+            <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-kelly-navy">Stories &amp; voices</p>
             <h2 id="messages-preview-heading" className="mt-4 font-heading text-[clamp(1.75rem,3.8vw,2.65rem)] font-bold tracking-tight text-kelly-ink">
               Prompts, line, and neighbor stories
             </h2>
@@ -177,7 +177,7 @@ export function HomeOrganizingConversionBand({ finalCta }: Props) {
               href="/messages"
               className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-kelly-blue/35 bg-white px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-kelly-blue transition hover:border-kelly-gold"
             >
-              Open Conversations &amp; Stories
+              Open Stories &amp; voices
             </Link>
           </FadeInWhenVisible>
         </ContentContainer>

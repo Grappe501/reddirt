@@ -141,6 +141,8 @@ export type CountyDashboardV2 = {
 };
 
 export type CountyDashboardKpiItem = {
+  /** Stable id for list keys when reusing labels across strips (e.g. multi-county templates). */
+  metricKey?: string;
   label: string;
   metric: CountyDashboardLabeledMetric<number | null | string>;
   actionHint: string;

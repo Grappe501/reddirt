@@ -7,7 +7,7 @@ import { brandMediaFromLegacySite } from "@/config/brand-media";
 export const metadata: Metadata = pageMeta({
   title: "Kelly Grappe for Arkansas Secretary of State",
   description:
-    "Fair elections, transparent administration, and a modern Secretary of State’s office for all 75 counties. Meet Kelly, read her priorities, volunteer, or explore county-by-county organizing.",
+    "Kelly Grappe for Arkansas Secretary of State: fair elections, accountable administration, and a modern office for all 75 counties—meet Kelly, read priorities, volunteer, or explore organizing near you.",
   path: "/",
   imageSrc: brandMediaFromLegacySite.statewideBanner,
 });

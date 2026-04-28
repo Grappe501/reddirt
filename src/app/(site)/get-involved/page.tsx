@@ -77,7 +77,7 @@ export default async function GetInvolvedPage({
       <PageHero
         eyebrow="Act"
         title="Get involved"
-        subtitle="No perfect resume required—pick a pathway below, or jump straight into forms if you already know your lane."
+        subtitle="No gatekeeping—choose a pathway below, or head straight to the forms if you already know how you want to help."
       >
         <Button href={getInvolvedPathwaysHref} variant="primary" className="w-full justify-center sm:w-auto">
           Pick your pathway

@@ -28,7 +28,7 @@ export const getInvolvedPathways: GetInvolvedPathwayDefinition[] = [
       "Elections are won in overlapping circles of trust. Power of 5 gives volunteers a shared language so follow-up doesn’t fall through the cracks.",
     timeRequired: "About 15–25 minutes for the guided flow; optional deeper previews afterward.",
     primaryAction: { label: "Open Power of 5 onboarding", href: powerOf5OnboardingHref },
-    secondaryAction: { label: "See statewide organizing intelligence", href: "/organizing-intelligence" },
+    secondaryAction: { label: "How we organize statewide", href: "/organizing-intelligence" },
   },
   {
     id: "county-team",
@@ -54,13 +54,13 @@ export const getInvolvedPathways: GetInvolvedPathwayDefinition[] = [
   },
   {
     id: "conversations-stories",
-    title: "Help with conversations and stories",
+    title: "Help with stories & voices",
     whatYouDo:
       "Use the public message hub for weekly lines and share packets, and optionally submit a story for staff review before anything goes public.",
     whyItMatters:
       "Neighbors believe people they know. Consistent, accurate language plus real stories beats scatter-shot posts and rumor.",
     timeRequired: "A few minutes to skim the hub; 20–40 minutes if you write a thoughtful story draft.",
-    primaryAction: { label: "Open Conversations & Stories hub", href: "/messages" },
+    primaryAction: { label: "Open Stories & voices hub", href: "/messages" },
     secondaryAction: { label: "Submit a story", href: "/stories#share" },
   },
   {

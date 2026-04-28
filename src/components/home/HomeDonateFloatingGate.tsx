@@ -53,7 +53,7 @@ export function HomeDonateFloatingGate() {
 
   const node = (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto overscroll-contain bg-kelly-navy/97 px-4 py-10 backdrop-blur-md"
+      className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto overscroll-contain bg-kelly-navy/92 px-4 pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-10 backdrop-blur-md sm:px-5 sm:pb-12 sm:pt-12"
       role="dialog"
       aria-modal="true"
       aria-labelledby={titleId}
@@ -75,7 +75,7 @@ export function HomeDonateFloatingGate() {
             Support the campaign
           </h2>
           <p id={continueId} className="mt-3 max-w-sm font-body text-sm leading-snug text-white/88">
-            Chip in if you can — or skip straight to the site to read Kelly’s story, priorities, and ways to volunteer.
+            Every gift helps. Prefer to look around first? Continue—Kelly’s story, priorities, and ways to volunteer are one tap away.
           </p>
         </div>
 

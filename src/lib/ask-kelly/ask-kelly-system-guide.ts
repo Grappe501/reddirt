@@ -34,6 +34,7 @@ export const ASK_KELLY_SYSTEM_ROUTES = {
   /** Campaign management — public county rollup + drill-downs (RedDirt App Router). */
   countyBriefings: "/county-briefings",
   countyBriefingPope: "/county-briefings/pope",
+  countyBriefingPulaskiV2: "/county-briefings/pulaski/v2",
   countyIntel: "/admin/county-intelligence",
   volunteerPublic: "/get-involved",
   adminVolunteerIntake: "/admin/volunteers/intake",
@@ -669,18 +670,23 @@ const rules: Rule[] = [
         "dist-county-briefings",
         "pope briefing",
         "pope county briefing",
+        "pulaski briefing",
+        "pulaski dashboard",
+        "pulaski v2",
+        "pulaski county v2",
       ]) ||
       (containsAny(n, ["county intelligence", "county intel"]) && containsAny(n, ["where", "what", "open", "admin"])),
     build: () => ({
       title: "County briefings (campaign management)",
       answer:
-        "That county surface now lives inside RedDirt and opens here: the public briefing index and Pope drill-down, plus /admin/county-intelligence for staff aggregates. Demo bookmarks /countyWorkbench, /distipope-briefing, and /dist-county-briefings are live HTTP redirects to those canonical paths (next.config.ts redirects) — no dead demo routes. Repo-root dist-pope-briefing/ and dist-county-briefings/ folders remain static packaging mirrors; NEXT_PUBLIC_COUNTY_WORKBENCH_URL is optional for an extra outbound hub link.",
+        "That county surface now lives inside RedDirt and opens here: the public briefing index, Pope drill-downs (including pope/v2 template), Pulaski briefing v2 at /county-briefings/pulaski/v2 (aggregate-only shell—city drilldown scaffolded honestly), plus /admin/county-intelligence for staff aggregates. Demo bookmarks /countyWorkbench, /distipope-briefing, and /dist-county-briefings are live HTTP redirects to those canonical paths (next.config.ts redirects) — no dead demo routes. Repo-root dist-pope-briefing/ and dist-county-briefings/ folders remain static packaging mirrors; NEXT_PUBLIC_COUNTY_WORKBENCH_URL is optional for an extra outbound hub link.",
       links: [
         { label: "County briefings (canonical)", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefings },
         { label: "/countyWorkbench (alias)", href: ASK_KELLY_SYSTEM_ROUTES.aliasCountyWorkbench },
         { label: "/distipope-briefing (alias → Pope)", href: ASK_KELLY_SYSTEM_ROUTES.aliasDistipopeBriefing },
         { label: "/dist-county-briefings (alias)", href: ASK_KELLY_SYSTEM_ROUTES.aliasDistCountyBriefings },
         { label: "Pope briefing (canonical)", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefingPope },
+        { label: "Pulaski briefing v2 (central Arkansas)", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefingPulaskiV2 },
         { label: "County intelligence (admin)", href: ASK_KELLY_SYSTEM_ROUTES.countyIntel },
       ],
       nextStep: "Keep voter-level detail in gated admin tools—Ask Kelly does not search the voter file.",

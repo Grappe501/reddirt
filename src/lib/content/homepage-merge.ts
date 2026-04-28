@@ -39,12 +39,12 @@ export const HOMEPAGE_SECTION_IDS = [
 export type HomepageSectionId = (typeof HOMEPAGE_SECTION_IDS)[number];
 
 const DEFAULT_HERO: HomepageHeroMerged = {
-  eyebrow: "Kelly Grappe · Arkansas Secretary of State",
+  eyebrow: "Kelly Grappe · Secretary of State",
   titleBefore: "Fair elections.",
-  titleAccent: "Transparent",
-  titleAfter: "government for everyone.",
+  titleAccent: "Accountable",
+  titleAfter: "government for every county.",
   subtitle:
-    "Kelly Grappe is running to serve Arkansas as Secretary of State: secure elections you can trust, filings and ballot rules explained in plain language, and public systems that answer to voters—not insiders. Transparency and competence are not partisan; they are the job.",
+    "Kelly Grappe is running to lead Arkansas’s Secretary of State office—the place where elections, ballot access, and business filings meet real life. She is asking for your trust to run it with clarity modern voters expect: secure processes, plain-language answers, and systems that treat transparency and competence as the job itself—not a talking point.",
   ctaPrimaryLabel: "Volunteer",
   ctaPrimaryHref: getVolunteerSignupHref(),
   ctaSecondaryLabel: "Meet Kelly",
@@ -111,9 +111,9 @@ function mergeArkansasBand(
 
 const DEFAULT_FINAL_CTA = {
   eyebrow: "Regnat Populus — The people rule",
-  title: "Step in—Arkansas wins neighbor to neighbor.",
+  title: "Your next step starts here.",
   description:
-    "Volunteer, explore how we organize, or open a sample county briefing. Every link is a real page: learn Kelly’s priorities, find your county, or connect with the campaign at your pace.",
+    "Volunteer, read Kelly’s priorities, find your county, or explore a sample briefing. Every link goes somewhere real—take it at your pace.",
   primaryLabel: "Volunteer",
   primaryHref: getVolunteerSignupHref(),
   secondaryLabel: "See priorities",

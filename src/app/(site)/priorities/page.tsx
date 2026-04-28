@@ -157,7 +157,7 @@ export default async function PrioritiesPage() {
         title={hero?.title ?? "What the Secretary of State actually touches"}
         subtitle={
           hero?.subtitle ??
-            "This campaign stays focused on administration Arkansans rely on: elections, public records, and the business services that keep our economy legible. If it isn’t part of this job, you won’t find it used as a prop here."
+            "Elections, public records, and business filings—this campaign stays grounded in what the Secretary of State actually runs. Transparency and fair process are the point; theater is not."
         }
       >
         <Button href="/get-involved" variant="primary">

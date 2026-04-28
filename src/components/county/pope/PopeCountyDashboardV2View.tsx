@@ -28,35 +28,65 @@ const POWER_OF_5_IMPACT =
 function buildPopeExecutiveKpis(e: PopeCountyDashboardV2["executive"]): CountyDashboardKpiItem[] {
   return [
     {
+      metricKey: "pope-exec-population",
       label: "Population",
       metric: e.population,
       actionHint: "If ACS is missing, block win-number work until import — label shows source.",
     },
-    { label: "Registered voters", metric: e.registeredVoters, actionHint: "Compare to general denominator; drive registration help CTAs." },
     {
+      metricKey: "pope-exec-registered-voters",
+      label: "Registered voters",
+      metric: e.registeredVoters,
+      actionHint: "Compare to general denominator; drive registration help CTAs.",
+    },
+    {
+      metricKey: "pope-exec-turnout-2024",
       label: "’24 general turnout",
       metric: e.turnout2024,
       actionHint: "Close relational gaps where participation lags the county mean.",
     },
-    { label: "Active Power Teams", metric: e.activePowerTeams, actionHint: "Recruit in dense tracts with thin relational nets." },
     {
+      metricKey: "pope-exec-active-p5-teams",
+      label: "Active Power Teams",
+      metric: e.activePowerTeams,
+      actionHint: "Recruit in dense tracts with thin relational nets.",
+    },
+    {
+      metricKey: "pope-exec-complete-p5-teams",
       label: "Complete Power Teams",
       metric: e.completePowerTeams,
       actionHint: "Each completion unlocks a coverage multiplier in the model.",
     },
-    { label: "People signed up", metric: e.peopleSignedUp, actionHint: "Move signups to activation + follow-up queues." },
-    { label: "Coverage rate", metric: e.coverageRate, actionHint: "Assign captains where peer towns outperform." },
     {
+      metricKey: "pope-exec-people-signed-up",
+      label: "People signed up",
+      metric: e.peopleSignedUp,
+      actionHint: "Move signups to activation + follow-up queues.",
+    },
+    {
+      metricKey: "pope-exec-coverage-rate",
+      label: "Coverage rate",
+      metric: e.coverageRate,
+      actionHint: "Assign captains where peer towns outperform.",
+    },
+    {
+      metricKey: "pope-exec-org-readiness",
       label: "Org. readiness",
       metric: e.organizingReadinessScore,
       actionHint: "Data gaps first, then people — do not out-organize false precision.",
     },
     {
+      metricKey: "pope-exec-candidate-pipeline",
       label: "Candidate pipeline",
       metric: e.candidatePipelineScore,
       actionHint: "Vet in private; this strip shows score only.",
     },
-    { label: "Priority sort", metric: e.priorityLevel, actionHint: "Staff resourcing key — P1 = pull capacity here first." },
+    {
+      metricKey: "pope-exec-priority",
+      label: "Priority sort",
+      metric: e.priorityLevel,
+      actionHint: "Staff resourcing key — P1 = pull capacity here first.",
+    },
   ];
 }
 
@@ -66,12 +96,38 @@ function buildPopePowerOf5Items(p: PopeCountyDashboardV2["powerOfFive"]): County
     invited: p.peopleInvited.value,
   });
   return [
-    { label: "Teams formed", metric: p.teamsFormed, actionHint: "Recruit where maps show unclaimed turf." },
-    { label: "Teams complete", metric: p.teamsComplete, actionHint: "Stabilize rosters; celebrate wins publicly." },
-    { label: "Incomplete", metric: p.teamsIncomplete, actionHint: "Two follow-up passes max per week per team lead." },
-    { label: "Invited", metric: p.peopleInvited, actionHint: "Log invitation source (relational fairness)." },
-    { label: "Activated", metric: p.peopleActivated, actionHint: "Tie to meaningful shifts, not vanity touches." },
     {
+      metricKey: "pope-p5-teams-formed",
+      label: "Teams formed",
+      metric: p.teamsFormed,
+      actionHint: "Recruit where maps show unclaimed turf.",
+    },
+    {
+      metricKey: "pope-p5-teams-complete",
+      label: "Teams complete",
+      metric: p.teamsComplete,
+      actionHint: "Stabilize rosters; celebrate wins publicly.",
+    },
+    {
+      metricKey: "pope-p5-teams-incomplete",
+      label: "Incomplete",
+      metric: p.teamsIncomplete,
+      actionHint: "Two follow-up passes max per week per team lead.",
+    },
+    {
+      metricKey: "pope-p5-invited",
+      label: "Invited",
+      metric: p.peopleInvited,
+      actionHint: "Log invitation source (relational fairness).",
+    },
+    {
+      metricKey: "pope-p5-activated",
+      label: "Activated",
+      metric: p.peopleActivated,
+      actionHint: "Tie to meaningful shifts, not vanity touches.",
+    },
+    {
+      metricKey: "pope-p5-activation-rate",
       label: "Activation rate (KPI engine)",
       metric: {
         value: activationRate,
@@ -80,11 +136,36 @@ function buildPopePowerOf5Items(p: PopeCountyDashboardV2["powerOfFive"]): County
       },
       actionHint: "Raise quality of invites and same-week follow-up before chasing volume.",
     },
-    { label: "Conversations", metric: p.conversationsLogged, actionHint: "Depth metrics for coaching, not shaming." },
-    { label: "Follow-ups due", metric: p.followUpsDue, actionHint: "Triage before adding new names." },
-    { label: "Weekly growth", metric: p.weeklyGrowth, actionHint: "Sustainable cadence; watch leader load." },
-    { label: "Leader gaps", metric: p.leaderGaps, actionHint: "Backfill before opening new turf." },
-    { label: "Completion rate", metric: p.teamCompletionRate, actionHint: "If stuck, fix onboarding not targets." },
+    {
+      metricKey: "pope-p5-conversations",
+      label: "Conversations",
+      metric: p.conversationsLogged,
+      actionHint: "Depth metrics for coaching, not shaming.",
+    },
+    {
+      metricKey: "pope-p5-followups-due",
+      label: "Follow-ups due",
+      metric: p.followUpsDue,
+      actionHint: "Triage before adding new names.",
+    },
+    {
+      metricKey: "pope-p5-weekly-growth",
+      label: "Weekly growth",
+      metric: p.weeklyGrowth,
+      actionHint: "Sustainable cadence; watch leader load.",
+    },
+    {
+      metricKey: "pope-p5-leader-gaps",
+      label: "Leader gaps",
+      metric: p.leaderGaps,
+      actionHint: "Backfill before opening new turf.",
+    },
+    {
+      metricKey: "pope-p5-completion-rate",
+      label: "Completion rate",
+      metric: p.teamCompletionRate,
+      actionHint: "If stuck, fix onboarding not targets.",
+    },
   ];
 }
 
@@ -93,22 +174,28 @@ export function PopeCountyDashboardV2View({ data }: { data: PopeCountyDashboardV
 
   return (
     <CountyDashboardShell>
-      <p className="text-sm text-kelly-text/65">
+      <article aria-labelledby="pope-county-dashboard-title">
+      <nav className="text-sm text-kelly-text/65" aria-label="County briefing navigation">
         <Link className={cn(focusRing, "rounded-sm font-semibold text-kelly-navy underline")} href="/county-briefings/pope">
           ← Original Pope briefing
         </Link>{" "}
-        ·{" "}
+        <span aria-hidden>·</span>{" "}
         <Link className={cn(focusRing, "rounded-sm font-semibold text-kelly-navy underline")} href="/county-briefings">
-          County briefings
+          County briefings hub
         </Link>{" "}
-        ·{" "}
+        <span aria-hidden>·</span>{" "}
         <Link className={cn(focusRing, "rounded-sm font-semibold text-kelly-navy underline")} href="/counties/pope-county">
-          County command
+          County overview
         </Link>
-      </p>
+      </nav>
       <p className="mt-2 text-[10px] font-extrabold uppercase tracking-[0.22em] text-kelly-slate/80">Gold sample · v2</p>
-      <h1 className="font-heading mt-1 text-3xl font-bold tracking-tight text-kelly-navy md:text-4xl">{data.displayName}</h1>
-      <p className="mt-0.5 text-lg font-semibold text-kelly-navy/80">Command dashboard</p>
+      <h1
+        id="pope-county-dashboard-title"
+        className="font-heading mt-1 text-3xl font-bold tracking-tight text-kelly-navy md:text-4xl"
+      >
+        {data.displayName}
+      </h1>
+      <p className="mt-0.5 text-lg font-semibold text-kelly-navy/80">County briefing dashboard</p>
       <p className="mt-2 max-w-3xl text-sm leading-relaxed text-kelly-text/75">
         Dense, visual-first, drilldown-first. {POPE_DASHBOARD_V2_DATA_NOTE}
       </p>
@@ -119,8 +206,9 @@ export function PopeCountyDashboardV2View({ data }: { data: PopeCountyDashboardV
 
       <CountyKpiStrip
         className="mt-7"
+        sectionHeadingId="pope-county-kpi-strip-heading"
         overline="Executive + Power of 5"
-        title="KPI command strip"
+        title="KPI overview strip"
         description="Executive scale first, then relational depth (P5). Every metric shows source. Ask: who acts, and on what clock?"
         items={[...buildPopeExecutiveKpis(e), ...buildPopePowerOf5Items(data.powerOfFive)]}
         compact
@@ -218,6 +306,7 @@ export function PopeCountyDashboardV2View({ data }: { data: PopeCountyDashboardV
       />
 
       <CountyDataGapsPanel className="mt-8" dataWarnings={data.dataWarnings} priorityVoterOnRoll={data.priorityVoterOnRoll} />
+      </article>
     </CountyDashboardShell>
   );
 }

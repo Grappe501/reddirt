@@ -21,8 +21,15 @@ const BRIEFINGS: {
   },
   {
     href: "/county-briefings/pope/v2",
-    name: "Pope County — dashboard v2 (prototype)",
-    blurb: "Visual-first county intelligence shell with Power of 5 command center, drilldowns, and labeled demo/seed data.",
+    name: "Pope County — briefing dashboard v2 (sample)",
+    blurb: "Visual-first county briefing with Power of 5 snapshots, drilldowns, and clearly labeled demo data—training preview for organizers.",
+    status: "live",
+  },
+  {
+    href: "/county-briefings/pulaski/v2",
+    name: "Pulaski County — briefing dashboard v2",
+    blurb:
+      "Central Arkansas shell matching the Pope template: engine-backed aggregates only; city drilldown deferred with an explicit ‘data needed’ stance—no fabricated place or precinct KPIs.",
     status: "live",
   },
 ];
@@ -83,16 +90,16 @@ export default function CountyBriefingsHubPage() {
           ))}
         </ul>
         <p className="mt-4 text-sm text-kelly-text/60">
-          <strong>Coming:</strong> additional counties as we publish the same pattern (NWA field briefs, River Valley, Delta, and
-          more). See internal rollout plan: <code className="text-xs">docs/briefs/COUNTY_CANDIDATE_BRIEF_75_COUNTY_ROLLOUT.md</code>.
+          <strong>Coming:</strong> additional counties as we publish the same public pattern—starting with central Arkansas and
+          expanding region by region.
         </p>
       </section>
 
       <section className="mt-8 text-sm text-kelly-text/70">
-        <h2 className="font-heading text-base font-bold text-kelly-text">Staff-only candidate briefs</h2>
+        <h2 className="font-heading text-base font-bold text-kelly-text">Campaign team materials</h2>
         <p className="mt-1">
-          Regional and opposition-research one-pagers (e.g. NWA) live in the admin board after sign-in:{" "}
-          <span className="text-kelly-text/55">/admin/candidate-briefs</span> — not linked here for the public.
+          Deeper regional one-pagers and research packets for signed-in campaign workspaces are intentionally not listed on this
+          public hub.
         </p>
       </section>
     </div>

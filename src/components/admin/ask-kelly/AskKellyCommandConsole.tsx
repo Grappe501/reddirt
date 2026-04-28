@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { useCallback, useEffect, useState } from "react";
 import { AskKellyCandidateCommunicationBoard } from "@/components/admin/ask-kelly/AskKellyCandidateCommunicationBoard";
+import { AskKellyCountyExpansionPanel } from "@/components/admin/ask-kelly/AskKellyCountyExpansionPanel";
 import { AskKellyCandidateIntegrationStatus } from "@/components/admin/ask-kelly/AskKellyCandidateIntegrationStatus";
 import {
   ASK_KELLY_COMMAND_CONSOLE_HEADER,
@@ -22,13 +23,18 @@ export const ASK_KELLY_CONSOLE_VIEW_MODE_STORAGE_KEY = "ask_kelly_console_view_m
 
 export type AskKellyConsoleViewMode = "minimized" | "docked" | "fullscreen";
 
-/** High-priority admin destinations — same rails as the staged walkthrough below. */
+/** High-priority admin destinations — Stack Pass D: orchestrator KPIs first among dashboards; insights labeled placeholder. */
 const CONSOLE_QUICK_LINKS: { href: string; label: string }[] = [
   { href: "/admin/pages", label: "Page content" },
+  { href: "/admin/orchestrator", label: "Orchestrator KPIs" },
+  { href: "/admin/workbench", label: "Workbench" },
+  { href: "/admin/workbench/social", label: "Social workbench" },
+  { href: "/admin/workbench/comms", label: "Comms hub" },
+  { href: "/admin/workbench/email-queue", label: "Email queue" },
+  { href: "/admin/workbench/comms/broadcasts", label: "SMS broadcasts" },
+  { href: "/county-briefings", label: "County briefings" },
   { href: "/admin/workbench/ask-kelly-beta", label: "Beta feedback" },
-  { href: "/admin/workbench", label: "Campaign workbench" },
-  { href: "/admin/orchestrator", label: "Command center" },
-  { href: "/county-briefings", label: "County briefings (public)" },
+  { href: "/admin/insights", label: "Insights (placeholder)" },
 ];
 
 const WORKSPACE_HINT =
@@ -77,7 +83,7 @@ export function AskKellyCommandConsole({ children }: { children: ReactNode }) {
     <div
       role="toolbar"
       aria-label="Ask Kelly console display"
-      className="flex flex-col gap-3 border-b border-kelly-text/10 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-7"
+      className="flex flex-col gap-3 border-b border-kelly-text/10 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-7"
     >
       <p className="max-w-xl font-body text-xs leading-relaxed text-kelly-text/75">{WORKSPACE_HINT}</p>
       <div className="flex flex-wrap items-center gap-2">
@@ -85,7 +91,7 @@ export function AskKellyCommandConsole({ children }: { children: ReactNode }) {
           <button
             type="button"
             title="Restore default console width (docked layout)"
-            className="rounded-md border border-kelly-forest/25 bg-kelly-forest/10 px-3 py-1.5 font-body text-xs font-semibold text-kelly-navy transition hover:bg-kelly-forest/15"
+            className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md border border-kelly-forest/25 bg-kelly-forest/10 px-3 py-2 font-body text-xs font-semibold text-kelly-navy transition hover:bg-kelly-forest/15 sm:min-h-0 sm:min-w-0 sm:py-1.5"
             onClick={() => setMode("docked")}
           >
             Exit full screen
@@ -94,7 +100,7 @@ export function AskKellyCommandConsole({ children }: { children: ReactNode }) {
         {effectiveMode !== "minimized" && (
           <button
             type="button"
-            className="rounded-md border border-kelly-text/15 bg-[var(--color-surface-elevated)] px-3 py-1.5 font-body text-xs font-semibold text-kelly-navy transition hover:border-kelly-navy/25"
+            className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md border border-kelly-text/15 bg-[var(--color-surface-elevated)] px-3 py-2 font-body text-xs font-semibold text-kelly-navy transition hover:border-kelly-navy/25 sm:min-h-0 sm:min-w-0 sm:py-1.5"
             onClick={() => setMode("minimized")}
           >
             Minimize
@@ -103,7 +109,7 @@ export function AskKellyCommandConsole({ children }: { children: ReactNode }) {
         {effectiveMode === "docked" && (
           <button
             type="button"
-            className="rounded-md border border-kelly-blue/30 bg-kelly-blue/10 px-3 py-1.5 font-body text-xs font-semibold text-kelly-navy transition hover:bg-kelly-blue/15"
+            className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md border border-kelly-blue/30 bg-kelly-blue/10 px-3 py-2 font-body text-xs font-semibold text-kelly-navy transition hover:bg-kelly-blue/15 sm:min-h-0 sm:min-w-0 sm:py-1.5"
             onClick={() => setMode("fullscreen")}
           >
             Expand
@@ -112,7 +118,7 @@ export function AskKellyCommandConsole({ children }: { children: ReactNode }) {
         {effectiveMode === "minimized" && (
           <button
             type="button"
-            className="rounded-md border border-kelly-blue/30 bg-kelly-blue/10 px-3 py-1.5 font-body text-xs font-semibold text-kelly-navy transition hover:bg-kelly-blue/15"
+            className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md border border-kelly-blue/30 bg-kelly-blue/10 px-3 py-2 font-body text-xs font-semibold text-kelly-navy transition hover:bg-kelly-blue/15 sm:min-h-0 sm:min-w-0 sm:py-1.5"
             onClick={() => setMode("docked")}
           >
             Expand
@@ -126,7 +132,7 @@ export function AskKellyCommandConsole({ children }: { children: ReactNode }) {
     <>
       {toolbar}
 
-      <header className="relative px-6 py-9 sm:px-10 sm:py-11">
+      <header className="relative px-4 py-8 sm:px-10 sm:py-11">
         <p className="font-body text-[10px] font-bold uppercase tracking-[0.28em] text-kelly-navy/70">Campaign operating system</p>
         <h1 className="mt-4 font-heading text-3xl font-bold tracking-tight text-kelly-navy sm:text-[2.1rem]">
           {ASK_KELLY_COMMAND_CONSOLE_HEADER.title}
@@ -138,13 +144,13 @@ export function AskKellyCommandConsole({ children }: { children: ReactNode }) {
 
         <nav
           aria-label="Suggested next actions"
-          className="mt-8 flex flex-wrap gap-2.5 border-t border-kelly-text/10 pt-7"
+          className="mt-8 flex flex-wrap gap-2 border-t border-kelly-text/10 pt-6 sm:gap-2.5 sm:pt-7"
         >
           {CONSOLE_QUICK_LINKS.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="inline-flex rounded-md border border-kelly-navy/20 bg-kelly-fog/40 px-4 py-2 font-body text-xs font-bold uppercase tracking-wide text-kelly-navy transition hover:border-kelly-gold/40 hover:bg-kelly-fog/70"
+              className="inline-flex min-h-[44px] items-center justify-center rounded-md border border-kelly-navy/20 bg-kelly-fog/40 px-3 py-2 text-center font-body text-[11px] font-bold uppercase leading-tight tracking-wide text-kelly-navy transition hover:border-kelly-gold/40 hover:bg-kelly-fog/70 sm:min-h-0 sm:px-4 sm:text-xs"
             >
               {l.label}
             </Link>
@@ -152,7 +158,7 @@ export function AskKellyCommandConsole({ children }: { children: ReactNode }) {
         </nav>
       </header>
 
-      <div className="relative space-y-6 px-6 pb-6 pt-0 sm:px-10 sm:pb-9">
+      <div className="relative space-y-6 px-4 pb-6 pt-0 sm:px-10 sm:pb-9">
         <section
           aria-labelledby="manual-of-everything-status"
           className="rounded-xl border border-kelly-navy/14 bg-kelly-blue/[0.04] p-5 sm:p-6"
@@ -172,6 +178,8 @@ export function AskKellyCommandConsole({ children }: { children: ReactNode }) {
         </section>
 
         <AskKellyCandidateCommunicationBoard />
+
+        <AskKellyCountyExpansionPanel />
 
         <AskKellyCandidateIntegrationStatus />
 

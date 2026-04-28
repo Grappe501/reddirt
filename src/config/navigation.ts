@@ -1,5 +1,3 @@
-import { getJoinCampaignHref } from "@/config/external-campaign";
-
 /** Volunteer form tagged for tabling / representing at third-party local events. */
 export const representLocalEventVolunteerHref = "/get-involved?lane=event_representation#volunteer";
 
@@ -44,7 +42,7 @@ export const primaryNavGroups: NavGroup[] = [
   { id: "organize", label: "Organize", groupLandingHref: "/organizing-intelligence", items: [] },
   {
     id: "conversations",
-    label: "Conversations & Stories",
+    label: "Stories & voices",
     groupLandingHref: "/messages",
     items: [],
   },
@@ -60,9 +58,9 @@ export const footerNavGroups: { title: string; items: NavItem[] }[] = [
   {
     title: "Movement",
     items: [
-      { label: "Organizing intelligence", href: "/organizing-intelligence" },
+      { label: "Statewide organizing", href: "/organizing-intelligence" },
       { label: "Start Power of 5", href: powerOf5OnboardingHref },
-      { label: "Conversations & Stories", href: "/messages" },
+      { label: "Stories & voices", href: "/messages" },
       { label: "Volunteer & get involved", href: "/get-involved" },
     ],
   },

@@ -3,16 +3,16 @@
  * (Not a product name; describes the person using the tools.)
  */
 
-/** Primary line under the Ask Kelly console title — serious, personal (V2.12). */
+/** Primary line under the command center title — serious, personal (V2.12). */
 export const ASK_KELLY_ONBOARDING_COMMAND_CENTER_TAGLINE =
-  "The guide sits inside your campaign operating system—not apart from it. It maps the dashboards, respects your confirmations, and keeps public changes review-first.";
+  "One orientation map for your campaign OS: where to work, what is live versus still wiring, and the same confirmations before anything public shifts.";
 
 export const ASK_KELLY_COMMAND_CONSOLE_HEADER = {
-  /** Main H1-adjacent label for /admin/ask-kelly shell (V2.12). */
-  title: "Ask Kelly command console",
+  /** Main H1-adjacent label for /admin/ask-kelly shell (Stack Pass B). */
+  title: "Candidate command center",
   /** One restrained line under the title. */
   lead:
-    "A single orientation surface for Kelly and whoever runs day-to-day with her: routing, drafts, confirmations, and the same safety rails everywhere.",
+    "Central board for Kelly and day-to-run staff: quick routes to dashboards, drafts, confirmations, integration posture, and no surprise sends.",
 };
 
 export const ASK_KELLY_CONFIDENCE_BLOCK = {
@@ -27,10 +27,10 @@ export const ASK_KELLY_CONFIDENCE_BLOCK = {
 /** Interface framing only — same entry model today; prioritization evolves with permissions (V2.12). */
 export const ASK_KELLY_ROLE_CONSOLE_FRAMING = {
   candidate: {
-    title: "Candidate console",
+    title: "Candidate posture",
     body: [
-      "Same Ask Kelly guide and Dixie entry model as elsewhere. Today the emphasis is familiar: Page content, tester feedback, your public voice, approvals.",
-      "Website copy flows through draft → review → confirm → send update to site—the guide explains the path and does not skip your final say.",
+      "Same Ask Kelly guide and Dixie entry as elsewhere. The orchestrator card is the primary KPI surface today; the insights route is an honest placeholder until a report engine ships—no metrics are invented on either path from here.",
+      "Website copy still flows draft → review → confirm → publish; this page routes you there and does not skip your say.",
     ] as const,
   },
   manager: {
@@ -46,6 +46,7 @@ export const ASK_KELLY_SAFE_ACCESS_SECTION = {
   title: "Safe access",
   paragraphs: [
     "Ask Kelly can point to dashboards and explain what a screen is for using policy-safe, route-level context.",
+    "Operational KPI surfaces (for example inbound counts and queues on the orchestrator) summarize pipeline health—they do not replace finance, compliance, or voter-file row review in their dedicated tools.",
     "Future reporting from this direction should rely on aggregates and summaries—not row-level supporter data in the general guide.",
     "Individual voter records, donor and treasury records, and private strategy are out of scope for public-facing Ask Kelly. Sensitive work stays in purpose-built dashboards with appropriate permissions.",
   ] as const,
@@ -69,136 +70,193 @@ export const ASK_KELLY_DIXIE_CONSOLE_NOTE = {
   ] as const,
 };
 
-/** Capability snapshot for the onboarding console (V2.14 — not persisted; editorial status). */
-/** V2.15 — Fast access surface on Candidate onboarding; links only (no sends). */
-export const ASK_KELLY_CANDIDATE_COMMUNICATION_BOARD = {
+export type AskKellyCommandBoardCardState = "live" | "setup" | "planned";
+
+/** Extra navigation-only links (routes to review/configure—never outbound send from this board). */
+export type AskKellyCommandBoardRelatedLink = { href: string; label: string };
+
+export type AskKellyCommandBoardCard = {
+  id: string;
+  title: string;
+  state: AskKellyCommandBoardCardState;
+  description: string;
+  complianceNote?: string;
+  href?: string;
+  actionLabel: string;
+  /** Optional secondary destinations (same rules: orientation and review—not mass-send buttons). */
+  relatedLinks?: readonly AskKellyCommandBoardRelatedLink[];
+};
+
+/** Capability snapshot — Stack Pass D: KPI/orchestrator primary; insights scaffold; aggregates-only safety. */
+export const ASK_KELLY_CANDIDATE_COMMUNICATION_BOARD: {
+  sectionTitle: string;
+  sectionLead: string;
+  cards: readonly AskKellyCommandBoardCard[];
+} = {
   sectionTitle: "Candidate command board",
   sectionLead:
-    "One orientation surface—links only; nothing here sends mail, SMS, or mass messages. Use connected workbenches for review and approval workflows.",
+    "Links only—no sends from this page. For live inbound counts and queue posture, the orchestrator is the strongest KPI surface today. /admin/insights stays a scaffold (no fabricated charts). Reporting here is aggregates and routing—never individual voter browsing from this orientation map.",
   cards: [
     {
       id: "ask-kelly",
       title: "Ask Kelly · Dixie",
-      state: "live" as const,
-      stateLabel: "Console",
+      state: "live",
       description:
-        "Orientation and voice-review posture match the public site: approved sources, draft-by-default, no open-ended browsing.",
+        "Same orientation and voice-review posture as the public site: approved sources, draft-by-default, no open-ended browsing.",
       complianceNote: "",
       href: "/admin/ask-kelly",
-      actionLabel: "Console overview",
+      actionLabel: "Open this console",
     },
     {
       id: "website-pages",
       title: "Website & page copy",
-      state: "live" as const,
-      stateLabel: "Editor",
+      state: "live",
       description:
-        "Edit public page heroes and structured content. Changes publish only after draft → review → confirm → save—not from this dashboard alone.",
+        "Edit page heroes and structured content. Publishing still runs draft → review → confirm → save—not from this list alone.",
       complianceNote: "",
       href: "/admin/pages",
       actionLabel: "Open Page content",
     },
     {
+      id: "ops-kpi",
+      title: "KPI dashboard · orchestrator (primary)",
+      state: "live",
+      description:
+        "Strongest aggregate view today: pending inbound review counts, routed-to-public tallies, per-platform ingest breakdowns, and sync health—all content-pipeline KPIs. Not treasurer books, donor detail, or voter-file row lists.",
+      complianceNote: "Aggregates only; drill-down stays inside permissioned orchestration screens.",
+      href: "/admin/orchestrator",
+      actionLabel: "Open orchestrator (live KPIs)",
+      relatedLinks: [{ href: "/admin/insights", label: "Insights route (placeholder · no charts)" }],
+    },
+    {
+      id: "individual",
+      title: "Campaign workbench · comms routing",
+      state: "live",
+      description:
+        "Central lane for operational work: tasks, intake, and scripted touches. Includes CM dashboard bands (truth snapshot / open-work counts)—secondary to the orchestrator for pipeline KPIs. Individual email and threaded comms open from the queues below.",
+      complianceNote: "No raw contact export or voter rows on this map; review happens in the linked tools.",
+      href: "/admin/workbench",
+      actionLabel: "Open workbench",
+      relatedLinks: [
+        { href: "/admin/workbench/email-queue", label: "Email queue · review" },
+        { href: "/admin/workbench/comms", label: "Comms hub · plans" },
+      ],
+    },
+    {
+      id: "county-workbench",
+      title: "County briefing hub",
+      state: "live",
+      description:
+        "The public hub only lists live Pope briefings today. Staff county intelligence is aggregate-only. Eight-county parity is a named build queue—details in the County expansion panel below (no invented targets or strategy math).",
+      complianceNote: "",
+      href: "/county-briefings",
+      actionLabel: "Open county briefings hub",
+      relatedLinks: [
+        { href: "/county-briefings/pope", label: "Pope County pilot (model)" },
+        { href: "/county-briefings/pope/v2", label: "Pope v2 dashboard (sample)" },
+        { href: "/admin/county-intelligence", label: "County intelligence (staff)" },
+      ],
+    },
+    {
       id: "feedback-beta",
       title: "Ask Kelly beta feedback",
-      state: "live" as const,
-      stateLabel: "Queue",
+      state: "live",
       description:
-        "Tester notes go to triage—they do not overwrite the live site. Staff may sort items for Kelly; nothing auto-publishes.",
+        "Tester notes land in triage; they never overwrite live copy. Staff may sort for you—you choose what to act on.",
       complianceNote: "",
       href: "/admin/workbench/ask-kelly-beta",
       actionLabel: "Open beta triage",
     },
     {
       id: "social",
-      title: "Social performance",
-      state: "live" as const,
-      stateLabel: "Workbench",
+      title: "Social · stats & drafts",
+      state: "setup",
       description:
-        "Social stats connection pending for a headline number on this console—open the Social workbench for drafts, platforms, and performance context.",
+        "Opens the Social workbench. Aggregate stats and headline tiles are not guaranteed until integrations verify—expect drafts, library, and posture copy before KPIs behave like production.",
       complianceNote: "",
       href: "/admin/workbench/social",
       actionLabel: "Open Social workbench",
     },
     {
       id: "email",
-      title: "Email programs",
-      state: "live" as const,
-      stateLabel: "Hub",
+      title: "Email · comms hub",
+      state: "setup",
       description:
-        "SendGrid-backed rails exist when keys are set—use the Comms hub for broadcasts, plans, and approval chains.",
-      complianceNote: "Mass messages require approval and compliance checks.",
+        "Plans, media, SendGrid-backed send rails when keys are configured—staff approval gates apply before audiences see messages. Opens the dashboard; nothing sends by clicking below.",
+      complianceNote: "Mass email requires treasurer/compliance-aligned approval inside the comms workflows.",
       href: "/admin/workbench/comms",
       actionLabel: "Open comms hub",
+      relatedLinks: [{ href: "/admin/workbench/email-queue", label: "Email queue · 1:1 & review items" }],
     },
     {
       id: "sms",
-      title: "Text (SMS)",
-      state: "live" as const,
-      stateLabel: "Broadcasts",
+      title: "SMS · broadcasts",
+      state: "setup",
       description:
-        "Twilio-style SMS routing is code-complete; production sends require verified env and approvals in the broadcast flow.",
-      complianceNote: "Mass messages require approval and compliance checks.",
+        "SMS/broadcast lanes use Twilio-style paths where env is wired; confirmations and segmented sends stay inside those screens—still not outbound from here.",
+      complianceNote: "Mass texting requires FCC/campaign-aligned approval and scripted compliance inside broadcast flows.",
       href: "/admin/workbench/comms/broadcasts",
-      actionLabel: "Open broadcasts",
-    },
-    {
-      id: "individual",
-      title: "Campaign workbench",
-      state: "live" as const,
-      stateLabel: "Lanes",
-      description:
-        "Cross-tool hub for tasks, intake, and scripted touches—paired with orchestrator queues for inbound content routing.",
-      complianceNote: "",
-      href: "/admin/workbench",
-      actionLabel: "Open workbench",
-    },
-    {
-      id: "ops-kpi",
-      title: "Command center · KPIs",
-      state: "live" as const,
-      stateLabel: "Orchestrator",
-      description:
-        "Aggregate inbound counts, queues, and status tiles—better “where are we right now.” Not a substitute for finance or voter-file reporting.",
-      complianceNote: "",
-      href: "/admin/orchestrator",
-      actionLabel: "Open command center",
-    },
-    {
-      id: "county-workbench",
-      title: "County briefing hub",
-      state: "live" as const,
-      stateLabel: "Public + admin",
-      description:
-        "Public hub at /county-briefings; Pope pilot at /county-briefings/pope and /county-briefings/pope/v2; staff views at /admin/county-intelligence. Eight-county expansion parity: see docs/NORTHWEST_REGION_AND_8_COUNTY_WORKBENCH_PARITY_AUDIT.md (no fabricated targets).",
-      complianceNote: "",
-      href: "/county-briefings",
-      actionLabel: "Open county briefings",
+      actionLabel: "Open SMS broadcasts",
+      relatedLinks: [{ href: "/admin/workbench/comms", label: "Comms hub · cross-channel approval" }],
     },
     {
       id: "reports",
-      title: "Reports & insights",
-      state: "planned" as const,
-      stateLabel: "Scaffold",
+      title: "Reports & insights scaffold",
+      state: "planned",
       description:
-        "Aggregate summaries and connector health over time—no raw voter rows in this shell. Today /admin/insights is a placeholder page; charts land after orchestrator data hardens.",
+        "The /admin/insights page exists only as narrative scaffold: no charts, no engagement scores, no invented KPIs—the full report product is planned later. Until then rely on aggregates on the orchestrator (and CM bands on the workbench), not row-level supporter lists.",
       complianceNote: "",
       href: "/admin/insights",
       actionLabel: "Open insights (placeholder)",
+      relatedLinks: [
+        { href: "/admin/orchestrator", label: "Use orchestrator for live KPIs" },
+        { href: "/admin/workbench", label: "Workbench dashboard bands (CM)" },
+      ],
     },
     {
       id: "candidate-identity",
       title: "Candidate voter identity",
-      state: "planned" as const,
-      stateLabel: "Staff-assisted",
+      state: "planned",
       description:
-        "Linking an admin user to a single voter file row is staff-assisted when ops configures it—no self-serve public search for Kelly in this build.",
+        "Binding an admin login to a voter-file row stays staff-assisted when ops enables it—no self-serve lookup in this build.",
       complianceNote: "",
       href: undefined,
-      actionLabel: "Coordinator setup · no open search",
+      actionLabel: "Staff configuration only",
     },
-  ] as const,
+  ],
 };
+
+/** Stack Pass E — eight-county parity queue; mirrors parity audit; no fabricated routes or targets. */
+export const ASK_KELLY_COUNTY_EXPANSION_PANEL = {
+  sectionTitle: "County briefing parity · expansion queue",
+  sectionLead:
+    "Source: docs/NORTHWEST_REGION_AND_8_COUNTY_WORKBENCH_PARITY_AUDIT.md. Only Pope has public Next.js briefing routes under /county-briefings today. The eight counties below are planning names for future parity—not live briefing URLs until shipped. No pathway-to-victory math or invented registration targets on this map.",
+  pilotBadge: "Pilot model",
+  pilotTitle: "Pope County",
+  pilotBody:
+    "Public pilot: classic briefing page plus optional v2 dashboard shell. Demo/seed labels apply where the UI shows training or sample data—verify “live” claims against approved ingestion per deployment.",
+  staffNote:
+    "/admin/county-intelligence is global staff tooling (defaults to Pope-style aggregates in this build); it is not eight duplicate county consoles.",
+  buildQueueTitle: "Eight-county build queue (planned routes only)",
+  buildQueueLead:
+    "No /county-briefings/{slug} pages exist for these names yet. Use stable county slugs from the Arkansas registry when implementing. “Conway” here means Conway County—not the city of Conway.",
+  counties: [
+    "Pulaski",
+    "Faulkner",
+    "Saline",
+    "White",
+    "Perry",
+    "Cleburne",
+    "Conway",
+    "Van Buren",
+  ] as const,
+  pilotLinks: [
+    { href: "/county-briefings/pope", label: "Pope briefing (pilot)" },
+    { href: "/county-briefings/pope/v2", label: "Pope v2 (sample dashboard)" },
+    { href: "/county-briefings", label: "County briefings hub" },
+  ] as const,
+  adminIntelLink: { href: "/admin/county-intelligence", label: "Open county intelligence (staff)" },
+} as const;
 
 export const ASK_KELLY_MANUAL_OF_EVERYTHING_STATUS = {
   title: "Manual of Everything status",

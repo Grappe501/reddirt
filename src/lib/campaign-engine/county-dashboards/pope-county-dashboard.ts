@@ -2,6 +2,11 @@
  * Pope County — County Dashboard v2 data shape (OIS / COUNTY-INTEL prototype).
  * Merges live political profile + priority meta with clearly labeled demo/seed fields
  * where relational Power of 5 and city/precinct maps are not in DB yet.
+ *
+ * **Replication:** New counties (Pulaski, Faulkner, Saline, White, …) should copy the
+ * builder + view pattern here, swap `CountyDashboardV2` assembly to that county’s political
+ * profile module, and keep the same UI shell (`PopeCountyDashboardV2View` → shared XCounty view).
+ * See `docs/NORTHWEST_REGION_AND_8_COUNTY_WORKBENCH_PARITY_AUDIT.md`.
  */
 import { getRegistryCountyBySlug, type ArCommandRegionId } from "@/lib/county/arkansas-county-registry";
 import { resolveRegionPresentationForCounty } from "../regions/arkansas-campaign-regions";

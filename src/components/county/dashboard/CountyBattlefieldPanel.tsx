@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useState, type KeyboardEvent, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import type { CountyDashboardVisualLabels } from "@/lib/campaign-engine/county-dashboards/types";
 
@@ -63,25 +63,64 @@ export function CountyBattlefieldPanel({
 
   const cur = body[active];
 
+  const panelHeadingId = "county-battlefield-main-heading";
+  const panelBodyId = "county-battlefield-visual-panel";
+
+  const goTab = (id: (typeof tabs)[number]["id"]) => setActive(id);
+
+  const onTabListKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    const idx = tabs.findIndex((t) => t.id === active);
+    if (idx < 0) return;
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+      e.preventDefault();
+      goTab(tabs[Math.min(tabs.length - 1, idx + 1)].id);
+    }
+    if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+      e.preventDefault();
+      goTab(tabs[Math.max(0, idx - 1)].id);
+    }
+    if (e.key === "Home") {
+      e.preventDefault();
+      goTab(tabs[0].id);
+    }
+    if (e.key === "End") {
+      e.preventDefault();
+      goTab(tabs[tabs.length - 1].id);
+    }
+  };
+
   return (
-    <div>
+    <section aria-labelledby={panelHeadingId}>
       <div className="border-b border-kelly-navy/15 pb-2">
         <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-kelly-slate/75">Situational awareness</p>
-        <h2 className="font-heading text-xl font-bold tracking-tight text-kelly-navy md:text-2xl">Main visual battlefield</h2>
+        <h2 id={panelHeadingId} className="font-heading text-xl font-bold tracking-tight text-kelly-navy md:text-2xl">
+          Maps &amp; density placeholders
+        </h2>
         <p className="mt-1.5 text-sm text-kelly-text/70">
           Map slots are non-destructive placeholders — swap in tiles later without re-layout.
         </p>
       </div>
       <div className="mt-3">
         <div>
-          <div className="flex flex-wrap gap-1 border-b border-kelly-text/10 pb-2">
+          <div
+            role="tablist"
+            aria-labelledby={panelHeadingId}
+            aria-orientation="horizontal"
+            className="flex flex-wrap gap-1 border-b border-kelly-text/10 pb-2"
+            onKeyDown={onTabListKeyDown}
+          >
             {tabs.map((t) => (
               <button
                 key={t.id}
+                role="tab"
                 type="button"
+                id={`county-battlefield-tab-${t.id}`}
+                aria-selected={active === t.id}
+                aria-controls={panelBodyId}
+                tabIndex={active === t.id ? 0 : -1}
                 onClick={() => setActive(t.id)}
                 className={cn(
-                  "rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-wide",
+                  "rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-wide outline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-kelly-navy",
                   active === t.id
                     ? "bg-kelly-navy text-white"
                     : "bg-kelly-text/5 text-kelly-text/70 hover:bg-kelly-text/10",
@@ -91,7 +130,12 @@ export function CountyBattlefieldPanel({
               </button>
             ))}
           </div>
-          <div className="mt-4 rounded-2xl border border-kelly-text/10 bg-gradient-to-br from-kelly-navy/5 to-kelly-page p-4">
+          <div
+            role="tabpanel"
+            id={panelBodyId}
+            aria-labelledby={`county-battlefield-tab-${active}`}
+            className="mt-4 rounded-2xl border border-kelly-text/10 bg-gradient-to-br from-kelly-navy/5 to-kelly-page p-4"
+          >
             <p className="text-xs font-bold text-kelly-navy/90">{cur.title}</p>
             <p className="mt-1 text-sm text-kelly-text/75">{cur.blurb}</p>
             <div className="mt-4 flex min-h-[220px] items-center justify-center rounded-xl border border-dashed border-kelly-slate/30 bg-kelly-page/80 p-3">
@@ -100,7 +144,7 @@ export function CountyBattlefieldPanel({
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

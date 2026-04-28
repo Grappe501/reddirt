@@ -9,6 +9,13 @@ export function formatCountyDashboardNumber(n: number | null | undefined) {
 
 export function CountySourceBadge({ source, note }: { source: CountyDashboardLabeledMetric<unknown>["source"]; note?: string }) {
   const label = source === "db" ? "DB" : source === "derived" ? "Derived" : "Demo / seed";
+  const ariaSource =
+    source === "db"
+      ? "Imported or database-backed figure"
+      : source === "derived"
+        ? "Calculated from sourced inputs on this page"
+        : "Demonstration or seed data — verify before operational use";
+  const ariaLabel = note ? `${ariaSource}. ${note}` : ariaSource;
   return (
     <span
       className={cn(
@@ -18,6 +25,7 @@ export function CountySourceBadge({ source, note }: { source: CountyDashboardLab
           : "border-kelly-slate/20 bg-kelly-slate/8 text-kelly-text/75",
       )}
       title={note}
+      aria-label={ariaLabel}
     >
       {label}
     </span>
@@ -51,8 +59,11 @@ function metricSuffixForLabel(label: string): string | null {
 export function CountyKpiCard({ label, metric, actionHint, compact }: CountyKpiCardProps) {
   const cardClass = compact ? countyDashboardCardCompactClass : countyDashboardCardClass;
   const suffix = metric.value != null && typeof metric.value === "number" ? metricSuffixForLabel(label) : null;
+  const valueDisplay =
+    typeof metric.value === "number" ? `${formatCountyDashboardNumber(metric.value)}${suffix ?? ""}` : (metric.value ?? "—");
+  const cardAria = `${label}: ${valueDisplay}. Recommended action: ${actionHint}`;
   return (
-    <div className={cn(cardClass, "min-w-0 flex-1")}>
+    <article className={cn(cardClass, "min-w-0 flex-1")} aria-label={cardAria}>
       <p
         className={cn(
           "font-bold uppercase text-kelly-text/55",
@@ -83,6 +94,6 @@ export function CountyKpiCard({ label, metric, actionHint, compact }: CountyKpiC
           {metric.note}
         </p>
       ) : null}
-    </div>
+    </article>
   );
 }
