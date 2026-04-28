@@ -58,7 +58,7 @@ export function PowerOf5LeaderDashboardView({ data }: Props) {
     <div className="mx-auto max-w-6xl px-4 py-8 text-kelly-text md:py-10">
       <p className="text-sm text-kelly-text/60">
         <Link className="text-kelly-slate underline" href="/dashboard">
-          ← My dashboard
+          ← Volunteer preview
         </Link>
         {" · "}
         <Link className="text-kelly-slate underline" href="/">
@@ -68,7 +68,7 @@ export function PowerOf5LeaderDashboardView({ data }: Props) {
 
       <header className="mt-4 border-b border-kelly-navy/15 pb-6">
         <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-slate/75">Power of 5</p>
-        <h1 className="font-heading text-2xl font-bold text-kelly-navy md:text-3xl">Leader dashboard</h1>
+        <h1 className="font-heading text-2xl font-bold text-kelly-navy md:text-3xl">Leadership preview</h1>
         <p className="mt-2 max-w-3xl text-sm text-kelly-text/75">
           Rollup for a <strong>Power Team leader</strong> in a <GlossaryTerm term="powerOf5">Power of 5</GlossaryTerm> program: teams you coach,
           completion gaps, fragile nodes, and follow-up debt. When productized, this page is auth-gated and backed by consent-scoped rosters — not
@@ -96,8 +96,8 @@ export function PowerOf5LeaderDashboardView({ data }: Props) {
       <CountyKpiStrip
         className="mt-8"
         overline="Team health"
-        title="Executive strip"
-        description="Snapshot metrics a leader checks first. Values here are demo / seed until hydration ships."
+        title="Leadership snapshot"
+        description="At-a-glance metrics mentors check first — demo / seed until hydration ships."
         items={data.healthKpis}
         compact
       />
@@ -200,7 +200,7 @@ export function PowerOf5LeaderDashboardView({ data }: Props) {
           <Link className="font-semibold text-kelly-slate underline" href="/organizing-intelligence">
             Organizing intelligence
           </Link>
-          . Staff-only operator views are intentionally not linked from public pages — use your campaign playbook for admin login.
+          . Campaign staff workspaces are intentionally not linked from public pages — use your campaign playbook for staff sign-in.
           {" "}Spec reference:{" "}
           <code className="rounded bg-kelly-text/5 px-1">docs/POWER_OF_5_LEADER_DASHBOARD.md</code>
         </p>

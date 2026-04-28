@@ -26,17 +26,19 @@ export type AskKellyConsoleViewMode = "minimized" | "docked" | "fullscreen";
 const CONSOLE_QUICK_LINKS: { href: string; label: string }[] = [
   { href: "/admin/pages", label: "Page content" },
   { href: "/admin/workbench/ask-kelly-beta", label: "Beta feedback" },
-  { href: "/admin/workbench", label: "Workbench" },
+  { href: "/admin/workbench", label: "Campaign workbench" },
+  { href: "/admin/orchestrator", label: "Command center" },
+  { href: "/county-briefings", label: "County briefings (public)" },
 ];
 
 const WORKSPACE_HINT =
   "Keep the console open while you work, or minimize it when you need the full dashboard.";
 
 const RESEARCH_TOOLS_PLACEHOLDER = {
-  title: "Research tools",
-  status: "Planned · controlled access",
+  title: "Research tools — planned · controlled access",
+  status: "No live open web",
   body:
-    "Future research tools should be opened deliberately, use approved sources, and return cited summaries for review. Open-web browsing is not part of this deployment today.",
+    "Future research tooling should pull from approved corpuses only, return cited summaries, and stay gated from broad public burns. Open-internet browsing is not enabled in this deployment.",
 };
 
 function readStoredMode(): AskKellyConsoleViewMode {

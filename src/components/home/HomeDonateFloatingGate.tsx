@@ -36,6 +36,8 @@ export function HomeDonateFloatingGate() {
     setVisible(false);
   }, []);
 
+  const continueId = useId();
+
   useEffect(() => {
     if (!visible) return;
     const onKey = (e: KeyboardEvent) => {
@@ -55,20 +57,28 @@ export function HomeDonateFloatingGate() {
       role="dialog"
       aria-modal="true"
       aria-labelledby={titleId}
+      aria-describedby={continueId}
     >
-      <h2 id={titleId} className="sr-only">
-        Support the campaign — donate
-      </h2>
       <button
         type="button"
         onClick={dismiss}
-        className="fixed right-3 top-3 z-[101] flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-kelly-navy/80 text-xl font-light leading-none text-white transition hover:border-kelly-gold/50 hover:bg-kelly-blue/80 hover:text-kelly-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold sm:right-4 sm:top-4"
+        className="fixed right-3 top-3 z-[101] flex h-11 w-11 items-center justify-center rounded-full border-2 border-kelly-gold bg-kelly-navy text-2xl font-semibold leading-none text-kelly-gold shadow-[0_4px_24px_rgba(0,0,0,0.45)] ring-2 ring-kelly-gold/35 ring-offset-2 ring-offset-kelly-navy transition hover:bg-kelly-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold sm:right-4 sm:top-4"
         aria-label="Close and continue to the site"
       >
         ×
       </button>
 
       <div className="flex w-full max-w-md flex-col items-center">
+        <div className="mb-2 text-center">
+          <p className="font-body text-[10px] font-bold uppercase tracking-[0.24em] text-kelly-gold">Kelly Grappe · Arkansas Secretary of State</p>
+          <h2 id={titleId} className="mt-3 font-heading text-xl font-bold leading-tight text-white sm:text-2xl">
+            Support the campaign
+          </h2>
+          <p id={continueId} className="mt-3 max-w-sm font-body text-sm leading-snug text-white/88">
+            Chip in if you can — or skip straight to the site to read Kelly’s story, priorities, and ways to volunteer.
+          </p>
+        </div>
+
         <div className="relative aspect-square w-full max-w-[min(100%,18.5rem)] overflow-hidden rounded-full border-2 border-kelly-gold/40 shadow-[0_24px_80px_rgba(0,0,0,0.5)] sm:max-w-[20rem]">
           <Image
             src={brandMediaFromLegacySite.kellyPortrait}
@@ -81,7 +91,7 @@ export function HomeDonateFloatingGate() {
           />
         </div>
 
-        <div className="mt-10 w-full max-w-sm">
+        <div className="mt-10 w-full max-w-sm space-y-3">
           <Link
             href={siteConfig.donateHref}
             {...(donateExternal
@@ -91,6 +101,13 @@ export function HomeDonateFloatingGate() {
           >
             Donate
           </Link>
+          <button
+            type="button"
+            onClick={dismiss}
+            className="flex min-h-[48px] w-full items-center justify-center rounded-btn border-2 border-white/40 bg-transparent px-6 py-3 text-center text-sm font-semibold text-white underline decoration-white/60 underline-offset-4 transition hover:border-kelly-gold/70 hover:text-kelly-gold hover:decoration-kelly-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold"
+          >
+            Continue to website
+          </button>
         </div>
       </div>
     </div>

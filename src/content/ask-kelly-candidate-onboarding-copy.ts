@@ -72,27 +72,61 @@ export const ASK_KELLY_DIXIE_CONSOLE_NOTE = {
 /** Capability snapshot for the onboarding console (V2.14 — not persisted; editorial status). */
 /** V2.15 — Fast access surface on Candidate onboarding; links only (no sends). */
 export const ASK_KELLY_CANDIDATE_COMMUNICATION_BOARD = {
-  sectionTitle: "Candidate communication command board",
+  sectionTitle: "Candidate command board",
   sectionLead:
-    "Fast lanes to performance and outreach tools. Nothing on this screen sends email, SMS, or mass messages by itself—use the linked workbenches for review and approval.",
+    "One orientation surface—links only; nothing here sends mail, SMS, or mass messages. Use connected workbenches for review and approval workflows.",
   cards: [
     {
+      id: "ask-kelly",
+      title: "Ask Kelly · Dixie",
+      state: "live" as const,
+      stateLabel: "Console",
+      description:
+        "Orientation and voice-review posture match the public site: approved sources, draft-by-default, no open-ended browsing.",
+      complianceNote: "",
+      href: "/admin/ask-kelly",
+      actionLabel: "Console overview",
+    },
+    {
+      id: "website-pages",
+      title: "Website & page copy",
+      state: "live" as const,
+      stateLabel: "Editor",
+      description:
+        "Edit public page heroes and structured content. Changes publish only after draft → review → confirm → save—not from this dashboard alone.",
+      complianceNote: "",
+      href: "/admin/pages",
+      actionLabel: "Open Page content",
+    },
+    {
+      id: "feedback-beta",
+      title: "Ask Kelly beta feedback",
+      state: "live" as const,
+      stateLabel: "Queue",
+      description:
+        "Tester notes go to triage—they do not overwrite the live site. Staff may sort items for Kelly; nothing auto-publishes.",
+      complianceNote: "",
+      href: "/admin/workbench/ask-kelly-beta",
+      actionLabel: "Open beta triage",
+    },
+    {
       id: "social",
-      title: "Social media",
+      title: "Social performance",
       state: "live" as const,
       stateLabel: "Workbench",
       description:
-        "Social stats connection pending for a single headline number on this page—open the Social workbench to review performance, drafts, and platform work in one place.",
+        "Social stats connection pending for a headline number on this console—open the Social workbench for drafts, platforms, and performance context.",
       complianceNote: "",
       href: "/admin/workbench/social",
-      actionLabel: "Open social workbench",
+      actionLabel: "Open Social workbench",
     },
     {
       id: "email",
-      title: "Email",
+      title: "Email programs",
       state: "live" as const,
       stateLabel: "Hub",
-      description: "Email programs, plans, and queues live in the comms hub and broadcast tools.",
+      description:
+        "SendGrid-backed rails exist when keys are set—use the Comms hub for broadcasts, plans, and approval chains.",
       complianceNote: "Mass messages require approval and compliance checks.",
       href: "/admin/workbench/comms",
       actionLabel: "Open comms hub",
@@ -102,31 +136,55 @@ export const ASK_KELLY_CANDIDATE_COMMUNICATION_BOARD = {
       title: "Text (SMS)",
       state: "live" as const,
       stateLabel: "Broadcasts",
-      description: "SMS sends use broadcast and compliance tooling—same posture as mass email.",
+      description:
+        "Twilio-style SMS routing is code-complete; production sends require verified env and approvals in the broadcast flow.",
       complianceNote: "Mass messages require approval and compliance checks.",
       href: "/admin/workbench/comms/broadcasts",
-      actionLabel: "Open broadcast hub",
+      actionLabel: "Open broadcasts",
     },
     {
       id: "individual",
-      title: "Individual communication",
+      title: "Campaign workbench",
       state: "live" as const,
-      stateLabel: "Workbench lanes",
-      description: "Staff follow-ups and scripted outreach use Campaign workbench lanes; content intake uses the orchestrator inbox.",
+      stateLabel: "Lanes",
+      description:
+        "Cross-tool hub for tasks, intake, and scripted touches—paired with orchestrator queues for inbound content routing.",
       complianceNote: "",
       href: "/admin/workbench",
-      actionLabel: "Open campaign workbench",
+      actionLabel: "Open workbench",
     },
     {
       id: "ops-kpi",
-      title: "Operational metrics · command center",
+      title: "Command center · KPIs",
       state: "live" as const,
       stateLabel: "Orchestrator",
       description:
-        "Insights (`/admin/insights`) is still a scaffold. The Command center (orchestrator) shows live aggregate counts for inbound feeds, queues, and platform status—better “where are we” for tonight.",
+        "Aggregate inbound counts, queues, and status tiles—better “where are we right now.” Not a substitute for finance or voter-file reporting.",
       complianceNote: "",
       href: "/admin/orchestrator",
       actionLabel: "Open command center",
+    },
+    {
+      id: "county-workbench",
+      title: "County briefing hub",
+      state: "live" as const,
+      stateLabel: "Public + admin",
+      description:
+        "Public hub at /county-briefings; Pope pilot at /county-briefings/pope and /county-briefings/pope/v2; staff views at /admin/county-intelligence. Eight-county expansion parity: see docs/NORTHWEST_REGION_AND_8_COUNTY_WORKBENCH_PARITY_AUDIT.md (no fabricated targets).",
+      complianceNote: "",
+      href: "/county-briefings",
+      actionLabel: "Open county briefings",
+    },
+    {
+      id: "reports",
+      title: "Reports & insights",
+      state: "planned" as const,
+      stateLabel: "Scaffold",
+      description:
+        "Aggregate summaries and connector health over time—no raw voter rows in this shell. Today /admin/insights is a placeholder page; charts land after orchestrator data hardens.",
+      complianceNote: "",
+      href: "/admin/insights",
+      actionLabel: "Open insights (placeholder)",
     },
     {
       id: "candidate-identity",
@@ -134,31 +192,10 @@ export const ASK_KELLY_CANDIDATE_COMMUNICATION_BOARD = {
       state: "planned" as const,
       stateLabel: "Staff-assisted",
       description:
-        "Matching an admin User to exactly one voter file row uses `linkedVoterRecordId` when ops wire it—there is no self-serve public search for Kelly in this build. Controlled lookup stubs stay disabled.",
+        "Linking an admin user to a single voter file row is staff-assisted when ops configures it—no self-serve public search for Kelly in this build.",
       complianceNote: "",
       href: undefined,
       actionLabel: "Coordinator setup · no open search",
-    },
-    {
-      id: "campaign-organizing-hub",
-      title: "Campaign Organizing Hub",
-      state: "planned" as const,
-      stateLabel: "Setup needed",
-      description:
-        "Internal team coordinating channels (e.g. Discord) are provisioned by staff when ready. County briefings (`/county-briefings`), volunteer entry (`/get-involved`), and workbenches are first-party RedDirt campaign-management surfaces—no separate non-campaign portal branded here.",
-      complianceNote: "",
-      href: undefined,
-      actionLabel: "No admin link configured",
-    },
-    {
-      id: "ask-kelly",
-      title: "Ask Kelly / Dixie",
-      state: "live" as const,
-      stateLabel: "Console",
-      description: "Orientation, voice review, and the same guide you use on the public site—stays review-first.",
-      complianceNote: "",
-      href: "/admin/ask-kelly",
-      actionLabel: "Stay on this console",
     },
   ] as const,
 };

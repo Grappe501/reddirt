@@ -16,6 +16,13 @@ export default function AdminDashboardPage() {
         You’re in the public-site control room: copy, homepage composition, syndicated writing, and media
         metadata. Organizer dashboards and field data stay in the other system.
       </p>
+      <p className="mt-4 rounded-lg border border-kelly-text/15 bg-kelly-page/70 px-4 py-3 font-body text-sm text-kelly-text/85">
+        <strong>Candidate-facing console:</strong>{" "}
+        <Link className="font-semibold text-kelly-slate underline underline-offset-2 hover:text-kelly-navy" href="/admin/ask-kelly">
+          Ask Kelly command console
+        </Link>{" "}
+        — orientation, command-board links, integrations status, controlled research posture (planned).
+      </p>
       <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {cards.map((c) => (
           <li key={c.href}>

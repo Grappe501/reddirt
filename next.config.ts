@@ -68,6 +68,27 @@ const nextConfig: NextConfig = {
         destination: "/messages",
         permanent: true,
       },
+      /** Campaign-owned demo/bookmark aliases → canonical briefing & volunteer URLs (same deploy). */
+      {
+        source: "/countyWorkbench",
+        destination: "/county-briefings",
+        permanent: false,
+      },
+      {
+        source: "/distipope-briefing",
+        destination: "/county-briefings/pope",
+        permanent: false,
+      },
+      {
+        source: "/dist-county-briefings",
+        destination: "/county-briefings",
+        permanent: false,
+      },
+      {
+        source: "/volunteerPage",
+        destination: "/get-involved",
+        permanent: false,
+      },
     ];
   },
   // pdf-parse must stay external: its test harness references missing test/ PDFs and breaks the bundler.

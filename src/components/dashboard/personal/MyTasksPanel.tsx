@@ -24,7 +24,7 @@ type Props = {
 };
 
 /**
- * Follow-up queue plus recent conversations — operational heart of the personal dashboard.
+ * Follow-up queue plus recent conversations — core of the volunteer preview (demo).
  */
 export function MyTasksPanel({ followUps, conversations, className }: Props) {
   const open = followUps.filter((t) => !t.done);

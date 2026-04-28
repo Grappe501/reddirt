@@ -31,7 +31,7 @@ Kelly needs a **single orientation surface** on `/admin/ask-kelly` to see where 
 | Volunteer pathways (public) | `/get-involved` |
 | Volunteer sheet intake (admin) | `/admin/volunteers/intake` |
 
-Aliases such as **`/countyWorkbench`** / **`volunteerPage`** / **`/dist*-briefing*`** are naming targets for future App Router parity; briefing + volunteer work today resolves through the routes above (`docs/CANDIDATE_LIVE_DASHBOARD_READINESS_PLAN.md` §5).
+Stable demo bookmarks **`/countyWorkbench`**, **`/distipope-briefing`**, **`/dist-county-briefings`**, **`/volunteerPage`** — **implemented** as redirects in **`next.config.ts`** to the canonical briefing and volunteer URLs (see `docs/CANDIDATE_LIVE_DASHBOARD_READINESS_PLAN.md` §5). Candidate board includes a live **County & volunteer demo aliases** card.
 
 ## Campaign Organizing Hub (e.g. Discord)
 

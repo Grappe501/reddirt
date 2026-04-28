@@ -1,6 +1,5 @@
 import { prisma } from "@/lib/db";
 import { getVolunteerSignupHref } from "@/config/external-campaign";
-import { countyDashboardSampleHref, powerOf5OnboardingHref } from "@/config/navigation";
 import {
   heardItems as defaultHeard,
   movementBeliefs as defaultMovement,
@@ -40,16 +39,16 @@ export const HOMEPAGE_SECTION_IDS = [
 export type HomepageSectionId = (typeof HOMEPAGE_SECTION_IDS)[number];
 
 const DEFAULT_HERO: HomepageHeroMerged = {
-  eyebrow: "Kelly Grappe · Secretary of State",
-  titleBefore: "People-Powered",
-  titleAccent: "Organizing",
-  titleAfter: "",
+  eyebrow: "Kelly Grappe · Arkansas Secretary of State",
+  titleBefore: "Fair elections.",
+  titleAccent: "Transparent",
+  titleAfter: "government for everyone.",
   subtitle:
-    "The front door to Arkansas-wide field work: start your five, find your county on the map, and plug into the same public intelligence organizers use from the River Valley to Texarkana.",
-  ctaPrimaryLabel: "Start Power of 5",
-  ctaPrimaryHref: powerOf5OnboardingHref,
-  ctaSecondaryLabel: "View County Dashboard",
-  ctaSecondaryHref: countyDashboardSampleHref,
+    "Kelly Grappe is running to serve Arkansas as Secretary of State: secure elections you can trust, filings and ballot rules explained in plain language, and public systems that answer to voters—not insiders. Transparency and competence are not partisan; they are the job.",
+  ctaPrimaryLabel: "Volunteer",
+  ctaPrimaryHref: getVolunteerSignupHref(),
+  ctaSecondaryLabel: "Meet Kelly",
+  ctaSecondaryHref: "/about",
 };
 
 /** All narrative sections on by default; disable in admin if you need a shorter page. */
@@ -111,14 +110,14 @@ function mergeArkansasBand(
 }
 
 const DEFAULT_FINAL_CTA = {
-  eyebrow: "Regnat Populus",
-  title: "Step in—your county needs organizers.",
+  eyebrow: "Regnat Populus — The people rule",
+  title: "Step in—Arkansas wins neighbor to neighbor.",
   description:
-    "Pick up the Power of 5 flow, open your county workbench, or browse the message hub. Every link here is a real route: training-first demos today, live hydration as your county comes online.",
-  primaryLabel: "Start Power of 5",
-  primaryHref: powerOf5OnboardingHref,
-  secondaryLabel: "View County Dashboard",
-  secondaryHref: countyDashboardSampleHref,
+    "Volunteer, explore how we organize, or open a sample county briefing. Every link is a real page: learn Kelly’s priorities, find your county, or connect with the campaign at your pace.",
+  primaryLabel: "Volunteer",
+  primaryHref: getVolunteerSignupHref(),
+  secondaryLabel: "See priorities",
+  secondaryHref: "/priorities",
 };
 
 function parseJson<T>(value: unknown, fallback: T): T {

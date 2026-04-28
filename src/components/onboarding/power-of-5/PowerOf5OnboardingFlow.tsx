@@ -289,7 +289,7 @@ export function PowerOf5OnboardingFlow() {
             <section aria-labelledby="p5-dash-title" className="space-y-4">
               <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-kelly-navy/65">Screen 9 · Where this goes</p>
               <h2 id="p5-dash-title" className="font-heading text-xl font-bold text-kelly-navy sm:text-2xl">
-                Dashboard preview
+                Route & preview map
               </h2>
               <p className="font-body text-sm leading-relaxed text-kelly-text/85">
                 You are entering a <strong>system</strong>, not filling out a dead form. Routes mix live placeholders and future URL patterns —

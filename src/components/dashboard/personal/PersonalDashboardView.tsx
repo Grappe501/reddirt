@@ -12,7 +12,7 @@ import { MessageHubLinkCard } from "@/components/integrations/MessageHubLinkCard
 import { MyTasksPanel } from "./MyTasksPanel";
 
 /**
- * Full-width personal dashboard — demo data only until auth and live tiles ship.
+ * Full-width volunteer-facing preview — demo data only until auth and live tiles ship.
  */
 export function PersonalDashboardView() {
   const d = PERSONAL_DASHBOARD_DEMO;
@@ -36,12 +36,13 @@ export function PersonalDashboardView() {
           </Link>
           {" · "}
           <Link className="text-kelly-slate underline" href="/dashboard/leader">
-            Leader dashboard
+            Leadership preview
           </Link>
         </p>
-        <h1 className="font-heading mt-3 text-3xl font-bold text-kelly-navy md:text-4xl">My dashboard</h1>
+        <h1 className="font-heading mt-3 text-3xl font-bold text-kelly-navy md:text-4xl">Volunteer preview</h1>
         <p className="mt-2 max-w-3xl text-sm text-kelly-text/75">
-          Your Power of 5 circle, team cadence, conversation log, and follow-ups — designed for cooperative momentum, not public leaderboards.
+          A public-facing look at how your Power of 5 circle, team cadence, conversation log, and follow-ups fit together —
+          illustrative only; designed for cooperative momentum, not public leaderboards.
         </p>
       </header>
 

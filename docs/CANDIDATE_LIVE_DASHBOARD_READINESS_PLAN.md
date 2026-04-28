@@ -96,9 +96,10 @@ These are **campaign-owned** surfaces in this repo—**not** non-campaign extern
 | **`/admin/county-intelligence`** | **Live** — operator county intel. |
 | **`/get-involved`** | **Live** — public volunteer / pathways entry. |
 | **`/admin/volunteers/intake`** | **Live** — volunteer sheet intake. |
-| **`/countyWorkbench`** | **Campaign management route expected inside RedDirt.** Use **`/county-briefings`** (and optional **`NEXT_PUBLIC_COUNTY_WORKBENCH_URL`**) until a dedicated alias exists. |
-| **`/distipope-briefing`**, **`/dist-county-briefings`** | **Campaign management route expected inside RedDirt.** No **`page.tsx`** yet; repo-root **`dist-pope-briefing/`** and **`dist-county-briefings/`** are static packaging. Use briefing App Router URLs + admin intel. |
-| **`/volunteerPage`** | **Campaign management route expected inside RedDirt.** Not present; use **`/get-involved`** and **`/admin/volunteers/intake`**. |
+| **`/countyWorkbench`** | **Live alias** — **`next.config.ts`** redirects (non-permanent) → **`/county-briefings`**. Optional **`NEXT_PUBLIC_COUNTY_WORKBENCH_URL`** still adds outbound hub parity when set. |
+| **`/distipope-briefing`** | **Live alias** — redirect → **`/county-briefings/pope`**. Repo-root **`dist-pope-briefing/`** remains a static packaging mirror. |
+| **`/dist-county-briefings`** | **Live alias** — redirect → **`/county-briefings`**. Repo-root **`dist-county-briefings/`** remains static packaging. |
+| **`/volunteerPage`** | **Live alias** — redirect → **`/get-involved`**. Staff intake stays **`/admin/volunteers/intake`**. |
 
 Ask Kelly’s system guide **`ASK_KELLY_SYSTEM_ROUTES`** exposes the live paths above for onboarding copy.
 

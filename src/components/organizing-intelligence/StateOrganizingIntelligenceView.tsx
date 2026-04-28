@@ -54,9 +54,9 @@ export function StateOrganizingIntelligenceView({ data }: { data: StateOrganizin
       <p className="mt-3 text-sm text-kelly-text/75">
         Gold-standard county example:{" "}
         <Link className={cn(focusRing, "rounded-sm font-semibold text-kelly-navy underline")} href="/county-briefings/pope/v2">
-          Pope County — dashboard v2
+          Pope County — preview v2
         </Link>{" "}
-        (dense command layout, Power of 5, labeled demo/seed). County command:{" "}
+        (dense layout, Power of 5, labeled demo/seed). County organizing page:{" "}
         <Link className={cn(focusRing, "rounded-sm text-kelly-navy underline")} href="/counties/pope-county">
           /counties/pope-county
         </Link>
@@ -65,20 +65,20 @@ export function StateOrganizingIntelligenceView({ data }: { data: StateOrganizin
       <p className="mt-2 text-sm text-kelly-text/75">
         Field-team demos (illustrative tiles; no supporter login tied to voter data yet):{" "}
         <Link className={cn(focusRing, "rounded-sm font-semibold text-kelly-navy underline")} href="/dashboard">
-          My dashboard
+          Volunteer preview
         </Link>
         {" · "}
         <Link className={cn(focusRing, "rounded-sm font-semibold text-kelly-navy underline")} href="/dashboard/leader">
-          Leader dashboard
+          Leadership preview
         </Link>
-        . Campaign staff dashboards are reachable only through the documented admin login—URLs are intentionally not surfaced on public pages.
+        . Campaign staff tools are reachable only through documented staff sign-in—URLs are intentionally not surfaced on public pages.
       </p>
 
       <CountyKpiStrip
         className="mt-10"
         overline="Statewide"
-        title="KPI command strip — executive + Power of 5"
-        description="Read left to right: scale → teams → coverage → relational depth (invites, activations, KPI engine). Demo fields are labeled."
+        title="KPI snapshot — Power of 5 (public preview)"
+        description="Read left to right: scale → teams → coverage → relational depth (invites, activations). Demo fields are labeled."
         items={data.kpiStripItems}
         compact
       />
@@ -141,7 +141,7 @@ export function StateOrganizingIntelligenceView({ data }: { data: StateOrganizin
         overline="Power of 5"
         title="Organizing pipeline — statewide"
         impactExplanation={STATE_P5_IMPACT}
-        intro="Six stages mirror `lib/power-of-5/pipelines.ts`. Detailed counts live in the KPI strip above; this block is the shared ladder every dashboard level uses."
+        intro="Six stages mirror `lib/power-of-5/pipelines.ts`. Detailed counts live in the KPI strip above; this block is the shared ladder every public preview level uses."
         items={[]}
         pipelineVariant="full"
       />

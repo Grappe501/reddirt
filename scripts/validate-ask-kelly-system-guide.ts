@@ -51,6 +51,9 @@ const MUST_MATCH: string[] = [
   "Where is the Campaign Organizing Hub?",
   "Where are the county briefings?",
   "Where is the volunteer page?",
+  "Open countyWorkbench",
+  "Where is distipope briefing?",
+  "Where is volunteerPage?",
   "How do I communicate with supporters?",
   "Can I send a mass message?",
 ];

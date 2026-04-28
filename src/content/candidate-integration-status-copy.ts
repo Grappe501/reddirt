@@ -5,7 +5,7 @@ export type IntegrationStatusTone = "codepath" | "external" | "oauth";
 export const ASK_KELLY_CANDIDATE_INTEGRATION_STATUS = {
   sectionTitle: "Integration status",
   sectionLead:
-    "Rails that exist in this codebase—the operator must verify environment variables are set in each deployment (`see .env.example`). This panel does not read secrets or claim production connectivity.",
+    "Rails that exist in this codebase—verify `.env` / Netlify per environment. Calendar and Gmail need OAuth completion in the running deployment; SendGrid and Twilio need API credentials before sends are truly live. This panel does not read secrets or assert production connectivity.",
   rows: [
     {
       id: "calendar",

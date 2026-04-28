@@ -21,7 +21,7 @@ export function GamificationPanel({ snapshot, className }: Props) {
         description={
           <>
             Cooperative recognition — private to you and your team leads. No public leaderboards in this product slice.{" "}
-            <CountySourceBadge source="demo" note="Totals derived from demo dashboard fields" />
+            <CountySourceBadge source="demo" note="Totals derived from demo preview fields" />
           </>
         }
       />

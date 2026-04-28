@@ -39,8 +39,8 @@ export function HomeOrganizingConversionBand({ finalCta }: Props) {
               A simple ladder your county can actually run
             </h2>
             <p className="mt-5 font-body text-lg leading-relaxed text-kelly-slate md:text-xl">
-              The Power of 5 is relational organizing with clear stages—so volunteers know what “done” looks like and teams don’t collapse when one person
-              gets busy. The guided flow is training-first; it doesn’t collect contacts or voter data on the public path.
+              The Power of 5 is relational organizing with clear stages—so volunteers know what “done” looks like and teams don’t disappear when schedules
+              get busy. The guided flow is training-first and never collects private voter data on the public path.
             </p>
           </FadeInWhenVisible>
           <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
@@ -52,8 +52,8 @@ export function HomeOrganizingConversionBand({ finalCta }: Props) {
             </FadeInWhenVisible>
             <FadeInWhenVisible delay={0.1}>
               <PowerOf5StepCard title="Turn talk into teams" badge="Step 2">
-                When two or three people say yes, you’ve got a pod. The public dashboard shells show how completion and coverage read at a county level—so
-                the work is visible without exposing private lists.
+                When two or three people say yes, you’ve got a pod. Public dashboards show aggregate progress so the work stays visible—without exposing
+                private lists.
               </PowerOf5StepCard>
             </FadeInWhenVisible>
             <FadeInWhenVisible delay={0.15}>
@@ -74,7 +74,7 @@ export function HomeOrganizingConversionBand({ finalCta }: Props) {
               href="/organizing-intelligence"
               className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-kelly-navy/25 bg-white px-7 py-3.5 text-sm font-bold uppercase tracking-wider text-kelly-navy transition hover:border-kelly-gold"
             >
-              See statewide organizing intelligence
+              How we organize statewide
             </Link>
           </FadeInWhenVisible>
         </ContentContainer>
@@ -86,16 +86,16 @@ export function HomeOrganizingConversionBand({ finalCta }: Props) {
       >
         <ContentContainer>
           <FadeInWhenVisible className="mx-auto max-w-3xl text-center">
-            <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-kelly-blue">County command</p>
+            <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-kelly-blue">County snapshot</p>
             <h2
               id="county-dashboard-preview-heading"
               className="mt-4 font-heading text-[clamp(1.75rem,3.8vw,2.65rem)] font-bold tracking-tight text-kelly-ink"
             >
-              County dashboard preview
+              What a county briefing can look like
             </h2>
             <p className="mt-5 font-body text-lg leading-relaxed text-kelly-slate md:text-xl">
-              Every published county gets a shared command shell: KPI strip, battlefield read, Power of 5 block, and regional context. Numbers below are
-              demo/seed—placeholders until your county is hydrated from approved sources.
+              When a county goes live, teams get a shared layout: key numbers, local context, and Power of 5 progress—always labeled so you know what is
+              demo training data versus sourced public figures.
             </p>
           </FadeInWhenVisible>
           <FadeInWhenVisible className="mt-10" delay={0.06}>
@@ -131,7 +131,7 @@ export function HomeOrganizingConversionBand({ finalCta }: Props) {
                   href={countyDashboardSampleHref}
                   className="inline-flex min-h-[44px] items-center justify-center rounded-btn bg-kelly-navy px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-kelly-navy/90"
                 >
-                  Open gold-sample dashboard
+                  Open sample briefing (demo)
                 </Link>
                 <Link
                   href="/counties"
@@ -153,8 +153,8 @@ export function HomeOrganizingConversionBand({ finalCta }: Props) {
               Prompts, line, and neighbor stories
             </h2>
             <p className="mt-5 font-body text-lg leading-relaxed text-kelly-slate md:text-xl">
-              The message hub is the volunteer-facing shelf: weekly narrative line, county color, and share packets. What you see today is demo or seed
-              until approvals and comms rails connect.
+              The message hub is where volunteers plug into weekly prompts, county color, and shareable narratives. Some items are previews until approvals
+              are complete—labeled clearly along the way.
             </p>
           </FadeInWhenVisible>
           <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">

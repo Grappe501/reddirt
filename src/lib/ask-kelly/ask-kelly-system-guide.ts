@@ -37,6 +37,11 @@ export const ASK_KELLY_SYSTEM_ROUTES = {
   countyIntel: "/admin/county-intelligence",
   volunteerPublic: "/get-involved",
   adminVolunteerIntake: "/admin/volunteers/intake",
+  /** Stable bookmark paths → `redirects()` in next.config.ts (no duplicate pages). */
+  aliasCountyWorkbench: "/countyWorkbench",
+  aliasDistipopeBriefing: "/distipope-briefing",
+  aliasDistCountyBriefings: "/dist-county-briefings",
+  aliasVolunteerPage: "/volunteerPage",
 } as const;
 
 function norm(s: string): string {
@@ -655,9 +660,13 @@ const rules: Rule[] = [
         "where are the county briefings",
         "county workbench",
         "countyworkbench",
+        "open countyworkbench",
         "distipope",
+        "distipope briefing",
         "dist pope",
         "dist county",
+        "dist county briefings",
+        "dist-county-briefings",
         "pope briefing",
         "pope county briefing",
       ]) ||
@@ -665,10 +674,13 @@ const rules: Rule[] = [
     build: () => ({
       title: "County briefings (campaign management)",
       answer:
-        "County surfaces live inside this RedDirt deployment: the public **`/county-briefings`** index and drills such as **`/county-briefings/pope`**, plus staff **`/admin/county-intelligence`** for aggregate intel. Operators may refer to **`/countyWorkbench`** as a canonical label—in-app navigation uses these briefing routes plus optional **`NEXT_PUBLIC_COUNTY_WORKBENCH_URL`** when set. Repo-root static drops (`dist-pope-briefing/`, `dist-county-briefings/`) are packaging outputs; there are no **`/distipope-briefing`** or **`/dist-county-briefings`** App Router pages today.",
+        "That county surface now lives inside RedDirt and opens here: the public briefing index and Pope drill-down, plus /admin/county-intelligence for staff aggregates. Demo bookmarks /countyWorkbench, /distipope-briefing, and /dist-county-briefings are live HTTP redirects to those canonical paths (next.config.ts redirects) — no dead demo routes. Repo-root dist-pope-briefing/ and dist-county-briefings/ folders remain static packaging mirrors; NEXT_PUBLIC_COUNTY_WORKBENCH_URL is optional for an extra outbound hub link.",
       links: [
-        { label: "County briefings", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefings },
-        { label: "Pope county briefing", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefingPope },
+        { label: "County briefings (canonical)", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefings },
+        { label: "/countyWorkbench (alias)", href: ASK_KELLY_SYSTEM_ROUTES.aliasCountyWorkbench },
+        { label: "/distipope-briefing (alias → Pope)", href: ASK_KELLY_SYSTEM_ROUTES.aliasDistipopeBriefing },
+        { label: "/dist-county-briefings (alias)", href: ASK_KELLY_SYSTEM_ROUTES.aliasDistCountyBriefings },
+        { label: "Pope briefing (canonical)", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefingPope },
         { label: "County intelligence (admin)", href: ASK_KELLY_SYSTEM_ROUTES.countyIntel },
       ],
       nextStep: "Keep voter-level detail in gated admin tools—Ask Kelly does not search the voter file.",
@@ -679,16 +691,17 @@ const rules: Rule[] = [
     id: "cms-volunteer-surfaces",
     priority: -1,
     test: (n) =>
-      containsAny(n, ["volunteer page", "volunteer signup", "volunteer sign-up", "volunteer sign up", "volunteer intake"]) ||
+      containsAny(n, ["volunteer page", "volunteer signup", "volunteer sign-up", "volunteer sign up", "volunteer intake", "volunteerpage"]) ||
       (containsAny(n, ["volunteer"]) && containsAny(n, ["where", "sign up", "sign-up", "join"])) ||
-      containsAny(n, ["where is the volunteer page"]),
+      containsAny(n, ["where is the volunteer page", "where is volunteerpage"]),
     build: () => ({
       title: "Volunteer entry (campaign management)",
       answer:
-        "Volunteer pathways use the public **Get involved** page (`/get-involved`). Staff intake for volunteer sheets is **`/admin/volunteers/intake`**. There is no literal **`/volunteerPage`** route in this app—those two URLs are the supported campaign-management surfaces.",
+        "That pathway now lives inside RedDirt: the public **`/get-involved`** page and **`/admin/volunteers/intake`** for staff sheets. **`/volunteerPage`** is a **live redirect** alias to **`/get-involved`** (bookmark-safe for demos).",
       links: [
-        { label: "Get involved (public)", href: ASK_KELLY_SYSTEM_ROUTES.volunteerPublic },
-        { label: "Volunteer sheet intake", href: ASK_KELLY_SYSTEM_ROUTES.adminVolunteerIntake },
+        { label: "Get involved (canonical)", href: ASK_KELLY_SYSTEM_ROUTES.volunteerPublic },
+        { label: "/volunteerPage (alias)", href: ASK_KELLY_SYSTEM_ROUTES.aliasVolunteerPage },
+        { label: "Volunteer sheet intake (admin)", href: ASK_KELLY_SYSTEM_ROUTES.adminVolunteerIntake },
       ],
       nextStep: "If you meant relational organizing tiers, ask your admin which relational lanes are enabled.",
     }),
@@ -708,7 +721,8 @@ const rules: Rule[] = [
         { label: "Campaign workbench", href: ASK_KELLY_SYSTEM_ROUTES.workbench },
         { label: "Comms hub", href: ASK_KELLY_SYSTEM_ROUTES.workbenchComms },
         { label: "County briefings", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefings },
-        { label: "Get involved (volunteer)", href: ASK_KELLY_SYSTEM_ROUTES.volunteerPublic },
+        { label: "Get involved (canonical)", href: ASK_KELLY_SYSTEM_ROUTES.volunteerPublic },
+        { label: "/volunteerPage (alias)", href: ASK_KELLY_SYSTEM_ROUTES.aliasVolunteerPage },
       ],
       nextStep: "If Discord is in use, keep invites and roles outside public website copy until counsel approves.",
     }),
