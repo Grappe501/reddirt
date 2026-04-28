@@ -2,6 +2,7 @@
 export const ASSISTANT_API_VERSION = "3" as const;
 
 export const ASSISTANT_CAPABILITIES = [
+  "system_guide",
   "rag",
   "tools",
   "playbooks",

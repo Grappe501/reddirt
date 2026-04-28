@@ -196,15 +196,13 @@ export function PowerOf5LeaderDashboardView({ data }: Props) {
 
       <footer className="mt-12 border-t border-kelly-text/10 pt-6 text-sm text-kelly-text/60">
         <p>
-          Public organizing intelligence:{" "}
+          Public statewide map:{" "}
           <Link className="font-semibold text-kelly-slate underline" href="/organizing-intelligence">
-            /organizing-intelligence
+            Organizing intelligence
           </Link>
-          . Operator hub:{" "}
-          <Link className="font-semibold text-kelly-slate underline" href="/admin/organizing-intelligence">
-            /admin/organizing-intelligence
-          </Link>
-          . Spec: <code className="rounded bg-kelly-text/5 px-1">docs/POWER_OF_5_LEADER_DASHBOARD.md</code>
+          . Staff-only operator views are intentionally not linked from public pages — use your campaign playbook for admin login.
+          {" "}Spec reference:{" "}
+          <code className="rounded bg-kelly-text/5 px-1">docs/POWER_OF_5_LEADER_DASHBOARD.md</code>
         </p>
       </footer>
     </div>

@@ -6,7 +6,11 @@ import {
   getOpenAIConfigFromEnv,
   isOpenAIConfigured,
 } from "@/lib/openai/client";
-import { buildContextBlock, prioritizeHitsForAssistant, searchChunks } from "@/lib/openai/search";
+import {
+  buildContextBlock,
+  prioritizeHitsForAssistant,
+  searchChunksForAskKelly,
+} from "@/lib/openai/search";
 import { pathToHref } from "@/lib/search/paths";
 import {
   formatConversationForPrompt,
@@ -18,8 +22,16 @@ import { runCampaignAssistantCompletion } from "@/lib/assistant/run-completion";
 import { replyChunks, sseEncode } from "@/lib/assistant/sse";
 import { ASSISTANT_API_VERSION, ASSISTANT_CAPABILITIES } from "@/lib/assistant/version";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
+import {
+  answerAskKellySystemGuide,
+  formatAskKellySystemGuideReply,
+} from "@/lib/ask-kelly/ask-kelly-system-guide";
 
 export const dynamic = "force-dynamic";
+
+/* Ask Kelly retrieval uses path-allowlisted chunks only (`searchChunksForAskKelly`).
+   Do not pipe unfiltered `SearchChunk` rows from internal campaign manuals into this handler —
+   `/api/assistant` is public-facing. See `isAskKellyPublicSafeChunkPath` in `@/lib/openai/search`. */
 
 const historyEntrySchema = z.object({
   role: z.enum(["user", "assistant"]),
@@ -68,18 +80,6 @@ export async function POST(req: Request) {
     );
   }
 
-  if (!isOpenAIConfigured()) {
-    return NextResponse.json(
-      {
-        error: "not_configured",
-        version: ASSISTANT_API_VERSION,
-        message:
-          "Message support isn’t available on this site build yet—browse the menu or email kelly@kellygrappe.com.",
-      },
-      { status: 503 },
-    );
-  }
-
   let json: unknown;
   try {
     json = await req.json();
@@ -114,6 +114,82 @@ export async function POST(req: Request) {
   } = parsed.data;
 
   const history = normalizeHistory(rawHistory);
+
+  const systemGuide = answerAskKellySystemGuide(message, { pathname });
+  if (systemGuide.matched) {
+    const reply = formatAskKellySystemGuideReply(systemGuide, { includeSafetyNoteInBody: false });
+    const suggestions = systemGuide.links.map((l) => ({ label: l.label, href: l.href }));
+    const safetyNote = systemGuide.safetyNote?.trim() ? systemGuide.safetyNote.trim() : undefined;
+
+    if (wantStream) {
+      const guideStream = new ReadableStream<Uint8Array>({
+        start(controller) {
+          try {
+            controller.enqueue(
+              sseEncode({
+                type: "meta",
+                version: ASSISTANT_API_VERSION,
+                playbook: "system_guide",
+              }),
+            );
+            for (const chunk of replyChunks(reply)) {
+              controller.enqueue(sseEncode({ type: "delta", text: chunk }));
+            }
+            controller.enqueue(
+              sseEncode({
+                type: "done",
+                suggestions,
+                toolsUsed: [],
+                nextStep: systemGuide.nextStep,
+                ...(safetyNote ? { safetyNote } : {}),
+              }),
+            );
+          } catch (e) {
+            controller.enqueue(
+              sseEncode({
+                type: "error",
+                message: e instanceof Error ? e.message : "Stream failed.",
+              }),
+            );
+          } finally {
+            controller.close();
+          }
+        },
+      });
+
+      return new Response(guideStream, {
+        headers: {
+          "Content-Type": "text/event-stream; charset=utf-8",
+          "Cache-Control": "no-cache, no-transform",
+          Connection: "keep-alive",
+          "X-Assistant-Version": ASSISTANT_API_VERSION,
+        },
+      });
+    }
+
+    return NextResponse.json({
+      version: ASSISTANT_API_VERSION,
+      playbook: "system_guide",
+      toolsUsed: [],
+      reply,
+      suggestions,
+      nextStep: systemGuide.nextStep,
+      ...(safetyNote ? { safetyNote } : {}),
+    });
+  }
+
+  if (!isOpenAIConfigured()) {
+    return NextResponse.json(
+      {
+        error: "not_configured",
+        version: ASSISTANT_API_VERSION,
+        message:
+          "Guided search isn’t available on this site build yet—browse the menu or email kelly@kellygrappe.com.",
+      },
+      { status: 503 },
+    );
+  }
+
   const playbookHint = [message, ...history.filter((t) => t.role === "user").slice(-2).map((t) => t.text)]
     .join(" ")
     .slice(0, 1200);
@@ -130,10 +206,10 @@ export async function POST(req: Request) {
   let hits;
   try {
     const searchQuery = searchQueryFromTurns(message, history);
-    const wide = await searchChunks(searchQuery, 14);
+    const wide = await searchChunksForAskKelly({ query: searchQuery, pathname });
     hits = prioritizeHitsForAssistant(wide, 8);
   } catch (e) {
-    console.error("[assistant] searchChunks", e);
+    console.error("[assistant] searchChunksForAskKelly", e);
     const hint =
       e instanceof Error && /prisma|database|connect/i.test(e.message)
         ? " Check DATABASE_URL and run migrations (`npx prisma migrate deploy`)."

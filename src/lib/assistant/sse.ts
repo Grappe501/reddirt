@@ -15,6 +15,10 @@ export type AssistantStreamDone = {
   type: "done";
   suggestions: Array<{ label: string; href: string }>;
   toolsUsed: string[];
+  /** Present when playbook is `system_guide` — practical follow-up line for the dock. */
+  nextStep?: string;
+  /** Present when playbook is `system_guide` and the guide included a boundary note. */
+  safetyNote?: string;
 };
 
 export type AssistantStreamError = { type: "error"; message: string };

@@ -174,6 +174,49 @@ export async function searchChunks(query: string, topK = 10): Promise<SearchHit[
   return semanticTry.slice(0, topK);
 }
 
+/**
+ * Path allowlist for public Ask Kelly — **not** score-based. Anything not matching these
+ * prefixes is dropped after retrieval so internal docs / opposition intel cannot surface
+ * in `/api/assistant` answers regardless of similarity rank.
+ *
+ * Allowed: `route:`, `brief:`, and paths `docs/ask-kelly-public` or `docs/ask-kelly-public/...` only.
+ * Do not add internal campaign manuals (e.g. `campaign-system-manual/`) to `SearchChunk`
+ * without extending this gate — this route is public-facing.
+ */
+export function isAskKellyPublicSafeChunkPath(rawPath: string): boolean {
+  const p = rawPath.replace(/\\/g, "/").trim();
+  if (!p) return false;
+  if (p.startsWith("route:")) return true;
+  if (p.startsWith("brief:")) return true;
+  if (p === "docs/ask-kelly-public" || p.startsWith("docs/ask-kelly-public/")) return true;
+
+  if (p.startsWith("intel:opposition") || p.startsWith("intel:")) return false;
+  if (p.startsWith("external:")) return false;
+  if (p.startsWith("docs/")) return false;
+
+  return false;
+}
+
+export type SearchChunksForAskKellyOptions = {
+  query: string;
+  /** Caller URL path — reserved for future locality or allowlist tweaks; default retrieval is public-safe. */
+  pathname?: string;
+};
+
+/**
+ * Retrieval for the public Ask Kelly dock: reuse `searchChunks` blending, then **hard-filter** by path.
+ * Pulls a wider candidate pool so filtering still yields enough hits when many rows are internal-only.
+ */
+export async function searchChunksForAskKelly(options: SearchChunksForAskKellyOptions): Promise<SearchHit[]> {
+  const q = options.query.trim();
+  if (!q) return [];
+  void options.pathname;
+
+  const poolSize = 48;
+  const pool = await searchChunks(q, poolSize);
+  return pool.filter((h) => isAskKellyPublicSafeChunkPath(h.path));
+}
+
 export function buildContextBlock(hits: SearchHit[], maxChars = 12000): string {
   let out = "";
   for (const h of hits) {

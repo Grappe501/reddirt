@@ -20,6 +20,8 @@ If the Git repo root contains **both** `sos-public/` and `RedDirt/`, in Netlify:
 
 If the repo is **only** the `RedDirt` project, leave base directory empty.
 
+**Netlify checklist (one line):** point production at the right branch (usually `main`), set **Base directory** to `RedDirt` only when the GitHub repo root is the full monorepo—if the repo *is* this app at root, leave base empty.
+
 ## Required environment variables (production)
 
 | Variable | Required | Notes |

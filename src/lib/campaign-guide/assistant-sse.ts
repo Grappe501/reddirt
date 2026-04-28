@@ -9,7 +9,12 @@ export async function consumeAssistantSse(
   handlers: {
     onMeta?: (playbook: string) => void;
     onDelta: (text: string) => void;
-    onDone: (suggestions: AssistantSseSuggestion[], toolsUsed: string[]) => void;
+    onDone: (
+      suggestions: AssistantSseSuggestion[],
+      toolsUsed: string[],
+      nextStep?: string,
+      safetyNote?: string,
+    ) => void;
     onError: (message: string) => void;
   },
 ): Promise<void> {
@@ -55,7 +60,12 @@ export async function consumeAssistantSse(
       if (o.type === "done") {
         const suggestions = Array.isArray(o.suggestions) ? (o.suggestions as AssistantSseSuggestion[]) : [];
         const toolsUsed = Array.isArray(o.toolsUsed) ? (o.toolsUsed as string[]).filter((x) => typeof x === "string") : [];
-        handlers.onDone(suggestions, toolsUsed);
+        const nextStep = "nextStep" in o && typeof (o as { nextStep?: unknown }).nextStep === "string" ? (o as { nextStep: string }).nextStep : undefined;
+        const safetyNote =
+          "safetyNote" in o && typeof (o as { safetyNote?: unknown }).safetyNote === "string"
+            ? (o as { safetyNote: string }).safetyNote
+            : undefined;
+        handlers.onDone(suggestions, toolsUsed, nextStep, safetyNote);
       }
       if (o.type === "error" && typeof o.message === "string") {
         handlers.onError(o.message);

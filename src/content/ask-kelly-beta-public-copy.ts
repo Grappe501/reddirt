@@ -22,14 +22,12 @@ export const ASK_KELLY_CATEGORY_LABELS: Record<AskKellyBetaCategory, string> = {
 
 /** Layered when guided help / search cannot answer. */
 export const ASK_KELLY_ASSISTANT_FALLBACK_LAYERS = {
-  /** First: calm, helpful */
   primary:
-    "The guided help isn’t available right now (or the site can’t load its knowledge). That’s a limitation on our end—not yours.",
-  /** Second: clear path to submit */
-  secondary: "If you need something reviewed, use “Send feedback” below. Kelly reads beta feedback; the team can help organize it, but the final call is hers.",
-  /** Third: light humor, not flippant */
+    "The command center couldn’t pull a live answer from the server—here’s where to go next: use the menus and links on the site, or write a structured note.",
+  secondary:
+    "Nothing changes publicly from this panel alone. Here’s what happens next: send feedback below if something needs eyes on it; Kelly reviews beta feedback, and staff can organize it—but the final publish path still follows the usual editor saves.",
   tertiary:
-    "The system is being thoughtful instead of pretending it knows everything. That can be a little annoying—and it’s healthier for democracy.",
+    "When the line is busy, treating unknowns honestly beats guessing. That restraint is deliberate.",
 } as const;
 
 export const ASK_KELLY_FEEDBACK_SUCCESS =

@@ -14,10 +14,19 @@ import {
   ASK_KELLY_BETA_ONBOARDING,
 } from "@/content/ask-kelly-beta-public-copy";
 import { CAMPAIGN_GUIDE_OPENING } from "@/content/tone-nuggets";
+import { ASK_KELLY_NO_MATCH_REPLY, ASK_KELLY_RECOVERY_PROMPT_BUTTONS } from "@/content/ask-kelly-chat-recovery";
 import { normalizeHistory } from "@/lib/assistant/conversation";
 import { ASSISTANT_API_VERSION } from "@/lib/assistant/version";
 import { consumeAssistantSse } from "@/lib/campaign-guide/assistant-sse";
+import { AskKellyMissedFeedbackCapture } from "@/components/campaign-guide/AskKellyMissedFeedbackCapture";
 import { cn } from "@/lib/utils";
+
+function isWeakAssistantPayload(accumulatedReply: string, playbook: string): boolean {
+  if (playbook === "system_guide") return false;
+  const t = accumulatedReply.trim();
+  if (t.length === 0) return true;
+  return /notebook is blank|blank on this server/i.test(t);
+}
 
 type ChatMessage = { role: "user" | "assistant"; text: string };
 type Suggestion = { label: string; href: string };
@@ -48,6 +57,14 @@ export function CampaignGuideDock() {
     { role: "assistant", text: displayAssistantMessage(CAMPAIGN_GUIDE_OPENING) },
   ]);
   const [lastSuggestions, setLastSuggestions] = useState<Suggestion[]>([]);
+  /** Set when the server returns a structured “next step” (e.g. system guide). */
+  const [lastNextStep, setLastNextStep] = useState<string | null>(null);
+  /** System guide boundary note — shown outside the streamed reply when present. */
+  const [lastSafetyNote, setLastSafetyNote] = useState<string | null>(null);
+  /** True when the server reply was treated as low-signal—show stronger recovery prompts. */
+  const [recoveryActive, setRecoveryActive] = useState(false);
+  /** Last user utterance paired with recovery (never assistant body). */
+  const [missedQuestion, setMissedQuestion] = useState<string | null>(null);
   const [responseStyle, setResponseStyle] = useState<"concise" | "normal" | "detailed">("concise");
   const { activeBeatId } = useJourney();
 
@@ -94,6 +111,10 @@ export function CampaignGuideDock() {
     setMessages((m) => [...m, { role: "user", text }]);
     setLoading(true);
     setLastSuggestions([]);
+    setLastNextStep(null);
+    setLastSafetyNote(null);
+    setRecoveryActive(false);
+    setMissedQuestion(null);
 
     try {
       const beat = activeBeatId ? beatById(activeBeatId) : undefined;
@@ -112,7 +133,7 @@ export function CampaignGuideDock() {
           journeyBeatId: activeBeatId ?? undefined,
           journeyBeatLabel: beat?.navLabel,
           journeyBeatDescription: beat?.description,
-          pathname: typeof window !== "undefined" ? window.location.pathname : "/",
+          pathname: pathname && pathname.length > 0 ? pathname : "/",
         }),
       });
 
@@ -120,8 +141,14 @@ export function CampaignGuideDock() {
 
       if (res.ok && contentType.includes("text/event-stream")) {
         let firstDelta = true;
+        let streamPlaybook = "";
+        let streamed = "";
         await consumeAssistantSse(res, {
+          onMeta: (pb) => {
+            streamPlaybook = pb;
+          },
           onDelta: (d) => {
+            streamed += d;
             if (firstDelta) {
               firstDelta = false;
               setMessages((m) => [...m, { role: "assistant", text: d }]);
@@ -136,7 +163,30 @@ export function CampaignGuideDock() {
               });
             }
           },
-          onDone: (suggestions) => setLastSuggestions(suggestions),
+          onDone: (suggestions, _tools, nextStep, safetyNote) => {
+            const weak = isWeakAssistantPayload(streamed, streamPlaybook);
+            if (weak) {
+              setMissedQuestion(text);
+              setRecoveryActive(true);
+              setLastSuggestions([]);
+              setLastNextStep(null);
+              setLastSafetyNote(null);
+              setMessages((m) => {
+                const x = [...m];
+                const last = x[x.length - 1];
+                if (last?.role === "assistant") {
+                  x[x.length - 1] = { role: "assistant", text: ASK_KELLY_NO_MATCH_REPLY };
+                }
+                return x;
+              });
+              return;
+            }
+            setRecoveryActive(false);
+            setMissedQuestion(null);
+            setLastSuggestions(suggestions);
+            setLastNextStep(nextStep?.trim() ? nextStep.trim() : null);
+            setLastSafetyNote(safetyNote?.trim() ? safetyNote.trim() : null);
+          },
           onError: () => {
             setError("Guided help is unavailable; see below to send feedback for review.");
             setMessages((m) => {
@@ -160,6 +210,8 @@ export function CampaignGuideDock() {
         toolsUsed?: string[];
         reply?: string;
         suggestions?: Suggestion[];
+        nextStep?: string;
+        safetyNote?: string;
         error?: string;
         message?: string;
       } = {};
@@ -177,12 +229,26 @@ export function CampaignGuideDock() {
         return;
       }
 
-      setLastSuggestions(json.suggestions ?? []);
+      const playbookJson = typeof json.playbook === "string" ? json.playbook : "";
       const rawReply = typeof json.reply === "string" ? json.reply : "";
-      setMessages((m) => [
-        ...m,
-        { role: "assistant", text: displayAssistantMessage(rawReply) },
-      ]);
+      const weakJson = isWeakAssistantPayload(rawReply, playbookJson);
+      if (weakJson) {
+        setMissedQuestion(text);
+        setRecoveryActive(true);
+        setLastSuggestions([]);
+        setLastNextStep(null);
+        setLastSafetyNote(null);
+        setMessages((m) => [...m, { role: "assistant", text: ASK_KELLY_NO_MATCH_REPLY }]);
+        return;
+      }
+      setRecoveryActive(false);
+      setMissedQuestion(null);
+      setLastSuggestions(json.suggestions ?? []);
+      setLastNextStep(typeof json.nextStep === "string" && json.nextStep.trim() ? json.nextStep.trim() : null);
+      setLastSafetyNote(
+        typeof json.safetyNote === "string" && json.safetyNote.trim() ? json.safetyNote.trim() : null,
+      );
+      setMessages((m) => [...m, { role: "assistant", text: displayAssistantMessage(rawReply) }]);
     } catch {
       setError("Network error. Feedback tab still works for sending a note.");
       setMessages((m) => [...m, { role: "assistant", text: ASSISTANT_UNAVAILABLE_COPY }]);
@@ -214,7 +280,7 @@ export function CampaignGuideDock() {
         </span>
         <span className="pr-0.5">Ask Kelly</span>
         <span className="hidden rounded-full bg-kelly-gold/25 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-kelly-navy sm:inline">
-          Message support
+          Open panel
         </span>
       </button>
 
@@ -237,7 +303,7 @@ export function CampaignGuideDock() {
                   <div>
                     <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-kelly-navy">Ask Kelly</p>
                     <p className="font-body text-xs text-kelly-text/60">
-                      Site-aware guide · v{ASSISTANT_API_VERSION} · streaming · {responseStyle} · 3/min ·
+                      Command center · route-aware · v{ASSISTANT_API_VERSION} · streaming · {responseStyle} · 3/min ·
                       kelly@kellygrappe.com
                     </p>
                     <div className="mt-1.5 flex flex-wrap gap-1.5">
@@ -304,7 +370,7 @@ export function CampaignGuideDock() {
                   </p>
                 ) : null}
 
-                {panelTab === "chat" && messages.length === 1 && !loading ? (
+                {panelTab === "chat" && messages.length === 1 && !loading && !recoveryActive ? (
                   <div className="border-b border-kelly-text/8 bg-kelly-page px-3 py-2">
                     <p className="px-1 font-body text-[10px] font-bold uppercase tracking-wider text-kelly-text/45">
                       Try asking
@@ -348,7 +414,7 @@ export function CampaignGuideDock() {
                     ))}
                     {loading ? (
                       <p className="font-body text-sm italic text-kelly-text/60" role="status" aria-live="polite">
-                        Digging through what the campaign taught me…
+                        Checking your question against the route map…
                       </p>
                     ) : null}
                     {error ? (
@@ -356,18 +422,67 @@ export function CampaignGuideDock() {
                         {error}
                       </p>
                     ) : null}
+                    {lastNextStep ? (
+                      <div className="mr-4 rounded-lg border border-kelly-forest/25 bg-kelly-fog/60 px-3 py-2.5 font-body text-xs leading-snug text-kelly-text/90">
+                        <span className="font-bold text-kelly-navy">Here’s what happens next: </span>
+                        {lastNextStep}
+                      </div>
+                    ) : null}
+                    {lastSafetyNote ? (
+                      <div
+                        className="mr-4 rounded-lg border border-amber-300/70 bg-amber-50/95 px-3 py-2 font-body text-xs leading-snug text-kelly-text"
+                        role="note"
+                      >
+                        <span className="font-bold uppercase tracking-wide text-kelly-navy">Safety note · </span>
+                        {lastSafetyNote}
+                      </div>
+                    ) : null}
                     {lastSuggestions.length > 0 ? (
-                      <div className="flex flex-wrap gap-2 pt-1">
+                      <div
+                        className={cn(
+                          "mr-4 flex pt-1",
+                          lastSuggestions.length > 1 ? "flex-col gap-2 sm:flex-row sm:flex-wrap" : "flex-wrap gap-2",
+                        )}
+                      >
                         {lastSuggestions.map((s) => (
                           <Link
                             key={s.href}
                             href={s.href}
-                            className="rounded-full border border-kelly-blue/25 bg-kelly-fog/80 px-3 py-1.5 font-body text-xs font-semibold text-kelly-blue hover:border-kelly-gold"
+                            className={cn(
+                              "inline-flex min-h-[44px] items-center justify-center rounded-lg border-2 border-kelly-navy/20 bg-white px-4 py-2.5 text-center font-body text-xs font-semibold leading-tight text-kelly-navy shadow-sm transition",
+                              "hover:border-kelly-gold/60 hover:bg-kelly-fog/80 hover:shadow",
+                              lastSuggestions.length > 1 && "sm:min-w-[10rem]",
+                            )}
                             onClick={() => setOpen(false)}
                           >
                             {s.label}
                           </Link>
                         ))}
+                      </div>
+                    ) : null}
+                    {recoveryActive ? (
+                      <div className="mr-4 space-y-3 border-t border-kelly-text/10 pt-3">
+                        <p className="font-body text-[10px] font-bold uppercase tracking-wider text-kelly-text/45">Suggested prompts</p>
+                        <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+                          {ASK_KELLY_RECOVERY_PROMPT_BUTTONS.map((promptText) => (
+                            <button
+                              key={promptText}
+                              type="button"
+                              onClick={() => {
+                                setInput(promptText);
+                                inputRef.current?.focus();
+                              }}
+                              className="rounded-lg border border-kelly-navy/15 bg-white px-3 py-2 text-left font-body text-[11px] font-semibold text-kelly-navy/95 transition hover:border-kelly-gold/50 hover:bg-kelly-fog/80"
+                            >
+                              {promptText}
+                            </button>
+                          ))}
+                        </div>
+                        <AskKellyMissedFeedbackCapture
+                          pagePath={pathname && pathname.length > 0 ? pathname : "/"}
+                          visible={recoveryActive}
+                          question={missedQuestion}
+                        />
                       </div>
                     ) : null}
                   </div>

@@ -34,7 +34,9 @@ function StateMapPlaceholder() {
 export function StateOrganizingIntelligenceView({ data }: { data: StateOrganizingIntelligencePayload }) {
   return (
     <div className="mx-auto max-w-6xl px-[var(--gutter-x)] py-6 sm:py-8 text-kelly-text">
-      <p className="text-xs font-bold uppercase tracking-widest text-kelly-slate/80">State dashboard · OIS-1</p>
+      <p className="text-xs font-bold uppercase tracking-widest text-kelly-slate/80">
+        Arkansas statewide · organizing intelligence
+      </p>
       <h1 className="font-heading mt-1 text-3xl font-bold text-kelly-navy md:text-4xl">{data.title}</h1>
       <p className="mt-2 max-w-3xl text-sm leading-relaxed text-kelly-text/80">
         Top of the drill-down ladder. Numbers roll <strong>up</strong> from place-based organizing; you steer from here and
@@ -61,7 +63,7 @@ export function StateOrganizingIntelligenceView({ data }: { data: StateOrganizin
         .
       </p>
       <p className="mt-2 text-sm text-kelly-text/75">
-        Volunteer views (demo tiles, no login yet):{" "}
+        Field-team demos (illustrative tiles; no supporter login tied to voter data yet):{" "}
         <Link className={cn(focusRing, "rounded-sm font-semibold text-kelly-navy underline")} href="/dashboard">
           My dashboard
         </Link>
@@ -69,11 +71,7 @@ export function StateOrganizingIntelligenceView({ data }: { data: StateOrganizin
         <Link className={cn(focusRing, "rounded-sm font-semibold text-kelly-navy underline")} href="/dashboard/leader">
           Leader dashboard
         </Link>
-        . Operators:{" "}
-        <Link className={cn(focusRing, "rounded-sm font-semibold text-kelly-navy underline")} href="/admin/organizing-intelligence">
-          Admin organizing intelligence
-        </Link>{" "}
-        (cookie session).
+        . Campaign staff dashboards are reachable only through the documented admin login—URLs are intentionally not surfaced on public pages.
       </p>
 
       <CountyKpiStrip

@@ -30,6 +30,7 @@
     "ingest:county-wikipedia": "tsx scripts/ingest-county-wikipedia.ts",
     "sync:team-positions": "tsx scripts/sync-campaign-team-positions.ts",
     "check:openai": "tsx scripts/check-openai-key.ts",
+    "check:ask-kelly-guide": "tsx scripts/validate-ask-kelly-system-guide.ts",
     "set:openai": "node scripts/set-openai-key.cjs",
     "set:elevenlabs": "node scripts/set-elevenlabs-env.cjs",
     "setup:openai-key": "node scripts/setup-openai-key.mjs",
