@@ -181,6 +181,9 @@ export function AskKellyBetaFeedbackForm({ defaultPagePath = "", className }: Pr
       }}
     >
       <p className="font-body text-xs leading-relaxed text-kelly-text/80">{ASK_KELLY_FEEDBACK_FORM_INTRO}</p>
+      <p className="font-body text-xs font-medium text-kelly-navy/90">
+        Start with your email—this onboarding step is keyed to reach you reliably.
+      </p>
       {recoveryOpen && recoveryDraft ? (
         <div className="rounded-lg border border-kelly-navy/25 bg-kelly-fog/80 px-3 py-2.5 text-sm text-kelly-text" role="status">
           <p className="font-semibold text-kelly-navy">Recovered an unsaved draft from this browser.</p>
@@ -199,7 +202,7 @@ export function AskKellyBetaFeedbackForm({ defaultPagePath = "", className }: Pr
                 setRecoveryOpen(false);
                 setRecoveryDraft(null);
               }}
-              className="rounded-md bg-kelly-navy px-2.5 py-1.5 text-xs font-bold text-kelly-mist"
+              className="rounded-md bg-kelly-navy px-2.5 py-1.5 text-xs font-bold text-white"
             >
               Restore draft
             </button>
@@ -243,6 +246,18 @@ export function AskKellyBetaFeedbackForm({ defaultPagePath = "", className }: Pr
         </p>
       ) : null}
       <div className="space-y-1.5">
+        <label className="block font-body text-[10px] font-bold uppercase tracking-wider text-kelly-text/50">Email</label>
+        <input
+          type="email"
+          className="w-full rounded-lg border border-kelly-text/15 bg-white px-2.5 py-1.5 font-body text-sm"
+          name="email"
+          autoComplete="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </div>
+      <div className="space-y-1.5">
         <label className="block font-body text-[10px] font-bold uppercase tracking-wider text-kelly-text/50">Name</label>
         <input
           className="w-full rounded-lg border border-kelly-text/15 bg-white px-2.5 py-1.5 font-body text-sm"
@@ -253,18 +268,6 @@ export function AskKellyBetaFeedbackForm({ defaultPagePath = "", className }: Pr
           required
           minLength={1}
           maxLength={120}
-        />
-      </div>
-      <div className="space-y-1.5">
-        <label className="block font-body text-[10px] font-bold uppercase tracking-wider text-kelly-text/50">Email</label>
-        <input
-          type="email"
-          className="w-full rounded-lg border border-kelly-text/15 bg-white px-2.5 py-1.5 font-body text-sm"
-          name="email"
-          autoComplete="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
         />
       </div>
       <div className="space-y-1.5">
@@ -331,7 +334,7 @@ export function AskKellyBetaFeedbackForm({ defaultPagePath = "", className }: Pr
       <button
         type="submit"
         disabled={status === "submitting" || (recoveryOpen && Boolean(recoveryDraft))}
-        className="w-full rounded-lg bg-kelly-navy py-2.5 font-body text-sm font-bold uppercase tracking-wider text-kelly-mist disabled:opacity-50"
+        className="w-full rounded-lg bg-kelly-navy py-2.5 font-body text-sm font-bold uppercase tracking-wider text-white disabled:opacity-50"
       >
         {status === "submitting" ? "Sending…" : "Send feedback"}
       </button>

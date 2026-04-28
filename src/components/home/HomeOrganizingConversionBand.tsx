@@ -236,7 +236,7 @@ export function HomeOrganizingConversionBand({ finalCta }: Props) {
           href={finalCta.secondaryHref}
           target={isExternalHref(finalCta.secondaryHref) ? "_blank" : undefined}
           rel={isExternalHref(finalCta.secondaryHref) ? "noopener noreferrer" : undefined}
-          className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-kelly-page/50 bg-transparent px-7 py-3.5 text-sm font-bold uppercase tracking-[0.12em] text-kelly-page transition hover:border-kelly-gold hover:bg-kelly-page/10"
+          className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-white/55 bg-transparent px-7 py-3.5 text-sm font-bold uppercase tracking-[0.12em] text-white transition hover:border-kelly-gold hover:bg-white/10"
         >
           {finalCta.secondaryLabel}
         </Link>

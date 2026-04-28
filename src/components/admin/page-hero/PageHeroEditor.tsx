@@ -46,7 +46,7 @@ function FinalSubmitButton({ disabled, label, pendingLabel }: { disabled: boolea
     <button
       type="submit"
       disabled={disabled || pending}
-      className="rounded-btn bg-kelly-navy px-5 py-2.5 text-sm font-bold text-kelly-page disabled:cursor-not-allowed disabled:opacity-50"
+      className="rounded-btn bg-kelly-navy px-5 py-2.5 text-sm font-bold text-white disabled:cursor-not-allowed disabled:opacity-50"
     >
       {pending ? pendingLabel : label}
     </button>
@@ -223,7 +223,7 @@ export function PageHeroEditor({ pageKey, initial, showSaved }: Props) {
                 setStep("edit");
                 setHeroRecovery({ status: "ready", draft: null });
               }}
-              className="rounded-md bg-kelly-navy px-3 py-1.5 text-xs font-bold text-kelly-page"
+              className="rounded-md bg-kelly-navy px-3 py-1.5 text-xs font-bold text-white"
             >
               Restore draft
             </button>
@@ -391,7 +391,7 @@ export function PageHeroEditor({ pageKey, initial, showSaved }: Props) {
                 setStep("review");
               }}
               disabled={heroRecovery.status === "pending"}
-              className="rounded-btn bg-kelly-navy px-5 py-2.5 text-sm font-bold text-kelly-page disabled:cursor-not-allowed disabled:opacity-50"
+              className="rounded-btn bg-kelly-navy px-5 py-2.5 text-sm font-bold text-white disabled:cursor-not-allowed disabled:opacity-50"
             >
               Review change
             </button>
@@ -459,7 +459,7 @@ export function PageHeroEditor({ pageKey, initial, showSaved }: Props) {
                   <button
                     type="button"
                     onClick={() => setStep("final")}
-                    className="rounded-btn bg-kelly-navy px-5 py-2.5 text-sm font-bold text-kelly-page"
+                    className="rounded-btn bg-kelly-navy px-5 py-2.5 text-sm font-bold text-white"
                   >
                     Confirm update
                   </button>

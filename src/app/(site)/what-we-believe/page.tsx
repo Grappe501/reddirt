@@ -167,10 +167,10 @@ export default async function WhatWeBelievePage() {
         description="Tell us where you see the gap—especially if we confuse the Secretary of State’s job with issues outside its scope."
         variant="primary-band"
       >
-        <Button href="/stories#share" variant="secondary">
+        <Button href="/stories#share" variant="primary">
           Share what you’re seeing
         </Button>
-        <Button href="/priorities" variant="outline" className="border-kelly-page/50 text-kelly-page hover:bg-kelly-page/10">
+        <Button href="/priorities" variant="outlineOnDark" className="border-white/50 !text-kelly-mist hover:!text-white hover:bg-white/10">
           Office priorities
         </Button>
       </CTASection>

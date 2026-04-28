@@ -15,7 +15,7 @@ const variants = {
   /** Solid fog — /80 was letting the sitewide body gradient read as “blue + black” on long pages. */
   mist: "bg-kelly-fog text-kelly-ink",
   deep: "bg-kelly-deep text-kelly-mist",
-  midnight: "bg-kelly-navy text-kelly-mist",
+  midnight: "bg-kelly-navy text-white",
 } as const;
 
 /**

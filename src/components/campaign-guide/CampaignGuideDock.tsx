@@ -207,7 +207,7 @@ export function CampaignGuideDock() {
         aria-label="Ask Kelly — open the site guide chat"
       >
         <span
-          className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-kelly-navy text-[10px] font-bold text-kelly-mist shadow-inner"
+          className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-kelly-navy text-[10px] font-bold text-white shadow-inner"
           aria-hidden
         >
           KG
@@ -338,7 +338,9 @@ export function CampaignGuideDock() {
                         key={`${msg.role}-${i}`}
                         className={cn(
                           "rounded-xl px-3 py-2.5 font-body text-sm leading-relaxed",
-                          msg.role === "user" ? "ml-6 bg-kelly-navy/12 text-kelly-text" : "mr-4 bg-white text-kelly-text shadow-sm",
+                          msg.role === "user"
+                            ? "ml-6 bg-kelly-navy/12 text-kelly-text"
+                            : "mr-4 border border-kelly-text/10 bg-[var(--color-surface-elevated)] text-kelly-text shadow-sm",
                         )}
                       >
                         {msg.role === "assistant" ? displayAssistantMessage(msg.text) : msg.text}
@@ -401,7 +403,7 @@ export function CampaignGuideDock() {
                       type="button"
                       onClick={() => void send()}
                       disabled={loading || !input.trim()}
-                      className="mt-2 w-full rounded-lg bg-kelly-navy py-2.5 font-body text-sm font-bold uppercase tracking-wider text-kelly-mist disabled:opacity-50"
+                      className="mt-2 w-full rounded-lg bg-kelly-navy py-2.5 font-body text-sm font-bold uppercase tracking-wider text-white disabled:opacity-50"
                     >
                       Send
                     </button>

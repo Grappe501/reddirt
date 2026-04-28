@@ -328,10 +328,10 @@ export default async function ListeningSessionsPage() {
           <Button href="/get-involved" variant="primary">
             Get involved
           </Button>
-          <Button href="/events" variant="outline">
+          <Button href="/events" variant="outlineOnDark" className="border-white/50 !text-kelly-mist hover:!text-white hover:bg-white/10">
             Movement events
           </Button>
-          <Button href={representLocalEventVolunteerHref} variant="outline">
+          <Button href={representLocalEventVolunteerHref} variant="outlineOnDark" className="border-white/50 !text-kelly-mist hover:!text-white hover:bg-white/10">
             Represent at local events
           </Button>
         </CTASection>

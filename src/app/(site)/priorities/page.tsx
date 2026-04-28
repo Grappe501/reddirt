@@ -388,10 +388,10 @@ export default async function PrioritiesPage() {
         description="Republican, Democratic, or civic—we want to talk with Arkansans where they already gather about how this office can serve you fairly."
         variant="primary-band"
       >
-        <Button href={getHostOrVisitRequestHref()} variant="secondary">
+        <Button href={getHostOrVisitRequestHref()} variant="primary">
           Request a visit
         </Button>
-        <Button href="/about" variant="outline" className="border-kelly-page/50 text-kelly-page hover:bg-kelly-page/10">
+        <Button href="/about" variant="outlineOnDark" className="border-white/50 !text-kelly-mist hover:!text-white hover:bg-white/10">
           About Kelly
         </Button>
       </CTASection>

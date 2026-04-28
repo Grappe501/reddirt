@@ -125,7 +125,7 @@ export function AskKellyReadAloudButton({ text, className }: Props) {
           void onClick();
         }}
         disabled={preparing || !text.trim()}
-        className="inline-flex w-fit items-center justify-center rounded-md border border-kelly-navy/30 bg-kelly-navy px-3.5 py-2 font-body text-sm font-bold text-kelly-page transition hover:bg-kelly-navy/90 disabled:cursor-not-allowed disabled:opacity-50"
+        className="inline-flex w-fit items-center justify-center rounded-md border border-kelly-navy/30 bg-kelly-navy px-3.5 py-2 font-body text-sm font-bold text-white transition hover:bg-kelly-navy/90 disabled:cursor-not-allowed disabled:opacity-50"
       >
         {preparing ? "Preparing voice…" : "Read this aloud"}
       </button>

@@ -21,6 +21,7 @@ export function CTASection({
   className,
   id,
 }: CTASectionProps) {
+  const headingTone = variant === "primary-band" ? "onNavy" : "onSaturatedBand";
   return (
     <FullBleedSection variant={variant} id={id} className={className}>
       <ContentContainer className="flex flex-col items-start gap-5 sm:gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
@@ -29,7 +30,8 @@ export function CTASection({
           title={title}
           subtitle={description}
           align="left"
-          className="max-w-2xl text-kelly-page [&_h2]:text-kelly-page [&_p.mb-3]:text-kelly-gold [&_p]:text-kelly-page/85"
+          tone={headingTone}
+          className="max-w-2xl"
         />
         <div className="flex flex-shrink-0 flex-wrap gap-4">{children}</div>
       </ContentContainer>

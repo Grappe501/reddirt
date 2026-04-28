@@ -300,7 +300,8 @@ export default async function DirectDemocracyPage() {
                 title="Participation works when people understand the process"
                 subtitle="We’re investing in plain-language explainers, community briefings, and resources that turn confusing jargon into shared knowledge—and working with Arkansas educators to reach students, including through the State Capitol as a public venue for learning about democracy in action."
                 align="left"
-                className="max-w-2xl text-kelly-page [&_h2]:text-kelly-page [&_p]:text-kelly-page/85 [&_p.mb-3]:text-kelly-gold"
+                tone="onSaturatedBand"
+                className="max-w-2xl"
               />
             </div>
             <div className="flex flex-col gap-4 lg:col-span-5 lg:items-start">
@@ -309,8 +310,8 @@ export default async function DirectDemocracyPage() {
               </Button>
               <Button
                 href="/events"
-                variant="outline"
-                className="border-kelly-page/45 text-kelly-page hover:bg-kelly-page/10"
+                variant="outlineOnDark"
+                className="border-white/45 !text-kelly-mist hover:border-kelly-gold/60 hover:!text-white hover:bg-white/10"
               >
                 Join a briefing
               </Button>
@@ -325,10 +326,10 @@ export default async function DirectDemocracyPage() {
         description={`${siteConfig.shortName} is committed to plain-language civic education and disciplined organizing around ballot access—grounded in what the Secretary of State’s office actually administers.`}
         variant="primary-band"
       >
-        <Button href="#commitment-network" variant="secondary">
+        <Button href="#commitment-network" variant="primary">
           Commitment network
         </Button>
-        <Button href="/get-involved" variant="outline" className="border-kelly-page/50 text-kelly-page hover:bg-kelly-page/10">
+        <Button href="/get-involved" variant="outlineOnDark" className="border-white/50 !text-kelly-mist hover:!text-white hover:bg-white/10">
           Get involved
         </Button>
       </CTASection>

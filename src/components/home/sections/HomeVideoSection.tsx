@@ -87,7 +87,7 @@ export function HomeVideoSection({ omitMainEmbed = false }: HomeVideoSectionProp
                     className="aspect-video w-full"
                     title={c.title}
                   />
-                  <p className="border-t border-white/10 bg-kelly-navy px-3 py-2 font-body text-xs text-kelly-mist/90">
+                  <p className="border-t border-white/10 bg-kelly-navy px-3 py-2 font-body text-xs text-white/90">
                     {c.title}
                     {c.countyLabel ? ` · ${c.countyLabel.replace(/-/g, " ")}` : ""}
                   </p>

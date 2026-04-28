@@ -13,7 +13,7 @@ const variants = {
   "primary-band": "bg-kelly-navy text-kelly-white",
   subtle: "bg-kelly-text/[0.04] text-kelly-text max-sm:bg-kelly-text/[0.07]",
   elevated: "bg-[var(--color-surface-elevated)] text-kelly-text max-sm:bg-kelly-fog",
-  "band-navy": "bg-kelly-navy text-kelly-mist",
+  "band-navy": "bg-kelly-navy text-white",
   "band-fog": "bg-kelly-fog text-kelly-ink",
   "band-blue": "bg-kelly-blue text-kelly-mist",
 } as const;

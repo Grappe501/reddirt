@@ -29,7 +29,7 @@ export function CampaignPaidForBar({ variant = "dark" }: Props) {
     <p
       className={
         isDark
-          ? "text-center font-body text-[11px] font-medium uppercase tracking-[0.12em] text-kelly-page/55"
+          ? "text-center font-body text-[11px] font-medium uppercase tracking-[0.12em] text-white/60"
           : "text-center font-body text-[10px] font-medium uppercase tracking-[0.12em] text-kelly-text/55"
       }
     >
@@ -38,7 +38,7 @@ export function CampaignPaidForBar({ variant = "dark" }: Props) {
         href={committeeHref}
         className={
           isDark
-            ? "text-kelly-page/75 underline-offset-2 hover:text-kelly-page hover:underline"
+            ? "text-white/80 underline-offset-2 hover:text-white hover:underline"
             : "text-kelly-navy underline-offset-2 hover:underline"
         }
       >
