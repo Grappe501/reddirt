@@ -15,7 +15,7 @@ const variants = {
   /** Solid fog — /80 was letting the sitewide body gradient read as “blue + black” on long pages. */
   mist: "bg-kelly-fog text-kelly-ink",
   deep: "bg-kelly-deep text-kelly-mist",
-  midnight: "bg-kelly-navy text-white",
+  midnight: "bg-kelly-navy text-kelly-mist",
 } as const;
 
 /**
@@ -34,7 +34,7 @@ export function JourneyBeat({ id, variant = "light", lead, children, className }
       )}
     >
       {lead ? (
-        <div className="mx-auto max-w-content px-[var(--gutter-x)] pb-6 sm:pb-8 lg:pb-14">{lead}</div>
+        <div className="mx-auto max-w-content px-[var(--gutter-x)] pb-10 lg:pb-14">{lead}</div>
       ) : null}
       <div className={cn("mx-auto max-w-[100vw]", lead ? "divide-y divide-kelly-ink/[0.07]" : "")}>{children}</div>
     </section>

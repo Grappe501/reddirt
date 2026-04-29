@@ -8,6 +8,8 @@ type Props = {
   strongest: string;
   weakest: string;
   nextMove: string;
+  /** Label before `nextMove` — default “Next move” for internal decks; county briefings use “Next sourcing step”. */
+  nextMoveLead?: string;
   footnote?: string;
   className?: string;
 };
@@ -18,6 +20,7 @@ export function CountyStrategyPanel({
   strongest,
   weakest,
   nextMove,
+  nextMoveLead = "Next move",
   footnote,
   className,
 }: Props) {
@@ -26,7 +29,7 @@ export function CountyStrategyPanel({
       <CountySectionHeader
         overline={overline}
         title={title}
-        description="Plain-language read — every line should suggest a next move."
+        description="Plain-language read anchored in sources — not quotas or GOTV choreography."
       />
       <div className={cn(countyDashboardCardClass, "mt-2 space-y-2 border-l-4 border-l-kelly-success/30 text-sm leading-relaxed")}>
         <p>
@@ -38,7 +41,7 @@ export function CountyStrategyPanel({
           {weakest}
         </p>
         <p>
-          <span className="font-bold text-kelly-navy">Next move: </span>
+          <span className="font-bold text-kelly-navy">{nextMoveLead}: </span>
           {nextMove}
         </p>
         {footnote ? <p className="text-xs text-kelly-text/60">{footnote}</p> : null}

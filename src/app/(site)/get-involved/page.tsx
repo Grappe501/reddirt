@@ -10,25 +10,14 @@ import { VolunteerForm } from "@/components/forms/VolunteerForm";
 import { EditorialCampaignPhoto, EditorialPhotoPair } from "@/components/about/EditorialCampaignPhoto";
 import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
 import { RepresentLocalEventPanel } from "@/components/organizing/RepresentLocalEventPanel";
-import {
-  getInvolvedPathwaysHref,
-  powerOf5OnboardingHref,
-  representLocalEventVolunteerHref,
-} from "@/config/navigation";
-import { getInvolvedPathways } from "@/content/journey/get-involved-pathways";
-import { GetInvolvedIntakeTransparencyNote, GetInvolvedPathwaySystem } from "@/components/journey/GetInvolvedPathwaySystem";
+import { representLocalEventVolunteerHref } from "@/config/navigation";
 import { isValidResourceVolunteerSlug } from "@/content/resources/toolkit";
-import { ContentImage } from "@/components/media/ContentImage";
-import { media } from "@/content/media/registry";
-import { pageMeta } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = pageMeta({
-  title: "Get involved — volunteer with the campaign",
+export const metadata: Metadata = {
+  title: "Get involved",
   description:
-    "Choose a lane: Power of 5 relational organizing, county teams, captains, stories, events, candidate support, petitions, and GOTV—each with clear next steps into the campaign’s existing forms.",
-  path: "/get-involved",
-  imageSrc: "/media/placeholders/og-default.svg",
-});
+    "Volunteer, invite Kelly to your county or party meeting, and stay connected with the Arkansas Secretary of State campaign.",
+};
 
 function pickLane(sp: Record<string, string | string[] | undefined>): string | undefined {
   const v = sp.lane;
@@ -44,16 +33,6 @@ function pickResource(sp: Record<string, string | string[] | undefined>): string
   return undefined;
 }
 
-function truthyParam(v: string | string[] | undefined): boolean {
-  if (typeof v === "string") return v === "1" || v === "true";
-  if (Array.isArray(v)) return v.some((x) => x === "1" || x === "true");
-  return false;
-}
-
-function pickLeadership(sp: Record<string, string | string[] | undefined>): boolean {
-  return truthyParam(sp.leadership);
-}
-
 export default async function GetInvolvedPage({
   searchParams,
 }: {
@@ -66,7 +45,6 @@ export default async function GetInvolvedPage({
     resourceParam && isValidResourceVolunteerSlug(resourceParam) ? resourceParam : undefined;
   const volunteerPrefillLane =
     laneParam === "event_representation" ? ("event_representation" as const) : undefined;
-  const volunteerPrefillLeadership = pickLeadership(sp);
 
   const pair = trailPhotosForSlot("getInvolved");
   const left = pair[0];
@@ -77,18 +55,15 @@ export default async function GetInvolvedPage({
       <PageHero
         eyebrow="Act"
         title="Get involved"
-        subtitle="No gatekeeping—choose a pathway below, or head straight to the forms if you already know how you want to help."
+        subtitle="No perfect resume required—whether you want to volunteer, host a conversation, or invite us to a Republican, Democratic, or civic meeting in your county."
       >
-        <Button href={getInvolvedPathwaysHref} variant="primary" className="w-full justify-center sm:w-auto">
-          Pick your pathway
-        </Button>
-        <Button href="#join" variant="outline" className="w-full justify-center sm:w-auto">
+        <Button href="#join" variant="primary">
           Stay connected
         </Button>
-        <Button href="#volunteer" variant="outline" className="w-full justify-center sm:w-auto">
+        <Button href="#volunteer" variant="outline">
           Volunteer
         </Button>
-        <Button href="#represent-event" variant="outline" className="w-full justify-center sm:w-auto">
+        <Button href="#represent-event" variant="outline">
           Represent at an event
         </Button>
       </PageHero>
@@ -112,48 +87,34 @@ export default async function GetInvolvedPage({
         </FullBleedSection>
       ) : null}
 
-      <FullBleedSection variant="subtle" padY aria-label="Arkansas democracy and work">
-        <ContentContainer wide>
-          <div className="grid gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
-            <div className="relative min-h-[220px] overflow-hidden rounded-card border border-kelly-text/10 shadow-[var(--shadow-soft)] lg:min-h-[280px]">
-              <ContentImage
-                media={media.splitDemocracy}
-                warmOverlay
-                className="absolute inset-0 h-full w-full min-h-full object-cover"
-              />
-            </div>
-            <div className="relative min-h-[220px] overflow-hidden rounded-card border border-kelly-text/10 shadow-[var(--shadow-soft)] lg:min-h-[280px]">
-              <ContentImage
-                media={media.splitLabor}
-                warmOverlay
-                className="absolute inset-0 h-full w-full min-h-full object-cover"
-              />
-            </div>
-          </div>
-          <p className="mt-6 max-w-3xl font-body text-sm leading-relaxed text-kelly-text/65">
-            Ballots and work boots both belong in a democracy that is honest about who gets heard—and this campaign
-            shows up in every kind of room.
-          </p>
-        </ContentContainer>
-      </FullBleedSection>
-
-      <FullBleedSection id="pathways" aria-labelledby="pathway-heading">
-        <ContentContainer wide>
+      <FullBleedSection aria-labelledby="pathway-heading">
+        <ContentContainer>
           <SectionHeading
             id="pathway-heading"
-            eyebrow="Choose your lane"
-            title="Seven ways to plug in—each with a clear next step"
-            subtitle="Every card links to an existing page or form. You are not signing up for spam; submissions create a staff queue row so a human can follow up."
+            eyebrow="Civic pathways"
+            title="Arkansans are not checked out. Too many have been checked out of the process."
+            subtitle="This campaign starts from respect: people help neighbors, show up for community, and talk about what matters. Our job is to make the formal pathways clearer, more local, and easier to act on."
           />
-          <GetInvolvedPathwaySystem pathways={getInvolvedPathways} />
-          <GetInvolvedIntakeTransparencyNote />
-          <p className="mx-auto mt-8 max-w-3xl text-center font-body text-sm leading-relaxed text-kelly-text/75">
-            Building from relationships first? You can also start with{" "}
-            <Link className="font-semibold text-kelly-navy underline" href={powerOf5OnboardingHref}>
-              Power of 5 onboarding
-            </Link>{" "}
-            — a guided flow with demo content in your browser (no signup on that page).
-          </p>
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Meet people where they are</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
+                County visits, listening sessions, church basements, school gyms, local festivals, and kitchen-table conversations all count. Civic engagement should not require insider access.
+              </p>
+            </div>
+            <div className="rounded-card border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Make action simple</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
+                Registration forms, deadlines, voting steps, candidate filing, and ballot-measure rules should be explained plainly enough for one neighbor to help another.
+              </p>
+            </div>
+            <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Trust is local</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
+                People are more likely to participate when information comes through trusted relationships and when government explains itself clearly.
+              </p>
+            </div>
+          </div>
         </ContentContainer>
       </FullBleedSection>
 
@@ -215,16 +176,6 @@ export default async function GetInvolvedPage({
             </Link>
             .
           </p>
-          {volunteerPrefillLeadership && volunteerPrefillLane !== "event_representation" ? (
-            <div className="mt-6 max-w-3xl rounded-md border border-kelly-success/30 bg-kelly-success/10 p-4 font-body text-sm text-kelly-text/90">
-              <p>
-                <span className="font-semibold">Captain / leadership pathway:</span> you opened this page with leadership
-                intent—please check <span className="font-semibold">“I’m open to leadership training”</span> on the form
-                below and add your town, precinct, or turf in <span className="font-semibold">skills</span> so coordinators
-                can place you accurately.
-              </p>
-            </div>
-          ) : null}
           <div className="mt-10 max-w-3xl">
             <VolunteerForm prefillLane={volunteerPrefillLane} prefillResource={volunteerPrefillResource} />
           </div>

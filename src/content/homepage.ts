@@ -39,40 +39,34 @@ export const movementBeliefs = [
 
 export const pathwayCards = [
   {
-    title: "Meet Kelly",
-    description: "Who she is, why Secretary of State, and what “the people rule” means for Arkansas.",
-    href: "/about",
-    ctaLabel: "Learn about Kelly",
+    title: "Stay connected",
+    description: "Updates and honest context about the office—without noise or shame.",
+    href: "/get-involved",
+    ctaLabel: "Stay connected",
   },
   {
-    title: "Priorities",
-    description: "Elections, ballot access, business filings, and public records—what this office actually does.",
+    title: "Help locally",
+    description: "Host, knock doors, or support neighbors stepping up in your county.",
+    href: "/local-organizing",
+    ctaLabel: "Organize nearby",
+  },
+  {
+    title: "Learn ballot access",
+    description: "How initiatives and referenda move from idea to ballot—and how we protect voter access responsibly.",
+    href: "/direct-democracy",
+    ctaLabel: "Explore tools",
+  },
+  {
+    title: "Office priorities",
+    description: "Election integrity, public records, and business services—what the Secretary of State actually touches.",
     href: "/priorities",
     ctaLabel: "Read priorities",
   },
   {
-    title: "Counties & local teams",
-    description: "Find your county, host a gathering, or join neighbors building teams where you live.",
-    href: "/counties",
-    ctaLabel: "Browse counties",
-  },
-  {
-    title: "Volunteer",
-    description: "Door knocks, events, outreach, and county leadership—pick a lane that fits your life.",
-    href: "/get-involved",
-    ctaLabel: "Get involved",
-  },
-  {
-    title: "Donate",
-    description: "Chip in to power accountable, voter-facing organizing—online or recurring.",
-    href: "/donate",
-    ctaLabel: "Donate",
-  },
-  {
-    title: "Ballot access",
-    description: "How initiatives and referenda reach the ballot—explained clearly, without jargon.",
-    href: "/direct-democracy",
-    ctaLabel: "Explore direct democracy",
+    title: "Share your story",
+    description: "Your experience with voting, filings, or county administration helps us keep the campaign grounded.",
+    href: "/stories#share",
+    ctaLabel: "Tell your story",
   },
 ] as const;
 

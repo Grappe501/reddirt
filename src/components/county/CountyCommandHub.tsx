@@ -8,7 +8,6 @@ import {
   type ArCommandRegionId,
 } from "@/lib/county/arkansas-county-registry";
 import {
-  countyDashboardTierShortLabel,
   getCountyIntelligenceEntryForSlug,
   type CountyDashboardTier,
 } from "@/lib/county/county-intelligence-catalog";
@@ -30,6 +29,37 @@ function regionAnchorId(region: ArCommandRegionId): string {
 type RegionBuckets = ReadonlyMap<ArCommandRegionId, CountyRosterListItem[]>;
 
 type TierFilter = "all" | CountyDashboardTier;
+
+function publicCountyPlanningCopy(tier: CountyDashboardTier): {
+  badge: string;
+  briefing: string;
+  community: string;
+  next: string;
+} {
+  switch (tier) {
+    case "prototype":
+      return {
+        badge: "Sample briefing",
+        briefing: "A published example voters can explore",
+        community: "Kelly’s team labels what’s illustrative so neighbors know what they’re seeing.",
+        next: "Open the sample briefing or jump to your county page.",
+      };
+    case "next_build":
+      return {
+        badge: "Coming next",
+        briefing: "County briefing in development",
+        community: "Northwest Arkansas counties are next for fuller public pages.",
+        next: "Start with the county overview—more depth will roll out over time.",
+      };
+    default:
+      return {
+        badge: "County page",
+        briefing: "Overview and trusted links",
+        community: "Working with communities across Arkansas as local pages deepen.",
+        next: "Meet your county page and read Kelly’s statewide priorities.",
+      };
+  }
+}
 
 function bucketByRegion(list: CountyRosterListItem[]): RegionBuckets {
   const m = new Map<ArCommandRegionId, CountyRosterListItem[]>();
@@ -90,15 +120,21 @@ export function CountyCommandHub({ counties, mode = "public", className }: Props
         </div>
         {mode === "public" ? (
           <div className="w-full lg:max-w-xl">
-            <p className="font-body text-xs font-bold uppercase tracking-[0.18em] text-kelly-navy/80">Dashboard tier</p>
-            <div className="mt-2 flex flex-wrap gap-2" role="group" aria-label="Filter by dashboard tier">
+            <p className="font-body text-xs font-bold uppercase tracking-[0.18em] text-kelly-navy/80">
+              {mode === "public" ? "County briefing status" : "Dashboard tier"}
+            </p>
+            <div
+              className="mt-2 flex flex-wrap gap-2"
+              role="group"
+              aria-label={mode === "public" ? "Filter by briefing status" : "Filter by dashboard tier"}
+            >
               {(
                 [
-                  { id: "all" as const, label: "All counties" },
-                  { id: "prototype" as const, label: "Prototype" },
-                  { id: "next_build" as const, label: "Next build" },
-                  { id: "command_scaffold" as const, label: "Standard" },
-                ] satisfies { id: TierFilter; label: string }[]
+                  { id: "all" as const, label: "All counties", publicLabel: "All counties" },
+                  { id: "prototype" as const, label: "Prototype", publicLabel: "Sample briefing" },
+                  { id: "next_build" as const, label: "Next build", publicLabel: "Coming next" },
+                  { id: "command_scaffold" as const, label: "Standard", publicLabel: "County pages" },
+                ] satisfies { id: TierFilter; label: string; publicLabel: string }[]
               ).map((opt) => (
                 <button
                   key={opt.id}
@@ -111,7 +147,7 @@ export function CountyCommandHub({ counties, mode = "public", className }: Props
                       : "border-kelly-text/20 bg-white text-kelly-text/80 hover:border-kelly-navy/30",
                   )}
                 >
-                  {opt.label}
+                  {mode === "public" ? opt.publicLabel : opt.label}
                 </button>
               ))}
             </div>
@@ -140,13 +176,14 @@ export function CountyCommandHub({ counties, mode = "public", className }: Props
           {mode === "public" ? (
             <>
               {" "}
-              Each county card shows <strong>region</strong>, <strong>dashboard status</strong>, <strong>organizing status</strong>, and a suggested{" "}
-              <strong>next action</strong> — without building 75 bespoke dashboards.
+              Each card shows <strong>region</strong>, <strong>briefing status</strong>, and a friendly <strong>next step</strong>—written for
+              voters, not internal planners.
             </>
           ) : (
             <>
               {" "}
-              In each section, rows link to public view and CMS when a row exists.
+              Each county card shows <strong>region</strong>, <strong>dashboard status</strong>, <strong>organizing status</strong>, and a suggested{" "}
+              <strong>next action</strong> — without building 75 bespoke dashboards.
             </>
           )}
         </p>
@@ -175,7 +212,8 @@ export function CountyCommandHub({ counties, mode = "public", className }: Props
                     const entry = getCountyIntelligenceEntryForSlug(c.slug);
                     if (!entry) return null;
                     const tier = entry.dashboardTier;
-                    const tierBadge = countyDashboardTierShortLabel(tier);
+                    const pub = publicCountyPlanningCopy(tier);
+                    const tierBadge = pub.badge;
                     return (
                       <li
                         key={c.slug}
@@ -209,16 +247,16 @@ export function CountyCommandHub({ counties, mode = "public", className }: Props
                             <dd className="mt-0.5">{entry.regionShortLabel}</dd>
                           </div>
                           <div>
-                            <dt className="font-bold uppercase tracking-wide text-kelly-text/50">Dashboard status</dt>
-                            <dd className="mt-0.5">{entry.dashboardStatusLabel}</dd>
+                            <dt className="font-bold uppercase tracking-wide text-kelly-text/50">Briefing</dt>
+                            <dd className="mt-0.5 leading-snug">{pub.briefing}</dd>
                           </div>
                           <div>
-                            <dt className="font-bold uppercase tracking-wide text-kelly-text/50">Organizing status</dt>
-                            <dd className="mt-0.5 leading-snug">{entry.organizingStatusLabel}</dd>
+                            <dt className="font-bold uppercase tracking-wide text-kelly-text/50">Community</dt>
+                            <dd className="mt-0.5 leading-snug">{pub.community}</dd>
                           </div>
                           <div>
-                            <dt className="font-bold uppercase tracking-wide text-kelly-text/50">Next action</dt>
-                            <dd className="mt-0.5 leading-snug">{entry.nextActionLabel}</dd>
+                            <dt className="font-bold uppercase tracking-wide text-kelly-text/50">Next step</dt>
+                            <dd className="mt-0.5 leading-snug">{pub.next}</dd>
                           </div>
                         </dl>
                         <div className="mt-4 flex flex-col gap-2 border-t border-kelly-text/10 pt-3">
@@ -227,33 +265,30 @@ export function CountyCommandHub({ counties, mode = "public", className }: Props
                               href={entry.commandHref}
                               className="inline-flex justify-center rounded-lg bg-kelly-navy px-3 py-2 text-center text-xs font-bold text-white hover:bg-kelly-navy/90"
                             >
-                              County command →
+                              County page →
                             </Link>
                           ) : (
                             <span
                               className="inline-flex justify-center rounded-lg border border-dashed border-kelly-text/25 px-3 py-2 text-center text-xs font-semibold text-kelly-text/50"
                               title="County public page is in draft"
                             >
-                              Command page (draft)
+                              County page (soon)
                             </span>
                           )}
-                          <Link
-                            href={entry.intelligenceHref}
-                            className="inline-flex justify-center rounded-lg border border-kelly-text/15 bg-kelly-page/80 px-3 py-2 text-center text-xs font-semibold text-kelly-navy hover:border-kelly-navy/25"
-                          >
-                            Organizing intelligence (placeholder) →
-                          </Link>
                           {entry.countyDashboardV2Href ? (
                             <Link
                               href={entry.countyDashboardV2Href}
                               className="inline-flex justify-center rounded-lg border border-kelly-gold/40 bg-kelly-gold/15 px-3 py-2 text-center text-xs font-bold text-kelly-navy hover:bg-kelly-gold/25"
                             >
-                              Dashboard v2 (prototype) →
+                              County briefing →
                             </Link>
                           ) : (
-                            <p className="text-center text-[11px] leading-snug text-kelly-text/50">
-                              Full dashboard v2 is not published for this county yet — command page and OIS placeholder stay the entry points.
-                            </p>
+                            <Link
+                              href="/county-briefings"
+                              className="inline-flex justify-center rounded-lg border border-kelly-text/15 bg-kelly-page/80 px-3 py-2 text-center text-xs font-semibold text-kelly-navy hover:border-kelly-navy/25"
+                            >
+                              County briefings hub →
+                            </Link>
                           )}
                         </div>
                       </li>

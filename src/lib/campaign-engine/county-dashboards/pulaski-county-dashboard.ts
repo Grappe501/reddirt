@@ -97,7 +97,7 @@ export async function buildPulaskiCountyDashboardV2(): Promise<CountyDashboardV2
         : profile.missingDataWarnings[0] ??
           "Place- and precinct-level aggregates for briefing drilldowns are pending verified ingest—not invented here.",
     nextOrganizingMove:
-      "Fill priority gaps from the county profile data warnings first; route neighborhood work through secure relational tools—with public briefings staying aggregate-only.",
+      "Resolve the county profile’s data-warning list before citing fine-grained turnout comparisons; only certified canvass aggregates belong in public city-split cards when they arrive.",
     riverValleyRollup:
       "Pulaski sits in central Arkansas coordination with peer counties on the statewide ladder — county KPIs here are modeled to roll upward without bespoke win-number theater on-page.",
     powerOfFiveLift:
@@ -137,12 +137,12 @@ export async function buildPulaskiCountyDashboardV2(): Promise<CountyDashboardV2
     },
     {
       id: "pulaski-na2",
-      title: "Connect relational / Power Team telemetry when campaign enables Pulaski dashboards",
-      ownerRole: "Field ops lead",
+      title: "Layer relational engagement telemetry only when data agreements allow public-safe rollups",
+      ownerRole: "Data + compliance",
       urgency: "medium",
-      expectedImpact: "Zeros on this briefing become real KPIs without crossing into public voter rows.",
-      kpiAffected: "Power Teams · pipelines",
-      nextStep: "Scope staff-only telemetry first — keep aggregates on public briefing routes.",
+      expectedImpact: "Illustrative KPI slots can graduate to sourced figures without exposing person-level detail on the public site.",
+      kpiAffected: "Engagement depth (private systems first)",
+      nextStep: "Keep derived rollups on authenticated tools; this briefing stays aggregate-only.",
     },
     {
       id: "pulaski-na3",
@@ -175,7 +175,7 @@ export async function buildPulaskiCountyDashboardV2(): Promise<CountyDashboardV2
       category: "Multi-municipality coverage",
       severity: "medium",
       mitigation: "Wait for place-level ingest before asserting Little Rock vs North Little Rock performance splits.",
-      ownerRole: "Regional field lead",
+      ownerRole: "Regional planning",
     },
   ];
 
@@ -183,9 +183,9 @@ export async function buildPulaskiCountyDashboardV2(): Promise<CountyDashboardV2
     countyMap: `${displayName} outline — map asset pending parity pass`,
     cityMap: "Municipal anchors — city drilldown deferred until ingest (see banner)",
     precinctMap: "Precinct aggregates — awaiting verified tabulation ingest for public drilldown",
-    teamDensity: "Power Team telemetry —Zeros until field connection (no Pope seed reused)",
-    coverageGaps: "Coverage storyline follows engine warnings — not precinct targets here",
-    growth: "Historical turnout where rows exist — relational growth pending",
+    teamDensity: "Engagement telemetry — illustrative zeros until sourced rollups exist (no seeded graph from other counties)",
+    coverageGaps: "Coverage storyline follows engine warnings —not invented precinct targets",
+    growth: "Historical turnout where county rows exist — future trend layers labeled when integrated",
   };
 
   const precinctPlaceholders = [

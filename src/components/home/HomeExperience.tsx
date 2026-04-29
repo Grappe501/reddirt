@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import { HomeJourneyShell } from "@/components/journey/HomeJourneyShell";
 import { HomeGetInvolvedSection } from "@/components/home/sections/HomeGetInvolvedSection";
 import { HomeDonateFloatingGate } from "@/components/home/HomeDonateFloatingGate";
-import { HomeOrganizingConversionBand } from "@/components/home/HomeOrganizingConversionBand";
 import { type MergedHomepageConfig } from "@/lib/content/homepage-merge";
 
 export type HomeExperienceProps = {
@@ -17,12 +16,7 @@ export function HomeExperience({ homepage, trailBand }: HomeExperienceProps) {
       <HomeDonateFloatingGate />
       <HomeJourneyShell
         homepage={homepage}
-        trailBand={
-          <>
-            <HomeOrganizingConversionBand finalCta={homepage.finalCta} />
-            {trailBand}
-          </>
-        }
+        trailBand={trailBand}
         afterGateway={
           <div key="home-after-gateway">
             {/* Old `/#hear-kelly` bookmarks land near Step in after the watch strip was removed */}

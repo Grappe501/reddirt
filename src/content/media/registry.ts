@@ -1,6 +1,5 @@
 /**
- * Central image registry — production URLs from www.kellygrappe.com (Squarespace CDN) where noted.
- * Fall back to /public SVGs when offline or after self-hosting.
+ * Central image registry — defaults use **local** `/public` media (`brand-media.ts`).
  */
 
 import { brandMediaFromLegacySite } from "@/config/brand-media";

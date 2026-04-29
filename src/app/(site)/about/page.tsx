@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { CTASection } from "@/components/blocks/CTASection";
 import { QuoteBand } from "@/components/blocks/QuoteBand";
 import { pageMeta } from "@/lib/seo/metadata";
-import { getFeaturedYoutubeForHub, getPublicYoutubeByInboundId } from "@/lib/content/content-hub-queries";
+import { getFeaturedYoutubeForHub } from "@/lib/content/content-hub-queries";
 import { getMergedHomepageConfig } from "@/lib/content/homepage-merge";
 import { KellyFullStory } from "@/components/about/KellyFullStory";
 import { TalkBusinessKellySection } from "@/components/about/TalkBusinessKellySection";
@@ -25,21 +25,6 @@ export const metadata: Metadata = pageMeta({
 export default async function AboutPage() {
   const homepage = await getMergedHomepageConfig();
   const featuredYoutube = await getFeaturedYoutubeForHub(homepage.featuredHomepageVideoInboundId);
-  /** Public Heifer/Forevermost field video — also set `NEXT_PUBLIC_FOREVERMOST_HEIFER_YOUTUBE_VIDEO_ID` on the host to override. */
-  const DEFAULT_FOREVERMOST_HEIFER_YOUTUBE_VIDEO_ID = "rjC12iRSI90";
-
-  const heiferInbound = await getPublicYoutubeByInboundId(
-    process.env.NEXT_PUBLIC_FOREVERMOST_HEIFER_INBOUND_ID,
-  );
-  const heiferEnvId = process.env.NEXT_PUBLIC_FOREVERMOST_HEIFER_YOUTUBE_VIDEO_ID?.trim();
-  const forevermostHeiferVideoId =
-    heiferInbound?.videoId ??
-    (heiferEnvId && /^[a-zA-Z0-9_-]{11}$/.test(heiferEnvId) ? heiferEnvId : null) ??
-    DEFAULT_FOREVERMOST_HEIFER_YOUTUBE_VIDEO_ID;
-  const forevermostHeiferTitle =
-    heiferInbound?.title?.trim() ||
-    process.env.NEXT_PUBLIC_FOREVERMOST_HEIFER_IFRAME_TITLE?.trim() ||
-    "Forevermost Farms — Heifer USA";
   const storyTrailPhotos = trailPhotosForSlot("aboutStory");
 
   return (
@@ -47,7 +32,7 @@ export default async function AboutPage() {
       <PageHero
         eyebrow="Meet Kelly"
         title="A Secretary of State who serves the people"
-        subtitle="Start here for the full picture—business roots, work on the land, and why this office matters. The Secretary of State runs elections and business filings for every county; Kelly is asking to lead it with steady, citizen-first administration you can see and trust."
+        subtitle="Before we talk about systems and statutes, you deserve the whole picture—her business background, the land and civic work, and why she is asking for more than a vote. The Secretary of State is where Arkansas’s public records meet real life: business filings, election lists, and the paper trail of our democracy. Kelly is asking to hold that work with a careful, citizen-first hand."
       >
         <Button href="/get-involved" variant="primary">
           Get involved
@@ -77,11 +62,7 @@ export default async function AboutPage() {
           </div>
 
           <div className="mx-auto mt-10 max-w-3xl md:mt-14">
-            <KellyFullStory
-              trailPeoplePhotos={storyTrailPhotos}
-              forevermostHeiferYoutubeVideoId={forevermostHeiferVideoId}
-              forevermostHeiferIframeTitle={forevermostHeiferTitle}
-            />
+            <KellyFullStory trailPeoplePhotos={storyTrailPhotos} />
           </div>
         </ContentContainer>
       </FullBleedSection>

@@ -75,7 +75,7 @@ export function HomeVoicesSection({ voices }: HomeVoicesSectionProps) {
         <FadeInWhenVisible className="mt-14 flex justify-center md:mt-16">
           <Link
             href={VOICES_SECTION.ctaHref}
-            className="inline-flex min-h-[48px] items-center justify-center rounded-btn bg-kelly-navy px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-white transition hover:bg-kelly-deep"
+            className="inline-flex min-h-[48px] items-center justify-center rounded-btn bg-kelly-navy px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-kelly-mist transition hover:bg-kelly-deep"
           >
             {VOICES_SECTION.ctaLabel}
           </Link>

@@ -2,6 +2,8 @@ export { CountyActionPanel } from "./CountyActionPanel";
 export { CountyBattlefieldPanel } from "./CountyBattlefieldPanel";
 export type { CountyBattlefieldPanelProps } from "./CountyBattlefieldPanel";
 export { CountyChartPanel } from "./CountyChartPanel";
+export { CountyBriefingDemoIntro } from "./CountyBriefingDemoIntro";
+export type { BriefingCityAnchor } from "./CountyBriefingDemoIntro";
 export { CountyDashboardShell } from "./CountyDashboardShell";
 export { CountyDataGapsPanel } from "./CountyDataGapsPanel";
 export { CountyDrilldownGrid } from "./CountyDrilldownGrid";

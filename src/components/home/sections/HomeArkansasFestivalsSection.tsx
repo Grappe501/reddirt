@@ -87,7 +87,7 @@ export function HomeArkansasFestivalsSection({ festivals, coveragePayload }: Pro
 
         {plan ? (
           <div className="mx-auto mt-10 max-w-3xl rounded-card border border-kelly-gold/25 bg-kelly-navy/5 p-6 md:p-8">
-            <h3 className="font-heading text-lg font-bold text-kelly-text">Field intelligence (draft)</h3>
+            <h3 className="font-heading text-lg font-bold text-kelly-text">AI field map (draft)</h3>
             <p className="mt-2 font-body text-sm text-kelly-text/75">{plan.horizonNote}</p>
             <ul className="mt-6 space-y-6">
               {plan.weekends.map((w) => (

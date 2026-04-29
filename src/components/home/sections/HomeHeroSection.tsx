@@ -59,7 +59,7 @@ export function HomeHeroSection({ hero }: HomeHeroSectionProps) {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_100%_50%,rgba(0,0,102,0.45),transparent_45%)]" />
       </div>
 
-      <ContentContainer className="relative z-[1] flex min-h-[100svh] flex-col justify-end pb-[max(3rem,env(safe-area-inset-bottom))] pt-28 md:min-h-[min(100svh,920px)] md:justify-center md:pb-20 md:pt-24 lg:pt-28">
+      <ContentContainer className="relative z-[1] flex min-h-[100svh] flex-col justify-end pb-12 pt-28 md:min-h-[min(100svh,920px)] md:justify-center md:pb-20 md:pt-24 lg:pt-28">
         {/* Right-aligned panel (phone + desktop) so copy clears Kelly — image crop favors left/center */}
         <div className="ml-auto w-full max-w-[min(100%,22rem)] rounded-3xl border border-white/12 bg-kelly-navy/82 p-5 shadow-[0_24px_60px_rgba(12,18,34,0.55)] backdrop-blur-md xs:max-w-md sm:max-w-lg sm:p-7 md:max-w-xl md:p-8 lg:max-w-[28rem] text-white">
           <motion.p
@@ -97,7 +97,7 @@ export function HomeHeroSection({ hero }: HomeHeroSectionProps) {
               target={isExternalHref(hero.ctaPrimaryHref) ? "_blank" : undefined}
               rel={isExternalHref(hero.ctaPrimaryHref) ? "noopener noreferrer" : undefined}
               className={cn(
-                "inline-flex min-h-[52px] min-w-[11rem] items-center justify-center rounded-btn px-7 py-3.5 text-center text-sm font-bold uppercase tracking-[0.12em]",
+                "inline-flex min-h-[48px] items-center justify-center rounded-btn px-7 py-3.5 text-center text-sm font-bold uppercase tracking-[0.12em]",
                 "bg-kelly-gold text-kelly-navy shadow-lg shadow-black/25 transition duration-normal",
                 "hover:bg-kelly-gold-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold",
               )}
@@ -112,7 +112,7 @@ export function HomeHeroSection({ hero }: HomeHeroSectionProps) {
               target={isExternalHref(hero.ctaSecondaryHref) ? "_blank" : undefined}
               rel={isExternalHref(hero.ctaSecondaryHref) ? "noopener noreferrer" : undefined}
               className={cn(
-                "inline-flex min-h-[52px] min-w-[11rem] items-center justify-center rounded-btn border-2 border-white/50 bg-kelly-navy/25 px-7 py-3.5 text-center text-sm font-bold uppercase tracking-[0.12em] text-white backdrop-blur-[2px]",
+                "inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-white/50 bg-kelly-navy/25 px-7 py-3.5 text-center text-sm font-bold uppercase tracking-[0.12em] text-white backdrop-blur-[2px]",
                 "transition hover:border-kelly-gold/70 hover:bg-kelly-navy/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
               )}
             >
@@ -125,8 +125,8 @@ export function HomeHeroSection({ hero }: HomeHeroSectionProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.36, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className="text-kelly-gold">Neighbor to neighbor</span>
-            <span className="text-white">—that’s how Arkansas wins.</span>
+            <span className="text-kelly-gold">People over politics</span>
+            <span className="text-white">—always.</span>
           </motion.p>
           <motion.p
             className="mt-8 max-w-md border-l-2 border-kelly-gold/70 pl-4 font-body text-[11px] font-semibold uppercase leading-relaxed tracking-[0.22em] text-white/85 md:text-xs"

@@ -15,8 +15,6 @@ import { allExplainers } from "@/content/explainers";
 import { pageMeta } from "@/lib/seo/metadata";
 import { getPageBlockPayload, type HeroBlockPayload } from "@/lib/content/page-blocks";
 import { CampaignBriefingLibrary } from "@/components/campaign/CampaignBriefingLibrary";
-import { EditorialCampaignPhoto } from "@/components/about/EditorialCampaignPhoto";
-import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
 
 export const metadata: Metadata = pageMeta({
   title: "Resources",
@@ -28,7 +26,6 @@ export const metadata: Metadata = pageMeta({
 
 export default async function ResourcesPage() {
   const hero = await getPageBlockPayload<HeroBlockPayload>("resources", "hero");
-  const [resourceTrail] = trailPhotosForSlot("resources");
 
   return (
     <>
@@ -47,19 +44,6 @@ export default async function ResourcesPage() {
           Organizing hub
         </Button>
       </PageHero>
-
-      {resourceTrail ? (
-        <FullBleedSection variant="subtle" className="!pt-0" aria-label="Campaign trail photography">
-          <ContentContainer wide className="py-8 md:py-10">
-            <EditorialCampaignPhoto
-              variant="breakout"
-              photo={resourceTrail}
-              kicker="Field"
-              caption="The library travels best when the people carrying it are already in the room with neighbors."
-            />
-          </ContentContainer>
-        </FullBleedSection>
-      ) : null}
 
       <FullBleedSection variant="subtle" padY>
         <ContentContainer wide>

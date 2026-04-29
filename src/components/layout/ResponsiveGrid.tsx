@@ -17,7 +17,7 @@ export function ResponsiveGrid({ children, className, cols = "3" }: ResponsiveGr
   return (
     <div
       className={cn(
-        "grid grid-cols-1 gap-4 sm:gap-6 md:gap-8 lg:gap-10",
+        "grid grid-cols-1 gap-6 md:gap-8 lg:gap-10",
         colMap[cols],
         className,
       )}

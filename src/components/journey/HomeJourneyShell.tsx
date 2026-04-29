@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { JourneyProvider } from "@/components/journey/journey-context";
 import { HomePathwayGateway } from "@/components/journey/HomePathwayGateway";
 import { HomeHeroSection } from "@/components/home/sections/HomeHeroSection";
+import { HomeTrustRibbonSection } from "@/components/home/sections/HomeTrustRibbonSection";
 import { LANDING_JOURNEY_BEATS } from "@/content/home/journey";
 import type { MergedHomepageConfig } from "@/lib/content/homepage-merge";
 
@@ -28,6 +29,7 @@ export function HomeJourneyShell({ homepage, trailBand, afterGateway, children }
       <div className="relative pb-10">
         <div id="beat-arrival" data-journey-beat="beat-arrival">
           <HomeHeroSection hero={homepage.hero} />
+          <HomeTrustRibbonSection />
           <HomePathwayGateway />
         </div>
         {trailBand}

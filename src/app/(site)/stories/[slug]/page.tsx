@@ -138,10 +138,10 @@ export default async function StoryDetailPage({ params }: Props) {
         description="If something in this story echoed your kitchen table, tell us. We protect privacy, we verify consent, and we never strip your truth for a headline."
         variant="primary-band"
       >
-        <Button href="/stories#share" variant="primary">
+        <Button href="/stories#share" variant="secondary">
           Share a story
         </Button>
-        <Button href="/local-organizing" variant="outlineOnDark" className="border-white/50 !text-kelly-mist hover:!text-white hover:bg-white/10">
+        <Button href="/local-organizing" variant="outline" className="border-kelly-page/50 text-kelly-page hover:bg-kelly-page/10">
           Organize locally
         </Button>
       </CTASection>

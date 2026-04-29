@@ -263,7 +263,7 @@ export default async function LocalRegionPage({ params }: Props) {
         <Button href={region.cta.primary.href} variant="primary">
           {region.cta.primary.label}
         </Button>
-        <Button href="/local-organizing" variant="outlineOnDark" className="border-white/50 !text-kelly-mist hover:!text-white hover:bg-white/10">
+        <Button href="/local-organizing" variant="outline">
           Back to organizing hub
         </Button>
       </CTASection>

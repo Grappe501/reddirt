@@ -12,7 +12,7 @@
 |--------|-----------------------------------------------|----------------|
 | **Pope** | Yes (`/pope`, `/pope/v2`) | Baseline (pilot) |
 | Pulaski | **`/pulaski/v2` v2 shell live** (`/county-briefings/pulaski/v2`); no classic `/pulaski` narrative page yet | **Partial** — template + intake-honest scaffolding; **no** city drilldown parity with Pope until place data ingests |
-| Faulkner | **No** | Not at Pope parity |
+| Faulkner | **`/faulkner/v2` v2 shell live** (`/county-briefings/faulkner/v2`); no classic `/faulkner` narrative page yet | **Partial** — same template + intake-honest scaffolding as Pulaski v2; **no** city drilldown parity with Pope until place data ingests |
 | Saline | **No** | Not at Pope parity |
 | White | **No** | Not at Pope parity |
 | Perry | **No** | Not at Pope parity |
@@ -20,7 +20,7 @@
 | Conway | **No** | Not at Pope parity |
 | Van Buren | **No** | Not at Pope parity |
 
-**Pope** and **Pulaski v2** ship under `src/app/county-briefings/` (Pulaski: `/pulaski/v2` dashboard template; city cards explicitly deferred). The hub lists available briefings; the other seven parity-target counties still lack `county-briefings` routes until built.
+**Pope**, **Pulaski v2**, and **Faulkner v2** ship under `src/app/county-briefings/` (`/pulaski/v2` and `/faulkner/v2` dashboard templates; city cards explicitly deferred). The hub lists available briefings; the remaining parity-target counties in this audit still lack `county-briefings` routes until built.
 
 ---
 
@@ -39,14 +39,16 @@
 
 **Pulaski — exception:** `src/app/county-briefings/pulaski/v2` publishes a **v2 briefing dashboard shell** (`/county-briefings/pulaski/v2`) with ingest-honest aggregates and explicit **city/precinct data needed** scaffolding—**not** full Pope parity on municipal drilldowns until place data imports.
 
-For **each** of **Faulkner, Saline, White, Perry, Cleburne, Conway, Van Buren** — and for dimensions where Pulaski is still incomplete:
+**Faulkner — exception:** `src/app/county-briefings/faulkner/v2` mirrors the Pulaski v2 pattern (`/county-briefings/faulkner/v2`) with engine-backed aggregates where ingest exists and explicit **city/precinct data needed** scaffolding—**not** full Pope parity on municipal drilldowns until place data imports.
+
+For **each** of **Saline, White, Perry, Cleburne, Conway, Van Buren** — and for dimensions where Pulaski or Faulkner is still incomplete:
 
 | Question | Answer |
 |----------|--------|
-| **Route exists (`/county-briefings/{slug}` or `{slug}/v2`)?** | **Seven counties:** **No** — no matching route folders yet. **Pulaski:** **v2 route only** (see exception above); no standalone `/pulaski` narrative page unless added separately. |
-| **County-specific briefing content exists?** | **Seven counties:** **Not** as first-class public pages. **Pulaski:** v2 shell only—classic hub card narrative optional later. Regional staff materials may appear under admin or docs separately. |
-| **Strategy narrative on public site** | **Seven counties:** none analogous to Pope. **Pulaski:** strategy strip is **aggregate / ingest-gap** keyed—verify before external reuse. |
-| **Real aggregate data surfaced** | **Only** when ingestion provides rows; Pulaski pulls from **`buildCountyPoliticalProfile`** outputs—zeros where telemetry absent. |
+| **Route exists (`/county-briefings/{slug}` or `{slug}/v2`)?** | **Six counties:** **No** — no matching route folders yet. **Pulaski / Faulkner:** **v2 route only** (see exceptions above); no standalone `/pulaski` or `/faulkner` narrative page unless added separately. |
+| **County-specific briefing content exists?** | **Six counties:** **Not** as first-class public pages. **Pulaski / Faulkner:** v2 shell only—classic hub card narrative optional later. Regional staff materials may appear under admin or docs separately. |
+| **Strategy narrative on public site** | **Six counties:** none analogous to Pope. **Pulaski / Faulkner:** strategy strip is **aggregate / ingest-gap** keyed—verify before external reuse. |
+| **Real aggregate data surfaced** | **Only** when ingestion provides rows; Pulaski and Faulkner pull from **`buildCountyPoliticalProfile`** outputs—zeros where telemetry absent. |
 | **Target numbers on public UI** | **None** invented—do not add turnout or pathway targets without sources. |
 | **Pathway to victory** | **Out of scope** unless published as sourced editorial. |
 | **Missing assets** | County briefing parity (place cards, precinct maps), editorial approval, data pipeline parity with COUNTY-* guardrails. |

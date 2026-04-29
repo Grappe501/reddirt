@@ -12,27 +12,38 @@ type Props = {
   className?: string;
   /** Geographic / ladder scope — selects deterministic demo mix. */
   scope: MessageIntelligenceScope;
+  /** Public county briefings: swap field vocabulary for civic education wording. */
+  audience?: "default" | "publicBriefing";
 };
 
 /**
- * Message Content Engine — intelligence strip for organizing dashboards.
+ * Message Content Engine — thematic snapshot for dashboards and public briefing shells.
  * Aggregate-only; labeled preview until conversation logging feeds these panels.
  */
-export function MessageIntelligencePanel({ className, scope }: Props) {
+export function MessageIntelligencePanel({ className, scope, audience = "default" }: Props) {
   const model = getMessageIntelligenceDemoModel(scope);
+  const titleText =
+    audience === "publicBriefing"
+      ? `Narrative shelf — themes voters might hear (${model.scopeLabel})`
+      : `Field narrative snapshot — ${model.scopeLabel}`;
 
   return (
     <div className={cn("space-y-6", className)}>
       <CountySectionHeader
-        overline="Message intelligence"
-        title={`Field narrative snapshot — ${model.scopeLabel}`}
+        overline={audience === "publicBriefing" ? "What people are discussing" : "Message intelligence"}
+        title={titleText}
         description={
           <span className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
             <span>
-              Themes, category mix, pipeline movement, narrative gaps, and follow-up depth —{" "}
-              <strong className="text-kelly-text/85">aggregates only</strong> on public routes. No individual-level conversation data.
+              {audience === "publicBriefing"
+                ? "Theme blends, illustrative categories, and gap notes meant for readers learning the race — "
+                : "Themes, category mix, pipeline movement, narrative gaps, and follow-up depth — "}
+              <strong className="text-kelly-text/85">aggregates only</strong>{" "}
+              {audience === "publicBriefing"
+                ? "on this public briefing. Nothing here is individualized voter outreach."
+                : "on public routes. No individual-level conversation data."}
             </span>
-            <CountySourceBadge source="demo" note="Illustrative preview — replace with logged aggregates when pipelines connect." />
+            <CountySourceBadge source="demo" note="Illustrative preview — data integration in progress until logged feeds qualify." />
           </span>
         }
       />

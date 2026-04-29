@@ -40,15 +40,15 @@ export type HomepageSectionId = (typeof HOMEPAGE_SECTION_IDS)[number];
 
 const DEFAULT_HERO: HomepageHeroMerged = {
   eyebrow: "Kelly Grappe · Secretary of State",
-  titleBefore: "Fair elections.",
-  titleAccent: "Accountable",
-  titleAfter: "government for every county.",
+  titleBefore: "The People",
+  titleAccent: "Rule.",
+  titleAfter: "",
   subtitle:
-    "Kelly Grappe is running to lead Arkansas’s Secretary of State office—the place where elections, ballot access, and business filings meet real life. She is asking for your trust to run it with clarity modern voters expect: secure processes, plain-language answers, and systems that treat transparency and competence as the job itself—not a talking point.",
-  ctaPrimaryLabel: "Volunteer",
+    "Arkansas deserves a Secretary of State’s office that is transparent, secure, and accountable to the people in all 75 counties.",
+  ctaPrimaryLabel: "Join the Campaign",
   ctaPrimaryHref: getVolunteerSignupHref(),
-  ctaSecondaryLabel: "Meet Kelly",
-  ctaSecondaryHref: "/about",
+  ctaSecondaryLabel: "Watch Kelly Speak",
+  ctaSecondaryHref: "/understand#hear-kelly",
 };
 
 /** All narrative sections on by default; disable in admin if you need a shorter page. */
@@ -110,14 +110,14 @@ function mergeArkansasBand(
 }
 
 const DEFAULT_FINAL_CTA = {
-  eyebrow: "Regnat Populus — The people rule",
-  title: "Your next step starts here.",
+  eyebrow: "Regnat Populus",
+  title: "The People Rule.",
   description:
-    "Volunteer, read Kelly’s priorities, find your county, or explore a sample briefing. Every link goes somewhere real—take it at your pace.",
-  primaryLabel: "Volunteer",
+    "This campaign is about restoring trust, protecting the people’s voice, and building a Secretary of State’s office that answers to Arkansas. Not the insiders. Not the noise. The people.",
+  primaryLabel: "Join the Campaign",
   primaryHref: getVolunteerSignupHref(),
-  secondaryLabel: "See priorities",
-  secondaryHref: "/priorities",
+  secondaryLabel: "Donate Today",
+  secondaryHref: "/donate",
 };
 
 function parseJson<T>(value: unknown, fallback: T): T {

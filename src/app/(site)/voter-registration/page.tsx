@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 import type { County } from "@prisma/client";
 import { VoterRegistrationCenter } from "@/components/voter/VoterRegistrationCenter";
-import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
-import {
-  listArkansasCountyCommandRosterFromRegistryOnly,
-  listPublishedCounties,
-} from "@/lib/county/get-county-command-data";
+import { listPublishedCounties } from "@/lib/county/get-county-command-data";
 import { getLatestVoterFileSnapshot, getStatewideVoterRollupFromLatestSnapshot } from "@/lib/voter-file/queries";
 import { prisma } from "@/lib/db";
 import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
@@ -53,10 +49,7 @@ export default async function VoterRegistrationPage({ searchParams }: Props) {
     logPrismaDatabaseUnavailable("voter-registration", err);
     liveMetricsUnavailableMessage =
       "Live registration metrics could not be loaded right now. Official VoterView, paper registration guidance, and the rest of this page still work.";
-    rows = listArkansasCountyCommandRosterFromRegistryOnly();
   }
-
-  const [trailRegistration] = trailPhotosForSlot("voterRegistration");
 
   return (
     <VoterRegistrationCenter
@@ -65,7 +58,6 @@ export default async function VoterRegistrationPage({ searchParams }: Props) {
       latestSnapshot={latestSnapshot}
       statewide={statewide}
       liveMetricsUnavailableMessage={liveMetricsUnavailableMessage}
-      trailPhoto={trailRegistration ?? null}
     />
   );
 }

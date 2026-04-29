@@ -37,8 +37,8 @@ export function AboutKellyChapterNav({ slug }: Props) {
             {next.navLabel} →
           </Link>
         ) : (
-          <Link href="/get-involved" className={linkClass}>
-            Get involved →
+          <Link href="/priorities" className={linkClass}>
+            Read priorities →
           </Link>
         )}
       </div>

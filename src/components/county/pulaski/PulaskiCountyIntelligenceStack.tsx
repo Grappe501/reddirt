@@ -6,37 +6,37 @@ const steps = [
     key: "county",
     label: "County",
     status: "current" as const,
-    blurb: "FIPS 05119 — Pulaski County command view (template parity with Pope v2).",
+    blurb: "FIPS 05119 — statewide capital county; full picture before city splits ingest.",
   },
-  { key: "city", label: "City", status: "future" as const, blurb: "Municipal drilldown cards deferred until place aggregates ingest." },
+  { key: "city", label: "City", status: "future" as const, blurb: "Municipal cards — ACS & canvass aggregates marked “in progress.”" },
   {
     key: "community",
     label: "Community",
     status: "future" as const,
-    blurb: "Neighborhood / host circles when routes and ethics review land.",
+    blurb: "Neighborhood storylines anchor after place data attaches—no improvised populations here.",
   },
   {
     key: "precinct",
     label: "Precinct",
     status: "future" as const,
-    blurb: "Electoral turf — list mode after verified tabulation; no fabricated precinct targets here.",
+    blurb: "Precinct turnout tables — turnout modeling flagged “to be layered.”",
   },
   {
-    key: "power",
-    label: "Power Team",
+    key: "outreach",
+    label: "Neighbor-led outreach",
     status: "future" as const,
-    blurb: "Relational engine — zeros on this briefing until Pulaski telemetry connects (no Pope seed graph cloned).",
+    blurb: "Volunteer ladders stay off public marketing routes; illustrative zeros keep shape without field claims.",
   },
 ] as const;
 
-/** Visual ladder — same resolution model as Pope template; Pulaski-specific posture. */
+/** Decision ladder borrowed from briefing pedagogy — public education, not a staffing checklist. */
 export function PulaskiCountyIntelligenceStack({ className }: { className?: string }) {
   return (
-    <section className={className} aria-label="Pulaski County intelligence stack">
+    <section className={className} aria-label="How this county briefing resolves">
       <CountySectionHeader
-        overline="Pulaski County intelligence stack"
-        title="County → City → Community → Precinct → Power Team"
-        description="Same humans, different resolution. City cards are intentionally empty on this v1 Pulaski briefing until verified ingest; Power Team metrics are zeroed—not copied from Pope seed data."
+        overline="Geography ladder"
+        title="County → City → Neighborhood → Voting district → Neighbor-led conversation"
+        description="Readers understand scale before precinct detail; ladders stay illustrative until ingest fills each cell."
       />
       <div className="mt-3 overflow-x-auto pb-1">
         <div className="flex min-w-full flex-nowrap items-stretch gap-0 sm:justify-between">

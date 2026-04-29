@@ -31,7 +31,7 @@ function ProofBlockVisual({ blockTitle }: { blockTitle: (typeof PROOF_SECTION.bl
         unoptimized={unoptimized}
       />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-kelly-navy/95 via-kelly-navy/75 to-transparent px-3 pb-2.5 pt-10">
-        <p className="line-clamp-2 text-left font-body text-[10px] leading-snug text-white/95 md:text-[11px]">
+        <p className="line-clamp-2 text-left font-body text-[10px] leading-snug text-kelly-mist/95 md:text-[11px]">
           {caption}
         </p>
       </div>
@@ -42,7 +42,7 @@ function ProofBlockVisual({ blockTitle }: { blockTitle: (typeof PROOF_SECTION.bl
 export function HomeProofSection() {
   return (
     <section
-      className="relative overflow-hidden bg-kelly-navy py-section-y text-white lg:py-section-y-lg"
+      className="relative overflow-hidden bg-kelly-navy py-section-y text-kelly-mist lg:py-section-y-lg"
       aria-labelledby="proof-heading"
     >
       <div className="pointer-events-none absolute -left-32 top-0 h-[420px] w-[420px] rounded-full bg-kelly-gold/[0.06] blur-3xl" aria-hidden />
@@ -50,10 +50,10 @@ export function HomeProofSection() {
       <ContentContainer className="relative">
         <FadeInWhenVisible className="max-w-3xl">
           <p className="font-body text-[11px] font-bold uppercase tracking-[0.24em] text-kelly-gold">{PROOF_SECTION.eyebrow}</p>
-          <h2 id="proof-heading" className="mt-4 font-heading text-[clamp(1.85rem,4vw,2.85rem)] font-bold tracking-tight text-white">
+          <h2 id="proof-heading" className="mt-4 font-heading text-[clamp(1.85rem,4vw,2.85rem)] font-bold tracking-tight text-kelly-mist">
             {PROOF_SECTION.title}
           </h2>
-          <p className="mt-5 font-body text-lg leading-relaxed text-white/82 md:text-xl">{PROOF_SECTION.intro}</p>
+          <p className="mt-5 font-body text-lg leading-relaxed text-kelly-mist/78 md:text-xl">{PROOF_SECTION.intro}</p>
         </FadeInWhenVisible>
         <div className="mt-14 grid grid-cols-1 gap-6 lg:mt-16 lg:grid-cols-2 lg:gap-8">
           {PROOF_SECTION.blocks.map((b, i) => (
@@ -61,8 +61,8 @@ export function HomeProofSection() {
               <div className="flex h-full flex-col overflow-hidden rounded-card border border-kelly-gold/15 bg-kelly-deep/80 shadow-xl shadow-black/20">
                 <ProofBlockVisual blockTitle={b.title} />
                 <div className="flex flex-1 flex-col p-6 md:p-8">
-                  <h3 className="font-heading text-xl font-bold text-white">{b.title}</h3>
-                  <p className="mt-3 flex-1 font-body text-base leading-relaxed text-white/80">{b.body}</p>
+                  <h3 className="font-heading text-xl font-bold text-kelly-mist">{b.title}</h3>
+                  <p className="mt-3 flex-1 font-body text-base leading-relaxed text-kelly-mist/75">{b.body}</p>
                 </div>
               </div>
             </FadeInWhenVisible>

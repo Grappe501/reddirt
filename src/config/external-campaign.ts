@@ -31,7 +31,7 @@ export function getVolunteerSignupHref(): string {
 export function getJoinCampaignHref(): string {
   const o = process.env.NEXT_PUBLIC_JOIN_CAMPAIGN_URL?.trim().replace(/\/$/, "");
   if (o) return o;
-  return getVolunteerSignupHref();
+  return getContactMailto();
 }
 
 /**
@@ -42,7 +42,7 @@ export function getJoinCampaignHref(): string {
 export function getContentHubJoinHref(): string {
   const o = process.env.NEXT_PUBLIC_JOIN_CAMPAIGN_URL?.trim().replace(/\/$/, "");
   if (o) return o;
-  return STAY_CONNECTED_HREF;
+  return getContactMailto();
 }
 
 /** Use `target="_blank"` + rel only for off-site (or `mailto:`) links — not same-site app routes. */

@@ -19,6 +19,7 @@ import { normalizeHistory } from "@/lib/assistant/conversation";
 import { ASSISTANT_API_VERSION } from "@/lib/assistant/version";
 import { consumeAssistantSse } from "@/lib/campaign-guide/assistant-sse";
 import { AskKellyMissedFeedbackCapture } from "@/components/campaign-guide/AskKellyMissedFeedbackCapture";
+import { OPEN_CAMPAIGN_GUIDE_EVENT } from "@/lib/campaign-guide/open";
 import { cn } from "@/lib/utils";
 
 function isWeakAssistantPayload(accumulatedReply: string, playbook: string): boolean {
@@ -76,6 +77,15 @@ export function CampaignGuideDock() {
     const el = document.querySelector<HTMLElement>(`[data-journey-beat="${activeBeatId}"]`);
     setJourneyBeatOnPage(el ? activeBeatId : null);
   }, [activeBeatId, pathname, open]);
+
+  useEffect(() => {
+    const onOpen = () => {
+      setOpen(true);
+      setPanelTab("chat");
+    };
+    window.addEventListener(OPEN_CAMPAIGN_GUIDE_EVENT, onOpen);
+    return () => window.removeEventListener(OPEN_CAMPAIGN_GUIDE_EVENT, onOpen);
+  }, []);
 
   useEffect(() => {
     if (!open) return;

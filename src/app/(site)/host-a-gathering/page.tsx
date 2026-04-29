@@ -212,10 +212,10 @@ export default function HostAGatheringPage() {
         <Button href="#host-form" variant="primary">
           Open the host form
         </Button>
-        <Button href="/local-organizing" variant="outlineOnDark" className="border-white/50 !text-kelly-mist hover:!text-white hover:bg-white/10">
+        <Button href="/local-organizing" variant="outline">
           Explore local hubs
         </Button>
-        <Button href={representLocalEventVolunteerHref} variant="outlineOnDark" className="border-white/50 !text-kelly-mist hover:!text-white hover:bg-white/10">
+        <Button href={representLocalEventVolunteerHref} variant="outline">
           Represent locally
         </Button>
       </CTASection>

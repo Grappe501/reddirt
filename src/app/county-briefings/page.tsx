@@ -16,13 +16,13 @@ const BRIEFINGS: {
   {
     href: "/county-briefings/pope",
     name: "Pope County",
-    blurb: "Political profile, GOTV illustration, relational organizing — first pilot on this site.",
+    blurb: "Pilot political profile and briefing illustration — aggregate public data only.",
     status: "live",
   },
   {
     href: "/county-briefings/pope/v2",
     name: "Pope County — briefing dashboard v2 (sample)",
-    blurb: "Visual-first county briefing with Power of 5 snapshots, drilldowns, and clearly labeled demo data—training preview for organizers.",
+    blurb: "Visual-first county intelligence template with clearly labeled demo scaffolding where live feeds are not yet wired.",
     status: "live",
   },
   {
@@ -30,6 +30,13 @@ const BRIEFINGS: {
     name: "Pulaski County — briefing dashboard v2",
     blurb:
       "Central Arkansas shell matching the Pope template: engine-backed aggregates only; city drilldown deferred with an explicit ‘data needed’ stance—no fabricated place or precinct KPIs.",
+    status: "live",
+  },
+  {
+    href: "/county-briefings/faulkner/v2",
+    name: "Faulkner County — briefing dashboard v2",
+    blurb:
+      "Central Arkansas corridor shell matching the Pope template: aggregates from the county profile engine where present; Conway (city)—not Conway County—precinct drilldown scaffolded honestly until ingest.",
     status: "live",
   },
 ];

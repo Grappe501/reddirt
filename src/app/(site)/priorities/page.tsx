@@ -4,7 +4,6 @@ import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { PillarGrid } from "@/components/blocks/PillarGrid";
-import { PolicyDetailCard, type PolicyDetailCardTone } from "@/components/blocks/PolicyDetailCard";
 import { QuoteBand } from "@/components/blocks/QuoteBand";
 import { CTASection } from "@/components/blocks/CTASection";
 import { Button } from "@/components/ui/Button";
@@ -13,8 +12,6 @@ import { getPageBlockPayload, type HeroBlockPayload } from "@/lib/content/page-b
 import { getHostOrVisitRequestHref } from "@/lib/county/official-links";
 import { EditorialCampaignPhoto } from "@/components/about/EditorialCampaignPhoto";
 import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
-import { ContentImage } from "@/components/media/ContentImage";
-import { media } from "@/content/media/registry";
 
 export const metadata: Metadata = pageMeta({
   title: "Priorities for the office",
@@ -67,84 +64,6 @@ const pillars = [
   },
 ] as const;
 
-const policyTone: PolicyDetailCardTone[] = ["ivory", "mist", "navy-veil"];
-
-const electionAdministrationCards = [
-  {
-    title: "Training that travels",
-    body: "Counties should not have to reinvent the basics. Kelly will push for plain-language guidance, reusable training materials, and practical support that works in rural and urban election offices alike.",
-  },
-  {
-    title: "Communication kits counties can use",
-    body: "Local offices should have ready-to-adapt voter education posts, public notice checklists, and crisis communication basics so accurate information can move faster than rumors.",
-  },
-  {
-    title: "Systems, not blame",
-    body: "When workers are under-supported, the answer is not to point fingers at the people doing the work. The answer is to fix the system around them: staffing, communication, checklists, tools, and timelines.",
-  },
-  {
-    title: "Voter flow designed from real patterns",
-    body: "Early voting should use turnout patterns, role clarity, clear signage, and line support so voters face less confusion and workers are not left absorbing avoidable bottlenecks.",
-  },
-  {
-    title: "Public confidence through clarity",
-    body: "Voters should understand how elections are administered, how safeguards work, and who is responsible for each step. Visibility builds trust before misinformation fills the gap.",
-  },
-] as const;
-
-const transparencyCards = [
-  {
-    title: "Publish the request trail",
-    body: "When the Secretary of State\u2019s office receives and fulfills a public-records request, the public should be able to see that a request was made, what records were released, and where to find them when disclosure is allowed by law.",
-  },
-  {
-    title: "Meeting records in one place",
-    body: "Public calendars should point people to agendas, minutes, recordings, and follow-up records whenever those materials can legally be shared.",
-  },
-  {
-    title: "Audit reports people can understand",
-    body: "When election audits or process reviews are complete, voters should be able to find what was checked, what was found, and what the result means in plain language.",
-  },
-  {
-    title: "Search before you ask again",
-    body: "Kelly wants a searchable public-records library for her office so Arkansans, reporters, researchers, and local officials can find prior FOIA responses without starting from zero.",
-  },
-  {
-    title: "Build toward smarter access",
-    body: "The long-term vision is a plain-language, searchable tool that helps people understand what has already been requested and released, while protecting privacy, legal exemptions, and sensitive information.",
-  },
-] as const;
-
-const candidateAccessCards = [
-  {
-    title: "Plain-language filing paths",
-    body: "Office-specific instructions, deadlines, required forms, and campaign-finance basics should be easier to find and easier to follow.",
-  },
-  {
-    title: "First-time candidate checklists",
-    body: "Rural candidates, young leaders, working people, and first-time candidates should not need political connections to understand the paperwork sequence.",
-  },
-  {
-    title: "Education before mistakes",
-    body: "Short explainers, reminders, and workshops can reduce confusion while still respecting the law, campaign-finance rules, and the neutral role of the office.",
-  },
-] as const;
-
-const peoplesHouseCards = [
-  {
-    title: "All counties visible",
-    body: "Public spaces should help Arkansans from small towns, rural communities, and city neighborhoods see themselves in state government.",
-  },
-  {
-    title: "Learning in public",
-    body: "Capitol visits, exhibits, records, and age-appropriate civic education can help people understand how Arkansas government works.",
-  },
-  {
-    title: "Explore welcoming grounds",
-    body: "Ideas like rural-rooted plantings, pollinator spaces, and public gathering areas deserve review with the proper legal, security, and facilities partners.",
-  },
-] as const;
-
 export default async function PrioritiesPage() {
   const hero = await getPageBlockPayload<HeroBlockPayload>("priorities", "hero");
   const presence = trailPhotosForSlot("priorities")[0];
@@ -157,7 +76,7 @@ export default async function PrioritiesPage() {
         title={hero?.title ?? "What the Secretary of State actually touches"}
         subtitle={
           hero?.subtitle ??
-            "Elections, public records, and business filings—this campaign stays grounded in what the Secretary of State actually runs. Transparency and fair process are the point; theater is not."
+            "This campaign stays focused on administration Arkansans rely on: elections, public records, and the business services that keep our economy legible. If it isn’t part of this job, you won’t find it used as a prop here."
         }
       >
         <Button href="/get-involved" variant="primary">
@@ -195,27 +114,6 @@ export default async function PrioritiesPage() {
         </ContentContainer>
       </FullBleedSection>
 
-      <FullBleedSection padY className="border-y border-kelly-text/10" aria-label="Civic and economic context">
-        <ContentContainer wide>
-          <div className="grid gap-6 md:grid-cols-2 md:gap-8">
-            <div className="relative min-h-[200px] overflow-hidden rounded-card border border-kelly-text/10 shadow-[var(--shadow-soft)] sm:min-h-[240px]">
-              <ContentImage
-                media={media.splitDemocracy}
-                warmOverlay
-                className="absolute inset-0 h-full w-full min-h-full object-cover"
-              />
-            </div>
-            <div className="relative min-h-[200px] overflow-hidden rounded-card border border-kelly-text/10 shadow-[var(--shadow-soft)] sm:min-h-[240px]">
-              <ContentImage
-                media={media.splitLabor}
-                warmOverlay
-                className="absolute inset-0 h-full w-full min-h-full object-cover"
-              />
-            </div>
-          </div>
-        </ContentContainer>
-      </FullBleedSection>
-
       <QuoteBand
         quote="Leadership in this role isn’t about headlines or ideology—it’s about steady, transparent administration and respect for the law."
         attribution="Kelly Grappe"
@@ -233,14 +131,37 @@ export default async function PrioritiesPage() {
             className="max-w-3xl"
           />
           <div className="mt-8 grid gap-5 sm:grid-cols-2">
-            {electionAdministrationCards.map((c, i) => (
-              <PolicyDetailCard
-                key={c.title}
-                title={c.title}
-                body={c.body}
-                tone={policyTone[i % policyTone.length]}
-              />
-            ))}
+            <div className="rounded-card border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Training that travels</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
+                Counties should not have to reinvent the basics. Kelly will push for plain-language guidance, reusable training materials, and practical support that works in rural and urban election offices alike.
+              </p>
+            </div>
+            <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Communication kits counties can use</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
+                Local offices should have ready-to-adapt voter education posts, public notice checklists, and crisis communication basics so accurate information can move faster than rumors.
+              </p>
+            </div>
+            <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Systems, not blame</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
+                When workers are under-supported, the answer is not to point fingers at the people doing the work. The answer is to fix the system around them: staffing, communication, checklists, tools, and timelines.
+              </p>
+            </div>
+            <div className="rounded-card border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Voter flow designed from real patterns</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
+                Early voting should use turnout patterns, role clarity, clear signage, and line support so voters face
+                less confusion and workers are not left absorbing avoidable bottlenecks.
+              </p>
+            </div>
+            <div className="rounded-card border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Public confidence through clarity</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
+                Voters should understand how elections are administered, how safeguards work, and who is responsible for each step. Visibility builds trust before misinformation fills the gap.
+              </p>
+            </div>
           </div>
         </ContentContainer>
       </FullBleedSection>
@@ -256,14 +177,37 @@ export default async function PrioritiesPage() {
             className="max-w-3xl"
           />
           <div className="mt-8 grid gap-5 sm:grid-cols-2">
-            {transparencyCards.map((c, i) => (
-              <PolicyDetailCard
-                key={c.title}
-                title={c.title}
-                body={c.body}
-                tone={policyTone[i % policyTone.length]}
-              />
-            ))}
+            <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Publish the request trail</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
+                When the Secretary of State&apos;s office receives and fulfills a public-records request, the public should be able to see that a request was made, what records were released, and where to find them when disclosure is allowed by law.
+              </p>
+            </div>
+            <div className="rounded-card border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Meeting records in one place</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
+                Public calendars should point people to agendas, minutes, recordings, and follow-up records whenever those materials can legally be shared.
+              </p>
+            </div>
+            <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Audit reports people can understand</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
+                When election audits or process reviews are complete, voters should be able to find what was checked,
+                what was found, and what the result means in plain language.
+              </p>
+            </div>
+            <div className="rounded-card border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Search before you ask again</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
+                Kelly wants a searchable public-records library for her office so Arkansans, reporters, researchers, and local officials can find prior FOIA responses without starting from zero.
+              </p>
+            </div>
+            <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Build toward smarter access</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
+                The long-term vision is a plain-language, searchable tool that helps people understand what has already been requested and released, while protecting privacy, legal exemptions, and sensitive information.
+              </p>
+            </div>
           </div>
           <p className="mt-6 max-w-3xl font-body text-sm leading-relaxed text-kelly-text/70">
             The Secretary of State cannot unilaterally require every agency to use the same system, but the office can lead by example: start with its own records, prove the model works, and invite other public offices to make transparency easier for everyone.
@@ -282,14 +226,24 @@ export default async function PrioritiesPage() {
             className="max-w-3xl"
           />
           <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {candidateAccessCards.map((c, i) => (
-              <PolicyDetailCard
-                key={c.title}
-                title={c.title}
-                body={c.body}
-                tone={policyTone[i % policyTone.length]}
-              />
-            ))}
+            <div className="rounded-card border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Plain-language filing paths</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
+                Office-specific instructions, deadlines, required forms, and campaign-finance basics should be easier to find and easier to follow.
+              </p>
+            </div>
+            <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">First-time candidate checklists</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
+                Rural candidates, young leaders, working people, and first-time candidates should not need political connections to understand the paperwork sequence.
+              </p>
+            </div>
+            <div className="rounded-card border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Education before mistakes</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
+                Short explainers, reminders, and workshops can reduce confusion while still respecting the law, campaign-finance rules, and the neutral role of the office.
+              </p>
+            </div>
           </div>
         </ContentContainer>
       </FullBleedSection>
@@ -305,14 +259,27 @@ export default async function PrioritiesPage() {
             className="max-w-3xl"
           />
           <div className="mt-8 grid gap-5 sm:grid-cols-3">
-            {peoplesHouseCards.map((c, i) => (
-              <PolicyDetailCard
-                key={c.title}
-                title={c.title}
-                body={c.body}
-                tone={policyTone[i % policyTone.length]}
-              />
-            ))}
+            <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">All counties visible</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
+                Public spaces should help Arkansans from small towns, rural communities, and city neighborhoods see
+                themselves in state government.
+              </p>
+            </div>
+            <div className="rounded-card border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Learning in public</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
+                Capitol visits, exhibits, records, and age-appropriate civic education can help people understand how
+                Arkansas government works.
+              </p>
+            </div>
+            <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
+              <h3 className="font-heading text-lg font-bold text-kelly-text">Explore welcoming grounds</h3>
+              <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
+                Ideas like rural-rooted plantings, pollinator spaces, and public gathering areas deserve review with the
+                proper legal, security, and facilities partners.
+              </p>
+            </div>
           </div>
         </ContentContainer>
       </FullBleedSection>
@@ -388,10 +355,10 @@ export default async function PrioritiesPage() {
         description="Republican, Democratic, or civic—we want to talk with Arkansans where they already gather about how this office can serve you fairly."
         variant="primary-band"
       >
-        <Button href={getHostOrVisitRequestHref()} variant="primary">
+        <Button href={getHostOrVisitRequestHref()} variant="secondary">
           Request a visit
         </Button>
-        <Button href="/about" variant="outlineOnDark" className="border-white/50 !text-kelly-mist hover:!text-white hover:bg-white/10">
+        <Button href="/about" variant="outline" className="border-kelly-page/50 text-kelly-page hover:bg-kelly-page/10">
           About Kelly
         </Button>
       </CTASection>

@@ -86,7 +86,58 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/volunteerPage",
-        destination: "/get-involved",
+        destination: "/about",
+        permanent: false,
+      },
+      /** Marketing site is discovery-only — volunteer / organizing hubs redirect to public entry points. */
+      {
+        source: "/get-involved",
+        destination: "/about",
+        permanent: false,
+      },
+      {
+        source: "/get-involved/:path*",
+        destination: "/about",
+        permanent: false,
+      },
+      {
+        source: "/onboarding/power-of-5",
+        destination: "/about",
+        permanent: false,
+      },
+      {
+        source: "/organizing-intelligence",
+        destination: "/priorities",
+        permanent: false,
+      },
+      {
+        source: "/organizing-intelligence/:path*",
+        destination: "/priorities",
+        permanent: false,
+      },
+      {
+        source: "/local-organizing",
+        destination: "/about",
+        permanent: false,
+      },
+      {
+        source: "/local-organizing/:path*",
+        destination: "/about",
+        permanent: false,
+      },
+      {
+        source: "/host-a-gathering",
+        destination: "/about",
+        permanent: false,
+      },
+      {
+        source: "/start-a-local-team",
+        destination: "/about",
+        permanent: false,
+      },
+      {
+        source: "/dashboard",
+        destination: "/about",
         permanent: false,
       },
     ];

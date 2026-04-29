@@ -27,8 +27,7 @@ function NavMenu({ group, pathname, theme = "light" }: NavMenuProps) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const menuId = useId();
-  const flatHref = group.items.length === 0 ? group.groupLandingHref : undefined;
-  const active = flatHref ? navItemActive(pathname, flatHref) : groupActive(pathname, group.items);
+  const active = groupActive(pathname, group.items);
 
   useEffect(() => {
     if (!open) return;
@@ -60,16 +59,6 @@ function NavMenu({ group, pathname, theme = "light" }: NavMenuProps) {
       : "focus-visible:ring-kelly-navy/40 uppercase tracking-wider " +
           (labelActive ? "text-kelly-navy" : "text-kelly-text/80 hover:text-kelly-navy"),
   );
-
-  if (flatHref) {
-    return (
-      <div className="relative flex-shrink-0" ref={rootRef}>
-        <Link href={flatHref} className={labelClass} aria-current={active ? "page" : undefined}>
-          {group.label}
-        </Link>
-      </div>
-    );
-  }
 
   return (
     <div className="relative flex-shrink-0" ref={rootRef}>

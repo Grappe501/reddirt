@@ -35,8 +35,10 @@ export const ASK_KELLY_SYSTEM_ROUTES = {
   countyBriefings: "/county-briefings",
   countyBriefingPope: "/county-briefings/pope",
   countyBriefingPulaskiV2: "/county-briefings/pulaski/v2",
+  countyBriefingFaulknerV2: "/county-briefings/faulkner/v2",
   countyIntel: "/admin/county-intelligence",
-  volunteerPublic: "/get-involved",
+  /** Marketing site discovery hub — legacy volunteer URLs redirect here via `next.config.ts`. */
+  volunteerPublic: "/about",
   adminVolunteerIntake: "/admin/volunteers/intake",
   /** Stable bookmark paths → `redirects()` in next.config.ts (no duplicate pages). */
   aliasCountyWorkbench: "/countyWorkbench",
@@ -142,6 +144,27 @@ function tryAlreadyHere(n: string, pathname?: string): AskKellySystemGuideResult
           "This route is your orientation screen—sections here explain Page content, beta feedback triage, and how saves work. Browse the headings, then jump to Page content when you want to edit public wording.",
         links: [{ label: "Top of onboarding", href: ASK_KELLY_SYSTEM_ROUTES.onboarding }],
         nextStep: "Scroll to “First things to learn,” then open Page content from a card or the sidebar when you’re ready.",
+      };
+    }
+  }
+  if (p === ASK_KELLY_SYSTEM_ROUTES.countyBriefingFaulknerV2) {
+    if (
+      (containsAny(n, ["where is faulkner", "where's faulkner", "find faulkner briefing", "faulkner county briefing"]) &&
+        containsAny(n, ["where", "find", "link"])) ||
+      (containsAny(n, ["faulkner v2", "faulkner briefing"]) && containsAny(n, ["where", "find"]))
+    ) {
+      return {
+        matched: true,
+        title: "You’re already on the Faulkner County briefing (v2)",
+        answer:
+          "This public route is the Faulkner County aggregate briefing shell—same hardened template as Pope/Pulaski v2. It shows engine-backed county math where ingest exists; city and precinct drilldowns stay labeled as data-needed until verified sources land. No voter-level detail on-page.",
+        links: [
+          { label: "Faulkner briefing v2 (this page)", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefingFaulknerV2 },
+          { label: "County briefings hub", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefings },
+          { label: "County overview (registry)", href: "/counties/faulkner-county" },
+        ],
+        nextStep: "For staff-only aggregates, use County intelligence in admin when your role allows—Ask Kelly does not search the voter file.",
+        safetyNote: "Aggregates only on public briefings; follow counsel on what may be shown.",
       };
     }
   }
@@ -300,8 +323,8 @@ function buildLocationAnswer(kind: LocKind, pathname?: string): AskKellySystemGu
         matched: true,
         title: "What you can do here",
         answer:
-          `${pub} You can browse, follow links to volunteer paths, or open Ask Kelly for routing questions.`,
-        links: [{ label: "Get involved", href: "/get-involved" }],
+          `${pub} You can browse Kelly’s story and priorities, or open Ask Kelly for routing questions.`,
+        links: [{ label: "About Kelly", href: ASK_KELLY_SYSTEM_ROUTES.volunteerPublic }],
         nextStep: "Use Ask Kelly while reading a page when you’re unsure where a workflow lives in admin.",
       };
     }
@@ -674,12 +697,16 @@ const rules: Rule[] = [
         "pulaski dashboard",
         "pulaski v2",
         "pulaski county v2",
+        "faulkner briefing",
+        "faulkner dashboard",
+        "faulkner v2",
+        "faulkner county v2",
       ]) ||
       (containsAny(n, ["county intelligence", "county intel"]) && containsAny(n, ["where", "what", "open", "admin"])),
     build: () => ({
       title: "County briefings (campaign management)",
       answer:
-        "That county surface now lives inside RedDirt and opens here: the public briefing index, Pope drill-downs (including pope/v2 template), Pulaski briefing v2 at /county-briefings/pulaski/v2 (aggregate-only shell—city drilldown scaffolded honestly), plus /admin/county-intelligence for staff aggregates. Demo bookmarks /countyWorkbench, /distipope-briefing, and /dist-county-briefings are live HTTP redirects to those canonical paths (next.config.ts redirects) — no dead demo routes. Repo-root dist-pope-briefing/ and dist-county-briefings/ folders remain static packaging mirrors; NEXT_PUBLIC_COUNTY_WORKBENCH_URL is optional for an extra outbound hub link.",
+        "That county surface now lives inside RedDirt and opens here: the public briefing index, Pope drill-downs (including pope/v2 template), Pulaski briefing v2 at /county-briefings/pulaski/v2 and Faulkner briefing v2 at /county-briefings/faulkner/v2 (aggregate-only shells—city drilldown scaffolded honestly where not yet ingested), plus /admin/county-intelligence for staff aggregates. Demo bookmarks /countyWorkbench, /distipope-briefing, and /dist-county-briefings are live HTTP redirects to those canonical paths (next.config.ts redirects) — no dead demo routes. Repo-root dist-pope-briefing/ and dist-county-briefings/ folders remain static packaging mirrors; NEXT_PUBLIC_COUNTY_WORKBENCH_URL is optional for an extra outbound hub link.",
       links: [
         { label: "County briefings (canonical)", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefings },
         { label: "/countyWorkbench (alias)", href: ASK_KELLY_SYSTEM_ROUTES.aliasCountyWorkbench },
@@ -687,6 +714,7 @@ const rules: Rule[] = [
         { label: "/dist-county-briefings (alias)", href: ASK_KELLY_SYSTEM_ROUTES.aliasDistCountyBriefings },
         { label: "Pope briefing (canonical)", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefingPope },
         { label: "Pulaski briefing v2 (central Arkansas)", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefingPulaskiV2 },
+        { label: "Faulkner briefing v2 (central Arkansas)", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefingFaulknerV2 },
         { label: "County intelligence (admin)", href: ASK_KELLY_SYSTEM_ROUTES.countyIntel },
       ],
       nextStep: "Keep voter-level detail in gated admin tools—Ask Kelly does not search the voter file.",
@@ -701,15 +729,15 @@ const rules: Rule[] = [
       (containsAny(n, ["volunteer"]) && containsAny(n, ["where", "sign up", "sign-up", "join"])) ||
       containsAny(n, ["where is the volunteer page", "where is volunteerpage"]),
     build: () => ({
-      title: "Volunteer entry (campaign management)",
+      title: "Volunteer entry (staff vs public)",
       answer:
-        "That pathway now lives inside RedDirt: the public **`/get-involved`** page and **`/admin/volunteers/intake`** for staff sheets. **`/volunteerPage`** is a **live redirect** alias to **`/get-involved`** (bookmark-safe for demos).",
+        "The marketing site keeps discovery routes only: legacy `/get-involved`, `/onboarding/power-of-5`, `/volunteerPage`, and `/local-organizing` bookmarks redirect to **`/about`** (or priorities where noted in `next.config.ts`). Staff volunteer sheet intake stays at **`/admin/volunteers/intake`**—behind your normal admin gate.",
       links: [
-        { label: "Get involved (canonical)", href: ASK_KELLY_SYSTEM_ROUTES.volunteerPublic },
-        { label: "/volunteerPage (alias)", href: ASK_KELLY_SYSTEM_ROUTES.aliasVolunteerPage },
+        { label: "About Kelly (public hub)", href: ASK_KELLY_SYSTEM_ROUTES.volunteerPublic },
+        { label: "/volunteerPage (redirect alias)", href: ASK_KELLY_SYSTEM_ROUTES.aliasVolunteerPage },
         { label: "Volunteer sheet intake (admin)", href: ASK_KELLY_SYSTEM_ROUTES.adminVolunteerIntake },
       ],
-      nextStep: "If you meant relational organizing tiers, ask your admin which relational lanes are enabled.",
+      nextStep: "If you meant field coordination tools, open Campaign workbench or ask your admin which authenticated lanes are enabled.",
     }),
   },
   {
@@ -722,13 +750,13 @@ const rules: Rule[] = [
     build: () => ({
       title: "Campaign Organizing Hub · Discord",
       answer:
-        "The Campaign Organizing Hub is your campaign-owned coordination layer—often Discord or a similar channel when your manager provisions it. No verified Discord invite ships in this admin UI; confirm access policy with your campaign manager. In-stack workflows use Campaign workbench, comms hubs, county briefings, and volunteer surfaces below—all first-party routes in this RedDirt deployment.",
+        "The Campaign Organizing Hub is your campaign-owned coordination layer—often Discord or a similar channel when your manager provisions it. No verified Discord invite ships in this admin UI; confirm access policy with your campaign manager. Public marketing chrome highlights county briefings and Kelly’s priorities; authenticated work happens in Campaign workbench and comms tools.",
       links: [
         { label: "Campaign workbench", href: ASK_KELLY_SYSTEM_ROUTES.workbench },
         { label: "Comms hub", href: ASK_KELLY_SYSTEM_ROUTES.workbenchComms },
         { label: "County briefings", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefings },
-        { label: "Get involved (canonical)", href: ASK_KELLY_SYSTEM_ROUTES.volunteerPublic },
-        { label: "/volunteerPage (alias)", href: ASK_KELLY_SYSTEM_ROUTES.aliasVolunteerPage },
+        { label: "About Kelly (public)", href: ASK_KELLY_SYSTEM_ROUTES.volunteerPublic },
+        { label: "/volunteerPage (redirect alias)", href: ASK_KELLY_SYSTEM_ROUTES.aliasVolunteerPage },
       ],
       nextStep: "If Discord is in use, keep invites and roles outside public website copy until counsel approves.",
     }),
