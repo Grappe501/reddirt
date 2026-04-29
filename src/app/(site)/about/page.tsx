@@ -12,12 +12,13 @@ import { getFeaturedYoutubeForHub } from "@/lib/content/content-hub-queries";
 import { getMergedHomepageConfig } from "@/lib/content/homepage-merge";
 import { KellyFullStory } from "@/components/about/KellyFullStory";
 import { TalkBusinessKellySection } from "@/components/about/TalkBusinessKellySection";
+import { AboutBiographyDrilldown } from "@/components/about/AboutBiographyDrilldown";
 import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
 
 export const metadata: Metadata = pageMeta({
   title: "Meet Kelly — full story",
   description:
-    "Kelly Grappe: nearly 25 years with Alltel and Verizon, small-business and farm experience, Stand Up Arkansas, Forevermost Farms, and a Secretary of State’s office that serves people and process fairly.",
+    "Kelly’s Meet Kelly hub — biography arcs with manuscript chapters, business and Verizon leadership, Forevermost Farms, Stand Up Arkansas, ballot petitions, and why Secretary of State. Links into /biography for the literary narrative.",
   path: "/about",
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
@@ -43,8 +44,11 @@ export default async function AboutPage() {
         <Button href="#talk-business-kelly" variant="outline">
           Talk Business &amp; Politics
         </Button>
-        <Button href="#kelly-full-story" variant="outline">
-          Read the full biography
+        <Button href="/biography" variant="outline">
+          Kelly&apos;s story — chapters
+        </Button>
+        <Button href="#kelly-biography-arcs" variant="outline">
+          Biography arcs (summaries + chapters)
         </Button>
         <Button href="#why-running" variant="outline">
           Why I&apos;m running (short)
@@ -62,6 +66,10 @@ export default async function AboutPage() {
           </div>
 
           <div className="mx-auto mt-10 max-w-3xl md:mt-14">
+            <AboutBiographyDrilldown />
+          </div>
+
+          <div className="mx-auto mt-12 max-w-3xl md:mt-16">
             <KellyFullStory trailPeoplePhotos={storyTrailPhotos} />
           </div>
         </ContentContainer>

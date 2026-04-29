@@ -1,13 +1,5 @@
 import { getCampaignBlogUrl, getJoinCampaignHref } from "@/config/external-campaign";
-
-/** Volunteer form tagged for tabling / representing at third-party local events. */
-export const representLocalEventVolunteerHref = "/get-involved?lane=event_representation#volunteer";
-
-/** Volunteer signup with “leadership / captain” interest pre-checked (client-side default only; same `/api/forms` payload shape). */
-export const getInvolvedVolunteerCaptainHref = "/get-involved?leadership=1#volunteer";
-
-/** Public Power of 5 onboarding (trust-first relational path). */
-export const powerOf5OnboardingHref = "/onboarding/power-of-5";
+import { BIOGRAPHY_NARRATIVE_PILLARS } from "@/content/biography/biography-narrative-pillars";
 
 export type NavItem = {
   label: string;
@@ -25,6 +17,27 @@ export type NavGroup = {
   items: NavItem[];
 };
 
+/** Chapter span label for Meet Kelly → biography arc links */
+function biographyChapterRangeLabel(orders: readonly number[]): string {
+  const lo = orders[0]!;
+  const hi = orders[orders.length - 1]!;
+  return lo === hi ? `${lo}` : `${lo}–${hi}`;
+}
+
+const meetKellyBiographyArcNavItems: NavItem[] = BIOGRAPHY_NARRATIVE_PILLARS.map((p) => ({
+  label: `Biography — ${p.navShortLabel} (Ch. ${biographyChapterRangeLabel(p.chapterOrders)})`,
+  href: `/biography#pillar-${p.id}`,
+}));
+
+/** Volunteer form tagged for tabling / representing at third-party local events. */
+export const representLocalEventVolunteerHref = "/get-involved?lane=event_representation#volunteer";
+
+/** Volunteer signup with “leadership / captain” interest pre-checked (client-side default only; same `/api/forms` payload shape). */
+export const getInvolvedVolunteerCaptainHref = "/get-involved?leadership=1#volunteer";
+
+/** Public Power of 5 onboarding (trust-first relational path). */
+export const powerOf5OnboardingHref = "/onboarding/power-of-5";
+
 /** Top nav per blueprint: compact groups + Donate as distinct control in header */
 export const primaryNavGroups: NavGroup[] = [
   {
@@ -33,6 +46,9 @@ export const primaryNavGroups: NavGroup[] = [
     groupLandingHref: "/about",
     items: [
       { label: "About Kelly", href: "/about" },
+      { label: "Kelly’s story — chapters", href: "/biography" },
+      { label: "Biography arcs (on About)", href: "/about#kelly-biography-arcs" },
+      ...meetKellyBiographyArcNavItems,
       { label: "Understand the office", href: "/understand" },
       { label: "What we stand for", href: "/what-we-believe" },
     ],
