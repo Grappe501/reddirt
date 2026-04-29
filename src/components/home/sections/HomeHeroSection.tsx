@@ -59,7 +59,7 @@ export function HomeHeroSection({ hero }: HomeHeroSectionProps) {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_100%_50%,rgba(0,0,102,0.45),transparent_45%)]" />
       </div>
 
-      <ContentContainer className="relative z-[1] flex min-h-[100svh] flex-col justify-end pb-12 pt-28 md:min-h-[min(100svh,920px)] md:justify-center md:pb-20 md:pt-24 lg:pt-28">
+      <ContentContainer className="relative z-[1] flex min-h-[100svh] flex-col justify-end pb-[max(3rem,env(safe-area-inset-bottom))] pt-28 md:min-h-[min(100svh,920px)] md:justify-center md:pb-20 md:pt-24 lg:pt-28">
         {/* Right-aligned panel (phone + desktop) so copy clears Kelly — image crop favors left/center */}
         <div className="ml-auto w-full max-w-[min(100%,22rem)] rounded-3xl border border-white/12 bg-kelly-navy/82 p-5 shadow-[0_24px_60px_rgba(12,18,34,0.55)] backdrop-blur-md xs:max-w-md sm:max-w-lg sm:p-7 md:max-w-xl md:p-8 lg:max-w-[28rem] text-white">
           <motion.p
