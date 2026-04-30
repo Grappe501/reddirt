@@ -92,7 +92,7 @@ export const primaryNavGroups: NavGroup[] = [
       { label: "Volunteer", href: "/get-involved" },
       { label: "Bring 5 Friends", href: "/get-involved/bring-5" },
       { label: "Start a Local Team", href: "/start-a-local-team" },
-      { label: "Host / Invite Kelly", href: "/events/request" },
+      { label: "Invite Kelly", href: "/events/request" },
       { label: "Donate", href: "/donate" },
     ],
   },
