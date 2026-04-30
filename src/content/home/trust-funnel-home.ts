@@ -55,9 +55,9 @@ export const trustFunnelHomeCopy = {
       records: {
         title: "Public Records",
         body:
-          "Access should be open, and the path to get there should be clear—government shouldn’t hide behind complexity.",
+          "Access should be open, and the path to get there should be clear—you shouldn’t need to be an expert to understand your own government.",
         detail:
-          "Public information should be reachable without a maze of forms—clear steps, plain language, and accountability.",
+          "Plain steps, real guidance, and accountability within what this office actually controls—not a maze of forms or jargon.",
         learnMoreHref: "/office/records",
         learnMoreLabel: "How transparency should work →",
       },

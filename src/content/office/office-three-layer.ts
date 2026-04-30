@@ -54,7 +54,7 @@ export const officeUnderstandTeasers: Record<
   records: {
     headline: "Transparency & Records",
     blurb:
-      "Public trust starts with findable, understandable records—within the office’s lane, explained in plain language, not hidden behind jargon.",
+      "You shouldn’t need an advanced degree to read what your government owes you in public—clear paths to records and systems this Secretary of State actually maintains.",
     href: "/office/records",
   },
   capitol: {
