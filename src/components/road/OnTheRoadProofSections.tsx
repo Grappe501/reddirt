@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { onTheRoadProofCopy } from "@/content/road/on-the-road";
-import { roadPostExcerpt, roadPostImageSrc, type RoadPostCard } from "@/lib/content/content-hub-queries";
+import type { RoadPostCard } from "@/lib/content/content-hub-queries";
 import type { PublicCampaignEvent } from "@/lib/calendar/public-event-types";
 import { cn } from "@/lib/utils";
 
@@ -8,6 +8,8 @@ type OnTheRoadProofSectionsProps = {
   previewPosts: RoadPostCard[];
   upcomingEvents: PublicCampaignEvent[];
   trailPhotosAvailable?: boolean;
+  /** Whether Facebook/Instagram field grid exists below (for story-band cross-links). */
+  hasFieldSocial?: boolean;
 };
 
 function ArkansasTrailMapPlaceholder() {
@@ -61,59 +63,14 @@ function ProofMetricCard({
   );
 }
 
-function ProofPostSnapshot({ post }: { post: RoadPostCard }) {
-  const img = roadPostImageSrc(post);
-  const excerpt = roadPostExcerpt(post);
-  const date =
-    post.publishedAt?.toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-    }) ?? "";
-  return (
-    <article
-      id={`story-${post.slug}`}
-      className="flex h-full flex-col overflow-hidden rounded-card border border-kelly-ink/12 bg-white/95 shadow-sm"
-    >
-      {img ? (
-        <div className="relative aspect-[16/10] bg-kelly-navy/10">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={img} alt="" className="h-full w-full object-cover" loading="lazy" />
-        </div>
-      ) : (
-        <div className="flex aspect-[16/10] items-center justify-center bg-kelly-wash font-body text-xs font-medium text-kelly-slate/70">
-          From the trail
-        </div>
-      )}
-      <div className="flex flex-1 flex-col p-4 md:p-5">
-        {date ? <p className="font-body text-[10px] font-bold uppercase tracking-[0.18em] text-kelly-slate/50">{date}</p> : null}
-        <h3 className="mt-1 font-heading text-base font-bold leading-snug text-kelly-ink md:text-lg">
-          <Link href={post.canonicalUrl} target="_blank" rel="noreferrer" className="hover:text-kelly-blue">
-            {post.title}
-          </Link>
-        </h3>
-        {excerpt ? <p className="mt-2 line-clamp-3 font-body text-sm leading-relaxed text-kelly-slate">{excerpt}</p> : null}
-        <Link
-          href={post.canonicalUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-4 inline-flex text-xs font-bold uppercase tracking-wider text-kelly-blue hover:underline md:text-sm"
-        >
-          Read more →
-        </Link>
-      </div>
-    </article>
-  );
-}
-
 export function OnTheRoadProofSections({
   previewPosts,
   upcomingEvents,
   trailPhotosAvailable = false,
+  hasFieldSocial = false,
 }: OnTheRoadProofSectionsProps) {
   const c = onTheRoadProofCopy;
-  const storyPosts = previewPosts.slice(0, 3);
-  const showLiveStories = storyPosts.length > 0;
+  const showLiveStories = previewPosts.length > 0;
 
   return (
     <>
@@ -226,12 +183,35 @@ export function OnTheRoadProofSections({
           {c.stories.title}
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-center font-body text-sm leading-relaxed text-kelly-slate md:text-base">
-          {showLiveStories ? c.stories.introWhenFeed : c.stories.introWhenPlaceholder}
+          {showLiveStories ? (
+            <>
+              Longer entries and the full grid live below—open{" "}
+              <a
+                href="#notebook"
+                className="font-semibold text-kelly-blue underline-offset-2 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50"
+              >
+                Writing on Substack
+              </a>
+              {hasFieldSocial ? (
+                <>
+                  {" or "}
+                  <a
+                    href="#field"
+                    className="font-semibold text-kelly-blue underline-offset-2 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50"
+                  >
+                    field posts
+                  </a>
+                </>
+              ) : null}
+              .
+            </>
+          ) : (
+            c.stories.introWhenPlaceholder
+          )}
         </p>
+        {showLiveStories ? null : (
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {showLiveStories
-            ? storyPosts.map((post) => <ProofPostSnapshot key={post.id} post={post} />)
-            : c.stories.placeholders.map((card) => (
+          {c.stories.placeholders.map((card) => (
                 <article
                   key={card.id}
                   className="flex h-full flex-col rounded-card border border-kelly-ink/12 bg-white/95 p-5 shadow-sm md:p-6"
@@ -241,6 +221,7 @@ export function OnTheRoadProofSections({
                 </article>
               ))}
         </div>
+        )}
       </section>
 
       <div className="mx-auto mt-16 max-w-3xl border-t border-kelly-ink/10 pt-14 text-center md:mt-20 md:pt-16">

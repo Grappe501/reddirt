@@ -55,6 +55,7 @@ export default async function FromTheRoadPage() {
           previewPosts={posts}
           upcomingEvents={upcomingEvents}
           trailPhotosAvailable={hasTrailPhotos}
+          hasFieldSocial={hasFieldSocial}
         />
 
         <div className="mt-10 md:mt-14" aria-hidden />

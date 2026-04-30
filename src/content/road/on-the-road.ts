@@ -88,8 +88,6 @@ export const onTheRoadProofCopy = {
 
   stories: {
     title: "Snapshots from the trail",
-    introWhenFeed:
-      "Latest writing and updates from the road — scroll the hub below for channels, photos, and video.",
     introWhenPlaceholder: "Until more posts are synced here, a few verified moments anchor the story.",
     placeholders: [
       {
