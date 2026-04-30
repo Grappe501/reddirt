@@ -1,12 +1,22 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 
 /**
- * Thin reading progress bar (top of viewport). motion-safe: softens animation when requested.
+ * Thin reading progress bar. Width transitions respect prefers-reduced-motion.
  */
 export function BiographyReaderProgress() {
   const [p, setP] = useState(0);
+  const [reduceMotion, setReduceMotion] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduceMotion(mq.matches);
+    const onMq = () => setReduceMotion(mq.matches);
+    mq.addEventListener("change", onMq);
+    return () => mq.removeEventListener("change", onMq);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -26,15 +36,18 @@ export function BiographyReaderProgress() {
 
   return (
     <div
-      className="pointer-events-none fixed left-0 right-0 top-0 z-[60] h-1 bg-kelly-navy/10 motion-safe:transition-[opacity] duration-150"
+      className="pointer-events-none fixed left-0 right-0 top-0 z-[60] h-1 bg-kelly-navy/10"
       role="progressbar"
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuenow={Math.round(p)}
-      aria-label="Reading progress"
+      aria-label="Reading progress through this page"
     >
       <div
-        className="h-full bg-kelly-gold/90 motion-safe:transition-[width] duration-150 ease-out"
+        className={cn(
+          "h-full bg-kelly-gold/90",
+          !reduceMotion && "transition-[width] duration-150 ease-out",
+        )}
         style={{ width: `${p}%` }}
       />
     </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
 
 export type BiographyTocItem = { id: string; label: string };
@@ -12,6 +12,7 @@ type Props = {
 
 export function BiographyChapterToc({ items, className }: Props) {
   const [active, setActive] = useState<string | null>(items[0]?.id ?? null);
+  const itemKey = useMemo(() => items.map((it) => it.id).join("|"), [items]);
 
   useEffect(() => {
     const sections = items
@@ -27,20 +28,23 @@ export function BiographyChapterToc({ items, className }: Props) {
         const id = visible[0]?.target.id;
         if (id) setActive(id);
       },
-      { rootMargin: "-45% 0px -45% 0px", threshold: [0, 0.1, 0.25, 0.5, 0.75, 1] },
+      {
+        rootMargin: "-40% 0px -40% 0px",
+        threshold: [0, 0.12, 0.25, 0.5, 0.75, 1],
+      },
     );
 
     sections.forEach((s) => obs.observe(s));
     return () => obs.disconnect();
-  }, [items]);
+  }, [itemKey, items]);
 
   return (
     <aside
-      className={cn("w-56 shrink-0 self-start lg:sticky lg:top-28", className)}
+      className={cn("w-56 shrink-0 self-start lg:sticky lg:top-[7rem] xl:top-28", className)}
       aria-label="Chapter list"
     >
       <p className="font-body text-[10px] font-bold uppercase tracking-wider text-kelly-text/50">Jump to</p>
-      <ol className="mt-3 space-y-2 border-l border-kelly-text/10 pl-3">
+      <ol className="mt-3 max-h-[min(70vh,32rem)] space-y-1.5 overflow-y-auto border-l border-kelly-text/10 pl-3 pr-1 [scrollbar-gutter:stable]">
         {items.map((it) => {
           const current = active === it.id;
           return (
@@ -48,7 +52,7 @@ export function BiographyChapterToc({ items, className }: Props) {
               <a
                 href={`#${it.id}`}
                 className={cn(
-                  "block py-1 font-body text-xs leading-snug transition",
+                  "block min-h-10 rounded-md py-1.5 pl-1 font-body text-xs leading-snug transition",
                   current ? "font-semibold text-kelly-navy" : "text-kelly-text/70 hover:text-kelly-navy",
                 )}
                 aria-current={current ? "location" : undefined}

@@ -31,7 +31,7 @@ async function loadChapterBody(filename: string): Promise<string | null> {
 
 const beginBtnClass = cn(
   "inline-flex min-h-12 items-center justify-center rounded-btn bg-kelly-navy px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-white shadow-md",
-  "transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-kelly-blue hover:shadow-lg",
+  "transition duration-300 ease-out hover:bg-kelly-blue hover:shadow-lg motion-safe:hover:-translate-y-0.5",
   "focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/45",
 );
 
@@ -58,8 +58,8 @@ export default async function BiographyPage() {
     <>
       <BiographyReaderProgress />
       <div className="min-h-screen bg-kelly-page">
-        <header className="border-b border-kelly-text/10 bg-gradient-to-b from-kelly-wash via-kelly-page to-kelly-page pb-12 pt-24 sm:pt-28 md:pt-32">
-          <ContentContainer className="max-w-2xl text-center">
+        <header className="border-b border-kelly-text/10 bg-gradient-to-b from-kelly-wash via-kelly-page to-kelly-page pb-14 pt-24 sm:pb-16 sm:pt-28 md:pt-32">
+          <ContentContainer className="max-w-2xl text-center md:max-w-[40rem]">
             <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-kelly-text/55">Reading</p>
             <h1 className="mt-4 font-heading text-[clamp(1.75rem,5vw,2.75rem)] font-bold leading-tight text-kelly-ink">
               {biographyReadingIntro.title}
@@ -73,16 +73,16 @@ export default async function BiographyPage() {
           </ContentContainer>
         </header>
 
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-[var(--gutter-x)] py-10 lg:flex-row lg:gap-12 lg:py-14">
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-[var(--gutter-x)] py-10 sm:py-12 md:py-14 lg:flex-row lg:gap-10 lg:py-16 xl:gap-12">
           <BiographyChapterToc items={tocItems} className="hidden lg:block" />
 
           <main className="min-w-0 flex-1" id="biography-main">
-            <nav aria-label="Chapters" className="mb-12 rounded-card border border-kelly-text/10 bg-kelly-fog/50 p-4 lg:hidden">
+            <nav aria-label="Chapters" className="mb-10 rounded-card border border-kelly-text/10 bg-kelly-fog/50 p-4 sm:p-5 lg:hidden">
               <p className="font-body text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Chapters</p>
-              <ol className="mt-2 grid list-decimal gap-1 pl-4 font-body text-sm text-kelly-text/85">
+              <ol className="mt-3 grid list-decimal gap-2 pl-5 font-body text-sm text-kelly-text/85 sm:gap-2.5">
                 {tocItems.map((it) => (
                   <li key={it.id} className="pl-1">
-                    <a href={`#${it.id}`} className="text-kelly-navy underline-offset-2 hover:underline">
+                    <a href={`#${it.id}`} className="inline-flex min-h-11 items-center text-kelly-navy underline-offset-2 hover:underline">
                       {it.label}
                     </a>
                   </li>
@@ -102,7 +102,12 @@ export default async function BiographyPage() {
                   <section
                   id={`bio-chapter-${c.slug}`}
                   data-bio-chapter
-                  className="mb-14 scroll-mt-28 border-b border-kelly-text/10 pb-14 last:mb-0 md:mb-20 md:pb-20"
+                  className={cn(
+                    "scroll-mt-28 border-b border-kelly-text/10",
+                    c.slug === "epilogue"
+                      ? "mb-0 pb-16 md:pb-24"
+                      : "mb-14 pb-14 md:mb-20 md:pb-20",
+                  )}
                 >
                   <p className="font-body text-[11px] font-bold uppercase tracking-[0.18em] text-kelly-text/50">{kind}</p>
                   <h2 className="mt-2 font-heading text-2xl font-bold text-kelly-navy md:text-3xl">{c.title}</h2>
@@ -112,15 +117,15 @@ export default async function BiographyPage() {
                       Missing chapter file: <code className="font-semibold">{c.filename}</code>
                     </div>
                   ) : (
-                    <article className="biography-chapter-body mt-8 whitespace-pre-wrap font-body text-[1.05rem] leading-[1.75] text-kelly-text/90 md:max-w-[42rem]">
+                    <article className="biography-chapter-body mt-8 max-w-[44rem] whitespace-pre-wrap font-body text-[1.02rem] leading-[1.72] text-kelly-text/90 sm:text-[1.05rem] sm:leading-[1.75] md:leading-[1.78]">
                       {c.body}
                     </article>
                   )}
                   {next ? (
-                    <p className="mt-12">
+                    <p className="mt-12 sm:mt-14">
                       <Link
                         href={`#bio-chapter-${next.slug}`}
-                        className="font-body text-sm font-semibold text-kelly-blue underline decoration-kelly-blue/30 underline-offset-4 transition hover:decoration-kelly-blue"
+                        className="inline-flex min-h-11 items-center font-body text-sm font-semibold text-kelly-blue underline decoration-kelly-blue/30 underline-offset-4 transition hover:decoration-kelly-blue"
                       >
                         Continue — {next.title}
                       </Link>
