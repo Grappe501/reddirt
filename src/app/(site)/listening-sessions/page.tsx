@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageHero } from "@/components/blocks/PageHero";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
@@ -321,6 +322,40 @@ export default async function ListeningSessionsPage() {
           </ContentContainer>
         </FullBleedSection>
 
+        <FullBleedSection padY aria-labelledby="listening-crosslinks-heading">
+          <ContentContainer className="max-w-3xl">
+            {/*
+              TODO: Link to Google-approved calendar segments when public schedule UX is unified (later).
+            */}
+            <h2 id="listening-crosslinks-heading" className="font-heading text-xl font-bold text-kelly-text md:text-2xl">
+              Related next steps
+            </h2>
+            <p className="mt-3 font-body text-sm text-kelly-text/75">
+              Listening sessions are one door into the campaign — here are close neighbors on the public site.
+            </p>
+            <ul className="mt-6 list-none space-y-3 font-body text-kelly-text">
+              <li>
+                <Link href="/events/request" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
+                  Request Kelly
+                </Link>{" "}
+                <span className="text-kelly-text/70">— invite Kelly to your county room or civic gathering.</span>
+              </li>
+              <li>
+                <Link href="/events" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
+                  Campaign Calendar
+                </Link>{" "}
+                <span className="text-kelly-text/70">— approved public events as staff publish them.</span>
+              </li>
+              <li>
+                <Link href="/from-the-road" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
+                  From the Road
+                </Link>{" "}
+                <span className="text-kelly-text/70">— trail proof, channels, and field updates.</span>
+              </li>
+            </ul>
+          </ContentContainer>
+        </FullBleedSection>
+
         <CTASection
           title="Not ready to host? Stay in the loop"
           description="Get updates from the road, trainings, and opportunities that match your county—without filling another long form first."
@@ -329,7 +364,7 @@ export default async function ListeningSessionsPage() {
             Get involved
           </Button>
           <Button href="/events" variant="outline">
-            Movement events
+            Campaign Calendar
           </Button>
           <Button href={representLocalEventVolunteerHref} variant="outline">
             Represent at local events

@@ -22,11 +22,16 @@ import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
 import { RepresentLocalEventPanel } from "@/components/organizing/RepresentLocalEventPanel";
 import { representLocalEventVolunteerHref } from "@/config/navigation";
 
-export const metadata: Metadata = {
-  title: "Events",
+import { pageMeta } from "@/lib/seo/metadata";
+import { brandMediaFromLegacySite } from "@/config/brand-media";
+
+export const metadata: Metadata = pageMeta({
+  title: "Campaign Calendar",
   description:
-    "Trainings, listening sessions, town halls, and porch gatherings across Arkansas for the Secretary of State campaign.",
-};
+    "See where Kelly will be next, where the campaign is showing up, and how Arkansans can join the work — trainings, gatherings, and public calendar items as they are approved.",
+  path: "/events",
+  imageSrc: brandMediaFromLegacySite.statewideBanner,
+});
 
 function pickParam(sp: Record<string, string | string[] | undefined>, key: string): string | undefined {
   const v = sp[key];
@@ -35,6 +40,12 @@ function pickParam(sp: Record<string, string | string[] | undefined>, key: strin
   return undefined;
 }
 
+/**
+ * Campaign calendar hub: static movement events + Prisma-backed public events when the DB is available.
+ * TODO: Approved Google Calendar public feed (read-only) after integration design.
+ * TODO: Pending-approval calendar / admin queue remains internal — never show unconfirmed stops as public fact.
+ * TODO: Optional map + county completion visualization (later; no placeholder map pins).
+ */
 export default async function EventsPage({
   searchParams,
 }: {
@@ -84,20 +95,23 @@ export default async function EventsPage({
   return (
     <>
       <PageHero
-        eyebrow="Gather"
-        title="Movement events"
-        subtitle="This is the front door: join what is scheduled, host something new, tell us what is happening in your town, or raise your hand to represent the campaign where you already show up."
+        eyebrow="Campaign calendar"
+        title="Campaign Calendar"
+        subtitle="See where Kelly will be next, where the campaign is showing up, and how Arkansans can join the work."
         className="!pb-[calc(var(--section-padding-y)*0.5)] lg:!pb-[calc(var(--section-padding-y-lg)*0.5)]"
         contentClassName="pt-10 pb-5 lg:pt-14 lg:pb-7"
       >
-        <Button href="/host-a-gathering" variant="primary">
+        <Button href="/events/request" variant="primary">
+          Request Kelly
+        </Button>
+        <Button href="/host-a-gathering" variant="outline">
           Host a gathering
         </Button>
         <Button href={representLocalEventVolunteerHref} variant="outline">
           Represent us locally
         </Button>
         <Button href="/listening-sessions" variant="outline">
-          Election listening tour
+          Listening sessions
         </Button>
         <Button href="/local-organizing" variant="outline">
           Local organizing hub
@@ -250,6 +264,62 @@ export default async function EventsPage({
               </li>
             ))}
           </ul>
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection id="upcoming" padY aria-labelledby="campaign-upcoming-heading">
+        <ContentContainer wide>
+          <h2 id="campaign-upcoming-heading" className="font-heading text-xl font-bold text-kelly-text md:text-2xl">
+            Upcoming events
+          </h2>
+          <p className="mt-3 max-w-3xl font-body text-kelly-text/75">
+            The filterable grid below merges curated movement events with{" "}
+            <strong className="text-kelly-text">approved</strong> public calendar items from the campaign database. New
+            stops are added only after review and confirmation.
+          </p>
+          {calendarRows.length === 0 ? (
+            <p
+              className="mt-4 max-w-3xl rounded-card border border-dashed border-kelly-text/20 bg-kelly-wash/60 px-4 py-4 font-body text-sm leading-relaxed text-kelly-text/80"
+              role="status"
+            >
+              No live database calendar rows loaded here yet (or the campaign database is unavailable in this
+              environment). You can still browse curated movement events in the grid — and trail moments always live on{" "}
+              <Link href="/from-the-road" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
+                From the Road
+              </Link>
+              .
+            </p>
+          ) : null}
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection variant="subtle" padY aria-labelledby="past-stops-heading">
+        <ContentContainer>
+          <h2 id="past-stops-heading" className="font-heading text-xl font-bold text-kelly-text md:text-2xl">
+            Past stops / On the Road
+          </h2>
+          <p className="mt-3 max-w-2xl font-body text-kelly-text/75">
+            Miles, engagements, and trail proof live on the dedicated road hub — including verified milestones while we keep
+            building the public calendar.
+          </p>
+          <Button href="/from-the-road" variant="outline" className="mt-6 min-h-[48px]">
+            Open From the Road
+          </Button>
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection padY aria-labelledby="request-kelly-cal-heading">
+        <ContentContainer>
+          <h2 id="request-kelly-cal-heading" className="font-heading text-xl font-bold text-kelly-text md:text-2xl">
+            Request Kelly
+          </h2>
+          <p className="mt-3 max-w-2xl font-body text-kelly-text/75">
+            Want Kelly in your town, fair, county meeting, or civic room? Start a request — staff will review, follow
+            up, and confirm logistics before anything is treated as public schedule.
+          </p>
+          <Button href="/events/request" variant="primary" className="mt-6 min-h-[48px]">
+            Start a request
+          </Button>
         </ContentContainer>
       </FullBleedSection>
 
