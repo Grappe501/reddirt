@@ -335,6 +335,15 @@ export default async function ListeningSessionsPage() {
             </p>
             <ul className="mt-6 list-none space-y-3 font-body text-kelly-text">
               <li>
+                <Link
+                  href="/events/community-election-integrity-tour"
+                  className="font-semibold text-kelly-navy underline-offset-2 hover:underline"
+                >
+                  Community Election Integrity Tour
+                </Link>{" "}
+                <span className="text-kelly-text/70">— civic education stops and county point teams (planned).</span>
+              </li>
+              <li>
                 <Link href="/events/request" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
                   Invite Kelly
                 </Link>{" "}

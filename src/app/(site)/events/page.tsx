@@ -323,6 +323,26 @@ export default async function EventsPage({
         </ContentContainer>
       </FullBleedSection>
 
+      <FullBleedSection variant="subtle" padY aria-labelledby="integrity-tour-heading">
+        <ContentContainer>
+          <h2 id="integrity-tour-heading" className="font-heading text-xl font-bold text-kelly-text md:text-2xl">
+            Community Election Integrity Tour
+          </h2>
+          <p className="mt-3 max-w-2xl font-body text-kelly-text/75">
+            Planned civic-education stops — plain-language systems, local questions, and county point teams. Nothing is added
+            to the public calendar until a stop is verified.
+          </p>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Button href="/events/community-election-integrity-tour" variant="outline" className="min-h-[48px]">
+              Tour overview
+            </Button>
+            <Button href="/events/community-election-integrity-tour/request" variant="outline" className="min-h-[48px]">
+              Invite a tour stop
+            </Button>
+          </div>
+        </ContentContainer>
+      </FullBleedSection>
+
       <FullBleedSection variant="subtle" padY>
         <ContentContainer wide>
           <EventsHub
