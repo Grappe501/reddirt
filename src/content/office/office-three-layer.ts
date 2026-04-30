@@ -8,15 +8,12 @@
 
 import { getJoinCampaignHref } from "@/config/external-campaign";
 import { voterRegistrationHref } from "@/config/navigation";
+import { businessAreaConfig } from "@/content/office/business-area";
 import { electionsAreaConfig } from "@/content/office/elections-area";
 import {
   OFFICE_AREA_SLUGS,
   type OfficeAreaConfig,
   type OfficeAreaSlug,
-  type OfficeCard,
-  type OfficeLayerCopy,
-  type OfficeLayerThreeCopy,
-  type OfficeSectionBlock,
 } from "@/content/office/office-types";
 
 export type {
@@ -49,7 +46,8 @@ export const officeUnderstandTeasers: Record<
   },
   business: {
     headline: "Business & Filings",
-    blurb: "Registrations and filings employers, nonprofits, and small businesses rely on—economic infrastructure in plain process.",
+    blurb:
+      "Registrations, filings, and searchable records that keep commerce legible—economic infrastructure that should feel clear, not like a second job.",
     href: "/office/business",
   },
   records: {
@@ -66,79 +64,7 @@ export const officeUnderstandTeasers: Record<
 
 export const OFFICE_AREAS: readonly OfficeAreaConfig[] = [
   electionsAreaConfig,
-  {
-    slug: "business",
-    title: "Business & Filings",
-    shortTitle: "Business & Filings",
-    navLabel: "Business & Filings",
-    metaDescription:
-      "Business registrations and filings as economic infrastructure—and how steady, plain-language administration helps Arkansas employers and nonprofits.",
-    layerOne: {
-      eyebrow: "The Office · Layer 1",
-      title: "Business & Filings",
-      intro:
-        "The office handles business registrations, filings, and related tools that small businesses, nonprofits, and employers use to stay in good standing and focus on their mission—not on wrestling paperwork.",
-      sections: [
-        {
-          heading: "Economic infrastructure",
-          paragraphs: [
-            "When filings are predictable and instructions are readable, Arkansas organizations spend less time untangling process and more time hiring, serving customers, and delivering community impact.",
-          ],
-        },
-      ],
-      cards: [
-        { title: "Small business reality", body: "Most filers are not lawyers; they deserve forms and guidance that respect their time." },
-        { title: "Nonprofits too", body: "Charitable and civic entities rely on the same public systems—clarity helps good work move faster." },
-      ],
-    },
-    layerTwo: {
-      eyebrow: "The Office · Layer 2",
-      title: "Why smooth filings matter",
-      intro:
-        "A delayed filing, a confusing fee schedule, or a portal that breaks at the wrong moment can stall a grand opening, a grant, or payroll—especially for operators without a compliance department.",
-      sections: [
-        {
-          heading: "Who feels it",
-          paragraphs: [
-            "Main Street shops, startups, faith-based nonprofits, and volunteer treasurers all bump into the Secretary of State’s systems. Friction here is a tax on optimism.",
-          ],
-        },
-        {
-          heading: "Kelly’s operational lens",
-          paragraphs: [
-            "Kelly spent years improving processes at scale—making instructions survive first contact with real humans. That mindset matches an office that should treat every filer with respect.",
-          ],
-        },
-      ],
-    },
-    layerThree: {
-      eyebrow: "The Office · Layer 3",
-      title: "Prepared to modernize service—not ego",
-      intro:
-        "Running business services well is engineering plus empathy: standards, plain language, feedback loops, and humility when something needs fixing.",
-      sections: [
-        {
-          heading: "Verizon-honed habits",
-          paragraphs: [
-            "Large-team leadership, training rooms, and river-tower accountability taught Kelly to measure success by whether the system works for the person using it—not by how impressive the org chart looks.",
-          ],
-        },
-        {
-          heading: "Reducing friction",
-          paragraphs: [
-            "Kelly approaches filings as infrastructure: fewer loops, clearer checkpoints, and honest help when something breaks—aligned with People over Politics and non-partisan administration.",
-          ],
-        },
-      ],
-      softCtas: [
-        { label: "Meet Kelly", href: "/about" },
-        { label: "Why Kelly", href: "/about/why-kelly" },
-        { label: "Volunteer", href: getJoinCampaignHref() },
-        { label: "Vote / Register", href: voterRegistrationHref },
-      ],
-    },
-    relatedLinks: [{ label: "Understand the Office", href: "/understand" }],
-  },
+  businessAreaConfig,
   {
     slug: "records",
     title: "Transparency & Records",

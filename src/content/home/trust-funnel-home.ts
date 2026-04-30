@@ -49,6 +49,8 @@ export const trustFunnelHomeCopy = {
           "Filing and registrations ought to be straightforward. Systems should work the first time, with less confusion, fewer loops, and real help when something breaks.",
         detail:
           "When filings are predictable, owners and treasurers spend less time fighting the process—and more time running their organizations.",
+        learnMoreHref: "/office/business",
+        learnMoreLabel: "How the office handles business & filings →",
       },
       records: {
         title: "Public Records",
