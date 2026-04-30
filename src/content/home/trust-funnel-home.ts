@@ -80,8 +80,8 @@ export const trustFunnelHomeCopy = {
     intro:
       "Kelly’s background in civic work is practical: help people understand what the rules ask of them, remove avoidable obstacles, and show up when neighbors decide to participate.",
     bullets: [
-      "LEARNS referendum involvement—neighbor-to-neighbor education and hands-on support, described simply and without taking sides.",
-      "A Sherwood duplex turned petition headquarters so volunteers had a real base of operations.",
+      "Citizen-led referendum work around the LEARNS Act—neighbor-to-neighbor education, hands-on support for lawful signature gathering, and plain explanation of process, rules, and deadlines.",
+      "In Sherwood, a duplex organized as petition headquarters gave volunteers a stable base for coordinating civic work on the ground.",
       "Pickup and dropoff for petitions—small logistics that protect signatures and deadlines.",
       "Notary support and plain explanation so people weren’t stuck on technicalities for doing things the right way.",
       "When the structure was clear, people showed up—proof that participation grows when the process feels respectful.",
@@ -128,7 +128,7 @@ export const trustFunnelHomeCopy = {
     "Serving all 75 counties",
     "Transparent systems",
     "Accessible government",
-    "Non-partisan leadership",
+    "Non-partisan administration",
     "People over Politics",
   ] as const,
 
