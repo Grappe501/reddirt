@@ -6,9 +6,8 @@
  * language where partnership with Capitol Police is described.
  */
 
-import { getJoinCampaignHref } from "@/config/external-campaign";
-import { voterRegistrationHref } from "@/config/navigation";
 import type { OfficeAreaConfig } from "@/content/office/office-types";
+import { STANDARD_OFFICE_LAYER_THREE_SOFT_CTAS } from "@/content/office/standard-layer-three-ctas";
 
 export const capitolAreaConfig: OfficeAreaConfig = {
   slug: "capitol",
@@ -79,7 +78,7 @@ export const capitolAreaConfig: OfficeAreaConfig = {
         paragraphs: [
           "Respect their role and the difficulty of protecting a living workplace, not a museum.",
           "Support professionalism: training, clarity of expectations, and coordination that does not jerk from headline to headline.",
-          "Avoid politicizing their work—their mission is public safety and lawful order, not campaign theater.",
+          "Avoid politicizing their work—their mission is public safety and lawful order, not partisan grandstanding.",
           "Clear expectations and steady communication between leadership and partners matter as much as equipment.",
         ],
       },
@@ -142,21 +141,16 @@ export const capitolAreaConfig: OfficeAreaConfig = {
           "Respect for Capitol Police and the difficult job they do—without turning them into talking points.",
           "Responsible stewardship of building and grounds within the office’s authority—honest about tradeoffs when resources are tight.",
           "Clear standards people can recognize in how the complex is run.",
-          "Safe access approached with calm leadership—not alarm, not theater.",
+          "Safe access approached with calm leadership—not alarm, not political theater.",
           "Steady tone from the top: competence over performance.",
         ],
       },
     ],
-    softCtas: [
-      { label: "Experience & Leadership", href: "/about/business" },
-      { label: "Why Kelly", href: "/about/why-kelly" },
-      { label: "Meet Kelly", href: "/about" },
-      { label: "Volunteer", href: getJoinCampaignHref() },
-      { label: "Vote / Register", href: voterRegistrationHref },
-    ],
+    softCtas: STANDARD_OFFICE_LAYER_THREE_SOFT_CTAS,
   },
   relatedLinks: [
     { label: "Understand the Office", href: "/understand" },
+    { label: "Experience & Leadership", href: "/about/business" },
     { label: "Priorities — People’s House", href: "/priorities#peoples-house-heading" },
     { label: "Why this race matters", href: "/office/why-this-race-matters" },
   ],

@@ -13,9 +13,8 @@
  * no overstatement of SOS authority beyond lawful administration and systems the office actually runs.
  */
 
-import { getJoinCampaignHref } from "@/config/external-campaign";
-import { voterRegistrationHref } from "@/config/navigation";
 import type { OfficeAreaConfig } from "@/content/office/office-types";
+import { STANDARD_OFFICE_LAYER_THREE_SOFT_CTAS } from "@/content/office/standard-layer-three-ctas";
 
 export const electionsAreaConfig: OfficeAreaConfig = {
   slug: "elections",
@@ -24,7 +23,6 @@ export const electionsAreaConfig: OfficeAreaConfig = {
   navLabel: "Elections",
   metaDescription:
     "What the Arkansas Secretary of State does in election administration: clear rules, secure systems, county partnership, and public confidence in an evenhanded process.",
-  layerOneNextLabel: "See why election administration matters",
   layerOne: {
     eyebrow: "The Office · Layer 1",
     title: "Elections",
@@ -156,15 +154,11 @@ export const electionsAreaConfig: OfficeAreaConfig = {
         ],
       },
     ],
-    softCtas: [
-      { label: "Why Kelly", href: "/about/why-kelly" },
-      { label: "Meet Kelly", href: "/about" },
-      { label: "Vote / Register", href: voterRegistrationHref },
-      { label: "Volunteer", href: getJoinCampaignHref() },
-    ],
+    softCtas: STANDARD_OFFICE_LAYER_THREE_SOFT_CTAS,
   },
   relatedLinks: [
     { label: "Understand the Office", href: "/understand" },
+    { label: "Experience & Leadership", href: "/about/business" },
     { label: "Why this race matters", href: "/office/why-this-race-matters" },
     { label: "Election listening sessions", href: "/listening-sessions" },
   ],

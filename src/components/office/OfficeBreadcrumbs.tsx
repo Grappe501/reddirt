@@ -22,9 +22,19 @@ export function OfficeBreadcrumbs({ areaSlug, areaShortTitle, layer, className }
 
   return (
     <nav aria-label="Breadcrumb" className={cn("font-body text-sm text-kelly-text/75", className)}>
+      <p className="sr-only" aria-live="polite">
+        {layer === 1
+          ? `${areaShortTitle}, overview.`
+          : layer === 2
+            ? `${areaShortTitle}, why it matters.`
+            : `${areaShortTitle}, full picture.`}
+      </p>
       <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
         <li>
-          <Link href="/understand" className="font-medium text-kelly-navy underline-offset-2 hover:underline">
+          <Link
+            href="/understand"
+            className="font-medium text-kelly-navy underline-offset-2 hover:underline focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/45 focus-visible:ring-offset-2"
+          >
             The Office
           </Link>
         </li>
@@ -33,9 +43,14 @@ export function OfficeBreadcrumbs({ areaSlug, areaShortTitle, layer, className }
         </li>
         <li>
           {layer === 1 ? (
-            <span className="font-semibold text-kelly-text">{areaShortTitle}</span>
+            <span className="font-semibold text-kelly-text" aria-current="page">
+              {areaShortTitle}
+            </span>
           ) : (
-            <Link href={layer1Href} className="font-medium text-kelly-navy underline-offset-2 hover:underline">
+            <Link
+              href={layer1Href}
+              className="font-medium text-kelly-navy underline-offset-2 hover:underline focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/45 focus-visible:ring-offset-2"
+            >
               {areaShortTitle}
             </Link>
           )}
@@ -47,11 +62,13 @@ export function OfficeBreadcrumbs({ areaSlug, areaShortTitle, layer, className }
             </li>
             <li>
               {layer === 2 ? (
-                <span className="font-semibold text-kelly-text">{layerLabels[2]}</span>
+                <span className="font-semibold text-kelly-text" aria-current="page">
+                  {layerLabels[2]}
+                </span>
               ) : (
                 <Link
                   href={officeLayerPath(areaSlug, 2)}
-                  className="font-medium text-kelly-navy underline-offset-2 hover:underline"
+                  className="font-medium text-kelly-navy underline-offset-2 hover:underline focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/45 focus-visible:ring-offset-2"
                 >
                   {layerLabels[2]}
                 </Link>
@@ -64,7 +81,9 @@ export function OfficeBreadcrumbs({ areaSlug, areaShortTitle, layer, className }
             <li aria-hidden className="text-kelly-text/40">
               /
             </li>
-            <li className="font-semibold text-kelly-text">{layerLabels[3]}</li>
+            <li className="font-semibold text-kelly-text" aria-current="page">
+              {layerLabels[3]}
+            </li>
           </>
         ) : null}
       </ol>

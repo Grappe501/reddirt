@@ -5,9 +5,8 @@
  * not specific statutory or fee commitments unless separately verified and approved.
  */
 
-import { getJoinCampaignHref } from "@/config/external-campaign";
-import { voterRegistrationHref } from "@/config/navigation";
 import type { OfficeAreaConfig } from "@/content/office/office-types";
+import { STANDARD_OFFICE_LAYER_THREE_SOFT_CTAS } from "@/content/office/standard-layer-three-ctas";
 
 export const businessAreaConfig: OfficeAreaConfig = {
   slug: "business",
@@ -144,15 +143,11 @@ export const businessAreaConfig: OfficeAreaConfig = {
         ],
       },
     ],
-    softCtas: [
-      { label: "Experience & Leadership", href: "/about/business" },
-      { label: "Meet Kelly", href: "/about" },
-      { label: "Volunteer", href: getJoinCampaignHref() },
-      { label: "Vote / Register", href: voterRegistrationHref },
-    ],
+    softCtas: STANDARD_OFFICE_LAYER_THREE_SOFT_CTAS,
   },
   relatedLinks: [
     { label: "Understand the Office", href: "/understand" },
+    { label: "Experience & Leadership", href: "/about/business" },
     { label: "Why this race matters", href: "/office/why-this-race-matters" },
   ],
 };

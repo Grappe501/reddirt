@@ -8,9 +8,8 @@
  * no unverified allegations, no claiming SOS controls all state agencies’ files.
  */
 
-import { getJoinCampaignHref } from "@/config/external-campaign";
-import { voterRegistrationHref } from "@/config/navigation";
 import type { OfficeAreaConfig } from "@/content/office/office-types";
+import { STANDARD_OFFICE_LAYER_THREE_SOFT_CTAS } from "@/content/office/standard-layer-three-ctas";
 
 export const recordsAreaConfig: OfficeAreaConfig = {
   slug: "records",
@@ -19,7 +18,6 @@ export const recordsAreaConfig: OfficeAreaConfig = {
   navLabel: "Transparency & Records",
   metaDescription:
     "Transparency and public records under the Secretary of State’s authority—plain language and useful paths so Arkansans are not expected to be experts to understand their own government.",
-  layerOneNextLabel: "See why transparency matters",
   layerOne: {
     eyebrow: "The Office · Layer 1",
     title: "Transparency & Records",
@@ -41,7 +39,7 @@ export const recordsAreaConfig: OfficeAreaConfig = {
           "Clear access points: a front door you can find on the first try, not a maze of PDFs and dead links.",
           "Plain-language guidance that says what to do next—in words a busy parent or a small-town treasurer can use.",
           "Records and official information that are organized and understandable, so lawful disclosure actually helps someone.",
-          "Public systems that do not feel hidden behind bureaucracy—you are a citizen, not a nuisance ticket in a queue.",
+          "Public systems that do not feel hidden behind bureaucracy—you are a citizen to be served, not paperwork to be processed.",
         ],
       },
       {
@@ -149,15 +147,11 @@ export const recordsAreaConfig: OfficeAreaConfig = {
         ],
       },
     ],
-    softCtas: [
-      { label: "Why Kelly", href: "/about/why-kelly" },
-      { label: "Meet Kelly", href: "/about" },
-      { label: "Vote / Register", href: voterRegistrationHref },
-      { label: "Volunteer", href: getJoinCampaignHref() },
-    ],
+    softCtas: STANDARD_OFFICE_LAYER_THREE_SOFT_CTAS,
   },
   relatedLinks: [
     { label: "Understand the Office", href: "/understand" },
+    { label: "Experience & Leadership", href: "/about/business" },
     { label: "Priorities — transparency", href: "/priorities#transparency-heading" },
     { label: "Why this race matters", href: "/office/why-this-race-matters" },
   ],
