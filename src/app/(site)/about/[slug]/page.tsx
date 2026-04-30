@@ -7,6 +7,7 @@ import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
 import { AboutKellyChapterNav } from "@/components/about/AboutKellyChapterNav";
 import { KellyChapterBody } from "@/components/about/KellyChapterBody";
+import { BiographyDiscoveryLink } from "@/components/biography/BiographyDiscoveryLink";
 import {
   KELLY_ABOUT_CHAPTERS,
   isKellyAboutSlug,
@@ -65,6 +66,27 @@ export default async function AboutChapterPage({ params }: PageProps) {
             </Link>{" "}
             for the full list of chapters.
           </p>
+          {slug === "story" ? (
+            <div className="mt-10 space-y-4 border-t border-kelly-text/10 pt-10">
+              <BiographyDiscoveryLink tone="primary" href="/biography" label="Read the full story — biography">
+                Read the full story
+              </BiographyDiscoveryLink>
+            </div>
+          ) : null}
+          {slug === "forevermost" ? (
+            <div className="mt-10 space-y-4 border-t border-kelly-text/10 pt-10">
+              <BiographyDiscoveryLink tone="secondary" href="/biography" label="Go deeper into Kelly’s journey — biography">
+                Go deeper into Kelly’s journey
+              </BiographyDiscoveryLink>
+            </div>
+          ) : null}
+          {slug === "business" ? (
+            <div className="mt-10 border-t border-kelly-text/10 pt-10">
+              <BiographyDiscoveryLink tone="soft" href="/biography" label="Go deeper into Kelly’s journey — biography">
+                Go deeper into Kelly’s journey →
+              </BiographyDiscoveryLink>
+            </div>
+          ) : null}
         </ContentContainer>
       </FullBleedSection>
     </>

@@ -5,6 +5,7 @@ import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
 import { pageMeta } from "@/lib/seo/metadata";
 import { whyKellyPageCopy } from "@/content/about/why-kelly-page";
+import { BiographyDiscoveryLink } from "@/components/biography/BiographyDiscoveryLink";
 
 const c = whyKellyPageCopy;
 
@@ -25,9 +26,6 @@ export default function WhyKellyPage() {
         </Button>
         <Button href="/understand" variant="outline">
           Understand the office
-        </Button>
-        <Button href="/biography" variant="outline">
-          Full biography
         </Button>
       </PageHero>
 
@@ -87,6 +85,11 @@ export default function WhyKellyPage() {
             <Button href="/priorities" variant="outline">
               Office priorities
             </Button>
+          </div>
+          <div className="mx-auto mt-12 max-w-3xl border-t border-kelly-text/10 pt-8 text-center">
+            <BiographyDiscoveryLink tone="soft" href="/biography" label="Begin the full biography — reading experience">
+              Begin the full biography →
+            </BiographyDiscoveryLink>
           </div>
         </ContentContainer>
       </FullBleedSection>

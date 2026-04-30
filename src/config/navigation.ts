@@ -46,9 +46,6 @@ export const primaryNavGroups: NavGroup[] = [
       { label: "Her Story", href: "/about/story" },
       { label: "Experience & Leadership", href: "/about/business" },
       { label: "Family & Community", href: "/about/forevermost" },
-      { label: "Full Biography", href: "/biography" },
-      { label: "Understand the office", href: "/understand" },
-      { label: "What we stand for", href: "/what-we-believe" },
     ],
   },
   {
