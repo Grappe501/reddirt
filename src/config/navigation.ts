@@ -65,10 +65,10 @@ export const primaryNavGroups: NavGroup[] = [
     label: "News",
     items: [
       { label: "From the Road", href: "/from-the-road" },
-      { label: "Press coverage", href: "/press-coverage" },
-      { label: "Stories", href: "/stories" },
+      { label: "Press Coverage", href: "/press-coverage" },
+      { label: "Campaign Updates", href: "/updates" },
       { label: "Editorial", href: "/editorial" },
-      { label: "Kelly’s Substack", href: getCampaignBlogUrl() },
+      { label: "Explainers", href: "/explainers" },
     ],
   },
   {
@@ -118,6 +118,8 @@ export const footerNavGroups: { title: string; items: NavItem[] }[] = [
     title: "News & action",
     items: [
       ...primaryNavGroups[2].items,
+      { label: "Stories", href: "/stories" },
+      { label: "Kelly’s Substack", href: getCampaignBlogUrl() },
       { label: "Events", href: "/events" },
       { label: "Represent at local events", href: representLocalEventVolunteerHref },
       { label: "Election listening sessions", href: "/listening-sessions" },

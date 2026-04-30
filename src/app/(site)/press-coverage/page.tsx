@@ -10,9 +10,9 @@ import { brandMediaFromLegacySite } from "@/config/brand-media";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = pageMeta({
-  title: "Press coverage",
+  title: "Press Coverage",
   description:
-    "Earned media, curated press links, and third-party election guides and results pages for the Arkansas Secretary of State race — all in one place under News.",
+    "News, interviews, and public coverage of Kelly Grappe for Secretary of State — earned media and curated links, reviewed by the campaign.",
   path: "/press-coverage",
   imageSrc: brandMediaFromLegacySite.statewideBanner,
 });
@@ -35,14 +35,17 @@ export default async function PressCoveragePage() {
     <div className="min-h-screen bg-gradient-to-b from-kelly-fog/90 via-white to-kelly-fog/50 pb-16 pt-10 md:pb-24 md:pt-14">
       <ContentContainer>
         <header className="mx-auto max-w-3xl text-center">
+          {/*
+            TODO: Optional richer press feed / CMS classification — keep human review; do not auto-publish unvetted rows.
+          */}
           <p className="font-body text-[11px] font-bold uppercase tracking-[0.24em] text-kelly-gold">News · Earned media</p>
           <h1 className="mt-4 font-heading text-[clamp(1.95rem,4.2vw,3rem)] font-bold tracking-tight text-kelly-ink">
-            Press coverage
+            Press Coverage
           </h1>
           <p className="mt-6 font-body text-lg leading-relaxed text-kelly-slate md:text-xl">
-            Earned-media clips from Arkansas outlets (selected by our communications team), curated newspaper links, and
-            third-party election guides below. We respect outlet terms and link to originals rather than reproducing
-            paywalled text.
+            News, interviews, and public coverage of Kelly Grappe for Secretary of State. Below: earned-media clips from
+            Arkansas outlets (selected by our communications team), curated newspaper links, and third-party election
+            guides where helpful. We respect outlet terms and link to originals rather than reproducing paywalled text.
           </p>
           <p className="mt-4 font-body text-sm text-kelly-slate/85">
             Monitoring runs on a weekly cadence. For questions about a listing, contact the campaign press team.
@@ -57,11 +60,11 @@ export default async function PressCoveragePage() {
         <ul className="mx-auto mt-12 max-w-3xl space-y-6">
           {mentions.length === 0 && !listUnavailableMessage ? (
             <li className="rounded-card border border-kelly-text/10 bg-white/90 p-6 text-center font-body text-kelly-slate">
-              Approved press clips will appear here after the next ingest and staff review.{" "}
-              <Link href="/from-the-road" className="text-kelly-slate underline">
+              Campaign coverage will appear here as it is published and reviewed.{" "}
+              <Link href="/from-the-road" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
                 From the Road
               </Link>{" "}
-              always has campaign-authored updates.
+              has campaign-authored trail updates in the meantime.
             </li>
           ) : null}
           {mentions.length > 0
