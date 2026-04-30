@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageHero } from "@/components/blocks/PageHero";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
@@ -11,22 +12,12 @@ import { pageMeta } from "@/lib/seo/metadata";
 export const metadata: Metadata = pageMeta({
   title: "Donate",
   description:
-    "Giving matters—but people-power comes first. Chip in to help fund travel, materials, voter education, and organizing across all 75 Arkansas counties.",
+    "Clear, honest ask—running statewide takes real resources. Give what you can, or volunteer and Bring 5. No guilt.",
   path: "/donate",
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
 
-const howFunds: string[] = [
-  "Miles across Arkansas",
-  "Printed materials",
-  "Voter education",
-  "County organizing",
-  "Event support",
-  "Digital tools",
-  "Video and story production",
-  "Follow-up systems",
-  "Reaching low-propensity voters",
-];
+const howFunds: string[] = ["Travel", "Materials", "Voter education", "Organizing", "Digital tools"];
 
 export default function DonatePage() {
   const donate = siteConfig.donateHref;
@@ -35,9 +26,9 @@ export default function DonatePage() {
   return (
     <>
       <PageHero
-        eyebrow="Fund the field"
+        eyebrow="Support the campaign"
         title="Donate"
-        subtitle="This campaign needs resources because reaching all 75 counties costs real money—travel, materials, voter education, organizing tools, events, digital infrastructure, and follow-up. Giving helps the practical work happen."
+        subtitle="A clear, honest ask: running statewide requires real resources. If giving fits your budget, it helps the practical work—alongside neighbors who volunteer and bring five."
       >
         {isProcessor ? (
           <Button href={donate} variant="primary">
@@ -58,7 +49,7 @@ export default function DonatePage() {
           </Button>
         )}
         <Button href="/get-involved/bring-5" variant="outline">
-          Bring 5 Friends
+          Bring 5
         </Button>
       </PageHero>
 
@@ -68,13 +59,12 @@ export default function DonatePage() {
             id="why-donate-heading"
             align="left"
             eyebrow="Why"
-            title="Show up everywhere, not just on screens"
-            subtitle="We are building a statewide campaign that meets people in their counties—parades, fairs, listening rooms, and neighbor conversations—not only in feeds and inboxes."
+            title="Running statewide requires real resources"
+            subtitle="Seventy-five counties, field time, and voter education do not run on goodwill alone—money covers the plain costs so people can show up."
           />
           <p className="mt-6 font-body text-base leading-relaxed text-kelly-text/85">
-            Money does not replace trust; it helps a trust-first campaign afford to be present where Arkansans already
-            gather. That is the honest trade: your contribution helps cover the unglamorous costs that make visibility
-            and follow-through possible.
+            Giving never replaces trust; it helps pay for gas, print, tools, and staff time so the campaign can be present
+            where Arkansans already gather.
           </p>
         </ContentContainer>
       </FullBleedSection>
@@ -85,8 +75,8 @@ export default function DonatePage() {
             id="how-donate-heading"
             align="left"
             eyebrow="How"
-            title="What your gift supports"
-            subtitle="No single donation wins or loses a race—campaigns run on repeated, unflashy work. Here is where funding typically goes."
+            title="Funds support"
+            subtitle="Big picture—line items change with the calendar; we are not posting dollar figures we have not verified."
           />
           <ul className="mt-8 list-disc space-y-2 pl-5 font-body text-base leading-relaxed text-kelly-text/85">
             {howFunds.map((item) => (
@@ -94,9 +84,7 @@ export default function DonatePage() {
             ))}
           </ul>
           <p className="mt-6 font-body text-sm text-kelly-text/65">
-            Schedules and needs shift across the calendar—we are not publishing itemized budgets here, and we are not
-            attaching dollar claims we have not verified. Ask the committee or treasurer for formal reporting if you need
-            it.
+            For itemized or treasurer reporting, contact the committee—this page stays general on purpose.
           </p>
         </ContentContainer>
       </FullBleedSection>
@@ -107,21 +95,30 @@ export default function DonatePage() {
             id="what-donate-heading"
             align="left"
             eyebrow="What"
-            title="If you are able to give"
-            subtitle="We are glad you are here either way."
+            title="If you give"
+            subtitle="No “right” amount—only what fits."
           />
           <ul className="mt-8 list-disc space-y-2 pl-5 font-body text-base leading-relaxed text-kelly-text/85">
-            <li>Give what you can—there is no “right” amount.</li>
-            <li>Monthly help matters when it fits your budget; steady fuel beats one-time spikes for planning.</li>
-            <li>Pair a donation with bringing five friends—money plus introductions is how teams scale cleanly.</li>
+            <li>Give what you can.</li>
+            <li>Monthly helps when it works for you—steady beats one-off spikes for planning.</li>
+            <li>
+              Pair your gift with{" "}
+              <Link className="font-semibold text-kelly-navy underline" href="/get-involved/bring-5">
+                Bring 5
+              </Link>{" "}
+              — money plus introductions scales the right way.
+            </li>
           </ul>
           <p className="mt-8 font-body text-base leading-relaxed text-kelly-text/85">
-            <span className="font-semibold text-kelly-text">Donate is powerful, but people-power is the center.</span> If
-            you cannot give right now, volunteer, host a conversation, or walk the{" "}
-            <a className="font-semibold text-kelly-navy underline" href="/get-involved/bring-5">
-              Bring 5 Friends
-            </a>{" "}
-            path—you are not a backup plan; you are the point.
+            <span className="font-semibold text-kelly-text">If you cannot give, volunteer or bring five.</span>{" "}
+            <Link className="font-semibold text-kelly-navy underline" href="/get-involved#volunteer">
+              Volunteer
+            </Link>
+            {" · "}
+            <Link className="font-semibold text-kelly-navy underline" href="/get-involved/bring-5">
+              Bring 5
+            </Link>
+            — you are not a backup; you are how counties move.
           </p>
         </ContentContainer>
       </FullBleedSection>
@@ -129,11 +126,10 @@ export default function DonatePage() {
       <FullBleedSection variant="subtle" padY aria-labelledby="cta-donate-heading">
         <ContentContainer className="max-w-3xl">
           <h2 id="cta-donate-heading" className="font-heading text-xl font-bold text-kelly-text md:text-2xl">
-            Ready when you are
+            Take the next step
           </h2>
           <p className="mt-3 font-body text-sm text-kelly-text/75">
-            You will complete a donation on the committee’s secure fundraising page—the same trusted processor linked
-            from{" "}
+            Donations go through the committee’s secure page—the same processor linked from{" "}
             <a
               className="font-semibold text-kelly-navy underline"
               href="https://www.kellygrappe.com"
@@ -154,7 +150,7 @@ export default function DonatePage() {
               Volunteer
             </Button>
             <Button href="/get-involved/bring-5" variant="outline" className="min-h-[48px]">
-              Bring 5 Friends
+              Bring 5
             </Button>
           </div>
         </ContentContainer>
