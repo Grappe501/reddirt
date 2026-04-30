@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FadeInWhenVisible } from "@/components/home/FadeInWhenVisible";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { cn } from "@/lib/utils";
 import type { RoadPostCard } from "@/lib/content/content-hub-queries";
 import { roadPostExcerpt, roadPostImageSrc } from "@/lib/content/content-hub-queries";
@@ -8,15 +9,24 @@ import { ContentLocality } from "@/components/content/ContentLocality";
 
 export type HomeFromTheRoadPreviewSectionProps = {
   posts: RoadPostCard[];
+  /** Hide section title block when parent supplies the band heading */
+  omitSectionLead?: boolean;
+  /** Horizontal snap scroll on small viewports; grid on md+ */
+  layoutRail?: boolean;
 };
 
-export function HomeFromTheRoadPreviewSection({ posts }: HomeFromTheRoadPreviewSectionProps) {
+export function HomeFromTheRoadPreviewSection({
+  posts,
+  omitSectionLead = false,
+  layoutRail = false,
+}: HomeFromTheRoadPreviewSectionProps) {
   if (!posts.length) return null;
 
   return (
-    <section className="bg-kelly-fog py-section-y lg:py-section-y-lg" aria-labelledby="road-preview-heading">
+    <section className="bg-kelly-fog py-section-y lg:py-section-y-lg" aria-labelledby={omitSectionLead ? undefined : "road-preview-heading"}>
       <ContentContainer>
-        <FadeInWhenVisible className="mx-auto max-w-3xl text-center">
+        {omitSectionLead ? null : (
+          <FadeInWhenVisible className="mx-auto max-w-3xl text-center">
           <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-kelly-gold">From the road</p>
           <h2
             id="road-preview-heading"
@@ -27,9 +37,17 @@ export function HomeFromTheRoadPreviewSection({ posts }: HomeFromTheRoadPreviewS
           <p className="mt-4 font-body text-lg text-kelly-slate">
             Moments from the campaign trail across Arkansas—shared here so neighbors can follow along.
           </p>
-        </FadeInWhenVisible>
+          </FadeInWhenVisible>
+        )}
 
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div
+          className={cn(
+            "mt-10",
+            layoutRail
+              ? "-mx-[var(--gutter-x)] flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-visible px-[var(--gutter-x)] pb-2 pt-0.5 [scrollbar-width:thin] md:mx-0 md:grid md:grid-cols-2 md:gap-5 md:overflow-visible md:px-0 md:pb-0 md:pt-0 lg:grid-cols-3"
+              : "grid gap-5 sm:grid-cols-2 lg:grid-cols-3",
+          )}
+        >
           {posts.map((post, i) => {
             const img = roadPostImageSrc(post);
             const excerpt = roadPostExcerpt(post);
@@ -39,12 +57,12 @@ export function HomeFromTheRoadPreviewSection({ posts }: HomeFromTheRoadPreviewS
                 day: "numeric",
                 year: "numeric",
               }) ?? "";
-            return (
-              <FadeInWhenVisible key={post.id} delay={0.04 * i}>
+            const article = (
                 <article
                   className={cn(
-                    "flex h-full flex-col overflow-hidden rounded-card border border-kelly-ink/10 bg-white shadow-sm transition",
-                    "hover:border-kelly-gold/35 hover:shadow-md",
+                    "flex h-full flex-col overflow-hidden rounded-card border border-kelly-ink/10 bg-white shadow-sm transition-[transform,box-shadow,border-color] duration-300 ease-out",
+                    "hover:-translate-y-0.5 hover:border-kelly-gold/35 hover:shadow-md",
+                    layoutRail && "w-[min(88vw,20rem)] shrink-0 snap-center md:w-auto md:shrink-0 md:snap-align-none",
                   )}
                 >
                   <Link href={`/from-the-road#post-${post.slug}`} className="block shrink-0">
@@ -76,12 +94,25 @@ export function HomeFromTheRoadPreviewSection({ posts }: HomeFromTheRoadPreviewS
                       href={post.canonicalUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="mt-4 inline-flex text-sm font-bold uppercase tracking-wider text-kelly-blue hover:underline"
+                      className="mt-4 inline-flex text-sm font-bold uppercase tracking-wider text-kelly-blue transition hover:underline"
                     >
                       Read entry →
                     </Link>
                   </div>
                 </article>
+              );
+
+            if (layoutRail) {
+              return (
+                <ScrollReveal key={post.id} delay={50 + i * 40} yOffset={10}>
+                  {article}
+                </ScrollReveal>
+              );
+            }
+
+            return (
+              <FadeInWhenVisible key={post.id} delay={0.04 * i}>
+                {article}
               </FadeInWhenVisible>
             );
           })}
@@ -90,7 +121,7 @@ export function HomeFromTheRoadPreviewSection({ posts }: HomeFromTheRoadPreviewS
         <div className="mt-10 flex justify-center">
           <Link
             href="/from-the-road"
-            className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-kelly-ink/20 px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-kelly-ink transition hover:border-kelly-gold hover:bg-white"
+            className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-kelly-ink/20 px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-kelly-ink transition duration-300 ease-out hover:-translate-y-0.5 hover:border-kelly-gold hover:bg-white hover:shadow-sm"
           >
             Open From the Road
           </Link>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { HomeDonateFloatingGate } from "@/components/home/HomeDonateFloatingGate";
 import { HomeTrustFunnelWireframe } from "@/components/home/HomeTrustFunnelWireframe";
 import { siteConfig } from "@/config/site";
 import { pageMeta } from "@/lib/seo/metadata";
@@ -20,6 +21,9 @@ export default async function HomePage() {
   ]);
 
   return (
-    <HomeTrustFunnelWireframe roadPreviewPosts={roadPreviewPosts} upcomingPublicEvents={upcomingPublicEvents} />
+    <>
+      <HomeDonateFloatingGate />
+      <HomeTrustFunnelWireframe roadPreviewPosts={roadPreviewPosts} upcomingPublicEvents={upcomingPublicEvents} />
+    </>
   );
 }

@@ -114,7 +114,7 @@ function NavMenu({ group, pathname, theme = "light" }: NavMenuProps) {
           id={menuId}
           role="menu"
           className={cn(
-            "absolute left-1/2 top-full z-[60] mt-2 min-w-[13.5rem] max-w-[min(92vw,18rem)] -translate-x-1/2 rounded-card border py-2 shadow-[var(--shadow-card)]",
+            "absolute left-1/2 top-full z-[60] mt-2 min-w-[13.5rem] max-w-[min(92vw,18rem)] -translate-x-1/2 rounded-card border py-2 shadow-[var(--shadow-card)] trust-nav-submenu-enter",
             dark
               ? "border-kelly-navy/18 bg-white shadow-[0_12px_40px_rgba(0,0,102,0.2)]"
               : "border-kelly-text/12 bg-kelly-page",

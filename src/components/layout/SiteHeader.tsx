@@ -21,6 +21,7 @@ export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [compactHeader, setCompactHeader] = useState(false);
   const panelId = useId();
   const joinCampaignHref = getJoinCampaignHref();
   const joinExternal = isExternalHref(joinCampaignHref);
@@ -42,6 +43,13 @@ export function SiteHeader() {
       ro.disconnect();
       document.documentElement.style.removeProperty("--site-header-h");
     };
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => setCompactHeader(window.scrollY > 28);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
@@ -75,17 +83,32 @@ export function SiteHeader() {
   return (
     <header
       ref={headerRootRef}
-      className="fixed left-0 right-0 top-0 z-50 w-full isolate border-b border-kelly-gold/25 bg-kelly-navy shadow-[0_8px_32px_rgba(0,0,102,0.35)]"
+      className={cn(
+        "fixed left-0 right-0 top-0 z-50 w-full isolate border-b border-kelly-gold/25 transition-[background-color,box-shadow,backdrop-filter] duration-300 ease-out",
+        compactHeader
+          ? "bg-kelly-navy/94 shadow-[0_6px_28px_rgba(0,0,102,0.42)] backdrop-blur-md backdrop-saturate-125"
+          : "bg-kelly-navy shadow-[0_8px_32px_rgba(0,0,102,0.35)]",
+      )}
     >
       <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
-      <div className="relative z-10 border-b border-kelly-gold/20 bg-kelly-navy">
-        <div className="mx-auto flex w-full max-w-[100vw] items-center justify-between gap-2 px-[var(--gutter-x)] py-3 sm:py-3.5 lg:gap-3 lg:py-4">
+      <div className="relative z-10 border-b border-kelly-gold/20">
+        <div
+          className={cn(
+            "mx-auto flex w-full max-w-[100vw] items-center justify-between gap-2 px-[var(--gutter-x)] transition-[padding] duration-300 ease-out lg:gap-3",
+            compactHeader ? "py-2 sm:py-2.5 lg:py-3" : "py-3 sm:py-3.5 lg:py-4",
+          )}
+        >
         <Link
           href="/"
           aria-label={`${siteConfig.name} — home`}
           className="group flex min-w-0 max-w-[min(100%,18rem)] shrink-0 items-center gap-2.5 sm:max-w-md sm:gap-3 lg:max-w-[20rem] xl:max-w-md 2xl:max-w-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kelly-gold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-kelly-navy"
         >
-          <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-kelly-gold/25 bg-kelly-blue/40 shadow-[0_0_0_1px_rgba(201,162,39,0.12)_inset] sm:h-12 sm:w-12">
+          <span
+            className={cn(
+              "relative shrink-0 overflow-hidden rounded-full border border-kelly-gold/25 bg-kelly-blue/40 shadow-[0_0_0_1px_rgba(201,162,39,0.12)_inset] transition-[width,height] duration-300 ease-out",
+              compactHeader ? "h-9 w-9 sm:h-10 sm:w-10" : "h-10 w-10 sm:h-12 sm:w-12",
+            )}
+          >
             <HeaderRoundLogo
               className="h-full w-full shrink-0 transition duration-200 group-hover:brightness-110"
               aria-hidden
@@ -226,6 +249,34 @@ export function SiteHeader() {
             </Button>
           </div>
           <nav className="mt-4 flex flex-1 flex-col gap-1 overflow-y-auto" aria-label="Mobile primary">
+            <div className="space-y-2 border-b border-kelly-gold/20 pb-4">
+              <p className="px-3 font-body text-[10px] font-bold uppercase tracking-wider text-white/70">Quick links</p>
+              <Link
+                href={voterRegistrationHref}
+                className="block rounded-btn bg-kelly-gold px-3 py-3 text-center font-body text-base font-bold text-kelly-navy"
+                onClick={() => setOpen(false)}
+              >
+                Vote / Register
+              </Link>
+              <Link
+                href={joinCampaignHref}
+                target={joinExternal ? "_blank" : undefined}
+                rel={joinExternal ? "noopener noreferrer" : undefined}
+                className="block rounded-btn border-2 border-white/40 bg-kelly-navy/40 px-3 py-3 text-center font-body text-base font-bold text-white"
+                onClick={() => setOpen(false)}
+              >
+                Volunteer
+              </Link>
+              <Link
+                href={siteConfig.donateHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block rounded-btn border-2 border-kelly-gold/70 bg-kelly-gold/10 px-3 py-3 text-center font-body text-base font-bold text-white"
+                onClick={() => setOpen(false)}
+              >
+                Donate
+              </Link>
+            </div>
             {primaryNavGroups.map((group) => (
               <div key={group.id} className="pt-4 first:pt-2">
                 <p className="px-3 font-body text-[11px] font-bold tracking-wide text-white/85">
@@ -258,40 +309,15 @@ export function SiteHeader() {
               </div>
             ))}
             <Link
-              href={voterRegistrationHref}
-              className="mt-6 rounded-btn border-2 border-white/50 bg-kelly-navy/50 px-3 py-3 text-center font-body text-base font-bold text-white"
-              onClick={() => setOpen(false)}
-            >
-              Vote / Register
-            </Link>
-            <Link
-              href={joinCampaignHref}
-              target={joinExternal ? "_blank" : undefined}
-              rel={joinExternal ? "noopener noreferrer" : undefined}
-              className="mt-3 rounded-btn bg-kelly-gold px-3 py-3 text-center font-body text-base font-bold text-kelly-navy"
-              onClick={() => setOpen(false)}
-            >
-              Volunteer sign-up
-            </Link>
-            <Link
-              href={siteConfig.donateHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-3 rounded-btn border-2 border-kelly-gold/70 bg-kelly-gold/10 px-3 py-3 text-center font-body text-base font-bold text-white"
-              onClick={() => setOpen(false)}
-            >
-              Donate
-            </Link>
-            <Link
               href="/get-involved"
-              className="rounded-btn border border-white/35 px-3 py-3 text-center font-body text-base font-semibold text-white"
+              className="mt-4 rounded-btn border border-white/35 px-3 py-3 text-center font-body text-base font-semibold text-white"
               onClick={() => setOpen(false)}
             >
               Get involved on this site
             </Link>
             <Link
               href="/"
-              className="rounded-btn px-3 py-3 font-body text-base font-medium text-kelly-gold/95 hover:bg-kelly-blue/30"
+              className="rounded-btn px-3 py-3 text-center font-body text-base font-medium text-kelly-gold/95 hover:bg-kelly-blue/30"
               onClick={() => setOpen(false)}
             >
               Home

@@ -37,16 +37,23 @@ export const trustFunnelHomeCopy = {
         title: "Elections",
         body:
           "Elections should be free, fair, transparent, and accessible—with instructions and support that build confidence in the result.",
+        /** Optional inline expansion — same themes as body; no new factual claims. */
+        detail:
+          "The aim is consistent guidance: the same rules explained plainly, applied evenly—so neighbors can trust the process and the count.",
       },
       business: {
         title: "Business Services",
         body:
           "Filing and registrations ought to be straightforward. Systems should work the first time, with less confusion, fewer loops, and real help when something breaks.",
+        detail:
+          "When filings are predictable, owners and treasurers spend less time fighting the process—and more time running their organizations.",
       },
       records: {
         title: "Public Records",
         body:
           "Access should be open, and the path to get there should be clear—government shouldn’t hide behind complexity.",
+        detail:
+          "Public information should be reachable without a maze of forms—clear steps, plain language, and accountability.",
       },
     },
     cta: "Understand the Office",

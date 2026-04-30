@@ -3,8 +3,15 @@ import type { PublicCampaignEvent } from "@/lib/calendar/public-event-types";
 import { PublicCampaignEventCard } from "@/components/calendar/PublicCampaignEventCard";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { cn } from "@/lib/utils";
 
-export function HomeUpcomingCalendarSection({ events }: { events: PublicCampaignEvent[] }) {
+export type HomeUpcomingCalendarSectionProps = {
+  events: PublicCampaignEvent[];
+  layoutRail?: boolean;
+};
+
+export function HomeUpcomingCalendarSection({ events, layoutRail = false }: HomeUpcomingCalendarSectionProps) {
   if (events.length === 0) return null;
   return (
     <FullBleedSection padY className="bg-kelly-wash/50" aria-labelledby="public-cal-title">
@@ -22,17 +29,33 @@ export function HomeUpcomingCalendarSection({ events }: { events: PublicCampaign
           Real stops from our campaign system—no shadow schedules. If it&rsquo;s here, the team has published it for the
           public site. Details, RSVP, and volunteer links on every card.
         </p>
-        <ul className="mt-8 grid list-none grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {events.map((e) => (
-            <li key={e.id} className="min-w-0">
+        <ul
+          className={cn(
+            "mt-8 list-none",
+            layoutRail
+              ? "-mx-[var(--gutter-x)] flex snap-x snap-mandatory gap-4 overflow-x-auto px-[var(--gutter-x)] pb-2 [scrollbar-width:thin] md:mx-0 md:grid md:grid-cols-2 md:gap-4 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-3"
+              : "grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3",
+          )}
+        >
+          {events.map((e, i) => (
+            <ScrollReveal
+              key={e.id}
+              as="li"
+              delay={layoutRail ? 40 + i * 35 : 0}
+              yOffset={layoutRail ? 12 : 10}
+              className={cn(
+                "min-w-0",
+                layoutRail && "w-[min(90vw,22rem)] shrink-0 snap-center md:w-auto md:shrink-0",
+              )}
+            >
               <PublicCampaignEventCard event={e} emphasis="compact" />
-            </li>
+            </ScrollReveal>
           ))}
         </ul>
         <p className="mt-6 text-center">
           <Link
             href="/campaign-calendar"
-            className="font-body text-sm font-semibold text-kelly-navy hover:underline"
+            className="font-body text-sm font-semibold text-kelly-navy underline decoration-kelly-navy/20 underline-offset-4 transition hover:decoration-kelly-navy"
             prefetch={false}
           >
             Open full campaign calendar →

@@ -268,3 +268,23 @@ html.dark {
 .leaflet-popup-content {
   margin: 0.75rem 0.9rem;
 }
+
+/* Calm nav submenu entrance — respects reduced motion via media query */
+@keyframes trust-submenu-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.trust-nav-submenu-enter {
+  animation: trust-submenu-fade 200ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trust-nav-submenu-enter {
+    animation: none;
+  }
+}
