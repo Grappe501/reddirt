@@ -7,6 +7,7 @@ import { ContentLocality } from "@/components/content/ContentLocality";
 import { FromTheRoadLiveEmbeds } from "@/components/from-the-road/FromTheRoadLiveEmbeds";
 import { FromTheRoadSocialHub } from "@/components/from-the-road/FromTheRoadSocialHub";
 import { LazyYouTubeEmbed } from "@/components/media/LazyYouTubeEmbed";
+import { OnTheRoadProofSections } from "@/components/road/OnTheRoadProofSections";
 import { getFromTheRoadEmbedsConfig, fromTheRoadHasLiveEmbeds } from "@/config/from-the-road-embeds";
 import {
   listFromTheRoadPosts,
@@ -17,26 +18,28 @@ import {
   type RoadPostCard,
   type RoadSocialCardVM,
 } from "@/lib/content/content-hub-queries";
+import { listUpcomingPublicCampaignEventsForHomepage } from "@/lib/calendar/public-events";
 import { pageMeta } from "@/lib/seo/metadata";
 import { brandMediaFromLegacySite } from "@/config/brand-media";
 import { TrailPhotosShowcase } from "@/components/campaign-trail/TrailPhotosShowcase";
 import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
+import { onTheRoadPageMeta } from "@/content/road/on-the-road";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = pageMeta({
-  title: "From the Road",
-  description:
-    "Official social channels, live video, writing from the trail, and field updates in one bookmark—follow along without living inside an algorithm.",
+  title: onTheRoadPageMeta.title,
+  description: onTheRoadPageMeta.description,
   path: "/from-the-road",
   imageSrc: brandMediaFromLegacySite.statewideBanner,
 });
 
 export default async function FromTheRoadPage() {
   const embedsConfig = getFromTheRoadEmbedsConfig();
-  const [posts, social, youtube] = await Promise.all([
+  const [posts, social, youtube, upcomingEvents] = await Promise.all([
     listFromTheRoadPosts(48),
     listFromTheRoadSocialItems(32),
     listFromTheRoadYoutubeMoments(8),
+    listUpcomingPublicCampaignEventsForHomepage(4),
   ]);
   const trailGallery = trailPhotosForSlot("fromTheRoad", { fromTheRoadMax: 96 });
   const hasEmbeds = fromTheRoadHasLiveEmbeds(embedsConfig);
@@ -48,68 +51,13 @@ export default async function FromTheRoadPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-kelly-fog/90 via-white to-kelly-fog/50 pb-16 pt-10 md:pb-24 md:pt-14">
       <ContentContainer>
-        <header className="mx-auto max-w-3xl text-center">
-          <p className="font-body text-[11px] font-bold uppercase tracking-[0.24em] text-kelly-gold">Trail hub</p>
-          <h1 className="mt-4 font-heading text-[clamp(1.95rem,4.2vw,3rem)] font-bold tracking-tight text-kelly-ink">
-            From the Road
-          </h1>
-          <p className="mt-6 font-body text-lg leading-relaxed text-kelly-slate md:text-xl">
-            <strong className="text-kelly-ink">One bookmark for the whole trail:</strong> Facebook, Instagram, X,
-            YouTube, TikTok, and Kelly’s Substack writing open from the hub below—then live video and field updates follow,
-            so neighbors can keep up without juggling apps or mystery algorithms.
-          </p>
-          <p className="mt-5 font-body text-sm text-kelly-slate/85">
-            <a href="#channels" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
-              All channels
-            </a>
-            {hasEmbeds ? (
-              <>
-                {" · "}
-                <a href="#live-embeds" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
-                  Live windows
-                </a>
-              </>
-            ) : null}
-            {hasFieldSocial ? (
-              <>
-                {" · "}
-                <a href="#field" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
-                  Field posts
-                </a>
-              </>
-            ) : null}
-            {hasNotebook ? (
-              <>
-                {" · "}
-                <a href="#notebook" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
-                  Writing
-                </a>
-              </>
-            ) : null}
-            {hasYoutube ? (
-              <>
-                {" · "}
-                <a href="#on-camera" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
-                  On camera
-                </a>
-              </>
-            ) : null}
-            {hasTrailPhotos ? (
-              <>
-                {" · "}
-                <a href="#trail-photos" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
-                  Trail photos
-                </a>
-              </>
-            ) : null}
-            {" · "}
-            <Link href="#take-action" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
-              Take action
-            </Link>
-          </p>
-        </header>
+        <OnTheRoadProofSections
+          previewPosts={posts}
+          upcomingEvents={upcomingEvents}
+          trailPhotosAvailable={hasTrailPhotos}
+        />
 
-        <div className="mt-10 md:mt-12" aria-hidden />
+        <div className="mt-10 md:mt-14" aria-hidden />
 
         <FromTheRoadSocialHub />
 
@@ -215,7 +163,44 @@ export default async function FromTheRoadPage() {
           </section>
         ) : null}
 
-        <div className="mx-auto mt-20 max-w-4xl md:mt-24">
+        <nav aria-label="Page sections" className="mt-12 border-t border-kelly-ink/8 pt-8 font-body text-sm text-kelly-slate/90">
+          <p className="mb-3 font-semibold text-kelly-ink">On this page</p>
+          <ul className="flex flex-wrap gap-x-3 gap-y-2">
+            <li>
+              <a className="text-kelly-blue underline-offset-2 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50" href="#channels">All channels</a>
+            </li>
+            {hasEmbeds ? (
+              <li>
+                <a className="text-kelly-blue underline-offset-2 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50" href="#live-embeds">Live windows</a>
+              </li>
+            ) : null}
+            {hasFieldSocial ? (
+              <li>
+                <a className="text-kelly-blue underline-offset-2 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50" href="#field">Field posts</a>
+              </li>
+            ) : null}
+            {hasNotebook ? (
+              <li>
+                <a className="text-kelly-blue underline-offset-2 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50" href="#notebook">Writing</a>
+              </li>
+            ) : null}
+            {hasYoutube ? (
+              <li>
+                <a className="text-kelly-blue underline-offset-2 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50" href="#on-camera">On camera</a>
+              </li>
+            ) : null}
+            {hasTrailPhotos ? (
+              <li>
+                <a className="text-kelly-blue underline-offset-2 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50" href="#trail-photos">Trail photos</a>
+              </li>
+            ) : null}
+            <li>
+              <Link className="text-kelly-blue underline-offset-2 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50" href="#take-action">Take action</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <div className="mx-auto mt-12 max-w-4xl md:mt-16">
           <ContentHubActionBand
             id="take-action"
             title="The trail doesn’t end on the page"

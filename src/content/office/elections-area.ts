@@ -15,6 +15,7 @@
 
 import type { OfficeAreaConfig } from "@/content/office/office-types";
 import { STANDARD_OFFICE_LAYER_THREE_SOFT_CTAS } from "@/content/office/standard-layer-three-ctas";
+import { OFFICE_LAYER_THREE_CAMPAIGN_TRAIL_PROOF } from "@/content/road/on-the-road";
 
 export const electionsAreaConfig: OfficeAreaConfig = {
   slug: "elections",
@@ -156,6 +157,7 @@ export const electionsAreaConfig: OfficeAreaConfig = {
     ],
     softCtas: STANDARD_OFFICE_LAYER_THREE_SOFT_CTAS,
   },
+  layerThreeTrailProof: OFFICE_LAYER_THREE_CAMPAIGN_TRAIL_PROOF,
   relatedLinks: [
     { label: "Understand the Office", href: "/understand" },
     { label: "Experience & Leadership", href: "/about/business" },

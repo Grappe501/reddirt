@@ -11,6 +11,7 @@ import {
 import type { OfficeAreaSlug } from "@/content/office/office-types";
 import { OfficeBreadcrumbs } from "./OfficeBreadcrumbs";
 import { OfficeLayerCta } from "./OfficeLayerCta";
+import { OfficeLayerTrailProof } from "./OfficeLayerTrailProof";
 
 type OfficeLayerPageProps = {
   area: OfficeAreaConfig;
@@ -108,6 +109,16 @@ export function OfficeLayerPage({ area, layer }: OfficeLayerPageProps) {
           </ContentContainer>
         </FullBleedSection>
       ))}
+
+      {layer === 3 && area.layerThreeTrailProof ? (
+        <OfficeLayerTrailProof
+          areaSlug={area.slug}
+          title={area.layerThreeTrailProof.title}
+          body={area.layerThreeTrailProof.body}
+          ctaLabel={area.layerThreeTrailProof.ctaLabel}
+          ctaHref={area.layerThreeTrailProof.ctaHref}
+        />
+      ) : null}
 
       {copy.cards?.length ? (
         <FullBleedSection variant="subtle" padY aria-labelledby={`office-cards-${area.slug}`}>

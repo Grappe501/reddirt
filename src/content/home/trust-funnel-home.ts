@@ -158,13 +158,13 @@ export const trustFunnelHomeCopy = {
     kicker: "Across Arkansas",
     title: "On the Road Across Arkansas",
     introWithFeed:
-      "This campaign is underway in person—listening in communities, traveling the state, and publishing where we’ve been so you can follow along.",
+      "Kelly is traveling the state in person—county rooms, community gatherings, and faith spaces—with miles and engagements logged honestly. Follow the full trail on the site.",
     introPlaceholder:
-      "When public events and trail updates are posted, they’ll appear here. Until then, you can still see where to show up and how to follow the journey—no invented stops, no filler.",
+      "Trail moments and events will surface here when the feed is connected. For verified milestones and every channel in one place, open On the Road — no invented stops.",
     placeholderNoteTitle: "Trail feed",
     placeholderNoteBody:
       "No preview items in this environment yet, or live content isn’t connected. The links below stay accurate.",
-    followCta: "Follow the Journey",
+    followCta: "See Kelly on the road",
     followHref: "/from-the-road",
     placeholderSecondaryCta: "Events calendar",
     placeholderSecondaryHref: "/events",

@@ -36,5 +36,12 @@ export type OfficeAreaConfig = {
   layerOne: OfficeLayerCopy;
   layerTwo: OfficeLayerCopy;
   layerThree: OfficeLayerThreeCopy;
+  /** Optional proof band linking to the campaign trail (Layer 3 only). */
+  layerThreeTrailProof?: {
+    title: string;
+    body: string;
+    ctaLabel: string;
+    ctaHref: string;
+  };
   relatedLinks?: readonly { label: string; href: string }[];
 };
