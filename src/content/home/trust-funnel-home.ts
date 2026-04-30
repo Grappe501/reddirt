@@ -40,6 +40,8 @@ export const trustFunnelHomeCopy = {
         /** Optional inline expansion — same themes as body; no new factual claims. */
         detail:
           "The aim is consistent guidance: the same rules explained plainly, applied evenly—so neighbors can trust the process and the count.",
+        learnMoreHref: "/office/elections",
+        learnMoreLabel: "How the office approaches elections →",
       },
       business: {
         title: "Business Services",

@@ -89,12 +89,18 @@ export function OfficeLayerPage({ area, layer }: OfficeLayerPageProps) {
         <ContentContainer className="max-w-3xl">
           {layer === 1 ? (
             <div className="flex flex-col items-start gap-4 sm:flex-row sm:flex-wrap sm:items-center">
-              <OfficeLayerCta href={officeLayerPath(area.slug, 2)} label="See why this matters" />
+              <OfficeLayerCta
+                href={officeLayerPath(area.slug, 2)}
+                label={area.layerOneNextLabel ?? "See why this matters"}
+              />
             </div>
           ) : null}
           {layer === 2 ? (
             <div className="flex flex-col items-start gap-4 sm:flex-row sm:flex-wrap sm:items-center">
-              <OfficeLayerCta href={officeLayerPath(area.slug, 3)} label="See the full picture" />
+              <OfficeLayerCta
+                href={officeLayerPath(area.slug, 3)}
+                label={area.layerTwoNextLabel ?? "See the full picture"}
+              />
             </div>
           ) : null}
           {layer === 3 ? (

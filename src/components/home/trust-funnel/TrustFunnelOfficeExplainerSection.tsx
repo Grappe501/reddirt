@@ -80,6 +80,14 @@ export function TrustFunnelOfficeExplainerSection() {
                   >
                     {card.detail}
                   </div>
+                  {"learnMoreHref" in card && card.learnMoreHref ? (
+                    <Link
+                      href={card.learnMoreHref}
+                      className="mt-4 inline-flex min-h-11 items-center font-body text-sm font-semibold text-kelly-blue underline decoration-kelly-blue/30 underline-offset-4 transition hover:decoration-kelly-blue focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50"
+                    >
+                      {"learnMoreLabel" in card && card.learnMoreLabel ? card.learnMoreLabel : "Learn more →"}
+                    </Link>
+                  ) : null}
                 </li>
               </ScrollReveal>
             );

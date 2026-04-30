@@ -8,43 +8,27 @@
 
 import { getJoinCampaignHref } from "@/config/external-campaign";
 import { voterRegistrationHref } from "@/config/navigation";
+import { electionsAreaConfig } from "@/content/office/elections-area";
+import {
+  OFFICE_AREA_SLUGS,
+  type OfficeAreaConfig,
+  type OfficeAreaSlug,
+  type OfficeCard,
+  type OfficeLayerCopy,
+  type OfficeLayerThreeCopy,
+  type OfficeSectionBlock,
+} from "@/content/office/office-types";
 
-export const OFFICE_AREA_SLUGS = ["elections", "business", "records", "capitol"] as const;
-export type OfficeAreaSlug = (typeof OFFICE_AREA_SLUGS)[number];
+export type {
+  OfficeAreaConfig,
+  OfficeAreaSlug,
+  OfficeCard,
+  OfficeLayerCopy,
+  OfficeLayerThreeCopy,
+  OfficeSectionBlock,
+} from "@/content/office/office-types";
 
-export type OfficeSectionBlock = {
-  heading?: string;
-  paragraphs: readonly string[];
-};
-
-export type OfficeCard = {
-  title: string;
-  body: string;
-};
-
-export type OfficeLayerCopy = {
-  eyebrow: string;
-  title: string;
-  intro: string;
-  sections: readonly OfficeSectionBlock[];
-  cards?: readonly OfficeCard[];
-};
-
-export type OfficeLayerThreeCopy = OfficeLayerCopy & {
-  softCtas: readonly { label: string; href: string }[];
-};
-
-export type OfficeAreaConfig = {
-  slug: OfficeAreaSlug;
-  title: string;
-  shortTitle: string;
-  navLabel: string;
-  metaDescription: string;
-  layerOne: OfficeLayerCopy;
-  layerTwo: OfficeLayerCopy;
-  layerThree: OfficeLayerThreeCopy;
-  relatedLinks?: readonly { label: string; href: string }[];
-};
+export { OFFICE_AREA_SLUGS };
 
 export function officeLayerPath(slug: OfficeAreaSlug, layer: 1 | 2 | 3): string {
   if (layer === 1) return `/office/${slug}`;
@@ -59,7 +43,8 @@ export const officeUnderstandTeasers: Record<
 > = {
   elections: {
     headline: "Elections",
-    blurb: "How the office supports counties, voter registration systems, and clear, consistent election administration.",
+    blurb:
+      "Clear rules, steady county partnership, and systems Arkansans can trust—start with what election administration actually means.",
     href: "/office/elections",
   },
   business: {
@@ -80,97 +65,7 @@ export const officeUnderstandTeasers: Record<
 };
 
 export const OFFICE_AREAS: readonly OfficeAreaConfig[] = [
-  {
-    slug: "elections",
-    title: "Elections",
-    shortTitle: "Elections",
-    navLabel: "Elections",
-    metaDescription:
-      "What the Secretary of State does in election administration—support for counties, consistent rules, and care for voter access and sensitive data.",
-    layerOne: {
-      eyebrow: "The Office · Layer 1",
-      title: "Elections",
-      intro:
-        "The Secretary of State helps administer statewide election systems, supports county election officials, maintains core voter-registration infrastructure, and works to keep rules explained and applied clearly and consistently across Arkansas.",
-      sections: [
-        {
-          heading: "What this responsibility is",
-          paragraphs: [
-            "The job centers on lawful, transparent processes: helping counties run elections, coordinating guidance, and safeguarding systems that voters and officials depend on.",
-            "It is administration under statute—not picking winners, not bending standards for politics.",
-          ],
-        },
-      ],
-      cards: [
-        { title: "County partnership", body: "Local officials do the front-line work; the state office should make guidance, training, and tools dependable." },
-        { title: "Clarity over confusion", body: "When instructions and timelines are plain, fewer neighbors fall through the cracks—and confidence in the process grows." },
-      ],
-    },
-    layerTwo: {
-      eyebrow: "The Office · Layer 2",
-      title: "Why elections work here matters to you",
-      intro:
-        "Elections touch every Arkansan who votes—or who might. When systems wobble, the people who pay the price are clerks, poll workers, and voters trying to do the right thing.",
-      sections: [
-        {
-          heading: "What can go wrong",
-          paragraphs: [
-            "Inconsistent guidance, last-minute changes, or opaque processes frustrate voters and burden county offices that are already stretched thin.",
-            "Sensitive voter data must be handled with strict care and clear legal authority—not convenience or outside pressure.",
-          ],
-        },
-        {
-          heading: "Why clarity builds trust",
-          paragraphs: [
-            "Fair, transparent process and steady rules let neighbors disagree at the ballot box without doubting the administration of the election itself.",
-            "Kelly’s career has been built on running large operations where detail matters and people are counting on the process to work the first time.",
-          ],
-        },
-      ],
-    },
-    layerThree: {
-      eyebrow: "The Office · Layer 3",
-      title: "Why Kelly fits this part of the job",
-      intro:
-        "This is not a retelling of Kelly’s biography—it is why operational habits from her career map to election administration Arkansas can rely on.",
-      sections: [
-        {
-          heading: "Scale and discipline",
-          paragraphs: [
-            "Leading more than 800 people at Verizon, building recruiting and training pipelines, and running a high-volume call center in Little Rock taught the same lesson elections demand: clear standards, accountable follow-through, and no excuses when the phones are ringing.",
-          ],
-        },
-        {
-          heading: "Systems under pressure",
-          paragraphs: [
-            "Election seasons are deadlines and scrutiny. Kelly’s background is managing complex systems where slip-ups have real consequences—exactly the temperament non-partisan administration requires.",
-          ],
-        },
-        {
-          heading: "Ground-level organizing",
-          paragraphs: [
-            "Sherwood petition headquarters and statewide initiative work showed how respect for volunteers and clear process keep civic life from turning into chaos. That instinct carries into supporting counties and voters with patience and plain language.",
-          ],
-        },
-        {
-          heading: "People over Politics",
-          paragraphs: [
-            "Holding the line means administering the law faithfully—transparent elections, protected access, careful stewardship of voter data, and consistency Arkansans can predict.",
-          ],
-        },
-      ],
-      softCtas: [
-        { label: "Meet Kelly", href: "/about" },
-        { label: "Why Kelly", href: "/about/why-kelly" },
-        { label: "Volunteer", href: getJoinCampaignHref() },
-        { label: "Vote / Register", href: voterRegistrationHref },
-      ],
-    },
-    relatedLinks: [
-      { label: "Understand the Office", href: "/understand" },
-      { label: "Priorities", href: "/priorities" },
-    ],
-  },
+  electionsAreaConfig,
   {
     slug: "business",
     title: "Business & Filings",
@@ -393,7 +288,7 @@ export const OFFICE_AREAS: readonly OfficeAreaConfig[] = [
       { label: "Understand the Office", href: "/understand" },
     ],
   },
-] as const;
+];
 
 export function isOfficeAreaSlug(value: string): value is OfficeAreaSlug {
   return (OFFICE_AREA_SLUGS as readonly string[]).includes(value);
