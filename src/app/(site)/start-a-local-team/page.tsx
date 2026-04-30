@@ -12,7 +12,7 @@ import { representLocalEventVolunteerHref } from "@/config/navigation";
 export const metadata: Metadata = {
   title: "Start a local team",
   description:
-    "Kelly is working all 75 counties—lasting trust is local. Start a county team: neighbors who show up, invite their five, and carry the campaign into rooms the field office can’t reach alone.",
+    "County-level organizing: local trust wins elections. Start with 2–5 people—supporters, gatherings, fairs, Power of 5, voter info.",
 };
 
 const faq = [
@@ -35,13 +35,11 @@ const faq = [
 ];
 
 const teamRoles: { title: string; blurb: string }[] = [
-  { title: "County lead", blurb: "Keeps the rhythm, convenes the team, and is the steady text back to the campaign." },
-  { title: "Events lead", blurb: "Owns RSVPs, room basics, and making sure volunteers have clear jobs on the day." },
-  { title: "Power of 5 lead", blurb: "Coaches five-at-a-time relational invites so growth doesn’t depend on one megaphone." },
-  { title: "Voter registration lead", blurb: "Makes registration and deadline info neighbor-ready—paper, links, and patient follow-up." },
-  { title: "Faith / community outreach lead", blurb: "Opens doors in churches, clubs, and civic tables where trust already lives." },
-  { title: "County fair lead", blurb: "Coordinates fair presence—shifts, materials, and neighbor-friendly booth culture." },
-  { title: "Story / media lead", blurb: "Captures photos, quotes, and honest field notes so local truth travels accurately." },
+  { title: "County lead", blurb: "Holds the rhythm, convenes the team, and is the steady line back to campaign staff." },
+  { title: "Events lead", blurb: "Owns RSVPs, room basics, and clear volunteer jobs on event days." },
+  { title: "Outreach lead", blurb: "Keeps invitations going—relational follow-up, institutions, and neighbor-to-neighbor invites." },
+  { title: "Voter education lead", blurb: "Makes registration, deadlines, and voting steps plain enough to share at a kitchen table." },
+  { title: "Media / story lead", blurb: "Captures honest field notes, photos, or quotes so your county’s truth travels accurately." },
 ];
 
 const crossLinks: { label: string; href: string }[] = [
@@ -58,7 +56,7 @@ export default function StartALocalTeamPage() {
       <PageHero
         eyebrow="County organizing"
         title="Start a local team"
-        subtitle="Kelly is working all 75 counties, but lasting trust has to be local. A local team helps carry the campaign into rooms the campaign cannot reach alone."
+        subtitle="Build county-level structure—neighbors who show up, host, and carry trust where statewide ads never will."
       >
         <Button href="#start-team-form" variant="primary">
           Start a local team
@@ -72,66 +70,49 @@ export default function StartALocalTeamPage() {
       </PageHero>
 
       <FullBleedSection padY aria-labelledby="why-heading">
-        <ContentContainer>
+        <ContentContainer className="max-w-3xl">
           <SectionHeading
             id="why-heading"
             align="left"
             eyebrow="Why"
-            title="Make the campaign real where you live"
-            subtitle="County teams turn a statewide race into something people can see and touch in their own community."
+            title="Local trust wins elections"
+            subtitle="People believe people they see year-round—not a stranger who drops in once. A named team in your county makes the campaign believable where it matters."
           />
-          <p className="mt-6 max-w-3xl font-body text-base leading-relaxed text-kelly-text/85">
-            People trust neighbors who show up consistently—not a one-off flyer or a stranger who disappears after the
-            primary. A local team is how civic courage stops being a mood and becomes a habit.
-          </p>
         </ContentContainer>
       </FullBleedSection>
 
       <FullBleedSection variant="subtle" padY aria-labelledby="how-heading">
-        <ContentContainer>
-          <SectionHeading
-            id="how-heading"
-            align="left"
-            eyebrow="How"
-            title="Start small, stay steady"
-            subtitle="You do not need thirty people on day one. You need a believable plan and a calendar you can keep."
-          />
-          <ul className="mt-8 max-w-3xl list-disc space-y-2 pl-5 font-body text-base leading-relaxed text-kelly-text/85">
-            <li>2 to 5 people to begin</li>
-            <li>One county or community focus</li>
-            <li>One monthly rhythm (same week, same kind of touch)</li>
-            <li>One contact list you actually use</li>
-            <li>One event goal you can name out loud</li>
-            <li>One Power of 5 circle so growth stays relational</li>
-          </ul>
-          <p className="mt-6 max-w-3xl font-body text-sm text-kelly-text/70">
-            Need the relational frame first?{" "}
+        <ContentContainer className="max-w-3xl">
+          <SectionHeading id="how-heading" align="left" eyebrow="How" title="Start with 2–5 people" subtitle="Small is stable." />
+          <p className="mt-6 font-body text-base leading-relaxed text-kelly-text/85">
+            You do not need a crowd on day one—a few committed neighbors who will text back is enough to begin. Add
+            rhythm and roles as you grow.
+          </p>
+          <p className="mt-4 font-body text-sm text-kelly-text/70">
+            Want the relational frame first?{" "}
             <Link className="font-semibold text-kelly-navy underline" href="/get-involved/bring-5">
               Bring 5 Friends
-            </Link>{" "}
-            walks the same philosophy step by step.
+            </Link>
+            .
           </p>
         </ContentContainer>
       </FullBleedSection>
 
       <FullBleedSection padY aria-labelledby="what-heading">
-        <ContentContainer>
+        <ContentContainer className="max-w-3xl">
           <SectionHeading
             id="what-heading"
             align="left"
             eyebrow="What"
-            title="What local teams do"
-            subtitle="Pick a few lanes to start; depth beats pretending you do everything at once."
+            title="What your team does"
+            subtitle="Pick a lane to start—you can stack more as you find your feet."
           />
-          <ul className="mt-8 max-w-3xl list-disc space-y-2 pl-5 font-body text-base leading-relaxed text-kelly-text/85">
-            <li>Identify supporters and welcome skeptics without pressure</li>
-            <li>Invite people to events—and make sure someone greets them at the door</li>
-            <li>Recruit house parties and coffee meetups in ordinary rooms</li>
-            <li>Help at county fairs and community booths</li>
-            <li>Support Community Election Integrity Tour stops where your county is ready</li>
-            <li>Share voter registration resources in plain language</li>
-            <li>Collect local stories the campaign can lift up fairly</li>
-            <li>Build county point teams so reliable info has a local address</li>
+          <ul className="mt-8 list-disc space-y-2 pl-5 font-body text-base leading-relaxed text-kelly-text/85">
+            <li>Identify supporters</li>
+            <li>Host gatherings</li>
+            <li>Support fairs / events</li>
+            <li>Build Power of 5</li>
+            <li>Share voter info</li>
           </ul>
         </ContentContainer>
       </FullBleedSection>
@@ -142,8 +123,8 @@ export default function StartALocalTeamPage() {
             id="roles-heading"
             align="left"
             eyebrow="Roles"
-            title="Team roles (starter set)"
-            subtitle="One person can wear two hats early on—clarity matters more than a big org chart."
+            title="Starter roles"
+            subtitle="One person can wear two hats at first—names help the work feel real, not bureaucratic."
           />
           <ul className="mt-10 grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3">
             {teamRoles.map((r) => (
@@ -164,15 +145,15 @@ export default function StartALocalTeamPage() {
           <SectionHeading
             id="form-heading"
             align="left"
-            eyebrow="Raise your hand"
+            eyebrow="Next step"
             title="Start a local team"
-            subtitle="Tell us your county, your first small crew, and what kind of rhythm you can keep—we’ll help match training and backup."
+            subtitle="Tell us your county and who is in your first circle—we will follow up with something proportionate."
           />
-          <div className="mt-8 max-w-3xl rounded-card border border-kelly-navy/15 bg-kelly-page px-6 py-7 md:px-8">
-            <p className="font-body text-base leading-relaxed text-kelly-text/85">Local team intake coming soon.</p>
-            <p className="mt-3 font-body text-sm text-kelly-text/60">TODO: connect to CRM/workflow intake.</p>
+          <div className="mt-8 max-w-3xl rounded-card border border-dashed border-kelly-navy/25 bg-kelly-page px-6 py-8 md:px-8">
+            <p className="font-body text-base font-medium text-kelly-text/90">Form coming soon.</p>
+            <p className="mt-3 font-body text-sm text-kelly-text/60">TODO: CRM / workflow intake.</p>
             <p className="mt-5 font-body text-sm text-kelly-text/75">
-              Until that pipeline is wired, the form below goes to the same organizer queue we monitor today.
+              Until the new intake ships, the form below still reaches our organizer queue.
             </p>
           </div>
           <div className="mt-10 max-w-3xl">
@@ -195,8 +176,8 @@ export default function StartALocalTeamPage() {
             id="crosslinks-heading"
             align="left"
             eyebrow="Plug in"
-            title="Work with the rest of the field plan"
-            subtitle="Local teams don’t float alone—they tie into statewide tour stops, fairs, and the relational path."
+            title="Field plan links"
+            subtitle="Local teams connect to fairs, tour stops, and relational invites."
           />
           <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
             {crossLinks.map((c) => (
