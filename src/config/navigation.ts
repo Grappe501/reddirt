@@ -52,11 +52,12 @@ export const primaryNavGroups: NavGroup[] = [
     id: "office",
     label: "The Office",
     items: [
-      { label: "Priorities", href: "/priorities" },
-      { label: "Civic depth", href: "/civic-depth" },
-      { label: "Ballot access & initiatives", href: "/direct-democracy" },
-      { label: "How initiatives reach the ballot", href: "/direct-democracy/ballot-initiative-process" },
-      { label: "Resources", href: "/resources" },
+      { label: "Understand the Office", href: "/understand" },
+      { label: "Elections", href: "/priorities#election-workers-heading" },
+      { label: "Business & Filings", href: "/priorities#pillars-heading" },
+      { label: "Transparency & Records", href: "/priorities#transparency-heading" },
+      { label: "Capitol & Public Safety", href: "/office/capitol" },
+      { label: "Why This Race Matters", href: "/about/why-kelly" },
     ],
   },
   {
