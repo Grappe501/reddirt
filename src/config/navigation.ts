@@ -41,7 +41,13 @@ export const powerOf5OnboardingHref = "/onboarding/power-of-5";
 /** Voter registration center (citizenship CTA in header + trust-funnel homepage). */
 export const voterRegistrationHref = "/voter-registration";
 
-/** Top nav per blueprint: compact groups + Donate as distinct control in header */
+/**
+ * Mobile drawer group order (psychology: field activity before news cycle).
+ * Desktop primary nav order stays Meet Kelly → The Office → News → Events → Get Involved.
+ */
+export const primaryNavMobileDrawerGroupOrder = ["meet", "office", "events", "news", "involved"] as const;
+
+/** Top nav: substance-first mega groups + utility actions (Vote, Volunteer, Donate) in SiteHeader */
 export const primaryNavGroups: NavGroup[] = [
   {
     id: "meet",

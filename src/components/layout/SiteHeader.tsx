@@ -4,7 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { getJoinCampaignHref } from "@/config/external-campaign";
-import { primaryNavGroups, voterRegistrationHref } from "@/config/navigation";
+import { primaryNavGroups, primaryNavMobileDrawerGroupOrder, voterRegistrationHref } from "@/config/navigation";
+import type { NavGroup } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
 import { isExternalHref } from "@/lib/href";
 import { cn } from "@/lib/utils";
@@ -15,6 +16,12 @@ import { NavDesktop } from "@/components/layout/NavDesktop";
 
 function navItemActive(pathname: string, href: string) {
   return pathname === href || (href.length > 1 && pathname.startsWith(`${href}/`));
+}
+
+function navGroupsForMobileDrawer(): NavGroup[] {
+  return primaryNavMobileDrawerGroupOrder
+    .map((id) => primaryNavGroups.find((g) => g.id === id))
+    .filter((g): g is NavGroup => g != null);
 }
 
 export function SiteHeader() {
@@ -148,15 +155,17 @@ export function SiteHeader() {
           <Button
             href={voterRegistrationHref}
             variant="outlineOnDark"
-            className="hidden min-h-11 min-w-0 flex-shrink-0 border-2 border-white/45 bg-kelly-navy/40 px-3 py-2.5 text-xs font-extrabold uppercase tracking-wide text-white shadow-md hover:border-kelly-gold/80 hover:bg-kelly-blue/40 lg:inline-flex lg:px-3.5 lg:text-sm"
-            aria-label="Vote and register — voter registration center"
+            title="Vote / Register"
+            className="hidden min-h-11 min-w-0 flex-shrink-0 border-2 border-white/60 bg-white/12 px-2.5 py-2.5 text-xs font-extrabold uppercase tracking-wide text-white shadow-md ring-1 ring-white/15 transition hover:border-white/75 hover:bg-white/18 lg:inline-flex lg:px-3.5 lg:text-sm"
+            aria-label="Vote / Register — voter registration center"
           >
-            Vote / Register
+            <span className="xl:hidden">Vote</span>
+            <span className="hidden xl:inline">Vote / Register</span>
           </Button>
           <Button
             href={joinCampaignHref}
-            variant="primary"
-            className="ml-1 hidden min-h-11 flex-shrink-0 border border-kelly-navy/25 px-3.5 py-2.5 text-xs font-extrabold uppercase tracking-wide shadow-md ring-1 ring-white/10 hover:ring-white/20 lg:inline-flex lg:px-4 lg:text-sm"
+            variant="outlineOnDark"
+            className="ml-0.5 hidden min-h-11 flex-shrink-0 border-2 border-kelly-gold/55 bg-kelly-navy/45 px-3 py-2.5 text-xs font-extrabold uppercase tracking-wide text-white shadow-sm ring-1 ring-kelly-gold/20 hover:border-kelly-gold/75 hover:bg-kelly-blue/35 lg:inline-flex lg:px-3.5 lg:text-sm"
             aria-label="Volunteer — sign up to help the campaign"
           >
             Volunteer
@@ -164,7 +173,7 @@ export function SiteHeader() {
           <Button
             href={siteConfig.donateHref}
             variant="outlineOnDark"
-            className="hidden min-h-11 min-w-0 flex-shrink-0 border-2 border-kelly-gold/90 bg-kelly-gold/20 px-3.5 py-2.5 text-xs font-extrabold uppercase tracking-wide text-white shadow-md hover:border-kelly-gold hover:bg-kelly-gold/30 lg:inline-flex lg:px-4 lg:text-sm"
+            className="hidden min-h-11 min-w-0 flex-shrink-0 border border-kelly-gold/50 bg-kelly-gold/10 px-3 py-2.5 text-xs font-bold uppercase tracking-wide text-white/95 shadow-sm hover:border-kelly-gold/65 hover:bg-kelly-gold/16 lg:inline-flex lg:px-3.5 lg:text-sm"
             aria-label="Donate to the campaign"
           >
             Donate
@@ -173,27 +182,28 @@ export function SiteHeader() {
 
         <div className="flex max-w-[min(100%,18rem)] flex-shrink-0 flex-wrap items-center justify-end gap-1.5 sm:max-w-none sm:gap-2 sm:justify-end text-kelly-fog lg:hidden">
           <Button
+            href={voterRegistrationHref}
+            variant="outlineOnDark"
+            title="Vote / Register"
+            className="order-first min-h-11 border-2 border-white/55 bg-white/12 px-2.5 py-2 text-[10px] font-extrabold uppercase tracking-wide text-white sm:px-3 sm:text-xs"
+            aria-label="Vote / Register — voter registration center"
+          >
+            Vote
+          </Button>
+          <Button
             href={joinCampaignHref}
             target={joinExternal ? "_blank" : undefined}
             rel={joinExternal ? "noopener noreferrer" : undefined}
-            variant="primary"
-            className="min-h-11 px-2.5 py-2 text-[10px] font-extrabold uppercase tracking-wide shadow-md sm:px-3.5 sm:text-xs"
+            variant="outlineOnDark"
+            className="min-h-11 border border-kelly-gold/45 bg-kelly-navy/40 px-2.5 py-2 text-[10px] font-extrabold uppercase tracking-wide text-white sm:px-3.5 sm:text-xs"
             aria-label="Volunteer — sign up"
           >
             Volunteer
           </Button>
           <Button
-            href={voterRegistrationHref}
-            variant="outlineOnDark"
-            className="min-h-11 border-2 border-white/45 px-2 py-2 text-[10px] font-extrabold uppercase tracking-wide text-white sm:px-3 sm:text-xs"
-            aria-label="Vote and register"
-          >
-            Vote
-          </Button>
-          <Button
             href={siteConfig.donateHref}
             variant="outlineOnDark"
-            className="min-h-11 border-2 border-kelly-gold/90 bg-kelly-gold/15 px-2.5 py-2 text-[10px] font-extrabold uppercase tracking-wide text-white sm:px-3.5 sm:text-xs"
+            className="min-h-11 border border-kelly-gold/45 bg-kelly-gold/10 px-2.5 py-2 text-[10px] font-extrabold uppercase tracking-wide text-white sm:px-3.5 sm:text-xs"
             aria-label="Donate"
           >
             Donate
@@ -248,40 +258,20 @@ export function SiteHeader() {
               Close
             </Button>
           </div>
-          <nav className="mt-4 flex flex-1 flex-col gap-1 overflow-y-auto" aria-label="Mobile primary">
-            <div className="space-y-2 border-b border-kelly-gold/20 pb-4">
-              <p className="px-3 font-body text-[10px] font-bold uppercase tracking-wider text-white/70">Quick links</p>
+          <nav className="mt-4 flex flex-1 flex-col gap-6 overflow-y-auto pb-6" aria-label="Mobile primary">
+            <div>
               <Link
                 href={voterRegistrationHref}
-                className="block rounded-btn bg-kelly-gold px-3 py-3 text-center font-body text-base font-bold text-kelly-navy"
+                className="block min-h-[48px] rounded-btn bg-kelly-gold px-3 py-3 text-center font-body text-base font-bold text-kelly-navy shadow-md transition hover:bg-kelly-gold-soft focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/70"
                 onClick={() => setOpen(false)}
               >
                 Vote / Register
               </Link>
-              <Link
-                href={joinCampaignHref}
-                target={joinExternal ? "_blank" : undefined}
-                rel={joinExternal ? "noopener noreferrer" : undefined}
-                className="block rounded-btn border-2 border-white/40 bg-kelly-navy/40 px-3 py-3 text-center font-body text-base font-bold text-white"
-                onClick={() => setOpen(false)}
-              >
-                Volunteer
-              </Link>
-              <Link
-                href={siteConfig.donateHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block rounded-btn border-2 border-kelly-gold/70 bg-kelly-gold/10 px-3 py-3 text-center font-body text-base font-bold text-white"
-                onClick={() => setOpen(false)}
-              >
-                Donate
-              </Link>
             </div>
-            {primaryNavGroups.map((group) => (
-              <div key={group.id} className="pt-4 first:pt-2">
-                <p className="px-3 font-body text-[11px] font-bold tracking-wide text-white/85">
-                  {group.label}
-                </p>
+
+            {navGroupsForMobileDrawer().map((group) => (
+              <div key={group.id} className="border-t border-kelly-gold/15 pt-4">
+                <p className="px-3 font-body text-[11px] font-bold tracking-wide text-white/85">{group.label}</p>
                 <div className="mt-2 flex flex-col gap-0.5">
                   {group.items.map((item) => {
                     const active = navItemActive(pathname, item.href);
@@ -294,10 +284,8 @@ export function SiteHeader() {
                         rel={ext ? "noopener noreferrer" : undefined}
                         aria-current={active ? "page" : undefined}
                         className={cn(
-                          "rounded-btn px-3 py-3 font-body text-base font-medium",
-                          active
-                            ? "bg-kelly-blue/60 text-kelly-gold"
-                            : "text-white hover:bg-kelly-blue/40",
+                          "min-h-[48px] rounded-btn px-3 py-3 font-body text-base font-medium",
+                          active ? "bg-kelly-blue/60 text-kelly-gold" : "text-white hover:bg-kelly-blue/40",
                         )}
                         onClick={() => setOpen(false)}
                       >
@@ -308,16 +296,42 @@ export function SiteHeader() {
                 </div>
               </div>
             ))}
-            <Link
-              href="/get-involved"
-              className="mt-4 rounded-btn border border-white/35 px-3 py-3 text-center font-body text-base font-semibold text-white"
-              onClick={() => setOpen(false)}
-            >
-              Get involved on this site
-            </Link>
+
+            <div className="border-t border-kelly-gold/20 pt-4 space-y-2">
+              <Link
+                href={joinCampaignHref}
+                target={joinExternal ? "_blank" : undefined}
+                rel={joinExternal ? "noopener noreferrer" : undefined}
+                className="block min-h-[48px] rounded-btn border-2 border-kelly-gold/55 bg-kelly-navy/40 px-3 py-3 text-center font-body text-base font-bold text-white focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/45"
+                onClick={() => setOpen(false)}
+              >
+                Volunteer
+              </Link>
+              <Link
+                href={siteConfig.donateHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block min-h-[48px] rounded-btn border border-kelly-gold/50 bg-kelly-gold/10 px-3 py-3 text-center font-body text-base font-semibold text-white focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/35"
+                onClick={() => setOpen(false)}
+              >
+                Donate
+              </Link>
+              <Button
+                type="button"
+                variant="ghostOnDark"
+                className="min-h-[48px] w-full justify-center rounded-btn border border-white/25 py-3 text-base font-semibold"
+                onClick={() => {
+                  setOpen(false);
+                  setSearchOpen(true);
+                }}
+              >
+                Search
+              </Button>
+            </div>
+
             <Link
               href="/"
-              className="rounded-btn px-3 py-3 text-center font-body text-base font-medium text-kelly-gold/95 hover:bg-kelly-blue/30"
+              className="mt-2 block rounded-btn px-3 py-3 text-center font-body text-base font-medium text-kelly-gold/95 hover:bg-kelly-blue/30 focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/40"
               onClick={() => setOpen(false)}
             >
               Home
