@@ -4,6 +4,8 @@ import { PageHero } from "@/components/blocks/PageHero";
 import { EducateBeatSections } from "@/components/home/EducateBeatSections";
 import { JourneyBeat } from "@/components/journey/JourneyBeat";
 import { ContentContainer } from "@/components/layout/ContentContainer";
+import { FullBleedSection } from "@/components/layout/FullBleedSection";
+import { OfficeUnderstandGateway } from "@/components/office/OfficeUnderstandGateway";
 import { UNDERSTAND_MOVEMENT_BRIDGE_PHOTO_ID } from "@/content/media/campaign-trail-photo-use";
 import { campaignTrailPhotos } from "@/content/media/campaign-trail-photos";
 import { getMergedHomepageConfig } from "@/lib/content/homepage-merge";
@@ -29,6 +31,10 @@ export default async function UnderstandTheOfficePage() {
         title="Understand the office—and why this campaign exists"
         subtitle="Fair elections, clear business services, and a Secretary of State’s office that works for every county—explore what that means in plain language."
       />
+
+      <FullBleedSection variant="band-fog" padY aria-labelledby="office-three-layer-gateway">
+        <OfficeUnderstandGateway />
+      </FullBleedSection>
 
       <JourneyBeat
         id="understand-spine"

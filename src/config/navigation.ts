@@ -53,11 +53,11 @@ export const primaryNavGroups: NavGroup[] = [
     label: "The Office",
     items: [
       { label: "Understand the Office", href: "/understand" },
-      { label: "Elections", href: "/priorities#election-workers-heading" },
-      { label: "Business & Filings", href: "/priorities#pillars-heading" },
-      { label: "Transparency & Records", href: "/priorities#transparency-heading" },
+      { label: "Elections", href: "/office/elections" },
+      { label: "Business & Filings", href: "/office/business" },
+      { label: "Transparency & Records", href: "/office/records" },
       { label: "Capitol & Public Safety", href: "/office/capitol" },
-      { label: "Why This Race Matters", href: "/about/why-kelly" },
+      { label: "Why This Race Matters", href: "/office/why-this-race-matters" },
     ],
   },
   {
