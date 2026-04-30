@@ -1,0 +1,2573 @@
+diff --git a/docs/NORTHWEST_REGION_AND_8_COUNTY_WORKBENCH_PARITY_AUDIT.md b/docs/NORTHWEST_REGION_AND_8_COUNTY_WORKBENCH_PARITY_AUDIT.md
+index 824a93f..b01ca82 100644
+--- a/docs/NORTHWEST_REGION_AND_8_COUNTY_WORKBENCH_PARITY_AUDIT.md
++++ b/docs/NORTHWEST_REGION_AND_8_COUNTY_WORKBENCH_PARITY_AUDIT.md
+@@ -12,7 +12,7 @@
+ |--------|-----------------------------------------------|----------------|
+ | **Pope** | Yes (`/pope`, `/pope/v2`) | Baseline (pilot) |
+ | Pulaski | **`/pulaski/v2` v2 shell live** (`/county-briefings/pulaski/v2`); no classic `/pulaski` narrative page yet | **Partial** ΓÇö template + intake-honest scaffolding; **no** city drilldown parity with Pope until place data ingests |
+-| Faulkner | **No** | Not at Pope parity |
++| Faulkner | **`/faulkner/v2` v2 shell live** (`/county-briefings/faulkner/v2`); no classic `/faulkner` narrative page yet | **Partial** ΓÇö same template + intake-honest scaffolding as Pulaski v2; **no** city drilldown parity with Pope until place data ingests |
+ | Saline | **No** | Not at Pope parity |
+ | White | **No** | Not at Pope parity |
+ | Perry | **No** | Not at Pope parity |
+@@ -20,7 +20,7 @@
+ | Conway | **No** | Not at Pope parity |
+ | Van Buren | **No** | Not at Pope parity |
+ 
+-**Pope** and **Pulaski v2** ship under `src/app/county-briefings/` (Pulaski: `/pulaski/v2` dashboard template; city cards explicitly deferred). The hub lists available briefings; the other seven parity-target counties still lack `county-briefings` routes until built.
++**Pope**, **Pulaski v2**, and **Faulkner v2** ship under `src/app/county-briefings/` (`/pulaski/v2` and `/faulkner/v2` dashboard templates; city cards explicitly deferred). The hub lists available briefings; the remaining parity-target counties in this audit still lack `county-briefings` routes until built.
+ 
+ ---
+ 
+@@ -39,14 +39,16 @@
+ 
+ **Pulaski ΓÇö exception:** `src/app/county-briefings/pulaski/v2` publishes a **v2 briefing dashboard shell** (`/county-briefings/pulaski/v2`) with ingest-honest aggregates and explicit **city/precinct data needed** scaffoldingΓÇö**not** full Pope parity on municipal drilldowns until place data imports.
+ 
+-For **each** of **Faulkner, Saline, White, Perry, Cleburne, Conway, Van Buren** ΓÇö and for dimensions where Pulaski is still incomplete:
++**Faulkner ΓÇö exception:** `src/app/county-briefings/faulkner/v2` mirrors the Pulaski v2 pattern (`/county-briefings/faulkner/v2`) with engine-backed aggregates where ingest exists and explicit **city/precinct data needed** scaffoldingΓÇö**not** full Pope parity on municipal drilldowns until place data imports.
++
++For **each** of **Saline, White, Perry, Cleburne, Conway, Van Buren** ΓÇö and for dimensions where Pulaski or Faulkner is still incomplete:
+ 
+ | Question | Answer |
+ |----------|--------|
+-| **Route exists (`/county-briefings/{slug}` or `{slug}/v2`)?** | **Seven counties:** **No** ΓÇö no matching route folders yet. **Pulaski:** **v2 route only** (see exception above); no standalone `/pulaski` narrative page unless added separately. |
+-| **County-specific briefing content exists?** | **Seven counties:** **Not** as first-class public pages. **Pulaski:** v2 shell onlyΓÇöclassic hub card narrative optional later. Regional staff materials may appear under admin or docs separately. |
+-| **Strategy narrative on public site** | **Seven counties:** none analogous to Pope. **Pulaski:** strategy strip is **aggregate / ingest-gap** keyedΓÇöverify before external reuse. |
+-| **Real aggregate data surfaced** | **Only** when ingestion provides rows; Pulaski pulls from **`buildCountyPoliticalProfile`** outputsΓÇözeros where telemetry absent. |
++| **Route exists (`/county-briefings/{slug}` or `{slug}/v2`)?** | **Six counties:** **No** ΓÇö no matching route folders yet. **Pulaski / Faulkner:** **v2 route only** (see exceptions above); no standalone `/pulaski` or `/faulkner` narrative page unless added separately. |
++| **County-specific briefing content exists?** | **Six counties:** **Not** as first-class public pages. **Pulaski / Faulkner:** v2 shell onlyΓÇöclassic hub card narrative optional later. Regional staff materials may appear under admin or docs separately. |
++| **Strategy narrative on public site** | **Six counties:** none analogous to Pope. **Pulaski / Faulkner:** strategy strip is **aggregate / ingest-gap** keyedΓÇöverify before external reuse. |
++| **Real aggregate data surfaced** | **Only** when ingestion provides rows; Pulaski and Faulkner pull from **`buildCountyPoliticalProfile`** outputsΓÇözeros where telemetry absent. |
+ | **Target numbers on public UI** | **None** inventedΓÇödo not add turnout or pathway targets without sources. |
+ | **Pathway to victory** | **Out of scope** unless published as sourced editorial. |
+ | **Missing assets** | County briefing parity (place cards, precinct maps), editorial approval, data pipeline parity with COUNTY-* guardrails. |
+diff --git a/next.config.ts b/next.config.ts
+index 6ece495..2510fc2 100644
+--- a/next.config.ts
++++ b/next.config.ts
+@@ -86,7 +86,58 @@ const nextConfig: NextConfig = {
+       },
+       {
+         source: "/volunteerPage",
+-        destination: "/get-involved",
++        destination: "/about",
++        permanent: false,
++      },
++      /** Marketing site is discovery-only ΓÇö volunteer / organizing hubs redirect to public entry points. */
++      {
++        source: "/get-involved",
++        destination: "/about",
++        permanent: false,
++      },
++      {
++        source: "/get-involved/:path*",
++        destination: "/about",
++        permanent: false,
++      },
++      {
++        source: "/onboarding/power-of-5",
++        destination: "/about",
++        permanent: false,
++      },
++      {
++        source: "/organizing-intelligence",
++        destination: "/priorities",
++        permanent: false,
++      },
++      {
++        source: "/organizing-intelligence/:path*",
++        destination: "/priorities",
++        permanent: false,
++      },
++      {
++        source: "/local-organizing",
++        destination: "/about",
++        permanent: false,
++      },
++      {
++        source: "/local-organizing/:path*",
++        destination: "/about",
++        permanent: false,
++      },
++      {
++        source: "/host-a-gathering",
++        destination: "/about",
++        permanent: false,
++      },
++      {
++        source: "/start-a-local-team",
++        destination: "/about",
++        permanent: false,
++      },
++      {
++        source: "/dashboard",
++        destination: "/about",
+         permanent: false,
+       },
+     ];
+diff --git a/src/app/(site)/counties/page.tsx b/src/app/(site)/counties/page.tsx
+index 5509328..f54f3eb 100644
+--- a/src/app/(site)/counties/page.tsx
++++ b/src/app/(site)/counties/page.tsx
+@@ -11,9 +11,9 @@ import { pageMeta } from "@/lib/seo/metadata";
+ export const dynamic = "force-dynamic";
+ 
+ export const metadata: Metadata = pageMeta({
+-  title: "Arkansas counties ΓÇö command & organizing workbench",
++  title: "Arkansas counties ΓÇö Kelly for Secretary of State",
+   description:
+-    "All 75 Arkansas counties in one public workbench: region, dashboard status, organizing notes, and suggested next steps. Pope includes a full sample dashboard; other counties gain depth as packets ship.",
++    "Working with communities across Arkansas: find your county, see public briefing status, and open local pages as they grow. Kelly for Secretary of State.",
+   path: "/counties",
+   imageSrc: "/media/placeholders/og-default.svg",
+ });
+@@ -24,9 +24,9 @@ export default async function CountiesIndexPage() {
+   return (
+     <>
+       <PageHero
+-        eyebrow="Arkansas field"
+-        title="County command & intelligence"
+-        subtitle="All 75 counties in one workbench: each card shows region, dashboard status, organizing status, and a suggested next action. Pope carries the gold-sample Dashboard v2 prototype; Benton and Washington are marked next build; every other county stays on command + organizing-intelligence placeholders until its packet landsΓÇöno 75 bespoke dashboards required."
++        eyebrow="Across Arkansas"
++        title="Working with communities in all 75 counties"
++        subtitle="Browse the statewide roster by region, see which counties carry a published briefing today, and open friendly local pagesΓÇöwritten for neighbors, not insiders."
+       />
+       <FullBleedSection className="border-b border-kelly-text/10 py-6">
+         <ContentContainer>
+diff --git a/src/app/(site)/page.tsx b/src/app/(site)/page.tsx
+index fee32be..d8a5d86 100644
+--- a/src/app/(site)/page.tsx
++++ b/src/app/(site)/page.tsx
+@@ -7,7 +7,7 @@ import { brandMediaFromLegacySite } from "@/config/brand-media";
+ export const metadata: Metadata = pageMeta({
+   title: "Kelly Grappe for Arkansas Secretary of State",
+   description:
+-    "Kelly Grappe for Arkansas Secretary of State: fair elections, accountable administration, and a modern office for all 75 countiesΓÇömeet Kelly, read priorities, volunteer, or explore organizing near you.",
++    "Kelly Grappe for Arkansas Secretary of StateΓÇöfair elections, transparent government, and modern public service for all 75 counties. Meet Kelly, read priorities, hear Arkansas voices, and find your county.",
+   path: "/",
+   imageSrc: brandMediaFromLegacySite.statewideBanner,
+ });
+diff --git a/src/app/county-briefings/page.tsx b/src/app/county-briefings/page.tsx
+index f1ab97b..579180c 100644
+--- a/src/app/county-briefings/page.tsx
++++ b/src/app/county-briefings/page.tsx
+@@ -16,13 +16,13 @@ const BRIEFINGS: {
+   {
+     href: "/county-briefings/pope",
+     name: "Pope County",
+-    blurb: "Political profile, GOTV illustration, relational organizing ΓÇö first pilot on this site.",
++    blurb: "Pilot political profile and briefing illustration ΓÇö aggregate public data only.",
+     status: "live",
+   },
+   {
+     href: "/county-briefings/pope/v2",
+     name: "Pope County ΓÇö briefing dashboard v2 (sample)",
+-    blurb: "Visual-first county briefing with Power of 5 snapshots, drilldowns, and clearly labeled demo dataΓÇötraining preview for organizers.",
++    blurb: "Visual-first county intelligence template with clearly labeled demo scaffolding where live feeds are not yet wired.",
+     status: "live",
+   },
+   {
+@@ -32,6 +32,13 @@ const BRIEFINGS: {
+       "Central Arkansas shell matching the Pope template: engine-backed aggregates only; city drilldown deferred with an explicit ΓÇÿdata neededΓÇÖ stanceΓÇöno fabricated place or precinct KPIs.",
+     status: "live",
+   },
++  {
++    href: "/county-briefings/faulkner/v2",
++    name: "Faulkner County ΓÇö briefing dashboard v2",
++    blurb:
++      "Central Arkansas corridor shell matching the Pope template: aggregates from the county profile engine where present; Conway (city)ΓÇönot Conway CountyΓÇöprecinct drilldown scaffolded honestly until ingest.",
++    status: "live",
++  },
+ ];
+ 
+ export default function CountyBriefingsHubPage() {
+diff --git a/src/app/layout.tsx b/src/app/layout.tsx
+index ba673d6..d699f35 100644
+--- a/src/app/layout.tsx
++++ b/src/app/layout.tsx
+@@ -1,18 +1,15 @@
+ import type { Metadata, Viewport } from "next";
+ import { League_Spartan, Raleway } from "next/font/google";
+ import { AnalyticsProvider } from "@/components/AnalyticsProvider";
+-import { ThemeProvider } from "@/components/theme/ThemeProvider";
+ import { siteConfig } from "@/config/site";
+ import "./globals.css";
+ 
+-/** Inline bootstrap: default light; respects `reddirt-theme` before React hydrates (no flash). */
++/** Force light UI: strip legacy `dark` class and stored theme preference (theme toggle removed). */
+ const THEME_BOOTSTRAP = `
+ (function(){
+   try {
+-    var v = localStorage.getItem('reddirt-theme');
+-    var d = document.documentElement;
+-    if (v === 'dark') d.classList.add('dark');
+-    else if (v === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches) d.classList.add('dark');
++    document.documentElement.classList.remove('dark');
++    localStorage.removeItem('reddirt-theme');
+   } catch (e) {}
+ })();
+ `;
+@@ -41,7 +38,7 @@ export const metadata: Metadata = {
+ };
+ 
+ export const viewport: Viewport = {
+-  colorScheme: "light dark",
++  colorScheme: "light",
+ };
+ 
+ export default function RootLayout({
+@@ -53,9 +50,7 @@ export default function RootLayout({
+     <html lang="en" suppressHydrationWarning className={`${leagueSpartan.variable} ${raleway.variable}`}>
+       <body className="flex min-h-screen flex-col" suppressHydrationWarning>
+         <script dangerouslySetInnerHTML={{ __html: THEME_BOOTSTRAP }} />
+-        <ThemeProvider>
+-          <AnalyticsProvider>{children}</AnalyticsProvider>
+-        </ThemeProvider>
++        <AnalyticsProvider>{children}</AnalyticsProvider>
+       </body>
+     </html>
+   );
+diff --git a/src/components/about/AboutKellyChapterNav.tsx b/src/components/about/AboutKellyChapterNav.tsx
+index c1be118..599438d 100644
+--- a/src/components/about/AboutKellyChapterNav.tsx
++++ b/src/components/about/AboutKellyChapterNav.tsx
+@@ -37,8 +37,8 @@ export function AboutKellyChapterNav({ slug }: Props) {
+             {next.navLabel} ΓåÆ
+           </Link>
+         ) : (
+-          <Link href="/get-involved" className={linkClass}>
+-            Get involved ΓåÆ
++          <Link href="/priorities" className={linkClass}>
++            Read priorities ΓåÆ
+           </Link>
+         )}
+       </div>
+diff --git a/src/components/campaign-guide/CampaignGuideDock.tsx b/src/components/campaign-guide/CampaignGuideDock.tsx
+index 07b5cfd..8f83652 100644
+--- a/src/components/campaign-guide/CampaignGuideDock.tsx
++++ b/src/components/campaign-guide/CampaignGuideDock.tsx
+@@ -19,6 +19,7 @@ import { normalizeHistory } from "@/lib/assistant/conversation";
+ import { ASSISTANT_API_VERSION } from "@/lib/assistant/version";
+ import { consumeAssistantSse } from "@/lib/campaign-guide/assistant-sse";
+ import { AskKellyMissedFeedbackCapture } from "@/components/campaign-guide/AskKellyMissedFeedbackCapture";
++import { OPEN_CAMPAIGN_GUIDE_EVENT } from "@/lib/campaign-guide/open";
+ import { cn } from "@/lib/utils";
+ 
+ function isWeakAssistantPayload(accumulatedReply: string, playbook: string): boolean {
+@@ -77,6 +78,15 @@ export function CampaignGuideDock() {
+     setJourneyBeatOnPage(el ? activeBeatId : null);
+   }, [activeBeatId, pathname, open]);
+ 
++  useEffect(() => {
++    const onOpen = () => {
++      setOpen(true);
++      setPanelTab("chat");
++    };
++    window.addEventListener(OPEN_CAMPAIGN_GUIDE_EVENT, onOpen);
++    return () => window.removeEventListener(OPEN_CAMPAIGN_GUIDE_EVENT, onOpen);
++  }, []);
++
+   useEffect(() => {
+     if (!open) return;
+     document.body.style.overflow = "hidden";
+diff --git a/src/components/county/CountyCommandHub.tsx b/src/components/county/CountyCommandHub.tsx
+index 3d26ebe..58526f2 100644
+--- a/src/components/county/CountyCommandHub.tsx
++++ b/src/components/county/CountyCommandHub.tsx
+@@ -8,7 +8,6 @@ import {
+   type ArCommandRegionId,
+ } from "@/lib/county/arkansas-county-registry";
+ import {
+-  countyDashboardTierShortLabel,
+   getCountyIntelligenceEntryForSlug,
+   type CountyDashboardTier,
+ } from "@/lib/county/county-intelligence-catalog";
+@@ -31,6 +30,37 @@ type RegionBuckets = ReadonlyMap<ArCommandRegionId, CountyRosterListItem[]>;
+ 
+ type TierFilter = "all" | CountyDashboardTier;
+ 
++function publicCountyPlanningCopy(tier: CountyDashboardTier): {
++  badge: string;
++  briefing: string;
++  community: string;
++  next: string;
++} {
++  switch (tier) {
++    case "prototype":
++      return {
++        badge: "Sample briefing",
++        briefing: "A published example voters can explore",
++        community: "KellyΓÇÖs team labels whatΓÇÖs illustrative so neighbors know what theyΓÇÖre seeing.",
++        next: "Open the sample briefing or jump to your county page.",
++      };
++    case "next_build":
++      return {
++        badge: "Coming next",
++        briefing: "County briefing in development",
++        community: "Northwest Arkansas counties are next for fuller public pages.",
++        next: "Start with the county overviewΓÇömore depth will roll out over time.",
++      };
++    default:
++      return {
++        badge: "County page",
++        briefing: "Overview and trusted links",
++        community: "Working with communities across Arkansas as local pages deepen.",
++        next: "Meet your county page and read KellyΓÇÖs statewide priorities.",
++      };
++  }
++}
++
+ function bucketByRegion(list: CountyRosterListItem[]): RegionBuckets {
+   const m = new Map<ArCommandRegionId, CountyRosterListItem[]>();
+   for (const r of ARKANSAS_COMMAND_REGIONS) m.set(r.id, []);
+@@ -90,15 +120,21 @@ export function CountyCommandHub({ counties, mode = "public", className }: Props
+         </div>
+         {mode === "public" ? (
+           <div className="w-full lg:max-w-xl">
+-            <p className="font-body text-xs font-bold uppercase tracking-[0.18em] text-kelly-navy/80">Dashboard tier</p>
+-            <div className="mt-2 flex flex-wrap gap-2" role="group" aria-label="Filter by dashboard tier">
++            <p className="font-body text-xs font-bold uppercase tracking-[0.18em] text-kelly-navy/80">
++              {mode === "public" ? "County briefing status" : "Dashboard tier"}
++            </p>
++            <div
++              className="mt-2 flex flex-wrap gap-2"
++              role="group"
++              aria-label={mode === "public" ? "Filter by briefing status" : "Filter by dashboard tier"}
++            >
+               {(
+                 [
+-                  { id: "all" as const, label: "All counties" },
+-                  { id: "prototype" as const, label: "Prototype" },
+-                  { id: "next_build" as const, label: "Next build" },
+-                  { id: "command_scaffold" as const, label: "Standard" },
+-                ] satisfies { id: TierFilter; label: string }[]
++                  { id: "all" as const, label: "All counties", publicLabel: "All counties" },
++                  { id: "prototype" as const, label: "Prototype", publicLabel: "Sample briefing" },
++                  { id: "next_build" as const, label: "Next build", publicLabel: "Coming next" },
++                  { id: "command_scaffold" as const, label: "Standard", publicLabel: "County pages" },
++                ] satisfies { id: TierFilter; label: string; publicLabel: string }[]
+               ).map((opt) => (
+                 <button
+                   key={opt.id}
+@@ -111,7 +147,7 @@ export function CountyCommandHub({ counties, mode = "public", className }: Props
+                       : "border-kelly-text/20 bg-white text-kelly-text/80 hover:border-kelly-navy/30",
+                   )}
+                 >
+-                  {opt.label}
++                  {mode === "public" ? opt.publicLabel : opt.label}
+                 </button>
+               ))}
+             </div>
+@@ -140,13 +176,14 @@ export function CountyCommandHub({ counties, mode = "public", className }: Props
+           {mode === "public" ? (
+             <>
+               {" "}
+-              Each county card shows <strong>region</strong>, <strong>dashboard status</strong>, <strong>organizing status</strong>, and a suggested{" "}
+-              <strong>next action</strong> ΓÇö without building 75 bespoke dashboards.
++              Each card shows <strong>region</strong>, <strong>briefing status</strong>, and a friendly <strong>next step</strong>ΓÇöwritten for
++              voters, not internal planners.
+             </>
+           ) : (
+             <>
+               {" "}
+-              In each section, rows link to public view and CMS when a row exists.
++              Each county card shows <strong>region</strong>, <strong>dashboard status</strong>, <strong>organizing status</strong>, and a suggested{" "}
++              <strong>next action</strong> ΓÇö without building 75 bespoke dashboards.
+             </>
+           )}
+         </p>
+@@ -175,7 +212,8 @@ export function CountyCommandHub({ counties, mode = "public", className }: Props
+                     const entry = getCountyIntelligenceEntryForSlug(c.slug);
+                     if (!entry) return null;
+                     const tier = entry.dashboardTier;
+-                    const tierBadge = countyDashboardTierShortLabel(tier);
++                    const pub = publicCountyPlanningCopy(tier);
++                    const tierBadge = pub.badge;
+                     return (
+                       <li
+                         key={c.slug}
+@@ -209,16 +247,16 @@ export function CountyCommandHub({ counties, mode = "public", className }: Props
+                             <dd className="mt-0.5">{entry.regionShortLabel}</dd>
+                           </div>
+                           <div>
+-                            <dt className="font-bold uppercase tracking-wide text-kelly-text/50">Dashboard status</dt>
+-                            <dd className="mt-0.5">{entry.dashboardStatusLabel}</dd>
++                            <dt className="font-bold uppercase tracking-wide text-kelly-text/50">Briefing</dt>
++                            <dd className="mt-0.5 leading-snug">{pub.briefing}</dd>
+                           </div>
+                           <div>
+-                            <dt className="font-bold uppercase tracking-wide text-kelly-text/50">Organizing status</dt>
+-                            <dd className="mt-0.5 leading-snug">{entry.organizingStatusLabel}</dd>
++                            <dt className="font-bold uppercase tracking-wide text-kelly-text/50">Community</dt>
++                            <dd className="mt-0.5 leading-snug">{pub.community}</dd>
+                           </div>
+                           <div>
+-                            <dt className="font-bold uppercase tracking-wide text-kelly-text/50">Next action</dt>
+-                            <dd className="mt-0.5 leading-snug">{entry.nextActionLabel}</dd>
++                            <dt className="font-bold uppercase tracking-wide text-kelly-text/50">Next step</dt>
++                            <dd className="mt-0.5 leading-snug">{pub.next}</dd>
+                           </div>
+                         </dl>
+                         <div className="mt-4 flex flex-col gap-2 border-t border-kelly-text/10 pt-3">
+@@ -227,33 +265,30 @@ export function CountyCommandHub({ counties, mode = "public", className }: Props
+                               href={entry.commandHref}
+                               className="inline-flex justify-center rounded-lg bg-kelly-navy px-3 py-2 text-center text-xs font-bold text-white hover:bg-kelly-navy/90"
+                             >
+-                              County command ΓåÆ
++                              County page ΓåÆ
+                             </Link>
+                           ) : (
+                             <span
+                               className="inline-flex justify-center rounded-lg border border-dashed border-kelly-text/25 px-3 py-2 text-center text-xs font-semibold text-kelly-text/50"
+                               title="County public page is in draft"
+                             >
+-                              Command page (draft)
++                              County page (soon)
+                             </span>
+                           )}
+-                          <Link
+-                            href={entry.intelligenceHref}
+-                            className="inline-flex justify-center rounded-lg border border-kelly-text/15 bg-kelly-page/80 px-3 py-2 text-center text-xs font-semibold text-kelly-navy hover:border-kelly-navy/25"
+-                          >
+-                            Organizing intelligence (placeholder) ΓåÆ
+-                          </Link>
+                           {entry.countyDashboardV2Href ? (
+                             <Link
+                               href={entry.countyDashboardV2Href}
+                               className="inline-flex justify-center rounded-lg border border-kelly-gold/40 bg-kelly-gold/15 px-3 py-2 text-center text-xs font-bold text-kelly-navy hover:bg-kelly-gold/25"
+                             >
+-                              Dashboard v2 (prototype) ΓåÆ
++                              County briefing ΓåÆ
+                             </Link>
+                           ) : (
+-                            <p className="text-center text-[11px] leading-snug text-kelly-text/50">
+-                              Full dashboard v2 is not published for this county yet ΓÇö command page and OIS placeholder stay the entry points.
+-                            </p>
++                            <Link
++                              href="/county-briefings"
++                              className="inline-flex justify-center rounded-lg border border-kelly-text/15 bg-kelly-page/80 px-3 py-2 text-center text-xs font-semibold text-kelly-navy hover:border-kelly-navy/25"
++                            >
++                              County briefings hub ΓåÆ
++                            </Link>
+                           )}
+                         </div>
+                       </li>
+diff --git a/src/components/county/dashboard/CountyRegionalContextPanel.tsx b/src/components/county/dashboard/CountyRegionalContextPanel.tsx
+index b91fa79..aa9d000 100644
+--- a/src/components/county/dashboard/CountyRegionalContextPanel.tsx
++++ b/src/components/county/dashboard/CountyRegionalContextPanel.tsx
+@@ -16,6 +16,9 @@ type Props = {
+   stateOrganizingIntelligenceHref?: string;
+   /** e.g. `/organizing-intelligence/regions/river-valley` ΓÇö campaign region drill that receives this countyΓÇÖs aggregate when wired. */
+   regionOrganizingIntelligenceHref?: string;
++  /** Public county briefings: prefer statewide priorities + county index instead of field dashboards. */
++  stateCampaignHref?: string;
++  allCountiesHref?: string;
+   className?: string;
+ };
+ 
+@@ -31,8 +34,11 @@ export function CountyRegionalContextPanel({
+   registryCommandRegionLabel,
+   stateOrganizingIntelligenceHref,
+   regionOrganizingIntelligenceHref,
++  stateCampaignHref,
++  allCountiesHref = "/counties",
+   className,
+ }: Props) {
++  const publicMode = Boolean(stateCampaignHref);
+   return (
+     <section className={className}>
+       <CountySectionHeader overline={overline} title={title} description={description} />
+@@ -43,17 +49,44 @@ export function CountyRegionalContextPanel({
+           {registryCommandRegionLabel ? (
+             <>
+               {" "}
+-              ┬╖ <strong>Command registry (id unchanged, ARK list):</strong> {registryCommandRegionLabel}
++              ┬╖ <strong>Registry grouping:</strong> {registryCommandRegionLabel}
+             </>
+           ) : null}
+-          . NWA / River Valley peer tables stay <strong>standard</strong> rows, not one-off page CSS, when region dashboards
+-          ship (Packet 12ΓÇô13).
++          .
++          {publicMode
++            ? " This page stays county-scoped; statewide policy context lives on the priorities hub."
++            : " NWA / River Valley peer tables stay standard rows when region dashboards ship."}
+         </p>
+-        <p className="mt-2">
+-          City and precinct drilldowns (when live) <strong>feed up</strong> to this county view; this county view feeds the
+-          region. Numbers roll up; tactics sharpen down.
+-        </p>
+-        {regionOrganizingIntelligenceHref ? (
++        {!publicMode ? (
++          <p className="mt-2">
++            City and precinct drilldowns (when live) <strong>feed up</strong> to this county view; this county view feeds the
++            region. Numbers roll up; tactics sharpen down.
++          </p>
++        ) : (
++          <p className="mt-2 text-kelly-text/80">
++            When verified drilldowns exist, geography still anchors to the same Secretary of State dutiesΓÇöfair process, clear
++            rules, and services that reach every community.
++          </p>
++        )}
++        {publicMode && stateCampaignHref ? (
++          <p className="mt-3 text-sm text-kelly-text/85">
++            <span className="font-bold text-kelly-navy">Statewide priorities: </span>
++            <Link className={cn(focusRing, "rounded-sm font-semibold text-kelly-navy underline")} href={stateCampaignHref}>
++              Kelly&apos;s platform for the office
++            </Link>
++            .
++          </p>
++        ) : null}
++        {publicMode ? (
++          <p className="mt-2 text-sm text-kelly-text/85">
++            <span className="font-bold text-kelly-navy">All counties: </span>
++            <Link className={cn(focusRing, "rounded-sm font-semibold text-kelly-navy underline")} href={allCountiesHref}>
++              Arkansas county index
++            </Link>
++            .
++          </p>
++        ) : null}
++        {!publicMode && regionOrganizingIntelligenceHref ? (
+           <p className="mt-3 text-sm text-kelly-text/85">
+             <span className="font-bold text-kelly-navy">Open region: </span>
+             <Link
+@@ -65,7 +98,7 @@ export function CountyRegionalContextPanel({
+             (aggregate roll-up target for this campaign lens; numbers here stay county-scoped).
+           </p>
+         ) : null}
+-        {stateOrganizingIntelligenceHref ? (
++        {!publicMode && stateOrganizingIntelligenceHref ? (
+           <p className="mt-2 text-sm text-kelly-text/85">
+             <span className="font-bold text-kelly-navy">State ladder: </span>
+             <Link className={cn(focusRing, "rounded-sm font-semibold text-kelly-navy underline")} href={stateOrganizingIntelligenceHref}>
+diff --git a/src/components/county/dashboard/CountyStrategyPanel.tsx b/src/components/county/dashboard/CountyStrategyPanel.tsx
+index c9cc2ba..b6417fd 100644
+--- a/src/components/county/dashboard/CountyStrategyPanel.tsx
++++ b/src/components/county/dashboard/CountyStrategyPanel.tsx
+@@ -8,6 +8,8 @@ type Props = {
+   strongest: string;
+   weakest: string;
+   nextMove: string;
++  /** Label before `nextMove` ΓÇö default ΓÇ£Next moveΓÇ¥ for internal decks; county briefings use ΓÇ£Next sourcing stepΓÇ¥. */
++  nextMoveLead?: string;
+   footnote?: string;
+   className?: string;
+ };
+@@ -18,6 +20,7 @@ export function CountyStrategyPanel({
+   strongest,
+   weakest,
+   nextMove,
++  nextMoveLead = "Next move",
+   footnote,
+   className,
+ }: Props) {
+@@ -26,7 +29,7 @@ export function CountyStrategyPanel({
+       <CountySectionHeader
+         overline={overline}
+         title={title}
+-        description="Plain-language read ΓÇö every line should suggest a next move."
++        description="Plain-language read anchored in sources ΓÇö not quotas or GOTV choreography."
+       />
+       <div className={cn(countyDashboardCardClass, "mt-2 space-y-2 border-l-4 border-l-kelly-success/30 text-sm leading-relaxed")}>
+         <p>
+@@ -38,7 +41,7 @@ export function CountyStrategyPanel({
+           {weakest}
+         </p>
+         <p>
+-          <span className="font-bold text-kelly-navy">Next move: </span>
++          <span className="font-bold text-kelly-navy">{nextMoveLead}: </span>
+           {nextMove}
+         </p>
+         {footnote ? <p className="text-xs text-kelly-text/60">{footnote}</p> : null}
+diff --git a/src/components/county/dashboard/index.ts b/src/components/county/dashboard/index.ts
+index cdda05c..f0937e9 100644
+--- a/src/components/county/dashboard/index.ts
++++ b/src/components/county/dashboard/index.ts
+@@ -2,6 +2,8 @@ export { CountyActionPanel } from "./CountyActionPanel";
+ export { CountyBattlefieldPanel } from "./CountyBattlefieldPanel";
+ export type { CountyBattlefieldPanelProps } from "./CountyBattlefieldPanel";
+ export { CountyChartPanel } from "./CountyChartPanel";
++export { CountyBriefingDemoIntro } from "./CountyBriefingDemoIntro";
++export type { BriefingCityAnchor } from "./CountyBriefingDemoIntro";
+ export { CountyDashboardShell } from "./CountyDashboardShell";
+ export { CountyDataGapsPanel } from "./CountyDataGapsPanel";
+ export { CountyDrilldownGrid } from "./CountyDrilldownGrid";
+diff --git a/src/components/county/pulaski/PulaskiCountyDashboardV2View.tsx b/src/components/county/pulaski/PulaskiCountyDashboardV2View.tsx
+index 28bbca0..fb64910 100644
+--- a/src/components/county/pulaski/PulaskiCountyDashboardV2View.tsx
++++ b/src/components/county/pulaski/PulaskiCountyDashboardV2View.tsx
+@@ -2,6 +2,7 @@ import Link from "next/link";
+ import {
+   CountyActionPanel,
+   CountyBattlefieldPanel,
++  CountyBriefingDemoIntro,
+   CountyChartPanel,
+   CountyDashboardShell,
+   CountyDataGapsPanel,
+@@ -21,20 +22,20 @@ import { calculateActivation } from "@/lib/power-of-5/kpi";
+ import { cn, focusRing } from "@/lib/utils";
+ 
+ const POWER_OF_5_IMPACT =
+-  "Power Team depth should roll up here when field systems connect. This Pulaski briefing uses zeroed relational countsΓÇönot the Pope County seed graphΓÇöuntil telemetry is wired. No individual voter data on this route.";
++  "KellyΓÇÖs relational training materials use an invite-and-follow-up scaffold to keep civic conversations humane at scaleΓÇöthis briefing shows empty slots intentionally so we never mimic live field dashboards on a marketing URL.";
+ 
+ function buildPulaskiExecutiveKpis(e: CountyDashboardV2["executive"]): CountyDashboardKpiItem[] {
+   return [
+     { metricKey: "pulaski-exec-population", label: "Population", metric: e.population, actionHint: "ACS block when ingest runsΓÇöotherwise null is honest." },
+-    { metricKey: "pulaski-exec-registered-voters", label: "Registered voters", metric: e.registeredVoters, actionHint: "Prefer SOS roll ingest over static guesses." },
++    { metricKey: "pulaski-exec-registered-voters", label: "Registered voters", metric: e.registeredVoters, actionHint: "Prefer SOS roll ingest over guesses." },
+     { metricKey: "pulaski-exec-turnout-2024", label: "General turnout (latest row)", metric: e.turnout2024, actionHint: "Derived from ballots ├╖ registrants where both exist." },
+-    { metricKey: "pulaski-exec-active-p5-teams", label: "Active Power Teams", metric: e.activePowerTeams, actionHint: "Zeros until relational graph lands for Pulaski." },
+-    { metricKey: "pulaski-exec-complete-p5-teams", label: "Complete Power Teams", metric: e.completePowerTeams, actionHint: "Zeros until telemetry connects." },
+-    { metricKey: "pulaski-exec-people-signed-up", label: "People signed up", metric: e.peopleSignedUp, actionHint: "Zeros ΓÇö no public substitute roll." },
+-    { metricKey: "pulaski-exec-coverage-rate", label: "Coverage rate", metric: e.coverageRate, actionHint: "Placeholder zeroΓÇönot a pathway-to-victory map." },
+-    { metricKey: "pulaski-exec-org-readiness", label: "Org. readiness", metric: e.organizingReadinessScore, actionHint: "Composite from ingest warningsΓÇöcalibrate against field reality." },
+-    { metricKey: "pulaski-exec-candidate-pipeline", label: "Candidate pipeline", metric: e.candidatePipelineScore, actionHint: "Score not asserted externallyΓÇöprivate vetting only." },
+-    { metricKey: "pulaski-exec-priority", label: "Priority sort", metric: e.priorityLevel, actionHint: "Staff sort keyΓÇönot a turnout target." },
++    { metricKey: "pulaski-exec-active-p5-teams", label: "Relational team slots (illustrative)", metric: e.activePowerTeams, actionHint: "Zeros ΓÇö instructional placeholders only." },
++    { metricKey: "pulaski-exec-complete-p5-teams", label: "Completed relationship circles (illustrative)", metric: e.completePowerTeams, actionHint: "Zeros ΓÇö not live engagement counts." },
++    { metricKey: "pulaski-exec-people-signed-up", label: "Supporter pledges tracked", metric: e.peopleSignedUp, actionHint: "Zeros ΓÇö backend tools handle detail." },
++    { metricKey: "pulaski-exec-coverage-rate", label: "Coverage index", metric: e.coverageRate, actionHint: "Placeholder zero ΓÇö turnout modeling layered later." },
++    { metricKey: "pulaski-exec-org-readiness", label: "Briefing completeness index", metric: e.organizingReadinessScore, actionHint: "Composite from ingest warnings ΓÇö not an approval score." },
++    { metricKey: "pulaski-exec-candidate-pipeline", label: "Bench depth (illustrative)", metric: e.candidatePipelineScore, actionHint: "Placeholder ΓÇö not a hiring signal on this page." },
++    { metricKey: "pulaski-exec-priority", label: "Priority band (illustrative)", metric: e.priorityLevel, actionHint: "Sort key for planning decks ΓÇö not a goal." },
+   ];
+ }
+ 
+@@ -44,11 +45,11 @@ function buildPulaskiPowerOf5Items(p: CountyDashboardV2["powerOfFive"]): CountyD
+       ? calculateActivation({ activated: p.peopleActivated.value, invited: p.peopleInvited.value })
+       : 0;
+   return [
+-    { metricKey: "pulaski-p5-teams-formed", label: "Teams formed", metric: p.teamsFormed, actionHint: "Awaiting ingest." },
+-    { metricKey: "pulaski-p5-teams-complete", label: "Teams complete", metric: p.teamsComplete, actionHint: "Awaiting ingest." },
+-    { metricKey: "pulaski-p5-teams-incomplete", label: "Incomplete", metric: p.teamsIncomplete, actionHint: "Awaiting ingest." },
+-    { metricKey: "pulaski-p5-invited", label: "Invited", metric: p.peopleInvited, actionHint: "Zeros ΓÇö scaffold only." },
+-    { metricKey: "pulaski-p5-activated", label: "Activated", metric: p.peopleActivated, actionHint: "Zeros ΓÇö scaffold only." },
++    { metricKey: "pulaski-p5-teams-formed", label: "Teams formed", metric: p.teamsFormed, actionHint: "Data integration in progress." },
++    { metricKey: "pulaski-p5-teams-complete", label: "Teams complete", metric: p.teamsComplete, actionHint: "Data integration in progress." },
++    { metricKey: "pulaski-p5-teams-incomplete", label: "Incomplete", metric: p.teamsIncomplete, actionHint: "Data integration in progress." },
++    { metricKey: "pulaski-p5-invited", label: "Invited", metric: p.peopleInvited, actionHint: "Illustrative zero." },
++    { metricKey: "pulaski-p5-activated", label: "Activated", metric: p.peopleActivated, actionHint: "Illustrative zero." },
+     {
+       metricKey: "pulaski-p5-activation-rate",
+       label: "Activation rate",
+@@ -58,20 +59,21 @@ function buildPulaskiPowerOf5Items(p: CountyDashboardV2["powerOfFive"]): CountyD
+         note:
+           p.peopleInvited.value > 0
+             ? "peopleActivated ├╖ peopleInvited on this page."
+-            : "Invitation count is zero ΓÇö rate held at zero (no fabricated invites).",
++            : "Invitation count is zero ΓÇö rate held at zero (no invented invites).",
+       },
+-      actionHint: "Raise invite quality once telemetry exists.",
++      actionHint: "Turnout modeling to be layered when feeds qualify.",
+     },
+-    { metricKey: "pulaski-p5-conversations", label: "Conversations", metric: p.conversationsLogged, actionHint: "Scaffold zeros." },
+-    { metricKey: "pulaski-p5-followups-due", label: "Follow-ups due", metric: p.followUpsDue, actionHint: "Scaffold zeros." },
+-    { metricKey: "pulaski-p5-weekly-growth", label: "Weekly growth", metric: p.weeklyGrowth, actionHint: "Scaffold zeros." },
+-    { metricKey: "pulaski-p5-leader-gaps", label: "Leader gaps", metric: p.leaderGaps, actionHint: "Scaffold zeros." },
+-    { metricKey: "pulaski-p5-completion-rate", label: "Completion rate", metric: p.teamCompletionRate, actionHint: "Scaffold zeros." },
++    { metricKey: "pulaski-p5-conversations", label: "Conversations", metric: p.conversationsLogged, actionHint: "Illustrative zero." },
++    { metricKey: "pulaski-p5-followups-due", label: "Follow-ups due", metric: p.followUpsDue, actionHint: "Illustrative zero." },
++    { metricKey: "pulaski-p5-weekly-growth", label: "Weekly growth", metric: p.weeklyGrowth, actionHint: "Illustrative zero." },
++    { metricKey: "pulaski-p5-leader-gaps", label: "Leader gaps", metric: p.leaderGaps, actionHint: "Illustrative zero." },
++    { metricKey: "pulaski-p5-completion-rate", label: "Completion rate", metric: p.teamCompletionRate, actionHint: "Illustrative zero." },
+   ];
+ }
+ 
+ export function PulaskiCountyDashboardV2View({ data }: { data: CountyDashboardV2 }) {
+   const e = data.executive;
++  const pop = e.population.value ?? null;
+ 
+   return (
+     <CountyDashboardShell>
+@@ -81,6 +83,10 @@ export function PulaskiCountyDashboardV2View({ data }: { data: CountyDashboardV2
+             Pope v2 reference (gold sample)
+           </Link>{" "}
+           <span aria-hidden>┬╖</span>{" "}
++          <Link className={cn(focusRing, "rounded-sm font-semibold text-kelly-navy underline")} href="/county-briefings/faulkner/v2">
++            Faulkner v2 (central corridor)
++          </Link>{" "}
++          <span aria-hidden>┬╖</span>{" "}
+           <Link className={cn(focusRing, "rounded-sm font-semibold text-kelly-navy underline")} href="/county-briefings">
+             County briefings hub
+           </Link>{" "}
+@@ -93,30 +99,46 @@ export function PulaskiCountyDashboardV2View({ data }: { data: CountyDashboardV2
+         <h1 id="pulaski-county-dashboard-title" className="font-heading mt-1 text-3xl font-bold tracking-tight text-kelly-navy md:text-4xl">
+           {data.displayName}
+         </h1>
+-        <p className="mt-0.5 text-lg font-semibold text-kelly-navy/80">County briefing dashboard</p>
+-        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-kelly-text/75">
+-          Dense shell matching the Pope template; Pulaski relational metrics are scaffold zeros until ingest connects.{" "}
+-          <span className="font-medium">{PULASKI_DASHBOARD_V2_DATA_NOTE}</span>
+-        </p>
+-        <div className="mt-4 rounded-lg border border-amber-300/70 bg-amber-50/90 px-3 py-3 text-sm text-amber-950" role="region" aria-label="City and precinct drilldown status">
+-          <p className="font-heading text-base font-bold text-kelly-navy">Precinct and city data needed</p>
++        <p className="mt-0.5 text-lg font-semibold text-kelly-navy/80">County intelligence briefing</p>
++
++        <CountyBriefingDemoIntro
++          className="mt-6"
++          eyebrow="Kelly for SOS ┬╖ briefing deck"
++          countyDisplayName={data.displayName}
++          executiveSummary={`Pulaski anchors the capital, major in-state media markets, and one of ArkansasΓÇÖs largest county electoratesΓÇöso election administration credibility here echoes statewide. Figures below come from the county profile engine plus public demographic layers; granular city precinct cards stay off until sourced tabulations land.`}
++          whyMattersBody={`As home to Little Rock and the seat of Arkansas government, Pulaski draws outsized scrutiny for registration access, filings, and ballot operationsΓÇöexactly why this page publishes only verified aggregates.`}
++          populationDisplay={pop}
++          majorCitiesLine="County seat Little Rock anchors the county alongside North Little Rock, Jacksonville, Sherwood, and MaumelleΓÇöcentral Arkansas hubs with distinct precinct stories once integrated."
++          growthPatternsNote="Commuting corridors and sub-town growth comparisons draw on ACS and census releases; municipality-level deltas for this deck are flagged data integration in progress until each place row attaches."
++          politicalLandscape="Competitive elections and diverse precinct coalitions reward neutral administration: accurate voter lists, understandable ballot materials, and reliable reporting under press and legal scrutiny. Party-specific modeling belongs in sourced filingsΓÇönot on this briefing."
++          priorityWhyCountyMatters="Because the state capital and largest metro communities sit here, how Secretary of State services feel in Pulaski shapes trust for neighbors well beyond these lines on the map."
++          whatWinningLooksLike={`Trustworthy turnout is consistent access to servicesΓÇönot a partisan ΓÇ£scoreΓÇ¥ΓÇöplus timely reporting journalists can trace to certified canvass; no fabricated registration or GOTV quotas appear on this route.`}
++          cityAnchors={[
++            { name: "Little Rock", status: "Precinct-level breakdown pending ΓÇö place integration in progress" },
++            { name: "North Little Rock", status: "Turnout modeling to be layered after verified ingest" },
++            { name: "Jacksonville", status: "Data integration in progress" },
++            { name: "Sherwood", status: "Data integration in progress" },
++            { name: "Maumelle", status: "Data integration in progress" },
++          ]}
++        />
++
++        <div className="mt-6 rounded-lg border border-amber-300/70 bg-amber-50/90 px-3 py-3 text-sm text-amber-950" role="region" aria-label="City and precinct drilldown status">
++          <p className="font-heading text-base font-bold text-kelly-navy">City & precinct detail</p>
+           <p className="mt-1.5 leading-relaxed">
+-            Verified place splits for Little Rock, North Little Rock, Jacksonville, Sherwood, Maumelle, and peer municipalities are{" "}
+-            <strong>not</strong> on this briefing yetΓÇöno invented city or precinct turnout. When ACS place aggregates and precinct
+-            tabulations are approved for ingest, municipal cards can mirror the Pope grid.
++            Little Rock, North Little Rock, Jacksonville, Sherwood, Maumelle, and peer municipalities still need verified ACS place rolls + precinct canvass rows before mirrored city cards match the Pope templateΓÇöno invented ward turnout on this public page.
+           </p>
+         </div>
+         <p className="mt-3 rounded-md border border-kelly-blue/25 bg-kelly-blue/[0.06] px-3 py-2.5 text-sm text-kelly-navy/95">
+           <strong>Data mix.</strong> Gold badges: <strong>DB / Derived</strong> = ingest or profile math. <strong>Demo</strong> = explicit
+-          scaffolding (zeros or placeholder bands)ΓÇönever substituted as live field certainty.
++          scaffolding (zeros or placeholder bands)ΓÇönever substituted as live certainty. {PULASKI_DASHBOARD_V2_DATA_NOTE}
+         </p>
+ 
+         <CountyKpiStrip
+           className="mt-7"
+           sectionHeadingId="pulaski-county-kpi-strip-heading"
+-          overline="Executive + Power of 5"
+-          title="KPI overview strip"
+-          description="Executive scale first, then relational depth. Pulaski relational counts are scaffold zerosΓÇönot copied from Pope."
++          overline="County snapshot ┬╖ model evolving"
++          title="Key indicators (current snapshot)"
++          description="Executive scale first, then instructional relationship metrics. Zeros mark slots reserved for future sourced rollupsΓÇönever copied from other countiesΓÇÖ samples."
+           items={[...buildPulaskiExecutiveKpis(e), ...buildPulaskiPowerOf5Items(data.powerOfFive)]}
+           compact
+         />
+@@ -128,6 +150,7 @@ export function PulaskiCountyDashboardV2View({ data }: { data: CountyDashboardV2
+             <CountyBattlefieldPanel labels={data.visualLabels} countyNameHint="Pulaski" primaryCityLabel="Metro core ΓÇö city cards pending ingest" />
+           </div>
+           <CountyStrategyPanel
++            nextMoveLead="Next sourcing step"
+             strongest={data.strategy.strongest}
+             weakest={data.strategy.weakest}
+             nextMove={data.strategy.nextOrganizingMove}
+@@ -148,7 +171,7 @@ export function PulaskiCountyDashboardV2View({ data }: { data: CountyDashboardV2
+             </>
+           }
+           title="City & town drilldown"
+-          description="No city tiles yet ΓÇö see ΓÇ£Precinct and city data neededΓÇ¥ above. Placeholders list stands in for precinct keys until geography is verified."
++          description="City tiles await verified ingestΓÇösee the community table above for named anchors and honest status lines."
+           cities={data.cities}
+           precinctPlaceholders={data.precinctPlaceholders}
+           precinctGroupTitle="Precinct & city placeholders (verification pending)"
+@@ -156,56 +179,60 @@ export function PulaskiCountyDashboardV2View({ data }: { data: CountyDashboardV2
+ 
+         <CountyPowerOf5Panel
+           className="mt-8"
++          overline="Instructional relationship model"
++          title="ΓÇ£Power of 5ΓÇ¥ ladder (teaching shape)"
++          showOrganizingPipelines
+           impactExplanation={POWER_OF_5_IMPACT}
+-          intro="Relational organiser stance ΓÇö scaffold zeros until Pulaski field tools echo aggregates here."
++          intro="Used in training to show how neighbor-to-neighbor follow-up scalesΓÇöpublic marketing pages never host live field telemetry."
+           items={[]}
+           pipelineVariant="full"
+         />
+ 
+         <MessageIntelligencePanel
+           className="mt-8"
++          audience="publicBriefing"
+           scope={{ level: "county", countyDisplayName: data.displayName, regionDisplayName: data.regionLabel }}
+         />
+ 
+         <MessageHubLinkCard
+           className="mt-8"
+-          title="County message packet"
++          title={`How Kelly talks about ${data.displayName}`}
+           description={
+             <>
+-              Narrative shelves for <strong>{data.displayName}</strong> organizers stay aggregate-only until counsel approves localizations.
++              Story shelf on <strong>Stories &amp; voices</strong> rotates messages that match this county&apos;s electorateΓÇöeverything stays thematic,
++              aggregate, and reviewer-friendly.
+             </>
+           }
+-          linkLabel="Open message hub ΓÇö county shelf ΓåÆ"
++          linkLabel="Open Stories & voices ΓåÆ"
+         />
+ 
+         <CountyChartPanel
+           className="mt-8"
+           charts={data.charts}
+-          description="Historical turnout pulls from county election rows when present. Vote-share and relational spark lines stay at zeroΓÇönot fabricated substitutes. Volunteer/candidate pipelines are scaffold until CRM fields map."
+-          title="Trends & pipelines"
++          description="Historical turnout pulls from county election rows where presentΓÇövote-share arcs stay at neutral until ingest supplies contest splits."
++          title="Election history & illustrative pipelines"
+         />
+ 
+         <CountyActionPanel
+           className="mt-8"
+-          description="Assignable queue ΓÇö focused on ingest and ethics gates before granular turf claims."
++          description="Integrity checklist tied to sourcingΓÇöno staffing queues on public pages."
+           actions={data.nextActions}
+         />
+ 
+         <CountyRiskPanel
+           className="mt-8"
+-          description="Operational risks with ownersΓÇönot media hits. Severity informs stand-ups."
++          description="Governance tensions that show up around big-county administrations."
+           risks={data.risks}
+         />
+ 
+         <CountyRegionalContextPanel
+           className="mt-8"
++          overline="How this sits in Arkansas"
++          title="Statewide posture"
+           riverValleyNarrative={data.strategy.riverValleyRollup}
+           regionLabel={data.regionLabel}
+           registryCommandRegionLabel={data.registryCommandRegionLabel}
+-          stateOrganizingIntelligenceHref="/organizing-intelligence"
+-          regionOrganizingIntelligenceHref={
+-            data.campaignRegionSlug ? `/organizing-intelligence/regions/${data.campaignRegionSlug}` : "/organizing-intelligence/regions/central-arkansas"
+-          }
++          stateCampaignHref="/priorities"
+         />
+ 
+         <CountyDataGapsPanel className="mt-8" dataWarnings={data.dataWarnings} priorityVoterOnRoll={data.priorityVoterOnRoll} />
+diff --git a/src/components/county/pulaski/PulaskiCountyIntelligenceStack.tsx b/src/components/county/pulaski/PulaskiCountyIntelligenceStack.tsx
+index 992671a..7febb16 100644
+--- a/src/components/county/pulaski/PulaskiCountyIntelligenceStack.tsx
++++ b/src/components/county/pulaski/PulaskiCountyIntelligenceStack.tsx
+@@ -6,37 +6,37 @@ const steps = [
+     key: "county",
+     label: "County",
+     status: "current" as const,
+-    blurb: "FIPS 05119 ΓÇö Pulaski County command view (template parity with Pope v2).",
++    blurb: "FIPS 05119 ΓÇö statewide capital county; full picture before city splits ingest.",
+   },
+-  { key: "city", label: "City", status: "future" as const, blurb: "Municipal drilldown cards deferred until place aggregates ingest." },
++  { key: "city", label: "City", status: "future" as const, blurb: "Municipal cards ΓÇö ACS & canvass aggregates marked ΓÇ£in progress.ΓÇ¥" },
+   {
+     key: "community",
+     label: "Community",
+     status: "future" as const,
+-    blurb: "Neighborhood / host circles when routes and ethics review land.",
++    blurb: "Neighborhood storylines anchor after place data attachesΓÇöno improvised populations here.",
+   },
+   {
+     key: "precinct",
+     label: "Precinct",
+     status: "future" as const,
+-    blurb: "Electoral turf ΓÇö list mode after verified tabulation; no fabricated precinct targets here.",
++    blurb: "Precinct turnout tables ΓÇö turnout modeling flagged ΓÇ£to be layered.ΓÇ¥",
+   },
+   {
+-    key: "power",
+-    label: "Power Team",
++    key: "outreach",
++    label: "Neighbor-led outreach",
+     status: "future" as const,
+-    blurb: "Relational engine ΓÇö zeros on this briefing until Pulaski telemetry connects (no Pope seed graph cloned).",
++    blurb: "Volunteer ladders stay off public marketing routes; illustrative zeros keep shape without field claims.",
+   },
+ ] as const;
+ 
+-/** Visual ladder ΓÇö same resolution model as Pope template; Pulaski-specific posture. */
++/** Decision ladder borrowed from briefing pedagogy ΓÇö public education, not a staffing checklist. */
+ export function PulaskiCountyIntelligenceStack({ className }: { className?: string }) {
+   return (
+-    <section className={className} aria-label="Pulaski County intelligence stack">
++    <section className={className} aria-label="How this county briefing resolves">
+       <CountySectionHeader
+-        overline="Pulaski County intelligence stack"
+-        title="County ΓåÆ City ΓåÆ Community ΓåÆ Precinct ΓåÆ Power Team"
+-        description="Same humans, different resolution. City cards are intentionally empty on this v1 Pulaski briefing until verified ingest; Power Team metrics are zeroedΓÇönot copied from Pope seed data."
++        overline="Geography ladder"
++        title="County ΓåÆ City ΓåÆ Neighborhood ΓåÆ Voting district ΓåÆ Neighbor-led conversation"
++        description="Readers understand scale before precinct detail; ladders stay illustrative until ingest fills each cell."
+       />
+       <div className="mt-3 overflow-x-auto pb-1">
+         <div className="flex min-w-full flex-nowrap items-stretch gap-0 sm:justify-between">
+diff --git a/src/components/home/HeardDrillCards.tsx b/src/components/home/HeardDrillCards.tsx
+deleted file mode 100644
+index 9e29097..0000000
+--- a/src/components/home/HeardDrillCards.tsx
++++ /dev/null
+@@ -1,57 +0,0 @@
+-"use client";
+-
+-import { useState } from "react";
+-import { FadeInWhenVisible } from "@/components/home/FadeInWhenVisible";
+-import { cn } from "@/lib/utils";
+-import type { heardItems } from "@/content/homepage";
+-
+-type Item = (typeof heardItems)[number];
+-
+-/** Below this, four lines usually hold the full textΓÇöno expand affordance. */
+-const EXPAND_MEANINGFUL_MIN_CHARS = 320;
+-
+-export function HeardDrillCards({ items }: { items: readonly Item[] | Item[] }) {
+-  const [open, setOpen] = useState<string | null>(null);
+-
+-  return (
+-    <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
+-      {items.map((item, i) => {
+-        const expanded = open === item.title;
+-        const canExpand = item.body.length >= EXPAND_MEANINGFUL_MIN_CHARS;
+-        return (
+-          <FadeInWhenVisible key={item.title} delay={0.06 * i}>
+-            <article
+-              className={cn(
+-                "flex h-full flex-col rounded-card border border-kelly-ink/10 bg-kelly-fog/50 p-6 shadow-sm md:p-7",
+-                "transition duration-300 hover:border-kelly-gold/35 hover:bg-white hover:shadow-md",
+-                expanded && "border-kelly-gold/40 bg-white shadow-lg",
+-              )}
+-            >
+-              <h3 className="font-heading text-lg font-bold leading-snug text-kelly-ink md:text-xl">{item.title}</h3>
+-              <p
+-                className={cn(
+-                  "mt-4 font-body text-sm leading-relaxed text-kelly-slate/95 md:text-base",
+-                  canExpand && !expanded && "line-clamp-4",
+-                )}
+-              >
+-                {item.body}
+-              </p>
+-              {canExpand ? (
+-                <div className="mt-5 border-t border-kelly-ink/8 pt-4">
+-                  <button
+-                    type="button"
+-                    aria-expanded={expanded}
+-                    onClick={() => setOpen((v) => (v === item.title ? null : item.title))}
+-                    className="font-body text-sm font-bold uppercase tracking-wider text-kelly-navy hover:text-kelly-blue"
+-                  >
+-                    {expanded ? "Collapse" : "Expand insight"}
+-                  </button>
+-                </div>
+-              ) : null}
+-            </article>
+-          </FadeInWhenVisible>
+-        );
+-      })}
+-    </div>
+-  );
+-}
+diff --git a/src/components/home/HomeDonateFloatingGate.tsx b/src/components/home/HomeDonateFloatingGate.tsx
+index 46f4f86..cb53b28 100644
+--- a/src/components/home/HomeDonateFloatingGate.tsx
++++ b/src/components/home/HomeDonateFloatingGate.tsx
+@@ -53,7 +53,7 @@ export function HomeDonateFloatingGate() {
+ 
+   const node = (
+     <div
+-      className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto overscroll-contain bg-kelly-navy/92 px-4 pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-10 backdrop-blur-md sm:px-5 sm:pb-12 sm:pt-12"
++      className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto overscroll-contain bg-kelly-navy/78 px-4 pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-10 backdrop-blur-md sm:px-5 sm:pb-12 sm:pt-12"
+       role="dialog"
+       aria-modal="true"
+       aria-labelledby={titleId}
+@@ -104,9 +104,9 @@ export function HomeDonateFloatingGate() {
+           <button
+             type="button"
+             onClick={dismiss}
+-            className="flex min-h-[48px] w-full items-center justify-center rounded-btn border-2 border-white/40 bg-transparent px-6 py-3 text-center text-sm font-semibold text-white underline decoration-white/60 underline-offset-4 transition hover:border-kelly-gold/70 hover:text-kelly-gold hover:decoration-kelly-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold"
++            className="flex min-h-[48px] w-full items-center justify-center rounded-btn border-2 border-white/55 bg-white/10 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-kelly-gold hover:bg-white/18 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold"
+           >
+-            Continue to website
++            Continue to KellyΓÇÖs site
+           </button>
+         </div>
+       </div>
+diff --git a/src/components/home/HomeExperience.tsx b/src/components/home/HomeExperience.tsx
+index fde7024..f5e2f6a 100644
+--- a/src/components/home/HomeExperience.tsx
++++ b/src/components/home/HomeExperience.tsx
+@@ -1,13 +1,18 @@
+ import type { ReactNode } from "react";
+-import { HomeJourneyShell } from "@/components/journey/HomeJourneyShell";
++import { HomeAcrossArkansasVoices } from "@/components/home/HomeAcrossArkansasVoices";
++import { HomeAskKellyInvite } from "@/components/home/HomeAskKellyInvite";
++import { HomeSecretaryOfficeBand } from "@/components/home/HomeSecretaryOfficeBand";
++import { HomeTrustAndActBand } from "@/components/home/HomeTrustAndActBand";
+ import { HomeGetInvolvedSection } from "@/components/home/sections/HomeGetInvolvedSection";
++import { HomeHeardSection } from "@/components/home/sections/HomeHeardSection";
++import { HomeMovementSection } from "@/components/home/sections/HomeMovementSection";
+ import { HomeDonateFloatingGate } from "@/components/home/HomeDonateFloatingGate";
+-import { HomeOrganizingConversionBand } from "@/components/home/HomeOrganizingConversionBand";
++import { HomeJourneyShell } from "@/components/journey/HomeJourneyShell";
+ import { type MergedHomepageConfig } from "@/lib/content/homepage-merge";
+ 
+ export type HomeExperienceProps = {
+   homepage: MergedHomepageConfig;
+-  /** Optional band between pathway cards and ΓÇ£Get involvedΓÇ¥ (trail gallery lives on /from-the-road). */
++  /** Optional band after the main narrative (e.g. campaign trail promo). */
+   trailBand?: ReactNode;
+ };
+ 
+@@ -19,22 +24,26 @@ export function HomeExperience({ homepage, trailBand }: HomeExperienceProps) {
+         homepage={homepage}
+         trailBand={
+           <>
+-            <HomeOrganizingConversionBand finalCta={homepage.finalCta} />
++            <HomeHeardSection items={homepage.heardItems} />
++            <HomeSecretaryOfficeBand splitDemocracy={homepage.splitDemocracy} splitLabor={homepage.splitLabor} />
++            <HomeMovementSection items={homepage.movementBeliefs} />
++            <HomeAcrossArkansasVoices />
++            <HomeAskKellyInvite />
+             {trailBand}
+           </>
+         }
+         afterGateway={
+           <div key="home-after-gateway">
+-            {/* Old `/#hear-kelly` bookmarks land near Step in after the watch strip was removed */}
+             <div id="hear-kelly" hidden aria-hidden="true" />
+             <section
+               id="beat-act"
+               data-journey-beat="beat-act"
+               className="scroll-mt-[5.5rem] border-t border-kelly-ink/[0.06]"
+-              aria-label="Get involved"
++              aria-label="Volunteer, donate, and stay informed"
+             >
+               <HomeGetInvolvedSection />
+             </section>
++            <HomeTrustAndActBand finalCta={homepage.finalCta} />
+           </div>
+         }
+       />
+diff --git a/src/components/home/HomeOrganizingConversionBand.tsx b/src/components/home/HomeOrganizingConversionBand.tsx
+deleted file mode 100644
+index 93bc914..0000000
+--- a/src/components/home/HomeOrganizingConversionBand.tsx
++++ /dev/null
+@@ -1,246 +0,0 @@
+-import Link from "next/link";
+-import { ContentContainer } from "@/components/layout/ContentContainer";
+-import { FullBleedSection } from "@/components/layout/FullBleedSection";
+-import { CTASection } from "@/components/blocks/CTASection";
+-import { FadeInWhenVisible } from "@/components/home/FadeInWhenVisible";
+-import { PowerOf5StepCard } from "@/components/onboarding/power-of-5";
+-import { CountyKpiCard } from "@/components/county/dashboard/countyDashboardFormat";
+-import { countyDashboardCardClass } from "@/components/county/dashboard/countyDashboardClassNames";
+-import { storyPreviews } from "@/content/homepage";
+-import { TRUST_RIBBON_ITEMS } from "@/content/home/homepagePremium";
+-import type { MergedHomepageConfig } from "@/lib/content/homepage-merge";
+-import { countyDashboardSampleHref, powerOf5OnboardingHref } from "@/config/navigation";
+-import { isExternalHref } from "@/lib/href";
+-import { cn } from "@/lib/utils";
+-
+-type Props = {
+-  finalCta: MergedHomepageConfig["finalCta"];
+-};
+-
+-/**
+- * Pass 2 homepage: organizing-system conversion sections (server-rendered; child `FadeInWhenVisible` is client).
+- */
+-export function HomeOrganizingConversionBand({ finalCta }: Props) {
+-  const previewStories = storyPreviews.slice(0, 3);
+-
+-  return (
+-    <>
+-      <section
+-        className="border-y border-kelly-ink/10 bg-kelly-fog/50 py-section-y lg:py-section-y-lg"
+-        aria-labelledby="power-of-5-explainer-heading"
+-      >
+-        <ContentContainer>
+-          <FadeInWhenVisible className="mx-auto max-w-3xl text-center">
+-            <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-kelly-navy">Power of 5</p>
+-            <h2
+-              id="power-of-5-explainer-heading"
+-              className="mt-4 font-heading text-[clamp(1.75rem,3.8vw,2.65rem)] font-bold tracking-tight text-kelly-ink"
+-            >
+-              A simple ladder your county can actually run
+-            </h2>
+-            <p className="mt-5 font-body text-lg leading-relaxed text-kelly-slate md:text-xl">
+-              The Power of 5 is relational organizing with clear stagesΓÇöso volunteers know what ΓÇ£doneΓÇ¥ looks like and teams donΓÇÖt disappear when schedules
+-              get busy. The guided flow is training-first and never collects private voter data on the public path.
+-            </p>
+-          </FadeInWhenVisible>
+-          <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
+-            <FadeInWhenVisible delay={0.05}>
+-              <PowerOf5StepCard title="Name your five" badge="Step 1">
+-                Start with people you already trustΓÇöneighbors, coworkers, faith communities, small-business regulars. The goal isnΓÇÖt volume; itΓÇÖs depth you
+-                can follow up with honestly.
+-              </PowerOf5StepCard>
+-            </FadeInWhenVisible>
+-            <FadeInWhenVisible delay={0.1}>
+-              <PowerOf5StepCard title="Turn talk into teams" badge="Step 2">
+-                When two or three people say yes, youΓÇÖve got a pod. Public dashboards show aggregate progress so the work stays visibleΓÇöwithout exposing
+-                private lists.
+-              </PowerOf5StepCard>
+-            </FadeInWhenVisible>
+-            <FadeInWhenVisible delay={0.15}>
+-              <PowerOf5StepCard title="Keep the rhythm" badge="Step 3">
+-                Organizing holds when thereΓÇÖs a weekly heartbeat: invites, follow-ups, and a honest read on gaps. ThatΓÇÖs what the statewide view is forΓÇö
+-                peer counties, not leaderboards of individuals.
+-              </PowerOf5StepCard>
+-            </FadeInWhenVisible>
+-          </div>
+-          <FadeInWhenVisible className="mt-10 flex flex-wrap justify-center gap-3">
+-            <Link
+-              href={powerOf5OnboardingHref}
+-              className="inline-flex min-h-[48px] items-center justify-center rounded-btn bg-kelly-navy px-7 py-3.5 text-sm font-bold uppercase tracking-wider text-white shadow-md transition hover:bg-kelly-navy/90"
+-            >
+-              Open the guided flow
+-            </Link>
+-            <Link
+-              href="/organizing-intelligence"
+-              className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-kelly-navy/25 bg-white px-7 py-3.5 text-sm font-bold uppercase tracking-wider text-kelly-navy transition hover:border-kelly-gold"
+-            >
+-              How we organize statewide
+-            </Link>
+-          </FadeInWhenVisible>
+-        </ContentContainer>
+-      </section>
+-
+-      <section
+-        className="bg-white py-section-y lg:py-section-y-lg"
+-        aria-labelledby="county-dashboard-preview-heading"
+-      >
+-        <ContentContainer>
+-          <FadeInWhenVisible className="mx-auto max-w-3xl text-center">
+-            <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-kelly-blue">County snapshot</p>
+-            <h2
+-              id="county-dashboard-preview-heading"
+-              className="mt-4 font-heading text-[clamp(1.75rem,3.8vw,2.65rem)] font-bold tracking-tight text-kelly-ink"
+-            >
+-              What a county briefing can look like
+-            </h2>
+-            <p className="mt-5 font-body text-lg leading-relaxed text-kelly-slate md:text-xl">
+-              When a county goes live, teams get a shared layout: key numbers, local context, and Power of 5 progressΓÇöalways labeled so you know what is
+-              demo training data versus sourced public figures.
+-            </p>
+-          </FadeInWhenVisible>
+-          <FadeInWhenVisible className="mt-10" delay={0.06}>
+-            <div
+-              className={cn(
+-                countyDashboardCardClass,
+-                "mx-auto max-w-5xl border-l-4 border-l-kelly-navy/35 p-5 sm:p-6 md:p-8",
+-              )}
+-            >
+-              <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-kelly-text/50">Sample strip ┬╖ Pope County v2</p>
+-              <div className="mt-4 grid gap-3 sm:grid-cols-3">
+-                <CountyKpiCard
+-                  label="Registered voters"
+-                  metric={{ value: 41_820, source: "demo", note: "Public denominator-style figure for training." }}
+-                  actionHint="Compare turnout and registration help targets."
+-                  compact
+-                />
+-                <CountyKpiCard
+-                  label="Active Power teams"
+-                  metric={{ value: 12, source: "demo" }}
+-                  actionHint="Pods currently meeting the public definition of active."
+-                  compact
+-                />
+-                <CountyKpiCard
+-                  label="Coverage (demo)"
+-                  metric={{ value: 38, source: "demo" }}
+-                  actionHint="Percent-style field coverage placeholder."
+-                  compact
+-                />
+-              </div>
+-              <div className="mt-6 flex flex-wrap gap-3">
+-                <Link
+-                  href={countyDashboardSampleHref}
+-                  className="inline-flex min-h-[44px] items-center justify-center rounded-btn bg-kelly-navy px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-kelly-navy/90"
+-                >
+-                  Open sample briefing (demo)
+-                </Link>
+-                <Link
+-                  href="/counties"
+-                  className="inline-flex min-h-[44px] items-center justify-center rounded-btn border border-kelly-text/15 bg-kelly-page px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-kelly-navy hover:border-kelly-gold"
+-                >
+-                  Browse all counties
+-                </Link>
+-              </div>
+-            </div>
+-          </FadeInWhenVisible>
+-        </ContentContainer>
+-      </section>
+-
+-      <section className="border-y border-kelly-ink/10 bg-kelly-mist/35 py-section-y lg:py-section-y-lg" aria-labelledby="messages-preview-heading">
+-        <ContentContainer>
+-          <FadeInWhenVisible className="mx-auto max-w-3xl text-center">
+-            <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-kelly-navy">Stories &amp; voices</p>
+-            <h2 id="messages-preview-heading" className="mt-4 font-heading text-[clamp(1.75rem,3.8vw,2.65rem)] font-bold tracking-tight text-kelly-ink">
+-              Prompts, line, and neighbor stories
+-            </h2>
+-            <p className="mt-5 font-body text-lg leading-relaxed text-kelly-slate md:text-xl">
+-              The message hub is where volunteers plug into weekly prompts, county color, and shareable narratives. Some items are previews until approvals
+-              are completeΓÇölabeled clearly along the way.
+-            </p>
+-          </FadeInWhenVisible>
+-          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
+-            {previewStories.map((s, i) => (
+-              <FadeInWhenVisible key={s.href} delay={0.07 * i}>
+-                <article className="flex h-full flex-col rounded-card border border-kelly-ink/10 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-kelly-gold/30 hover:shadow-lg md:p-7">
+-                  <p className="font-body text-xs font-semibold uppercase tracking-wider text-kelly-gold">{s.meta}</p>
+-                  <h3 className="mt-3 font-heading text-lg font-bold leading-snug text-kelly-ink">{s.title}</h3>
+-                  <p className="mt-3 flex-1 font-body text-sm leading-relaxed text-kelly-slate/90">{s.excerpt}</p>
+-                  <Link href={s.href} className="mt-5 inline-flex items-center gap-2 font-body text-sm font-bold text-kelly-navy">
+-                    {s.ctaLabel}
+-                    <span aria-hidden>ΓåÆ</span>
+-                  </Link>
+-                </article>
+-              </FadeInWhenVisible>
+-            ))}
+-          </div>
+-          <FadeInWhenVisible className="mt-12 flex justify-center">
+-            <Link
+-              href="/messages"
+-              className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-kelly-blue/35 bg-white px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-kelly-blue transition hover:border-kelly-gold"
+-            >
+-              Open Stories &amp; voices
+-            </Link>
+-          </FadeInWhenVisible>
+-        </ContentContainer>
+-      </section>
+-
+-      <FullBleedSection variant="ink-band" id="trust-privacy-home" aria-labelledby="trust-privacy-heading">
+-        <ContentContainer className="py-section-y lg:py-section-y-lg">
+-          <header className="mx-auto max-w-3xl text-center text-kelly-page">
+-            <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-kelly-gold">Trust &amp; privacy</p>
+-            <h2 id="trust-privacy-heading" className="mt-4 font-heading text-[clamp(1.75rem,3.8vw,2.65rem)] font-bold tracking-tight text-kelly-page">
+-              No surprises with your dataΓÇöor your time
+-            </h2>
+-            <p className="mt-5 font-body text-lg leading-relaxed text-kelly-mist/90 md:text-xl">
+-              This campaign builds public tools you can read like an organizer: clear labels on demo vs. sourced figures, privacy policies you can find in one
+-              click, and straightforward languageΓÇöno hype about magic fixes.
+-            </p>
+-          </header>
+-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+-            {TRUST_RIBBON_ITEMS.map((item, i) => (
+-              <FadeInWhenVisible key={item.label} delay={0.05 * i}>
+-                <p className="font-body text-[10px] font-bold uppercase tracking-[0.24em] text-kelly-gold">{item.label}</p>
+-                <p className="mt-2 font-body text-sm leading-relaxed text-kelly-mist/90">{item.detail}</p>
+-              </FadeInWhenVisible>
+-            ))}
+-          </div>
+-          <nav className="mt-12 flex flex-wrap justify-center gap-x-6 gap-y-2 border-t border-kelly-page/20 pt-8 text-center font-body text-sm font-semibold text-kelly-gold">
+-            <Link href="/privacy" className="underline-offset-4 hover:underline">
+-              Privacy
+-            </Link>
+-            <Link href="/terms" className="underline-offset-4 hover:underline">
+-              Terms of use
+-            </Link>
+-            <Link href="/disclaimer" className="underline-offset-4 hover:underline">
+-              Disclaimer
+-            </Link>
+-          </nav>
+-        </ContentContainer>
+-      </FullBleedSection>
+-
+-      <CTASection
+-        id="home-organizing-final-cta"
+-        eyebrow={finalCta.eyebrow}
+-        title={finalCta.title}
+-        description={finalCta.description}
+-        variant="primary-band"
+-      >
+-        <Link
+-          href={finalCta.primaryHref}
+-          target={isExternalHref(finalCta.primaryHref) ? "_blank" : undefined}
+-          rel={isExternalHref(finalCta.primaryHref) ? "noopener noreferrer" : undefined}
+-          className="inline-flex min-h-[48px] items-center justify-center rounded-btn bg-kelly-gold px-7 py-3.5 text-sm font-bold uppercase tracking-[0.12em] text-kelly-navy shadow-lg transition hover:bg-kelly-gold-soft"
+-        >
+-          {finalCta.primaryLabel}
+-        </Link>
+-        <Link
+-          href={finalCta.secondaryHref}
+-          target={isExternalHref(finalCta.secondaryHref) ? "_blank" : undefined}
+-          rel={isExternalHref(finalCta.secondaryHref) ? "noopener noreferrer" : undefined}
+-          className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-white/55 bg-transparent px-7 py-3.5 text-sm font-bold uppercase tracking-[0.12em] text-white transition hover:border-kelly-gold hover:bg-white/10"
+-        >
+-          {finalCta.secondaryLabel}
+-        </Link>
+-      </CTASection>
+-    </>
+-  );
+-}
+diff --git a/src/components/home/sections/HomeGetInvolvedSection.tsx b/src/components/home/sections/HomeGetInvolvedSection.tsx
+index eead0f6..45c20cc 100644
+--- a/src/components/home/sections/HomeGetInvolvedSection.tsx
++++ b/src/components/home/sections/HomeGetInvolvedSection.tsx
+@@ -15,14 +15,14 @@ const ACTIONS = [
+     cta: "Open volunteer form",
+   },
+   {
+-    title: "Become an Organizer",
+-    body: "Lead in your county or communityΓÇöwith training and a team that shares the load.",
++    title: "Lead locally",
++    body: "Step up for your county or communityΓÇöwith neighbors who share the load.",
+     href: "/start-a-local-team",
+     cta: "Start locally",
+   },
+   {
+     title: "Donate",
+-    body: "Power a campaign built for ArkansasΓÇönot insiders.",
++    body: "Help keep a statewide campaign on the air and on the road.",
+     href: siteConfig.donateHref,
+     cta: "Donate",
+   },
+diff --git a/src/components/home/sections/HomeHeardSection.tsx b/src/components/home/sections/HomeHeardSection.tsx
+index 9d96122..ce352c0 100644
+--- a/src/components/home/sections/HomeHeardSection.tsx
++++ b/src/components/home/sections/HomeHeardSection.tsx
+@@ -1,6 +1,6 @@
+ import { ContentContainer } from "@/components/layout/ContentContainer";
+ import { FadeInWhenVisible } from "@/components/home/FadeInWhenVisible";
+-import { HeardDrillCards } from "@/components/home/HeardDrillCards";
++import { HeardTopicCards } from "@/components/home/HeardTopicCards";
+ import type { heardItems } from "@/content/homepage";
+ 
+ type Item = (typeof heardItems)[number];
+@@ -10,13 +10,16 @@ export function HomeHeardSection({ items }: { items: readonly Item[] | Item[] })
+     <div className="bg-white py-12 lg:py-14" aria-labelledby="heard-heading">
+       <ContentContainer>
+         <FadeInWhenVisible className="mx-auto max-w-3xl text-center">
+-          <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-kelly-navy">What weΓÇÖre hearing</p>
++          <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-kelly-navy">Why Kelly is running</p>
+           <h2 id="heard-heading" className="mt-4 font-heading text-[clamp(1.65rem,3.5vw,2.35rem)] font-bold tracking-tight text-kelly-ink">
+-            Arkansas isnΓÇÖt shyΓÇöpeople know what they need from this office
++            Arkansas deserves a Secretary of State who earns trustΓÇöfair, clear, and close to home
+           </h2>
++          <p className="mt-5 font-body text-base leading-relaxed text-kelly-slate md:text-lg">
++            HereΓÇÖs what neighbors and small-business owners keep saying about what this office owes the public.
++          </p>
+         </FadeInWhenVisible>
+         <div className="mt-12">
+-          <HeardDrillCards items={items} />
++          <HeardTopicCards items={items} />
+         </div>
+       </ContentContainer>
+     </div>
+diff --git a/src/components/home/sections/HomeHeroSection.tsx b/src/components/home/sections/HomeHeroSection.tsx
+index 409e0c9..9852f90 100644
+--- a/src/components/home/sections/HomeHeroSection.tsx
++++ b/src/components/home/sections/HomeHeroSection.tsx
+@@ -87,36 +87,64 @@ export function HomeHeroSection({ hero }: HomeHeroSectionProps) {
+           >
+             {hero.subtitle}
+           </motion.p>
++          <motion.ul
++            className="mt-6 max-w-xl list-none space-y-2.5 border-l-2 border-kelly-gold/50 pl-4 font-body text-sm leading-snug text-white/92 md:text-base"
++            {...fadeUp}
++            transition={{ ...fadeUp.transition, delay: 0.24 }}
++          >
++            <li>
++              <span className="font-bold uppercase tracking-wide text-kelly-gold">Who</span>
++              <span className="text-white/95"> ΓÇö {hero.heroLeadWho}</span>
++            </li>
++            <li>
++              <span className="font-bold uppercase tracking-wide text-kelly-gold">Why Secretary of State</span>
++              <span className="text-white/95"> ΓÇö {hero.heroLeadWhy}</span>
++            </li>
++            <li>
++              <span className="font-bold uppercase tracking-wide text-kelly-gold">WhatΓÇÖs next</span>
++              <span className="text-white/95"> ΓÇö {hero.heroLeadNext}</span>
++            </li>
++          </motion.ul>
+           <motion.div
+-            className="mt-10 flex flex-col gap-3 xs:flex-row xs:flex-wrap xs:items-center"
++            className="mt-10 flex flex-col gap-4"
+             {...fadeUp}
+             transition={{ ...fadeUp.transition, delay: 0.28 }}
+           >
++            <div className="flex flex-col gap-3 xs:flex-row xs:flex-wrap xs:items-center">
++              <Link
++                href={hero.ctaPrimaryHref}
++                target={isExternalHref(hero.ctaPrimaryHref) ? "_blank" : undefined}
++                rel={isExternalHref(hero.ctaPrimaryHref) ? "noopener noreferrer" : undefined}
++                className={cn(
++                  "inline-flex min-h-[52px] min-w-[11rem] items-center justify-center rounded-btn px-7 py-3.5 text-center text-sm font-bold uppercase tracking-[0.12em]",
++                  "bg-kelly-gold text-kelly-navy shadow-lg shadow-black/25 transition duration-normal",
++                  "hover:bg-kelly-gold-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold",
++                )}
++              >
++                {hero.ctaPrimaryLabel}
++                {isExternalHref(hero.ctaPrimaryHref) ? (
++                  <span className="sr-only"> Opens KellyGrappe.com in a new tab.</span>
++                ) : null}
++              </Link>
++              <Link
++                href={hero.ctaSecondaryHref}
++                target={isExternalHref(hero.ctaSecondaryHref) ? "_blank" : undefined}
++                rel={isExternalHref(hero.ctaSecondaryHref) ? "noopener noreferrer" : undefined}
++                className={cn(
++                  "inline-flex min-h-[52px] min-w-[11rem] items-center justify-center rounded-btn border-2 border-white/50 bg-kelly-navy/25 px-7 py-3.5 text-center text-sm font-bold uppercase tracking-[0.12em] text-white backdrop-blur-[2px]",
++                  "transition hover:border-kelly-gold/70 hover:bg-kelly-navy/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
++                )}
++              >
++                {hero.ctaSecondaryLabel}
++              </Link>
++            </div>
+             <Link
+-              href={hero.ctaPrimaryHref}
+-              target={isExternalHref(hero.ctaPrimaryHref) ? "_blank" : undefined}
+-              rel={isExternalHref(hero.ctaPrimaryHref) ? "noopener noreferrer" : undefined}
+-              className={cn(
+-                "inline-flex min-h-[52px] min-w-[11rem] items-center justify-center rounded-btn px-7 py-3.5 text-center text-sm font-bold uppercase tracking-[0.12em]",
+-                "bg-kelly-gold text-kelly-navy shadow-lg shadow-black/25 transition duration-normal",
+-                "hover:bg-kelly-gold-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold",
+-              )}
+-            >
+-              {hero.ctaPrimaryLabel}
+-              {isExternalHref(hero.ctaPrimaryHref) ? (
+-                <span className="sr-only"> Opens KellyGrappe.com in a new tab.</span>
+-              ) : null}
+-            </Link>
+-            <Link
+-              href={hero.ctaSecondaryHref}
+-              target={isExternalHref(hero.ctaSecondaryHref) ? "_blank" : undefined}
+-              rel={isExternalHref(hero.ctaSecondaryHref) ? "noopener noreferrer" : undefined}
+-              className={cn(
+-                "inline-flex min-h-[52px] min-w-[11rem] items-center justify-center rounded-btn border-2 border-white/50 bg-kelly-navy/25 px-7 py-3.5 text-center text-sm font-bold uppercase tracking-[0.12em] text-white backdrop-blur-[2px]",
+-                "transition hover:border-kelly-gold/70 hover:bg-kelly-navy/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
+-              )}
++              href={siteConfig.donateHref}
++              target={isExternalHref(siteConfig.donateHref) ? "_blank" : undefined}
++              rel={isExternalHref(siteConfig.donateHref) ? "noopener noreferrer" : undefined}
++              className="inline-flex w-fit min-h-[44px] items-center px-1 text-left text-sm font-semibold text-white/88 underline decoration-white/45 decoration-2 underline-offset-4 transition hover:text-kelly-gold hover:decoration-kelly-gold sm:mx-auto sm:text-center"
+             >
+-              {hero.ctaSecondaryLabel}
++              Support the campaign
+             </Link>
+           </motion.div>
+           <motion.p
+diff --git a/src/components/home/sections/HomeMovementSection.tsx b/src/components/home/sections/HomeMovementSection.tsx
+index d30b4f0..7d51a5e 100644
+--- a/src/components/home/sections/HomeMovementSection.tsx
++++ b/src/components/home/sections/HomeMovementSection.tsx
+@@ -10,12 +10,12 @@ export function HomeMovementSection({ items }: { items: readonly Belief[] | Beli
+     <section className="bg-kelly-navy py-section-y text-white lg:py-section-y-lg" aria-labelledby="movement-heading">
+       <ContentContainer>
+         <FadeInWhenVisible className="mx-auto max-w-3xl text-center">
+-          <p className="font-body text-[11px] font-bold uppercase tracking-[0.26em] text-kelly-gold-soft">What guides us</p>
++          <p className="font-body text-[11px] font-bold uppercase tracking-[0.26em] text-kelly-gold-soft">What Kelly believes</p>
+           <h2 id="movement-heading" className="mt-4 font-heading text-[clamp(1.75rem,3.8vw,2.65rem)] font-bold tracking-tight text-white">
+-            What this campaign is accountable to
++            People-powered leadership for fair elections and transparent government
+           </h2>
+           <p className="mt-5 font-body text-base leading-relaxed text-white/85 md:text-lg">
+-            The same commitments youΓÇÖll hear on the trail and in how we talk with clerks, voters, and neighbors.
++            The same values Kelly carries county to countyΓÇöwith clerks, voters, and neighbors who deserve modern public service.
+           </p>
+         </FadeInWhenVisible>
+         <ul className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4 xl:gap-6">
+diff --git a/src/components/journey/HomeJourneyShell.tsx b/src/components/journey/HomeJourneyShell.tsx
+index 3a99f88..f3c580c 100644
+--- a/src/components/journey/HomeJourneyShell.tsx
++++ b/src/components/journey/HomeJourneyShell.tsx
+@@ -2,25 +2,23 @@
+ 
+ import type { ReactNode } from "react";
+ import { JourneyProvider } from "@/components/journey/journey-context";
+-import { HomePathwayGateway } from "@/components/journey/HomePathwayGateway";
+ import { HomeHeroSection } from "@/components/home/sections/HomeHeroSection";
+ import { LANDING_JOURNEY_BEATS } from "@/content/home/journey";
+ import type { MergedHomepageConfig } from "@/lib/content/homepage-merge";
+ 
+ type HomeJourneyShellProps = {
+   homepage: MergedHomepageConfig;
+-  /** Optional band between pathway cards and the ΓÇ£after gatewayΓÇ¥ region (e.g. trail photos). */
++  /** Optional band directly after the hero (narrative sections, trust ribbon, etc.). */
+   trailBand?: ReactNode;
+-  /** Rendered immediately after the four pathway cards (e.g. Step in / get involved). */
++  /** Rendered after the hero + optional trail band (e.g. contact / supplementary sections). */
+   afterGateway?: ReactNode;
+   /** Optional extra beats below (full-width column). */
+   children?: ReactNode;
+ };
+ 
+ /**
+- * Homepage body: prelude + full-width beats. Prelude is composed here (not passed from a Server
+- * Component) so `HomePathwayGateway` stays under `JourneyProvider` in the client treeΓÇöavoids
+- * `useJourney` running without context after hydration.
++ * Homepage body: hero + optional bands. `JourneyProvider` keeps scroll-to-beat hooks available for
++ * sections that opt in (e.g. `#beat-act`).
+  */
+ export function HomeJourneyShell({ homepage, trailBand, afterGateway, children }: HomeJourneyShellProps) {
+   return (
+@@ -28,7 +26,6 @@ export function HomeJourneyShell({ homepage, trailBand, afterGateway, children }
+       <div className="relative pb-10">
+         <div id="beat-arrival" data-journey-beat="beat-arrival">
+           <HomeHeroSection hero={homepage.hero} />
+-          <HomePathwayGateway />
+         </div>
+         {trailBand}
+         {afterGateway}
+diff --git a/src/components/journey/HomePathwayGateway.tsx b/src/components/journey/HomePathwayGateway.tsx
+deleted file mode 100644
+index b60c26b..0000000
+--- a/src/components/journey/HomePathwayGateway.tsx
++++ /dev/null
+@@ -1,110 +0,0 @@
+-"use client";
+-
+-import Link from "next/link";
+-import { useJourney } from "@/components/journey/journey-context";
+-import { cn, focusRing } from "@/lib/utils";
+-import { countyDashboardSampleHref, getInvolvedPathwaysHref, powerOf5OnboardingHref } from "@/config/navigation";
+-
+-type PathwayCard = {
+-  key: string;
+-  title: string;
+-  line: string;
+-  href: string;
+-  hrefLabel: string;
+-  /** Deep link into the organizing system */
+-  chapterHref: string;
+-  chapterLabel: string;
+-  /** In-page journey scroll (homepage) */
+-  beatId?: string;
+-};
+-
+-const PATHWAYS: PathwayCard[] = [
+-  {
+-    key: "five",
+-    title: "Build your five",
+-    line: "Trusted relationships first: name your five, walk the ladder, and see how teamwork shows up in public dashboardsΓÇötraining-first, never asking for private voter lists.",
+-    chapterHref: powerOf5OnboardingHref,
+-    chapterLabel: "Start Power of 5",
+-    href: "/messages",
+-    hrefLabel: "Conversations & stories",
+-  },
+-  {
+-    key: "county",
+-    title: "Find your county",
+-    line: "Browse Arkansas county by county, then see how a published briefing comes togetherΓÇöwe publish a Pope County sample dashboard you can explore safely.",
+-    chapterHref: "/organizing-intelligence",
+-    chapterLabel: "How we organize statewide",
+-    href: "/counties",
+-    hrefLabel: "County map & teams",
+-  },
+-  {
+-    key: "community",
+-    title: "Bring this home",
+-    line: "Host, knock doors, pitch in at local events, or plug in onlineΓÇöpick a lane that fits your schedule and meet the campaign where you already live.",
+-    chapterHref: getInvolvedPathwaysHref,
+-    chapterLabel: "Volunteer & get involved",
+-    href: countyDashboardSampleHref,
+-    hrefLabel: "Sample county briefing (demo)",
+-    beatId: "beat-act",
+-  },
+-];
+-
+-export function HomePathwayGateway() {
+-  const { scrollToBeat } = useJourney();
+-
+-  return (
+-    <div className="relative border-b border-kelly-ink/10 bg-gradient-to-b from-kelly-fog via-white to-white py-8 lg:py-10">
+-      <div className="mx-auto max-w-content px-[var(--gutter-x)]">
+-        <h2 className="mb-6 text-center font-body text-[11px] font-bold uppercase tracking-[0.22em] text-kelly-blue">
+-          Choose a pathway
+-        </h2>
+-        <div className="grid grid-cols-1 gap-5 lg:grid-cols-3 lg:gap-6">
+-          {PATHWAYS.map((p) => (
+-            <div
+-              key={p.key}
+-              className={cn(
+-                "group flex flex-col rounded-card border border-kelly-ink/10 bg-white/90 p-6 shadow-sm backdrop-blur-sm",
+-                "transition duration-300 hover:border-kelly-gold/45 hover:shadow-xl md:p-7",
+-              )}
+-            >
+-              <h3 className="font-heading text-xl font-bold text-kelly-ink group-hover:text-kelly-blue">{p.title}</h3>
+-              <p className="mt-3 flex-1 font-body text-sm leading-relaxed text-kelly-slate/95 md:text-[0.9375rem]">{p.line}</p>
+-              <div className="mt-6 flex flex-col gap-1 border-t border-kelly-ink/8 pt-5">
+-                <Link
+-                  href={p.chapterHref}
+-                  className={cn(
+-                    focusRing,
+-                    "rounded-md py-3 text-left font-body text-sm font-bold uppercase tracking-wider text-kelly-navy transition hover:text-kelly-blue sm:py-2",
+-                  )}
+-                >
+-                  {p.chapterLabel} ΓåÆ
+-                </Link>
+-                {p.beatId ? (
+-                  <button
+-                    type="button"
+-                    onClick={() => scrollToBeat(p.beatId!)}
+-                    className={cn(
+-                      focusRing,
+-                      "rounded-md py-3 text-left font-body text-sm font-semibold text-kelly-navy underline-offset-4 hover:text-kelly-blue hover:underline sm:py-2",
+-                    )}
+-                  >
+-                    Jump to more ways to help ΓåÆ
+-                  </button>
+-                ) : null}
+-                <Link
+-                  href={p.href}
+-                  className={cn(
+-                    focusRing,
+-                    "rounded-md py-3 font-body text-sm font-semibold text-kelly-navy underline underline-offset-4 hover:text-kelly-blue sm:py-2",
+-                  )}
+-                >
+-                  {p.hrefLabel}
+-                </Link>
+-              </div>
+-            </div>
+-          ))}
+-        </div>
+-      </div>
+-    </div>
+-  );
+-}
+diff --git a/src/components/layout/SiteHeader.tsx b/src/components/layout/SiteHeader.tsx
+index 6bf8b98..c551e47 100644
+--- a/src/components/layout/SiteHeader.tsx
++++ b/src/components/layout/SiteHeader.tsx
+@@ -3,13 +3,7 @@
+ import Link from "next/link";
+ import { usePathname } from "next/navigation";
+ import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
+-import { getJoinCampaignHref } from "@/config/external-campaign";
+-import {
+-  allPrimaryNavItems,
+-  countyDashboardSampleHref,
+-  powerOf5OnboardingHref,
+-  primaryNavGroups,
+-} from "@/config/navigation";
++import { allPrimaryNavItems, primaryNavGroups } from "@/config/navigation";
+ import { siteConfig } from "@/config/site";
+ import { isExternalHref } from "@/lib/href";
+ import { cn } from "@/lib/utils";
+@@ -17,7 +11,6 @@ import { Button } from "@/components/ui/Button";
+ import { SearchDialog } from "@/components/search/SearchDialog";
+ import { HeaderRoundLogo } from "@/components/layout/HeaderRoundLogo";
+ import { NavDesktop } from "@/components/layout/NavDesktop";
+-import { ThemeToggle } from "@/components/theme/ThemeToggle";
+ 
+ function navItemActive(pathname: string, href: string) {
+   return pathname === href || (href.length > 1 && pathname.startsWith(`${href}/`));
+@@ -28,10 +21,6 @@ export function SiteHeader() {
+   const [open, setOpen] = useState(false);
+   const [searchOpen, setSearchOpen] = useState(false);
+   const panelId = useId();
+-  const joinCampaignHref = getJoinCampaignHref();
+-  const joinExternal = isExternalHref(joinCampaignHref);
+-  const p5External = isExternalHref(powerOf5OnboardingHref);
+-  const countyDashExternal = isExternalHref(countyDashboardSampleHref);
+   const headerRootRef = useRef<HTMLElement | null>(null);
+ 
+   /** Sets `--site-header-h` (px) so `globals.css` can compute `--site-header-shim` for the layout shim. */
+@@ -122,7 +111,6 @@ export function SiteHeader() {
+           <div className="flex min-w-0 flex-1 min-h-0 items-center justify-end overflow-visible pr-0.5">
+             <NavDesktop groups={primaryNavGroups} pathname={pathname} theme="dark" />
+           </div>
+-          <ThemeToggle variant="header" />
+           <Button
+             type="button"
+             variant="ghostOnDark"
+@@ -132,20 +120,12 @@ export function SiteHeader() {
+             Search
+           </Button>
+           <Button
+-            href={powerOf5OnboardingHref}
+-            variant="primary"
+-            className="ml-1 hidden min-h-11 flex-shrink-0 border border-kelly-navy/25 px-3 py-2.5 text-[10px] font-extrabold uppercase tracking-wide shadow-md ring-1 ring-white/10 hover:ring-white/20 lg:inline-flex xl:px-3.5 xl:text-xs 2xl:text-sm"
+-            aria-label="Start Power of 5 ΓÇö relational organizing onboarding"
+-          >
+-            Start Power of 5
+-          </Button>
+-          <Button
+-            href={countyDashboardSampleHref}
++            href="/county-briefings"
+             variant="outlineOnDark"
+             className="hidden min-h-11 min-w-0 flex-shrink-0 border-2 border-white/55 bg-kelly-navy/20 px-2.5 py-2.5 text-[10px] font-extrabold uppercase tracking-wide text-white shadow-md hover:border-kelly-gold/80 hover:bg-kelly-navy/35 lg:inline-flex xl:px-3.5 xl:text-xs 2xl:text-sm"
+-            aria-label="View sample county dashboard (demo data)"
++            aria-label="County planning briefings"
+           >
+-            View County Dashboard
++            County briefings
+           </Button>
+           <Button
+             href={siteConfig.donateHref}
+@@ -159,24 +139,12 @@ export function SiteHeader() {
+ 
+         <div className="flex max-w-[min(100%,18rem)] flex-shrink-0 flex-wrap items-center justify-end gap-1.5 sm:max-w-none sm:gap-2 sm:justify-end text-kelly-fog lg:hidden">
+           <Button
+-            href={powerOf5OnboardingHref}
+-            target={p5External ? "_blank" : undefined}
+-            rel={p5External ? "noopener noreferrer" : undefined}
+-            variant="primary"
+-            className="min-h-11 px-2 py-2 text-[9px] font-extrabold uppercase leading-tight tracking-wide shadow-md xs:px-2.5 xs:text-[10px] sm:px-3.5 sm:text-xs"
+-            aria-label="Start Power of 5"
+-          >
+-            Power of 5
+-          </Button>
+-          <Button
+-            href={countyDashboardSampleHref}
+-            target={countyDashExternal ? "_blank" : undefined}
+-            rel={countyDashExternal ? "noopener noreferrer" : undefined}
++            href="/county-briefings"
+             variant="outlineOnDark"
+             className="min-h-11 border-2 border-white/50 bg-kelly-navy/15 px-2 py-2 text-[9px] font-extrabold uppercase leading-tight tracking-wide text-white xs:px-2.5 xs:text-[10px] sm:px-3.5 sm:text-xs"
+-            aria-label="View county dashboard"
++            aria-label="County briefings"
+           >
+-            County
++            Briefings
+           </Button>
+           <Button
+             href={siteConfig.donateHref}
+@@ -186,7 +154,6 @@ export function SiteHeader() {
+           >
+             Donate
+           </Button>
+-          <ThemeToggle variant="header" />
+           <Button
+             type="button"
+             variant="outlineOnDark"
+@@ -259,31 +226,18 @@ export function SiteHeader() {
+               );
+             })}
+             <Link
+-              href={powerOf5OnboardingHref}
+-              target={p5External ? "_blank" : undefined}
+-              rel={p5External ? "noopener noreferrer" : undefined}
+-              className="mt-6 rounded-btn bg-kelly-gold px-3 py-3 text-center font-body text-base font-bold text-kelly-navy"
+-              onClick={() => setOpen(false)}
+-            >
+-              Start Power of 5
+-            </Link>
+-            <Link
+-              href={countyDashboardSampleHref}
+-              target={countyDashExternal ? "_blank" : undefined}
+-              rel={countyDashExternal ? "noopener noreferrer" : undefined}
++              href="/county-briefings"
+               className="rounded-btn border-2 border-white/60 bg-kelly-navy/30 px-3 py-3 text-center font-body text-base font-bold text-white"
+               onClick={() => setOpen(false)}
+             >
+-              View County Dashboard
++              County briefings
+             </Link>
+             <Link
+-              href={joinCampaignHref}
+-              target={joinExternal ? "_blank" : undefined}
+-              rel={joinExternal ? "noopener noreferrer" : undefined}
++              href="/about"
+               className="rounded-btn border border-white/35 px-3 py-3 text-center font-body text-base font-semibold text-white"
+               onClick={() => setOpen(false)}
+             >
+-              Volunteer sign-up
++              About Kelly
+             </Link>
+             <Link
+               href={siteConfig.donateHref}
+@@ -294,13 +248,6 @@ export function SiteHeader() {
+             >
+               Donate
+             </Link>
+-            <div className="mt-6 border-t border-kelly-gold/20 pt-5">
+-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/45">Reading theme</p>
+-              <p className="mt-1 text-xs text-white/70">Light, dark, or match your deviceΓÇösame as the sun/moon control on desktop.</p>
+-              <div className="mt-3 flex justify-stretch">
+-                <ThemeToggle variant="header" layout="full" className="w-full border border-white/25 py-2.5" />
+-              </div>
+-            </div>
+           </nav>
+         </div>
+       </div>
+diff --git a/src/components/message-engine/MessageIntelligencePanel.tsx b/src/components/message-engine/MessageIntelligencePanel.tsx
+index 384b494..35947d4 100644
+--- a/src/components/message-engine/MessageIntelligencePanel.tsx
++++ b/src/components/message-engine/MessageIntelligencePanel.tsx
+@@ -12,27 +12,38 @@ type Props = {
+   className?: string;
+   /** Geographic / ladder scope ΓÇö selects deterministic demo mix. */
+   scope: MessageIntelligenceScope;
++  /** Public county briefings: swap field vocabulary for civic education wording. */
++  audience?: "default" | "publicBriefing";
+ };
+ 
+ /**
+- * Message Content Engine ΓÇö intelligence strip for organizing dashboards.
++ * Message Content Engine ΓÇö thematic snapshot for dashboards and public briefing shells.
+  * Aggregate-only; labeled preview until conversation logging feeds these panels.
+  */
+-export function MessageIntelligencePanel({ className, scope }: Props) {
++export function MessageIntelligencePanel({ className, scope, audience = "default" }: Props) {
+   const model = getMessageIntelligenceDemoModel(scope);
++  const titleText =
++    audience === "publicBriefing"
++      ? `Narrative shelf ΓÇö themes voters might hear (${model.scopeLabel})`
++      : `Field narrative snapshot ΓÇö ${model.scopeLabel}`;
+ 
+   return (
+     <div className={cn("space-y-6", className)}>
+       <CountySectionHeader
+-        overline="Message intelligence"
+-        title={`Field narrative snapshot ΓÇö ${model.scopeLabel}`}
++        overline={audience === "publicBriefing" ? "What people are discussing" : "Message intelligence"}
++        title={titleText}
+         description={
+           <span className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
+             <span>
+-              Themes, category mix, pipeline movement, narrative gaps, and follow-up depth ΓÇö{" "}
+-              <strong className="text-kelly-text/85">aggregates only</strong> on public routes. No individual-level conversation data.
++              {audience === "publicBriefing"
++                ? "Theme blends, illustrative categories, and gap notes meant for readers learning the race ΓÇö "
++                : "Themes, category mix, pipeline movement, narrative gaps, and follow-up depth ΓÇö "}
++              <strong className="text-kelly-text/85">aggregates only</strong>{" "}
++              {audience === "publicBriefing"
++                ? "on this public briefing. Nothing here is individualized voter outreach."
++                : "on public routes. No individual-level conversation data."}
+             </span>
+-            <CountySourceBadge source="demo" note="Illustrative preview ΓÇö replace with logged aggregates when pipelines connect." />
++            <CountySourceBadge source="demo" note="Illustrative preview ΓÇö data integration in progress until logged feeds qualify." />
+           </span>
+         }
+       />
+diff --git a/src/components/teaching/SelfTeachingHintBanner.tsx b/src/components/teaching/SelfTeachingHintBanner.tsx
+index 4aba4a3..4b4ea5b 100644
+--- a/src/components/teaching/SelfTeachingHintBanner.tsx
++++ b/src/components/teaching/SelfTeachingHintBanner.tsx
+@@ -3,12 +3,11 @@
+ import { useEffect, useState } from "react";
+ import { BookOpen, X } from "lucide-react";
+ import { cn } from "@/lib/utils";
+-import { ThemeToggle } from "@/components/theme/ThemeToggle";
+ 
+ const SESSION_KEY = "reddirt-self-teach-hint-dismissed";
+ 
+ /**
+- * One-time-per-session nudge: explains dotted teaching terms + where to find theme control.
++ * One-time-per-session nudge: explains dotted teaching terms.
+  */
+ export function SelfTeachingHintBanner({ className }: { className?: string }) {
+   const [visible, setVisible] = useState(false);
+@@ -36,7 +35,7 @@ export function SelfTeachingHintBanner({ className }: { className?: string }) {
+   return (
+     <div
+       className={cn(
+-        "relative z-10 border-b border-kelly-navy/10 bg-gradient-to-r from-kelly-mist/90 via-kelly-page to-kelly-mist/80 px-[var(--gutter-x)] py-2.5 dark:border-white/10 dark:from-kelly-deep/95 dark:via-kelly-fog/90 dark:to-kelly-deep/95",
++        "relative z-10 border-b border-kelly-navy/10 bg-gradient-to-r from-kelly-mist/90 via-kelly-page to-kelly-mist/80 px-[var(--gutter-x)] py-2.5",
+         className,
+       )}
+       role="region"
+@@ -44,29 +43,20 @@ export function SelfTeachingHintBanner({ className }: { className?: string }) {
+     >
+       <div className="mx-auto flex max-w-6xl flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+         <div className="flex min-w-0 items-start gap-2.5 sm:items-center">
+-          <BookOpen
+-            className="mt-0.5 h-5 w-5 shrink-0 text-kelly-navy dark:text-kelly-gold-soft"
+-            aria-hidden
+-          />
+-          <p className="text-sm leading-snug text-kelly-text dark:text-kelly-fog">
+-            <strong className="font-semibold text-kelly-navy dark:text-kelly-gold-soft">Self-teaching mode:</strong>{" "}
+-            <span className="text-kelly-text/90 dark:text-kelly-fog/90">
++          <BookOpen className="mt-0.5 h-5 w-5 shrink-0 text-kelly-navy" aria-hidden />
++          <p className="text-sm leading-snug text-kelly-text">
++            <strong className="font-semibold text-kelly-navy">Self-teaching mode:</strong>{" "}
++            <span className="text-kelly-text/90">
+               Words with a <span className="underline decoration-dotted decoration-kelly-slate/60">dotted underline</span> open a
+-              plain-English definition on hover or keyboard focus. Use{" "}
+-              <span className="whitespace-nowrap font-medium text-kelly-navy dark:text-kelly-gold-soft">Theme</span> in the header
+-              for comfortable reading (defaults to light).
++              plain-English definition on hover or keyboard focus.
+             </span>
+           </p>
+         </div>
+-        <div className="flex shrink-0 items-center justify-end gap-2 sm:gap-3">
+-          <span className="hidden text-[10px] font-bold uppercase tracking-wider text-kelly-text/50 dark:text-kelly-fog/55 sm:inline">
+-            Try it
+-          </span>
+-          <ThemeToggle variant="panel" layout="full" />
++        <div className="flex shrink-0 items-center justify-end">
+           <button
+             type="button"
+             onClick={dismiss}
+-            className="rounded-lg p-2 text-kelly-text/60 transition hover:bg-kelly-text/5 hover:text-kelly-text dark:text-kelly-fog/70 dark:hover:bg-white/5 dark:hover:text-kelly-fog"
++            className="rounded-lg p-2 text-kelly-text/60 transition hover:bg-kelly-text/5 hover:text-kelly-text"
+             aria-label="Dismiss this tip for the rest of your visit"
+           >
+             <X className="h-5 w-5" aria-hidden />
+diff --git a/src/components/theme/ThemeProvider.tsx b/src/components/theme/ThemeProvider.tsx
+deleted file mode 100644
+index f11c44f..0000000
+--- a/src/components/theme/ThemeProvider.tsx
++++ /dev/null
+@@ -1,73 +0,0 @@
+-"use client";
+-
+-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+-
+-export type Theme = "light" | "dark" | "system";
+-
+-export const THEME_STORAGE_KEY = "reddirt-theme";
+-
+-function systemPrefersDark() {
+-  return typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: dark)").matches;
+-}
+-
+-export function applyThemeClass(theme: Theme) {
+-  const dark = theme === "dark" || (theme === "system" && systemPrefersDark());
+-  document.documentElement.classList.toggle("dark", dark);
+-}
+-
+-type ThemeContextValue = {
+-  theme: Theme;
+-  setTheme: (t: Theme) => void;
+-  cycle: () => void;
+-  mounted: boolean;
+-};
+-
+-const ThemeContext = createContext<ThemeContextValue | null>(null);
+-
+-export function useTheme() {
+-  const ctx = useContext(ThemeContext);
+-  if (!ctx) {
+-    throw new Error("useTheme must be used within ThemeProvider");
+-  }
+-  return ctx;
+-}
+-
+-export function ThemeProvider({ children }: { children: React.ReactNode }) {
+-  const [theme, setThemeState] = useState<Theme>("light");
+-  const [mounted, setMounted] = useState(false);
+-
+-  useEffect(() => {
+-    const raw = localStorage.getItem(THEME_STORAGE_KEY);
+-    const initial: Theme = raw === "dark" || raw === "system" ? raw : "light";
+-    setThemeState(initial);
+-    applyThemeClass(initial);
+-    setMounted(true);
+-  }, []);
+-
+-  useEffect(() => {
+-    if (!mounted) return;
+-    applyThemeClass(theme);
+-    localStorage.setItem(THEME_STORAGE_KEY, theme);
+-  }, [theme, mounted]);
+-
+-  useEffect(() => {
+-    if (!mounted || theme !== "system") return;
+-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+-    const onChange = () => applyThemeClass("system");
+-    mq.addEventListener("change", onChange);
+-    return () => mq.removeEventListener("change", onChange);
+-  }, [theme, mounted]);
+-
+-  const setTheme = useCallback((t: Theme) => setThemeState(t), []);
+-
+-  const cycle = useCallback(() => {
+-    setThemeState((prev) => (prev === "light" ? "dark" : prev === "dark" ? "system" : "light"));
+-  }, []);
+-
+-  const value = useMemo(
+-    () => ({ theme, setTheme, cycle, mounted }),
+-    [theme, setTheme, cycle, mounted],
+-  );
+-
+-  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
+-}
+diff --git a/src/components/theme/ThemeToggle.tsx b/src/components/theme/ThemeToggle.tsx
+deleted file mode 100644
+index 921db33..0000000
+--- a/src/components/theme/ThemeToggle.tsx
++++ /dev/null
+@@ -1,61 +0,0 @@
+-"use client";
+-
+-import { Laptop, Moon, Sun } from "lucide-react";
+-import { cn } from "@/lib/utils";
+-import { useTheme } from "./ThemeProvider";
+-
+-type Props = {
+-  /** `header`: icon on navy bar. `panel`: readable on page backgrounds (e.g. teaching banner). */
+-  variant?: "header" | "panel";
+-  /** `icon` only, or `full` with text label for the current mode. */
+-  layout?: "icon" | "full";
+-  className?: string;
+-};
+-
+-export function ThemeToggle({ variant = "header", layout = "icon", className }: Props) {
+-  const { theme, cycle, mounted } = useTheme();
+-
+-  const label =
+-    theme === "dark"
+-      ? "Reading theme: dark. Activate to match your device."
+-      : theme === "system"
+-        ? "Reading theme: matching device. Activate for light."
+-        : "Reading theme: light. Activate for dark.";
+-
+-  if (!mounted) {
+-    return (
+-      <span
+-        className={cn(
+-          "inline-flex h-10 min-w-10 items-center justify-center rounded-lg",
+-          variant === "header" && "text-white/50",
+-          className,
+-        )}
+-        aria-hidden
+-      />
+-    );
+-  }
+-
+-  const Icon = theme === "dark" ? Moon : theme === "system" ? Laptop : Sun;
+-
+-  return (
+-    <button
+-      type="button"
+-      onClick={cycle}
+-      aria-label={label}
+-      className={cn(
+-        "inline-flex items-center justify-center gap-2 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold",
+-        variant === "header" &&
+-          "min-h-10 min-w-10 text-white/90 hover:bg-white/10 hover:text-white lg:min-h-11 lg:min-w-11",
+-        variant === "panel" &&
+-          "min-h-10 border border-kelly-text/12 bg-kelly-page/90 px-2.5 text-kelly-navy hover:bg-kelly-page dark:border-white/12 dark:bg-kelly-deep/80 dark:text-kelly-gold-soft dark:hover:bg-kelly-deep",
+-        layout === "full" && "px-3",
+-        className,
+-      )}
+-    >
+-      <Icon className="h-5 w-5 shrink-0" aria-hidden />
+-      {layout === "full" ? (
+-        <span className="text-xs font-semibold capitalize tracking-wide">{theme}</span>
+-      ) : null}
+-    </button>
+-  );
+-}
+diff --git a/src/config/brand-media.ts b/src/config/brand-media.ts
+index c68ade8..9d561dc 100644
+--- a/src/config/brand-media.ts
++++ b/src/config/brand-media.ts
+@@ -1,19 +1,14 @@
+ /**
+- * Production-ready media URLs discovered on www.kellygrappe.com (Squarespace CDN).
+- * Swap for self-hosted / CMS assets later; keep alt text honest and documentary.
++ * Default campaign imagery ΓÇö **local** `/public` assets only (no external CDN).
++ * Override per deploy by swapping files under `public/media/` or wiring CMS later.
+  */
+-/** YouTube/SoS hero still (2000├ù1125) ΓÇö real photo; not `KG.jpg` (site mark / logo on Squarespace). */
+-const YOUTUBE_SOS_BANNER =
+-  "https://images.squarespace-cdn.com/content/v1/69015af815b6db2589f82b24/35318375-cb81-4f5e-970e-3df5ebdb4e18/Youtube+sos+banner+%282000+x+1125+px%29.jpg";
++const HERO_LOCAL = "/media/placeholders/hero-arkansas-warm.svg";
+ 
+ export const brandMediaFromLegacySite = {
+-  /**
+-   * Close-up use (donate gate, ΓÇ£porchΓÇ¥ section): use the **same** hero photo as the homepage, not
+-   * `.../KG.jpg` (that file is the campaign wordmark, not a portrait).
+-   */
+-  kellyPortrait: `${YOUTUBE_SOS_BANNER}?format=1500w`,
+-  kellyPortraitAlt: "Kelly Grappe, Arkansas Secretary of State ΓÇö campaign photo",
+-  /** Wide hero / video-adjacent still from legacy homepage */
+-  statewideBanner: YOUTUBE_SOS_BANNER,
+-  statewideBannerAlt: "Kelly Grappe campaign ΓÇö Arkansas statewide imagery",
++  /** Donate gate + modules that expect a ΓÇ£portraitΓÇ¥ frame (SVG scales cleanly). */
++  kellyPortrait: HERO_LOCAL,
++  kellyPortraitAlt: "Kelly Grappe for Arkansas Secretary of State ΓÇö campaign graphic",
++  /** Wide hero still when no `NEXT_PUBLIC_HERO_VIDEO_URL` */
++  statewideBanner: HERO_LOCAL,
++  statewideBannerAlt: "Kelly Grappe campaign ΓÇö Arkansas statewide graphic",
+ } as const;
+diff --git a/src/config/external-campaign.ts b/src/config/external-campaign.ts
+index 9736dbf..31baf80 100644
+--- a/src/config/external-campaign.ts
++++ b/src/config/external-campaign.ts
+@@ -31,7 +31,7 @@ export function getVolunteerSignupHref(): string {
+ export function getJoinCampaignHref(): string {
+   const o = process.env.NEXT_PUBLIC_JOIN_CAMPAIGN_URL?.trim().replace(/\/$/, "");
+   if (o) return o;
+-  return getVolunteerSignupHref();
++  return getContactMailto();
+ }
+ 
+ /**
+@@ -42,7 +42,7 @@ export function getJoinCampaignHref(): string {
+ export function getContentHubJoinHref(): string {
+   const o = process.env.NEXT_PUBLIC_JOIN_CAMPAIGN_URL?.trim().replace(/\/$/, "");
+   if (o) return o;
+-  return STAY_CONNECTED_HREF;
++  return getContactMailto();
+ }
+ 
+ /** Use `target="_blank"` + rel only for off-site (or `mailto:`) links ΓÇö not same-site app routes. */
+diff --git a/src/config/navigation.ts b/src/config/navigation.ts
+index 97530cc..8534e46 100644
+--- a/src/config/navigation.ts
++++ b/src/config/navigation.ts
+@@ -1,13 +1,13 @@
+-/** Volunteer form tagged for tabling / representing at third-party local events. */
++/** Legacy volunteer URLs ΓÇö primary chrome omits these; `next.config.ts` redirects to public discovery routes. */
+ export const representLocalEventVolunteerHref = "/get-involved?lane=event_representation#volunteer";
+ 
+ /** Volunteer signup with ΓÇ£leadership / captainΓÇ¥ interest pre-checked (client-side default only; same `/api/forms` payload shape). */
+ export const getInvolvedVolunteerCaptainHref = "/get-involved?leadership=1#volunteer";
+ 
+-/** Seven-way pathway grid on Get Involved. */
++/** Seven-way pathway grid (legacy path ΓÇö redirected off marketing header). */
+ export const getInvolvedPathwaysHref = "/get-involved#pathways";
+ 
+-/** Public Power of 5 onboarding (trust-first relational path). */
++/** Legacy onboarding slug ΓÇö redirect in production; kept for bookmarks / tests. */
+ export const powerOf5OnboardingHref = "/onboarding/power-of-5";
+ 
+ /** Gold-sample county dashboard shell (demo / seed data). */
+@@ -30,23 +30,19 @@ export type NavGroup = {
+   items: NavItem[];
+ };
+ 
+-/**
+- * Pass 1 ΓÇö flat primary nav: routes visitors into organizing intelligence, counties, and relational onboarding.
+- * Deeper pages (events, news, resources) remain reachable from in-page content and search.
+- */
++/** Flat primary nav for public discovery ΓÇö no volunteer / organizing shortcuts in the chrome. */
+ export const primaryNavGroups: NavGroup[] = [
+   { id: "home", label: "Home", groupLandingHref: "/", items: [] },
+   { id: "about", label: "About", groupLandingHref: "/about", items: [] },
+   { id: "priorities", label: "Priorities", groupLandingHref: "/priorities", items: [] },
+   { id: "counties", label: "Counties", groupLandingHref: "/counties", items: [] },
+-  { id: "organize", label: "Organize", groupLandingHref: "/organizing-intelligence", items: [] },
+   {
+     id: "conversations",
+     label: "Stories & voices",
+     groupLandingHref: "/messages",
+     items: [],
+   },
+-  { id: "involved", label: "Get Involved", groupLandingHref: "/get-involved", items: [] },
++  { id: "road", label: "From the road", groupLandingHref: "/from-the-road", items: [] },
+ ];
+ 
+ /** Flatten primary destinations (sitemaps, tests). */
+@@ -56,18 +52,18 @@ export const allPrimaryNavItems: NavItem[] = primaryNavGroups.flatMap((g) =>
+ 
+ export const footerNavGroups: { title: string; items: NavItem[] }[] = [
+   {
+-    title: "Movement",
++    title: "Explore",
+     items: [
+-      { label: "Statewide organizing", href: "/organizing-intelligence" },
+-      { label: "Start Power of 5", href: powerOf5OnboardingHref },
++      { label: "Priorities", href: "/priorities" },
++      { label: "Counties", href: "/counties" },
++      { label: "County briefings", href: "/county-briefings" },
+       { label: "Stories & voices", href: "/messages" },
+-      { label: "Volunteer & get involved", href: "/get-involved" },
+     ],
+   },
+   {
+     title: "Privacy & trust",
+     items: [
+-      { label: "Trust & organizing data", href: "/privacy-and-trust" },
++      { label: "Trust & data", href: "/privacy-and-trust" },
+       { label: "Privacy", href: "/privacy" },
+       { label: "Terms of use", href: "/terms" },
+       { label: "Disclaimer", href: "/disclaimer" },
+diff --git a/src/content/home/homepagePremium.ts b/src/content/home/homepagePremium.ts
+index b4f6b53..192f46e 100644
+--- a/src/content/home/homepagePremium.ts
++++ b/src/content/home/homepagePremium.ts
+@@ -46,29 +46,29 @@ export const FIGHT_FOR = [
+ ] as const;
+ 
+ export const PROOF_SECTION = {
+-  eyebrow: "How we work",
+-  title: "Built to show up for Arkansas",
++  eyebrow: "How we show up",
++  title: "Built for Arkansas neighbors",
+   intro:
+-    "This campaign is organized to listen county by county, answer honestly, and meet people where they areΓÇöin person and online.",
++    "This campaign is designed to listen county by county, answer honestly, and meet people where they areΓÇöin person and online.",
+   blocks: [
+     {
+-      title: "Volunteers and coordination",
+-      body: "Clear ways to sign up, get matched to local needs, and stay in touch so counties arenΓÇÖt left guessing.",
++      title: "Volunteers welcome",
++      body: "Clear ways to sign up, get matched to local needs, and stay in touch so every community stays in the loop.",
+     },
+     {
+-      title: "Field organizing",
+-      body: "County visits, trained hosts, and neighbor-to-neighbor outreach you can see in publicΓÇönot just on paper.",
++      title: "Across Arkansas",
++      body: "County visits, local hosts, and neighbor-to-neighbor outreach you can see on the trail and online.",
+     },
+     {
+       title: "Clear information online",
+-      body: "A fast, accessible site with updates and media that respect your time and intelligence.",
++      body: "A fast, accessible site with updates and media that respect your time.",
+     },
+     {
+-      title: "Public engagement",
+-      body: "Kelly taking questions, listening first, and explaining the office in plain language.",
++      title: "Listening first",
++      body: "Kelly taking questions and explaining the office in plain language.",
+     },
+   ],
+-  ctaLabel: "Join the team",
++  ctaLabel: "Join the movement",
+   ctaHref: "/get-involved",
+ } as const;
+ 
+@@ -167,9 +167,9 @@ export const PLACEHOLDER_JOURNAL = [
+ ] as const;
+ 
+ export const GET_INVOLVED_SECTION = {
+-  eyebrow: "Step in",
+-  title: "This is a campaign for the people. Join it.",
+-  subtitle: "Choose a way to helpΓÇöweΓÇÖll meet you with training, backup, and respect for your time.",
++  eyebrow: "Stay in the story",
++  title: "Volunteer, donate, or follow along.",
++  subtitle: "Pick the lane that fits your lifeΓÇöKellyΓÇÖs team meets you with respect for your schedule.",
+ } as const;
+ 
+ export type JournalCardVM = {
+diff --git a/src/content/home/journey.ts b/src/content/home/journey.ts
+index 87b51af..dcd15c0 100644
+--- a/src/content/home/journey.ts
++++ b/src/content/home/journey.ts
+@@ -15,7 +15,7 @@ export const JOURNEY_BEAT_DEFINITIONS: JourneyBeat[] = [
+     id: "beat-arrival",
+     navLabel: "Arrival",
+     navShort: "Start",
+-    description: "Hero, three organizing pathways, and the conversion band into Power of 5, counties, and stories.",
++    description: "Hero and story-driven homepageΓÇömeet Kelly first, then go deeper on the office, Arkansas voices, and Ask Kelly.",
+   },
+   {
+     id: "beat-field",
+@@ -43,7 +43,7 @@ export const JOURNEY_BEAT_DEFINITIONS: JourneyBeat[] = [
+   },
+ ];
+ 
+-/** Homepage (`/`): hero, organizing pathways, conversion band, Step in (get involved) */
++/** Homepage (`/`): hero, narrative bands, Ask Kelly, trust ribbon, then Step in (get involved) */
+ export const LANDING_JOURNEY_BEATS: JourneyBeat[] = JOURNEY_BEAT_DEFINITIONS.filter(
+   (b) => b.id === "beat-arrival" || b.id === "beat-act",
+ );
+diff --git a/src/content/home/proof-section-visuals.ts b/src/content/home/proof-section-visuals.ts
+index 6d6d802..b62a20f 100644
+--- a/src/content/home/proof-section-visuals.ts
++++ b/src/content/home/proof-section-visuals.ts
+@@ -3,18 +3,15 @@
+  * IDs must exist in `campaign-trail-photos` (synced under /public/media/campaign-trail/).
+  */
+ export const PROOF_SECTION_PHOTO_IDS: Record<
+-  | "Volunteers and coordination"
+-  | "Field organizing"
+-  | "Clear information online"
+-  | "Public engagement",
++  "Volunteers welcome" | "Across Arkansas" | "Clear information online" | "Listening first",
+   string
+ > = {
+   /** Signups, tables, neighbor-to-neighbor follow-through */
+-  "Volunteers and coordination": "005-img-7286",
++  "Volunteers welcome": "005-img-7286",
+   /** Crowd energy, grassroots scale */
+-  "Field organizing": "019-img-7961",
++  "Across Arkansas": "019-img-7961",
+   /** Rally-scale room ΓÇö clear updates where real people gather */
+   "Clear information online": "015-img-7956",
+   /** Capitol lawn, neighbors, press ΓÇö showing up in public */
+-  "Public engagement": "013-img-7954",
++  "Listening first": "013-img-7954",
+ };
+diff --git a/src/content/homepage.ts b/src/content/homepage.ts
+index 44abe81..8eedcd7 100644
+--- a/src/content/homepage.ts
++++ b/src/content/homepage.ts
+@@ -51,8 +51,8 @@ export const pathwayCards = [
+     ctaLabel: "Read priorities",
+   },
+   {
+-    title: "Counties & local teams",
+-    description: "Find your county, host a gathering, or join neighbors building teams where you live.",
++    title: "Counties",
++    description: "Meet your county and see how Kelly is working with communities across Arkansas.",
+     href: "/counties",
+     ctaLabel: "Browse counties",
+   },
+@@ -64,7 +64,7 @@ export const pathwayCards = [
+   },
+   {
+     title: "Donate",
+-    description: "Chip in to power accountable, voter-facing organizingΓÇöonline or recurring.",
++    description: "Chip in to keep a people-powered campaign moving forwardΓÇöonline or recurring.",
+     href: "/donate",
+     ctaLabel: "Donate",
+   },
+@@ -86,10 +86,10 @@ export const storyPreviews = [
+     ctaLabel: "Read story",
+   },
+   {
+-    meta: "Organizer ┬╖ Saline County",
++    meta: "Volunteer ┬╖ Saline County",
+     title: "ΓÇ£I started with a porch list and ended with a team.ΓÇ¥",
+     excerpt:
+-      "Local listening beats top-down slogans. HereΓÇÖs how one volunteer built a county rhythm that didnΓÇÖt depend on one leader.",
++      "Local listening beats top-down slogans. HereΓÇÖs how one neighbor built steady community momentum without relying on a single leader.",
+     href: "/stories/porch-list-organizer",
+     ctaLabel: "Read story",
+   },
+diff --git a/src/content/media/registry.ts b/src/content/media/registry.ts
+index b19094a..013855e 100644
+--- a/src/content/media/registry.ts
++++ b/src/content/media/registry.ts
+@@ -1,6 +1,5 @@
+ /**
+- * Central image registry ΓÇö production URLs from www.kellygrappe.com (Squarespace CDN) where noted.
+- * Fall back to /public SVGs when offline or after self-hosting.
++ * Central image registry ΓÇö defaults use **local** `/public` media (`brand-media.ts`).
+  */
+ 
+ import { brandMediaFromLegacySite } from "@/config/brand-media";
+diff --git a/src/lib/ask-kelly/ask-kelly-system-guide.ts b/src/lib/ask-kelly/ask-kelly-system-guide.ts
+index 6e449f0..1367136 100644
+--- a/src/lib/ask-kelly/ask-kelly-system-guide.ts
++++ b/src/lib/ask-kelly/ask-kelly-system-guide.ts
+@@ -35,8 +35,10 @@ export const ASK_KELLY_SYSTEM_ROUTES = {
+   countyBriefings: "/county-briefings",
+   countyBriefingPope: "/county-briefings/pope",
+   countyBriefingPulaskiV2: "/county-briefings/pulaski/v2",
++  countyBriefingFaulknerV2: "/county-briefings/faulkner/v2",
+   countyIntel: "/admin/county-intelligence",
+-  volunteerPublic: "/get-involved",
++  /** Marketing site discovery hub ΓÇö legacy volunteer URLs redirect here via `next.config.ts`. */
++  volunteerPublic: "/about",
+   adminVolunteerIntake: "/admin/volunteers/intake",
+   /** Stable bookmark paths ΓåÆ `redirects()` in next.config.ts (no duplicate pages). */
+   aliasCountyWorkbench: "/countyWorkbench",
+@@ -145,6 +147,27 @@ function tryAlreadyHere(n: string, pathname?: string): AskKellySystemGuideResult
+       };
+     }
+   }
++  if (p === ASK_KELLY_SYSTEM_ROUTES.countyBriefingFaulknerV2) {
++    if (
++      (containsAny(n, ["where is faulkner", "where's faulkner", "find faulkner briefing", "faulkner county briefing"]) &&
++        containsAny(n, ["where", "find", "link"])) ||
++      (containsAny(n, ["faulkner v2", "faulkner briefing"]) && containsAny(n, ["where", "find"]))
++    ) {
++      return {
++        matched: true,
++        title: "YouΓÇÖre already on the Faulkner County briefing (v2)",
++        answer:
++          "This public route is the Faulkner County aggregate briefing shellΓÇösame hardened template as Pope/Pulaski v2. It shows engine-backed county math where ingest exists; city and precinct drilldowns stay labeled as data-needed until verified sources land. No voter-level detail on-page.",
++        links: [
++          { label: "Faulkner briefing v2 (this page)", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefingFaulknerV2 },
++          { label: "County briefings hub", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefings },
++          { label: "County overview (registry)", href: "/counties/faulkner-county" },
++        ],
++        nextStep: "For staff-only aggregates, use County intelligence in admin when your role allowsΓÇöAsk Kelly does not search the voter file.",
++        safetyNote: "Aggregates only on public briefings; follow counsel on what may be shown.",
++      };
++    }
++  }
+   if (p === ASK_KELLY_SYSTEM_ROUTES.betaFeedback) {
+     if (
+       (containsAny(n, ["where is beta", "where's beta", "find beta feedback", "where is ask kelly beta"]) &&
+@@ -300,8 +323,8 @@ function buildLocationAnswer(kind: LocKind, pathname?: string): AskKellySystemGu
+         matched: true,
+         title: "What you can do here",
+         answer:
+-          `${pub} You can browse, follow links to volunteer paths, or open Ask Kelly for routing questions.`,
+-        links: [{ label: "Get involved", href: "/get-involved" }],
++          `${pub} You can browse KellyΓÇÖs story and priorities, or open Ask Kelly for routing questions.`,
++        links: [{ label: "About Kelly", href: ASK_KELLY_SYSTEM_ROUTES.volunteerPublic }],
+         nextStep: "Use Ask Kelly while reading a page when youΓÇÖre unsure where a workflow lives in admin.",
+       };
+     }
+@@ -674,12 +697,16 @@ const rules: Rule[] = [
+         "pulaski dashboard",
+         "pulaski v2",
+         "pulaski county v2",
++        "faulkner briefing",
++        "faulkner dashboard",
++        "faulkner v2",
++        "faulkner county v2",
+       ]) ||
+       (containsAny(n, ["county intelligence", "county intel"]) && containsAny(n, ["where", "what", "open", "admin"])),
+     build: () => ({
+       title: "County briefings (campaign management)",
+       answer:
+-        "That county surface now lives inside RedDirt and opens here: the public briefing index, Pope drill-downs (including pope/v2 template), Pulaski briefing v2 at /county-briefings/pulaski/v2 (aggregate-only shellΓÇöcity drilldown scaffolded honestly), plus /admin/county-intelligence for staff aggregates. Demo bookmarks /countyWorkbench, /distipope-briefing, and /dist-county-briefings are live HTTP redirects to those canonical paths (next.config.ts redirects) ΓÇö no dead demo routes. Repo-root dist-pope-briefing/ and dist-county-briefings/ folders remain static packaging mirrors; NEXT_PUBLIC_COUNTY_WORKBENCH_URL is optional for an extra outbound hub link.",
++        "That county surface now lives inside RedDirt and opens here: the public briefing index, Pope drill-downs (including pope/v2 template), Pulaski briefing v2 at /county-briefings/pulaski/v2 and Faulkner briefing v2 at /county-briefings/faulkner/v2 (aggregate-only shellsΓÇöcity drilldown scaffolded honestly where not yet ingested), plus /admin/county-intelligence for staff aggregates. Demo bookmarks /countyWorkbench, /distipope-briefing, and /dist-county-briefings are live HTTP redirects to those canonical paths (next.config.ts redirects) ΓÇö no dead demo routes. Repo-root dist-pope-briefing/ and dist-county-briefings/ folders remain static packaging mirrors; NEXT_PUBLIC_COUNTY_WORKBENCH_URL is optional for an extra outbound hub link.",
+       links: [
+         { label: "County briefings (canonical)", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefings },
+         { label: "/countyWorkbench (alias)", href: ASK_KELLY_SYSTEM_ROUTES.aliasCountyWorkbench },
+@@ -687,6 +714,7 @@ const rules: Rule[] = [
+         { label: "/dist-county-briefings (alias)", href: ASK_KELLY_SYSTEM_ROUTES.aliasDistCountyBriefings },
+         { label: "Pope briefing (canonical)", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefingPope },
+         { label: "Pulaski briefing v2 (central Arkansas)", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefingPulaskiV2 },
++        { label: "Faulkner briefing v2 (central Arkansas)", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefingFaulknerV2 },
+         { label: "County intelligence (admin)", href: ASK_KELLY_SYSTEM_ROUTES.countyIntel },
+       ],
+       nextStep: "Keep voter-level detail in gated admin toolsΓÇöAsk Kelly does not search the voter file.",
+@@ -701,15 +729,15 @@ const rules: Rule[] = [
+       (containsAny(n, ["volunteer"]) && containsAny(n, ["where", "sign up", "sign-up", "join"])) ||
+       containsAny(n, ["where is the volunteer page", "where is volunteerpage"]),
+     build: () => ({
+-      title: "Volunteer entry (campaign management)",
++      title: "Volunteer entry (staff vs public)",
+       answer:
+-        "That pathway now lives inside RedDirt: the public **`/get-involved`** page and **`/admin/volunteers/intake`** for staff sheets. **`/volunteerPage`** is a **live redirect** alias to **`/get-involved`** (bookmark-safe for demos).",
++        "The marketing site keeps discovery routes only: legacy `/get-involved`, `/onboarding/power-of-5`, `/volunteerPage`, and `/local-organizing` bookmarks redirect to **`/about`** (or priorities where noted in `next.config.ts`). Staff volunteer sheet intake stays at **`/admin/volunteers/intake`**ΓÇöbehind your normal admin gate.",
+       links: [
+-        { label: "Get involved (canonical)", href: ASK_KELLY_SYSTEM_ROUTES.volunteerPublic },
+-        { label: "/volunteerPage (alias)", href: ASK_KELLY_SYSTEM_ROUTES.aliasVolunteerPage },
++        { label: "About Kelly (public hub)", href: ASK_KELLY_SYSTEM_ROUTES.volunteerPublic },
++        { label: "/volunteerPage (redirect alias)", href: ASK_KELLY_SYSTEM_ROUTES.aliasVolunteerPage },
+         { label: "Volunteer sheet intake (admin)", href: ASK_KELLY_SYSTEM_ROUTES.adminVolunteerIntake },
+       ],
+-      nextStep: "If you meant relational organizing tiers, ask your admin which relational lanes are enabled.",
++      nextStep: "If you meant field coordination tools, open Campaign workbench or ask your admin which authenticated lanes are enabled.",
+     }),
+   },
+   {
+@@ -722,13 +750,13 @@ const rules: Rule[] = [
+     build: () => ({
+       title: "Campaign Organizing Hub ┬╖ Discord",
+       answer:
+-        "The Campaign Organizing Hub is your campaign-owned coordination layerΓÇöoften Discord or a similar channel when your manager provisions it. No verified Discord invite ships in this admin UI; confirm access policy with your campaign manager. In-stack workflows use Campaign workbench, comms hubs, county briefings, and volunteer surfaces belowΓÇöall first-party routes in this RedDirt deployment.",
++        "The Campaign Organizing Hub is your campaign-owned coordination layerΓÇöoften Discord or a similar channel when your manager provisions it. No verified Discord invite ships in this admin UI; confirm access policy with your campaign manager. Public marketing chrome highlights county briefings and KellyΓÇÖs priorities; authenticated work happens in Campaign workbench and comms tools.",
+       links: [
+         { label: "Campaign workbench", href: ASK_KELLY_SYSTEM_ROUTES.workbench },
+         { label: "Comms hub", href: ASK_KELLY_SYSTEM_ROUTES.workbenchComms },
+         { label: "County briefings", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefings },
+-        { label: "Get involved (canonical)", href: ASK_KELLY_SYSTEM_ROUTES.volunteerPublic },
+-        { label: "/volunteerPage (alias)", href: ASK_KELLY_SYSTEM_ROUTES.aliasVolunteerPage },
++        { label: "About Kelly (public)", href: ASK_KELLY_SYSTEM_ROUTES.volunteerPublic },
++        { label: "/volunteerPage (redirect alias)", href: ASK_KELLY_SYSTEM_ROUTES.aliasVolunteerPage },
+       ],
+       nextStep: "If Discord is in use, keep invites and roles outside public website copy until counsel approves.",
+     }),
+diff --git a/src/lib/campaign-engine/county-dashboards/pulaski-county-dashboard.ts b/src/lib/campaign-engine/county-dashboards/pulaski-county-dashboard.ts
+index 133f248..bbe0f05 100644
+--- a/src/lib/campaign-engine/county-dashboards/pulaski-county-dashboard.ts
++++ b/src/lib/campaign-engine/county-dashboards/pulaski-county-dashboard.ts
+@@ -97,7 +97,7 @@ export async function buildPulaskiCountyDashboardV2(): Promise<CountyDashboardV2
+         : profile.missingDataWarnings[0] ??
+           "Place- and precinct-level aggregates for briefing drilldowns are pending verified ingestΓÇönot invented here.",
+     nextOrganizingMove:
+-      "Fill priority gaps from the county profile data warnings first; route neighborhood work through secure relational toolsΓÇöwith public briefings staying aggregate-only.",
++      "Resolve the county profileΓÇÖs data-warning list before citing fine-grained turnout comparisons; only certified canvass aggregates belong in public city-split cards when they arrive.",
+     riverValleyRollup:
+       "Pulaski sits in central Arkansas coordination with peer counties on the statewide ladder ΓÇö county KPIs here are modeled to roll upward without bespoke win-number theater on-page.",
+     powerOfFiveLift:
+@@ -137,12 +137,12 @@ export async function buildPulaskiCountyDashboardV2(): Promise<CountyDashboardV2
+     },
+     {
+       id: "pulaski-na2",
+-      title: "Connect relational / Power Team telemetry when campaign enables Pulaski dashboards",
+-      ownerRole: "Field ops lead",
++      title: "Layer relational engagement telemetry only when data agreements allow public-safe rollups",
++      ownerRole: "Data + compliance",
+       urgency: "medium",
+-      expectedImpact: "Zeros on this briefing become real KPIs without crossing into public voter rows.",
+-      kpiAffected: "Power Teams ┬╖ pipelines",
+-      nextStep: "Scope staff-only telemetry first ΓÇö keep aggregates on public briefing routes.",
++      expectedImpact: "Illustrative KPI slots can graduate to sourced figures without exposing person-level detail on the public site.",
++      kpiAffected: "Engagement depth (private systems first)",
++      nextStep: "Keep derived rollups on authenticated tools; this briefing stays aggregate-only.",
+     },
+     {
+       id: "pulaski-na3",
+@@ -175,7 +175,7 @@ export async function buildPulaskiCountyDashboardV2(): Promise<CountyDashboardV2
+       category: "Multi-municipality coverage",
+       severity: "medium",
+       mitigation: "Wait for place-level ingest before asserting Little Rock vs North Little Rock performance splits.",
+-      ownerRole: "Regional field lead",
++      ownerRole: "Regional planning",
+     },
+   ];
+ 
+@@ -183,9 +183,9 @@ export async function buildPulaskiCountyDashboardV2(): Promise<CountyDashboardV2
+     countyMap: `${displayName} outline ΓÇö map asset pending parity pass`,
+     cityMap: "Municipal anchors ΓÇö city drilldown deferred until ingest (see banner)",
+     precinctMap: "Precinct aggregates ΓÇö awaiting verified tabulation ingest for public drilldown",
+-    teamDensity: "Power Team telemetry ΓÇöZeros until field connection (no Pope seed reused)",
+-    coverageGaps: "Coverage storyline follows engine warnings ΓÇö not precinct targets here",
+-    growth: "Historical turnout where rows exist ΓÇö relational growth pending",
++    teamDensity: "Engagement telemetry ΓÇö illustrative zeros until sourced rollups exist (no seeded graph from other counties)",
++    coverageGaps: "Coverage storyline follows engine warnings ΓÇönot invented precinct targets",
++    growth: "Historical turnout where county rows exist ΓÇö future trend layers labeled when integrated",
+   };
+ 
+   const precinctPlaceholders = [
+diff --git a/src/lib/content/homepage-merge.ts b/src/lib/content/homepage-merge.ts
+index 163dbdc..59c7255 100644
+--- a/src/lib/content/homepage-merge.ts
++++ b/src/lib/content/homepage-merge.ts
+@@ -11,7 +11,14 @@ export type HomepageHeroMerged = {
+   titleBefore: string;
+   titleAccent: string;
+   titleAfter: string;
++  /** Short emotional line under the headline */
+   subtitle: string;
++  /** First viewport: who Kelly is */
++  heroLeadWho: string;
++  /** First viewport: why Secretary of State */
++  heroLeadWhy: string;
++  /** First viewport: what to do next */
++  heroLeadNext: string;
+   ctaPrimaryLabel: string;
+   ctaPrimaryHref: string;
+   ctaSecondaryLabel: string;
+@@ -39,13 +46,16 @@ export const HOMEPAGE_SECTION_IDS = [
+ export type HomepageSectionId = (typeof HOMEPAGE_SECTION_IDS)[number];
+ 
+ const DEFAULT_HERO: HomepageHeroMerged = {
+-  eyebrow: "Kelly Grappe ┬╖ Secretary of State",
++  eyebrow: "Kelly Grappe for Arkansas Secretary of State",
+   titleBefore: "Fair elections.",
+-  titleAccent: "Accountable",
++  titleAccent: "Transparent",
+   titleAfter: "government for every county.",
+-  subtitle:
+-    "Kelly Grappe is running to lead ArkansasΓÇÖs Secretary of State officeΓÇöthe place where elections, ballot access, and business filings meet real life. She is asking for your trust to run it with clarity modern voters expect: secure processes, plain-language answers, and systems that treat transparency and competence as the job itselfΓÇönot a talking point.",
+-  ctaPrimaryLabel: "Volunteer",
++  subtitle: "Modern public service, clear rules, and a front office that works for neighbors in every countyΓÇönot political insiders.",
++  heroLeadWho: "Kelly GrappeΓÇöan Arkansan running to lead the office where elections and public filings meet real life.",
++  heroLeadWhy:
++    "Secretary of State touches ballot access, fair elections, and the paperwork small businesses and nonprofits depend on.",
++  heroLeadNext: "Meet KellyΓÇÖs story, ask a public question, or join neighbors standing up for accountable systems.",
++  ctaPrimaryLabel: "Join the movement",
+   ctaPrimaryHref: getVolunteerSignupHref(),
+   ctaSecondaryLabel: "Meet Kelly",
+   ctaSecondaryHref: "/about",
+@@ -66,10 +76,10 @@ const DEFAULT_QUOTE = {
+ const DEFAULT_SPLIT_DEMOCRACY: HomepageSplitCopy = {
+   kicker: "Direct democracy",
+   title: "Ballot access is public infrastructure",
+-  body: "Initiatives and referenda are one way Arkansans keep power close to home. The Secretary of StateΓÇÖs office sits at the center of fair notice, timelines, and clarity.",
++  body: "Initiatives and referenda are one way Arkansans keep power close to home. The Secretary of StateΓÇÖs office should make fair notice, timelines, and next steps easy for every community.",
+   bullets: [
+     "Clear instructions for signature gatherers and voters",
+-    "Defensible timelines that donΓÇÖt move in the shadows",
++    "Reliable timelines Arkansans can follow in public",
+     "Plain-language answers when people ask what happens next",
+   ],
+ };
+@@ -87,9 +97,9 @@ const DEFAULT_SPLIT_LABOR: HomepageSplitCopy = {
+ 
+ const DEFAULT_ARKANSAS_BAND = {
+   intro:
+-    "Arkansas is 75 counties of patchwork economies and shared pride. The front office of state government should feel as close as the courthouse squareΓÇöeven when the work is technical.",
++    "Arkansas is 75 counties of patchwork economies and shared pride. The front office of state government should feel as close as the courthouse squareΓÇöeven when the work is technicalΓÇöand work respectfully with local leadership.",
+   quote: "Showing up isnΓÇÖt a stunt. ItΓÇÖs how trust starts.",
+-  attribution: "Field principle",
++  attribution: "Kelly on the trail",
+ };
+ 
+ function mergeSplit(raw: unknown, fallback: HomepageSplitCopy): HomepageSplitCopy {
+@@ -111,12 +121,12 @@ function mergeArkansasBand(
+ 
+ const DEFAULT_FINAL_CTA = {
+   eyebrow: "Regnat Populus ΓÇö The people rule",
+-  title: "Your next step starts here.",
++  title: "Ready to take the next step?",
+   description:
+-    "Volunteer, read KellyΓÇÖs priorities, find your county, or explore a sample briefing. Every link goes somewhere realΓÇötake it at your pace.",
+-  primaryLabel: "Volunteer",
++    "Volunteer, read KellyΓÇÖs priorities, or find your county pageΓÇöevery path is written for voters and neighbors across Arkansas.",
++  primaryLabel: "Join the movement",
+   primaryHref: getVolunteerSignupHref(),
+-  secondaryLabel: "See priorities",
++  secondaryLabel: "Read priorities",
+   secondaryHref: "/priorities",
+ };
+ 

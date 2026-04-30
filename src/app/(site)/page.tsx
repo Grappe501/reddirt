@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { HomeExperience } from "@/components/home/HomeExperience";
+import { HomeTrustFunnelWireframe } from "@/components/home/HomeTrustFunnelWireframe";
 import { siteConfig } from "@/config/site";
-import { getMergedHomepageConfig } from "@/lib/content/homepage-merge";
 import { pageMeta } from "@/lib/seo/metadata";
 import { brandMediaFromLegacySite } from "@/config/brand-media";
+import { listRoadPreviewPosts } from "@/lib/content/content-hub-queries";
+import { listUpcomingPublicCampaignEventsForHomepage } from "@/lib/calendar/public-events";
 
 export const metadata: Metadata = pageMeta({
   title: "Home",
@@ -13,7 +14,12 @@ export const metadata: Metadata = pageMeta({
 });
 
 export default async function HomePage() {
-  const homepage = await getMergedHomepageConfig();
+  const [roadPreviewPosts, upcomingPublicEvents] = await Promise.all([
+    listRoadPreviewPosts(6),
+    listUpcomingPublicCampaignEventsForHomepage(6),
+  ]);
 
-  return <HomeExperience homepage={homepage} />;
+  return (
+    <HomeTrustFunnelWireframe roadPreviewPosts={roadPreviewPosts} upcomingPublicEvents={upcomingPublicEvents} />
+  );
 }

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { getJoinCampaignHref } from "@/config/external-campaign";
-import { primaryNavGroups } from "@/config/navigation";
+import { primaryNavGroups, voterRegistrationHref } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
 import { isExternalHref } from "@/lib/href";
 import { cn } from "@/lib/utils";
@@ -123,6 +123,14 @@ export function SiteHeader() {
             Search
           </Button>
           <Button
+            href={voterRegistrationHref}
+            variant="outlineOnDark"
+            className="hidden min-h-11 min-w-0 flex-shrink-0 border-2 border-white/45 bg-kelly-navy/40 px-3 py-2.5 text-xs font-extrabold uppercase tracking-wide text-white shadow-md hover:border-kelly-gold/80 hover:bg-kelly-blue/40 lg:inline-flex lg:px-3.5 lg:text-sm"
+            aria-label="Vote and register — voter registration center"
+          >
+            Vote / Register
+          </Button>
+          <Button
             href={joinCampaignHref}
             variant="primary"
             className="ml-1 hidden min-h-11 flex-shrink-0 border border-kelly-navy/25 px-3.5 py-2.5 text-xs font-extrabold uppercase tracking-wide shadow-md ring-1 ring-white/10 hover:ring-white/20 lg:inline-flex lg:px-4 lg:text-sm"
@@ -150,6 +158,14 @@ export function SiteHeader() {
             aria-label="Volunteer — sign up"
           >
             Volunteer
+          </Button>
+          <Button
+            href={voterRegistrationHref}
+            variant="outlineOnDark"
+            className="min-h-11 border-2 border-white/45 px-2 py-2 text-[10px] font-extrabold uppercase tracking-wide text-white sm:px-3 sm:text-xs"
+            aria-label="Vote and register"
+          >
+            Vote
           </Button>
           <Button
             href={siteConfig.donateHref}
@@ -242,10 +258,17 @@ export function SiteHeader() {
               </div>
             ))}
             <Link
+              href={voterRegistrationHref}
+              className="mt-6 rounded-btn border-2 border-white/50 bg-kelly-navy/50 px-3 py-3 text-center font-body text-base font-bold text-white"
+              onClick={() => setOpen(false)}
+            >
+              Vote / Register
+            </Link>
+            <Link
               href={joinCampaignHref}
               target={joinExternal ? "_blank" : undefined}
               rel={joinExternal ? "noopener noreferrer" : undefined}
-              className="mt-6 rounded-btn bg-kelly-gold px-3 py-3 text-center font-body text-base font-bold text-kelly-navy"
+              className="mt-3 rounded-btn bg-kelly-gold px-3 py-3 text-center font-body text-base font-bold text-kelly-navy"
               onClick={() => setOpen(false)}
             >
               Volunteer sign-up
@@ -254,7 +277,7 @@ export function SiteHeader() {
               href={siteConfig.donateHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-btn border-2 border-kelly-gold/70 bg-kelly-gold/10 px-3 py-3 text-center font-body text-base font-bold text-white"
+              className="mt-3 rounded-btn border-2 border-kelly-gold/70 bg-kelly-gold/10 px-3 py-3 text-center font-body text-base font-bold text-white"
               onClick={() => setOpen(false)}
             >
               Donate

@@ -91,6 +91,13 @@ export function HomeDonateFloatingGate() {
           >
             Donate
           </Link>
+          <button
+            type="button"
+            onClick={dismiss}
+            className="mt-4 w-full text-center font-body text-sm font-medium tracking-wide text-white/85 underline decoration-white/35 underline-offset-4 transition hover:text-kelly-gold hover:decoration-kelly-gold/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold"
+          >
+            Click to Website
+          </button>
         </div>
       </div>
     </div>

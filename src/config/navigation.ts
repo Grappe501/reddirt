@@ -38,6 +38,9 @@ export const getInvolvedVolunteerCaptainHref = "/get-involved?leadership=1#volun
 /** Public Power of 5 onboarding (trust-first relational path). */
 export const powerOf5OnboardingHref = "/onboarding/power-of-5";
 
+/** Voter registration center (citizenship CTA in header + trust-funnel homepage). */
+export const voterRegistrationHref = "/voter-registration";
+
 /** Top nav per blueprint: compact groups + Donate as distinct control in header */
 export const primaryNavGroups: NavGroup[] = [
   {
