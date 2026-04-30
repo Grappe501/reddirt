@@ -3,28 +3,21 @@
  *
  * Related in codebase/docs (not a guarantee of DB-backed rows with this exact title):
  * - `campaign-system-manual/COMMUNITY_ELECTION_INTEGRITY_AND_BALLOT_INITIATIVE_LISTENING_TOUR.md`
- * - Public `/listening-sessions` — Arkansas Election & Ballot Access Listening Sessions (separate structured series)
- * - `src/content/events/index.ts` — movement events mentioning election process / listening framing
+ * - Public `/listening-sessions` — separate structured series
  *
  * TODO: When verified stops exist in CMS/DB, merge safe fields only — never invent counties or dates here.
  */
 
-export type IntegrityTourStopStatus =
-  | "Research needed"
-  | "Requested"
-  | "Pending approval"
-  | "Scheduled"
-  | "Completed";
+export type IntegrityTourStopStatus = "Research" | "Requested" | "Scheduled" | "Completed";
 
 export type IntegrityTourPlaceholderRow = {
   slot: number;
-  regionCounty: string;
+  county: string;
   status: IntegrityTourStopStatus;
   host: string;
   venue: string;
   date: string;
   pointTeam: string;
-  notes: string;
 };
 
 /** Allocation slots for up to 26 verified stops — not a published schedule. */
@@ -32,13 +25,12 @@ export const INTEGRITY_TOUR_PLACEHOLDER_ROWS: readonly IntegrityTourPlaceholderR
   { length: 26 },
   (_, i) => ({
     slot: i + 1,
-    regionCounty: "—",
-    status: "Research needed",
+    county: "—",
+    status: "Research",
     host: "—",
     venue: "—",
     date: "—",
     pointTeam: "—",
-    notes: "—",
   }),
 );
 
@@ -47,19 +39,19 @@ export const communityElectionIntegrityTourContent = {
     hub: {
       title: "Community Election Integrity Tour",
       description:
-        "Twenty-six planned community conversations across Arkansas — plain-language election systems education, local questions, and county point teams. Calm, nonpartisan, confidence-building.",
+        "Twenty-six planned stops statewide — election systems education, voter questions, and local point teams. Calm, nonpartisan, grounded in what the Secretary of State’s office actually does.",
       path: "/events/community-election-integrity-tour",
     },
     request: {
-      title: "Invite the Election Integrity Tour",
+      title: "Host an Election Integrity Tour stop",
       description:
-        "Invite a Community Election Integrity Tour stop in your county or region — hosted, civil, education-first.",
+        "Invite a civic, education-first conversation about election systems in your county — same respect and clarity as Invite Kelly.",
       path: "/events/community-election-integrity-tour/request",
     },
     counties: {
-      title: "Build the 26-stop tour",
+      title: "Tour counties tracker",
       description:
-        "Tracker for Community Election Integrity Tour counties and regions — slots fill only after verification.",
+        "26-stop allocation grid — counties and dates appear only after verification and approval for public listing.",
       path: "/events/community-election-integrity-tour/counties",
     },
   },
@@ -68,54 +60,60 @@ export const communityElectionIntegrityTourContent = {
     eyebrow: "Events · Civic education",
     title: "Community Election Integrity Tour",
     subtitle:
-      "Twenty-six community conversations to help Arkansans understand, question, and strengthen confidence in our election systems.",
+      "A trust-first, statewide series of conversations about how Arkansas elections work — and how communities can stay informed without fear or rumor.",
     why: {
       heading: "Why",
-      paragraphs: [
-        "People trust systems better when they understand them. Kelly believes election confidence cannot be built by slogans, fear, or party talking points. It has to be built in rooms where people can ask real questions and get plain answers.",
-        "Arkansas elections belong to Arkansans. The tour fits a simple ethos: Hold the line under law, steward transparent and nonpartisan administration, and help communities take responsibility locally — education and neighbor-to-neighbor clarity, not alarm.",
+      lead: "People trust systems they understand. This tour creates real conversations where Arkansans can ask questions and get clear answers.",
+      more: [
+        "Election administration can feel distant until someone explains it plainly. The tour is about education and confidence — not slogans, not panic, and not shortcuts around the law.",
+        "The Secretary of State’s office has real duties and real limits. Stops should reflect that honesty so neighbors know what to expect from state-level election oversight and what belongs to county officials, courts, or the legislature.",
       ] as const,
     },
     how: {
       heading: "How",
-      paragraphs: [
-        "The campaign will organize 26 community stops across Arkansas. Each stop should include local hosts, voter education, time for Q&A, practical explainers, and the start of a county point team that can carry trusted information back into daily community life.",
-        "What you see here is planning and principles — not a published route list. Counties and dates appear only after staff verify details.",
+      bullets: [
+        "26 planned stops (capacity — not a route list until venues are verified)",
+        "Local hosts who know the room",
+        "Q&A format — good-faith questions welcome",
+        "Plain-language explainers",
+        "Calm, nonpartisan conversation",
+        "Build local point teams for ongoing, factual follow-up",
       ] as const,
+      closing:
+        "What you see on this site is planning and principles. Counties and dates are added only after staff verify details — nothing here is a public announcement until the campaign lists it on the calendar.",
     },
     what: {
-      heading: "What each stop should help with",
+      heading: "What each stop should do",
       bullets: [
-        "Explain what the Secretary of State does and does not do within Arkansas law.",
-        "Answer good-faith questions about voter registration, access, privacy, and election administration — without jargon walls.",
-        "Gather local concerns so the campaign and partners can follow up responsibly.",
-        "Identify or begin forming a county point team for ongoing outreach.",
-        "Connect voters to reliable, lawful resources — the boring links that actually help.",
-        "Invite people into the broader campaign work only when they want in — no pressure, no theatrics.",
+        "Explain the Secretary of State’s role in election administration — and what is outside that role.",
+        "Answer real voter questions about registration, access, privacy, and how elections are run.",
+        "Identify local leaders who can help carry accurate information back into the community.",
+        "Begin or strengthen a county-level point team for trusted follow-up.",
+        "Connect people to reliable, lawful resources.",
       ] as const,
     },
     ctas: [
       { label: "Invite a tour stop", href: "/events/community-election-integrity-tour/request" },
-      { label: "Build the 26-stop tour (tracker)", href: "/events/community-election-integrity-tour/counties" },
+      { label: "Counties tracker", href: "/events/community-election-integrity-tour/counties" },
     ] as const,
   },
 
   request: {
     eyebrow: "Election Integrity Tour · Host",
-    title: "Invite the Election Integrity Tour",
+    title: "Host a tour stop in your community",
+    leadParagraphs: [
+      "This pathway mirrors the spirit of Invite Kelly: real rooms, civil tone, and honesty about what the office can and cannot do. The difference is the focus — here we center election systems, voter confidence, and plain answers instead of general campaign stops.",
+      "If you can convene neighbors, civic members, or local leaders who want to learn without theatrics, you are the kind of host we are looking for. Mixed crowds are welcome when everyone agrees to stay respectful.",
+    ] as const,
     intro:
-      "Invite Kelly and the campaign to hold a Community Election Integrity Tour stop in your county or region. The room should be education-first, civil, and honest about what the office can and cannot do.",
+      "Use the checklist below to prepare a request. When the dedicated form is live it will follow the same review process as other campaign invitations — for now, email works.",
     whoInvites: {
       heading: "Who should invite",
       bullets: [
-        "County parties (any affiliation) that want a serious, hosted room",
-        "Civic groups",
-        "Churches, synagogues, mosques, or community centers",
-        "Libraries",
-        "Colleges and student groups",
-        "Neighborhood associations",
-        "Local election-focused groups",
-        "Bipartisan or mixed-political rooms that agree to stay civil",
+        "County parties and civic groups that want an education-first room",
+        "Faith communities, libraries, colleges, and community centers",
+        "Neighborhood and local election-focused groups",
+        "Bipartisan or mixed-political groups that commit to civility",
       ] as const,
     },
     whatWeNeed: {
@@ -123,29 +121,31 @@ export const communityElectionIntegrityTourContent = {
       bullets: [
         "Venue suggestion",
         "Local host or point person",
-        "Expected turnout (rough range is fine)",
-        "Preferred dates / windows",
-        "Accessibility notes",
-        "Whether the event should be public, private, or invitation-only",
-        "Local concerns or questions the community wants addressed",
+        "Expected turnout (a range is fine)",
+        "Preferred dates or windows",
+        "Accessibility needs",
+        "Public, private, or invitation-only",
+        "Topics or questions your community wants addressed",
       ] as const,
     },
-    formTitle: "Request form coming soon",
-    formBody:
-      "When the form is live, it will use the same review standards as other campaign requests. Until then, email the campaign with the details above.",
+    inviteKellyCrossLink: {
+      label: "Invite Kelly (general visits & gatherings)",
+      href: "/events/request",
+    },
+    formTitle: "Host request form coming soon",
+    formBody: "Email the campaign with the details above — staff will follow up the same way they do for other host requests.",
   },
 
   counties: {
     eyebrow: "Election Integrity Tour · Tracker",
-    title: "Build the 26-Stop Tour",
+    title: "Build the 26-stop tour",
     intro:
-      "This table is an allocation grid for up to twenty-six verified stops. Rows fill in only when research and scheduling confirm a real venue — **nothing here is an announcement until the campaign publishes it on the calendar.**",
-    mapCaption:
-      "Arkansas county map — coming soon. Future: subtle colors for requested, pending approval, scheduled, completed, and point-team-formed — no decorative pins until data is verified.",
+      "Tracker for tour counties and confirmed stops. Rows stay empty or in Research until a real host, venue, and schedule are verified. Nothing here is an official event listing until it appears on the public campaign calendar.",
+    mapCaption: "Map coming soon — counties will light up as tour builds.",
     pointTeam: {
-      heading: "Build a County Point Team",
+      heading: "County point teams",
       intro:
-        "Each tour stop should leave something behind: a small local team that can answer basic questions, point people to reliable resources, invite neighbors to future events, and help keep election conversations grounded in facts instead of fear.",
+        "Each stop should leave a small local team behind — people who can answer basic questions, point neighbors to reliable resources, and keep election talk grounded in facts.",
       roles: [
         "Local host",
         "Venue / logistics lead",
@@ -160,6 +160,6 @@ export const communityElectionIntegrityTourContent = {
 
 export const integrityTourFutureTodos = [
   "Connect host request form to WorkflowIntake and internal pending-approval calendar.",
-  "Load verified rows from admin/CMS or Prisma CampaignEvent when tagging exists — map only approved public fields.",
-  "SVG / accessible map with county status colors (requested / pending / scheduled / completed / point team).",
+  "Load verified rows from admin/CMS when public fields are approved — map only safe, non-PII columns.",
+  "Accessible Arkansas map — county status colors as the tour fills in.",
 ] as const;

@@ -28,8 +28,8 @@ export default function IntegrityTourCountiesPage() {
       */}
       <div className="space-y-12 font-body text-kelly-text/88">
         <p className="text-sm font-medium text-kelly-text/75">
-          Slots 1–26 are planning capacity only. Status stays on &quot;Research needed&quot; until a real host, venue, and
-          date are confirmed and approved for public listing.
+          Stops 1–26 are capacity only. Status stays on Research until a host, venue, and date are confirmed and approved
+          for public listing.
         </p>
 
         <IntegrityTourStopTable rows={INTEGRITY_TOUR_PLACEHOLDER_ROWS} />
@@ -37,9 +37,9 @@ export default function IntegrityTourCountiesPage() {
         <div
           className="rounded-card border-2 border-dashed border-kelly-text/20 bg-gradient-to-br from-kelly-fog/80 via-white to-kelly-wash/60 p-8 text-center md:p-10"
           role="img"
-          aria-label="Placeholder for an Arkansas map showing Community Election Integrity Tour progress by county. No markers or colors until verified tour data exists."
+          aria-label="Map placeholder. Counties will show progress when verified tour data is available."
         >
-          <p className="font-heading text-base font-bold text-kelly-ink md:text-lg">Arkansas map — coming soon</p>
+          <p className="font-heading text-base font-bold text-kelly-ink md:text-lg">Map coming soon</p>
           <p className="mx-auto mt-3 max-w-xl text-sm text-kelly-slate">{C.mapCaption}</p>
         </div>
 

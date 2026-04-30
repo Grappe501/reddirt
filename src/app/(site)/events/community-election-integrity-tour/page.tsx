@@ -18,16 +18,14 @@ export const metadata: Metadata = pageMeta({
 export default function CommunityElectionIntegrityTourPage() {
   return (
     <EventsSupportPage eyebrow={H.eyebrow} title={H.title} intro={H.subtitle}>
-      {/*
-        Heavy-lift TODOs: connect verified tour rows from admin/DB; WorkflowIntake for requests; county map colors.
-      */}
       <div className="space-y-12 font-body text-kelly-text/88">
         <section aria-labelledby="tour-why">
           <h2 id="tour-why" className="font-heading text-xl font-bold text-kelly-ink md:text-2xl">
             {H.why.heading}
           </h2>
+          <p className="mt-4 text-base font-medium leading-relaxed md:text-[1.05rem]">{H.why.lead}</p>
           <div className="mt-4 space-y-4 text-base leading-relaxed md:text-[1.05rem]">
-            {H.why.paragraphs.map((p) => (
+            {H.why.more.map((p) => (
               <p key={p.slice(0, 48)}>{p}</p>
             ))}
           </div>
@@ -37,11 +35,12 @@ export default function CommunityElectionIntegrityTourPage() {
           <h2 id="tour-how" className="font-heading text-xl font-bold text-kelly-ink md:text-2xl">
             {H.how.heading}
           </h2>
-          <div className="mt-4 space-y-4 text-base leading-relaxed md:text-[1.05rem]">
-            {H.how.paragraphs.map((p) => (
-              <p key={p.slice(0, 48)}>{p}</p>
+          <ul className="mt-4 list-inside list-disc space-y-2 text-base leading-relaxed md:text-[1.02rem]">
+            {H.how.bullets.map((b) => (
+              <li key={b}>{b}</li>
             ))}
-          </div>
+          </ul>
+          <p className="mt-6 text-base leading-relaxed text-kelly-text/80 md:text-[1.02rem]">{H.how.closing}</p>
         </section>
 
         <section aria-labelledby="tour-what">
@@ -68,8 +67,7 @@ export default function CommunityElectionIntegrityTourPage() {
           <Link href="/listening-sessions" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
             Election &amp; ballot access listening sessions
           </Link>{" "}
-          series — a cousin to this tour, with its own format and goals. Both stay grounded in nonpartisan process
-          education, not fear.
+          — a separate series with its own format. Both stay grounded in nonpartisan process education.
         </p>
       </div>
     </EventsSupportPage>
