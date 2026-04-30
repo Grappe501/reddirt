@@ -58,6 +58,8 @@ export const trustFunnelHomeCopy = {
           "Access should be open, and the path to get there should be clear—government shouldn’t hide behind complexity.",
         detail:
           "Public information should be reachable without a maze of forms—clear steps, plain language, and accountability.",
+        learnMoreHref: "/office/records",
+        learnMoreLabel: "How transparency should work →",
       },
     },
     cta: "Understand the Office",

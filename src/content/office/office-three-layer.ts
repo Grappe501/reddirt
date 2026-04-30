@@ -10,6 +10,7 @@ import { getJoinCampaignHref } from "@/config/external-campaign";
 import { voterRegistrationHref } from "@/config/navigation";
 import { businessAreaConfig } from "@/content/office/business-area";
 import { electionsAreaConfig } from "@/content/office/elections-area";
+import { recordsAreaConfig } from "@/content/office/records-area";
 import {
   OFFICE_AREA_SLUGS,
   type OfficeAreaConfig,
@@ -52,7 +53,8 @@ export const officeUnderstandTeasers: Record<
   },
   records: {
     headline: "Transparency & Records",
-    blurb: "Public records and tools so people can find official information without unnecessary friction.",
+    blurb:
+      "Public trust starts with findable, understandable records—within the office’s lane, explained in plain language, not hidden behind jargon.",
     href: "/office/records",
   },
   capitol: {
@@ -65,79 +67,7 @@ export const officeUnderstandTeasers: Record<
 export const OFFICE_AREAS: readonly OfficeAreaConfig[] = [
   electionsAreaConfig,
   businessAreaConfig,
-  {
-    slug: "records",
-    title: "Transparency & Records",
-    shortTitle: "Transparency & Records",
-    navLabel: "Transparency & Records",
-    metaDescription:
-      "Public records and accessible systems within the Secretary of State’s role—clarity, trust, and government that does not hide behind complexity.",
-    layerOne: {
-      eyebrow: "The Office · Layer 1",
-      title: "Transparency & Records",
-      intro:
-        "The office maintains public-facing records and systems Arkansans use to find official information—filings, disclosures, and tools that should be understandable on the first honest try.",
-      sections: [
-        {
-          heading: "Within the office’s lane",
-          paragraphs: [
-            "The Secretary of State cannot control every agency in state government—but can lead on what the office itself holds: clear requests, published materials, and navigation that does not require insider knowledge.",
-          ],
-        },
-      ],
-      cards: [
-        { title: "Searchable truth", body: "People should locate answers without repeating the same FOIA request others already asked." },
-        { title: "Plain language", body: "Complexity should never be a wall between citizens and lawful access." },
-      ],
-    },
-    layerTwo: {
-      eyebrow: "The Office · Layer 2",
-      title: "Why records access shapes trust",
-      intro:
-        "When official information is hard to find, rumor fills the gap. Journalists, researchers, advocates, and curious neighbors all lose when opacity becomes habit.",
-      sections: [
-        {
-          heading: "Stakes you can feel",
-          paragraphs: [
-            "Opaque processes favor insiders. Transparent, well-indexed records favor everyone who plays by the rules—including journalists and county clerks juggling overlapping requests.",
-          ],
-        },
-        {
-          heading: "Kelly’s bias for clarity",
-          paragraphs: [
-            "Kelly’s career emphasized teaching, repeatable instructions, and systems people can trust—habits that belong in records administration as much as in training rooms.",
-          ],
-        },
-      ],
-    },
-    layerThree: {
-      eyebrow: "The Office · Layer 3",
-      title: "Lead by example inside the office",
-      intro:
-        "Credibility starts at home: publish what you can, explain what you cannot, and keep improving how people search and learn.",
-      sections: [
-        {
-          heading: "Operational credibility",
-          paragraphs: [
-            "From Verizon-scale operations to Sherwood organizing, Kelly has lived the difference between announcing transparency and operating it—checklists, owners, and follow-through the public can see.",
-          ],
-        },
-        {
-          heading: "People over Politics",
-          paragraphs: [
-            "Records are not a weapon for selective visibility. Non-partisan administration means consistent standards—before and after headlines.",
-          ],
-        },
-      ],
-      softCtas: [
-        { label: "Meet Kelly", href: "/about" },
-        { label: "Why Kelly", href: "/about/why-kelly" },
-        { label: "Volunteer", href: getJoinCampaignHref() },
-        { label: "Vote / Register", href: voterRegistrationHref },
-      ],
-    },
-    relatedLinks: [{ label: "Priorities — transparency", href: "/priorities#transparency-heading" }],
-  },
+  recordsAreaConfig,
   {
     slug: "capitol",
     title: "Capitol & Public Safety",
