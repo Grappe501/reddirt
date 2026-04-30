@@ -31,7 +31,7 @@ export const trustFunnelHomeCopy = {
   officeExplainer: {
     title: "What the Office Does — And Why It Matters",
     intro:
-      "The Secretary of State touches what people feel every day—how we vote, how businesses file, and how public information stays within reach.",
+      "The Secretary of State touches what people feel every day—how we vote, how businesses file, how public information stays within reach, and how the Capitol complex is stewarded for everyone who walks through it.",
     cards: {
       elections: {
         title: "Elections",
@@ -60,6 +60,15 @@ export const trustFunnelHomeCopy = {
           "Plain steps, real guidance, and accountability within what this office actually controls—not a maze of forms or jargon.",
         learnMoreHref: "/office/records",
         learnMoreLabel: "How transparency should work →",
+      },
+      capitol: {
+        title: "Capitol & Public Safety",
+        body:
+          "The people’s house should feel professionally managed—safe, respectful access and steady stewardship of the building and grounds, with calm coordination alongside Capitol Police.",
+        detail:
+          "This is operational leadership, not fear politics: public trust grows when standards are clear and public servants are supported.",
+        learnMoreHref: "/office/capitol",
+        learnMoreLabel: "How public stewardship works →",
       },
     },
     cta: "Understand the Office",

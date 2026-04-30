@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 const ofc = trustFunnelHomeCopy.officeExplainer;
 
-const cardKeys = ["elections", "business", "records"] as const;
+const cardKeys = ["elections", "business", "records", "capitol"] as const;
 
 export function TrustFunnelOfficeExplainerSection() {
   const baseId = useId();
@@ -42,7 +42,7 @@ export function TrustFunnelOfficeExplainerSection() {
           </Link>
         </ScrollReveal>
 
-        <ul className="mt-12 grid list-none gap-5 md:grid-cols-3">
+        <ul className="mt-12 grid list-none gap-5 md:grid-cols-2 xl:grid-cols-4">
           {cardKeys.map((key, i) => {
             const card = ofc.cards[key];
             const expanded = open === key;

@@ -6,9 +6,8 @@
  * without primary-source verification.
  */
 
-import { getJoinCampaignHref } from "@/config/external-campaign";
-import { voterRegistrationHref } from "@/config/navigation";
 import { businessAreaConfig } from "@/content/office/business-area";
+import { capitolAreaConfig } from "@/content/office/capitol-area";
 import { electionsAreaConfig } from "@/content/office/elections-area";
 import { recordsAreaConfig } from "@/content/office/records-area";
 import {
@@ -59,7 +58,8 @@ export const officeUnderstandTeasers: Record<
   },
   capitol: {
     headline: "Capitol & Public Safety",
-    blurb: "The Capitol building and grounds, partnership with Capitol Police, and professional stewardship of a working public space.",
+    blurb:
+      "The State Capitol is a working public space—grounds, facilities, and professional coordination with Capitol Police, stewarded so Arkansans can visit and work with calm, competent standards.",
     href: "/office/capitol",
   },
 };
@@ -68,82 +68,7 @@ export const OFFICE_AREAS: readonly OfficeAreaConfig[] = [
   electionsAreaConfig,
   businessAreaConfig,
   recordsAreaConfig,
-  {
-    slug: "capitol",
-    title: "Capitol & Public Safety",
-    shortTitle: "Capitol & Public Safety",
-    navLabel: "Capitol & Public Safety",
-    metaDescription:
-      "Stewardship of the Arkansas State Capitol, grounds, Capitol Police partnership, and professional operation of a public landmark.",
-    layerOne: {
-      eyebrow: "The Office · Layer 1",
-      title: "Capitol & Public Safety",
-      intro:
-        "The Secretary of State’s office is responsible for the Arkansas State Capitol building and grounds, works with Capitol Police, and supports safe, professional operation of one of the state’s most visible public spaces.",
-      sections: [
-        {
-          heading: "Stewardship, not theater",
-          paragraphs: [
-            "The goal is straightforward: a Capitol that is welcoming, functional, and respectfully managed—where visitors, staff, and law enforcement partners know what to expect.",
-          ],
-        },
-      ],
-      cards: [
-        { title: "Facility operations", body: "Day-to-day care of a working government complex—not a museum piece." },
-        { title: "Capitol Police", body: "Professional security partnership grounded in mutual respect and clear roles." },
-      ],
-    },
-    layerTwo: {
-      eyebrow: "The Office · Layer 2",
-      title: "Why the people’s house matters",
-      intro:
-        "School groups, advocates, employees, and tourists share the same halls. Stewardship is safety, accessibility, and dignity—not fear messaging or spectacle.",
-      sections: [
-        {
-          heading: "Who is affected",
-          paragraphs: [
-            "Visitors deserve predictable wayfinding and staff deserve workplaces run with competence. Inconsistent leadership shows up as confusion long before it shows up in headlines.",
-          ],
-        },
-        {
-          heading: "Professional standards",
-          paragraphs: [
-            "Kelly respects law enforcement as a profession and expects operational leadership to match—clear processes, steady tone, and accountability.",
-          ],
-        },
-      ],
-    },
-    layerThree: {
-      eyebrow: "The Office · Layer 3",
-      title: "Operational leadership for an operational job",
-      intro:
-        "Running the Capitol well is logistics, people, and long hours—not slogans. Kelly’s background in large-scale operations maps directly to that reality.",
-      sections: [
-        {
-          heading: "Large venues, real stakes",
-          paragraphs: [
-            "Verizon leadership and the Little Rock call center taught management of complex facilities and teams where the public shows up expectant—similar muscles to keeping a capitol complex functional.",
-          ],
-        },
-        {
-          heading: "Community and continuity",
-          paragraphs: [
-            "Rose Bud and field organizing reinforced that public spaces belong to neighbors. People over Politics means treating the Capitol as shared ground—not a stage for partisan performance.",
-          ],
-        },
-      ],
-      softCtas: [
-        { label: "Meet Kelly", href: "/about" },
-        { label: "Why Kelly", href: "/about/why-kelly" },
-        { label: "Volunteer", href: getJoinCampaignHref() },
-        { label: "Vote / Register", href: voterRegistrationHref },
-      ],
-    },
-    relatedLinks: [
-      { label: "Experience & Leadership", href: "/about/business" },
-      { label: "Understand the Office", href: "/understand" },
-    ],
-  },
+  capitolAreaConfig,
 ];
 
 export function isOfficeAreaSlug(value: string): value is OfficeAreaSlug {
