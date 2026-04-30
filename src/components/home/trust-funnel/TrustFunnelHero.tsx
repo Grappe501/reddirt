@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { ContentImage } from "@/components/media/ContentImage";
 import { media } from "@/content/media/registry";
+import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
 import { siteConfig } from "@/config/site";
 import { voterRegistrationHref } from "@/config/navigation";
 import { cn } from "@/lib/utils";
@@ -14,6 +15,8 @@ const fadeUp = {
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
 };
+
+const copy = trustFunnelHomeCopy.hero;
 
 /** Homepage trust-funnel hero: service-forward framing, no primary donate CTA. */
 export function TrustFunnelHero() {
@@ -59,7 +62,7 @@ export function TrustFunnelHero() {
             {...fadeUp}
             transition={{ ...fadeUp.transition, delay: 0.04 }}
           >
-            Kelly Grappe · Secretary of State
+            {copy.eyebrow}
           </motion.p>
           <motion.h1
             id="trust-funnel-hero-heading"
@@ -67,14 +70,21 @@ export function TrustFunnelHero() {
             {...fadeUp}
             transition={{ ...fadeUp.transition, delay: 0.1 }}
           >
-            A Secretary of State for Everyone
+            {copy.headline}
           </motion.h1>
           <motion.p
-            className="mt-5 max-w-xl font-body text-base leading-relaxed text-white/92 md:text-lg"
+            className="mt-5 max-w-xl font-body text-sm font-medium leading-relaxed text-kelly-gold/95 md:text-base"
+            {...fadeUp}
+            transition={{ ...fadeUp.transition, delay: 0.14 }}
+          >
+            {copy.subhead}
+          </motion.p>
+          <motion.p
+            className="mt-4 max-w-xl font-body text-base leading-relaxed text-white/92 md:text-lg"
             {...fadeUp}
             transition={{ ...fadeUp.transition, delay: 0.18 }}
           >
-            Transparent, accessible administration—free and fair elections, clear public service, and people over politics.
+            {copy.body}
           </motion.p>
           <motion.div
             className="mt-8 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap"
@@ -89,7 +99,7 @@ export function TrustFunnelHero() {
                 "hover:bg-kelly-gold-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold",
               )}
             >
-              Learn About the Office
+              {copy.ctas.learnOffice}
             </Link>
             <Link
               href="/about"
@@ -98,7 +108,7 @@ export function TrustFunnelHero() {
                 "transition hover:border-kelly-gold/65 hover:bg-kelly-navy/45 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
               )}
             >
-              Meet Kelly
+              {copy.ctas.meetKelly}
             </Link>
             <Link
               href={voterRegistrationHref}
@@ -107,7 +117,7 @@ export function TrustFunnelHero() {
                 "transition hover:bg-kelly-gold/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold",
               )}
             >
-              Vote / Register
+              {copy.ctas.voteRegister}
             </Link>
           </motion.div>
           <motion.p
@@ -116,8 +126,8 @@ export function TrustFunnelHero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.38, duration: 0.5 }}
           >
-            <span className="font-heading text-kelly-gold">People over politics</span>
-            <span className="text-white/85"> — administration faithful to the law, in every county.</span>
+            <span className="font-heading text-kelly-gold">{copy.closing.accent}</span>
+            <span className="text-white/85"> {copy.closing.rest}</span>
           </motion.p>
         </div>
       </ContentContainer>
