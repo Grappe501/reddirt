@@ -108,7 +108,7 @@ export const trustFunnelHomeCopy = {
       "Notary support and plain explanation so people weren’t stuck on technicalities for doing things the right way.",
       "When the structure was clear, people showed up—proof that participation grows when the process feels respectful.",
     ],
-    primaryCta: "See Where Kelly Has Been",
+    primaryCta: "See Kelly on the road",
     primaryHref: "/from-the-road",
     secondaryCta: "Public events",
     secondaryHref: "/events",
