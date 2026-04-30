@@ -68,7 +68,7 @@ export default function CountyPartyMeetingsPage() {
           </p>
           <div className="mt-6 flex justify-center">
             <Button href="/events/request" variant="primary" className="min-h-[48px]">
-              Request Kelly
+              Invite Kelly
             </Button>
           </div>
         </div>

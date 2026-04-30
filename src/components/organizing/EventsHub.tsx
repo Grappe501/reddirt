@@ -161,7 +161,7 @@ export function EventsHub({ events, types, regions, audienceTags, initialFilters
             onSelectSlug={setSelectedSlug}
           />
           <div className="mt-4 rounded-lg border border-kelly-text/10 bg-kelly-text/[0.03] px-4 py-3 font-body text-sm text-kelly-text/80">
-            <p className="font-semibold text-kelly-text">Request Kelly in your town</p>
+            <p className="font-semibold text-kelly-text">Invite Kelly in your town</p>
             <p className="mt-1 text-kelly-text/75">
               Don’t see your county yet? Start a host conversation—we’ll help with format, timing, and follow-up.
             </p>

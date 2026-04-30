@@ -336,7 +336,7 @@ export default async function ListeningSessionsPage() {
             <ul className="mt-6 list-none space-y-3 font-body text-kelly-text">
               <li>
                 <Link href="/events/request" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
-                  Request Kelly
+                  Invite Kelly
                 </Link>{" "}
                 <span className="text-kelly-text/70">— invite Kelly to your county room or civic gathering.</span>
               </li>

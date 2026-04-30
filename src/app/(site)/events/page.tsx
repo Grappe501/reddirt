@@ -102,7 +102,7 @@ export default async function EventsPage({
         contentClassName="pt-10 pb-5 lg:pt-14 lg:pb-7"
       >
         <Button href="/events/request" variant="primary">
-          Request Kelly
+          Invite Kelly
         </Button>
         <Button href="/host-a-gathering" variant="outline">
           Host a gathering
@@ -311,14 +311,14 @@ export default async function EventsPage({
       <FullBleedSection padY aria-labelledby="request-kelly-cal-heading">
         <ContentContainer>
           <h2 id="request-kelly-cal-heading" className="font-heading text-xl font-bold text-kelly-text md:text-2xl">
-            Request Kelly
+            Invite Kelly
           </h2>
           <p className="mt-3 max-w-2xl font-body text-kelly-text/75">
-            Want Kelly in your town, fair, county meeting, or civic room? Start a request — staff will review, follow
+            Want Kelly in your town, fair, county meeting, or civic room? Start with the invite pathway — staff will review, follow
             up, and confirm logistics before anything is treated as public schedule.
           </p>
           <Button href="/events/request" variant="primary" className="mt-6 min-h-[48px]">
-            Start a request
+            Invite Kelly — why, how, and what
           </Button>
         </ContentContainer>
       </FullBleedSection>

@@ -77,7 +77,7 @@ export const primaryNavGroups: NavGroup[] = [
     groupLandingHref: "/events",
     items: [
       { label: "Campaign Calendar", href: "/events" },
-      { label: "Request Kelly", href: "/events/request" },
+      { label: "Invite Kelly", href: "/events/request" },
       { label: "County Fairs", href: "/events/county-fairs" },
       { label: "County Party Meetings", href: "/events/county-party-meetings" },
       { label: "Listening Sessions", href: "/listening-sessions" },
