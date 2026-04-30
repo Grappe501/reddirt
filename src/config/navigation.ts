@@ -1,4 +1,4 @@
-import { getCampaignBlogUrl, getJoinCampaignHref } from "@/config/external-campaign";
+import { getCampaignBlogUrl } from "@/config/external-campaign";
 
 export type NavItem = {
   label: string;
@@ -87,15 +87,13 @@ export const primaryNavGroups: NavGroup[] = [
   {
     id: "involved",
     label: "Get Involved",
+    groupLandingHref: "/get-involved",
     items: [
-      { label: "Volunteer sign-up", href: getJoinCampaignHref() },
-      { label: "Voter registration", href: "/voter-registration" },
-      { label: "Stay Connected", href: "/get-involved" },
-      { label: "Election listening sessions", href: "/listening-sessions" },
-      { label: "Local organizing", href: "/local-organizing" },
-      { label: "County planning briefings", href: "/county-briefings" },
-      { label: "Host a gathering", href: "/host-a-gathering" },
-      { label: "Start a local team", href: "/start-a-local-team" },
+      { label: "Volunteer", href: "/get-involved" },
+      { label: "Bring 5 Friends", href: "/get-involved/bring-5" },
+      { label: "Start a Local Team", href: "/start-a-local-team" },
+      { label: "Host / Invite Kelly", href: "/events/request" },
+      { label: "Donate", href: "/donate" },
     ],
   },
 ];
