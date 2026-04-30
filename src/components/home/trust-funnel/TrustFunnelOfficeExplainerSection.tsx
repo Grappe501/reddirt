@@ -24,6 +24,24 @@ export function TrustFunnelOfficeExplainerSection() {
           </h2>
           <p className="mt-4 font-body text-lg text-kelly-slate">{ofc.intro}</p>
         </ScrollReveal>
+
+        <ScrollReveal yOffset={12} className="mx-auto mt-8 max-w-xl">
+          <Link
+            href={ofc.pathwayWhyRace.href}
+            className={cn(
+              "block rounded-card border border-kelly-navy/15 bg-kelly-fog/40 p-5 text-left shadow-sm transition duration-300 ease-out",
+              "hover:-translate-y-0.5 hover:border-kelly-gold/45 hover:shadow-[0_10px_32px_rgba(0,0,102,0.08)]",
+              "focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/45",
+            )}
+          >
+            <span className="font-heading text-base font-bold text-kelly-navy md:text-lg">{ofc.pathwayWhyRace.label}</span>
+            <span className="mt-2 block font-body text-sm leading-relaxed text-kelly-slate">{ofc.pathwayWhyRace.supportingLine}</span>
+            <span className="mt-3 inline-block font-body text-sm font-semibold text-kelly-blue underline decoration-kelly-blue/35 underline-offset-4">
+              Read why Kelly →
+            </span>
+          </Link>
+        </ScrollReveal>
+
         <ul className="mt-12 grid list-none gap-5 md:grid-cols-3">
           {cardKeys.map((key, i) => {
             const card = ofc.cards[key];

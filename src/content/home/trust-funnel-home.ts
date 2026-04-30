@@ -58,6 +58,13 @@ export const trustFunnelHomeCopy = {
     },
     cta: "Understand the Office",
     ctaHref: "/understand",
+    /** Meet Kelly pathway — Golden Circle “why,” not biography. */
+    pathwayWhyRace: {
+      label: "Why this race matters",
+      supportingLine:
+        "Why Kelly entered this race: Arkansas elections administered for Arkansans—under law, without partisan favoritism.",
+      href: "/about/why-kelly",
+    },
   },
 
   competence: {

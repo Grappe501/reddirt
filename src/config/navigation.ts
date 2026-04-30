@@ -1,5 +1,4 @@
 import { getCampaignBlogUrl, getJoinCampaignHref } from "@/config/external-campaign";
-import { BIOGRAPHY_NARRATIVE_PILLARS } from "@/content/biography/biography-narrative-pillars";
 
 export type NavItem = {
   label: string;
@@ -16,18 +15,6 @@ export type NavGroup = {
   groupLandingHref?: string;
   items: NavItem[];
 };
-
-/** Chapter span label for Meet Kelly → biography arc links */
-function biographyChapterRangeLabel(orders: readonly number[]): string {
-  const lo = orders[0]!;
-  const hi = orders[orders.length - 1]!;
-  return lo === hi ? `${lo}` : `${lo}–${hi}`;
-}
-
-const meetKellyBiographyArcNavItems: NavItem[] = BIOGRAPHY_NARRATIVE_PILLARS.map((p) => ({
-  label: `Biography — ${p.navShortLabel} (Ch. ${biographyChapterRangeLabel(p.chapterOrders)})`,
-  href: `/biography#pillar-${p.id}`,
-}));
 
 /** Volunteer form tagged for tabling / representing at third-party local events. */
 export const representLocalEventVolunteerHref = "/get-involved?lane=event_representation#volunteer";
@@ -54,10 +41,12 @@ export const primaryNavGroups: NavGroup[] = [
     label: "Meet Kelly",
     groupLandingHref: "/about",
     items: [
-      { label: "About Kelly", href: "/about" },
-      { label: "Kelly’s story — chapters", href: "/biography" },
-      { label: "Biography arcs (on About)", href: "/about#kelly-biography-arcs" },
-      ...meetKellyBiographyArcNavItems,
+      { label: "Meet Kelly", href: "/about" },
+      { label: "Why Kelly", href: "/about/why-kelly" },
+      { label: "Her Story", href: "/about/story" },
+      { label: "Experience & Leadership", href: "/about/business" },
+      { label: "Family & Community", href: "/about/forevermost" },
+      { label: "Full Biography", href: "/biography" },
       { label: "Understand the office", href: "/understand" },
       { label: "What we stand for", href: "/what-we-believe" },
     ],
