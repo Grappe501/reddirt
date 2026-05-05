@@ -3,7 +3,11 @@ import { EventWebhook, EventWebhookHeader } from "@sendgrid/eventwebhook";
 const ewh = new EventWebhook();
 
 export function getSendgridWebhookVerificationKey(): string {
-  return process.env.SENDGRID_WEBHOOK_VERIFICATION_KEY?.trim() ?? "";
+  return (
+    process.env.SENDGRID_WEBHOOK_VERIFICATION_KEY?.trim() ??
+    process.env.SENDGRID_WEBHOOK_PUBLIC_KEY?.trim() ??
+    ""
+  );
 }
 
 /**

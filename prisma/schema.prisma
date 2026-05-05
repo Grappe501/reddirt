@@ -4347,6 +4347,8 @@ model EmailContactProfile {
   facts                EmailContactProfileFact[]
   factSuggestions      EmailContactProfileFactSuggestion[]
   audienceHintsProfile EmailAudienceHint[]
+  /// EMAIL-SENDGRID-FOUNDATION-1.0 — optional linkage for export preview rows (no live sync here).
+  sendGridContactMaps SendGridContactMap[]
 
   @@index([userId])
   @@index([volunteerProfileId])
@@ -4445,6 +4447,8 @@ model EmailAudienceDefinition {
   updatedAt DateTime @updatedAt
 
   previewRuns EmailAudiencePreviewRun[]
+  sendGridAudienceMap SendGridAudienceMap?
+  sendGridContactMaps SendGridContactMap[]
 
   @@index([status, updatedAt])
 }
@@ -4463,6 +4467,106 @@ model EmailAudiencePreviewRun {
 
   @@index([generatedAt])
   @@index([audienceDefinitionId])
+}
+
+// --- EMAIL-SENDGRID-FOUNDATION-1.0 — readiness, webhook intake, suppression (no mass send / no auto sync). ---
+
+enum SendGridContactSyncStatus {
+  NOT_SYNCED
+  READY
+  SYNCED
+  ERROR
+  SUPPRESSED
+}
+
+enum SendGridAudienceSyncStatus {
+  NOT_SYNCED
+  READY
+  SYNCED
+  ERROR
+}
+
+enum SendGridSuppressionType {
+  UNSUBSCRIBE
+  GROUP_UNSUBSCRIBE
+  BOUNCE
+  SPAM_REPORT
+  MANUAL
+  INVALID
+}
+
+/// Planning / future sync mapping for a contact row (no SendGrid API calls in this packet).
+model SendGridContactMap {
+  id                       String                   @id @default(cuid())
+  emailContactProfileId    String?
+  emailContactProfile      EmailContactProfile?     @relation(fields: [emailContactProfileId], references: [id], onDelete: SetNull)
+  emailAudienceDefinitionId String?
+  emailAudienceDefinition   EmailAudienceDefinition? @relation(fields: [emailAudienceDefinitionId], references: [id], onDelete: SetNull)
+  email                    String                   @db.VarChar(320)
+  sendgridContactId        String?                  @db.VarChar(120)
+  syncStatus               SendGridContactSyncStatus @default(NOT_SYNCED)
+  lastSyncAt               DateTime?
+  lastErrorSafe            String?                  @db.Text
+  metadataJson             Json                     @default("{}")
+  createdAt                DateTime                 @default(now())
+  updatedAt                DateTime                 @updatedAt
+
+  @@index([email])
+  @@index([syncStatus])
+  @@index([emailContactProfileId])
+  @@index([emailAudienceDefinitionId])
+}
+
+/// One planning row per saved audience definition — list/segment ids are future sync targets only.
+model SendGridAudienceMap {
+  id                      String                    @id @default(cuid())
+  emailAudienceDefinitionId String                  @unique
+  emailAudienceDefinition   EmailAudienceDefinition @relation(fields: [emailAudienceDefinitionId], references: [id], onDelete: Cascade)
+  sendgridListId          String?                   @db.VarChar(120)
+  sendgridSegmentId       String?                   @db.VarChar(120)
+  syncStatus              SendGridAudienceSyncStatus @default(NOT_SYNCED)
+  lastPreviewAt           DateTime?
+  lastSyncAt              DateTime?
+  metadataJson            Json                      @default("{}")
+  createdAt               DateTime                  @default(now())
+  updatedAt               DateTime                  @updatedAt
+}
+
+/// Append-only suppression signals from webhooks / manual ops (governance before future sends).
+model SendGridSuppression {
+  id                String                 @id @default(cuid())
+  email             String                 @db.VarChar(320)
+  suppressionType   SendGridSuppressionType
+  sendgridEventId   String?                @db.VarChar(200)
+  source            String                 @default("sendgrid_webhook") @db.VarChar(120)
+  occurredAt        DateTime
+  metadataJson      Json                   @default("{}")
+  createdAt         DateTime               @default(now())
+  updatedAt         DateTime               @updatedAt
+
+  @@index([email])
+  @@index([suppressionType, occurredAt])
+  @@index([occurredAt])
+}
+
+/// Sanitized SendGrid Event Webhook payloads (no secret-bearing fields).
+model SendGridEvent {
+  id                         String   @id @default(cuid())
+  email                      String?  @db.VarChar(320)
+  eventType                  String   @db.VarChar(80)
+  sendgridEventId            String?  @unique @db.VarChar(200)
+  sendgridMessageId          String?  @db.VarChar(240)
+  sendgridMarketingCampaignId String? @db.VarChar(120)
+  emailAudienceDefinitionId  String?
+  emailContactProfileId      String?
+  occurredAt                 DateTime
+  rawEventJson               Json     @default("{}")
+  metadataJson               Json     @default("{}")
+  createdAt                  DateTime @default(now())
+
+  @@index([eventType, occurredAt])
+  @@index([occurredAt])
+  @@index([email])
 }
 
 // --- Contact engagement + segmentation (Comms workbench, campaign-local; CE-1) ---

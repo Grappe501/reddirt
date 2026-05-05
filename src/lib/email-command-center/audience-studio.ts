@@ -56,7 +56,7 @@ export type AudiencePreviewSampleRow = {
 
 export type AudienceStudioSnapshot = {
   dbAvailable: boolean;
-  sendgridSyncStatus: "not_connected";
+  sendgridSyncStatus: "not_connected" | "foundation_rails";
   approvedActiveFacts: number;
   pendingProfileSuggestions: number;
   pendingAudienceHints: number;
@@ -217,15 +217,11 @@ function intersect(a: Set<string>, b: Set<string>): Set<string> {
   return out;
 }
 
-/** Preview match count + safe sample rows (no full email addresses in samples). */
-export async function buildAudiencePreview(criteria: AudiencePreviewCriteria): Promise<{
-  matchCount: number;
-  samples: AudiencePreviewSampleRow[];
-  limitations: string[];
-}> {
-  const limitations = explainAudienceCriteria(criteria);
+/** Matched profile ids for criteria (same universe rules as `buildAudiencePreview`). */
+export async function getAudiencePreviewMatchedProfileIds(
+  criteria: AudiencePreviewCriteria
+): Promise<string[]> {
   const approvedFactsOnly = criteria.approvedFactsOnly !== false;
-
   const sets: Set<string>[] = [];
 
   const factSet = await profileIdsMatchingFactFilters(criteria);
@@ -255,7 +251,17 @@ export async function buildAudiencePreview(criteria: AudiencePreviewCriteria): P
     universe = intersect(universe, withFacts);
   }
 
-  const ids = [...universe];
+  return [...universe];
+}
+
+/** Preview match count + safe sample rows (no full email addresses in samples). */
+export async function buildAudiencePreview(criteria: AudiencePreviewCriteria): Promise<{
+  matchCount: number;
+  samples: AudiencePreviewSampleRow[];
+  limitations: string[];
+}> {
+  const limitations = explainAudienceCriteria(criteria);
+  const ids = await getAudiencePreviewMatchedProfileIds(criteria);
   const matchCount = ids.length;
 
   const sampleIds = ids.slice(0, 12);
@@ -420,7 +426,7 @@ export async function getAudienceStudioSnapshot(): Promise<AudienceStudioSnapsho
 
     return {
       dbAvailable: true,
-      sendgridSyncStatus: "not_connected",
+      sendgridSyncStatus: "foundation_rails",
       approvedActiveFacts: pg.approvedActiveFacts,
       pendingProfileSuggestions: pg.pendingProfileSuggestions,
       pendingAudienceHints: pg.pendingAudienceHints,

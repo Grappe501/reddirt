@@ -5,7 +5,7 @@
 
 **Related:** [`THREAD_HANDOFF_MASTER_MAP.md`](./THREAD_HANDOFF_MASTER_MAP.md) · [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) · [`campaign-email-command-center-master-plan.md`](./campaign-email-command-center-master-plan.md) · **[`campaign-email-command-center-progress-ledger.md`](./campaign-email-command-center-progress-ledger.md)**
 
-**Coordinating surface (implemented):** **`/admin/workbench/email-command-center`** — Email Command Center **shell**: aggregates queue read models and integration **readiness** (env names / presence only); individual triage stays on **`/admin/workbench/email-queue`**; deep links include **`/email-command-center/profiles`** (profile graph) and **`/email-command-center/audiences`** (**EMAIL-AUDIENCE-STUDIO-1.0** — preview only, **no** SendGrid). Future **EMAIL-*** packets should update this cockpit as capabilities ship.
+**Coordinating surface (implemented):** **`/admin/workbench/email-command-center`** — Email Command Center **shell**: aggregates queue read models and integration **readiness** (env names / presence only); individual triage stays on **`/admin/workbench/email-queue`**; deep links include **`/email-command-center/profiles`** (profile graph), **`/email-command-center/audiences`** (**EMAIL-AUDIENCE-STUDIO-1.0** — preview only), and **`/admin/workbench/email-command-center/sendgrid`** (**EMAIL-SENDGRID-FOUNDATION-1.0** — readiness + webhook intake rails, **no** mass send / **no** auto list sync). Future **EMAIL-*** packets should update this cockpit as capabilities ship.
 
 ---
 

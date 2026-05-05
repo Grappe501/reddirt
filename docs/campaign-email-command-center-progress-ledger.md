@@ -29,25 +29,25 @@ Use the same anchors when scoring any layer:
 
 ## Tracked layers (15 + overall)
 
-Percentages below reflect **repo reality after EMAIL-AUDIENCE-STUDIO-1.0** (2026-05-05).
+Percentages below reflect **repo reality after EMAIL-SENDGRID-FOUNDATION-1.0** (2026-05-06).
 
 | Layer | ~% | What moves the needle |
 |-------|---:|------------------------|
-| **1. Command Center Shell / Cockpit** | **92** | Cockpit read models; OpenAI readiness; **profile graph** + **Audience Studio** counts/links (`/profiles`, `/audiences`); Gmail strip + **Gmail Review**; migrate/check honesty; preflight. |
+| **1. Command Center Shell / Cockpit** | **93** | Cockpit read models + **SendGrid Foundation** counts/links; OpenAI readiness; **profile graph** + **Audience Studio**; Gmail strip + **Gmail Review**; migrate/check honesty; preflight (+ informational `SendGridEvent` table line). |
 | **2. Email Queue / Triage Workflow** | **88** | `EmailWorkflowItem` queue, E-2, assignment/status; **AI Email Intelligence** + **Contact / Profile Intelligence** panels on detail; manual Gmail metadata → queue; no send from item. |
 | **3. Gmail OAuth Connection** | **80** | Staff Gmail OAuth, sealed tokens, metadata-first scopes, optional composer send via env. |
 | **4. Gmail Metadata Sync** | **82** | Manual INBOX metadata sync; **Gmail Review** list + re-fetch on create. |
 | **5. Gmail Watch / Push Sync** | **65** | `users.watch`; Pub/Sub scaffold; hardened `history.list` preview; renewal preview tooling (**no** in-app cron). |
-| **6. SendGrid Foundation** | **10** | Env + routes elsewhere; no Command Center send execution; **no** Audience Studio list sync. |
+| **6. SendGrid Foundation** | **45** | **`/sendgrid`** readiness cards; **`/api/sendgrid/events`** intake → **`SendGridEvent`** + **`SendGridSuppression`**; env names only; **no** mass send, **no** auto list sync; Comms legacy **`/api/webhooks/sendgrid`** unchanged. |
 | **7. OpenAI Email Intelligence** | **55** | Advisory `json_object` → `metadataJson.emailAiAnalysis`; fuels **profile graph staging** when operator runs generate; **no** auto-merge to CRM. |
 | **8. Contact/Profile Graph** | **55** | **EMAIL-CONTACT-PROFILE-GRAPH-1.0:** Prisma models + migration; queue + Command Center + **`/profiles`** review; **no** auto `User`/`VolunteerProfile` writes. |
-| **9. Audience / Microtargeting Studio** | **45** | **EMAIL-AUDIENCE-STUDIO-1.0:** **`/audiences`** previews + **`EmailAudienceDefinition`** drafts + **`EmailAudiencePreviewRun`** audit; **no** SendGrid segments. |
-| **10. Message Studio / Drafting** | **32** | Comms workbench + queue reply drafts (advisory). |
-| **11. Automation Studio** | **42** | T0–T3 partial; profile + audience staging = **manual** governance surfaces, **not** auto-actions. |
-| **12. Analytics / Deliverability** | **24** | Engagement/deliverability product still thin; preview runs add **audit** surface only. |
-| **13. Governance / Compliance Rails** | **80** | **Audience Studio** warnings + **no auto profile merge** / **hints ≠ segments** copy on queue + cockpit + profiles + audiences pages. |
-| **14. Deployment / Env Readiness** | **64** | Migrations **`20260505203000_email_contact_profile_graph`** + **`20260505220000_email_audience_studio_foundation`** per env; `npm run check` ≠ migrate proof. |
-| **15. Overall Email Command Center** | **64** | Queue AI + governed **profile graph** + **Audience Studio preview**; broadcast SendGrid execution still early. |
+| **9. Audience / Microtargeting Studio** | **50** | **EMAIL-AUDIENCE-STUDIO-1.0** + SendGrid **readiness column** + link to Foundation; previews + definitions; **no** SendGrid sync execution. |
+| **10. Message Studio / Drafting** | **35** | Comms workbench + queue reply drafts (advisory). |
+| **11. Automation Studio** | **45** | T0–T3 partial; webhook ingestion is **receive-only** (no auto actions on queue). |
+| **12. Analytics / Deliverability** | **34** | **`SendGridEvent`** / suppression summaries surface; deliverability dashboards still future. |
+| **13. Governance / Compliance Rails** | **84** | Foundation governance copy + suppression-before-send posture; Audience Studio + profile graph rails unchanged. |
+| **14. Deployment / Env Readiness** | **68** | New migration **`20260506120000_email_sendgrid_foundation`** must be **`migrate deploy`**'d per env; **`npm run check` ≠ migrate proof**; DB reachability still operator-verified. |
+| **15. Overall Email Command Center** | **68** | Queue AI + profile graph + Audience Studio + **SendGrid foundation rails**; **contact sync + broadcast send** still future packets. |
 
 ---
 
@@ -87,8 +87,9 @@ EMAIL COMMAND CENTER PROGRESS LEDGER
 - **EMAIL-AI-INTELLIGENCE-1.0** — **`src/lib/email-workflow/ai/*`**, **`runEmailWorkflowAiAnalysisAction`**; queue detail **AI Email Intelligence** panel; Command Center readiness + count of rows with `metadataJson.emailAiAnalysis`; **advisory-only** structured output; **no** Gmail body reads, **no** send, **no** automatic queue approval or profile merges.  
 - **EMAIL-CONTACT-PROFILE-GRAPH-1.0** — Prisma **`EmailContactProfile*`** + **`EmailAudienceHint`**; **`profile-graph.ts`**, **`email-profile-graph-actions.ts`**; queue detail **Contact / Profile Intelligence**; **`/admin/workbench/email-command-center/profiles`**; **no** auto CRM merge, **no** SendGrid segments from hints. **Migration:** `20260505203000_email_contact_profile_graph`.  
 - **EMAIL-AUDIENCE-STUDIO-1.0** — **`audience-studio.ts`**, **`email-audience-actions.ts`**, **`/admin/workbench/email-command-center/audiences`**; **`EmailAudienceDefinition`** + **`EmailAudiencePreviewRun`**; previews over **ACTIVE** facts; **no** SendGrid sync, **no** sends. **Migration:** `20260505220000_email_audience_studio_foundation`.  
-- **Next (named):** governed **auto**-processing from Pub/Sub (explicit packet only; **no** silent `messages.get`).
+- **EMAIL-SENDGRID-FOUNDATION-1.0** — **`src/lib/sendgrid/config.ts`**, **`sendgrid-foundation.ts`**, **`event-parser.ts`**, **`/admin/workbench/email-command-center/sendgrid`**, **`POST /api/sendgrid/events`** → **`SendGridEvent`** + **`SendGridSuppression`** (+ mapping tables **unused for live sync** in this packet); **no** sends, **no** OpenAI, **no** auto contact sync. **Migration:** `20260506120000_email_sendgrid_foundation`.  
+- **Next (named):** **EMAIL-SENDGRID-CONTACT-SYNC-1.1** (governed sync) · **EMAIL-MESSAGE-STUDIO-1.0** · **EMAIL-SEND-EXECUTION-1.0** · **EMAIL-ANALYTICS-DELIVERABILITY-1.0**; governed **auto**-processing from Pub/Sub remains a **separate** explicit packet (**no** silent `messages.get`).
 
 ---
 
-*Last updated: EMAIL-AUDIENCE-STUDIO-1.0 + progress ledger.*
+*Last updated: EMAIL-SENDGRID-FOUNDATION-1.0 + progress ledger.*

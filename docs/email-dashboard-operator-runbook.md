@@ -98,3 +98,11 @@ From an approved queue item, route work to the separately approved comms/send pa
 4. **Save draft** writes `EmailAudienceDefinition` (DRAFT) — **no** SendGrid list sync, **no** sends, **no** CRM mutation.
 5. **Archive** retires a definition row — still not a provider action.
 6. **Migrations:** `20260505220000_email_audience_studio_foundation` (definitions + preview audit) in addition to profile graph migration when DB is ready.
+7. **SendGrid readiness column** + link: **`/admin/workbench/email-command-center/sendgrid`** — posture labels only; **no** sync button.
+
+## 12) SendGrid Foundation (EMAIL-SENDGRID-FOUNDATION-1.0)
+
+1. Open **`/admin/workbench/email-command-center/sendgrid`** for env **names-only** readiness, webhook route copy, suppression summaries, and **local** export previews (select audience via `?preview=` link from the audience table).
+2. Configure SendGrid **Event Webhook** in the SendGrid UI to **`POST`** signed batches to **`/api/sendgrid/events`** on the deployed origin (production **requires** webhook PEM env — see `.env.example` names only).
+3. **Do not** expect sends from this surface — **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** stays **false**; broadcast execution remains future packets.
+4. **Migration** `20260506120000_email_sendgrid_foundation` must be applied before tables exist (`npx prisma migrate deploy`).

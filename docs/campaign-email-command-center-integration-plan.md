@@ -233,7 +233,7 @@
 
 ## 5. Implementation sequencing hint
 
-1. **EMAIL-SENDGRID-FOUNDATION-1.0** + webhook idempotency (if broadcast is priority).  
+1. **EMAIL-SENDGRID-FOUNDATION-1.0** — **shipped (v1):** `POST /api/sendgrid/events` + `SendGridEvent` / `SendGridSuppression` + operator `/sendgrid` readiness (**no** send, **no** auto sync). **Next:** contact sync packet + webhook dedupe beyond `sendgridEventId` when broadcast is priority.  
 2. **EMAIL-GMAIL-CONNECT-1.0** read-only (if inbox monitoring is priority).  
 3. **EMAIL-AI-INTELLIGENCE-1.0** — **partially shipped** as **advisory queue analysis** (`metadataJson.emailAiAnalysis`); deeper **grounded** context / eval harness remains future work.  
 4. **EMAIL-CONTACT-PROFILE-GRAPH-1.0** — **shipped** as **staged** profile facts + audience hints from **stored** AI JSON; operator **approve** → **`EmailContactProfileFact`**; **no** SendGrid / no auto CRM merge in this packet.  

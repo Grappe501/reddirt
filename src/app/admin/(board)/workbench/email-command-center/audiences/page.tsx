@@ -6,6 +6,7 @@ import {
   listEmailAudienceDefinitions,
   listSuggestedAudienceClusters,
 } from "@/lib/email-command-center/audience-studio";
+import { listSendGridAudienceReadiness } from "@/lib/email-command-center/sendgrid-foundation";
 import { AudienceStudioPreviewForm } from "@/components/admin/email-command-center/AudienceStudioPreviewForm";
 import {
   archiveEmailAudienceDefinitionAction,
@@ -28,15 +29,21 @@ export default async function EmailAudienceStudioPage({
   let blocks: Awaited<ReturnType<typeof listAudienceBuildingBlocks>> = [];
   let clusters: Awaited<ReturnType<typeof listSuggestedAudienceClusters>> = [];
   let definitions: Awaited<ReturnType<typeof listEmailAudienceDefinitions>> = [];
+  let sendGridReadinessById: Record<string, string> = {};
   let listsOk = snapshot.dbAvailable;
 
   if (snapshot.dbAvailable) {
     try {
-      [blocks, clusters, definitions] = await Promise.all([
+      const [b, c, d, sgR] = await Promise.all([
         listAudienceBuildingBlocks(),
         listSuggestedAudienceClusters(),
         listEmailAudienceDefinitions(),
+        listSendGridAudienceReadiness(),
       ]);
+      blocks = b;
+      clusters = c;
+      definitions = d;
+      sendGridReadinessById = Object.fromEntries(sgR.map((r) => [r.audienceDefinitionId, r.sendGridReadinessLabel]));
     } catch {
       listsOk = false;
     }
@@ -110,8 +117,17 @@ export default async function EmailAudienceStudioPage({
         <div className="rounded-lg border border-kelly-text/10 bg-white/90 p-3">
           <h2 className="font-heading text-sm font-bold text-kelly-navy">SendGrid readiness</h2>
           <p className="mt-1 text-[11px] text-kelly-text/80">
-            Status: <span className="font-bold text-kelly-text">not connected</span> — no API keys used here. Broadcast
-            foundation is a future packet after audience governance is visible in ops.
+            EMAIL-SENDGRID-FOUNDATION-1.0 — foundation rails (readiness + webhook intake + local suppression tables).{" "}
+            <strong>No live list sync</strong> and <strong>no sends</strong> from this studio. Per-audience posture is in
+            the saved definitions list (SendGrid column).
+          </p>
+          <p className="mt-2 text-[11px]">
+            <Link
+              href="/admin/workbench/email-command-center/sendgrid"
+              className="font-bold text-kelly-forest underline"
+            >
+              Open SendGrid Foundation
+            </Link>
           </p>
         </div>
         <div className="rounded-lg border border-kelly-text/10 bg-kelly-page/50 p-3">
@@ -226,6 +242,11 @@ export default async function EmailAudienceStudioPage({
                   <span className="rounded bg-kelly-fog px-1 text-[9px] font-bold uppercase text-kelly-slate">
                     {d.status}
                   </span>
+                  {listsOk ? (
+                    <span className="ml-1 rounded border border-kelly-forest/25 bg-emerald-50/80 px-1 text-[9px] font-bold uppercase text-kelly-navy">
+                      SendGrid: {sendGridReadinessById[d.id] ?? "—"}
+                    </span>
+                  ) : null}
                 </p>
                 <p className="text-[10px] text-kelly-text/60">Updated {d.updatedAt.toISOString()}</p>
                 {d.status !== "ARCHIVED" ? (

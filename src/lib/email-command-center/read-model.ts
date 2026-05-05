@@ -15,12 +15,14 @@ import {
 } from "@/lib/gmail/config";
 import { parseGmailSyncState, resolveDisplayWatchStatus } from "@/lib/gmail/gmail-sync-state";
 import { isGmailWatchConfigured, isGmailPubSubVerificationConfigured } from "@/lib/gmail/watch-config";
+import { getSendGridEnvStatus } from "@/lib/sendgrid/config";
 
 /** Presence-only env checks — never surface values. */
 export type SendgridEnvReadiness = {
   sendgridApiKeyPresent: boolean;
   sendgridFromEmailPresent: boolean;
   sendgridFromNamePresent: boolean;
+  /** True when `SENDGRID_WEBHOOK_VERIFICATION_KEY` or `SENDGRID_WEBHOOK_PUBLIC_KEY` is set (names only in UI). */
   sendgridWebhookVerificationKeyPresent: boolean;
 };
 
@@ -132,24 +134,37 @@ export type EmailCommandCenterSnapshot = {
   /** EMAIL-AUDIENCE-STUDIO-1.0 — preview / definitions over profile graph (no SendGrid). */
   audienceStudio: {
     path: string;
-    sendgridSyncStatus: "not_connected";
+    /** `foundation_rails` — EMAIL-SENDGRID-FOUNDATION-1.0: readiness + webhook route + local tables (still no live sync). */
+    sendgridSyncStatus: "not_connected" | "foundation_rails";
     buildingBlockApprovedTriples: number;
     draftAudienceDefinitions: number;
     activeAudienceDefinitions: number;
     dbSliceReachable: boolean;
+  };
+  /** EMAIL-SENDGRID-FOUNDATION-1.0 — counts + paths only (no secrets). */
+  sendGridFoundation: {
+    path: string;
+    eventWebhookPath: string;
+    apiKeyPresent: boolean;
+    fromIdentityReady: boolean;
+    webhookVerificationConfigured: boolean;
+    recentSendGridEventsCount: number;
+    suppressionCount: number;
+    audienceDefinitionsNonArchived: number;
+    dbReachable: boolean;
   };
   automationTiers: AutomationTierSnapshot[];
   governance: GovernanceSnapshot;
 };
 
 function sendgridEnvReadiness(): SendgridEnvReadiness {
+  const s = getSendGridEnvStatus();
   return {
-    sendgridApiKeyPresent: Boolean(process.env.SENDGRID_API_KEY?.trim()),
-    sendgridFromEmailPresent: Boolean(process.env.SENDGRID_FROM_EMAIL?.trim()),
-    sendgridFromNamePresent: Boolean(process.env.SENDGRID_FROM_NAME?.trim()),
-    sendgridWebhookVerificationKeyPresent: Boolean(
-      process.env.SENDGRID_WEBHOOK_VERIFICATION_KEY?.trim()
-    ),
+    sendgridApiKeyPresent: s.sendgridApiKeyPresent,
+    sendgridFromEmailPresent: s.sendgridFromEmailPresent,
+    sendgridFromNamePresent: s.sendgridFromNamePresent,
+    sendgridWebhookVerificationKeyPresent:
+      s.sendgridWebhookVerificationKeyPresent || s.sendgridWebhookPublicKeyPresent,
   };
 }
 
@@ -181,6 +196,9 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
     emailAiQueueItemsAnalyzedCount,
     profileGraphCounts,
     audienceStudioCounts,
+    sendGridEventCount,
+    sendGridSuppressionCount,
+    audienceDefinitionsNonArchived,
   ] = await Promise.all([
     prisma.emailWorkflowItem.count({ where: { status: "SPAM" } }),
     prisma.emailWorkflowItem.count({ where: { status: "CLOSED" } }),
@@ -200,6 +218,9 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
     countEmailWorkflowItemsWithEmailAiAnalysis(),
     emailProfileGraphSnapshotCounts(),
     emailAudienceStudioSnapshotCounts(),
+    prisma.sendGridEvent.count().catch(() => -1),
+    prisma.sendGridSuppression.count().catch(() => -1),
+    prisma.emailAudienceDefinition.count({ where: { status: { not: "ARCHIVED" } } }).catch(() => -1),
   ]);
 
   const assignedCount = Math.max(0, summary.total - summary.unassignedCount);
@@ -285,9 +306,13 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
       "OpenAI Email Intelligence (EMAIL-AI-INTELLIGENCE-1.0): advisory analysis on email queue detail — OPENAI_API_KEY required; no auto-send or auto-approval from AI output.",
       "Contact/Profile Graph (EMAIL-CONTACT-PROFILE-GRAPH-1.0): AI profile suggestions stage as PENDING until operator approval; facts land on EmailContactProfileFact only — not auto User/VolunteerProfile merges. Audience hints are not SendGrid segments.",
       "Audience / Microtargeting Studio (EMAIL-AUDIENCE-STUDIO-1.0): previews and saved definitions use approved profile graph data — no SendGrid sync, no sends, no automatic CRM updates.",
+      "SendGrid foundation (EMAIL-SENDGRID-FOUNDATION-1.0): POST /api/sendgrid/events ingests signed Event Webhook payloads into SendGridEvent + SendGridSuppression when the DB migration is applied — no sends, no OpenAI, no auto contact sync, no User/VolunteerProfile writes from this path.",
       "AI may suggest; operators and policy decide execution and sensitive writes.",
     ],
   };
+
+  const sendgridEnv = sendgridEnvReadiness();
+  const sendGridDbReachable = sendGridEventCount >= 0;
 
   return {
     queueHealth: {
@@ -311,7 +336,7 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
       itemsNotUpdatedIn7DaysCount,
     },
     gmail,
-    sendgridEnv: sendgridEnvReadiness(),
+    sendgridEnv: sendgridEnv,
     openAi: (() => {
       const emailAi = getEmailAiReadiness();
       return {
@@ -331,11 +356,22 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
     },
     audienceStudio: {
       path: "/admin/workbench/email-command-center/audiences",
-      sendgridSyncStatus: "not_connected",
+      sendgridSyncStatus: sendGridDbReachable && audienceStudioCounts.studioTablesReachable ? "foundation_rails" : "not_connected",
       buildingBlockApprovedTriples: audienceStudioCounts.buildingBlockApprovedTriples,
       draftAudienceDefinitions: audienceStudioCounts.draftAudienceDefinitions,
       activeAudienceDefinitions: audienceStudioCounts.activeAudienceDefinitions,
       dbSliceReachable: audienceStudioCounts.studioTablesReachable,
+    },
+    sendGridFoundation: {
+      path: "/admin/workbench/email-command-center/sendgrid",
+      eventWebhookPath: "/api/sendgrid/events",
+      apiKeyPresent: sendgridEnv.sendgridApiKeyPresent,
+      fromIdentityReady: sendgridEnv.sendgridFromEmailPresent && sendgridEnv.sendgridFromNamePresent,
+      webhookVerificationConfigured: sendgridEnv.sendgridWebhookVerificationKeyPresent,
+      recentSendGridEventsCount: sendGridDbReachable ? sendGridEventCount : 0,
+      suppressionCount: sendGridDbReachable ? sendGridSuppressionCount : 0,
+      audienceDefinitionsNonArchived: sendGridDbReachable ? audienceDefinitionsNonArchived : 0,
+      dbReachable: sendGridDbReachable,
     },
     automationTiers,
     governance,

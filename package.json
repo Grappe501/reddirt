@@ -18,6 +18,7 @@
     "typecheck": "tsc --noEmit",
     "nightly:self-build:preflight": "node scripts/nightly-self-build-preflight.mjs",
     "email:command-center:preflight": "node scripts/email-command-center-preflight.mjs",
+    "email:sendgrid:event-parse-check": "tsx scripts/verify-sendgrid-event-parse.ts",
     "email:gmail:preflight": "node scripts/email-command-center-preflight.mjs",
     "email:gmail:pubsub-parse-check": "tsx scripts/verify-pubsub-notify-parse.ts",
     "email:gmail:watch-renewal-preview": "tsx scripts/gmail-watch-renewal-preview.ts",

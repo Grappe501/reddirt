@@ -110,6 +110,7 @@ export function EmailCommandCenterContent({
   const g = snapshot.gmail;
   const pg = snapshot.profileGraph;
   const au = snapshot.audienceStudio;
+  const sgF = snapshot.sendGridFoundation;
 
   const sendgridConfiguredForSend = sg.sendgridApiKeyPresent && sg.sendgridFromEmailPresent;
 
@@ -155,7 +156,9 @@ export function EmailCommandCenterContent({
             <span className={pill}>Queue-first</span>
             <span className={pill}>No live sends from queue</span>
             <span className={pill}>Gmail metadata sync (partial)</span>
-            <span className={pill}>SendGrid planned</span>
+            <span className={pill}>
+              SendGrid foundation {sgF.dbReachable ? "(rails + webhook path)" : "(DB migration not verified)"}
+            </span>
             <span className={pill}>
               {oa.emailAiConfigured ? "OpenAI queue AI (advisory)" : "OpenAI queue AI not configured"}
             </span>
@@ -180,6 +183,12 @@ export function EmailCommandCenterContent({
               className="rounded border border-kelly-forest/30 bg-emerald-50/60 px-2 py-0.5 text-[10px] font-bold text-kelly-navy"
             >
               Audience Studio
+            </Link>
+            <Link
+              href={sgF.path}
+              className="rounded border border-kelly-navy/25 bg-white px-2 py-0.5 text-[10px] font-bold text-kelly-navy"
+            >
+              SendGrid Foundation
             </Link>
             <Link
               href={g.gmailReviewPath}
@@ -278,10 +287,22 @@ export function EmailCommandCenterContent({
             sub="Saved criteria — not synced to SendGrid"
           />
           <StatusCard
-            title="SendGrid list sync (this lane)"
-            value={0}
+            title="SendGrid events (ingested)"
+            value={sgF.recentSendGridEventsCount}
+            href={sgF.path}
+            sub={sgF.dbReachable ? "SendGridEvent rows from POST /api/sendgrid/events" : "DB unreachable — migrate first"}
+          />
+          <StatusCard
+            title="SendGrid suppressions (local)"
+            value={sgF.suppressionCount}
+            href={sgF.path}
+            sub="SendGridSuppression — honor before future sends"
+          />
+          <StatusCard
+            title="Audience defs (non-archived)"
+            value={sgF.audienceDefinitionsNonArchived}
             href={au.path}
-            sub="Command Center + Audience Studio do not sync lists — foundation packet future"
+            sub="Future sync targets — not synced in this packet"
           />
         </div>
         <p className="font-body text-[10px] text-kelly-text/55">
@@ -352,20 +373,31 @@ export function EmailCommandCenterContent({
           />
           <IntegrationColumn
             title="SendGrid broadcast"
-            statusLabel={sendgridConfiguredForSend ? "Env keys present (send path may work elsewhere)" : "Not fully configured in env"}
+            statusLabel={
+              sgF.dbReachable && sg.sendgridWebhookVerificationKeyPresent
+                ? "Foundation rails — ingestion path ready when SendGrid POSTs"
+                : sendgridConfiguredForSend
+                  ? "Env keys partial — finish webhook PEM + DB migrate for Email OS intake"
+                  : "Foundation scaffold — configure env + migrations"
+            }
             existsToday={[
-              "Workbook + webhook route code paths exist in repo",
+              "EMAIL-SENDGRID-FOUNDATION-1.0: POST /api/sendgrid/events → SendGridEvent + SendGridSuppression (signed in prod)",
+              `Command Center surface: ${sgF.path}`,
               `SENDGRID_API_KEY set: ${sg.sendgridApiKeyPresent ? "yes" : "no"} (name only)`,
               `SENDGRID_FROM_EMAIL set: ${sg.sendgridFromEmailPresent ? "yes" : "no"}`,
               `SENDGRID_FROM_NAME set: ${sg.sendgridFromNamePresent ? "yes" : "no"}`,
-              `SENDGRID_WEBHOOK_VERIFICATION_KEY set: ${sg.sendgridWebhookVerificationKeyPresent ? "yes" : "no"} (prod signed webhooks)`,
+              `Webhook PEM set: ${sg.sendgridWebhookVerificationKeyPresent ? "yes" : "no"} (SENDGRID_WEBHOOK_VERIFICATION_KEY or SENDGRID_WEBHOOK_PUBLIC_KEY)`,
+              `Recent SendGridEvent rows: ${sgF.recentSendGridEventsCount} · suppressions: ${sgF.suppressionCount}`,
+              "Comms legacy path still at /api/webhooks/sendgrid (separate)",
             ]}
             missing={[
-              "Command Center does not invoke sends — EMAIL-SENDGRID-FOUNDATION-1.0 + execution packet",
-              "Suppression/unsubscribe automation at scale (governed)",
+              ...(sgF.dbReachable ? [] : ["`npx prisma migrate deploy` for SendGrid foundation tables"]),
+              ...(sg.sendgridWebhookVerificationKeyPresent ? [] : ["Signed webhook PEM for production intake on /api/sendgrid/events"]),
+              "EMAIL-SENDGRID-CONTACT-SYNC-1.1 — governed list/segment sync (future)",
+              "EMAIL-SEND-EXECUTION-1.0 — broadcast execution (future)",
             ]}
-            nextPacket="EMAIL-SENDGRID-FOUNDATION-1.0"
-            safetyGate="Mass email requires suppression checks; webhook verification in production per `sendgrid` route."
+            nextPacket="EMAIL-SENDGRID-CONTACT-SYNC-1.1 or EMAIL-MESSAGE-STUDIO-1.0 (steering)"
+            safetyGate="No mass send from Command Center; suppressions must gate future sends; never expose API keys in UI."
           />
           <IntegrationColumn
             title="OpenAI intelligence"
@@ -423,7 +455,7 @@ export function EmailCommandCenterContent({
           <PipelineStep
             label="Audience / group"
             state="partial"
-            note="EMAIL-AUDIENCE-STUDIO-1.0 — Audience Studio previews from approved facts; SendGrid sync still future."
+            note="EMAIL-AUDIENCE-STUDIO-1.0 + SendGrid foundation readiness — previews local; list sync still future."
           />
           <PipelineStep label="Draft" state="partial" note="Comms / message studio patterns; Command Center is coordination." />
           <PipelineStep label="Approval" state="partial" note="Queue approvals are not provider sends — governance copy on queue." />
@@ -436,7 +468,11 @@ export function EmailCommandCenterContent({
                 : "SendGrid from-address/key not both set — see readiness panel."
             }
           />
-          <PipelineStep label="Engagement" state="partial" note="SendGrid webhook route exists; analytics packet future." />
+          <PipelineStep
+            label="Engagement"
+            state={sgF.dbReachable ? "partial" : "partial"}
+            note="POST /api/sendgrid/events stores sanitized events + suppressions; deliverability analytics packet future."
+          />
           <PipelineStep label="Profile update" state="designed" note="Governed merges from engagement — future packet." />
         </div>
       </section>
@@ -493,7 +529,11 @@ export function EmailCommandCenterContent({
             /audiences
           </Link>{" "}
           previews microtargeting from <strong>ACTIVE</strong> facts; pending hints stay non-broadcast until governed.
-          SendGrid list sync remains <span className="font-bold">out of scope</span> here.
+          SendGrid Foundation:{" "}
+          <Link href={sgF.path} className="font-semibold text-kelly-navy underline">
+            readiness + webhook intake
+          </Link>{" "}
+          — still <span className="font-bold">no</span> automatic list sync.
         </p>
       </section>
 
@@ -523,7 +563,7 @@ export function EmailCommandCenterContent({
           ))}
         </ul>
         <p className="mt-2 font-body text-[10px] text-kelly-text/60">
-          Gmail sync, SendGrid webhooks at scale, structured send execution, and higher automation tiers remain roadmap
+          Gmail sync, SendGrid contact sync at scale, structured send execution, and higher automation tiers remain roadmap
           items — queue OpenAI analysis is manual/advisory only; no automation engine on this page.
         </p>
       </section>
@@ -551,7 +591,8 @@ export function EmailCommandCenterContent({
         </p>
         <ol className="mt-2 list-inside list-decimal space-y-0.5 font-body text-[10px] text-kelly-text/85">
           <li>EMAIL-GMAIL-CONNECT-1.0</li>
-          <li>EMAIL-SENDGRID-FOUNDATION-1.0</li>
+          <li>EMAIL-SENDGRID-FOUNDATION-1.0 (✓ rails — no send)</li>
+          <li>EMAIL-SENDGRID-CONTACT-SYNC-1.1</li>
           <li>EMAIL-PROFILE-GRAPH-1.0</li>
           <li>EMAIL-AI-INTELLIGENCE-1.0 (✓ advisory queue AI — deepen/eval next)</li>
           <li>EMAIL-AUDIENCE-STUDIO-1.0 (✓ preview + draft definitions — no SendGrid)</li>

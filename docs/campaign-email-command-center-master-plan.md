@@ -293,13 +293,13 @@ Each packet below is a **future** implementation slice. Dependencies and schema 
 
 ### 8.3 EMAIL-SENDGRID-FOUNDATION-1.0
 
-| **Purpose** | Lists/segments mapping, domain + sender identity checklist, single/broadcast send **`CommunicationSend`** alignment, webhook endpoint design. |
-| **Dependencies** | Existing `CommsSendProvider`, engagement fields on send/recipient models. |
-| **Schema likely** | `SendGridWebhookEvent`, extensions to recipient tables, suppression tables. |
-| **UI likely** | Integration health; webhook log; **pre-send** checklist component. |
-| **Env** | SendGrid API key (human-owned); signing secret for webhooks. |
-| **Safety gate** | Suppression enforced server-side before send; idempotent webhook processing. |
-| **Acceptance** | Test events flow to DB in staging; no duplicate engagement rows on retry. |
+| **Purpose** | **Shipped (v1):** env/readiness + **`SendGridEvent`** / **`SendGridSuppression`** intake via **`POST /api/sendgrid/events`**; operator **`/sendgrid`** surface; Audience Studio SendGrid posture column; local export preview helpers (**no** SendGrid HTTP sync, **no** sends). **Still future:** full lists/segments execution, `CommunicationSend` alignment, duplicate engagement merge beyond `sendgridEventId` uniqueness. |
+| **Dependencies** | Existing Comms **`/api/webhooks/sendgrid`** path remains separate. |
+| **Schema shipped** | `SendGridEvent`, `SendGridSuppression`, `SendGridAudienceMap`, `SendGridContactMap` — migration `20260506120000_email_sendgrid_foundation`. |
+| **UI shipped** | **`/admin/workbench/email-command-center/sendgrid`** + Command Center cards + Audience Studio link/column. |
+| **Env** | `SENDGRID_API_KEY`, `SENDGRID_FROM_EMAIL`, `SENDGRID_FROM_NAME`, webhook PEM (`SENDGRID_WEBHOOK_VERIFICATION_KEY` or `SENDGRID_WEBHOOK_PUBLIC_KEY`); optional future keys documented in `.env.example` (names only). |
+| **Safety gate** | **No** mass send; **no** OpenAI from webhook path; **no** `User`/`VolunteerProfile` mutation; production rejects unsigned webhooks without PEM. |
+| **Acceptance** | Staging can receive **signed** sample batches → rows in `SendGridEvent`; suppressions append for bounce/unsubscribe/spam/group_unsubscribe/selected dropped reasons; **`npm run email:sendgrid:event-parse-check`** passes offline. |
 
 ### 8.4 EMAIL-AI-INTELLIGENCE-1.0
 

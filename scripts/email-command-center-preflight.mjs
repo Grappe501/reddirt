@@ -74,6 +74,19 @@ async function columnExists(prisma) {
   return Boolean(first?.ok === true);
 }
 
+async function sendGridEventTableExists(prisma) {
+  const r = await prisma.$queryRaw`
+    SELECT EXISTS (
+      SELECT 1
+      FROM information_schema.tables
+      WHERE table_schema = 'public'
+        AND table_name = 'SendGridEvent'
+    ) AS ok;
+  `;
+  const first = Array.isArray(r) ? r[0] : null;
+  return Boolean(first?.ok === true);
+}
+
 async function main() {
   console.log("Email Command Center preflight (no secret values shown)\n");
 
@@ -110,6 +123,7 @@ async function main() {
   let dbReachable = false;
   let migrationColumnOk = false;
   let dbErrorSafe = "";
+  let sendGridFoundationOk = false;
 
   if (!dbUrlPresent) {
     console.log("\n--- Database ---");
@@ -124,6 +138,13 @@ async function main() {
     await prisma.$queryRaw`SELECT 1`;
     dbReachable = true;
     migrationColumnOk = await columnExists(prisma);
+    try {
+      if (migrationColumnOk) {
+        sendGridFoundationOk = await sendGridEventTableExists(prisma);
+      }
+    } catch {
+      sendGridFoundationOk = false;
+    }
   } catch (e) {
     dbReachable = false;
     dbErrorSafe =
@@ -168,6 +189,10 @@ async function main() {
     );
     process.exit(1);
   }
+
+  console.log(
+    `\n--- SendGrid foundation (EMAIL-SENDGRID-FOUNDATION-1.0) — informational ---\n  SendGridEvent table: ${sendGridFoundationOk ? "present" : "MISSING (run migrate when ready)"}`
+  );
 
   console.log(
     "\nPreflight OK: DB reachable and gmailSyncState present. (Run `npx prisma migrate deploy && npm run check` when you need both.)"

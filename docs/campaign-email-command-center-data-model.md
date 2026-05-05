@@ -33,6 +33,19 @@ Additive migration: `prisma/migrations/20260505220000_email_audience_studio_foun
 
 **Reuse:** `CommsPlanAudienceSegment` / `AudienceSegment` remain **separate** message-plan and Tier-2 broadcast constructs — Audience Studio does **not** write them.
 
+### EMAIL-SENDGRID-FOUNDATION-1.0 (2026-05-06)
+
+Additive migration: `prisma/migrations/20260506120000_email_sendgrid_foundation/migration.sql`.
+
+| Model | Role |
+|-------|------|
+| `SendGridEvent` | Sanitized Event Webhook payloads (`rawEventJson` stripped of secret-shaped keys); optional `sendgridEventId` unique when present. **No** `User`/`VolunteerProfile` writes from this path. |
+| `SendGridSuppression` | Append-only local suppression signals (bounce, spam report, unsubscribe, group unsubscribe, selected `dropped` reasons). |
+| `SendGridAudienceMap` | One **planning** row per `EmailAudienceDefinition` — optional future `sendgridListId` / `sendgridSegmentId`; **no** API sync in this packet. |
+| `SendGridContactMap` | Optional future per-contact export/sync staging — **no** SendGrid API calls in foundation library defaults. |
+
+**Comms note:** `CommunicationSend` / `CommunicationRecipient` / `ContactPreference.sendgridSuppressionState` remain the **workbench** path; **`POST /api/webhooks/sendgrid`** continues to serve that stack. Email OS foundation intake is **`POST /api/sendgrid/events`**.
+
 ---
 
 **Existing anchors in code today:** `EmailWorkflowItem`, `CommunicationThread`, `CommunicationMessage`, `CommunicationPlan`, `CommunicationSend`, `CommunicationRecipient`, `StaffGmailAccount`, `User`, `VolunteerProfile`, `RelationalContact`, `CommsPlanAudienceSegment`, enums in `CommsSendProvider`, engagement fields on send models.
