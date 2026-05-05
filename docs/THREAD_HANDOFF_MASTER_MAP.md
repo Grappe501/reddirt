@@ -17,6 +17,8 @@ This section is the **canonical build doctrine** for **PROTO-2** (permanent hand
 
 ### 0.1 ChatGPT ↔ Cursor loop
 
+**Campaign Email Command Center (design rails + Gmail connect + sync + watch scaffold + advisory queue AI + contact/profile graph + audience studio preview):** Master plan **[`campaign-email-command-center-master-plan.md`](./campaign-email-command-center-master-plan.md)** (**REDDIRT-EMAIL-OS-MASTERPLAN-1.0**, blueprint + **CONNECT / SYNC / WATCH / OPS-HISTORY / REVIEW-TO-QUEUE / EMAIL-AI-INTELLIGENCE-1.0 / EMAIL-CONTACT-PROFILE-GRAPH-1.0 / EMAIL-AUDIENCE-STUDIO-1.0** implementation where noted) + **[`campaign-email-command-center-progress-ledger.md`](./campaign-email-command-center-progress-ledger.md)** (**primary email bar** until Command Center complete) + companion **[`campaign-email-command-center-cursor-protocol.md`](./campaign-email-command-center-cursor-protocol.md)** — **Steve** = vision/approvals; **ChatGPT** = architect/packet writer; **Cursor** = implement/audit against repo; **no** silent scope widening; **secrets/credentials/counsel** remain human-gated; **queue-first** doctrine stays until explicitly amended. **Gmail:** **`/admin/workbench/email-command-center/gmail`**, **`/admin/workbench/email-command-center/gmail/review`** (metadata-only manual **→** **`EmailWorkflowItem`**), OAuth **`/api/gmail/oauth/*`**, **manual metadata sync** + **`users.watch`** start/renew + **POST `/api/gmail/pubsub`** (verification-gated scaffold) + **hardened** manual **history preview** + **`npm run email:command-center:preflight`** (**migrate deploy** is **not** implied by **`npm run check`**); **`gmailSyncState`** telemetry. **OpenAI:** advisory analysis on **`/admin/workbench/email-queue/[id]`** when **`OPENAI_API_KEY`** set — **`metadataJson.emailAiAnalysis`**; **no** auto-send/status/profile merges. **Profile graph:** **`/admin/workbench/email-command-center/profiles`** + queue **Contact / Profile Intelligence** — **`EmailContactProfileFactSuggestion`** / **`EmailAudienceHint`** from **stored** AI JSON; operator **approve** → **`EmailContactProfileFact`**; **no** auto `User`/`VolunteerProfile` updates, **no** SendGrid audience sync from hints. **Audience Studio:** **`/admin/workbench/email-command-center/audiences`** — previews + **`EmailAudienceDefinition`** drafts + **`EmailAudiencePreviewRun`** audit over **ACTIVE** facts; **no** SendGrid list sync, **no** sends.
+
 1. The **user** gives **ChatGPT** Cursor’s result (structured return, file list, notes).
 2. **ChatGPT** writes the next **tight Cursor script** (scope, acceptance, explicit out of scope).
 3. The **user** pastes that script into **Cursor**.
@@ -39,7 +41,7 @@ Every Cursor return should include:
 - **LANE LEVEL UPDATE** — Which lanes moved **L0–L5** (use the lane table in §0.5).
 - **WHAT IS STILL MISSING** — Honest gaps; dependencies before automation.
 - **NEXT RECOMMENDED PACKET** — Single default packet when possible.
-- **CHECKS** — What was run (`tsc`, migrate, lint) or “docs-only, no code checks.”
+- **EMAIL COMMAND CENTER PROGRESS LEDGER** — **Primary** email program bar until Command Center complete — all **15 layers + Overall** with honest % (see [`campaign-email-command-center-progress-ledger.md`](./campaign-email-command-center-progress-ledger.md)); **full-campaign** bargraph **secondary** only.
 
 ### 0.3 ChatGPT return format
 
@@ -626,6 +628,7 @@ Maturity is **evidence-based**; full tables: `system-division-map.md`, `system-m
 9. **Inspect** `src/lib/campaign-engine/README.md` and list **`src/lib/campaign-engine/*.ts`**.  
 10. **Skim** `docs/workbench-build-map.md` (routes that **exist**).  
 11. **For email workflow:** `docs/email-workflow-intelligence-AI-HANDOFF.md` (E-1/E-2 invariants).  
+11b. **For Email OS blueprint (future build, design today):** `docs/campaign-email-command-center-master-plan.md` + `docs/campaign-email-command-center-cursor-protocol.md`.  
 12. **Ask the user** for the **latest Cursor result** or active branch/PR before writing the **next** packet.  
 13. **Grep** before new tables: `database-table-inventory.md` + `schema.prisma`.  
 

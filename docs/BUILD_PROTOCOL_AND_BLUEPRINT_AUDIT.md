@@ -5,6 +5,8 @@
 
 **Purpose:** A **single-page, durable** protocol so **ChatGPT ↔ Cursor** passes behave like a **direct engineering** conversation: the user is the courier; **Cursor** preserves context, reports **exactly** what changed, and keeps the **blueprint self-constructing** until the full campaign operating system is build-ready.
 
+**Campaign Email OS (Comms lane — blueprint packet):** [`campaign-email-command-center-master-plan.md`](./campaign-email-command-center-master-plan.md) + [`campaign-email-command-center-cursor-protocol.md`](./campaign-email-command-center-cursor-protocol.md) — **Steve** sets vision; **ChatGPT** writes scoped scripts; **Cursor** implements/audits from repo facts **without** asking Steve to invent architecture inferable from code/handoffs; **secrets / OAuth / production keys / counsel** stay human-gated; **queue-first** remains default for sensitive paths (does **not** claim L4 automation until shipped).
+
 **Full orientation map:** [`THREAD_HANDOFF_MASTER_MAP.md`](./THREAD_HANDOFF_MASTER_MAP.md) (**THREAD-HANDOFF-1**). **Project map + packet history:** [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) (**MASTER-MAP-1**). **Today’s build pathway** (division levels, gates, ordered packets — **ingest** **+** **embeddings** **+** **manifest**): [`BUILD_LEVEL_AUDIT_TODAY.md`](./BUILD_LEVEL_AUDIT_TODAY.md) (**BLUEPRINT-AUDIT-LEVEL-PATH-1**). **Division registry (balance + steering + **forward path** per division):** [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) (**DIV-OPS-1** / **DIV-OPS-2** / **BLUEPRINT-EXP-1**). **Unattended / overnight continuation (read before leaving Cursor alone):** [`AUTO_BUILD_PROTOCOL.md`](./AUTO_BUILD_PROTOCOL.md) (**AUTO-BUILD-1**).
 
 ---

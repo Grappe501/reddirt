@@ -1,0 +1,250 @@
+import { getEmailAiReadiness, getEmailAiPolicySummary } from "@/lib/email-workflow/ai/config";
+import type { EmailAiAnalysisStoredV1, EmailAiAnalysisV1 } from "@/lib/email-workflow/ai/types";
+import { RunEmailWorkflowAiAnalysisButton } from "@/components/admin/email-workflow/RunEmailWorkflowAiAnalysisButton";
+
+function asMetaRecord(v: unknown): Record<string, unknown> {
+  if (v != null && typeof v === "object" && !Array.isArray(v)) {
+    return v as Record<string, unknown>;
+  }
+  return {};
+}
+
+function isStoredEmailAi(v: unknown): v is EmailAiAnalysisStoredV1 {
+  if (!v || typeof v !== "object" || Array.isArray(v)) return false;
+  const o = v as Record<string, unknown>;
+  return o.version === 1 && typeof o.generatedAt === "string";
+}
+
+export async function EmailWorkflowAiIntelligencePanel({
+  itemId,
+  rawMeta,
+}: {
+  itemId: string;
+  rawMeta: unknown;
+}) {
+  const readiness = getEmailAiReadiness();
+  const policy = getEmailAiPolicySummary();
+  const meta = asMetaRecord(rawMeta);
+  const gmailReview =
+    typeof meta.gmailReviewSource === "object" &&
+    meta.gmailReviewSource != null &&
+    !Array.isArray(meta.gmailReviewSource)
+      ? (meta.gmailReviewSource as Record<string, unknown>)
+      : null;
+  const metadataOnlyFromGmail = Boolean(gmailReview && gmailReview.bodyStored !== true);
+
+  const stored: EmailAiAnalysisStoredV1 | null = isStoredEmailAi(meta.emailAiAnalysis)
+    ? (meta.emailAiAnalysis as EmailAiAnalysisStoredV1)
+    : null;
+  const out: EmailAiAnalysisV1 | undefined = stored?.output;
+
+  const limitedContext =
+    metadataOnlyFromGmail ||
+    (out?.sourceLimitations?.length ?? 0) > 0 ||
+    (out?.missingContext?.length ?? 0) > 0;
+
+  return (
+    <div className="mt-2 space-y-2 rounded border border-kelly-text/10 bg-kelly-page/45 p-2">
+      <h2 className="font-heading text-sm font-bold text-kelly-text">AI Email Intelligence</h2>
+      <p className="text-[10px] leading-snug text-kelly-text/70">
+        <span className="font-semibold text-kelly-text">EMAIL-AI-INTELLIGENCE-1.0</span> — advisory only. OpenAI does
+        not send email, does not approve queue moves, and does not update profiles or audiences automatically.
+      </p>
+
+      <div className="rounded border border-kelly-text/10 bg-white/75 px-2 py-1.5">
+        <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">Readiness</p>
+        <ul className="mt-1 list-inside list-disc space-y-0.5 text-[11px] text-kelly-text/85">
+          <li>
+            OpenAI Email Intelligence:{" "}
+            <strong className="text-kelly-text">{readiness.configured ? "configured" : "not configured"}</strong>
+            {!readiness.configured ? (
+              <span className="text-kelly-text/65"> — set OPENAI_API_KEY in the environment (name only here).</span>
+            ) : null}
+          </li>
+          <li>
+            Safe analysis (API):{" "}
+            <strong className="text-kelly-text">{readiness.safeAnalysisAvailable ? "available" : "unavailable"}</strong>
+          </li>
+          <li>
+            Model (env): <code className="rounded bg-kelly-text/5 px-0.5 text-[10px]">{readiness.modelName || "—"}</code>
+          </li>
+        </ul>
+      </div>
+
+      <ul className="list-inside list-disc space-y-0.5 text-[10px] text-rose-900/90">
+        <li>AI cannot send email from this queue.</li>
+        <li>AI cannot approve or change queue status.</li>
+        <li>AI cannot update volunteer/contact profiles automatically.</li>
+      </ul>
+
+      {metadataOnlyFromGmail ? (
+        <p className="rounded border border-amber-200/70 bg-amber-50/80 px-2 py-1 text-[10px] text-amber-950">
+          This queue item was created from Gmail <strong>metadata only</strong>. No Gmail body was read by RedDirt for
+          this bridge. Analysis may be limited because only queue fields and provenance are available.
+        </p>
+      ) : (
+        <p className="text-[10px] text-kelly-text/60">
+          Analysis uses EmailWorkflowItem row fields and safe JSON provenance only — not Gmail message bodies in this
+          lane.
+        </p>
+      )}
+
+      {limitedContext && out ? (
+        <p className="text-[10px] text-kelly-text/70">
+          Analysis may be limited because only metadata and queue summaries are available.
+        </p>
+      ) : null}
+
+      <RunEmailWorkflowAiAnalysisButton itemId={itemId} />
+
+      {stored ? (
+        <div className="space-y-2 border-t border-kelly-text/10 pt-2">
+          <p className="text-[10px] text-kelly-text/55">
+            Last run: <span className="font-semibold text-kelly-text/75">{stored.generatedAt}</span>
+            {stored.promptVersion ? (
+              <>
+                {" "}
+                · prompt <code className="text-[9px]">{stored.promptVersion}</code>
+              </>
+            ) : null}
+          </p>
+          {stored.inputSourceSummary ? (
+            <p className="text-[10px] text-kelly-text/60">
+              <span className="font-semibold text-kelly-text/70">Input summary:</span> {stored.inputSourceSummary}
+            </p>
+          ) : null}
+
+          {stored.lastErrorSafe && !out ? (
+            <p className="rounded border border-rose-200/60 bg-rose-50/70 px-2 py-1 text-[11px] text-rose-950">
+              {stored.lastErrorSafe}
+            </p>
+          ) : null}
+
+          {out ? (
+            <div className="space-y-2 text-[11px] text-kelly-text/85">
+              <div className="grid gap-1 sm:grid-cols-2">
+                <p>
+                  <span className="font-semibold text-kelly-text">Intent:</span> {out.intent || "—"}
+                </p>
+                <p>
+                  <span className="font-semibold text-kelly-text">Urgency:</span> {out.urgency || "—"}
+                </p>
+                <p>
+                  <span className="font-semibold text-kelly-text">Sentiment:</span> {out.sentiment || "—"}
+                </p>
+                <p>
+                  <span className="font-semibold text-kelly-text">Confidence:</span>{" "}
+                  {Number.isFinite(out.confidence) ? `${Math.round(out.confidence * 100)}%` : "—"}
+                </p>
+              </div>
+              <p>
+                <span className="font-semibold text-kelly-text">Campaign impact:</span> {out.campaignImpact || "—"}
+              </p>
+              <p>
+                <span className="font-semibold text-kelly-text">Recommended next action:</span>{" "}
+                {out.recommendedNextAction || "—"}
+              </p>
+              <p>
+                <span className="font-semibold text-kelly-text">Suggested owner role:</span>{" "}
+                {out.recommendedOwnerRole || "—"}
+              </p>
+              <p>
+                <span className="font-semibold text-kelly-text">Escalation:</span> {out.escalationRecommendation || "—"}
+              </p>
+
+              <div>
+                <p className="font-semibold text-kelly-text">Reply draft (advisory — not sent)</p>
+                <p className="text-[10px] text-kelly-text/60">Tone: {out.replyDraftTone || "—"}</p>
+                <pre className="mt-1 max-h-40 overflow-auto whitespace-pre-wrap rounded border border-kelly-text/10 bg-white p-2 text-[10px]">
+                  {out.replyDraft?.trim() ? out.replyDraft : "—"}
+                </pre>
+              </div>
+
+              {out.riskFlags.length ? (
+                <div>
+                  <p className="font-semibold text-kelly-text">Risk flags</p>
+                  <ul className="mt-0.5 list-inside list-disc space-y-0.5 text-[10px]">
+                    {out.riskFlags.map((r) => (
+                      <li key={`${r.code}-${r.label}`}>
+                        <span className="font-semibold">{r.label}</span> ({r.code})
+                        {r.detail ? ` — ${r.detail}` : ""}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
+              {out.complianceWarnings.length ? (
+                <div>
+                  <p className="font-semibold text-kelly-text">Compliance warnings</p>
+                  <ul className="mt-0.5 list-inside list-disc text-[10px]">
+                    {out.complianceWarnings.map((w) => (
+                      <li key={w}>{w}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
+              {out.profileFactSuggestions.length ? (
+                <div>
+                  <p className="font-semibold text-kelly-text">Profile fact suggestions</p>
+                  <p className="text-[9px] text-amber-900/90">Suggestions only — verify before any profile merge.</p>
+                  <ul className="mt-0.5 list-inside list-disc text-[10px]">
+                    {out.profileFactSuggestions.map((s) => (
+                      <li key={s.suggestion}>{s.suggestion}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
+              {out.audienceHints.length ? (
+                <div>
+                  <p className="font-semibold text-kelly-text">Audience hints</p>
+                  <p className="text-[9px] text-amber-900/90">Not applied — no segments created from this panel.</p>
+                  <ul className="mt-0.5 list-inside list-disc text-[10px]">
+                    {out.audienceHints.map((h) => (
+                      <li key={h.hint}>{h.hint}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
+              {(out.sourceLimitations.length || out.missingContext.length) > 0 ? (
+                <div className="text-[10px] text-kelly-text/70">
+                  {out.sourceLimitations.length ? (
+                    <p>
+                      <span className="font-semibold text-kelly-text/80">Source limitations:</span>{" "}
+                      {out.sourceLimitations.join(" · ")}
+                    </p>
+                  ) : null}
+                  {out.missingContext.length ? (
+                    <p className="mt-1">
+                      <span className="font-semibold text-kelly-text/80">Missing context:</span>{" "}
+                      {out.missingContext.join(" · ")}
+                    </p>
+                  ) : null}
+                </div>
+              ) : null}
+
+              <p className="text-[9px] text-kelly-text/55">
+                bodyWasAvailable: {String(out.bodyWasAvailable)} · shouldSendAutomatically:{" "}
+                {String(out.shouldSendAutomatically)} · canSendFromQueue: {String(out.canSendFromQueue)}
+              </p>
+            </div>
+          ) : null}
+        </div>
+      ) : (
+        <p className="text-[11px] text-kelly-text/55">No AI analysis stored yet — run analysis above when configured.</p>
+      )}
+
+      <details className="text-[10px] text-kelly-text/55">
+        <summary className="cursor-pointer font-semibold text-kelly-text/60">Policy summary</summary>
+        <ul className="mt-1 list-inside list-disc space-y-0.5">
+          {policy.map((x) => (
+            <li key={x}>{x}</li>
+          ))}
+        </ul>
+      </details>
+    </div>
+  );
+}

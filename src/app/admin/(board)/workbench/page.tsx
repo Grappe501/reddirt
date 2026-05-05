@@ -343,6 +343,12 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
               Social{socialSum.inPipeline + socialSum.inReview > 0 ? ` (${socialSum.inPipeline + socialSum.inReview})` : ""}
             </Link>
             <Link
+              href="/admin/workbench/email-command-center"
+              className="rounded border-2 border-kelly-forest/35 bg-kelly-fog/70 px-1.5 py-0.5 text-[10px] font-extrabold text-kelly-navy shadow-sm"
+            >
+              Email command center
+            </Link>
+            <Link
               href="/admin/workbench/email-queue"
               className="rounded border border-kelly-muted/20 bg-kelly-page px-1.5 py-0.5 text-[10px] font-bold text-kelly-slate"
             >
@@ -710,7 +716,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                 ) : (
                   <a
                     className="font-semibold text-kelly-slate"
-                    href="/api/gmail/oauth/start"
+                    href="/admin/workbench/email-command-center/gmail/connect?return=%2Fadmin%2Fworkbench"
                     target="_self"
                   >
                     Connect staff Gmail

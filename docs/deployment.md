@@ -28,11 +28,12 @@ If the repo is **only** the `RedDirt` project, leave base directory empty.
 |----------|----------|--------|
 | `DATABASE_URL` | Yes | Hosted Postgres connection string |
 | `ADMIN_SECRET` | Yes (admin) | Public admin board; omit only if you intentionally disable non-login admin routes — see `middleware` |
-| `OPENAI_API_KEY` | Optional | Search RAG + form intake classification |
+| `OPENAI_API_KEY` | Optional | Search RAG + form intake classification + **Email Command Center** advisory queue analysis (`EMAIL-AI-INTELLIGENCE-1.0`) |
 | `OPENAI_MODEL` | Optional | Defaults in `.env.example` |
 | `OPENAI_EMBEDDING_MODEL` | Optional | For ingest + query embeddings |
 | `NEXT_PUBLIC_SITE_URL` | Recommended | Canonical site URL for Open Graph (no trailing slash). On Netlify’s default `*.netlify.app` hostname, **do not use `www.`** — the certificate covers `kgrappe.netlify.app` only; `www.kgrappe.netlify.app` breaks TLS (`ERR_CERT_COMMON_NAME_INVALID`). |
 | `SENDGRID_*` / `TWILIO_*` | Optional | Comms; see [`.env.example`](../.env.example); intake still saves without them |
+| **Gmail (staff / Command Center)** | Optional | `GOOGLE_GMAIL_*` or `GOOGLE_CLIENT_ID` / `GOOGLE_CALENDAR_*` fallbacks, `GOOGLE_GMAIL_REDIRECT_URI` (or `NEXT_PUBLIC_SITE_URL` for default callback), **`GMAIL_TOKEN_ENCRYPTION_KEY`** (new connects), **`GMAIL_OAUTH_STATE_SECRET`** or **`ADMIN_SECRET`**, optional **`GMAIL_OAUTH_INCLUDE_SEND_FOR_WORKBENCH`**, **`GOOGLE_PUBSUB_TOPIC`** + optional **`GMAIL_WATCH_LABEL_IDS`** / **`GMAIL_WATCH_RENEWAL_DAYS`** for **`users.watch`**, **`GMAIL_PUBSUB_VERIFICATION_TOKEN`** (or **`GOOGLE_PUBSUB_VERIFICATION_TOKEN`**) + request header **`x-gmail-pubsub-token`** for **`POST /api/gmail/pubsub`** — see `.env.example` (names only here) |
 | `ELEVENLABS_API_KEY` | Optional | Admin-only TTS: `POST /api/ask-kelly/tts` (ElevenLabs). Omit if you do not need read-aloud on `/admin/ask-kelly`. |
 | `ELEVENLABS_VOICE_ID` | Optional | Required **with** `ELEVENLABS_API_KEY` for TTS. Choose a voice in the ElevenLabs library. |
 
@@ -54,6 +55,20 @@ Never expose server secrets via `NEXT_PUBLIC_*`.
 - **Search index:** ingest is not in the Netlify build (by design — avoids build-time OpenAI cost and long builds).
 - **Legal / FEC:** `CampaignPaidForBar` + `CAMPAIGN_POLICY_V1` drive the paid-for line; `/disclaimer` references the same; counsel finalizes policy pages in `/privacy` and `/terms`.
 - **CI:** `.github/workflows/check.yml` runs `npm run check` against a **Postgres 15** service (migrate deploy + full gate). **`nightly-self-build.yml`** remains lighter (preflight + typecheck + artifact).
+
+## Prisma migrate vs `npm run check` (honest sequencing)
+
+- **`npm run check`** alone runs lint + TypeScript + **`next build`**. It does **not** run **`prisma migrate deploy`**. A green check **does not prove** migrations applied to your database.
+- When you need **both**: run from `RedDirt/`:
+
+  ```bash
+  npx prisma migrate deploy && npm run check
+  ```
+
+  Package alias: **`npm run email:command-center:migrate-and-check`**.
+
+- **PowerShell:** `command1; command2` runs both even if `command1` fails; the shell exit code is from **`command2`**. Prefer **`&&`** when migration failure must stop before check.
+- **Email Command Center DB gate:** **`npm run email:command-center:preflight`** (or **`npm run email:gmail:preflight`**) verifies `DATABASE_URL`, connectivity, and **`StaffGmailAccount.gmailSyncState`** — without printing secrets.
 
 ## Kelly SOS — deploy QA checklist (Section 1)
 

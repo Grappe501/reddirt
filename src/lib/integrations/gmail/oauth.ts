@@ -1,24 +1,26 @@
 import { google } from "googleapis";
-import { getGmailEnv, isGmailOAuthConfigured } from "./env";
-
-const SCOPES = [
-  "https://www.googleapis.com/auth/gmail.send",
-  "https://www.googleapis.com/auth/gmail.readonly",
-];
+import {
+  getGmailEnvForOAuth,
+  getRequestedGmailScopes,
+  isGmailOAuthCoreConfigured,
+} from "@/lib/gmail/config";
 
 export function createGmailOAuth2Client() {
-  if (!isGmailOAuthConfigured()) throw new Error("Gmail OAuth is not configured (Gmail/Calendar client id+secret+redirect).");
-  const e = getGmailEnv();
+  if (!isGmailOAuthCoreConfigured()) {
+    throw new Error("Gmail OAuth is not configured (Gmail/Calendar client id+secret+redirect).");
+  }
+  const e = getGmailEnvForOAuth();
   return new google.auth.OAuth2(e.clientId, e.clientSecret, e.redirectUri);
 }
 
-export function getGmailAuthUrlForStaffUser(staffUserId: string) {
+/** Build Google consent URL with signed `state` (caller supplies state string). */
+export function getGmailAuthUrl(state: string) {
   const c = createGmailOAuth2Client();
   return c.generateAuthUrl({
     access_type: "offline",
     prompt: "consent",
-    scope: SCOPES,
-    state: staffUserId,
+    scope: [...getRequestedGmailScopes()],
+    state,
   });
 }
 

@@ -1,9 +1,9 @@
 import { google } from "googleapis";
 import type { OAuth2Client } from "google-auth-library";
-import { Credentials } from "google-auth-library";
 import { createGmailOAuth2Client } from "./oauth";
 import { prisma } from "@/lib/db";
 import { isGmailOAuthConfigured } from "./env";
+import { extractCredentialsFromStaffOauthJson } from "@/lib/gmail/staff-oauth-storage";
 
 function b64url(buf: Buffer) {
   return buf
@@ -38,7 +38,7 @@ export async function getGmailAuthForUser(userId: string): Promise<OAuth2Client 
   const acc = await prisma.staffGmailAccount.findUnique({ where: { userId } });
   if (!acc || !acc.isActive) return null;
   if (!isGmailOAuthConfigured()) return null;
-  const tokens = acc.oauthJson as unknown as Credentials;
+  const tokens = extractCredentialsFromStaffOauthJson(acc.oauthJson);
   if (!tokens?.refresh_token && !tokens?.access_token) return null;
   const client = createGmailOAuth2Client();
   client.setCredentials(tokens);

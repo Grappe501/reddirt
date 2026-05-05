@@ -1,52 +1,80 @@
 import { NextResponse } from "next/server";
+import type { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { exchangeGmailCodeForTokens } from "@/lib/integrations/gmail/oauth";
 import { fetchGmailUserEmail } from "@/lib/integrations/gmail/gmail-api";
+import { verifyGmailOAuthState } from "@/lib/gmail/oauth-state";
+import { buildStaffGmailSealedRecord } from "@/lib/gmail/staff-oauth-storage";
 
 export const dynamic = "force-dynamic";
+
+const DEFAULT_RETURN = "/admin/workbench/email-command-center";
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
   const origin = url.origin;
   const code = url.searchParams.get("code");
-  const state = url.searchParams.get("state");
+  const stateRaw = url.searchParams.get("state");
   const err = url.searchParams.get("error");
+
+  const fail = (returnPath: string, codeSuffix: string) =>
+    NextResponse.redirect(new URL(`${returnPath}?gmail_error=${encodeURIComponent(codeSuffix)}`, origin));
+
   if (err) {
-    return NextResponse.redirect(new URL(`/admin/workbench?error=${encodeURIComponent(err)}`, origin));
+    return fail(DEFAULT_RETURN, err);
   }
-  if (!code || !state) {
-    return NextResponse.redirect(new URL("/admin/workbench?error=gmail_oauth", origin));
+
+  const st = verifyGmailOAuthState(stateRaw);
+  if (!code || !st) {
+    return fail(DEFAULT_RETURN, "gmail_oauth");
   }
-  const user = await prisma.user.findUnique({ where: { id: state } });
+
+  const user = await prisma.user.findUnique({ where: { id: st.uid } });
   if (!user) {
-    return NextResponse.redirect(new URL("/admin/workbench?error=gmail_user", origin));
+    return fail(st.ret, "gmail_user");
   }
+
   try {
     const tokens = await exchangeGmailCodeForTokens(code);
+    let oauthJson: object;
+    try {
+      oauthJson = buildStaffGmailSealedRecord(tokens) as unknown as object;
+    } catch {
+      return fail(st.ret, "gmail_no_encrypt_key");
+    }
+
     await prisma.staffGmailAccount.upsert({
       where: { userId: user.id },
       create: {
         userId: user.id,
         sendAsEmail: user.email,
-        oauthJson: tokens as object,
+        oauthJson: oauthJson as Prisma.InputJsonValue,
         isActive: true,
         lastError: null,
       },
       update: {
-        oauthJson: tokens as object,
+        oauthJson: oauthJson as Prisma.InputJsonValue,
         isActive: true,
         lastError: null,
       },
     });
-    const profileEmail = await fetchGmailUserEmail(user.id);
-    if (profileEmail) {
-      await prisma.staffGmailAccount.update({
-        where: { userId: user.id },
-        data: { sendAsEmail: profileEmail },
-      });
+
+    try {
+      const profileEmail = await fetchGmailUserEmail(user.id);
+      if (profileEmail) {
+        await prisma.staffGmailAccount.update({
+          where: { userId: user.id },
+          data: { sendAsEmail: profileEmail },
+        });
+      }
+    } catch {
+      /* profile lookup is optional; connection still valid */
     }
   } catch {
-    return NextResponse.redirect(new URL("/admin/workbench?error=gmail_token", origin));
+    return fail(st.ret, "gmail_token");
   }
-  return NextResponse.redirect(new URL("/admin/workbench?gmail=1", origin));
+
+  const nextUrl = new URL(st.ret, origin);
+  nextUrl.searchParams.set("gmail", "1");
+  return NextResponse.redirect(nextUrl);
 }

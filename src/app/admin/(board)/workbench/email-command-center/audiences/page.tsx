@@ -1,0 +1,257 @@
+import Link from "next/link";
+import { EmailWorkflowSourceType } from "@prisma/client";
+import {
+  getAudienceStudioSnapshot,
+  listAudienceBuildingBlocks,
+  listEmailAudienceDefinitions,
+  listSuggestedAudienceClusters,
+} from "@/lib/email-command-center/audience-studio";
+import { AudienceStudioPreviewForm } from "@/components/admin/email-command-center/AudienceStudioPreviewForm";
+import {
+  archiveEmailAudienceDefinitionAction,
+  createDraftEmailAudienceDefinitionAction,
+} from "@/app/admin/email-audience-actions";
+
+export const dynamic = "force-dynamic";
+
+export default async function EmailAudienceStudioPage({
+  searchParams,
+}: {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const sp = (await searchParams) ?? {};
+  const notice = typeof sp.notice === "string" ? sp.notice : undefined;
+  const error = typeof sp.error === "string" ? sp.error : undefined;
+
+  const snapshot = await getAudienceStudioSnapshot();
+
+  let blocks: Awaited<ReturnType<typeof listAudienceBuildingBlocks>> = [];
+  let clusters: Awaited<ReturnType<typeof listSuggestedAudienceClusters>> = [];
+  let definitions: Awaited<ReturnType<typeof listEmailAudienceDefinitions>> = [];
+  let listsOk = snapshot.dbAvailable;
+
+  if (snapshot.dbAvailable) {
+    try {
+      [blocks, clusters, definitions] = await Promise.all([
+        listAudienceBuildingBlocks(),
+        listSuggestedAudienceClusters(),
+        listEmailAudienceDefinitions(),
+      ]);
+    } catch {
+      listsOk = false;
+    }
+  }
+
+  const sourceTypes = Object.values(EmailWorkflowSourceType);
+
+  return (
+    <div className="min-w-0 max-w-5xl space-y-4">
+      <div className="flex flex-wrap items-center gap-2">
+        <Link
+          href="/admin/workbench/email-command-center"
+          className="rounded border border-kelly-text/15 bg-white px-2 py-0.5 text-xs font-semibold text-kelly-slate"
+        >
+          ← Email Command Center
+        </Link>
+        <Link href="/admin/workbench/email-command-center/profiles" className="text-xs text-kelly-text/60 hover:underline">
+          Profile &amp; hint review
+        </Link>
+        <Link href="/admin/workbench/email-queue" className="text-xs text-kelly-text/60 hover:underline">
+          Email queue
+        </Link>
+      </div>
+
+      <header>
+        <h1 className="font-heading text-xl font-bold text-kelly-navy">Audience / Microtargeting Studio</h1>
+        <p className="mt-1 max-w-3xl font-body text-sm text-kelly-text/85">
+          EMAIL-AUDIENCE-STUDIO-1.0 — preview and govern campaign email audiences from the{" "}
+          <strong>approved profile graph</strong> before SendGrid or mass send exist. This surface is planning-only.
+        </p>
+      </header>
+
+      <section className="rounded-lg border border-rose-300/50 bg-rose-50/80 px-3 py-2">
+        <h2 className="font-heading text-[10px] font-bold uppercase tracking-wide text-rose-950">Governance</h2>
+        <ul className="mt-1 list-inside list-disc font-body text-[11px] text-rose-950/95">
+          <li>No email sends from this page — queue send flag stays false.</li>
+          <li>SendGrid is not connected; there is no list sync or broadcast execution.</li>
+          <li>
+            <strong>ACTIVE</strong> <code className="text-[10px]">EmailContactProfileFact</code> rows are the safest
+            targeting substrate; pending AI suggestions are shown separately and are not broadcast-eligible.
+          </li>
+          <li>Audience hints are planning signals — not segments — until future governed packets say otherwise.</li>
+        </ul>
+      </section>
+
+      {!snapshot.dbAvailable || !listsOk ? (
+        <div className="rounded-lg border border-amber-300/60 bg-amber-50/90 px-3 py-2 font-body text-[11px] text-amber-950">
+          Database slice unreachable or audience tables not migrated — run{" "}
+          <code className="text-[10px]">npx prisma migrate deploy</code> when <code className="text-[10px]">DATABASE_URL</code>{" "}
+          is healthy. Preflight: <code className="text-[10px]">node scripts/email-command-center-preflight.mjs</code>.
+        </div>
+      ) : null}
+
+      {notice === "draft-saved" ? (
+        <p className="rounded border border-emerald-300/60 bg-emerald-50 px-2 py-1 text-[11px] text-emerald-950" role="status">
+          Draft audience definition saved.
+        </p>
+      ) : null}
+      {notice === "archived" ? (
+        <p className="rounded border border-emerald-300/60 bg-emerald-50 px-2 py-1 text-[11px] text-emerald-950" role="status">
+          Audience definition archived.
+        </p>
+      ) : null}
+      {error ? (
+        <p className="rounded border border-rose-300/60 bg-rose-50 px-2 py-1 text-[11px] text-rose-950" role="alert">
+          {error}
+        </p>
+      ) : null}
+
+      <section className="grid gap-3 lg:grid-cols-2">
+        <div className="rounded-lg border border-kelly-text/10 bg-white/90 p-3">
+          <h2 className="font-heading text-sm font-bold text-kelly-navy">SendGrid readiness</h2>
+          <p className="mt-1 text-[11px] text-kelly-text/80">
+            Status: <span className="font-bold text-kelly-text">not connected</span> — no API keys used here. Broadcast
+            foundation is a future packet after audience governance is visible in ops.
+          </p>
+        </div>
+        <div className="rounded-lg border border-kelly-text/10 bg-kelly-page/50 p-3">
+          <h2 className="font-heading text-sm font-bold text-kelly-navy">Counts (read model)</h2>
+          <ul className="mt-1 space-y-0.5 font-body text-[11px] text-kelly-text/85">
+            <li>Approved active facts (targeting substrate): {snapshot.approvedActiveFacts}</li>
+            <li>Pending profile suggestions (not eligible alone): {snapshot.pendingProfileSuggestions}</li>
+            <li>Pending audience hints (not broadcast-eligible): {snapshot.pendingAudienceHints}</li>
+            <li>Distinct approved fact triples (building blocks): {snapshot.buildingBlockRowCount}</li>
+            <li>Draft audience definitions: {snapshot.draftAudienceDefinitions}</li>
+            <li>Active audience definitions: {snapshot.activeAudienceDefinitions}</li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="rounded-lg border border-kelly-text/10 bg-white/90 p-3">
+        <h2 className="font-heading text-sm font-bold text-kelly-navy">Audience building blocks</h2>
+        <p className="mt-1 text-[10px] text-kelly-text/70">
+          Grouped signals from approved facts, pending suggestions (separate), and hint labels. Use approved facts for
+          safest previews.
+        </p>
+        <div className="mt-2 max-h-72 overflow-auto rounded border border-kelly-text/10">
+          <table className="w-full text-left text-[10px]">
+            <thead className="sticky top-0 bg-kelly-fog/80 text-kelly-text/70">
+              <tr>
+                <th className="px-2 py-1">Kind</th>
+                <th className="px-2 py-1">Key / label</th>
+                <th className="px-2 py-1">Value</th>
+                <th className="px-2 py-1">Count</th>
+                <th className="px-2 py-1">Avg conf.</th>
+              </tr>
+            </thead>
+            <tbody>
+              {blocks.slice(0, 80).map((b, i) => (
+                <tr key={`${b.kind}-${i}`} className="border-t border-kelly-text/10">
+                  <td className="px-2 py-1 font-semibold">{b.kind}</td>
+                  <td className="px-2 py-1">{b.label ?? b.factKey ?? b.factType ?? "—"}</td>
+                  <td className="px-2 py-1">{(b.factValue ?? b.hintStatus ?? "—").toString().slice(0, 80)}</td>
+                  <td className="px-2 py-1 tabular-nums">{b.profileOrSuggestionCount}</td>
+                  <td className="px-2 py-1 tabular-nums">{b.avgConfidence != null ? b.avgConfidence.toFixed(2) : "—"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {!blocks.length && listsOk ? (
+            <p className="p-2 text-[10px] text-kelly-text/55">No building blocks yet — approve profile facts first.</p>
+          ) : null}
+        </div>
+      </section>
+
+      <section className="rounded-lg border border-kelly-text/10 bg-white/90 p-3">
+        <h2 className="font-heading text-sm font-bold text-kelly-navy">Suggested clusters</h2>
+        <p className="mt-1 text-[10px] text-kelly-text/70">
+          Approved hint labels and recurring fact key/value pairs (count ≥ 2 fact rows). Heuristic only.
+        </p>
+        <ul className="mt-2 space-y-1 text-[11px] text-kelly-text/85">
+          {clusters.map((c) => (
+            <li key={`${c.kind}-${c.label ?? c.factKey}-${c.factValue}`}>
+              <span className="font-semibold">{c.kind}</span> —{" "}
+              {c.label ?? `${c.factKey} = ${c.factValue?.slice(0, 60)}`} ·{" "}
+              <span className="tabular-nums">{c.matchProfiles}</span> matches
+            </li>
+          ))}
+        </ul>
+        {!clusters.length && listsOk ? (
+          <p className="mt-1 text-[10px] text-kelly-text/55">No clusters yet — need more approved graph data.</p>
+        ) : null}
+      </section>
+
+      <AudienceStudioPreviewForm />
+
+      <section className="rounded-lg border border-kelly-text/10 bg-white/90 p-3">
+        <h2 className="font-heading text-sm font-bold text-kelly-navy">Save draft audience definition</h2>
+        <p className="mb-2 text-[10px] text-kelly-text/70">
+          Persists <code className="text-[9px]">criteriaJson</code> for operators — still no SendGrid sync.
+        </p>
+        <form action={createDraftEmailAudienceDefinitionAction} className="grid gap-2 sm:grid-cols-2">
+          <label className="text-[10px] text-kelly-text/80 sm:col-span-2">
+            Name
+            <input name="name" required className="mt-0.5 w-full rounded border px-2 py-1 text-[11px]" />
+          </label>
+          <label className="text-[10px] text-kelly-text/80 sm:col-span-2">
+            Description (optional)
+            <input name="description" className="mt-0.5 w-full rounded border px-2 py-1 text-[11px]" />
+          </label>
+          <label className="text-[10px] text-kelly-text/80 sm:col-span-2">
+            criteriaJson (optional JSON object — same shape as preview filters)
+            <textarea
+              name="criteriaJson"
+              rows={3}
+              placeholder='{"factKeyEquals":"issue","county":"Pulaski"}'
+              className="mt-0.5 w-full rounded border px-2 py-1 font-mono text-[10px]"
+            />
+          </label>
+          <button
+            type="submit"
+            className="sm:col-span-2 rounded border border-kelly-navy/30 bg-kelly-navy/10 px-3 py-1 text-[11px] font-bold text-kelly-navy"
+          >
+            Create draft
+          </button>
+        </form>
+      </section>
+
+      <section className="rounded-lg border border-kelly-text/10 bg-kelly-page/40 p-3">
+        <h2 className="font-heading text-sm font-bold text-kelly-navy">Saved definitions</h2>
+        {definitions.length ? (
+          <ul className="mt-2 space-y-2">
+            {definitions.map((d) => (
+              <li key={d.id} className="rounded border border-kelly-text/10 bg-white/80 px-2 py-2 text-[11px]">
+                <p className="font-semibold text-kelly-navy">
+                  {d.name}{" "}
+                  <span className="rounded bg-kelly-fog px-1 text-[9px] font-bold uppercase text-kelly-slate">
+                    {d.status}
+                  </span>
+                </p>
+                <p className="text-[10px] text-kelly-text/60">Updated {d.updatedAt.toISOString()}</p>
+                {d.status !== "ARCHIVED" ? (
+                  <form action={archiveEmailAudienceDefinitionAction} className="mt-1">
+                    <input type="hidden" name="id" value={d.id} />
+                    <button
+                      type="submit"
+                      className="rounded border border-rose-300/60 bg-rose-50/80 px-2 py-0.5 text-[10px] font-bold text-rose-900"
+                    >
+                      Archive
+                    </button>
+                  </form>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="mt-1 text-[11px] text-kelly-text/55">No saved definitions yet.</p>
+        )}
+      </section>
+
+      <section className="rounded-lg border border-kelly-text/10 bg-white/90 p-3">
+        <h2 className="font-heading text-sm font-bold text-kelly-navy">Workflow source type reference</h2>
+        <p className="text-[10px] text-kelly-text/70">Valid values for preview filter `workflowSourceType`:</p>
+        <p className="mt-1 font-mono text-[10px] text-kelly-text/80">{sourceTypes.join(", ")}</p>
+      </section>
+    </div>
+  );
+}

@@ -5,6 +5,15 @@ import { getEmailWorkflowItemDetail } from "@/lib/email-workflow/queries";
 import { RunEmailWorkflowInterpretationButton } from "@/components/admin/workbench/RunEmailWorkflowInterpretationButton";
 import { WorkbenchPill } from "@/components/admin/workbench/WorkbenchPill";
 import { EmailWorkflowInterpretationProvenancePanel } from "@/components/admin/email-workflow/EmailWorkflowInterpretationProvenancePanel";
+import { EmailWorkflowOperatorControls } from "@/components/admin/email-workflow/EmailWorkflowOperatorControls";
+import { EmailWorkflowAiIntelligencePanel } from "@/components/admin/email-workflow/EmailWorkflowAiIntelligencePanel";
+import { EmailQueueContactProfilePanel } from "@/components/admin/email-workflow/EmailQueueContactProfilePanel";
+import {
+  EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM,
+  EMAIL_WORKFLOW_STATUS_LABELS,
+  EMAIL_WORKFLOW_STATUS_MEANINGS,
+  getEmailWorkflowNextStep,
+} from "@/lib/email-workflow/governance";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -41,6 +50,7 @@ export default async function EmailWorkflowQueueDetailPage({ params }: Props) {
       : null;
 
   const enriched = d.status === "ENRICHED";
+  const assigneeLabel = d.assignedTo ? d.assignedTo.nameLabel ?? d.assignedTo.email : "Unassigned";
 
   return (
     <div className="min-w-0 max-w-3xl">
@@ -76,7 +86,56 @@ export default async function EmailWorkflowQueueDetailPage({ params }: Props) {
         <p className="mt-1 font-body text-xs text-kelly-text/70">Queue: {d.queueReason}</p>
       ) : null}
 
-      <div className="mt-3 space-y-2">
+      <div className="mt-3 space-y-2 rounded border border-kelly-text/10 bg-kelly-page/40 p-2">
+        <h2 className="font-heading text-sm font-bold text-kelly-text">Operator next step</h2>
+        <p className="text-xs text-kelly-text/80">{getEmailWorkflowNextStep(d.status)}</p>
+        <div className="grid gap-1 text-[11px] text-kelly-text/75 sm:grid-cols-2">
+          <p>
+            <strong className="font-semibold text-kelly-text">Current state:</strong>{" "}
+            {EMAIL_WORKFLOW_STATUS_LABELS[d.status]}
+          </p>
+          <p>
+            <strong className="font-semibold text-kelly-text">Assignee:</strong> {assigneeLabel}
+          </p>
+          <p>
+            <strong className="font-semibold text-kelly-text">Priority:</strong> {d.priority}
+          </p>
+          <p>
+            <strong className="font-semibold text-kelly-text">Escalation:</strong> {d.escalationLevel}
+          </p>
+          <p>
+            <strong className="font-semibold text-kelly-text">Spam:</strong> {d.spamDisposition}
+          </p>
+          <p>
+            <strong className="font-semibold text-kelly-text">Needs de-escalation:</strong>{" "}
+            {d.needsDeescalation ? "Yes" : "No"}
+          </p>
+        </div>
+        <p className="text-[11px] text-kelly-text/70">{EMAIL_WORKFLOW_STATUS_MEANINGS[d.status]}</p>
+        <EmailWorkflowOperatorControls itemId={d.id} status={d.status} isAssigned={Boolean(d.assignedTo)} />
+      </div>
+
+      <div className="mt-2 space-y-2 rounded border border-kelly-text/10 bg-white/80 p-2">
+        <h2 className="font-heading text-sm font-bold text-kelly-text">Governance gate</h2>
+        <ul className="list-inside list-disc space-y-0.5 text-xs text-kelly-text/80">
+          <li>This queue does not send provider messages from `EmailWorkflowItem`.</li>
+          <li>
+            Approval here means review-ready queue state only, not SendGrid/Twilio/Gmail execution.
+          </li>
+          <li>Outbound response execution must use the separately approved comms/send workflow.</li>
+          <li>Deterministic interpretation and OpenAI queue analysis can assist triage — operator review remains required.</li>
+          <li>OpenAI Email Intelligence suggests only; it does not send, approve statuses, or write profiles.</li>
+          <li>
+            canSendFromEmailWorkflowItem: <strong>{EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM ? "true" : "false"}</strong>
+          </li>
+        </ul>
+      </div>
+
+      <EmailWorkflowAiIntelligencePanel itemId={d.id} rawMeta={rawMeta} />
+
+      <EmailQueueContactProfilePanel itemId={d.id} />
+
+      <div className="mt-2 space-y-2">
         <div className="rounded border border-kelly-text/10 bg-kelly-page/50 px-2 py-1">
           <p className="text-[10px] text-kelly-text/55">
             Queue-first: interpretation fills <strong className="font-semibold text-kelly-text/70">empty</strong> fields and
@@ -165,7 +224,9 @@ export default async function EmailWorkflowQueueDetailPage({ params }: Props) {
         </Section>
 
         <Section title="Source links (linked records)">
-          <p className="mb-1 text-[10px] text-kelly-text/50">Read-only pointers for cross-navigation; not a substitute for row fields above.</p>
+          <p className="mb-1 text-[10px] text-kelly-text/50">
+            Read-only pointers for cross-navigation; use these to route work to the right approved execution surface.
+          </p>
           <ul className="list-inside list-disc space-y-0.5 text-sm text-kelly-text/80">
             {l.userLabel || l.userId ? (
               <li>

@@ -11,6 +11,7 @@ export type EmailWorkflowListFilters = {
   priority?: EmailWorkflowPriority;
   sourceType?: EmailWorkflowSourceType;
   assignedToUserId?: string | null;
+  assignedState?: "assigned" | "unassigned";
   escalationLevel?: EmailWorkflowEscalationLevel;
   spamDisposition?: EmailWorkflowSpamDisposition;
 };

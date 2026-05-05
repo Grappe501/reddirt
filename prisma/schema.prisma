@@ -104,6 +104,15 @@ model User {
   voterVotePlansCreated            VoterVotePlan[]            @relation("VoterVotePlanCreatedBy")
   /// REL-2: relational network owned by this volunteer user (not a permission model).
   relationalContactsOwned          RelationalContact[]        @relation("RelationalContactOwner")
+  /// EMAIL-CONTACT-PROFILE-GRAPH-1.0 — governed contact graph link (facts/suggestions audited separately).
+  emailContactProfiles             EmailContactProfile[]
+  emailContactProfileFactsApproved EmailContactProfileFact[]  @relation("EmailContactProfileFactApprover")
+  emailProfileFactSuggestionsReviewed EmailContactProfileFactSuggestion[] @relation("EmailProfileFactSuggestionReviewer")
+  emailAudienceHintsReviewed          EmailAudienceHint[]                   @relation("EmailAudienceHintReviewer")
+  /// EMAIL-AUDIENCE-STUDIO-1.0 — saved audience definitions (no SendGrid list ids).
+  emailAudienceDefinitionsCreated     EmailAudienceDefinition[]             @relation("EmailAudienceDefinitionCreatedBy")
+  emailAudienceDefinitionsUpdated     EmailAudienceDefinition[]             @relation("EmailAudienceDefinitionUpdatedBy")
+  emailAudiencePreviewRuns            EmailAudiencePreviewRun[]             @relation("EmailAudiencePreviewRunActor")
 }
 
 /// COMP-2: classification for dashboard-uploaded compliance knowledge files.
@@ -373,6 +382,7 @@ model VolunteerProfile {
   commsPlanAudienceSegmentMembers CommsPlanAudienceSegmentMember[] @relation("CommsPlanSegmentMemberVolunteer")
   communicationRecipients         CommunicationRecipient[]
   emailWorkflowItems              EmailWorkflowItem[]                @relation("EmailWorkflowItemVolunteer")
+  emailContactProfiles            EmailContactProfile[]
 }
 
 model Commitment {
@@ -2620,6 +2630,7 @@ model RelationalContact {
 
   voterInteractions    VoterInteraction[]
   voterSignals         VoterSignal[]
+  emailContactProfiles EmailContactProfile[]
 
   @@index([ownerUserId])
   @@index([matchedVoterRecordId])
@@ -4267,6 +4278,13 @@ model EmailWorkflowItem {
   reviewedBy         User?   @relation("EmailWorkflowItemReviewedBy", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
   reviewedAt         DateTime?
 
+  /// EMAIL-CONTACT-PROFILE-GRAPH-1.0 — optional `EmailContactProfile` for governed fact staging (not auto CRM).
+  emailContactProfileId String?
+  emailContactProfile   EmailContactProfile? @relation(fields: [emailContactProfileId], references: [id], onDelete: SetNull)
+
+  profileFactSuggestions  EmailContactProfileFactSuggestion[]
+  emailAudienceHintsGraph EmailAudienceHint[]                 @relation("EmailWorkflowAudienceHint")
+
   metadataJson Json @default("{}")
 
   createdAt DateTime @default(now())
@@ -4280,6 +4298,171 @@ model EmailWorkflowItem {
   @@index([escalationLevel, status])
   @@index([spamDisposition, status])
   @@index([createdAt])
+  @@index([emailContactProfileId])
+}
+
+enum EmailContactProfileFactStatus {
+  ACTIVE
+  SUPERSEDED
+  REMOVED
+}
+
+enum EmailContactProfileFactSuggestionStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  SUPERSEDED
+}
+
+enum EmailAudienceHintStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+/// EMAIL-CONTACT-PROFILE-GRAPH-1.0 — email-command-center contact row (suggestions → facts on approval only).
+model EmailContactProfile {
+  id                  String   @id @default(cuid())
+  userId              String?
+  user                User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  volunteerProfileId  String?
+  volunteerProfile    VolunteerProfile? @relation(fields: [volunteerProfileId], references: [id], onDelete: SetNull)
+  relationalContactId String?
+  relationalContact   RelationalContact? @relation(fields: [relationalContactId], references: [id], onDelete: SetNull)
+
+  primaryEmail String? @db.VarChar(320)
+  displayName  String? @db.VarChar(500)
+  county       String? @db.VarChar(120)
+  city         String? @db.VarChar(120)
+  state        String? @db.VarChar(32)
+  /// Origin label (e.g. `email_workflow_queue`).
+  source       String  @default("email_workflow_queue") @db.VarChar(120)
+
+  metadataJson Json @default("{}")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  workflowItems        EmailWorkflowItem[]
+  facts                EmailContactProfileFact[]
+  factSuggestions      EmailContactProfileFactSuggestion[]
+  audienceHintsProfile EmailAudienceHint[]
+
+  @@index([userId])
+  @@index([volunteerProfileId])
+  @@index([relationalContactId])
+  @@index([primaryEmail])
+}
+
+model EmailContactProfileFact {
+  id                     String                    @id @default(cuid())
+  profileId              String
+  profile                EmailContactProfile       @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  factType               String                    @db.VarChar(120)
+  factKey                String                    @db.VarChar(200)
+  factValue              String                    @db.Text
+  confidence             Float?
+  sourceType             String                    @default("EMAIL_AI_APPROVED") @db.VarChar(120)
+  sourceEmailWorkflowItemId String?
+  sourceMetadataJson     Json                      @default("{}")
+  status                 EmailContactProfileFactStatus @default(ACTIVE)
+  approvedByUserId       String?
+  approvedBy             User?                     @relation("EmailContactProfileFactApprover", fields: [approvedByUserId], references: [id], onDelete: SetNull)
+  approvedAt             DateTime?
+  createdAt              DateTime                  @default(now())
+  updatedAt              DateTime                  @updatedAt
+
+  @@index([profileId, status])
+  @@index([sourceEmailWorkflowItemId])
+}
+
+model EmailContactProfileFactSuggestion {
+  id                  String                                @id @default(cuid())
+  profileId           String?
+  profile             EmailContactProfile?                  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  emailWorkflowItemId String
+  emailWorkflowItem   EmailWorkflowItem                     @relation(fields: [emailWorkflowItemId], references: [id], onDelete: Cascade)
+  suggestionType      String                                @default("EMAIL_AI_V1") @db.VarChar(120)
+  factKey             String                                @db.VarChar(200)
+  factValue           String                                @db.Text
+  confidence          Float?
+  rationale           String?                               @db.Text
+  sourceLimitations   String[]                              @default([])
+  status              EmailContactProfileFactSuggestionStatus @default(PENDING)
+  reviewedByUserId    String?
+  reviewedBy          User?                                 @relation("EmailProfileFactSuggestionReviewer", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
+  reviewedAt          DateTime?
+  metadataJson        Json                                  @default("{}")
+  createdAt           DateTime                              @default(now())
+  updatedAt           DateTime                              @updatedAt
+
+  @@index([emailWorkflowItemId, status])
+  @@index([profileId, status])
+}
+
+model EmailAudienceHint {
+  id                  String               @id @default(cuid())
+  emailWorkflowItemId String
+  emailWorkflowItem   EmailWorkflowItem    @relation("EmailWorkflowAudienceHint", fields: [emailWorkflowItemId], references: [id], onDelete: Cascade)
+  profileId           String?
+  profile             EmailContactProfile? @relation(fields: [profileId], references: [id], onDelete: SetNull)
+  hintType            String               @default("EMAIL_AI_V1") @db.VarChar(120)
+  label               String               @db.VarChar(500)
+  rationale           String?              @db.Text
+  confidence          Float?
+  status              EmailAudienceHintStatus @default(PENDING)
+  reviewedByUserId    String?
+  reviewedBy          User?                @relation("EmailAudienceHintReviewer", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
+  reviewedAt          DateTime?
+  metadataJson        Json                 @default("{}")
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+
+  @@index([emailWorkflowItemId, status])
+  @@index([profileId, status])
+}
+
+/// EMAIL-AUDIENCE-STUDIO-1.0 — operator-defined audience criteria (preview / governance only; no SendGrid sync).
+enum EmailAudienceDefinitionStatus {
+  DRAFT
+  ACTIVE
+  ARCHIVED
+}
+
+model EmailAudienceDefinition {
+  id          String                       @id @default(cuid())
+  name        String                       @db.VarChar(240)
+  description String?                      @db.Text
+  status      EmailAudienceDefinitionStatus @default(DRAFT)
+  /// JSON criteria compatible with `AudiencePreviewCriteria` in audience-studio.ts (no secrets).
+  criteriaJson Json                        @default("{}")
+  createdByUserId String?
+  createdBy       User?                    @relation("EmailAudienceDefinitionCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  updatedByUserId String?
+  updatedBy       User?                    @relation("EmailAudienceDefinitionUpdatedBy", fields: [updatedByUserId], references: [id], onDelete: SetNull)
+  metadataJson    Json                     @default("{}")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  previewRuns EmailAudiencePreviewRun[]
+
+  @@index([status, updatedAt])
+}
+
+/// Audit trail for operator-run audience previews (no outbound send).
+model EmailAudiencePreviewRun {
+  id                    String                  @id @default(cuid())
+  audienceDefinitionId  String?
+  audienceDefinition    EmailAudienceDefinition? @relation(fields: [audienceDefinitionId], references: [id], onDelete: SetNull)
+  criteriaJson          Json                    @default("{}")
+  matchCount            Int
+  generatedAt           DateTime                @default(now())
+  generatedByUserId   String?
+  generatedBy           User?                   @relation("EmailAudiencePreviewRunActor", fields: [generatedByUserId], references: [id], onDelete: SetNull)
+  metadataJson          Json                    @default("{}")
+
+  @@index([generatedAt])
+  @@index([audienceDefinitionId])
 }
 
 // --- Contact engagement + segmentation (Comms workbench, campaign-local; CE-1) ---
@@ -4512,6 +4695,8 @@ model StaffGmailAccount {
   /// Workspace / Gmail “send as” address (usually same as `User.email`).
   sendAsEmail String
   oauthJson   Json     @default("{}")
+  /// Monitor/sync telemetry (versioned JSON); never stores message bodies or tokens — see `gmail-sync-state.ts`.
+  gmailSyncState Json  @default("{}")
   isActive    Boolean  @default(true)
   lastError   String?  @db.Text
   createdAt   DateTime @default(now())
