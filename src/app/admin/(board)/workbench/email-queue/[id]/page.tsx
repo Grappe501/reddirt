@@ -7,6 +7,7 @@ import { WorkbenchPill } from "@/components/admin/workbench/WorkbenchPill";
 import { EmailWorkflowInterpretationProvenancePanel } from "@/components/admin/email-workflow/EmailWorkflowInterpretationProvenancePanel";
 import { EmailWorkflowOperatorControls } from "@/components/admin/email-workflow/EmailWorkflowOperatorControls";
 import { EmailWorkflowAiIntelligencePanel } from "@/components/admin/email-workflow/EmailWorkflowAiIntelligencePanel";
+import { EmailWorkflowTaskIntelligenceSection } from "@/components/admin/email-workflow/EmailWorkflowTaskIntelligenceSection";
 import { EmailQueueContactProfilePanel } from "@/components/admin/email-workflow/EmailQueueContactProfilePanel";
 import {
   EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM,
@@ -144,6 +145,8 @@ export default async function EmailWorkflowQueueDetailPage({ params }: Props) {
       </div>
 
       <EmailWorkflowAiIntelligencePanel itemId={d.id} rawMeta={rawMeta} />
+
+      <EmailWorkflowTaskIntelligenceSection itemId={d.id} rawMeta={rawMeta} />
 
       <EmailQueueContactProfilePanel itemId={d.id} />
 

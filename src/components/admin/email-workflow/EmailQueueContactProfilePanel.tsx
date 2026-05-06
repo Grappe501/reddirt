@@ -1,6 +1,12 @@
 import Link from "next/link";
 import { prisma } from "@/lib/db";
-import { listAudienceHintsForQueueItem, listProfileFactsForQueueItem, listSuggestionsForQueueItem } from "@/lib/email-command-center/profile-graph";
+import {
+  getStoredEmailAiOutputFromMetadata,
+  listAudienceHintsForQueueItem,
+  listProfileFactsForQueueItem,
+  listSuggestionsForQueueItem,
+} from "@/lib/email-command-center/profile-graph";
+import { buildQueueItemProfileContextFromRow, suggestProfileFactsWithEvidence } from "@/lib/email-command-center/ai-profile-intelligence";
 import {
   GenerateProfileSuggestionsFromAiButton,
   ProfileAudienceHintsList,
@@ -20,6 +26,17 @@ export async function EmailQueueContactProfilePanel({ itemId }: { itemId: string
     select: {
       metadataJson: true,
       emailContactProfileId: true,
+      whoSummary: true,
+      whatSummary: true,
+      whenSummary: true,
+      whereSummary: true,
+      whySummary: true,
+      impactSummary: true,
+      recommendedResponseSummary: true,
+      recommendedResponseRationale: true,
+      intent: true,
+      tone: true,
+      sentiment: true,
     },
   });
 
@@ -32,13 +49,12 @@ export async function EmailQueueContactProfilePanel({ itemId }: { itemId: string
       : null;
   const metadataOnlyGmail = Boolean(gmailReview && gmailReview.bodyStored !== true);
 
-  const rawAi = meta.emailAiAnalysis;
-  const hasAiOutput =
-    rawAi &&
-    typeof rawAi === "object" &&
-    !Array.isArray(rawAi) &&
-    "output" in rawAi &&
-    (rawAi as Record<string, unknown>).output != null;
+  const aiOut = item ? getStoredEmailAiOutputFromMetadata(item.metadataJson) : null;
+  const hasAiOutput = Boolean(aiOut);
+  const profileIntelPreview =
+    item && aiOut
+      ? suggestProfileFactsWithEvidence(buildQueueItemProfileContextFromRow(item, metadataOnlyGmail), aiOut).slice(0, 8)
+      : [];
 
   const profile = item?.emailContactProfileId
     ? await prisma.emailContactProfile.findUnique({
@@ -125,13 +141,54 @@ export async function EmailQueueContactProfilePanel({ itemId }: { itemId: string
         ) : null}
       </div>
 
+      {profileIntelPreview.length ? (
+        <div className="rounded border border-kelly-forest/25 bg-kelly-fog/30 px-2 py-2">
+          <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-forest/90">
+            Profile intelligence 2.0 preview (not staged)
+          </p>
+          <p className="mt-0.5 text-[10px] text-kelly-text/70">
+            Deterministic recompute from queue fields + stored AI output — same family as staged rows after you click generate.
+            Evidence labels are advisory; approve only after operator verification.
+          </p>
+          <ul className="mt-2 space-y-2">
+            {profileIntelPreview.map((row, i) => (
+              <li key={i} className="rounded border border-kelly-text/10 bg-white/90 px-2 py-1.5 text-[10px] text-kelly-text/85">
+                <p className="font-semibold text-kelly-navy">{row.suggestedFact}</p>
+                <p className="mt-0.5 text-[9px] text-kelly-text/60">
+                  {row.factType} · conf {row.confidence.toFixed(2)} · risk {row.riskLevel} · {row.sourceType}
+                  {row.needsHumanReview ? " · needs review" : ""}
+                </p>
+                <p className="mt-1 text-[9px] text-kelly-text/70">
+                  <span className="font-semibold">Why:</span> {row.whySuggested}
+                </p>
+                <p className="mt-0.5 font-mono text-[9px] text-kelly-text/65">{row.evidenceText.slice(0, 360)}</p>
+                {row.shouldNotStoreReason ? (
+                  <p className="mt-1 rounded bg-rose-50/90 px-1.5 py-0.5 text-[9px] text-rose-950">
+                    Do not store: {row.shouldNotStoreReason}
+                  </p>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+
       <div>
         <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">
           Profile fact suggestions
         </p>
         <ProfileFactSuggestionsList
           itemId={itemId}
-          suggestions={suggestions.map((s) => ({ id: s.id, factValue: s.factValue, status: s.status }))}
+          suggestions={suggestions.map((s) => ({
+            id: s.id,
+            factValue: s.factValue,
+            status: s.status,
+            factKey: s.factKey,
+            suggestionType: s.suggestionType,
+            confidence: s.confidence,
+            rationale: s.rationale,
+            metadataJson: s.metadataJson,
+          }))}
         />
       </div>
 
@@ -159,7 +216,15 @@ export async function EmailQueueContactProfilePanel({ itemId }: { itemId: string
         </p>
         <ProfileAudienceHintsList
           itemId={itemId}
-          hints={hints.map((h) => ({ id: h.id, label: h.label, status: h.status }))}
+          hints={hints.map((h) => ({
+            id: h.id,
+            label: h.label,
+            status: h.status,
+            hintType: h.hintType,
+            confidence: h.confidence,
+            rationale: h.rationale,
+            metadataJson: h.metadataJson,
+          }))}
         />
       </div>
     </div>

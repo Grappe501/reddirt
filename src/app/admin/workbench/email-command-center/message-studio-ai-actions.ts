@@ -60,6 +60,10 @@ const reviseInputSchema = z.object({
   audienceNote: z.string().max(8000),
   complianceNotes: z.string().max(8000).optional(),
   campaignVoice: campaignVoiceSchema,
+  subjectGoal: z.string().max(2000).optional(),
+  primaryCta: z.string().max(800).optional(),
+  sourceHints: z.string().max(4000).optional(),
+  templateSummary: z.string().max(12000).optional(),
 });
 
 export type GenerateCampaignVoiceDraftActionResult =
@@ -98,5 +102,9 @@ export async function reviseCampaignVoiceDraftAction(
     audienceNote: parsed.data.audienceNote,
     complianceNotes: parsed.data.complianceNotes,
     campaignVoice: cv,
+    subjectGoal: parsed.data.subjectGoal,
+    primaryCta: parsed.data.primaryCta,
+    sourceHints: parsed.data.sourceHints,
+    templateSummary: parsed.data.templateSummary,
   });
 }

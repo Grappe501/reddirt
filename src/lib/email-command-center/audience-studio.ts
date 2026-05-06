@@ -529,6 +529,20 @@ export async function archiveAudienceDefinition(id: string, updatedByUserId: str
   });
 }
 
+export async function getEmailAudienceDefinitionById(id: string): Promise<{
+  id: string;
+  name: string;
+  description: string | null;
+  status: string;
+  criteriaJson: unknown;
+} | null> {
+  const row = await prisma.emailAudienceDefinition.findUnique({
+    where: { id },
+    select: { id: true, name: true, description: true, status: true, criteriaJson: true },
+  });
+  return row;
+}
+
 export async function listEmailAudienceDefinitions(opts?: {
   includeArchived?: boolean;
 }): Promise<

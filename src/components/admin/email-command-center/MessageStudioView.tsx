@@ -2,8 +2,11 @@ import Link from "next/link";
 import { MessageStudioDraftPlanner } from "@/components/admin/email-command-center/MessageStudioDraftPlanner";
 import { EccOperatorPageChrome } from "@/components/admin/email-command-center/ecc-operator-ux";
 import { MESSAGE_STUDIO_CONTENT_BLOCKS } from "@/components/admin/email-command-center/message-studio-content-blocks";
+import type { MessageStudioAudienceStrategySummary } from "@/lib/email-command-center/ai-audience-strategist";
 import type { MessageStudioDraftListRow } from "@/lib/email-command-center/message-studio-drafts";
 import type { EmailCommandCenterSnapshot } from "@/lib/email-command-center/read-model";
+import type { CampaignMemoryReadinessSnapshot } from "@/lib/email-command-center/ai-campaign-memory-readiness";
+import { MessageStudioCampaignMemoryPanel } from "@/components/admin/email-command-center/MessageStudioCampaignMemoryPanel";
 
 const badge =
   "rounded-full border border-kelly-text/15 bg-white/90 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-kelly-slate";
@@ -108,6 +111,10 @@ type MessageStudioViewProps = {
   openAiServerConfigured?: boolean;
   serverDraftRows?: MessageStudioDraftListRow[];
   snapshot: EmailCommandCenterSnapshot;
+  /** When `?audienceDefinitionId=` is present and DB read succeeds — deterministic strategist summary. */
+  audienceStrategySummary?: MessageStudioAudienceStrategySummary | null;
+  /** EMAIL-AI-CAMPAIGN-MEMORY-READINESS-1.0 — live SearchChunk stats + honest source posture. */
+  campaignMemoryReadiness: CampaignMemoryReadinessSnapshot;
 };
 
 export function MessageStudioView({
@@ -118,6 +125,8 @@ export function MessageStudioView({
   openAiServerConfigured = false,
   serverDraftRows = [],
   snapshot,
+  audienceStrategySummary = null,
+  campaignMemoryReadiness,
 }: MessageStudioViewProps) {
   const extraNextLines: string[] = [];
   if (!queryAudienceDefinitionId) {
@@ -210,6 +219,61 @@ export function MessageStudioView({
           <strong>this browser</strong>; shared drafts anchor below at <strong>#shared-drafts</strong>.
         </p>
       </div>
+
+      {queryAudienceDefinitionId && audienceStrategySummary ? (
+        <div className="rounded-lg border border-kelly-forest/35 bg-white/95 px-3 py-2 font-body text-[11px] text-kelly-navy shadow-sm" role="region" aria-label="Audience strategist summary">
+          <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-forest/90">
+            AI Audience Strategist — saved definition
+          </p>
+          <p className="mt-1 text-[10px] text-kelly-text/80">
+            <span className="font-semibold">{audienceStrategySummary.definitionName}</span>{" "}
+            <span className="rounded bg-kelly-fog px-1 text-[9px] font-bold uppercase text-kelly-slate">
+              {audienceStrategySummary.status}
+            </span>{" "}
+            · <span className="font-mono text-[9px]">{audienceStrategySummary.definitionId}</span>
+          </p>
+          <div className="mt-2">
+            <p className="text-[9px] font-bold uppercase tracking-wide text-kelly-text/55">Criteria summary</p>
+            <ul className="mt-0.5 list-inside list-disc text-[10px] text-kelly-text/80">
+              {audienceStrategySummary.criteriaSummaryLines.map((line, i) => (
+                <li key={i}>{line}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="mt-2">
+            <p className="text-[9px] font-bold uppercase tracking-wide text-kelly-text/55">Strategist angles (deterministic)</p>
+            <ul className="mt-0.5 list-inside list-decimal text-[10px] text-kelly-text/85">
+              {audienceStrategySummary.strategistBullets.map((b, i) => (
+                <li key={i}>{b}</li>
+              ))}
+            </ul>
+          </div>
+          {audienceStrategySummary.riskWarnings.length ? (
+            <div className="mt-2 rounded border border-rose-200/70 bg-rose-50/90 px-2 py-1 text-[10px] text-rose-950">
+              <p className="font-semibold">Risk warnings</p>
+              <ul className="mt-0.5 list-inside list-disc">
+                {audienceStrategySummary.riskWarnings.map((w, i) => (
+                  <li key={i}>{w}</li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+          <p className="mt-2 text-[10px] text-kelly-text/75">
+            <span className="font-semibold">Next step:</span> {audienceStrategySummary.recommendedNextStep}
+          </p>
+          <p className="mt-1 text-[9px] text-kelly-text/60">
+            EMAIL-AI-AUDIENCE-STRATEGIST-1.0 — advisory only; toggle <strong>Audience definition context</strong> in Campaign Voice
+            when drafting; no auto-send.
+          </p>
+        </div>
+      ) : queryAudienceDefinitionId && !audienceStrategySummary ? (
+        <div className="rounded-lg border border-amber-300/60 bg-amber-50/90 px-3 py-2 text-[11px] text-amber-950" role="status">
+          <p className="font-semibold">Audience definition not loaded</p>
+          <p className="mt-1 text-[10px]">
+            <span className="font-mono">{queryAudienceDefinitionId}</span> — verify the id in Audience Studio or DB reachability.
+          </p>
+        </div>
+      ) : null}
 
       {(querySource || queryId || queryAudienceDefinitionId || queryImportBatchId) && (
         <div className="rounded-lg border border-kelly-forest/30 bg-emerald-50/70 px-3 py-2 font-body text-[11px] text-emerald-950" role="status">
@@ -307,6 +371,8 @@ export function MessageStudioView({
           Campaign Voice toggles document what you have actually reviewed. This build does <strong>not</strong> sync or send.
         </p>
       </section>
+
+      <MessageStudioCampaignMemoryPanel snapshot={campaignMemoryReadiness} />
 
       <MessageStudioDraftPlanner
         querySource={querySource}

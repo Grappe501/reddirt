@@ -76,6 +76,8 @@ export type MessageStudioLocalDraft = {
   templateIdLastApplied: string;
   /** History of template ids applied to this draft (most recent last) */
   templatesUsed: string[];
+  /** EMAIL-AI-DRAFT-CRITIC-1.0 — last red-team critique JSON (advisory; not auto-applied). */
+  lastDraftCritiqueJson: string;
   /** EMAIL-SEND-PACKET-BUILDER-1.0 — last exported snapshot JSON (browser only; no server). */
   lastSendPacketJson: string;
   lastSendPacketGeneratedAt: string;
@@ -138,6 +140,7 @@ export function createEmptyDraft(overrides?: Partial<MessageStudioLocalDraft>): 
     editorialComplianceChecklist: defaultEditorialComplianceChecklist(),
     templateIdLastApplied: "",
     templatesUsed: [],
+    lastDraftCritiqueJson: "",
     lastSendPacketJson: "",
     lastSendPacketGeneratedAt: "",
   };
@@ -194,6 +197,7 @@ export function createEmptyDraft(overrides?: Partial<MessageStudioLocalDraft>): 
         : { ...base.editorialComplianceChecklist },
     templateIdLastApplied: overrides.templateIdLastApplied ?? base.templateIdLastApplied,
     templatesUsed: overrides.templatesUsed !== undefined ? [...overrides.templatesUsed] : [...base.templatesUsed],
+    lastDraftCritiqueJson: overrides.lastDraftCritiqueJson ?? base.lastDraftCritiqueJson,
     lastSendPacketJson: overrides.lastSendPacketJson ?? base.lastSendPacketJson,
     lastSendPacketGeneratedAt: overrides.lastSendPacketGeneratedAt ?? base.lastSendPacketGeneratedAt,
     linkedServerDraftId: overrides.linkedServerDraftId ?? base.linkedServerDraftId,
@@ -364,6 +368,7 @@ function normalizeDraft(raw: unknown): MessageStudioLocalDraft | null {
     templatesUsed: Array.isArray(o.templatesUsed)
       ? o.templatesUsed.filter((x): x is string => typeof x === "string").slice(-30)
       : [],
+    lastDraftCritiqueJson: typeof o.lastDraftCritiqueJson === "string" ? o.lastDraftCritiqueJson : "",
     lastSendPacketJson: typeof o.lastSendPacketJson === "string" ? o.lastSendPacketJson : "",
     lastSendPacketGeneratedAt: typeof o.lastSendPacketGeneratedAt === "string" ? o.lastSendPacketGeneratedAt : "",
     linkedServerDraftId: typeof o.linkedServerDraftId === "string" ? o.linkedServerDraftId : undefined,
@@ -406,6 +411,7 @@ export function duplicateDraft(d: MessageStudioLocalDraft): MessageStudioLocalDr
     updatedAt: now,
     title: d.title.trim() ? `${d.title.trim()} (copy)` : "Untitled (copy)",
     lastAiAdvisoryJson: "",
+    lastDraftCritiqueJson: "",
     lastSendPacketJson: "",
     lastSendPacketGeneratedAt: "",
   });

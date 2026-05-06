@@ -18,8 +18,16 @@ import {
   type MessageStudioEditorialReviewStatus,
 } from "@/lib/email-command-center/message-studio-editorial-review-model";
 import type { MessageStudioLocalDraft } from "@/components/admin/email-command-center/message-studio-local-drafts";
-import { AUDIENCE_FRAMES, ISSUE_FRAMES, TONE_PROFILES } from "@/lib/email-command-center/campaign-voice";
+import {
+  AUDIENCE_FRAMES,
+  ISSUE_FRAMES,
+  TONE_PROFILES,
+  buildCampaignVoicePromptExcerpt,
+} from "@/lib/email-command-center/campaign-voice";
 import { getTemplateById, MESSAGE_TEMPLATE_CATEGORY_LABELS } from "@/lib/email-command-center/message-templates";
+import { buildEvidenceLedger } from "@/lib/email-command-center/ai-source-grounding";
+import { safeParseCampaignVoiceAdvisoryJson } from "@/lib/email-command-center/message-studio-advisory-json";
+import { MessageStudioDraftCriticPanel } from "@/components/admin/email-command-center/MessageStudioDraftCriticPanel";
 
 const CLAIM_STATUS_OPTIONS: { value: EditorialClaimSourceStatus; label: string }[] = [
   { value: "clear", label: "Clear" },
@@ -65,9 +73,11 @@ function tierClass(t: EditorialReadinessTier): string {
 type Props = {
   activeDraft: MessageStudioLocalDraft;
   patchActive: (patch: Partial<MessageStudioLocalDraft>) => void;
+  /** Server has OPENAI_API_KEY — never exposed to the client. */
+  openaiServerConfigured?: boolean;
 };
 
-export function MessageStudioEditorialReviewPanel({ activeDraft, patchActive }: Props) {
+export function MessageStudioEditorialReviewPanel({ activeDraft, patchActive, openaiServerConfigured = false }: Props) {
   const tier = useMemo(() => computeEditorialReadinessTier(activeDraft), [activeDraft]);
   const blockers = useMemo(() => computeEditorialBlockers(activeDraft), [activeDraft]);
   const lastTemplate = useMemo(() => {
@@ -75,6 +85,39 @@ export function MessageStudioEditorialReviewPanel({ activeDraft, patchActive }: 
     if (!id) return null;
     return getTemplateById(id) ?? null;
   }, [activeDraft.templateIdLastApplied]);
+
+  const aiSourceGroundingSummary = useMemo(() => {
+    const adv = safeParseCampaignVoiceAdvisoryJson(activeDraft.lastAiAdvisoryJson);
+    if (!adv) return null;
+    const ledger =
+      adv.evidenceLedger ??
+      buildEvidenceLedger({
+        audienceNote: activeDraft.audienceNote,
+        complianceNotes: activeDraft.complianceNotes,
+        subjectGoal: activeDraft.subject || "",
+        primaryCta: activeDraft.primaryCta,
+        sourceHints: "",
+        existingBody: activeDraft.body,
+        voiceExcerpt: buildCampaignVoicePromptExcerpt(activeDraft.campaignVoice),
+        model: adv,
+      });
+    return {
+      summaryLine: ledger.summaryLine,
+      references: ledger.references.length,
+      grounded: ledger.groundedClaims.length,
+      unsupported: ledger.unsupportedClaims.length,
+      inferences: ledger.inferences.length,
+      reconstructed: !adv.evidenceLedger,
+    };
+  }, [
+    activeDraft.audienceNote,
+    activeDraft.body,
+    activeDraft.campaignVoice,
+    activeDraft.complianceNotes,
+    activeDraft.lastAiAdvisoryJson,
+    activeDraft.primaryCta,
+    activeDraft.subject,
+  ]);
 
   const toneLabel = TONE_PROFILES.find((x) => x.id === activeDraft.campaignVoice.toneProfileId)?.label ?? "—";
   const issueLabel = ISSUE_FRAMES.find((x) => x.id === activeDraft.campaignVoice.issueFrameId)?.label ?? "—";
@@ -153,6 +196,35 @@ export function MessageStudioEditorialReviewPanel({ activeDraft, patchActive }: 
           </p>
         </div>
       ) : null}
+
+      {aiSourceGroundingSummary ? (
+        <div className="mt-2 rounded border border-indigo-200/80 bg-indigo-50/90 p-2 text-[10px] text-indigo-950">
+          <p className="font-bold text-indigo-950">Latest AI advisory — source grounding summary</p>
+          <p className="mt-1 text-[9px] leading-snug">{aiSourceGroundingSummary.summaryLine}</p>
+          <ul className="mt-1 list-inside list-disc text-[9px] text-indigo-950/95">
+            <li>
+              Source reference slices: <span className="font-semibold">{aiSourceGroundingSummary.references}</span>
+            </li>
+            <li>
+              Classified grounded lines: <span className="font-semibold">{aiSourceGroundingSummary.grounded}</span> ·
+              Unsupported / high-risk: <span className="font-semibold">{aiSourceGroundingSummary.unsupported}</span> ·
+              Inferences: <span className="font-semibold">{aiSourceGroundingSummary.inferences}</span>
+            </li>
+            {aiSourceGroundingSummary.reconstructed ? (
+              <li className="text-[8px] text-indigo-900/90">
+                Ledger reconstructed from stored advisory (pre-upgrade draft) — regenerate in Campaign Voice AI for a
+                server-persisted ledger JSON block.
+              </li>
+            ) : null}
+          </ul>
+        </div>
+      ) : null}
+
+      <MessageStudioDraftCriticPanel
+        activeDraft={activeDraft}
+        patchActive={patchActive}
+        openaiServerConfigured={openaiServerConfigured}
+      />
 
       <div className="mt-3 grid gap-3 lg:grid-cols-2">
         <div className="space-y-2 rounded border border-slate-200/80 bg-white/95 p-2">

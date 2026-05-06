@@ -6,6 +6,14 @@
 import { prisma } from "@/lib/db";
 import type { Prisma } from "@prisma/client";
 import type { EmailAiAnalysisStoredV1, EmailAiAnalysisV1 } from "@/lib/email-workflow/ai/types";
+import {
+  analyzeQueueItemForProfileSignals,
+  buildAudienceIntelligenceV2Metadata,
+  buildProfileIntelligenceV2Metadata,
+  buildQueueItemProfileContextFromRow,
+  suggestAudienceHintsWithEvidence,
+  suggestProfileFactsWithEvidence,
+} from "@/lib/email-command-center/ai-profile-intelligence";
 
 function asMetaRecord(v: unknown): Record<string, unknown> {
   if (v != null && typeof v === "object" && !Array.isArray(v)) {
@@ -35,6 +43,14 @@ function isStoredAiAnalysis(v: unknown): v is EmailAiAnalysisStoredV1 {
   if (!v || typeof v !== "object" || Array.isArray(v)) return false;
   const o = v as Record<string, unknown>;
   return o.version === 1 && typeof o.generatedAt === "string";
+}
+
+/** Read persisted queue AI output from `EmailWorkflowItem.metadataJson` (no OpenAI call). */
+export function getStoredEmailAiOutputFromMetadata(metadataJson: unknown): EmailAiAnalysisV1 | null {
+  const meta = asMetaRecord(metadataJson);
+  const rawAi = meta.emailAiAnalysis;
+  if (!isStoredAiAnalysis(rawAi)) return null;
+  return rawAi.output ?? null;
 }
 
 /** Build immutable provenance JSON for suggestions / facts (names only — no secrets). */
@@ -156,7 +172,20 @@ export async function createProfileFactSuggestionsFromEmailAiAnalysis(
 
   const item = await prisma.emailWorkflowItem.findUnique({
     where: { id: itemId },
-    select: { metadataJson: true },
+    select: {
+      metadataJson: true,
+      whoSummary: true,
+      whatSummary: true,
+      whenSummary: true,
+      whereSummary: true,
+      whySummary: true,
+      impactSummary: true,
+      recommendedResponseSummary: true,
+      recommendedResponseRationale: true,
+      intent: true,
+      tone: true,
+      sentiment: true,
+    },
   });
   if (!item) throw new Error("Email workflow item not found.");
 
@@ -190,6 +219,14 @@ export async function createProfileFactSuggestionsFromEmailAiAnalysis(
   for (const s of out.sourceLimitations ?? []) {
     limitationLines.push(s);
   }
+  for (const u of out.uncertaintyNotes ?? []) {
+    const line = typeof u === "string" ? u.trim() : "";
+    if (line) limitationLines.push(`AI uncertainty: ${line.slice(0, 400)}`);
+  }
+  for (const t of out.operatorReviewTasks ?? []) {
+    const line = typeof t === "string" ? t.trim() : "";
+    if (line) limitationLines.push(`AI review task: ${line.slice(0, 400)}`);
+  }
   if (!out.bodyWasAvailable) {
     limitationLines.push("AI analysis: bodyWasAvailable=false.");
   }
@@ -210,49 +247,69 @@ export async function createProfileFactSuggestionsFromEmailAiAnalysis(
   const pendingSet = new Set(existingPendingSuggestions.map((s) => suggestionKey(s.factKey, s.factValue)));
   const hintLabelSet = new Set(existingPendingHints.map((h) => h.label));
 
+  const gmailMetaOnly = Boolean(gmailReview && gmailReview.bodyStored !== true);
+  const ctx = buildQueueItemProfileContextFromRow(item, gmailMetaOnly);
+
+  const signals = analyzeQueueItemForProfileSignals(ctx, out);
+  const enrichedFacts = suggestProfileFactsWithEvidence(ctx, out);
+  const enrichedHints = suggestAudienceHintsWithEvidence(ctx, out);
+
   let idx = 0;
-  for (const p of out.profileFactSuggestions ?? []) {
-    const factValue = p.suggestion.trim();
+  for (const row of enrichedFacts) {
+    const factValue = row.suggestedFact.trim();
     if (!factValue) continue;
-    const factKey = `ai_natural_language_${idx}`;
+    const factKey = `pi2.${row.factType}.${idx}`;
     idx += 1;
     if (pendingSet.has(suggestionKey(factKey, factValue))) continue;
     pendingSet.add(suggestionKey(factKey, factValue));
 
+    const piMeta = buildProfileIntelligenceV2Metadata(row, signals);
     await prisma.emailContactProfileFactSuggestion.create({
       data: {
         profileId: profile.id,
         emailWorkflowItemId: itemId,
-        suggestionType: "EMAIL_AI_V1",
+        suggestionType: "EMAIL_AI_PROFILE_INTEL_2",
         factKey,
         factValue,
-        confidence: typeof out.confidence === "number" ? out.confidence : null,
-        rationale: ["Advisory suggestion from Email AI Intelligence — verify before approving.", factValue].join(" "),
+        confidence: row.confidence,
+        rationale: [row.whySuggested, row.evidenceText ? `Evidence: ${row.evidenceText.slice(0, 600)}` : ""]
+          .filter(Boolean)
+          .join("\n\n"),
         sourceLimitations: limitationLines.length ? [...new Set(limitationLines)] : [],
         status: "PENDING",
-        metadataJson: { provenance: provenanceJson },
+        metadataJson: {
+          provenance: provenanceJson,
+          profileIntelligenceV2: piMeta,
+        },
       },
     });
     profileFactSuggestionsCreated += 1;
   }
 
   let hidx = 0;
-  for (const h of out.audienceHints ?? []) {
-    const label = h.hint.trim();
+  for (const h of enrichedHints) {
+    const label = h.label.trim();
     if (!label) continue;
     if (hintLabelSet.has(label)) continue;
     hintLabelSet.add(label);
 
+    const hiMeta = buildAudienceIntelligenceV2Metadata(h);
     await prisma.emailAudienceHint.create({
       data: {
         emailWorkflowItemId: itemId,
         profileId: profile.id,
-        hintType: "EMAIL_AI_V1",
+        hintType: "EMAIL_AI_PROFILE_INTEL_2",
         label: label.slice(0, 500),
-        rationale: "Advisory audience hint — not applied as a SendGrid segment or comms plan member.",
-        confidence: typeof out.confidence === "number" ? out.confidence : null,
+        rationale: [h.whySuggested, h.evidenceText ? `Evidence: ${h.evidenceText.slice(0, 600)}` : ""]
+          .filter(Boolean)
+          .join("\n\n"),
+        confidence: h.confidence,
         status: "PENDING",
-        metadataJson: { provenance: provenanceJson, notAppliedNotMerge: true },
+        metadataJson: {
+          provenance: provenanceJson,
+          notAppliedNotMerge: true,
+          audienceIntelligenceV2: hiMeta,
+        },
       },
     });
     hidx += 1;

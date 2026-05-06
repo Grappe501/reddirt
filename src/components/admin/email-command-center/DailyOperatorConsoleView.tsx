@@ -94,6 +94,7 @@ function buildNextBestActions(snapshot: EmailCommandCenterSnapshot, draftStats: 
   const out: string[] = [];
   const og = snapshot.operatorGate;
   const q = snapshot.queueHealth;
+  const oa = snapshot.openAi;
   const pg = snapshot.profileGraph;
   const ci = snapshot.contactImport;
   const sgF = snapshot.sendGridFoundation;
@@ -109,6 +110,19 @@ function buildNextBestActions(snapshot: EmailCommandCenterSnapshot, draftStats: 
   }
   if (q.needsAttentionCount > 0) {
     out.push("Start with email queue triage — needs-attention items are waiting.");
+  }
+  if (
+    q.total > 0 &&
+    oa.emailAiSafeAnalysisAvailable &&
+    oa.emailTaskIntelligenceQueueItemsCount < oa.emailAiQueueItemsAnalyzedCount
+  ) {
+    out.push(
+      "AI Task Intelligence — some queue rows have email AI analysis but no stored task packet yet; open item detail → AI Task Intelligence → Generate (advisory JSON only; no auto tasks).",
+    );
+  } else if (q.total > 0 && oa.emailAiSafeAnalysisAvailable && oa.emailTaskIntelligenceQueueItemsCount === 0) {
+    out.push(
+      "AI Task Intelligence — consider generating structured task recommendations on priority queue items (item detail panel; no calendar writes, no sends).",
+    );
   }
   if (pg.pendingProfileFactSuggestions > 0) {
     out.push("Review profile intelligence — pending fact suggestions need disposition.");
@@ -587,6 +601,13 @@ export function DailyOperatorConsoleView({ snapshot }: Props) {
             degraded={!dbOk}
           />
           <PriorityCard
+            title="Queue items with AI task intelligence"
+            value={oa.emailTaskIntelligenceQueueItemsCount}
+            href={EMAIL_QUEUE_PATH}
+            sub="metadataJson.emailTaskIntelligence — open item → generate"
+            degraded={!dbOk}
+          />
+          <PriorityCard
             title="Local drafts — needs editorial pass"
             value={localNeedsReview}
             href={`${MESSAGE_STUDIO_PATH}#editorial-review-desk`}
@@ -671,7 +692,9 @@ export function DailyOperatorConsoleView({ snapshot }: Props) {
               <Link href={EMAIL_QUEUE_PATH} className="font-bold text-kelly-forest underline">
                 Email Queue
               </Link>{" "}
-              — open items needing analysis; run AI from item detail when configured.
+              — open items needing analysis; run AI Email Intelligence and{" "}
+              <strong className="font-semibold">AI Task Intelligence</strong> from item detail when configured (no auto
+              tasks, no calendar API).
             </li>
             <li>
               <Link href={pg.profilesReviewPath} className="font-bold text-kelly-forest underline">

@@ -744,7 +744,13 @@ export function MessageStudioDraftPlanner({
         ) : null}
       </div>
 
-      {activeDraft ? <MessageStudioEditorialReviewPanel activeDraft={activeDraft} patchActive={patchActive} /> : null}
+      {activeDraft ? (
+        <MessageStudioEditorialReviewPanel
+          activeDraft={activeDraft}
+          patchActive={patchActive}
+          openaiServerConfigured={openaiServerConfigured}
+        />
+      ) : null}
 
       {activeDraft ? (
         <MessageStudioSendPacketPanel activeDraft={activeDraft} patchActive={patchActive} copyText={copyText} />

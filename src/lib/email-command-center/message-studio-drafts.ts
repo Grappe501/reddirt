@@ -88,6 +88,25 @@ export async function getMessageStudioDraft(id: string): Promise<MessageStudioDr
   return prisma.messageStudioDraft.findUnique({ where: { id } });
 }
 
+/** Merge sanitized keys into `metadataJson` (no body/subject mutation). */
+export async function mergeMessageStudioDraftMetadataJson(
+  id: string,
+  patch: Record<string, unknown>,
+  updatedByUserId?: string | null,
+): Promise<MessageStudioDraft> {
+  const row = await prisma.messageStudioDraft.findUnique({ where: { id } });
+  if (!row) throw new Error("Draft not found.");
+  const meta = parseJsonObject(row.metadataJson, {});
+  const merged = sanitizeJsonForPersistence({ ...meta, ...patch }) as Prisma.InputJsonValue;
+  return prisma.messageStudioDraft.update({
+    where: { id },
+    data: {
+      metadataJson: merged,
+      ...(updatedByUserId ? { updatedBy: { connect: { id: updatedByUserId } } } : {}),
+    },
+  });
+}
+
 export type MessageStudioDraftCreateInput = {
   title: string;
   draftType?: string;
@@ -140,6 +159,14 @@ export function buildServerDraftFromLocalDraftPayload(
     lastAiAdvisoryJson: payload.lastAiAdvisoryJson,
     lastSendPacketGeneratedAt: payload.lastSendPacketGeneratedAt,
     promotedFromLocalDraftId: payload.id,
+    ...(payload.lastDraftCritiqueJson?.trim()
+      ? {
+          lastDraftCritiqueJson:
+            payload.lastDraftCritiqueJson.length > 100_000
+              ? payload.lastDraftCritiqueJson.slice(0, 100_000)
+              : payload.lastDraftCritiqueJson,
+        }
+      : {}),
   }) as Prisma.JsonValue;
 
   return {
@@ -412,6 +439,12 @@ export function serverDraftRowToLocalDraft(row: MessageStudioDraft): MessageStud
     approvalOwner: typeof meta.approvalOwner === "string" ? meta.approvalOwner : "",
     lastAiAdvisoryJson: typeof meta.lastAiAdvisoryJson === "string" ? meta.lastAiAdvisoryJson : "",
     lastSendPacketGeneratedAt: typeof meta.lastSendPacketGeneratedAt === "string" ? meta.lastSendPacketGeneratedAt : "",
+    lastDraftCritiqueJson:
+      typeof meta.lastDraftCritiqueJson === "string"
+        ? meta.lastDraftCritiqueJson
+        : meta.lastDraftCritique && typeof meta.lastDraftCritique === "object"
+          ? JSON.stringify(meta.lastDraftCritique)
+          : "",
     lastSendPacketJson,
   };
 }

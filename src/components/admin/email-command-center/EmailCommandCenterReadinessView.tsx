@@ -1,7 +1,9 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { EmailCommandCenterSnapshot } from "@/lib/email-command-center/read-model";
+import type { CampaignMemoryReadinessSnapshot } from "@/lib/email-command-center/ai-campaign-memory-readiness";
 import { HostedDbReadinessAssistantView } from "@/components/admin/email-command-center/HostedDbReadinessAssistantView";
+import { MessageStudioCampaignMemoryPanel } from "@/components/admin/email-command-center/MessageStudioCampaignMemoryPanel";
 
 const ECC = "/admin/workbench/email-command-center";
 
@@ -57,7 +59,13 @@ function ChecklistSection({
   );
 }
 
-export function EmailCommandCenterReadinessView({ snapshot }: { snapshot: EmailCommandCenterSnapshot }) {
+export function EmailCommandCenterReadinessView({
+  snapshot,
+  campaignMemoryReadiness,
+}: {
+  snapshot: EmailCommandCenterSnapshot;
+  campaignMemoryReadiness: CampaignMemoryReadinessSnapshot;
+}) {
   const og = snapshot.operatorGate;
   const g = snapshot.gmail;
   const gp = snapshot.gmailProductionWatch;
@@ -186,6 +194,18 @@ export function EmailCommandCenterReadinessView({ snapshot }: { snapshot: EmailC
 
       <HostedDbReadinessAssistantView gate={og} variant="embedded" />
 
+      <div className="space-y-2">
+        <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-indigo-950/80">
+          AI knowledge / campaign memory readiness
+        </h2>
+        <p className="max-w-3xl font-body text-[10px] text-indigo-950/85">
+          EMAIL-AI-CAMPAIGN-MEMORY-READINESS-1.0 — same data as Message Studio&apos;s panel: live{" "}
+          <span className="font-semibold">SearchChunk</span> counts, embedding coverage, and explicit separation from Message
+          Studio drafting paths. Does not run ingest.
+        </p>
+        <MessageStudioCampaignMemoryPanel snapshot={campaignMemoryReadiness} showFullOperatorPasteList={false} />
+      </div>
+
       <ChecklistSection
         title="Gmail readiness"
         rows={[
@@ -302,8 +322,9 @@ export function EmailCommandCenterReadinessView({ snapshot }: { snapshot: EmailC
             status: openai,
             verify: (
               <>
-                OPENAI_API_KEY present: {oa.openaiApiKeyPresent ? "yes" : "no"} · rows with analysis:{" "}
-                {oa.emailAiQueueItemsAnalyzedCount}
+                OPENAI_API_KEY present: {oa.openaiApiKeyPresent ? "yes" : "no"} · rows with queue AI analysis:{" "}
+                {oa.emailAiQueueItemsAnalyzedCount} · rows with task intelligence:{" "}
+                {oa.emailTaskIntelligenceQueueItemsCount}
               </>
             ),
             owner: "Infra sets server key; operators use queue item detail panel",

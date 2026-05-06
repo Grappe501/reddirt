@@ -18,6 +18,7 @@ import {
   inferFutureSendRail,
   type EditorialReadinessTier,
 } from "@/lib/email-command-center/message-studio-editorial-review-model";
+import { safeParseCampaignVoiceAdvisoryJson } from "@/lib/email-command-center/message-studio-advisory-json";
 
 export const SEND_PACKET_SUPPRESSION_KEYS = [
   "audience_source_reviewed",
@@ -53,6 +54,16 @@ export type MessageStudioSendPacketPreSendChecklist = {
   sendGovernanceRequired: true;
 };
 
+/** Subset of Message Studio AI advisory JSON for operator review packets (no secrets). */
+export type MessageStudioSendPacketAiDigest = {
+  advisoryPosture: string;
+  uncertaintyNotes: string[];
+  sourceBackedBullets: string[];
+  suggestedLanguageOnly: string[];
+  operatorReviewTasks: string[];
+  unsupportedClaimsTagged: string;
+};
+
 export type MessageStudioSendPacket = {
   packetId: string;
   generatedAt: string;
@@ -81,6 +92,8 @@ export type MessageStudioSendPacket = {
   complianceNotes: string;
   riskLevel: MessageStudioLocalDraft["campaignVoice"]["riskLevel"];
   futureSendRail: string;
+  /** Parsed from `lastAiAdvisoryJson` when present — advisory only */
+  messageStudioAiDigest: MessageStudioSendPacketAiDigest | null;
   suppressionChecklist: Record<SendPacketSuppressionKey, boolean>;
   approvalChecklist: Record<SendPacketApprovalKey, boolean>;
   preSendChecklist: MessageStudioSendPacketPreSendChecklist;
@@ -138,6 +151,27 @@ export type BuildSendPacketOptions = {
   operatorNotes?: string;
 };
 
+function buildAiDigestFromDraft(d: MessageStudioLocalDraft): MessageStudioSendPacketAiDigest | null {
+  const adv = safeParseCampaignVoiceAdvisoryJson(d.lastAiAdvisoryJson);
+  if (!adv) return null;
+  const hasAny =
+    adv.advisoryPosture.trim() ||
+    adv.uncertaintyNotes.length ||
+    adv.sourceBackedBullets.length ||
+    adv.suggestedLanguageOnly.length ||
+    adv.operatorReviewTasks.length ||
+    adv.unsupportedClaimsTagged.trim();
+  if (!hasAny) return null;
+  return {
+    advisoryPosture: adv.advisoryPosture.trim(),
+    uncertaintyNotes: adv.uncertaintyNotes,
+    sourceBackedBullets: adv.sourceBackedBullets,
+    suggestedLanguageOnly: adv.suggestedLanguageOnly,
+    operatorReviewTasks: adv.operatorReviewTasks,
+    unsupportedClaimsTagged: adv.unsupportedClaimsTagged.trim(),
+  };
+}
+
 export function buildMessageStudioSendPacket(
   d: MessageStudioLocalDraft,
   options: BuildSendPacketOptions = {},
@@ -175,6 +209,7 @@ export function buildMessageStudioSendPacket(
     complianceNotes: d.complianceNotes,
     riskLevel: d.campaignVoice.riskLevel,
     futureSendRail: inferFutureSendRail(`${d.draftType}\n${d.title}`.trim() || "message"),
+    messageStudioAiDigest: buildAiDigestFromDraft(d),
     suppressionChecklist,
     approvalChecklist,
     preSendChecklist: derivePreSendChecklist(d),
@@ -211,6 +246,24 @@ export function buildSendPacketSummaryText(p: MessageStudioSendPacket): string {
     "Blockers (advisory):",
     ...(p.editorialBlockers.length ? p.editorialBlockers.map((b) => `  - ${b}`) : ["  (none listed)"]),
     "",
+    ...(p.messageStudioAiDigest
+      ? [
+          "Message Studio AI digest (advisory — verify before any future send):",
+          p.messageStudioAiDigest.advisoryPosture
+            ? `  Posture: ${p.messageStudioAiDigest.advisoryPosture}`
+            : "  Posture: —",
+          ...(p.messageStudioAiDigest.uncertaintyNotes.length
+            ? p.messageStudioAiDigest.uncertaintyNotes.map((u) => `  Uncertainty: ${u}`)
+            : []),
+          ...(p.messageStudioAiDigest.operatorReviewTasks.length
+            ? p.messageStudioAiDigest.operatorReviewTasks.map((t) => `  Task: ${t}`)
+            : []),
+          ...(p.messageStudioAiDigest.unsupportedClaimsTagged
+            ? [`  Unsupported / verify: ${p.messageStudioAiDigest.unsupportedClaimsTagged}`]
+            : []),
+          "",
+        ]
+      : []),
     "Operator notes:",
     p.operatorNotes.trim() || "  —",
     "",

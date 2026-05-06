@@ -4,7 +4,7 @@
 **Lane:** `RedDirt/` only · **Division:** Comms / Email Workflow Intelligence  
 **Purpose:** Lock **operator-complete, execution-gated** posture: route health, **safe-now vs blocked**, **no-send** doctrine, first-run + staging discipline, heuristic scan. **Not** a security audit.
 
-**Companion:** **[`email-command-center-operator-manual.md`](./email-command-center-operator-manual.md)** (staff daily manual) · **[`email-command-center-morning-upgrade-closeout.md`](./email-command-center-morning-upgrade-closeout.md)** (morning verify log after stacked upgrades) · [`email-command-center-first-run-operator-checklist.md`](./email-command-center-first-run-operator-checklist.md) · [`email-command-center-selective-staging-guide.md`](./email-command-center-selective-staging-guide.md) · [`email-command-center-route-inventory.md`](./email-command-center-route-inventory.md) · [`email-command-center-production-qa-closeout.md`](./email-command-center-production-qa-closeout.md)
+**Companion:** **[`email-command-center-operator-manual.md`](./email-command-center-operator-manual.md)** (staff daily manual) · **[`email-command-center-morning-upgrade-closeout.md`](./email-command-center-morning-upgrade-closeout.md)** (morning verify log after stacked upgrades) · [`email-ai-intelligence-upgrade-closeout.md`](./email-ai-intelligence-upgrade-closeout.md) (AI stack closeout — can/cannot, approvals, **`npm run email:ai:eval`**) · [`email-command-center-first-run-operator-checklist.md`](./email-command-center-first-run-operator-checklist.md) · [`email-command-center-selective-staging-guide.md`](./email-command-center-selective-staging-guide.md) · [`email-command-center-route-inventory.md`](./email-command-center-route-inventory.md) · [`email-command-center-production-qa-closeout.md`](./email-command-center-production-qa-closeout.md)
 
 ---
 
@@ -107,7 +107,10 @@ npm run email:db:diagnose
 npm run typecheck
 npm run check
 npm run email:no-send-scan
+npm run email:ai:eval
 ```
+
+`npm run email:ai:eval` defaults to **static-only** synthetic fixtures (**no** OpenAI, **no** sends) — see [`email-ai-intelligence-upgrade-closeout.md`](./email-ai-intelligence-upgrade-closeout.md).
 
 Optional (operator machine, **not** required for doc-only hardening): `npm run email:db:diagnose`, `npm run email:contact-import:gate` — per runbook; **do not** run `migrate deploy` as part of this packet unless steered for env repair.
 
@@ -156,4 +159,4 @@ Known **integration** seams (outside ECC UI) may still **warn** — typically **
 
 ---
 
-*Last updated: **EMAIL-COMMAND-CENTER-MORNING-QA-CLOSEOUT-1.0** — **[`email-command-center-morning-upgrade-closeout.md`](./email-command-center-morning-upgrade-closeout.md)** (diagnose + typecheck + check + no-send-scan); staff manual + launch hardening cross-links; **hosted** Kelly-Grappe-App gate still **operator-owned**.*
+*Last updated: **EMAIL-AI-INTELLIGENCE-UPGRADE-CLOSEOUT-1.0** — **[`email-ai-intelligence-upgrade-closeout.md`](./email-ai-intelligence-upgrade-closeout.md)** (AI stack summary + commands incl. **`email:ai:eval`**); prior **EMAIL-COMMAND-CENTER-MORNING-QA-CLOSEOUT-1.0** verify log unchanged; **hosted** Kelly-Grappe-App gate still **operator-owned**.*

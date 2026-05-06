@@ -21,6 +21,7 @@ import {
   type EmailAiRiskFlag,
   type EmailAiSuggestedAction,
 } from "@/lib/email-workflow/ai/types";
+import { buildAiSystemPromptForRole, getEmailAiOutputContract } from "@/lib/email-command-center/ai-brain-registry";
 
 const MAX_FIELD = 3800;
 
@@ -122,6 +123,23 @@ function normalizeAnalysisFromJson(raw: unknown, model: string, inputSummary: st
   const sourceLimitations: string[] = Array.isArray(o.sourceLimitations)
     ? o.sourceLimitations.map((x) => asStr(x)).filter(Boolean).map((x) => truncateSafe(x, 400))
     : [];
+  const uncertaintyNotes: string[] = Array.isArray(o.uncertaintyNotes)
+    ? o.uncertaintyNotes.map((x) => asStr(x)).filter(Boolean).map((x) => truncateSafe(x, 400))
+    : [];
+  const confidenceRationale = truncateSafe(asStr(o.confidenceRationale || o.confidence_rationale), 500);
+  const sourceBackedObservations: string[] = Array.isArray(o.sourceBackedObservations)
+    ? o.sourceBackedObservations.map((x) => asStr(x)).filter(Boolean).map((x) => truncateSafe(x, 400))
+    : [];
+  const suggestedLanguageNotes: string[] = Array.isArray(o.suggestedLanguageNotes)
+    ? o.suggestedLanguageNotes.map((x) => asStr(x)).filter(Boolean).map((x) => truncateSafe(x, 400))
+    : [];
+  const operatorReviewTasks: string[] = Array.isArray(o.operatorReviewTasks)
+    ? o.operatorReviewTasks.map((x) => asStr(x)).filter(Boolean).map((x) => truncateSafe(x, 400))
+    : [];
+  const reviewIntelligenceSummary = truncateSafe(
+    asStr(o.reviewIntelligenceSummary || o.review_intelligence_summary),
+    1200,
+  );
 
   return {
     ...base,
@@ -153,6 +171,12 @@ function normalizeAnalysisFromJson(raw: unknown, model: string, inputSummary: st
     complianceWarnings,
     missingContext,
     sourceLimitations,
+    uncertaintyNotes,
+    confidenceRationale,
+    sourceBackedObservations,
+    suggestedLanguageNotes,
+    operatorReviewTasks,
+    reviewIntelligenceSummary,
     bodyWasAvailable: o.bodyWasAvailable === true,
     shouldSendAutomatically: false,
     canSendFromQueue: false,
@@ -170,6 +194,7 @@ function normalizeAnalysisFromJson(raw: unknown, model: string, inputSummary: st
 function buildStructuredJsonPromptExample(): string {
   const shape = {
     confidence: 0.6,
+    confidenceRationale: "(string — why this confidence; label unknowns)",
     intent: "(string classification)",
     urgency: "low | normal | elevated | urgent",
     sentiment: "(string)",
@@ -185,12 +210,30 @@ function buildStructuredJsonPromptExample(): string {
     complianceWarnings: ["string"],
     missingContext: ["string"],
     sourceLimitations: ["string"],
+    uncertaintyNotes: ["string — explicit model uncertainty"],
+    sourceBackedObservations: ["string — restates queue fields only, no new external facts"],
+    suggestedLanguageNotes: ["string — tone/strategy without new factual claims"],
+    operatorReviewTasks: ["string — imperative staff checklist, no send verbs"],
+    reviewIntelligenceSummary: "(one short paragraph for editorial handoff — advisory)",
     suggestedActions: [{ label: "string", detail: "(optional)" }],
     bodyWasAvailable: false,
     shouldSendAutomatically: false,
     canSendFromQueue: false,
   };
   return JSON.stringify(shape);
+}
+
+/** Honest retrieval posture merged into every successful run (no fake RAG). */
+function buildDeterministicEmailAiSourceLines(params: { hasGmailMetadataBridge: boolean }): string[] {
+  const lines = [
+    "Retrieval posture: this action does not query SearchChunk embeddings, the public web, or Gmail message bodies — only EmailWorkflowItem text fields and optional metadataJson.gmailReviewSource provenance JSON.",
+  ];
+  if (params.hasGmailMetadataBridge) {
+    lines.push(
+      "Gmail metadata bridge: treat replyDraft and inferences as body-ungrounded unless staff supplied full text elsewhere.",
+    );
+  }
+  return lines;
 }
 
 export type EmailWorkflowAiAnalysisOutcome =
@@ -319,9 +362,21 @@ export async function runEmailWorkflowAiAnalysis(
   ].join("\n");
 
   const system = [
-    "You are a cautious campaign email triage assistant for RedDirt staff.",
+    buildAiSystemPromptForRole("dataIntelligenceAnalyst", {
+      modeDescription:
+        "EmailWorkflowItem queue triage for RedDirt staff — structured JSON output persisted to metadataJson.emailAiAnalysis only.",
+    }),
+    "",
+    getEmailAiOutputContract("emailQueueAnalysis"),
+    "",
+    "Queue JSON discipline:",
     "Output a single JSON object only (no markdown fences).",
-    "Do not fabricate facts about individuals, voters, or opponents. If facts are unknown, list them in missingContext.",
+    "Do not fabricate facts about individuals, voters, or opponents. If facts are unknown, list them in missingContext and uncertaintyNotes.",
+    "You do not have document retrieval, SearchChunk RAG, or Gmail bodies — never imply you read full message text unless bodyWasAvailable is explicitly true in inputs (it is not here).",
+    "Separate: sourceBackedObservations (short lines that only restate or tightly paraphrase provided queue summaries) vs suggestedLanguageNotes (tone/strategy that does not assert new facts).",
+    "operatorReviewTasks: 3–6 imperative checklist lines for staff (verify, escalate, paste missing context) — never instruct to send, schedule, or activate automation.",
+    "reviewIntelligenceSummary: one concise paragraph for editorial/comms handoff — advisory, label gaps.",
+    "confidenceRationale: one or two sentences explaining confidence score and what would raise certainty.",
     "Never claim you can send email. shouldSendAutomatically and canSendFromQueue must be false.",
     "bodyWasAvailable must be false unless the user message explicitly states full body text was provided (it is not here).",
     "profileFactSuggestions are advisory only; audienceHints are not applied as segments.",
@@ -403,6 +458,8 @@ export async function runEmailWorkflowAiAnalysis(
   const normalized = normalizeAnalysisFromJson(parsed, model, inputSummaryForModel);
   normalized.shouldSendAutomatically = false;
   normalized.canSendFromQueue = false;
+  const deterministic = buildDeterministicEmailAiSourceLines({ hasGmailMetadataBridge: Boolean(gmailReview) });
+  normalized.sourceLimitations = Array.from(new Set([...deterministic, ...normalized.sourceLimitations]));
   if (!normalized.bodyWasAvailable && gmailReview?.bodyStored === false) {
     normalized.sourceLimitations = Array.from(
       new Set([

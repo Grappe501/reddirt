@@ -18,7 +18,7 @@
 1. Open **`/admin/workbench/email-command-center/message-studio`** from the Command Center, queue detail, Audience Studio, or imports — optional query params: **`?source=emailWorkflowItem&id=…`**, **`?audienceDefinitionId=…`**, **`?importBatchId=…`** (chips only; **no** auto-fetch of bodies or private rows).  
 2. **Draft workspace** saves to **browser `localStorage`** (`reddirt:email-command-center:message-studio-drafts:v1`) for scratch — clearing site data **deletes** those. **`#shared-drafts`** promotes the active local draft to **Postgres** (`MessageStudioDraft`) for all operators (**no** send). Use **New / Duplicate / Delete**, **autosave**, **Copy** / **Export .json / .txt** as needed.  
 3. **Content blocks** — **Insert into body** or **Copy block**; track **`contentBlocksUsed`** on the draft.  
-4. Run **AI Email Intelligence** on **`/admin/workbench/email-queue/[id]`** when triaging; paste or summarize vetted context into Message Studio. Optional **Campaign Voice AI** uses **admin server actions** (not the browser SDK) when **`OPENAI_API_KEY`** is configured.  
+4. Run **AI Email Intelligence** and optional **AI Task Intelligence** on **`/admin/workbench/email-queue/[id]`** when triaging (`metadataJson.emailAiAnalysis` / `metadataJson.emailTaskIntelligence` — advisory JSON only; no auto tasks, no calendar API); paste or summarize vetted context into Message Studio. Optional **Campaign Voice AI** uses **admin server actions** (not the browser SDK) when **`OPENAI_API_KEY`** is configured.  
 5. **Campaign Voice (EMAIL-MESSAGE-STUDIO-CAMPAIGN-VOICE-1.2)** — right column on wide screens: select **tone / issue / audience / CTA frames**, **risk + approval tier**, **source-layer toggles** for what you have actually reviewed (mission docs, queue context, audience, imports, suppression). **Source material readiness** lists repo paths; semantic RAG over `SearchChunk` requires **`npm run ingest`** per `src/lib/openai/README.md` — do not assume indexed content until ingest has run.  
 6. **Draft Quality Review** — self-checklist + advisory readiness label; not legal signoff.  
 7. **AI Draft Assistant** — when server **`OPENAI_API_KEY`** is set, **Generate** / **Revision** tools call admin server actions; output is **advisory** — use **Use first suggestions + body** only after human review. If the key is missing, drafting stays fully manual.  
@@ -135,7 +135,7 @@ From an approved queue item, route work to the separately approved comms/send pa
 6. Read the full message in **Gmail** (or a future governed body-ingest path) before any substantive reply. **Outbound** stays on approved comms/send rails — **not** from the queue item’s “approval” state alone.
 7. If the UI redirects to an existing item (`gmail_review_duplicate`), treat it as a duplicate **`gmailMessageId`** for this bridge — do not expect a second row.
 
-## 9) AI Email Intelligence (EMAIL-AI-INTELLIGENCE-1.0)
+## 9) AI Email Intelligence (EMAIL-AI-INTELLIGENCE-1.0) + Task Intelligence (EMAIL-AI-TASK-INTELLIGENCE-1.0)
 
 1. Open a queue item: **`/admin/workbench/email-queue/[id]`**.
 2. Read **Readiness** on the **AI Email Intelligence** panel — if **not configured**, set **`OPENAI_API_KEY`** (server env; name only in docs/UI) before expecting model output.
@@ -146,7 +146,7 @@ From an approved queue item, route work to the separately approved comms/send pa
 
 ## 10) Contact / Profile Intelligence (EMAIL-CONTACT-PROFILE-GRAPH-1.0)
 
-1. After **AI Email Intelligence** has produced `metadataJson.emailAiAnalysis`, open **Contact / Profile Intelligence** on the same queue item.
+1. After **AI Email Intelligence** has produced `metadataJson.emailAiAnalysis`, you may run **AI Task Intelligence** to get structured task recommendations (`metadataJson.emailTaskIntelligence`) — copy/export JSON; create real tasks and calendar blocks manually. Then open **Contact / Profile Intelligence** on the same queue item when relevant.
 2. Click **Generate suggestions from AI analysis** to create **PENDING** rows (`EmailContactProfileFactSuggestion`, `EmailAudienceHint`) — skipped if no AI output yet.
 3. **Approve** writes a governed **`EmailContactProfileFact`** (ACTIVE) with provenance — **not** an automatic `User`/`VolunteerProfile` field update in this packet.
 4. **Audience hints**: approve/reject for **audit only** — they do **not** create SendGrid lists or `CommsPlanAudienceSegment` members.

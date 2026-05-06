@@ -143,13 +143,13 @@ This document inventories **admin workbench** routes that belong to the **Email 
 | Field | Detail |
 |--------|--------|
 | **Status** | **Live** / **Partial** (OpenAI panel **partial** without key) |
-| **Purpose** | Item detail — triage, **advisory AI** (**`runEmailWorkflowAiAnalysisAction`**), Contact/Profile Intelligence (stored AI only). |
-| **Can do today** | Triage fields; run AI when configured; inspect profile suggestions context. |
+| **Purpose** | Item detail — triage, **advisory AI** (**`runEmailWorkflowAiAnalysisAction`**), **AI Task Intelligence** (**`generateTaskRecommendationsForQueueItemAction`** → **`metadataJson.emailTaskIntelligence`**), Contact/Profile Intelligence (stored AI only). |
+| **Can do today** | Triage fields; run queue AI + task recommendations when configured; copy/export task JSON; inspect profile suggestions context. |
 | **Cannot do** | Auto-approve queue; auto-write **`User`/`VolunteerProfile`**; send. |
 | **Upstream** | **`/admin/workbench/email-queue`**. |
 | **Downstream** | **`…/profiles`**, **`…/audiences`**, **`…/message-studio`** (handoff query params per UI). |
 | **Smoke expectation** | Detail loads; AI panel shows gated message if no key. |
-| **Governance** | AI output stored in **`metadataJson.emailAiAnalysis`** — advisory only. |
+| **Governance** | AI output stored in **`metadataJson.emailAiAnalysis`** and optional **`metadataJson.emailTaskIntelligence`** — advisory only; **no** auto `CampaignTask`, **no** calendar API. |
 
 ---
 

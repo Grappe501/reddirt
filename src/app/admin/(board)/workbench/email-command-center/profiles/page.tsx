@@ -4,8 +4,8 @@ import {
   listPendingAudienceHints,
   listPendingProfileFactSuggestions,
 } from "@/lib/email-command-center/profile-graph";
-import { ProfileFactSuggestionsList } from "@/components/admin/email-workflow/EmailWorkflowProfileGraphControls";
 import { ProfileReviewAudienceHints } from "@/components/admin/email-workflow/ProfileReviewAudienceHints";
+import { ProfileReviewFactSuggestionsPanel } from "@/components/admin/email-workflow/ProfileReviewFactSuggestionsPanel";
 import { EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM } from "@/lib/email-workflow/governance";
 
 export const dynamic = "force-dynamic";
@@ -44,9 +44,10 @@ export default async function EmailCommandCenterProfilesPage() {
       </div>
       <h1 className="font-heading text-lg font-bold text-kelly-navy">Email — Profile &amp; hint review</h1>
       <p className="font-body text-xs text-kelly-text/80">
-        EMAIL-CONTACT-PROFILE-GRAPH-1.0 — staged intelligence from email queue and advisory AI. Approve profile
-        suggestions to record <code className="text-[10px]">EmailContactProfileFact</code> rows with provenance.
-        Audience hints remain governance notes until future audience packets; they do not create SendGrid lists.
+        EMAIL-CONTACT-PROFILE-GRAPH-1.0 + <strong>EMAIL-AI-PROFILE-INTELLIGENCE-2.0</strong> — staged intelligence from email queue and
+        advisory AI with evidence-labeled metadata. Approve profile suggestions to record{" "}
+        <code className="text-[10px]">EmailContactProfileFact</code> rows with provenance. Audience hints remain governance notes until
+        future audience packets; they do not create SendGrid lists.
       </p>
 
       <section className="rounded-lg border border-kelly-text/12 bg-rose-50/50 px-3 py-2">
@@ -70,30 +71,25 @@ export default async function EmailCommandCenterProfilesPage() {
       <section className="rounded-lg border border-kelly-text/10 bg-white/90 p-3">
         <h2 className="font-heading text-sm font-bold text-kelly-text">Pending profile fact suggestions</h2>
         {pendingSugs.length ? (
-          <ul className="mt-2 space-y-3">
-            {pendingSugs.map((s) => (
-              <li key={s.id} className="rounded border border-kelly-text/10 bg-kelly-page/40 p-2 text-[11px]">
-                <p className="font-semibold text-kelly-navy">{s.factValue}</p>
-                <p className="text-[10px] text-kelly-text/60">
-                  Item:{" "}
-                  <Link className="underline" href={`/admin/workbench/email-queue/${s.emailWorkflowItemId}`}>
-                    {s.emailWorkflowItem.title ?? s.emailWorkflowItem.whatSummary ?? s.emailWorkflowItemId}
-                  </Link>
-                  {" · "}
-                  {s.emailWorkflowItem.status}
-                </p>
-                {s.profile ? (
-                  <p className="text-[10px] text-kelly-text/55">
-                    Profile: {s.profile.displayName ?? "—"} · {s.profile.primaryEmail ?? "no email hint"}
-                  </p>
-                ) : null}
-                <ProfileFactSuggestionsList
-                  itemId={s.emailWorkflowItemId}
-                  suggestions={[{ id: s.id, factValue: s.factValue, status: s.status }]}
-                />
-              </li>
-            ))}
-          </ul>
+          <div className="mt-2">
+            <ProfileReviewFactSuggestionsPanel
+              suggestions={pendingSugs.map((s) => ({
+                id: s.id,
+                emailWorkflowItemId: s.emailWorkflowItemId,
+                factValue: s.factValue,
+                factKey: s.factKey,
+                suggestionType: s.suggestionType,
+                status: s.status,
+                confidence: s.confidence,
+                rationale: s.rationale,
+                metadataJson: s.metadataJson,
+                emailWorkflowItem: s.emailWorkflowItem,
+                profile: s.profile
+                  ? { displayName: s.profile.displayName, primaryEmail: s.profile.primaryEmail }
+                  : null,
+              }))}
+            />
+          </div>
         ) : (
           <div className="mt-1 rounded border border-kelly-text/12 bg-kelly-fog/40 px-2 py-2 font-body text-[11px] text-kelly-navy" role="status">
             <p className="font-semibold">No pending profile fact suggestions</p>
@@ -117,7 +113,19 @@ export default async function EmailCommandCenterProfilesPage() {
 
       <section className="rounded-lg border border-kelly-text/10 bg-white/90 p-3">
         <h2 className="font-heading text-sm font-bold text-kelly-text">Pending audience hints</h2>
-        <ProfileReviewAudienceHints hints={pendingHints} />
+        <ProfileReviewAudienceHints
+          hints={pendingHints.map((h) => ({
+            id: h.id,
+            label: h.label,
+            status: h.status,
+            hintType: h.hintType,
+            confidence: h.confidence,
+            rationale: h.rationale,
+            metadataJson: h.metadataJson,
+            emailWorkflowItemId: h.emailWorkflowItemId,
+            emailWorkflowItem: h.emailWorkflowItem,
+          }))}
+        />
       </section>
 
       <section className="rounded-lg border border-kelly-text/10 bg-white/90 p-3">

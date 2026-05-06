@@ -4,7 +4,8 @@
  */
 
 export const EMAIL_AI_ANALYSIS_SCHEMA_VERSION = 1 as const;
-export const EMAIL_AI_PROMPT_VERSION = "email-ai-analysis-v1";
+/** Bumped when prompt / expected JSON shape gains material intelligence fields (stored output stays schema v1). */
+export const EMAIL_AI_PROMPT_VERSION = "email-ai-analysis-v2";
 
 export type EmailAiRiskFlag = {
   /** Stable machine-ish code */
@@ -64,6 +65,18 @@ export type EmailAiAnalysisV1 = {
   complianceWarnings: string[];
   missingContext: string[];
   sourceLimitations: string[];
+  /** Explicit uncertainty — operators must verify */
+  uncertaintyNotes: string[];
+  /** Why confidence was chosen (advisory) */
+  confidenceRationale: string;
+  /** Observations that restate queue summaries only — not new external facts */
+  sourceBackedObservations: string[];
+  /** Wording that is tone/strategy without asserting new facts */
+  suggestedLanguageNotes: string[];
+  /** Short imperative checklist for staff (no send / no automation) */
+  operatorReviewTasks: string[];
+  /** One paragraph bridging to editorial / compliance review */
+  reviewIntelligenceSummary: string;
   /**
    * True only when a future pipeline explicitly provides body text from a non-Gmail source.
    * Gmail metadata bridge always keeps this false through this packet.
@@ -114,6 +127,12 @@ export function emptyEmailAiAnalysisV1(model: string, inputSummary: string): Ema
     complianceWarnings: [],
     missingContext: [],
     sourceLimitations: [],
+    uncertaintyNotes: [],
+    confidenceRationale: "",
+    sourceBackedObservations: [],
+    suggestedLanguageNotes: [],
+    operatorReviewTasks: [],
+    reviewIntelligenceSummary: "",
     bodyWasAvailable: false,
     shouldSendAutomatically: false,
     canSendFromQueue: false,

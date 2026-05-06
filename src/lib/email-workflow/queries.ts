@@ -169,3 +169,18 @@ export async function countEmailWorkflowItemsWithEmailAiAnalysis(): Promise<numb
     return 0;
   }
 }
+
+/** Count of queue rows with persisted `metadataJson.emailTaskIntelligence` (EMAIL-AI-TASK-INTELLIGENCE-1.0). */
+export async function countEmailWorkflowItemsWithEmailTaskIntelligence(): Promise<number> {
+  try {
+    const rows = await prisma.$queryRaw<[{ c: bigint }]>`
+      SELECT COUNT(*)::bigint AS c
+      FROM "EmailWorkflowItem"
+      WHERE ("metadataJson"->'emailTaskIntelligence') IS NOT NULL
+    `;
+    const n = rows[0]?.c ?? BigInt(0);
+    return Number(n);
+  } catch {
+    return 0;
+  }
+}

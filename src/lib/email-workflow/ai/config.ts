@@ -3,6 +3,7 @@
  */
 
 import { isOpenAIConfigured, getOpenAIConfigFromEnv } from "@/lib/openai/client";
+import { AI_BRAIN_REGISTRY_VERSION } from "@/lib/email-command-center/ai-brain-registry";
 import {
   EMAIL_AI_PROMPT_VERSION,
 } from "@/lib/email-workflow/ai/types";
@@ -32,6 +33,7 @@ export function getEmailAiPolicySummary(): readonly string[] {
     "Output is advisory: no auto-send, no auto-queue approval, no profile merges, no audience segment creation.",
     "Operators must verify facts; do not cite unsourced factual or opponent-specific claims.",
     `Prompt contract: ${EMAIL_AI_PROMPT_VERSION}.`,
+    `Shared doctrine registry: ${AI_BRAIN_REGISTRY_VERSION} (see src/lib/email-command-center/ai-brain-registry.ts).`,
     "Requires OPENAI_API_KEY — show not configured when missing.",
   ] as const;
 }

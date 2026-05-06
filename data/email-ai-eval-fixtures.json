@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "description": "EMAIL-AI-QUALITY-EVALUATION-HARNESS-1.0 — synthetic fixtures only. No real contacts, emails, or PII.",
+  "fixtures": [
+    {
+      "id": "volunteer-follow-up-001",
+      "scenarioType": "volunteer_follow_up",
+      "title": "Shift thank-you (synthetic)",
+      "sampleAiOutput": "Hi Jamie — thanks for covering the Saturday table at the Riverdale library outreach. We still need two more shifts before the March forum. If you can take another 2-hour block, reply with times that work. Training notes are on the internal wiki (example.com/wiki placeholder — replace with approved link before send).",
+      "contextNotes": "Fictional volunteer; fictional town."
+    },
+    {
+      "id": "donor-thank-you-001",
+      "scenarioType": "donor_thank_you",
+      "title": "Stewardship note (synthetic)",
+      "sampleAiOutput": "Thank you for supporting Riverdale Civic Action. Your contribution helps us print voter guides and train volunteers. We do not promise matching funds or tax outcomes — finance staff can answer detailed questions. No reply needed unless you want to volunteer.",
+      "contextNotes": "Generic stewardship; avoids invented matching."
+    },
+    {
+      "id": "event-invitation-001",
+      "scenarioType": "event_invitation",
+      "title": "Community forum invite (synthetic)",
+      "sampleAiOutput": "You are invited to a community forum on Saturday, April 12 at 2pm at the Northfork Community Center (address on file with host). RSVP by replying YES with headcount. Accessibility: contact the host for accommodations — we will post the approved phone line in the final version.",
+      "contextNotes": "RSVP CTA present; hedges final details."
+    },
+    {
+      "id": "press-response-001",
+      "scenarioType": "press_response",
+      "title": "Media inquiry reply (synthetic)",
+      "sampleAiOutput": "Thanks for reaching out. We route press questions to the communications desk. We cannot confirm statistics without an approved source sheet — please attribute only to statements we provide verbatim. Counsel reviews contrast lines before release.",
+      "contextNotes": "Press discipline; no invented stats."
+    },
+    {
+      "id": "issue-update-001",
+      "scenarioType": "issue_update",
+      "title": "Policy explainer snippet (synthetic)",
+      "sampleAiOutput": "Many voters ask how early voting works in our state. The official rules live on the Secretary of State public site — we summarize below without adding new numbers. If you need turnout percentages, ask comms for the approved fact pack (needs source).",
+      "contextNotes": "Explicit source discipline language."
+    },
+    {
+      "id": "queue-triage-summary-001",
+      "scenarioType": "queue_triage_summary",
+      "title": "Inbox item summary (synthetic)",
+      "sampleAiOutput": "Summary: correspondent asks about absentee ballot deadlines. Tone neutral. Suggested next step: reply with link to official lookup and offer phone help during office hours. Escalate if they mention legal threats.",
+      "contextNotes": "No body text from a real mailbox."
+    },
+    {
+      "id": "profile-fact-suggestion-001",
+      "scenarioType": "profile_fact_suggestion",
+      "title": "Staged profile hint (synthetic)",
+      "sampleAiOutput": "Suggested fact to stage: volunteer interest tag 'community_events' based on form checkbox only — do not infer employer or income. Confidence low; requires human approval before use in segmentation.",
+      "contextNotes": "No voter IDs; conservative staging."
+    },
+    {
+      "id": "audience-strategy-001",
+      "scenarioType": "audience_strategy",
+      "title": "Audience framing (synthetic)",
+      "sampleAiOutput": "Audience: first-time municipal voters in suburban counties. Message frame: service and accessibility of polling places. Avoid dense jargon. Pair with approved county facts only — paste from the audience definition when ready.",
+      "contextNotes": "Strategy without protected-class inference."
+    },
+    {
+      "id": "draft-critique-001",
+      "scenarioType": "draft_critique",
+      "title": "Red-team style note (synthetic)",
+      "sampleAiOutput": "Critique: subject line promises a 40% polling lead — remove or add approved citation. CTA is buried after four paragraphs; move one clear ask up. Compliance: add finance review if fundraising verbs appear.",
+      "contextNotes": "Flags unsupported stat pattern."
+    },
+    {
+      "id": "task-recommendation-001",
+      "scenarioType": "task_recommendation",
+      "title": "Operator task suggestion (synthetic)",
+      "sampleAiOutput": "Recommend: create a follow-up task to verify the event venue contract before the invite sends. Priority medium. Do not auto-create calendar holds — operator confirms.",
+      "contextNotes": "Advisory task; no automation claim."
+    }
+  ]
+}

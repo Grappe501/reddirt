@@ -5,6 +5,7 @@ import { useCallback, useMemo, useState } from "react";
 import {
   AUDIENCE_FRAMES,
   CTA_FRAMES,
+  buildCampaignVoicePromptExcerpt,
   CAMPAIGN_VOICE_PRINCIPLES,
   COMPLIANCE_GUARDRAILS,
   ISSUE_FRAMES,
@@ -17,12 +18,18 @@ import {
   partitionCampaignVoiceSourceReadiness,
   type MessageStudioCampaignVoiceSettings,
 } from "@/lib/email-command-center/campaign-voice";
+import {
+  buildEvidenceLedger,
+  buildUnsupportedClaimWarnings,
+  formatEvidenceLedgerForUi,
+} from "@/lib/email-command-center/ai-source-grounding";
 import type { MessageStudioLocalDraft } from "@/components/admin/email-command-center/message-studio-local-drafts";
 import {
   generateCampaignVoiceDraftAction,
   reviseCampaignVoiceDraftAction,
 } from "@/app/admin/workbench/email-command-center/message-studio-ai-actions";
-import type { CampaignVoiceDraftAiResult, MessageStudioRevisionMode } from "@/lib/email-command-center/message-draft-ai";
+import type { MessageStudioRevisionMode } from "@/lib/email-command-center/message-draft-ai";
+import { safeParseCampaignVoiceAdvisoryJson } from "@/lib/email-command-center/message-studio-advisory-json";
 
 const QUALITY_KEYS = [
   "clear_audience",
@@ -60,13 +67,8 @@ function buildNextCampaignVoice(
   return { campaignVoice: nextCv, tone: toneLabel };
 }
 
-function parseAdvisory(json: string): CampaignVoiceDraftAiResult | null {
-  if (!json.trim()) return null;
-  try {
-    return JSON.parse(json) as CampaignVoiceDraftAiResult;
-  } catch {
-    return null;
-  }
+function parseAdvisory(json: string) {
+  return safeParseCampaignVoiceAdvisoryJson(json);
 }
 
 function readinessLabel(d: MessageStudioLocalDraft): "needs_work" | "review_ready" | "ready_for_future_send_gate" {
@@ -91,6 +93,39 @@ export function MessageStudioCampaignPanels({
   const [subjectGoal, setSubjectGoal] = useState("");
 
   const advisory = useMemo(() => parseAdvisory(activeDraft.lastAiAdvisoryJson), [activeDraft.lastAiAdvisoryJson]);
+  const evidenceLedgerUi = useMemo(() => {
+    if (!advisory) return null;
+    const voiceExcerpt = buildCampaignVoicePromptExcerpt(activeDraft.campaignVoice);
+    const ledger =
+      advisory.evidenceLedger ??
+      buildEvidenceLedger({
+        audienceNote: activeDraft.audienceNote,
+        complianceNotes: activeDraft.complianceNotes,
+        subjectGoal: activeDraft.subject || subjectGoal || "",
+        primaryCta: activeDraft.primaryCta,
+        sourceHints: sourceHintsLine,
+        existingBody: activeDraft.body,
+        templateSummary: templateSummaryForAi?.trim(),
+        voiceExcerpt,
+        model: advisory,
+      });
+    const formatted = formatEvidenceLedgerForUi(ledger);
+    const unsupportedWarnings = buildUnsupportedClaimWarnings(ledger);
+    const unsupportedCount = Math.max(advisory.unsupportedClaims.length, ledger.unsupportedClaims.length);
+    const ledgerThin = ledger.notices.some((n) => /thin context/i.test(n));
+    return { formatted, unsupportedWarnings, unsupportedCount, ledgerThin, ledger };
+  }, [
+    advisory,
+    activeDraft.audienceNote,
+    activeDraft.body,
+    activeDraft.campaignVoice,
+    activeDraft.complianceNotes,
+    activeDraft.primaryCta,
+    activeDraft.subject,
+    sourceHintsLine,
+    subjectGoal,
+    templateSummaryForAi,
+  ]);
   const tier = readinessLabel(activeDraft);
   const sourceBuckets = useMemo(() => partitionCampaignVoiceSourceReadiness(), []);
   const contextHealth = useMemo(
@@ -160,6 +195,10 @@ export function MessageStudioCampaignPanels({
         audienceNote: activeDraft.audienceNote,
         complianceNotes: activeDraft.complianceNotes,
         campaignVoice: activeDraft.campaignVoice,
+        subjectGoal: subjectGoal || activeDraft.subject || "",
+        primaryCta: activeDraft.primaryCta,
+        sourceHints: sourceHintsLine,
+        ...(templateSummaryForAi?.trim() ? { templateSummary: templateSummaryForAi.trim() } : {}),
       });
       if (!res.ok) {
         setAiError(res.error);
@@ -539,15 +578,25 @@ export function MessageStudioCampaignPanels({
         </div>
         {aiError ? <p className="mt-1 text-[10px] font-semibold text-rose-800">{aiError}</p> : null}
 
-        {aiAvailable && contextHealth.thinContext ? (
+        {aiAvailable && (contextHealth.thinContext || (advisory && evidenceLedgerUi?.ledgerThin)) ? (
           <div className="mt-2 rounded border border-amber-300/90 bg-amber-50 p-2 text-[10px] text-amber-950">
             <p className="font-bold uppercase tracking-wide text-[9px]">Thin context warning</p>
-            <p className="mt-1 text-[9px]">{contextHealth.summary} — specifics in AI output may be under-grounded.</p>
-            <ul className="mt-1 list-inside list-disc text-[9px] text-amber-950/95">
-              {contextHealth.reasons.map((r, i) => (
-                <li key={`ctx-${i}`}>{r}</li>
-              ))}
-            </ul>
+            {contextHealth.thinContext ? (
+              <>
+                <p className="mt-1 text-[9px]">{contextHealth.summary} — specifics in AI output may be under-grounded.</p>
+                <ul className="mt-1 list-inside list-disc text-[9px] text-amber-950/95">
+                  {contextHealth.reasons.map((r, i) => (
+                    <li key={`ctx-${i}`}>{r}</li>
+                  ))}
+                </ul>
+              </>
+            ) : null}
+            {advisory && evidenceLedgerUi?.ledgerThin ? (
+              <p className="mt-1 text-[9px] font-semibold text-amber-950">
+                Evidence ledger flagged a short operator corpus — paste approved notes or body context, then regenerate for
+                better grounding.
+              </p>
+            ) : null}
           </div>
         ) : null}
 
@@ -572,6 +621,42 @@ export function MessageStudioCampaignPanels({
         {advisory ? (
           <div className="mt-2 space-y-2 rounded border border-indigo-200/40 bg-white/90 p-2 text-[10px]">
             <p className="font-bold text-indigo-950">Last AI output (stored locally on this draft)</p>
+            {evidenceLedgerUi && evidenceLedgerUi.unsupportedCount > 0 ? (
+              <div className="rounded border border-rose-300/90 bg-rose-50 p-2 text-[9px] text-rose-950">
+                <p className="font-bold uppercase tracking-wide text-[9px]">Unsupported claims require review</p>
+                <p className="mt-1">
+                  {evidenceLedgerUi.unsupportedCount} candidate line(s) flagged as unsupported or high-risk in the model
+                  output or evidence ledger — disposition in Editorial Review before treating copy as factual.
+                </p>
+                <ul className="mt-1 list-inside list-disc text-[9px]">
+                  {evidenceLedgerUi.unsupportedWarnings.slice(0, 6).map((w, i) => (
+                    <li key={`uw-${i}`}>{w}</li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+            {evidenceLedgerUi ? (
+              <div className="rounded border border-slate-300/80 bg-slate-50/95 p-2 text-[9px] text-slate-900">
+                <p className="font-bold uppercase tracking-wide text-[9px] text-slate-700">
+                  Evidence ledger / source grounding (advisory)
+                </p>
+                <p className="mt-1 font-semibold text-slate-800">{evidenceLedgerUi.formatted.headline}</p>
+                <p className="mt-0.5 text-[8px] text-slate-600">
+                  EMAIL-AI-SOURCE-GROUNDING-LEDGER-1.0 — separates operator corpus, model buckets, and heuristic
+                  classification. No external fact-checking; no invented sources.
+                </p>
+                {evidenceLedgerUi.formatted.blocks.map((block) => (
+                  <div key={block.title} className="mt-2 border-t border-slate-200/80 pt-1.5 first:border-t-0 first:pt-0">
+                    <p className="font-semibold text-[9px] text-slate-800">{block.title}</p>
+                    <ul className="mt-0.5 list-inside list-disc text-[8px] text-slate-800/95">
+                      {block.items.slice(0, 14).map((line, i) => (
+                        <li key={`${block.title}-${i}`}>{line}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            ) : null}
             {advisory.sourceLimitations.length ? (
               <div className="rounded border border-amber-200/90 bg-amber-50/90 p-2">
                 <p className="font-semibold text-amber-950">Source limitations (repo posture + model)</p>
@@ -601,6 +686,110 @@ export function MessageStudioCampaignPanels({
               <p className="text-[9px] text-kelly-text/80">
                 <span className="font-semibold">Unsupported / verify:</span> {advisory.unsupportedClaimsTagged}
               </p>
+            ) : null}
+            {advisory.advisoryPosture?.trim() ? (
+              <p className="rounded border border-slate-200/90 bg-slate-50/90 p-2 text-[9px] text-slate-900">
+                <span className="font-semibold">Advisory posture:</span> {advisory.advisoryPosture}
+              </p>
+            ) : null}
+            {advisory.uncertaintyNotes.length ? (
+              <div className="rounded border border-violet-200/80 bg-violet-50/90 p-2">
+                <p className="text-[9px] font-bold uppercase text-violet-950">Model uncertainty (verify before send)</p>
+                <ul className="mt-1 list-inside list-disc text-[9px] text-violet-950/95">
+                  {advisory.uncertaintyNotes.map((x, i) => (
+                    <li key={`un-${i}`}>{x}</li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+            {advisory.sourceBackedClaims.length ? (
+              <div>
+                <p className="text-[9px] font-semibold text-emerald-950">Source-backed claims (structured)</p>
+                <ul className="mt-0.5 list-inside list-disc text-[9px] text-emerald-950/95">
+                  {advisory.sourceBackedClaims.map((row, i) => (
+                    <li key={`sbc-${i}`}>
+                      {row.text}
+                      {row.grounding ? <span className="text-[8px] text-emerald-900/80"> — {row.grounding}</span> : null}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+            {advisory.operatorProvidedContext.length ? (
+              <div>
+                <p className="text-[9px] font-semibold text-sky-950">Operator-provided context (model echo)</p>
+                <ul className="mt-0.5 list-inside list-disc text-[9px] text-sky-950/95">
+                  {advisory.operatorProvidedContext.map((x, i) => (
+                    <li key={`opc-${i}`}>{x}</li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+            {advisory.inferences.length ? (
+              <div>
+                <p className="text-[9px] font-semibold text-violet-950">Inferences (not verified facts)</p>
+                <ul className="mt-0.5 list-inside list-disc text-[9px] text-violet-950/95">
+                  {advisory.inferences.map((row, i) => (
+                    <li key={`inf-${i}`}>
+                      {row.text}
+                      {row.rationale ? <span className="text-[8px]"> — {row.rationale}</span> : null}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+            {advisory.unsupportedClaims.length ? (
+              <div className="rounded border border-rose-200/80 bg-rose-50/90 p-2">
+                <p className="text-[9px] font-bold uppercase text-rose-950">Unsupported claims (model)</p>
+                <ul className="mt-0.5 list-inside list-disc text-[9px] text-rose-950/95">
+                  {advisory.unsupportedClaims.map((row, i) => (
+                    <li key={`uc-${i}`}>
+                      {row.text}
+                      {row.reason ? <span className="text-[8px]"> — {row.reason}</span> : null}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+            {advisory.recommendedEdits.length ? (
+              <div>
+                <p className="text-[9px] font-semibold text-kelly-navy">Recommended edits</p>
+                <ol className="mt-0.5 list-inside list-decimal text-[9px] text-kelly-text/90">
+                  {advisory.recommendedEdits.map((x, i) => (
+                    <li key={`re-${i}`}>{x}</li>
+                  ))}
+                </ol>
+              </div>
+            ) : null}
+            {advisory.sourceBackedBullets.length ? (
+              <div>
+                <p className="text-[9px] font-semibold text-emerald-950">Source-backed bullets (legacy)</p>
+                <ul className="mt-0.5 list-inside list-disc text-[9px] text-emerald-950/95">
+                  {advisory.sourceBackedBullets.map((x, i) => (
+                    <li key={`sb-${i}`}>{x}</li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+            {advisory.suggestedLanguageOnly.length ? (
+              <div>
+                <p className="text-[9px] font-semibold text-kelly-text/80">Suggested language only (not new facts)</p>
+                <ul className="mt-0.5 list-inside list-disc text-[9px] text-kelly-text/80">
+                  {advisory.suggestedLanguageOnly.map((x, i) => (
+                    <li key={`slang-${i}`}>{x}</li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+            {advisory.operatorReviewTasks.length ? (
+              <div className="rounded border border-kelly-text/15 bg-kelly-fog/40 p-2">
+                <p className="text-[9px] font-bold uppercase text-kelly-navy">Operator review tasks</p>
+                <ol className="mt-1 list-inside list-decimal text-[9px] text-kelly-text/90">
+                  {advisory.operatorReviewTasks.map((x, i) => (
+                    <li key={`task-${i}`}>{x}</li>
+                  ))}
+                </ol>
+              </div>
             ) : null}
             {advisory.subjectSuggestions.length ? (
               <div>

@@ -219,6 +219,7 @@
 | Send execution preflight always fails same check | Data / consent / suppression / ASM posture | Use Analytics **`#send-execution-preflight`** + execution detail rows; fix underlying rows. |
 | Contact sync FAILED | Payload / API / consent classification | Read **`safeError`** / result JSON on run; fix audience or rerun preview. |
 | `email:no-send-scan` WARN | Known integration baselines outside ECC | Read script output — new WARN **under** `email-command-center` paths needs engineering. |
+| `email:ai:eval` fails or looks stale | Fixtures changed without regen, or optional OpenAI mode mis-invoked | Default: **`npm run email:ai:eval`** (**static-only**). For adjudication, run script **without** `--static-only` only with **`OPENAI_API_KEY`** and owner approval — see [`email-ai-intelligence-upgrade-closeout.md`](./email-ai-intelligence-upgrade-closeout.md). |
 | “Hosted not verified” everywhere | Still on loopback or wrong Supabase project | [`email-hosted-db-readiness-assistant-1-0.md`](./email-hosted-db-readiness-assistant-1-0.md) + Supabase dashboard Reference ID check. |
 
 ---
@@ -235,4 +236,4 @@
 
 ---
 
-*Last updated: **EMAIL-COMMAND-CENTER-OPERATOR-MANUAL-1.0** — staff manual for daily Email Command Center operations; governance posture unchanged (**`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** false).*
+*Last updated: **EMAIL-AI-INTELLIGENCE-UPGRADE-CLOSEOUT-1.0** — cross-link **[`email-ai-intelligence-upgrade-closeout.md`](./email-ai-intelligence-upgrade-closeout.md)** (AI can/cannot + **`npm run email:ai:eval`**); staff manual base **EMAIL-COMMAND-CENTER-OPERATOR-MANUAL-1.0**; **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** still **false**.*

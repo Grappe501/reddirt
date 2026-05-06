@@ -137,6 +137,11 @@ export async function EmailWorkflowAiIntelligencePanel({
                   {Number.isFinite(out.confidence) ? `${Math.round(out.confidence * 100)}%` : "—"}
                 </p>
               </div>
+              {(out.confidenceRationale ?? "").trim() ? (
+                <p className="rounded border border-slate-200/80 bg-slate-50/80 px-2 py-1 text-[10px] text-kelly-text/85">
+                  <span className="font-semibold text-kelly-text">Confidence rationale:</span> {out.confidenceRationale}
+                </p>
+              ) : null}
               <p>
                 <span className="font-semibold text-kelly-text">Campaign impact:</span> {out.campaignImpact || "—"}
               </p>
@@ -155,10 +160,79 @@ export async function EmailWorkflowAiIntelligencePanel({
               <div>
                 <p className="font-semibold text-kelly-text">Reply draft (advisory — not sent)</p>
                 <p className="text-[10px] text-kelly-text/60">Tone: {out.replyDraftTone || "—"}</p>
+                <p className="mt-1 text-[9px] text-amber-950/90">
+                  Treat as <strong>suggested language</strong> unless a line clearly restates queue summaries — compare
+                  with <strong>source-backed observations</strong> below.
+                </p>
                 <pre className="mt-1 max-h-40 overflow-auto whitespace-pre-wrap rounded border border-kelly-text/10 bg-white p-2 text-[10px]">
                   {out.replyDraft?.trim() ? out.replyDraft : "—"}
                 </pre>
               </div>
+
+              {(out.uncertaintyNotes ?? []).length ? (
+                <div className="rounded border border-violet-200/70 bg-violet-50/80 p-2">
+                  <p className="font-semibold text-violet-950">Uncertainty (model-labeled)</p>
+                  <ul className="mt-0.5 list-inside list-disc text-[10px] text-violet-950/95">
+                    {(out.uncertaintyNotes ?? []).map((u) => (
+                      <li key={u}>{u}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
+              {(out.sourceBackedObservations ?? []).length ? (
+                <div>
+                  <p className="font-semibold text-emerald-950">Source-backed observations (queue text only)</p>
+                  <ul className="mt-0.5 list-inside list-disc text-[10px] text-emerald-950/95">
+                    {(out.sourceBackedObservations ?? []).map((s) => (
+                      <li key={s}>{s}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
+              {(out.suggestedLanguageNotes ?? []).length ? (
+                <div>
+                  <p className="font-semibold text-kelly-text/75">Suggested language notes (not new facts)</p>
+                  <ul className="mt-0.5 list-inside list-disc text-[10px] text-kelly-text/80">
+                    {(out.suggestedLanguageNotes ?? []).map((s) => (
+                      <li key={s}>{s}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
+              {(out.operatorReviewTasks ?? []).length ? (
+                <div className="rounded border border-kelly-text/12 bg-kelly-fog/50 p-2">
+                  <p className="font-semibold text-kelly-navy">Operator review tasks</p>
+                  <ol className="mt-0.5 list-inside list-decimal text-[10px] text-kelly-text/90">
+                    {(out.operatorReviewTasks ?? []).map((t) => (
+                      <li key={t}>{t}</li>
+                    ))}
+                  </ol>
+                </div>
+              ) : null}
+
+              {out.suggestedActions?.length ? (
+                <div>
+                  <p className="font-semibold text-kelly-text">Suggested actions (advisory)</p>
+                  <ul className="mt-0.5 list-inside list-disc text-[10px] text-kelly-text/85">
+                    {out.suggestedActions.map((a) => (
+                      <li key={`${a.label}-${a.detail ?? ""}`}>
+                        <span className="font-semibold">{a.label}</span>
+                        {a.detail ? ` — ${a.detail}` : ""}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
+              {(out.reviewIntelligenceSummary ?? "").trim() ? (
+                <div className="rounded border border-indigo-200/70 bg-indigo-50/70 p-2">
+                  <p className="font-semibold text-indigo-950">Review intelligence (editorial handoff)</p>
+                  <p className="mt-1 text-[10px] text-indigo-950/95">{out.reviewIntelligenceSummary}</p>
+                </div>
+              ) : null}
 
               {out.riskFlags.length ? (
                 <div>

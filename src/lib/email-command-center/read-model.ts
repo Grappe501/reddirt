@@ -1,7 +1,11 @@
 import { prisma } from "@/lib/db";
 import { getSendGridContactSyncReadiness } from "@/lib/email-command-center/sendgrid-contact-sync";
 import { getAdminActorUserId } from "@/lib/admin/actor";
-import { getEmailWorkflowQueueSummary, countEmailWorkflowItemsWithEmailAiAnalysis } from "@/lib/email-workflow/queries";
+import {
+  getEmailWorkflowQueueSummary,
+  countEmailWorkflowItemsWithEmailAiAnalysis,
+  countEmailWorkflowItemsWithEmailTaskIntelligence,
+} from "@/lib/email-workflow/queries";
 import { emailAudienceStudioSnapshotCounts } from "@/lib/email-command-center/audience-studio";
 import { emailProfileGraphSnapshotCounts } from "@/lib/email-command-center/profile-graph";
 import {
@@ -75,6 +79,8 @@ export type OpenAiReadiness = {
   emailAiSafeAnalysisAvailable: boolean;
   /** Rows where `metadataJson.emailAiAnalysis` exists (count only). */
   emailAiQueueItemsAnalyzedCount: number;
+  /** Rows where `metadataJson.emailTaskIntelligence` exists (EMAIL-AI-TASK-INTELLIGENCE-1.0). */
+  emailTaskIntelligenceQueueItemsCount: number;
 };
 
 export type GmailReadinessSnapshot = {
@@ -417,6 +423,7 @@ function buildDegradedEmailCommandCenterSnapshot(): EmailCommandCenterSnapshot {
       emailAiModelName: getEmailAiReadiness().modelName,
       emailAiSafeAnalysisAvailable: getEmailAiReadiness().safeAnalysisAvailable,
       emailAiQueueItemsAnalyzedCount: 0,
+      emailTaskIntelligenceQueueItemsCount: 0,
     },
     profileGraph: {
       pendingProfileFactSuggestions: 0,
@@ -820,6 +827,7 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
     staffGmailAccountsActive,
     actorStaffGmail,
     emailAiQueueItemsAnalyzedCount,
+    emailTaskIntelligenceQueueItemsCount,
     profileGraphCounts,
     audienceStudioCounts,
     sendGridEventCount,
@@ -842,6 +850,7 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
         })
       : Promise.resolve(null),
     countEmailWorkflowItemsWithEmailAiAnalysis(),
+    countEmailWorkflowItemsWithEmailTaskIntelligence(),
     emailProfileGraphSnapshotCounts(),
     emailAudienceStudioSnapshotCounts(),
     prisma.sendGridEvent.count().catch(() => -1),
@@ -1055,6 +1064,7 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
       emailAiModelName: emailAi.modelName,
       emailAiSafeAnalysisAvailable: emailAi.safeAnalysisAvailable,
       emailAiQueueItemsAnalyzedCount,
+      emailTaskIntelligenceQueueItemsCount,
     },
     profileGraph: {
       pendingProfileFactSuggestions: profileGraphCounts.pendingProfileSuggestions,

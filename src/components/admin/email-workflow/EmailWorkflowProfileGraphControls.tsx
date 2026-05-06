@@ -3,6 +3,10 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import {
+  parseAudienceIntelligenceV2FromHintMetadata,
+  parseProfileIntelligenceV2FromSuggestionMetadata,
+} from "@/lib/email-command-center/ai-profile-intelligence";
+import {
   approveEmailAudienceHintAction,
   approveEmailProfileFactSuggestionAction,
   generateProfileSuggestionsFromEmailAiAction,
@@ -51,26 +55,65 @@ export function GenerateProfileSuggestionsFromAiButton({
   );
 }
 
+export type ProfileFactSuggestionListItem = {
+  id: string;
+  factValue: string;
+  status: string;
+  factKey?: string | null;
+  suggestionType?: string | null;
+  confidence?: number | null;
+  rationale?: string | null;
+  metadataJson?: unknown;
+};
+
 function SuggestionRow({
   itemId,
   suggestionId,
   factValue,
   status,
-}: {
-  itemId: string;
-  suggestionId: string;
-  factValue: string;
-  status: string;
-}) {
+  factKey,
+  suggestionType,
+  confidence,
+  rationale,
+  metadataJson,
+}: ProfileFactSuggestionListItem & { itemId: string; suggestionId: string }) {
   const [err, setErr] = useState<string | null>(null);
   const [pending, trans] = useTransition();
   const router = useRouter();
   const isPending = status === "PENDING";
+  const pi2 = parseProfileIntelligenceV2FromSuggestionMetadata(metadataJson);
 
   return (
     <li className="rounded border border-kelly-text/10 bg-white px-2 py-1 text-[11px] text-kelly-text/85">
       <p>{factValue}</p>
-      <p className="text-[9px] text-kelly-text/50">{status}</p>
+      <div className="mt-0.5 flex flex-wrap gap-1 text-[9px] text-kelly-text/55">
+        <span>{status}</span>
+        {suggestionType ? <span>· {suggestionType}</span> : null}
+        {factKey ? <span>· {factKey}</span> : null}
+        {confidence != null ? <span>· conf {confidence.toFixed(2)}</span> : null}
+      </div>
+      {pi2 ? (
+        <div className="mt-1 space-y-1 rounded border border-kelly-text/8 bg-kelly-page/40 px-1.5 py-1 text-[10px] text-kelly-text/80">
+          <p>
+            <span className="font-semibold text-kelly-text/70">Why suggested:</span> {pi2.whySuggested}
+          </p>
+          <p className="font-mono text-[9px] text-kelly-text/70">
+            <span className="font-sans font-semibold">Evidence:</span> {pi2.evidenceText.slice(0, 600)}
+            {pi2.evidenceText.length > 600 ? "…" : ""}
+          </p>
+          <p className="text-[9px]">
+            risk {pi2.riskLevel} · source {pi2.sourceType} · type {pi2.factType}
+            {pi2.needsHumanReview ? " · needs review" : ""}
+          </p>
+          {pi2.shouldNotStoreReason ? (
+            <p className="rounded bg-rose-50/90 px-1 py-0.5 text-rose-950">
+              <strong>Do not store:</strong> {pi2.shouldNotStoreReason}
+            </p>
+          ) : null}
+        </div>
+      ) : rationale ? (
+        <p className="mt-1 whitespace-pre-wrap text-[9px] text-kelly-text/60">{rationale.slice(0, 800)}</p>
+      ) : null}
       {isPending ? (
         <div className="mt-1 flex flex-wrap gap-1">
           <button
@@ -116,26 +159,62 @@ function SuggestionRow({
   );
 }
 
+export type ProfileAudienceHintListItem = {
+  id: string;
+  label: string;
+  status: string;
+  hintType?: string | null;
+  confidence?: number | null;
+  rationale?: string | null;
+  metadataJson?: unknown;
+};
+
 function HintRow({
   itemId,
   hintId,
   label,
   status,
-}: {
-  itemId: string;
-  hintId: string;
-  label: string;
-  status: string;
-}) {
+  hintType,
+  confidence,
+  rationale,
+  metadataJson,
+}: ProfileAudienceHintListItem & { itemId: string; hintId: string }) {
   const [err, setErr] = useState<string | null>(null);
   const [pending, trans] = useTransition();
   const router = useRouter();
   const isPending = status === "PENDING";
+  const hi2 = parseAudienceIntelligenceV2FromHintMetadata(metadataJson);
 
   return (
     <li className="rounded border border-kelly-text/10 bg-white px-2 py-1 text-[11px] text-kelly-text/85">
       <p>{label}</p>
-      <p className="text-[9px] text-kelly-text/50">{status}</p>
+      <div className="mt-0.5 flex flex-wrap gap-1 text-[9px] text-kelly-text/55">
+        <span>{status}</span>
+        {hintType ? <span>· {hintType}</span> : null}
+        {confidence != null ? <span>· conf {confidence.toFixed(2)}</span> : null}
+      </div>
+      {hi2 ? (
+        <div className="mt-1 space-y-1 rounded border border-kelly-text/8 bg-kelly-page/40 px-1.5 py-1 text-[10px] text-kelly-text/80">
+          <p>
+            <span className="font-semibold text-kelly-text/70">Why suggested:</span> {hi2.whySuggested}
+          </p>
+          <p className="font-mono text-[9px] text-kelly-text/70">
+            <span className="font-sans font-semibold">Evidence:</span> {hi2.evidenceText.slice(0, 600)}
+            {hi2.evidenceText.length > 600 ? "…" : ""}
+          </p>
+          <p className="text-[9px]">
+            risk {hi2.riskLevel} · source {hi2.sourceType}
+            {hi2.needsHumanReview ? " · needs review" : ""}
+          </p>
+          {hi2.shouldNotStoreReason ? (
+            <p className="rounded bg-rose-50/90 px-1 py-0.5 text-rose-950">
+              <strong>Do not store:</strong> {hi2.shouldNotStoreReason}
+            </p>
+          ) : null}
+        </div>
+      ) : rationale ? (
+        <p className="mt-1 whitespace-pre-wrap text-[9px] text-kelly-text/60">{rationale.slice(0, 800)}</p>
+      ) : null}
       {isPending ? (
         <div className="mt-1 flex flex-wrap gap-1">
           <button
@@ -183,7 +262,7 @@ function HintRow({
 
 export function ProfileFactSuggestionsList(props: {
   itemId: string;
-  suggestions: Array<{ id: string; factValue: string; status: string }>;
+  suggestions: ProfileFactSuggestionListItem[];
 }) {
   if (!props.suggestions.length) {
     return <p className="text-[11px] text-kelly-text/55">No suggestions yet for this queue item.</p>;
@@ -195,8 +274,14 @@ export function ProfileFactSuggestionsList(props: {
           key={s.id}
           itemId={props.itemId}
           suggestionId={s.id}
+          id={s.id}
           factValue={s.factValue}
           status={s.status}
+          factKey={s.factKey}
+          suggestionType={s.suggestionType}
+          confidence={s.confidence}
+          rationale={s.rationale}
+          metadataJson={s.metadataJson}
         />
       ))}
     </ul>
@@ -205,7 +290,7 @@ export function ProfileFactSuggestionsList(props: {
 
 export function ProfileAudienceHintsList(props: {
   itemId: string;
-  hints: Array<{ id: string; label: string; status: string }>;
+  hints: ProfileAudienceHintListItem[];
 }) {
   if (!props.hints.length) {
     return <p className="text-[11px] text-kelly-text/55">No audience hints staged.</p>;
@@ -213,7 +298,18 @@ export function ProfileAudienceHintsList(props: {
   return (
     <ul className="mt-1 space-y-1">
       {props.hints.map((h) => (
-        <HintRow key={h.id} itemId={props.itemId} hintId={h.id} label={h.label} status={h.status} />
+        <HintRow
+          key={h.id}
+          itemId={props.itemId}
+          hintId={h.id}
+          id={h.id}
+          label={h.label}
+          status={h.status}
+          hintType={h.hintType}
+          confidence={h.confidence}
+          rationale={h.rationale}
+          metadataJson={h.metadataJson}
+        />
       ))}
     </ul>
   );

@@ -9,6 +9,7 @@ import {
 } from "@/lib/email-command-center/audience-studio";
 import { listSendGridAudienceReadiness } from "@/lib/email-command-center/sendgrid-foundation";
 import { listLatestContactSyncRunStatusByAudienceIds } from "@/lib/email-command-center/sendgrid-contact-sync";
+import { AudienceAiStrategistPanel } from "@/components/admin/email-command-center/AudienceAiStrategistPanel";
 import { AudienceStudioPreviewForm } from "@/components/admin/email-command-center/AudienceStudioPreviewForm";
 import {
   archiveEmailAudienceDefinitionAction,
@@ -101,8 +102,9 @@ export default async function EmailAudienceStudioPage({
       <header>
         <h1 className="font-heading text-xl font-bold text-kelly-navy">Audience / Microtargeting Studio</h1>
         <p className="mt-1 max-w-3xl font-body text-sm text-kelly-text/85">
-          EMAIL-AUDIENCE-STUDIO-1.0 — preview and govern campaign email audiences from the{" "}
-          <strong>approved profile graph</strong> before SendGrid or mass send exist. This surface is planning-only.
+          EMAIL-AUDIENCE-STUDIO-1.0 + <strong>EMAIL-AI-AUDIENCE-STRATEGIST-1.0</strong> — preview and govern campaign email audiences from the{" "}
+          <strong>approved profile graph</strong> before SendGrid or mass send exist. The strategist recommends criteria and copy
+          frames only (deterministic); this surface is planning-only.
         </p>
         <p className="mt-2">
           <Link
@@ -131,6 +133,10 @@ export default async function EmailAudienceStudioPage({
             targeting substrate; pending AI suggestions are shown separately and are not broadcast-eligible.
           </li>
           <li>Audience hints are planning signals — not segments — until future governed packets say otherwise.</li>
+          <li>
+            <strong>AI Audience Strategist</strong> suggests criteria only — operators must preview counts and use{" "}
+            <strong>Create draft audience (explicit submit)</strong>; nothing auto-saves without that action.
+          </li>
         </ul>
       </section>
 
@@ -266,9 +272,11 @@ export default async function EmailAudienceStudioPage({
         ) : null}
       </section>
 
+      {listsOk ? <AudienceAiStrategistPanel buildingBlocks={blocks} clusters={clusters} /> : null}
+
       <AudienceStudioPreviewForm />
 
-      <section className="rounded-lg border border-kelly-text/10 bg-white/90 p-3">
+      <section id="audience-manual-draft" className="rounded-lg border border-kelly-text/10 bg-white/90 p-3">
         <h2 className="font-heading text-sm font-bold text-kelly-navy">Save draft audience definition</h2>
         <p className="mb-2 text-[10px] text-kelly-text/70">
           Persists <code className="text-[9px]">criteriaJson</code> for operators — still no SendGrid sync.
