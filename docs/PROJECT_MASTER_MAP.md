@@ -279,6 +279,7 @@ Packets are **the project’s memory**. Below: **what moved** system-wide, not j
 - **COMMS-UNIFY-1** — [`communications-unification-foundation.md`](./communications-unification-foundation.md), [`message-workbench-analysis.md`](./message-workbench-analysis.md): conceptual map of message surfaces.
 - **IDENTITY-1** — [`identity-and-voter-link-foundation.md`](./identity-and-voter-link-foundation.md), [`volunteer-data-gap-analysis.md`](./volunteer-data-gap-analysis.md).
 - **DBMAP-1** — [`database-table-inventory.md`](./database-table-inventory.md) (**115** models), `scripts/print-prisma-inventory.mjs`.
+- **REDDIRT-PRODUCTION-DB-BASELINE-AUDIT-1.0** — [`production-db-baseline-audit.md`](./production-db-baseline-audit.md), `scripts/audit-production-db-baseline.mjs`, [`data/production-db-baseline-audit.json`](../data/production-db-baseline-audit.json): read-only **`information_schema`** / **`pg_*`** / **`pg_class.reltuples`** snapshot **before** Prisma baseline / **`migrate resolve`** / **`db push`** on voter/campaign data; **no** DB writes.
 - **LAUNCH-1** — Launch **docs** + `launch.ts` **read-only** helpers (`countLaunchAudienceByKind`, `listLaunchReadySupporters`).
 - **GEO-1** — County/geo **mapping docs** only (**no** schema migration).
 - **GOALS-VERIFY-1** — County registration goal **source-of-truth** doc + `county-goals.ts` read helpers.

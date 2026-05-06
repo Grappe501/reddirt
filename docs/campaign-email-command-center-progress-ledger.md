@@ -11,6 +11,8 @@
 3. **Percentages move only** when **code, operators-visible runtime behavior, or honest documentation of shipped reality** changes — not from aspiration or roadmap text alone.
 4. **No secrets** in ledger updates: env **names** only; never token values, client secrets, or webhook strings.
 
+**Cross-cut — production DB baseline (migrate discipline):** **REDDIRT-PRODUCTION-DB-BASELINE-AUDIT-1.0** — [`production-db-baseline-audit.md`](./production-db-baseline-audit.md) + `node scripts/audit-production-db-baseline.mjs` (read-only metadata; **no** writes) before Prisma baseline / **`migrate resolve`** / **`db push`** when the hosted DB may lack **`_prisma_migrations`**.
+
 ---
 
 ## Milestone rubric (all layers)
