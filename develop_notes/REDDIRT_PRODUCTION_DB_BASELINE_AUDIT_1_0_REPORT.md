@@ -1,6 +1,6 @@
 # REDDIRT-PRODUCTION-DB-BASELINE-AUDIT-1.0 — required report
 
-**Lane:** `RedDirt/` only · **Generated:** 2026-05-06T21:54:29.683Z
+**Lane:** `RedDirt/` only · **Generated:** 2026-05-06T22:46:56.588Z
 
 ## Slice summary
 
@@ -29,15 +29,15 @@ _Per run, the script (re)materializes:_
 
 - **Reachable:** true
 - **`_prisma_migrations` exists:** false
-- **Observed tables (public+auth):** 24
+- **Observed tables (public+auth):** 138
 - **Prisma models:** 148
-- **Public tables not in Prisma:** 1
+- **Public tables not in Prisma:** 115
 - **Prisma public tables not observed:** 148
 - **Baseline risk (heuristic):** `high_non_empty_without_prisma_migration_history`
 
 ## High-value data protection status
 
-- **Name-pattern “high value” tables:** 1 (metadata only; see `docs/production-db-baseline-audit.md`).
+- **Name-pattern “high value” tables:** 33 (metadata only; see `docs/production-db-baseline-audit.md`).
 - **Voter / PII row export:** **not performed** by this slice.
 
 ## Scratch file protection

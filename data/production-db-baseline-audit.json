@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "slice": "REDDIRT-PRODUCTION-DB-BASELINE-AUDIT-1.0",
-  "generatedAt": "2026-05-06T21:54:29.683Z",
+  "generatedAt": "2026-05-06T22:46:56.588Z",
   "mode": "read_only_metadata_audit",
   "database": {
     "reachable": true,
@@ -36,7 +36,121 @@
       "auth.users",
       "auth.webauthn_challenges",
       "auth.webauthn_credentials",
-      "public.profiles"
+      "public.ar02_voter_dem_lean",
+      "public.ar02_voter_race",
+      "public.ar02_voters",
+      "public.ballot_initiatives",
+      "public.ballot_items",
+      "public.bls_county_economics",
+      "public.candidates",
+      "public.census_block_groups",
+      "public.census_demographics",
+      "public.census_tracts",
+      "public.civic_engagement_index",
+      "public.contact_origins",
+      "public.contact_voter_matches",
+      "public.contacts",
+      "public.contest_partisan_index",
+      "public.contests",
+      "public.counties",
+      "public.county_campaign_targets",
+      "public.county_results",
+      "public.county_turnout",
+      "public.donations",
+      "public.election_candidates",
+      "public.election_contests",
+      "public.election_results",
+      "public.elections",
+      "public.event_notifications",
+      "public.event_requests",
+      "public.events",
+      "public.external_intelligence_sources",
+      "public.external_records",
+      "public.followups",
+      "public.geographic_scores",
+      "public.geographic_units",
+      "public.geography_leaders",
+      "public.ingestion_entities",
+      "public.ingestion_extractions",
+      "public.ingestion_files",
+      "public.ingestion_jobs",
+      "public.ingestion_mapping_suggestions",
+      "public.ingestion_reviews",
+      "public.ingestion_write_events",
+      "public.initiative_signatures",
+      "public.intelligence_links",
+      "public.interactions",
+      "public.leadership_roles",
+      "public.locations",
+      "public.media_assets",
+      "public.media_entity_links",
+      "public.media_tags",
+      "public.message_audience_members",
+      "public.message_audiences",
+      "public.message_campaigns",
+      "public.message_events",
+      "public.message_queue",
+      "public.message_templates",
+      "public.organization_types",
+      "public.organizations",
+      "public.organizer_assignments",
+      "public.organizing_targets",
+      "public.organizing_unit_hierarchy",
+      "public.organizing_unit_memberships",
+      "public.organizing_unit_types",
+      "public.organizing_units",
+      "public.path_to_victory",
+      "public.people",
+      "public.person_geography",
+      "public.person_profiles",
+      "public.petition_signatures",
+      "public.petitions",
+      "public.precinct_scores",
+      "public.profiles",
+      "public.results",
+      "public.runoff_fracture_index",
+      "public.shifts",
+      "public.spatial_ref_sys",
+      "public.statewide_win_targets",
+      "public.submissions",
+      "public.target_universes",
+      "public.tasks",
+      "public.telemetry_events",
+      "public.training_certifications",
+      "public.training_courses",
+      "public.training_enrollments",
+      "public.training_events",
+      "public.training_modules",
+      "public.training_path_modules",
+      "public.training_paths",
+      "public.training_progress",
+      "public.training_records",
+      "public.turf_people",
+      "public.turfs",
+      "public.user_auth_methods",
+      "public.users",
+      "public.volunteer_intake_submissions",
+      "public.volunteer_profiles",
+      "public.volunteer_signups",
+      "public.volunteer_sources",
+      "public.volunteers",
+      "public.voter_block_group_map",
+      "public.voter_geocoded",
+      "public.voter_import_batches",
+      "public.voter_party_model",
+      "public.voter_profiles",
+      "public.voter_registry",
+      "public.voter_scores",
+      "public.voter_vote_history",
+      "public.voter_vote_history_raw",
+      "public.voters",
+      "public.workspace_feature_flags",
+      "public.workspace_geography_scope",
+      "public.workspace_members",
+      "public.workspace_roles",
+      "public.workspace_types",
+      "public.workspaces",
+      "public.youth_profiles"
     ],
     "enums": [
       "auth.aal_level",
@@ -133,7 +247,7 @@
       {
         "schema": "auth",
         "table": "schema_migrations",
-        "estimatedRows": 76
+        "estimatedRows": 74
       },
       {
         "schema": "auth",
@@ -167,7 +281,577 @@
       },
       {
         "schema": "public",
+        "table": "ar02_voter_dem_lean",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "ar02_voter_race",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "ar02_voters",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "ballot_initiatives",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "ballot_items",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "bls_county_economics",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "candidates",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "census_block_groups",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "census_demographics",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "census_tracts",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "civic_engagement_index",
+        "estimatedRows": 228550
+      },
+      {
+        "schema": "public",
+        "table": "contact_origins",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "contact_voter_matches",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "contacts",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "contest_partisan_index",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "contests",
+        "estimatedRows": 1963
+      },
+      {
+        "schema": "public",
+        "table": "counties",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "county_campaign_targets",
+        "estimatedRows": 75
+      },
+      {
+        "schema": "public",
+        "table": "county_results",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "county_turnout",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "donations",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "election_candidates",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "election_contests",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "election_results",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "elections",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "event_notifications",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "event_requests",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "events",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "external_intelligence_sources",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "external_records",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "followups",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "geographic_scores",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "geographic_units",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "geography_leaders",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "ingestion_entities",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "ingestion_extractions",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "ingestion_files",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "ingestion_jobs",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "ingestion_mapping_suggestions",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "ingestion_reviews",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "ingestion_write_events",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "initiative_signatures",
+        "estimatedRows": 303448
+      },
+      {
+        "schema": "public",
+        "table": "intelligence_links",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "interactions",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "leadership_roles",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "locations",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "media_assets",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "media_entity_links",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "media_tags",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "message_audience_members",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "message_audiences",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "message_campaigns",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "message_events",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "message_queue",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "message_templates",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "organization_types",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "organizations",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "organizer_assignments",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "organizing_targets",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "organizing_unit_hierarchy",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "organizing_unit_memberships",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "organizing_unit_types",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "organizing_units",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "path_to_victory",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "people",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "person_geography",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "person_profiles",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "petition_signatures",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "petitions",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "precinct_scores",
+        "estimatedRows": 4130
+      },
+      {
+        "schema": "public",
         "table": "profiles",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "results",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "runoff_fracture_index",
+        "estimatedRows": 75
+      },
+      {
+        "schema": "public",
+        "table": "shifts",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "spatial_ref_sys",
+        "estimatedRows": 8500
+      },
+      {
+        "schema": "public",
+        "table": "statewide_win_targets",
+        "estimatedRows": 150000
+      },
+      {
+        "schema": "public",
+        "table": "submissions",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "target_universes",
+        "estimatedRows": 1805038
+      },
+      {
+        "schema": "public",
+        "table": "tasks",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "telemetry_events",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "training_certifications",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "training_courses",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "training_enrollments",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "training_events",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "training_modules",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "training_path_modules",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "training_paths",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "training_progress",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "training_records",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "turf_people",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "turfs",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "user_auth_methods",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "users",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "volunteer_intake_submissions",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "volunteer_profiles",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "volunteer_signups",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "volunteer_sources",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "volunteers",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "voter_block_group_map",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "voter_geocoded",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "voter_import_batches",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "voter_party_model",
+        "estimatedRows": 228550
+      },
+      {
+        "schema": "public",
+        "table": "voter_profiles",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "voter_registry",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "voter_scores",
+        "estimatedRows": 1804933
+      },
+      {
+        "schema": "public",
+        "table": "voter_vote_history",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "voter_vote_history_raw",
+        "estimatedRows": 1921980
+      },
+      {
+        "schema": "public",
+        "table": "voters",
+        "estimatedRows": 1805038
+      },
+      {
+        "schema": "public",
+        "table": "workspace_feature_flags",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "workspace_geography_scope",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "workspace_members",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "workspace_roles",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "workspace_types",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "workspaces",
+        "estimatedRows": 0
+      },
+      {
+        "schema": "public",
+        "table": "youth_profiles",
         "estimatedRows": 0
       }
     ]
@@ -499,7 +1183,121 @@
       "auth.users",
       "auth.webauthn_challenges",
       "auth.webauthn_credentials",
-      "public.profiles"
+      "public.ar02_voter_dem_lean",
+      "public.ar02_voter_race",
+      "public.ar02_voters",
+      "public.ballot_initiatives",
+      "public.ballot_items",
+      "public.bls_county_economics",
+      "public.candidates",
+      "public.census_block_groups",
+      "public.census_demographics",
+      "public.census_tracts",
+      "public.civic_engagement_index",
+      "public.contact_origins",
+      "public.contact_voter_matches",
+      "public.contacts",
+      "public.contest_partisan_index",
+      "public.contests",
+      "public.counties",
+      "public.county_campaign_targets",
+      "public.county_results",
+      "public.county_turnout",
+      "public.donations",
+      "public.election_candidates",
+      "public.election_contests",
+      "public.election_results",
+      "public.elections",
+      "public.event_notifications",
+      "public.event_requests",
+      "public.events",
+      "public.external_intelligence_sources",
+      "public.external_records",
+      "public.followups",
+      "public.geographic_scores",
+      "public.geographic_units",
+      "public.geography_leaders",
+      "public.ingestion_entities",
+      "public.ingestion_extractions",
+      "public.ingestion_files",
+      "public.ingestion_jobs",
+      "public.ingestion_mapping_suggestions",
+      "public.ingestion_reviews",
+      "public.ingestion_write_events",
+      "public.initiative_signatures",
+      "public.intelligence_links",
+      "public.interactions",
+      "public.leadership_roles",
+      "public.locations",
+      "public.media_assets",
+      "public.media_entity_links",
+      "public.media_tags",
+      "public.message_audience_members",
+      "public.message_audiences",
+      "public.message_campaigns",
+      "public.message_events",
+      "public.message_queue",
+      "public.message_templates",
+      "public.organization_types",
+      "public.organizations",
+      "public.organizer_assignments",
+      "public.organizing_targets",
+      "public.organizing_unit_hierarchy",
+      "public.organizing_unit_memberships",
+      "public.organizing_unit_types",
+      "public.organizing_units",
+      "public.path_to_victory",
+      "public.people",
+      "public.person_geography",
+      "public.person_profiles",
+      "public.petition_signatures",
+      "public.petitions",
+      "public.precinct_scores",
+      "public.profiles",
+      "public.results",
+      "public.runoff_fracture_index",
+      "public.shifts",
+      "public.spatial_ref_sys",
+      "public.statewide_win_targets",
+      "public.submissions",
+      "public.target_universes",
+      "public.tasks",
+      "public.telemetry_events",
+      "public.training_certifications",
+      "public.training_courses",
+      "public.training_enrollments",
+      "public.training_events",
+      "public.training_modules",
+      "public.training_path_modules",
+      "public.training_paths",
+      "public.training_progress",
+      "public.training_records",
+      "public.turf_people",
+      "public.turfs",
+      "public.user_auth_methods",
+      "public.users",
+      "public.volunteer_intake_submissions",
+      "public.volunteer_profiles",
+      "public.volunteer_signups",
+      "public.volunteer_sources",
+      "public.volunteers",
+      "public.voter_block_group_map",
+      "public.voter_geocoded",
+      "public.voter_import_batches",
+      "public.voter_party_model",
+      "public.voter_profiles",
+      "public.voter_registry",
+      "public.voter_scores",
+      "public.voter_vote_history",
+      "public.voter_vote_history_raw",
+      "public.voters",
+      "public.workspace_feature_flags",
+      "public.workspace_geography_scope",
+      "public.workspace_members",
+      "public.workspace_roles",
+      "public.workspace_types",
+      "public.workspaces",
+      "public.youth_profiles"
     ],
     "tablesInPrismaNotObserved": [
       "User",
@@ -652,7 +1450,39 @@
       "OppositionAccountabilityItem"
     ],
     "highValueTables": [
-      "public.profiles"
+      "public.ar02_voter_dem_lean",
+      "public.ar02_voter_race",
+      "public.ar02_voters",
+      "public.bls_county_economics",
+      "public.contact_origins",
+      "public.contact_voter_matches",
+      "public.contacts",
+      "public.county_campaign_targets",
+      "public.county_results",
+      "public.county_turnout",
+      "public.event_notifications",
+      "public.event_requests",
+      "public.events",
+      "public.ingestion_write_events",
+      "public.message_audience_members",
+      "public.message_audiences",
+      "public.message_events",
+      "public.person_profiles",
+      "public.profiles",
+      "public.telemetry_events",
+      "public.training_events",
+      "public.volunteer_profiles",
+      "public.voter_block_group_map",
+      "public.voter_geocoded",
+      "public.voter_import_batches",
+      "public.voter_party_model",
+      "public.voter_profiles",
+      "public.voter_registry",
+      "public.voter_scores",
+      "public.voter_vote_history",
+      "public.voter_vote_history_raw",
+      "public.voters",
+      "public.youth_profiles"
     ],
     "baselineRisk": "high_non_empty_without_prisma_migration_history"
   },
@@ -663,6 +1493,6 @@
   },
   "warnings": [
     "148 Prisma-mapped public table(s) not found in information_schema snapshot (case or naming drift, or different database).",
-    "Very few public tables relative to Prisma model count — confirm DATABASE_URL targets the intended RedDirt/campaign database (not an empty, pooler-only, or Supabase-auth-only project)."
+    "public schema contains multiple tables not present in prisma/schema.prisma — expect a large baseline diff if introspecting."
   ]
 }

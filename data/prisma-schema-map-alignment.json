@@ -1,0 +1,2697 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-PRISMA-SCHEMA-MAP-ALIGNMENT-1.0",
+  "generatedAt": "2026-05-06T23:21:23.473Z",
+  "mode": "offline_alignment_plan_only",
+  "sourceFiles": {
+    "audit": "data/production-db-baseline-audit.json",
+    "baselinePlan": "data/production-db-baseline-plan.json",
+    "reconciliation": "data/production-db-schema-reconciliation.json",
+    "prismaSchema": "prisma/schema.prisma"
+  },
+  "databaseIdentity": {
+    "observedPublicTableCount": 115,
+    "prismaExpectedModelCount": 148,
+    "prismaMigrationsTableExists": false
+  },
+  "modelOwnershipMap": [
+    {
+      "modelName": "User",
+      "prismaTableName": "User",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": "users",
+      "reconciliationStatus": "legacy_preserve_do_not_touch",
+      "reconciliationMatchType": "inferred_plural_snake",
+      "ownershipClassification": "legacy_preserve_do_not_touch",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "AudienceSegment",
+        "CalendarSource",
+        "CampaignEvent",
+        "CampaignTask",
+        "CommsPlanAudienceSegment",
+        "CommsPlanAudienceSegmentMember",
+        "CommunicationActionQueue",
+        "CommunicationCampaign",
+        "CommunicationDraft",
+        "CommunicationMessage",
+        "CommunicationPlan",
+        "CommunicationRecipient",
+        "CommunicationSend",
+        "CommunicationTemplate",
+        "CommunicationThread",
+        "CommunicationVariant",
+        "ComplianceDocument",
+        "ConversationOpportunity",
+        "ConversationWatchlist",
+        "EmailAudienceDefinition",
+        "EmailAudienceHint",
+        "EmailAudiencePreviewRun",
+        "EmailContactImportBatch",
+        "EmailContactImportDecision",
+        "EmailContactProfileFact",
+        "EmailContactProfileFactSuggestion",
+        "EmailSendApproval",
+        "EmailSendExecution",
+        "EmailWorkflowItem",
+        "EventApproval",
+        "EventSignup",
+        "EventStageChangeLog",
+        "FinancialTransaction",
+        "MessageStudioDraft",
+        "MessageStudioDraftRevision",
+        "OwnedMediaAnnotation",
+        "OwnedMediaAsset",
+        "PositionSeat",
+        "RelationalContact",
+        "SendGridContactSyncRun",
+        "SocialContentDraft",
+        "SocialContentItem",
+        "SocialContentMediaRef",
+        "VoterInteraction",
+        "VoterModelClassification",
+        "VoterRecord",
+        "VoterVotePlan",
+        "WorkflowAction",
+        "WorkflowIntake"
+      ],
+      "notes": "Disambiguate public.users vs Supabase auth.users before any @@map or migrate."
+    },
+    {
+      "modelName": "ComplianceDocument",
+      "prismaTableName": "ComplianceDocument",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "FinancialTransaction",
+      "prismaTableName": "FinancialTransaction",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CampaignEvent",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "FieldUnit",
+      "prismaTableName": "FieldUnit",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "FieldUnit"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "FieldAssignment",
+      "prismaTableName": "FieldAssignment",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "FieldUnit",
+        "PositionSeat",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "BudgetPlan",
+      "prismaTableName": "BudgetPlan",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [],
+      "notes": "—"
+    },
+    {
+      "modelName": "BudgetLine",
+      "prismaTableName": "BudgetLine",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "BudgetPlan"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "PositionSeat",
+      "prismaTableName": "PositionSeat",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "ContactPreference",
+      "prismaTableName": "ContactPreference",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CommunicationThread",
+        "User",
+        "VolunteerProfile"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "VolunteerProfile",
+      "prismaTableName": "VolunteerProfile",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": "volunteer_profiles",
+      "reconciliationStatus": "needs_mapping_review",
+      "reconciliationMatchType": "inferred_plural_snake",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CommsPlanAudienceSegmentMember",
+        "CommunicationActionQueue",
+        "EmailWorkflowItem",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "Commitment",
+      "prismaTableName": "Commitment",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "Submission",
+      "prismaTableName": "Submission",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": "submissions",
+      "reconciliationStatus": "prisma_managed_candidate",
+      "reconciliationMatchType": "inferred_plural_snake",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "WorkflowIntake",
+      "prismaTableName": "WorkflowIntake",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CommunicationPlan",
+        "ConversationOpportunity",
+        "County",
+        "EmailWorkflowItem",
+        "MediaOutreachItem",
+        "Submission",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "EventRequest",
+      "prismaTableName": "EventRequest",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": "event_requests",
+      "reconciliationStatus": "needs_mapping_review",
+      "reconciliationMatchType": "inferred_plural_snake",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CampaignEvent",
+        "WorkflowIntake"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "WorkflowAction",
+      "prismaTableName": "WorkflowAction",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "User",
+        "WorkflowIntake"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "SocialContentItem",
+      "prismaTableName": "SocialContentItem",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "AnalyticsRecommendationOutcome",
+        "CampaignEvent",
+        "CommunicationPlan",
+        "ConversationOpportunity",
+        "EmailWorkflowItem",
+        "User",
+        "WorkflowIntake"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "AnalyticsRecommendationOutcome",
+      "prismaTableName": "AnalyticsRecommendationOutcome",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "SocialContentItem",
+        "WorkflowIntake"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "SocialContentDraft",
+      "prismaTableName": "SocialContentDraft",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "SocialContentItem",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "SocialPlatformVariant",
+      "prismaTableName": "SocialPlatformVariant",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "SocialAccount",
+        "SocialContentItem"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "SocialPerformanceSnapshot",
+      "prismaTableName": "SocialPerformanceSnapshot",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CampaignEvent",
+        "SocialContentItem",
+        "SocialPlatformVariant"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "SocialContentStrategicInsight",
+      "prismaTableName": "SocialContentStrategicInsight",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "SocialContentItem"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "ConversationWatchlist",
+      "prismaTableName": "ConversationWatchlist",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "County",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "ConversationItem",
+      "prismaTableName": "ConversationItem",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "ConversationOpportunity",
+        "ConversationWatchlist",
+        "County"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "ConversationAnalysis",
+      "prismaTableName": "ConversationAnalysis",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "ConversationItem"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "ConversationCluster",
+      "prismaTableName": "ConversationCluster",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "County"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "ConversationClusterItem",
+      "prismaTableName": "ConversationClusterItem",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "ConversationCluster",
+        "ConversationItem"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "ConversationOpportunity",
+      "prismaTableName": "ConversationOpportunity",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "ConversationCluster",
+        "ConversationItem",
+        "County",
+        "EmailWorkflowItem",
+        "MediaOutreachItem",
+        "SocialContentItem",
+        "User",
+        "WorkflowIntake"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "SocialContentMediaRef",
+      "prismaTableName": "SocialContentMediaRef",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "OwnedMediaAsset",
+        "SocialContentItem",
+        "SocialPlatformVariant",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "SocialAccount",
+      "prismaTableName": "SocialAccount",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [],
+      "notes": "—"
+    },
+    {
+      "modelName": "SearchChunk",
+      "prismaTableName": "SearchChunk",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [],
+      "notes": "—"
+    },
+    {
+      "modelName": "AnalyticsEvent",
+      "prismaTableName": "AnalyticsEvent",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [],
+      "notes": "—"
+    },
+    {
+      "modelName": "MediaAsset",
+      "prismaTableName": "MediaAsset",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": "media_assets",
+      "reconciliationStatus": "prisma_managed_candidate",
+      "reconciliationMatchType": "inferred_plural_snake",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "ContentItemOverride",
+        "SyncedPost"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "SyncedPost",
+      "prismaTableName": "SyncedPost",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "MediaAsset"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "AdminContentBlock",
+      "prismaTableName": "AdminContentBlock",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [],
+      "notes": "—"
+    },
+    {
+      "modelName": "HomepageConfig",
+      "prismaTableName": "HomepageConfig",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [],
+      "notes": "—"
+    },
+    {
+      "modelName": "ContentItemOverride",
+      "prismaTableName": "ContentItemOverride",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "MediaAsset"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "SiteSettings",
+      "prismaTableName": "SiteSettings",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [],
+      "notes": "—"
+    },
+    {
+      "modelName": "PlatformConnection",
+      "prismaTableName": "PlatformConnection",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [],
+      "notes": "—"
+    },
+    {
+      "modelName": "InboundContentItem",
+      "prismaTableName": "InboundContentItem",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "MediaAsset",
+        "SyncedPost"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "ContentDecision",
+      "prismaTableName": "ContentDecision",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "InboundContentItem"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "PlatformMetricSnapshot",
+      "prismaTableName": "PlatformMetricSnapshot",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "PlatformConnection"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "OwnedMediaAsset",
+      "prismaTableName": "OwnedMediaAsset",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CampaignEvent",
+        "County",
+        "MediaIngestBatch",
+        "OwnedMediaAsset",
+        "OwnedMediaDerivativeJob",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "OwnedMediaAnnotation",
+      "prismaTableName": "OwnedMediaAnnotation",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "OwnedMediaAsset",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "OwnedMediaTranscript",
+      "prismaTableName": "OwnedMediaTranscript",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "OwnedMediaAsset"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "OwnedMediaQuoteCandidate",
+      "prismaTableName": "OwnedMediaQuoteCandidate",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "OwnedMediaAsset",
+        "OwnedMediaTranscript"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "County",
+      "prismaTableName": "County",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": "counties",
+      "reconciliationStatus": "prisma_managed_candidate",
+      "reconciliationMatchType": "inferred_plural_snake",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [],
+      "notes": "—"
+    },
+    {
+      "modelName": "ElectionResultSource",
+      "prismaTableName": "ElectionResultSource",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [],
+      "notes": "—"
+    },
+    {
+      "modelName": "ElectionContestResult",
+      "prismaTableName": "ElectionContestResult",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "ElectionResultSource"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "ElectionCountyResult",
+      "prismaTableName": "ElectionCountyResult",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "County",
+        "ElectionContestResult",
+        "ElectionResultSource"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "ElectionCandidateResult",
+      "prismaTableName": "ElectionCandidateResult",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "ElectionContestResult",
+        "ElectionCountyResult"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "ElectionPrecinctResult",
+      "prismaTableName": "ElectionPrecinctResult",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "County",
+        "ElectionContestResult",
+        "ElectionResultSource"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "ElectionPrecinctCandidateResult",
+      "prismaTableName": "ElectionPrecinctCandidateResult",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "ElectionPrecinctResult"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "CountyCampaignStats",
+      "prismaTableName": "CountyCampaignStats",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": "county_campaign_targets",
+      "reconciliationStatus": "needs_mapping_review",
+      "reconciliationMatchType": "legacy_alias",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "County"
+      ],
+      "notes": "matched via curated legacy alias list"
+    },
+    {
+      "modelName": "CountyPublicDemographics",
+      "prismaTableName": "CountyPublicDemographics",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "County"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "CountyRegistrationSnapshot",
+      "prismaTableName": "CountyRegistrationSnapshot",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "County"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "CountyStrategyKpi",
+      "prismaTableName": "CountyStrategyKpi",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "County"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "CountyElectedOfficial",
+      "prismaTableName": "CountyElectedOfficial",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "County"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "VoterFileSnapshot",
+      "prismaTableName": "VoterFileSnapshot",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "VoterFileSnapshot",
+        "VoterRecord"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "CountyVoterMetrics",
+      "prismaTableName": "CountyVoterMetrics",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "County",
+        "VoterFileSnapshot"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "VoterRecord",
+      "prismaTableName": "VoterRecord",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": "voters",
+      "reconciliationStatus": "needs_mapping_review",
+      "reconciliationMatchType": "legacy_alias",
+      "ownershipClassification": "unsafe_unknown",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "County",
+        "SignupSheetEntry",
+        "User",
+        "VoterFileSnapshot"
+      ],
+      "notes": "matched via curated legacy alias list"
+    },
+    {
+      "modelName": "VoterElectionParticipation",
+      "prismaTableName": "VoterElectionParticipation",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "VoterRecord"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "VoterSignal",
+      "prismaTableName": "VoterSignal",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "RelationalContact",
+        "User",
+        "VoterRecord"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "VoterModelClassification",
+      "prismaTableName": "VoterModelClassification",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "User",
+        "VoterRecord"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "VoterInteraction",
+      "prismaTableName": "VoterInteraction",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "RelationalContact",
+        "User",
+        "VoterRecord"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "RelationalContact",
+      "prismaTableName": "RelationalContact",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": "contacts",
+      "reconciliationStatus": "needs_mapping_review",
+      "reconciliationMatchType": "legacy_alias",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "County",
+        "FieldUnit",
+        "User",
+        "VoterRecord"
+      ],
+      "notes": "matched via curated legacy alias list"
+    },
+    {
+      "modelName": "VoterVotePlan",
+      "prismaTableName": "VoterVotePlan",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "User",
+        "VoterRecord"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "VoterSnapshotChange",
+      "prismaTableName": "VoterSnapshotChange",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "County",
+        "VoterFileSnapshot",
+        "VoterRecord"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "CampaignEvent",
+      "prismaTableName": "CampaignEvent",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": "events",
+      "reconciliationStatus": "needs_mapping_review",
+      "reconciliationMatchType": "legacy_alias",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "ArkansasFestivalIngest",
+        "CalendarSource",
+        "CommunicationPlan",
+        "County",
+        "EventSyncLog",
+        "OwnedMediaAsset",
+        "SocialPerformanceSnapshot",
+        "User",
+        "WeeklyBigRock"
+      ],
+      "notes": "matched via curated legacy alias list"
+    },
+    {
+      "modelName": "FestivalIngestRun",
+      "prismaTableName": "FestivalIngestRun",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [],
+      "notes": "—"
+    },
+    {
+      "modelName": "ArkansasFestivalIngest",
+      "prismaTableName": "ArkansasFestivalIngest",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CampaignEvent",
+        "County",
+        "FestivalIngestRun"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "FestivalCoveragePlanSnapshot",
+      "prismaTableName": "FestivalCoveragePlanSnapshot",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [],
+      "notes": "—"
+    },
+    {
+      "modelName": "CampaignTask",
+      "prismaTableName": "CampaignTask",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CampaignEvent",
+        "CampaignTask",
+        "CommunicationPlan",
+        "County",
+        "EmailWorkflowItem",
+        "SocialContentItem",
+        "User",
+        "WorkflowRun"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "WorkflowTemplate",
+      "prismaTableName": "WorkflowTemplate",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [],
+      "notes": "—"
+    },
+    {
+      "modelName": "WorkflowTemplateTask",
+      "prismaTableName": "WorkflowTemplateTask",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "WorkflowTemplate"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "WorkflowRun",
+      "prismaTableName": "WorkflowRun",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "WorkflowTemplate"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "VolunteerAsk",
+      "prismaTableName": "VolunteerAsk",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CampaignEvent",
+        "County",
+        "User",
+        "WorkflowRun"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "EventSignup",
+      "prismaTableName": "EventSignup",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": "volunteer_signups",
+      "reconciliationStatus": "needs_mapping_review",
+      "reconciliationMatchType": "legacy_alias",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CampaignEvent",
+        "County",
+        "User",
+        "VolunteerProfile"
+      ],
+      "notes": "matched via curated legacy alias list"
+    },
+    {
+      "modelName": "TeamRoleAssignment",
+      "prismaTableName": "TeamRoleAssignment",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "County",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "MediaIngestBatch",
+      "prismaTableName": "MediaIngestBatch",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "OwnedMediaCollection",
+      "prismaTableName": "OwnedMediaCollection",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [],
+      "notes": "—"
+    },
+    {
+      "modelName": "OwnedMediaCollectionItem",
+      "prismaTableName": "OwnedMediaCollectionItem",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "OwnedMediaAsset",
+        "OwnedMediaCollection"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "OwnedMediaReviewLog",
+      "prismaTableName": "OwnedMediaReviewLog",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "OwnedMediaAsset",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "OwnedMediaDerivativeJob",
+      "prismaTableName": "OwnedMediaDerivativeJob",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "OwnedMediaAsset"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "SignupSheetDocument",
+      "prismaTableName": "SignupSheetDocument",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "OwnedMediaAsset",
+        "SignupSheetExtraction",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "SignupSheetExtraction",
+      "prismaTableName": "SignupSheetExtraction",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "SignupSheetDocument"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "SignupSheetEntry",
+      "prismaTableName": "SignupSheetEntry",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "County",
+        "SignupSheetDocument",
+        "SignupSheetExtraction",
+        "User",
+        "VoterRecord"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "VolunteerMatchCandidate",
+      "prismaTableName": "VolunteerMatchCandidate",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "SignupSheetEntry",
+        "VoterRecord"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationThread",
+      "prismaTableName": "CommunicationThread",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 1,
+      "relationModels": [
+        "CommunicationRecipient",
+        "County",
+        "EmailWorkflowItem",
+        "User",
+        "VolunteerProfile"
+      ],
+      "notes": "1 field(s) with @map"
+    },
+    {
+      "modelName": "CommunicationMessage",
+      "prismaTableName": "CommunicationMessage",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CommunicationCampaign",
+        "CommunicationCampaignRecipient",
+        "CommunicationThread",
+        "EmailWorkflowItem",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationTemplate",
+      "prismaTableName": "CommunicationTemplate",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "AudienceSegment",
+      "prismaTableName": "AudienceSegment",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationCampaign",
+      "prismaTableName": "CommunicationCampaign",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "AudienceSegment",
+        "CampaignEvent",
+        "CommunicationTemplate",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationCampaignRecipient",
+      "prismaTableName": "CommunicationCampaignRecipient",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CommunicationCampaign",
+        "CommunicationMessage",
+        "CommunicationThread",
+        "User",
+        "VolunteerProfile"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationActionQueue",
+      "prismaTableName": "CommunicationActionQueue",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CampaignEvent",
+        "CommunicationThread",
+        "User",
+        "VolunteerProfile"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationTag",
+      "prismaTableName": "CommunicationTag",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [],
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationThreadTag",
+      "prismaTableName": "CommunicationThreadTag",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CommunicationTag",
+        "CommunicationThread"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationPlan",
+      "prismaTableName": "CommunicationPlan",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CampaignEvent",
+        "CampaignTask",
+        "EmailWorkflowItem",
+        "SocialContentItem",
+        "User",
+        "WorkflowIntake"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationDraft",
+      "prismaTableName": "CommunicationDraft",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CommunicationPlan",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationVariant",
+      "prismaTableName": "CommunicationVariant",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CommunicationDraft",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationSend",
+      "prismaTableName": "CommunicationSend",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CommunicationDraft",
+        "CommunicationPlan",
+        "CommunicationVariant",
+        "EmailWorkflowItem",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailWorkflowItem",
+      "prismaTableName": "EmailWorkflowItem",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CampaignTask",
+        "CommsPlanAudienceSegment",
+        "CommunicationMessage",
+        "CommunicationPlan",
+        "CommunicationSend",
+        "CommunicationThread",
+        "ConversationOpportunity",
+        "EmailAudienceHint",
+        "EmailContactProfile",
+        "SocialContentItem",
+        "User",
+        "VolunteerProfile",
+        "WorkflowIntake"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailContactProfile",
+      "prismaTableName": "EmailContactProfile",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "EmailContactImportRow",
+        "RelationalContact",
+        "User",
+        "VolunteerProfile"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailContactProfileFact",
+      "prismaTableName": "EmailContactProfileFact",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "EmailContactProfile",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailContactProfileFactSuggestion",
+      "prismaTableName": "EmailContactProfileFactSuggestion",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "EmailContactProfile",
+        "EmailWorkflowItem",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailAudienceHint",
+      "prismaTableName": "EmailAudienceHint",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "EmailContactProfile",
+        "EmailWorkflowItem",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailAudienceDefinition",
+      "prismaTableName": "EmailAudienceDefinition",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailAudiencePreviewRun",
+      "prismaTableName": "EmailAudiencePreviewRun",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "EmailAudienceDefinition",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "MessageStudioDraft",
+      "prismaTableName": "MessageStudioDraft",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "MessageStudioDraftRevision",
+      "prismaTableName": "MessageStudioDraftRevision",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "MessageStudioDraft",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailContactImportBatch",
+      "prismaTableName": "EmailContactImportBatch",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailContactImportRow",
+      "prismaTableName": "EmailContactImportRow",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "EmailContactImportBatch",
+        "EmailContactImportDecision",
+        "EmailContactProfile"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailContactImportDecision",
+      "prismaTableName": "EmailContactImportDecision",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "EmailContactImportBatch",
+        "EmailContactImportRow",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "SendGridContactMap",
+      "prismaTableName": "SendGridContactMap",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "EmailAudienceDefinition",
+        "EmailContactProfile"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "SendGridAudienceMap",
+      "prismaTableName": "SendGridAudienceMap",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "EmailAudienceDefinition"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "SendGridSuppression",
+      "prismaTableName": "SendGridSuppression",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [],
+      "notes": "—"
+    },
+    {
+      "modelName": "SendGridEvent",
+      "prismaTableName": "SendGridEvent",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [],
+      "notes": "—"
+    },
+    {
+      "modelName": "SendGridContactSyncRun",
+      "prismaTableName": "SendGridContactSyncRun",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "EmailAudienceDefinition",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailSendExecution",
+      "prismaTableName": "EmailSendExecution",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "EmailAudienceDefinition",
+        "MessageStudioDraft",
+        "SendGridContactSyncRun",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailSendRecipient",
+      "prismaTableName": "EmailSendRecipient",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "EmailContactProfile",
+        "EmailSendExecution"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailSendApproval",
+      "prismaTableName": "EmailSendApproval",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "EmailSendExecution",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationRecipient",
+      "prismaTableName": "CommunicationRecipient",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CommsPlanAudienceSegment",
+        "CommunicationSend",
+        "CommunicationThread",
+        "User",
+        "VolunteerProfile"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationRecipientEvent",
+      "prismaTableName": "CommunicationRecipientEvent",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CommunicationRecipient"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationLinkDefinition",
+      "prismaTableName": "CommunicationLinkDefinition",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CommunicationSend"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "CommsPlanAudienceSegment",
+      "prismaTableName": "CommsPlanAudienceSegment",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CommunicationPlan",
+        "EmailWorkflowItem",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "CommsPlanAudienceSegmentMember",
+      "prismaTableName": "CommsPlanAudienceSegmentMember",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CommsPlanAudienceSegment",
+        "User",
+        "VolunteerProfile"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "MediaOutreachItem",
+      "prismaTableName": "MediaOutreachItem",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CommunicationPlan",
+        "ConversationOpportunity",
+        "WorkflowIntake"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "StaffGmailAccount",
+      "prismaTableName": "StaffGmailAccount",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "CalendarSource",
+      "prismaTableName": "CalendarSource",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "EventSyncLog",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "CalendarWatchChannel",
+      "prismaTableName": "CalendarWatchChannel",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CalendarSource"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "WeeklyCampaignPlan",
+      "prismaTableName": "WeeklyCampaignPlan",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [],
+      "notes": "—"
+    },
+    {
+      "modelName": "WeeklyBigRock",
+      "prismaTableName": "WeeklyBigRock",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CampaignEvent",
+        "WeeklyCampaignPlan"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "EventApproval",
+      "prismaTableName": "EventApproval",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CampaignEvent",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "EventStageChangeLog",
+      "prismaTableName": "EventStageChangeLog",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CampaignEvent",
+        "User"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "EventSyncLog",
+      "prismaTableName": "EventSyncLog",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CalendarSource",
+        "CampaignEvent"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "EventAnalyticsSnapshot",
+      "prismaTableName": "EventAnalyticsSnapshot",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CampaignEvent",
+        "County"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "ExternalMediaSource",
+      "prismaTableName": "ExternalMediaSource",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [],
+      "notes": "—"
+    },
+    {
+      "modelName": "ExternalMediaMention",
+      "prismaTableName": "ExternalMediaMention",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "CampaignEvent",
+        "County",
+        "ExternalMediaSource"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "ExternalMediaIngestRun",
+      "prismaTableName": "ExternalMediaIngestRun",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [],
+      "notes": "—"
+    },
+    {
+      "modelName": "OppositionEntity",
+      "prismaTableName": "OppositionEntity",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [],
+      "notes": "—"
+    },
+    {
+      "modelName": "OppositionSource",
+      "prismaTableName": "OppositionSource",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [],
+      "notes": "—"
+    },
+    {
+      "modelName": "OppositionBillRecord",
+      "prismaTableName": "OppositionBillRecord",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "OppositionEntity",
+        "OppositionSource"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "OppositionVoteRecord",
+      "prismaTableName": "OppositionVoteRecord",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "needs_explicit_map_review",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "OppositionEntity",
+        "OppositionSource"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "OppositionFinanceRecord",
+      "prismaTableName": "OppositionFinanceRecord",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "OppositionEntity",
+        "OppositionSource"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "OppositionMessageRecord",
+      "prismaTableName": "OppositionMessageRecord",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "OppositionEntity",
+        "OppositionSource"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "OppositionVideoRecord",
+      "prismaTableName": "OppositionVideoRecord",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "OppositionEntity",
+        "OppositionSource"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "OppositionNewsMention",
+      "prismaTableName": "OppositionNewsMention",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "OppositionEntity",
+        "OppositionSource"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "OppositionElectionPattern",
+      "prismaTableName": "OppositionElectionPattern",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "OppositionEntity",
+        "OppositionSource"
+      ],
+      "notes": "—"
+    },
+    {
+      "modelName": "OppositionAccountabilityItem",
+      "prismaTableName": "OppositionAccountabilityItem",
+      "existingMappedTable": null,
+      "prismaSchema": "public",
+      "observedMatch": null,
+      "reconciliationStatus": "missing_safe_to_create_candidate",
+      "reconciliationMatchType": "none",
+      "ownershipClassification": "new_prisma_owned_table_candidate",
+      "fieldMapCount": 0,
+      "relationModels": [
+        "OppositionEntity",
+        "OppositionSource"
+      ],
+      "notes": "—"
+    }
+  ],
+  "proposedMapRecommendations": [
+    {
+      "modelName": "County",
+      "recommendedTable": "counties",
+      "confidence": "high",
+      "rationale": "Plural snake public table matches Prisma County semantics.",
+      "doNotAutoMap": false,
+      "documentationOnly": true
+    },
+    {
+      "modelName": "EventRequest",
+      "recommendedTable": "event_requests",
+      "confidence": "high",
+      "rationale": "Live event_requests aligns with Prisma EventRequest.",
+      "doNotAutoMap": false,
+      "documentationOnly": true
+    },
+    {
+      "modelName": "Submission",
+      "recommendedTable": "submissions",
+      "confidence": "high",
+      "rationale": "Common plural mapping.",
+      "doNotAutoMap": false,
+      "documentationOnly": true
+    },
+    {
+      "modelName": "MediaAsset",
+      "recommendedTable": "media_assets",
+      "confidence": "high",
+      "rationale": "Plural snake table present in audit.",
+      "doNotAutoMap": false,
+      "documentationOnly": true
+    },
+    {
+      "modelName": "WorkflowIntake",
+      "recommendedTable": null,
+      "confidence": "low",
+      "rationale": "Inspect workflow_intake / intakes / operator-owned intakes before any @@map; reconciliation may be ambiguous.",
+      "doNotAutoMap": false,
+      "documentationOnly": true
+    },
+    {
+      "modelName": "VoterRecord",
+      "recommendedTable": null,
+      "confidence": "none",
+      "rationale": "Do not auto-map: live voter warehouse (voters, ar02_voters, voter_registry, etc.) may not match Prisma VoterRecord semantics — DBA review required.",
+      "doNotAutoMap": true,
+      "documentationOnly": true
+    }
+  ],
+  "legacyPreserveTables": [
+    "ar02_voter_dem_lean",
+    "ar02_voter_race",
+    "ar02_voters",
+    "bls_county_economics",
+    "contact_origins",
+    "contact_voter_matches",
+    "county_results",
+    "county_turnout",
+    "event_notifications",
+    "ingestion_entities",
+    "ingestion_extractions",
+    "ingestion_files",
+    "ingestion_jobs",
+    "ingestion_mapping_suggestions",
+    "ingestion_reviews",
+    "ingestion_write_events",
+    "message_audience_members",
+    "message_audiences",
+    "message_events",
+    "path_to_victory",
+    "person_profiles",
+    "profiles",
+    "spatial_ref_sys",
+    "telemetry_events",
+    "training_events",
+    "voter_block_group_map",
+    "voter_geocoded",
+    "voter_import_batches",
+    "voter_party_model",
+    "voter_profiles",
+    "voter_registry",
+    "voter_scores",
+    "voter_vote_history",
+    "voter_vote_history_raw",
+    "youth_profiles"
+  ],
+  "newPrismaOwnedCandidates": [
+    "ComplianceDocument",
+    "FinancialTransaction",
+    "FieldUnit",
+    "FieldAssignment",
+    "BudgetPlan",
+    "BudgetLine",
+    "PositionSeat",
+    "Commitment",
+    "WorkflowIntake",
+    "WorkflowAction",
+    "SocialContentItem",
+    "AnalyticsRecommendationOutcome",
+    "SocialContentDraft",
+    "SocialPlatformVariant",
+    "SocialPerformanceSnapshot",
+    "SocialContentStrategicInsight",
+    "ConversationWatchlist",
+    "ConversationItem",
+    "ConversationAnalysis",
+    "ConversationCluster",
+    "ConversationClusterItem",
+    "ConversationOpportunity",
+    "SocialContentMediaRef",
+    "SocialAccount",
+    "SearchChunk",
+    "AnalyticsEvent",
+    "SyncedPost",
+    "AdminContentBlock",
+    "HomepageConfig",
+    "ContentItemOverride",
+    "SiteSettings",
+    "PlatformConnection",
+    "InboundContentItem",
+    "ContentDecision",
+    "PlatformMetricSnapshot",
+    "OwnedMediaAsset",
+    "OwnedMediaAnnotation",
+    "OwnedMediaTranscript",
+    "OwnedMediaQuoteCandidate",
+    "ElectionResultSource",
+    "ElectionContestResult",
+    "ElectionCountyResult",
+    "ElectionCandidateResult",
+    "ElectionPrecinctResult",
+    "ElectionPrecinctCandidateResult",
+    "CountyPublicDemographics",
+    "CountyRegistrationSnapshot",
+    "CountyStrategyKpi",
+    "CountyElectedOfficial",
+    "FestivalIngestRun",
+    "ArkansasFestivalIngest",
+    "FestivalCoveragePlanSnapshot",
+    "CampaignTask",
+    "WorkflowTemplate",
+    "WorkflowTemplateTask",
+    "WorkflowRun",
+    "VolunteerAsk",
+    "TeamRoleAssignment",
+    "MediaIngestBatch",
+    "OwnedMediaCollection",
+    "OwnedMediaCollectionItem",
+    "OwnedMediaReviewLog",
+    "OwnedMediaDerivativeJob",
+    "SignupSheetDocument",
+    "SignupSheetExtraction",
+    "SignupSheetEntry",
+    "VolunteerMatchCandidate",
+    "CommunicationThread",
+    "CommunicationMessage",
+    "CommunicationTemplate",
+    "AudienceSegment",
+    "CommunicationCampaign",
+    "CommunicationCampaignRecipient",
+    "CommunicationActionQueue",
+    "CommunicationTag",
+    "CommunicationThreadTag",
+    "CommunicationPlan",
+    "CommunicationDraft",
+    "CommunicationVariant",
+    "CommunicationSend",
+    "EmailWorkflowItem",
+    "EmailAudienceHint",
+    "EmailAudienceDefinition",
+    "EmailAudiencePreviewRun",
+    "MessageStudioDraft",
+    "MessageStudioDraftRevision",
+    "SendGridAudienceMap",
+    "SendGridSuppression",
+    "SendGridEvent",
+    "EmailSendExecution",
+    "EmailSendRecipient",
+    "EmailSendApproval",
+    "CommunicationRecipient",
+    "CommunicationRecipientEvent",
+    "CommunicationLinkDefinition",
+    "CommsPlanAudienceSegment",
+    "CommsPlanAudienceSegmentMember",
+    "MediaOutreachItem",
+    "StaffGmailAccount",
+    "CalendarSource",
+    "CalendarWatchChannel",
+    "WeeklyCampaignPlan",
+    "WeeklyBigRock",
+    "EventApproval",
+    "EventStageChangeLog",
+    "EventSyncLog",
+    "EventAnalyticsSnapshot",
+    "ExternalMediaSource",
+    "ExternalMediaMention",
+    "ExternalMediaIngestRun",
+    "OppositionEntity",
+    "OppositionSource",
+    "OppositionBillRecord",
+    "OppositionFinanceRecord",
+    "OppositionMessageRecord",
+    "OppositionVideoRecord",
+    "OppositionNewsMention",
+    "OppositionElectionPattern",
+    "OppositionAccountabilityItem"
+  ],
+  "unsafeUnknowns": [
+    {
+      "modelName": "VoterRecord",
+      "reason": "matched via curated legacy alias list"
+    }
+  ],
+  "supabaseAuthBoundary": [
+    "auth.audit_log_entries",
+    "auth.custom_oauth_providers",
+    "auth.flow_state",
+    "auth.identities",
+    "auth.instances",
+    "auth.mfa_amr_claims",
+    "auth.mfa_challenges",
+    "auth.mfa_factors",
+    "auth.oauth_authorizations",
+    "auth.oauth_client_states",
+    "auth.oauth_clients",
+    "auth.oauth_consents",
+    "auth.one_time_tokens",
+    "auth.refresh_tokens",
+    "auth.saml_providers",
+    "auth.saml_relay_states",
+    "auth.schema_migrations",
+    "auth.sessions",
+    "auth.sso_domains",
+    "auth.sso_providers",
+    "auth.users",
+    "auth.webauthn_challenges",
+    "auth.webauthn_credentials"
+  ],
+  "baselineImpact": {
+    "safeToBaselineNow": false,
+    "reason": "Production remains a mixed legacy + campaign surface without Prisma migration history; baseline and migrate-resolve stay blocked until @@map and DBA ownership are closed on paper and in shadow DB.",
+    "baselineBlockedBy": [
+      "missing_public__prisma_migrations",
+      "legacy_and_prisma_naming_drift",
+      "voter_warehouse_semantic_uncertainty",
+      "migrate_history_not_aligned_with_live_ddl"
+    ]
+  },
+  "recommendedStrategy": {
+    "strategy": "dba_review_first",
+    "nextRecommendedSlice": "REDDIRT-DBA-REVIEW-REQUIRED-1.0",
+    "requiresHumanApproval": true,
+    "safeToExecuteAutomatically": false
+  },
+  "absoluteDoNotRunYet": [
+    "npx prisma migrate deploy",
+    "npx prisma migrate resolve",
+    "npx prisma db push",
+    "npx prisma migrate reset"
+  ]
+}

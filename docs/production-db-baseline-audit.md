@@ -1,6 +1,6 @@
 # Production database baseline audit (read-only)
 
-**Slice:** `REDDIRT-PRODUCTION-DB-BASELINE-AUDIT-1.0` · **Schema version:** `1.0` · **Generated:** 2026-05-06T21:54:29.683Z
+**Slice:** `REDDIRT-PRODUCTION-DB-BASELINE-AUDIT-1.0` · **Schema version:** `1.0` · **Generated:** 2026-05-06T22:46:56.588Z
 
 ## Purpose
 
@@ -37,15 +37,95 @@ _Prisma `migrate deploy` expects migration history on the target database unless
 
 ## Public/auth schema summary
 
-- **Observed base tables (all schemas in scope):** 24
-  - **public:** 1
+- **Observed base tables (all schemas in scope):** 138
+  - **public:** 115
   - **auth:** 23
 - **Observed enums:** 9
 - **Prisma models (expected public tables by default):** 148
 
-### public tables (1)
+### public tables (115)
 
+- `public.ar02_voter_dem_lean`
+- `public.ar02_voter_race`
+- `public.ar02_voters`
+- `public.ballot_initiatives`
+- `public.ballot_items`
+- `public.bls_county_economics`
+- `public.candidates`
+- `public.census_block_groups`
+- `public.census_demographics`
+- `public.census_tracts`
+- `public.civic_engagement_index`
+- `public.contact_origins`
+- `public.contact_voter_matches`
+- `public.contacts`
+- `public.contest_partisan_index`
+- `public.contests`
+- `public.counties`
+- `public.county_campaign_targets`
+- `public.county_results`
+- `public.county_turnout`
+- `public.donations`
+- `public.election_candidates`
+- `public.election_contests`
+- `public.election_results`
+- `public.elections`
+- `public.event_notifications`
+- `public.event_requests`
+- `public.events`
+- `public.external_intelligence_sources`
+- `public.external_records`
+- `public.followups`
+- `public.geographic_scores`
+- `public.geographic_units`
+- `public.geography_leaders`
+- `public.ingestion_entities`
+- `public.ingestion_extractions`
+- `public.ingestion_files`
+- `public.ingestion_jobs`
+- `public.ingestion_mapping_suggestions`
+- `public.ingestion_reviews`
+- `public.ingestion_write_events`
+- `public.initiative_signatures`
+- `public.intelligence_links`
+- `public.interactions`
+- `public.leadership_roles`
+- `public.locations`
+- `public.media_assets`
+- `public.media_entity_links`
+- `public.media_tags`
+- `public.message_audience_members`
+- `public.message_audiences`
+- `public.message_campaigns`
+- `public.message_events`
+- `public.message_queue`
+- `public.message_templates`
+- `public.organization_types`
+- `public.organizations`
+- `public.organizer_assignments`
+- `public.organizing_targets`
+- `public.organizing_unit_hierarchy`
+- `public.organizing_unit_memberships`
+- `public.organizing_unit_types`
+- `public.organizing_units`
+- `public.path_to_victory`
+- `public.people`
+- `public.person_geography`
+- `public.person_profiles`
+- `public.petition_signatures`
+- `public.petitions`
+- `public.precinct_scores`
 - `public.profiles`
+- `public.results`
+- `public.runoff_fracture_index`
+- `public.shifts`
+- `public.spatial_ref_sys`
+- `public.statewide_win_targets`
+- `public.submissions`
+- `public.target_universes`
+- `public.tasks`
+- `public.telemetry_events`
+- … _35 more — see `data/production-db-baseline-audit.json`._
 
 ### auth tables (23, sample)
 
@@ -77,16 +157,88 @@ _Prisma `migrate deploy` expects migration history on the target database unless
 
 Tables whose **names** match campaign-sensitive keywords (`voter`, `contact`, `profile`, `county`, `email`, `audience`, `relational`, `event` — case-insensitive). **This is naming heuristics only**, not a data classification.
 
+- `public.ar02_voter_dem_lean` — estimated rows (`pg_class.reltuples`): **0**
+- `public.ar02_voter_race` — estimated rows (`pg_class.reltuples`): **0**
+- `public.ar02_voters` — estimated rows (`pg_class.reltuples`): **0**
+- `public.bls_county_economics` — estimated rows (`pg_class.reltuples`): **0**
+- `public.contact_origins` — estimated rows (`pg_class.reltuples`): **0**
+- `public.contact_voter_matches` — estimated rows (`pg_class.reltuples`): **0**
+- `public.contacts` — estimated rows (`pg_class.reltuples`): **0**
+- `public.county_campaign_targets` — estimated rows (`pg_class.reltuples`): **75**
+- `public.county_results` — estimated rows (`pg_class.reltuples`): **0**
+- `public.county_turnout` — estimated rows (`pg_class.reltuples`): **0**
+- `public.event_notifications` — estimated rows (`pg_class.reltuples`): **0**
+- `public.event_requests` — estimated rows (`pg_class.reltuples`): **0**
+- `public.events` — estimated rows (`pg_class.reltuples`): **0**
+- `public.ingestion_write_events` — estimated rows (`pg_class.reltuples`): **0**
+- `public.message_audience_members` — estimated rows (`pg_class.reltuples`): **0**
+- `public.message_audiences` — estimated rows (`pg_class.reltuples`): **0**
+- `public.message_events` — estimated rows (`pg_class.reltuples`): **0**
+- `public.person_profiles` — estimated rows (`pg_class.reltuples`): **0**
 - `public.profiles` — estimated rows (`pg_class.reltuples`): **0**
+- `public.telemetry_events` — estimated rows (`pg_class.reltuples`): **0**
+- `public.training_events` — estimated rows (`pg_class.reltuples`): **0**
+- `public.volunteer_profiles` — estimated rows (`pg_class.reltuples`): **0**
+- `public.voter_block_group_map` — estimated rows (`pg_class.reltuples`): **0**
+- `public.voter_geocoded` — estimated rows (`pg_class.reltuples`): **0**
+- `public.voter_import_batches` — estimated rows (`pg_class.reltuples`): **0**
+- `public.voter_party_model` — estimated rows (`pg_class.reltuples`): **228550**
+- `public.voter_profiles` — estimated rows (`pg_class.reltuples`): **0**
+- `public.voter_registry` — estimated rows (`pg_class.reltuples`): **0**
+- `public.voter_scores` — estimated rows (`pg_class.reltuples`): **1804933**
+- `public.voter_vote_history` — estimated rows (`pg_class.reltuples`): **0**
+- `public.voter_vote_history_raw` — estimated rows (`pg_class.reltuples`): **1921980**
+- `public.voters` — estimated rows (`pg_class.reltuples`): **1805038**
+- `public.youth_profiles` — estimated rows (`pg_class.reltuples`): **0**
 
 ## Prisma expected table comparison
 
 - **Prisma-mapped public tables not observed in `information_schema`:** 148
-- **Observed tables not mapped in Prisma** (includes all `auth.*` and any Supabase-only `public.*`): 24
+- **Observed tables not mapped in Prisma** (includes all `auth.*` and any Supabase-only `public.*`): 138
 
-### Sample: public tables not in Prisma (`1` total)
+### Sample: public tables not in Prisma (`115` total)
 
-- `public.profiles`
+- `public.ar02_voter_dem_lean`
+- `public.ar02_voter_race`
+- `public.ar02_voters`
+- `public.ballot_initiatives`
+- `public.ballot_items`
+- `public.bls_county_economics`
+- `public.candidates`
+- `public.census_block_groups`
+- `public.census_demographics`
+- `public.census_tracts`
+- `public.civic_engagement_index`
+- `public.contact_origins`
+- `public.contact_voter_matches`
+- `public.contacts`
+- `public.contest_partisan_index`
+- `public.contests`
+- `public.counties`
+- `public.county_campaign_targets`
+- `public.county_results`
+- `public.county_turnout`
+- `public.donations`
+- `public.election_candidates`
+- `public.election_contests`
+- `public.election_results`
+- `public.elections`
+- `public.event_notifications`
+- `public.event_requests`
+- `public.events`
+- `public.external_intelligence_sources`
+- `public.external_records`
+- `public.followups`
+- `public.geographic_scores`
+- `public.geographic_units`
+- `public.geography_leaders`
+- `public.ingestion_entities`
+- `public.ingestion_extractions`
+- `public.ingestion_files`
+- `public.ingestion_jobs`
+- `public.ingestion_mapping_suggestions`
+- `public.ingestion_reviews`
+- … _75 more — see `data/production-db-baseline-audit.json`._
 
 ### Sample: Prisma tables missing from public snapshot (`148` total)
 
@@ -141,7 +293,7 @@ Tables whose **names** match campaign-sensitive keywords (`voter`, `contact`, `p
 ### Warnings from this run
 
 - 148 Prisma-mapped public table(s) not found in information_schema snapshot (case or naming drift, or different database).
-- Very few public tables relative to Prisma model count — confirm DATABASE_URL targets the intended RedDirt/campaign database (not an empty, pooler-only, or Supabase-auth-only project).
+- public schema contains multiple tables not present in prisma/schema.prisma — expect a large baseline diff if introspecting.
 
 ## Recommended next step
 

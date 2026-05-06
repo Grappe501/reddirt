@@ -498,7 +498,7 @@ function writeMarkdown(audit) {
     ``,
     `---`,
     ``,
-    `_Machine-readable twin: [\`data/production-db-baseline-audit.json\`](../data/production-db-baseline-audit.json)._`,
+    `_Machine-readable twin: [\`data/production-db-baseline-audit.json\`](../data/production-db-baseline-audit.json). After audit, run **\`node scripts/reconcile-production-db-schema.mjs\`** for naming or legacy drift → [\`docs/production-db-schema-reconciliation.md\`](./production-db-schema-reconciliation.md)._`,
     ``,
   ].join("\n");
 }

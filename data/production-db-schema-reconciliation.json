@@ -1,0 +1,2717 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-PRODUCTION-DB-SCHEMA-RECONCILIATION-1.0",
+  "generatedAt": "2026-05-06T23:21:26.441Z",
+  "mode": "offline_reconciliation_only",
+  "sourceAudit": "data/production-db-baseline-audit.json",
+  "databaseIdentity": {
+    "observedPublicTableCount": 115,
+    "prismaExpectedModelCount": 148,
+    "prismaMigrationsTableExists": false
+  },
+  "modelToTableMatrix": [
+    {
+      "modelName": "User",
+      "prismaTableName": "User",
+      "mappedTableName": null,
+      "observedDbMatch": "users",
+      "matchType": "inferred_plural_snake",
+      "status": "legacy_preserve_do_not_touch",
+      "riskLevel": "low",
+      "notes": "—"
+    },
+    {
+      "modelName": "ComplianceDocument",
+      "prismaTableName": "ComplianceDocument",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "FinancialTransaction",
+      "prismaTableName": "FinancialTransaction",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "FieldUnit",
+      "prismaTableName": "FieldUnit",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "FieldAssignment",
+      "prismaTableName": "FieldAssignment",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "BudgetPlan",
+      "prismaTableName": "BudgetPlan",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "BudgetLine",
+      "prismaTableName": "BudgetLine",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "PositionSeat",
+      "prismaTableName": "PositionSeat",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "ContactPreference",
+      "prismaTableName": "ContactPreference",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "VolunteerProfile",
+      "prismaTableName": "VolunteerProfile",
+      "mappedTableName": null,
+      "observedDbMatch": "volunteer_profiles",
+      "matchType": "inferred_plural_snake",
+      "status": "needs_mapping_review",
+      "riskLevel": "high",
+      "notes": "—"
+    },
+    {
+      "modelName": "Commitment",
+      "prismaTableName": "Commitment",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "Submission",
+      "prismaTableName": "Submission",
+      "mappedTableName": null,
+      "observedDbMatch": "submissions",
+      "matchType": "inferred_plural_snake",
+      "status": "prisma_managed_candidate",
+      "riskLevel": "low",
+      "notes": "—"
+    },
+    {
+      "modelName": "WorkflowIntake",
+      "prismaTableName": "WorkflowIntake",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "EventRequest",
+      "prismaTableName": "EventRequest",
+      "mappedTableName": null,
+      "observedDbMatch": "event_requests",
+      "matchType": "inferred_plural_snake",
+      "status": "needs_mapping_review",
+      "riskLevel": "high",
+      "notes": "—"
+    },
+    {
+      "modelName": "WorkflowAction",
+      "prismaTableName": "WorkflowAction",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "SocialContentItem",
+      "prismaTableName": "SocialContentItem",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "AnalyticsRecommendationOutcome",
+      "prismaTableName": "AnalyticsRecommendationOutcome",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "SocialContentDraft",
+      "prismaTableName": "SocialContentDraft",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "SocialPlatformVariant",
+      "prismaTableName": "SocialPlatformVariant",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "SocialPerformanceSnapshot",
+      "prismaTableName": "SocialPerformanceSnapshot",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "SocialContentStrategicInsight",
+      "prismaTableName": "SocialContentStrategicInsight",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "ConversationWatchlist",
+      "prismaTableName": "ConversationWatchlist",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "ConversationItem",
+      "prismaTableName": "ConversationItem",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "ConversationAnalysis",
+      "prismaTableName": "ConversationAnalysis",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "ConversationCluster",
+      "prismaTableName": "ConversationCluster",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "ConversationClusterItem",
+      "prismaTableName": "ConversationClusterItem",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "ConversationOpportunity",
+      "prismaTableName": "ConversationOpportunity",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "SocialContentMediaRef",
+      "prismaTableName": "SocialContentMediaRef",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "SocialAccount",
+      "prismaTableName": "SocialAccount",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "SearchChunk",
+      "prismaTableName": "SearchChunk",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "AnalyticsEvent",
+      "prismaTableName": "AnalyticsEvent",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "MediaAsset",
+      "prismaTableName": "MediaAsset",
+      "mappedTableName": null,
+      "observedDbMatch": "media_assets",
+      "matchType": "inferred_plural_snake",
+      "status": "prisma_managed_candidate",
+      "riskLevel": "low",
+      "notes": "—"
+    },
+    {
+      "modelName": "SyncedPost",
+      "prismaTableName": "SyncedPost",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "AdminContentBlock",
+      "prismaTableName": "AdminContentBlock",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "HomepageConfig",
+      "prismaTableName": "HomepageConfig",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "ContentItemOverride",
+      "prismaTableName": "ContentItemOverride",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "SiteSettings",
+      "prismaTableName": "SiteSettings",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "PlatformConnection",
+      "prismaTableName": "PlatformConnection",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "InboundContentItem",
+      "prismaTableName": "InboundContentItem",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "ContentDecision",
+      "prismaTableName": "ContentDecision",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "PlatformMetricSnapshot",
+      "prismaTableName": "PlatformMetricSnapshot",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "OwnedMediaAsset",
+      "prismaTableName": "OwnedMediaAsset",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "OwnedMediaAnnotation",
+      "prismaTableName": "OwnedMediaAnnotation",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "OwnedMediaTranscript",
+      "prismaTableName": "OwnedMediaTranscript",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "OwnedMediaQuoteCandidate",
+      "prismaTableName": "OwnedMediaQuoteCandidate",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "County",
+      "prismaTableName": "County",
+      "mappedTableName": null,
+      "observedDbMatch": "counties",
+      "matchType": "inferred_plural_snake",
+      "status": "prisma_managed_candidate",
+      "riskLevel": "low",
+      "notes": "—"
+    },
+    {
+      "modelName": "ElectionResultSource",
+      "prismaTableName": "ElectionResultSource",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "ElectionContestResult",
+      "prismaTableName": "ElectionContestResult",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "ElectionCountyResult",
+      "prismaTableName": "ElectionCountyResult",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "ElectionCandidateResult",
+      "prismaTableName": "ElectionCandidateResult",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "ElectionPrecinctResult",
+      "prismaTableName": "ElectionPrecinctResult",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "ElectionPrecinctCandidateResult",
+      "prismaTableName": "ElectionPrecinctCandidateResult",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CountyCampaignStats",
+      "prismaTableName": "CountyCampaignStats",
+      "mappedTableName": null,
+      "observedDbMatch": "county_campaign_targets",
+      "matchType": "legacy_alias",
+      "status": "needs_mapping_review",
+      "riskLevel": "high",
+      "notes": "matched via curated legacy alias list"
+    },
+    {
+      "modelName": "CountyPublicDemographics",
+      "prismaTableName": "CountyPublicDemographics",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CountyRegistrationSnapshot",
+      "prismaTableName": "CountyRegistrationSnapshot",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CountyStrategyKpi",
+      "prismaTableName": "CountyStrategyKpi",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CountyElectedOfficial",
+      "prismaTableName": "CountyElectedOfficial",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "VoterFileSnapshot",
+      "prismaTableName": "VoterFileSnapshot",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CountyVoterMetrics",
+      "prismaTableName": "CountyVoterMetrics",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "VoterRecord",
+      "prismaTableName": "VoterRecord",
+      "mappedTableName": null,
+      "observedDbMatch": "voters",
+      "matchType": "legacy_alias",
+      "status": "needs_mapping_review",
+      "riskLevel": "high",
+      "notes": "matched via curated legacy alias list"
+    },
+    {
+      "modelName": "VoterElectionParticipation",
+      "prismaTableName": "VoterElectionParticipation",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "VoterSignal",
+      "prismaTableName": "VoterSignal",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "VoterModelClassification",
+      "prismaTableName": "VoterModelClassification",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "VoterInteraction",
+      "prismaTableName": "VoterInteraction",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "RelationalContact",
+      "prismaTableName": "RelationalContact",
+      "mappedTableName": null,
+      "observedDbMatch": "contacts",
+      "matchType": "legacy_alias",
+      "status": "needs_mapping_review",
+      "riskLevel": "high",
+      "notes": "matched via curated legacy alias list"
+    },
+    {
+      "modelName": "VoterVotePlan",
+      "prismaTableName": "VoterVotePlan",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "VoterSnapshotChange",
+      "prismaTableName": "VoterSnapshotChange",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CampaignEvent",
+      "prismaTableName": "CampaignEvent",
+      "mappedTableName": null,
+      "observedDbMatch": "events",
+      "matchType": "legacy_alias",
+      "status": "needs_mapping_review",
+      "riskLevel": "high",
+      "notes": "matched via curated legacy alias list"
+    },
+    {
+      "modelName": "FestivalIngestRun",
+      "prismaTableName": "FestivalIngestRun",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "ArkansasFestivalIngest",
+      "prismaTableName": "ArkansasFestivalIngest",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "FestivalCoveragePlanSnapshot",
+      "prismaTableName": "FestivalCoveragePlanSnapshot",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CampaignTask",
+      "prismaTableName": "CampaignTask",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "WorkflowTemplate",
+      "prismaTableName": "WorkflowTemplate",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "WorkflowTemplateTask",
+      "prismaTableName": "WorkflowTemplateTask",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "WorkflowRun",
+      "prismaTableName": "WorkflowRun",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "VolunteerAsk",
+      "prismaTableName": "VolunteerAsk",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "EventSignup",
+      "prismaTableName": "EventSignup",
+      "mappedTableName": null,
+      "observedDbMatch": "volunteer_signups",
+      "matchType": "legacy_alias",
+      "status": "needs_mapping_review",
+      "riskLevel": "medium",
+      "notes": "matched via curated legacy alias list"
+    },
+    {
+      "modelName": "TeamRoleAssignment",
+      "prismaTableName": "TeamRoleAssignment",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "MediaIngestBatch",
+      "prismaTableName": "MediaIngestBatch",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "OwnedMediaCollection",
+      "prismaTableName": "OwnedMediaCollection",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "OwnedMediaCollectionItem",
+      "prismaTableName": "OwnedMediaCollectionItem",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "OwnedMediaReviewLog",
+      "prismaTableName": "OwnedMediaReviewLog",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "OwnedMediaDerivativeJob",
+      "prismaTableName": "OwnedMediaDerivativeJob",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "SignupSheetDocument",
+      "prismaTableName": "SignupSheetDocument",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "SignupSheetExtraction",
+      "prismaTableName": "SignupSheetExtraction",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "SignupSheetEntry",
+      "prismaTableName": "SignupSheetEntry",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "VolunteerMatchCandidate",
+      "prismaTableName": "VolunteerMatchCandidate",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationThread",
+      "prismaTableName": "CommunicationThread",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "1 field(s) with @map"
+    },
+    {
+      "modelName": "CommunicationMessage",
+      "prismaTableName": "CommunicationMessage",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationTemplate",
+      "prismaTableName": "CommunicationTemplate",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "AudienceSegment",
+      "prismaTableName": "AudienceSegment",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationCampaign",
+      "prismaTableName": "CommunicationCampaign",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationCampaignRecipient",
+      "prismaTableName": "CommunicationCampaignRecipient",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationActionQueue",
+      "prismaTableName": "CommunicationActionQueue",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationTag",
+      "prismaTableName": "CommunicationTag",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationThreadTag",
+      "prismaTableName": "CommunicationThreadTag",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationPlan",
+      "prismaTableName": "CommunicationPlan",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationDraft",
+      "prismaTableName": "CommunicationDraft",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationVariant",
+      "prismaTableName": "CommunicationVariant",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationSend",
+      "prismaTableName": "CommunicationSend",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailWorkflowItem",
+      "prismaTableName": "EmailWorkflowItem",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailContactProfile",
+      "prismaTableName": "EmailContactProfile",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailContactProfileFact",
+      "prismaTableName": "EmailContactProfileFact",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailContactProfileFactSuggestion",
+      "prismaTableName": "EmailContactProfileFactSuggestion",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailAudienceHint",
+      "prismaTableName": "EmailAudienceHint",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailAudienceDefinition",
+      "prismaTableName": "EmailAudienceDefinition",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailAudiencePreviewRun",
+      "prismaTableName": "EmailAudiencePreviewRun",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "MessageStudioDraft",
+      "prismaTableName": "MessageStudioDraft",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "MessageStudioDraftRevision",
+      "prismaTableName": "MessageStudioDraftRevision",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailContactImportBatch",
+      "prismaTableName": "EmailContactImportBatch",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailContactImportRow",
+      "prismaTableName": "EmailContactImportRow",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailContactImportDecision",
+      "prismaTableName": "EmailContactImportDecision",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "SendGridContactMap",
+      "prismaTableName": "SendGridContactMap",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "SendGridAudienceMap",
+      "prismaTableName": "SendGridAudienceMap",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "SendGridSuppression",
+      "prismaTableName": "SendGridSuppression",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "SendGridEvent",
+      "prismaTableName": "SendGridEvent",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "SendGridContactSyncRun",
+      "prismaTableName": "SendGridContactSyncRun",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailSendExecution",
+      "prismaTableName": "EmailSendExecution",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailSendRecipient",
+      "prismaTableName": "EmailSendRecipient",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "EmailSendApproval",
+      "prismaTableName": "EmailSendApproval",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationRecipient",
+      "prismaTableName": "CommunicationRecipient",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationRecipientEvent",
+      "prismaTableName": "CommunicationRecipientEvent",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CommunicationLinkDefinition",
+      "prismaTableName": "CommunicationLinkDefinition",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CommsPlanAudienceSegment",
+      "prismaTableName": "CommsPlanAudienceSegment",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CommsPlanAudienceSegmentMember",
+      "prismaTableName": "CommsPlanAudienceSegmentMember",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "MediaOutreachItem",
+      "prismaTableName": "MediaOutreachItem",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "StaffGmailAccount",
+      "prismaTableName": "StaffGmailAccount",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CalendarSource",
+      "prismaTableName": "CalendarSource",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "CalendarWatchChannel",
+      "prismaTableName": "CalendarWatchChannel",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "WeeklyCampaignPlan",
+      "prismaTableName": "WeeklyCampaignPlan",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "WeeklyBigRock",
+      "prismaTableName": "WeeklyBigRock",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "EventApproval",
+      "prismaTableName": "EventApproval",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "EventStageChangeLog",
+      "prismaTableName": "EventStageChangeLog",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "EventSyncLog",
+      "prismaTableName": "EventSyncLog",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "EventAnalyticsSnapshot",
+      "prismaTableName": "EventAnalyticsSnapshot",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "ExternalMediaSource",
+      "prismaTableName": "ExternalMediaSource",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "ExternalMediaMention",
+      "prismaTableName": "ExternalMediaMention",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "ExternalMediaIngestRun",
+      "prismaTableName": "ExternalMediaIngestRun",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "OppositionEntity",
+      "prismaTableName": "OppositionEntity",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "OppositionSource",
+      "prismaTableName": "OppositionSource",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "OppositionBillRecord",
+      "prismaTableName": "OppositionBillRecord",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "OppositionVoteRecord",
+      "prismaTableName": "OppositionVoteRecord",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "OppositionFinanceRecord",
+      "prismaTableName": "OppositionFinanceRecord",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "OppositionMessageRecord",
+      "prismaTableName": "OppositionMessageRecord",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "OppositionVideoRecord",
+      "prismaTableName": "OppositionVideoRecord",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "OppositionNewsMention",
+      "prismaTableName": "OppositionNewsMention",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "OppositionElectionPattern",
+      "prismaTableName": "OppositionElectionPattern",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    },
+    {
+      "modelName": "OppositionAccountabilityItem",
+      "prismaTableName": "OppositionAccountabilityItem",
+      "mappedTableName": null,
+      "observedDbMatch": null,
+      "matchType": "none",
+      "status": "missing_safe_to_create_candidate",
+      "riskLevel": "medium",
+      "notes": "—"
+    }
+  ],
+  "migrationFootprints": [
+    {
+      "migration": "20260221120000_county_command_pages",
+      "createTables": [
+        "County",
+        "CountyCampaignStats",
+        "CountyPublicDemographics",
+        "CountyElectedOfficial"
+      ],
+      "alterTargets": [
+        "CountyCampaignStats",
+        "CountyPublicDemographics",
+        "CountyElectedOfficial"
+      ],
+      "createTypeCount": 3,
+      "createIndexCount": 6
+    },
+    {
+      "migration": "20260221143000_voter_file_snapshots_and_metrics",
+      "createTables": [
+        "VoterFileSnapshot",
+        "CountyVoterMetrics",
+        "VoterRecord"
+      ],
+      "alterTargets": [
+        "VoterFileSnapshot",
+        "CountyVoterMetrics",
+        "VoterRecord"
+      ],
+      "createTypeCount": 1,
+      "createIndexCount": 10
+    },
+    {
+      "migration": "20260221180000_voter_warehouse_hardening",
+      "createTables": [
+        "VoterSnapshotChange"
+      ],
+      "alterTargets": [
+        "VoterFileSnapshot",
+        "CountyVoterMetrics",
+        "VoterRecord",
+        "VoterSnapshotChange"
+      ],
+      "createTypeCount": 1,
+      "createIndexCount": 5
+    },
+    {
+      "migration": "20260421120000_init",
+      "createTables": [
+        "User",
+        "VolunteerProfile",
+        "Commitment",
+        "Submission",
+        "SearchChunk",
+        "AnalyticsEvent"
+      ],
+      "alterTargets": [
+        "VolunteerProfile",
+        "Commitment",
+        "Submission"
+      ],
+      "createTypeCount": 0,
+      "createIndexCount": 3
+    },
+    {
+      "migration": "20260421140000_admin_content_board",
+      "createTables": [
+        "MediaAsset",
+        "SyncedPost",
+        "AdminContentBlock",
+        "HomepageConfig",
+        "ContentItemOverride",
+        "SiteSettings"
+      ],
+      "alterTargets": [
+        "SyncedPost",
+        "ContentItemOverride"
+      ],
+      "createTypeCount": 3,
+      "createIndexCount": 7
+    },
+    {
+      "migration": "20260421150000_homepage_editorial_media_dims",
+      "createTables": [],
+      "alterTargets": [
+        "MediaAsset",
+        "HomepageConfig"
+      ],
+      "createTypeCount": 0,
+      "createIndexCount": 0
+    },
+    {
+      "migration": "20260421180000_content_orchestrator",
+      "createTables": [
+        "PlatformConnection",
+        "InboundContentItem",
+        "ContentDecision",
+        "PlatformMetricSnapshot"
+      ],
+      "alterTargets": [
+        "MediaAsset",
+        "InboundContentItem",
+        "ContentDecision",
+        "PlatformMetricSnapshot"
+      ],
+      "createTypeCount": 6,
+      "createIndexCount": 8
+    },
+    {
+      "migration": "20260421194722_content_hub_phase1",
+      "createTables": [],
+      "alterTargets": [
+        "HomepageConfig",
+        "InboundContentItem",
+        "SyncedPost"
+      ],
+      "createTypeCount": 1,
+      "createIndexCount": 2
+    },
+    {
+      "migration": "20260421200303_campaign_owned_media",
+      "createTables": [
+        "OwnedMediaAsset",
+        "OwnedMediaTranscript",
+        "OwnedMediaQuoteCandidate"
+      ],
+      "alterTargets": [
+        "OwnedMediaTranscript",
+        "OwnedMediaQuoteCandidate"
+      ],
+      "createTypeCount": 9,
+      "createIndexCount": 10
+    },
+    {
+      "migration": "20260421215343_campaign_ops_slice1",
+      "createTables": [
+        "CampaignEvent",
+        "CampaignTask",
+        "WorkflowTemplate",
+        "WorkflowTemplateTask",
+        "WorkflowRun",
+        "VolunteerAsk",
+        "EventSignup",
+        "TeamRoleAssignment",
+        "MediaIngestBatch"
+      ],
+      "alterTargets": [
+        "OwnedMediaAsset",
+        "CampaignEvent",
+        "CampaignTask",
+        "WorkflowTemplateTask",
+        "WorkflowRun",
+        "VolunteerAsk",
+        "EventSignup",
+        "TeamRoleAssignment",
+        "MediaIngestBatch"
+      ],
+      "createTypeCount": 12,
+      "createIndexCount": 20
+    },
+    {
+      "migration": "20260421220000_owned_media_geo_ingest",
+      "createTables": [],
+      "alterTargets": [
+        "OwnedMediaAsset"
+      ],
+      "createTypeCount": 2,
+      "createIndexCount": 6
+    },
+    {
+      "migration": "20260421220304_owned_media_annotations_slice2",
+      "createTables": [
+        "OwnedMediaAnnotation"
+      ],
+      "alterTargets": [
+        "OwnedMediaAsset",
+        "OwnedMediaAnnotation"
+      ],
+      "createTypeCount": 1,
+      "createIndexCount": 5
+    },
+    {
+      "migration": "20260421221514_volunteer_signup_sheet_intake",
+      "createTables": [
+        "SignupSheetDocument",
+        "SignupSheetExtraction",
+        "SignupSheetEntry",
+        "VolunteerMatchCandidate"
+      ],
+      "alterTargets": [
+        "User",
+        "VoterRecord",
+        "SignupSheetDocument",
+        "SignupSheetExtraction",
+        "SignupSheetEntry",
+        "VolunteerMatchCandidate"
+      ],
+      "createTypeCount": 3,
+      "createIndexCount": 10
+    },
+    {
+      "migration": "20260421222620_comms_workbench_step1",
+      "createTables": [
+        "CommunicationThread",
+        "CommunicationMessage",
+        "CommunicationActionQueue",
+        "CommunicationTag",
+        "CommunicationThreadTag"
+      ],
+      "alterTargets": [
+        "CommunicationThread",
+        "CommunicationMessage",
+        "CommunicationActionQueue",
+        "CommunicationThreadTag"
+      ],
+      "createTypeCount": 7,
+      "createIndexCount": 12
+    },
+    {
+      "migration": "20260421223000_owned_media_geo_indexes",
+      "createTables": [],
+      "alterTargets": [],
+      "createTypeCount": 0,
+      "createIndexCount": 2
+    },
+    {
+      "migration": "20260421232900_calendar_hq_and_google",
+      "createTables": [
+        "CalendarSource",
+        "CalendarWatchChannel",
+        "EventApproval",
+        "EventSyncLog",
+        "EventAnalyticsSnapshot"
+      ],
+      "alterTargets": [
+        "CampaignEvent",
+        "CommunicationActionQueue",
+        "CalendarSource",
+        "CalendarWatchChannel",
+        "EventApproval",
+        "EventSyncLog",
+        "EventAnalyticsSnapshot"
+      ],
+      "createTypeCount": 7,
+      "createIndexCount": 13
+    },
+    {
+      "migration": "20260422003847_weekly_command_matrix",
+      "createTables": [
+        "WeeklyCampaignPlan",
+        "WeeklyBigRock"
+      ],
+      "alterTargets": [
+        "CampaignEvent",
+        "CampaignTask",
+        "WeeklyBigRock"
+      ],
+      "createTypeCount": 1,
+      "createIndexCount": 4
+    },
+    {
+      "migration": "20260422010000_slice1_event_readiness",
+      "createTables": [],
+      "alterTargets": [
+        "CampaignEvent"
+      ],
+      "createTypeCount": 1,
+      "createIndexCount": 0
+    },
+    {
+      "migration": "20260422010100_slice1_event_readiness",
+      "createTables": [],
+      "alterTargets": [],
+      "createTypeCount": 0,
+      "createIndexCount": 0
+    },
+    {
+      "migration": "20260422012659_event_stage_log_and_lifecycle_fields",
+      "createTables": [
+        "EventStageChangeLog"
+      ],
+      "alterTargets": [
+        "CampaignEvent",
+        "EventStageChangeLog"
+      ],
+      "createTypeCount": 0,
+      "createIndexCount": 2
+    },
+    {
+      "migration": "20260422013434_slice3_event_comms_fields",
+      "createTables": [],
+      "alterTargets": [
+        "CampaignEvent"
+      ],
+      "createTypeCount": 0,
+      "createIndexCount": 0
+    },
+    {
+      "migration": "20260422014544_slice4_event_workflow_tasks",
+      "createTables": [],
+      "alterTargets": [
+        "CampaignTask",
+        "WorkflowTemplate",
+        "WorkflowTemplateTask"
+      ],
+      "createTypeCount": 0,
+      "createIndexCount": 2
+    },
+    {
+      "migration": "20260422015812_slice5_google_calendar_sync",
+      "createTables": [],
+      "alterTargets": [
+        "CalendarSource",
+        "CampaignEvent"
+      ],
+      "createTypeCount": 1,
+      "createIndexCount": 3
+    },
+    {
+      "migration": "20260422120000_comms_tier1_contact_preferences",
+      "createTables": [
+        "ContactPreference"
+      ],
+      "alterTargets": [
+        "CommunicationThread",
+        "ContactPreference"
+      ],
+      "createTypeCount": 2,
+      "createIndexCount": 3
+    },
+    {
+      "migration": "20260422150000_arkansas_festival_ingest",
+      "createTables": [
+        "FestivalIngestRun",
+        "ArkansasFestivalIngest",
+        "FestivalCoveragePlanSnapshot"
+      ],
+      "alterTargets": [
+        "ArkansasFestivalIngest"
+      ],
+      "createTypeCount": 2,
+      "createIndexCount": 5
+    },
+    {
+      "migration": "20260422160000_festival_public_form",
+      "createTables": [],
+      "alterTargets": [
+        "ArkansasFestivalIngest"
+      ],
+      "createTypeCount": 0,
+      "createIndexCount": 0
+    },
+    {
+      "migration": "20260423000000_tier2_broadcast_engine",
+      "createTables": [
+        "CommunicationTemplate",
+        "AudienceSegment",
+        "CommunicationCampaign",
+        "CommunicationCampaignRecipient"
+      ],
+      "alterTargets": [
+        "EventSignup",
+        "CommunicationMessage",
+        "CommunicationTemplate",
+        "AudienceSegment",
+        "CommunicationCampaign",
+        "CommunicationCampaignRecipient"
+      ],
+      "createTypeCount": 5,
+      "createIndexCount": 12
+    },
+    {
+      "migration": "20260423120000_tier25_webhooks_gmail",
+      "createTables": [
+        "StaffGmailAccount"
+      ],
+      "alterTargets": [
+        "CommunicationMessage",
+        "CommunicationCampaign",
+        "CommunicationCampaignRecipient",
+        "StaffGmailAccount"
+      ],
+      "createTypeCount": 0,
+      "createIndexCount": 2
+    },
+    {
+      "migration": "20260424100000_tier3b_event_orchestration",
+      "createTables": [],
+      "alterTargets": [
+        "CommunicationCampaign"
+      ],
+      "createTypeCount": 1,
+      "createIndexCount": 3
+    },
+    {
+      "migration": "20260424180000_intel3_opposition_intelligence_schema",
+      "createTables": [
+        "OppositionEntity",
+        "OppositionSource",
+        "OppositionBillRecord",
+        "OppositionVoteRecord",
+        "OppositionFinanceRecord",
+        "OppositionMessageRecord",
+        "OppositionVideoRecord",
+        "OppositionNewsMention",
+        "OppositionElectionPattern",
+        "OppositionAccountabilityItem"
+      ],
+      "alterTargets": [
+        "OppositionBillRecord",
+        "OppositionVoteRecord",
+        "OppositionFinanceRecord",
+        "OppositionMessageRecord",
+        "OppositionVideoRecord",
+        "OppositionNewsMention",
+        "OppositionElectionPattern",
+        "OppositionAccountabilityItem"
+      ],
+      "createTypeCount": 4,
+      "createIndexCount": 21
+    },
+    {
+      "migration": "20260424190000_voter_election_participation",
+      "createTables": [
+        "VoterElectionParticipation"
+      ],
+      "alterTargets": [
+        "VoterElectionParticipation"
+      ],
+      "createTypeCount": 1,
+      "createIndexCount": 4
+    },
+    {
+      "migration": "20260424200000_county_intel_2_schema",
+      "createTables": [
+        "CountyRegistrationSnapshot",
+        "CountyStrategyKpi"
+      ],
+      "alterTargets": [
+        "CountyPublicDemographics",
+        "CountyRegistrationSnapshot",
+        "CountyStrategyKpi"
+      ],
+      "createTypeCount": 0,
+      "createIndexCount": 3
+    },
+    {
+      "migration": "20260425120000_external_media_monitor",
+      "createTables": [
+        "ExternalMediaSource",
+        "ExternalMediaMention",
+        "ExternalMediaIngestRun"
+      ],
+      "alterTargets": [
+        "ExternalMediaMention"
+      ],
+      "createTypeCount": 5,
+      "createIndexCount": 10
+    },
+    {
+      "migration": "20260425130000_campaignos_phase1_workflow_intake",
+      "createTables": [
+        "WorkflowIntake",
+        "EventRequest",
+        "WorkflowAction"
+      ],
+      "alterTargets": [
+        "WorkflowIntake",
+        "EventRequest",
+        "WorkflowAction"
+      ],
+      "createTypeCount": 3,
+      "createIndexCount": 9
+    },
+    {
+      "migration": "20260425140000_social_workbench_foundation",
+      "createTables": [
+        "SocialAccount",
+        "SocialContentItem",
+        "SocialPlatformVariant"
+      ],
+      "alterTargets": [
+        "CampaignTask",
+        "SocialContentItem",
+        "SocialPlatformVariant"
+      ],
+      "createTypeCount": 4,
+      "createIndexCount": 11
+    },
+    {
+      "migration": "20260426120000_social_workbench_media_library",
+      "createTables": [
+        "SocialContentMediaRef"
+      ],
+      "alterTargets": [
+        "OwnedMediaAsset",
+        "SocialContentMediaRef"
+      ],
+      "createTypeCount": 1,
+      "createIndexCount": 6
+    },
+    {
+      "migration": "20260427120000_social_workbench_analytics",
+      "createTables": [
+        "SocialPerformanceSnapshot",
+        "SocialContentStrategicInsight"
+      ],
+      "alterTargets": [
+        "SocialPerformanceSnapshot",
+        "SocialContentStrategicInsight"
+      ],
+      "createTypeCount": 2,
+      "createIndexCount": 4
+    },
+    {
+      "migration": "20260428120000_conversation_monitoring",
+      "createTables": [
+        "ConversationWatchlist",
+        "ConversationItem",
+        "ConversationAnalysis",
+        "ConversationCluster",
+        "ConversationClusterItem",
+        "ConversationOpportunity"
+      ],
+      "alterTargets": [
+        "ConversationWatchlist",
+        "ConversationItem",
+        "ConversationAnalysis",
+        "ConversationCluster",
+        "ConversationClusterItem",
+        "ConversationOpportunity"
+      ],
+      "createTypeCount": 10,
+      "createIndexCount": 20
+    },
+    {
+      "migration": "20260429120000_owned_media_dam_media_center",
+      "createTables": [
+        "OwnedMediaCollection",
+        "OwnedMediaCollectionItem",
+        "OwnedMediaReviewLog",
+        "OwnedMediaDerivativeJob"
+      ],
+      "alterTargets": [
+        "MediaIngestBatch",
+        "OwnedMediaAsset",
+        "OwnedMediaCollectionItem",
+        "OwnedMediaReviewLog",
+        "OwnedMediaDerivativeJob"
+      ],
+      "createTypeCount": 4,
+      "createIndexCount": 21
+    },
+    {
+      "migration": "20260430120000_social_actionable_analytics",
+      "createTables": [],
+      "alterTargets": [
+        "SocialContentItem",
+        "SocialContentStrategicInsight"
+      ],
+      "createTypeCount": 2,
+      "createIndexCount": 1
+    },
+    {
+      "migration": "20260430133000_analytics_recommendation_outcomes",
+      "createTables": [
+        "AnalyticsRecommendationOutcome"
+      ],
+      "alterTargets": [
+        "AnalyticsRecommendationOutcome"
+      ],
+      "createTypeCount": 1,
+      "createIndexCount": 5
+    },
+    {
+      "migration": "20260431120000_social_analytics_tactic_and_followup_v2",
+      "createTables": [],
+      "alterTargets": [
+        "SocialContentItem"
+      ],
+      "createTypeCount": 1,
+      "createIndexCount": 1
+    },
+    {
+      "migration": "20260431140000_social_content_draft",
+      "createTables": [
+        "SocialContentDraft"
+      ],
+      "alterTargets": [
+        "SocialContentDraft"
+      ],
+      "createTypeCount": 0,
+      "createIndexCount": 2
+    },
+    {
+      "migration": "20260431150000_social_content_draft_refine",
+      "createTables": [],
+      "alterTargets": [
+        "SocialContentDraft"
+      ],
+      "createTypeCount": 0,
+      "createIndexCount": 0
+    },
+    {
+      "migration": "20260431160000_owned_media_center_canonical_review",
+      "createTables": [],
+      "alterTargets": [
+        "OwnedMediaAsset"
+      ],
+      "createTypeCount": 0,
+      "createIndexCount": 2
+    },
+    {
+      "migration": "20260431170000_comms_workbench_packet1",
+      "createTables": [
+        "CommunicationPlan",
+        "CommunicationDraft",
+        "CommunicationVariant",
+        "CommunicationSend",
+        "MediaOutreachItem"
+      ],
+      "alterTargets": [
+        "CommunicationPlan",
+        "CommunicationDraft",
+        "CommunicationVariant",
+        "CommunicationSend",
+        "MediaOutreachItem"
+      ],
+      "createTypeCount": 11,
+      "createIndexCount": 30
+    },
+    {
+      "migration": "20260431180000_comms_packet7_variant_review_fields",
+      "createTables": [],
+      "alterTargets": [
+        "CommunicationVariant"
+      ],
+      "createTypeCount": 0,
+      "createIndexCount": 2
+    },
+    {
+      "migration": "20260431185000_comms_packet7_variant_status_backfill",
+      "createTables": [],
+      "alterTargets": [],
+      "createTypeCount": 0,
+      "createIndexCount": 0
+    },
+    {
+      "migration": "20260431190000_comms_send_operator_retry_12a",
+      "createTables": [],
+      "alterTargets": [
+        "CommunicationSend"
+      ],
+      "createTypeCount": 0,
+      "createIndexCount": 1
+    },
+    {
+      "migration": "20260431200000_comms_contact_engagement_ce1_foundation",
+      "createTables": [
+        "CommsPlanAudienceSegment",
+        "CommunicationRecipient",
+        "CommunicationRecipientEvent",
+        "CommunicationLinkDefinition",
+        "CommsPlanAudienceSegmentMember"
+      ],
+      "alterTargets": [
+        "CommsPlanAudienceSegment",
+        "CommunicationRecipient",
+        "CommunicationRecipientEvent",
+        "CommunicationLinkDefinition",
+        "CommsPlanAudienceSegmentMember"
+      ],
+      "createTypeCount": 6,
+      "createIndexCount": 20
+    },
+    {
+      "migration": "20260501120000_contact_engagement_ce1_indexes",
+      "createTables": [],
+      "alterTargets": [],
+      "createTypeCount": 0,
+      "createIndexCount": 5
+    },
+    {
+      "migration": "20260502120000_contact_engagement_ce3_recipient_unique",
+      "createTables": [],
+      "alterTargets": [],
+      "createTypeCount": 0,
+      "createIndexCount": 1
+    },
+    {
+      "migration": "20260504120000_email_workflow_e1",
+      "createTables": [
+        "EmailWorkflowItem"
+      ],
+      "alterTargets": [
+        "EmailWorkflowItem"
+      ],
+      "createTypeCount": 8,
+      "createIndexCount": 8
+    },
+    {
+      "migration": "20260504130000_email_workflow_status_enriched",
+      "createTables": [],
+      "alterTargets": [],
+      "createTypeCount": 0,
+      "createIndexCount": 0
+    },
+    {
+      "migration": "20260504140000_seat1_position_seat",
+      "createTables": [
+        "PositionSeat"
+      ],
+      "alterTargets": [
+        "PositionSeat"
+      ],
+      "createTypeCount": 1,
+      "createIndexCount": 3
+    },
+    {
+      "migration": "20260505190000_staff_gmail_sync_state",
+      "createTables": [],
+      "alterTargets": [
+        "StaffGmailAccount"
+      ],
+      "createTypeCount": 0,
+      "createIndexCount": 0
+    },
+    {
+      "migration": "20260505203000_email_contact_profile_graph",
+      "createTables": [
+        "EmailContactProfile",
+        "EmailContactProfileFact",
+        "EmailContactProfileFactSuggestion",
+        "EmailAudienceHint"
+      ],
+      "alterTargets": [
+        "EmailWorkflowItem",
+        "EmailContactProfile",
+        "EmailContactProfileFact",
+        "EmailContactProfileFactSuggestion",
+        "EmailAudienceHint"
+      ],
+      "createTypeCount": 3,
+      "createIndexCount": 11
+    },
+    {
+      "migration": "20260505220000_email_audience_studio_foundation",
+      "createTables": [
+        "EmailAudienceDefinition",
+        "EmailAudiencePreviewRun"
+      ],
+      "alterTargets": [
+        "EmailAudienceDefinition",
+        "EmailAudiencePreviewRun"
+      ],
+      "createTypeCount": 1,
+      "createIndexCount": 3
+    },
+    {
+      "migration": "20260506120000_email_sendgrid_foundation",
+      "createTables": [
+        "SendGridContactMap",
+        "SendGridAudienceMap",
+        "SendGridSuppression",
+        "SendGridEvent"
+      ],
+      "alterTargets": [
+        "SendGridContactMap",
+        "SendGridAudienceMap"
+      ],
+      "createTypeCount": 3,
+      "createIndexCount": 12
+    },
+    {
+      "migration": "20260507180000_email_contact_import_staging",
+      "createTables": [
+        "EmailContactImportBatch",
+        "EmailContactImportRow",
+        "EmailContactImportDecision"
+      ],
+      "alterTargets": [
+        "EmailContactImportBatch",
+        "EmailContactImportRow",
+        "EmailContactImportDecision"
+      ],
+      "createTypeCount": 3,
+      "createIndexCount": 7
+    },
+    {
+      "migration": "20260508120000_message_studio_server_drafts",
+      "createTables": [
+        "MessageStudioDraft",
+        "MessageStudioDraftRevision"
+      ],
+      "alterTargets": [
+        "MessageStudioDraft",
+        "MessageStudioDraftRevision"
+      ],
+      "createTypeCount": 1,
+      "createIndexCount": 4
+    },
+    {
+      "migration": "20260509120000_comp2_compliance_document",
+      "createTables": [
+        "ComplianceDocument"
+      ],
+      "alterTargets": [
+        "ComplianceDocument"
+      ],
+      "createTypeCount": 1,
+      "createIndexCount": 3
+    },
+    {
+      "migration": "20260509120000_sendgrid_contact_sync_run",
+      "createTables": [
+        "SendGridContactSyncRun"
+      ],
+      "alterTargets": [
+        "SendGridContactSyncRun"
+      ],
+      "createTypeCount": 1,
+      "createIndexCount": 2
+    },
+    {
+      "migration": "20260510120000_fin1_financial_transaction",
+      "createTables": [
+        "FinancialTransaction"
+      ],
+      "alterTargets": [
+        "FinancialTransaction"
+      ],
+      "createTypeCount": 3,
+      "createIndexCount": 4
+    },
+    {
+      "migration": "20260510140000_email_send_execution",
+      "createTables": [
+        "EmailSendExecution",
+        "EmailSendRecipient",
+        "EmailSendApproval"
+      ],
+      "alterTargets": [
+        "EmailSendExecution",
+        "EmailSendRecipient",
+        "EmailSendApproval"
+      ],
+      "createTypeCount": 5,
+      "createIndexCount": 7
+    },
+    {
+      "migration": "20260511120000_budget2_budget_plan_line",
+      "createTables": [
+        "BudgetPlan",
+        "BudgetLine"
+      ],
+      "alterTargets": [
+        "BudgetLine"
+      ],
+      "createTypeCount": 1,
+      "createIndexCount": 3
+    },
+    {
+      "migration": "20260512120000_fin2_field1_youth1_foundation",
+      "createTables": [
+        "FieldUnit",
+        "FieldAssignment"
+      ],
+      "alterTargets": [
+        "FinancialTransaction",
+        "FieldUnit",
+        "FieldAssignment"
+      ],
+      "createTypeCount": 1,
+      "createIndexCount": 6
+    },
+    {
+      "migration": "20260513120000_data4_election_ingest_foundation",
+      "createTables": [
+        "ElectionResultSource",
+        "ElectionContestResult",
+        "ElectionCountyResult",
+        "ElectionCandidateResult",
+        "ElectionPrecinctResult",
+        "ElectionPrecinctCandidateResult"
+      ],
+      "alterTargets": [
+        "ElectionContestResult",
+        "ElectionCountyResult",
+        "ElectionCandidateResult",
+        "ElectionPrecinctResult",
+        "ElectionPrecinctCandidateResult"
+      ],
+      "createTypeCount": 1,
+      "createIndexCount": 12
+    },
+    {
+      "migration": "20260514120000_voter_model_1_interaction_1_foundation",
+      "createTables": [
+        "VoterSignal",
+        "VoterModelClassification",
+        "VoterInteraction",
+        "VoterVotePlan"
+      ],
+      "alterTargets": [
+        "VoterSignal",
+        "VoterModelClassification",
+        "VoterInteraction",
+        "VoterVotePlan"
+      ],
+      "createTypeCount": 10,
+      "createIndexCount": 10
+    },
+    {
+      "migration": "20260515120000_rel2_relational_contact_foundation",
+      "createTables": [
+        "RelationalContact"
+      ],
+      "alterTargets": [
+        "RelationalContact",
+        "VoterInteraction",
+        "VoterSignal"
+      ],
+      "createTypeCount": 4,
+      "createIndexCount": 7
+    }
+  ],
+  "databaseOnlyTables": [
+    "ar02_voter_dem_lean",
+    "ar02_voter_race",
+    "ar02_voters",
+    "ballot_initiatives",
+    "ballot_items",
+    "bls_county_economics",
+    "candidates",
+    "census_block_groups",
+    "census_demographics",
+    "census_tracts",
+    "civic_engagement_index",
+    "contact_origins",
+    "contact_voter_matches",
+    "contest_partisan_index",
+    "contests",
+    "county_results",
+    "county_turnout",
+    "donations",
+    "election_candidates",
+    "election_contests",
+    "election_results",
+    "elections",
+    "event_notifications",
+    "external_intelligence_sources",
+    "external_records",
+    "followups",
+    "geographic_scores",
+    "geographic_units",
+    "geography_leaders",
+    "ingestion_entities",
+    "ingestion_extractions",
+    "ingestion_files",
+    "ingestion_jobs",
+    "ingestion_mapping_suggestions",
+    "ingestion_reviews",
+    "ingestion_write_events",
+    "initiative_signatures",
+    "intelligence_links",
+    "interactions",
+    "leadership_roles",
+    "locations",
+    "media_entity_links",
+    "media_tags",
+    "message_audience_members",
+    "message_audiences",
+    "message_campaigns",
+    "message_events",
+    "message_queue",
+    "message_templates",
+    "organization_types",
+    "organizations",
+    "organizer_assignments",
+    "organizing_targets",
+    "organizing_unit_hierarchy",
+    "organizing_unit_memberships",
+    "organizing_unit_types",
+    "organizing_units",
+    "path_to_victory",
+    "people",
+    "person_geography",
+    "person_profiles",
+    "petition_signatures",
+    "petitions",
+    "precinct_scores",
+    "profiles",
+    "results",
+    "runoff_fracture_index",
+    "shifts",
+    "spatial_ref_sys",
+    "statewide_win_targets",
+    "target_universes",
+    "tasks",
+    "telemetry_events",
+    "training_certifications",
+    "training_courses",
+    "training_enrollments",
+    "training_events",
+    "training_modules",
+    "training_path_modules",
+    "training_paths",
+    "training_progress",
+    "training_records",
+    "turf_people",
+    "turfs",
+    "user_auth_methods",
+    "volunteer_intake_submissions",
+    "volunteer_sources",
+    "volunteers",
+    "voter_block_group_map",
+    "voter_geocoded",
+    "voter_import_batches",
+    "voter_party_model",
+    "voter_profiles",
+    "voter_registry",
+    "voter_scores",
+    "voter_vote_history",
+    "voter_vote_history_raw",
+    "workspace_feature_flags",
+    "workspace_geography_scope",
+    "workspace_members",
+    "workspace_roles",
+    "workspace_types",
+    "workspaces",
+    "youth_profiles"
+  ],
+  "legacyPreserveTables": [
+    "ar02_voter_dem_lean",
+    "ar02_voter_race",
+    "ar02_voters",
+    "bls_county_economics",
+    "contact_origins",
+    "contact_voter_matches",
+    "county_results",
+    "county_turnout",
+    "event_notifications",
+    "ingestion_write_events",
+    "message_audience_members",
+    "message_audiences",
+    "message_events",
+    "path_to_victory",
+    "person_profiles",
+    "profiles",
+    "telemetry_events",
+    "training_events",
+    "voter_block_group_map",
+    "voter_geocoded",
+    "voter_import_batches",
+    "voter_party_model",
+    "voter_profiles",
+    "voter_registry",
+    "voter_scores",
+    "voter_vote_history",
+    "voter_vote_history_raw",
+    "youth_profiles"
+  ],
+  "missingPrismaTables": [
+    "ComplianceDocument",
+    "FinancialTransaction",
+    "FieldUnit",
+    "FieldAssignment",
+    "BudgetPlan",
+    "BudgetLine",
+    "PositionSeat",
+    "ContactPreference",
+    "Commitment",
+    "WorkflowIntake",
+    "WorkflowAction",
+    "SocialContentItem",
+    "AnalyticsRecommendationOutcome",
+    "SocialContentDraft",
+    "SocialPlatformVariant",
+    "SocialPerformanceSnapshot",
+    "SocialContentStrategicInsight",
+    "ConversationWatchlist",
+    "ConversationItem",
+    "ConversationAnalysis",
+    "ConversationCluster",
+    "ConversationClusterItem",
+    "ConversationOpportunity",
+    "SocialContentMediaRef",
+    "SocialAccount",
+    "SearchChunk",
+    "AnalyticsEvent",
+    "SyncedPost",
+    "AdminContentBlock",
+    "HomepageConfig",
+    "ContentItemOverride",
+    "SiteSettings",
+    "PlatformConnection",
+    "InboundContentItem",
+    "ContentDecision",
+    "PlatformMetricSnapshot",
+    "OwnedMediaAsset",
+    "OwnedMediaAnnotation",
+    "OwnedMediaTranscript",
+    "OwnedMediaQuoteCandidate",
+    "ElectionResultSource",
+    "ElectionContestResult",
+    "ElectionCountyResult",
+    "ElectionCandidateResult",
+    "ElectionPrecinctResult",
+    "ElectionPrecinctCandidateResult",
+    "CountyPublicDemographics",
+    "CountyRegistrationSnapshot",
+    "CountyStrategyKpi",
+    "CountyElectedOfficial",
+    "VoterFileSnapshot",
+    "CountyVoterMetrics",
+    "VoterElectionParticipation",
+    "VoterSignal",
+    "VoterModelClassification",
+    "VoterInteraction",
+    "VoterVotePlan",
+    "VoterSnapshotChange",
+    "FestivalIngestRun",
+    "ArkansasFestivalIngest",
+    "FestivalCoveragePlanSnapshot",
+    "CampaignTask",
+    "WorkflowTemplate",
+    "WorkflowTemplateTask",
+    "WorkflowRun",
+    "VolunteerAsk",
+    "TeamRoleAssignment",
+    "MediaIngestBatch",
+    "OwnedMediaCollection",
+    "OwnedMediaCollectionItem",
+    "OwnedMediaReviewLog",
+    "OwnedMediaDerivativeJob",
+    "SignupSheetDocument",
+    "SignupSheetExtraction",
+    "SignupSheetEntry",
+    "VolunteerMatchCandidate",
+    "CommunicationThread",
+    "CommunicationMessage",
+    "CommunicationTemplate",
+    "AudienceSegment",
+    "CommunicationCampaign",
+    "CommunicationCampaignRecipient",
+    "CommunicationActionQueue",
+    "CommunicationTag",
+    "CommunicationThreadTag",
+    "CommunicationPlan",
+    "CommunicationDraft",
+    "CommunicationVariant",
+    "CommunicationSend",
+    "EmailWorkflowItem",
+    "EmailContactProfile",
+    "EmailContactProfileFact",
+    "EmailContactProfileFactSuggestion",
+    "EmailAudienceHint",
+    "EmailAudienceDefinition",
+    "EmailAudiencePreviewRun",
+    "MessageStudioDraft",
+    "MessageStudioDraftRevision",
+    "EmailContactImportBatch",
+    "EmailContactImportRow",
+    "EmailContactImportDecision",
+    "SendGridContactMap",
+    "SendGridAudienceMap",
+    "SendGridSuppression",
+    "SendGridEvent",
+    "SendGridContactSyncRun",
+    "EmailSendExecution",
+    "EmailSendRecipient",
+    "EmailSendApproval",
+    "CommunicationRecipient",
+    "CommunicationRecipientEvent",
+    "CommunicationLinkDefinition",
+    "CommsPlanAudienceSegment",
+    "CommsPlanAudienceSegmentMember",
+    "MediaOutreachItem",
+    "StaffGmailAccount",
+    "CalendarSource",
+    "CalendarWatchChannel",
+    "WeeklyCampaignPlan",
+    "WeeklyBigRock",
+    "EventApproval",
+    "EventStageChangeLog",
+    "EventSyncLog",
+    "EventAnalyticsSnapshot",
+    "ExternalMediaSource",
+    "ExternalMediaMention",
+    "ExternalMediaIngestRun",
+    "OppositionEntity",
+    "OppositionSource",
+    "OppositionBillRecord",
+    "OppositionVoteRecord",
+    "OppositionFinanceRecord",
+    "OppositionMessageRecord",
+    "OppositionVideoRecord",
+    "OppositionNewsMention",
+    "OppositionElectionPattern",
+    "OppositionAccountabilityItem"
+  ],
+  "mappingReviewNeeded": [
+    "User",
+    "VolunteerProfile",
+    "EventRequest",
+    "CountyCampaignStats",
+    "VoterRecord",
+    "RelationalContact",
+    "CampaignEvent",
+    "EventSignup"
+  ],
+  "baselineRecommendation": {
+    "strategy": "split_legacy_and_prisma_domains",
+    "safeToBaselineNow": false,
+    "reason": "Large legacy-only public surface alongside most Prisma models unmatched by name — treat warehouse / app domains separately before any migrate baseline.",
+    "nextRecommendedSlice": "REDDIRT-PRISMA-SCHEMA-MAP-ALIGNMENT-1.0"
+  },
+  "absoluteDoNotRunYet": [
+    "npx prisma migrate deploy",
+    "npx prisma migrate resolve",
+    "npx prisma db push",
+    "npx prisma migrate reset"
+  ]
+}
