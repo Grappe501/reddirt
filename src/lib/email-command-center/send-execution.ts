@@ -272,16 +272,15 @@ export async function runSendExecutionPreflight(sendExecutionId: string, preflig
   if (!ex.body?.trim()) fail("body", "Body required.");
   else pass("body", "Body present.");
 
-  const audienceDefinitionId = ex.emailAudienceDefinitionId;
-  if (!audienceDefinitionId) fail("audience", "Audience required.");
+  const audienceIdMaybe = ex.emailAudienceDefinitionId;
+  if (!audienceIdMaybe) fail("audience", "Audience required.");
   else pass("audience", "Audience linked.");
 
-  const audience =
-    audienceDefinitionId == null
-      ? null
-      : await prisma.emailAudienceDefinition.findUnique({
-          where: { id: audienceDefinitionId },
-        });
+  const audience = audienceIdMaybe
+    ? await prisma.emailAudienceDefinition.findUnique({
+        where: { id: audienceIdMaybe },
+      })
+    : null;
   if (!audience || audience.status !== "ACTIVE") fail("audience_active", "Audience must be ACTIVE.");
   else pass("audience_active", "Audience ACTIVE.");
 
@@ -310,8 +309,7 @@ export async function runSendExecutionPreflight(sendExecutionId: string, preflig
     pass("sync_run", "Test execution — SYNCED sync run not required.");
   }
 
-  const allProfiles =
-    audienceDefinitionId == null ? [] : await loadAudienceProfilesWithEmail(audienceDefinitionId);
+  const allProfiles = audienceIdMaybe ? await loadAudienceProfilesWithEmail(audienceIdMaybe) : [];
   const withEmail = allProfiles
     .map((p) => ({
       profileId: p.id,
