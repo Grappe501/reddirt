@@ -16,6 +16,7 @@
 | **Registry execution report** | [`develop_notes/REDDIRT_V2_ARCH_REGISTRY_1_0_REPORT.md`](../develop_notes/REDDIRT_V2_ARCH_REGISTRY_1_0_REPORT.md) |
 | **Read-only scan snapshot** | [`data/architecture/reddirt_v2_arch_scan_snapshot.json`](../data/architecture/reddirt_v2_arch_scan_snapshot.json) — regenerate: `node scripts/reddirt-v2-architecture-scan.mjs` |
 | **Registry validator** | `node scripts/validate-v2-arch-registry.mjs` |
+| **Self-build slice contract** | Schema [`data/selfbuild/reddirt_selfbuild_slice_schema.json`](../data/selfbuild/reddirt_selfbuild_slice_schema.json) — **REDDIRT-SELFBUILD-SLICE-SCHEMA-1.0** · protocol [`REDDIRT_SELFBUILD_SLICE_PROTOCOL.md`](./REDDIRT_SELFBUILD_SLICE_PROTOCOL.md) · validator [`scripts/validate-selfbuild-slice.mjs`](../scripts/validate-selfbuild-slice.mjs) (`cd RedDirt && node scripts/validate-selfbuild-slice.mjs`) |
 
 **Companion narrative (Comms V2 vision):** [`email-command-center-v2-master-blueprint.md`](./email-command-center-v2-master-blueprint.md) · [`email-command-center-v2-agent-planning-harness.md`](./email-command-center-v2-agent-planning-harness.md)  
 **Division continuity:** [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) · [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) · [`THREAD_HANDOFF_MASTER_MAP.md`](./THREAD_HANDOFF_MASTER_MAP.md) · [`system-division-map.md`](./system-division-map.md)
@@ -204,7 +205,8 @@ Future packets should:
 2. **Declare `allowedPaths` / `forbiddenPaths`** (see [`reddirt_v2_cursor_roadmap_seed.json`](../data/architecture/reddirt_v2_cursor_roadmap_seed.json) for seed patterns).  
 3. **List `proofRequired`** (`npm run typecheck`, `npm run check`, `npm run email:no-send-scan`, hosted gates, operator logs).  
 4. **Update** [`PROJECT_MASTER_MAP.md`](./PROJECT_MASTER_MAP.md) / [`DIVISION_MASTER_REGISTRY.md`](./DIVISION_MASTER_REGISTRY.md) when **division reality** moves; ECC work also updates [`campaign-email-command-center-progress-ledger.md`](./campaign-email-command-center-progress-ledger.md).  
-5. **Run** `node scripts/validate-v2-arch-registry.mjs` when `reddirt_v2_layer_registry.json` changes.
+5. **Run** `node scripts/validate-v2-arch-registry.mjs` when `reddirt_v2_layer_registry.json` changes.  
+6. **Optional machine slice object** — For queue-ready Cursor packets, express scope as JSON validated by [`scripts/validate-selfbuild-slice.mjs`](../scripts/validate-selfbuild-slice.mjs) against [`data/selfbuild/reddirt_selfbuild_slice_schema.json`](../data/selfbuild/reddirt_selfbuild_slice_schema.json) (see [`REDDIRT_SELFBUILD_SLICE_PROTOCOL.md`](./REDDIRT_SELFBUILD_SLICE_PROTOCOL.md)).
 
 Packets are **sequenced hints** in the roadmap seed, not automatic execution.
 

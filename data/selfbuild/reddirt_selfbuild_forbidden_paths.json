@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-SELFBUILD-FORBIDDEN-PATH-GATES-1.0",
+  "status": "active_boundary_seed",
+  "globalForbiddenPathPatterns": [
+    "sos-public/",
+    "../sos-public/",
+    "../ajax/",
+    "../phatlip/",
+    "../countyWorkbench/",
+    "RedDirt/../ajax/",
+    "RedDirt/../phatlip/",
+    "RedDirt/../countyWorkbench/",
+    "RedDirt/../sos-public/",
+    "package.json",
+    "netlify.toml",
+    ".github/workflows/"
+  ],
+  "conditionalForbiddenPathPatterns": [
+    {
+      "id": "prisma_schema_and_migrations",
+      "description": "Prisma schema and migration trees are forbidden unless slice is an approved database_migration packet.",
+      "unlessSliceTypes": ["database_migration"],
+      "patterns": [
+        "prisma/schema.prisma",
+        "prisma/migrations/"
+      ]
+    },
+    {
+      "id": "send_execution_surface",
+      "description": "Send execution and provider send API routes are forbidden unless an explicit steered execution packet lists them.",
+      "unlessSliceTypes": [],
+      "patterns": [
+        "send-execution",
+        "/send-execution",
+        "email-send-execution",
+        "SendGridMail",
+        "users.messages.send"
+      ]
+    }
+  ],
+  "protectedPublicSitePaths": [
+    "sos-public/",
+    "SOSWebsite/sos-public/",
+    "../sos-public/"
+  ],
+  "protectedSiblingAppPaths": [
+    "../ajax/",
+    "../phatlip/",
+    "../countyWorkbench/",
+    "ajax/",
+    "phatlip/",
+    "countyWorkbench/"
+  ],
+  "protectedSecretPatterns": [
+    ".env.local",
+    ".env.production",
+    ".env.development",
+    ".env.staging"
+  ],
+  "protectedSendExecutionPatterns": [
+    "send-execution",
+    "SendGridMail",
+    "sendgrid.send",
+    "messages.send",
+    "EMAIL_WORKFLOW_CAN_SEND"
+  ],
+  "protectedMigrationPatterns": [
+    "prisma/migrations/",
+    "prisma migrate",
+    "migrate deploy",
+    "db:migrate"
+  ],
+  "allowedDocumentationPaths": [
+    "RedDirt/docs/",
+    "RedDirt/develop_notes/",
+    "RedDirt/data/selfbuild/",
+    "RedDirt/data/architecture/"
+  ]
+}

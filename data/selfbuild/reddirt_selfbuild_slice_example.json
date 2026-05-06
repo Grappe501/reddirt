@@ -1,0 +1,101 @@
+{
+  "sliceId": "REDDIRT-EMAIL-HOSTED-DB-PROOF-1.0",
+  "title": "Kelly-Grappe-App hosted Postgres proof for Email Command Center (read-only)",
+  "sliceType": "production_proof",
+  "v2Layers": [
+    "communications_intelligence",
+    "deployment_environment_readiness",
+    "compliance_governance_safety"
+  ],
+  "mission": "Produce operator-verified evidence that the hosted Kelly-Grappe-App database matches Prisma expectations for Email Command Center surfaces—using read-only diagnostics and the gated hosted-db readiness view—without sends, migrations, schema edits, or production data mutation.",
+  "whyNow": "Local Docker green does not prove hosted Supabase/Neon wiring; downstream execution and import packets should not proceed until this gate records honest hosted connectivity and migration-applied state from read-only checks.",
+  "allowedPaths": [
+    "RedDirt/scripts/email-command-center-db-diagnose.mjs",
+    "RedDirt/scripts/email-command-center-preflight.mjs",
+    "RedDirt/src/app/admin/(board)/workbench/email-command-center/readiness/hosted-db/**",
+    "RedDirt/src/components/admin/email-command-center/HostedDbReadinessAssistantView.tsx",
+    "RedDirt/src/lib/email-command-center/read-model.ts",
+    "RedDirt/docs/deployment.md",
+    "RedDirt/docs/email-command-center-production-qa-closeout.md",
+    "RedDirt/develop_notes/**"
+  ],
+  "forbiddenPaths": [
+    "RedDirt/prisma/migrations/**",
+    "RedDirt/prisma/schema.prisma",
+    "RedDirt/src/app/api/**/send**",
+    "RedDirt/src/lib/**/send**",
+    "sos-public/**",
+    "../ajax/**",
+    "../phatlip/**",
+    "../countyWorkbench/**"
+  ],
+  "allowedReads": [
+    "RedDirt/.env.example (variable names only; never commit or paste .env values)",
+    "RedDirt/package.json script names for proof commands",
+    "Hosted provider dashboard (Supabase/Neon) — human-only; no secrets in repo or chat"
+  ],
+  "allowedWrites": [
+    "RedDirt/develop_notes/REDDIRT_EMAIL_HOSTED_DB_PROOF_1_0_REPORT.md",
+    "RedDirt/docs/PROJECT_MASTER_MAP.md (production-readiness / hosted gate narrative only, if this packet steers doc updates)"
+  ],
+  "requiredInputs": [
+    "Steve-confirmed hosted DATABASE_URL and DIRECT_URL targets for Kelly-Grappe-App (values never pasted into tickets or commits)",
+    "Operator session able to open admin (ADMIN_SECRET or auth path in use for that deploy)"
+  ],
+  "expectedOutputs": [
+    "Redacted output or log summary from npm run email:db:diagnose against the hosted target",
+    "Operator attestation that /admin/workbench/email-command-center/readiness/hosted-db was exercised behind auth (protected diagnostic route)",
+    "Production-readiness report section in develop_notes/REDDIRT_EMAIL_HOSTED_DB_PROOF_1_0_REPORT.md stating migrate-applied vs drift and explicit no-send posture",
+    "PROJECT_MASTER_MAP or companion ledger line updated only if this packet is approved to change hosted-readiness narrative"
+  ],
+  "proofRequired": [
+    "npm run email:db:diagnose — read-only presence and connectivity class proof (stdout captured redacted)",
+    "Optional: prisma migrate status — read-only migration ledger view against hosted DIRECT_URL when run by operator (no deploy)",
+    "Evidence that HostedDbReadinessAssistantView page loaded for hosted site (screenshot policy: no tokens, no PII)",
+    "Written statement: no production INSERT/UPDATE/DELETE performed as part of this slice"
+  ],
+  "checksRequired": [
+    "cd RedDirt && npm run email:db:diagnose",
+    "cd RedDirt && node scripts/validate-selfbuild-slice.mjs",
+    "Manual: open /admin/workbench/email-command-center/readiness/hosted-db on hosted deploy after auth",
+    "cd RedDirt && npm run email:no-send-scan (confirms no-send posture unchanged if steered for this pass)"
+  ],
+  "progressEffects": [
+    "May advance hosted DB gate narrative in PROJECT_MASTER_MAP / email readiness docs when proofs attach",
+    "Unlocks steered follow-ons that depend on hosted truth (never local-only assumptions)"
+  ],
+  "governanceRules": [
+    "No Gmail send, no SendGrid broadcast, no queue send, no auto-send — proof slice is connectivity and readiness only",
+    "No prisma migrate deploy, no new migration files, no schema.prisma edits",
+    "No seed runs, no bulk imports, no contact upserts — zero production data mutation",
+    "Protected diagnostic route is admin-auth gated; do not weaken middleware or expose diagnostics publicly"
+  ],
+  "humanApprovalGates": [
+    "Steve confirms hosted DB target and that diagnostics may run against it",
+    "Operator performs admin login and hosted URL verification; no shared credentials in Cursor chat"
+  ],
+  "mustNotDo": [
+    "No live sends or auto-send; no Gmail send or SendGrid broadcast",
+    "No real contact import; no automation worker activation",
+    "No printing secrets; no committing .env",
+    "No changing EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM",
+    "No unapproved migrations; no unapproved sibling app edits; no unapproved sos-public coupling",
+    "Run prisma db seed or voter/contact import against production (forbidden)",
+    "Edit RedDirt/prisma/schema.prisma or RedDirt/prisma/migrations/**"
+  ],
+  "rollbackNotes": [
+    "If only develop_notes and docs were added, rollback is delete or revert those files; no DB rollback required when no mutations occurred",
+    "If any mistaken write occurred, follow provider backup / counsel guidance outside this slice"
+  ],
+  "finalReturnFormat": [
+    "activeLane",
+    "sliceId",
+    "filesChanged",
+    "commandsRunAndResults",
+    "proofArtifacts",
+    "governanceAttestation",
+    "progressEffectsRealized",
+    "remainingBlockers",
+    "nextSafeSliceRecommendation"
+  ]
+}

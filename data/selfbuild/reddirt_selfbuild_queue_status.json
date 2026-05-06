@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-SELFBUILD-QUEUE-GENERATOR-1.0",
+  "generatedAt": "2026-05-06T22:00:00.000Z",
+  "totalQueueItems": 7,
+  "completed": 4,
+  "ready": 1,
+  "blocked": 2,
+  "highRisk": 3,
+  "productionProofItems": 3,
+  "nextRecommendedSlice": "REDDIRT-EMAIL-HOSTED-DB-PROOF-1.0",
+  "blockedProductionGates": [
+    "hosted_db_proof_not_canonical",
+    "live_send_blocked_until_steve",
+    "production_contact_ingestion_blocked",
+    "deployment_readiness_separate"
+  ],
+  "currentLane": "RedDirt/"
+}

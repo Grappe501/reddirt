@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-SELFBUILD-DEPENDENCY-GRAPH-1.0",
+  "generatedAt": "2026-05-06T19:35:12.844Z",
+  "status": "known_blockers_seed",
+  "blockers": [
+    {
+      "id": "hosted_db_proof_not_canonical",
+      "summary": "Hosted DB proof is not production-canonical until operator-verified on Kelly-Grappe-App targets.",
+      "severity": "high",
+      "affectedNodes": [
+        "hosted_db_proof",
+        "live_send_proof",
+        "production_contact_ingestion_proof",
+        "final_operational_verify"
+      ]
+    },
+    {
+      "id": "live_send_blocked_until_steve",
+      "summary": "Live send proof is blocked until explicit Steve approval and hosted DB proof complete.",
+      "severity": "critical",
+      "affectedNodes": [
+        "live_send_proof"
+      ]
+    },
+    {
+      "id": "automation_activation_blocked",
+      "summary": "Automation activation is blocked; dry-run packets only until explicit governance packet.",
+      "severity": "critical",
+      "affectedNodes": [
+        "automation_worker_dryrun"
+      ]
+    },
+    {
+      "id": "production_contact_ingestion_blocked",
+      "summary": "Production contact ingestion is blocked until hosted gates, staging discipline, and human approve path are proven.",
+      "severity": "critical",
+      "affectedNodes": [
+        "production_contact_ingestion_proof"
+      ]
+    },
+    {
+      "id": "rag_retrieval_incomplete",
+      "summary": "True RAG / campaign memory retrieval remains incomplete vs campaign intent; governance and ingest packets still open.",
+      "severity": "medium",
+      "affectedNodes": [
+        "campaign_memory_foundation",
+        "governed_ai_orchestration"
+      ]
+    },
+    {
+      "id": "public_site_contract_missing",
+      "summary": "Public site integration contract (RedDirt → sos-public) is not written; merge and runtime coupling remain forbidden.",
+      "severity": "high",
+      "affectedNodes": [
+        "public_site_interface_contract"
+      ]
+    },
+    {
+      "id": "external_consolidation_blocked",
+      "summary": "External system consolidation is blocked by migration decision records and matrix defaults (deny-import).",
+      "severity": "medium",
+      "affectedNodes": [
+        "public_site_interface_contract",
+        "v2_arch_registry"
+      ]
+    },
+    {
+      "id": "deployment_readiness_separate",
+      "summary": "Deployment environment readiness remains separate from feature completeness; local green does not imply hosted-ready.",
+      "severity": "medium",
+      "affectedNodes": [
+        "hosted_db_proof",
+        "final_operational_verify",
+        "email_diagnostics_env"
+      ]
+    }
+  ]
+}

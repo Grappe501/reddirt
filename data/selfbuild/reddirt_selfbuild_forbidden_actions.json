@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-SELFBUILD-FORBIDDEN-PATH-GATES-1.0",
+  "status": "active_boundary_seed",
+  "description": "Action-level forbidden phrases aligned with reddirt_selfbuild_slice_schema.json globalForbiddenActions. Validators and humans treat these as default-deny unless a steered packet and recorded approval explicitly govern an exception.",
+  "globalForbiddenActionPhrases": [
+    "live sends",
+    "auto-send",
+    "Gmail send",
+    "SendGrid broadcast",
+    "real contact import",
+    "automation worker activation",
+    "printing secrets",
+    "committing .env",
+    "changing EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM",
+    "unapproved migrations",
+    "unapproved sibling app edits",
+    "unapproved sos-public coupling"
+  ],
+  "conditionalForbiddenActionRules": [
+    {
+      "id": "no_send_logic_edits_unless_execution_packet",
+      "description": "Editing provider send adapters or Gmail users.messages.send is forbidden unless an explicit execution-governance packet lists those paths.",
+      "unlessSliceTypes": [],
+      "impliedPathPatternHints": [
+        "gmail-api.ts",
+        "send-email.ts",
+        "send-provider-adapters"
+      ]
+    }
+  ],
+  "notes": [
+    "No-send rules cannot be waived by AI; human approval must be recorded in the slice completion report.",
+    "Override rules are documentation and governance only; validate-selfbuild-boundaries.mjs defaults to deny."
+  ]
+}

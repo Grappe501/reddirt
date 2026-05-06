@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-SELFBUILD-FORBIDDEN-PATH-GATES-1.0",
+  "status": "active_boundary_seed",
+  "description": "Named boundary profiles reference which path and action checks apply. Slices may declare a profile id in governance text until schema adds a formal field.",
+  "defaultProfileId": "strict_red_dirt_selfbuild",
+  "profiles": [
+    {
+      "id": "strict_red_dirt_selfbuild",
+      "label": "Default RedDirt self-build",
+      "applyGlobalPathPatterns": true,
+      "applyConditionalPathPatterns": true,
+      "checkAllowedWritesForSecrets": true,
+      "checkAllowedWritesForSendPatterns": true,
+      "checkAllowedWritesForMigrationPatterns": true,
+      "notes": "Cross-lane, secret, send, and migration patterns enforced on allowedWrites; global patterns also checked on allowedPaths."
+    },
+    {
+      "id": "documentation_only",
+      "label": "Docs and data/selfbuild only",
+      "applyGlobalPathPatterns": true,
+      "applyConditionalPathPatterns": true,
+      "checkAllowedWritesForSecrets": true,
+      "checkAllowedWritesForSendPatterns": true,
+      "checkAllowedWritesForMigrationPatterns": true,
+      "allowedWritePrefixHints": [
+        "RedDirt/docs/",
+        "RedDirt/develop_notes/",
+        "RedDirt/data/selfbuild/",
+        "RedDirt/data/architecture/"
+      ],
+      "notes": "Still denies sibling and sos-public paths; does not relax prisma or send rules on allowedWrites."
+    },
+    {
+      "id": "database_migration_packet",
+      "label": "Approved Prisma migration slice",
+      "applyGlobalPathPatterns": true,
+      "applyConditionalPathPatterns": true,
+      "exemptConditionalPathRuleIds": ["prisma_schema_and_migrations"],
+      "checkAllowedWritesForSecrets": true,
+      "checkAllowedWritesForSendPatterns": true,
+      "checkAllowedWritesForMigrationPatterns": false,
+      "notes": "Only meaningful when sliceType is database_migration and humanApprovalGates are filled; migration phrases allowed on writes only inside prisma paths."
+    }
+  ]
+}

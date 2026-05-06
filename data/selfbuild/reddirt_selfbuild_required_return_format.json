@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "1.0",
+  "schemaName": "reddirt_selfbuild_required_return_format",
+  "packetId": "REDDIRT-SELFBUILD-SLICE-SCHEMA-1.0",
+  "description": "Canonical keys for a completed self-build slice handoff (Cursor or human). requiredReportFields align with reddirt_selfbuild_slice_schema.json for JSON automation. standardReturnFormat and architectureReturnFormat are standard Markdown heading orders for final responses.",
+  "requiredReportFields": [
+    "activeLane",
+    "sliceId",
+    "filesChanged",
+    "commandsRunAndResults",
+    "proofArtifacts",
+    "governanceAttestation",
+    "progressEffectsRealized",
+    "remainingBlockers",
+    "nextSafeSliceRecommendation"
+  ],
+  "standardReturnFormat": [
+    "IMPLEMENTED",
+    "FILES",
+    "AI INTELLIGENCE STATUS",
+    "SOURCE / RAG STATUS",
+    "GOVERNANCE STATUS",
+    "CHECKS",
+    "WHAT IS SAFE NOW",
+    "WHAT REMAINS BLOCKED",
+    "EMAIL COMMAND CENTER PROGRESS LEDGER"
+  ],
+  "architectureReturnFormat": [
+    "IMPLEMENTED",
+    "FILES",
+    "ARCHITECTURE STATUS",
+    "BOUNDARY / GOVERNANCE STATUS",
+    "CHECKS",
+    "WHAT IS SAFE NOW",
+    "WHAT REMAINS BLOCKED",
+    "NEXT RECOMMENDED SLICE"
+  ],
+  "sections": [
+    {
+      "key": "activeLane",
+      "required": true,
+      "valueType": "string",
+      "description": "Product lane root (e.g. RedDirt/). Must match slice contract."
+    },
+    {
+      "key": "sliceId",
+      "required": true,
+      "valueType": "string",
+      "description": "Echo the slice packet id executed."
+    },
+    {
+      "key": "filesChanged",
+      "required": true,
+      "valueType": "array",
+      "itemType": "string",
+      "description": "Repo-relative paths created or modified."
+    },
+    {
+      "key": "commandsRunAndResults",
+      "required": true,
+      "valueType": "array",
+      "itemType": "object",
+      "description": "Each item: { command, cwd, exitCode, summary } where summary is redacted and non-secret."
+    },
+    {
+      "key": "proofArtifacts",
+      "required": true,
+      "valueType": "array",
+      "itemType": "object",
+      "description": "Each item: { kind, reference, notes } — kind examples: cli_log_path, doc_anchor, screenshot_policy, operator_attestation; no secret payloads."
+    },
+    {
+      "key": "governanceAttestation",
+      "required": true,
+      "valueType": "object",
+      "description": "Fields such as: stayedWithinAllowedPaths (boolean), noForbiddenActions (boolean), approvalsSought (array of strings), exceptionsNoneOrListed (string)."
+    },
+    {
+      "key": "progressEffectsRealized",
+      "required": true,
+      "valueType": "array",
+      "itemType": "string",
+      "description": "Which progressEffects from the slice occurred (or explicit none with reason)."
+    },
+    {
+      "key": "remainingBlockers",
+      "required": true,
+      "valueType": "array",
+      "itemType": "string",
+      "description": "Honest open risks; empty array means none known."
+    },
+    {
+      "key": "nextSafeSliceRecommendation",
+      "required": true,
+      "valueType": "string",
+      "description": "Single default follow-on packet id or no-op justification."
+    }
+  ],
+  "optionalSections": [
+    {
+      "key": "workflowIntakeCreated",
+      "required": false,
+      "valueType": "boolean",
+      "description": "Set when slice touched public form → DB intake; omit or false otherwise."
+    },
+    {
+      "key": "operatorReviewPath",
+      "required": false,
+      "valueType": "string",
+      "description": "Doc or route reference for operator review/export when applicable."
+    },
+    {
+      "key": "daysCompressionAssessment",
+      "required": false,
+      "valueType": "string",
+      "description": "Short statement whether compressing later-day work remains safe given proofs."
+    }
+  ],
+  "markdownMirrorDocs": [
+    "docs/REDDIRT_SELFBUILD_RETURN_FORMAT.md"
+  ]
+}

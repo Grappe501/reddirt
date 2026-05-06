@@ -12,6 +12,7 @@
 | **Machine registry** | [`data/architecture/reddirt_v2_layer_registry.json`](../data/architecture/reddirt_v2_layer_registry.json) |
 | **External matrix** | [`data/architecture/reddirt_v2_external_system_review_matrix.json`](../data/architecture/reddirt_v2_external_system_review_matrix.json) |
 | **Validator** | `node scripts/validate-v2-arch-registry.mjs` (after registry JSON edits) |
+| **Self-build slice schema** | [`data/selfbuild/reddirt_selfbuild_slice_schema.json`](../data/selfbuild/reddirt_selfbuild_slice_schema.json) — optional **slice JSON** contract for Cursor packets; subordinate to this hierarchy; validator [`scripts/validate-selfbuild-slice.mjs`](../scripts/validate-selfbuild-slice.mjs) (`cd RedDirt && node scripts/validate-selfbuild-slice.mjs`) · protocol [`REDDIRT_SELFBUILD_SLICE_PROTOCOL.md`](./REDDIRT_SELFBUILD_SLICE_PROTOCOL.md) |
 
 This policy exists because RedDirt has **many** Markdown maps, ledgers, handoffs, and workspace-root artifacts. Without a hierarchy, teams confuse **intent** with **shipped behavior** and treat **scans** as **permission to change** sibling products.
 
@@ -29,7 +30,8 @@ When artifacts conflict, resolve in this **order** (highest wins):
 6. **`RedDirt/docs/email-command-center-v2-master-blueprint.md` + `RedDirt/docs/email-command-center-v2-agent-planning-harness.md`** — **Comms / ECC V2 intent**; **does not** override §2–3 for non-Comms domains.  
 7. **`RedDirt/data/architecture/reddirt_v2_layer_registry.json`** — machine-readable **layer fusion** and doctrine strings (`schemaVersion` 1.0).  
 8. **`RedDirt/data/architecture/reddirt_v2_external_system_review_matrix.json`** — sibling/provider **boundary defaults** (`canBeImportedIntoRedDirtWithoutApproval` is **false** unless a steered revision explicitly changes a row under governance).  
-9. **Workspace-root files** (e.g. `SOSWebsite/README.md`, `SOSWebsite/RedDirt_CampaignOS_SystemMap_*`, `SOSWebsite/docs/`) — **context and orientation only** until a named packet **copies or reconciles** them into `RedDirt/docs/` with a decision record.
+9. **Workspace-root files** (e.g. `SOSWebsite/README.md`, `SOSWebsite/RedDirt_CampaignOS_SystemMap_*`, `SOSWebsite/docs/`) — **context and orientation only** until a named packet **copies or reconciles** them into `RedDirt/docs/` with a decision record.  
+10. **`RedDirt/data/selfbuild/reddirt_selfbuild_slice_schema.json`** (+ companion slice JSON examples) — optional **per-packet** scope, proof, and governance contracts for Cursor/queue tooling; **subordinate** to §§1–9; structural validation only via [`scripts/validate-selfbuild-slice.mjs`](../scripts/validate-selfbuild-slice.mjs) (see [`REDDIRT_SELFBUILD_SLICE_PROTOCOL.md`](./REDDIRT_SELFBUILD_SLICE_PROTOCOL.md)).
 
 ---
 
@@ -120,7 +122,8 @@ Every future **RedDirt** packet should:
 3. **List** proof commands (`npm run typecheck`, `npm run check`, `npm run email:no-send-scan`, hosted gates) appropriate to the slice.  
 4. **Update** master map / division registry / ECC progress ledger when **reality** changes.  
 5. **Run** `node scripts/validate-v2-arch-registry.mjs` when `reddirt_v2_layer_registry.json` changes.  
-6. **Respect** this policy’s hierarchy — especially **scanner vs permission** and **public website boundary** — even when a slice is “docs only.”
+6. **Respect** this policy’s hierarchy — especially **scanner vs permission** and **public website boundary** — even when a slice is “docs only.”  
+7. **Optional** — When using the self-build slice JSON contract ([`data/selfbuild/`](../data/selfbuild/), [`REDDIRT_SELFBUILD_SLICE_PROTOCOL.md`](./REDDIRT_SELFBUILD_SLICE_PROTOCOL.md)), keep slice objects aligned with registry `layers[].key` values and **never** treat validator success as permission to bypass sends, migrations, or cross-lane rules above.
 
 ---
 
@@ -130,8 +133,9 @@ These **do not** override §**Source-of-truth hierarchy**:
 
 - [`data/architecture/reddirt_v2_arch_scan_snapshot.json`](../data/architecture/reddirt_v2_arch_scan_snapshot.json)  
 - [`develop_notes/REDDIRT_V2_ARCH_REGISTRY_1_0_REPORT.md`](../develop_notes/REDDIRT_V2_ARCH_REGISTRY_1_0_REPORT.md)  
-- [`data/architecture/reddirt_v2_cursor_roadmap_seed.json`](../data/architecture/reddirt_v2_cursor_roadmap_seed.json)
+- [`data/architecture/reddirt_v2_cursor_roadmap_seed.json`](../data/architecture/reddirt_v2_cursor_roadmap_seed.json)  
+- [`data/selfbuild/reddirt_selfbuild_slice_schema.json`](../data/selfbuild/reddirt_selfbuild_slice_schema.json) and companion files under [`data/selfbuild/`](../data/selfbuild/) — slice packet contracts (**REDDIRT-SELFBUILD-SLICE-SCHEMA-1.0**)
 
 ---
 
-*Last updated: **REDDIRT-V2-ARCH-REGISTRY-1.0** — Deliverable E: source-of-truth policy.*
+*Last updated: **REDDIRT-V2-ARCH-REGISTRY-1.0** + **REDDIRT-SELFBUILD-SLICE-SCHEMA-1.0** cross-links — Deliverable E: source-of-truth policy.*

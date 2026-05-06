@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-05-06T22:00:00.000Z",
+  "nextRecommendedSlice": "REDDIRT-EMAIL-HOSTED-DB-PROOF-1.0",
+  "reason": "Hosted DB proof API is implemented; operator must run the live Netlify PowerShell probe (see docs/email-hosted-db-proof.md) and paste redacted JSON into develop_notes before treating proof as production-canonical.",
+  "whyNow": "Self-build queue item 5 code path ships read-only connectivity; live send and automation remain out of scope.",
+  "safeToStart": true,
+  "blockedBy": ["hosted_db_live_proof_pending_operator"],
+  "requiredChecksBeforeStart": [
+    "cd RedDirt && node scripts/validate-selfbuild-queue.mjs",
+    "cd RedDirt && npm run email:db:diagnose",
+    "cd RedDirt && npm run email:no-send-scan"
+  ],
+  "requiredHumanApprovals": [
+    "Steve confirms hosted DATABASE_URL/DIRECT_URL targets",
+    "Operator can authenticate admin on hosted deploy"
+  ],
+  "mustNotDo": [
+    "No live sends or auto-send; no Gmail send or SendGrid broadcast",
+    "No real contact import; no automation worker activation",
+    "No printing secrets; no committing .env",
+    "No unapproved migrations; no unapproved sibling app edits; no unapproved sos-public coupling",
+    "No live send or automation activation during hosted DB proof slice"
+  ],
+  "expectedOutputs": [
+    "Redacted diagnose output",
+    "develop_notes hosted proof report",
+    "Optional PROJECT_MASTER_MAP narrative"
+  ]
+}

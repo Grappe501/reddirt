@@ -1,0 +1,604 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-SELFBUILD-DEPENDENCY-GRAPH-1.0",
+  "generatedAt": "2026-05-06T19:35:12.843Z",
+  "status": "dependency_graph_seed",
+  "nodes": [
+    {
+      "id": "v2_arch_registry",
+      "label": "V2 architecture registry (REDDIRT-V2-ARCH-REGISTRY-1.0)",
+      "type": "architecture",
+      "v2Layers": [
+        "self_build_intelligence",
+        "compliance_governance_safety"
+      ],
+      "readinessState": "operational_local",
+      "riskLevel": "low",
+      "sourceArtifacts": [
+        "data/architecture/reddirt_v2_layer_registry.json",
+        "data/architecture/reddirt_v2_external_system_review_matrix.json"
+      ],
+      "requiredBefore": [],
+      "blockedBy": [],
+      "proofRequired": [
+        "node scripts/validate-v2-arch-registry.mjs"
+      ],
+      "safeToQueue": true
+    },
+    {
+      "id": "selfbuild_slice_schema",
+      "label": "Self-build slice schema (REDDIRT-SELFBUILD-SLICE-SCHEMA-1.0)",
+      "type": "selfbuild",
+      "v2Layers": [
+        "self_build_intelligence",
+        "compliance_governance_safety"
+      ],
+      "readinessState": "operational_local",
+      "riskLevel": "low",
+      "sourceArtifacts": [
+        "data/selfbuild/reddirt_selfbuild_slice_schema.json"
+      ],
+      "requiredBefore": [
+        "v2_arch_registry"
+      ],
+      "blockedBy": [],
+      "proofRequired": [
+        "node scripts/validate-selfbuild-slice.mjs"
+      ],
+      "safeToQueue": true
+    },
+    {
+      "id": "selfbuild_forbidden_path_gates",
+      "label": "Forbidden path gates (REDDIRT-SELFBUILD-FORBIDDEN-PATH-GATES-1.0)",
+      "type": "selfbuild",
+      "v2Layers": [
+        "self_build_intelligence",
+        "compliance_governance_safety",
+        "public_site_interface_boundary"
+      ],
+      "readinessState": "operational_local",
+      "riskLevel": "low",
+      "sourceArtifacts": [
+        "data/selfbuild/reddirt_selfbuild_forbidden_paths.json",
+        "data/selfbuild/reddirt_selfbuild_forbidden_actions.json"
+      ],
+      "requiredBefore": [
+        "selfbuild_slice_schema"
+      ],
+      "blockedBy": [],
+      "proofRequired": [
+        "node scripts/validate-selfbuild-boundaries.mjs"
+      ],
+      "safeToQueue": true
+    },
+    {
+      "id": "selfbuild_dependency_graph",
+      "label": "Self-build dependency graph (this packet)",
+      "type": "selfbuild",
+      "v2Layers": [
+        "self_build_intelligence"
+      ],
+      "readinessState": "operational_local",
+      "riskLevel": "low",
+      "sourceArtifacts": [
+        "data/selfbuild/reddirt_selfbuild_dependency_graph.json"
+      ],
+      "requiredBefore": [
+        "selfbuild_slice_schema",
+        "selfbuild_forbidden_path_gates",
+        "v2_arch_registry"
+      ],
+      "blockedBy": [],
+      "proofRequired": [
+        "node scripts/validate-selfbuild-dependency-graph.mjs"
+      ],
+      "safeToQueue": true
+    },
+    {
+      "id": "selfbuild_queue_generator",
+      "label": "Self-build queue generator (roadmap seed REDDIRT-SELFBUILD-QUEUE-GENERATOR-1.0)",
+      "type": "selfbuild",
+      "v2Layers": [
+        "self_build_intelligence"
+      ],
+      "readinessState": "planned",
+      "riskLevel": "medium",
+      "sourceArtifacts": [
+        "data/architecture/reddirt_v2_cursor_roadmap_seed.json"
+      ],
+      "requiredBefore": [
+        "selfbuild_dependency_graph"
+      ],
+      "blockedBy": [
+        "selfbuild_dependency_graph"
+      ],
+      "proofRequired": [
+        "Slice ordering respects this graph"
+      ],
+      "safeToQueue": false
+    },
+    {
+      "id": "email_ai_intelligence_upgrade_stack",
+      "label": "Email AI intelligence upgrade stack (advisory ECC AI)",
+      "type": "ai_intelligence",
+      "v2Layers": [
+        "communications_intelligence",
+        "campaign_memory"
+      ],
+      "readinessState": "partial",
+      "riskLevel": "medium",
+      "sourceArtifacts": [
+        "docs/email-ai-intelligence-upgrade-closeout.md"
+      ],
+      "requiredBefore": [
+        "v2_arch_registry",
+        "hosted_db_proof"
+      ],
+      "blockedBy": [
+        "rag_retrieval_incomplete"
+      ],
+      "proofRequired": [
+        "npm run check",
+        "Queue AI advisory-only posture"
+      ],
+      "safeToQueue": false
+    },
+    {
+      "id": "email_diagnostics_env",
+      "label": "Email diagnostics / env presence (read-only scripts)",
+      "type": "diagnostic",
+      "v2Layers": [
+        "communications_intelligence",
+        "deployment_environment_readiness"
+      ],
+      "readinessState": "partial",
+      "riskLevel": "medium",
+      "sourceArtifacts": [
+        "scripts/email-command-center-db-diagnose.mjs"
+      ],
+      "requiredBefore": [
+        "v2_arch_registry"
+      ],
+      "blockedBy": [
+        "deployment_readiness_separate"
+      ],
+      "proofRequired": [
+        "npm run email:db:diagnose"
+      ],
+      "safeToQueue": true
+    },
+    {
+      "id": "sendgrid_auth_check",
+      "label": "SendGrid auth check route (admin diagnostic)",
+      "type": "diagnostic",
+      "v2Layers": [
+        "communications_intelligence",
+        "analytics_deliverability_intelligence"
+      ],
+      "readinessState": "partial",
+      "riskLevel": "high",
+      "sourceArtifacts": [
+        "src/app/api/admin/email-diagnostics/sendgrid-auth-check"
+      ],
+      "requiredBefore": [
+        "hosted_db_proof"
+      ],
+      "blockedBy": [
+        "hosted_db_proof_not_canonical"
+      ],
+      "proofRequired": [
+        "Operator-only run on hosted",
+        "No secrets in logs"
+      ],
+      "safeToQueue": false
+    },
+    {
+      "id": "sendgrid_sandbox_send",
+      "label": "SendGrid sandbox send diagnostic (governed)",
+      "type": "diagnostic",
+      "v2Layers": [
+        "communications_intelligence"
+      ],
+      "readinessState": "partial",
+      "riskLevel": "critical",
+      "sourceArtifacts": [
+        "src/app/api/admin/email-diagnostics/sandbox-send"
+      ],
+      "requiredBefore": [
+        "hosted_db_proof",
+        "sendgrid_auth_check"
+      ],
+      "blockedBy": [
+        "live_send_blocked_until_steve"
+      ],
+      "proofRequired": [
+        "Sandbox-only attestation",
+        "email:no-send-scan"
+      ],
+      "safeToQueue": false
+    },
+    {
+      "id": "hosted_db_proof",
+      "label": "REDDIRT-EMAIL-HOSTED-DB-PROOF-1.0",
+      "type": "production_proof",
+      "v2Layers": [
+        "communications_intelligence",
+        "deployment_environment_readiness",
+        "compliance_governance_safety"
+      ],
+      "readinessState": "planned",
+      "riskLevel": "high",
+      "sourceArtifacts": [
+        "data/architecture/reddirt_v2_cursor_roadmap_seed.json"
+      ],
+      "requiredBefore": [
+        "v2_arch_registry",
+        "selfbuild_slice_schema"
+      ],
+      "blockedBy": [
+        "hosted_db_proof_not_canonical"
+      ],
+      "proofRequired": [
+        "npm run email:db:diagnose",
+        "Operator hosted verification"
+      ],
+      "safeToQueue": false
+    },
+    {
+      "id": "live_send_proof",
+      "label": "REDDIRT-EMAIL-LIVE-SEND-PROOF-1.0",
+      "type": "production_proof",
+      "v2Layers": [
+        "communications_intelligence",
+        "compliance_governance_safety"
+      ],
+      "readinessState": "planned",
+      "riskLevel": "critical",
+      "sourceArtifacts": [
+        "data/architecture/reddirt_v2_cursor_roadmap_seed.json"
+      ],
+      "requiredBefore": [
+        "hosted_db_proof"
+      ],
+      "blockedBy": [
+        "hosted_db_proof_not_canonical",
+        "live_send_blocked_until_steve"
+      ],
+      "proofRequired": [
+        "Hosted DB proof complete",
+        "Send execution preflight",
+        "Steve approval recorded"
+      ],
+      "safeToQueue": false
+    },
+    {
+      "id": "automation_worker_dryrun",
+      "label": "REDDIRT-AUTOMATION-WORKER-DRYRUN-1.0",
+      "type": "automation_dryrun",
+      "v2Layers": [
+        "automation_intelligence",
+        "compliance_governance_safety"
+      ],
+      "readinessState": "planned",
+      "riskLevel": "critical",
+      "sourceArtifacts": [
+        "data/architecture/reddirt_v2_cursor_roadmap_seed.json"
+      ],
+      "requiredBefore": [
+        "hosted_db_proof",
+        "selfbuild_forbidden_path_gates"
+      ],
+      "blockedBy": [
+        "automation_activation_blocked"
+      ],
+      "proofRequired": [
+        "Dry-run logs redacted",
+        "email:no-send-scan",
+        "No worker activation"
+      ],
+      "safeToQueue": false
+    },
+    {
+      "id": "production_contact_ingestion_proof",
+      "label": "REDDIRT-PRODUCTION-CONTACT-INGESTION-PROOF-1.0",
+      "type": "production_proof",
+      "v2Layers": [
+        "communications_intelligence",
+        "audience_relationship_intelligence"
+      ],
+      "readinessState": "planned",
+      "riskLevel": "critical",
+      "sourceArtifacts": [
+        "data/architecture/reddirt_v2_cursor_roadmap_seed.json"
+      ],
+      "requiredBefore": [
+        "hosted_db_proof"
+      ],
+      "blockedBy": [
+        "hosted_db_proof_not_canonical",
+        "production_contact_ingestion_blocked"
+      ],
+      "proofRequired": [
+        "Hosted gate",
+        "Staging approve path"
+      ],
+      "safeToQueue": false
+    },
+    {
+      "id": "final_operational_verify",
+      "label": "REDDIRT-EMAIL-FINAL-OPERATIONAL-VERIFY-1.0",
+      "type": "production_proof",
+      "v2Layers": [
+        "communications_intelligence",
+        "operational_intelligence"
+      ],
+      "readinessState": "planned",
+      "riskLevel": "high",
+      "sourceArtifacts": [
+        "data/architecture/reddirt_v2_cursor_roadmap_seed.json"
+      ],
+      "requiredBefore": [
+        "hosted_db_proof",
+        "live_send_proof",
+        "automation_worker_dryrun",
+        "production_contact_ingestion_proof"
+      ],
+      "blockedBy": [
+        "hosted_db_proof_not_canonical"
+      ],
+      "proofRequired": [
+        "email:no-send-scan",
+        "npm run check",
+        "Route smoke checklist"
+      ],
+      "safeToQueue": false
+    },
+    {
+      "id": "campaign_memory_foundation",
+      "label": "Campaign memory foundation phase (MEMORY-* roadmap)",
+      "type": "architecture",
+      "v2Layers": [
+        "campaign_memory",
+        "compliance_governance_safety"
+      ],
+      "readinessState": "partial",
+      "riskLevel": "medium",
+      "sourceArtifacts": [
+        "data/architecture/reddirt_v2_cursor_roadmap_seed.json"
+      ],
+      "requiredBefore": [
+        "v2_arch_registry"
+      ],
+      "blockedBy": [
+        "rag_retrieval_incomplete"
+      ],
+      "proofRequired": [
+        "Memory schema inventory",
+        "Governance gates doc"
+      ],
+      "safeToQueue": true
+    },
+    {
+      "id": "daily_operational_intelligence",
+      "label": "Daily / operational intelligence packets (Daily console, briefings)",
+      "type": "documentation",
+      "v2Layers": [
+        "operational_intelligence"
+      ],
+      "readinessState": "partial",
+      "riskLevel": "low",
+      "sourceArtifacts": [
+        "data/architecture/reddirt_v2_cursor_roadmap_seed.json"
+      ],
+      "requiredBefore": [
+        "v2_arch_registry"
+      ],
+      "blockedBy": [],
+      "proofRequired": [
+        "npm run typecheck"
+      ],
+      "safeToQueue": true
+    },
+    {
+      "id": "scheduling_intelligence",
+      "label": "Scheduling intelligence roadmap packets",
+      "type": "documentation",
+      "v2Layers": [
+        "scheduling_intelligence"
+      ],
+      "readinessState": "partial",
+      "riskLevel": "medium",
+      "sourceArtifacts": [
+        "data/architecture/reddirt_v2_cursor_roadmap_seed.json"
+      ],
+      "requiredBefore": [
+        "v2_arch_registry"
+      ],
+      "blockedBy": [],
+      "proofRequired": [
+        "Calendar governance checklist"
+      ],
+      "safeToQueue": true
+    },
+    {
+      "id": "governed_ai_orchestration",
+      "label": "Governed AI orchestration (AI-PROMPT-REGISTRY, grounding, explainer)",
+      "type": "ai_intelligence",
+      "v2Layers": [
+        "communications_intelligence",
+        "campaign_memory",
+        "compliance_governance_safety"
+      ],
+      "readinessState": "planned",
+      "riskLevel": "high",
+      "sourceArtifacts": [
+        "data/architecture/reddirt_v2_cursor_roadmap_seed.json"
+      ],
+      "requiredBefore": [
+        "v2_arch_registry",
+        "campaign_memory_foundation"
+      ],
+      "blockedBy": [
+        "rag_retrieval_incomplete"
+      ],
+      "proofRequired": [
+        "AI approval workflow doc",
+        "Action audit log spec"
+      ],
+      "safeToQueue": false
+    },
+    {
+      "id": "public_site_interface_contract",
+      "label": "REDDIRT-PUBLIC-SITE-INTERFACE-CONTRACT-1.0",
+      "type": "architecture",
+      "v2Layers": [
+        "public_site_interface_boundary",
+        "compliance_governance_safety"
+      ],
+      "readinessState": "planned",
+      "riskLevel": "high",
+      "sourceArtifacts": [
+        "data/architecture/reddirt_v2_external_system_review_matrix.json"
+      ],
+      "requiredBefore": [
+        "v2_arch_registry"
+      ],
+      "blockedBy": [
+        "public_site_contract_missing",
+        "external_consolidation_blocked"
+      ],
+      "proofRequired": [
+        "Written contract doc",
+        "Matrix row review"
+      ],
+      "safeToQueue": true,
+      "permitsSosPublicMerge": false
+    }
+  ],
+  "edges": [
+    {
+      "from": "selfbuild_slice_schema",
+      "to": "v2_arch_registry",
+      "relation": "requires"
+    },
+    {
+      "from": "selfbuild_forbidden_path_gates",
+      "to": "selfbuild_slice_schema",
+      "relation": "requires"
+    },
+    {
+      "from": "selfbuild_dependency_graph",
+      "to": "selfbuild_forbidden_path_gates",
+      "relation": "requires"
+    },
+    {
+      "from": "selfbuild_queue_generator",
+      "to": "selfbuild_dependency_graph",
+      "relation": "requires"
+    },
+    {
+      "from": "hosted_db_proof",
+      "to": "v2_arch_registry",
+      "relation": "requires"
+    },
+    {
+      "from": "live_send_proof",
+      "to": "hosted_db_proof",
+      "relation": "requires"
+    },
+    {
+      "from": "production_contact_ingestion_proof",
+      "to": "hosted_db_proof",
+      "relation": "requires"
+    },
+    {
+      "from": "sendgrid_auth_check",
+      "to": "hosted_db_proof",
+      "relation": "requires"
+    },
+    {
+      "from": "sendgrid_sandbox_send",
+      "to": "sendgrid_auth_check",
+      "relation": "requires"
+    },
+    {
+      "from": "sendgrid_sandbox_send",
+      "to": "hosted_db_proof",
+      "relation": "requires"
+    },
+    {
+      "from": "automation_worker_dryrun",
+      "to": "hosted_db_proof",
+      "relation": "requires"
+    },
+    {
+      "from": "final_operational_verify",
+      "to": "live_send_proof",
+      "relation": "requires"
+    },
+    {
+      "from": "final_operational_verify",
+      "to": "automation_worker_dryrun",
+      "relation": "requires"
+    },
+    {
+      "from": "final_operational_verify",
+      "to": "production_contact_ingestion_proof",
+      "relation": "requires"
+    },
+    {
+      "from": "email_ai_intelligence_upgrade_stack",
+      "to": "hosted_db_proof",
+      "relation": "requires"
+    },
+    {
+      "from": "governed_ai_orchestration",
+      "to": "campaign_memory_foundation",
+      "relation": "requires"
+    }
+  ],
+  "blockedNodes": [
+    "selfbuild_queue_generator",
+    "email_ai_intelligence_upgrade_stack",
+    "sendgrid_auth_check",
+    "sendgrid_sandbox_send",
+    "hosted_db_proof",
+    "live_send_proof",
+    "automation_worker_dryrun",
+    "production_contact_ingestion_proof",
+    "final_operational_verify",
+    "governed_ai_orchestration"
+  ],
+  "productionGates": [
+    "Hosted DB proof before live send, production ingestion, and final verify (roadmap phase_1 dependencyRule).",
+    "email:no-send-scan and send execution rails before claiming operator-proven mail.",
+    "Import staging approve path before production contact ingestion proof."
+  ],
+  "governanceGates": [
+    "Steve explicit approval for live send proof and sos-public integration coupling.",
+    "Operator attestation for hosted DATABASE_URL/DIRECT_URL targets (no secrets in slice JSON or chat).",
+    "EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM unchanged unless steered execution packet + recorded approval.",
+    "Automation worker activation forbidden until dry-run packet and human gate satisfied."
+  ],
+  "recommendedExecutionOrder": [
+    "v2_arch_registry",
+    "selfbuild_slice_schema",
+    "selfbuild_forbidden_path_gates",
+    "selfbuild_dependency_graph",
+    "selfbuild_queue_generator",
+    "email_diagnostics_env",
+    "hosted_db_proof",
+    "sendgrid_auth_check",
+    "sendgrid_sandbox_send",
+    "email_ai_intelligence_upgrade_stack",
+    "campaign_memory_foundation",
+    "daily_operational_intelligence",
+    "scheduling_intelligence",
+    "governed_ai_orchestration",
+    "automation_worker_dryrun",
+    "production_contact_ingestion_proof",
+    "live_send_proof",
+    "final_operational_verify",
+    "public_site_interface_contract"
+  ]
+}

@@ -14,6 +14,7 @@
 | [`email-command-center-first-run-operator-checklist.md`](./email-command-center-first-run-operator-checklist.md) | First machine / env verification (21 steps). |
 | [`email-command-center-operator-smoke-test.md`](./email-command-center-operator-smoke-test.md) | Ordered click-through QA (no send). |
 | [`email-hosted-db-readiness-assistant-1-0.md`](./email-hosted-db-readiness-assistant-1-0.md) | Hosted Supabase / `DATABASE_URL` posture (no secrets in UI). |
+| [`email-hosted-db-proof.md`](./email-hosted-db-proof.md) | Bearer **`GET /api/admin/production-readiness/hosted-db`** — read-only Prisma probe after Netlify deploy (no secrets in JSON). |
 | [`email-command-center-contact-import-readiness.md`](./email-command-center-contact-import-readiness.md) | Import + DB gate doctrine. |
 | [`campaign-email-command-center-progress-ledger.md`](./campaign-email-command-center-progress-ledger.md) | Honest shipped % by layer. |
 

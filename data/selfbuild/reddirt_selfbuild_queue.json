@@ -1,0 +1,470 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-SELFBUILD-QUEUE-GENERATOR-1.0",
+  "generatedAt": "2026-05-06T19:41:57.326Z",
+  "status": "queue_seed",
+  "queuePolicy": {
+    "ordering": "dependency_graph_then_roadmap_seed",
+    "noExecutionInGenerator": true,
+    "preserveBlockedStatus": true,
+    "roadmapReference": "data/architecture/reddirt_v2_cursor_roadmap_seed.json",
+    "graphReference": "data/selfbuild/reddirt_selfbuild_dependency_graph.json",
+    "roadmapPhaseKeys": [
+      "phase_0_architecture_registry",
+      "phase_1_email_command_center_proof",
+      "phase_2_campaign_memory_foundation",
+      "phase_3_daily_operational_intelligence",
+      "phase_4_scheduling_intelligence",
+      "phase_5_governed_ai_orchestration",
+      "phase_6_self_build_queue_system",
+      "phase_7_consolidation_review_only",
+      "phase_8_public_site_interface_contract"
+    ]
+  },
+  "items": [
+    {
+      "queueId": "QB-001",
+      "sliceId": "REDDIRT-SELFBUILD-SLICE-SCHEMA-1.0",
+      "phase": "self_build_foundation",
+      "title": "Self-build slice schema and return format",
+      "priority": "P0",
+      "riskLevel": "low",
+      "readinessState": "operational_local",
+      "v2Layers": [
+        "self_build_intelligence",
+        "compliance_governance_safety"
+      ],
+      "blocked": false,
+      "blockedBy": [],
+      "requiredBeforeStart": [],
+      "allowedPaths": [
+        "RedDirt/docs/**",
+        "RedDirt/data/selfbuild/**",
+        "RedDirt/scripts/**",
+        "RedDirt/develop_notes/**"
+      ],
+      "forbiddenPaths": [
+        "RedDirt/prisma/migrations/**",
+        "sos-public/**",
+        "../ajax/**",
+        "../phatlip/**",
+        "../countyWorkbench/**",
+        "RedDirt/.env"
+      ],
+      "proofRequired": [
+        "develop_notes/REDDIRT_SELFBUILD_SLICE_SCHEMA_1_0_REPORT.md",
+        "node scripts/validate-selfbuild-slice.mjs"
+      ],
+      "checksRequired": [
+        "cd RedDirt && node scripts/validate-selfbuild-slice.mjs",
+        "cd RedDirt && node scripts/validate-selfbuild-boundaries.mjs",
+        "cd RedDirt && npm run email:no-send-scan",
+        "cd RedDirt && node scripts/validate-selfbuild-dependency-graph.mjs"
+      ],
+      "mustNotDo": [
+        "No live sends or auto-send; no Gmail send or SendGrid broadcast",
+        "No real contact import; no automation worker activation",
+        "No printing secrets; no committing .env",
+        "No unapproved migrations; no unapproved sibling app edits; no unapproved sos-public coupling",
+        "No route or Prisma edits in this packet"
+      ],
+      "expectedOutputs": [
+        "reddirt_selfbuild_slice_schema.json",
+        "reddirt_selfbuild_required_return_format.json",
+        "REDDIRT_SELFBUILD_SLICE_PROTOCOL.md"
+      ],
+      "finalReturnFormat": [
+        "activeLane",
+        "sliceId",
+        "filesChanged",
+        "commandsRunAndResults",
+        "proofArtifacts",
+        "governanceAttestation",
+        "progressEffectsRealized",
+        "remainingBlockers",
+        "nextSafeSliceRecommendation"
+      ]
+    },
+    {
+      "queueId": "QB-002",
+      "sliceId": "REDDIRT-SELFBUILD-FORBIDDEN-PATH-GATES-1.0",
+      "phase": "self_build_foundation",
+      "title": "Forbidden path and action gates",
+      "priority": "P0",
+      "riskLevel": "low",
+      "readinessState": "operational_local",
+      "v2Layers": [
+        "self_build_intelligence",
+        "compliance_governance_safety",
+        "public_site_interface_boundary"
+      ],
+      "blocked": false,
+      "blockedBy": [],
+      "requiredBeforeStart": [
+        "REDDIRT-SELFBUILD-SLICE-SCHEMA-1.0"
+      ],
+      "allowedPaths": [
+        "RedDirt/docs/**",
+        "RedDirt/data/selfbuild/**",
+        "RedDirt/scripts/**",
+        "RedDirt/develop_notes/**"
+      ],
+      "forbiddenPaths": [
+        "RedDirt/prisma/migrations/**",
+        "sos-public/**",
+        "../ajax/**",
+        "../phatlip/**",
+        "../countyWorkbench/**",
+        "RedDirt/.env"
+      ],
+      "proofRequired": [
+        "develop_notes/REDDIRT_SELFBUILD_FORBIDDEN_PATH_GATES_1_0_REPORT.md",
+        "node scripts/validate-selfbuild-boundaries.mjs"
+      ],
+      "checksRequired": [
+        "cd RedDirt && node scripts/validate-selfbuild-slice.mjs",
+        "cd RedDirt && node scripts/validate-selfbuild-boundaries.mjs",
+        "cd RedDirt && npm run email:no-send-scan",
+        "cd RedDirt && node scripts/validate-selfbuild-dependency-graph.mjs"
+      ],
+      "mustNotDo": [
+        "No live sends or auto-send; no Gmail send or SendGrid broadcast",
+        "No real contact import; no automation worker activation",
+        "No printing secrets; no committing .env",
+        "No unapproved migrations; no unapproved sibling app edits; no unapproved sos-public coupling",
+        "No product src edits"
+      ],
+      "expectedOutputs": [
+        "reddirt_selfbuild_forbidden_paths.json",
+        "reddirt_selfbuild_forbidden_actions.json",
+        "validate-selfbuild-boundaries.mjs"
+      ],
+      "finalReturnFormat": [
+        "activeLane",
+        "sliceId",
+        "filesChanged",
+        "commandsRunAndResults",
+        "proofArtifacts",
+        "governanceAttestation",
+        "progressEffectsRealized",
+        "remainingBlockers",
+        "nextSafeSliceRecommendation"
+      ]
+    },
+    {
+      "queueId": "QB-003",
+      "sliceId": "REDDIRT-SELFBUILD-DEPENDENCY-GRAPH-1.0",
+      "phase": "self_build_foundation",
+      "title": "Dependency graph and layer matrix",
+      "priority": "P0",
+      "riskLevel": "low",
+      "readinessState": "operational_local",
+      "v2Layers": [
+        "self_build_intelligence"
+      ],
+      "blocked": false,
+      "blockedBy": [],
+      "requiredBeforeStart": [
+        "REDDIRT-SELFBUILD-SLICE-SCHEMA-1.0",
+        "REDDIRT-SELFBUILD-FORBIDDEN-PATH-GATES-1.0"
+      ],
+      "allowedPaths": [
+        "RedDirt/docs/**",
+        "RedDirt/data/selfbuild/**",
+        "RedDirt/scripts/**",
+        "RedDirt/develop_notes/**"
+      ],
+      "forbiddenPaths": [
+        "RedDirt/prisma/migrations/**",
+        "sos-public/**",
+        "../ajax/**",
+        "../phatlip/**",
+        "../countyWorkbench/**",
+        "RedDirt/.env"
+      ],
+      "proofRequired": [
+        "develop_notes/REDDIRT_SELFBUILD_DEPENDENCY_GRAPH_1_0_REPORT.md",
+        "node scripts/validate-selfbuild-dependency-graph.mjs"
+      ],
+      "checksRequired": [
+        "cd RedDirt && node scripts/validate-selfbuild-slice.mjs",
+        "cd RedDirt && node scripts/validate-selfbuild-boundaries.mjs",
+        "cd RedDirt && npm run email:no-send-scan",
+        "cd RedDirt && node scripts/generate-selfbuild-dependency-graph.mjs"
+      ],
+      "mustNotDo": [
+        "No live sends or auto-send; no Gmail send or SendGrid broadcast",
+        "No real contact import; no automation worker activation",
+        "No printing secrets; no committing .env",
+        "No unapproved migrations; no unapproved sibling app edits; no unapproved sos-public coupling",
+        "No src mutation"
+      ],
+      "expectedOutputs": [
+        "reddirt_selfbuild_dependency_graph.json",
+        "reddirt_selfbuild_layer_dependency_matrix.json",
+        "reddirt_selfbuild_known_blockers.json"
+      ],
+      "finalReturnFormat": [
+        "activeLane",
+        "sliceId",
+        "filesChanged",
+        "commandsRunAndResults",
+        "proofArtifacts",
+        "governanceAttestation",
+        "progressEffectsRealized",
+        "remainingBlockers",
+        "nextSafeSliceRecommendation"
+      ]
+    },
+    {
+      "queueId": "QB-004",
+      "sliceId": "REDDIRT-SELFBUILD-QUEUE-GENERATOR-1.0",
+      "phase": "self_build_foundation",
+      "title": "Self-build queue generator",
+      "priority": "P0",
+      "riskLevel": "medium",
+      "readinessState": "operational_local",
+      "v2Layers": [
+        "self_build_intelligence"
+      ],
+      "blocked": false,
+      "blockedBy": [],
+      "requiredBeforeStart": [
+        "REDDIRT-SELFBUILD-DEPENDENCY-GRAPH-1.0"
+      ],
+      "allowedPaths": [
+        "RedDirt/docs/**",
+        "RedDirt/data/selfbuild/**",
+        "RedDirt/scripts/**",
+        "RedDirt/develop_notes/**"
+      ],
+      "forbiddenPaths": [
+        "RedDirt/prisma/migrations/**",
+        "sos-public/**",
+        "../ajax/**",
+        "../phatlip/**",
+        "../countyWorkbench/**",
+        "RedDirt/.env"
+      ],
+      "proofRequired": [
+        "develop_notes/REDDIRT_SELFBUILD_QUEUE_GENERATOR_1_0_REPORT.md",
+        "node scripts/validate-selfbuild-queue.mjs"
+      ],
+      "checksRequired": [
+        "cd RedDirt && node scripts/validate-selfbuild-slice.mjs",
+        "cd RedDirt && node scripts/validate-selfbuild-boundaries.mjs",
+        "cd RedDirt && npm run email:no-send-scan",
+        "cd RedDirt && node scripts/generate-selfbuild-queue.mjs"
+      ],
+      "mustNotDo": [
+        "No live sends or auto-send; no Gmail send or SendGrid broadcast",
+        "No real contact import; no automation worker activation",
+        "No printing secrets; no committing .env",
+        "No unapproved migrations; no unapproved sibling app edits; no unapproved sos-public coupling",
+        "No slice execution from generator"
+      ],
+      "expectedOutputs": [
+        "reddirt_selfbuild_queue.json",
+        "reddirt_selfbuild_queue_status.json",
+        "reddirt_selfbuild_next_recommendation.json"
+      ],
+      "finalReturnFormat": [
+        "activeLane",
+        "sliceId",
+        "filesChanged",
+        "commandsRunAndResults",
+        "proofArtifacts",
+        "governanceAttestation",
+        "progressEffectsRealized",
+        "remainingBlockers",
+        "nextSafeSliceRecommendation"
+      ]
+    },
+    {
+      "queueId": "QB-005",
+      "sliceId": "REDDIRT-EMAIL-HOSTED-DB-PROOF-1.0",
+      "phase": "phase_1_email_command_center_proof",
+      "title": "Hosted DB proof for Email Command Center",
+      "priority": "P1",
+      "riskLevel": "high",
+      "readinessState": "planned",
+      "v2Layers": [
+        "communications_intelligence",
+        "deployment_environment_readiness",
+        "compliance_governance_safety"
+      ],
+      "blocked": false,
+      "blockedBy": [],
+      "requiredBeforeStart": [
+        "REDDIRT-SELFBUILD-QUEUE-GENERATOR-1.0"
+      ],
+      "allowedPaths": [
+        "RedDirt/docs/**",
+        "RedDirt/scripts/email-command-center-db-diagnose.mjs",
+        "RedDirt/src/app/admin/**/email-command-center/readiness/hosted-db/**",
+        "RedDirt/develop_notes/**"
+      ],
+      "forbiddenPaths": [
+        "RedDirt/prisma/migrations/**",
+        "sos-public/**",
+        "../ajax/**",
+        "../phatlip/**",
+        "../countyWorkbench/**",
+        "RedDirt/.env",
+        "RedDirt/src/app/api/**/send**"
+      ],
+      "proofRequired": [
+        "npm run email:db:diagnose (redacted)",
+        "Operator hosted verification attestation"
+      ],
+      "checksRequired": [
+        "cd RedDirt && npm run email:db:diagnose",
+        "cd RedDirt && npm run email:no-send-scan",
+        "cd RedDirt && npm run check"
+      ],
+      "mustNotDo": [
+        "No live sends or auto-send; no Gmail send or SendGrid broadcast",
+        "No real contact import; no automation worker activation",
+        "No printing secrets; no committing .env",
+        "No unapproved migrations; no unapproved sibling app edits; no unapproved sos-public coupling",
+        "No changing EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM",
+        "No prisma migrate deploy without steered packet"
+      ],
+      "expectedOutputs": [
+        "develop_notes/REDDIRT_EMAIL_HOSTED_DB_PROOF_1_0_REPORT.md",
+        "Optional PROJECT_MASTER_MAP hosted narrative"
+      ],
+      "finalReturnFormat": [
+        "activeLane",
+        "sliceId",
+        "filesChanged",
+        "commandsRunAndResults",
+        "proofArtifacts",
+        "governanceAttestation",
+        "progressEffectsRealized",
+        "remainingBlockers",
+        "nextSafeSliceRecommendation"
+      ]
+    },
+    {
+      "queueId": "QB-006",
+      "sliceId": "REDDIRT-EMAIL-LIVE-SEND-PROOF-1.0",
+      "phase": "phase_1_email_command_center_proof",
+      "title": "Governed live send proof on hosted stack",
+      "priority": "P2",
+      "riskLevel": "critical",
+      "readinessState": "planned",
+      "v2Layers": [
+        "communications_intelligence",
+        "compliance_governance_safety"
+      ],
+      "blocked": true,
+      "blockedBy": [
+        "hosted_db_proof_not_canonical",
+        "live_send_blocked_until_steve"
+      ],
+      "requiredBeforeStart": [
+        "REDDIRT-EMAIL-HOSTED-DB-PROOF-1.0"
+      ],
+      "allowedPaths": [
+        "RedDirt/docs/**",
+        "RedDirt/src/lib/email-command-center/**",
+        "RedDirt/src/app/admin/**"
+      ],
+      "forbiddenPaths": [
+        "sos-public/**",
+        "RedDirt/.env",
+        "../ajax/**"
+      ],
+      "proofRequired": [
+        "Hosted DB proof complete",
+        "Steve approval recorded",
+        "Send execution preflight"
+      ],
+      "checksRequired": [
+        "cd RedDirt && npm run email:no-send-scan",
+        "cd RedDirt && npm run check"
+      ],
+      "mustNotDo": [
+        "No live sends or auto-send; no Gmail send or SendGrid broadcast",
+        "No real contact import; no automation worker activation",
+        "No printing secrets; no committing .env",
+        "No unapproved migrations; no unapproved sibling app edits; no unapproved sos-public coupling",
+        "No live send before Steve approval and hosted proof"
+      ],
+      "expectedOutputs": [
+        "Operator attestation doc",
+        "Ledger note"
+      ],
+      "finalReturnFormat": [
+        "activeLane",
+        "sliceId",
+        "filesChanged",
+        "commandsRunAndResults",
+        "proofArtifacts",
+        "governanceAttestation",
+        "progressEffectsRealized",
+        "remainingBlockers",
+        "nextSafeSliceRecommendation"
+      ]
+    },
+    {
+      "queueId": "QB-007",
+      "sliceId": "REDDIRT-AUTOMATION-WORKER-DRYRUN-1.0",
+      "phase": "phase_1_email_command_center_proof",
+      "title": "Automation worker dry-run (no activation)",
+      "priority": "P2",
+      "riskLevel": "critical",
+      "readinessState": "planned",
+      "v2Layers": [
+        "automation_intelligence",
+        "compliance_governance_safety"
+      ],
+      "blocked": true,
+      "blockedBy": [
+        "automation_activation_blocked"
+      ],
+      "requiredBeforeStart": [
+        "REDDIRT-EMAIL-HOSTED-DB-PROOF-1.0"
+      ],
+      "allowedPaths": [
+        "RedDirt/docs/**",
+        "RedDirt/scripts/**",
+        "RedDirt/src/lib/email-command-center/**"
+      ],
+      "forbiddenPaths": [
+        "sos-public/**",
+        "RedDirt/.env"
+      ],
+      "proofRequired": [
+        "Dry-run logs redacted",
+        "No worker activation attestation"
+      ],
+      "checksRequired": [
+        "cd RedDirt && npm run email:no-send-scan",
+        "cd RedDirt && npm run check"
+      ],
+      "mustNotDo": [
+        "No live sends or auto-send; no Gmail send or SendGrid broadcast",
+        "No real contact import; no automation worker activation",
+        "No printing secrets; no committing .env",
+        "No unapproved migrations; no unapproved sibling app edits; no unapproved sos-public coupling",
+        "No automation worker activation"
+      ],
+      "expectedOutputs": [
+        "Dry-run report in develop_notes"
+      ],
+      "finalReturnFormat": [
+        "activeLane",
+        "sliceId",
+        "filesChanged",
+        "commandsRunAndResults",
+        "proofArtifacts",
+        "governanceAttestation",
+        "progressEffectsRealized",
+        "remainingBlockers",
+        "nextSafeSliceRecommendation"
+      ]
+    }
+  ]
+}

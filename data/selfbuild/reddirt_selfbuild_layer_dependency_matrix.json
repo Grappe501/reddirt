@@ -1,0 +1,194 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-SELFBUILD-DEPENDENCY-GRAPH-1.0",
+  "generatedAt": "2026-05-06T19:35:12.844Z",
+  "status": "layer_dependency_matrix_seed",
+  "layers": {
+    "communications_intelligence": {
+      "v2LayerKey": "communications_intelligence",
+      "prerequisites": [
+        "v2_arch_registry",
+        "selfbuild_slice_schema",
+        "hosted_db_proof"
+      ],
+      "blockers": [
+        "hosted_db_proof_not_canonical",
+        "live_send_blocked_until_steve"
+      ],
+      "firstSafeSlice": "REDDIRT-EMAIL-HOSTED-DB-PROOF-1.0",
+      "productionGate": "Hosted DB proof + no-send scan green before execution-class sends",
+      "humanApprovalGates": [
+        "Steve for live send and contact upsert execution",
+        "Operator for hosted URL verification"
+      ],
+      "currentReadinessState": "partial"
+    },
+    "campaign_memory": {
+      "v2LayerKey": "campaign_memory",
+      "prerequisites": [
+        "v2_arch_registry",
+        "campaign_memory_foundation"
+      ],
+      "blockers": [
+        "rag_retrieval_incomplete"
+      ],
+      "firstSafeSlice": "REDDIRT-MEMORY-SCHEMA-INVENTORY-1.0",
+      "productionGate": "BRAIN manifest + ingest licensing packets before production retrieval",
+      "humanApprovalGates": [
+        "Counsel/licensing for new corpora",
+        "Steve for public intel publication"
+      ],
+      "currentReadinessState": "partial"
+    },
+    "operational_intelligence": {
+      "v2LayerKey": "operational_intelligence",
+      "prerequisites": [
+        "v2_arch_registry"
+      ],
+      "blockers": [],
+      "firstSafeSlice": "REDDIRT-DAILY-BRIEFING-SCHEMA-1.0",
+      "productionGate": "No auto task creation from AI metadata without explicit packet",
+      "humanApprovalGates": [
+        "Workbench owner for cross-surface rollups"
+      ],
+      "currentReadinessState": "partial"
+    },
+    "scheduling_intelligence": {
+      "v2LayerKey": "scheduling_intelligence",
+      "prerequisites": [
+        "v2_arch_registry",
+        "scheduling_intelligence"
+      ],
+      "blockers": [],
+      "firstSafeSlice": "REDDIRT-CALENDAR-SOURCE-AUDIT-1.0",
+      "productionGate": "Human approval for calendar mutations affecting principals",
+      "humanApprovalGates": [
+        "Principal / operator for external calendar side effects"
+      ],
+      "currentReadinessState": "shell-built"
+    },
+    "audience_relationship_intelligence": {
+      "v2LayerKey": "audience_relationship_intelligence",
+      "prerequisites": [
+        "v2_arch_registry",
+        "campaign_memory_foundation"
+      ],
+      "blockers": [
+        "production_contact_ingestion_blocked"
+      ],
+      "firstSafeSlice": "REDDIRT-EMAIL-CONTACT-PROFILE-GRAPH-1.0",
+      "productionGate": "Hosted DB + import staging discipline before production upsert",
+      "humanApprovalGates": [
+        "Operator approve on staged imports"
+      ],
+      "currentReadinessState": "partial"
+    },
+    "automation_intelligence": {
+      "v2LayerKey": "automation_intelligence",
+      "prerequisites": [
+        "v2_arch_registry",
+        "automation_worker_dryrun"
+      ],
+      "blockers": [
+        "automation_activation_blocked"
+      ],
+      "firstSafeSlice": "REDDIRT-AUTOMATION-WORKER-DRYRUN-1.0",
+      "productionGate": "Dry-run logs + governance checklist before any worker enablement",
+      "humanApprovalGates": [
+        "Steve / ops for production worker activation"
+      ],
+      "currentReadinessState": "shell-built"
+    },
+    "analytics_deliverability_intelligence": {
+      "v2LayerKey": "analytics_deliverability_intelligence",
+      "prerequisites": [
+        "v2_arch_registry",
+        "communications_intelligence"
+      ],
+      "blockers": [],
+      "firstSafeSlice": "REDDIRT-EMAIL-SENDGRID-FOUNDATION-1.0",
+      "productionGate": "Read-only analytics until send execution explicitly steered",
+      "humanApprovalGates": [
+        "Operator for reconciliation exports"
+      ],
+      "currentReadinessState": "partial"
+    },
+    "owned_media_content_intelligence": {
+      "v2LayerKey": "owned_media_content_intelligence",
+      "prerequisites": [
+        "v2_arch_registry",
+        "campaign_memory_foundation"
+      ],
+      "blockers": [],
+      "firstSafeSlice": "Owned media ingest docs steered from BRAIN manifest",
+      "productionGate": "Licensing + manifest alignment",
+      "humanApprovalGates": [
+        "Media counsel for third-party assets"
+      ],
+      "currentReadinessState": "partial"
+    },
+    "compliance_governance_safety": {
+      "v2LayerKey": "compliance_governance_safety",
+      "prerequisites": [
+        "v2_arch_registry",
+        "selfbuild_forbidden_path_gates"
+      ],
+      "blockers": [],
+      "firstSafeSlice": "REDDIRT-SELFBUILD-FORBIDDEN-PATH-GATES-1.0",
+      "productionGate": "email:no-send-scan + send execution rails",
+      "humanApprovalGates": [
+        "Steve for EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM changes"
+      ],
+      "currentReadinessState": "operational-local"
+    },
+    "self_build_intelligence": {
+      "v2LayerKey": "self_build_intelligence",
+      "prerequisites": [
+        "v2_arch_registry",
+        "selfbuild_slice_schema",
+        "selfbuild_forbidden_path_gates"
+      ],
+      "blockers": [],
+      "firstSafeSlice": "REDDIRT-SELFBUILD-QUEUE-GENERATOR-1.0",
+      "productionGate": "AUTO_BUILD_PROTOCOL hard stops respected",
+      "humanApprovalGates": [
+        "Steve for expanding nightly scope"
+      ],
+      "currentReadinessState": "architecture_registry_seed"
+    },
+    "deployment_environment_readiness": {
+      "v2LayerKey": "deployment_environment_readiness",
+      "prerequisites": [
+        "v2_arch_registry",
+        "hosted_db_proof"
+      ],
+      "blockers": [
+        "hosted_db_proof_not_canonical",
+        "deployment_readiness_separate"
+      ],
+      "firstSafeSlice": "REDDIRT-EMAIL-HOSTED-DB-PROOF-1.0",
+      "productionGate": "Kelly-Grappe-App DB verification independent of local Docker",
+      "humanApprovalGates": [
+        "Operator confirms hosted DATABASE_URL/DIRECT_URL targets"
+      ],
+      "currentReadinessState": "partial"
+    },
+    "public_site_interface_boundary": {
+      "v2LayerKey": "public_site_interface_boundary",
+      "prerequisites": [
+        "v2_arch_registry",
+        "public_site_interface_contract"
+      ],
+      "blockers": [
+        "public_site_contract_missing",
+        "external_consolidation_blocked"
+      ],
+      "firstSafeSlice": "REDDIRT-PUBLIC-SITE-INTERFACE-CONTRACT-1.0",
+      "productionGate": "No sos-public merge or RedDirt runtime import without integration packet",
+      "humanApprovalGates": [
+        "Steve for any sos-public coupling"
+      ],
+      "currentReadinessState": "architecture_registry_seed"
+    }
+  }
+}

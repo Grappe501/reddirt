@@ -1,0 +1,241 @@
+{
+  "schemaVersion": "1.0",
+  "schemaName": "reddirt_selfbuild_slice_schema",
+  "packetId": "REDDIRT-SELFBUILD-SLICE-SCHEMA-1.0",
+  "description": "Canonical machine contract for RedDirt Cursor self-build slices. Future packets must be expressible as JSON objects conforming to sliceObjectRequiredKeys and validationRules.",
+  "requiredSliceFields": [
+    "sliceId",
+    "title",
+    "sliceType",
+    "v2Layers",
+    "mission",
+    "whyNow",
+    "allowedPaths",
+    "forbiddenPaths",
+    "allowedReads",
+    "allowedWrites",
+    "requiredInputs",
+    "expectedOutputs",
+    "proofRequired",
+    "checksRequired",
+    "progressEffects",
+    "governanceRules",
+    "humanApprovalGates",
+    "mustNotDo",
+    "rollbackNotes",
+    "finalReturnFormat"
+  ],
+  "requiredPathFields": [
+    "allowedPaths",
+    "forbiddenPaths",
+    "allowedReads",
+    "allowedWrites"
+  ],
+  "requiredGovernanceFields": [
+    "governanceRules",
+    "humanApprovalGates",
+    "mustNotDo",
+    "rollbackNotes"
+  ],
+  "requiredProofFields": [
+    "proofRequired",
+    "checksRequired"
+  ],
+  "requiredProgressFields": [
+    "progressEffects",
+    "expectedOutputs"
+  ],
+  "requiredReportFields": [
+    "activeLane",
+    "sliceId",
+    "filesChanged",
+    "commandsRunAndResults",
+    "proofArtifacts",
+    "governanceAttestation",
+    "progressEffectsRealized",
+    "remainingBlockers",
+    "nextSafeSliceRecommendation"
+  ],
+  "allowedReadinessStates": [
+    "concept",
+    "planned",
+    "architecture_ready",
+    "shell_built",
+    "partial",
+    "operational_local",
+    "hosted_ready",
+    "operator_proven",
+    "production_governed",
+    "scaled"
+  ],
+  "allowedRiskLevels": [
+    "low",
+    "medium",
+    "high",
+    "critical"
+  ],
+  "allowedSliceTypes": [
+    "architecture",
+    "documentation",
+    "readiness",
+    "diagnostic",
+    "ui",
+    "api",
+    "database_readonly",
+    "database_migration",
+    "ai_intelligence",
+    "automation_dryrun",
+    "production_proof",
+    "selfbuild",
+    "consolidation_review"
+  ],
+  "allowedV2LayerKeys": [
+    "communications_intelligence",
+    "campaign_memory",
+    "operational_intelligence",
+    "scheduling_intelligence",
+    "audience_relationship_intelligence",
+    "automation_intelligence",
+    "analytics_deliverability_intelligence",
+    "owned_media_content_intelligence",
+    "compliance_governance_safety",
+    "self_build_intelligence",
+    "deployment_environment_readiness",
+    "public_site_interface_boundary"
+  ],
+  "globalForbiddenActions": [
+    "live sends",
+    "auto-send",
+    "Gmail send",
+    "SendGrid broadcast",
+    "real contact import",
+    "automation worker activation",
+    "printing secrets",
+    "committing .env",
+    "changing EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM",
+    "unapproved migrations",
+    "unapproved sibling app edits",
+    "unapproved sos-public coupling"
+  ],
+  "globalSafetyRules": [
+    "Declare allowedPaths, forbiddenPaths, allowedReads, and allowedWrites before editing; stay inside them.",
+    "Treat globalForbiddenActions as hard stops unless a steered production_proof packet explicitly lists a governed exception and human gates.",
+    "Every slice lists proofRequired and checksRequired; run listed checks and record redacted outputs or logs paths only—never paste secrets.",
+    "v2Layers must only use keys from data/architecture/reddirt_v2_layer_registry.json (allowedV2LayerKeys).",
+    "Database_migration and production_proof slices require humanApprovalGates and rollbackNotes with concrete revert guidance.",
+    "Cross-lane work (sos-public, ajax, phatlip, countyWorkbench) requires Steve-approved integration packets; default is forbid.",
+    "Local green (npm run check, typecheck) does not upgrade hosted_ready or operator_proven without environment-specific proof artifacts.",
+    "AI outputs are advisory until merged through the same review path as any other change."
+  ],
+  "validationRules": [
+    {
+      "id": "slice.keys.complete",
+      "severity": "error",
+      "target": "slice",
+      "kind": "required_keys",
+      "keysRef": "requiredSliceFields",
+      "message": "Slice object is missing one or more required keys from requiredSliceFields."
+    },
+    {
+      "id": "slice.sliceId.pattern",
+      "severity": "error",
+      "target": "slice",
+      "kind": "string_non_empty",
+      "field": "sliceId",
+      "message": "sliceId must be a non-empty string (prefer UPPER-SNAKE packet id with version, e.g. REDDIRT-EXAMPLE-1.0)."
+    },
+    {
+      "id": "slice.sliceType.enum",
+      "severity": "error",
+      "target": "slice",
+      "kind": "enum_field",
+      "field": "sliceType",
+      "allowedRef": "allowedSliceTypes",
+      "message": "sliceType must be one of allowedSliceTypes."
+    },
+    {
+      "id": "slice.v2Layers.subset",
+      "severity": "error",
+      "target": "slice",
+      "kind": "array_subset_of",
+      "field": "v2Layers",
+      "allowedRef": "allowedV2LayerKeys",
+      "message": "Each v2Layers entry must be a registry layer key from allowedV2LayerKeys (empty array allowed only for pure selfbuild/documentation slices that explicitly state no layer touch in governanceRules)."
+    },
+    {
+      "id": "slice.paths.string_arrays",
+      "severity": "error",
+      "target": "slice",
+      "kind": "string_arrays",
+      "fieldsRef": "requiredPathFields",
+      "message": "allowedPaths, forbiddenPaths, allowedReads, allowedWrites must be arrays of strings."
+    },
+    {
+      "id": "slice.lists.string_arrays",
+      "severity": "error",
+      "target": "slice",
+      "kind": "string_arrays",
+      "fields": [
+        "requiredInputs",
+        "expectedOutputs",
+        "proofRequired",
+        "checksRequired",
+        "progressEffects",
+        "governanceRules",
+        "humanApprovalGates",
+        "mustNotDo",
+        "rollbackNotes",
+        "finalReturnFormat"
+      ],
+      "message": "Listed fields must be arrays of strings."
+    },
+    {
+      "id": "slice.allowedPaths.non_empty.product",
+      "severity": "warning",
+      "target": "slice",
+      "kind": "conditional_non_empty_array",
+      "field": "allowedPaths",
+      "unlessSliceTypes": ["selfbuild", "documentation", "architecture", "readiness", "consolidation_review"],
+      "message": "allowedPaths is empty while sliceType implies code or runtime touch; confirm scope is intentional."
+    },
+    {
+      "id": "slice.forbidden.global",
+      "severity": "error",
+      "target": "slice",
+      "kind": "must_not_intersect",
+      "field": "allowedWrites",
+      "forbiddenPhrasesRef": "globalForbiddenActions",
+      "message": "allowedWrites must not explicitly authorize global forbidden actions; use human-governed production_proof packets instead."
+    },
+    {
+      "id": "report.keys.complete",
+      "severity": "error",
+      "target": "final_report",
+      "kind": "required_keys",
+      "keysRef": "requiredReportFields",
+      "message": "Completion report object is missing one or more keys from requiredReportFields (see reddirt_selfbuild_required_return_format.json)."
+    }
+  ],
+  "sliceObjectContract": {
+    "sliceId": "Stable packet identifier string.",
+    "title": "Human-readable title.",
+    "sliceType": "One of allowedSliceTypes.",
+    "v2Layers": "Registry layer keys touched; subset of allowedV2LayerKeys.",
+    "mission": "Single-paragraph mission for this slice.",
+    "whyNow": "Why this slice is queued now (dependency / risk / unlock).",
+    "allowedPaths": "Glob or prefix paths under RedDirt/ that may be read for context (and written if also in allowedWrites).",
+    "forbiddenPaths": "Explicit bans (e.g. prisma/, sos-public/, .env).",
+    "allowedReads": "Narrow reads (docs, data JSON, env variable names without values).",
+    "allowedWrites": "Explicit write scope; must not broaden into forbidden siblings or secrets.",
+    "requiredInputs": "Artifacts, env presence flags, tickets—no secret values.",
+    "expectedOutputs": "Files, behaviors, or proofs this slice must produce.",
+    "proofRequired": "Evidence types (CLI names, screenshots policy, operator sign-off).",
+    "checksRequired": "Commands or human checks; outputs referenced without secrets.",
+    "progressEffects": "What ledger, registry, or readiness state may advance if proofs pass.",
+    "governanceRules": "Packet-specific rules layered on top of globalSafetyRules.",
+    "humanApprovalGates": "Named humans or roles required before merge or execution.",
+    "mustNotDo": "Slice-specific anti-goals beyond globalForbiddenActions.",
+    "rollbackNotes": "How to revert or neutralize partial work.",
+    "finalReturnFormat": "Ordered list of report section keys (from requiredReportFields) this slice expects in the handoff; may repeat docs/PROTO conventions."
+  }
+}
