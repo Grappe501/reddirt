@@ -113,6 +113,18 @@ export default async function EmailWorkflowQueueDetailPage({ params }: Props) {
         </div>
         <p className="text-[11px] text-kelly-text/70">{EMAIL_WORKFLOW_STATUS_MEANINGS[d.status]}</p>
         <EmailWorkflowOperatorControls itemId={d.id} status={d.status} isAssigned={Boolean(d.assignedTo)} />
+        <p className="mt-2 text-[11px] text-kelly-text/80">
+          <Link
+            href={`/admin/workbench/email-command-center/message-studio?source=emailWorkflowItem&id=${encodeURIComponent(d.id)}`}
+            className="inline-flex items-center rounded border border-kelly-navy/25 bg-kelly-fog/70 px-2 py-1 text-[10px] font-bold text-kelly-navy underline-offset-2 hover:underline"
+          >
+            Prepare draft in Message Studio
+          </Link>{" "}
+          <span className="text-kelly-text/60">
+            — opens Message Studio with source/id chips only (no body in the URL). After queue AI review, paste or
+            summarize vetted context; toggle <strong>Queue item context</strong> in Campaign Voice when guiding AI.
+          </span>
+        </p>
       </div>
 
       <div className="mt-2 space-y-2 rounded border border-kelly-text/10 bg-white/80 p-2">

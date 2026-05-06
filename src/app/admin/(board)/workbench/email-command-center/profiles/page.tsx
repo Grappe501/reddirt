@@ -32,6 +32,15 @@ export default async function EmailCommandCenterProfilesPage() {
         <Link href="/admin/workbench/email-command-center/audiences" className="text-xs text-kelly-text/60 hover:underline">
           Audience Studio
         </Link>
+        <Link href="/admin/workbench/email-command-center/analytics" className="text-xs text-kelly-text/60 hover:underline">
+          Analytics
+        </Link>
+        <Link href="/admin/workbench/email-command-center/map" className="text-xs text-kelly-text/60 hover:underline">
+          Route map
+        </Link>
+        <Link href="/admin/workbench/email-command-center/readiness" className="text-xs text-kelly-text/60 hover:underline">
+          Readiness
+        </Link>
       </div>
       <h1 className="font-heading text-lg font-bold text-kelly-navy">Email — Profile &amp; hint review</h1>
       <p className="font-body text-xs text-kelly-text/80">
@@ -86,7 +95,23 @@ export default async function EmailCommandCenterProfilesPage() {
             ))}
           </ul>
         ) : (
-          <p className="mt-1 text-[11px] text-kelly-text/55">No pending profile fact suggestions.</p>
+          <div className="mt-1 rounded border border-kelly-text/12 bg-kelly-fog/40 px-2 py-2 font-body text-[11px] text-kelly-navy" role="status">
+            <p className="font-semibold">No pending profile fact suggestions</p>
+            <p className="mt-1 text-[10px] text-kelly-text/80">
+              Suggestions appear after queue AI stores JSON on an item and the graph stages PENDING rows — nothing is wrong
+              with an empty list on a fresh DB.
+            </p>
+            <p className="mt-2 text-[10px]">
+              <span className="font-semibold">Next:</span>{" "}
+              <Link href="/admin/workbench/email-queue" className="font-bold text-kelly-forest underline">
+                Open email queue
+              </Link>{" "}
+              → open an item → run AI analysis (if configured) → return here.
+            </p>
+            <p className="mt-1 text-[10px] text-kelly-forest/90">
+              <strong>Safety:</strong> approvals still required — no auto-merge to canonical volunteer profiles.
+            </p>
+          </div>
         )}
       </section>
 
@@ -111,7 +136,22 @@ export default async function EmailCommandCenterProfilesPage() {
             ))}
           </ul>
         ) : (
-          <p className="mt-1 text-[11px] text-kelly-text/55">No approved facts recorded yet.</p>
+          <div className="mt-1 rounded border border-kelly-text/12 bg-kelly-fog/40 px-2 py-2 font-body text-[11px] text-kelly-navy" role="status">
+            <p className="font-semibold">No approved facts yet</p>
+            <p className="mt-1 text-[10px] text-kelly-text/80">
+              Audience Studio previews are safest once ACTIVE facts exist — approve suggestions above or add governed facts
+              via contact import commit.
+            </p>
+            <p className="mt-2 text-[10px]">
+              <Link href="/admin/workbench/email-command-center/audiences" className="font-bold text-kelly-forest underline">
+                Audience Studio
+              </Link>{" "}
+              ·{" "}
+              <Link href="/admin/workbench/email-command-center/imports" className="font-bold text-kelly-forest underline">
+                Contact imports
+              </Link>
+            </p>
+          </div>
         )}
       </section>
     </div>

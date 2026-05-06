@@ -33,6 +33,9 @@ yarn-error.log*
 # optional Next-style files (often contain secrets if present)
 .env.production
 .env.development
+# machine-local env backups (never commit — see docs/email-command-center-selective-staging-guide.md)
+.env.backup*
+.env.backup-*
 
 # typescript
 *.tsbuildinfo

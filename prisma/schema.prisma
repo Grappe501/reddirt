@@ -5,7 +5,10 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  /// Runtime queries (pooler or session string). For Supabase **transaction** pooler on `DATABASE_URL`, set `DIRECT_URL` to the **direct** or **session** string from the dashboard for `migrate deploy` / introspection — see `docs/deployment.md`.
+  url       = env("DATABASE_URL")
+  /// Migrations + introspection. **Local Docker:** set to the same value as `DATABASE_URL`. **Live RedDirt Supabase DB:** often required when `DATABASE_URL` uses port `6543` or `pgbouncer=true`.
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
@@ -113,6 +116,10 @@ model User {
   emailAudienceDefinitionsCreated     EmailAudienceDefinition[]             @relation("EmailAudienceDefinitionCreatedBy")
   emailAudienceDefinitionsUpdated     EmailAudienceDefinition[]             @relation("EmailAudienceDefinitionUpdatedBy")
   emailAudiencePreviewRuns            EmailAudiencePreviewRun[]             @relation("EmailAudiencePreviewRunActor")
+  /// EMAIL-CONTACT-IMPORT-STAGING-1.0 — CSV staging batches (no SendGrid).
+  emailContactImportBatchesCreated    EmailContactImportBatch[]             @relation("EmailContactImportBatchCreatedBy")
+  emailContactImportBatchesApproved   EmailContactImportBatch[]             @relation("EmailContactImportBatchApprovedBy")
+  emailContactImportDecisions         EmailContactImportDecision[]          @relation("EmailContactImportDecisionDecidedBy")
 }
 
 /// COMP-2: classification for dashboard-uploaded compliance knowledge files.
@@ -4349,6 +4356,9 @@ model EmailContactProfile {
   audienceHintsProfile EmailAudienceHint[]
   /// EMAIL-SENDGRID-FOUNDATION-1.0 — optional linkage for export preview rows (no live sync here).
   sendGridContactMaps SendGridContactMap[]
+  /// EMAIL-CONTACT-IMPORT-STAGING-1.0 — staged import row matches (preview / commit).
+  importRowsMatched  EmailContactImportRow[] @relation("ImportRowMatchedProfile")
+  importRowsCommitted EmailContactImportRow[] @relation("ImportRowCommittedProfile")
 
   @@index([userId])
   @@index([volunteerProfileId])
@@ -4467,6 +4477,121 @@ model EmailAudiencePreviewRun {
 
   @@index([generatedAt])
   @@index([audienceDefinitionId])
+}
+
+// --- EMAIL-CONTACT-IMPORT-STAGING-1.0 — CSV staging → validate → approve → commit (no SendGrid, no sends). ---
+
+enum EmailContactImportBatchStatus {
+  UPLOADED
+  PARSED
+  VALIDATED
+  READY_FOR_APPROVAL
+  APPROVED
+  COMMITTED
+  FAILED
+  ARCHIVED
+}
+
+enum EmailContactImportRowValidationStatus {
+  VALID
+  WARNING
+  INVALID
+  DUPLICATE
+  EXISTING_MATCH
+}
+
+enum EmailContactImportDecisionType {
+  APPROVE_BATCH
+  REJECT_BATCH
+  SKIP_ROW
+  INCLUDE_ROW
+  MERGE_WITH_EXISTING
+  CREATE_PROFILE
+}
+
+model EmailContactImportBatch {
+  id                     String                       @id @default(cuid())
+  name                   String                       @db.VarChar(240)
+  sourceLabel            String?                      @db.VarChar(320)
+  originalFilename       String                       @db.VarChar(500)
+  status                 EmailContactImportBatchStatus @default(UPLOADED)
+  rowCount               Int                          @default(0)
+  validRowCount          Int                          @default(0)
+  invalidRowCount        Int                          @default(0)
+  duplicateRowCount      Int                          @default(0)
+  existingProfileMatchCount Int                       @default(0)
+  consentWarningCount    Int                          @default(0)
+  createdByUserId        String?
+  createdBy              User?                        @relation("EmailContactImportBatchCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  approvedByUserId       String?
+  approvedBy             User?                        @relation("EmailContactImportBatchApprovedBy", fields: [approvedByUserId], references: [id], onDelete: SetNull)
+  approvedAt             DateTime?
+  committedAt            DateTime?
+  metadataJson           Json                         @default("{}")
+  createdAt              DateTime                     @default(now())
+  updatedAt              DateTime                     @updatedAt
+
+  rows      EmailContactImportRow[]
+  decisions EmailContactImportDecision[]
+
+  @@index([status, createdAt])
+  @@index([createdByUserId])
+}
+
+model EmailContactImportRow {
+  id                       String                           @id @default(cuid())
+  batchId                  String
+  batch                    EmailContactImportBatch          @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  rowNumber                Int
+  rawJson                  Json                             @default("{}")
+  normalizedEmail          String?                          @db.VarChar(320)
+  firstName                String?                          @db.VarChar(200)
+  lastName                 String?                          @db.VarChar(200)
+  phone                    String?                          @db.VarChar(80)
+  county                   String?                          @db.VarChar(120)
+  city                     String?                          @db.VarChar(120)
+  state                    String?                          @db.VarChar(32)
+  sourceList               String?                          @db.VarChar(320)
+  sourceDate               String?                          @db.VarChar(80)
+  consentStatus            String?                          @db.VarChar(120)
+  tagsJson                 Json                             @default("[]")
+  organization             String?                          @db.VarChar(320)
+  role                     String?                          @db.VarChar(200)
+  notes                    String?                          @db.Text
+  volunteerInterest        String?                          @db.VarChar(320)
+  donorInterest            String?                          @db.VarChar(320)
+  issueInterest            String?                          @db.VarChar(320)
+  validationStatus         EmailContactImportRowValidationStatus @default(VALID)
+  validationMessagesJson   Json                             @default("[]")
+  matchedProfileId         String?
+  matchedProfile           EmailContactProfile?             @relation("ImportRowMatchedProfile", fields: [matchedProfileId], references: [id], onDelete: SetNull)
+  committedProfileId       String?
+  committedProfile         EmailContactProfile?             @relation("ImportRowCommittedProfile", fields: [committedProfileId], references: [id], onDelete: SetNull)
+  createdAt                DateTime                         @default(now())
+  updatedAt                DateTime                         @updatedAt
+
+  decisions EmailContactImportDecision[] @relation("EmailContactImportDecisionRow")
+
+  @@index([batchId, rowNumber])
+  @@index([batchId, normalizedEmail])
+  @@index([matchedProfileId])
+  @@index([committedProfileId])
+}
+
+model EmailContactImportDecision {
+  id              String                       @id @default(cuid())
+  batchId         String
+  batch           EmailContactImportBatch      @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  rowId           String?
+  row             EmailContactImportRow?       @relation("EmailContactImportDecisionRow", fields: [rowId], references: [id], onDelete: SetNull)
+  decisionType    EmailContactImportDecisionType
+  reason          String                       @db.Text
+  decidedByUserId String?
+  decidedBy       User?                        @relation("EmailContactImportDecisionDecidedBy", fields: [decidedByUserId], references: [id], onDelete: SetNull)
+  decidedAt       DateTime                     @default(now())
+  metadataJson    Json                         @default("{}")
+
+  @@index([batchId, decidedAt])
 }
 
 // --- EMAIL-SENDGRID-FOUNDATION-1.0 — readiness, webhook intake, suppression (no mass send / no auto sync). ---

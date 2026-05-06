@@ -16,10 +16,11 @@ function run(cmd, opts = {}) {
   execSync(cmd, { stdio: "inherit", shell: true, ...opts });
 }
 
-/** Prisma: let `.env` DATABASE_URL win over a machine-level env var. */
+/** Prisma: let `.env` DATABASE_URL / DIRECT_URL win over machine-level env vars. */
 function envForPrisma() {
   const env = { ...process.env };
   delete env.DATABASE_URL;
+  delete env.DIRECT_URL;
   return env;
 }
 
@@ -27,7 +28,7 @@ console.log("\n\x1b[36mRed Dirt — stack up\x1b[0m\n");
 
 if (!fs.existsSync(path.join(root, ".env.local")) && !fs.existsSync(path.join(root, ".env"))) {
   console.warn(
-    "\x1b[33m⚠ No .env or .env.local — copy .env.example to .env.local and set DATABASE_URL.\x1b[0m\n",
+    "\x1b[33m⚠ No .env or .env.local — copy .env.example to .env.local and set DATABASE_URL + DIRECT_URL (same as DATABASE_URL for Docker).\x1b[0m\n",
   );
 }
 

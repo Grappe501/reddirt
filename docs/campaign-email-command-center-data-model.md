@@ -1,7 +1,7 @@
 # Campaign Email Command Center — Data Model (Design Only)
 
 **Packet:** **REDDIRT-EMAIL-OS-MASTERPLAN-1.0**  
-**Status:** **Mixed** — design narrative below; **`EMAIL-CONTACT-PROFILE-GRAPH-1.0`** + **`EMAIL-AUDIENCE-STUDIO-1.0`** ship focused Prisma models (see § implemented). When implementing further packets, reconcile with `prisma/schema.prisma` and prefer **additive** migrations.
+**Status:** **Mixed** — design narrative below; **`EMAIL-CONTACT-PROFILE-GRAPH-1.0`** + **`EMAIL-AUDIENCE-STUDIO-1.0`** + **`EMAIL-CONTACT-IMPORT-STAGING-1.0`** + **`EMAIL-SENDGRID-FOUNDATION-1.0`** ship focused Prisma models (see § implemented). When implementing further packets, reconcile with `prisma/schema.prisma` and prefer **additive** migrations.
 
 **Related:** [`campaign-email-command-center-master-plan.md`](./campaign-email-command-center-master-plan.md)
 
@@ -45,6 +45,18 @@ Additive migration: `prisma/migrations/20260506120000_email_sendgrid_foundation/
 | `SendGridContactMap` | Optional future per-contact export/sync staging — **no** SendGrid API calls in foundation library defaults. |
 
 **Comms note:** `CommunicationSend` / `CommunicationRecipient` / `ContactPreference.sendgridSuppressionState` remain the **workbench** path; **`POST /api/webhooks/sendgrid`** continues to serve that stack. Email OS foundation intake is **`POST /api/sendgrid/events`**.
+
+### EMAIL-CONTACT-IMPORT-STAGING-1.0 (2026-05-07)
+
+Additive migration: `prisma/migrations/20260507180000_email_contact_import_staging/migration.sql`.
+
+| Model | Role |
+|-------|------|
+| `EmailContactImportBatch` | CSV upload metadata, counters, `APPROVED` / `COMMITTED` / `ARCHIVED` lifecycle; **no** SendGrid fields. |
+| `EmailContactImportRow` | Parsed row + `rawJson`; validation + optional `matchedProfileId` / `committedProfileId` to `EmailContactProfile`. |
+| `EmailContactImportDecision` | Operator audit (`APPROVE_BATCH`, commit log, etc.). |
+
+**Commit path:** creates or updates **`EmailContactProfile`** only; optional **`EmailContactProfileFact`** with `sourceType` **`CONTACT_IMPORT`** and `sourceMetadataJson` `{ batchId, rowId }` — **does not** create **`EmailAudienceDefinition`**, **does not** call SendGrid.
 
 ---
 

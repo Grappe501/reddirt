@@ -36,7 +36,9 @@ chmod +x scripts/dev.sh
 
 1. Copy `.env.example` → `.env.local`.
 2. Default `DATABASE_URL` matches `docker-compose.yml` (`reddirt` / `reddirt` / `reddirt`).
-3. Optional: set `OPENAI_API_KEY` for search answers + intake classification; set `NEXT_PUBLIC_SITE_URL` for production OG URLs.
+3. **`DIRECT_URL` is required** for Prisma (`schema.prisma` `directUrl`) — for local Docker use the **same** connection string as `DATABASE_URL` (see `.env.example`). For the **Canonical Supabase DB** (live Kelly SOS / RedDirt Postgres — confirm the Supabase **project** with Steve), set both strings from that project’s **Connect** UI per `docs/deployment.md`.
+4. Optional: set `OPENAI_API_KEY` for search answers + intake classification; set `NEXT_PUBLIC_SITE_URL` for production OG URLs.
+5. **Supabase SSR / Auth (optional):** `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` enable `@supabase/ssr` session refresh in middleware. They are **separate** from **`DATABASE_URL` / `DIRECT_URL`** (Prisma). See `docs/deployment.md` § *Supabase SSR / Auth vs Prisma Postgres* and run `npm run email:db:diagnose` for a safe presence check (no secret values).
 
 ### Useful npm scripts
 

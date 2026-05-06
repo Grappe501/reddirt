@@ -27,10 +27,11 @@ function parseArgs(argv) {
   };
 }
 
-/** Match launch-dev.cjs: let repo `.env` win over a machine-level DATABASE_URL. */
+/** Match launch-dev.cjs: let repo `.env` win over machine-level DATABASE_URL / DIRECT_URL. */
 function envForSubprocess(extra) {
   const env = { ...process.env, ...extra };
   delete env.DATABASE_URL;
+  delete env.DIRECT_URL;
   return env;
 }
 

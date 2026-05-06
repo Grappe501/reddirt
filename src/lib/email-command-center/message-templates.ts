@@ -1,0 +1,585 @@
+/**
+ * EMAIL-MESSAGE-STUDIO-PRODUCTION-TEMPLATES-1.0 — operator-ready structures only.
+ * No fabricated facts; placeholders must be replaced with approved content.
+ */
+
+import type { MessageStudioCampaignVoiceSettings } from "@/lib/email-command-center/campaign-voice";
+import type { MessageStudioEditorialReviewOwner } from "@/lib/email-command-center/message-studio-editorial-review-model";
+
+export const MESSAGE_TEMPLATE_CATEGORIES = [
+  "volunteer_activation",
+  "volunteer_follow_up",
+  "donor_thank_you",
+  "donor_follow_up",
+  "event_invitation",
+  "event_reminder",
+  "event_follow_up",
+  "press_response",
+  "issue_update",
+  "county_regional_update",
+  "newsletter",
+  "rapid_response",
+  "re_engagement",
+  "thank_you_relationship",
+  "voter_education",
+] as const;
+
+export type MessageTemplateCategory = (typeof MESSAGE_TEMPLATE_CATEGORIES)[number];
+
+export type TemplateRiskDisplay = "low" | "medium" | "high";
+
+export type MessageStudioEmailTemplate = {
+  id: string;
+  label: string;
+  category: MessageTemplateCategory;
+  bestFor: string;
+  /** Filter tags: volunteer, donor, press, voter, field, general, organizing, fundraising */
+  audienceTypes: string[];
+  riskLevel: TemplateRiskDisplay;
+  approvalLevel: MessageStudioCampaignVoiceSettings["approvalLevel"];
+  recommendedToneProfileId: string;
+  recommendedIssueFrameIds: string[];
+  recommendedAudienceFrameId: string;
+  recommendedCtaFrameId: string;
+  subjectPatterns: string[];
+  preheaderPatterns: string[];
+  bodyStructure: string;
+  ctaOptions: string[];
+  personalizationSlots: string[];
+  complianceNotes: string;
+  reviewNotes: string;
+  sendRail: string;
+  sourceRequirements: string;
+  suggestedEditorialReviewOwner: MessageStudioEditorialReviewOwner;
+};
+
+const PL = `[PLACEHOLDER — replace with approved copy — no unsourced claims]`;
+
+function skeleton(intro: string, sections: string[]): string {
+  return [intro, "", ...sections.map((s, i) => `---\n${i + 1}. ${s}\n`), "", `Sign-off / name\n${PL}`].join("\n");
+}
+
+export const MESSAGE_TEMPLATE_CATEGORY_LABELS: Record<MessageTemplateCategory, string> = {
+  volunteer_activation: "Volunteer activation",
+  volunteer_follow_up: "Volunteer follow-up",
+  donor_thank_you: "Donor thank-you",
+  donor_follow_up: "Donor follow-up / fundraising careful",
+  event_invitation: "Event invitation",
+  event_reminder: "Event reminder",
+  event_follow_up: "Event follow-up",
+  press_response: "Press response",
+  issue_update: "Issue update",
+  county_regional_update: "County / regional update",
+  newsletter: "Newsletter",
+  rapid_response: "Rapid response",
+  re_engagement: "Re-engagement",
+  thank_you_relationship: "Thank-you / relationship maintenance",
+  voter_education: "Voter education / civic information",
+};
+
+export function mapTemplateRiskToCampaignVoice(risk: TemplateRiskDisplay): MessageStudioCampaignVoiceSettings["riskLevel"] {
+  if (risk === "low") return "low";
+  if (risk === "high") return "elevated";
+  return "standard";
+}
+
+export function buildTemplateSummaryForAi(t: MessageStudioEmailTemplate): string {
+  return JSON.stringify({
+    id: t.id,
+    label: t.label,
+    category: t.category,
+    bestFor: t.bestFor,
+    riskLevel: t.riskLevel,
+    approvalLevel: t.approvalLevel,
+    subjectPatterns: t.subjectPatterns,
+    preheaderPatterns: t.preheaderPatterns,
+    bodyStructure: t.bodyStructure,
+    ctaOptions: t.ctaOptions,
+    personalizationSlots: t.personalizationSlots,
+    complianceNotes: t.complianceNotes,
+    reviewNotes: t.reviewNotes,
+    sendRail: t.sendRail,
+    sourceRequirements: t.sourceRequirements,
+  });
+}
+
+export function buildTemplateOutlineText(t: MessageStudioEmailTemplate): string {
+  return [
+    `Template: ${t.label} (${t.id})`,
+    `Category: ${MESSAGE_TEMPLATE_CATEGORY_LABELS[t.category]}`,
+    `Best for: ${t.bestFor}`,
+    `Risk: ${t.riskLevel} · Approver track: ${t.approvalLevel} · Send rail: ${t.sendRail}`,
+    "",
+    "Subject patterns:",
+    ...t.subjectPatterns.map((s) => `  - ${s}`),
+    "",
+    "Preheader patterns:",
+    ...t.preheaderPatterns.map((s) => `  - ${s}`),
+    "",
+    "Body structure:",
+    t.bodyStructure,
+    "",
+    "CTA options:",
+    ...t.ctaOptions.map((s) => `  - ${s}`),
+    "",
+    "Personalization slots:",
+    ...t.personalizationSlots.map((s) => `  - ${s}`),
+    "",
+    "Compliance:",
+    t.complianceNotes,
+    "",
+    "Review:",
+    t.reviewNotes,
+    "",
+    "Sources required:",
+    t.sourceRequirements,
+  ].join("\n");
+}
+
+export function filterTemplates(
+  templates: MessageStudioEmailTemplate[],
+  category: MessageTemplateCategory | "all",
+  audienceTag: string,
+): MessageStudioEmailTemplate[] {
+  return templates.filter((t) => {
+    if (category !== "all" && t.category !== category) return false;
+    if (audienceTag === "all") return true;
+    return t.audienceTypes.includes(audienceTag);
+  });
+}
+
+/** Dedupe by id, cap history for localStorage drafts. */
+export function recordTemplateUse(prev: string[], templateId: string): string[] {
+  const dedup = prev.filter((x) => x !== templateId);
+  return [...dedup, templateId].slice(-30);
+}
+
+export const MESSAGE_STUDIO_AUDIENCE_FILTER_TAGS = [
+  { id: "all", label: "All audiences" },
+  { id: "volunteer", label: "Volunteer" },
+  { id: "donor", label: "Donor" },
+  { id: "press", label: "Press" },
+  { id: "voter", label: "Voter / civic" },
+  { id: "field", label: "Field / organizing" },
+  { id: "general", label: "General supporters" },
+  { id: "fundraising", label: "Fundraising" },
+  { id: "organizing", label: "Organizing" },
+] as const;
+
+export const MESSAGE_STUDIO_EMAIL_TEMPLATES: MessageStudioEmailTemplate[] = [
+  {
+    id: "volunteer-activation-1",
+    label: "Volunteer shift ask (activation)",
+    category: "volunteer_activation",
+    bestFor: "Filling a concrete shift with time, location, and one RSVP path.",
+    audienceTypes: ["volunteer", "field", "organizing"],
+    riskLevel: "medium",
+    approvalLevel: "comms_lead",
+    recommendedToneProfileId: "volunteer-activation",
+    recommendedIssueFrameIds: ["people-powered", "voter-access"],
+    recommendedAudienceFrameId: "county-volunteers",
+    recommendedCtaFrameId: "volunteer-shift",
+    subjectPatterns: ["Can you join us [DAY] — [ROLE]?", "We still need [N] volunteers in [COUNTY]", "[FIRST_NAME], quick shift ask"],
+    preheaderPatterns: ["Details inside — reply if you need a ride.", "No pressure — opt out anytime."],
+    bodyStructure: skeleton("Hi [FIRST_NAME],", [
+      `Thanks for caring about [CAUSE_AREA]. ${PL}`,
+      "We have an open shift: [DATE_TIME] · [LOCATION_OR_VIRTUAL].",
+      "What you’ll do (plain language): [TASK_SUMMARY].",
+      "Reply YES or tap [SIGNUP_LINK] — if you can’t make it, no worries.",
+    ]),
+    ctaOptions: ["RSVP for this shift", "Ask a question first", "Forward to a friend in [COUNTY]"],
+    personalizationSlots: ["[FIRST_NAME]", "[COUNTY]", "[DATE_TIME]", "[SIGNUP_LINK]", "[ROLE]", "[TASK_SUMMARY]", "[CAUSE_AREA]"],
+    complianceNotes: "Verify event details before send; do not promise perks you cannot deliver.",
+    reviewNotes: "Field lead should confirm capacity; avoid overfilling one shift.",
+    sendRail: "Either future rail — small batches may be Gmail 1:1; larger blasts SendGrid when governed.",
+    sourceRequirements: "Approved event copy or calendar entry; no fabricated attendance numbers.",
+    suggestedEditorialReviewOwner: "field_organizing",
+  },
+  {
+    id: "volunteer-follow-up-1",
+    label: "Volunteer thank-you + next step",
+    category: "volunteer_follow_up",
+    bestFor: "Post-shift gratitude and a single follow-up ask.",
+    audienceTypes: ["volunteer", "field", "organizing"],
+    riskLevel: "low",
+    approvalLevel: "coordinator",
+    recommendedToneProfileId: "neighbor-to-neighbor",
+    recommendedIssueFrameIds: ["public-service", "people-powered"],
+    recommendedAudienceFrameId: "county-volunteers",
+    recommendedCtaFrameId: "volunteer-shift",
+    subjectPatterns: ["Thank you — and one small next step", "[FIRST_NAME], you made a difference yesterday"],
+    preheaderPatterns: ["Gratitude first — one ask inside.", "Optional next shift — your call."],
+    bodyStructure: skeleton("Hi [FIRST_NAME],", [
+      "Thank you for showing up — it mattered.",
+      "If you’re up for it, here’s one next step: [NEXT_STEP].",
+      "If now isn’t the right time, we’ll catch you on the next round.",
+    ]),
+    ctaOptions: ["Sign up for next shift", "Share feedback (2 questions)", "Pause volunteer emails"],
+    personalizationSlots: ["[FIRST_NAME]", "[NEXT_STEP]"],
+    complianceNotes: "Do not imply endorsement from partner orgs without written OK.",
+    reviewNotes: "Coordinator review sufficient unless tied to fundraising.",
+    sendRail: "Either future rail.",
+    sourceRequirements: "Shift log or attendance note (internal) — do not paste private attendee lists into body.",
+    suggestedEditorialReviewOwner: "field_organizing",
+  },
+  {
+    id: "donor-thank-you-1",
+    label: "Donor thank-you (stewardship)",
+    category: "donor_thank_you",
+    bestFor: "Gratitude without solicitation pressure in the same message.",
+    audienceTypes: ["donor", "fundraising"],
+    riskLevel: "medium",
+    approvalLevel: "finance_counsel",
+    recommendedToneProfileId: "donor-careful",
+    recommendedIssueFrameIds: ["transparent-government", "public-service"],
+    recommendedAudienceFrameId: "donors",
+    recommendedCtaFrameId: "donate",
+    subjectPatterns: ["Thank you — we noticed", "Your support keeps us in the fight"],
+    preheaderPatterns: ["This message is gratitude only — no ask required.", "Stewardship note from the team."],
+    bodyStructure: skeleton("Friend,", [
+      "Thank you for investing in transparent, accountable elections work.",
+      "Here’s one line on impact (only if verified): [IMPACT_LINE].",
+      "We’re honored to have you with us.",
+    ]),
+    ctaOptions: ["Optional: update contact preferences", "Optional: learn more (link)", "No action needed"],
+    personalizationSlots: ["[IMPACT_LINE]"],
+    complianceNotes: "Finance review if any dollar figures or tax language; no matching-funds claims without documentation.",
+    reviewNotes: "Principal awareness for top donors if list is sensitive.",
+    sendRail: "SendGrid broadcast (future) — suppression + consent posture required.",
+    sourceRequirements: "CRM or finance-approved impact line only.",
+    suggestedEditorialReviewOwner: "finance_fundraising",
+  },
+  {
+    id: "donor-follow-up-1",
+    label: "Donor follow-up (careful ask)",
+    category: "donor_follow_up",
+    bestFor: "Soft second touch after thank-you; dual finance + comms path.",
+    audienceTypes: ["donor", "fundraising"],
+    riskLevel: "high",
+    approvalLevel: "dual_signoff",
+    recommendedToneProfileId: "donor-careful",
+    recommendedIssueFrameIds: ["fair-elections", "transparent-government"],
+    recommendedAudienceFrameId: "donors",
+    recommendedCtaFrameId: "donate",
+    subjectPatterns: ["When you’re ready — one update", "A careful note on what’s next"],
+    preheaderPatterns: ["Finance-approved language only inside.", "Unsubscribe path required for broadcast."],
+    bodyStructure: skeleton("Hi [FIRST_NAME],", [
+      "We’re keeping this short and factual.",
+      "Context (verified only): [CONTEXT_LINE].",
+      "If you’d like to help again, here’s the safest way: [DONATE_LINK]. If not, we respect that.",
+    ]),
+    ctaOptions: ["Donate (tracked link)", "Questions? Reply to this note", "Update preferences"],
+    personalizationSlots: ["[FIRST_NAME]", "[CONTEXT_LINE]", "[DONATE_LINK]"],
+    complianceNotes: "Dual signoff (finance + comms); include unsubscribe for bulk; honor suppression lists.",
+    reviewNotes: "No urgency tricks; no fabricated deadlines.",
+    sendRail: "SendGrid broadcast (future).",
+    sourceRequirements: "Approved finance script + link destination.",
+    suggestedEditorialReviewOwner: "finance_fundraising",
+  },
+  {
+    id: "event-invitation-1",
+    label: "Event invitation",
+    category: "event_invitation",
+    bestFor: "RSVP-driven turnout with verified logistics.",
+    audienceTypes: ["volunteer", "general", "voter", "field"],
+    riskLevel: "medium",
+    approvalLevel: "comms_lead",
+    recommendedToneProfileId: "neighbor-to-neighbor",
+    recommendedIssueFrameIds: ["voter-access", "public-service"],
+    recommendedAudienceFrameId: "digital-activists",
+    recommendedCtaFrameId: "rsvp",
+    subjectPatterns: ["You’re invited — [EVENT_NAME]", "[DATE] · [CITY] — join us?"],
+    preheaderPatterns: ["RSVP link inside — verify details before forwarding.", "Community event — campaign-hosted only if true."],
+    bodyStructure: skeleton("Hello,", [
+      "What: [EVENT_NAME]",
+      "When / where: [DATE_TIME] · [ADDRESS_OR_LINK]",
+      "Why it matters (non-partisan service framing): [WHY_LINE].",
+      "RSVP: [RSVP_LINK]",
+    ]),
+    ctaOptions: ["RSVP now", "Add to calendar", "Can’t attend — tell us"],
+    personalizationSlots: ["[EVENT_NAME]", "[DATE_TIME]", "[ADDRESS_OR_LINK]", "[WHY_LINE]", "[RSVP_LINK]", "[CITY]", "[DATE]"],
+    complianceNotes: "State clearly if campaign-hosted vs third-party; accessibility note if applicable.",
+    reviewNotes: "Comms lead confirms venue + host attribution.",
+    sendRail: "Either future rail.",
+    sourceRequirements: "Official invite text or partner approval.",
+    suggestedEditorialReviewOwner: "comms_lead",
+  },
+  {
+    id: "event-reminder-1",
+    label: "Event reminder",
+    category: "event_reminder",
+    bestFor: "One reminder before event — logistics only.",
+    audienceTypes: ["volunteer", "general", "field"],
+    riskLevel: "low",
+    approvalLevel: "coordinator",
+    recommendedToneProfileId: "direct-trustworthy",
+    recommendedIssueFrameIds: ["public-service"],
+    recommendedAudienceFrameId: "digital-activists",
+    recommendedCtaFrameId: "rsvp",
+    subjectPatterns: ["Reminder: [EVENT_NAME] is [WHEN]", "Tomorrow — [EVENT_NAME]"],
+    preheaderPatterns: ["Parking / doors / link inside.", "Last details before we see you."],
+    bodyStructure: skeleton("Quick reminder,", [
+      "[EVENT_NAME] — [DATE_TIME] — [LOCATION_OR_LINK].",
+      "Bring / know: [LOGISTICS_LINE].",
+    ]),
+    ctaOptions: ["See details", "Update RSVP", "Forward to a friend"],
+    personalizationSlots: ["[EVENT_NAME]", "[DATE_TIME]", "[LOCATION_OR_LINK]", "[WHEN]", "[LOGISTICS_LINE]"],
+    complianceNotes: "Do not inflate expected turnout.",
+    reviewNotes: "Coordinator OK unless press-facing.",
+    sendRail: "Either future rail.",
+    sourceRequirements: "Same source as original invite.",
+    suggestedEditorialReviewOwner: "field_organizing",
+  },
+  {
+    id: "event-follow-up-1",
+    label: "Event follow-up",
+    category: "event_follow_up",
+    bestFor: "Thank attendees + capture feedback or next action.",
+    audienceTypes: ["volunteer", "general", "field"],
+    riskLevel: "low",
+    approvalLevel: "coordinator",
+    recommendedToneProfileId: "neighbor-to-neighbor",
+    recommendedIssueFrameIds: ["people-powered"],
+    recommendedAudienceFrameId: "county-volunteers",
+    recommendedCtaFrameId: "take-action-online",
+    subjectPatterns: ["Thanks for being there — [EVENT_NAME]", "Quick follow-up from [EVENT_NAME]"],
+    preheaderPatterns: ["2-minute feedback optional.", "Next step if you want it."],
+    bodyStructure: skeleton("Hi [FIRST_NAME],", [
+      "Thanks for joining [EVENT_NAME].",
+      "Optional: [FEEDBACK_LINK] (two questions).",
+      "Next opportunity: [NEXT_OPPORTUNITY_LINE].",
+    ]),
+    ctaOptions: ["Give quick feedback", "Join next action", "Not for me — thanks anyway"],
+    personalizationSlots: ["[FIRST_NAME]", "[EVENT_NAME]", "[FEEDBACK_LINK]", "[NEXT_OPPORTUNITY_LINE]"],
+    complianceNotes: "Feedback form should avoid collecting sensitive PII without policy.",
+    reviewNotes: "Field lead reviews tone.",
+    sendRail: "Either future rail.",
+    sourceRequirements: "Attendance list internal only — do not paste into email.",
+    suggestedEditorialReviewOwner: "field_organizing",
+  },
+  {
+    id: "press-response-1",
+    label: "Press inquiry response (structure)",
+    category: "press_response",
+    bestFor: "Tight lede, attribution discipline, deferral when needed.",
+    audienceTypes: ["press"],
+    riskLevel: "high",
+    approvalLevel: "candidate_final",
+    recommendedToneProfileId: "press-professional",
+    recommendedIssueFrameIds: ["transparent-government", "steady-administration"],
+    recommendedAudienceFrameId: "press",
+    recommendedCtaFrameId: "contact-reply",
+    subjectPatterns: ["RE: [TOPIC] — response from [CAMPAIGN_NAME]", "Statement request — [TOPIC]"],
+    preheaderPatterns: ["On the record portions only below.", "Background clearly labeled if used."],
+    bodyStructure: skeleton("Hello [REPORTER_NAME],", [
+      "Thanks for reaching out about [TOPIC].",
+      "On the record: [ON_THE_RECORD_LINE].",
+      "Background (not for attribution): [BACKGROUND_LINE].",
+      "For scheduling: [PRESS_CONTACT].",
+    ]),
+    ctaOptions: ["Schedule interview", "Request written follow-up", "Point to public record: [LINK]"],
+    personalizationSlots: ["[REPORTER_NAME]", "[TOPIC]", "[ON_THE_RECORD_LINE]", "[BACKGROUND_LINE]", "[PRESS_CONTACT]", "[CAMPAIGN_NAME]", "[LINK]"],
+    complianceNotes: "Comms + principal review; no unsourced legal/stat claims.",
+    reviewNotes: "Rapid response lead coordinates; log what was said.",
+    sendRail: "Gmail 1:1 (future) preferred.",
+    sourceRequirements: "Approved talking points or public record citations.",
+    suggestedEditorialReviewOwner: "candidate_principal",
+  },
+  {
+    id: "issue-update-1",
+    label: "Issue update (education)",
+    category: "issue_update",
+    bestFor: "Explaining a policy topic without opponent-specific attacks.",
+    audienceTypes: ["voter", "general", "press"],
+    riskLevel: "medium",
+    approvalLevel: "dual_signoff",
+    recommendedToneProfileId: "values-first",
+    recommendedIssueFrameIds: ["fair-elections", "transparent-government"],
+    recommendedAudienceFrameId: "general-supporters",
+    recommendedCtaFrameId: "petition-read",
+    subjectPatterns: ["What changed (plain English): [ISSUE]", "Update: [ISSUE]"],
+    preheaderPatterns: ["Sources linked — no hype.", "Read time ~2 minutes."],
+    bodyStructure: skeleton("Hi [FIRST_NAME],", [
+      "Here’s what we want you to know about [ISSUE] in one screen:",
+      "Fact (with source): [FACT_WITH_SOURCE].",
+      "Why it matters to voters: [VALUES_LINE].",
+      "What you can do: [ACTION_LINE].",
+    ]),
+    ctaOptions: ["Read the source doc", "Share with a friend", "Tell us your question"],
+    personalizationSlots: ["[FIRST_NAME]", "[ISSUE]", "[FACT_WITH_SOURCE]", "[VALUES_LINE]", "[ACTION_LINE]"],
+    complianceNotes: "Policy + counsel if touching legislation; link to primary sources.",
+    reviewNotes: "No opponent names unless research file attached.",
+    sendRail: "SendGrid broadcast (future) for large lists.",
+    sourceRequirements: "Approved issue brief or SOS duties page link.",
+    suggestedEditorialReviewOwner: "legal_compliance",
+  },
+  {
+    id: "county-update-1",
+    label: "County / regional update",
+    category: "county_regional_update",
+    bestFor: "Geographic relevance without inventing county stats.",
+    audienceTypes: ["voter", "field", "general"],
+    riskLevel: "medium",
+    approvalLevel: "comms_lead",
+    recommendedToneProfileId: "arkansas-rooted",
+    recommendedIssueFrameIds: ["local-accountability", "voter-access"],
+    recommendedAudienceFrameId: "county-volunteers",
+    recommendedCtaFrameId: "take-action-online",
+    subjectPatterns: ["Notes from [COUNTY]", "What we’re hearing in [REGION]"],
+    preheaderPatterns: ["No turnout predictions — community focus only.", "Verify local facts before send."],
+    bodyStructure: skeleton("Hi [FIRST_NAME],", [
+      "In [COUNTY / REGION], we’re focused on: [LOCAL_FOCUS].",
+      "What we’re doing (accurate only): [ACTIVITY_LINE].",
+      "How to plug in: [CTA_LINE].",
+    ]),
+    ctaOptions: ["Attend a local briefing", "Host a house meeting", "Volunteer locally"],
+    personalizationSlots: ["[FIRST_NAME]", "[COUNTY]", "[REGION]", "[LOCAL_FOCUS]", "[ACTIVITY_LINE]", "[CTA_LINE]"],
+    complianceNotes: "No fabricated visit promises; cite local partners only with permission.",
+    reviewNotes: "Regional lead + comms signoff if sensitive.",
+    sendRail: "Either future rail.",
+    sourceRequirements: "County-specific facts from approved field notes.",
+    suggestedEditorialReviewOwner: "field_organizing",
+  },
+  {
+    id: "newsletter-1",
+    label: "Newsletter structure",
+    category: "newsletter",
+    bestFor: "Recurring update with sections and skimmable headers.",
+    audienceTypes: ["general", "voter", "volunteer"],
+    riskLevel: "medium",
+    approvalLevel: "dual_signoff",
+    recommendedToneProfileId: "direct-trustworthy",
+    recommendedIssueFrameIds: ["fair-elections", "public-service"],
+    recommendedAudienceFrameId: "general-supporters",
+    recommendedCtaFrameId: "share",
+    subjectPatterns: ["This week on the trail", "Kelly SOS update — [DATE_RANGE]"],
+    preheaderPatterns: ["Top stories + one ask.", "Unsubscribe link required for broadcast."],
+    bodyStructure: skeleton("Hi [FIRST_NAME],", [
+      "Lead story: [LEAD_HEADLINE]\n[LEAD_BODY]",
+      "Field notes: [FIELD_SECTION]",
+      "Ways to help: [HELP_SECTION]",
+      "Closing line: [CLOSER].",
+    ]),
+    ctaOptions: ["Donate", "Volunteer", "Forward to a friend"],
+    personalizationSlots: ["[FIRST_NAME]", "[DATE_RANGE]", "[LEAD_HEADLINE]", "[LEAD_BODY]", "[FIELD_SECTION]", "[HELP_SECTION]", "[CLOSER]"],
+    complianceNotes: "Editor + counsel for high-reach; unsubscribe + physical address rules for bulk.",
+    reviewNotes: "Fact-check each section independently.",
+    sendRail: "SendGrid broadcast (future).",
+    sourceRequirements: "Approved stories only — no paste from unvetted social threads.",
+    suggestedEditorialReviewOwner: "comms_lead",
+  },
+  {
+    id: "rapid-response-1",
+    label: "Rapid response (breaking moment)",
+    category: "rapid_response",
+    bestFor: "Fast-turn structure with explicit uncertainty handling.",
+    audienceTypes: ["general", "press", "voter"],
+    riskLevel: "high",
+    approvalLevel: "candidate_final",
+    recommendedToneProfileId: "urgent-not-panicked",
+    recommendedIssueFrameIds: ["steady-administration", "democracy-protection"],
+    recommendedAudienceFrameId: "digital-activists",
+    recommendedCtaFrameId: "take-action-online",
+    subjectPatterns: ["Update: [HEADLINE_TOPIC]", "What we know / what we don’t"],
+    preheaderPatterns: ["Facts verified as of [TIMESTAMP] — may update.", "No speculation labeled as fact."],
+    bodyStructure: skeleton("Team —", [
+      "What we know (verified): [KNOWN_LINE].",
+      "What we do not know yet: [UNKNOWN_LINE].",
+      "Our posture (values, not speculation): [VALUES_LINE].",
+      "Next step for supporters: [ACTION_LINE].",
+    ]),
+    ctaOptions: ["Read official source", "Sign up for updates", "Volunteer for comms monitor"],
+    personalizationSlots: ["[HEADLINE_TOPIC]", "[TIMESTAMP]", "[KNOWN_LINE]", "[UNKNOWN_LINE]", "[VALUES_LINE]", "[ACTION_LINE]"],
+    complianceNotes: "Rapid response lead + counsel; no unsourced opponent claims.",
+    reviewNotes: "Timestamp the message; revise when facts firm up.",
+    sendRail: "Either future rail — prefer narrow list first.",
+    sourceRequirements: "Wire links or official statements only.",
+    suggestedEditorialReviewOwner: "candidate_principal",
+  },
+  {
+    id: "re-engagement-1",
+    label: "Re-engagement (win-back)",
+    category: "re_engagement",
+    bestFor: "Gentle win-back with consent-aware language.",
+    audienceTypes: ["general", "voter"],
+    riskLevel: "high",
+    approvalLevel: "dual_signoff",
+    recommendedToneProfileId: "neighbor-to-neighbor",
+    recommendedIssueFrameIds: ["people-powered", "voter-access"],
+    recommendedAudienceFrameId: "general-supporters",
+    recommendedCtaFrameId: "take-action-online",
+    subjectPatterns: ["We miss you — one quick question", "Still with us?"],
+    preheaderPatterns: ["Easy unsubscribe — we respect your inbox.", "No guilt — just an open door."],
+    bodyStructure: skeleton("Hi [FIRST_NAME],", [
+      "It’s been a while — here’s one short update: [UPDATE_LINE].",
+      "If you’re still with us, tap [PREFERENCE_LINK] so we send the right amount.",
+      "If you’d rather step back, one click unsubscribes — no hard feelings.",
+    ]),
+    ctaOptions: ["Update preferences", "Tell us what you care about", "Unsubscribe"],
+    personalizationSlots: ["[FIRST_NAME]", "[UPDATE_LINE]", "[PREFERENCE_LINK]"],
+    complianceNotes: "Suppressions + consent before any broadcast resend; finance if donation implied.",
+    reviewNotes: "Comms + counsel for large dormant segments.",
+    sendRail: "SendGrid broadcast (future).",
+    sourceRequirements: "List hygiene report attached internally — not in email body.",
+    suggestedEditorialReviewOwner: "comms_lead",
+  },
+  {
+    id: "thank-you-relationship-1",
+    label: "Thank-you / relationship maintenance",
+    category: "thank_you_relationship",
+    bestFor: "Gratitude-first touch with optional soft ask.",
+    audienceTypes: ["general", "volunteer", "donor"],
+    riskLevel: "low",
+    approvalLevel: "coordinator",
+    recommendedToneProfileId: "pastoral-community",
+    recommendedIssueFrameIds: ["public-service"],
+    recommendedAudienceFrameId: "general-supporters",
+    recommendedCtaFrameId: "contact-reply",
+    subjectPatterns: ["Thank you", "Grateful you’re here"],
+    preheaderPatterns: ["No ask required.", "Optional small next step inside."],
+    bodyStructure: skeleton("Hi [FIRST_NAME],", [
+      "Thank you for being part of this work.",
+      "[PERSONAL_LINE].",
+      "If you want to stay close, reply with a word — we read every note.",
+    ]),
+    ctaOptions: ["Reply hello", "See what we’re up to", "Update your preferences"],
+    personalizationSlots: ["[FIRST_NAME]", "[PERSONAL_LINE]"],
+    complianceNotes: "Keep personal lines verifiable or clearly generic.",
+    reviewNotes: "Coordinator review.",
+    sendRail: "Either future rail.",
+    sourceRequirements: "None beyond human authenticity — avoid fabricated anecdotes.",
+    suggestedEditorialReviewOwner: "operator",
+  },
+  {
+    id: "voter-education-1",
+    label: "Voter education / civic information",
+    category: "voter_education",
+    bestFor: "How-to civic content with official links.",
+    audienceTypes: ["voter", "general"],
+    riskLevel: "medium",
+    approvalLevel: "dual_signoff",
+    recommendedToneProfileId: "direct-trustworthy",
+    recommendedIssueFrameIds: ["voter-access", "fair-elections"],
+    recommendedAudienceFrameId: "general-supporters",
+    recommendedCtaFrameId: "petition-read",
+    subjectPatterns: ["How to [CIVIC_TASK]", "Civic checklist — [COUNTY]"],
+    preheaderPatterns: ["Official sources linked.", "Non-partisan process focus."],
+    bodyStructure: skeleton("Hello,", [
+      "Here’s how to [CIVIC_TASK] in Arkansas:",
+      "Step 1: [STEP_1 + LINK]",
+      "Step 2: [STEP_2 + LINK]",
+      "Questions? [HELP_CONTACT]",
+    ]),
+    ctaOptions: ["Open official SOS page", "Save this email", "Share with a neighbor"],
+    personalizationSlots: ["[CIVIC_TASK]", "[COUNTY]", "[STEP_1 + LINK]", "[STEP_2 + LINK]", "[HELP_CONTACT]"],
+    complianceNotes: "Link to official .gov resources; update when rules change.",
+    reviewNotes: "Legal/comms if touching ballot rules.",
+    sendRail: "SendGrid broadcast (future) for wide education sends.",
+    sourceRequirements: "SOS or state board primary sources.",
+    suggestedEditorialReviewOwner: "legal_compliance",
+  },
+];
+
+export function getTemplateById(id: string): MessageStudioEmailTemplate | undefined {
+  return MESSAGE_STUDIO_EMAIL_TEMPLATES.find((t) => t.id === id);
+}

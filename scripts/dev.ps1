@@ -4,8 +4,9 @@
 $ErrorActionPreference = "Continue"
 Set-Location (Join-Path $PSScriptRoot "..")
 
-# Machine-level DATABASE_URL overrides Prisma's .env — drop it for this session so repo .env wins.
+# Machine-level DATABASE_URL / DIRECT_URL overrides Prisma's .env — drop for this session so repo .env wins.
 Remove-Item Env:DATABASE_URL -ErrorAction SilentlyContinue
+Remove-Item Env:DIRECT_URL -ErrorAction SilentlyContinue
 
 Write-Host ""
 Write-Host "Red Dirt — dev launcher" -ForegroundColor Cyan

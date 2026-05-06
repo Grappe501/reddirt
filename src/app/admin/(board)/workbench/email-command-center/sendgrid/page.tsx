@@ -51,6 +51,15 @@ export default async function SendGridFoundationPage({
         <Link href="/admin/workbench/email-command-center/audiences" className="text-xs text-kelly-text/60 hover:underline">
           Audience Studio
         </Link>
+        <Link href="/admin/workbench/email-command-center/analytics" className="text-xs text-kelly-text/60 hover:underline">
+          Analytics &amp; Deliverability
+        </Link>
+        <Link
+          href="/admin/workbench/email-command-center/send-execution"
+          className="text-xs text-kelly-text/60 hover:underline"
+        >
+          Send execution governance
+        </Link>
       </div>
 
       <header>
@@ -156,7 +165,16 @@ export default async function SendGridFoundationPage({
             </tbody>
           </table>
           {!audiences.length ? (
-            <p className="p-2 text-[10px] text-kelly-text/55">No audience definitions — create drafts in Audience Studio.</p>
+            <div className="p-2 text-[10px] text-kelly-navy" role="status">
+              <p className="font-semibold">No audience definitions</p>
+              <p className="mt-1 text-kelly-text/80">
+                Create drafts in{" "}
+                <Link href="/admin/workbench/email-command-center/audiences" className="font-bold text-kelly-forest underline">
+                  Audience Studio
+                </Link>{" "}
+                — sync column stays not-synced until a future contact-sync packet.
+              </p>
+            </div>
           ) : null}
         </div>
       </section>
@@ -213,7 +231,19 @@ export default async function SendGridFoundationPage({
             ))}
           </ul>
           {!events.length && snap.dbReachable ? (
-            <p className="mt-2 text-[10px] text-kelly-text/55">No events ingested yet — wire SendGrid to POST signed batches.</p>
+            <div className="mt-2 rounded border border-kelly-text/10 bg-kelly-fog/40 px-2 py-2 text-[10px] text-kelly-navy" role="status">
+              <p className="font-semibold">No events ingested yet</p>
+              <p className="mt-1 text-kelly-text/80">
+                Point SendGrid Event Webhook at <code className="text-[9px]">{snap.webhook.eventWebhookPath}</code> with
+                verification key set — still <strong>no</strong> sends from this app path.
+              </p>
+              <p className="mt-1">
+                <Link href="/admin/workbench/email-command-center/analytics" className="font-bold text-kelly-forest underline">
+                  Analytics
+                </Link>{" "}
+                shows counts once rows arrive.
+              </p>
+            </div>
           ) : null}
         </div>
         <div className="rounded-lg border border-kelly-text/10 bg-white/90 p-3">
@@ -226,7 +256,16 @@ export default async function SendGridFoundationPage({
             ))}
           </ul>
           {!supSummary.length && snap.dbReachable ? (
-            <p className="mt-2 text-[10px] text-kelly-text/55">No suppression rows yet.</p>
+            <div className="mt-2 rounded border border-kelly-text/10 bg-kelly-fog/40 px-2 py-2 text-[10px] text-kelly-navy" role="status">
+              <p className="font-semibold">No suppression rows yet</p>
+              <p className="mt-1 text-kelly-text/80">
+                Bounce/unsubscribe/spam categories populate when SendGrid posts events that map to suppressions — empty is OK
+                in dev.
+              </p>
+              <p className="mt-1 text-kelly-forest/90">
+                <strong>Safety:</strong> future sends must honor this table when execution packets ship.
+              </p>
+            </div>
           ) : null}
         </div>
       </section>

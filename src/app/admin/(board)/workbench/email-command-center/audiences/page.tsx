@@ -66,6 +66,27 @@ export default async function EmailAudienceStudioPage({
         <Link href="/admin/workbench/email-queue" className="text-xs text-kelly-text/60 hover:underline">
           Email queue
         </Link>
+        <Link
+          href="/admin/workbench/email-command-center/message-studio"
+          className="text-xs font-semibold text-kelly-forest hover:underline"
+        >
+          Message Studio
+        </Link>
+        <Link href="/admin/workbench/email-command-center/analytics" className="text-xs text-kelly-text/60 hover:underline">
+          Analytics &amp; Deliverability
+        </Link>
+        <Link href="/admin/workbench/email-command-center/map" className="text-xs text-kelly-text/60 hover:underline">
+          Route map
+        </Link>
+        <Link href="/admin/workbench/email-command-center/readiness" className="text-xs text-kelly-text/60 hover:underline">
+          Readiness
+        </Link>
+        <Link
+          href="/admin/workbench/email-command-center/send-execution"
+          className="text-xs text-kelly-text/60 hover:underline"
+        >
+          Send execution governance
+        </Link>
       </div>
 
       <header>
@@ -73,6 +94,18 @@ export default async function EmailAudienceStudioPage({
         <p className="mt-1 max-w-3xl font-body text-sm text-kelly-text/85">
           EMAIL-AUDIENCE-STUDIO-1.0 — preview and govern campaign email audiences from the{" "}
           <strong>approved profile graph</strong> before SendGrid or mass send exist. This surface is planning-only.
+        </p>
+        <p className="mt-2">
+          <Link
+            href="/admin/workbench/email-command-center/message-studio"
+            className="inline-flex rounded border border-kelly-navy/30 bg-kelly-fog/70 px-2 py-1 text-xs font-bold text-kelly-navy hover:border-kelly-forest/40"
+          >
+            Prepare message for an audience
+          </Link>
+          <span className="ml-2 font-body text-[10px] text-kelly-text/65">
+            Opens Message Studio — add <span className="font-mono">?audienceDefinitionId=…</span> from a saved definition
+            row below when you want the chip prefilled.
+          </span>
         </p>
       </header>
 
@@ -173,7 +206,19 @@ export default async function EmailAudienceStudioPage({
             </tbody>
           </table>
           {!blocks.length && listsOk ? (
-            <p className="p-2 text-[10px] text-kelly-text/55">No building blocks yet — approve profile facts first.</p>
+            <div className="p-2 text-[10px] text-kelly-navy" role="status">
+              <p className="font-semibold">No building blocks yet</p>
+              <p className="mt-1 text-kelly-text/80">
+                Building blocks summarize approved graph signals — approve suggestions on{" "}
+                <Link href="/admin/workbench/email-command-center/profiles" className="font-bold text-kelly-forest underline">
+                  Profile review
+                </Link>{" "}
+                first.
+              </p>
+              <p className="mt-1 text-kelly-forest/90">
+                <strong>Safety:</strong> previews still cap-limited; no SendGrid.
+              </p>
+            </div>
           ) : null}
         </div>
       </section>
@@ -193,7 +238,18 @@ export default async function EmailAudienceStudioPage({
           ))}
         </ul>
         {!clusters.length && listsOk ? (
-          <p className="mt-1 text-[10px] text-kelly-text/55">No clusters yet — need more approved graph data.</p>
+          <div className="mt-2 rounded border border-kelly-text/10 bg-kelly-fog/40 px-2 py-2 text-[10px] text-kelly-navy" role="status">
+            <p className="font-semibold">No clusters yet</p>
+            <p className="mt-1 text-kelly-text/80">
+              Clusters are heuristics over recurring approved facts / hints — they appear after the graph has enough signal.
+            </p>
+            <p className="mt-1">
+              <Link href="/admin/workbench/email-command-center/profiles" className="font-bold text-kelly-forest underline">
+                Approve profile facts
+              </Link>{" "}
+              first, then refresh this page.
+            </p>
+          </div>
         ) : null}
       </section>
 
@@ -250,21 +306,47 @@ export default async function EmailAudienceStudioPage({
                 </p>
                 <p className="text-[10px] text-kelly-text/60">Updated {d.updatedAt.toISOString()}</p>
                 {d.status !== "ARCHIVED" ? (
-                  <form action={archiveEmailAudienceDefinitionAction} className="mt-1">
-                    <input type="hidden" name="id" value={d.id} />
-                    <button
-                      type="submit"
-                      className="rounded border border-rose-300/60 bg-rose-50/80 px-2 py-0.5 text-[10px] font-bold text-rose-900"
+                  <div className="mt-1 flex flex-wrap items-center gap-2">
+                    <Link
+                      href={`/admin/workbench/email-command-center/message-studio?audienceDefinitionId=${encodeURIComponent(d.id)}`}
+                      className="rounded border border-kelly-forest/35 bg-emerald-50/70 px-2 py-0.5 text-[10px] font-bold text-kelly-navy hover:underline"
                     >
-                      Archive
-                    </button>
-                  </form>
+                      Prepare message for this audience
+                    </Link>
+                    <form action={archiveEmailAudienceDefinitionAction} className="inline">
+                      <input type="hidden" name="id" value={d.id} />
+                      <button
+                        type="submit"
+                        className="rounded border border-rose-300/60 bg-rose-50/80 px-2 py-0.5 text-[10px] font-bold text-rose-900"
+                      >
+                        Archive
+                      </button>
+                    </form>
+                  </div>
+                ) : null}
+                {d.status !== "ARCHIVED" ? (
+                  <p className="mt-1 text-[9px] text-kelly-text/60">
+                    Use approved audience criteria in Message Studio — turn on <strong>Audience definition context</strong>{" "}
+                    in Campaign Voice to guide tone and frames.
+                  </p>
                 ) : null}
               </li>
             ))}
           </ul>
         ) : (
-          <p className="mt-1 text-[11px] text-kelly-text/55">No saved definitions yet.</p>
+          <div className="mt-1 rounded border border-kelly-text/10 bg-kelly-fog/40 px-2 py-2 text-[11px] text-kelly-navy" role="status">
+            <p className="font-semibold">No saved definitions yet</p>
+            <p className="mt-1 text-[10px] text-kelly-text/80">
+              Use the form below to save a draft definition (criteria JSON optional). Definitions stay local — no SendGrid sync
+              in this lane.
+            </p>
+            <p className="mt-1 text-[10px]">
+              <Link href="/admin/workbench/email-command-center/readiness" className="font-bold text-kelly-forest underline">
+                Readiness checklist
+              </Link>{" "}
+              for migration/DB posture before relying on previews in prod.
+            </p>
+          </div>
         )}
       </section>
 

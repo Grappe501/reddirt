@@ -22,10 +22,11 @@ function run(cmd, opts = {}) {
   execSync(cmd, { stdio: "inherit", shell: true, ...opts });
 }
 
-/** Prisma loads `.env`, but a machine-level DATABASE_URL overrides it — strip for subprocess so `.env` wins. */
+/** Prisma loads `.env`, but machine-level DATABASE_URL / DIRECT_URL overrides it — strip for subprocess so `.env` wins. */
 function envForPrisma() {
   const env = { ...process.env };
   delete env.DATABASE_URL;
+  delete env.DIRECT_URL;
   return env;
 }
 
@@ -33,7 +34,7 @@ console.log("\n\x1b[36mRed Dirt — dev launcher\x1b[0m\n");
 
 if (!hasEnvFile()) {
   console.warn(
-    "\x1b[33m⚠ No .env.local or .env found.\x1b[0m Copy .env.example → .env.local and set DATABASE_URL (and optional OPENAI_*).\n",
+    "\x1b[33m⚠ No .env.local or .env found.\x1b[0m Copy .env.example → .env.local and set DATABASE_URL + DIRECT_URL (and optional OPENAI_*).\n",
   );
 } else {
   console.log("✓ Environment file present\n");

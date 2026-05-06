@@ -26,7 +26,8 @@ If the repo is **only** the `RedDirt` project, leave base directory empty.
 
 | Variable | Required | Notes |
 |----------|----------|--------|
-| `DATABASE_URL` | Yes | Hosted Postgres connection string |
+| `DATABASE_URL` | Yes | Postgres connection string for **runtime** Prisma queries (pooler or direct per provider docs). |
+| `DIRECT_URL` | Yes | **Required** — `prisma/schema.prisma` uses `directUrl = env("DIRECT_URL")` for **migrations** and introspection. **Local Docker:** set to the **same** URI as `DATABASE_URL`. **Live RedDirt Supabase DB:** often set `DATABASE_URL` to **session pooler** and `DIRECT_URL` to **direct** or **session** URI from that Supabase project’s Connect UI when the transaction pooler (`6543` / `pgbouncer=true`) cannot run `migrate deploy`. Never commit values. |
 | `ADMIN_SECRET` | Yes (admin) | Public admin board; omit only if you intentionally disable non-login admin routes — see `middleware` |
 | `OPENAI_API_KEY` | Optional | Search RAG + form intake classification + **Email Command Center** advisory queue analysis (`EMAIL-AI-INTELLIGENCE-1.0`) |
 | `OPENAI_MODEL` | Optional | Defaults in `.env.example` |
@@ -36,8 +37,23 @@ If the repo is **only** the `RedDirt` project, leave base directory empty.
 | **Gmail (staff / Command Center)** | Optional | `GOOGLE_GMAIL_*` or `GOOGLE_CLIENT_ID` / `GOOGLE_CALENDAR_*` fallbacks, `GOOGLE_GMAIL_REDIRECT_URI` (or `NEXT_PUBLIC_SITE_URL` for default callback), **`GMAIL_TOKEN_ENCRYPTION_KEY`** (new connects), **`GMAIL_OAUTH_STATE_SECRET`** or **`ADMIN_SECRET`**, optional **`GMAIL_OAUTH_INCLUDE_SEND_FOR_WORKBENCH`**, **`GOOGLE_PUBSUB_TOPIC`** + optional **`GMAIL_WATCH_LABEL_IDS`** / **`GMAIL_WATCH_RENEWAL_DAYS`** for **`users.watch`**, **`GMAIL_PUBSUB_VERIFICATION_TOKEN`** (or **`GOOGLE_PUBSUB_VERIFICATION_TOKEN`**) + request header **`x-gmail-pubsub-token`** for **`POST /api/gmail/pubsub`** — see `.env.example` (names only here) |
 | `ELEVENLABS_API_KEY` | Optional | Admin-only TTS: `POST /api/ask-kelly/tts` (ElevenLabs). Omit if you do not need read-aloud on `/admin/ask-kelly`. |
 | `ELEVENLABS_VOICE_ID` | Optional | Required **with** `ELEVENLABS_API_KEY` for TTS. Choose a voice in the ElevenLabs library. |
+| `NEXT_PUBLIC_SUPABASE_URL` | Optional | Supabase **SSR / Auth** project URL (`@supabase/ssr`). **Does not** configure Prisma — see [Supabase SSR / Auth vs Prisma Postgres](#supabase-ssr--auth-vs-prisma-postgres-supabase-canonical-db-and-env-gate-10). |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Optional | Public anon / publishable key for Supabase browser + server clients. **Not** a substitute for `DATABASE_URL`. |
 
 Never expose server secrets via `NEXT_PUBLIC_*`.
+
+## Supabase SSR / Auth vs Prisma Postgres (`SUPABASE-CANONICAL-DB-AND-ENV-GATE-1.0`)
+
+RedDirt uses **two independent environment groups**. Do not conflate them.
+
+| Group | Variables | Used for |
+|-------|-----------|----------|
+| **Supabase SSR / Auth (public)** | `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | `@supabase/ssr` in `src/utils/supabase/*`, middleware session refresh. **Not** read by Prisma. |
+| **Prisma database** | `DATABASE_URL`, `DIRECT_URL` | Prisma Client at runtime, **`prisma migrate deploy`**, introspection (`schema.prisma` `url` + `directUrl`). **Not** the Supabase publishable key. |
+
+- **Local Docker** often uses the **same** `DATABASE_URL` and `DIRECT_URL` string; Supabase public vars may be unset (SSR auth inactive) or set to a **different** Supabase project — avoid accidental split-brain in production unless Steve documents an intentional layout.
+- **`npm run email:db:diagnose`** prints **presence only** for the public Supabase pair (no values) alongside Prisma URL diagnostics.
+- **Canonical Supabase DB** (Kelly SOS live Postgres) is **verified** for contact imports only when **`npm run email:contact-import:gate`** (and the operator chain before it) succeeds with **`DATABASE_URL` / `DIRECT_URL`** pointed at that hosted project — not merely when `NEXT_PUBLIC_SUPABASE_*` is set.
 
 **Secrets hygiene:** Do **not** commit `.env`, `.env.local`, or any file containing real API keys. Keep templates in [`.env.example`](../.env.example) with empty or placeholder values only.
 
@@ -68,13 +84,48 @@ Never expose server secrets via `NEXT_PUBLIC_*`.
   Package alias: **`npm run email:command-center:migrate-and-check`**.
 
 - **PowerShell:** `command1; command2` runs both even if `command1` fails; the shell exit code is from **`command2`**. Prefer **`&&`** when migration failure must stop before check.
-- **Email Command Center DB gate:** **`npm run email:command-center:preflight`** (or **`npm run email:gmail:preflight`**) verifies `DATABASE_URL`, connectivity, and **`StaffGmailAccount.gmailSyncState`** — without printing secrets.
+- **Email Command Center DB gate:** **`npm run email:command-center:preflight`** (or **`npm run email:gmail:preflight`**) verifies `DATABASE_URL`, **`DIRECT_URL`**, **DNS**, **connectivity**, **`StaffGmailAccount.gmailSyncState`**, and the **five** Email Command Center migration rows in **`_prisma_migrations`** — without printing secrets.
+- **Safe DB diagnostics (no secrets):** **`npm run email:db:diagnose`** — Supabase **public** env **presence** (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, names only) **plus** Prisma URL **shape** (protocol/host/port/db name/username **shape**), DNS, TCP/Prisma probe, optional **`prisma migrate status`** (stdout redacted), ECC migration checklist, and a **contact-import gate** prerequisite hint (the full gate is **not** run inside diagnose).
+- **Do not import bulk contact lists until:** **`npm run email:contact-import:gate`** succeeds (`migrate deploy` → preflight → `npm run check`) against the **Canonical Supabase DB** (live RedDirt/Kelly SOS Postgres) you intend to use for production contact truth — not only local Docker. See [`email-command-center-contact-import-readiness.md`](./email-command-center-contact-import-readiness.md).
+
+## Canonical Supabase DB (live RedDirt / Kelly SOS Postgres)
+
+- **Canonical Supabase DB** (also referred to as **Live RedDirt Supabase DB** until Steve confirms the Supabase **project** display name) is the intended **canonical** hosted Postgres for **real** contact import commits. **Local Docker** remains for build/dev and does **not** prove hosted Supabase readiness.
+- **Operator steps (secrets stay in the dashboard / env UI only):**
+  1. Supabase Dashboard → open the **correct** Supabase project (the one that should hold the RedDirt schema and contact data — verify host / project ref matches **`DATABASE_URL`** / **`DIRECT_URL`**; confirm naming with Steve).
+  2. **Project Settings → Database** (or **Connect**) → copy fresh **Connection string** / **Session pooler** / **Direct** URIs as documented for Prisma.
+  3. Set **`DATABASE_URL`** and **`DIRECT_URL`** in Netlify (production/deploy previews) and locally in `.env` / `.env.local` — **never** commit `.env`.
+  4. From `RedDirt/`: **`npm run email:db:diagnose`** → **`npx prisma migrate status`** → **`npx prisma migrate deploy`** → **`npm run email:command-center:preflight`** → **`npm run email:contact-import:gate`**.
+- **Until that gate passes on the Canonical Supabase DB**, treat real list imports as **blocked** even if local Docker is green.
+- **Common Supabase failures (safe categories):** wrong **project** / ref (string points at a different Supabase project); wrong **password** or password not **URL-encoded**; **session pooler** username must be `postgres.<projectRef>` on `pooler.supabase.com`, not bare `postgres`; **transaction** pooler (`6543`, `pgbouncer=true`) for `DATABASE_URL` without a working **`DIRECT_URL`** for migrations; project **paused** on free tier; **IPv6-only** direct host without pooler on IPv4-only CI (see below).
+
+### Diagnose output — how to read failures (no secrets)
+
+Use **`npm run email:db:diagnose`** after changing env. Match redacted errors to these **categories** (fix in Supabase / env UI, not in repo):
+
+| Category | Typical signal (wording varies) |
+|----------|----------------------------------|
+| Wrong project ref / tenant | `tenant` + `user` mismatch, wrong **project ref** in hostname or username |
+| Wrong password | `password authentication failed`, `P1000` |
+| Password not URL-encoded | Parse OK but auth fails after paste from password manager — re-copy with encoding from Connect UI |
+| Wrong pooler mode / port | `6543` + `pgbouncer` for migrate-only workloads; use **session** or **direct** per Supabase Prisma docs |
+| `DIRECT_URL` missing / wrong | `prisma generate` / preflight fails “`DIRECT_URL` missing”; or migrate errors on transaction pooler |
+| Network / DNS | `ENOTFOUND`, `ECONNREFUSED`, DNS failure in diagnose |
+| Migration failure | `migrate status` not clean — run **`migrate deploy`** against the **same** DB you diagnosed |
+
+## Database URL strategy (`DATABASE_URL` vs `DIRECT_URL`)
+
+- **`DATABASE_URL`** — **runtime** queries (Next.js server, Prisma Client). Use the string your host documents for **application** or **session** access.
+- **`DIRECT_URL`** — **required** in `schema.prisma` as `directUrl`. Prisma uses it for **`migrate deploy`** / introspection. **Local:** duplicate `DATABASE_URL`. **Supabase split:** when the runtime string is a **transaction** pooler, set `DIRECT_URL` to the **direct** or **session** connection string from the Connect UI so migrations are not blocked by PgBouncer transaction mode.
+- **Netlify:** `scripts/netlify-build.sh` sets **`DIRECT_URL="$DATABASE_URL"`** when `DIRECT_URL` is unset, so single-URI hosts (Neon, one-string Supabase) keep working. For **explicit** pooler/direct split on Supabase, set **both** vars in the Netlify UI (do not rely on the default mirror).
+- **Supabase-style setups:** copy hosts, ports, usernames, and `sslmode` from the **Connect** UI. Prefer **session pooler** or **direct** strings that match Prisma’s expectations for **migrations**; **transaction pooler** is often for **serverless runtime**, not necessarily for **`migrate deploy`**. **URL-encode** passwords with special characters.
+- **Alignment:** keep **local** `.env`, **Netlify** (or other host) env, and **Cursor terminal** env consistent for the database you think you are testing — mismatches produce “green check + red preflight” confusion.
 
 ## Kelly SOS — deploy QA checklist (Section 1)
 
 Use after a Netlify **production** or **deploy-preview** build:
 
-1. **Env in Netlify UI** — same variable **names** as the **Required environment variables (production)** table above; confirm `DATABASE_URL` or Neon-linked `NETLIFY_DATABASE_URL`, `ADMIN_SECRET`, and `NEXT_PUBLIC_SITE_URL` for the target site.
+1. **Env in Netlify UI** — same variable **names** as the **Required environment variables (production)** table above; confirm `DATABASE_URL` (or Neon-linked `NETLIFY_DATABASE_URL`), **`DIRECT_URL`** (set explicitly for Supabase pooler/direct **split**; otherwise build script mirrors `DATABASE_URL`), `ADMIN_SECRET`, and `NEXT_PUBLIC_SITE_URL` for the target site.
 2. **Read-only routes** — `GET /`, `GET /privacy`, `GET /terms`, `GET /disclaimer`, `GET /get-involved`, `GET /donate` should return **200** on the **same** deployment you are certifying (preview URL vs public domain may differ).
 3. **Forms** — run [`KELLY_SOS_INTAKE_SMOKE.md`](./KELLY_SOS_INTAKE_SMOKE.md) against the **preview or staging** base URL with fake data; avoid polluting production with test rows unless Steve approves.
 4. **Log** — append [`KELLY_SOS_BUILD_LOG.md`](./KELLY_SOS_BUILD_LOG.md) with date and “Section 1 / deploy QA” notes.

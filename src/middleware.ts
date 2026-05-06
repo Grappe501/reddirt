@@ -1,15 +1,14 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import { updateSession } from "@/utils/supabase/middleware";
 
 /**
- * 1) Pass `x-pathname` on the request (available to server code if needed for pathname-aware content).
- * 2) Block misconfigured admin (no ADMIN_SECRET) except /admin/login.
+ * 1) Refresh Supabase Auth cookies when `NEXT_PUBLIC_SUPABASE_*` is set (`@supabase/ssr`).
+ * 2) Pass `x-pathname` on the request (set inside `updateSession` when Supabase env is absent; always set when Supabase runs).
+ * 3) Block misconfigured admin (no ADMIN_SECRET) except /admin/login.
  */
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set("x-pathname", pathname);
 
   if (pathname.startsWith("/admin") && !pathname.startsWith("/admin/login")) {
     if (!process.env.ADMIN_SECRET?.trim()) {
@@ -17,7 +16,7 @@ export function middleware(request: NextRequest) {
     }
   }
 
-  return NextResponse.next({ request: { headers: requestHeaders } });
+  return updateSession(request);
 }
 
 export const config = {

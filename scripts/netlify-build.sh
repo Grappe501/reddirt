@@ -53,6 +53,15 @@ if [ -z "${DATABASE_URL:-}" ]; then
   exit 1
 fi
 
+# Prisma `schema.prisma` uses `directUrl = env("DIRECT_URL")`. When the host uses a single URI (Neon, session pooler only), omit DIRECT_URL in Netlify and we mirror here.
+if [ -z "${DIRECT_URL:-}" ]; then
+  export DIRECT_URL="$DATABASE_URL"
+fi
+if [ -n "${DIRECT_URL:-}" ]; then
+  DIRECT_URL="$(printf '%s' "$DIRECT_URL" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
+  export DIRECT_URL
+fi
+
 case "${DATABASE_URL}" in
   postgresql://*|postgres://*) ;;
   *)

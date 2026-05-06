@@ -13,7 +13,26 @@ type HintRow = {
 
 export function ProfileReviewAudienceHints({ hints }: { hints: HintRow[] }) {
   if (!hints.length) {
-    return <p className="text-[11px] text-kelly-text/55">No pending audience hints.</p>;
+    return (
+      <div className="mt-1 rounded border border-kelly-text/10 bg-kelly-fog/40 px-2 py-2 text-[11px] text-kelly-navy" role="status">
+        <p className="font-semibold">No pending audience hints</p>
+        <p className="mt-1 text-[10px] text-kelly-text/80">
+          Hints are optional staging signals from stored queue AI — an empty list is normal until analysis produces labels.
+        </p>
+        <p className="mt-2 text-[10px]">
+          <Link href="/admin/workbench/email-queue" className="font-bold text-kelly-forest underline">
+            Email queue
+          </Link>{" "}
+          ·{" "}
+          <Link href="/admin/workbench/email-command-center/audiences" className="font-bold text-kelly-forest underline">
+            Audience Studio
+          </Link>
+        </p>
+        <p className="mt-1 text-[10px] text-kelly-forest/90">
+          <strong>Safety:</strong> hints are not SendGrid segments.
+        </p>
+      </div>
+    );
   }
   return (
     <ul className="mt-2 space-y-3">

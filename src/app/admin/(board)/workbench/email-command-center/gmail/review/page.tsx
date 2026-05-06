@@ -177,7 +177,36 @@ export default async function GmailReviewPage({ searchParams }: Props) {
         {actor && inboxResult?.ok ? (
           <div className="mt-3 space-y-3">
             {inboxResult.items.length === 0 ? (
-              <p className="font-body text-[11px] text-kelly-text/70">No INBOX messages returned (or list failed).</p>
+              <div className="rounded-lg border border-kelly-text/15 bg-kelly-fog/50 px-3 py-2 font-body text-[11px] text-kelly-navy" role="status">
+                <p className="font-semibold">Why this is empty</p>
+                <p className="mt-1 text-[10px] text-kelly-text/85">
+                  INBOX may have no recent metadata rows yet, sync may not have run, or Gmail returned an empty page for this
+                  query window.
+                </p>
+                <p className="mt-2 font-semibold text-[10px] uppercase tracking-wide text-kelly-text/60">What to do next</p>
+                <ul className="mt-1 list-inside list-disc text-[10px] text-kelly-text/85">
+                  <li>
+                    Run <strong>safe metadata sync</strong> on the{" "}
+                    <Link href="/admin/workbench/email-command-center/gmail" className="font-bold underline">
+                      Gmail monitor
+                    </Link>
+                    .
+                  </li>
+                  <li>
+                    Confirm OAuth + staff link above — then reload this page.
+                  </li>
+                  <li>
+                    For triage without Gmail, use the{" "}
+                    <Link href="/admin/workbench/email-queue" className="font-bold underline">
+                      email queue
+                    </Link>{" "}
+                    or manual create.
+                  </li>
+                </ul>
+                <p className="mt-2 text-[10px] text-kelly-forest/95">
+                  <strong>Safety:</strong> still metadata-only — no bodies, no send, no auto-queue.
+                </p>
+              </div>
             ) : (
               inboxResult.items.map((item) => (
                 <article

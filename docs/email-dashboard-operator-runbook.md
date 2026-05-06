@@ -1,7 +1,61 @@
 # Email dashboard operator runbook (REDDIRT-EMAIL-DASHBOARD-HARDENING-1.0)
 
 **Scope:** `RedDirt` email triage (`/admin/workbench/email-queue`, `/admin/workbench/email-queue/[id]`) and **Gmail metadata review → queue** (`/admin/workbench/email-command-center/gmail/review`).  
-**Doctrine:** queue-first, no auto-send, no auto-approval, no provider execution from `EmailWorkflowItem`.
+**Doctrine:** queue-first, no auto-send, no auto-approval, no provider execution from `EmailWorkflowItem`.  
+**Launch hardening:** [`email-command-center-launch-hardening.md`](./email-command-center-launch-hardening.md) · [`email-command-center-first-run-operator-checklist.md`](./email-command-center-first-run-operator-checklist.md) · `npm run email:no-send-scan` (heuristic sanity scan).
+
+## 0d) Daily Operator Console (`EMAIL-DAILY-OPERATOR-CONSOLE-1.0`)
+
+1. Open **`/admin/workbench/email-command-center/daily`** at the start of a shift — **production** start page (not a demo): snapshot **today’s priorities**, **next best actions** (rule-based), and the five-part **operator work queue** with links into Gmail, queue, profiles, imports, Message Studio, send governance, analytics, automation, readiness, and map.  
+2. When the database is unreachable, the page shows **DB unavailable — open Readiness** style guidance; counts may be zero — fix **`DATABASE_URL`** then refresh.  
+3. **Local Message Studio** counts read **only** this browser’s **`localStorage`** — nothing is uploaded or sent. Use **Open Message Studio**, the **`#editorial-review-desk`** anchor for editorial review, or **`#send-packet-builder`** to assemble a **no-send** send packet before governance.  
+4. **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** remains **false**; this route does not send mail or write the server database.
+
+## 0) Message Studio — local drafts + Campaign Voice + Editorial Review + Production Templates + Send Packet Builder (`LOCAL-DRAFTS-1.1` + `CAMPAIGN-VOICE-1.2` + `EDITORIAL-REVIEW-DESK-1.0` + `PRODUCTION-TEMPLATES-1.0` + `EMAIL-SEND-PACKET-BUILDER-1.0`)
+
+1. Open **`/admin/workbench/email-command-center/message-studio`** from the Command Center, queue detail, Audience Studio, or imports — optional query params: **`?source=emailWorkflowItem&id=…`**, **`?audienceDefinitionId=…`**, **`?importBatchId=…`** (chips only; **no** auto-fetch of bodies or private rows).  
+2. **Draft workspace** saves to **browser `localStorage`** only (`reddirt:email-command-center:message-studio-drafts:v1`) — **not** shared with other staff or devices; clearing site data **deletes** drafts. Use **New / Duplicate / Delete**, **autosave**, **Copy** / **Export .json / .txt** as needed.  
+3. **Content blocks** — **Insert into body** or **Copy block**; track **`contentBlocksUsed`** on the draft.  
+4. Run **AI Email Intelligence** on **`/admin/workbench/email-queue/[id]`** when triaging; paste or summarize vetted context into Message Studio. Optional **Campaign Voice AI** uses **admin server actions** (not the browser SDK) when **`OPENAI_API_KEY`** is configured.  
+5. **Campaign Voice (EMAIL-MESSAGE-STUDIO-CAMPAIGN-VOICE-1.2)** — right column on wide screens: select **tone / issue / audience / CTA frames**, **risk + approval tier**, **source-layer toggles** for what you have actually reviewed (mission docs, queue context, audience, imports, suppression). **Source material readiness** lists repo paths; semantic RAG over `SearchChunk` requires **`npm run ingest`** per `src/lib/openai/README.md` — do not assume indexed content until ingest has run.  
+6. **Draft Quality Review** — self-checklist + advisory readiness label; not legal signoff.  
+7. **AI Draft Assistant** — when server **`OPENAI_API_KEY`** is set, **Generate** / **Revision** tools call admin server actions; output is **advisory** — use **Use first suggestions + body** only after human review. If the key is missing, drafting stays fully manual.  
+8. **Editorial Review Desk** — below the draft grid: set **review status** and **owner**, capture **review notes**, complete **claim/source**, **voice/audience**, and **compliance** checklists (no automated fact-check). Readiness tier is **advisory** — **not** legal compliance. When a **production template** was applied, the desk shows **last-applied** template **risk / approver track** and review notes — still **no** automated compliance. Use **Open Send Execution Governance** when ready for gate verification — still **no send**.  
+9. **Production Templates** — bottom panel: pick **category** and **audience** filters; **preview** structure, **risk**, and **approval** posture; **apply** with **fill empty only**, **append body**, or **replace body** (requires explicit confirm if body already has text). Use **Copy template outline**, **Fill empty subject & preheader**, or **Append body skeleton only** when you want lighter touches. **Use this template with Campaign Voice AI** (when **`OPENAI_API_KEY`** is set) attaches template structure to the **next** **Generate campaign-voice draft** in the right column — then review advisory JSON before **Use first suggestions + body**. **No** demo templates, **no** fabricated claims in registry copy (placeholders only).  
+10. **Send Packet Builder** (`EMAIL-SEND-PACKET-BUILDER-1.0`) — panel **`#send-packet-builder`** (between Editorial Review and Production Templates): review **packet summary**, **completeness** (derived from draft), **manual** suppression/consent + approval checklists, **operator notes**; **Copy** summary or subject+preheader+body; **Export** `.json` / `.txt`; **Save packet snapshot to draft** stores **`lastSendPacketJson`** in **`localStorage`** only. **Does not** call SendGrid, Gmail, or any send API; **`canSendFromPacket`** / **`canSendFromQueue`** stay **false** in the artifact.  
+11. After review, open **`/admin/workbench/email-command-center/send-execution`** for send **gates** — this page still **cannot send**.  
+12. **Never** treat this page as send authorization — **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** stays **false**; **server-side** shared draft review remains a **future** packet.
+
+## 0c) Route map + Readiness + smoke test (`EMAIL-COMMAND-CENTER-FINAL-POLISH-1.0`)
+
+1. **Route map** — **`/admin/workbench/email-command-center/map`** — every Email OS route on one page with upstream/downstream and safety.  
+2. **Readiness checklist** — **`/admin/workbench/email-command-center/readiness`** — snapshot-driven **ready / partial / blocked / future** rows per subsystem (hosted Supabase stays operator-verified; send execution **future**).  
+3. **Operator smoke test** — repo doc **[`email-command-center-operator-smoke-test.md`](./email-command-center-operator-smoke-test.md)** — ordered clicks through cockpit → map → readiness → Gmail → queue → … → verify **no send** CTAs on these routes.  
+
+## 0d) Send Execution Governance shell (`EMAIL-SEND-EXECUTION-GOVERNANCE-SHELL-1.0`)
+
+1. **Route** — **`/admin/workbench/email-command-center/send-execution`** — read-only doctrine: future Gmail vs SendGrid rails, **pre-send checklist** (includes **Send packet prepared** → Message Studio **`#send-packet-builder`**), **suppression gate** (including that **`SendGridSuppression` overrides audience membership**), **approval roles**, and a text **decision tree**.  
+2. **Does not** call provider send APIs, **does not** change **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`**, **does not** persist send approvals — live execution remains **`EMAIL-SEND-EXECUTION-1.0`**.  
+3. Cross-links from Message Studio, Analytics, SendGrid Foundation, Audience Studio, Automation Studio, Route map, and Readiness — still **no sends** on any of those routes.
+
+## 0b) Automation Studio + Analytics & Deliverability (`EMAIL-AUTOMATION-ANALYTICS-SHELL-1.0`)
+
+1. **Automation Studio** — **`/admin/workbench/email-command-center/automation`**. Read tiers (T0–T4), trigger library, action library, playbooks, and future gates. **Does not** register workers, **does not** turn on auto-send, **does not** change queue behavior.  
+2. **Analytics & Deliverability** — **`/admin/workbench/email-command-center/analytics`**. One-page view of queue health, AI/profile/audience/import counts (when DB healthy), SendGrid env presence (names only in docs), events/suppressions ingested, suppression-type breakdown, and a **deliverability launch checklist** (mostly manual confirmations). **Does not** authorize sends.  
+3. When the database is unreachable, both routes still load static governance copy; Analytics numeric panels may read as zero — fix **`DATABASE_URL`** then rerun **`npm run email:command-center:preflight`**.
+
+## 0a) Contact list CSV import (staging)
+
+Use **`/admin/workbench/email-command-center/imports`** only after **`npm run email:contact-import:gate`** (or equivalent **`migrate deploy` + preflight**) succeeds on the **same** database the app uses.
+
+1. Upload CSV → open batch detail.  
+2. **Validate** — fixes row statuses (invalid email, in-batch dupes, existing profile match, consent/source warnings).  
+3. Review preview counts and row table.  
+4. **Approve batch** — human gate; recorded in import decisions.  
+5. **Commit approved batch** — writes **`EmailContactProfile`** + optional facts with **`CONTACT_IMPORT`** provenance; **does not** send mail, **does not** sync SendGrid, **does not** create audiences automatically.  
+6. **Archive** when done for housekeeping.
+
+**Must-not:** never treat import as marketing consent; never run commit without explicit approval; never use production PII in tests.
 
 ## 1) Daily triage flow
 

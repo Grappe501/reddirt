@@ -16,6 +16,12 @@ import {
 import { parseGmailSyncState, resolveDisplayWatchStatus } from "@/lib/gmail/gmail-sync-state";
 import { isGmailWatchConfigured, isGmailPubSubVerificationConfigured } from "@/lib/gmail/watch-config";
 import { getSendGridEnvStatus } from "@/lib/sendgrid/config";
+import {
+  EMAIL_COMMAND_CENTER_MIGRATION_DIRS,
+  queryEmailCommandCenterMigrationRows,
+} from "@/lib/email-command-center/ecc-migration-gate";
+import { contactImportSnapshotCounts } from "@/lib/email-command-center/contact-import";
+import type { EmailContactImportBatchStatus } from "@prisma/client";
 
 /** Presence-only env checks — never surface values. */
 export type SendgridEnvReadiness = {
@@ -118,6 +124,30 @@ export type GovernanceSnapshot = {
   bullets: string[];
 };
 
+/** DB + migration + contact-import gate (no secrets). */
+export type EmailCommandCenterOperatorGate = {
+  /** False when the cockpit could not query Postgres (degraded dashboard). */
+  cockpitDbReachable: boolean;
+  /** Rows for listed Email Command Center migrations; empty when DB unreachable. */
+  emailCommandCenterMigrations: { name: string; applied: boolean }[];
+  /** Null when migrations could not be queried (DB down); true only when every listed row applied. */
+  allEmailCommandCenterMigrationsApplied: boolean | null;
+  /** One-line UI hint when migrations incomplete or unknown. */
+  migrationGateNote: string | null;
+  contactImportStatusLabel: string;
+  contactImportNextPacket: string;
+  /**
+   * True only when this request reached Postgres, all listed ECC migrations (including import staging) applied,
+   * and import batch tables responded to a count query. Does not prove the Canonical Supabase DB or production.
+   */
+  localContactImportDbVerified: boolean;
+  /** Repo-relative path (clone) — no in-app doc route in this packet. */
+  readinessDocRepoPath: string;
+  preflightCliHint: string;
+  dbDiagnoseCliHint: string;
+  importGateCliHint: string;
+};
+
 export type EmailCommandCenterSnapshot = {
   queueHealth: QueueHealthSnapshot;
   assignmentHealth: AssignmentHealthSnapshot;
@@ -153,8 +183,20 @@ export type EmailCommandCenterSnapshot = {
     audienceDefinitionsNonArchived: number;
     dbReachable: boolean;
   };
+  /** EMAIL-CONTACT-IMPORT-STAGING-1.0 — staged CSV batches (no SendGrid, no sends). */
+  contactImport: {
+    path: string;
+    dbSliceReachable: boolean;
+    pendingApprovalCount: number;
+    committedBatchCount: number;
+    /** Non-terminal batches (excludes committed + archived). */
+    openImportBatchCount: number;
+    consentWarningRowsSummed: number;
+    latestBatches: { id: string; name: string; status: EmailContactImportBatchStatus; createdAt: Date }[];
+  };
   automationTiers: AutomationTierSnapshot[];
   governance: GovernanceSnapshot;
+  operatorGate: EmailCommandCenterOperatorGate;
 };
 
 function sendgridEnvReadiness(): SendgridEnvReadiness {
@@ -174,11 +216,154 @@ function extractEmailDomain(email: string): string | null {
   return email.slice(at + 1).trim().toLowerCase() || null;
 }
 
+function buildDegradedEmailCommandCenterSnapshot(): EmailCommandCenterSnapshot {
+  const oauthCfg = getGmailOAuthConfigStatus();
+  const pubsubTopicEnvPresent = isGmailPubSubTopicConfigured();
+  const pubsubVerifierPresent = isGmailPubSubVerificationConfigured();
+  const watchTopicReady = isGmailWatchConfigured();
+  let commandSurfacePhase: GmailReadinessSnapshot["commandSurfacePhase"];
+  if (!oauthCfg.isConfigured) {
+    commandSurfacePhase = "env_incomplete";
+  } else {
+    commandSurfacePhase = "needs_actor";
+  }
+  const gate: EmailCommandCenterOperatorGate = {
+    cockpitDbReachable: false,
+    emailCommandCenterMigrations: [],
+    allEmailCommandCenterMigrationsApplied: null,
+    migrationGateNote:
+      "Database unreachable from this server request — cockpit counts are not live. From RedDirt/, run npm run email:db:diagnose (safe) then npm run email:command-center:preflight.",
+    contactImportStatusLabel: "Paused until DB gate passes",
+    contactImportNextPacket: "Row-level merge UX + canonical Supabase-hosted preflight",
+    localContactImportDbVerified: false,
+    readinessDocRepoPath: "docs/email-command-center-contact-import-readiness.md",
+    preflightCliHint: "npm run email:command-center:preflight",
+    dbDiagnoseCliHint: "npm run email:db:diagnose",
+    importGateCliHint: "npm run email:contact-import:gate",
+  };
+  const gmail: GmailReadinessSnapshot = {
+    staffGmailAccountsTotal: 0,
+    staffGmailAccountsActive: 0,
+    currentActorUserResolved: false,
+    currentActorHasActiveStaffGmail: false,
+    actorStaffGmailSendAsDomainHint: null,
+    monitorInboxSync: "foundation_only",
+    lastMetadataSyncAtIso: null,
+    lastMetadataSyncMessageCount: null,
+    lastProfileHistoryIdPresent: false,
+    composerSendScopeViaEnv: false,
+    humanSendRailNote:
+      "Cockpit could not reach the database — Gmail readiness is best-effort only until DATABASE_URL connectivity is restored.",
+    oauthConnectPipelineReady: oauthCfg.isConfigured,
+    oauthMissingEnvVarLines: oauthCfg.gaps[0]?.missingEnvVars ?? [],
+    commandSurfacePhase,
+    gmailWatchPushIncomplete: true,
+    pubsubTopicEnvPresent,
+    pubsubPushVerificationEnvPresent: pubsubVerifierPresent,
+    gmailWatchDisplayStatus: "NOT_CONFIGURED",
+    gmailWatchExpirationMs: null,
+    watchHistoryIdPresent: false,
+    pubsubReceiverConfigured: pubsubVerifierPresent && watchTopicReady,
+    connectPath: "/admin/workbench/email-command-center/gmail/connect",
+    monitorPath: "/admin/workbench/email-command-center/gmail",
+    gmailReviewPath: "/admin/workbench/email-command-center/gmail/review",
+  };
+  const sendgridEnv = sendgridEnvReadiness();
+  return {
+    queueHealth: {
+      total: 0,
+      newCount: 0,
+      enrichedCount: 0,
+      inReviewCount: 0,
+      readyToRespondCount: 0,
+      approvedCount: 0,
+      escalatedCount: 0,
+      spamCount: 0,
+      closedCount: 0,
+      archivedCount: 0,
+      unassignedCount: 0,
+      needsAttentionCount: 0,
+    },
+    assignmentHealth: {
+      assignedCount: 0,
+      unassignedCount: 0,
+      currentActorAssignedItemCount: 0,
+      itemsNotUpdatedIn7DaysCount: 0,
+    },
+    gmail,
+    sendgridEnv,
+    openAi: {
+      openaiApiKeyPresent: isOpenAIConfigured(),
+      openaiModuleAvailable: true,
+      emailAiConfigured: getEmailAiReadiness().configured,
+      emailAiModelName: getEmailAiReadiness().modelName,
+      emailAiSafeAnalysisAvailable: getEmailAiReadiness().safeAnalysisAvailable,
+      emailAiQueueItemsAnalyzedCount: 0,
+    },
+    profileGraph: {
+      pendingProfileFactSuggestions: 0,
+      pendingAudienceHints: 0,
+      approvedActiveFacts: 0,
+      profilesReviewPath: "/admin/workbench/email-command-center/profiles",
+    },
+    audienceStudio: {
+      path: "/admin/workbench/email-command-center/audiences",
+      sendgridSyncStatus: "not_connected",
+      buildingBlockApprovedTriples: 0,
+      draftAudienceDefinitions: 0,
+      activeAudienceDefinitions: 0,
+      dbSliceReachable: false,
+    },
+    sendGridFoundation: {
+      path: "/admin/workbench/email-command-center/sendgrid",
+      eventWebhookPath: "/api/sendgrid/events",
+      apiKeyPresent: sendgridEnv.sendgridApiKeyPresent,
+      fromIdentityReady: sendgridEnv.sendgridFromEmailPresent && sendgridEnv.sendgridFromNamePresent,
+      webhookVerificationConfigured: sendgridEnv.sendgridWebhookVerificationKeyPresent,
+      recentSendGridEventsCount: 0,
+      suppressionCount: 0,
+      audienceDefinitionsNonArchived: 0,
+      dbReachable: false,
+    },
+    contactImport: {
+      path: "/admin/workbench/email-command-center/imports",
+      dbSliceReachable: false,
+      pendingApprovalCount: 0,
+      committedBatchCount: 0,
+      openImportBatchCount: 0,
+      consentWarningRowsSummed: 0,
+      latestBatches: [],
+    },
+    automationTiers: [
+      { tier: "T0", label: "Manual queue", state: "live" },
+      { tier: "T1", label: "Deterministic interpretation (E-2A)", state: "live" },
+      { tier: "T2", label: "Operator triage actions (assign / status)", state: "live" },
+      {
+        tier: "T3",
+        label: "External sync (Gmail OAuth + metadata + watch start/renew; Pub/Sub inbox scaffold)",
+        state: "partial",
+      },
+      { tier: "T4", label: "Policy-governed mass/automated sends", state: "planned" },
+    ],
+    governance: {
+      canSendFromEmailWorkflowItem: EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM,
+      bullets: [
+        "This dashboard does not send email — it is coordination + readiness only.",
+        "Contact list CSV import uses staging + operator approve/commit (EMAIL-CONTACT-IMPORT-STAGING-1.0) — no SendGrid, no sends, no assumed opt-in. When the DB gate fails, imports are not trustworthy on this request.",
+        "Message Studio route remains available for drafting copy when the DB is down — still no send and no server persistence in EMAIL-COMMAND-CENTER-TONIGHT-FINISH-1.0.",
+        "Automation Studio and Analytics & Deliverability shells (EMAIL-AUTOMATION-ANALYTICS-SHELL-1.0) remain navigation + governance copy when the DB is down — no activation, no sends.",
+      ],
+    },
+    operatorGate: gate,
+  };
+}
+
 /**
  * Read-only aggregate snapshot for the Email Command Center dashboard.
  * No provider calls; no secrets returned.
  */
 export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCenterSnapshot> {
+  try {
   const summary = await getEmailWorkflowQueueSummary();
   const actorId = await getAdminActorUserId();
 
@@ -307,12 +492,64 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
       "Contact/Profile Graph (EMAIL-CONTACT-PROFILE-GRAPH-1.0): AI profile suggestions stage as PENDING until operator approval; facts land on EmailContactProfileFact only — not auto User/VolunteerProfile merges. Audience hints are not SendGrid segments.",
       "Audience / Microtargeting Studio (EMAIL-AUDIENCE-STUDIO-1.0): previews and saved definitions use approved profile graph data — no SendGrid sync, no sends, no automatic CRM updates.",
       "SendGrid foundation (EMAIL-SENDGRID-FOUNDATION-1.0): POST /api/sendgrid/events ingests signed Event Webhook payloads into SendGridEvent + SendGridSuppression when the DB migration is applied — no sends, no OpenAI, no auto contact sync, no User/VolunteerProfile writes from this path.",
+      "Contact list CSV import (EMAIL-CONTACT-IMPORT-STAGING-1.0): staging + operator validate/approve/commit only — never SendGrid sync, never sends from this path, never assumed opt-in. Canonical Supabase DB / production requires the same CLI gates on that DATABASE_URL.",
+      "Message Studio (TONIGHT-FINISH + LOCAL-DRAFTS + CAMPAIGN-VOICE + EDITORIAL-REVIEW-DESK-1.0 + PRODUCTION-TEMPLATES-1.0): browser localStorage drafts + Campaign Voice + Editorial Review Desk + production template registry/panel (risk/approval/compliance, apply modes, template history on draft); optional admin-server OpenAI when OPENAI_API_KEY is set (optional bounded templateSummary on generate); not server-backed; no legal compliance claim.",
+      "Daily Operator Console (EMAIL-DAILY-OPERATOR-CONSOLE-1.0): /admin/workbench/email-command-center/daily — snapshot-driven priority cards, rule-based next actions, work queue deep links; client-only localStorage draft summary for this browser; no DB writes, no sends.",
+      "Automation Studio (EMAIL-AUTOMATION-ANALYTICS-SHELL-1.0): governance + roadmap surface only — no automation activation, no auto-send, no background jobs from this route.",
+      "Analytics & Deliverability (EMAIL-AUTOMATION-ANALYTICS-SHELL-1.0): read-only cockpit aggregates — does not grant send permission; no SendGrid or Gmail send from this route.",
+      "Send Execution Governance (EMAIL-SEND-EXECUTION-GOVERNANCE-SHELL-1.0): `/admin/workbench/email-command-center/send-execution` — operator doctrine for future Gmail/SendGrid sends (rails, pre-send checklist, suppression + approval map). No provider APIs, no sends; execution remains EMAIL-SEND-EXECUTION-1.0.",
       "AI may suggest; operators and policy decide execution and sensitive writes.",
     ],
   };
 
   const sendgridEnv = sendgridEnvReadiness();
   const sendGridDbReachable = sendGridEventCount >= 0;
+
+  let emailCommandCenterMigrations: { name: string; applied: boolean }[] = [];
+  let allEmailCommandCenterMigrationsApplied: boolean | null = null;
+  const mccRowsResult = await queryEmailCommandCenterMigrationRows(prisma).catch((): null => null);
+  if (mccRowsResult === null) {
+    emailCommandCenterMigrations = [];
+    allEmailCommandCenterMigrationsApplied = null;
+  } else {
+    emailCommandCenterMigrations = mccRowsResult;
+    allEmailCommandCenterMigrationsApplied =
+      mccRowsResult.length === EMAIL_COMMAND_CENTER_MIGRATION_DIRS.length &&
+      mccRowsResult.every((r) => r.applied);
+  }
+
+  let migrationGateNote: string | null = null;
+  if (allEmailCommandCenterMigrationsApplied === false) {
+    migrationGateNote =
+      "One or more Email Command Center migrations are not applied on this database — run npx prisma migrate deploy from RedDirt/, then npm run email:command-center:preflight.";
+  } else if (allEmailCommandCenterMigrationsApplied === null) {
+    migrationGateNote = "Could not verify Email Command Center migrations (_prisma_migrations query failed).";
+  }
+
+  const importSnap = await contactImportSnapshotCounts();
+  const localContactImportDbVerified =
+    allEmailCommandCenterMigrationsApplied === true && importSnap.dbSliceReachable;
+
+  const operatorGate: EmailCommandCenterOperatorGate = {
+    cockpitDbReachable: true,
+    emailCommandCenterMigrations,
+    allEmailCommandCenterMigrationsApplied,
+    migrationGateNote,
+    contactImportStatusLabel:
+      allEmailCommandCenterMigrationsApplied === true
+        ? importSnap.dbSliceReachable
+          ? "EMAIL-CONTACT-IMPORT-STAGING-1.0 — staging UI live; validate → approve → commit writes EmailContactProfile + CONTACT_IMPORT facts only."
+          : "ECC migrations applied but import tables did not respond — check DATABASE_URL and rerun preflight."
+        : "Paused until DB gate passes",
+    contactImportNextPacket: "Row-level merge UX + canonical Supabase-hosted preflight (same gates on hosted DATABASE_URL)",
+    localContactImportDbVerified,
+    readinessDocRepoPath: "docs/email-command-center-contact-import-readiness.md",
+    preflightCliHint: "npm run email:command-center:preflight",
+    dbDiagnoseCliHint: "npm run email:db:diagnose",
+    importGateCliHint: "npm run email:contact-import:gate",
+  };
+
+  const emailAi = getEmailAiReadiness();
 
   return {
     queueHealth: {
@@ -337,17 +574,14 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
     },
     gmail,
     sendgridEnv: sendgridEnv,
-    openAi: (() => {
-      const emailAi = getEmailAiReadiness();
-      return {
-        openaiApiKeyPresent: isOpenAIConfigured(),
-        openaiModuleAvailable: true,
-        emailAiConfigured: emailAi.configured,
-        emailAiModelName: emailAi.modelName,
-        emailAiSafeAnalysisAvailable: emailAi.safeAnalysisAvailable,
-        emailAiQueueItemsAnalyzedCount,
-      };
-    })(),
+    openAi: {
+      openaiApiKeyPresent: isOpenAIConfigured(),
+      openaiModuleAvailable: true,
+      emailAiConfigured: emailAi.configured,
+      emailAiModelName: emailAi.modelName,
+      emailAiSafeAnalysisAvailable: emailAi.safeAnalysisAvailable,
+      emailAiQueueItemsAnalyzedCount,
+    },
     profileGraph: {
       pendingProfileFactSuggestions: profileGraphCounts.pendingProfileSuggestions,
       pendingAudienceHints: profileGraphCounts.pendingAudienceHints,
@@ -373,7 +607,20 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
       audienceDefinitionsNonArchived: sendGridDbReachable ? audienceDefinitionsNonArchived : 0,
       dbReachable: sendGridDbReachable,
     },
+    contactImport: {
+      path: "/admin/workbench/email-command-center/imports",
+      dbSliceReachable: importSnap.dbSliceReachable,
+      pendingApprovalCount: importSnap.pendingApprovalCount,
+      committedBatchCount: importSnap.committedBatchCount,
+      openImportBatchCount: importSnap.openImportBatchCount,
+      consentWarningRowsSummed: importSnap.consentWarningRowsCount,
+      latestBatches: importSnap.latestBatches,
+    },
     automationTiers,
     governance,
+    operatorGate,
   };
+  } catch {
+    return buildDegradedEmailCommandCenterSnapshot();
+  }
 }
