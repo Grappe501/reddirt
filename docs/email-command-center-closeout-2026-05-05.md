@@ -6,6 +6,8 @@
 
 **Read next**
 
+- **Staff operator manual:** [`email-command-center-operator-manual.md`](./email-command-center-operator-manual.md) (**EMAIL-COMMAND-CENTER-OPERATOR-MANUAL-1.0**)  
+- **Morning QA closeout:** [`email-command-center-morning-upgrade-closeout.md`](./email-command-center-morning-upgrade-closeout.md) (**EMAIL-COMMAND-CENTER-MORNING-QA-CLOSEOUT-1.0**)  
 - Route inventory: [`email-command-center-route-inventory.md`](./email-command-center-route-inventory.md)  
 - Selective git staging: [`email-command-center-selective-staging-guide.md`](./email-command-center-selective-staging-guide.md)  
 - Operator smoke test: [`email-command-center-operator-smoke-test.md`](./email-command-center-operator-smoke-test.md)  

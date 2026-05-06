@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { EmailCommandCenterSnapshot } from "@/lib/email-command-center/read-model";
+import { HostedDbReadinessAssistantView } from "@/components/admin/email-command-center/HostedDbReadinessAssistantView";
 
 const ECC = "/admin/workbench/email-command-center";
 
@@ -116,14 +117,20 @@ export function EmailCommandCenterReadinessView({ snapshot }: { snapshot: EmailC
         <Link href={`${ECC}/send-execution`} className="text-xs text-kelly-text/60 hover:underline">
           Send execution governance
         </Link>
+        <Link href={`${ECC}/readiness/hosted-db`} className="text-xs font-bold text-violet-800 hover:underline">
+          Hosted DB assistant
+        </Link>
       </div>
 
       <header className="space-y-2">
         <h1 className="font-heading text-2xl font-bold text-kelly-navy">Email Command Center — Readiness checklist</h1>
         <p className="max-w-3xl font-body text-sm text-kelly-text/85">
-          EMAIL-COMMAND-CENTER-FINAL-POLISH-1.0 — operator-facing truth for tonight: what is safe to use, what needs work,
-          and what stays intentionally blocked. Statuses derive from this request&apos;s snapshot where possible. For a
-          guided start-of-day queue, open the{" "}
+          EMAIL-COMMAND-CENTER-FINAL-POLISH-1.0 +{" "}
+          <span className="font-semibold">EMAIL-HOSTED-DB-READINESS-ASSISTANT-1.0</span> — operator-facing truth for tonight:
+          what is safe to use, what needs work, and what stays intentionally blocked. Statuses derive from this request&apos;s
+          snapshot where possible. The embedded Hosted DB readiness assistant (below) shows{" "}
+          <code className="text-[10px]">DATABASE_URL</code>/<code className="text-[10px]">DIRECT_URL</code> presence + parse +
+          host classification <strong>without printing secrets</strong>. For a guided start-of-day queue, open the{" "}
           <Link href={`${ECC}/daily`} className="font-bold text-kelly-forest underline">
             Daily Operator Console
           </Link>
@@ -176,6 +183,8 @@ export function EmailCommandCenterReadinessView({ snapshot }: { snapshot: EmailC
           },
         ]}
       />
+
+      <HostedDbReadinessAssistantView gate={og} variant="embedded" />
 
       <ChecklistSection
         title="Gmail readiness"

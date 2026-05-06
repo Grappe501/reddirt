@@ -1,13 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState, useTransition } from "react";
 import type { MessageStudioLocalDraft } from "@/components/admin/email-command-center/message-studio-local-drafts";
 import type { MessageStudioDraftListRow } from "@/lib/email-command-center/message-studio-drafts";
 import type { MessageStudioDraftStatus } from "@prisma/client";
+import { MessageStudioSharedDraftReviewQueue } from "@/components/admin/email-command-center/MessageStudioSharedDraftReviewQueue";
 import {
-  archiveServerMessageDraftAction,
   createMessageDraftRevisionAction,
   loadMessageStudioServerDraftPayloadAction,
   saveLocalDraftToServerAction,
@@ -21,19 +20,6 @@ const STATUS_LABELS: Record<MessageStudioDraftStatus, string> = {
   APPROVED_FOR_SEND_GOVERNANCE: "Approved for send governance",
   ARCHIVED: "Archived",
 };
-
-function formatShort(iso: string): string {
-  try {
-    return new Date(iso).toLocaleString(undefined, {
-      month: "short",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  } catch {
-    return iso;
-  }
-}
 
 export type MessageStudioSharedDraftsPanelProps = {
   initialServerRows: MessageStudioDraftListRow[];
@@ -107,21 +93,6 @@ export function MessageStudioSharedDraftsPanel({
     });
   };
 
-  const handleArchiveServer = (serverId: string) => {
-    if (!window.confirm("Archive this shared draft on the server? It will move to archived status.")) return;
-    setError(null);
-    const fd = new FormData();
-    fd.set("serverDraftId", serverId);
-    startTransition(async () => {
-      const res = await archiveServerMessageDraftAction(fd);
-      if (!res.ok) {
-        setError(res.error);
-        return;
-      }
-      refresh();
-    });
-  };
-
   const handleUpdateLinked = () => {
     if (!activeDraft?.linkedServerDraftId) return;
     setError(null);
@@ -174,6 +145,8 @@ export function MessageStudioSharedDraftsPanel({
         </p>
       ) : null}
 
+      <MessageStudioSharedDraftReviewQueue rows={initialServerRows} pending={pending} onOpenDraft={handleLoadServer} />
+
       <div className="mt-3 flex flex-wrap gap-2">
         <button
           type="button"
@@ -188,66 +161,11 @@ export function MessageStudioSharedDraftsPanel({
         </p>
       </div>
 
-      <div className="mt-3 max-h-[min(280px,40vh)] overflow-y-auto rounded border border-violet-200/50 bg-white/90">
-        <table className="w-full border-collapse text-left font-body text-[10px]">
-          <thead className="sticky top-0 bg-violet-100/90 text-[9px] uppercase text-kelly-text/70">
-            <tr>
-              <th className="border-b border-violet-200/60 px-2 py-1">Title</th>
-              <th className="border-b border-violet-200/60 px-2 py-1">Status</th>
-              <th className="border-b border-violet-200/60 px-2 py-1">Updated</th>
-              <th className="border-b border-violet-200/60 px-2 py-1">Owner</th>
-              <th className="border-b border-violet-200/60 px-2 py-1"> </th>
-            </tr>
-          </thead>
-          <tbody>
-            {initialServerRows.length === 0 ? (
-              <tr>
-                <td colSpan={5} className="px-2 py-3 text-kelly-text/60">
-                  No shared drafts yet — promote a local draft above.
-                </td>
-              </tr>
-            ) : (
-              initialServerRows.map((r) => (
-                <tr key={r.id} className="border-b border-violet-100/80">
-                  <td className="px-2 py-1.5">
-                    <span className="font-semibold text-kelly-navy">{r.title || "Untitled"}</span>
-                    <span className="mt-0.5 block text-[9px] text-kelly-text/55">{r.draftType || "—"}</span>
-                  </td>
-                  <td className="px-2 py-1.5 text-[9px]">{STATUS_LABELS[r.status]}</td>
-                  <td className="px-2 py-1.5 text-[9px] text-kelly-text/70">{formatShort(r.updatedAt)}</td>
-                  <td className="px-2 py-1.5 text-[9px] text-kelly-text/70">{r.createdByLabel ?? "—"}</td>
-                  <td className="space-x-1 px-2 py-1.5 whitespace-nowrap">
-                    {r.status === "APPROVED_FOR_SEND_GOVERNANCE" ? (
-                      <Link
-                        href={`/admin/workbench/email-command-center/send-execution?draftId=${encodeURIComponent(r.id)}#ops`}
-                        className="mr-1 inline-block rounded border border-kelly-navy/30 bg-kelly-fog/80 px-1.5 py-0.5 text-[9px] font-bold text-kelly-navy hover:underline"
-                      >
-                        Create send execution
-                      </Link>
-                    ) : null}
-                    <button
-                      type="button"
-                      disabled={pending}
-                      className="rounded border border-kelly-forest/30 bg-emerald-50/90 px-1.5 py-0.5 text-[9px] font-bold text-emerald-950 disabled:opacity-50"
-                      onClick={() => handleLoadServer(r.id)}
-                    >
-                      Open
-                    </button>
-                    <button
-                      type="button"
-                      disabled={pending}
-                      className="rounded border border-rose-300/60 bg-rose-50/90 px-1.5 py-0.5 text-[9px] font-semibold text-rose-950 disabled:opacity-50"
-                      onClick={() => handleArchiveServer(r.id)}
-                    >
-                      Archive
-                    </button>
-                  </td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
-      </div>
+      {initialServerRows.length === 0 ? (
+        <p className="mt-3 rounded border border-violet-200/60 bg-violet-50/80 px-2 py-2 font-body text-[10px] text-kelly-navy" role="status">
+          No shared drafts yet — promote a local draft below. The review queue will populate here for all operators.
+        </p>
+      ) : null}
 
       {activeDraft?.linkedServerDraftId ? (
         <div className="mt-3 space-y-2 rounded border border-violet-300/50 bg-white/95 p-2">

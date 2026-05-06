@@ -2,9 +2,9 @@
 
 **Packet:** **EMAIL-COMMAND-CENTER-CLOSEOUT-1.0** + **EMAIL-COMMAND-CENTER-LAUNCH-HARDENING-1.0** + **EMAIL-COMMAND-CENTER-PRODUCTION-QA-CLOSEOUT-1.0**  
 **Lane:** `RedDirt/` only · **Division:** Comms / Email Workflow Intelligence  
-**Companion:** [`campaign-email-command-center-progress-ledger.md`](./campaign-email-command-center-progress-ledger.md) · [`email-command-center-production-qa-closeout.md`](./email-command-center-production-qa-closeout.md) · [`email-command-center-operator-smoke-test.md`](./email-command-center-operator-smoke-test.md) · [`email-command-center-closeout-2026-05-05.md`](./email-command-center-closeout-2026-05-05.md) · [`email-command-center-launch-hardening.md`](./email-command-center-launch-hardening.md) · [`email-command-center-first-run-operator-checklist.md`](./email-command-center-first-run-operator-checklist.md)
+**Companion:** **[`email-command-center-operator-manual.md`](./email-command-center-operator-manual.md)** (staff daily manual) · **[`email-command-center-morning-upgrade-closeout.md`](./email-command-center-morning-upgrade-closeout.md)** (morning QA verify log) · [`campaign-email-command-center-progress-ledger.md`](./campaign-email-command-center-progress-ledger.md) · [`email-command-center-operator-ux-polish-1-0.md`](./email-command-center-operator-ux-polish-1-0.md) · [`email-command-center-production-qa-closeout.md`](./email-command-center-production-qa-closeout.md) · [`email-command-center-operator-smoke-test.md`](./email-command-center-operator-smoke-test.md) · [`email-command-center-closeout-2026-05-05.md`](./email-command-center-closeout-2026-05-05.md) · [`email-command-center-launch-hardening.md`](./email-command-center-launch-hardening.md) · [`email-command-center-first-run-operator-checklist.md`](./email-command-center-first-run-operator-checklist.md)
 
-This document inventories **admin workbench** routes that belong to the **Email Command Center** narrative (cockpit, map, readiness, Gmail, queue, profiles, audiences, imports, SendGrid foundation, message planning, automation shell, analytics shell, **send execution governance**). Paths are **relative to the site root** (full path prefix: `/admin/workbench/…`).
+This document inventories **admin workbench** routes that belong to the **Email Command Center** narrative (cockpit, map, readiness, Gmail, queue, profiles, audiences, imports, SendGrid foundation, message planning, automation shell, analytics shell, **send execution governance**). Paths are **relative to the site root** (full path prefix: `/admin/workbench/…`). For **how staff use** these routes day to day, read **[`email-command-center-operator-manual.md`](./email-command-center-operator-manual.md)** (**EMAIL-COMMAND-CENTER-OPERATOR-MANUAL-1.0**).
 
 **Legend — status**
 
@@ -17,6 +17,8 @@ This document inventories **admin workbench** routes that belong to the **Email 
 **Governance (all rows):** **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** remains **`false`** — no SendGrid broadcast send, no Gmail send-from-queue, no auto-reply from **`EmailWorkflowItem`**. Optional workbench Gmail send scope is **separate** from email-workflow execution.
 
 **Launch posture:** ECC is **operator-complete, execution-gated** — Daily + cockpit + Message Studio + governance are safe for daily triage and drafting; provider execution and automation activation remain **future** packets. Heuristic **`npm run email:no-send-scan`** is a sanity aid, not a security proof.
+
+**EMAIL-COMMAND-CENTER-OPERATOR-UX-POLISH-1.0:** Major ECC routes (Daily, Message Studio, Send Execution, Analytics, Automation, SendGrid, Audiences, Imports, Email queue) include a shared **next actions** strip, **status chips** (Live / Local-only / Hosted not verified / No-send / Requires approval / Future), **Back to Daily Operator Console**, and **blocked-because** hints where env or DB posture gaps matter — still **no** sends.
 
 ---
 
@@ -53,12 +55,12 @@ This document inventories **admin workbench** routes that belong to the **Email 
 | Field | Detail |
 |--------|--------|
 | **Status** | **Live** |
-| **Purpose** | **EMAIL-DAILY-OPERATOR-CONSOLE-1.0** — start-of-day console: snapshot **today’s priorities** (queue, profiles, imports, audiences, SendGrid signals, AI-analyzed count), **rule-based next actions**, ordered **operator work queue** links, **client-only** Message Studio draft summary from **`localStorage`** (this browser). |
+| **Purpose** | **EMAIL-DAILY-OPERATOR-CONSOLE-1.0** + **EMAIL-AUTOMATION-POLICY-DETAILS-1.0** — start-of-day console: snapshot **today’s priorities** (queue, profiles, imports, audiences, SendGrid signals, AI-analyzed count), **rule-based next actions**, **top 3 automation policy warn/alert** strip with deep-links to **`/automation#policy-detail-…`**, ordered **operator work queue** links, **client-only** Message Studio draft summary from **`localStorage`** (this browser). |
 | **Can do today** | Open linked surfaces; see degraded copy when DB unreachable; refresh draft counts by revisiting (no server persistence of drafts). |
 | **Cannot do** | Send mail; write Postgres; upload local draft payloads; activate automation. |
 | **Upstream** | **`getEmailCommandCenterSnapshot`**; browser **`reddirt:email-command-center:message-studio-drafts:v1`**. |
 | **Downstream** | Queue, Gmail review/monitor, profiles, imports, audiences, Message Studio (**`#editorial-review-desk`**, **`#send-packet-builder`**), send governance, analytics, automation, readiness, map. |
-| **Smoke expectation** | Page loads; badges + next-actions visible; DB-unavailable banner when snapshot degraded. |
+| **Smoke expectation** | Page loads; badges + next-actions visible; **top 3** automation policy warn/alert strip when any non-OK; DB-unavailable banner when snapshot degraded. |
 | **Governance** | **No demo mode**; queue-first; review-first; **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** unchanged **false**. |
 
 ### `/admin/workbench/email-command-center/readiness`
@@ -73,6 +75,19 @@ This document inventories **admin workbench** routes that belong to the **Email 
 | **Downstream** | Preflight scripts (`email-command-center-preflight`, `email:db:diagnose`, `email:contact-import:gate` per runbook). |
 | **Smoke expectation** | Page loads; hosted sections stay **partial** until explicitly verified. |
 | **Governance** | Send execution and automation activation remain **blocked/future**. |
+
+### `/admin/workbench/email-command-center/readiness/hosted-db`
+
+| Field | Detail |
+|--------|--------|
+| **Status** | **Live** |
+| **Purpose** | **EMAIL-HOSTED-DB-READINESS-ASSISTANT-1.0** — hosted Supabase / Kelly-Grappe-App verification aid: **`DATABASE_URL` / `DIRECT_URL` presence + parse + hostname classification** (no secret values), **DB reachable**, **ECC migration list snapshot**, **contact import gate** labels, **copyable CLI snippets** + PowerShell session template (placeholders). |
+| **Can do today** | Read posture; copy `npm run email:db:diagnose` / preflight / import-gate commands; follow links to Imports, SendGrid, Supabase dashboard. |
+| **Cannot do** | Change env, run migrations, import CSV, print connection strings. |
+| **Upstream** | **`getEmailCommandCenterSnapshot.operatorGate`** + `process.env` parse (names/posture only). |
+| **Downstream** | Operator-run CLI on hosted **`DATABASE_URL`**; **`docs/deployment.md`**, **`docs/email-command-center-contact-import-readiness.md`**. |
+| **Smoke expectation** | Table + copy buttons render; no credential text fields. |
+| **Governance** | Wrong Supabase **project ref** = wrong database — verify Reference ID in dashboard before gate chain. |
 
 ---
 
@@ -209,7 +224,7 @@ This document inventories **admin workbench** routes that belong to the **Email 
 | Field | Detail |
 |--------|--------|
 | **Status** | **Partial** |
-| **Purpose** | Readiness UI + local previews of events/suppressions/audience maps; **receive-only** webhook path documented; **`sendGridReconciliation`** status strip (**EMAIL-SENDGRID-EVENT-RECIPIENT-RECONCILIATION-1.0** — link to Analytics **`#reconciliation`**, **no** sends); **`#contact-sync`** (**1.1 + 1.2**) — operator preview runs on **`SendGridContactSyncRun`** (suppression-aware, **ACTIVE** audiences), approve row, **optional governed Marketing Contacts upsert** for **APPROVED** runs (**`SENDGRID_API_KEY`**, production **hosted DB gate**) — **contact sync only**, **no** email send. Snapshot **`sendGridContactSync.runsApprovedAwaitingExecutionCount`** surfaces APPROVED rows awaiting upsert on **Daily** / **Analytics**. |
+| **Purpose** | Readiness UI + local previews of events/suppressions/audience maps; **receive-only** webhook path documented; **`sendGridReconciliation`** status strip (**EMAIL-SENDGRID-EVENT-RECIPIENT-RECONCILIATION-1.0** — link to Analytics **`#reconciliation`**, **no** sends); **`#contact-sync`** (**1.1 + 1.2** + **EMAIL-SENDGRID-SYNC-RECONCILIATION-POLISH-1.0**) — sync health cards (PREVIEWED / APPROVED awaiting / SYNCED / FAILED / ARCHIVED, Σ suppressed + Σ warnings non-archived, latest sync + truncated provider job tail), recent runs with job tails + retry guidance, operator preview runs on **`SendGridContactSyncRun`**, approve, **optional governed Marketing Contacts upsert** for **APPROVED** runs — **contact sync only**, **no** email send. Snapshot **`sendGridContactSync`** feeds **Daily** + **Analytics `#contact-sync-health`**. |
 | **Can do today** | Inspect stored **`SendGridEvent`** / **`SendGridSuppression`** when present; readiness copy; **reconciliation counts** (pending/matched/unmatched); save **preview** audit rows; **APPROVED** status; **execute** Marketing Contacts PUT for eligible emails when gates pass. |
 | **Cannot do** | Trigger broadcast / single-send **email**; create campaigns or automation from this page; upsert without **APPROVED** run or without API key; production upsert without hosted DB verification (**deferred posture** = **EMAIL-SEND-EXECUTION-1.0** for **sends**). |
 | **Upstream** | **`POST /api/sendgrid/events`** (signed in prod). |
@@ -226,12 +241,12 @@ This document inventories **admin workbench** routes that belong to the **Email 
 | Field | Detail |
 |--------|--------|
 | **Status** | **Live** (browser **`localStorage`** + **Postgres shared drafts** when DB healthy + optional **server** OpenAI when `OPENAI_API_KEY` set) |
-| **Purpose** | **LOCAL-DRAFTS-1.1** + **SERVER-DRAFTS-1.0** + **CAMPAIGN-VOICE-1.2** + **EDITORIAL-REVIEW-DESK-1.0** + **PRODUCTION-TEMPLATES-1.0** + **EMAIL-SEND-PACKET-BUILDER-1.0** — **`#shared-drafts`**: promote local JSON → **`MessageStudioDraft`**, list/open/update workflow status/archive, **`MessageStudioDraftRevision`** snapshots (**no** send); **Send Packet Builder** (`#send-packet-builder`: no-send review packet — completeness, suppression/consent + approval manual checklists, copy/export `.json`/`.txt`, optional **`lastSendPacketJson`** snapshot on draft) plus **Production Templates** panel (`message-templates.ts` registry: category/audience filters, risk/approval/compliance, apply modes with body-replace confirm, template history on draft), Campaign Voice, **Editorial Review Desk** (claim/voice/compliance checklists, readiness tier, last-applied template strip, send-governance handoff), optional **admin-server** AI (advisory; optional one-shot template context on **Generate**); multi-draft workspace, autosave, copy/export, content blocks; queue/audiences/imports query params. |
-| **Can do today** | Save drafts locally (`reddirt:email-command-center:message-studio-drafts:v1`); **promote** active local draft to **shared** Postgres row; **open** shared draft into editor (confirm if dirty); **update** linked shared draft + optional revision note; **save revision** snapshot; **archive** shared row; duplicate/delete local; export .json/.txt; insert content blocks; filter/preview/apply production templates; queue template for next AI generate; apply AI suggestions manually; build/copy/export **send packet** review artifact (no provider execution). |
+| **Purpose** | **LOCAL-DRAFTS-1.1** + **SERVER-DRAFTS-1.0** + **REVIEW-QUEUE-1.0** + **CAMPAIGN-VOICE-1.2** + **EMAIL-CAMPAIGN-VOICE-SOURCE-READINESS-1.0** (`#message-studio-source-readiness`: four-bucket source readiness + paste templates + thin-context warning; deterministic **`sourceLimitations`** merge on AI paths) + **EDITORIAL-REVIEW-DESK-1.0** + **PRODUCTION-TEMPLATES-1.0** + **EMAIL-SEND-PACKET-BUILDER-1.0** — **`#shared-drafts`**: promote local JSON → **`MessageStudioDraft`**, linked-draft update, promote UI; **`#review-queue`**: grouped server rows by **`MessageStudioDraftStatus`**, filters, workflow status updates + revision/archive quick actions (**no** send); **`MessageStudioDraftRevision`** snapshots; **Send Packet Builder** (`#send-packet-builder`: no-send review packet — completeness, suppression/consent + approval manual checklists, copy/export `.json`/`.txt`, optional **`lastSendPacketJson`** snapshot on draft) plus **Production Templates** panel (`message-templates.ts` registry: category/audience filters, risk/approval/compliance, apply modes with body-replace confirm, template history on draft), Campaign Voice, **Editorial Review Desk** (claim/voice/compliance checklists, readiness tier, last-applied template strip, send-governance handoff), optional **admin-server** AI (advisory; optional one-shot template context on **Generate**); multi-draft workspace, autosave, copy/export, content blocks; queue/audiences/imports query params. |
+| **Can do today** | Save drafts locally (`reddirt:email-command-center:message-studio-drafts:v1`); **promote** active local draft to **shared** Postgres row; **open** shared draft into editor (confirm if dirty); **update** linked shared draft + optional revision note; **save revision** snapshot; **archive** shared row; **Review Queue** filters + status transitions (existing enum only); duplicate/delete local; export .json/.txt; insert content blocks; filter/preview/apply production templates; queue template for next AI generate; apply AI suggestions manually; build/copy/export **send packet** review artifact (no provider execution). |
 | **Cannot do** | Auto-send; client-side direct OpenAI (all model calls are **server actions**). |
 | **Upstream** | **`…/email-queue/[id]`**, **`…/audiences`**, **`…/imports`** (query chips: `source`, `id`, `audienceDefinitionId`, `importBatchId`). |
 | **Downstream** | **`…/send-execution`** (gates + **Shared draft saved / reviewed** checklist row); **EMAIL-SEND-EXECUTION-1.0** (future execution). |
-| **Smoke expectation** | “Saved locally” / library sidebar; **`#shared-drafts`** table loads when DB OK; **Editorial Review Desk** (**`#editorial-review-desk`**) and **Send Packet Builder** (**`#send-packet-builder`**) reachable; governance copy states **no send**. |
+| **Smoke expectation** | “Saved locally” / library sidebar; **`#shared-drafts`** + **`#review-queue`** load when DB OK; Campaign Voice **`#message-studio-source-readiness`** buckets render; **Editorial Review Desk** (**`#editorial-review-desk`**) and **Send Packet Builder** (**`#send-packet-builder`**) reachable; governance copy states **no send**. |
 | **Governance** | Shared drafts are **persistence/review only**; local scratch may diverge until promoted/updated; **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** unchanged. |
 
 ---
@@ -243,12 +258,12 @@ This document inventories **admin workbench** routes that belong to the **Email 
 | Field | Detail |
 |--------|--------|
 | **Status** | **Live** (governance **shell** + **read-only policy evaluations**) |
-| **Purpose** | Automation Studio — tiers, triggers, actions, playbooks; **EMAIL-AUTOMATION-POLICY-ACTIVATION-1.0** policy table from **`getEmailCommandCenterSnapshot.automationPolicyEval`** (no workers). |
-| **Can do today** | Read maps and blocked/future callouts; **Evaluate policies now** revalidates snapshot only (no sends, no mutations). |
+| **Purpose** | Automation Studio — tiers, triggers, actions, playbooks; **EMAIL-AUTOMATION-POLICY-ACTIVATION-1.0** + **EMAIL-AUTOMATION-POLICY-DETAILS-1.0** policy table + **`#automation-policy-details`** explainability accordions (`#policy-detail-{id}` per policy) from **`getEmailCommandCenterSnapshot.automationPolicyEval`** (no workers). |
+| **Can do today** | Read maps and blocked/future callouts; **Revalidate snapshot (read-only)** revalidates server render only (`revalidatePath`); expand policy detail for watches / recommendations / never-does. |
 | **Cannot do** | Activate background workers; auto-send; auto-mutate audiences/contacts. |
 | **Upstream** | Cockpit **`getEmailCommandCenterSnapshot`**; master plan / automation map docs. |
 | **Downstream** | Future **EMAIL-AUTOMATION-STUDIO-1.1** worker activation (separate packet). |
-| **Smoke expectation** | Policy rows render when DB healthy; degraded counts when DB down. |
+| **Smoke expectation** | Policy rows render when DB healthy; **`#automation-policy-details`** accordions + status pills; degraded counts when DB down. |
 | **Governance** | Evaluation-only in this packet — cron/worker activation remains policy-gated and **not** shipped here. |
 
 ### `/admin/workbench/email-command-center/analytics`
@@ -256,8 +271,8 @@ This document inventories **admin workbench** routes that belong to the **Email 
 | Field | Detail |
 |--------|--------|
 | **Status** | **Live** / **Partial** (aggregates need DB) |
-| **Purpose** | Analytics & Deliverability readiness — **`getEmailCommandCenterSnapshot`**, suppression breakdown when healthy, **`sendGridReconciliation`** + **`#reconciliation`** (operator batch reconcile — **EMAIL-SENDGRID-EVENT-RECIPIENT-RECONCILIATION-1.0**, **no** sends). |
-| **Can do today** | One-page readiness + quiet-queue messaging; reconcile recent **`SendGridEvent`** rows to **`EmailSendRecipient`** when admin submits the reconcile form. |
+| **Purpose** | Analytics & Deliverability readiness — **`getEmailCommandCenterSnapshot`** + **`buildEmailAnalyticsOperatorDrilldown`** on this route only (**EMAIL-ANALYTICS-DRILLDOWN-1.0**: readiness scores **`#analytics-readiness-scores`**, drilldown anchors for queue / drafts / send execution / sync / suppression / automation / Gmail watch, bounded row tables), suppression breakdown when healthy, **`sendGridReconciliation`** + **`#reconciliation`** (operator batch reconcile — **EMAIL-SENDGRID-EVENT-RECIPIENT-RECONCILIATION-1.0**, **no** sends); **`#send-execution-preflight`** (**EMAIL-SEND-EXECUTION-PREFLIGHT-HARDENING-1.0**) — read-only rollup of first-failed preflight check ids across **`PREFLIGHT_FAILED`** executions + link to **`/send-execution#ops`**. |
+| **Can do today** | One-page readiness + quiet-queue messaging; reconcile recent **`SendGridEvent`** rows to **`EmailSendRecipient`** when admin submits the reconcile form; inspect send-execution preflight failure patterns (**no** send). |
 | **Cannot do** | Deep scheduled reporting (**EMAIL-ANALYTICS-DELIVERABILITY-1.0**). |
 | **Upstream** | Queue counts; SendGrid tables; imports snapshot; **`POST /api/sendgrid/events`** ingestion. |
 | **Downstream** | Charts/exports packet; suppression posture before next governed send. |
@@ -273,8 +288,8 @@ This document inventories **admin workbench** routes that belong to the **Email 
 | Field | Detail |
 |--------|--------|
 | **Status** | **Live** — upper page: doctrine + rails (**no** buttons there). **`#ops`**: **EMAIL-SEND-EXECUTION-1.0** operator console (admin server actions → **`send-execution.ts`** → **`mail-send.ts`** `fetch` to SendGrid **`/v3/mail/send`** only on explicit submit). |
-| **Purpose** | Pre-send checklist + suppression doctrine + **Prisma** **`EmailSendExecution`** / **`EmailSendRecipient`** / **`EmailSendApproval`** audit trail; create draft execution from shared draft + ACTIVE audience + optional **SYNCED** sync run; **preflight**; **single-address test send**; **final approval**; **broadcast** after typed **`SEND APPROVED`** + production hosted DB gate in **`executeEmailSendGridFinalAction`**. |
-| **Can do today** | Read rails/checklist; **operator**: governed test/final SendGrid paths when env + migrations + policy gates pass. |
+| **Purpose** | Pre-send checklist + suppression doctrine + **Prisma** **`EmailSendExecution`** / **`EmailSendRecipient`** / **`EmailSendApproval`** audit trail; create draft execution from shared draft + ACTIVE audience + optional **SYNCED** sync run; **preflight** (**EMAIL-SEND-EXECUTION-PREFLIGHT-HARDENING-1.0**: expanded checklist, **`whyFailed`**, fix-route links, **`recipientBreakdown`** in **`preflightJson`** — **no** provider calls); **single-address test send**; **final approval**; **broadcast** after typed **`SEND APPROVED`** + production hosted DB gate in **`executeEmailSendGridFinalAction`**. |
+| **Can do today** | Read rails/checklist; **operator**: run preflight, copy/export summary, then governed test/final SendGrid paths when env + migrations + policy gates pass. |
 | **Cannot do** | Queue-triggered send; automation activation; change **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`**; bypass suppression; broadcast without ASM env. |
 | **Upstream** | Message Studio (shared drafts, send packet), Audience Studio, SendGrid Foundation (**SYNCED** runs), imports consent posture. |
 | **Downstream** | Analytics/Daily snapshot counts; **`SendGridEvent`** → **`EmailSendRecipient`** via **EMAIL-SENDGRID-EVENT-RECIPIENT-RECONCILIATION-1.0** (operator reconcile on Analytics). |
@@ -288,9 +303,10 @@ This document inventories **admin workbench** routes that belong to the **Email 
 | Route | Status | Safe to use now | Blocked / degraded when | Smoke expectation | Anchors / notes |
 |-------|--------|-----------------|---------------------------|-------------------|-----------------|
 | `/admin/workbench/email-command-center` | Live | **Yes** | DB unreachable → `operatorGate` | Cockpit + **operator-complete** copy | — |
-| `/admin/workbench/email-command-center/daily` | Live | **Yes** | DB unreachable → degraded counts | Badges + next-actions | — |
+| `/admin/workbench/email-command-center/daily` | Live | **Yes** | DB unreachable → degraded counts | Badges + next-actions + top-3 policy strip | Deep-link **`/automation#policy-detail-*`** |
 | `/admin/workbench/email-command-center/map` | Live | **Yes** | — | All cards | — |
-| `/admin/workbench/email-command-center/readiness` | Live | **Yes** | DB/keys missing → partial rows | Rows render | — |
+| `/admin/workbench/email-command-center/readiness` | Live | **Yes** | DB/keys missing → partial rows | Rows + **`#hosted-db-readiness-assistant`** | — |
+| `/admin/workbench/email-command-center/readiness/hosted-db` | Live | **Yes** | — | Hosted DB table + copy snippets | — |
 | `/admin/workbench/email-command-center/gmail` | Partial | **Yes** (nav) | No OAuth | Connect guidance | — |
 | `/admin/workbench/email-command-center/gmail/review` | Partial | **Yes** when linked | No sync | Manual create | — |
 | `/admin/workbench/email-queue` | Live | **Yes** | DB down | List / filters | — |
@@ -300,11 +316,11 @@ This document inventories **admin workbench** routes that belong to the **Email 
 | `/admin/workbench/email-command-center/imports` | Live / Partial | **Yes** (UI) | Hosted DB not verified for prod commit | Staging copy | — |
 | `/admin/workbench/email-command-center/imports/[id]` | Live / Partial | **Yes** when DB OK | Wrong DB | Batch detail | — |
 | `/admin/workbench/email-command-center/sendgrid` | Partial | **Yes** | DB/env | No send buttons; **`#contact-sync`** preview only | **`#contact-sync`** |
-| `/admin/workbench/email-command-center/message-studio` | Live | **Yes** | OpenAI optional; DB down → shared panel empty | Local + shared save + export | **`#shared-drafts`**, **`#editorial-review-desk`**, **`#send-packet-builder`** |
-| `/admin/workbench/email-command-center/automation` | Live | **Yes** | — | No activation | — |
-| `/admin/workbench/email-command-center/analytics` | Live / Partial | **Yes** | DB down | Read-only | — |
-| `/admin/workbench/email-command-center/send-execution` | Live | **Yes** (doctrine always; **#ops** sends only with env + gates) | DB/migration down → empty ops; prod without hosted gate blocks **final** broadcast action | Doctrine + ops panels | **`#ops`**, governance copy |
+| `/admin/workbench/email-command-center/message-studio` | Live | **Yes** | OpenAI optional; DB down → shared panel empty | Local + shared save + export | **`#shared-drafts`**, **`#review-queue`**, **`#message-studio-source-readiness`**, **`#editorial-review-desk`**, **`#send-packet-builder`** |
+| `/admin/workbench/email-command-center/automation` | Live | **Yes** | — | No activation | **`#automation-policy-details`**, **`#policy-detail-*`** |
+| `/admin/workbench/email-command-center/analytics` | Live / Partial | **Yes** | DB down | Read-only | **`#analytics-readiness-scores`**, **`#analytics-drilldown-queue`**, **`#reconciliation`**, **`#send-execution-preflight`**, **`#contact-sync-health`** |
+| `/admin/workbench/email-command-center/send-execution` | Live | **Yes** (doctrine always; **#ops** sends only with env + gates) | DB/migration down → empty ops; prod without hosted gate blocks **final** broadcast action | Doctrine + hardened preflight checklist UI | **`#ops`**, governance copy |
 
 ---
 
-*Last updated: **EMAIL-SEND-EXECUTION-1.0** (governed SendGrid console on **`/send-execution#ops`** + route inventory row).*
+*Last updated: **EMAIL-COMMAND-CENTER-MORNING-QA-CLOSEOUT-1.0** — companion **[`email-command-center-morning-upgrade-closeout.md`](./email-command-center-morning-upgrade-closeout.md)** + operator manual.*

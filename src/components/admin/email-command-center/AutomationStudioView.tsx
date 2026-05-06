@@ -1,5 +1,7 @@
 import Link from "next/link";
-import type { AutomationPolicyEvalSnapshot } from "@/lib/email-command-center/automation-policy-runner";
+import { AutomationPolicyDetailAccordions } from "@/components/admin/email-command-center/AutomationPolicyDetailAccordions";
+import { EccOperatorPageChrome } from "@/components/admin/email-command-center/ecc-operator-ux";
+import type { EmailCommandCenterSnapshot } from "@/lib/email-command-center/read-model";
 import { evaluateAutomationPoliciesNowAction } from "@/app/admin/automation-policy-eval-actions";
 
 const ECC = "/admin/workbench/email-command-center";
@@ -11,9 +13,7 @@ const badge =
 const cell = "border border-kelly-text/10 bg-white/80 px-2 py-1.5 font-body text-[10px] text-kelly-text/90";
 
 type AutomationStudioViewProps = {
-  /** When false, show a thin DB banner; automation map is still static. */
-  cockpitDbReachable: boolean;
-  policyEval: AutomationPolicyEvalSnapshot;
+  snapshot: EmailCommandCenterSnapshot;
   evalNotice?: string | null;
 };
 
@@ -226,9 +226,14 @@ function policyStatusPill(s: "ok" | "warn" | "alert") {
   return <span className={`rounded px-1.5 py-0.5 text-[9px] font-bold uppercase ${cls}`}>{label}</span>;
 }
 
-export function AutomationStudioView({ cockpitDbReachable, policyEval, evalNotice }: AutomationStudioViewProps) {
+export function AutomationStudioView({ snapshot, evalNotice }: AutomationStudioViewProps) {
+  const cockpitDbReachable = snapshot.operatorGate.cockpitDbReachable;
+  const policyEval = snapshot.automationPolicyEval;
+
   return (
     <div className="min-w-0 max-w-5xl space-y-4">
+      <EccOperatorPageChrome snapshot={snapshot} surface="automation" nextStripTone="amber" />
+
       <div className="flex flex-wrap items-center gap-2">
         <Link href={ECC} className="rounded border border-kelly-text/15 bg-white px-2 py-0.5 text-xs font-semibold text-kelly-slate">
           ← Email Command Center
@@ -269,12 +274,13 @@ export function AutomationStudioView({ cockpitDbReachable, policyEval, evalNotic
         </div>
       ) : null}
 
-      <header className="space-y-2">
+      <header id="automation-policy-top" className="scroll-mt-20 space-y-2">
         <h1 className="font-heading text-2xl font-bold text-kelly-navy">Automation Studio</h1>
         <p className="max-w-3xl font-body text-sm text-kelly-text/85">
           Plan and govern campaign email automation <strong>without enabling auto-send</strong>. EMAIL-AUTOMATION-ANALYTICS-SHELL-1.0 +{" "}
-          <strong>EMAIL-AUTOMATION-POLICY-ACTIVATION-1.0</strong> — static map plus <strong>read-only policy evaluations</strong> from
-          cockpit counts; no workers, no provider sends, no contact mutations.
+          <strong>EMAIL-AUTOMATION-POLICY-ACTIVATION-1.0</strong> + <strong>EMAIL-AUTOMATION-POLICY-DETAILS-1.0</strong> — static map plus{" "}
+          <strong>read-only policy evaluations</strong> from cockpit counts and per-policy explainability; no workers, no provider sends,
+          no contact mutations.
         </p>
         <div className="flex flex-wrap gap-1.5">
           <span className={badge}>No auto-send</span>
@@ -301,8 +307,8 @@ export function AutomationStudioView({ cockpitDbReachable, policyEval, evalNotic
           className="rounded-lg border border-emerald-300/60 bg-emerald-50/80 px-3 py-2 font-body text-[11px] text-emerald-950"
           role="status"
         >
-          Policy evaluation refreshed from the latest cockpit snapshot — <strong>read-only</strong>; no automation workers
-          started; no sends.
+          Policy snapshot revalidated from the latest cockpit data — <strong>read-only</strong> (<code className="text-[10px]">revalidatePath</code> only); no
+          automation workers started; no sends; no contact or audience mutation.
         </p>
       ) : null}
 
@@ -320,13 +326,17 @@ export function AutomationStudioView({ cockpitDbReachable, policyEval, evalNotic
               {policyEval.warnCount} · alert {policyEval.alertCount}
             </p>
           </div>
-          <form action={evaluateAutomationPoliciesNowAction}>
+          <form action={evaluateAutomationPoliciesNowAction} className="text-right">
             <button
               type="submit"
               className="rounded border-2 border-violet-600/50 bg-violet-600/90 px-3 py-1.5 text-[11px] font-extrabold text-white"
             >
-              Evaluate policies now
+              Revalidate snapshot (read-only)
             </button>
+            <p className="mt-1 max-w-xs text-[9px] text-violet-900/85">
+              Re-runs server render + snapshot only — <strong>no</strong> workers, <strong>no</strong> cron, <strong>no</strong> sends,
+              <strong> no</strong> contact or audience mutation.
+            </p>
           </form>
         </div>
         <div className="mt-3 overflow-x-auto">
@@ -360,6 +370,18 @@ export function AutomationStudioView({ cockpitDbReachable, policyEval, evalNotic
               ))}
             </tbody>
           </table>
+        </div>
+      </section>
+
+      <section id="automation-policy-details" className={`${card} scroll-mt-20 border-violet-300/60 bg-violet-50/40`}>
+        <h2 className={h3}>Policy detail (explainability)</h2>
+        <p className="mt-1 max-w-3xl font-body text-[10px] text-violet-950/90">
+          EMAIL-AUTOMATION-POLICY-DETAILS-1.0 — each row expands into what the policy watches, what it recommends, what it will never
+          automate, where data comes from, the current evaluated signal, and the primary route to act. Anchors match Daily Console
+          deep-links (<code className="text-[9px]">#policy-detail-…</code>).
+        </p>
+        <div className="mt-3">
+          <AutomationPolicyDetailAccordions policies={policyEval.policies} />
         </div>
       </section>
 

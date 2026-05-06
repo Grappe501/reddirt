@@ -33,7 +33,27 @@ import {
   evaluateAllAutomationPolicies,
   type AutomationPolicyEvalSnapshot,
 } from "@/lib/email-command-center/automation-policy-runner";
+import {
+  buildHostedDbOperatorGateExtension,
+  type HostedDbOperatorGateExtension,
+} from "@/lib/email-command-center/hosted-db-readiness-assistant";
+import { firstFailedPreflightCheckId } from "@/lib/email-command-center/send-execution-preflight-json";
 import type { EmailContactImportBatchStatus } from "@prisma/client";
+
+/** Classify `DATABASE_URL` host for operator posture chips (names/hosts only; no credentials). */
+export function classifyDatabaseUrlHostKindForOperatorGate(): "loopback" | "hostname" | "unset" {
+  const raw = process.env.DATABASE_URL?.trim();
+  if (!raw) return "unset";
+  try {
+    const normalized = raw.replace(/^postgresql:/i, "postgres:");
+    const u = new URL(normalized);
+    const h = u.hostname.toLowerCase();
+    if (h === "localhost" || h === "127.0.0.1" || h === "::1") return "loopback";
+    return "hostname";
+  } catch {
+    return "unset";
+  }
+}
 
 /** Presence-only env checks — never surface values. */
 export type SendgridEnvReadiness = {
@@ -137,7 +157,7 @@ export type GovernanceSnapshot = {
 };
 
 /** DB + migration + contact-import gate (no secrets). */
-export type EmailCommandCenterOperatorGate = {
+export type EmailCommandCenterOperatorGate = HostedDbOperatorGateExtension & {
   /** False when the cockpit could not query Postgres (degraded dashboard). */
   cockpitDbReachable: boolean;
   /** Rows for listed Email Command Center migrations; empty when DB unreachable. */
@@ -158,6 +178,8 @@ export type EmailCommandCenterOperatorGate = {
   preflightCliHint: string;
   dbDiagnoseCliHint: string;
   importGateCliHint: string;
+  /** Heuristic from `DATABASE_URL` host only — for operator chips (not a hosted-gate proof). */
+  databaseUrlHostKind: "loopback" | "hostname" | "unset";
 };
 
 export type EmailCommandCenterSnapshot = {
@@ -228,9 +250,15 @@ export type EmailCommandCenterSnapshot = {
     runsApprovedCount: number;
     runsSyncedCount: number;
     runsFailedCount: number;
+    runsArchivedCount: number;
+    /** Non-archived runs only — Σ `excludedSuppressedCount` (preview pipeline; not SendGrid API totals). */
+    sumExcludedSuppressedNonArchived: number;
+    /** Non-archived runs only — Σ `warningCount` (consent / source warnings from preview). */
+    sumWarningCountNonArchived: number;
     latestSyncedAtIso: string | null;
     latestSyncedProviderJobId: string | null;
     latestSyncedProviderStatus: string | null;
+    latestFailedAtIso: string | null;
     readinessWarningsSample: string[];
   };
   /** EMAIL-SEND-EXECUTION-1.0 — governed SendGrid execution (counts only; no provider calls here). */
@@ -241,6 +269,8 @@ export type EmailCommandCenterSnapshot = {
     /** DRAFT + PREFLIGHT_FAILED — operator should run or re-run preflight. */
     needPreflightCount: number;
     preflightFailedCount: number;
+    /** First failed checklist id tallied from recent PREFLIGHT_FAILED rows (read-only). */
+    preflightFailedTopBlockers: Array<{ id: string; count: number }>;
     readyForTestCount: number;
     testSentCount: number;
     readyForFinalApprovalCount: number;
@@ -312,7 +342,9 @@ function buildDegradedEmailCommandCenterSnapshot(): EmailCommandCenterSnapshot {
   } else {
     commandSurfacePhase = "needs_actor";
   }
+  const dbHostKind = classifyDatabaseUrlHostKindForOperatorGate();
   const gate: EmailCommandCenterOperatorGate = {
+    ...buildHostedDbOperatorGateExtension(dbHostKind),
     cockpitDbReachable: false,
     emailCommandCenterMigrations: [],
     allEmailCommandCenterMigrationsApplied: null,
@@ -325,6 +357,7 @@ function buildDegradedEmailCommandCenterSnapshot(): EmailCommandCenterSnapshot {
     preflightCliHint: "npm run email:command-center:preflight",
     dbDiagnoseCliHint: "npm run email:db:diagnose",
     importGateCliHint: "npm run email:contact-import:gate",
+    databaseUrlHostKind: dbHostKind,
   };
   const gmail: GmailReadinessSnapshot = {
     staffGmailAccountsTotal: 0,
@@ -435,9 +468,13 @@ function buildDegradedEmailCommandCenterSnapshot(): EmailCommandCenterSnapshot {
       runsApprovedCount: 0,
       runsSyncedCount: 0,
       runsFailedCount: 0,
+      runsArchivedCount: 0,
+      sumExcludedSuppressedNonArchived: 0,
+      sumWarningCountNonArchived: 0,
       latestSyncedAtIso: null,
       latestSyncedProviderJobId: null,
       latestSyncedProviderStatus: null,
+      latestFailedAtIso: null,
       readinessWarningsSample: [],
     },
     sendExecution: {
@@ -446,6 +483,7 @@ function buildDegradedEmailCommandCenterSnapshot(): EmailCommandCenterSnapshot {
       totalExecutions: 0,
       needPreflightCount: 0,
       preflightFailedCount: 0,
+      preflightFailedTopBlockers: [],
       readyForTestCount: 0,
       testSentCount: 0,
       readyForFinalApprovalCount: 0,
@@ -541,6 +579,7 @@ async function buildSendExecutionSnapshot(): Promise<EmailCommandCenterSnapshot[
     totalExecutions: 0,
     needPreflightCount: 0,
     preflightFailedCount: 0,
+    preflightFailedTopBlockers: [],
     readyForTestCount: 0,
     testSentCount: 0,
     readyForFinalApprovalCount: 0,
@@ -585,6 +624,22 @@ async function buildSendExecutionSnapshot(): Promise<EmailCommandCenterSnapshot[
       prisma.emailSendExecution.count({ where: { status: "CANCELLED" } }),
       prisma.emailSendExecution.count({ where: { status: "ARCHIVED" } }),
     ]);
+    const failedPreflightRows = await prisma.emailSendExecution.findMany({
+      where: { status: "PREFLIGHT_FAILED" },
+      orderBy: { updatedAt: "desc" },
+      take: 80,
+      select: { preflightJson: true },
+    });
+    const blockerTally = new Map<string, number>();
+    for (const row of failedPreflightRows) {
+      const id = firstFailedPreflightCheckId(row.preflightJson);
+      if (id) blockerTally.set(id, (blockerTally.get(id) ?? 0) + 1);
+    }
+    const preflightFailedTopBlockers = [...blockerTally.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 6)
+      .map(([id, count]) => ({ id, count }));
+
     const needPreflightCount = draftExecutionCount + preflightFailedCount;
     return {
       path,
@@ -592,6 +647,7 @@ async function buildSendExecutionSnapshot(): Promise<EmailCommandCenterSnapshot[
       totalExecutions,
       needPreflightCount,
       preflightFailedCount,
+      preflightFailedTopBlockers,
       readyForTestCount,
       testSentCount,
       readyForFinalApprovalCount,
@@ -670,23 +726,46 @@ async function buildSendGridContactSyncSnapshot(): Promise<EmailCommandCenterSna
     runsApprovedCount: 0,
     runsSyncedCount: 0,
     runsFailedCount: 0,
+    runsArchivedCount: 0,
+    sumExcludedSuppressedNonArchived: 0,
+    sumWarningCountNonArchived: 0,
     latestSyncedAtIso: null,
     latestSyncedProviderJobId: null,
     latestSyncedProviderStatus: null,
+    latestFailedAtIso: null,
     readinessWarningsSample: [],
   };
   try {
     const readiness = await getSendGridContactSyncReadiness();
-    const [runsPreviewedCount, runsApprovedAwaitingExecutionCount, runsSyncedCount, runsFailedCount, latestSynced] =
-      await Promise.all([
+    const nonArchivedWhere = { status: { not: "ARCHIVED" as const } };
+    const [
+      runsPreviewedCount,
+      runsApprovedAwaitingExecutionCount,
+      runsSyncedCount,
+      runsFailedCount,
+      runsArchivedCount,
+      latestSynced,
+      latestFailed,
+      pipelineSums,
+    ] = await Promise.all([
       prisma.sendGridContactSyncRun.count({ where: { status: "PREVIEWED" } }),
       prisma.sendGridContactSyncRun.count({ where: { status: "APPROVED" } }),
       prisma.sendGridContactSyncRun.count({ where: { status: "SYNCED" } }),
       prisma.sendGridContactSyncRun.count({ where: { status: "FAILED" } }),
+      prisma.sendGridContactSyncRun.count({ where: { status: "ARCHIVED" } }),
       prisma.sendGridContactSyncRun.findFirst({
         where: { status: "SYNCED", syncedAt: { not: null } },
         orderBy: { syncedAt: "desc" },
         select: { syncedAt: true, resultJson: true },
+      }),
+      prisma.sendGridContactSyncRun.findFirst({
+        where: { status: "FAILED" },
+        orderBy: { updatedAt: "desc" },
+        select: { updatedAt: true },
+      }),
+      prisma.sendGridContactSyncRun.aggregate({
+        where: nonArchivedWhere,
+        _sum: { excludedSuppressedCount: true, warningCount: true },
       }),
     ]);
 
@@ -706,9 +785,13 @@ async function buildSendGridContactSyncSnapshot(): Promise<EmailCommandCenterSna
       runsApprovedCount: runsApprovedAwaitingExecutionCount,
       runsSyncedCount,
       runsFailedCount,
+      runsArchivedCount,
+      sumExcludedSuppressedNonArchived: pipelineSums._sum.excludedSuppressedCount ?? 0,
+      sumWarningCountNonArchived: pipelineSums._sum.warningCount ?? 0,
       latestSyncedAtIso: latestSynced?.syncedAt?.toISOString() ?? null,
       latestSyncedProviderJobId,
       latestSyncedProviderStatus,
+      latestFailedAtIso: latestFailed?.updatedAt?.toISOString() ?? null,
       readinessWarningsSample: readiness.warnings.slice(0, 4),
     };
   } catch {
@@ -895,7 +978,9 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
   const localContactImportDbVerified =
     allEmailCommandCenterMigrationsApplied === true && importSnap.dbSliceReachable;
 
+  const dbHostKindLive = classifyDatabaseUrlHostKindForOperatorGate();
   const operatorGate: EmailCommandCenterOperatorGate = {
+    ...buildHostedDbOperatorGateExtension(dbHostKindLive),
     cockpitDbReachable: true,
     emailCommandCenterMigrations,
     allEmailCommandCenterMigrationsApplied,
@@ -912,6 +997,7 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
     preflightCliHint: "npm run email:command-center:preflight",
     dbDiagnoseCliHint: "npm run email:db:diagnose",
     importGateCliHint: "npm run email:contact-import:gate",
+    databaseUrlHostKind: dbHostKindLive,
   };
 
   const automationPolicyEval = evaluateAllAutomationPolicies({

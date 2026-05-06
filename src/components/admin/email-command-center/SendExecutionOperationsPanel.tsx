@@ -8,7 +8,13 @@ import {
   runEmailSendExecutionPreflightAction,
   sendEmailSendGridTestAction,
 } from "@/app/admin/email-send-execution-actions";
+import { CopyPreflightSummaryButton } from "@/components/admin/email-command-center/CopyPreflightSummaryButton";
+import { EccBlockedBecausePanel, EccEmptyState } from "@/components/admin/email-command-center/ecc-operator-ux";
 import { EMAIL_SEND_FINAL_CONFIRMATION_PHRASE } from "@/lib/email-command-center/send-execution";
+import {
+  parsePreflightCheckRows,
+  parsePreflightRecipientBreakdown,
+} from "@/lib/email-command-center/send-execution-preflight-json";
 import type { EmailCommandCenterSnapshot } from "@/lib/email-command-center/read-model";
 import type { MessageStudioDraftListRow } from "@/lib/email-command-center/message-studio-drafts";
 import type { EmailSendExecution, EmailSendRecipient, MessageStudioDraftStatus } from "@prisma/client";
@@ -46,20 +52,43 @@ export type SendExecutionOperationsPanelProps = {
   };
 };
 
-function parsePreflightChecks(preflightJson: unknown): { id: string; ok: boolean; detail: string }[] {
-  if (!preflightJson || typeof preflightJson !== "object" || Array.isArray(preflightJson)) return [];
-  const checks = (preflightJson as { checks?: unknown }).checks;
-  if (!Array.isArray(checks)) return [];
-  return checks
-    .map((c) => {
-      if (!c || typeof c !== "object") return null;
-      const o = c as { id?: unknown; ok?: unknown; detail?: unknown };
-      const id = typeof o.id === "string" ? o.id : "?";
-      const ok = o.ok === true;
-      const detail = typeof o.detail === "string" ? o.detail : "";
-      return { id, ok, detail };
-    })
-    .filter((x): x is { id: string; ok: boolean; detail: string } => x !== null);
+function buildPreflightExportSummary(params: {
+  executionId: string;
+  status: string;
+  checks: ReturnType<typeof parsePreflightCheckRows>;
+  breakdown: ReturnType<typeof parsePreflightRecipientBreakdown>;
+}): string {
+  const lines = [
+    "EMAIL-SEND-EXECUTION-PREFLIGHT-HARDENING-1.0",
+    `Execution: ${params.executionId}`,
+    `Status: ${params.status}`,
+    "",
+    "--- Checks ---",
+    ...params.checks.map((c) => {
+      const tail = [
+        !c.ok && c.whyFailed ? `  Why: ${c.whyFailed}` : "",
+        !c.ok && c.fixHref ? `  Fix: ${c.fixLabel ?? "Open"} → ${c.fixHref}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n");
+      return `${c.ok ? "PASS" : "FAIL"}\t${c.id}\t${c.detail}${tail ? `\n${tail}` : ""}`;
+    }),
+    "",
+    "--- Recipient breakdown ---",
+    params.breakdown
+      ? [
+          `Audience matched profiles: ${params.breakdown.audienceMatchedProfiles}`,
+          `Candidates with valid email: ${params.breakdown.candidatesWithValidEmail}`,
+          `Profiles missing email: ${params.breakdown.profilesMissingEmail}`,
+          `Excluded (suppressed): ${params.breakdown.excludedSuppressed}`,
+          `Excluded (import consent / source warning): ${params.breakdown.excludedMissingConsentSource}`,
+          `Final eligible (READY): ${params.breakdown.finalEligible}`,
+        ].join("\n")
+      : "(no breakdown — run preflight)",
+    "",
+    "No send performed. Snapshot only.",
+  ];
+  return lines.join("\n");
 }
 
 function noticeLabel(notice: string): string {
@@ -91,6 +120,17 @@ export function SendExecutionOperationsPanel({
   const defaultSyncRunId = query.sendGridContactSyncRunId ?? "";
   const testMailReady = se.sendGridMailTestReady;
   const broadcastMailReady = se.sendGridMailBroadcastReady;
+
+  const preflightRows = detail ? parsePreflightCheckRows(detail.preflightJson) : [];
+  const recipientBreakdown = detail ? parsePreflightRecipientBreakdown(detail.preflightJson) : null;
+  const preflightExportText = detail
+    ? buildPreflightExportSummary({
+        executionId: detail.id,
+        status: detail.status,
+        checks: preflightRows,
+        breakdown: recipientBreakdown,
+      })
+    : "";
 
   return (
     <div id="ops" className="min-w-0 max-w-5xl scroll-mt-24 space-y-4">
@@ -154,8 +194,14 @@ export function SendExecutionOperationsPanel({
             <tbody>
               {executions.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="px-2 py-3 text-kelly-text/60">
-                    No executions yet — create one from an approved shared draft below.
+                  <td colSpan={7} className="px-2 py-3">
+                    <EccEmptyState
+                      why="No EmailSendExecution rows yet"
+                      next="Create a draft execution from a shared Message Studio draft in APPROVED_FOR_SEND_GOVERNANCE, an ACTIVE audience, and (for broadcast) a SYNCED contact sync run."
+                      safety="Queue APPROVED does not send mail — only this governed console may call SendGrid after preflight + explicit approvals."
+                      href="/admin/workbench/email-command-center/message-studio#shared-drafts"
+                      linkLabel="Open Message Studio → shared drafts"
+                    />
                   </td>
                 </tr>
               ) : (
@@ -195,6 +241,23 @@ export function SendExecutionOperationsPanel({
           can prefill <code className="text-[9px]">draftId</code>. Choose an <strong>ACTIVE</strong> audience and a{" "}
           <strong>SYNCED</strong> contact sync run for broadcast preflight.
         </p>
+        <EccBlockedBecausePanel
+          reasons={[
+            ...(drafts.length === 0
+              ? [
+                  "No shared draft selected — promote or create a server draft in Message Studio (#shared-drafts) before execution can attach copy.",
+                ]
+              : []),
+            ...(audiences.length === 0
+              ? ["No audience selected — activate an EmailAudienceDefinition in Audience Studio (ACTIVE status)."]
+              : []),
+            ...(syncedRuns.length === 0
+              ? [
+                  "No SYNCED SendGrid contact sync run on file — broadcast preflight will block until a governed upsert completes on SendGrid Foundation.",
+                ]
+              : []),
+          ]}
+        />
         <form action={createEmailSendExecutionDraftAction} className="mt-2 grid gap-2 sm:grid-cols-2">
           <label className="text-[10px] text-kelly-text/80 sm:col-span-2">
             Shared draft (Message Studio)
@@ -295,24 +358,61 @@ export function SendExecutionOperationsPanel({
                 Run preflight
               </button>
             </form>
-            <ul className="mt-2 space-y-1 rounded border border-kelly-text/10 bg-white/80 p-2 font-body text-[10px]">
-              {parsePreflightChecks(detail.preflightJson).length === 0 ? (
+            <ul className="mt-2 space-y-2 rounded border border-kelly-text/10 bg-white/80 p-2 font-body text-[10px]">
+              {preflightRows.length === 0 ? (
                 <li className="text-kelly-text/60">No preflight record yet — run preflight.</li>
               ) : (
-                parsePreflightChecks(detail.preflightJson).map((c) => (
-                  <li key={c.id} className={c.ok ? "text-emerald-900" : "text-rose-900"}>
-                    <span className="font-bold">{c.ok ? "PASS" : "FAIL"}</span> · {c.id}: {c.detail}
+                preflightRows.map((c) => (
+                  <li key={c.id} className={`rounded border px-2 py-1 ${c.ok ? "border-emerald-200/80 text-emerald-950" : "border-rose-200/90 text-rose-950"}`}>
+                    <div>
+                      <span className="font-bold">{c.ok ? "PASS" : "FAIL"}</span> · <span className="font-mono text-[9px]">{c.id}</span>
+                      <span className="text-kelly-text/85"> — {c.detail}</span>
+                    </div>
+                    {!c.ok && c.whyFailed ? <p className="mt-1 text-[9px] leading-snug text-rose-950/95">Why: {c.whyFailed}</p> : null}
+                    {!c.ok && c.fixHref ? (
+                      <p className="mt-1">
+                        <Link href={c.fixHref} className="font-bold text-kelly-forest underline">
+                          {c.fixLabel ?? "Open fix path"}
+                        </Link>
+                      </p>
+                    ) : null}
                   </li>
                 ))
               )}
             </ul>
+            {recipientBreakdown ? (
+              <div className="mt-2 rounded border border-kelly-text/10 bg-kelly-page/40 px-2 py-2 font-body text-[10px] text-kelly-navy">
+                <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/55">Recipient breakdown (preflight scan)</p>
+                <ul className="mt-1 grid gap-0.5 sm:grid-cols-2">
+                  <li>
+                    Audience matched profiles: <span className="font-bold tabular-nums">{recipientBreakdown.audienceMatchedProfiles}</span>
+                  </li>
+                  <li>
+                    Candidates (valid email): <span className="font-bold tabular-nums">{recipientBreakdown.candidatesWithValidEmail}</span>
+                  </li>
+                  <li>
+                    Missing email: <span className="font-bold tabular-nums">{recipientBreakdown.profilesMissingEmail}</span>
+                  </li>
+                  <li>
+                    Excluded (suppressed): <span className="font-bold tabular-nums">{recipientBreakdown.excludedSuppressed}</span>
+                  </li>
+                  <li>
+                    Excluded (consent / source): <span className="font-bold tabular-nums">{recipientBreakdown.excludedMissingConsentSource}</span>
+                  </li>
+                  <li>
+                    Final eligible (READY): <span className="font-bold tabular-nums">{recipientBreakdown.finalEligible}</span>
+                  </li>
+                </ul>
+              </div>
+            ) : null}
+            <CopyPreflightSummaryButton text={preflightExportText} />
             <p className="mt-2 font-body text-[10px] text-kelly-text/70">
-              Candidate {detail.candidateRecipientCount} · suppressed {detail.suppressedRecipientCount} · final{" "}
+              DB counts (execution row): candidate {detail.candidateRecipientCount} · suppressed {detail.suppressedRecipientCount} · final{" "}
               {detail.finalRecipientCount}
               {detail.errorSafe ? (
                 <>
                   {" "}
-                  · <span className="font-semibold text-rose-900">Error:</span> {detail.errorSafe}
+                  · <span className="font-semibold text-rose-900">Last error:</span> {detail.errorSafe}
                 </>
               ) : null}
             </p>

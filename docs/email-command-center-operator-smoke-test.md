@@ -4,6 +4,8 @@
 **Lane:** `RedDirt/` only · **Division:** Comms / Email Workflow Intelligence  
 **Purpose:** Manual QA path to confirm every Email Command Center surface loads, governance copy is visible, and **no send execution** appears in these routes.
 
+**Companion:** **[`email-command-center-operator-manual.md`](./email-command-center-operator-manual.md)** — how staff run these surfaces **day to day** (this smoke test is **click-order QA**, not the full manual).
+
 **Rules:** Use fake data only (`@example.com`, placeholder text). Do not paste secrets. **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** must remain **false** (do not change in code during this test).
 
 ---

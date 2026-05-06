@@ -11,6 +11,7 @@ import {
   buildServerDraftFromLocalDraftPayload,
   createMessageStudioDraftRevision,
   getMessageStudioDraft,
+  patchMessageStudioDraftWorkflow,
   promoteLocalDraftPayloadToServerDraft,
   serverDraftRowToLocalDraft,
   updateMessageStudioDraft,
@@ -114,6 +115,30 @@ export async function updateServerMessageDraftAction(
     await createMessageStudioDraftRevision(id, revisionNote, actorId);
   }
 
+  revalidateMessageStudioSurfaces();
+  return { ok: true };
+}
+
+export async function patchMessageStudioDraftWorkflowAction(
+  fd: FormData,
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  await requireAdminAction();
+  const actorId = await getAdminActorUserId();
+  const id = trimFd(fd, "serverDraftId");
+  const statusRaw = trimFd(fd, "nextStatus");
+  const nextStatus = parseServerStatus(statusRaw);
+  if (!id || !nextStatus) return { ok: false, error: "Missing server draft id or status." };
+  try {
+    await patchMessageStudioDraftWorkflow({
+      id,
+      status: nextStatus,
+      updatedByUserId: actorId,
+      assignedReviewerUserId: undefined,
+    });
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : "Update failed.";
+    return { ok: false, error: msg };
+  }
   revalidateMessageStudioSurfaces();
   return { ok: true };
 }

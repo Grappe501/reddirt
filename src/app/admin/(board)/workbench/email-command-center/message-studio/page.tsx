@@ -1,5 +1,6 @@
 import { MessageStudioView } from "@/components/admin/email-command-center/MessageStudioView";
 import { listMessageStudioDrafts } from "@/lib/email-command-center/message-studio-drafts";
+import { getEmailCommandCenterSnapshot } from "@/lib/email-command-center/read-model";
 import { isOpenAIConfigured } from "@/lib/openai/client";
 
 export const dynamic = "force-dynamic";
@@ -14,7 +15,10 @@ export default async function MessageStudioPage({ searchParams }: Props) {
     const v = sp[k];
     return typeof v === "string" ? v : undefined;
   };
-  const serverDraftRows = await listMessageStudioDrafts().catch(() => []);
+  const [serverDraftRows, snapshot] = await Promise.all([
+    listMessageStudioDrafts({ includeArchived: true }).catch(() => []),
+    getEmailCommandCenterSnapshot(),
+  ]);
   return (
     <MessageStudioView
       querySource={q("source")}
@@ -23,6 +27,7 @@ export default async function MessageStudioPage({ searchParams }: Props) {
       queryImportBatchId={q("importBatchId")}
       openAiServerConfigured={isOpenAIConfigured()}
       serverDraftRows={serverDraftRows}
+      snapshot={snapshot}
     />
   );
 }

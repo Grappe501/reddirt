@@ -4,7 +4,7 @@
 **Lane:** `RedDirt/` only · **Division:** Comms / Email Workflow Intelligence  
 **Purpose:** Lock **operator-complete, execution-gated** posture: route health, **safe-now vs blocked**, **no-send** doctrine, first-run + staging discipline, heuristic scan. **Not** a security audit.
 
-**Companion:** [`email-command-center-first-run-operator-checklist.md`](./email-command-center-first-run-operator-checklist.md) · [`email-command-center-selective-staging-guide.md`](./email-command-center-selective-staging-guide.md) · [`email-command-center-route-inventory.md`](./email-command-center-route-inventory.md) · [`email-command-center-production-qa-closeout.md`](./email-command-center-production-qa-closeout.md)
+**Companion:** **[`email-command-center-operator-manual.md`](./email-command-center-operator-manual.md)** (staff daily manual) · **[`email-command-center-morning-upgrade-closeout.md`](./email-command-center-morning-upgrade-closeout.md)** (morning verify log after stacked upgrades) · [`email-command-center-first-run-operator-checklist.md`](./email-command-center-first-run-operator-checklist.md) · [`email-command-center-selective-staging-guide.md`](./email-command-center-selective-staging-guide.md) · [`email-command-center-route-inventory.md`](./email-command-center-route-inventory.md) · [`email-command-center-production-qa-closeout.md`](./email-command-center-production-qa-closeout.md)
 
 ---
 
@@ -19,6 +19,7 @@
 
 ## What is safe to use now
 
+- **Operator manual:** **[`email-command-center-operator-manual.md`](./email-command-center-operator-manual.md)** — canonical **staff** workflows (not a demo); read with this hardening doc for **safe-now vs blocked** truth.  
 - **Navigation + doctrine:** Cockpit, **Daily** (`/daily`), **map**, **readiness**, **send-execution** — always safe to open; DB may change **counts** only.  
 - **Queue:** List + item detail for triage, AI advisory, profile panels — **no** send from item.  
 - **Gmail:** Monitor + **metadata** review → **manual** queue create — safe when OAuth configured; still **no** body store / **no** auto-queue from Pub/Sub in this lane’s contract.  
@@ -155,4 +156,4 @@ Known **integration** seams (outside ECC UI) may still **warn** — typically **
 
 ---
 
-*Last updated: **EMAIL-COMMAND-CENTER-PRODUCTION-QA-CLOSEOUT-1.0** — companion **[`email-command-center-production-qa-closeout.md`](./email-command-center-production-qa-closeout.md)**; local **2026-05-06** diagnose **green**; **hosted** Kelly-Grappe-App gate still **operator-owned**.*
+*Last updated: **EMAIL-COMMAND-CENTER-MORNING-QA-CLOSEOUT-1.0** — **[`email-command-center-morning-upgrade-closeout.md`](./email-command-center-morning-upgrade-closeout.md)** (diagnose + typecheck + check + no-send-scan); staff manual + launch hardening cross-links; **hosted** Kelly-Grappe-App gate still **operator-owned**.*

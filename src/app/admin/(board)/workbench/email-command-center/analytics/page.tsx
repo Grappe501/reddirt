@@ -1,4 +1,5 @@
 import { AnalyticsDeliverabilityView } from "@/components/admin/email-command-center/AnalyticsDeliverabilityView";
+import { buildEmailAnalyticsOperatorDrilldown } from "@/lib/email-command-center/analytics-operator-drilldown";
 import { getEmailCommandCenterSnapshot } from "@/lib/email-command-center/read-model";
 import { listSendGridSuppressionSummary } from "@/lib/email-command-center/sendgrid-foundation";
 
@@ -18,13 +19,17 @@ export default async function EmailCommandCenterAnalyticsPage({
   searchParams?: Promise<Search>;
 }) {
   const sp = (await searchParams) ?? {};
-  const snapshot = await getEmailCommandCenterSnapshot();
+  const [snapshot, analyticsOperatorDrilldown] = await Promise.all([
+    getEmailCommandCenterSnapshot(),
+    buildEmailAnalyticsOperatorDrilldown(),
+  ]);
   const suppressionByType = snapshot.sendGridFoundation.dbReachable
     ? await listSendGridSuppressionSummary()
     : [];
   return (
     <AnalyticsDeliverabilityView
       snapshot={snapshot}
+      analyticsOperatorDrilldown={analyticsOperatorDrilldown}
       suppressionByType={suppressionByType}
       reconcileNotice={firstString(sp.reconcileNotice)}
       reconcileError={firstString(sp.error)}

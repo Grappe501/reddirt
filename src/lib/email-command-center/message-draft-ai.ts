@@ -2,6 +2,7 @@ import { z } from "zod";
 import { getOpenAIClient, getOpenAIConfigFromEnv, isOpenAIConfigured, formatOpenAIErrorForClient } from "@/lib/openai/client";
 import {
   buildCampaignVoicePromptExcerpt,
+  mergeModelSourceLimitations,
   type MessageStudioCampaignVoiceSettings,
 } from "@/lib/email-command-center/campaign-voice";
 
@@ -143,7 +144,16 @@ export async function generateCampaignVoiceEmailDraft(
     });
     const raw = res.choices[0]?.message?.content?.trim() ?? "";
     if (!raw) return { ok: false, error: "OpenAI returned empty content." };
-    const result = parseJsonResult(raw);
+    const parsed = parseJsonResult(raw);
+    const draftSlice = {
+      audienceNote: params.audienceNote,
+      complianceNotes: params.complianceNotes,
+      body: params.existingBody,
+    };
+    const result = {
+      ...parsed,
+      sourceLimitations: mergeModelSourceLimitations(params.campaignVoice, draftSlice, parsed.sourceLimitations),
+    };
     return { ok: true, result };
   } catch (e) {
     return { ok: false, error: formatOpenAIErrorForClient(e) };
@@ -156,6 +166,8 @@ export type ReviseCampaignVoiceDraftParams = {
   subject: string;
   campaignVoice: MessageStudioCampaignVoiceSettings;
   audienceNote: string;
+  /** Optional; improves deterministic source-limitation merge when present */
+  complianceNotes?: string;
 };
 
 function revisionInstruction(mode: MessageStudioRevisionMode): string {
@@ -220,7 +232,16 @@ export async function reviseCampaignVoiceEmailDraft(
     });
     const raw = res.choices[0]?.message?.content?.trim() ?? "";
     if (!raw) return { ok: false, error: "OpenAI returned empty content." };
-    const result = parseJsonResult(raw);
+    const parsed = parseJsonResult(raw);
+    const draftSlice = {
+      audienceNote: params.audienceNote,
+      complianceNotes: params.complianceNotes ?? "",
+      body: params.body,
+    };
+    const result = {
+      ...parsed,
+      sourceLimitations: mergeModelSourceLimitations(params.campaignVoice, draftSlice, parsed.sourceLimitations),
+    };
     return { ok: true, result };
   } catch (e) {
     return { ok: false, error: formatOpenAIErrorForClient(e) };

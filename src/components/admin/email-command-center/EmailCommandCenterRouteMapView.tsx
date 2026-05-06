@@ -123,6 +123,16 @@ const ROUTE_CARDS: {
     safety: "Suppressions must gate future sends.",
   },
   {
+    name: "Hosted DB readiness assistant",
+    path: `${ECC}/readiness/hosted-db`,
+    status: "live",
+    does: "EMAIL-HOSTED-DB-READINESS-ASSISTANT-1.0 — DATABASE_URL/DIRECT_URL presence + parse + host classification, DB reachability, migration + import gate snapshot, copyable CLI snippets (no secrets).",
+    doesNot: "Edit env, run migrations, import CSV, or print connection string values.",
+    upstream: "process.env DATABASE_URL/DIRECT_URL (names + parse only), getEmailCommandCenterSnapshot.operatorGate",
+    downstream: "Operator shell gates on hosted Kelly-Grappe-App Supabase; docs/deployment.md",
+    safety: "Wrong Supabase project ref = wrong DB — verify Reference ID in dashboard.",
+  },
+  {
     name: "Message Studio",
     path: `${ECC}/message-studio`,
     status: "live",
@@ -173,6 +183,9 @@ export function EmailCommandCenterRouteMapView() {
         </Link>
         <Link href={`${ECC}/readiness`} className="text-xs font-bold text-kelly-forest hover:underline">
           Readiness checklist
+        </Link>
+        <Link href={`${ECC}/readiness/hosted-db`} className="text-xs font-bold text-violet-800 hover:underline">
+          Hosted DB assistant
         </Link>
         <Link href={`${ECC}/send-execution`} className="text-xs text-kelly-text/60 hover:underline">
           Send execution governance

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { EccOperatorPageChrome } from "@/components/admin/email-command-center/ecc-operator-ux";
 import type { EmailCommandCenterSnapshot } from "@/lib/email-command-center/read-model";
 
 const ECC = "/admin/workbench/email-command-center";
@@ -250,8 +251,22 @@ export function SendExecutionGovernanceView({ snapshot }: SendExecutionGovernanc
   const sharedDraftPrecheckStatus: GateStatus =
     !ms.dbReachable ? "partial" : ms.approvedForSendGovernance > 0 ? "ready" : ms.totalActiveSharedDrafts > 0 ? "partial" : "future";
 
+  const sendPacketBlocked: string[] = [];
+  if (ms.dbReachable && ms.approvedForSendGovernance === 0) {
+    sendPacketBlocked.push(
+      "No shared draft is APPROVED_FOR_SEND_GOVERNANCE — build send packet in Message Studio (#send-packet-builder) after editorial sign-off.",
+    );
+  }
+
   return (
     <div className="min-w-0 max-w-5xl space-y-4">
+      <EccOperatorPageChrome
+        snapshot={snapshot}
+        surface="send_execution"
+        nextStripTone="amber"
+        extraBlockedReasons={sendPacketBlocked}
+      />
+
       <div className="flex flex-wrap items-center gap-2">
         <Link href={ECC} className="rounded border border-kelly-text/15 bg-white px-2 py-0.5 text-xs font-semibold text-kelly-slate">
           ← Email Command Center

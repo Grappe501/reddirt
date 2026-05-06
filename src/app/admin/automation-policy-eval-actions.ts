@@ -8,8 +8,8 @@ const ECC_AUTOMATION = "/admin/workbench/email-command-center/automation";
 const ECC_DAILY = "/admin/workbench/email-command-center/daily";
 
 /**
- * EMAIL-AUTOMATION-POLICY-ACTIVATION-1.0 — refresh server-rendered policy evaluation (snapshot-derived).
- * Does not start workers, send mail, or mutate audiences/contacts.
+ * EMAIL-AUTOMATION-POLICY-ACTIVATION-1.0 + EMAIL-AUTOMATION-POLICY-DETAILS-1.0 — refresh server-rendered policy evaluation (snapshot-derived).
+ * `revalidatePath` only — does not start workers, send mail, mutate audiences/contacts, or run cron.
  */
 export async function evaluateAutomationPoliciesNowAction(): Promise<void> {
   await requireAdminAction();

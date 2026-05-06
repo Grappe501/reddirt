@@ -6,6 +6,7 @@ import {
   EmailWorkflowSpamDisposition,
   EmailWorkflowStatus,
 } from "@prisma/client";
+import { EccOperatorPageChrome } from "@/components/admin/email-command-center/ecc-operator-ux";
 import { CreateEmailWorkflowItemForm } from "@/components/admin/workbench/CreateEmailWorkflowItemForm";
 import { WorkbenchPill } from "@/components/admin/workbench/WorkbenchPill";
 import {
@@ -17,6 +18,7 @@ import {
   listEmailWorkflowItems,
 } from "@/lib/email-workflow/queries";
 import type { EmailWorkflowListFilters } from "@/lib/email-workflow/types";
+import { getEmailCommandCenterSnapshot } from "@/lib/email-command-center/read-model";
 
 const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
 
@@ -53,15 +55,20 @@ export default async function EmailWorkflowQueuePage({ searchParams }: Props) {
     ...(spamDisposition ? { spamDisposition } : {}),
     ...(assignee ? { assignedState: assignee } : {}),
   };
-  const [items, summary] = await Promise.all([
+  const [items, summary, eccSnapshot] = await Promise.all([
     listEmailWorkflowItems({ take: 250, filters }),
     getEmailWorkflowQueueSummary(filters),
+    getEmailCommandCenterSnapshot(),
   ]);
   const needsAttention = items.filter((i) => EMAIL_WORKFLOW_NEEDS_ATTENTION_STATUSES.includes(i.status));
   const remaining = items.filter((i) => !EMAIL_WORKFLOW_NEEDS_ATTENTION_STATUSES.includes(i.status));
 
   return (
     <div className="min-w-0">
+      <div className="mb-3 px-1">
+        <EccOperatorPageChrome snapshot={eccSnapshot} surface="email_queue" />
+      </div>
+
       <div className="mb-2 flex flex-wrap items-center justify-between gap-2 border-b border-kelly-text/10 bg-kelly-page/90 px-1 py-1.5">
         <div className="flex flex-wrap items-center gap-2">
           <Link

@@ -11,11 +11,5 @@ export default async function AutomationStudioPage({
   const sp = (await searchParams) ?? {};
   const notice = typeof sp.notice === "string" ? sp.notice : undefined;
   const snapshot = await getEmailCommandCenterSnapshot();
-  return (
-    <AutomationStudioView
-      cockpitDbReachable={snapshot.operatorGate.cockpitDbReachable}
-      policyEval={snapshot.automationPolicyEval}
-      evalNotice={notice}
-    />
-  );
+  return <AutomationStudioView snapshot={snapshot} evalNotice={notice} />;
 }

@@ -4,7 +4,7 @@
 **Lane:** `RedDirt/` only  
 **Purpose:** **21-step** first pass on a machine you treat as **production posture** for Email Command Center (not demo mode). **No secrets** in this doc.
 
-**Companion:** [`email-command-center-launch-hardening.md`](./email-command-center-launch-hardening.md) · [`email-dashboard-operator-runbook.md`](./email-dashboard-operator-runbook.md) · [`email-command-center-operator-smoke-test.md`](./email-command-center-operator-smoke-test.md)
+**Companion:** [`email-command-center-launch-hardening.md`](./email-command-center-launch-hardening.md) · **[`email-command-center-operator-manual.md`](./email-command-center-operator-manual.md)** (daily staff workflows) · [`email-dashboard-operator-runbook.md`](./email-dashboard-operator-runbook.md) · [`email-command-center-operator-smoke-test.md`](./email-command-center-operator-smoke-test.md)
 
 ---
 

@@ -13,12 +13,22 @@ import {
   EMAIL_QUEUE_PATH,
   MESSAGE_STUDIO_PATH,
 } from "@/components/admin/email-command-center/daily-operator-console-paths";
+import { EccOperatorPageChrome } from "@/components/admin/email-command-center/ecc-operator-ux";
 import { computeEditorialReadinessTier } from "@/lib/email-command-center/message-studio-editorial-review-model";
+import type { AutomationPolicyEvalRow } from "@/lib/email-command-center/automation-policy-runner";
 import type { EmailCommandCenterSnapshot } from "@/lib/email-command-center/read-model";
 
 const card =
   "rounded-lg border border-kelly-text/12 bg-gradient-to-b from-white/95 to-kelly-page/90 px-3 py-2 shadow-sm";
 const h3 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/50";
+
+/** EMAIL-AUTOMATION-POLICY-DETAILS-1.0 — alert first, then warn; cap for Daily strip. */
+function topAutomationPolicyWarnings(policies: AutomationPolicyEvalRow[], limit: number): AutomationPolicyEvalRow[] {
+  const nonOk = policies.filter((p) => p.status !== "ok");
+  const rank = (s: AutomationPolicyEvalRow["status"]) => (s === "alert" ? 0 : s === "warn" ? 1 : 2);
+  nonOk.sort((a, b) => rank(a.status) - rank(b.status));
+  return nonOk.slice(0, limit);
+}
 
 function PriorityCard({
   title,
@@ -111,7 +121,12 @@ function buildNextBestActions(snapshot: EmailCommandCenterSnapshot, draftStats: 
   }
   const ms = snapshot.messageStudioSharedDrafts;
   if (ms.dbReachable && ms.needsReview > 0) {
-    out.push("Open Message Studio shared drafts — server rows need review (all operators).");
+    out.push("Open Message Studio Review Queue (#review-queue) — shared server drafts need review (all operators).");
+  }
+  if (ms.dbReachable && ms.approvedForSendGovernance > 0) {
+    out.push(
+      "Open Message Studio Review Queue — shared server draft(s) marked approved for send governance; align Send Packet + Send Execution when an operator is present (still no send from Daily).",
+    );
   }
   if (draftStats && draftStats.sendGovernanceReady > 0) {
     out.push(
@@ -133,16 +148,22 @@ function buildNextBestActions(snapshot: EmailCommandCenterSnapshot, draftStats: 
   }
   if (sc.runsApprovedAwaitingExecutionCount > 0) {
     out.push(
-      "Approved SendGrid contact sync runs await execution — run governed Marketing Contacts upsert on SendGrid Foundation (contacts only; does not send email) or wait for operator.",
+      `Approved SendGrid contact sync runs await execution (${sc.runsApprovedAwaitingExecutionCount}) — open SendGrid Foundation #contact-sync and run governed Marketing Contacts upsert (contacts only; does not send email) when an operator is present.`,
     );
   }
   if (sc.runsFailedCount > 0) {
-    out.push("SendGrid contact sync run(s) in FAILED — review SendGrid Foundation recent runs and safeError in resultJson.");
+    out.push(
+      `SendGrid contact sync run(s) in FAILED (${sc.runsFailedCount}) — open SendGrid Foundation #contact-sync + Analytics #contact-sync-health; read safeError in resultJson, then save a fresh preview run before re-approve.`,
+    );
   }
   if (se.dbReachable && se.needPreflightCount > 0) {
     out.push(
-      "Send Execution — executions in DRAFT or PREFLIGHT_FAILED need preflight (fix draft governance, packet, ACTIVE audience, SYNCED sync run for broadcast, ASM env) before test send — run from Send Execution when an operator is present.",
+      "Send Execution — executions in DRAFT or PREFLIGHT_FAILED need preflight (governance checklist: draft, send packet suppressions/approvals, subject/preheader/body, ACTIVE audience, SYNCED sync run for broadcast, suppression overlap, ASM env) before test send — run from Send Execution when an operator is present.",
     );
+  }
+  if (se.dbReachable && se.preflightFailedCount > 0 && se.preflightFailedTopBlockers.length > 0) {
+    const top = se.preflightFailedTopBlockers.map((b) => `${b.id}×${b.count}`).join(", ");
+    out.push(`Preflight failures — common first blocker checks: ${top} (see Analytics send execution strip).`);
   }
   if (se.dbReachable && se.readyForTestCount > 0) {
     out.push("Send Execution — execution(s) ready for explicit operator test send (one address at a time).");
@@ -191,8 +212,10 @@ function buildNextBestActions(snapshot: EmailCommandCenterSnapshot, draftStats: 
     );
   }
   if (og.cockpitDbReachable && (ape.alertCount > 0 || ape.warnCount > 0)) {
+    const top3 = topAutomationPolicyWarnings(ape.policies, 3);
+    const names = top3.map((p) => p.title).join(" · ");
     out.push(
-      `Automation policy evaluation — ${ape.warnCount} warn(s), ${ape.alertCount} alert(s) from read-only cockpit checks; open Automation Studio → Policy evaluations (no workers started).`,
+      `Automation policies — ${ape.alertCount} alert(s), ${ape.warnCount} warn(s). Top signals: ${names || "(see Automation Studio)"}. Open Automation Studio policy detail anchors from the Daily strip below (read-only; no workers).`,
     );
   }
   if (out.length === 0) {
@@ -237,23 +260,14 @@ export function DailyOperatorConsoleView({ snapshot }: Props) {
   const dbOk = og.cockpitDbReachable;
 
   const nextActions = useMemo(() => buildNextBestActions(snapshot, draftStats), [snapshot, draftStats]);
+  const topPolicyWarnings = useMemo(() => topAutomationPolicyWarnings(ape.policies, 3), [ape.policies]);
 
   const localNeedsReview = draftStats ? draftStats.needsEditorialReview : "—";
   const localSendGov = draftStats ? draftStats.sendGovernanceReady : "—";
 
   return (
     <div className="min-w-0 max-w-6xl space-y-4">
-      <div className="flex flex-wrap items-center gap-2">
-        <Link href={ECC_BASE} className="rounded border border-kelly-text/15 bg-white px-2 py-0.5 text-xs font-semibold text-kelly-slate">
-          ← Email Command Center
-        </Link>
-        <Link href={`${ECC_BASE}/readiness`} className="text-xs font-bold text-kelly-forest hover:underline">
-          Readiness
-        </Link>
-        <Link href={`${ECC_BASE}/map`} className="text-xs text-kelly-text/60 hover:underline">
-          Route map
-        </Link>
-      </div>
+      <EccOperatorPageChrome snapshot={snapshot} surface="daily" showDailyBackLink={false} nextStripTone="emerald" />
 
       <header className="space-y-2 border-b border-kelly-text/10 pb-3">
         <h1 className="font-heading text-2xl font-bold text-kelly-navy">Daily Operator Console</h1>
@@ -282,7 +296,8 @@ export function DailyOperatorConsoleView({ snapshot }: Props) {
           </span>
         </div>
         <p className="font-body text-[10px] text-kelly-text/70">
-          EMAIL-DAILY-OPERATOR-CONSOLE-1.0 — <strong>no demo mode</strong>,{" "}
+          EMAIL-DAILY-OPERATOR-CONSOLE-1.0 + <strong>EMAIL-AUTOMATION-POLICY-DETAILS-1.0</strong> (top 3 policy warn/alert strip) —{" "}
+          <strong>no demo mode</strong>,{" "}
           <code className="rounded bg-kelly-page px-0.5 text-[9px]">EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM</code> unchanged. Shared
           Message Studio draft counts require the server DB (EMAIL-MESSAGE-STUDIO-SERVER-DRAFTS-1.0).
         </p>
@@ -312,28 +327,40 @@ export function DailyOperatorConsoleView({ snapshot }: Props) {
         </ol>
       </section>
 
-      {dbOk && (ape.alertCount > 0 || ape.warnCount > 0) ? (
+      {dbOk ? (
         <section className={`${card} border-violet-200/70 bg-violet-50/85`}>
-          <h2 className={h3}>Automation policy warnings</h2>
+          <h2 className={h3}>Top automation policy warnings</h2>
           <p className="mt-1 font-body text-[10px] text-violet-950/90">
-            EMAIL-AUTOMATION-POLICY-ACTIVATION-1.0 — read-only snapshot checks;{" "}
-            <strong>no workers, no sends</strong>. Evaluated {ape.evaluatedAtIso}.
+            EMAIL-AUTOMATION-POLICY-DETAILS-1.0 — up to <strong>three</strong> highest-severity non-OK policies (alert before warn).
+            Read-only snapshot checks; <strong>no workers, no sends</strong>. Evaluated {ape.evaluatedAtIso}.
           </p>
-          <ul className="mt-2 space-y-1.5 font-body text-[11px] text-violet-950">
-            {ape.policies
-              .filter((p) => p.status !== "ok")
-              .slice(0, 8)
-              .map((p) => (
-                <li key={p.id} className="rounded border border-violet-200/60 bg-white/80 px-2 py-1">
-                  <span className="font-bold">{p.title}</span>{" "}
+          {topPolicyWarnings.length === 0 ? (
+            <p className="mt-2 rounded border border-emerald-200/70 bg-emerald-50/80 px-2 py-1.5 font-body text-[11px] text-emerald-950">
+              All automation policies report <strong>OK</strong> on this snapshot.
+            </p>
+          ) : (
+            <ol className="mt-2 list-inside list-decimal space-y-2 font-body text-[11px] text-violet-950">
+              {topPolicyWarnings.map((p) => (
+                <li key={p.id} className="rounded border border-violet-200/60 bg-white/80 px-2 py-1.5">
+                  <Link
+                    href={`${ECC_BASE}/automation#policy-detail-${p.id}`}
+                    className="font-bold text-kelly-forest underline visited:text-kelly-forest"
+                  >
+                    {p.title}
+                  </Link>{" "}
                   <span className="text-[10px] uppercase text-violet-800/90">({p.status})</span>
+                  <span className="mt-0.5 block text-[10px] text-violet-950/95">{p.recommendedActionSafe}</span>
                   <span className="mt-0.5 block font-mono text-[9px] text-violet-900/80">{p.detailSafe}</span>
                 </li>
               ))}
-          </ul>
-          <p className="mt-2 font-body text-[10px] text-violet-900">
+            </ol>
+          )}
+          <p className="mt-2 flex flex-wrap gap-x-3 gap-y-1 font-body text-[10px] text-violet-900">
+            <Link href={`${ECC_BASE}/automation#automation-policy-details`} className="font-bold underline">
+              Automation Studio → Policy detail
+            </Link>
             <Link href={`${ECC_BASE}/automation`} className="font-bold underline">
-              Open Automation Studio → Policy evaluations
+              Full policy table
             </Link>
           </p>
         </section>
@@ -424,7 +451,7 @@ export function DailyOperatorConsoleView({ snapshot }: Props) {
           <PriorityCard
             title="Contact sync — approved awaiting upsert"
             value={sc.runsApprovedAwaitingExecutionCount}
-            href={sc.path}
+            href={`${ECC_BASE}/sendgrid#contact-sync`}
             sub="Awaiting Marketing Contacts upsert (no send)"
             degraded={!dbOk || !sc.dbReachable}
           />
@@ -438,8 +465,22 @@ export function DailyOperatorConsoleView({ snapshot }: Props) {
           <PriorityCard
             title="Contact sync — FAILED runs"
             value={sc.runsFailedCount}
-            href={sc.path}
-            sub="Needs operator review"
+            href={`${ECC_BASE}/analytics#contact-sync-health`}
+            sub="Rollup on Analytics; fix on SendGrid #contact-sync"
+            degraded={!dbOk || !sc.dbReachable}
+          />
+          <PriorityCard
+            title="Contact sync — archived rows"
+            value={sc.runsArchivedCount}
+            href={`${sc.path}`}
+            sub="Historical SendGridContactSyncRun"
+            degraded={!dbOk || !sc.dbReachable}
+          />
+          <PriorityCard
+            title="Contact sync — Σ suppressed (non-archived)"
+            value={sc.sumExcludedSuppressedNonArchived}
+            href={`${ECC_BASE}/analytics#contact-sync-health`}
+            sub="Preview pipeline totals"
             degraded={!dbOk || !sc.dbReachable}
           />
           <PriorityCard
@@ -459,7 +500,12 @@ export function DailyOperatorConsoleView({ snapshot }: Props) {
           <PriorityCard
             title="Send execution — preflight failed"
             value={se.preflightFailedCount}
-            href={`${ECC_BASE}/send-execution#ops`}
+            href={`${ECC_BASE}/analytics#send-execution-preflight`}
+            sub={
+              se.preflightFailedTopBlockers.length
+                ? `Top first-fail checks: ${se.preflightFailedTopBlockers.map((b) => `${b.id}×${b.count}`).join(" · ")}`
+                : "Analytics → send execution preflight strip"
+            }
             degraded={!dbOk || !se.dbReachable}
           />
           <PriorityCard
@@ -511,8 +557,8 @@ export function DailyOperatorConsoleView({ snapshot }: Props) {
           <PriorityCard
             title="Automation policy — warn + alert"
             value={ape.warnCount + ape.alertCount}
-            href={`${ECC_BASE}/automation`}
-            sub="Read-only evaluation"
+            href={`${ECC_BASE}/automation#automation-policy-details`}
+            sub="Policy detail + top 3 strip on Daily"
             degraded={!dbOk}
           />
           <PriorityCard
@@ -564,19 +610,19 @@ export function DailyOperatorConsoleView({ snapshot }: Props) {
           <PriorityCard
             title="Shared drafts — needs review"
             value={ms.needsReview}
-            href={`${MESSAGE_STUDIO_PATH}#shared-drafts`}
+            href={`${MESSAGE_STUDIO_PATH}#review-queue`}
             degraded={!dbOk || !ms.dbReachable}
           />
           <PriorityCard
             title="Shared drafts — in review"
             value={ms.inReview}
-            href={`${MESSAGE_STUDIO_PATH}#shared-drafts`}
+            href={`${MESSAGE_STUDIO_PATH}#review-queue`}
             degraded={!dbOk || !ms.dbReachable}
           />
           <PriorityCard
             title="Shared drafts — approved for send governance"
             value={ms.approvedForSendGovernance}
-            href={`${MESSAGE_STUDIO_PATH}#shared-drafts`}
+            href={`${MESSAGE_STUDIO_PATH}#review-queue`}
             degraded={!dbOk || !ms.dbReachable}
           />
         </div>
@@ -674,6 +720,12 @@ export function DailyOperatorConsoleView({ snapshot }: Props) {
               </Link>{" "}
               — Send Packet Builder (no-send export; drafts at editorial tier{" "}
               <code className="text-[9px]">send_governance_ready</code> highlighted in stats above).
+            </li>
+            <li>
+              <Link href={`${MESSAGE_STUDIO_PATH}#review-queue`} className="font-bold underline">
+                Shared drafts — Review Queue
+              </Link>{" "}
+              — server workflow columns, filters, and quick actions (no send).
             </li>
             <li>
               <Link href={`${ECC_BASE}/send-execution`} className="font-bold text-kelly-forest underline">

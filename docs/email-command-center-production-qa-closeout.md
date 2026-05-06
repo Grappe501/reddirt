@@ -4,7 +4,7 @@
 **Lane:** `RedDirt/` only · **Division:** Comms / Email Workflow Intelligence  
 **Mode:** Final QA, inventory cross-check, safety verification, staging guidance — **no new product features** in this packet.
 
-**Companion:** [`campaign-email-command-center-progress-ledger.md`](./campaign-email-command-center-progress-ledger.md) · [`email-command-center-route-inventory.md`](./email-command-center-route-inventory.md) · [`email-command-center-launch-hardening.md`](./email-command-center-launch-hardening.md) · [`email-command-center-selective-staging-guide.md`](./email-command-center-selective-staging-guide.md)
+**Companion:** [`campaign-email-command-center-progress-ledger.md`](./campaign-email-command-center-progress-ledger.md) · [`email-command-center-route-inventory.md`](./email-command-center-route-inventory.md) · [`email-command-center-launch-hardening.md`](./email-command-center-launch-hardening.md) · [`email-command-center-selective-staging-guide.md`](./email-command-center-selective-staging-guide.md) · **[`email-command-center-morning-upgrade-closeout.md`](./email-command-center-morning-upgrade-closeout.md)** (follow-on morning verify after stacked upgrades)
 
 ---
 
@@ -22,7 +22,7 @@
 **Ledger rubric (honest %):**
 
 - **~99%** overall if Send Execution is **built** but **no** real sends were operator-tested on the intended stack.
-- **~99.4%** overall when **EMAIL-SEND-EXECUTION-1.0** (governed ops) **plus** **EMAIL-SENDGRID-EVENT-RECIPIENT-RECONCILIATION-1.0** **plus** **EMAIL-GMAIL-PRODUCTION-WATCH-HARDENING-1.0** **plus** **EMAIL-AUTOMATION-POLICY-ACTIVATION-1.0** (read-only policy eval) are **reflected in repo** — still **not** a proof of live mail.
+- **~99.5%** overall when **EMAIL-SEND-EXECUTION-1.0** (governed ops) **plus** **EMAIL-SENDGRID-EVENT-RECIPIENT-RECONCILIATION-1.0** **plus** **EMAIL-GMAIL-PRODUCTION-WATCH-HARDENING-1.0** **plus** **EMAIL-AUTOMATION-POLICY-ACTIVATION-1.0** (read-only policy eval) **plus** stacked doc/operator packets through **EMAIL-COMMAND-CENTER-MORNING-QA-CLOSEOUT-1.0** are **reflected in repo** — still **not** a proof of live mail.
 - **Deployment / Env Readiness** stays **lower** until **hosted** `DATABASE_URL` / `DIRECT_URL` Kelly-Grappe-App chain passes (see ledger layer **14**).
 
 ---
@@ -44,7 +44,7 @@ Primary bar: **[`campaign-email-command-center-progress-ledger.md`](./campaign-e
 | 12. Analytics / Deliverability | **89** | Reconciliation UI + snapshot fields. |
 | 13. Governance / Compliance Rails | **100** | Doctrine + scan + docs. |
 | 14. Deployment / Env Readiness | **88** | **Local** diagnose green this pass; **hosted** verification still required for production claims. |
-| **15. Overall Email Command Center** | **99.4** | Matches shipped packets in ledger intro; **not** operator send proof. |
+| **15. Overall Email Command Center** | **99.5** | Matches shipped packets in ledger intro; **not** operator send proof. |
 
 ---
 

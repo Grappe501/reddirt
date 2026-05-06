@@ -21,8 +21,69 @@ import {
   sendSendGridBroadcastEmail,
   sendSendGridSingleTestEmail,
 } from "@/lib/sendgrid/mail-send";
+import { SEND_PACKET_SUPPRESSION_KEYS } from "@/components/admin/email-command-center/message-studio-send-packet";
+import {
+  firstFailedPreflightCheckId,
+  parsePreflightCheckRows,
+  parsePreflightRecipientBreakdown,
+  type SendExecutionPreflightCheckRow,
+  type SendExecutionPreflightRecipientBreakdown,
+} from "@/lib/email-command-center/send-execution-preflight-json";
+
+export type { SendExecutionPreflightCheckRow, SendExecutionPreflightRecipientBreakdown };
+export { firstFailedPreflightCheckId, parsePreflightCheckRows, parsePreflightRecipientBreakdown };
 
 const PROFILE_CAP = 4000;
+
+const ECC = "/admin/workbench/email-command-center";
+
+const PREFLIGHT_FIX: Partial<Record<string, { fixHref: string; fixLabel: string }>> = {
+  draft: { fixHref: `${ECC}/message-studio#review-queue`, fixLabel: "Message Studio → Review Queue" },
+  draft_status: { fixHref: `${ECC}/message-studio#review-queue`, fixLabel: "Approve draft for send governance" },
+  send_packet: { fixHref: `${ECC}/message-studio#send-packet-builder`, fixLabel: "Send Packet Builder" },
+  send_packet_suppressions: { fixHref: `${ECC}/message-studio#send-packet-builder`, fixLabel: "Complete suppression checklist in packet" },
+  send_packet_approvals: { fixHref: `${ECC}/message-studio#send-packet-builder`, fixLabel: "Complete approval checklist in packet" },
+  subject: { fixHref: `${ECC}/message-studio#shared-drafts`, fixLabel: "Message Studio → shared drafts" },
+  preheader: { fixHref: `${ECC}/message-studio#shared-drafts`, fixLabel: "Message Studio → add preheader on draft" },
+  body: { fixHref: `${ECC}/message-studio#shared-drafts`, fixLabel: "Message Studio → shared drafts" },
+  audience: { fixHref: `${ECC}/audiences`, fixLabel: "Audience Studio" },
+  audience_active: { fixHref: `${ECC}/audiences`, fixLabel: "Activate audience definition" },
+  sync_run: { fixHref: `${ECC}/sendgrid#contact-sync`, fixLabel: "SendGrid Foundation → contact sync" },
+  sync_run_status: { fixHref: `${ECC}/sendgrid#contact-sync`, fixLabel: "Complete SYNCED Marketing upsert run" },
+  sendgrid_broadcast_env: { fixHref: `${ECC}/readiness`, fixLabel: "Readiness (SendGrid env + ASM)" },
+  sendgrid_test_env: { fixHref: `${ECC}/readiness`, fixLabel: "Readiness (SendGrid test env)" },
+  sendgrid_key: { fixHref: `${ECC}/readiness`, fixLabel: "Readiness (API key)" },
+  unsubscribe_asm: { fixHref: `${ECC}/readiness`, fixLabel: "Set SENDGRID_UNSUBSCRIBE_GROUP_ID (ASM)" },
+  sender_identity: { fixHref: `${ECC}/readiness`, fixLabel: "Configure SENDGRID_FROM_EMAIL / FROM_NAME" },
+  import_consent: { fixHref: `${ECC}/message-studio#send-packet-builder`, fixLabel: "Mark import consent reviewed in packet" },
+  suppression_all_candidates: { fixHref: `${ECC}/sendgrid`, fixLabel: "Review suppressions + audience overlap" },
+  recipients: { fixHref: `${ECC}/audiences`, fixLabel: "Audience / email coverage" },
+  governance_final_confirmation: { fixHref: `${ECC}/send-execution`, fixLabel: "Send Execution governance / audit" },
+};
+
+function pushCheck(
+  checks: SendExecutionPreflightCheckRow[],
+  id: string,
+  ok: boolean,
+  detail: string,
+  whyFailed?: string,
+): void {
+  const fix = !ok ? PREFLIGHT_FIX[id] : undefined;
+  const wf = !ok ? (whyFailed?.trim() ? whyFailed : detail) : undefined;
+  checks.push({
+    id,
+    ok,
+    detail,
+    ...(!ok && wf ? { whyFailed: wf } : {}),
+    ...(!ok && fix ? { fixHref: fix.fixHref, fixLabel: fix.fixLabel } : {}),
+  });
+}
+
+function readBoolRecord(packet: Record<string, unknown>, key: string): Record<string, boolean> | null {
+  const v = packet[key];
+  if (!v || typeof v !== "object" || Array.isArray(v)) return null;
+  return v as Record<string, boolean>;
+}
 
 /** Operator must type this exactly (excluding surrounding whitespace) before final SendGrid broadcast. */
 export const EMAIL_SEND_FINAL_CONFIRMATION_PHRASE = "SEND APPROVED";
@@ -246,67 +307,255 @@ export async function runSendExecutionPreflight(sendExecutionId: string, preflig
     throw new Error(`Preflight is not allowed when execution status is ${ex.status}.`);
   }
 
-  const checks: { id: string; ok: boolean; detail: string }[] = [];
-  const fail = (id: string, detail: string) => {
-    checks.push({ id, ok: false, detail });
-  };
-  const pass = (id: string, detail: string) => {
-    checks.push({ id, ok: true, detail });
-  };
+  const checks: SendExecutionPreflightCheckRow[] = [];
+  const broadcast = ex.sendType === "SENDGRID_BROADCAST";
+
+  pushCheck(
+    checks,
+    "governance_final_confirmation",
+    !ex.finalApprovedAt,
+    ex.finalApprovedAt
+      ? "Unexpected: execution already shows final approval timestamp — preflight should not re-run after final approval."
+      : "Final typed confirmation not recorded on this execution (expected until after explicit final approval).",
+    ex.finalApprovedAt
+      ? "This execution row already has finalApprovedAt set. Open governance / audit rather than re-running preflight."
+      : undefined,
+  );
 
   if (!ex.messageStudioDraftId || !ex.messageStudioDraft) {
-    fail("draft", "Shared draft link missing.");
+    pushCheck(
+      checks,
+      "draft",
+      false,
+      "Shared draft link missing.",
+      "EmailSendExecution.messageStudioDraftId is empty — create a new execution from Message Studio so copy and packet attach to a server draft.",
+    );
   } else if (ex.messageStudioDraft.status !== MessageStudioDraftStatus.APPROVED_FOR_SEND_GOVERNANCE) {
-    fail("draft_status", "Draft must be APPROVED_FOR_SEND_GOVERNANCE before preflight.");
+    pushCheck(
+      checks,
+      "draft_status",
+      false,
+      "Draft must be APPROVED_FOR_SEND_GOVERNANCE before preflight.",
+      `Linked Message Studio draft is ${ex.messageStudioDraft.status}. Move it to Approved for send governance in the Review Queue before execution can proceed.`,
+    );
   } else {
-    pass("draft", "Shared draft present and governance-approved.");
+    pushCheck(checks, "draft", true, "Shared draft present and governance-approved.");
   }
 
   const packetOk = isPlainObject(ex.sendPacketJson) && Object.keys(ex.sendPacketJson as object).length > 0;
-  if (!packetOk) fail("send_packet", "sendPacketJson is required on execution (copy from Message Studio Send Packet).");
-  else pass("send_packet", "Send packet JSON present.");
+  if (!packetOk) {
+    pushCheck(
+      checks,
+      "send_packet",
+      false,
+      "sendPacketJson is required on execution (copy from Message Studio Send Packet).",
+      "Execution was created without a send packet snapshot — regenerate in Message Studio Send Packet Builder and create a new execution, or re-save from a workflow that copies packet JSON onto the row.",
+    );
+  } else {
+    pushCheck(checks, "send_packet", true, "Send packet JSON present.");
+  }
 
-  if (!ex.subject?.trim()) fail("subject", "Subject required.");
-  else pass("subject", "Subject present.");
+  if (!ex.subject?.trim()) {
+    pushCheck(checks, "subject", false, "Subject required.", "Subject is empty on the execution row — update the promoted Message Studio draft or recreate the execution after the draft has a subject.");
+  } else {
+    pushCheck(checks, "subject", true, "Subject present.");
+  }
 
-  if (!ex.body?.trim()) fail("body", "Body required.");
-  else pass("body", "Body present.");
+  if (!ex.preheader?.trim()) {
+    pushCheck(
+      checks,
+      "preheader",
+      false,
+      "Preheader required for governed sends.",
+      "Preheader is empty — inbox clients often show unexpected preview text. Add a short preheader on the Message Studio draft and re-promote / update the execution copy.",
+    );
+  } else {
+    pushCheck(checks, "preheader", true, "Preheader present.");
+  }
+
+  if (!ex.body?.trim()) {
+    pushCheck(checks, "body", false, "Body required.", "HTML/text body is empty on the execution — complete body content on the shared draft before preflight.");
+  } else {
+    pushCheck(checks, "body", true, "Body present.");
+  }
 
   const audienceIdMaybe = ex.emailAudienceDefinitionId;
-  if (!audienceIdMaybe) fail("audience", "Audience required.");
-  else pass("audience", "Audience linked.");
+  if (!audienceIdMaybe) {
+    pushCheck(checks, "audience", false, "Audience required.", "No EmailAudienceDefinition is linked — pick an ACTIVE audience when creating the execution.");
+  } else {
+    pushCheck(checks, "audience", true, "Audience linked.");
+  }
 
   const audience = audienceIdMaybe
     ? await prisma.emailAudienceDefinition.findUnique({
         where: { id: audienceIdMaybe },
       })
     : null;
-  if (!audience || audience.status !== "ACTIVE") fail("audience_active", "Audience must be ACTIVE.");
-  else pass("audience_active", "Audience ACTIVE.");
+  if (!audience || audience.status !== "ACTIVE") {
+    pushCheck(
+      checks,
+      "audience_active",
+      false,
+      "Audience must be ACTIVE.",
+      audience
+        ? `Audience “${audience.name}” is ${audience.status}. Activate it in Audience Studio for execution-ready sends.`
+        : "Audience row missing — select a valid ACTIVE definition.",
+    );
+  } else {
+    pushCheck(checks, "audience_active", true, "Audience ACTIVE.");
+  }
+
+  const packet = isPlainObject(ex.sendPacketJson) ? (ex.sendPacketJson as Record<string, unknown>) : {};
+  const suppressionRec = readBoolRecord(packet, "suppressionChecklist");
+  if (broadcast) {
+    if (!suppressionRec) {
+      pushCheck(
+        checks,
+        "send_packet_suppressions",
+        false,
+        "Send packet must include suppressionChecklist (all items acknowledged for broadcast).",
+        "Promote a fresh send packet from Message Studio so suppressionChecklist is stored on the execution JSON.",
+      );
+    } else {
+      const missing = SEND_PACKET_SUPPRESSION_KEYS.filter((k) => suppressionRec[k] !== true);
+      if (missing.length) {
+        pushCheck(
+          checks,
+          "send_packet_suppressions",
+          false,
+          `Suppression checklist incomplete (${missing.length} item(s)).`,
+          `Open Send Packet Builder and check: ${missing.slice(0, 4).join(", ")}${missing.length > 4 ? ", …" : ""}.`,
+        );
+      } else {
+        pushCheck(checks, "send_packet_suppressions", true, "Send packet suppression checklist complete.");
+      }
+    }
+  } else {
+    pushCheck(
+      checks,
+      "send_packet_suppressions",
+      true,
+      "Broadcast-only suppression checklist gate skipped for test execution.",
+    );
+  }
+
+  const approvalRec = readBoolRecord(packet, "approvalChecklist");
+  if (!approvalRec) {
+    pushCheck(
+      checks,
+      "send_packet_approvals",
+      false,
+      "Send packet must include approvalChecklist (operator + comms sign-off).",
+      "Save a send packet snapshot from Message Studio so approvalChecklist is embedded in execution.sendPacketJson.",
+    );
+  } else {
+    const op = approvalRec.operator_reviewed === true;
+    const comms = approvalRec.comms_reviewed === true;
+    const finalBad = approvalRec.final_send_operator_not_authorized === true;
+    if (!op || !comms || finalBad) {
+      pushCheck(
+        checks,
+        "send_packet_approvals",
+        false,
+        "Operator + comms approval roles not resolved in packet (final operator must not be flagged unauthorized).",
+        !op
+          ? "Check “Operator reviewed” on the Send Packet approval checklist."
+          : !comms
+            ? "Check “Comms reviewed” on the Send Packet approval checklist."
+            : "Uncheck or clear “Final send operator not yet authorized” once the correct operator is authorized for downstream test/final steps.",
+      );
+    } else {
+      pushCheck(checks, "send_packet_approvals", true, "Core approval roles resolved in send packet.");
+    }
+  }
+
+  const fromEmailResolved = (ex.fromEmail?.trim() || process.env.SENDGRID_FROM_EMAIL?.trim() || "") !== "";
+  const fromNameResolved = (ex.fromName?.trim() || process.env.SENDGRID_FROM_NAME?.trim() || "") !== "";
+  if (!fromEmailResolved || !fromNameResolved) {
+    pushCheck(
+      checks,
+      "sender_identity",
+      false,
+      "Sender identity incomplete (execution row + SENDGRID_FROM_* fallback).",
+      "Set from email/name on the execution or configure SENDGRID_FROM_EMAIL and SENDGRID_FROM_NAME for the deployment.",
+    );
+  } else {
+    pushCheck(checks, "sender_identity", true, "Sender identity resolves from execution or environment.");
+  }
 
   const mailReadiness = getSendGridMailReadiness();
-  if (ex.sendType === "SENDGRID_BROADCAST") {
+  if (broadcast) {
     if (!mailReadiness.broadcastAllowed) {
-      fail("sendgrid_broadcast_env", mailReadiness.notes.join(" ") || "SendGrid broadcast env incomplete.");
-    } else pass("sendgrid_broadcast_env", "SendGrid broadcast env (key + from + ASM) present.");
+      pushCheck(
+        checks,
+        "sendgrid_broadcast_env",
+        false,
+        mailReadiness.notes.join(" ") || "SendGrid broadcast env incomplete.",
+        "Broadcast needs API key, from email/name, and numeric SENDGRID_UNSUBSCRIBE_GROUP_ID (ASM). Use Readiness + env docs — no send occurs during preflight.",
+      );
+    } else {
+      pushCheck(checks, "sendgrid_broadcast_env", true, "SendGrid broadcast env (key + from + ASM) present.");
+    }
   } else if (ex.sendType === "SENDGRID_TEST") {
     if (!mailReadiness.sendgridApiKeyConfigured || !mailReadiness.fromEmailConfigured || !mailReadiness.fromNameConfigured) {
-      fail("sendgrid_test_env", "Test send requires SENDGRID_API_KEY, SENDGRID_FROM_EMAIL, SENDGRID_FROM_NAME.");
-    } else pass("sendgrid_test_env", "SendGrid test mail env present.");
+      pushCheck(
+        checks,
+        "sendgrid_test_env",
+        false,
+        "Test send requires SENDGRID_API_KEY, SENDGRID_FROM_EMAIL, SENDGRID_FROM_NAME.",
+        "Configure SendGrid test mail env before running test send — preflight records the gap early.",
+      );
+    } else {
+      pushCheck(checks, "sendgrid_test_env", true, "SendGrid test mail env present.");
+    }
   }
 
   const env = getSendGridEnvStatus();
-  if (!env.sendgridApiKeyPresent) fail("sendgrid_key", "SENDGRID_API_KEY required.");
-  else pass("sendgrid_key", "API key present (name only in logs).");
+  if (!env.sendgridApiKeyPresent) {
+    pushCheck(checks, "sendgrid_key", false, "SENDGRID_API_KEY required.", "API key env missing — governed sends cannot call SendGrid until configured.");
+  } else {
+    pushCheck(checks, "sendgrid_key", true, "API key present (name only in logs).");
+  }
 
-  if (ex.sendType === "SENDGRID_BROADCAST") {
+  if (broadcast) {
+    const asm = readAsmGroupId();
+    if (asm === null || Number.isNaN(asm)) {
+      pushCheck(
+        checks,
+        "unsubscribe_asm",
+        false,
+        "Unsubscribe posture unknown — numeric ASM group id missing.",
+        "Set SENDGRID_UNSUBSCRIBE_GROUP_ID so broadcast mail can attach SendGrid unsubscribe groups (required for compliance posture on this path).",
+      );
+    } else {
+      pushCheck(checks, "unsubscribe_asm", true, `Unsubscribe posture known (ASM group id present).`);
+    }
+  } else {
+    pushCheck(checks, "unsubscribe_asm", true, "ASM not required for single-recipient test path.");
+  }
+
+  if (broadcast) {
     if (!ex.sendGridContactSyncRunId) {
-      fail("sync_run", "SYNCED SendGridContactSyncRun required for broadcast.");
+      pushCheck(
+        checks,
+        "sync_run",
+        false,
+        "SYNCED SendGridContactSyncRun required for broadcast.",
+        "Link a contact sync run that has completed Marketing Contacts upsert (SYNCED) so broadcast sends align with the governed list.",
+      );
     } else if (!ex.sendGridContactSyncRun || ex.sendGridContactSyncRun.status !== "SYNCED") {
-      fail("sync_run_status", "Contact sync run must be SYNCED before broadcast preflight.");
-    } else pass("sync_run", "SYNCED contact sync run linked.");
+      pushCheck(
+        checks,
+        "sync_run_status",
+        false,
+        "Contact sync run must be SYNCED before broadcast preflight.",
+        `Selected run status is ${ex.sendGridContactSyncRun?.status ?? "unknown"} — finish approved upsert on SendGrid Foundation or pick a SYNCED run.`,
+      );
+    } else {
+      pushCheck(checks, "sync_run", true, "SYNCED contact sync run linked.");
+    }
   } else if (ex.sendType === "SENDGRID_TEST") {
-    pass("sync_run", "Test execution — SYNCED sync run not required.");
+    pushCheck(checks, "sync_run", true, "Test execution — SYNCED sync run not required.");
   }
 
   const allProfiles = audienceIdMaybe ? await loadAudienceProfilesWithEmail(audienceIdMaybe) : [];
@@ -320,17 +569,22 @@ export async function runSendExecutionPreflight(sendExecutionId: string, preflig
 
   const { allowed: nonSuppressed, excludedSuppressed } = await excludeSuppressedContacts(withEmail);
 
-  const packet = isPlainObject(ex.sendPacketJson) ? (ex.sendPacketJson as Record<string, unknown>) : {};
   const importConsentOk = packet.importListConsentReviewed === true;
   const hasImportSource = withEmail.some(
     (p) => p.source.toLowerCase().includes("import") || p.source.toLowerCase().includes("contact_import"),
   );
   if (hasImportSource && !importConsentOk) {
-    fail("import_consent", "Import-sourced profiles detected — set sendPacketJson.importListConsentReviewed true after review.");
+    pushCheck(
+      checks,
+      "import_consent",
+      false,
+      "Import-sourced profiles detected — set sendPacketJson.importListConsentReviewed true after review.",
+      "Audience includes CONTACT_IMPORT-sourced profiles. Operators must confirm consent/source posture and set importListConsentReviewed on the packet JSON.",
+    );
   } else if (hasImportSource) {
-    pass("import_consent", "Operator acknowledged import list consent in send packet.");
+    pushCheck(checks, "import_consent", true, "Operator acknowledged import list consent in send packet.");
   } else {
-    pass("import_consent", "No import-only source posture flagged.");
+    pushCheck(checks, "import_consent", true, "No import-only source posture flagged.");
   }
 
   let readyCount = 0;
@@ -342,10 +596,49 @@ export async function runSendExecutionPreflight(sendExecutionId: string, preflig
     readyCount += 1;
   }
 
-  if (readyCount === 0) fail("recipients", "No READY recipients after suppression / consent gates.");
-  else pass("recipients", `${readyCount} READY recipient(s).`);
+  const excludedMissingConsent = hasImportSource && !importConsentOk ? nonSuppressed.length : 0;
+
+  if (withEmail.length > 0 && nonSuppressed.length === 0) {
+    pushCheck(
+      checks,
+      "suppression_all_candidates",
+      false,
+      "Every matched email overlaps local SendGrid suppressions — no eligible recipients.",
+      "Review SendGrid suppressions and audience overlap; remove bad addresses or choose a different cohort before send.",
+    );
+  } else {
+    pushCheck(
+      checks,
+      "suppression_all_candidates",
+      true,
+      excludedSuppressed > 0
+        ? `${excludedSuppressed} candidate(s) excluded by local suppression scan; others remain eligible.`
+        : "No local suppression overlap on candidate emails (or no candidates).",
+    );
+  }
+
+  if (readyCount === 0) {
+    pushCheck(
+      checks,
+      "recipients",
+      false,
+      "No READY recipients after suppression / consent gates.",
+      "Fix audience coverage, import-consent flags, or suppression overlap until at least one profile can be marked READY.",
+    );
+  } else {
+    pushCheck(checks, "recipients", true, `${readyCount} READY recipient(s).`);
+  }
 
   const allChecksOk = checks.every((c) => c.ok);
+
+  const recipientBreakdown: SendExecutionPreflightRecipientBreakdown = {
+    audienceMatchedProfiles: allProfiles.length,
+    candidatesWithValidEmail: withEmail.length,
+    profilesMissingEmail: Math.max(0, allProfiles.length - withEmail.length),
+    excludedSuppressed,
+    excludedMissingConsentSource: excludedMissingConsent,
+    finalEligible: readyCount,
+  };
 
   await prisma.emailSendRecipient.deleteMany({ where: { sendExecutionId } });
 
@@ -374,6 +667,9 @@ export async function runSendExecutionPreflight(sendExecutionId: string, preflig
     }
   }
 
+  const failedChecks = checks.filter((c) => !c.ok);
+  const firstFail = failedChecks[0];
+
   await prisma.emailSendExecution.update({
     where: { id: sendExecutionId },
     data: {
@@ -383,13 +679,15 @@ export async function runSendExecutionPreflight(sendExecutionId: string, preflig
       preflightByUserId,
       preflightAt: new Date(),
       preflightJson: {
+        packet: "EMAIL-SEND-EXECUTION-PREFLIGHT-HARDENING-1.0",
         checkedAt: new Date().toISOString(),
         checks,
+        recipientBreakdown,
         automaticSendEnabled: false,
         queueSend: false,
       } as Prisma.InputJsonValue,
       status: allChecksOk ? "READY_FOR_TEST" : "PREFLIGHT_FAILED",
-      errorSafe: allChecksOk ? null : checks.find((c) => !c.ok)?.detail ?? "Preflight failed.",
+      errorSafe: allChecksOk ? null : firstFail?.whyFailed ?? firstFail?.detail ?? "Preflight failed.",
     },
   });
 

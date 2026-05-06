@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { EccOperatorPageChrome } from "@/components/admin/email-command-center/ecc-operator-ux";
 import {
   approveSendGridContactSyncRunAction,
   executeSendGridContactSyncRunAction,
@@ -38,6 +39,25 @@ function summarizeRunResultJson(status: string, resultJson: unknown): string {
   return "—";
 }
 
+/** Last 8 chars only — never log full provider job ids. */
+function safeProviderJobTail(resultJson: unknown): string | null {
+  if (!resultJson || typeof resultJson !== "object" || Array.isArray(resultJson)) return null;
+  const j = resultJson as Record<string, unknown>;
+  if (typeof j.providerJobId === "string" && j.providerJobId.trim()) {
+    const s = j.providerJobId.trim();
+    return s.length <= 8 ? s : `…${s.slice(-8)}`;
+  }
+  if (Array.isArray(j.providerJobIds)) {
+    const ids = (j.providerJobIds as unknown[]).filter(
+      (x): x is string => typeof x === "string" && x.trim().length > 0
+    );
+    if (!ids.length) return null;
+    const s = ids[ids.length - 1].trim();
+    return s.length <= 8 ? s : `…${s.slice(-8)}`;
+  }
+  return null;
+}
+
 function labelHuman(
   k: "draft_only" | "preview_ready" | "active_preview_ready" | "archived"
 ): string {
@@ -68,7 +88,8 @@ export default async function SendGridFoundationPage({
   const events = snap.dbReachable ? await listRecentSendGridEvents(35) : [];
   const supSummary = snap.dbReachable ? await listSendGridSuppressionSummary() : [];
   const syncReadiness = snap.dbReachable ? await getSendGridContactSyncReadiness().catch(() => null) : null;
-  const syncRuns = snap.dbReachable ? await listSendGridContactSyncRuns(12) : [];
+  const syncRuns = snap.dbReachable ? await listSendGridContactSyncRuns(20) : [];
+  const sc = eccSnap.sendGridContactSync;
 
   const exportPreview = previewId && snap.dbReachable ? await buildSendGridContactExportPreview(previewId).catch(() => null) : null;
   const payloadPreview =
@@ -86,6 +107,8 @@ export default async function SendGridFoundationPage({
 
   return (
     <div className="min-w-0 max-w-5xl space-y-4">
+      <EccOperatorPageChrome snapshot={eccSnap} surface="sendgrid" />
+
       <div className="flex flex-wrap items-center gap-2">
         <Link
           href="/admin/workbench/email-command-center"
@@ -253,6 +276,63 @@ export default async function SendGridFoundationPage({
         <h2 className="font-heading text-sm font-bold text-kelly-navy">
           Contact sync (EMAIL-SENDGRID-CONTACT-SYNC-1.1 + UPSERT EXECUTION 1.2)
         </h2>
+        {sc.dbReachable ? (
+          <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="rounded border border-kelly-text/10 bg-kelly-page/60 px-2 py-2">
+              <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/50">Preview runs</p>
+              <p className="mt-0.5 font-heading text-xl font-bold tabular-nums text-kelly-navy">{sc.runsPreviewedCount}</p>
+              <p className="font-body text-[9px] text-kelly-text/65">Status PREVIEWED</p>
+            </div>
+            <div className="rounded border border-amber-200/80 bg-amber-50/70 px-2 py-2">
+              <p className="font-heading text-[9px] font-bold uppercase text-amber-900/80">Approved · awaiting upsert</p>
+              <p className="mt-0.5 font-heading text-xl font-bold tabular-nums text-amber-950">{sc.runsApprovedAwaitingExecutionCount}</p>
+              <p className="font-body text-[9px] text-amber-950/85">Execute on this page when env + gate allow</p>
+            </div>
+            <div className="rounded border border-emerald-200/80 bg-emerald-50/70 px-2 py-2">
+              <p className="font-heading text-[9px] font-bold uppercase text-emerald-900/80">Synced</p>
+              <p className="mt-0.5 font-heading text-xl font-bold tabular-nums text-emerald-950">{sc.runsSyncedCount}</p>
+              <p className="font-body text-[9px] text-emerald-950/85">Marketing Contacts upsert completed</p>
+            </div>
+            <div className="rounded border border-rose-200/80 bg-rose-50/70 px-2 py-2">
+              <p className="font-heading text-[9px] font-bold uppercase text-rose-900/80">Failed</p>
+              <p className="mt-0.5 font-heading text-xl font-bold tabular-nums text-rose-950">{sc.runsFailedCount}</p>
+              <p className="font-body text-[9px] text-rose-950/85">Review safeError in resultJson</p>
+            </div>
+            <div className="rounded border border-kelly-text/10 bg-kelly-fog/50 px-2 py-2">
+              <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/50">Archived</p>
+              <p className="mt-0.5 font-heading text-xl font-bold tabular-nums text-kelly-navy">{sc.runsArchivedCount}</p>
+              <p className="font-body text-[9px] text-kelly-text/65">Historical rows only</p>
+            </div>
+            <div className="rounded border border-kelly-text/10 bg-white/90 px-2 py-2 sm:col-span-2 lg:col-span-1">
+              <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/50">Suppression exclusions (Σ non-archived)</p>
+              <p className="mt-0.5 font-heading text-xl font-bold tabular-nums text-kelly-navy">{sc.sumExcludedSuppressedNonArchived}</p>
+              <p className="font-body text-[9px] text-kelly-text/65">Per-run preview counts summed locally</p>
+            </div>
+            <div className="rounded border border-kelly-text/10 bg-white/90 px-2 py-2 sm:col-span-2 lg:col-span-2">
+              <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/50">Consent / source warnings (Σ non-archived)</p>
+              <p className="mt-0.5 font-heading text-xl font-bold tabular-nums text-kelly-navy">{sc.sumWarningCountNonArchived}</p>
+              <p className="font-body text-[9px] text-kelly-text/65">From preview pipeline — operator must still judge consent posture</p>
+            </div>
+            <div className="rounded border border-kelly-navy/15 bg-kelly-fog/40 px-2 py-2 sm:col-span-2 lg:col-span-3">
+              <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/50">Latest successful sync</p>
+              <p className="mt-0.5 font-body text-[10px] text-kelly-navy">
+                {sc.latestSyncedAtIso ? sc.latestSyncedAtIso.slice(0, 19) : "—"} UTC
+                {sc.latestSyncedProviderStatus ? (
+                  <>
+                    {" "}
+                    · provider status <span className="font-bold">{sc.latestSyncedProviderStatus}</span>
+                  </>
+                ) : null}
+                {sc.latestSyncedProviderJobId ? (
+                  <>
+                    {" "}
+                    · job tail <span className="font-mono font-bold">…{sc.latestSyncedProviderJobId.slice(-8)}</span>
+                  </>
+                ) : null}
+              </p>
+            </div>
+          </div>
+        ) : null}
         <p className="mt-1 rounded border border-rose-400/40 bg-rose-50/90 px-2 py-1.5 font-body text-[10px] font-bold text-rose-950">
           This syncs contacts into SendGrid Marketing Contacts only. It does <strong>not</strong> send email, create campaigns,
           schedule sends, or activate automation.
@@ -301,6 +381,18 @@ export default async function SendGridFoundationPage({
           </div>
         ) : null}
 
+        {syncReadiness?.syncRunTableAvailable && snap.dbReachable ? (
+          <div className="mt-3 rounded border border-amber-200/80 bg-amber-50/85 px-2 py-2 font-body text-[10px] text-amber-950">
+            <p className="font-heading text-[9px] font-bold uppercase text-amber-900/90">Retry guidance — FAILED runs</p>
+            <ol className="mt-1 list-inside list-decimal space-y-0.5">
+              <li>Open the failed row below — read <code className="rounded bg-white/80 px-0.5 text-[9px]">resultJson.safeError</code> (sanitized; no secrets).</li>
+              <li>Fix root cause: missing <code className="text-[9px]">SENDGRID_API_KEY</code>, hosted DB gate in production, audience no longer ACTIVE, or suppression overlap.</li>
+              <li>Save a fresh <strong>preview</strong> for the same audience (creates a new PREVIEWED run) — do not expect automatic retry of the same row.</li>
+              <li>Re-approve then <strong>Execute contact sync</strong> only when readiness shows upsert enabled.</li>
+            </ol>
+          </div>
+        ) : null}
+
         <div className="mt-3 grid gap-2 lg:grid-cols-2">
           <div className="rounded border border-kelly-text/10 bg-kelly-page/50 p-2">
             <p className="font-heading text-[10px] font-bold text-kelly-text/55">Record preview run (operator action)</p>
@@ -328,15 +420,30 @@ export default async function SendGridFoundationPage({
           </div>
           <div className="rounded border border-kelly-text/10 bg-kelly-page/50 p-2">
             <p className="font-heading text-[10px] font-bold text-kelly-text/55">Recent sync runs</p>
-            <ul className="mt-1 max-h-56 space-y-2 overflow-auto font-mono text-[9px] text-kelly-text/85">
+            <ul className="mt-1 max-h-72 space-y-2 overflow-auto font-mono text-[9px] text-kelly-text/85">
               {syncRuns.map((r) => (
-                <li key={r.id} className="rounded border border-kelly-text/10 bg-white/80 px-1.5 py-1">
+                <li
+                  key={r.id}
+                  className={`rounded border px-1.5 py-1 ${
+                    r.status === "ARCHIVED"
+                      ? "border-kelly-text/15 bg-kelly-fog/60 text-kelly-text/75"
+                      : r.status === "FAILED"
+                        ? "border-rose-200/90 bg-rose-50/80"
+                        : "border-kelly-text/10 bg-white/80"
+                  }`}
+                >
                   <div>
                     <span className="font-bold">{r.status}</span> · candidates {r.candidateCount} · excl. suppressed{" "}
-                    {r.excludedSuppressedCount} · id …{r.id.slice(-8)}
+                    {r.excludedSuppressedCount} · missing email {r.excludedMissingEmailCount} · warnings {r.warningCount} · id …
+                    {r.id.slice(-8)}
                   </div>
                   {r.syncedAt ? (
                     <div className="text-[8px] text-kelly-text/65">syncedAt: {r.syncedAt.toISOString()}</div>
+                  ) : null}
+                  {safeProviderJobTail(r.resultJson) ? (
+                    <div className="text-[8px] text-kelly-text/70">
+                      Provider job tail: <span className="font-bold">{safeProviderJobTail(r.resultJson)}</span>
+                    </div>
                   ) : null}
                   <div className="text-[8px] text-kelly-text/70">{summarizeRunResultJson(r.status, r.resultJson)}</div>
                   {r.status === "APPROVED" ? (

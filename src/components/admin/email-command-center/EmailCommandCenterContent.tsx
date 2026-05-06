@@ -74,6 +74,7 @@ const AUTOMATION_STUDIO_PATH = "/admin/workbench/email-command-center/automation
 const ANALYTICS_DELIVERABILITY_PATH = "/admin/workbench/email-command-center/analytics";
 const ROUTE_MAP_PATH = "/admin/workbench/email-command-center/map";
 const READINESS_CHECKLIST_PATH = "/admin/workbench/email-command-center/readiness";
+const HOSTED_DB_READINESS_ASSISTANT_PATH = "/admin/workbench/email-command-center/readiness/hosted-db";
 const SEND_EXECUTION_GOVERNANCE_PATH = "/admin/workbench/email-command-center/send-execution";
 
 type TonightPathStatus = "live" | "partial" | "future";
@@ -215,6 +216,13 @@ export function EmailCommandCenterContent({
               Readiness checklist
             </Link>{" "}
             — align env + DB truth for <strong>this</strong> machine (hosted Supabase still operator-verified separately).
+          </li>
+          <li>
+            For Kelly-Grappe-App hosted Supabase:{" "}
+            <Link href={HOSTED_DB_READINESS_ASSISTANT_PATH} className="font-bold underline">
+              Hosted DB readiness assistant
+            </Link>{" "}
+            — <strong>no secret values</strong>; copy CLI snippets and verify project ref outside chat.
           </li>
           <li>
             Skim the{" "}

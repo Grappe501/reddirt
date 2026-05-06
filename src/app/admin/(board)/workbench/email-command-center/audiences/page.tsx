@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { EmailWorkflowSourceType } from "@prisma/client";
+import { EccOperatorPageChrome } from "@/components/admin/email-command-center/ecc-operator-ux";
 import {
   getAudienceStudioSnapshot,
   listAudienceBuildingBlocks,
@@ -13,6 +14,7 @@ import {
   archiveEmailAudienceDefinitionAction,
   createDraftEmailAudienceDefinitionAction,
 } from "@/app/admin/email-audience-actions";
+import { getEmailCommandCenterSnapshot } from "@/lib/email-command-center/read-model";
 
 export const dynamic = "force-dynamic";
 
@@ -25,7 +27,7 @@ export default async function EmailAudienceStudioPage({
   const notice = typeof sp.notice === "string" ? sp.notice : undefined;
   const error = typeof sp.error === "string" ? sp.error : undefined;
 
-  const snapshot = await getAudienceStudioSnapshot();
+  const [snapshot, eccSnapshot] = await Promise.all([getAudienceStudioSnapshot(), getEmailCommandCenterSnapshot()]);
 
   let blocks: Awaited<ReturnType<typeof listAudienceBuildingBlocks>> = [];
   let clusters: Awaited<ReturnType<typeof listSuggestedAudienceClusters>> = [];
@@ -58,6 +60,8 @@ export default async function EmailAudienceStudioPage({
 
   return (
     <div className="min-w-0 max-w-5xl space-y-4">
+      <EccOperatorPageChrome snapshot={eccSnapshot} surface="audiences" />
+
       <div className="flex flex-wrap items-center gap-2">
         <Link
           href="/admin/workbench/email-command-center"

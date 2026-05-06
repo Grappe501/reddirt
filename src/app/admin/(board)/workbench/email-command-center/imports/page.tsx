@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { EccOperatorPageChrome } from "@/components/admin/email-command-center/ecc-operator-ux";
 import { listContactImportBatches } from "@/lib/email-command-center/contact-import";
 import { uploadEmailContactImportCsvAction } from "@/app/admin/email-contact-import-actions";
+import { getEmailCommandCenterSnapshot } from "@/lib/email-command-center/read-model";
 
 export const dynamic = "force-dynamic";
 
@@ -12,15 +14,15 @@ export default async function EmailContactImportsPage({
   const sp = (await searchParams) ?? {};
   const err = typeof sp.error === "string" ? sp.error : undefined;
 
-  let batches: Awaited<ReturnType<typeof listContactImportBatches>> = [];
-  try {
-    batches = await listContactImportBatches(40);
-  } catch {
-    batches = [];
-  }
+  const [eccSnapshot, batches] = await Promise.all([
+    getEmailCommandCenterSnapshot(),
+    listContactImportBatches(40).catch((): Awaited<ReturnType<typeof listContactImportBatches>> => []),
+  ]);
 
   return (
     <div className="min-w-0 max-w-5xl space-y-4">
+      <EccOperatorPageChrome snapshot={eccSnapshot} surface="imports" />
+
       <div className="flex flex-wrap items-center gap-2">
         <Link
           href="/admin/workbench/email-command-center"

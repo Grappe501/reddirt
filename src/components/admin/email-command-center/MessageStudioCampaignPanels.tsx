@@ -9,9 +9,12 @@ import {
   COMPLIANCE_GUARDRAILS,
   ISSUE_FRAMES,
   MESSAGE_QUALITY_CHECKLIST,
+  MISSING_DOC_OPERATOR_GUIDANCE,
+  OPERATOR_PROMPT_TEMPLATES,
   PROHIBITED_OR_HIGH_RISK_PATTERNS,
-  SOURCE_MATERIAL_READINESS,
   TONE_PROFILES,
+  computeCampaignVoiceContextHealth,
+  partitionCampaignVoiceSourceReadiness,
   type MessageStudioCampaignVoiceSettings,
 } from "@/lib/email-command-center/campaign-voice";
 import type { MessageStudioLocalDraft } from "@/components/admin/email-command-center/message-studio-local-drafts";
@@ -89,6 +92,17 @@ export function MessageStudioCampaignPanels({
 
   const advisory = useMemo(() => parseAdvisory(activeDraft.lastAiAdvisoryJson), [activeDraft.lastAiAdvisoryJson]);
   const tier = readinessLabel(activeDraft);
+  const sourceBuckets = useMemo(() => partitionCampaignVoiceSourceReadiness(), []);
+  const contextHealth = useMemo(
+    () =>
+      computeCampaignVoiceContextHealth(activeDraft.campaignVoice, {
+        audienceNote: activeDraft.audienceNote,
+        complianceNotes: activeDraft.complianceNotes,
+        body: activeDraft.body,
+      }),
+    [activeDraft.audienceNote, activeDraft.body, activeDraft.campaignVoice, activeDraft.complianceNotes],
+  );
+  const [templateCopiedId, setTemplateCopiedId] = useState<string | null>(null);
 
   const setVoice = useCallback(
     (patch: Partial<MessageStudioCampaignVoiceSettings>) => {
@@ -144,6 +158,7 @@ export function MessageStudioCampaignPanels({
         body: activeDraft.body,
         subject: activeDraft.subject,
         audienceNote: activeDraft.audienceNote,
+        complianceNotes: activeDraft.complianceNotes,
         campaignVoice: activeDraft.campaignVoice,
       });
       if (!res.ok) {
@@ -190,9 +205,10 @@ export function MessageStudioCampaignPanels({
       <section className="rounded border border-kelly-navy/20 bg-kelly-fog/40 p-2">
         <h3 className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-navy">Campaign Voice</h3>
         <p className="mt-1 text-[9px] text-kelly-text/70">
-          EMAIL-MESSAGE-STUDIO-CAMPAIGN-VOICE-1.2 — production operator drafting. Guidance is curated from repo docs
-          (paths below); semantic RAG requires separate ingest per{" "}
-          <code className="rounded bg-white/80 px-0.5 text-[8px]">src/lib/openai/README.md</code>.
+          EMAIL-MESSAGE-STUDIO-CAMPAIGN-VOICE-1.2 + EMAIL-CAMPAIGN-VOICE-SOURCE-READINESS-1.0 — production operator drafting.
+          Registry lists repo paths and posture only; semantic RAG requires separate ingest per{" "}
+          <code className="rounded bg-white/80 px-0.5 text-[8px]">src/lib/openai/README.md</code>. No web scraping; no
+          auto-ingestion into Message Studio.
         </p>
         <div className="mt-2 grid gap-2 sm:grid-cols-2">
           <label className="text-[10px] text-kelly-text/80">
@@ -332,17 +348,94 @@ export function MessageStudioCampaignPanels({
         </div>
 
         <div className="mt-2 rounded border border-amber-200/70 bg-amber-50/80 p-2">
-          <p className="text-[9px] font-bold uppercase text-amber-950">Source material readiness</p>
-          <ul className="mt-1 space-y-1 text-[9px] text-amber-950/95">
-            {SOURCE_MATERIAL_READINESS.map((s) => (
-              <li key={s.id}>
-                <span className="font-semibold">{s.title}</span>{" "}
-                <span className="rounded bg-white/80 px-1 font-mono text-[8px]">{s.readiness}</span>
-                <br />
-                <span className="text-[8px] text-amber-900/90">{s.location}</span> — {s.notes}
-              </li>
+          <p id="message-studio-source-readiness" className="scroll-mt-20 text-[9px] font-bold uppercase text-amber-950">
+            Source readiness
+          </p>
+          <p className="mt-0.5 text-[8px] text-amber-950/90">
+            Four buckets: what is available as static repo guidance, what is not bundled as a doc, what needs ingest for
+            semantic search, and what you must paste from approved systems.
+          </p>
+          <div className="mt-2 grid gap-2 sm:grid-cols-2">
+            <div className="rounded border border-emerald-200/80 bg-emerald-50/90 p-2">
+              <p className="text-[9px] font-bold uppercase text-emerald-950">Available static guidance</p>
+              <ul className="mt-1 max-h-40 space-y-1 overflow-y-auto text-[8px] text-emerald-950/95">
+                {sourceBuckets.availableStatic.map((s) => (
+                  <li key={s.id}>
+                    <span className="font-semibold">{s.title}</span>
+                    <br />
+                    <span className="font-mono text-[7px] opacity-90">{s.location}</span> — {s.notes}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded border border-rose-200/80 bg-rose-50/90 p-2">
+              <p className="text-[9px] font-bold uppercase text-rose-950">Missing bundled docs</p>
+              <ul className="mt-1 max-h-40 space-y-1 overflow-y-auto text-[8px] text-rose-950/95">
+                {sourceBuckets.missingBundledDocs.map((s) => (
+                  <li key={s.id}>
+                    <span className="font-semibold">{s.title}</span> — {s.notes}
+                  </li>
+                ))}
+                {MISSING_DOC_OPERATOR_GUIDANCE.map((line, i) => (
+                  <li key={`mdg-${i}`} className="list-inside list-disc">
+                    {line}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded border border-violet-200/80 bg-violet-50/90 p-2">
+              <p className="text-[9px] font-bold uppercase text-violet-950">Not yet indexed (semantic RAG)</p>
+              <ul className="mt-1 space-y-1 text-[8px] text-violet-950/95">
+                {sourceBuckets.notYetIndexed.map((s) => (
+                  <li key={s.id}>
+                    <span className="font-semibold">{s.title}</span>
+                    <br />
+                    <span className="font-mono text-[7px] opacity-90">{s.location}</span> — {s.notes}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded border border-sky-200/80 bg-sky-50/90 p-2">
+              <p className="text-[9px] font-bold uppercase text-sky-950">Requires operator paste / context</p>
+              <ul className="mt-1 max-h-40 space-y-1 overflow-y-auto text-[8px] text-sky-950/95">
+                {sourceBuckets.operatorPasteRequired.map((s) => (
+                  <li key={s.id}>
+                    <span className="font-semibold">{s.title}</span>
+                    <br />
+                    <span className="font-mono text-[7px] opacity-90">{s.location}</span> — {s.notes}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-2 rounded border border-kelly-text/12 bg-white/95 p-2">
+          <p className="text-[9px] font-bold uppercase text-kelly-text/60">Operator paste templates</p>
+          <p className="mt-0.5 text-[8px] text-kelly-text/70">
+            Copy a scaffold into your audience note or compliance notes, then replace bracketed lines with approved
+            facts only — do not invent campaign claims.
+          </p>
+          <div className="mt-1 flex flex-wrap gap-1">
+            {OPERATOR_PROMPT_TEMPLATES.map((t) => (
+              <button
+                key={t.id}
+                type="button"
+                className="rounded border border-kelly-text/20 bg-kelly-fog/50 px-2 py-0.5 text-[9px] font-semibold text-kelly-navy hover:bg-kelly-fog"
+                onClick={async () => {
+                  try {
+                    await navigator.clipboard.writeText(t.template);
+                    setTemplateCopiedId(t.id);
+                    window.setTimeout(() => setTemplateCopiedId((cur) => (cur === t.id ? null : cur)), 2000);
+                  } catch {
+                    setTemplateCopiedId(null);
+                  }
+                }}
+              >
+                {templateCopiedId === t.id ? "Copied" : t.label}
+              </button>
             ))}
-          </ul>
+          </div>
         </div>
 
         <div className="mt-2 rounded border border-kelly-text/10 bg-white/90 p-2">
@@ -446,6 +539,18 @@ export function MessageStudioCampaignPanels({
         </div>
         {aiError ? <p className="mt-1 text-[10px] font-semibold text-rose-800">{aiError}</p> : null}
 
+        {aiAvailable && contextHealth.thinContext ? (
+          <div className="mt-2 rounded border border-amber-300/90 bg-amber-50 p-2 text-[10px] text-amber-950">
+            <p className="font-bold uppercase tracking-wide text-[9px]">Thin context warning</p>
+            <p className="mt-1 text-[9px]">{contextHealth.summary} — specifics in AI output may be under-grounded.</p>
+            <ul className="mt-1 list-inside list-disc text-[9px] text-amber-950/95">
+              {contextHealth.reasons.map((r, i) => (
+                <li key={`ctx-${i}`}>{r}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+
         <div className="mt-2">
           <p className="text-[9px] font-bold uppercase text-kelly-text/55">Revision tools</p>
           <p className="text-[9px] text-kelly-text/65">Uses current body + Campaign Voice. Subject-lines / CTA modes return structured suggestions.</p>
@@ -467,21 +572,26 @@ export function MessageStudioCampaignPanels({
         {advisory ? (
           <div className="mt-2 space-y-2 rounded border border-indigo-200/40 bg-white/90 p-2 text-[10px]">
             <p className="font-bold text-indigo-950">Last AI output (stored locally on this draft)</p>
+            {advisory.sourceLimitations.length ? (
+              <div className="rounded border border-amber-200/90 bg-amber-50/90 p-2">
+                <p className="font-semibold text-amber-950">Source limitations (repo posture + model)</p>
+                <p className="mt-0.5 text-[8px] text-amber-900/90">
+                  Merged after generation: deterministic lines from your source-layer toggles and Message Studio registry,
+                  plus any limitations the model returned. Treat as binding context for interpreting the body draft
+                  below — not legal signoff.
+                </p>
+                <ul className="mt-1 list-inside list-disc text-[9px] text-amber-950">
+                  {advisory.sourceLimitations.map((x, i) => (
+                    <li key={`sl-${i}`}>{x}</li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
             {advisory.complianceRiskFlags.length ? (
               <div>
                 <p className="font-semibold text-rose-900">Compliance / risk flags</p>
                 <ul className="list-inside list-disc text-[9px]">
                   {advisory.complianceRiskFlags.map((x) => (
-                    <li key={x}>{x}</li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-            {advisory.sourceLimitations.length ? (
-              <div>
-                <p className="font-semibold text-amber-900">Source limitations</p>
-                <ul className="list-inside list-disc text-[9px]">
-                  {advisory.sourceLimitations.map((x) => (
                     <li key={x}>{x}</li>
                   ))}
                 </ul>
@@ -515,6 +625,13 @@ export function MessageStudioCampaignPanels({
             {advisory.emailBodyDraft ? (
               <div>
                 <p className="font-semibold text-kelly-navy">Body draft</p>
+                {advisory.sourceLimitations.length ? (
+                  <p className="mt-1 rounded border border-amber-200/80 bg-amber-50/80 p-1.5 text-[8px] text-amber-950">
+                    <span className="font-bold">Source limitation reminder:</span> the body must respect the limitations
+                    listed above; do not treat the draft as fact-complete until you paste approved sources and complete
+                    editorial review.
+                  </p>
+                ) : null}
                 <pre className="mt-1 max-h-40 overflow-auto whitespace-pre-wrap rounded bg-kelly-page/60 p-2 text-[9px]">
                   {advisory.emailBodyDraft}
                 </pre>

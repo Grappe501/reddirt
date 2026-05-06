@@ -3,6 +3,9 @@ import {
   reconcileRecentSendGridEventsAction,
   reconcileSendGridEventAction,
 } from "@/app/admin/sendgrid-event-reconciliation-actions";
+import { AnalyticsOperatorDrilldownPanels } from "@/components/admin/email-command-center/AnalyticsOperatorDrilldownPanels";
+import { EccOperatorPageChrome } from "@/components/admin/email-command-center/ecc-operator-ux";
+import type { EmailAnalyticsOperatorDrilldown } from "@/lib/email-command-center/analytics-operator-drilldown";
 import type { EmailCommandCenterSnapshot } from "@/lib/email-command-center/read-model";
 
 const ECC = "/admin/workbench/email-command-center";
@@ -15,6 +18,7 @@ const badge =
 
 export type AnalyticsDeliverabilityViewProps = {
   snapshot: EmailCommandCenterSnapshot;
+  analyticsOperatorDrilldown: EmailAnalyticsOperatorDrilldown;
   suppressionByType: Array<{ type: string; count: number }>;
   reconcileNotice?: string;
   reconcileError?: string;
@@ -42,6 +46,7 @@ function CheckRow({ label, ok, note }: { label: string; ok: boolean | "manual"; 
 
 export function AnalyticsDeliverabilityView({
   snapshot,
+  analyticsOperatorDrilldown,
   suppressionByType,
   reconcileNotice,
   reconcileError,
@@ -74,6 +79,8 @@ export function AnalyticsDeliverabilityView({
 
   return (
     <div className="min-w-0 max-w-5xl space-y-4">
+      <EccOperatorPageChrome snapshot={snapshot} surface="analytics" />
+
       <div className="flex flex-wrap items-center gap-2">
         <Link href={ECC} className="rounded border border-kelly-text/15 bg-white px-2 py-0.5 text-xs font-semibold text-kelly-slate">
           ← Email Command Center
@@ -125,7 +132,7 @@ export function AnalyticsDeliverabilityView({
         <h1 className="font-heading text-2xl font-bold text-kelly-navy">Analytics &amp; Deliverability</h1>
         <p className="max-w-3xl font-body text-sm text-kelly-text/85">
           Track readiness, queue health, audience growth, and suppression signals <strong>before</strong> campaign sends.
-          EMAIL-AUTOMATION-ANALYTICS-SHELL-1.0 — read-only aggregates from the Command Center snapshot; no sends, no mutations, no new schema.
+          EMAIL-AUTOMATION-ANALYTICS-SHELL-1.0 + <strong>EMAIL-ANALYTICS-DRILLDOWN-1.0</strong> — read-only aggregates and bounded drilldown tables from the Command Center snapshot; no sends, no provider calls from this page, no new schema.
         </p>
         <div className="flex flex-wrap gap-1.5">
           <span className={badge}>No production sends yet</span>
@@ -156,32 +163,7 @@ export function AnalyticsDeliverabilityView({
         </div>
       ) : null}
 
-      <section className={card}>
-        <h2 className={h3}>Queue analytics</h2>
-        <p className="mt-1 font-body text-[10px] text-kelly-text/65">
-          Same signals as the Command Center cockpit — deep links go to the email queue filters.
-        </p>
-        <div className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            { label: "Total queue", value: q.total, href: "/admin/workbench/email-queue" },
-            { label: "Needs attention", value: q.needsAttentionCount, href: "/admin/workbench/email-queue" },
-            { label: "New", value: q.newCount, href: "/admin/workbench/email-queue?status=NEW" },
-            { label: "Ready to respond", value: q.readyToRespondCount, href: "/admin/workbench/email-queue?status=READY_TO_RESPOND" },
-            { label: "Approved (workflow)", value: q.approvedCount, href: "/admin/workbench/email-queue?status=APPROVED" },
-            { label: "Escalated", value: q.escalatedCount, href: "/admin/workbench/email-queue?status=ESCALATED" },
-            { label: "Unassigned", value: q.unassignedCount, href: "/admin/workbench/email-queue?assignee=unassigned" },
-          ].map((x) => (
-            <Link
-              key={x.label}
-              href={x.href}
-              className="rounded-md border border-kelly-text/10 bg-white/90 px-2 py-2 transition hover:border-kelly-forest/30"
-            >
-              <p className="font-heading text-[9px] font-bold uppercase tracking-wide text-kelly-text/55">{x.label}</p>
-              <p className="mt-0.5 font-heading text-xl font-bold tabular-nums text-kelly-navy">{x.value}</p>
-            </Link>
-          ))}
-        </div>
-      </section>
+      <AnalyticsOperatorDrilldownPanels snapshot={snapshot} drilldown={analyticsOperatorDrilldown} />
 
       <section className={card}>
         <h2 className={h3}>Intelligence analytics</h2>
@@ -229,10 +211,11 @@ export function AnalyticsDeliverabilityView({
         </div>
       </section>
 
-      <section className={card}>
-        <h2 className={h3}>SendGrid contact sync readiness</h2>
+      <section id="contact-sync-health" className={`${card} scroll-mt-20`}>
+        <h2 className={h3}>SendGrid contact sync — health summary</h2>
         <p className="mt-1 font-body text-[10px] text-kelly-text/70">
-          Counts come from <code className="text-[9px]">SendGridContactSyncRun</code> — suppression exclusions are computed per audience in the Contact Sync preview (not summed here).
+          EMAIL-SENDGRID-SYNC-RECONCILIATION-POLISH-1.0 — snapshot from <code className="text-[9px]">SendGridContactSyncRun</code> only. Σ suppression / warnings sum{" "}
+          <strong>non-archived</strong> run rows (preview pipeline; not SendGrid Marketing API totals). <strong>No sends.</strong>
         </p>
         {!sc.dbReachable ? (
           <p className="mt-2 rounded border border-amber-200/80 bg-amber-50/80 px-2 py-2 text-[10px] text-amber-950">
@@ -263,6 +246,25 @@ export function AnalyticsDeliverabilityView({
             value={sc.runsFailedCount}
             sub="Inspect safeError in resultJson on SendGrid Foundation"
           />
+          <Stat href={sc.path} label="ARCHIVED runs" value={sc.runsArchivedCount} sub="Historical / cleared rows" />
+          <Stat
+            href={sc.path}
+            label="Σ suppressed (non-archived runs)"
+            value={sc.sumExcludedSuppressedNonArchived}
+            sub="Preview exclusions vs local suppression table"
+          />
+          <Stat
+            href={sc.path}
+            label="Σ consent / source warnings"
+            value={sc.sumWarningCountNonArchived}
+            sub="Per-run warningCount from preview"
+          />
+          <Stat
+            href={sc.path}
+            label="Latest FAILED (UTC)"
+            value={sc.latestFailedAtIso ? sc.latestFailedAtIso.slice(0, 19) : "—"}
+            sub="Most recent FAILED row updatedAt"
+          />
         </div>
         <div className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
           <Stat
@@ -277,11 +279,11 @@ export function AnalyticsDeliverabilityView({
             value={sc.latestSyncedProviderJobId ? `…${sc.latestSyncedProviderJobId.slice(-8)}` : "—"}
             sub="From latest SYNCED resultJson"
           />
-          <Stat href={sgF.path} label="Suppressions (local)" value={sgF.dbReachable ? sgF.suppressionCount : "—"} sub="Honored in preview + execute" />
+          <Stat href={sgF.path} label="Suppressions (local table rows)" value={sgF.dbReachable ? sgF.suppressionCount : "—"} sub="Honored in preview + execute" />
         </div>
       </section>
 
-      <section className={card}>
+      <section id="send-execution-preflight" className={`${card} scroll-mt-20`}>
         <h2 className={h3}>Send execution analytics</h2>
         <p className="mt-1 font-body text-[10px] text-kelly-text/70">
           EMAIL-SEND-EXECUTION-1.0 — Postgres counts only.{" "}
@@ -311,6 +313,28 @@ export function AnalyticsDeliverabilityView({
           <Stat href={SEND_EXECUTION} label="Final approval pending" value={se.readyForFinalApprovalCount} />
           <Stat href={SEND_EXECUTION} label="Archived" value={se.archivedCount} />
         </div>
+        {se.dbReachable && se.preflightFailedCount > 0 ? (
+          <div className="mt-3 rounded border border-rose-200/70 bg-rose-50/80 px-2 py-2 font-body text-[10px] text-rose-950">
+            <p className="font-heading text-[9px] font-bold uppercase text-rose-900/80">Preflight failure rollup (first failed check id)</p>
+            {se.preflightFailedTopBlockers.length === 0 ? (
+              <p className="mt-1 text-[9px] text-rose-900/85">No parseable preflight rows — open Send Execution and re-run preflight to store hardened checklist JSON.</p>
+            ) : (
+              <ul className="mt-1 list-inside list-disc space-y-0.5">
+                {se.preflightFailedTopBlockers.map((b) => (
+                  <li key={b.id}>
+                    <span className="font-mono font-bold">{b.id}</span> — {b.count} execution(s) with this first failure
+                  </li>
+                ))}
+              </ul>
+            )}
+            <p className="mt-2">
+              <Link href={`${SEND_EXECUTION}#ops`} className="font-bold text-kelly-forest underline">
+                Open Send Execution → run preflight
+              </Link>{" "}
+              (no send from Analytics).
+            </p>
+          </div>
+        ) : null}
       </section>
 
       <section id="reconciliation" className={`${card} scroll-mt-20`}>

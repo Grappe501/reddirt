@@ -46,6 +46,8 @@ export type MessageStudioDraftListRow = {
   createdAt: string;
   createdByLabel: string | null;
   assignedReviewerLabel: string | null;
+  /** Last governance approval reviewer when set on row. */
+  reviewedByLabel: string | null;
 };
 
 function userLabel(u: { email: string; name: string | null } | null): string | null {
@@ -56,6 +58,7 @@ function userLabel(u: { email: string; name: string | null } | null): string | n
 const draftListInclude = {
   createdBy: { select: { email: true, name: true } },
   assignedReviewer: { select: { email: true, name: true } },
+  reviewedBy: { select: { email: true, name: true } },
 } satisfies Prisma.MessageStudioDraftInclude;
 
 export async function listMessageStudioDrafts(options?: {
@@ -77,6 +80,7 @@ export async function listMessageStudioDrafts(options?: {
     createdAt: r.createdAt.toISOString(),
     createdByLabel: userLabel(r.createdBy),
     assignedReviewerLabel: userLabel(r.assignedReviewer),
+    reviewedByLabel: userLabel(r.reviewedBy),
   }));
 }
 
@@ -278,6 +282,51 @@ export async function archiveMessageStudioDraft(
       ...(updatedByUserId ? { updatedBy: { connect: { id: updatedByUserId } } } : {}),
     },
   });
+}
+
+/**
+ * Workflow-only update (status / reviewer) without re-serializing full draft body — no sends, no providers.
+ * Use `archiveMessageStudioDraft` path when status is ARCHIVED.
+ */
+export async function patchMessageStudioDraftWorkflow(args: {
+  id: string;
+  status: MessageStudioDraftStatus;
+  updatedByUserId?: string | null;
+  assignedReviewerUserId?: string | null | undefined;
+}): Promise<MessageStudioDraft> {
+  const existing = await prisma.messageStudioDraft.findUnique({ where: { id: args.id } });
+  if (!existing) {
+    throw new Error("Draft not found.");
+  }
+  if (existing.status === "ARCHIVED") {
+    throw new Error("Draft is archived.");
+  }
+  if (args.status === "ARCHIVED") {
+    return archiveMessageStudioDraft(args.id, args.updatedByUserId);
+  }
+
+  const transitioningToApproved =
+    args.status === "APPROVED_FOR_SEND_GOVERNANCE" && existing.status !== "APPROVED_FOR_SEND_GOVERNANCE";
+
+  const data: Prisma.MessageStudioDraftUpdateInput = {
+    status: args.status,
+    ...(args.updatedByUserId ? { updatedBy: { connect: { id: args.updatedByUserId } } } : {}),
+    ...(args.assignedReviewerUserId !== undefined
+      ? args.assignedReviewerUserId
+        ? { assignedReviewer: { connect: { id: args.assignedReviewerUserId } } }
+        : { assignedReviewer: { disconnect: true } }
+      : {}),
+    ...(transitioningToApproved && args.updatedByUserId
+      ? {
+          reviewedAt: new Date(),
+          reviewedBy: { connect: { id: args.updatedByUserId } },
+        }
+      : transitioningToApproved
+        ? { reviewedAt: new Date() }
+        : {}),
+  };
+
+  return prisma.messageStudioDraft.update({ where: { id: args.id }, data });
 }
 
 function parseJsonObject(raw: Prisma.JsonValue | null | undefined, fallback: Record<string, unknown>): Record<string, unknown> {

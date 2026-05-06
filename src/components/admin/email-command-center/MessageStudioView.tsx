@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { MessageStudioDraftPlanner } from "@/components/admin/email-command-center/MessageStudioDraftPlanner";
+import { EccOperatorPageChrome } from "@/components/admin/email-command-center/ecc-operator-ux";
 import { MESSAGE_STUDIO_CONTENT_BLOCKS } from "@/components/admin/email-command-center/message-studio-content-blocks";
 import type { MessageStudioDraftListRow } from "@/lib/email-command-center/message-studio-drafts";
+import type { EmailCommandCenterSnapshot } from "@/lib/email-command-center/read-model";
 
 const badge =
   "rounded-full border border-kelly-text/15 bg-white/90 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-kelly-slate";
@@ -105,6 +107,7 @@ type MessageStudioViewProps = {
   queryImportBatchId?: string;
   openAiServerConfigured?: boolean;
   serverDraftRows?: MessageStudioDraftListRow[];
+  snapshot: EmailCommandCenterSnapshot;
 };
 
 export function MessageStudioView({
@@ -114,9 +117,29 @@ export function MessageStudioView({
   queryImportBatchId,
   openAiServerConfigured = false,
   serverDraftRows = [],
+  snapshot,
 }: MessageStudioViewProps) {
+  const extraNextLines: string[] = [];
+  if (!queryAudienceDefinitionId) {
+    extraNextLines.push(
+      "No ?audienceDefinitionId= in URL — optional; add it from Audience Studio when this draft should track a saved cohort.",
+    );
+  }
+  if (!serverDraftRows.length) {
+    extraNextLines.push(
+      "No shared Postgres drafts yet — use #shared-drafts to promote when another operator must review (local drafts stay in this browser).",
+    );
+  }
+
   return (
     <div className="min-w-0 max-w-5xl space-y-4">
+      <EccOperatorPageChrome
+        snapshot={snapshot}
+        surface="message_studio"
+        extraNextLines={extraNextLines}
+        nextStripTone="emerald"
+      />
+
       <div className="flex flex-wrap items-center gap-2">
         <Link
           href="/admin/workbench/email-command-center"
