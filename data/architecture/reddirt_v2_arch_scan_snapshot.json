@@ -1,0 +1,491 @@
+{
+  "packet": "REDDIRT-V2-ARCH-REGISTRY-1.0-scan",
+  "generatedAt": "2026-05-06T17:29:29.327Z",
+  "reddirtRoot": "H:/SOSWebsite/RedDirt",
+  "readOnlyProof": {
+    "scannerId": "reddirt-v2-architecture-scan.mjs",
+    "writesAttemptedOnSourceTrees": false,
+    "allowedOutputPath": "H:\\SOSWebsite\\RedDirt\\data\\architecture\\reddirt_v2_arch_scan_snapshot.json",
+    "stdoutOnly": false,
+    "rules": [
+      "No fs.writeFile outside data/architecture/",
+      "No unlink, rename, or rmdir",
+      "Source trees are read-only (readdir + readFile only)"
+    ]
+  },
+  "inventorySample": [
+    {
+      "root": "docs",
+      "filesDiscoveredCapped": 493,
+      "walkCap": 4000,
+      "sample": [
+        {
+          "path": "docs/admin-content-board.md",
+          "bytes": 3824,
+          "sha256Prefix": "c5e5a8e62c5d1aca"
+        },
+        {
+          "path": "docs/admin-orchestrator.md",
+          "bytes": 2552,
+          "sha256Prefix": "1cdef30a786f98f8"
+        },
+        {
+          "path": "docs/agent-knowledge-ingest-map.md",
+          "bytes": 8160,
+          "sha256Prefix": "f16f221bd463bbed"
+        },
+        {
+          "path": "docs/agent-skill-framework.md",
+          "bytes": 9893,
+          "sha256Prefix": "5dae6e7772a84ad1"
+        },
+        {
+          "path": "docs/ai-agent-brain-map.md",
+          "bytes": 14890,
+          "sha256Prefix": "cc6d4ec58a823168"
+        },
+        {
+          "path": "docs/ai-integration-matrix.md",
+          "bytes": 4910,
+          "sha256Prefix": "1d6e6c12a2a70df2"
+        },
+        {
+          "path": "docs/arkleg-intelligence-verification-worksheet.md",
+          "bytes": 2878,
+          "sha256Prefix": "750d12c30dcbe88d"
+        },
+        {
+          "path": "docs/ask-kelly-admin/README.md",
+          "bytes": 417,
+          "sha256Prefix": "87a8aa3b34be2bc7"
+        },
+        {
+          "path": "docs/ask-kelly-public/candidate-onboarding-and-safe-updates.md",
+          "bytes": 4183,
+          "sha256Prefix": "e74bd9da4e0b3f9e"
+        },
+        {
+          "path": "docs/ask-kelly-public/dixie-voice-portal.md",
+          "bytes": 1125,
+          "sha256Prefix": "0d758c7fcd9091ac"
+        },
+        {
+          "path": "docs/ask-kelly-public/kelly-grappe-biography.md",
+          "bytes": 20086,
+          "sha256Prefix": "f2eedd685f0d97e8"
+        },
+        {
+          "path": "docs/ask-kelly-training/candidate-system-training-map.md",
+          "bytes": 3693,
+          "sha256Prefix": "124d1afa4fd1d325"
+        },
+        {
+          "path": "docs/ASK_KELLY_MANUAL_OF_EVERYTHING_ACCESS_PLAN.md",
+          "bytes": 6645,
+          "sha256Prefix": "0f4427c3c69e51e3"
+        },
+        {
+          "path": "docs/assignment-rail-foundation.md",
+          "bytes": 8004,
+          "sha256Prefix": "a85566d240acdc74"
+        },
+        {
+          "path": "docs/audits/DASHBOARD_HIERARCHY_COMPLETION_AUDIT.md",
+          "bytes": 19619,
+          "sha256Prefix": "54fc653a362a96d0"
+        },
+        {
+          "path": "docs/audits/MESSAGE_AND_NARRATIVE_DISTRIBUTION_SYSTEM_AUDIT.md",
+          "bytes": 16498,
+          "sha256Prefix": "3fea318ddc34440a"
+        },
+        {
+          "path": "docs/audits/POWER_OF_5_FULL_SYSTEM_AUDIT.md",
+          "bytes": 12662,
+          "sha256Prefix": "d4de57e6fc1c608e"
+        },
+        {
+          "path": "docs/automation-override-and-impact-foundation.md",
+          "bytes": 5856,
+          "sha256Prefix": "64bc4b7387ba65fc"
+        },
+        {
+          "path": "docs/AUTO_BUILD_PROTOCOL.md",
+          "bytes": 18350,
+          "sha256Prefix": "516de08aed0851c9"
+        },
+        {
+          "path": "docs/background/campaign-team-positions/AR_SOS_KGrappe_BodyMan_JobDesc_v1.0.md",
+          "bytes": 3678,
+          "sha256Prefix": "e8ed289fb56cf86b"
+        },
+        {
+          "path": "docs/background/campaign-team-positions/AR_SOS_KGrappe_BodyMan_TargetProfile_v1.0_REBUILT.md",
+          "bytes": 4501,
+          "sha256Prefix": "e4c3d79e6afdd82f"
+        },
+        {
+          "path": "docs/background/campaign-team-positions/AR_SOS_KGrappe_CampaignManagementMemo_v1.0.md",
+          "bytes": 2533,
+          "sha256Prefix": "871b2a94cec1e04b"
+        },
+        {
+          "path": "docs/background/campaign-team-positions/AR_SOS_KGrappe_CampaignManager_JobDesc_v1.0.md",
+          "bytes": 3556,
+          "sha256Prefix": "9257f0800bc1184c"
+        },
+        {
+          "path": "docs/background/campaign-team-positions/AR_SOS_KGrappe_CampaignManager_TargetProfile_v1.0.md",
+          "bytes": 4196,
+          "sha256Prefix": "984286b00dc4ce01"
+        },
+        {
+          "path": "docs/background/campaign-team-positions/AR_SOS_KGrappe_CommsDirector_JobDesc_v1.0.md",
+          "bytes": 3181,
+          "sha256Prefix": "49f97799d68b0ad0"
+        }
+      ]
+    },
+    {
+      "root": "develop_notes",
+      "skipped": true,
+      "reason": "missing"
+    },
+    {
+      "root": "src",
+      "filesDiscoveredCapped": 1189,
+      "walkCap": 4000,
+      "sample": [
+        {
+          "path": "src/app/(site)/about/deep-dive/[slug]/page.tsx",
+          "bytes": 2888,
+          "sha256Prefix": "0171fba840dfc8e5"
+        },
+        {
+          "path": "src/app/(site)/about/layout.tsx",
+          "bytes": 254,
+          "sha256Prefix": "06a1cde7839df97f"
+        },
+        {
+          "path": "src/app/(site)/about/page.tsx",
+          "bytes": 7230,
+          "sha256Prefix": "a4e30511c6a1cf8f"
+        },
+        {
+          "path": "src/app/(site)/about/why-kelly/page.tsx",
+          "bytes": 4457,
+          "sha256Prefix": "ea896b894bf6e306"
+        },
+        {
+          "path": "src/app/(site)/about/[slug]/page.tsx",
+          "bytes": 3749,
+          "sha256Prefix": "886547e47b765ad0"
+        },
+        {
+          "path": "src/app/(site)/biography/page.tsx",
+          "bytes": 7380,
+          "sha256Prefix": "441d9f8b791ffdfd"
+        },
+        {
+          "path": "src/app/(site)/blog/page.tsx",
+          "bytes": 2609,
+          "sha256Prefix": "d28aec8362d90554"
+        },
+        {
+          "path": "src/app/(site)/blog/[slug]/page.tsx",
+          "bytes": 4135,
+          "sha256Prefix": "bb4df742cfea1f14"
+        },
+        {
+          "path": "src/app/(site)/campaign-calendar/page.tsx",
+          "bytes": 2656,
+          "sha256Prefix": "d7819451e8d617c4"
+        },
+        {
+          "path": "src/app/(site)/campaign-calendar/[slug]/page.tsx",
+          "bytes": 6323,
+          "sha256Prefix": "ef6fcc6613d73746"
+        },
+        {
+          "path": "src/app/(site)/civic-depth/page.tsx",
+          "bytes": 6320,
+          "sha256Prefix": "b79db5f0666a4339"
+        },
+        {
+          "path": "src/app/(site)/counties/page.tsx",
+          "bytes": 3060,
+          "sha256Prefix": "905960b7f495e47e"
+        },
+        {
+          "path": "src/app/(site)/counties/[slug]/page.tsx",
+          "bytes": 1075,
+          "sha256Prefix": "d342f1fafd0f13e5"
+        },
+        {
+          "path": "src/app/(site)/dashboard/leader/page.tsx",
+          "bytes": 739,
+          "sha256Prefix": "b6865e5a0ecdf63e"
+        },
+        {
+          "path": "src/app/(site)/dashboard/page.tsx",
+          "bytes": 546,
+          "sha256Prefix": "a986676c3ec78833"
+        },
+        {
+          "path": "src/app/(site)/direct-democracy/ballot-initiative-process/page.tsx",
+          "bytes": 9919,
+          "sha256Prefix": "9f348dfb843fddf6"
+        },
+        {
+          "path": "src/app/(site)/direct-democracy/page.tsx",
+          "bytes": 18225,
+          "sha256Prefix": "7df2344f608ef8b6"
+        },
+        {
+          "path": "src/app/(site)/disclaimer/page.tsx",
+          "bytes": 2189,
+          "sha256Prefix": "d3aa3e920c5726d4"
+        },
+        {
+          "path": "src/app/(site)/donate/page.tsx",
+          "bytes": 8567,
+          "sha256Prefix": "436cdfba2da23ed2"
+        },
+        {
+          "path": "src/app/(site)/editorial/page.tsx",
+          "bytes": 2804,
+          "sha256Prefix": "0d6422cd6ab71997"
+        },
+        {
+          "path": "src/app/(site)/editorial/[slug]/page.tsx",
+          "bytes": 4028,
+          "sha256Prefix": "18bcfb4408ba0c73"
+        },
+        {
+          "path": "src/app/(site)/events/community-election-integrity-tour/counties/page.tsx",
+          "bytes": 4739,
+          "sha256Prefix": "aa10d88cf076def6"
+        },
+        {
+          "path": "src/app/(site)/events/community-election-integrity-tour/page.tsx",
+          "bytes": 3204,
+          "sha256Prefix": "cf3304f075927cfc"
+        },
+        {
+          "path": "src/app/(site)/events/community-election-integrity-tour/request/page.tsx",
+          "bytes": 3565,
+          "sha256Prefix": "89dae18a2eb8b35f"
+        },
+        {
+          "path": "src/app/(site)/events/county-fairs/page.tsx",
+          "bytes": 5176,
+          "sha256Prefix": "d6b899c43f29bb09"
+        }
+      ]
+    },
+    {
+      "root": "prisma",
+      "filesDiscoveredCapped": 3,
+      "walkCap": 4000,
+      "sample": [
+        {
+          "path": "prisma/schema.prisma",
+          "bytes": 229781,
+          "sha256Prefix": "0039eca858cb0452"
+        },
+        {
+          "path": "prisma/seed-slice4-workflows.ts",
+          "bytes": 14876,
+          "sha256Prefix": "37044c5beb29ecc3"
+        },
+        {
+          "path": "prisma/seed.ts",
+          "bytes": 18712,
+          "sha256Prefix": "7458f2502c46451f"
+        }
+      ]
+    },
+    {
+      "root": "scripts",
+      "filesDiscoveredCapped": 68,
+      "walkCap": 4000,
+      "sample": [
+        {
+          "path": "scripts/ai-curate-kelly-groups-images.ts",
+          "bytes": 7711,
+          "sha256Prefix": "e7c1fa769beb68a6"
+        },
+        {
+          "path": "scripts/ai-privatize-sensitive-owned-media.ts",
+          "bytes": 9108,
+          "sha256Prefix": "c0da42c9f0b721a2"
+        },
+        {
+          "path": "scripts/append-kelly-bio-raw-sources.mjs",
+          "bytes": 1597,
+          "sha256Prefix": "4b9f600926120d68"
+        },
+        {
+          "path": "scripts/append-kelly-bio-supplements.mjs",
+          "bytes": 1837,
+          "sha256Prefix": "a32d570ed3727b28"
+        },
+        {
+          "path": "scripts/append-kelly-chapterbody.mjs",
+          "bytes": 1049,
+          "sha256Prefix": "eb4600e3edf40da7"
+        },
+        {
+          "path": "scripts/audit-campaign-ingestion.ts",
+          "bytes": 6603,
+          "sha256Prefix": "e6dd8b09c2ac33b7"
+        },
+        {
+          "path": "scripts/build-brain-source-manifest.mjs",
+          "bytes": 17617,
+          "sha256Prefix": "1879a8547567ba48"
+        },
+        {
+          "path": "scripts/build-kim-hammer-brief-packet.ts",
+          "bytes": 31531,
+          "sha256Prefix": "5d8f2571079c4d69"
+        },
+        {
+          "path": "scripts/campaign-brain-storage-plan.mjs",
+          "bytes": 2038,
+          "sha256Prefix": "f032d61994b6b371"
+        },
+        {
+          "path": "scripts/campaign-media-ingest-watcher.ts",
+          "bytes": 2675,
+          "sha256Prefix": "73f1de7f0608eae5"
+        },
+        {
+          "path": "scripts/check-openai-key.ts",
+          "bytes": 1553,
+          "sha256Prefix": "54ce479c5143e470"
+        },
+        {
+          "path": "scripts/db-inventory-oneshot.mjs",
+          "bytes": 3121,
+          "sha256Prefix": "21bca104f840f7fd"
+        },
+        {
+          "path": "scripts/email-ai-quality-eval.mjs",
+          "bytes": 13114,
+          "sha256Prefix": "e4119420bd17fed0"
+        },
+        {
+          "path": "scripts/email-command-center-db-diagnose.mjs",
+          "bytes": 20660,
+          "sha256Prefix": "9d9bb087b298c607"
+        },
+        {
+          "path": "scripts/email-command-center-no-send-scan.mjs",
+          "bytes": 7395,
+          "sha256Prefix": "5fe4a5d7dedf5aba"
+        },
+        {
+          "path": "scripts/email-command-center-preflight.mjs",
+          "bytes": 13546,
+          "sha256Prefix": "5608068e1b603201"
+        },
+        {
+          "path": "scripts/emit-pope-county-intel-site.ts",
+          "bytes": 18338,
+          "sha256Prefix": "f841146e25adc2b9"
+        },
+        {
+          "path": "scripts/emit-pope-county-profile-json.ts",
+          "bytes": 3654,
+          "sha256Prefix": "d5f9cac155ccf802"
+        },
+        {
+          "path": "scripts/fetch-facebook-page-about.ts",
+          "bytes": 2526,
+          "sha256Prefix": "d2bfc805936c7e37"
+        },
+        {
+          "path": "scripts/gmail-watch-renewal-check.impl.ts",
+          "bytes": 3969,
+          "sha256Prefix": "886120d2db634f77"
+        },
+        {
+          "path": "scripts/gmail-watch-renewal-check.mjs",
+          "bytes": 1177,
+          "sha256Prefix": "ba2415a0f8e8b8a7"
+        },
+        {
+          "path": "scripts/gmail-watch-renewal-preview.ts",
+          "bytes": 2375,
+          "sha256Prefix": "02bba2cedfaa7359"
+        },
+        {
+          "path": "scripts/import-county-public-demographics.ts",
+          "bytes": 5038,
+          "sha256Prefix": "2ee5e4af15837470"
+        },
+        {
+          "path": "scripts/import-kelly-calendar-2026-sweep.ts",
+          "bytes": 30714,
+          "sha256Prefix": "b54f35258cce2317"
+        },
+        {
+          "path": "scripts/import-kelly-calendar-may-2026-snapshot.ts",
+          "bytes": 10777,
+          "sha256Prefix": "b15a238481dda5e2"
+        }
+      ]
+    }
+  ],
+  "workspaceSiblings": {
+    "error": null,
+    "names": [
+      ".cache",
+      ".cursor",
+      ".github",
+      "CURSOR_CODEX_COORDINATION_PROTOCOL.md",
+      "HISPANIC_SPANISH_LOCALE_LAYER_PLAN.md",
+      "KELLY_SOS_RECLASSIFICATION_AND_MIGRATION_MAP.md",
+      "Kelly media",
+      "NEW_AI_THREAD_FULL_ONBOARDING_PACKET.md",
+      "README.md",
+      "RedDirt",
+      "RedDirt_CampaignOS_SystemMap_20260506-110322.json",
+      "RedDirt_CampaignOS_SystemMap_20260506-110322.md",
+      "SOSWEBSITE_BUILD_LANE_AI_HANDOFF.md",
+      "SOSWEBSITE_OPERATING_MAP.md",
+      "START_HERE_FOR_AI.md",
+      "_WORKSPACE_ROOT_MARKER.txt",
+      "_c_drive_diag.txt",
+      "_crossdevice_ext.txt",
+      "_diag_localappdata.txt",
+      "_diag_more.txt",
+      "_diag_user_top.txt",
+      "_tmp_acu_lane_c_ci_parity",
+      "acu_lane_a",
+      "acu_lane_c",
+      "ajax",
+      "arkansas_civic_university",
+      "arkansas_civics",
+      "brand-audit",
+      "brands",
+      "campaign information for ingestion",
+      "countyWorkbench",
+      "dist-county-briefings",
+      "dist-pope-briefing",
+      "docs",
+      "phatlip",
+      "pope-county-intelligence-briefing-site.zip",
+      "pope-county-kelly-briefing-site.zip",
+      "pope-county-political-profile-site.zip",
+      "run-clear-crossdevice.cmd",
+      "sos-public",
+      "stand-up-arkansas",
+      "tools",
+      "volunteerPage"
+    ],
+    "resolvedParent": "H:\\SOSWebsite",
+    "reddirtFolderName": "RedDirt"
+  }
+}

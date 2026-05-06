@@ -1,0 +1,385 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-V2-ARCH-REGISTRY-1.0",
+  "generatedAt": "2026-05-06T19:30:00.000Z",
+  "status": "roadmap_seed",
+  "phases": [
+    {
+      "key": "phase_0_architecture_registry",
+      "label": "Architecture registry & doctrine",
+      "purpose": "Canonical machine registry, external-system matrix, SoT policy, and validators so future packets have a governed map. No product feature work.",
+      "dependencyRule": "No later phase should contradict registry JSON or matrix defaults without an explicit governance revision packet.",
+      "governanceGate": "Steve / coordination protocol for any change to sos-public boundary or cross-lane import rules.",
+      "candidateSlices": []
+    },
+    {
+      "key": "phase_1_email_command_center_proof",
+      "label": "Email Command Center — hosted and live proof",
+      "purpose": "Prove Kelly-Grappe-App DB chain, governed live send posture, automation dry-run safety, production ingestion proof, and final operational verification.",
+      "dependencyRule": "HOSTED-DB-PROOF before LIVE-SEND-PROOF and PRODUCTION-CONTACT-INGESTION-PROOF on hosted targets.",
+      "governanceGate": "Operator-run gates; EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM and no-send scan posture unchanged unless an explicit execution packet changes them.",
+      "candidateSlices": [
+        {
+          "sliceId": "REDDIRT-EMAIL-HOSTED-DB-PROOF-1.0",
+          "goal": "Operator-verified hosted DATABASE_URL/DIRECT_URL migrate + import gate + diagnose on Kelly-Grappe-App.",
+          "allowedPaths": ["RedDirt/docs/**", "RedDirt/scripts/**", "RedDirt/prisma/**", "RedDirt/src/**"],
+          "forbiddenPaths": ["sos-public/**", "ajax/**", "phatlip/**", "countyWorkbench/**", "RedDirt/.env"],
+          "proofRequired": ["npm run email:db:diagnose", "prisma migrate status/deploy on hosted", "npm run email:contact-import:gate", "npm run email:no-send-scan", "npm run check"],
+          "mustNotDo": ["Assume local Docker equals hosted", "Commit secrets", "Enable blind mass send"],
+          "expectedOutputs": ["Hosted verification log doc or ledger update", "Honest deployment % in progress ledger"]
+        },
+        {
+          "sliceId": "REDDIRT-EMAIL-LIVE-SEND-PROOF-1.0",
+          "goal": "Operator-proven governed test/broadcast on hosted stack per send-execution doctrine.",
+          "allowedPaths": ["RedDirt/docs/**", "RedDirt/src/lib/email-command-center/**", "RedDirt/src/app/admin/**"],
+          "forbiddenPaths": ["sos-public/**", "Unapproved queue send", "RedDirt/.env"],
+          "proofRequired": ["Hosted DB proof complete", "Send execution preflight green", "Operator attestation in docs"],
+          "mustNotDo": ["Claim proof without hosted run", "Bypass suppression/consent checks"],
+          "expectedOutputs": ["QA closeout or runbook entry", "Ledger note on operator-proven mail"]
+        },
+        {
+          "sliceId": "REDDIRT-AUTOMATION-WORKER-DRYRUN-1.0",
+          "goal": "Safe dry-run of automation worker paths with no outbound side effects.",
+          "allowedPaths": ["RedDirt/docs/**", "RedDirt/src/lib/email-command-center/**", "RedDirt/scripts/**"],
+          "forbiddenPaths": ["sos-public/**", "Production cron enable without packet"],
+          "proofRequired": ["npm run check", "email:no-send-scan", "Dry-run logs redacted"],
+          "mustNotDo": ["Activate workers in production", "Auto-send from automation"],
+          "expectedOutputs": ["Dry-run report", "Governance checklist update"]
+        },
+        {
+          "sliceId": "REDDIRT-PRODUCTION-CONTACT-INGESTION-PROOF-1.0",
+          "goal": "Prove staged import commit path on hosted DB with real governance checks.",
+          "allowedPaths": ["RedDirt/docs/**", "RedDirt/src/**", "RedDirt/prisma/migrations/**"],
+          "forbiddenPaths": ["sos-public/**", "PII in fixtures committed to repo"],
+          "proofRequired": ["Hosted gate", "Import batch smoke without secrets in logs"],
+          "mustNotDo": ["Import to wrong DB", "Skip operator approve step"],
+          "expectedOutputs": ["Operator log", "Ledger deployment row bump if earned"]
+        },
+        {
+          "sliceId": "REDDIRT-EMAIL-FINAL-OPERATIONAL-VERIFY-1.0",
+          "goal": "Cross-surface ECC verification pass after proofs (Daily, Message Studio, SendGrid, Analytics, queue).",
+          "allowedPaths": ["RedDirt/docs/**", "RedDirt/src/**"],
+          "forbiddenPaths": ["sos-public/**"],
+          "proofRequired": ["email:no-send-scan", "npm run check", "Route smoke checklist"],
+          "mustNotDo": ["Introduce new send paths without scan"],
+          "expectedOutputs": ["Single consolidated verify doc", "THREAD_HANDOFF addendum if needed"]
+        }
+      ]
+    },
+    {
+      "key": "phase_2_campaign_memory_foundation",
+      "label": "Campaign memory foundation",
+      "purpose": "Schema inventory, grounded memory index, entity linkers, retrieval API, and memory governance gates.",
+      "dependencyRule": "MEMORY-SCHEMA-INVENTORY before SOURCE-GROUNDED-MEMORY-INDEX and RETRIEVAL-API; governance gates before production retrieval exposure.",
+      "governanceGate": "No unsourced claims; RAG/ingest licensing explicit per slice.",
+      "candidateSlices": [
+        {
+          "sliceId": "REDDIRT-MEMORY-SCHEMA-INVENTORY-1.0",
+          "goal": "Inventory Prisma + SearchChunk + related models for memory surfaces.",
+          "allowedPaths": ["RedDirt/docs/**", "RedDirt/prisma/**", "RedDirt/data/architecture/**"],
+          "forbiddenPaths": ["sos-public/**", "Destructive schema experiments on prod"],
+          "proofRequired": ["database-table-inventory or generated appendix", "Prisma schema parse"],
+          "mustNotDo": ["Delete models", "Rename migrations"],
+          "expectedOutputs": ["Inventory markdown or JSON appendix"]
+        },
+        {
+          "sliceId": "REDDIRT-SOURCE-GROUNDED-MEMORY-INDEX-1.0",
+          "goal": "Define grounded index contracts (chunks, provenance, staleness) aligned with existing ECC grounding.",
+          "allowedPaths": ["RedDirt/docs/**", "RedDirt/src/lib/**"],
+          "forbiddenPaths": ["sos-public/**", "Fabricated citation paths"],
+          "proofRequired": ["npm run typecheck", "Doc review with counsel flag for legal-sensitive"],
+          "mustNotDo": ["Auto-ingest copyrighted bulk without license packet"],
+          "expectedOutputs": ["Contract doc", "Optional read-only UI spec"]
+        },
+        {
+          "sliceId": "REDDIRT-CONTACT-COUNTY-EVENT-LINKER-1.0",
+          "goal": "Deterministic linker design between contacts, counties, and events (read models first).",
+          "allowedPaths": ["RedDirt/docs/**", "RedDirt/src/lib/campaign-engine/**", "RedDirt/src/lib/email-command-center/**"],
+          "forbiddenPaths": ["sos-public/**", "Auto-merge people without human packet"],
+          "proofRequired": ["Unit or integration tests if code added", "npm run check"],
+          "mustNotDo": ["Mutate voter PII in smoke data"],
+          "expectedOutputs": ["Linker spec", "Queries or read helpers"]
+        },
+        {
+          "sliceId": "REDDIRT-CAMPAIGN-MEMORY-RETRIEVAL-API-1.0",
+          "goal": "Bounded internal retrieval API for operator/admin use with rate and scope limits.",
+          "allowedPaths": ["RedDirt/src/**", "RedDirt/docs/**"],
+          "forbiddenPaths": ["sos-public/**", "Public unauthenticated exposure"],
+          "proofRequired": ["npm run check", "Security review for new routes"],
+          "mustNotDo": ["Expose voter file to anonymous users"],
+          "expectedOutputs": ["API route or server action set", "Operator doc"]
+        },
+        {
+          "sliceId": "REDDIRT-MEMORY-GOVERNANCE-GATES-1.0",
+          "goal": "Explicit gates for index freshness, approval tiers, and redaction.",
+          "allowedPaths": ["RedDirt/docs/**", "RedDirt/src/**"],
+          "forbiddenPaths": ["sos-public/**"],
+          "proofRequired": ["Governance checklist", "Ledger or readiness cross-links"],
+          "mustNotDo": ["Bypass human approval for sensitive memory writes"],
+          "expectedOutputs": ["Gates doc", "UI copy or enforcement hooks"]
+        }
+      ]
+    },
+    {
+      "key": "phase_3_daily_operational_intelligence",
+      "label": "Daily operational intelligence",
+      "purpose": "Briefing schema, open loops, readiness snapshot engine, executive briefing surfaces, operator action queue.",
+      "dependencyRule": "READINESS-SNAPSHOT-ENGINE should consume existing getEmailCommandCenterSnapshot contracts; DAILY-BRIEFING-SCHEMA before EXECUTIVE-BRIEFING-DASHBOARD.",
+      "governanceGate": "Advisory-only AI; no auto task or send mutations from briefing surfaces unless explicit future packet.",
+      "candidateSlices": [
+        {
+          "sliceId": "REDDIRT-DAILY-BRIEFING-SCHEMA-1.0",
+          "goal": "Define JSON/schema for morning briefing sections and sources.",
+          "allowedPaths": ["RedDirt/docs/**", "RedDirt/src/lib/email-command-center/**"],
+          "forbiddenPaths": ["sos-public/**"],
+          "proofRequired": ["Schema validation tests if code", "npm run typecheck"],
+          "mustNotDo": ["Store PII in briefing fixtures"],
+          "expectedOutputs": ["Schema doc", "TypeScript types"]
+        },
+        {
+          "sliceId": "REDDIRT-OPEN-LOOPS-DETECTOR-1.0",
+          "goal": "Detect stalled queue items, pending approvals, and missing assignments from read models.",
+          "allowedPaths": ["RedDirt/src/**", "RedDirt/docs/**"],
+          "forbiddenPaths": ["sos-public/**", "Auto status mutations"],
+          "proofRequired": ["npm run check", "Snapshot test on read-model"],
+          "mustNotDo": ["Auto-close tickets"],
+          "expectedOutputs": ["Detector module", "Daily strip integration plan"]
+        },
+        {
+          "sliceId": "REDDIRT-READINESS-SNAPSHOT-ENGINE-1.0",
+          "goal": "Normalize readiness snapshot computation for reuse by Daily and Analytics.",
+          "allowedPaths": ["RedDirt/src/lib/email-command-center/read-model.ts", "RedDirt/docs/**"],
+          "forbiddenPaths": ["sos-public/**"],
+          "proofRequired": ["npm run check", "Regression on snapshot counts"],
+          "mustNotDo": ["N+1 unbounded queries on prod-scale"],
+          "expectedOutputs": ["Refactored builder functions", "Doc update"]
+        },
+        {
+          "sliceId": "REDDIRT-EXECUTIVE-BRIEFING-DASHBOARD-1.0",
+          "goal": "Executive-facing rollup UI (read-only) using briefing schema + snapshots.",
+          "allowedPaths": ["RedDirt/src/**", "RedDirt/docs/**"],
+          "forbiddenPaths": ["sos-public/**"],
+          "proofRequired": ["npm run check", "UX review"],
+          "mustNotDo": ["Embed secrets in client bundles"],
+          "expectedOutputs": ["Admin route or section", "Operator manual section"]
+        },
+        {
+          "sliceId": "REDDIRT-OPERATOR-ACTION-QUEUE-1.0",
+          "goal": "Prioritized operator queue fed by open loops + readiness (human triage first).",
+          "allowedPaths": ["RedDirt/src/**", "RedDirt/docs/**"],
+          "forbiddenPaths": ["sos-public/**"],
+          "proofRequired": ["npm run check", "email:no-send-scan if new paths"],
+          "mustNotDo": ["Auto-execute actions from queue"],
+          "expectedOutputs": ["Queue UI or API", "Handoff doc"]
+        }
+      ]
+    },
+    {
+      "key": "phase_4_scheduling_intelligence",
+      "label": "Scheduling intelligence",
+      "purpose": "Calendar source audit, availability engine, county tour intelligence, follow-up reminder queue, scheduling governance.",
+      "dependencyRule": "CALENDAR-SOURCE-AUDIT before AVAILABILITY-SUGGESTION-ENGINE; governance gates before auto reminders to externals.",
+      "governanceGate": "Tentative vs approved calendar transitions; no unsolicited bulk outreach.",
+      "candidateSlices": [
+        {
+          "sliceId": "REDDIRT-CALENDAR-SOURCE-AUDIT-1.0",
+          "goal": "Audit calendar data sources, sync jobs, and webhook boundaries.",
+          "allowedPaths": ["RedDirt/docs/**", "RedDirt/src/lib/calendar/**", "RedDirt/scripts/**"],
+          "forbiddenPaths": ["sos-public/**"],
+          "proofRequired": ["Audit markdown", "npm run typecheck"],
+          "mustNotDo": ["Disable OAuth scopes without replacement plan"],
+          "expectedOutputs": ["Source audit doc", "Risk table"]
+        },
+        {
+          "sliceId": "REDDIRT-AVAILABILITY-SUGGESTION-ENGINE-1.0",
+          "goal": "Suggest holds and slots from calendars + field constraints (advisory).",
+          "allowedPaths": ["RedDirt/src/**", "RedDirt/docs/**"],
+          "forbiddenPaths": ["sos-public/**", "Auto-write Google Calendar without consent packet"],
+          "proofRequired": ["npm run check", "Unit tests for suggestion logic"],
+          "mustNotDo": ["Overbook principals without warning"],
+          "expectedOutputs": ["Engine module", "API contract"]
+        },
+        {
+          "sliceId": "REDDIRT-COUNTY-TOUR-SCHEDULING-INTELLIGENCE-1.0",
+          "goal": "County clustering and tour route hints for schedulers (read-heavy).",
+          "allowedPaths": ["RedDirt/src/**", "RedDirt/docs/**"],
+          "forbiddenPaths": ["sos-public/**", "Auto-publish tour dates to public site"],
+          "proofRequired": ["npm run check", "Data honesty review"],
+          "mustNotDo": ["Invent county attendance numbers"],
+          "expectedOutputs": ["Spec + optional UI prototype"]
+        },
+        {
+          "sliceId": "REDDIRT-FOLLOWUP-REMINDER-QUEUE-1.0",
+          "goal": "Internal reminder queue for staff (not voter spam); integrates with Daily.",
+          "allowedPaths": ["RedDirt/src/**", "RedDirt/docs/**"],
+          "forbiddenPaths": ["sos-public/**", "External SMS/email send without send packet"],
+          "proofRequired": ["npm run check", "Governance copy review"],
+          "mustNotDo": ["Send external reminders without approval"],
+          "expectedOutputs": ["Queue model or metadata contract", "UI slice"]
+        },
+        {
+          "sliceId": "REDDIRT-SCHEDULING-GOVERNANCE-GATES-1.0",
+          "goal": "Policy for tentative holds, approvals, and conflict surfacing.",
+          "allowedPaths": ["RedDirt/docs/**", "RedDirt/src/**"],
+          "forbiddenPaths": ["sos-public/**"],
+          "proofRequired": ["Doc sign-off", "npm run check if enforced in code"],
+          "mustNotDo": ["Silent calendar mutations"],
+          "expectedOutputs": ["Governance doc", "Readiness checklist rows"]
+        }
+      ]
+    },
+    {
+      "key": "phase_5_governed_ai_orchestration",
+      "label": "Governed AI orchestration",
+      "purpose": "Prompt registry, grounding contract, recommendation explainer, approval workflow, action audit log.",
+      "dependencyRule": "AI-SOURCE-GROUNDING-CONTRACT before AI-RECOMMENDATION-EXPLAINER and AI-ACTION-AUDIT-LOG.",
+      "governanceGate": "Human approval for any AI-suggested mutation; explainability mandatory.",
+      "candidateSlices": [
+        {
+          "sliceId": "REDDIRT-AI-PROMPT-REGISTRY-1.0",
+          "goal": "Central registry of prompts/roles/versioning aligned with brain registry patterns.",
+          "allowedPaths": ["RedDirt/src/lib/**", "RedDirt/docs/**"],
+          "forbiddenPaths": ["sos-public/**", "Secrets in registry files"],
+          "proofRequired": ["npm run typecheck", "Lint for secret patterns"],
+          "mustNotDo": ["Embed API keys in repo"],
+          "expectedOutputs": ["Registry module + doc"]
+        },
+        {
+          "sliceId": "REDDIRT-AI-SOURCE-GROUNDING-CONTRACT-1.0",
+          "goal": "Formal contract for evidence buckets and unsupported claims handling across AI surfaces.",
+          "allowedPaths": ["RedDirt/docs/**", "RedDirt/src/lib/email-command-center/**"],
+          "forbiddenPaths": ["sos-public/**"],
+          "proofRequired": ["Contract doc", "npm run check"],
+          "mustNotDo": ["Claim external fact-check without source"],
+          "expectedOutputs": ["Contract markdown", "Parser or validator hooks"]
+        },
+        {
+          "sliceId": "REDDIRT-AI-RECOMMENDATION-EXPLAINER-1.0",
+          "goal": "Structured explanations for every AI recommendation path (why, confidence, sources).",
+          "allowedPaths": ["RedDirt/src/**", "RedDirt/docs/**"],
+          "forbiddenPaths": ["sos-public/**"],
+          "proofRequired": ["npm run check", "UI review"],
+          "mustNotDo": ["Black-box scores without factors"],
+          "expectedOutputs": ["UI components", "metadataJson patterns doc"]
+        },
+        {
+          "sliceId": "REDDIRT-AI-APPROVAL-WORKFLOW-1.0",
+          "goal": "Wire human approval steps for AI-proposed mutations (tasks, drafts, audience).",
+          "allowedPaths": ["RedDirt/src/**", "RedDirt/docs/**"],
+          "forbiddenPaths": ["sos-public/**", "Auto-apply without confirm UI"],
+          "proofRequired": ["npm run check", "email:no-send-scan"],
+          "mustNotDo": ["Skip audit trail"],
+          "expectedOutputs": ["Workflow actions", "Operator manual update"]
+        },
+        {
+          "sliceId": "REDDIRT-AI-ACTION-AUDIT-LOG-1.0",
+          "goal": "Append-only audit metadata for AI-triggered actions and operator overrides.",
+          "allowedPaths": ["RedDirt/src/**", "RedDirt/prisma/**", "RedDirt/docs/**"],
+          "forbiddenPaths": ["sos-public/**", "PII in log payloads"],
+          "proofRequired": ["Migration review if schema", "npm run check"],
+          "mustNotDo": ["Delete audit rows"],
+          "expectedOutputs": ["Schema or metadata contract", "Query helpers"]
+        }
+      ]
+    },
+    {
+      "key": "phase_6_self_build_queue_system",
+      "label": "Self-build queue system",
+      "purpose": "Slice schema, forbidden-path gates, dependency graph, queue generator, progress ledger sync, handoff packet generator.",
+      "dependencyRule": "SELFBUILD-SLICE-SCHEMA and FORBIDDEN-PATH-GATES before QUEUE-GENERATOR and HANDOFF-PACKET-GENERATOR.",
+      "governanceGate": "AUTO_BUILD_PROTOCOL hard stops; no migrations or sends from generator without human packet.",
+      "candidateSlices": [
+        {
+          "sliceId": "REDDIRT-SELFBUILD-SLICE-SCHEMA-1.0",
+          "goal": "JSON schema for slice packets (mission, paths, checks, rollback).",
+          "allowedPaths": ["RedDirt/docs/**", "RedDirt/data/architecture/**", "RedDirt/scripts/**"],
+          "forbiddenPaths": ["sos-public/**"],
+          "proofRequired": ["JSON Schema validation", "Example slice fixtures"],
+          "mustNotDo": ["Encode secrets in fixtures"],
+          "expectedOutputs": ["slice-schema.json", "validator script"]
+        },
+        {
+          "sliceId": "REDDIRT-SELFBUILD-FORBIDDEN-PATH-GATES-1.0",
+          "goal": "Enforce forbidden path lists in CI or pre-commit for slice PRs.",
+          "allowedPaths": ["RedDirt/scripts/**", "RedDirt/.github/**", "RedDirt/docs/**"],
+          "forbiddenPaths": ["sos-public/**", "Disabling gates in same PR as risky code"],
+          "proofRequired": ["CI run on sample PR", "Doc for escape hatch process"],
+          "mustNotDo": ["Globally disable lint for convenience"],
+          "expectedOutputs": ["Gate script", "README for agents"]
+        },
+        {
+          "sliceId": "REDDIRT-SELFBUILD-DEPENDENCY-GRAPH-1.0",
+          "goal": "Machine-readable dependency edges between packets and migrations.",
+          "allowedPaths": ["RedDirt/data/architecture/**", "RedDirt/docs/**"],
+          "forbiddenPaths": ["sos-public/**"],
+          "proofRequired": ["Cycle detection on graph", "Human review of edges"],
+          "mustNotDo": ["Declare false dependencies to skip gates"],
+          "expectedOutputs": ["graph.json", "diagram in docs"]
+        },
+        {
+          "sliceId": "REDDIRT-SELFBUILD-QUEUE-GENERATOR-1.0",
+          "goal": "Generate ordered queue suggestions from graph + ledger blockers.",
+          "allowedPaths": ["RedDirt/scripts/**", "RedDirt/data/architecture/**"],
+          "forbiddenPaths": ["sos-public/**", "Auto-merge PRs"],
+          "proofRequired": ["Dry-run output reviewed", "npm run check if TS tool"],
+          "mustNotDo": ["Push branches without human"],
+          "expectedOutputs": ["queue.json seed", "report markdown"]
+        },
+        {
+          "sliceId": "REDDIRT-SELFBUILD-PROGRESS-LEDGER-1.0",
+          "goal": "Sync self-build outputs with campaign-email-command-center-progress-ledger and PROJECT_MASTER_MAP rules.",
+          "allowedPaths": ["RedDirt/docs/**", "RedDirt/scripts/**"],
+          "forbiddenPaths": ["sos-public/**", "Inflating percentages without code/doc reality"],
+          "proofRequired": ["Ledger diff review", "DIVISION_MASTER_REGISTRY alignment"],
+          "mustNotDo": ["Phantom completion"],
+          "expectedOutputs": ["Ledger patch guidelines", "optional automation doc"]
+        },
+        {
+          "sliceId": "REDDIRT-SELFBUILD-HANDOFF-PACKET-GENERATOR-1.0",
+          "goal": "Emit handoff markdown/json for next agent from completed slice.",
+          "allowedPaths": ["RedDirt/scripts/**", "RedDirt/develop_notes/**", "RedDirt/docs/**"],
+          "forbiddenPaths": ["sos-public/**"],
+          "proofRequired": ["Sample handoff reviewed", "No secrets in output"],
+          "mustNotDo": ["Overwrite human-edited handoffs without prompt"],
+          "expectedOutputs": ["Generator CLI", "template.md"]
+        }
+      ]
+    },
+    {
+      "key": "phase_7_consolidation_review_only",
+      "label": "Consolidation — review only",
+      "purpose": "Decision records when merging or deduplicating docs; no runtime merges of sibling apps.",
+      "dependencyRule": "Requires CONSOLIDATION_REVIEW_POLICY and external matrix as inputs.",
+      "governanceGate": "Steve approval for any cross-lane doc consolidation that implies integration.",
+      "candidateSlices": [
+        {
+          "sliceId": "REDDIRT-CONSOLIDATION-DECISION-RECORDS-1.0",
+          "goal": "Append-only records of which doc is canonical when two sources conflict.",
+          "allowedPaths": ["RedDirt/docs/**", "RedDirt/develop_notes/**", "RedDirt/data/architecture/**"],
+          "forbiddenPaths": ["sos-public/**", "ajax/**", "phatlip/**", "countyWorkbench/**"],
+          "proofRequired": ["Peer review on each record", "Link from PROJECT_MASTER_MAP appendix"],
+          "mustNotDo": ["Silent delete of peer docs"],
+          "expectedOutputs": ["decisions/*.md or JSONL", "index file"]
+        }
+      ]
+    },
+    {
+      "key": "phase_8_public_site_interface_contract",
+      "label": "Public site interface contract",
+      "purpose": "Formal contract for how RedDirt informs sos-public without coupling (exports, review, publish).",
+      "dependencyRule": "Runs after boundary doctrine stable in registry matrix; no code in sos-public from RedDirt lane.",
+      "governanceGate": "Explicit integration packet if any shared package or API bridge is ever proposed.",
+      "candidateSlices": [
+        {
+          "sliceId": "REDDIRT-PUBLIC-SITE-INTERFACE-CONTRACT-1.0",
+          "goal": "Document allowed handoff formats (copy deck JSON, media manifest) and forbidden imports.",
+          "allowedPaths": ["RedDirt/docs/**", "RedDirt/data/architecture/**"],
+          "forbiddenPaths": ["sos-public/**"],
+          "proofRequired": ["Legal/comms sign-off on publish workflow", "Matrix row sos-public reviewed"],
+          "mustNotDo": ["Add RedDirt dependency to sos-public in this slice"],
+          "expectedOutputs": ["CONTRACT.md", "optional JSON schema for handoffs"]
+        }
+      ]
+    }
+  ]
+}

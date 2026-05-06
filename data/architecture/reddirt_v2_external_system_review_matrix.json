@@ -1,0 +1,428 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-V2-ARCH-REGISTRY-1.0",
+  "generatedAt": "2026-05-06T19:00:00.000Z",
+  "status": "review_matrix_seed",
+  "systems": [
+    {
+      "name": "sos-public",
+      "relativePath": "sos-public",
+      "relationshipToRedDirt": "clean public website boundary; current contents are placeholder and may be fully redesigned",
+      "migrationDefault": "do_not_merge_into_RedDirt",
+      "canBeReadForPatterns": true,
+      "canBeMovedWithoutApproval": false,
+      "canBeImportedIntoRedDirtWithoutApproval": false,
+      "riskLevel": "high_if_coupled",
+      "notes": "Preserve app/deploy boundary. Do not import RedDirt internals. Current design/content is disposable placeholder material.",
+      "requiredReviewBeforeAnyMigration": [
+        "dependency audit",
+        "secret/env audit",
+        "schema collision audit",
+        "route collision audit",
+        "data mutation risk audit",
+        "deployment coupling audit",
+        "rollback plan"
+      ]
+    },
+    {
+      "name": "arkansas_civics",
+      "relativePath": "arkansas_civics",
+      "relationshipToRedDirt": "sibling content or app folder; not part of RedDirt deployable",
+      "migrationDefault": "no_default_merge",
+      "canBeReadForPatterns": true,
+      "canBeMovedWithoutApproval": false,
+      "canBeImportedIntoRedDirtWithoutApproval": false,
+      "riskLevel": "medium",
+      "notes": "Scope ambiguous from name; treat as external until owner maps boundaries.",
+      "requiredReviewBeforeAnyMigration": [
+        "dependency audit",
+        "secret/env audit",
+        "schema collision audit",
+        "route collision audit",
+        "data mutation risk audit",
+        "deployment coupling audit",
+        "rollback plan"
+      ]
+    },
+    {
+      "name": "acu_lane_a",
+      "relativePath": "acu_lane_a",
+      "relationshipToRedDirt": "workspace experiment / alternate lane; not production RedDirt",
+      "migrationDefault": "exclude_from_prod_architecture",
+      "canBeReadForPatterns": true,
+      "canBeMovedWithoutApproval": false,
+      "canBeImportedIntoRedDirtWithoutApproval": false,
+      "riskLevel": "low_for_reads_high_if_merged",
+      "notes": "CI or experiment isolation; do not route prod traffic or imports here without explicit packet.",
+      "requiredReviewBeforeAnyMigration": [
+        "dependency audit",
+        "secret/env audit",
+        "schema collision audit",
+        "route collision audit",
+        "data mutation risk audit",
+        "deployment coupling audit",
+        "rollback plan"
+      ]
+    },
+    {
+      "name": "acu_lane_c",
+      "relativePath": "acu_lane_c",
+      "relationshipToRedDirt": "workspace experiment / alternate lane; not production RedDirt",
+      "migrationDefault": "exclude_from_prod_architecture",
+      "canBeReadForPatterns": true,
+      "canBeMovedWithoutApproval": false,
+      "canBeImportedIntoRedDirtWithoutApproval": false,
+      "riskLevel": "low_for_reads_high_if_merged",
+      "notes": "Same posture as acu_lane_a.",
+      "requiredReviewBeforeAnyMigration": [
+        "dependency audit",
+        "secret/env audit",
+        "schema collision audit",
+        "route collision audit",
+        "data mutation risk audit",
+        "deployment coupling audit",
+        "rollback plan"
+      ]
+    },
+    {
+      "name": "arkansas_civic_university",
+      "relativePath": "arkansas_civic_university",
+      "relationshipToRedDirt": "sibling education stack; separate product boundary",
+      "migrationDefault": "no_default_merge",
+      "canBeReadForPatterns": true,
+      "canBeMovedWithoutApproval": false,
+      "canBeImportedIntoRedDirtWithoutApproval": false,
+      "riskLevel": "medium",
+      "notes": "Integration only via approved packet; no implicit shared schema.",
+      "requiredReviewBeforeAnyMigration": [
+        "dependency audit",
+        "secret/env audit",
+        "schema collision audit",
+        "route collision audit",
+        "data mutation risk audit",
+        "deployment coupling audit",
+        "rollback plan"
+      ]
+    },
+    {
+      "name": "ajax",
+      "relativePath": "ajax",
+      "relationshipToRedDirt": "sibling municipal / initiative platform (Jacksonville)",
+      "migrationDefault": "no_default_merge",
+      "canBeReadForPatterns": true,
+      "canBeMovedWithoutApproval": false,
+      "canBeImportedIntoRedDirtWithoutApproval": false,
+      "riskLevel": "high_if_coupled",
+      "notes": "Coordination protocol: no cross-lane imports without Steve-approved integration packet.",
+      "requiredReviewBeforeAnyMigration": [
+        "dependency audit",
+        "secret/env audit",
+        "schema collision audit",
+        "route collision audit",
+        "data mutation risk audit",
+        "deployment coupling audit",
+        "rollback plan"
+      ]
+    },
+    {
+      "name": "phatlip",
+      "relativePath": "phatlip",
+      "relationshipToRedDirt": "sibling youth civic engine",
+      "migrationDefault": "no_default_merge",
+      "canBeReadForPatterns": true,
+      "canBeMovedWithoutApproval": false,
+      "canBeImportedIntoRedDirtWithoutApproval": false,
+      "riskLevel": "high_if_coupled",
+      "notes": "Separate lane; default deny imports into RedDirt.",
+      "requiredReviewBeforeAnyMigration": [
+        "dependency audit",
+        "secret/env audit",
+        "schema collision audit",
+        "route collision audit",
+        "data mutation risk audit",
+        "deployment coupling audit",
+        "rollback plan"
+      ]
+    },
+    {
+      "name": "countyWorkbench",
+      "relativePath": "countyWorkbench",
+      "relationshipToRedDirt": "sibling county portal / aggregate views; referenced from RedDirt docs only",
+      "migrationDefault": "no_default_merge",
+      "canBeReadForPatterns": true,
+      "canBeMovedWithoutApproval": false,
+      "canBeImportedIntoRedDirtWithoutApproval": false,
+      "riskLevel": "medium",
+      "notes": "Long-term public county product; feeds may exist but are governed separately.",
+      "requiredReviewBeforeAnyMigration": [
+        "dependency audit",
+        "secret/env audit",
+        "schema collision audit",
+        "route collision audit",
+        "data mutation risk audit",
+        "deployment coupling audit",
+        "rollback plan"
+      ]
+    },
+    {
+      "name": "stand-up-arkansas",
+      "relativePath": "stand-up-arkansas",
+      "relationshipToRedDirt": "sibling initiative folder; scope unclear from name",
+      "migrationDefault": "no_default_merge",
+      "canBeReadForPatterns": true,
+      "canBeMovedWithoutApproval": false,
+      "canBeImportedIntoRedDirtWithoutApproval": false,
+      "riskLevel": "medium",
+      "notes": "Manual audit before any coupling to RedDirt routes or data.",
+      "requiredReviewBeforeAnyMigration": [
+        "dependency audit",
+        "secret/env audit",
+        "schema collision audit",
+        "route collision audit",
+        "data mutation risk audit",
+        "deployment coupling audit",
+        "rollback plan"
+      ]
+    },
+    {
+      "name": "campaign information for ingestion",
+      "relativePath": "campaign information for ingestion",
+      "relationshipToRedDirt": "workspace loose ingest staging; not a typed app contract",
+      "migrationDefault": "no_default_merge",
+      "canBeReadForPatterns": true,
+      "canBeMovedWithoutApproval": false,
+      "canBeImportedIntoRedDirtWithoutApproval": false,
+      "riskLevel": "high_if_coupled",
+      "notes": "PII and ingest governance apply; do not auto-wire into RedDirt Prisma paths.",
+      "requiredReviewBeforeAnyMigration": [
+        "dependency audit",
+        "secret/env audit",
+        "schema collision audit",
+        "route collision audit",
+        "data mutation risk audit",
+        "deployment coupling audit",
+        "rollback plan"
+      ]
+    },
+    {
+      "name": "brands",
+      "relativePath": "brands",
+      "relationshipToRedDirt": "workspace brand assets or research; not RedDirt source of truth",
+      "migrationDefault": "no_default_merge",
+      "canBeReadForPatterns": true,
+      "canBeMovedWithoutApproval": false,
+      "canBeImportedIntoRedDirtWithoutApproval": false,
+      "riskLevel": "low",
+      "notes": "Use for design reference; do not silently couple to runtime.",
+      "requiredReviewBeforeAnyMigration": [
+        "dependency audit",
+        "secret/env audit",
+        "schema collision audit",
+        "route collision audit",
+        "data mutation risk audit",
+        "deployment coupling audit",
+        "rollback plan"
+      ]
+    },
+    {
+      "name": "docs (workspace root)",
+      "relativePath": "docs",
+      "relationshipToRedDirt": "workspace-root documentation; distinct from RedDirt/docs",
+      "migrationDefault": "do_not_conflate_with_Reddirt_docs",
+      "canBeReadForPatterns": true,
+      "canBeMovedWithoutApproval": false,
+      "canBeImportedIntoRedDirtWithoutApproval": false,
+      "riskLevel": "medium",
+      "notes": "Agents must not treat SOSWebsite/docs as RedDirt/docs; wrong-doc risk.",
+      "requiredReviewBeforeAnyMigration": [
+        "dependency audit",
+        "secret/env audit",
+        "schema collision audit",
+        "route collision audit",
+        "data mutation risk audit",
+        "deployment coupling audit",
+        "rollback plan"
+      ]
+    },
+    {
+      "name": ".github",
+      "relativePath": ".github",
+      "relationshipToRedDirt": "workspace-level CI; RedDirt may consume workflows that cd into RedDirt",
+      "migrationDefault": "coordinate_only",
+      "canBeReadForPatterns": true,
+      "canBeMovedWithoutApproval": false,
+      "canBeImportedIntoRedDirtWithoutApproval": false,
+      "riskLevel": "medium",
+      "notes": "Changes affect build gates; review with infra before moving or duplicating.",
+      "requiredReviewBeforeAnyMigration": [
+        "dependency audit",
+        "secret/env audit",
+        "schema collision audit",
+        "route collision audit",
+        "data mutation risk audit",
+        "deployment coupling audit",
+        "rollback plan"
+      ]
+    },
+    {
+      "name": "tools",
+      "relativePath": "tools",
+      "relationshipToRedDirt": "workspace utilities; contents define risk",
+      "migrationDefault": "no_default_merge",
+      "canBeReadForPatterns": true,
+      "canBeMovedWithoutApproval": false,
+      "canBeImportedIntoRedDirtWithoutApproval": false,
+      "riskLevel": "unknown_until_inventoried",
+      "notes": "Audit folder before treating scripts as canonical.",
+      "requiredReviewBeforeAnyMigration": [
+        "dependency audit",
+        "secret/env audit",
+        "schema collision audit",
+        "route collision audit",
+        "data mutation risk audit",
+        "deployment coupling audit",
+        "rollback plan"
+      ]
+    },
+    {
+      "name": "Kelly media",
+      "relativePath": "Kelly media",
+      "relationshipToRedDirt": "workspace media bucket; ownership ambiguous",
+      "migrationDefault": "no_default_merge",
+      "canBeReadForPatterns": true,
+      "canBeMovedWithoutApproval": false,
+      "canBeImportedIntoRedDirtWithoutApproval": false,
+      "riskLevel": "medium",
+      "notes": "Copyright and asset provenance required before any product coupling.",
+      "requiredReviewBeforeAnyMigration": [
+        "dependency audit",
+        "secret/env audit",
+        "schema collision audit",
+        "route collision audit",
+        "data mutation risk audit",
+        "deployment coupling audit",
+        "rollback plan"
+      ]
+    },
+    {
+      "name": "volunteerPage",
+      "relativePath": "volunteerPage",
+      "relationshipToRedDirt": "sibling or legacy surface; compare to RedDirt /relational",
+      "migrationDefault": "no_default_merge",
+      "canBeReadForPatterns": true,
+      "canBeMovedWithoutApproval": false,
+      "canBeImportedIntoRedDirtWithoutApproval": false,
+      "riskLevel": "medium",
+      "notes": "Confirm single owner for volunteer-facing URLs before migration talk.",
+      "requiredReviewBeforeAnyMigration": [
+        "dependency audit",
+        "secret/env audit",
+        "schema collision audit",
+        "route collision audit",
+        "data mutation risk audit",
+        "deployment coupling audit",
+        "rollback plan"
+      ]
+    },
+    {
+      "name": "dist-county-briefings",
+      "relativePath": "dist-county-briefings",
+      "relationshipToRedDirt": "build output / static drop; not authoritative source",
+      "migrationDefault": "regenerate_not_merge",
+      "canBeReadForPatterns": true,
+      "canBeMovedWithoutApproval": false,
+      "canBeImportedIntoRedDirtWithoutApproval": false,
+      "riskLevel": "low",
+      "notes": "Prefer pipeline regeneration over copying stale dist into app source.",
+      "requiredReviewBeforeAnyMigration": [
+        "dependency audit",
+        "secret/env audit",
+        "schema collision audit",
+        "route collision audit",
+        "data mutation risk audit",
+        "deployment coupling audit",
+        "rollback plan"
+      ]
+    },
+    {
+      "name": "dist-pope-briefing",
+      "relativePath": "dist-pope-briefing",
+      "relationshipToRedDirt": "build output / static drop; not authoritative source",
+      "migrationDefault": "regenerate_not_merge",
+      "canBeReadForPatterns": true,
+      "canBeMovedWithoutApproval": false,
+      "canBeImportedIntoRedDirtWithoutApproval": false,
+      "riskLevel": "low",
+      "notes": "Same as dist-county-briefings.",
+      "requiredReviewBeforeAnyMigration": [
+        "dependency audit",
+        "secret/env audit",
+        "schema collision audit",
+        "route collision audit",
+        "data mutation risk audit",
+        "deployment coupling audit",
+        "rollback plan"
+      ]
+    },
+    {
+      "name": "brand-audit",
+      "relativePath": "brand-audit",
+      "relationshipToRedDirt": "workspace research or audit artifacts",
+      "migrationDefault": "no_default_merge",
+      "canBeReadForPatterns": true,
+      "canBeMovedWithoutApproval": false,
+      "canBeImportedIntoRedDirtWithoutApproval": false,
+      "riskLevel": "low",
+      "notes": "Not runtime; use for planning inputs only.",
+      "requiredReviewBeforeAnyMigration": [
+        "dependency audit",
+        "secret/env audit",
+        "schema collision audit",
+        "route collision audit",
+        "data mutation risk audit",
+        "deployment coupling audit",
+        "rollback plan"
+      ]
+    },
+    {
+      "name": "SendGrid (provider)",
+      "relativePath": "",
+      "relationshipToRedDirt": "external ESP; RedDirt uses governed APIs and webhooks",
+      "migrationDefault": "n_a_external",
+      "canBeReadForPatterns": true,
+      "canBeMovedWithoutApproval": false,
+      "canBeImportedIntoRedDirtWithoutApproval": false,
+      "riskLevel": "high_if_coupled",
+      "notes": "Secrets in env only; send paths must stay behind ECC doctrine.",
+      "requiredReviewBeforeAnyMigration": [
+        "dependency audit",
+        "secret/env audit",
+        "schema collision audit",
+        "route collision audit",
+        "data mutation risk audit",
+        "deployment coupling audit",
+        "rollback plan"
+      ]
+    },
+    {
+      "name": "Gmail / Google Calendar (providers)",
+      "relativePath": "",
+      "relationshipToRedDirt": "external Google APIs; OAuth and scopes govern exposure",
+      "migrationDefault": "n_a_external",
+      "canBeReadForPatterns": true,
+      "canBeMovedWithoutApproval": false,
+      "canBeImportedIntoRedDirtWithoutApproval": false,
+      "riskLevel": "high_if_coupled",
+      "notes": "Metadata-only defaults for Gmail in lane contract; calendar sync separate review.",
+      "requiredReviewBeforeAnyMigration": [
+        "dependency audit",
+        "secret/env audit",
+        "schema collision audit",
+        "route collision audit",
+        "data mutation risk audit",
+        "deployment coupling audit",
+        "rollback plan"
+      ]
+    }
+  ]
+}

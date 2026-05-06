@@ -1,0 +1,290 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-V2-ARCH-REGISTRY-1.0",
+  "generatedAt": "2026-05-06T18:00:00.000Z",
+  "sourceRoot": "H:\\SOSWebsite",
+  "redDirtRoot": "H:\\SOSWebsite\\RedDirt",
+  "status": "architecture_registry_seed",
+  "readOnlyScanBasis": true,
+  "publicWebsiteBoundaryNote": "sos-public/ is the clean public Kelly Grappe for Arkansas Secretary of State website shell. Current content is placeholder and may be fully redesigned or replaced. The app boundary must stay clean: no RedDirt imports, no Prisma, no /admin routes, no voter-file tooling, no ingest pipelines, and no backend campaign OS coupling unless Steve explicitly approves an integration packet. RedDirt remains the campaign operating system / organizer engine—it may inform content, strategy, media, events, and structured recommendations for the public site, but RedDirt must not be merged into the public website.",
+  "v2Doctrine": {
+    "goal": "A governed unified campaign intelligence operating system in RedDirt, with a strictly separated public web boundary (sos-public) and explicit packets for every cross-lane touch.",
+    "principles": [
+      "Queue-first and human-governed for sensitive execution paths",
+      "Source-grounded intelligence; claims distinguishable from inference",
+      "Governance and no-send posture are infrastructure, not optional polish",
+      "Self-build and automation only inside explicit protocols",
+      "RedDirt informs public messaging; it does not become the public app"
+    ],
+    "nonNegotiables": [
+      "No secrets in docs, registry JSON, logs, or commits",
+      "No uncontrolled mass send or automation activation from architecture work",
+      "No Prisma/schema/migration edits from registry slice",
+      "No edits inside sos-public, ajax, phatlip, countyWorkbench, or ACU lanes without a separate approved packet",
+      "sos-public remains a clean public surface without RedDirt runtime coupling"
+    ]
+  },
+  "layers": [
+    {
+      "key": "communications_intelligence",
+      "label": "Communications intelligence",
+      "purpose": "Governed comms operations: queue, Message Studio, Gmail metadata paths, SendGrid foundations, editorial and send doctrine.",
+      "currentSignals": ["campaign-email-command-center-progress-ledger.md", "email-command-center-launch-hardening.md", "email:no-send-scan"],
+      "canonicalRedDirtAreas": ["src/lib/email-command-center/", "src/lib/email-workflow/", "src/app/admin/(board)/workbench/email-command-center/"],
+      "relatedRoutes": ["/admin/workbench/email-command-center", "/admin/workbench/email-queue", "/admin/workbench/email-command-center/message-studio", "/admin/workbench/email-command-center/send-execution"],
+      "relatedModelsOrEnums": ["EmailWorkflowItem", "MessageStudioDraft", "StaffGmailAccount", "SendGridEvent", "EmailSendExecution"],
+      "relatedDocs": ["docs/campaign-email-command-center-master-plan.md", "docs/email-command-center-v2-master-blueprint.md", "docs/email-ai-intelligence-upgrade-closeout.md"],
+      "externalSignals": ["SendGrid and Gmail provider contracts", "Netlify deploy for reddirt-site only"],
+      "buildOutEstimate": null,
+      "readinessStatus": "partial",
+      "governanceRequirements": ["EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM remains false unless explicit execution packet", "Hosted DB gate before production-class execution"],
+      "nextRecommendedSlices": ["ECC intelligence depth packets steered from progress ledger", "Hosted verification packet"]
+    },
+    {
+      "key": "campaign_memory",
+      "label": "Campaign memory and knowledge",
+      "purpose": "Institutional memory: SearchChunk, manifests, RAG readiness, brain sources—honest indexing and retrieval quality.",
+      "currentSignals": ["email-ai-campaign-memory-readiness.md", "BRAIN_SOURCE_MANIFEST.md", "repair:owned-media-embeddings docs"],
+      "canonicalRedDirtAreas": ["src/lib/campaign-engine/", "prisma/schema.prisma (SearchChunk and related)"],
+      "relatedRoutes": ["/admin/workbench/email-command-center/readiness", "/admin/intelligence"],
+      "relatedModelsOrEnums": ["SearchChunk", "OppositionIntelSource"],
+      "relatedDocs": ["docs/email-ai-intelligence-architecture-audit.md", "docs/BRAIN_SOURCE_MANIFEST.md"],
+      "externalSignals": ["Workspace system map exports optional context only"],
+      "buildOutEstimate": null,
+      "readinessStatus": "partial",
+      "governanceRequirements": ["No fabricated citations", "Consent and licensing for ingestion are explicit future packets"],
+      "nextRecommendedSlices": ["Governed ingestion packets", "Retrieval evaluation harnesses"]
+    },
+    {
+      "key": "operational_intelligence",
+      "label": "Operational intelligence",
+      "purpose": "Workbench, UWR, Daily console, task intelligence metadata—structured view of what needs human attention.",
+      "currentSignals": ["DailyOperatorConsoleView", "email-ai-task-intelligence-1-0.md", "getEmailCommandCenterSnapshot"],
+      "canonicalRedDirtAreas": ["src/lib/campaign-engine/open-work.ts", "src/app/admin/workbench/", "src/components/admin/email-command-center/DailyOperatorConsoleView.tsx"],
+      "relatedRoutes": ["/admin/workbench/email-command-center/daily", "/admin/workbench", "/admin/workbench/email-queue"],
+      "relatedModelsOrEnums": ["CampaignTask", "EmailWorkflowItem"],
+      "relatedDocs": ["docs/unified-incoming-work-read-model.md", "docs/email-ai-task-intelligence-1-0.md"],
+      "externalSignals": [],
+      "buildOutEstimate": null,
+      "readinessStatus": "partial",
+      "governanceRequirements": ["No auto task creation from AI metadata without explicit packet"],
+      "nextRecommendedSlices": ["Executive briefing shell when steered", "Cross-surface rollup contracts"]
+    },
+    {
+      "key": "scheduling_intelligence",
+      "label": "Scheduling intelligence",
+      "purpose": "Calendar HQ, sync, planning and suggest-date APIs—future tentative holds and route intelligence build here.",
+      "currentSignals": ["src/lib/calendar/", "/admin/workbench/calendar", "google sync engine"],
+      "canonicalRedDirtAreas": ["src/lib/calendar/", "src/app/admin/(board)/workbench/calendar/", "src/components/admin/calendar-hq/"],
+      "relatedRoutes": ["/admin/workbench/calendar"],
+      "relatedModelsOrEnums": ["CalendarEvent", "GoogleCalendarSyncState"],
+      "relatedDocs": ["docs/PROJECT_MASTER_MAP.md (calendar references)", "docs/system-division-map.md"],
+      "externalSignals": ["Google Calendar API quotas and OAuth"],
+      "buildOutEstimate": null,
+      "readinessStatus": "shell-built",
+      "governanceRequirements": ["Tentative vs approved calendar transitions remain human-governed"],
+      "nextRecommendedSlices": ["EMAIL/CAL cross-packet when steered", "Travel clustering when field data ready"]
+    },
+    {
+      "key": "audience_relationship_intelligence",
+      "label": "Audience and relationship intelligence",
+      "purpose": "Profiles, audiences, GOTV read surfaces, relational hints—evidence-first suggestions without auto-merge.",
+      "currentSignals": ["email-ai-profile-intelligence-2-0.md", "email-ai-audience-strategist-1-0.md", "profile-graph.ts"],
+      "canonicalRedDirtAreas": ["src/lib/email-command-center/profile-graph.ts", "src/lib/email-command-center/audience-studio.ts"],
+      "relatedRoutes": ["/admin/workbench/email-command-center/profiles", "/admin/workbench/email-command-center/audiences", "/admin/gotv"],
+      "relatedModelsOrEnums": ["EmailContactProfile", "EmailAudienceDefinition", "EmailContactProfileFact"],
+      "relatedDocs": ["docs/email-ai-audience-strategist-1-0.md", "docs/relational-organizing-foundation.md"],
+      "externalSignals": ["SendGrid Marketing Contacts sync governed separately from sends"],
+      "buildOutEstimate": null,
+      "readinessStatus": "partial",
+      "governanceRequirements": ["No auto CRM merge to User/VolunteerProfile", "ACTIVE facts discipline for previews"],
+      "nextRecommendedSlices": ["Segment export governance", "Import graph packet"]
+    },
+    {
+      "key": "automation_intelligence",
+      "label": "Automation intelligence (governed)",
+      "purpose": "Automation Studio shell, policy evaluation, explainability—no worker activation from this lane without explicit packet.",
+      "currentSignals": ["automation-policies.ts", "AutomationPolicyDetailAccordions", "/automation route"],
+      "canonicalRedDirtAreas": ["src/lib/email-command-center/automation-policies.ts", "src/app/admin/(board)/workbench/email-command-center/automation/"],
+      "relatedRoutes": ["/admin/workbench/email-command-center/automation"],
+      "relatedModelsOrEnums": ["automationPolicyEval snapshot fields"],
+      "relatedDocs": ["docs/campaign-email-command-center-automation-map.md", "docs/email-automation-policy-details-1-0.md"],
+      "externalSignals": [],
+      "buildOutEstimate": null,
+      "readinessStatus": "shell-built",
+      "governanceRequirements": ["No cron/worker activation from ECC shell", "Finance/compliance gates for spend-sensitive automations"],
+      "nextRecommendedSlices": ["EMAIL-AUTOMATION-STUDIO-1.1 when approved", "Policy-to-action audit"]
+    },
+    {
+      "key": "analytics_deliverability_intelligence",
+      "label": "Analytics and deliverability intelligence",
+      "purpose": "Readiness scores, drilldowns, SendGrid health, reconciliation views—operator truth without send side effects.",
+      "currentSignals": ["email-analytics-drilldown-1-0.md", "read-model.ts aggregates"],
+      "canonicalRedDirtAreas": ["src/lib/email-command-center/read-model.ts", "src/app/admin/(board)/workbench/email-command-center/analytics/"],
+      "relatedRoutes": ["/admin/workbench/email-command-center/analytics"],
+      "relatedModelsOrEnums": ["SendGridContactSyncRun", "SendGridSuppression"],
+      "relatedDocs": ["docs/email-analytics-drilldown-1-0.md"],
+      "externalSignals": ["SendGrid event webhooks receive-only posture"],
+      "buildOutEstimate": null,
+      "readinessStatus": "partial",
+      "governanceRequirements": ["No new provider send APIs from drilldown builders"],
+      "nextRecommendedSlices": ["Charts and scheduled reporting when steered"]
+    },
+    {
+      "key": "owned_media_content_intelligence",
+      "label": "Owned media and content intelligence",
+      "purpose": "Author Studio, content boards, owned media paths—feeds comms narrative without replacing queue-first doctrine.",
+      "currentSignals": ["admin-content-board.md", "author-studio routes", "owned media data paths"],
+      "canonicalRedDirtAreas": ["src/lib/author-studio/", "src/components/admin/owned-media/", "src/app/admin/"],
+      "relatedRoutes": ["/admin/content-board", "/admin/author-studio"],
+      "relatedModelsOrEnums": ["ContentItem", "MediaLibrary"],
+      "relatedDocs": ["docs/admin-content-board.md", "docs/system-division-map.md §2 Communications"],
+      "externalSignals": ["Public site may republish approved copy manually—no automatic coupling"],
+      "buildOutEstimate": null,
+      "readinessStatus": "partial",
+      "governanceRequirements": ["Copyright and consent for media", "No auto-publish to sos-public without human workflow"],
+      "nextRecommendedSlices": ["Content-to-ECC handoff contracts", "Public site publish checklist"]
+    },
+    {
+      "key": "compliance_governance_safety",
+      "label": "Compliance, governance, and safety",
+      "purpose": "No-send scan, send execution doctrine, policy defaults, audit-friendly provenance.",
+      "currentSignals": ["email-command-center-no-send-scan.mjs", "governance.ts", "compliance docs"],
+      "canonicalRedDirtAreas": ["src/lib/email-workflow/governance.ts", "scripts/email-command-center-no-send-scan.mjs"],
+      "relatedRoutes": ["/admin/workbench/email-command-center/send-execution", "/admin/compliance"],
+      "relatedModelsOrEnums": ["ComplianceDocument", "EmailSendApproval"],
+      "relatedDocs": ["docs/email-command-center-launch-hardening.md", "docs/email-command-center-operator-manual.md"],
+      "externalSignals": [],
+      "buildOutEstimate": null,
+      "readinessStatus": "operational-local",
+      "governanceRequirements": ["Scan and governance docs updated when new send-like paths added", "Counsel review for high-risk claims"],
+      "nextRecommendedSlices": ["Continuous governance regression in CI", "Hosted env parity checks"]
+    },
+    {
+      "key": "self_build_intelligence",
+      "label": "Self-build intelligence (governed)",
+      "purpose": "AUTO_BUILD_PROTOCOL, nightly preflight, architecture scanners, slice discipline—guided expansion only.",
+      "currentSignals": ["AUTO_BUILD_PROTOCOL.md", "nightly-self-build.yml", "reddirt-v2-architecture-scan.mjs"],
+      "canonicalRedDirtAreas": [".github/workflows/nightly-self-build.yml", "scripts/reddirt-v2-architecture-scan.mjs", "scripts/validate-v2-arch-registry.mjs"],
+      "relatedRoutes": [],
+      "relatedModelsOrEnums": [],
+      "relatedDocs": ["docs/AUTO_BUILD_PROTOCOL.md", "docs/email-command-center-v2-agent-planning-harness.md", "docs/PROJECT_MASTER_MAP.md"],
+      "externalSignals": ["CI artifacts only—no deploy from nightly by default"],
+      "buildOutEstimate": null,
+      "readinessStatus": "architecture_registry_seed",
+      "governanceRequirements": ["Hard stops for migrations, auth, outbound sends per AUTO_BUILD_PROTOCOL"],
+      "nextRecommendedSlices": ["Slice queue markdown", "Architecture awareness packet"]
+    },
+    {
+      "key": "deployment_environment_readiness",
+      "label": "Deployment and environment readiness",
+      "purpose": "Kelly-Grappe-App / Supabase DATABASE_URL gates, Netlify build constraints, local vs hosted honesty.",
+      "currentSignals": ["email-db-diagnose", "hosted-db-readiness assistant", "KELLY-GRAPPE-APP-HOSTED-DB-GATE docs"],
+      "canonicalRedDirtAreas": ["scripts/email-command-center-db-diagnose.mjs", "scripts/netlify-build.sh", "src/app/admin/.../readiness/hosted-db"],
+      "relatedRoutes": ["/admin/workbench/email-command-center/readiness", "/admin/workbench/email-command-center/readiness/hosted-db"],
+      "relatedModelsOrEnums": ["_prisma_migrations"],
+      "relatedDocs": ["docs/email-command-center-contact-import-readiness.md", "docs/deployment.md"],
+      "externalSignals": ["Netlify env", "Supabase dashboard Reference ID"],
+      "buildOutEstimate": null,
+      "readinessStatus": "partial",
+      "governanceRequirements": ["No production URL claims without operator-run gate chain"],
+      "nextRecommendedSlices": ["KELLY-GRAPPE-APP-HOSTED-DB-GATE completion"]
+    },
+    {
+      "key": "public_site_interface_boundary",
+      "label": "Public site interface boundary (sos-public)",
+      "purpose": "Doctrine layer: RedDirt may inform strategy, content, media, events, and structured data for the public Kelly Grappe SOS site, but must not contaminate the sos-public app with OS internals. Not a directive to build inside sos-public from RedDirt.",
+      "currentSignals": ["sos-public sibling folder at workspace root", "coordination protocol no cross-lane imports"],
+      "canonicalRedDirtAreas": ["docs/REDDIRT_V2_SOURCE_OF_TRUTH_POLICY.md", "docs/REDDIRT_V2_CONSOLIDATION_REVIEW_POLICY.md", "data/architecture/reddirt_v2_external_system_review_matrix.json"],
+      "relatedRoutes": [],
+      "relatedModelsOrEnums": [],
+      "relatedDocs": ["docs/REDDIRT_V2_SOURCE_OF_TRUTH_POLICY.md", "docs/REDDIRT_V2_MASTER_ARCHITECTURE.md", "CURSOR_CODEX_COORDINATION_PROTOCOL.md (workspace root)"],
+      "externalSignals": ["sos-public/ Next app boundary—placeholder UI disposable", "README.md and START_HERE_FOR_AI.md at workspace root for human orientation"],
+      "buildOutEstimate": null,
+      "readinessStatus": "architecture_registry_seed",
+      "governanceRequirements": ["No RedDirt imports in sos-public", "No Prisma/admin/voter-file/ingest in sos-public", "Integration only via explicit approved packet"],
+      "nextRecommendedSlices": ["Approved public-site integration packet if ever needed", "Content export / handoff templates only"]
+    }
+  ],
+  "systems": [
+    {
+      "id": "email_command_center",
+      "label": "Email Command Center",
+      "layerKeys": ["communications_intelligence", "analytics_deliverability_intelligence", "automation_intelligence", "compliance_governance_safety"],
+      "entryRoutes": ["/admin/workbench/email-command-center"]
+    },
+    {
+      "id": "calendar_hq",
+      "label": "Calendar HQ",
+      "layerKeys": ["scheduling_intelligence", "operational_intelligence"],
+      "entryRoutes": ["/admin/workbench/calendar"]
+    },
+    {
+      "id": "workbench_core",
+      "label": "Workbench / CM hub",
+      "layerKeys": ["operational_intelligence", "compliance_governance_safety"],
+      "entryRoutes": ["/admin/workbench"]
+    },
+    {
+      "id": "relational_gotv",
+      "label": "Relational + GOTV surfaces",
+      "layerKeys": ["audience_relationship_intelligence", "campaign_memory"],
+      "entryRoutes": ["/admin/relational", "/admin/gotv"]
+    },
+    {
+      "id": "sos_public_boundary",
+      "label": "Public website (sibling lane)",
+      "layerKeys": ["public_site_interface_boundary"],
+      "entryRoutes": [],
+      "note": "Lives in sos-public/ — not part of RedDirt deployable root"
+    }
+  ],
+  "knownProofGaps": [
+    "Hosted Kelly-Grappe-App DATABASE_URL verification not claimed from local-only green checks",
+    "Operator-proven live SendGrid mail not implied by ECC code presence",
+    "RedDirt_CampaignOS_SystemMap_* at workspace root may be absent on some clones—registry still valid from RedDirt/docs"
+  ],
+  "governanceRules": [
+    "Human approval for trust- and compliance-adjacent execution",
+    "Queue-first for sensitive comms paths",
+    "No cross-lane imports without Steve-approved integration packet",
+    "sos-public remains clean public shell without RedDirt runtime coupling"
+  ],
+  "forbiddenActions": [
+    "Moves, deletes, renames of lane folders",
+    "Migrations or Prisma schema edits from architecture slice",
+    "Send automation activation from registry work",
+    "Edits inside sos-public, ajax, phatlip, countyWorkbench, acu_lane_* from this slice",
+    "Secrets in registry JSON or reports"
+  ],
+  "allowedFutureSliceCategories": [
+    "Docs-only alignment",
+    "Read-only scanners and validators",
+    "ECC intelligence depth (named EMAIL-* packets)",
+    "Calendar intelligence (named CAL-* or similar when steered)",
+    "Hosted verification gates",
+    "Explicit integration packets for cross-lane boundaries"
+  ],
+  "sourceArtifacts": [
+    "RedDirt/docs/PROJECT_MASTER_MAP.md",
+    "RedDirt/docs/DIVISION_MASTER_REGISTRY.md",
+    "RedDirt/docs/THREAD_HANDOFF_MASTER_MAP.md",
+    "RedDirt/docs/system-division-map.md",
+    "RedDirt/docs/email-command-center-v2-master-blueprint.md",
+    "RedDirt/docs/email-command-center-v2-agent-planning-harness.md",
+    "RedDirt/data/architecture/reddirt_v2_arch_scan_snapshot.json",
+    "H:\\SOSWebsite\\README.md (workspace root — read if present)",
+    "H:\\SOSWebsite\\START_HERE_FOR_AI.md",
+    "H:\\SOSWebsite\\CURSOR_CODEX_COORDINATION_PROTOCOL.md",
+    "H:\\SOSWebsite\\SOSWEBSITE_OPERATING_MAP.md",
+    "H:\\SOSWebsite\\KELLY_SOS_RECLASSIFICATION_AND_MIGRATION_MAP.md",
+    "H:\\SOSWebsite\\RedDirt_CampaignOS_SystemMap_*.md / *.json (optional; not required for slice validity)"
+  ],
+  "openQuestions": [
+    "Which future packet owns first machine-readable export from ECC to sos-public copy deck (if any)?",
+    "When to refresh workspace system map exports into RedDirt/docs for drift detection?"
+  ],
+  "legacyNotes": {
+    "priorShape": "Previous registry used v2IntentLayers A–H and workspaceBoundary; superseded by this schemaVersion 1.0 slice while preserving conceptual mapping in docs."
+  }
+}
