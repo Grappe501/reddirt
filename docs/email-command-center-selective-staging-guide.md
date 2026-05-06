@@ -12,24 +12,26 @@ All paths below are relative to **`H:\SOSWebsite\RedDirt`** (the repo root for t
 
 ## 0. Recommended full-repository staging order (launch / multi-packet trees)
 
-When several build streams touched the repo, **bucket commits** in this order so reviewers can reason about risk:
+When several build streams touched the repo, **bucket commits** in this order so reviewers can reason about risk (**functional packet grouping**):
 
-1. **Infrastructure / env / doc-only** — `README.md`, deployment docs, **non-secret** `.env.example` updates. **Never** stage `.env`, `.env.local`, or **`.env.backup*`** (machine-local backups).  
-2. **Email Command Center schema / migrations** — only when a **database packet** was explicitly completed: `prisma/schema.prisma`, `prisma/migrations/**` — review **diff intent** line-by-line.  
-3. **Gmail foundation** — OAuth, sync, watch, review→queue, Pub/Sub scaffold (as applicable to the packet).  
-4. **AI / profile / audience** — queue intelligence, profile graph, audience studio.  
-5. **SendGrid foundation** — config, webhook receiver, foundation UI.  
-6. **Contact import staging** — import actions, `/imports` routes, `contact-import.ts`.  
-7. **Message Studio** — local drafts, Campaign Voice, editorial, templates, send packet panel, `message-studio-ai-actions` if touched.  
-8. **Automation / Analytics / Daily / Send Governance** — shells + Daily + send-execution doctrine.  
-9. **Closeout / launch docs** — route inventory, selective staging, **launch hardening**, first-run checklist, progress ledger, operator smoke test.
+1. **DB / env tooling docs** — `README.md`, `docs/deployment.md`, **`npm run email:db:diagnose`** / preflight docs, **non-secret** `.env.example` only. **Never** stage `.env`, `.env.local`, or **`.env.backup*`** / **`.env.backup-*`**.  
+2. **Gmail foundation** — OAuth, sync, watch, review→queue, Pub/Sub scaffold (as applicable to the packet).  
+3. **AI / profile / audience** — queue intelligence, profile graph, audience studio.  
+4. **SendGrid foundation** — config, webhook receiver, foundation UI.  
+5. **Contact import staging** — import actions, `/imports` routes, `contact-import.ts`.  
+6. **Message Studio** — local drafts, Campaign Voice, editorial, templates, send packet panel, `message-studio-ai-actions` if touched.  
+7. **Governance / Daily / Analytics / Automation** — shells + Daily + send-execution doctrine + map/readiness when touched with this stream.  
+8. **Closeout / hardening docs** — route inventory, selective staging, **launch hardening**, first-run checklist, progress ledger, operator smoke test.
 
-**Before `git add`:**
+**Schema / migrations (when applicable):** only when a **database packet** was explicitly completed and reviewed — `prisma/schema.prisma`, `prisma/migrations/**` — ideally **their own commit** with a clear message; **not** mixed blindly with doc-only hardening.
 
-- **Do not** stage `.env` or `.env.backup*`.  
-- **Review** `prisma/schema.prisma` and **`package-lock.json`** intentionally — lockfile churn often belongs in its own commit or should match real dependency changes.  
-- **Untracked** files must be **named and reviewed** before `git add -A`; prefer explicit paths from `git status`.  
-- Run **`npm run email:no-send-scan`** (heuristic) when ECC execution posture is in question.
+**Final staging discipline (before `git add`):**
+
+- **Do not** stage `.env`, **`.env.backup*`**, or any file you know contains **secrets**.  
+- **Review** `prisma/schema.prisma` and **`package-lock.json`** **intentionally** — every hunk should match the story of the commit.  
+- **Stage new untracked** components **on purpose** (name each path); avoid `git add -A` without reading `git status`.  
+- Prefer **`git add <paths…>`** grouped by the numbered buckets above.  
+- Run **`npm run email:no-send-scan`** when anything under **`email-command-center`** changed.
 
 ---
 

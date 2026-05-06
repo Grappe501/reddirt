@@ -16,6 +16,8 @@ import { MessageStudioCampaignPanels } from "@/components/admin/email-command-ce
 import { MessageStudioEditorialReviewPanel } from "@/components/admin/email-command-center/MessageStudioEditorialReviewPanel";
 import { MessageStudioProductionTemplatesPanel } from "@/components/admin/email-command-center/MessageStudioProductionTemplatesPanel";
 import { MessageStudioSendPacketPanel } from "@/components/admin/email-command-center/MessageStudioSendPacketPanel";
+import { MessageStudioSharedDraftsPanel } from "@/components/admin/email-command-center/MessageStudioSharedDraftsPanel";
+import type { MessageStudioDraftListRow } from "@/lib/email-command-center/message-studio-drafts";
 import { getDefaultCampaignVoiceSettings, getToneProfileById } from "@/lib/email-command-center/campaign-voice";
 import {
   defaultEditorialClaimSourceChecklist,
@@ -60,6 +62,8 @@ export type MessageStudioDraftPlannerProps = {
   queryImportBatchId?: string;
   /** Server detects OPENAI_API_KEY — no secret exposed to client */
   openaiServerConfigured?: boolean;
+  /** Shared Postgres drafts (EMAIL-MESSAGE-STUDIO-SERVER-DRAFTS-1.0). */
+  serverDraftRows?: MessageStudioDraftListRow[];
 };
 
 export function MessageStudioDraftPlanner({
@@ -68,10 +72,12 @@ export function MessageStudioDraftPlanner({
   queryAudienceDefinitionId,
   queryImportBatchId,
   openaiServerConfigured = false,
+  serverDraftRows = [],
 }: MessageStudioDraftPlannerProps) {
   const [hydrated, setHydrated] = useState(false);
   const [drafts, setDrafts] = useState<MessageStudioLocalDraft[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
+  const [editorDirty, setEditorDirty] = useState(false);
   const [lastSavedAt, setLastSavedAt] = useState<string | null>(null);
   const [copyHint, setCopyHint] = useState<string | null>(null);
   /** Passed once into the next Campaign Voice AI generate call (MESSAGE-STUDIO-PRODUCTION-TEMPLATES-1.0). */
@@ -128,7 +134,7 @@ export function MessageStudioDraftPlanner({
     };
   }, [drafts, hydrated, persist]);
 
-  const patchActive = useCallback(
+  const patchActiveBase = useCallback(
     (patch: Partial<MessageStudioLocalDraft>) => {
       if (!activeId) return;
       const now = new Date().toISOString();
@@ -145,6 +151,35 @@ export function MessageStudioDraftPlanner({
       );
     },
     [activeId],
+  );
+
+  const patchActive = useCallback(
+    (patch: Partial<MessageStudioLocalDraft>) => {
+      setEditorDirty(true);
+      patchActiveBase(patch);
+    },
+    [patchActiveBase],
+  );
+
+  useEffect(() => {
+    setEditorDirty(false);
+  }, [activeId]);
+
+  const onMergeLoadedLocalDraft = useCallback(
+    (loaded: MessageStudioLocalDraft) => {
+      setEditorDirty(false);
+      setDrafts((prev) => prev.map((d) => (d.id === activeId ? loaded : d)));
+      setActiveId(loaded.id);
+    },
+    [activeId],
+  );
+
+  const onAttachLinkedServerId = useCallback(
+    (serverDraftId: string) => {
+      setEditorDirty(false);
+      patchActiveBase({ linkedServerDraftId: serverDraftId });
+    },
+    [patchActiveBase],
   );
 
   const handleNewDraft = () => {
@@ -217,6 +252,7 @@ export function MessageStudioDraftPlanner({
               templatesUsed: [],
               lastSendPacketJson: "",
               lastSendPacketGeneratedAt: "",
+              linkedServerDraftId: undefined,
             }
           : d,
       ),
@@ -313,7 +349,10 @@ export function MessageStudioDraftPlanner({
       <div className="mt-2 rounded-lg border border-amber-200/70 bg-amber-50/80 px-2 py-2 font-body text-[10px] text-amber-950">
         <p className="font-semibold">Governance</p>
         <ul className="mt-1 list-inside list-disc space-y-0.5">
-          <li>Drafts exist only in this browser profile — not server-backed, not visible to other operators.</li>
+          <li>
+            Local drafts exist in this browser profile. <strong>Shared drafts</strong> (panel below) live in Postgres for
+            all operators — still <strong>no send</strong>.
+          </li>
           <li>
             No sends, no SendGrid/Gmail APIs from this page. Optional <strong>admin server</strong> OpenAI drafting runs
             only when <code className="text-[9px]">OPENAI_API_KEY</code> is set — advisory JSON, never auto-sent.
@@ -325,8 +364,17 @@ export function MessageStudioDraftPlanner({
             </Link>{" "}
             to verify gates. This page still cannot send.
           </li>
-          <li>Future server-side draft review / shared persistence will ship in a separate packet.</li>
         </ul>
+      </div>
+
+      <div id="shared-drafts">
+        <MessageStudioSharedDraftsPanel
+          initialServerRows={serverDraftRows}
+          activeDraft={activeDraft}
+          editorDirty={editorDirty}
+          onMergeLoadedLocalDraft={onMergeLoadedLocalDraft}
+          onAttachLinkedServerId={onAttachLinkedServerId}
+        />
       </div>
 
       {(urlContext.source ||

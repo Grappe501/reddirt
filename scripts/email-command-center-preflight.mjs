@@ -13,12 +13,26 @@
  *   1 — DATABASE_URL or DIRECT_URL missing, DNS/DB unreachable, column missing, any ECC migration missing, or strict Gmail env gaps
  */
 
+import { existsSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import { dirname, join } from "node:path";
 import { lookup } from "node:dns/promises";
 import { PrismaClient } from "@prisma/client";
 import {
   EMAIL_COMMAND_CENTER_MIGRATION_DIRS,
   queryEmailCommandCenterMigrationsApplied,
 } from "./lib/email-command-center-migrations.mjs";
+
+const __preflightDir = dirname(fileURLToPath(import.meta.url));
+const REDDIRT_ROOT = join(__preflightDir, "..");
+try {
+  if (typeof process.loadEnvFile === "function") {
+    const envPath = join(REDDIRT_ROOT, ".env");
+    if (existsSync(envPath)) process.loadEnvFile(envPath);
+  }
+} catch {
+  /* ignore */
+}
 
 const args = process.argv.slice(2);
 const strictGmailEnv = args.includes("--strict-gmail-env");

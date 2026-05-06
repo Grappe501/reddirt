@@ -193,7 +193,7 @@ export function EmailCommandCenterContent({
           <strong>false</strong> until a future explicit packet changes it.
         </p>
         <p className="mt-2 leading-snug">
-          <strong>Operator-ready, execution-gated:</strong> use this cockpit and the Daily console for real queue and draft
+          <strong>Operator-complete, execution-gated:</strong> use this cockpit and the Daily console for real queue and draft
           work; provider sends, mass mail, and automation activation remain outside these routes until explicit future
           packets.
         </p>
@@ -265,7 +265,7 @@ export function EmailCommandCenterContent({
             <Link href={SEND_EXECUTION_GOVERNANCE_PATH} className="font-bold underline">
               Send Execution Governance
             </Link>{" "}
-            — future send rails, suppression gate, and approval map (still <strong>no live sends</strong>).
+            — doctrine + <strong>#ops</strong> governed SendGrid console (still <strong>no queue send</strong>).
           </li>
           <li>
             QA script (repo):{" "}
@@ -289,7 +289,7 @@ export function EmailCommandCenterContent({
             <li>Analytics readiness dashboard (read-only aggregates).</li>
             <li>Route map + readiness checklist routes.</li>
             <li>
-              Send Execution Governance shell — doctrine for future Gmail/SendGrid sends (
+              Send Execution — governance copy + <strong>#ops</strong> governed SendGrid test/broadcast console (
               <Link href={SEND_EXECUTION_GOVERNANCE_PATH} className="font-bold underline">
                 /send-execution
               </Link>
@@ -300,17 +300,22 @@ export function EmailCommandCenterContent({
         <div className={`${card} border-rose-200/60 bg-rose-50/60`}>
           <h2 className={h3}>What is intentionally blocked?</h2>
           <ul className="mt-2 list-inside list-disc space-y-0.5 font-body text-[11px] text-rose-950/95">
-            <li>Live SendGrid broadcast or mass send from Command Center surfaces.</li>
+            <li>
+              SendGrid mail without the Send Execution gates — no queue-triggered, no Automation-triggered, no Analytics-triggered
+              sends; provider Mail API only from explicit <code className="text-[10px]">/send-execution#ops</code> form posts after
+              preflight + approvals.
+            </li>
             <li>Gmail send-from-queue or auto-reply from these routes.</li>
             <li>Auto-send or auto-approval from AI output.</li>
             <li>Production hosted imports until the same migrate + import gate passes on canonical DATABASE_URL.</li>
             <li>Automatic CRM profile updates from AI or imports (commits stay on EmailContactProfile + governed facts).</li>
             <li>
-              Provider execution — see{" "}
+              Ungoverned shortcuts — see{" "}
               <Link href={SEND_EXECUTION_GOVERNANCE_PATH} className="font-bold underline">
-                Send Execution Governance
+                Send Execution
               </Link>{" "}
-              for the gate map; <strong>EMAIL-SEND-EXECUTION-1.0</strong> still future.
+              for doctrine + <strong>#ops</strong> console; <strong>EMAIL-SEND-EXECUTION-1.0</strong> ships the explicit operator path
+              only (not queue send).
             </li>
           </ul>
         </div>
@@ -322,11 +327,11 @@ export function EmailCommandCenterContent({
       >
         <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-navy/80">Blocked today — send step</p>
         <p className="mt-1 leading-snug">
-          No Gmail or SendGrid execution from the Command Center. Open{" "}
-          <Link href={SEND_EXECUTION_GOVERNANCE_PATH} className="font-bold text-kelly-forest underline">
-            Send Execution Governance
+          No Gmail send-from-queue. SendGrid Mail API only via{" "}
+          <Link href={`${SEND_EXECUTION_GOVERNANCE_PATH}#ops`} className="font-bold text-kelly-forest underline">
+            Send Execution (#ops)
           </Link>{" "}
-          for the full pre-send checklist, suppression doctrine, and approval roles — operator training only.
+          after explicit operator submits — read the governance sections above for checklist + doctrine.
         </p>
       </div>
 
@@ -756,13 +761,13 @@ export function EmailCommandCenterContent({
             title="Send Execution Governance (doctrine map)"
             status="live"
             href={SEND_EXECUTION_GOVERNANCE_PATH}
-            safety="Read-only gates checklist — no SendGrid/Gmail APIs; use before asking for EMAIL-SEND-EXECUTION-1.0."
+            safety="Upper page is read-only doctrine — no provider buttons in governance cards."
           />
           <TonightOperatorCard
-            title="Future governed SendGrid / Gmail send execution"
-            status="future"
-            href={SEND_EXECUTION_GOVERNANCE_PATH}
-            safety="EMAIL-SEND-EXECUTION-1.0 not shipped — read governance page for suppression + approval path."
+            title="Send Execution — governed SendGrid (#ops)"
+            status="partial"
+            href={`${SEND_EXECUTION_GOVERNANCE_PATH}#ops`}
+            safety="EMAIL-SEND-EXECUTION-1.0 — explicit forms only: preflight, test to one address, final approval, typed SEND APPROVED for broadcast; no queue send."
           />
         </div>
       </section>
@@ -960,8 +965,8 @@ export function EmailCommandCenterContent({
             missing={[
               ...(sgF.dbReachable ? [] : ["`npx prisma migrate deploy` for SendGrid foundation tables"]),
               ...(sg.sendgridWebhookVerificationKeyPresent ? [] : ["Signed webhook PEM for production intake on /api/sendgrid/events"]),
-              "EMAIL-SENDGRID-CONTACT-SYNC-1.1 — governed list/segment sync (future)",
-              "EMAIL-SEND-EXECUTION-1.0 — broadcast execution (future)",
+              "EMAIL-SENDGRID-CONTACT-SYNC-1.1 — governed list/segment sync (preview + execute when enabled)",
+              "SendGrid event → EmailSendRecipient reconciliation (future packet)",
             ]}
             nextPacket="EMAIL-SENDGRID-CONTACT-SYNC-1.1 (sync) · EMAIL-MESSAGE-STUDIO-1.1 (persist drafts) — Message Studio route is live for planning only"
             safetyGate="No mass send from Command Center; suppressions must gate future sends; never expose API keys in UI."

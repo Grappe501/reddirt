@@ -46,27 +46,27 @@ const SEND_RAILS: {
   },
   {
     title: "SendGrid broadcast",
-    status: "Future — no mass send API from Command Center",
+    status: "Governed — operator console on this route (explicit final confirmation)",
     prerequisites: [
-      "EMAIL-SENDGRID-CONTACT-SYNC-1.1 governed list/segment sync.",
-      "Sender identity + domain authentication in SendGrid (manual checklist).",
-      "Audience definition approved + suppression scan.",
+      "Shared Message Studio draft in APPROVED_FOR_SEND_GOVERNANCE with sendPacketJson.",
+      "ACTIVE EmailAudienceDefinition + SYNCED SendGridContactSyncRun for the same cohort.",
+      "SENDGRID_API_KEY, SENDGRID_FROM_EMAIL, SENDGRID_FROM_NAME, numeric SENDGRID_UNSUBSCRIBE_GROUP_ID (ASM).",
     ],
-    sourceData: "EmailAudienceDefinition + ACTIVE profile facts; import provenance for mixed lists.",
-    approvalGate: "Comms lead + finance/counsel for fundraising tone; principal review if sensitive.",
-    suppressionGate: "SendGridSuppression + webhook events must be checked — overrides audience membership.",
+    sourceData: "EmailSendExecution + EmailSendRecipient audit rows; suppression exclusions before submit.",
+    approvalGate: "Test send reviewed → READY_FOR_FINAL_APPROVAL → FINAL_SEND_APPROVAL record → typed SEND APPROVED.",
+    suppressionGate: "SendGridSuppression exclusions mandatory; broadcast blocked without ASM posture.",
     risk: "High",
-    futurePacket: "EMAIL-SEND-EXECUTION-1.0 (governed broadcast execution).",
+    futurePacket: "SendGrid event → recipient reconciliation; hosted DB verification for prod sends.",
   },
   {
     title: "SendGrid test send",
-    status: "Future — test path not exposed here",
-    prerequisites: ["Small seed list with documented consent.", "Suppressions cleared for test cohort.", "Message approved copy frozen."],
-    sourceData: "Same as broadcast; capped recipient list with audit log (future).",
-    approvalGate: "Operator + second human for non-prod lists; counsel for donor-adjacent tests.",
-    suppressionGate: "Test addresses must not be production-suppressed incorrectly — procedure TBD in execution packet.",
+    status: "Governed — single explicit operator-entered address only",
+    prerequisites: ["Execution READY_FOR_TEST.", "SendGrid env for mail send (key + from + name)."],
+    sourceData: "Same draft copy as broadcast path; one personalization to test inbox only.",
+    approvalGate: "Operator enters test address each time — no list send.",
+    suppressionGate: "Broadcast suppression rules apply to final send; test uses one recipient only.",
     risk: "Medium",
-    futurePacket: "EMAIL-SEND-EXECUTION-1.0 (test mode section).",
+    futurePacket: "Additional test cohort policies if needed.",
   },
   {
     title: "Internal review send",
@@ -76,7 +76,7 @@ const SEND_RAILS: {
     approvalGate: "Comms lead + optional counsel for issue/donor language.",
     suppressionGate: "N/A for internal-only; still log for audit.",
     risk: "Low",
-    futurePacket: "EMAIL-SEND-EXECUTION-1.0 or comms-workbench packet (steering).",
+    futurePacket: "EMAIL-SEND-EXECUTION-1.0 (staff roster mode) or comms-workbench packet (steering).",
   },
   {
     title: "Future automated send",
@@ -86,7 +86,7 @@ const SEND_RAILS: {
     approvalGate: "Policy packet + tier gate; human final approval per playbook.",
     suppressionGate: "Mandatory pre-send suppression job against SendGridSuppression + import flags.",
     risk: "High",
-    futurePacket: "EMAIL-AUTOMATION-STUDIO-1.1 + EMAIL-SEND-EXECUTION-1.0 sequencing TBD.",
+    futurePacket: "EMAIL-AUTOMATION-STUDIO-1.1 + governed execution sequencing TBD.",
   },
 ];
 
@@ -172,9 +172,16 @@ const PRECHECK_ROWS: {
   },
   {
     label: "Message approved",
-    status: "future",
-    why: "Separate from queue status APPROVED.",
-    verify: <>Future approval record in EMAIL-SEND-EXECUTION-1.0.</>,
+    status: "partial",
+    why: "Separate from queue status APPROVED — shared server draft must be APPROVED_FOR_SEND_GOVERNANCE.",
+    verify: (
+      <>
+        <Link href={`${ECC}/message-studio#shared-drafts`} className="font-bold underline">
+          Shared drafts
+        </Link>{" "}
+        + Send Execution console preflight.
+      </>
+    ),
   },
   {
     label: "Legal / compliance review if needed",
@@ -200,20 +207,24 @@ const PRECHECK_ROWS: {
   },
   {
     label: "Test send reviewed",
-    status: "future",
+    status: "partial",
     why: "Human confirms rendering + links in inbox.",
-    verify: <>Future test-send UI in EMAIL-SEND-EXECUTION-1.0.</>,
+    verify: (
+      <Link href={`${ECC}/send-execution#ops`} className="font-bold underline">
+        Send Execution — test send panel
+      </Link>
+    ),
   },
   {
     label: "Final operator approval",
-    status: "future",
-    why: "Last human gate before provider API.",
+    status: "partial",
+    why: "Last human gate before provider API — distinct from queue APPROVED.",
     verify: (
       <>
-        <Link href="/admin/workbench/email-queue" className="font-bold underline">
-          Email queue
+        <Link href={`${ECC}/send-execution#ops`} className="font-bold underline">
+          Send Execution — final approval + typed confirmation
         </Link>{" "}
-        triage ≠ send approval — see doctrine below.
+        (not the email queue).
       </>
     ),
   },
@@ -235,6 +246,9 @@ export type SendExecutionGovernanceViewProps = {
 export function SendExecutionGovernanceView({ snapshot }: SendExecutionGovernanceViewProps) {
   const og = snapshot.operatorGate;
   const canSend = snapshot.governance.canSendFromEmailWorkflowItem;
+  const ms = snapshot.messageStudioSharedDrafts;
+  const sharedDraftPrecheckStatus: GateStatus =
+    !ms.dbReachable ? "partial" : ms.approvedForSendGovernance > 0 ? "ready" : ms.totalActiveSharedDrafts > 0 ? "partial" : "future";
 
   return (
     <div className="min-w-0 max-w-5xl space-y-4">
@@ -278,21 +292,22 @@ export function SendExecutionGovernanceView({ snapshot }: SendExecutionGovernanc
       <header className="space-y-2">
         <h1 className="font-heading text-2xl font-bold text-kelly-navy">Send Execution Governance</h1>
         <p className="max-w-3xl font-body text-sm text-kelly-text/85">
-          EMAIL-SEND-EXECUTION-GOVERNANCE-SHELL-1.0 — review the <strong>gates</strong> required before any Gmail or SendGrid
-          send is allowed. This page is <strong>read-only doctrine</strong>; it does not call provider send APIs. Operators
-          can assemble a <strong>Send Packet</strong> (no-send JSON/text) in{" "}
+          EMAIL-SEND-EXECUTION-1.0 — review the <strong>gates</strong> before any Gmail or SendGrid send. The{" "}
+          <strong>governance sections below</strong> stay doctrine-first (no buttons there). The{" "}
+          <strong>operator console</strong> on this same route (<code className="text-[9px]">#ops</code>) wires{" "}
+          <strong>explicit</strong> admin actions only: preflight, single-address test send, final approval, and final
+          SendGrid broadcast after typed confirmation — <strong>no automation, no queue send</strong>. Assemble send packets
+          in{" "}
           <Link href={`${ECC}/message-studio`} className="font-bold underline">
             Message Studio
           </Link>{" "}
-          (<code className="text-[9px]">EMAIL-SEND-PACKET-BUILDER-1.0</code>) to freeze copy, editorial tier, suppression
-          attestations, and approval checklists before any future execution packet. This route is <strong>doctrine only</strong>{" "}
-          — not an execution console and not a compliance sign-off.
+          and promote shared drafts for staff-visible copy.
         </p>
         <div className="flex flex-wrap gap-1.5">
           <span className={badge}>No live sends</span>
           <span className={badge}>Approval required</span>
           <span className={badge}>Suppression-gated</span>
-          <span className={badge}>Future execution packet</span>
+          <span className={badge}>Governed execution console</span>
           <span className={badge}>Human final approval</span>
         </div>
         <p className="font-body text-[10px] text-kelly-text/70">
@@ -302,18 +317,19 @@ export function SendExecutionGovernanceView({ snapshot }: SendExecutionGovernanc
       </header>
 
       <section className={`${card} border-rose-200/60 bg-rose-50/75`}>
-        <h2 className={`${h3} text-rose-950`}>Blocked today</h2>
+        <h2 className={`${h3} text-rose-950`}>Still blocked / unsafe by default</h2>
         <ul className="mt-2 list-inside list-disc space-y-1 font-body text-[11px] text-rose-950/95">
-          <li>This route does not send mail and has no Send / Dispatch buttons.</li>
-          <li>Gmail send-from-queue is not enabled in the Email Command Center lane.</li>
-          <li>SendGrid broadcast and test-send execution are not enabled from these surfaces.</li>
+          <li>No Gmail send-from-queue and no queue-triggered SendGrid from the Email Command Center lane.</li>
           <li>
-            Queue status <strong>APPROVED</strong> (workflow) is <strong>not</strong> the same as send approval — see pre-send
-            checklist.
+            No background sends — the console below only sends when an operator submits a form action (test or final).
           </li>
           <li>
-            Provider execution requires future <strong>EMAIL-SEND-EXECUTION-1.0</strong> (governed packet) plus policy sign-off
-            outside this UI shell.
+            Queue status <strong>APPROVED</strong> (workflow) is <strong>not</strong> the same as send approval — see
+            pre-send checklist and final approval panel.
+          </li>
+          <li>
+            Broadcast remains <strong>suppression + ASM gated</strong> — missing unsubscribe group env blocks broadcast
+            preflight even when test send is possible.
           </li>
         </ul>
       </section>
@@ -382,6 +398,25 @@ export function SendExecutionGovernanceView({ snapshot }: SendExecutionGovernanc
               </p>
             </li>
           ))}
+          <li className="px-2 py-2">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <span className="font-heading text-[11px] font-bold text-kelly-navy">Shared draft saved / reviewed</span>
+              {gateBadge(sharedDraftPrecheckStatus)}
+            </div>
+            <p className="mt-1 font-body text-[10px] text-kelly-text/80">
+              <span className="font-semibold">Why it matters:</span> Future send packets should attach to a durable,
+              staff-visible draft — not only one browser&apos;s localStorage.
+            </p>
+            <p className="mt-0.5 font-body text-[10px] text-kelly-text/75">
+              <span className="font-semibold">Verify:</span>{" "}
+              <Link href={`${ECC}/message-studio#shared-drafts`} className="font-bold underline">
+                Message Studio — Shared drafts
+              </Link>
+              . Active shared drafts (server): <strong>{ms.totalActiveSharedDrafts}</strong>; approved for send governance:{" "}
+              <strong>{ms.approvedForSendGovernance}</strong>
+              {!ms.dbReachable ? " — DB unreachable for counts on this request." : "."} Still <strong>no send</strong>.
+            </p>
+          </li>
         </ul>
       </section>
 
@@ -390,7 +425,7 @@ export function SendExecutionGovernanceView({ snapshot }: SendExecutionGovernanc
         <pre className="mt-2 overflow-x-auto rounded border border-kelly-text/12 bg-kelly-page/60 p-3 font-mono text-[10px] leading-relaxed text-kelly-navy">
 {`Audience definition OR Queue item (context)
     ↓
-Message Studio draft (planning — persist in 1.1)
+Message Studio draft (local browser + optional shared server draft)
     ↓
 Review (comms + optional counsel)
     ↓
@@ -402,7 +437,7 @@ Test send (future — human verifies rendering)
     ↓
 Final operator approval
     ↓
-Future Gmail / SendGrid execution  ← EMAIL-SEND-EXECUTION-1.0
+Governed SendGrid execution  ← operator console (#ops) on this route
     ↓
 Analytics (events, bounces, complaints)`}
         </pre>

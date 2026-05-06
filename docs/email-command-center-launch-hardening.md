@@ -1,63 +1,103 @@
 # Email Command Center — Launch Hardening
 
-**Packet:** **EMAIL-COMMAND-CENTER-LAUNCH-HARDENING-1.0**  
+**Packet:** **EMAIL-COMMAND-CENTER-LAUNCH-HARDENING-1.0** · **KELLY-GRAPPE-APP-DB-GATE-1.0** · **KELLY-GRAPPE-APP-HOSTED-DB-GATE-1.0** (hosted Kelly-Grappe-App verification)  
 **Lane:** `RedDirt/` only · **Division:** Comms / Email Workflow Intelligence  
-**Purpose:** Operator-first **route health** inventory, **safe-now vs blocked** clarity, **no-send** posture, and pointers to first-run + staging docs. **Not** a security audit.
+**Purpose:** Lock **operator-complete, execution-gated** posture: route health, **safe-now vs blocked**, **no-send** doctrine, first-run + staging discipline, heuristic scan. **Not** a security audit.
 
 **Companion:** [`email-command-center-first-run-operator-checklist.md`](./email-command-center-first-run-operator-checklist.md) · [`email-command-center-selective-staging-guide.md`](./email-command-center-selective-staging-guide.md) · [`email-command-center-route-inventory.md`](./email-command-center-route-inventory.md)
 
 ---
 
-## Status summary
+## Current status
 
-| Dimension | Today |
-|-----------|--------|
-| **Operator posture** | **Operator-ready, execution-gated** — triage, drafts, readiness, and doctrine surfaces are usable daily; **no** Command Center provider send, **no** mass mail, **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** remains **false**. |
-| **Send Packet Builder** | **Panel on Message Studio** (`/message-studio#send-packet-builder`) — **not** a separate App Router path. |
-| **Sanity script** | `npm run email:no-send-scan` — heuristic grep over `src/` (warnings only; **no** secret printing). |
-
----
-
-## Route health inventory
-
-Paths are under **`https://<host>`** in production; table uses **path only**.
-
-| Route | Purpose | Current state | Safe to use now? | Blocked / degraded when | No-send | Smoke expectation |
-|-------|---------|---------------|------------------|---------------------------|---------|---------------------|
-| `/admin/workbench/email-command-center/daily` | **Daily Operator Console** — snapshot priorities, next actions, work queue, local draft stats | **Live** | **Yes** (UI always loads; DB-backed cards may show zeros if DB unreachable) | DB unreachable → follow Readiness; counts advisory | **Yes** — no send UI | Page loads; badges **No live sends**; links work |
-| `/admin/workbench/email-command-center` | **Cockpit** — queue/readiness/Gmail/Message Studio cards | **Live** | **Yes** | Same as snapshot `operatorGate` | **Yes** | Cockpit renders; **operator-ready, execution-gated** copy visible |
-| `/admin/workbench/email-command-center/map` | Route map + flows | **Live** | **Yes** | None material | **Yes** | All ECC routes listed |
-| `/admin/workbench/email-command-center/readiness` | Checklist from snapshot | **Live** / **Partial** | **Yes** | Rows may show blocked/partial without DB | **Yes** | Rows render; links open |
-| `/admin/workbench/email-command-center/gmail` | Gmail monitor / OAuth entry | **Partial** | **Yes** for navigation; OAuth requires env | Missing OAuth / DB → guided empty states | **Yes** | No send buttons |
-| `/admin/workbench/email-command-center/gmail/connect` | OAuth connect helper (subset of Gmail flow) | **Partial** | **Yes** when steered to connect | Same as Gmail | **Yes** | Completes OAuth per docs; **no** ECC mass send |
-| `/admin/workbench/email-command-center/gmail/review` | Metadata review → manual queue create | **Partial** | **Yes** when Gmail linked | No OAuth / no sync → operator message | **Yes** — manual create only | Create-from-metadata path documented |
-| `/admin/workbench/email-queue` | Email workflow queue | **Live** | **Yes** | DB down → error/empty per app | **Yes** | List loads or graceful error |
-| `/admin/workbench/email-queue/[id]` | Item detail + AI + profile panels | **Live** / **Partial** | **Yes** | DB down | **Yes** | No dispatch/send from ECC panels |
-| `/admin/workbench/email-command-center/profiles` | Profile / hint review | **Live** / **Partial** | **Yes** | DB down → empty + copy | **Yes** | Approve/reject paths when DB OK |
-| `/admin/workbench/email-command-center/audiences` | Audience definitions + previews | **Live** / **Partial** | **Yes** | DB down | **Yes** — no SendGrid sync | Previews when facts exist |
-| `/admin/workbench/email-command-center/imports` | CSV staging list | **Live** / **Partial** | **Yes** for UI | **Real** commit path needs hosted DB gate (operator doc) | **Yes** — no SendGrid | Upload/list or empty |
-| `/admin/workbench/email-command-center/imports/[id]` | Batch detail validate → approve → commit | **Live** / **Partial** | **Yes** when DB healthy | Wrong DB / gate failed → do not commit production lists | **Yes** | Batch workflow matches doc |
-| `/admin/workbench/email-command-center/sendgrid` | SendGrid foundation / suppressions UI | **Partial** | **Yes** for doctrine + counts when DB OK | DB/env missing → zeros + warnings | **Yes** — receive/intake posture | No broadcast send |
-| `/admin/workbench/email-command-center/message-studio` | Local drafts, Campaign Voice, Editorial, templates, **Send Packet** (`#send-packet-builder`) | **Live** | **Yes** | OpenAI optional; drafts **browser-only** | **Yes** | Autosave local; export/copy only |
-| `/admin/workbench/email-command-center/automation` | Automation Studio **shell** | **Live** | **Yes** | N/A | **Yes** — **no activation** | Static maps |
-| `/admin/workbench/email-command-center/analytics` | Analytics & deliverability **shell** | **Live** / **Partial** | **Yes** | DB down → degraded numbers | **Yes** | Read-only |
-| `/admin/workbench/email-command-center/send-execution` | Send Execution Governance **doctrine** | **Live** | **Yes** | N/A | **Yes** — **doctrine only** | Checklist + blocked panel |
-
-**Also:** `…/gmail/connect` — OAuth connect helper (partial; env-dependent). Treat as part of Gmail column for smoke.
+| Statement | Meaning |
+|-----------|---------|
+| **Operator-complete** | All **shipped** Email Command Center surfaces (cockpit, Daily, map, readiness, Gmail monitor/review, queue, profiles, audiences, imports, SendGrid foundation, Message Studio, Automation shell, Analytics shell, send execution governance) are **usable for real daily triage and drafting** — no demo mode. |
+| **Execution-gated** | **No** Command Center mass **email** send, **no** Gmail send-from-queue, **no** SendGrid broadcast **send**, **no** automation activation from these routes. **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** stays **`false`**. **EMAIL-SENDGRID-CONTACT-UPsert-EXECUTION-1.2** allows **Marketing Contacts** upsert (contact records only) for **APPROVED** sync runs — **not** a marketing **send**. Provider **email** execution = **EMAIL-SEND-EXECUTION-1.0** (and related packets). |
 
 ---
 
-## Remaining blockers (launch ≠ execution)
+## What is safe to use now
 
-1. **Hosted Supabase / canonical DB verification** — operator-run `npm run email:contact-import:gate` (and diagnose) on **target** `DATABASE_URL`; wrong DB ⇒ wrong suppressions/audiences.  
-2. **SendGrid contact sync** — not shipped from Command Center; foundation ≠ list execution.  
-3. **Server / shared Message Studio draft persistence** — still `localStorage` per browser.  
-4. **Governed provider send execution** — **`EMAIL-SEND-EXECUTION-1.0`** (future).  
-5. **Production automation activation** — **`EMAIL-AUTOMATION-STUDIO-1.1`** (future).
+- **Navigation + doctrine:** Cockpit, **Daily** (`/daily`), **map**, **readiness**, **send-execution** — always safe to open; DB may change **counts** only.  
+- **Queue:** List + item detail for triage, AI advisory, profile panels — **no** send from item.  
+- **Gmail:** Monitor + **metadata** review → **manual** queue create — safe when OAuth configured; still **no** body store / **no** auto-queue from Pub/Sub in this lane’s contract.  
+- **Profiles / audiences / imports:** Governed review, previews, **staging** CSV path — safe for UI; **commit** to profiles still requires **correct** hosted DB + operator gate (see blocked).  
+- **SendGrid foundation:** Readiness + **receive** path docs + **`#contact-sync`** governed **contact** upsert (**no** “send campaign”, **no** email send from this path).  
+- **Message Studio:** **localStorage** drafts + **shared** Postgres drafts (**`#shared-drafts`**, **EMAIL-MESSAGE-STUDIO-SERVER-DRAFTS-1.0**), Campaign Voice, editorial, templates, **Send packet** (`#send-packet-builder`) — copy/export + persistence/review only (**no** send).  
+- **Automation / Analytics:** **Shell** read-only governance / aggregates — **no** activation.
 
 ---
 
-## Checks (repo)
+## What remains blocked (until named packets + ops)
+
+1. **Hosted Kelly-Grappe-App / Supabase canonical DB verification** — wrong `DATABASE_URL` ⇒ wrong suppressions, audiences, imports. Operator-run **`npm run email:db:diagnose`** + **`npm run email:contact-import:gate`** on the **target** env (see [`email-command-center-contact-import-readiness.md`](./email-command-center-contact-import-readiness.md)).  
+2. **SendGrid Marketing email sends** — **EMAIL-SEND-EXECUTION-1.0+** (future). **Note:** **EMAIL-SENDGRID-CONTACT-UPsert-EXECUTION-1.2** ships **governed contact upsert** (PUT Marketing Contacts) for **APPROVED** runs — **not** an email send; production upsert requires **hosted** DB gate per action.  
+3. **Shared Message Studio drafts** — Postgres **`MessageStudioDraft`** when DB healthy (**no** send). **Send packet** snapshot JSON remains on the **local** draft until copied into shared row via promote/update.  
+4. **Governed provider send execution** — **EMAIL-SEND-EXECUTION-1.0** (future).  
+5. **Production automation activation** — **EMAIL-AUTOMATION-STUDIO-1.1** (future).
+
+---
+
+## Local Docker DB vs hosted Kelly-Grappe / Supabase
+
+| Environment | Role | Operator note |
+|-------------|------|-----------------|
+| **Local Docker Postgres** (`npm run dev:db` / stack scripts) | Dev + **local** migrate/check | Fine for **feature** dev; **not** proof of hosted readiness. Preflight may show migration parity vs ECC set. |
+| **Hosted Kelly-Grappe / Supabase (canonical)** | **Production** campaign DB | **Must** be verified separately — URL, pooler username (`postgres.<project>` for Supavisor), **`DIRECT_URL`** if split. **Do not** assume local gate = hosted gate. |
+| **Netlify build** | CI build host | **`DATABASE_URL`** must be **cloud** Postgres (see `scripts/netlify-build.sh` — **blocks** localhost). |
+
+**Stop condition:** If hosted verification is **not** done, treat **imports commit**, **suppression-dependent sends** (future), and **broadcast** as **blocked** even when local UI works.
+
+### Kelly-Grappe-App hosted DB gate (`KELLY-GRAPPE-APP-DB-GATE-1.0` + `KELLY-GRAPPE-APP-HOSTED-DB-GATE-1.0`)
+
+- **Kelly-Grappe-App** is the **canonical hosted Supabase** Postgres project name for Kelly SOS / RedDirt (confirm in Supabase dashboard with Steve). The **default database name** is often still **`postgres`**; proof is **connection + migrations + gate** on the **Prisma** URLs, not the display name alone.  
+- **Local Docker** passing diagnose / preflight / import gate **does not** equal **Kelly-Grappe-App** verified — `DATABASE_URL` must resolve to a **hosted** Supabase host pattern (`*.supabase.co`, pooler, etc.) for that claim.  
+- **`KELLY-GRAPPE-APP-HOSTED-DB-GATE-1.0` (latest automated pass):** `npm run email:db:diagnose` again showed **`DATABASE_URL` / `DIRECT_URL` on loopback** (`127.0.0.1:5433`) and **Prisma unreachable** — **hosted Kelly-Grappe-App gate not passed**; **`prisma migrate status`**, **`migrate deploy`**, **`email:command-center:preflight`**, **`email:contact-import:gate`**, and **`email:no-send-scan`** as part of the hosted chain were **not** executed (wrong target + local engine down in that shell). **Production readiness for hosted canonical DB is not claimed.**  
+- When the hosted gate **does** pass: real data may use the **staged import commit** workflow on that DB (DB/migration standpoint only) — **sends remain blocked**; run **`migrate deploy`** on that DB so **`20260508120000_message_studio_server_drafts`** exists before relying on shared drafts in production; **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** unchanged until a future execution packet explicitly changes it.
+
+---
+
+## No-send doctrine (summary)
+
+- Queue status **APPROVED** ≠ provider send approval.  
+- **No** `messages.send` / mass ESP execution from Email Command Center UI in this slice.  
+- **No** automation **activation** from Automation Studio (shell only).  
+- **Send Execution Governance** is **doctrine only** — not a send console.  
+- **Send Packet** is a **review artifact** (export/copy) — not a campaign or Gmail action.
+
+---
+
+## `localStorage` draft and send-packet limitations
+
+- Key: **`reddirt:email-command-center:message-studio-drafts:v1`** (browser only).  
+- **Not** shared across staff or devices; clearing site data **deletes** drafts.  
+- **Send packet** optional snapshot fields **`lastSendPacketJson`** / **`lastSendPacketGeneratedAt`** live on the same draft JSON — still **no server** persistence.
+
+---
+
+## Routes to smoke (order)
+
+1. `/admin/workbench/email-command-center/daily`  
+2. `/admin/workbench/email-command-center`  
+3. `/admin/workbench/email-command-center/readiness`  
+4. `/admin/workbench/email-command-center/map`  
+5. `/admin/workbench/email-command-center/gmail`  
+6. `/admin/workbench/email-command-center/gmail/review`  
+7. `/admin/workbench/email-queue`  
+8. `/admin/workbench/email-queue/[id]` (any open item)  
+9. `/admin/workbench/email-command-center/profiles`  
+10. `/admin/workbench/email-command-center/audiences`  
+11. `/admin/workbench/email-command-center/imports`  
+12. `/admin/workbench/email-command-center/sendgrid`  
+13. `/admin/workbench/email-command-center/message-studio` (+ anchors `#editorial-review-desk`, `#send-packet-builder`)  
+14. `/admin/workbench/email-command-center/send-execution`  
+15. `/admin/workbench/email-command-center/automation`  
+16. `/admin/workbench/email-command-center/analytics`
+
+---
+
+## Commands to run (repo)
 
 ```bash
 cd H:\SOSWebsite\RedDirt
@@ -66,15 +106,51 @@ npm run check
 npm run email:no-send-scan
 ```
 
-### Expected `email:no-send-scan` baseline (not failures)
-
-The scan is **heuristic**. A clean operator posture may still print **warnings** for known **non–Email Command Center** integration seams:
-
-1. **`src/lib/integrations/gmail/gmail-api.ts`** — references Gmail **send** API (workbench / integration path; **not** “send from queue” in ECC).
-2. **`src/lib/integrations/sendgrid/env.ts`** — reads `process.env.SENDGRID_API_KEY` outside `src/lib/sendgrid/` + `src/app/api/sendgrid/` (integration env helper).
-
-**New** warnings outside those files warrant a human diff review.
+Optional (operator machine, **not** required for doc-only hardening): `npm run email:db:diagnose`, `npm run email:contact-import:gate` — per runbook; **do not** run `migrate deploy` as part of this packet unless steered for env repair.
 
 ---
 
-*Last updated: **EMAIL-COMMAND-CENTER-LAUNCH-HARDENING-1.0**.*
+## Stop conditions (do not ship / do not “declare green”)
+
+- **Secrets** in diff, chat, or CI logs — stop; rotate if exposed.  
+- **`.env` / `.env.backup*`** staged — stop; use selective staging guide.  
+- **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** not **`false`** in `governance.ts` — stop (**`email:no-send-scan`** should FAIL).  
+- **New** `sgMail.send` / `sendgrid.send` / Gmail send API usage under **`email-command-center`** UI/libs — stop and review (**scan** should FAIL on ECC paths).  
+- **Hosted DB** for production imports **not** verified — treat import **commit** as **blocked** even if UI allows click.
+
+---
+
+## Route health inventory (full table)
+
+Paths use site root prefix **`/admin/workbench/…`**.
+
+| Route | Purpose | Current state | Safe to use now? | Blocked / degraded when | No-send | Smoke expectation |
+|-------|---------|---------------|------------------|---------------------------|---------|---------------------|
+| `…/email-command-center/daily` | Daily Operator Console | **Live** | **Yes** | DB unreachable → degraded counts | **Yes** | Badges + next-actions |
+| `…/email-command-center` | Cockpit | **Live** | **Yes** | Snapshot `operatorGate` | **Yes** | Operator-complete copy |
+| `…/email-command-center/map` | Route map | **Live** | **Yes** | — | **Yes** | Cards + links |
+| `…/email-command-center/readiness` | Checklist | **Live** / **Partial** | **Yes** | DB/keys missing | **Yes** | Rows render |
+| `…/email-command-center/gmail` | Gmail monitor | **Partial** | **Yes** (nav) | No OAuth | **Yes** | No send actions |
+| `…/email-command-center/gmail/connect` | OAuth shim | **Partial** | **Yes** when used | No OAuth config | **Yes** | Redirect works |
+| `…/email-command-center/gmail/review` | Metadata → queue | **Partial** | **Yes** when linked | No sync | **Yes** | Manual create only |
+| `…/email-queue` | Queue list | **Live** | **Yes** | DB down | **Yes** | List / empty state |
+| `…/email-queue/[id]` | Item detail | **Live** / **Partial** | **Yes** | DB down | **Yes** | No dispatch |
+| `…/email-command-center/profiles` | Profile review | **Live** / **Partial** | **Yes** | DB down | **Yes** | Suggestions when present |
+| `…/email-command-center/audiences` | Audience studio | **Live** / **Partial** | **Yes** | DB down | **Yes** | No SendGrid sync |
+| `…/email-command-center/imports` | Import list | **Live** / **Partial** | **Yes** (UI) | Hosted DB not verified for prod commit | **Yes** | Staging copy |
+| `…/email-command-center/imports/[id]` | Batch detail | **Live** / **Partial** | **Yes** when DB OK | Wrong DB | **Yes** | Explicit commit path |
+| `…/email-command-center/sendgrid` | Foundation | **Partial** | **Yes** | DB/env | **Yes** | No broadcast |
+| `…/email-command-center/message-studio` | Message Studio | **Live** | **Yes** | OpenAI optional | **Yes** | Anchors **`#shared-drafts`**, **`#editorial-review-desk`**, **`#send-packet-builder`** |
+| `…/email-command-center/automation` | Automation shell | **Live** | **Yes** | — | **Yes** | No activation |
+| `…/email-command-center/analytics` | Analytics shell | **Live** / **Partial** | **Yes** | DB down | **Yes** | Read-only |
+| `…/email-command-center/send-execution` | Governance doctrine | **Live** | **Yes** | — | **Yes** | No provider APIs |
+
+---
+
+### Expected `email:no-send-scan` baseline (not failures)
+
+Known **integration** seams (outside ECC UI) may still **warn** — typically **`src/lib/integrations/gmail/gmail-api.ts`**, **`src/lib/integrations/sendgrid/send-email.ts`**, **`src/lib/integrations/sendgrid/env.ts`**, **`src/lib/comms-workbench/send-provider-adapters.ts`**. **New** warnings under **`email-command-center`** paths require review.
+
+---
+
+*Last updated: **KELLY-GRAPPE-APP-HOSTED-DB-GATE-1.0** + launch hardening (Kelly-Grappe-App hosted gate **not** passed — loopback + unreachable local DB in automated diagnose).*

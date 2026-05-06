@@ -1,6 +1,6 @@
 # Email Command Center — Contact import readiness
 
-**Packets:** **EMAIL-DB-RECONCILE-CONTACT-IMPORT-GATE-1.0** (gates) · **EMAIL-CONTACT-IMPORT-STAGING-1.0** (staged CSV → approve → commit) · **EMAIL-DB-PEOPLEBASE-SUPABASE-VERIFY-1.0** (hosted canonical DB gate — docs + diagnostics; *packet ID retains historical codename “PeopleBase” — canonical target is the **Live RedDirt Supabase DB** until Steve confirms the Supabase project name*) · **SUPABASE-CANONICAL-DB-AND-ENV-GATE-1.0** (SSR public env vs Prisma `DATABASE_URL` / `DIRECT_URL`; diagnose shows both groups)  
+**Packets:** **EMAIL-DB-RECONCILE-CONTACT-IMPORT-GATE-1.0** (gates) · **EMAIL-CONTACT-IMPORT-STAGING-1.0** (staged CSV → approve → commit) · **EMAIL-DB-PEOPLEBASE-SUPABASE-VERIFY-1.0** (hosted canonical DB gate — docs + diagnostics; *packet ID retains historical codename “PeopleBase” — canonical target is the **Live RedDirt Supabase DB** until Steve confirms the Supabase project name*) · **SUPABASE-CANONICAL-DB-AND-ENV-GATE-1.0** (SSR public env vs Prisma `DATABASE_URL` / `DIRECT_URL`; diagnose shows both groups) · **KELLY-GRAPPE-APP-DB-GATE-1.0** · **KELLY-GRAPPE-APP-HOSTED-DB-GATE-1.0** (Kelly-Grappe-App = canonical hosted Supabase; full hosted chain: diagnose → migrate status/deploy → preflight → **`email:contact-import:gate`** → **`email:no-send-scan`** + **`npm run check`** — **only** when Prisma URLs clearly target **hosted** Supabase)  
 **Lane:** `RedDirt/` · **Division:** Comms / Email Workflow Intelligence  
 **Primary progress bar:** [`campaign-email-command-center-progress-ledger.md`](./campaign-email-command-center-progress-ledger.md)
 
@@ -8,7 +8,19 @@
 
 ## Canonical Supabase DB is canonical for real imports
 
-**Local Docker** proves the **code path** and migrations for dev builds only. The **Canonical Supabase DB** (**Live RedDirt Supabase DB** — hosted Postgres for Kelly SOS / RedDirt) is the intended **canonical** database for **real** contact import commits.
+**Kelly-Grappe-App** (hosted Supabase project name — confirm in dashboard with Steve) is the **canonical** Postgres for **production** RedDirt / Kelly SOS Prisma when **`DATABASE_URL` / `DIRECT_URL`** point at that project’s connection strings. The **database name** in the URL may still be **`postgres`**; trust **host / pooler / project ref + successful diagnose + migrate status + gate**, not the UI label alone.
+
+**Local Docker** proves the **code path** and migrations for dev builds only. The **Canonical Supabase DB** (**Live RedDirt Supabase DB** / **Kelly-Grappe-App**) is the intended **canonical** database for **real** contact import commits.
+
+### Kelly-Grappe-App verification status (docs)
+
+| Check | Status |
+|--------|--------|
+| **`npm run email:db:diagnose`** on **hosted** `DATABASE_URL` (Supabase hostname) | **Not completed** — **`KELLY-GRAPPE-APP-HOSTED-DB-GATE-1.0`** automated pass still saw **loopback** + **unreachable** local port; **not** Kelly-Grappe-App hosted proof. |
+| **`npm run email:contact-import:gate`** on **hosted** URLs | **Not run** — Prisma URLs did **not** target hosted Supabase in that pass. |
+| **`npm run email:no-send-scan`** + **`npm run check`** as hosted-chain tail | **Not run** as part of hosted gate (chain stopped at diagnose). |
+
+**Local Docker success does not equal Kelly-Grappe-App success.** Real contact import **commits** remain **blocked** until the **same** gate sequence passes against the **hosted** canonical database.
 
 **Do not** treat `npm run email:contact-import:gate` passing on localhost as permission to load real lists until the **same** command sequence has passed with **`DATABASE_URL` / `DIRECT_URL`** pointed at that **hosted** database (operator sets env privately — see [`deployment.md`](./deployment.md) § Canonical Supabase DB).
 
@@ -114,4 +126,4 @@ npm run email:command-center:preflight
 
 ---
 
-*Last updated: EMAIL-CONTACT-IMPORT-STAGING-1.0; narrative DB name → Canonical Supabase DB / Live RedDirt Supabase DB.*
+*Last updated: **KELLY-GRAPPE-APP-HOSTED-DB-GATE-1.0** — hosted gate chain documented; automated pass **not** verified (loopback); prior staging + Canonical DB narrative retained.*

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * EMAIL-COMMAND-CENTER-LAUNCH-HARDENING-1.0 — heuristic no-send sanity scan.
- * Does NOT print secrets. Does NOT prove security. Warnings only.
+ * NOT a security proof. Does NOT print secrets (line excerpts truncated + URI-like spans redacted).
  */
 import fs from "fs";
 import path from "path";
@@ -12,25 +12,57 @@ const ROOT = path.resolve(__dirname, "..");
 const SRC = path.join(ROOT, "src");
 const ECC_APP = path.join(ROOT, "src", "app", "admin", "(board)", "workbench", "email-command-center");
 const GOVERNANCE = path.join(ROOT, "src", "lib", "email-workflow", "governance.ts");
+const SEND_EXEC_VIEW = path.join(
+  ROOT,
+  "src",
+  "components",
+  "admin",
+  "email-command-center",
+  "SendExecutionGovernanceView.tsx",
+);
+const SEND_EXEC_PAGE = path.join(ROOT, "src", "app", "admin", "(board)", "workbench", "email-command-center", "send-execution", "page.tsx");
 
 const EXT = new Set([".ts", ".tsx", ".js", ".mjs", ".jsx"]);
 
-/** process.env.SENDGRID_API_KEY reads allowed only in foundation + webhook + sendgrid lib */
 const SENDGRID_ENV_ALLOW_PREFIXES = [
   "src/lib/sendgrid/",
   "src/app/api/sendgrid/",
   "src/lib/email-command-center/sendgrid-foundation",
 ];
 
-const SENDGRID_ENV_NOTE_PREFIXES = [
-  { prefix: "src/lib/integrations/sendgrid/", note: "integrations send path — not ECC; verify not wired from Command Center UI" },
-  { prefix: "src/lib/comms-workbench/", note: "comms workbench send stack — separate from ECC no-send doctrine" },
-  { prefix: "src/components/admin/email-command-center/", note: "ECC UI may reference env name as string only — verify no raw key access" },
-  { prefix: "src/lib/integrations/gmail/", note: "Gmail API integration — may contain messages.send" },
+/** Known non-ECC execution / integration seams — warnings OK here */
+const INTEGRATION_PREFIXES = [
+  "src/lib/integrations/gmail/",
+  "src/lib/integrations/sendgrid/",
+  "src/lib/comms-workbench/",
 ];
 
 function normRel(p) {
   return p.split(path.sep).join("/");
+}
+
+function isEccPath(rel) {
+  const n = normRel(rel);
+  return (
+    n.startsWith("src/components/admin/email-command-center/") ||
+    n.startsWith("src/app/admin/(board)/workbench/email-command-center/") ||
+    n.startsWith("src/lib/email-command-center/")
+  );
+}
+
+function isIntegrationPath(rel) {
+  const n = normRel(rel);
+  return INTEGRATION_PREFIXES.some((p) => n.startsWith(p));
+}
+
+function allowedSendgridEnv(rel) {
+  const n = normRel(rel);
+  return SENDGRID_ENV_ALLOW_PREFIXES.some((p) => n.startsWith(p));
+}
+
+function excerpt(s) {
+  const t = s.trim().slice(0, 120);
+  return t.replace(/postgres(ql)?:\/\/[^\s'"]+/gi, "postgres://…").replace(/SG\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+/g, "SG.…");
 }
 
 function walkFiles(dir, out = []) {
@@ -45,42 +77,48 @@ function walkFiles(dir, out = []) {
   return out;
 }
 
-function allowedSendgridEnv(rel) {
-  const n = normRel(rel);
-  return SENDGRID_ENV_ALLOW_PREFIXES.some((p) => n.startsWith(p) || n.includes(p));
+/** @type {{ rel: string; ln: number; kind: string; line: string; tier: "ecc" | "integration" }[]} */
+const hits = [];
+
+function record(rel, ln, kind, line, tier) {
+  hits.push({ rel: normRel(rel), ln, kind, line: excerpt(line), tier });
 }
 
-function warningsForFile(rel, text) {
-  const lines = text.split(/\r?\n/);
-  const w = [];
+function scanLinePatterns(rel, line, ln) {
   const n = normRel(rel);
+  const ecc = isEccPath(rel);
+  const integ = isIntegrationPath(rel);
 
-  lines.forEach((line, i) => {
-    const ln = i + 1;
-    if (line.includes("//") && line.trim().startsWith("//")) return;
+  if (/\bEMAIL_WORKFLOW_CAN_SEND_FROM_ITEM\s*=\s*true\b/.test(line)) {
+    record(rel, ln, "EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM = true", line, ecc ? "ecc" : "integration");
+  }
+  if (/gmail\.users\.messages\.send/.test(line) || /\busers\.messages\.send\b/.test(line)) {
+    record(rel, ln, "Gmail users.messages.send", line, ecc ? "ecc" : "integration");
+  } else if (/\bmessages\.send\s*\(/.test(line)) {
+    record(rel, ln, "messages.send(", line, ecc ? "ecc" : "integration");
+  }
+  if (/\bsgMail\.send\s*\(/.test(line)) {
+    record(rel, ln, "sgMail.send(", line, ecc ? "ecc" : "integration");
+  }
+  if (/\bsendgrid\.send\s*\(/.test(line)) {
+    record(rel, ln, "sendgrid.send(", line, ecc ? "ecc" : "integration");
+  }
+  if (/\bmailService\.send\s*\(/.test(line)) {
+    record(rel, ln, "mailService.send(", line, ecc ? "ecc" : "integration");
+  }
 
-    if (line.includes("process.env.SENDGRID_API_KEY")) {
-      if (!allowedSendgridEnv(rel)) {
-        w.push({ ln, msg: `process.env.SENDGRID_API_KEY outside allowlisted foundation/webhook paths (${n})` });
-      }
-    }
-
-    if (/\busers\.messages\.send\b/.test(line) || /\bmessages\.send\s*\(/.test(line)) {
-      w.push({ ln, msg: `Possible Gmail send API usage (${n})` });
-    }
-
-  });
-
-  if (n.endsWith("governance.ts")) {
-    if (!/EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM\s*=\s*false\b/.test(text)) {
-      w.push({ ln: 0, msg: `governance.ts must keep EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM = false` });
-    }
-    if (/\bEMAIL_WORKFLOW_CAN_SEND_FROM_ITEM\s*=\s*true\b/.test(text)) {
-      w.push({ ln: 0, msg: `EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM must not be set to true` });
+  if (line.includes("process.env.SENDGRID_API_KEY")) {
+    if (!allowedSendgridEnv(rel)) {
+      record(rel, ln, "process.env.SENDGRID_API_KEY (outside allowlist)", line, ecc ? "ecc" : "integration");
     }
   }
 
-  return w;
+  // send-execution route must not call provider send APIs
+  if (n === normRel(path.relative(ROOT, SEND_EXEC_VIEW)) || n === normRel(path.relative(ROOT, SEND_EXEC_PAGE))) {
+    if (/\bsgMail\.|\bsendgrid\.send\s*\(|\bgmail\.users\.messages\.send/.test(line)) {
+      record(rel, ln, "Provider send API under send-execution surface", line, "ecc");
+    }
+  }
 }
 
 function scanEccAppRoutes() {
@@ -93,7 +131,7 @@ function scanEccAppRoutes() {
         if (name.name === "send" && depth > 0) {
           w.push(`Unexpected directory "send" under ECC app: ${normRel(path.relative(ROOT, full))}`);
         }
-        if (depth < 6) walk(full, depth + 1);
+        if (depth < 8) walk(full, depth + 1);
       }
     }
   };
@@ -101,11 +139,10 @@ function scanEccAppRoutes() {
   return w;
 }
 
-console.log("email-command-center-no-send-scan — heuristic warnings only\nROOT:", normRel(path.relative(process.cwd(), ROOT)) || ".");
+console.log("email-command-center-no-send-scan — sanity check only (not a proof)\nROOT:", normRel(path.relative(process.cwd(), ROOT)) || ".");
 
 const files = walkFiles(SRC);
 let total = 0;
-let fileWarnings = 0;
 
 for (const abs of files) {
   let text;
@@ -116,16 +153,38 @@ for (const abs of files) {
   } catch {
     continue;
   }
-  const rel = normRel(path.relative(ROOT, abs));
-  const ws = warningsForFile(rel, text);
-  if (ws.length) {
-    fileWarnings++;
-    console.log(`\n[${rel}]`);
-    for (const { ln, msg } of ws) {
-      console.log(`  ${ln ? `L${ln}: ` : ""}${msg}`);
+  const rel = path.relative(ROOT, abs);
+  const lines = text.split(/\r?\n/);
+  lines.forEach((line, i) => {
+    scanLinePatterns(rel, line, i + 1);
+  });
+
+  const n = normRel(rel);
+  if (n.endsWith("governance.ts")) {
+    if (!/EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM\s*=\s*false\b/.test(text)) {
+      hits.push({ rel: n, ln: 0, kind: "governance must export EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM = false", line: "", tier: "ecc" });
     }
   }
   total++;
+}
+
+const eccHits = hits.filter((h) => h.tier === "ecc");
+const integHits = hits.filter((h) => h.tier === "integration");
+
+if (eccHits.length) {
+  console.log("\n--- ECC / email-command-center lane (review required) ---");
+  for (const h of eccHits) {
+    console.log(`${h.rel}:${h.ln || "?"}  [${h.kind}]`);
+    if (h.line) console.log(`  > ${h.line}`);
+  }
+}
+
+if (integHits.length) {
+  console.log("\n--- Integration / comms (expected baseline warnings) ---");
+  for (const h of integHits) {
+    console.log(`${h.rel}:${h.ln}  [${h.kind}]`);
+    if (h.line) console.log(`  > ${h.line}`);
+  }
 }
 
 const routeNotes = scanEccAppRoutes();
@@ -134,22 +193,38 @@ if (routeNotes.length) {
   routeNotes.forEach((r) => console.log(`  ${r}`));
 }
 
-// Expected informational lines for operators reviewing scan output
-console.log("\n--- Notes (not warnings) ---");
-SENDGRID_ENV_NOTE_PREFIXES.forEach(({ prefix, note }) => {
-  console.log(`  ${prefix}: ${note}`);
-});
+console.log(`\nScanned ${total} files under src/.`);
 
-console.log(`\nScanned ${total} source files under src/. Files with warnings: ${fileWarnings}.`);
+let result = "PASS";
+let exitCode = 0;
+
 if (!fs.existsSync(GOVERNANCE)) {
-  console.warn("MISSING:", normRel(path.relative(ROOT, GOVERNANCE)));
-  process.exitCode = 1;
+  console.error("FAIL: missing governance.ts");
+  result = "FAIL";
+  exitCode = 1;
 } else {
   const g = fs.readFileSync(GOVERNANCE, "utf8");
   if (!/EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM\s*=\s*false\b/.test(g)) {
-    console.error("FAIL: governance.ts must export EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM = false");
-    process.exitCode = 1;
-  } else {
-    console.log("OK: EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM is false in governance.ts");
+    console.error("FAIL: EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM must be false in governance.ts");
+    result = "FAIL";
+    exitCode = 1;
   }
 }
+
+if (eccHits.length) {
+  result = "FAIL";
+  exitCode = 1;
+} else if (integHits.length) {
+  result = "WARN";
+}
+
+console.log(`\nRESULT: ${result}`);
+console.log(
+  integHits.length && !eccHits.length
+    ? "(WARN = integration/comms baseline only — ECC paths clean.)"
+    : eccHits.length
+      ? "(FAIL = fix ECC lane before treating launch as hardened.)"
+      : "(PASS = ECC paths clean; governance constant OK.)",
+);
+
+process.exitCode = exitCode;

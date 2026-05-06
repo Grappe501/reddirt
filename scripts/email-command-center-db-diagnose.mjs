@@ -8,6 +8,7 @@
  *   node scripts/email-command-center-db-diagnose.mjs
  */
 
+import { existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { lookup } from "node:dns/promises";
@@ -21,6 +22,14 @@ import {
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REDDIRT_ROOT = join(__dirname, "..");
 process.chdir(REDDIRT_ROOT);
+try {
+  if (typeof process.loadEnvFile === "function") {
+    const envPath = join(REDDIRT_ROOT, ".env");
+    if (existsSync(envPath)) process.loadEnvFile(envPath);
+  }
+} catch {
+  /* ignore — diagnose still reports missing or invalid DATABASE_URL */
+}
 
 function envPresent(key) {
   const v = process.env[key];
@@ -390,6 +399,9 @@ async function main() {
   }
 
   console.log("\n--- Canonical Supabase DB gate (operator checklist) ---");
+  console.log(
+    "  **Kelly-Grappe-App** — canonical **hosted** Supabase **Postgres** project name (Steve); default DB name is often still **`postgres`**. Verification = Prisma **`DATABASE_URL` / `DIRECT_URL`** host pattern (e.g. `*.supabase.co` / pooler), DNS, TCP/auth, **`prisma migrate status`**, ECC migration rows — **not** the dashboard display name alone."
+  );
   console.log("  **Canonical Supabase DB** / **Live RedDirt Supabase DB** is the intended hosted Postgres for real contact imports (confirm project name with Steve).");
   console.log("  Local Docker passing diagnose/preflight does **not** verify the hosted canonical database.");
   console.log("  Steps: (1) Supabase Dashboard → the **correct** Supabase project (verify `DATABASE_URL` / `DIRECT_URL` host + ref) → Settings → Database → copy **Connection string** / pooler + direct as needed.");

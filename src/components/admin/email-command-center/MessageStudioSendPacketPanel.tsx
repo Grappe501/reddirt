@@ -169,8 +169,16 @@ export function MessageStudioSendPacketPanel({ activeDraft, patchActive, copyTex
             href={SEND_EXECUTION_PATH}
             className="rounded border border-teal-600/40 bg-teal-700/10 px-2 py-1 text-[10px] font-bold text-teal-950 hover:bg-teal-700/15"
           >
-            Open Send Execution Governance
+            Open Send Execution
           </Link>
+          {activeDraft.linkedServerDraftId ? (
+            <Link
+              href={`${SEND_EXECUTION_PATH}?draftId=${encodeURIComponent(activeDraft.linkedServerDraftId)}#ops`}
+              className="rounded border border-violet-500/40 bg-violet-50 px-2 py-1 text-[10px] font-bold text-violet-950 hover:bg-violet-100"
+            >
+              Create Send Execution (this shared draft)
+            </Link>
+          ) : null}
         </div>
       </div>
 

@@ -120,6 +120,21 @@ model User {
   emailContactImportBatchesCreated    EmailContactImportBatch[]             @relation("EmailContactImportBatchCreatedBy")
   emailContactImportBatchesApproved   EmailContactImportBatch[]             @relation("EmailContactImportBatchApprovedBy")
   emailContactImportDecisions         EmailContactImportDecision[]          @relation("EmailContactImportDecisionDecidedBy")
+  /// EMAIL-MESSAGE-STUDIO-SERVER-DRAFTS-1.0 — shared campaign drafts (persistence only; no send).
+  messageStudioDraftsCreated          MessageStudioDraft[]                  @relation("MessageStudioDraftCreatedBy")
+  messageStudioDraftsUpdated          MessageStudioDraft[]                  @relation("MessageStudioDraftUpdatedBy")
+  messageStudioDraftsAssignedReview   MessageStudioDraft[]                  @relation("MessageStudioDraftAssignedReviewer")
+  messageStudioDraftsReviewed         MessageStudioDraft[]                  @relation("MessageStudioDraftReviewedBy")
+  messageStudioDraftRevisionsCreated  MessageStudioDraftRevision[]        @relation("MessageStudioDraftRevisionCreatedBy")
+  /// EMAIL-SENDGRID-CONTACT-SYNC-1.1 — operator contact sync preview runs (no SendGrid API execution here).
+  sendGridContactSyncRunsCreated      SendGridContactSyncRun[]            @relation("SendGridContactSyncRunCreatedBy")
+  sendGridContactSyncRunsApproved     SendGridContactSyncRun[]            @relation("SendGridContactSyncRunApprovedBy")
+  /// EMAIL-SEND-EXECUTION-1.0 — governed SendGrid send execution audit (explicit operator actions only).
+  emailSendExecutionsCreated          EmailSendExecution[]                @relation("EmailSendExecutionCreatedBy")
+  emailSendExecutionsPreflighted      EmailSendExecution[]                @relation("EmailSendExecutionPreflightBy")
+  emailSendExecutionsApproved         EmailSendExecution[]                @relation("EmailSendExecutionApprovedBy")
+  emailSendExecutionsSent             EmailSendExecution[]                @relation("EmailSendExecutionSentBy")
+  emailSendApprovalsDecided           EmailSendApproval[]                 @relation("EmailSendApprovalDecidedBy")
 }
 
 /// COMP-2: classification for dashboard-uploaded compliance knowledge files.
@@ -4359,6 +4374,8 @@ model EmailContactProfile {
   /// EMAIL-CONTACT-IMPORT-STAGING-1.0 — staged import row matches (preview / commit).
   importRowsMatched  EmailContactImportRow[] @relation("ImportRowMatchedProfile")
   importRowsCommitted EmailContactImportRow[] @relation("ImportRowCommittedProfile")
+  /// EMAIL-SEND-EXECUTION-1.0 — optional recipient linkage for audit.
+  emailSendRecipients EmailSendRecipient[]
 
   @@index([userId])
   @@index([volunteerProfileId])
@@ -4459,6 +4476,10 @@ model EmailAudienceDefinition {
   previewRuns EmailAudiencePreviewRun[]
   sendGridAudienceMap SendGridAudienceMap?
   sendGridContactMaps SendGridContactMap[]
+  /// EMAIL-SENDGRID-CONTACT-SYNC-1.1 — governed preview/approval audit rows (no auto sync).
+  sendGridContactSyncRuns SendGridContactSyncRun[]
+  /// EMAIL-SEND-EXECUTION-1.0 — governed outbound sends (no queue auto-send).
+  emailSendExecutions EmailSendExecution[]
 
   @@index([status, updatedAt])
 }
@@ -4477,6 +4498,74 @@ model EmailAudiencePreviewRun {
 
   @@index([generatedAt])
   @@index([audienceDefinitionId])
+}
+
+// --- EMAIL-MESSAGE-STUDIO-SERVER-DRAFTS-1.0 — shared Message Studio drafts (review/persistence; no execution). ---
+
+enum MessageStudioDraftStatus {
+  DRAFT
+  NEEDS_REVIEW
+  IN_REVIEW
+  APPROVED_FOR_SEND_GOVERNANCE
+  ARCHIVED
+}
+
+model MessageStudioDraft {
+  id       String                   @id @default(cuid())
+  title    String                   @db.VarChar(500)
+  draftType String                  @default("") @db.VarChar(240)
+  status   MessageStudioDraftStatus @default(DRAFT)
+  subject  String                   @default("") @db.Text
+  preheader String                  @default("") @db.Text
+  body     String                   @default("") @db.Text
+  audienceNote String               @default("") @db.Text
+  primaryCta   String               @default("") @db.VarChar(500)
+  tone         String               @default("") @db.VarChar(240)
+  /// Mirrors local approval tag (draft / needs_review / …); advisory for operators.
+  approvalStatus String             @default("draft") @db.VarChar(64)
+  approvalNotes   String            @default("") @db.Text
+  complianceNotes String            @default("") @db.Text
+  campaignVoiceJson       Json      @default("{}")
+  qualityChecklistJson    Json      @default("{}")
+  editorialReviewJson     Json      @default("{}")
+  templateJson            Json      @default("{}")
+  sendPacketJson          Json?
+  sourceContextJson       Json      @default("{}")
+  metadataJson            Json      @default("{}")
+  createdByUserId String?
+  createdBy       User?   @relation("MessageStudioDraftCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  updatedByUserId String?
+  updatedBy       User?   @relation("MessageStudioDraftUpdatedBy", fields: [updatedByUserId], references: [id], onDelete: SetNull)
+  assignedReviewerUserId String?
+  assignedReviewer       User?   @relation("MessageStudioDraftAssignedReviewer", fields: [assignedReviewerUserId], references: [id], onDelete: SetNull)
+  reviewedByUserId String?
+  reviewedBy       User?   @relation("MessageStudioDraftReviewedBy", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
+  reviewedAt DateTime?
+  archivedAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  revisions MessageStudioDraftRevision[]
+  /// EMAIL-SEND-EXECUTION-1.0 — operator-initiated send execution records (no send from Message Studio itself).
+  emailSendExecutions EmailSendExecution[]
+
+  @@index([status, updatedAt])
+  @@index([updatedAt])
+}
+
+model MessageStudioDraftRevision {
+  id             String            @id @default(cuid())
+  draftId        String
+  draft          MessageStudioDraft @relation(fields: [draftId], references: [id], onDelete: Cascade)
+  revisionNumber Int
+  snapshotJson   Json
+  note           String?           @db.Text
+  createdByUserId String?
+  createdBy       User?            @relation("MessageStudioDraftRevisionCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  createdAt      DateTime         @default(now())
+
+  @@unique([draftId, revisionNumber])
+  @@index([draftId, createdAt])
 }
 
 // --- EMAIL-CONTACT-IMPORT-STAGING-1.0 — CSV staging → validate → approve → commit (no SendGrid, no sends). ---
@@ -4692,6 +4781,179 @@ model SendGridEvent {
   @@index([eventType, occurredAt])
   @@index([occurredAt])
   @@index([email])
+}
+
+/// EMAIL-SENDGRID-CONTACT-SYNC-1.1 + EMAIL-SENDGRID-CONTACT-UPsert-EXECUTION-1.2 — operator-driven preview / approval; optional governed Marketing Contacts upsert (no email send from this model).
+enum SendGridContactSyncRunStatus {
+  PREVIEWED
+  APPROVED
+  SYNCED
+  FAILED
+  ARCHIVED
+}
+
+model SendGridContactSyncRun {
+  id                   String                     @id @default(cuid())
+  audienceDefinitionId String?
+  audienceDefinition   EmailAudienceDefinition?   @relation(fields: [audienceDefinitionId], references: [id], onDelete: SetNull)
+  status               SendGridContactSyncRunStatus @default(PREVIEWED)
+  candidateCount       Int                        @default(0)
+  excludedSuppressedCount Int                     @default(0)
+  excludedMissingEmailCount Int                   @default(0)
+  warningCount         Int                        @default(0)
+  sendgridListId       String?                    @db.VarChar(120)
+  sendgridSegmentId    String?                    @db.VarChar(120)
+  previewJson          Json
+  resultJson           Json                       @default("{}")
+  createdByUserId      String?
+  createdBy            User?                      @relation("SendGridContactSyncRunCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  approvedByUserId     String?
+  approvedBy           User?                      @relation("SendGridContactSyncRunApprovedBy", fields: [approvedByUserId], references: [id], onDelete: SetNull)
+  approvedAt           DateTime?
+  syncedAt             DateTime?
+  createdAt            DateTime                   @default(now())
+  updatedAt            DateTime                   @updatedAt
+
+  @@index([audienceDefinitionId, createdAt])
+  @@index([status, createdAt])
+  emailSendExecutions EmailSendExecution[]
+}
+
+// --- EMAIL-SEND-EXECUTION-1.0 — governed SendGrid send execution (audit; no queue send; no automation). ---
+
+enum EmailSendExecutionStatus {
+  DRAFT
+  PREFLIGHT_FAILED
+  READY_FOR_TEST
+  TEST_SENT
+  READY_FOR_FINAL_APPROVAL
+  FINAL_APPROVED
+  SENDING
+  SENT
+  PARTIAL_FAILURE
+  FAILED
+  CANCELLED
+  ARCHIVED
+}
+
+enum EmailSendExecutionSendType {
+  SENDGRID_TEST
+  SENDGRID_BROADCAST
+  GMAIL_ONE_TO_ONE_FUTURE
+}
+
+enum EmailSendRecipientStatus {
+  CANDIDATE
+  EXCLUDED_SUPPRESSED
+  EXCLUDED_MISSING_CONSENT
+  READY
+  SUBMITTED
+  DELIVERED
+  BOUNCED
+  UNSUBSCRIBED
+  SPAM_REPORTED
+  FAILED
+}
+
+enum EmailSendApprovalType {
+  OPERATOR_REVIEW
+  COMMS_REVIEW
+  PRINCIPAL_REVIEW
+  LEGAL_REVIEW
+  FINANCE_REVIEW
+  FINAL_SEND_APPROVAL
+}
+
+enum EmailSendApprovalStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  NOT_REQUIRED
+}
+
+model EmailSendExecution {
+  id                        String                   @id @default(cuid())
+  status                    EmailSendExecutionStatus @default(DRAFT)
+  sendType                  EmailSendExecutionSendType @default(SENDGRID_BROADCAST)
+  messageStudioDraftId      String?
+  messageStudioDraft        MessageStudioDraft?      @relation(fields: [messageStudioDraftId], references: [id], onDelete: SetNull)
+  emailAudienceDefinitionId String?
+  emailAudienceDefinition   EmailAudienceDefinition? @relation(fields: [emailAudienceDefinitionId], references: [id], onDelete: SetNull)
+  sendGridContactSyncRunId  String?
+  sendGridContactSyncRun    SendGridContactSyncRun? @relation(fields: [sendGridContactSyncRunId], references: [id], onDelete: SetNull)
+  sendPacketJson            Json                     @default("{}")
+  subject                   String                   @default("") @db.Text
+  preheader                 String                   @default("") @db.Text
+  body                      String                   @default("") @db.Text
+  fromEmail                 String                   @default("") @db.VarChar(320)
+  fromName                  String                   @default("") @db.VarChar(320)
+  replyToEmail              String?                  @db.VarChar(320)
+  testRecipientEmail        String?                  @db.VarChar(320)
+  candidateRecipientCount   Int                      @default(0)
+  suppressedRecipientCount  Int                      @default(0)
+  finalRecipientCount       Int                      @default(0)
+  preflightJson             Json                     @default("{}")
+  approvalJson              Json                     @default("{}")
+  providerResultJson        Json                     @default("{}")
+  errorSafe                 String?                  @db.Text
+  createdByUserId         String?
+  createdBy                 User?                    @relation("EmailSendExecutionCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  preflightByUserId         String?
+  preflightBy               User?                    @relation("EmailSendExecutionPreflightBy", fields: [preflightByUserId], references: [id], onDelete: SetNull)
+  approvedByUserId        String?
+  approvedBy                User?                    @relation("EmailSendExecutionApprovedBy", fields: [approvedByUserId], references: [id], onDelete: SetNull)
+  sentByUserId              String?
+  sentBy                    User?                    @relation("EmailSendExecutionSentBy", fields: [sentByUserId], references: [id], onDelete: SetNull)
+  preflightAt               DateTime?
+  finalApprovedAt           DateTime?
+  sentAt                    DateTime?
+  archivedAt                DateTime?
+  metadataJson              Json                     @default("{}")
+  createdAt                 DateTime                 @default(now())
+  updatedAt                 DateTime                 @updatedAt
+
+  recipients EmailSendRecipient[]
+  approvals  EmailSendApproval[]
+
+  @@index([status, updatedAt])
+  @@index([createdAt])
+  @@index([messageStudioDraftId])
+  @@index([emailAudienceDefinitionId])
+}
+
+model EmailSendRecipient {
+  id                   String                 @id @default(cuid())
+  sendExecutionId      String
+  sendExecution        EmailSendExecution     @relation(fields: [sendExecutionId], references: [id], onDelete: Cascade)
+  email                  String                 @db.VarChar(320)
+  emailContactProfileId  String?
+  emailContactProfile    EmailContactProfile?   @relation(fields: [emailContactProfileId], references: [id], onDelete: SetNull)
+  status                 EmailSendRecipientStatus @default(CANDIDATE)
+  suppressionReason      String?                @db.VarChar(500)
+  providerMessageId     String?                @db.VarChar(200)
+  providerEventJson      Json?
+  metadataJson           Json                   @default("{}")
+  createdAt              DateTime               @default(now())
+  updatedAt              DateTime               @updatedAt
+
+  @@index([sendExecutionId, status])
+  @@index([email])
+}
+
+model EmailSendApproval {
+  id               String                @id @default(cuid())
+  sendExecutionId  String
+  sendExecution    EmailSendExecution    @relation(fields: [sendExecutionId], references: [id], onDelete: Cascade)
+  approvalType     EmailSendApprovalType
+  status           EmailSendApprovalStatus @default(PENDING)
+  note             String                @default("") @db.Text
+  approvedByUserId String?
+  approvedBy       User?                 @relation("EmailSendApprovalDecidedBy", fields: [approvedByUserId], references: [id], onDelete: SetNull)
+  decidedAt        DateTime?
+  createdAt        DateTime              @default(now())
+  updatedAt        DateTime              @updatedAt
+
+  @@index([sendExecutionId, approvalType])
 }
 
 // --- Contact engagement + segmentation (Comms workbench, campaign-local; CE-1) ---

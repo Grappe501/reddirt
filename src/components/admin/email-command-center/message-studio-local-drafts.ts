@@ -39,6 +39,8 @@ export type MessageStudioSourceContext = {
 
 export type MessageStudioLocalDraft = {
   id: string;
+  /** When set, local edits can be pushed to this shared server row (EMAIL-MESSAGE-STUDIO-SERVER-DRAFTS-1.0). */
+  linkedServerDraftId?: string;
   createdAt: string;
   updatedAt: string;
   title: string;
@@ -194,6 +196,7 @@ export function createEmptyDraft(overrides?: Partial<MessageStudioLocalDraft>): 
     templatesUsed: overrides.templatesUsed !== undefined ? [...overrides.templatesUsed] : [...base.templatesUsed],
     lastSendPacketJson: overrides.lastSendPacketJson ?? base.lastSendPacketJson,
     lastSendPacketGeneratedAt: overrides.lastSendPacketGeneratedAt ?? base.lastSendPacketGeneratedAt,
+    linkedServerDraftId: overrides.linkedServerDraftId ?? base.linkedServerDraftId,
   };
 }
 
@@ -363,7 +366,13 @@ function normalizeDraft(raw: unknown): MessageStudioLocalDraft | null {
       : [],
     lastSendPacketJson: typeof o.lastSendPacketJson === "string" ? o.lastSendPacketJson : "",
     lastSendPacketGeneratedAt: typeof o.lastSendPacketGeneratedAt === "string" ? o.lastSendPacketGeneratedAt : "",
+    linkedServerDraftId: typeof o.linkedServerDraftId === "string" ? o.linkedServerDraftId : undefined,
   };
+}
+
+/** Parse JSON from the client into a normalized local draft (server actions). */
+export function parseMessageStudioLocalDraftPayload(raw: unknown): MessageStudioLocalDraft | null {
+  return normalizeDraft(raw);
 }
 
 export function loadDraftsFromStorage(): MessageStudioLocalDraft[] {

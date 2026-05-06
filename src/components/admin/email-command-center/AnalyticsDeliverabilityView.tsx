@@ -40,9 +40,12 @@ export function AnalyticsDeliverabilityView({ snapshot, suppressionByType }: Ana
   const au = snapshot.audienceStudio;
   const sg = snapshot.sendgridEnv;
   const sgF = snapshot.sendGridFoundation;
+  const sc = snapshot.sendGridContactSync;
+  const se = snapshot.sendExecution;
   const ci = snapshot.contactImport;
   const oa = snapshot.openAi;
   const og = snapshot.operatorGate;
+  const ms = snapshot.messageStudioSharedDrafts;
   const dbOk = og.cockpitDbReachable && ci.dbSliceReachable;
 
   const checklistDomainAuth: boolean | "manual" = "manual";
@@ -50,11 +53,12 @@ export function AnalyticsDeliverabilityView({ snapshot, suppressionByType }: Ana
     sg.sendgridFromEmailPresent && sg.sendgridFromNamePresent ? true : (false as boolean);
   const checklistWebhook = sg.sendgridWebhookVerificationKeyPresent;
   const checklistSuppressions = sgF.dbReachable && sgF.suppressionCount >= 0;
-  const checklistTestSend = false;
+  const checklistTestSend = se.dbReachable && se.testSentCount > 0;
   const checklistAudience = au.activeAudienceDefinitions > 0 || au.draftAudienceDefinitions > 0;
-  const checklistMessage = false;
+  const checklistMessage = ms.dbReachable && ms.approvedForSendGovernance > 0;
   const checklistLegal = "manual" as const;
-  const checklistOperator = false;
+  const checklistOperator =
+    se.dbReachable && (se.finalApprovedCount > 0 || se.sentCount > 0 || se.readyForFinalApprovalCount > 0);
 
   return (
     <div className="min-w-0 max-w-5xl space-y-4">
@@ -194,7 +198,78 @@ export function AnalyticsDeliverabilityView({ snapshot, suppressionByType }: Ana
           <Stat href={au.path} label="Approved fact triples (building blocks)" value={au.buildingBlockApprovedTriples} />
           <Stat href={au.path} label="Non-archived audience definitions" value={au.activeAudienceDefinitions} />
           <Stat href={au.path} label="Audience preview runs" value="—" sub="See Audience Studio per definition" />
-          <Stat href={au.path} label="Synced to SendGrid" value={0} sub="Not synced — foundation rails only" />
+          <Stat
+            href={sc.path}
+            label="SendGrid contact sync runs (preview+approved)"
+            value={sc.dbReachable ? sc.runsPreviewedCount + sc.runsApprovedCount : "—"}
+            sub="1.2 adds governed Marketing Contacts upsert (no sends)"
+          />
+        </div>
+      </section>
+
+      <section className={card}>
+        <h2 className={h3}>SendGrid contact sync readiness</h2>
+        <p className="mt-1 font-body text-[10px] text-kelly-text/70">
+          Counts come from <code className="text-[9px]">SendGridContactSyncRun</code> — suppression exclusions are computed per audience in the Contact Sync preview (not summed here).
+        </p>
+        {!sc.dbReachable ? (
+          <p className="mt-2 rounded border border-amber-200/80 bg-amber-50/80 px-2 py-2 text-[10px] text-amber-950">
+            Sync run slice not live — verify migrations include{" "}
+            <code className="text-[9px]">20260509120000_sendgrid_contact_sync_run</code> and rerun{" "}
+            <code className="text-[9px]">{og.preflightCliHint}</code>.
+          </p>
+        ) : null}
+        {sc.readinessWarningsSample.length ? (
+          <ul className="mt-2 list-inside list-disc font-body text-[10px] text-amber-950">
+            {sc.readinessWarningsSample.map((w) => (
+              <li key={w}>{w}</li>
+            ))}
+          </ul>
+        ) : null}
+        <div className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+          <Stat href={sc.path} label="PREVIEWED runs" value={sc.runsPreviewedCount} sub="Operator-saved previews" />
+          <Stat href={sc.path} label="APPROVED runs" value={sc.runsApprovedCount} sub="Awaiting or between upserts" />
+          <Stat href={sc.path} label="SYNCED runs" value={sc.runsSyncedCount} sub="Marketing upsert completed" />
+          <Stat href={sc.path} label="FAILED runs" value={sc.runsFailedCount} sub="Review SendGrid Foundation" />
+        </div>
+        <div className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          <Stat
+            href={sc.path}
+            label="Last sync (UTC)"
+            value={sc.latestSyncedAtIso ? sc.latestSyncedAtIso.slice(0, 19) : "—"}
+            sub={sc.latestSyncedProviderStatus ? `Provider status: ${sc.latestSyncedProviderStatus}` : "No SYNCED rows yet"}
+          />
+          <Stat
+            href={sc.path}
+            label="Last provider job id"
+            value={sc.latestSyncedProviderJobId ? `…${sc.latestSyncedProviderJobId.slice(-8)}` : "—"}
+            sub="From latest SYNCED resultJson"
+          />
+          <Stat href={sgF.path} label="Suppressions (local)" value={sgF.dbReachable ? sgF.suppressionCount : "—"} sub="Honored in preview + execute" />
+        </div>
+      </section>
+
+      <section className={card}>
+        <h2 className={h3}>Send execution analytics</h2>
+        <p className="mt-1 font-body text-[10px] text-kelly-text/70">
+          EMAIL-SEND-EXECUTION-1.0 — Postgres counts only. No open/click performance claims until SendGrid Event Webhook data
+          reconciles to recipients.
+        </p>
+        {!se.dbReachable ? (
+          <p className="mt-2 rounded border border-amber-200/80 bg-amber-50/80 px-2 py-2 text-[10px] text-amber-950">
+            Execution table not reachable on this request — apply{" "}
+            <code className="text-[9px]">20260510140000_email_send_execution</code> and rerun migrate.
+          </p>
+        ) : null}
+        <div className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+          <Stat href={SEND_EXECUTION} label="Total executions" value={se.totalExecutions} />
+          <Stat href={SEND_EXECUTION} label="Test sends recorded" value={se.testSentCount} sub="Operator-address tests only" />
+          <Stat href={SEND_EXECUTION} label="Final sends completed" value={se.sentCount} sub="SendGrid submit batches" />
+          <Stat href={SEND_EXECUTION} label="Failed / partial" value={se.failedCount + se.partialFailureCount} />
+          <Stat href={SEND_EXECUTION} label="Preflight failed" value={se.preflightFailedCount} />
+          <Stat href={SEND_EXECUTION} label="Ready for test" value={se.readyForTestCount} />
+          <Stat href={SEND_EXECUTION} label="Final approval pending" value={se.readyForFinalApprovalCount} />
+          <Stat href={SEND_EXECUTION} label="Archived" value={se.archivedCount} />
         </div>
       </section>
 
@@ -232,8 +307,12 @@ export function AnalyticsDeliverabilityView({ snapshot, suppressionByType }: Ana
             <span className="font-semibold">{sgF.dbReachable ? sgF.suppressionCount : "—"}</span>
           </li>
           <li>
-            <strong>Production send from Command Center:</strong>{" "}
-            <span className="font-semibold text-rose-800">blocked</span> — execution remains future governed packets.
+            <strong>Production SendGrid broadcast:</strong>{" "}
+            <span className="font-semibold text-kelly-navy">governed</span> — only from{" "}
+            <Link href={SEND_EXECUTION} className="font-bold underline">
+              Send Execution (#ops)
+            </Link>{" "}
+            after preflight, test send, final approval, typed confirmation, and hosted DB gate in production.
           </li>
         </ul>
         {suppressionByType.length ? (
@@ -278,11 +357,23 @@ export function AnalyticsDeliverabilityView({ snapshot, suppressionByType }: Ana
             ok={checklistWebhook && checklistSuppressions}
             note="Webhook verification + local suppression table when migrations applied."
           />
-          <CheckRow label="Test send plan approved" ok={checklistTestSend} note="Future comms packet — not from this route." />
+          <CheckRow
+            label="Test send plan approved"
+            ok={checklistTestSend}
+            note="Heuristic: at least one governed test send row exists — review content in inbox."
+          />
           <CheckRow label="Audience approved / defined" ok={checklistAudience} note="Heuristic: at least one draft or active definition." />
-          <CheckRow label="Message approved" ok={checklistMessage} note="Message Studio 1.1 + workflow TBD." />
+          <CheckRow
+            label="Message approved"
+            ok={checklistMessage}
+            note="Heuristic: shared drafts in APPROVED_FOR_SEND_GOVERNANCE (Message Studio server drafts)."
+          />
           <CheckRow label="Legal / compliance review (if mass-send)" ok={checklistLegal} />
-          <CheckRow label="Operator final approval" ok={checklistOperator} note="Explicit sign-off outside this dashboard." />
+          <CheckRow
+            label="Operator final approval"
+            ok={checklistOperator}
+            note="Heuristic: execution in final-approval pipeline or completed — verify in Send Execution console."
+          />
         </ul>
       </section>
 
@@ -291,7 +382,7 @@ export function AnalyticsDeliverabilityView({ snapshot, suppressionByType }: Ana
         <ul className="mt-2 list-inside list-disc space-y-0.5 font-body text-[11px] text-rose-950/95">
           <li>Analytics views do not grant permission to send.</li>
           <li>Suppression table must gate future sends — honor before any broadcast packet.</li>
-          <li>No SendGrid broadcast exists from this route.</li>
+          <li>No SendGrid send from this Analytics route — governed sends live under Send Execution (#ops) only.</li>
           <li>No Gmail send exists from this route.</li>
         </ul>
       </section>

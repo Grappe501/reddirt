@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { MessageStudioDraftPlanner } from "@/components/admin/email-command-center/MessageStudioDraftPlanner";
 import { MESSAGE_STUDIO_CONTENT_BLOCKS } from "@/components/admin/email-command-center/message-studio-content-blocks";
+import type { MessageStudioDraftListRow } from "@/lib/email-command-center/message-studio-drafts";
 
 const badge =
   "rounded-full border border-kelly-text/15 bg-white/90 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-kelly-slate";
@@ -103,6 +104,7 @@ type MessageStudioViewProps = {
   queryAudienceDefinitionId?: string;
   queryImportBatchId?: string;
   openAiServerConfigured?: boolean;
+  serverDraftRows?: MessageStudioDraftListRow[];
 };
 
 export function MessageStudioView({
@@ -111,6 +113,7 @@ export function MessageStudioView({
   queryAudienceDefinitionId,
   queryImportBatchId,
   openAiServerConfigured = false,
+  serverDraftRows = [],
 }: MessageStudioViewProps) {
   return (
     <div className="min-w-0 max-w-5xl space-y-4">
@@ -154,15 +157,15 @@ export function MessageStudioView({
         <h1 className="font-heading text-2xl font-bold text-kelly-navy">Message Studio</h1>
         <p className="max-w-3xl font-body text-sm text-kelly-text/85">
           Draft, personalize, review, and prepare campaign email <strong>without sending from this page</strong>.
-          CAMPAIGN-VOICE-1.2 + EDITORIAL-REVIEW-DESK-1.0 — Campaign Voice + **Editorial Review Desk** (send-readiness
-          before governance) + optional <strong>admin-server</strong> OpenAI drafting (advisory only). Local drafts stay in{" "}
-          <strong>browser localStorage</strong> (this device only) — there is <strong>no server-side shared draft store</strong> in
-          this slice; other staff or browsers do not see your drafts until a future persistence packet. Server persistence and
-          sends remain future packets.
+          CAMPAIGN-VOICE-1.2 + EDITORIAL-REVIEW-DESK-1.0 — Campaign Voice + **Editorial Review Desk** (send-readiness before
+          governance) + optional <strong>admin-server</strong> OpenAI drafting (advisory only). <strong>Local drafts</strong> autosave
+          in <strong>browser localStorage</strong> (this device). <strong>Shared drafts</strong> (EMAIL-MESSAGE-STUDIO-SERVER-DRAFTS-1.0)
+          live in Postgres so staff can save, reopen, review, and route copy toward Send Execution Governance — still{" "}
+          <strong>no send</strong> from this lane.
         </p>
         <div className="flex flex-wrap gap-1.5">
           <span className={badge}>No live sends</span>
-          <span className={badge}>Local drafts only</span>
+          <span className={badge}>Local + shared drafts</span>
           <span className={badge}>Approval required</span>
           <span className={badge}>SendGrid future</span>
           <span className={badge}>Gmail send future</span>
@@ -180,8 +183,8 @@ export function MessageStudioView({
           <Link href="/admin/workbench/email-command-center/map" className="font-bold underline">
             Route map
           </Link>{" "}
-          so the team shares the same mental model — still <strong>no send</strong>. Drafts save to{" "}
-          <strong>this browser only</strong> (see workspace below).
+          so the team shares the same mental model — still <strong>no send</strong>. Local drafts save to{" "}
+          <strong>this browser</strong>; shared drafts anchor below at <strong>#shared-drafts</strong>.
         </p>
       </div>
 
@@ -288,6 +291,7 @@ export function MessageStudioView({
         queryAudienceDefinitionId={queryAudienceDefinitionId}
         queryImportBatchId={queryImportBatchId}
         openaiServerConfigured={openAiServerConfigured}
+        serverDraftRows={serverDraftRows}
       />
 
       <section className={card}>

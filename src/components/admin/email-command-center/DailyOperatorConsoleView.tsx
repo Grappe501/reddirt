@@ -87,6 +87,9 @@ function buildNextBestActions(snapshot: EmailCommandCenterSnapshot, draftStats: 
   const pg = snapshot.profileGraph;
   const ci = snapshot.contactImport;
   const sgF = snapshot.sendGridFoundation;
+  const au = snapshot.audienceStudio;
+  const sc = snapshot.sendGridContactSync;
+  const se = snapshot.sendExecution;
 
   if (!og.cockpitDbReachable) {
     out.push("Fix local or hosted database connectivity before imports or live analytics counts — open Readiness checklist.");
@@ -103,6 +106,10 @@ function buildNextBestActions(snapshot: EmailCommandCenterSnapshot, draftStats: 
   if (draftStats && draftStats.needsEditorialReview > 0) {
     out.push("Open Message Studio — local drafts need editorial review (this browser).");
   }
+  const ms = snapshot.messageStudioSharedDrafts;
+  if (ms.dbReachable && ms.needsReview > 0) {
+    out.push("Open Message Studio shared drafts — server rows need review (all operators).");
+  }
   if (draftStats && draftStats.sendGovernanceReady > 0) {
     out.push(
       "Review send packets / drafts ready for governance — assemble no-send packets in Message Studio Send Packet Builder, then verify Send Execution Governance.",
@@ -110,6 +117,39 @@ function buildNextBestActions(snapshot: EmailCommandCenterSnapshot, draftStats: 
   }
   if (og.cockpitDbReachable && sgF.suppressionCount > 0) {
     out.push("Check SendGrid suppressions / deliverability signals before any future broadcast send.");
+  }
+  if (og.cockpitDbReachable && au.activeAudienceDefinitions > 0 && sc.dbReachable && sc.runsPreviewedCount === 0) {
+    out.push(
+      "SendGrid Contact Sync — record preview runs for ACTIVE audiences (suppression-aware) before treating any audience as execution-ready.",
+    );
+  }
+  if (og.cockpitDbReachable && sgF.suppressionCount > 0 && au.activeAudienceDefinitions > 0) {
+    out.push(
+      "Suppressions exist — review SendGrid Foundation Contact Sync previews so excluded addresses stay out of any future marketing upsert.",
+    );
+  }
+  if (sc.runsApprovedCount > 0) {
+    out.push(
+      "Approved SendGrid contact sync runs exist — execute governed Marketing Contacts upsert on SendGrid Foundation (contact sync only; no email send) or wait for operator.",
+    );
+  }
+  if (sc.runsFailedCount > 0) {
+    out.push("SendGrid contact sync run(s) in FAILED — review SendGrid Foundation recent runs and safeError in resultJson.");
+  }
+  if (se.dbReachable && se.preflightFailedCount > 0) {
+    out.push("Send Execution — fix preflight failures (draft governance, packet, audience, sync run, ASM) before test send.");
+  }
+  if (se.dbReachable && se.readyForTestCount > 0) {
+    out.push("Send Execution — execution(s) ready for explicit operator test send (one address at a time).");
+  }
+  if (se.dbReachable && se.testSentCount > 0) {
+    out.push("Send Execution — test send(s) on record; review inboxes before advancing to final approval.");
+  }
+  if (se.dbReachable && se.readyForFinalApprovalCount > 0) {
+    out.push("Send Execution — final approval pending (separate from queue triage).");
+  }
+  if (se.dbReachable && se.failedCount > 0) {
+    out.push("Send Execution — failed provider submissions need operator attention (sanitized errors only).");
   }
   if (out.length === 0) {
     out.push("No urgent counters surfaced — start with Gmail Review or prepare the next message in Message Studio.");
@@ -143,7 +183,10 @@ export function DailyOperatorConsoleView({ snapshot }: Props) {
   const au = snapshot.audienceStudio;
   const ci = snapshot.contactImport;
   const sgF = snapshot.sendGridFoundation;
+  const sc = snapshot.sendGridContactSync;
+  const se = snapshot.sendExecution;
   const oa = snapshot.openAi;
+  const ms = snapshot.messageStudioSharedDrafts;
   const dbOk = og.cockpitDbReachable;
 
   const nextActions = useMemo(() => buildNextBestActions(snapshot, draftStats), [snapshot, draftStats]);
@@ -192,8 +235,9 @@ export function DailyOperatorConsoleView({ snapshot }: Props) {
           </span>
         </div>
         <p className="font-body text-[10px] text-kelly-text/70">
-          EMAIL-DAILY-OPERATOR-CONSOLE-1.0 — <strong>no demo mode</strong>, <strong>no migrations</strong>,{" "}
-          <code className="rounded bg-kelly-page px-0.5 text-[9px]">EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM</code> unchanged.
+          EMAIL-DAILY-OPERATOR-CONSOLE-1.0 — <strong>no demo mode</strong>,{" "}
+          <code className="rounded bg-kelly-page px-0.5 text-[9px]">EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM</code> unchanged. Shared
+          Message Studio draft counts require the server DB (EMAIL-MESSAGE-STUDIO-SERVER-DRAFTS-1.0).
         </p>
       </header>
 
@@ -224,7 +268,8 @@ export function DailyOperatorConsoleView({ snapshot }: Props) {
       <section className="space-y-2">
         <h2 className={h3}>Today&apos;s priorities</h2>
         <p className="font-body text-[10px] text-kelly-text/65">
-          From <code className="text-[9px]">getEmailCommandCenterSnapshot</code> plus this browser&apos;s Message Studio drafts (local only).
+          From <code className="text-[9px]">getEmailCommandCenterSnapshot</code> (shared draft counts) plus this browser&apos;s
+          Message Studio local drafts (localStorage only).
         </p>
         <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
           <PriorityCard
@@ -296,6 +341,72 @@ export function DailyOperatorConsoleView({ snapshot }: Props) {
             degraded={!dbOk || !sgF.dbReachable}
           />
           <PriorityCard
+            title="Contact sync — PREVIEWED runs"
+            value={sc.runsPreviewedCount}
+            href={sc.path}
+            sub="EMAIL-SENDGRID-CONTACT-SYNC-1.1"
+            degraded={!dbOk || !sc.dbReachable}
+          />
+          <PriorityCard
+            title="Contact sync — APPROVED runs"
+            value={sc.runsApprovedCount}
+            href={sc.path}
+            sub="Awaiting Marketing Contacts upsert (no send)"
+            degraded={!dbOk || !sc.dbReachable}
+          />
+          <PriorityCard
+            title="Contact sync — SYNCED runs"
+            value={sc.runsSyncedCount}
+            href={sc.path}
+            sub="EMAIL-SENDGRID-CONTACT-UPsert-EXECUTION-1.2"
+            degraded={!dbOk || !sc.dbReachable}
+          />
+          <PriorityCard
+            title="Contact sync — FAILED runs"
+            value={sc.runsFailedCount}
+            href={sc.path}
+            sub="Needs operator review"
+            degraded={!dbOk || !sc.dbReachable}
+          />
+          <PriorityCard
+            title="Send executions (tracked)"
+            value={se.totalExecutions}
+            href={`${ECC_BASE}/send-execution#ops`}
+            sub="EMAIL-SEND-EXECUTION-1.0 — operator-only"
+            degraded={!dbOk || !se.dbReachable}
+          />
+          <PriorityCard
+            title="Send execution — preflight failed"
+            value={se.preflightFailedCount}
+            href={`${ECC_BASE}/send-execution#ops`}
+            degraded={!dbOk || !se.dbReachable}
+          />
+          <PriorityCard
+            title="Send execution — ready for test"
+            value={se.readyForTestCount}
+            href={`${ECC_BASE}/send-execution#ops`}
+            degraded={!dbOk || !se.dbReachable}
+          />
+          <PriorityCard
+            title="Send execution — test sent"
+            value={se.testSentCount}
+            href={`${ECC_BASE}/send-execution#ops`}
+            sub="Review inbox before final approval"
+            degraded={!dbOk || !se.dbReachable}
+          />
+          <PriorityCard
+            title="Send execution — final approval pending"
+            value={se.readyForFinalApprovalCount}
+            href={`${ECC_BASE}/send-execution#ops`}
+            degraded={!dbOk || !se.dbReachable}
+          />
+          <PriorityCard
+            title="Send execution — failed"
+            value={se.failedCount}
+            href={`${ECC_BASE}/send-execution#ops`}
+            degraded={!dbOk || !se.dbReachable}
+          />
+          <PriorityCard
             title="Queue items with AI analysis"
             value={oa.emailAiQueueItemsAnalyzedCount}
             href={EMAIL_QUEUE_PATH}
@@ -315,6 +426,31 @@ export function DailyOperatorConsoleView({ snapshot }: Props) {
             href={`${MESSAGE_STUDIO_PATH}#send-packet-builder`}
             sub="Editorial tier — open Send Packet Builder (still no send)"
             degraded={false}
+          />
+          <PriorityCard
+            title="Shared drafts — active (server)"
+            value={ms.totalActiveSharedDrafts}
+            href={`${MESSAGE_STUDIO_PATH}#shared-drafts`}
+            sub="Postgres — all operators"
+            degraded={!dbOk || !ms.dbReachable}
+          />
+          <PriorityCard
+            title="Shared drafts — needs review"
+            value={ms.needsReview}
+            href={`${MESSAGE_STUDIO_PATH}#shared-drafts`}
+            degraded={!dbOk || !ms.dbReachable}
+          />
+          <PriorityCard
+            title="Shared drafts — in review"
+            value={ms.inReview}
+            href={`${MESSAGE_STUDIO_PATH}#shared-drafts`}
+            degraded={!dbOk || !ms.dbReachable}
+          />
+          <PriorityCard
+            title="Shared drafts — approved for send governance"
+            value={ms.approvedForSendGovernance}
+            href={`${MESSAGE_STUDIO_PATH}#shared-drafts`}
+            degraded={!dbOk || !ms.dbReachable}
           />
         </div>
       </section>

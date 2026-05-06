@@ -16,7 +16,7 @@ This document inventories **admin workbench** routes that belong to the **Email 
 
 **Governance (all rows):** **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** remains **`false`** — no SendGrid broadcast send, no Gmail send-from-queue, no auto-reply from **`EmailWorkflowItem`**. Optional workbench Gmail send scope is **separate** from email-workflow execution.
 
-**Launch posture:** ECC is **operator-ready, execution-gated** — Daily + cockpit + Message Studio + governance are safe for daily triage and drafting; provider execution and automation activation remain **future** packets. Heuristic **`npm run email:no-send-scan`** is a sanity aid, not a security proof.
+**Launch posture:** ECC is **operator-complete, execution-gated** — Daily + cockpit + Message Studio + governance are safe for daily triage and drafting; provider execution and automation activation remain **future** packets. Heuristic **`npm run email:no-send-scan`** is a sanity aid, not a security proof.
 
 ---
 
@@ -32,7 +32,7 @@ This document inventories **admin workbench** routes that belong to the **Email 
 | **Cannot do** | Send mail; auto-sync Gmail bodies; auto-create queue rows from Pub/Sub; change hosted DB state. |
 | **Upstream** | Workbench auth; Postgres for counts. |
 | **Downstream** | Any route in this inventory; **map** and **readiness** for orientation. |
-| **Smoke expectation** | Page loads; **Do not send** / **operator-ready, execution-gated** copy visible; quick links resolve. |
+| **Smoke expectation** | Page loads; **Do not send** / **operator-complete, execution-gated** copy visible; quick links resolve. |
 | **Governance** | Read-only re external APIs; queue remains on **`/admin/workbench/email-queue`**. |
 
 ### `/admin/workbench/email-command-center/map`
@@ -57,7 +57,7 @@ This document inventories **admin workbench** routes that belong to the **Email 
 | **Can do today** | Open linked surfaces; see degraded copy when DB unreachable; refresh draft counts by revisiting (no server persistence of drafts). |
 | **Cannot do** | Send mail; write Postgres; upload local draft payloads; activate automation. |
 | **Upstream** | **`getEmailCommandCenterSnapshot`**; browser **`reddirt:email-command-center:message-studio-drafts:v1`**. |
-| **Downstream** | Queue, Gmail review/monitor, profiles, imports, audiences, Message Studio (**`#editorial-review-desk`**), send governance, analytics, automation, readiness, map. |
+| **Downstream** | Queue, Gmail review/monitor, profiles, imports, audiences, Message Studio (**`#editorial-review-desk`**, **`#send-packet-builder`**), send governance, analytics, automation, readiness, map. |
 | **Smoke expectation** | Page loads; badges + next-actions visible; DB-unavailable banner when snapshot degraded. |
 | **Governance** | **No demo mode**; queue-first; review-first; **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** unchanged **false**. |
 
@@ -209,11 +209,11 @@ This document inventories **admin workbench** routes that belong to the **Email 
 | Field | Detail |
 |--------|--------|
 | **Status** | **Partial** |
-| **Purpose** | Readiness UI + local previews of events/suppressions/audience maps; **receive-only** webhook path documented. |
-| **Can do today** | Inspect stored **`SendGridEvent`** / **`SendGridSuppression`** when present; readiness copy. |
-| **Cannot do** | Trigger broadcast send; auto two-way contact sync. |
+| **Purpose** | Readiness UI + local previews of events/suppressions/audience maps; **receive-only** webhook path documented; **`#contact-sync`** (**1.1 + 1.2**) — operator preview runs on **`SendGridContactSyncRun`** (suppression-aware, **ACTIVE** audiences), approve row, **optional governed Marketing Contacts upsert** for **APPROVED** runs (**`SENDGRID_API_KEY`**, production **hosted DB gate**) — **contact sync only**, **no** email send. |
+| **Can do today** | Inspect stored **`SendGridEvent`** / **`SendGridSuppression`** when present; readiness copy; save **preview** audit rows; **APPROVED** status; **execute** Marketing Contacts PUT for eligible emails when gates pass. |
+| **Cannot do** | Trigger broadcast / single-send **email**; create campaigns or automation from this page; upsert without **APPROVED** run or without API key; production upsert without hosted DB verification (**deferred posture** = **EMAIL-SEND-EXECUTION-1.0** for **sends**). |
 | **Upstream** | **`POST /api/sendgrid/events`** (signed in prod). |
-| **Downstream** | **`…/analytics`**; future sync + send packets. |
+| **Downstream** | **`…/analytics`**, **`…/daily`**, **`…/audiences`** (handoff links); future Marketing API execution + send packets. |
 | **Smoke expectation** | No send buttons; governance warnings visible. |
 | **Governance** | Foundation ≠ execution. |
 
@@ -225,14 +225,14 @@ This document inventories **admin workbench** routes that belong to the **Email 
 
 | Field | Detail |
 |--------|--------|
-| **Status** | **Live** (browser **`localStorage`** + optional **server** OpenAI when `OPENAI_API_KEY` set) |
-| **Purpose** | **LOCAL-DRAFTS-1.1** + **CAMPAIGN-VOICE-1.2** + **EDITORIAL-REVIEW-DESK-1.0** + **PRODUCTION-TEMPLATES-1.0** + **EMAIL-SEND-PACKET-BUILDER-1.0** — **Send Packet Builder** (`#send-packet-builder`: no-send review packet — completeness, suppression/consent + approval manual checklists, copy/export `.json`/`.txt`, optional **`lastSendPacketJson`** snapshot on draft) plus **Production Templates** panel (`message-templates.ts` registry: category/audience filters, risk/approval/compliance, apply modes with body-replace confirm, template history on draft), Campaign Voice, **Editorial Review Desk** (claim/voice/compliance checklists, readiness tier, last-applied template strip, send-governance handoff), optional **admin-server** AI (advisory; optional one-shot template context on **Generate**); multi-draft workspace, autosave, copy/export, content blocks; queue/audiences/imports query params. |
-| **Can do today** | Save drafts locally (`reddirt:email-command-center:message-studio-drafts:v1`); duplicate/delete; export .json/.txt; insert content blocks; filter/preview/apply production templates; queue template for next AI generate; apply AI suggestions manually; build/copy/export **send packet** review artifact (no provider execution). |
-| **Cannot do** | Server or Postgres persistence; auto-send; client-side direct OpenAI (all model calls are **server actions**). |
+| **Status** | **Live** (browser **`localStorage`** + **Postgres shared drafts** when DB healthy + optional **server** OpenAI when `OPENAI_API_KEY` set) |
+| **Purpose** | **LOCAL-DRAFTS-1.1** + **SERVER-DRAFTS-1.0** + **CAMPAIGN-VOICE-1.2** + **EDITORIAL-REVIEW-DESK-1.0** + **PRODUCTION-TEMPLATES-1.0** + **EMAIL-SEND-PACKET-BUILDER-1.0** — **`#shared-drafts`**: promote local JSON → **`MessageStudioDraft`**, list/open/update workflow status/archive, **`MessageStudioDraftRevision`** snapshots (**no** send); **Send Packet Builder** (`#send-packet-builder`: no-send review packet — completeness, suppression/consent + approval manual checklists, copy/export `.json`/`.txt`, optional **`lastSendPacketJson`** snapshot on draft) plus **Production Templates** panel (`message-templates.ts` registry: category/audience filters, risk/approval/compliance, apply modes with body-replace confirm, template history on draft), Campaign Voice, **Editorial Review Desk** (claim/voice/compliance checklists, readiness tier, last-applied template strip, send-governance handoff), optional **admin-server** AI (advisory; optional one-shot template context on **Generate**); multi-draft workspace, autosave, copy/export, content blocks; queue/audiences/imports query params. |
+| **Can do today** | Save drafts locally (`reddirt:email-command-center:message-studio-drafts:v1`); **promote** active local draft to **shared** Postgres row; **open** shared draft into editor (confirm if dirty); **update** linked shared draft + optional revision note; **save revision** snapshot; **archive** shared row; duplicate/delete local; export .json/.txt; insert content blocks; filter/preview/apply production templates; queue template for next AI generate; apply AI suggestions manually; build/copy/export **send packet** review artifact (no provider execution). |
+| **Cannot do** | Auto-send; client-side direct OpenAI (all model calls are **server actions**). |
 | **Upstream** | **`…/email-queue/[id]`**, **`…/audiences`**, **`…/imports`** (query chips: `source`, `id`, `audienceDefinitionId`, `importBatchId`). |
-| **Downstream** | **`…/send-execution`** (gates); future server drafts + **EMAIL-SEND-EXECUTION-1.0**. |
-| **Smoke expectation** | “Saved locally” / library sidebar; **Editorial Review Desk** visible below workspace; governance copy warns browser-only. |
-| **Governance** | Drafts not shared across staff; **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** unchanged. |
+| **Downstream** | **`…/send-execution`** (gates + **Shared draft saved / reviewed** checklist row); **EMAIL-SEND-EXECUTION-1.0** (future execution). |
+| **Smoke expectation** | “Saved locally” / library sidebar; **`#shared-drafts`** table loads when DB OK; **Editorial Review Desk** (**`#editorial-review-desk`**) and **Send Packet Builder** (**`#send-packet-builder`**) reachable; governance copy states **no send**. |
+| **Governance** | Shared drafts are **persistence/review only**; local scratch may diverge until promoted/updated; **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** unchanged. |
 
 ---
 
@@ -266,44 +266,45 @@ This document inventories **admin workbench** routes that belong to the **Email 
 
 ---
 
-## Send execution governance (no-send shell)
+## Send execution (governance + governed operator console)
 
 ### `/admin/workbench/email-command-center/send-execution`
 
 | Field | Detail |
 |--------|--------|
-| **Status** | **Live** (doctrine only — **no** provider APIs) |
-| **Purpose** | **EMAIL-SEND-EXECUTION-GOVERNANCE-SHELL-1.0** — future Gmail/SendGrid rails, pre-send checklist (**includes “Send packet prepared”** — Message Studio **Send Packet Builder**), suppression gate, approval roles, text decision tree, **Blocked today** panel. |
-| **Can do today** | Read send rails, checklist, and doctrine; follow verify links to Audience, imports, SendGrid, Analytics, readiness, queue, Message Studio **`#send-packet-builder`**. |
-| **Cannot do** | Send mail; call SendGrid/Gmail execute APIs; change **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`**; persist send approvals. |
-| **Upstream** | Message Studio, Analytics, SendGrid Foundation, Audience Studio, Automation Studio, imports, readiness. |
-| **Downstream** | Future **EMAIL-SEND-EXECUTION-1.0** (governed execution packet). |
-| **Smoke expectation** | Page loads; badges show **No live sends**; checklist rows render. |
-| **Governance** | Queue **APPROVED** ≠ send approval; suppressions override audience membership; imports not assumed opted-in. |
+| **Status** | **Live** — upper page: doctrine + rails (**no** buttons there). **`#ops`**: **EMAIL-SEND-EXECUTION-1.0** operator console (admin server actions → **`send-execution.ts`** → **`mail-send.ts`** `fetch` to SendGrid **`/v3/mail/send`** only on explicit submit). |
+| **Purpose** | Pre-send checklist + suppression doctrine + **Prisma** **`EmailSendExecution`** / **`EmailSendRecipient`** / **`EmailSendApproval`** audit trail; create draft execution from shared draft + ACTIVE audience + optional **SYNCED** sync run; **preflight**; **single-address test send**; **final approval**; **broadcast** after typed **`SEND APPROVED`** + production hosted DB gate in **`executeEmailSendGridFinalAction`**. |
+| **Can do today** | Read rails/checklist; **operator**: governed test/final SendGrid paths when env + migrations + policy gates pass. |
+| **Cannot do** | Queue-triggered send; automation activation; change **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`**; bypass suppression; broadcast without ASM env. |
+| **Upstream** | Message Studio (shared drafts, send packet), Audience Studio, SendGrid Foundation (**SYNCED** runs), imports consent posture. |
+| **Downstream** | Analytics/Daily snapshot counts; future **event → recipient** reconciliation. |
+| **Smoke expectation** | Page loads; doctrine badges accurate; **`#ops`** lists executions when DB healthy; **no** send without explicit form submit. |
+| **Governance** | Queue **APPROVED** ≠ send approval; contact sync **SYNCED** ≠ send; suppressions override audience membership; imports not assumed opted-in. |
 
 ---
 
 ## Quick reference table
 
-| Route | Status |
-|-------|--------|
-| `/admin/workbench/email-command-center` | Live |
-| `/admin/workbench/email-command-center/map` | Live |
-| `/admin/workbench/email-command-center/readiness` | Live |
-| `/admin/workbench/email-command-center/gmail` | Partial |
-| `/admin/workbench/email-command-center/gmail/review` | Partial |
-| `/admin/workbench/email-queue` | Live |
-| `/admin/workbench/email-queue/[id]` | Live / Partial |
-| `/admin/workbench/email-command-center/profiles` | Live |
-| `/admin/workbench/email-command-center/audiences` | Live |
-| `/admin/workbench/email-command-center/imports` | Live / Partial |
-| `/admin/workbench/email-command-center/imports/[id]` | Live / Partial |
-| `/admin/workbench/email-command-center/sendgrid` | Partial |
-| `/admin/workbench/email-command-center/message-studio` | Live (localStorage + optional server AI) |
-| `/admin/workbench/email-command-center/automation` | Live (shell) |
-| `/admin/workbench/email-command-center/analytics` | Live / Partial |
-| `/admin/workbench/email-command-center/send-execution` | Live (doctrine — no send) |
+| Route | Status | Safe to use now | Blocked / degraded when | Smoke expectation | Anchors / notes |
+|-------|--------|-----------------|---------------------------|-------------------|-----------------|
+| `/admin/workbench/email-command-center` | Live | **Yes** | DB unreachable → `operatorGate` | Cockpit + **operator-complete** copy | — |
+| `/admin/workbench/email-command-center/daily` | Live | **Yes** | DB unreachable → degraded counts | Badges + next-actions | — |
+| `/admin/workbench/email-command-center/map` | Live | **Yes** | — | All cards | — |
+| `/admin/workbench/email-command-center/readiness` | Live | **Yes** | DB/keys missing → partial rows | Rows render | — |
+| `/admin/workbench/email-command-center/gmail` | Partial | **Yes** (nav) | No OAuth | Connect guidance | — |
+| `/admin/workbench/email-command-center/gmail/review` | Partial | **Yes** when linked | No sync | Manual create | — |
+| `/admin/workbench/email-queue` | Live | **Yes** | DB down | List / filters | — |
+| `/admin/workbench/email-queue/[id]` | Live / Partial | **Yes** | DB down | AI + profile panels | — |
+| `/admin/workbench/email-command-center/profiles` | Live | **Yes** | DB down | Suggestions | — |
+| `/admin/workbench/email-command-center/audiences` | Live | **Yes** | DB down | Previews | — |
+| `/admin/workbench/email-command-center/imports` | Live / Partial | **Yes** (UI) | Hosted DB not verified for prod commit | Staging copy | — |
+| `/admin/workbench/email-command-center/imports/[id]` | Live / Partial | **Yes** when DB OK | Wrong DB | Batch detail | — |
+| `/admin/workbench/email-command-center/sendgrid` | Partial | **Yes** | DB/env | No send buttons; **`#contact-sync`** preview only | **`#contact-sync`** |
+| `/admin/workbench/email-command-center/message-studio` | Live | **Yes** | OpenAI optional; DB down → shared panel empty | Local + shared save + export | **`#shared-drafts`**, **`#editorial-review-desk`**, **`#send-packet-builder`** |
+| `/admin/workbench/email-command-center/automation` | Live | **Yes** | — | No activation | — |
+| `/admin/workbench/email-command-center/analytics` | Live / Partial | **Yes** | DB down | Read-only | — |
+| `/admin/workbench/email-command-center/send-execution` | Live | **Yes** (doctrine always; **#ops** sends only with env + gates) | DB/migration down → empty ops; prod without hosted gate blocks **final** broadcast action | Doctrine + ops panels | **`#ops`**, governance copy |
 
 ---
 
-*Last updated: **EMAIL-COMMAND-CENTER-LAUNCH-HARDENING-1.0** (launch posture + companion docs + smoke line).*
+*Last updated: **EMAIL-SEND-EXECUTION-1.0** (governed SendGrid console on **`/send-execution#ops`** + route inventory row).*

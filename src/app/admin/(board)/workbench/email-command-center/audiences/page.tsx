@@ -7,6 +7,7 @@ import {
   listSuggestedAudienceClusters,
 } from "@/lib/email-command-center/audience-studio";
 import { listSendGridAudienceReadiness } from "@/lib/email-command-center/sendgrid-foundation";
+import { listLatestContactSyncRunStatusByAudienceIds } from "@/lib/email-command-center/sendgrid-contact-sync";
 import { AudienceStudioPreviewForm } from "@/components/admin/email-command-center/AudienceStudioPreviewForm";
 import {
   archiveEmailAudienceDefinitionAction,
@@ -30,6 +31,7 @@ export default async function EmailAudienceStudioPage({
   let clusters: Awaited<ReturnType<typeof listSuggestedAudienceClusters>> = [];
   let definitions: Awaited<ReturnType<typeof listEmailAudienceDefinitions>> = [];
   let sendGridReadinessById: Record<string, string> = {};
+  let contactSyncRunByAudience: Record<string, { status: string; runId: string }> = {};
   let listsOk = snapshot.dbAvailable;
 
   if (snapshot.dbAvailable) {
@@ -44,6 +46,9 @@ export default async function EmailAudienceStudioPage({
       clusters = c;
       definitions = d;
       sendGridReadinessById = Object.fromEntries(sgR.map((r) => [r.audienceDefinitionId, r.sendGridReadinessLabel]));
+      if (d.length) {
+        contactSyncRunByAudience = await listLatestContactSyncRunStatusByAudienceIds(d.map((x) => x.id));
+      }
     } catch {
       listsOk = false;
     }
@@ -113,7 +118,10 @@ export default async function EmailAudienceStudioPage({
         <h2 className="font-heading text-[10px] font-bold uppercase tracking-wide text-rose-950">Governance</h2>
         <ul className="mt-1 list-inside list-disc font-body text-[11px] text-rose-950/95">
           <li>No email sends from this page — queue send flag stays false.</li>
-          <li>SendGrid is not connected; there is no list sync or broadcast execution.</li>
+          <li>
+            SendGrid Contact Sync (1.1) can record preview-only audit rows from SendGrid Foundation — still no Marketing API calls,
+            no list sync execution, no broadcast.
+          </li>
           <li>
             <strong>ACTIVE</strong> <code className="text-[10px]">EmailContactProfileFact</code> rows are the safest
             targeting substrate; pending AI suggestions are shown separately and are not broadcast-eligible.
@@ -152,7 +160,8 @@ export default async function EmailAudienceStudioPage({
           <p className="mt-1 text-[11px] text-kelly-text/80">
             EMAIL-SENDGRID-FOUNDATION-1.0 — foundation rails (readiness + webhook intake + local suppression tables).{" "}
             <strong>No live list sync</strong> and <strong>no sends</strong> from this studio. Per-audience posture is in
-            the saved definitions list (SendGrid column).
+            the saved definitions list (SendGrid + Contact sync columns). Audience preview is{" "}
+            <strong>not</strong> a send list until ACTIVE status, suppression checks, and operator sync preview say so.
           </p>
           <p className="mt-2 text-[11px]">
             <Link
@@ -303,6 +312,11 @@ export default async function EmailAudienceStudioPage({
                       SendGrid: {sendGridReadinessById[d.id] ?? "—"}
                     </span>
                   ) : null}
+                  {listsOk ? (
+                    <span className="ml-1 rounded border border-kelly-navy/20 bg-kelly-fog/80 px-1 text-[9px] font-bold uppercase text-kelly-navy">
+                      Sync run: {contactSyncRunByAudience[d.id]?.status ?? "—"}
+                    </span>
+                  ) : null}
                 </p>
                 <p className="text-[10px] text-kelly-text/60">Updated {d.updatedAt.toISOString()}</p>
                 {d.status !== "ARCHIVED" ? (
@@ -313,6 +327,20 @@ export default async function EmailAudienceStudioPage({
                     >
                       Prepare message for this audience
                     </Link>
+                    <Link
+                      href={`/admin/workbench/email-command-center/sendgrid?preview=${encodeURIComponent(d.id)}#contact-sync`}
+                      className="rounded border border-kelly-navy/25 bg-white px-2 py-0.5 text-[10px] font-bold text-kelly-navy hover:underline"
+                    >
+                      SendGrid contact sync
+                    </Link>
+                    {contactSyncRunByAudience[d.id]?.status === "SYNCED" ? (
+                      <Link
+                        href={`/admin/workbench/email-command-center/send-execution?audienceDefinitionId=${encodeURIComponent(d.id)}&sendGridContactSyncRunId=${encodeURIComponent(contactSyncRunByAudience[d.id]!.runId)}#ops`}
+                        className="rounded border border-violet-300/60 bg-violet-50/90 px-2 py-0.5 text-[10px] font-bold text-violet-950 hover:underline"
+                      >
+                        Prepare send execution
+                      </Link>
+                    ) : null}
                     <form action={archiveEmailAudienceDefinitionAction} className="inline">
                       <input type="hidden" name="id" value={d.id} />
                       <button

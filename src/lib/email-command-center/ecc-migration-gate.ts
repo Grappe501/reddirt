@@ -8,6 +8,9 @@ export const EMAIL_COMMAND_CENTER_MIGRATION_DIRS = [
   "20260505220000_email_audience_studio_foundation",
   "20260506120000_email_sendgrid_foundation",
   "20260507180000_email_contact_import_staging",
+  "20260508120000_message_studio_server_drafts",
+  "20260509120000_sendgrid_contact_sync_run",
+  "20260510140000_email_send_execution",
 ] as const;
 
 export type EmailCommandCenterMigrationRow = { name: string; applied: boolean };
