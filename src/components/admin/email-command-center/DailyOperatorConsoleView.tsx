@@ -90,6 +90,9 @@ function buildNextBestActions(snapshot: EmailCommandCenterSnapshot, draftStats: 
   const au = snapshot.audienceStudio;
   const sc = snapshot.sendGridContactSync;
   const se = snapshot.sendExecution;
+  const sgr = snapshot.sendGridReconciliation;
+  const gpw = snapshot.gmailProductionWatch;
+  const ape = snapshot.automationPolicyEval;
 
   if (!og.cockpitDbReachable) {
     out.push("Fix local or hosted database connectivity before imports or live analytics counts — open Readiness checklist.");
@@ -128,16 +131,18 @@ function buildNextBestActions(snapshot: EmailCommandCenterSnapshot, draftStats: 
       "Suppressions exist — review SendGrid Foundation Contact Sync previews so excluded addresses stay out of any future marketing upsert.",
     );
   }
-  if (sc.runsApprovedCount > 0) {
+  if (sc.runsApprovedAwaitingExecutionCount > 0) {
     out.push(
-      "Approved SendGrid contact sync runs exist — execute governed Marketing Contacts upsert on SendGrid Foundation (contact sync only; no email send) or wait for operator.",
+      "Approved SendGrid contact sync runs await execution — run governed Marketing Contacts upsert on SendGrid Foundation (contacts only; does not send email) or wait for operator.",
     );
   }
   if (sc.runsFailedCount > 0) {
     out.push("SendGrid contact sync run(s) in FAILED — review SendGrid Foundation recent runs and safeError in resultJson.");
   }
-  if (se.dbReachable && se.preflightFailedCount > 0) {
-    out.push("Send Execution — fix preflight failures (draft governance, packet, audience, sync run, ASM) before test send.");
+  if (se.dbReachable && se.needPreflightCount > 0) {
+    out.push(
+      "Send Execution — executions in DRAFT or PREFLIGHT_FAILED need preflight (fix draft governance, packet, ACTIVE audience, SYNCED sync run for broadcast, ASM env) before test send — run from Send Execution when an operator is present.",
+    );
   }
   if (se.dbReachable && se.readyForTestCount > 0) {
     out.push("Send Execution — execution(s) ready for explicit operator test send (one address at a time).");
@@ -150,6 +155,45 @@ function buildNextBestActions(snapshot: EmailCommandCenterSnapshot, draftStats: 
   }
   if (se.dbReachable && se.failedCount > 0) {
     out.push("Send Execution — failed provider submissions need operator attention (sanitized errors only).");
+  }
+  if (sgr.dbReachable && sgr.pendingReconciliationCount > 20) {
+    out.push(
+      "SendGrid event reconciliation — many webhook events are not yet linked to send recipients; open Analytics → Event reconciliation and run a batch (no sends).",
+    );
+  }
+  const bouncedOrFailedRecipients =
+    (sgr.recipientByStatus.BOUNCED ?? 0) +
+    (sgr.recipientByStatus.FAILED ?? 0) +
+    (sgr.recipientByStatus.SPAM_REPORTED ?? 0);
+  if (sgr.dbReachable && bouncedOrFailedRecipients > 0) {
+    out.push(
+      "SendGrid reconciliation — some EmailSendRecipient rows are BOUNCED/FAILED/SPAM_REPORTED; review Analytics + suppressions before the next governed send.",
+    );
+  }
+  if (og.cockpitDbReachable && gpw.dbReachable && gpw.missingPubsubTopic) {
+    out.push(
+      "Gmail push — GOOGLE_PUBSUB_TOPIC is not set; configure Pub/Sub topic before users.watch or POST /api/gmail/pubsub can be production-safe.",
+    );
+  }
+  if (og.cockpitDbReachable && gpw.dbReachable && gpw.missingPubsubVerification) {
+    out.push(
+      "Gmail push — set GMAIL_PUBSUB_VERIFICATION_TOKEN (or GOOGLE_PUBSUB_VERIFICATION_TOKEN) so POST /api/gmail/pubsub can authenticate subscriber calls.",
+    );
+  }
+  if (og.cockpitDbReachable && gpw.dbReachable && gpw.watchesExpiringWithin48hCount > 0) {
+    out.push(
+      "Gmail watch expires within 48h — renew from Gmail monitor or run npm run gmail:watch:renewal-check (dry-run), then execute only with GMAIL_WATCH_RENEWAL_EXECUTE=1 — no mail send.",
+    );
+  }
+  if (og.cockpitDbReachable && gpw.dbReachable && gpw.accountsWithStaleHistoryCursorCount > 0) {
+    out.push(
+      "Gmail history cursor stale — run safe metadata sync on Gmail monitor before trusting incremental history / Pub/Sub-driven previews.",
+    );
+  }
+  if (og.cockpitDbReachable && (ape.alertCount > 0 || ape.warnCount > 0)) {
+    out.push(
+      `Automation policy evaluation — ${ape.warnCount} warn(s), ${ape.alertCount} alert(s) from read-only cockpit checks; open Automation Studio → Policy evaluations (no workers started).`,
+    );
   }
   if (out.length === 0) {
     out.push("No urgent counters surfaced — start with Gmail Review or prepare the next message in Message Studio.");
@@ -185,6 +229,9 @@ export function DailyOperatorConsoleView({ snapshot }: Props) {
   const sgF = snapshot.sendGridFoundation;
   const sc = snapshot.sendGridContactSync;
   const se = snapshot.sendExecution;
+  const sgr = snapshot.sendGridReconciliation;
+  const gpw = snapshot.gmailProductionWatch;
+  const ape = snapshot.automationPolicyEval;
   const oa = snapshot.openAi;
   const ms = snapshot.messageStudioSharedDrafts;
   const dbOk = og.cockpitDbReachable;
@@ -264,6 +311,33 @@ export function DailyOperatorConsoleView({ snapshot }: Props) {
           ))}
         </ol>
       </section>
+
+      {dbOk && (ape.alertCount > 0 || ape.warnCount > 0) ? (
+        <section className={`${card} border-violet-200/70 bg-violet-50/85`}>
+          <h2 className={h3}>Automation policy warnings</h2>
+          <p className="mt-1 font-body text-[10px] text-violet-950/90">
+            EMAIL-AUTOMATION-POLICY-ACTIVATION-1.0 — read-only snapshot checks;{" "}
+            <strong>no workers, no sends</strong>. Evaluated {ape.evaluatedAtIso}.
+          </p>
+          <ul className="mt-2 space-y-1.5 font-body text-[11px] text-violet-950">
+            {ape.policies
+              .filter((p) => p.status !== "ok")
+              .slice(0, 8)
+              .map((p) => (
+                <li key={p.id} className="rounded border border-violet-200/60 bg-white/80 px-2 py-1">
+                  <span className="font-bold">{p.title}</span>{" "}
+                  <span className="text-[10px] uppercase text-violet-800/90">({p.status})</span>
+                  <span className="mt-0.5 block font-mono text-[9px] text-violet-900/80">{p.detailSafe}</span>
+                </li>
+              ))}
+          </ul>
+          <p className="mt-2 font-body text-[10px] text-violet-900">
+            <Link href={`${ECC_BASE}/automation`} className="font-bold underline">
+              Open Automation Studio → Policy evaluations
+            </Link>
+          </p>
+        </section>
+      ) : null}
 
       <section className="space-y-2">
         <h2 className={h3}>Today&apos;s priorities</h2>
@@ -348,8 +422,8 @@ export function DailyOperatorConsoleView({ snapshot }: Props) {
             degraded={!dbOk || !sc.dbReachable}
           />
           <PriorityCard
-            title="Contact sync — APPROVED runs"
-            value={sc.runsApprovedCount}
+            title="Contact sync — approved awaiting upsert"
+            value={sc.runsApprovedAwaitingExecutionCount}
             href={sc.path}
             sub="Awaiting Marketing Contacts upsert (no send)"
             degraded={!dbOk || !sc.dbReachable}
@@ -373,6 +447,13 @@ export function DailyOperatorConsoleView({ snapshot }: Props) {
             value={se.totalExecutions}
             href={`${ECC_BASE}/send-execution#ops`}
             sub="EMAIL-SEND-EXECUTION-1.0 — operator-only"
+            degraded={!dbOk || !se.dbReachable}
+          />
+          <PriorityCard
+            title="Send execution — needs preflight (DRAFT + failed)"
+            value={se.needPreflightCount}
+            href={`${ECC_BASE}/send-execution#ops`}
+            sub="Run preflight when operator present"
             degraded={!dbOk || !se.dbReachable}
           />
           <PriorityCard
@@ -405,6 +486,52 @@ export function DailyOperatorConsoleView({ snapshot }: Props) {
             value={se.failedCount}
             href={`${ECC_BASE}/send-execution#ops`}
             degraded={!dbOk || !se.dbReachable}
+          />
+          <PriorityCard
+            title="Gmail watch — expiring within 48h"
+            value={gpw.watchesExpiringWithin48hCount}
+            href={`${ECC_BASE}/gmail`}
+            sub="users.watch renewal"
+            degraded={!dbOk || !gpw.dbReachable}
+          />
+          <PriorityCard
+            title="Gmail — stale history cursor"
+            value={gpw.accountsWithStaleHistoryCursorCount}
+            href={`${ECC_BASE}/gmail`}
+            sub="Run metadata sync first"
+            degraded={!dbOk || !gpw.dbReachable}
+          />
+          <PriorityCard
+            title="Gmail Pub/Sub env — topic + verifier"
+            value={(gpw.missingPubsubTopic ? 1 : 0) + (gpw.missingPubsubVerification ? 1 : 0)}
+            href={`${ECC_BASE}/readiness`}
+            sub="0 = both set"
+            degraded={!dbOk}
+          />
+          <PriorityCard
+            title="Automation policy — warn + alert"
+            value={ape.warnCount + ape.alertCount}
+            href={`${ECC_BASE}/automation`}
+            sub="Read-only evaluation"
+            degraded={!dbOk}
+          />
+          <PriorityCard
+            title="SendGrid events — pending reconciliation"
+            value={sgr.pendingReconciliationCount}
+            href={`${ECC_BASE}/analytics#reconciliation`}
+            sub="Webhook → recipients"
+            degraded={!dbOk || !sgr.dbReachable}
+          />
+          <PriorityCard
+            title="Send recipients — bounced / failed / spam"
+            value={
+              (sgr.recipientByStatus.BOUNCED ?? 0) +
+              (sgr.recipientByStatus.FAILED ?? 0) +
+              (sgr.recipientByStatus.SPAM_REPORTED ?? 0)
+            }
+            href={`${ECC_BASE}/analytics#reconciliation`}
+            sub="After reconciliation"
+            degraded={!dbOk || !sgr.dbReachable}
           />
           <PriorityCard
             title="Queue items with AI analysis"

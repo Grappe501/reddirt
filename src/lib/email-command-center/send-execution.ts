@@ -553,6 +553,11 @@ export async function executeFinalSendGridSend(
     fromName,
     replyToEmail: ex.replyToEmail,
     asmGroupId: asmId,
+    sendExecutionId,
+    broadcastRecipientContext: ready.map((r) => ({
+      email: r.email.trim().toLowerCase(),
+      emailSendRecipientId: r.id,
+    })),
   });
   if (!result.ok) {
     await prisma.emailSendExecution.update({

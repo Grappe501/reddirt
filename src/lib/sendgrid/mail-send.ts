@@ -139,6 +139,10 @@ export type SendGridBroadcastMailInput = {
   replyToEmail?: string | null;
   /** Required for broadcast — caller must verify env + policy. */
   asmGroupId: number;
+  /** When set with recipient ids, SendGrid echoes these on webhook events (no secrets). */
+  sendExecutionId?: string;
+  /** Parallel to recipientEmails after dedupe — omit entries where id unknown. */
+  broadcastRecipientContext?: Array<{ email: string; emailSendRecipientId: string }>;
 };
 
 export async function sendSendGridBroadcastEmail(
@@ -152,11 +156,25 @@ export async function sendSendGridBroadcastEmail(
   const emails = [...new Set(input.recipientEmails.map((e) => e.trim().toLowerCase()).filter((e) => e.includes("@")))];
   if (emails.length === 0) return { ok: false, safeMessage: "No recipient emails for broadcast." };
 
+  const ctxMap = new Map(
+    (input.broadcastRecipientContext ?? []).map((r) => [r.email.trim().toLowerCase(), r.emailSendRecipientId.trim()]),
+  );
+
   let batches = 0;
   let lastStatus = 202;
   for (let i = 0; i < emails.length; i += MAX_RECIPIENTS_PER_REQUEST) {
     const chunk = emails.slice(i, i + MAX_RECIPIENTS_PER_REQUEST);
-    const personalizations = chunk.map((email) => ({ to: [{ email }] }));
+    const personalizations = chunk.map((email) => {
+      const row: Record<string, unknown> = { to: [{ email }] };
+      const rid = ctxMap.get(email);
+      if (input.sendExecutionId && rid) {
+        row.custom_args = {
+          sendExecutionId: input.sendExecutionId,
+          emailSendRecipientId: rid,
+        };
+      }
+      return row;
+    });
     const payload: Record<string, unknown> = {
       personalizations,
       from: { email: input.fromEmail.trim(), name: input.fromName.trim() },

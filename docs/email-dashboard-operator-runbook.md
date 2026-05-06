@@ -35,13 +35,20 @@
 ## 0d) Send Execution Governance shell (`EMAIL-SEND-EXECUTION-GOVERNANCE-SHELL-1.0`)
 
 1. **Route** — **`/admin/workbench/email-command-center/send-execution`** — read-only doctrine: future Gmail vs SendGrid rails, **pre-send checklist** (includes **Send packet prepared** → Message Studio **`#send-packet-builder`** and **Shared draft saved / reviewed** → **`#shared-drafts`**), **suppression gate** (including that **`SendGridSuppression` overrides audience membership**), **approval roles**, and a text **decision tree**.  
-2. **Does not** call provider send APIs, **does not** change **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`**, **does not** persist send approvals — live execution remains **`EMAIL-SEND-EXECUTION-1.0`**.  
+2. **Governance header** on this route does **not** call provider send APIs and does **not** change **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`**. Operator **`#ops`** console (same URL) is **`EMAIL-SEND-EXECUTION-1.0`** — see §0e.  
 3. Cross-links from Message Studio, Analytics, SendGrid Foundation, Audience Studio, Automation Studio, Route map, and Readiness — still **no sends** on any of those routes.
+
+## 0e) Send Execution operator console (`EMAIL-SEND-EXECUTION-1.0`)
+
+1. **`/admin/workbench/email-command-center/send-execution#ops`** — create **`EmailSendExecution`** from **APPROVED_FOR_SEND_GOVERNANCE** shared draft + audience + optional **SYNCED** sync run; **run preflight** (suppression + consent gates); **one-address** SendGrid test; **final approval** row; **broadcast** only after typing **`SEND APPROVED`** exactly. **`EmailSendRecipient`** + **`EmailSendApproval`** audit trail.  
+2. **Overnight / unattended:** UI copy instructs **not** to run test or final sends when the responsible operator is away — still explicit human submits only; **no** background send.  
+3. **Production:** test and final provider actions are **blocked** until hosted Kelly-Grappe-App DB verification passes (same gate as contact import posture).  
+4. **No** queue send, **no** automation activation from this lane; **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** unchanged **false**.
 
 ## 0b) Automation Studio + Analytics & Deliverability (`EMAIL-AUTOMATION-ANALYTICS-SHELL-1.0`)
 
 1. **Automation Studio** — **`/admin/workbench/email-command-center/automation`**. Read tiers (T0–T4), trigger library, action library, playbooks, and future gates. **Does not** register workers, **does not** turn on auto-send, **does not** change queue behavior.  
-2. **Analytics & Deliverability** — **`/admin/workbench/email-command-center/analytics`**. One-page view of queue health, AI/profile/audience/import counts (when DB healthy), SendGrid env presence (names only in docs), events/suppressions ingested, suppression-type breakdown, and a **deliverability launch checklist** (mostly manual confirmations). **Does not** authorize sends.  
+2. **Analytics & Deliverability** — **`/admin/workbench/email-command-center/analytics`**. One-page view of queue health, AI/profile/audience/import counts (when DB healthy), SendGrid env presence (names only in docs), events/suppressions ingested, suppression-type breakdown, SendGrid contact sync (**`runsApprovedAwaitingExecutionCount`**, SYNCED, FAILED, last sync), **Send Execution** counts (**`needPreflightCount`**, test/final/failed, env readiness flags — **no** open/click performance claims), and a **deliverability launch checklist** (mostly manual confirmations). **Does not** authorize sends.  
 3. When the database is unreachable, both routes still load static governance copy; Analytics numeric panels may read as zero — fix **`DATABASE_URL`** then rerun **`npm run email:command-center:preflight`**.
 
 ## 0a) Contact list CSV import (staging)

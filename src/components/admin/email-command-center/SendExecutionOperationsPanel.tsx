@@ -89,6 +89,8 @@ export function SendExecutionOperationsPanel({
   const defaultDraftId = query.draftId ?? "";
   const defaultAudienceId = query.audienceDefinitionId ?? "";
   const defaultSyncRunId = query.sendGridContactSyncRunId ?? "";
+  const testMailReady = se.sendGridMailTestReady;
+  const broadcastMailReady = se.sendGridMailBroadcastReady;
 
   return (
     <div id="ops" className="min-w-0 max-w-5xl scroll-mt-24 space-y-4">
@@ -105,6 +107,12 @@ export function SendExecutionOperationsPanel({
           Snapshot: executions tracked {se.dbReachable ? "live" : "unavailable"} on this DB.{" "}
           <code className="text-[9px]">EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM</code> ={" "}
           <strong>{String(snapshot.governance.canSendFromEmailWorkflowItem)}</strong> (unchanged).
+        </p>
+        <p className="mt-2 rounded border border-amber-300/70 bg-amber-50/95 px-2 py-2 font-body text-[10px] font-semibold text-amber-950">
+          Overnight / unattended safety: do <strong>not</strong> run SendGrid <strong>test</strong> sends or{" "}
+          <strong>final</strong> broadcasts while the responsible operator is away. This build leaves explicit buttons
+          only — every send still requires a live, deliberate click and (for final) typed confirmation. Resume when an
+          operator is present.
         </p>
       </section>
 
@@ -330,12 +338,19 @@ export function SendExecutionOperationsPanel({
               </label>
               <button
                 type="submit"
-                disabled={detail.status !== "READY_FOR_TEST"}
+                disabled={detail.status !== "READY_FOR_TEST" || !testMailReady}
                 className="rounded border border-kelly-navy/35 bg-kelly-fog/90 px-3 py-1 text-[10px] font-bold text-kelly-navy disabled:opacity-40"
               >
                 Send test via SendGrid
               </button>
             </form>
+            {detail.status === "READY_FOR_TEST" && !testMailReady ? (
+              <p className="mt-2 font-body text-[10px] text-amber-950">
+                Test send disabled until <code className="text-[9px]">SENDGRID_API_KEY</code>,{" "}
+                <code className="text-[9px]">SENDGRID_FROM_EMAIL</code>, and <code className="text-[9px]">SENDGRID_FROM_NAME</code>{" "}
+                are set. In production, hosted DB verification must also pass.
+              </p>
+            ) : null}
           </section>
 
           <section className={card}>
@@ -393,12 +408,28 @@ export function SendExecutionOperationsPanel({
               </label>
               <button
                 type="submit"
-                disabled={detail.status !== "FINAL_APPROVED"}
+                disabled={
+                  detail.status !== "FINAL_APPROVED" ||
+                  !broadcastMailReady ||
+                  detail.finalRecipientCount < 1
+                }
                 className="rounded border border-rose-600/50 bg-rose-100 px-3 py-1.5 text-[11px] font-bold text-rose-950 disabled:opacity-40"
               >
                 Execute final SendGrid send
               </button>
             </form>
+            {detail.status === "FINAL_APPROVED" && !broadcastMailReady ? (
+              <p className="mt-2 font-body text-[10px] text-rose-900">
+                Final send stays disabled until <code className="text-[9px]">SENDGRID_API_KEY</code>,{" "}
+                <code className="text-[9px]">SENDGRID_FROM_EMAIL</code>, <code className="text-[9px]">SENDGRID_FROM_NAME</code>, and
+                numeric <code className="text-[9px]">SENDGRID_UNSUBSCRIBE_GROUP_ID</code> (ASM) are configured.
+              </p>
+            ) : null}
+            {detail.status === "FINAL_APPROVED" && broadcastMailReady && detail.finalRecipientCount < 1 ? (
+              <p className="mt-2 font-body text-[10px] text-rose-900">
+                No READY recipients on record — run preflight again after fixing audience or suppressions.
+              </p>
+            ) : null}
             {detail.providerResultJson && typeof detail.providerResultJson === "object" ? (
               <pre className="mt-2 max-h-40 overflow-auto rounded border border-kelly-text/10 bg-white/90 p-2 font-mono text-[9px] text-kelly-navy">
                 {JSON.stringify(detail.providerResultJson, null, 2)}

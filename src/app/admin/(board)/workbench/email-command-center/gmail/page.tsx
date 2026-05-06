@@ -14,6 +14,11 @@ import {
   isGmailWatchConfigured,
 } from "@/lib/gmail/watch-config";
 import { resolveDisplayWatchStatus } from "@/lib/gmail/gmail-sync-state";
+import {
+  buildGmailWatchRenewalPlan,
+  getGmailHistoryProcessingSummary,
+  getGmailWatchProductionReadiness,
+} from "@/lib/email-command-center/gmail-production-watch";
 
 export const dynamic = "force-dynamic";
 
@@ -48,6 +53,12 @@ export default async function GmailMonitorPage({ searchParams }: Props) {
   const snap = await getGmailMonitorSnapshot(actor);
   const watchCfg = getGmailWatchConfigStatus();
   const renewal = getGmailWatchRenewalPolicy();
+  const prodReadiness = getGmailWatchProductionReadiness();
+  const [renewalPlan, historySummary] = await Promise.all([
+    buildGmailWatchRenewalPlan(),
+    getGmailHistoryProcessingSummary(),
+  ]);
+  const actorNeedsRenewal = actor ? renewalPlan.accounts.some((a) => a.userId === actor) : false;
 
   const phase =
     !snap.oauth.isConfigured
@@ -470,6 +481,74 @@ export default async function GmailMonitorPage({ searchParams }: Props) {
             </span>
           </div>
         ) : null}
+      </section>
+
+      <section className="rounded-lg border border-sky-200/80 bg-sky-50/90 p-3">
+        <h2 className="font-heading text-[10px] font-bold uppercase text-sky-950">
+          Production watch hardening (EMAIL-GMAIL-PRODUCTION-WATCH-HARDENING-1.0)
+        </h2>
+        <p className="mt-1 font-body text-[11px] text-sky-950/95">
+          Renewal planning, history cursor recovery, and Pub/Sub readiness — <strong>no Gmail send</strong>, no auto-reply,
+          no queue automation. Subscriber route still verifies{" "}
+          <code className="text-[9px]">x-gmail-pubsub-token</code> before writing notification metadata.
+        </p>
+        <dl className="mt-2 grid gap-1 font-body text-[11px] text-sky-950 sm:grid-cols-2">
+          <div>
+            <dt className="font-bold">Pub/Sub receiver ready</dt>
+            <dd>{prodReadiness.pubsubReceiverConfigured ? "yes" : "no — topic + verification token required"}</dd>
+          </div>
+          <div>
+            <dt className="font-bold">OAuth pipeline</dt>
+            <dd>{prodReadiness.oauthPipelineConfigured ? "configured" : "incomplete — see OAuth section"}</dd>
+          </div>
+          <div>
+            <dt className="font-bold">Renewal lookahead</dt>
+            <dd>
+              {prodReadiness.renewalLookaheadHours}h (policy {prodReadiness.renewalPolicyDays}d / max watch ~
+              {prodReadiness.maxWatchLifetimeDays}d)
+            </dd>
+          </div>
+          <div>
+            <dt className="font-bold">Accounts needing renewal (all active staff)</dt>
+            <dd className="font-semibold">{renewalPlan.accounts.length}</dd>
+          </div>
+          <div>
+            <dt className="font-bold">Current actor needs renewal</dt>
+            <dd>{actor && actorNeedsRenewal ? "yes — use Start / renew above" : actor ? "no" : "— (sign in as admin actor)"}</dd>
+          </div>
+          <div>
+            <dt className="font-bold">Watch expiring within 48h (active staff)</dt>
+            <dd>{historySummary.watchesExpiringWithin48h}</dd>
+          </div>
+          <div>
+            <dt className="font-bold">Stale history cursor (active staff)</dt>
+            <dd>{historySummary.historyCursorStaleCount}</dd>
+          </div>
+          <div>
+            <dt className="font-bold">Pub/Sub signal without profile cursor</dt>
+            <dd>{historySummary.pendingSignalWithoutProfileCursor}</dd>
+          </div>
+        </dl>
+        <div className="mt-2 rounded border border-sky-300/60 bg-white/80 px-2 py-1.5 font-body text-[10px] text-sky-950">
+          <p className="font-bold">Dry-run renewal check (CLI)</p>
+          <p className="mt-0.5">
+            From <code className="text-[9px]">RedDirt/</code>:{" "}
+            <code className="text-[9px]">{prodReadiness.dryRunRenewalCli}</code> — reports env gaps and mailboxes in the
+            renewal window. Execute renewals only with{" "}
+            <code className="text-[9px]">GMAIL_WATCH_RENEWAL_EXECUTE=1</code> and{" "}
+            <code className="text-[9px]">--execute</code> (still <strong>users.watch only</strong>).
+          </p>
+        </div>
+        {renewalPlan.missingEnvVarNames.length ? (
+          <p className="mt-2 font-body text-[10px] text-amber-950">
+            <span className="font-bold">Missing env (names only):</span> {renewalPlan.missingEnvVarNames.join(" · ")}
+          </p>
+        ) : null}
+        <ul className="mt-2 list-inside list-disc font-body text-[10px] text-sky-950/90">
+          {prodReadiness.runbookNotesSafe.map((n) => (
+            <li key={n}>{n}</li>
+          ))}
+        </ul>
       </section>
 
       <section className="rounded-lg border border-kelly-forest/25 bg-kelly-fog/35 p-3">

@@ -314,6 +314,10 @@ export function SendExecutionGovernanceView({ snapshot }: SendExecutionGovernanc
           <code className="text-[9px]">EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM</code> ={" "}
           <strong>{String(canSend)}</strong> — queue triage never implies provider send permission.
         </p>
+        <p className="rounded border border-amber-200/80 bg-amber-50/90 px-2 py-2 font-body text-[10px] text-amber-950">
+          When the responsible operator is away, treat test and final SendGrid actions as <strong>off-limits</strong> even
+          though the UI remains wired — no unattended or overnight sends.
+        </p>
       </header>
 
       <section className={`${card} border-rose-200/60 bg-rose-50/75`}>

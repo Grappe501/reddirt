@@ -4,7 +4,7 @@
 **Lane:** `RedDirt/` only · **Division:** Comms / Email Workflow Intelligence  
 **Purpose:** Lock **operator-complete, execution-gated** posture: route health, **safe-now vs blocked**, **no-send** doctrine, first-run + staging discipline, heuristic scan. **Not** a security audit.
 
-**Companion:** [`email-command-center-first-run-operator-checklist.md`](./email-command-center-first-run-operator-checklist.md) · [`email-command-center-selective-staging-guide.md`](./email-command-center-selective-staging-guide.md) · [`email-command-center-route-inventory.md`](./email-command-center-route-inventory.md)
+**Companion:** [`email-command-center-first-run-operator-checklist.md`](./email-command-center-first-run-operator-checklist.md) · [`email-command-center-selective-staging-guide.md`](./email-command-center-selective-staging-guide.md) · [`email-command-center-route-inventory.md`](./email-command-center-route-inventory.md) · [`email-command-center-production-qa-closeout.md`](./email-command-center-production-qa-closeout.md)
 
 ---
 
@@ -13,7 +13,7 @@
 | Statement | Meaning |
 |-----------|---------|
 | **Operator-complete** | All **shipped** Email Command Center surfaces (cockpit, Daily, map, readiness, Gmail monitor/review, queue, profiles, audiences, imports, SendGrid foundation, Message Studio, Automation shell, Analytics shell, send execution governance) are **usable for real daily triage and drafting** — no demo mode. |
-| **Execution-gated** | **No** Command Center mass **email** send, **no** Gmail send-from-queue, **no** SendGrid broadcast **send**, **no** automation activation from these routes. **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** stays **`false`**. **EMAIL-SENDGRID-CONTACT-UPsert-EXECUTION-1.2** allows **Marketing Contacts** upsert (contact records only) for **APPROVED** sync runs — **not** a marketing **send**. Provider **email** execution = **EMAIL-SEND-EXECUTION-1.0** (and related packets). |
+| **Execution-gated** | **No** Command Center mass **email** send, **no** Gmail send-from-queue, **no** SendGrid broadcast **send**, **no** automation activation from these routes. **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** stays **`false`**. **EMAIL-SENDGRID-CONTACT-UPsert-EXECUTION-1.2** allows **Marketing Contacts** upsert (contact records only) for **APPROVED** sync runs — **not** a marketing **send**; FAILED runs store **sanitized** **`safeError`** in **`resultJson`** ( **`emailSendPerformed`: false** ). Provider **email** execution = **EMAIL-SEND-EXECUTION-1.0** (and related packets). |
 
 ---
 
@@ -25,17 +25,17 @@
 - **Profiles / audiences / imports:** Governed review, previews, **staging** CSV path — safe for UI; **commit** to profiles still requires **correct** hosted DB + operator gate (see blocked).  
 - **SendGrid foundation:** Readiness + **receive** path docs + **`#contact-sync`** governed **contact** upsert (**no** “send campaign”, **no** email send from this path).  
 - **Message Studio:** **localStorage** drafts + **shared** Postgres drafts (**`#shared-drafts`**, **EMAIL-MESSAGE-STUDIO-SERVER-DRAFTS-1.0**), Campaign Voice, editorial, templates, **Send packet** (`#send-packet-builder`) — copy/export + persistence/review only (**no** send).  
-- **Automation / Analytics:** **Shell** read-only governance / aggregates — **no** activation.
+- **Automation / Analytics:** **Shell** read-only governance / aggregates — **no** worker activation; **EMAIL-AUTOMATION-POLICY-ACTIVATION-1.0** adds **policy evaluations** (read-only snapshot + **Evaluate policies now** = revalidate only).
 
 ---
 
 ## What remains blocked (until named packets + ops)
 
 1. **Hosted Kelly-Grappe-App / Supabase canonical DB verification** — wrong `DATABASE_URL` ⇒ wrong suppressions, audiences, imports. Operator-run **`npm run email:db:diagnose`** + **`npm run email:contact-import:gate`** on the **target** env (see [`email-command-center-contact-import-readiness.md`](./email-command-center-contact-import-readiness.md)).  
-2. **SendGrid Marketing email sends** — **EMAIL-SEND-EXECUTION-1.0+** (future). **Note:** **EMAIL-SENDGRID-CONTACT-UPsert-EXECUTION-1.2** ships **governed contact upsert** (PUT Marketing Contacts) for **APPROVED** runs — **not** an email send; production upsert requires **hosted** DB gate per action.  
+2. **SendGrid Marketing email sends without full doctrine** — **blocked**; governed path is **`/send-execution#ops`** (**EMAIL-SEND-EXECUTION-1.0**) with final gates — **operator-proven** test/broadcast on hosted stack still **Steve-owned**. **Note:** **EMAIL-SENDGRID-CONTACT-UPsert-EXECUTION-1.2** ships **governed contact upsert** (PUT Marketing Contacts) for **APPROVED** runs — **not** an email send; production upsert requires **hosted** DB gate per action.  
 3. **Shared Message Studio drafts** — Postgres **`MessageStudioDraft`** when DB healthy (**no** send). **Send packet** snapshot JSON remains on the **local** draft until copied into shared row via promote/update.  
-4. **Governed provider send execution** — **EMAIL-SEND-EXECUTION-1.0** (future).  
-5. **Production automation activation** — **EMAIL-AUTOMATION-STUDIO-1.1** (future).
+4. **Operator-proven live mail** — code paths may exist; **proof** of successful hosted test/broadcast is **not** automatic.  
+5. **Production automation worker activation** — **EMAIL-AUTOMATION-STUDIO-1.1** (future).
 
 ---
 
@@ -53,7 +53,8 @@
 
 - **Kelly-Grappe-App** is the **canonical hosted Supabase** Postgres project name for Kelly SOS / RedDirt (confirm in Supabase dashboard with Steve). The **default database name** is often still **`postgres`**; proof is **connection + migrations + gate** on the **Prisma** URLs, not the display name alone.  
 - **Local Docker** passing diagnose / preflight / import gate **does not** equal **Kelly-Grappe-App** verified — `DATABASE_URL` must resolve to a **hosted** Supabase host pattern (`*.supabase.co`, pooler, etc.) for that claim.  
-- **`KELLY-GRAPPE-APP-HOSTED-DB-GATE-1.0` (latest automated pass):** `npm run email:db:diagnose` again showed **`DATABASE_URL` / `DIRECT_URL` on loopback** (`127.0.0.1:5433`) and **Prisma unreachable** — **hosted Kelly-Grappe-App gate not passed**; **`prisma migrate status`**, **`migrate deploy`**, **`email:command-center:preflight`**, **`email:contact-import:gate`**, and **`email:no-send-scan`** as part of the hosted chain were **not** executed (wrong target + local engine down in that shell). **Production readiness for hosted canonical DB is not claimed.**  
+- **`KELLY-GRAPPE-APP-HOSTED-DB-GATE-1.0` (historical automated pass, older shell):** `npm run email:db:diagnose` showed **`DATABASE_URL` / `DIRECT_URL` on loopback** with **Prisma unreachable** / local engine down — **hosted Kelly-Grappe-App gate not passed** in that run.  
+- **`EMAIL-COMMAND-CENTER-PRODUCTION-QA-CLOSEOUT-1.0` (2026-05-06 QA pass):** `npm run email:db:diagnose` on a **healthy local Docker** target (`127.0.0.1:5433`) returned **TCP + Prisma ok**, **`prisma migrate status` clean**, and **all ECC `_prisma_migrations` rows applied** — this **still** confirms **local** only, **not** Kelly-Grappe-App hosted URLs. **Hosted canonical DB production readiness is not claimed** until `DATABASE_URL` / `DIRECT_URL` point at the hosted project and the full operator chain succeeds.  
 - When the hosted gate **does** pass: real data may use the **staged import commit** workflow on that DB (DB/migration standpoint only) — **sends remain blocked**; run **`migrate deploy`** on that DB so **`20260508120000_message_studio_server_drafts`** exists before relying on shared drafts in production; **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** unchanged until a future execution packet explicitly changes it.
 
 ---
@@ -90,7 +91,7 @@
 10. `/admin/workbench/email-command-center/audiences`  
 11. `/admin/workbench/email-command-center/imports`  
 12. `/admin/workbench/email-command-center/sendgrid`  
-13. `/admin/workbench/email-command-center/message-studio` (+ anchors `#editorial-review-desk`, `#send-packet-builder`)  
+13. `/admin/workbench/email-command-center/message-studio` (+ anchors `#shared-drafts`, `#editorial-review-desk`, `#send-packet-builder`)  
 14. `/admin/workbench/email-command-center/send-execution`  
 15. `/admin/workbench/email-command-center/automation`  
 16. `/admin/workbench/email-command-center/analytics`
@@ -101,6 +102,7 @@
 
 ```bash
 cd H:\SOSWebsite\RedDirt
+npm run email:db:diagnose
 npm run typecheck
 npm run check
 npm run email:no-send-scan
@@ -141,7 +143,7 @@ Paths use site root prefix **`/admin/workbench/…`**.
 | `…/email-command-center/imports/[id]` | Batch detail | **Live** / **Partial** | **Yes** when DB OK | Wrong DB | **Yes** | Explicit commit path |
 | `…/email-command-center/sendgrid` | Foundation | **Partial** | **Yes** | DB/env | **Yes** | No broadcast |
 | `…/email-command-center/message-studio` | Message Studio | **Live** | **Yes** | OpenAI optional | **Yes** | Anchors **`#shared-drafts`**, **`#editorial-review-desk`**, **`#send-packet-builder`** |
-| `…/email-command-center/automation` | Automation shell | **Live** | **Yes** | — | **Yes** | No activation |
+| `…/email-command-center/automation` | Automation shell + policy eval | **Live** | **Yes** | — | **Yes** | No worker activation |
 | `…/email-command-center/analytics` | Analytics shell | **Live** / **Partial** | **Yes** | DB down | **Yes** | Read-only |
 | `…/email-command-center/send-execution` | Governance doctrine | **Live** | **Yes** | — | **Yes** | No provider APIs |
 
@@ -153,4 +155,4 @@ Known **integration** seams (outside ECC UI) may still **warn** — typically **
 
 ---
 
-*Last updated: **KELLY-GRAPPE-APP-HOSTED-DB-GATE-1.0** + launch hardening (Kelly-Grappe-App hosted gate **not** passed — loopback + unreachable local DB in automated diagnose).*
+*Last updated: **EMAIL-COMMAND-CENTER-PRODUCTION-QA-CLOSEOUT-1.0** — companion **[`email-command-center-production-qa-closeout.md`](./email-command-center-production-qa-closeout.md)**; local **2026-05-06** diagnose **green**; **hosted** Kelly-Grappe-App gate still **operator-owned**.*

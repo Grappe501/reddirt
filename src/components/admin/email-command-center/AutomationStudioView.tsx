@@ -1,4 +1,6 @@
 import Link from "next/link";
+import type { AutomationPolicyEvalSnapshot } from "@/lib/email-command-center/automation-policy-runner";
+import { evaluateAutomationPoliciesNowAction } from "@/app/admin/automation-policy-eval-actions";
 
 const ECC = "/admin/workbench/email-command-center";
 const card =
@@ -11,6 +13,8 @@ const cell = "border border-kelly-text/10 bg-white/80 px-2 py-1.5 font-body text
 type AutomationStudioViewProps = {
   /** When false, show a thin DB banner; automation map is still static. */
   cockpitDbReachable: boolean;
+  policyEval: AutomationPolicyEvalSnapshot;
+  evalNotice?: string | null;
 };
 
 const TRIGGER_ROWS: {
@@ -211,7 +215,18 @@ function statusPill(s: "live" | "partial" | "planned") {
   return <span className={`rounded px-1.5 py-0.5 text-[9px] font-bold uppercase ${cls}`}>{s}</span>;
 }
 
-export function AutomationStudioView({ cockpitDbReachable }: AutomationStudioViewProps) {
+function policyStatusPill(s: "ok" | "warn" | "alert") {
+  const cls =
+    s === "ok"
+      ? "bg-emerald-100 text-emerald-900"
+      : s === "warn"
+        ? "bg-amber-100 text-amber-950"
+        : "bg-rose-100 text-rose-950";
+  const label = s === "ok" ? "OK" : s === "warn" ? "Warn" : "Alert";
+  return <span className={`rounded px-1.5 py-0.5 text-[9px] font-bold uppercase ${cls}`}>{label}</span>;
+}
+
+export function AutomationStudioView({ cockpitDbReachable, policyEval, evalNotice }: AutomationStudioViewProps) {
   return (
     <div className="min-w-0 max-w-5xl space-y-4">
       <div className="flex flex-wrap items-center gap-2">
@@ -257,7 +272,9 @@ export function AutomationStudioView({ cockpitDbReachable }: AutomationStudioVie
       <header className="space-y-2">
         <h1 className="font-heading text-2xl font-bold text-kelly-navy">Automation Studio</h1>
         <p className="max-w-3xl font-body text-sm text-kelly-text/85">
-          Plan and govern campaign email automation <strong>without enabling auto-send</strong>. EMAIL-AUTOMATION-ANALYTICS-SHELL-1.0 — visibility and policy map only; no activation, no background jobs, no new triggers from this page.
+          Plan and govern campaign email automation <strong>without enabling auto-send</strong>. EMAIL-AUTOMATION-ANALYTICS-SHELL-1.0 +{" "}
+          <strong>EMAIL-AUTOMATION-POLICY-ACTIVATION-1.0</strong> — static map plus <strong>read-only policy evaluations</strong> from
+          cockpit counts; no workers, no provider sends, no contact mutations.
         </p>
         <div className="flex flex-wrap gap-1.5">
           <span className={badge}>No auto-send</span>
@@ -278,6 +295,73 @@ export function AutomationStudioView({ cockpitDbReachable }: AutomationStudioVie
           for environment truth. No switches here activate workers or sends.
         </p>
       </div>
+
+      {evalNotice === "policy_eval_refreshed" ? (
+        <p
+          className="rounded-lg border border-emerald-300/60 bg-emerald-50/80 px-3 py-2 font-body text-[11px] text-emerald-950"
+          role="status"
+        >
+          Policy evaluation refreshed from the latest cockpit snapshot — <strong>read-only</strong>; no automation workers
+          started; no sends.
+        </p>
+      ) : null}
+
+      <section className={`${card} border-violet-200/80 bg-violet-50/85`}>
+        <div className="flex flex-wrap items-start justify-between gap-2">
+          <div>
+            <h2 className={h3}>Policy evaluations</h2>
+            <p className="mt-1 max-w-3xl font-body text-[10px] text-violet-950/90">
+              EMAIL-AUTOMATION-POLICY-ACTIVATION-1.0 — deterministic checks on queue, drafts, sync runs, SendGrid
+              reconciliation, Gmail watch, hosted DB gate, and suppressions. <strong>Evaluation only</strong> — future
+              cron or worker activation requires a separate explicit packet.
+            </p>
+            <p className="mt-1 font-mono text-[9px] text-violet-900/80">
+              v{policyEval.policyVersion} · evaluated {policyEval.evaluatedAtIso} · ok {policyEval.okCount} · warn{" "}
+              {policyEval.warnCount} · alert {policyEval.alertCount}
+            </p>
+          </div>
+          <form action={evaluateAutomationPoliciesNowAction}>
+            <button
+              type="submit"
+              className="rounded border-2 border-violet-600/50 bg-violet-600/90 px-3 py-1.5 text-[11px] font-extrabold text-white"
+            >
+              Evaluate policies now
+            </button>
+          </form>
+        </div>
+        <div className="mt-3 overflow-x-auto">
+          <table className="w-full min-w-[720px] border-collapse text-left">
+            <thead>
+              <tr className="border-b border-violet-200/60">
+                <th className={`${cell} border-violet-100 bg-white/90 font-heading text-[9px] text-violet-950`}>Policy</th>
+                <th className={`${cell} border-violet-100 bg-white/90 font-heading text-[9px] text-violet-950`}>Status</th>
+                <th className={`${cell} border-violet-100 bg-white/90 font-heading text-[9px] text-violet-950`}>Signal</th>
+                <th className={`${cell} border-violet-100 bg-white/90 font-heading text-[9px] text-violet-950`}>Recommended action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {policyEval.policies.map((p) => (
+                <tr key={p.id} className="border-b border-violet-100/80">
+                  <td className={`${cell} text-violet-950`}>
+                    <span className="font-heading text-[10px] font-bold">{p.title}</span>
+                    <div className="mt-0.5 font-mono text-[8px] text-violet-800/80">{p.id}</div>
+                  </td>
+                  <td className={cell}>{policyStatusPill(p.status)}</td>
+                  <td className={`${cell} font-mono text-[9px]`}>{p.detailSafe}</td>
+                  <td className={cell}>
+                    <p className="text-[10px] text-kelly-text/90">{p.recommendedActionSafe}</p>
+                    {p.href ? (
+                      <Link href={p.href} className="mt-1 inline-block text-[10px] font-bold text-violet-800 underline">
+                        Open →
+                      </Link>
+                    ) : null}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
 
       <section className={`${card} border-kelly-navy/20`}>
         <h2 className={h3}>Automation tiers</h2>

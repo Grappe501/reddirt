@@ -3,7 +3,19 @@ import { getEmailCommandCenterSnapshot } from "@/lib/email-command-center/read-m
 
 export const dynamic = "force-dynamic";
 
-export default async function AutomationStudioPage() {
+export default async function AutomationStudioPage({
+  searchParams,
+}: {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const sp = (await searchParams) ?? {};
+  const notice = typeof sp.notice === "string" ? sp.notice : undefined;
   const snapshot = await getEmailCommandCenterSnapshot();
-  return <AutomationStudioView cockpitDbReachable={snapshot.operatorGate.cockpitDbReachable} />;
+  return (
+    <AutomationStudioView
+      cockpitDbReachable={snapshot.operatorGate.cockpitDbReachable}
+      policyEval={snapshot.automationPolicyEval}
+      evalNotice={notice}
+    />
+  );
 }

@@ -17,12 +17,22 @@ import {
 import { parseGmailSyncState, resolveDisplayWatchStatus } from "@/lib/gmail/gmail-sync-state";
 import { isGmailWatchConfigured, isGmailPubSubVerificationConfigured } from "@/lib/gmail/watch-config";
 import { getSendGridEnvStatus } from "@/lib/sendgrid/config";
+import { getSendGridMailReadiness } from "@/lib/sendgrid/mail-send";
+import { getSendGridReconciliationSummary } from "@/lib/email-command-center/sendgrid-event-reconciliation";
 import {
   EMAIL_COMMAND_CENTER_MIGRATION_DIRS,
   queryEmailCommandCenterMigrationRows,
 } from "@/lib/email-command-center/ecc-migration-gate";
 import { contactImportSnapshotCounts } from "@/lib/email-command-center/contact-import";
 import { messageStudioSharedDraftSnapshotCounts } from "@/lib/email-command-center/message-studio-drafts";
+import {
+  buildGmailProductionWatchSnapshot,
+  type GmailProductionWatchSnapshot,
+} from "@/lib/email-command-center/gmail-production-watch";
+import {
+  evaluateAllAutomationPolicies,
+  type AutomationPolicyEvalSnapshot,
+} from "@/lib/email-command-center/automation-policy-runner";
 import type { EmailContactImportBatchStatus } from "@prisma/client";
 
 /** Presence-only env checks — never surface values. */
@@ -213,6 +223,8 @@ export type EmailCommandCenterSnapshot = {
     path: string;
     dbReachable: boolean;
     runsPreviewedCount: number;
+    /** Rows in APPROVED — eligible for governed Marketing Contacts upsert (1.2), not yet SYNCED/FAILED. */
+    runsApprovedAwaitingExecutionCount: number;
     runsApprovedCount: number;
     runsSyncedCount: number;
     runsFailedCount: number;
@@ -226,6 +238,8 @@ export type EmailCommandCenterSnapshot = {
     path: string;
     dbReachable: boolean;
     totalExecutions: number;
+    /** DRAFT + PREFLIGHT_FAILED — operator should run or re-run preflight. */
+    needPreflightCount: number;
     preflightFailedCount: number;
     readyForTestCount: number;
     testSentCount: number;
@@ -237,7 +251,37 @@ export type EmailCommandCenterSnapshot = {
     failedCount: number;
     cancelledCount: number;
     archivedCount: number;
+    /** From env only — test mail path (single recipient) can proceed when true. */
+    sendGridMailTestReady: boolean;
+    /** From env only — broadcast path requires ASM + from + key. */
+    sendGridMailBroadcastReady: boolean;
   };
+  /** EMAIL-SENDGRID-EVENT-RECIPIENT-RECONCILIATION-1.0 — webhook events vs send execution recipients (read + operator reconcile; no sends). */
+  sendGridReconciliation: {
+    path: string;
+    dbReachable: boolean;
+    totalEvents: number;
+    matchedCount: number;
+    skippedCount: number;
+    unmatchedCount: number;
+    pendingReconciliationCount: number;
+    lastReconciledAtIso: string | null;
+    recipientByStatus: Record<string, number>;
+    recentEvents: Array<{
+      id: string;
+      eventType: string;
+      email: string | null;
+      occurredAtIso: string;
+      reconciliationState: string | null;
+    }>;
+    bounceEventsApprox: number;
+    unsubscribeEventsApprox: number;
+    spamEventsApprox: number;
+  };
+  /** EMAIL-GMAIL-PRODUCTION-WATCH-HARDENING-1.0 — watch renewal + history cursor posture (no sends). */
+  gmailProductionWatch: GmailProductionWatchSnapshot;
+  /** EMAIL-AUTOMATION-POLICY-ACTIVATION-1.0 — read-only policy evaluation from snapshot counts (no workers). */
+  automationPolicyEval: AutomationPolicyEvalSnapshot;
 };
 
 function sendgridEnvReadiness(): SendgridEnvReadiness {
@@ -387,6 +431,7 @@ function buildDegradedEmailCommandCenterSnapshot(): EmailCommandCenterSnapshot {
       path: "/admin/workbench/email-command-center/sendgrid#contact-sync",
       dbReachable: false,
       runsPreviewedCount: 0,
+      runsApprovedAwaitingExecutionCount: 0,
       runsApprovedCount: 0,
       runsSyncedCount: 0,
       runsFailedCount: 0,
@@ -399,6 +444,7 @@ function buildDegradedEmailCommandCenterSnapshot(): EmailCommandCenterSnapshot {
       path: "/admin/workbench/email-command-center/send-execution",
       dbReachable: false,
       totalExecutions: 0,
+      needPreflightCount: 0,
       preflightFailedCount: 0,
       readyForTestCount: 0,
       testSentCount: 0,
@@ -410,7 +456,59 @@ function buildDegradedEmailCommandCenterSnapshot(): EmailCommandCenterSnapshot {
       failedCount: 0,
       cancelledCount: 0,
       archivedCount: 0,
+      sendGridMailTestReady: false,
+      sendGridMailBroadcastReady: false,
     },
+    sendGridReconciliation: {
+      path: "/admin/workbench/email-command-center/analytics#reconciliation",
+      dbReachable: false,
+      totalEvents: 0,
+      matchedCount: 0,
+      skippedCount: 0,
+      unmatchedCount: 0,
+      pendingReconciliationCount: 0,
+      lastReconciledAtIso: null,
+      recipientByStatus: {},
+      recentEvents: [],
+      bounceEventsApprox: 0,
+      unsubscribeEventsApprox: 0,
+      spamEventsApprox: 0,
+    },
+    gmailProductionWatch: {
+      dbReachable: false,
+      missingPubsubTopic: !isGmailWatchConfigured(),
+      missingPubsubVerification: !isGmailPubSubVerificationConfigured(),
+      oauthWatchPrereqsOk: getGmailOAuthConfigStatus().isConfigured,
+      activeStaffAccounts: 0,
+      accountsNeedingRenewalCount: 0,
+      accountsWithStaleHistoryCursorCount: 0,
+      watchesExpiringWithin48hCount: 0,
+      pendingPubsubSignalWithoutProfileCursorCount: 0,
+      monitorPath: "/admin/workbench/email-command-center/gmail",
+      dryRunRenewalCli: "npm run gmail:watch:renewal-check",
+    },
+    automationPolicyEval: evaluateAllAutomationPolicies({
+      cockpitDbReachable: false,
+      localContactImportDbVerified: false,
+      needsAttentionCount: 0,
+      itemsNotUpdatedIn7DaysCount: 0,
+      messageStudioNeedsReview: 0,
+      messageStudioApprovedGovernance: 0,
+      sendExecNeedPreflight: 0,
+      sendExecPreflightFailed: 0,
+      sendExecFailed: 0,
+      runsApprovedAwaitingExecution: 0,
+      runsFailed: 0,
+      sendGridPendingReconciliation: 0,
+      gmailWatchExpiring48h: 0,
+      suppressionCount: 0,
+      activeAudienceDefinitions: 0,
+      sendGridDbReachable: false,
+      messageStudioDbReachable: false,
+      sendGridReconciliationDbReachable: false,
+      sendGridContactSyncDbReachable: false,
+      sendExecutionDbReachable: false,
+    }),
     automationTiers: [
       { tier: "T0", label: "Manual queue", state: "live" },
       { tier: "T1", label: "Deterministic interpretation (E-2A)", state: "live" },
@@ -428,7 +526,7 @@ function buildDegradedEmailCommandCenterSnapshot(): EmailCommandCenterSnapshot {
         "This dashboard does not send email — it is coordination + readiness only.",
         "Contact list CSV import uses staging + operator approve/commit (EMAIL-CONTACT-IMPORT-STAGING-1.0) — no SendGrid, no sends, no assumed opt-in. When the DB gate fails, imports are not trustworthy on this request.",
         "Message Studio route remains available for drafting copy when the DB is down — still no send; shared server drafts require a live DB (EMAIL-MESSAGE-STUDIO-SERVER-DRAFTS-1.0).",
-        "Automation Studio and Analytics & Deliverability shells (EMAIL-AUTOMATION-ANALYTICS-SHELL-1.0) remain navigation + governance copy when the DB is down — no activation, no sends.",
+        "Automation Studio (EMAIL-AUTOMATION-ANALYTICS-SHELL-1.0 + EMAIL-AUTOMATION-POLICY-ACTIVATION-1.0) and Analytics shells remain navigation + governance copy when the DB is down — policy rows show degraded alerts only; no activation, no sends.",
       ],
     },
     operatorGate: gate,
@@ -441,6 +539,7 @@ async function buildSendExecutionSnapshot(): Promise<EmailCommandCenterSnapshot[
     path,
     dbReachable: false,
     totalExecutions: 0,
+    needPreflightCount: 0,
     preflightFailedCount: 0,
     readyForTestCount: 0,
     testSentCount: 0,
@@ -452,10 +551,14 @@ async function buildSendExecutionSnapshot(): Promise<EmailCommandCenterSnapshot[
     failedCount: 0,
     cancelledCount: 0,
     archivedCount: 0,
+    sendGridMailTestReady: false,
+    sendGridMailBroadcastReady: false,
   };
   try {
+    const mail = getSendGridMailReadiness();
     const [
       totalExecutions,
+      draftExecutionCount,
       preflightFailedCount,
       readyForTestCount,
       testSentCount,
@@ -469,6 +572,7 @@ async function buildSendExecutionSnapshot(): Promise<EmailCommandCenterSnapshot[
       archivedCount,
     ] = await Promise.all([
       prisma.emailSendExecution.count(),
+      prisma.emailSendExecution.count({ where: { status: "DRAFT" } }),
       prisma.emailSendExecution.count({ where: { status: "PREFLIGHT_FAILED" } }),
       prisma.emailSendExecution.count({ where: { status: "READY_FOR_TEST" } }),
       prisma.emailSendExecution.count({ where: { status: "TEST_SENT" } }),
@@ -481,10 +585,12 @@ async function buildSendExecutionSnapshot(): Promise<EmailCommandCenterSnapshot[
       prisma.emailSendExecution.count({ where: { status: "CANCELLED" } }),
       prisma.emailSendExecution.count({ where: { status: "ARCHIVED" } }),
     ]);
+    const needPreflightCount = draftExecutionCount + preflightFailedCount;
     return {
       path,
       dbReachable: true,
       totalExecutions,
+      needPreflightCount,
       preflightFailedCount,
       readyForTestCount,
       testSentCount,
@@ -496,6 +602,59 @@ async function buildSendExecutionSnapshot(): Promise<EmailCommandCenterSnapshot[
       failedCount,
       cancelledCount,
       archivedCount,
+      sendGridMailTestReady:
+        mail.sendgridApiKeyConfigured && mail.fromEmailConfigured && mail.fromNameConfigured,
+      sendGridMailBroadcastReady: mail.broadcastAllowed,
+    };
+  } catch {
+    return empty;
+  }
+}
+
+async function buildSendGridReconciliationSnapshot(): Promise<EmailCommandCenterSnapshot["sendGridReconciliation"]> {
+  const path = "/admin/workbench/email-command-center/analytics#reconciliation";
+  const empty: EmailCommandCenterSnapshot["sendGridReconciliation"] = {
+    path,
+    dbReachable: false,
+    totalEvents: 0,
+    matchedCount: 0,
+    skippedCount: 0,
+    unmatchedCount: 0,
+    pendingReconciliationCount: 0,
+    lastReconciledAtIso: null,
+    recipientByStatus: {},
+    recentEvents: [],
+    bounceEventsApprox: 0,
+    unsubscribeEventsApprox: 0,
+    spamEventsApprox: 0,
+  };
+  try {
+    const s = await getSendGridReconciliationSummary();
+    if (!s.dbReachable) return empty;
+    const recipientByStatus: Record<string, number> = {};
+    for (const [k, v] of Object.entries(s.recipientByStatus)) {
+      recipientByStatus[k] = v;
+    }
+    return {
+      path,
+      dbReachable: true,
+      totalEvents: s.totalEvents,
+      matchedCount: s.matchedCount,
+      skippedCount: s.skippedCount,
+      unmatchedCount: s.unmatchedCount,
+      pendingReconciliationCount: s.pendingReconciliationCount,
+      lastReconciledAtIso: s.lastReconciledAtIso,
+      recipientByStatus,
+      recentEvents: s.recentEvents.map((e) => ({
+        id: e.id,
+        eventType: e.eventType,
+        email: e.email,
+        occurredAtIso: e.occurredAtIso,
+        reconciliationState: e.reconciliation?.state ?? null,
+      })),
+      bounceEventsApprox: s.bounceEventsApprox,
+      unsubscribeEventsApprox: s.unsubscribeEventsApprox,
+      spamEventsApprox: s.spamEventsApprox,
     };
   } catch {
     return empty;
@@ -507,6 +666,7 @@ async function buildSendGridContactSyncSnapshot(): Promise<EmailCommandCenterSna
     path: "/admin/workbench/email-command-center/sendgrid#contact-sync",
     dbReachable: false,
     runsPreviewedCount: 0,
+    runsApprovedAwaitingExecutionCount: 0,
     runsApprovedCount: 0,
     runsSyncedCount: 0,
     runsFailedCount: 0,
@@ -517,7 +677,8 @@ async function buildSendGridContactSyncSnapshot(): Promise<EmailCommandCenterSna
   };
   try {
     const readiness = await getSendGridContactSyncReadiness();
-    const [runsPreviewedCount, runsApprovedCount, runsSyncedCount, runsFailedCount, latestSynced] = await Promise.all([
+    const [runsPreviewedCount, runsApprovedAwaitingExecutionCount, runsSyncedCount, runsFailedCount, latestSynced] =
+      await Promise.all([
       prisma.sendGridContactSyncRun.count({ where: { status: "PREVIEWED" } }),
       prisma.sendGridContactSyncRun.count({ where: { status: "APPROVED" } }),
       prisma.sendGridContactSyncRun.count({ where: { status: "SYNCED" } }),
@@ -541,7 +702,8 @@ async function buildSendGridContactSyncSnapshot(): Promise<EmailCommandCenterSna
       ...base,
       dbReachable: readiness.dbReachable && readiness.syncRunTableAvailable,
       runsPreviewedCount,
-      runsApprovedCount,
+      runsApprovedAwaitingExecutionCount,
+      runsApprovedCount: runsApprovedAwaitingExecutionCount,
       runsSyncedCount,
       runsFailedCount,
       latestSyncedAtIso: latestSynced?.syncedAt?.toISOString() ?? null,
@@ -684,6 +846,7 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
       "Mass and broadcast sends require a governed SendGrid (or equivalent) packet; suppression and unsubscribe handling are mandatory before scaling sends.",
       "Gmail human send requires OAuth/token flows outside this shell; never expose tokens in UI.",
       "POST /api/gmail/pubsub records notification metadata when verification token + topic are configured — no auto-fetch, no bodies.",
+      "Gmail production watch (EMAIL-GMAIL-PRODUCTION-WATCH-HARDENING-1.0): renew users.watch before expiry; run npm run gmail:watch:renewal-check (dry-run) from RedDirt/; stale history cursors require metadata sync before incremental history — no Gmail send from these paths.",
       "OpenAI Email Intelligence (EMAIL-AI-INTELLIGENCE-1.0): advisory analysis on email queue detail — OPENAI_API_KEY required; no auto-send or auto-approval from AI output.",
       "Contact/Profile Graph (EMAIL-CONTACT-PROFILE-GRAPH-1.0): AI profile suggestions stage as PENDING until operator approval; facts land on EmailContactProfileFact only — not auto User/VolunteerProfile merges. Audience hints are not SendGrid segments.",
       "Audience / Microtargeting Studio (EMAIL-AUDIENCE-STUDIO-1.0): previews and saved definitions use approved profile graph data — no SendGrid sync, no sends, no automatic CRM updates.",
@@ -692,8 +855,8 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
       "Contact list CSV import (EMAIL-CONTACT-IMPORT-STAGING-1.0): staging + operator validate/approve/commit only — never SendGrid sync, never sends from this path, never assumed opt-in. Canonical Supabase DB / production requires the same CLI gates on that DATABASE_URL.",
       "Message Studio (TONIGHT-FINISH + LOCAL-DRAFTS + CAMPAIGN-VOICE + EDITORIAL-REVIEW-DESK-1.0 + PRODUCTION-TEMPLATES-1.0 + SERVER-DRAFTS-1.0): browser localStorage drafts plus optional shared Postgres drafts (promote/list/update/archive/revision — persistence only); Campaign Voice + Editorial Review Desk + production templates; optional admin-server OpenAI when OPENAI_API_KEY is set; no send; no legal compliance claim.",
       "Daily Operator Console (EMAIL-DAILY-OPERATOR-CONSOLE-1.0): /admin/workbench/email-command-center/daily — snapshot-driven priority cards, rule-based next actions, work queue deep links; localStorage draft summary for this browser plus shared Message Studio draft counts from Postgres (read-only); no sends.",
-      "Automation Studio (EMAIL-AUTOMATION-ANALYTICS-SHELL-1.0): governance + roadmap surface only — no automation activation, no auto-send, no background jobs from this route.",
-      "Analytics & Deliverability (EMAIL-AUTOMATION-ANALYTICS-SHELL-1.0): read-only cockpit aggregates — does not grant send permission; no SendGrid or Gmail send from this route.",
+      "Automation Studio (EMAIL-AUTOMATION-ANALYTICS-SHELL-1.0 + EMAIL-AUTOMATION-POLICY-ACTIVATION-1.0): governance + roadmap + read-only policy evaluations from cockpit counts — no automation workers, no auto-send, no background jobs; Evaluate policies refreshes snapshot only.",
+      "Analytics & Deliverability (EMAIL-AUTOMATION-ANALYTICS-SHELL-1.0 + EMAIL-SENDGRID-EVENT-RECIPIENT-RECONCILIATION-1.0): read-only cockpit aggregates + optional operator-triggered reconciliation of SendGridEvent rows to EmailSendRecipient (no provider send API; no Gmail send).",
       "Send Execution (EMAIL-SEND-EXECUTION-1.0): `/admin/workbench/email-command-center/send-execution` — operator-governed SendGrid test + broadcast only after shared draft governance approval, send packet, ACTIVE audience, suppression exclusions, optional SYNCED contact sync run, explicit test send, separate final approval, and typed confirmation (SEND APPROVED). No queue send; EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM unchanged.",
       "AI may suggest; operators and policy decide execution and sensitive writes.",
     ],
@@ -727,6 +890,8 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
   const messageStudioSharedDraftsSnapshot = await messageStudioSharedDraftSnapshotCounts();
   const sendGridContactSyncSnapshot = await buildSendGridContactSyncSnapshot();
   const sendExecutionSnapshot = await buildSendExecutionSnapshot();
+  const sendGridReconciliationSnapshot = await buildSendGridReconciliationSnapshot();
+  const gmailProductionWatchSnapshot = await buildGmailProductionWatchSnapshot();
   const localContactImportDbVerified =
     allEmailCommandCenterMigrationsApplied === true && importSnap.dbSliceReachable;
 
@@ -748,6 +913,29 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
     dbDiagnoseCliHint: "npm run email:db:diagnose",
     importGateCliHint: "npm run email:contact-import:gate",
   };
+
+  const automationPolicyEval = evaluateAllAutomationPolicies({
+    cockpitDbReachable: operatorGate.cockpitDbReachable,
+    localContactImportDbVerified,
+    needsAttentionCount: summary.needsAttentionCount,
+    itemsNotUpdatedIn7DaysCount,
+    messageStudioNeedsReview: messageStudioSharedDraftsSnapshot.needsReview,
+    messageStudioApprovedGovernance: messageStudioSharedDraftsSnapshot.approvedForSendGovernance,
+    sendExecNeedPreflight: sendExecutionSnapshot.needPreflightCount,
+    sendExecPreflightFailed: sendExecutionSnapshot.preflightFailedCount,
+    sendExecFailed: sendExecutionSnapshot.failedCount,
+    runsApprovedAwaitingExecution: sendGridContactSyncSnapshot.runsApprovedAwaitingExecutionCount,
+    runsFailed: sendGridContactSyncSnapshot.runsFailedCount,
+    sendGridPendingReconciliation: sendGridReconciliationSnapshot.pendingReconciliationCount,
+    gmailWatchExpiring48h: gmailProductionWatchSnapshot.watchesExpiringWithin48hCount,
+    suppressionCount: sendGridDbReachable ? sendGridSuppressionCount : 0,
+    activeAudienceDefinitions: audienceStudioCounts.activeAudienceDefinitions,
+    sendGridDbReachable,
+    messageStudioDbReachable: messageStudioSharedDraftsSnapshot.dbReachable,
+    sendGridReconciliationDbReachable: sendGridReconciliationSnapshot.dbReachable,
+    sendGridContactSyncDbReachable: sendGridContactSyncSnapshot.dbReachable,
+    sendExecutionDbReachable: sendExecutionSnapshot.dbReachable,
+  });
 
   const emailAi = getEmailAiReadiness();
 
@@ -826,6 +1014,9 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
     },
     sendGridContactSync: sendGridContactSyncSnapshot,
     sendExecution: sendExecutionSnapshot,
+    sendGridReconciliation: sendGridReconciliationSnapshot,
+    gmailProductionWatch: gmailProductionWatchSnapshot,
+    automationPolicyEval,
     automationTiers,
     governance,
     operatorGate,

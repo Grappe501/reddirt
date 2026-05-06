@@ -1,4 +1,8 @@
 import Link from "next/link";
+import {
+  reconcileRecentSendGridEventsAction,
+  reconcileSendGridEventAction,
+} from "@/app/admin/sendgrid-event-reconciliation-actions";
 import type { EmailCommandCenterSnapshot } from "@/lib/email-command-center/read-model";
 
 const ECC = "/admin/workbench/email-command-center";
@@ -12,6 +16,8 @@ const badge =
 export type AnalyticsDeliverabilityViewProps = {
   snapshot: EmailCommandCenterSnapshot;
   suppressionByType: Array<{ type: string; count: number }>;
+  reconcileNotice?: string;
+  reconcileError?: string;
 };
 
 function CheckRow({ label, ok, note }: { label: string; ok: boolean | "manual"; note?: string }) {
@@ -34,7 +40,12 @@ function CheckRow({ label, ok, note }: { label: string; ok: boolean | "manual"; 
   );
 }
 
-export function AnalyticsDeliverabilityView({ snapshot, suppressionByType }: AnalyticsDeliverabilityViewProps) {
+export function AnalyticsDeliverabilityView({
+  snapshot,
+  suppressionByType,
+  reconcileNotice,
+  reconcileError,
+}: AnalyticsDeliverabilityViewProps) {
   const q = snapshot.queueHealth;
   const pg = snapshot.profileGraph;
   const au = snapshot.audienceStudio;
@@ -42,6 +53,7 @@ export function AnalyticsDeliverabilityView({ snapshot, suppressionByType }: Ana
   const sgF = snapshot.sendGridFoundation;
   const sc = snapshot.sendGridContactSync;
   const se = snapshot.sendExecution;
+  const sgr = snapshot.sendGridReconciliation;
   const ci = snapshot.contactImport;
   const oa = snapshot.openAi;
   const og = snapshot.operatorGate;
@@ -96,6 +108,16 @@ export function AnalyticsDeliverabilityView({ snapshot, suppressionByType }: Ana
         <div className="rounded-lg border border-rose-400/50 bg-rose-50/90 px-3 py-2 font-body text-[11px] text-rose-950" role="alert">
           <strong>Database unreachable</strong> — queue, intelligence, import, and SendGrid table counts below may read as zero.
           Restore <code className="text-[10px]">DATABASE_URL</code> and run <code className="text-[10px]">{og.dbDiagnoseCliHint}</code>.
+        </div>
+      ) : null}
+      {reconcileError ? (
+        <div className="rounded-lg border border-rose-400/50 bg-rose-50/90 px-3 py-2 font-body text-[11px] text-rose-950" role="alert">
+          {reconcileError}
+        </div>
+      ) : null}
+      {reconcileNotice ? (
+        <div className="rounded-lg border border-emerald-400/50 bg-emerald-50/90 px-3 py-2 font-body text-[11px] text-emerald-950" role="status">
+          {reconcileNotice}
         </div>
       ) : null}
 
@@ -228,9 +250,19 @@ export function AnalyticsDeliverabilityView({ snapshot, suppressionByType }: Ana
         ) : null}
         <div className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
           <Stat href={sc.path} label="PREVIEWED runs" value={sc.runsPreviewedCount} sub="Operator-saved previews" />
-          <Stat href={sc.path} label="APPROVED runs" value={sc.runsApprovedCount} sub="Awaiting or between upserts" />
+          <Stat
+            href={sc.path}
+            label="Approved awaiting execution"
+            value={sc.runsApprovedAwaitingExecutionCount}
+            sub="APPROVED rows — Marketing Contacts upsert only; no send"
+          />
           <Stat href={sc.path} label="SYNCED runs" value={sc.runsSyncedCount} sub="Marketing upsert completed" />
-          <Stat href={sc.path} label="FAILED runs" value={sc.runsFailedCount} sub="Review SendGrid Foundation" />
+          <Stat
+            href={sc.path}
+            label="FAILED runs (needs review)"
+            value={sc.runsFailedCount}
+            sub="Inspect safeError in resultJson on SendGrid Foundation"
+          />
         </div>
         <div className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
           <Stat
@@ -252,8 +284,10 @@ export function AnalyticsDeliverabilityView({ snapshot, suppressionByType }: Ana
       <section className={card}>
         <h2 className={h3}>Send execution analytics</h2>
         <p className="mt-1 font-body text-[10px] text-kelly-text/70">
-          EMAIL-SEND-EXECUTION-1.0 — Postgres counts only. No open/click performance claims until SendGrid Event Webhook data
-          reconciles to recipients.
+          EMAIL-SEND-EXECUTION-1.0 — Postgres counts only.{" "}
+          <strong>EMAIL-SENDGRID-EVENT-RECIPIENT-RECONCILIATION-1.0</strong> (below) links webhook{" "}
+          <code className="text-[9px]">SendGridEvent</code> rows to <code className="text-[9px]">EmailSendRecipient</code> for
+          delivered/bounce/unsubscribe/spam and engagement metadata — no provider send from this page.
         </p>
         {!se.dbReachable ? (
           <p className="mt-2 rounded border border-amber-200/80 bg-amber-50/80 px-2 py-2 text-[10px] text-amber-950">
@@ -263,6 +297,12 @@ export function AnalyticsDeliverabilityView({ snapshot, suppressionByType }: Ana
         ) : null}
         <div className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
           <Stat href={SEND_EXECUTION} label="Total executions" value={se.totalExecutions} />
+          <Stat
+            href={SEND_EXECUTION}
+            label="Need preflight (DRAFT + failed)"
+            value={se.needPreflightCount}
+            sub="Operator must run preflight before test send"
+          />
           <Stat href={SEND_EXECUTION} label="Test sends recorded" value={se.testSentCount} sub="Operator-address tests only" />
           <Stat href={SEND_EXECUTION} label="Final sends completed" value={se.sentCount} sub="SendGrid submit batches" />
           <Stat href={SEND_EXECUTION} label="Failed / partial" value={se.failedCount + se.partialFailureCount} />
@@ -271,6 +311,102 @@ export function AnalyticsDeliverabilityView({ snapshot, suppressionByType }: Ana
           <Stat href={SEND_EXECUTION} label="Final approval pending" value={se.readyForFinalApprovalCount} />
           <Stat href={SEND_EXECUTION} label="Archived" value={se.archivedCount} />
         </div>
+      </section>
+
+      <section id="reconciliation" className={`${card} scroll-mt-20`}>
+        <h2 className={h3}>SendGrid event → recipient reconciliation</h2>
+        <p className="mt-1 font-body text-[10px] text-kelly-text/75">
+          EMAIL-SENDGRID-EVENT-RECIPIENT-RECONCILIATION-1.0 — read-only toward SendGrid API. Operators may batch-link webhook
+          events to           <code className="text-[9px]">EmailSendRecipient</code> / rollups (matched by <code className="text-[9px]">custom_args</code> from
+          governed sends, <code className="text-[9px]">sg_message_id</code>, or email + sent window). Opens/clicks increment{" "}
+          <code className="text-[9px]">metadataJson.eccEngagement</code> when matched. <strong>No sends</strong> from this surface.
+        </p>
+        {!sgr.dbReachable ? (
+          <p className="mt-2 text-[10px] text-amber-950">Reconciliation slice unavailable — check database connectivity.</p>
+        ) : (
+          <>
+            <div className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+              <Stat href="#reconciliation" label="SendGrid events (total rows)" value={sgr.totalEvents} />
+              <Stat href="#reconciliation" label="Reconciled (matched)" value={sgr.matchedCount} sub="Linked to a recipient row" />
+              <Stat href="#reconciliation" label="Pending reconciliation" value={sgr.pendingReconciliationCount} sub="No eccReconciliation meta yet" />
+              <Stat href="#reconciliation" label="Unmatched (review)" value={sgr.unmatchedCount} sub="No recipient found for rules" />
+              <Stat href="#reconciliation" label="Skipped" value={sgr.skippedCount} sub="Engagement w/o recipient, etc." />
+              <Stat href="#reconciliation" label="Last reconciled (UTC)" value={sgr.lastReconciledAtIso ? sgr.lastReconciledAtIso.slice(0, 19) : "—"} />
+              <Stat href="#reconciliation" label="Bounce-ish events (rows)" value={sgr.bounceEventsApprox} sub="bounce / dropped" />
+              <Stat href="#reconciliation" label="Unsubscribe events (rows)" value={sgr.unsubscribeEventsApprox} />
+              <Stat href="#reconciliation" label="Spam report events (rows)" value={sgr.spamEventsApprox} />
+            </div>
+            <div className="mt-3 rounded border border-kelly-text/10 bg-kelly-page/50 px-2 py-2">
+              <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/55">EmailSendRecipient status (all executions)</p>
+              <ul className="mt-1 flex flex-wrap gap-2 font-mono text-[9px] text-kelly-navy">
+                {Object.entries(sgr.recipientByStatus).length === 0 ? (
+                  <li className="text-kelly-text/60">No recipient rows yet.</li>
+                ) : (
+                  Object.entries(sgr.recipientByStatus).map(([k, v]) => (
+                    <li key={k} className="rounded border border-kelly-text/10 bg-white/90 px-1.5 py-0.5">
+                      {k}: <span className="font-bold tabular-nums">{v}</span>
+                    </li>
+                  ))
+                )}
+              </ul>
+            </div>
+            <div className="mt-3 flex flex-wrap items-end gap-2">
+              <form action={reconcileRecentSendGridEventsAction} className="flex flex-wrap items-end gap-2">
+                <label className="text-[10px] text-kelly-text/80">
+                  Batch size
+                  <input
+                    type="number"
+                    name="limit"
+                    min={5}
+                    max={120}
+                    defaultValue={40}
+                    className="mt-0.5 w-20 rounded border px-2 py-1 text-[11px]"
+                  />
+                </label>
+                <button
+                  type="submit"
+                  className="rounded border border-kelly-forest/40 bg-emerald-50/90 px-3 py-1 text-[10px] font-bold text-kelly-navy"
+                >
+                  Reconcile recent events
+                </button>
+              </form>
+            </div>
+            <div className="mt-3 max-h-56 overflow-auto rounded border border-kelly-text/10">
+              <table className="w-full text-left font-mono text-[9px] text-kelly-navy">
+                <thead className="sticky top-0 bg-kelly-fog/90 text-kelly-text/60">
+                  <tr>
+                    <th className="px-1 py-1">When (UTC)</th>
+                    <th className="px-1 py-1">Type</th>
+                    <th className="px-1 py-1">Email</th>
+                    <th className="px-1 py-1">Recon</th>
+                    <th className="px-1 py-1">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {sgr.recentEvents.map((ev) => (
+                    <tr key={ev.id} className="border-t border-kelly-text/8">
+                      <td className="px-1 py-0.5">{ev.occurredAtIso.slice(0, 19)}</td>
+                      <td className="px-1 py-0.5">{ev.eventType}</td>
+                      <td className="px-1 py-0.5">{ev.email ?? "—"}</td>
+                      <td className="px-1 py-0.5">{ev.reconciliationState ?? "—"}</td>
+                      <td className="px-1 py-0.5">
+                        <form action={reconcileSendGridEventAction} className="inline">
+                          <input type="hidden" name="eventId" value={ev.id} />
+                          <button
+                            type="submit"
+                            className="rounded border border-kelly-text/20 bg-white px-1 py-0.5 text-[8px] font-bold text-kelly-navy hover:bg-kelly-fog/80"
+                          >
+                            Reconcile one
+                          </button>
+                        </form>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
+        )}
       </section>
 
       <section className={card}>

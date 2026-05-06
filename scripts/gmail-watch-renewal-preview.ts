@@ -1,6 +1,6 @@
 /**
  * Runbook: preview which Staff Gmail watches likely need renewal (DB state only).
- * Execute mode: calls Gmail users.watch via server helpers — requires .env + valid OAuth.
+ * Prefer **`npm run gmail:watch:renewal-check`** (EMAIL-GMAIL-PRODUCTION-WATCH-HARDENING-1.0) for CLI + env summary.
  *
  *   npx tsx scripts/gmail-watch-renewal-preview.ts
  *   GMAIL_WATCH_RENEWAL_EXECUTE=1 npx tsx scripts/gmail-watch-renewal-preview.ts --execute

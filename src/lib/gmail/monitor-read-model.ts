@@ -48,6 +48,7 @@ export async function getGmailMonitorSnapshot(actorUserId: string | null): Promi
     "Gmail send from the workbench composer is separate and requires `GMAIL_OAUTH_INCLUDE_SEND_FOR_WORKBENCH=true` on connect — not used by EmailWorkflowItem.",
     "Queue auto-create from live Gmail is a future governed packet — this sync never creates EmailWorkflowItem rows.",
     "Pub/Sub `users.watch` + POST /api/gmail/pubsub scaffold = EMAIL-GMAIL-WATCH-1.2 — set GOOGLE_PUBSUB_TOPIC + verification token; renew watch before expiry.",
+    "EMAIL-GMAIL-PRODUCTION-WATCH-HARDENING-1.0 — run `npm run gmail:watch:renewal-check` (dry-run) from RedDirt/ for renewal posture; stale `lastHistoryId` requires safe metadata sync before history preview.",
     "`npm run check` passing does not prove `npx prisma migrate deploy` ran — use `npm run email:command-center:preflight` or `npx prisma migrate deploy && npm run check`.",
   ];
 

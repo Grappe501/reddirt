@@ -402,15 +402,21 @@ export async function markSendGridContactSyncRunSynced(runId: string, result: Se
   });
 }
 
-export async function markSendGridContactSyncRunFailed(runId: string, safeError: string) {
+export async function markSendGridContactSyncRunFailed(
+  runId: string,
+  safeError: string,
+  opts?: { apiAttempted?: boolean },
+) {
+  const apiAttempted = Boolean(opts?.apiAttempted);
   await prisma.sendGridContactSyncRun.update({
     where: { id: runId },
     data: {
       status: "FAILED",
       resultJson: {
+        executedAt: new Date().toISOString(),
         failedAt: new Date().toISOString(),
         safeError: safeError.slice(0, 2000),
-        apiExecution: false,
+        apiExecution: apiAttempted,
         emailSendPerformed: false,
       } as object,
     },
@@ -479,7 +485,7 @@ export async function executeApprovedSendGridContactSyncRun(
 
     const outcome = await upsertSendGridMarketingContacts({ contacts, listIds });
     if (!outcome.ok) {
-      await markSendGridContactSyncRunFailed(runId, outcome.safeMessage);
+      await markSendGridContactSyncRunFailed(runId, outcome.safeMessage, { apiAttempted: true });
       return { ok: false, reason: outcome.safeMessage };
     }
 
@@ -506,7 +512,7 @@ export async function executeApprovedSendGridContactSyncRun(
     return { ok: true };
   } catch (e) {
     const msg = sanitizeSendGridApiError(e);
-    await markSendGridContactSyncRunFailed(runId, msg);
+    await markSendGridContactSyncRunFailed(runId, msg, { apiAttempted: true });
     return { ok: false, reason: msg };
   }
 }

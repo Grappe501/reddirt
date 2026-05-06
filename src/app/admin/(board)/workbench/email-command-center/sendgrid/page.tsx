@@ -170,6 +170,44 @@ export default async function SendGridFoundationPage({
         </ul>
       </section>
 
+      {eccSnap.sendGridReconciliation.dbReachable ? (
+        <section className="rounded-lg border border-violet-200/70 bg-violet-50/80 px-3 py-2">
+          <h2 className="font-heading text-[10px] font-bold uppercase tracking-wide text-violet-950">
+            Event reconciliation (EMAIL-SENDGRID-EVENT-RECIPIENT-RECONCILIATION-1.0)
+          </h2>
+          <p className="mt-1 font-body text-[11px] text-violet-950/95">
+            Webhook <code className="text-[9px]">SendGridEvent</code> rows are linked to{" "}
+            <code className="text-[9px]">EmailSendRecipient</code> for deliverability analytics — <strong>no sends</strong> from
+            reconciliation. Last batch:{" "}
+            <span className="font-mono text-[10px]">{eccSnap.sendGridReconciliation.lastReconciledAtIso ?? "—"}</span>.
+          </p>
+          <dl className="mt-2 grid gap-1 font-body text-[10px] text-violet-950 sm:grid-cols-2 lg:grid-cols-4">
+            <div>
+              <dt className="text-violet-900/70">Pending</dt>
+              <dd className="font-heading text-sm font-bold">{eccSnap.sendGridReconciliation.pendingReconciliationCount}</dd>
+            </div>
+            <div>
+              <dt className="text-violet-900/70">Matched</dt>
+              <dd className="font-heading text-sm font-bold">{eccSnap.sendGridReconciliation.matchedCount}</dd>
+            </div>
+            <div>
+              <dt className="text-violet-900/70">Unmatched</dt>
+              <dd className="font-heading text-sm font-bold">{eccSnap.sendGridReconciliation.unmatchedCount}</dd>
+            </div>
+            <div>
+              <dt className="text-violet-900/70">Skipped</dt>
+              <dd className="font-heading text-sm font-bold">{eccSnap.sendGridReconciliation.skippedCount}</dd>
+            </div>
+          </dl>
+          <p className="mt-2 font-body text-[10px] text-violet-950/85">
+            <Link href="/admin/workbench/email-command-center/analytics#reconciliation" className="font-bold underline">
+              Open Analytics → Event reconciliation
+            </Link>{" "}
+            to run batch reconcile (operator-only).
+          </p>
+        </section>
+      ) : null}
+
       <section className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
         <div className="rounded-lg border border-kelly-text/10 bg-white/90 p-3">
           <p className="font-heading text-[10px] font-bold uppercase text-kelly-text/50">API key</p>

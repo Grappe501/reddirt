@@ -22,6 +22,8 @@ function revalidateSendExecutionSurfaces() {
   revalidatePath(`${ECC}/daily`);
   revalidatePath(`${ECC}/analytics`);
   revalidatePath(`${ECC}/message-studio`);
+  revalidatePath(`${ECC}/sendgrid`);
+  revalidatePath(`${ECC}/audiences`);
   revalidatePath(ECC);
 }
 
@@ -77,6 +79,16 @@ export async function sendEmailSendGridTestAction(fd: FormData): Promise<void> {
   const sendExecutionId = trim(fd, "sendExecutionId");
   const testRecipientEmail = trim(fd, "testRecipientEmail");
   if (!sendExecutionId || !testRecipientEmail) redirect(`${ECC}/send-execution?error=missing-test-fields#ops`);
+
+  const snap = await getEmailCommandCenterSnapshot();
+  if (process.env.NODE_ENV === "production" && !snap.operatorGate.localContactImportDbVerified) {
+    redirect(
+      `${ECC}/send-execution?id=${encodeURIComponent(sendExecutionId)}&error=${encodeURIComponent(
+        "Hosted Kelly-Grappe-App DB gate not verified — test send disabled in production.",
+      )}#ops`,
+    );
+  }
+
   try {
     await sendSendGridTestEmail(sendExecutionId, testRecipientEmail, actorId);
     revalidateSendExecutionSurfaces();

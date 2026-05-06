@@ -1,8 +1,8 @@
 # Email Command Center — Route Inventory
 
-**Packet:** **EMAIL-COMMAND-CENTER-CLOSEOUT-1.0** + **EMAIL-COMMAND-CENTER-LAUNCH-HARDENING-1.0**  
+**Packet:** **EMAIL-COMMAND-CENTER-CLOSEOUT-1.0** + **EMAIL-COMMAND-CENTER-LAUNCH-HARDENING-1.0** + **EMAIL-COMMAND-CENTER-PRODUCTION-QA-CLOSEOUT-1.0**  
 **Lane:** `RedDirt/` only · **Division:** Comms / Email Workflow Intelligence  
-**Companion:** [`campaign-email-command-center-progress-ledger.md`](./campaign-email-command-center-progress-ledger.md) · [`email-command-center-operator-smoke-test.md`](./email-command-center-operator-smoke-test.md) · [`email-command-center-closeout-2026-05-05.md`](./email-command-center-closeout-2026-05-05.md) · [`email-command-center-launch-hardening.md`](./email-command-center-launch-hardening.md) · [`email-command-center-first-run-operator-checklist.md`](./email-command-center-first-run-operator-checklist.md)
+**Companion:** [`campaign-email-command-center-progress-ledger.md`](./campaign-email-command-center-progress-ledger.md) · [`email-command-center-production-qa-closeout.md`](./email-command-center-production-qa-closeout.md) · [`email-command-center-operator-smoke-test.md`](./email-command-center-operator-smoke-test.md) · [`email-command-center-closeout-2026-05-05.md`](./email-command-center-closeout-2026-05-05.md) · [`email-command-center-launch-hardening.md`](./email-command-center-launch-hardening.md) · [`email-command-center-first-run-operator-checklist.md`](./email-command-center-first-run-operator-checklist.md)
 
 This document inventories **admin workbench** routes that belong to the **Email Command Center** narrative (cockpit, map, readiness, Gmail, queue, profiles, audiences, imports, SendGrid foundation, message planning, automation shell, analytics shell, **send execution governance**). Paths are **relative to the site root** (full path prefix: `/admin/workbench/…`).
 
@@ -83,8 +83,8 @@ This document inventories **admin workbench** routes that belong to the **Email 
 | Field | Detail |
 |--------|--------|
 | **Status** | **Partial** — requires **StaffGmailAccount** OAuth and operator actions |
-| **Purpose** | Gmail monitor — connection status, **manual** metadata sync, watch start/renew/stop, history preview counts. |
-| **Can do today** | Run safe metadata sync; manage watch where configured; see Pub/Sub scaffold status. |
+| **Purpose** | Gmail monitor — connection status, **manual** metadata sync, watch start/renew/stop, history preview counts; **EMAIL-GMAIL-PRODUCTION-WATCH-HARDENING-1.0** strip (renewal plan, history cursor aggregates, CLI dry-run instructions). |
+| **Can do today** | Run safe metadata sync; manage watch where configured; see Pub/Sub scaffold status; read production-watch posture; from shell run **`npm run gmail:watch:renewal-check`** (dry-run; **`--execute`** only with **`GMAIL_WATCH_RENEWAL_EXECUTE=1`**). |
 | **Cannot do** | Auto-fetch full messages into queue; send from email workflow. |
 | **Upstream** | OAuth (`/api/gmail/oauth/*`); **`gmailSyncState`**. |
 | **Downstream** | **`…/gmail/review`**, **`…/gmail/connect`** (shim). |
@@ -209,8 +209,8 @@ This document inventories **admin workbench** routes that belong to the **Email 
 | Field | Detail |
 |--------|--------|
 | **Status** | **Partial** |
-| **Purpose** | Readiness UI + local previews of events/suppressions/audience maps; **receive-only** webhook path documented; **`#contact-sync`** (**1.1 + 1.2**) — operator preview runs on **`SendGridContactSyncRun`** (suppression-aware, **ACTIVE** audiences), approve row, **optional governed Marketing Contacts upsert** for **APPROVED** runs (**`SENDGRID_API_KEY`**, production **hosted DB gate**) — **contact sync only**, **no** email send. |
-| **Can do today** | Inspect stored **`SendGridEvent`** / **`SendGridSuppression`** when present; readiness copy; save **preview** audit rows; **APPROVED** status; **execute** Marketing Contacts PUT for eligible emails when gates pass. |
+| **Purpose** | Readiness UI + local previews of events/suppressions/audience maps; **receive-only** webhook path documented; **`sendGridReconciliation`** status strip (**EMAIL-SENDGRID-EVENT-RECIPIENT-RECONCILIATION-1.0** — link to Analytics **`#reconciliation`**, **no** sends); **`#contact-sync`** (**1.1 + 1.2**) — operator preview runs on **`SendGridContactSyncRun`** (suppression-aware, **ACTIVE** audiences), approve row, **optional governed Marketing Contacts upsert** for **APPROVED** runs (**`SENDGRID_API_KEY`**, production **hosted DB gate**) — **contact sync only**, **no** email send. Snapshot **`sendGridContactSync.runsApprovedAwaitingExecutionCount`** surfaces APPROVED rows awaiting upsert on **Daily** / **Analytics**. |
+| **Can do today** | Inspect stored **`SendGridEvent`** / **`SendGridSuppression`** when present; readiness copy; **reconciliation counts** (pending/matched/unmatched); save **preview** audit rows; **APPROVED** status; **execute** Marketing Contacts PUT for eligible emails when gates pass. |
 | **Cannot do** | Trigger broadcast / single-send **email**; create campaigns or automation from this page; upsert without **APPROVED** run or without API key; production upsert without hosted DB verification (**deferred posture** = **EMAIL-SEND-EXECUTION-1.0** for **sends**). |
 | **Upstream** | **`POST /api/sendgrid/events`** (signed in prod). |
 | **Downstream** | **`…/analytics`**, **`…/daily`**, **`…/audiences`** (handoff links); future Marketing API execution + send packets. |
@@ -242,25 +242,25 @@ This document inventories **admin workbench** routes that belong to the **Email 
 
 | Field | Detail |
 |--------|--------|
-| **Status** | **Live** (governance **shell** only) |
-| **Purpose** | Automation Studio — tiers, triggers, actions, playbooks, **no** engine activation. |
-| **Can do today** | Read maps and blocked/future callouts. |
-| **Cannot do** | Activate automations; enqueue sends. |
-| **Upstream** | Cockpit; master plan / automation map docs. |
-| **Downstream** | Policy packets (**EMAIL-AUTOMATION-STUDIO-1.1** activation). |
-| **Smoke expectation** | Static educational UI; explicit **no activation**. |
-| **Governance** | Activation is future and policy-gated. |
+| **Status** | **Live** (governance **shell** + **read-only policy evaluations**) |
+| **Purpose** | Automation Studio — tiers, triggers, actions, playbooks; **EMAIL-AUTOMATION-POLICY-ACTIVATION-1.0** policy table from **`getEmailCommandCenterSnapshot.automationPolicyEval`** (no workers). |
+| **Can do today** | Read maps and blocked/future callouts; **Evaluate policies now** revalidates snapshot only (no sends, no mutations). |
+| **Cannot do** | Activate background workers; auto-send; auto-mutate audiences/contacts. |
+| **Upstream** | Cockpit **`getEmailCommandCenterSnapshot`**; master plan / automation map docs. |
+| **Downstream** | Future **EMAIL-AUTOMATION-STUDIO-1.1** worker activation (separate packet). |
+| **Smoke expectation** | Policy rows render when DB healthy; degraded counts when DB down. |
+| **Governance** | Evaluation-only in this packet — cron/worker activation remains policy-gated and **not** shipped here. |
 
 ### `/admin/workbench/email-command-center/analytics`
 
 | Field | Detail |
 |--------|--------|
 | **Status** | **Live** / **Partial** (aggregates need DB) |
-| **Purpose** | Analytics & Deliverability readiness — **`getEmailCommandCenterSnapshot`**, suppression breakdown when healthy. |
-| **Can do today** | One-page readiness + quiet-queue messaging. |
+| **Purpose** | Analytics & Deliverability readiness — **`getEmailCommandCenterSnapshot`**, suppression breakdown when healthy, **`sendGridReconciliation`** + **`#reconciliation`** (operator batch reconcile — **EMAIL-SENDGRID-EVENT-RECIPIENT-RECONCILIATION-1.0**, **no** sends). |
+| **Can do today** | One-page readiness + quiet-queue messaging; reconcile recent **`SendGridEvent`** rows to **`EmailSendRecipient`** when admin submits the reconcile form. |
 | **Cannot do** | Deep scheduled reporting (**EMAIL-ANALYTICS-DELIVERABILITY-1.0**). |
-| **Upstream** | Queue counts; SendGrid tables; imports snapshot. |
-| **Downstream** | Future charts and exports packet. |
+| **Upstream** | Queue counts; SendGrid tables; imports snapshot; **`POST /api/sendgrid/events`** ingestion. |
+| **Downstream** | Charts/exports packet; suppression posture before next governed send. |
 | **Smoke expectation** | Loads with DB or graceful degradation per app patterns. |
 | **Governance** | Read-only observability. |
 
@@ -277,7 +277,7 @@ This document inventories **admin workbench** routes that belong to the **Email 
 | **Can do today** | Read rails/checklist; **operator**: governed test/final SendGrid paths when env + migrations + policy gates pass. |
 | **Cannot do** | Queue-triggered send; automation activation; change **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`**; bypass suppression; broadcast without ASM env. |
 | **Upstream** | Message Studio (shared drafts, send packet), Audience Studio, SendGrid Foundation (**SYNCED** runs), imports consent posture. |
-| **Downstream** | Analytics/Daily snapshot counts; future **event → recipient** reconciliation. |
+| **Downstream** | Analytics/Daily snapshot counts; **`SendGridEvent`** → **`EmailSendRecipient`** via **EMAIL-SENDGRID-EVENT-RECIPIENT-RECONCILIATION-1.0** (operator reconcile on Analytics). |
 | **Smoke expectation** | Page loads; doctrine badges accurate; **`#ops`** lists executions when DB healthy; **no** send without explicit form submit. |
 | **Governance** | Queue **APPROVED** ≠ send approval; contact sync **SYNCED** ≠ send; suppressions override audience membership; imports not assumed opted-in. |
 

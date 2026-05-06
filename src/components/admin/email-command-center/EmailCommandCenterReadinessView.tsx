@@ -59,6 +59,7 @@ function ChecklistSection({
 export function EmailCommandCenterReadinessView({ snapshot }: { snapshot: EmailCommandCenterSnapshot }) {
   const og = snapshot.operatorGate;
   const g = snapshot.gmail;
+  const gp = snapshot.gmailProductionWatch;
   const sg = snapshot.sendgridEnv;
   const sgF = snapshot.sendGridFoundation;
   const oa = snapshot.openAi;
@@ -210,6 +211,42 @@ export function EmailCommandCenterReadinessView({ snapshot }: { snapshot: EmailC
             verify: `Pub/Sub receiver configured: ${g.pubsubReceiverConfigured ? "yes" : "no"} · watch: ${g.gmailWatchDisplayStatus}`,
             owner: "Operator — topic + verification token + Start/Renew watch",
             safety: "POST /api/gmail/pubsub stores notification metadata only.",
+          },
+          {
+            label: "Production watch — renewal + CLI dry-run",
+            status:
+              !gp.dbReachable
+                ? "blocked"
+                : gp.missingPubsubTopic || gp.missingPubsubVerification
+                  ? "partial"
+                  : gp.accountsNeedingRenewalCount > 0 || gp.watchesExpiringWithin48hCount > 0
+                    ? "partial"
+                    : "ready",
+            verify: (
+              <>
+                Accounts in renewal window: {gp.accountsNeedingRenewalCount} · watch expiring within 48h:{" "}
+                {gp.watchesExpiringWithin48hCount} · dry-run:{" "}
+                <code className="text-[9px]">{gp.dryRunRenewalCli}</code> from <code className="text-[9px]">RedDirt/</code>
+              </>
+            ),
+            owner: "Operator / cron — EMAIL-GMAIL-PRODUCTION-WATCH-HARDENING-1.0",
+            safety: "Default CLI is dry-run; execute requires GMAIL_WATCH_RENEWAL_EXECUTE=1 and --execute — users.watch only, no mail send.",
+          },
+          {
+            label: "Production watch — history cursor",
+            status: !gp.dbReachable ? "blocked" : gp.accountsWithStaleHistoryCursorCount > 0 ? "partial" : "ready",
+            verify: (
+              <>
+                Stale cursor accounts: {gp.accountsWithStaleHistoryCursorCount} · Pub/Sub signal without profile
+                cursor: {gp.pendingPubsubSignalWithoutProfileCursorCount} ·{" "}
+                <Link href={g.monitorPath} className="font-bold underline">
+                  Run metadata sync
+                </Link>{" "}
+                before trusting history.list
+              </>
+            ),
+            owner: "Operator on Gmail monitor",
+            safety: "Metadata sync does not store bodies; history preview remains counts-only.",
           },
         ]}
       />
