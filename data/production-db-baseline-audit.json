@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "slice": "REDDIRT-PRODUCTION-DB-BASELINE-AUDIT-1.0",
-  "generatedAt": "2026-05-06T22:46:56.588Z",
+  "generatedAt": "2026-05-07T04:10:58.172Z",
   "mode": "read_only_metadata_audit",
   "database": {
     "reachable": true,
@@ -1019,7 +1019,7 @@
       "ContactPreference",
       "VolunteerProfile",
       "Commitment",
-      "Submission",
+      "submissions",
       "WorkflowIntake",
       "EventRequest",
       "WorkflowAction",
@@ -1039,7 +1039,7 @@
       "SocialAccount",
       "SearchChunk",
       "AnalyticsEvent",
-      "MediaAsset",
+      "media_assets",
       "SyncedPost",
       "AdminContentBlock",
       "HomepageConfig",
@@ -1053,7 +1053,7 @@
       "OwnedMediaAnnotation",
       "OwnedMediaTranscript",
       "OwnedMediaQuoteCandidate",
-      "County",
+      "counties",
       "ElectionResultSource",
       "ElectionContestResult",
       "ElectionCountyResult",
@@ -1199,7 +1199,6 @@
       "public.contacts",
       "public.contest_partisan_index",
       "public.contests",
-      "public.counties",
       "public.county_campaign_targets",
       "public.county_results",
       "public.county_turnout",
@@ -1229,7 +1228,6 @@
       "public.interactions",
       "public.leadership_roles",
       "public.locations",
-      "public.media_assets",
       "public.media_entity_links",
       "public.media_tags",
       "public.message_audience_members",
@@ -1259,7 +1257,6 @@
       "public.shifts",
       "public.spatial_ref_sys",
       "public.statewide_win_targets",
-      "public.submissions",
       "public.target_universes",
       "public.tasks",
       "public.telemetry_events",
@@ -1311,7 +1308,6 @@
       "ContactPreference",
       "VolunteerProfile",
       "Commitment",
-      "Submission",
       "WorkflowIntake",
       "EventRequest",
       "WorkflowAction",
@@ -1331,7 +1327,6 @@
       "SocialAccount",
       "SearchChunk",
       "AnalyticsEvent",
-      "MediaAsset",
       "SyncedPost",
       "AdminContentBlock",
       "HomepageConfig",
@@ -1345,7 +1340,6 @@
       "OwnedMediaAnnotation",
       "OwnedMediaTranscript",
       "OwnedMediaQuoteCandidate",
-      "County",
       "ElectionResultSource",
       "ElectionContestResult",
       "ElectionCountyResult",
@@ -1492,7 +1486,7 @@
     "nextStep": "Use a human-reviewed path (e.g. shadow DB or SQL-backed baseline plan) before migrate deploy / db push; keep this audit as the pre-change snapshot."
   },
   "warnings": [
-    "148 Prisma-mapped public table(s) not found in information_schema snapshot (case or naming drift, or different database).",
+    "145 Prisma-mapped public table(s) not found in information_schema snapshot (case or naming drift, or different database).",
     "public schema contains multiple tables not present in prisma/schema.prisma — expect a large baseline diff if introspecting."
   ]
 }

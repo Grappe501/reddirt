@@ -1,6 +1,6 @@
 # Production database baseline audit (read-only)
 
-**Slice:** `REDDIRT-PRODUCTION-DB-BASELINE-AUDIT-1.0` · **Schema version:** `1.0` · **Generated:** 2026-05-06T22:46:56.588Z
+**Slice:** `REDDIRT-PRODUCTION-DB-BASELINE-AUDIT-1.0` · **Schema version:** `1.0` · **Generated:** 2026-05-07T04:10:58.172Z
 
 ## Purpose
 
@@ -193,10 +193,10 @@ Tables whose **names** match campaign-sensitive keywords (`voter`, `contact`, `p
 
 ## Prisma expected table comparison
 
-- **Prisma-mapped public tables not observed in `information_schema`:** 148
-- **Observed tables not mapped in Prisma** (includes all `auth.*` and any Supabase-only `public.*`): 138
+- **Prisma-mapped public tables not observed in `information_schema`:** 145
+- **Observed tables not mapped in Prisma** (includes all `auth.*` and any Supabase-only `public.*`): 135
 
-### Sample: public tables not in Prisma (`115` total)
+### Sample: public tables not in Prisma (`112` total)
 
 - `public.ar02_voter_dem_lean`
 - `public.ar02_voter_race`
@@ -214,7 +214,6 @@ Tables whose **names** match campaign-sensitive keywords (`voter`, `contact`, `p
 - `public.contacts`
 - `public.contest_partisan_index`
 - `public.contests`
-- `public.counties`
 - `public.county_campaign_targets`
 - `public.county_results`
 - `public.county_turnout`
@@ -238,9 +237,10 @@ Tables whose **names** match campaign-sensitive keywords (`voter`, `contact`, `p
 - `public.ingestion_jobs`
 - `public.ingestion_mapping_suggestions`
 - `public.ingestion_reviews`
-- … _75 more — see `data/production-db-baseline-audit.json`._
+- `public.ingestion_write_events`
+- … _72 more — see `data/production-db-baseline-audit.json`._
 
-### Sample: Prisma tables missing from public snapshot (`148` total)
+### Sample: Prisma tables missing from public snapshot (`145` total)
 
 - `User`
 - `ComplianceDocument`
@@ -253,7 +253,6 @@ Tables whose **names** match campaign-sensitive keywords (`voter`, `contact`, `p
 - `ContactPreference`
 - `VolunteerProfile`
 - `Commitment`
-- `Submission`
 - `WorkflowIntake`
 - `EventRequest`
 - `WorkflowAction`
@@ -273,7 +272,6 @@ Tables whose **names** match campaign-sensitive keywords (`voter`, `contact`, `p
 - `SocialAccount`
 - `SearchChunk`
 - `AnalyticsEvent`
-- `MediaAsset`
 - `SyncedPost`
 - `AdminContentBlock`
 - `HomepageConfig`
@@ -282,7 +280,9 @@ Tables whose **names** match campaign-sensitive keywords (`voter`, `contact`, `p
 - `PlatformConnection`
 - `InboundContentItem`
 - `ContentDecision`
-- … _108 more — see `data/production-db-baseline-audit.json`._
+- `PlatformMetricSnapshot`
+- `OwnedMediaAsset`
+- … _105 more — see `data/production-db-baseline-audit.json`._
 
 ## Baseline risk
 
@@ -292,7 +292,7 @@ Tables whose **names** match campaign-sensitive keywords (`voter`, `contact`, `p
 
 ### Warnings from this run
 
-- 148 Prisma-mapped public table(s) not found in information_schema snapshot (case or naming drift, or different database).
+- 145 Prisma-mapped public table(s) not found in information_schema snapshot (case or naming drift, or different database).
 - public schema contains multiple tables not present in prisma/schema.prisma — expect a large baseline diff if introspecting.
 
 ## Recommended next step
@@ -324,4 +324,4 @@ On the **production** (or production-equivalent) database targeted by this audit
 
 ---
 
-_Machine-readable twin: [`data/production-db-baseline-audit.json`](../data/production-db-baseline-audit.json)._
+_Machine-readable twin: [`data/production-db-baseline-audit.json`](../data/production-db-baseline-audit.json). After audit, run **`node scripts/reconcile-production-db-schema.mjs`** for naming or legacy drift → [`docs/production-db-schema-reconciliation.md`](./production-db-schema-reconciliation.md)._

@@ -242,6 +242,10 @@ Models with **no** confident observed `public` match — candidates for **future
 
 **`REDDIRT-DBA-REVIEW-REQUIRED-1.0`**
 
+## Follow-on slice (patch plan, shadow proof, safe `@@map`)
+
+**`REDDIRT-PRISMA-SCHEMA-MAP-PATCH-PLAN-AND-SHADOW-PROOF-1.0`** — full offline review, selective `schema.prisma` `@@map`, validator, shadow plan, draft baseline execution packet, test readiness: [`prisma-schema-map-patch-plan.md`](./prisma-schema-map-patch-plan.md) · [`data/prisma-schema-map-patch-plan.json`](../data/prisma-schema-map-patch-plan.json) · [`production-db-shadow-proof-plan.md`](./production-db-shadow-proof-plan.md) · [`data/production-db-shadow-proof-plan.json`](../data/production-db-shadow-proof-plan.json) · [`production-baseline-execution-packet-draft.md`](./production-baseline-execution-packet-draft.md) · [`data/production-baseline-execution-packet-draft.json`](../data/production-baseline-execution-packet-draft.json) · [`production-db-test-readiness.md`](./production-db-test-readiness.md) · [`develop_notes/REDDIRT_PRISMA_SCHEMA_MAP_PATCH_PLAN_AND_SHADOW_PROOF_1_0_REPORT.md`](../develop_notes/REDDIRT_PRISMA_SCHEMA_MAP_PATCH_PLAN_AND_SHADOW_PROOF_1_0_REPORT.md) — `node scripts/full-review-prisma-schema-map.mjs`, `node scripts/validate-prisma-schema-map-patch.mjs`, `node scripts/generate-production-baseline-execution-packet.mjs`.
+
 ---
 
 _Artifacts: [`data/prisma-schema-map-alignment.json`](../data/prisma-schema-map-alignment.json) · [`develop_notes/REDDIRT_PRISMA_SCHEMA_MAP_ALIGNMENT_1_0_REPORT.md`](../develop_notes/REDDIRT_PRISMA_SCHEMA_MAP_ALIGNMENT_1_0_REPORT.md)_

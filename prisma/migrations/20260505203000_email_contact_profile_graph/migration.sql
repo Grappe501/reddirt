@@ -103,7 +103,7 @@ ALTER TABLE "EmailWorkflowItem" ADD CONSTRAINT "EmailWorkflowItem_emailContactPr
 
 ALTER TABLE "EmailContactProfile" ADD CONSTRAINT "EmailContactProfile_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 ALTER TABLE "EmailContactProfile" ADD CONSTRAINT "EmailContactProfile_volunteerProfileId_fkey" FOREIGN KEY ("volunteerProfileId") REFERENCES "VolunteerProfile"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-ALTER TABLE "EmailContactProfile" ADD CONSTRAINT "EmailContactProfile_relationalContactId_fkey" FOREIGN KEY ("relationalContactId") REFERENCES "RelationalContact"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+-- `RelationalContact` is created in `20260515120000_rel2_relational_contact_foundation`. FK deferred to `20260515121000_email_contact_profile_relational_contact_fkey` (REDDIRT-MIGRATION-DEPENDENCY-REPAIR-1.0).
 
 ALTER TABLE "EmailContactProfileFact" ADD CONSTRAINT "EmailContactProfileFact_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "EmailContactProfile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "EmailContactProfileFact" ADD CONSTRAINT "EmailContactProfileFact_approvedByUserId_fkey" FOREIGN KEY ("approvedByUserId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;

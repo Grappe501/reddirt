@@ -1,14 +1,16 @@
 generator client {
-  provider      = "prisma-client-js"
-  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+  provider        = "prisma-client-js"
+  binaryTargets   = ["native", "rhel-openssl-3.0.x"]
+  previewFeatures = ["multiSchema"]
 }
 
 datasource db {
-  provider = "postgresql"
+  provider  = "postgresql"
   /// Runtime queries (pooler or session string). For Supabase **transaction** pooler on `DATABASE_URL`, set `DIRECT_URL` to the **direct** or **session** string from the dashboard for `migrate deploy` / introspection — see `docs/deployment.md`.
   url       = env("DATABASE_URL")
   /// Migrations + introspection. **Local Docker:** set to the same value as `DATABASE_URL`. **Live RedDirt Supabase DB:** often required when `DATABASE_URL` uses port `6543` or `pgbouncer=true`.
   directUrl = env("DIRECT_URL")
+  schemas   = ["public", "auth"]
 }
 
 model User {
@@ -22,109 +24,109 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  volunteerProfile                 VolunteerProfile?
-  commitments                      Commitment[]
-  submissions                      Submission[]
-  teamRoleAssignments              TeamRoleAssignment[]
-  eventsOwned                      CampaignEvent[]                  @relation("EventOwner")
-  tasksAssigned                    CampaignTask[]                   @relation("TaskAssignee")
-  tasksCreated                     CampaignTask[]                   @relation("TaskCreator")
-  volunteerAsksCreated             VolunteerAsk[]
-  mediaIngestBatches               MediaIngestBatch[]
-  ownedMediaAnnotationsOwned       OwnedMediaAnnotation[]           @relation("AnnotationAuthor")
+  volunteerProfile                    VolunteerProfile?
+  commitments                         Commitment[]
+  submissions                         Submission[]
+  teamRoleAssignments                 TeamRoleAssignment[]
+  eventsOwned                         CampaignEvent[]                     @relation("EventOwner")
+  tasksAssigned                       CampaignTask[]                      @relation("TaskAssignee")
+  tasksCreated                        CampaignTask[]                      @relation("TaskCreator")
+  volunteerAsksCreated                VolunteerAsk[]
+  mediaIngestBatches                  MediaIngestBatch[]
+  ownedMediaAnnotationsOwned          OwnedMediaAnnotation[]              @relation("AnnotationAuthor")
   /// Optional: voter roll row linked for campaign assistance (admin-approved intake).
-  linkedVoterRecordId              String?
-  linkedVoterRecord                VoterRecord?                     @relation("UserVoterLink", fields: [linkedVoterRecordId], references: [id], onDelete: SetNull)
-  volunteerSignupIntakes           SignupSheetDocument[]
-  intakeMatchedEntries             SignupSheetEntry[]
-  communicationThreads             CommunicationThread[]            @relation("ThreadPrimaryUser")
-  threadsAssigned                  CommunicationThread[]            @relation("ThreadAssignee")
-  messagesSent                     CommunicationMessage[]           @relation("MessageSentBy")
-  queueItemsCreated                CommunicationActionQueue[]       @relation("QueueCreatedBy")
-  queueItemsTarget                 CommunicationActionQueue[]       @relation("QueueTargetUser")
-  eventApprovalsSubmitted          EventApproval[]                  @relation("ApprovalSubmittedBy")
-  eventApprovalsDecided            EventApproval[]                  @relation("ApprovalDecidedBy")
-  eventStageChangesActed           EventStageChangeLog[]            @relation("EventStageChangeActor")
-  eventsApprovedAsStaff            CampaignEvent[]                  @relation("EventApprovedByStaff")
-  calendarSourcesOwned             CalendarSource[]                 @relation("CalendarSourceOwner")
-  contactPreference                ContactPreference?
-  communicationTemplatesCreated    CommunicationTemplate[]          @relation("TemplateAuthor")
-  audienceSegmentsCreated          AudienceSegment[]                @relation("SegmentAuthor")
-  communicationCampaignsCreated    CommunicationCampaign[]          @relation("CampaignAuthor")
-  communicationCampaignsApproved   CommunicationCampaign[]          @relation("CampaignApprover")
-  eventSignups                     EventSignup[]                    @relation("UserEventSignups")
-  communicationCampaignRecipients  CommunicationCampaignRecipient[]
+  linkedVoterRecordId                 String?
+  linkedVoterRecord                   VoterRecord?                        @relation("UserVoterLink", fields: [linkedVoterRecordId], references: [id], onDelete: SetNull)
+  volunteerSignupIntakes              SignupSheetDocument[]
+  intakeMatchedEntries                SignupSheetEntry[]
+  communicationThreads                CommunicationThread[]               @relation("ThreadPrimaryUser")
+  threadsAssigned                     CommunicationThread[]               @relation("ThreadAssignee")
+  messagesSent                        CommunicationMessage[]              @relation("MessageSentBy")
+  queueItemsCreated                   CommunicationActionQueue[]          @relation("QueueCreatedBy")
+  queueItemsTarget                    CommunicationActionQueue[]          @relation("QueueTargetUser")
+  eventApprovalsSubmitted             EventApproval[]                     @relation("ApprovalSubmittedBy")
+  eventApprovalsDecided               EventApproval[]                     @relation("ApprovalDecidedBy")
+  eventStageChangesActed              EventStageChangeLog[]               @relation("EventStageChangeActor")
+  eventsApprovedAsStaff               CampaignEvent[]                     @relation("EventApprovedByStaff")
+  calendarSourcesOwned                CalendarSource[]                    @relation("CalendarSourceOwner")
+  contactPreference                   ContactPreference?
+  communicationTemplatesCreated       CommunicationTemplate[]             @relation("TemplateAuthor")
+  audienceSegmentsCreated             AudienceSegment[]                   @relation("SegmentAuthor")
+  communicationCampaignsCreated       CommunicationCampaign[]             @relation("CampaignAuthor")
+  communicationCampaignsApproved      CommunicationCampaign[]             @relation("CampaignApprover")
+  eventSignups                        EventSignup[]                       @relation("UserEventSignups")
+  communicationCampaignRecipients     CommunicationCampaignRecipient[]
   /// Staff “human” Gmail rail (at most one linked mailbox; OAuth in `StaffGmailAccount`).
-  staffGmailAccount                StaffGmailAccount?
-  workflowIntakesAssigned          WorkflowIntake[]                 @relation("WorkflowIntakeAssignee")
-  workflowActionsPerformed         WorkflowAction[]                 @relation("WorkflowActionActor")
-  socialContentItemsAuthored       SocialContentItem[]              @relation("SocialContentAuthor")
-  socialContentMediaRefsCreated    SocialContentMediaRef[]          @relation("SocialMediaRefCreator")
-  conversationWatchlistsCreated    ConversationWatchlist[]          @relation("WatchlistCreator")
-  conversationOpportunitiesCreated ConversationOpportunity[]        @relation("OpportunityCreator")
-  ownedMediaReviewLogs             OwnedMediaReviewLog[]
-  ownedMediaAssetsReviewed         OwnedMediaAsset[]                @relation("OwnedMediaReviewedBy")
-  socialContentDraftsCreated       SocialContentDraft[]             @relation("SocialContentDraftAuthor")
+  staffGmailAccount                   StaffGmailAccount?
+  workflowIntakesAssigned             WorkflowIntake[]                    @relation("WorkflowIntakeAssignee")
+  workflowActionsPerformed            WorkflowAction[]                    @relation("WorkflowActionActor")
+  socialContentItemsAuthored          SocialContentItem[]                 @relation("SocialContentAuthor")
+  socialContentMediaRefsCreated       SocialContentMediaRef[]             @relation("SocialMediaRefCreator")
+  conversationWatchlistsCreated       ConversationWatchlist[]             @relation("WatchlistCreator")
+  conversationOpportunitiesCreated    ConversationOpportunity[]           @relation("OpportunityCreator")
+  ownedMediaReviewLogs                OwnedMediaReviewLog[]
+  ownedMediaAssetsReviewed            OwnedMediaAsset[]                   @relation("OwnedMediaReviewedBy")
+  socialContentDraftsCreated          SocialContentDraft[]                @relation("SocialContentDraftAuthor")
   /// Comms Workbench (ops layer)
-  commsPlansOwned                  CommunicationPlan[]              @relation("CommsPlanOwner")
-  commsPlansRequested              CommunicationPlan[]              @relation("CommsPlanRequester")
-  commsDraftsCreated               CommunicationDraft[]             @relation("CommsDraftCreator")
-  commsDraftsUpdated               CommunicationDraft[]             @relation("CommsDraftUpdater")
-  commsDraftReviewRequests         CommunicationDraft[]             @relation("CommsDraftReviewRequester")
-  commsDraftReviews                CommunicationDraft[]             @relation("CommsDraftReviewer")
-  commsVariantReviewRequests       CommunicationVariant[]           @relation("CommsVariantReviewRequester")
-  commsVariantReviews              CommunicationVariant[]           @relation("CommsVariantReviewer")
-  commsSendsSent                   CommunicationSend[]              @relation("CommsSendSender")
-  commsSendsQueued                 CommunicationSend[]              @relation("CommsSendQueuedBy")
-  commsSendsLastRetried            CommunicationSend[]              @relation("CommsSendLastRetriedBy")
+  commsPlansOwned                     CommunicationPlan[]                 @relation("CommsPlanOwner")
+  commsPlansRequested                 CommunicationPlan[]                 @relation("CommsPlanRequester")
+  commsDraftsCreated                  CommunicationDraft[]                @relation("CommsDraftCreator")
+  commsDraftsUpdated                  CommunicationDraft[]                @relation("CommsDraftUpdater")
+  commsDraftReviewRequests            CommunicationDraft[]                @relation("CommsDraftReviewRequester")
+  commsDraftReviews                   CommunicationDraft[]                @relation("CommsDraftReviewer")
+  commsVariantReviewRequests          CommunicationVariant[]              @relation("CommsVariantReviewRequester")
+  commsVariantReviews                 CommunicationVariant[]              @relation("CommsVariantReviewer")
+  commsSendsSent                      CommunicationSend[]                 @relation("CommsSendSender")
+  commsSendsQueued                    CommunicationSend[]                 @relation("CommsSendQueuedBy")
+  commsSendsLastRetried               CommunicationSend[]                 @relation("CommsSendLastRetriedBy")
   /// Message-plan audience segments (Comms workbench; CE-1) — not broadcast `AudienceSegment`.
-  commsPlanSegmentsCreated         CommsPlanAudienceSegment[]       @relation("CommsPlanSegmentCreatedBy")
-  commsPlanSegmentsUpdated         CommsPlanAudienceSegment[]       @relation("CommsPlanSegmentUpdatedBy")
-  commsPlanSegmentMembersAdded     CommsPlanAudienceSegmentMember[] @relation("CommsPlanSegmentMemberAddedBy")
-  commsPlanSegmentMemberSubjects   CommsPlanAudienceSegmentMember[] @relation("CommsPlanSegmentMemberSubject")
-  workbenchCommunicationRecipients CommunicationRecipient[]         @relation("CommunicationRecipientUser")
+  commsPlanSegmentsCreated            CommsPlanAudienceSegment[]          @relation("CommsPlanSegmentCreatedBy")
+  commsPlanSegmentsUpdated            CommsPlanAudienceSegment[]          @relation("CommsPlanSegmentUpdatedBy")
+  commsPlanSegmentMembersAdded        CommsPlanAudienceSegmentMember[]    @relation("CommsPlanSegmentMemberAddedBy")
+  commsPlanSegmentMemberSubjects      CommsPlanAudienceSegmentMember[]    @relation("CommsPlanSegmentMemberSubject")
+  workbenchCommunicationRecipients    CommunicationRecipient[]            @relation("CommunicationRecipientUser")
   /// E-1+ Email Workflow Intelligence (distinct from `CommunicationActionQueue` AI/ops queue).
-  emailWorkflowItemsCreated  EmailWorkflowItem[] @relation("EmailWorkflowItemCreatedBy")
-  emailWorkflowItemsAssigned EmailWorkflowItem[] @relation("EmailWorkflowItemAssignedTo")
-  emailWorkflowItemsReviewed EmailWorkflowItem[] @relation("EmailWorkflowItemReviewedBy")
+  emailWorkflowItemsCreated           EmailWorkflowItem[]                 @relation("EmailWorkflowItemCreatedBy")
+  emailWorkflowItemsAssigned          EmailWorkflowItem[]                 @relation("EmailWorkflowItemAssignedTo")
+  emailWorkflowItemsReviewed          EmailWorkflowItem[]                 @relation("EmailWorkflowItemReviewedBy")
   /// Contact / counterpart user on a workflow item (optional).
-  emailWorkflowItemsContact  EmailWorkflowItem[] @relation("EmailWorkflowItemContactUser")
+  emailWorkflowItemsContact           EmailWorkflowItem[]                 @relation("EmailWorkflowItemContactUser")
   /// SEAT-1: at most one primary row per `positionKey` in `PositionSeat` (operational org seat; not permissions).
-  positionSeatsOccupied          PositionSeat[]                   @relation("PositionSeatOccupant")
+  positionSeatsOccupied               PositionSeat[]                      @relation("PositionSeatOccupant")
   /// COMP-2: compliance documents uploaded from admin (metadata + file pointer; not auto-trusted for AI).
-  complianceDocumentsUploaded    ComplianceDocument[]              @relation("ComplianceDocumentUploader")
+  complianceDocumentsUploaded         ComplianceDocument[]                @relation("ComplianceDocumentUploader")
   /// FIN-1: optional “related party” for a ledger line (e.g. submitter) — not exclusive owner of the row.
-  financialTransactionsRelated   FinancialTransaction[]            @relation("FinancialTransactionRelatedUser")
+  financialTransactionsRelated        FinancialTransaction[]              @relation("FinancialTransactionRelatedUser")
   /// FIN-2: user who confirmed a ledger line (status DRAFT → CONFIRMED).
-  financialTransactionsConfirmed FinancialTransaction[]            @relation("FinancialTransactionConfirmedBy")
+  financialTransactionsConfirmed      FinancialTransaction[]              @relation("FinancialTransactionConfirmedBy")
   /// FIELD-1: optional geographic/field coverage assignment (one row = one field scope × position anchor).
-  fieldAssignments                 FieldAssignment[]
+  fieldAssignments                    FieldAssignment[]
   /// VOTER-MODEL-1: optional linkage when signal is about a `User` (CRM) rather than only `VoterRecord`.
-  voterSignals                     VoterSignal[]
-  voterClassificationsOverridden   VoterModelClassification[] @relation("VoterClassificationOverride")
-  voterInteractionsAsContact       VoterInteraction[]         @relation("VoterInteractionContactedBy")
-  voterInteractionsAsVolunteer     VoterInteraction[]         @relation("VoterInteractionRelatedVolunteer")
-  voterVotePlansCreated            VoterVotePlan[]            @relation("VoterVotePlanCreatedBy")
+  voterSignals                        VoterSignal[]
+  voterClassificationsOverridden      VoterModelClassification[]          @relation("VoterClassificationOverride")
+  voterInteractionsAsContact          VoterInteraction[]                  @relation("VoterInteractionContactedBy")
+  voterInteractionsAsVolunteer        VoterInteraction[]                  @relation("VoterInteractionRelatedVolunteer")
+  voterVotePlansCreated               VoterVotePlan[]                     @relation("VoterVotePlanCreatedBy")
   /// REL-2: relational network owned by this volunteer user (not a permission model).
-  relationalContactsOwned          RelationalContact[]        @relation("RelationalContactOwner")
+  relationalContactsOwned             RelationalContact[]                 @relation("RelationalContactOwner")
   /// EMAIL-CONTACT-PROFILE-GRAPH-1.0 — governed contact graph link (facts/suggestions audited separately).
-  emailContactProfiles             EmailContactProfile[]
-  emailContactProfileFactsApproved EmailContactProfileFact[]  @relation("EmailContactProfileFactApprover")
+  emailContactProfiles                EmailContactProfile[]
+  emailContactProfileFactsApproved    EmailContactProfileFact[]           @relation("EmailContactProfileFactApprover")
   emailProfileFactSuggestionsReviewed EmailContactProfileFactSuggestion[] @relation("EmailProfileFactSuggestionReviewer")
-  emailAudienceHintsReviewed          EmailAudienceHint[]                   @relation("EmailAudienceHintReviewer")
+  emailAudienceHintsReviewed          EmailAudienceHint[]                 @relation("EmailAudienceHintReviewer")
   /// EMAIL-AUDIENCE-STUDIO-1.0 — saved audience definitions (no SendGrid list ids).
-  emailAudienceDefinitionsCreated     EmailAudienceDefinition[]             @relation("EmailAudienceDefinitionCreatedBy")
-  emailAudienceDefinitionsUpdated     EmailAudienceDefinition[]             @relation("EmailAudienceDefinitionUpdatedBy")
-  emailAudiencePreviewRuns            EmailAudiencePreviewRun[]             @relation("EmailAudiencePreviewRunActor")
+  emailAudienceDefinitionsCreated     EmailAudienceDefinition[]           @relation("EmailAudienceDefinitionCreatedBy")
+  emailAudienceDefinitionsUpdated     EmailAudienceDefinition[]           @relation("EmailAudienceDefinitionUpdatedBy")
+  emailAudiencePreviewRuns            EmailAudiencePreviewRun[]           @relation("EmailAudiencePreviewRunActor")
   /// EMAIL-CONTACT-IMPORT-STAGING-1.0 — CSV staging batches (no SendGrid).
-  emailContactImportBatchesCreated    EmailContactImportBatch[]             @relation("EmailContactImportBatchCreatedBy")
-  emailContactImportBatchesApproved   EmailContactImportBatch[]             @relation("EmailContactImportBatchApprovedBy")
-  emailContactImportDecisions         EmailContactImportDecision[]          @relation("EmailContactImportDecisionDecidedBy")
+  emailContactImportBatchesCreated    EmailContactImportBatch[]           @relation("EmailContactImportBatchCreatedBy")
+  emailContactImportBatchesApproved   EmailContactImportBatch[]           @relation("EmailContactImportBatchApprovedBy")
+  emailContactImportDecisions         EmailContactImportDecision[]        @relation("EmailContactImportDecisionDecidedBy")
   /// EMAIL-MESSAGE-STUDIO-SERVER-DRAFTS-1.0 — shared campaign drafts (persistence only; no send).
-  messageStudioDraftsCreated          MessageStudioDraft[]                  @relation("MessageStudioDraftCreatedBy")
-  messageStudioDraftsUpdated          MessageStudioDraft[]                  @relation("MessageStudioDraftUpdatedBy")
-  messageStudioDraftsAssignedReview   MessageStudioDraft[]                  @relation("MessageStudioDraftAssignedReviewer")
-  messageStudioDraftsReviewed         MessageStudioDraft[]                  @relation("MessageStudioDraftReviewedBy")
+  messageStudioDraftsCreated          MessageStudioDraft[]                @relation("MessageStudioDraftCreatedBy")
+  messageStudioDraftsUpdated          MessageStudioDraft[]                @relation("MessageStudioDraftUpdatedBy")
+  messageStudioDraftsAssignedReview   MessageStudioDraft[]                @relation("MessageStudioDraftAssignedReviewer")
+  messageStudioDraftsReviewed         MessageStudioDraft[]                @relation("MessageStudioDraftReviewedBy")
   messageStudioDraftRevisionsCreated  MessageStudioDraftRevision[]        @relation("MessageStudioDraftRevisionCreatedBy")
   /// EMAIL-SENDGRID-CONTACT-SYNC-1.1 — operator contact sync preview runs (no SendGrid API execution here).
   sendGridContactSyncRunsCreated      SendGridContactSyncRun[]            @relation("SendGridContactSyncRunCreatedBy")
@@ -135,6 +137,8 @@ model User {
   emailSendExecutionsApproved         EmailSendExecution[]                @relation("EmailSendExecutionApprovedBy")
   emailSendExecutionsSent             EmailSendExecution[]                @relation("EmailSendExecutionSentBy")
   emailSendApprovalsDecided           EmailSendApproval[]                 @relation("EmailSendApprovalDecidedBy")
+
+  @@schema("public")
 }
 
 /// COMP-2: classification for dashboard-uploaded compliance knowledge files.
@@ -150,34 +154,37 @@ enum ComplianceDocumentType {
   DEADLINE_CALENDAR
   DISCLAIMER_OR_TEMPLATE
   OTHER
+
+  @@schema("public")
 }
 
 /// COMP-2: admin-uploaded compliance documents (local disk storage key; RAG/index wiring is a later packet).
 model ComplianceDocument {
-  id       String  @id @default(cuid())
+  id                     String                 @id @default(cuid())
   /// Path segment from `saveOwnedMediaFile` (same data dir pattern as owned media).
-  storageKey       String
-  fileName         String
-  originalFileName String?
-  mimeType         String
-  fileSizeBytes    Int
-  title            String
-  documentType     ComplianceDocumentType @default(OTHER)
+  storageKey             String
+  fileName               String
+  originalFileName       String?
+  mimeType               String
+  fileSizeBytes          Int
+  title                  String
+  documentType           ComplianceDocumentType @default(OTHER)
   /// Free text (e.g. "Q1 2026", "Pre-primary") — not validated as a legal period.
-  reportingPeriod  String?
+  reportingPeriod        String?
   /// Optional single anchor date (reporting or document date).
-  periodDate       DateTime?
-  notes            String? @db.Text
+  periodDate             DateTime?
+  notes                  String?                @db.Text
   /// Staff must opt in; uploads default false (uploaded ≠ trusted for RAG).
-  approvedForAiReference Boolean @default(false)
+  approvedForAiReference Boolean                @default(false)
   uploadedByUserId       String?
-  uploadedBy               User?   @relation("ComplianceDocumentUploader", fields: [uploadedByUserId], references: [id], onDelete: SetNull)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  uploadedBy             User?                  @relation("ComplianceDocumentUploader", fields: [uploadedByUserId], references: [id], onDelete: SetNull)
+  createdAt              DateTime               @default(now())
+  updatedAt              DateTime               @updatedAt
 
   @@index([documentType, createdAt])
   @@index([createdAt])
   @@index([approvedForAiReference, createdAt])
+  @@schema("public")
 }
 
 /// FIN-1: internal ledger line — not a bank feed, not an official filing record.
@@ -186,6 +193,8 @@ enum FinancialTransactionType {
   REIMBURSEMENT
   CONTRIBUTION
   OTHER
+
+  @@schema("public")
 }
 
 /// FIN-1: how the row was created (provenance for audit).
@@ -194,50 +203,57 @@ enum FinancialSourceType {
   SUBMISSION
   DOCUMENT
   FUTURE_INTEGRATION
+
+  @@schema("public")
 }
 
 /// FIN-1: human confirmation (drafts are not treated as final spend truth).
 enum FinancialTransactionStatus {
   DRAFT
   CONFIRMED
+
+  @@schema("public")
 }
 
 /// FIN-1: minimal durable financial activity row (campaign-internal; auditable, reversible by correction rows later).
 model FinancialTransaction {
-  id     String  @id @default(cuid())
-  amount Decimal @db.Decimal(14, 2)
-  transactionType  FinancialTransactionType
+  id                String                     @id @default(cuid())
+  amount            Decimal                    @db.Decimal(14, 2)
+  transactionType   FinancialTransactionType
   /// Category slug or label (e.g. `event`, `software_platform`) — map to `CostBearingWireKind` in `budget.ts` for governance views.
-  category         String
-  description      String   @db.Text
-  sourceType       FinancialSourceType
+  category          String
+  description       String                     @db.Text
+  sourceType        FinancialSourceType
   /// Id in the source system: submission id, compliance document id, import batch id, etc. — not globally unique across types; pair with `sourceType`.
-  sourceId         String?
-  transactionDate  DateTime
-  relatedUserId    String?
-  relatedUser      User?    @relation("FinancialTransactionRelatedUser", fields: [relatedUserId], references: [id], onDelete: SetNull)
-  relatedEventId   String?
-  relatedEvent     CampaignEvent? @relation(fields: [relatedEventId], references: [id], onDelete: SetNull)
-  notes            String?  @db.Text
-  status           FinancialTransactionStatus @default(DRAFT)
+  sourceId          String?
+  transactionDate   DateTime
+  relatedUserId     String?
+  relatedUser       User?                      @relation("FinancialTransactionRelatedUser", fields: [relatedUserId], references: [id], onDelete: SetNull)
+  relatedEventId    String?
+  relatedEvent      CampaignEvent?             @relation(fields: [relatedEventId], references: [id], onDelete: SetNull)
+  notes             String?                    @db.Text
+  status            FinancialTransactionStatus @default(DRAFT)
   /// FIN-2: staff who confirmed the row; set only when status is CONFIRMED.
   confirmedByUserId String?
-  confirmedBy      User?    @relation("FinancialTransactionConfirmedBy", fields: [confirmedByUserId], references: [id], onDelete: SetNull)
-  confirmedAt      DateTime?
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+  confirmedBy       User?                      @relation("FinancialTransactionConfirmedBy", fields: [confirmedByUserId], references: [id], onDelete: SetNull)
+  confirmedAt       DateTime?
+  createdAt         DateTime                   @default(now())
+  updatedAt         DateTime                   @updatedAt
 
   @@index([transactionDate, status])
   @@index([sourceType, sourceId])
   @@index([category, transactionDate])
   @@index([status, transactionDate])
   @@index([confirmedByUserId])
+  @@schema("public")
 }
 
 /// FIELD-1: minimal geographic/field hierarchy (campaign-owned labels; not GIS).
 enum FieldUnitType {
   COUNTY
   REGION
+
+  @@schema("public")
 }
 
 /// FIELD-1: named field geography node (e.g. county or multi-county region). Optional `parent` for nesting.
@@ -246,34 +262,36 @@ model FieldUnit {
   name      String
   type      FieldUnitType
   parentId  String?
-  parent    FieldUnit?   @relation("FieldUnitHierarchy", fields: [parentId], references: [id], onDelete: SetNull)
-  children  FieldUnit[]  @relation("FieldUnitHierarchy")
-  createdAt DateTime     @default(now())
+  parent    FieldUnit?    @relation("FieldUnitHierarchy", fields: [parentId], references: [id], onDelete: SetNull)
+  children  FieldUnit[]   @relation("FieldUnitHierarchy")
+  createdAt DateTime      @default(now())
 
-  assignments     FieldAssignment[]
+  assignments        FieldAssignment[]
   relationalContacts RelationalContact[]
 
   @@index([type, name])
   @@index([parentId])
+  @@schema("public")
 }
 
 /// FIELD-1: link a `PositionId` string (`positions.ts`) and optional `User` / `PositionSeat` to a field unit.
 model FieldAssignment {
-  id         String   @id @default(cuid())
-  fieldUnitId String
-  fieldUnit  FieldUnit @relation(fields: [fieldUnitId], references: [id], onDelete: Cascade)
+  id             String        @id @default(cuid())
+  fieldUnitId    String
+  fieldUnit      FieldUnit     @relation(fields: [fieldUnitId], references: [id], onDelete: Cascade)
   /// `PositionId` from `src/lib/campaign-engine/positions.ts` (string slug); not a Prisma FK.
-  positionId String
-  userId     String?
-  user       User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  positionId     String
+  userId         String?
+  user           User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
   /// Optional link to the operational org seat (SEAT-1); should match `positionId` on the seat’s `positionKey` when set.
   positionSeatId String?
   positionSeat   PositionSeat? @relation(fields: [positionSeatId], references: [id], onDelete: SetNull)
-  createdAt      DateTime  @default(now())
+  createdAt      DateTime      @default(now())
 
   @@index([fieldUnitId, positionId])
   @@index([userId])
   @@index([positionSeatId])
+  @@schema("public")
 }
 
 /// BUDGET-2: campaign-internal budget plan (not the ledger; not a filing).
@@ -281,6 +299,8 @@ enum BudgetPlanStatus {
   DRAFT
   ACTIVE
   ARCHIVED
+
+  @@schema("public")
 }
 
 model BudgetPlan {
@@ -297,6 +317,7 @@ model BudgetPlan {
   lines BudgetLine[]
 
   @@index([status, createdAt])
+  @@schema("public")
 }
 
 model BudgetLine {
@@ -316,6 +337,7 @@ model BudgetLine {
 
   @@index([budgetPlanId])
   @@index([costBearingWireKind])
+  @@schema("public")
 }
 
 /// SEAT-1: one operational seat per `ROLE-1` position key (v1: single fillable slot per position in the tree).
@@ -327,39 +349,46 @@ enum PositionSeatStatus {
   ACTING
   /// Co-pilot / trainee: occupant is not the primary owner; still for visibility and training rails only.
   SHADOW
+
+  @@schema("public")
 }
 
 model PositionSeat {
-  id        String   @id @default(cuid())
+  id                   String             @id @default(cuid())
   /// Matches `PositionId` string in `src/lib/campaign-engine/positions.ts` (not a Prisma enum — additive).
-  positionKey String  @unique
-  userId    String?
-  user      User?    @relation("PositionSeatOccupant", fields: [userId], references: [id], onDelete: SetNull)
-  status    PositionSeatStatus @default(VACANT)
+  positionKey          String             @unique
+  userId               String?
+  user                 User?              @relation("PositionSeatOccupant", fields: [userId], references: [id], onDelete: SetNull)
+  status               PositionSeatStatus @default(VACANT)
   /// When status is ACTING, optional position key the occupant is covering (e.g. backfill for a vacant sub-seat).
   actingForPositionKey String?
-  notes     String?  @db.Text
+  notes                String?            @db.Text
   /// Optional structured notes (e.g. source of truth ref); no product logic reads this in SEAT-1.
-  metadataJson Json?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  metadataJson         Json?
+  createdAt            DateTime           @default(now())
+  updatedAt            DateTime           @updatedAt
 
   fieldAssignments FieldAssignment[]
 
   @@index([userId])
   @@index([status, positionKey])
+  @@schema("public")
 }
 
 enum EmailOptInStatus {
   UNKNOWN
   OPT_IN
   OPT_OUT
+
+  @@schema("public")
 }
 
 enum SmsOptInStatus {
   UNKNOWN
   OPT_IN
   OPT_OUT
+
+  @@schema("public")
 }
 
 /// Channel consent and third-party opt-out / suppression (Tier 1 comms workbench).
@@ -387,6 +416,8 @@ model ContactPreference {
   notes                    String?          @db.Text
   createdAt                DateTime         @default(now())
   updatedAt                DateTime         @updatedAt
+
+  @@schema("public")
 }
 
 model VolunteerProfile {
@@ -403,8 +434,10 @@ model VolunteerProfile {
   communicationCampaignRecipients CommunicationCampaignRecipient[]
   commsPlanAudienceSegmentMembers CommsPlanAudienceSegmentMember[] @relation("CommsPlanSegmentMemberVolunteer")
   communicationRecipients         CommunicationRecipient[]
-  emailWorkflowItems              EmailWorkflowItem[]                @relation("EmailWorkflowItemVolunteer")
+  emailWorkflowItems              EmailWorkflowItem[]              @relation("EmailWorkflowItemVolunteer")
   emailContactProfiles            EmailContactProfile[]
+
+  @@schema("public")
 }
 
 model Commitment {
@@ -414,6 +447,8 @@ model Commitment {
   type      String
   metadata  Json?
   createdAt DateTime @default(now())
+
+  @@schema("public")
 }
 
 model Submission {
@@ -427,6 +462,9 @@ model Submission {
 
   /// At most one workflow intake per submission (queue entry for CampaignOS Phase 1).
   workflowIntake WorkflowIntake?
+
+  @@map("submissions")
+  @@schema("public")
 }
 
 // --- CampaignOS Phase 1: unified intake queue (extend; do not replace Submission / events / comms) ---
@@ -439,6 +477,8 @@ enum WorkflowIntakeStatus {
   CONVERTED
   DECLINED
   ARCHIVED
+
+  @@schema("public")
 }
 
 enum WorkflowActionKind {
@@ -448,12 +488,16 @@ enum WorkflowActionKind {
   DECISION
   EVENT_LINKED
   OTHER
+
+  @@schema("public")
 }
 
 enum EventRequestStatus {
   OPEN
   FULFILLED
   CANCELLED
+
+  @@schema("public")
 }
 
 /// Lifecycle for analytics-originated recommendations and downstream work / evaluation.
@@ -465,6 +509,8 @@ enum AnalyticsRecommendationOutcomeStatus {
   EVALUATED
   DISMISSED
   EXPIRED
+
+  @@schema("public")
 }
 
 /// Master queue row for intakes; links optional `Submission` and optional 1:1 `EventRequest`.
@@ -502,6 +548,7 @@ model WorkflowIntake {
   @@index([status, createdAt])
   @@index([assignedUserId, status])
   @@index([countyId, status])
+  @@schema("public")
 }
 
 /// Scheduling bridge: required parent `WorkflowIntake`, optional `CampaignEvent` once scheduled.
@@ -530,6 +577,7 @@ model EventRequest {
 
   @@index([status, createdAt])
   @@index([campaignEventId])
+  @@schema("public")
 }
 
 /// Audit / decision log for a `WorkflowIntake`.
@@ -553,6 +601,7 @@ model WorkflowAction {
 
   @@index([workflowIntakeId, createdAt])
   @@index([actorUserId, createdAt])
+  @@schema("public")
 }
 
 // --- CampaignOS Phase 2: Social Workbench (additive; does not replace comms, events, or task engine) ---
@@ -567,6 +616,8 @@ enum SocialPlatform {
   BLUESKY
   THREADS
   OTHER
+
+  @@schema("public")
 }
 
 /// Lifecycle of a conceptual post or post family (may span many platform variants).
@@ -579,6 +630,8 @@ enum SocialContentStatus {
   PUBLISHED
   ARCHIVED
   CANCELLED
+
+  @@schema("public")
 }
 
 /// Per-channel variant state.
@@ -589,6 +642,8 @@ enum SocialVariantStatus {
   PUBLISHED
   FAILED
   CANCELLED
+
+  @@schema("public")
 }
 
 /// Why this work exists — drives which `WorkflowTemplate` / `sourceTemplateTaskKey` you attach on `CampaignTask`.
@@ -599,6 +654,8 @@ enum SocialContentKind {
   CLIP_REPURPOSE
   ORGANIC
   OTHER
+
+  @@schema("public")
 }
 
 /// Messaging style / tactic for learning (non-negative, trust-oriented set). Distinct from Author Studio "voice" presets.
@@ -609,6 +666,8 @@ enum SocialMessageToneMode {
   ISSUE_EDUCATION
   BOLD_CONTRAST
   INVITATIONAL_CTA
+
+  @@schema("public")
 }
 
 /// How the post is framed for learning (distinct from `SocialMessageToneMode` voice). Nullable until staff set.
@@ -619,6 +678,8 @@ enum SocialMessageTacticMode {
   INVITE_ACTION
   RUMOR_CLARIFY
   OTHER
+
+  @@schema("public")
 }
 
 /// Suggested follow-up *shape* (campaign-safe, stored on strategic insight). No outrage lanes.
@@ -635,6 +696,8 @@ enum SocialStrategicFollowupType {
   EVENT_PROMO
   POST_EVENT_RECAP
   NO_ACTION
+
+  @@schema("public")
 }
 
 /// Canonical row for a social post plan (intake- or event-anchored; variants are per platform/account).
@@ -685,7 +748,7 @@ model SocialContentItem {
   analyticsRecommendationOutcomesAsExecuted AnalyticsRecommendationOutcome[] @relation("ArOutcomeExecuted")
   /// Comms Workbench plans that cite this social item as their source.
   communicationPlansSourced                 CommunicationPlan[]              @relation("CommsPlanSourceSocial")
-  emailWorkflowItems                        EmailWorkflowItem[]                @relation("EmailWorkflowItemSocial")
+  emailWorkflowItems                        EmailWorkflowItem[]              @relation("EmailWorkflowItemSocial")
 
   @@index([workflowIntakeId, status])
   @@index([campaignEventId, status])
@@ -693,6 +756,7 @@ model SocialContentItem {
   @@index([messageToneMode, kind, updatedAt])
   @@index([messageTacticMode, kind, updatedAt])
   @@index([createdByUserId])
+  @@schema("public")
 }
 
 /// Durable record for a single analytics recommendation instance, linked artifacts, and optional evaluation.
@@ -738,6 +802,7 @@ model AnalyticsRecommendationOutcome {
   @@index([sourceSocialContentItemId, createdAt])
   @@index([status, createdAt])
   @@index([recommendationType, createdAt])
+  @@schema("public")
 }
 
 /// Saved Author Studio compose output for a work item (reuse, audit, optional “applied” marker).
@@ -757,6 +822,7 @@ model SocialContentDraft {
 
   @@index([socialContentItemId, createdAt])
   @@index([createdByUserId])
+  @@schema("public")
 }
 
 /// A single channel-specific slice of a `SocialContentItem` (copy, schedule, post id when published).
@@ -790,6 +856,7 @@ model SocialPlatformVariant {
   @@index([status, scheduledAt])
   @@index([socialAccountId, status])
   @@index([platform, status])
+  @@schema("public")
 }
 
 /// Audience / thread classification for learning (trust-building, not pile-ons).
@@ -801,6 +868,8 @@ enum SocialSentimentType {
   HOSTILE
   MEDIA
   UNKNOWN
+
+  @@schema("public")
 }
 
 enum SocialPerformanceDataSource {
@@ -808,6 +877,8 @@ enum SocialPerformanceDataSource {
   API_IMPORT
   ESTIMATE
   AGGREGATOR
+
+  @@schema("public")
 }
 
 /// Time-bucketed performance for a work item (whole-item or per-platform variant). Meaningful rates over raw vanity totals.
@@ -856,6 +927,7 @@ model SocialPerformanceSnapshot {
   @@index([socialContentItemId, periodStart])
   @@index([socialPlatformVariantId, periodStart])
   @@index([conversionCampaignEventId])
+  @@schema("public")
 }
 
 /// One insight row per work item: strategic narrative + AI placeholders (no generic dashboard).
@@ -894,6 +966,8 @@ model SocialContentStrategicInsight {
   confidenceScore         Float?
 
   updatedAt DateTime @updatedAt
+
+  @@schema("public")
 }
 
 // --- Public conversation monitoring (signals, not individuals — no PII vault) ---
@@ -906,6 +980,8 @@ enum ConversationSourceKind {
   PRESS_RELEASE
   MANUAL_ENTRY
   API_IMPORT
+
+  @@schema("public")
 }
 
 /// Coarse actor boundary for public signal (not used to track private people).
@@ -915,6 +991,8 @@ enum ConversationSignalActorType {
   ELECTED_OR_COMMENTARY
   COMMUNITY_THREAD
   UNKNOWN
+
+  @@schema("public")
 }
 
 enum ConversationItemStatus {
@@ -923,6 +1001,8 @@ enum ConversationItemStatus {
   CLUSTERED
   DISMISSED
   ARCHIVED
+
+  @@schema("public")
 }
 
 enum ConversationClassification {
@@ -939,6 +1019,8 @@ enum ConversationClassification {
   NEUTRAL_REPORT
   OTHER
   UNKNOWN
+
+  @@schema("public")
 }
 
 enum ConversationSentimentLabel {
@@ -947,6 +1029,8 @@ enum ConversationSentimentLabel {
   MIXED
   NEGATIVE
   UNKNOWN
+
+  @@schema("public")
 }
 
 enum ConversationUrgency {
@@ -954,6 +1038,8 @@ enum ConversationUrgency {
   MEDIUM
   HIGH
   BREAKING
+
+  @@schema("public")
 }
 
 enum ConversationSuggestedTone {
@@ -964,18 +1050,24 @@ enum ConversationSuggestedTone {
   CELEBRATORY
   DEFERRING
   OTHER
+
+  @@schema("public")
 }
 
 enum ConversationWatchlistStatus {
   ACTIVE
   PAUSED
   ARCHIVED
+
+  @@schema("public")
 }
 
 enum ConversationClusterStatus {
   ACTIVE
   MERGED
   ARCHIVED
+
+  @@schema("public")
 }
 
 enum ConversationOpportunityStatus {
@@ -983,6 +1075,8 @@ enum ConversationOpportunityStatus {
   ROUTED
   CONVERTED
   DISMISSED
+
+  @@schema("public")
 }
 
 /// Named filter set for public-source monitoring (keywords, channels — no individual targets).
@@ -1004,6 +1098,7 @@ model ConversationWatchlist {
 
   @@index([countyId, status])
   @@index([status, updatedAt])
+  @@schema("public")
 }
 
 /// One normalized public post, comment thread, or article (aggregated content; no private DMs).
@@ -1038,6 +1133,7 @@ model ConversationItem {
   @@index([countyId, status])
   @@index([status, createdAt])
   @@index([watchlistId, createdAt])
+  @@schema("public")
 }
 
 /// AI / rules enrichment for a `ConversationItem` (latest analysis; re-run overwrites).
@@ -1062,6 +1158,7 @@ model ConversationAnalysis {
 
   @@index([classification, urgency])
   @@index([analyzedAt])
+  @@schema("public")
 }
 
 /// Correlation group for similar public signals (e.g. same misinfo wave).
@@ -1082,6 +1179,7 @@ model ConversationCluster {
 
   @@index([countyId, status])
   @@index([status, updatedAt])
+  @@schema("public")
 }
 
 /// Bridge: which items belong to a cluster and how strongly.
@@ -1096,6 +1194,7 @@ model ConversationClusterItem {
 
   @@unique([clusterId, conversationItemId])
   @@index([conversationItemId])
+  @@schema("public")
 }
 
 /// Actionable “response opportunity” — can route to `WorkflowIntake` and/or `SocialContentItem`.
@@ -1126,13 +1225,14 @@ model ConversationOpportunity {
   createdAt                 DateTime                      @default(now())
   updatedAt                 DateTime                      @updatedAt
   mediaOutreachItems        MediaOutreachItem[]           @relation("MediaOutreachSourceOpp")
-  emailWorkflowItems        EmailWorkflowItem[]            @relation("EmailWorkflowItemOpp")
+  emailWorkflowItems        EmailWorkflowItem[]           @relation("EmailWorkflowItemOpp")
 
   @@index([status, urgency])
   @@index([countyId, status])
   @@index([workflowIntakeId])
   @@index([socialContentItemId])
   @@index([clusterId])
+  @@schema("public")
 }
 
 /// Why a piece of `OwnedMediaAsset` is associated with a social work item.
@@ -1145,6 +1245,8 @@ enum SocialContentMediaRefPurpose {
   VISUAL
   /// Pin to a specific `SocialPlatformVariant` (e.g. Reels vs Shorts).
   PLATFORM_VARIANT
+
+  @@schema("public")
 }
 
 /// Join table: `OwnedMediaAsset` ↔ social workbench without duplicating file rows.
@@ -1175,6 +1277,7 @@ model SocialContentMediaRef {
   @@index([ownedMediaId])
   @@index([socialPlatformVariantId])
   @@index([createdAt])
+  @@schema("public")
 }
 
 /// Registered outbound identity for the campaign (one row per account/handle you manage).
@@ -1198,6 +1301,7 @@ model SocialAccount {
 
   @@index([platform, isActive])
   @@index([handle, platform])
+  @@schema("public")
 }
 
 model SearchChunk {
@@ -1210,6 +1314,7 @@ model SearchChunk {
   createdAt  DateTime @default(now())
 
   @@unique([path, chunkIndex])
+  @@schema("public")
 }
 
 model AnalyticsEvent {
@@ -1219,6 +1324,8 @@ model AnalyticsEvent {
   path      String?
   sessionId String?
   createdAt DateTime @default(now())
+
+  @@schema("public")
 }
 
 // --- Website admin content board (Script 6) — public site CMS only ---
@@ -1226,18 +1333,24 @@ model AnalyticsEvent {
 enum MediaKind {
   IMAGE
   VIDEO_EMBED
+
+  @@schema("public")
 }
 
 enum ContentCollection {
   STORY
   EDITORIAL
   EXPLAINER
+
+  @@schema("public")
 }
 
 enum BlogDisplayMode {
   SUMMARY_LINK
   EXCERPT_LINK
   INTERNAL_MIRROR_TODO
+
+  @@schema("public")
 }
 
 // --- Script 6.5 orchestrator enums (referenced by MediaAsset + inbound models) ---
@@ -1247,6 +1360,8 @@ enum ContentPlatform {
   FACEBOOK
   INSTAGRAM
   YOUTUBE
+
+  @@schema("public")
 }
 
 enum PlatformConnectionStatus {
@@ -1255,6 +1370,8 @@ enum PlatformConnectionStatus {
   SYNCING
   ERROR
   OK
+
+  @@schema("public")
 }
 
 enum InboundSourceType {
@@ -1268,6 +1385,8 @@ enum InboundSourceType {
   PODCAST_EPISODE
   LIVE
   OTHER
+
+  @@schema("public")
 }
 
 enum InboundReviewStatus {
@@ -1276,6 +1395,8 @@ enum InboundReviewStatus {
   FEATURED
   SUPPRESSED
   ARCHIVED
+
+  @@schema("public")
 }
 
 enum ContentRoutingDestination {
@@ -1287,6 +1408,8 @@ enum ContentRoutingDestination {
   EDITORIAL_SEED
   MEDIA_LIBRARY
   CAMPAIGN_BRIEF
+
+  @@schema("public")
 }
 
 enum ContentDecisionStatus {
@@ -1296,6 +1419,8 @@ enum ContentDecisionStatus {
   SUPPRESSED
   ARCHIVED
   ROUTED
+
+  @@schema("public")
 }
 
 /// Editorial / hub routing kind (Phase 1 content hub). Distinct from `InboundSourceType` (connector shape).
@@ -1306,6 +1431,8 @@ enum ContentHubKind {
   ROAD_UPDATE
   EXPLAINER
   INTERVIEW
+
+  @@schema("public")
 }
 
 model MediaAsset {
@@ -1327,6 +1454,9 @@ model MediaAsset {
   syncedPostHeroes SyncedPost[]          @relation("SyncedPostHeroMedia")
   contentOverrides ContentItemOverride[] @relation("ContentOverrideHeroMedia")
   inboundItems     InboundContentItem[]
+
+  @@map("media_assets")
+  @@schema("public")
 }
 
 /// Synced external blog posts (Substack via RSS). Not a second blog CMS — editorial control only.
@@ -1373,6 +1503,7 @@ model SyncedPost {
   @@index([publishedAt])
   @@index([hidden, featured])
   @@index([hidden, contentKind, publishedAt])
+  @@schema("public")
 }
 
 /// Page-scoped content blocks (hero, quote band, CTAs, etc.) — JSON payload by blockType.
@@ -1388,6 +1519,7 @@ model AdminContentBlock {
 
   @@unique([pageKey, blockKey])
   @@index([pageKey])
+  @@schema("public")
 }
 
 /// Singleton-style homepage composition + copy overrides (merged with `src/content/homepage.ts` defaults).
@@ -1410,6 +1542,8 @@ model HomepageConfig {
   /// Curated `InboundContentItem.id` for homepage featured YouTube module (optional).
   featuredHomepageVideoInboundId String?
   updatedAt                      DateTime @updatedAt
+
+  @@schema("public")
 }
 
 /// Visibility / teaser / hero overrides for static story, editorial, explainer entries.
@@ -1427,6 +1561,7 @@ model ContentItemOverride {
   heroMedia       MediaAsset?       @relation("ContentOverrideHeroMedia", fields: [heroMediaId], references: [id], onDelete: SetNull)
 
   @@unique([collection, slug])
+  @@schema("public")
 }
 
 model SiteSettings {
@@ -1438,6 +1573,8 @@ model SiteSettings {
   lastSubstackSyncOk    Boolean?
   lastSubstackSyncError String?   @db.Text
   updatedAt             DateTime  @updatedAt
+
+  @@schema("public")
 }
 
 // --- Script 6.5 — Content orchestrator (intake / normalization / routing; not movement ops) ---
@@ -1459,6 +1596,7 @@ model PlatformConnection {
   metricSnapshots   PlatformMetricSnapshot[]
 
   @@index([platform, status])
+  @@schema("public")
 }
 
 /// Normalized inbound item from any connector. Substack posts also remain in `SyncedPost`.
@@ -1510,6 +1648,7 @@ model InboundContentItem {
   @@index([reviewStatus, visibleOnUpdatesPage])
   @@index([publishedAt])
   @@index([sourcePlatform, siteHidden, reviewStatus])
+  @@schema("public")
 }
 
 model ContentDecision {
@@ -1521,6 +1660,8 @@ model ContentDecision {
   destination   ContentRoutingDestination @default(NONE)
   notes         String?                   @db.Text
   editor        String?
+
+  @@schema("public")
 }
 
 model PlatformMetricSnapshot {
@@ -1531,6 +1672,7 @@ model PlatformMetricSnapshot {
   metrics              Json
 
   @@index([platformConnectionId, capturedAt])
+  @@schema("public")
 }
 
 // --- Campaign-owned media (uploads / DAM memory — distinct from `MediaAsset` URL register) ---
@@ -1542,6 +1684,8 @@ enum OwnedMediaKind {
   AUDIO
   DOCUMENT
   OTHER
+
+  @@schema("public")
 }
 
 enum OwnedMediaRole {
@@ -1554,6 +1698,8 @@ enum OwnedMediaRole {
   GRAPHIC
   INTERVIEW
   OTHER
+
+  @@schema("public")
 }
 
 enum OwnedMediaSourceType {
@@ -1565,12 +1711,16 @@ enum OwnedMediaSourceType {
   MIGRATED
   SUPPORTER_UPLOAD
   OTHER
+
+  @@schema("public")
 }
 
 /// Where the binary for this row lives. `SUPABASE` uses `storageKey` as the object key in the campaign bucket.
 enum OwnedMediaStorageBackend {
   LOCAL_DISK
   SUPABASE
+
+  @@schema("public")
 }
 
 /// How geographic fields were set. Advisory until `needsGeoReview` is cleared in admin.
@@ -1580,6 +1730,8 @@ enum GeoMetadataSource {
   MANUAL
   INFERRED
   REVERSE_GEO
+
+  @@schema("public")
 }
 
 enum OwnedMediaReviewStatus {
@@ -1588,6 +1740,8 @@ enum OwnedMediaReviewStatus {
   APPROVED
   REJECTED
   ARCHIVED
+
+  @@schema("public")
 }
 
 enum TranscriptionJobStatus {
@@ -1596,6 +1750,8 @@ enum TranscriptionJobStatus {
   IN_PROGRESS
   SUCCEEDED
   FAILED
+
+  @@schema("public")
 }
 
 enum TranscriptSource {
@@ -1604,6 +1760,8 @@ enum TranscriptSource {
   ASR_DRAFT
   IMPORT
   OTHER
+
+  @@schema("public")
 }
 
 enum TranscriptReviewStatus {
@@ -1611,6 +1769,8 @@ enum TranscriptReviewStatus {
   APPROVED
   REJECTED
   NEEDS_EDIT
+
+  @@schema("public")
 }
 
 enum QuoteCandidateType {
@@ -1619,12 +1779,16 @@ enum QuoteCandidateType {
   SOCIAL_CROP
   PRESS
   OTHER
+
+  @@schema("public")
 }
 
 enum QuoteReviewStatus {
   PENDING
   APPROVED
   REJECTED
+
+  @@schema("public")
 }
 
 /// Culling / triage, distinct from `OwnedMediaReviewStatus` (operational review pipeline).
@@ -1632,6 +1796,8 @@ enum OwnedMediaPickStatus {
   UNRATED
   PICK
   REJECT
+
+  @@schema("public")
 }
 
 /// Lightroom-style color labels (asset organization).
@@ -1642,6 +1808,8 @@ enum OwnedMediaColorLabel {
   GREEN
   BLUE
   PURPLE
+
+  @@schema("public")
 }
 
 /// How this file relates to a capture master (original vs delivered derivative).
@@ -1655,6 +1823,8 @@ enum OwnedMediaDerivativeType {
   VIDEO_PROXY
   VIDEO_POSTER
   OTHER
+
+  @@schema("public")
 }
 
 /// Planned or completed derivative job (thumbnails, crops, web renditions).
@@ -1665,6 +1835,8 @@ enum OwnedMediaDerivativeJobStatus {
   SUCCEEDED
   FAILED
   SKIPPED
+
+  @@schema("public")
 }
 
 enum OwnedMediaNoteType {
@@ -1676,6 +1848,8 @@ enum OwnedMediaNoteType {
   CAPTION
   TRANSCRIPT_CORRECTION
   INTERNAL_NOTE
+
+  @@schema("public")
 }
 
 /// Canonical row for campaign-owned media (`OwnedMediaAsset` in app code; not renamed to `media_assets` in DB to avoid a breaking table rename).
@@ -1830,6 +2004,7 @@ model OwnedMediaAsset {
   @@index([reviewedAt])
   @@index([reviewedByUserId])
   @@index([countyId, pickStatus, capturedAt])
+  @@schema("public")
 }
 
 model OwnedMediaAnnotation {
@@ -1848,6 +2023,7 @@ model OwnedMediaAnnotation {
   @@index([ownedMediaId, createdAt])
   @@index([ownedMediaId, noteType])
   @@index([isSearchable])
+  @@schema("public")
 }
 
 model OwnedMediaTranscript {
@@ -1867,6 +2043,7 @@ model OwnedMediaTranscript {
   quoteCandidates OwnedMediaQuoteCandidate[]
 
   @@index([ownedMediaId, reviewStatus])
+  @@schema("public")
 }
 
 model OwnedMediaQuoteCandidate {
@@ -1891,6 +2068,7 @@ model OwnedMediaQuoteCandidate {
   @@index([ownedMediaId, reviewStatus])
   @@index([transcriptId])
   @@index([countySlug])
+  @@schema("public")
 }
 
 // --- County command pages (public organizing intelligence + reviewable data) ---
@@ -1899,6 +2077,8 @@ enum CountyContentReviewStatus {
   DRAFT
   PENDING_REVIEW
   APPROVED
+
+  @@schema("public")
 }
 
 enum ElectedJurisdiction {
@@ -1906,6 +2086,8 @@ enum ElectedJurisdiction {
   STATE
   COUNTY
   LOCAL
+
+  @@schema("public")
 }
 
 enum PublicDemographicsSource {
@@ -1913,6 +2095,8 @@ enum PublicDemographicsSource {
   CENSUS_DECENNIAL
   MANUAL
   OTHER
+
+  @@schema("public")
 }
 
 /// Canonical US county for Arkansas campaign command pages (`/counties/[slug]`).
@@ -1939,11 +2123,11 @@ model County {
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
 
-  campaignStats CountyCampaignStats?
-  demographics  CountyPublicDemographics?
+  campaignStats         CountyCampaignStats?
+  demographics          CountyPublicDemographics?
   registrationSnapshots CountyRegistrationSnapshot[]
   strategyKpis          CountyStrategyKpi[]
-  elected       CountyElectedOfficial[]
+  elected               CountyElectedOfficial[]
 
   countyVoterMetrics        CountyVoterMetrics[]
   voterRecords              VoterRecord[]
@@ -1964,11 +2148,13 @@ model County {
   conversationClusters      ConversationCluster[]
   conversationOpportunities ConversationOpportunity[]
   workflowIntakes           WorkflowIntake[]
-  electionCountyResults    ElectionCountyResult[]
-  electionPrecinctResults  ElectionPrecinctResult[]
+  electionCountyResults     ElectionCountyResult[]
+  electionPrecinctResults   ElectionPrecinctResult[]
   relationalContacts        RelationalContact[]
 
   @@index([published, sortOrder])
+  @@map("counties")
+  @@schema("public")
 }
 
 // --- DATA-4 + ELECTION-INGEST-1: Arkansas election result JSON ingest (provenance + tabulation rows) ---
@@ -1978,6 +2164,8 @@ enum ElectionResultSourceType {
   MANUAL_UPLOAD
   OFFICIAL_EXPORT
   UNKNOWN
+
+  @@schema("public")
 }
 
 /// One import run from a file or export (provenance anchor for all child rows).
@@ -2004,10 +2192,11 @@ model ElectionResultSource {
 
   @@index([electionDate])
   @@index([sourcePath])
+  @@schema("public")
 }
 
 model ElectionContestResult {
-  id                String   @id @default(cuid())
+  id                String               @id @default(cuid())
   sourceId          String
   source            ElectionResultSource @relation(fields: [sourceId], references: [id], onDelete: Cascade)
   contestName       String
@@ -2015,44 +2204,46 @@ model ElectionContestResult {
   jurisdictionLevel String?
   totalVotes        Int?
   metadataJson      Json?
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
+  createdAt         DateTime             @default(now())
+  updatedAt         DateTime             @updatedAt
 
   countyResults    ElectionCountyResult[]
   candidateResults ElectionCandidateResult[]
   precinctResults  ElectionPrecinctResult[]
 
   @@index([sourceId])
+  @@schema("public")
 }
 
 model ElectionCountyResult {
-  id               String   @id @default(cuid())
+  id               String                 @id @default(cuid())
   sourceId         String
-  source           ElectionResultSource @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+  source           ElectionResultSource   @relation(fields: [sourceId], references: [id], onDelete: Cascade)
   contestId        String?
   contest          ElectionContestResult? @relation(fields: [contestId], references: [id], onDelete: Cascade)
   countyId         String?
-  county           County?  @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  county           County?                @relation(fields: [countyId], references: [id], onDelete: SetNull)
   countyNameRaw    String
   countyFips       String?
   totalVotes       Int?
   registeredVoters Int?
   ballotsCast      Int?
-  votePercent      Decimal? @db.Decimal(9, 4)
-  reportingPercent Decimal? @db.Decimal(9, 4)
+  votePercent      Decimal?               @db.Decimal(9, 4)
+  reportingPercent Decimal?               @db.Decimal(9, 4)
   metadataJson     Json?
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+  createdAt        DateTime               @default(now())
+  updatedAt        DateTime               @updatedAt
 
   candidateResults ElectionCandidateResult[]
 
   @@index([sourceId])
   @@index([contestId])
   @@index([countyId])
+  @@schema("public")
 }
 
 model ElectionCandidateResult {
-  id             String   @id @default(cuid())
+  id             String                @id @default(cuid())
   contestId      String
   contest        ElectionContestResult @relation(fields: [contestId], references: [id], onDelete: Cascade)
   countyResultId String?
@@ -2061,21 +2252,22 @@ model ElectionCandidateResult {
   partyName      String?
   totalVotes     Int
   metadataJson   Json?
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  createdAt      DateTime              @default(now())
+  updatedAt      DateTime              @updatedAt
 
   @@index([contestId])
   @@index([countyResultId])
+  @@schema("public")
 }
 
 model ElectionPrecinctResult {
-  id                 String   @id @default(cuid())
+  id                 String                 @id @default(cuid())
   sourceId           String
-  source             ElectionResultSource @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+  source             ElectionResultSource   @relation(fields: [sourceId], references: [id], onDelete: Cascade)
   contestId          String?
   contest            ElectionContestResult? @relation(fields: [contestId], references: [id], onDelete: Cascade)
   countyId           String?
-  county             County?  @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  county             County?                @relation(fields: [countyId], references: [id], onDelete: SetNull)
   countyNameRaw      String?
   countyFips         String?
   precinctNameRaw    String?
@@ -2083,30 +2275,32 @@ model ElectionPrecinctResult {
   totalVotes         Int?
   registeredVoters   Int?
   ballotsCast        Int?
-  votePercent        Decimal? @db.Decimal(9, 4)
+  votePercent        Decimal?               @db.Decimal(9, 4)
   metadataJson       Json?
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
+  createdAt          DateTime               @default(now())
+  updatedAt          DateTime               @updatedAt
 
   candidateResults ElectionPrecinctCandidateResult[]
 
   @@index([sourceId])
   @@index([contestId])
   @@index([countyId])
+  @@schema("public")
 }
 
 model ElectionPrecinctCandidateResult {
-  id               String   @id @default(cuid())
+  id               String                 @id @default(cuid())
   precinctResultId String
   precinctResult   ElectionPrecinctResult @relation(fields: [precinctResultId], references: [id], onDelete: Cascade)
   candidateName    String
   partyName        String?
   totalVotes       Int
   metadataJson     Json?
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+  createdAt        DateTime               @default(now())
+  updatedAt        DateTime               @updatedAt
 
   @@index([precinctResultId])
+  @@schema("public")
 }
 
 /// Campaign metrics — voter file fields structurally ready; null until pipeline syncs.
@@ -2129,6 +2323,8 @@ model CountyCampaignStats {
   pipelineError                 String?                   @db.Text
   reviewStatus                  CountyContentReviewStatus @default(PENDING_REVIEW)
   updatedAt                     DateTime                  @updatedAt
+
+  @@schema("public")
 }
 
 /// Trusted public / Census-style snapshot — always label source and review state.
@@ -2161,42 +2357,46 @@ model CountyPublicDemographics {
   fetchedAt                DateTime?
   reviewStatus             CountyContentReviewStatus @default(PENDING_REVIEW)
   updatedAt                DateTime                  @updatedAt
+
+  @@schema("public")
 }
 
 /// Aggregate registered-voter file snapshot for a county (not individual voters).
 model CountyRegistrationSnapshot {
-  id        String  @id @default(cuid())
-  countyId  String
-  county    County  @relation(fields: [countyId], references: [id], onDelete: Cascade)
-  sourceFile  String? @db.Text
-  snapshotDate DateTime
-  totalRegistered  Int
-  activeRegistered  Int?
+  id                 String   @id @default(cuid())
+  countyId           String
+  county             County   @relation(fields: [countyId], references: [id], onDelete: Cascade)
+  sourceFile         String?  @db.Text
+  snapshotDate       DateTime
+  totalRegistered    Int
+  activeRegistered   Int?
   inactiveRegistered Int?
-  metadataJson   Json? @default("{}")
-  createdAt   DateTime @default(now())
+  metadataJson       Json?    @default("{}")
+  createdAt          DateTime @default(now())
 
   @@index([countyId, snapshotDate])
+  @@schema("public")
 }
 
 /// Store aggregate KPIs for county strategy (one row per key or version).
 model CountyStrategyKpi {
-  id         String  @id @default(cuid())
-  countyId   String?
-  county     County? @relation(fields: [countyId], references: [id], onDelete: SetNull)
-  countyName String?
-  metricKey  String
-  metricValue String? @db.Text
+  id           String   @id @default(cuid())
+  countyId     String?
+  county       County?  @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  countyName   String?
+  metricKey    String
+  metricValue  String?  @db.Text
   metricNumber Float?
-  metricLabel  String? @db.Text
-  source      String?
-  confidence  String?
-  metadataJson Json?  @default("{}")
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  metricLabel  String?  @db.Text
+  source       String?
+  confidence   String?
+  metadataJson Json?    @default("{}")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 
   @@index([countyId, metricKey])
   @@index([metricKey])
+  @@schema("public")
 }
 
 /// Reviewable elected roster — can be hand-entered, imported, or later Google Civic.
@@ -2218,6 +2418,7 @@ model CountyElectedOfficial {
   updatedAt    DateTime                  @updatedAt
 
   @@index([countyId, jurisdiction, sortOrder])
+  @@schema("public")
 }
 
 // --- Voter file pipeline (SOS raw files → snapshots → per-county metrics → optional canonical voters) ---
@@ -2227,6 +2428,8 @@ enum VoterFileIngestStatus {
   PROCESSING
   COMPLETE
   FAILED
+
+  @@schema("public")
 }
 
 /// Where a participation boolean came from (vendor column vs staff).
@@ -2235,6 +2438,8 @@ enum VoterParticipationProvenance {
   IMPORT_CSV
   STAFF
   OTHER
+
+  @@schema("public")
 }
 
 enum VoterSnapshotChangeType {
@@ -2242,6 +2447,8 @@ enum VoterSnapshotChangeType {
   UPDATED
   REMOVED
   REACTIVATED
+
+  @@schema("public")
 }
 
 // --- VOTER-MODEL-1 + INTERACTION-1: signals, provisional classifications, interaction log, vote-plan seed ---
@@ -2257,6 +2464,8 @@ enum VoterSignalKind {
   POLLING
   MANUAL_NOTE
   OTHER
+
+  @@schema("public")
 }
 
 enum VoterSignalSource {
@@ -2269,6 +2478,8 @@ enum VoterSignalSource {
   RELATIONAL_ORGANIZING
   MANUAL
   OTHER
+
+  @@schema("public")
 }
 
 enum VoterSignalStrength {
@@ -2277,6 +2488,8 @@ enum VoterSignalStrength {
   WEAK
   NEGATIVE
   UNKNOWN
+
+  @@schema("public")
 }
 
 enum ModelConfidence {
@@ -2284,6 +2497,8 @@ enum ModelConfidence {
   MEDIUM
   HIGH
   HUMAN_CONFIRMED
+
+  @@schema("public")
 }
 
 enum VoterClassification {
@@ -2294,6 +2509,8 @@ enum VoterClassification {
   LOW_PROPENSITY_SUPPORTER
   UNKNOWN
   UNLIKELY_OR_OPPOSED
+
+  @@schema("public")
 }
 
 enum ModelGeneratedBy {
@@ -2301,6 +2518,8 @@ enum ModelGeneratedBy {
   RULE_BASED
   AI_ASSISTED
   IMPORTED
+
+  @@schema("public")
 }
 
 enum VoterInteractionType {
@@ -2315,6 +2534,8 @@ enum VoterInteractionType {
   VOTE_PLAN
   FOLLOW_UP
   OTHER
+
+  @@schema("public")
 }
 
 enum VoterInteractionChannel {
@@ -2326,6 +2547,8 @@ enum VoterInteractionChannel {
   EVENT
   DOOR
   OTHER
+
+  @@schema("public")
 }
 
 enum VoterSupportLevel {
@@ -2336,6 +2559,8 @@ enum VoterSupportLevel {
   LEAN_OPPOSE
   STRONG_OPPOSE
   UNKNOWN
+
+  @@schema("public")
 }
 
 // --- REL-2: relational contact + power-of-5 (human-entered; optional voter match) ---
@@ -2351,6 +2576,8 @@ enum RelationalRelationshipType {
   ONLINE
   OTHER
   UNKNOWN
+
+  @@schema("public")
 }
 
 enum RelationalRelationshipCloseness {
@@ -2359,6 +2586,8 @@ enum RelationalRelationshipCloseness {
   FAMILIAR
   WEAK_TIE
   UNKNOWN
+
+  @@schema("public")
 }
 
 enum RelationalMatchStatus {
@@ -2368,6 +2597,8 @@ enum RelationalMatchStatus {
   CONFLICT
   NOT_REGISTERED
   NEEDS_REVIEW
+
+  @@schema("public")
 }
 
 enum RelationalOrganizingStatus {
@@ -2385,6 +2616,8 @@ enum RelationalOrganizingStatus {
   NOT_INTERESTED
   DO_NOT_CONTACT
   UNKNOWN
+
+  @@schema("public")
 }
 
 enum VotePlanStatus {
@@ -2394,6 +2627,8 @@ enum VotePlanStatus {
   NEEDS_REMINDER
   VOTED_CONFIRMED
   UNKNOWN
+
+  @@schema("public")
 }
 
 /// One row per SOS file import / snapshot used for diffs and county rollups.
@@ -2428,6 +2663,7 @@ model VoterFileSnapshot {
 
   @@index([fileAsOfDate])
   @@index([status, fileAsOfDate])
+  @@schema("public")
 }
 
 /// Precomputed per-county rollups for a given voter file snapshot (field program + public county pages).
@@ -2460,9 +2696,11 @@ model CountyVoterMetrics {
   @@index([countySlug, asOfDate])
   @@index([asOfDate])
   @@index([countyId, asOfDate])
+  @@schema("public")
 }
 
 /// Canonical voter key from SOS file — used for per-import diffs and assistance tooling (not official SOS UI).
+/// Production voter-warehouse physical mapping (e.g. legacy `ar02_voters`) is **blocked** pending explicit DBA review — do not add @@map here in automated packets.
 model VoterRecord {
   id                    String             @id @default(cuid())
   /// **Canonical identifier:** opaque stable key from the SOS / vendor voter file (VRN / state id—map to your column).
@@ -2496,17 +2734,17 @@ model VoterRecord {
   createdAt             DateTime           @default(now())
   updatedAt             DateTime           @updatedAt
 
-  snapshotChanges          VoterSnapshotChange[]
-  userLinks                User[]                    @relation("UserVoterLink")
-  volunteerMatchCandidates VolunteerMatchCandidate[]
-  signupEntriesMatched     SignupSheetEntry[]        @relation("SignupEntryMatchedVoter")
-  voterSignals             VoterSignal[]
+  snapshotChanges           VoterSnapshotChange[]
+  userLinks                 User[]                       @relation("UserVoterLink")
+  volunteerMatchCandidates  VolunteerMatchCandidate[]
+  signupEntriesMatched      SignupSheetEntry[]           @relation("SignupEntryMatchedVoter")
+  voterSignals              VoterSignal[]
   voterModelClassifications VoterModelClassification[]
-  voterInteractions        VoterInteraction[]
-  voterVotePlans           VoterVotePlan[]
-  relationalContacts       RelationalContact[]
+  voterInteractions         VoterInteraction[]
+  voterVotePlans            VoterVotePlan[]
+  relationalContacts        RelationalContact[]
   /// Optional per-contest participation from vendor / import (not vote choice).
-  electionParticipations   VoterElectionParticipation[]
+  electionParticipations    VoterElectionParticipation[]
 
   @@index([countyId, inLatestCompletedFile])
   @@index([countyId, lastName, firstName])
@@ -2514,52 +2752,55 @@ model VoterRecord {
   @@index([countySlug])
   @@index([countyFips])
   @@index([registrationDate])
+  @@schema("public")
 }
 
 /// Per-voter participation flags for specific elections (yes/no — not how they voted).
 /// `contestKey` should match ingest / vendor labels, e.g. `2022_GENERAL`, `2020_PREFERENTIAL_PRIMARY`.
 model VoterElectionParticipation {
-  id                 String                     @id @default(cuid())
+  id                 String                       @id @default(cuid())
   voterRecordId      String
-  voterRecord        VoterRecord                @relation(fields: [voterRecordId], references: [id], onDelete: Cascade)
+  voterRecord        VoterRecord                  @relation(fields: [voterRecordId], references: [id], onDelete: Cascade)
   contestKey         String
   participated       Boolean
   /// If the source lists which primary ballot was taken (D/R). Null = unknown or not a primary.
   primaryBallotParty String?
   provenance         VoterParticipationProvenance @default(VENDOR_VOTER_FILE)
-  createdAt          DateTime                   @default(now())
-  updatedAt          DateTime                   @updatedAt
+  createdAt          DateTime                     @default(now())
+  updatedAt          DateTime                     @updatedAt
 
   @@unique([voterRecordId, contestKey])
   @@index([voterRecordId])
   @@index([contestKey, participated])
   @@index([contestKey, primaryBallotParty])
+  @@schema("public")
 }
 
 /// Provenance row for a modeled influence signal (not a vote claim).
 model VoterSignal {
-  id             String              @id @default(cuid())
-  voterRecordId  String?
-  voterRecord    VoterRecord?        @relation(fields: [voterRecordId], references: [id], onDelete: Cascade)
-  userId         String?
-  user           User?               @relation(fields: [userId], references: [id], onDelete: SetNull)
+  id                  String              @id @default(cuid())
+  voterRecordId       String?
+  voterRecord         VoterRecord?        @relation(fields: [voterRecordId], references: [id], onDelete: Cascade)
+  userId              String?
+  user                User?               @relation(fields: [userId], references: [id], onDelete: SetNull)
   /// REL-2: optional provenance link to a relational contact (manual / seam writes only).
   relationalContactId String?
-  relationalContact  RelationalContact? @relation(fields: [relationalContactId], references: [id], onDelete: SetNull)
-  signalKind     VoterSignalKind
-  signalSource   VoterSignalSource
-  signalStrength VoterSignalStrength
-  signalDate     DateTime?
-  confidence     ModelConfidence
-  notes          String?             @db.Text
-  metadataJson   Json?
-  createdAt      DateTime            @default(now())
-  updatedAt      DateTime            @updatedAt
+  relationalContact   RelationalContact?  @relation(fields: [relationalContactId], references: [id], onDelete: SetNull)
+  signalKind          VoterSignalKind
+  signalSource        VoterSignalSource
+  signalStrength      VoterSignalStrength
+  signalDate          DateTime?
+  confidence          ModelConfidence
+  notes               String?             @db.Text
+  metadataJson        Json?
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @updatedAt
 
   @@index([voterRecordId])
   @@index([userId])
   @@index([relationalContactId])
   @@index([signalKind])
+  @@schema("public")
 }
 
 /// Current and historical tier assignments; `isCurrent` marks the active row per voter for read helpers.
@@ -2584,71 +2825,73 @@ model VoterModelClassification {
 
   @@index([voterRecordId])
   @@index([voterRecordId, isCurrent])
+  @@schema("public")
 }
 
 /// Human- or staff-logged touchpoint; does not auto-imply support unless `supportLevel` is set.
 model VoterInteraction {
-  id                     String                  @id @default(cuid())
-  voterRecordId          String?
-  voterRecord            VoterRecord?            @relation(fields: [voterRecordId], references: [id], onDelete: Cascade)
+  id                          String                  @id @default(cuid())
+  voterRecordId               String?
+  voterRecord                 VoterRecord?            @relation(fields: [voterRecordId], references: [id], onDelete: Cascade)
   /// REL-2: optional link to a volunteer's relational contact (provenance; not auto-set).
-  relationalContactId    String?
-  relationalContact      RelationalContact?      @relation(fields: [relationalContactId], references: [id], onDelete: SetNull)
-  contactedByUserId      String?
-  contactedBy            User?                   @relation("VoterInteractionContactedBy", fields: [contactedByUserId], references: [id], onDelete: SetNull)
-  relatedVolunteerUserId String?
-  relatedVolunteer       User?                   @relation("VoterInteractionRelatedVolunteer", fields: [relatedVolunteerUserId], references: [id], onDelete: SetNull)
-  interactionType        VoterInteractionType
-  interactionChannel     VoterInteractionChannel
-  interactionDate        DateTime                @default(now())
-  supportLevel           VoterSupportLevel?
-  registrationChecked    Boolean                 @default(false)
+  relationalContactId         String?
+  relationalContact           RelationalContact?      @relation(fields: [relationalContactId], references: [id], onDelete: SetNull)
+  contactedByUserId           String?
+  contactedBy                 User?                   @relation("VoterInteractionContactedBy", fields: [contactedByUserId], references: [id], onDelete: SetNull)
+  relatedVolunteerUserId      String?
+  relatedVolunteer            User?                   @relation("VoterInteractionRelatedVolunteer", fields: [relatedVolunteerUserId], references: [id], onDelete: SetNull)
+  interactionType             VoterInteractionType
+  interactionChannel          VoterInteractionChannel
+  interactionDate             DateTime                @default(now())
+  supportLevel                VoterSupportLevel?
+  registrationChecked         Boolean                 @default(false)
   registrationStatusAtContact String?
-  wantsFollowUp          Boolean                 @default(false)
-  followUpNotes          String?                 @db.Text
-  votePlanStatus         VotePlanStatus?
-  notes                  String?                 @db.Text
-  metadataJson           Json?
-  createdAt              DateTime                @default(now())
-  updatedAt              DateTime                @updatedAt
+  wantsFollowUp               Boolean                 @default(false)
+  followUpNotes               String?                 @db.Text
+  votePlanStatus              VotePlanStatus?
+  notes                       String?                 @db.Text
+  metadataJson                Json?
+  createdAt                   DateTime                @default(now())
+  updatedAt                   DateTime                @updatedAt
 
   @@index([voterRecordId])
   @@index([relationalContactId])
   @@index([contactedByUserId])
   @@index([relatedVolunteerUserId])
   @@index([interactionDate])
+  @@schema("public")
 }
 
 /// REL-2: durable relational organizing contact for a volunteer owner; optional voter roll match (reviewed).
 model RelationalContact {
-  id                   String                       @id @default(cuid())
-  ownerUserId          String
-  owner                User                         @relation("RelationalContactOwner", fields: [ownerUserId], references: [id], onDelete: Cascade)
-  matchedVoterRecordId String?
-  matchedVoterRecord   VoterRecord?                 @relation(fields: [matchedVoterRecordId], references: [id], onDelete: SetNull)
-  countyId             String?
-  county               County?                      @relation(fields: [countyId], references: [id], onDelete: SetNull)
-  fieldUnitId          String?
-  fieldUnit            FieldUnit?                   @relation(fields: [fieldUnitId], references: [id], onDelete: SetNull)
-  firstName            String?                      @db.Text
-  lastName             String?                      @db.Text
-  displayName          String
-  phone                String?
-  email                String?                    @db.Text
-  relationshipType     RelationalRelationshipType
+  id                    String                           @id @default(cuid())
+  ownerUserId           String
+  owner                 User                             @relation("RelationalContactOwner", fields: [ownerUserId], references: [id], onDelete: Cascade)
+  matchedVoterRecordId  String?
+  matchedVoterRecord    VoterRecord?                     @relation(fields: [matchedVoterRecordId], references: [id], onDelete: SetNull)
+  countyId              String?
+  county                County?                          @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  fieldUnitId           String?
+  fieldUnit             FieldUnit?                       @relation(fields: [fieldUnitId], references: [id], onDelete: SetNull)
+  firstName             String?                          @db.Text
+  lastName              String?                          @db.Text
+  displayName           String
+  phone                 String?
+  email                 String?                          @db.Text
+  relationshipType      RelationalRelationshipType
   relationshipCloseness RelationalRelationshipCloseness?
-  matchStatus          RelationalMatchStatus         @default(UNMATCHED)
-  matchConfidence      ModelConfidence?
-  organizingStatus     RelationalOrganizingStatus    @default(IDENTIFIED)
-  supportLevel         VoterSupportLevel?
-  isCoreFive           Boolean                       @default(false)
-  powerOfFiveSlot      Int?
-  lastContactedAt      DateTime?
-  nextFollowUpAt       DateTime?
-  notes                String?                     @db.Text
-  metadataJson         Json?
-  createdAt            DateTime                     @default(now())
-  updatedAt            DateTime                     @updatedAt
+  matchStatus           RelationalMatchStatus            @default(UNMATCHED)
+  matchConfidence       ModelConfidence?
+  organizingStatus      RelationalOrganizingStatus       @default(IDENTIFIED)
+  supportLevel          VoterSupportLevel?
+  isCoreFive            Boolean                          @default(false)
+  powerOfFiveSlot       Int?
+  lastContactedAt       DateTime?
+  nextFollowUpAt        DateTime?
+  notes                 String?                          @db.Text
+  metadataJson          Json?
+  createdAt             DateTime                         @default(now())
+  updatedAt             DateTime                         @updatedAt
 
   voterInteractions    VoterInteraction[]
   voterSignals         VoterSignal[]
@@ -2659,6 +2902,7 @@ model RelationalContact {
   @@index([countyId])
   @@index([fieldUnitId])
   @@index([matchStatus, organizingStatus])
+  @@schema("public")
 }
 
 /// One row per voter for vote-plan tracking (multiple rows allowed; consumers should prefer latest by `updatedAt`).
@@ -2679,6 +2923,7 @@ model VoterVotePlan {
   updatedAt            DateTime       @updatedAt
 
   @@index([voterRecordId])
+  @@schema("public")
 }
 
 /// Per-voter delta rows for a snapshot (audit + recompute). Heavy table at full state scale—archive old snapshots as needed.
@@ -2700,6 +2945,7 @@ model VoterSnapshotChange {
   @@index([voterFileSnapshotId, changeType])
   @@index([countySlug, voterFileSnapshotId])
   @@index([voterFileKey])
+  @@schema("public")
 }
 
 // --- Campaign operations: workbench, events, tasks, workflows, asks (Slice 1) ---
@@ -2718,6 +2964,8 @@ enum CampaignEventType {
   /// Third-party fair, festival, or community gathering (often after promotion from ingest).
   FESTIVAL
   OTHER
+
+  @@schema("public")
 }
 
 enum CampaignEventStatus {
@@ -2726,12 +2974,16 @@ enum CampaignEventStatus {
   IN_PROGRESS
   COMPLETED
   CANCELLED
+
+  @@schema("public")
 }
 
 enum CampaignEventVisibility {
   INTERNAL
   STAFF
   PUBLIC_STAFF
+
+  @@schema("public")
 }
 
 /// Staging / approvals — distinct from `CampaignEventStatus` (operational: scheduled, cancelled, etc.)
@@ -2742,6 +2994,8 @@ enum EventWorkflowState {
   PUBLISHED
   CANCELED
   COMPLETED
+
+  @@schema("public")
 }
 
 /// FranklinCovey / Eisenhower time matrix: Q1 urgent+important, Q2 not urgent+important, Q3 urgent+not important, Q4 neither
@@ -2750,6 +3004,8 @@ enum TimeMatrixQuadrant {
   Q2
   Q3
   Q4
+
+  @@schema("public")
 }
 
 /// Lane readiness for Calendar HQ (Slice 1 spine)
@@ -2760,6 +3016,8 @@ enum EventReadinessStatus {
   READY
   AT_RISK
   N_A
+
+  @@schema("public")
 }
 
 enum GoogleEventSyncState {
@@ -2769,16 +3027,22 @@ enum GoogleEventSyncState {
   SYNCED
   CONFLICT
   ERROR
+
+  @@schema("public")
 }
 
 enum CalendarProvider {
   GOOGLE
+
+  @@schema("public")
 }
 
 enum CalendarSourceVisibility {
   STAFF
   MANAGER
   PUBLIC_CONNECTOR
+
+  @@schema("public")
 }
 
 /// Slice 5 — which campaign rail this Google calendar backs (not OAuth scope).
@@ -2789,12 +3053,16 @@ enum CalendarSourceType {
   INTERNAL_STAFF_PLANNING
   CONTENT_MEDIA
   PERSONAL_OVERLAY
+
+  @@schema("public")
 }
 
 enum EventApprovalState {
   PENDING
   APPROVED
   REJECTED
+
+  @@schema("public")
 }
 
 /// Ingested fairs / festivals — review before public site + optional promotion to `CampaignEvent`.
@@ -2803,6 +3071,8 @@ enum FestivalIngestReviewStatus {
   APPROVED
   REJECTED
   DUPLICATE
+
+  @@schema("public")
 }
 
 enum FestivalSourceChannel {
@@ -2815,18 +3085,24 @@ enum FestivalSourceChannel {
   OTHER
   /// Submitted from the public Movement /events form — pending staff review.
   PUBLIC_FORM
+
+  @@schema("public")
 }
 
 enum EventSyncDirection {
   PUSH_TO_GOOGLE
   PULL_FROM_GOOGLE
   WATCH_PING
+
+  @@schema("public")
 }
 
 enum EventSyncLogStatus {
   OK
   ERROR
   SKIPPED
+
+  @@schema("public")
 }
 
 enum CampaignTaskType {
@@ -2839,6 +3115,8 @@ enum CampaignTaskType {
   ADMIN
   FOLLOW_UP
   OTHER
+
+  @@schema("public")
 }
 
 enum CampaignTaskStatus {
@@ -2847,6 +3125,8 @@ enum CampaignTaskStatus {
   BLOCKED
   DONE
   CANCELLED
+
+  @@schema("public")
 }
 
 enum CampaignTaskPriority {
@@ -2854,6 +3134,8 @@ enum CampaignTaskPriority {
   MEDIUM
   HIGH
   URGENT
+
+  @@schema("public")
 }
 
 enum WorkflowTemplateTrigger {
@@ -2861,6 +3143,8 @@ enum WorkflowTemplateTrigger {
   EVENT_SIGNUP_CREATED
   MENTION_REVIEWED
   MANUAL
+
+  @@schema("public")
 }
 
 enum WorkflowRunStatus {
@@ -2869,6 +3153,8 @@ enum WorkflowRunStatus {
   COMPLETED
   FAILED
   CANCELLED
+
+  @@schema("public")
 }
 
 enum VolunteerAskType {
@@ -2880,6 +3166,8 @@ enum VolunteerAskType {
   RECRUIT
   AMPLIFY
   OTHER
+
+  @@schema("public")
 }
 
 enum VolunteerAskStatus {
@@ -2888,6 +3176,8 @@ enum VolunteerAskStatus {
   PAUSED
   COMPLETED
   CANCELLED
+
+  @@schema("public")
 }
 
 enum EventSignupAttendeeStatus {
@@ -2896,6 +3186,8 @@ enum EventSignupAttendeeStatus {
   CANCELLED
   ATTENDED
   NO_SHOW
+
+  @@schema("public")
 }
 
 enum MediaIngestBatchStatus {
@@ -2903,6 +3195,8 @@ enum MediaIngestBatchStatus {
   COMPLETE
   PARTIAL
   FAILED
+
+  @@schema("public")
 }
 
 model CampaignEvent {
@@ -3009,7 +3303,7 @@ model CampaignEvent {
   /// Comms Workbench plans that cite this event as their source.
   communicationPlansSourced               CommunicationPlan[]         @relation("CommsPlanSourceEvent")
   /// FIN-1: optional cost attribution to this event.
-  financialTransactions                  FinancialTransaction[]
+  financialTransactions                   FinancialTransaction[]
 
   @@index([startAt, status])
   @@index([countyId, startAt])
@@ -3018,6 +3312,7 @@ model CampaignEvent {
   @@index([isPublicOnWebsite, eventWorkflowState, startAt])
   @@index([googleEventId])
   @@index([googleSyncState, updatedAt])
+  @@schema("public")
 }
 
 /// Batch record for festival ingest runs (cron / manual).
@@ -3032,6 +3327,8 @@ model FestivalIngestRun {
   skipped     Int                      @default(0)
   error       String?                  @db.Text
   festivals   ArkansasFestivalIngest[]
+
+  @@schema("public")
 }
 
 /// Fair, festival, or large community gathering discovered via ingest — not a campaign event until reviewed / promoted.
@@ -3073,6 +3370,7 @@ model ArkansasFestivalIngest {
   @@index([startAt, reviewStatus])
   @@index([countyId, startAt])
   @@index([isVisibleOnSite, startAt, reviewStatus])
+  @@schema("public")
 }
 
 /// Cached AI output: weekend coverage + volunteer routing suggestions.
@@ -3083,6 +3381,8 @@ model FestivalCoveragePlanSnapshot {
   validTo     DateTime
   modelName   String?
   payload     Json
+
+  @@schema("public")
 }
 
 model CampaignTask {
@@ -3122,7 +3422,7 @@ model CampaignTask {
   updatedAt                 DateTime             @updatedAt
   /// Comms Workbench plans that cite this task as their source.
   communicationPlansSourced CommunicationPlan[]  @relation("CommsPlanSourceTask")
-  emailWorkflowItems        EmailWorkflowItem[]   @relation("EmailWorkflowItemTask")
+  emailWorkflowItems        EmailWorkflowItem[]  @relation("EmailWorkflowItemTask")
 
   @@index([status, dueAt])
   @@index([assignedUserId, status])
@@ -3130,6 +3430,7 @@ model CampaignTask {
   @@index([eventId, sourceTemplateTaskKey])
   @@index([dueAt, status])
   @@index([socialContentItemId, status])
+  @@schema("public")
 }
 
 model WorkflowTemplate {
@@ -3149,6 +3450,7 @@ model WorkflowTemplate {
   runs  WorkflowRun[]
 
   @@index([campaignEventType])
+  @@schema("public")
 }
 
 model WorkflowTemplateTask {
@@ -3172,6 +3474,7 @@ model WorkflowTemplateTask {
 
   @@unique([workflowTemplateId, taskKey])
   @@index([workflowTemplateId])
+  @@schema("public")
 }
 
 model WorkflowRun {
@@ -3194,6 +3497,7 @@ model WorkflowRun {
 
   @@unique([workflowTemplateId, triggerSourceType, triggerSourceId])
   @@index([status, createdAt])
+  @@schema("public")
 }
 
 model VolunteerAsk {
@@ -3222,6 +3526,7 @@ model VolunteerAsk {
 
   @@index([status, startsAt])
   @@index([countyId, status])
+  @@schema("public")
 }
 
 model EventSignup {
@@ -3247,6 +3552,7 @@ model EventSignup {
 
   @@index([eventId, createdAt])
   @@index([email])
+  @@schema("public")
 }
 
 model TeamRoleAssignment {
@@ -3262,6 +3568,7 @@ model TeamRoleAssignment {
 
   @@index([userId, roleKey])
   @@index([countyId, roleKey])
+  @@schema("public")
 }
 
 model MediaIngestBatch {
@@ -3288,6 +3595,7 @@ model MediaIngestBatch {
   assets OwnedMediaAsset[]
 
   @@index([status, createdAt])
+  @@schema("public")
 }
 
 /// User-defined or smart (rule-based) sets for the Media Center — membership is this join table, not a copy of files.
@@ -3307,6 +3615,7 @@ model OwnedMediaCollection {
   items OwnedMediaCollectionItem[]
 
   @@index([sortOrder, name])
+  @@schema("public")
 }
 
 model OwnedMediaCollectionItem {
@@ -3321,6 +3630,7 @@ model OwnedMediaCollectionItem {
   @@unique([collectionId, ownedMediaId])
   @@index([ownedMediaId])
   @@index([collectionId, sortOrder])
+  @@schema("public")
 }
 
 /// Audit log for triage and governance changes (optional; not required for every edit).
@@ -3339,6 +3649,7 @@ model OwnedMediaReviewLog {
 
   @@index([ownedMediaId, createdAt])
   @@index([userId, createdAt])
+  @@schema("public")
 }
 
 /// Queue / scaffolding for generated renditions; workers create new `OwnedMediaAsset` children with `derivativeType` + `parentAssetId`.
@@ -3358,6 +3669,7 @@ model OwnedMediaDerivativeJob {
 
   @@index([sourceAssetId, status])
   @@index([status, priority])
+  @@schema("public")
 }
 
 // --- Volunteer signup sheet intake (image/PDF → rows → voter match → admin approval) ---
@@ -3369,12 +3681,16 @@ enum SignupSheetDocumentStatus {
   EXTRACTED
   PARTIAL
   FAILED
+
+  @@schema("public")
 }
 
 enum SignupSheetExtractionStatus {
   PENDING
   SUCCEEDED
   FAILED
+
+  @@schema("public")
 }
 
 enum SignupSheetEntryStatus {
@@ -3382,6 +3698,8 @@ enum SignupSheetEntryStatus {
   APPROVED
   REJECTED
   SKIPPED
+
+  @@schema("public")
 }
 
 model SignupSheetDocument {
@@ -3401,6 +3719,7 @@ model SignupSheetDocument {
   entries     SignupSheetEntry[]
 
   @@index([status, updatedAt])
+  @@schema("public")
 }
 
 model SignupSheetExtraction {
@@ -3419,6 +3738,7 @@ model SignupSheetExtraction {
   documentAsLast SignupSheetDocument[] @relation("DocumentLastExtraction")
 
   @@index([documentId, createdAt])
+  @@schema("public")
 }
 
 model SignupSheetEntry {
@@ -3456,6 +3776,7 @@ model SignupSheetEntry {
   @@index([documentId, approvalStatus])
   @@index([extractionId, rowIndex])
   @@index([approvalStatus, confidenceScore])
+  @@schema("public")
 }
 
 model VolunteerMatchCandidate {
@@ -3472,6 +3793,7 @@ model VolunteerMatchCandidate {
 
   @@unique([entryId, voterRecordId])
   @@index([entryId, score])
+  @@schema("public")
 }
 
 // --- CampaignOS Step 1: Communications engine ---
@@ -3479,6 +3801,8 @@ model VolunteerMatchCandidate {
 enum CommunicationChannel {
   SMS
   EMAIL
+
+  @@schema("public")
 }
 
 enum CommunicationThreadStatus {
@@ -3487,11 +3811,15 @@ enum CommunicationThreadStatus {
   FOLLOW_UP
   CLOSED
   ARCHIVED
+
+  @@schema("public")
 }
 
 enum MessageDirection {
   INBOUND
   OUTBOUND
+
+  @@schema("public")
 }
 
 enum CommsSendProvider {
@@ -3500,6 +3828,8 @@ enum CommsSendProvider {
   GMAIL
   MANUAL
   SYSTEM
+
+  @@schema("public")
 }
 
 enum MessageDeliveryStatus {
@@ -3510,6 +3840,8 @@ enum MessageDeliveryStatus {
   OPENED
   CLICKED
   RECEIVED
+
+  @@schema("public")
 }
 
 enum CommunicationActionType {
@@ -3526,6 +3858,8 @@ enum CommunicationActionType {
   CAL_MEDIA_CAPTURE_MISSING
   CAL_COMMS_PREP_MISSING
   CAL_STAFFING_GAP
+
+  @@schema("public")
 }
 
 enum CommsQueueStatus {
@@ -3534,6 +3868,8 @@ enum CommsQueueStatus {
   COMPLETE
   FAILED
   CANCELED
+
+  @@schema("public")
 }
 
 model CommunicationThread {
@@ -3580,6 +3916,7 @@ model CommunicationThread {
   @@index([countyId, threadStatus])
   @@index([userId])
   @@index([lastMessageAt])
+  @@schema("public")
 }
 
 model CommunicationMessage {
@@ -3622,12 +3959,15 @@ model CommunicationMessage {
   @@index([provider, providerMessageId])
   @@index([communicationCampaignId, createdAt])
   @@index([gmailMessageId])
+  @@schema("public")
 }
 
 enum CommunicationCampaignChannel {
   SMS
   EMAIL
   MIXED
+
+  @@schema("public")
 }
 
 enum CommunicationCampaignType {
@@ -3640,6 +3980,8 @@ enum CommunicationCampaignType {
   EVENT_CANCELLATION
   EVENT_THANK_YOU
   RSVP_FOLLOWUP
+
+  @@schema("public")
 }
 
 enum CommunicationCampaignStatus {
@@ -3652,12 +3994,16 @@ enum CommunicationCampaignStatus {
   COMPLETE
   FAILED
   CANCELED
+
+  @@schema("public")
 }
 
 /// Tier 3B: event-driven / orchestration — `SHELL` = auto-generated, awaiting human review.
 enum CommunicationCampaignAutomationStatus {
   NONE
   SHELL
+
+  @@schema("public")
 }
 
 enum CommunicationTemplateType {
@@ -3665,6 +4011,8 @@ enum CommunicationTemplateType {
   EVENT_REMINDER
   QUICK_REPLY
   SYSTEM
+
+  @@schema("public")
 }
 
 enum CampaignRecipientSendStatus {
@@ -3677,6 +4025,8 @@ enum CampaignRecipientSendStatus {
   SKIPPED_NO_ADDRESS
   CANCELED
   BOUNCED
+
+  @@schema("public")
 }
 
 model CommunicationTemplate {
@@ -3697,6 +4047,7 @@ model CommunicationTemplate {
   campaigns       CommunicationCampaign[]
 
   @@index([templateType, channel])
+  @@schema("public")
 }
 
 model AudienceSegment {
@@ -3712,6 +4063,7 @@ model AudienceSegment {
   campaigns       CommunicationCampaign[]
 
   @@index([name])
+  @@schema("public")
 }
 
 model CommunicationCampaign {
@@ -3770,6 +4122,7 @@ model CommunicationCampaign {
   @@index([status, createdAt])
   @@index([automationStatus, status])
   @@index([triggerSourceType, triggerSourceId])
+  @@schema("public")
 }
 
 model CommunicationCampaignRecipient {
@@ -3806,6 +4159,7 @@ model CommunicationCampaignRecipient {
   @@index([communicationCampaignId, id])
   @@index([userId])
   @@index([sendStatus, updatedAt])
+  @@schema("public")
 }
 
 model CommunicationActionQueue {
@@ -3836,6 +4190,7 @@ model CommunicationActionQueue {
   @@index([threadId])
   @@index([queueStatus, createdAt])
   @@index([eventId, queueStatus])
+  @@schema("public")
 }
 
 model CommunicationTag {
@@ -3847,6 +4202,8 @@ model CommunicationTag {
   updatedAt DateTime @updatedAt
 
   threads CommunicationThreadTag[]
+
+  @@schema("public")
 }
 
 model CommunicationThreadTag {
@@ -3858,6 +4215,7 @@ model CommunicationThreadTag {
 
   @@id([threadId, tagId])
   @@index([tagId])
+  @@schema("public")
 }
 
 // --- Comms Workbench: plans, drafts, sends, media outreach (ops layer; distinct from Tier 1/2 `CommunicationThread` / `CommunicationCampaign`) ---
@@ -3877,6 +4235,8 @@ enum CommunicationObjective {
   PRESS_OUTREACH
   MEDIA_RESPONSE
   GENERAL_UPDATE
+
+  @@schema("public")
 }
 
 enum CommsWorkbenchChannel {
@@ -3886,6 +4246,8 @@ enum CommsWorkbenchChannel {
   PRESS_OUTREACH
   PHONE_SCRIPT
   TALKING_POINTS
+
+  @@schema("public")
 }
 
 enum CommunicationPlanStatus {
@@ -3898,6 +4260,8 @@ enum CommunicationPlanStatus {
   COMPLETED
   CANCELED
   ARCHIVED
+
+  @@schema("public")
 }
 
 enum CommunicationDraftStatus {
@@ -3906,6 +4270,8 @@ enum CommunicationDraftStatus {
   APPROVED
   REJECTED
   ARCHIVED
+
+  @@schema("public")
 }
 
 enum CommunicationSendStatus {
@@ -3917,6 +4283,8 @@ enum CommunicationSendStatus {
   PARTIALLY_SENT
   FAILED
   CANCELED
+
+  @@schema("public")
 }
 
 enum MediaOutreachStatus {
@@ -3928,12 +4296,16 @@ enum MediaOutreachStatus {
   RESPONDED
   CLOSED
   ARCHIVED
+
+  @@schema("public")
 }
 
 enum CommunicationReviewDecision {
   APPROVED
   REJECTED
   CHANGES_REQUESTED
+
+  @@schema("public")
 }
 
 enum CommunicationVariantStatus {
@@ -3944,6 +4316,8 @@ enum CommunicationVariantStatus {
   REJECTED
   APPROVED
   ARCHIVED
+
+  @@schema("public")
 }
 
 /// How a `CommunicationVariant` differs from its parent draft (segmentation, copy, channel).
@@ -3953,6 +4327,8 @@ enum CommunicationVariantType {
   CHANNEL_OVERRIDE
   AB_TEST
   OTHER
+
+  @@schema("public")
 }
 
 /// Optional send classification; tracking-only in early packets.
@@ -3963,6 +4339,8 @@ enum CommunicationSendType {
   AD_HOC
   RETRY
   OTHER
+
+  @@schema("public")
 }
 
 enum MediaOutreachItemType {
@@ -3972,6 +4350,8 @@ enum MediaOutreachItemType {
   OPPORTUNITY
   CRISIS
   OTHER
+
+  @@schema("public")
 }
 
 model CommunicationPlan {
@@ -4009,7 +4389,7 @@ model CommunicationPlan {
   /// Campaign-local (message-plan) audience segments; CE-1+ engagement layer.
   commsPlanAudienceSegments CommsPlanAudienceSegment[]
   /// E-1: email workflow items referencing this plan.
-  emailWorkflowItems        EmailWorkflowItem[]         @relation("EmailWorkflowItemPlan")
+  emailWorkflowItems        EmailWorkflowItem[]        @relation("EmailWorkflowItemPlan")
 
   @@index([status, updatedAt])
   @@index([objective, status])
@@ -4020,6 +4400,7 @@ model CommunicationPlan {
   @@index([sourceCampaignTaskId])
   @@index([sourceEventId])
   @@index([sourceSocialContentItemId])
+  @@schema("public")
 }
 
 model CommunicationDraft {
@@ -4063,6 +4444,7 @@ model CommunicationDraft {
   @@index([isPrimary])
   @@index([messageToneMode])
   @@index([messageTacticMode])
+  @@schema("public")
 }
 
 model CommunicationVariant {
@@ -4097,6 +4479,7 @@ model CommunicationVariant {
   @@index([status])
   @@index([reviewRequestedByUserId])
   @@index([reviewedByUserId])
+  @@schema("public")
 }
 
 model CommunicationSend {
@@ -4136,7 +4519,7 @@ model CommunicationSend {
   communicationRecipients      CommunicationRecipient[]
   communicationLinkDefinitions CommunicationLinkDefinition[]
   /// E-1: optional link from queue item to a workbench send.
-  emailWorkflowItems           EmailWorkflowItem[]              @relation("EmailWorkflowItemSend")
+  emailWorkflowItems           EmailWorkflowItem[]           @relation("EmailWorkflowItemSend")
 
   @@index([communicationPlanId])
   @@index([communicationDraftId])
@@ -4147,6 +4530,7 @@ model CommunicationSend {
   @@index([queuedByUserId])
   @@index([providerMessageId])
   @@index([lastRetriedByUserId])
+  @@schema("public")
 }
 
 // --- Email Workflow Intelligence (E-1+): campaign email ops queue; queue-first, no auto-send/approval in E-1. ---
@@ -4162,6 +4546,8 @@ enum EmailWorkflowStatus {
   SPAM
   CLOSED
   ARCHIVED
+
+  @@schema("public")
 }
 
 enum EmailWorkflowPriority {
@@ -4169,6 +4555,8 @@ enum EmailWorkflowPriority {
   NORMAL
   HIGH
   URGENT
+
+  @@schema("public")
 }
 
 enum EmailWorkflowSourceType {
@@ -4180,6 +4568,8 @@ enum EmailWorkflowSourceType {
   EVENT_TRIGGER
   MANUAL
   OTHER
+
+  @@schema("public")
 }
 
 enum EmailWorkflowTriggerType {
@@ -4190,6 +4580,8 @@ enum EmailWorkflowTriggerType {
   MONITORING
   INTAKE
   OTHER
+
+  @@schema("public")
 }
 
 enum EmailWorkflowIntent {
@@ -4202,6 +4594,8 @@ enum EmailWorkflowIntent {
   SPAM
   FOLLOW_UP
   UNKNOWN
+
+  @@schema("public")
 }
 
 enum EmailWorkflowTone {
@@ -4212,6 +4606,8 @@ enum EmailWorkflowTone {
   HOSTILE
   NEUTRAL
   UNKNOWN
+
+  @@schema("public")
 }
 
 enum EmailWorkflowEscalationLevel {
@@ -4220,6 +4616,8 @@ enum EmailWorkflowEscalationLevel {
   MEDIUM
   HIGH
   CRITICAL
+
+  @@schema("public")
 }
 
 enum EmailWorkflowSpamDisposition {
@@ -4228,13 +4626,15 @@ enum EmailWorkflowSpamDisposition {
   SUSPECTED_SPAM
   CONFIRMED_SPAM
   SUPPRESSED
+
+  @@schema("public")
 }
 
 /// One queued email-related workflow unit (context-rich; operator review before any send — E-1 default).
 model EmailWorkflowItem {
-  id     String @id @default(cuid())
+  id       String                @id @default(cuid())
   /// Queue-first: new items are never auto-approved or auto-sent (policy comes in later packets).
-  status EmailWorkflowStatus @default(NEW)
+  status   EmailWorkflowStatus   @default(NEW)
   /// Priority for triage; does not bypass review in E-1.
   priority EmailWorkflowPriority @default(NORMAL)
 
@@ -4245,11 +4645,11 @@ model EmailWorkflowItem {
   title       String? @db.VarChar(500)
   queueReason String? @db.Text
 
-  whoSummary   String? @db.Text
-  whatSummary  String? @db.Text
-  whenSummary  String? @db.Text
-  whereSummary String? @db.Text
-  whySummary   String? @db.Text
+  whoSummary                   String? @db.Text
+  whatSummary                  String? @db.Text
+  whenSummary                  String? @db.Text
+  whereSummary                 String? @db.Text
+  whySummary                   String? @db.Text
   /// Campaign / program impact.
   impactSummary                String? @db.Text
   recommendedResponseSummary   String? @db.Text
@@ -4258,47 +4658,47 @@ model EmailWorkflowItem {
   /// Freeform classifier until E-2+ structured sentiment.
   sentiment String? @db.VarChar(120)
 
-  tone              EmailWorkflowTone                 @default(UNKNOWN)
-  intent            EmailWorkflowIntent               @default(UNKNOWN)
-  escalationLevel   EmailWorkflowEscalationLevel      @default(NONE)
-  spamDisposition   EmailWorkflowSpamDisposition      @default(UNKNOWN)
+  tone              EmailWorkflowTone            @default(UNKNOWN)
+  intent            EmailWorkflowIntent          @default(UNKNOWN)
+  escalationLevel   EmailWorkflowEscalationLevel @default(NONE)
+  spamDisposition   EmailWorkflowSpamDisposition @default(UNKNOWN)
   /// Placeholder 0..1; automation deferred.
   spamScore         Float?
-  needsDeescalation Boolean @default(false)
+  needsDeescalation Boolean                      @default(false)
 
   /// Optional machine time for sorting (e.g. inbound time); `whenSummary` is operator-facing.
   occurredAt DateTime?
 
-  userId            String?
-  user              User?   @relation("EmailWorkflowItemContactUser", fields: [userId], references: [id], onDelete: SetNull)
-  volunteerProfileId String?
-  volunteerProfile  VolunteerProfile? @relation("EmailWorkflowItemVolunteer", fields: [volunteerProfileId], references: [id], onDelete: SetNull)
-  communicationThreadId String?
-  thread            CommunicationThread? @relation("EmailWorkflowItemThread", fields: [communicationThreadId], references: [id], onDelete: SetNull)
-  communicationPlanId  String?
-  plan                 CommunicationPlan?  @relation("EmailWorkflowItemPlan", fields: [communicationPlanId], references: [id], onDelete: SetNull)
-  communicationSendId  String?
-  send                 CommunicationSend?  @relation("EmailWorkflowItemSend", fields: [communicationSendId], references: [id], onDelete: SetNull)
-  workflowIntakeId     String?
-  workflowIntake      WorkflowIntake? @relation("EmailWorkflowItemIntake", fields: [workflowIntakeId], references: [id], onDelete: SetNull)
-  campaignTaskId      String?
-  campaignTask        CampaignTask? @relation("EmailWorkflowItemTask", fields: [campaignTaskId], references: [id], onDelete: SetNull)
+  userId                    String?
+  user                      User?                     @relation("EmailWorkflowItemContactUser", fields: [userId], references: [id], onDelete: SetNull)
+  volunteerProfileId        String?
+  volunteerProfile          VolunteerProfile?         @relation("EmailWorkflowItemVolunteer", fields: [volunteerProfileId], references: [id], onDelete: SetNull)
+  communicationThreadId     String?
+  thread                    CommunicationThread?      @relation("EmailWorkflowItemThread", fields: [communicationThreadId], references: [id], onDelete: SetNull)
+  communicationPlanId       String?
+  plan                      CommunicationPlan?        @relation("EmailWorkflowItemPlan", fields: [communicationPlanId], references: [id], onDelete: SetNull)
+  communicationSendId       String?
+  send                      CommunicationSend?        @relation("EmailWorkflowItemSend", fields: [communicationSendId], references: [id], onDelete: SetNull)
+  workflowIntakeId          String?
+  workflowIntake            WorkflowIntake?           @relation("EmailWorkflowItemIntake", fields: [workflowIntakeId], references: [id], onDelete: SetNull)
+  campaignTaskId            String?
+  campaignTask              CampaignTask?             @relation("EmailWorkflowItemTask", fields: [campaignTaskId], references: [id], onDelete: SetNull)
   conversationOpportunityId String?
-  conversationOpportunity  ConversationOpportunity? @relation("EmailWorkflowItemOpp", fields: [conversationOpportunityId], references: [id], onDelete: SetNull)
-  socialContentItemId  String?
-  socialContentItem    SocialContentItem? @relation("EmailWorkflowItemSocial", fields: [socialContentItemId], references: [id], onDelete: SetNull)
+  conversationOpportunity   ConversationOpportunity?  @relation("EmailWorkflowItemOpp", fields: [conversationOpportunityId], references: [id], onDelete: SetNull)
+  socialContentItemId       String?
+  socialContentItem         SocialContentItem?        @relation("EmailWorkflowItemSocial", fields: [socialContentItemId], references: [id], onDelete: SetNull)
   comsPlanAudienceSegmentId String?
   comsPlanAudienceSegment   CommsPlanAudienceSegment? @relation("EmailWorkflowItemSegment", fields: [comsPlanAudienceSegmentId], references: [id], onDelete: SetNull)
-  communicationMessageId String?
-  communicationMessage  CommunicationMessage? @relation("EmailWorkflowItemMessage", fields: [communicationMessageId], references: [id], onDelete: SetNull)
+  communicationMessageId    String?
+  communicationMessage      CommunicationMessage?     @relation("EmailWorkflowItemMessage", fields: [communicationMessageId], references: [id], onDelete: SetNull)
 
-  assignedToUserId  String?
-  assignedToUser    User?   @relation("EmailWorkflowItemAssignedTo", fields: [assignedToUserId], references: [id], onDelete: SetNull)
-  createdByUserId   String?
-  createdBy         User?   @relation("EmailWorkflowItemCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  assignedToUserId String?
+  assignedToUser   User?     @relation("EmailWorkflowItemAssignedTo", fields: [assignedToUserId], references: [id], onDelete: SetNull)
+  createdByUserId  String?
+  createdBy        User?     @relation("EmailWorkflowItemCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
   reviewedByUserId String?
-  reviewedBy         User?   @relation("EmailWorkflowItemReviewedBy", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
-  reviewedAt         DateTime?
+  reviewedBy       User?     @relation("EmailWorkflowItemReviewedBy", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
+  reviewedAt       DateTime?
 
   /// EMAIL-CONTACT-PROFILE-GRAPH-1.0 — optional `EmailContactProfile` for governed fact staging (not auto CRM).
   emailContactProfileId String?
@@ -4321,12 +4721,15 @@ model EmailWorkflowItem {
   @@index([spamDisposition, status])
   @@index([createdAt])
   @@index([emailContactProfileId])
+  @@schema("public")
 }
 
 enum EmailContactProfileFactStatus {
   ACTIVE
   SUPERSEDED
   REMOVED
+
+  @@schema("public")
 }
 
 enum EmailContactProfileFactSuggestionStatus {
@@ -4334,21 +4737,25 @@ enum EmailContactProfileFactSuggestionStatus {
   APPROVED
   REJECTED
   SUPERSEDED
+
+  @@schema("public")
 }
 
 enum EmailAudienceHintStatus {
   PENDING
   APPROVED
   REJECTED
+
+  @@schema("public")
 }
 
 /// EMAIL-CONTACT-PROFILE-GRAPH-1.0 — email-command-center contact row (suggestions → facts on approval only).
 model EmailContactProfile {
-  id                  String   @id @default(cuid())
+  id                  String             @id @default(cuid())
   userId              String?
-  user                User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  user                User?              @relation(fields: [userId], references: [id], onDelete: SetNull)
   volunteerProfileId  String?
-  volunteerProfile    VolunteerProfile? @relation(fields: [volunteerProfileId], references: [id], onDelete: SetNull)
+  volunteerProfile    VolunteerProfile?  @relation(fields: [volunteerProfileId], references: [id], onDelete: SetNull)
   relationalContactId String?
   relationalContact   RelationalContact? @relation(fields: [relationalContactId], references: [id], onDelete: SetNull)
 
@@ -4370,85 +4777,89 @@ model EmailContactProfile {
   factSuggestions      EmailContactProfileFactSuggestion[]
   audienceHintsProfile EmailAudienceHint[]
   /// EMAIL-SENDGRID-FOUNDATION-1.0 — optional linkage for export preview rows (no live sync here).
-  sendGridContactMaps SendGridContactMap[]
+  sendGridContactMaps  SendGridContactMap[]
   /// EMAIL-CONTACT-IMPORT-STAGING-1.0 — staged import row matches (preview / commit).
-  importRowsMatched  EmailContactImportRow[] @relation("ImportRowMatchedProfile")
-  importRowsCommitted EmailContactImportRow[] @relation("ImportRowCommittedProfile")
+  importRowsMatched    EmailContactImportRow[]             @relation("ImportRowMatchedProfile")
+  importRowsCommitted  EmailContactImportRow[]             @relation("ImportRowCommittedProfile")
   /// EMAIL-SEND-EXECUTION-1.0 — optional recipient linkage for audit.
-  emailSendRecipients EmailSendRecipient[]
+  emailSendRecipients  EmailSendRecipient[]
 
   @@index([userId])
   @@index([volunteerProfileId])
   @@index([relationalContactId])
   @@index([primaryEmail])
+  @@schema("public")
 }
 
 model EmailContactProfileFact {
-  id                     String                    @id @default(cuid())
-  profileId              String
-  profile                EmailContactProfile       @relation(fields: [profileId], references: [id], onDelete: Cascade)
-  factType               String                    @db.VarChar(120)
-  factKey                String                    @db.VarChar(200)
-  factValue              String                    @db.Text
-  confidence             Float?
-  sourceType             String                    @default("EMAIL_AI_APPROVED") @db.VarChar(120)
+  id                        String                        @id @default(cuid())
+  profileId                 String
+  profile                   EmailContactProfile           @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  factType                  String                        @db.VarChar(120)
+  factKey                   String                        @db.VarChar(200)
+  factValue                 String                        @db.Text
+  confidence                Float?
+  sourceType                String                        @default("EMAIL_AI_APPROVED") @db.VarChar(120)
   sourceEmailWorkflowItemId String?
-  sourceMetadataJson     Json                      @default("{}")
-  status                 EmailContactProfileFactStatus @default(ACTIVE)
-  approvedByUserId       String?
-  approvedBy             User?                     @relation("EmailContactProfileFactApprover", fields: [approvedByUserId], references: [id], onDelete: SetNull)
-  approvedAt             DateTime?
-  createdAt              DateTime                  @default(now())
-  updatedAt              DateTime                  @updatedAt
+  sourceMetadataJson        Json                          @default("{}")
+  status                    EmailContactProfileFactStatus @default(ACTIVE)
+  approvedByUserId          String?
+  approvedBy                User?                         @relation("EmailContactProfileFactApprover", fields: [approvedByUserId], references: [id], onDelete: SetNull)
+  approvedAt                DateTime?
+  createdAt                 DateTime                      @default(now())
+  updatedAt                 DateTime                      @updatedAt
 
   @@index([profileId, status])
   @@index([sourceEmailWorkflowItemId])
+  @@schema("public")
 }
 
 model EmailContactProfileFactSuggestion {
-  id                  String                                @id @default(cuid())
+  id                  String                                  @id @default(cuid())
   profileId           String?
-  profile             EmailContactProfile?                  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  profile             EmailContactProfile?                    @relation(fields: [profileId], references: [id], onDelete: Cascade)
   emailWorkflowItemId String
-  emailWorkflowItem   EmailWorkflowItem                     @relation(fields: [emailWorkflowItemId], references: [id], onDelete: Cascade)
-  suggestionType      String                                @default("EMAIL_AI_V1") @db.VarChar(120)
-  factKey             String                                @db.VarChar(200)
-  factValue           String                                @db.Text
+  emailWorkflowItem   EmailWorkflowItem                       @relation(fields: [emailWorkflowItemId], references: [id], onDelete: Cascade)
+  suggestionType      String                                  @default("EMAIL_AI_V1") @db.VarChar(120)
+  factKey             String                                  @db.VarChar(200)
+  factValue           String                                  @db.Text
   confidence          Float?
-  rationale           String?                               @db.Text
-  sourceLimitations   String[]                              @default([])
+  rationale           String?                                 @db.Text
+  sourceLimitations   String[]                                @default([])
   status              EmailContactProfileFactSuggestionStatus @default(PENDING)
   reviewedByUserId    String?
-  reviewedBy          User?                                 @relation("EmailProfileFactSuggestionReviewer", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
+  reviewedBy          User?                                   @relation("EmailProfileFactSuggestionReviewer", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
   reviewedAt          DateTime?
-  metadataJson        Json                                  @default("{}")
-  createdAt           DateTime                              @default(now())
-  updatedAt           DateTime                              @updatedAt
+  metadataJson        Json                                    @default("{}")
+  createdAt           DateTime                                @default(now())
+  updatedAt           DateTime                                @updatedAt
 
   @@index([emailWorkflowItemId, status])
   @@index([profileId, status])
+  @@schema("public")
 }
 
 model EmailAudienceHint {
-  id                  String               @id @default(cuid())
+  id                  String                  @id @default(cuid())
   emailWorkflowItemId String
-  emailWorkflowItem   EmailWorkflowItem    @relation("EmailWorkflowAudienceHint", fields: [emailWorkflowItemId], references: [id], onDelete: Cascade)
+  emailWorkflowItem   EmailWorkflowItem       @relation("EmailWorkflowAudienceHint", fields: [emailWorkflowItemId], references: [id], onDelete: Cascade)
   profileId           String?
-  profile             EmailContactProfile? @relation(fields: [profileId], references: [id], onDelete: SetNull)
-  hintType            String               @default("EMAIL_AI_V1") @db.VarChar(120)
-  label               String               @db.VarChar(500)
-  rationale           String?              @db.Text
+  profile             EmailContactProfile?    @relation(fields: [profileId], references: [id], onDelete: SetNull)
+  hintType            String                  @default("EMAIL_AI_V1") @db.VarChar(120)
+  label               String                  @db.VarChar(500)
+  rationale           String?                 @db.Text
   confidence          Float?
   status              EmailAudienceHintStatus @default(PENDING)
   reviewedByUserId    String?
-  reviewedBy          User?                @relation("EmailAudienceHintReviewer", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
+  reviewedBy          User?                   @relation("EmailAudienceHintReviewer", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
   reviewedAt          DateTime?
-  metadataJson        Json                 @default("{}")
-  createdAt           DateTime             @default(now())
-  updatedAt           DateTime             @updatedAt
+  metadataJson        Json                    @default("{}")
+  createdAt           DateTime                @default(now())
+  updatedAt           DateTime                @updatedAt
 
   @@index([emailWorkflowItemId, status])
   @@index([profileId, status])
+  @@schema("public")
 }
 
 /// EMAIL-AUDIENCE-STUDIO-1.0 — operator-defined audience criteria (preview / governance only; no SendGrid sync).
@@ -4456,48 +4867,52 @@ enum EmailAudienceDefinitionStatus {
   DRAFT
   ACTIVE
   ARCHIVED
+
+  @@schema("public")
 }
 
 model EmailAudienceDefinition {
-  id          String                       @id @default(cuid())
-  name        String                       @db.VarChar(240)
-  description String?                      @db.Text
-  status      EmailAudienceDefinitionStatus @default(DRAFT)
+  id              String                        @id @default(cuid())
+  name            String                        @db.VarChar(240)
+  description     String?                       @db.Text
+  status          EmailAudienceDefinitionStatus @default(DRAFT)
   /// JSON criteria compatible with `AudiencePreviewCriteria` in audience-studio.ts (no secrets).
-  criteriaJson Json                        @default("{}")
+  criteriaJson    Json                          @default("{}")
   createdByUserId String?
-  createdBy       User?                    @relation("EmailAudienceDefinitionCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  createdBy       User?                         @relation("EmailAudienceDefinitionCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
   updatedByUserId String?
-  updatedBy       User?                    @relation("EmailAudienceDefinitionUpdatedBy", fields: [updatedByUserId], references: [id], onDelete: SetNull)
-  metadataJson    Json                     @default("{}")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  updatedBy       User?                         @relation("EmailAudienceDefinitionUpdatedBy", fields: [updatedByUserId], references: [id], onDelete: SetNull)
+  metadataJson    Json                          @default("{}")
+  createdAt       DateTime                      @default(now())
+  updatedAt       DateTime                      @updatedAt
 
-  previewRuns EmailAudiencePreviewRun[]
-  sendGridAudienceMap SendGridAudienceMap?
-  sendGridContactMaps SendGridContactMap[]
+  previewRuns             EmailAudiencePreviewRun[]
+  sendGridAudienceMap     SendGridAudienceMap?
+  sendGridContactMaps     SendGridContactMap[]
   /// EMAIL-SENDGRID-CONTACT-SYNC-1.1 — governed preview/approval audit rows (no auto sync).
   sendGridContactSyncRuns SendGridContactSyncRun[]
   /// EMAIL-SEND-EXECUTION-1.0 — governed outbound sends (no queue auto-send).
-  emailSendExecutions EmailSendExecution[]
+  emailSendExecutions     EmailSendExecution[]
 
   @@index([status, updatedAt])
+  @@schema("public")
 }
 
 /// Audit trail for operator-run audience previews (no outbound send).
 model EmailAudiencePreviewRun {
-  id                    String                  @id @default(cuid())
-  audienceDefinitionId  String?
-  audienceDefinition    EmailAudienceDefinition? @relation(fields: [audienceDefinitionId], references: [id], onDelete: SetNull)
-  criteriaJson          Json                    @default("{}")
-  matchCount            Int
-  generatedAt           DateTime                @default(now())
-  generatedByUserId   String?
-  generatedBy           User?                   @relation("EmailAudiencePreviewRunActor", fields: [generatedByUserId], references: [id], onDelete: SetNull)
-  metadataJson          Json                    @default("{}")
+  id                   String                   @id @default(cuid())
+  audienceDefinitionId String?
+  audienceDefinition   EmailAudienceDefinition? @relation(fields: [audienceDefinitionId], references: [id], onDelete: SetNull)
+  criteriaJson         Json                     @default("{}")
+  matchCount           Int
+  generatedAt          DateTime                 @default(now())
+  generatedByUserId    String?
+  generatedBy          User?                    @relation("EmailAudiencePreviewRunActor", fields: [generatedByUserId], references: [id], onDelete: SetNull)
+  metadataJson         Json                     @default("{}")
 
   @@index([generatedAt])
   @@index([audienceDefinitionId])
+  @@schema("public")
 }
 
 // --- EMAIL-MESSAGE-STUDIO-SERVER-DRAFTS-1.0 — shared Message Studio drafts (review/persistence; no execution). ---
@@ -4508,64 +4923,68 @@ enum MessageStudioDraftStatus {
   IN_REVIEW
   APPROVED_FOR_SEND_GOVERNANCE
   ARCHIVED
+
+  @@schema("public")
 }
 
 model MessageStudioDraft {
-  id       String                   @id @default(cuid())
-  title    String                   @db.VarChar(500)
-  draftType String                  @default("") @db.VarChar(240)
-  status   MessageStudioDraftStatus @default(DRAFT)
-  subject  String                   @default("") @db.Text
-  preheader String                  @default("") @db.Text
-  body     String                   @default("") @db.Text
-  audienceNote String               @default("") @db.Text
-  primaryCta   String               @default("") @db.VarChar(500)
-  tone         String               @default("") @db.VarChar(240)
+  id                     String                   @id @default(cuid())
+  title                  String                   @db.VarChar(500)
+  draftType              String                   @default("") @db.VarChar(240)
+  status                 MessageStudioDraftStatus @default(DRAFT)
+  subject                String                   @default("") @db.Text
+  preheader              String                   @default("") @db.Text
+  body                   String                   @default("") @db.Text
+  audienceNote           String                   @default("") @db.Text
+  primaryCta             String                   @default("") @db.VarChar(500)
+  tone                   String                   @default("") @db.VarChar(240)
   /// Mirrors local approval tag (draft / needs_review / …); advisory for operators.
-  approvalStatus String             @default("draft") @db.VarChar(64)
-  approvalNotes   String            @default("") @db.Text
-  complianceNotes String            @default("") @db.Text
-  campaignVoiceJson       Json      @default("{}")
-  qualityChecklistJson    Json      @default("{}")
-  editorialReviewJson     Json      @default("{}")
-  templateJson            Json      @default("{}")
-  sendPacketJson          Json?
-  sourceContextJson       Json      @default("{}")
-  metadataJson            Json      @default("{}")
-  createdByUserId String?
-  createdBy       User?   @relation("MessageStudioDraftCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
-  updatedByUserId String?
-  updatedBy       User?   @relation("MessageStudioDraftUpdatedBy", fields: [updatedByUserId], references: [id], onDelete: SetNull)
+  approvalStatus         String                   @default("draft") @db.VarChar(64)
+  approvalNotes          String                   @default("") @db.Text
+  complianceNotes        String                   @default("") @db.Text
+  campaignVoiceJson      Json                     @default("{}")
+  qualityChecklistJson   Json                     @default("{}")
+  editorialReviewJson    Json                     @default("{}")
+  templateJson           Json                     @default("{}")
+  sendPacketJson         Json?
+  sourceContextJson      Json                     @default("{}")
+  metadataJson           Json                     @default("{}")
+  createdByUserId        String?
+  createdBy              User?                    @relation("MessageStudioDraftCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  updatedByUserId        String?
+  updatedBy              User?                    @relation("MessageStudioDraftUpdatedBy", fields: [updatedByUserId], references: [id], onDelete: SetNull)
   assignedReviewerUserId String?
-  assignedReviewer       User?   @relation("MessageStudioDraftAssignedReviewer", fields: [assignedReviewerUserId], references: [id], onDelete: SetNull)
-  reviewedByUserId String?
-  reviewedBy       User?   @relation("MessageStudioDraftReviewedBy", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
-  reviewedAt DateTime?
-  archivedAt DateTime?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  assignedReviewer       User?                    @relation("MessageStudioDraftAssignedReviewer", fields: [assignedReviewerUserId], references: [id], onDelete: SetNull)
+  reviewedByUserId       String?
+  reviewedBy             User?                    @relation("MessageStudioDraftReviewedBy", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
+  reviewedAt             DateTime?
+  archivedAt             DateTime?
+  createdAt              DateTime                 @default(now())
+  updatedAt              DateTime                 @updatedAt
 
-  revisions MessageStudioDraftRevision[]
+  revisions           MessageStudioDraftRevision[]
   /// EMAIL-SEND-EXECUTION-1.0 — operator-initiated send execution records (no send from Message Studio itself).
   emailSendExecutions EmailSendExecution[]
 
   @@index([status, updatedAt])
   @@index([updatedAt])
+  @@schema("public")
 }
 
 model MessageStudioDraftRevision {
-  id             String            @id @default(cuid())
-  draftId        String
-  draft          MessageStudioDraft @relation(fields: [draftId], references: [id], onDelete: Cascade)
-  revisionNumber Int
-  snapshotJson   Json
-  note           String?           @db.Text
+  id              String             @id @default(cuid())
+  draftId         String
+  draft           MessageStudioDraft @relation(fields: [draftId], references: [id], onDelete: Cascade)
+  revisionNumber  Int
+  snapshotJson    Json
+  note            String?            @db.Text
   createdByUserId String?
-  createdBy       User?            @relation("MessageStudioDraftRevisionCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
-  createdAt      DateTime         @default(now())
+  createdBy       User?              @relation("MessageStudioDraftRevisionCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  createdAt       DateTime           @default(now())
 
   @@unique([draftId, revisionNumber])
   @@index([draftId, createdAt])
+  @@schema("public")
 }
 
 // --- EMAIL-CONTACT-IMPORT-STAGING-1.0 — CSV staging → validate → approve → commit (no SendGrid, no sends). ---
@@ -4579,6 +4998,8 @@ enum EmailContactImportBatchStatus {
   COMMITTED
   FAILED
   ARCHIVED
+
+  @@schema("public")
 }
 
 enum EmailContactImportRowValidationStatus {
@@ -4587,6 +5008,8 @@ enum EmailContactImportRowValidationStatus {
   INVALID
   DUPLICATE
   EXISTING_MATCH
+
+  @@schema("public")
 }
 
 enum EmailContactImportDecisionType {
@@ -4596,68 +5019,71 @@ enum EmailContactImportDecisionType {
   INCLUDE_ROW
   MERGE_WITH_EXISTING
   CREATE_PROFILE
+
+  @@schema("public")
 }
 
 model EmailContactImportBatch {
-  id                     String                       @id @default(cuid())
-  name                   String                       @db.VarChar(240)
-  sourceLabel            String?                      @db.VarChar(320)
-  originalFilename       String                       @db.VarChar(500)
-  status                 EmailContactImportBatchStatus @default(UPLOADED)
-  rowCount               Int                          @default(0)
-  validRowCount          Int                          @default(0)
-  invalidRowCount        Int                          @default(0)
-  duplicateRowCount      Int                          @default(0)
-  existingProfileMatchCount Int                       @default(0)
-  consentWarningCount    Int                          @default(0)
-  createdByUserId        String?
-  createdBy              User?                        @relation("EmailContactImportBatchCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
-  approvedByUserId       String?
-  approvedBy             User?                        @relation("EmailContactImportBatchApprovedBy", fields: [approvedByUserId], references: [id], onDelete: SetNull)
-  approvedAt             DateTime?
-  committedAt            DateTime?
-  metadataJson           Json                         @default("{}")
-  createdAt              DateTime                     @default(now())
-  updatedAt              DateTime                     @updatedAt
+  id                        String                        @id @default(cuid())
+  name                      String                        @db.VarChar(240)
+  sourceLabel               String?                       @db.VarChar(320)
+  originalFilename          String                        @db.VarChar(500)
+  status                    EmailContactImportBatchStatus @default(UPLOADED)
+  rowCount                  Int                           @default(0)
+  validRowCount             Int                           @default(0)
+  invalidRowCount           Int                           @default(0)
+  duplicateRowCount         Int                           @default(0)
+  existingProfileMatchCount Int                           @default(0)
+  consentWarningCount       Int                           @default(0)
+  createdByUserId           String?
+  createdBy                 User?                         @relation("EmailContactImportBatchCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  approvedByUserId          String?
+  approvedBy                User?                         @relation("EmailContactImportBatchApprovedBy", fields: [approvedByUserId], references: [id], onDelete: SetNull)
+  approvedAt                DateTime?
+  committedAt               DateTime?
+  metadataJson              Json                          @default("{}")
+  createdAt                 DateTime                      @default(now())
+  updatedAt                 DateTime                      @updatedAt
 
   rows      EmailContactImportRow[]
   decisions EmailContactImportDecision[]
 
   @@index([status, createdAt])
   @@index([createdByUserId])
+  @@schema("public")
 }
 
 model EmailContactImportRow {
-  id                       String                           @id @default(cuid())
-  batchId                  String
-  batch                    EmailContactImportBatch          @relation(fields: [batchId], references: [id], onDelete: Cascade)
-  rowNumber                Int
-  rawJson                  Json                             @default("{}")
-  normalizedEmail          String?                          @db.VarChar(320)
-  firstName                String?                          @db.VarChar(200)
-  lastName                 String?                          @db.VarChar(200)
-  phone                    String?                          @db.VarChar(80)
-  county                   String?                          @db.VarChar(120)
-  city                     String?                          @db.VarChar(120)
-  state                    String?                          @db.VarChar(32)
-  sourceList               String?                          @db.VarChar(320)
-  sourceDate               String?                          @db.VarChar(80)
-  consentStatus            String?                          @db.VarChar(120)
-  tagsJson                 Json                             @default("[]")
-  organization             String?                          @db.VarChar(320)
-  role                     String?                          @db.VarChar(200)
-  notes                    String?                          @db.Text
-  volunteerInterest        String?                          @db.VarChar(320)
-  donorInterest            String?                          @db.VarChar(320)
-  issueInterest            String?                          @db.VarChar(320)
-  validationStatus         EmailContactImportRowValidationStatus @default(VALID)
-  validationMessagesJson   Json                             @default("[]")
-  matchedProfileId         String?
-  matchedProfile           EmailContactProfile?             @relation("ImportRowMatchedProfile", fields: [matchedProfileId], references: [id], onDelete: SetNull)
-  committedProfileId       String?
-  committedProfile         EmailContactProfile?             @relation("ImportRowCommittedProfile", fields: [committedProfileId], references: [id], onDelete: SetNull)
-  createdAt                DateTime                         @default(now())
-  updatedAt                DateTime                         @updatedAt
+  id                     String                                @id @default(cuid())
+  batchId                String
+  batch                  EmailContactImportBatch               @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  rowNumber              Int
+  rawJson                Json                                  @default("{}")
+  normalizedEmail        String?                               @db.VarChar(320)
+  firstName              String?                               @db.VarChar(200)
+  lastName               String?                               @db.VarChar(200)
+  phone                  String?                               @db.VarChar(80)
+  county                 String?                               @db.VarChar(120)
+  city                   String?                               @db.VarChar(120)
+  state                  String?                               @db.VarChar(32)
+  sourceList             String?                               @db.VarChar(320)
+  sourceDate             String?                               @db.VarChar(80)
+  consentStatus          String?                               @db.VarChar(120)
+  tagsJson               Json                                  @default("[]")
+  organization           String?                               @db.VarChar(320)
+  role                   String?                               @db.VarChar(200)
+  notes                  String?                               @db.Text
+  volunteerInterest      String?                               @db.VarChar(320)
+  donorInterest          String?                               @db.VarChar(320)
+  issueInterest          String?                               @db.VarChar(320)
+  validationStatus       EmailContactImportRowValidationStatus @default(VALID)
+  validationMessagesJson Json                                  @default("[]")
+  matchedProfileId       String?
+  matchedProfile         EmailContactProfile?                  @relation("ImportRowMatchedProfile", fields: [matchedProfileId], references: [id], onDelete: SetNull)
+  committedProfileId     String?
+  committedProfile       EmailContactProfile?                  @relation("ImportRowCommittedProfile", fields: [committedProfileId], references: [id], onDelete: SetNull)
+  createdAt              DateTime                              @default(now())
+  updatedAt              DateTime                              @updatedAt
 
   decisions EmailContactImportDecision[] @relation("EmailContactImportDecisionRow")
 
@@ -4665,22 +5091,24 @@ model EmailContactImportRow {
   @@index([batchId, normalizedEmail])
   @@index([matchedProfileId])
   @@index([committedProfileId])
+  @@schema("public")
 }
 
 model EmailContactImportDecision {
-  id              String                       @id @default(cuid())
+  id              String                         @id @default(cuid())
   batchId         String
-  batch           EmailContactImportBatch      @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  batch           EmailContactImportBatch        @relation(fields: [batchId], references: [id], onDelete: Cascade)
   rowId           String?
-  row             EmailContactImportRow?       @relation("EmailContactImportDecisionRow", fields: [rowId], references: [id], onDelete: SetNull)
+  row             EmailContactImportRow?         @relation("EmailContactImportDecisionRow", fields: [rowId], references: [id], onDelete: SetNull)
   decisionType    EmailContactImportDecisionType
-  reason          String                       @db.Text
+  reason          String                         @db.Text
   decidedByUserId String?
-  decidedBy       User?                        @relation("EmailContactImportDecisionDecidedBy", fields: [decidedByUserId], references: [id], onDelete: SetNull)
-  decidedAt       DateTime                     @default(now())
-  metadataJson    Json                         @default("{}")
+  decidedBy       User?                          @relation("EmailContactImportDecisionDecidedBy", fields: [decidedByUserId], references: [id], onDelete: SetNull)
+  decidedAt       DateTime                       @default(now())
+  metadataJson    Json                           @default("{}")
 
   @@index([batchId, decidedAt])
+  @@schema("public")
 }
 
 // --- EMAIL-SENDGRID-FOUNDATION-1.0 — readiness, webhook intake, suppression (no mass send / no auto sync). ---
@@ -4691,6 +5119,8 @@ enum SendGridContactSyncStatus {
   SYNCED
   ERROR
   SUPPRESSED
+
+  @@schema("public")
 }
 
 enum SendGridAudienceSyncStatus {
@@ -4698,6 +5128,8 @@ enum SendGridAudienceSyncStatus {
   READY
   SYNCED
   ERROR
+
+  @@schema("public")
 }
 
 enum SendGridSuppressionType {
@@ -4707,80 +5139,87 @@ enum SendGridSuppressionType {
   SPAM_REPORT
   MANUAL
   INVALID
+
+  @@schema("public")
 }
 
 /// Planning / future sync mapping for a contact row (no SendGrid API calls in this packet).
 model SendGridContactMap {
-  id                       String                   @id @default(cuid())
-  emailContactProfileId    String?
-  emailContactProfile      EmailContactProfile?     @relation(fields: [emailContactProfileId], references: [id], onDelete: SetNull)
+  id                        String                    @id @default(cuid())
+  emailContactProfileId     String?
+  emailContactProfile       EmailContactProfile?      @relation(fields: [emailContactProfileId], references: [id], onDelete: SetNull)
   emailAudienceDefinitionId String?
-  emailAudienceDefinition   EmailAudienceDefinition? @relation(fields: [emailAudienceDefinitionId], references: [id], onDelete: SetNull)
-  email                    String                   @db.VarChar(320)
-  sendgridContactId        String?                  @db.VarChar(120)
-  syncStatus               SendGridContactSyncStatus @default(NOT_SYNCED)
-  lastSyncAt               DateTime?
-  lastErrorSafe            String?                  @db.Text
-  metadataJson             Json                     @default("{}")
-  createdAt                DateTime                 @default(now())
-  updatedAt                DateTime                 @updatedAt
+  emailAudienceDefinition   EmailAudienceDefinition?  @relation(fields: [emailAudienceDefinitionId], references: [id], onDelete: SetNull)
+  email                     String                    @db.VarChar(320)
+  sendgridContactId         String?                   @db.VarChar(120)
+  syncStatus                SendGridContactSyncStatus @default(NOT_SYNCED)
+  lastSyncAt                DateTime?
+  lastErrorSafe             String?                   @db.Text
+  metadataJson              Json                      @default("{}")
+  createdAt                 DateTime                  @default(now())
+  updatedAt                 DateTime                  @updatedAt
 
   @@index([email])
   @@index([syncStatus])
   @@index([emailContactProfileId])
   @@index([emailAudienceDefinitionId])
+  @@schema("public")
 }
 
 /// One planning row per saved audience definition — list/segment ids are future sync targets only.
 model SendGridAudienceMap {
-  id                      String                    @id @default(cuid())
-  emailAudienceDefinitionId String                  @unique
-  emailAudienceDefinition   EmailAudienceDefinition @relation(fields: [emailAudienceDefinitionId], references: [id], onDelete: Cascade)
-  sendgridListId          String?                   @db.VarChar(120)
-  sendgridSegmentId       String?                   @db.VarChar(120)
-  syncStatus              SendGridAudienceSyncStatus @default(NOT_SYNCED)
-  lastPreviewAt           DateTime?
-  lastSyncAt              DateTime?
-  metadataJson            Json                      @default("{}")
-  createdAt               DateTime                  @default(now())
-  updatedAt               DateTime                  @updatedAt
+  id                        String                     @id @default(cuid())
+  emailAudienceDefinitionId String                     @unique
+  emailAudienceDefinition   EmailAudienceDefinition    @relation(fields: [emailAudienceDefinitionId], references: [id], onDelete: Cascade)
+  sendgridListId            String?                    @db.VarChar(120)
+  sendgridSegmentId         String?                    @db.VarChar(120)
+  syncStatus                SendGridAudienceSyncStatus @default(NOT_SYNCED)
+  lastPreviewAt             DateTime?
+  lastSyncAt                DateTime?
+  metadataJson              Json                       @default("{}")
+  createdAt                 DateTime                   @default(now())
+  updatedAt                 DateTime                   @updatedAt
+
+  @@schema("public")
 }
 
 /// Append-only suppression signals from webhooks / manual ops (governance before future sends).
 model SendGridSuppression {
-  id                String                 @id @default(cuid())
-  email             String                 @db.VarChar(320)
-  suppressionType   SendGridSuppressionType
-  sendgridEventId   String?                @db.VarChar(200)
-  source            String                 @default("sendgrid_webhook") @db.VarChar(120)
-  occurredAt        DateTime
-  metadataJson      Json                   @default("{}")
-  createdAt         DateTime               @default(now())
-  updatedAt         DateTime               @updatedAt
+  id              String                  @id @default(cuid())
+  email           String                  @db.VarChar(320)
+  suppressionType SendGridSuppressionType
+  sendgridEventId String?                 @db.VarChar(200)
+  source          String                  @default("sendgrid_webhook") @db.VarChar(120)
+  occurredAt      DateTime
+  metadataJson    Json                    @default("{}")
+  createdAt       DateTime                @default(now())
+  updatedAt       DateTime                @updatedAt
 
   @@index([email])
   @@index([suppressionType, occurredAt])
   @@index([occurredAt])
+  @@schema("public")
 }
 
 /// Sanitized SendGrid Event Webhook payloads (no secret-bearing fields).
 model SendGridEvent {
-  id                         String   @id @default(cuid())
-  email                      String?  @db.VarChar(320)
-  eventType                  String   @db.VarChar(80)
-  sendgridEventId            String?  @unique @db.VarChar(200)
-  sendgridMessageId          String?  @db.VarChar(240)
-  sendgridMarketingCampaignId String? @db.VarChar(120)
-  emailAudienceDefinitionId  String?
-  emailContactProfileId      String?
-  occurredAt                 DateTime
-  rawEventJson               Json     @default("{}")
-  metadataJson               Json     @default("{}")
-  createdAt                  DateTime @default(now())
+  id                          String   @id @default(cuid())
+  email                       String?  @db.VarChar(320)
+  eventType                   String   @db.VarChar(80)
+  sendgridEventId             String?  @unique @db.VarChar(200)
+  sendgridMessageId           String?  @db.VarChar(240)
+  sendgridMarketingCampaignId String?  @db.VarChar(120)
+  emailAudienceDefinitionId   String?
+  emailContactProfileId       String?
+  occurredAt                  DateTime
+  rawEventJson                Json     @default("{}")
+  metadataJson                Json     @default("{}")
+  createdAt                   DateTime @default(now())
 
   @@index([eventType, occurredAt])
   @@index([occurredAt])
   @@index([email])
+  @@schema("public")
 }
 
 /// EMAIL-SENDGRID-CONTACT-SYNC-1.1 + EMAIL-SENDGRID-CONTACT-UPsert-EXECUTION-1.2 — operator-driven preview / approval; optional governed Marketing Contacts upsert (no email send from this model).
@@ -4790,33 +5229,36 @@ enum SendGridContactSyncRunStatus {
   SYNCED
   FAILED
   ARCHIVED
+
+  @@schema("public")
 }
 
 model SendGridContactSyncRun {
-  id                   String                     @id @default(cuid())
-  audienceDefinitionId String?
-  audienceDefinition   EmailAudienceDefinition?   @relation(fields: [audienceDefinitionId], references: [id], onDelete: SetNull)
-  status               SendGridContactSyncRunStatus @default(PREVIEWED)
-  candidateCount       Int                        @default(0)
-  excludedSuppressedCount Int                     @default(0)
-  excludedMissingEmailCount Int                   @default(0)
-  warningCount         Int                        @default(0)
-  sendgridListId       String?                    @db.VarChar(120)
-  sendgridSegmentId    String?                    @db.VarChar(120)
-  previewJson          Json
-  resultJson           Json                       @default("{}")
-  createdByUserId      String?
-  createdBy            User?                      @relation("SendGridContactSyncRunCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
-  approvedByUserId     String?
-  approvedBy           User?                      @relation("SendGridContactSyncRunApprovedBy", fields: [approvedByUserId], references: [id], onDelete: SetNull)
-  approvedAt           DateTime?
-  syncedAt             DateTime?
-  createdAt            DateTime                   @default(now())
-  updatedAt            DateTime                   @updatedAt
+  id                        String                       @id @default(cuid())
+  audienceDefinitionId      String?
+  audienceDefinition        EmailAudienceDefinition?     @relation(fields: [audienceDefinitionId], references: [id], onDelete: SetNull)
+  status                    SendGridContactSyncRunStatus @default(PREVIEWED)
+  candidateCount            Int                          @default(0)
+  excludedSuppressedCount   Int                          @default(0)
+  excludedMissingEmailCount Int                          @default(0)
+  warningCount              Int                          @default(0)
+  sendgridListId            String?                      @db.VarChar(120)
+  sendgridSegmentId         String?                      @db.VarChar(120)
+  previewJson               Json
+  resultJson                Json                         @default("{}")
+  createdByUserId           String?
+  createdBy                 User?                        @relation("SendGridContactSyncRunCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  approvedByUserId          String?
+  approvedBy                User?                        @relation("SendGridContactSyncRunApprovedBy", fields: [approvedByUserId], references: [id], onDelete: SetNull)
+  approvedAt                DateTime?
+  syncedAt                  DateTime?
+  createdAt                 DateTime                     @default(now())
+  updatedAt                 DateTime                     @updatedAt
+  emailSendExecutions       EmailSendExecution[]
 
   @@index([audienceDefinitionId, createdAt])
   @@index([status, createdAt])
-  emailSendExecutions EmailSendExecution[]
+  @@schema("public")
 }
 
 // --- EMAIL-SEND-EXECUTION-1.0 — governed SendGrid send execution (audit; no queue send; no automation). ---
@@ -4834,12 +5276,16 @@ enum EmailSendExecutionStatus {
   FAILED
   CANCELLED
   ARCHIVED
+
+  @@schema("public")
 }
 
 enum EmailSendExecutionSendType {
   SENDGRID_TEST
   SENDGRID_BROADCAST
   GMAIL_ONE_TO_ONE_FUTURE
+
+  @@schema("public")
 }
 
 enum EmailSendRecipientStatus {
@@ -4853,6 +5299,8 @@ enum EmailSendRecipientStatus {
   UNSUBSCRIBED
   SPAM_REPORTED
   FAILED
+
+  @@schema("public")
 }
 
 enum EmailSendApprovalType {
@@ -4862,6 +5310,8 @@ enum EmailSendApprovalType {
   LEGAL_REVIEW
   FINANCE_REVIEW
   FINAL_SEND_APPROVAL
+
+  @@schema("public")
 }
 
 enum EmailSendApprovalStatus {
@@ -4869,48 +5319,50 @@ enum EmailSendApprovalStatus {
   APPROVED
   REJECTED
   NOT_REQUIRED
+
+  @@schema("public")
 }
 
 model EmailSendExecution {
-  id                        String                   @id @default(cuid())
-  status                    EmailSendExecutionStatus @default(DRAFT)
+  id                        String                     @id @default(cuid())
+  status                    EmailSendExecutionStatus   @default(DRAFT)
   sendType                  EmailSendExecutionSendType @default(SENDGRID_BROADCAST)
   messageStudioDraftId      String?
-  messageStudioDraft        MessageStudioDraft?      @relation(fields: [messageStudioDraftId], references: [id], onDelete: SetNull)
+  messageStudioDraft        MessageStudioDraft?        @relation(fields: [messageStudioDraftId], references: [id], onDelete: SetNull)
   emailAudienceDefinitionId String?
-  emailAudienceDefinition   EmailAudienceDefinition? @relation(fields: [emailAudienceDefinitionId], references: [id], onDelete: SetNull)
+  emailAudienceDefinition   EmailAudienceDefinition?   @relation(fields: [emailAudienceDefinitionId], references: [id], onDelete: SetNull)
   sendGridContactSyncRunId  String?
-  sendGridContactSyncRun    SendGridContactSyncRun? @relation(fields: [sendGridContactSyncRunId], references: [id], onDelete: SetNull)
-  sendPacketJson            Json                     @default("{}")
-  subject                   String                   @default("") @db.Text
-  preheader                 String                   @default("") @db.Text
-  body                      String                   @default("") @db.Text
-  fromEmail                 String                   @default("") @db.VarChar(320)
-  fromName                  String                   @default("") @db.VarChar(320)
-  replyToEmail              String?                  @db.VarChar(320)
-  testRecipientEmail        String?                  @db.VarChar(320)
-  candidateRecipientCount   Int                      @default(0)
-  suppressedRecipientCount  Int                      @default(0)
-  finalRecipientCount       Int                      @default(0)
-  preflightJson             Json                     @default("{}")
-  approvalJson              Json                     @default("{}")
-  providerResultJson        Json                     @default("{}")
-  errorSafe                 String?                  @db.Text
-  createdByUserId         String?
-  createdBy                 User?                    @relation("EmailSendExecutionCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  sendGridContactSyncRun    SendGridContactSyncRun?    @relation(fields: [sendGridContactSyncRunId], references: [id], onDelete: SetNull)
+  sendPacketJson            Json                       @default("{}")
+  subject                   String                     @default("") @db.Text
+  preheader                 String                     @default("") @db.Text
+  body                      String                     @default("") @db.Text
+  fromEmail                 String                     @default("") @db.VarChar(320)
+  fromName                  String                     @default("") @db.VarChar(320)
+  replyToEmail              String?                    @db.VarChar(320)
+  testRecipientEmail        String?                    @db.VarChar(320)
+  candidateRecipientCount   Int                        @default(0)
+  suppressedRecipientCount  Int                        @default(0)
+  finalRecipientCount       Int                        @default(0)
+  preflightJson             Json                       @default("{}")
+  approvalJson              Json                       @default("{}")
+  providerResultJson        Json                       @default("{}")
+  errorSafe                 String?                    @db.Text
+  createdByUserId           String?
+  createdBy                 User?                      @relation("EmailSendExecutionCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
   preflightByUserId         String?
-  preflightBy               User?                    @relation("EmailSendExecutionPreflightBy", fields: [preflightByUserId], references: [id], onDelete: SetNull)
-  approvedByUserId        String?
-  approvedBy                User?                    @relation("EmailSendExecutionApprovedBy", fields: [approvedByUserId], references: [id], onDelete: SetNull)
+  preflightBy               User?                      @relation("EmailSendExecutionPreflightBy", fields: [preflightByUserId], references: [id], onDelete: SetNull)
+  approvedByUserId          String?
+  approvedBy                User?                      @relation("EmailSendExecutionApprovedBy", fields: [approvedByUserId], references: [id], onDelete: SetNull)
   sentByUserId              String?
-  sentBy                    User?                    @relation("EmailSendExecutionSentBy", fields: [sentByUserId], references: [id], onDelete: SetNull)
+  sentBy                    User?                      @relation("EmailSendExecutionSentBy", fields: [sentByUserId], references: [id], onDelete: SetNull)
   preflightAt               DateTime?
   finalApprovedAt           DateTime?
   sentAt                    DateTime?
   archivedAt                DateTime?
-  metadataJson              Json                     @default("{}")
-  createdAt                 DateTime                 @default(now())
-  updatedAt                 DateTime                 @updatedAt
+  metadataJson              Json                       @default("{}")
+  createdAt                 DateTime                   @default(now())
+  updatedAt                 DateTime                   @updatedAt
 
   recipients EmailSendRecipient[]
   approvals  EmailSendApproval[]
@@ -4919,41 +5371,44 @@ model EmailSendExecution {
   @@index([createdAt])
   @@index([messageStudioDraftId])
   @@index([emailAudienceDefinitionId])
+  @@schema("public")
 }
 
 model EmailSendRecipient {
-  id                   String                 @id @default(cuid())
-  sendExecutionId      String
-  sendExecution        EmailSendExecution     @relation(fields: [sendExecutionId], references: [id], onDelete: Cascade)
-  email                  String                 @db.VarChar(320)
-  emailContactProfileId  String?
-  emailContactProfile    EmailContactProfile?   @relation(fields: [emailContactProfileId], references: [id], onDelete: SetNull)
-  status                 EmailSendRecipientStatus @default(CANDIDATE)
-  suppressionReason      String?                @db.VarChar(500)
-  providerMessageId     String?                @db.VarChar(200)
-  providerEventJson      Json?
-  metadataJson           Json                   @default("{}")
-  createdAt              DateTime               @default(now())
-  updatedAt              DateTime               @updatedAt
+  id                    String                   @id @default(cuid())
+  sendExecutionId       String
+  sendExecution         EmailSendExecution       @relation(fields: [sendExecutionId], references: [id], onDelete: Cascade)
+  email                 String                   @db.VarChar(320)
+  emailContactProfileId String?
+  emailContactProfile   EmailContactProfile?     @relation(fields: [emailContactProfileId], references: [id], onDelete: SetNull)
+  status                EmailSendRecipientStatus @default(CANDIDATE)
+  suppressionReason     String?                  @db.VarChar(500)
+  providerMessageId     String?                  @db.VarChar(200)
+  providerEventJson     Json?
+  metadataJson          Json                     @default("{}")
+  createdAt             DateTime                 @default(now())
+  updatedAt             DateTime                 @updatedAt
 
   @@index([sendExecutionId, status])
   @@index([email])
+  @@schema("public")
 }
 
 model EmailSendApproval {
-  id               String                @id @default(cuid())
+  id               String                  @id @default(cuid())
   sendExecutionId  String
-  sendExecution    EmailSendExecution    @relation(fields: [sendExecutionId], references: [id], onDelete: Cascade)
+  sendExecution    EmailSendExecution      @relation(fields: [sendExecutionId], references: [id], onDelete: Cascade)
   approvalType     EmailSendApprovalType
   status           EmailSendApprovalStatus @default(PENDING)
-  note             String                @default("") @db.Text
+  note             String                  @default("") @db.Text
   approvedByUserId String?
-  approvedBy       User?                 @relation("EmailSendApprovalDecidedBy", fields: [approvedByUserId], references: [id], onDelete: SetNull)
+  approvedBy       User?                   @relation("EmailSendApprovalDecidedBy", fields: [approvedByUserId], references: [id], onDelete: SetNull)
   decidedAt        DateTime?
-  createdAt        DateTime              @default(now())
-  updatedAt        DateTime              @updatedAt
+  createdAt        DateTime                @default(now())
+  updatedAt        DateTime                @updatedAt
 
   @@index([sendExecutionId, approvalType])
+  @@schema("public")
 }
 
 // --- Contact engagement + segmentation (Comms workbench, campaign-local; CE-1) ---
@@ -4972,6 +5427,8 @@ enum CommunicationRecipientStatus {
   BOUNCED
   UNSUBSCRIBED
   CANCELED
+
+  @@schema("public")
 }
 
 /// Normalized engagement and bridge events (provider + future web/landing; CE-3+ ingestion).
@@ -4987,6 +5444,8 @@ enum CommunicationRecipientEventType {
   OPTED_OUT_SMS
   WEB_VISIT
   FORM_SUBMITTED
+
+  @@schema("public")
 }
 
 /// Best-known delivery state for a recipient row (recomputed from events + consent where applicable).
@@ -4999,17 +5458,23 @@ enum CommsDeliveryHealthStatus {
   HARD_BOUNCED
   SMS_OPT_OUT
   UNKNOWN
+
+  @@schema("public")
 }
 
 enum CommsPlanAudienceSegmentType {
   STATIC
   DYNAMIC
   SYSTEM
+
+  @@schema("public")
 }
 
 enum CommsPlanAudienceSegmentStatus {
   ACTIVE
   ARCHIVED
+
+  @@schema("public")
 }
 
 enum CommsPlanAudienceSegmentMemberSource {
@@ -5018,6 +5483,8 @@ enum CommsPlanAudienceSegmentMemberSource {
   DYNAMIC_SNAPSHOT
   API
   OTHER
+
+  @@schema("public")
 }
 
 model CommunicationRecipient {
@@ -5050,6 +5517,8 @@ model CommunicationRecipient {
 
   events CommunicationRecipientEvent[]
 
+  /// CE-3: one workbench target per send+channel+normalized address (no duplicate expansion rows).
+  @@unique([communicationSendId, channel, addressUsed])
   @@index([communicationSendId])
   @@index([comsPlanAudienceSegmentId])
   @@index([userId])
@@ -5059,8 +5528,7 @@ model CommunicationRecipient {
   @@index([crmContactKey])
   @@index([deliveryHealthStatus])
   @@index([targetSegmentId])
-  /// CE-3: one workbench target per send+channel+normalized address (no duplicate expansion rows).
-  @@unique([communicationSendId, channel, addressUsed])
+  @@schema("public")
 }
 
 model CommunicationRecipientEvent {
@@ -5079,6 +5547,7 @@ model CommunicationRecipientEvent {
   @@index([communicationRecipientId, occurredAt])
   @@index([eventType, occurredAt])
   @@index([providerEventId])
+  @@schema("public")
 }
 
 /// Tracked link on a workbench send (click bridge; optional in CE-1, used by CE-3+ / CE-8).
@@ -5094,6 +5563,7 @@ model CommunicationLinkDefinition {
 
   @@unique([communicationSendId, trackingKey])
   @@index([communicationSendId])
+  @@schema("public")
 }
 
 /// Reusable group within a single message plan (distinct from broadcast `AudienceSegment`).
@@ -5117,7 +5587,7 @@ model CommsPlanAudienceSegment {
 
   members                 CommsPlanAudienceSegmentMember[]
   communicationRecipients CommunicationRecipient[]
-  emailWorkflowItems      EmailWorkflowItem[]         @relation("EmailWorkflowItemSegment")
+  emailWorkflowItems      EmailWorkflowItem[]              @relation("EmailWorkflowItemSegment")
 
   @@index([communicationPlanId])
   @@index([status])
@@ -5125,6 +5595,7 @@ model CommsPlanAudienceSegment {
   @@index([isDynamic])
   @@index([name])
   @@index([createdByUserId])
+  @@schema("public")
 }
 
 model CommsPlanAudienceSegmentMember {
@@ -5142,12 +5613,13 @@ model CommsPlanAudienceSegmentMember {
   addedBy                   User?                                @relation("CommsPlanSegmentMemberAddedBy", fields: [addedByUserId], references: [id], onDelete: SetNull)
   createdAt                 DateTime                             @default(now())
 
-  /// One membership row per segment per user when `userId` is set (NULL userId allowed for crm-only rows).
   @@unique([comsPlanAudienceSegmentId, userId])
   @@index([comsPlanAudienceSegmentId])
   @@index([userId])
   @@index([volunteerProfileId])
   @@index([crmContactKey])
+  /// One membership row per segment per user when `userId` is set (NULL userId allowed for crm-only rows).
+  @@schema("public")
 }
 
 model MediaOutreachItem {
@@ -5176,22 +5648,25 @@ model MediaOutreachItem {
   @@index([linkedWorkflowIntakeId])
   @@index([linkedConversationOpportunityId])
   @@index([updatedAt])
+  @@schema("public")
 }
 
 /// OAuth-linked Google mailbox for 1:1 human email from the workbench (Gmail API). Not used for SendGrid broadcast.
 model StaffGmailAccount {
-  id          String   @id @default(cuid())
-  userId      String   @unique
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id             String   @id @default(cuid())
+  userId         String   @unique
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   /// Workspace / Gmail “send as” address (usually same as `User.email`).
-  sendAsEmail String
-  oauthJson   Json     @default("{}")
+  sendAsEmail    String
+  oauthJson      Json     @default("{}")
   /// Monitor/sync telemetry (versioned JSON); never stores message bodies or tokens — see `gmail-sync-state.ts`.
-  gmailSyncState Json  @default("{}")
-  isActive    Boolean  @default(true)
-  lastError   String?  @db.Text
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  gmailSyncState Json     @default("{}")
+  isActive       Boolean  @default(true)
+  lastError      String?  @db.Text
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@schema("public")
 }
 
 // --- Calendar HQ / Google Calendar (CampaignOS) ---
@@ -5230,6 +5705,7 @@ model CalendarSource {
 
   @@index([sourceType, isActive, syncEnabled])
   @@index([isPublicFacing, isActive, syncEnabled])
+  @@schema("public")
 }
 
 model CalendarWatchChannel {
@@ -5248,6 +5724,7 @@ model CalendarWatchChannel {
 
   @@index([calendarSourceId, expiration])
   @@index([channelId])
+  @@schema("public")
 }
 
 /// Monday-start week; mission, outcomes, role commitments, and up to 5 big rocks
@@ -5266,6 +5743,7 @@ model WeeklyCampaignPlan {
   updatedAt           DateTime        @updatedAt
 
   @@index([weekStart])
+  @@schema("public")
 }
 
 model WeeklyBigRock {
@@ -5285,6 +5763,7 @@ model WeeklyBigRock {
   updatedAt  DateTime           @updatedAt
 
   @@index([weekPlanId, sortOrder])
+  @@schema("public")
 }
 
 model EventApproval {
@@ -5304,6 +5783,7 @@ model EventApproval {
 
   @@index([eventId, state])
   @@index([state, createdAt])
+  @@schema("public")
 }
 
 /// Append-only audit of workflow transitions (operational history).
@@ -5321,6 +5801,7 @@ model EventStageChangeLog {
 
   @@index([eventId, createdAt])
   @@index([toState, createdAt])
+  @@schema("public")
 }
 
 model EventSyncLog {
@@ -5337,6 +5818,7 @@ model EventSyncLog {
 
   @@index([eventId, createdAt])
   @@index([calendarSourceId, createdAt])
+  @@schema("public")
 }
 
 model EventAnalyticsSnapshot {
@@ -5355,6 +5837,7 @@ model EventAnalyticsSnapshot {
   @@index([day, scope])
   @@index([countyId, day])
   @@index([eventId, day])
+  @@schema("public")
 }
 
 // --- External press / earned media monitoring (Arkansas outlets, Kelly Grappe) ---
@@ -5367,6 +5850,8 @@ enum ExternalMediaSourceType {
   RADIO
   BLOG
   OTHER
+
+  @@schema("public")
 }
 
 enum ExternalMediaMentionType {
@@ -5379,6 +5864,8 @@ enum ExternalMediaMentionType {
   EVENT_RECAP
   ENDORSEMENT
   OTHER
+
+  @@schema("public")
 }
 
 enum ExternalMediaReviewStatus {
@@ -5386,6 +5873,8 @@ enum ExternalMediaReviewStatus {
   NEEDS_REVIEW
   APPROVED
   REJECTED
+
+  @@schema("public")
 }
 
 enum ExternalMediaIngestMethod {
@@ -5396,6 +5885,8 @@ enum ExternalMediaIngestMethod {
   HOMEPAGE_SECTION
   TAG_PAGE
   CATEGORY_PAGE
+
+  @@schema("public")
 }
 
 enum ExternalMediaMatchTier {
@@ -5403,6 +5894,8 @@ enum ExternalMediaMatchTier {
   LIKELY
   UNCERTAIN
   NOT_RELEVANT
+
+  @@schema("public")
 }
 
 /// Registry row synced from `src/lib/media-monitor/sources` seeds (editable in DB for overrides).
@@ -5428,6 +5921,7 @@ model ExternalMediaSource {
   mentions ExternalMediaMention[]
 
   @@index([isActive, priority])
+  @@schema("public")
 }
 
 model ExternalMediaMention {
@@ -5490,6 +5984,7 @@ model ExternalMediaMention {
   @@index([showOnPublicSite, publishedAt])
   @@index([relatedCountyId])
   @@index([relatedEventId])
+  @@schema("public")
 }
 
 model ExternalMediaIngestRun {
@@ -5508,6 +6003,7 @@ model ExternalMediaIngestRun {
   error            String?   @db.Text
 
   @@index([startedAt])
+  @@schema("public")
 }
 
 // --- INTEL-3: Opposition intelligence (source-backed, reviewable; no AI conclusion / voter fields) ---
@@ -5521,6 +6017,8 @@ enum OppositionEntityType {
   INFLUENCER
   MEDIA_OUTLET
   OTHER
+
+  @@schema("public")
 }
 
 enum OppositionConfidence {
@@ -5528,6 +6026,8 @@ enum OppositionConfidence {
   LIKELY
   UNVERIFIED
   DISPUTED
+
+  @@schema("public")
 }
 
 enum OppositionReviewStatus {
@@ -5536,6 +6036,8 @@ enum OppositionReviewStatus {
   REVIEWED
   APPROVED
   ARCHIVED
+
+  @@schema("public")
 }
 
 enum OppositionSourceType {
@@ -5547,6 +6049,8 @@ enum OppositionSourceType {
   SOCIAL_MEDIA
   USER_PROVIDED_DOCUMENT
   OTHER
+
+  @@schema("public")
 }
 
 model OppositionEntity {
@@ -5573,6 +6077,7 @@ model OppositionEntity {
 
   @@index([name])
   @@index([type])
+  @@schema("public")
 }
 
 model OppositionSource {
@@ -5603,33 +6108,35 @@ model OppositionSource {
   @@index([sourceType])
   @@index([reviewStatus])
   @@index([publishedAt])
+  @@schema("public")
 }
 
 model OppositionBillRecord {
-  id            String                 @id @default(cuid())
-  entityId      String
-  entity        OppositionEntity       @relation(fields: [entityId], references: [id], onDelete: Cascade)
-  sourceId      String?
-  source        OppositionSource?      @relation(fields: [sourceId], references: [id], onDelete: SetNull)
-  billNumber    String?
-  title         String?
-  summary       String?                @db.Text
-  role          String?
-  policyArea    String?
-  impactArea    String?
-  session       String?
-  status        String?
-  introducedAt  DateTime?
-  lastActionAt  DateTime?
-  confidence    OppositionConfidence   @default(UNVERIFIED)
-  reviewStatus  OppositionReviewStatus @default(NEEDS_REVIEW)
-  notes         String?                @db.Text
-  metadataJson  Json                   @default("{}")
-  createdAt     DateTime               @default(now())
-  updatedAt     DateTime               @updatedAt
+  id           String                 @id @default(cuid())
+  entityId     String
+  entity       OppositionEntity       @relation(fields: [entityId], references: [id], onDelete: Cascade)
+  sourceId     String?
+  source       OppositionSource?      @relation(fields: [sourceId], references: [id], onDelete: SetNull)
+  billNumber   String?
+  title        String?
+  summary      String?                @db.Text
+  role         String?
+  policyArea   String?
+  impactArea   String?
+  session      String?
+  status       String?
+  introducedAt DateTime?
+  lastActionAt DateTime?
+  confidence   OppositionConfidence   @default(UNVERIFIED)
+  reviewStatus OppositionReviewStatus @default(NEEDS_REVIEW)
+  notes        String?                @db.Text
+  metadataJson Json                   @default("{}")
+  createdAt    DateTime               @default(now())
+  updatedAt    DateTime               @updatedAt
 
   @@index([entityId])
   @@index([sourceId])
+  @@schema("public")
 }
 
 model OppositionVoteRecord {
@@ -5653,6 +6160,7 @@ model OppositionVoteRecord {
 
   @@index([entityId])
   @@index([sourceId])
+  @@schema("public")
 }
 
 model OppositionFinanceRecord {
@@ -5677,6 +6185,7 @@ model OppositionFinanceRecord {
 
   @@index([entityId])
   @@index([sourceId])
+  @@schema("public")
 }
 
 model OppositionMessageRecord {
@@ -5699,29 +6208,31 @@ model OppositionMessageRecord {
 
   @@index([entityId])
   @@index([sourceId])
+  @@schema("public")
 }
 
 model OppositionVideoRecord {
-  id                String                 @id @default(cuid())
-  entityId          String
-  entity            OppositionEntity       @relation(fields: [entityId], references: [id], onDelete: Cascade)
-  sourceId          String?
-  source            OppositionSource?      @relation(fields: [sourceId], references: [id], onDelete: SetNull)
-  eventType         String?
-  topic             String?
-  billNumber        String?
-  videoDate         DateTime?
-  timestampLabel    String?
-  transcriptStatus  String?
-  confidence        OppositionConfidence   @default(UNVERIFIED)
-  reviewStatus      OppositionReviewStatus @default(NEEDS_REVIEW)
-  notes             String?                @db.Text
-  metadataJson      Json                   @default("{}")
-  createdAt         DateTime               @default(now())
-  updatedAt         DateTime               @updatedAt
+  id               String                 @id @default(cuid())
+  entityId         String
+  entity           OppositionEntity       @relation(fields: [entityId], references: [id], onDelete: Cascade)
+  sourceId         String?
+  source           OppositionSource?      @relation(fields: [sourceId], references: [id], onDelete: SetNull)
+  eventType        String?
+  topic            String?
+  billNumber       String?
+  videoDate        DateTime?
+  timestampLabel   String?
+  transcriptStatus String?
+  confidence       OppositionConfidence   @default(UNVERIFIED)
+  reviewStatus     OppositionReviewStatus @default(NEEDS_REVIEW)
+  notes            String?                @db.Text
+  metadataJson     Json                   @default("{}")
+  createdAt        DateTime               @default(now())
+  updatedAt        DateTime               @updatedAt
 
   @@index([entityId])
   @@index([sourceId])
+  @@schema("public")
 }
 
 model OppositionNewsMention {
@@ -5744,28 +6255,30 @@ model OppositionNewsMention {
 
   @@index([entityId])
   @@index([sourceId])
+  @@schema("public")
 }
 
 model OppositionElectionPattern {
-  id               String                 @id @default(cuid())
-  entityId         String
-  entity           OppositionEntity       @relation(fields: [entityId], references: [id], onDelete: Cascade)
-  sourceId         String?
-  source           OppositionSource?      @relation(fields: [sourceId], references: [id], onDelete: SetNull)
-  electionYear     Int?
-  county           String?
-  voteShare        Float?
-  turnout          Float?
-  comparisonGroup  String?
-  confidence       OppositionConfidence   @default(UNVERIFIED)
-  reviewStatus     OppositionReviewStatus @default(NEEDS_REVIEW)
-  notes            String?                @db.Text
-  metadataJson     Json                   @default("{}")
-  createdAt        DateTime               @default(now())
-  updatedAt        DateTime               @updatedAt
+  id              String                 @id @default(cuid())
+  entityId        String
+  entity          OppositionEntity       @relation(fields: [entityId], references: [id], onDelete: Cascade)
+  sourceId        String?
+  source          OppositionSource?      @relation(fields: [sourceId], references: [id], onDelete: SetNull)
+  electionYear    Int?
+  county          String?
+  voteShare       Float?
+  turnout         Float?
+  comparisonGroup String?
+  confidence      OppositionConfidence   @default(UNVERIFIED)
+  reviewStatus    OppositionReviewStatus @default(NEEDS_REVIEW)
+  notes           String?                @db.Text
+  metadataJson    Json                   @default("{}")
+  createdAt       DateTime               @default(now())
+  updatedAt       DateTime               @updatedAt
 
   @@index([entityId])
   @@index([sourceId])
+  @@schema("public")
 }
 
 model OppositionAccountabilityItem {
@@ -5789,4 +6302,5 @@ model OppositionAccountabilityItem {
 
   @@index([entityId])
   @@index([sourceId])
+  @@schema("public")
 }
