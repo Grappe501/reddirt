@@ -4,6 +4,8 @@
 
 ## Purpose
 
+When you are ready for **staff to run OAuth in production** (all three hosted readiness endpoints green), use **[`gmail-calendar-operator-proof.md`](./gmail-calendar-operator-proof.md)** — **operator connection proof** page and bearer API — not this technical slice alone.
+
 After hosted Communication Command Center readiness is green, this slice adds:
 
 - A **read-only** readiness payload for **Gmail + Calendar OAuth surfaces** (no Google API calls from the readiness API).  

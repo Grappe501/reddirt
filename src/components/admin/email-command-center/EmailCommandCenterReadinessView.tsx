@@ -180,22 +180,30 @@ export function EmailCommandCenterReadinessView({
       </section>
 
       <section className="rounded-lg border border-emerald-300/60 bg-emerald-50/90 p-3 shadow-sm">
-        <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-emerald-950/85">Gmail + Calendar</h2>
+        <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-emerald-950/85">Gmail + Calendar connection</h2>
         <p className="mt-1 font-body text-[11px] text-emerald-950/90">
-          Ready for connection proof. Sending remains locked — use this when hosted diagnostics are green and you are ready to
-          sign in the campaign inbox and calendar.
+          Ready for operator connection proof. Sending remains locked — use when hosted diagnostics are green and you are ready to
+          sign in the campaign inbox and calendar in production.
         </p>
-        <div className="mt-2">
+        <div className="mt-2 flex flex-wrap gap-2">
           <Link
-            href="/admin/workbench/communication-command-center/gmail-calendar"
+            href="/admin/workbench/communication-command-center/gmail-calendar/operator-proof"
             className="inline-flex rounded border border-emerald-800/35 bg-white px-2 py-1 text-[11px] font-bold text-emerald-950 hover:bg-emerald-100"
           >
-            Open Gmail + Calendar readiness
+            Open connection proof
+          </Link>
+          <Link
+            href="/admin/workbench/communication-command-center/gmail-calendar"
+            className="inline-flex rounded border border-emerald-800/25 bg-emerald-100/50 px-2 py-1 text-[11px] font-semibold text-emerald-900 hover:bg-emerald-100"
+          >
+            Technical readiness summary
           </Link>
         </div>
         <p className="mt-2 font-body text-[10px] text-emerald-900/75">
-          Guide: docs/gmail-calendar-oauth-proof.md · API (bearer):{" "}
-          <code className="rounded bg-white/80 px-0.5 text-[9px]">GET /api/admin/communication-command-center/gmail-calendar-readiness</code>
+          Guide: docs/gmail-calendar-operator-proof.md · Readiness API (bearer):{" "}
+          <code className="rounded bg-white/80 px-0.5 text-[9px]">GET /api/admin/communication-command-center/gmail-calendar-readiness</code>{" "}
+          · Operator proof API:{" "}
+          <code className="rounded bg-white/80 px-0.5 text-[9px]">GET /api/admin/communication-command-center/gmail-calendar-operator-proof</code>
         </p>
       </section>
 

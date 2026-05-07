@@ -57,6 +57,14 @@ Payload is built by **`src/lib/communication-command-center/readiness.ts`**:
 - **Body:** **`email_sandbox_send_readiness`** — hosted + comms + Gmail/Calendar artifact gate; **does not** authorize live or list send.  
 - **Doc:** [`email-sandbox-send-proof.md`](./email-sandbox-send-proof.md) · **Admin UI:** `/admin/workbench/communication-command-center/email-sandbox`
 
+### Gmail + Calendar — operator hosted connection proof (after gates green)
+
+- **Path:** `GET /api/admin/communication-command-center/gmail-calendar-operator-proof`  
+- **Auth:** Same bearer (`EMAIL_DIAGNOSTICS_TOKEN` first, `ADMIN_DIAGNOSTIC_TOKEN` fallback), timing-safe.  
+- **Body:** **`gmail_calendar_operator_proof`** — read-only aggregation: CCC + Gmail/Calendar + email sandbox readiness must all be **`ok: true`** and **`noSendPosture`** true for **`ok: true`**; includes operator-facing **`oauthStartUrl`** and steps text. **Does not** call Google APIs, send mail, import contacts, or enable workers.  
+- **Admin UI:** `/admin/workbench/communication-command-center/gmail-calendar/operator-proof`  
+- **Doc:** [`gmail-calendar-operator-proof.md`](./gmail-calendar-operator-proof.md)
+
 ---
 
 ## Admin dashboard (signed-in admin)
@@ -77,6 +85,8 @@ node scripts/validate-gmail-calendar-oauth-proof.mjs
 node scripts/build-gmail-calendar-oauth-proof-report.mjs
 node scripts/validate-email-sandbox-send-proof.mjs
 node scripts/build-email-sandbox-send-proof-report.mjs
+node scripts/validate-gmail-calendar-operator-proof.mjs
+node scripts/build-gmail-calendar-operator-proof-report.mjs
 ```
 
 Validate prints **PASS/FAIL** to stdout (no extra artifact). Build writes **`data/communication-command-center-launch-report.json`**. Gmail/Calendar proof writes **`data/gmail-calendar-oauth-proof-contract.json`** and related report artifacts. Email sandbox proof writes **`data/email-sandbox-send-proof-contract.json`** (or **`data/email-sandbox-send-proof-blocked.json`** if Gmail/Calendar proof is not green).

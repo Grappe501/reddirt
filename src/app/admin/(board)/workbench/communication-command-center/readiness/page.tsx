@@ -48,10 +48,16 @@ export default async function CommunicationCommandCenterReadinessPage() {
           Workspace readiness
         </Link>
         <Link
-          href="/admin/workbench/communication-command-center/gmail-calendar"
+          href="/admin/workbench/communication-command-center/gmail-calendar/operator-proof"
           className="text-xs font-bold text-emerald-900 hover:underline"
         >
-          Gmail + Calendar proof
+          Gmail + Calendar connection proof
+        </Link>
+        <Link
+          href="/admin/workbench/communication-command-center/gmail-calendar"
+          className="text-xs font-bold text-emerald-800/90 hover:underline"
+        >
+          Gmail + Calendar summary
         </Link>
         <Link
           href="/admin/workbench/communication-command-center/email-sandbox"
@@ -82,6 +88,21 @@ export default async function CommunicationCommandCenterReadinessPage() {
           ? "Ready for controlled connection checks — sending remains safely locked."
           : "Not fully green — review the sections below and fix any red items before go-live checks."}
       </div>
+
+      <section className="rounded-lg border border-emerald-300/55 bg-emerald-50/85 p-3 shadow-sm">
+        <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-emerald-950/85">Gmail + Calendar connection</h2>
+        <p className="mt-1 font-body text-[11px] text-emerald-950/90">
+          Ready for operator connection proof. Sending remains locked.
+        </p>
+        <div className="mt-2">
+          <Link
+            href="/admin/workbench/communication-command-center/gmail-calendar/operator-proof"
+            className="inline-flex rounded border border-emerald-800/35 bg-white px-2 py-1 text-[11px] font-bold text-emerald-950 hover:bg-emerald-100"
+          >
+            Open connection proof
+          </Link>
+        </div>
+      </section>
 
       <section className="rounded-lg border border-kelly-text/12 bg-white/95 p-3 shadow-sm">
         <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-kelly-text/55">Database (hosted check)</h2>

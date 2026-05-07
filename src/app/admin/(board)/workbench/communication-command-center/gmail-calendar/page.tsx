@@ -28,6 +28,12 @@ export default async function GmailCalendarOAuthProofPage() {
         <Link href={READINESS} className="rounded border border-kelly-text/15 bg-white px-2 py-0.5 text-xs font-semibold text-kelly-slate">
           Communication readiness
         </Link>
+        <Link
+          href="/admin/workbench/communication-command-center/gmail-calendar/operator-proof"
+          className="rounded border border-kelly-forest/25 bg-kelly-forest/10 px-2 py-0.5 text-xs font-bold text-kelly-forest"
+        >
+          Operator connection proof
+        </Link>
       </div>
 
       <header className="space-y-2">

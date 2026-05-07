@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-GMAIL-CALENDAR-OAUTH-OPERATOR-HOSTED-PROOF-1.0",
+  "generatedAt": "2026-05-07T22:49:16.513Z",
+  "preconditions": [
+    "GET /api/admin/communication-command-center/readiness → ok true",
+    "GET /api/admin/communication-command-center/gmail-calendar-readiness → ok true",
+    "GET /api/admin/communication-command-center/email-sandbox-readiness → ok true"
+  ],
+  "gmail": [
+    "Open /admin/workbench/communication-command-center/gmail-calendar/operator-proof",
+    "Use Connect Gmail → /api/gmail/oauth/start; complete Google consent.",
+    "Confirm callback success; verify metadata read-only posture in Gmail monitor (no send)."
+  ],
+  "calendar": [
+    "From operator proof page, open Calendar workspace → connect Google.",
+    "Confirm read/sync; do not rely on bulk event writes until separately approved."
+  ],
+  "safety": [
+    "Rotate ADMIN_DIAGNOSTIC_TOKEN in Netlify if exposed; redeploy.",
+    "This slice does not authorize email send, list send, SendGrid delivery, Twilio SMS, imports, workers, or calendar writes."
+  ],
+  "nextRecommendedSlice": "Operator runs hosted Gmail OAuth, then Calendar OAuth, with runbook notes (redacted)."
+}
