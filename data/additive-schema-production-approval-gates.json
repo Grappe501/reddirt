@@ -1,51 +1,126 @@
 {
   "schemaVersion": "1.0",
   "slice": "REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0",
-  "generatedAt": "2026-05-07T14:54:01.050Z",
+  "generatedAt": "2026-05-07T21:17:54.763Z",
   "approvalPhraseRequired": "STEVE_APPROVES_REDDIRT_ADDITIVE_SCHEMA_PRODUCTION_EXECUTION",
   "gates": [
     {
-      "id": "backup_pitr",
-      "label": "Supabase backup / PITR restore path documented and tested on a non-prod proof",
-      "owner": "operator",
-      "status": "pending"
+      "key": "backup_pitr_proof",
+      "label": "Backup/PITR proof confirmed immediately before execution.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Supabase dashboard backup snapshot ID or PITR restore drill note (no secrets).",
+      "whoApproves": "Steve/operator",
+      "notes": "Restore path must be proven on a non-production fork first when feasible."
     },
     {
-      "id": "steve_phrase",
-      "label": "Steve states approval phrase: STEVE_APPROVES_REDDIRT_ADDITIVE_SCHEMA_PRODUCTION_EXECUTION",
-      "owner": "Steve",
-      "status": "pending"
+      "key": "correct_production_project_ref",
+      "label": "Correct production project ref confirmed: giozeoqulfojhxpywjil.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Visual match of Supabase project ref in dashboard with packet.",
+      "whoApproves": "Steve/operator",
+      "notes": "Cross-check pooler vs direct URL forms; ref must match giozeoqulfojhxpywjil."
     },
     {
-      "id": "correct_db",
-      "label": "Confirm production project ref giozeoqulfojhxpywjil matches operator target (visual cross-check in dashboard)",
-      "owner": "operator",
-      "status": "pending"
+      "key": "candidate_sql_hash_recorded",
+      "label": "Candidate SQL sha256 recorded and matches execution packet.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "sha256 of data/sql/additive-schema-install-candidate.sql equals packet candidateSqlSha256.",
+      "whoApproves": "Steve/operator",
+      "notes": "Recompute after any candidate regeneration."
     },
     {
-      "id": "maintenance_window",
-      "label": "Maintenance window communicated; app traffic expectations set",
-      "owner": "operator",
-      "status": "pending"
+      "key": "candidate_sql_validation_passed",
+      "label": "Candidate SQL validation artifact passed (offline).",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "data/additive-schema-install-validation.json status pass; safeForProduction false.",
+      "whoApproves": "Steve/operator",
+      "notes": "Run node scripts/validate-additive-schema-install-candidate.mjs if candidate changes."
     },
     {
-      "id": "candidate_hash",
-      "label": "Operator records sha256 of additive-schema-install-candidate.sql and matches packet",
-      "owner": "operator",
-      "status": "pending"
+      "key": "production_like_clone_proof_passed",
+      "label": "Production-like clone proof passed.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "data/additive-schema-clone-test-result.json ok, productionLikeCloneProof, high-value protection flags.",
+      "whoApproves": "Steve/operator",
+      "notes": "Re-run node scripts/test-additive-schema-install-on-clone.mjs if artifact is stale."
     },
     {
-      "id": "clone_proof_fresh",
-      "label": "data/additive-schema-clone-test-result.json passes hardened production-like gates (re-run clone test if stale)",
-      "owner": "operator",
-      "status": "pending"
+      "key": "high_value_table_precheck_production",
+      "label": "High-value table precheck passed on production immediately before execution.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Preflight JSON shows requiredTablesPresent and authUsersPresent.",
+      "whoApproves": "Steve/operator",
+      "notes": "Run node scripts/run-additive-schema-production-preflight.mjs with production DATABASE_URL."
     },
     {
-      "id": "no_raw_diff",
-      "label": "Raw Prisma diff and rejected statements are not executed on production",
-      "owner": "operator",
-      "status": "pending"
+      "key": "maintenance_window_confirmed",
+      "label": "Maintenance window confirmed.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Communications log or calendar entry reference (no secrets).",
+      "whoApproves": "Steve/operator",
+      "notes": "Schema DDL can lock objects briefly; traffic expectations documented."
+    },
+    {
+      "key": "steve_approval_phrase_recorded",
+      "label": "Steve approval phrase recorded: STEVE_APPROVES_REDDIRT_ADDITIVE_SCHEMA_PRODUCTION_EXECUTION.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Written approval in ticket or env gate for guarded runner.",
+      "whoApproves": "Steve",
+      "notes": "Phrase must match exactly for REDDIRT_ADDITIVE_SCHEMA_PRODUCTION_EXECUTION_APPROVED."
+    },
+    {
+      "key": "operator_ack_schema_mutation",
+      "label": "Operator understands SQL will mutate production schema.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Signed checklist or REDDIRT_ACKNOWLEDGE_SCHEMA_MUTATION=YES at execute time.",
+      "whoApproves": "Steve/operator",
+      "notes": "Additive only; still irreversible without PITR."
+    },
+    {
+      "key": "operator_ack_prisma_migrations_not_baselined",
+      "label": "Operator understands this does not baseline _prisma_migrations.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Verbal/written ack captured in operator notes.",
+      "whoApproves": "Steve/operator",
+      "notes": "Separate migration-history slice still required."
+    },
+    {
+      "key": "operator_ack_netlify_separate",
+      "label": "Operator understands Netlify retry is separate.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Acknowledgement note or REDDIRT_ACKNOWLEDGE_NETLIFY_SEPARATE=YES.",
+      "whoApproves": "Steve/operator",
+      "notes": "Do not conflate DDL apply with Netlify button retry."
+    },
+    {
+      "key": "operator_ack_live_send_blocked",
+      "label": "Operator understands live send remains blocked.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Acknowledgement note or REDDIRT_ACKNOWLEDGE_LIVE_SEND_BLOCKED=YES.",
+      "whoApproves": "Steve/operator",
+      "notes": "Email Command Center live paths stay gated."
+    },
+    {
+      "key": "post_execution_verification_plan_acknowledged",
+      "label": "Post-execution verification plan acknowledged.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Operator confirms they will run postcheck script and/or SQL probes after apply.",
+      "whoApproves": "Steve/operator",
+      "notes": "See docs/additive-schema-production-postcheck-plan.md."
     }
   ],
-  "notes": "Statuses are machine-hint only; human sign-off is authoritative."
+  "notes": "Every gate starts pending; human sign-off is authoritative. Machine statuses never approve production execution."
 }

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-GMAIL-CALENDAR-OAUTH-PROOF-1.0",
+  "generatedAt": "2026-05-07T21:40:56.879Z",
+  "gmail": [
+    "Open GET /api/gmail/oauth/start in the browser (same site).",
+    "Complete Google consent for the campaign inbox.",
+    "Confirm OAuth callback returns without error.",
+    "Confirm token / readiness in admin tools (no test blast required).",
+    "Confirm metadata-only posture; no sending occurred."
+  ],
+  "calendar": [
+    "Open Workbench → Calendar and start Google connection.",
+    "Complete consent so /api/calendar/google/callback stores tokens.",
+    "Confirm calendar list or event read in staff UI (read-first).",
+    "Do not rely on bulk event writes until explicitly approved later."
+  ],
+  "safety": [
+    "Rotate ADMIN_DIAGNOSTIC_TOKEN in Netlify if it was ever pasted into chat; redeploy.",
+    "Keep EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM false until headquarters approves live send."
+  ],
+  "nextRecommendedSlice": "REDDIRT-GMAIL-CALENDAR-OAUTH-OPERATOR-HOSTED-PROOF-1.0"
+}

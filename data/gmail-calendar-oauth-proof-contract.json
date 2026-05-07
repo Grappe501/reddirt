@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-GMAIL-CALENDAR-OAUTH-PROOF-1.0",
+  "generatedAt": "2026-05-07T21:31:25.340Z",
+  "status": "pass",
+  "checks": [
+    {
+      "id": "file:gmailOauthStart",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "file:gmailOauthCallback",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "file:gmailPubsub",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "file:calendarCallback",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "file:calendarCronSync",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "file:calendarWebhook",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "file:readinessApi",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "lib_readiness",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "admin_page",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "api_get_only",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "api_email_diag_token",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "api_admin_diag_token",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_typo_admin_diagnostics_token",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "api_timing_safe",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "lib_no_google_api_calls_obvious",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_gmail_send_in:src/lib/communication-command-center/gmail-calendar-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_twilio_send_in:src/lib/communication-command-center/gmail-calendar-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_sendgrid_send_in:src/lib/communication-command-center/gmail-calendar-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_gmail_send_in:src/app/api/admin/communication-command-center/gmail-calendar-readiness/route.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_twilio_send_in:src/app/api/admin/communication-command-center/gmail-calendar-readiness/route.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_sendgrid_send_in:src/app/api/admin/communication-command-center/gmail-calendar-readiness/route.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_gmail_send_in:src/app/admin/(board)/workbench/communication-command-center/gmail-calendar/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_twilio_send_in:src/app/admin/(board)/workbench/communication-command-center/gmail-calendar/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_sendgrid_send_in:src/app/admin/(board)/workbench/communication-command-center/gmail-calendar/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    }
+  ],
+  "violations": [],
+  "routePathsVerified": {
+    "gmailOauthStart": true,
+    "gmailOauthCallback": true,
+    "gmailPubsub": true,
+    "calendarCallback": true,
+    "calendarCronSync": true,
+    "calendarWebhook": true,
+    "readinessApi": true
+  },
+  "safetyFieldsExpectedFalse": [
+    "gmailSendApproved",
+    "sendgridLiveSendApproved",
+    "twilioSmsApproved",
+    "contactImportApproved",
+    "automationWorkersApproved"
+  ]
+}

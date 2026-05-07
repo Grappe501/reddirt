@@ -179,6 +179,46 @@ export function EmailCommandCenterReadinessView({
         </div>
       </section>
 
+      <section className="rounded-lg border border-emerald-300/60 bg-emerald-50/90 p-3 shadow-sm">
+        <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-emerald-950/85">Gmail + Calendar</h2>
+        <p className="mt-1 font-body text-[11px] text-emerald-950/90">
+          Ready for connection proof. Sending remains locked — use this when hosted diagnostics are green and you are ready to
+          sign in the campaign inbox and calendar.
+        </p>
+        <div className="mt-2">
+          <Link
+            href="/admin/workbench/communication-command-center/gmail-calendar"
+            className="inline-flex rounded border border-emerald-800/35 bg-white px-2 py-1 text-[11px] font-bold text-emerald-950 hover:bg-emerald-100"
+          >
+            Open Gmail + Calendar readiness
+          </Link>
+        </div>
+        <p className="mt-2 font-body text-[10px] text-emerald-900/75">
+          Guide: docs/gmail-calendar-oauth-proof.md · API (bearer):{" "}
+          <code className="rounded bg-white/80 px-0.5 text-[9px]">GET /api/admin/communication-command-center/gmail-calendar-readiness</code>
+        </p>
+      </section>
+
+      <section className="rounded-lg border border-violet-300/60 bg-violet-50/90 p-3 shadow-sm">
+        <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-violet-950/85">Sandbox email proof</h2>
+        <p className="mt-1 font-body text-[11px] text-violet-950/90">
+          Internal test path only — not list mail, not volunteer outreach. Requires green Gmail + Calendar proof first. Live
+          sending stays locked until headquarters runs a separate approval slice.
+        </p>
+        <div className="mt-2">
+          <Link
+            href="/admin/workbench/communication-command-center/email-sandbox"
+            className="inline-flex rounded border border-violet-800/35 bg-white px-2 py-1 text-[11px] font-bold text-violet-950 hover:bg-violet-100"
+          >
+            Open sandbox email readiness
+          </Link>
+        </div>
+        <p className="mt-2 font-body text-[10px] text-violet-900/75">
+          Guide: docs/email-sandbox-send-proof.md · API (bearer):{" "}
+          <code className="rounded bg-white/80 px-0.5 text-[9px]">GET /api/admin/communication-command-center/email-sandbox-readiness</code>
+        </p>
+      </section>
+
       <ChecklistSection
         title="Local workspace readiness"
         rows={[

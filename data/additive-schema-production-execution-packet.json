@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "slice": "REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0",
-  "generatedAt": "2026-05-07T14:54:00.667Z",
+  "generatedAt": "2026-05-07T21:17:54.727Z",
   "mode": "approval_gated_production_execution_packet",
   "executionPacketStatus": "ready_pending_human_approval",
   "productionMutationExecutedByThisPacket": false,
@@ -76,7 +76,8 @@
     "dropCount": 0,
     "truncateCount": 0,
     "deleteCount": 0,
-    "insertCount": 0
+    "insertCount": 0,
+    "updateCount": 0
   },
   "cloneProofGateDetail": {
     "ok": true,

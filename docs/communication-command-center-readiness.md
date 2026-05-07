@@ -32,6 +32,21 @@ Payload is built by **`src/lib/communication-command-center/readiness.ts`**:
 - **`safety`** — explicit **`…Approved: false`** fields plus **`noSendPosture`** from **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** (must be **`false`** for **`ok: true`**).  
 - **`nextRecommendedStep`** — operator-facing string for the next proof slice (Gmail / Calendar / Twilio, then Text + Reach MVP).
 
+### Gmail + Calendar OAuth proof (narrower JSON)
+
+- **Path:** `GET /api/admin/communication-command-center/gmail-calendar-readiness`  
+- **Auth:** Same bearer as above (`EMAIL_DIAGNOSTICS_TOKEN` / `ADMIN_DIAGNOSTIC_TOKEN`, timing-safe).  
+- **Body:** Built by **`src/lib/communication-command-center/gmail-calendar-readiness.ts`** — OAuth/Pub/Sub + Calendar route presence, **send capability detected vs locked** (no Google calls from this route).  
+- **Human doc:** [`gmail-calendar-oauth-proof.md`](./gmail-calendar-oauth-proof.md) · **Admin UI:** `/admin/workbench/communication-command-center/gmail-calendar`
+
+### Email sandbox send proof readiness (precondition-gated)
+
+- **Path:** `GET /api/admin/communication-command-center/email-sandbox-readiness`  
+- **Auth:** Same bearer as above.  
+- **Precondition:** `data/gmail-calendar-oauth-proof-contract.json` must **`status: "pass"`**; otherwise `node scripts/validate-email-sandbox-send-proof.mjs` writes **`data/email-sandbox-send-proof-blocked.json`** and stops.  
+- **Body:** **`email_sandbox_send_readiness`** — hosted + comms + Gmail/Calendar artifact gate; **does not** authorize live or list send.  
+- **Doc:** [`email-sandbox-send-proof.md`](./email-sandbox-send-proof.md) · **Admin UI:** `/admin/workbench/communication-command-center/email-sandbox`
+
 ---
 
 ## Admin dashboard (signed-in admin)
@@ -48,9 +63,13 @@ Payload is built by **`src/lib/communication-command-center/readiness.ts`**:
 cd H:\SOSWebsite\RedDirt
 node scripts/validate-communication-command-center-readiness.mjs
 node scripts/build-communication-command-center-launch-report.mjs
+node scripts/validate-gmail-calendar-oauth-proof.mjs
+node scripts/build-gmail-calendar-oauth-proof-report.mjs
+node scripts/validate-email-sandbox-send-proof.mjs
+node scripts/build-email-sandbox-send-proof-report.mjs
 ```
 
-Validate prints **PASS/FAIL** to stdout (no extra artifact). Build writes **`data/communication-command-center-launch-report.json`**.
+Validate prints **PASS/FAIL** to stdout (no extra artifact). Build writes **`data/communication-command-center-launch-report.json`**. Gmail/Calendar proof writes **`data/gmail-calendar-oauth-proof-contract.json`** and related report artifacts. Email sandbox proof writes **`data/email-sandbox-send-proof-contract.json`** (or **`data/email-sandbox-send-proof-blocked.json`** if Gmail/Calendar proof is not green).
 
 ---
 

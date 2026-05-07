@@ -14,3 +14,17 @@ Record proof in **operator-controlled** artifacts only: env **names** present, `
 **REDDIRT-HOSTED-DB-PROOF-HARDENING-1.0:** the hosted JSON now includes **`env`** ref hints (`supabaseProjectRefConfirmed`, `parseHint`) and **`productionSchemaContract`** (legacy + new public tables, **`auth.users`** presence, **`_prisma_migrations`** count vs **71**) so a passing **`ok: true`** implies the Netlify function is wired to the canonical production Supabase project ref, not merely “some Postgres.” Offline parity: **`node scripts/validate-hosted-db-proof-contract.mjs`** → [`data/hosted-db-proof-contract-validation.json`](../data/hosted-db-proof-contract-validation.json).
 
 **REDDIRT-HOSTED-DB-PROOF-CANONICAL-FLAG-1.0:** when that contract is satisfied, **`proof.productionCanonical`** is **`true`** in the JSON (driven by read-only probes, not a separate manual toggle).
+
+
+## REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0 (cross-links)
+
+Governed additive schema execution packet (automation does **not** apply production SQL from repo scripts in this slice):
+
+- [`additive-schema-production-execution-packet.md`](./additive-schema-production-execution-packet.md) · [`data/additive-schema-production-execution-packet.json`](../data/additive-schema-production-execution-packet.json) · [`data/additive-schema-production-execution-packet-validation.json`](../data/additive-schema-production-execution-packet-validation.json)
+- [`additive-schema-production-approval-gates.md`](./additive-schema-production-approval-gates.md) · [`data/additive-schema-production-approval-gates.json`](../data/additive-schema-production-approval-gates.json)
+- [`additive-schema-production-runbook.md`](./additive-schema-production-runbook.md)
+- [`additive-schema-production-postcheck-plan.md`](./additive-schema-production-postcheck-plan.md) · [`data/additive-schema-production-postcheck-plan.json`](../data/additive-schema-production-postcheck-plan.json)
+- [`post-additive-schema-netlify-readiness.md`](./post-additive-schema-netlify-readiness.md) · [`data/post-additive-schema-netlify-readiness.json`](../data/post-additive-schema-netlify-readiness.json)
+- [`../develop_notes/REDDIRT_ADDITIVE_SCHEMA_PRODUCTION_EXECUTION_PACKET_1_0_REPORT.md`](../develop_notes/REDDIRT_ADDITIVE_SCHEMA_PRODUCTION_EXECUTION_PACKET_1_0_REPORT.md)
+
+Scripts: `node scripts/build-additive-schema-production-execution-packet.mjs` · `node scripts/validate-additive-schema-production-execution-packet.mjs` · `node scripts/run-additive-schema-production-preflight.mjs` · `node scripts/run-additive-schema-production-guarded.mjs` (**`--dry-run`** default) · `node scripts/verify-additive-schema-production-postcheck.mjs`.

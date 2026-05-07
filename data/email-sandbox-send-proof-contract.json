@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-EMAIL-SANDBOX-SEND-PROOF-1.0",
+  "generatedAt": "2026-05-07T21:43:36.507Z",
+  "status": "pass",
+  "precondition": {
+    "gmailCalendarProofPassed": true,
+    "source": "data/gmail-calendar-oauth-proof-contract.json"
+  },
+  "checks": [
+    {
+      "id": "file:sandbox_lib",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "file:sandbox_api",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "file:sandbox_page",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "api_get_only",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "api_email_diag",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "api_admin_diag",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_typo_admin_diagnostics",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "api_timing_safe",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_gmail_send:src/lib/communication-command-center/email-sandbox-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_sendgrid_send:src/lib/communication-command-center/email-sandbox-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_twilio:src/lib/communication-command-center/email-sandbox-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_contact_import_activation:src/lib/communication-command-center/email-sandbox-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_bulk_send:src/lib/communication-command-center/email-sandbox-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_gmail_send:src/app/api/admin/communication-command-center/email-sandbox-readiness/route.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_sendgrid_send:src/app/api/admin/communication-command-center/email-sandbox-readiness/route.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_twilio:src/app/api/admin/communication-command-center/email-sandbox-readiness/route.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_contact_import_activation:src/app/api/admin/communication-command-center/email-sandbox-readiness/route.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_bulk_send:src/app/api/admin/communication-command-center/email-sandbox-readiness/route.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_gmail_send:src/app/admin/(board)/workbench/communication-command-center/email-sandbox/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_sendgrid_send:src/app/admin/(board)/workbench/communication-command-center/email-sandbox/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_twilio:src/app/admin/(board)/workbench/communication-command-center/email-sandbox/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_contact_import_activation:src/app/admin/(board)/workbench/communication-command-center/email-sandbox/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_bulk_send:src/app/admin/(board)/workbench/communication-command-center/email-sandbox/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "safety_false_gmail",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "safety_false_sendgrid",
+      "ok": true,
+      "detail": "ok"
+    }
+  ],
+  "violations": []
+}

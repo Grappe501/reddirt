@@ -47,6 +47,18 @@ export default async function CommunicationCommandCenterReadinessPage() {
         <Link href={`${ECC}/readiness`} className="text-xs font-bold text-kelly-forest hover:underline">
           Workspace readiness
         </Link>
+        <Link
+          href="/admin/workbench/communication-command-center/gmail-calendar"
+          className="text-xs font-bold text-emerald-900 hover:underline"
+        >
+          Gmail + Calendar proof
+        </Link>
+        <Link
+          href="/admin/workbench/communication-command-center/email-sandbox"
+          className="text-xs font-bold text-violet-900 hover:underline"
+        >
+          Sandbox email proof
+        </Link>
       </div>
 
       <header className="space-y-2">

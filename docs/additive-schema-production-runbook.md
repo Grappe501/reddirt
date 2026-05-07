@@ -17,9 +17,10 @@
 ## Operator execution (after Steve approval)
 
 1. Record **sha256** of `data/sql/additive-schema-install-candidate.sql` and compare to `data/additive-schema-production-execution-packet.json` → `candidateSqlSha256`.
-2. Open Supabase SQL editor for the **production** project (ref above).
-3. Run the **entire** candidate file as a single governed transaction only if your operational standard allows; otherwise split by object class (types → tables → indexes) per DBA preference — still additive only.
-4. On any error, **stop**; do not partial-apply further sections without analysis. Rollback is **PITR / restore**, not a hand-written DROP script.
+2. Run `node scripts/run-additive-schema-production-preflight.mjs` with production `DATABASE_URL` / `DIRECT_URL` (script never prints secrets) and confirm `readyForManualExecution` is **true** in `data/additive-schema-production-preflight.json`.
+3. **Preferred manual path:** Open Supabase SQL editor for the **production** project (ref above) and paste/run the candidate file per your DBA transaction policy (types → tables → indexes if splitting).
+4. **Optional scripted path (operator workstation only):** `node scripts/run-additive-schema-production-guarded.mjs --execute` with all env gates set (see script header). This uses Prisma `$executeRawUnsafe` per parsed statement — **stop on first error**; never use unsupervised CI for `--execute`.
+5. On any error, **stop**; rollback is **PITR / restore**, not a hand-written DROP script.
 
 ## Rollback / restore notes
 

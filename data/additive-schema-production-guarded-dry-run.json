@@ -1,21 +1,22 @@
 {
   "schemaVersion": "1.0",
   "slice": "REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0",
-  "generatedAt": "2026-05-07T14:58:16.752Z",
+  "generatedAt": "2026-05-07T21:18:05.474Z",
   "mode": "dry_run",
   "productionMutationAttempted": false,
   "secretsPrinted": false,
   "packetPresent": true,
   "validationStatus": "pass",
+  "preflightReadyForManualExecution": false,
   "forbiddenCommands": [
-    "psql against production",
-    "npx prisma db execute",
     "npx prisma migrate deploy",
     "npx prisma migrate resolve",
     "npx prisma db push",
-    "npx prisma migrate reset"
+    "npx prisma migrate reset",
+    "npx prisma db execute (CLI — not used here)"
   ],
   "outcome": "dry_run_complete",
-  "message": "No database I/O. Apply additive-schema-install-candidate.sql on production only via Supabase SQL editor after Steve approval and maintenance discipline.",
-  "operatorHint": "Compare candidate file sha256 to packet.candidateSqlSha256 before running."
+  "violations": [],
+  "message": "Dry-run: no database mutation. Operator may use Supabase SQL editor or re-run with --execute after all human + env gates (never from unsupervised CI).",
+  "operatorHint": "Compare candidate sha256 to packet.candidateSqlSha256; run preflight first."
 }

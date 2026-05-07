@@ -1,40 +1,91 @@
 {
   "schemaVersion": "1.0",
   "slice": "REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0",
-  "generatedAt": "2026-05-07T14:54:01.050Z",
+  "generatedAt": "2026-05-07T21:17:54.763Z",
   "mode": "read_only_post_execution_verification_plan",
-  "disclaimer": "Operator-run verification in Supabase SQL editor or read-only psql against production after additive install. Repo scripts do not execute these checks against production in this slice.",
+  "disclaimer": "Operator-run verification in Supabase SQL editor or read-only psql against production after additive install. With DATABASE_URL set, `node scripts/verify-additive-schema-production-postcheck.mjs` runs read-only Prisma probes and writes `data/additive-schema-production-postcheck-result.json` (no mutations).",
+  "expectedNewAppTables": [
+    "ContentItemOverride",
+    "HomepageConfig",
+    "InboundContentItem",
+    "CampaignEvent",
+    "AdminContentBlock",
+    "OwnedMediaAsset",
+    "SearchChunk",
+    "WorkflowIntake",
+    "EmailContactProfile",
+    "EmailWorkflowItem"
+  ],
+  "expectedLegacyPublicTables": [
+    "ar02_voters",
+    "contacts",
+    "counties",
+    "event_requests",
+    "message_audiences",
+    "path_to_victory",
+    "people",
+    "person_profiles"
+  ],
+  "authUsersTable": "auth.users",
   "phases": [
     {
-      "id": "p1_schema_presence",
-      "title": "High-value and required tables still present",
+      "id": "p1_new_app_tables",
+      "title": "Newly installed Prisma-backed public tables",
       "checks": [
-        "Use information_schema.tables (table_schema = 'public' | 'auth') to confirm public.ar02_voters, public.contacts, and auth.users still exist.",
-        "Confirm required public tables: counties, event_requests, message_audiences, path_to_victory, people, person_profiles."
+        "Confirm public.\"ContentItemOverride\" exists (information_schema / pg_catalog; match quoted casing from candidate SQL).",
+        "Confirm public.\"HomepageConfig\" exists (information_schema / pg_catalog; match quoted casing from candidate SQL).",
+        "Confirm public.\"InboundContentItem\" exists (information_schema / pg_catalog; match quoted casing from candidate SQL).",
+        "Confirm public.\"CampaignEvent\" exists (information_schema / pg_catalog; match quoted casing from candidate SQL).",
+        "Confirm public.\"AdminContentBlock\" exists (information_schema / pg_catalog; match quoted casing from candidate SQL).",
+        "Confirm public.\"OwnedMediaAsset\" exists (information_schema / pg_catalog; match quoted casing from candidate SQL).",
+        "Confirm public.\"SearchChunk\" exists (information_schema / pg_catalog; match quoted casing from candidate SQL).",
+        "Confirm public.\"WorkflowIntake\" exists (information_schema / pg_catalog; match quoted casing from candidate SQL).",
+        "Confirm public.\"EmailContactProfile\" exists (information_schema / pg_catalog; match quoted casing from candidate SQL).",
+        "Confirm public.\"EmailWorkflowItem\" exists (information_schema / pg_catalog; match quoted casing from candidate SQL)."
       ]
     },
     {
-      "id": "p2_prisma_introspection_alignment",
-      "title": "Application tables that were missing pre-install",
+      "id": "p2_legacy_high_value",
+      "title": "High-value legacy / campaign tables still present",
       "checks": [
-        "Spot-check new Prisma-backed tables from candidate (e.g. WorkflowIntake / AdminContentBlock / HomepageConfig) exist in public schema with expected casing from candidate SQL.",
-        "Run local npm run check and npm run typecheck against production DATABASE_URL only in a controlled operator environment (not from this packet script)."
+        "Confirm public.ar02_voters still exists.",
+        "Confirm public.contacts still exists.",
+        "Confirm public.counties still exists.",
+        "Confirm public.event_requests still exists.",
+        "Confirm public.message_audiences still exists.",
+        "Confirm public.path_to_victory still exists.",
+        "Confirm public.people still exists.",
+        "Confirm public.person_profiles still exists."
       ]
     },
     {
-      "id": "p3_no_prisma_migrate_deploy_yet",
+      "id": "p3_auth_users",
+      "title": "Supabase auth intact",
+      "checks": [
+        "Confirm auth.users still exists."
+      ]
+    },
+    {
+      "id": "p4_prisma_introspection_alignment",
+      "title": "Application alignment",
+      "checks": [
+        "Run local npm run check and npm run typecheck in operator-controlled environment when DATABASE_URL points at hosted DB (separate approval)."
+      ]
+    },
+    {
+      "id": "p5_no_prisma_migrate_deploy_yet",
       "title": "Migration history unchanged by additive SQL",
       "checks": [
-        "Additive install does not replace need for separate migration-history strategy; do not run prisma migrate deploy until that strategy is approved."
+        "Additive install does not baseline _prisma_migrations; do not run prisma migrate deploy until migration-history strategy is approved."
       ]
     },
     {
-      "id": "p4_email_no_send_scan",
+      "id": "p6_email_no_send_scan",
       "title": "Comms lane regression signal",
       "checks": [
         "npm run email:no-send-scan (lane local check; live send remains blocked by policy)."
       ]
     }
   ],
-  "expectedStatementOrderNote": "Candidate contains approximately 704 statements; full-file apply is single operator action in Supabase SQL editor."
+  "expectedStatementOrderNote": "Candidate contains approximately 704 statements; full-file apply is a single governed operator action (Supabase SQL editor or approved runner)."
 }

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-EMAIL-SANDBOX-SEND-PROOF-1.0",
+  "generatedAt": "2026-05-07T21:53:23.232Z",
+  "preconditions": [
+    "Hosted DB proof green (reachable + production canonical).",
+    "Communication Command Center readiness JSON green.",
+    "data/gmail-calendar-oauth-proof-contract.json status pass."
+  ],
+  "operator": [
+    "Confirm one internal staff recipient only.",
+    "Confirm no public list or volunteer file.",
+    "Use diagnostics bearer only over HTTPS; rotate token if ever pasted into chat.",
+    "Run SendGrid auth check / sandbox diagnostic routes only with operator approval.",
+    "Separate headquarters slice required before any real campaign send."
+  ],
+  "nextRecommendedSlice": "REDDIRT-EMAIL-SANDBOX-SEND-OPERATOR-HOSTED-PROOF-1.0"
+}

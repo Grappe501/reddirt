@@ -3,7 +3,7 @@
 **Slice:** `REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0`  
 **Machine JSON:** [`data/additive-schema-production-approval-gates.json`](../data/additive-schema-production-approval-gates.json)
 
-All gates default **pending**. **Steve** must explicitly approve using the phrase in the JSON. **Netlify retry** and **live send** stay blocked by policy until separate slices.
+Thirteen gates, each starting **pending** with `required: true`. **Steve** must explicitly approve using the phrase in the JSON. **Netlify retry** and **live send** stay blocked by policy until separate slices.
 
 ## Required phrase
 

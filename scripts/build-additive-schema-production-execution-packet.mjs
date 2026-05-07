@@ -7,6 +7,9 @@ import crypto from "crypto";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { analyzeCandidateSql, evaluateCloneProofHardened } from "./lib/additive-candidate-sql-guards.mjs";
+
+const evaluateCloneProof = evaluateCloneProofHardened;
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -54,195 +57,29 @@ function rel(p) {
   return path.relative(ROOT, p).split(path.sep).join("/");
 }
 
-/** Same algorithm as validate-additive-schema-install-candidate.mjs */
-function splitSqlStatements(sql) {
-  const out = [];
-  let cur = "";
-  let i = 0;
-  let inSq = false;
-  let inDq = false;
-  let bcom = 0;
-  while (i < sql.length) {
-    const c = sql[i];
-    const n = sql[i + 1];
-    if (bcom > 0) {
-      if (c === "/" && n === "*") {
-        cur += "/*";
-        i += 2;
-        bcom++;
-        continue;
-      }
-      if (c === "*" && n === "/") {
-        cur += "*/";
-        i += 2;
-        bcom--;
-        continue;
-      }
-      cur += c;
-      i++;
-      continue;
-    }
-    if (!inSq && !inDq) {
-      if (c === "-" && n === "-") {
-        while (i < sql.length && sql[i] !== "\n") {
-          cur += sql[i];
-          i++;
-        }
-        if (i < sql.length) {
-          cur += sql[i];
-          i++;
-        }
-        continue;
-      }
-      if (c === "/" && n === "*") {
-        cur += "/*";
-        i += 2;
-        bcom++;
-        continue;
-      }
-    }
-    if (!inDq && c === "'") {
-      if (inSq && n === "'") {
-        cur += "''";
-        i += 2;
-        continue;
-      }
-      inSq = !inSq;
-      cur += c;
-      i++;
-      continue;
-    }
-    if (inSq) {
-      cur += c;
-      i++;
-      continue;
-    }
-    if (!inSq && c === '"') {
-      if (inDq && n === '"') {
-        cur += '""';
-        i += 2;
-        continue;
-      }
-      inDq = !inDq;
-      cur += c;
-      i++;
-      continue;
-    }
-    if (!inSq && !inDq && c === ";") {
-      const t = cur.trim();
-      if (t) out.push(t);
-      cur = "";
-      i++;
-      continue;
-    }
-    cur += c;
-    i++;
-  }
-  const t = cur.trim();
-  if (t) out.push(t);
-  return out;
-}
+const ADDITIVE_PACKET_DOC_MARKER = "## REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0 (cross-links)";
 
-function stripLeadingLineComments(stmt) {
-  return stmt.replace(/^(\s*--[^\n]*\n)+/g, "").trim();
-}
+/** Append governance links without clobbering existing operator docs in `docs/`. */
+function appendAdditivePacketDocLinks(docPath) {
+  if (!fs.existsSync(docPath)) return;
+  const body = fs.readFileSync(docPath, "utf8");
+  if (body.includes(ADDITIVE_PACKET_DOC_MARKER)) return;
+  const section = `
 
-function analyzeCandidateSql(raw) {
-  const stmts = splitSqlStatements(raw).map(stripLeadingLineComments).filter((s) => s.length > 0);
-  let createTypeCount = 0;
-  let createTableCount = 0;
-  let createIndexCount = 0;
-  let alterTableCount = 0;
-  let dropCount = 0;
-  let truncateCount = 0;
-  let deleteCount = 0;
-  let insertCount = 0;
-  const destructiveHits = [];
+${ADDITIVE_PACKET_DOC_MARKER}
 
-  for (let idx = 0; idx < stmts.length; idx++) {
-    const s = stmts[idx];
-    const low = s.toLowerCase();
-    if (/^\s*create\s+type\b/i.test(s)) createTypeCount++;
-    if (/^\s*create\s+table\b/i.test(s)) createTableCount++;
-    if (/^\s*create\s+(unique\s+)?index\b/i.test(s)) createIndexCount++;
-    if (/^\s*alter\s+table\b/i.test(s)) alterTableCount++;
+Governed additive schema execution packet (automation does **not** apply production SQL from repo scripts in this slice):
 
-    const dropStmt =
-      /\bdrop\b/.test(low) && !/alter\s+table[\s\S]*alter\s+column[\s\S]*drop\s+(not\s+null|default)\b/.test(low);
-    if (dropStmt) {
-      dropCount++;
-      destructiveHits.push({ idx, kind: "drop", preview: s.slice(0, 120) });
-    }
-    if (/\btruncate\b/.test(low)) {
-      truncateCount++;
-      destructiveHits.push({ idx, kind: "truncate", preview: s.slice(0, 120) });
-    }
-    if (/\bdelete\s+from\b/.test(low)) {
-      deleteCount++;
-      destructiveHits.push({ idx, kind: "delete", preview: s.slice(0, 120) });
-    }
-    if (/\binsert\s+into\b/.test(low)) {
-      insertCount++;
-      destructiveHits.push({ idx, kind: "insert", preview: s.slice(0, 120) });
-    }
-    if (/\bupdate\s+/.test(low) && !/update\s+statistics/.test(low)) {
-      destructiveHits.push({ idx, kind: "update", preview: s.slice(0, 120) });
-    }
-    if (/alter\s+table[\s\S]*\bdrop\b/.test(low) && !/alter\s+column[\s\S]*drop\s+(not\s+null|default)\b/.test(low)) {
-      destructiveHits.push({ idx, kind: "alter_drop", preview: s.slice(0, 120) });
-    }
-    if (/"auth"\./i.test(s) || /alter\s+table\s+"auth"/i.test(s)) {
-      destructiveHits.push({ idx, kind: "auth", preview: s.slice(0, 120) });
-    }
-  }
+- [\`additive-schema-production-execution-packet.md\`](./additive-schema-production-execution-packet.md) · [\`data/additive-schema-production-execution-packet.json\`](../data/additive-schema-production-execution-packet.json) · [\`data/additive-schema-production-execution-packet-validation.json\`](../data/additive-schema-production-execution-packet-validation.json)
+- [\`additive-schema-production-approval-gates.md\`](./additive-schema-production-approval-gates.md) · [\`data/additive-schema-production-approval-gates.json\`](../data/additive-schema-production-approval-gates.json)
+- [\`additive-schema-production-runbook.md\`](./additive-schema-production-runbook.md)
+- [\`additive-schema-production-postcheck-plan.md\`](./additive-schema-production-postcheck-plan.md) · [\`data/additive-schema-production-postcheck-plan.json\`](../data/additive-schema-production-postcheck-plan.json)
+- [\`post-additive-schema-netlify-readiness.md\`](./post-additive-schema-netlify-readiness.md) · [\`data/post-additive-schema-netlify-readiness.json\`](../data/post-additive-schema-netlify-readiness.json)
+- [\`../develop_notes/REDDIRT_ADDITIVE_SCHEMA_PRODUCTION_EXECUTION_PACKET_1_0_REPORT.md\`](../develop_notes/REDDIRT_ADDITIVE_SCHEMA_PRODUCTION_EXECUTION_PACKET_1_0_REPORT.md)
 
-  return {
-    statementCount: stmts.length,
-    createTypeCount,
-    createTableCount,
-    createIndexCount,
-    alterTableCount,
-    dropCount,
-    truncateCount,
-    deleteCount,
-    insertCount,
-    destructiveHits,
-    noDestructiveViolations: destructiveHits.length === 0,
-  };
-}
-
-function evaluateCloneProof(clone) {
-  const gates = {
-    ok: clone?.ok === true,
-    productionLikePrecheckPassed: clone?.productionLikePrecheckPassed === true,
-    productionLikeCloneProof: clone?.productionLikeCloneProof === true,
-    beforePublicTableCountGte100:
-      typeof clone?.before?.publicTableCount === "number" && clone.before.publicTableCount >= 100,
-    afterPublicGteBefore:
-      typeof clone?.before?.publicTableCount === "number" &&
-      typeof clone?.after?.publicTableCount === "number" &&
-      clone.after.publicTableCount >= clone.before.publicTableCount,
-    beforeAr02VotersExists: clone?.before?.ar02VotersExists === true,
-    beforeContactsExists: clone?.before?.contactsExists === true,
-    beforeAuthUsersExists: clone?.before?.authUsersExists === true,
-    afterAr02VotersExists: clone?.after?.ar02VotersExists === true,
-    afterContactsExists: clone?.after?.contactsExists === true,
-    afterAuthUsersExists: clone?.after?.authUsersExists === true,
-    voterTablesStillPresent: clone?.highValueProtection?.voterTablesStillPresent === true,
-    legacyTablesStillPresent: clone?.highValueProtection?.legacyTablesStillPresent === true,
-    authTablesStillPresent: clone?.highValueProtection?.authTablesStillPresent === true,
-    productionMutatedFalse: clone?.productionMutated === false,
-    candidateSqlExecutedOnProductionFalse: clone?.candidateSqlExecutedOnProduction === false,
-    /** When present on clone artifact, must be true (shadow DB received candidate). */
-    candidateSqlExecutedOnCloneWhenPresent:
-      clone?.candidateSqlExecutedOnClone === undefined ? true : clone.candidateSqlExecutedOnClone === true,
-  };
-
-  const passed = Object.values(gates).every(Boolean);
-  const claimsPassButHardenedFails =
-    Boolean(clone?.ok && clone?.recommendation?.cloneProofPassed) && !passed;
-
-  return { gates, passed, claimsPassButHardenedFails };
+Scripts: \`node scripts/build-additive-schema-production-execution-packet.mjs\` · \`node scripts/validate-additive-schema-production-execution-packet.mjs\` · \`node scripts/run-additive-schema-production-preflight.mjs\` · \`node scripts/run-additive-schema-production-guarded.mjs\` (**\`--dry-run\`** default) · \`node scripts/verify-additive-schema-production-postcheck.mjs\`.
+`;
+  fs.appendFileSync(docPath, section, "utf8");
 }
 
 function sha256File(p) {
@@ -252,45 +89,77 @@ function sha256File(p) {
 }
 
 function buildPostcheckPlanJson(packetSlice, candidateSummary) {
+  const expectedNewAppTables = [
+    "ContentItemOverride",
+    "HomepageConfig",
+    "InboundContentItem",
+    "CampaignEvent",
+    "AdminContentBlock",
+    "OwnedMediaAsset",
+    "SearchChunk",
+    "WorkflowIntake",
+    "EmailContactProfile",
+    "EmailWorkflowItem",
+  ];
+  const expectedLegacyPublicTables = [
+    "ar02_voters",
+    "contacts",
+    "counties",
+    "event_requests",
+    "message_audiences",
+    "path_to_victory",
+    "people",
+    "person_profiles",
+  ];
   return {
     schemaVersion: "1.0",
     slice: packetSlice,
     generatedAt: new Date().toISOString(),
     mode: "read_only_post_execution_verification_plan",
     disclaimer:
-      "Operator-run verification in Supabase SQL editor or read-only psql against production after additive install. Repo scripts do not execute these checks against production in this slice.",
+      "Operator-run verification in Supabase SQL editor or read-only psql against production after additive install. With DATABASE_URL set, `node scripts/verify-additive-schema-production-postcheck.mjs` runs read-only Prisma probes and writes `data/additive-schema-production-postcheck-result.json` (no mutations).",
+    expectedNewAppTables,
+    expectedLegacyPublicTables,
+    authUsersTable: "auth.users",
     phases: [
       {
-        id: "p1_schema_presence",
-        title: "High-value and required tables still present",
+        id: "p1_new_app_tables",
+        title: "Newly installed Prisma-backed public tables",
+        checks: expectedNewAppTables.map(
+          (t) => `Confirm public."${t}" exists (information_schema / pg_catalog; match quoted casing from candidate SQL).`
+        ),
+      },
+      {
+        id: "p2_legacy_high_value",
+        title: "High-value legacy / campaign tables still present",
+        checks: expectedLegacyPublicTables.map((t) => `Confirm public.${t} still exists.`),
+      },
+      {
+        id: "p3_auth_users",
+        title: "Supabase auth intact",
+        checks: ["Confirm auth.users still exists."],
+      },
+      {
+        id: "p4_prisma_introspection_alignment",
+        title: "Application alignment",
         checks: [
-          "Use information_schema.tables (table_schema = 'public' | 'auth') to confirm public.ar02_voters, public.contacts, and auth.users still exist.",
-          "Confirm required public tables: counties, event_requests, message_audiences, path_to_victory, people, person_profiles.",
+          "Run local npm run check and npm run typecheck in operator-controlled environment when DATABASE_URL points at hosted DB (separate approval).",
         ],
       },
       {
-        id: "p2_prisma_introspection_alignment",
-        title: "Application tables that were missing pre-install",
-        checks: [
-          "Spot-check new Prisma-backed tables from candidate (e.g. WorkflowIntake / AdminContentBlock / HomepageConfig) exist in public schema with expected casing from candidate SQL.",
-          "Run local npm run check and npm run typecheck against production DATABASE_URL only in a controlled operator environment (not from this packet script).",
-        ],
-      },
-      {
-        id: "p3_no_prisma_migrate_deploy_yet",
+        id: "p5_no_prisma_migrate_deploy_yet",
         title: "Migration history unchanged by additive SQL",
         checks: [
-          "Additive install does not replace need for separate migration-history strategy; do not run prisma migrate deploy until that strategy is approved.",
+          "Additive install does not baseline _prisma_migrations; do not run prisma migrate deploy until migration-history strategy is approved.",
         ],
       },
       {
-        id: "p4_email_no_send_scan",
+        id: "p6_email_no_send_scan",
         title: "Comms lane regression signal",
         checks: ["npm run email:no-send-scan (lane local check; live send remains blocked by policy)."],
       },
     ],
-    expectedStatementOrderNote:
-      `Candidate contains approximately ${candidateSummary.statementCount} statements; full-file apply is single operator action in Supabase SQL editor.`,
+    expectedStatementOrderNote: `Candidate contains approximately ${candidateSummary.statementCount} statements; full-file apply is a single governed operator action (Supabase SQL editor or approved runner).`,
   };
 }
 
@@ -313,15 +182,111 @@ function buildNetlifyReadinessJson(packetSlice) {
   };
 }
 
-function buildApprovalGatesJson(packetSlice, eligibility) {
+function gate(key, label, evidenceRequired, whoApproves, notes) {
+  return {
+    key,
+    label,
+    required: true,
+    status: "pending",
+    evidenceRequired,
+    whoApproves,
+    notes,
+  };
+}
+
+function buildApprovalGatesJson(packetSlice) {
   const gates = [
-    { id: "backup_pitr", label: "Supabase backup / PITR restore path documented and tested on a non-prod proof", owner: "operator", status: "pending" },
-    { id: "steve_phrase", label: `Steve states approval phrase: ${APPROVAL_PHRASE}`, owner: "Steve", status: "pending" },
-    { id: "correct_db", label: `Confirm production project ref ${PRODUCTION_PROJECT_REF} matches operator target (visual cross-check in dashboard)`, owner: "operator", status: "pending" },
-    { id: "maintenance_window", label: "Maintenance window communicated; app traffic expectations set", owner: "operator", status: "pending" },
-    { id: "candidate_hash", label: "Operator records sha256 of additive-schema-install-candidate.sql and matches packet", owner: "operator", status: "pending" },
-    { id: "clone_proof_fresh", label: "data/additive-schema-clone-test-result.json passes hardened production-like gates (re-run clone test if stale)", owner: "operator", status: eligibility.productionLikeCloneProofPassed ? "pending" : "blocked" },
-    { id: "no_raw_diff", label: "Raw Prisma diff and rejected statements are not executed on production", owner: "operator", status: "pending" },
+    gate(
+      "backup_pitr_proof",
+      "Backup/PITR proof confirmed immediately before execution.",
+      "Supabase dashboard backup snapshot ID or PITR restore drill note (no secrets).",
+      "Steve/operator",
+      "Restore path must be proven on a non-production fork first when feasible."
+    ),
+    gate(
+      "correct_production_project_ref",
+      `Correct production project ref confirmed: ${PRODUCTION_PROJECT_REF}.`,
+      "Visual match of Supabase project ref in dashboard with packet.",
+      "Steve/operator",
+      "Cross-check pooler vs direct URL forms; ref must match giozeoqulfojhxpywjil."
+    ),
+    gate(
+      "candidate_sql_hash_recorded",
+      "Candidate SQL sha256 recorded and matches execution packet.",
+      "sha256 of data/sql/additive-schema-install-candidate.sql equals packet candidateSqlSha256.",
+      "Steve/operator",
+      "Recompute after any candidate regeneration."
+    ),
+    gate(
+      "candidate_sql_validation_passed",
+      "Candidate SQL validation artifact passed (offline).",
+      "data/additive-schema-install-validation.json status pass; safeForProduction false.",
+      "Steve/operator",
+      "Run node scripts/validate-additive-schema-install-candidate.mjs if candidate changes."
+    ),
+    gate(
+      "production_like_clone_proof_passed",
+      "Production-like clone proof passed.",
+      "data/additive-schema-clone-test-result.json ok, productionLikeCloneProof, high-value protection flags.",
+      "Steve/operator",
+      "Re-run node scripts/test-additive-schema-install-on-clone.mjs if artifact is stale."
+    ),
+    gate(
+      "high_value_table_precheck_production",
+      "High-value table precheck passed on production immediately before execution.",
+      "Preflight JSON shows requiredTablesPresent and authUsersPresent.",
+      "Steve/operator",
+      "Run node scripts/run-additive-schema-production-preflight.mjs with production DATABASE_URL."
+    ),
+    gate(
+      "maintenance_window_confirmed",
+      "Maintenance window confirmed.",
+      "Communications log or calendar entry reference (no secrets).",
+      "Steve/operator",
+      "Schema DDL can lock objects briefly; traffic expectations documented."
+    ),
+    gate(
+      "steve_approval_phrase_recorded",
+      `Steve approval phrase recorded: ${APPROVAL_PHRASE}.`,
+      "Written approval in ticket or env gate for guarded runner.",
+      "Steve",
+      "Phrase must match exactly for REDDIRT_ADDITIVE_SCHEMA_PRODUCTION_EXECUTION_APPROVED."
+    ),
+    gate(
+      "operator_ack_schema_mutation",
+      "Operator understands SQL will mutate production schema.",
+      "Signed checklist or REDDIRT_ACKNOWLEDGE_SCHEMA_MUTATION=YES at execute time.",
+      "Steve/operator",
+      "Additive only; still irreversible without PITR."
+    ),
+    gate(
+      "operator_ack_prisma_migrations_not_baselined",
+      "Operator understands this does not baseline _prisma_migrations.",
+      "Verbal/written ack captured in operator notes.",
+      "Steve/operator",
+      "Separate migration-history slice still required."
+    ),
+    gate(
+      "operator_ack_netlify_separate",
+      "Operator understands Netlify retry is separate.",
+      "Acknowledgement note or REDDIRT_ACKNOWLEDGE_NETLIFY_SEPARATE=YES.",
+      "Steve/operator",
+      "Do not conflate DDL apply with Netlify button retry."
+    ),
+    gate(
+      "operator_ack_live_send_blocked",
+      "Operator understands live send remains blocked.",
+      "Acknowledgement note or REDDIRT_ACKNOWLEDGE_LIVE_SEND_BLOCKED=YES.",
+      "Steve/operator",
+      "Email Command Center live paths stay gated."
+    ),
+    gate(
+      "post_execution_verification_plan_acknowledged",
+      "Post-execution verification plan acknowledged.",
+      "Operator confirms they will run postcheck script and/or SQL probes after apply.",
+      "Steve/operator",
+      "See docs/additive-schema-production-postcheck-plan.md."
+    ),
   ];
   return {
     schemaVersion: "1.0",
@@ -329,7 +294,7 @@ function buildApprovalGatesJson(packetSlice, eligibility) {
     generatedAt: new Date().toISOString(),
     approvalPhraseRequired: APPROVAL_PHRASE,
     gates,
-    notes: "Statuses are machine-hint only; human sign-off is authoritative.",
+    notes: "Every gate starts pending; human sign-off is authoritative. Machine statuses never approve production execution.",
   };
 }
 
@@ -412,6 +377,7 @@ function main() {
     truncateCount: 0,
     deleteCount: 0,
     insertCount: 0,
+    updateCount: 0,
   };
   let candidateSha256 = null;
   let candidateNoDestructive = false;
@@ -430,9 +396,15 @@ function main() {
       truncateCount: a.truncateCount,
       deleteCount: a.deleteCount,
       insertCount: a.insertCount,
+      updateCount: a.updateCount,
     };
     candidateNoDestructive =
-      a.noDestructiveViolations && a.dropCount === 0 && a.truncateCount === 0 && a.deleteCount === 0 && a.insertCount === 0;
+      a.noDestructiveViolations &&
+      a.dropCount === 0 &&
+      a.truncateCount === 0 &&
+      a.deleteCount === 0 &&
+      a.insertCount === 0 &&
+      a.updateCount === 0;
     if (!candidateNoDestructive) errors.push("candidate SQL failed destructive-statement scan — stop and repair candidate");
     candidateSha256 = sha256File(PATHS.candidateSql);
   }
@@ -518,7 +490,7 @@ function main() {
     unsafeDiffSummary: unsafe?.summary ?? null,
   };
 
-  const gatesJson = buildApprovalGatesJson(SLICE, eligibility);
+  const gatesJson = buildApprovalGatesJson(SLICE);
   const postcheckJson = buildPostcheckPlanJson(SLICE, candidateSummary);
   const netlifyJson = buildNetlifyReadinessJson(SLICE);
 
@@ -566,7 +538,7 @@ This packet **does not** execute SQL on production and **does not** run Prisma \
 **Slice:** \`${SLICE}\`  
 **Machine JSON:** [\`data/additive-schema-production-approval-gates.json\`](../data/additive-schema-production-approval-gates.json)
 
-All gates default **pending**. **Steve** must explicitly approve using the phrase in the JSON. **Netlify retry** and **live send** stay blocked by policy until separate slices.
+Thirteen gates, each starting **pending** with \`required: true\`. **Steve** must explicitly approve using the phrase in the JSON. **Netlify retry** and **live send** stay blocked by policy until separate slices.
 
 ## Required phrase
 
@@ -596,9 +568,10 @@ All gates default **pending**. **Steve** must explicitly approve using the phras
 ## Operator execution (after Steve approval)
 
 1. Record **sha256** of \`data/sql/additive-schema-install-candidate.sql\` and compare to \`data/additive-schema-production-execution-packet.json\` → \`candidateSqlSha256\`.
-2. Open Supabase SQL editor for the **production** project (ref above).
-3. Run the **entire** candidate file as a single governed transaction only if your operational standard allows; otherwise split by object class (types → tables → indexes) per DBA preference — still additive only.
-4. On any error, **stop**; do not partial-apply further sections without analysis. Rollback is **PITR / restore**, not a hand-written DROP script.
+2. Run \`node scripts/run-additive-schema-production-preflight.mjs\` with production \`DATABASE_URL\` / \`DIRECT_URL\` (script never prints secrets) and confirm \`readyForManualExecution\` is **true** in \`data/additive-schema-production-preflight.json\`.
+3. **Preferred manual path:** Open Supabase SQL editor for the **production** project (ref above) and paste/run the candidate file per your DBA transaction policy (types → tables → indexes if splitting).
+4. **Optional scripted path (operator workstation only):** \`node scripts/run-additive-schema-production-guarded.mjs --execute\` with all env gates set (see script header). This uses Prisma \`$executeRawUnsafe\` per parsed statement — **stop on first error**; never use unsupervised CI for \`--execute\`.
+5. On any error, **stop**; rollback is **PITR / restore**, not a hand-written DROP script.
 
 ## Rollback / restore notes
 
@@ -618,7 +591,7 @@ Follow [\`docs/additive-schema-production-postcheck-plan.md\`](./additive-schema
 
 **Machine JSON:** [\`data/additive-schema-production-postcheck-plan.json\`](../data/additive-schema-production-postcheck-plan.json)
 
-Read-only checks in Supabase SQL editor or operator-controlled \`psql\` **after** additive install. Repo verification script \`scripts/verify-additive-schema-production-postcheck.mjs\` validates **plan shape only** (offline).
+Read-only checks in Supabase SQL editor or operator-controlled \`psql\` **after** additive install. \`scripts/verify-additive-schema-production-postcheck.mjs\` validates plan shape **offline** by default; with \`DATABASE_URL\` set it runs **read-only** Prisma probes and writes \`data/additive-schema-production-postcheck-result.json\` (never prints the URL).
 
 ## Phases
 
@@ -647,55 +620,22 @@ Read-only checks in Supabase SQL editor or operator-controlled \`psql\` **after*
     "utf8"
   );
 
-  fs.writeFileSync(
-    PATHS.docProdDbTest,
-    `# Production DB test readiness (additive schema context)
-
-After additive install, **hosted** verification (\`DATABASE_URL\` / \`DIRECT_URL\`) remains **operator-owned**. Automated agents should not assume connectivity.
-
-## Suggested order
-
-1. Read-only \`SELECT 1\` and table presence probes (no PII export).  
-2. Application smoke against staging or production UI per separate runbook — **no** live sends.  
-3. Align with [\`docs/email-command-center-launch-hardening.md\`](./email-command-center-launch-hardening.md) for comms lane gates.
-`,
-    "utf8"
-  );
-
-  fs.writeFileSync(
-    PATHS.docNetlifyRetry,
-    `# Netlify production retry readiness (additive schema)
-
-**This packet does not approve or perform Netlify retries.**
-
-When Steve approves a **separate** Netlify slice, ensure additive schema postcheck is complete and migration strategy is explicit. Do not conflate RedDirt additive DDL with Netlify button retries.
-`,
-    "utf8"
-  );
-
-  fs.writeFileSync(
-    PATHS.docHostedProof,
-    `# Hosted DB proof after baseline (additive schema note)
-
-Additive schema install **adds** objects; it does not replace the need for **hosted** read-only proof against the canonical Supabase project (**ref ${PRODUCTION_PROJECT_REF}**).
-
-Record proof in operator-controlled artifacts (no secrets): env **names** present, \`SELECT 1\` success, optional safe row counts without exporting voter rows.
-`,
-    "utf8"
-  );
+  appendAdditivePacketDocLinks(PATHS.docProdDbTest);
+  appendAdditivePacketDocLinks(PATHS.docNetlifyRetry);
+  appendAdditivePacketDocLinks(PATHS.docHostedProof);
 
   if (fs.existsSync(PATHS.docEmailHardening)) {
     const eh = fs.readFileSync(PATHS.docEmailHardening, "utf8");
     if (!eh.includes("REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0")) {
       fs.appendFileSync(
         PATHS.docEmailHardening,
-        `\n\n## Cross-cut — REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0\n\nGated additive DDL packet: [\`docs/additive-schema-production-execution-packet.md\`](./additive-schema-production-execution-packet.md) · [\`data/additive-schema-production-execution-packet.json\`](../data/additive-schema-production-execution-packet.json). **No** production execution from repo scripts; **no** Netlify retry; **no** live send. Rebuild: \`node scripts/build-additive-schema-production-execution-packet.mjs\`.\n`,
+        `\n\n## Cross-cut — REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0\n\nGated additive DDL packet: [\`docs/additive-schema-production-execution-packet.md\`](./additive-schema-production-execution-packet.md) · [\`data/additive-schema-production-execution-packet.json\`](../data/additive-schema-production-execution-packet.json) · [\`data/additive-schema-production-execution-packet-validation.json\`](../data/additive-schema-production-execution-packet-validation.json) · [\`docs/additive-schema-production-approval-gates.md\`](./additive-schema-production-approval-gates.md) · [\`docs/additive-schema-production-runbook.md\`](./additive-schema-production-runbook.md). **No** production execution from repo scripts; **no** Netlify retry; **no** live send. Rebuild: \`node scripts/build-additive-schema-production-execution-packet.mjs\`.\n`,
         "utf8"
       );
     }
   }
 
-  const mapInsert = `- **REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0** — [\`additive-schema-production-execution-packet.md\`](./additive-schema-production-execution-packet.md) · [\`additive-schema-production-approval-gates.md\`](./additive-schema-production-approval-gates.md) · [\`additive-schema-production-runbook.md\`](./additive-schema-production-runbook.md) · [\`additive-schema-production-postcheck-plan.md\`](./additive-schema-production-postcheck-plan.md) · [\`post-additive-schema-netlify-readiness.md\`](./post-additive-schema-netlify-readiness.md) · [\`data/additive-schema-production-execution-packet.json\`](../data/additive-schema-production-execution-packet.json) · [\`data/additive-schema-production-approval-gates.json\`](../data/additive-schema-production-approval-gates.json) · [\`data/additive-schema-production-postcheck-plan.json\`](../data/additive-schema-production-postcheck-plan.json) · [\`data/post-additive-schema-netlify-readiness.json\`](../data/post-additive-schema-netlify-readiness.json) · \`scripts/build-additive-schema-production-execution-packet.mjs\` · \`scripts/validate-additive-schema-production-execution-packet.mjs\` · \`scripts/run-additive-schema-production-preflight.mjs\` · \`scripts/run-additive-schema-production-guarded.mjs\` (**\`--dry-run\`** default; **\`--execute\`** = env gate check only — **no** Prisma/\`psql\` spawn) · \`scripts/verify-additive-schema-production-postcheck.mjs\` — **governed** additive SQL execution packet (**no** production mutate from automation).`;
+  const mapInsert = `- **REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0** — [\`additive-schema-production-execution-packet.md\`](./additive-schema-production-execution-packet.md) · [\`additive-schema-production-approval-gates.md\`](./additive-schema-production-approval-gates.md) · [\`additive-schema-production-runbook.md\`](./additive-schema-production-runbook.md) · [\`additive-schema-production-postcheck-plan.md\`](./additive-schema-production-postcheck-plan.md) · [\`post-additive-schema-netlify-readiness.md\`](./post-additive-schema-netlify-readiness.md) · [\`data/additive-schema-production-execution-packet.json\`](../data/additive-schema-production-execution-packet.json) · [\`data/additive-schema-production-execution-packet-validation.json\`](../data/additive-schema-production-execution-packet-validation.json) · [\`data/additive-schema-production-approval-gates.json\`](../data/additive-schema-production-approval-gates.json) · [\`data/additive-schema-production-postcheck-plan.json\`](../data/additive-schema-production-postcheck-plan.json) · [\`data/post-additive-schema-netlify-readiness.json\`](../data/post-additive-schema-netlify-readiness.json) · [\`../develop_notes/REDDIRT_ADDITIVE_SCHEMA_PRODUCTION_EXECUTION_PACKET_1_0_REPORT.md\`](../develop_notes/REDDIRT_ADDITIVE_SCHEMA_PRODUCTION_EXECUTION_PACKET_1_0_REPORT.md) · \`scripts/build-additive-schema-production-execution-packet.mjs\` · \`scripts/validate-additive-schema-production-execution-packet.mjs\` · \`scripts/run-additive-schema-production-preflight.mjs\` · \`scripts/run-additive-schema-production-guarded.mjs\` (**\`--dry-run\`** default; **\`--execute\`** runs gated Prisma apply — operator-only) · \`scripts/verify-additive-schema-production-postcheck.mjs\` — governed additive SQL packet (**no** automation approval of production execution).`;
 
   const mapMarker = "- **REDDIRT-PRODUCTION-ADDITIVE-SCHEMA-INSTALL-PLAN-1.0**";
   if (fs.existsSync(PATHS.docProjectMap)) {
@@ -711,7 +651,7 @@ Record proof in operator-controlled artifacts (no secrets): env **names** presen
     }
   }
 
-  const threadInsert = `**REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0** — **The raw Prisma diff is not safe to execute.** \`node scripts/build-additive-schema-production-execution-packet.mjs\` · \`node scripts/validate-additive-schema-production-execution-packet.mjs\` · \`node scripts/run-additive-schema-production-preflight.mjs\` · \`node scripts/run-additive-schema-production-guarded.mjs\` (**\`--dry-run\`** default; **\`--execute\`** = gate check only — **no** Prisma \`db execute\` / \`psql\` spawn). Docs: [\`additive-schema-production-execution-packet.md\`](./additive-schema-production-execution-packet.md) · [\`additive-schema-production-runbook.md\`](./additive-schema-production-runbook.md) · [\`post-additive-schema-netlify-readiness.md\`](./post-additive-schema-netlify-readiness.md). Data: [\`data/additive-schema-production-execution-packet.json\`](../data/additive-schema-production-execution-packet.json) · [\`data/additive-schema-production-approval-gates.json\`](../data/additive-schema-production-approval-gates.json). **No** production SQL from repo scripts; **Netlify retry** and **live send** remain separate Steve gates.`;
+  const threadInsert = `**REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0** — **The raw Prisma diff is not safe to execute.** \`node scripts/build-additive-schema-production-execution-packet.mjs\` · \`node scripts/validate-additive-schema-production-execution-packet.mjs\` · \`node scripts/run-additive-schema-production-preflight.mjs\` · \`node scripts/run-additive-schema-production-guarded.mjs\` (**\`--dry-run\`** default; **\`--execute\`** = fully gated schema apply via Prisma \`$executeRawUnsafe\` per statement — **operator-only**, never from unsupervised agents). Docs: [\`additive-schema-production-execution-packet.md\`](./additive-schema-production-execution-packet.md) · [\`additive-schema-production-runbook.md\`](./additive-schema-production-runbook.md) · [\`post-additive-schema-netlify-readiness.md\`](./post-additive-schema-netlify-readiness.md). Data: [\`data/additive-schema-production-execution-packet.json\`](../data/additive-schema-production-execution-packet.json) · [\`data/additive-schema-production-execution-packet-validation.json\`](../data/additive-schema-production-execution-packet-validation.json) · [\`data/additive-schema-production-approval-gates.json\`](../data/additive-schema-production-approval-gates.json). [\`develop_notes/REDDIRT_ADDITIVE_SCHEMA_PRODUCTION_EXECUTION_PACKET_1_0_REPORT.md\`](../develop_notes/REDDIRT_ADDITIVE_SCHEMA_PRODUCTION_EXECUTION_PACKET_1_0_REPORT.md). **Netlify retry** and **live send** remain separate Steve gates.`;
 
   if (fs.existsSync(PATHS.docThreadMap)) {
     const tm = fs.readFileSync(PATHS.docThreadMap, "utf8");
@@ -726,7 +666,7 @@ Record proof in operator-controlled artifacts (no secrets): env **names** presen
     }
   }
 
-  const ledgerInsert = ` **REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0** — [\`docs/additive-schema-production-execution-packet.md\`](./additive-schema-production-execution-packet.md) · [\`data/additive-schema-production-execution-packet.json\`](../data/additive-schema-production-execution-packet.json) · \`scripts/build-additive-schema-production-execution-packet.mjs\` (governed operator packet; **no** automation SQL toward production).`;
+  const ledgerInsert = ` **REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0** — [\`docs/additive-schema-production-execution-packet.md\`](./additive-schema-production-execution-packet.md) · [\`data/additive-schema-production-execution-packet.json\`](../data/additive-schema-production-execution-packet.json) · [\`data/additive-schema-production-execution-packet-validation.json\`](../data/additive-schema-production-execution-packet-validation.json) · [\`develop_notes/REDDIRT_ADDITIVE_SCHEMA_PRODUCTION_EXECUTION_PACKET_1_0_REPORT.md\`](../develop_notes/REDDIRT_ADDITIVE_SCHEMA_PRODUCTION_EXECUTION_PACKET_1_0_REPORT.md) · \`scripts/build-additive-schema-production-execution-packet.mjs\` (governed operator packet).`;
 
   if (fs.existsSync(PATHS.docLedger)) {
     const ld = fs.readFileSync(PATHS.docLedger, "utf8");
@@ -747,17 +687,115 @@ Record proof in operator-controlled artifacts (no secrets): env **names** presen
 **Generated:** ${generatedAt}  
 **Slice:** \`${SLICE}\`
 
-## Summary
+## 1. Slice summary
+
+Governed **additive schema production execution packet** for RedDirt: machine JSON, thirteen approval gates, read-only preflight, guarded runner (**dry-run** default), postcheck plan, Netlify readiness notes, and cross-links. **No** production mutation from packet build scripts.
+
+## 2. Files created
+
+- \`data/additive-schema-production-execution-packet.json\`
+- \`data/additive-schema-production-approval-gates.json\`
+- \`data/additive-schema-production-postcheck-plan.json\`
+- \`data/post-additive-schema-netlify-readiness.json\`
+- \`docs/additive-schema-production-execution-packet.md\`
+- \`docs/additive-schema-production-approval-gates.md\`
+- \`docs/additive-schema-production-runbook.md\`
+- \`docs/additive-schema-production-postcheck-plan.md\`
+- \`docs/post-additive-schema-netlify-readiness.md\`
+- \`develop_notes/REDDIRT_ADDITIVE_SCHEMA_PRODUCTION_EXECUTION_PACKET_1_0_REPORT.md\` (this file)
+
+## 3. Files modified
+
+- \`docs/production-db-test-readiness.md\`, \`docs/netlify-production-retry-readiness.md\`, \`docs/hosted-db-proof-after-baseline.md\` — cross-link section appended when missing.
+- \`docs/email-command-center-launch-hardening.md\`, \`docs/PROJECT_MASTER_MAP.md\`, \`docs/THREAD_HANDOFF_MASTER_MAP.md\`, \`docs/campaign-email-command-center-progress-ledger.md\` — slice cross-links appended when missing.
+
+## 4. Source artifacts inspected
+
+- \`data/unsafe-production-schema-diff-analysis.json\`
+- \`data/additive-schema-install-plan.json\`
+- \`data/additive-schema-install-validation.json\`
+- \`data/additive-schema-clone-test-result.json\`
+- \`data/additive-schema-production-execution-review.json\`
+- \`data/production-db-baseline-audit.json\`
+- \`data/sql/additive-schema-install-candidate.sql\`
+- \`data/sql/additive-schema-install-rejected-statements.sql\`
+
+## 5. Candidate SQL summary
+
+- **sha256:** ${candidateSha256 || "n/a"}
+- **Parsed statement count:** ${candidateSummary.statementCount}
+- **Creates:** types ${candidateSummary.createTypeCount}, tables ${candidateSummary.createTableCount}, indexes ${candidateSummary.createIndexCount}, alter ${candidateSummary.alterTableCount}
+- **Destructive counts (must be zero):** drop ${candidateSummary.dropCount}, truncate ${candidateSummary.truncateCount}, delete ${candidateSummary.deleteCount}, insert ${candidateSummary.insertCount}, update ${candidateSummary.updateCount}
+
+## 6. Clone proof summary
+
+- **Hardened gates passed:** ${clonePassed}
+- **Gate detail:** see \`data/additive-schema-production-execution-packet.json\` → \`cloneProofGateDetail\`.
+
+## 7. Production preflight status
+
+Run \`node scripts/run-additive-schema-production-preflight.mjs\` with operator \`DATABASE_URL\` / \`DIRECT_URL\` set. Latest machine output: \`data/additive-schema-production-preflight.json\` (not printed in this report).
+
+## 8. Approval gates status
+
+All thirteen gates start **pending** in \`data/additive-schema-production-approval-gates.json\`.
+
+## 9. Guarded runner status
+
+Default **dry-run** writes \`data/additive-schema-production-guarded-dry-run.json\`. **\`--execute\`** is operator-only with env gates; see \`scripts/run-additive-schema-production-guarded.mjs\`.
+
+## 10. Postcheck plan
+
+See \`docs/additive-schema-production-postcheck-plan.md\` and \`data/additive-schema-production-postcheck-plan.json\`. Optional read-only probes: \`node scripts/verify-additive-schema-production-postcheck.mjs\` with \`DATABASE_URL\` set.
+
+## 11. Netlify / hosted DB readiness
+
+\`docs/post-additive-schema-netlify-readiness.md\` — Netlify retry **not** approved by this slice. Hosted proof remains per \`docs/hosted-db-proof-after-baseline.md\`.
+
+## 12. Email Command Center readiness impact
+
+Additive DDL does **not** enable live send. Comms lane still gated; see \`docs/email-command-center-launch-hardening.md\`.
+
+## 13. Governance status
 
 - **readyForProductionExecutionPacket:** ${readyForProductionExecutionPacket}
-- **Candidate sha256:** ${candidateSha256 || "n/a"}
-- **Parsed statement count:** ${candidateSummary.statementCount}
-- **Clone hardened gates passed:** ${clonePassed}
+- **readyForAutomaticExecution:** false (fixed in packet JSON)
 - **Blockers (machine):** ${errors.length ? errors.join("; ") : "(none)"}
+
+## 14. Checks
+
+Rebuild: \`node scripts/build-additive-schema-production-execution-packet.mjs\` then \`node scripts/validate-additive-schema-production-execution-packet.mjs\`.
+
+## 15. Risks / limitations
+
+- Clone artifact must stay consistent with hardened runner; stale or hand-edited JSON can block the packet.
+- Scripted \`--execute\` applies DDL sequentially; operator must still honor maintenance and PITR discipline.
+
+## 16. Next recommended slice
+
+\`${nextRecommendedSlice}\`
+
+---
+
+## Governance Q&A
+
+| Question | Answer |
+|----------|--------|
+| Did this mutate production? | **NO.** |
+| Did this execute candidate SQL on production? | **NO.** |
+| Did this run production Prisma migrate deploy? | **NO.** |
+| Did this run production Prisma migrate resolve? | **NO.** |
+| Did this run production db push? | **NO.** |
+| Did this run production reset? | **NO.** |
+| Did this approve Netlify retry? | **NO.** |
+| Did this approve live send? | **NO.** |
+| Is production execution packet prepared? | **${readyForProductionExecutionPacket ? "YES" : "NO"}** |
+| Is automatic execution allowed? | **NO.** |
+| What must Steve approve next? | **Exact phrase + maintenance + PITR proof + preflight green + operator SQL plan** before any production DDL. Next slice: **REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-OPERATOR-GATE-1.0** (when packet ready). |
 
 ## Artifact staleness
 
-If \`data/additive-schema-clone-test-result.json\` shows \`ok: true\` but \`before.publicTableCount\` < 100 or missing \`productionLikeCloneProof\`, it is **inconsistent** with \`scripts/test-additive-schema-install-on-clone.mjs\` (hardened runner). Re-run clone proof and \`node scripts/build-additive-schema-production-execution-review.mjs\`, then rebuild this packet.
+If \`data/additive-schema-clone-test-result.json\` shows \`ok: true\` but \`before.publicTableCount\` < 100 or missing \`productionLikeCloneProof\`, it is **inconsistent** with \`scripts/test-additive-schema-install-on-clone.mjs\`. Re-run clone proof and \`node scripts/build-additive-schema-production-execution-review.mjs\`, then rebuild this packet.
 
 ## Commands (lane root)
 
@@ -765,13 +803,9 @@ If \`data/additive-schema-clone-test-result.json\` shows \`ok: true\` but \`befo
 node scripts/build-additive-schema-production-execution-packet.mjs
 node scripts/validate-additive-schema-production-execution-packet.mjs
 node scripts/run-additive-schema-production-preflight.mjs
-node scripts/run-additive-schema-production-guarded.mjs
+node scripts/run-additive-schema-production-guarded.mjs --dry-run
 node scripts/verify-additive-schema-production-postcheck.mjs
 \`\`\`
-
-## Policy
-
-This packet **never** executes production SQL, **never** runs Prisma migrate deploy / resolve / db push / reset, **never** retries Netlify, **never** approves live sends.
 `;
 
   fs.writeFileSync(PATHS.developReport, report, "utf8");

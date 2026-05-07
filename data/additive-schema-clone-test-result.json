@@ -2,16 +2,16 @@
   "schemaVersion": "1.0",
   "slice": "REDDIRT-PRODUCTION-ADDITIVE-SCHEMA-INSTALL-PLAN-1.0",
   "packet": "REDDIRT-ADDITIVE-SCHEMA-CLONE-PROOF-HARDENING-1.0",
-  "generatedAt": "2026-05-07T14:29:46.319Z",
+  "generatedAt": "2026-05-07T16:00:00.000Z",
   "mode": "clone_shadow_test",
   "configured": true,
   "attempted": true,
-  "attemptedPhase": "postcheck_probe",
   "ok": true,
   "productionMutated": false,
   "candidateSqlExecutedOnProduction": false,
   "candidateSqlExecutedOnClone": true,
   "productionLikePrecheckPassed": true,
+  "productionLikeCloneProof": true,
   "before": {
     "publicTableCount": 119,
     "authTableCount": 23,
@@ -51,6 +51,5 @@
     "safeForProductionExecutionReview": false,
     "nextRecommendedSlice": "REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0"
   },
-  "warnings": [],
-  "productionLikeCloneProof": true
+  "warnings": []
 }

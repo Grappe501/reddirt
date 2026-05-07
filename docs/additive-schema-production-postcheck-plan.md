@@ -2,7 +2,7 @@
 
 **Machine JSON:** [`data/additive-schema-production-postcheck-plan.json`](../data/additive-schema-production-postcheck-plan.json)
 
-Read-only checks in Supabase SQL editor or operator-controlled `psql` **after** additive install. Repo verification script `scripts/verify-additive-schema-production-postcheck.mjs` validates **plan shape only** (offline).
+Read-only checks in Supabase SQL editor or operator-controlled `psql` **after** additive install. `scripts/verify-additive-schema-production-postcheck.mjs` validates plan shape **offline** by default; with `DATABASE_URL` set it runs **read-only** Prisma probes and writes `data/additive-schema-production-postcheck-result.json` (never prints the URL).
 
 ## Phases
 

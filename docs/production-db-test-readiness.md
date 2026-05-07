@@ -22,3 +22,17 @@ After additive SQL, use [`migration-history-baseline-execution-packet.md`](./mig
 ## Post–migration-history Netlify retry (operator)
 
 When `data/migration-history-production-preflight.json` shows migration history aligned (71 rows, pending **0**, migrate status clean), regenerate readiness with **`node scripts/build-post-migration-history-netlify-retry-packet.mjs`**, then **`node scripts/validate-post-migration-history-netlify-retry-packet.mjs`**. Human docs: [`post-migration-history-netlify-retry-packet.md`](./post-migration-history-netlify-retry-packet.md), [`post-migration-history-deploy-checklist.md`](./post-migration-history-deploy-checklist.md). This packet **does not** trigger Netlify or approve live send.
+
+
+## REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0 (cross-links)
+
+Governed additive schema execution packet (automation does **not** apply production SQL from repo scripts in this slice):
+
+- [`additive-schema-production-execution-packet.md`](./additive-schema-production-execution-packet.md) · [`data/additive-schema-production-execution-packet.json`](../data/additive-schema-production-execution-packet.json) · [`data/additive-schema-production-execution-packet-validation.json`](../data/additive-schema-production-execution-packet-validation.json)
+- [`additive-schema-production-approval-gates.md`](./additive-schema-production-approval-gates.md) · [`data/additive-schema-production-approval-gates.json`](../data/additive-schema-production-approval-gates.json)
+- [`additive-schema-production-runbook.md`](./additive-schema-production-runbook.md)
+- [`additive-schema-production-postcheck-plan.md`](./additive-schema-production-postcheck-plan.md) · [`data/additive-schema-production-postcheck-plan.json`](../data/additive-schema-production-postcheck-plan.json)
+- [`post-additive-schema-netlify-readiness.md`](./post-additive-schema-netlify-readiness.md) · [`data/post-additive-schema-netlify-readiness.json`](../data/post-additive-schema-netlify-readiness.json)
+- [`../develop_notes/REDDIRT_ADDITIVE_SCHEMA_PRODUCTION_EXECUTION_PACKET_1_0_REPORT.md`](../develop_notes/REDDIRT_ADDITIVE_SCHEMA_PRODUCTION_EXECUTION_PACKET_1_0_REPORT.md)
+
+Scripts: `node scripts/build-additive-schema-production-execution-packet.mjs` · `node scripts/validate-additive-schema-production-execution-packet.mjs` · `node scripts/run-additive-schema-production-preflight.mjs` · `node scripts/run-additive-schema-production-guarded.mjs` (**`--dry-run`** default) · `node scripts/verify-additive-schema-production-postcheck.mjs`.

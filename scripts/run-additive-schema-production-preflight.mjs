@@ -1,18 +1,24 @@
 /**
- * Safe preflight: loads additive execution packet + gates. Never prints DATABASE_URL / DIRECT_URL values.
- * Runs npx prisma validate (schema only). Does not run prisma db execute / migrate / push / reset.
+ * Read-only production preflight for additive schema execution packet.
+ * May read DATABASE_URL / DIRECT_URL — never prints them or passwords.
  * REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0
  */
 import fs from "fs";
 import path from "path";
-import { spawnSync } from "child_process";
 import { fileURLToPath } from "url";
+import {
+  analyzeCandidateSql,
+  evaluateCloneProofHardened,
+  extractSupabaseRef,
+  PRODUCTION_SUPABASE_PROJECT_REF,
+} from "./lib/additive-candidate-sql-guards.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const SLICE = "REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0";
-const PACKET = path.join(ROOT, "data/additive-schema-production-execution-packet.json");
-const GATES = path.join(ROOT, "data/additive-schema-production-approval-gates.json");
+const VALIDATION = path.join(ROOT, "data/additive-schema-install-validation.json");
+const CLONE = path.join(ROOT, "data/additive-schema-clone-test-result.json");
+const CANDIDATE = path.join(ROOT, "data/sql/additive-schema-install-candidate.sql");
 const OUT = path.join(ROOT, "data/additive-schema-production-preflight.json");
 
 function urlShapeValid(name, value) {
@@ -25,29 +31,29 @@ function urlShapeValid(name, value) {
   return { ok: true, detail: "ok" };
 }
 
-function main() {
+async function tableExists(prisma, schema, name) {
+  if (!/^[a-z_]+$/.test(schema) || !/^[a-z0-9_]+$/.test(name)) throw new Error("invalid schema/table identifier");
+  const rows = await prisma.$queryRawUnsafe(
+    `SELECT EXISTS (
+       SELECT 1 FROM information_schema.tables
+       WHERE table_schema = '${schema}' AND table_name = '${name}'
+     ) AS e`
+  );
+  const row = Array.isArray(rows) ? rows[0] : rows;
+  return Boolean(row?.e);
+}
+
+async function publicTableCount(prisma) {
+  const rows = await prisma.$queryRawUnsafe(
+    `SELECT COUNT(*)::int AS c FROM information_schema.tables WHERE table_schema = 'public'`
+  );
+  const row = Array.isArray(rows) ? rows[0] : rows;
+  return typeof row?.c === "number" ? row.c : null;
+}
+
+async function main() {
   const generatedAt = new Date().toISOString();
   const warnings = [];
-
-  if (!fs.existsSync(PACKET)) {
-    const payload = {
-      schemaVersion: "1.0",
-      slice: SLICE,
-      generatedAt,
-      mode: "safe_preflight_no_db_mutation",
-      secretsPrinted: false,
-      productionMutationAttempted: false,
-      readyForPreflight: false,
-      reason: "Missing data/additive-schema-production-execution-packet.json — run build script first.",
-    };
-    fs.mkdirSync(path.dirname(OUT), { recursive: true });
-    fs.writeFileSync(OUT, JSON.stringify(payload, null, 2), "utf8");
-    console.error("FAIL run-additive-schema-production-preflight.mjs — no packet");
-    process.exit(1);
-  }
-
-  const packet = JSON.parse(fs.readFileSync(PACKET, "utf8"));
-  const gates = fs.existsSync(GATES) ? JSON.parse(fs.readFileSync(GATES, "utf8")) : null;
 
   const du = process.env.DATABASE_URL;
   const dir = process.env.DIRECT_URL;
@@ -58,54 +64,151 @@ function main() {
   if (!su.ok) warnings.push(su.detail);
   if (!sd.ok) warnings.push(sd.detail);
 
-  let gatesPending = false;
-  if (gates?.gates?.length) {
-    gatesPending = gates.gates.every((x) => x.status === "pending" || x.status === "blocked");
-    if (!gatesPending) warnings.push("approval gates: unexpected status mix.");
-  } else {
-    warnings.push("missing or empty data/additive-schema-production-approval-gates.json");
+  const refFromUrl = extractSupabaseRef(du || "");
+  const productionProjectRefConfirmed = refFromUrl === PRODUCTION_SUPABASE_PROJECT_REF;
+
+  if (databaseUrlPresent && refFromUrl && !productionProjectRefConfirmed) {
+    warnings.push(
+      `DATABASE_URL Supabase ref mismatch: expected ${PRODUCTION_SUPABASE_PROJECT_REF}, parsed ${refFromUrl || "(none)"}`
+    );
   }
 
-  const mutFalse = packet.productionMutationExecutedByThisPacket === false;
-  if (!mutFalse) warnings.push("productionMutationExecutedByThisPacket must be false.");
+  const candidateSqlPresent = fs.existsSync(CANDIDATE);
+  let candidateValidationPassed = false;
+  let cloneProofPassed = false;
+  let cloneProofDetail = null;
+  try {
+    const v = JSON.parse(fs.readFileSync(VALIDATION, "utf8"));
+    candidateValidationPassed =
+      v?.status === "pass" && v?.safeForCloneTest === true && v?.safeForProduction === false;
+  } catch {
+    candidateValidationPassed = false;
+  }
+  let clone = null;
+  try {
+    clone = JSON.parse(fs.readFileSync(CLONE, "utf8"));
+    const ev = evaluateCloneProofHardened(clone);
+    cloneProofPassed = ev.passed;
+    cloneProofDetail = ev.gates;
+    if (ev.claimsPassButHardenedFails) {
+      warnings.push("clone JSON claims pass but fails hardened gates — refresh clone artifact.");
+    }
+  } catch {
+    cloneProofPassed = false;
+  }
 
-  const blocked = packet.executionPacketStatus && String(packet.executionPacketStatus).startsWith("blocked");
-  if (blocked) warnings.push("Packet status is blocked — clone proof or validation must be green before operator execution.");
+  let candidateSqlDestructiveScanOk = false;
+  if (candidateSqlPresent) {
+    const raw = fs.readFileSync(CANDIDATE, "utf8");
+    const a = analyzeCandidateSql(raw);
+    candidateSqlDestructiveScanOk =
+      a.noDestructiveViolations &&
+      a.dropCount === 0 &&
+      a.truncateCount === 0 &&
+      a.deleteCount === 0 &&
+      a.insertCount === 0 &&
+      a.updateCount === 0;
+    if (!candidateSqlDestructiveScanOk) warnings.push("candidate SQL failed destructive / extension-schema scan");
+  }
 
-  const pv = spawnSync(process.platform === "win32" ? "npx.cmd" : "npx", ["prisma", "validate"], {
-    cwd: ROOT,
-    shell: true,
-    encoding: "utf8",
-  });
-  const prismaValidateOk = pv.status === 0;
-  if (!prismaValidateOk) warnings.push(`prisma validate: ${(pv.stderr || pv.stdout || "").slice(0, 200)}`);
+  const requiredSpecs = [
+    { schema: "public", name: "ar02_voters" },
+    { schema: "public", name: "contacts" },
+    { schema: "public", name: "counties" },
+    { schema: "public", name: "event_requests" },
+    { schema: "public", name: "message_audiences" },
+    { schema: "public", name: "path_to_victory" },
+    { schema: "public", name: "people" },
+    { schema: "public", name: "person_profiles" },
+    { schema: "auth", name: "users" },
+  ];
 
-  const readyForPreflight =
-    mutFalse &&
-    prismaValidateOk &&
+  let requiredTablesPresent = false;
+  let authUsersPresent = false;
+  let publicTableCountVal = 0;
+  let prismaMigrationsTableExists = false;
+  const tableProbeDetail = {};
+
+  if (databaseUrlPresent && su.ok && productionProjectRefConfirmed) {
+    try {
+      const { PrismaClient } = await import("@prisma/client");
+      const prisma = new PrismaClient({ datasourceUrl: du });
+      try {
+        publicTableCountVal = (await publicTableCount(prisma)) ?? 0;
+        prismaMigrationsTableExists = await tableExists(prisma, "public", "_prisma_migrations");
+        let allOk = true;
+        for (const { schema, name } of requiredSpecs) {
+          const ex = await tableExists(prisma, schema, name);
+          tableProbeDetail[`${schema}.${name}`] = ex;
+          if (!ex) allOk = false;
+        }
+        requiredTablesPresent = allOk;
+        authUsersPresent = tableProbeDetail["auth.users"] === true;
+      } finally {
+        await prisma.$disconnect().catch(() => {});
+      }
+    } catch (e) {
+      warnings.push(`read-only probe error: ${String(e.message || e)}`);
+      requiredTablesPresent = false;
+      authUsersPresent = false;
+    }
+  } else {
+    warnings.push("Skipping DB probes: DATABASE_URL missing, invalid shape, or project ref not confirmed.");
+  }
+
+  const readyForManualExecution =
     databaseUrlPresent &&
     directUrlPresent &&
     su.ok &&
     sd.ok &&
-    !!gates?.gates?.length;
+    productionProjectRefConfirmed &&
+    candidateSqlPresent &&
+    candidateValidationPassed &&
+    cloneProofPassed &&
+    candidateSqlDestructiveScanOk &&
+    requiredTablesPresent &&
+    authUsersPresent;
+
+  let reason = "";
+  if (!databaseUrlPresent) reason = "DATABASE_URL not set.";
+  else if (!directUrlPresent) reason = "DIRECT_URL not set.";
+  else if (!su.ok) reason = su.detail;
+  else if (!sd.ok) reason = sd.detail;
+  else if (!productionProjectRefConfirmed) reason = "DATABASE_URL does not resolve to production Supabase project ref.";
+  else if (!candidateSqlPresent) reason = "Candidate SQL file missing.";
+  else if (!candidateValidationPassed) reason = "Candidate validation JSON not pass / safe flags wrong.";
+  else if (!cloneProofPassed) reason = "Clone proof hardened gates failed.";
+  else if (!candidateSqlDestructiveScanOk) reason = "Candidate SQL destructive scan failed.";
+  else if (!requiredTablesPresent) reason = "One or more required tables missing on target (see tableProbeDetail).";
+  else if (!authUsersPresent) reason = "auth.users not found.";
+  else reason = "All read-only preflight gates passed (still requires human approval for execution).";
 
   const payload = {
     schemaVersion: "1.0",
     slice: SLICE,
     generatedAt,
-    mode: "safe_preflight_no_db_mutation",
+    mode: "safe_read_only_production_preflight",
+    databaseUrlPresent,
+    databaseUrlShapeValid: su.ok,
+    directUrlPresent,
+    directUrlShapeValid: sd.ok,
+    productionProjectRefConfirmed,
+    productionProjectRefExpected: PRODUCTION_SUPABASE_PROJECT_REF,
+    productionProjectRefParsed: refFromUrl || null,
+    candidateSqlPresent,
+    candidateValidationPassed,
+    cloneProofPassed,
+    cloneProofDetail,
+    candidateSqlDestructiveScanOk,
+    requiredTablesPresent,
+    authUsersPresent,
+    publicTableCount: publicTableCountVal,
+    prismaMigrationsTableExists,
+    tableProbeDetail,
     secretsPrinted: false,
     productionMutationAttempted: false,
-    databaseUrlPresent,
-    directUrlPresent,
-    databaseUrlShapeValid: su.ok,
-    directUrlShapeValid: sd.ok,
-    prismaValidateOk,
-    gatesLoaded: !!gates,
-    gatesPendingOrBlocked: gatesPending,
-    packetBlocked: blocked,
-    packetReadyForExecutionPacket: packet.eligibility?.readyForProductionExecutionPacket === true,
-    readyForPreflight,
+    readyForManualExecution,
+    reason,
     warnings,
   };
 
@@ -114,8 +217,11 @@ function main() {
 
   console.log("=== run-additive-schema-production-preflight.mjs ===");
   console.log("Report:", path.relative(ROOT, OUT));
-  console.log(readyForPreflight ? "PASS preflight (lane checks)" : "WARN preflight — see packet status / warnings");
+  console.log(readyForManualExecution ? "PASS read-only preflight" : "BLOCKED read-only preflight — see reason in JSON");
   process.exit(0);
 }
 
-main();
+main().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});

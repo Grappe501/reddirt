@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "slice": "REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0",
-  "generatedAt": "2026-05-07T14:54:01.228Z",
+  "generatedAt": "2026-05-07T21:18:05.304Z",
   "status": "pass",
   "checks": [
     {
@@ -65,7 +65,7 @@
       "detail": "ok"
     },
     {
-      "id": "cloneFlagBoolean",
+      "id": "clonePassedMeaningful",
       "ok": true,
       "detail": "ok"
     },
@@ -83,8 +83,73 @@
       "id": "candidate_sha256_match",
       "ok": true,
       "detail": "ok"
+    },
+    {
+      "id": "candidate_file_exists",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "candidate_no_destructive",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "gates_thirteen_pending",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "clone_proof_meaningful",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "doc:docs/additive-schema-production-execution-packet.md",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "doc:docs/additive-schema-production-approval-gates.md",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "doc:docs/additive-schema-production-runbook.md",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "doc:docs/additive-schema-production-postcheck-plan.md",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "doc:docs/post-additive-schema-netlify-readiness.md",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "doc:develop_notes/REDDIRT_ADDITIVE_SCHEMA_PRODUCTION_EXECUTION_PACKET_1_0_REPORT.md",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "guarded_script_exists",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "guarded_has_phrase",
+      "ok": true,
+      "detail": "ok"
     }
   ],
+  "violations": [],
+  "safeForManualApprovalReview": true,
+  "safeForAutomaticExecution": false,
+  "safeForNetlifyRetry": false,
+  "safeForLiveSend": false,
   "packetExecutionPacketStatus": "ready_pending_human_approval",
   "packetReadyFlag": true,
   "candidateSha256Match": true

@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-GMAIL-CALENDAR-OAUTH-PROOF-1.0",
+  "generatedAt": "2026-05-07T21:40:56.879Z",
+  "contractStatus": "pass",
+  "summary": "Gmail + Calendar OAuth proof layer present; static contract pass.",
+  "filesCreated": [
+    "src/lib/communication-command-center/gmail-calendar-readiness.ts",
+    "src/app/api/admin/communication-command-center/gmail-calendar-readiness/route.ts",
+    "src/app/admin/(board)/workbench/communication-command-center/gmail-calendar/page.tsx",
+    "scripts/validate-gmail-calendar-oauth-proof.mjs",
+    "scripts/build-gmail-calendar-oauth-proof-report.mjs",
+    "data/gmail-calendar-oauth-proof-contract.json",
+    "data/gmail-calendar-oauth-proof-report.json",
+    "data/gmail-calendar-next-operator-steps.json",
+    "docs/gmail-calendar-oauth-proof.md",
+    "develop_notes/REDDIRT_GMAIL_CALENDAR_OAUTH_PROOF_1_0_REPORT.md"
+  ],
+  "filesModified": [
+    "src/components/admin/email-command-center/EmailCommandCenterReadinessView.tsx",
+    "src/app/admin/(board)/workbench/communication-command-center/readiness/page.tsx",
+    "docs/gmail-calendar-oauth-proof.md",
+    "docs/communication-command-center-readiness.md",
+    "docs/email-command-center-launch-hardening.md",
+    "docs/campaign-email-command-center-progress-ledger.md",
+    "docs/PROJECT_MASTER_MAP.md",
+    "docs/THREAD_HANDOFF_MASTER_MAP.md"
+  ],
+  "checks": [
+    {
+      "id": "file:gmailOauthStart",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "file:gmailOauthCallback",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "file:gmailPubsub",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "file:calendarCallback",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "file:calendarCronSync",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "file:calendarWebhook",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "file:readinessApi",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "lib_readiness",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "admin_page",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "api_get_only",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "api_email_diag_token",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "api_admin_diag_token",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_typo_admin_diagnostics_token",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "api_timing_safe",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "lib_no_google_api_calls_obvious",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_gmail_send_in:src/lib/communication-command-center/gmail-calendar-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_twilio_send_in:src/lib/communication-command-center/gmail-calendar-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_sendgrid_send_in:src/lib/communication-command-center/gmail-calendar-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_gmail_send_in:src/app/api/admin/communication-command-center/gmail-calendar-readiness/route.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_twilio_send_in:src/app/api/admin/communication-command-center/gmail-calendar-readiness/route.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_sendgrid_send_in:src/app/api/admin/communication-command-center/gmail-calendar-readiness/route.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_gmail_send_in:src/app/admin/(board)/workbench/communication-command-center/gmail-calendar/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_twilio_send_in:src/app/admin/(board)/workbench/communication-command-center/gmail-calendar/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_sendgrid_send_in:src/app/admin/(board)/workbench/communication-command-center/gmail-calendar/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    }
+  ],
+  "violations": []
+}
