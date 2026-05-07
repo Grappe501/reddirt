@@ -70,28 +70,28 @@ async function tableExistsInPublic(table: string): Promise<boolean> {
   return Boolean(r?.e);
 }
 
-function routeHandlerPresent(segments: string[]): boolean {
+/**
+ * True when `src/app/api/<segments>/route.ts` exists in a full repo checkout.
+ * When `src/app/api` is missing from disk (e.g. Netlify serverless bundle), returns true — offline
+ * validators prove repo layout. Intended only for known contract paths (Gmail, Calendar, SendGrid diagnostics, webhooks).
+ */
+export function resolveApiRouteHandlerPresent(segments: string[]): boolean {
   try {
-    const base = path.join(process.cwd(), "src", "app", "api", ...segments, "route.ts");
+    const apiRoot = path.join(process.cwd(), "src", "app", "api");
+    if (!existsSync(apiRoot)) {
+      return true;
+    }
+    const base = path.join(apiRoot, ...segments, "route.ts");
     return existsSync(base);
   } catch {
     return false;
   }
 }
 
-/**
- * When `src/app/api` is not on disk (e.g. some production bundles), treat route contract as satisfied —
- * offline `scripts/validate-communication-command-center-readiness.mjs` still verifies repo layout.
- */
 function resolveRoutePresence(): Record<CommunicationCommandCenterRouteContractKey, boolean> {
-  const apiRoot = path.join(process.cwd(), "src", "app", "api");
   const out = {} as Record<CommunicationCommandCenterRouteContractKey, boolean>;
-  if (!existsSync(apiRoot)) {
-    for (const k of COMMUNICATION_COMMAND_CENTER_ROUTE_KEYS) out[k] = true;
-    return out;
-  }
   for (const k of COMMUNICATION_COMMAND_CENTER_ROUTE_KEYS) {
-    out[k] = routeHandlerPresent(ROUTE_CONTRACT[k]);
+    out[k] = resolveApiRouteHandlerPresent(ROUTE_CONTRACT[k]);
   }
   return out;
 }

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "slice": "REDDIRT-EMAIL-SANDBOX-SEND-PROOF-1.0",
-  "generatedAt": "2026-05-07T21:53:23.232Z",
+  "generatedAt": "2026-05-07T22:26:16.143Z",
   "preconditions": [
     "Hosted DB proof green (reachable + production canonical).",
     "Communication Command Center readiness JSON green.",

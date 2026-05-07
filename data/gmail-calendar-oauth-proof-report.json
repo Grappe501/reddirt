@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "slice": "REDDIRT-GMAIL-CALENDAR-OAUTH-PROOF-1.0",
-  "generatedAt": "2026-05-07T21:40:56.879Z",
+  "generatedAt": "2026-05-07T22:26:15.992Z",
   "contractStatus": "pass",
   "summary": "Gmail + Calendar OAuth proof layer present; static contract pass.",
   "filesCreated": [
@@ -68,7 +68,27 @@
       "detail": "ok"
     },
     {
+      "id": "readiness_core_lib",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
       "id": "admin_page",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "readiness_exports_resolveApiRouteHandlerPresent",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "readiness_bundle_fallback_when_api_root_missing",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "readiness_not_route_exists_only",
       "ok": true,
       "detail": "ok"
     },
@@ -94,6 +114,51 @@
     },
     {
       "id": "api_timing_safe",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "gmail_cal_api_bearer_email_diag_before_admin_diag",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "gmail_cal_api_bearer_primary_return_first",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "lib_uses_bundle_safe_route_helper",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "gmail_lib_no_direct_src_app_api_route_exists_sync",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "lib_gmail_safety_all_false",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "lib_sendgrid_live_safety_false",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "lib_twilio_safety_false",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "lib_contact_import_safety_false",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "lib_automation_workers_safety_false",
       "ok": true,
       "detail": "ok"
     },

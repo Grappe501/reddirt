@@ -1,19 +1,11 @@
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
+import { resolveApiRouteHandlerPresent } from "@/lib/communication-command-center/readiness";
 import { EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM } from "@/lib/email-workflow/governance";
 
 export const GMAIL_CALENDAR_OAUTH_READINESS_MODE = "gmail_calendar_oauth_readiness" as const;
 
 const GMAIL_API_REL = ["src", "lib", "integrations", "gmail", "gmail-api.ts"];
-
-function routeFileExists(segments: string[]): boolean {
-  try {
-    const base = path.join(process.cwd(), "src", "app", "api", ...segments, "route.ts");
-    return existsSync(base);
-  } catch {
-    return false;
-  }
-}
 
 function detectGmailSendCapabilityInRepo(): boolean {
   try {
@@ -63,13 +55,13 @@ export type GmailCalendarOAuthReadinessPayload = {
  * Does not call Google APIs, mutate OAuth state, or send messages.
  */
 export async function getGmailCalendarOAuthReadiness(): Promise<GmailCalendarOAuthReadinessPayload> {
-  const oauthStartRoutePresent = routeFileExists(["gmail", "oauth", "start"]);
-  const oauthCallbackRoutePresent = routeFileExists(["gmail", "oauth", "callback"]);
-  const pubsubRoutePresent = routeFileExists(["gmail", "pubsub"]);
+  const oauthStartRoutePresent = resolveApiRouteHandlerPresent(["gmail", "oauth", "start"]);
+  const oauthCallbackRoutePresent = resolveApiRouteHandlerPresent(["gmail", "oauth", "callback"]);
+  const pubsubRoutePresent = resolveApiRouteHandlerPresent(["gmail", "pubsub"]);
 
-  const callbackRoutePresent = routeFileExists(["calendar", "google", "callback"]);
-  const cronSyncRoutePresent = routeFileExists(["calendar", "google", "cron-sync"]);
-  const webhookRoutePresent = routeFileExists(["calendar", "google", "webhook"]);
+  const callbackRoutePresent = resolveApiRouteHandlerPresent(["calendar", "google", "callback"]);
+  const cronSyncRoutePresent = resolveApiRouteHandlerPresent(["calendar", "google", "cron-sync"]);
+  const webhookRoutePresent = resolveApiRouteHandlerPresent(["calendar", "google", "webhook"]);
 
   const sendFunctionDetected = detectGmailSendCapabilityInRepo();
   const sendLocked = EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM === false;

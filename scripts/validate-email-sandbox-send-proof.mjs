@@ -14,6 +14,7 @@ const BLOCKED_MD = path.join(ROOT, "develop_notes/REDDIRT_EMAIL_SANDBOX_SEND_PRO
 const OUT_CONTRACT = path.join(ROOT, "data/email-sandbox-send-proof-contract.json");
 
 const SANDBOX_LIB = ["src", "lib", "communication-command-center", "email-sandbox-readiness.ts"];
+const READINESS_CORE = ["src", "lib", "communication-command-center", "readiness.ts"];
 const SANDBOX_API = ["src", "app", "api", "admin", "communication-command-center", "email-sandbox-readiness", "route.ts"];
 const SANDBOX_PAGE = ["src", "app", "admin", "(board)", "workbench", "communication-command-center", "email-sandbox", "page.tsx"];
 
@@ -25,6 +26,39 @@ function existsAt(rel) {
 
 function read(rel) {
   return fs.readFileSync(path.join(ROOT, ...rel), "utf8");
+}
+
+function assertReadinessHostedRouteContract(readinessSrc, push) {
+  push(
+    "readiness_exports_resolveApiRouteHandlerPresent",
+    /export\s+function\s+resolveApiRouteHandlerPresent/.test(readinessSrc),
+    "readiness.ts must export resolveApiRouteHandlerPresent (hosted static route contract)",
+  );
+  push(
+    "readiness_bundle_fallback_when_api_root_missing",
+    /\bapiRoot\b/.test(readinessSrc) &&
+      readinessSrc.includes("!existsSync(apiRoot)") &&
+      /return\s+true/.test(readinessSrc),
+    "readiness.ts must treat routes present when src/app/api is missing from the bundle (return true)",
+  );
+  push(
+    "readiness_not_route_exists_only",
+    readinessSrc.includes("resolveApiRouteHandlerPresent") && readinessSrc.includes("existsSync(base)"),
+    "readiness.ts must resolve routes via helper with on-disk existsSync(base), not only a single join to route.ts",
+  );
+}
+
+function assertBearerDiagnosticsOrder(apiSrc, push, idPrefix) {
+  const emailNeedle = "process.env.EMAIL_DIAGNOSTICS_TOKEN?.trim()";
+  const adminNeedle = "process.env.ADMIN_DIAGNOSTIC_TOKEN?.trim()";
+  const iEmail = apiSrc.indexOf(emailNeedle);
+  const iAdmin = apiSrc.indexOf(adminNeedle);
+  push(
+    `${idPrefix}_bearer_email_diag_before_admin_diag`,
+    iEmail !== -1 && iAdmin !== -1 && iEmail < iAdmin,
+    "EMAIL_DIAGNOSTICS_TOKEN must be read before ADMIN_DIAGNOSTIC_TOKEN (precedence unchanged)",
+  );
+  push(`${idPrefix}_bearer_primary_return_first`, /if\s*\(\s*primary\s*\)\s*return/.test(apiSrc), "primary token branch must return before fallback");
 }
 
 function writeBlocked(reason, detail) {
@@ -119,6 +153,10 @@ function main() {
   push("file:sandbox_lib", existsAt(SANDBOX_LIB), "missing email-sandbox-readiness.ts");
   push("file:sandbox_api", existsAt(SANDBOX_API), "missing email-sandbox-readiness route");
   push("file:sandbox_page", existsAt(SANDBOX_PAGE), "missing email-sandbox page");
+  push("readiness_core_lib", existsAt(READINESS_CORE), "missing readiness.ts");
+
+  const readinessCoreSrc = read(READINESS_CORE);
+  assertReadinessHostedRouteContract(readinessCoreSrc, push);
 
   const apiSrc = read(SANDBOX_API);
   push("api_get_only", /export\s+async\s+function\s+GET\s*\(/.test(apiSrc) && !/export\s+async\s+function\s+POST\s*\(/.test(apiSrc), "API must export GET only");
@@ -126,6 +164,7 @@ function main() {
   push("api_admin_diag", apiSrc.includes("ADMIN_DIAGNOSTIC_TOKEN"), "ADMIN_DIAGNOSTIC_TOKEN fallback");
   push("no_typo_admin_diagnostics", !apiSrc.includes("ADMIN_DIAGNOSTICS_TOKEN"), "typo ADMIN_DIAGNOSTICS_TOKEN");
   push("api_timing_safe", apiSrc.includes("timingSafeEqual"), "timing-safe bearer");
+  assertBearerDiagnosticsOrder(apiSrc, push, "email_sandbox_api");
 
   const sendNeedle = ["users", "messages", "send"].join(".");
   const sgNeedle = ["sendgrid", "send"].join(".");
@@ -140,8 +179,23 @@ function main() {
   }
 
   const libSrc = read(SANDBOX_LIB);
+  push(
+    "lib_uses_bundle_safe_route_helper",
+    libSrc.includes("resolveApiRouteHandlerPresent") && libSrc.includes("@/lib/communication-command-center/readiness"),
+    "email-sandbox-readiness must import resolveApiRouteHandlerPresent from readiness (hosted bundle contract)",
+  );
+  push(
+    "sandbox_lib_no_direct_src_app_api_route_exists_sync",
+    !libSrc.includes('path.join(process.cwd(), "src", "app", "api"') &&
+      !libSrc.includes("path.join(process.cwd(), 'src', 'app', 'api'"),
+    "email-sandbox-readiness must not use direct cwd+src/app/api existsSync for SendGrid route detection (use helper only)",
+  );
+  push("safety_false_bulk", /bulkSendApproved:\s*false/.test(libSrc), "bulkSendApproved must stay false");
   push("safety_false_gmail", /gmailLiveSendApproved:\s*false/.test(libSrc), "gmailLiveSendApproved must stay false");
   push("safety_false_sendgrid", /sendgridLiveSendApproved:\s*false/.test(libSrc), "sendgridLiveSendApproved must stay false");
+  push("safety_false_twilio", /twilioSmsApproved:\s*false/.test(libSrc), "twilioSmsApproved must stay false");
+  push("safety_false_contact_import", /contactImportApproved:\s*false/.test(libSrc), "contactImportApproved must stay false");
+  push("safety_false_automation_workers", /automationWorkersApproved:\s*false/.test(libSrc), "automationWorkersApproved must stay false");
 
   const allOk = checks.every((c) => c.ok);
   const contract = {

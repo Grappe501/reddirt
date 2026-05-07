@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "slice": "REDDIRT-GMAIL-CALENDAR-OAUTH-PROOF-1.0",
-  "generatedAt": "2026-05-07T21:40:56.879Z",
+  "generatedAt": "2026-05-07T22:26:15.992Z",
   "gmail": [
     "Open GET /api/gmail/oauth/start in the browser (same site).",
     "Complete Google consent for the campaign inbox.",

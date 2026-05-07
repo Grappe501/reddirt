@@ -19,9 +19,11 @@ After hosted Communication Command Center readiness is green, this slice adds:
 - **Method:** `GET` only  
 - **Path:** `/api/admin/communication-command-center/gmail-calendar-readiness`  
 - **Auth:** `Authorization: Bearer <token>` — **`EMAIL_DIAGNOSTICS_TOKEN`** (primary) or **`ADMIN_DIAGNOSTIC_TOKEN`** (fallback), **timing-safe** HMAC digest comparison (same pattern as `/api/admin/production-readiness/hosted-db` and `/api/admin/communication-command-center/readiness`).  
-- **Responses:** `503` if no diagnostics token · `401` / `403` for bad bearer · `200` with JSON (**`ok` may be false** if route files are missing).
+- **Responses:** `503` if no diagnostics token · `401` / `403` for bad bearer · `200` with JSON (**`ok` may be false** when DB/safety gates fail, not merely because `src/app/api` is absent in the serverless bundle).
 
-Payload is built by **`src/lib/communication-command-center/gmail-calendar-readiness.ts`** (static checks only).
+Payload is built by **`src/lib/communication-command-center/gmail-calendar-readiness.ts`** (read-only checks only). Route presence uses **`resolveApiRouteHandlerPresent()`** from **`readiness.ts`**: in a full checkout it verifies **`route.ts`** on disk; when **`src/app/api`** is missing (hosted bundle), known OAuth/Calendar contract paths are treated present — **`scripts/validate-gmail-calendar-oauth-proof.mjs`** still proves repo files exist before CI/deploy trust.
+
+**Semantics:** “Route present” means the app includes the Gmail/Calendar OAuth and Pub/Sub HTTP surfaces, **not** that OAuth has been completed. This slice is for **connection proof** (consent, callback, token storage checks in other tools) in a **no-send** posture — **not** live campaign send from Gmail.
 
 ---
 

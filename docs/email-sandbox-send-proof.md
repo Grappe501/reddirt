@@ -24,7 +24,9 @@ A **separate operator approval slice** is still required before any real send.
 - **Method:** `GET` only  
 - **Path:** `/api/admin/communication-command-center/email-sandbox-readiness`  
 - **Auth:** `EMAIL_DIAGNOSTICS_TOKEN` (primary) or `ADMIN_DIAGNOSTIC_TOKEN` (fallback), **timing-safe** bearer match — same as hosted DB / comms readiness. **Do not** use typo `ADMIN_DIAGNOSTICS_TOKEN`.  
-- **Response:** JSON built by **`src/lib/communication-command-center/email-sandbox-readiness.ts`** — **no** secrets, **no** send execution.
+- **Response:** JSON built by **`src/lib/communication-command-center/email-sandbox-readiness.ts`** — **no** secrets, **no** send execution. SendGrid diagnostic route presence uses **`resolveApiRouteHandlerPresent()`** (same hosted-bundle rule as Communication Command Center readiness: no false “missing route” when `src/app/api` is not on disk).
+
+**Semantics:** Readiness here is for **one internal/admin test** (single staff address, explicit operator approval elsewhere) — **not** list sending, volunteer outreach, or live campaign broadcast. **Live send stays blocked** until a separate headquarters-controlled slice; safety literals in code remain **`…Approved: false`**.
 
 ---
 

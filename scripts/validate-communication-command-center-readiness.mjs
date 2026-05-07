@@ -43,6 +43,52 @@ function main() {
   if (!libOk) violations.push("missing_readiness_lib");
   if (!routeOk) violations.push("missing_readiness_api");
 
+  if (libOk) {
+    const readinessSrc = fs.readFileSync(readinessLib, "utf8");
+    const bundleContract =
+      /export\s+function\s+resolveApiRouteHandlerPresent/.test(readinessSrc) &&
+      readinessSrc.includes("!existsSync(apiRoot)") &&
+      /return\s+true/.test(readinessSrc) &&
+      readinessSrc.includes("resolveApiRouteHandlerPresent") &&
+      readinessSrc.includes("existsSync(base)");
+    checks.push({
+      id: "readiness_hosted_route_contract",
+      ok: bundleContract,
+      detail: bundleContract ? "ok" : "readiness.ts must export bundle-safe resolveApiRouteHandlerPresent",
+    });
+    if (!bundleContract) violations.push("readiness_hosted_route_contract");
+
+    const safetyOk =
+      /liveSendApproved:\s*false/.test(readinessSrc) &&
+      /gmailSendApproved:\s*false/.test(readinessSrc) &&
+      /sendgridLiveSendApproved:\s*false/.test(readinessSrc);
+    checks.push({
+      id: "readiness_safety_literals_false",
+      ok: safetyOk,
+      detail: safetyOk ? "ok" : "readiness.ts safety Approved fields must stay false",
+    });
+    if (!safetyOk) violations.push("readiness_safety_literals_false");
+  }
+
+  if (routeOk) {
+    const routeSrc = fs.readFileSync(readinessRoute, "utf8");
+    const noTypo = !routeSrc.includes("ADMIN_DIAGNOSTICS_TOKEN");
+    checks.push({ id: "readiness_api_no_admin_typo", ok: noTypo, detail: noTypo ? "ok" : "ADMIN_DIAGNOSTICS_TOKEN typo" });
+    if (!noTypo) violations.push("readiness_api_typo");
+
+    const emailNeedle = "process.env.EMAIL_DIAGNOSTICS_TOKEN?.trim()";
+    const adminNeedle = "process.env.ADMIN_DIAGNOSTIC_TOKEN?.trim()";
+    const iEmail = routeSrc.indexOf(emailNeedle);
+    const iAdmin = routeSrc.indexOf(adminNeedle);
+    const orderOk = iEmail !== -1 && iAdmin !== -1 && iEmail < iAdmin;
+    checks.push({
+      id: "readiness_api_bearer_precedence",
+      ok: orderOk,
+      detail: orderOk ? "ok" : "EMAIL_DIAGNOSTICS_TOKEN must precede ADMIN_DIAGNOSTIC_TOKEN",
+    });
+    if (!orderOk) violations.push("readiness_api_bearer_precedence");
+  }
+
   const status = violations.length === 0 ? "pass" : "fail";
   console.log(status === "pass" ? "PASS validate-communication-command-center-readiness.mjs" : "FAIL");
   for (const c of checks) {

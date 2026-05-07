@@ -13,11 +13,21 @@ This slice **does not** enable live send, Gmail send, SendGrid mail send, Twilio
 
 ---
 
+## Hosted route detection (Netlify / serverless)
+
+- **Source tree may be absent** in the function bundle: `src/app/api/**/route.ts` often does not exist on disk at runtime even though the deployed app serves those HTTP paths.
+- **Readiness therefore uses a static route contract** implemented in **`resolveApiRouteHandlerPresent()`** in **`readiness.ts`**: in a full checkout it verifies the handler file exists; when **`src/app/api`** is missing from the bundle, known contract segments are treated as **present** so hosted diagnostics are not false-red. Offline validators still prove the files exist in git before deploy trust.
+- **Route readiness means** “this deployment is built to expose the integration HTTP surface (OAuth start/callback, webhooks, diagnostics),” **not** that OAuth has been completed, tokens exist, or Google has granted consent.
+- **Gmail and Calendar** readiness flags mean **ready for connection / OAuth proof** steps in a controlled, no-send posture — **not** authorization for live Gmail send or calendar writes beyond what separate gates allow.
+- **Email sandbox readiness** is for **one internal/admin diagnostic send path** when headquarters and process explicitly approve — **not** list mail, blast outreach, or volunteer/voter sends. **Live send remains blocked** by governance and explicit `…Approved: false` safety fields until a separate approval slice changes that (this doc slice does not).
+
+---
+
 ## HTTP API (read-only)
 
 - **Method:** `GET` only  
 - **Path:** `/api/admin/communication-command-center/readiness`  
-- **Auth:** Same as hosted DB proof — `Authorization: Bearer <token>` matching **`EMAIL_DIAGNOSTICS_TOKEN`** (primary) or **`ADMIN_DIAGNOSTIC_TOKEN`** (fallback), **timing-safe** HMAC digest comparison.  
+- **Auth:** Same as hosted DB proof — `Authorization: Bearer <token>` matching **`EMAIL_DIAGNOSTICS_TOKEN`** (primary, checked first) or **`ADMIN_DIAGNOSTIC_TOKEN`** (fallback only if primary is unset), **timing-safe** HMAC digest comparison. Do not use the typo **`ADMIN_DIAGNOSTICS_TOKEN`** (extra “S”).  
 - **Responses:** `503` if no diagnostics token configured · `401` / `403` for bad/missing bearer · `200` with JSON body ( **`ok` may be false** when checks fail).
 
 ### JSON contract
@@ -28,7 +38,7 @@ Payload is built by **`src/lib/communication-command-center/readiness.ts`**:
 
 - **`database`** — `reachable` and **`productionCanonical`** from **`getHostedDbProofSummary()`** (no duplicate auth).  
 - **`tables`** — `information_schema` existence for the eight public tables listed in the contract.  
-- **`routes`** — when `src/app/api` exists on disk, checks each **`route.ts`** path; when the tree is absent (some bundles), returns **`true`** for all route keys (offline validator still proves repo layout).  
+- **`routes`** — **`resolveApiRouteHandlerPresent()`** in **`readiness.ts`**: when `src/app/api` exists on disk, checks each **`route.ts`** path; when the tree is absent (some bundles), returns **`true`** for all route keys (offline validator still proves repo layout). Gmail/Calendar and email-sandbox readiness reuse the same helper for their narrower route lists.  
 - **`safety`** — explicit **`…Approved: false`** fields plus **`noSendPosture`** from **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** (must be **`false`** for **`ok: true`**).  
 - **`nextRecommendedStep`** — operator-facing string for the next proof slice (Gmail / Calendar / Twilio, then Text + Reach MVP).
 
@@ -36,7 +46,7 @@ Payload is built by **`src/lib/communication-command-center/readiness.ts`**:
 
 - **Path:** `GET /api/admin/communication-command-center/gmail-calendar-readiness`  
 - **Auth:** Same bearer as above (`EMAIL_DIAGNOSTICS_TOKEN` / `ADMIN_DIAGNOSTIC_TOKEN`, timing-safe).  
-- **Body:** Built by **`src/lib/communication-command-center/gmail-calendar-readiness.ts`** — OAuth/Pub/Sub + Calendar route presence, **send capability detected vs locked** (no Google calls from this route).  
+- **Body:** Built by **`src/lib/communication-command-center/gmail-calendar-readiness.ts`** — OAuth/Pub/Sub + Calendar route presence via **`resolveApiRouteHandlerPresent()`** (same bundle rule as main readiness: when `src/app/api` is absent on disk, contract routes are treated present; offline validators prove files), **send capability detected vs locked** (no Google calls from this route).  
 - **Human doc:** [`gmail-calendar-oauth-proof.md`](./gmail-calendar-oauth-proof.md) · **Admin UI:** `/admin/workbench/communication-command-center/gmail-calendar`
 
 ### Email sandbox send proof readiness (precondition-gated)

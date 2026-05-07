@@ -1,6 +1,9 @@
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
-import { getCommunicationCommandCenterReadiness } from "@/lib/communication-command-center/readiness";
+import {
+  getCommunicationCommandCenterReadiness,
+  resolveApiRouteHandlerPresent,
+} from "@/lib/communication-command-center/readiness";
 import { getGmailCalendarOAuthReadiness } from "@/lib/communication-command-center/gmail-calendar-readiness";
 import { getHostedDbProofSummary } from "@/lib/email-command-center/hosted-db-proof";
 import { EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM } from "@/lib/email-workflow/governance";
@@ -13,15 +16,6 @@ function readGmailCalendarContractPass(): boolean {
     if (!existsSync(p)) return false;
     const j = JSON.parse(readFileSync(p, "utf8")) as { status?: string };
     return j?.status === "pass";
-  } catch {
-    return false;
-  }
-}
-
-function routeFileExists(segments: string[]): boolean {
-  try {
-    const base = path.join(process.cwd(), "src", "app", "api", ...segments, "route.ts");
-    return existsSync(base);
   } catch {
     return false;
   }
@@ -75,8 +69,12 @@ export async function getEmailSandboxReadiness(): Promise<EmailSandboxReadinessP
     hosted.database.reachable === true && hosted.proof.productionCanonical === true;
   const communicationCommandCenterReadinessPassed = comms.ok === true;
 
-  const sendgridAuthCheckRoutePresent = routeFileExists(["admin", "email-diagnostics", "sendgrid-auth-check"]);
-  const sandboxSendRoutePresent = routeFileExists(["admin", "email-diagnostics", "sandbox-send"]);
+  const sendgridAuthCheckRoutePresent = resolveApiRouteHandlerPresent([
+    "admin",
+    "email-diagnostics",
+    "sendgrid-auth-check",
+  ]);
+  const sandboxSendRoutePresent = resolveApiRouteHandlerPresent(["admin", "email-diagnostics", "sandbox-send"]);
 
   const noSendPosture = EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM === false;
   const safety = {
