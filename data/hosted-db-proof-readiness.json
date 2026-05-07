@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-POST-MIGRATION-HISTORY-NETLIFY-RETRY-1.0",
+  "generatedAt": "2026-05-07T17:27:32.420Z",
+  "mode": "hosted_db_proof_readiness_summary",
+  "productionMutationByThisScript": false,
+  "secretsPrinted": false,
+  "sources": {
+    "migrationHistoryProductionPreflight": "data/migration-history-production-preflight.json",
+    "postMigrationHistoryNetlifyRetryPacket": "data/post-migration-history-netlify-retry-packet.json"
+  },
+  "preflightSummaryPresent": true,
+  "netlifyRetryPacketPresent": true,
+  "recommendedAfterNetlifyGreenDeploy": [
+    "Confirm build logs: prisma migrate deploy ran with no new migrations applied (pending was 0 pre-deploy).",
+    "Run npm run email:db:diagnose from an operator shell with hosted DATABASE_URL (never paste the URI into chat or tickets).",
+    "Optional HTTP proof: GET /api/admin/production-readiness/hosted-db with diagnostics bearer token — see docs/email-hosted-db-proof.md.",
+    "Record attestation in operator-controlled develop_notes or ticket — booleans and counts only, no PII export."
+  ],
+  "operatorDocs": [
+    "docs/hosted-db-proof-after-baseline.md",
+    "docs/email-hosted-db-proof.md",
+    "docs/email-command-center-launch-hardening.md"
+  ],
+  "gates": {
+    "migrationHistoryPreflightClean": true,
+    "netlifyRetryPacketEligible": true,
+    "readyForPostDeployHostedProofChecklist": true
+  },
+  "liveSendBlocked": true,
+  "note": "This JSON is planning-only; it does not call production or print DATABASE_URL."
+}

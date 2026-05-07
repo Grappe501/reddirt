@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-POST-MIGRATION-HISTORY-NETLIFY-RETRY-1.0",
+  "generatedAt": "2026-05-07T17:27:31.920Z",
+  "mode": "netlify_retry_readiness_after_migration_history_alignment",
+  "productionMutationExecutedByThisPacket": false,
+  "netlifyDeployTriggeredByThisPacket": false,
+  "liveSendApprovedByThisPacket": false,
+  "eligibility": {
+    "productionSchemaInstalled": true,
+    "legacyTablesPreserved": true,
+    "migrationHistoryAligned": true,
+    "pendingMigrationCountZero": true,
+    "prismaMigrateStatusClean": true,
+    "netlifyBuildRunsMigrateDeploy": true,
+    "migrateDeployExpectedNoOp": true,
+    "readyForOperatorNetlifyRetry": true,
+    "readyForAutomaticDeploy": false,
+    "readyForLiveSend": false
+  },
+  "deploymentRules": {
+    "operatorMustReviewNetlifyEnv": true,
+    "operatorMustConfirmDatabaseUrlProductionRef": "giozeoqulfojhxpywjil",
+    "operatorMustConfirmNoCloneUrlInNetlify": true,
+    "operatorMustConfirmNoLiveSend": true,
+    "dbPushForbidden": true,
+    "migrateResetForbidden": true
+  },
+  "nextRecommendedSlice": "REDDIRT-NETLIFY-OPERATOR-RETRY-1.0",
+  "sourcesRead": [
+    "data/migration-history-production-preflight.json",
+    "scripts/netlify-build.sh",
+    "netlify.toml"
+  ],
+  "preflightChecks": {
+    "productionProjectRefConfirmed": true,
+    "requiredLegacyTablesPresent": true,
+    "requiredNewAppTablesPresent": true,
+    "authUsersPresent": true,
+    "prismaMigrationsTableExists": true,
+    "prismaMigrationsCount71": true,
+    "pendingMigrationCountZero": true,
+    "migrateStatusExitCodeZero": true,
+    "migrateStatusSummaryUpToDate": true,
+    "readyForManualBaselineReview": true
+  },
+  "preflightGateFailures": [],
+  "netlifyBuildInspection": {
+    "scriptPath": "scripts/netlify-build.sh",
+    "buildScriptPresent": true,
+    "invokesPrismaMigrateDeploy": true,
+    "note": "migrate deploy is safe as no-op only when pending migrations are 0 and history matches; operator still owns Netlify env and trigger."
+  }
+}

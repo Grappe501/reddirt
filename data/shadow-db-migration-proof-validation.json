@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-SHADOW-PROOF-ARTIFACT-CONSOLIDATION-1.0",
+  "generatedAt": "2026-05-07T00:50:44.905Z",
+  "status": "pass",
+  "checks": [
+    {
+      "id": "slice",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "status_pass",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "productionMutationAttempted_false",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "migrateDeploy_success",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "applied_count_71",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "diff_clean",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "offline_flag_consistent",
+      "ok": true,
+      "detail": "ok"
+    }
+  ],
+  "violations": []
+}

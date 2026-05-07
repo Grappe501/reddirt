@@ -79,7 +79,7 @@ export function HostedDbReadinessAssistantView({
     gate.allEmailCommandCenterMigrationsApplied === null
       ? "Unknown (DB unreachable or query failed)"
       : gate.allEmailCommandCenterMigrationsApplied
-        ? `All tracked ECC migrations applied (${migApplied}/${migTotal})`
+        ? `All tracked workspace updates applied (${migApplied}/${migTotal})`
         : `Incomplete — ${migApplied}/${migTotal} applied`;
 
   return (
@@ -87,7 +87,7 @@ export function HostedDbReadinessAssistantView({
       {variant === "page" ? (
         <div className="flex flex-wrap items-center gap-2">
           <Link href={ECC} className="rounded border border-kelly-text/15 bg-white px-2 py-0.5 text-xs font-semibold text-kelly-slate">
-            ← Email Command Center
+            ← Communication Command Center
           </Link>
           <Link href={`${ECC}/readiness`} className="text-xs font-bold text-kelly-forest hover:underline">
             Readiness checklist
@@ -104,14 +104,14 @@ export function HostedDbReadinessAssistantView({
 
       <header className="space-y-2">
         {variant === "page" ? (
-          <h1 className="font-heading text-xl font-bold text-kelly-navy">Hosted DB readiness assistant</h1>
+          <h1 className="font-heading text-xl font-bold text-kelly-navy">Live database connection helper</h1>
         ) : (
-          <h2 className="font-heading text-xl font-bold text-kelly-navy">Hosted DB readiness assistant</h2>
+          <h2 className="font-heading text-xl font-bold text-kelly-navy">Live database connection helper</h2>
         )}
         <p className="max-w-3xl font-body text-sm text-kelly-text/85">
-          EMAIL-HOSTED-DB-READINESS-ASSISTANT-1.0 — safe operator view: <strong>names and posture only</strong> (no connection
-          string values, no passwords). This page does not edit env, run migrations, or import data. Use the copy buttons for CLI
-          snippets, then run gates from a shell where <strong>you</strong> set <code className="text-[10px]">DATABASE_URL</code> /{" "}
+          Safe staff view: <strong>names and posture only</strong> (no connection string values, no passwords). This page does not
+          edit settings, apply database updates, or import data. Use the copy buttons for CLI snippets, then run checks from a
+          shell where <strong>you</strong> set <code className="text-[10px]">DATABASE_URL</code> /{" "}
           <code className="text-[10px]">DIRECT_URL</code> for the Kelly-Grappe-App hosted Supabase target.
         </p>
       </header>
@@ -154,7 +154,7 @@ export function HostedDbReadinessAssistantView({
               />
             ) : null}
             <Row k="DB reachable (cockpit query)" v={gate.cockpitDbReachable ? "Yes" : "No"} />
-            <Row k="Migration status" v={migSummary} />
+            <Row k="Database update status" v={migSummary} />
             <Row
               k="Contact import gate"
               v={
@@ -193,7 +193,7 @@ export function HostedDbReadinessAssistantView({
       </section>
 
       <section className="rounded-lg border border-kelly-text/12 bg-kelly-page/35 p-3">
-        <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-kelly-navy">Operator copy (no secret values)</h2>
+        <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-kelly-navy">Staff checklist (no secret values)</h2>
         <ul className="mt-2 list-inside list-disc space-y-1.5 font-body text-[11px] text-kelly-navy/95">
           <li>
             In Supabase: <strong>Project Settings → Database</strong> → Connection string. Copy <strong>URI</strong> into your
@@ -201,12 +201,12 @@ export function HostedDbReadinessAssistantView({
             database).
           </li>
           <li>
-            <code className="text-[10px]">NEXT_PUBLIC_SUPABASE_URL</code> is for SSR/Auth clients — it does <strong>not</strong>{" "}
-            replace <code className="text-[10px]">DATABASE_URL</code> for Prisma. See <code className="text-[10px]">docs/deployment.md</code>.
+            <code className="text-[10px]">NEXT_PUBLIC_SUPABASE_URL</code> is for site auth and browser clients — it does <strong>not</strong>{" "}
+            replace <code className="text-[10px]">DATABASE_URL</code> for the app database driver. See <code className="text-[10px]">docs/deployment.md</code>.
           </li>
           <li>
             Session pooler vs direct: follow <code className="text-[10px]">docs/deployment.md</code> —{" "}
-            <code className="text-[10px]">DIRECT_URL</code> must work for <code className="text-[10px]">migrate deploy</code>.
+            <code className="text-[10px]">DIRECT_URL</code> must work for your team&apos;s documented deploy steps.
           </li>
           <li>Never paste full URIs into tickets, chat, or screenshots — rotate credentials if exposed.</li>
         </ul>
@@ -224,16 +224,16 @@ export function HostedDbReadinessAssistantView({
             <code className="text-[10px]">{gate.preflightCliHint}</code> — broader preflight
           </li>
           <li>
-            <code className="text-[10px]">{gate.importGateCliHint}</code> — includes{" "}
-            <code className="text-[10px]">prisma migrate deploy</code> + preflight + <code className="text-[10px]">npm run check</code>{" "}
-            — run only when <code className="text-[10px]">DATABASE_URL</code> points at the intended hosted DB
+            <code className="text-[10px]">{gate.importGateCliHint}</code> — includes deploy + preflight +{" "}
+            <code className="text-[10px]">npm run check</code> — run only when <code className="text-[10px]">DATABASE_URL</code> points at
+            the intended hosted database
           </li>
           <li>
             <code className="text-[10px]">npm run email:no-send-scan</code> — no-send sanity (heuristic)
           </li>
         </ol>
         <p className="mt-2 font-body text-[10px] text-kelly-text/75">
-          Repo doc: <code className="text-[9px]">{gate.readinessDocRepoPath}</code> · Packet:{" "}
+          Repo doc: <code className="text-[9px]">{gate.readinessDocRepoPath}</code> · Companion:{" "}
           <code className="text-[9px]">docs/email-hosted-db-readiness-assistant-1-0.md</code>
         </p>
       </section>

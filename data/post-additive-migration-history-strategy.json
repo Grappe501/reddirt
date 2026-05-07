@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-POST-ADDITIVE-SCHEMA-MIGRATION-HISTORY-STRATEGY-1.0",
+  "generatedAt": "2026-05-07T15:36:46.126Z",
+  "mode": "migration_history_strategy_offline",
+  "productionMutationByThisScript": false,
+  "problemStatement": "Application schema is present on production after additive SQL, but Prisma migration history (_prisma_migrations) was not established by that step. Netlify/CI migrate deploy remains hazardous until history aligns with on-disk reality.",
+  "recommendedApproach": {
+    "id": "D_post_additive",
+    "label": "Controlled migration-history baseline after additive DDL (extends baseline Option D)",
+    "steps": [
+      "Operator runs prisma migrate status against hosted production (read-only intent: observe pending vs applied; do not paste secrets).",
+      "On a disposable shadow DB that mirrors post-additive production shape (or fresh + additive replay), run migrate deploy and capture diff; confirm no unexpected DDL.",
+      "If production schema matches migration outcomes, use governed prisma migrate resolve (mark applied) per migration after DBA review — never fake history without proving equivalence.",
+      "If any migration would mutate legacy/voter tables, stop and use reconciliation artifacts (prisma-schema-map-alignment, shadow proof) before touching production.",
+      "Only after _prisma_migrations reflects truth: consider Netlify retry per separate readiness packet."
+    ],
+    "explicitlyRejectedInThisSlice": [
+      "Blind npx prisma migrate deploy against production with empty _prisma_migrations while additive SQL already applied.",
+      "prisma db push or migrate reset against production.",
+      "Faking _prisma_migrations rows without checksum and DDL equivalence review."
+    ]
+  },
+  "references": {
+    "baselineOptions": "see data/production-baseline-execution-review.json baselineOptions A–D",
+    "priorRecommendedOptionD": "D",
+    "additiveExecutionPacket": "data/additive-schema-production-execution-packet.json"
+  },
+  "nextRecommendedSlice": "REDDIRT-MIGRATION-HISTORY-BASELINE-EXECUTION-PACKET-1.0"
+}

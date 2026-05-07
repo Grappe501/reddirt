@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-POST-MIGRATION-HISTORY-NETLIFY-RETRY-1.0",
+  "generatedAt": "2026-05-07T17:27:32.162Z",
+  "status": "pass",
+  "checks": [
+    {
+      "id": "packet_exists",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "packet_slice",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "production_mutation_false",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "netlify_not_triggered",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "live_send_not_approved",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "automatic_deploy_false",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "live_send_false",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "db_push_forbidden",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "migrate_reset_forbidden",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "next_slice",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "preflight_eval_ok",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "eligibility_ready_matches_truth",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "checklist_exists",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "unlock_exists",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "doc_post-migration-history-netlify-retry-packet.md",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "doc_post-migration-history-deploy-checklist.md",
+      "ok": true,
+      "detail": "ok"
+    }
+  ],
+  "violations": [],
+  "safeForOperatorNetlifyRetryReview": true,
+  "safeForAutomaticNetlifyDeploy": false,
+  "safeForLiveSend": false
+}

@@ -1,0 +1,7 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-PRODUCTION-ADDITIVE-SCHEMA-INSTALL-PLAN-1.0",
+  "description": "Optional operator-maintained allowlists. Empty by default — FKs to legacy public tables are rejected unless listed here.",
+  "fkLegacyTargets": [],
+  "highRiskVoterTables": []
+}

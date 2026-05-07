@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-POST-MIGRATION-HISTORY-NETLIFY-RETRY-1.0",
+  "generatedAt": "2026-05-07T17:27:31.920Z",
+  "mode": "operator_netlify_production_retry_checklist",
+  "productionRef": "giozeoqulfojhxpywjil",
+  "items": [
+    {
+      "id": "review_packet_json",
+      "required": true,
+      "title": "Review machine packet",
+      "detail": "Open data/post-migration-history-netlify-retry-packet.json and confirm eligibility.* matches operator truth."
+    },
+    {
+      "id": "netlify_env_database_url",
+      "required": true,
+      "title": "Netlify DATABASE_URL",
+      "detail": "Hosted Postgres only; project ref must be giozeoqulfojhxpywjil. Use Supabase session pooler form (user postgres.giozeoqulfojhxpywjil) when host is *.pooler.supabase.com. No localhost / clone URL."
+    },
+    {
+      "id": "netlify_env_direct_url",
+      "required": false,
+      "title": "Netlify DIRECT_URL",
+      "detail": "If split pooler/direct URIs are used, set DIRECT_URL per Supabase docs; otherwise build script mirrors DATABASE_URL."
+    },
+    {
+      "id": "confirm_no_clone_in_netlify",
+      "required": true,
+      "title": "Confirm no clone/staging DB in production site env",
+      "detail": "Compare env to production project only; do not paste non-production URIs into the production Netlify site."
+    },
+    {
+      "id": "build_script_migrate_deploy",
+      "required": true,
+      "title": "Understand build runs prisma migrate deploy",
+      "detail": "netlify.toml invokes bash scripts/netlify-build.sh, which runs npx prisma migrate deploy after prisma generate. With pending migrations at 0, deploy should be a no-op aside from bookkeeping."
+    },
+    {
+      "id": "forbidden_cli",
+      "required": true,
+      "title": "Do not run db push or migrate reset",
+      "detail": "Forbidden on production: prisma db push, prisma migrate reset, raw additive SQL replay, migration-history baseline script again."
+    },
+    {
+      "id": "retry_deploy_only",
+      "required": true,
+      "title": "Controlled production deploy retry",
+      "detail": "Use Netlify UI or approved CI to trigger production deploy only — not triggered by this repo packet."
+    },
+    {
+      "id": "post_deploy_hosted_proof",
+      "required": true,
+      "title": "After green deploy: hosted DB proof",
+      "detail": "Run data-driven proof steps in data/hosted-db-proof-readiness.json and docs/hosted-db-proof-after-baseline.md (no secrets in logs)."
+    },
+    {
+      "id": "live_send_stays_blocked",
+      "required": true,
+      "title": "Live send remains blocked",
+      "detail": "EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM and broadcast paths stay gated until a future explicit execution packet."
+    }
+  ]
+}

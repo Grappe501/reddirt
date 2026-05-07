@@ -67,8 +67,8 @@ export default function CountyFairsPage() {
         >
           <p className="font-heading text-base font-bold text-kelly-ink md:text-lg">Arkansas county map — coming soon</p>
           <p className="mt-2 font-body text-sm text-kelly-slate">
-            Future: counties fill in when a fair visit is scheduled; visited counties can show completion status.
-            TODO: SVG basemap + data binding — no decorative pins until real coordinates/aggregates are approved.
+            Counties will fill in when a fair visit is scheduled; visited counties can show completion status. The map stays
+            empty until verified coordinates are available — no decorative pins.
           </p>
         </div>
 

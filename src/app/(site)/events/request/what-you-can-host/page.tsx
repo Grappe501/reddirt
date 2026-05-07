@@ -47,8 +47,7 @@ export default function InviteKellyWhatYouCanHostPage() {
           <p className="font-heading text-lg font-bold text-kelly-ink md:text-xl">{L3.formPlaceholderTitle}</p>
           <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-kelly-slate md:text-base">{L3.formPlaceholderBody}</p>
           <p className="mt-4 font-body text-xs text-kelly-text/60">
-            Uses the campaign&apos;s public contact route from site config (e.g. <span className="font-mono text-[11px]">NEXT_PUBLIC_CONTACT_EMAIL</span>).
-            {/* TODO: wire real workflow form; keep mailto as secondary once form exists */}
+            Uses the campaign&apos;s public contact address from site configuration until the hosted request form is live.
           </p>
           <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
             <Button href={mailto} variant="primary" className="min-h-[52px] w-full min-w-[14rem] sm:w-auto">

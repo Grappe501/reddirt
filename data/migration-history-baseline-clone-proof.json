@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-MIGRATION-HISTORY-BASELINE-EXECUTION-PACKET-1.0",
+  "generatedAt": "2026-05-07T16:09:04.944Z",
+  "mode": "clone_only_migration_history_baseline_proof",
+  "configured": true,
+  "attempted": true,
+  "ok": true,
+  "productionMutated": false,
+  "cloneMutated": true,
+  "productionProjectRefBlocked": false,
+  "before": {
+    "publicTableCount": 253,
+    "legacy": {
+      "ar02_voters": true,
+      "contacts": true,
+      "counties": true,
+      "event_requests": true,
+      "message_audiences": true,
+      "path_to_victory": true,
+      "people": true,
+      "person_profiles": true
+    },
+    "apps": {
+      "ContentItemOverride": true,
+      "HomepageConfig": true,
+      "InboundContentItem": true,
+      "CampaignEvent": true,
+      "AdminContentBlock": true,
+      "OwnedMediaAsset": true,
+      "SearchChunk": true,
+      "WorkflowIntake": true,
+      "EmailContactProfile": true,
+      "EmailWorkflowItem": true
+    },
+    "authUsersStillPresent": true,
+    "productionLikeOk": true
+  },
+  "after": {
+    "publicTableCount": 254,
+    "legacy": {
+      "ar02_voters": true,
+      "contacts": true,
+      "counties": true,
+      "event_requests": true,
+      "message_audiences": true,
+      "path_to_victory": true,
+      "people": true,
+      "person_profiles": true
+    },
+    "apps": {
+      "ContentItemOverride": true,
+      "HomepageConfig": true,
+      "InboundContentItem": true,
+      "CampaignEvent": true,
+      "AdminContentBlock": true,
+      "OwnedMediaAsset": true,
+      "SearchChunk": true,
+      "WorkflowIntake": true,
+      "EmailContactProfile": true,
+      "EmailWorkflowItem": true
+    },
+    "authUsersStillPresent": true,
+    "productionLikeOk": true
+  },
+  "resolveAppliedCount": 71,
+  "migrateDeployAfterResolve": {
+    "attempted": true,
+    "exitCode": 0,
+    "summary": "Environment variables loaded from .env\nPrisma schema loaded from prisma\\schema.prisma\nDatasource \"db\": PostgreSQL database \"postgres\", schemas \"auth, public\" at \"aws-1-us-east-1.pooler.supabase.com:5432\"\n\n71 migrations found in prisma/migrations\n\n\nNo pending migrations to apply."
+  },
+  "highValueProtection": {
+    "legacyTablesStillPresent": true,
+    "newAppTablesStillPresent": true,
+    "authUsersStillPresent": true
+  },
+  "recommendation": {
+    "cloneBaselineProofPassed": true,
+    "safeForProductionBaselineReview": false,
+    "nextRecommendedSlice": "REDDIRT-MIGRATION-HISTORY-BASELINE-OPERATOR-GATE-1.0"
+  },
+  "warnings": []
+}

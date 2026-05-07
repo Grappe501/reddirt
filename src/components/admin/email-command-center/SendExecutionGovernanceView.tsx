@@ -269,7 +269,7 @@ export function SendExecutionGovernanceView({ snapshot }: SendExecutionGovernanc
 
       <div className="flex flex-wrap items-center gap-2">
         <Link href={ECC} className="rounded border border-kelly-text/15 bg-white px-2 py-0.5 text-xs font-semibold text-kelly-slate">
-          ← Email Command Center
+          ← Communication Command Center
         </Link>
         <Link href={`${ECC}/message-studio`} className="text-xs text-kelly-text/60 hover:underline">
           Message Studio
@@ -338,7 +338,7 @@ export function SendExecutionGovernanceView({ snapshot }: SendExecutionGovernanc
       <section className={`${card} border-rose-200/60 bg-rose-50/75`}>
         <h2 className={`${h3} text-rose-950`}>Still blocked / unsafe by default</h2>
         <ul className="mt-2 list-inside list-disc space-y-1 font-body text-[11px] text-rose-950/95">
-          <li>No Gmail send-from-queue and no queue-triggered SendGrid from the Email Command Center lane.</li>
+          <li>No Gmail send-from-queue and no queue-triggered SendGrid from this messaging cockpit.</li>
           <li>
             No background sends — the console below only sends when an operator submits a form action (test or final).
           </li>

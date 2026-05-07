@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-COMMUNICATION-COMMAND-CENTER-HOSTED-DIAGNOSTICS-1.0",
+  "generatedAt": "2026-05-07T20:00:00.000Z",
+  "mode": "communication_command_center_readiness_contract",
+  "api": {
+    "method": "GET",
+    "path": "/api/admin/communication-command-center/readiness",
+    "auth": "Authorization: Bearer — EMAIL_DIAGNOSTICS_TOKEN primary, ADMIN_DIAGNOSTIC_TOKEN fallback (timing-safe HMAC digest compare, same as hosted DB proof)"
+  },
+  "adminPagePath": "/admin/workbench/communication-command-center/readiness",
+  "databaseFields": ["reachable", "productionCanonical"],
+  "tableKeys": [
+    "WorkflowIntake",
+    "EmailContactProfile",
+    "EmailWorkflowItem",
+    "CampaignEvent",
+    "CommunicationMessage",
+    "CommunicationThread",
+    "CommunicationSend",
+    "CommunicationRecipient"
+  ],
+  "routeKeys": [
+    "hostedDbProof",
+    "gmailOauthStart",
+    "gmailOauthCallback",
+    "gmailPubSub",
+    "calendarCallback",
+    "calendarCronSync",
+    "calendarWebhook",
+    "sendgridWebhook",
+    "twilioWebhook"
+  ],
+  "routeFilesRelativeToSrcAppApi": {
+    "hostedDbProof": ["admin", "production-readiness", "hosted-db", "route.ts"],
+    "gmailOauthStart": ["gmail", "oauth", "start", "route.ts"],
+    "gmailOauthCallback": ["gmail", "oauth", "callback", "route.ts"],
+    "gmailPubSub": ["gmail", "pubsub", "route.ts"],
+    "calendarCallback": ["calendar", "google", "callback", "route.ts"],
+    "calendarCronSync": ["calendar", "google", "cron-sync", "route.ts"],
+    "calendarWebhook": ["calendar", "google", "webhook", "route.ts"],
+    "sendgridWebhook": ["webhooks", "sendgrid", "route.ts"],
+    "twilioWebhook": ["webhooks", "twilio", "route.ts"]
+  },
+  "safetyKeys": [
+    "liveSendApproved",
+    "gmailSendApproved",
+    "sendgridLiveSendApproved",
+    "twilioSmsApproved",
+    "socialPostingApproved",
+    "contactImportApproved",
+    "automationWorkersApproved",
+    "noSendPosture"
+  ],
+  "forbiddenBySlice": [
+    "live_send",
+    "gmail_send",
+    "sendgrid_live_send",
+    "twilio_sms_send",
+    "social_posting",
+    "contact_import_execution",
+    "automation_worker_activation"
+  ],
+  "productionMutationByThisArtifact": false,
+  "secretsInArtifact": false
+}

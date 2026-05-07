@@ -68,7 +68,7 @@ export default async function EmailAudienceStudioPage({
           href="/admin/workbench/email-command-center"
           className="rounded border border-kelly-text/15 bg-white px-2 py-0.5 text-xs font-semibold text-kelly-slate"
         >
-          ← Email Command Center
+          ← Communication Command Center
         </Link>
         <Link href="/admin/workbench/email-command-center/profiles" className="text-xs text-kelly-text/60 hover:underline">
           Profile &amp; hint review

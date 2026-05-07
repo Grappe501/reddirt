@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-POST-ADDITIVE-SCHEMA-MIGRATION-HISTORY-STRATEGY-1.0",
+  "generatedAt": "2026-05-07T15:36:46.546Z",
+  "status": "pass",
+  "checks": [
+    {
+      "id": "strategy_exists",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "strategy_slice",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "strategy_no_mutate",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "netlify_exists",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "netlify_retry_false",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "netlify_not_approved",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "live_send_blocked",
+      "ok": true,
+      "detail": "ok"
+    }
+  ]
+}

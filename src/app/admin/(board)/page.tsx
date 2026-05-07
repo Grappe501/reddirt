@@ -25,14 +25,14 @@ export default function AdminDashboardPage() {
           — orientation, command-board links, integrations status, controlled research posture (planned).
         </p>
         <p className="rounded-lg border border-kelly-navy/20 bg-kelly-navy/[0.06] px-4 py-3 font-body text-sm text-kelly-text/85">
-          <strong>Email Command Center:</strong>{" "}
+          <strong>Communication Command Center:</strong>{" "}
           <Link
             className="font-semibold text-kelly-slate underline underline-offset-2 hover:text-kelly-navy"
             href="/admin/workbench/email-command-center"
           >
-            Open Email Command Center
+            Open Communication Command Center
           </Link>{" "}
-          — cockpit, daily console, readiness, audiences, imports, Message Studio, and send-execution governance
+          — daily priorities, message follow-ups, readiness checks, audiences, imports, Message Studio, and send governance
           (admin workbench).
         </p>
       </div>

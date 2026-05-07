@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-POST-ADDITIVE-SCHEMA-MIGRATION-HISTORY-STRATEGY-1.0",
+  "generatedAt": "2026-05-07T15:36:46.126Z",
+  "mode": "netlify_readiness_decision_offline",
+  "retryNetlifyProductionBuildNow": false,
+  "retryApprovedByThisPacket": false,
+  "liveSendApprovedByThisPacket": false,
+  "migrateDeployRunsInNetlifyBuild": true,
+  "netlifyBuildScriptReference": "scripts/netlify-build.sh",
+  "reason": "migrate deploy is still invoked from the Netlify build script; without aligned _prisma_migrations, production builds can fail (e.g. P3005) or attempt duplicate DDL.",
+  "prerequisitesBeforeRetry": [
+    "Complete REDDIRT-MIGRATION-HISTORY-BASELINE-EXECUTION-PACKET-1.0 (or equivalent Steve-approved path).",
+    "Hosted prisma migrate status shows migration history consistent with production schema.",
+    "Steve approval for Netlify production retry touching production DATABASE_URL."
+  ],
+  "priorReadinessArtifact": "data/netlify-production-retry-readiness.json"
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-MIGRATION-HISTORY-BASELINE-EXECUTION-PACKET-1.0",
+  "generatedAt": "2026-05-07T15:56:42.918Z",
+  "mode": "post_migration_history_netlify_readiness",
+  "netlifyProductionRetryApproved": false,
+  "netlifyRetryBlockedUntil": [
+    "Migration-history baseline executed on production with Steve approval.",
+    "data/migration-history-postcheck-plan.json checks satisfied (hosted migrate status clean).",
+    "Separate Steve-approved Netlify retry packet."
+  ],
+  "hostedDbProof": "Follows successful Netlify deploy and operator-hosted verification — not claimed by this packet.",
+  "emailDiagnostics": "Run npm run email:db:diagnose and lane gates only after hosted DB is verified; no secrets in logs.",
+  "liveSend": "Remains blocked until explicit future execution packet.",
+  "netlifyBuildScriptNote": "scripts/netlify-build.sh still invokes npx prisma migrate deploy after prisma generate."
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-COMMUNICATION-COMMAND-CENTER-HOSTED-DIAGNOSTICS-1.0",
+  "generatedAt": "2026-05-07T20:14:42.467Z",
+  "mode": "communication_command_center_launch_report",
+  "productionMutationByThisScript": false,
+  "liveSendTriggeredByThisScript": false,
+  "summary": "Bearer GET /api/admin/communication-command-center/readiness returns DB canonical flags, comms table presence, webhook route file contract, and explicit no-send safety booleans. Admin UI: /admin/workbench/communication-command-center/readiness.",
+  "contractPath": "data\\communication-command-center-readiness-contract.json",
+  "operatorDocs": [
+    "docs/communication-command-center-readiness.md",
+    "docs/email-command-center-launch-hardening.md"
+  ],
+  "validateScript": "node scripts/validate-communication-command-center-readiness.mjs",
+  "tableKeyCount": 8,
+  "routeKeyCount": 9
+}

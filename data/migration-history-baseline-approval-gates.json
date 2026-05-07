@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-MIGRATION-HISTORY-BASELINE-EXECUTION-PACKET-1.0",
+  "generatedAt": "2026-05-07T15:56:42.918Z",
+  "approvalPhraseRequired": "STEVE_APPROVES_REDDIRT_MIGRATION_HISTORY_BASELINE_EXECUTION",
+  "gates": [
+    {
+      "key": "backup_pitr",
+      "label": "Backup/PITR proof confirmed immediately before execution",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Supabase backup/PITR retention + restore drill reference (no secrets in repo)",
+      "whoApproves": "operator",
+      "notes": ""
+    },
+    {
+      "key": "correct_production_ref",
+      "label": "Correct production project ref confirmed: giozeoqulfojhxpywjil",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Dashboard visual match to intended Supabase project",
+      "whoApproves": "operator",
+      "notes": ""
+    },
+    {
+      "key": "post_additive_postcheck",
+      "label": "Production additive postcheck proof confirmed",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "data/post-additive-production-postcheck-proof.json attestation current",
+      "whoApproves": "operator",
+      "notes": ""
+    },
+    {
+      "key": "command_list_reviewed",
+      "label": "Migration command list reviewed",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "data/migration-history-baseline-command-list.json",
+      "whoApproves": "Steve/operator",
+      "notes": ""
+    },
+    {
+      "key": "migration_count_reviewed",
+      "label": "Migration count reviewed",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "71 migration folders unless repo intentionally changed",
+      "whoApproves": "Steve/operator",
+      "notes": ""
+    },
+    {
+      "key": "checksum_risk",
+      "label": "Edited migration checksum risk acknowledged",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Awareness of 20260505203000_email_contact_profile_graph edit per baseline review",
+      "whoApproves": "Steve/operator",
+      "notes": ""
+    },
+    {
+      "key": "writes_prisma_migrations",
+      "label": "Operator understands this writes _prisma_migrations",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "migrate resolve records rows; no DDL from migration.sql in resolve path",
+      "whoApproves": "operator",
+      "notes": ""
+    },
+    {
+      "key": "no_ddl_from_resolve",
+      "label": "Operator understands this does not run DDL migration files",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Training: resolve --applied marks applied only",
+      "whoApproves": "operator",
+      "notes": ""
+    },
+    {
+      "key": "no_migrate_deploy_in_packet",
+      "label": "Operator understands this packet path does not require migrate deploy for baseline",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Governed sequence: resolve first; deploy only if separate step approved",
+      "whoApproves": "Steve/operator",
+      "notes": ""
+    },
+    {
+      "key": "netlify_separate",
+      "label": "Operator understands this does not approve Netlify retry",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Separate slice after postcheck",
+      "whoApproves": "Steve",
+      "notes": ""
+    },
+    {
+      "key": "live_send_blocked",
+      "label": "Operator understands this does not approve live send",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "EMAIL_WORKFLOW and provider sends unchanged",
+      "whoApproves": "Steve",
+      "notes": ""
+    },
+    {
+      "key": "maintenance_window",
+      "label": "Maintenance window confirmed",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Comms to stakeholders",
+      "whoApproves": "operator",
+      "notes": ""
+    },
+    {
+      "key": "steve_phrase",
+      "label": "Steve approval phrase recorded",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "STEVE_APPROVES_REDDIRT_MIGRATION_HISTORY_BASELINE_EXECUTION",
+      "whoApproves": "Steve",
+      "notes": ""
+    },
+    {
+      "key": "postcheck_plan_ack",
+      "label": "Post-baseline verification plan acknowledged",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "docs/migration-history-postcheck-plan.md",
+      "whoApproves": "operator",
+      "notes": ""
+    }
+  ]
+}

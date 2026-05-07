@@ -1,0 +1,127 @@
+{
+  "ok": true,
+  "mode": "hosted_db_readonly_proof",
+  "env": {
+    "DATABASE_URL": {
+      "present": true,
+      "supabaseProjectRefConfirmed": true,
+      "parseHint": "username_postgres_dot_ref"
+    },
+    "DIRECT_URL": {
+      "present": true,
+      "supabaseProjectRefConfirmed": true,
+      "parseHint": "username_postgres_dot_ref"
+    }
+  },
+  "database": {
+    "reachable": true,
+    "selectOneOk": true,
+    "safeCounts": [
+      {
+        "table": "User",
+        "ok": false
+      }
+    ],
+    "provider": "postgresql",
+    "sanitizedError": null
+  },
+  "productionSchemaContract": {
+    "requiredProductionProjectRef": "giozeoqulfojhxpywjil",
+    "databaseUrlSupabaseProjectRef": "giozeoqulfojhxpywjil",
+    "directUrlSupabaseProjectRef": "giozeoqulfojhxpywjil",
+    "databaseUrlRefMatchesProduction": true,
+    "directUrlRefMatchesProduction": true,
+    "legacyPublicTables": [
+      {
+        "table": "ar02_voters",
+        "ok": true
+      },
+      {
+        "table": "contacts",
+        "ok": true
+      },
+      {
+        "table": "counties",
+        "ok": true
+      },
+      {
+        "table": "event_requests",
+        "ok": true
+      },
+      {
+        "table": "message_audiences",
+        "ok": true
+      },
+      {
+        "table": "path_to_victory",
+        "ok": true
+      },
+      {
+        "table": "people",
+        "ok": true
+      },
+      {
+        "table": "person_profiles",
+        "ok": true
+      }
+    ],
+    "newAppPublicTables": [
+      {
+        "table": "ContentItemOverride",
+        "ok": true
+      },
+      {
+        "table": "HomepageConfig",
+        "ok": true
+      },
+      {
+        "table": "InboundContentItem",
+        "ok": true
+      },
+      {
+        "table": "CampaignEvent",
+        "ok": true
+      },
+      {
+        "table": "AdminContentBlock",
+        "ok": true
+      },
+      {
+        "table": "OwnedMediaAsset",
+        "ok": true
+      },
+      {
+        "table": "SearchChunk",
+        "ok": true
+      },
+      {
+        "table": "WorkflowIntake",
+        "ok": true
+      },
+      {
+        "table": "EmailContactProfile",
+        "ok": true
+      },
+      {
+        "table": "EmailWorkflowItem",
+        "ok": true
+      }
+    ],
+    "authUsersTablePresent": true,
+    "prismaMigrations": {
+      "tablePresent": true,
+      "rowCount": 71,
+      "expectedCount": 71,
+      "countMatchesExpected": true
+    },
+    "contractSatisfied": true
+  },
+  "proof": {
+    "readOnly": true,
+    "mutatedData": false,
+    "migrationsRun": false,
+    "productionCanonical": true
+  },
+  "warnings": [],
+  "nextRecommendedStep": "Hosted proof passed: record redacted JSON in develop_notes per docs/email-hosted-db-proof.md; complete migrate/introspection discipline if DIRECT_URL was absent."
+}

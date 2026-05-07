@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-PRISMA-SCHEMA-MAP-PATCH-PLAN-AND-SHADOW-PROOF-1.0",
+  "generatedAt": "2026-05-06T23:45:15.967Z",
+  "mode": "plan_only",
+  "warnings": [
+    "Do not run prisma migrate deploy, db push, migrate resolve, or migrate reset against production.",
+    "Do not use production credentials for destructive experiments."
+  ],
+  "steps": [
+    "Create or designate a Supabase shadow project, database branch, or restored clone without live campaign/voter write traffic.",
+    "Load schema from production backup or logical dump into shadow; confirm auth and public catalogs match expectations.",
+    "Apply the same prisma/schema.prisma mapping changes as main branch (no secrets in repo).",
+    "Run `npx prisma validate` against shadow DATABASE_URL.",
+    "Run `npx prisma migrate status` on shadow (expect drift until baseline strategy is chosen).",
+    "Run `npx prisma migrate diff` (from migrations to shadow DB) and archive output for human review.",
+    "Run `npx prisma migrate deploy` **only** on shadow/clone — never production in this slice.",
+    "Verify no voter warehouse tables are dropped or renamed by generated SQL.",
+    "Run `npm run build` / `npm run check` against shadow-connected env in CI or local.",
+    "Verify hosted DB diagnostic route against shadow if applicable."
+  ],
+  "successCriteria": [
+    "Shadow validates and deploy produces no destructive DDL against preserved tables.",
+    "Operator signs off column-level compatibility for any @@map applied."
+  ]
+}

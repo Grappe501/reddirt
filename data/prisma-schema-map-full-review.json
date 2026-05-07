@@ -1,0 +1,4005 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-PRISMA-SCHEMA-MAP-PATCH-PLAN-AND-SHADOW-PROOF-1.0",
+  "generatedAt": "2026-05-06T23:45:15.964Z",
+  "mode": "offline_full_review",
+  "sourceArtifacts": {
+    "audit": "data/production-db-baseline-audit.json",
+    "baselinePlan": "data/production-db-baseline-plan.json",
+    "reconciliation": "data/production-db-schema-reconciliation.json",
+    "alignment": "data/prisma-schema-map-alignment.json",
+    "prismaSchema": "prisma/schema.prisma",
+    "migrationsGlob": "prisma/migrations/**/migration.sql",
+    "srcScan": "src/**/*.{ts,tsx}"
+  },
+  "databaseIdentity": {
+    "reachable": true,
+    "prismaMigrationsTableExists": false,
+    "observedPublicTableCount": 115,
+    "prismaModelCount": 148,
+    "alignmentSnapshot": {
+      "observedPublicTableCount": 115,
+      "prismaExpectedModelCount": 148,
+      "prismaMigrationsTableExists": false
+    }
+  },
+  "modelReview": [
+    {
+      "modelName": "User",
+      "currentTableName": "User",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": "users",
+      "classification": "existing_table_medium_confidence_review",
+      "riskLevel": "critical",
+      "confidence": "low",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421120000_init"
+      ],
+      "reason": "Explicit governance: do not auto-map in this packet.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "ComplianceDocument",
+      "currentTableName": "ComplianceDocument",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260509120000_comp2_compliance_document"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "FinancialTransaction",
+      "currentTableName": "FinancialTransaction",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260510120000_fin1_financial_transaction"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "FieldUnit",
+      "currentTableName": "FieldUnit",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260512120000_fin2_field1_youth1_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "FieldAssignment",
+      "currentTableName": "FieldAssignment",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260512120000_fin2_field1_youth1_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "BudgetPlan",
+      "currentTableName": "BudgetPlan",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260511120000_budget2_budget_plan_line"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "BudgetLine",
+      "currentTableName": "BudgetLine",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260511120000_budget2_budget_plan_line"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "PositionSeat",
+      "currentTableName": "PositionSeat",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260504140000_seat1_position_seat"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "ContactPreference",
+      "currentTableName": "ContactPreference",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260422120000_comms_tier1_contact_preferences"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "VolunteerProfile",
+      "currentTableName": "VolunteerProfile",
+      "existingMap": null,
+      "proposedMap": "volunteer_profiles",
+      "observedTableMatch": "volunteer_profiles",
+      "classification": "existing_table_medium_confidence_review",
+      "riskLevel": "high",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421120000_init"
+      ],
+      "reason": "Reconciliation flagged needs_mapping_review or model-specific governance (EventRequest).",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "Commitment",
+      "currentTableName": "Commitment",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421120000_init"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "Submission",
+      "currentTableName": "submissions",
+      "existingMap": "submissions",
+      "proposedMap": "submissions",
+      "observedTableMatch": "submissions",
+      "classification": "existing_table_high_confidence_map",
+      "riskLevel": "low",
+      "confidence": "high",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421120000_init"
+      ],
+      "reason": "@@map already matches audited public table name.",
+      "patchAllowed": true
+    },
+    {
+      "modelName": "WorkflowIntake",
+      "currentTableName": "WorkflowIntake",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "existing_table_medium_confidence_review",
+      "riskLevel": "high",
+      "confidence": "low",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260425130000_campaignos_phase1_workflow_intake"
+      ],
+      "reason": "Explicit governance: do not auto-map in this packet.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "EventRequest",
+      "currentTableName": "EventRequest",
+      "existingMap": null,
+      "proposedMap": "event_requests",
+      "observedTableMatch": "event_requests",
+      "classification": "existing_table_medium_confidence_review",
+      "riskLevel": "high",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260425130000_campaignos_phase1_workflow_intake"
+      ],
+      "reason": "Reconciliation flagged needs_mapping_review or model-specific governance (EventRequest).",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "WorkflowAction",
+      "currentTableName": "WorkflowAction",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260425130000_campaignos_phase1_workflow_intake"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "SocialContentItem",
+      "currentTableName": "SocialContentItem",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260425140000_social_workbench_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "AnalyticsRecommendationOutcome",
+      "currentTableName": "AnalyticsRecommendationOutcome",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260430133000_analytics_recommendation_outcomes"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "SocialContentDraft",
+      "currentTableName": "SocialContentDraft",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260431140000_social_content_draft"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "SocialPlatformVariant",
+      "currentTableName": "SocialPlatformVariant",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260425140000_social_workbench_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "SocialPerformanceSnapshot",
+      "currentTableName": "SocialPerformanceSnapshot",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260427120000_social_workbench_analytics"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "SocialContentStrategicInsight",
+      "currentTableName": "SocialContentStrategicInsight",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260427120000_social_workbench_analytics"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "ConversationWatchlist",
+      "currentTableName": "ConversationWatchlist",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260428120000_conversation_monitoring"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "ConversationItem",
+      "currentTableName": "ConversationItem",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260428120000_conversation_monitoring"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "ConversationAnalysis",
+      "currentTableName": "ConversationAnalysis",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260428120000_conversation_monitoring"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "ConversationCluster",
+      "currentTableName": "ConversationCluster",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260428120000_conversation_monitoring"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "ConversationClusterItem",
+      "currentTableName": "ConversationClusterItem",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260428120000_conversation_monitoring"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "ConversationOpportunity",
+      "currentTableName": "ConversationOpportunity",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260428120000_conversation_monitoring"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "SocialContentMediaRef",
+      "currentTableName": "SocialContentMediaRef",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260426120000_social_workbench_media_library"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "SocialAccount",
+      "currentTableName": "SocialAccount",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260425140000_social_workbench_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "SearchChunk",
+      "currentTableName": "SearchChunk",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421120000_init"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "AnalyticsEvent",
+      "currentTableName": "AnalyticsEvent",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421120000_init"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "MediaAsset",
+      "currentTableName": "media_assets",
+      "existingMap": "media_assets",
+      "proposedMap": "media_assets",
+      "observedTableMatch": "media_assets",
+      "classification": "existing_table_high_confidence_map",
+      "riskLevel": "low",
+      "confidence": "high",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421140000_admin_content_board"
+      ],
+      "reason": "@@map already matches audited public table name.",
+      "patchAllowed": true
+    },
+    {
+      "modelName": "SyncedPost",
+      "currentTableName": "SyncedPost",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421140000_admin_content_board"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "AdminContentBlock",
+      "currentTableName": "AdminContentBlock",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421140000_admin_content_board"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "HomepageConfig",
+      "currentTableName": "HomepageConfig",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421140000_admin_content_board"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "ContentItemOverride",
+      "currentTableName": "ContentItemOverride",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421140000_admin_content_board"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "SiteSettings",
+      "currentTableName": "SiteSettings",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421140000_admin_content_board"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "PlatformConnection",
+      "currentTableName": "PlatformConnection",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421180000_content_orchestrator"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "InboundContentItem",
+      "currentTableName": "InboundContentItem",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421180000_content_orchestrator"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "ContentDecision",
+      "currentTableName": "ContentDecision",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421180000_content_orchestrator"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "PlatformMetricSnapshot",
+      "currentTableName": "PlatformMetricSnapshot",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421180000_content_orchestrator"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "OwnedMediaAsset",
+      "currentTableName": "OwnedMediaAsset",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421200303_campaign_owned_media"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "OwnedMediaAnnotation",
+      "currentTableName": "OwnedMediaAnnotation",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421220304_owned_media_annotations_slice2"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "OwnedMediaTranscript",
+      "currentTableName": "OwnedMediaTranscript",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421200303_campaign_owned_media"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "OwnedMediaQuoteCandidate",
+      "currentTableName": "OwnedMediaQuoteCandidate",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421200303_campaign_owned_media"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "County",
+      "currentTableName": "counties",
+      "existingMap": "counties",
+      "proposedMap": "counties",
+      "observedTableMatch": "counties",
+      "classification": "existing_table_high_confidence_map",
+      "riskLevel": "low",
+      "confidence": "high",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260221120000_county_command_pages"
+      ],
+      "reason": "@@map already matches audited public table name.",
+      "patchAllowed": true
+    },
+    {
+      "modelName": "ElectionResultSource",
+      "currentTableName": "ElectionResultSource",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260513120000_data4_election_ingest_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "ElectionContestResult",
+      "currentTableName": "ElectionContestResult",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260513120000_data4_election_ingest_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "ElectionCountyResult",
+      "currentTableName": "ElectionCountyResult",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260513120000_data4_election_ingest_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "ElectionCandidateResult",
+      "currentTableName": "ElectionCandidateResult",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260513120000_data4_election_ingest_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "ElectionPrecinctResult",
+      "currentTableName": "ElectionPrecinctResult",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260513120000_data4_election_ingest_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "ElectionPrecinctCandidateResult",
+      "currentTableName": "ElectionPrecinctCandidateResult",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260513120000_data4_election_ingest_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CountyCampaignStats",
+      "currentTableName": "CountyCampaignStats",
+      "existingMap": null,
+      "proposedMap": "county_campaign_targets",
+      "observedTableMatch": "county_campaign_targets",
+      "classification": "existing_table_medium_confidence_review",
+      "riskLevel": "high",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260221120000_county_command_pages"
+      ],
+      "reason": "Reconciliation flagged needs_mapping_review or model-specific governance (EventRequest).",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CountyPublicDemographics",
+      "currentTableName": "CountyPublicDemographics",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260221120000_county_command_pages"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CountyRegistrationSnapshot",
+      "currentTableName": "CountyRegistrationSnapshot",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260424200000_county_intel_2_schema"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CountyStrategyKpi",
+      "currentTableName": "CountyStrategyKpi",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260424200000_county_intel_2_schema"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CountyElectedOfficial",
+      "currentTableName": "CountyElectedOfficial",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260221120000_county_command_pages"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "VoterFileSnapshot",
+      "currentTableName": "VoterFileSnapshot",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260221143000_voter_file_snapshots_and_metrics"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CountyVoterMetrics",
+      "currentTableName": "CountyVoterMetrics",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260221143000_voter_file_snapshots_and_metrics"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "VoterRecord",
+      "currentTableName": "VoterRecord",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": "voters",
+      "classification": "legacy_voter_warehouse_do_not_map",
+      "riskLevel": "critical",
+      "confidence": "high",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260221143000_voter_file_snapshots_and_metrics"
+      ],
+      "reason": "Voter warehouse semantics; production voter tables must not be auto-mapped from Prisma without human DBA review.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "VoterElectionParticipation",
+      "currentTableName": "VoterElectionParticipation",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260424190000_voter_election_participation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "VoterSignal",
+      "currentTableName": "VoterSignal",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260514120000_voter_model_1_interaction_1_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "VoterModelClassification",
+      "currentTableName": "VoterModelClassification",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260514120000_voter_model_1_interaction_1_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "VoterInteraction",
+      "currentTableName": "VoterInteraction",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260514120000_voter_model_1_interaction_1_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "RelationalContact",
+      "currentTableName": "RelationalContact",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": "contacts",
+      "classification": "existing_table_medium_confidence_review",
+      "riskLevel": "high",
+      "confidence": "low",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260515120000_rel2_relational_contact_foundation"
+      ],
+      "reason": "Explicit governance: do not auto-map in this packet.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "VoterVotePlan",
+      "currentTableName": "VoterVotePlan",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260514120000_voter_model_1_interaction_1_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "VoterSnapshotChange",
+      "currentTableName": "VoterSnapshotChange",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260221180000_voter_warehouse_hardening"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CampaignEvent",
+      "currentTableName": "CampaignEvent",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": "events",
+      "classification": "existing_table_medium_confidence_review",
+      "riskLevel": "high",
+      "confidence": "low",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421215343_campaign_ops_slice1"
+      ],
+      "reason": "Explicit governance: do not auto-map in this packet.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "FestivalIngestRun",
+      "currentTableName": "FestivalIngestRun",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260422150000_arkansas_festival_ingest"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "ArkansasFestivalIngest",
+      "currentTableName": "ArkansasFestivalIngest",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260422150000_arkansas_festival_ingest"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "FestivalCoveragePlanSnapshot",
+      "currentTableName": "FestivalCoveragePlanSnapshot",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260422150000_arkansas_festival_ingest"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CampaignTask",
+      "currentTableName": "CampaignTask",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421215343_campaign_ops_slice1"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "WorkflowTemplate",
+      "currentTableName": "WorkflowTemplate",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421215343_campaign_ops_slice1"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "WorkflowTemplateTask",
+      "currentTableName": "WorkflowTemplateTask",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421215343_campaign_ops_slice1"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "WorkflowRun",
+      "currentTableName": "WorkflowRun",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421215343_campaign_ops_slice1"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "VolunteerAsk",
+      "currentTableName": "VolunteerAsk",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421215343_campaign_ops_slice1"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "EventSignup",
+      "currentTableName": "EventSignup",
+      "existingMap": null,
+      "proposedMap": "volunteer_signups",
+      "observedTableMatch": "volunteer_signups",
+      "classification": "existing_table_medium_confidence_review",
+      "riskLevel": "high",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421215343_campaign_ops_slice1"
+      ],
+      "reason": "Reconciliation flagged needs_mapping_review or model-specific governance (EventRequest).",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "TeamRoleAssignment",
+      "currentTableName": "TeamRoleAssignment",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421215343_campaign_ops_slice1"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "MediaIngestBatch",
+      "currentTableName": "MediaIngestBatch",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421215343_campaign_ops_slice1"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "OwnedMediaCollection",
+      "currentTableName": "OwnedMediaCollection",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260429120000_owned_media_dam_media_center"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "OwnedMediaCollectionItem",
+      "currentTableName": "OwnedMediaCollectionItem",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260429120000_owned_media_dam_media_center"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "OwnedMediaReviewLog",
+      "currentTableName": "OwnedMediaReviewLog",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260429120000_owned_media_dam_media_center"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "OwnedMediaDerivativeJob",
+      "currentTableName": "OwnedMediaDerivativeJob",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260429120000_owned_media_dam_media_center"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "SignupSheetDocument",
+      "currentTableName": "SignupSheetDocument",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421221514_volunteer_signup_sheet_intake"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "SignupSheetExtraction",
+      "currentTableName": "SignupSheetExtraction",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421221514_volunteer_signup_sheet_intake"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "SignupSheetEntry",
+      "currentTableName": "SignupSheetEntry",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421221514_volunteer_signup_sheet_intake"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "VolunteerMatchCandidate",
+      "currentTableName": "VolunteerMatchCandidate",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421221514_volunteer_signup_sheet_intake"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CommunicationThread",
+      "currentTableName": "CommunicationThread",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421222620_comms_workbench_step1"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CommunicationMessage",
+      "currentTableName": "CommunicationMessage",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421222620_comms_workbench_step1"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CommunicationTemplate",
+      "currentTableName": "CommunicationTemplate",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260423000000_tier2_broadcast_engine"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "AudienceSegment",
+      "currentTableName": "AudienceSegment",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260423000000_tier2_broadcast_engine"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CommunicationCampaign",
+      "currentTableName": "CommunicationCampaign",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260423000000_tier2_broadcast_engine"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CommunicationCampaignRecipient",
+      "currentTableName": "CommunicationCampaignRecipient",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260423000000_tier2_broadcast_engine"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CommunicationActionQueue",
+      "currentTableName": "CommunicationActionQueue",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421222620_comms_workbench_step1"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CommunicationTag",
+      "currentTableName": "CommunicationTag",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421222620_comms_workbench_step1"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CommunicationThreadTag",
+      "currentTableName": "CommunicationThreadTag",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421222620_comms_workbench_step1"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CommunicationPlan",
+      "currentTableName": "CommunicationPlan",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260431170000_comms_workbench_packet1"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CommunicationDraft",
+      "currentTableName": "CommunicationDraft",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260431170000_comms_workbench_packet1"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CommunicationVariant",
+      "currentTableName": "CommunicationVariant",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260431170000_comms_workbench_packet1"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CommunicationSend",
+      "currentTableName": "CommunicationSend",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260431170000_comms_workbench_packet1"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "EmailWorkflowItem",
+      "currentTableName": "EmailWorkflowItem",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260504120000_email_workflow_e1"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "EmailContactProfile",
+      "currentTableName": "EmailContactProfile",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260505203000_email_contact_profile_graph"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "EmailContactProfileFact",
+      "currentTableName": "EmailContactProfileFact",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260505203000_email_contact_profile_graph"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "EmailContactProfileFactSuggestion",
+      "currentTableName": "EmailContactProfileFactSuggestion",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260505203000_email_contact_profile_graph"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "EmailAudienceHint",
+      "currentTableName": "EmailAudienceHint",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260505203000_email_contact_profile_graph"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "EmailAudienceDefinition",
+      "currentTableName": "EmailAudienceDefinition",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260505220000_email_audience_studio_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "EmailAudiencePreviewRun",
+      "currentTableName": "EmailAudiencePreviewRun",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260505220000_email_audience_studio_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "MessageStudioDraft",
+      "currentTableName": "MessageStudioDraft",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260508120000_message_studio_server_drafts"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "MessageStudioDraftRevision",
+      "currentTableName": "MessageStudioDraftRevision",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260508120000_message_studio_server_drafts"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "EmailContactImportBatch",
+      "currentTableName": "EmailContactImportBatch",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260507180000_email_contact_import_staging"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "EmailContactImportRow",
+      "currentTableName": "EmailContactImportRow",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260507180000_email_contact_import_staging"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "EmailContactImportDecision",
+      "currentTableName": "EmailContactImportDecision",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260507180000_email_contact_import_staging"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "SendGridContactMap",
+      "currentTableName": "SendGridContactMap",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260506120000_email_sendgrid_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "SendGridAudienceMap",
+      "currentTableName": "SendGridAudienceMap",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260506120000_email_sendgrid_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "SendGridSuppression",
+      "currentTableName": "SendGridSuppression",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260506120000_email_sendgrid_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "SendGridEvent",
+      "currentTableName": "SendGridEvent",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260506120000_email_sendgrid_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "SendGridContactSyncRun",
+      "currentTableName": "SendGridContactSyncRun",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260509120000_sendgrid_contact_sync_run"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "EmailSendExecution",
+      "currentTableName": "EmailSendExecution",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260510140000_email_send_execution"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "EmailSendRecipient",
+      "currentTableName": "EmailSendRecipient",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260510140000_email_send_execution"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "EmailSendApproval",
+      "currentTableName": "EmailSendApproval",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260510140000_email_send_execution"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CommunicationRecipient",
+      "currentTableName": "CommunicationRecipient",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260431200000_comms_contact_engagement_ce1_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CommunicationRecipientEvent",
+      "currentTableName": "CommunicationRecipientEvent",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260431200000_comms_contact_engagement_ce1_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CommunicationLinkDefinition",
+      "currentTableName": "CommunicationLinkDefinition",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260431200000_comms_contact_engagement_ce1_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CommsPlanAudienceSegment",
+      "currentTableName": "CommsPlanAudienceSegment",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260431200000_comms_contact_engagement_ce1_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CommsPlanAudienceSegmentMember",
+      "currentTableName": "CommsPlanAudienceSegmentMember",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260431200000_comms_contact_engagement_ce1_foundation"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "MediaOutreachItem",
+      "currentTableName": "MediaOutreachItem",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260431170000_comms_workbench_packet1"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "StaffGmailAccount",
+      "currentTableName": "StaffGmailAccount",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260423120000_tier25_webhooks_gmail"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CalendarSource",
+      "currentTableName": "CalendarSource",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421232900_calendar_hq_and_google"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CalendarWatchChannel",
+      "currentTableName": "CalendarWatchChannel",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421232900_calendar_hq_and_google"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "WeeklyCampaignPlan",
+      "currentTableName": "WeeklyCampaignPlan",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260422003847_weekly_command_matrix"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "WeeklyBigRock",
+      "currentTableName": "WeeklyBigRock",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260422003847_weekly_command_matrix"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "EventApproval",
+      "currentTableName": "EventApproval",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421232900_calendar_hq_and_google"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "EventStageChangeLog",
+      "currentTableName": "EventStageChangeLog",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260422012659_event_stage_log_and_lifecycle_fields"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "EventSyncLog",
+      "currentTableName": "EventSyncLog",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421232900_calendar_hq_and_google"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "EventAnalyticsSnapshot",
+      "currentTableName": "EventAnalyticsSnapshot",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421232900_calendar_hq_and_google"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "ExternalMediaSource",
+      "currentTableName": "ExternalMediaSource",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260425120000_external_media_monitor"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "ExternalMediaMention",
+      "currentTableName": "ExternalMediaMention",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260425120000_external_media_monitor"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "ExternalMediaIngestRun",
+      "currentTableName": "ExternalMediaIngestRun",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260425120000_external_media_monitor"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "OppositionEntity",
+      "currentTableName": "OppositionEntity",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260424180000_intel3_opposition_intelligence_schema"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "OppositionSource",
+      "currentTableName": "OppositionSource",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260424180000_intel3_opposition_intelligence_schema"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "OppositionBillRecord",
+      "currentTableName": "OppositionBillRecord",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260424180000_intel3_opposition_intelligence_schema"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "OppositionVoteRecord",
+      "currentTableName": "OppositionVoteRecord",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260424180000_intel3_opposition_intelligence_schema"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "OppositionFinanceRecord",
+      "currentTableName": "OppositionFinanceRecord",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260424180000_intel3_opposition_intelligence_schema"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "OppositionMessageRecord",
+      "currentTableName": "OppositionMessageRecord",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260424180000_intel3_opposition_intelligence_schema"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "OppositionVideoRecord",
+      "currentTableName": "OppositionVideoRecord",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260424180000_intel3_opposition_intelligence_schema"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "OppositionNewsMention",
+      "currentTableName": "OppositionNewsMention",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260424180000_intel3_opposition_intelligence_schema"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "OppositionElectionPattern",
+      "currentTableName": "OppositionElectionPattern",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260424180000_intel3_opposition_intelligence_schema"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "OppositionAccountabilityItem",
+      "currentTableName": "OppositionAccountabilityItem",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "new_prisma_owned_candidate",
+      "riskLevel": "medium",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260424180000_intel3_opposition_intelligence_schema"
+      ],
+      "reason": "No confident live-table match; expect shadow-created Prisma tables.",
+      "patchAllowed": false
+    }
+  ],
+  "tableReview": [
+    {
+      "tableName": "ar02_voter_dem_lean",
+      "classification": "warehouse_or_imported_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "ar02_voter_race",
+      "classification": "warehouse_or_imported_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "ar02_voters",
+      "classification": "warehouse_or_imported_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "ballot_initiatives",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "ballot_items",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "bls_county_economics",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "candidates",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "census_block_groups",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "census_demographics",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "census_tracts",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "civic_engagement_index",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "contact_origins",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "contact_voter_matches",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "contacts",
+      "classification": "prisma_managed_candidate",
+      "linkedModels": [
+        "RelationalContact"
+      ],
+      "notes": ""
+    },
+    {
+      "tableName": "contest_partisan_index",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "contests",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "counties",
+      "classification": "prisma_managed_candidate",
+      "linkedModels": [
+        "County"
+      ],
+      "notes": ""
+    },
+    {
+      "tableName": "county_campaign_targets",
+      "classification": "prisma_managed_candidate",
+      "linkedModels": [
+        "CountyCampaignStats"
+      ],
+      "notes": ""
+    },
+    {
+      "tableName": "county_results",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "county_turnout",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "donations",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "election_candidates",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "election_contests",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "election_results",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "elections",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "event_notifications",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "event_requests",
+      "classification": "prisma_managed_candidate",
+      "linkedModels": [
+        "EventRequest"
+      ],
+      "notes": ""
+    },
+    {
+      "tableName": "events",
+      "classification": "prisma_managed_candidate",
+      "linkedModels": [
+        "CampaignEvent"
+      ],
+      "notes": ""
+    },
+    {
+      "tableName": "external_intelligence_sources",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "external_records",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "followups",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "geographic_scores",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "geographic_units",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "geography_leaders",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "ingestion_entities",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "ingestion_extractions",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "ingestion_files",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "ingestion_jobs",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "ingestion_mapping_suggestions",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "ingestion_reviews",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "ingestion_write_events",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "initiative_signatures",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "intelligence_links",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "interactions",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "leadership_roles",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "locations",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "media_assets",
+      "classification": "prisma_managed_candidate",
+      "linkedModels": [
+        "MediaAsset"
+      ],
+      "notes": ""
+    },
+    {
+      "tableName": "media_entity_links",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "media_tags",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "message_audience_members",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "message_audiences",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "message_campaigns",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "message_events",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "message_queue",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "message_templates",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "organization_types",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "organizations",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "organizer_assignments",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "organizing_targets",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "organizing_unit_hierarchy",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "organizing_unit_memberships",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "organizing_unit_types",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "organizing_units",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "path_to_victory",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "people",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "person_geography",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "person_profiles",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "petition_signatures",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "petitions",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "precinct_scores",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "profiles",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "results",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "runoff_fracture_index",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "shifts",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "spatial_ref_sys",
+      "classification": "legacy_preserve_do_not_touch",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "statewide_win_targets",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "submissions",
+      "classification": "prisma_managed_candidate",
+      "linkedModels": [
+        "Submission"
+      ],
+      "notes": ""
+    },
+    {
+      "tableName": "target_universes",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "tasks",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "telemetry_events",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "training_certifications",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "training_courses",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "training_enrollments",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "training_events",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "training_modules",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "training_path_modules",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "training_paths",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "training_progress",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "training_records",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "turf_people",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "turfs",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "user_auth_methods",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "users",
+      "classification": "prisma_managed_candidate",
+      "linkedModels": [
+        "User"
+      ],
+      "notes": ""
+    },
+    {
+      "tableName": "volunteer_intake_submissions",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "volunteer_profiles",
+      "classification": "prisma_managed_candidate",
+      "linkedModels": [
+        "VolunteerProfile"
+      ],
+      "notes": ""
+    },
+    {
+      "tableName": "volunteer_signups",
+      "classification": "prisma_managed_candidate",
+      "linkedModels": [
+        "EventSignup"
+      ],
+      "notes": ""
+    },
+    {
+      "tableName": "volunteer_sources",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "volunteers",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "voter_block_group_map",
+      "classification": "warehouse_or_imported_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "voter_geocoded",
+      "classification": "warehouse_or_imported_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "voter_import_batches",
+      "classification": "warehouse_or_imported_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "voter_party_model",
+      "classification": "warehouse_or_imported_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "voter_profiles",
+      "classification": "warehouse_or_imported_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "voter_registry",
+      "classification": "warehouse_or_imported_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "voter_scores",
+      "classification": "warehouse_or_imported_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "voter_vote_history",
+      "classification": "warehouse_or_imported_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "voter_vote_history_raw",
+      "classification": "warehouse_or_imported_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "voters",
+      "classification": "prisma_managed_candidate",
+      "linkedModels": [
+        "VoterRecord"
+      ],
+      "notes": ""
+    },
+    {
+      "tableName": "workspace_feature_flags",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "workspace_geography_scope",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "workspace_members",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "workspace_roles",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "workspace_types",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "workspaces",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    },
+    {
+      "tableName": "youth_profiles",
+      "classification": "possibly_unmapped_app_table",
+      "linkedModels": [],
+      "notes": ""
+    }
+  ],
+  "migrationReview": [
+    {
+      "migrationId": "20260221120000_county_command_pages",
+      "createTables": [
+        "County",
+        "CountyCampaignStats",
+        "CountyPublicDemographics",
+        "CountyElectedOfficial"
+      ],
+      "byteLength": 4227
+    },
+    {
+      "migrationId": "20260221143000_voter_file_snapshots_and_metrics",
+      "createTables": [
+        "VoterFileSnapshot",
+        "CountyVoterMetrics",
+        "VoterRecord"
+      ],
+      "byteLength": 4738
+    },
+    {
+      "migrationId": "20260221180000_voter_warehouse_hardening",
+      "createTables": [
+        "VoterSnapshotChange"
+      ],
+      "byteLength": 3411
+    },
+    {
+      "migrationId": "20260421120000_init",
+      "createTables": [
+        "User",
+        "VolunteerProfile",
+        "Commitment",
+        "Submission",
+        "SearchChunk",
+        "AnalyticsEvent"
+      ],
+      "byteLength": 2681
+    },
+    {
+      "migrationId": "20260421140000_admin_content_board",
+      "createTables": [
+        "MediaAsset",
+        "SyncedPost",
+        "AdminContentBlock",
+        "HomepageConfig",
+        "ContentItemOverride",
+        "SiteSettings"
+      ],
+      "byteLength": 4836
+    },
+    {
+      "migrationId": "20260421150000_homepage_editorial_media_dims",
+      "createTables": [],
+      "byteLength": 239
+    },
+    {
+      "migrationId": "20260421180000_content_orchestrator",
+      "createTables": [
+        "PlatformConnection",
+        "InboundContentItem",
+        "ContentDecision",
+        "PlatformMetricSnapshot"
+      ],
+      "byteLength": 5282
+    },
+    {
+      "migrationId": "20260421194722_content_hub_phase1",
+      "createTables": [],
+      "byteLength": 1439
+    },
+    {
+      "migrationId": "20260421200303_campaign_owned_media",
+      "createTables": [
+        "OwnedMediaAsset",
+        "OwnedMediaTranscript",
+        "OwnedMediaQuoteCandidate"
+      ],
+      "byteLength": 5278
+    },
+    {
+      "migrationId": "20260421215343_campaign_ops_slice1",
+      "createTables": [
+        "CampaignEvent",
+        "CampaignTask",
+        "WorkflowTemplate",
+        "WorkflowTemplateTask",
+        "WorkflowRun",
+        "VolunteerAsk",
+        "EventSignup",
+        "TeamRoleAssignment",
+        "MediaIngestBatch"
+      ],
+      "byteLength": 13448
+    },
+    {
+      "migrationId": "20260421220000_owned_media_geo_ingest",
+      "createTables": [],
+      "byteLength": 2307
+    },
+    {
+      "migrationId": "20260421220304_owned_media_annotations_slice2",
+      "createTables": [
+        "OwnedMediaAnnotation"
+      ],
+      "byteLength": 2118
+    },
+    {
+      "migrationId": "20260421221514_volunteer_signup_sheet_intake",
+      "createTables": [
+        "SignupSheetDocument",
+        "SignupSheetExtraction",
+        "SignupSheetEntry",
+        "VolunteerMatchCandidate"
+      ],
+      "byteLength": 6238
+    },
+    {
+      "migrationId": "20260421222620_comms_workbench_step1",
+      "createTables": [
+        "CommunicationThread",
+        "CommunicationMessage",
+        "CommunicationActionQueue",
+        "CommunicationTag",
+        "CommunicationThreadTag"
+      ],
+      "byteLength": 7643
+    },
+    {
+      "migrationId": "20260421223000_owned_media_geo_indexes",
+      "createTables": [],
+      "byteLength": 252
+    },
+    {
+      "migrationId": "20260421232900_calendar_hq_and_google",
+      "createTables": [
+        "CalendarSource",
+        "CalendarWatchChannel",
+        "EventApproval",
+        "EventSyncLog",
+        "EventAnalyticsSnapshot"
+      ],
+      "byteLength": 8480
+    },
+    {
+      "migrationId": "20260422003847_weekly_command_matrix",
+      "createTables": [
+        "WeeklyCampaignPlan",
+        "WeeklyBigRock"
+      ],
+      "byteLength": 2200
+    },
+    {
+      "migrationId": "20260422010000_slice1_event_readiness",
+      "createTables": [],
+      "byteLength": 574
+    },
+    {
+      "migrationId": "20260422010100_slice1_event_readiness",
+      "createTables": [],
+      "byteLength": 30
+    },
+    {
+      "migrationId": "20260422012659_event_stage_log_and_lifecycle_fields",
+      "createTables": [
+        "EventStageChangeLog"
+      ],
+      "byteLength": 1646
+    },
+    {
+      "migrationId": "20260422013434_slice3_event_comms_fields",
+      "createTables": [],
+      "byteLength": 560
+    },
+    {
+      "migrationId": "20260422014544_slice4_event_workflow_tasks",
+      "createTables": [],
+      "byteLength": 668
+    },
+    {
+      "migrationId": "20260422015812_slice5_google_calendar_sync",
+      "createTables": [],
+      "byteLength": 1051
+    },
+    {
+      "migrationId": "20260422120000_comms_tier1_contact_preferences",
+      "createTables": [
+        "ContactPreference"
+      ],
+      "byteLength": 2077
+    },
+    {
+      "migrationId": "20260422150000_arkansas_festival_ingest",
+      "createTables": [
+        "FestivalIngestRun",
+        "ArkansasFestivalIngest",
+        "FestivalCoveragePlanSnapshot"
+      ],
+      "byteLength": 3612
+    },
+    {
+      "migrationId": "20260422160000_festival_public_form",
+      "createTables": [],
+      "byteLength": 449
+    },
+    {
+      "migrationId": "20260423000000_tier2_broadcast_engine",
+      "createTables": [
+        "CommunicationTemplate",
+        "AudienceSegment",
+        "CommunicationCampaign",
+        "CommunicationCampaignRecipient"
+      ],
+      "byteLength": 9191
+    },
+    {
+      "migrationId": "20260423120000_tier25_webhooks_gmail",
+      "createTables": [
+        "StaffGmailAccount"
+      ],
+      "byteLength": 1320
+    },
+    {
+      "migrationId": "20260424100000_tier3b_event_orchestration",
+      "createTables": [],
+      "byteLength": 825
+    },
+    {
+      "migrationId": "20260424180000_intel3_opposition_intelligence_schema",
+      "createTables": [
+        "OppositionEntity",
+        "OppositionSource",
+        "OppositionBillRecord",
+        "OppositionVoteRecord",
+        "OppositionFinanceRecord",
+        "OppositionMessageRecord",
+        "OppositionVideoRecord",
+        "OppositionNewsMention",
+        "OppositionElectionPattern",
+        "OppositionAccountabilityItem"
+      ],
+      "byteLength": 12033
+    },
+    {
+      "migrationId": "20260424190000_voter_election_participation",
+      "createTables": [
+        "VoterElectionParticipation"
+      ],
+      "byteLength": 1446
+    },
+    {
+      "migrationId": "20260424200000_county_intel_2_schema",
+      "createTables": [
+        "CountyRegistrationSnapshot",
+        "CountyStrategyKpi"
+      ],
+      "byteLength": 2069
+    },
+    {
+      "migrationId": "20260425120000_external_media_monitor",
+      "createTables": [
+        "ExternalMediaSource",
+        "ExternalMediaMention",
+        "ExternalMediaIngestRun"
+      ],
+      "byteLength": 5558
+    },
+    {
+      "migrationId": "20260425130000_campaignos_phase1_workflow_intake",
+      "createTables": [
+        "WorkflowIntake",
+        "EventRequest",
+        "WorkflowAction"
+      ],
+      "byteLength": 4424
+    },
+    {
+      "migrationId": "20260425140000_social_workbench_foundation",
+      "createTables": [
+        "SocialAccount",
+        "SocialContentItem",
+        "SocialPlatformVariant"
+      ],
+      "byteLength": 5137
+    },
+    {
+      "migrationId": "20260426120000_social_workbench_media_library",
+      "createTables": [
+        "SocialContentMediaRef"
+      ],
+      "byteLength": 2797
+    },
+    {
+      "migrationId": "20260427120000_social_workbench_analytics",
+      "createTables": [
+        "SocialPerformanceSnapshot",
+        "SocialContentStrategicInsight"
+      ],
+      "byteLength": 3254
+    },
+    {
+      "migrationId": "20260428120000_conversation_monitoring",
+      "createTables": [
+        "ConversationWatchlist",
+        "ConversationItem",
+        "ConversationAnalysis",
+        "ConversationCluster",
+        "ConversationClusterItem",
+        "ConversationOpportunity"
+      ],
+      "byteLength": 9731
+    },
+    {
+      "migrationId": "20260429120000_owned_media_dam_media_center",
+      "createTables": [
+        "OwnedMediaCollection",
+        "OwnedMediaCollectionItem",
+        "OwnedMediaReviewLog",
+        "OwnedMediaDerivativeJob"
+      ],
+      "byteLength": 7444
+    },
+    {
+      "migrationId": "20260430120000_social_actionable_analytics",
+      "createTables": [],
+      "byteLength": 1326
+    },
+    {
+      "migrationId": "20260430133000_analytics_recommendation_outcomes",
+      "createTables": [
+        "AnalyticsRecommendationOutcome"
+      ],
+      "byteLength": 3225
+    },
+    {
+      "migrationId": "20260431120000_social_analytics_tactic_and_followup_v2",
+      "createTables": [],
+      "byteLength": 1068
+    },
+    {
+      "migrationId": "20260431140000_social_content_draft",
+      "createTables": [
+        "SocialContentDraft"
+      ],
+      "byteLength": 1119
+    },
+    {
+      "migrationId": "20260431150000_social_content_draft_refine",
+      "createTables": [],
+      "byteLength": 364
+    },
+    {
+      "migrationId": "20260431160000_owned_media_center_canonical_review",
+      "createTables": [],
+      "byteLength": 971
+    },
+    {
+      "migrationId": "20260431170000_comms_workbench_packet1",
+      "createTables": [
+        "CommunicationPlan",
+        "CommunicationDraft",
+        "CommunicationVariant",
+        "CommunicationSend",
+        "MediaOutreachItem"
+      ],
+      "byteLength": 13780
+    },
+    {
+      "migrationId": "20260431180000_comms_packet7_variant_review_fields",
+      "createTables": [],
+      "byteLength": 1724
+    },
+    {
+      "migrationId": "20260431185000_comms_packet7_variant_status_backfill",
+      "createTables": [],
+      "byteLength": 269
+    },
+    {
+      "migrationId": "20260431190000_comms_send_operator_retry_12a",
+      "createTables": [],
+      "byteLength": 658
+    },
+    {
+      "migrationId": "20260431200000_comms_contact_engagement_ce1_foundation",
+      "createTables": [
+        "CommsPlanAudienceSegment",
+        "CommunicationRecipient",
+        "CommunicationRecipientEvent",
+        "CommunicationLinkDefinition",
+        "CommsPlanAudienceSegmentMember"
+      ],
+      "byteLength": 9250
+    },
+    {
+      "migrationId": "20260501120000_contact_engagement_ce1_indexes",
+      "createTables": [],
+      "byteLength": 703
+    },
+    {
+      "migrationId": "20260502120000_contact_engagement_ce3_recipient_unique",
+      "createTables": [],
+      "byteLength": 609
+    },
+    {
+      "migrationId": "20260504120000_email_workflow_e1",
+      "createTables": [
+        "EmailWorkflowItem"
+      ],
+      "byteLength": 6552
+    },
+    {
+      "migrationId": "20260504130000_email_workflow_status_enriched",
+      "createTables": [],
+      "byteLength": 138
+    },
+    {
+      "migrationId": "20260504140000_seat1_position_seat",
+      "createTables": [
+        "PositionSeat"
+      ],
+      "byteLength": 980
+    },
+    {
+      "migrationId": "20260505190000_staff_gmail_sync_state",
+      "createTables": [],
+      "byteLength": 171
+    },
+    {
+      "migrationId": "20260505203000_email_contact_profile_graph",
+      "createTables": [
+        "EmailContactProfile",
+        "EmailContactProfileFact",
+        "EmailContactProfileFactSuggestion",
+        "EmailAudienceHint"
+      ],
+      "byteLength": 6813
+    },
+    {
+      "migrationId": "20260505220000_email_audience_studio_foundation",
+      "createTables": [
+        "EmailAudienceDefinition",
+        "EmailAudiencePreviewRun"
+      ],
+      "byteLength": 2240
+    },
+    {
+      "migrationId": "20260506120000_email_sendgrid_foundation",
+      "createTables": [
+        "SendGridContactMap",
+        "SendGridAudienceMap",
+        "SendGridSuppression",
+        "SendGridEvent"
+      ],
+      "byteLength": 4494
+    },
+    {
+      "migrationId": "20260507180000_email_contact_import_staging",
+      "createTables": [
+        "EmailContactImportBatch",
+        "EmailContactImportRow",
+        "EmailContactImportDecision"
+      ],
+      "byteLength": 5351
+    },
+    {
+      "migrationId": "20260508120000_message_studio_server_drafts",
+      "createTables": [
+        "MessageStudioDraft",
+        "MessageStudioDraftRevision"
+      ],
+      "byteLength": 3529
+    },
+    {
+      "migrationId": "20260509120000_comp2_compliance_document",
+      "createTables": [
+        "ComplianceDocument"
+      ],
+      "byteLength": 1532
+    },
+    {
+      "migrationId": "20260509120000_sendgrid_contact_sync_run",
+      "createTables": [
+        "SendGridContactSyncRun"
+      ],
+      "byteLength": 1939
+    },
+    {
+      "migrationId": "20260510120000_fin1_financial_transaction",
+      "createTables": [
+        "FinancialTransaction"
+      ],
+      "byteLength": 1889
+    },
+    {
+      "migrationId": "20260510140000_email_send_execution",
+      "createTables": [
+        "EmailSendExecution",
+        "EmailSendRecipient",
+        "EmailSendApproval"
+      ],
+      "byteLength": 6391
+    },
+    {
+      "migrationId": "20260511120000_budget2_budget_plan_line",
+      "createTables": [
+        "BudgetPlan",
+        "BudgetLine"
+      ],
+      "byteLength": 1428
+    },
+    {
+      "migrationId": "20260512120000_fin2_field1_youth1_foundation",
+      "createTables": [
+        "FieldUnit",
+        "FieldAssignment"
+      ],
+      "byteLength": 2382
+    },
+    {
+      "migrationId": "20260513120000_data4_election_ingest_foundation",
+      "createTables": [
+        "ElectionResultSource",
+        "ElectionContestResult",
+        "ElectionCountyResult",
+        "ElectionCandidateResult",
+        "ElectionPrecinctResult",
+        "ElectionPrecinctCandidateResult"
+      ],
+      "byteLength": 6399
+    },
+    {
+      "migrationId": "20260514120000_voter_model_1_interaction_1_foundation",
+      "createTables": [
+        "VoterSignal",
+        "VoterModelClassification",
+        "VoterInteraction",
+        "VoterVotePlan"
+      ],
+      "byteLength": 7131
+    },
+    {
+      "migrationId": "20260515120000_rel2_relational_contact_foundation",
+      "createTables": [
+        "RelationalContact"
+      ],
+      "byteLength": 3983
+    }
+  ],
+  "srcUsageReview": [],
+  "highConfidenceMapCandidates": [
+    {
+      "modelName": "Submission",
+      "currentTableName": "submissions",
+      "existingMap": "submissions",
+      "proposedMap": "submissions",
+      "observedTableMatch": "submissions",
+      "classification": "existing_table_high_confidence_map",
+      "riskLevel": "low",
+      "confidence": "high",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421120000_init"
+      ],
+      "reason": "@@map already matches audited public table name.",
+      "patchAllowed": true
+    },
+    {
+      "modelName": "MediaAsset",
+      "currentTableName": "media_assets",
+      "existingMap": "media_assets",
+      "proposedMap": "media_assets",
+      "observedTableMatch": "media_assets",
+      "classification": "existing_table_high_confidence_map",
+      "riskLevel": "low",
+      "confidence": "high",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421140000_admin_content_board"
+      ],
+      "reason": "@@map already matches audited public table name.",
+      "patchAllowed": true
+    },
+    {
+      "modelName": "County",
+      "currentTableName": "counties",
+      "existingMap": "counties",
+      "proposedMap": "counties",
+      "observedTableMatch": "counties",
+      "classification": "existing_table_high_confidence_map",
+      "riskLevel": "low",
+      "confidence": "high",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260221120000_county_command_pages"
+      ],
+      "reason": "@@map already matches audited public table name.",
+      "patchAllowed": true
+    }
+  ],
+  "mediumConfidenceReviewCandidates": [
+    {
+      "modelName": "User",
+      "currentTableName": "User",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": "users",
+      "classification": "existing_table_medium_confidence_review",
+      "riskLevel": "critical",
+      "confidence": "low",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421120000_init"
+      ],
+      "reason": "Explicit governance: do not auto-map in this packet.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "VolunteerProfile",
+      "currentTableName": "VolunteerProfile",
+      "existingMap": null,
+      "proposedMap": "volunteer_profiles",
+      "observedTableMatch": "volunteer_profiles",
+      "classification": "existing_table_medium_confidence_review",
+      "riskLevel": "high",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421120000_init"
+      ],
+      "reason": "Reconciliation flagged needs_mapping_review or model-specific governance (EventRequest).",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "WorkflowIntake",
+      "currentTableName": "WorkflowIntake",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": null,
+      "classification": "existing_table_medium_confidence_review",
+      "riskLevel": "high",
+      "confidence": "low",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260425130000_campaignos_phase1_workflow_intake"
+      ],
+      "reason": "Explicit governance: do not auto-map in this packet.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "EventRequest",
+      "currentTableName": "EventRequest",
+      "existingMap": null,
+      "proposedMap": "event_requests",
+      "observedTableMatch": "event_requests",
+      "classification": "existing_table_medium_confidence_review",
+      "riskLevel": "high",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260425130000_campaignos_phase1_workflow_intake"
+      ],
+      "reason": "Reconciliation flagged needs_mapping_review or model-specific governance (EventRequest).",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CountyCampaignStats",
+      "currentTableName": "CountyCampaignStats",
+      "existingMap": null,
+      "proposedMap": "county_campaign_targets",
+      "observedTableMatch": "county_campaign_targets",
+      "classification": "existing_table_medium_confidence_review",
+      "riskLevel": "high",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260221120000_county_command_pages"
+      ],
+      "reason": "Reconciliation flagged needs_mapping_review or model-specific governance (EventRequest).",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "RelationalContact",
+      "currentTableName": "RelationalContact",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": "contacts",
+      "classification": "existing_table_medium_confidence_review",
+      "riskLevel": "high",
+      "confidence": "low",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260515120000_rel2_relational_contact_foundation"
+      ],
+      "reason": "Explicit governance: do not auto-map in this packet.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "CampaignEvent",
+      "currentTableName": "CampaignEvent",
+      "existingMap": null,
+      "proposedMap": null,
+      "observedTableMatch": "events",
+      "classification": "existing_table_medium_confidence_review",
+      "riskLevel": "high",
+      "confidence": "low",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421215343_campaign_ops_slice1"
+      ],
+      "reason": "Explicit governance: do not auto-map in this packet.",
+      "patchAllowed": false
+    },
+    {
+      "modelName": "EventSignup",
+      "currentTableName": "EventSignup",
+      "existingMap": null,
+      "proposedMap": "volunteer_signups",
+      "observedTableMatch": "volunteer_signups",
+      "classification": "existing_table_medium_confidence_review",
+      "riskLevel": "high",
+      "confidence": "medium",
+      "srcUsageCount": 0,
+      "migrationIntroducedBy": [
+        "20260421215343_campaign_ops_slice1"
+      ],
+      "reason": "Reconciliation flagged needs_mapping_review or model-specific governance (EventRequest).",
+      "patchAllowed": false
+    }
+  ],
+  "doNotMapModels": [
+    "VoterRecord"
+  ],
+  "legacyPreserveTables": [
+    "ar02_voter_dem_lean",
+    "ar02_voter_race",
+    "ar02_voters",
+    "spatial_ref_sys",
+    "voter_block_group_map",
+    "voter_geocoded",
+    "voter_import_batches",
+    "voter_party_model",
+    "voter_profiles",
+    "voter_registry",
+    "voter_scores",
+    "voter_vote_history",
+    "voter_vote_history_raw",
+    "voters"
+  ],
+  "newPrismaOwnedCandidates": [
+    "ComplianceDocument",
+    "FinancialTransaction",
+    "FieldUnit",
+    "FieldAssignment",
+    "BudgetPlan",
+    "BudgetLine",
+    "PositionSeat",
+    "ContactPreference",
+    "Commitment",
+    "WorkflowAction",
+    "SocialContentItem",
+    "AnalyticsRecommendationOutcome",
+    "SocialContentDraft",
+    "SocialPlatformVariant",
+    "SocialPerformanceSnapshot",
+    "SocialContentStrategicInsight",
+    "ConversationWatchlist",
+    "ConversationItem",
+    "ConversationAnalysis",
+    "ConversationCluster",
+    "ConversationClusterItem",
+    "ConversationOpportunity",
+    "SocialContentMediaRef",
+    "SocialAccount",
+    "SearchChunk",
+    "AnalyticsEvent",
+    "SyncedPost",
+    "AdminContentBlock",
+    "HomepageConfig",
+    "ContentItemOverride",
+    "SiteSettings",
+    "PlatformConnection",
+    "InboundContentItem",
+    "ContentDecision",
+    "PlatformMetricSnapshot",
+    "OwnedMediaAsset",
+    "OwnedMediaAnnotation",
+    "OwnedMediaTranscript",
+    "OwnedMediaQuoteCandidate",
+    "ElectionResultSource",
+    "ElectionContestResult",
+    "ElectionCountyResult",
+    "ElectionCandidateResult",
+    "ElectionPrecinctResult",
+    "ElectionPrecinctCandidateResult",
+    "CountyPublicDemographics",
+    "CountyRegistrationSnapshot",
+    "CountyStrategyKpi",
+    "CountyElectedOfficial",
+    "VoterFileSnapshot",
+    "CountyVoterMetrics",
+    "VoterElectionParticipation",
+    "VoterSignal",
+    "VoterModelClassification",
+    "VoterInteraction",
+    "VoterVotePlan",
+    "VoterSnapshotChange",
+    "FestivalIngestRun",
+    "ArkansasFestivalIngest",
+    "FestivalCoveragePlanSnapshot",
+    "CampaignTask",
+    "WorkflowTemplate",
+    "WorkflowTemplateTask",
+    "WorkflowRun",
+    "VolunteerAsk",
+    "TeamRoleAssignment",
+    "MediaIngestBatch",
+    "OwnedMediaCollection",
+    "OwnedMediaCollectionItem",
+    "OwnedMediaReviewLog",
+    "OwnedMediaDerivativeJob",
+    "SignupSheetDocument",
+    "SignupSheetExtraction",
+    "SignupSheetEntry",
+    "VolunteerMatchCandidate",
+    "CommunicationThread",
+    "CommunicationMessage",
+    "CommunicationTemplate",
+    "AudienceSegment",
+    "CommunicationCampaign",
+    "CommunicationCampaignRecipient",
+    "CommunicationActionQueue",
+    "CommunicationTag",
+    "CommunicationThreadTag",
+    "CommunicationPlan",
+    "CommunicationDraft",
+    "CommunicationVariant",
+    "CommunicationSend",
+    "EmailWorkflowItem",
+    "EmailContactProfile",
+    "EmailContactProfileFact",
+    "EmailContactProfileFactSuggestion",
+    "EmailAudienceHint",
+    "EmailAudienceDefinition",
+    "EmailAudiencePreviewRun",
+    "MessageStudioDraft",
+    "MessageStudioDraftRevision",
+    "EmailContactImportBatch",
+    "EmailContactImportRow",
+    "EmailContactImportDecision",
+    "SendGridContactMap",
+    "SendGridAudienceMap",
+    "SendGridSuppression",
+    "SendGridEvent",
+    "SendGridContactSyncRun",
+    "EmailSendExecution",
+    "EmailSendRecipient",
+    "EmailSendApproval",
+    "CommunicationRecipient",
+    "CommunicationRecipientEvent",
+    "CommunicationLinkDefinition",
+    "CommsPlanAudienceSegment",
+    "CommsPlanAudienceSegmentMember",
+    "MediaOutreachItem",
+    "StaffGmailAccount",
+    "CalendarSource",
+    "CalendarWatchChannel",
+    "WeeklyCampaignPlan",
+    "WeeklyBigRock",
+    "EventApproval",
+    "EventStageChangeLog",
+    "EventSyncLog",
+    "EventAnalyticsSnapshot",
+    "ExternalMediaSource",
+    "ExternalMediaMention",
+    "ExternalMediaIngestRun",
+    "OppositionEntity",
+    "OppositionSource",
+    "OppositionBillRecord",
+    "OppositionVoteRecord",
+    "OppositionFinanceRecord",
+    "OppositionMessageRecord",
+    "OppositionVideoRecord",
+    "OppositionNewsMention",
+    "OppositionElectionPattern",
+    "OppositionAccountabilityItem"
+  ],
+  "unsafeUnknowns": [],
+  "reviewSummary": {
+    "safeHighConfidenceMappingsCount": 3,
+    "blockedMappingsCount": 8,
+    "legacyPreserveCount": 14,
+    "newPrismaOwnedCandidateCount": 136,
+    "safeToBaselineNow": false,
+    "reason": "public._prisma_migrations absent; production baseline and migrate deploy remain explicitly blocked until shadow proof and human approval."
+  }
+}

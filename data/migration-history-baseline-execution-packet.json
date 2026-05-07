@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-MIGRATION-HISTORY-BASELINE-EXECUTION-PACKET-1.0",
+  "generatedAt": "2026-05-07T15:56:42.918Z",
+  "mode": "approval_gated_migration_history_baseline_packet",
+  "productionMutationExecutedByThisPacket": false,
+  "productionMigrationHistoryMutatedByThisPacket": false,
+  "sourceArtifacts": {
+    "postAdditiveProductionPostcheckProof": {
+      "path": "data/post-additive-production-postcheck-proof.json",
+      "loaded": true,
+      "exists": true
+    },
+    "postAdditiveProductionSchemaStatus": {
+      "path": "data/post-additive-production-schema-status.json",
+      "loaded": true,
+      "exists": true
+    },
+    "prismaMigrationHistoryStatus": {
+      "path": "data/prisma-migration-history-status.json",
+      "loaded": true,
+      "exists": true
+    },
+    "postAdditiveMigrationHistoryStrategy": {
+      "path": "data/post-additive-migration-history-strategy.json",
+      "loaded": true,
+      "exists": true
+    },
+    "postAdditiveNetlifyReadinessDecision": {
+      "path": "data/post-additive-netlify-readiness-decision.json",
+      "loaded": true,
+      "exists": true
+    },
+    "migrationHistoryBaselineGuardedPlanStub": {
+      "path": "data/migration-history-baseline-guarded-plan.json",
+      "loaded": true,
+      "exists": true
+    },
+    "additiveSchemaProductionPostcheckPlan": {
+      "path": "data/additive-schema-production-postcheck-plan.json",
+      "loaded": true,
+      "exists": true
+    },
+    "additiveSchemaCloneTestResult": {
+      "path": "data/additive-schema-clone-test-result.json",
+      "loaded": true,
+      "exists": true
+    },
+    "additiveSchemaInstallValidation": {
+      "path": "data/additive-schema-install-validation.json",
+      "loaded": true,
+      "exists": true
+    },
+    "additiveSchemaInstallCandidateSql": {
+      "path": "data/sql/additive-schema-install-candidate.sql",
+      "loaded": true,
+      "exists": true
+    },
+    "prismaSchemaPrisma": {
+      "path": "prisma/schema.prisma",
+      "loaded": true,
+      "exists": true
+    },
+    "prismaMigrationsGlob": "prisma/migrations/**/migration.sql"
+  },
+  "eligibility": {
+    "postAdditiveSchemaInstalled": true,
+    "legacyTablesPreserved": true,
+    "candidateValidationPassed": true,
+    "productionLikeCloneProofPassed": true,
+    "productionPostcheckPassed": true,
+    "migrationHistoryStillNeedsAlignment": true,
+    "readyForMigrationHistoryBaselinePacket": true,
+    "readyForAutomaticExecution": false,
+    "readyForManualExecutionAfterApproval": false
+  },
+  "riskFlags": {
+    "productionAppSchemaInstalled": true,
+    "migrationHistoryAbsentOrUnconfirmed": true,
+    "rawMigrateDeployUnsafeUntilBaseline": true,
+    "dbPushOrResetForbidden": true,
+    "editedMigrationChecksumRisk": true,
+    "editedMigrationId": "20260505203000_email_contact_profile_graph",
+    "deferredFkMigrationNoted": true,
+    "deferredFkMigrationId": "20260515121000_email_contact_profile_relational_contact_fkey"
+  },
+  "migrationDirectory": {
+    "path": "prisma/migrations",
+    "migrationCount": 71,
+    "firstMigration": "20260221120000_county_command_pages",
+    "lastMigration": "20260515121000_email_contact_profile_relational_contact_fkey",
+    "knownEditedMigrationRisk": true
+  },
+  "approvalRequirements": {
+    "backupPitrProofRequired": true,
+    "steveApprovalRequired": true,
+    "correctProductionDbRequired": true,
+    "maintenanceWindowRequired": true,
+    "postAdditiveProductionPostcheckRequired": true,
+    "cloneBaselineProofRecommended": true,
+    "netlifyRetryStillSeparate": true,
+    "liveSendStillBlocked": true
+  },
+  "manualExecutionOnly": true,
+  "automaticExecutionAllowed": false,
+  "productionExecutionApprovedByThisPacket": false,
+  "netlifyRetryApprovedByThisPacket": false,
+  "liveSendApprovedByThisPacket": false,
+  "approvalPhraseRequired": "STEVE_APPROVES_REDDIRT_MIGRATION_HISTORY_BASELINE_EXECUTION",
+  "nextRecommendedSlice": "REDDIRT-MIGRATION-HISTORY-BASELINE-OPERATOR-GATE-1.0",
+  "commandListPath": "data/migration-history-baseline-command-list.json",
+  "approvalGatesPath": "data/migration-history-baseline-approval-gates.json",
+  "warnings": [],
+  "blockers": [],
+  "migrationCountExpected71Ok": true
+}

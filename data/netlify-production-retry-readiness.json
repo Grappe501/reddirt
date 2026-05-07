@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-PRODUCTION-BASELINE-EXECUTION-REVIEW-1.0",
+  "generatedAt": "2026-05-07T00:53:14.949Z",
+  "readyToRetryNow": false,
+  "readyToRetryNetlifyProductionBuild": false,
+  "isNetlifyReadyToRetryProductionNow": false,
+  "databaseUrlCorrectedForCanonicalProduction": "not_verified_offline_packet",
+  "directUrlCorrectedForCanonicalProduction": "not_verified_offline_packet",
+  "productionBaselineMigrationHistoryAligned": false,
+  "shadowProofPassedInRepoArtifacts": true,
+  "productionBaselineExecutionComplete": false,
+  "netlifyBuildScriptRunsPrismaMigrateDeploy": true,
+  "netlifyBuildScriptReference": "scripts/netlify-build.sh runs `npx prisma migrate deploy` after `npx prisma generate` unless the build pipeline is changed.",
+  "summary": "Netlify is not ready to retry against production until production baseline execution is approved and completed (or an operator proves the build-linked DB already matches migrations). DATABASE_URL/DIRECT_URL correctness is not verified by this offline script.",
+  "whatMustHappenBeforeRetry": [
+    "Steve-approved execution packet for production (or proof the target DB is already migrated outside this review).",
+    "Operator confirms DATABASE_URL and DIRECT_URL in Netlify (or CI) match the intended Supabase project — verify in dashboard; do not paste URIs into chat.",
+    "Confirm no overlapping deploy or migration window against the same database.",
+    "After production migrate: re-run hosted checks (migrate status, app smoke, optional hosted-db proof route) before treating Netlify as green.",
+    "Commit data/shadow-db-migration-proof.json so automation and humans share the same shadow evidence."
+  ],
+  "requiredBeforeRetry": [
+    "Steve-approved execution packet for production (or proof the target DB is already migrated outside this review).",
+    "Operator confirms DATABASE_URL and DIRECT_URL in Netlify (or CI) match the intended Supabase project — verify in dashboard; do not paste URIs into chat.",
+    "Confirm no overlapping deploy or migration window against the same database.",
+    "After production migrate: re-run hosted checks (migrate status, app smoke, optional hosted-db proof route) before treating Netlify as green.",
+    "Commit data/shadow-db-migration-proof.json so automation and humans share the same shadow evidence."
+  ],
+  "doNotChangeInThisPacket": [
+    "Netlify dashboard environment variables",
+    "netlify.toml or build plugins",
+    "Production send toggles"
+  ]
+}

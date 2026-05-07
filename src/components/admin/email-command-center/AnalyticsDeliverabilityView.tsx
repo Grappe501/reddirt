@@ -83,7 +83,7 @@ export function AnalyticsDeliverabilityView({
 
       <div className="flex flex-wrap items-center gap-2">
         <Link href={ECC} className="rounded border border-kelly-text/15 bg-white px-2 py-0.5 text-xs font-semibold text-kelly-slate">
-          ← Email Command Center
+          ← Communication Command Center
         </Link>
         <Link href={`${ECC}/sendgrid`} className="text-xs text-kelly-text/60 hover:underline">
           SendGrid Foundation

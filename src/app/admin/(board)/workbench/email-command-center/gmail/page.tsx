@@ -84,7 +84,7 @@ export default async function GmailMonitorPage({ searchParams }: Props) {
             href="/admin/workbench/email-command-center"
             className="mb-2 inline-block rounded border border-kelly-text/15 bg-white px-2 py-0.5 text-xs font-semibold text-kelly-slate"
           >
-            ← Email Command Center
+            ← Communication Command Center
           </Link>
           <h1 className="font-heading text-xl font-bold text-kelly-navy">Gmail monitor</h1>
           <p className="mt-1 max-w-3xl font-body text-sm text-kelly-text/85">

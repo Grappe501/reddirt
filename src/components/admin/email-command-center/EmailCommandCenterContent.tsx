@@ -147,7 +147,7 @@ function IntegrationColumn({
           )}
         </ul>
         <p className="mt-1 font-body text-[10px] text-kelly-text/70">
-          <span className="font-bold">Next packet:</span> {nextPacket}
+          <span className="font-bold">Planned next:</span> {nextPacket}
         </p>
         <p className="rounded border border-kelly-forest/20 bg-kelly-fog/40 px-2 py-1 font-body text-[10px] text-kelly-navy">
           <span className="font-bold">Safety:</span> {safetyGate}
@@ -187,21 +187,21 @@ export function EmailCommandCenterContent({
         className="rounded-lg border-2 border-kelly-navy/25 bg-kelly-navy/[0.04] px-3 py-2 font-body text-[11px] text-kelly-navy"
         role="note"
       >
-        <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-navy/80">Do not send from here</p>
+        <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-navy/80">No live sending from here</p>
         <p className="mt-1 leading-snug">
-          This cockpit coordinates triage, drafts, and readiness — <strong>no live sends</strong>, no SendGrid execution, no
-          Gmail send-from-queue. <code className="text-[10px]">EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM</code> stays{" "}
-          <strong>false</strong> until a future explicit packet changes it.
+          This cockpit coordinates triage, drafts, and readiness — <strong>no live sends</strong>, no SendGrid execution, no Gmail
+          send-from-queue. Sending from the message queue stays <strong>off</strong> until headquarters enables it in a future
+          release.
         </p>
         <p className="mt-2 leading-snug">
-          <strong>Operator-complete, execution-gated:</strong> use this cockpit and the Daily console for real queue and draft
-          work; provider sends, mass mail, and automation activation remain outside these routes until explicit future
-          packets.
+          <strong>Ready for staff work, gated for delivery:</strong> use this cockpit and the daily console for real queue and
+          draft work; provider sends, mass mail, and automation activation stay outside these routes until your team turns those
+          lanes on deliberately.
         </p>
       </div>
 
       <section className="rounded-lg border-2 border-emerald-400/40 bg-emerald-50/80 px-3 py-2.5 shadow-sm">
-        <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-emerald-950">Operator start path — finish tonight</p>
+        <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-emerald-950">Start here — tonight&apos;s path</p>
         <ol className="mt-2 list-inside list-decimal space-y-1 font-body text-[11px] text-emerald-950/95">
           <li>
             Open the{" "}
@@ -215,12 +215,12 @@ export function EmailCommandCenterContent({
             <Link href={READINESS_CHECKLIST_PATH} className="font-bold underline">
               Readiness checklist
             </Link>{" "}
-            — align env + DB truth for <strong>this</strong> machine (hosted Supabase still operator-verified separately).
+            — align environment and database truth for <strong>this</strong> machine (hosted Supabase still verified separately).
           </li>
           <li>
             For Kelly-Grappe-App hosted Supabase:{" "}
             <Link href={HOSTED_DB_READINESS_ASSISTANT_PATH} className="font-bold underline">
-              Hosted DB readiness assistant
+              Live database connection helper
             </Link>{" "}
             — <strong>no secret values</strong>; copy CLI snippets and verify project ref outside chat.
           </li>
@@ -291,7 +291,7 @@ export function EmailCommandCenterContent({
             <li>Advisory AI analysis on queue detail when OPENAI_API_KEY is set.</li>
             <li>Profile suggestions + audience hints staging + approvals.</li>
             <li>Audience previews and draft definitions (no SendGrid sync).</li>
-            <li>Contact import staging (validate → approve → commit) when DB + migrations gate passes locally.</li>
+            <li>Contact import staging (validate → approve → commit) when local database checks pass.</li>
             <li>Message planning in Message Studio — <strong>localStorage</strong> draft library (this browser only).</li>
             <li>Automation planning map (read-only) in Automation Studio.</li>
             <li>Analytics readiness dashboard (read-only aggregates).</li>
@@ -315,15 +315,14 @@ export function EmailCommandCenterContent({
             </li>
             <li>Gmail send-from-queue or auto-reply from these routes.</li>
             <li>Auto-send or auto-approval from AI output.</li>
-            <li>Production hosted imports until the same migrate + import gate passes on canonical DATABASE_URL.</li>
+            <li>Production hosted imports until the same deploy + import checks pass on the live DATABASE_URL.</li>
             <li>Automatic CRM profile updates from AI or imports (commits stay on EmailContactProfile + governed facts).</li>
             <li>
               Ungoverned shortcuts — see{" "}
               <Link href={SEND_EXECUTION_GOVERNANCE_PATH} className="font-bold underline">
                 Send Execution
               </Link>{" "}
-              for doctrine + <strong>#ops</strong> console; <strong>EMAIL-SEND-EXECUTION-1.0</strong> ships the explicit operator path
-              only (not queue send).
+              for doctrine + <strong>#ops</strong> console; the governed send lane ships the explicit staff path only (not queue send).
             </li>
           </ul>
         </div>
@@ -389,15 +388,15 @@ export function EmailCommandCenterContent({
           role="status"
         >
           <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-amber-900">
-            Migrations / import gate
+            Database updates / import gate
           </p>
           <p className="mt-1 leading-snug">
             {og.migrationGateNote ??
-              "Run the CLI preflight to confirm the same database your app uses has all Email Command Center migrations applied."}
+              "Run the CLI preflight to confirm the same database your app uses has all messaging workspace updates applied."}
           </p>
           <ul className="mt-1.5 list-inside list-disc text-[10px] opacity-95">
             <li>
-              <code className="text-[10px]">{og.preflightCliHint}</code> — full env + migration checklist
+              <code className="text-[10px]">{og.preflightCliHint}</code> — full environment + database checklist
             </li>
             <li>
               Full import gate: <code className="text-[10px]">{og.importGateCliHint}</code>
@@ -410,12 +409,12 @@ export function EmailCommandCenterContent({
           role="status"
         >
           <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-emerald-900">
-            Database / migration readiness
+            Database readiness
           </p>
           <p className="mt-1 leading-snug">
-            This page reached Postgres and the listed Email Command Center migrations appear applied. Still run{" "}
+            This page reached Postgres and the listed messaging workspace updates appear applied. Still run{" "}
             <code className="text-[10px]">{og.importGateCliHint}</code> before any bulk contact import —{" "}
-            <code className="text-[10px]">npm run check</code> alone does not prove migrate state.
+            <code className="text-[10px]">npm run check</code> alone does not confirm deploy state.
           </p>
         </div>
       )}
@@ -426,20 +425,20 @@ export function EmailCommandCenterContent({
             <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/60">Contact import</p>
             <p className="mt-1 font-semibold">{og.contactImportStatusLabel}</p>
             <p className="mt-0.5 text-[10px] text-kelly-text/80">
-              Next: <span className="font-mono">{og.contactImportNextPacket}</span>
+              Next step: <span className="font-mono">{og.contactImportNextPacket}</span>
             </p>
             <p className="mt-1 text-[10px] text-kelly-text/70">
               Readiness doc (repo): <span className="font-mono">{og.readinessDocRepoPath}</span>
             </p>
             {og.localContactImportDbVerified ? (
               <p className="mt-1 text-[10px] font-semibold text-emerald-900">
-                Local import DB slice verified for this request (migrations + import table query). Canonical Supabase DB /
-                production is not implied — run the same gates on hosted <code className="text-[10px]">DATABASE_URL</code>{" "}
-                before treating imports as production-ready.
+                Local import checks passed for this request (workspace updates + import table query). Hosted production is not
+                implied — run the same gates on hosted <code className="text-[10px]">DATABASE_URL</code> before treating imports as
+                production-ready.
               </p>
             ) : (
               <p className="mt-1 text-[10px] text-kelly-text/75">
-                Import readiness is generic until migrations and import counts succeed on the DB this app uses.
+                Import readiness stays generic until workspace updates and import counts succeed on the database this app uses.
               </p>
             )}
             <p className="mt-1 text-[10px] text-kelly-text/70">
@@ -500,18 +499,18 @@ export function EmailCommandCenterContent({
             ← Workbench
           </Link>
           <h1 className="font-heading text-xl font-bold tracking-tight text-kelly-navy md:text-2xl">
-            Campaign Email Command Center
+            Communication Command Center
           </h1>
           <p className="mt-1 max-w-3xl font-body text-sm leading-snug text-kelly-text/85">
-            Monitor, triage, organize, draft, segment, and govern campaign email from one place — cockpit for the full
-            operating system.
+            Monitor, triage, organize, draft, segment, and govern campaign email from one place — the messaging and follow-up
+            cockpit for the campaign operating system.
           </p>
           <div className="mt-2 flex flex-wrap gap-1.5">
             <span className={pill}>Queue-first</span>
             <span className={pill}>No live sends from queue</span>
             <span className={pill}>Gmail metadata sync (partial)</span>
             <span className={pill}>
-              SendGrid foundation {sgF.dbReachable ? "(rails + webhook path)" : "(DB migration not verified)"}
+              SendGrid foundation {sgF.dbReachable ? "(rails + webhook path)" : "(database tables not verified)"}
             </span>
             <span className={pill}>
               {oa.emailAiConfigured ? "OpenAI queue AI (advisory)" : "OpenAI queue AI not configured"}
@@ -636,11 +635,11 @@ export function EmailCommandCenterContent({
         >
           <div className="flex flex-wrap items-start justify-between gap-2">
             <div>
-              <p className={h3}>Start here — Daily Operator Console</p>
+              <p className={h3}>Start here — daily command console</p>
               <p className="mt-1 font-heading text-base font-bold text-kelly-navy">Today&apos;s priorities + work queue</p>
               <p className="mt-1 max-w-2xl font-body text-[11px] text-kelly-text/85">
-                EMAIL-DAILY-OPERATOR-CONSOLE-1.0 — queue, Gmail, imports, profiles, audiences, SendGrid signals, Message Studio
-                draft summary (this browser), and rule-based next actions. <strong>No demo mode</strong>, <strong>no sends</strong>.
+                Queue, Gmail, imports, profiles, audiences, SendGrid signals, Message Studio draft summary (this browser), and
+                rule-based next actions. <strong>No demo mode</strong>, <strong>no sends</strong>.
               </p>
             </div>
             <span className="rounded-full border border-emerald-400/40 bg-emerald-100/80 px-2 py-0.5 text-[9px] font-bold uppercase text-emerald-950">
@@ -657,8 +656,9 @@ export function EmailCommandCenterContent({
               <p className={h3}>Live now — Message Studio</p>
               <p className="mt-1 font-heading text-base font-bold text-kelly-navy">Drafting &amp; planning workspace</p>
               <p className="mt-1 max-w-2xl font-body text-[11px] text-kelly-text/85">
-                EMAIL-MESSAGE-STUDIO-LOCAL-DRAFTS-1.1 — draft library, autosave to <strong>browser localStorage</strong>{" "}
-                (not shared); draft types + content blocks above; <strong>no server persistence</strong>; <strong>no sends</strong>.
+                Draft library with autosave to <strong>browser localStorage</strong> (not shared across devices); draft types and
+                content blocks above; <strong>no server persistence</strong> until database readiness is green;{" "}
+                <strong>no sends</strong>.
               </p>
             </div>
             <span className="rounded-full border border-kelly-forest/30 bg-emerald-50/80 px-2 py-0.5 text-[9px] font-bold uppercase text-emerald-900">
@@ -673,11 +673,11 @@ export function EmailCommandCenterContent({
           href={AUTOMATION_STUDIO_PATH}
           className={`${card} block border-kelly-navy/20 bg-gradient-to-r from-white/95 to-kelly-fog/80 transition hover:border-kelly-forest/35 hover:shadow-md`}
         >
-          <p className={h3}>Operator surface — Automation Studio</p>
+          <p className={h3}>Staff surface — Automation Studio</p>
           <p className="mt-1 font-heading text-sm font-bold text-kelly-navy">Tiers, triggers, actions, playbooks</p>
           <p className="mt-1 font-body text-[11px] text-kelly-text/85">
-            EMAIL-AUTOMATION-ANALYTICS-SHELL-1.0 — roadmap and policy gates only. <strong>No</strong> automation activation,{" "}
-            <strong>no</strong> background workers, <strong>no</strong> auto-send.
+            Roadmap and policy gates only. <strong>No</strong> automation activation, <strong>no</strong> background workers,{" "}
+            <strong>no</strong> auto-send.
           </p>
           <p className="mt-2 text-[9px] font-bold uppercase text-kelly-forest">Open Automation Studio →</p>
         </Link>
@@ -685,7 +685,7 @@ export function EmailCommandCenterContent({
           href={ANALYTICS_DELIVERABILITY_PATH}
           className={`${card} block border-kelly-forest/25 bg-gradient-to-r from-emerald-50/60 to-white/95 transition hover:border-kelly-forest/40 hover:shadow-md`}
         >
-          <p className={h3}>Operator surface — Analytics &amp; Deliverability</p>
+          <p className={h3}>Staff surface — Analytics &amp; Deliverability</p>
           <p className="mt-1 font-heading text-sm font-bold text-kelly-navy">Queue + intelligence + SendGrid readiness</p>
           <p className="mt-1 font-body text-[11px] text-kelly-text/85">
             One dashboard for counts, suppressions, and launch checklist — <strong>read-only</strong>; does not authorize sends.
@@ -701,12 +701,12 @@ export function EmailCommandCenterContent({
         >
           <div className="flex flex-wrap items-start justify-between gap-2">
             <div>
-              <p className={h3}>Operator surface — Send Execution Governance</p>
-              <p className="mt-1 font-heading text-base font-bold text-kelly-navy">Future send rails + gates (no-send shell)</p>
+              <p className={h3}>Staff surface — Send execution governance</p>
+              <p className="mt-1 font-heading text-base font-bold text-kelly-navy">Future send rails + gates (review mode)</p>
               <p className="mt-1 max-w-3xl font-body text-[11px] text-kelly-text/85">
-                EMAIL-SEND-EXECUTION-GOVERNANCE-SHELL-1.0 — Gmail vs SendGrid rails, pre-send checklist, suppression doctrine,
-                approval roles, and decision tree. <strong>No provider APIs</strong>; live sending stays blocked until{" "}
-                <strong>EMAIL-SEND-EXECUTION-1.0</strong>.
+                Gmail vs SendGrid rails, pre-send checklist, suppression doctrine, approval roles, and decision tree.{" "}
+                <strong>No provider send APIs</strong> on the upper cards; live sending stays blocked until headquarters enables the
+                governed send lane.
               </p>
             </div>
             <span className="rounded-full border border-kelly-navy/30 bg-white px-2 py-0.5 text-[9px] font-bold uppercase text-kelly-navy">
@@ -717,17 +717,17 @@ export function EmailCommandCenterContent({
       </section>
 
       <section className="space-y-2">
-        <h2 className={h3}>Tonight&apos;s Operator Path</h2>
+        <h2 className={h3}>Tonight&apos;s staff path</h2>
         <p className="font-body text-[10px] text-kelly-text/65">
-          Suggested sequencing for tonight — each step stays non-destructive and send-free unless a future packet explicitly
-          governs execution.
+          Suggested sequencing for tonight — each step stays non-destructive and send-free unless a future governed release
+          explicitly turns on execution.
         </p>
         <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
           <TonightOperatorCard
             title="New inbound → Gmail Review → Queue"
             status="partial"
             href={g.gmailReviewPath}
-            safety="Metadata-only review; manual bridge to EmailWorkflowItem."
+            safety="Metadata-only review; manual bridge to the message follow-up queue."
           />
           <TonightOperatorCard
             title="Queue item → AI Intelligence → profile ideas"
@@ -739,7 +739,7 @@ export function EmailCommandCenterContent({
             title="Profile suggestions → approve facts"
             status="partial"
             href={pg.profilesReviewPath}
-            safety="Facts stay staged until operator approval."
+            safety="Facts stay staged until staff approval."
           />
           <TonightOperatorCard
             title="Approved facts → Audience Studio"
@@ -757,7 +757,7 @@ export function EmailCommandCenterContent({
             title="Message Studio → Automation Studio"
             status="partial"
             href={AUTOMATION_STUDIO_PATH}
-            safety="Read the trigger/action map before asking for any automation packet — still no activation here."
+            safety="Read the trigger/action map before requesting automation playbooks — still no activation here."
           />
           <TonightOperatorCard
             title="Analytics &amp; Deliverability (readiness)"
@@ -766,7 +766,7 @@ export function EmailCommandCenterContent({
             safety="Queue + graph + SendGrid foundation counts; suppression categories when DB healthy — not send authorization."
           />
           <TonightOperatorCard
-            title="Send Execution Governance (doctrine map)"
+            title="Send execution governance (doctrine map)"
             status="live"
             href={SEND_EXECUTION_GOVERNANCE_PATH}
             safety="Upper page is read-only doctrine — no provider buttons in governance cards."
@@ -775,7 +775,7 @@ export function EmailCommandCenterContent({
             title="Send Execution — governed SendGrid (#ops)"
             status="partial"
             href={`${SEND_EXECUTION_GOVERNANCE_PATH}#ops`}
-            safety="EMAIL-SEND-EXECUTION-1.0 — explicit forms only: preflight, test to one address, final approval, typed SEND APPROVED for broadcast; no queue send."
+            safety="Governed SendGrid console: explicit forms only — preflight, test to one address, final approval, typed confirmation for broadcast; no queue send."
           />
         </div>
       </section>
@@ -858,7 +858,7 @@ export function EmailCommandCenterContent({
             title="Audience building blocks (approved triples)"
             value={au.buildingBlockApprovedTriples}
             href={au.path}
-            sub={au.dbSliceReachable ? "Distinct factType+key+value groups" : "DB / migration not verified"}
+            sub={au.dbSliceReachable ? "Distinct factType+key+value groups" : "Database slice not verified"}
           />
           <StatusCard
             title="Draft audience definitions"
@@ -870,7 +870,7 @@ export function EmailCommandCenterContent({
             title="SendGrid events (ingested)"
             value={sgF.recentSendGridEventsCount}
             href={sgF.path}
-            sub={sgF.dbReachable ? "SendGridEvent rows from POST /api/sendgrid/events" : "DB unreachable — migrate first"}
+            sub={sgF.dbReachable ? "Delivery events from the signed SendGrid webhook" : "Database unreachable — run workspace deploy checks first"}
           />
           <StatusCard
             title="SendGrid suppressions (local)"
@@ -882,7 +882,7 @@ export function EmailCommandCenterContent({
             title="Audience defs (non-archived)"
             value={sgF.audienceDefinitionsNonArchived}
             href={au.path}
-            sub="Future sync targets — not synced in this packet"
+            sub="Future sync targets — not synced in this release"
           />
         </div>
         <p className="font-body text-[10px] text-kelly-text/55">
@@ -916,7 +916,7 @@ export function EmailCommandCenterContent({
                         : "Connected — OAuth live (run metadata sync)"
             }
             existsToday={[
-              "EMAIL-GMAIL-CONNECT-1.0 + EMAIL-GMAIL-SYNC-1.1 + EMAIL-GMAIL-WATCH-1.2: OAuth, encrypted tokens, manual INBOX metadata sync, manual users.watch start/renew, Pub/Sub POST scaffold (verification-gated), history preview counts",
+              "Gmail: OAuth, encrypted tokens, manual inbox metadata sync, manual watch start/renew, Pub/Sub notification scaffold (verification-gated), history preview counts",
               `Monitor: ${g.monitorPath}`,
               `OAuth pipeline ready: ${g.oauthConnectPipelineReady ? "yes" : "no"}`,
               `${g.staffGmailAccountsActive} active / ${g.staffGmailAccountsTotal} total StaffGmailAccount rows`,
@@ -931,7 +931,7 @@ export function EmailCommandCenterContent({
                 ? `Last metadata sync: ${g.lastMetadataSyncAtIso ?? "—"} · messages metadata fetched: ${g.lastMetadataSyncMessageCount ?? "—"}`
                 : "Metadata sync not recorded for this actor — use “Run safe metadata sync” on Gmail monitor",
               `Default OAuth scopes: gmail.metadata${g.composerSendScopeViaEnv ? " + gmail.send (GMAIL_OAUTH_INCLUDE_SEND_FOR_WORKBENCH=true)" : " only (monitor-first; composer send off)"}`,
-              `Gmail metadata review → manual EmailWorkflowItem bridge: ${g.gmailReviewPath} (operator button; METADATA reads only — EMAIL-GMAIL-REVIEW-TO-QUEUE-1.4)`,
+              `Gmail metadata review → manual queue bridge: ${g.gmailReviewPath} (staff button; metadata reads only)`,
             ]}
             missing={[
               ...(g.oauthConnectPipelineReady ? [] : g.oauthMissingEnvVarLines),
@@ -945,10 +945,10 @@ export function EmailCommandCenterContent({
                       : []),
                   ]
                 : [
-                    "Automated watch renewal job + subscriber-side fetch/processing beyond notification metadata (governed packets)",
+                    "Automated watch renewal job plus subscriber-side fetch beyond notification metadata (governed rollout)",
                   ]),
             ]}
-            nextPacket="Governed subscriber-side processing / Gmail → queue automation (explicit policy packet)"
+            nextPacket="Governed Gmail → queue automation when policy and engineering sign off"
             safetyGate="No send from Command Center or queue; tokens never displayed; use monitor + Gmail review routes for Gmail status."
           />
           <IntegrationColumn
@@ -957,11 +957,11 @@ export function EmailCommandCenterContent({
               sgF.dbReachable && sg.sendgridWebhookVerificationKeyPresent
                 ? "Foundation rails — ingestion path ready when SendGrid POSTs"
                 : sendgridConfiguredForSend
-                  ? "Env keys partial — finish webhook PEM + DB migrate for Email OS intake"
-                  : "Foundation scaffold — configure env + migrations"
+                  ? "Env keys partial — finish webhook PEM + database setup for delivery intake"
+                  : "Foundation scaffold — configure env + database updates"
             }
             existsToday={[
-              "EMAIL-SENDGRID-FOUNDATION-1.0: POST /api/sendgrid/events → SendGridEvent + SendGridSuppression (signed in prod)",
+              "SendGrid signed webhooks → delivery events + suppressions stored locally (signed in production)",
               `Command Center surface: ${sgF.path}`,
               `SENDGRID_API_KEY set: ${sg.sendgridApiKeyPresent ? "yes" : "no"} (name only)`,
               `SENDGRID_FROM_EMAIL set: ${sg.sendgridFromEmailPresent ? "yes" : "no"}`,
@@ -971,12 +971,12 @@ export function EmailCommandCenterContent({
               "Comms legacy path still at /api/webhooks/sendgrid (separate)",
             ]}
             missing={[
-              ...(sgF.dbReachable ? [] : ["`npx prisma migrate deploy` for SendGrid foundation tables"]),
+              ...(sgF.dbReachable ? [] : ["Apply documented database deploy for SendGrid foundation tables"]),
               ...(sg.sendgridWebhookVerificationKeyPresent ? [] : ["Signed webhook PEM for production intake on /api/sendgrid/events"]),
-              "EMAIL-SENDGRID-CONTACT-SYNC-1.1 — governed list/segment sync (preview + execute when enabled)",
-              "SendGrid event → EmailSendRecipient reconciliation (future packet)",
+              "Governed SendGrid list/segment sync (preview + execute when enabled)",
+              "SendGrid event → per-recipient reconciliation (future governed lane)",
             ]}
-            nextPacket="EMAIL-SENDGRID-CONTACT-SYNC-1.1 (sync) · EMAIL-MESSAGE-STUDIO-1.1 (persist drafts) — Message Studio route is live for planning only"
+            nextPacket="Contact sync + Message Studio shared drafts when the next governed milestones ship (Message Studio planning is live today)"
             safetyGate="No mass send from Command Center; suppressions must gate future sends; never expose API keys in UI."
           />
           <IntegrationColumn
@@ -987,14 +987,14 @@ export function EmailCommandCenterContent({
                 : "OPENAI_API_KEY not set — queue detail shows not configured"
             }
             existsToday={[
-              "EMAIL-AI-INTELLIGENCE-1.0: advisory OpenAI analysis on email queue detail; stores JSON under metadataJson.emailAiAnalysis",
+              "OpenAI: advisory analysis on queue item detail; stores JSON on the row when enabled",
               "Server OpenAI client + json_object completions; no Gmail bodies in this lane",
               `OPENAI_API_KEY set: ${oa.openaiApiKeyPresent ? "yes" : "no"}`,
               `Queue rows with stored AI envelope: ${oa.emailAiQueueItemsAnalyzedCount}`,
             ]}
             missing={[
               ...(oa.emailAiSafeAnalysisAvailable ? [] : ["OPENAI_API_KEY for live model calls"]),
-              "Deeper prompt registry / eval harness (future packet)",
+              "Deeper prompt registry / evaluation harness (future release)",
               "No auto-send — send execution remains separate governed path",
             ]}
             nextPacket="Hardening / eval for email AI prompts, or profile graph — per steering"
@@ -1024,7 +1024,7 @@ export function EmailCommandCenterContent({
             }
           />
           <PipelineStep
-            label="Queue (EmailWorkflowItem)"
+            label="Queue (message follow-ups)"
             state="live"
             note="Triage, interpretation, assignment — /admin/workbench/email-queue"
           />
@@ -1033,15 +1033,19 @@ export function EmailCommandCenterContent({
             state={oa.emailAiSafeAnalysisAvailable ? "partial" : "partial"}
             note={
               oa.emailAiSafeAnalysisAvailable
-                ? "E-2A deterministic + OpenAI advisory on queue detail (EMAIL-AI-INTELLIGENCE-1.0) — drafts are not sent."
-                : "E-2A deterministic on queue; set OPENAI_API_KEY for OpenAI advisory analysis on queue detail."
+                ? "Deterministic parsing plus optional OpenAI advisory on queue detail — drafts are not sent."
+                : "Deterministic parsing on queue; set OPENAI_API_KEY for optional OpenAI advisory on queue detail."
             }
           />
-          <PipelineStep label="Profile suggestion" state="partial" note="EMAIL-CONTACT-PROFILE-GRAPH-1.0 — staged facts + hints; approve on profile review route." />
+          <PipelineStep
+            label="Profile suggestion"
+            state="partial"
+            note="Staged facts and hints — approve on the profile review route."
+          />
           <PipelineStep
             label="Audience / group"
             state="partial"
-            note="EMAIL-AUDIENCE-STUDIO-1.0 + SendGrid foundation readiness — previews local; list sync still future."
+            note="Audience previews are local; SendGrid list sync remains a future governed step."
           />
           <PipelineStep
             label="Draft"
@@ -1065,7 +1069,7 @@ export function EmailCommandCenterContent({
             note="POST /api/sendgrid/events stores sanitized events + suppressions — open Analytics & Deliverability for one-page signal view."
             href={ANALYTICS_DELIVERABILITY_PATH}
           />
-          <PipelineStep label="Profile update" state="designed" note="Governed merges from engagement — future packet." />
+          <PipelineStep label="Profile update" state="designed" note="Governed merges from engagement — future release." />
         </div>
         <div className="rounded-md border border-kelly-text/10 bg-kelly-page/50 px-2 py-2">
           <p className={h3}>Coming next (not tonight)</p>
@@ -1076,10 +1080,10 @@ export function EmailCommandCenterContent({
               </Link>{" "}
               shell is live tonight — provider execution still future.
             </li>
-            <li>Governed SendGrid broadcast execution + contact sync (explicit packets).</li>
+            <li>Governed SendGrid broadcast execution + contact sync (explicit headquarters approval).</li>
             <li>Gmail human send rail from queue (separate approval + OAuth scopes).</li>
-            <li>EMAIL-MESSAGE-STUDIO server persistence — shared draft review tied to audiences/queue items (future packet).</li>
-            <li>Hosted canonical Postgres verification — operator-run CLI gates when steering returns to infra.</li>
+            <li>Message Studio server persistence — shared draft review tied to audiences and queue items (future release).</li>
+            <li>Hosted Postgres verification — staff-run CLI checks when infra returns to the steering queue.</li>
           </ul>
         </div>
       </section>
@@ -1148,7 +1152,7 @@ export function EmailCommandCenterContent({
           <Link href={ANALYTICS_DELIVERABILITY_PATH} className="font-semibold text-kelly-navy underline">
             Analytics &amp; Deliverability
           </Link>
-          . Before any future send packet:{" "}
+          . Before any future governed send rollout:{" "}
           <Link href={SEND_EXECUTION_GOVERNANCE_PATH} className="font-semibold text-kelly-navy underline">
             Send Execution Governance
           </Link>
@@ -1183,7 +1187,7 @@ export function EmailCommandCenterContent({
         </ul>
         <p className="mt-2 font-body text-[10px] text-kelly-text/60">
           Gmail sync, SendGrid contact sync at scale, structured send execution, and higher automation tiers remain roadmap
-          items — queue OpenAI analysis is manual/advisory only. For the full operator-facing map (still no activation), open{" "}
+          items — queue OpenAI analysis is manual/advisory only. For the full staff-facing map (still no activation), open{" "}
           <Link href={AUTOMATION_STUDIO_PATH} className="font-bold text-kelly-forest underline">
             Automation Studio
           </Link>
@@ -1194,13 +1198,13 @@ export function EmailCommandCenterContent({
       <section className={`${card} space-y-2`}>
         <h2 className={h3}>Command Center routes (status)</h2>
         <p className="font-body text-[10px] text-kelly-text/65">
-          EMAIL-AUTOMATION-ANALYTICS-SHELL-1.0 adds Automation + Analytics shells — governance visibility only.
+          Automation and Analytics are visibility shells — governance and counts, not activation.
         </p>
         <ul className="grid gap-1.5 sm:grid-cols-2 lg:grid-cols-3">
           {[
             { name: "Cockpit", path: "/admin/workbench/email-command-center", status: "Live — counts + gates" },
             {
-              name: "Daily Operator Console",
+              name: "Daily command console",
               path: DAILY_OPERATOR_CONSOLE_PATH,
               status: "Live — start-of-day priorities + work queue",
             },
@@ -1219,7 +1223,7 @@ export function EmailCommandCenterContent({
               status: og.cockpitDbReachable ? "Live — read-only aggregates" : "Degraded — DB unreachable",
             },
             { name: "Route map", path: ROUTE_MAP_PATH, status: "Live — system map" },
-            { name: "Readiness checklist", path: READINESS_CHECKLIST_PATH, status: "Live — operator checklist" },
+            { name: "Readiness checklist", path: READINESS_CHECKLIST_PATH, status: "Live — staff checklist" },
             {
               name: "Send Execution Governance",
               path: SEND_EXECUTION_GOVERNANCE_PATH,
@@ -1239,7 +1243,12 @@ export function EmailCommandCenterContent({
       <section className="rounded-lg border-2 border-kelly-forest/25 bg-kelly-fog/35 px-3 py-2.5">
         <h2 className={`${h3} text-kelly-navy`}>Governance / safety</h2>
         <p className="mt-1 font-body text-[11px] font-semibold text-kelly-navy">
-          canSendFromEmailWorkflowItem = {String(snapshot.governance.canSendFromEmailWorkflowItem)}
+          Queue-triggered send from items:{" "}
+          {snapshot.governance.canSendFromEmailWorkflowItem ? (
+            <span className="text-amber-900">On — verify this is intentional</span>
+          ) : (
+            <span className="text-emerald-900">Locked (expected)</span>
+          )}
         </p>
         <ul className="mt-2 list-inside list-disc space-y-0.5 font-body text-[10px] text-kelly-text/90">
           {snapshot.governance.bullets.map((b) => (
@@ -1252,25 +1261,25 @@ export function EmailCommandCenterContent({
       </section>
 
       <section className={card}>
-        <h2 className={h3}>Next build path</h2>
+        <h2 className={h3}>Engineering roadmap (reference)</h2>
         <p className="font-body text-[11px] text-kelly-text/85">
-          Choose based on priority: <span className="font-bold">EMAIL-GMAIL-CONNECT-1.0</span> if inbox monitoring is
-          first; <span className="font-bold">EMAIL-SENDGRID-FOUNDATION-1.0</span> if broadcast and webhooks are first.
+          Choose based on priority: <span className="font-bold">Gmail connect + monitor</span> if inbox monitoring is first;{" "}
+          <span className="font-bold">SendGrid foundation + webhooks</span> if broadcast rails and delivery events are first.
         </p>
         <ol className="mt-2 list-inside list-decimal space-y-0.5 font-body text-[10px] text-kelly-text/85">
-          <li>EMAIL-GMAIL-CONNECT-1.0</li>
-          <li>EMAIL-SENDGRID-FOUNDATION-1.0 (✓ rails — no send)</li>
-          <li>EMAIL-SENDGRID-CONTACT-SYNC-1.1</li>
-          <li>EMAIL-PROFILE-GRAPH-1.0</li>
-          <li>EMAIL-AI-INTELLIGENCE-1.0 (✓ advisory queue AI — deepen/eval next)</li>
-          <li>EMAIL-AUDIENCE-STUDIO-1.0 (✓ preview + draft definitions — no SendGrid)</li>
-          <li>EMAIL-COMMAND-CENTER-TONIGHT-FINISH-1.0 (✓ Message Studio route)</li>
-          <li>EMAIL-MESSAGE-STUDIO-LOCAL-DRAFTS-1.1 (✓ browser localStorage draft workspace — no DB)</li>
-          <li>EMAIL-MESSAGE-STUDIO server 1.x (shared / server-persisted drafts + deeper tooling — future)</li>
-          <li>EMAIL-AUTOMATION-ANALYTICS-SHELL-1.0 (✓ Automation + Analytics operator shells — no activation, no sends)</li>
-          <li>EMAIL-AUTOMATION-STUDIO-1.0 (future — wire real automation engine + packets)</li>
-          <li>EMAIL-SEND-EXECUTION-1.0</li>
-          <li>EMAIL-ANALYTICS-DELIVERABILITY-1.0 (deep charts + scheduled reports — beyond this shell)</li>
+          <li>Gmail connect, sync, and watch scaffolding</li>
+          <li>SendGrid foundation (✓ rails — still no send from cockpit)</li>
+          <li>SendGrid governed contact sync</li>
+          <li>Profile graph hardening</li>
+          <li>Queue AI advisory (✓ optional — deepen evaluation next)</li>
+          <li>Audience studio (✓ previews + draft definitions — no SendGrid sync)</li>
+          <li>Message Studio route (✓ live)</li>
+          <li>Browser localStorage drafts (✓ this browser only)</li>
+          <li>Shared server drafts + deeper tooling (future)</li>
+          <li>Automation + Analytics shells (✓ visibility — no activation, no sends)</li>
+          <li>Automation engine wiring (future)</li>
+          <li>Governed send execution lane</li>
+          <li>Deep deliverability charts + scheduled reports (beyond current shell)</li>
         </ol>
       </section>
     </div>

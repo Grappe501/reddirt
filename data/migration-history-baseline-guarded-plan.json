@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-POST-ADDITIVE-SCHEMA-MIGRATION-HISTORY-STRATEGY-1.0",
+  "generatedAt": "2026-05-07T15:36:46.126Z",
+  "mode": "future_migration_history_baseline_guarded_plan",
+  "productionMutationByThisScript": false,
+  "futurePacket": "REDDIRT-MIGRATION-HISTORY-BASELINE-EXECUTION-PACKET-1.0",
+  "automaticExecutionAllowed": false,
+  "scriptsPlannedNotImplementedHere": [
+    "scripts/build-migration-history-baseline-execution-packet.mjs (to be authored in future slice)",
+    "scripts/validate-migration-history-baseline-execution-packet.mjs",
+    "scripts/run-migration-history-baseline-preflight.mjs",
+    "scripts/run-migration-history-baseline-guarded.mjs (--dry-run default)"
+  ],
+  "approvalPhrasePlaceholder": "STEVE_APPROVES_REDDIRT_MIGRATION_HISTORY_BASELINE_ON_PRODUCTION",
+  "operatorCommandsForbiddenFromAutomation": [
+    "npx prisma migrate deploy",
+    "npx prisma migrate resolve",
+    "npx prisma db push",
+    "npx prisma migrate reset"
+  ],
+  "notes": "This JSON is a plan stub only; no execution."
+}

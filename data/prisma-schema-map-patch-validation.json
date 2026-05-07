@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-PRISMA-SCHEMA-MAP-PATCH-PLAN-AND-SHADOW-PROOF-1.0",
+  "generatedAt": "2026-05-06T23:45:17.806Z",
+  "status": "pass",
+  "checks": [
+    {
+      "id": "patch_plan_exists",
+      "ok": true,
+      "detail": "H:\\SOSWebsite\\RedDirt\\data\\prisma-schema-map-patch-plan.json"
+    },
+    {
+      "id": "patch_plan_md_exists",
+      "ok": true,
+      "detail": "H:\\SOSWebsite\\RedDirt\\docs\\prisma-schema-map-patch-plan.md"
+    },
+    {
+      "id": "map_Submission",
+      "ok": true,
+      "detail": "expected @@map(\"submissions\") got \"submissions\""
+    },
+    {
+      "id": "map_MediaAsset",
+      "ok": true,
+      "detail": "expected @@map(\"media_assets\") got \"media_assets\""
+    },
+    {
+      "id": "map_County",
+      "ok": true,
+      "detail": "expected @@map(\"counties\") got \"counties\""
+    },
+    {
+      "id": "no_forbidden_mapped",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "voterrecord_not_warehouse",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_auth_table_maps",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "absolute_do_not_run_documented",
+      "ok": true,
+      "detail": "count=5"
+    },
+    {
+      "id": "shadow_doc_exists",
+      "ok": true,
+      "detail": "H:\\SOSWebsite\\RedDirt\\docs\\production-db-shadow-proof-plan.md"
+    },
+    {
+      "id": "prisma_validate",
+      "ok": true,
+      "detail": "Environment variables loaded from .env\nPrisma schema loaded from prisma\\schema.prisma\nThe schema at prisma\\schema.prisma is valid 🚀\n"
+    }
+  ],
+  "violations": [],
+  "appliedMaps": [
+    {
+      "modelName": "Submission",
+      "map": "submissions"
+    },
+    {
+      "modelName": "MediaAsset",
+      "map": "media_assets"
+    },
+    {
+      "modelName": "County",
+      "map": "counties"
+    }
+  ],
+  "blockedForbiddenMaps": [],
+  "safeForShadowProof": true,
+  "prismaValidateExitCode": 0
+}

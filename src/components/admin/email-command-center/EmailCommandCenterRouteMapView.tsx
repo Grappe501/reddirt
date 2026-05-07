@@ -179,7 +179,7 @@ export function EmailCommandCenterRouteMapView() {
     <div className="min-w-0 max-w-5xl space-y-5">
       <div className="flex flex-wrap items-center gap-2">
         <Link href={ECC} className="rounded border border-kelly-text/15 bg-white px-2 py-0.5 text-xs font-semibold text-kelly-slate">
-          ← Email Command Center
+          ← Communication Command Center
         </Link>
         <Link href={`${ECC}/readiness`} className="text-xs font-bold text-kelly-forest hover:underline">
           Readiness checklist
@@ -193,7 +193,7 @@ export function EmailCommandCenterRouteMapView() {
       </div>
 
       <header className="space-y-2">
-        <h1 className="font-heading text-2xl font-bold text-kelly-navy">Email Command Center — Route map</h1>
+        <h1 className="font-heading text-2xl font-bold text-kelly-navy">Communication Command Center — Route map</h1>
         <p className="max-w-3xl font-body text-sm text-kelly-text/85">
           EMAIL-COMMAND-CENTER-FINAL-POLISH-1.0 — every operator surface in one map: paths, posture, upstream/downstream, and
           what each route <strong>does not</strong> do. No new automation or sends implied.

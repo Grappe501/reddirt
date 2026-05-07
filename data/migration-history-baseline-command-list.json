@@ -1,0 +1,504 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-MIGRATION-HISTORY-BASELINE-EXECUTION-PACKET-1.0",
+  "generatedAt": "2026-05-07T15:56:42.918Z",
+  "commands": [
+    {
+      "migrationName": "20260221120000_county_command_pages",
+      "command": "npx prisma migrate resolve --applied \"20260221120000_county_command_pages\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260221143000_voter_file_snapshots_and_metrics",
+      "command": "npx prisma migrate resolve --applied \"20260221143000_voter_file_snapshots_and_metrics\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260221180000_voter_warehouse_hardening",
+      "command": "npx prisma migrate resolve --applied \"20260221180000_voter_warehouse_hardening\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260421120000_init",
+      "command": "npx prisma migrate resolve --applied \"20260421120000_init\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260421140000_admin_content_board",
+      "command": "npx prisma migrate resolve --applied \"20260421140000_admin_content_board\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260421150000_homepage_editorial_media_dims",
+      "command": "npx prisma migrate resolve --applied \"20260421150000_homepage_editorial_media_dims\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260421180000_content_orchestrator",
+      "command": "npx prisma migrate resolve --applied \"20260421180000_content_orchestrator\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260421194722_content_hub_phase1",
+      "command": "npx prisma migrate resolve --applied \"20260421194722_content_hub_phase1\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260421200303_campaign_owned_media",
+      "command": "npx prisma migrate resolve --applied \"20260421200303_campaign_owned_media\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260421215343_campaign_ops_slice1",
+      "command": "npx prisma migrate resolve --applied \"20260421215343_campaign_ops_slice1\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260421220000_owned_media_geo_ingest",
+      "command": "npx prisma migrate resolve --applied \"20260421220000_owned_media_geo_ingest\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260421220304_owned_media_annotations_slice2",
+      "command": "npx prisma migrate resolve --applied \"20260421220304_owned_media_annotations_slice2\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260421221514_volunteer_signup_sheet_intake",
+      "command": "npx prisma migrate resolve --applied \"20260421221514_volunteer_signup_sheet_intake\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260421222620_comms_workbench_step1",
+      "command": "npx prisma migrate resolve --applied \"20260421222620_comms_workbench_step1\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260421223000_owned_media_geo_indexes",
+      "command": "npx prisma migrate resolve --applied \"20260421223000_owned_media_geo_indexes\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260421232900_calendar_hq_and_google",
+      "command": "npx prisma migrate resolve --applied \"20260421232900_calendar_hq_and_google\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260422003847_weekly_command_matrix",
+      "command": "npx prisma migrate resolve --applied \"20260422003847_weekly_command_matrix\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260422010000_slice1_event_readiness",
+      "command": "npx prisma migrate resolve --applied \"20260422010000_slice1_event_readiness\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260422010100_slice1_event_readiness",
+      "command": "npx prisma migrate resolve --applied \"20260422010100_slice1_event_readiness\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260422012659_event_stage_log_and_lifecycle_fields",
+      "command": "npx prisma migrate resolve --applied \"20260422012659_event_stage_log_and_lifecycle_fields\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260422013434_slice3_event_comms_fields",
+      "command": "npx prisma migrate resolve --applied \"20260422013434_slice3_event_comms_fields\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260422014544_slice4_event_workflow_tasks",
+      "command": "npx prisma migrate resolve --applied \"20260422014544_slice4_event_workflow_tasks\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260422015812_slice5_google_calendar_sync",
+      "command": "npx prisma migrate resolve --applied \"20260422015812_slice5_google_calendar_sync\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260422120000_comms_tier1_contact_preferences",
+      "command": "npx prisma migrate resolve --applied \"20260422120000_comms_tier1_contact_preferences\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260422150000_arkansas_festival_ingest",
+      "command": "npx prisma migrate resolve --applied \"20260422150000_arkansas_festival_ingest\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260422160000_festival_public_form",
+      "command": "npx prisma migrate resolve --applied \"20260422160000_festival_public_form\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260423000000_tier2_broadcast_engine",
+      "command": "npx prisma migrate resolve --applied \"20260423000000_tier2_broadcast_engine\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260423120000_tier25_webhooks_gmail",
+      "command": "npx prisma migrate resolve --applied \"20260423120000_tier25_webhooks_gmail\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260424100000_tier3b_event_orchestration",
+      "command": "npx prisma migrate resolve --applied \"20260424100000_tier3b_event_orchestration\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260424180000_intel3_opposition_intelligence_schema",
+      "command": "npx prisma migrate resolve --applied \"20260424180000_intel3_opposition_intelligence_schema\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260424190000_voter_election_participation",
+      "command": "npx prisma migrate resolve --applied \"20260424190000_voter_election_participation\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260424200000_county_intel_2_schema",
+      "command": "npx prisma migrate resolve --applied \"20260424200000_county_intel_2_schema\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260425120000_external_media_monitor",
+      "command": "npx prisma migrate resolve --applied \"20260425120000_external_media_monitor\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260425130000_campaignos_phase1_workflow_intake",
+      "command": "npx prisma migrate resolve --applied \"20260425130000_campaignos_phase1_workflow_intake\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260425140000_social_workbench_foundation",
+      "command": "npx prisma migrate resolve --applied \"20260425140000_social_workbench_foundation\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260426120000_social_workbench_media_library",
+      "command": "npx prisma migrate resolve --applied \"20260426120000_social_workbench_media_library\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260427120000_social_workbench_analytics",
+      "command": "npx prisma migrate resolve --applied \"20260427120000_social_workbench_analytics\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260428120000_conversation_monitoring",
+      "command": "npx prisma migrate resolve --applied \"20260428120000_conversation_monitoring\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260429120000_owned_media_dam_media_center",
+      "command": "npx prisma migrate resolve --applied \"20260429120000_owned_media_dam_media_center\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260430120000_social_actionable_analytics",
+      "command": "npx prisma migrate resolve --applied \"20260430120000_social_actionable_analytics\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260430133000_analytics_recommendation_outcomes",
+      "command": "npx prisma migrate resolve --applied \"20260430133000_analytics_recommendation_outcomes\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260431120000_social_analytics_tactic_and_followup_v2",
+      "command": "npx prisma migrate resolve --applied \"20260431120000_social_analytics_tactic_and_followup_v2\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260431140000_social_content_draft",
+      "command": "npx prisma migrate resolve --applied \"20260431140000_social_content_draft\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260431150000_social_content_draft_refine",
+      "command": "npx prisma migrate resolve --applied \"20260431150000_social_content_draft_refine\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260431160000_owned_media_center_canonical_review",
+      "command": "npx prisma migrate resolve --applied \"20260431160000_owned_media_center_canonical_review\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260431170000_comms_workbench_packet1",
+      "command": "npx prisma migrate resolve --applied \"20260431170000_comms_workbench_packet1\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260431180000_comms_packet7_variant_review_fields",
+      "command": "npx prisma migrate resolve --applied \"20260431180000_comms_packet7_variant_review_fields\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260431185000_comms_packet7_variant_status_backfill",
+      "command": "npx prisma migrate resolve --applied \"20260431185000_comms_packet7_variant_status_backfill\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260431190000_comms_send_operator_retry_12a",
+      "command": "npx prisma migrate resolve --applied \"20260431190000_comms_send_operator_retry_12a\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260431200000_comms_contact_engagement_ce1_foundation",
+      "command": "npx prisma migrate resolve --applied \"20260431200000_comms_contact_engagement_ce1_foundation\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260501120000_contact_engagement_ce1_indexes",
+      "command": "npx prisma migrate resolve --applied \"20260501120000_contact_engagement_ce1_indexes\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260502120000_contact_engagement_ce3_recipient_unique",
+      "command": "npx prisma migrate resolve --applied \"20260502120000_contact_engagement_ce3_recipient_unique\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260504120000_email_workflow_e1",
+      "command": "npx prisma migrate resolve --applied \"20260504120000_email_workflow_e1\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260504130000_email_workflow_status_enriched",
+      "command": "npx prisma migrate resolve --applied \"20260504130000_email_workflow_status_enriched\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260504140000_seat1_position_seat",
+      "command": "npx prisma migrate resolve --applied \"20260504140000_seat1_position_seat\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260505190000_staff_gmail_sync_state",
+      "command": "npx prisma migrate resolve --applied \"20260505190000_staff_gmail_sync_state\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260505203000_email_contact_profile_graph",
+      "command": "npx prisma migrate resolve --applied \"20260505203000_email_contact_profile_graph\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260505220000_email_audience_studio_foundation",
+      "command": "npx prisma migrate resolve --applied \"20260505220000_email_audience_studio_foundation\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260506120000_email_sendgrid_foundation",
+      "command": "npx prisma migrate resolve --applied \"20260506120000_email_sendgrid_foundation\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260507180000_email_contact_import_staging",
+      "command": "npx prisma migrate resolve --applied \"20260507180000_email_contact_import_staging\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260508120000_message_studio_server_drafts",
+      "command": "npx prisma migrate resolve --applied \"20260508120000_message_studio_server_drafts\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260509120000_comp2_compliance_document",
+      "command": "npx prisma migrate resolve --applied \"20260509120000_comp2_compliance_document\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260509120000_sendgrid_contact_sync_run",
+      "command": "npx prisma migrate resolve --applied \"20260509120000_sendgrid_contact_sync_run\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260510120000_fin1_financial_transaction",
+      "command": "npx prisma migrate resolve --applied \"20260510120000_fin1_financial_transaction\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260510140000_email_send_execution",
+      "command": "npx prisma migrate resolve --applied \"20260510140000_email_send_execution\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260511120000_budget2_budget_plan_line",
+      "command": "npx prisma migrate resolve --applied \"20260511120000_budget2_budget_plan_line\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260512120000_fin2_field1_youth1_foundation",
+      "command": "npx prisma migrate resolve --applied \"20260512120000_fin2_field1_youth1_foundation\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260513120000_data4_election_ingest_foundation",
+      "command": "npx prisma migrate resolve --applied \"20260513120000_data4_election_ingest_foundation\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260514120000_voter_model_1_interaction_1_foundation",
+      "command": "npx prisma migrate resolve --applied \"20260514120000_voter_model_1_interaction_1_foundation\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260515120000_rel2_relational_contact_foundation",
+      "command": "npx prisma migrate resolve --applied \"20260515120000_rel2_relational_contact_foundation\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    },
+    {
+      "migrationName": "20260515121000_email_contact_profile_relational_contact_fkey",
+      "command": "npx prisma migrate resolve --applied \"20260515121000_email_contact_profile_relational_contact_fkey\"",
+      "executionStatus": "DO_NOT_RUN_YET",
+      "scope": "production_or_clone_operator_only",
+      "notes": "Marks migration applied without executing migration.sql DDL. Only after schema equivalence is proven."
+    }
+  ]
+}

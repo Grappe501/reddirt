@@ -355,9 +355,10 @@ function buildDegradedEmailCommandCenterSnapshot(): EmailCommandCenterSnapshot {
     emailCommandCenterMigrations: [],
     allEmailCommandCenterMigrationsApplied: null,
     migrationGateNote:
-      "Database unreachable from this server request — cockpit counts are not live. From RedDirt/, run npm run email:db:diagnose (safe) then npm run email:command-center:preflight.",
-    contactImportStatusLabel: "Paused until DB gate passes",
-    contactImportNextPacket: "Row-level merge UX + canonical Supabase-hosted preflight",
+      "Database unreachable from this server request — cockpit counts are not live. From the RedDirt folder, run the safe database diagnose script, then the email command center preflight.",
+    contactImportStatusLabel: "Paused until database checks pass",
+    contactImportNextPacket:
+      "Row-level merge experience plus hosted-environment preflight (run the same checks on the live DATABASE_URL before imports).",
     localContactImportDbVerified: false,
     readinessDocRepoPath: "docs/email-command-center-contact-import-readiness.md",
     preflightCliHint: "npm run email:command-center:preflight",
@@ -934,23 +935,23 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
   const governance: GovernanceSnapshot = {
     canSendFromEmailWorkflowItem: EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM,
     bullets: [
-      "This dashboard does not send email — it is coordination + readiness only.",
-      "Mass and broadcast sends require a governed SendGrid (or equivalent) packet; suppression and unsubscribe handling are mandatory before scaling sends.",
-      "Gmail human send requires OAuth/token flows outside this shell; never expose tokens in UI.",
-      "POST /api/gmail/pubsub records notification metadata when verification token + topic are configured — no auto-fetch, no bodies.",
-      "Gmail production watch (EMAIL-GMAIL-PRODUCTION-WATCH-HARDENING-1.0): renew users.watch before expiry; run npm run gmail:watch:renewal-check (dry-run) from RedDirt/; stale history cursors require metadata sync before incremental history — no Gmail send from these paths.",
-      "OpenAI Email Intelligence (EMAIL-AI-INTELLIGENCE-1.0): advisory analysis on email queue detail — OPENAI_API_KEY required; no auto-send or auto-approval from AI output.",
-      "Contact/Profile Graph (EMAIL-CONTACT-PROFILE-GRAPH-1.0): AI profile suggestions stage as PENDING until operator approval; facts land on EmailContactProfileFact only — not auto User/VolunteerProfile merges. Audience hints are not SendGrid segments.",
-      "Audience / Microtargeting Studio (EMAIL-AUDIENCE-STUDIO-1.0): previews and saved definitions use approved profile graph data — no SendGrid sync, no sends, no automatic CRM updates.",
-      "SendGrid foundation (EMAIL-SENDGRID-FOUNDATION-1.0): POST /api/sendgrid/events ingests signed Event Webhook payloads into SendGridEvent + SendGridSuppression when the DB migration is applied — no sends, no OpenAI, no auto contact sync, no User/VolunteerProfile writes from this path.",
-      "SendGrid contact sync (EMAIL-SENDGRID-CONTACT-SYNC-1.1 + EMAIL-SENDGRID-CONTACT-UPsert-EXECUTION-1.2): preview + approval + optional governed Marketing Contacts upsert for APPROVED runs (SENDGRID_API_KEY + suppression-aware rebuild); contact management only — no email send, no campaigns; mass send remains EMAIL-SEND-EXECUTION-1.0+.",
-      "Contact list CSV import (EMAIL-CONTACT-IMPORT-STAGING-1.0): staging + operator validate/approve/commit only — never SendGrid sync, never sends from this path, never assumed opt-in. Canonical Supabase DB / production requires the same CLI gates on that DATABASE_URL.",
-      "Message Studio (TONIGHT-FINISH + LOCAL-DRAFTS + CAMPAIGN-VOICE + EDITORIAL-REVIEW-DESK-1.0 + PRODUCTION-TEMPLATES-1.0 + SERVER-DRAFTS-1.0): browser localStorage drafts plus optional shared Postgres drafts (promote/list/update/archive/revision — persistence only); Campaign Voice + Editorial Review Desk + production templates; optional admin-server OpenAI when OPENAI_API_KEY is set; no send; no legal compliance claim.",
-      "Daily Operator Console (EMAIL-DAILY-OPERATOR-CONSOLE-1.0): /admin/workbench/email-command-center/daily — snapshot-driven priority cards, rule-based next actions, work queue deep links; localStorage draft summary for this browser plus shared Message Studio draft counts from Postgres (read-only); no sends.",
-      "Automation Studio (EMAIL-AUTOMATION-ANALYTICS-SHELL-1.0 + EMAIL-AUTOMATION-POLICY-ACTIVATION-1.0): governance + roadmap + read-only policy evaluations from cockpit counts — no automation workers, no auto-send, no background jobs; Evaluate policies refreshes snapshot only.",
-      "Analytics & Deliverability (EMAIL-AUTOMATION-ANALYTICS-SHELL-1.0 + EMAIL-SENDGRID-EVENT-RECIPIENT-RECONCILIATION-1.0): read-only cockpit aggregates + optional operator-triggered reconciliation of SendGridEvent rows to EmailSendRecipient (no provider send API; no Gmail send).",
-      "Send Execution (EMAIL-SEND-EXECUTION-1.0): `/admin/workbench/email-command-center/send-execution` — operator-governed SendGrid test + broadcast only after shared draft governance approval, send packet, ACTIVE audience, suppression exclusions, optional SYNCED contact sync run, explicit test send, separate final approval, and typed confirmation (SEND APPROVED). No queue send; EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM unchanged.",
-      "AI may suggest; operators and policy decide execution and sensitive writes.",
+      "This dashboard does not send email — it coordinates triage, drafts, and readiness only.",
+      "Mass and broadcast sends need a governed delivery provider, suppression lists, and unsubscribe handling before scale.",
+      "Gmail human send uses OAuth outside this UI — never paste tokens into tickets or chat.",
+      "Gmail inbox notifications record metadata only when verification is configured — no auto-fetch of full bodies.",
+      "Gmail inbox watch: renew before expiry; use the renewal dry-run from RedDirt/; stale history cursors need metadata sync first — still no send from these tools.",
+      "OpenAI on the queue: advisory analysis only when a server key is set — no auto-send or auto-approval from model output.",
+      "Contact profile graph: AI suggestions stay pending until staff approve; approved facts land on audit tables — not silent merges into volunteer profiles. Saved audiences are not provider mailing lists.",
+      "Audience studio: previews use approved profile data — no automatic list sync, no sends, no silent CRM rewrites.",
+      "SendGrid foundation: signed webhooks land delivery and suppression events in the database when the workspace is updated — no sends, no auto contact sync, no silent profile writes from that path.",
+      "SendGrid contact sync: preview, approve, then optional governed upserts for approved runs — contact management only, not campaigns or mass send.",
+      "CSV contact import: staging with staff validate → approve → commit only — no delivery, no assumed opt-in. Run the same hosted-environment checks on production DATABASE_URL before treating imports as live.",
+      "Message Studio: local drafts plus optional shared drafts in the database, campaign voice, editorial review, templates; optional server AI when configured — still no send and no legal compliance guarantee from the tool.",
+      "Daily console: snapshot-driven priorities, next actions, and deep links to queues — read-only draft counts from the database; no sends.",
+      "Automation studio: governance map and read-only policy evaluation from live counts — no workers, no auto-send; refresh updates the snapshot only.",
+      "Analytics: read-only aggregates plus optional staff-triggered reconciliation of delivery events — no provider send API and no Gmail send.",
+      "Send execution: governed test and broadcast path only after approvals, active audience, suppressions, optional synced contacts, explicit test send, final approval, and typed confirmation — queue send from items stays off.",
+      "AI may suggest; staff and policy decide execution and sensitive writes.",
     ],
   };
 
@@ -973,9 +974,10 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
   let migrationGateNote: string | null = null;
   if (allEmailCommandCenterMigrationsApplied === false) {
     migrationGateNote =
-      "One or more Email Command Center migrations are not applied on this database — run npx prisma migrate deploy from RedDirt/, then npm run email:command-center:preflight.";
+      "One or more workspace database updates for messaging tools are not applied on this database. From the RedDirt project folder, run the email command center preflight your team uses after deploy.";
   } else if (allEmailCommandCenterMigrationsApplied === null) {
-    migrationGateNote = "Could not verify Email Command Center migrations (_prisma_migrations query failed).";
+    migrationGateNote =
+      "Could not verify workspace database update status (database unreachable or the check query failed).";
   }
 
   const importSnap = await contactImportSnapshotCounts();
@@ -997,10 +999,11 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
     contactImportStatusLabel:
       allEmailCommandCenterMigrationsApplied === true
         ? importSnap.dbSliceReachable
-          ? "EMAIL-CONTACT-IMPORT-STAGING-1.0 — staging UI live; validate → approve → commit writes EmailContactProfile + CONTACT_IMPORT facts only."
-          : "ECC migrations applied but import tables did not respond — check DATABASE_URL and rerun preflight."
-        : "Paused until DB gate passes",
-    contactImportNextPacket: "Row-level merge UX + canonical Supabase-hosted preflight (same gates on hosted DATABASE_URL)",
+          ? "Contact import staging is live — validate, approve, then commit; writes stay on contact profiles and import audit fields only."
+          : "Workspace updates look applied, but import tables did not respond — confirm DATABASE_URL and rerun preflight."
+        : "Paused until database checks pass",
+    contactImportNextPacket:
+      "Row-level merge experience plus hosted-environment preflight (run the same checks on the live DATABASE_URL before imports).",
     localContactImportDbVerified,
     readinessDocRepoPath: "docs/email-command-center-contact-import-readiness.md",
     preflightCliHint: "npm run email:command-center:preflight",

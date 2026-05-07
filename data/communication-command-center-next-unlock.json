@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-POST-MIGRATION-HISTORY-NETLIFY-RETRY-1.0",
+  "generatedAt": "2026-05-07T17:27:31.920Z",
+  "mode": "communication_command_center_next_unlock",
+  "liveSendBlocked": true,
+  "automaticNetlifyDeploy": false,
+  "eligibilityForNetlifyRetryFromPreflight": true,
+  "afterSuccessfulNetlifyProductionDeploy": [
+    "Confirm site health and build logs show prisma migrate deploy completed without applying new migrations (pending was 0).",
+    "Run npm run email:db:diagnose with DATABASE_URL pointed at hosted production (operator shell only; do not paste URI into chat).",
+    "Optional: GET /api/admin/production-readiness/hosted-db with diagnostics token — see docs/email-hosted-db-proof.md.",
+    "Continue lane gates in docs/email-command-center-launch-hardening.md — no contact import automation, no sends."
+  ],
+  "notUnblockedByThisPacket": [
+    "live_send",
+    "gmail_send_from_queue",
+    "sendgrid_broadcast",
+    "twilio_sms",
+    "social_posting",
+    "contact_import_commit",
+    "prisma_db_push",
+    "prisma_migrate_reset"
+  ],
+  "nextRecommendedSlice": "REDDIRT-NETLIFY-OPERATOR-RETRY-1.0"
+}

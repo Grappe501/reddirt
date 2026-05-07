@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-PRODUCTION-BASELINE-EXECUTION-PACKET-1.0",
+  "generatedAt": "2026-05-07T01:17:42.593Z",
+  "mode": "approval_gated_execution_packet",
+  "executionPacketStatus": "ready",
+  "productionMutationExecutedByThisPacket": false,
+  "sourceArtifacts": {
+    "productionBaselineExecutionReview": "data/production-baseline-execution-review.json",
+    "productionBaselineExecutionReviewValidation": "data/production-baseline-execution-review-validation.json",
+    "productionBaselineCommandChecklist": "data/production-baseline-command-checklist.json",
+    "netlifyProductionRetryReadiness": "data/netlify-production-retry-readiness.json",
+    "shadowDbMigrationProof": "data/shadow-db-migration-proof.json",
+    "shadowDbMigrationProofValidation": "data/shadow-db-migration-proof-validation.json",
+    "migrationDependencyRepairValidation": "data/migration-dependency-repair-validation.json",
+    "productionDbBaselineAudit": "data/production-db-baseline-audit.json",
+    "prismaSchemaMapPatchValidation": "data/prisma-schema-map-patch-validation.json"
+  },
+  "eligibility": {
+    "readyForExecutionPacket": true,
+    "readyForAutomaticExecution": false,
+    "readyForManualExecutionAfterApproval": false,
+    "reason": "Shadow proof + map validation + dependency repair validation present; production still legacy/high-value; execution packet allowed only after written backup/PITR confirmation and Steve approval. Migration directories counted: 71. Deferred FK migration on disk: true."
+  },
+  "proofSummary": {
+    "shadowProofPassed": true,
+    "shadowDiffClean": true,
+    "migrationDependencyRepairValidated": true,
+    "schemaMapPatchValidated": true,
+    "productionBaselineReviewValidated": true
+  },
+  "productionDatabaseFacts": {
+    "correctDatabaseIdentified": true,
+    "prismaMigrationsTableExists": false,
+    "highValueTablesPresent": true,
+    "containsVoterCampaignData": true
+  },
+  "backupAndApprovalRequirements": {
+    "backupPitrProofRequired": true,
+    "steveApprovalRequired": true,
+    "dbaReviewRecommended": true,
+    "maintenanceWindowRequired": true
+  },
+  "executionStrategy": {
+    "recommendedStrategy": "Option D — controlled production baseline after shadow proof (with Option C discipline)",
+    "manualOnly": true,
+    "automaticExecutionAllowed": false,
+    "summary": "Single governed operator session: backup/PITR proven, correct DB URL, then `prisma validate` + `migrate deploy` + post-verify. No automatic runner in repo."
+  },
+  "migrationDirectoryCount": 71,
+  "checksumRisk": {
+    "editedExistingMigration": true,
+    "risk": "An existing migration SQL file was edited (checksum drift vs any environment that already recorded the prior migration checksum in _prisma_migrations). Environments with the old checksum may require a governed migration-history resolution path.",
+    "mitigation": "Production currently has no public._prisma_migrations per latest audit snapshot; still document operator awareness. If any staging clone applied the old checksum, use DBA-governed resolve/baseline strategy—never fake history on production without explicit approval."
+  },
+  "commandTemplatesForReviewOnly": [
+    {
+      "phase": "0_preconditions",
+      "title": "Preconditions (no Prisma yet)",
+      "lines": [
+        "DO NOT RUN UNTIL STEVE EXPLICITLY APPROVES PRODUCTION BASELINE EXECUTION.",
+        "# Confirm backup/PITR and database identity in Supabase/Netlify UIs (do not paste full URIs into tickets)."
+      ]
+    },
+    {
+      "phase": "1_prisma_validate_production_target",
+      "title": "Validate schema against production URL (operator session only)",
+      "lines": [
+        "DO NOT RUN UNTIL STEVE EXPLICITLY APPROVES PRODUCTION BASELINE EXECUTION.",
+        "# $env:DATABASE_URL = \"<PRODUCTION_POOLER_URI_PLACEHOLDER>\"",
+        "# $env:DIRECT_URL   = \"<PRODUCTION_DIRECT_URI_PLACEHOLDER>\"",
+        "# Set-Location <REDDIRT_ROOT>",
+        "# npx prisma validate"
+      ]
+    },
+    {
+      "phase": "2_prisma_migrate_deploy_production",
+      "title": "Apply migrations to production",
+      "lines": [
+        "DO NOT RUN UNTIL STEVE EXPLICITLY APPROVES PRODUCTION BASELINE EXECUTION.",
+        "# npx prisma migrate status",
+        "# npx prisma migrate deploy",
+        "# npx prisma migrate status"
+      ]
+    },
+    {
+      "phase": "3_post_verify",
+      "title": "Post-deploy verification",
+      "lines": [
+        "DO NOT RUN UNTIL STEVE EXPLICITLY APPROVES PRODUCTION BASELINE EXECUTION.",
+        "# npm run email:db:diagnose",
+        "# npm run email:no-send-scan",
+        "# Hosted DB proof per docs/hosted-db-proof-after-baseline.md"
+      ]
+    }
+  ],
+  "postExecutionVerification": [
+    "`npx prisma migrate status` shows expected applied migrations (not 71 pending).",
+    "`npm run email:db:diagnose` and `npm run email:no-send-scan` clean in controlled window.",
+    "Hosted DB proof route returns JSON success with bearer token.",
+    "Netlify build passes prisma generate + migrate deploy + Next build (when retry approved).",
+    "Live send and broadcast remain disabled."
+  ],
+  "netlifyRetryPlan": {
+    "readyToRetryImmediately": false,
+    "requiresBaselineExecutionFirst": true,
+    "steps": [
+      "Complete production baseline migrate per runbook.",
+      "Verify migrate status and hosted DB proof.",
+      "Confirm Netlify env vars then trigger deploy only with Steve approval."
+    ]
+  },
+  "emailCommandCenterProofPlan": {
+    "hostedDbProofAfterDeploy": true,
+    "emailDiagnosticsAfterHostedDbProof": true,
+    "sendGridSandboxAfterDiagnostics": true,
+    "liveSendApproved": false
+  },
+  "absoluteDoNotRunUntilApproved": [
+    "npx prisma migrate deploy",
+    "npx prisma migrate resolve",
+    "npx prisma db push",
+    "npx prisma migrate reset"
+  ],
+  "approvalPhraseRequired": "STEVE_APPROVES_REDDIRT_PRODUCTION_BASELINE_EXECUTION",
+  "auditSnapshotNote": "Latest audit JSON: no public._prisma_migrations at audit time."
+}

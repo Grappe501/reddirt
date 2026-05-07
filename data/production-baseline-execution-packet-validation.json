@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-PRODUCTION-BASELINE-EXECUTION-PACKET-1.0",
+  "generatedAt": "2026-05-07T01:23:50.204Z",
+  "status": "pass",
+  "checks": [
+    {
+      "id": "slice",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "mode",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "productionMutationExecutedByThisPacket_false",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "readyForAutomaticExecution_false",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "live_send_false",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "backup_pitr_required",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "steve_required",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden_list",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "approval_phrase_field",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "executionPacketStatus_ready",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "readyForExecutionPacket_true",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "proof_summary",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "command_templates_prisma_commented",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "command_templates_steve_label",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "gates_all_pending",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "gates_have_keys",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "gates_approval_phrase",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "doc_docs_production_baseline_execution_packet_md",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "doc_docs_production_baseline_approval_gates_md",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "doc_docs_production_baseline_execution_runbook_md",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "doc_docs_post_baseline_netlify_test_plan_md",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "doc_docs_hosted_db_proof_after_baseline_md",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "checklist_exists",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "guarded_script_exists",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "guarded_contains_phrase",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "guarded_default_dry_run",
+      "ok": true,
+      "detail": "ok"
+    }
+  ],
+  "violations": [],
+  "safeForManualApprovalReview": true,
+  "safeForAutomaticExecution": false,
+  "safeForNetlifyRetry": false,
+  "safeForLiveSend": false
+}

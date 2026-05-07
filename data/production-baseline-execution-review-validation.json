@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-PRODUCTION-BASELINE-EXECUTION-REVIEW-1.0",
+  "generatedAt": "2026-05-07T00:53:15.023Z",
+  "status": "pass",
+  "checks": [
+    {
+      "id": "slice",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "schemaVersion",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "mode",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "productionMutationAttempted_false",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "eligibility_decision",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "readyForAutomaticExecution_false",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "eligibility_reason",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "absoluteDoNotRunYet_four_commands",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "live_send_not_approved",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "netlify_not_ready_or_gated",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "governance_flags_false",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "recommendedPath_option_D",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "doc_exists:docs/production-baseline-execution-review.md",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "doc_exists:docs/production-baseline-command-checklist.md",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "doc_exists:docs/netlify-production-retry-readiness.md",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "doc_exists:develop_notes/REDDIRT_PRODUCTION_BASELINE_EXECUTION_REVIEW_1_0_REPORT.md",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "command_checklist_disclaimer",
+      "ok": true,
+      "detail": "ok"
+    }
+  ],
+  "violations": [],
+  "safeForExecutionPacketDraft": false,
+  "safeForNetlifyRetry": false,
+  "safeForLiveSend": false
+}

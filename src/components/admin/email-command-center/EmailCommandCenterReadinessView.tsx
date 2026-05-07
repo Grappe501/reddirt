@@ -80,7 +80,7 @@ export function EmailCommandCenterReadinessView({
   const localDev: RowStatus = dbOk && migOk ? "ready" : !dbOk ? "blocked" : "partial";
 
   const hostedNote =
-    "Canonical Kelly / Supabase DATABASE_URL is not verified from this UI — run the same CLI gates on hosted DB before production imports.";
+    "This screen does not confirm the live campaign database by itself — run the same connection checks on the hosted environment before production contact imports.";
 
   const gmailOAuth: RowStatus =
     g.commandSurfacePhase === "connected"
@@ -111,7 +111,7 @@ export function EmailCommandCenterReadinessView({
     <div className="min-w-0 max-w-5xl space-y-5">
       <div className="flex flex-wrap items-center gap-2">
         <Link href={ECC} className="rounded border border-kelly-text/15 bg-white px-2 py-0.5 text-xs font-semibold text-kelly-slate">
-          ← Email Command Center
+          ← Communication Command Center
         </Link>
         <Link href={`${ECC}/daily`} className="text-xs font-bold text-emerald-800 hover:underline">
           Daily console
@@ -128,19 +128,22 @@ export function EmailCommandCenterReadinessView({
         <Link href={`${ECC}/readiness/hosted-db`} className="text-xs font-bold text-violet-800 hover:underline">
           Hosted DB assistant
         </Link>
+        <Link
+          href="/admin/workbench/communication-command-center/readiness"
+          className="text-xs font-bold text-sky-900 hover:underline"
+        >
+          Hosted diagnostics (read-only)
+        </Link>
       </div>
 
       <header className="space-y-2">
-        <h1 className="font-heading text-2xl font-bold text-kelly-navy">Email Command Center — Readiness checklist</h1>
+        <h1 className="font-heading text-2xl font-bold text-kelly-navy">Communication Command Center — readiness checklist</h1>
         <p className="max-w-3xl font-body text-sm text-kelly-text/85">
-          EMAIL-COMMAND-CENTER-FINAL-POLISH-1.0 +{" "}
-          <span className="font-semibold">EMAIL-HOSTED-DB-READINESS-ASSISTANT-1.0</span> — operator-facing truth for tonight:
-          what is safe to use, what needs work, and what stays intentionally blocked. Statuses derive from this request&apos;s
-          snapshot where possible. The embedded Hosted DB readiness assistant (below) shows{" "}
-          <code className="text-[10px]">DATABASE_URL</code>/<code className="text-[10px]">DIRECT_URL</code> presence + parse +
-          host classification <strong>without printing secrets</strong>. For a guided start-of-day queue, open the{" "}
+          What is safe to use tonight, what needs attention, and what stays intentionally turned off. Statuses come from this
+          page load where possible. The database helper below only shows whether connection settings are present and well-formed
+          — never secret values. For start-of-day priorities, open the{" "}
           <Link href={`${ECC}/daily`} className="font-bold text-kelly-forest underline">
-            Daily Operator Console
+            daily command console
           </Link>
           .
         </p>
@@ -154,11 +157,33 @@ export function EmailCommandCenterReadinessView({
         </div>
       ) : null}
 
+      <section className="rounded-lg border border-sky-300/60 bg-sky-50/90 p-3 shadow-sm">
+        <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-sky-950/80">
+          Hosted diagnostics — read-only (sending stays off)
+        </h2>
+        <p className="mt-1 font-body text-[11px] text-sky-950/90">
+          Dashboard plus the same read-only JSON your scripts can call with the diagnostics bearer. Confirms database reachability,
+          core comms tables, webhook route files, and that <strong>sending stays safely locked</strong>. It does not enable Gmail,
+          SendGrid delivery, Twilio SMS, imports, or background workers.
+        </p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          <Link
+            href="/admin/workbench/communication-command-center/readiness"
+            className="rounded border border-sky-700/30 bg-white px-2 py-1 text-[11px] font-bold text-sky-950 hover:bg-sky-100"
+          >
+            Open hosted diagnostics
+          </Link>
+          <span className="self-center font-body text-[10px] text-sky-900/70">
+            Reference: docs/communication-command-center-readiness.md
+          </span>
+        </div>
+      </section>
+
       <ChecklistSection
-        title="Local development readiness"
+        title="Local workspace readiness"
         rows={[
           {
-            label: "Postgres reachable + ECC migrations",
+            label: "Postgres reachable + workspace updates applied",
             status: localDev,
             verify: (
               <>
@@ -169,16 +194,16 @@ export function EmailCommandCenterReadinessView({
               </>
             ),
             owner: "Developer / operator on this machine",
-            safety: "npm run check does not apply migrations.",
+            safety: "Running npm check alone does not apply pending database updates.",
           },
         ]}
       />
 
       <ChecklistSection
-        title="Hosted Supabase / Kelly-Grappe-App readiness"
+        title="Live campaign database (hosted Supabase)"
         rows={[
           {
-            label: "Canonical production database",
+            label: "Production database on hosted Supabase",
             status: "partial",
             verify: (
               <>
@@ -199,9 +224,8 @@ export function EmailCommandCenterReadinessView({
           AI knowledge / campaign memory readiness
         </h2>
         <p className="max-w-3xl font-body text-[10px] text-indigo-950/85">
-          EMAIL-AI-CAMPAIGN-MEMORY-READINESS-1.0 — same data as Message Studio&apos;s panel: live{" "}
-          <span className="font-semibold">SearchChunk</span> counts, embedding coverage, and explicit separation from Message
-          Studio drafting paths. Does not run ingest.
+          Same snapshot as Message Studio&apos;s panel: stored knowledge chunks, embedding coverage, and a clear boundary from
+          drafting tools. Does not run new ingest jobs from here.
         </p>
         <MessageStudioCampaignMemoryPanel snapshot={campaignMemoryReadiness} showFullOperatorPasteList={false} />
       </div>
@@ -220,7 +244,7 @@ export function EmailCommandCenterReadinessView({
                 — phase: {g.commandSurfacePhase}
               </>
             ),
-            owner: "Operator with ADMIN_ACTOR_USER_EMAIL set",
+            owner: "Staff admin account linked for Gmail",
             safety: "Scopes default metadata-first; composer send optional via env.",
           },
           {
@@ -239,7 +263,7 @@ export function EmailCommandCenterReadinessView({
             status: g.pubsubReceiverConfigured && !g.gmailWatchPushIncomplete ? "ready" : "partial",
             verify: `Pub/Sub receiver configured: ${g.pubsubReceiverConfigured ? "yes" : "no"} · watch: ${g.gmailWatchDisplayStatus}`,
             owner: "Operator — topic + verification token + Start/Renew watch",
-            safety: "POST /api/gmail/pubsub stores notification metadata only.",
+            safety: "Inbox notifications only record metadata — not full message bodies.",
           },
           {
             label: "Production watch — renewal + CLI dry-run",
@@ -258,8 +282,8 @@ export function EmailCommandCenterReadinessView({
                 <code className="text-[9px]">{gp.dryRunRenewalCli}</code> from <code className="text-[9px]">RedDirt/</code>
               </>
             ),
-            owner: "Operator / cron — EMAIL-GMAIL-PRODUCTION-WATCH-HARDENING-1.0",
-            safety: "Default CLI is dry-run; execute requires GMAIL_WATCH_RENEWAL_EXECUTE=1 and --execute — users.watch only, no mail send.",
+            owner: "Staff or scheduled renewal job (see Gmail renewal runbook)",
+            safety: "Renewal CLI defaults to dry-run; turning on execute is a deliberate step — renews inbox watch only, no mail send.",
           },
           {
             label: "Production watch — history cursor",
@@ -271,7 +295,7 @@ export function EmailCommandCenterReadinessView({
                 <Link href={g.monitorPath} className="font-bold underline">
                   Run metadata sync
                 </Link>{" "}
-                before trusting history.list
+                before trusting full history sync
               </>
             ),
             owner: "Operator on Gmail monitor",
@@ -308,7 +332,7 @@ export function EmailCommandCenterReadinessView({
                 </Link>
               </>
             ),
-            owner: "Migrate deploy on target DB when steering allows",
+            owner: "Apply agreed deploy checklist on the target database",
             safety: "Suppressions must gate future sends.",
           },
         ]}
@@ -368,7 +392,7 @@ export function EmailCommandCenterReadinessView({
               </>
             ),
             owner: "Operator builds definitions over ACTIVE facts",
-            safety: "No SendGrid sync execution in this lane.",
+            safety: "No SendGrid bulk sync runs from this screen alone.",
           },
         ]}
       />
@@ -388,7 +412,7 @@ export function EmailCommandCenterReadinessView({
               </>
             ),
             owner: "Operator drafts in browser tab",
-            safety: "No server persistence until EMAIL-MESSAGE-STUDIO-1.1; no send.",
+            safety: "Shared drafts need database readiness green; no live send from this studio.",
           },
         ]}
       />
@@ -406,7 +430,7 @@ export function EmailCommandCenterReadinessView({
                 </Link>
               </>
             ),
-            owner: "Operator reads tiers/triggers before requesting automation packets",
+            owner: "Staff reads tiers and triggers before turning on any automation playbooks",
             safety: "No activation from this route.",
           },
         ]}
@@ -435,18 +459,18 @@ export function EmailCommandCenterReadinessView({
         title="Send execution readiness"
         rows={[
           {
-            label: "SendGrid broadcast from queue / Command Center",
+            label: "SendGrid broadcast from queue",
             status: "future",
-            verify: "EMAIL-SEND-EXECUTION-1.0 style packet (not shipped)",
+            verify: "Governed bulk send lane not shipped on this surface",
             owner: "Policy + comms + counsel",
-            safety: "Intentionally blocked — EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM remains false.",
+            safety: "Intentionally blocked — queue-triggered mass send stays off.",
           },
           {
             label: "Gmail send-from-queue",
             status: "future",
-            verify: "Separate governed Gmail send packet",
+            verify: "Separate governed Gmail send path when approved",
             owner: "Policy + OAuth scopes + human composer path",
-            safety: "No Gmail send from Command Center routes tonight.",
+            safety: "No Gmail send from these Command Center routes until that lane ships.",
           },
         ]}
       />
@@ -454,12 +478,12 @@ export function EmailCommandCenterReadinessView({
       <section className="rounded-lg border-2 border-kelly-forest/25 bg-kelly-fog/40 px-3 py-2.5">
         <h2 className="font-heading text-[10px] font-bold uppercase text-kelly-navy">Governance reminder</h2>
         <p className="mt-1 font-body text-[11px] text-kelly-navy/95">
-          This checklist is <strong>visibility only</strong>. It does not change env, run migrations, or enable sends. When in doubt,
-          open the{" "}
+          This checklist is <strong>read-only guidance</strong>. It does not change settings, apply database updates, or unlock
+          sends. When in doubt, open the{" "}
           <Link href={`${ECC}/map`} className="font-bold underline">
             route map
           </Link>{" "}
-          and the smoke test doc in the repo: <code className="text-[10px]">docs/email-command-center-operator-smoke-test.md</code>.
+          and your team&apos;s operator smoke-test checklist in the repo docs.
         </p>
       </section>
     </div>

@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-PRODUCTION-BASELINE-EXECUTION-PACKET-1.0",
+  "generatedAt": "2026-05-07T01:17:42.593Z",
+  "liveSendRemainsBlocked": true,
+  "readyToRetryImmediately": false,
+  "requiresBaselineExecutionFirst": true,
+  "summary": "Netlify production retry stays blocked until production baseline execution completes, migrate status is clean, and hosted proof + email diagnostics pass.",
+  "stages": [
+    {
+      "id": "baseline_done",
+      "label": "Confirm production baseline execution completed.",
+      "detail": "Operator attests `npx prisma migrate deploy` (or DBA-equivalent) finished successfully against the confirmed production URL."
+    },
+    {
+      "id": "migrate_status_clean",
+      "label": "Confirm `npx prisma migrate status` no longer reports all 71 migrations pending.",
+      "detail": "Against production DATABASE_URL/DIRECT_URL: applied count aligns with repo (71 migrations)."
+    },
+    {
+      "id": "netlify_env_vars",
+      "label": "Confirm Netlify env vars: DATABASE_URL, DIRECT_URL, EMAIL_DIAGNOSTICS_TOKEN.",
+      "detail": "Names only in tickets; values verified in Netlify UI by authorized operator."
+    },
+    {
+      "id": "trigger_netlify_deploy",
+      "label": "Trigger Netlify deploy.",
+      "detail": "Only after Steve approves retry; `scripts/netlify-build.sh` runs `prisma generate` then `prisma migrate deploy`."
+    },
+    {
+      "id": "build_pipeline",
+      "label": "Confirm build reaches and passes: prisma generate, prisma migrate deploy, Next build.",
+      "detail": "Build logs show each step green; investigate failures before re-triggering."
+    },
+    {
+      "id": "hosted_db_proof_no_token",
+      "label": "Test hosted DB proof route without token.",
+      "detail": "Expect 401, 503, or JSON handler response — not 404 HTML (wrong deploy or missing route)."
+    },
+    {
+      "id": "hosted_db_proof_with_token",
+      "label": "Test hosted DB proof route with token.",
+      "detail": "Bearer token from secure channel only; never paste token into docs or chat."
+    },
+    {
+      "id": "email_diagnostics",
+      "label": "Test email diagnostics.",
+      "detail": "Run documented email diagnostics against hosted env (no PII export)."
+    },
+    {
+      "id": "sendgrid_auth",
+      "label": "Test SendGrid auth.",
+      "detail": "Verify API key scope / auth without enabling broadcast."
+    },
+    {
+      "id": "sendgrid_sandbox_only",
+      "label": "Test SendGrid sandbox only.",
+      "detail": "Sandbox mode only — no production recipient blast."
+    },
+    {
+      "id": "live_send_blocked",
+      "label": "Keep live send blocked.",
+      "detail": "No live-send approval; no broadcast toggles until separate governance slice."
+    }
+  ],
+  "forbiddenInThisPacket": [
+    "Netlify env edits",
+    "netlify.toml edits",
+    "live sends",
+    "SendGrid broadcast"
+  ]
+}

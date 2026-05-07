@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-PRODUCTION-BASELINE-EXECUTION-REVIEW-1.0",
+  "generatedAt": "2026-05-07T00:53:14.949Z",
+  "mode": "offline_command_checklist_only_review_only",
+  "globalDisclaimer": "DO NOT RUN UNTIL EXECUTION PACKET IS APPROVED.",
+  "reviewOnly": true,
+  "preFlightRequirements": [
+    {
+      "id": "backup_pitr",
+      "description": "Backup or Supabase PITR confirmed; restore drill documented.",
+      "doNotRunUntilExecutionPacketApproved": "DO NOT RUN UNTIL EXECUTION PACKET IS APPROVED."
+    },
+    {
+      "id": "correct_db_target",
+      "description": "Operator confirms canonical production Supabase project (identity) matches intended DATABASE_URL/DIRECT_URL — verify in host UI; no secrets in tickets.",
+      "doNotRunUntilExecutionPacketApproved": "DO NOT RUN UNTIL EXECUTION PACKET IS APPROVED."
+    },
+    {
+      "id": "no_concurrent_deploy",
+      "description": "Confirm no other deploy, migration, or schema job is running against the same database.",
+      "doNotRunUntilExecutionPacketApproved": "DO NOT RUN UNTIL EXECUTION PACKET IS APPROVED."
+    },
+    {
+      "id": "maintenance_window",
+      "description": "Maintenance or low-traffic window agreed for first production migrate if applicable.",
+      "doNotRunUntilExecutionPacketApproved": "DO NOT RUN UNTIL EXECUTION PACKET IS APPROVED."
+    },
+    {
+      "id": "git_commit_recorded",
+      "description": "Record exact Git SHA / tag that the execution packet will run against.",
+      "doNotRunUntilExecutionPacketApproved": "DO NOT RUN UNTIL EXECUTION PACKET IS APPROVED."
+    },
+    {
+      "id": "shadow_proof",
+      "description": "data/shadow-db-migration-proof.json present (live shadow deploy+diff OR offline_consolidated_attestation per docs/shadow-db-migration-proof.md).",
+      "doNotRunUntilExecutionPacketApproved": "DO NOT RUN UNTIL EXECUTION PACKET IS APPROVED."
+    },
+    {
+      "id": "steve_approval",
+      "description": "Steve written approval for the exact production command path (deploy vs resolve vs DBA SQL).",
+      "doNotRunUntilExecutionPacketApproved": "DO NOT RUN UNTIL EXECUTION PACKET IS APPROVED."
+    },
+    {
+      "id": "command_path_reviewed",
+      "description": "DBA/operator reviewed exact command sequence vs execution packet; no improvisation at terminal.",
+      "doNotRunUntilExecutionPacketApproved": "DO NOT RUN UNTIL EXECUTION PACKET IS APPROVED."
+    },
+    {
+      "id": "rollback_path",
+      "description": "Rollback = restore from PITR or verified backup; owner and time target named.",
+      "doNotRunUntilExecutionPacketApproved": "DO NOT RUN UNTIL EXECUTION PACKET IS APPROVED."
+    },
+    {
+      "id": "netlify_retry_path",
+      "description": "Plan Netlify retry only after build DATABASE_URL points at a migrated schema; see netlify-production-retry-readiness doc.",
+      "doNotRunUntilExecutionPacketApproved": "DO NOT RUN UNTIL EXECUTION PACKET IS APPROVED."
+    },
+    {
+      "id": "hosted_db_proof_route",
+      "description": "Plan GET hosted-db proof (bearer token) against approved non-production first, then production only when policy allows.",
+      "doNotRunUntilExecutionPacketApproved": "DO NOT RUN UNTIL EXECUTION PACKET IS APPROVED."
+    },
+    {
+      "id": "email_diagnostics",
+      "description": "Plan npm run email:db:diagnose / email:no-send-scan against the same class of target DB as production post-migrate.",
+      "doNotRunUntilExecutionPacketApproved": "DO NOT RUN UNTIL EXECUTION PACKET IS APPROVED."
+    }
+  ],
+  "forbiddenOnProductionUntilApproval": [
+    {
+      "command": "npx prisma migrate deploy",
+      "risk": "Writes _prisma_migrations and applies DDL to live voter/campaign database."
+    },
+    {
+      "command": "npx prisma migrate resolve",
+      "risk": "Mutates migration history; can desync truth from applied SQL."
+    },
+    {
+      "command": "npx prisma db push",
+      "risk": "Non-history DDL against production; high drift risk with legacy schema."
+    },
+    {
+      "command": "npx prisma migrate reset",
+      "risk": "Destructive; forbidden on production under current policy."
+    },
+    {
+      "pattern": "SQL: DROP|TRUNCATE|DELETE|UPDATE|INSERT",
+      "risk": "Bulk or destructive data mutation on production outside DBA governance."
+    }
+  ],
+  "commandTemplatesAllRequireApproval": "DO NOT RUN UNTIL EXECUTION PACKET IS APPROVED.",
+  "placeholdersShadowOnly": [
+    {
+      "command": "# PowerShell — SHADOW DATABASE ONLY. Replace angle-bracket placeholders. Never paste real secrets into logs or chat.",
+      "doNotRunUntilExecutionPacketApproved": "DO NOT RUN UNTIL EXECUTION PACKET IS APPROVED."
+    },
+    {
+      "command": "$env:DATABASE_URL = \"<SHADOW_DATABASE_URL_PLACEHOLDER>\"",
+      "doNotRunUntilExecutionPacketApproved": "DO NOT RUN UNTIL EXECUTION PACKET IS APPROVED."
+    },
+    {
+      "command": "$env:DIRECT_URL = \"<SHADOW_DIRECT_URL_PLACEHOLDER>\"",
+      "doNotRunUntilExecutionPacketApproved": "DO NOT RUN UNTIL EXECUTION PACKET IS APPROVED."
+    },
+    {
+      "command": "Set-Location H:\\SOSWebsite\\RedDirt",
+      "doNotRunUntilExecutionPacketApproved": "DO NOT RUN UNTIL EXECUTION PACKET IS APPROVED."
+    },
+    {
+      "command": "npx prisma validate",
+      "doNotRunUntilExecutionPacketApproved": "DO NOT RUN UNTIL EXECUTION PACKET IS APPROVED."
+    },
+    {
+      "command": "npx prisma migrate deploy",
+      "doNotRunUntilExecutionPacketApproved": "DO NOT RUN UNTIL EXECUTION PACKET IS APPROVED."
+    },
+    {
+      "command": "npx prisma migrate diff --from-migrations prisma/migrations --to-url $env:DATABASE_URL",
+      "doNotRunUntilExecutionPacketApproved": "DO NOT RUN UNTIL EXECUTION PACKET IS APPROVED."
+    }
+  ],
+  "placeholdersProductionBlockedCommentOnly": [
+    "# PRODUCTION — every line below is commented because it is forbidden until the execution packet is approved.",
+    "# npx prisma migrate deploy",
+    "# npx prisma migrate resolve",
+    "# npx prisma db push",
+    "# npx prisma migrate reset"
+  ],
+  "gatesBeforeAnyProductionMutation": [
+    "Steve written approval recorded",
+    "Backup or PITR proof recorded",
+    "Shadow migrate deploy + diff clean archived in data/shadow-db-migration-proof.json",
+    "Optional: data/migration-dependency-repair-validation.json with status pass"
+  ]
+}

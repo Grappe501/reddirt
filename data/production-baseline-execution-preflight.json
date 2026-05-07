@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-PRODUCTION-BASELINE-EXECUTION-PACKET-1.0",
+  "generatedAt": "2026-05-07T01:41:54.962Z",
+  "mode": "safe_preflight_no_db_mutation",
+  "databaseUrlPresent": true,
+  "directUrlPresent": true,
+  "databaseUrlShapeValid": true,
+  "directUrlShapeValid": true,
+  "secretsPrinted": false,
+  "productionMutationAttempted": false,
+  "readyForManualExecution": true,
+  "reason": "Preflight OK for manual execution review (operator still needs Steve approval + gates).",
+  "warnings": [],
+  "prismaValidateOk": true,
+  "executionPacketStatus": "ready"
+}

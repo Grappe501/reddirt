@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-SHADOW-PROOF-ARTIFACT-CONSOLIDATION-1.0",
+  "generatedAt": "2026-05-07T00:53:14.870Z",
+  "status": "pass",
+  "checks": [
+    {
+      "id": "graph_no_relational_contact_fk",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "fkey_migration_adds_constraint",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "lexical_order_rel2_before_fkey",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_destructive_ddl_graph",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_destructive_ddl_rel2",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_destructive_ddl_fkey",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "prisma_validate",
+      "ok": true,
+      "detail": "ok"
+    }
+  ],
+  "violations": [],
+  "rootCauseRepaired": true,
+  "safeForShadowDeploy": true,
+  "safeForProductionDeploy": false
+}

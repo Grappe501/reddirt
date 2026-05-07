@@ -1,0 +1,620 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-PRODUCTION-ADDITIVE-SCHEMA-INSTALL-PLAN-1.0",
+  "generatedAt": "2026-05-07T04:41:51.835Z",
+  "mode": "unsafe_diff_analysis",
+  "sourceDiffPath": "data\\sql\\unsafe-production-to-current-schema-diff.sql",
+  "sourceFound": true,
+  "summary": {
+    "statementCount": 1332,
+    "createTypeCount": 171,
+    "createTableCount": 145,
+    "alterTableCount": 433,
+    "createIndexCount": 438,
+    "dropCount": 262,
+    "truncateCount": 0,
+    "deleteCount": 0,
+    "authMutationCount": 18,
+    "providerSchemaMutationCount": 0,
+    "legacyPublicConstraintDropCount": 11
+  },
+  "highRiskFindings": [
+    "Statement 171: ALTER TABLE auth.*",
+    "Statement 171: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 172: ALTER TABLE auth.*",
+    "Statement 172: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 173: ALTER TABLE auth.*",
+    "Statement 173: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 174: ALTER TABLE auth.*",
+    "Statement 174: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 175: ALTER TABLE auth.*",
+    "Statement 175: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 176: ALTER TABLE auth.*",
+    "Statement 176: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 177: ALTER TABLE auth.*",
+    "Statement 177: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 178: ALTER TABLE auth.*",
+    "Statement 178: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 179: ALTER TABLE auth.*",
+    "Statement 179: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 180: ALTER TABLE auth.*",
+    "Statement 180: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 181: ALTER TABLE auth.*",
+    "Statement 181: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 182: ALTER TABLE auth.*",
+    "Statement 182: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 183: ALTER TABLE auth.*",
+    "Statement 183: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 184: ALTER TABLE auth.*",
+    "Statement 184: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 185: ALTER TABLE auth.*",
+    "Statement 185: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 186: ALTER TABLE auth.*",
+    "Statement 186: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 187: ALTER TABLE auth.*",
+    "Statement 187: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 188: ALTER TABLE auth.*",
+    "Statement 188: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 189: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 190: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 191: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 192: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 193: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 194: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 195: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 196: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 197: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 198: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 199: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 200: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 201: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 202: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 203: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 203: legacy public table constraint drop: events",
+    "Statement 204: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 204: legacy public table constraint drop: events",
+    "Statement 205: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 205: legacy public table constraint drop: events",
+    "Statement 206: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 206: legacy public table constraint drop: events",
+    "Statement 207: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 208: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 209: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 210: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 211: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 212: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 213: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 214: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 215: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 216: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 217: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 218: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 219: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 220: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 221: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 222: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 223: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 224: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 225: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 226: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 227: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 228: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 228: legacy public table constraint drop: message_events",
+    "Statement 229: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 230: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 231: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 232: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 233: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 234: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 235: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 236: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 237: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 238: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 239: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 240: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 241: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 242: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 243: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 243: legacy public table constraint drop: person_profiles",
+    "Statement 244: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 245: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 246: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 246: legacy public table constraint drop: profiles",
+    "Statement 247: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 248: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 249: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 250: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 251: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 252: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 253: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 254: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 255: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 256: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 257: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 258: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 259: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 260: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 261: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 262: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 263: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 264: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 264: legacy public table constraint drop: turf_people",
+    "Statement 265: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 265: legacy public table constraint drop: turf_people",
+    "Statement 266: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 267: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 268: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 269: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 270: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 271: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 272: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 272: legacy public table constraint drop: voter_profiles",
+    "Statement 273: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 274: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 275: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 276: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 277: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 278: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 279: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 280: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 281: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 282: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 283: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 284: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 287: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 287: legacy public table constraint drop: counties",
+    "Statement 288: ALTER TABLE … DROP (non NOT NULL/DEFAULT)",
+    "Statement 289: ALTER TABLE … DROP (non NOT NULL/DEFAULT)"
+  ],
+  "unsafeSamples": [
+    {
+      "kind": "drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"identities\" DROP CONSTRAINT \"identities_user_id_fkey\""
+    },
+    {
+      "kind": "auth_alter",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"identities\" DROP CONSTRAINT \"identities_user_id_fkey\""
+    },
+    {
+      "kind": "alter_table_drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"identities\" DROP CONSTRAINT \"identities_user_id_fkey\""
+    },
+    {
+      "kind": "drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"mfa_amr_claims\" DROP CONSTRAINT \"mfa_amr_claims_session_id_fkey\""
+    },
+    {
+      "kind": "auth_alter",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"mfa_amr_claims\" DROP CONSTRAINT \"mfa_amr_claims_session_id_fkey\""
+    },
+    {
+      "kind": "alter_table_drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"mfa_amr_claims\" DROP CONSTRAINT \"mfa_amr_claims_session_id_fkey\""
+    },
+    {
+      "kind": "drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"mfa_challenges\" DROP CONSTRAINT \"mfa_challenges_auth_factor_id_fkey\""
+    },
+    {
+      "kind": "auth_alter",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"mfa_challenges\" DROP CONSTRAINT \"mfa_challenges_auth_factor_id_fkey\""
+    },
+    {
+      "kind": "alter_table_drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"mfa_challenges\" DROP CONSTRAINT \"mfa_challenges_auth_factor_id_fkey\""
+    },
+    {
+      "kind": "drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"mfa_factors\" DROP CONSTRAINT \"mfa_factors_user_id_fkey\""
+    },
+    {
+      "kind": "auth_alter",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"mfa_factors\" DROP CONSTRAINT \"mfa_factors_user_id_fkey\""
+    },
+    {
+      "kind": "alter_table_drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"mfa_factors\" DROP CONSTRAINT \"mfa_factors_user_id_fkey\""
+    },
+    {
+      "kind": "drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"oauth_authorizations\" DROP CONSTRAINT \"oauth_authorizations_client_id_fkey\""
+    },
+    {
+      "kind": "auth_alter",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"oauth_authorizations\" DROP CONSTRAINT \"oauth_authorizations_client_id_fkey\""
+    },
+    {
+      "kind": "alter_table_drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"oauth_authorizations\" DROP CONSTRAINT \"oauth_authorizations_client_id_fkey\""
+    },
+    {
+      "kind": "drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"oauth_authorizations\" DROP CONSTRAINT \"oauth_authorizations_user_id_fkey\""
+    },
+    {
+      "kind": "auth_alter",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"oauth_authorizations\" DROP CONSTRAINT \"oauth_authorizations_user_id_fkey\""
+    },
+    {
+      "kind": "alter_table_drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"oauth_authorizations\" DROP CONSTRAINT \"oauth_authorizations_user_id_fkey\""
+    },
+    {
+      "kind": "drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"oauth_consents\" DROP CONSTRAINT \"oauth_consents_client_id_fkey\""
+    },
+    {
+      "kind": "auth_alter",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"oauth_consents\" DROP CONSTRAINT \"oauth_consents_client_id_fkey\""
+    },
+    {
+      "kind": "alter_table_drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"oauth_consents\" DROP CONSTRAINT \"oauth_consents_client_id_fkey\""
+    },
+    {
+      "kind": "drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"oauth_consents\" DROP CONSTRAINT \"oauth_consents_user_id_fkey\""
+    },
+    {
+      "kind": "auth_alter",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"oauth_consents\" DROP CONSTRAINT \"oauth_consents_user_id_fkey\""
+    },
+    {
+      "kind": "alter_table_drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"oauth_consents\" DROP CONSTRAINT \"oauth_consents_user_id_fkey\""
+    },
+    {
+      "kind": "drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"one_time_tokens\" DROP CONSTRAINT \"one_time_tokens_user_id_fkey\""
+    },
+    {
+      "kind": "auth_alter",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"one_time_tokens\" DROP CONSTRAINT \"one_time_tokens_user_id_fkey\""
+    },
+    {
+      "kind": "alter_table_drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"one_time_tokens\" DROP CONSTRAINT \"one_time_tokens_user_id_fkey\""
+    },
+    {
+      "kind": "drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"refresh_tokens\" DROP CONSTRAINT \"refresh_tokens_session_id_fkey\""
+    },
+    {
+      "kind": "auth_alter",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"refresh_tokens\" DROP CONSTRAINT \"refresh_tokens_session_id_fkey\""
+    },
+    {
+      "kind": "alter_table_drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"refresh_tokens\" DROP CONSTRAINT \"refresh_tokens_session_id_fkey\""
+    },
+    {
+      "kind": "drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"saml_providers\" DROP CONSTRAINT \"saml_providers_sso_provider_id_fkey\""
+    },
+    {
+      "kind": "auth_alter",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"saml_providers\" DROP CONSTRAINT \"saml_providers_sso_provider_id_fkey\""
+    },
+    {
+      "kind": "alter_table_drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"saml_providers\" DROP CONSTRAINT \"saml_providers_sso_provider_id_fkey\""
+    },
+    {
+      "kind": "drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"saml_relay_states\" DROP CONSTRAINT \"saml_relay_states_flow_state_id_fkey\""
+    },
+    {
+      "kind": "auth_alter",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"saml_relay_states\" DROP CONSTRAINT \"saml_relay_states_flow_state_id_fkey\""
+    },
+    {
+      "kind": "alter_table_drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"saml_relay_states\" DROP CONSTRAINT \"saml_relay_states_flow_state_id_fkey\""
+    },
+    {
+      "kind": "drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"saml_relay_states\" DROP CONSTRAINT \"saml_relay_states_sso_provider_id_fkey\""
+    },
+    {
+      "kind": "auth_alter",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"saml_relay_states\" DROP CONSTRAINT \"saml_relay_states_sso_provider_id_fkey\""
+    },
+    {
+      "kind": "alter_table_drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"saml_relay_states\" DROP CONSTRAINT \"saml_relay_states_sso_provider_id_fkey\""
+    },
+    {
+      "kind": "drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"sessions\" DROP CONSTRAINT \"sessions_oauth_client_id_fkey\""
+    },
+    {
+      "kind": "auth_alter",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"sessions\" DROP CONSTRAINT \"sessions_oauth_client_id_fkey\""
+    },
+    {
+      "kind": "alter_table_drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"sessions\" DROP CONSTRAINT \"sessions_oauth_client_id_fkey\""
+    },
+    {
+      "kind": "drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"sessions\" DROP CONSTRAINT \"sessions_user_id_fkey\""
+    },
+    {
+      "kind": "auth_alter",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"sessions\" DROP CONSTRAINT \"sessions_user_id_fkey\""
+    },
+    {
+      "kind": "alter_table_drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"sessions\" DROP CONSTRAINT \"sessions_user_id_fkey\""
+    },
+    {
+      "kind": "drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"sso_domains\" DROP CONSTRAINT \"sso_domains_sso_provider_id_fkey\""
+    },
+    {
+      "kind": "auth_alter",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"sso_domains\" DROP CONSTRAINT \"sso_domains_sso_provider_id_fkey\""
+    },
+    {
+      "kind": "alter_table_drop",
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"sso_domains\" DROP CONSTRAINT \"sso_domains_sso_provider_id_fkey\""
+    }
+  ],
+  "highValueReferences": [
+    {
+      "table": "auth.schema",
+      "statementIndex": 171,
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"identities\" DROP CONSTRAINT \"identities_user_id_fkey\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 172,
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"mfa_amr_claims\" DROP CONSTRAINT \"mfa_amr_claims_session_id_fkey\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 173,
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"mfa_challenges\" DROP CONSTRAINT \"mfa_challenges_auth_factor_id_fkey\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 174,
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"mfa_factors\" DROP CONSTRAINT \"mfa_factors_user_id_fkey\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 175,
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"oauth_authorizations\" DROP CONSTRAINT \"oauth_authorizations_client_id_fkey\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 176,
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"oauth_authorizations\" DROP CONSTRAINT \"oauth_authorizations_user_id_fkey\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 177,
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"oauth_consents\" DROP CONSTRAINT \"oauth_consents_client_id_fkey\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 178,
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"oauth_consents\" DROP CONSTRAINT \"oauth_consents_user_id_fkey\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 179,
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"one_time_tokens\" DROP CONSTRAINT \"one_time_tokens_user_id_fkey\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 180,
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"refresh_tokens\" DROP CONSTRAINT \"refresh_tokens_session_id_fkey\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 181,
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"saml_providers\" DROP CONSTRAINT \"saml_providers_sso_provider_id_fkey\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 182,
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"saml_relay_states\" DROP CONSTRAINT \"saml_relay_states_flow_state_id_fkey\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 183,
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"saml_relay_states\" DROP CONSTRAINT \"saml_relay_states_sso_provider_id_fkey\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 184,
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"sessions\" DROP CONSTRAINT \"sessions_oauth_client_id_fkey\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 185,
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"sessions\" DROP CONSTRAINT \"sessions_user_id_fkey\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 186,
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"sso_domains\" DROP CONSTRAINT \"sso_domains_sso_provider_id_fkey\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 187,
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"webauthn_challenges\" DROP CONSTRAINT \"webauthn_challenges_user_id_fkey\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 188,
+      "preview": "-- DropForeignKey ALTER TABLE \"auth\".\"webauthn_credentials\" DROP CONSTRAINT \"webauthn_credentials_user_id_fkey\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 290,
+      "preview": "-- DropTable DROP TABLE \"auth\".\"audit_log_entries\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 291,
+      "preview": "-- DropTable DROP TABLE \"auth\".\"custom_oauth_providers\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 292,
+      "preview": "-- DropTable DROP TABLE \"auth\".\"flow_state\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 293,
+      "preview": "-- DropTable DROP TABLE \"auth\".\"identities\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 294,
+      "preview": "-- DropTable DROP TABLE \"auth\".\"instances\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 295,
+      "preview": "-- DropTable DROP TABLE \"auth\".\"mfa_amr_claims\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 296,
+      "preview": "-- DropTable DROP TABLE \"auth\".\"mfa_challenges\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 297,
+      "preview": "-- DropTable DROP TABLE \"auth\".\"mfa_factors\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 298,
+      "preview": "-- DropTable DROP TABLE \"auth\".\"oauth_authorizations\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 299,
+      "preview": "-- DropTable DROP TABLE \"auth\".\"oauth_client_states\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 300,
+      "preview": "-- DropTable DROP TABLE \"auth\".\"oauth_clients\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 301,
+      "preview": "-- DropTable DROP TABLE \"auth\".\"oauth_consents\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 302,
+      "preview": "-- DropTable DROP TABLE \"auth\".\"one_time_tokens\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 303,
+      "preview": "-- DropTable DROP TABLE \"auth\".\"refresh_tokens\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 304,
+      "preview": "-- DropTable DROP TABLE \"auth\".\"saml_providers\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 305,
+      "preview": "-- DropTable DROP TABLE \"auth\".\"saml_relay_states\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 306,
+      "preview": "-- DropTable DROP TABLE \"auth\".\"schema_migrations\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 307,
+      "preview": "-- DropTable DROP TABLE \"auth\".\"sessions\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 308,
+      "preview": "-- DropTable DROP TABLE \"auth\".\"sso_domains\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 309,
+      "preview": "-- DropTable DROP TABLE \"auth\".\"sso_providers\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 310,
+      "preview": "-- DropTable DROP TABLE \"auth\".\"users\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 311,
+      "preview": "-- DropTable DROP TABLE \"auth\".\"webauthn_challenges\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 312,
+      "preview": "-- DropTable DROP TABLE \"auth\".\"webauthn_credentials\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 424,
+      "preview": "-- DropEnum DROP TYPE \"auth\".\"aal_level\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 425,
+      "preview": "-- DropEnum DROP TYPE \"auth\".\"code_challenge_method\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 426,
+      "preview": "-- DropEnum DROP TYPE \"auth\".\"factor_status\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 427,
+      "preview": "-- DropEnum DROP TYPE \"auth\".\"factor_type\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 428,
+      "preview": "-- DropEnum DROP TYPE \"auth\".\"oauth_authorization_status\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 429,
+      "preview": "-- DropEnum DROP TYPE \"auth\".\"oauth_client_type\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 430,
+      "preview": "-- DropEnum DROP TYPE \"auth\".\"oauth_registration_type\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 431,
+      "preview": "-- DropEnum DROP TYPE \"auth\".\"oauth_response_type\""
+    },
+    {
+      "table": "auth.schema",
+      "statementIndex": 432,
+      "preview": "-- DropEnum DROP TYPE \"auth\".\"one_time_token_type\""
+    }
+  ],
+  "recommendation": {
+    "rawDiffSafeToExecute": false,
+    "reason": "Raw diff contains destructive or provider mutations (drops=262, alters=433, auth/provider alters=18, legacy constraint drops=11).",
+    "nextStep": "Build curated additive-only SQL candidate."
+  }
+}

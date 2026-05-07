@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0",
+  "generatedAt": "2026-05-07T14:54:00.667Z",
+  "mode": "approval_gated_production_execution_packet",
+  "executionPacketStatus": "ready_pending_human_approval",
+  "productionMutationExecutedByThisPacket": false,
+  "candidateSql": "data/sql/additive-schema-install-candidate.sql",
+  "candidateSqlSha256": "948cc0c65f0f8642f9d52f44b8eb18a75cce503ba63ef5d08865246747557303",
+  "sourceArtifacts": {
+    "unsafeProductionSchemaDiffAnalysis": {
+      "path": "data/unsafe-production-schema-diff-analysis.json",
+      "loaded": true,
+      "exists": true
+    },
+    "additiveSchemaInstallPlan": {
+      "path": "data/additive-schema-install-plan.json",
+      "loaded": true,
+      "exists": true
+    },
+    "additiveSchemaInstallValidation": {
+      "path": "data/additive-schema-install-validation.json",
+      "loaded": true,
+      "exists": true
+    },
+    "additiveSchemaCloneTestResult": {
+      "path": "data/additive-schema-clone-test-result.json",
+      "loaded": true,
+      "exists": true
+    },
+    "additiveSchemaProductionExecutionReview": {
+      "path": "data/additive-schema-production-execution-review.json",
+      "loaded": true,
+      "exists": true
+    },
+    "productionDbBaselineAudit": {
+      "path": "data/production-db-baseline-audit.json",
+      "loaded": true,
+      "exists": true
+    },
+    "additiveSchemaInstallCandidateSql": {
+      "path": "data/sql/additive-schema-install-candidate.sql",
+      "loaded": true,
+      "exists": true
+    },
+    "additiveSchemaInstallRejectedStatementsSql": {
+      "path": "data/sql/additive-schema-install-rejected-statements.sql",
+      "loaded": true,
+      "exists": true
+    }
+  },
+  "eligibility": {
+    "unsafeDiffRejected": true,
+    "candidateValidationPassed": true,
+    "productionLikeCloneProofPassed": true,
+    "highValueProtectionPassed": true,
+    "readyForProductionExecutionPacket": true,
+    "readyForAutomaticExecution": false,
+    "readyForManualExecutionAfterApproval": false
+  },
+  "approvalRequirements": {
+    "backupPitrProofRequired": true,
+    "steveApprovalRequired": true,
+    "correctProductionDbRequired": true,
+    "maintenanceWindowRequired": true,
+    "candidateSqlHashRequired": true,
+    "netlifyRetryStillSeparate": true,
+    "liveSendStillBlocked": true
+  },
+  "candidateSummary": {
+    "statementCount": 704,
+    "createTypeCount": 171,
+    "createTableCount": 134,
+    "createIndexCount": 399,
+    "alterTableCount": 0,
+    "dropCount": 0,
+    "truncateCount": 0,
+    "deleteCount": 0,
+    "insertCount": 0
+  },
+  "cloneProofGateDetail": {
+    "ok": true,
+    "productionLikePrecheckPassed": true,
+    "productionLikeCloneProof": true,
+    "beforePublicTableCountGte100": true,
+    "afterPublicGteBefore": true,
+    "beforeAr02VotersExists": true,
+    "beforeContactsExists": true,
+    "beforeAuthUsersExists": true,
+    "afterAr02VotersExists": true,
+    "afterContactsExists": true,
+    "afterAuthUsersExists": true,
+    "voterTablesStillPresent": true,
+    "legacyTablesStillPresent": true,
+    "authTablesStillPresent": true,
+    "productionMutatedFalse": true,
+    "candidateSqlExecutedOnProductionFalse": true,
+    "candidateSqlExecutedOnCloneWhenPresent": true
+  },
+  "productionTargetSafety": {
+    "productionProjectRef": "giozeoqulfojhxpywjil",
+    "mustNotEqualCloneRef": true,
+    "requiredExistingTablesBeforeExecution": [
+      "public.ar02_voters",
+      "public.contacts",
+      "public.counties",
+      "public.event_requests",
+      "public.message_audiences",
+      "public.path_to_victory",
+      "public.people",
+      "public.person_profiles"
+    ]
+  },
+  "manualExecutionOnly": true,
+  "automaticExecutionAllowed": false,
+  "productionExecutionApprovedByThisPacket": false,
+  "netlifyRetryApprovedByThisPacket": false,
+  "liveSendApprovedByThisPacket": false,
+  "approvalPhraseRequired": "STEVE_APPROVES_REDDIRT_ADDITIVE_SCHEMA_PRODUCTION_EXECUTION",
+  "nextRecommendedSlice": "REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-OPERATOR-GATE-1.0",
+  "blockers": [],
+  "warnings": [],
+  "claimsPassButHardenedFails": false,
+  "planStatementCount": 704,
+  "unsafeDiffSummary": {
+    "statementCount": 1332,
+    "createTypeCount": 171,
+    "createTableCount": 145,
+    "alterTableCount": 433,
+    "createIndexCount": 438,
+    "dropCount": 262,
+    "truncateCount": 0,
+    "deleteCount": 0,
+    "authMutationCount": 18,
+    "providerSchemaMutationCount": 0,
+    "legacyPublicConstraintDropCount": 11
+  }
+}

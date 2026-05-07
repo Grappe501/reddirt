@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0",
+  "generatedAt": "2026-05-07T14:54:01.050Z",
+  "approvalPhraseRequired": "STEVE_APPROVES_REDDIRT_ADDITIVE_SCHEMA_PRODUCTION_EXECUTION",
+  "gates": [
+    {
+      "id": "backup_pitr",
+      "label": "Supabase backup / PITR restore path documented and tested on a non-prod proof",
+      "owner": "operator",
+      "status": "pending"
+    },
+    {
+      "id": "steve_phrase",
+      "label": "Steve states approval phrase: STEVE_APPROVES_REDDIRT_ADDITIVE_SCHEMA_PRODUCTION_EXECUTION",
+      "owner": "Steve",
+      "status": "pending"
+    },
+    {
+      "id": "correct_db",
+      "label": "Confirm production project ref giozeoqulfojhxpywjil matches operator target (visual cross-check in dashboard)",
+      "owner": "operator",
+      "status": "pending"
+    },
+    {
+      "id": "maintenance_window",
+      "label": "Maintenance window communicated; app traffic expectations set",
+      "owner": "operator",
+      "status": "pending"
+    },
+    {
+      "id": "candidate_hash",
+      "label": "Operator records sha256 of additive-schema-install-candidate.sql and matches packet",
+      "owner": "operator",
+      "status": "pending"
+    },
+    {
+      "id": "clone_proof_fresh",
+      "label": "data/additive-schema-clone-test-result.json passes hardened production-like gates (re-run clone test if stale)",
+      "owner": "operator",
+      "status": "pending"
+    },
+    {
+      "id": "no_raw_diff",
+      "label": "Raw Prisma diff and rejected statements are not executed on production",
+      "owner": "operator",
+      "status": "pending"
+    }
+  ],
+  "notes": "Statuses are machine-hint only; human sign-off is authoritative."
+}

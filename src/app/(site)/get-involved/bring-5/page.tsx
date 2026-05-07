@@ -191,7 +191,9 @@ export default function Bring5FriendsPage() {
               Start your Power of 5
             </h2>
             <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-kelly-text/85">Signup coming soon.</p>
-            <p className="mt-3 max-w-2xl font-body text-sm text-kelly-text/60">TODO: connect to CRM / workflow intake.</p>
+            <p className="mt-3 max-w-2xl font-body text-sm text-kelly-text/60">
+              Online signup is on the way — your organizer can still add you manually today.
+            </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Button href="/get-involved#volunteer" variant="outline" className="min-h-[48px]">
                 Volunteer in the meantime

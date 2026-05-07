@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-POST-ADDITIVE-SCHEMA-MIGRATION-HISTORY-STRATEGY-1.0",
+  "generatedAt": "2026-05-07T15:36:46.126Z",
+  "mode": "post_additive_production_schema_status",
+  "productionMutationByThisScript": false,
+  "sources": {
+    "operatorPostcheckProof": "data/post-additive-production-postcheck-proof.json",
+    "frozenBaselineReview": "data/production-baseline-execution-review.json"
+  },
+  "productionProjectRef": "giozeoqulfojhxpywjil",
+  "postcheckOutcome": "PASS",
+  "publicTableCount": 249,
+  "requiredNewAppTables": [
+    "public.ContentItemOverride",
+    "public.HomepageConfig",
+    "public.InboundContentItem",
+    "public.CampaignEvent",
+    "public.AdminContentBlock",
+    "public.OwnedMediaAsset",
+    "public.SearchChunk",
+    "public.WorkflowIntake",
+    "public.EmailContactProfile",
+    "public.EmailWorkflowItem"
+  ],
+  "highValueLegacyTables": [
+    "public.ar02_voters",
+    "public.contacts",
+    "public.counties",
+    "public.event_requests",
+    "public.message_audiences",
+    "public.path_to_victory",
+    "public.people",
+    "public.person_profiles"
+  ],
+  "authUsersStillPresent": true,
+  "additiveSqlBaselinedPrismaMigrations": false,
+  "frozenAuditPrismaMigrationsTableExists": false,
+  "auditStaleNote": "production-baseline-execution-review.json reflects a pre-additive audit snapshot where _prisma_migrations was absent; re-run read-only audit or prisma migrate status on hosted DB after operator approval."
+}

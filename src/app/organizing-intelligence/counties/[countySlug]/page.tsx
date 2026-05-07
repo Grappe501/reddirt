@@ -23,15 +23,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!isAllowedCountySlug(countySlug)) return { title: "County" };
   const display = titleFromCountySlug(countySlug);
   return pageMeta({
-    title: `${display} — county organizing (placeholder)`,
-    description: `Placeholder under organizing intelligence for ${display}, Arkansas. County command and published briefings may appear at /counties/${countySlug}. No live rollups or voter data.`,
+    title: `${display} — county organizing (preview)`,
+    description: `County organizing preview for ${display}, Arkansas. County command and published briefings may appear at /counties/${countySlug}. No live rollups or voter data.`,
     path: `/organizing-intelligence/counties/${countySlug}`,
     imageSrc: "/media/placeholders/og-default.svg",
   });
 }
 
 /**
- * Safe placeholder: fills the public OIS county URL without DB, auth, or voter data.
+ * Preview page: fills the public organizing-intelligence county URL without DB, auth, or voter data.
  */
 export default async function OrganizingIntelligenceCountyPlaceholderPage({ params }: Props) {
   const { countySlug } = await params;
@@ -48,8 +48,8 @@ export default async function OrganizingIntelligenceCountyPlaceholderPage({ para
       </p>
       <h1 className="font-heading mt-4 text-2xl font-bold text-kelly-navy">{display}</h1>
       <p className="mt-2 text-sm text-kelly-text/75">
-        County route under organizing intelligence — <strong>placeholder</strong> only. No county rollup UI, Power of 5 hydration, or voter-linked
-        metrics here yet; wiring comes in a later packet.
+        County view under organizing intelligence — <strong>preview</strong> only. County rollup UI, Power of 5 hydration, and
+        voter-linked metrics ship in a later release.
       </p>
       <p className="mt-4 text-sm text-kelly-text/60">
         Public county command (when published) stays at{" "}

@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-PRODUCTION-BASELINE-EXECUTION-REVIEW-1.0",
+  "generatedAt": "2026-05-07T00:53:14.949Z",
+  "mode": "offline_execution_review_only",
+  "productionMutationAttempted": false,
+  "sourceArtifacts": {
+    "productionDbBaselineAudit": "H:\\SOSWebsite\\RedDirt\\data\\production-db-baseline-audit.json",
+    "productionDbBaselinePlan": "H:\\SOSWebsite\\RedDirt\\data\\production-db-baseline-plan.json",
+    "productionDbSchemaReconciliation": "H:\\SOSWebsite\\RedDirt\\data\\production-db-schema-reconciliation.json",
+    "prismaSchemaMapAlignment": "H:\\SOSWebsite\\RedDirt\\data\\prisma-schema-map-alignment.json",
+    "prismaSchemaMapPatchPlan": "H:\\SOSWebsite\\RedDirt\\data\\prisma-schema-map-patch-plan.json",
+    "prismaSchemaMapPatchValidation": "H:\\SOSWebsite\\RedDirt\\data\\prisma-schema-map-patch-validation.json",
+    "prismaSchemaMapFullReview": "H:\\SOSWebsite\\RedDirt\\data\\prisma-schema-map-full-review.json",
+    "shadowDbMigrationProof": "H:\\SOSWebsite\\RedDirt\\data\\shadow-db-migration-proof.json",
+    "shadowDbMigrationProofValidation": "H:\\SOSWebsite\\RedDirt\\data\\shadow-db-migration-proof-validation.json",
+    "migrationDependencyOrderAudit": null,
+    "migrationDependencyRepairPlan": null,
+    "migrationDependencyRepairValidation": "H:\\SOSWebsite\\RedDirt\\data\\migration-dependency-repair-validation.json"
+  },
+  "eligibility": {
+    "decision": "ready_for_execution_packet_after_backup_confirmation",
+    "readyForHumanReview": true,
+    "readyForExecutionPacket": true,
+    "readyForAutomaticExecution": false,
+    "reason": "Shadow proof + map validation + dependency repair validation present; production still legacy/high-value; execution packet allowed only after written backup/PITR confirmation and Steve approval. Migration directories counted: 71. Deferred FK migration on disk: true."
+  },
+  "proofInputs": {
+    "shadowProofPassed": true,
+    "shadowDiffClean": true,
+    "migrationDependencyRepairValidated": true,
+    "schemaMapPatchValidated": true,
+    "prismaValidateKnownGreen": true
+  },
+  "productionDatabaseFacts": {
+    "correctDatabaseIdentified": true,
+    "prismaMigrationsTableExists": false,
+    "highValueTablesPresent": true,
+    "productionHasLegacySchema": true,
+    "productionContainsVoterCampaignData": true
+  },
+  "checksumRisk": {
+    "editedExistingMigration": true,
+    "risk": "An existing migration SQL file was edited (checksum drift vs any environment that already recorded the prior migration checksum in _prisma_migrations). Environments with the old checksum may require a governed migration-history resolution path.",
+    "mitigation": "Production currently has no public._prisma_migrations per latest audit snapshot; still document operator awareness. If any staging clone applied the old checksum, use DBA-governed resolve/baseline strategy—never fake history on production without explicit approval."
+  },
+  "baselineOptions": [
+    {
+      "id": "A",
+      "label": "Baseline all historical migrations as applied (resolve / mark-applied path)",
+      "meaning": "Because production has no _prisma_migrations, mark historical migrations as applied only after backup + DBA review; then future migrations deploy normally.",
+      "risks": [
+        "If production schema does not truly match migration SQL, Prisma history can lie about what is on the ground.",
+        "Legacy drift and parallel lineage make Option A unsafe as a blind default unless domain separation and row-level/schema diff are explicitly accepted."
+      ]
+    },
+    {
+      "id": "B",
+      "label": "New production baseline migration package",
+      "meaning": "Capture current production schema as baseline state, mark that baseline applied, and treat future app migrations separately from the 71-folder history.",
+      "risks": [
+        "The repo already carries 71 migrations; squashing or rebasing history is operationally complex and easy to get wrong across environments.",
+        "Requires a careful, written migration-history strategy (fork, replace folder, or DBA-led SQL) so staging and production do not diverge silently."
+      ]
+    },
+    {
+      "id": "C",
+      "label": "Separate legacy warehouse schema from Prisma app schema",
+      "meaning": "Keep legacy voter/campaign warehouse tables as do-not-touch; apply only Prisma-owned app tables going forward with strict @@map / ownership discipline.",
+      "risks": [
+        "App code must not assume unmapped legacy tables are Prisma-owned or safe to mutate through Prisma.",
+        "Requires ongoing schema map and code-path audits so new models do not collide with warehouse names."
+      ]
+    },
+    {
+      "id": "D",
+      "label": "Controlled production baseline execution after shadow proof",
+      "meaning": "Use successful shadow migrate deploy + clean diff as evidence, then execute a strictly reviewed baseline / migration-history alignment path on production after backup + Steve approval.",
+      "risks": [
+        "Still requires PITR/backup, written approval, and exact command checklist; shadow success does not guarantee production identicality (pooler, extensions, timing).",
+        "Netlify and other clients that run prisma migrate deploy against the same URL must be coordinated so deploy order does not race partial schema."
+      ]
+    }
+  ],
+  "recommendedPath": {
+    "recommendedBaselineOptionId": "D",
+    "strategy": "Option D — controlled production baseline after shadow proof (with Option C discipline)",
+    "why": "Option A alone risks lying to Prisma if resolve/mark-applied is used without proving every migration is already reflected in production. Option B is valid for greenfield but is heavy against 71 existing folders without a dedicated history-repack slice. Option C is required ongoing discipline regardless. Option D matches the governed sequence already in flight: prove the chain on shadow, archive artifacts, then one human-approved execution packet applies the same class of commands to production with rollback and Netlify coordination.",
+    "nextRecommendedSlice": "REDDIRT-PRODUCTION-BASELINE-EXECUTION-PACKET-1.0"
+  },
+  "requiredHumanApprovals": [
+    "Steve: written approval to run any production mutation (including prisma migrate deploy / resolve / db push / reset).",
+    "Steve: approval of baseline strategy option (shadow deploy vs DBA custom) after reading this review and checksum risk.",
+    "Operator: confirm correct Supabase production project (identity) matches DATABASE_URL/DIRECT_URL intent without pasting secrets into tickets.",
+    "Operator: confirm no sibling app or warehouse table rename/drop risk from pending migration SQL (diff review on shadow)."
+  ],
+  "requiredBackupProof": [
+    "Supabase PITR enabled and retention window documented, or full logical backup completed and restore-tested on a disposable instance.",
+    "Restore drill documented (who runs it, time target, rollback decision criteria).",
+    "Backup proof artifact stored outside this repo per policy (no connection strings in docs)."
+  ],
+  "commandsForReviewOnly": [
+    "# Shadow only — placeholders, not runnable as-is:",
+    "$env:DATABASE_URL=\"<SHADOW_DATABASE_URL>\"",
+    "$env:DIRECT_URL=\"<SHADOW_DIRECT_URL>\"",
+    "npx prisma validate",
+    "npx prisma migrate deploy",
+    "npx prisma migrate diff --from-migrations prisma/migrations --to-url \"$env:DATABASE_URL\"",
+    "# Production — forbidden until Steve approval + backup proof:",
+    "# npx prisma migrate deploy",
+    "# npx prisma migrate resolve",
+    "# npx prisma db push",
+    "# npx prisma migrate reset"
+  ],
+  "absoluteDoNotRunYet": [
+    "npx prisma migrate deploy",
+    "npx prisma migrate resolve",
+    "npx prisma db push",
+    "npx prisma migrate reset"
+  ],
+  "netlifyReadiness": {
+    "readyToRetryNow": false,
+    "reason": "Netlify is not ready to retry against production until production baseline execution is approved and completed (or an operator proves the build-linked DB already matches migrations). DATABASE_URL/DIRECT_URL correctness is not verified by this offline script.",
+    "isNetlifyReadyToRetryProductionNow": false,
+    "databaseUrlCorrectedForCanonicalProduction": "not_verified_offline_packet",
+    "directUrlCorrectedForCanonicalProduction": "not_verified_offline_packet",
+    "productionBaselineMigrationHistoryAligned": false,
+    "shadowProofPassedInRepoArtifacts": true,
+    "productionBaselineExecutionComplete": false,
+    "netlifyBuildScriptRunsPrismaMigrateDeploy": true,
+    "netlifyBuildScriptReference": "scripts/netlify-build.sh runs `npx prisma migrate deploy` after `npx prisma generate` unless the build pipeline is changed.",
+    "requiredBeforeRetry": [
+      "Steve-approved execution packet for production (or proof the target DB is already migrated outside this review).",
+      "Operator confirms DATABASE_URL and DIRECT_URL in Netlify (or CI) match the intended Supabase project — verify in dashboard; do not paste URIs into chat.",
+      "Confirm no overlapping deploy or migration window against the same database.",
+      "After production migrate: re-run hosted checks (migrate status, app smoke, optional hosted-db proof route) before treating Netlify as green.",
+      "Commit data/shadow-db-migration-proof.json so automation and humans share the same shadow evidence."
+    ]
+  },
+  "emailCommandCenterReadiness": {
+    "readyForHostedDbProof": false,
+    "readyForEmailDiagnostics": true,
+    "readyForSendGridSandbox": false,
+    "readyForLiveSend": false,
+    "liveSendExplicitlyApproved": false,
+    "reason": "Email Command Center static gates (validate/typecheck/no-send-scan) can run locally; hosted DB proof and SendGrid sandbox/live sends remain gated until hosted DATABASE_URL is aligned and send policies are explicitly approved."
+  },
+  "governance": {
+    "thisPacketApprovesProductionMigrate": false,
+    "thisPacketApprovesProductionBaselineExecution": false,
+    "thisPacketApprovesProductionMigrateResolve": false,
+    "thisPacketApprovesProductionDbPush": false,
+    "thisPacketApprovesProductionReset": false,
+    "thisPacketApprovesNetlifyRetry": false,
+    "thisPacketApprovesLiveSend": false,
+    "productionBaselineExecutionReadyForAutomaticRun": false
+  }
+}

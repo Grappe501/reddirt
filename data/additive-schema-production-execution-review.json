@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-PRODUCTION-ADDITIVE-SCHEMA-INSTALL-PLAN-1.0",
+  "packet": "REDDIRT-ADDITIVE-SCHEMA-CLONE-PROOF-HARDENING-1.0",
+  "generatedAt": "2026-05-07T14:29:56.938Z",
+  "mode": "production_execution_review_draft",
+  "disclaimer": "Draft only. Does not execute SQL, does not mutate production, does not baseline _prisma_migrations, does not approve Netlify retry or live send.",
+  "productionExecutionBlocked": {
+    "ifCloneProofDidNotPass": false,
+    "ifCloneProofFalsePositive": false,
+    "ifCandidateValidationDidNotPass": false,
+    "ifBeforePublicTableCountBelow100": false,
+    "ifBeforeHighValueTablesMissing": false,
+    "ifAfterHighValueProtectionFailed": false,
+    "backupAndPitrProofStillRequired": true,
+    "steveApprovalStillRequired": true,
+    "netlifyBlockedUntilAdditiveAndMigrationStrategyComplete": true,
+    "liveSendBlocked": true
+  },
+  "cloneProofGates": {
+    "cloneSaysPass": true,
+    "productionLikePrecheckPassed": true,
+    "productionLikeCloneProofFlag": true,
+    "beforePublicTableCountOk": true,
+    "beforeContactsExists": true,
+    "beforeAr02VotersExists": true,
+    "beforeAuthUsersExists": true,
+    "afterHighValueProtectionOk": true,
+    "afterPublicTableCountOk": true,
+    "cloneProofMeaningful": true
+  },
+  "eligibility": {
+    "unsafeDiffDocumented": true,
+    "candidatePresent": true,
+    "validationPass": true,
+    "cloneConfigured": true,
+    "cloneProofPassed": true,
+    "productionExecutionAllowed": false
+  },
+  "nextRecommendedSlice": "REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0",
+  "inputs": {
+    "unsafeAnalysis": "data\\unsafe-production-schema-diff-analysis.json",
+    "plan": "data\\additive-schema-install-plan.json",
+    "validation": "data\\additive-schema-install-validation.json",
+    "cloneResult": "data\\additive-schema-clone-test-result.json",
+    "candidateSql": "data\\sql\\additive-schema-install-candidate.sql"
+  }
+}

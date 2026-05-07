@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-PRODUCTION-BASELINE-EXECUTION-PACKET-1.0",
+  "generatedAt": "2026-05-07T01:17:42.593Z",
+  "approvalPhraseRequired": "STEVE_APPROVES_REDDIRT_PRODUCTION_BASELINE_EXECUTION",
+  "liveSendRemainsBlocked": true,
+  "netlifyRetryRemainsBlockedUntilPostVerify": true,
+  "gates": [
+    {
+      "key": "backup_pitr_proof",
+      "label": "Backup / PITR proof confirmed.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Pointer to backup snapshot ID, PITR window, or restore-test record (no secrets).",
+      "whoApproves": "Steve / operator",
+      "notes": ""
+    },
+    {
+      "key": "correct_supabase_project",
+      "label": "Correct Supabase project confirmed.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Supabase dashboard project ref + name match intended production (verify in UI).",
+      "whoApproves": "Operator",
+      "notes": ""
+    },
+    {
+      "key": "production_db_url_org_project",
+      "label": "Production DATABASE_URL belongs to the paid/pro organization project.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Confirm in Supabase + hosting env UIs that the pooler URL targets the intended org project (do not paste full URL into tickets).",
+      "whoApproves": "Operator",
+      "notes": ""
+    },
+    {
+      "key": "maintenance_window",
+      "label": "Maintenance window selected.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Agreed calendar window or explicit low-risk window for migrate deploy.",
+      "whoApproves": "Steve / operator",
+      "notes": ""
+    },
+    {
+      "key": "latest_branch_commit",
+      "label": "Latest branch/commit confirmed.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Git SHA or tag recorded for RedDirt that generated this packet and migrations.",
+      "whoApproves": "Operator",
+      "notes": ""
+    },
+    {
+      "key": "shadow_proof_passed",
+      "label": "Shadow proof artifact passed.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "`data/shadow-db-migration-proof-validation.json` status pass + proof JSON present.",
+      "whoApproves": "Machine / operator",
+      "notes": ""
+    },
+    {
+      "key": "migration_dependency_repair_passed",
+      "label": "Migration dependency repair artifact passed.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "`data/migration-dependency-repair-validation.json` status pass.",
+      "whoApproves": "Machine / operator",
+      "notes": ""
+    },
+    {
+      "key": "production_baseline_review_passed",
+      "label": "Production baseline review passed.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "`data/production-baseline-execution-review-validation.json` status pass.",
+      "whoApproves": "Machine / operator",
+      "notes": ""
+    },
+    {
+      "key": "steve_approval_phrase_recorded",
+      "label": "Steve approval phrase recorded.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Written record that Steve used phrase: STEVE_APPROVES_REDDIRT_PRODUCTION_BASELINE_EXECUTION (store per policy, not in chat logs).",
+      "whoApproves": "Steve",
+      "notes": ""
+    },
+    {
+      "key": "dba_checksum_warning_ack",
+      "label": "DBA / checksum warning acknowledged.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Operator/DBA sign-off on edited migration checksum risk (see packet checksumRisk).",
+      "whoApproves": "Operator / DBA",
+      "notes": ""
+    },
+    {
+      "key": "netlify_retry_plan_ack",
+      "label": "Netlify deploy retry plan acknowledged.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Read `docs/post-baseline-netlify-test-plan.md` — retry only after baseline + migrate status clean.",
+      "whoApproves": "Operator",
+      "notes": ""
+    },
+    {
+      "key": "hosted_db_proof_plan_ack",
+      "label": "Hosted DB proof route test plan acknowledged.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Read `docs/hosted-db-proof-after-baseline.md` — token never pasted into tickets.",
+      "whoApproves": "Operator",
+      "notes": ""
+    },
+    {
+      "key": "live_send_remains_blocked",
+      "label": "Live send remains blocked.",
+      "required": true,
+      "status": "pending",
+      "evidenceRequired": "Confirm packet `emailCommandCenterProofPlan.liveSendApproved` is false and no live-send env toggles are staged.",
+      "whoApproves": "Steve / operator",
+      "notes": ""
+    }
+  ]
+}

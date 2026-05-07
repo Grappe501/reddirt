@@ -243,7 +243,9 @@ export default async function GetInvolvedPage({
               Until one simple intake is live, drop a note below with what you like doing, your county, and roughly how
               much time you have—we will match you without a quiz.
             </p>
-            <p className="mt-3 font-body text-xs text-kelly-text/55">TODO: WorkflowIntake / unified volunteer form.</p>
+            <p className="mt-3 font-body text-xs text-kelly-text/55">
+              A single volunteer form is on the way; until then we read every note below.
+            </p>
             <div className="mt-6">
               <Button href="#join" variant="outline" className="min-h-[48px]">
                 Stay connected

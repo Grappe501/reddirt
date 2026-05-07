@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-SHADOW-PROOF-ARTIFACT-CONSOLIDATION-1.0",
+  "generatedAt": "2026-05-07T00:50:44.827Z",
+  "mode": "offline_consolidated_attestation",
+  "productionMutationAttempted": false,
+  "offlineConsolidatedAttestation": true,
+  "attestationNote": "Consolidates prior governed disposable-shadow outcome (71 migrations applied, migrate diff empty vs migrations folder, prisma validate pass). This script invocation did not open a database connection; re-run with --live-shadow-from-env and REDDIRT_SHADOW_DATABASE_URL to re-prove on a fresh shadow.",
+  "status": "pass",
+  "migrateDeploy": {
+    "success": true,
+    "appliedMigrationsCount": 71,
+    "recordedMethod": "offline_consolidated_attestation"
+  },
+  "diffFromMigrationsToUrl": {
+    "clean": true,
+    "recordedMethod": "offline_consolidated_attestation"
+  },
+  "prismaValidate": {
+    "exitCode": 0,
+    "stdoutTail": "Environment variables loaded from .env\nPrisma schema loaded from prisma\\schema.prisma\nThe schema at prisma\\schema.prisma is valid 🚀\n"
+  },
+  "migrationDependencyRepairValidationPath": "data/migration-dependency-repair-validation.json"
+}

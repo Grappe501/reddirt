@@ -63,7 +63,9 @@ export default function IntegrityTourRequestPage() {
         <div className="rounded-card border border-dashed border-kelly-text/25 bg-kelly-wash/50 p-8 text-center md:p-10">
           <p className="font-heading text-lg font-bold text-kelly-ink">{R.formTitle}</p>
           <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-kelly-slate md:text-base">{R.formBody}</p>
-          <p className="mx-auto mt-3 max-w-lg text-xs text-kelly-text/60">TODO: WorkflowIntake + pending approval calendar.</p>
+          <p className="mx-auto mt-3 max-w-lg text-xs text-kelly-text/60">
+            A dedicated request form and public calendar are on the way; email reaches the team today.
+          </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Button href={mailto} variant="primary" className="min-h-[52px]">
               Email the campaign

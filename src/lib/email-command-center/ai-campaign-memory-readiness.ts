@@ -321,7 +321,7 @@ export function buildRecommendedIngestionPlan(): IngestionPlanStep[] {
     {
       step: 1,
       title: "Confirm database + OpenAI gates",
-      action: "Run Email Command Center readiness + `npm run email:db:diagnose` from RedDirt/ when unsure.",
+      action: "Run Communication Command Center readiness + `npm run email:db:diagnose` from RedDirt/ when unsure.",
       notes: "Embeddings require OPENAI_API_KEY; without it ingest still writes chunks but semantic similarity is weak.",
     },
     {

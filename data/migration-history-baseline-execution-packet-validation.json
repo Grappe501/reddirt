@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-MIGRATION-HISTORY-BASELINE-EXECUTION-PACKET-1.0",
+  "generatedAt": "2026-05-07T16:36:46.336Z",
+  "status": "pass",
+  "checks": [
+    {
+      "id": "packet_exists",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "packet_slice",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "production_mutation_false",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "history_mutate_false",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "auto_exec_false",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "prod_not_approved",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "netlify_not_approved",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "live_send_not_approved",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "gates_exist",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "gates_pending",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "commands_exist",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "commands_gated",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "preflight_exists",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "dry_run_exists",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "guarded_has_phrase",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "doc_migration-history-baseline-execution-packet.md",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "doc_migration-history-baseline-approval-gates.md",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "doc_migration-history-baseline-runbook.md",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "doc_migration-history-postcheck-plan.md",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "doc_post-migration-history-netlify-readiness.md",
+      "ok": true,
+      "detail": "ok"
+    }
+  ],
+  "violations": [],
+  "safeForManualApprovalReview": true,
+  "safeForAutomaticExecution": false,
+  "safeForNetlifyRetry": false,
+  "safeForLiveSend": false,
+  "cloneProofOk": true,
+  "cloneProofPresent": true
+}

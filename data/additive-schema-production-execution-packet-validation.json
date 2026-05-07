@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-ADDITIVE-SCHEMA-PRODUCTION-EXECUTION-PACKET-1.0",
+  "generatedAt": "2026-05-07T14:54:01.228Z",
+  "status": "pass",
+  "checks": [
+    {
+      "id": "slice",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "schemaVersion",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "productionMutationFalse",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "manualOnly",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "autoBlocked",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "execNotApproved",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "netlifyNotApproved",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "liveSendNotApproved",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "approvalPhrase",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "eligibilityShape",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "unsafeRejected",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "validationPassed",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "cloneFlagBoolean",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "whenReady_cloneAlso",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "whenReady_highValue",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "candidate_sha256_match",
+      "ok": true,
+      "detail": "ok"
+    }
+  ],
+  "packetExecutionPacketStatus": "ready_pending_human_approval",
+  "packetReadyFlag": true,
+  "candidateSha256Match": true
+}
