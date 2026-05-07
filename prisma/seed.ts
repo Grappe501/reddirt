@@ -25,6 +25,20 @@ import { seedSlice4WorkflowTemplates } from "./seed-slice4-workflows";
 
 const prisma = new PrismaClient();
 
+/** True when `public.counties` has been migrated to include `slug` (County command pages). */
+async function countiesTableHasSlugColumn(): Promise<boolean> {
+  const rows = await prisma.$queryRaw<{ exists: boolean }[]>`
+    SELECT EXISTS (
+      SELECT 1
+      FROM information_schema.columns
+      WHERE table_schema = 'public'
+        AND table_name = 'counties'
+        AND column_name = 'slug'
+    ) AS "exists"
+  `;
+  return Boolean(rows[0]?.exists);
+}
+
 const PLATFORM_DEFAULTS: { platform: ContentPlatform; accountName: string }[] = [
   { platform: ContentPlatform.SUBSTACK, accountName: "Substack (RSS)" },
   { platform: ContentPlatform.FACEBOOK, accountName: "Facebook Page" },
@@ -59,6 +73,13 @@ async function main() {
   }
 
   const baseline = getCampaignRegistrationBaselineUtc();
+
+  const countySlugReady = await countiesTableHasSlugColumn();
+  if (!countySlugReady) {
+    console.warn(
+      "[seed] Skipping County + voter demo seed: column public.counties.slug is missing (schema behind Prisma migrations). Remaining idempotent seeds still run."
+    );
+  } else {
   const demoCounties: Array<{
     slug: string;
     fips: string;
@@ -286,6 +307,8 @@ async function main() {
       },
     });
   }
+
+  } // countySlugReady
 
   // --- Operations: workflow templates (idempotent) ---
   const appearance = await prisma.workflowTemplate.upsert({
@@ -524,7 +547,9 @@ async function main() {
   });
 
   console.log(
-    "Seed complete: siteSettings, homepageConfig, platformConnection, County + voter file demo rows + workflow templates, Slice 4 + Slice 5 calendar sources."
+    countySlugReady
+      ? "Seed complete: siteSettings, homepageConfig, platformConnection, County + voter file demo rows + workflow templates, Slice 4 + Slice 5 calendar sources."
+      : "Seed complete: siteSettings, homepageConfig, platformConnection, workflow templates, Slice 4 + Slice 5 calendar sources (County demo skipped — counties.slug missing)."
   );
 }
 
