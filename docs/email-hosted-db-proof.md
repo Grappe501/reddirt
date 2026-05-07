@@ -13,18 +13,19 @@ Give operators a **single, bearer-protected HTTP GET** that answers whether the 
 
 ## What this proves
 
-- **`DATABASE_URL`** and **`DIRECT_URL`** are **set** on the server (boolean presence only — **no** values, **no** lengths, **no** hostnames in the JSON response).
+- **`DATABASE_URL`** and **`DIRECT_URL`**: **presence** plus **Supabase project ref** alignment (`supabaseProjectRefConfirmed`, `parseHint`) — **no** full connection strings, passwords, or tokens in JSON (**REDDIRT-HOSTED-DB-PROOF-HARDENING-1.0**).
 - The app process can open a Prisma connection and run **`SELECT 1`** successfully.
-- Optionally, a **fixed** read against the existing **`User`** table (`COUNT(*)` only) returns **success or failure as a boolean** per table row in **`safeCounts`** — **not** the numeric count.
+- **`productionSchemaContract`**: canonical production ref **`giozeoqulfojhxpywjil`**, required **legacy** and **new** public tables (same list as migration-history preflight), **`auth.users`** metadata presence, and **`_prisma_migrations`** row count **71**; when **`DIRECT_URL`** is set, its parsed ref must match the same production ref.
+- **`proof.productionCanonical`**: **`true`** when that contract is satisfied (same condition as **`productionSchemaContract.contractSatisfied`**). It does **not** replace operator attestation in **`develop_notes`** for audit trails, but it **is** set from live read-only probes, not from a separate manual flag.
+- Optionally, a **fixed** read against the existing **`User`** table (`COUNT(*)` only) returns **success or failure as a boolean** per table row in **`safeCounts`** — **not** the numeric count (supplementary; **`ok`** does not depend on **`User`**).
 
 ---
 
 ## What this does not prove
 
-- **Which** database project or region you intended (wrong URL can still “work”).
-- Migration parity, RLS posture, or **`email:contact-import:gate`** success — use CLI gates separately.
+- RLS posture, row-level data correctness, or **`email:contact-import:gate`** success — use CLI gates separately.
 - SendGrid, Gmail, OpenAI, or automation health.
-- That **`productionCanonical`** is true — that flag is **documentation-driven** after a **live** successful response is pasted into `develop_notes` in the same steered packet (see report template).
+- That every business workflow is safe to execute (sends, imports, etc.) — still governed by [`email-command-center-launch-hardening.md`](./email-command-center-launch-hardening.md).
 
 ---
 
@@ -56,7 +57,7 @@ Implemented in **`src/lib/email-command-center/hosted-db-proof.ts`**:
 
 - **`getHostedDbEnvPresence()`** — booleans only.  
 - **`runHostedDbReadOnlyProof()`** — `Prisma.sql` parameterized **`SELECT 1`**; optional **`SELECT COUNT(*)::bigint FROM "User"`** (count never returned).  
-- **`getHostedDbProofSummary()`** — assembles the full JSON envelope with **`proof.readOnly: true`**, **`mutatedData: false`**, **`migrationsRun: false`**, **`productionCanonical: false`** from code (always **false** until an operator documents live success).
+- **`getHostedDbProofSummary()`** — assembles the full JSON envelope with **`proof.readOnly: true`**, **`mutatedData: false`**, **`migrationsRun: false`**, and **`proof.productionCanonical`** set to **`true`** when **`productionSchemaContract.contractSatisfied`** is **`true`** (canonical production DB contract from read-only probes).
 
 ---
 
@@ -81,9 +82,10 @@ Paste **redacted** JSON (no secrets) into **`develop_notes/REDDIRT_EMAIL_HOSTED_
 
 ## Safe result interpretation
 
-- **`ok: true`** with **`database.reachable: true`** and **`database.selectOneOk: true`** — the deployed app’s Prisma layer can read from the database URL it was built with.  
+- **`ok: true`** — same gates as a satisfied production schema contract: canonical ref on **`DATABASE_URL`**, **`SELECT 1`** OK, legacy + new tables, **`auth.users`**, **71** migration rows, and matching **`DIRECT_URL`** ref when **`DIRECT_URL`** is set. Then **`proof.productionCanonical`** is **`true`**.
+- **`ok: true`** but **`proof.productionCanonical: false`** should not occur when the contract logic is aligned; if it appears, treat as a bug and capture redacted JSON for review.
 - **`warnings`** mentioning **`DIRECT_URL`** — plan migrate/introspection with a direct/session URL per [`deployment.md`](./deployment.md).  
-- **`safeCounts`** — `{ "table": "User", "ok": true }` means the count query succeeded; **`ok: false`** means that probe failed (permissions, missing table in an odd fork, etc.) — **`SELECT 1`** may still pass.
+- **`safeCounts`** — `{ "table": "User", "ok": true }` means the count query succeeded; **`ok: false`** means that probe failed (permissions, missing table in an odd fork, etc.) — **`SELECT 1`** may still pass; **`ok`** for the route does **not** require **`User`**.
 
 ---
 

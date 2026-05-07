@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-HOSTED-DB-PROOF-HARDENING-1.0",
+  "generatedAt": "2026-05-07T18:39:51.295Z",
+  "mode": "offline_hosted_db_proof_hardening_report",
+  "productionMutationByThisScript": false,
+  "secretsPrinted": false,
+  "summary": "Hosted GET /api/admin/production-readiness/hosted-db proves canonical Supabase ref on DATABASE_URL, legacy + new public tables, auth.users metadata, and _prisma_migrations row count — read-only; no migrate; no secrets in JSON.",
+  "requiredProductionProjectRef": "giozeoqulfojhxpywjil",
+  "expectedPrismaMigrationsRowCount": 71,
+  "envFieldsReported": [
+    "DATABASE_URL.present",
+    "DATABASE_URL.supabaseProjectRefConfirmed (matches required ref)",
+    "DATABASE_URL.parseHint (username_postgres_dot_ref | host_db_dot_ref | ref_unparsed)",
+    "DIRECT_URL.present",
+    "DIRECT_URL.supabaseProjectRefConfirmed when DIRECT_URL set",
+    "DIRECT_URL.parseHint when derivable"
+  ],
+  "payloadSections": [
+    "env",
+    "database (SELECT 1, optional User count boolean)",
+    "productionSchemaContract",
+    "proof.readOnly / mutatedData / migrationsRun / productionCanonical",
+    "warnings",
+    "nextRecommendedStep"
+  ],
+  "operatorDocs": [
+    "docs/hosted-db-proof-after-baseline.md",
+    "docs/email-hosted-db-proof.md",
+    "docs/email-command-center-launch-hardening.md"
+  ],
+  "validationScript": "node scripts/validate-hosted-db-proof-contract.mjs",
+  "sourcesRead": [
+    "src\\lib\\email-command-center\\hosted-db-proof.ts"
+  ]
+}

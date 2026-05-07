@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-HOSTED-DB-PROOF-HARDENING-1.0",
+  "generatedAt": "2026-05-07T18:39:51.295Z",
+  "mode": "communication_command_center_hosted_proof_next_steps",
+  "productionMutationByThisScript": false,
+  "liveSendApprovedByThisScript": false,
+  "netlifyDeployTriggeredByThisScript": false,
+  "secretsPrinted": false,
+  "afterHostedProofOk": [
+    "Paste redacted JSON (no tokens) into develop_notes per docs/email-hosted-db-proof.md if claiming operator-hosted verification.",
+    "If DIRECT_URL was absent in JSON, set Netlify DIRECT_URL for migrate/introspection discipline per deployment.md.",
+    "Continue KELLY-GRAPPE-APP-HOSTED-DB-GATE-1.0: prisma migrate status + contact-import gate on the same hosted URLs from an operator shell."
+  ],
+  "ifHostedProofFails": [
+    "Compare env.DATABASE_URL.supabaseProjectRefConfirmed and productionSchemaContract with docs/post-migration-history-deploy-checklist.md.",
+    "Regenerate data/migration-history-production-preflight.json only from an operator machine with correct env (never paste DATABASE_URL into chat)."
+  ],
+  "references": [
+    "data/post-migration-history-netlify-retry-packet.json",
+    "data/hosted-db-proof-contract-validation.json",
+    "data/hosted-db-proof-hardening-report.json"
+  ]
+}

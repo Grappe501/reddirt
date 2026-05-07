@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-HOSTED-DB-PROOF-HARDENING-1.0",
+  "generatedAt": "2026-05-07T18:39:50.302Z",
+  "mode": "offline_hosted_db_proof_contract_validation",
+  "status": "pass",
+  "checks": [
+    {
+      "id": "production_ref_constant_parity",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "expected_prisma_migrations_count",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "legacy_table_list_parity",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "new_app_table_list_parity",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "exports_ref_parser",
+      "ok": true,
+      "detail": "ok"
+    }
+  ],
+  "violations": [],
+  "sourcesRead": [
+    "src\\lib\\email-command-center\\hosted-db-proof.ts",
+    "scripts\\run-migration-history-production-preflight.mjs"
+  ],
+  "productionMutationByThisScript": false,
+  "secretsPrinted": false
+}
