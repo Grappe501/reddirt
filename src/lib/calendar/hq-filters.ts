@@ -31,7 +31,7 @@ export function parseCalendarFilters(sp: { src?: string; countyId?: string; type
 
 export function calendarFiltersToSearchParams(
   f: CalendarHqFilters,
-  o: { week: string; view: string; event?: string | null; q?: string; month?: string }
+  o: { week: string; view: string; event?: string | null; q?: string; month?: string; previewSrc?: string | null }
 ): string {
   const p = new URLSearchParams();
   p.set("week", o.week);
@@ -39,6 +39,7 @@ export function calendarFiltersToSearchParams(
   if (o.event) p.set("event", o.event);
   if (o.q) p.set("q", o.q);
   if (o.month) p.set("month", o.month);
+  if (o.previewSrc) p.set("previewSrc", o.previewSrc);
   if (f.countyId) p.set("countyId", f.countyId);
   if (f.eventType) p.set("type", f.eventType);
   if (f.eventWorkflowState) p.set("stage", f.eventWorkflowState);

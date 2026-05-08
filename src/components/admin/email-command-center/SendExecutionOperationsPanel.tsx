@@ -120,6 +120,9 @@ export function SendExecutionOperationsPanel({
   const defaultSyncRunId = query.sendGridContactSyncRunId ?? "";
   const testMailReady = se.sendGridMailTestReady;
   const broadcastMailReady = se.sendGridMailBroadcastReady;
+  const isProdBuild = process.env.NODE_ENV === "production";
+  /** Production blocks test send in the server action when import/DB verification is not proven. */
+  const prodOperatorGateBlocksTestSend = isProdBuild && og.localContactImportDbVerified !== true;
 
   const preflightRows = detail ? parsePreflightCheckRows(detail.preflightJson) : [];
   const recipientBreakdown = detail ? parsePreflightRecipientBreakdown(detail.preflightJson) : null;
@@ -421,9 +424,21 @@ export function SendExecutionOperationsPanel({
           <section className={card}>
             <h2 className={h3}>4. Test send (one explicit address)</h2>
             <p className="mt-1 font-body text-[10px] text-kelly-text/75">
-              Sends <strong>one</strong> email to the address you type. Available only when status is{" "}
-              <code className="text-[9px]">READY_FOR_TEST</code>.
+              This is a <strong>governed test email only</strong>: <strong>one</strong> recipient address that you type here — not a list
+              send, not the workflow queue, not bulk. The server prefixes the subject with <code className="text-[9px]">[TEST]</code>{" "}
+              (your draft subject stays in the row; SendGrid sees <code className="text-[9px]">[TEST] …</code>). Available only when
+              status is <code className="text-[9px]">READY_FOR_TEST</code> after preflight.
             </p>
+            {prodOperatorGateBlocksTestSend ? (
+              <p
+                className="mt-2 rounded border border-rose-300/70 bg-rose-50/95 px-2 py-2 font-body text-[10px] font-semibold text-rose-950"
+                role="alert"
+              >
+                <strong>Production operator gate — test send blocked.</strong> On production builds, SendGrid test send is disabled
+                until hosted Kelly DB + contact-import verification passes (see Email Command Center readiness and Hosted DB
+                assistant). Fix that gate first; this is separate from missing SendGrid env vars.
+              </p>
+            ) : null}
             <form action={sendEmailSendGridTestAction} className="mt-2 flex flex-wrap items-end gap-2">
               <input type="hidden" name="sendExecutionId" value={detail.id} />
               <label className="flex min-w-[14rem] flex-1 flex-col text-[10px] text-kelly-text/80">
@@ -438,7 +453,7 @@ export function SendExecutionOperationsPanel({
               </label>
               <button
                 type="submit"
-                disabled={detail.status !== "READY_FOR_TEST" || !testMailReady}
+                disabled={detail.status !== "READY_FOR_TEST" || !testMailReady || prodOperatorGateBlocksTestSend}
                 className="rounded border border-kelly-navy/35 bg-kelly-fog/90 px-3 py-1 text-[10px] font-bold text-kelly-navy disabled:opacity-40"
               >
                 Send test via SendGrid
@@ -448,7 +463,13 @@ export function SendExecutionOperationsPanel({
               <p className="mt-2 font-body text-[10px] text-amber-950">
                 Test send disabled until <code className="text-[9px]">SENDGRID_API_KEY</code>,{" "}
                 <code className="text-[9px]">SENDGRID_FROM_EMAIL</code>, and <code className="text-[9px]">SENDGRID_FROM_NAME</code>{" "}
-                are set. In production, hosted DB verification must also pass.
+                are set on this host.
+              </p>
+            ) : null}
+            {detail.status === "READY_FOR_TEST" && testMailReady && prodOperatorGateBlocksTestSend ? (
+              <p className="mt-2 font-body text-[10px] text-rose-950">
+                SendGrid mail env is present, but the <strong>production hosted DB / import verification gate</strong> still blocks
+                this button — complete operator proof on the canonical database before retrying.
               </p>
             ) : null}
           </section>

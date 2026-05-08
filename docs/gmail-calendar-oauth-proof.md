@@ -36,6 +36,10 @@ Payload is built by **`src/lib/communication-command-center/gmail-calendar-readi
 
 **Email Command Center → Readiness** includes a card linking here.
 
+### Calendar HQ — live Google read preview
+
+**Path:** `/admin/workbench/calendar` (Calendar HQ) includes a **Google Calendar — live read-only preview** panel. It shows OAuth-related env **names** only (present/missing), lists **`CalendarSource`** rows from Postgres, then uses stored refresh tokens to call Google’s **`calendarList.list`** (sample) and **`events.list`** (next **10** upcoming events, read-only). It does **not** create, update, delete, publish, sync, or automate events. The OAuth consent app may still request the broad **`https://www.googleapis.com/auth/calendar`** scope; this panel only exercises **list** APIs. Optional query: **`previewSrc=<CalendarSource.id>`** to choose which connected source to preview.
+
 ---
 
 ## Operator test steps

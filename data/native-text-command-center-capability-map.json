@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-NATIVE-TEXT-AND-REACH-FOUNDATION-1.0",
+  "generatedAt": "2026-05-07T23:20:35.361Z",
+  "twilio": {
+    "webhookRoutesFound": [
+      "src/app/api/webhooks/twilio/route.ts"
+    ],
+    "sendRoutesFound": [
+      "src/lib/comms-workbench/send-provider-adapters.ts",
+      "src/lib/integrations/twilio/send-sms.ts"
+    ],
+    "sendFunctionsDetected": true,
+    "smsSendApproved": false,
+    "stopHelpHandlingDetected": true,
+    "recommendedNextSteps": [
+      "Review send paths — outbound SMS remains gated until headquarters approves."
+    ]
+  },
+  "communicationTables": {
+    "CommunicationMessage": true,
+    "CommunicationThread": true,
+    "CommunicationSend": true,
+    "CommunicationRecipient": true,
+    "CommunicationRecipientEvent": true,
+    "ContactPreference": true
+  },
+  "safety": {
+    "twilioSmsApproved": false,
+    "bulkSendApproved": false,
+    "contactImportApproved": false,
+    "automationWorkersApproved": false
+  }
+}

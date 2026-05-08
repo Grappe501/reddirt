@@ -57,6 +57,14 @@ Payload is built by **`src/lib/communication-command-center/readiness.ts`**:
 - **Body:** **`email_sandbox_send_readiness`** — hosted + comms + Gmail/Calendar artifact gate; **does not** authorize live or list send.  
 - **Doc:** [`email-sandbox-send-proof.md`](./email-sandbox-send-proof.md) · **Admin UI:** `/admin/workbench/communication-command-center/email-sandbox`
 
+### Text + Reach foundation readiness
+
+- **Path:** `GET /api/admin/communication-command-center/text-reach-readiness`  
+- **Auth:** Same bearer as above.  
+- **Body:** **`text_reach_foundation_readiness`** — read-only aggregation for native texting + relational organizing + follow-up cockpit planning; **does not** call Twilio send APIs, **does not** import contacts, **does not** enable workers.  
+- **Admin UI:** `/admin/workbench/communication-command-center/text-reach` · Reach preview: `/admin/workbench/people/relational-organizing`  
+- **Doc:** [`text-reach-foundation.md`](./text-reach-foundation.md)
+
 ### Gmail + Calendar — operator hosted connection proof (after gates green)
 
 - **Path:** `GET /api/admin/communication-command-center/gmail-calendar-operator-proof`  
@@ -87,6 +95,8 @@ node scripts/validate-email-sandbox-send-proof.mjs
 node scripts/build-email-sandbox-send-proof-report.mjs
 node scripts/validate-gmail-calendar-operator-proof.mjs
 node scripts/build-gmail-calendar-operator-proof-report.mjs
+node scripts/validate-text-reach-foundation.mjs
+node scripts/build-text-reach-foundation-report.mjs
 ```
 
 Validate prints **PASS/FAIL** to stdout (no extra artifact). Build writes **`data/communication-command-center-launch-report.json`**. Gmail/Calendar proof writes **`data/gmail-calendar-oauth-proof-contract.json`** and related report artifacts. Email sandbox proof writes **`data/email-sandbox-send-proof-contract.json`** (or **`data/email-sandbox-send-proof-blocked.json`** if Gmail/Calendar proof is not green).

@@ -35,7 +35,9 @@ import { CalendarHqActionBar } from "@/components/admin/calendar-hq/CalendarHqAc
 import { CalendarHqFilterRail } from "@/components/admin/calendar-hq/CalendarHqFilterRail";
 import { CalendarHqMainTabs, CalendarHqMonthNav } from "@/components/admin/calendar-hq/CalendarHqMainTabs";
 import { EventExecutionPanel } from "@/components/admin/calendar-hq/EventExecutionPanel";
+import { GoogleCalendarLivePreviewPanel } from "@/components/admin/calendar-hq/GoogleCalendarLivePreviewPanel";
 import { ensureExecutionChecklist, computeEventHealthScore } from "@/lib/calendar/event-intelligence";
+import { loadGoogleCalendarLivePreview } from "@/lib/calendar/google-calendar-read-preview";
 
 const breakOut =
   "-mx-6 -mt-10 mb-0 w-[calc(100%+3rem)] max-w-[calc(100vw-280px-3rem)] min-w-0 px-0 pt-0 pb-6 lg:-mx-12 lg:mt-0 lg:w-[calc(100%+6rem)] lg:max-w-none";
@@ -50,6 +52,7 @@ type Props = {
     q?: string;
     error?: string;
     connected?: string;
+    previewSrc?: string;
     src?: string;
     countyId?: string;
     type?: string;
@@ -200,6 +203,11 @@ export default async function CalendarHqPage({ searchParams }: Props) {
   };
 
   const firstSourceId = (sources[0] as { id: string } | undefined)?.id ?? null;
+
+  const googleLivePreview = await loadGoogleCalendarLivePreview({
+    sources,
+    previewSourceId: sp.previewSrc?.trim() || null,
+  });
 
   const eventHref = (eid: string, v: string) =>
     `/admin/workbench/calendar?${calendarFiltersToSearchParams(filters, { week: weekKey, view: v, event: eid, q: matrixQ, month: v === "month" ? monthYm : undefined })}`;
@@ -367,6 +375,16 @@ export default async function CalendarHqPage({ searchParams }: Props) {
 
       {sp.error ? <p className="px-2 py-1 text-xs text-red-800 md:px-3">Google: {sp.error}</p> : null}
       {sp.connected ? <p className="px-2 py-1 text-xs text-kelly-success md:px-3">Google Calendar connected.</p> : null}
+
+      <GoogleCalendarLivePreviewPanel
+        preview={googleLivePreview}
+        filters={filters}
+        weekKey={weekKey}
+        view={view}
+        eventId={eventId}
+        matrixQ={matrixQ}
+        monthYm={monthYm}
+      />
 
       <CalendarHqCommandStrip summary={summary} strip={strip} nowLabel={nowLabel} />
       {summary.recentSyncLogs.length > 0 ? (

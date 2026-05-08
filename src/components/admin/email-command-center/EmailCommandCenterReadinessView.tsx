@@ -4,6 +4,7 @@ import type { EmailCommandCenterSnapshot } from "@/lib/email-command-center/read
 import type { CampaignMemoryReadinessSnapshot } from "@/lib/email-command-center/ai-campaign-memory-readiness";
 import { HostedDbReadinessAssistantView } from "@/components/admin/email-command-center/HostedDbReadinessAssistantView";
 import { MessageStudioCampaignMemoryPanel } from "@/components/admin/email-command-center/MessageStudioCampaignMemoryPanel";
+import { EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM } from "@/lib/email-workflow/governance";
 
 const ECC = "/admin/workbench/email-command-center";
 
@@ -107,6 +108,13 @@ export function EmailCommandCenterReadinessView({
 
   const audienceRow: RowStatus = !dbOk ? "blocked" : au.dbSliceReachable ? "ready" : "blocked";
 
+  const se = snapshot.sendExecution;
+  const gov = snapshot.governance;
+  const isProd = process.env.NODE_ENV === "production";
+  const prodTestSendGateOk = !isProd || og.localContactImportDbVerified === true;
+  const governedTestSendEnvReady = se.sendGridMailTestReady === true;
+  const governedTestSendAvailable = governedTestSendEnvReady && prodTestSendGateOk;
+
   return (
     <div className="min-w-0 max-w-5xl space-y-5">
       <div className="flex flex-wrap items-center gap-2">
@@ -156,6 +164,78 @@ export function EmailCommandCenterReadinessView({
           <code className="text-[10px]">RedDirt/</code>.
         </div>
       ) : null}
+
+      <section className="rounded-lg border border-kelly-navy/25 bg-gradient-to-br from-white via-kelly-page/40 to-emerald-50/50 p-4 shadow-sm">
+        <h2 className="font-heading text-sm font-bold text-kelly-navy">First platform email — governed test send only</h2>
+        <p className="mt-2 max-w-3xl font-body text-xs text-kelly-text/90">
+          This path lets an operator send <strong>one real email</strong> to an address they type, after preflight, using{" "}
+          <strong>Send execution</strong>. The subject line is prefixed with <code className="text-[10px]">[TEST]</code> in code.{" "}
+          <strong>This does not unlock bulk send</strong> and <strong>does not turn on queue-item send</strong> — the email
+          workflow queue stays locked below.
+        </p>
+        <div className="mt-3 grid gap-2 sm:grid-cols-2">
+          <div className="rounded border border-kelly-text/10 bg-white/90 px-2 py-2 font-body text-[10px] text-kelly-navy">
+            <span className="font-semibold">SendGrid API key present</span>
+            <div className={sg.sendgridApiKeyPresent ? "font-bold text-emerald-800" : "font-bold text-rose-800"}>
+              {sg.sendgridApiKeyPresent ? "Yes" : "No — set SENDGRID_API_KEY in hosting"}
+            </div>
+          </div>
+          <div className="rounded border border-kelly-text/10 bg-white/90 px-2 py-2 font-body text-[10px] text-kelly-navy">
+            <span className="font-semibold">SendGrid from email + name</span>
+            <div
+              className={
+                sg.sendgridFromEmailPresent && sg.sendgridFromNamePresent ? "font-bold text-emerald-800" : "font-bold text-rose-800"
+              }
+            >
+              {sg.sendgridFromEmailPresent && sg.sendgridFromNamePresent
+                ? "Yes"
+                : "Incomplete — set SENDGRID_FROM_EMAIL and SENDGRID_FROM_NAME"}
+            </div>
+          </div>
+          <div className="rounded border border-kelly-text/10 bg-white/90 px-2 py-2 font-body text-[10px] text-kelly-navy">
+            <span className="font-semibold">Governed test send (env ready)</span>
+            <div className={governedTestSendEnvReady ? "font-bold text-emerald-800" : "font-bold text-amber-900"}>
+              {governedTestSendEnvReady ? "Ready" : "Blocked — fix SendGrid env above"}
+            </div>
+          </div>
+          <div className="rounded border border-kelly-text/10 bg-white/90 px-2 py-2 font-body text-[10px] text-kelly-navy">
+            <span className="font-semibold">Production operator gate (hosted DB verified)</span>
+            <div className={!isProd ? "font-bold text-kelly-text/80" : prodTestSendGateOk ? "font-bold text-emerald-800" : "font-bold text-rose-800"}>
+              {!isProd
+                ? "N/A on this build (not production)"
+                : prodTestSendGateOk
+                  ? "Pass — test send allowed from Send execution"
+                  : "Blocked — complete hosted DB / import verification (see Hosted DB assistant)"}
+            </div>
+          </div>
+          <div className="rounded border border-kelly-text/10 bg-white/90 px-2 py-2 font-body text-[10px] text-kelly-navy sm:col-span-2">
+            <span className="font-semibold">Queue-from-item send</span>
+            <div className="font-bold text-emerald-900">
+              Locked (<code className="text-[9px]">EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM</code> = {String(EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM)})
+              — same as snapshot flag {String(gov.canSendFromEmailWorkflowItem)}.
+            </div>
+          </div>
+        </div>
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          <Link
+            href={`${ECC}/send-execution#ops`}
+            className="inline-flex rounded border border-kelly-forest/40 bg-kelly-forest/15 px-3 py-1.5 text-xs font-bold text-kelly-forest hover:bg-kelly-forest/25"
+          >
+            Open Send execution
+          </Link>
+          <span
+            className={`rounded px-2 py-1 text-[10px] font-bold ${
+              governedTestSendAvailable ? "bg-emerald-100 text-emerald-950" : "bg-amber-100 text-amber-950"
+            }`}
+          >
+            {governedTestSendAvailable ? "Test send path: available" : "Test send path: blocked — fix items in red above"}
+          </span>
+        </div>
+        <p className="mt-2 font-body text-[10px] text-kelly-text/70">
+          Do not use diagnostics <code className="text-[9px]">sandbox-send</code> for inbox proof — it keeps SendGrid sandbox mode on
+          and does not deliver. Docs: docs/email-command-center-launch-hardening.md (queue vs Send execution).
+        </p>
+      </section>
 
       <section className="rounded-lg border border-sky-300/60 bg-sky-50/90 p-3 shadow-sm">
         <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-sky-950/80">
@@ -224,6 +304,31 @@ export function EmailCommandCenterReadinessView({
         <p className="mt-2 font-body text-[10px] text-violet-900/75">
           Guide: docs/email-sandbox-send-proof.md · API (bearer):{" "}
           <code className="rounded bg-white/80 px-0.5 text-[9px]">GET /api/admin/communication-command-center/email-sandbox-readiness</code>
+        </p>
+      </section>
+
+      <section className="rounded-lg border border-sky-300/60 bg-sky-50/90 p-3 shadow-sm">
+        <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-sky-950/85">Text + Relational Organizing</h2>
+        <p className="mt-1 font-body text-[11px] text-sky-950/90">
+          Foundation ready. Sending and imports remain locked — native texting and volunteer-led Reach are being built inside RedDirt.
+        </p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          <Link
+            href="/admin/workbench/communication-command-center/text-reach"
+            className="inline-flex rounded border border-sky-800/35 bg-white px-2 py-1 text-[11px] font-bold text-sky-950 hover:bg-sky-100"
+          >
+            Open Text + Reach
+          </Link>
+          <Link
+            href="/admin/workbench/people/relational-organizing"
+            className="inline-flex rounded border border-violet-700/30 bg-violet-50 px-2 py-1 text-[11px] font-bold text-violet-950 hover:bg-violet-100"
+          >
+            RedDirt Reach preview
+          </Link>
+        </div>
+        <p className="mt-2 font-body text-[10px] text-sky-900/75">
+          Guides: docs/text-reach-foundation.md · Readiness API (bearer):{" "}
+          <code className="rounded bg-white/80 px-0.5 text-[9px]">GET /api/admin/communication-command-center/text-reach-readiness</code>
         </p>
       </section>
 

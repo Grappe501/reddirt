@@ -1,0 +1,462 @@
+{
+  "schemaVersion": "1.0",
+  "slice": "REDDIRT-NATIVE-TEXT-AND-REACH-FOUNDATION-1.0",
+  "generatedAt": "2026-05-07T23:20:34.387Z",
+  "status": "pass",
+  "checks": [
+    {
+      "id": "file:api",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "file:lib_main",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "file:lib_texting",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "file:lib_people",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "file:page_text_reach",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "file:page_relational",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "api_get_only",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "api_email_diag",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "api_admin_diag",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_typo_admin_diagnostics",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "api_timing_safe",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "api_bearer_order",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "safety_twilio_false",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "safety_bulk_sms_false",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "safety_import_false",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "safety_workers_false",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "safety_email_false",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "safety_cal_false",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:client.messages.create:src/app/api/admin/communication-command-center/text-reach-readiness/route.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:.messages.create:src/app/api/admin/communication-command-center/text-reach-readiness/route.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:twilio.messages:src/app/api/admin/communication-command-center/text-reach-readiness/route.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:gmail.users.messages.send:src/app/api/admin/communication-command-center/text-reach-readiness/route.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:sendgrid.send(:src/app/api/admin/communication-command-center/text-reach-readiness/route.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:contactImportApproved: true:src/app/api/admin/communication-command-center/text-reach-readiness/route.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:automationWorkersApproved: true:src/app/api/admin/communication-command-center/text-reach-readiness/route.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:client.messages.create:src/lib/communication-command-center/text-reach-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:.messages.create:src/lib/communication-command-center/text-reach-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:twilio.messages:src/lib/communication-command-center/text-reach-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:gmail.users.messages.send:src/lib/communication-command-center/text-reach-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:sendgrid.send(:src/lib/communication-command-center/text-reach-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:contactImportApproved: true:src/lib/communication-command-center/text-reach-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:automationWorkersApproved: true:src/lib/communication-command-center/text-reach-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:client.messages.create:src/lib/texting/text-command-center-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:.messages.create:src/lib/texting/text-command-center-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:twilio.messages:src/lib/texting/text-command-center-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:gmail.users.messages.send:src/lib/texting/text-command-center-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:sendgrid.send(:src/lib/texting/text-command-center-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:contactImportApproved: true:src/lib/texting/text-command-center-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:automationWorkersApproved: true:src/lib/texting/text-command-center-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:client.messages.create:src/lib/people/relational-organizing-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:.messages.create:src/lib/people/relational-organizing-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:twilio.messages:src/lib/people/relational-organizing-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:gmail.users.messages.send:src/lib/people/relational-organizing-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:sendgrid.send(:src/lib/people/relational-organizing-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:contactImportApproved: true:src/lib/people/relational-organizing-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:automationWorkersApproved: true:src/lib/people/relational-organizing-readiness.ts",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:client.messages.create:src/app/admin/(board)/workbench/communication-command-center/text-reach/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:.messages.create:src/app/admin/(board)/workbench/communication-command-center/text-reach/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:twilio.messages:src/app/admin/(board)/workbench/communication-command-center/text-reach/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:gmail.users.messages.send:src/app/admin/(board)/workbench/communication-command-center/text-reach/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:sendgrid.send(:src/app/admin/(board)/workbench/communication-command-center/text-reach/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:contactImportApproved: true:src/app/admin/(board)/workbench/communication-command-center/text-reach/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:automationWorkersApproved: true:src/app/admin/(board)/workbench/communication-command-center/text-reach/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:client.messages.create:src/app/admin/(board)/workbench/people/relational-organizing/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:.messages.create:src/app/admin/(board)/workbench/people/relational-organizing/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:twilio.messages:src/app/admin/(board)/workbench/people/relational-organizing/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:gmail.users.messages.send:src/app/admin/(board)/workbench/people/relational-organizing/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:sendgrid.send(:src/app/admin/(board)/workbench/people/relational-organizing/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:contactImportApproved: true:src/app/admin/(board)/workbench/people/relational-organizing/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:automationWorkersApproved: true:src/app/admin/(board)/workbench/people/relational-organizing/page.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:client.messages.create:src/components/admin/text-reach/TextReachCommandCenter.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:.messages.create:src/components/admin/text-reach/TextReachCommandCenter.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:twilio.messages:src/components/admin/text-reach/TextReachCommandCenter.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:gmail.users.messages.send:src/components/admin/text-reach/TextReachCommandCenter.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:sendgrid.send(:src/components/admin/text-reach/TextReachCommandCenter.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:contactImportApproved: true:src/components/admin/text-reach/TextReachCommandCenter.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:automationWorkersApproved: true:src/components/admin/text-reach/TextReachCommandCenter.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:client.messages.create:src/components/admin/text-reach/RelationalOrganizingPanel.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:.messages.create:src/components/admin/text-reach/RelationalOrganizingPanel.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:twilio.messages:src/components/admin/text-reach/RelationalOrganizingPanel.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:gmail.users.messages.send:src/components/admin/text-reach/RelationalOrganizingPanel.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:sendgrid.send(:src/components/admin/text-reach/RelationalOrganizingPanel.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:contactImportApproved: true:src/components/admin/text-reach/RelationalOrganizingPanel.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:automationWorkersApproved: true:src/components/admin/text-reach/RelationalOrganizingPanel.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:client.messages.create:src/components/admin/text-reach/TextMessagingSafetyPanel.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:.messages.create:src/components/admin/text-reach/TextMessagingSafetyPanel.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:twilio.messages:src/components/admin/text-reach/TextMessagingSafetyPanel.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:gmail.users.messages.send:src/components/admin/text-reach/TextMessagingSafetyPanel.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:sendgrid.send(:src/components/admin/text-reach/TextMessagingSafetyPanel.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:contactImportApproved: true:src/components/admin/text-reach/TextMessagingSafetyPanel.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:automationWorkersApproved: true:src/components/admin/text-reach/TextMessagingSafetyPanel.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:client.messages.create:src/components/admin/text-reach/VolunteerFollowUpPanel.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:.messages.create:src/components/admin/text-reach/VolunteerFollowUpPanel.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:twilio.messages:src/components/admin/text-reach/VolunteerFollowUpPanel.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:gmail.users.messages.send:src/components/admin/text-reach/VolunteerFollowUpPanel.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:sendgrid.send(:src/components/admin/text-reach/VolunteerFollowUpPanel.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:contactImportApproved: true:src/components/admin/text-reach/VolunteerFollowUpPanel.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:automationWorkersApproved: true:src/components/admin/text-reach/VolunteerFollowUpPanel.tsx",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "prisma_schema_unchanged_marker",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no_prisma_in_slice_paths",
+      "ok": true,
+      "detail": "ok"
+    }
+  ],
+  "violations": [],
+  "twilioApiFilesScanned": [
+    "src/app/api/webhooks/twilio/route.ts"
+  ]
+}

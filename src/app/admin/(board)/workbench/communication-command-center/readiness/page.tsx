@@ -65,6 +65,12 @@ export default async function CommunicationCommandCenterReadinessPage() {
         >
           Sandbox email proof
         </Link>
+        <Link
+          href="/admin/workbench/communication-command-center/text-reach"
+          className="text-xs font-bold text-sky-900 hover:underline"
+        >
+          Text + Reach
+        </Link>
       </div>
 
       <header className="space-y-2">
@@ -100,6 +106,27 @@ export default async function CommunicationCommandCenterReadinessPage() {
             className="inline-flex rounded border border-emerald-800/35 bg-white px-2 py-1 text-[11px] font-bold text-emerald-950 hover:bg-emerald-100"
           >
             Open connection proof
+          </Link>
+        </div>
+      </section>
+
+      <section className="rounded-lg border border-sky-300/55 bg-sky-50/85 p-3 shadow-sm">
+        <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-sky-950/85">Text + Relational Organizing</h2>
+        <p className="mt-1 font-body text-[11px] text-sky-950/90">
+          Foundation ready. Sending and imports remain locked — plan text messaging and volunteer-led outreach before any go-live.
+        </p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          <Link
+            href="/admin/workbench/communication-command-center/text-reach"
+            className="inline-flex rounded border border-sky-800/35 bg-white px-2 py-1 text-[11px] font-bold text-sky-950 hover:bg-sky-100"
+          >
+            Open Text + Reach
+          </Link>
+          <Link
+            href="/admin/workbench/people/relational-organizing"
+            className="inline-flex rounded border border-violet-700/30 bg-violet-50 px-2 py-1 text-[11px] font-bold text-violet-950 hover:bg-violet-100"
+          >
+            RedDirt Reach preview
           </Link>
         </div>
       </section>
