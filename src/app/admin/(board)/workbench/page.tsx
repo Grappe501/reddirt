@@ -331,6 +331,18 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
               Calendar HQ
             </Link>
             <Link
+              href="/admin/workbench/calendar/requests"
+              className="rounded border border-kelly-navy/25 bg-white px-1.5 py-0.5 text-[10px] font-bold text-kelly-navy"
+            >
+              Cal requests
+            </Link>
+            <Link
+              href="/admin/workbench/cockpit"
+              className="rounded border border-emerald-400/50 bg-emerald-50/90 px-1.5 py-0.5 text-[10px] font-extrabold text-emerald-950"
+            >
+              Cockpit
+            </Link>
+            <Link
               href="/admin/workbench/festivals"
               className="rounded border border-kelly-text/20 bg-white px-1.5 py-0.5 text-[10px] font-bold text-kelly-text"
             >
@@ -347,6 +359,18 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
               className="rounded border-2 border-kelly-forest/35 bg-kelly-fog/70 px-1.5 py-0.5 text-[10px] font-extrabold text-kelly-navy shadow-sm"
             >
               Email command center
+            </Link>
+            <Link
+              href="/admin/workbench/email-command-center/launch-room"
+              className="rounded border border-violet-300/60 bg-violet-50/90 px-1.5 py-0.5 text-[10px] font-extrabold text-violet-950"
+            >
+              Email launch room
+            </Link>
+            <Link
+              href="/admin/workbench/communication-intelligence"
+              className="rounded border border-sky-300/60 bg-sky-50/90 px-1.5 py-0.5 text-[10px] font-extrabold text-sky-950"
+            >
+              Communication intelligence
             </Link>
             <Link
               href="/admin/workbench/email-queue"

@@ -12,9 +12,10 @@ const btn =
 export function CalendarHqActionBar({
   filters,
   weekKey,
-  view,
+  view: _view,
   eventId,
   matrixQ,
+  previewSrc,
 }: {
   filters: CalendarHqFilters;
   weekKey: string;
@@ -22,9 +23,17 @@ export function CalendarHqActionBar({
   eventId: string | null;
   /** Time-matrix quadrant filter (Q1–Q4), not a filter key collision */
   matrixQ: string | undefined;
+  previewSrc?: string | null;
 }) {
+  const previewQ = previewSrc?.trim() || undefined;
   const back = (opts: { view: string; hash?: string }) => {
-    const s = calendarFiltersToSearchParams(filters, { week: weekKey, view: opts.view, event: eventId, q: matrixQ });
+    const s = calendarFiltersToSearchParams(filters, {
+      week: weekKey,
+      view: opts.view,
+      event: eventId,
+      q: matrixQ,
+      previewSrc: previewQ,
+    });
     return opts.hash ? `/admin/workbench/calendar?${s}${opts.hash}` : `/admin/workbench/calendar?${s}`;
   };
   return (

@@ -21,6 +21,8 @@
     "email:command-center:preflight": "node scripts/email-command-center-preflight.mjs",
     "email:contact-import:gate": "prisma migrate deploy && node scripts/email-command-center-preflight.mjs && npm run check",
     "email:no-send-scan": "node scripts/email-command-center-no-send-scan.mjs",
+    "communication-ingest:guardrails": "tsx scripts/verify-communication-ingest-guardrails.ts",
+    "communication-ingest:normalize-check": "tsx scripts/verify-communication-normalize.ts",
     "email:ai:eval": "node scripts/email-ai-quality-eval.mjs --static-only",
     "email:sendgrid:event-parse-check": "tsx scripts/verify-sendgrid-event-parse.ts",
     "email:gmail:preflight": "node scripts/email-command-center-preflight.mjs",

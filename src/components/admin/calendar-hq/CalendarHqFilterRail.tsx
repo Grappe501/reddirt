@@ -16,6 +16,7 @@ export function CalendarHqFilterRail({
   sources,
   owners,
   monthYm,
+  previewSrc,
 }: {
   filters: CalendarHqFilters;
   weekKey: string;
@@ -23,6 +24,7 @@ export function CalendarHqFilterRail({
   eventId: string | null;
   matrixQ: string | undefined;
   monthYm: string;
+  previewSrc?: string | null;
   counties: { id: string; displayName: string }[];
   sources: {
     id: string;
@@ -35,8 +37,16 @@ export function CalendarHqFilterRail({
   }[];
   owners: { id: string; name: string | null; email: string }[];
 }) {
+  const previewQ = previewSrc?.trim() || undefined;
   const qo = (f: CalendarHqFilters) =>
-    calendarFiltersToSearchParams(f, { week: weekKey, view, event: eventId, q: matrixQ, month: view === "month" ? monthYm : undefined });
+    calendarFiltersToSearchParams(f, {
+      week: weekKey,
+      view,
+      event: eventId,
+      q: matrixQ,
+      month: view === "month" ? monthYm : undefined,
+      previewSrc: previewQ,
+    });
 
   const toggleSource = (id: string) => {
     const cur = filters.sourceIds ?? [];

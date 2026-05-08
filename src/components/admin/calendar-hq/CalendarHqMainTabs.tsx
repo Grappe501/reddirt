@@ -12,6 +12,7 @@ export function CalendarHqMainTabs({
   eventId,
   matrixQ,
   monthYm,
+  previewSrc,
 }: {
   filters: CalendarHqFilters;
   weekKey: string;
@@ -19,7 +20,9 @@ export function CalendarHqMainTabs({
   eventId: string | null;
   matrixQ: string | undefined;
   monthYm: string;
+  previewSrc?: string | null;
 }) {
+  const previewQ = previewSrc?.trim() || undefined;
   const qs = (v: string) =>
     calendarFiltersToSearchParams(filters, {
       week: weekKey,
@@ -27,6 +30,7 @@ export function CalendarHqMainTabs({
       event: eventId,
       q: matrixQ,
       month: v === "month" ? monthYm : undefined,
+      previewSrc: previewQ,
     });
 
   const tabs: [string, string][] = [
@@ -57,6 +61,7 @@ export function CalendarHqMonthNav({
   view,
   eventId,
   matrixQ,
+  previewSrc,
 }: {
   weekKey: string;
   monthYm: string;
@@ -64,7 +69,9 @@ export function CalendarHqMonthNav({
   view: string;
   eventId: string | null;
   matrixQ: string | undefined;
+  previewSrc?: string | null;
 }) {
+  const previewQ = previewSrc?.trim() || undefined;
   const weekHref = (wk: string) =>
     calendarFiltersToSearchParams(filters, {
       week: wk,
@@ -72,6 +79,7 @@ export function CalendarHqMonthNav({
       event: eventId,
       q: matrixQ,
       month: view === "month" ? monthYm : undefined,
+      previewSrc: previewQ,
     });
   const base = (v: string) =>
     calendarFiltersToSearchParams(filters, {
@@ -80,6 +88,7 @@ export function CalendarHqMonthNav({
       event: eventId,
       q: matrixQ,
       month: v === "month" ? monthYm : undefined,
+      previewSrc: previewQ,
     });
   const label = (() => {
     const d = new Date(weekKey + "T12:00:00.000Z");

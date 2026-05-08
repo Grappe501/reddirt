@@ -51,6 +51,7 @@ function calUrl(
   filters: CalendarHqFilters,
   weekKey: string,
   defaultMatrix: string | undefined,
+  previewSrc: string | undefined,
   opts: { view?: string; event?: string | null; week?: string; matrixQ?: string | "ALL" }
 ) {
   let q: string | undefined;
@@ -62,6 +63,7 @@ function calUrl(
     view: opts.view ?? "week",
     event: opts.event ?? undefined,
     q,
+    previewSrc,
   })}`;
 }
 
@@ -107,9 +109,12 @@ export async function CalendarCommandView({
   workflowRunsForEvent = [],
   assignUsers = [],
   executionReadiness = null,
+  previewSrc,
 }: {
   weekKey: string;
   matrixQ: string | undefined;
+  /** Preserves Google live preview source selection across week navigation */
+  previewSrc?: string | null;
   filters: CalendarHqFilters;
   plan: PlanWithRocks;
   detail: CalendarHqEventDetail | null;
@@ -130,6 +135,7 @@ export async function CalendarCommandView({
   assignUsers?: Array<{ id: string; name: string | null; email: string | null }>;
   executionReadiness?: ReturnType<typeof computeEventExecutionReadiness> | null;
 }) {
+  const previewQ = previewSrc?.trim() || undefined;
   const quadrant: TimeMatrixQuadrant | "ALL" =
     matrixQ && ["Q1", "Q2", "Q3", "Q4"].includes(matrixQ) ? (matrixQ as TimeMatrixQuadrant) : "ALL";
   const byDay = buildDayBuckets(weekEvents);
@@ -137,7 +143,12 @@ export async function CalendarCommandView({
   const matrix = strip.matrix;
   const rc = (plan.roleCommitmentsJson as Record<string, string> | null) ?? {};
   const weekRangeLabel = dayYmds.length ? `${dayYmds[0]} – ${dayYmds[6]}` : weekKey;
-  const draftReturnSearch = calendarFiltersToSearchParams(filters, { week: weekKey, view: "week", q: matrixQ });
+  const draftReturnSearch = calendarFiltersToSearchParams(filters, {
+    week: weekKey,
+    view: "week",
+    q: matrixQ,
+    previewSrc: previewQ,
+  });
 
   return (
     <div className="flex min-h-0 w-full min-w-0 max-w-[1920px] flex-1 flex-col">
@@ -152,10 +163,10 @@ export async function CalendarCommandView({
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-1.5 text-[10px]">
-          <Link href={calUrl(filters, weekKey, matrixQ, { week: prevWeek })} className="rounded border border-kelly-text/20 bg-white px-2 py-0.5 font-bold">
+          <Link href={calUrl(filters, weekKey, matrixQ, previewQ, { week: prevWeek })} className="rounded border border-kelly-text/20 bg-white px-2 py-0.5 font-bold">
             ← Week
           </Link>
-          <Link href={calUrl(filters, weekKey, matrixQ, { week: nextWeek })} className="rounded border border-kelly-text/20 bg-white px-2 py-0.5 font-bold">
+          <Link href={calUrl(filters, weekKey, matrixQ, previewQ, { week: nextWeek })} className="rounded border border-kelly-text/20 bg-white px-2 py-0.5 font-bold">
             Week →
           </Link>
           <Link
@@ -180,7 +191,7 @@ export async function CalendarCommandView({
             ).map(([v, label]) => (
             <Link
               key={v}
-              href={calUrl(filters, weekKey, matrixQ, { view: v })}
+              href={calUrl(filters, weekKey, matrixQ, previewQ, { view: v })}
               className={`rounded px-2 py-0.5 text-[10px] font-bold uppercase ${
                 (viewMode === v || (v === "week" && (viewMode === "command" || viewMode === "week"))) ? "bg-kelly-text text-kelly-page" : "bg-white text-kelly-text/70"
               }`}
@@ -330,7 +341,7 @@ export async function CalendarCommandView({
               {(["ALL", "Q1", "Q2", "Q3", "Q4"] as const).map((qk) => (
                 <Link
                   key={qk}
-                  href={calUrl(filters, weekKey, matrixQ, { matrixQ: qk === "ALL" ? "ALL" : qk })}
+                  href={calUrl(filters, weekKey, matrixQ, previewQ, { matrixQ: qk === "ALL" ? "ALL" : qk })}
                   className={`mr-1 font-bold ${
                     (quadrant === qk) || (qk === "ALL" && quadrant === "ALL")
                       ? "text-kelly-navy underline"
@@ -426,7 +437,7 @@ export async function CalendarCommandView({
                         return (
                           <li key={e.id}>
                             <Link
-                              href={calUrl(filters, weekKey, matrixQ, { event: e.id })}
+                              href={calUrl(filters, weekKey, matrixQ, previewQ, { event: e.id })}
                               className={`block rounded border px-0.5 py-0.5 text-[9px] leading-tight transition hover:border-kelly-navy/40 ${
                                 br
                                   ? "border-l-4 border-l-amber-800 bg-amber-50/60 border-amber-800/20"

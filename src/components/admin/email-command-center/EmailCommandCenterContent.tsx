@@ -76,6 +76,7 @@ const ROUTE_MAP_PATH = "/admin/workbench/email-command-center/map";
 const READINESS_CHECKLIST_PATH = "/admin/workbench/email-command-center/readiness";
 const HOSTED_DB_READINESS_ASSISTANT_PATH = "/admin/workbench/email-command-center/readiness/hosted-db";
 const SEND_EXECUTION_GOVERNANCE_PATH = "/admin/workbench/email-command-center/send-execution";
+const EMAIL_LAUNCH_ROOM_PATH = "/admin/workbench/email-command-center/launch-room";
 
 type TonightPathStatus = "live" | "partial" | "future";
 
@@ -230,6 +231,13 @@ export function EmailCommandCenterContent({
               Route map
             </Link>{" "}
             — know upstream/downstream for the surface you are about to use.
+          </li>
+          <li>
+            Broadcast readiness checklist:{" "}
+            <Link href={EMAIL_LAUNCH_ROOM_PATH} className="font-bold underline">
+              Email Launch Room
+            </Link>{" "}
+            (read-only — deep links to Audience Studio, SendGrid sync, Message Studio, Send Execution).
           </li>
           <li>
             Triage:{" "}
@@ -1202,7 +1210,14 @@ export function EmailCommandCenterContent({
         </p>
         <ul className="grid gap-1.5 sm:grid-cols-2 lg:grid-cols-3">
           {[
-            { name: "Cockpit", path: "/admin/workbench/email-command-center", status: "Live — counts + gates" },
+            { name: "Cockpit (workbench)", path: "/admin/workbench/cockpit", status: "Live — morning command stack" },
+            { name: "Email Launch Room", path: EMAIL_LAUNCH_ROOM_PATH, status: "Live — read-only broadcast runbook" },
+            {
+              name: "Communication Intelligence",
+              path: "/admin/workbench/communication-intelligence",
+              status: "Live — Gmail/contacts/calendar ingest (no send)",
+            },
+            { name: "ECC home", path: "/admin/workbench/email-command-center", status: "Live — counts + gates" },
             {
               name: "Daily command console",
               path: DAILY_OPERATOR_CONSOLE_PATH,

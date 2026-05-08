@@ -579,3 +579,166 @@ export async function logAudiencePreviewRun(params: {
     },
   });
 }
+
+/** Same cap as SendGrid contact sync preview — full graph may be larger. */
+const ACTIVATION_EMAIL_SCAN_MAX = 4000;
+const ACTIVATION_EMAIL_SCAN_CHUNK = 500;
+
+async function profileHasUsablePrimaryEmailInChunks(profileIds: string[]): Promise<boolean> {
+  const cap = Math.min(profileIds.length, ACTIVATION_EMAIL_SCAN_MAX);
+  for (let i = 0; i < cap; i += ACTIVATION_EMAIL_SCAN_CHUNK) {
+    const slice = profileIds.slice(i, i + ACTIVATION_EMAIL_SCAN_CHUNK);
+    const hit = await prisma.emailContactProfile.findFirst({
+      where: {
+        id: { in: slice },
+        primaryEmail: { contains: "@", mode: "insensitive" },
+      },
+      select: { id: true },
+    });
+    if (hit) return true;
+  }
+  return false;
+}
+
+/** Local suppression overlap for operator hint only (Send Execution preflight stays authoritative). */
+async function suppressionHintForEmails(emails: string[]): Promise<{
+  scannedWithEmail: number;
+  excludedSuppressedApprox: number;
+  eligibleAfterSuppressionApprox: number;
+}> {
+  const normalized = [...new Set(emails.map((e) => e.trim().toLowerCase()).filter((e) => e.includes("@")))];
+  if (normalized.length === 0) {
+    return { scannedWithEmail: 0, excludedSuppressedApprox: 0, eligibleAfterSuppressionApprox: 0 };
+  }
+  try {
+    const suppressedRows = await prisma.sendGridSuppression.findMany({
+      where: { email: { in: normalized, mode: "insensitive" } },
+      select: { email: true },
+    });
+    const suppressedSet = new Set(suppressedRows.map((r) => r.email.trim().toLowerCase()));
+    const excluded = normalized.filter((e) => suppressedSet.has(e)).length;
+    return {
+      scannedWithEmail: normalized.length,
+      excludedSuppressedApprox: excluded,
+      eligibleAfterSuppressionApprox: normalized.length - excluded,
+    };
+  } catch {
+    return {
+      scannedWithEmail: normalized.length,
+      excludedSuppressedApprox: 0,
+      eligibleAfterSuppressionApprox: normalized.length,
+    };
+  }
+}
+
+export type ActivateAudienceDefinitionResult =
+  | {
+      ok: true;
+      matchedCount: number;
+      scannedForSuppressionHint: number;
+      excludedSuppressedApprox: number;
+      eligibleAfterSuppressionApprox: number;
+    }
+  | { ok: false; reasons: string[]; matchedCount?: number };
+
+/**
+ * DRAFT → ACTIVE when criteria preview matches ≥1 profile and ≥1 has a usable primary email.
+ * Suppression overlap is reported from the first matched profiles with email (capped) — not a send gate here.
+ */
+export async function activateAudienceDefinition(input: {
+  audienceDefinitionId: string;
+  updatedByUserId: string;
+}): Promise<ActivateAudienceDefinitionResult> {
+  const row = await prisma.emailAudienceDefinition.findUnique({ where: { id: input.audienceDefinitionId } });
+  if (!row) return { ok: false, reasons: ["Audience definition not found."] };
+  if (row.status !== "DRAFT") {
+    return { ok: false, reasons: [`Existing status is not DRAFT (current: ${row.status}).`] };
+  }
+
+  const criteria = parseCriteria(row.criteriaJson);
+  let matchedIds: string[];
+  try {
+    matchedIds = await getAudiencePreviewMatchedProfileIds(criteria);
+  } catch (e: unknown) {
+    return {
+      ok: false,
+      reasons: [e instanceof Error ? e.message : "Criteria preview failed — check criteria JSON."],
+    };
+  }
+
+  if (matchedIds.length === 0) {
+    return { ok: false, reasons: ["No matching profiles for this criteria."], matchedCount: 0 };
+  }
+
+  const hasUsableEmail = await profileHasUsablePrimaryEmailInChunks(matchedIds);
+  if (!hasUsableEmail) {
+    return {
+      ok: false,
+      reasons: ["No profiles with a usable primary email address in the matched set."],
+      matchedCount: matchedIds.length,
+    };
+  }
+
+  const cappedIds = matchedIds.slice(0, ACTIVATION_EMAIL_SCAN_MAX);
+  const profilesWithEmail = await prisma.emailContactProfile.findMany({
+    where: {
+      id: { in: cappedIds },
+      primaryEmail: { contains: "@", mode: "insensitive" },
+    },
+    select: { primaryEmail: true },
+  });
+  const emails = profilesWithEmail.map((p) => (p.primaryEmail ?? "").trim().toLowerCase()).filter((e) => e.includes("@"));
+  const supHint = await suppressionHintForEmails(emails);
+
+  const prevMeta =
+    typeof row.metadataJson === "object" && row.metadataJson != null && !Array.isArray(row.metadataJson)
+      ? (row.metadataJson as Record<string, unknown>)
+      : {};
+
+  await prisma.emailAudienceDefinition.update({
+    where: { id: input.audienceDefinitionId },
+    data: {
+      status: "ACTIVE",
+      updatedByUserId: input.updatedByUserId,
+      metadataJson: {
+        ...prevMeta,
+        activatedAt: new Date().toISOString(),
+        activatedByUserId: input.updatedByUserId,
+        activationMatchedCount: matchedIds.length,
+        activationEmailScanCap: ACTIVATION_EMAIL_SCAN_MAX,
+        activationSuppressionHintScanned: supHint.scannedWithEmail,
+        activationSuppressionExcludedApprox: supHint.excludedSuppressedApprox,
+        activationEligibleAfterSuppressionApprox: supHint.eligibleAfterSuppressionApprox,
+      } as Prisma.InputJsonValue,
+    },
+  });
+
+  try {
+    await logAudiencePreviewRun({
+      criteria,
+      matchCount: matchedIds.length,
+      generatedByUserId: input.updatedByUserId,
+      audienceDefinitionId: input.audienceDefinitionId,
+    });
+  } catch {
+    /* audit table optional */
+  }
+
+  return {
+    ok: true,
+    matchedCount: matchedIds.length,
+    scannedForSuppressionHint: supHint.scannedWithEmail,
+    excludedSuppressedApprox: supHint.excludedSuppressedApprox,
+    eligibleAfterSuppressionApprox: supHint.eligibleAfterSuppressionApprox,
+  };
+}
+
+export function isVolunteerRelatedAudienceCriteria(criteriaJson: unknown): boolean {
+  const c = parseCriteria(criteriaJson);
+  if (c.workflowSourceType?.trim().toUpperCase() === "VOLUNTEER_TRIGGER") return true;
+  return false;
+}
+
+export function isVolunteerRelatedAudienceName(name: string): boolean {
+  return /\bvolunteer\b/i.test(name.trim());
+}

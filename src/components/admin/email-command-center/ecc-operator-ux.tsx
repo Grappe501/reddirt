@@ -13,7 +13,8 @@ export type EccOperatorSurfaceId =
   | "sendgrid"
   | "audiences"
   | "imports"
-  | "email_queue";
+  | "email_queue"
+  | "launch_room";
 
 export type EccStatusChipVariant =
   | "live"
@@ -138,6 +139,12 @@ export function eccNextActionsForSurface(surface: EccOperatorSurfaceId, snapshot
         "Save draft definitions, then open Message Studio with ?audienceDefinitionId=… when drafting.",
         "SendGrid sync columns are posture only — list sync execution stays governed on SendGrid Foundation.",
       ];
+    case "launch_room":
+      return [
+        "This page is read-only — use deep links to Audience Studio, SendGrid sync, Message Studio, and Send Execution.",
+        "ACTIVE means eligible for sync/preflight, not sent. Only Send Execution after SEND APPROVED sends the broadcast.",
+        "When blocked, fix the earliest red step in the path before spending time on later steps.",
+      ];
     case "imports":
       return [
         "Run npm run email:contact-import:gate on the target DATABASE_URL before production-size commits.",
@@ -169,7 +176,7 @@ export function eccAutomaticBlockedReasons(surface: EccOperatorSurfaceId, snapsh
     out.push("Migrations incomplete — run npx prisma migrate deploy then npm run email:command-center:preflight.");
   }
 
-  if (surface === "sendgrid" || surface === "analytics") {
+  if (surface === "sendgrid" || surface === "analytics" || surface === "launch_room") {
     if (!sg.sendgridApiKeyPresent || !sg.sendgridFromEmailPresent) {
       out.push("SendGrid not fully configured — SENDGRID_API_KEY and/or SENDGRID_FROM_EMAIL missing (env names only).");
     }

@@ -6,9 +6,11 @@ import { requireAdminAction } from "@/app/admin/owned-media-auth";
 import { getAdminActorUserId } from "@/lib/admin/actor";
 import type { PreviewEmailAudienceState } from "@/lib/email-command-center/audience-preview-form-state";
 import {
+  activateAudienceDefinition,
   archiveAudienceDefinition,
   buildAudiencePreview,
   createDraftAudienceDefinition,
+  getEmailAudienceDefinitionById,
   logAudiencePreviewRun,
   parseCriteria,
 } from "@/lib/email-command-center/audience-studio";
@@ -109,4 +111,63 @@ export async function archiveEmailAudienceDefinitionAction(fd: FormData): Promis
   revalidatePath("/admin/workbench/email-command-center/audiences");
   revalidatePath("/admin/workbench/email-command-center");
   redirect("/admin/workbench/email-command-center/audiences?notice=archived");
+}
+
+export async function previewSavedEmailAudienceDefinitionAction(fd: FormData): Promise<void> {
+  await requireAdminAction();
+  const actorId = await getAdminActorUserId();
+  const id = trim(fd, "id");
+  if (!id) redirect("/admin/workbench/email-command-center/audiences?error=preview-id");
+  const def = await getEmailAudienceDefinitionById(id);
+  if (!def) redirect("/admin/workbench/email-command-center/audiences?error=preview-not-found");
+  const parsed = parseCriteria(def.criteriaJson);
+  try {
+    const { matchCount } = await buildAudiencePreview(parsed);
+    try {
+      await logAudiencePreviewRun({
+        criteria: parsed,
+        matchCount,
+        generatedByUserId: actorId,
+        audienceDefinitionId: id,
+      });
+    } catch {
+      /* optional audit */
+    }
+    revalidatePath("/admin/workbench/email-command-center/audiences");
+    revalidatePath("/admin/workbench/email-command-center");
+    const q = new URLSearchParams();
+    q.set("notice", "preview-done");
+    q.set("def", id);
+    q.set("mc", String(matchCount));
+    redirect(`/admin/workbench/email-command-center/audiences?${q.toString()}`);
+  } catch (e: unknown) {
+    const msg = e instanceof Error ? e.message : "Preview failed.";
+    redirect(`/admin/workbench/email-command-center/audiences?error=${encodeURIComponent(msg)}`);
+  }
+}
+
+export async function activateEmailAudienceDefinitionAction(fd: FormData): Promise<void> {
+  await requireAdminAction();
+  const actorId = await getAdminActorUserId();
+  if (!actorId) redirect("/admin/workbench/email-command-center/audiences?error=actor");
+  const id = trim(fd, "id");
+  if (!id) redirect("/admin/workbench/email-command-center/audiences?error=activate-id");
+  const res = await activateAudienceDefinition({ audienceDefinitionId: id, updatedByUserId: actorId });
+  revalidatePath("/admin/workbench/email-command-center/audiences");
+  revalidatePath("/admin/workbench/email-command-center");
+  revalidatePath("/admin/workbench/email-command-center/launch-room");
+  if (!res.ok) {
+    const q = new URLSearchParams();
+    q.set("error", "activate-blocked");
+    q.set("def", id);
+    q.set("why", encodeURIComponent(res.reasons.join(" · ")));
+    redirect(`/admin/workbench/email-command-center/audiences?${q.toString()}`);
+  }
+  const q = new URLSearchParams();
+  q.set("notice", "activated");
+  q.set("def", id);
+  q.set("mc", String(res.matchedCount));
+  q.set("sup", String(res.excludedSuppressedApprox));
+  q.set("elig", String(res.eligibleAfterSuppressionApprox));
+  redirect(`/admin/workbench/email-command-center/audiences?${q.toString()}`);
 }

@@ -87,7 +87,7 @@ export default async function GmailCalendarOAuthProofPage() {
         </p>
         <div className="mt-2">
           <Link
-            href="/admin/workbench/calendar"
+            href="/admin/workbench/calendar#google-calendar-live-preview"
             className="inline-flex rounded border border-sky-700/35 bg-sky-50 px-3 py-1.5 text-xs font-bold text-sky-950 hover:bg-sky-100"
           >
             Open Calendar workspace

@@ -36,6 +36,8 @@ import { CalendarHqFilterRail } from "@/components/admin/calendar-hq/CalendarHqF
 import { CalendarHqMainTabs, CalendarHqMonthNav } from "@/components/admin/calendar-hq/CalendarHqMainTabs";
 import { EventExecutionPanel } from "@/components/admin/calendar-hq/EventExecutionPanel";
 import { GoogleCalendarLivePreviewPanel } from "@/components/admin/calendar-hq/GoogleCalendarLivePreviewPanel";
+import { CalendarHqReadinessPanel } from "@/components/admin/calendar-hq/CalendarHqReadinessPanel";
+import { ImportedCalendarEventsPanel } from "@/components/admin/calendar-hq/ImportedCalendarEventsPanel";
 import { ensureExecutionChecklist, computeEventHealthScore } from "@/lib/calendar/event-intelligence";
 import { loadGoogleCalendarLivePreview } from "@/lib/calendar/google-calendar-read-preview";
 
@@ -106,6 +108,8 @@ export default async function CalendarHqPage({ searchParams }: Props) {
     if (m && /^\d{4}-\d{2}$/.test(m)) return m;
     return weekKey.slice(0, 7);
   })();
+
+  const previewSrcQ = sp.previewSrc?.trim() || undefined;
 
   const now = new Date();
   const from = new Date(now);
@@ -206,11 +210,18 @@ export default async function CalendarHqPage({ searchParams }: Props) {
 
   const googleLivePreview = await loadGoogleCalendarLivePreview({
     sources,
-    previewSourceId: sp.previewSrc?.trim() || null,
+    previewSourceId: previewSrcQ ?? null,
   });
 
   const eventHref = (eid: string, v: string) =>
-    `/admin/workbench/calendar?${calendarFiltersToSearchParams(filters, { week: weekKey, view: v, event: eid, q: matrixQ, month: v === "month" ? monthYm : undefined })}`;
+    `/admin/workbench/calendar?${calendarFiltersToSearchParams(filters, {
+      week: weekKey,
+      view: v,
+      event: eid,
+      q: matrixQ,
+      month: v === "month" ? monthYm : undefined,
+      previewSrc: previewSrcQ,
+    })}`;
 
   const byDayMonth = (() => {
     const m = new Map<string, typeof monthEvents>();
@@ -227,7 +238,13 @@ export default async function CalendarHqPage({ searchParams }: Props) {
       case "ribbon":
         return (
           <div className="min-h-0 min-w-0 flex-1">
-            <CalendarApprovalBoard weekKey={weekKey} filters={filters} matrixQ={matrixQ} eventId={eventId} />
+            <CalendarApprovalBoard
+              weekKey={weekKey}
+              filters={filters}
+              matrixQ={matrixQ}
+              eventId={eventId}
+              previewSrc={previewSrcQ}
+            />
           </div>
         );
       case "agenda":
@@ -339,7 +356,13 @@ export default async function CalendarHqPage({ searchParams }: Props) {
             Unknown view <code>{String(view)}</code>.{" "}
             <Link
               className="underline"
-              href={`/admin/workbench/calendar?${calendarFiltersToSearchParams(filters, { week: weekKey, view: "week", event: eventId, q: matrixQ })}`}
+              href={`/admin/workbench/calendar?${calendarFiltersToSearchParams(filters, {
+                week: weekKey,
+                view: "week",
+                event: eventId,
+                q: matrixQ,
+                previewSrc: previewSrcQ,
+              })}`}
             >
               Reset to week
             </Link>
@@ -360,6 +383,12 @@ export default async function CalendarHqPage({ searchParams }: Props) {
             <Link className="rounded border border-kelly-text/15 bg-white px-2 py-0.5 font-semibold" href="/admin/workbench">
               ← Workbench
             </Link>
+            <Link className="rounded border border-kelly-forest/30 bg-emerald-50/90 px-2 py-0.5 font-bold text-kelly-navy" href="/admin/workbench/cockpit">
+              Cockpit
+            </Link>
+            <Link className="rounded border border-kelly-navy/25 bg-white px-2 py-0.5 font-bold text-kelly-navy" href="/admin/workbench/calendar/requests">
+              Calendar requests
+            </Link>
             <Link className="rounded border border-kelly-text/15 bg-white px-2 py-0.5" href="/admin/events">
               All events
             </Link>
@@ -375,6 +404,9 @@ export default async function CalendarHqPage({ searchParams }: Props) {
 
       {sp.error ? <p className="px-2 py-1 text-xs text-red-800 md:px-3">Google: {sp.error}</p> : null}
       {sp.connected ? <p className="px-2 py-1 text-xs text-kelly-success md:px-3">Google Calendar connected.</p> : null}
+
+      <CalendarHqReadinessPanel />
+      <ImportedCalendarEventsPanel />
 
       <GoogleCalendarLivePreviewPanel
         preview={googleLivePreview}
@@ -400,12 +432,27 @@ export default async function CalendarHqPage({ searchParams }: Props) {
           </ul>
         </div>
       ) : null}
-      <CalendarHqActionBar filters={filters} weekKey={weekKey} view={view} eventId={eventId} matrixQ={matrixQ} />
+      <CalendarHqActionBar
+        filters={filters}
+        weekKey={weekKey}
+        view={view}
+        eventId={eventId}
+        matrixQ={matrixQ}
+        previewSrc={previewSrcQ}
+      />
 
       <div className="flex min-h-[min(100vh,1200px)] min-w-0 flex-1 flex-col xl:flex-row xl:items-stretch">
         <div className="shrink-0 border-b border-kelly-text/10 bg-kelly-wash/20 xl:w-[220px] xl:border-b-0 xl:border-r">
           <div className="p-1.5 xl:sticky xl:top-0 xl:max-h-screen xl:overflow-y-auto">
-            <CalendarHqMonthNav weekKey={weekKey} monthYm={monthYm} filters={filters} view={view} eventId={eventId} matrixQ={matrixQ} />
+            <CalendarHqMonthNav
+              weekKey={weekKey}
+              monthYm={monthYm}
+              filters={filters}
+              view={view}
+              eventId={eventId}
+              matrixQ={matrixQ}
+              previewSrc={previewSrcQ}
+            />
             <CalendarHqFilterRail
               filters={filters}
               weekKey={weekKey}
@@ -413,6 +460,7 @@ export default async function CalendarHqPage({ searchParams }: Props) {
               eventId={eventId}
               matrixQ={matrixQ}
               monthYm={monthYm}
+              previewSrc={previewSrcQ}
               counties={counties}
               sources={sources}
               owners={owners}
@@ -421,7 +469,15 @@ export default async function CalendarHqPage({ searchParams }: Props) {
         </div>
 
         <div className="flex min-w-0 min-h-0 flex-1 flex-col">
-          <CalendarHqMainTabs filters={filters} weekKey={weekKey} view={view} eventId={eventId} matrixQ={matrixQ} monthYm={monthYm} />
+          <CalendarHqMainTabs
+            filters={filters}
+            weekKey={weekKey}
+            view={view}
+            eventId={eventId}
+            matrixQ={matrixQ}
+            monthYm={monthYm}
+            previewSrc={previewSrcQ}
+          />
           {view === "week" ? (
             <CalendarCommandView
               weekKey={weekKey}
@@ -444,6 +500,7 @@ export default async function CalendarHqPage({ searchParams }: Props) {
               workflowRunsForEvent={workflowRuns}
               assignUsers={owners}
               executionReadiness={executionReadiness}
+              previewSrc={previewSrcQ}
             />
           ) : (
             <div className="grid min-h-0 min-w-0 flex-1 grid-cols-1 xl:grid-cols-[minmax(0,1fr)_minmax(280px,360px)] xl:divide-x xl:divide-kelly-text/10">
@@ -478,7 +535,13 @@ export default async function CalendarHqPage({ searchParams }: Props) {
                     <br />
                     <Link
                       className="mt-1 inline-block text-kelly-slate underline"
-                      href={`/admin/workbench/calendar?${calendarFiltersToSearchParams(filters, { week: weekKey, view: "week", event: null, q: matrixQ })}`}
+                      href={`/admin/workbench/calendar?${calendarFiltersToSearchParams(filters, {
+                        week: weekKey,
+                        view: "week",
+                        event: null,
+                        q: matrixQ,
+                        previewSrc: previewSrcQ,
+                      })}`}
                     >
                       Open dense week view →
                     </Link>

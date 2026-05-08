@@ -157,17 +157,32 @@ export async function CalendarApprovalBoard({
   filters,
   matrixQ,
   eventId,
+  previewSrc,
 }: {
   weekKey: string;
   filters: CalendarHqFilters;
   matrixQ: string | undefined;
   eventId: string | null;
+  previewSrc?: string | null;
 }) {
+  const previewQ = previewSrc?.trim() || undefined;
   const ribbon = await listEventsForWeekByRibbon(weekKey, filters);
   const q = (view: string, wk?: string) =>
-    calendarFiltersToSearchParams(filters, { week: wk ?? weekKey, view, event: eventId, q: matrixQ });
+    calendarFiltersToSearchParams(filters, {
+      week: wk ?? weekKey,
+      view,
+      event: eventId,
+      q: matrixQ,
+      previewSrc: previewQ,
+    });
   const toWeekEvent = (eid: string) =>
-    calendarFiltersToSearchParams(filters, { week: weekKey, view: "week", event: eid, q: matrixQ });
+    calendarFiltersToSearchParams(filters, {
+      week: weekKey,
+      view: "week",
+      event: eid,
+      q: matrixQ,
+      previewSrc: previewQ,
+    });
   return (
     <div className="w-full min-w-0 max-w-[1920px] flex-1 flex-col p-1 md:p-2">
       <div className="mb-1 flex flex-wrap items-center justify-between gap-1">

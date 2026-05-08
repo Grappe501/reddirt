@@ -58,6 +58,11 @@ model User {
   communicationCampaignRecipients     CommunicationCampaignRecipient[]
   /// Staff “human” Gmail rail (at most one linked mailbox; OAuth in `StaffGmailAccount`).
   staffGmailAccount                   StaffGmailAccount?
+  /// Communication intelligence ingest — mailbox used for Gmail pulls.
+  externalIngestRunsAsMailbox         ExternalIngestRun[]                 @relation("ExternalIngestStaffMailbox")
+  externalIngestRunsRequested        ExternalIngestRun[]                 @relation("ExternalIngestRequestedBy")
+  communicationMatchCandidatesReviewed CommunicationProfileMatchCandidate[] @relation("CommunicationMatchReviewer")
+  gmailMessageRecordsOwned            GmailMessageRecord[]                @relation("GmailMessageStaffUser")
   workflowIntakesAssigned             WorkflowIntake[]                    @relation("WorkflowIntakeAssignee")
   workflowActionsPerformed            WorkflowAction[]                    @relation("WorkflowActionActor")
   socialContentItemsAuthored          SocialContentItem[]                 @relation("SocialContentAuthor")
@@ -2743,6 +2748,7 @@ model VoterRecord {
   voterInteractions         VoterInteraction[]
   voterVotePlans            VoterVotePlan[]
   relationalContacts        RelationalContact[]
+  communicationIdentities CommunicationIdentity[]
   /// Optional per-contest participation from vendor / import (not vote choice).
   electionParticipations    VoterElectionParticipation[]
 
@@ -2896,6 +2902,7 @@ model RelationalContact {
   voterInteractions    VoterInteraction[]
   voterSignals         VoterSignal[]
   emailContactProfiles EmailContactProfile[]
+  communicationIdentities CommunicationIdentity[]
 
   @@index([ownerUserId])
   @@index([matchedVoterRecordId])
@@ -3304,6 +3311,8 @@ model CampaignEvent {
   communicationPlansSourced               CommunicationPlan[]         @relation("CommsPlanSourceEvent")
   /// FIN-1: optional cost attribution to this event.
   financialTransactions                   FinancialTransaction[]
+  /// Rows from Google Calendar list ingest linked to this campaign event (operator-reviewed).
+  googleCalendarEventRecords              GoogleCalendarEventRecord[]     @relation("GoogleCalendarEventCampaignLink")
 
   @@index([startAt, status])
   @@index([countyId, startAt])
@@ -4783,6 +4792,11 @@ model EmailContactProfile {
   importRowsCommitted  EmailContactImportRow[]             @relation("ImportRowCommittedProfile")
   /// EMAIL-SEND-EXECUTION-1.0 — optional recipient linkage for audit.
   emailSendRecipients  EmailSendRecipient[]
+  /// Communication intelligence — optional graph link (never auto-send).
+  communicationIdentities              CommunicationIdentity[]
+  gmailMessageParticipantLinks         GmailMessageParticipant[]
+  googleContactRecordLinks             GoogleContactRecord[]
+  googleCalendarEventParticipantLinks  GoogleCalendarEventParticipant[]
 
   @@index([userId])
   @@index([volunteerProfileId])
@@ -5669,6 +5683,347 @@ model StaffGmailAccount {
   @@schema("public")
 }
 
+/// Communication Intelligence — bounded ingest of Gmail / People / Calendar reads (no sends, no external writes).
+enum ExternalIngestSource {
+  GMAIL_MESSAGES
+  GOOGLE_CONTACTS
+  GOOGLE_CALENDAR_EVENTS
+
+  @@schema("public")
+}
+
+enum ExternalIngestRunStatus {
+  DRAFT
+  PREVIEWED
+  RUNNING
+  COMPLETED
+  FAILED
+  CANCELED
+
+  @@schema("public")
+}
+
+enum ExternalIngestRunMode {
+  PREVIEW
+  IMPORT
+  INCREMENTAL
+
+  @@schema("public")
+}
+
+enum GmailMessageParticipantRole {
+  FROM
+  TO
+  CC
+  BCC
+  REPLY_TO
+
+  @@schema("public")
+}
+
+enum CommunicationIdentityReviewStatus {
+  AUTO_LINKED
+  NEEDS_REVIEW
+  POSSIBLE_DUPLICATE
+  SUPPRESSED
+  IGNORED
+
+  @@schema("public")
+}
+
+enum CommunicationIdentitySignalSource {
+  GMAIL_MESSAGE
+  GOOGLE_CONTACT
+  GOOGLE_CALENDAR_EVENT
+  FORM_INTAKE
+  SENDGRID_EVENT
+  MANUAL
+
+  @@schema("public")
+}
+
+enum CommunicationMatchTargetType {
+  EMAIL_CONTACT_PROFILE
+  RELATIONAL_CONTACT
+  VOTER_RECORD
+
+  @@schema("public")
+}
+
+enum CommunicationMatchCandidateStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  MERGED
+
+  @@schema("public")
+}
+
+enum GoogleContactSourceKind {
+  CONTACT
+  OTHER_CONTACT
+  DIRECTORY
+
+  @@schema("public")
+}
+
+enum GoogleCalendarEventParticipantRole {
+  ORGANIZER
+  CREATOR
+  ATTENDEE
+
+  @@schema("public")
+}
+
+model ExternalIngestRun {
+  id                   String                  @id @default(cuid())
+  source               ExternalIngestSource
+  providerAccountEmail String?               @db.VarChar(320)
+  staffUserId          String?
+  staffUser            User?                   @relation("ExternalIngestStaffMailbox", fields: [staffUserId], references: [id], onDelete: SetNull)
+  requestedByUserId    String?
+  requestedBy          User?                   @relation("ExternalIngestRequestedBy", fields: [requestedByUserId], references: [id], onDelete: SetNull)
+  status               ExternalIngestRunStatus @default(DRAFT)
+  mode                 ExternalIngestRunMode
+  startedAt            DateTime?
+  completedAt          DateTime?
+  failedAt             DateTime?
+  errorSummary         String?                 @db.Text
+  cursorJson           Json?
+  statsJson            Json                    @default("{}")
+  configJson           Json                    @default("{}")
+  createdAt            DateTime                @default(now())
+  updatedAt            DateTime                @updatedAt
+
+  gmailMessages        GmailMessageRecord[]
+  googleContacts       GoogleContactRecord[]
+  googleCalendarEvents GoogleCalendarEventRecord[]
+
+  @@index([source, status, createdAt])
+  @@index([staffUserId])
+  @@schema("public")
+}
+
+model GmailMessageRecord {
+  id                    String   @id @default(cuid())
+  googleMessageId       String   @db.VarChar(180)
+  googleThreadId        String?  @db.VarChar(180)
+  historyId             String?  @db.VarChar(64)
+  internalDate          DateTime?
+  sentAt                DateTime?
+  subject               String?  @db.Text
+  snippet               String?  @db.Text
+  labelIdsJson          Json     @default("[]")
+  fromText              String?  @db.Text
+  toText                String?  @db.Text
+  ccText                String?  @db.Text
+  bccText               String?  @db.Text
+  replyToText           String?  @db.Text
+  bodyText              String?  @db.Text
+  bodyHtml              String?  @db.Text
+  bodyHash              String?  @db.VarChar(128)
+  hasAttachments        Boolean  @default(false)
+  attachmentCount       Int      @default(0)
+  sizeEstimate          Int?
+  providerAccountEmail  String?  @db.VarChar(320)
+  staffUserId           String?
+  staffUser             User?    @relation("GmailMessageStaffUser", fields: [staffUserId], references: [id], onDelete: SetNull)
+  ingestRunId           String?
+  ingestRun             ExternalIngestRun? @relation(fields: [ingestRunId], references: [id], onDelete: SetNull)
+  rawHeadersJson        Json?
+  normalizedPayloadJson Json?
+  bodyStorageMode       String   @default("METADATA_ONLY") @db.VarChar(64)
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  participants GmailMessageParticipant[]
+
+  @@unique([staffUserId, googleMessageId])
+  @@index([ingestRunId])
+  @@index([staffUserId, internalDate])
+  @@schema("public")
+}
+
+model GmailMessageParticipant {
+  id                      String                   @id @default(cuid())
+  gmailMessageRecordId    String
+  gmailMessageRecord      GmailMessageRecord       @relation(fields: [gmailMessageRecordId], references: [id], onDelete: Cascade)
+  role                    GmailMessageParticipantRole
+  email                   String                   @db.VarChar(320)
+  displayName             String?                  @db.VarChar(500)
+  domain                  String?                  @db.VarChar(200)
+  normalizedEmail         String                   @db.VarChar(320)
+  profileLinkStatus       String                   @default("UNLINKED") @db.VarChar(64)
+  emailContactProfileId   String?
+  emailContactProfile     EmailContactProfile?     @relation(fields: [emailContactProfileId], references: [id], onDelete: SetNull)
+  communicationIdentityId String?
+  communicationIdentity CommunicationIdentity?   @relation(fields: [communicationIdentityId], references: [id], onDelete: SetNull)
+  createdAt               DateTime                 @default(now())
+
+  @@index([normalizedEmail])
+  @@index([gmailMessageRecordId])
+  @@schema("public")
+}
+
+model GoogleContactRecord {
+  id                   String               @id @default(cuid())
+  googleResourceName   String               @unique @db.VarChar(512)
+  etag                 String?              @db.VarChar(180)
+  displayName          String?              @db.VarChar(500)
+  givenName            String?              @db.VarChar(200)
+  familyName           String?              @db.VarChar(200)
+  primaryEmail         String?              @db.VarChar(320)
+  emailsJson           Json                 @default("[]")
+  phonesJson           Json                 @default("[]")
+  addressesJson        Json                 @default("[]")
+  organizationsJson    Json                 @default("[]")
+  biographiesJson      Json?
+  membershipsJson      Json?
+  sourceType           GoogleContactSourceKind @default(CONTACT)
+  providerAccountEmail String?              @db.VarChar(320)
+  ingestRunId          String?
+  ingestRun            ExternalIngestRun?   @relation(fields: [ingestRunId], references: [id], onDelete: SetNull)
+  communicationIdentityId String?
+  communicationIdentity CommunicationIdentity? @relation(fields: [communicationIdentityId], references: [id], onDelete: SetNull)
+  emailContactProfileId String?
+  emailContactProfile   EmailContactProfile? @relation(fields: [emailContactProfileId], references: [id], onDelete: SetNull)
+  createdAt            DateTime             @default(now())
+  updatedAt            DateTime             @updatedAt
+
+  @@index([primaryEmail])
+  @@index([ingestRunId])
+  @@schema("public")
+}
+
+model GoogleCalendarEventRecord {
+  id                   String         @id @default(cuid())
+  calendarSourceId     String
+  calendarSource       CalendarSource @relation(fields: [calendarSourceId], references: [id], onDelete: Cascade)
+  googleEventId        String         @db.VarChar(180)
+  recurringEventId     String?        @db.VarChar(180)
+  iCalUID              String?        @db.VarChar(500)
+  status               String?        @db.VarChar(64)
+  summary              String?        @db.Text
+  description          String?        @db.Text
+  location             String?        @db.Text
+  organizerEmail       String?        @db.VarChar(320)
+  creatorEmail         String?        @db.VarChar(320)
+  startAt              DateTime?
+  endAt                DateTime?
+  allDay               Boolean        @default(false)
+  timezone             String?        @db.VarChar(120)
+  attendeesJson        Json?
+  conferenceDataJson   Json?
+  recurrenceJson       Json?
+  visibility           String?        @db.VarChar(64)
+  htmlLink             String?        @db.Text
+  updatedGoogleAt      DateTime?
+  providerAccountEmail   String?        @db.VarChar(320)
+  ingestRunId          String?
+  ingestRun            ExternalIngestRun? @relation(fields: [ingestRunId], references: [id], onDelete: SetNull)
+  campaignEventId      String?
+  campaignEvent        CampaignEvent? @relation("GoogleCalendarEventCampaignLink", fields: [campaignEventId], references: [id], onDelete: SetNull)
+  privacyRedacted      Boolean        @default(false)
+  createdAt            DateTime       @default(now())
+  updatedAt            DateTime       @updatedAt
+
+  participants GoogleCalendarEventParticipant[]
+
+  @@unique([calendarSourceId, googleEventId])
+  @@index([startAt])
+  @@index([ingestRunId])
+  @@schema("public")
+}
+
+model GoogleCalendarEventParticipant {
+  id                        String                         @id @default(cuid())
+  googleCalendarEventRecordId String
+  googleCalendarEventRecord GoogleCalendarEventRecord      @relation(fields: [googleCalendarEventRecordId], references: [id], onDelete: Cascade)
+  role                      GoogleCalendarEventParticipantRole
+  email                     String                         @db.VarChar(320)
+  displayName               String?                        @db.VarChar(500)
+  responseStatus            String?                        @db.VarChar(64)
+  optional                  Boolean?
+  normalizedEmail           String                         @db.VarChar(320)
+  communicationIdentityId   String?
+  communicationIdentity     CommunicationIdentity?         @relation(fields: [communicationIdentityId], references: [id], onDelete: SetNull)
+  emailContactProfileId     String?
+  emailContactProfile       EmailContactProfile?           @relation(fields: [emailContactProfileId], references: [id], onDelete: SetNull)
+  createdAt                 DateTime                       @default(now())
+
+  @@index([normalizedEmail])
+  @@index([googleCalendarEventRecordId])
+  @@schema("public")
+}
+
+model CommunicationIdentity {
+  id                    String                           @id @default(cuid())
+  primaryEmail          String?                          @db.VarChar(320)
+  normalizedEmail       String?                          @unique @db.VarChar(320)
+  displayName           String?                          @db.VarChar(500)
+  firstName             String?                          @db.VarChar(200)
+  lastName              String?                          @db.VarChar(200)
+  primaryPhone          String?                          @db.VarChar(64)
+  normalizedPhone       String?                          @db.VarChar(64)
+  county                String?                          @db.VarChar(120)
+  city                  String?                          @db.VarChar(120)
+  sourceSummaryJson     Json                             @default("{}")
+  confidenceScore       Float?
+  reviewStatus          CommunicationIdentityReviewStatus @default(NEEDS_REVIEW)
+  emailContactProfileId String?
+  emailContactProfile   EmailContactProfile?             @relation(fields: [emailContactProfileId], references: [id], onDelete: SetNull)
+  relationalContactId   String?
+  relationalContact     RelationalContact?               @relation(fields: [relationalContactId], references: [id], onDelete: SetNull)
+  voterRecordId         String?
+  voterRecord           VoterRecord?                     @relation(fields: [voterRecordId], references: [id], onDelete: SetNull)
+  createdAt             DateTime                         @default(now())
+  updatedAt             DateTime                         @updatedAt
+
+  gmailParticipants          GmailMessageParticipant[]
+  googleContacts               GoogleContactRecord[]
+  calendarParticipants         GoogleCalendarEventParticipant[]
+  signals                      CommunicationIdentitySignal[]
+  matchCandidates              CommunicationProfileMatchCandidate[]
+
+  @@index([reviewStatus])
+  @@schema("public")
+}
+
+model CommunicationIdentitySignal {
+  id                      String                         @id @default(cuid())
+  communicationIdentityId String
+  communicationIdentity   CommunicationIdentity          @relation(fields: [communicationIdentityId], references: [id], onDelete: Cascade)
+  source                  CommunicationIdentitySignalSource
+  signalType              String                         @db.VarChar(120)
+  value                   String                         @db.Text
+  confidence              Float?
+  evidenceJson            Json                           @default("{}")
+  approvedForAudienceUse  Boolean                        @default(false)
+  createdAt               DateTime                       @default(now())
+
+  @@index([communicationIdentityId])
+  @@schema("public")
+}
+
+model CommunicationProfileMatchCandidate {
+  id                      String                           @id @default(cuid())
+  communicationIdentityId String
+  communicationIdentity   CommunicationIdentity            @relation(fields: [communicationIdentityId], references: [id], onDelete: Cascade)
+  targetType              CommunicationMatchTargetType
+  targetId                String                           @db.VarChar(64)
+  confidence              Float
+  reasonsJson             Json                             @default("{}")
+  status                  CommunicationMatchCandidateStatus @default(PENDING)
+  reviewedByUserId        String?
+  reviewedBy              User?                            @relation("CommunicationMatchReviewer", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
+  reviewedAt              DateTime?
+  createdAt               DateTime                         @default(now())
+  updatedAt               DateTime                         @updatedAt
+
+  @@index([communicationIdentityId, status])
+  @@schema("public")
+}
+
 // --- Calendar HQ / Google Calendar (CampaignOS) ---
 
 model CalendarSource {
@@ -5702,6 +6057,8 @@ model CalendarSource {
   events        CampaignEvent[]
   watchChannels CalendarWatchChannel[]
   syncLogs      EventSyncLog[]         @relation("EventSyncBySource")
+  /// Historical / future events ingested via Communication Intelligence (read-only ingest).
+  googleCalendarIngestEvents GoogleCalendarEventRecord[]
 
   @@index([sourceType, isActive, syncEnabled])
   @@index([isPublicFacing, isActive, syncEnabled])

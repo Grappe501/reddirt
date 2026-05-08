@@ -124,6 +124,22 @@ export function AdminBoardShell({ children }: { children: ReactNode }) {
                 >
                   Coordination hub (live) ↗
                 </a>
+                <a
+                  href={`${countyPortal}/counties/regions/central-arkansas`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded-md px-3 py-2.5 font-body text-sm font-medium text-kelly-page/90 transition hover:bg-kelly-page/10 hover:text-kelly-page"
+                >
+                  Central region · workbench ↗
+                </a>
+                <a
+                  href={`${countyPortal}/regions`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded-md px-3 py-2.5 font-body text-sm font-medium text-kelly-page/90 transition hover:bg-kelly-page/10 hover:text-kelly-page"
+                >
+                  Arkansas regions (map) ↗
+                </a>
               </div>
             ) : null}
           </div>

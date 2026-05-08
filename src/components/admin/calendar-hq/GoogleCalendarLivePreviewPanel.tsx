@@ -46,7 +46,11 @@ export function GoogleCalendarLivePreviewPanel(p: Props) {
   const activePreviewSrc = selectedPreviewSourceId(preview);
 
   return (
-    <section className={`${card} mx-2 my-2 md:mx-3`} aria-labelledby="google-calendar-live-preview-heading">
+    <section
+      id="google-calendar-live-preview"
+      className={`${card} mx-2 my-2 md:mx-3 scroll-mt-20`}
+      aria-labelledby="google-calendar-live-preview-heading"
+    >
       <h2 id="google-calendar-live-preview-heading" className={h2}>
         Google Calendar — live read-only preview
       </h2>
