@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { adminLogoutAction } from "@/app/admin/actions";
 import { CampaignPaidForBar } from "@/components/layout/CampaignPaidForBar";
+import { getCountyWorkbenchPortalUrl } from "@/lib/county/county-workbench-portal-url";
 
 const siteLinks: { href: string; label: string }[] = [
   { href: "/admin/content", label: "Overview" },
@@ -64,6 +65,8 @@ const orchestratorLinks: { href: string; label: string }[] = [
 ];
 
 export function AdminBoardShell({ children }: { children: ReactNode }) {
+  const countyPortal = getCountyWorkbenchPortalUrl();
+
   return (
     <div className="flex min-h-screen bg-transparent text-kelly-text">
       <aside className="flex w-[min(100%,280px)] flex-col border-r border-kelly-text/15 bg-kelly-text text-kelly-page">
@@ -108,6 +111,21 @@ export function AdminBoardShell({ children }: { children: ReactNode }) {
                 </Link>
               ))}
             </div>
+            {countyPortal ? (
+              <div className="mt-2 border-t border-kelly-page/10 pt-2">
+                <p className="px-3 pb-1 font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-page/45">
+                  County portal
+                </p>
+                <a
+                  href={`${countyPortal}/counties`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded-md px-3 py-2.5 font-body text-sm font-medium text-kelly-page/90 transition hover:bg-kelly-page/10 hover:text-kelly-page"
+                >
+                  Coordination hub (live) ↗
+                </a>
+              </div>
+            ) : null}
           </div>
           <div>
             <p className="px-3 pb-1 font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-page/45">

@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import { saveCountyCommandPageAction } from "@/app/admin/county-admin-actions";
-import { requireAdminAction } from "@/app/admin/owned-media-auth";
 import { prisma } from "@/lib/db";
 import { CountyContentReviewStatus, PublicDemographicsSource } from "@prisma/client";
 
@@ -19,7 +18,6 @@ const sourceOptions = Object.values(PublicDemographicsSource);
 export default async function AdminCountyEditPage({ params, searchParams }: Props) {
   const { slug } = await params;
   const { saved } = await searchParams;
-  await requireAdminAction();
   const c = await prisma.county.findFirst({
     where: { slug },
     include: {
