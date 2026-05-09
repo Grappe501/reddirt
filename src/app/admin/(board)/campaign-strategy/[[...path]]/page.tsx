@@ -40,6 +40,11 @@ export default async function CampaignStrategyCatchAllPage({ params, searchParam
     );
   }
 
+  /** Unknown slug (not in manifest) — avoid falling through to TS registry and a generic 404. */
+  if (loaded.kind === "absent") {
+    notFound();
+  }
+
   const doc = getStrategyDoc(key);
   if (!doc) notFound();
   return <StrategyArticle doc={doc} pathKey={key} />;

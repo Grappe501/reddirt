@@ -142,6 +142,21 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  /**
+   * `readFile` under `docs/` and `campaign-system-manual/` is not always discovered by the server
+   * dependency tracer. Without this, Netlify/Vercel serverless bundles can miss Markdown at runtime
+   * (broken reader / chunk APIs). Keys are request path globs per Next.js `outputFileTracingIncludes`.
+   */
+  outputFileTracingIncludes: {
+    "/admin/**/*": [
+      "./docs/kelly-grappe-sos-strategic-plan-manual/**/*",
+      "./campaign-system-manual/**/*",
+    ],
+    "/api/admin/campaign-strategy/**/*": [
+      "./docs/kelly-grappe-sos-strategic-plan-manual/**/*",
+      "./campaign-system-manual/**/*",
+    ],
+  },
   // pdf-parse must stay external: its test harness references missing test/ PDFs and breaks the bundler.
   serverExternalPackages: ["@prisma/client", "pdf-parse"],
 };
