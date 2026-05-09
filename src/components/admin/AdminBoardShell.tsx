@@ -25,6 +25,7 @@ const siteLinks: { href: string; label: string }[] = [
 
 const operationsLinks: { href: string; label: string }[] = [
   { href: "/admin/ask-kelly", label: "Ask Kelly / onboarding" },
+  { href: "/admin/campaign-strategy", label: "Campaign strategy" },
   { href: "/admin/workbench", label: "Campaign workbench" },
   { href: "/admin/workbench/email-command-center", label: "Communication Command Center" },
   { href: "/admin/workbench/ask-kelly-beta", label: "Ask Kelly (beta) triage" },

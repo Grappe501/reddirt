@@ -78,6 +78,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) and [docs/deployment.md](./docs/deploym
 
 ## Docs
 
+- [docs/kelly-grappe-sos-strategic-plan-manual/README.md](./docs/kelly-grappe-sos-strategic-plan-manual/README.md) — **Kelly Grappe for SOS** integrated strategic plan manual (programs + KPIs + RedDirt / county workbench audit)
 - [docs/quick-start.md](./docs/quick-start.md) — launcher details
 - [docs/deployment.md](./docs/deployment.md) — Netlify & production
 - [docs/decisions/](./docs/decisions/) — architecture ADRs

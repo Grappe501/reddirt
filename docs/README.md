@@ -9,6 +9,7 @@ This folder is the **source of truth** for vision, philosophy, brand, and how th
 | You need… | Open… |
 |-----------|--------|
 | **New thread or engineer — orientation stack (in order)** | (1) [`THREAD_HANDOFF_MASTER_MAP.md`](THREAD_HANDOFF_MASTER_MAP.md) · (2) [`BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`](BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md) — **check division balance (DIV-OPS-1)** · (3) [`DIVISION_MASTER_REGISTRY.md`](DIVISION_MASTER_REGISTRY.md) — **before** next packet · (4) [`PROJECT_MASTER_MAP.md`](PROJECT_MASTER_MAP.md) (ledger **aligned** with registry) |
+| **Kelly Grappe SOS — integrated campaign strategy + RedDirt / county workbench audit** | [`kelly-grappe-sos-strategic-plan-manual/README.md`](kelly-grappe-sos-strategic-plan-manual/README.md) |
 | **Division list + L0–L5 + balance (DIV-OPS-1)** | [`DIVISION_MASTER_REGISTRY.md`](DIVISION_MASTER_REGISTRY.md) (must match [`PROJECT_MASTER_MAP.md`](PROJECT_MASTER_MAP.md) **Blueprint Progress Ledger**) |
 | Why we exist and how we think | [`philosophy/`](philosophy/README.md) |
 | Public narrative & manifesto | [`narrative/`](narrative/README.md) |
