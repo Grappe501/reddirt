@@ -24,6 +24,46 @@ export type VolunteerResourcePublicationStatus =
   | "approved"
   | "published";
 
+/** Ernie polish / review pipeline — required before any binary download ships. */
+export type ErnieReviewStatus =
+  | "not_started"
+  | "needs_document_build"
+  | "ready_for_ernie"
+  | "in_ernie_review"
+  | "revision_needed"
+  | "ernie_approved";
+
+export type VolunteerResourceMockupStatus =
+  | "not_started"
+  | "draft_needed"
+  | "mockup_ready"
+  | "approved_mockup";
+
+export type CampaignApprovalStatus = "not_started" | "pending" | "approved" | "rejected";
+
+export const ERNIE_REVIEW_LABELS: Record<ErnieReviewStatus, string> = {
+  not_started: "Not started",
+  needs_document_build: "Needs document build",
+  ready_for_ernie: "Ready for Ernie",
+  in_ernie_review: "In Ernie review",
+  revision_needed: "Revision needed",
+  ernie_approved: "Ernie approved",
+};
+
+export const MOCKUP_STATUS_LABELS: Record<VolunteerResourceMockupStatus, string> = {
+  not_started: "Not started",
+  draft_needed: "Draft needed",
+  mockup_ready: "Mockup ready",
+  approved_mockup: "Mockup approved",
+};
+
+export const CAMPAIGN_APPROVAL_LABELS: Record<CampaignApprovalStatus, string> = {
+  not_started: "Not started",
+  pending: "Pending",
+  approved: "Approved",
+  rejected: "Rejected",
+};
+
 export type VolunteerResourceCategory = {
   id: VolunteerResourceCategoryId;
   title: string;
@@ -115,6 +155,15 @@ export type VolunteerResource = {
    * (PDFs default to draft when comingSoon; web pages default to published when not comingSoon).
    */
   publicationStatus?: VolunteerResourcePublicationStatus;
+  /**
+   * When true (default for PDFs), direct download is blocked until Ernie + campaign + on-disk file gates pass.
+   * Set false only for rare exceptions documented in production notes.
+   */
+  ernieReviewRequired?: boolean;
+  ernieReviewStatus?: ErnieReviewStatus;
+  mockupStatus?: VolunteerResourceMockupStatus;
+  campaignApprovalStatus?: CampaignApprovalStatus;
+  productionNotes?: string;
 };
 
 export const VOLUNTEER_RESOURCE_PUBLICATION_LABELS: Record<VolunteerResourcePublicationStatus, string> = {

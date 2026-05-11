@@ -35,6 +35,7 @@ function ResourceRow({ resource }: { resource: VolunteerResource }) {
       <span className="font-body text-xs text-kelly-text/55">{resource.fileSize}</span>
     ) : null;
 
+  const showReviewPipeline = isDownloadAsset || resource.comingSoon || Boolean(resource.productionNotes);
   const body = (
     <>
       <div className="flex flex-wrap items-start justify-between gap-2">
@@ -60,6 +61,35 @@ function ResourceRow({ resource }: { resource: VolunteerResource }) {
         <p className="mt-2 rounded-lg border border-kelly-gold/35 bg-kelly-gold/[0.08] px-3 py-2 font-body text-xs font-medium text-kelly-deep">
           {pres.reviewNote}
         </p>
+      ) : null}
+      {showReviewPipeline ? (
+        <details className="mt-3 rounded-lg border border-kelly-text/10 bg-kelly-fog/40 px-3 py-2 font-body text-xs text-kelly-text/85">
+          <summary className="cursor-pointer font-semibold text-kelly-navy">Review status (Ernie + campaign)</summary>
+          <dl className="mt-2 grid gap-1.5 sm:grid-cols-2">
+            <div>
+              <dt className="text-[10px] font-bold uppercase tracking-wide text-kelly-text/50">Ernie</dt>
+              <dd>{pres.ernieReviewLabel}</dd>
+            </div>
+            <div>
+              <dt className="text-[10px] font-bold uppercase tracking-wide text-kelly-text/50">Campaign</dt>
+              <dd>{pres.campaignApprovalLabel}</dd>
+            </div>
+            <div>
+              <dt className="text-[10px] font-bold uppercase tracking-wide text-kelly-text/50">Mockup</dt>
+              <dd>{pres.mockupStatusLabel}</dd>
+            </div>
+            {isDownloadAsset && pres.publicFileOnDisk !== null ? (
+              <div>
+                <dt className="text-[10px] font-bold uppercase tracking-wide text-kelly-text/50">File on site</dt>
+                <dd>{pres.publicFileOnDisk ? "Uploaded" : "Not uploaded yet"}</dd>
+              </div>
+            ) : null}
+          </dl>
+          {pres.downloadGatesNote ? <p className="mt-2 text-[11px] text-kelly-deep/90">{pres.downloadGatesNote}</p> : null}
+          {resource.productionNotes ? (
+            <p className="mt-2 border-t border-kelly-text/10 pt-2 text-[11px] text-kelly-text/70">{resource.productionNotes}</p>
+          ) : null}
+        </details>
       ) : null}
       {!pres.allowDirectFileDownload && resource.fileType === "PDF" ? (
         <p className="mt-2 font-mono text-[10px] leading-snug text-kelly-text/40">Planned file: {resource.href}</p>
@@ -124,17 +154,18 @@ function ResourceLibraryIntro() {
             Resource quality & downloads
           </h2>
           <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/85">
-            Printable files and polished downloads go through campaign review before they are released. Web guides (field
-            playbook, email shells) can update continuously. Every card shows a{" "}
-            <span className="font-semibold text-kelly-deep">status</span> so nothing rough ships as “final.”
+            Printable files and polished downloads go through <span className="font-semibold text-kelly-deep">Ernie</span> for
+            mockup polish, then campaign approval, then upload. Web guides (field playbook, email shells) can update continuously.
+            Every card shows a <span className="font-semibold text-kelly-deep">status</span>; PDFs only become direct downloads
+            when every gate clears.
           </p>
           <ol className="mt-4 list-decimal space-y-1.5 pl-5 font-body text-sm text-kelly-text/85">
             <li>Content drafted</li>
             <li>Visual mockup created</li>
-            <li>Reviewed by campaign</li>
-            <li>Revised</li>
-            <li>Approved</li>
-            <li>Published (downloads only when truly ready)</li>
+            <li>Ernie review & polish</li>
+            <li>Campaign approval</li>
+            <li>File uploaded to the site</li>
+            <li>Published (direct download enabled only when all gates clear)</li>
           </ol>
           <p className="mt-4 font-body text-sm font-semibold text-kelly-deep">
             Download coming after campaign review — applies to any PDF or handout not yet Published.

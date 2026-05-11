@@ -16,7 +16,7 @@ export default function VolunteerResourcesPage() {
       <PageHero
         eyebrow="Volunteers"
         title="Volunteer Resource Library"
-        subtitle="Orientation tools, lane guides, and printables — with clear status on every item. PDFs and handouts stay non-downloadable until the campaign marks them Published; web pages can update anytime."
+        subtitle="Orientation tools, lane guides, and printables — with clear status on every item. PDFs stay non-downloadable until Published, Ernie polish, campaign approval, and an uploaded file; web pages can update anytime."
       >
         <Button href="/volunteer/resources/glossary" variant="outline">
           Glossary
