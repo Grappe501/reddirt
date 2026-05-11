@@ -1,4 +1,22 @@
 -- Communication Intelligence ingest — Gmail / People / Calendar read models (no sends, no Google writes).
+-- Supabase / multi-schema: FK targets resolve against search_path; keep public explicit.
+SET search_path TO public;
+
+-- Defensive: if `_prisma_migrations` ever advanced without `20260421120000_init` applying (repair / wrong DB),
+-- creating canonical public."User" here lets FKs succeed. No-op when the table already exists.
+CREATE TABLE IF NOT EXISTS "User" (
+    "id" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "name" TEXT,
+    "phone" TEXT,
+    "zip" TEXT,
+    "county" TEXT,
+    "interests" TEXT[] DEFAULT ARRAY[]::TEXT[],
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+);
+CREATE UNIQUE INDEX IF NOT EXISTS "User_email_key" ON "User"("email");
 
 CREATE TYPE "ExternalIngestSource" AS ENUM ('GMAIL_MESSAGES', 'GOOGLE_CONTACTS', 'GOOGLE_CALENDAR_EVENTS');
 CREATE TYPE "ExternalIngestRunStatus" AS ENUM ('DRAFT', 'PREVIEWED', 'RUNNING', 'COMPLETED', 'FAILED', 'CANCELED');
