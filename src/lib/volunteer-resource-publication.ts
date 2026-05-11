@@ -154,6 +154,10 @@ export function presentVolunteerResource(resource: VolunteerResource): Volunteer
   if (allowDirectFileDownload && localPdfTarget(resource.href)) {
     allowDirectFileDownload = Boolean(publicFileOnDisk);
   }
+  if (allowDirectFileDownload && downloadish && !localPdfTarget(resource.href)) {
+    // Only `/…/*.pdf` under `public/` may be direct-downloaded; external PDFs need explicit product support.
+    allowDirectFileDownload = false;
+  }
 
   const gateParts: string[] = [];
   if (downloadish && localPdfTarget(resource.href) && publicFileOnDisk === false) {
