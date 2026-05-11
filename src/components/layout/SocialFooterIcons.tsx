@@ -54,8 +54,16 @@ export function SocialGlyph({ id }: { id: PublicSocialId }) {
   }
 }
 
-export function SocialFooterIcons({ className }: { className?: string }) {
+export function SocialFooterIcons({
+  className,
+  surface = "dark",
+}: {
+  className?: string;
+  /** `dark` = navy footer band (default). `light` = dashboard / pale panels. */
+  surface?: "dark" | "light";
+}) {
   const links = getPublicSocialLinks();
+  const isLight = surface === "light";
 
   return (
     <ul className={cn("flex flex-wrap items-center gap-2 sm:gap-3", className)}>
@@ -69,9 +77,11 @@ export function SocialFooterIcons({ className }: { className?: string }) {
               rel={isMailto ? undefined : "noopener noreferrer"}
               aria-label={item.label}
               className={cn(
-                "flex h-11 w-11 items-center justify-center rounded-full border border-kelly-page/20 bg-kelly-page/5",
-                "text-kelly-page/85 transition hover:border-kelly-gold/50 hover:bg-kelly-page/10 hover:text-kelly-gold",
+                "flex h-9 w-9 items-center justify-center rounded-full border transition sm:h-10 sm:w-10",
                 "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold",
+                isLight
+                  ? "border-kelly-navy/15 bg-white text-kelly-navy hover:border-kelly-gold/60 hover:bg-kelly-fog/50"
+                  : "border-kelly-page/20 bg-kelly-page/5 text-kelly-page/85 hover:border-kelly-gold/50 hover:bg-kelly-page/10 hover:text-kelly-gold",
               )}
             >
               <SocialGlyph id={item.id} />
