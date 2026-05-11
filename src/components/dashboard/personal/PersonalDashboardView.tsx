@@ -38,6 +38,10 @@ export function PersonalDashboardView() {
           <Link className="text-kelly-slate underline" href="/dashboard/leader">
             Leadership preview
           </Link>
+          {" · "}
+          <Link className="text-kelly-slate underline" href="/dashboard">
+            Volunteer OS (new)
+          </Link>
         </p>
         <h1 className="font-heading mt-3 text-3xl font-bold text-kelly-navy md:text-4xl">Volunteer preview</h1>
         <p className="mt-2 max-w-3xl text-sm text-kelly-text/75">
