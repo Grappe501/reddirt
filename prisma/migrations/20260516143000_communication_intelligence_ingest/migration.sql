@@ -233,37 +233,108 @@ CREATE TABLE "CommunicationProfileMatchCandidate" (
     CONSTRAINT "CommunicationProfileMatchCandidate_pkey" PRIMARY KEY ("id")
 );
 
--- FKs
-ALTER TABLE "ExternalIngestRun" ADD CONSTRAINT "ExternalIngestRun_staffUserId_fkey" FOREIGN KEY ("staffUserId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-ALTER TABLE "ExternalIngestRun" ADD CONSTRAINT "ExternalIngestRun_requestedByUserId_fkey" FOREIGN KEY ("requestedByUserId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+-- FKs — add only when referenced tables exist.
+-- Some hosted DBs (e.g. Supabase) can have Prisma history out of sync with public DDL; unconditional ALTER then fails (42P01).
+DO $migration$
+BEGIN
+  IF to_regclass('public."User"') IS NOT NULL THEN
+    IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'ExternalIngestRun_staffUserId_fkey') THEN
+      ALTER TABLE "ExternalIngestRun" ADD CONSTRAINT "ExternalIngestRun_staffUserId_fkey" FOREIGN KEY ("staffUserId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+    END IF;
+    IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'ExternalIngestRun_requestedByUserId_fkey') THEN
+      ALTER TABLE "ExternalIngestRun" ADD CONSTRAINT "ExternalIngestRun_requestedByUserId_fkey" FOREIGN KEY ("requestedByUserId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+    END IF;
+  END IF;
 
-ALTER TABLE "CommunicationIdentity" ADD CONSTRAINT "CommunicationIdentity_emailContactProfileId_fkey" FOREIGN KEY ("emailContactProfileId") REFERENCES "EmailContactProfile"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-ALTER TABLE "CommunicationIdentity" ADD CONSTRAINT "CommunicationIdentity_relationalContactId_fkey" FOREIGN KEY ("relationalContactId") REFERENCES "RelationalContact"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-ALTER TABLE "CommunicationIdentity" ADD CONSTRAINT "CommunicationIdentity_voterRecordId_fkey" FOREIGN KEY ("voterRecordId") REFERENCES "VoterRecord"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+  IF to_regclass('public."EmailContactProfile"') IS NOT NULL THEN
+    IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'CommunicationIdentity_emailContactProfileId_fkey') THEN
+      ALTER TABLE "CommunicationIdentity" ADD CONSTRAINT "CommunicationIdentity_emailContactProfileId_fkey" FOREIGN KEY ("emailContactProfileId") REFERENCES "EmailContactProfile"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+    END IF;
+  END IF;
+  IF to_regclass('public."RelationalContact"') IS NOT NULL THEN
+    IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'CommunicationIdentity_relationalContactId_fkey') THEN
+      ALTER TABLE "CommunicationIdentity" ADD CONSTRAINT "CommunicationIdentity_relationalContactId_fkey" FOREIGN KEY ("relationalContactId") REFERENCES "RelationalContact"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+    END IF;
+  END IF;
+  IF to_regclass('public."VoterRecord"') IS NOT NULL THEN
+    IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'CommunicationIdentity_voterRecordId_fkey') THEN
+      ALTER TABLE "CommunicationIdentity" ADD CONSTRAINT "CommunicationIdentity_voterRecordId_fkey" FOREIGN KEY ("voterRecordId") REFERENCES "VoterRecord"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+    END IF;
+  END IF;
 
-ALTER TABLE "GmailMessageRecord" ADD CONSTRAINT "GmailMessageRecord_staffUserId_fkey" FOREIGN KEY ("staffUserId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-ALTER TABLE "GmailMessageRecord" ADD CONSTRAINT "GmailMessageRecord_ingestRunId_fkey" FOREIGN KEY ("ingestRunId") REFERENCES "ExternalIngestRun"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+  IF to_regclass('public."User"') IS NOT NULL THEN
+    IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'GmailMessageRecord_staffUserId_fkey') THEN
+      ALTER TABLE "GmailMessageRecord" ADD CONSTRAINT "GmailMessageRecord_staffUserId_fkey" FOREIGN KEY ("staffUserId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+    END IF;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'GmailMessageRecord_ingestRunId_fkey') THEN
+    ALTER TABLE "GmailMessageRecord" ADD CONSTRAINT "GmailMessageRecord_ingestRunId_fkey" FOREIGN KEY ("ingestRunId") REFERENCES "ExternalIngestRun"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+  END IF;
 
-ALTER TABLE "GmailMessageParticipant" ADD CONSTRAINT "GmailMessageParticipant_gmailMessageRecordId_fkey" FOREIGN KEY ("gmailMessageRecordId") REFERENCES "GmailMessageRecord"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "GmailMessageParticipant" ADD CONSTRAINT "GmailMessageParticipant_emailContactProfileId_fkey" FOREIGN KEY ("emailContactProfileId") REFERENCES "EmailContactProfile"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-ALTER TABLE "GmailMessageParticipant" ADD CONSTRAINT "GmailMessageParticipant_communicationIdentityId_fkey" FOREIGN KEY ("communicationIdentityId") REFERENCES "CommunicationIdentity"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'GmailMessageParticipant_gmailMessageRecordId_fkey') THEN
+    ALTER TABLE "GmailMessageParticipant" ADD CONSTRAINT "GmailMessageParticipant_gmailMessageRecordId_fkey" FOREIGN KEY ("gmailMessageRecordId") REFERENCES "GmailMessageRecord"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+  END IF;
+  IF to_regclass('public."EmailContactProfile"') IS NOT NULL THEN
+    IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'GmailMessageParticipant_emailContactProfileId_fkey') THEN
+      ALTER TABLE "GmailMessageParticipant" ADD CONSTRAINT "GmailMessageParticipant_emailContactProfileId_fkey" FOREIGN KEY ("emailContactProfileId") REFERENCES "EmailContactProfile"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+    END IF;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'GmailMessageParticipant_communicationIdentityId_fkey') THEN
+    ALTER TABLE "GmailMessageParticipant" ADD CONSTRAINT "GmailMessageParticipant_communicationIdentityId_fkey" FOREIGN KEY ("communicationIdentityId") REFERENCES "CommunicationIdentity"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+  END IF;
 
-ALTER TABLE "GoogleContactRecord" ADD CONSTRAINT "GoogleContactRecord_ingestRunId_fkey" FOREIGN KEY ("ingestRunId") REFERENCES "ExternalIngestRun"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-ALTER TABLE "GoogleContactRecord" ADD CONSTRAINT "GoogleContactRecord_communicationIdentityId_fkey" FOREIGN KEY ("communicationIdentityId") REFERENCES "CommunicationIdentity"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-ALTER TABLE "GoogleContactRecord" ADD CONSTRAINT "GoogleContactRecord_emailContactProfileId_fkey" FOREIGN KEY ("emailContactProfileId") REFERENCES "EmailContactProfile"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'GoogleContactRecord_ingestRunId_fkey') THEN
+    ALTER TABLE "GoogleContactRecord" ADD CONSTRAINT "GoogleContactRecord_ingestRunId_fkey" FOREIGN KEY ("ingestRunId") REFERENCES "ExternalIngestRun"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'GoogleContactRecord_communicationIdentityId_fkey') THEN
+    ALTER TABLE "GoogleContactRecord" ADD CONSTRAINT "GoogleContactRecord_communicationIdentityId_fkey" FOREIGN KEY ("communicationIdentityId") REFERENCES "CommunicationIdentity"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+  END IF;
+  IF to_regclass('public."EmailContactProfile"') IS NOT NULL THEN
+    IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'GoogleContactRecord_emailContactProfileId_fkey') THEN
+      ALTER TABLE "GoogleContactRecord" ADD CONSTRAINT "GoogleContactRecord_emailContactProfileId_fkey" FOREIGN KEY ("emailContactProfileId") REFERENCES "EmailContactProfile"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+    END IF;
+  END IF;
 
-ALTER TABLE "GoogleCalendarEventRecord" ADD CONSTRAINT "GoogleCalendarEventRecord_calendarSourceId_fkey" FOREIGN KEY ("calendarSourceId") REFERENCES "CalendarSource"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "GoogleCalendarEventRecord" ADD CONSTRAINT "GoogleCalendarEventRecord_ingestRunId_fkey" FOREIGN KEY ("ingestRunId") REFERENCES "ExternalIngestRun"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-ALTER TABLE "GoogleCalendarEventRecord" ADD CONSTRAINT "GoogleCalendarEventRecord_campaignEventId_fkey" FOREIGN KEY ("campaignEventId") REFERENCES "CampaignEvent"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+  IF to_regclass('public."CalendarSource"') IS NOT NULL THEN
+    IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'GoogleCalendarEventRecord_calendarSourceId_fkey') THEN
+      ALTER TABLE "GoogleCalendarEventRecord" ADD CONSTRAINT "GoogleCalendarEventRecord_calendarSourceId_fkey" FOREIGN KEY ("calendarSourceId") REFERENCES "CalendarSource"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+    END IF;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'GoogleCalendarEventRecord_ingestRunId_fkey') THEN
+    ALTER TABLE "GoogleCalendarEventRecord" ADD CONSTRAINT "GoogleCalendarEventRecord_ingestRunId_fkey" FOREIGN KEY ("ingestRunId") REFERENCES "ExternalIngestRun"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+  END IF;
+  IF to_regclass('public."CampaignEvent"') IS NOT NULL THEN
+    IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'GoogleCalendarEventRecord_campaignEventId_fkey') THEN
+      ALTER TABLE "GoogleCalendarEventRecord" ADD CONSTRAINT "GoogleCalendarEventRecord_campaignEventId_fkey" FOREIGN KEY ("campaignEventId") REFERENCES "CampaignEvent"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+    END IF;
+  END IF;
 
-ALTER TABLE "GoogleCalendarEventParticipant" ADD CONSTRAINT "GoogleCalendarEventParticipant_googleCalendarEventRecordId_fkey" FOREIGN KEY ("googleCalendarEventRecordId") REFERENCES "GoogleCalendarEventRecord"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "GoogleCalendarEventParticipant" ADD CONSTRAINT "GoogleCalendarEventParticipant_communicationIdentityId_fkey" FOREIGN KEY ("communicationIdentityId") REFERENCES "CommunicationIdentity"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-ALTER TABLE "GoogleCalendarEventParticipant" ADD CONSTRAINT "GoogleCalendarEventParticipant_emailContactProfileId_fkey" FOREIGN KEY ("emailContactProfileId") REFERENCES "EmailContactProfile"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'GoogleCalendarEventParticipant_googleCalendarEventRecordId_fkey') THEN
+    ALTER TABLE "GoogleCalendarEventParticipant" ADD CONSTRAINT "GoogleCalendarEventParticipant_googleCalendarEventRecordId_fkey" FOREIGN KEY ("googleCalendarEventRecordId") REFERENCES "GoogleCalendarEventRecord"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'GoogleCalendarEventParticipant_communicationIdentityId_fkey') THEN
+    ALTER TABLE "GoogleCalendarEventParticipant" ADD CONSTRAINT "GoogleCalendarEventParticipant_communicationIdentityId_fkey" FOREIGN KEY ("communicationIdentityId") REFERENCES "CommunicationIdentity"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+  END IF;
+  IF to_regclass('public."EmailContactProfile"') IS NOT NULL THEN
+    IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'GoogleCalendarEventParticipant_emailContactProfileId_fkey') THEN
+      ALTER TABLE "GoogleCalendarEventParticipant" ADD CONSTRAINT "GoogleCalendarEventParticipant_emailContactProfileId_fkey" FOREIGN KEY ("emailContactProfileId") REFERENCES "EmailContactProfile"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+    END IF;
+  END IF;
 
-ALTER TABLE "CommunicationIdentitySignal" ADD CONSTRAINT "CommunicationIdentitySignal_communicationIdentityId_fkey" FOREIGN KEY ("communicationIdentityId") REFERENCES "CommunicationIdentity"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'CommunicationIdentitySignal_communicationIdentityId_fkey') THEN
+    ALTER TABLE "CommunicationIdentitySignal" ADD CONSTRAINT "CommunicationIdentitySignal_communicationIdentityId_fkey" FOREIGN KEY ("communicationIdentityId") REFERENCES "CommunicationIdentity"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+  END IF;
 
-ALTER TABLE "CommunicationProfileMatchCandidate" ADD CONSTRAINT "CommunicationProfileMatchCandidate_communicationIdentityId_fkey" FOREIGN KEY ("communicationIdentityId") REFERENCES "CommunicationIdentity"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "CommunicationProfileMatchCandidate" ADD CONSTRAINT "CommunicationProfileMatchCandidate_reviewedByUserId_fkey" FOREIGN KEY ("reviewedByUserId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'CommunicationProfileMatchCandidate_communicationIdentityId_fkey') THEN
+    ALTER TABLE "CommunicationProfileMatchCandidate" ADD CONSTRAINT "CommunicationProfileMatchCandidate_communicationIdentityId_fkey" FOREIGN KEY ("communicationIdentityId") REFERENCES "CommunicationIdentity"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+  END IF;
+  IF to_regclass('public."User"') IS NOT NULL THEN
+    IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'CommunicationProfileMatchCandidate_reviewedByUserId_fkey') THEN
+      ALTER TABLE "CommunicationProfileMatchCandidate" ADD CONSTRAINT "CommunicationProfileMatchCandidate_reviewedByUserId_fkey" FOREIGN KEY ("reviewedByUserId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+    END IF;
+  END IF;
+END
+$migration$;
 
 -- Indexes
 CREATE INDEX "ExternalIngestRun_source_status_createdAt_idx" ON "ExternalIngestRun"("source", "status", "createdAt");
