@@ -1,20 +1,41 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import type { ReactNode } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 import { PageHero } from "@/components/blocks/PageHero";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
-import { resolveRoleQueryFromOnboardingLane } from "@/lib/campaign-links";
+import { resolveRoleQueryFromOnboardingLane, VOLUNTEER_ROLE_QUERY } from "@/lib/campaign-links";
+import type { VolunteerInput } from "@/lib/forms/schemas";
 import { OnboardingChecklist } from "@/components/volunteer/OnboardingChecklist";
 import { RoleCard } from "@/components/volunteer/RoleCard";
 import { TeamBuilderSection } from "@/components/volunteer/TeamBuilderSection";
 import { VolunteerSignupCta } from "@/components/volunteer/VolunteerSignupCta";
+import { VolunteerForm } from "@/components/forms/VolunteerForm";
+import { isNativeVolunteerFormEnabled } from "@/config/volunteer-signup";
 
 type Lane = "events" | "social" | "relational" | "unsure" | null;
+
+function laneFromSignupRoleParam(role: string | null | undefined): Lane {
+  if (!role) return null;
+  if (role === VOLUNTEER_ROLE_QUERY.events) return "events";
+  if (role === VOLUNTEER_ROLE_QUERY.socialMedia) return "social";
+  if (role === VOLUNTEER_ROLE_QUERY.powerOf5) return "relational";
+  if (role === VOLUNTEER_ROLE_QUERY.notSure) return "unsure";
+  return null;
+}
+
+function preferredRoleForLane(lane: Lane): VolunteerInput["preferredRole"] | null {
+  if (!lane || lane === "unsure") return "not_sure";
+  if (lane === "events") return "events";
+  if (lane === "social") return "social_media";
+  return "power_of_five";
+}
 
 const LANE_MESSAGES: Record<Exclude<Lane, null>, string> = {
   events: "Great — choose Events on the volunteer signup form when you get there.",
@@ -23,8 +44,22 @@ const LANE_MESSAGES: Record<Exclude<Lane, null>, string> = {
   unsure: "Great — mark “not sure yet” on the signup form and we’ll help you find the right fit.",
 };
 
-export function VolunteerOnboardingPage() {
-  const [lane, setLane] = useState<Lane>(null);
+export function VolunteerOnboardingPage({
+  campaignClock,
+  initialSignupRole = null,
+}: {
+  campaignClock?: ReactNode;
+  /** `?role=` from `/volunteer` when using native signup deep links */
+  initialSignupRole?: string | null;
+}) {
+  const nativeVolunteerForm = isNativeVolunteerFormEnabled();
+  const searchParams = useSearchParams();
+  const [lane, setLane] = useState<Lane>(() => laneFromSignupRoleParam(initialSignupRole ?? undefined));
+
+  useEffect(() => {
+    const fromUrl = laneFromSignupRoleParam(searchParams.get("role"));
+    if (fromUrl) setLane(fromUrl);
+  }, [searchParams]);
 
   const scrollToSignup = useCallback(() => {
     document.getElementById("signup")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -55,6 +90,12 @@ export function VolunteerOnboardingPage() {
           Volunteer resource library
         </Button>
       </PageHero>
+
+      {campaignClock ? (
+        <div className="border-b border-kelly-text/10 bg-kelly-fog/20">
+          <ContentContainer className="max-w-5xl py-5">{campaignClock}</ContentContainer>
+        </div>
+      ) : null}
 
       <FullBleedSection padY aria-labelledby="how-this-works-heading" id="how-this-works" className="scroll-mt-24">
         <ContentContainer className="max-w-3xl">
@@ -214,7 +255,21 @@ export function VolunteerOnboardingPage() {
             subtitle="Complete the volunteer signup form and someone from the campaign will be able to connect you to the right local team."
           />
           <div className="mt-8 flex flex-col items-start gap-4">
-            <VolunteerSignupCta roleQuery={resolveRoleQueryFromOnboardingLane(lane)} />
+            {nativeVolunteerForm ? (
+              <>
+                <VolunteerForm presetPreferredRole={preferredRoleForLane(lane)} />
+                <div className="flex flex-wrap items-center gap-2 font-body text-xs text-kelly-text/60">
+                  <span>Prefer the legacy Squarespace form?</span>
+                  <VolunteerSignupCta
+                    variant="outline"
+                    forceExternal
+                    roleQuery={resolveRoleQueryFromOnboardingLane(lane)}
+                  />
+                </div>
+              </>
+            ) : (
+              <VolunteerSignupCta roleQuery={resolveRoleQueryFromOnboardingLane(lane)} />
+            )}
             <p className="font-body text-sm text-kelly-text/70">
               After you sign up, use the{" "}
               <Link href="/volunteer/resources" className="font-semibold text-kelly-navy underline hover:text-kelly-blue">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { CampaignCountdown } from "@/components/campaign/CampaignCountdown";
 import { VolunteerOnboardingPage } from "@/components/volunteer/VolunteerOnboardingPage";
 
 export const metadata: Metadata = {
@@ -7,6 +8,9 @@ export const metadata: Metadata = {
   description: "Start here to join the volunteer field team.",
 };
 
-export default function VolunteerPage() {
-  return <VolunteerOnboardingPage />;
+type PageProps = { searchParams: Promise<{ role?: string }> };
+
+export default async function VolunteerPage({ searchParams }: PageProps) {
+  const sp = await searchParams;
+  return <VolunteerOnboardingPage campaignClock={<CampaignCountdown />} initialSignupRole={sp.role ?? null} />;
 }

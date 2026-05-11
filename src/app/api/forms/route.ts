@@ -42,7 +42,18 @@ export async function POST(req: Request) {
 
   try {
     const result = await persistFormSubmission(parsed.data);
-    return NextResponse.json({ ok: true, ...result }, { status: 200 });
+    const res = NextResponse.json({
+      ok: true,
+      submissionId: result.submissionId,
+      userId: result.userId,
+      workflowIntakeId: result.workflowIntakeId,
+      volunteerTeamSlug: result.volunteerTeamSlug ?? null,
+    });
+    if (result.volunteerTeamSlug && result.userId) {
+      const { setTeamAccessCookieOnResponse } = await import("@/lib/volunteer-ops/team-access-cookie");
+      setTeamAccessCookieOnResponse(res, { userId: result.userId, teamSlug: result.volunteerTeamSlug });
+    }
+    return res;
   } catch (e) {
     console.error(e);
     return NextResponse.json({ ok: false, error: "persist_failed" }, { status: 500 });

@@ -3,6 +3,8 @@
  * Override with NEXT_PUBLIC_* in .env when URLs change.
  */
 
+import { isNativeVolunteerFormEnabled } from "@/config/volunteer-signup";
+
 const LEGACY_SITE = "https://www.kellygrappe.com";
 /** GoodChange — donate CTA used on the public Squarespace site */
 const DONATE_GOODCHANGE = "https://goodchange.app/donate/commi-h8";
@@ -19,6 +21,7 @@ export const STAY_CONNECTED_HREF = "/get-involved#join" as const;
 export const VOLUNTEER_SIGNUP_HREF = "/get-involved#volunteer" as const;
 
 export function getVolunteerSignupHref(): string {
+  if (isNativeVolunteerFormEnabled()) return "/volunteer#signup";
   const o = process.env.NEXT_PUBLIC_VOLUNTEER_SIGNUP_URL?.trim();
   if (o) return o;
   return VOLUNTEER_SIGNUP_HREF;

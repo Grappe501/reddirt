@@ -3,7 +3,10 @@ import { prisma } from "@/lib/db";
 import { sanitizePlainText } from "@/lib/security/sanitize";
 import { classifyIntake } from "@/lib/openai/classify";
 import { isOpenAIConfigured } from "@/lib/openai/client";
+import { isDatabaseConfigured } from "@/lib/env";
+import { provisionVolunteerOpsSoloTeam } from "@/lib/volunteer-ops/provision-solo-team";
 import { ASK_KELLY_CATEGORY_LABELS } from "@/content/ask-kelly-beta-public-copy";
+import { sendVolunteerSignupOpsNotification } from "@/lib/campaign-ops/ops-notifications";
 import type { AskKellyBetaFeedbackInput, FormSubmissionInput } from "./schemas";
 
 function buildSummary(data: FormSubmissionInput): string {
@@ -22,15 +25,24 @@ function buildSummary(data: FormSubmissionInput): string {
         .join("\n");
     case "volunteer":
       return [
-        `Name: ${data.name}`,
+        `Name: ${data.firstName} ${data.lastName}`,
         `Email: ${data.email}`,
-        data.phone ? `Phone: ${data.phone}` : "",
+        `Phone: ${data.phone}`,
         `ZIP: ${data.zip}`,
         data.county ? `County: ${data.county}` : "",
+        data.city ? `City: ${data.city}` : "",
+        `Preferred role: ${data.preferredRole}`,
+        `Preferred language: ${data.preferredLanguage}`,
+        `Student: ${data.student ? "yes" : "no"}`,
+        data.schoolCampus ? `School / campus: ${data.schoolCampus}` : "",
+        `Discord invite interest: ${data.discordInterest ? "yes" : "no"}`,
+        `Hosting interest: ${data.hostingInterest ? "yes" : "no"}`,
+        `Fundraising interest: ${data.fundraisingInterest ? "yes" : "no"}`,
+        `Leadership training interest: ${data.leadershipInterest ? "yes" : "no"}`,
         data.availability ? `Availability: ${data.availability}` : "",
         data.skills ? `Skills: ${data.skills}` : "",
-        `Leadership interest: ${data.leadershipInterest ? "yes" : "no"}`,
-        data.interests?.length ? `Interests: ${data.interests.join(", ")}` : "",
+        data.notes ? `Notes:\n${data.notes}` : "",
+        data.interests?.length ? `Interest tokens: ${data.interests.join(", ")}` : "",
       ]
         .filter(Boolean)
         .join("\n");
@@ -98,7 +110,13 @@ function buildSummary(data: FormSubmissionInput): string {
   }
 }
 
-export type PersistResult = { submissionId: string; userId: string | null; workflowIntakeId: string };
+export type PersistResult = {
+  submissionId: string;
+  userId: string | null;
+  workflowIntakeId: string;
+  /** Present after solo volunteer team provisioning (`VolunteerOpsTeam`). */
+  volunteerTeamSlug?: string | null;
+};
 
 function formTypeLabel(formType: FormSubmissionInput["formType"]): string {
   switch (formType) {
@@ -152,7 +170,7 @@ function publicFormIntakeMetadata(
   if (data.formType === "ask_kelly_beta_feedback") {
     return buildAskKellyBetaMetadata(data) as object;
   }
-  return {
+  const baseMeta = {
     source: "public_form",
     formType: data.formType,
     county: "county" in data && data.county ? sanitizePlainText(data.county, 80) : null,
@@ -175,6 +193,22 @@ function publicFormIntakeMetadata(
         }
       : null,
   };
+
+  if (data.formType === "volunteer") {
+    return {
+      ...baseMeta,
+      preferredRole: data.preferredRole,
+      preferredLanguage: data.preferredLanguage,
+      city: data.city ? sanitizePlainText(data.city, 120) : null,
+      student: data.student,
+      schoolCampus: data.schoolCampus ? sanitizePlainText(data.schoolCampus, 200) : null,
+      discordInterest: data.discordInterest,
+      hostingInterest: data.hostingInterest,
+      fundraisingInterest: data.fundraisingInterest,
+    };
+  }
+
+  return baseMeta;
 }
 
 async function createWorkflowIntakeForSubmission(input: {
@@ -242,10 +276,12 @@ async function persistAskKellyBeta(data: AskKellyBetaFeedbackInput): Promise<Per
     select: { id: true },
   });
 
-  return { submissionId: sub.id, userId: user.id, workflowIntakeId: intake.id };
+  return { submissionId: sub.id, userId: user.id, workflowIntakeId: intake.id, volunteerTeamSlug: null };
 }
 
 export async function persistFormSubmission(data: FormSubmissionInput): Promise<PersistResult> {
+  let volunteerTeamSlugOut: string | null | undefined;
+
   if (data.formType === "ask_kelly_beta_feedback") {
     return persistAskKellyBeta(data);
   }
@@ -296,20 +332,33 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
       },
     });
     const intake = await createWorkflowIntakeForSubmission({ submissionId: sub.id, data, classification });
-    return { submissionId: sub.id, userId: user.id, workflowIntakeId: intake.id };
+    return { submissionId: sub.id, userId: user.id, workflowIntakeId: intake.id, volunteerTeamSlug: null };
   }
 
   const email = data.email.toLowerCase().trim();
-  const interests =
-    data.formType === "join_movement" || data.formType === "volunteer"
-      ? data.interests ?? []
+
+  const volunteerInterestTokens =
+    data.formType === "volunteer"
+      ? Array.from(new Set([...(data.interests ?? []), `pref_role:${data.preferredRole}`]))
       : [];
+
+  const interests =
+    data.formType === "join_movement"
+      ? (data.interests ?? [])
+      : data.formType === "volunteer"
+        ? volunteerInterestTokens
+        : [];
+
+  const displayName =
+    data.formType === "volunteer"
+      ? sanitizePlainText(`${data.firstName} ${data.lastName}`, 120)
+      : sanitizePlainText(data.name, 120);
 
   const user = await prisma.user.upsert({
     where: { email },
     create: {
       email,
-      name: sanitizePlainText(data.name, 120),
+      name: displayName,
       phone: data.phone?.trim() || null,
       zip: "zip" in data ? sanitizePlainText(data.zip, 12) : null,
       county:
@@ -321,7 +370,7 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
       interests,
     },
     update: {
-      name: sanitizePlainText(data.name, 120),
+      name: displayName,
       phone: data.phone?.trim() || undefined,
       zip: "zip" in data ? sanitizePlainText(data.zip, 12) : undefined,
       county:
@@ -335,16 +384,21 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
   });
 
   if (data.formType === "volunteer") {
+    const availabilityParts = [data.availability?.trim(), data.notes?.trim()].filter(Boolean) as string[];
+    const availabilityJoined = availabilityParts.length
+      ? sanitizePlainText(availabilityParts.join("\n\n"), 8000)
+      : null;
+
     await prisma.volunteerProfile.upsert({
       where: { userId: user.id },
       create: {
         userId: user.id,
-        availability: data.availability ? sanitizePlainText(data.availability, 500) : null,
+        availability: availabilityJoined,
         skills: data.skills ? sanitizePlainText(data.skills, 2000) : null,
         leadershipInterest: data.leadershipInterest,
       },
       update: {
-        availability: data.availability ? sanitizePlainText(data.availability, 500) : null,
+        availability: availabilityJoined,
         skills: data.skills ? sanitizePlainText(data.skills, 2000) : null,
         leadershipInterest: data.leadershipInterest,
       },
@@ -353,9 +407,35 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
       data: {
         userId: user.id,
         type: "volunteer",
-        metadata: { source: "volunteer_form" } as object,
+        metadata: {
+          source: "volunteer_form",
+          preferredRole: data.preferredRole,
+          preferredLanguage: data.preferredLanguage,
+          city: data.city ?? null,
+          student: data.student,
+          schoolCampus: data.schoolCampus ?? null,
+          discordInterest: data.discordInterest,
+          hostingInterest: data.hostingInterest,
+          fundraisingInterest: data.fundraisingInterest,
+        } as object,
       },
     });
+
+    volunteerTeamSlugOut = null;
+    if (isDatabaseConfigured()) {
+      try {
+        const { teamSlug } = await provisionVolunteerOpsSoloTeam({
+          userId: user.id,
+          name: `${data.firstName} ${data.lastName}`.trim(),
+          county: data.county,
+          zip: data.zip,
+          interests: volunteerInterestTokens,
+        });
+        volunteerTeamSlugOut = teamSlug;
+      } catch (e) {
+        console.error("provisionVolunteerOpsSoloTeam failed", e);
+      }
+    }
   }
 
   if (data.formType === "direct_democracy_commitment") {
@@ -396,7 +476,21 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
           listeningSessionHostInterest: data.gatheringType === "listening_session",
           raw: redactPII(summary),
         }
-      : { ...structuredBase, raw: redactPII(summary) };
+      : data.formType === "volunteer"
+        ? {
+            ...structuredBase,
+            preferredRole: data.preferredRole,
+            preferredLanguage: data.preferredLanguage,
+            city: data.city ?? null,
+            student: data.student,
+            schoolCampus: data.schoolCampus ?? null,
+            discordInterest: data.discordInterest,
+            hostingInterest: data.hostingInterest,
+            fundraisingInterest: data.fundraisingInterest,
+            notes: data.notes ? sanitizePlainText(data.notes, 3000) : null,
+            raw: redactPII(summary),
+          }
+        : { ...structuredBase, raw: redactPII(summary) };
 
   const sub = await prisma.submission.create({
     data: {
@@ -409,7 +503,34 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
 
   const intake = await createWorkflowIntakeForSubmission({ submissionId: sub.id, data, classification });
 
-  return { submissionId: sub.id, userId: user.id, workflowIntakeId: intake.id };
+  if (data.formType === "volunteer") {
+    void sendVolunteerSignupOpsNotification({
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      phone: data.phone,
+      zip: data.zip,
+      county: data.county,
+      city: data.city,
+      preferredRole: data.preferredRole,
+      preferredLanguage: data.preferredLanguage,
+      student: data.student,
+      schoolCampus: data.schoolCampus,
+      discordInterest: data.discordInterest,
+      hostingInterest: data.hostingInterest,
+      fundraisingInterest: data.fundraisingInterest,
+      leadershipInterest: data.leadershipInterest,
+      interests: data.interests ?? [],
+      notes: data.notes,
+      availability: data.availability,
+      skills: data.skills,
+      submissionId: sub.id,
+      workflowIntakeId: intake.id,
+      volunteerTeamSlug: volunteerTeamSlugOut ?? null,
+    }).catch((err) => console.error("[handlers] volunteer ops notification failed", err));
+  }
+
+  return { submissionId: sub.id, userId: user.id, workflowIntakeId: intake.id, volunteerTeamSlug: volunteerTeamSlugOut ?? null };
 }
 
 function redactPII(text: string): string {

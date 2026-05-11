@@ -4,9 +4,15 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { volunteerSchema, type VolunteerInput } from "@/lib/forms/schemas";
+import {
+  volunteerSchema,
+  type VolunteerInput,
+  volunteerPreferredRoleValues,
+  volunteerPreferredLanguageValues,
+} from "@/lib/forms/schemas";
 import { getToolkitTitleForResourceSlug } from "@/content/resources/toolkit";
 import type { OutreachResourceSlug } from "@/content/resources/toolkit";
+import { powerOf5OnboardingHref } from "@/config/navigation";
 import { FormField } from "@/components/forms/FormField";
 import { FormLabel } from "@/components/forms/FormLabel";
 import { Input } from "@/components/forms/Input";
@@ -37,40 +43,72 @@ const OUTREACH_OPTION_COPY: {
   },
 ];
 
+const PREFERRED_ROLE_LABELS: Record<(typeof volunteerPreferredRoleValues)[number], string> = {
+  events: "Events",
+  social_media: "Social media",
+  power_of_five: "Power of 5 / voter registration",
+  youth_outreach: "Youth outreach",
+  womens_outreach: "Women’s outreach",
+  fundraising: "Fundraising",
+  not_sure: "Not sure yet",
+};
+
+const PREFERRED_LANGUAGE_LABELS: Record<(typeof volunteerPreferredLanguageValues)[number], string> = {
+  english: "English",
+  spanish: "Spanish",
+  marshallese: "Marshallese",
+};
+
 function resourceToken(slug: OutreachResourceSlug) {
   return `resource:${slug}` as const;
 }
 
 export type VolunteerPrefillLane = "event_representation";
 
+const defaultVolunteerValues: VolunteerInput = {
+  formType: "volunteer",
+  firstName: "",
+  lastName: "",
+  email: "",
+  phone: "",
+  zip: "",
+  county: "",
+  city: undefined,
+  preferredRole: "not_sure",
+  preferredLanguage: "english",
+  student: false,
+  schoolCampus: undefined,
+  discordInterest: false,
+  hostingInterest: false,
+  fundraisingInterest: false,
+  leadershipInterest: false,
+  interests: [],
+  notes: undefined,
+  availability: undefined,
+  skills: undefined,
+  website: "",
+};
+
 export function VolunteerForm({
   id,
   prefillResource,
   prefillLane,
+  presetPreferredRole,
 }: {
   id?: string;
   prefillResource?: string;
   prefillLane?: VolunteerPrefillLane;
+  /** When user picks a lane on /volunteer, align the role select */
+  presetPreferredRole?: VolunteerInput["preferredRole"] | null;
 }) {
   const [serverError, setServerError] = useState<string | null>(null);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [successTeamSlug, setSuccessTeamSlug] = useState<string | null>(null);
   const [started, setStarted] = useState(false);
 
   const form = useForm<VolunteerInput>({
     resolver: zodResolver(volunteerSchema),
-    defaultValues: {
-      formType: "volunteer",
-      name: "",
-      email: "",
-      phone: "",
-      zip: "",
-      county: "",
-      availability: "",
-      skills: "",
-      leadershipInterest: false,
-      interests: [],
-      website: "",
-    },
+    defaultValues: { ...defaultVolunteerValues },
   });
 
   useEffect(() => {
@@ -91,10 +129,16 @@ export function VolunteerForm({
     }
   }, [prefillLane, form]);
 
+  useEffect(() => {
+    if (!presetPreferredRole) return;
+    form.setValue("preferredRole", presetPreferredRole);
+  }, [presetPreferredRole, form]);
+
   const submit = form.handleSubmit(async (data) => {
     setServerError(null);
     const res = await fetch("/api/forms", {
       method: "POST",
+      credentials: "include",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
@@ -103,6 +147,7 @@ export function VolunteerForm({
       error?: string;
       fields?: Record<string, string>;
       submissionId?: string;
+      volunteerTeamSlug?: string | null;
     };
     if (!res.ok) {
       if (json.fields) {
@@ -114,30 +159,45 @@ export function VolunteerForm({
       return;
     }
     trackFormComplete("volunteer", json.submissionId);
+    setSuccessTeamSlug(json.volunteerTeamSlug && json.volunteerTeamSlug.length > 0 ? json.volunteerTeamSlug : null);
     setShowSuccess(true);
-    form.reset({
-      formType: "volunteer",
-      name: "",
-      email: "",
-      phone: "",
-      zip: "",
-      county: "",
-      availability: "",
-      skills: "",
-      leadershipInterest: false,
-      interests: [],
-      website: "",
-    });
+    form.reset({ ...defaultVolunteerValues });
   });
 
   if (showSuccess) {
     return (
-      <FormSuccessPanel title="Thank you—this is how campaigns actually run." showResponseExpectation={false}>
+      <FormSuccessPanel title="Thank you — you’re in the system." showResponseExpectation={false}>
         <p>
-          A coordinator will follow up with shifts that match what you shared. If you flagged leadership
-          interest, we may invite you to a short training call—no pressure, no jargon.
+          A coordinator can follow up using what you submitted. Until automated email is fully live, the campaign still
+          sees your signup immediately in our operations queue.
         </p>
-        <p>
+        <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/85">
+          <strong>Teams vs. Power of 5:</strong> every volunteer belongs to a small 3-person operating team for weekly
+          rhythm. Separately, you can build a Power of 5 network of people you personally know — those contacts only join
+          the volunteer system if they choose to sign up themselves.
+        </p>
+        {successTeamSlug ? (
+          <p className="mt-3">
+            Your team workspace is live — open your{" "}
+            <Link className="font-semibold text-kelly-navy underline" href={`/dashboard/team/${successTeamSlug}`}>
+              team dashboard
+            </Link>{" "}
+            to start organizing (you&apos;re the founding lead until you invite coordinators).
+          </p>
+        ) : (
+          <p className="mt-3">
+            Next: explore the{" "}
+            <Link className="font-semibold text-kelly-navy underline" href="/volunteer/resources">
+              volunteer resource library
+            </Link>{" "}
+            or start the{" "}
+            <Link className="font-semibold text-kelly-navy underline" href={powerOf5OnboardingHref}>
+              Power of 5 onboarding
+            </Link>{" "}
+            path when you are ready to map your first five relationships.
+          </p>
+        )}
+        <p className="mt-3">
           Want to go deeper now? Browse{" "}
           <Link className="font-semibold text-kelly-navy underline" href="/local-organizing">
             local organizing
@@ -148,7 +208,7 @@ export function VolunteerForm({
           </Link>
           .
         </p>
-        <Button type="button" variant="outline" onClick={() => setShowSuccess(false)}>
+        <Button type="button" variant="outline" onClick={() => { setShowSuccess(false); setSuccessTeamSlug(null); }}>
           Submit another volunteer form
         </Button>
       </FormSuccessPanel>
@@ -173,7 +233,7 @@ export function VolunteerForm({
           <p>
             You are signing up to <span className="font-semibold">represent the campaign</span> at local fairs,
             festivals, party or civic meetings, or other public gatherings. Add anything you already know—dates, venues,
-            organizations—in availability or skills. Coordinators will follow up with tabling basics and approved
+            organizations—in availability or notes. Coordinators will follow up with tabling basics and approved
             materials.
           </p>
         </div>
@@ -189,13 +249,29 @@ export function VolunteerForm({
           </p>
         </div>
       ) : null}
+
+      <div className="rounded-xl border border-kelly-navy/15 bg-kelly-navy/[0.04] p-4 font-body text-sm leading-relaxed text-kelly-text/85">
+        <p>
+          <strong>3-person team + Power of 5:</strong> you can help as a volunteer on a small operating team{" "}
+          <em>and</em> build a Power of 5 network of people you personally know. People in your P5 circle only enter the
+          volunteer system if they choose to sign up — there is no automatic enrollment from your contact list.
+        </p>
+      </div>
+
       {serverError ? <FormErrorSummary errors={{ server: serverError }} /> : null}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <FormField>
-          <FormLabel htmlFor="vf-name">Full name</FormLabel>
-          <Input id="vf-name" {...form.register("name")} autoComplete="name" />
-          {form.formState.errors.name ? (
-            <p className="text-sm text-kelly-navy">{form.formState.errors.name.message}</p>
+          <FormLabel htmlFor="vf-first">First name</FormLabel>
+          <Input id="vf-first" {...form.register("firstName")} autoComplete="given-name" />
+          {form.formState.errors.firstName ? (
+            <p className="text-sm text-kelly-navy">{form.formState.errors.firstName.message}</p>
+          ) : null}
+        </FormField>
+        <FormField>
+          <FormLabel htmlFor="vf-last">Last name</FormLabel>
+          <Input id="vf-last" {...form.register("lastName")} autoComplete="family-name" />
+          {form.formState.errors.lastName ? (
+            <p className="text-sm text-kelly-navy">{form.formState.errors.lastName.message}</p>
           ) : null}
         </FormField>
         <FormField>
@@ -206,29 +282,118 @@ export function VolunteerForm({
           ) : null}
         </FormField>
         <FormField>
-          <FormLabel htmlFor="vf-phone">Phone (optional)</FormLabel>
+          <FormLabel htmlFor="vf-phone">Phone</FormLabel>
           <Input id="vf-phone" type="tel" {...form.register("phone")} autoComplete="tel" />
+          {form.formState.errors.phone ? (
+            <p className="text-sm text-kelly-navy">{form.formState.errors.phone.message}</p>
+          ) : null}
         </FormField>
         <FormField>
-          <FormLabel htmlFor="vf-zip">ZIP</FormLabel>
+          <FormLabel htmlFor="vf-zip">ZIP code</FormLabel>
           <Input id="vf-zip" {...form.register("zip")} autoComplete="postal-code" />
           {form.formState.errors.zip ? (
             <p className="text-sm text-kelly-navy">{form.formState.errors.zip.message}</p>
           ) : null}
         </FormField>
+        <FormField>
+          <FormLabel htmlFor="vf-county">County</FormLabel>
+          <Input id="vf-county" {...form.register("county")} autoComplete="address-level1" />
+        </FormField>
       </div>
       <FormField>
-        <FormLabel htmlFor="vf-county">County (optional)</FormLabel>
-        <Input id="vf-county" {...form.register("county")} />
+        <FormLabel htmlFor="vf-city">City</FormLabel>
+        <Input id="vf-city" {...form.register("city")} autoComplete="address-level2" />
       </FormField>
+
       <FormField>
-        <FormLabel htmlFor="vf-availability">Availability (optional)</FormLabel>
-        <Textarea id="vf-availability" rows={3} {...form.register("availability")} />
+        <FormLabel htmlFor="vf-role">Preferred role</FormLabel>
+        <select
+          id="vf-role"
+          className="w-full rounded-md border border-kelly-text/20 bg-white px-3 py-2 font-body text-kelly-text"
+          {...form.register("preferredRole")}
+        >
+          {volunteerPreferredRoleValues.map((v) => (
+            <option key={v} value={v}>
+              {PREFERRED_ROLE_LABELS[v]}
+            </option>
+          ))}
+        </select>
       </FormField>
+
       <FormField>
-        <FormLabel htmlFor="vf-skills">Skills / experience (optional)</FormLabel>
-        <Textarea id="vf-skills" rows={4} {...form.register("skills")} />
+        <FormLabel htmlFor="vf-lang">Preferred language</FormLabel>
+        <select
+          id="vf-lang"
+          className="w-full rounded-md border border-kelly-text/20 bg-white px-3 py-2 font-body text-kelly-text"
+          {...form.register("preferredLanguage")}
+        >
+          {volunteerPreferredLanguageValues.map((v) => (
+            <option key={v} value={v}>
+              {PREFERRED_LANGUAGE_LABELS[v]}
+            </option>
+          ))}
+        </select>
       </FormField>
+
+      <FormField className="flex flex-row items-start gap-3">
+        <input
+          id="vf-student"
+          type="checkbox"
+          className="mt-1 h-4 w-4 rounded border-kelly-text/30 text-kelly-navy"
+          checked={form.watch("student")}
+          onChange={(e) => form.setValue("student", e.target.checked)}
+        />
+        <FormLabel htmlFor="vf-student" className="font-normal text-kelly-text/80">
+          I am a student
+        </FormLabel>
+      </FormField>
+      {form.watch("student") ? (
+        <FormField>
+          <FormLabel htmlFor="vf-campus">School / campus (if student)</FormLabel>
+          <Input id="vf-campus" {...form.register("schoolCampus")} />
+        </FormField>
+      ) : null}
+
+      <FormField className="flex flex-row items-start gap-3">
+        <input
+          id="vf-discord"
+          type="checkbox"
+          className="mt-1 h-4 w-4 rounded border-kelly-text/30 text-kelly-navy"
+          checked={form.watch("discordInterest")}
+          onChange={(e) => form.setValue("discordInterest", e.target.checked)}
+        />
+        <FormLabel htmlFor="vf-discord" className="font-normal text-kelly-text/80">
+          Would you like a Discord invite for day-to-day team communication? (No bot or auto-join yet — we will follow
+          up manually.)
+        </FormLabel>
+      </FormField>
+
+      <FormField className="flex flex-row items-start gap-3">
+        <input
+          id="vf-host"
+          type="checkbox"
+          className="mt-1 h-4 w-4 rounded border-kelly-text/30 text-kelly-navy"
+          checked={form.watch("hostingInterest")}
+          onChange={(e) => form.setValue("hostingInterest", e.target.checked)}
+        />
+        <FormLabel htmlFor="vf-host" className="font-normal text-kelly-text/80">
+          I am interested in hosting a gathering (house party, meet-and-greet, etc.)
+        </FormLabel>
+      </FormField>
+
+      <FormField className="flex flex-row items-start gap-3">
+        <input
+          id="vf-fundraise"
+          type="checkbox"
+          className="mt-1 h-4 w-4 rounded border-kelly-text/30 text-kelly-navy"
+          checked={form.watch("fundraisingInterest")}
+          onChange={(e) => form.setValue("fundraisingInterest", e.target.checked)}
+        />
+        <FormLabel htmlFor="vf-fundraise" className="font-normal text-kelly-text/80">
+          I am interested in fundraising (events, small-dollar circles, etc.)
+        </FormLabel>
+      </FormField>
+
       <FormField className="flex flex-row items-start gap-3">
         <input
           id="vf-lead"
@@ -241,6 +406,20 @@ export function VolunteerForm({
           I’m open to leadership training (hosting, captaining, or mentoring others).
         </FormLabel>
       </FormField>
+
+      <FormField>
+        <FormLabel htmlFor="vf-notes">Notes (optional)</FormLabel>
+        <Textarea id="vf-notes" rows={4} {...form.register("notes")} />
+      </FormField>
+
+      <FormField>
+        <FormLabel htmlFor="vf-availability">Availability (optional)</FormLabel>
+        <Textarea id="vf-availability" rows={3} {...form.register("availability")} />
+      </FormField>
+      <FormField>
+        <FormLabel htmlFor="vf-skills">Skills / experience (optional)</FormLabel>
+        <Textarea id="vf-skills" rows={4} {...form.register("skills")} />
+      </FormField>
       <div className="rounded-md border border-kelly-text/10 bg-kelly-page/30 p-4">
         <p className="font-body text-xs font-bold uppercase tracking-wide text-kelly-text/55">Ways to help (optional)</p>
         <p className="mt-1 font-body text-sm text-kelly-text/70">
@@ -252,13 +431,13 @@ export function VolunteerForm({
         </p>
         <ul className="mt-3 space-y-2">
           {OUTREACH_OPTION_COPY.map(({ slug, label, hint }) => {
-            const id = `vf-outreach-${slug}`;
+            const fid = `vf-outreach-${slug}`;
             const token = resourceToken(slug);
             const checked = form.watch("interests").includes(token);
             return (
               <li key={slug} className="flex flex-row items-start gap-3">
                 <input
-                  id={id}
+                  id={fid}
                   type="checkbox"
                   className="mt-1 h-4 w-4 rounded border-kelly-text/30 text-kelly-navy"
                   checked={checked}
@@ -270,7 +449,7 @@ export function VolunteerForm({
                   }}
                 />
                 <div>
-                  <FormLabel htmlFor={id} className="font-normal text-kelly-text/90">
+                  <FormLabel htmlFor={fid} className="font-normal text-kelly-text/90">
                     {label}
                   </FormLabel>
                   <p className="mt-0.5 font-body text-xs text-kelly-text/60">{hint}</p>

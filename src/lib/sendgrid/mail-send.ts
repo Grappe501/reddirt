@@ -82,6 +82,8 @@ function extractSendGridErrors(body: unknown): string | null {
 
 export type SendGridSingleMailInput = {
   to: string;
+  /** Optional BCC (e.g. ops routing); deduped against `to`. */
+  bcc?: string[];
   subject: string;
   html: string;
   text: string;
@@ -98,8 +100,16 @@ export async function sendSendGridSingleTestEmail(
   const to = input.to.trim().toLowerCase();
   if (!to.includes("@")) return { ok: false, safeMessage: "Invalid test recipient email." };
 
+  const bccRaw = (input.bcc ?? [])
+    .map((e) => e.trim().toLowerCase())
+    .filter((e) => e.includes("@") && e !== to);
+  const bccUnique = [...new Set(bccRaw)].map((email) => ({ email }));
+
+  const personalization: Record<string, unknown> = { to: [{ email: to }] };
+  if (bccUnique.length) personalization.bcc = bccUnique;
+
   const payload: Record<string, unknown> = {
-    personalizations: [{ to: [{ email: to }] }],
+    personalizations: [personalization],
     from: { email: input.fromEmail.trim(), name: input.fromName.trim() },
     subject: input.subject,
     content: [

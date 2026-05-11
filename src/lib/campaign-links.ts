@@ -1,3 +1,5 @@
+import { isNativeVolunteerFormEnabled } from "@/config/volunteer-signup";
+
 /**
  * Centralized external URLs for the volunteer platform and cross-links to the **live** campaign site
  * (www.kellygrappe.com) until the RedDirt app replaces it at relaunch.
@@ -84,18 +86,27 @@ export const VOLUNTEER_ROLE_QUERY = {
 
 export type VolunteerSignupRoleQuery = (typeof VOLUNTEER_ROLE_QUERY)[keyof typeof VOLUNTEER_ROLE_QUERY];
 
-/**
- * Append `role` before URL hash so Squarespace anchors stay valid:
- * `https://example.com/path?role=events#volunteer`
- */
-export function buildVolunteerSignupUrl(role?: VolunteerSignupRoleQuery | null): string {
-  const base = VOLUNTEER_SIGNUP_URL;
+function appendVolunteerRoleQuery(base: string, role?: VolunteerSignupRoleQuery | null): string {
   if (!role) return base;
   const hashIdx = base.indexOf("#");
   const pathAndQuery = hashIdx >= 0 ? base.slice(0, hashIdx) : base;
   const hash = hashIdx >= 0 ? base.slice(hashIdx) : "";
   const sep = pathAndQuery.includes("?") ? "&" : "?";
   return `${pathAndQuery}${sep}role=${encodeURIComponent(role)}${hash}`;
+}
+
+/**
+ * Append `role` before URL hash so Squarespace anchors stay valid:
+ * `https://example.com/path?role=events#volunteer`
+ */
+export function buildVolunteerSignupUrl(role?: VolunteerSignupRoleQuery | null): string {
+  const base = isNativeVolunteerFormEnabled() ? "/volunteer#signup" : VOLUNTEER_SIGNUP_URL;
+  return appendVolunteerRoleQuery(base, role);
+}
+
+/** Always targets the legacy external volunteer URL — used when native signup is on but a fallback link is needed. */
+export function buildLegacyVolunteerSignupUrl(role?: VolunteerSignupRoleQuery | null): string {
+  return appendVolunteerRoleQuery(VOLUNTEER_SIGNUP_URL, role);
 }
 
 /** Maps onboarding lane picker values to `role` query params on the live signup URL. */

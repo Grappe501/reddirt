@@ -28,17 +28,39 @@ export const joinMovementSchema = z.object({
   website: honeypot,
 });
 
+export const volunteerPreferredRoleValues = [
+  "events",
+  "social_media",
+  "power_of_five",
+  "youth_outreach",
+  "womens_outreach",
+  "fundraising",
+  "not_sure",
+] as const;
+
+export const volunteerPreferredLanguageValues = ["english", "spanish", "marshallese"] as const;
+
 export const volunteerSchema = z.object({
   formType: z.literal("volunteer"),
-  name,
+  firstName: z.string().min(1, "First name is required.").max(80),
+  lastName: z.string().min(1, "Last name is required.").max(80),
   email,
-  phone: phone,
+  phone: z.string().min(7, "Phone is required.").max(40),
   zip,
   county,
-  availability: z.string().max(500).optional(),
-  skills: z.string().max(2000).optional(),
+  city: z.string().max(120).optional().transform((v) => (v?.trim() ? v.trim() : undefined)),
+  preferredRole: z.enum(volunteerPreferredRoleValues),
+  preferredLanguage: z.enum(volunteerPreferredLanguageValues),
+  student: z.boolean().default(false),
+  schoolCampus: z.string().max(200).optional().transform((v) => (v?.trim() ? v.trim() : undefined)),
+  discordInterest: z.boolean().default(false),
+  hostingInterest: z.boolean().default(false),
+  fundraisingInterest: z.boolean().default(false),
   leadershipInterest: z.boolean().default(false),
   interests: z.array(z.string()).max(20).default([]),
+  notes: z.string().max(3000).optional(),
+  availability: z.string().max(500).optional(),
+  skills: z.string().max(2000).optional(),
   website: honeypot,
 });
 
