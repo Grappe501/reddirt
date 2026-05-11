@@ -3,7 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { fieldDirectorHref, fieldRegionsIndexHref } from "@/lib/field-structure/field-dashboard-paths";
+import {
+  communityDashboardsNavHref,
+  fieldDirectorHref,
+  fieldRegionsIndexHref,
+} from "@/lib/field-structure/field-dashboard-paths";
 
 const nav: { href: string; label: string; match: (p: string) => boolean }[] = [
   {
@@ -30,6 +34,11 @@ const nav: { href: string; label: string; match: (p: string) => boolean }[] = [
     href: fieldRegionsIndexHref(),
     label: "Regions",
     match: (p) => p.startsWith(fieldRegionsIndexHref()),
+  },
+  {
+    href: communityDashboardsNavHref,
+    label: "Community dashboards",
+    match: (p) => p.startsWith(communityDashboardsNavHref),
   },
 ];
 

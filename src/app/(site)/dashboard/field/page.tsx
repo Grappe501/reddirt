@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { FieldCommunityPartnerDashboards } from "@/components/dashboard/field/FieldCommunityPartnerDashboards";
 import { FieldBreadcrumbs } from "@/components/dashboard/field/FieldBreadcrumbs";
 import { ARKANSAS_COMMAND_REGIONS } from "@/lib/county/arkansas-county-registry";
 import { fieldDirectorHref, fieldRegionHref } from "@/lib/field-structure/field-dashboard-paths";
@@ -65,6 +66,8 @@ export default function FieldDirectorPage() {
             ))}
           </ul>
         </section>
+
+        <FieldCommunityPartnerDashboards />
 
         <section aria-labelledby="regions">
           <div className="flex flex-wrap items-end justify-between gap-3">

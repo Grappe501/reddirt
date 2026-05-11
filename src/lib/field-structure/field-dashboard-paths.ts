@@ -2,6 +2,17 @@ import type { ArCommandRegionId } from "@/lib/county/arkansas-county-registry";
 
 export const FIELD_DIRECTOR_BASE = "/dashboard/field" as const;
 
+/** Community & partner organizing dashboards (linked from Field Director). */
+export const communityPartnerDashboardHrefs = {
+  muslim: "/dashboard/community/muslim",
+  conversationalSpanish: "/dashboard/community/conversational-spanish",
+  marshallese: "/dashboard/community/marshallese",
+  countyDemocratsHub: "/dashboard/community/county-democrats",
+  communityHub: "/dashboard/community",
+} as const;
+
+export const communityDashboardsNavHref = communityPartnerDashboardHrefs.communityHub;
+
 export function fieldDirectorHref(): string {
   return FIELD_DIRECTOR_BASE;
 }
