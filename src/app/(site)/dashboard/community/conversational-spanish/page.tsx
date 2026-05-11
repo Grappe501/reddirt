@@ -1,46 +1,40 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { PageHero } from "@/components/blocks/PageHero";
-import { Button } from "@/components/ui/Button";
-import { ContentContainer } from "@/components/layout/ContentContainer";
-import { FullBleedSection } from "@/components/layout/FullBleedSection";
+import { CampaignCountdown } from "@/components/campaign/CampaignCountdown";
+import { CountyRegistrationGoalCard } from "@/components/dashboard/vos/CountyRegistrationGoalCard";
 
 export const metadata: Metadata = {
-  title: "Conversational Spanish · Community region (scaffold)",
-  description: "Placeholder for the conversational Spanish community region dashboard — follows Muslim Community shell pattern.",
+  title: "Conversational Spanish · Community region",
+  description: "Scaffold dashboard — mirrors Muslim Community lanes when partner-ready.",
 };
 
-export default function ConversationalSpanishRegionScaffoldPage() {
+export default function ConversationalSpanishOverviewPage() {
   return (
-    <>
-      <PageHero
-        eyebrow="Community region · scaffold"
-        title="Conversational Spanish region"
-        subtitle="Architecture will mirror the Muslim Community dashboard: Overview, P5/VR, Events, Social, Youth, Women's outreach modules, resources, messages, and rollup — with Spanish-first content packs."
-      >
-        <Button href="/dashboard/community/muslim" variant="outline">
-          Muslim Community (reference)
-        </Button>
-        <Button href="/dashboard/community" variant="outline">
-          All community regions
-        </Button>
-      </PageHero>
-      <FullBleedSection padY variant="subtle">
-        <ContentContainer className="max-w-2xl space-y-4">
-          <p className="font-body text-sm text-kelly-text/85">
-            This route reserves URL space and product expectations for the next community region after the Muslim Community
-            dashboard reaches partner-ready quality. No lane data is wired yet.
-          </p>
-          <p className="font-body text-sm text-kelly-text/75">
-            Docs:{" "}
-            <Link href="/volunteer/resources" className="font-semibold text-kelly-blue underline">
-              Volunteer resources
-            </Link>
-            · campaign-ops community equity master plan in repo.
-          </p>
-        </ContentContainer>
-      </FullBleedSection>
-    </>
+    <div className="space-y-6">
+      <div className="grid gap-4 lg:grid-cols-2 lg:items-stretch">
+        <CampaignCountdown variant="compact" className="h-full" />
+        <CountyRegistrationGoalCard mode="community" className="h-full" />
+      </div>
+
+      <div className="space-y-3 rounded-2xl border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
+        <p className="font-body text-sm text-kelly-text/85">
+          This region reserves URL space and lane expectations for Spanish-first civic organizing — same triad discipline as
+          geographic teams (Events · Social · P5/VR). Lane modules and KPIs ship after Muslim Community reaches partner-ready
+          quality.
+        </p>
+        <p className="font-body text-sm text-kelly-text/75">
+          Reference:{" "}
+          <Link href="/dashboard/community/muslim" className="font-semibold text-kelly-blue underline">
+            Muslim Community dashboard
+          </Link>
+          . Resources hub:{" "}
+          <Link href="/volunteer/resources" className="font-semibold text-kelly-blue underline">
+            Volunteer resources
+          </Link>
+          .
+        </p>
+      </div>
+    </div>
   );
 }
