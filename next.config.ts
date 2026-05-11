@@ -147,8 +147,12 @@ const nextConfig: NextConfig = {
    * dependency tracer. Without this, Netlify/Vercel serverless bundles can miss Markdown at runtime
    * (broken reader / chunk APIs). Keys are request path globs per Next.js `outputFileTracingIncludes`.
    */
+  /**
+   * Keep tracing tight: the campaign manuals are large. Including them for every `/admin/**` route
+   * balloons the Netlify `___netlify-server-handler` bundle (250 MB deploy cap).
+   */
   outputFileTracingIncludes: {
-    "/admin/**/*": [
+    "/admin/campaign-strategy/**/*": [
       "./docs/kelly-grappe-sos-strategic-plan-manual/**/*",
       "./campaign-system-manual/**/*",
     ],
@@ -158,7 +162,9 @@ const nextConfig: NextConfig = {
     ],
   },
   // pdf-parse must stay external: its test harness references missing test/ PDFs and breaks the bundler.
-  serverExternalPackages: ["@prisma/client", "pdf-parse"],
+  // googleapis is enormous when bundled; load from node_modules at runtime on Netlify.
+  // sharp ships native binaries — externalize for a smaller traced server artifact.
+  serverExternalPackages: ["@prisma/client", "pdf-parse", "googleapis", "sharp"],
 };
 
 export default nextConfig;
