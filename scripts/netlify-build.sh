@@ -110,6 +110,17 @@ fi
 echo ">>> prisma generate"
 npx prisma generate
 
+# Prisma P3009: if a migration failed once, `_prisma_migrations` keeps it as failed and
+# `migrate deploy` will not apply anything until it is cleared.
+#
+# One-time recovery (after fixing the migration SQL in git): in Netlify → Environment variables set:
+#   PRISMA_RESOLVE_ROLLED_BACK=20260516143000_communication_intelligence_ingest
+# Trigger a deploy; when green, **remove** that variable so future failures are not hidden.
+if [ -n "${PRISMA_RESOLVE_ROLLED_BACK:-}" ]; then
+  echo ">>> prisma migrate resolve --rolled-back ${PRISMA_RESOLVE_ROLLED_BACK}"
+  npx prisma migrate resolve --rolled-back "$PRISMA_RESOLVE_ROLLED_BACK"
+fi
+
 echo ">>> prisma migrate deploy"
 npx prisma migrate deploy
 
