@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { Team } from "@/types/dashboard";
 import { resolveTeamDashboardLabel } from "@/lib/dashboard/dashboard-labels";
+import { fieldDirectorHref } from "@/lib/field-structure/field-dashboard-paths";
 import { TeamDashboardHero } from "@/components/dashboard/vos/TeamDashboardHero";
 import { DashboardCompactFooter } from "@/components/dashboard/vos/DashboardCompactFooter";
 
@@ -71,6 +72,12 @@ export function TeamDashboardChrome({
               );
             })}
           </nav>
+          <p className="font-body text-xs text-kelly-text/65">
+            <Link href={fieldDirectorHref()} className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
+              Field command center
+            </Link>{" "}
+            — statewide director, regional boards, and county drill-down (preview).
+          </p>
         </div>
       </header>
 

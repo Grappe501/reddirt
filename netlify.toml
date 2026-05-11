@@ -3,6 +3,11 @@
 # Prisma needs DATABASE_URL at build time. Set it in Netlify env, or rely on Neon’s
 # NETLIFY_DATABASE_URL (the script maps it to DATABASE_URL).
 # Optional at runtime: OPENAI_* for AI/search. Ingest is manual/scheduled — not in build.
+#
+# “Whole website” deploy is expected: this repo is one Next.js app (public site + /admin + /dashboard).
+# There is no separate Netlify “field-only” bundle unless you split into another repository or site.
+# If the GitHub repo root is not this app (e.g. monorepo with RedDirt in a subfolder), set in Netlify UI:
+#   Site settings → Build & deploy → Base directory → RedDirt   (or the folder that contains this netlify.toml)
 
 [build]
   command = "bash scripts/netlify-build.sh"

@@ -166,6 +166,10 @@ export function regionMetaForId(id: ArCommandRegionId): ArCommandRegionMeta | un
   return ARKANSAS_COMMAND_REGIONS.find((r) => r.id === id);
 }
 
+export function isValidArCommandRegionId(id: string): id is ArCommandRegionId {
+  return ARKANSAS_COMMAND_REGIONS.some((r) => r.id === id);
+}
+
 /** Counties grouped by region (fixed region sort), each group sorted by FIPS. */
 export function countiesByRegionOrdered(): ReadonlyMap<ArCommandRegionId, ArkansasRegistryCounty[]> {
   const m = new Map<ArCommandRegionId, ArkansasRegistryCounty[]>();

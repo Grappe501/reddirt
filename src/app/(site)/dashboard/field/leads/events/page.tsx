@@ -1,0 +1,40 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+
+import { FieldBreadcrumbs } from "@/components/dashboard/field/FieldBreadcrumbs";
+import { fieldDirectorHref, fieldRegionsIndexHref } from "@/lib/field-structure/field-dashboard-paths";
+
+export const metadata: Metadata = {
+  title: "Lead · Events · Field",
+  description: "Template statewide events lead dashboard for field operations.",
+};
+
+export default function FieldLeadEventsPage() {
+  return (
+    <>
+      <FieldBreadcrumbs
+        items={[
+          { label: "Field Director", href: fieldDirectorHref() },
+          { label: "Lead · Events" },
+        ]}
+      />
+      <h2 className="font-heading text-2xl font-bold text-kelly-text">Lead · Events</h2>
+      <p className="mt-3 max-w-3xl font-body text-sm leading-relaxed text-kelly-text/80">
+        Tablings, trainings, house parties, and county party rhythm are coordinated here before they cascade into
+        regional and county execution boards.
+      </p>
+      <ul className="mt-6 space-y-3 font-body text-sm">
+        <li>
+          <Link href={fieldRegionsIndexHref()} className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
+            Regions → counties → events lane
+          </Link>
+        </li>
+        <li>
+          <Link href={fieldDirectorHref()} className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
+            Back to Field Director overview
+          </Link>
+        </li>
+      </ul>
+    </>
+  );
+}
