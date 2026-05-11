@@ -16,9 +16,12 @@ if [ -n "${DATABASE_URL:-}" ]; then
 fi
 
 # Strip a full-line value accidentally wrapped in ASCII double quotes.
-if [ "${#DATABASE_URL}" -ge 2 ] && [ "${DATABASE_URL:0:1}" = '"' ] && [ "${DATABASE_URL: -1}" = '"' ]; then
-  DATABASE_URL="${DATABASE_URL:1:$((${#DATABASE_URL} - 2))}"
-  export DATABASE_URL
+# Must guard: with `set -u`, an unset DATABASE_URL would error on ${#DATABASE_URL} before the empty check below.
+if [ -n "${DATABASE_URL:-}" ]; then
+  if [ "${#DATABASE_URL}" -ge 2 ] && [ "${DATABASE_URL:0:1}" = '"' ] && [ "${DATABASE_URL: -1}" = '"' ]; then
+    DATABASE_URL="${DATABASE_URL:1:$((${#DATABASE_URL} - 2))}"
+    export DATABASE_URL
+  fi
 fi
 
 # Block accidental local Docker URLs — Netlify cannot reach your laptop.
