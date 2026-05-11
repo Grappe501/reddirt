@@ -142,6 +142,11 @@ model User {
   emailSendExecutionsApproved         EmailSendExecution[]                @relation("EmailSendExecutionApprovedBy")
   emailSendExecutionsSent             EmailSendExecution[]                @relation("EmailSendExecutionSentBy")
   emailSendApprovalsDecided           EmailSendApproval[]                 @relation("EmailSendApprovalDecidedBy")
+  /// VOS: volunteer triad teams created by this user (solo signup provisions a team).
+  volunteerOpsTeamsCreated            VolunteerOpsTeam[]                  @relation("VolunteerOpsTeamCreator")
+  volunteerOpsTeamsUpstreamContact    VolunteerOpsTeam[]                  @relation("VolunteerOpsTeamUpstream")
+  volunteerOpsTeamMemberships         VolunteerOpsTeamMember[]
+  volunteerOpsTeamInvitationsSent     VolunteerOpsTeamInvitation[]        @relation("VolunteerOpsTeamInvitationInviter")
 
   @@schema("public")
 }
@@ -3577,6 +3582,98 @@ model TeamRoleAssignment {
 
   @@index([userId, roleKey])
   @@index([countyId, roleKey])
+  @@schema("public")
+}
+
+/// VOS-1: Kelly field triad team (starts with one volunteer; grows to three core lanes).
+enum VolunteerOpsTeamStatus {
+  BUILDING
+  ACTIVE
+  EXPANDING
+  DORMANT
+  ARCHIVED
+
+  @@schema("public")
+}
+
+enum VolunteerOpsTeamInviteStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+  IGNORED
+  EXPIRED
+
+  @@schema("public")
+}
+
+enum VolunteerOpsTeamMemberRole {
+  EVENTS
+  SOCIAL_MEDIA
+  POWER_OF_FIVE
+  GENERAL
+
+  @@schema("public")
+}
+
+model VolunteerOpsTeam {
+  id                    String                 @id @default(cuid())
+  slug                  String                 @unique
+  displayName           String
+  teamCode              String?
+  geographyLabel        String?
+  level                 String                 @default("county")
+  status                VolunteerOpsTeamStatus @default(BUILDING)
+  upstreamContactUserId String?
+  upstreamContact       User?                  @relation("VolunteerOpsTeamUpstream", fields: [upstreamContactUserId], references: [id], onDelete: SetNull)
+  createdByUserId       String
+  createdBy             User                   @relation("VolunteerOpsTeamCreator", fields: [createdByUserId], references: [id], onDelete: Restrict)
+  adminUserIds          String[]               @default([])
+  powerOfFiveSummary    Json?
+  weeklyBriefing        String?                @db.Text
+  metadataJson          Json?
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+
+  members     VolunteerOpsTeamMember[]
+  invitations VolunteerOpsTeamInvitation[]
+
+  @@index([status, createdAt])
+  @@index([createdByUserId])
+  @@schema("public")
+}
+
+model VolunteerOpsTeamMember {
+  id                  String                     @id @default(cuid())
+  teamId              String
+  team                VolunteerOpsTeam           @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  userId              String
+  user                User                       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role                VolunteerOpsTeamMemberRole
+  isTemporaryUpstream Boolean                    @default(false)
+  createdAt           DateTime                   @default(now())
+
+  @@unique([teamId, userId])
+  @@index([teamId])
+  @@index([userId])
+  @@schema("public")
+}
+
+model VolunteerOpsTeamInvitation {
+  id              String                       @id @default(cuid())
+  teamId          String
+  team            VolunteerOpsTeam             @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  emailNormalized String
+  role            VolunteerOpsTeamMemberRole
+  status          VolunteerOpsTeamInviteStatus @default(PENDING)
+  invitedByUserId String
+  invitedBy       User                         @relation("VolunteerOpsTeamInvitationInviter", fields: [invitedByUserId], references: [id], onDelete: Restrict)
+  tokenHash       String                       @unique
+  expiresAt       DateTime?
+  createdAt       DateTime                     @default(now())
+  respondedAt     DateTime?
+
+  @@index([teamId, status])
+  @@index([emailNormalized])
   @@schema("public")
 }
 
