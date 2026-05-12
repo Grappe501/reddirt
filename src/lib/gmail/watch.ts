@@ -2,7 +2,7 @@
  * Gmail `users.watch` / `users.stop` — metadata scope only; no bodies; no queue side effects.
  */
 
-import type { gmail_v1 } from "googleapis";
+import type { gmail_v1 } from "@googleapis/gmail";
 import type { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { getGmailApiForStaffUser, getConnectedStaffGmailRow } from "@/lib/gmail/client";

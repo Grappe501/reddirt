@@ -18,6 +18,9 @@
     "typecheck": "tsc --noEmit",
     "nightly:self-build:preflight": "node scripts/nightly-self-build-preflight.mjs",
     "email:db:diagnose": "node scripts/email-command-center-db-diagnose.mjs",
+    "email:baseline:recon": "node scripts/email-command-center-baseline-recon.mjs",
+    "email:baseline:plan": "node scripts/email-command-center-baseline-plan.mjs",
+    "inspect:core-schema-drift": "node scripts/inspect-core-schema-drift.cjs",
     "email:command-center:preflight": "node scripts/email-command-center-preflight.mjs",
     "email:contact-import:gate": "prisma migrate deploy && node scripts/email-command-center-preflight.mjs && npm run check",
     "email:no-send-scan": "node scripts/email-command-center-no-send-scan.mjs",
@@ -96,6 +99,9 @@
     "brain:ingest:tree:training": "tsx scripts/ingest-campaign-folder.ts --dir \"H:/SOSWebsite/campaign information for ingestion\" --include-zips --brain-governed --community-training"
   },
   "dependencies": {
+    "@googleapis/calendar": "^12.0.0",
+    "@googleapis/gmail": "^15.0.0",
+    "@googleapis/people": "^6.0.0",
     "@hookform/resolvers": "^3.9.1",
     "@prisma/client": "^5.22.0",
     "@sendgrid/eventwebhook": "^8.0.0",
@@ -111,7 +117,6 @@
     "framer-motion": "^11.18.2",
     "github-slugger": "^2.0.0",
     "google-auth-library": "^10.6.2",
-    "googleapis": "^171.4.0",
     "jszip": "^3.10.1",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.460.0",

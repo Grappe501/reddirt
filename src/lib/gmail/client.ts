@@ -2,7 +2,7 @@
  * Server-only Gmail API client wiring (no token exposure).
  */
 
-import { google } from "googleapis";
+import { gmail } from "@googleapis/gmail";
 import { prisma } from "@/lib/db";
 import { getGmailAuthForUser } from "@/lib/integrations/gmail/gmail-api";
 
@@ -14,7 +14,7 @@ export async function getGmailApiForStaffUser(userId: string) {
   } catch {
     return null;
   }
-  return google.gmail({ version: "v1", auth });
+  return gmail({ version: "v1", auth });
 }
 
 export async function getConnectedStaffGmailRow(userId: string) {

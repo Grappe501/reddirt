@@ -1,6 +1,6 @@
 import "server-only";
 
-import type { calendar_v3 } from "googleapis";
+import type { calendar_v3 } from "@googleapis/calendar";
 import { prisma } from "@/lib/db";
 import { getCalendarApiForSource } from "@/lib/integrations/google/calendar";
 

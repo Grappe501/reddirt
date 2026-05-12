@@ -3,7 +3,7 @@
  * Stale startHistoryId → 404 → treat as full metadata re-seed (EMAIL-GMAIL-SYNC-1.1 handles reporting only).
  */
 
-import type { gmail_v1 } from "googleapis";
+import type { gmail_v1 } from "@googleapis/gmail";
 
 export type GmailHistoryDryRunResult =
   | {

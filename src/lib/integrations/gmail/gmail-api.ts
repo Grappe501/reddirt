@@ -1,4 +1,4 @@
-import { google } from "googleapis";
+import { gmail } from "@googleapis/gmail";
 import type { OAuth2Client } from "google-auth-library";
 import { createGmailOAuth2Client } from "./oauth";
 import { prisma } from "@/lib/db";
@@ -68,11 +68,11 @@ export async function sendStaffGmailMessage(params: {
     body: params.body,
   });
   const raw = b64url(Buffer.from(rfc, "utf8"));
-  const gmail = google.gmail({ version: "v1", auth });
+  const gmailApi = gmail({ version: "v1", auth });
   const body: { raw: string; threadId?: string } = { raw };
   if (params.threadId) body.threadId = params.threadId;
   try {
-    const res = await gmail.users.messages.send({ userId: "me", requestBody: body });
+    const res = await gmailApi.users.messages.send({ userId: "me", requestBody: body });
     return { id: res.data.id ?? "", threadId: res.data.threadId ?? null };
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
@@ -83,7 +83,7 @@ export async function sendStaffGmailMessage(params: {
 export async function fetchGmailUserEmail(userId: string): Promise<string | null> {
   const auth = await getGmailAuthForUser(userId);
   if (!auth) return null;
-  const gmail = google.gmail({ version: "v1", auth });
-  const p = await gmail.users.getProfile({ userId: "me" });
+  const gmailApi = gmail({ version: "v1", auth });
+  const p = await gmailApi.users.getProfile({ userId: "me" });
   return p.data.emailAddress ?? null;
 }

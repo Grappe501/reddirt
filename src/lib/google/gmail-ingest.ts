@@ -1,7 +1,7 @@
 import "server-only";
 
 import { createHash } from "crypto";
-import type { gmail_v1 } from "googleapis";
+import type { gmail_v1 } from "@googleapis/gmail";
 import { GMAIL_METADATA_HEADER_NAMES } from "@/lib/gmail/metadata";
 import { parseEmailAddressList, normalizeEmail, extractDomain } from "@/lib/communications/email-address";
 

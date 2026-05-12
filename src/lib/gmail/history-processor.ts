@@ -3,7 +3,7 @@
  * EMAIL-GMAIL-OPS-HISTORY-1.3: stale-cursor guard, pending Pub/Sub signal handling, safe error persistence.
  */
 
-import type { gmail_v1 } from "googleapis";
+import type { gmail_v1 } from "@googleapis/gmail";
 import type { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { getGmailApiForStaffUser, getConnectedStaffGmailRow } from "@/lib/gmail/client";

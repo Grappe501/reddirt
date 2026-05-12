@@ -3,7 +3,7 @@
  * Uses calendarList.list + events.list only — no inserts, updates, deletes, watches, or sync token writes.
  */
 import type { CalendarSource } from "@prisma/client";
-import type { calendar_v3 } from "googleapis";
+import type { calendar_v3 } from "@googleapis/calendar";
 import { getCalendarApiForSource } from "@/lib/integrations/google/calendar";
 import { getGoogleCalendarEnv, isGoogleCalendarConfigured } from "@/lib/calendar/env";
 

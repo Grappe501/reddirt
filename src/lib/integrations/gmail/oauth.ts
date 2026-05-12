@@ -1,4 +1,4 @@
-import { google } from "googleapis";
+import { OAuth2Client } from "google-auth-library";
 import {
   getGmailEnvForOAuth,
   getRequestedGmailScopes,
@@ -10,7 +10,7 @@ export function createGmailOAuth2Client() {
     throw new Error("Gmail OAuth is not configured (Gmail/Calendar client id+secret+redirect).");
   }
   const e = getGmailEnvForOAuth();
-  return new google.auth.OAuth2(e.clientId, e.clientSecret, e.redirectUri);
+  return new OAuth2Client(e.clientId, e.clientSecret, e.redirectUri);
 }
 
 /** Build Google consent URL with signed `state` (caller supplies state string). */

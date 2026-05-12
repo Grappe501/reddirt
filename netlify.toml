@@ -9,10 +9,12 @@
 # If the GitHub repo root is not this app (e.g. monorepo with RedDirt in a subfolder), set in Netlify UI:
 #   Site settings → Build & deploy → Base directory → RedDirt   (or the folder that contains this netlify.toml)
 #
-# Publish directory (critical):
-#   Do NOT set "Publish directory" to `.next` in Netlify UI. If publish shows `publishOrigin: ui` and `.next`,
-#   clear it (leave empty / default). @netlify/plugin-nextjs owns deploy outputs; a manual `.next` publish
-#   can explode `___netlify-server-handler` past Netlify’s 250 MB function limit or fail uploads.
+# Publish directory (Netlify UI):
+#   `publish: .next` with the Next.js Runtime is normal (the runtime’s default is `.next`).
+#   Do NOT point "Publish directory" at the repo root or a folder without a Next `BUILD_ID` —
+#   that breaks the runtime and can produce broken / oversized deploy artifacts.
+#   If you changed publish away from `.next`, reset Site settings → Build → Publish directory to
+#   empty so the framework preset applies, or set it explicitly to `.next` for this app root.
 
 [build]
   command = "bash scripts/netlify-build.sh"

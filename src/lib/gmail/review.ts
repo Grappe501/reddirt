@@ -3,7 +3,7 @@
  * No bodies, no attachments, no OpenAI.
  */
 
-import type { gmail_v1 } from "googleapis";
+import type { gmail_v1 } from "@googleapis/gmail";
 import type {
   EmailWorkflowPriority,
   EmailWorkflowSourceType,

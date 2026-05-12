@@ -1,7 +1,7 @@
 import "server-only";
 
 import type { OAuth2Client } from "google-auth-library";
-import { google } from "googleapis";
+import { people } from "@googleapis/people";
 
 export type GoogleContactDto = {
   googleResourceName: string;
@@ -20,8 +20,8 @@ export async function listGooglePeopleConnectionsPage(input: {
   pageToken?: string;
 }): Promise<{ people: GoogleContactDto[]; nextPageToken: string | undefined; rawError?: string }> {
   try {
-    const people = google.people({ version: "v1", auth: input.auth });
-    const res = await people.people.connections.list({
+    const peopleApi = people({ version: "v1", auth: input.auth });
+    const res = await peopleApi.people.connections.list({
       resourceName: "people/me",
       personFields: "names,emailAddresses,phoneNumbers,metadata",
       pageSize: Math.min(Math.max(input.pageSize, 1), 1000),

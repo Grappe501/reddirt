@@ -2,7 +2,7 @@
  * Gmail metadata-only reads (gmail.metadata scope). No bodies, no attachments.
  */
 
-import type { gmail_v1 } from "googleapis";
+import type { gmail_v1 } from "@googleapis/gmail";
 
 export const GMAIL_METADATA_HEADER_NAMES = [
   "From",

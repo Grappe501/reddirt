@@ -2,8 +2,8 @@
  * Google Calendar API wrapper. Requires OAuth tokens on `CalendarSource.oauthJson`
  * and env from `getGoogleCalendarEnv` for initial consent.
  */
-import type { calendar_v3 } from "googleapis";
-import { google } from "googleapis";
+import type { calendar_v3 } from "@googleapis/calendar";
+import { calendar } from "@googleapis/calendar";
 import type { CalendarSource } from "@prisma/client";
 import { createOAuth2Client } from "./auth";
 import { prisma } from "@/lib/db";
@@ -17,7 +17,7 @@ export function getCalendarApiForSource(source: CalendarSource) {
   }
   const client = createOAuth2Client();
   client.setCredentials({ refresh_token: o.refresh_token, access_token: o.access_token, expiry_date: o.expiry_date });
-  return google.calendar({ version: "v3", auth: client });
+  return calendar({ version: "v3", auth: client });
 }
 
 export async function listGoogleCalendars(sourceId: string) {
