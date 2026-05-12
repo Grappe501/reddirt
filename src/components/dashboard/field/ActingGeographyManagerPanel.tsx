@@ -5,8 +5,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 
 /**
- * Template UX: first volunteer into a geography is the acting dashboard manager until
- * downstream teams (city / precinct / neighborhood) are provisioned. Persistence is a later pass.
+ * First volunteer into a geography is treated as the acting dashboard lead until downstream teams are filled in.
+ * Choices here are a UI preview until preferences can be saved to the volunteer profile.
  */
 export function ActingGeographyManagerPanel({ geographyLabel }: { geographyLabel: string }) {
   const [choice, setChoice] = useState<"acting" | "drill" | null>(null);
@@ -39,8 +39,8 @@ export function ActingGeographyManagerPanel({ geographyLabel }: { geographyLabel
       </div>
       {choice ? (
         <p className="mt-4 rounded-lg border border-amber-200 bg-white/80 px-3 py-2 font-body text-xs leading-relaxed text-amber-950/85">
-          <strong>Preview only:</strong> your choice ({choice === "acting" ? "acting lead" : "wait for drill-down"}) is
-          not saved yet. Wire-up will record intent on the volunteer profile when the field lane database is ready.
+          <strong>Heads up:</strong> your choice ({choice === "acting" ? "acting lead" : "wait for drill-down"}) is not saved yet.
+          Campaign staff will connect this preference to your volunteer profile after field tools finish rollout.
         </p>
       ) : null}
     </section>

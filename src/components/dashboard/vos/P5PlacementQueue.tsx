@@ -130,7 +130,7 @@ export function P5PlacementQueue({ leads, team, memberLabel }: { leads: TeamPowe
   if (!rows.length) {
     return (
       <p className="font-body text-sm text-kelly-text/70">
-        No placement leads in the mock queue. When signups land from forms or field intake, triads can route people here
+        No placement leads are in the queue yet. When signups arrive from the volunteer form or field intake, triads can route people here
         before adding them to a specific Power of 5 list.
       </p>
     );
@@ -221,7 +221,7 @@ export function P5PlacementQueue({ leads, team, memberLabel }: { leads: TeamPowe
                       type="button"
                       onClick={() => {
                         updateRow(row.id, { fitCheckStatus: "approved", inviteLinkStatus: "ready-to-send", workflowStatus: "pending-fit-check" });
-                        showToast("Marked approved (demo)");
+                        showToast("Marked approved (practice)");
                       }}
                       className="whitespace-nowrap rounded border border-kelly-text/15 bg-kelly-page px-2 py-1 text-[10px] font-semibold text-kelly-deep hover:bg-kelly-fog"
                     >
@@ -255,8 +255,8 @@ export function P5PlacementQueue({ leads, team, memberLabel }: { leads: TeamPowe
         </table>
       </div>
       <p className="font-body text-xs text-kelly-text/60">
-        Mock actions update this browser view only. Production workflow will persist state and real invite URLs per team (
-        <span className="font-mono">teamInviteUrl</span>, <span className="font-mono">teamQrCodeUrl</span>).
+        Actions here update this browser for now. When live workflow launches, fit checks, invites, and placements will save to the
+        campaign system with real join links for each team.
       </p>
     </div>
   );

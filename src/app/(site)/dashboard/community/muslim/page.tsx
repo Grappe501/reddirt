@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { CampaignCountdown } from "@/components/campaign/CampaignCountdown";
 import { MuslimCommunityReviewBanner } from "@/components/dashboard/community/MuslimCommunityReviewBanner";
+import { CountyRegistrationGoalCard } from "@/components/dashboard/vos/CountyRegistrationGoalCard";
 import {
   MUSLIM_CROSS_LANE_COORDINATION,
   MUSLIM_REGION_LEADERSHIP_MODEL,
@@ -9,13 +11,18 @@ import {
 
 export const metadata: Metadata = {
   title: "Muslim Community Region · Overview",
-  description: "Community region dashboard — leadership model, cross-lane coordination, draft pending partner review.",
+  description: "Community region dashboard — leadership model and cross-lane coordination; partner review where noted.",
 };
 
 export default function MuslimCommunityOverviewPage() {
   return (
     <div className="space-y-8">
       <MuslimCommunityReviewBanner />
+
+      <div className="grid gap-4 lg:grid-cols-2 lg:items-stretch">
+        <CampaignCountdown variant="compact" className="h-full" />
+        <CountyRegistrationGoalCard mode="community" className="h-full" />
+      </div>
 
       <div>
         <h2 className="font-heading text-xl font-bold text-kelly-navy">Leadership structure</h2>
@@ -55,7 +62,10 @@ export default function MuslimCommunityOverviewPage() {
       </div>
 
       <p className="font-body text-sm text-kelly-text/75">
-        Full narrative, resource outlines, and anchors:{" "}
+        <Link href="/dashboard/field" className="font-semibold text-kelly-blue underline">
+          Field Director dashboard
+        </Link>{" "}
+        ·{" "}
         <Link href="/volunteer/resources/muslim-community" className="font-semibold text-kelly-blue underline">
           Volunteer resource hub (Muslim Community)
         </Link>

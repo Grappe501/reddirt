@@ -53,7 +53,7 @@ export const ERNIE_REVIEW_LABELS: Record<ErnieReviewStatus, string> = {
 export const MOCKUP_STATUS_LABELS: Record<VolunteerResourceMockupStatus, string> = {
   not_started: "Not started",
   draft_needed: "Draft needed",
-  mockup_ready: "Mockup ready",
+  mockup_ready: "Design preview",
   approved_mockup: "Mockup approved",
 };
 
@@ -169,7 +169,7 @@ export type VolunteerResource = {
 export const VOLUNTEER_RESOURCE_PUBLICATION_LABELS: Record<VolunteerResourcePublicationStatus, string> = {
   draft: "Draft",
   internal_review: "Internal review",
-  mockup_ready: "Mockup ready",
+  mockup_ready: "Design preview",
   approved: "Approved",
   published: "Published",
 };

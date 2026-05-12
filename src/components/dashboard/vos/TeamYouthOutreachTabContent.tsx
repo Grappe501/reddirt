@@ -224,8 +224,8 @@ export function TeamYouthOutreachTabContent({ team, teamSlug }: { team: Team; te
       <section id="youth-campus-map" className="scroll-mt-28 space-y-4">
         <h2 className="font-heading text-xl font-bold text-kelly-navy">Campus map</h2>
         <p className="font-body text-sm text-kelly-text/80">
-          Track high schools, colleges, trade schools, orgs, leaders, and registration moments — demo rows below; production
-          wire to your data model.
+          Track high schools, colleges, trade schools, orgs, leaders, and registration moments — sample rows below while partner data
+          is being connected.
         </p>
         <div className="overflow-x-auto rounded-xl border border-kelly-text/10">
           <table className="min-w-full divide-y divide-kelly-text/10 font-body text-sm">
@@ -263,7 +263,7 @@ export function TeamYouthOutreachTabContent({ team, teamSlug }: { team: Team; te
           Gamification keeps momentum honest — celebrate launches and cross-campus courage, not spam volume.
         </p>
         <div className="rounded-xl border border-kelly-gold/35 bg-white px-4 py-3">
-          <p className="font-body text-[10px] font-bold uppercase text-kelly-text/50">Current level (demo)</p>
+          <p className="font-body text-[10px] font-bold uppercase text-kelly-text/50">Current level (planning view)</p>
           <p className="mt-1 font-heading text-lg font-bold text-kelly-navy">{y.recognitionLevelCurrent}</p>
           <p className="mt-2 font-body text-xs text-kelly-text/65">Ladder: {y.recognitionLevels.join(" → ")}</p>
         </div>
@@ -490,7 +490,7 @@ export function TeamYouthOutreachTabContent({ team, teamSlug }: { team: Team; te
       <section id="youth-metrics" className="scroll-mt-28 space-y-4">
         <h2 className="font-heading text-xl font-bold text-kelly-navy">Metrics</h2>
         <div>
-          <p className="font-body text-xs font-bold uppercase text-kelly-text/50">Geographic / regional roll-up (demo)</p>
+          <p className="font-body text-xs font-bold uppercase text-kelly-text/50">Geographic / regional roll-up (planning view)</p>
           <dl className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {y.geographicKpis.map((k) => (
               <div key={k.id} className="rounded-xl border border-kelly-text/10 bg-white px-4 py-3">
@@ -519,7 +519,7 @@ export function TeamYouthOutreachTabContent({ team, teamSlug }: { team: Team; te
       <section id="youth-twenty" className="scroll-mt-28 space-y-4 rounded-2xl border border-kelly-text/10 bg-white p-6 md:p-8">
         <h2 className="font-heading text-xl font-bold text-kelly-navy">Youth 20-square metrics</h2>
         <p className="font-body text-sm text-kelly-text/75">
-          Same ■/□ convention as the team Overview — 5% per square. Values derive from Youth KPI progress (demo).
+          Same ■/□ convention as the team Overview — 5% per square. Values follow Youth KPI progress in this planning view.
         </p>
         <div className="grid gap-6 md:grid-cols-2">
           {y.twentySquareYouthMetrics.map((m) => (

@@ -6,7 +6,7 @@ import { CountyRegistrationGoalCard } from "@/components/dashboard/vos/CountyReg
 
 export const metadata: Metadata = {
   title: "Conversational Spanish · Community region",
-  description: "Scaffold dashboard — mirrors Muslim Community lanes when partner-ready.",
+  description: "Spanish-first civic organizing hub — expanding after campaign and community review.",
 };
 
 export default function ConversationalSpanishOverviewPage() {
@@ -19,16 +19,19 @@ export default function ConversationalSpanishOverviewPage() {
 
       <div className="space-y-3 rounded-2xl border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
         <p className="font-body text-sm text-kelly-text/85">
-          This region reserves URL space and lane expectations for Spanish-first civic organizing — same triad discipline as
-          geographic teams (Events · Social · P5/VR). Lane modules and KPIs ship after Muslim Community reaches partner-ready
-          quality.
+          This region reserves space for Spanish-first civic organizing — same triad discipline as geographic teams (Events · Social ·
+          Power of 5 / VR). Lane modules and KPIs grow once the Muslim Community hub reaches partner-ready quality and this region
+          clears community review.
         </p>
         <p className="font-body text-sm text-kelly-text/75">
-          Reference:{" "}
+          <Link href="/dashboard/field" className="font-semibold text-kelly-blue underline">
+            Field Director dashboard
+          </Link>
+          {" · "}
           <Link href="/dashboard/community/muslim" className="font-semibold text-kelly-blue underline">
             Muslim Community dashboard
           </Link>
-          . Resources hub:{" "}
+          {" · "}
           <Link href="/volunteer/resources" className="font-semibold text-kelly-blue underline">
             Volunteer resources
           </Link>

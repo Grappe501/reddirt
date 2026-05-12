@@ -44,7 +44,7 @@ function ActionCard({
     return (
       <div className="flex h-full flex-col rounded-xl border border-dashed border-kelly-text/20 bg-kelly-fog/30 p-4">
         <p className="font-body text-[10px] font-bold uppercase tracking-wide text-kelly-text/45">{label}</p>
-        <p className="mt-3 font-body text-sm text-kelly-text/60">No scripted task in this slot (preview list).</p>
+        <p className="mt-3 font-body text-sm text-kelly-text/60">This slot opens when earlier priorities are finished.</p>
       </div>
     );
   }
@@ -71,10 +71,13 @@ function ActionCard({
       <DashboardDisclosure summary="Learn more" className="mt-2 border-kelly-text/8">
         <p className="font-body text-xs leading-relaxed text-kelly-text/80">{step.dashboardTaskCopy}</p>
         <p className="mt-2 font-body text-[11px] text-kelly-text/60">
-          Email scaffold (not sent automatically): <span className="font-semibold text-kelly-deep">{step.emailSubject}</span>
+          Draft email subject (opens in your mail app — not sent from this page):{" "}
+          <span className="font-semibold text-kelly-deep">{step.emailSubject}</span>
         </p>
       </DashboardDisclosure>
-      <p className="mt-3 font-body text-[10px] text-kelly-text/50">Preview action — persistence coming soon.</p>
+      <p className="mt-3 font-body text-[10px] text-kelly-text/50">
+        Marking complete here saves on this device until the campaign connects live task tracking.
+      </p>
       <div className="mt-auto flex flex-col gap-2 pt-3">
         <button
           type="button"
@@ -173,10 +176,10 @@ export function TeamActionQueuePanel({ team, teamSlug }: { team: Team; teamSlug:
 
       {lastDraft ? (
         <div className="mt-4 rounded-xl border border-kelly-navy/15 bg-kelly-navy/[0.03] p-4">
-          <p className="font-body text-[10px] font-bold uppercase tracking-wide text-kelly-navy/60">Campaign update draft (preview)</p>
+          <p className="font-body text-[10px] font-bold uppercase tracking-wide text-kelly-navy/60">Campaign update draft</p>
           <p className="mt-1 font-body text-xs text-kelly-text/70">
-            Ops inbox: <span className="font-mono text-kelly-deep">{OPS_NOTIFICATION_PRIMARY_PUBLIC}</span> — human review before
-            send. Not delivered automatically in Script 6.
+            Ops inbox: <span className="font-mono text-kelly-deep">{OPS_NOTIFICATION_PRIMARY_PUBLIC}</span> — please review before
+            sending. This page does not deliver email automatically.
           </p>
           <p className="mt-2 font-body text-sm font-semibold text-kelly-navy">{lastDraft.subject}</p>
           <pre className="mt-2 max-h-40 overflow-auto whitespace-pre-wrap rounded-md border border-kelly-text/10 bg-white p-3 font-body text-[11px] text-kelly-text/85">
@@ -196,8 +199,8 @@ export function TeamActionQueuePanel({ team, teamSlug }: { team: Team; teamSlug:
 
       <DashboardDisclosure summary="View full sequence (hidden upcoming steps)" className="mt-5">
         <p className="font-body text-xs text-kelly-text/75">
-          Steps 4–5 in your current queue window stay here so the overview stays light. Checked items are completed in this browser
-          session only.
+          Steps 4–5 in your current queue window stay here so the overview stays light. Checked items are saved in this browser only
+          until the campaign connects live progress tracking.
         </p>
         {view.hiddenFutureSteps.length ? (
           <ul className="mt-3 space-y-2">
@@ -209,7 +212,7 @@ export function TeamActionQueuePanel({ team, teamSlug }: { team: Team; teamSlug:
             ))}
           </ul>
         ) : (
-          <p className="mt-3 font-body text-xs text-kelly-text/60">No additional hidden steps in the current window.</p>
+        <p className="mt-3 font-body text-sm text-kelly-text/60">Your list is caught up for now — more steps appear as you complete work ahead.</p>
         )}
         <p className="mt-4 font-body text-[10px] font-bold uppercase tracking-wide text-kelly-text/45">Full maturity sequence</p>
         <ol className="mt-2 list-decimal space-y-1.5 pl-5 font-body text-xs text-kelly-text/80">

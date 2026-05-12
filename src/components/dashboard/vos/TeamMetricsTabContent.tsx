@@ -29,7 +29,7 @@ export function TeamMetricsTabContent({
     team.kpis.find((k) => k.id === "k-t-4") ?? team.kpis.find((k) => k.id === "k-t-p5-referrals");
 
   const trendNotes = [
-    { id: "t-1", label: "Week over week", value: "+6 pts on completion (demo)" },
+    { id: "t-1", label: "Week over week", value: "+6 pts on completion (illustrative)" },
     { id: "t-2", label: "Downstream", value: `${countDownstream(downstreamRoot)} nodes visible in tree` },
     {
       id: "t-3",
@@ -44,7 +44,7 @@ export function TeamMetricsTabContent({
         <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-text/50">Metrics</p>
         <h2 className="mt-2 font-heading text-xl font-bold text-kelly-navy">Team health</h2>
         <p className="mt-3 font-body text-sm text-kelly-text/75">
-          Phase 1 uses seed data. Future: sync with task completions, CRM touches, and downstream launches in real time.
+          Numbers here are a planning view while live reporting connects to your team&apos;s real completions and field updates.
         </p>
         <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <p className="font-body text-xs text-kelly-text/68">Report the same three numbers weekly — trends follow consistency.</p>
@@ -69,9 +69,9 @@ export function TeamMetricsTabContent({
       <VosKpiSummary title="Team KPIs" kpis={team.kpis} />
 
       <section className="rounded-2xl border border-kelly-text/10 bg-kelly-page/80 p-6 md:p-8">
-        <h3 className="font-heading text-lg font-bold text-kelly-navy">Cross-lane snapshots (demo)</h3>
+        <h3 className="font-heading text-lg font-bold text-kelly-navy">Cross-lane snapshots (planning view)</h3>
         <p className="mt-2 font-body text-sm text-kelly-text/75">
-          Events and social lanes surface here next to triad rollups. Future: live rollups from task completions and field reporting.
+          Events and social lanes sit beside triad rollups so you can coach in one glance. Live rollups follow once reporting syncs.
         </p>
         <div className="mt-4">
           <VosKpiMiniGrid
@@ -88,7 +88,7 @@ export function TeamMetricsTabContent({
       <section className="rounded-2xl border border-kelly-text/10 bg-white p-6 shadow-[var(--shadow-soft)] md:p-8">
         <h3 className="font-heading text-lg font-bold text-kelly-navy">Role KPIs (sample member)</h3>
         <p className="mt-2 font-body text-sm text-kelly-text/75">
-          Showing one triad member&apos;s demo KPI set. Future: automatic rollups by lane across all rosters.
+          Showing one triad member&apos;s sample KPI set. Automatic rollups across the full roster arrive with live data.
         </p>
         <div className="mt-4">
           <VosKpiMiniGrid kpis={MOCK_VOLUNTEER.kpis} />

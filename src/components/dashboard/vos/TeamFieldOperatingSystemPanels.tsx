@@ -110,7 +110,8 @@ export function TeamVosLaneTwentySquarePanel({ team, teamSlug }: { team: Team; t
         </Link>
       </div>
       <p className="mt-2 font-body text-sm text-kelly-text/75">
-        Tap a lane to open its tab. Demo math blends GOTV categories with Youth averages until live telemetry lands per lane.
+        Tap a lane to open its tab. Percentages blend GOTV readiness with youth outreach momentum as a single coaching view until each
+        lane has its own live feed.
       </p>
       <div className="mt-6 grid gap-6 md:grid-cols-2">
         {rows.map((r) => (
@@ -266,10 +267,10 @@ export function StatewideGoalsContributionPanel({
   const { statewideGoals: s } = fos;
   return (
     <section className="rounded-2xl border border-kelly-navy/15 bg-kelly-navy/[0.03] p-6 md:p-8">
-      <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-navy/55">Statewide volunteer goals · demo totals</p>
+      <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-navy/55">Statewide volunteer goals · planning totals</p>
       <h2 className="mt-2 font-heading text-xl font-bold text-kelly-navy">Your contribution to the statewide goal</h2>
       <p className="mt-2 font-body text-sm text-kelly-text/80">
-        {teamDisplayName} — mock statewide counters until live federation sync. Every team builds another team.
+        {teamDisplayName} — statewide counters here are illustrative until live federation sync. Every team still builds another team.
       </p>
       <div className="mt-4 grid gap-2 sm:grid-cols-2">
         {goalRow("County teams launched", s.countyTeamsLaunched.current, s.countyTeamsLaunched.target)}

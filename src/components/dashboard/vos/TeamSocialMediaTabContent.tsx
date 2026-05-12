@@ -198,7 +198,7 @@ export function TeamSocialMediaTabContent({ team, teamSlug }: { team: Team; team
           ))}
         </ul>
         <div className="mt-8">
-          <p className="font-body text-xs font-bold uppercase tracking-wide text-kelly-text/50">Social lane KPIs (demo)</p>
+          <p className="font-body text-xs font-bold uppercase tracking-wide text-kelly-text/50">Social lane · planning KPIs</p>
           <VosKpiMiniGrid kpis={SOCIAL_MEDIA_KPIS} />
         </div>
       </section>

@@ -10,33 +10,33 @@ import { MUSLIM_COMMUNITY_DASHBOARD_BASE } from "@/lib/campaign-ops/muslim-commu
 
 export const metadata: Metadata = {
   title: "Community regions · Dashboard hub",
-  description: "Community-native organizing dashboards — Muslim Community Region first; Spanish and Marshallese scaffolds.",
+  description: "Community-native organizing dashboards — Muslim Community Region first; Spanish and Marshallese hubs in partner review.",
 };
 
 const cards = [
   {
     href: MUSLIM_COMMUNITY_DASHBOARD_BASE,
     title: "Muslim Community Region",
-    body: "Launch-ready shell: Overview, lanes, mosque polling readiness, resources, rollup — draft labels for partner review.",
+    body: "Overview, lanes, mosque polling readiness, resources, and rollup — partner review continues on a few labels before we call the hub final.",
     status: "Active",
   },
   {
     href: COUNTY_DEMOCRATS_DASHBOARD_ROUTE_PREFIX,
     title: "County Democratic Party organizing",
-    body: "Per-county dashboard: monthly meeting → calendar + Action Queue, P5/VR, precinct triads, resources, and rollup KPIs aligned with the Volunteer OS.",
+    body: "Per-county dashboard: monthly meeting, Power of 5 / VR, precinct triads, resources, and rollup KPIs aligned with the Volunteer Operating System.",
     status: "Active",
   },
   {
     href: "/dashboard/community/conversational-spanish",
     title: "Conversational Spanish",
-    body: "Scaffold — architecture aligns with Muslim Community pattern after P1 launch.",
-    status: "Scaffold",
+    body: "Reserved for Spanish-first civic organizing with the same triad discipline. Lane modules expand after campaign and community review.",
+    status: "In review",
   },
   {
     href: "/dashboard/community/marshallese",
     title: "Marshallese",
-    body: "Scaffold — architecture aligns with Muslim Community pattern after P1 launch.",
-    status: "Scaffold",
+    body: "Reserved for Marshallese civic partners statewide. Content and KPIs deepen after community leadership alignment.",
+    status: "In review",
   },
 ] as const;
 
@@ -48,6 +48,9 @@ export default function CommunityRegionsHubPage() {
         title="Community region dashboards"
         subtitle="Geographic triads use team workspaces; identity- and community-native regions use the same lane discipline with partner-shaped leadership and resources."
       >
+        <Button href="/dashboard/field" variant="primary">
+          Field Director dashboard
+        </Button>
         <Button href="/volunteer" variant="outline">
           Volunteer hub
         </Button>

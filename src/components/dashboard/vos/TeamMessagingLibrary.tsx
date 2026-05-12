@@ -30,7 +30,7 @@ const DONTS = [
   "Don’t promise perks or jobs that aren’t real.",
 ];
 
-const WEEKLY_MESSAGE_MOCK =
+const WEEKLY_MESSAGE_SAMPLE =
   "Week of May 11: lift neighbor stories, steer turnout questions to relational follow-up, and route new energy to /volunteer or downstream teams once someone’s P5 list is full. HQ will drop priority captions in this library soon.";
 
 export function TeamMessagingLibrary({ teamSlug }: { teamSlug: string }) {
@@ -62,7 +62,7 @@ export function TeamMessagingLibrary({ teamSlug }: { teamSlug: string }) {
       </section>
 
       <section className="rounded-2xl border border-kelly-text/10 bg-white p-6 md:p-8">
-        <h3 className="font-heading text-lg font-bold text-kelly-navy">Current talking points (seed)</h3>
+        <h3 className="font-heading text-lg font-bold text-kelly-navy">Current talking points</h3>
         <ul className="mt-4 list-disc space-y-2 pl-5 font-body text-sm text-kelly-text/85">
           <li>Election integrity: defend access and accurate counts without fear-mongering.</li>
           <li>Voter registration: frame as neighbor care — offer help, not lectures.</li>
@@ -107,10 +107,10 @@ export function TeamMessagingLibrary({ teamSlug }: { teamSlug: string }) {
 
       <section className="rounded-2xl border border-kelly-text/10 bg-kelly-fog/40 p-6 md:p-8">
         <div className="flex flex-wrap items-start justify-between gap-3">
-          <h3 className="font-heading text-lg font-bold text-kelly-navy">Weekly message from campaign (demo)</h3>
-          <CopyTextButton text={WEEKLY_MESSAGE_MOCK} label="Copy weekly message" />
+          <h3 className="font-heading text-lg font-bold text-kelly-navy">Weekly message from campaign (sample)</h3>
+          <CopyTextButton text={WEEKLY_MESSAGE_SAMPLE} label="Copy weekly message" />
         </div>
-        <p className="mt-3 font-body text-sm text-kelly-text/85">{WEEKLY_MESSAGE_MOCK}</p>
+        <p className="mt-3 font-body text-sm text-kelly-text/85">{WEEKLY_MESSAGE_SAMPLE}</p>
       </section>
 
       <section className="rounded-2xl border border-kelly-text/10 bg-white p-6 md:p-8">

@@ -58,7 +58,7 @@ export function TeamReachContactTable({
       <p className="font-body text-sm text-kelly-text/70">
         {variant === "compact"
           ? "No contacts logged yet."
-          : "Reach-style contacts will appear here once your team seeds relational rows (mock data on demo teams)."}
+          : "Contacts you are coaching will appear here as soon as your team starts logging relational touches."}
       </p>
     );
   }

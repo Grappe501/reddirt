@@ -26,7 +26,7 @@ function buildSequence(seqId: string, defs: StepDef[]): AutomationStep[] {
   }));
 }
 
-/** Scripted next actions per maturity — demo only; server persistence comes later. */
+/** Scripted next actions per maturity — local preview until server persistence ships. */
 const MATURITY_STEP_SEQUENCES: Record<VosMaturityLevel, AutomationStep[]> = {
   1: buildSequence("vos-maturity-1", [
     {
@@ -260,7 +260,7 @@ const MATURITY_STEP_SEQUENCES: Record<VosMaturityLevel, AutomationStep[]> = {
       lane: "fundraising",
       ownerRole: "Team lead",
       dueTiming: "This month",
-      dashboardTaskCopy: "Use the Fundraising tab for Week 4 placeholders and review stages.",
+      dashboardTaskCopy: "Use the Fundraising tab for Week 4 planning numbers and review stages.",
       emailSubject: "Host recruitment for small-dollar conversations",
       emailBody: "We are recruiting two trusted hosts for small-group fundraising conversations.",
       completionAction: "fundraising_hosts_recruited",
@@ -366,7 +366,7 @@ const MATURITY_STEP_SEQUENCES: Record<VosMaturityLevel, AutomationStep[]> = {
     {
       id: "m5-postcard",
       title: "Postcard team handoff packet",
-      summary: "Confirm writers, addresses workflow, and postage budget placeholders.",
+      summary: "Confirm writers, address workflow, and postage budget on paper before scale.",
       lane: "gotv",
       ownerRole: "P5 / VR coordinator",
       dueTiming: "Window planning",
@@ -394,7 +394,7 @@ const MATURITY_STEP_SEQUENCES: Record<VosMaturityLevel, AutomationStep[]> = {
       lane: "cross",
       ownerRole: "Team lead",
       dueTiming: "Weekly (GOTV)",
-      dashboardTaskCopy: "KPIs may be demo-seeded until live rollup lands.",
+      dashboardTaskCopy: "KPIs stay illustrative until live reporting connects to your county rollup.",
       emailSubject: "Weekly KPI rollup",
       emailBody: "Attached is our weekly KPI rollup for campaign coordination.",
       completionAction: "kpi_rollup",
@@ -453,7 +453,7 @@ export function buildCampaignUpdateDraft(input: {
     `Notes: ${input.teamNotes || "(none)"}`,
     `Dashboard: ${input.dashboardUrl}`,
     "",
-    "— Sent from volunteer dashboard preview (Script 6). Human review before external send.",
+    "— Draft generated from the volunteer dashboard. Human review before external send.",
   ].join("\n");
   const mailtoHref = `mailto:${encodeURIComponent(OPS_NOTIFICATION_PRIMARY_PUBLIC)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   return { subject, body, mailtoHref };
@@ -575,7 +575,7 @@ export const AUTOMATION_EMAIL_TEMPLATES: AutomationEmailTemplate[] = [
     audience: "GOTV volunteers",
     lane: "gotv",
     subject: "Postcard team — writers and packets",
-    previewText: "Workflow and postage placeholders.",
+    previewText: "Workflow and postage plan with ops before scale.",
     body: "Outline writers, packet workflow, and postage plan — confirm with campaign ops before scale.",
     ctaLabel: "Resources",
     ctaTarget: "/volunteer/resources",
@@ -624,7 +624,7 @@ export const AUTOMATION_EMAIL_TEMPLATES: AutomationEmailTemplate[] = [
     lane: "cross",
     subject: "[Team] completed: [Task]",
     previewText: "Ops notification draft — human review required.",
-    body: "Use the dashboard preview to generate a draft to ops — not an automatic send in Script 6.",
+    body: "Use the dashboard preview to build a draft to ops — it is not an automatic send.",
     ctaLabel: "Ops inbox (mailto preview)",
     ctaTarget: `mailto:${OPS_NOTIFICATION_PRIMARY_PUBLIC}`,
     reviewStatus: "draft",

@@ -6,7 +6,7 @@ import { CountyRegistrationGoalCard } from "@/components/dashboard/vos/CountyReg
 
 export const metadata: Metadata = {
   title: "Marshallese · Community region",
-  description: "Scaffold dashboard — mirrors Muslim Community lanes when partner-ready.",
+  description: "Marshallese civic partner hub — deepening after community leadership alignment.",
 };
 
 export default function MarshalleseOverviewPage() {
@@ -19,15 +19,18 @@ export default function MarshalleseOverviewPage() {
 
       <div className="space-y-3 rounded-2xl border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
         <p className="font-body text-sm text-kelly-text/85">
-          Reserved for Northwest Arkansas and statewide Marshallese civic partners. Same Volunteer Operating System lane
-          discipline; content, nomenclature, and KPIs require community leadership alignment before going beyond this scaffold.
+          Reserved for Northwest Arkansas and statewide Marshallese civic partners. Same Volunteer Operating System lane discipline;
+          stories, nomenclature, and KPIs stay in community review until leadership signs off on the full experience.
         </p>
         <p className="font-body text-sm text-kelly-text/75">
-          Staff:{" "}
-          <Link href="/admin/campaign-ops/community-equity" className="font-semibold text-kelly-blue underline">
-            Community equity hub
+          <Link href="/dashboard/field" className="font-semibold text-kelly-blue underline">
+            Field Director dashboard
           </Link>
-          . Reference:{" "}
+          {" · "}
+          <Link href="/admin/campaign-ops/community-equity" className="font-semibold text-kelly-blue underline">
+            Community equity hub (staff)
+          </Link>
+          {" · "}
           <Link href="/dashboard/community/muslim" className="font-semibold text-kelly-blue underline">
             Muslim Community dashboard
           </Link>

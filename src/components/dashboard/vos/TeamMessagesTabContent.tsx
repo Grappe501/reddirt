@@ -19,8 +19,8 @@ export function TeamMessagesTabContent({ teamSlug }: { teamSlug: string }) {
         <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-text/50">Messages</p>
         <h2 className="mt-2 font-heading text-xl font-bold text-kelly-navy">Campaign communications center</h2>
         <p className="mt-3 font-body text-sm text-kelly-text/80">
-          Weekly briefing, priority actions, alerts, team discussions, and file drops will consolidate here. Feed below is static for
-          Phase 1; future inbox replaces mock items.
+          Weekly briefing, priority actions, alerts, team discussions, and file drops will consolidate here. The feed below is a
+          static preview while the live inbox is being connected.
         </p>
         <div className="mt-4 rounded-xl border border-kelly-gold/35 bg-kelly-gold/[0.08] p-4">
           <p className="font-body text-xs font-bold uppercase tracking-wide text-kelly-deep/80">Messaging library</p>
@@ -44,7 +44,7 @@ export function TeamMessagesTabContent({ teamSlug }: { teamSlug: string }) {
           <p className="font-body text-xs font-bold uppercase tracking-wide text-kelly-text/55">Automation · email template library (scaffold)</p>
           <p className="mt-2 font-body text-sm text-kelly-text/80">
             Draft templates for future automation — all entries stay in <span className="font-semibold">draft</span> review status until
-            campaign editorial approves them. No live sends from this panel in Script 6.
+            campaign editorial approves them. Outbound email opens in your mail app for human review — it is not sent automatically from this page.
           </p>
           <ul className="mt-3 max-h-48 space-y-2 overflow-y-auto">
             {AUTOMATION_EMAIL_TEMPLATES.slice(0, 8).map((t) => (

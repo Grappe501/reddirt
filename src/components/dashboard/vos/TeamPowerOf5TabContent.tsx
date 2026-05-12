@@ -264,7 +264,7 @@ export function TeamPowerOf5TabContent({ team, teamSlug }: { team: Team; teamSlu
       </section>
 
       <section className="rounded-2xl border border-kelly-text/10 bg-white p-6 shadow-[var(--shadow-soft)] md:p-8">
-        <h3 className="font-heading text-lg font-bold text-kelly-navy">Placement queue (mock)</h3>
+        <h3 className="font-heading text-lg font-bold text-kelly-navy">Placement routing queue</h3>
         <p className="mt-2 font-body text-sm text-kelly-text/80">
           Triad workspace for handoffs. Use copy buttons for campaign-approved email shells — fill bracketed fields with
           real details in your mail client; never paste private voter data into shared logs.
@@ -274,23 +274,23 @@ export function TeamPowerOf5TabContent({ team, teamSlug }: { team: Team; teamSlu
         </div>
         {team.teamInviteUrl || team.teamQrCodeUrl ? (
           <div className="mt-6 rounded-xl border border-dashed border-kelly-text/25 bg-kelly-fog/40 p-4">
-            <p className="font-body text-xs font-bold uppercase text-kelly-text/55">Team invite placeholders (this workspace)</p>
-            <dl className="mt-2 space-y-2 font-mono text-[11px] text-kelly-deep">
+            <p className="font-body text-xs font-bold uppercase text-kelly-text/55">Team invite & QR (sample values)</p>
+            <dl className="mt-2 space-y-2 font-body text-[11px] text-kelly-deep">
               {team.teamInviteUrl ? (
                 <div>
-                  <dt className="text-kelly-text/50">teamInviteUrl</dt>
-                  <dd className="break-all">{team.teamInviteUrl}</dd>
+                  <dt className="text-kelly-text/50">Join link</dt>
+                  <dd className="break-all font-mono">{team.teamInviteUrl}</dd>
                 </div>
               ) : null}
               {team.teamQrCodeUrl ? (
                 <div>
-                  <dt className="text-kelly-text/50">teamQrCodeUrl</dt>
-                  <dd className="break-all">{team.teamQrCodeUrl}</dd>
+                  <dt className="text-kelly-text/50">QR image link</dt>
+                  <dd className="break-all font-mono">{team.teamQrCodeUrl}</dd>
                 </div>
               ) : null}
             </dl>
             <p className="mt-2 font-body text-[11px] text-kelly-text/60">
-              Each downstream triad will get its own join link and QR from HQ. Replace example.invalid hosts in production.
+              Final join links and QR files are issued by campaign staff after verification.
             </p>
           </div>
         ) : null}
@@ -315,14 +315,14 @@ export function TeamPowerOf5TabContent({ team, teamSlug }: { team: Team; teamSlu
           <button
             type="button"
             className="rounded-lg border border-kelly-navy/25 bg-kelly-navy/[0.05] px-4 py-2 font-body text-xs font-semibold text-kelly-navy hover:bg-kelly-navy/10"
-            title="Mock control — will create Events board items when the API is wired"
+            title="Coming soon — will add Events board items when live sync is on"
           >
             Add outreach social hour to events board
           </button>
           <button
             type="button"
             className="rounded-lg border border-kelly-navy/25 bg-kelly-navy/[0.05] px-4 py-2 font-body text-xs font-semibold text-kelly-navy hover:bg-kelly-navy/10"
-            title="Mock control — will create Events board items when the API is wired"
+            title="Coming soon — will add Events board items when live sync is on"
           >
             Add voter registration event to events board
           </button>

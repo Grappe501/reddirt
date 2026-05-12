@@ -12,7 +12,7 @@ function StatusBadge({ status }: { status: CountyRegistrationGoalCardData["dataS
   };
   const labels: Record<CountyRegistrationGoalCardData["dataStatus"], string> = {
     live: "Live data",
-    demo: "Demo",
+    demo: "Planning view",
     not_connected: "Not connected yet",
   };
   return (
@@ -94,10 +94,9 @@ export function CountyRegistrationGoalCard({
           </div>
         </div>
         <p className="mt-2 font-body text-sm text-kelly-text/80">
-          Community contribution: <span className="font-semibold text-kelly-deep">reporting placeholder</span> — regional rollups
-          will tie mosques, campuses, and neighborhood circles to county file metrics when wired.
+          Community contribution totals are being connected to live county metrics. Until then, this card shows the statewide goal
+          and keeps space for regional rollups that respect mosque, campus, and neighborhood privacy.
         </p>
-        {/* TODO(VOS-COUNTY-GOAL-ROLLUP): replace placeholder with aggregated Muslim Community Region contribution from DB. */}
       </section>
     );
   }

@@ -33,7 +33,7 @@ function GateBanner({ maturity, gate }: { maturity: number; gate: FundraisingMat
   if (gate === "preview") {
     return (
       <div className="rounded-2xl border border-kelly-blue/30 bg-kelly-blue/[0.06] p-5 md:p-6">
-        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-navy/70">Maturity · Level {maturity} · Preview</p>
+        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-navy/70">Maturity · Level {maturity} · Early look</p>
         <h3 className="mt-2 font-heading text-lg font-bold text-kelly-navy">Fundraising — coming when your team is ready</h3>
         <p className="mt-2 font-body text-sm leading-relaxed text-kelly-text/85">{FUNDRAISING_INTRO_COPY}</p>
         <p className="mt-3 font-body text-sm text-kelly-text/75">
@@ -139,7 +139,7 @@ export function TeamFundraisingTabContent({ team, teamSlug }: { team: Team; team
               <div className="mt-4 rounded-lg border border-kelly-text/10 bg-white/80 p-3">
                 <p className="font-body text-xs font-bold uppercase tracking-wide text-kelly-text/55">Gamification (college)</p>
                 <p className="mt-1 font-body text-sm text-kelly-text/85">
-                  Leaderboard formula (demo): rank by unique donors first, then event participation, then dollars as a tiebreaker only.
+                  Leaderboard: rank by unique donors first, then event participation, then dollars only as a tiebreaker.
                 </p>
               </div>
             </div>
@@ -161,20 +161,20 @@ export function TeamFundraisingTabContent({ team, teamSlug }: { team: Team; team
           </section>
 
           <section className="rounded-2xl border border-dashed border-kelly-text/25 bg-kelly-fog/40 p-6 md:p-8">
-            <h3 className="font-heading text-lg font-bold text-kelly-navy">Personal link & QR placeholders</h3>
+            <h3 className="font-heading text-lg font-bold text-kelly-navy">Personal link & QR — coming after finance setup</h3>
             <p className="mt-2 font-body text-sm text-kelly-text/80">
               Every fundraiser will eventually receive a personal fundraising link, QR asset, and short link tracked here.{" "}
-              <span className="font-semibold text-kelly-navy">Personal links will be generated after finance/compliance setup.</span>
+              <span className="font-semibold text-kelly-navy">Personal links will be generated after finance and compliance signoff.</span>
             </p>
-            <ul className="mt-4 space-y-2 font-mono text-xs text-kelly-text/70">
-              <li>personalFundraisingUrl → (pending)</li>
-              <li>personalQrCodeUrl → (pending)</li>
-              <li>shareableShortLink → (pending)</li>
+            <ul className="mt-4 space-y-2 font-body text-sm text-kelly-text/75">
+              <li>Personal fundraising link — pending setup</li>
+              <li>Personal QR asset — pending setup</li>
+              <li>Short share link — pending setup</li>
             </ul>
           </section>
 
           <section className="rounded-2xl border border-kelly-text/10 bg-white p-6 md:p-8">
-            <h3 className="font-heading text-lg font-bold text-kelly-navy">Donor count gamification (demo roster)</h3>
+            <h3 className="font-heading text-lg font-bold text-kelly-navy">Donor count scoreboard (practice roster)</h3>
             <div className="mt-4 overflow-x-auto rounded-xl border border-kelly-text/10">
               <table className="min-w-[640px] w-full border-collapse text-left font-body text-xs">
                 <thead>
@@ -217,7 +217,7 @@ export function TeamFundraisingTabContent({ team, teamSlug }: { team: Team; team
           </section>
 
           <section className="rounded-2xl border border-kelly-text/10 bg-white p-6 md:p-8">
-            <h3 className="font-heading text-lg font-bold text-kelly-navy">Fundraising KPIs · 20-square (demo caps)</h3>
+            <h3 className="font-heading text-lg font-bold text-kelly-navy">Fundraising KPIs · 20-square (planning caps)</h3>
             <p className="mt-2 font-body text-xs text-kelly-text/65">
               Percentages are illustrative against soft caps until live finance aggregates connect.
             </p>
@@ -258,7 +258,11 @@ export function TeamFundraisingTabContent({ team, teamSlug }: { team: Team; team
           <section id="fundraising-resources" className="rounded-2xl border border-kelly-text/10 bg-kelly-fog/40 p-6 md:p-8">
             <h3 className="font-heading text-lg font-bold text-kelly-navy">Resource library (review workflow)</h3>
             <p className="mt-2 font-body text-sm text-kelly-text/80">
-              Downloadable versions move <span className="font-semibold">Draft → Internal review → Ernie review → Mockup ready → Approved → Published</span>.
+              Downloadable versions move{" "}
+              <span className="font-semibold">
+                Draft → Internal review → Ernie review → Design preview → Approved → Published
+              </span>
+              .
               Nothing here is a final public download yet.
             </p>
             <ul className="mt-4 space-y-3">
@@ -278,7 +282,7 @@ export function TeamFundraisingTabContent({ team, teamSlug }: { team: Team; team
         </>
       ) : (
         <section className="rounded-2xl border border-kelly-text/10 bg-kelly-page/80 p-6 md:p-8">
-          <h3 className="font-heading text-lg font-bold text-kelly-navy">Preview · Tracks at a glance</h3>
+          <h3 className="font-heading text-lg font-bold text-kelly-navy">Early look · tracks at a glance</h3>
           <p className="mt-2 font-body text-sm text-kelly-text/80">
             Adult track emphasizes receptions, host circles, and county parties. College track emphasizes donor count and $5/$10
             gifts — full roster tools unlock at Level 4.

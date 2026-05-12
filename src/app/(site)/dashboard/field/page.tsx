@@ -10,7 +10,7 @@ import { VOLUNTEER_OS_DEMO_TEAM_SLUG } from "@/lib/team-naming";
 export const metadata: Metadata = {
   title: "Field Director · Dashboard",
   description:
-    "Template field director view — drill into Arkansas regions, counties, and triad lanes as volunteers onboard.",
+    "Field leadership hub — statewide leads, community partner dashboards, and Arkansas regions as teams come online.",
 };
 
 export default function FieldDirectorPage() {
@@ -46,12 +46,12 @@ export default function FieldDirectorPage() {
               {
                 href: `${fieldDirectorHref()}/leads/power-of-5`,
                 title: "Lead · Power of 5 / VR",
-                text: "Registration goals and relational P5 cadence — statewide template.",
+                text: "Registration goals and relational Power of 5 cadence — statewide coordination view.",
               },
               {
                 href: `${fieldDirectorHref()}/leads/events`,
                 title: "Lead · Events",
-                text: "Field calendar, tabling, and immersion rhythm — statewide template.",
+                text: "Field calendar, tabling, and immersion rhythm — statewide coordination view.",
               },
             ].map((c) => (
               <li key={c.href}>
@@ -80,7 +80,7 @@ export default function FieldDirectorPage() {
               href={`/dashboard/team/${VOLUNTEER_OS_DEMO_TEAM_SLUG}/fundraising`}
               className="font-body text-sm font-semibold text-kelly-navy underline-offset-2 hover:underline"
             >
-              Open demo team fundraising workspace →
+              Open sample team fundraising workspace →
             </Link>
           </p>
         </section>

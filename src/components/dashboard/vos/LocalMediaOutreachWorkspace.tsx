@@ -34,7 +34,7 @@ export function LocalMediaOutreachWorkspace() {
       <section className="rounded-2xl border border-kelly-text/10 bg-kelly-page/80 p-6 md:p-8">
         <h4 className="font-heading text-base font-bold text-kelly-navy">Local media outlets (working list)</h4>
         <p className="mt-2 font-body text-xs text-kelly-text/70">
-          Demo rows — replace with your market. Columns: outlet, contact, type, interview, advertising, notes.
+          Sample rows show the columns you will fill for your market — outlet, contact, type, interview, advertising, and notes.
         </p>
         <div className="mt-4 overflow-x-auto rounded-xl border border-kelly-text/10 bg-white">
           <table className="min-w-[720px] w-full border-collapse font-body text-left text-xs">

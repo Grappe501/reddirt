@@ -19,7 +19,7 @@ export const DEMO_FUNDRAISING_LEADS: FundraisingLead[] = [
   {
     id: "fld-2",
     name: "Sam K.",
-    geography: "Campus cluster · demo",
+    geography: "Campus cluster · training example",
     track: "college",
     status: "training",
     personalFundraisingUrl: null,
@@ -51,7 +51,7 @@ export type FundraisingReviewStage =
   | "Draft"
   | "Internal review"
   | "Ernie review"
-  | "Mockup ready"
+  | "Design preview"
   | "Approved"
   | "Published";
 
@@ -122,7 +122,7 @@ export function buildDemoFundraisingKpis(leads: FundraisingLead[]): FundraisingK
   };
 }
 
-/** Map KPI to 0–100 for 20-square display (demo caps). */
+/** Map KPI to 0–100 for 20-square display (planning caps). */
 export function fundraisingKpiPercent(value: number, cap: number): number {
   if (cap <= 0) return 0;
   return Math.min(100, Math.round((value / cap) * 100));

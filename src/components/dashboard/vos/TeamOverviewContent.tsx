@@ -214,7 +214,7 @@ export function TeamOverviewContent({
 
       <VosMaturityTaskDeck team={team} />
 
-      <VosKpiSummary title={team.isDatabaseBacked ? "Team KPIs" : "Team KPIs (demo seed)"} kpis={team.kpis} cardHref={`/dashboard/team/${teamSlug}/metrics`} />
+      <VosKpiSummary title="Team KPIs" kpis={team.kpis} cardHref={`/dashboard/team/${teamSlug}/metrics`} />
 
       <div className="grid gap-4 md:grid-cols-2 md:gap-6 lg:gap-8">
         <TeamRosterPanel team={team} />

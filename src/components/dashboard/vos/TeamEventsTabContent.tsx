@@ -98,7 +98,7 @@ export function TeamEventsTabContent({ team }: { team: Team }) {
           ))}
         </ul>
         <div className="mt-8">
-          <p className="font-body text-xs font-bold uppercase tracking-wide text-kelly-text/50">Events KPIs (demo)</p>
+          <p className="font-body text-[10px] font-bold uppercase tracking-wide text-kelly-text/50">Events lane · planning KPIs</p>
           <VosKpiMiniGrid kpis={EVENTS_KPIS} />
         </div>
       </section>
