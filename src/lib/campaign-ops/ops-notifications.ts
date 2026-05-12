@@ -7,6 +7,9 @@ import { sendSendGridSingleTestEmail } from "@/lib/sendgrid/mail-send";
  *
  * This temporary address receives all form and automation notifications until official Google
  * Workspace campaign inboxes are assigned.
+ *
+ * Client mailto / preview UIs must use the same default via `OPS_NOTIFICATION_PRIMARY_PUBLIC` in
+ * `src/config/ops-notification-public.ts` (do not import this server-only module in client components).
  */
 export const TEMP_GLOBAL_OPS_EMAIL = "grappe4arkansas@gmail.com" as const;
 

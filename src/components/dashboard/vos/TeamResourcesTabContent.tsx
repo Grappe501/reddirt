@@ -4,6 +4,8 @@ import { TeamMessagingLibrary } from "@/components/dashboard/vos/TeamMessagingLi
 import { KellyAccentCutout } from "@/components/dashboard/vos/KellyAccentCutout";
 import { KELLY_ACCENT_RESOURCES } from "@/lib/campaign-assets";
 import { FUNDRAISING_RESOURCE_LIBRARY } from "@/lib/volunteer-ops/fundraising-tab-demo";
+import { AUTOMATION_EMAIL_TEMPLATES } from "@/lib/volunteer-ops/team-action-queue-demo";
+import { DISCORD_VOLUNTEER_BLURB } from "@/lib/volunteer-ops/discord-volunteer-copy";
 
 function buildQuickLinks(teamSlug: string): { href: string; label: string }[] {
   const base = `/dashboard/team/${teamSlug}`;
@@ -22,7 +24,9 @@ function buildQuickLinks(teamSlug: string): { href: string; label: string }[] {
     { href: "/field-playbook/overview/self-building-team-system", label: "Self-Building Team System (doctrine)" },
     { href: "/field-playbook/roles/events-hosting-playbook", label: "Hosting a small gathering (playbook)" },
     { href: `${base}/events`, label: "Events tab — this team" },
-    { href: `${base}/fundraising`, label: "Fundraising workspace (Week 4 / Level 4)" },
+    { href: `${base}/messages`, label: "Messages tab — automation templates" },
+    { href: `${base}/training#action-queue-automation`, label: "Action Queue training (this team)" },
+    { href: `${base}`, label: "Team overview — Action Queue panel" },
     { href: "/volunteer/resources/events-lane", label: "Events lane · operating manual (hub)" },
     { href: "/field-playbook/roles/house-party-playbook", label: "House party playbook (field)" },
     { href: "/volunteer/resources#weekly-operations", label: "Event planning templates & weekly ops" },
@@ -58,6 +62,47 @@ export function TeamResourcesTabContent({ teamSlug }: { teamSlug: string }) {
       </section>
 
       <TeamMessagingLibrary teamSlug={teamSlug} />
+
+      <section id="action-queue-automation-guide" className="scroll-mt-24 rounded-2xl border border-kelly-blue/20 bg-kelly-blue/[0.06] p-6 md:p-8">
+        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-navy/55">Action Queue · quick guide</p>
+        <h3 className="mt-2 font-heading text-lg font-bold text-kelly-navy">Why only three tasks show</h3>
+        <p className="mt-2 font-body text-sm text-kelly-text/85">
+          The Action Queue on your team overview keeps <strong>Needed Now</strong>, <strong>Coming Up</strong>, and{" "}
+          <strong>Next After That</strong> visible so volunteers always know the next right moves without drowning in a backlog.
+          Completing a task (preview, local-only today) surfaces the next scripted priority for your team&apos;s maturity level.
+        </p>
+        <p className="mt-3 font-body text-sm text-kelly-text/85">
+          Tap <strong>Need help</strong> when policy, logistics, or approvals are unclear — that opens a mailto draft to campaign ops
+          (not an automatic send). Keep voter PII out of email and Discord.
+        </p>
+        <p className="mt-3 rounded-lg border border-kelly-gold/30 bg-kelly-gold/[0.1] p-3 font-body text-sm text-kelly-deep/95">
+          {DISCORD_VOLUNTEER_BLURB}
+        </p>
+        <p className="mt-3">
+          <Link href={`/dashboard/team/${teamSlug}`} className="font-semibold text-kelly-blue underline">
+            Open team overview (Action Queue) →
+          </Link>
+        </p>
+      </section>
+
+      <section id="automation-templates-list" className="scroll-mt-24 rounded-2xl border border-kelly-text/10 bg-kelly-page/80 p-6 md:p-8">
+        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-text/50">Automation templates</p>
+        <h3 className="mt-2 font-heading text-lg font-bold text-kelly-navy">Email template library (scaffold)</h3>
+        <p className="mt-2 font-body text-sm text-kelly-text/80">
+          Subject, preview text, and body are drafts for future automation. Script 6 does not send email automatically — use mailto from
+          the Action Queue panel when you need a human-reviewed draft.
+        </p>
+        <ul className="mt-4 space-y-2">
+          {AUTOMATION_EMAIL_TEMPLATES.map((t) => (
+            <li key={t.id} className="rounded-lg border border-kelly-text/10 bg-white px-3 py-2 font-body text-xs text-kelly-text/85">
+              <span className="font-semibold text-kelly-navy">{t.title}</span>
+              <span className="text-kelly-text/50"> · {t.audience}</span>
+              <span className="block text-kelly-text/55">Review: {t.reviewStatus}</span>
+              <span className="mt-0.5 block italic text-kelly-text/65">&ldquo;{t.previewText}&rdquo;</span>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       <section id="fundraising-resources" className="rounded-2xl border border-kelly-gold/30 bg-kelly-gold/[0.06] p-6 md:p-8">
         <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-deep/60">Fundraising resources</p>

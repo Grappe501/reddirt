@@ -11,7 +11,9 @@ export function VosResourceShortcuts({ teamSlug }: { teamSlug: string }) {
     { href: "/field-playbook/roles/social-coordinator", label: "Social media coordinator guide" },
     { href: "/field-playbook/roles/power-of-five-coordinator", label: "Power of 5 / VR guide" },
     { href: "/volunteer/resources#team-building", label: "Team launch checklist" },
-    { href: `${base}/training`, label: "Training path (this team)" },
+    { href: `${base}/messages#automation-templates`, label: "Automation email templates (Messages)" },
+    { href: `${base}/resources#action-queue-automation-guide`, label: "Action Queue & Discord guide (Resources)" },
+    { href: `${base}/training#action-queue-automation`, label: "Action Queue training module" },
     { href: "/volunteer", label: "Volunteer onboarding" },
   ];
   return (

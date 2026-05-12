@@ -20,6 +20,7 @@ import { Textarea } from "@/components/forms/Textarea";
 import { Button } from "@/components/ui/Button";
 import { FormErrorSummary, FormSuccessPanel } from "@/components/forms/FormMessages";
 import { trackFormComplete, trackFormStart } from "@/lib/analytics/track";
+import { DISCORD_VOLUNTEER_BLURB } from "@/lib/volunteer-ops/discord-volunteer-copy";
 
 const OUTREACH_OPTION_COPY: {
   slug: OutreachResourceSlug;
@@ -175,6 +176,9 @@ export function VolunteerForm({
           <strong>Teams vs. Power of 5:</strong> every volunteer belongs to a small 3-person operating team for weekly
           rhythm. Separately, you can build a Power of 5 network of people you personally know — those contacts only join
           the volunteer system if they choose to sign up themselves.
+        </p>
+        <p className="mt-3 rounded-lg border border-kelly-gold/30 bg-kelly-gold/[0.08] p-3 font-body text-sm leading-relaxed text-kelly-deep/95">
+          {DISCORD_VOLUNTEER_BLURB}
         </p>
         {successTeamSlug ? (
           <p className="mt-3">

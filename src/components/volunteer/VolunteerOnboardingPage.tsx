@@ -18,6 +18,7 @@ import { TeamBuilderSection } from "@/components/volunteer/TeamBuilderSection";
 import { VolunteerSignupCta } from "@/components/volunteer/VolunteerSignupCta";
 import { VolunteerForm } from "@/components/forms/VolunteerForm";
 import { isNativeVolunteerFormEnabled } from "@/config/volunteer-signup";
+import { DISCORD_VOLUNTEER_BLURB } from "@/lib/volunteer-ops/discord-volunteer-copy";
 
 type Lane = "events" | "social" | "relational" | "unsure" | null;
 
@@ -124,6 +125,7 @@ export function VolunteerOnboardingPage({
               Each person <strong>owns one lane</strong>. The goal isn’t to overwhelm volunteers — it’s to make{" "}
               <strong>small weekly actions</strong> stack up across many people and many communities.
             </p>
+            <p className="rounded-lg border border-kelly-gold/30 bg-kelly-gold/[0.08] p-3 text-kelly-deep/95">{DISCORD_VOLUNTEER_BLURB}</p>
           </div>
         </ContentContainer>
       </FullBleedSection>

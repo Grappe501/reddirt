@@ -5,6 +5,8 @@ import {
   MOCK_SHARED_FILES,
   MOCK_TEAM_MESSAGES,
 } from "@/lib/dashboard/mock-data";
+import { AUTOMATION_EMAIL_TEMPLATES } from "@/lib/volunteer-ops/team-action-queue-demo";
+import { DISCORD_VOLUNTEER_BLURB } from "@/lib/volunteer-ops/discord-volunteer-copy";
 import { VosCommunicationHub } from "@/components/dashboard/vos/VosCommunicationHub";
 import Link from "next/link";
 import { KellyAccentCutout } from "@/components/dashboard/vos/KellyAccentCutout";
@@ -32,6 +34,33 @@ export function TeamMessagesTabContent({ teamSlug }: { teamSlug: string }) {
             Open Messaging Library →
           </Link>
         </div>
+
+        <div className="mt-4 rounded-xl border border-kelly-navy/15 bg-kelly-navy/[0.04] p-4">
+          <p className="font-body text-xs font-bold uppercase tracking-wide text-kelly-navy/75">Discord (day-to-day)</p>
+          <p className="mt-2 font-body text-sm text-kelly-text/85">{DISCORD_VOLUNTEER_BLURB}</p>
+        </div>
+
+        <section id="automation-templates" className="mt-4 scroll-mt-24 rounded-xl border border-kelly-text/10 bg-kelly-page/80 p-4">
+          <p className="font-body text-xs font-bold uppercase tracking-wide text-kelly-text/55">Automation · email template library (scaffold)</p>
+          <p className="mt-2 font-body text-sm text-kelly-text/80">
+            Draft templates for future automation — all entries stay in <span className="font-semibold">draft</span> review status until
+            campaign editorial approves them. No live sends from this panel in Script 6.
+          </p>
+          <ul className="mt-3 max-h-48 space-y-2 overflow-y-auto">
+            {AUTOMATION_EMAIL_TEMPLATES.slice(0, 8).map((t) => (
+              <li key={t.id} className="rounded-lg border border-kelly-text/10 bg-white px-3 py-2 font-body text-xs text-kelly-text/85">
+                <span className="font-semibold text-kelly-navy">{t.title}</span>
+                <span className="text-kelly-text/50"> · {t.reviewStatus}</span>
+              </li>
+            ))}
+          </ul>
+          <Link
+            href={`/dashboard/team/${teamSlug}/resources#automation-templates-list`}
+            className="mt-3 inline-flex font-body text-sm font-semibold text-kelly-blue underline"
+          >
+            Full template list on Resources →
+          </Link>
+        </section>
         <div className="mt-4 flex flex-col gap-3 border-t border-kelly-text/10 pt-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-body text-xs text-kelly-text/70">Escalate policy questions upstream — keep routine comms local.</p>
           <KellyAccentCutout src={KELLY_ACCENT_MESSAGES} />

@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import type { CountyRegistrationGoalCardData } from "@/lib/campaign-engine/county-registration-goal-load";
 import {
   MOCK_ANNOUNCEMENTS,
   MOCK_CAMPAIGN_ALERTS,
@@ -10,13 +11,16 @@ import {
 } from "@/lib/dashboard/mock-data";
 import { deriveTeamLifecycleStatus } from "@/lib/dashboard/invitation-privacy";
 import type { DownstreamTeamNode, Team, VolunteerRole } from "@/types/dashboard";
+import { CampaignCountdown } from "@/components/campaign/CampaignCountdown";
 import { TeamBuildPanel } from "@/components/dashboard/vos/TeamBuildPanel";
+import { CountyRegistrationGoalCard } from "@/components/dashboard/vos/CountyRegistrationGoalCard";
 import { DashboardDisclosure } from "@/components/dashboard/vos/DashboardDisclosure";
 import { TeamFieldOperatingSystemOverview } from "@/components/dashboard/vos/TeamFieldOperatingSystemPanels";
 import { VosCommunicationHub } from "@/components/dashboard/vos/VosCommunicationHub";
 import { VosDailyUniversalTaskCard } from "@/components/dashboard/vos/VosDailyUniversalTaskCard";
 import { VosKpiSummary } from "@/components/dashboard/vos/VosKpiSummary";
 import { VosResourceShortcuts } from "@/components/dashboard/vos/VosResourceShortcuts";
+import { TeamActionQueuePanel } from "@/components/dashboard/vos/TeamActionQueuePanel";
 import { VosMaturityTaskDeck } from "@/components/dashboard/vos/VosMaturityTaskDeck";
 import { TeamDownstreamTree } from "@/components/dashboard/vos/TeamDownstreamTree";
 import { TeamRosterPanel } from "@/components/dashboard/vos/TeamRosterPanel";
@@ -53,6 +57,7 @@ export function TeamOverviewContent({
   viewerIsCampaignAdmin,
   openRoles,
   signupSuggestions = [],
+  countyGoalData = null,
 }: {
   team: Team;
   teamSlug: string;
@@ -64,6 +69,7 @@ export function TeamOverviewContent({
   viewerIsCampaignAdmin: boolean;
   openRoles: VolunteerRole[];
   signupSuggestions?: { id: string; displayLabel: string }[];
+  countyGoalData?: CountyRegistrationGoalCardData | null;
 }) {
   const displayLifecycle =
     team.lifecycleStatus ??
@@ -129,6 +135,16 @@ export function TeamOverviewContent({
         <TeamFieldOperatingSystemOverview fos={fos} teamSlug={teamSlug} teamDisplayName={team.displayName} team={team} />
       ) : null}
 
+      <div className="grid gap-4 lg:grid-cols-2 lg:items-stretch">
+        <CampaignCountdown variant="compact" className="h-full" />
+        <CountyRegistrationGoalCard
+          mode="county"
+          data={countyGoalData}
+          teamRegistrationsTracked={p5?.registrationsCompleted ?? null}
+          className="h-full"
+        />
+      </div>
+
       {p5 ? (
         <section className="rounded-2xl border border-kelly-text/10 bg-white p-6 shadow-[var(--shadow-soft)] md:p-8">
           <div className="flex flex-wrap items-end justify-between gap-2">
@@ -193,6 +209,8 @@ export function TeamOverviewContent({
       />
 
       <VosDailyUniversalTaskCard task={UNIVERSAL_DAILY_TASK} moreHref={`/dashboard/team/${teamSlug}/training`} />
+
+      <TeamActionQueuePanel team={team} teamSlug={teamSlug} />
 
       <VosMaturityTaskDeck team={team} />
 

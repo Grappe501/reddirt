@@ -27,6 +27,22 @@ const MODULES: TrainingModule[] = [
     ],
   },
   {
+    id: "action-queue-automation",
+    title: "Action Queue & daily rhythm",
+    readMinutes: "4 min",
+    checklist: [
+      "You know why only three tasks show at once on the team overview",
+      "You know completion advances the next scripted priority for your maturity level (preview behavior today)",
+      "You know when to use \"Need help\" instead of guessing on policy or logistics",
+      "You keep voter PII out of Discord and casual email — use secure ops paths",
+    ],
+    links: [
+      { label: "Team · Overview (Action Queue panel)", href: "" },
+      { label: "Messages tab · automation templates", href: "" },
+      { label: "Resources · Action Queue guide", href: "" },
+    ],
+  },
+  {
     id: "triad",
     title: "How to build a 3-person team",
     readMinutes: "8 min",
@@ -315,22 +331,28 @@ export function TeamTrainingPathContent({ teamSlug }: { teamSlug: string }) {
           const resolvedLinks = mod.links.map((l) => ({
             ...l,
             href:
-              l.href === "" && l.label.includes("Events tab")
+              l.href === "" && l.label.includes("Overview")
+                ? base
+                : l.href === "" && l.label.includes("Messages tab")
+                  ? `${base}/messages#automation-templates`
+                  : l.href === "" && l.label.includes("Resources · Action Queue")
+                    ? `${base}/resources#action-queue-automation-guide`
+                    : l.href === "" && l.label.includes("Events tab")
                 ? `${base}/events`
                 : l.href === "" && l.label.includes("Fundraising tab")
                   ? `${base}/fundraising`
-                : l.href === "" && l.label.includes("Social media tab")
-                  ? `${base}/social-media`
-                  : l.href === "" && l.label.includes("Youth (P5/VR) tab")
-                    ? `${base}/youth-outreach`
-                    : l.href === "" && l.label.includes("Power of 5")
-                      ? `${base}/power-of-5`
-                      : l.href,
+                  : l.href === "" && l.label.includes("Social media tab")
+                    ? `${base}/social-media`
+                    : l.href === "" && l.label.includes("Youth (P5/VR) tab")
+                      ? `${base}/youth-outreach`
+                      : l.href === "" && l.label.includes("Power of 5")
+                        ? `${base}/power-of-5`
+                        : l.href,
           }));
           return (
             <li
               key={mod.id}
-              id={`training-module-${mod.id}`}
+              id={mod.id === "action-queue-automation" ? "action-queue-automation" : `training-module-${mod.id}`}
               className="scroll-mt-28 rounded-2xl border border-kelly-text/10 bg-white p-6 shadow-[var(--shadow-soft)] md:p-8"
             >
               <div className="flex flex-wrap items-start justify-between gap-3">
