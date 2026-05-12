@@ -29,6 +29,7 @@ export function TeamDashboardChrome({
     { href: base, label: "Overview" },
     { href: `${base}/social-media`, label: "Social media" },
     { href: `${base}/events`, label: "Events" },
+    { href: `${base}/fundraising`, label: "Fundraising" },
     { href: `${base}/power-of-5`, label: "Power of 5 / VR" },
     { href: `${base}/youth-outreach`, label: "Youth (P5/VR)" },
     { href: `${base}/metrics`, label: "Metrics" },

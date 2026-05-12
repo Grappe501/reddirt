@@ -10,6 +10,7 @@ import {
 } from "@/lib/dashboard/mock-data";
 import type { Team } from "@/types/dashboard";
 import { inferVosMaturityFromTeam } from "@/lib/volunteer-ops/vos-team-maturity";
+import { FUNDRAISING_INTRO_COPY, fundraisingGateForMaturity } from "@/lib/volunteer-ops/fundraising-maturity";
 import { VosKpiMiniGrid } from "@/components/dashboard/vos/VosKpiSummary";
 import { KellyAccentCutout } from "@/components/dashboard/vos/KellyAccentCutout";
 import { KELLY_ACCENT_EVENTS } from "@/lib/campaign-assets";
@@ -18,6 +19,7 @@ import { SpeakingOpportunitiesWorkspace } from "@/components/dashboard/vos/Speak
 export function TeamEventsTabContent({ team }: { team: Team }) {
   const maturity = inferVosMaturityFromTeam(team);
   const showSpeaking = maturity >= 3;
+  const frGate = fundraisingGateForMaturity(maturity);
 
   return (
     <div className="space-y-8">
@@ -35,6 +37,27 @@ export function TeamEventsTabContent({ team }: { team: Team }) {
             </p>
           </div>
           <KellyAccentCutout src={KELLY_ACCENT_EVENTS} className="md:mt-1" />
+        </div>
+      </section>
+
+      <section className="rounded-2xl border border-kelly-gold/35 bg-kelly-gold/[0.07] p-6 md:p-8">
+        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-deep/60">Field fundraising OS · Events sub-lane</p>
+        <h3 className="mt-2 font-heading text-lg font-bold text-kelly-navy">Fundraising (Week 4 / Level 4)</h3>
+        <p className="mt-2 font-body text-sm leading-relaxed text-kelly-text/85">{FUNDRAISING_INTRO_COPY}</p>
+        <p className="mt-2 font-body text-xs text-kelly-text/70">
+          Maturity gate:{" "}
+          <span className="font-semibold text-kelly-navy">
+            {frGate === "hidden" ? "Focus on events pipeline first" : frGate === "preview" ? "Preview mode" : "Recruit / operate"}
+          </span>
+          .
+        </p>
+        <div className="mt-4">
+          <Link
+            href={`/dashboard/team/${team.slug}/fundraising`}
+            className="inline-flex rounded-lg bg-kelly-navy px-4 py-2 font-body text-sm font-semibold text-kelly-fog hover:bg-kelly-blue"
+          >
+            Open fundraising workspace →
+          </Link>
         </div>
       </section>
 

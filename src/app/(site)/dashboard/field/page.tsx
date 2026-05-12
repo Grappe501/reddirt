@@ -67,6 +67,24 @@ export default function FieldDirectorPage() {
           </ul>
         </section>
 
+        <section aria-labelledby="field-fundraising" className="rounded-2xl border border-kelly-text/10 bg-white p-5 shadow-sm md:p-6">
+          <h3 id="field-fundraising" className="font-heading text-lg font-bold text-kelly-text">
+            Fundraising lane · Week 4 maturity
+          </h3>
+          <p className="mt-2 max-w-3xl font-body text-sm leading-relaxed text-kelly-text/80">
+            Fundraising is modeled under the Events lane until dedicated finance teams spin out. Teams see the full workspace once
+            Volunteer OS maturity reaches Expand / Lead levels — start small, stay local, and keep compliance in the loop.
+          </p>
+          <p className="mt-4">
+            <Link
+              href={`/dashboard/team/${VOLUNTEER_OS_DEMO_TEAM_SLUG}/fundraising`}
+              className="font-body text-sm font-semibold text-kelly-navy underline-offset-2 hover:underline"
+            >
+              Open demo team fundraising workspace →
+            </Link>
+          </p>
+        </section>
+
         <FieldCommunityPartnerDashboards />
 
         <section aria-labelledby="regions">

@@ -146,6 +146,24 @@ const MODULES: TrainingModule[] = [
     links: [{ label: "Fundraising Event Toolkit", href: "/field-playbook/roles/fundraising-receptions-county" }],
   },
   {
+    id: "building-local-fundraising-team",
+    title: "Building a Local Fundraising Team",
+    readMinutes: "14 min",
+    checklist: [
+      "You know fundraising starts after Week 4 / Level 4 rhythm — not day one",
+      "You can explain how to recruit a fundraiser without doing every dollar conversation yourself",
+      "You can contrast adult receptions vs college small-dollar / donor-count tracks",
+      "You can describe QR + personal link rollout as pending finance/compliance setup",
+      "You repeat the compliance line on compensation before any public ask",
+      "You know what to report weekly: donors, dollars, events, hosts, new donors",
+    ],
+    links: [
+      { label: "Team · Fundraising tab", href: "" },
+      { label: "County fundraising receptions (playbook)", href: "/field-playbook/roles/fundraising-receptions-county" },
+      { label: "Team · Events tab", href: "" },
+    ],
+  },
+  {
     id: "events-weekend-immersion",
     title: "Weekend Community Immersion",
     readMinutes: "14 min",
@@ -299,6 +317,8 @@ export function TeamTrainingPathContent({ teamSlug }: { teamSlug: string }) {
             href:
               l.href === "" && l.label.includes("Events tab")
                 ? `${base}/events`
+                : l.href === "" && l.label.includes("Fundraising tab")
+                  ? `${base}/fundraising`
                 : l.href === "" && l.label.includes("Social media tab")
                   ? `${base}/social-media`
                   : l.href === "" && l.label.includes("Youth (P5/VR) tab")

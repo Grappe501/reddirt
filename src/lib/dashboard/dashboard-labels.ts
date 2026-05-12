@@ -9,6 +9,7 @@ export function resolveTeamDashboardLabel(pathname: string | null | undefined, t
   if (norm === base) return "Overview Dashboard";
   if (norm.startsWith(`${base}/social-media`)) return "Social Media Dashboard";
   if (norm.startsWith(`${base}/events`)) return "Events Dashboard";
+  if (norm.startsWith(`${base}/fundraising`)) return "Fundraising Dashboard";
   if (norm.startsWith(`${base}/power-of-5`)) return "Power of 5 / VR Dashboard";
   if (norm.startsWith(`${base}/youth-outreach`)) return "Youth Outreach Dashboard";
   if (norm.startsWith(`${base}/training`)) return "Training Dashboard";
