@@ -58,7 +58,7 @@ CREATE TABLE "LocalCoverageRequest" (
   "id" TEXT NOT NULL,
   "calendarItemId" TEXT NOT NULL,
   "campaignEventId" TEXT,
-  "countyId" TEXT,
+  "countyId" UUID,
   "requestedByUserId" TEXT NOT NULL,
   "surrogateType" "KellySurrogateTypePref" NOT NULL,
   "requestedSurrogateId" TEXT,

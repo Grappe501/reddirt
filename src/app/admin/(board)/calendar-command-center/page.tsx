@@ -38,6 +38,10 @@ export default async function CalendarCommandCenterPage() {
           <Link className="font-semibold text-kelly-text underline-offset-2 hover:underline" href="/admin/calendar-command-center/kelly">
             /kelly
           </Link>{" "}
+          ·{" "}
+          <Link className="font-semibold text-kelly-text underline-offset-2 hover:underline" href="/admin/calendar-command-center/fairs">
+            County fairs
+          </Link>{" "}
           · Install shell:{" "}
           <Link className="font-semibold text-kelly-text underline-offset-2 hover:underline" href="/kelly/calendar">
             /kelly/calendar

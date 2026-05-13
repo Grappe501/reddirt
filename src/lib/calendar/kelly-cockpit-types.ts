@@ -58,10 +58,32 @@ export type CalendarAlertDto = {
   channel: string;
 };
 
+/** RedDirt ↔ Kelly Google lane (Tentative / Confirmed) — server-built for cockpit cards. */
+export type KellyGoogleCockpitOverlay = {
+  campaignEventId: string;
+  /** RedDirt workflow on the linked `CampaignEvent` (dedupe priority). */
+  eventWorkflowState?: string;
+  calendarSourceId: string | null;
+  externalCalendarId: string | null;
+  googleEventId: string | null;
+  iCalUID: string | null;
+  lane: "tentative" | "confirmed" | "other" | "none";
+  googleSyncState: string;
+  syncReviewNeeded: boolean;
+  lastGoogleSyncAt: string | null;
+  googleSyncError: string | null;
+  openInGoogleUrl: string | null;
+  /** Staff Calendar HQ / tooling */
+  staffExactStatus: string;
+  /** Kelly-facing copy (gentle on conflicts) */
+  kellyGentleStatus: string;
+};
+
 export type EnrichedCalendarItem = import("./campaign-calendar-item").CampaignCalendarItem & {
   kellyApprovalState: KellyApprovalState;
   cardBadge: KellyEventCardBadge;
   sortKey: number;
   latestDecision: KellyCalendarDecisionDto | null;
   hasOpenLocalCoverage: boolean;
+  kellyGoogle?: KellyGoogleCockpitOverlay;
 };

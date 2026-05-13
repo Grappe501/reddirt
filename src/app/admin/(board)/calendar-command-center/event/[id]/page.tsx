@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CockpitEventActions } from "@/components/admin/kelly-calendar-cockpit/CockpitEventActions";
+import { findKellyConfirmedCalendarSource, findKellyTentativeCalendarSource } from "@/lib/calendar/kelly-google-calendar-policy";
 import { loadKellyCockpitBundle } from "@/lib/calendar/kelly-cockpit-data";
 import { loadTravelCalendarItems } from "@/lib/calendar/load-travel-calendar-data";
 
@@ -17,6 +18,11 @@ export default async function CalendarCommandCenterEventPage({ params }: Props) 
 
   const bundle = await loadKellyCockpitBundle();
   const enriched = bundle.enriched.find((x) => x.id === decoded);
+
+  const [tentativeSrc, confirmedSrc] = await Promise.all([
+    findKellyTentativeCalendarSource(),
+    findKellyConfirmedCalendarSource(),
+  ]);
 
   const dd = item.drillDown;
 
@@ -169,7 +175,14 @@ export default async function CalendarCommandCenterEventPage({ params }: Props) 
         </section>
       ) : null}
 
-      <CockpitEventActions calendarItemId={decoded} />
+      <CockpitEventActions
+        calendarItemId={decoded}
+        kellyGoogle={enriched?.kellyGoogle}
+        laneMeta={{
+          tentativeSourceId: tentativeSrc?.id ?? null,
+          confirmedSourceId: confirmedSrc?.id ?? null,
+        }}
+      />
     </div>
   );
 }

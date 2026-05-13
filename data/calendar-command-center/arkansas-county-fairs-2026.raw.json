@@ -1,0 +1,1356 @@
+{
+  "generatedAt": "2026-05-13T23:28:43.173Z",
+  "count": 75,
+  "rows": [
+    {
+      "county": "Arkansas",
+      "fairName": "Arkansas County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Arkansas%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Arkansas%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Arkansas%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Arkansas%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Arkansas%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Arkansas%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Ashley",
+      "fairName": "Ashley County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Ashley%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Ashley%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Ashley%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Ashley%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Ashley%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Ashley%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Baxter",
+      "fairName": "Baxter County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Baxter%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Baxter%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Baxter%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Baxter%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Baxter%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Baxter%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Benton",
+      "fairName": "Benton County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Benton%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Benton%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Benton%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Benton%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Benton%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Benton%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Boone",
+      "fairName": "Boone County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Boone%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Boone%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Boone%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Boone%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Boone%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Boone%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Bradley",
+      "fairName": "Bradley County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Bradley%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Bradley%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Bradley%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Bradley%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Bradley%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Bradley%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Calhoun",
+      "fairName": "Calhoun County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Calhoun%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Calhoun%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Calhoun%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Calhoun%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Calhoun%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Calhoun%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Carroll",
+      "fairName": "Carroll County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Carroll%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Carroll%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Carroll%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Carroll%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Carroll%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Carroll%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Chicot",
+      "fairName": "Chicot County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Chicot%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Chicot%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Chicot%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Chicot%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Chicot%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Chicot%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Clark",
+      "fairName": "Clark County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Clark%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Clark%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Clark%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Clark%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Clark%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Clark%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Clay",
+      "fairName": "Clay County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Clay%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Clay%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Clay%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Clay%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Clay%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Clay%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Cleburne",
+      "fairName": "Cleburne County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Cleburne%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Cleburne%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Cleburne%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Cleburne%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Cleburne%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Cleburne%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Cleveland",
+      "fairName": "Cleveland County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Cleveland%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Cleveland%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Cleveland%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Cleveland%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Cleveland%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Cleveland%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Columbia",
+      "fairName": "Columbia County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Columbia%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Columbia%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Columbia%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Columbia%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Columbia%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Columbia%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Conway",
+      "fairName": "Conway County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Conway%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Conway%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Conway%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Conway%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Conway%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Conway%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Craighead",
+      "fairName": "Craighead County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Craighead%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Craighead%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Craighead%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Craighead%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Craighead%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Craighead%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Crawford",
+      "fairName": "Crawford County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Crawford%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Crawford%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Crawford%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Crawford%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Crawford%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Crawford%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Crittenden",
+      "fairName": "Crittenden County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Crittenden%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Crittenden%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Crittenden%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Crittenden%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Crittenden%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Crittenden%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Cross",
+      "fairName": "Cross County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Cross%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Cross%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Cross%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Cross%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Cross%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Cross%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Dallas",
+      "fairName": "Dallas County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Dallas%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Dallas%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Dallas%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Dallas%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Dallas%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Dallas%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Desha",
+      "fairName": "Desha County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Desha%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Desha%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Desha%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Desha%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Desha%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Desha%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Drew",
+      "fairName": "Drew County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Drew%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Drew%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Drew%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Drew%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Drew%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Drew%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Faulkner",
+      "fairName": "Faulkner County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Faulkner%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Faulkner%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Faulkner%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Faulkner%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Faulkner%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Faulkner%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Franklin",
+      "fairName": "Franklin County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Franklin%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Franklin%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Franklin%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Franklin%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Franklin%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Franklin%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Fulton",
+      "fairName": "Fulton County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Fulton%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Fulton%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Fulton%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Fulton%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Fulton%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Fulton%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Garland",
+      "fairName": "Garland County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Garland%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Garland%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Garland%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Garland%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Garland%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Garland%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Grant",
+      "fairName": "Grant County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Grant%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Grant%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Grant%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Grant%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Grant%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Grant%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Greene",
+      "fairName": "Greene County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Greene%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Greene%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Greene%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Greene%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Greene%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Greene%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Hempstead",
+      "fairName": "Hempstead County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Hempstead%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Hempstead%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Hempstead%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Hempstead%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Hempstead%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Hempstead%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Hot Spring",
+      "fairName": "Hot Spring County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Hot%20Spring%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Hot%20Spring%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Hot%20Spring%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Hot%20Spring%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Hot%20Spring%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Hot%20Spring%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Howard",
+      "fairName": "Howard County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Howard%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Howard%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Howard%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Howard%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Howard%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Howard%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Independence",
+      "fairName": "Independence County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Independence%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Independence%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Independence%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Independence%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Independence%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Independence%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Izard",
+      "fairName": "Izard County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Izard%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Izard%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Izard%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Izard%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Izard%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Izard%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Jackson",
+      "fairName": "Jackson County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Jackson%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Jackson%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Jackson%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Jackson%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Jackson%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Jackson%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Jefferson",
+      "fairName": "Jefferson County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Jefferson%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Jefferson%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Jefferson%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Jefferson%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Jefferson%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Jefferson%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Johnson",
+      "fairName": "Johnson County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Johnson%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Johnson%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Johnson%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Johnson%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Johnson%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Johnson%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Lafayette",
+      "fairName": "Lafayette County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Lafayette%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Lafayette%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Lafayette%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Lafayette%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Lafayette%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Lafayette%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Lawrence",
+      "fairName": "Lawrence County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Lawrence%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Lawrence%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Lawrence%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Lawrence%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Lawrence%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Lawrence%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Lee",
+      "fairName": "Lee County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Lee%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Lee%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Lee%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Lee%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Lee%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Lee%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Lincoln",
+      "fairName": "Lincoln County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Lincoln%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Lincoln%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Lincoln%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Lincoln%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Lincoln%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Lincoln%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Little River",
+      "fairName": "Little River County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Little%20River%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Little%20River%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Little%20River%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Little%20River%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Little%20River%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Little%20River%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Logan",
+      "fairName": "Logan County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Logan%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Logan%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Logan%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Logan%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Logan%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Logan%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Lonoke",
+      "fairName": "Lonoke County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Lonoke%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Lonoke%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Lonoke%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Lonoke%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Lonoke%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Lonoke%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Madison",
+      "fairName": "Madison County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Madison%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Madison%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Madison%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Madison%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Madison%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Madison%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Marion",
+      "fairName": "Marion County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Marion%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Marion%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Marion%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Marion%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Marion%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Marion%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Miller",
+      "fairName": "Miller County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Miller%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Miller%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Miller%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Miller%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Miller%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Miller%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Mississippi",
+      "fairName": "Mississippi County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Mississippi%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Mississippi%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Mississippi%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Mississippi%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Mississippi%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Mississippi%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Monroe",
+      "fairName": "Monroe County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Monroe%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Monroe%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Monroe%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Monroe%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Monroe%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Monroe%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Montgomery",
+      "fairName": "Montgomery County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Montgomery%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Montgomery%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Montgomery%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Montgomery%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Montgomery%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Montgomery%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Nevada",
+      "fairName": "Nevada County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Nevada%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Nevada%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Nevada%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Nevada%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Nevada%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Nevada%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Newton",
+      "fairName": "Newton County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Newton%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Newton%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Newton%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Newton%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Newton%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Newton%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Ouachita",
+      "fairName": "Ouachita County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Ouachita%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Ouachita%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Ouachita%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Ouachita%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Ouachita%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Ouachita%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Perry",
+      "fairName": "Perry County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Perry%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Perry%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Perry%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Perry%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Perry%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Perry%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Phillips",
+      "fairName": "Phillips County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Phillips%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Phillips%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Phillips%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Phillips%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Phillips%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Phillips%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Pike",
+      "fairName": "Pike County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Pike%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Pike%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Pike%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Pike%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Pike%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Pike%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Poinsett",
+      "fairName": "Poinsett County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Poinsett%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Poinsett%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Poinsett%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Poinsett%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Poinsett%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Poinsett%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Polk",
+      "fairName": "Polk County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Polk%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Polk%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Polk%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Polk%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Polk%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Polk%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Pope",
+      "fairName": "Pope County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Pope%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Pope%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Pope%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Pope%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Pope%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Pope%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Prairie",
+      "fairName": "Prairie County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Prairie%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Prairie%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Prairie%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Prairie%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Prairie%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Prairie%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Pulaski",
+      "fairName": "Pulaski County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Pulaski%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Pulaski%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Pulaski%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Pulaski%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Pulaski%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Pulaski%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Randolph",
+      "fairName": "Randolph County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Randolph%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Randolph%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Randolph%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Randolph%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Randolph%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Randolph%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "St. Francis",
+      "fairName": "St. Francis County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=St.%20Francis%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=St.%20Francis%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=St.%20Francis%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=St.%20Francis%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=St.%20Francis%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=St.%20Francis%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Saline",
+      "fairName": "Saline County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Saline%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Saline%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Saline%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Saline%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Saline%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Saline%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Scott",
+      "fairName": "Scott County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Scott%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Scott%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Scott%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Scott%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Scott%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Scott%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Searcy",
+      "fairName": "Searcy County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Searcy%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Searcy%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Searcy%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Searcy%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Searcy%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Searcy%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Sebastian",
+      "fairName": "Sebastian County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Sebastian%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Sebastian%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Sebastian%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Sebastian%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Sebastian%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Sebastian%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Sevier",
+      "fairName": "Sevier County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Sevier%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Sevier%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Sevier%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Sevier%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Sevier%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Sevier%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Sharp",
+      "fairName": "Sharp County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Sharp%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Sharp%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Sharp%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Sharp%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Sharp%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Sharp%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Stone",
+      "fairName": "Stone County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Stone%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Stone%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Stone%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Stone%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Stone%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Stone%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Union",
+      "fairName": "Union County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Union%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Union%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Union%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Union%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Union%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Union%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Van Buren",
+      "fairName": "Van Buren County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Van%20Buren%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Van%20Buren%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Van%20Buren%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Van%20Buren%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Van%20Buren%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Van%20Buren%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Washington",
+      "fairName": "Washington County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Washington%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Washington%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Washington%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Washington%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Washington%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Washington%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "White",
+      "fairName": "White County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=White%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=White%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=White%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=White%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=White%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=White%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Woodruff",
+      "fairName": "Woodruff County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Woodruff%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Woodruff%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Woodruff%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Woodruff%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Woodruff%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Woodruff%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    },
+    {
+      "county": "Yell",
+      "fairName": "Yell County Fair",
+      "sourceType": "manual",
+      "sourceLineage": [
+        "county_placeholder",
+        "awaiting_official_2026_dates"
+      ],
+      "queryTemplates": [
+        "https://www.google.com/search?q=Yell%20County%20Fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Yell%20County%20Fair%20Association%20Arkansas",
+        "https://www.google.com/search?q=Yell%20County%20Fairgrounds%20Arkansas",
+        "https://www.google.com/search?q=Yell%204-H%20fair%20Arkansas%202026",
+        "https://www.google.com/search?q=Yell%20Extension%20county%20fair%20Arkansas",
+        "https://www.google.com/search?q=Yell%20District%20Fair%20Arkansas"
+      ],
+      "notes": "No structured fair row yet — use query templates; verify robots.txt before automated fetch."
+    }
+  ]
+}

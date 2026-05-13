@@ -221,6 +221,34 @@ export function KellyMobileApprovalEventCard({ it, ai, aiLoading, countyBasics, 
           </Link>
         </div>
 
+        {it.kellyGoogle ? (
+          <section className="rounded-xl border border-zinc-200/90 bg-white/90 px-3 py-2.5">
+            <p className="font-body text-[10px] font-bold uppercase tracking-[0.18em] text-zinc-400">Google</p>
+            <div className="mt-1.5 flex flex-wrap items-center gap-2">
+              {it.kellyGoogle.lane !== "none" ? (
+                <span className="rounded-md bg-zinc-100 px-2 py-0.5 font-body text-[10px] font-semibold capitalize text-zinc-800 ring-1 ring-zinc-200/80">
+                  {it.kellyGoogle.lane}
+                </span>
+              ) : null}
+              <span className="font-body text-xs font-medium text-zinc-700">{it.kellyGoogle.kellyGentleStatus}</span>
+              {it.kellyGoogle.lastGoogleSyncAt ? (
+                <span className="font-body text-[10px] text-zinc-500">
+                  Last sync {new Date(it.kellyGoogle.lastGoogleSyncAt).toLocaleString("en-US", { timeZone: TZ })}
+                </span>
+              ) : null}
+              {it.kellyGoogle.openInGoogleUrl ? (
+                <a
+                  href={it.kellyGoogle.openInGoogleUrl}
+                  {...OFFSITE}
+                  className="font-body text-xs font-bold text-emerald-800 underline-offset-2 hover:underline"
+                >
+                  Open in Google
+                </a>
+              ) : null}
+            </div>
+          </section>
+        ) : null}
+
         {(who || it.drillDown?.adminLocalGuide?.displayName) ? (
           <section>
             <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400">Who</p>

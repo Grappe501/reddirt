@@ -12,7 +12,15 @@ function hasRefreshToken(s: CalendarSource) {
 }
 
 const poolReady = (sources: CalendarSource[]) =>
-  sources.filter((s) => s.isActive && s.syncEnabled && s.provider === "GOOGLE" && hasRefreshToken(s));
+  sources.filter(
+    (s) =>
+      s.isActive &&
+      s.syncEnabled &&
+      s.provider === "GOOGLE" &&
+      hasRefreshToken(s) &&
+      s.sourceType !== CalendarSourceType.KELLY_GOOGLE_TENTATIVE &&
+      s.sourceType !== CalendarSourceType.KELLY_GOOGLE_CONFIRMED,
+  );
 
 function pickPublicRail(pool: CalendarSource[]) {
   return (

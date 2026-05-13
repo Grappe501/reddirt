@@ -6,10 +6,16 @@ import {
   approveCalendarItem,
   askStaffAboutCalendarItem,
   holdCalendarItem,
+  promoteKellyItemToConfirmedGoogleWorkflow,
+  pullKellyGoogleCampaignCalendars,
+  pushKellyCampaignGoogleForItem,
   rejectCalendarItem,
   requestCalendarItemModification,
   requestLocalCoverage,
+  resolveKellyGoogleConflictForItem,
+  sendKellyItemBackToTentativeWorkflow,
 } from "@/app/admin/calendar-command-center/cockpit-actions";
+import type { KellyGoogleCockpitOverlay } from "@/lib/calendar/kelly-cockpit-types";
 import type { KellySurrogateTypePref } from "@prisma/client";
 
 const HOLD_REASONS = [
@@ -31,7 +37,15 @@ const SURROGATES: { v: KellySurrogateTypePref; label: string }[] = [
   { v: "STAFF_CHOOSE", label: "Staff choose someone" },
 ];
 
-export function CockpitEventActions({ calendarItemId }: { calendarItemId: string }) {
+export function CockpitEventActions({
+  calendarItemId,
+  kellyGoogle,
+  laneMeta,
+}: {
+  calendarItemId: string;
+  kellyGoogle?: KellyGoogleCockpitOverlay;
+  laneMeta?: { tentativeSourceId: string | null; confirmedSourceId: string | null };
+}) {
   const router = useRouter();
   const [pending, start] = useTransition();
   const [msg, setMsg] = useState<string | null>(null);
@@ -243,6 +257,100 @@ export function CockpitEventActions({ calendarItemId }: { calendarItemId: string
       <p className="mt-4 font-body text-[10px] text-kelly-text/50">
         SMS, email digests, and push are gated until env + opt-in are configured — in-app alerts first.
       </p>
+
+      <div className="mt-8 border-t border-kelly-text/10 pt-5">
+        <p className="font-heading text-xs font-bold uppercase tracking-wide text-kelly-text/50">Kelly Google lanes (staff)</p>
+        {laneMeta ? (
+          <dl className="mt-2 grid gap-1 font-body text-[11px] text-kelly-text/75">
+            <div>
+              <dt className="font-bold text-kelly-text/50">Tentative source id</dt>
+              <dd className="break-all font-mono text-[10px]">{laneMeta.tentativeSourceId ?? "— (run calendar:google:ensure)"}</dd>
+            </div>
+            <div>
+              <dt className="font-bold text-kelly-text/50">Confirmed source id</dt>
+              <dd className="break-all font-mono text-[10px]">{laneMeta.confirmedSourceId ?? "—"}</dd>
+            </div>
+          </dl>
+        ) : null}
+        {kellyGoogle ? (
+          <dl className="mt-3 grid gap-1 font-body text-[11px] text-kelly-text/75">
+            <div>
+              <dt className="font-bold text-kelly-text/50">Lane</dt>
+              <dd className="uppercase">{kellyGoogle.lane}</dd>
+            </div>
+            <div>
+              <dt className="font-bold text-kelly-text/50">Google event id</dt>
+              <dd className="break-all font-mono text-[10px]">{kellyGoogle.googleEventId ?? "—"}</dd>
+            </div>
+            <div>
+              <dt className="font-bold text-kelly-text/50">iCalUID</dt>
+              <dd className="break-all font-mono text-[10px]">{kellyGoogle.iCalUID ?? "—"}</dd>
+            </div>
+            <div>
+              <dt className="font-bold text-kelly-text/50">Staff sync status</dt>
+              <dd>{kellyGoogle.staffExactStatus}</dd>
+            </div>
+            <div>
+              <dt className="font-bold text-kelly-text/50">Campaign event</dt>
+              <dd className="break-all font-mono text-[10px]">{kellyGoogle.campaignEventId}</dd>
+            </div>
+          </dl>
+        ) : (
+          <p className="mt-2 font-body text-[11px] text-kelly-text/55">Promote to CampaignEvent to see Google ids here.</p>
+        )}
+        <div className="mt-3 flex flex-wrap gap-2">
+          <button
+            type="button"
+            disabled={pending}
+            className="rounded-lg bg-slate-800 px-3 py-2 font-body text-xs font-bold text-white disabled:opacity-50"
+            onClick={() => run(() => pushKellyCampaignGoogleForItem(calendarItemId))}
+          >
+            Push to Google
+          </button>
+          <button
+            type="button"
+            disabled={pending}
+            className="rounded-lg bg-slate-800 px-3 py-2 font-body text-xs font-bold text-white disabled:opacity-50"
+            onClick={() => run(() => pullKellyGoogleCampaignCalendars())}
+          >
+            Pull latest from Google
+          </button>
+          <button
+            type="button"
+            disabled={pending}
+            className="rounded-lg bg-emerald-800 px-3 py-2 font-body text-xs font-bold text-white disabled:opacity-50"
+            onClick={() => run(() => promoteKellyItemToConfirmedGoogleWorkflow(calendarItemId))}
+          >
+            Promote to Confirmed
+          </button>
+          <button
+            type="button"
+            disabled={pending}
+            className="rounded-lg bg-amber-700 px-3 py-2 font-body text-xs font-bold text-white disabled:opacity-50"
+            onClick={() => run(() => sendKellyItemBackToTentativeWorkflow(calendarItemId))}
+          >
+            Send back to Tentative
+          </button>
+          <button
+            type="button"
+            disabled={pending}
+            className="rounded-lg bg-rose-800 px-3 py-2 font-body text-xs font-bold text-white disabled:opacity-50"
+            onClick={() => run(() => resolveKellyGoogleConflictForItem(calendarItemId))}
+          >
+            Resolve conflict
+          </button>
+          {kellyGoogle?.openInGoogleUrl ? (
+            <a
+              href={kellyGoogle.openInGoogleUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center rounded-lg border border-kelly-text/25 bg-white px-3 py-2 font-body text-xs font-bold text-kelly-text"
+            >
+              Open in Google Calendar
+            </a>
+          ) : null}
+        </div>
+      </div>
     </section>
   );
 }

@@ -3066,6 +3066,10 @@ enum CalendarSourceType {
   INTERNAL_STAFF_PLANNING
   CONTENT_MEDIA
   PERSONAL_OVERLAY
+  /// Kelly cockpit / JSON promotion — staff-only Google lane (tentative holds).
+  KELLY_GOOGLE_TENTATIVE
+  /// Kelly-approved / committed internal holds — staff-only Google lane.
+  KELLY_GOOGLE_CONFIRMED
 
   @@schema("public")
 }

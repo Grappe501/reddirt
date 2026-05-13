@@ -27,6 +27,13 @@ export async function listGoogleCalendars(sourceId: string) {
   return res.data.items ?? [];
 }
 
+/** Create a new secondary calendar owned by the same Google account as `source` (OAuth on that source). */
+export async function insertSecondaryCalendar(source: CalendarSource, summary: string) {
+  const cal = getCalendarApiForSource(source);
+  const res = await cal.calendars.insert({ requestBody: { summary } });
+  return res.data;
+}
+
 /**
  * Insert or update a Prisma `CampaignEvent` on Google. Caller persists googleEventId/etag.
  */

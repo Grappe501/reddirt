@@ -1,6 +1,7 @@
 import { randomBytes } from "node:crypto";
 import type { calendar_v3 } from "@googleapis/calendar";
 import {
+  CalendarSourceType,
   CampaignEventStatus,
   CampaignEventType,
   CampaignEventVisibility,
@@ -10,6 +11,7 @@ import {
   GoogleEventSyncState,
 } from "@prisma/client";
 import { applyEventTimingConsequences } from "@/lib/calendar/google-sync-consequences";
+import { computeKellyGoogleContentHash } from "@/lib/calendar/kelly-google-content-hash";
 import { selectOutboundCalendarSource } from "@/lib/calendar/google-sync-policy";
 import {
   deleteGoogleEvent,
@@ -64,7 +66,7 @@ function toDateTime(ga: calendar_v3.Schema$Event): { startAt: Date; endAt: Date;
   return null;
 }
 
-function toGoogleEventBody(ev: {
+export function toGoogleEventBody(ev: {
   title: string;
   description: string | null;
   publicSummary: string | null;
@@ -88,15 +90,24 @@ function toGoogleEventBody(ev: {
 }
 
 /**
- * Pushes a campaign event to the correct Google calendar per `selectOutboundCalendarSource`.
- * Moves the row to a new Google calendar when the campaign stage requires it (delete old + insert new).
+ * Pushes a campaign event to the correct Google calendar per `selectOutboundCalendarSource`,
+ * unless `forceCalendarSource` is provided (Kelly Tentative / Confirmed lanes).
  */
-export async function pushCampaignEventToGoogle(eventId: string, actorUserId: string | null) {
+export async function pushCampaignEventToGoogle(
+  eventId: string,
+  actorUserId: string | null,
+  options?: { forceCalendarSource?: CalendarSource; googleBodyExtras?: Partial<calendar_v3.Schema$Event> },
+) {
   const allSources = await prisma.calendarSource.findMany({ where: { isActive: true, provider: "GOOGLE" } });
   const event = await prisma.campaignEvent.findUnique({ where: { id: eventId } });
   if (!event) throw new Error("Event not found");
 
-  const target = selectOutboundCalendarSource(event, allSources);
+  const forced = options?.forceCalendarSource;
+  const oauthReady = (s: CalendarSource) => {
+    const o = (s.oauthJson ?? {}) as { refresh_token?: string };
+    return s.isActive && s.syncEnabled && s.provider === "GOOGLE" && Boolean(o.refresh_token);
+  };
+  const target = forced && oauthReady(forced) ? forced : selectOutboundCalendarSource(event, allSources);
   if (!target) {
     await prisma.eventSyncLog.create({
       data: {
@@ -123,7 +134,23 @@ export async function pushCampaignEventToGoogle(eventId: string, actorUserId: st
     return { ok: true as const, skipped: true };
   }
 
-  const body = toGoogleEventBody(event);
+  let body: calendar_v3.Schema$Event = toGoogleEventBody(event);
+  if (options?.googleBodyExtras) {
+    const privBase =
+      typeof body.extendedProperties?.private === "object" && body.extendedProperties?.private
+        ? (body.extendedProperties.private as Record<string, string>)
+        : {};
+    const privEx =
+      typeof options.googleBodyExtras.extendedProperties?.private === "object" &&
+      options.googleBodyExtras.extendedProperties?.private
+        ? (options.googleBodyExtras.extendedProperties.private as Record<string, string>)
+        : {};
+    body = {
+      ...body,
+      ...options.googleBodyExtras,
+      extendedProperties: { private: { ...privBase, ...privEx } },
+    };
+  }
   const existingSourceId = event.calendarSourceId;
   if (event.googleEventId && existingSourceId && existingSourceId !== target.id) {
     const old = allSources.find((s) => s.id === existingSourceId);
@@ -253,18 +280,24 @@ export async function processInboundGoogleEvent(
     return;
   }
 
-  const existing = await findLocalByGoogleId(source.id, googleEventId);
+  const extPrivate = g.extendedProperties?.private as Record<string, string> | undefined;
+  let local = await findLocalByGoogleId(source.id, googleEventId);
+  if (!local && extPrivate?.reddirtCampaignEventId) {
+    const byRed = await prisma.campaignEvent.findUnique({ where: { id: extPrivate.reddirtCampaignEventId } });
+    if (byRed) local = byRed;
+  }
+
   if (g.status === "cancelled") {
-    if (!existing) return;
+    if (!local) return;
     const autoPub = sourceEligibleForAutoWebsitePublish(source);
-    if (existing.eventWorkflowState === EventWorkflowState.PUBLISHED && !autoPub) {
+    if (local.eventWorkflowState === EventWorkflowState.PUBLISHED && !autoPub) {
       await prisma.campaignEvent.update({
-        where: { id: existing.id },
+        where: { id: local.id },
         data: { syncReviewNeeded: true, googleSyncState: GoogleEventSyncState.CONFLICT, googleSyncError: "Cancelled in Google — confirm" },
       });
     } else {
       await prisma.campaignEvent.update({
-        where: { id: existing.id },
+        where: { id: local.id },
         data: {
           status: CampaignEventStatus.CANCELLED,
           eventWorkflowState: EventWorkflowState.CANCELED,
@@ -276,7 +309,7 @@ export async function processInboundGoogleEvent(
     }
     await prisma.eventSyncLog.create({
       data: {
-        eventId: existing.id,
+        eventId: local.id,
         calendarSourceId: source.id,
         direction: EventSyncDirection.PULL_FROM_GOOGLE,
         status: EventSyncLogStatus.OK,
@@ -289,14 +322,68 @@ export async function processInboundGoogleEvent(
 
   const timesChanged = (e: { startAt: Date; endAt: Date }) => e.startAt.getTime() !== when.startAt.getTime() || e.endAt.getTime() !== when.endAt.getTime();
 
-  if (existing) {
-    const tChanged = timesChanged(existing);
-    const title = g.summary || existing.title;
+  if (local) {
+    const tChanged = timesChanged(local);
+    const SLACK_MS = 5000;
+    const lastSyncMs = local.lastGoogleSyncAt?.getTime();
+    const localDirty =
+      typeof lastSyncMs === "number" && local.updatedAt.getTime() > lastSyncMs + SLACK_MS;
+    const googleUpMs = g.updated ? Date.parse(g.updated) : 0;
+    const googleDirty =
+      typeof lastSyncMs === "number" &&
+      Number.isFinite(googleUpMs) &&
+      googleUpMs > lastSyncMs + SLACK_MS;
+    const remoteHash = extPrivate?.contentHash;
+    const localHash = computeKellyGoogleContentHash(local);
+    const titleChanged = (g.summary ?? "").trim() !== local.title.trim();
+
+    if (typeof lastSyncMs === "number" && localDirty && googleDirty) {
+      const hashMismatch = Boolean(remoteHash && remoteHash !== localHash);
+      const structuralMismatchWithoutHash = !remoteHash && (tChanged || titleChanged);
+      if (hashMismatch || structuralMismatchWithoutHash) {
+        await prisma.campaignEvent.update({
+          where: { id: local.id },
+          data: {
+            googleSyncState: GoogleEventSyncState.CONFLICT,
+            syncReviewNeeded: true,
+            googleSyncError:
+              "Google and RedDirt both changed since last sync — needs staff review before merge",
+          },
+        });
+        await prisma.eventSyncLog.create({
+          data: {
+            eventId: local.id,
+            calendarSourceId: source.id,
+            direction: EventSyncDirection.PULL_FROM_GOOGLE,
+            status: EventSyncLogStatus.SKIPPED,
+            message: "Inbound skipped — dual edit conflict",
+            detailJson: { googleEventId, remoteHash: remoteHash ?? null, localHash },
+          },
+        });
+        return;
+      }
+    }
+
+    if (typeof lastSyncMs === "number" && localDirty && !googleDirty) {
+      await prisma.eventSyncLog.create({
+        data: {
+          eventId: local.id,
+          calendarSourceId: source.id,
+          direction: EventSyncDirection.PULL_FROM_GOOGLE,
+          status: EventSyncLogStatus.SKIPPED,
+          message: "Inbound skipped — RedDirt edits since last sync; push or resolve first",
+          detailJson: { googleEventId },
+        },
+      });
+      return;
+    }
+
+    const title = g.summary || local.title;
     const autoPub = sourceEligibleForAutoWebsitePublish(source);
     const loc = g.location?.trim();
     const summaryFromDesc = publicSummaryFromGoogleDescription(g);
     await prisma.campaignEvent.update({
-      where: { id: existing.id },
+      where: { id: local.id },
       data: {
         title,
         startAt: when.startAt,
@@ -306,30 +393,32 @@ export async function processInboundGoogleEvent(
         ...(g.description !== undefined && g.description !== null
           ? {
               description: g.description,
-              ...(autoPub || existing.isPublicOnWebsite
-                ? { publicSummary: summaryFromDesc ?? existing.publicSummary }
+              ...(autoPub || local.isPublicOnWebsite
+                ? { publicSummary: summaryFromDesc ?? local.publicSummary }
                 : {}),
             }
           : {}),
-        googleEtag: g.etag ?? existing.googleEtag,
+        googleEtag: g.etag ?? local.googleEtag,
+        googleEventId: local.googleEventId ?? googleEventId,
+        calendarSourceId: local.calendarSourceId ?? source.id,
         lastGoogleSyncAt: new Date(),
         googleSyncState: GoogleEventSyncState.SYNCED,
         syncReviewNeeded:
           !autoPub &&
           tChanged &&
-          (existing.isPublicOnWebsite || existing.eventWorkflowState === EventWorkflowState.PUBLISHED)
+          (local.isPublicOnWebsite || local.eventWorkflowState === EventWorkflowState.PUBLISHED)
             ? true
-            : existing.syncReviewNeeded,
-        inboundTimeChangedAt: tChanged ? new Date() : existing.inboundTimeChangedAt,
+            : local.syncReviewNeeded,
+        inboundTimeChangedAt: tChanged ? new Date() : local.inboundTimeChangedAt,
         googleSyncError: null,
       },
     });
     if (tChanged) {
-      await applyEventTimingConsequences(existing.id, { actorUserId: null, reason: "inbound_sync" });
+      await applyEventTimingConsequences(local.id, { actorUserId: null, reason: "inbound_sync" });
     }
     await prisma.eventSyncLog.create({
       data: {
-        eventId: existing.id,
+        eventId: local.id,
         calendarSourceId: source.id,
         direction: EventSyncDirection.PULL_FROM_GOOGLE,
         status: EventSyncLogStatus.OK,
@@ -344,6 +433,14 @@ export async function processInboundGoogleEvent(
   const autoPub = sourceEligibleForAutoWebsitePublish(source);
   const loc = g.location?.trim();
   const summaryFromDesc = publicSummaryFromGoogleDescription(g);
+  const isKellyTent = source.sourceType === CalendarSourceType.KELLY_GOOGLE_TENTATIVE;
+  const isKellyConf = source.sourceType === CalendarSourceType.KELLY_GOOGLE_CONFIRMED;
+  const initialWf = autoPub
+    ? EventWorkflowState.PUBLISHED
+    : isKellyConf
+      ? EventWorkflowState.APPROVED
+      : EventWorkflowState.DRAFT;
+  const syncReviewNeeded = autoPub ? false : isKellyConf ? false : true;
   const created = await prisma.campaignEvent.create({
     data: {
       slug: newSlug(),
@@ -357,7 +454,7 @@ export async function processInboundGoogleEvent(
       locationName: loc || null,
       description: g.description ?? null,
       publicSummary: autoPub ? summaryFromDesc ?? g.summary ?? null : null,
-      eventWorkflowState: autoPub ? EventWorkflowState.PUBLISHED : EventWorkflowState.DRAFT,
+      eventWorkflowState: initialWf,
       isPublicOnWebsite: autoPub,
       calendarSourceId: source.id,
       googleEventId,
@@ -365,7 +462,7 @@ export async function processInboundGoogleEvent(
       lastGoogleSyncAt: new Date(),
       googleSyncState: GoogleEventSyncState.SYNCED,
       notes: g.description || null,
-      syncReviewNeeded: !autoPub,
+      syncReviewNeeded,
     },
   });
   await prisma.eventSyncLog.create({
@@ -374,7 +471,10 @@ export async function processInboundGoogleEvent(
       calendarSourceId: source.id,
       direction: EventSyncDirection.PULL_FROM_GOOGLE,
       status: EventSyncLogStatus.OK,
-      message: "Created draft from Google",
+      message:
+        isKellyConf || isKellyTent
+          ? `Created from Google (${isKellyConf ? "Kelly Confirmed" : "Kelly Tentative"} lane)`
+          : "Created draft from Google",
       detailJson: { googleEventId },
     },
   });

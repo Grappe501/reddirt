@@ -9,6 +9,8 @@ import {
   CampaignTaskPriority,
   CampaignTaskStatus,
   CampaignTaskType,
+  EventWorkflowState,
+  GoogleEventSyncState,
   KellyCockpitDecisionKind,
   KellySurrogateTypePref,
 } from "@prisma/client";
@@ -21,6 +23,10 @@ import {
   type KellyItemStagedMetadata,
   type PressReleasePref,
 } from "@/lib/calendar/kelly-cockpit-staged-metadata";
+import { promoteKellyCalendarItemToCampaignEvent } from "@/lib/calendar/kelly-promote-json-item";
+import { syncKellyCampaignEventToGoogle } from "@/lib/calendar/kelly-sync-campaign-event-google";
+import { findKellyConfirmedCalendarSource, findKellyTentativeCalendarSource } from "@/lib/calendar/kelly-google-calendar-policy";
+import { runIncrementalIngestForSource } from "@/lib/calendar/google-sync-engine";
 
 const REVAL = ["/admin/calendar-command-center", "/admin/calendar-command-center/kelly"] as const;
 
@@ -61,6 +67,35 @@ export async function approveCalendarItem(calendarItemId: string, notes?: string
       notes: notes?.slice(0, 8000),
     },
   });
+
+  const { campaignEventId } = await promoteKellyCalendarItemToCampaignEvent(calendarItemId, actorId());
+
+  const before = await prisma.campaignEvent.findUnique({
+    where: { id: campaignEventId },
+    select: { eventWorkflowState: true },
+  });
+  const fromState = before?.eventWorkflowState ?? EventWorkflowState.DRAFT;
+
+  await prisma.campaignEvent.update({
+    where: { id: campaignEventId },
+    data: {
+      eventWorkflowState: EventWorkflowState.APPROVED,
+      approvedAt: new Date(),
+    },
+  });
+
+  await prisma.eventStageChangeLog.create({
+    data: {
+      eventId: campaignEventId,
+      fromState,
+      toState: EventWorkflowState.APPROVED,
+      actorUserId: null,
+      note: notes?.slice(0, 2000) ?? "Kelly approved",
+    },
+  });
+
+  await syncKellyCampaignEventToGoogle(campaignEventId, null);
+
   rev(calendarItemId);
   return { ok: true as const };
 }
@@ -291,4 +326,97 @@ export async function syncApprovedItemToCalendarHQ(calendarItemId: string) {
   });
   rev(calendarItemId);
   return { ok: true as const, message: "Synced notes to Calendar HQ record." };
+}
+
+/** Promote JSON item → CampaignEvent (if needed) and push to the correct Kelly Google lane. */
+export async function pushKellyCampaignGoogleForItem(calendarItemId: string) {
+  await assertAdminSession();
+  const { campaignEventId } = await promoteKellyCalendarItemToCampaignEvent(calendarItemId, actorId());
+  await syncKellyCampaignEventToGoogle(campaignEventId, null);
+  rev(calendarItemId);
+  return { ok: true as const };
+}
+
+/** Incremental pull for both Kelly Google lanes (staff). */
+export async function pullKellyGoogleCampaignCalendars() {
+  await assertAdminSession();
+  const t = await findKellyTentativeCalendarSource();
+  const c = await findKellyConfirmedCalendarSource();
+  if (!t || !c) throw new Error("Kelly Google lanes missing — run npm run calendar:google:ensure");
+  const tentative = await runIncrementalIngestForSource(t.id);
+  const confirmed = await runIncrementalIngestForSource(c.id);
+  REVAL.forEach((p) => revalidatePath(p));
+  return { ok: true as const, tentative, confirmed };
+}
+
+/** Staff: mark linked CampaignEvent approved and sync to Confirmed Google calendar. */
+export async function promoteKellyItemToConfirmedGoogleWorkflow(calendarItemId: string) {
+  await assertAdminSession();
+  const { campaignEventId } = await promoteKellyCalendarItemToCampaignEvent(calendarItemId, actorId());
+  const before = await prisma.campaignEvent.findUnique({
+    where: { id: campaignEventId },
+    select: { eventWorkflowState: true },
+  });
+  const fromState = before?.eventWorkflowState ?? EventWorkflowState.DRAFT;
+  await prisma.campaignEvent.update({
+    where: { id: campaignEventId },
+    data: { eventWorkflowState: EventWorkflowState.APPROVED, approvedAt: new Date() },
+  });
+  await prisma.eventStageChangeLog.create({
+    data: {
+      eventId: campaignEventId,
+      fromState,
+      toState: EventWorkflowState.APPROVED,
+      actorUserId: null,
+      note: "Staff promoted to Confirmed workflow + Google lane",
+    },
+  });
+  await syncKellyCampaignEventToGoogle(campaignEventId, null);
+  rev(calendarItemId);
+  return { ok: true as const };
+}
+
+/** Staff: send event back to draft / Tentative lane in Google. */
+export async function sendKellyItemBackToTentativeWorkflow(calendarItemId: string) {
+  await assertAdminSession();
+  const promo = await prisma.kellyCalendarPromotion.findUnique({ where: { calendarItemId } });
+  if (!promo) throw new Error("Item not promoted to CampaignEvent yet.");
+  const before = await prisma.campaignEvent.findUnique({
+    where: { id: promo.campaignEventId },
+    select: { eventWorkflowState: true },
+  });
+  const fromState = before?.eventWorkflowState ?? EventWorkflowState.APPROVED;
+  await prisma.campaignEvent.update({
+    where: { id: promo.campaignEventId },
+    data: { eventWorkflowState: EventWorkflowState.DRAFT, approvedAt: null },
+  });
+  await prisma.eventStageChangeLog.create({
+    data: {
+      eventId: promo.campaignEventId,
+      fromState,
+      toState: EventWorkflowState.DRAFT,
+      actorUserId: null,
+      note: "Staff sent back to Tentative / draft workflow",
+    },
+  });
+  await syncKellyCampaignEventToGoogle(promo.campaignEventId, null);
+  rev(calendarItemId);
+  return { ok: true as const };
+}
+
+/** Staff: clear conflict flag after manual resolution (does not auto-merge data). */
+export async function resolveKellyGoogleConflictForItem(calendarItemId: string) {
+  await assertAdminSession();
+  const promo = await prisma.kellyCalendarPromotion.findUnique({ where: { calendarItemId } });
+  if (!promo) throw new Error("Item not promoted to CampaignEvent yet.");
+  await prisma.campaignEvent.update({
+    where: { id: promo.campaignEventId },
+    data: {
+      syncReviewNeeded: false,
+      googleSyncState: GoogleEventSyncState.IDLE,
+      googleSyncError: null,
+    },
+  });
+  rev(calendarItemId);
+  return { ok: true as const };
 }
