@@ -36,6 +36,8 @@ yarn-error.log*
 # machine-local env backups (never commit — see docs/email-command-center-selective-staging-guide.md)
 .env.backup*
 .env.backup-*
+.env.before-*
+.env.broken-*
 
 # typescript
 *.tsbuildinfo

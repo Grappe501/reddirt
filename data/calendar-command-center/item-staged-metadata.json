@@ -1,19 +1,19 @@
 {
   "version": 1,
   "byItemId": {
-    "cockpit-2026-06-02-rotary-prescott-lunch": {
+    "cockpit-2026-05-19-rotary-prescott-lunch": {
       "pressRelease": "maybe",
       "pressAngleNote": "Rotary + Nevada County visibility — staff decide framing.",
       "googleSyncStatus": "ready_to_sync",
       "googleSyncTarget": "travel",
-      "updatedAt": "2026-05-13T12:00:00.000Z"
+      "updatedAt": "2026-05-13T18:00:00.000Z"
     },
     "cockpit-2026-06-08-greene-county-dems-kelly-speaking-invitation": {
       "pressRelease": "staff_decide",
-      "pressAngleNote": "County party speaking slot — confirm audience before press.",
-      "googleSyncStatus": "not_synced",
+      "pressAngleNote": "Confirmed June 8 Greene County Dems — Kelly speaking; Lisa Birmingham host.",
+      "googleSyncStatus": "ready_to_sync",
       "googleSyncTarget": "travel",
-      "updatedAt": "2026-05-13T12:00:00.000Z"
+      "updatedAt": "2026-05-13T18:00:00.000Z"
     }
   }
 }

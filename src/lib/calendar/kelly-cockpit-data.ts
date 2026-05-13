@@ -68,7 +68,7 @@ async function bootstrapConflictAndUrgencyAlerts(items: EnrichedCalendarItem[]):
 
 export async function loadKellyCockpitBundle(): Promise<KellyCockpitBundle> {
   const { todayYmd, tomorrowYmd, weekEndYmd } = todayTomorrowWeekKeys();
-  const items = loadTravelCalendarItems();
+  const items = loadTravelCalendarItems().filter((i) => !i.excludeFromKellyCockpit);
   try {
     const ids = items.map((i) => i.id);
     if (ids.length === 0) {

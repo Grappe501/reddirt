@@ -59,6 +59,8 @@ export type CampaignCalendarItem = {
   overnightCity?: string;
   verificationConfidence: number;
   notes?: string;
+  /** When true, row is kept in workbook JSON but omitted from Kelly mobile cockpit bundle (dedupe / superseded imports). */
+  excludeFromKellyCockpit?: boolean;
   /** Spreadsheet / ingest extras (host, Kelly role, etc.) */
   drillDown?: {
     /** When true, Tuesday Little Rock daytime rule is treated as waived for this item (admin-flagged). */

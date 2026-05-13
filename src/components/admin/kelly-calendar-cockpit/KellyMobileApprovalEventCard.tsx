@@ -23,8 +23,13 @@ import type {
 } from "@/lib/calendar/kelly-cockpit-staged-metadata";
 import type { EnrichedCalendarItem } from "@/lib/calendar/kelly-cockpit-types";
 import type { KellySurrogateTypePref } from "@prisma/client";
+import { KellyCountyContextSheet } from "@/components/admin/kelly-calendar-cockpit/KellyCountyContextSheet";
 
 const TZ = "America/Chicago";
+
+const OFFSITE = { target: "_blank" as const, rel: "noopener noreferrer" };
+const pillLink =
+  "inline-flex items-center justify-center rounded-lg border border-zinc-300/90 bg-white px-2 py-2 text-center font-body text-[9px] font-bold uppercase leading-tight tracking-wide text-zinc-800 shadow-sm active:bg-zinc-100";
 
 const WORK_PRETTY: Record<WorkScheduleSummary, string> = {
   during_work_hours: "During work hours",
@@ -105,6 +110,7 @@ export function KellyMobileApprovalEventCard({ it, ai, aiLoading, countyBasics, 
   const rec = ai?.recommendation;
   const ctx = ai?.context;
 
+  const [sheetOpen, setSheetOpen] = useState(false);
   const [press, setPress] = useState<PressReleasePref>(staged.pressRelease ?? "staff_decide");
   const [pressNote, setPressNote] = useState(staged.pressAngleNote ?? "");
   const [gStat, setGStat] = useState<GoogleSyncStatusPref>(staged.googleSyncStatus ?? "not_synced");
@@ -116,6 +122,8 @@ export function KellyMobileApprovalEventCard({ it, ai, aiLoading, countyBasics, 
     setGStat(staged.googleSyncStatus ?? "not_synced");
     setGTarget(staged.googleSyncTarget ?? "travel");
   }, [staged.pressRelease, staged.pressAngleNote, staged.googleSyncStatus, staged.googleSyncTarget, staged.updatedAt]);
+
+  const countyLabel = useMemo(() => [it.county, it.city].filter(Boolean).join(" · ") || "County", [it.county, it.city]);
 
   const fmtWhen = useMemo(
     () =>
@@ -174,7 +182,7 @@ export function KellyMobileApprovalEventCard({ it, ai, aiLoading, countyBasics, 
   const lunchChip = ctx ? (ctx.lunchWindowLabel === "lunch_slot_available" ? "Lunch slot available" : "No lunch window") : "—";
 
   return (
-    <article className="relative mb-6 overflow-hidden rounded-2xl border border-zinc-200/80 bg-[#fdfbf7] shadow-[0_12px_40px_-18px_rgba(0,0,0,0.25)]">
+    <article className="relative mb-6 overflow-x-hidden rounded-2xl border border-zinc-200/80 bg-[#fdfbf7] shadow-[0_12px_40px_-18px_rgba(0,0,0,0.25)]">
       <div className="space-y-4 px-5 pb-[22rem] pt-5 sm:pb-80">
         <header className="flex items-start justify-between gap-3">
           <div className="min-w-0 flex-1">
@@ -186,16 +194,37 @@ export function KellyMobileApprovalEventCard({ it, ai, aiLoading, countyBasics, 
             </Link>
             <p className="mt-2 font-body text-sm font-medium text-zinc-600">{fmtWhen}</p>
             <p className="mt-1 font-body text-sm text-zinc-500">
-              {[it.county, it.city].filter(Boolean).join(" · ") || "County TBD"}
+              {countyLabel}
               {it.location ? ` · ${it.location}` : ""}
             </p>
           </div>
         </header>
 
-        {who ? (
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+          <button type="button" onClick={() => setSheetOpen(true)} className={pillLink}>
+            County brief
+          </button>
+          <Link href="/admin/counties" className={pillLink} {...OFFSITE}>
+            County dashboard
+          </Link>
+          <Link href="/admin/county-intelligence" className={pillLink} {...OFFSITE}>
+            Voter snapshot
+          </Link>
+          <Link href="/admin/calendar-command-center" className={pillLink} {...OFFSITE}>
+            Past touches
+          </Link>
+          <Link href="/admin/workbench/calendar" className={pillLink} {...OFFSITE}>
+            Nearby ops
+          </Link>
+          <Link href="/admin/calendar-command-center" className={pillLink} {...OFFSITE}>
+            Full dashboard
+          </Link>
+        </div>
+
+        {(who || it.drillDown?.adminLocalGuide?.displayName) ? (
           <section>
             <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400">Who</p>
-            <p className="mt-1 font-body text-sm leading-relaxed text-zinc-800">{who}</p>
+            {who ? <p className="mt-1 font-body text-sm leading-relaxed text-zinc-800">{who}</p> : null}
             {it.drillDown?.adminLocalGuide?.displayName ? (
               <p className="mt-2 font-body text-xs text-zinc-600">
                 Local guide: <span className="font-semibold text-zinc-800">{it.drillDown.adminLocalGuide.displayName}</span>
@@ -260,54 +289,6 @@ export function KellyMobileApprovalEventCard({ it, ai, aiLoading, countyBasics, 
             {ctx.overnightRecommended ? <p className="text-sm text-amber-900/90">Overnight: {ctx.overnightReason ?? "Flagged."}</p> : null}
           </section>
         ) : null}
-
-        <section className="rounded-xl border border-zinc-200/80 bg-white/70 px-4 py-3">
-          <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400">County basics</p>
-          <dl className="mt-2 grid grid-cols-2 gap-x-3 gap-y-2 font-body text-[11px] text-zinc-700">
-            <div>
-              <dt className="text-zinc-400">Seat</dt>
-              <dd className="font-medium text-zinc-900">{countyBasics.countySeat}</dd>
-            </div>
-            <div>
-              <dt className="text-zinc-400">Population</dt>
-              <dd>{countyBasics.population}</dd>
-            </div>
-            <div>
-              <dt className="text-zinc-400">Poverty</dt>
-              <dd>{countyBasics.povertyRate}</dd>
-            </div>
-            <div>
-              <dt className="text-zinc-400">Unemployment</dt>
-              <dd>{countyBasics.unemploymentRate}</dd>
-            </div>
-            <div>
-              <dt className="text-zinc-400">Registered voters</dt>
-              <dd>{countyBasics.registeredVoters}</dd>
-            </div>
-            <div>
-              <dt className="text-zinc-400">Turnout</dt>
-              <dd>{countyBasics.recentTurnout}</dd>
-            </div>
-            <div>
-              <dt className="text-zinc-400">Last Kelly touch</dt>
-              <dd>{countyBasics.lastKellyTouch}</dd>
-            </div>
-            <div>
-              <dt className="text-zinc-400">Touches (Nov 1+)</dt>
-              <dd>{countyBasics.touchesSinceNov1Line}</dd>
-            </div>
-            <div className="col-span-2">
-              <dt className="text-zinc-400">Priority / meeting</dt>
-              <dd>
-                {countyBasics.priorityTier} · {countyBasics.countyMeetingStatus}
-              </dd>
-            </div>
-            <div className="col-span-2">
-              <dt className="text-zinc-400">Local guide</dt>
-              <dd>{countyBasics.localGuideLine}</dd>
-            </div>
-          </dl>
-        </section>
       </div>
 
       <div className="sticky bottom-[calc(4.25rem+env(safe-area-inset-bottom))] z-20 border-t border-zinc-200/90 bg-[#fdfbf7]/95 px-4 py-3 backdrop-blur-md">
@@ -447,6 +428,14 @@ export function KellyMobileApprovalEventCard({ it, ai, aiLoading, countyBasics, 
         </button>
         {msg ? <p className="mt-2 text-center font-body text-xs text-rose-700">{msg}</p> : null}
       </div>
+
+      <KellyCountyContextSheet
+        open={sheetOpen}
+        onClose={() => setSheetOpen(false)}
+        countyLabel={countyLabel}
+        countyBasics={countyBasics}
+        eventId={it.id}
+      />
     </article>
   );
 }
