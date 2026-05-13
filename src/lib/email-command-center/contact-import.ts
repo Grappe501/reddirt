@@ -259,19 +259,23 @@ export async function listContactImportBatches(limit = 25) {
 }
 
 export async function getContactImportBatchDetail(batchId: string) {
-  return prisma.emailContactImportBatch.findUnique({
-    where: { id: batchId },
-    include: {
-      rows: {
-        orderBy: { rowNumber: "asc" },
-        include: {
-          matchedProfile: { select: { id: true, primaryEmail: true } },
-          committedProfile: { select: { id: true, primaryEmail: true } },
+  try {
+    return await prisma.emailContactImportBatch.findUnique({
+      where: { id: batchId },
+      include: {
+        rows: {
+          orderBy: { rowNumber: "asc" },
+          include: {
+            matchedProfile: { select: { id: true, primaryEmail: true } },
+            committedProfile: { select: { id: true, primaryEmail: true } },
+          },
         },
+        decisions: { orderBy: { decidedAt: "desc" }, take: 50 },
       },
-      decisions: { orderBy: { decidedAt: "desc" }, take: 50 },
-    },
-  });
+    });
+  } catch {
+    return null;
+  }
 }
 
 export async function validateEmailContactImportBatch(batchId: string) {
@@ -555,7 +559,16 @@ export async function archiveContactImportBatch(batchId: string) {
 
 export async function contactImportSnapshotCounts() {
   try {
-    const [pendingApproval, committed, openBatches, consentAgg, latest] = await Promise.all([
+    const [
+      pendingApproval,
+      committed,
+      openBatches,
+      consentAgg,
+      latest,
+      stagedRowCount,
+      invalidOrDuplicateStagingRows,
+      committedImportRows,
+    ] = await Promise.all([
       prisma.emailContactImportBatch.count({
         where: { status: { in: ["VALIDATED", "READY_FOR_APPROVAL"] } },
       }),
@@ -571,6 +584,16 @@ export async function contactImportSnapshotCounts() {
         take: 5,
         select: { id: true, name: true, status: true, createdAt: true },
       }),
+      prisma.emailContactImportRow.count({
+        where: { batch: { status: { notIn: ["COMMITTED", "ARCHIVED"] } } },
+      }),
+      prisma.emailContactImportRow.count({
+        where: {
+          batch: { status: { notIn: ["COMMITTED", "ARCHIVED"] } },
+          validationStatus: { in: ["INVALID", "DUPLICATE"] },
+        },
+      }),
+      prisma.emailContactImportRow.count({ where: { committedProfileId: { not: null } } }),
     ]);
     return {
       dbSliceReachable: true,
@@ -579,6 +602,9 @@ export async function contactImportSnapshotCounts() {
       /** Batches still in the staging lifecycle (excludes committed + archived). */
       openImportBatchCount: openBatches,
       consentWarningRowsCount: consentAgg._sum.consentWarningCount ?? 0,
+      stagedRowCount,
+      invalidOrDuplicateStagingRows,
+      committedImportRows,
       latestBatches: latest,
     };
   } catch {
@@ -588,6 +614,9 @@ export async function contactImportSnapshotCounts() {
       committedBatchCount: 0,
       openImportBatchCount: 0,
       consentWarningRowsCount: 0,
+      stagedRowCount: 0,
+      invalidOrDuplicateStagingRows: 0,
+      committedImportRows: 0,
       latestBatches: [] as { id: string; name: string; status: EmailContactImportBatchStatus; createdAt: Date }[],
     };
   }

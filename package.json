@@ -72,6 +72,7 @@
     "ingest:dnc-playbook": "tsx scripts/ingest-dnc-playbook.ts",
     "import:may-2026-calendar-snapshot": "tsx scripts/import-kelly-calendar-may-2026-snapshot.ts",
     "import:kelly-calendar-2026-sweep": "tsx scripts/import-kelly-calendar-2026-sweep.ts",
+    "calendar:travel:reconcile": "tsx scripts/travel-calendar-xlsx-reconcile.ts",
     "ingest:external-media": "tsx scripts/ingest-external-media.ts",
     "audit:campaign-ingestion": "tsx scripts/audit-campaign-ingestion.ts",
     "reconcile:campaign-folder": "tsx scripts/reconcile-campaign-folder-vs-db.ts",

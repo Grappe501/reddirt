@@ -2,6 +2,7 @@
 
 **Repository:** `H:\SOSWebsite\RedDirt`  
 **Truth:** This repo is the **Kelly Grappe for Arkansas Secretary of State** **production site** and **campaign engine** (public `(site)`, organizer `/relational`, `/admin` workbench, Prisma/Postgres, APIs). The folder name `RedDirt` is **legacy**; ownership is **Kelly SOS**.  
+**Community regions priority (2026-05-11):** **P1 = Muslim Community Dashboard** (first launch-ready community region). See [`docs/campaign-ops/COMMUNITY_REGIONS_PRODUCT_PRIORITIES.md`](./campaign-ops/COMMUNITY_REGIONS_PRODUCT_PRIORITIES.md) and [`docs/campaign-ops/MUSLIM_COMMUNITY_DASHBOARD_ARCHITECTURE.md`](./campaign-ops/MUSLIM_COMMUNITY_DASHBOARD_ARCHITECTURE.md). **P2** statewide Volunteer OS, **P3** conversational Spanish region, **P4** Marshallese region — after P1 is launch-ready.  
 **Last updated:** 2026-04-26 — **Section 3 launch lock packet** ([`KELLY_SOS_SECTION_3_LAUNCH_LOCK.md`](./KELLY_SOS_SECTION_3_LAUNCH_LOCK.md)) — go/no-go table, P0/P1/P2, post-launch backlog, optional git tag. **Formal counsel/treasurer initials** still pending; **Netlify preview** smoke still recommended before apex. **Cursor next pass:** **maintenance** ([`KELLY_SOS_NEXT_PASS_SCRIPT.md`](./KELLY_SOS_NEXT_PASS_SCRIPT.md)).
 
 ## Next actions toward launch (P0 — in order)

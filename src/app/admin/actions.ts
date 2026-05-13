@@ -52,7 +52,12 @@ export async function adminLoginAction(formData: FormData) {
     path: "/",
     maxAge: 60 * 60 * 24 * 7,
   });
-  redirect("/admin/content");
+  const redirectTo = String(formData.get("redirectTo") ?? "").trim();
+  const safe =
+    redirectTo.startsWith("/") && !redirectTo.startsWith("//") && !redirectTo.includes("\n")
+      ? redirectTo
+      : "/admin/content";
+  redirect(safe);
 }
 
 export async function adminLogoutAction() {

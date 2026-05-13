@@ -2161,6 +2161,7 @@ model County {
   electionCountyResults     ElectionCountyResult[]
   electionPrecinctResults   ElectionPrecinctResult[]
   relationalContacts        RelationalContact[]
+  kellyLocalCoverageRequests  LocalCoverageRequest[]
 
   @@index([published, sortOrder])
   @@map("counties")
@@ -3318,6 +3319,10 @@ model CampaignEvent {
   financialTransactions                   FinancialTransaction[]
   /// Rows from Google Calendar list ingest linked to this campaign event (operator-reviewed).
   googleCalendarEventRecords              GoogleCalendarEventRecord[]     @relation("GoogleCalendarEventCampaignLink")
+  kellyCalendarDecisions                  KellyCalendarDecision[]         @relation("KellyDecisionOnCampaignEvent")
+  kellyCalendarPromotions                 KellyCalendarPromotion[]        @relation("KellyPromotionCampaignEvent")
+  calendarAlerts                          CalendarAlert[]                 @relation("CalendarAlertOnCampaignEvent")
+  localCoverageRequests                   LocalCoverageRequest[]          @relation("LocalCoverageOnCampaignEvent")
 
   @@index([startAt, status])
   @@index([countyId, startAt])
@@ -6756,5 +6761,155 @@ model OppositionAccountabilityItem {
 
   @@index([entityId])
   @@index([sourceId])
+  @@schema("public")
+}
+
+// --- Kelly Calendar Cockpit (staged travel items + decisions; additive) ---
+
+enum KellyCockpitDecisionKind {
+  APPROVE
+  MODIFY
+  SEND_LOCAL
+  HOLD
+  REJECT
+  ASK_STAFF
+
+  @@schema("public")
+}
+
+enum KellySurrogateTypePref {
+  COUNTY_CHAIR
+  COUNTY_PARTY_CONTACT
+  TRUSTED_LOCAL
+  VOLUNTEER
+  LOCAL_ELECTED
+  STAFF_CHOOSE
+
+  @@schema("public")
+}
+
+enum LocalCoverageRequestStatus {
+  NEEDS_STAFF_FOLLOW_UP
+  STAFF_ASSIGNED
+  CONFIRMED
+  CANCELLED
+
+  @@schema("public")
+}
+
+enum CalendarAlertSeverity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+
+  @@schema("public")
+}
+
+enum CalendarAlertChannel {
+  IN_APP
+  EMAIL
+  SMS
+  PUSH
+
+  @@schema("public")
+}
+
+enum CalendarAlertStatus {
+  PENDING
+  READ
+  SNOOZED
+  DISMISSED
+
+  @@schema("public")
+}
+
+/// Kelly / admin decision on a staged `calendarItemId` (normalized JSON id). Audit trail; does not delete source rows.
+model KellyCalendarDecision {
+  id                      String                   @id @default(cuid())
+  calendarItemId        String
+  campaignEventId       String?
+  campaignEvent          CampaignEvent?           @relation("KellyDecisionOnCampaignEvent", fields: [campaignEventId], references: [id], onDelete: SetNull)
+  decision                KellyCockpitDecisionKind
+  /// Logical actor (future: Prisma `User.id` when admin session carries user).
+  decidedByUserId       String
+  notes                   String?                  @db.Text
+  requestedDateChange     DateTime?
+  requestedTimeChange     String?
+  requestedLocationChange String?                  @db.Text
+  requestedSurrogateType  KellySurrogateTypePref?
+  /// Opaque surrogate pick — staff maps to a real contact offline; never auto-link volunteer DB here.
+  requestedSurrogateId    String?
+  staffFollowUpRequired   Boolean                  @default(false)
+  metadataJson            Json                     @default("{}")
+  createdAt               DateTime                 @default(now())
+  updatedAt               DateTime                 @updatedAt
+
+  localCoverageRequest LocalCoverageRequest?
+
+  @@index([calendarItemId, createdAt])
+  @@index([campaignEventId])
+  @@schema("public")
+}
+
+/// When Kelly requests local / surrogate coverage (no PII; staff confirms assignee).
+model LocalCoverageRequest {
+  id                     String                     @id @default(cuid())
+  calendarItemId         String
+  campaignEventId        String?
+  campaignEvent          CampaignEvent?             @relation("LocalCoverageOnCampaignEvent", fields: [campaignEventId], references: [id], onDelete: SetNull)
+  countyId               String?
+  county                 County?                    @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  requestedByUserId      String
+  surrogateType          KellySurrogateTypePref
+  requestedSurrogateId   String?
+  status                 LocalCoverageRequestStatus @default(NEEDS_STAFF_FOLLOW_UP)
+  notes                  String?                    @db.Text
+  sourceDecisionId       String?                    @unique
+  sourceDecision         KellyCalendarDecision?     @relation(fields: [sourceDecisionId], references: [id], onDelete: SetNull)
+  createdAt              DateTime                   @default(now())
+  updatedAt              DateTime                   @updatedAt
+
+  @@index([calendarItemId])
+  @@index([status, createdAt])
+  @@schema("public")
+}
+
+/// In-app / queued outbound alert (email/SMS/push gated in app layer by env + opt-in).
+model CalendarAlert {
+  id                String                @id @default(cuid())
+  calendarItemId  String
+  campaignEventId String?
+  campaignEvent    CampaignEvent?        @relation("CalendarAlertOnCampaignEvent", fields: [campaignEventId], references: [id], onDelete: SetNull)
+  alertType        String                @db.VarChar(96)
+  severity         CalendarAlertSeverity
+  title            String
+  body             String                @db.Text
+  dueAt            DateTime?
+  channel          CalendarAlertChannel  @default(IN_APP)
+  status           CalendarAlertStatus   @default(PENDING)
+  assignedToRole   String?
+  assignedToUserId String?
+  snoozedUntil     DateTime?
+  dedupeKey        String?               @unique
+  metadataJson     Json                  @default("{}")
+  createdAt        DateTime              @default(now())
+  updatedAt        DateTime              @updatedAt
+
+  @@index([calendarItemId, status])
+  @@index([status, dueAt])
+  @@schema("public")
+}
+
+/// Idempotent link: staged calendar JSON item promoted to `CampaignEvent` (explicit staff action).
+model KellyCalendarPromotion {
+  id                String        @id @default(cuid())
+  calendarItemId  String        @unique
+  campaignEventId String
+  campaignEvent    CampaignEvent @relation("KellyPromotionCampaignEvent", fields: [campaignEventId], references: [id], onDelete: Cascade)
+  promotedByUserId String
+  createdAt        DateTime      @default(now())
+
+  @@index([campaignEventId])
   @@schema("public")
 }

@@ -28,7 +28,7 @@ export const COMMUNITY_PILLARS = [
     id: "muslim",
     label: "Muslim Arkansans",
     focus:
-      "Central AR partnership + statewide coalition; 25K / 10K goals; Get Loud; registration drive; polling site at mosque (workflow).",
+      "Central AR partnership + statewide coalition; 25K / 10K goals; Get Loud; registration drive; polling site at mosque (workflow). **Youth Outreach** and **Women’s Outreach** are first-class civic lanes on the Muslim Community dashboard plan (draft — community review).",
   },
 ] as const;
 

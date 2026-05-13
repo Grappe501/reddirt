@@ -21,13 +21,17 @@ function interpolate(
 
 /**
  * If template has `configJson.eventTypes`, require event.type to be listed.
+ * If `configJson.campaignIntentEquals` is set, require an exact `CampaignEvent.campaignIntent` match.
  */
 function templateMatchesEvent(
   config: Prisma.JsonValue,
-  event: Pick<CampaignEvent, "eventType">
+  event: Pick<CampaignEvent, "eventType" | "campaignIntent">
 ): boolean {
   if (!config || typeof config !== "object" || Array.isArray(config)) return true;
-  const c = config as { eventTypes?: string[] };
+  const c = config as { eventTypes?: string[]; campaignIntentEquals?: string };
+  if (c.campaignIntentEquals != null && c.campaignIntentEquals !== "") {
+    if ((event.campaignIntent ?? "").trim() !== c.campaignIntentEquals) return false;
+  }
   if (c.eventTypes && c.eventTypes.length > 0) {
     return c.eventTypes.includes(event.eventType);
   }
@@ -86,6 +90,7 @@ export async function runEventCreatedWorkflows(eventId: string): Promise<void> {
           dueAt: due,
           eventId: event.id,
           workflowRunId: run.id,
+          countyId: event.countyId ?? null,
           assignedRole: step.roleTarget ?? null,
         },
       });

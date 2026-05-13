@@ -1,0 +1,5 @@
+-- Baseline marker for pre-existing hosted Supabase legacy tables.
+-- No-op migration. Do not drop, alter, truncate, or modify legacy data.
+-- This exists only to initialize Prisma migration history on a non-empty database
+-- after collision checks showed legacy table/type/index names do not overlap RedDirt migrations.
+-- Do not mark the real RedDirt migrations as applied blindly.

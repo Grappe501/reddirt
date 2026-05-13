@@ -19,17 +19,22 @@ export async function queryEmailCommandCenterMigrationRows(
   prisma: PrismaClient
 ): Promise<EmailCommandCenterMigrationRow[]> {
   const names = [...EMAIL_COMMAND_CENTER_MIGRATION_DIRS];
-  const rows = await prisma.$queryRaw<{ name: string; applied: boolean }[]>`
-    SELECT m.migration_name AS name,
-           (m.finished_at IS NOT NULL) AS applied
-    FROM "_prisma_migrations" m
-    WHERE m.migration_name IN (${Prisma.join(names)})
-    ORDER BY m.migration_name;
-  `;
-  const list = Array.isArray(rows) ? rows : [];
-  const byName = new Map(list.map((r) => [String(r.name), Boolean(r.applied)]));
-  return names.map((name) => ({
-    name,
-    applied: byName.get(name) === true,
-  }));
+  try {
+    const rows = await prisma.$queryRaw<{ name: string; applied: boolean }[]>`
+      SELECT m.migration_name AS name,
+             (m.finished_at IS NOT NULL) AS applied
+      FROM "_prisma_migrations" m
+      WHERE m.migration_name IN (${Prisma.join(names)})
+      ORDER BY m.migration_name;
+    `;
+    const list = Array.isArray(rows) ? rows : [];
+    const byName = new Map(list.map((r) => [String(r.name), Boolean(r.applied)]));
+    return names.map((name) => ({
+      name,
+      applied: byName.get(name) === true,
+    }));
+  } catch {
+    /** Table missing or DB not migrated — treat every ECC migration as not applied. */
+    return names.map((name) => ({ name, applied: false }));
+  }
 }

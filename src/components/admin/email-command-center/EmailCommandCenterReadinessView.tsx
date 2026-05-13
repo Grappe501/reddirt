@@ -111,7 +111,7 @@ export function EmailCommandCenterReadinessView({
   const se = snapshot.sendExecution;
   const gov = snapshot.governance;
   const isProd = process.env.NODE_ENV === "production";
-  const prodTestSendGateOk = !isProd || og.localContactImportDbVerified === true;
+  const prodTestSendGateOk = !isProd || og.governedSendExecutionDbReady === true;
   const governedTestSendEnvReady = se.sendGridMailTestReady === true;
   const governedTestSendAvailable = governedTestSendEnvReady && prodTestSendGateOk;
 

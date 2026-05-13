@@ -120,6 +120,7 @@ export function mapPrismaVolunteerOpsTeamToDashboard(
 
   const meta = row.metadataJson as
     | {
+        countySlug?: string;
         monthlyPrograms?: TeamMonthlyProgram[];
         monthlyOutreachEventsHeld?: number;
         downstreamTeamsLaunched?: number;
@@ -128,6 +129,9 @@ export function mapPrismaVolunteerOpsTeamToDashboard(
       }
     | null
     | undefined;
+
+  const linkedCountySlug =
+    typeof meta?.countySlug === "string" && meta.countySlug.trim() ? meta.countySlug.trim() : undefined;
 
   const triadFilled = hasCoreTriadRoles(row.members.map((m) => m.role));
   const downstreamLaunched = meta?.downstreamTeamsLaunched ?? 0;
@@ -232,6 +236,7 @@ export function mapPrismaVolunteerOpsTeamToDashboard(
     displayName: row.displayName,
     slug: row.slug,
     accessEmails: row.members.map((m) => m.user.email).filter(Boolean),
+    linkedCountySlug,
     geography: row.geographyLabel ?? "Oklahoma",
     level: (row.level as TeamLevel) ?? "county",
     upstreamContactId: upstream?.id ?? row.upstreamContactUserId ?? row.createdByUserId,

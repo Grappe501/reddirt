@@ -9,11 +9,16 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-type Props = { searchParams: Promise<{ error?: string }> };
+type Props = { searchParams: Promise<{ error?: string; next?: string }> };
 
 export default async function AdminLoginPage({ searchParams }: Props) {
   const sp = await searchParams;
   const configured = Boolean(getAdminSecret());
+  const nextPath = sp.next?.trim();
+  const redirectTo =
+    nextPath && nextPath.startsWith("/") && !nextPath.startsWith("//") && !nextPath.includes("\n")
+      ? nextPath
+      : "/admin/content";
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-kelly-text px-4 py-16 text-kelly-page">
@@ -46,6 +51,7 @@ export default async function AdminLoginPage({ searchParams }: Props) {
           </p>
         ) : (
           <form action={adminLoginAction} className="mt-6 space-y-4">
+            <input type="hidden" name="redirectTo" value={redirectTo} />
             <label className="block">
               <span className="font-body text-xs font-semibold uppercase tracking-wider text-kelly-page/60">
                 Passphrase

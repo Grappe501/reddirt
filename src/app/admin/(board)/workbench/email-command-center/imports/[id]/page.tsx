@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { EccMigrationRequiredBanner } from "@/components/admin/email-command-center/EccMigrationRequiredBanner";
 import { getContactImportBatchDetail, previewContactImportCommit } from "@/lib/email-command-center/contact-import";
+import { getEmailCommandCenterSnapshot } from "@/lib/email-command-center/read-model";
 import {
   approveEmailContactImportBatchAction,
   archiveEmailContactImportBatchAction,
@@ -24,8 +26,27 @@ type Props = { params: Promise<{ id: string }> };
 
 export default async function EmailContactImportBatchPage({ params }: Props) {
   const { id } = await params;
+  const eccSnapshot = await getEmailCommandCenterSnapshot();
   const batch = await getContactImportBatchDetail(id);
-  if (!batch) notFound();
+  if (!batch) {
+    if (eccSnapshot.operatorGate.allEmailCommandCenterMigrationsApplied !== true) {
+      return (
+        <div className="min-w-0 max-w-3xl space-y-4 px-2 py-4">
+          <EccMigrationRequiredBanner
+            gate={eccSnapshot.operatorGate}
+            context="This import batch cannot be opened until the database schema is current."
+          />
+          <Link
+            href="/admin/workbench/email-command-center/imports"
+            className="inline-block rounded border border-kelly-text/15 bg-white px-2 py-1 text-xs font-semibold text-kelly-slate"
+          >
+            ← Back to imports
+          </Link>
+        </div>
+      );
+    }
+    notFound();
+  }
 
   const preview = await previewContactImportCommit(id).catch(() => null);
 

@@ -81,10 +81,10 @@ export async function sendEmailSendGridTestAction(fd: FormData): Promise<void> {
   if (!sendExecutionId || !testRecipientEmail) redirect(`${ECC}/send-execution?error=missing-test-fields#ops`);
 
   const snap = await getEmailCommandCenterSnapshot();
-  if (process.env.NODE_ENV === "production" && !snap.operatorGate.localContactImportDbVerified) {
+  if (process.env.NODE_ENV === "production" && !snap.operatorGate.governedSendExecutionDbReady) {
     redirect(
       `${ECC}/send-execution?id=${encodeURIComponent(sendExecutionId)}&error=${encodeURIComponent(
-        "Hosted Kelly-Grappe-App DB gate not verified — test send disabled in production.",
+        "Email Command Center migrations or send-execution tables are not verified on this database — test send disabled in production. Run prisma migrate deploy on this DATABASE_URL.",
       )}#ops`,
     );
   }
@@ -143,10 +143,10 @@ export async function executeEmailSendGridFinalAction(fd: FormData): Promise<voi
   if (!sendExecutionId) redirect(`${ECC}/send-execution?error=missing-id#ops`);
 
   const snap = await getEmailCommandCenterSnapshot();
-  if (process.env.NODE_ENV === "production" && !snap.operatorGate.localContactImportDbVerified) {
+  if (process.env.NODE_ENV === "production" && !snap.operatorGate.governedSendExecutionDbReady) {
     redirect(
       `${ECC}/send-execution?id=${encodeURIComponent(sendExecutionId)}&error=${encodeURIComponent(
-        "Hosted Kelly-Grappe-App DB gate not verified — final send disabled in production.",
+        "Email Command Center migrations or send-execution tables are not verified on this database — final send disabled in production. Run prisma migrate deploy on this DATABASE_URL.",
       )}#ops`,
     );
   }

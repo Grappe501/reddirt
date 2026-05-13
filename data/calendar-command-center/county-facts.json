@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "note": "Official statistics must be sourced (Census, BLS, SOS) before replacing Needs data. Do not invent numbers.",
+  "byCountyKey": {
+    "pulaski": {
+      "countySeat": "Little Rock",
+      "population": "Needs data.",
+      "povertyRate": "Needs data.",
+      "unemploymentRate": "Needs data.",
+      "registeredVoters": "Needs data.",
+      "recentTurnout": "Needs data.",
+      "countyMeetingStatus": "Needs data."
+    },
+    "nevada": {
+      "countySeat": "Prescott",
+      "population": "Needs data.",
+      "povertyRate": "Needs data.",
+      "unemploymentRate": "Needs data.",
+      "registeredVoters": "Needs data.",
+      "recentTurnout": "Needs data.",
+      "countyMeetingStatus": "Needs data."
+    },
+    "greene": {
+      "countySeat": "Paragould",
+      "population": "Needs data.",
+      "povertyRate": "Needs data.",
+      "unemploymentRate": "Needs data.",
+      "registeredVoters": "Needs data.",
+      "recentTurnout": "Needs data.",
+      "countyMeetingStatus": "Needs data."
+    }
+  }
+}

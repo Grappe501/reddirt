@@ -121,8 +121,8 @@ export function SendExecutionOperationsPanel({
   const testMailReady = se.sendGridMailTestReady;
   const broadcastMailReady = se.sendGridMailBroadcastReady;
   const isProdBuild = process.env.NODE_ENV === "production";
-  /** Production blocks test send in the server action when import/DB verification is not proven. */
-  const prodOperatorGateBlocksTestSend = isProdBuild && og.localContactImportDbVerified !== true;
+  /** Production blocks test send when migrations / execution tables are not verified. */
+  const prodOperatorGateBlocksTestSend = isProdBuild && og.governedSendExecutionDbReady !== true;
 
   const preflightRows = detail ? parsePreflightCheckRows(detail.preflightJson) : [];
   const recipientBreakdown = detail ? parsePreflightRecipientBreakdown(detail.preflightJson) : null;
@@ -435,8 +435,9 @@ export function SendExecutionOperationsPanel({
                 role="alert"
               >
                 <strong>Production operator gate — test send blocked.</strong> On production builds, SendGrid test send is disabled
-                until hosted Kelly DB + contact-import verification passes (see Email Command Center readiness and Hosted DB
-                assistant). Fix that gate first; this is separate from missing SendGrid env vars.
+                until Email Command Center migrations are applied and send-execution tables respond on this{" "}
+                <code className="text-[9px]">DATABASE_URL</code> (see readiness + <code className="text-[9px]">npm run email:command-center:preflight</code>
+                ). Fix that gate first; this is separate from missing SendGrid env vars.
               </p>
             ) : null}
             <form action={sendEmailSendGridTestAction} className="mt-2 flex flex-wrap items-end gap-2">
@@ -468,8 +469,8 @@ export function SendExecutionOperationsPanel({
             ) : null}
             {detail.status === "READY_FOR_TEST" && testMailReady && prodOperatorGateBlocksTestSend ? (
               <p className="mt-2 font-body text-[10px] text-rose-950">
-                SendGrid mail env is present, but the <strong>production hosted DB / import verification gate</strong> still blocks
-                this button — complete operator proof on the canonical database before retrying.
+                SendGrid mail env is present, but the <strong>production migration / send-execution verification gate</strong> still blocks
+                this button — run <code className="text-[9px]">npx prisma migrate deploy</code> on the canonical database, then retry.
               </p>
             ) : null}
           </section>

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { pageMeta } from "@/lib/seo/metadata";
 import { whyKellyPageCopy } from "@/content/about/why-kelly-page";
 import { BiographyDiscoveryLink } from "@/components/biography/BiographyDiscoveryLink";
+import { showPublicBiographyManuscript } from "@/config/public-biography-depth";
 
 const c = whyKellyPageCopy;
 
@@ -86,11 +87,13 @@ export default function WhyKellyPage() {
               Office priorities
             </Button>
           </div>
-          <div className="mx-auto mt-12 max-w-3xl border-t border-kelly-text/10 pt-8 text-center">
-            <BiographyDiscoveryLink tone="soft" href="/biography" label="Begin the full biography — reading experience">
-              Begin the full biography →
-            </BiographyDiscoveryLink>
-          </div>
+          {showPublicBiographyManuscript() ? (
+            <div className="mx-auto mt-12 max-w-3xl border-t border-kelly-text/10 pt-8 text-center">
+              <BiographyDiscoveryLink tone="soft" href="/biography" label="Begin the full biography — reading experience">
+                Begin the full biography →
+              </BiographyDiscoveryLink>
+            </div>
+          ) : null}
         </ContentContainer>
       </FullBleedSection>
     </>

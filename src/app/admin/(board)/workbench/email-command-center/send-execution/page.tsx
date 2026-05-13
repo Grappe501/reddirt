@@ -1,5 +1,6 @@
 import { SendExecutionGovernanceView } from "@/components/admin/email-command-center/SendExecutionGovernanceView";
 import { SendExecutionOperationsPanel } from "@/components/admin/email-command-center/SendExecutionOperationsPanel";
+import { EccMigrationRequiredBanner } from "@/components/admin/email-command-center/EccMigrationRequiredBanner";
 import { prisma } from "@/lib/db";
 import { listMessageStudioDrafts } from "@/lib/email-command-center/message-studio-drafts";
 import { getEmailCommandCenterSnapshot } from "@/lib/email-command-center/read-model";
@@ -69,6 +70,10 @@ export default async function SendExecutionGovernancePage({ searchParams }: { se
 
   return (
     <div className="space-y-8">
+      <EccMigrationRequiredBanner
+        gate={og}
+        context="Operator console lists (executions, server drafts, audiences) require migrated tables."
+      />
       <SendExecutionGovernanceView snapshot={snapshot} />
       <SendExecutionOperationsPanel
         snapshot={snapshot}

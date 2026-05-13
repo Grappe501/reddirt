@@ -6,6 +6,7 @@ import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
 import { powerOf5OnboardingHref } from "@/config/navigation";
+import { showPublicBiographyManuscript } from "@/config/public-biography-depth";
 
 export const metadata: Metadata = {
   title: "Bring 5 Friends · Power of 5",
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
 };
 
 export default function Bring5FriendsPage() {
+  const kellyStoryHref = showPublicBiographyManuscript() ? "/biography" : "/about";
+
   return (
     <>
       <PageHero
@@ -74,7 +77,7 @@ export default function Bring5FriendsPage() {
           <ul className="mt-6 list-disc space-y-2 pl-5 font-body text-base leading-relaxed text-kelly-text/85">
             <li>
               Read{" "}
-              <Link href="/biography" className="font-semibold text-kelly-navy underline">
+              <Link href={kellyStoryHref} className="font-semibold text-kelly-navy underline">
                 Kelly’s story
               </Link>
             </li>
@@ -108,7 +111,7 @@ export default function Bring5FriendsPage() {
             <li>Write down five names you will actually text or call—not a fantasy list.</li>
             <li>Pick a two-week window so follow-up doesn’t drift forever.</li>
             <li>Send a link or offer to sit together with{" "}
-              <Link href="/biography" className="font-semibold text-kelly-navy underline">
+              <Link href={kellyStoryHref} className="font-semibold text-kelly-navy underline">
                 Kelly’s story
               </Link>{" "}
               or{" "}

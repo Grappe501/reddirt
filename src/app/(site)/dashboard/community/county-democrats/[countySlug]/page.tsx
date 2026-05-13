@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { COUNTY_PARTY_LEADERSHIP_MODEL } from "@/lib/campaign-ops/county-democrats-dashboard-plan";
+import { CampaignCountdown } from "@/components/campaign/CampaignCountdown";
+import { CountyRegistrationGoalCard } from "@/components/dashboard/vos/CountyRegistrationGoalCard";
+import {
+  COUNTY_PARTY_LEADERSHIP_MODEL,
+  countyDemocratsHref,
+} from "@/lib/campaign-ops/county-democrats-dashboard-plan";
+import { loadCountyRegistrationGoalCardData } from "@/lib/campaign-engine/county-registration-goal-load";
 import { getRegistryCountyBySlug } from "@/lib/county/arkansas-county-registry";
 import { VOLUNTEER_OS_DEMO_TEAM_SLUG } from "@/lib/team-naming";
 
@@ -20,9 +26,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function CountyDemocratsOverviewPage({ params }: Props) {
   const { countySlug } = await params;
   const reg = getRegistryCountyBySlug(countySlug);
+  const countyGoalData = await loadCountyRegistrationGoalCardData(countySlug);
 
   return (
     <div className="space-y-8">
+      <div className="grid gap-4 lg:grid-cols-2 lg:items-stretch">
+        <CampaignCountdown variant="compact" className="h-full" />
+        <CountyRegistrationGoalCard mode="county" data={countyGoalData} className="h-full" />
+      </div>
+
+      <div className="rounded-2xl border border-kelly-gold/30 bg-kelly-gold/[0.06] p-5">
+        <p className="font-heading text-sm font-bold text-kelly-navy">Recruitment engines for this county</p>
+        <ul className="mt-3 list-disc space-y-2 pl-5 font-body text-sm text-kelly-text/85">
+          <li>
+            <Link href={countyDemocratsHref(countySlug, "monthly-meeting")} className="font-semibold text-kelly-blue underline">
+              Monthly county party meeting
+            </Link>
+            {" — "}consistent rhythm for invites, RSVPs, new volunteer conversations, and registration assistance.
+          </li>
+          <li>
+            <Link href={countyDemocratsHref(countySlug, "p5-vr")} className="font-semibold text-kelly-blue underline">
+              P5 invitations & registrations
+            </Link>
+            {" — "}relational follow-up that turns invites into completed registrations tracked through the VOS.
+          </li>
+        </ul>
+      </div>
+
       <div className="rounded-2xl border border-kelly-blue/25 bg-kelly-blue/[0.06] p-6">
         <p className="font-heading text-sm font-bold text-kelly-navy">County party operating rhythm</p>
         <p className="mt-2 font-body text-sm leading-relaxed text-kelly-text/85">

@@ -64,28 +64,36 @@ const draftListInclude = {
 export async function listMessageStudioDrafts(options?: {
   includeArchived?: boolean;
 }): Promise<MessageStudioDraftListRow[]> {
-  const rows = await prisma.messageStudioDraft.findMany({
-    where: options?.includeArchived ? {} : { status: { not: "ARCHIVED" } },
-    orderBy: { updatedAt: "desc" },
-    take: 200,
-    include: draftListInclude,
-  });
-  return rows.map((r) => ({
-    id: r.id,
-    title: r.title,
-    draftType: r.draftType,
-    status: r.status,
-    approvalStatus: r.approvalStatus,
-    updatedAt: r.updatedAt.toISOString(),
-    createdAt: r.createdAt.toISOString(),
-    createdByLabel: userLabel(r.createdBy),
-    assignedReviewerLabel: userLabel(r.assignedReviewer),
-    reviewedByLabel: userLabel(r.reviewedBy),
-  }));
+  try {
+    const rows = await prisma.messageStudioDraft.findMany({
+      where: options?.includeArchived ? {} : { status: { not: "ARCHIVED" } },
+      orderBy: { updatedAt: "desc" },
+      take: 200,
+      include: draftListInclude,
+    });
+    return rows.map((r) => ({
+      id: r.id,
+      title: r.title,
+      draftType: r.draftType,
+      status: r.status,
+      approvalStatus: r.approvalStatus,
+      updatedAt: r.updatedAt.toISOString(),
+      createdAt: r.createdAt.toISOString(),
+      createdByLabel: userLabel(r.createdBy),
+      assignedReviewerLabel: userLabel(r.assignedReviewer),
+      reviewedByLabel: userLabel(r.reviewedBy),
+    }));
+  } catch {
+    return [];
+  }
 }
 
 export async function getMessageStudioDraft(id: string): Promise<MessageStudioDraft | null> {
-  return prisma.messageStudioDraft.findUnique({ where: { id } });
+  try {
+    return await prisma.messageStudioDraft.findUnique({ where: { id } });
+  } catch {
+    return null;
+  }
 }
 
 /** Merge sanitized keys into `metadataJson` (no body/subject mutation). */

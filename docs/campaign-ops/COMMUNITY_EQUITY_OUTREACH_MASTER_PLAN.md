@@ -2,6 +2,7 @@
 
 **Status:** Active campaign design — not a side project.  
 **App integration:** Admin hub `/admin/campaign-ops/community-equity` · workflow template `s4_event_faith_venue_polling_v1` (apply to a **MEETING**-type calendar event, e.g. “Central AR — mosque polling site”).  
+**Muslim Community Dashboard (P1):** Architecture & route plan — `docs/campaign-ops/MUSLIM_COMMUNITY_DASHBOARD_ARCHITECTURE.md` · priorities — `docs/campaign-ops/COMMUNITY_REGIONS_PRODUCT_PRIORITIES.md`.  
 **Last updated:** 2026-04-27
 
 **Cross-refs:** [`HISPANIC_SPANISH_LOCALE_LAYER_PLAN.md`](../../HISPANIC_SPANISH_LOCALE_LAYER_PLAN.md) (repo root) · [`KELLY_SOS_COMMS_READINESS.md`](../KELLY_SOS_COMMS_READINESS.md) · `docs/field-structure-foundation.md` (if present) · `src/content/events/tentativeExternalEvents.ts` for host-confirmed public events.
@@ -52,6 +53,8 @@ These communities are **not** a translation add-on. They are **full strategic pi
 | **Active initiative** | **Polling place in a Central AR mosque** | Use **Calendar HQ** + workflow template (below); coordinate with **county clerk / election board** and counsel on **neutral** public language (facility is a polling *site* under law, not a religious endorsement). |
 
 **Field/comms must-haves:** prayer-time awareness, gender-sensitive staffing where relevant, Eid and Ramadan calendaring, **zero** “security theater” that alienates. **GOTV** uses mosque networks only with **imam/ board** alignment.
+
+**Muslim Community civic organizing dashboard (draft):** **Youth Outreach** and **Women’s Outreach** are first-class lanes on the region dashboard plan — not side notes. Public draft hub: `/volunteer/resources/muslim-community` · narrative: `docs/campaign-ops/MUSLIM_COMMUNITY_CIVIC_ORGANIZING_DASHBOARD_PLAN.md`. All lane copy and resources are **draft — pending Muslim community leadership review**.
 
 ---
 

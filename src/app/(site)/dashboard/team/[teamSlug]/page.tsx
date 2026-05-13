@@ -2,8 +2,11 @@ import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 
 import { TeamOverviewContent } from "@/components/dashboard/vos/TeamOverviewContent";
+import { loadCountyRegistrationGoalCardData } from "@/lib/campaign-engine/county-registration-goal-load";
+import { isValidArkansasCountySlug } from "@/lib/county/arkansas-county-registry";
 import { getTeamWorkspaceBundle } from "@/lib/dashboard/team-workspace";
 import { teamAccessForSlug } from "@/lib/volunteer-ops/team-access-cookie";
+import { inferTeamCountyRegistrySlug } from "@/lib/volunteer-ops/team-county-inference";
 import type { VolunteerRole } from "@/types/dashboard";
 
 const CORE: VolunteerRole[] = ["events", "social-media", "power-of-5"];
@@ -34,6 +37,13 @@ export default async function TeamOverviewPage({
     ? (viewer?.userId ?? null)
     : (mockViewerOverride ?? bundle.team.members[0]?.volunteerId ?? null);
 
+  const explicitCounty = bundle.team.linkedCountySlug;
+  const countyRegistrySlug =
+    explicitCounty && isValidArkansasCountySlug(explicitCounty)
+      ? explicitCounty
+      : inferTeamCountyRegistrySlug({ slug: bundle.team.slug, geography: bundle.team.geography });
+  const countyGoalData = await loadCountyRegistrationGoalCardData(countyRegistrySlug);
+
   return (
     <TeamOverviewContent
       team={bundle.team}
@@ -44,6 +54,7 @@ export default async function TeamOverviewPage({
       viewerIsCampaignAdmin={viewerIsCampaignAdmin}
       openRoles={openRoles}
       signupSuggestions={bundle.signupSuggestions ?? []}
+      countyGoalData={countyGoalData}
     />
   );
 }

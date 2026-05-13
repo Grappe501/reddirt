@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { EmailCommandCenterTodayView } from "@/components/admin/email-command-center/EmailCommandCenterTodayView";
 import type { EmailCommandCenterSnapshot } from "@/lib/email-command-center/read-model";
 
 const card =
@@ -184,6 +185,13 @@ export function EmailCommandCenterContent({
 
   return (
     <div className="min-w-0 space-y-4">
+      <EmailCommandCenterTodayView snapshot={snapshot} query={query} />
+
+      <details className="rounded-lg border border-kelly-text/15 bg-white/40 shadow-sm">
+        <summary className="cursor-pointer list-none px-3 py-2.5 font-heading text-xs font-bold text-kelly-navy outline-none [&::-webkit-details-marker]:hidden">
+          Advanced operator dashboard (full detail, queues, maps)
+        </summary>
+        <div className="space-y-4 border-t border-kelly-text/10 px-2 pb-3 pt-3">
       <div
         className="rounded-lg border-2 border-kelly-navy/25 bg-kelly-navy/[0.04] px-3 py-2 font-body text-[11px] text-kelly-navy"
         role="note"
@@ -1297,6 +1305,8 @@ export function EmailCommandCenterContent({
           <li>Deep deliverability charts + scheduled reports (beyond current shell)</li>
         </ol>
       </section>
+        </div>
+      </details>
     </div>
   );
 }

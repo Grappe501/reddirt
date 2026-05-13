@@ -10,6 +10,7 @@ import {
   initiativesPetitionTrailPhotos,
 } from "@/content/media/campaign-trail-photo-use";
 import { cn } from "@/lib/utils";
+import { showPublicBiographyManuscript } from "@/config/public-biography-depth";
 
 const H_STORY = "/about/story";
 const H_BUSINESS = "/about/business";
@@ -386,16 +387,26 @@ export function KellyFullStory({
     <div id="kelly-full-story" className="scroll-mt-20 space-y-10 sm:space-y-14 md:space-y-20">
       <div className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-5 shadow-[var(--shadow-soft)] md:p-6">
         <p className={lead}>
-          Below is the <strong>Meet Kelly</strong> walk-through—business, farm, civics, and the case for this office. For
-          the literary manuscript organized in four arcs with chapter links, start with{" "}
-          <Link href="#kelly-biography-arcs" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
-            Biography arcs
-          </Link>{" "}
-          above or open the{" "}
-          <Link href="/biography" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
-            full biography hub
-          </Link>
-          .
+          Below is the <strong>Meet Kelly</strong> walk-through—business, farm, civics, and the case for this office.
+          {showPublicBiographyManuscript() ? (
+            <>
+              {" "}
+              For the literary manuscript organized in four arcs with chapter links, start with{" "}
+              <Link href="#kelly-biography-arcs" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
+                Biography arcs
+              </Link>{" "}
+              above or open the{" "}
+              <Link href="/biography" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
+                full biography hub
+              </Link>
+              .
+            </>
+          ) : (
+            <>
+              {" "}
+              Use <ReadMoreLink href={H_STORY} /> on each section when you want the longer read on that topic.
+            </>
+          )}
         </p>
       </div>
       {sections.map((s) => (

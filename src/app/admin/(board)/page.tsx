@@ -35,6 +35,16 @@ export default function AdminDashboardPage() {
           — daily priorities, message follow-ups, readiness checks, audiences, imports, Message Studio, and send governance
           (admin workbench).
         </p>
+        <div className="rounded-lg border border-emerald-800/25 bg-emerald-50/90 px-4 py-3 font-body text-sm text-kelly-text/90">
+          <strong>Field plan (volunteers):</strong>{" "}
+          <Link
+            className="inline-flex items-center rounded-md bg-emerald-900 px-3 py-1.5 font-semibold text-white underline-offset-2 hover:bg-emerald-800"
+            href="/admin/field-playbook"
+          >
+            Open three-person field playbook
+          </Link>{" "}
+          — fractal structure, lane guides, weekly huddles, and step-by-step hosting/social/relational playbooks.
+        </div>
       </div>
       <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {cards.map((c) => (

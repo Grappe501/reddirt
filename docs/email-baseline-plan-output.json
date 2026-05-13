@@ -1,0 +1,630 @@
+{
+  "generatedAt": "2026-05-09T16:31:48.681Z",
+  "heuristics": {
+    "sqlParse": "regex over migration.sql; may miss unusual DDL; verify with DBA",
+    "prismaMigrationFoldersScanned": 72
+  },
+  "live": {
+    "publicTableCount": 16,
+    "authTableCount": 23,
+    "publicTables": [
+      "import_batches",
+      "import_files",
+      "import_header_maps",
+      "import_match_reviews",
+      "import_plans",
+      "import_reports",
+      "import_rows",
+      "import_voter_matches",
+      "initiative_nonvoter_entries",
+      "petitions",
+      "review_candidate_snapshots",
+      "voter_file_ai_chunks",
+      "voter_file_ai_ingest_runs",
+      "voter_petition_signature_events",
+      "voter_petition_signatures",
+      "voter_supplement_by_id"
+    ],
+    "authTables": [
+      "audit_log_entries",
+      "custom_oauth_providers",
+      "flow_state",
+      "identities",
+      "instances",
+      "mfa_amr_claims",
+      "mfa_challenges",
+      "mfa_factors",
+      "oauth_authorizations",
+      "oauth_client_states",
+      "oauth_clients",
+      "oauth_consents",
+      "one_time_tokens",
+      "refresh_tokens",
+      "saml_providers",
+      "saml_relay_states",
+      "schema_migrations",
+      "sessions",
+      "sso_domains",
+      "sso_providers",
+      "users",
+      "webauthn_challenges",
+      "webauthn_credentials"
+    ],
+    "enumCount": 9,
+    "enums": [
+      {
+        "schema": "auth",
+        "name": "aal_level"
+      },
+      {
+        "schema": "auth",
+        "name": "code_challenge_method"
+      },
+      {
+        "schema": "auth",
+        "name": "factor_status"
+      },
+      {
+        "schema": "auth",
+        "name": "factor_type"
+      },
+      {
+        "schema": "auth",
+        "name": "oauth_authorization_status"
+      },
+      {
+        "schema": "auth",
+        "name": "oauth_client_type"
+      },
+      {
+        "schema": "auth",
+        "name": "oauth_registration_type"
+      },
+      {
+        "schema": "auth",
+        "name": "oauth_response_type"
+      },
+      {
+        "schema": "auth",
+        "name": "one_time_token_type"
+      }
+    ],
+    "indexCount": 167,
+    "indexesSample": [
+      {
+        "schema": "auth",
+        "tableName": "audit_log_entries",
+        "name": "audit_log_entries_pkey"
+      },
+      {
+        "schema": "auth",
+        "tableName": "audit_log_entries",
+        "name": "audit_logs_instance_id_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "custom_oauth_providers",
+        "name": "custom_oauth_providers_created_at_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "custom_oauth_providers",
+        "name": "custom_oauth_providers_enabled_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "custom_oauth_providers",
+        "name": "custom_oauth_providers_identifier_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "custom_oauth_providers",
+        "name": "custom_oauth_providers_identifier_key"
+      },
+      {
+        "schema": "auth",
+        "tableName": "custom_oauth_providers",
+        "name": "custom_oauth_providers_pkey"
+      },
+      {
+        "schema": "auth",
+        "tableName": "custom_oauth_providers",
+        "name": "custom_oauth_providers_provider_type_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "flow_state",
+        "name": "flow_state_created_at_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "flow_state",
+        "name": "flow_state_pkey"
+      },
+      {
+        "schema": "auth",
+        "tableName": "flow_state",
+        "name": "idx_auth_code"
+      },
+      {
+        "schema": "auth",
+        "tableName": "flow_state",
+        "name": "idx_user_id_auth_method"
+      },
+      {
+        "schema": "auth",
+        "tableName": "identities",
+        "name": "identities_email_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "identities",
+        "name": "identities_pkey"
+      },
+      {
+        "schema": "auth",
+        "tableName": "identities",
+        "name": "identities_provider_id_provider_unique"
+      },
+      {
+        "schema": "auth",
+        "tableName": "identities",
+        "name": "identities_user_id_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "instances",
+        "name": "instances_pkey"
+      },
+      {
+        "schema": "auth",
+        "tableName": "mfa_amr_claims",
+        "name": "amr_id_pk"
+      },
+      {
+        "schema": "auth",
+        "tableName": "mfa_amr_claims",
+        "name": "mfa_amr_claims_session_id_authentication_method_pkey"
+      },
+      {
+        "schema": "auth",
+        "tableName": "mfa_challenges",
+        "name": "mfa_challenge_created_at_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "mfa_challenges",
+        "name": "mfa_challenges_pkey"
+      },
+      {
+        "schema": "auth",
+        "tableName": "mfa_factors",
+        "name": "factor_id_created_at_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "mfa_factors",
+        "name": "mfa_factors_last_challenged_at_key"
+      },
+      {
+        "schema": "auth",
+        "tableName": "mfa_factors",
+        "name": "mfa_factors_pkey"
+      },
+      {
+        "schema": "auth",
+        "tableName": "mfa_factors",
+        "name": "mfa_factors_user_friendly_name_unique"
+      },
+      {
+        "schema": "auth",
+        "tableName": "mfa_factors",
+        "name": "mfa_factors_user_id_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "mfa_factors",
+        "name": "unique_phone_factor_per_user"
+      },
+      {
+        "schema": "auth",
+        "tableName": "oauth_authorizations",
+        "name": "oauth_auth_pending_exp_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "oauth_authorizations",
+        "name": "oauth_authorizations_authorization_code_key"
+      },
+      {
+        "schema": "auth",
+        "tableName": "oauth_authorizations",
+        "name": "oauth_authorizations_authorization_id_key"
+      },
+      {
+        "schema": "auth",
+        "tableName": "oauth_authorizations",
+        "name": "oauth_authorizations_pkey"
+      },
+      {
+        "schema": "auth",
+        "tableName": "oauth_client_states",
+        "name": "idx_oauth_client_states_created_at"
+      },
+      {
+        "schema": "auth",
+        "tableName": "oauth_client_states",
+        "name": "oauth_client_states_pkey"
+      },
+      {
+        "schema": "auth",
+        "tableName": "oauth_clients",
+        "name": "oauth_clients_deleted_at_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "oauth_clients",
+        "name": "oauth_clients_pkey"
+      },
+      {
+        "schema": "auth",
+        "tableName": "oauth_consents",
+        "name": "oauth_consents_active_client_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "oauth_consents",
+        "name": "oauth_consents_active_user_client_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "oauth_consents",
+        "name": "oauth_consents_pkey"
+      },
+      {
+        "schema": "auth",
+        "tableName": "oauth_consents",
+        "name": "oauth_consents_user_client_unique"
+      },
+      {
+        "schema": "auth",
+        "tableName": "oauth_consents",
+        "name": "oauth_consents_user_order_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "one_time_tokens",
+        "name": "one_time_tokens_pkey"
+      },
+      {
+        "schema": "auth",
+        "tableName": "one_time_tokens",
+        "name": "one_time_tokens_relates_to_hash_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "one_time_tokens",
+        "name": "one_time_tokens_token_hash_hash_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "one_time_tokens",
+        "name": "one_time_tokens_user_id_token_type_key"
+      },
+      {
+        "schema": "auth",
+        "tableName": "refresh_tokens",
+        "name": "refresh_tokens_instance_id_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "refresh_tokens",
+        "name": "refresh_tokens_instance_id_user_id_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "refresh_tokens",
+        "name": "refresh_tokens_parent_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "refresh_tokens",
+        "name": "refresh_tokens_pkey"
+      },
+      {
+        "schema": "auth",
+        "tableName": "refresh_tokens",
+        "name": "refresh_tokens_session_id_revoked_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "refresh_tokens",
+        "name": "refresh_tokens_token_unique"
+      },
+      {
+        "schema": "auth",
+        "tableName": "refresh_tokens",
+        "name": "refresh_tokens_updated_at_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "saml_providers",
+        "name": "saml_providers_entity_id_key"
+      },
+      {
+        "schema": "auth",
+        "tableName": "saml_providers",
+        "name": "saml_providers_pkey"
+      },
+      {
+        "schema": "auth",
+        "tableName": "saml_providers",
+        "name": "saml_providers_sso_provider_id_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "saml_relay_states",
+        "name": "saml_relay_states_created_at_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "saml_relay_states",
+        "name": "saml_relay_states_for_email_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "saml_relay_states",
+        "name": "saml_relay_states_pkey"
+      },
+      {
+        "schema": "auth",
+        "tableName": "saml_relay_states",
+        "name": "saml_relay_states_sso_provider_id_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "schema_migrations",
+        "name": "schema_migrations_pkey"
+      },
+      {
+        "schema": "auth",
+        "tableName": "sessions",
+        "name": "sessions_not_after_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "sessions",
+        "name": "sessions_oauth_client_id_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "sessions",
+        "name": "sessions_pkey"
+      },
+      {
+        "schema": "auth",
+        "tableName": "sessions",
+        "name": "sessions_user_id_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "sessions",
+        "name": "user_id_created_at_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "sso_domains",
+        "name": "sso_domains_domain_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "sso_domains",
+        "name": "sso_domains_pkey"
+      },
+      {
+        "schema": "auth",
+        "tableName": "sso_domains",
+        "name": "sso_domains_sso_provider_id_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "sso_providers",
+        "name": "sso_providers_pkey"
+      },
+      {
+        "schema": "auth",
+        "tableName": "sso_providers",
+        "name": "sso_providers_resource_id_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "sso_providers",
+        "name": "sso_providers_resource_id_pattern_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "users",
+        "name": "confirmation_token_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "users",
+        "name": "email_change_token_current_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "users",
+        "name": "email_change_token_new_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "users",
+        "name": "reauthentication_token_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "users",
+        "name": "recovery_token_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "users",
+        "name": "users_email_partial_key"
+      },
+      {
+        "schema": "auth",
+        "tableName": "users",
+        "name": "users_instance_id_email_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "users",
+        "name": "users_instance_id_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "users",
+        "name": "users_is_anonymous_idx"
+      },
+      {
+        "schema": "auth",
+        "tableName": "users",
+        "name": "users_phone_key"
+      }
+    ],
+    "indexTruncated": true
+  },
+  "migrations": {
+    "distinctCreateTableStatements": 157,
+    "distinctCreateTypeStatements": 181,
+    "distinctIndexStatements": 455
+  },
+  "collisions": {
+    "tables": [],
+    "enums": [],
+    "indexes": []
+  },
+  "foldersTouchingLive": [],
+  "eccReadiness": {
+    "absent": [
+      "User",
+      "VolunteerProfile",
+      "ContactPreference",
+      "StaffGmailAccount",
+      "SendGridEvent",
+      "EmailContactImportBatch",
+      "EmailContactImportRow",
+      "EmailContactImportDecision",
+      "EmailAudienceDefinition",
+      "EmailAudiencePreviewRun",
+      "MessageStudioDraft",
+      "MessageStudioDraftRevision",
+      "SendGridContactSyncRun",
+      "EmailSendExecution",
+      "EmailSendRecipient",
+      "EmailSendApproval"
+    ],
+    "details": [
+      {
+        "table": "User",
+        "present": false
+      },
+      {
+        "table": "VolunteerProfile",
+        "present": false
+      },
+      {
+        "table": "ContactPreference",
+        "present": false
+      },
+      {
+        "table": "StaffGmailAccount",
+        "present": false
+      },
+      {
+        "table": "SendGridEvent",
+        "present": false
+      },
+      {
+        "table": "EmailContactImportBatch",
+        "present": false
+      },
+      {
+        "table": "EmailContactImportRow",
+        "present": false
+      },
+      {
+        "table": "EmailContactImportDecision",
+        "present": false
+      },
+      {
+        "table": "EmailAudienceDefinition",
+        "present": false
+      },
+      {
+        "table": "EmailAudiencePreviewRun",
+        "present": false
+      },
+      {
+        "table": "MessageStudioDraft",
+        "present": false
+      },
+      {
+        "table": "MessageStudioDraftRevision",
+        "present": false
+      },
+      {
+        "table": "SendGridContactSyncRun",
+        "present": false
+      },
+      {
+        "table": "EmailSendExecution",
+        "present": false
+      },
+      {
+        "table": "EmailSendRecipient",
+        "present": false
+      },
+      {
+        "table": "EmailSendApproval",
+        "present": false
+      }
+    ]
+  },
+  "coreRedDirtReadiness": {
+    "absent": [
+      "User",
+      "VolunteerProfile",
+      "ContactPreference"
+    ],
+    "details": [
+      {
+        "table": "User",
+        "present": false
+      },
+      {
+        "table": "VolunteerProfile",
+        "present": false
+      },
+      {
+        "table": "ContactPreference",
+        "present": false
+      }
+    ]
+  },
+  "recommendation": {
+    "syntheticBaselineCandidate": true,
+    "summary": "Candidate path: add synthetic baseline marker migration, mark only that marker as applied, then run migrate deploy — after backup/snapshot + DBA review of this report."
+  },
+  "candidateCommandsNotRun": [
+    "# NOT RUN — review backup + EMAIL_BASELINE_PLAN.md first",
+    "mkdir prisma/migrations/00000000000000_existing_supabase_legacy_baseline",
+    "# prisma/migrations/00000000000000_existing_supabase_legacy_baseline/migration.sql — no-op baseline marker, example:",
+    "# ---",
+    "# -- Synthetic legacy baseline: no DDL against existing Supabase + legacy public tables.",
+    "# SELECT 1;",
+    "# ---",
+    "npx prisma migrate resolve --applied 00000000000000_existing_supabase_legacy_baseline",
+    "npx prisma migrate deploy"
+  ]
+}

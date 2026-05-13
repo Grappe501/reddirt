@@ -170,10 +170,28 @@ export type GmailHistoryProcessingSummary = {
 };
 
 export async function getGmailHistoryProcessingSummary(): Promise<GmailHistoryProcessingSummary> {
-  const rows = await prisma.staffGmailAccount.findMany({
-    where: { isActive: true },
-    select: { gmailSyncState: true },
-  });
+  const empty: GmailHistoryProcessingSummary = {
+    activeStaffAccounts: 0,
+    withProfileHistoryId: 0,
+    historyCursorStaleCount: 0,
+    requiresFullSyncCount: 0,
+    lastDryRun404Count: 0,
+    pendingSignalWithoutProfileCursor: 0,
+    watchesExpiringWithin48h: 0,
+  };
+  let rows: { gmailSyncState: Prisma.JsonValue }[];
+  try {
+    rows = await prisma.staffGmailAccount.findMany({
+      where: { isActive: true },
+      select: { gmailSyncState: true },
+    });
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : String(e);
+    if ((/does not exist/i.test(msg) && /StaffGmailAccount/i.test(msg)) || /P2021|P2010/i.test(msg)) {
+      return empty;
+    }
+    throw e;
+  }
 
   let withProfileHistoryId = 0;
   let historyCursorStaleCount = 0;

@@ -28,6 +28,10 @@ import {
   queryEmailCommandCenterMigrationRows,
 } from "@/lib/email-command-center/ecc-migration-gate";
 import { contactImportSnapshotCounts } from "@/lib/email-command-center/contact-import";
+import {
+  getAudienceListHealthSnapshot,
+  type AudienceListHealthSnapshot,
+} from "@/lib/email-command-center/audience-list-health";
 import { messageStudioSharedDraftSnapshotCounts } from "@/lib/email-command-center/message-studio-drafts";
 import {
   buildGmailProductionWatchSnapshot,
@@ -141,6 +145,8 @@ export type QueueHealthSnapshot = {
   archivedCount: number;
   unassignedCount: number;
   needsAttentionCount: number;
+  /** Inbound-email-sourced workflow items (approx. “replies / inbound” signal). */
+  inboundEmailCount: number;
 };
 
 export type AssignmentHealthSnapshot = {
@@ -179,6 +185,11 @@ export type EmailCommandCenterOperatorGate = HostedDbOperatorGateExtension & {
    * and import batch tables responded to a count query. Does not prove the Canonical Supabase DB or production.
    */
   localContactImportDbVerified: boolean;
+  /**
+   * Production Send Execution (#ops): true when ECC migrations are fully applied and send-execution tables are reachable.
+   * Independent of whether contact-import CSV staging passed its count query in the same request.
+   */
+  governedSendExecutionDbReady: boolean;
   /** Repo-relative path (clone) — no in-app doc route in this packet. */
   readinessDocRepoPath: string;
   preflightCliHint: string;
@@ -232,8 +243,14 @@ export type EmailCommandCenterSnapshot = {
     /** Non-terminal batches (excludes committed + archived). */
     openImportBatchCount: number;
     consentWarningRowsSummed: number;
+    /** Rows in batches that are not committed/archived (staging pipeline). */
+    stagedRowCount: number;
+    invalidOrDuplicateStagingRows: number;
+    committedImportRows: number;
     latestBatches: { id: string; name: string; status: EmailContactImportBatchStatus; createdAt: Date }[];
   };
+  /** CONTACT_PROFILE — coarse list health for operator “today” audience summary. */
+  audienceListHealth: AudienceListHealthSnapshot;
   automationTiers: AutomationTierSnapshot[];
   governance: GovernanceSnapshot;
   operatorGate: EmailCommandCenterOperatorGate;
@@ -360,6 +377,7 @@ function buildDegradedEmailCommandCenterSnapshot(): EmailCommandCenterSnapshot {
     contactImportNextPacket:
       "Row-level merge experience plus hosted-environment preflight (run the same checks on the live DATABASE_URL before imports).",
     localContactImportDbVerified: false,
+    governedSendExecutionDbReady: false,
     readinessDocRepoPath: "docs/email-command-center-contact-import-readiness.md",
     preflightCliHint: "npm run email:command-center:preflight",
     dbDiagnoseCliHint: "npm run email:db:diagnose",
@@ -408,6 +426,7 @@ function buildDegradedEmailCommandCenterSnapshot(): EmailCommandCenterSnapshot {
       archivedCount: 0,
       unassignedCount: 0,
       needsAttentionCount: 0,
+      inboundEmailCount: 0,
     },
     assignmentHealth: {
       assignedCount: 0,
@@ -458,7 +477,18 @@ function buildDegradedEmailCommandCenterSnapshot(): EmailCommandCenterSnapshot {
       committedBatchCount: 0,
       openImportBatchCount: 0,
       consentWarningRowsSummed: 0,
+      stagedRowCount: 0,
+      invalidOrDuplicateStagingRows: 0,
+      committedImportRows: 0,
       latestBatches: [],
+    },
+    audienceListHealth: {
+      dbReachable: false,
+      totalProfiles: 0,
+      profilesWithValidEmail: 0,
+      profilesMissingEmail: 0,
+      duplicatePrimaryEmailGroups: 0,
+      profilesWithMarketingOptOut: 0,
     },
     messageStudioSharedDrafts: {
       path: "/admin/workbench/email-command-center/message-studio#shared-drafts",
@@ -822,6 +852,7 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
     spamCount,
     closedCount,
     archivedCount,
+    inboundEmailCount,
     currentActorAssignedItemCount,
     itemsNotUpdatedIn7DaysCount,
     staffGmailAccountsTotal,
@@ -838,6 +869,7 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
     prisma.emailWorkflowItem.count({ where: { status: "SPAM" } }),
     prisma.emailWorkflowItem.count({ where: { status: "CLOSED" } }),
     prisma.emailWorkflowItem.count({ where: { status: "ARCHIVED" } }),
+    prisma.emailWorkflowItem.count({ where: { sourceType: "INBOUND_EMAIL" } }),
     actorId
       ? prisma.emailWorkflowItem.count({ where: { assignedToUserId: actorId } })
       : Promise.resolve(0),
@@ -960,15 +992,14 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
 
   let emailCommandCenterMigrations: { name: string; applied: boolean }[] = [];
   let allEmailCommandCenterMigrationsApplied: boolean | null = null;
-  const mccRowsResult = await queryEmailCommandCenterMigrationRows(prisma).catch((): null => null);
-  if (mccRowsResult === null) {
+  try {
+    emailCommandCenterMigrations = await queryEmailCommandCenterMigrationRows(prisma);
+    allEmailCommandCenterMigrationsApplied =
+      emailCommandCenterMigrations.length === EMAIL_COMMAND_CENTER_MIGRATION_DIRS.length &&
+      emailCommandCenterMigrations.every((r) => r.applied);
+  } catch {
     emailCommandCenterMigrations = [];
     allEmailCommandCenterMigrationsApplied = null;
-  } else {
-    emailCommandCenterMigrations = mccRowsResult;
-    allEmailCommandCenterMigrationsApplied =
-      mccRowsResult.length === EMAIL_COMMAND_CENTER_MIGRATION_DIRS.length &&
-      mccRowsResult.every((r) => r.applied);
   }
 
   let migrationGateNote: string | null = null;
@@ -980,14 +1011,28 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
       "Could not verify workspace database update status (database unreachable or the check query failed).";
   }
 
-  const importSnap = await contactImportSnapshotCounts();
-  const messageStudioSharedDraftsSnapshot = await messageStudioSharedDraftSnapshotCounts();
-  const sendGridContactSyncSnapshot = await buildSendGridContactSyncSnapshot();
-  const sendExecutionSnapshot = await buildSendExecutionSnapshot();
-  const sendGridReconciliationSnapshot = await buildSendGridReconciliationSnapshot();
-  const gmailProductionWatchSnapshot = await buildGmailProductionWatchSnapshot();
+  const [
+    importSnap,
+    messageStudioSharedDraftsSnapshot,
+    sendGridContactSyncSnapshot,
+    sendExecutionSnapshot,
+    sendGridReconciliationSnapshot,
+    gmailProductionWatchSnapshot,
+    audienceListHealth,
+  ] = await Promise.all([
+    contactImportSnapshotCounts(),
+    messageStudioSharedDraftSnapshotCounts(),
+    buildSendGridContactSyncSnapshot(),
+    buildSendExecutionSnapshot(),
+    buildSendGridReconciliationSnapshot(),
+    buildGmailProductionWatchSnapshot(),
+    getAudienceListHealthSnapshot(),
+  ]);
+
   const localContactImportDbVerified =
     allEmailCommandCenterMigrationsApplied === true && importSnap.dbSliceReachable;
+  const governedSendExecutionDbReady =
+    allEmailCommandCenterMigrationsApplied === true && sendExecutionSnapshot.dbReachable;
 
   const dbHostKindLive = classifyDatabaseUrlHostKindForOperatorGate();
   const operatorGate: EmailCommandCenterOperatorGate = {
@@ -1005,6 +1050,7 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
     contactImportNextPacket:
       "Row-level merge experience plus hosted-environment preflight (run the same checks on the live DATABASE_URL before imports).",
     localContactImportDbVerified,
+    governedSendExecutionDbReady,
     readinessDocRepoPath: "docs/email-command-center-contact-import-readiness.md",
     preflightCliHint: "npm run email:command-center:preflight",
     dbDiagnoseCliHint: "npm run email:db:diagnose",
@@ -1051,6 +1097,7 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
       archivedCount,
       unassignedCount: summary.unassignedCount,
       needsAttentionCount: summary.needsAttentionCount,
+      inboundEmailCount,
     },
     assignmentHealth: {
       assignedCount,
@@ -1101,8 +1148,12 @@ export async function getEmailCommandCenterSnapshot(): Promise<EmailCommandCente
       committedBatchCount: importSnap.committedBatchCount,
       openImportBatchCount: importSnap.openImportBatchCount,
       consentWarningRowsSummed: importSnap.consentWarningRowsCount,
+      stagedRowCount: importSnap.stagedRowCount,
+      invalidOrDuplicateStagingRows: importSnap.invalidOrDuplicateStagingRows,
+      committedImportRows: importSnap.committedImportRows,
       latestBatches: importSnap.latestBatches,
     },
+    audienceListHealth,
     messageStudioSharedDrafts: {
       path: "/admin/workbench/email-command-center/message-studio#shared-drafts",
       totalActiveSharedDrafts: messageStudioSharedDraftsSnapshot.totalActiveSharedDrafts,

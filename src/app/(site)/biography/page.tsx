@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BIOGRAPHY_CHAPTERS } from "@/content/biography/biography-config";
 import { biographyReadingIntro } from "@/content/biography/biography-reading-experience";
+import { showPublicBiographyManuscript } from "@/config/public-biography-depth";
 import { pageMeta } from "@/lib/seo/metadata";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { BiographyReaderProgress } from "@/components/biography/BiographyReaderProgress";
@@ -11,13 +12,24 @@ import { BiographyEarnedAskSection } from "@/components/biography/BiographyEarne
 import { BiographyChapterToc } from "@/components/biography/BiographyChapterToc";
 import { cn } from "@/lib/utils";
 
-export const metadata: Metadata = pageMeta({
-  title: "The Road That Brought Her Here — Kelly Grappe",
-  description:
-    "Immersive biography: Kelly’s chapters from Arkansas roots through leadership, family, and public service—read at your own pace.",
-  path: "/biography",
-  imageSrc: "/media/placeholders/texture-porch-glow.svg",
-});
+export async function generateMetadata(): Promise<Metadata> {
+  if (!showPublicBiographyManuscript()) {
+    return pageMeta({
+      title: "Kelly’s story — Meet Kelly",
+      description:
+        "The long-form manuscript is paused while we edit. Read Meet Kelly — business, farm, civics, and why this office — on the campaign overview.",
+      path: "/biography",
+      imageSrc: "/media/placeholders/texture-porch-glow.svg",
+    });
+  }
+  return pageMeta({
+    title: "The Road That Brought Her Here — Kelly Grappe",
+    description:
+      "Immersive biography: Kelly’s chapters from Arkansas roots through leadership, family, and public service—read at your own pace.",
+    path: "/biography",
+    imageSrc: "/media/placeholders/texture-porch-glow.svg",
+  });
+}
 
 async function loadChapterBody(filename: string): Promise<string | null> {
   try {
@@ -36,6 +48,47 @@ const beginBtnClass = cn(
 );
 
 export default async function BiographyPage() {
+  if (!showPublicBiographyManuscript()) {
+    return (
+      <div className="min-h-screen bg-kelly-page">
+        <header className="border-b border-kelly-text/10 bg-gradient-to-b from-kelly-wash via-kelly-page to-kelly-page pb-14 pt-24 sm:pb-16 sm:pt-28 md:pt-32">
+          <ContentContainer className="max-w-2xl text-center md:max-w-[40rem]">
+            <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-kelly-text/55">Meet Kelly</p>
+            <h1 className="mt-4 font-heading text-[clamp(1.75rem,5vw,2.75rem)] font-bold leading-tight text-kelly-ink">
+              Kelly&apos;s story
+            </h1>
+            <p className="mt-6 font-body text-base leading-relaxed text-kelly-slate sm:text-lg">
+              The full written biography is temporarily offline while we edit. Everything campaign-facing lives on the
+              Meet Kelly overview and topic pages below—same substance, tighter presentation.
+            </p>
+            <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              <Link href="/about" className={beginBtnClass}>
+                Meet Kelly overview
+              </Link>
+              <Link
+                href="/about/story"
+                className="inline-flex min-h-12 items-center justify-center rounded-btn border-2 border-kelly-navy px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-kelly-navy transition hover:bg-kelly-navy/5"
+              >
+                Start with trust &amp; story
+              </Link>
+            </div>
+          </ContentContainer>
+        </header>
+        <footer className="border-t border-kelly-text/10 bg-kelly-wash py-10 text-center">
+          <ContentContainer>
+            <Link href="/priorities" className="font-body text-sm font-semibold text-kelly-navy underline-offset-2 hover:underline">
+              Office priorities
+            </Link>
+            {" · "}
+            <Link href="/get-involved" className="font-body text-sm font-semibold text-kelly-navy underline-offset-2 hover:underline">
+              Get involved
+            </Link>
+          </ContentContainer>
+        </footer>
+      </div>
+    );
+  }
+
   const loaded = await Promise.all(
     BIOGRAPHY_CHAPTERS.map(async (c) => ({
       ...c,

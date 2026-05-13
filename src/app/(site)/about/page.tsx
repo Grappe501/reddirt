@@ -13,12 +13,14 @@ import { getMergedHomepageConfig } from "@/lib/content/homepage-merge";
 import { KellyFullStory } from "@/components/about/KellyFullStory";
 import { TalkBusinessKellySection } from "@/components/about/TalkBusinessKellySection";
 import { AboutBiographyDrilldown } from "@/components/about/AboutBiographyDrilldown";
+import { showPublicBiographyManuscript } from "@/config/public-biography-depth";
 import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
 
 export const metadata: Metadata = pageMeta({
   title: "Meet Kelly — full story",
-  description:
-    "Kelly’s Meet Kelly hub — biography arcs with manuscript chapters, business and Verizon leadership, Forevermost Farms, Stand Up Arkansas, ballot petitions, and why Secretary of State. Links into /biography for the literary narrative.",
+  description: showPublicBiographyManuscript()
+    ? "Kelly’s Meet Kelly hub — biography arcs with manuscript chapters, business and Verizon leadership, Forevermost Farms, Stand Up Arkansas, ballot petitions, and why Secretary of State. Links into /biography for the literary narrative."
+    : "Kelly’s Meet Kelly hub — business and Verizon leadership, Forevermost Farms, Stand Up Arkansas, ballot petitions, and why Secretary of State. Campaign-facing chapters on this site; long-form manuscript paused during edit.",
   path: "/about",
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
@@ -44,12 +46,16 @@ export default async function AboutPage() {
         <Button href="#talk-business-kelly" variant="outline">
           Talk Business &amp; Politics
         </Button>
-        <Button href="/biography" variant="outline">
-          Kelly&apos;s story — chapters
-        </Button>
-        <Button href="#kelly-biography-arcs" variant="outline">
-          Biography arcs (summaries + chapters)
-        </Button>
+        {showPublicBiographyManuscript() ? (
+          <>
+            <Button href="/biography" variant="outline">
+              Kelly&apos;s story — chapters
+            </Button>
+            <Button href="#kelly-biography-arcs" variant="outline">
+              Biography arcs (summaries + chapters)
+            </Button>
+          </>
+        ) : null}
         <Button href="#why-running" variant="outline">
           Why I&apos;m running (short)
         </Button>
@@ -65,9 +71,11 @@ export default async function AboutPage() {
             <TalkBusinessKellySection fallbackYoutubeVideoId={featuredYoutube?.videoId ?? null} />
           </div>
 
-          <div className="mx-auto mt-10 max-w-3xl md:mt-14">
-            <AboutBiographyDrilldown />
-          </div>
+          {showPublicBiographyManuscript() ? (
+            <div className="mx-auto mt-10 max-w-3xl md:mt-14">
+              <AboutBiographyDrilldown />
+            </div>
+          ) : null}
 
           <div className="mx-auto mt-12 max-w-3xl md:mt-16">
             <KellyFullStory trailPeoplePhotos={storyTrailPhotos} />

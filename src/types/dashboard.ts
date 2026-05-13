@@ -313,6 +313,8 @@ export type Team = {
   slug: string;
   /** Future magic-link allowlist / audit (no real addresses in committed mocks) */
   accessEmails: string[];
+  /** Optional AR county registry slug from `VolunteerOpsTeam.metadataJson.countySlug` (authoritative when set). */
+  linkedCountySlug?: string;
   geography: string;
   level: TeamLevel;
   upstreamContactId: string;

@@ -76,11 +76,19 @@ function evaluateCandidate(
 export async function listGmailWatchRenewalCandidates(
   lookaheadMs: number = DEFAULT_RENEW_IF_EXPIRES_WITHIN_MS
 ): Promise<WatchRenewalCandidate[]> {
-  const rows = await prisma.staffGmailAccount.findMany({
-    where: { isActive: true },
-    select: { userId: true, sendAsEmail: true, gmailSyncState: true },
-  });
-  return rows.map((r) => evaluateCandidate(r.userId, r.sendAsEmail, r.gmailSyncState, lookaheadMs));
+  try {
+    const rows = await prisma.staffGmailAccount.findMany({
+      where: { isActive: true },
+      select: { userId: true, sendAsEmail: true, gmailSyncState: true },
+    });
+    return rows.map((r) => evaluateCandidate(r.userId, r.sendAsEmail, r.gmailSyncState, lookaheadMs));
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : String(e);
+    if ((/does not exist/i.test(msg) && /StaffGmailAccount/i.test(msg)) || /P2021|P2010/i.test(msg)) {
+      return [];
+    }
+    throw e;
+  }
 }
 
 export type RenewManyResult = {

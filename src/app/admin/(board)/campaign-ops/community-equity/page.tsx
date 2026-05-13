@@ -19,6 +19,18 @@ export default function CommunityEquityOpsPage() {
         <strong>Muslim</strong> Arkansans — integrated into field, comms, and data. This is a{" "}
         <strong>full campaign</strong>, not a secondary translation track. Master plan:{" "}
         <code className="rounded bg-kelly-text/5 px-1 text-xs">docs/campaign-ops/COMMUNITY_EQUITY_OUTREACH_MASTER_PLAN.md</code>
+        . Muslim civic dashboard plan (draft — community review):{" "}
+        <Link className="font-semibold text-kelly-slate underline underline-offset-2" href="/volunteer/resources/muslim-community">
+          Volunteer hub
+        </Link>{" "}
+        ·{" "}
+        <Link className="font-semibold text-kelly-slate underline underline-offset-2" href="/dashboard/community/muslim">
+          Live community dashboard
+        </Link>{" "}
+        ·{" "}
+        <code className="rounded bg-kelly-text/5 px-1 text-xs">
+          docs/campaign-ops/MUSLIM_COMMUNITY_CIVIC_ORGANIZING_DASHBOARD_PLAN.md
+        </code>
       </p>
 
       <section className="mt-8 rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-sm">

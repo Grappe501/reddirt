@@ -416,6 +416,292 @@ async function main() {
     ],
   });
 
+  const countyPartyMtg = await prisma.workflowTemplate.upsert({
+    where: { key: "county_party_monthly_meeting_v1" },
+    create: {
+      key: "county_party_monthly_meeting_v1",
+      title: "County Democratic Party — monthly meeting",
+      description:
+        "Power of 5 invitations, RSVP follow-up, and post-meeting volunteer identification when a county party monthly meeting is created (dashboard + campaign calendar).",
+      triggerType: WorkflowTemplateTrigger.EVENT_CREATED,
+      isActive: true,
+      configJson: { eventTypes: ["MEETING"], campaignIntentEquals: "county_party_monthly" },
+    },
+    update: {
+      title: "County Democratic Party — monthly meeting",
+      description:
+        "Power of 5 invitations, RSVP follow-up, and post-meeting volunteer identification when a county party monthly meeting is created (dashboard + campaign calendar).",
+      configJson: { eventTypes: ["MEETING"], campaignIntentEquals: "county_party_monthly" },
+    },
+  });
+  await prisma.workflowTemplateTask.deleteMany({ where: { workflowTemplateId: countyPartyMtg.id } });
+  await prisma.workflowTemplateTask.createMany({
+    data: [
+      {
+        workflowTemplateId: countyPartyMtg.id,
+        taskKey: "cd_p5_invite",
+        titleTemplate: "Invite your Power of 5 to the county party meeting: {{event.title}}",
+        descriptionTemplate:
+          "Needed now: personal invitations to your five relationships. Event: {{event.startAt}} @ {{event.locationName}}.",
+        offsetMinutes: -20160,
+        taskType: CampaignTaskType.VOLUNTEER,
+        priority: CampaignTaskPriority.HIGH,
+        required: true,
+      },
+      {
+        workflowTemplateId: countyPartyMtg.id,
+        taskKey: "cd_rsvp_nudge",
+        titleTemplate: "Follow up with anyone who has not yet responded: {{event.title}}",
+        descriptionTemplate: "Coming up: RSVP reminders and calendar holds; align with Email Automation sends when enabled.",
+        offsetMinutes: -4320,
+        taskType: CampaignTaskType.COMMS,
+        priority: CampaignTaskPriority.MEDIUM,
+        required: true,
+      },
+      {
+        workflowTemplateId: countyPartyMtg.id,
+        taskKey: "cd_post_meeting",
+        titleTemplate: "Report attendance and identify new volunteers: {{event.title}}",
+        descriptionTemplate: "Next after that: debrief, thank-yous, and precinct team placements — log KPIs on the Rollup tab.",
+        offsetMinutes: 120,
+        taskType: CampaignTaskType.FOLLOW_UP,
+        priority: CampaignTaskPriority.MEDIUM,
+        required: true,
+      },
+    ],
+  });
+
+  // --- VOS event intents: stack specialized tasks when campaignIntent is set on CampaignEvent ---
+  const houseParty = await prisma.workflowTemplate.upsert({
+    where: { key: "vos_house_party_v1" },
+    create: {
+      key: "vos_house_party_v1",
+      title: "House party — invitations and follow-up",
+      description:
+        "When campaignIntent=vos_house_party on a MEETING event: personal P5 invites, RSVP hygiene, day-of prep, post-event thank-yous.",
+      triggerType: WorkflowTemplateTrigger.EVENT_CREATED,
+      isActive: true,
+      configJson: { eventTypes: ["MEETING"], campaignIntentEquals: "vos_house_party" },
+    },
+    update: {
+      configJson: { eventTypes: ["MEETING"], campaignIntentEquals: "vos_house_party" },
+    },
+  });
+  await prisma.workflowTemplateTask.deleteMany({ where: { workflowTemplateId: houseParty.id } });
+  await prisma.workflowTemplateTask.createMany({
+    data: [
+      {
+        workflowTemplateId: houseParty.id,
+        taskKey: "hp_p5_invite",
+        titleTemplate: "Send personal Power of 5 invites: {{event.title}}",
+        descriptionTemplate:
+          "Needed now: each coordinator invites their five with a personal line; include parking and RSVP path.",
+        offsetMinutes: -20160,
+        taskType: CampaignTaskType.VOLUNTEER,
+        priority: CampaignTaskPriority.HIGH,
+        required: true,
+      },
+      {
+        workflowTemplateId: houseParty.id,
+        taskKey: "hp_rsvp_supply",
+        titleTemplate: "RSVP check + supplies + 24h reminder: {{event.title}}",
+        descriptionTemplate: "Coming up: confirm headcount, name tags, signup QR, and send 24h reminder with host phone.",
+        offsetMinutes: -4320,
+        taskType: CampaignTaskType.PREP,
+        priority: CampaignTaskPriority.MEDIUM,
+        required: true,
+      },
+      {
+        workflowTemplateId: houseParty.id,
+        taskKey: "hp_followup",
+        titleTemplate: "Thank guests and log follow-ups: {{event.title}}",
+        descriptionTemplate:
+          "Within 48–72h: thank host, bucket every attendee (volunteer / donor / nurture), align with Email Automation when enabled.",
+        offsetMinutes: 2880,
+        taskType: CampaignTaskType.FOLLOW_UP,
+        priority: CampaignTaskPriority.HIGH,
+        required: true,
+      },
+    ],
+  });
+
+  const countyFundraiser = await prisma.workflowTemplate.upsert({
+    where: { key: "vos_county_fundraiser_v1" },
+    create: {
+      key: "vos_county_fundraiser_v1",
+      title: "County fundraiser — donor and host outreach",
+      description:
+        "When campaignIntent=vos_county_fundraiser on FUNDRAISER: stacks with generic appearance prep — donor list hygiene, host committee, day-of briefing.",
+      triggerType: WorkflowTemplateTrigger.EVENT_CREATED,
+      isActive: true,
+      configJson: { eventTypes: ["FUNDRAISER"], campaignIntentEquals: "vos_county_fundraiser" },
+    },
+    update: {
+      configJson: { eventTypes: ["FUNDRAISER"], campaignIntentEquals: "vos_county_fundraiser" },
+    },
+  });
+  await prisma.workflowTemplateTask.deleteMany({ where: { workflowTemplateId: countyFundraiser.id } });
+  await prisma.workflowTemplateTask.createMany({
+    data: [
+      {
+        workflowTemplateId: countyFundraiser.id,
+        taskKey: "cf_prospects",
+        titleTemplate: "Refresh donor and host prospect list: {{event.title}}",
+        descriptionTemplate:
+          "Needed now: named prospects, invitation owners, compliance-approved language — treasurer signoff on asks.",
+        offsetMinutes: -10080,
+        taskType: CampaignTaskType.ADMIN,
+        priority: CampaignTaskPriority.HIGH,
+        required: true,
+      },
+      {
+        workflowTemplateId: countyFundraiser.id,
+        taskKey: "cf_host_circle",
+        titleTemplate: "Confirm host committee outreach plan: {{event.title}}",
+        descriptionTemplate: "Each host or surrogate commits to personal invites; RSVP goal vs. venue minimum documented.",
+        offsetMinutes: -4320,
+        taskType: CampaignTaskType.VOLUNTEER,
+        priority: CampaignTaskPriority.MEDIUM,
+        required: true,
+      },
+      {
+        workflowTemplateId: countyFundraiser.id,
+        taskKey: "cf_dayof_brief",
+        titleTemplate: "Day-of volunteer briefing & registration table: {{event.title}}",
+        descriptionTemplate: "Greeters, signup, treasurer handoff, photographer policy — 4h before start.",
+        offsetMinutes: -240,
+        taskType: CampaignTaskType.PREP,
+        priority: CampaignTaskPriority.HIGH,
+        required: true,
+      },
+      {
+        workflowTemplateId: countyFundraiser.id,
+        taskKey: "cf_post_thanks",
+        titleTemplate: "Pledge follow-up and thank-you sweep: {{event.title}}",
+        descriptionTemplate: "Within 24–48h: thank hosts, reconcile gifts with treasurer, log outcomes for county fundraising tracker.",
+        offsetMinutes: 1440,
+        taskType: CampaignTaskType.FOLLOW_UP,
+        priority: CampaignTaskPriority.HIGH,
+        required: true,
+      },
+    ],
+  });
+
+  const weekendImmersion = await prisma.workflowTemplate.upsert({
+    where: { key: "vos_weekend_immersion_v1" },
+    create: {
+      key: "vos_weekend_immersion_v1",
+      title: "Weekend Community Immersion — scheduling grid",
+      description:
+        "When campaignIntent=vos_weekend_immersion on TRAINING (team convention): anchor event, 4–5 micro-gathers, travel pack, debrief.",
+      triggerType: WorkflowTemplateTrigger.EVENT_CREATED,
+      isActive: true,
+      configJson: { eventTypes: ["TRAINING"], campaignIntentEquals: "vos_weekend_immersion" },
+    },
+    update: {
+      configJson: { eventTypes: ["TRAINING"], campaignIntentEquals: "vos_weekend_immersion" },
+    },
+  });
+  await prisma.workflowTemplateTask.deleteMany({ where: { workflowTemplateId: weekendImmersion.id } });
+  await prisma.workflowTemplateTask.createMany({
+    data: [
+      {
+        workflowTemplateId: weekendImmersion.id,
+        taskKey: "wi_grid",
+        titleTemplate: "Lock anchor event + home-gather grid: {{event.title}}",
+        descriptionTemplate:
+          "Publish weekend grid: anchor + 4–5 micro meet-and-greets with hosts, times, RSVP caps, and parking notes.",
+        offsetMinutes: -10080,
+        taskType: CampaignTaskType.PREP,
+        priority: CampaignTaskPriority.HIGH,
+        required: true,
+      },
+      {
+        workflowTemplateId: weekendImmersion.id,
+        taskKey: "wi_surrogate",
+        titleTemplate: "Surrogate / Kelly brief with names per room: {{event.title}}",
+        descriptionTemplate: "Coming up: five people to know in each room; landmines briefing; photo policy review.",
+        offsetMinutes: -2880,
+        taskType: CampaignTaskType.COMMS,
+        priority: CampaignTaskPriority.MEDIUM,
+        required: true,
+      },
+      {
+        workflowTemplateId: weekendImmersion.id,
+        taskKey: "wi_pack",
+        titleTemplate: "Travel and volunteer pack (addresses, cells, rain plan): {{event.title}}",
+        descriptionTemplate: "Text bundle to road team; confirm buffers between homes; animal/return-home plan noted.",
+        offsetMinutes: -720,
+        taskType: CampaignTaskType.FIELD,
+        priority: CampaignTaskPriority.MEDIUM,
+        required: true,
+      },
+      {
+        workflowTemplateId: weekendImmersion.id,
+        taskKey: "wi_debrief",
+        titleTemplate: "Weekend debrief + KPI capture: {{event.title}}",
+        descriptionTemplate:
+          "Same day or Monday: three bullets to upstream; P5 invites sent count; new volunteer names routed to lanes.",
+        offsetMinutes: 180,
+        taskType: CampaignTaskType.FOLLOW_UP,
+        priority: CampaignTaskPriority.MEDIUM,
+        required: true,
+      },
+    ],
+  });
+
+  const faithVisit = await prisma.workflowTemplate.upsert({
+    where: { key: "vos_faith_visit_v1" },
+    create: {
+      key: "vos_faith_visit_v1",
+      title: "Faith community visit — protocol and thank-you",
+      description:
+        "When campaignIntent=vos_faith_community_visit on MEETING: respectful scheduling, dress/protocol check, leader thank-you.",
+      triggerType: WorkflowTemplateTrigger.EVENT_CREATED,
+      isActive: true,
+      configJson: { eventTypes: ["MEETING"], campaignIntentEquals: "vos_faith_community_visit" },
+    },
+    update: {
+      configJson: { eventTypes: ["MEETING"], campaignIntentEquals: "vos_faith_community_visit" },
+    },
+  });
+  await prisma.workflowTemplateTask.deleteMany({ where: { workflowTemplateId: faithVisit.id } });
+  await prisma.workflowTemplateTask.createMany({
+    data: [
+      {
+        workflowTemplateId: faithVisit.id,
+        taskKey: "fv_protocol",
+        titleTemplate: "Confirm faith-visit protocol, dress, and photo rules: {{event.title}}",
+        descriptionTemplate:
+          "Needed now: liaison confirms expectations with faith leader; brief Kelly/surrogate; default no surprise photos in worship.",
+        offsetMinutes: -2880,
+        taskType: CampaignTaskType.PREP,
+        priority: CampaignTaskPriority.HIGH,
+        required: true,
+      },
+      {
+        workflowTemplateId: faithVisit.id,
+        taskKey: "fv_remind",
+        titleTemplate: "Final reminder + materials check: {{event.title}}",
+        descriptionTemplate: "Coming up: arrival time, parking for attendees, leave-behind only if HQ approved.",
+        offsetMinutes: -180,
+        taskType: CampaignTaskType.COMMS,
+        priority: CampaignTaskPriority.MEDIUM,
+        required: true,
+      },
+      {
+        workflowTemplateId: faithVisit.id,
+        taskKey: "fv_thanks",
+        titleTemplate: "Thank faith leader and log promises: {{event.title}}",
+        descriptionTemplate: "Same day: thank-you note; capture follow-ups without sensitive details in public logs.",
+        offsetMinutes: 240,
+        taskType: CampaignTaskType.FOLLOW_UP,
+        priority: CampaignTaskPriority.HIGH,
+        required: true,
+      },
+    ],
+  });
+
   await prisma.workflowTemplate.upsert({
     where: { key: "media_mention" },
     create: {
