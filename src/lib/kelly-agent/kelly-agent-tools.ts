@@ -11,6 +11,10 @@ import { buildEventSuccessPlaybook } from "@/lib/kelly-agent/tools/event-success
 import { loadGotvCommitmentAllocationFile } from "@/lib/field-ops/load-gotv-commitment-allocation";
 import { buildScheduleReadinessReport } from "@/lib/kelly-agent/tools/schedule-readiness-tool";
 import { runCandidateDashboardPreflight } from "@/lib/kelly-agent/tools/candidate-dashboard-preflight-tool";
+import { buildCalendarDbHealthReport } from "@/lib/kelly-agent/tools/calendar-db-health-tool";
+import { buildCalendarSyncReadinessReport } from "@/lib/kelly-agent/tools/calendar-sync-readiness-tool";
+import { buildSchedulePersistenceReport } from "@/lib/kelly-agent/tools/schedule-persistence-tool";
+import { buildCalendarSmokeTestReport } from "@/lib/kelly-agent/tools/calendar-smoke-test-tool";
 
 export type KellyAgentToolTrace = { tool: string; ms: number };
 
@@ -28,6 +32,10 @@ export type KellyAgentToolBundle = {
   event_success_playbook: unknown;
   schedule_readiness: unknown;
   candidate_dashboard_preflight: unknown;
+  calendar_db_health: unknown;
+  calendar_sync_readiness: unknown;
+  schedule_persistence: unknown;
+  calendar_smoke_test: unknown;
 };
 
 export async function runKellyAgentTools(
@@ -127,6 +135,22 @@ export async function runKellyAgentTools(
   const candidate_dashboard_preflight = await runCandidateDashboardPreflight({ repoRoot: root });
   trace.push({ tool: "candidate_dashboard_preflight", ms: Date.now() - t12 });
 
+  const t13 = Date.now();
+  const calendar_db_health = await buildCalendarDbHealthReport(root);
+  trace.push({ tool: "calendar_db_health", ms: Date.now() - t13 });
+
+  const t14 = Date.now();
+  const calendar_sync_readiness = await buildCalendarSyncReadinessReport();
+  trace.push({ tool: "calendar_sync_readiness", ms: Date.now() - t14 });
+
+  const t15 = Date.now();
+  const schedule_persistence = await buildSchedulePersistenceReport();
+  trace.push({ tool: "schedule_persistence", ms: Date.now() - t15 });
+
+  const t16 = Date.now();
+  const calendar_smoke_test = await buildCalendarSmokeTestReport();
+  trace.push({ tool: "calendar_smoke_test", ms: Date.now() - t16 });
+
   return {
     tools: {
       calendar_context,
@@ -142,6 +166,10 @@ export async function runKellyAgentTools(
       event_success_playbook,
       schedule_readiness,
       candidate_dashboard_preflight,
+      calendar_db_health,
+      calendar_sync_readiness,
+      schedule_persistence,
+      calendar_smoke_test,
     },
     trace,
   };

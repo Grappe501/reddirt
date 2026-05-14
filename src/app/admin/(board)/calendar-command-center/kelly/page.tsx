@@ -90,6 +90,8 @@ export default async function KellyCalendarCockpitPage() {
       winScenario={winScenario}
       volunteerCapacityModel={volunteerCapacityModel}
       preflight={preflight}
+      dataSourceMode={bundle.dataSourceMode}
+      dataSourceNote={bundle.dataSourceNote}
     />
   );
 }

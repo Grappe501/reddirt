@@ -1,5 +1,3 @@
-import "server-only";
-
 import { createHash, randomBytes } from "node:crypto";
 import {
   CampaignEventStatus,
@@ -13,7 +11,7 @@ import type { CampaignCalendarItem } from "@/lib/calendar/campaign-calendar-item
 import { loadTravelCalendarItems } from "@/lib/calendar/load-travel-calendar-data";
 import { getKellyItemStaged } from "@/lib/calendar/kelly-cockpit-staged-metadata";
 
-function mapJsonEventType(et: CampaignCalendarItem["eventType"]): CampaignEventType {
+export function mapJsonEventType(et: CampaignCalendarItem["eventType"]): CampaignEventType {
   switch (et) {
     case "county_party_meeting":
       return CampaignEventType.MEETING;
@@ -40,7 +38,7 @@ function mapJsonEventType(et: CampaignCalendarItem["eventType"]): CampaignEventT
   }
 }
 
-function mapCalendarStatusToCampaignStatus(
+export function mapCalendarStatusToCampaignStatus(
   s: CampaignCalendarItem["calendarStatus"],
 ): CampaignEventStatus {
   switch (s) {
@@ -51,7 +49,7 @@ function mapCalendarStatusToCampaignStatus(
   }
 }
 
-async function resolveCountyId(countyName?: string): Promise<string | null> {
+export async function resolveCalendarCountyId(countyName?: string): Promise<string | null> {
   if (!countyName?.trim()) return null;
   const trimmed = countyName.trim();
   const direct = await prisma.county.findFirst({
@@ -60,7 +58,7 @@ async function resolveCountyId(countyName?: string): Promise<string | null> {
   });
   if (direct) return direct.id;
   const first = trimmed.split("/")[0]?.trim();
-  if (first && first !== trimmed) return resolveCountyId(first);
+  if (first && first !== trimmed) return resolveCalendarCountyId(first);
   return null;
 }
 
@@ -75,7 +73,7 @@ async function uniqueSlug(seed: string): Promise<string> {
   return `${base}-${randomBytes(4).toString("hex")}`;
 }
 
-function parseEnd(start: Date, item: CampaignCalendarItem): Date {
+export function parseCalendarItemEnd(start: Date, item: CampaignCalendarItem): Date {
   if (item.end) return new Date(item.end);
   if (item.allDay) return new Date(start.getTime() + 86400000);
   return new Date(start.getTime() + 3600000);
@@ -103,8 +101,8 @@ export async function promoteKellyCalendarItemToCampaignEvent(
 
   const staged = getKellyItemStaged(calendarItemId);
   const startAt = new Date(item.start);
-  const endAt = parseEnd(startAt, item);
-  const countyId = await resolveCountyId(item.county);
+  const endAt = parseCalendarItemEnd(startAt, item);
+  const countyId = await resolveCalendarCountyId(item.county);
   const slug = await uniqueSlug(calendarItemId);
 
   const internalBits: string[] = [];

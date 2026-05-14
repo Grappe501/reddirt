@@ -4,6 +4,7 @@ import {
   CalendarAlertSeverity,
   CalendarAlertStatus,
   CalendarSourceType,
+  EventWorkflowState,
   GoogleEventSyncState,
 } from "@prisma/client";
 import { prisma } from "@/lib/db";
@@ -18,6 +19,8 @@ export type KellyCockpitBundle = {
   enriched: EnrichedCalendarItem[];
   alerts: CalendarAlertDto[];
   hasDb: boolean;
+  dataSourceMode: "db_backed" | "mixed" | "staged_fallback";
+  dataSourceNote: string;
   dbError?: string;
   todayYmd: string;
   tomorrowYmd: string;
@@ -202,6 +205,70 @@ async function attachKellyGoogleOverlays(
   });
 }
 
+function campaignEventToCalendarItem(ev: {
+  id: string;
+  title: string;
+  startAt: Date;
+  endAt: Date;
+  locationName: string | null;
+  description: string | null;
+  eventWorkflowState: EventWorkflowState;
+  county: { displayName: string } | null;
+  commsStateJson: unknown;
+  status: string;
+}): CampaignCalendarItem {
+  const meta = (ev.commsStateJson && typeof ev.commsStateJson === "object" ? ev.commsStateJson : {}) as {
+    kellyCockpit?: {
+      stagedItemId?: string;
+      sourceId?: string | null;
+      source?: CampaignCalendarItem["source"];
+      calendarStatus?: CampaignCalendarItem["calendarStatus"];
+      publishStatus?: CampaignCalendarItem["publishStatus"];
+      eventType?: CampaignCalendarItem["eventType"];
+      routeCluster?: string | null;
+      overnightRequired?: boolean;
+      overnightCity?: string | null;
+      countyTouchCounts?: boolean;
+      verificationConfidence?: number;
+      drillDown?: CampaignCalendarItem["drillDown"];
+    };
+  };
+  const k = meta.kellyCockpit;
+  const calendarStatus: CampaignCalendarItem["calendarStatus"] =
+    k?.calendarStatus ??
+    (ev.eventWorkflowState === EventWorkflowState.APPROVED ||
+    ev.eventWorkflowState === EventWorkflowState.PUBLISHED ||
+    ev.eventWorkflowState === EventWorkflowState.COMPLETED
+      ? "confirmed"
+      : ev.eventWorkflowState === EventWorkflowState.CANCELED
+        ? "declined"
+        : "tentative");
+  return {
+    id: k?.stagedItemId ?? `ce:${ev.id}`,
+    source: "burt_database",
+    sourceId: ev.id,
+    title: ev.title,
+    start: ev.startAt.toISOString(),
+    end: ev.endAt.toISOString(),
+    allDay: false,
+    county: ev.county?.displayName,
+    location: ev.locationName ?? undefined,
+    eventType: k?.eventType ?? "campaign_event",
+    calendarStatus,
+    publishStatus: k?.publishStatus ?? "private_admin_only",
+    countyTouchCounts: k?.countyTouchCounts ?? false,
+    routeCluster: k?.routeCluster ?? undefined,
+    overnightRequired: k?.overnightRequired,
+    overnightCity: k?.overnightCity ?? undefined,
+    verificationConfidence: k?.verificationConfidence ?? 1,
+    notes: ev.description ?? undefined,
+    drillDown: {
+      ...k?.drillDown,
+      matchedDb: { kind: "CampaignEvent", id: ev.id, matchReason: "DB-backed Kelly cockpit source" },
+    },
+  };
+}
+
 export async function loadKellyCockpitBundle(): Promise<KellyCockpitBundle> {
   const { todayYmd, tomorrowYmd, weekEndYmd } = todayTomorrowWeekKeys();
   const travel = loadTravelCalendarItems().filter((i) => !i.excludeFromKellyCockpit);
@@ -214,31 +281,58 @@ export async function loadKellyCockpitBundle(): Promise<KellyCockpitBundle> {
   const items = [...travel, ...shadows];
   try {
     const ids = items.map((i) => i.id);
-    const [decisions, locals, promotions] = await Promise.all([
-      prisma.kellyCalendarDecision.findMany({
-        where: { calendarItemId: { in: ids } },
-        orderBy: { createdAt: "desc" },
-      }),
-      prisma.localCoverageRequest.findMany({
-        where: { calendarItemId: { in: ids } },
-      }),
+    const [promotions, promotedEvents, unpromotedEvents] = await Promise.all([
       prisma.kellyCalendarPromotion.findMany({
         where: { calendarItemId: { in: ids } },
       }),
+      prisma.campaignEvent.findMany({
+        where: { kellyCalendarPromotions: { some: { calendarItemId: { in: ids } } } },
+        include: { county: { select: { displayName: true } } },
+        orderBy: { startAt: "asc" },
+      }),
+      prisma.campaignEvent.findMany({
+        where: {
+          kellyCalendarPromotions: { none: {} },
+          calendarSource: {
+            sourceType: { in: [CalendarSourceType.KELLY_GOOGLE_TENTATIVE, CalendarSourceType.KELLY_GOOGLE_CONFIRMED] },
+          },
+        },
+        include: { county: { select: { displayName: true } } },
+        orderBy: { startAt: "asc" },
+        take: 400,
+      }),
     ]);
-    const promoted = new Set(promotions.map((p) => p.calendarItemId));
+    const promotedIds = new Set(promotions.map((p) => p.calendarItemId));
+    const dbItems = promotedEvents.map(campaignEventToCalendarItem);
+    const unpromotedJsonItems = items.filter((item) => !promotedIds.has(item.id));
+    const dbOrphanItems = unpromotedEvents.map(campaignEventToCalendarItem);
+    const sourceItems = [...dbItems, ...dbOrphanItems, ...unpromotedJsonItems];
+    const sourceIds = sourceItems.map((i) => i.id);
+
+    const [decisions, locals] = await Promise.all([
+      prisma.kellyCalendarDecision.findMany({
+        where: { calendarItemId: { in: sourceIds } },
+        orderBy: { createdAt: "desc" },
+      }),
+      prisma.localCoverageRequest.findMany({
+        where: { calendarItemId: { in: sourceIds } },
+      }),
+    ]);
     const localByItem = new Map<string, LocalCoverageRequest[]>();
     for (const r of locals) {
       const arr = localByItem.get(r.calendarItemId) ?? [];
       arr.push(r);
       localByItem.set(r.calendarItemId, arr);
     }
-    let enriched = mergeKellyCockpitData(items, decisions, localByItem, promoted);
+    let enriched = mergeKellyCockpitData(sourceItems, decisions, localByItem, promotedIds);
     enriched = sortApprovalQueue(enriched);
     const orphans = await enrichedKellyLaneOrphans().catch(() => [] as EnrichedCalendarItem[]);
     enriched = [...enriched, ...orphans];
     const promotionPairs = [
       ...promotions.map((p) => ({ calendarItemId: p.calendarItemId, campaignEventId: p.campaignEventId })),
+      ...dbOrphanItems.flatMap((it) =>
+        it.sourceId ? [{ calendarItemId: it.id, campaignEventId: it.sourceId }] : [] as { calendarItemId: string; campaignEventId: string }[],
+      ),
       ...orphans.flatMap((o) => {
         const m = o.drillDown?.matchedDb;
         if (m?.kind === "CampaignEvent" && m.id) return [{ calendarItemId: o.id, campaignEventId: m.id }];
@@ -249,14 +343,23 @@ export async function loadKellyCockpitBundle(): Promise<KellyCockpitBundle> {
     enriched = dedupeKellyCockpitDisplayItems(enriched);
     await bootstrapConflictAndUrgencyAlerts(enriched).catch(() => {});
     const refreshed = await prisma.calendarAlert.findMany({
-      where: { calendarItemId: { in: ids }, status: { in: [CalendarAlertStatus.PENDING, CalendarAlertStatus.SNOOZED] } },
+      where: { calendarItemId: { in: sourceIds }, status: { in: [CalendarAlertStatus.PENDING, CalendarAlertStatus.SNOOZED] } },
       orderBy: { createdAt: "desc" },
       take: 400,
     });
+    const dataSourceMode: KellyCockpitBundle["dataSourceMode"] =
+      dbItems.length > 0 && unpromotedJsonItems.length === 0 ? "db_backed" : dbItems.length > 0 ? "mixed" : "staged_fallback";
     return {
       enriched,
       alerts: alertsToDto(refreshed),
       hasDb: true,
+      dataSourceMode,
+      dataSourceNote:
+        dataSourceMode === "db_backed"
+          ? "CampaignEvent is the operational source; staged JSON is import history only."
+          : dataSourceMode === "mixed"
+            ? `${dbItems.length} DB-backed rows plus ${unpromotedJsonItems.length} staged import rows.`
+            : "No promoted CampaignEvent rows found; decisions may not persist to production DB.",
       todayYmd,
       tomorrowYmd,
       weekEndYmd,
@@ -266,6 +369,16 @@ export async function loadKellyCockpitBundle(): Promise<KellyCockpitBundle> {
     const promoted = new Set<string>();
     const localByItem = new Map();
     const enriched = sortApprovalQueue(mergeKellyCockpitData(items, [], localByItem, promoted));
-    return { enriched, alerts: [], hasDb: false, dbError: msg, todayYmd, tomorrowYmd, weekEndYmd };
+    return {
+      enriched,
+      alerts: [],
+      hasDb: false,
+      dataSourceMode: "staged_fallback",
+      dataSourceNote: "Database unavailable; using staged calendar JSON fallback only.",
+      dbError: msg,
+      todayYmd,
+      tomorrowYmd,
+      weekEndYmd,
+    };
   }
 }

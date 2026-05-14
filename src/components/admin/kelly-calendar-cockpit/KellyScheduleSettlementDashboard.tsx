@@ -57,6 +57,8 @@ type Props = {
   winScenario: KellyWinTargetScenarioFile | null;
   volunteerCapacityModel: VolunteerCapacityModelFile | null;
   preflight: CandidateDashboardPreflightFile;
+  dataSourceMode: "db_backed" | "mixed" | "staged_fallback";
+  dataSourceNote: string;
 };
 
 function fmt(iso: string) {
@@ -88,6 +90,8 @@ export function KellyScheduleSettlementDashboard(props: Props) {
     winScenario,
     volunteerCapacityModel,
     preflight,
+    dataSourceMode,
+    dataSourceNote,
   } = props;
 
   const [selectedPinId, setSelectedPinId] = useState<string | null>(null);
@@ -234,6 +238,19 @@ export function KellyScheduleSettlementDashboard(props: Props) {
             )}
             {preflight.warnings.length ? <p className="mt-1">Warnings: {preflight.warnings.slice(0, 3).join(" · ")}</p> : null}
           </div>
+        </div>
+      </div>
+      <div
+        className={`border-b px-4 py-2 font-body text-xs md:px-8 ${
+          dataSourceMode === "db_backed"
+            ? "border-emerald-900/40 bg-emerald-950/30 text-emerald-100"
+            : "border-amber-900/50 bg-amber-950/35 text-amber-100"
+        }`}
+      >
+        <div className="mx-auto max-w-7xl">
+          <span className="font-bold">Calendar data source:</span>{" "}
+          {dataSourceMode === "db_backed" ? "DB-backed" : dataSourceMode === "mixed" ? "Mixed" : "Staged fallback"} · {dataSourceNote}
+          {dataSourceMode !== "db_backed" ? " Decisions may not persist to production DB until staged rows are promoted." : ""}
         </div>
       </div>
       <div className="border-b border-zinc-800/90 bg-zinc-950/85 backdrop-blur-md">

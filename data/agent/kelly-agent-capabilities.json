@@ -162,5 +162,49 @@
     ],
     "humanOverrideRequired": true,
     "status": "file_staged"
+  },
+  {
+    "id": "calendar_db_health_tool_v1",
+    "name": "Calendar DB health",
+    "addedAt": "2026-05-14T02:15:00.000Z",
+    "category": "calendar_intelligence",
+    "description": "Checks migration health, core calendar table availability, CampaignEvent count, CalendarSource count, and Kelly cockpit DB readiness.",
+    "inputSources": ["Prisma _prisma_migrations", "CampaignEvent", "CalendarSource", "KellyCalendarDecision", "LocalCoverageRequest", "CalendarAlert"],
+    "outputUsedBy": ["Kelly agent calendar_db_health tool", "candidate calendar readiness review"],
+    "humanOverrideRequired": true,
+    "status": "db_backed"
+  },
+  {
+    "id": "calendar_sync_readiness_tool_v1",
+    "name": "Calendar sync readiness",
+    "addedAt": "2026-05-14T02:15:00.000Z",
+    "category": "calendar_intelligence",
+    "description": "Checks Google anchor, Tentative and Confirmed CalendarSource rows, refresh token presence, syncEnabled state, last sync, and conflict count.",
+    "inputSources": ["CalendarSource", "CampaignEvent sync fields", "KELLY_GOOGLE_ANCHOR_CALENDAR_SOURCE_ID"],
+    "outputUsedBy": ["Kelly agent calendar_sync_readiness tool", "Google lane smoke checklist"],
+    "humanOverrideRequired": true,
+    "status": "db_backed"
+  },
+  {
+    "id": "schedule_persistence_tool_v1",
+    "name": "Schedule persistence",
+    "addedAt": "2026-05-14T02:15:00.000Z",
+    "category": "calendar_intelligence",
+    "description": "Reports whether Kelly approvals, local coverage, and route settlement decisions are DB-backed or still file-staged.",
+    "inputSources": ["KellyCalendarDecision", "LocalCoverageRequest", "CalendarAlert", "data/calendar-command-center/schedule-settlement-decisions.staged.json"],
+    "outputUsedBy": ["Kelly agent schedule_persistence tool", "dashboard acceptance review"],
+    "humanOverrideRequired": true,
+    "status": "db_backed"
+  },
+  {
+    "id": "calendar_smoke_test_tool_v1",
+    "name": "Calendar smoke test",
+    "addedAt": "2026-05-14T02:15:00.000Z",
+    "category": "calendar_intelligence",
+    "description": "Produces the migration-to-Google smoke checklist for Tentative creation, approval, Confirmed promotion, pullback, dedupe, and dashboard status.",
+    "inputSources": ["CampaignEvent", "GoogleCalendarEventRecord", "CalendarSource", "Kelly dashboard"],
+    "outputUsedBy": ["Kelly agent calendar_smoke_test tool", "operator smoke checklist"],
+    "humanOverrideRequired": true,
+    "status": "db_backed"
   }
 ]
