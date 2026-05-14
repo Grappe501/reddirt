@@ -29,16 +29,22 @@ export default async function CalendarWeekViewPage({ searchParams }: Props) {
   const prevMondayYmd = formatInTimeZone(addDays(parse(mondayYmd, "yyyy-MM-dd", new Date()), -7), TZ, "yyyy-MM-dd");
   const nextMondayYmd = formatInTimeZone(addDays(parse(mondayYmd, "yyyy-MM-dd", new Date()), 7), TZ, "yyyy-MM-dd");
 
-  if (!travelCalendarDataPresent()) {
+  const hasTravelFile = travelCalendarDataPresent();
+  const travel = hasTravelFile ? loadTravelCalendarItems() : [];
+  const shadow = await loadPublicScheduleShadowCalendarItems();
+
+  if (!hasTravelFile && travel.length === 0 && shadow.length === 0) {
     return (
       <div className="mx-auto max-w-5xl px-4 py-8 font-body text-sm text-amber-900">
-        No travel calendar JSON yet. Run the travel reconcile script, then reload.
+        <p>No travel calendar JSON yet. Run the travel reconcile script to load the workbook export, then reload.</p>
+        <p className="mt-2 text-amber-900/85">
+          (Public scheduling requests still save to the database when configured — they appear once at least one request
+          exists.)
+        </p>
       </div>
     );
   }
 
-  const travel = loadTravelCalendarItems();
-  const shadow = await loadPublicScheduleShadowCalendarItems();
   const merged = [...travel, ...shadow];
   const startMs = new Date(wr.startIso).getTime();
   const endMs = new Date(wr.endExclusiveIso).getTime();
