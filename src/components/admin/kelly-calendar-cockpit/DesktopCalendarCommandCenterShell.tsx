@@ -3,10 +3,12 @@ import type { CountyPrioritySnapshotRow } from "@/lib/calendar/campaign-calendar
 import type { EnrichedCalendarItem } from "@/lib/calendar/kelly-cockpit-types";
 import type { CalendarAlertDto } from "@/lib/calendar/kelly-cockpit-types";
 import type { KellyWinTargetScenarioFile } from "@/lib/election-targets/win-target-types";
+import type { VolunteerCapacityModelFile } from "@/lib/field-ops/volunteer-capacity-types";
 import { FranklinCalendarCommandCenter } from "@/components/admin/calendar-command-center/FranklinCalendarCommandCenter";
 import { KellyApprovalQueue } from "@/components/admin/kelly-calendar-cockpit/KellyApprovalQueue";
 import { CalendarAlertCenter } from "@/components/admin/kelly-calendar-cockpit/CalendarAlertCenter";
 import { TravelConflictBanner } from "@/components/admin/kelly-calendar-cockpit/TravelConflictBanner";
+import { VolunteerCapacityStrip } from "@/components/admin/kelly-calendar-cockpit/VolunteerCapacityStrip";
 import { WinTargetCountyCards, WinTargetHud } from "@/components/admin/kelly-calendar-cockpit/WinTargetHud";
 
 const breakOut =
@@ -22,6 +24,8 @@ type Props = {
   dbError?: string;
   /** File-backed win-target scenario; null when JSON not generated yet. */
   winTargetScenario?: KellyWinTargetScenarioFile | null;
+  /** File-backed volunteer capacity model; null when JSON not generated yet. */
+  volunteerCapacityModel?: VolunteerCapacityModelFile | null;
   children?: ReactNode;
 };
 
@@ -33,6 +37,7 @@ export function DesktopCalendarCommandCenterShell({
   hasDb,
   dbError,
   winTargetScenario = null,
+  volunteerCapacityModel = null,
   children,
 }: Props) {
   const travel = enriched.filter((i) => i.eventType === "travel" || i.eventType === "overnight" || i.overnightRequired);
@@ -50,7 +55,14 @@ export function DesktopCalendarCommandCenterShell({
       ) : null}
       <div className="mb-4 space-y-3">
         <WinTargetHud scenario={winTargetScenario ?? null} />
-        <WinTargetCountyCards scenario={winTargetScenario ?? null} priorities={countyPriorities} />
+        <WinTargetCountyCards
+          scenario={winTargetScenario ?? null}
+          priorities={countyPriorities}
+          volunteerByCounty={
+            volunteerCapacityModel ? Object.fromEntries(volunteerCapacityModel.counties.map((c) => [c.county, c])) : undefined
+          }
+        />
+        <VolunteerCapacityStrip model={volunteerCapacityModel ?? null} />
       </div>
       <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_300px]">
         <div className="min-w-0 space-y-4">

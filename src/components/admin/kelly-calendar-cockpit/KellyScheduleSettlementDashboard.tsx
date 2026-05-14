@@ -22,6 +22,7 @@ import { approxCountyCenter } from "@/lib/opportunities/approx-county-center";
 import { appendScheduleSettlementDecision } from "@/app/admin/calendar-command-center/schedule-settlement-actions";
 import { KellySettlementMap, type SettlementMapPin } from "@/components/admin/kelly-calendar-cockpit/KellySettlementMap";
 import type { KellyWinTargetScenarioFile } from "@/lib/election-targets/win-target-types";
+import type { VolunteerCapacityModelFile } from "@/lib/field-ops/volunteer-capacity-types";
 import { WinTargetHud } from "@/components/admin/kelly-calendar-cockpit/WinTargetHud";
 
 const TZ = "America/Chicago";
@@ -53,6 +54,7 @@ type Props = {
   recommendedWeek: RecommendedWeek;
   approvalQueue: EnrichedCalendarItem[];
   winScenario: KellyWinTargetScenarioFile | null;
+  volunteerCapacityModel: VolunteerCapacityModelFile | null;
 };
 
 function fmt(iso: string) {
@@ -82,6 +84,7 @@ export function KellyScheduleSettlementDashboard(props: Props) {
     recommendedWeek,
     approvalQueue,
     winScenario,
+    volunteerCapacityModel,
   } = props;
 
   const [selectedPinId, setSelectedPinId] = useState<string | null>(null);
@@ -146,6 +149,16 @@ export function KellyScheduleSettlementDashboard(props: Props) {
     if (!selectedCounty || !winByCounty) return null;
     return winByCounty.get(selectedCounty) ?? null;
   }, [selectedCounty, winByCounty]);
+
+  const capByCounty = useMemo(() => {
+    if (!volunteerCapacityModel) return null;
+    return new Map(volunteerCapacityModel.counties.map((c) => [c.county, c]));
+  }, [volunteerCapacityModel]);
+
+  const capSelected = useMemo(() => {
+    if (!selectedCounty || !capByCounty) return null;
+    return capByCounty.get(selectedCounty) ?? null;
+  }, [selectedCounty, capByCounty]);
 
   useEffect(() => {
     let cancelled = false;
@@ -214,6 +227,12 @@ export function KellyScheduleSettlementDashboard(props: Props) {
               className="rounded-full border border-zinc-700 bg-zinc-900/80 px-3 py-1.5 text-zinc-100 hover:border-emerald-600/60 hover:text-white"
             >
               Build status
+            </Link>
+            <Link
+              href="/admin/calendar-command-center/field-ops"
+              className="rounded-full border border-zinc-700 bg-zinc-900/80 px-3 py-1.5 text-zinc-100 hover:border-emerald-600/60 hover:text-white"
+            >
+              Field ops
             </Link>
             <span className="rounded-full bg-emerald-700 px-3 py-1.5 text-white shadow-lg shadow-emerald-900/40">Today {todayYmd}</span>
           </div>
@@ -385,6 +404,38 @@ export function KellyScheduleSettlementDashboard(props: Props) {
                 ) : (
                   <p className="font-body text-[10px] text-zinc-500">No win-target row for this county yet — run election scenario build.</p>
                 )}
+                {capSelected ? (
+                  <div className="rounded-lg border border-violet-500/35 bg-violet-950/30 px-3 py-2 font-body text-[10px] text-zinc-200">
+                    <p className="font-heading text-[9px] font-bold uppercase tracking-[0.18em] text-violet-300">Volunteer capacity · coverage</p>
+                    <ul className="mt-2 space-y-1 font-mono text-[10px] leading-relaxed text-zinc-300">
+                      <li>
+                        Event staffing need {capSelected.eventStaffingNeed} · House-party host need {capSelected.housePartyHostNeed} · Local guide gap{" "}
+                        {capSelected.localGuideNeed}
+                      </li>
+                      <li>
+                        Follow-up volunteer need {capSelected.followUpVolunteerNeed} · Reg. education touches {capSelected.voterRegistrationEducationNeed}{" "}
+                        · Phone hours {capSelected.phoneBankCapacityNeedHours}
+                      </li>
+                      <li>
+                        Access / language: {capSelected.hispanicCommunityAccessNeed.replace(/_/g, " ")}
+                        {capSelected.languageAccessNotes ? ` — ${capSelected.languageAccessNotes.slice(0, 120)}` : ""}
+                      </li>
+                      <li>
+                        Fundraising support envelope {capSelected.realisticCountyFundraisingGoal?.toLocaleString() ?? "—"} (
+                        {capSelected.fundraisingConfidence}) · House-party potential {capSelected.housePartyFundraisingPotential}
+                      </li>
+                      <li>Confidence {capSelected.confidence}</li>
+                    </ul>
+                    {capSelected.staffNextActions.length ? (
+                      <p className="mt-2 text-emerald-200/90">Staff next: {capSelected.staffNextActions.slice(0, 3).join(" · ")}</p>
+                    ) : null}
+                    {capSelected.missingData.length ? (
+                      <p className="mt-2 text-amber-200/90">Ops data gaps: {capSelected.missingData.slice(0, 5).join(", ")}</p>
+                    ) : null}
+                  </div>
+                ) : volunteerCapacityModel ? (
+                  <p className="font-body text-[10px] text-zinc-500">No volunteer-capacity row for this county.</p>
+                ) : null}
               </div>
             ) : null}
           </div>

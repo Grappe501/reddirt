@@ -63,5 +63,27 @@
     ],
     "humanOverrideRequired": true,
     "status": "file_staged"
+  },
+  {
+    "id": "volunteer_capacity_community_coverage_v1",
+    "name": "Volunteer capacity and community coverage (operations)",
+    "addedAt": "2026-05-14T00:00:00.000Z",
+    "category": "field_operations",
+    "description": "County-level staffing, guide gaps, house-party host need, follow-up workload, bilingual/access support flags, and staff call prompts from file-staged inputs. Campaign operations only — not automated voter persuasion or demographic targeting.",
+    "inputSources": [
+      "data/election/kelly-win-target-scenario-v1.json",
+      "data/calendar-command-center/county-priority-snapshot.json",
+      "data/calendar-command-center/community-opportunities-2026.normalized.json",
+      "data/field-ops/volunteer-roster-inputs-v1.json",
+      "data/field-ops/county-acs-context-v1.json",
+      "npm run fieldops:volunteer-capacity:build"
+    ],
+    "outputUsedBy": [
+      "Kelly agent volunteer_capacity tool",
+      "/admin/calendar-command-center/field-ops",
+      "Candidate dashboard / county brief strips"
+    ],
+    "humanOverrideRequired": true,
+    "status": "file_staged"
   }
 ]

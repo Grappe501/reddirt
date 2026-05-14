@@ -1,4 +1,5 @@
 import type { KellyWinTargetScenarioFile } from "@/lib/election-targets/win-target-types";
+import type { CountyVolunteerCapacityRow } from "@/lib/field-ops/volunteer-capacity-types";
 
 export function WinTargetHud({ scenario }: { scenario: KellyWinTargetScenarioFile | null }) {
   if (!scenario) {
@@ -75,9 +76,11 @@ export function WinTargetHud({ scenario }: { scenario: KellyWinTargetScenarioFil
 export function WinTargetCountyCards({
   scenario,
   priorities,
+  volunteerByCounty,
 }: {
   scenario: KellyWinTargetScenarioFile | null;
   priorities: { county: string; pastTouchesSinceNov1: number; nextScheduledAnchor?: string }[];
+  volunteerByCounty?: Record<string, CountyVolunteerCapacityRow>;
 }) {
   if (!scenario) return null;
   const pri = new Map(priorities.map((p) => [p.county, p]));
@@ -88,6 +91,7 @@ export function WinTargetCountyCards({
       <ul className="mt-2 divide-y divide-kelly-text/10">
         {top.map((c) => {
           const p = pri.get(c.county);
+          const v = volunteerByCounty?.[c.county];
           return (
             <li key={c.county} className="flex flex-wrap items-start justify-between gap-2 py-2 font-body text-[11px] text-kelly-text/85">
               <div>
@@ -99,6 +103,12 @@ export function WinTargetCountyCards({
                 <p className="mt-0.5 text-[10px] text-kelly-text/55">
                   Touches Nov 1→ {p?.pastTouchesSinceNov1 ?? "—"} · Next {p?.nextScheduledAnchor ? p.nextScheduledAnchor.slice(0, 42) : "—"}
                 </p>
+                {v ? (
+                  <p className="mt-0.5 text-[10px] text-violet-900/80">
+                    Ops: event staff {v.eventStaffingNeed} · guide gap {v.localGuideNeed} · access {v.hispanicCommunityAccessNeed.replace(/_/g, " ")}{" "}
+                    · fund plan {v.realisticCountyFundraisingGoal?.toLocaleString() ?? "—"} ({v.fundraisingConfidence})
+                  </p>
+                ) : null}
               </div>
               <span className="rounded-full border border-kelly-text/15 bg-kelly-wash px-2 py-0.5 text-[9px] font-bold uppercase text-kelly-text/70">
                 {c.dashboardLabel.replace(/_/g, " ")}

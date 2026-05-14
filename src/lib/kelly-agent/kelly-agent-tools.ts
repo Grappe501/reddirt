@@ -6,6 +6,7 @@ import type { KellyAgentTask } from "@/lib/kelly-agent/agent-context-pack";
 import type { AgentContextPack } from "@/lib/kelly-agent/agent-context-pack";
 import { loadMediaIndexSlice } from "@/lib/kelly-agent/build-agent-context-pack";
 import { loadWinTargetToolOutput } from "@/lib/kelly-agent/tools/win-target-tool";
+import { loadVolunteerCapacityToolOutput } from "@/lib/kelly-agent/tools/volunteer-capacity-tool";
 
 export type KellyAgentToolTrace = { tool: string; ms: number };
 
@@ -18,6 +19,7 @@ export type KellyAgentToolBundle = {
   google_calendar_sync: unknown;
   approval_recommendation_stub: unknown;
   win_targets: unknown;
+  volunteer_capacity: unknown;
 };
 
 export async function runKellyAgentTools(
@@ -90,6 +92,12 @@ export async function runKellyAgentTools(
   };
   trace.push({ tool: "win_targets", ms: Date.now() - t7 });
 
+  const t8 = Date.now();
+  const volunteer_capacity = loadVolunteerCapacityToolOutput(root) ?? {
+    note: "Run `npm run fieldops:volunteer-capacity:build` in the RedDirt lane to generate data/field-ops/volunteer-capacity-model-v1.json.",
+  };
+  trace.push({ tool: "volunteer_capacity", ms: Date.now() - t8 });
+
   return {
     tools: {
       calendar_context,
@@ -100,6 +108,7 @@ export async function runKellyAgentTools(
       google_calendar_sync,
       approval_recommendation_stub,
       win_targets,
+      volunteer_capacity,
     },
     trace,
   };
