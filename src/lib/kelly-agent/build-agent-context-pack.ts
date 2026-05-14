@@ -48,6 +48,7 @@ export async function buildAgentContextPack(opts: {
       "Tuesday daytime = Little Rock / Pulaski work window unless the calendar row waives it.",
       "Do not invent contacts, opponents, poll numbers, or venue access.",
       "This API route does not write to Google Calendar — sync is a read-only status snapshot when the tool runs.",
+      "When `win_targets` appears in the tool bundle, treat it as a scenario (not a prediction). Explain uncertainty, missing data flags, and that humans approve field plans.",
     ],
   };
 }

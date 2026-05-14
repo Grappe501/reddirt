@@ -7,6 +7,7 @@ import {
 } from "@/lib/calendar/load-travel-calendar-data";
 import { loadPublicScheduleShadowCalendarItems } from "@/lib/calendar/public-schedule-shadow-items";
 import { loadKellyCockpitBundle } from "@/lib/calendar/kelly-cockpit-data";
+import { loadKellyWinTargetScenarioFile } from "@/lib/election-targets/load-win-target-scenario";
 
 export const dynamic = "force-dynamic";
 
@@ -17,6 +18,7 @@ export default async function CalendarCommandCenterPage() {
   const countyPriorities = loadCountyPrioritySnapshot();
   const hasData = travelCalendarDataPresent();
   const bundle = await loadKellyCockpitBundle();
+  const winTargetScenario = loadKellyWinTargetScenarioFile();
 
   return (
     <div className="space-y-4">
@@ -72,6 +74,7 @@ export default async function CalendarCommandCenterPage() {
           alerts={bundle.alerts}
           hasDb={bundle.hasDb}
           dbError={bundle.dbError}
+          winTargetScenario={winTargetScenario}
         >
           <div className="rounded-lg border border-kelly-text/10 bg-kelly-wash/60 px-4 py-3 font-body text-xs text-kelly-text/75">
             <p>

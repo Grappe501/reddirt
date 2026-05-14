@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-13T12:00:00.000Z",
+  "tracks": [
+    { "id": "candidate_dashboard", "label": "Candidate dashboard (command center + win target HUD)", "percent": 55 },
+    { "id": "week_route_planner", "label": "Week route planner + map", "percent": 72 },
+    { "id": "map_layer", "label": "Map layer (settlement + week win-target accent)", "percent": 48 },
+    { "id": "win_target_model", "label": "Win target model V1 (scenario math + CSV/JSON)", "percent": 60 },
+    { "id": "county_target_map", "label": "County target map / pins / cards", "percent": 45 },
+    { "id": "agent_tools", "label": "Kelly agent tools + intelligence ledger", "percent": 52 },
+    { "id": "county_vault", "label": "County vault (filesystem depth)", "percent": 28 },
+    { "id": "media_ingestion", "label": "Media ingestion + metadata rails", "percent": 22 },
+    { "id": "google_orchestration", "label": "Google Calendar orchestration (CLI + HQ)", "percent": 58 },
+    { "id": "migration_readiness", "label": "Migration readiness (cockpit migration repair)", "percent": 15 }
+  ],
+  "notes": [
+    "V2 JSON at data/calendar-command-center/calendar-v2-build-status.json remains the slice-2 snapshot; this file tracks V3 intelligence + election math.",
+    "DB-backed features stay blocked until 20260518210000_kelly_calendar_cockpit is repaired and deployed with backup authority.",
+    "Every pass should append one row to data/agent/kelly-agent-capabilities.json."
+  ]
+}

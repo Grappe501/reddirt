@@ -18,6 +18,7 @@ import {
   loadWeekendRoutePlansFile,
 } from "@/lib/opportunities/load-community-opportunities-data";
 import { KellyScheduleSettlementDashboard } from "@/components/admin/kelly-calendar-cockpit/KellyScheduleSettlementDashboard";
+import { loadKellyWinTargetScenarioFile } from "@/lib/election-targets/load-win-target-scenario";
 
 export const dynamic = "force-dynamic";
 
@@ -65,6 +66,7 @@ export default async function KellyCalendarCockpitPage() {
 
   const approvalQueue = buildSettlementApprovalQueue(horizonItems, 14);
   const dayPreview = buildDaySegmentPreviews();
+  const winScenario = loadKellyWinTargetScenarioFile();
 
   return (
     <KellyScheduleSettlementDashboard
@@ -81,6 +83,7 @@ export default async function KellyCalendarCockpitPage() {
       dayPreview={dayPreview}
       recommendedWeek={recommendedWeek}
       approvalQueue={approvalQueue}
+      winScenario={winScenario}
     />
   );
 }

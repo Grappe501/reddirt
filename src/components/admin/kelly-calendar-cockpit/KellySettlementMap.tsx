@@ -15,33 +15,34 @@ export type SettlementMapPin = {
   lng: number;
   lane: "confirmed" | "tentative" | "travel" | "other";
   county?: string;
+  /** 0–1 relative modeled target vote gain for this county (advisory). */
+  winAccent?: number;
 };
 
 const CENTER: [number, number] = [34.75, -92.35];
 
-function pinIcon(lane: SettlementMapPin["lane"]) {
-  if (lane === "confirmed") {
-    return L.divIcon({
-      className: "rounded-full border-2 border-white bg-emerald-600 shadow",
-      iconSize: [13, 13],
+function pinIcon(lane: SettlementMapPin["lane"], winAccent?: number) {
+  const ring =
+    winAccent != null && winAccent > 0.04
+      ? `box-shadow:0 0 0 2px hsl(${200 - winAccent * 115}, 72%, 44%);`
+      : "";
+  const baseStyle = (bg: string, border: string, size: number) =>
+    L.divIcon({
+      className: "",
+      html: `<div style="width:${size}px;height:${size}px;border-radius:9999px;background:${bg};border:${border};${ring}"></div>`,
+      iconSize: [size + 4, size + 4],
+      iconAnchor: [(size + 4) / 2, (size + 4) / 2],
     });
+  if (lane === "confirmed") {
+    return baseStyle("#059669", "2px solid #fff", 12);
   }
   if (lane === "tentative") {
-    return L.divIcon({
-      className: "rounded-full border-2 border-dashed border-amber-900 bg-amber-300 shadow",
-      iconSize: [14, 14],
-    });
+    return baseStyle("#fcd34d", "2px dashed #78350f", 13);
   }
   if (lane === "travel") {
-    return L.divIcon({
-      className: "rounded-full border-2 border-white bg-sky-600 shadow",
-      iconSize: [12, 12],
-    });
+    return baseStyle("#0284c7", "2px solid #fff", 11);
   }
-  return L.divIcon({
-    className: "rounded-full border border-white bg-zinc-500 shadow",
-    iconSize: [11, 11],
-  });
+  return baseStyle("#71717b", "1px solid #fff", 10);
 }
 
 export function KellySettlementMap({
@@ -81,7 +82,7 @@ export function KellySettlementMap({
           <Marker
             key={m.id}
             position={[m.lat, m.lng]}
-            icon={pinIcon(m.lane)}
+            icon={pinIcon(m.lane, m.winAccent)}
             eventHandlers={{
               click: () => onSelectPin(m.id === selectedId ? null : m.id),
             }}

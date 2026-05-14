@@ -18,6 +18,8 @@ export function WeekViewBoard(props: {
   overnightCities: string[];
   itemCount: number;
   workWindowWarnings: number;
+  /** When true, map shows a short legend for win-target pin halos. */
+  winTargetLegend?: boolean;
 }) {
   const {
     mondayYmd,
@@ -30,6 +32,7 @@ export function WeekViewBoard(props: {
     overnightCities,
     itemCount,
     workWindowWarnings,
+    winTargetLegend = false,
   } = props;
 
   return (
@@ -67,7 +70,7 @@ export function WeekViewBoard(props: {
         </div>
       </div>
 
-      <WeekViewMap markers={markers} polyline={polyline} />
+      <WeekViewMap markers={markers} polyline={polyline} winTargetLegend={winTargetLegend} />
 
       <div className="grid gap-4 lg:grid-cols-7">
         {days.map((d) => (

@@ -2,10 +2,12 @@ import type { ReactNode } from "react";
 import type { CountyPrioritySnapshotRow } from "@/lib/calendar/campaign-calendar-item";
 import type { EnrichedCalendarItem } from "@/lib/calendar/kelly-cockpit-types";
 import type { CalendarAlertDto } from "@/lib/calendar/kelly-cockpit-types";
+import type { KellyWinTargetScenarioFile } from "@/lib/election-targets/win-target-types";
 import { FranklinCalendarCommandCenter } from "@/components/admin/calendar-command-center/FranklinCalendarCommandCenter";
 import { KellyApprovalQueue } from "@/components/admin/kelly-calendar-cockpit/KellyApprovalQueue";
 import { CalendarAlertCenter } from "@/components/admin/kelly-calendar-cockpit/CalendarAlertCenter";
 import { TravelConflictBanner } from "@/components/admin/kelly-calendar-cockpit/TravelConflictBanner";
+import { WinTargetCountyCards, WinTargetHud } from "@/components/admin/kelly-calendar-cockpit/WinTargetHud";
 
 const breakOut =
   "-mx-6 -mt-10 mb-0 w-[calc(100%+3rem)] max-w-[calc(100vw-280px-3rem)] min-w-0 px-0 pt-0 pb-2 lg:-mx-12 lg:mt-0 lg:w-[calc(100%+6rem)] lg:max-w-none";
@@ -18,6 +20,8 @@ type Props = {
   alerts: CalendarAlertDto[];
   hasDb: boolean;
   dbError?: string;
+  /** File-backed win-target scenario; null when JSON not generated yet. */
+  winTargetScenario?: KellyWinTargetScenarioFile | null;
   children?: ReactNode;
 };
 
@@ -28,6 +32,7 @@ export function DesktopCalendarCommandCenterShell({
   alerts,
   hasDb,
   dbError,
+  winTargetScenario = null,
   children,
 }: Props) {
   const travel = enriched.filter((i) => i.eventType === "travel" || i.eventType === "overnight" || i.overnightRequired);
@@ -43,6 +48,10 @@ export function DesktopCalendarCommandCenterShell({
           Kelly decisions / alerts need a migrated DB: {dbError}
         </div>
       ) : null}
+      <div className="mb-4 space-y-3">
+        <WinTargetHud scenario={winTargetScenario ?? null} />
+        <WinTargetCountyCards scenario={winTargetScenario ?? null} priorities={countyPriorities} />
+      </div>
       <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_300px]">
         <div className="min-w-0 space-y-4">
           <TravelConflictBanner items={enriched} />

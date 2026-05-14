@@ -5,6 +5,7 @@ import { loadWeekendRoutePlansFile } from "@/lib/opportunities/load-community-op
 import type { KellyAgentTask } from "@/lib/kelly-agent/agent-context-pack";
 import type { AgentContextPack } from "@/lib/kelly-agent/agent-context-pack";
 import { loadMediaIndexSlice } from "@/lib/kelly-agent/build-agent-context-pack";
+import { loadWinTargetToolOutput } from "@/lib/kelly-agent/tools/win-target-tool";
 
 export type KellyAgentToolTrace = { tool: string; ms: number };
 
@@ -16,6 +17,7 @@ export type KellyAgentToolBundle = {
   media_retrieval: unknown;
   google_calendar_sync: unknown;
   approval_recommendation_stub: unknown;
+  win_targets: unknown;
 };
 
 export async function runKellyAgentTools(
@@ -82,6 +84,12 @@ export async function runKellyAgentTools(
   };
   trace.push({ tool: "approval_recommendation", ms: Date.now() - t6 });
 
+  const t7 = Date.now();
+  const win_targets = loadWinTargetToolOutput(root) ?? {
+    note: "Run `npm run election:targets:build` in the RedDirt lane to generate data/election/kelly-win-target-scenario-v1.json.",
+  };
+  trace.push({ tool: "win_targets", ms: Date.now() - t7 });
+
   return {
     tools: {
       calendar_context,
@@ -91,6 +99,7 @@ export async function runKellyAgentTools(
       media_retrieval,
       google_calendar_sync,
       approval_recommendation_stub,
+      win_targets,
     },
     trace,
   };

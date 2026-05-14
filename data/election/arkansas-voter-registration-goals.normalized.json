@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "sourceNote": "Optional registration goals by county short name. DB ingest can hydrate this file.",
+  "rows": []
+}

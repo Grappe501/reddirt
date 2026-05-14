@@ -1,0 +1,67 @@
+[
+  {
+    "id": "calendar_context_tool_v1",
+    "name": "Calendar window context",
+    "addedAt": "2026-05-01T00:00:00.000Z",
+    "category": "calendar",
+    "description": "Summarizes the current Chicago-week calendar window and sample item ids for the Kelly agent.",
+    "inputSources": ["data/calendar-command-center/calendar-items.normalized.json", "AgentContextPack.calendarWindow"],
+    "outputUsedBy": ["POST /api/admin/kelly-agent/recommend", "Schedule settlement prompts"],
+    "humanOverrideRequired": true,
+    "status": "file_staged"
+  },
+  {
+    "id": "route_matrix_cache_v1",
+    "name": "Route matrix cache (read-only)",
+    "addedAt": "2026-05-01T00:00:00.000Z",
+    "category": "routing",
+    "description": "Exposes cached drive matrix entry counts for opportunity / route reasoning without calling Google Routes at inference time.",
+    "inputSources": ["data/opportunities/google-route-matrix-cache.json"],
+    "outputUsedBy": ["Kelly agent recommend", "Weekend route heuristics"],
+    "humanOverrideRequired": true,
+    "status": "file_staged"
+  },
+  {
+    "id": "opportunity_graph_stub_v1",
+    "name": "Opportunity graph (weekend plans + op counts)",
+    "addedAt": "2026-05-01T00:00:00.000Z",
+    "category": "opportunity_graph",
+    "description": "Lightweight opportunity graph summary from staged JSON (weekend plans + tentative opportunity cap).",
+    "inputSources": ["data/opportunities/*.json"],
+    "outputUsedBy": ["Kelly agent recommend", "Settlement dashboard copy"],
+    "humanOverrideRequired": true,
+    "status": "file_staged"
+  },
+  {
+    "id": "schedule_settlement_ai_v1",
+    "name": "Schedule settlement recommendation",
+    "addedAt": "2026-05-10T00:00:00.000Z",
+    "category": "schedule_settlement",
+    "description": "POST /api/admin/kelly-agent/schedule-settlement returns structured settlement guidance with deterministic fallback.",
+    "inputSources": ["Settlement snapshot builders", "Weekend plans JSON"],
+    "outputUsedBy": ["/admin/calendar-command-center/kelly"],
+    "humanOverrideRequired": true,
+    "status": "file_staged"
+  },
+  {
+    "id": "county_win_target_model_v1",
+    "name": "County win-target scenario (election math)",
+    "addedAt": "2026-05-13T00:00:00.000Z",
+    "category": "election_math",
+    "description": "Scenario (not prediction) for statewide 50%+1 vs working cushion target, per-county projected turnout, baseline Dem support blend, capacity-weighted vote gain allocation, guardrails, and explainable sub-scores. Human override always.",
+    "inputSources": [
+      "data/election/arkansas-county-election-history.normalized.json",
+      "data/election/arkansas-voter-registration-goals.normalized.json",
+      "data/calendar-command-center/county-priority-snapshot.json",
+      "data/calendar-command-center/county-facts.json",
+      "src/lib/county/arkansas-county-registry.ts"
+    ],
+    "outputUsedBy": [
+      "Kelly agent win_targets tool",
+      "/admin/calendar-command-center cockpit HUD",
+      "npm run election:targets:build"
+    ],
+    "humanOverrideRequired": true,
+    "status": "file_staged"
+  }
+]

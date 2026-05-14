@@ -13,6 +13,7 @@ import { filterCalendarItemsInWindow, loadTravelCalendarItems, travelCalendarDat
 import { loadPublicScheduleShadowCalendarItems } from "@/lib/calendar/public-schedule-shadow-items";
 import { getChicagoWeekRange } from "@/lib/calendar/week-view-range";
 import { loadKellyCockpitBundle } from "@/lib/calendar/kelly-cockpit-data";
+import { loadKellyWinTargetScenarioFile } from "@/lib/election-targets/load-win-target-scenario";
 
 const TZ = "America/Chicago";
 
@@ -51,7 +52,11 @@ export default async function CalendarWeekViewPage({ searchParams }: Props) {
   const windowItems = filterCalendarItemsInWindow(merged, startMs, endMs);
   const bundle = await loadKellyCockpitBundle();
   const badgeById = Object.fromEntries(bundle.enriched.map((e) => [e.id, e.cardBadge]));
-  const { markers, polyline } = buildWeekMapModel(windowItems, badgeById);
+  const winScenario = loadKellyWinTargetScenarioFile();
+  const winGainByCounty = winScenario
+    ? Object.fromEntries(winScenario.counties.map((c) => [c.county, c.targetVoteGain]))
+    : undefined;
+  const { markers, polyline } = buildWeekMapModel(windowItems, badgeById, winGainByCounty);
   const days = buildWeekBoardDays(
     mondayYmd,
     windowItems.map(stripCalendarItemForWeekClient),
@@ -104,6 +109,7 @@ export default async function CalendarWeekViewPage({ searchParams }: Props) {
         overnightCities={overnightCities}
         itemCount={windowItems.length}
         workWindowWarnings={workWindowWarnings}
+        winTargetLegend={Boolean(winScenario)}
       />
     </div>
   );

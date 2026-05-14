@@ -40,6 +40,8 @@ export type WeekMapMarker = {
   county?: string;
   /** Tentative public scheduling requests use a distinct map treatment. */
   markerKind?: "public_request" | "standard";
+  /** 0–1: relative county target vote gain (win-target scenario) for subtle map accent. */
+  winTargetAccent?: number;
 };
 
 export function jitterLatLng(id: string, lat: number, lng: number): { lat: number; lng: number } {
@@ -54,17 +56,31 @@ function jitter(id: string, lat: number, lng: number): { lat: number; lng: numbe
   return jitterLatLng(id, lat, lng);
 }
 
+export function normalizeCountyKey(name: string | undefined): string | undefined {
+  if (!name) return undefined;
+  return name.replace(/\s+County$/i, "").trim();
+}
+
 export function buildWeekMapModel(
   items: CampaignCalendarItem[],
   badgeById: Record<string, string>,
+  winTargetGainByCounty?: Record<string, number>,
 ): { markers: WeekMapMarker[]; polyline: [number, number][] } {
   const sorted = [...items].sort((a, b) => a.start.localeCompare(b.start));
   const markers: WeekMapMarker[] = [];
   const polyline: [number, number][] = [];
+  const gains = winTargetGainByCounty ? Object.values(winTargetGainByCounty).filter((n) => n > 0) : [];
+  const maxGain = gains.length ? Math.max(...gains) : 0;
   for (const it of sorted) {
     const county = it.county?.trim();
     const base = county ? approxCountyCenter(county) : { lat: 34.75, lng: -92.35 };
     const { lat, lng } = jitter(it.id, base.lat, base.lng);
+    const ck = normalizeCountyKey(county);
+    let winTargetAccent: number | undefined;
+    if (ck && winTargetGainByCounty && maxGain > 0) {
+      const g = winTargetGainByCounty[ck];
+      if (typeof g === "number" && g > 0) winTargetAccent = Math.min(1, g / maxGain);
+    }
     markers.push({
       id: it.id,
       title: it.title,
@@ -73,6 +89,7 @@ export function buildWeekMapModel(
       badge: badgeById[it.id] ?? it.calendarStatus,
       county,
       markerKind: it.source === "public_schedule_request" ? "public_request" : "standard",
+      winTargetAccent,
     });
     polyline.push([lat, lng]);
   }

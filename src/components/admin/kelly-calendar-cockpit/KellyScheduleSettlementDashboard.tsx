@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
 import type { CountyPrioritySnapshotRow } from "@/lib/calendar/campaign-calendar-item";
-import { jitterLatLng } from "@/lib/calendar/build-week-board-model";
+import { jitterLatLng, normalizeCountyKey } from "@/lib/calendar/build-week-board-model";
 import {
   buildDaySegmentPreviews,
   filterItemsInChicagoWeek,
@@ -21,6 +21,8 @@ import { approxCountyCenter } from "@/lib/opportunities/approx-county-center";
 
 import { appendScheduleSettlementDecision } from "@/app/admin/calendar-command-center/schedule-settlement-actions";
 import { KellySettlementMap, type SettlementMapPin } from "@/components/admin/kelly-calendar-cockpit/KellySettlementMap";
+import type { KellyWinTargetScenarioFile } from "@/lib/election-targets/win-target-types";
+import { WinTargetHud } from "@/components/admin/kelly-calendar-cockpit/WinTargetHud";
 
 const TZ = "America/Chicago";
 
@@ -50,6 +52,7 @@ type Props = {
   dayPreview: ReturnType<typeof buildDaySegmentPreviews>;
   recommendedWeek: RecommendedWeek;
   approvalQueue: EnrichedCalendarItem[];
+  winScenario: KellyWinTargetScenarioFile | null;
 };
 
 function fmt(iso: string) {
@@ -78,6 +81,7 @@ export function KellyScheduleSettlementDashboard(props: Props) {
     dayPreview,
     recommendedWeek,
     approvalQueue,
+    winScenario,
   } = props;
 
   const [selectedPinId, setSelectedPinId] = useState<string | null>(null);
@@ -86,6 +90,23 @@ export function KellyScheduleSettlementDashboard(props: Props) {
   const [aiMeta, setAiMeta] = useState<string | null>(null);
 
   const weekItems = useMemo(() => filterItemsInChicagoWeek(enriched, weekMondayYmd), [enriched, weekMondayYmd]);
+
+  const winByCounty = useMemo(() => {
+    if (!winScenario) return null;
+    return new Map(winScenario.counties.map((c) => [c.county, c]));
+  }, [winScenario]);
+
+  const maxPinGain = useMemo(() => {
+    if (!winByCounty) return 1;
+    let m = 1;
+    for (const it of weekItems) {
+      const key = normalizeCountyKey(it.county);
+      if (!key) continue;
+      const w = winByCounty.get(key);
+      if (w && w.targetVoteGain > m) m = w.targetVoteGain;
+    }
+    return m;
+  }, [weekItems, winByCounty]);
 
   const { pins, polyline } = useMemo(() => {
     const sorted = [...weekItems].sort((a, b) => a.start.localeCompare(b.start));
@@ -99,11 +120,17 @@ export function KellyScheduleSettlementDashboard(props: Props) {
       if (it.eventType === "travel" || it.eventType === "overnight") lane = "travel";
       else if (it.calendarStatus === "confirmed") lane = "confirmed";
       else if (["tentative", "needs_verification", "recommended"].includes(it.calendarStatus)) lane = "tentative";
-      pinsOut.push({ id: it.id, title: it.title, lat, lng, lane, county });
+      const ck = normalizeCountyKey(county);
+      let winAccent: number | undefined;
+      if (ck && winByCounty && maxPinGain > 0) {
+        const w = winByCounty.get(ck);
+        if (w && w.targetVoteGain > 0) winAccent = Math.min(1, w.targetVoteGain / maxPinGain);
+      }
+      pinsOut.push({ id: it.id, title: it.title, lat, lng, lane, county, winAccent });
       poly.push([lat, lng]);
     }
     return { pins: pinsOut, polyline: poly };
-  }, [weekItems]);
+  }, [weekItems, winByCounty, maxPinGain]);
 
   const selectedItem = useMemo(
     () => (selectedPinId ? enriched.find((e) => e.id === selectedPinId) ?? null : null),
@@ -114,6 +141,11 @@ export function KellyScheduleSettlementDashboard(props: Props) {
     () => (selectedCounty ? countyPriorities.find((c) => c.county === selectedCounty) ?? null : null),
     [countyPriorities, selectedCounty],
   );
+
+  const winSelected = useMemo(() => {
+    if (!selectedCounty || !winByCounty) return null;
+    return winByCounty.get(selectedCounty) ?? null;
+  }, [selectedCounty, winByCounty]);
 
   useEffect(() => {
     let cancelled = false;
@@ -148,49 +180,61 @@ export function KellyScheduleSettlementDashboard(props: Props) {
   const oppById = useMemo(() => new Map(opportunities.map((o) => [o.id, o])), [opportunities]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#f4f0e8] via-[#efe8dd] to-[#e8e0d4] pb-24 text-zinc-900">
-      <header className="border-b border-zinc-200/80 bg-white/80 px-4 py-5 backdrop-blur-md md:px-8">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 md:flex-row md:items-end md:justify-between">
+    <div className="min-h-screen bg-zinc-950 bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.12),transparent_50%),radial-gradient(ellipse_at_80%_20%,rgba(56,189,248,0.08),transparent_45%)] pb-28 text-zinc-50">
+      <div className="border-b border-zinc-800/90 bg-zinc-950/85 backdrop-blur-md">
+        <div className="mx-auto max-w-7xl px-4 py-4 md:px-8">
+          <WinTargetHud scenario={winScenario} />
+        </div>
+      </div>
+
+      <header className="border-b border-zinc-800/80 bg-zinc-950/70 px-4 py-5 backdrop-blur-md md:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="font-heading text-[10px] font-bold uppercase tracking-[0.28em] text-emerald-900/60">Kelly cockpit</p>
-            <h1 className="mt-1 font-heading text-2xl font-bold tracking-tight text-zinc-950 md:text-3xl">Schedule settlement mode</h1>
-            <p className="mt-2 max-w-2xl font-body text-sm leading-relaxed text-zinc-600">
-              Tonight: lock the week and weekend arcs without leaving this board. Map stays visible — pins open cards here, not a spreadsheet rabbit hole.
+            <p className="font-heading text-[10px] font-bold uppercase tracking-[0.28em] text-emerald-400/80">Kelly cockpit</p>
+            <h1 className="mt-1 font-heading text-2xl font-bold tracking-tight text-white md:text-3xl">Schedule settlement mode</h1>
+            <p className="mt-2 max-w-2xl font-body text-sm leading-relaxed text-zinc-400">
+              Instrument panel: lock the week and weekend arcs without drowning in raw opportunity rows. Map stays visible — pins open cards here. Win-target math is advisory; you approve every commit.
             </p>
           </div>
           <div className="flex flex-wrap gap-2 font-body text-xs font-semibold">
             <Link
               href="/admin/calendar-command-center/week"
-              className="rounded-full border border-zinc-300 bg-white px-3 py-1.5 text-zinc-800 hover:bg-zinc-50"
+              className="rounded-full border border-zinc-700 bg-zinc-900/80 px-3 py-1.5 text-zinc-100 hover:border-emerald-600/60 hover:text-white"
             >
               Week view
             </Link>
             <Link
               href="/admin/calendar-command-center/opportunities"
-              className="rounded-full border border-zinc-300 bg-white px-3 py-1.5 text-zinc-800 hover:bg-zinc-50"
+              className="rounded-full border border-zinc-700 bg-zinc-900/80 px-3 py-1.5 text-zinc-100 hover:border-emerald-600/60 hover:text-white"
             >
               Opportunities
             </Link>
-            <span className="rounded-full bg-emerald-900 px-3 py-1.5 text-white">Today {todayYmd}</span>
+            <Link
+              href="/admin/calendar-command-center/build-status"
+              className="rounded-full border border-zinc-700 bg-zinc-900/80 px-3 py-1.5 text-zinc-100 hover:border-emerald-600/60 hover:text-white"
+            >
+              Build status
+            </Link>
+            <span className="rounded-full bg-emerald-700 px-3 py-1.5 text-white shadow-lg shadow-emerald-900/40">Today {todayYmd}</span>
           </div>
         </div>
       </header>
 
-      <div className="mx-auto grid max-w-6xl gap-6 px-4 py-6 md:grid-cols-2 md:gap-8 md:px-8">
-        <section className="space-y-4 md:col-span-1">
-          <div className="rounded-2xl border border-zinc-200/90 bg-white/90 p-4 shadow-sm">
+      <div className="mx-auto grid max-w-7xl gap-6 px-4 py-6 md:grid-cols-12 md:gap-8 md:px-8">
+        <section className="space-y-4 md:col-span-7">
+          <div className="rounded-2xl border border-zinc-700/80 bg-zinc-900/40 p-4 shadow-xl shadow-black/40 ring-1 ring-white/5">
             <p className="font-heading text-[10px] font-bold uppercase tracking-[0.22em] text-zinc-500">Live map</p>
-            <p className="mt-1 font-body text-xs text-zinc-600">
-              <span className="font-semibold text-emerald-800">Green</span> confirmed ·{" "}
-              <span className="font-semibold text-amber-900">Amber dashed</span> tentative ·{" "}
-              <span className="font-semibold text-sky-900">Blue</span> travel · Rose Bud origin in rose.
+            <p className="mt-1 font-body text-xs text-zinc-400">
+              <span className="font-semibold text-emerald-400">Emerald</span> confirmed ·{" "}
+              <span className="font-semibold text-amber-300">Amber dashed</span> tentative ·{" "}
+              <span className="font-semibold text-sky-300">Sky</span> travel · Pin halo = modeled target vote gain (relative week).
             </p>
             <div className="mt-3">
               <KellySettlementMap pins={pins} polyline={polyline} selectedId={selectedPinId} onSelectPin={setSelectedPinId} />
             </div>
           </div>
 
-          <div className="rounded-2xl border border-zinc-200/90 bg-white/90 p-4 shadow-sm">
+          <div className="rounded-2xl border border-zinc-700/80 bg-white/[0.04] p-4 shadow-lg shadow-black/30 ring-1 ring-white/5 backdrop-blur-sm">
             <p className="font-heading text-[10px] font-bold uppercase tracking-[0.22em] text-zinc-500">Route comparison</p>
             <div className="mt-3 grid gap-3 md:grid-cols-1">
               {[comparison.optionA, comparison.optionB, comparison.optionC].map((opt) => (
@@ -211,7 +255,7 @@ export function KellyScheduleSettlementDashboard(props: Props) {
           </div>
         </section>
 
-        <section className="space-y-4 md:col-span-1">
+        <section className="space-y-4 md:col-span-5">
           <div className="rounded-2xl border border-emerald-900/15 bg-emerald-950/[0.03] p-4 shadow-sm">
             <p className="font-heading text-[10px] font-bold uppercase tracking-[0.22em] text-emerald-900/70">Tonight snapshot</p>
             <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
@@ -315,18 +359,39 @@ export function KellyScheduleSettlementDashboard(props: Props) {
               ))}
             </ul>
             {countyRow ? (
-              <div className="mt-3 rounded-lg border border-emerald-200/80 bg-emerald-50/60 px-3 py-2">
-                <p className="font-heading text-xs font-bold text-emerald-950">{countyRow.county}</p>
-                <p className="font-body text-[10px] text-emerald-900/90">
-                  Tier {countyRow.tier ?? "—"} · score {countyRow.priorityScore ?? "—"}
-                </p>
+              <div className="mt-3 space-y-2">
+                <div className="rounded-lg border border-emerald-500/35 bg-emerald-950/40 px-3 py-2">
+                  <p className="font-heading text-xs font-bold text-emerald-200">{countyRow.county}</p>
+                  <p className="font-body text-[10px] text-emerald-100/90">
+                    Tier {countyRow.tier ?? "—"} · score {countyRow.priorityScore ?? "—"} · Touches since Nov 1:{" "}
+                    {countyRow.pastTouchesSinceNov1 ?? "—"} · Next: {countyRow.nextScheduledAnchor ?? "—"}
+                  </p>
+                </div>
+                {winSelected ? (
+                  <div className="rounded-lg border border-sky-500/35 bg-sky-950/30 px-3 py-2 font-body text-[10px] text-zinc-200">
+                    <p className="font-heading text-[9px] font-bold uppercase tracking-[0.18em] text-sky-300">County brief · win target</p>
+                    <ul className="mt-2 space-y-1 font-mono text-[10px] leading-relaxed text-zinc-300">
+                      <li>Baseline vote est. {winSelected.baselineDemVotes.toLocaleString()} ({(winSelected.baselineDemShare * 100).toFixed(1)}%)</li>
+                      <li>Target votes {winSelected.targetVotes.toLocaleString()} · Target gain {winSelected.targetVoteGain.toLocaleString()}</li>
+                      <li>Registration goal {winSelected.registrationGoal?.toLocaleString() ?? "—"}</li>
+                      <li>Turnout headroom {winSelected.turnoutHeadroom?.toLocaleString() ?? "—"}</li>
+                      <li>Confidence {winSelected.confidence} · Label {winSelected.dashboardLabel.replace(/_/g, " ")}</li>
+                      <li>Next route opportunity: use week map + opportunities board (human commit).</li>
+                    </ul>
+                    {winSelected.missingData.length ? (
+                      <p className="mt-2 text-amber-200/90">Needs data: {winSelected.missingData.slice(0, 6).join(", ")}</p>
+                    ) : null}
+                  </div>
+                ) : (
+                  <p className="font-body text-[10px] text-zinc-500">No win-target row for this county yet — run election scenario build.</p>
+                )}
               </div>
             ) : null}
           </div>
         </section>
       </div>
 
-      <div className="mx-auto max-w-6xl space-y-6 px-4 md:px-8">
+      <div className="mx-auto max-w-7xl space-y-6 px-4 md:px-8">
         <section className="rounded-2xl border border-zinc-200/90 bg-white/90 p-4 shadow-sm">
           <p className="font-heading text-[10px] font-bold uppercase tracking-[0.22em] text-zinc-500">Weekend route cards</p>
           <div className="mt-3 grid gap-4 lg:grid-cols-2">
