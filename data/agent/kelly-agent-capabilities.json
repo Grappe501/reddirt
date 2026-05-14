@@ -145,6 +145,27 @@
     "status": "file_staged"
   },
   {
+    "id": "event_staffing_and_callout_v1",
+    "name": "Event staffing and volunteer callout",
+    "addedAt": "2026-05-14T04:00:00.000Z",
+    "category": "calendar_event_operations",
+    "description": "Read-only calendar operations tool for event staffing roster, volunteer callout drafts, reminder drafts, materials pack lists, and coverage readiness. Human approval required for all outbound contact; SMS disabled.",
+    "inputSources": [
+      "data/calendar-command-center/event-coverage-plans.staged.json",
+      "data/calendar-command-center/event-staffing-plans.staged.json",
+      "data/calendar-command-center/event-volunteer-callouts.staged.json",
+      "data/calendar-command-center/event-volunteer-reminders.staged.json",
+      "data/calendar-command-center/campaign-materials-inventory.json"
+    ],
+    "outputUsedBy": [
+      "Kelly agent event_staffing_and_callout tool",
+      "/admin/calendar-command-center/coverage",
+      "/admin/calendar-command-center/event/[id]"
+    ],
+    "humanOverrideRequired": true,
+    "status": "file_staged"
+  },
+  {
     "id": "automation_recommendation_queue_v1",
     "name": "Automation recommendation queue",
     "addedAt": "2026-05-14T00:00:00.000Z",

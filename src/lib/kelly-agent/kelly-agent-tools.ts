@@ -16,6 +16,7 @@ import { buildCalendarSyncReadinessReport } from "@/lib/kelly-agent/tools/calend
 import { buildSchedulePersistenceReport } from "@/lib/kelly-agent/tools/schedule-persistence-tool";
 import { buildCalendarSmokeTestReport } from "@/lib/kelly-agent/tools/calendar-smoke-test-tool";
 import { buildEventCoverageGapSummary, buildEventCoveragePlanToolOutput } from "@/lib/kelly-agent/tools/event-coverage-plan-tool";
+import { buildEventStaffingCalloutToolOutput } from "@/lib/kelly-agent/tools/event-staffing-callout-tool";
 
 export type KellyAgentToolTrace = { tool: string; ms: number };
 
@@ -32,6 +33,7 @@ export type KellyAgentToolBundle = {
   gotv_allocation: unknown;
   event_success_playbook: unknown;
   event_coverage_plan: unknown;
+  event_staffing_and_callout: unknown;
   schedule_readiness: unknown;
   candidate_dashboard_preflight: unknown;
   calendar_db_health: unknown;
@@ -135,6 +137,10 @@ export async function runKellyAgentTools(
     : buildEventCoverageGapSummary(root);
   trace.push({ tool: "event_coverage_plan", ms: Date.now() - t10b });
 
+  const t10c = Date.now();
+  const event_staffing_and_callout = buildEventStaffingCalloutToolOutput(opts.calendarItemId, root);
+  trace.push({ tool: "event_staffing_and_callout", ms: Date.now() - t10c });
+
   const t11 = Date.now();
   const schedule_readiness = await buildScheduleReadinessReport();
   trace.push({ tool: "schedule_readiness", ms: Date.now() - t11 });
@@ -173,6 +179,7 @@ export async function runKellyAgentTools(
       gotv_allocation,
       event_success_playbook,
       event_coverage_plan,
+      event_staffing_and_callout,
       schedule_readiness,
       candidate_dashboard_preflight,
       calendar_db_health,

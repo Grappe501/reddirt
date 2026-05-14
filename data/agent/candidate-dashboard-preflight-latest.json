@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-14T03:31:33.320Z",
+  "generatedAt": "2026-05-14T03:54:18.800Z",
   "overallStatus": "yellow",
   "canSendToKellyTonight": true,
   "recommendedUseMode": "kelly_preview_only",
@@ -26,6 +26,7 @@
     "Kelly agent tool wired: win_targets",
     "Kelly agent tool wired: volunteer_capacity",
     "Kelly agent tool wired: event_success_playbook",
+    "Kelly agent tool wired: event_staffing_and_callout",
     "Kelly agent tool wired: schedule_readiness",
     "Kelly agent tool wired: candidate_dashboard_preflight",
     "Kelly agent source available: GOTV allocation",
@@ -38,6 +39,8 @@
     "Volunteer capacity / field ops model file-staged",
     "Automation recommendation queue staged",
     "Schedule settlement decisions write to staged JSON",
+    "Event volunteer callouts staged for human approval",
+    "Event volunteer reminder drafts staged",
     "Automation recommendations are staged; no SendGrid/Twilio connection"
   ],
   "nextActions": [

@@ -30,6 +30,9 @@ export const KELLY_AGENT_TASKS = [
   "find_media",
   "recommend_local_surrogate",
   "press_release_recommendation",
+  "event_coverage_plan",
+  "coverage_gap_summary",
+  "event_staffing_and_callout",
 ] as const;
 
 export type KellyAgentTask = (typeof KELLY_AGENT_TASKS)[number];

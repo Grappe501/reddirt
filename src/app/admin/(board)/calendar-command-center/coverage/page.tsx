@@ -1,15 +1,26 @@
 import Link from "next/link";
 import { loadEventCoveragePlansFile } from "@/lib/calendar/load-event-coverage-plans";
+import { loadEventStaffingPlansFile, loadEventVolunteerCalloutsFile, loadEventVolunteerRemindersFile } from "@/lib/calendar/load-event-staffing-data";
 import type { CampaignEventCoveragePlan } from "@/lib/calendar/event-coverage-types";
 
 export const dynamic = "force-dynamic";
 
-const TABS: Array<{ id: string; label: string; filter: (p: CampaignEventCoveragePlan) => boolean }> = [
-  { id: "needs-decision", label: "Needs decision", filter: (p) => p.status === "needs_decision" },
+type CoverageTabId =
+  | "needs-volunteer-lead"
+  | "needs-callout"
+  | "reminder-drafts"
+  | "materials-pack-list"
+  | "table-permission"
+  | "fully-staffed"
+  | "not-covering";
+
+const TABS: Array<{ id: CoverageTabId; label: string; filter: (p: CampaignEventCoveragePlan) => boolean }> = [
   { id: "needs-volunteer-lead", label: "Needs volunteer lead", filter: (p) => p.volunteerLeadNeeded && !p.volunteerLeadName },
-  { id: "needs-table-permission", label: "Needs table permission", filter: (p) => p.tableNeeded && p.tableStatus === "needs_permission" },
-  { id: "materials-needed", label: "Materials needed", filter: (p) => p.materials.pushCards > 0 || p.materials.fans > 0 || p.shirtsNeeded > 0 },
-  { id: "ready", label: "Ready to cover", filter: (p) => p.status === "ready" || p.status === "covered" },
+  { id: "needs-callout", label: "Needs callout", filter: (p) => p.volunteersNeeded > 0 && !["covered", "cancelled", "not_covering"].includes(p.status) },
+  { id: "reminder-drafts", label: "Reminder drafts", filter: (p) => p.volunteersNeeded > 0 && !["cancelled", "not_covering"].includes(p.status) },
+  { id: "materials-pack-list", label: "Materials pack list", filter: (p) => p.materials.pushCards > 0 || p.materials.fans > 0 || p.shirtsNeeded > 0 },
+  { id: "table-permission", label: "Table permission", filter: (p) => p.tableNeeded && p.tableStatus === "needs_permission" },
+  { id: "fully-staffed", label: "Fully staffed", filter: (p) => p.status === "ready" || p.status === "covered" },
   { id: "not-covering", label: "Not covering", filter: (p) => p.status === "not_covering" },
 ];
 
@@ -22,9 +33,16 @@ function badge(label: string) {
 export default async function CoveragePage({ searchParams }: Props) {
   const sp = await searchParams;
   const file = loadEventCoveragePlansFile();
+  const staffFile = loadEventStaffingPlansFile();
+  const calloutFile = loadEventVolunteerCalloutsFile();
+  const reminderFile = loadEventVolunteerRemindersFile();
   const tab = TABS.find((t) => t.id === sp.tab) ?? TABS[0]!;
   const plans = file?.plans ?? [];
   const rows = plans.filter(tab.filter).slice(0, 200);
+  const calloutByEvent = new Map((calloutFile?.callouts ?? []).map((c) => [c.campaignEventId, c]));
+  const staffByEvent = new Map((staffFile?.plans ?? []).map((p) => [p.campaignEventId, p]));
+  const remindersByEvent = new Map<string, number>();
+  for (const r of reminderFile?.reminders ?? []) remindersByEvent.set(r.campaignEventId, (remindersByEvent.get(r.campaignEventId) ?? 0) + 1);
 
   return (
     <div className="mx-auto max-w-7xl space-y-5 px-4 py-6">
@@ -56,6 +74,8 @@ export default async function CoveragePage({ searchParams }: Props) {
             <div className="rounded-lg border bg-white px-3 py-3"><p className="text-[10px] uppercase text-kelly-text/50">Table permission</p><p className="font-heading text-xl font-bold">{file.stats.needsTablePermission}</p></div>
             <div className="rounded-lg border bg-white px-3 py-3"><p className="text-[10px] uppercase text-kelly-text/50">Push cards</p><p className="font-heading text-xl font-bold">{file.stats.materials.pushCards}</p></div>
             <div className="rounded-lg border bg-white px-3 py-3"><p className="text-[10px] uppercase text-kelly-text/50">Fans / shirts</p><p className="font-heading text-xl font-bold">{file.stats.materials.fans} / {file.stats.materials.shirts}</p></div>
+            <div className="rounded-lg border bg-white px-3 py-3"><p className="text-[10px] uppercase text-kelly-text/50">Mints</p><p className="font-heading text-xl font-bold">{file.stats.materials.brandedMints}</p></div>
+            <div className="rounded-lg border bg-white px-3 py-3"><p className="text-[10px] uppercase text-kelly-text/50">Tablecloths / banners</p><p className="font-heading text-xl font-bold">{file.stats.materials.fourFootTablecloths} / {file.stats.materials.pullUpBanners}</p></div>
           </section>
 
           <nav className="flex flex-wrap gap-2 border-b border-kelly-text/10 pb-2">
@@ -93,10 +113,22 @@ export default async function CoveragePage({ searchParams }: Props) {
                       </div>
                     </td>
                     <td className="px-2 py-2">{p.coverageMode.replace(/_/g, " ")}<br /><span className="text-kelly-text/55">{p.candidateDecision.replace(/_/g, " ")}</span></td>
-                    <td className="px-2 py-2">{p.volunteersNeeded} volunteers<br />{p.shirtsNeeded} shirts</td>
+                    <td className="px-2 py-2">
+                      {p.volunteersNeeded} needed · {staffByEvent.get(p.campaignEventId)?.volunteersConfirmed ?? 0} confirmed<br />
+                      gap {staffByEvent.get(p.campaignEventId)?.staffingGap ?? p.volunteersNeeded} · {p.shirtsNeeded} shirts
+                    </td>
                     <td className="px-2 py-2">{p.tableNeeded ? p.tableStatus.replace(/_/g, " ") : "not needed"}</td>
-                    <td className="px-2 py-2">{p.materials.pushCards} cards · {p.materials.fans} fans</td>
-                    <td className="max-w-[340px] px-2 py-2">{p.staffNextActions.slice(0, 3).join(" · ")}</td>
+                    <td className="px-2 py-2">
+                      {p.materials.pushCards} cards · {p.materials.fans} fans · {p.materials.brandedMints} mints<br />
+                      {p.materials.fourFootTablecloths} cloths · {p.materials.pullUpBanners} banners · {p.materials.signupSheets ?? 0} signup sheets
+                    </td>
+                    <td className="max-w-[340px] px-2 py-2">
+                      {p.staffNextActions.slice(0, 3).join(" · ")}
+                      <br />
+                      <span className="text-kelly-text/55">
+                        Staffing: {staffByEvent.get(p.campaignEventId)?.status?.replace(/_/g, " ") ?? "not built"} · callout: {calloutByEvent.get(p.campaignEventId)?.status ?? "—"} · reminders {remindersByEvent.get(p.campaignEventId) ?? 0}
+                      </span>
+                    </td>
                   </tr>
                 ))}
               </tbody>

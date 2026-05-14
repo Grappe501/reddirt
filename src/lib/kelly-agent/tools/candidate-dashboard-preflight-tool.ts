@@ -101,6 +101,7 @@ export async function runCandidateDashboardPreflight(opts: { repoRoot?: string; 
     ["win_targets", "src/lib/kelly-agent/tools/win-target-tool.ts"],
     ["volunteer_capacity", "src/lib/kelly-agent/tools/volunteer-capacity-tool.ts"],
     ["event_success_playbook", "src/lib/kelly-agent/tools/event-success-playbook-tool.ts"],
+    ["event_staffing_and_callout", "src/lib/kelly-agent/tools/event-staffing-callout-tool.ts"],
     ["schedule_readiness", "src/lib/kelly-agent/tools/schedule-readiness-tool.ts"],
     ["candidate_dashboard_preflight", "src/lib/kelly-agent/tools/candidate-dashboard-preflight-tool.ts"],
   ] as const;
@@ -123,6 +124,10 @@ export async function runCandidateDashboardPreflight(opts: { repoRoot?: string; 
     warnings.push("V2 closeout migration doc missing");
   }
   stagedFeatures.push("Schedule settlement decisions write to staged JSON");
+  if (existsRel(repoRoot, "data/calendar-command-center/event-volunteer-callouts.staged.json")) stagedFeatures.push("Event volunteer callouts staged for human approval");
+  else warnings.push("Event volunteer callout staged file missing");
+  if (existsRel(repoRoot, "data/calendar-command-center/event-volunteer-reminders.staged.json")) stagedFeatures.push("Event volunteer reminder drafts staged");
+  else warnings.push("Event volunteer reminder staged file missing");
   stagedFeatures.push("Automation recommendations are staged; no SendGrid/Twilio connection");
   readyFeatures.push("No SMS/email send path added by this slice");
   readyFeatures.push("No Google Calendar write path added by this slice");

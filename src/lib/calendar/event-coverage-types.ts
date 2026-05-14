@@ -19,6 +19,13 @@ export type CampaignEventCoveragePlan = {
 
   coverageMode: CampaignEventCoverageMode;
   candidateDecision: "confirmed" | "declined" | "hold" | "needs_kelly_decision" | "not_requested";
+  candidatePlan: {
+    kellyAttending: boolean;
+    kellySpeaking: boolean;
+    kellyDropIn: boolean;
+    kellyUnavailable: boolean;
+    status: "confirmed" | "needs_decision" | "local_coverage_needed" | "unavailable";
+  };
 
   volunteerLeadNeeded: boolean;
   volunteerLeadName?: string;
@@ -33,8 +40,15 @@ export type CampaignEventCoveragePlan = {
   materials: {
     pushCards: number;
     fans: number;
+    shirts: number;
+    brandedMints: number;
+    fourFootTablecloths: number;
+    pullUpBanners: number;
     stickers?: number;
     signupSheets?: number;
+    clipboards?: number;
+    pens?: number;
+    qrCodeCards?: number;
     voterRegistrationForms?: number;
     yardSigns?: number;
   };
@@ -43,6 +57,10 @@ export type CampaignEventCoveragePlan = {
     arrivalTime?: string;
     setupMinutes: number;
     teardownMinutes: number;
+    setupTime?: string;
+    teardownTime?: string;
+    whatToWear?: string;
+    whatToBring?: string[];
     parkingKnown: boolean;
     boothFee?: number;
     electricityNeeded?: boolean;
@@ -85,6 +103,15 @@ export type EventCoveragePlansFile = {
       pushCards: number;
       fans: number;
       shirts: number;
+      brandedMints: number;
+      fourFootTablecloths: number;
+      pullUpBanners: number;
+      signupSheets: number;
+      clipboards: number;
+      pens: number;
+      qrCodeCards: number;
+      yardSigns: number;
+      voterRegistrationForms: number;
     };
   };
   plans: CampaignEventCoveragePlan[];
@@ -99,6 +126,15 @@ export type EventCoveragePlanToolOutput = {
     pushCards: number;
     fans: number;
     shirts: number;
+    brandedMints: number;
+    fourFootTablecloths: number;
+    pullUpBanners: number;
+    signupSheets: number;
+    clipboards: number;
+    pens: number;
+    qrCodeCards: number;
+    yardSigns: number;
+    voterRegistrationForms: number;
   };
   tablingRecommendation: "table_if_possible" | "ask_permission" | "not_needed" | "not_appropriate" | "unknown";
   staffNextActions: string[];

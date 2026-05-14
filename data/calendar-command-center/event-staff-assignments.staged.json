@@ -1,0 +1,4949 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-14T03:54:10.350Z",
+  "source": "event_staffing_plans",
+  "assignments": [
+    {
+      "id": "staff_97af11428e6e19dc1818d27d",
+      "campaignEventId": "cmp4wsrcu0055499gvprmp0ak",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_4d5f1bb3c5160b9cef8c94cd",
+      "campaignEventId": "cmp4wsrcu0055499gvprmp0ak",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_47766b48d9e84246ebba14e3",
+      "campaignEventId": "cmp4wsrcu0055499gvprmp0ak",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_394612a46cc5ec046882bb56",
+      "campaignEventId": "cmp4wss02005f499g3a8w1q4f",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_f73fffda544af5759e79106a",
+      "campaignEventId": "cmp4wss02005f499g3a8w1q4f",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_0b33741e637bac50af53245f",
+      "campaignEventId": "cmp4wss02005f499g3a8w1q4f",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_88818acc7dbbeb096f2ecf29",
+      "campaignEventId": "cmp4wsse7005k499gadodrupc",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_0a20963cb568ebcd797dac4f",
+      "campaignEventId": "cmp4wsse7005k499gadodrupc",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_20bf291ca677b05bccee06af",
+      "campaignEventId": "cmp4wsse7005k499gadodrupc",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_ac0bf00d7cd8956f0b1b60f5",
+      "campaignEventId": "cmp4wsss8005p499g9u0sb5n3",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_5d2319b36b26e52d1def3617",
+      "campaignEventId": "cmp4wsss8005p499g9u0sb5n3",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_44e36fe6a6f25559102a2049",
+      "campaignEventId": "cmp4wsss8005p499g9u0sb5n3",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_73793120bffd0bb81d965545",
+      "campaignEventId": "cmp4wst6g005u499gufrk233b",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_e5ae8d1de27bce4fe7e899cb",
+      "campaignEventId": "cmp4wst6g005u499gufrk233b",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_23d4732f06d31973baf38f59",
+      "campaignEventId": "cmp4wst6g005u499gufrk233b",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_1802e4cd97785dd1806b1d37",
+      "campaignEventId": "cmp4wstyz0064499gu772xu7n",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_a0ad6ca520926475f84036a7",
+      "campaignEventId": "cmp4wstyz0064499gu772xu7n",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_0cbc076e6f21562cb5b0e4f9",
+      "campaignEventId": "cmp4wstyz0064499gu772xu7n",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_186ab1acaa201a605a514d7e",
+      "campaignEventId": "cmp4wstkn005z499gaypwpdhb",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_d9bf30cee744838663365677",
+      "campaignEventId": "cmp4wstkn005z499gaypwpdhb",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_160ad48dddc0312a6da675d1",
+      "campaignEventId": "cmp4wstkn005z499gaypwpdhb",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_6a24bfa5733f88b6c9354156",
+      "campaignEventId": "cmp4wsuap0069499g3yhkku12",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_1255859689ffc56693a4381e",
+      "campaignEventId": "cmp4wsuap0069499g3yhkku12",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_bb08a0d1be7ca9d2799b3b71",
+      "campaignEventId": "cmp4wsuap0069499g3yhkku12",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_1e6e516551339511f4e710b4",
+      "campaignEventId": "cmp4wsvcu006o499gx3z2yaa7",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_e7937d2d81d316e890b103f0",
+      "campaignEventId": "cmp4wsvcu006o499gx3z2yaa7",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_d9268be6dee861e4d6cb7cf2",
+      "campaignEventId": "cmp4wsvcu006o499gx3z2yaa7",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_c21d0761e2487c7f067e9a01",
+      "campaignEventId": "cmp4wsvr5006t499g3gdedmx7",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_de56d50fd062a2873f8ad3be",
+      "campaignEventId": "cmp4wsvr5006t499g3gdedmx7",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_6b474adf1b27218370fcd07e",
+      "campaignEventId": "cmp4wsvr5006t499g3gdedmx7",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_35b05fe155d0f808ce0ff5aa",
+      "campaignEventId": "cmp4wsvr5006t499g3gdedmx7",
+      "role": "county_party_contact",
+      "status": "needed",
+      "notes": "Confirm county party or local surrogate coverage."
+    },
+    {
+      "id": "staff_61281d9b5bb143f0c94d3c79",
+      "campaignEventId": "cmp4wsw2t006y499gdu6o93z1",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_a7ab840f66e5d919142fff30",
+      "campaignEventId": "cmp4wsw2t006y499gdu6o93z1",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_9c7935dcb2ce58176a550939",
+      "campaignEventId": "cmp4wsw2t006y499gdu6o93z1",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_b325e6838a22619ca8bdd3ff",
+      "campaignEventId": "cmp4wswgx0073499gyq8ymnhe",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_09b02e975b5eeb2f8b82955e",
+      "campaignEventId": "cmp4wswgx0073499gyq8ymnhe",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_0183b11b6bc5f805c1cb873e",
+      "campaignEventId": "cmp4wswgx0073499gyq8ymnhe",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_d7193dc09901778f4ebe3df7",
+      "campaignEventId": "cmp4wswv30078499gx99253on",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_10dca9bcb31737a12c8b5e2e",
+      "campaignEventId": "cmp4wswv30078499gx99253on",
+      "role": "table_captain",
+      "status": "needed",
+      "notes": "Confirm table permission, setup, and teardown."
+    },
+    {
+      "id": "staff_80b8316a3937b6ff519f8da7",
+      "campaignEventId": "cmp4wswv30078499gx99253on",
+      "role": "materials_captain",
+      "status": "needed",
+      "notes": "Pack, track, and return event materials."
+    },
+    {
+      "id": "staff_8c70775fbb482445004d70ea",
+      "campaignEventId": "cmp4wswv30078499gx99253on",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_d07c66f784b91973da121a5f",
+      "campaignEventId": "cmp4wswv30078499gx99253on",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_217ab25e747adfe397513b12",
+      "campaignEventId": "cmp4wsxwy007n499gvewgbb36",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_0a877f22bbc59c1d1a71cac2",
+      "campaignEventId": "cmp4wsxwy007n499gvewgbb36",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_4385f60087a90a1066de4708",
+      "campaignEventId": "cmp4wsxwy007n499gvewgbb36",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_e96e4d923034f826138fa6f0",
+      "campaignEventId": "cmp4wsy8s007s499ggtu6p18i",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_a0808ab0ca737eaddeb9580b",
+      "campaignEventId": "cmp4wsy8s007s499ggtu6p18i",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_02bf049b846bd695b0493916",
+      "campaignEventId": "cmp4wsy8s007s499ggtu6p18i",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_a4c75779510d6ced0d261238",
+      "campaignEventId": "cmp4wsykf007x499grfumnged",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_cb753abd8ee9fdb01385acbd",
+      "campaignEventId": "cmp4wsykf007x499grfumnged",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_57199b7badc5423eae2e7679",
+      "campaignEventId": "cmp4wsykf007x499grfumnged",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_acd4bc338d270ca8ae5becf0",
+      "campaignEventId": "cmp4wsyx60082499g1vm3zrq5",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_d49336255cf35018f71d807f",
+      "campaignEventId": "cmp4wsyx60082499g1vm3zrq5",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_2ff9b8f942fcf08d85b54692",
+      "campaignEventId": "cmp4wsyx60082499g1vm3zrq5",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_cb1b7f35574eb39dc5e2f211",
+      "campaignEventId": "cmp4wszmm008c499gkpisssow",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_ec9220fab2e0a7160dfe2a16",
+      "campaignEventId": "cmp4wszmm008c499gkpisssow",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_1df32b618f66427d34c4c291",
+      "campaignEventId": "cmp4wszmm008c499gkpisssow",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_57c33be43d782c709efcdb10",
+      "campaignEventId": "cmp4wszyk008h499g9n4zhq48",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_c3854beb6b47215aded89ed1",
+      "campaignEventId": "cmp4wszyk008h499g9n4zhq48",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_b116c3d70e6c0122ec1e9754",
+      "campaignEventId": "cmp4wszyk008h499g9n4zhq48",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_98ebe6da6e4ce19fee667086",
+      "campaignEventId": "cmp4wt0m3008r499gvcadj1x0",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_b5bccdfc3d36d076d3983e7c",
+      "campaignEventId": "cmp4wt0m3008r499gvcadj1x0",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_ea73fceef257c16c8b46dd68",
+      "campaignEventId": "cmp4wt0m3008r499gvcadj1x0",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_31e943059b73babfd9635301",
+      "campaignEventId": "cmp4wt10e008w499gsk5dddms",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_c12658446b8574a197a8dd5a",
+      "campaignEventId": "cmp4wt10e008w499gsk5dddms",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_50a9efcf0073fc107d44a092",
+      "campaignEventId": "cmp4wt10e008w499gsk5dddms",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_f11034f739a407bfaddd1756",
+      "campaignEventId": "cmp4wt1c00091499gv2nhccd1",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_4785919762757a0009cf8333",
+      "campaignEventId": "cmp4wt1c00091499gv2nhccd1",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_92ef126279247b4df3d4345b",
+      "campaignEventId": "cmp4wt1c00091499gv2nhccd1",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_e9188d371af382301296f15c",
+      "campaignEventId": "cmp4wt1q50096499gtur71ueb",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_92094e10f9f8a747c1419cb6",
+      "campaignEventId": "cmp4wt1q50096499gtur71ueb",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_b24e6d93860edc43f1b9c3f5",
+      "campaignEventId": "cmp4wt1q50096499gtur71ueb",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_421107e93f195fc94185c880",
+      "campaignEventId": "cmp4wt2b7009b499gucu1upjl",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_c0d7a74a3eb599fcea35ea5c",
+      "campaignEventId": "cmp4wt2b7009b499gucu1upjl",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_0ea69a4d75133ae947ec81d0",
+      "campaignEventId": "cmp4wt2b7009b499gucu1upjl",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_24db208ac8691cea9c3dbdc2",
+      "campaignEventId": "cmp4wt2b7009b499gucu1upjl",
+      "role": "table_captain",
+      "status": "needed",
+      "notes": "Confirm table permission, setup, and teardown."
+    },
+    {
+      "id": "staff_5f7f5cc3e79b7317566c1801",
+      "campaignEventId": "cmp4wt2b7009b499gucu1upjl",
+      "role": "materials_captain",
+      "status": "needed",
+      "notes": "Pack, track, and return event materials."
+    },
+    {
+      "id": "staff_c86953db7879f64515b9ded6",
+      "campaignEventId": "cmp4wt2b7009b499gucu1upjl",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_988232d1508b38da02f014e8",
+      "campaignEventId": "cmp4wt2pg009g499gqoa33jhe",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_9b9baaf5f22e76f485b9af24",
+      "campaignEventId": "cmp4wt2pg009g499gqoa33jhe",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_3d14e9acc16cca52435a19f5",
+      "campaignEventId": "cmp4wt2pg009g499gqoa33jhe",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_eb9272c4e700b9c102d72e33",
+      "campaignEventId": "cmp4wt2pg009g499gqoa33jhe",
+      "role": "table_captain",
+      "status": "needed",
+      "notes": "Confirm table permission, setup, and teardown."
+    },
+    {
+      "id": "staff_99b471942dff590f9917edc9",
+      "campaignEventId": "cmp4wt2pg009g499gqoa33jhe",
+      "role": "materials_captain",
+      "status": "needed",
+      "notes": "Pack, track, and return event materials."
+    },
+    {
+      "id": "staff_3e70ac1aa8b1b60c789d2cc8",
+      "campaignEventId": "cmp4wt2pg009g499gqoa33jhe",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_d6a438325dc7c842445c98ad",
+      "campaignEventId": "cmp4wt33o009l499g1s903sxc",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_0e28474f79faeb52541cc0b3",
+      "campaignEventId": "cmp4wt33o009l499g1s903sxc",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_099f30cf5fbbf63f4a6ee0ec",
+      "campaignEventId": "cmp4wt33o009l499g1s903sxc",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_5337f1b09e3146187843fabe",
+      "campaignEventId": "cmp4wt3ht009q499gdsjngu0q",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_fbd1f760d5df323088447cee",
+      "campaignEventId": "cmp4wt3ht009q499gdsjngu0q",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_c022f7a88ebf627168380cdc",
+      "campaignEventId": "cmp4wt3ht009q499gdsjngu0q",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_2d266e3f80a8f84d5317c2b4",
+      "campaignEventId": "cmp4wt3ht009q499gdsjngu0q",
+      "role": "county_party_contact",
+      "status": "needed",
+      "notes": "Confirm county party or local surrogate coverage."
+    },
+    {
+      "id": "staff_61bfa04131744845b51f958c",
+      "campaignEventId": "cmp4wt3w5009v499gqs85owyw",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_5d87c0655acece6a4f2a91d9",
+      "campaignEventId": "cmp4wt3w5009v499gqs85owyw",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_c702f6a002adbb7c31ff00f9",
+      "campaignEventId": "cmp4wt3w5009v499gqs85owyw",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_53c6c4e9f844b5a074f19156",
+      "campaignEventId": "cmp4wt4jo00a5499gh0do22rb",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_7331cfecce33f59fcf2ff9a6",
+      "campaignEventId": "cmp4wt4jo00a5499gh0do22rb",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_46d852432858271f10a06c48",
+      "campaignEventId": "cmp4wt4jo00a5499gh0do22rb",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_c07e6cd93a4b89190ffe0903",
+      "campaignEventId": "cmp4wt4vc00aa499g0fc4jv9m",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_d08caab0900f892becbeace0",
+      "campaignEventId": "cmp4wt4vc00aa499g0fc4jv9m",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_5dc616349d2e4be5023e7b3e",
+      "campaignEventId": "cmp4wt4vc00aa499g0fc4jv9m",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_07d41a2efec21a454fc8c96a",
+      "campaignEventId": "cmp4wt5gi00af499gl8l34ala",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_a80127035cd2376f611d7598",
+      "campaignEventId": "cmp4wt5gi00af499gl8l34ala",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_af9793034d082d9a95b32ae0",
+      "campaignEventId": "cmp4wt5gi00af499gl8l34ala",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_e376cb5ec30af79db2b4f5a5",
+      "campaignEventId": "cmp4wt66d00ap499gj7ertzkc",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_e93dc59086e5018f47d7969f",
+      "campaignEventId": "cmp4wt66d00ap499gj7ertzkc",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_6bdc041ccfe4fb39e174bdd5",
+      "campaignEventId": "cmp4wt66d00ap499gj7ertzkc",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_88523ff19c816281432b6cf4",
+      "campaignEventId": "cmp4wt6kh00au499g6vgian8a",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_44e00515542c4d112bfd94da",
+      "campaignEventId": "cmp4wt6kh00au499g6vgian8a",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_6b68b93d34d9eb6e31fd2b73",
+      "campaignEventId": "cmp4wt6kh00au499g6vgian8a",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_b04d66cfb518299ab811f87e",
+      "campaignEventId": "cmp4wt6yk00az499gp5crutdq",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_3aa03521720fdd21da98b20a",
+      "campaignEventId": "cmp4wt6yk00az499gp5crutdq",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_fc8df0621fdc69169a5bb7ab",
+      "campaignEventId": "cmp4wt6yk00az499gp5crutdq",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_8d8b792c93d2fcef9cc48a25",
+      "campaignEventId": "cmp4wt7cp00b4499gfvno74v6",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_f46145ed3472f467f281125f",
+      "campaignEventId": "cmp4wt7cp00b4499gfvno74v6",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_861e2b1ee3461eda87a510dc",
+      "campaignEventId": "cmp4wt7cp00b4499gfvno74v6",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_ef8017490449da519a4a69dc",
+      "campaignEventId": "cmp4wt7r300b9499g1fyayhc7",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_25a308817f3e631c51f603bf",
+      "campaignEventId": "cmp4wt7r300b9499g1fyayhc7",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_4044876398c2201a5697a807",
+      "campaignEventId": "cmp4wt7r300b9499g1fyayhc7",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_410b0fc0a2f154b537d99321",
+      "campaignEventId": "cmp4wt85e00be499gtbcv6g2v",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_02ed7bdcfdecf68c4ab01ff4",
+      "campaignEventId": "cmp4wt85e00be499gtbcv6g2v",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_9c983e77d9c451f619a7ea1e",
+      "campaignEventId": "cmp4wt85e00be499gtbcv6g2v",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_65def9745d7a8720cedf5d02",
+      "campaignEventId": "cmp4wt8v900bo499go1umnxyt",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_a340a775ef3de1ac229a199d",
+      "campaignEventId": "cmp4wt8v900bo499go1umnxyt",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_3d6da9caa6164718e6d37356",
+      "campaignEventId": "cmp4wt8v900bo499go1umnxyt",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_a208208b71e929bc23b86ee6",
+      "campaignEventId": "cmp4wt96w00bt499g2pa7htan",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_046ea7c58550f9e8a8aba43f",
+      "campaignEventId": "cmp4wt96w00bt499g2pa7htan",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_65af1b0380f5de2b257a3839",
+      "campaignEventId": "cmp4wt96w00bt499g2pa7htan",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_1e8ae9c5ef23389c37a240d0",
+      "campaignEventId": "cmp4wt9l000by499gj4l0peft",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_4a5020219bb0203c4134539e",
+      "campaignEventId": "cmp4wt9l000by499gj4l0peft",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_38e1b346df72207a977a5cf0",
+      "campaignEventId": "cmp4wt9l000by499gj4l0peft",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_3cb687198ac62f46bfd054bb",
+      "campaignEventId": "cmp4wtab100c8499g8ihofpbc",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_99b31f00b21d5ca2c654ddde",
+      "campaignEventId": "cmp4wtab100c8499g8ihofpbc",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_b3b69c0efbe4d1489bd2bae0",
+      "campaignEventId": "cmp4wtab100c8499g8ihofpbc",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_4ba12fe24c378e3d76722362",
+      "campaignEventId": "cmp4wtao500cd499g25lgg2rm",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_c4904bd5c85e527c3b144b84",
+      "campaignEventId": "cmp4wtao500cd499g25lgg2rm",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_db817e95f108bff7370e8b5d",
+      "campaignEventId": "cmp4wtao500cd499g25lgg2rm",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_be906a6c27a0ac8e7c877d2a",
+      "campaignEventId": "cmp4wtb2l00ci499g05ysqb73",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_041cc53f3e8383b9064c56b0",
+      "campaignEventId": "cmp4wtb2l00ci499g05ysqb73",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_f20d9a1f4683cb36428e704e",
+      "campaignEventId": "cmp4wtb2l00ci499g05ysqb73",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_0f376b88bf44fd8f97c16f8e",
+      "campaignEventId": "cmp4wtbh400cn499gtckto0yq",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_7e03f7088c972fbad4b4ee1b",
+      "campaignEventId": "cmp4wtbh400cn499gtckto0yq",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_b5ee16fbf4b7ef77279f3711",
+      "campaignEventId": "cmp4wtbh400cn499gtckto0yq",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_9006cb54ebedc15abc2f87ee",
+      "campaignEventId": "cmp4wtbve00cs499gk8n92xuu",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_74cb29dbf5322138815b6a92",
+      "campaignEventId": "cmp4wtbve00cs499gk8n92xuu",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_e6e518fad162336301ba6bf5",
+      "campaignEventId": "cmp4wtbve00cs499gk8n92xuu",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_3caf49cbffe50ac1e5125a0f",
+      "campaignEventId": "cmp4wtbve00cs499gk8n92xuu",
+      "role": "county_party_contact",
+      "status": "needed",
+      "notes": "Confirm county party or local surrogate coverage."
+    },
+    {
+      "id": "staff_974b6da6eec52be54fabc3f6",
+      "campaignEventId": "cmp4wtc7200cx499grrbf4sww",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_34f4e1f9312bef679190b885",
+      "campaignEventId": "cmp4wtc7200cx499grrbf4sww",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_31c0c4ce55245f7b10385b10",
+      "campaignEventId": "cmp4wtc7200cx499grrbf4sww",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_c0750ba870ade4a0d478c4eb",
+      "campaignEventId": "cmp4wtcxb00d7499gk8nsfs0m",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_da4b9e741bd6353225dc7e20",
+      "campaignEventId": "cmp4wtcxb00d7499gk8nsfs0m",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_3dc9982683dea26b1334c770",
+      "campaignEventId": "cmp4wtcxb00d7499gk8nsfs0m",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_f1fac2b7fe2d61033a3509fa",
+      "campaignEventId": "cmp4wtdbj00dc499g39ah2xde",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_0ead99246a858eea8426d313",
+      "campaignEventId": "cmp4wtdbj00dc499g39ah2xde",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_8f7bd5559a359602d6420317",
+      "campaignEventId": "cmp4wtdbj00dc499g39ah2xde",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_ef293caa5fb23b685a0a65e4",
+      "campaignEventId": "cmp4wtdpy00dh499gopbv73uh",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_186161fd82a6a2b978e5db19",
+      "campaignEventId": "cmp4wtdpy00dh499gopbv73uh",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_954ec9b36bb7ef897c069ea1",
+      "campaignEventId": "cmp4wtdpy00dh499gopbv73uh",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_78f9646f45455ebae64d50d2",
+      "campaignEventId": "cmp4wtet200dw499g56liuuu3",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_440ffedc046e0140a074b525",
+      "campaignEventId": "cmp4wtet200dw499g56liuuu3",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_00646bfb2578dab8bd12488c",
+      "campaignEventId": "cmp4wtet200dw499g56liuuu3",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_32d8d96fb6b23e165a779d4b",
+      "campaignEventId": "cmp4wtf8e00e1499gim8d1yiu",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_0fd952805be2046cebaf4eaf",
+      "campaignEventId": "cmp4wtf8e00e1499gim8d1yiu",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_88e74daf4fd35dc04b5a1b17",
+      "campaignEventId": "cmp4wtf8e00e1499gim8d1yiu",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_2e0795133ffbec7c41913c01",
+      "campaignEventId": "cmp4wtfmb00e6499gxlikb44r",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_05a96bb8a76cea77d1457a7d",
+      "campaignEventId": "cmp4wtfmb00e6499gxlikb44r",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_0b0c722af04bbe95783f9045",
+      "campaignEventId": "cmp4wtfmb00e6499gxlikb44r",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_6c6eb8c1da6b35daf668f4f7",
+      "campaignEventId": "cmp4wtg0j00eb499goddvy3yc",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_7ab4474c1dc4001fce21f7eb",
+      "campaignEventId": "cmp4wtg0j00eb499goddvy3yc",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_94b9501640d9c0eb46b84d11",
+      "campaignEventId": "cmp4wtg0j00eb499goddvy3yc",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_d240ae487f422ac5087a576b",
+      "campaignEventId": "cmp4wtgeo00eg499guid85884",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_3b98b5b85fc82ebf0c89fa18",
+      "campaignEventId": "cmp4wtgeo00eg499guid85884",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_fa54d661ad8d08dd6827cdd3",
+      "campaignEventId": "cmp4wtgeo00eg499guid85884",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_6425f9bd8842d016bc260b4e",
+      "campaignEventId": "cmp4wtgq300el499gshtw5jmk",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_fca15198b16b029492654d7d",
+      "campaignEventId": "cmp4wtgq300el499gshtw5jmk",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_e2df7ec81be65255d949c957",
+      "campaignEventId": "cmp4wtgq300el499gshtw5jmk",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_2f409770e149374d25d54cf5",
+      "campaignEventId": "cmp4wth1h00eq499gksbx6ddm",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_d34f2c62f4031fad0500ea18",
+      "campaignEventId": "cmp4wth1h00eq499gksbx6ddm",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_416ba6aaeef5d261d13b5d7a",
+      "campaignEventId": "cmp4wth1h00eq499gksbx6ddm",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_4116c6007c89681d1f65ac95",
+      "campaignEventId": "cmp4wthfb00ev499gw4kxgfcw",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_1521466da26c184cf6fc1746",
+      "campaignEventId": "cmp4wthfb00ev499gw4kxgfcw",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_f556bee1cca5c9fc0d1d6837",
+      "campaignEventId": "cmp4wthfb00ev499gw4kxgfcw",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_186e2a7c27d982fcf47ad73b",
+      "campaignEventId": "cmp4wthr100f0499gmzb71n5c",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_391767cd20dfd8e72bd650c3",
+      "campaignEventId": "cmp4wthr100f0499gmzb71n5c",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_210a98f080da596e9bbb5988",
+      "campaignEventId": "cmp4wthr100f0499gmzb71n5c",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_3ac7eedebdec90f386dee3d7",
+      "campaignEventId": "cmp4wti5f00f5499gox3jila4",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_4a115bc47731efffcbae2093",
+      "campaignEventId": "cmp4wti5f00f5499gox3jila4",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_3af4b24a425f55419b0dffa5",
+      "campaignEventId": "cmp4wti5f00f5499gox3jila4",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_a2107c9fa5c9bd5deb8f61dd",
+      "campaignEventId": "cmp4wtit600ff499g8lqzfkgw",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_fae16225dc7339bc146accb4",
+      "campaignEventId": "cmp4wtit600ff499g8lqzfkgw",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_486604733ee117df321ca6ac",
+      "campaignEventId": "cmp4wtit600ff499g8lqzfkgw",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_9f9ca1d5a0ec8b6d689af07f",
+      "campaignEventId": "cmp4wtj7j00fk499gdf66tlpp",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_86d929e392a4cadf2ab27e70",
+      "campaignEventId": "cmp4wtj7j00fk499gdf66tlpp",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_341f61c37bed7d2a836fa8e0",
+      "campaignEventId": "cmp4wtj7j00fk499gdf66tlpp",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_102a99cf8a8b5b208d507b3a",
+      "campaignEventId": "cmp4wtjxi00fu499gx0mq52my",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_4a0b6ae3347f30cb56ef9aad",
+      "campaignEventId": "cmp4wtjxi00fu499gx0mq52my",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_849b0d0d2f1804b4051df623",
+      "campaignEventId": "cmp4wtjxi00fu499gx0mq52my",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_0b2a7e9abef38da955ac9706",
+      "campaignEventId": "cmp4wtk9500fz499gaqy92tyd",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_d8f4b23218de2d1d2010fb57",
+      "campaignEventId": "cmp4wtk9500fz499gaqy92tyd",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_ebecb65684b83d23579db6e0",
+      "campaignEventId": "cmp4wtk9500fz499gaqy92tyd",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_824f187a067034432844797f",
+      "campaignEventId": "cmp4wtkl500g4499grgxbfikx",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_d40d8354927291d798cb963f",
+      "campaignEventId": "cmp4wtkl500g4499grgxbfikx",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_276e8ff7eac531ce444f46db",
+      "campaignEventId": "cmp4wtkl500g4499grgxbfikx",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_ef433d67a098a5dffaebddd9",
+      "campaignEventId": "cmp4wtkwr00g9499g5dpdf1vm",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_d322de4a1cf93384b14039a7",
+      "campaignEventId": "cmp4wtkwr00g9499g5dpdf1vm",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_0884894ef6f3d0221bd7dd4d",
+      "campaignEventId": "cmp4wtkwr00g9499g5dpdf1vm",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_31ead6cfd1fe053ce451c68d",
+      "campaignEventId": "cmp4wtlm800gj499gp3gi838n",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_a0e71d4ef4690be1ac17441d",
+      "campaignEventId": "cmp4wtlm800gj499gp3gi838n",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_70c7479f9548f0010a749ccd",
+      "campaignEventId": "cmp4wtlm800gj499gp3gi838n",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_407c9c593b95c61f71e5f056",
+      "campaignEventId": "cmp4wtmxn00h3499gs2qm5fh9",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_f2a6e8b451a88611cc07392b",
+      "campaignEventId": "cmp4wtmxn00h3499gs2qm5fh9",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_3951c1f9028ce37cba30473f",
+      "campaignEventId": "cmp4wtmxn00h3499gs2qm5fh9",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_506a18231247ed7c1ea8518a",
+      "campaignEventId": "cmp4wtnk900hd499g40cnv6wm",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_a1e2d401b7c9946a4a6fa2b9",
+      "campaignEventId": "cmp4wtnk900hd499g40cnv6wm",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_46e7de488ba71dffdf22a17b",
+      "campaignEventId": "cmp4wtnk900hd499g40cnv6wm",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_a98e70e915f52882874cb87d",
+      "campaignEventId": "cmp4wtny100hi499gcio40beb",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_0bac08aba6ec53f0d8423a1b",
+      "campaignEventId": "cmp4wtny100hi499gcio40beb",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_d7aa2975d41991d3758ee557",
+      "campaignEventId": "cmp4wtny100hi499gcio40beb",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_2a740ab5c1b5ec555c761404",
+      "campaignEventId": "cmp4wto9l00hn499g17k3roih",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_d6ce4838f5f0435755ad659c",
+      "campaignEventId": "cmp4wto9l00hn499g17k3roih",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_44036b5b7e37e1d2b011c0a3",
+      "campaignEventId": "cmp4wto9l00hn499g17k3roih",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_465ff8697972c916c0ce19d7",
+      "campaignEventId": "cmp4wtont00hs499gohrgbu46",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_31ed98739b72bbacb9c44ff2",
+      "campaignEventId": "cmp4wtont00hs499gohrgbu46",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_5714ade8e3349ee6297e3706",
+      "campaignEventId": "cmp4wtont00hs499gohrgbu46",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_00b22aaaf92964ec0b0647e3",
+      "campaignEventId": "cmp4wtp1w00hx499gnyfft5n5",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_3785975a0830aa49687211dc",
+      "campaignEventId": "cmp4wtp1w00hx499gnyfft5n5",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_dfc06c893a711343044c65e3",
+      "campaignEventId": "cmp4wtp1w00hx499gnyfft5n5",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_4511748330eae0ee1a7d57f7",
+      "campaignEventId": "cmp4wtpfw00i2499guqvaouoh",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_991837a72082d31a529547f5",
+      "campaignEventId": "cmp4wtpfw00i2499guqvaouoh",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_9b87527a7c99eb44bbef16a5",
+      "campaignEventId": "cmp4wtpfw00i2499guqvaouoh",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_be9c6f6eb5fd82c1ce4dbd36",
+      "campaignEventId": "cmp4wtq5u00ic499g5bwfcdqq",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_a0585c6982155a588c9dcd9c",
+      "campaignEventId": "cmp4wtq5u00ic499g5bwfcdqq",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_2016e6fb712b92badb3cc359",
+      "campaignEventId": "cmp4wtq5u00ic499g5bwfcdqq",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_46dae562ebcbfff9a062d779",
+      "campaignEventId": "cmp4wtqh200ih499g5dd518qp",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_7389740e10119452c265f7b7",
+      "campaignEventId": "cmp4wtqh200ih499g5dd518qp",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_ba4629b9e6c9074b68c9f3fe",
+      "campaignEventId": "cmp4wtqh200ih499g5dd518qp",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_ed4ab1ae3d8f427ffdfb636d",
+      "campaignEventId": "cmp4wtqse00im499gwqnosirw",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_7089802f94f16836ce6e2f9d",
+      "campaignEventId": "cmp4wtqse00im499gwqnosirw",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_b39a1a00730c09d74805570c",
+      "campaignEventId": "cmp4wtqse00im499gwqnosirw",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_4047bf1eca92f715240a4d0d",
+      "campaignEventId": "cmp4wtr6c00ir499gab9aidn8",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_49e360cae465c1b421bec320",
+      "campaignEventId": "cmp4wtr6c00ir499gab9aidn8",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_04cda3201346d4961c83ba7f",
+      "campaignEventId": "cmp4wtr6c00ir499gab9aidn8",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_fd22c97e644eacd13d9fc754",
+      "campaignEventId": "cmp4wtrvo00j1499gmjukx1y4",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_e227565fb3de6fe9c0a94276",
+      "campaignEventId": "cmp4wtrvo00j1499gmjukx1y4",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_78ec9d8f4155f261835e59f5",
+      "campaignEventId": "cmp4wtrvo00j1499gmjukx1y4",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_5e6db9d52dae694e722f9068",
+      "campaignEventId": "cmp4wtsj600jb499gz2apeqod",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_fb1d533019ab21e7a25b3d88",
+      "campaignEventId": "cmp4wtsj600jb499gz2apeqod",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_e519a579098d586210ca8c21",
+      "campaignEventId": "cmp4wtsj600jb499gz2apeqod",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_bfa49007f597fb5a70a69c49",
+      "campaignEventId": "cmp4wtsxi00jg499ga0u8e2wu",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_a35a12b66623f9ef1ed718f3",
+      "campaignEventId": "cmp4wtsxi00jg499ga0u8e2wu",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_be14e0e559c070b7f3ed6b0c",
+      "campaignEventId": "cmp4wtsxi00jg499ga0u8e2wu",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_37a71b113ad89652f780b8af",
+      "campaignEventId": "cmp4wttne00jq499gajlq7reo",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_ae5962218bbbe62fa2ff0157",
+      "campaignEventId": "cmp4wttne00jq499gajlq7reo",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_4e0bea6c28b9a658f0827fe6",
+      "campaignEventId": "cmp4wttne00jq499gajlq7reo",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_ad78818e77681ed4c7300de4",
+      "campaignEventId": "cmp4wttne00jq499gajlq7reo",
+      "role": "county_party_contact",
+      "status": "needed",
+      "notes": "Confirm county party or local surrogate coverage."
+    },
+    {
+      "id": "staff_6f2eafc0939a1f7096b2e3e0",
+      "campaignEventId": "cmp4wttby00jl499g7sgtxyap",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_6643a1453a4e38ffd80fa4f5",
+      "campaignEventId": "cmp4wttby00jl499g7sgtxyap",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_4cfa2a99c5b20871b4f6d521",
+      "campaignEventId": "cmp4wttby00jl499g7sgtxyap",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_2a4c8d027ccf40d1327d8961",
+      "campaignEventId": "cmp4wtudh00k0499gtq25t2t0",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_880c6b37ad0c30eaf357a969",
+      "campaignEventId": "cmp4wtudh00k0499gtq25t2t0",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_2a04c7a9b73a5117d3fcaaa6",
+      "campaignEventId": "cmp4wtudh00k0499gtq25t2t0",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_5f99190a90cea5e86563168a",
+      "campaignEventId": "cmp4wturv00k5499gztv7xnjv",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_a208f72029968d6431fec18c",
+      "campaignEventId": "cmp4wturv00k5499gztv7xnjv",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_6a1b3baaff45791be778685d",
+      "campaignEventId": "cmp4wturv00k5499gztv7xnjv",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_3cc2e3b5c53796c22f558ffa",
+      "campaignEventId": "cmp4wtv6100ka499g4ck7a12r",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_32cc73d6fe2af1aecf56aaa3",
+      "campaignEventId": "cmp4wtv6100ka499g4ck7a12r",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_b986a32d84c42519fe284f61",
+      "campaignEventId": "cmp4wtv6100ka499g4ck7a12r",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_194a0658a16647c96c9cd445",
+      "campaignEventId": "cmp4wtv6100ka499g4ck7a12r",
+      "role": "county_party_contact",
+      "status": "needed",
+      "notes": "Confirm county party or local surrogate coverage."
+    },
+    {
+      "id": "staff_21c9427d373191ed447cd92a",
+      "campaignEventId": "cmp4wtvkf00kf499gvd1eh9z7",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_e0c3ac5a079f3041bd4bb781",
+      "campaignEventId": "cmp4wtvkf00kf499gvd1eh9z7",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_ab451d2491748157de1b4686",
+      "campaignEventId": "cmp4wtvkf00kf499gvd1eh9z7",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_75192d45adc3fcf357186dbb",
+      "campaignEventId": "cmp4wtvkf00kf499gvd1eh9z7",
+      "role": "county_party_contact",
+      "status": "needed",
+      "notes": "Confirm county party or local surrogate coverage."
+    },
+    {
+      "id": "staff_f75aa63bcffadeeee989bc27",
+      "campaignEventId": "cmp4wtwjw00ku499gs1khig56",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_50364ef9e394ea657bb3b913",
+      "campaignEventId": "cmp4wtwjw00ku499gs1khig56",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_d726930ce51e1243061fac4b",
+      "campaignEventId": "cmp4wtwjw00ku499gs1khig56",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_ac666e9a5314e73470adbea4",
+      "campaignEventId": "cmp4wtxa700l4499gwaein9lj",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_b92ecedf9b28b74f78c38fa8",
+      "campaignEventId": "cmp4wtxa700l4499gwaein9lj",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_a8f6e029f82794b48d774ba4",
+      "campaignEventId": "cmp4wtxa700l4499gwaein9lj",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_f1ca1804845cc98f2b3bf5ab",
+      "campaignEventId": "cmp4wty1f00le499gst116lm2",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_2c8c7aefc1fcf40751ecf29f",
+      "campaignEventId": "cmp4wty1f00le499gst116lm2",
+      "role": "table_captain",
+      "status": "needed",
+      "notes": "Confirm table permission, setup, and teardown."
+    },
+    {
+      "id": "staff_ac7c263f8264aef8bf8a3222",
+      "campaignEventId": "cmp4wty1f00le499gst116lm2",
+      "role": "materials_captain",
+      "status": "needed",
+      "notes": "Pack, track, and return event materials."
+    },
+    {
+      "id": "staff_79e439d88a861158ce29998a",
+      "campaignEventId": "cmp4wty1f00le499gst116lm2",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_e2f3d520a63cdd6fa0bff764",
+      "campaignEventId": "cmp4wty1f00le499gst116lm2",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_d4164a2811b5a58d4f634a67",
+      "campaignEventId": "cmp4wtxoo00l9499gwdpx45s8",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_cde13249f16a92362bb8ece0",
+      "campaignEventId": "cmp4wtxoo00l9499gwdpx45s8",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_ec1ed5a9bd1f5ab04b17bfe7",
+      "campaignEventId": "cmp4wtxoo00l9499gwdpx45s8",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_933fd574e5f82eb5dcd3fec1",
+      "campaignEventId": "cmp4wtyfd00lj499gu6vp1ped",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_d1a457411bbc72e37214badc",
+      "campaignEventId": "cmp4wtyfd00lj499gu6vp1ped",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_2bbb5f6a84a179361cc5f881",
+      "campaignEventId": "cmp4wtyfd00lj499gu6vp1ped",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_3f7675ebb95a329952db34db",
+      "campaignEventId": "cmp4wtyr600lo499gomm1nbph",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_7e2d0abd9039ac3df862f79d",
+      "campaignEventId": "cmp4wtyr600lo499gomm1nbph",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_9784dd49a829c6ccd9c9c2df",
+      "campaignEventId": "cmp4wtyr600lo499gomm1nbph",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_15b171369b6bf0b401554a34",
+      "campaignEventId": "cmp4wtz5d00lt499g5upunstz",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_40ba015be1674fa483b22a3a",
+      "campaignEventId": "cmp4wtz5d00lt499g5upunstz",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_dc31786a08dc153a0cad1d6e",
+      "campaignEventId": "cmp4wtz5d00lt499g5upunstz",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_d8c271821cbca6e9a552a56f",
+      "campaignEventId": "cmp4wtzh400ly499g95v2uxuo",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_6a7d9b75ea6cfac01184772e",
+      "campaignEventId": "cmp4wtzh400ly499g95v2uxuo",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_ef332df1195139788c5d663d",
+      "campaignEventId": "cmp4wtzh400ly499g95v2uxuo",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_89d8642cd7c7bc9b537b185c",
+      "campaignEventId": "cmp4wtzvf00m3499g32olcdzs",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_63bc3fe347c4f7550d11344d",
+      "campaignEventId": "cmp4wtzvf00m3499g32olcdzs",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_af7f22b7bc75af66632503c2",
+      "campaignEventId": "cmp4wtzvf00m3499g32olcdzs",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_dcc4cf17360dfb821658ffa0",
+      "campaignEventId": "cmp4wu09v00m8499guc185ayc",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_d34c8eafd19929ec182da995",
+      "campaignEventId": "cmp4wu09v00m8499guc185ayc",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_63821b1717cb0de945c4a69f",
+      "campaignEventId": "cmp4wu09v00m8499guc185ayc",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_a1f0b7ce00a3106ced6619be",
+      "campaignEventId": "cmp4wu0lp00md499gsr3h59a7",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_793278d97e5fc76f9ed9d4c0",
+      "campaignEventId": "cmp4wu0lp00md499gsr3h59a7",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_433f822c2f629490e51a75d2",
+      "campaignEventId": "cmp4wu0lp00md499gsr3h59a7",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_c0e7f07f54ec026ad3b15e6a",
+      "campaignEventId": "cmp4wu0xq00mi499ghu1cbm43",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_b93043415bd54b5ba4186afa",
+      "campaignEventId": "cmp4wu0xq00mi499ghu1cbm43",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_0c599a006f8a703c3544a008",
+      "campaignEventId": "cmp4wu0xq00mi499ghu1cbm43",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_5a32ed48f76dc3a7ffb5d90c",
+      "campaignEventId": "cmp4wu19t00mn499gpi0kj57n",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_ee92c957272f0ce6b81d4623",
+      "campaignEventId": "cmp4wu19t00mn499gpi0kj57n",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_7d5160645b46b64989954c8c",
+      "campaignEventId": "cmp4wu19t00mn499gpi0kj57n",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_8903b232c32dcbcad4b24433",
+      "campaignEventId": "cmp4wu1ln00ms499gh7pk673o",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_c4fc47e1d75ba5c70b5d3b2f",
+      "campaignEventId": "cmp4wu1ln00ms499gh7pk673o",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_cd90cb9635351879a1b90c8e",
+      "campaignEventId": "cmp4wu1ln00ms499gh7pk673o",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_f0bfc7d2ff3299f003cb0693",
+      "campaignEventId": "cmp4wu1zr00mx499gpl5cyt3o",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_48f2cbe9d5bcd0132b6c45f7",
+      "campaignEventId": "cmp4wu1zr00mx499gpl5cyt3o",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_1b41f30cde569119dd035e55",
+      "campaignEventId": "cmp4wu1zr00mx499gpl5cyt3o",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_b78955a2a499e9663ff41720",
+      "campaignEventId": "cmp4wu2pk00n7499gjroyg4cy",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_327b55089bc9b92c030714c6",
+      "campaignEventId": "cmp4wu2pk00n7499gjroyg4cy",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_d5ae45937b754693618a652b",
+      "campaignEventId": "cmp4wu2pk00n7499gjroyg4cy",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_43fc5c49094bffda1469aa88",
+      "campaignEventId": "cmp4wu2pk00n7499gjroyg4cy",
+      "role": "county_party_contact",
+      "status": "needed",
+      "notes": "Confirm county party or local surrogate coverage."
+    },
+    {
+      "id": "staff_8063a257e25fc86e6d453e76",
+      "campaignEventId": "cmp4wu3cy00nh499gbi5lebc0",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_db1c223fa07f2b6bcaba581e",
+      "campaignEventId": "cmp4wu3cy00nh499gbi5lebc0",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_ecad5b19cb87132bbdc861e3",
+      "campaignEventId": "cmp4wu3cy00nh499gbi5lebc0",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_f54f69966b726438bf6ef4dd",
+      "campaignEventId": "cmp4wu3ra00nm499gu2cgvoxv",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_bb0cad4b4a7163b85d887afd",
+      "campaignEventId": "cmp4wu3ra00nm499gu2cgvoxv",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_c8e372e4ff0ac08923a688e9",
+      "campaignEventId": "cmp4wu3ra00nm499gu2cgvoxv",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_e26183da6811615b4eaf99fd",
+      "campaignEventId": "cmp4wu45b00nr499g0d2im5s4",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_334b37521552fa13e3887ea4",
+      "campaignEventId": "cmp4wu45b00nr499g0d2im5s4",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_4a22e3000dafa8a25f643a8a",
+      "campaignEventId": "cmp4wu45b00nr499g0d2im5s4",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_4ad5e235edc83cfde33a9ac3",
+      "campaignEventId": "cmp4wu4xu00o1499ga1fdnoxj",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_45999ef0a363e32be46d5d90",
+      "campaignEventId": "cmp4wu4xu00o1499ga1fdnoxj",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_8c839d7fd87c71683b561272",
+      "campaignEventId": "cmp4wu4xu00o1499ga1fdnoxj",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_402ca1182b692f7c65a72a09",
+      "campaignEventId": "cmp4wu4xu00o1499ga1fdnoxj",
+      "role": "county_party_contact",
+      "status": "needed",
+      "notes": "Confirm county party or local surrogate coverage."
+    },
+    {
+      "id": "staff_f6175dc51141ed37d0435df9",
+      "campaignEventId": "cmp4wu4ji00nw499g0f9fvwcd",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_1a86223c160b5ba237cdc404",
+      "campaignEventId": "cmp4wu4ji00nw499g0f9fvwcd",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_f48c72291dc5b5eda359ad19",
+      "campaignEventId": "cmp4wu4ji00nw499g0f9fvwcd",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_345138b6a4880a3001cb8105",
+      "campaignEventId": "cmp4wu59k00o6499gt4x2ngk8",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_e3402e08f9aced9338ee62fc",
+      "campaignEventId": "cmp4wu59k00o6499gt4x2ngk8",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_b1fbef7d2fa36effded21b94",
+      "campaignEventId": "cmp4wu59k00o6499gt4x2ngk8",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_71843da90eabf9d94906b217",
+      "campaignEventId": "cmp4wu5nw00ob499gfu2udrvy",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_fb17a4e6cf63c0764f5ad08b",
+      "campaignEventId": "cmp4wu5nw00ob499gfu2udrvy",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_61d3b02e53fc64273e8c1f40",
+      "campaignEventId": "cmp4wu5nw00ob499gfu2udrvy",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_7ae66e8db1227e3bcba322b5",
+      "campaignEventId": "cmp4wu62500og499gxs5ldzuy",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_b1f8aee230d6a9eacfdde18e",
+      "campaignEventId": "cmp4wu62500og499gxs5ldzuy",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_35aa61a6c1531975ade57eaf",
+      "campaignEventId": "cmp4wu62500og499gxs5ldzuy",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_a088a8089372e1885f56b01d",
+      "campaignEventId": "cmp4wu6dz00ol499gqd63f2kz",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_87b7f76ae4fdd3fd78299f49",
+      "campaignEventId": "cmp4wu6dz00ol499gqd63f2kz",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_cc06450174397dd948a7f577",
+      "campaignEventId": "cmp4wu6dz00ol499gqd63f2kz",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_8a23756aeb66d9e49002233c",
+      "campaignEventId": "cmp4wu71h00ov499gza5t89j3",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_15408e4ae40a6bd00b7b701f",
+      "campaignEventId": "cmp4wu71h00ov499gza5t89j3",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_132e330368956715e6bafd14",
+      "campaignEventId": "cmp4wu71h00ov499gza5t89j3",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_81b561d6b7402f416913668f",
+      "campaignEventId": "cmp4wu7dc00p0499gn8zq8iig",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_4afc349017aed39f5eb10b84",
+      "campaignEventId": "cmp4wu7dc00p0499gn8zq8iig",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_607052dec53ed9bbb3fc2590",
+      "campaignEventId": "cmp4wu7dc00p0499gn8zq8iig",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_243f1d872cd60ccb033c1ad9",
+      "campaignEventId": "cmp4wu7p500p5499gp5tobasm",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_8333e09595c01df0d15679c4",
+      "campaignEventId": "cmp4wu7p500p5499gp5tobasm",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_13e6e708436b00c1e082233f",
+      "campaignEventId": "cmp4wu7p500p5499gp5tobasm",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_f1d07713d1318275a8615749",
+      "campaignEventId": "cmp4wu81000pa499g4fcxw5wj",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_4d3d59b8bed264d85450513f",
+      "campaignEventId": "cmp4wu81000pa499g4fcxw5wj",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_1fba067b4663b4802b552c39",
+      "campaignEventId": "cmp4wu81000pa499g4fcxw5wj",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_11b74f16f6ae9a21c3fdcb73",
+      "campaignEventId": "cmp4wu8r700pj499grpvdrzr7",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_658151285b9cf4de4b1f6d23",
+      "campaignEventId": "cmp4wu8r700pj499grpvdrzr7",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_6e50f4b8784d631d22ab8152",
+      "campaignEventId": "cmp4wu8r700pj499grpvdrzr7",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_3e8f1fc61e850feaf56ef961",
+      "campaignEventId": "cmp4wu9lg00pt499gpi9dyvz8",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_9aba079b235bee43a958899c",
+      "campaignEventId": "cmp4wu9lg00pt499gpi9dyvz8",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_a79640fad92336eb45d7550b",
+      "campaignEventId": "cmp4wu9lg00pt499gpi9dyvz8",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_4b0db46ad614286e80b6f950",
+      "campaignEventId": "cmp4wuakg00q8499gpfi27308",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_e8ac97b00c1de850b20aa2bf",
+      "campaignEventId": "cmp4wuakg00q8499gpfi27308",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_c94d9af4e26f84f03e174f35",
+      "campaignEventId": "cmp4wuakg00q8499gpfi27308",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_575ec70bd9c6d7662086066c",
+      "campaignEventId": "cmp4wua8q00q3499guc7sxsre",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_4ff5117c6036ce10821f9707",
+      "campaignEventId": "cmp4wua8q00q3499guc7sxsre",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_decfce26fb2cdde1d746541f",
+      "campaignEventId": "cmp4wua8q00q3499guc7sxsre",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_e455846e6a8e86765fb19f9a",
+      "campaignEventId": "cmp4wuaz100qd499grx7m5wod",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_c104b614a3d4b0b49432aed7",
+      "campaignEventId": "cmp4wuaz100qd499grx7m5wod",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_a2d52d9720f3dd2f826ad346",
+      "campaignEventId": "cmp4wuaz100qd499grx7m5wod",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_03f780040ba583878b7c0c50",
+      "campaignEventId": "cmp4wubd800qi499ga8i0ai3e",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_2ac085bbd7dbd98f2bb5592d",
+      "campaignEventId": "cmp4wubd800qi499ga8i0ai3e",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_8e95f1fd633c79872959a5e1",
+      "campaignEventId": "cmp4wubd800qi499ga8i0ai3e",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_cd5fe87005af67fb4e7b4b4b",
+      "campaignEventId": "cmp4wubrm00qn499gbo0wj0x7",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_b0065bf96b20ad11663fa8d5",
+      "campaignEventId": "cmp4wubrm00qn499gbo0wj0x7",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_9a82b3577ae04a2ff93b114c",
+      "campaignEventId": "cmp4wubrm00qn499gbo0wj0x7",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_42f886718420b1b0a4602398",
+      "campaignEventId": "cmp4wuc5m00qs499g6q5ucrqz",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_62964ec558273dc5f3a77558",
+      "campaignEventId": "cmp4wuc5m00qs499g6q5ucrqz",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_82d910e8c01513763243c695",
+      "campaignEventId": "cmp4wuc5m00qs499g6q5ucrqz",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_ca568c439919bd4ce0d07dd4",
+      "campaignEventId": "cmp4wuchi00qx499g9ai5azgn",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_0b937144e1aef2655e7e8061",
+      "campaignEventId": "cmp4wuchi00qx499g9ai5azgn",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_a4a65480e9acba1fd7ea0670",
+      "campaignEventId": "cmp4wuchi00qx499g9ai5azgn",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_84948f074c50cbcb89e434d1",
+      "campaignEventId": "cmp4wucta00r2499gzl60ztq7",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_a153eeb7901148e6d56b7218",
+      "campaignEventId": "cmp4wucta00r2499gzl60ztq7",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_48ac412f6fda86c02071bded",
+      "campaignEventId": "cmp4wucta00r2499gzl60ztq7",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_9a22a99657607574560ef1a2",
+      "campaignEventId": "cmp4wud4z00r7499gofbcdc0q",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_de85eb5f3bc884027d293089",
+      "campaignEventId": "cmp4wud4z00r7499gofbcdc0q",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_cf6271d5ab782bb2e54c4b13",
+      "campaignEventId": "cmp4wud4z00r7499gofbcdc0q",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_80eeff5e2a33555f5ef8036d",
+      "campaignEventId": "cmp4wudgo00rc499gt5yh5rkp",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_7bd7280841299726533ff578",
+      "campaignEventId": "cmp4wudgo00rc499gt5yh5rkp",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_d23c61b5198698e64788c24f",
+      "campaignEventId": "cmp4wudgo00rc499gt5yh5rkp",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_3ba9ef9ccd93cc5a4ee5d6ce",
+      "campaignEventId": "cmp4wue4c00rm499g3gd5marv",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_35812f1073440484eec66fb0",
+      "campaignEventId": "cmp4wue4c00rm499g3gd5marv",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_5549ae630876d4f2093d1059",
+      "campaignEventId": "cmp4wue4c00rm499g3gd5marv",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_06966b94af070e6eb0f4b078",
+      "campaignEventId": "cmp4wueip00rr499gswn8w01n",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_455d0081c4b9e22178d8bb58",
+      "campaignEventId": "cmp4wueip00rr499gswn8w01n",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_cef83ce8337ebc73e9facd27",
+      "campaignEventId": "cmp4wueip00rr499gswn8w01n",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_a171dce9346a1a4d6459873c",
+      "campaignEventId": "cmp4wuewz00rw499g8mbl70ys",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_ab4b9d1c85750e10e08cb019",
+      "campaignEventId": "cmp4wuewz00rw499g8mbl70ys",
+      "role": "table_captain",
+      "status": "needed",
+      "notes": "Confirm table permission, setup, and teardown."
+    },
+    {
+      "id": "staff_d757caeedb5ed5cdaf175e2a",
+      "campaignEventId": "cmp4wuewz00rw499g8mbl70ys",
+      "role": "materials_captain",
+      "status": "needed",
+      "notes": "Pack, track, and return event materials."
+    },
+    {
+      "id": "staff_a92b5f00ac208f6f123bf07a",
+      "campaignEventId": "cmp4wuewz00rw499g8mbl70ys",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_a7ca6a2eba84846d11e1579e",
+      "campaignEventId": "cmp4wuewz00rw499g8mbl70ys",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_cbff6f0f3118197686d1b24d",
+      "campaignEventId": "cmp4wufb700s1499g2wjjgnxl",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_bddcdb1a32d7a10e49cd6445",
+      "campaignEventId": "cmp4wufb700s1499g2wjjgnxl",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_addf35e3018aca5dfd413248",
+      "campaignEventId": "cmp4wufb700s1499g2wjjgnxl",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_0b9d28bce0350a3905427014",
+      "campaignEventId": "cmp4wufpo00s6499gbqr9nl4i",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_5e0d19142457a8762ad31ec0",
+      "campaignEventId": "cmp4wufpo00s6499gbqr9nl4i",
+      "role": "table_captain",
+      "status": "needed",
+      "notes": "Confirm table permission, setup, and teardown."
+    },
+    {
+      "id": "staff_d4b0e643f5ab242df0cd996a",
+      "campaignEventId": "cmp4wufpo00s6499gbqr9nl4i",
+      "role": "materials_captain",
+      "status": "needed",
+      "notes": "Pack, track, and return event materials."
+    },
+    {
+      "id": "staff_8dd1a55fa3cc909f7f962a9b",
+      "campaignEventId": "cmp4wufpo00s6499gbqr9nl4i",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_98d92817b7e70fe1740474bd",
+      "campaignEventId": "cmp4wufpo00s6499gbqr9nl4i",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_07a35c26ba4c69bf574d24a6",
+      "campaignEventId": "cmp4wug1k00sb499grytyyvcu",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_29bb7a7e53cdecabc2d0bff7",
+      "campaignEventId": "cmp4wug1k00sb499grytyyvcu",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_1a62f0ddebba9bbe66773222",
+      "campaignEventId": "cmp4wug1k00sb499grytyyvcu",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_985bdafab2c6c5a865e4e5fd",
+      "campaignEventId": "cmp4wugfv00sg499gx3uuqd05",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_96635dab5c00632fc9b30102",
+      "campaignEventId": "cmp4wugfv00sg499gx3uuqd05",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_506631400975683380a267b0",
+      "campaignEventId": "cmp4wugfv00sg499gx3uuqd05",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_391b0551207313b4f483720e",
+      "campaignEventId": "cmp4wugro00sl499gcjxgkhsr",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_5944ce82838542974384abe2",
+      "campaignEventId": "cmp4wugro00sl499gcjxgkhsr",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_8f028f133a685cad5d1b022d",
+      "campaignEventId": "cmp4wugro00sl499gcjxgkhsr",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_73698184e8175ec75af5fdae",
+      "campaignEventId": "cmp4wuh5v00sq499g6d1q35jl",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_3747c61f5b7db69f33b4cc58",
+      "campaignEventId": "cmp4wuh5v00sq499g6d1q35jl",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_0053d209b6ad4421f8f6d9cc",
+      "campaignEventId": "cmp4wuh5v00sq499g6d1q35jl",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_3b7685ba52a73dcb3074efc9",
+      "campaignEventId": "cmp4wuh5v00sq499g6d1q35jl",
+      "role": "table_captain",
+      "status": "needed",
+      "notes": "Confirm table permission, setup, and teardown."
+    },
+    {
+      "id": "staff_dcdf700a3427c2621cb48a06",
+      "campaignEventId": "cmp4wuh5v00sq499g6d1q35jl",
+      "role": "materials_captain",
+      "status": "needed",
+      "notes": "Pack, track, and return event materials."
+    },
+    {
+      "id": "staff_f03776dad2dff6fc8550412e",
+      "campaignEventId": "cmp4wuh5v00sq499g6d1q35jl",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_c165f79c7211210c3a565cc7",
+      "campaignEventId": "cmp4wuhju00sv499gw609nv6e",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_ea65e4710f073df4e66bdf1a",
+      "campaignEventId": "cmp4wuhju00sv499gw609nv6e",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_7d6fca8fb029697ce88067e1",
+      "campaignEventId": "cmp4wuhju00sv499gw609nv6e",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_f08d3277983776c433f42866",
+      "campaignEventId": "cmp4wuhy200t0499gq40b0n7s",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_21493783cd8f0f9c8b18560c",
+      "campaignEventId": "cmp4wuhy200t0499gq40b0n7s",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_440affa866e4dd9cdfcc1f1a",
+      "campaignEventId": "cmp4wuhy200t0499gq40b0n7s",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_60a31c0ef05d3049eb0f96ef",
+      "campaignEventId": "cmp4wuhy200t0499gq40b0n7s",
+      "role": "county_party_contact",
+      "status": "needed",
+      "notes": "Confirm county party or local surrogate coverage."
+    },
+    {
+      "id": "staff_9b3f141f5f8d3e1c4f3e885d",
+      "campaignEventId": "cmp4wuio000ta499gs0zdl77p",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_cac42e6d2a09ca8c0762fc47",
+      "campaignEventId": "cmp4wuio000ta499gs0zdl77p",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_564d8d8051a61ccb1dba8a1f",
+      "campaignEventId": "cmp4wuio000ta499gs0zdl77p",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_69b53fd3441e87d4f93a6108",
+      "campaignEventId": "cmp4wui9w00t5499gu89jw77z",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_b008d961c876d948b91cd2f9",
+      "campaignEventId": "cmp4wui9w00t5499gu89jw77z",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_1796410da1e05a9a55099f41",
+      "campaignEventId": "cmp4wui9w00t5499gu89jw77z",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_81ce0d5e87399993ca23554e",
+      "campaignEventId": "cmp4wuizn00tf499g3m3j5zs2",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_5aa29bf030a284419eb4cb3c",
+      "campaignEventId": "cmp4wuizn00tf499g3m3j5zs2",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_06c0d93266ef529c4ca51464",
+      "campaignEventId": "cmp4wuizn00tf499g3m3j5zs2",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_ee46700f3c5481089c18f39b",
+      "campaignEventId": "cmp4wujbf00tk499ghotm7vis",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_6b1380b6240e8ddd52484418",
+      "campaignEventId": "cmp4wujbf00tk499ghotm7vis",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_92e13ac43cfb2dff31ebbd93",
+      "campaignEventId": "cmp4wujbf00tk499ghotm7vis",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_75456ceac448d10d570e5b27",
+      "campaignEventId": "cmp4wujmv00tp499g9s6hwrec",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_280ccffcedfec3d39d13357a",
+      "campaignEventId": "cmp4wujmv00tp499g9s6hwrec",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_3a7cee787319016eb99af8a2",
+      "campaignEventId": "cmp4wujmv00tp499g9s6hwrec",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_c9ac593e6f66e89e38bee9d5",
+      "campaignEventId": "cmp4wsbza0000499g6iyfgpqn",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_adca2083680ef7aa3fdba409",
+      "campaignEventId": "cmp4wsbza0000499g6iyfgpqn",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_c85c64e4ad6e05486540059e",
+      "campaignEventId": "cmp4wsbza0000499g6iyfgpqn",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_5b451b8da5b2fa1d6e3b2a59",
+      "campaignEventId": "cmp4wsclh0005499g3ihvz6bw",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_ac80316735be61c0321aeada",
+      "campaignEventId": "cmp4wsclh0005499g3ihvz6bw",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_092a60e08adbbf91f9787703",
+      "campaignEventId": "cmp4wsclh0005499g3ihvz6bw",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_ceb2b13cfcf60146e8d7e43e",
+      "campaignEventId": "cmp4wsczt000a499g7jlws0u7",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_a6da98e5767649e357ef7e62",
+      "campaignEventId": "cmp4wsczt000a499g7jlws0u7",
+      "role": "table_captain",
+      "status": "needed",
+      "notes": "Confirm table permission, setup, and teardown."
+    },
+    {
+      "id": "staff_19372a7dbab88a52b2dd0755",
+      "campaignEventId": "cmp4wsczt000a499g7jlws0u7",
+      "role": "materials_captain",
+      "status": "needed",
+      "notes": "Pack, track, and return event materials."
+    },
+    {
+      "id": "staff_5231ed7266bbbc56b5015afc",
+      "campaignEventId": "cmp4wsczt000a499g7jlws0u7",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_9cc678f488963d9c75b34f5d",
+      "campaignEventId": "cmp4wsczt000a499g7jlws0u7",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_b933823769c8e11bf65a58fd",
+      "campaignEventId": "cmp4wsdgt000f499gu7qawl6h",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_e607280e974e6bf989766b9a",
+      "campaignEventId": "cmp4wsdgt000f499gu7qawl6h",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_b2f5c8ee0ae4cb59aa39a7c0",
+      "campaignEventId": "cmp4wsdgt000f499gu7qawl6h",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_14ba281e084567cb5b707e8b",
+      "campaignEventId": "cmp4wukoh00u2499gzhhev3d2",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_4f1825ba5641169e1cf1c174",
+      "campaignEventId": "cmp4wukoh00u2499gzhhev3d2",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_8b5d8b866c0db04e628fb383",
+      "campaignEventId": "cmp4wukoh00u2499gzhhev3d2",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_586bd568e6a86972b51136f1",
+      "campaignEventId": "cmp4wul4500u7499g1kilugso",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_ea86146c2b23e87f9790c0a1",
+      "campaignEventId": "cmp4wul4500u7499g1kilugso",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_3ca930c4b9f41e9ac1c87501",
+      "campaignEventId": "cmp4wul4500u7499g1kilugso",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_a0208d3b0f750ecefd36ee24",
+      "campaignEventId": "cmp4wulfr00uc499gj0383dq7",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_721a375e59bd1526111fb8ab",
+      "campaignEventId": "cmp4wulfr00uc499gj0383dq7",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_97a16d0484705fd92fd83952",
+      "campaignEventId": "cmp4wulfr00uc499gj0383dq7",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_fcc6c95e3f8166221896d96d",
+      "campaignEventId": "cmp4wuw8200yc499gplfls5n8",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_700b1b75eeabfad42d74f278",
+      "campaignEventId": "cmp4wuw8200yc499gplfls5n8",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_899cd24d9a33a6dd8da35abe",
+      "campaignEventId": "cmp4wuw8200yc499gplfls5n8",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_15295b6b1be8294331f3a519",
+      "campaignEventId": "cmp4wuwnu00yh499g5tm6ap1m",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_00851e80ee1a94a343801582",
+      "campaignEventId": "cmp4wuwnu00yh499g5tm6ap1m",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_118b5a2fa54937578d775f4c",
+      "campaignEventId": "cmp4wuwnu00yh499g5tm6ap1m",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_326fc89e7deaa36a915c8410",
+      "campaignEventId": "cmp4wux1z00ym499gic8tbssp",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_e7ccd16d17c4fad85a268176",
+      "campaignEventId": "cmp4wux1z00ym499gic8tbssp",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_6d722f25ff67ebb418a00cd7",
+      "campaignEventId": "cmp4wux1z00ym499gic8tbssp",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_d8982f47d597cbbfed5d5090",
+      "campaignEventId": "cmp4wuxg700yr499ge5a4j98d",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_1cf45db00f75c795663e2968",
+      "campaignEventId": "cmp4wuxg700yr499ge5a4j98d",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_e7a4e7cbfd3cd8671f12b33c",
+      "campaignEventId": "cmp4wuxg700yr499ge5a4j98d",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_efc7f5e4dfa67dffff754b4d",
+      "campaignEventId": "cmp4wuxua00yw499gguzpk9g3",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_1a94fb29c6bf86aa7d5d1523",
+      "campaignEventId": "cmp4wuxua00yw499gguzpk9g3",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_0f03a597c5c66a9b43b95d9b",
+      "campaignEventId": "cmp4wuxua00yw499gguzpk9g3",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_cc2e7ce90503c171b13997ff",
+      "campaignEventId": "cmp4wsebe000p499gngh53kt8",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_4f697cb69c8e4ce67e03a066",
+      "campaignEventId": "cmp4wsebe000p499gngh53kt8",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_aa2a64b44d07cc51df73f268",
+      "campaignEventId": "cmp4wsebe000p499gngh53kt8",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_bae0229c68e2b7e0557f2793",
+      "campaignEventId": "cmp4wum3f00um499go9ovj0dk",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_60564bb477a06e467c65db43",
+      "campaignEventId": "cmp4wum3f00um499go9ovj0dk",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_4e0faa99e716d530a2a66dbb",
+      "campaignEventId": "cmp4wum3f00um499go9ovj0dk",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_bd860d12b0ed02c65ece2f55",
+      "campaignEventId": "cmp4wumhj00ur499g50t7fim5",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_fd93c994fb3022b94f368ae7",
+      "campaignEventId": "cmp4wumhj00ur499g50t7fim5",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_53d6612126268a4b8b8badb5",
+      "campaignEventId": "cmp4wumhj00ur499g50t7fim5",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_e145faa5a1db3589d1011049",
+      "campaignEventId": "cmp4wsepg000u499gi6y9876h",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_a376325beead8295f06815d6",
+      "campaignEventId": "cmp4wsepg000u499gi6y9876h",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_88de873c8b10664c11d90436",
+      "campaignEventId": "cmp4wsepg000u499gi6y9876h",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_1cfa478aa9f28413d87de736",
+      "campaignEventId": "cmp4wumte00uw499gq9dfzasm",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_af73f91874c07a50a480d844",
+      "campaignEventId": "cmp4wumte00uw499gq9dfzasm",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_a5bee77ec054d3cddddfa4ce",
+      "campaignEventId": "cmp4wumte00uw499gq9dfzasm",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_7b92e42e94bd975a46959bec",
+      "campaignEventId": "cmp4wun7s00v1499grmcsvw66",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_a1fa0c2b0de8c9854307b1d2",
+      "campaignEventId": "cmp4wun7s00v1499grmcsvw66",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_722f5d858977b11adbbdb2c9",
+      "campaignEventId": "cmp4wun7s00v1499grmcsvw66",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_5d537703a87fe3b1012382ea",
+      "campaignEventId": "cmp4wun7s00v1499grmcsvw66",
+      "role": "county_party_contact",
+      "status": "needed",
+      "notes": "Confirm county party or local surrogate coverage."
+    },
+    {
+      "id": "staff_bc90b01d8a7aaf80f58e442f",
+      "campaignEventId": "cmp4wsf3n000z499ggqocklp5",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_b3c61f2be15b04837c5665f3",
+      "campaignEventId": "cmp4wsf3n000z499ggqocklp5",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_4a7e3c624154ebc4d32fb723",
+      "campaignEventId": "cmp4wsf3n000z499ggqocklp5",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_790ea00d97fab0b430ad9df4",
+      "campaignEventId": "cmp4wsf3n000z499ggqocklp5",
+      "role": "county_party_contact",
+      "status": "needed",
+      "notes": "Confirm county party or local surrogate coverage."
+    },
+    {
+      "id": "staff_b97d0402849b751f73fc795d",
+      "campaignEventId": "cmp4wunje00v6499gnhupznva",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_2882a9e69855ca3366efc375",
+      "campaignEventId": "cmp4wunje00v6499gnhupznva",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_94de07d6840707d88e49d2a5",
+      "campaignEventId": "cmp4wunje00v6499gnhupznva",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_c4b3fb37c472370da9df3932",
+      "campaignEventId": "cmp4wsfhy0014499gn4oa9ssb",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_2545feee5810ea01e460dcff",
+      "campaignEventId": "cmp4wsfhy0014499gn4oa9ssb",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_89ba6892357264f83d6127b5",
+      "campaignEventId": "cmp4wsfhy0014499gn4oa9ssb",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_952a4702b170da3e2e540501",
+      "campaignEventId": "cmp4wunyd00vb499gp0t6985d",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_4b5c5cb85b969fe095b2148a",
+      "campaignEventId": "cmp4wunyd00vb499gp0t6985d",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_053d5739b3e2c23b629f1cf1",
+      "campaignEventId": "cmp4wunyd00vb499gp0t6985d",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_f0667a389fa417da8230a4a3",
+      "campaignEventId": "cmp4wuoco00vg499g7xk8hlq5",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_d8a97a019ed615a0fd5b0a73",
+      "campaignEventId": "cmp4wuoco00vg499g7xk8hlq5",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_99e6078a9a6510e891a64583",
+      "campaignEventId": "cmp4wuoco00vg499g7xk8hlq5",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_32577181df6e4943abdd5f48",
+      "campaignEventId": "cmp4wsfw40019499gw6zbi9r8",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_5c8905194986d7532e6ed806",
+      "campaignEventId": "cmp4wsfw40019499gw6zbi9r8",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_540d4abd696f5801505c1207",
+      "campaignEventId": "cmp4wsfw40019499gw6zbi9r8",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_4b76574fab45a625dc92a135",
+      "campaignEventId": "cmp4wuoqv00vl499gvxpdcrvp",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_0de22fca347dab0352b8f13e",
+      "campaignEventId": "cmp4wuoqv00vl499gvxpdcrvp",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_7c26beb7f6aeafc8f1d568fb",
+      "campaignEventId": "cmp4wuoqv00vl499gvxpdcrvp",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_b6219c0cf71a2d2ec35a7dcd",
+      "campaignEventId": "cmp4wsgag001e499gm42a1emw",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_a39e8d5166a7f6163601e46f",
+      "campaignEventId": "cmp4wsgag001e499gm42a1emw",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_f0be79295a3f44e46cc30c76",
+      "campaignEventId": "cmp4wsgag001e499gm42a1emw",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_aa673a0e1c8ebccb76f7c3df",
+      "campaignEventId": "cmp4wsgag001e499gm42a1emw",
+      "role": "table_captain",
+      "status": "needed",
+      "notes": "Confirm table permission, setup, and teardown."
+    },
+    {
+      "id": "staff_5fac0a42988d2bab8031e9af",
+      "campaignEventId": "cmp4wsgag001e499gm42a1emw",
+      "role": "materials_captain",
+      "status": "needed",
+      "notes": "Pack, track, and return event materials."
+    },
+    {
+      "id": "staff_d0c8255dfe358da8bb2fd1de",
+      "campaignEventId": "cmp4wsgag001e499gm42a1emw",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_1c91876de69205c310183a4e",
+      "campaignEventId": "cmp4wup5300vq499gen7vzsjz",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_3abca457136df93eff794c1f",
+      "campaignEventId": "cmp4wup5300vq499gen7vzsjz",
+      "role": "table_captain",
+      "status": "needed",
+      "notes": "Confirm table permission, setup, and teardown."
+    },
+    {
+      "id": "staff_86d3a3e475442c7b3ba75729",
+      "campaignEventId": "cmp4wup5300vq499gen7vzsjz",
+      "role": "materials_captain",
+      "status": "needed",
+      "notes": "Pack, track, and return event materials."
+    },
+    {
+      "id": "staff_f4cfd196ceb1db82aa602a84",
+      "campaignEventId": "cmp4wup5300vq499gen7vzsjz",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_a1c22242d76906045b72c075",
+      "campaignEventId": "cmp4wup5300vq499gen7vzsjz",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_0e25226a91998871aac6540f",
+      "campaignEventId": "cmp4wsgoq001j499gsehbyvi9",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_b4b8d7024437dfef1c2b55d0",
+      "campaignEventId": "cmp4wsgoq001j499gsehbyvi9",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_73e4d35930106bb7b8f50f7d",
+      "campaignEventId": "cmp4wsgoq001j499gsehbyvi9",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_8a3a400e47f1d6764eeb8769",
+      "campaignEventId": "cmp4wsgoq001j499gsehbyvi9",
+      "role": "table_captain",
+      "status": "needed",
+      "notes": "Confirm table permission, setup, and teardown."
+    },
+    {
+      "id": "staff_172067cca2ecbd7f43b58c7f",
+      "campaignEventId": "cmp4wsgoq001j499gsehbyvi9",
+      "role": "materials_captain",
+      "status": "needed",
+      "notes": "Pack, track, and return event materials."
+    },
+    {
+      "id": "staff_c23c28957be7f9e3e120f443",
+      "campaignEventId": "cmp4wsgoq001j499gsehbyvi9",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_21219fb772b00917900cd671",
+      "campaignEventId": "cmp4wupgp00vv499gai3h4ayl",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_a0a011d31b578ff17cad65a1",
+      "campaignEventId": "cmp4wupgp00vv499gai3h4ayl",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_effe1ed4d75a98ef063cd8c3",
+      "campaignEventId": "cmp4wupgp00vv499gai3h4ayl",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_053ba8a139740c78af4930e6",
+      "campaignEventId": "cmp4wsh5m001o499gi3wgoucb",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_d35fa2bddf72edab6ecd5a30",
+      "campaignEventId": "cmp4wsh5m001o499gi3wgoucb",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_dc17d5d4071b4ebf1e597f24",
+      "campaignEventId": "cmp4wsh5m001o499gi3wgoucb",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_a58c83393cbb6749f1040a11",
+      "campaignEventId": "cmp4wupsj00w0499gb4mts3pp",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_91e953e0a66e663dcba99c66",
+      "campaignEventId": "cmp4wupsj00w0499gb4mts3pp",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_883a97621b77c67c5552a8a9",
+      "campaignEventId": "cmp4wupsj00w0499gb4mts3pp",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_6c55f1a3cac2b355edd30dca",
+      "campaignEventId": "cmp4wuq4900w5499gh9l4ubxk",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_0b9ee162a261caee05114dd6",
+      "campaignEventId": "cmp4wuq4900w5499gh9l4ubxk",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_757a021c253110b91e8606db",
+      "campaignEventId": "cmp4wuq4900w5499gh9l4ubxk",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_5845a9abf4b4d418bcd7574a",
+      "campaignEventId": "cmp4wshjw001t499gpotow185",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_b20c79f50bea3ff1875c1b6b",
+      "campaignEventId": "cmp4wshjw001t499gpotow185",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_30d9b23479241b5cc3b3a79f",
+      "campaignEventId": "cmp4wshjw001t499gpotow185",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_19c0308e2944e3a92c7e75a3",
+      "campaignEventId": "cmp4wshy5001y499gitm9uzmo",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_4c46e4c77c5efffe245568b6",
+      "campaignEventId": "cmp4wshy5001y499gitm9uzmo",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_d41e76cb4c439fa506b58845",
+      "campaignEventId": "cmp4wshy5001y499gitm9uzmo",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_288a0060eebf4f0f72f3636f",
+      "campaignEventId": "cmp4wuqig00wa499g91lgmwnc",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_5f5282150206dcbd73e3eb87",
+      "campaignEventId": "cmp4wuqig00wa499g91lgmwnc",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_d2169b3fcba8b52446a265b7",
+      "campaignEventId": "cmp4wuqig00wa499g91lgmwnc",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_4bc260dcf0a23c0da329cc04",
+      "campaignEventId": "cmp4wsicj0023499g6y6609d2",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_c139419fa6e39186126927a1",
+      "campaignEventId": "cmp4wsicj0023499g6y6609d2",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_502650e822a8f7ff706fd126",
+      "campaignEventId": "cmp4wsicj0023499g6y6609d2",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_7a47e8cc36283b88d3522626",
+      "campaignEventId": "cmp4wuqws00wf499g57ruz01d",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_28be0fcc0d64439f65ba4dcb",
+      "campaignEventId": "cmp4wuqws00wf499g57ruz01d",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_cf0990f311f112b6a68643dc",
+      "campaignEventId": "cmp4wuqws00wf499g57ruz01d",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_ce54aff4a40285443fb97cb5",
+      "campaignEventId": "cmp4wsiqw0028499ge85ky2y8",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_3e3b58fb5a9146c4438adb3f",
+      "campaignEventId": "cmp4wsiqw0028499ge85ky2y8",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_388095b2ae3e0b6627e90a68",
+      "campaignEventId": "cmp4wsiqw0028499ge85ky2y8",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_c1544dc4dfad458ab4c9bb8a",
+      "campaignEventId": "cmp4wuy8d00z1499g03n5qidd",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_2d553a797cb031a6a8ed83b5",
+      "campaignEventId": "cmp4wuy8d00z1499g03n5qidd",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_f2e4c209c08a2dfb9223e885",
+      "campaignEventId": "cmp4wuy8d00z1499g03n5qidd",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_f870951313da82828835f914",
+      "campaignEventId": "cmp4wuym500z6499gq7qvalim",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_7cdae3ba3fa4fc439091e342",
+      "campaignEventId": "cmp4wuym500z6499gq7qvalim",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_8783cd78bf8ab70dd3707af4",
+      "campaignEventId": "cmp4wuym500z6499gq7qvalim",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_666e05c670af4e4291532bab",
+      "campaignEventId": "cmp4wsj4z002d499gus5xsjri",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_3dcaabb1a8f2e84753fb8449",
+      "campaignEventId": "cmp4wsj4z002d499gus5xsjri",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_42d317e13c0abf9849d1d456",
+      "campaignEventId": "cmp4wsj4z002d499gus5xsjri",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_7adef272a172eb57cfd8e84c",
+      "campaignEventId": "cmp4wurat00wk499g68w1fe70",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_8689cfca8bcd4d57d8df51ea",
+      "campaignEventId": "cmp4wurat00wk499g68w1fe70",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_e53f9a759e7c3774c8db87ea",
+      "campaignEventId": "cmp4wurat00wk499g68w1fe70",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_46b72dd1df40c83b4b1e75b6",
+      "campaignEventId": "cmp4wsjlj002i499g6knns1ef",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_bfcbd876d4890b253aacc771",
+      "campaignEventId": "cmp4wsjlj002i499g6knns1ef",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_54f2713ec51ca49524ef127e",
+      "campaignEventId": "cmp4wsjlj002i499g6knns1ef",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_8f0cb494f8d4dc6278a05240",
+      "campaignEventId": "cmp4wsjlj002i499g6knns1ef",
+      "role": "table_captain",
+      "status": "needed",
+      "notes": "Confirm table permission, setup, and teardown."
+    },
+    {
+      "id": "staff_b47d82249bf8b940e13a4724",
+      "campaignEventId": "cmp4wsjlj002i499g6knns1ef",
+      "role": "materials_captain",
+      "status": "needed",
+      "notes": "Pack, track, and return event materials."
+    },
+    {
+      "id": "staff_cab7ab90a0a4b1b2b874887b",
+      "campaignEventId": "cmp4wsjlj002i499g6knns1ef",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_667cb6a65fafe990e23728c6",
+      "campaignEventId": "cmp4wus3b00wu499g4077ws81",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_28db6b401da0fb6f661b75ee",
+      "campaignEventId": "cmp4wus3b00wu499g4077ws81",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_6d9286761e534f97f30aa4dd",
+      "campaignEventId": "cmp4wus3b00wu499g4077ws81",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_b0d18fabf0bdc7c7a6659887",
+      "campaignEventId": "cmp4wsk25002n499g1str8qbj",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_9cf4ddd5044da0dff643b203",
+      "campaignEventId": "cmp4wsk25002n499g1str8qbj",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_f6b600b3412a05ee1f2d58a1",
+      "campaignEventId": "cmp4wsk25002n499g1str8qbj",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_6ecf94a9fe7448c09536f17e",
+      "campaignEventId": "cmp4wsk25002n499g1str8qbj",
+      "role": "table_captain",
+      "status": "needed",
+      "notes": "Confirm table permission, setup, and teardown."
+    },
+    {
+      "id": "staff_516a3718dcf70b7868278bac",
+      "campaignEventId": "cmp4wsk25002n499g1str8qbj",
+      "role": "materials_captain",
+      "status": "needed",
+      "notes": "Pack, track, and return event materials."
+    },
+    {
+      "id": "staff_2d67bc61d0562f43b945845e",
+      "campaignEventId": "cmp4wsk25002n499g1str8qbj",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_af22f1957f45087eeb4e3e75",
+      "campaignEventId": "cmp4wurp000wp499g0uf1nev0",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_e3050dbf3ecb7d4a60422081",
+      "campaignEventId": "cmp4wurp000wp499g0uf1nev0",
+      "role": "table_captain",
+      "status": "needed",
+      "notes": "Confirm table permission, setup, and teardown."
+    },
+    {
+      "id": "staff_0ea5e9f110fe918055bc7e65",
+      "campaignEventId": "cmp4wurp000wp499g0uf1nev0",
+      "role": "materials_captain",
+      "status": "needed",
+      "notes": "Pack, track, and return event materials."
+    },
+    {
+      "id": "staff_b8d1aac9656b84c14ecffb77",
+      "campaignEventId": "cmp4wurp000wp499g0uf1nev0",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_2558cfab21990d01621d0ec9",
+      "campaignEventId": "cmp4wurp000wp499g0uf1nev0",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_30536c68a1f7595bcf56fbf4",
+      "campaignEventId": "cmp4wskin002s499gvfkto2dd",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_30ff1c7f6806a7c81fcb37c5",
+      "campaignEventId": "cmp4wskin002s499gvfkto2dd",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_3b9f7bec8f5223ee83364900",
+      "campaignEventId": "cmp4wskin002s499gvfkto2dd",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_9197873828f57f461fa863b6",
+      "campaignEventId": "cmp4wskws002x499gwpc81wjx",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_7d7976c950e759ed92992e75",
+      "campaignEventId": "cmp4wskws002x499gwpc81wjx",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_72d6eced6cfee5656bba425e",
+      "campaignEventId": "cmp4wskws002x499gwpc81wjx",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_86d10f2406a562481e70ad22",
+      "campaignEventId": "cmp4wskws002x499gwpc81wjx",
+      "role": "table_captain",
+      "status": "needed",
+      "notes": "Confirm table permission, setup, and teardown."
+    },
+    {
+      "id": "staff_c122ee682c8fd24ce33c0853",
+      "campaignEventId": "cmp4wskws002x499gwpc81wjx",
+      "role": "materials_captain",
+      "status": "needed",
+      "notes": "Pack, track, and return event materials."
+    },
+    {
+      "id": "staff_f8368275079fe4b685344a40",
+      "campaignEventId": "cmp4wskws002x499gwpc81wjx",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_44254176c97fa8e446e60601",
+      "campaignEventId": "cmp4wushp00wz499gfvghncgg",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_90ccbf3ec9acd22fd6b2cd01",
+      "campaignEventId": "cmp4wushp00wz499gfvghncgg",
+      "role": "table_captain",
+      "status": "needed",
+      "notes": "Confirm table permission, setup, and teardown."
+    },
+    {
+      "id": "staff_115ad909b51a2cef55f6d6f4",
+      "campaignEventId": "cmp4wushp00wz499gfvghncgg",
+      "role": "materials_captain",
+      "status": "needed",
+      "notes": "Pack, track, and return event materials."
+    },
+    {
+      "id": "staff_dd8dd7f8cefbbb9d7460f0ca",
+      "campaignEventId": "cmp4wushp00wz499gfvghncgg",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_a9cc395fc57da5c670a73ec9",
+      "campaignEventId": "cmp4wushp00wz499gfvghncgg",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_f198a024e0351dc3f8e278f7",
+      "campaignEventId": "cmp4wsldm0032499g00otpuvc",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_aad25e3887e5051eb6572b9b",
+      "campaignEventId": "cmp4wsldm0032499g00otpuvc",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_15ce1040eca1e207927fa8d2",
+      "campaignEventId": "cmp4wsldm0032499g00otpuvc",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_993c91117605f0c19f809e61",
+      "campaignEventId": "cmp4wsldm0032499g00otpuvc",
+      "role": "county_party_contact",
+      "status": "needed",
+      "notes": "Confirm county party or local surrogate coverage."
+    },
+    {
+      "id": "staff_5676702eed94e7eb96ce17b0",
+      "campaignEventId": "cmp4wut7t00x9499gg1k9l5qq",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_f2ece4ef0aee28260d234142",
+      "campaignEventId": "cmp4wut7t00x9499gg1k9l5qq",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_177ae5fc6fbe689420f1cca2",
+      "campaignEventId": "cmp4wut7t00x9499gg1k9l5qq",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_55fb94898194ee70f0635d05",
+      "campaignEventId": "cmp4wslrz0037499g9aa522cy",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_96d1b858140161552374c17a",
+      "campaignEventId": "cmp4wslrz0037499g9aa522cy",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_43db7a8d9d35596be0f088c9",
+      "campaignEventId": "cmp4wslrz0037499g9aa522cy",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_ab3a412e716f4bbb1ab22af0",
+      "campaignEventId": "cmp4wslrz0037499g9aa522cy",
+      "role": "county_party_contact",
+      "status": "needed",
+      "notes": "Confirm county party or local surrogate coverage."
+    },
+    {
+      "id": "staff_6e0d23048824e947ad575b2e",
+      "campaignEventId": "cmp4wutlx00xe499gkeyezk6p",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_b1896fdbcea21320de9c90b3",
+      "campaignEventId": "cmp4wutlx00xe499gkeyezk6p",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_9663a2eb894ad84108cb7d4f",
+      "campaignEventId": "cmp4wutlx00xe499gkeyezk6p",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_9cf5998312df73c80c3f76c9",
+      "campaignEventId": "cmp4wuu0b00xj499gloezp251",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_6154226eefb05d21845dbade",
+      "campaignEventId": "cmp4wuu0b00xj499gloezp251",
+      "role": "table_captain",
+      "status": "needed",
+      "notes": "Confirm table permission, setup, and teardown."
+    },
+    {
+      "id": "staff_b03e586f399c08553ce73e11",
+      "campaignEventId": "cmp4wuu0b00xj499gloezp251",
+      "role": "materials_captain",
+      "status": "needed",
+      "notes": "Pack, track, and return event materials."
+    },
+    {
+      "id": "staff_439149c7859b977108a134b0",
+      "campaignEventId": "cmp4wuu0b00xj499gloezp251",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_f766a70b898eba46cce85695",
+      "campaignEventId": "cmp4wuu0b00xj499gloezp251",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_3119c45381dd83b9103552a3",
+      "campaignEventId": "cmp4wsm61003c499glk67umya",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_5b8d8eece2bd7302b9e9a9b5",
+      "campaignEventId": "cmp4wsm61003c499glk67umya",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_81869445b1cad21706117a5b",
+      "campaignEventId": "cmp4wsm61003c499glk67umya",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_722dc3f0edfb296c19d36ff4",
+      "campaignEventId": "cmp4wsm61003c499glk67umya",
+      "role": "table_captain",
+      "status": "needed",
+      "notes": "Confirm table permission, setup, and teardown."
+    },
+    {
+      "id": "staff_4d15461aa2986c56bd8f8e23",
+      "campaignEventId": "cmp4wsm61003c499glk67umya",
+      "role": "materials_captain",
+      "status": "needed",
+      "notes": "Pack, track, and return event materials."
+    },
+    {
+      "id": "staff_0eafa82c5c2a285b106a1103",
+      "campaignEventId": "cmp4wsm61003c499glk67umya",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_895244c206f5b6b91d980ac9",
+      "campaignEventId": "cmp4wsmk4003h499g5j8d2ymm",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_289a6e4d41c98053a515cb03",
+      "campaignEventId": "cmp4wsmk4003h499g5j8d2ymm",
+      "role": "table_captain",
+      "status": "needed",
+      "notes": "Confirm table permission, setup, and teardown."
+    },
+    {
+      "id": "staff_3db1054a14dc56b6146ffd35",
+      "campaignEventId": "cmp4wsmk4003h499g5j8d2ymm",
+      "role": "materials_captain",
+      "status": "needed",
+      "notes": "Pack, track, and return event materials."
+    },
+    {
+      "id": "staff_c5da154396d99b76204dca38",
+      "campaignEventId": "cmp4wsmk4003h499g5j8d2ymm",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_cd66dbbef7edb1eee7a540ac",
+      "campaignEventId": "cmp4wsmk4003h499g5j8d2ymm",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_84795f614dedf0014cf6f8d8",
+      "campaignEventId": "cmp4wuv3g00xx499gy8urj5ly",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_b553547f1a282777e43a5f4b",
+      "campaignEventId": "cmp4wuv3g00xx499gy8urj5ly",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_42129ced8fe39555c72f03d3",
+      "campaignEventId": "cmp4wuv3g00xx499gy8urj5ly",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_cf67228397230cf58fd76c20",
+      "campaignEventId": "cmp4wsndx003r499gyqwrkf8a",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_64de247ba9603d136716b697",
+      "campaignEventId": "cmp4wsndx003r499gyqwrkf8a",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_dd0c75dd0c9667ae5977f4f8",
+      "campaignEventId": "cmp4wsndx003r499gyqwrkf8a",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_4d12228c47207c31858c92b2",
+      "campaignEventId": "cmp4wsndx003r499gyqwrkf8a",
+      "role": "county_party_contact",
+      "status": "needed",
+      "notes": "Confirm county party or local surrogate coverage."
+    },
+    {
+      "id": "staff_b1fd9712cdacc23c310efd6e",
+      "campaignEventId": "cmp4wsnuq003w499g54dyfyy8",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_52da79087bbd8ebcf5f3e643",
+      "campaignEventId": "cmp4wsnuq003w499g54dyfyy8",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_6465a1e95255b10f963e8f79",
+      "campaignEventId": "cmp4wsnuq003w499g54dyfyy8",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_4c9f951e8f13da8975b58586",
+      "campaignEventId": "cmp4wuvfb00y2499gk5w1fthu",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_89c21fdc303eee17865d0c26",
+      "campaignEventId": "cmp4wuvfb00y2499gk5w1fthu",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_37080fb9dfdd49627cb2fc1e",
+      "campaignEventId": "cmp4wuvfb00y2499gk5w1fthu",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_7170da27b99d86b0a99e468c",
+      "campaignEventId": "cmp4wso910041499gqrxfodm3",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_bcc46fe9ac3179f23b52fe00",
+      "campaignEventId": "cmp4wso910041499gqrxfodm3",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_06e329cd810ae1dad449cb94",
+      "campaignEventId": "cmp4wso910041499gqrxfodm3",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_f66650c6f6e66081e7254e44",
+      "campaignEventId": "cmp4wso910041499gqrxfodm3",
+      "role": "table_captain",
+      "status": "needed",
+      "notes": "Confirm table permission, setup, and teardown."
+    },
+    {
+      "id": "staff_54021be943a19809144ecf83",
+      "campaignEventId": "cmp4wso910041499gqrxfodm3",
+      "role": "materials_captain",
+      "status": "needed",
+      "notes": "Pack, track, and return event materials."
+    },
+    {
+      "id": "staff_ff2d83d0e73cd4daf50fad1e",
+      "campaignEventId": "cmp4wso910041499gqrxfodm3",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_0e99a10c7f4876988aaf1f3c",
+      "campaignEventId": "cmp4wsond0046499gyor62d96",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_585c47f6890bbc6e7009c0ef",
+      "campaignEventId": "cmp4wsond0046499gyor62d96",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_17a552930590a8dd50e1d593",
+      "campaignEventId": "cmp4wsond0046499gyor62d96",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_fbc9bc140f9019ebc8fbf562",
+      "campaignEventId": "cmp4wsond0046499gyor62d96",
+      "role": "table_captain",
+      "status": "needed",
+      "notes": "Confirm table permission, setup, and teardown."
+    },
+    {
+      "id": "staff_fe8e09bfe54aa48b9d131cbe",
+      "campaignEventId": "cmp4wsond0046499gyor62d96",
+      "role": "materials_captain",
+      "status": "needed",
+      "notes": "Pack, track, and return event materials."
+    },
+    {
+      "id": "staff_726900627bf6607edf005b40",
+      "campaignEventId": "cmp4wsond0046499gyor62d96",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_42423f38237db8dc2388800a",
+      "campaignEventId": "cmp4wspid004g499gmgfpalbo",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_2385b5c7bdde69790d2830e6",
+      "campaignEventId": "cmp4wspid004g499gmgfpalbo",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_9664e33273fe1927619dabfa",
+      "campaignEventId": "cmp4wspid004g499gmgfpalbo",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_3a8e97455543f7ca0c3f0a28",
+      "campaignEventId": "cmp4wspid004g499gmgfpalbo",
+      "role": "table_captain",
+      "status": "needed",
+      "notes": "Confirm table permission, setup, and teardown."
+    },
+    {
+      "id": "staff_2407bc7fee5c7e3d68d32742",
+      "campaignEventId": "cmp4wspid004g499gmgfpalbo",
+      "role": "materials_captain",
+      "status": "needed",
+      "notes": "Pack, track, and return event materials."
+    },
+    {
+      "id": "staff_a1c7b2aed105bfd4d8fcef7a",
+      "campaignEventId": "cmp4wspid004g499gmgfpalbo",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_563b68a3bfc6671855305007",
+      "campaignEventId": "cmp4wspws004l499gvfsbe68a",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_16fa02acbaeb503a4851a305",
+      "campaignEventId": "cmp4wspws004l499gvfsbe68a",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_f0c2e622303f0c91efb9736b",
+      "campaignEventId": "cmp4wspws004l499gvfsbe68a",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_f5c93157a9d9306ca4620ddd",
+      "campaignEventId": "cmp4wuvtr00y7499g749lle6k",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_151a5e4d55a2c8b987043811",
+      "campaignEventId": "cmp4wuvtr00y7499g749lle6k",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_a5fc1fc314b0eead7d7ae698",
+      "campaignEventId": "cmp4wuvtr00y7499g749lle6k",
+      "role": "general_volunteer",
+      "status": "needed",
+      "notes": "General volunteer slot 1."
+    },
+    {
+      "id": "staff_d4c0f915ffb8c28bc8ca406b",
+      "campaignEventId": "cmp4wsqbe004q499g7ldbfc7f",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_286e2cf2c34f4d5163b47a57",
+      "campaignEventId": "cmp4wsqbe004q499g7ldbfc7f",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_3887d723d90864ee932866a6",
+      "campaignEventId": "cmp4wsqbe004q499g7ldbfc7f",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_8db1160c43dac1f18b3c3c04",
+      "campaignEventId": "cmp4wsqbe004q499g7ldbfc7f",
+      "role": "table_captain",
+      "status": "needed",
+      "notes": "Confirm table permission, setup, and teardown."
+    },
+    {
+      "id": "staff_1e23d12bc9511938af09b6ee",
+      "campaignEventId": "cmp4wsqbe004q499g7ldbfc7f",
+      "role": "materials_captain",
+      "status": "needed",
+      "notes": "Pack, track, and return event materials."
+    },
+    {
+      "id": "staff_ef54260555417b9079731e45",
+      "campaignEventId": "cmp4wsqbe004q499g7ldbfc7f",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    },
+    {
+      "id": "staff_f80ae9c0132bf557c3a17ba8",
+      "campaignEventId": "cmp4wsqpj004v499gpf2okf21",
+      "role": "staff_owner",
+      "status": "needed",
+      "notes": "Own event readiness, staff next actions, and post-event follow-up."
+    },
+    {
+      "id": "staff_7e74c1e5775ec87c6b6268e2",
+      "campaignEventId": "cmp4wsqpj004v499gpf2okf21",
+      "role": "volunteer_lead",
+      "status": "needed",
+      "notes": "Recruit or confirm volunteer lead before this event is ready."
+    },
+    {
+      "id": "staff_8d7c6e6f7387090ec703f672",
+      "campaignEventId": "cmp4wsqpj004v499gpf2okf21",
+      "role": "local_host",
+      "status": "needed",
+      "notes": "Find local host or guide who can orient volunteers."
+    },
+    {
+      "id": "staff_211738de8007ba7ceb20b53a",
+      "campaignEventId": "cmp4wsqpj004v499gpf2okf21",
+      "role": "table_captain",
+      "status": "needed",
+      "notes": "Confirm table permission, setup, and teardown."
+    },
+    {
+      "id": "staff_eb40c5c0e3cd8e98ca2d6c45",
+      "campaignEventId": "cmp4wsqpj004v499gpf2okf21",
+      "role": "materials_captain",
+      "status": "needed",
+      "notes": "Pack, track, and return event materials."
+    },
+    {
+      "id": "staff_f8f46398f76729790c28e96f",
+      "campaignEventId": "cmp4wsqpj004v499gpf2okf21",
+      "role": "photographer_social",
+      "status": "needed",
+      "notes": "Capture photos and quick notes for follow-up."
+    }
+  ]
+}

@@ -15,6 +15,15 @@ export function buildEventCoveragePlanToolOutput(eventId: string, repoRoot?: str
       pushCards: plan.materials.pushCards,
       fans: plan.materials.fans,
       shirts: plan.shirtsNeeded,
+      brandedMints: plan.materials.brandedMints,
+      fourFootTablecloths: plan.materials.fourFootTablecloths,
+      pullUpBanners: plan.materials.pullUpBanners,
+      signupSheets: plan.materials.signupSheets ?? 0,
+      clipboards: plan.materials.clipboards ?? 0,
+      pens: plan.materials.pens ?? 0,
+      qrCodeCards: plan.materials.qrCodeCards ?? 0,
+      yardSigns: plan.materials.yardSigns ?? 0,
+      voterRegistrationForms: plan.materials.voterRegistrationForms ?? 0,
     },
     tablingRecommendation: plan.tableNeeded
       ? plan.tableStatus === "needs_permission"

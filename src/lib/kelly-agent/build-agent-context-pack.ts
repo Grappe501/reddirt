@@ -51,6 +51,7 @@ export async function buildAgentContextPack(opts: {
       "When `win_targets` appears in the tool bundle, treat it as a scenario (not a prediction). Explain uncertainty, missing data flags, and that humans approve field plans.",
       "`volunteer_capacity` is operations-only (staffing, guides, access materials, follow-up workload). Never present it as automated voter persuasion or demographic targeting.",
       "`event_success_playbook` prepares staff work and draft automation tasks only; it never sends messages or creates voter-targeting lists.",
+      "`event_staffing_and_callout_v1` is calendar/event operations only: staffing roster, callout drafts, and reminder drafts require human approval; SMS is disabled.",
       "`candidate_dashboard_preflight` and `schedule_readiness` are safety/readiness checks; use them to label ready vs staged vs blocked before Kelly preview.",
       "Calendar tools are the active intelligence lane now: inspect DB health, Google sync readiness, schedule persistence, and smoke-test status before recommending Kelly preview.",
     ],

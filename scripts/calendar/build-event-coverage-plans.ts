@@ -39,6 +39,15 @@ function stats(plans: CampaignEventCoveragePlan[]): EventCoveragePlansFile["stat
       pushCards: plans.reduce((sum, p) => sum + p.materials.pushCards, 0),
       fans: plans.reduce((sum, p) => sum + p.materials.fans, 0),
       shirts: plans.reduce((sum, p) => sum + p.shirtsNeeded, 0),
+      brandedMints: plans.reduce((sum, p) => sum + p.materials.brandedMints, 0),
+      fourFootTablecloths: plans.reduce((sum, p) => sum + p.materials.fourFootTablecloths, 0),
+      pullUpBanners: plans.reduce((sum, p) => sum + p.materials.pullUpBanners, 0),
+      signupSheets: plans.reduce((sum, p) => sum + (p.materials.signupSheets ?? 0), 0),
+      clipboards: plans.reduce((sum, p) => sum + (p.materials.clipboards ?? 0), 0),
+      pens: plans.reduce((sum, p) => sum + (p.materials.pens ?? 0), 0),
+      qrCodeCards: plans.reduce((sum, p) => sum + (p.materials.qrCodeCards ?? 0), 0),
+      yardSigns: plans.reduce((sum, p) => sum + (p.materials.yardSigns ?? 0), 0),
+      voterRegistrationForms: plans.reduce((sum, p) => sum + (p.materials.voterRegistrationForms ?? 0), 0),
     },
   };
 }

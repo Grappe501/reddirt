@@ -627,11 +627,18 @@ export function KellyScheduleSettlementDashboard(props: Props) {
                   </p>
                   {(() => {
                     const cov = coverageByItemId.get(it.id) ?? (it.sourceId ? coverageByItemId.get(it.sourceId) : undefined);
-                    return cov ? (
+                    if (!cov) return null;
+                    const staffingGap = cov.volunteersNeeded;
+                    return (
                       <p className="mt-0.5 font-body text-[10px] text-violet-800">
-                        Coverage: {cov.status.replace(/_/g, " ")} · {cov.volunteersNeeded} volunteers · table {cov.tableStatus.replace(/_/g, " ")}
+                        Coverage: {cov.status === "ready" || cov.status === "covered" ? "ready" : cov.volunteerLeadNeeded ? "needs volunteer lead" : cov.status.replace(/_/g, " ")}
+                        {" · "}
+                        {cov.coverageMode === "local_volunteer_coverage" || cov.coverageMode === "county_party_surrogate" ? "needs local coverage · " : ""}
+                        {cov.tableNeeded ? "table permission needed · " : ""}
+                        {(cov.materials.pushCards > 0 || cov.materials.fans > 0 || cov.materials.brandedMints > 0) ? "materials needed · " : ""}
+                        staffing gap {staffingGap}
                       </p>
-                    ) : null;
+                    );
                   })()}
                 </div>
                 <div className="flex flex-wrap gap-1">
