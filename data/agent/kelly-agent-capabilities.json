@@ -85,5 +85,61 @@
     ],
     "humanOverrideRequired": true,
     "status": "file_staged"
+  },
+  {
+    "id": "gotv_commitment_allocation_v1",
+    "name": "GOTV commitment allocation",
+    "addedAt": "2026-05-14T00:00:00.000Z",
+    "category": "field_operations",
+    "description": "County-level allocation of the 5,000 opt-in GOTV commitment-card goal with explainable county target percentages, house-party goals, and capacity workload. Not voter-level targeting.",
+    "inputSources": [
+      "CountyCampaignStats.registrationGoal",
+      "CountyCampaignStats.volunteerTarget",
+      "CountyCampaignStats.volunteerCount",
+      "data/election/kelly-win-target-scenario-v1.json",
+      "data/field-ops/volunteer-capacity-model-v1.json"
+    ],
+    "outputUsedBy": [
+      "/admin/calendar-command-center/gotv",
+      "Kelly agent tools",
+      "Candidate dashboard progress bar"
+    ],
+    "humanOverrideRequired": true,
+    "status": "file_staged"
+  },
+  {
+    "id": "event_success_playbook_v1",
+    "name": "Event success playbook",
+    "addedAt": "2026-05-14T00:00:00.000Z",
+    "category": "field_operations",
+    "description": "Prepares staff work for event success: host confirmation, guide coverage, volunteer staffing, commitment-card ask, access support, post-event follow-up, and draft automation tasks. Does not send messages.",
+    "inputSources": [
+      "calendar window",
+      "data/field-ops/volunteer-capacity-model-v1.json",
+      "data/field-ops/gotv-commitment-allocation-v1.json"
+    ],
+    "outputUsedBy": [
+      "event drill-down",
+      "Kelly agent event_success_playbook tool"
+    ],
+    "humanOverrideRequired": true,
+    "status": "file_staged"
+  },
+  {
+    "id": "automation_recommendation_queue_v1",
+    "name": "Automation recommendation queue",
+    "addedAt": "2026-05-14T00:00:00.000Z",
+    "category": "field_operations",
+    "description": "Staged prepare-only queue for suggested email/SMS/phone/task automations with opt-in, STOP/unsubscribe, consent source, suppression, owner, and human approval gates.",
+    "inputSources": [
+      "data/field-ops/automation-recommendations.staged.json",
+      "event_success_playbook_v1"
+    ],
+    "outputUsedBy": [
+      "/admin/calendar-command-center/gotv",
+      "staff review queue"
+    ],
+    "humanOverrideRequired": true,
+    "status": "file_staged"
   }
 ]

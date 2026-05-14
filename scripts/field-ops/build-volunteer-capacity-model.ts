@@ -9,12 +9,14 @@ import { mkdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
 import path from "node:path";
 
 import { ARKANSAS_COUNTY_REGISTRY } from "../../src/lib/county/arkansas-county-registry";
+import { loadCountyCampaignStatsSource } from "../../src/lib/field-ops/county-campaign-stats-source";
 import { buildVolunteerCapacityModel } from "../../src/lib/field-ops/build-volunteer-capacity-model";
 import type { CommunityOpportunity } from "../../src/lib/opportunities/community-opportunity-types";
 import type { CountyPrioritySnapshotRow } from "../../src/lib/calendar/campaign-calendar-item";
 import type { CountyVolunteerCapacityRow } from "../../src/lib/field-ops/volunteer-capacity-types";
 import type { KellyWinTargetScenarioFile } from "../../src/lib/election-targets/win-target-types";
 import type { VolunteerRosterLite, AcsContextLite, WinTargetLite, PriorityLite } from "../../src/lib/field-ops/build-volunteer-capacity-model";
+import type { CountyCampaignStatsSourceRow } from "../../src/lib/field-ops/county-campaign-stats-source";
 
 const ROOT = process.cwd();
 const OUT = path.join(ROOT, "data/field-ops");
@@ -97,28 +99,47 @@ function ensureTemplateAcs() {
   );
 }
 
-function main() {
+async function main() {
   mkdirSync(OUT, { recursive: true });
   ensureTemplateVolunteerRoster();
   ensureTemplateAcs();
 
   const counties = ARKANSAS_COUNTY_REGISTRY.map((c) => shortCounty(c.displayName));
+  const warnings: string[] = [];
+  let dbStats = new Map<string, CountyCampaignStatsSourceRow>();
+  try {
+    const { PrismaClient } = await import("@prisma/client");
+    const prisma = new PrismaClient();
+    const loaded = await loadCountyCampaignStatsSource(prisma);
+    await prisma.$disconnect();
+    if (loaded.warning) warnings.push(loaded.warning);
+    dbStats = new Map(loaded.rows.map((r) => [r.county, r]));
+  } catch (e) {
+    warnings.push(`CountyCampaignStats lookup skipped; staged field-ops inputs used (${e instanceof Error ? e.message : "unknown error"}).`);
+  }
 
   const winFile = readJson<KellyWinTargetScenarioFile>(WIN);
   const winByCounty = new Map<string, WinTargetLite>();
   for (const row of winFile?.counties ?? []) {
+    const db = dbStats.get(normCountyKey(row.county));
     winByCounty.set(normCountyKey(row.county), {
       targetVotes: row.targetVotes,
       targetVoteGain: row.targetVoteGain,
-      registrationGoal: row.registrationGoal,
+      registrationGoal: db?.registrationGoal ?? row.registrationGoal,
     });
+  }
+  for (const [county, db] of dbStats) {
+    if (!winByCounty.has(county) && typeof db.registrationGoal === "number") {
+      winByCounty.set(county, { targetVotes: 0, targetVoteGain: 0, registrationGoal: db.registrationGoal });
+    }
   }
 
   const priRows = readJson<CountyPrioritySnapshotRow[]>(PRI) ?? [];
   const prioritiesByCounty = new Map<string, PriorityLite>();
   for (const p of priRows) {
+    const db = dbStats.get(normCountyKey(p.county));
     prioritiesByCounty.set(normCountyKey(p.county), {
-      pastTouchesSinceNov1: p.pastTouchesSinceNov1,
+      pastTouchesSinceNov1: db?.campaignVisits ?? p.pastTouchesSinceNov1,
       nextScheduledAnchor: p.nextScheduledAnchor,
       fewOpportunities: p.fewOpportunities,
       underTouched: p.underTouched,
@@ -164,6 +185,18 @@ function main() {
   for (const r of rosterFile?.rows ?? []) {
     if (r?.county) volunteerRosterByCounty.set(normCountyKey(r.county), r);
   }
+  for (const [county, db] of dbStats) {
+    const existing = volunteerRosterByCounty.get(county) ?? {};
+    volunteerRosterByCounty.set(county, {
+      ...existing,
+      currentVolunteerCount: db.volunteerCount ?? existing.currentVolunteerCount,
+      activeVolunteerCount: db.volunteerCount ?? existing.activeVolunteerCount,
+      trainedVolunteerCount: existing.trainedVolunteerCount,
+      housePartyHostsKnown: existing.housePartyHostsKnown,
+      localGuidesKnown: existing.localGuidesKnown,
+      bilingualSupportKnown: existing.bilingualSupportKnown,
+    });
+  }
 
   const acsFile = readJson<{ rows?: (AcsContextLite & { county: string })[] }>(ACS);
   const acsByCounty = new Map<string, AcsContextLite>();
@@ -182,6 +215,7 @@ function main() {
     volunteerRosterByCounty,
     acsByCounty,
   });
+  model.warnings = [...new Set([...model.warnings, ...warnings])];
 
   const outJson = path.join(OUT, "volunteer-capacity-model-v1.json");
   writeFileSync(outJson, JSON.stringify(model, null, 2), "utf8");
@@ -198,6 +232,8 @@ function main() {
     hispanicCommunityAccessNeed: c.hispanicCommunityAccessNeed,
     campusYouthAccessNeed: c.campusYouthAccessNeed ?? "",
     seniorCommunityAccessNeed: c.seniorCommunityAccessNeed ?? "",
+    countyVolunteerNeedPct: c.countyVolunteerNeedPct?.toFixed(2),
+    countyVolunteerNeedFormula: c.countyVolunteerNeedFormula,
     confidence: c.confidence,
     missingData: c.missingData.join("|"),
   }));
@@ -207,4 +243,7 @@ function main() {
   console.log(`Wrote ${outJson} and CSV (${model.counties.length} counties).`);
 }
 
-main();
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

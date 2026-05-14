@@ -29,9 +29,12 @@ function clamp01(n: number): number {
 }
 
 function mergeConfig(partial?: Partial<WinTargetModelConfig>): WinTargetModelConfig {
+  const clean = Object.fromEntries(
+    Object.entries(partial ?? {}).filter(([, value]) => value !== undefined),
+  ) as Partial<WinTargetModelConfig>;
   return {
     ...DEFAULT_WIN_TARGET_CONFIG,
-    ...partial,
+    ...clean,
     capacityWeights: {
       ...DEFAULT_WIN_TARGET_CONFIG.capacityWeights,
       ...partial?.capacityWeights,

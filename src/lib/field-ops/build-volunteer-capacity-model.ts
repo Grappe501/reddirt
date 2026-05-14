@@ -200,6 +200,15 @@ export function buildVolunteerCapacityModel(input: VolunteerCapacityBuildInput):
         0.1 * localInfrastructureGap +
         0.1 * accessSupportNeed,
     );
+    const countyVolunteerNeedWeight = coverageNeedScore;
+    const countyVolunteerNeedPct = countyVolunteerNeedWeight * 100;
+    const countyVolunteerNeedFormula =
+      `0.25*targetGain(${normalizedTargetVoteGain.toFixed(3)}) + ` +
+      `0.20*regGoal(${normalizedRegistrationGoal.toFixed(3)}) + ` +
+      `0.20*opportunity(${opportunityLoadScore.toFixed(3)}) + ` +
+      `0.15*lowTouch(${lowTouchPenalty.toFixed(3)}) + ` +
+      `0.10*localGap(${localInfrastructureGap.toFixed(3)}) + ` +
+      `0.10*access(${accessSupportNeed.toFixed(3)})`;
 
     const eventStaffingNeed = Math.ceil(highVal * assumptions.eventVolunteerMinimum);
     const housePartyHostNeed = Math.ceil(coverageNeedScore * 6);
@@ -235,6 +244,9 @@ export function buildVolunteerCapacityModel(input: VolunteerCapacityBuildInput):
       registrationGoal,
       touchCountSinceNov1,
       nextScheduledVisit,
+      countyVolunteerNeedWeight,
+      countyVolunteerNeedPct,
+      countyVolunteerNeedFormula,
       currentVolunteerCount: roster.currentVolunteerCount,
       activeVolunteerCount: roster.activeVolunteerCount,
       trainedVolunteerCount: roster.trainedVolunteerCount,

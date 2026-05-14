@@ -45,6 +45,9 @@ export type CountyVolunteerCapacityRow = {
   registrationGoal?: number;
   touchCountSinceNov1?: number;
   nextScheduledVisit?: string;
+  countyVolunteerNeedWeight?: number;
+  countyVolunteerNeedPct?: number;
+  countyVolunteerNeedFormula?: string;
 
   currentVolunteerCount?: number;
   activeVolunteerCount?: number;

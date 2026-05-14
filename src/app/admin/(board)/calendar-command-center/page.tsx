@@ -9,6 +9,7 @@ import { loadPublicScheduleShadowCalendarItems } from "@/lib/calendar/public-sch
 import { loadKellyCockpitBundle } from "@/lib/calendar/kelly-cockpit-data";
 import { loadKellyWinTargetScenarioFile } from "@/lib/election-targets/load-win-target-scenario";
 import { loadVolunteerCapacityModelFile } from "@/lib/field-ops/load-volunteer-capacity-model";
+import { loadGotvCommitmentAllocationFile } from "@/lib/field-ops/load-gotv-commitment-allocation";
 
 export const dynamic = "force-dynamic";
 
@@ -21,6 +22,7 @@ export default async function CalendarCommandCenterPage() {
   const bundle = await loadKellyCockpitBundle();
   const winTargetScenario = loadKellyWinTargetScenarioFile();
   const volunteerCapacityModel = loadVolunteerCapacityModelFile();
+  const gotvAllocation = loadGotvCommitmentAllocationFile();
 
   return (
     <div className="space-y-4">
@@ -62,6 +64,10 @@ export default async function CalendarCommandCenterPage() {
             Field ops
           </Link>{" "}
           ·{" "}
+          <Link className="font-semibold text-kelly-text underline-offset-2 hover:underline" href="/admin/calendar-command-center/gotv">
+            GOTV
+          </Link>{" "}
+          ·{" "}
           <Link className="font-semibold text-kelly-text underline-offset-2 hover:underline" href="/admin/calendar-command-center/build-status">
             Build status
           </Link>{" "}
@@ -82,6 +88,7 @@ export default async function CalendarCommandCenterPage() {
           dbError={bundle.dbError}
           winTargetScenario={winTargetScenario}
           volunteerCapacityModel={volunteerCapacityModel}
+          gotvAllocation={gotvAllocation}
         >
           <div className="rounded-lg border border-kelly-text/10 bg-kelly-wash/60 px-4 py-3 font-body text-xs text-kelly-text/75">
             <p>

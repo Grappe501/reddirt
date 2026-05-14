@@ -7,6 +7,7 @@ import type { AgentContextPack } from "@/lib/kelly-agent/agent-context-pack";
 import { loadMediaIndexSlice } from "@/lib/kelly-agent/build-agent-context-pack";
 import { loadWinTargetToolOutput } from "@/lib/kelly-agent/tools/win-target-tool";
 import { loadVolunteerCapacityToolOutput } from "@/lib/kelly-agent/tools/volunteer-capacity-tool";
+import { buildEventSuccessPlaybook } from "@/lib/kelly-agent/tools/event-success-playbook-tool";
 
 export type KellyAgentToolTrace = { tool: string; ms: number };
 
@@ -20,6 +21,7 @@ export type KellyAgentToolBundle = {
   approval_recommendation_stub: unknown;
   win_targets: unknown;
   volunteer_capacity: unknown;
+  event_success_playbook: unknown;
 };
 
 export async function runKellyAgentTools(
@@ -98,6 +100,13 @@ export async function runKellyAgentTools(
   };
   trace.push({ tool: "volunteer_capacity", ms: Date.now() - t8 });
 
+  const t9 = Date.now();
+  const event = opts.calendarItemId
+    ? (pack.calendarWindow.items as { id?: string }[]).find((item) => item.id === opts.calendarItemId)
+    : null;
+  const event_success_playbook = buildEventSuccessPlaybook(event);
+  trace.push({ tool: "event_success_playbook", ms: Date.now() - t9 });
+
   return {
     tools: {
       calendar_context,
@@ -109,6 +118,7 @@ export async function runKellyAgentTools(
       approval_recommendation_stub,
       win_targets,
       volunteer_capacity,
+      event_success_playbook,
     },
     trace,
   };

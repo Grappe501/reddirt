@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CockpitEventActions } from "@/components/admin/kelly-calendar-cockpit/CockpitEventActions";
+import { EventSuccessPlaybookPanel } from "@/components/admin/field-ops/EventSuccessPlaybookPanel";
 import { findKellyConfirmedCalendarSource, findKellyTentativeCalendarSource } from "@/lib/calendar/kelly-google-calendar-policy";
 import { loadKellyCockpitBundle } from "@/lib/calendar/kelly-cockpit-data";
 import { loadTravelCalendarItems } from "@/lib/calendar/load-travel-calendar-data";
 import { countyVaultCountyRel, countyVaultEventRel } from "@/lib/kelly-agent/county-vault-paths";
+import { buildEventSuccessPlaybook } from "@/lib/kelly-agent/tools/event-success-playbook-tool";
 
 export const dynamic = "force-dynamic";
 
@@ -28,6 +30,7 @@ export default async function CalendarCommandCenterEventPage({ params }: Props) 
   const dd = item.drillDown;
   const vaultCountyRel = item.county ? countyVaultCountyRel(item.county) : null;
   const vaultEventRel = item.county ? countyVaultEventRel(item.county, item.title, item.start) : null;
+  const eventSuccessPlaybook = buildEventSuccessPlaybook(item);
 
   return (
     <div className="mx-auto max-w-3xl space-y-6">
@@ -190,6 +193,8 @@ export default async function CalendarCommandCenterEventPage({ params }: Props) 
           ) : null}
         </dl>
       </section>
+
+      <EventSuccessPlaybookPanel playbook={eventSuccessPlaybook} />
 
       {dd?.adminLocalGuide?.displayName ? (
         <section className="rounded-lg border border-amber-300/70 bg-amber-50 px-6 py-5 font-body text-sm text-amber-950">

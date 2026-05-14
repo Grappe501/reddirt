@@ -63,6 +63,7 @@
     "ingest:election-results": "tsx scripts/ingest-election-results-json.ts",
     "election:targets:build": "tsx scripts/election-targets/build-kelly-win-targets.ts",
     "fieldops:volunteer-capacity:build": "tsx scripts/field-ops/build-volunteer-capacity-model.ts",
+    "fieldops:gotv-allocation:build": "tsx scripts/field-ops/build-gotv-commitment-allocation.ts",
     "ingest:kellymedia": "tsx scripts/ingest-kellymedia.ts",
     "ingest:campaign-info-folder": "tsx scripts/ingest-campaign-folder.ts --dir \"H:/SOSWebsite/campaign information for ingestion\" --community-training --include-zips --public",
     "ingest:briefings": "tsx scripts/ingest-briefing-zip.ts",

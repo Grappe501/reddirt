@@ -14,6 +14,7 @@ import path from "node:path";
 
 import { ARKANSAS_COUNTY_REGISTRY } from "../../src/lib/county/arkansas-county-registry";
 import { buildWinTargetScenario } from "../../src/lib/election-targets/build-win-target-scenario";
+import { loadCountyCampaignStatsSource } from "../../src/lib/field-ops/county-campaign-stats-source";
 import type { CountyElectionHistoryRow, VoterRegistrationGoalRow } from "../../src/lib/election-targets/win-target-types";
 import type { CountyFactsFileRow } from "../../src/lib/calendar/load-travel-calendar-data";
 import type { CountyPrioritySnapshotRow } from "../../src/lib/calendar/campaign-calendar-item";
@@ -76,7 +77,7 @@ function toCsv(rows: Record<string, string | number | undefined>[]): string {
   return [keys.join(","), ...rows.map((r) => keys.map((k) => esc(r[k])).join(","))].join("\n");
 }
 
-function main() {
+async function main() {
   mkdirSync(OUT_DIR, { recursive: true });
 
   const histPath = path.join(OUT_DIR, "arkansas-county-election-history.normalized.json");
@@ -101,6 +102,25 @@ function main() {
   const registrationGoalsByCounty = new Map<string, VoterRegistrationGoalRow>();
   for (const row of goalsFile?.rows ?? []) {
     if (row?.county) registrationGoalsByCounty.set(row.county, row);
+  }
+  const dbWarnings: string[] = [];
+  try {
+    const { PrismaClient } = await import("@prisma/client");
+    const prisma = new PrismaClient();
+    const stats = await loadCountyCampaignStatsSource(prisma);
+    await prisma.$disconnect();
+    if (stats.warning) dbWarnings.push(stats.warning);
+    for (const row of stats.rows) {
+      if (typeof row.registrationGoal === "number") {
+        registrationGoalsByCounty.set(row.county, {
+          county: row.county,
+          goal: row.registrationGoal,
+          source: "CountyCampaignStats.registrationGoal",
+        });
+      }
+    }
+  } catch (e) {
+    dbWarnings.push(`CountyCampaignStats lookup skipped; using staged JSON fallback (${e instanceof Error ? e.message : "unknown error"}).`);
   }
 
   const priorities = readJson<CountyPrioritySnapshotRow[]>(path.join(CAL, "county-priority-snapshot.json")) ?? [];
@@ -130,6 +150,7 @@ function main() {
     },
   });
 
+  scenario.modelWarnings = [...new Set([...scenario.modelWarnings, ...dbWarnings])];
   writeFileSync(path.join(OUT_DIR, "kelly-win-target-scenario-v1.json"), JSON.stringify(scenario, null, 2), "utf8");
 
   const csvRows = scenario.counties.map((c) => ({
@@ -187,4 +208,7 @@ function main() {
   );
 }
 
-main();
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});
