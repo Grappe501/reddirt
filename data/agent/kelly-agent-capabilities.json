@@ -162,5 +162,24 @@
     ],
     "humanOverrideRequired": true,
     "status": "file_staged"
+  },
+  {
+    "id": "event_outreach_plan_v1",
+    "name": "Event outreach plan",
+    "addedAt": "2026-05-14T02:00:00.000Z",
+    "category": "email_operations",
+    "description": "Suggests human-approved email preparation steps for an event. It never sends email and excludes no-consent or voter-file-only outreach from live defaults.",
+    "inputSources": [
+      "CampaignEvent / staged calendar event",
+      "src/lib/email/build-email-audience.ts",
+      "data/email/email-campaign-drafts.staged.json"
+    ],
+    "outputUsedBy": [
+      "event drill-down",
+      "Kelly agent event_outreach_plan tool",
+      "/admin/calendar-command-center/email"
+    ],
+    "humanOverrideRequired": true,
+    "status": "file_staged"
   }
 ]
