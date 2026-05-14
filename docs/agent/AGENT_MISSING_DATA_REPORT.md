@@ -1,6 +1,6 @@
 # Agent Missing Data Report
 
-Generated: 2026-05-14T04:04:26.406Z
+Generated: 2026-05-14T04:11:13.353Z
 
 1. **MEDIUM / materials**: Unknown on-hand inventory: push_cards
    Fix: Count inventory and update campaign-materials-inventory.json.

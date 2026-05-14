@@ -1,6 +1,11 @@
 import Link from "next/link";
 
 const cards = [
+  {
+    href: "/admin/calendar-command-center",
+    title: "Kelly Calendar Command Center",
+    body: "Candidate cockpit, schedule settlement, coverage plans, event staffing, route planning, GOTV goals, and AI readiness.",
+  },
   { href: "/admin/homepage", title: "Homepage", body: "Hero, sections, quotes, featured rails." },
   { href: "/admin/pages", title: "Page copy", body: "Hero text for belief, movement, and pillar pages." },
   { href: "/admin/blog", title: "Blog / Substack", body: "Sync RSS, feature posts, teasers, placement." },
@@ -44,6 +49,16 @@ export default function AdminDashboardPage() {
             Open three-person field playbook
           </Link>{" "}
           — fractal structure, lane guides, weekly huddles, and step-by-step hosting/social/relational playbooks.
+        </div>
+        <div className="rounded-lg border border-kelly-navy/20 bg-kelly-navy/[0.06] px-4 py-3 font-body text-sm text-kelly-text/85">
+          <strong>Kelly Calendar Command Center:</strong>{" "}
+          <Link
+            className="font-semibold text-kelly-slate underline underline-offset-2 hover:text-kelly-navy"
+            href="/admin/calendar-command-center"
+          >
+            Open command center
+          </Link>{" "}
+          — candidate cockpit, schedule settlement, coverage plans, event staffing, route planning, GOTV goals, and AI readiness.
         </div>
       </div>
       <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">

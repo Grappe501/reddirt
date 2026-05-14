@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-05-14T04:04:36.246Z",
+  "generatedAt": "2026-05-14T04:11:24.197Z",
   "branch": "feature/kelly-schedule-settlement-dashboard",
-  "commit": "c638b8b",
+  "commit": "7d8e3b0",
   "overallStatus": "yellow",
   "dashboardReadiness": {
     "status": "yellow",
@@ -399,97 +399,97 @@
       "toolName": "agent:capabilities:validate",
       "exists": true,
       "status": "ok",
-      "lastRun": "2026-05-14T04:04:08.957Z"
+      "lastRun": "2026-05-14T04:10:55.867Z"
     },
     {
       "toolName": "agent:knowledge-index",
       "exists": true,
       "status": "ok",
-      "lastRun": "2026-05-14T04:04:09.662Z"
+      "lastRun": "2026-05-14T04:10:56.647Z"
     },
     {
       "toolName": "agent:readiness",
       "exists": true,
       "status": "ok",
-      "lastRun": "2026-05-14T04:04:11.178Z"
+      "lastRun": "2026-05-14T04:10:58.151Z"
     },
     {
       "toolName": "election:targets:build",
       "exists": true,
       "status": "ok",
-      "lastRun": "2026-05-14T04:04:12.508Z"
+      "lastRun": "2026-05-14T04:10:59.488Z"
     },
     {
       "toolName": "fieldops:volunteer-capacity:build",
       "exists": true,
       "status": "ok",
-      "lastRun": "2026-05-14T04:04:13.872Z"
+      "lastRun": "2026-05-14T04:11:00.806Z"
     },
     {
       "toolName": "fieldops:gotv-allocation:build",
       "exists": true,
       "status": "ok",
-      "lastRun": "2026-05-14T04:04:15.177Z"
+      "lastRun": "2026-05-14T04:11:02.123Z"
     },
     {
       "toolName": "calendar:coverage:build",
       "exists": true,
       "status": "ok",
-      "lastRun": "2026-05-14T04:04:16.768Z"
+      "lastRun": "2026-05-14T04:11:03.651Z"
     },
     {
       "toolName": "calendar:county-link-audit",
       "exists": true,
       "status": "ok",
-      "lastRun": "2026-05-14T04:04:18.255Z"
+      "lastRun": "2026-05-14T04:11:05.135Z"
     },
     {
       "toolName": "calendar:staffing:build",
       "exists": true,
       "status": "ok",
-      "lastRun": "2026-05-14T04:04:19.618Z"
+      "lastRun": "2026-05-14T04:11:06.483Z"
     },
     {
       "toolName": "calendar:callouts:build",
       "exists": true,
       "status": "ok",
-      "lastRun": "2026-05-14T04:04:20.933Z"
+      "lastRun": "2026-05-14T04:11:07.822Z"
     },
     {
       "toolName": "calendar:reminders:build",
       "exists": true,
       "status": "ok",
-      "lastRun": "2026-05-14T04:04:22.744Z"
+      "lastRun": "2026-05-14T04:11:09.667Z"
     },
     {
       "toolName": "agent:tools:audit",
       "exists": true,
       "status": "ok",
-      "lastRun": "2026-05-14T04:04:23.435Z"
+      "lastRun": "2026-05-14T04:11:10.360Z"
     },
     {
       "toolName": "agent:calendar-intel",
       "exists": true,
       "status": "ok",
-      "lastRun": "2026-05-14T04:04:24.854Z"
+      "lastRun": "2026-05-14T04:11:11.800Z"
     },
     {
       "toolName": "agent:ops-intel",
       "exists": true,
       "status": "ok",
-      "lastRun": "2026-05-14T04:04:25.557Z"
+      "lastRun": "2026-05-14T04:11:12.494Z"
     },
     {
       "toolName": "agent:missing-data",
       "exists": true,
       "status": "ok",
-      "lastRun": "2026-05-14T04:04:27.001Z"
+      "lastRun": "2026-05-14T04:11:13.899Z"
     },
     {
       "toolName": "typecheck",
       "exists": true,
       "status": "ok",
-      "lastRun": "2026-05-14T04:04:36.246Z"
+      "lastRun": "2026-05-14T04:11:24.197Z"
     }
   ],
   "calendarIntelligence": {
@@ -511,7 +511,7 @@
     ]
   },
   "operationsIntelligence": {
-    "generatedAt": "2026-05-14T04:04:25.516Z",
+    "generatedAt": "2026-05-14T04:11:12.455Z",
     "statewideTargetContext": {
       "projectedStatewideVotes": 1507143,
       "legalTarget50Plus1": 753572,

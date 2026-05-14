@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-14T01:43:42.683Z",
+  "generatedAt": "2026-05-14T04:11:00.767Z",
   "modelNote": "County volunteer capacity + community coverage — logistics and access support. Replace unknowns with staff-confirmed roster and ACS-derived context (see docs/field-ops/VOLUNTEER_CAPACITY_MODEL_V1.md).",
   "assumptions": {
     "goodVolunteerWeeklyHours": 3,

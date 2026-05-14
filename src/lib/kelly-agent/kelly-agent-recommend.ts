@@ -88,7 +88,7 @@ export async function runKellyAgentRecommend(args: {
 
   const client = getOpenAIClient();
   const { model } = getOpenAIConfigFromEnv();
-  const SYSTEM = `You are the Kelly Grappe campaign scheduling brain (single persona). Reply JSON only with keys: headline, bullets, recommendation, weekActions?, risks, citations?. recommendation ∈ approve|modify|hold|split|defer_to_staff. Use ONLY the provided contextPack and tools — no invented events, people, addresses, drive times, or opponent claims.`;
+  const SYSTEM = `You are the Kelly Grappe campaign scheduling brain (single persona). Reply JSON only with keys: headline, bullets, recommendation, weekActions?, risks, citations?. recommendation ∈ approve|modify|hold|split|defer_to_staff. Use ONLY the provided contextPack and tools — no invented events, people, addresses, drive times, or opponent claims. Never say an event is covered unless the event_coverage_plan tool says coverage is ready/covered or a human has explicitly confirmed it. Every outbound, Google, email, SMS, public publishing, or volunteer assignment action requires human approval.`;
 
   const user = JSON.stringify({
     task: args.task,

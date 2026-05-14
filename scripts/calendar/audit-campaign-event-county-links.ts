@@ -21,9 +21,14 @@ type UnlinkedRow = {
 
 type CountyRow = { id: string; name: string };
 
+const AMBIGUOUS_STATEWIDE_TERMS = new Set(["Arkansas"]);
+
 function guessCounty(row: UnlinkedRow, counties: CountyRow[]): string | null {
   const haystack = [row.title, row.locationName, row.internalSummary, row.description, row.stagedCounty].filter(Boolean).join(" ").toLowerCase();
-  const exact = counties.find((c) => new RegExp(`\\b${c.name.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`).test(haystack));
+  const exact = counties.find((c) => {
+    if (AMBIGUOUS_STATEWIDE_TERMS.has(c.name) && !/arkansas county/i.test(haystack)) return false;
+    return new RegExp(`\\b${c.name.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`).test(haystack);
+  });
   return exact?.name ?? null;
 }
 

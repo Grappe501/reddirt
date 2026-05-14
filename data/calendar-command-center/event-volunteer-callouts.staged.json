@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-14T03:54:11.778Z",
+  "generatedAt": "2026-05-14T04:11:07.767Z",
   "source": "event_coverage_plans",
   "callouts": [
     {
@@ -19,7 +19,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.769Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.762Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -48,7 +48,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.769Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.762Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -78,7 +78,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.769Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.762Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -109,7 +109,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.770Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.762Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -139,7 +139,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.770Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.762Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -169,7 +169,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.770Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.762Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -199,7 +199,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.771Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.762Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -228,7 +228,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.771Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.763Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -258,7 +258,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.771Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.763Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -288,7 +288,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "staffing_gap",
-      "recommendedSendAt": "2026-05-14T03:54:11.771Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.763Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -317,7 +317,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.771Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.763Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -347,7 +347,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.771Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.763Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -380,7 +380,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "table_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.771Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.763Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -410,7 +410,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.763Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -439,7 +439,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.763Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -468,7 +468,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.763Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -497,7 +497,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.763Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -527,7 +527,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.763Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -556,7 +556,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.763Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -585,7 +585,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.763Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -615,7 +615,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.763Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -644,7 +644,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.763Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -675,7 +675,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.763Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -708,7 +708,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "table_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.763Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -740,7 +740,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "table_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.763Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -770,7 +770,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -801,7 +801,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "staffing_gap",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -831,7 +831,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -860,7 +860,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -889,7 +889,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -919,7 +919,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -949,7 +949,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -979,7 +979,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1009,7 +1009,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1039,7 +1039,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1069,7 +1069,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1099,7 +1099,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1129,7 +1129,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1158,7 +1158,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1188,7 +1188,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1218,7 +1218,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1247,7 +1247,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.772Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1277,7 +1277,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1307,7 +1307,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1337,7 +1337,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "staffing_gap",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1366,7 +1366,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1396,7 +1396,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1426,7 +1426,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1456,7 +1456,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1486,7 +1486,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1516,7 +1516,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.764Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1546,7 +1546,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1576,7 +1576,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1607,7 +1607,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1636,7 +1636,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1665,7 +1665,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1696,7 +1696,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1725,7 +1725,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1756,7 +1756,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1785,7 +1785,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1815,7 +1815,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1845,7 +1845,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1874,7 +1874,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1903,7 +1903,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1932,7 +1932,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1962,7 +1962,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -1991,7 +1991,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.773Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2020,7 +2020,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2051,7 +2051,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2080,7 +2080,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2110,7 +2110,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2141,7 +2141,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2171,7 +2171,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2201,7 +2201,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2230,7 +2230,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2259,7 +2259,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2289,7 +2289,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2319,7 +2319,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2348,7 +2348,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2378,7 +2378,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2407,7 +2407,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "staffing_gap",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.765Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2437,7 +2437,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2467,7 +2467,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2497,7 +2497,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2527,7 +2527,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "staffing_gap",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2558,7 +2558,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "staffing_gap",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2587,7 +2587,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2617,7 +2617,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2648,7 +2648,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "table_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2678,7 +2678,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2708,7 +2708,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2737,7 +2737,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2767,7 +2767,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2796,7 +2796,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.774Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2827,7 +2827,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2857,7 +2857,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2886,7 +2886,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2915,7 +2915,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2944,7 +2944,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -2973,7 +2973,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3003,7 +3003,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3033,7 +3033,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "staffing_gap",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3062,7 +3062,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3092,7 +3092,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3122,7 +3122,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3152,7 +3152,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "staffing_gap",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3182,7 +3182,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3211,7 +3211,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3241,7 +3241,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3271,7 +3271,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3300,7 +3300,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3329,7 +3329,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3358,7 +3358,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3387,7 +3387,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3416,7 +3416,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3445,7 +3445,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3475,7 +3475,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3504,7 +3504,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3533,7 +3533,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3563,7 +3563,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3593,7 +3593,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3623,7 +3623,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3653,7 +3653,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3682,7 +3682,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3711,7 +3711,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.775Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3740,7 +3740,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3769,7 +3769,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3798,7 +3798,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3828,7 +3828,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3860,7 +3860,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "table_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3890,7 +3890,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3922,7 +3922,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "table_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3951,7 +3951,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -3981,7 +3981,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4010,7 +4010,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4042,7 +4042,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "table_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.766Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4072,7 +4072,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4102,7 +4102,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "staffing_gap",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4132,7 +4132,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4161,7 +4161,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4190,7 +4190,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4219,7 +4219,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4248,7 +4248,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4278,7 +4278,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4309,7 +4309,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4341,7 +4341,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "table_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4372,7 +4372,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4402,7 +4402,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4433,7 +4433,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4462,7 +4462,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4493,7 +4493,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4524,7 +4524,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4555,7 +4555,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4586,7 +4586,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4617,7 +4617,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4648,7 +4648,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4677,7 +4677,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4707,7 +4707,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4738,7 +4738,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4767,7 +4767,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.776Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4797,7 +4797,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "staffing_gap",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4828,7 +4828,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "staffing_gap",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4857,7 +4857,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4888,7 +4888,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4918,7 +4918,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4948,7 +4948,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -4979,7 +4979,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5009,7 +5009,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5042,7 +5042,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "table_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5074,7 +5074,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "table_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5107,7 +5107,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "table_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5136,7 +5136,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5167,7 +5167,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5196,7 +5196,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5225,7 +5225,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5255,7 +5255,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5286,7 +5286,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5316,7 +5316,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5347,7 +5347,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5377,7 +5377,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5408,7 +5408,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5439,7 +5439,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5470,7 +5470,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5501,7 +5501,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5531,7 +5531,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5564,7 +5564,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "table_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5594,7 +5594,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5627,7 +5627,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "table_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5659,7 +5659,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "table_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5690,7 +5690,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5723,7 +5723,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "table_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5755,7 +5755,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "table_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5786,7 +5786,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "staffing_gap",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5816,7 +5816,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5847,7 +5847,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "staffing_gap",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5877,7 +5877,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5909,7 +5909,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "table_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5942,7 +5942,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "table_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.777Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -5974,7 +5974,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "table_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.778Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -6004,7 +6004,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.778Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -6035,7 +6035,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "staffing_gap",
-      "recommendedSendAt": "2026-05-14T03:54:11.778Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -6066,7 +6066,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "local_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.778Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -6095,7 +6095,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.778Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -6127,7 +6127,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "table_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.778Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -6159,7 +6159,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "table_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.778Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -6191,7 +6191,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "table_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.778Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -6222,7 +6222,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.778Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -6252,7 +6252,7 @@
       "suggestedAudience": "county_volunteers",
       "status": "needs_approval",
       "messagePurpose": "volunteer_signup",
-      "recommendedSendAt": "2026-05-14T03:54:11.778Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -6284,7 +6284,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "table_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.778Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
@@ -6316,7 +6316,7 @@
       "suggestedAudience": "staff_test",
       "status": "needs_approval",
       "messagePurpose": "table_coverage",
-      "recommendedSendAt": "2026-05-14T03:54:11.778Z",
+      "recommendedSendAt": "2026-05-14T04:11:07.767Z",
       "complianceGate": {
         "emailOptInRequired": true,
         "unsubscribeRequired": true,
