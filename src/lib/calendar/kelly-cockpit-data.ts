@@ -8,9 +8,11 @@ import {
 } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { loadTravelCalendarItems } from "./load-travel-calendar-data";
+import { loadPublicScheduleShadowCalendarItems } from "./public-schedule-shadow-items";
 import { alertsToDto, mergeKellyCockpitData, sortApprovalQueue, todayTomorrowWeekKeys } from "./kelly-cockpit-merge";
 import type { CalendarAlertDto, EnrichedCalendarItem, KellyGoogleCockpitOverlay } from "./kelly-cockpit-types";
 import { dedupeKellyCockpitDisplayItems, enrichedKellyLaneOrphans } from "./kelly-calendar-dedupe";
+import type { CampaignCalendarItem } from "./campaign-calendar-item";
 
 export type KellyCockpitBundle = {
   enriched: EnrichedCalendarItem[];
@@ -202,12 +204,16 @@ async function attachKellyGoogleOverlays(
 
 export async function loadKellyCockpitBundle(): Promise<KellyCockpitBundle> {
   const { todayYmd, tomorrowYmd, weekEndYmd } = todayTomorrowWeekKeys();
-  const items = loadTravelCalendarItems().filter((i) => !i.excludeFromKellyCockpit);
+  const travel = loadTravelCalendarItems().filter((i) => !i.excludeFromKellyCockpit);
+  let shadows: CampaignCalendarItem[] = [];
+  try {
+    shadows = await loadPublicScheduleShadowCalendarItems();
+  } catch {
+    shadows = [];
+  }
+  const items = [...travel, ...shadows];
   try {
     const ids = items.map((i) => i.id);
-    if (ids.length === 0) {
-      return { enriched: [], alerts: [], hasDb: true, todayYmd, tomorrowYmd, weekEndYmd };
-    }
     const [decisions, locals, promotions] = await Promise.all([
       prisma.kellyCalendarDecision.findMany({
         where: { calendarItemId: { in: ids } },
@@ -218,11 +224,6 @@ export async function loadKellyCockpitBundle(): Promise<KellyCockpitBundle> {
       }),
       prisma.kellyCalendarPromotion.findMany({
         where: { calendarItemId: { in: ids } },
-      }),
-      prisma.calendarAlert.findMany({
-        where: { calendarItemId: { in: ids }, status: { in: [CalendarAlertStatus.PENDING, CalendarAlertStatus.SNOOZED] } },
-        orderBy: { createdAt: "desc" },
-        take: 400,
       }),
     ]);
     const promoted = new Set(promotions.map((p) => p.calendarItemId));

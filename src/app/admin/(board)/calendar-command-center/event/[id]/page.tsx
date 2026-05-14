@@ -14,11 +14,11 @@ export default async function CalendarCommandCenterEventPage({ params }: Props) 
   const { id } = await params;
   const decoded = decodeURIComponent(id);
   const items = loadTravelCalendarItems();
-  const item = items.find((x) => x.id === decoded);
-  if (!item) notFound();
-
   const bundle = await loadKellyCockpitBundle();
+  const fromTravel = items.find((x) => x.id === decoded);
   const enriched = bundle.enriched.find((x) => x.id === decoded);
+  const item = fromTravel ?? enriched;
+  if (!item) notFound();
 
   const [tentativeSrc, confirmedSrc] = await Promise.all([
     findKellyTentativeCalendarSource(),
@@ -171,6 +171,17 @@ export default async function CalendarCommandCenterEventPage({ params }: Props) 
                       className="font-semibold text-kelly-text underline-offset-2 hover:underline"
                     >
                       Open in Calendar HQ
+                    </Link>
+                  </>
+                ) : null}
+                {dd.matchedDb.kind === "WorkflowIntake" ? (
+                  <>
+                    {" "}
+                    <Link
+                      href="/admin/workbench/calendar/requests"
+                      className="font-semibold text-kelly-text underline-offset-2 hover:underline"
+                    >
+                      Open calendar requests (intake {dd.matchedDb.id})
                     </Link>
                   </>
                 ) : null}

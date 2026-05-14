@@ -3,11 +3,12 @@
  */
 
 /** Primary DB `WorkflowIntake.source` values used in calendar lane queries before payload classification. */
-export const CALENDAR_REQUEST_SOURCE_TYPES = ["host_gathering", "analytics"] as const;
+export const CALENDAR_REQUEST_SOURCE_TYPES = ["host_gathering", "analytics", "public_schedule_request"] as const;
 
 export type CalendarRequestKind =
   | "host_gathering"
   | "analytics_event"
+  | "public_schedule_request"
   | "unknown_event_like"
   | "excluded";
 
@@ -51,6 +52,7 @@ export function isCalendarLikeWorkflowIntake(row: IntakeLike): boolean {
   if (!src) return false;
   if (EXCLUDED_SOURCES.has(src)) return false;
   if (src === "host_gathering") return true;
+  if (src === "public_schedule_request") return true;
   if (src === "analytics") return Boolean(analyticsEventId(row.metadata));
   return false;
 }
@@ -59,6 +61,7 @@ export function getCalendarRequestKind(row: IntakeLike): CalendarRequestKind {
   if (!isCalendarLikeWorkflowIntake(row)) return "excluded";
   const src = row.source?.trim() ?? "";
   if (src === "host_gathering") return "host_gathering";
+  if (src === "public_schedule_request") return "public_schedule_request";
   if (src === "analytics") return "analytics_event";
   return "unknown_event_like";
 }
@@ -66,6 +69,7 @@ export function getCalendarRequestKind(row: IntakeLike): CalendarRequestKind {
 const KIND_LABELS: Record<CalendarRequestKind, string> = {
   host_gathering: "Host gathering",
   analytics_event: "Event request (analytics)",
+  public_schedule_request: "Public schedule request",
   unknown_event_like: "Unknown event-like",
   excluded: "Excluded",
 };
@@ -79,13 +83,16 @@ export function parseCalendarRequestPayload(row: IntakeLike): {
   gatheringType: string | null;
   preferredTiming: string | null;
   analyticsEventId: string | null;
+  publicEventTitle: string | null;
+  publicPreferredDate: string | null;
 } {
   const sd = asObj(row.submission?.structuredData);
-  const meta = asObj(row.metadata);
   return {
     community: typeof sd?.community === "string" ? sd.community : null,
     gatheringType: typeof sd?.gatheringType === "string" ? sd.gatheringType : null,
     preferredTiming: typeof sd?.preferredTiming === "string" ? sd.preferredTiming : null,
     analyticsEventId: analyticsEventId(row.metadata),
+    publicEventTitle: typeof sd?.eventTitle === "string" ? sd.eventTitle : null,
+    publicPreferredDate: typeof sd?.preferredDate === "string" ? sd.preferredDate : null,
   };
 }

@@ -8,7 +8,9 @@ export type CampaignCalendarSource =
   | "spreadsheet"
   | "burt_database"
   | "dpa_county_party"
-  | "manual";
+  | "manual"
+  /** Synthetic rows from `WorkflowIntake` + `EventRequest` (public schedule form); not spreadsheet-backed. */
+  | "public_schedule_request";
 
 export type CampaignCalendarEventType =
   | "county_party_meeting"
@@ -79,7 +81,7 @@ export type CampaignCalendarItem = {
     spreadsheetTab?: string;
     rowHint?: string;
     matchedDb?: {
-      kind: "CampaignEvent" | "ArkansasFestivalIngest" | "GoogleCalendarEventRecord";
+      kind: "CampaignEvent" | "ArkansasFestivalIngest" | "GoogleCalendarEventRecord" | "WorkflowIntake";
       id: string;
       matchReason?: string;
     };

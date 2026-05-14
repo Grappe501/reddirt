@@ -10,6 +10,7 @@ import {
   weekRouteTightness,
 } from "@/lib/calendar/build-week-board-model";
 import { filterCalendarItemsInWindow, loadTravelCalendarItems, travelCalendarDataPresent } from "@/lib/calendar/load-travel-calendar-data";
+import { loadPublicScheduleShadowCalendarItems } from "@/lib/calendar/public-schedule-shadow-items";
 import { getChicagoWeekRange } from "@/lib/calendar/week-view-range";
 import { loadKellyCockpitBundle } from "@/lib/calendar/kelly-cockpit-data";
 
@@ -36,10 +37,12 @@ export default async function CalendarWeekViewPage({ searchParams }: Props) {
     );
   }
 
-  const items = loadTravelCalendarItems();
+  const travel = loadTravelCalendarItems();
+  const shadow = await loadPublicScheduleShadowCalendarItems();
+  const merged = [...travel, ...shadow];
   const startMs = new Date(wr.startIso).getTime();
   const endMs = new Date(wr.endExclusiveIso).getTime();
-  const windowItems = filterCalendarItemsInWindow(items, startMs, endMs);
+  const windowItems = filterCalendarItemsInWindow(merged, startMs, endMs);
   const bundle = await loadKellyCockpitBundle();
   const badgeById = Object.fromEntries(bundle.enriched.map((e) => [e.id, e.cardBadge]));
   const { markers, polyline } = buildWeekMapModel(windowItems, badgeById);

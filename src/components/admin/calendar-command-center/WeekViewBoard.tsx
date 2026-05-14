@@ -79,17 +79,32 @@ export function WeekViewBoard(props: {
               {d.items.length === 0 ? (
                 <p className="font-body text-[10px] text-kelly-text/45">—</p>
               ) : (
-                d.items.map((it: CampaignCalendarItem) => (
+                d.items.map((it: CampaignCalendarItem) => {
+                  const isPublic = it.source === "public_schedule_request";
+                  return (
                   <Link
                     key={it.id}
                     href={`/admin/calendar-command-center/event/${encodeURIComponent(it.id)}`}
-                    className="block rounded-md border border-kelly-text/10 bg-kelly-wash/40 px-2 py-1.5 font-body text-[10px] leading-snug text-kelly-text hover:bg-kelly-wash"
+                    className={`block rounded-md px-2 py-1.5 font-body text-[10px] leading-snug text-kelly-text hover:bg-kelly-wash ${
+                      isPublic
+                        ? "border border-dashed border-amber-800/55 bg-amber-50/70"
+                        : "rounded-md border border-kelly-text/10 bg-kelly-wash/40"
+                    }`}
                   >
                     <span className="font-bold">{new Date(it.start).toLocaleTimeString("en-US", { timeZone: "America/Chicago", hour: "numeric", minute: "2-digit" })}</span>
+                    {isPublic ? (
+                      <span className="mt-0.5 block text-[9px] font-bold uppercase tracking-wide text-amber-950/80">
+                        Public request · not confirmed
+                      </span>
+                    ) : null}
                     <span className="mt-0.5 block text-kelly-text/85">{it.title}</span>
                     <span className="mt-0.5 block text-[9px] uppercase text-kelly-text/50">{it.calendarStatus}</span>
+                    {isPublic && it.notes ? (
+                      <span className="mt-0.5 block text-[9px] text-kelly-text/60">{it.notes}</span>
+                    ) : null}
                   </Link>
-                ))
+                  );
+                })
               )}
             </div>
             <div className="mt-2 space-y-1 border-t border-dashed border-kelly-text/15 pt-2 font-body text-[9px] text-kelly-text/50">

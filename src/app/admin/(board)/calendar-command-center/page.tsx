@@ -5,12 +5,15 @@ import {
   loadTravelCalendarItems,
   travelCalendarDataPresent,
 } from "@/lib/calendar/load-travel-calendar-data";
+import { loadPublicScheduleShadowCalendarItems } from "@/lib/calendar/public-schedule-shadow-items";
 import { loadKellyCockpitBundle } from "@/lib/calendar/kelly-cockpit-data";
 
 export const dynamic = "force-dynamic";
 
 export default async function CalendarCommandCenterPage() {
   const items = loadTravelCalendarItems();
+  const shadowItems = await loadPublicScheduleShadowCalendarItems();
+  const boardItems = [...items, ...shadowItems];
   const countyPriorities = loadCountyPrioritySnapshot();
   const hasData = travelCalendarDataPresent();
   const bundle = await loadKellyCockpitBundle();
@@ -63,7 +66,7 @@ export default async function CalendarCommandCenterPage() {
 
       {hasData ? (
         <DesktopCalendarCommandCenterShell
-          boardItems={items}
+          boardItems={boardItems}
           countyPriorities={countyPriorities}
           enriched={bundle.enriched}
           alerts={bundle.alerts}

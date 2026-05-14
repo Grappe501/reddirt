@@ -30,6 +30,8 @@ export type CalendarRequestRow = {
     community?: string | null;
     gatheringType?: string | null;
     preferredTiming?: string | null;
+    eventTitle?: string | null;
+    preferredDate?: string | null;
   };
   linkedEventId: string | null;
   linkedEventTitle: string | null;
@@ -50,6 +52,8 @@ function pickStructured(obj: Record<string, unknown>) {
     community: typeof obj.community === "string" ? obj.community : null,
     gatheringType: typeof obj.gatheringType === "string" ? obj.gatheringType : null,
     preferredTiming: typeof obj.preferredTiming === "string" ? obj.preferredTiming : null,
+    eventTitle: typeof obj.eventTitle === "string" ? obj.eventTitle : null,
+    preferredDate: typeof obj.preferredDate === "string" ? obj.preferredDate : null,
   };
 }
 

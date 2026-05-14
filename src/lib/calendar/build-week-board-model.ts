@@ -38,6 +38,8 @@ export type WeekMapMarker = {
   lng: number;
   badge: string;
   county?: string;
+  /** Tentative public scheduling requests use a distinct map treatment. */
+  markerKind?: "public_request" | "standard";
 };
 
 function jitter(id: string, lat: number, lng: number): { lat: number; lng: number } {
@@ -66,6 +68,7 @@ export function buildWeekMapModel(
       lng,
       badge: badgeById[it.id] ?? it.calendarStatus,
       county,
+      markerKind: it.source === "public_schedule_request" ? "public_request" : "standard",
     });
     polyline.push([lat, lng]);
   }
