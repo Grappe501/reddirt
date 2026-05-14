@@ -52,11 +52,15 @@ export function mapCalendarStatusToCampaignStatus(
 export async function resolveCalendarCountyId(countyName?: string): Promise<string | null> {
   if (!countyName?.trim()) return null;
   const trimmed = countyName.trim();
-  const direct = await prisma.county.findFirst({
-    where: { displayName: { equals: trimmed, mode: "insensitive" } },
-    select: { id: true },
-  });
-  if (direct) return direct.id;
+  const direct = await prisma.$queryRaw<Array<{ id: string }>>(Prisma.sql`
+    SELECT id::text AS id
+    FROM public.counties
+    WHERE lower(name) = lower(${trimmed})
+       OR lower(name) = lower(${`${trimmed} County`})
+       OR lower(regexp_replace(name, '\\s+County$', '', 'i')) = lower(${trimmed})
+    LIMIT 1
+  `);
+  if (direct[0]?.id) return direct[0].id;
   const first = trimmed.split("/")[0]?.trim();
   if (first && first !== trimmed) return resolveCalendarCountyId(first);
   return null;

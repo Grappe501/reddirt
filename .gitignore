@@ -58,6 +58,9 @@ Thumbs.db
 stack-verify-last-run.txt
 .pnpm-debug.log*
 
+# local database backups (never commit dumps or exported migration tables)
+backups/
+
 # prisma local (if ever used)
 prisma/*.db
 prisma/*.db-journal

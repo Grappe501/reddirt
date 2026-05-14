@@ -1,5 +1,3 @@
-import { createHash } from "node:crypto";
-
 /** Rose Bud, AR — default routing origin when Kelly is home. */
 export const ROSE_BUD: { lat: number; lng: number } = { lat: 35.316, lng: -92.252 };
 
@@ -49,7 +47,11 @@ const SEATS: Record<string, { lat: number; lng: number }> = {
 };
 
 function hashSpread(county: string): { lat: number; lng: number } {
-  const h = parseInt(createHash("sha256").update(county).digest("hex").slice(0, 8), 16);
+  let h = 2166136261;
+  for (let i = 0; i < county.length; i++) {
+    h ^= county.charCodeAt(i);
+    h = Math.imul(h, 16777619) >>> 0;
+  }
   const lat = 33.0 + (h % 2400) / 800;
   const lng = -94.6 - (h % 2000) / 700;
   return { lat, lng };

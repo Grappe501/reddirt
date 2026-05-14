@@ -1,11 +1,10 @@
 {
-  "generatedAt": "2026-05-14T01:51:43.650Z",
+  "generatedAt": "2026-05-14T03:10:39.509Z",
   "overallStatus": "yellow",
   "canSendToKellyTonight": true,
   "recommendedUseMode": "kelly_preview_only",
   "blockers": [],
   "warnings": [
-    "DB-backed cockpit features still marked blocked by migration repair doc",
     "Conflict: Bishop Arnold Magnolia; Tabernacle of Faith Wynne at 3 PM",
     "Conflict: Bishop Arnold magnolia",
     "Conflict: Tabernacle of faith"

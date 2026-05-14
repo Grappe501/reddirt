@@ -1,6 +1,6 @@
 # Calendar Command Center — V2 closeout checklist
 
-This document captures what is **working in code**, what is **file-staged**, what still needs **database / migrations**, **Google live sync**, and what moves to **V3 intelligence**.
+This document captures what is **working in code**, what is **file-staged**, what is now **database-backed**, what still needs **Google live sync**, and what moves to **V3 intelligence**.
 
 ## What works (in repo / file-backed)
 
@@ -18,33 +18,37 @@ This document captures what is **working in code**, what is **file-staged**, wha
 - Schedule settlement staged decisions: **`data/calendar-command-center/schedule-settlement-decisions.staged.json`** (via server actions).
 - **V3 win target scenario** — **`data/election/kelly-win-target-scenario-v1.json`** and CSV export (built by `npm run election:targets:build` when source JSON is present).
 
-## What needs DB
+## DB status
 
-- Prisma-backed **Kelly decisions**, **alerts**, and calendar HQ workflows that depend on migrated schema.
-- **`LocalCoverageRequest.countyId`** must align with **`counties.id`** (UUID) before cockpit-related migrations can apply cleanly on the shared database.
+The Prisma migration blocker is repaired as of 2026-05-13 after a local logical backup was created under `backups/db/` (local only; never commit). `20260518210000_kelly_calendar_cockpit` was marked rolled back, then `prisma migrate deploy` successfully applied the corrected migration.
 
-## What needs migration repair
+Live DB objects:
 
-Blocked migration (known):
+- `CalendarAlert`
+- `KellyCalendarDecision`
+- `KellyCalendarPromotion`
+- `LocalCoverageRequest`
 
-- **`20260518210000_kelly_calendar_cockpit`**
-- **Cause (historical):** `LocalCoverageRequest.countyId` was `TEXT` while `counties.id` is `UUID` (SQL type mismatch).
-- **Repair path (run only with backup authority, prefer `DIRECT_URL` / direct Supabase host over pooler):**
+Live Kelly Google enum labels:
 
-```bash
-npx prisma migrate resolve --rolled-back 20260518210000_kelly_calendar_cockpit
-npx prisma migrate deploy
-npx prisma validate
-npx prisma generate
-npm run typecheck
-```
+- `KELLY_GOOGLE_TENTATIVE`
+- `KELLY_GOOGLE_CONFIRMED`
 
-Do **not** assume production or shared DB is repaired until the above has been executed successfully. Until then, treat **DB-backed cockpit features** as **blocked**.
+Historical cause: the first attempt failed because `LocalCoverageRequest.countyId` was `TEXT` while `counties.id` is `UUID`. The migration SQL now uses `UUID`.
+
+## What still needs activation
+
+- Promote `data/calendar-command-center/calendar-items.normalized.json` into `CampaignEvent` with `npm run calendar:promote-staged-to-db`.
+- Verify the cockpit becomes DB-backed or mixed instead of staged fallback.
+- Identify a Google `CalendarSource` anchor with a refresh token.
+- Run `calendar:google:ensure` to create/find the Kelly Tentative and Confirmed lanes.
+- Run a Google sync smoke test with one low-risk event and confirm no duplicate cockpit row.
+- Resolve current schedule conflicts before treating the dashboard as fully decision-ready.
 
 ## What needs Google live sync
 
 - HQ promotion and two-way sync remain **CLI / scripted** paths (`package.json` `calendar:google:*`). No agent tool autonomously writes Google Calendar.
-- Smoke / orchestration tests that hit live Google should stay **off** until migrations and env are green.
+- Smoke / orchestration tests that hit live Google should stay **off** until the anchor source, refresh token, and Kelly lane `CalendarSource` rows are confirmed.
 
 ## What is deferred to V3
 

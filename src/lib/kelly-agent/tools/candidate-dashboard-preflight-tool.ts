@@ -113,7 +113,10 @@ export async function runCandidateDashboardPreflight(opts: { repoRoot?: string; 
   const migrationDocPath = path.join(repoRoot, "docs/calendar-command-center/V2_CLOSEOUT.md");
   if (existsSync(migrationDocPath)) {
     const migrationDoc = readFileSync(migrationDocPath, "utf8");
-    if (migrationDoc.includes("20260518210000_kelly_calendar_cockpit")) {
+    if (
+      migrationDoc.includes("20260518210000_kelly_calendar_cockpit") &&
+      /blocked|needs migration repair|treat .* as blocked/i.test(migrationDoc)
+    ) {
       warnings.push("DB-backed cockpit features still marked blocked by migration repair doc");
     }
   } else {
