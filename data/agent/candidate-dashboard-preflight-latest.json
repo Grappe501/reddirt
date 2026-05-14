@@ -1,0 +1,82 @@
+{
+  "generatedAt": "2026-05-14T01:51:43.650Z",
+  "overallStatus": "yellow",
+  "canSendToKellyTonight": true,
+  "recommendedUseMode": "kelly_preview_only",
+  "blockers": [],
+  "warnings": [
+    "DB-backed cockpit features still marked blocked by migration repair doc",
+    "Conflict: Bishop Arnold Magnolia; Tabernacle of Faith Wynne at 3 PM",
+    "Conflict: Bishop Arnold magnolia",
+    "Conflict: Tabernacle of faith"
+  ],
+  "readyFeatures": [
+    "Kelly cockpit route exists",
+    "Week View route exists",
+    "GOTV page route exists",
+    "Field Ops page route exists",
+    "Build Status page route exists",
+    "Commit card route exists",
+    "Calendar items JSON present",
+    "Weekend route plans present (20)",
+    "Agent capabilities ledger present",
+    "Community opportunities file present",
+    "OPENAI_API_KEY configured",
+    "Schedule settlement deterministic fallback available",
+    "Schedule settlement endpoint exists",
+    "Kelly agent tool wired: win_targets",
+    "Kelly agent tool wired: volunteer_capacity",
+    "Kelly agent tool wired: event_success_playbook",
+    "Kelly agent tool wired: schedule_readiness",
+    "Kelly agent tool wired: candidate_dashboard_preflight",
+    "Kelly agent source available: GOTV allocation",
+    "No SMS/email send path added by this slice",
+    "No Google Calendar write path added by this slice"
+  ],
+  "stagedFeatures": [
+    "Win target scenario file-staged",
+    "GOTV allocation file-staged",
+    "Volunteer capacity / field ops model file-staged",
+    "Automation recommendation queue staged",
+    "Schedule settlement decisions write to staged JSON",
+    "Automation recommendations are staged; no SendGrid/Twilio connection"
+  ],
+  "nextActions": [
+    "Use as Kelly preview only; staff should narrate staged/blocked items.",
+    "Run npm run agent:preflight immediately before sharing the dashboard.",
+    "Do not send SMS/email or write Google Calendar from this slice."
+  ],
+  "scheduleReadiness": {
+    "weekStart": "2026-05-11",
+    "readyToSettle": false,
+    "missingCriticalData": [],
+    "highRiskItems": [
+      "Conflict: Bishop Arnold Magnolia; Tabernacle of Faith Wynne at 3 PM",
+      "Conflict: Bishop Arnold magnolia",
+      "Conflict: Tabernacle of faith"
+    ],
+    "decisionsNeededTonight": [
+      "Primary weekend plan: Weekend cluster: NEA / Jonesboro-Paragould-Blytheville — 6 counties · comfortable",
+      "Approve this week route (Mon–Sun)?",
+      "Approve this weekend route cluster?",
+      "Confirm Greene June 8 plan?",
+      "Confirm Clark / Arkadelphia June 6–7 plan?",
+      "Confirm Prescott May 18–19 arc?",
+      "Resolve calendar conflict: Bishop Arnold Magnolia; Tabernacle of Fa — 2026-05-17",
+      "Resolve calendar conflict: Pink Tomato & South AR visit; Mountain V — 2026-06-11",
+      "Resolve calendar conflict: Bishop Arnold magnolia — 2026-05-17"
+    ],
+    "routeRisks": [
+      "Weekend cluster: NEA / Jonesboro-Paragould-Blytheville: Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+      "Weekend cluster: NEA / Jonesboro-Paragould-Blytheville: Confirm school and fair access with hosts before assigning Kelly personally.",
+      "Weekend cluster: NEA / Jonesboro-Paragould-Blytheville: Monday leg present — if return to Rose Bud exceeds ~2 hours after last stop, book overnight or Tuesday morning return.",
+      "Weekend cluster: Delta / Helena-West Memphis-Marianna: too tight (790 mi)",
+      "Weekend cluster: Delta / Helena-West Memphis-Marianna: Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+      "Weekend cluster: Delta / Helena-West Memphis-Marianna: Confirm school and fair access with hosts before assigning Kelly personally.",
+      "Weekend cluster: Delta / Helena-West Memphis-Marianna: Monday leg present — if return to Rose Bud exceeds ~2 hours after last stop, book overnight or Tuesday morning return.",
+      "Recommended week route risk: too tight"
+    ],
+    "staffCallsNeeded": [],
+    "recommendedNextDecision": "Conflict: Bishop Arnold Magnolia; Tabernacle of Faith Wynne at 3 PM"
+  }
+}

@@ -23,6 +23,7 @@ import { appendScheduleSettlementDecision } from "@/app/admin/calendar-command-c
 import { KellySettlementMap, type SettlementMapPin } from "@/components/admin/kelly-calendar-cockpit/KellySettlementMap";
 import type { KellyWinTargetScenarioFile } from "@/lib/election-targets/win-target-types";
 import type { VolunteerCapacityModelFile } from "@/lib/field-ops/volunteer-capacity-types";
+import type { CandidateDashboardPreflightFile } from "@/lib/kelly-agent/tools/candidate-dashboard-preflight-tool";
 import { WinTargetHud } from "@/components/admin/kelly-calendar-cockpit/WinTargetHud";
 
 const TZ = "America/Chicago";
@@ -55,6 +56,7 @@ type Props = {
   approvalQueue: EnrichedCalendarItem[];
   winScenario: KellyWinTargetScenarioFile | null;
   volunteerCapacityModel: VolunteerCapacityModelFile | null;
+  preflight: CandidateDashboardPreflightFile;
 };
 
 function fmt(iso: string) {
@@ -85,6 +87,7 @@ export function KellyScheduleSettlementDashboard(props: Props) {
     approvalQueue,
     winScenario,
     volunteerCapacityModel,
+    preflight,
   } = props;
 
   const [selectedPinId, setSelectedPinId] = useState<string | null>(null);
@@ -191,9 +194,48 @@ export function KellyScheduleSettlementDashboard(props: Props) {
   }, [weekMondayYmd]);
 
   const oppById = useMemo(() => new Map(opportunities.map((o) => [o.id, o])), [opportunities]);
+  const preflightTone =
+    preflight.overallStatus === "green"
+      ? {
+          label: "Ready for Kelly preview",
+          className: "border-emerald-500/40 bg-emerald-500/10 text-emerald-100",
+        }
+      : preflight.overallStatus === "yellow"
+        ? {
+            label: "Usable, but staged",
+            className: "border-amber-400/50 bg-amber-400/10 text-amber-100",
+          }
+        : {
+            label: "Do not send yet",
+            className: "border-rose-400/50 bg-rose-500/10 text-rose-100",
+          };
 
   return (
     <div className="min-h-screen bg-zinc-950 bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.12),transparent_50%),radial-gradient(ellipse_at_80%_20%,rgba(56,189,248,0.08),transparent_45%)] pb-28 text-zinc-50">
+      <div className={`border-b px-4 py-3 md:px-8 ${preflightTone.className}`}>
+        <div className="mx-auto flex max-w-7xl flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="font-heading text-[10px] font-bold uppercase tracking-[0.24em] opacity-80">Candidate dashboard preflight</p>
+            <p className="mt-1 font-heading text-lg font-bold">{preflightTone.label}</p>
+            <p className="mt-1 font-body text-xs opacity-85">
+              Mode: {preflight.recommendedUseMode.replace(/_/g, " ")} · Schedule week {preflight.scheduleReadiness.weekStart} · Next:{" "}
+              {preflight.scheduleReadiness.recommendedNextDecision}
+            </p>
+          </div>
+          <div className="max-w-xl font-body text-[11px] opacity-90">
+            {preflight.blockers.length ? (
+              <p>
+                <span className="font-bold">Blockers:</span> {preflight.blockers.slice(0, 3).join(" · ")}
+              </p>
+            ) : (
+              <p>
+                <span className="font-bold">Ready:</span> {preflight.readyFeatures.slice(0, 4).join(" · ")}
+              </p>
+            )}
+            {preflight.warnings.length ? <p className="mt-1">Warnings: {preflight.warnings.slice(0, 3).join(" · ")}</p> : null}
+          </div>
+        </div>
+      </div>
       <div className="border-b border-zinc-800/90 bg-zinc-950/85 backdrop-blur-md">
         <div className="mx-auto max-w-7xl px-4 py-4 md:px-8">
           <WinTargetHud scenario={winScenario} />

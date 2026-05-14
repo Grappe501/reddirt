@@ -141,5 +141,26 @@
     ],
     "humanOverrideRequired": true,
     "status": "file_staged"
+  },
+  {
+    "id": "candidate_dashboard_preflight_v1",
+    "name": "Candidate dashboard preflight",
+    "addedAt": "2026-05-14T00:00:00.000Z",
+    "category": "field_operations",
+    "description": "Readiness inspection for the Kelly cockpit: routes, data files, AI fallback, staged vs DB-backed actions, no-send/no-Google-write posture, and schedule readiness before previewing with Kelly.",
+    "inputSources": [
+      "src/app/admin/(board)/calendar-command-center/*",
+      "data/calendar-command-center/*.json",
+      "data/election/kelly-win-target-scenario-v1.json",
+      "data/field-ops/*.json",
+      "data/agent/kelly-agent-capabilities.json"
+    ],
+    "outputUsedBy": [
+      "/admin/calendar-command-center/kelly top banner",
+      "npm run agent:preflight",
+      "Kelly agent candidate_dashboard_preflight tool"
+    ],
+    "humanOverrideRequired": true,
+    "status": "file_staged"
   }
 ]

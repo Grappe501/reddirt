@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-14T01:37:23.295Z",
+  "generatedAt": "2026-05-14T01:43:40.459Z",
   "modelNote": "Scenario model for planning — not a forecast. Replace synthetic or partial inputs with official SOS / county results and registration goals as they are ingested.",
   "config": {
     "cushionPct": 0.0075,

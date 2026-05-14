@@ -8,6 +8,9 @@ import { loadMediaIndexSlice } from "@/lib/kelly-agent/build-agent-context-pack"
 import { loadWinTargetToolOutput } from "@/lib/kelly-agent/tools/win-target-tool";
 import { loadVolunteerCapacityToolOutput } from "@/lib/kelly-agent/tools/volunteer-capacity-tool";
 import { buildEventSuccessPlaybook } from "@/lib/kelly-agent/tools/event-success-playbook-tool";
+import { loadGotvCommitmentAllocationFile } from "@/lib/field-ops/load-gotv-commitment-allocation";
+import { buildScheduleReadinessReport } from "@/lib/kelly-agent/tools/schedule-readiness-tool";
+import { runCandidateDashboardPreflight } from "@/lib/kelly-agent/tools/candidate-dashboard-preflight-tool";
 
 export type KellyAgentToolTrace = { tool: string; ms: number };
 
@@ -21,7 +24,10 @@ export type KellyAgentToolBundle = {
   approval_recommendation_stub: unknown;
   win_targets: unknown;
   volunteer_capacity: unknown;
+  gotv_allocation: unknown;
   event_success_playbook: unknown;
+  schedule_readiness: unknown;
+  candidate_dashboard_preflight: unknown;
 };
 
 export async function runKellyAgentTools(
@@ -101,11 +107,25 @@ export async function runKellyAgentTools(
   trace.push({ tool: "volunteer_capacity", ms: Date.now() - t8 });
 
   const t9 = Date.now();
+  const gotv_allocation = loadGotvCommitmentAllocationFile(root) ?? {
+    note: "Run `npm run fieldops:gotv-allocation:build` in the RedDirt lane to generate data/field-ops/gotv-commitment-allocation-v1.json.",
+  };
+  trace.push({ tool: "gotv_allocation", ms: Date.now() - t9 });
+
+  const t10 = Date.now();
   const event = opts.calendarItemId
     ? (pack.calendarWindow.items as { id?: string }[]).find((item) => item.id === opts.calendarItemId)
     : null;
   const event_success_playbook = buildEventSuccessPlaybook(event);
-  trace.push({ tool: "event_success_playbook", ms: Date.now() - t9 });
+  trace.push({ tool: "event_success_playbook", ms: Date.now() - t10 });
+
+  const t11 = Date.now();
+  const schedule_readiness = await buildScheduleReadinessReport();
+  trace.push({ tool: "schedule_readiness", ms: Date.now() - t11 });
+
+  const t12 = Date.now();
+  const candidate_dashboard_preflight = await runCandidateDashboardPreflight({ repoRoot: root });
+  trace.push({ tool: "candidate_dashboard_preflight", ms: Date.now() - t12 });
 
   return {
     tools: {
@@ -118,7 +138,10 @@ export async function runKellyAgentTools(
       approval_recommendation_stub,
       win_targets,
       volunteer_capacity,
+      gotv_allocation,
       event_success_playbook,
+      schedule_readiness,
+      candidate_dashboard_preflight,
     },
     trace,
   };

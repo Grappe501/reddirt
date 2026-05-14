@@ -20,6 +20,7 @@ import {
 import { KellyScheduleSettlementDashboard } from "@/components/admin/kelly-calendar-cockpit/KellyScheduleSettlementDashboard";
 import { loadKellyWinTargetScenarioFile } from "@/lib/election-targets/load-win-target-scenario";
 import { loadVolunteerCapacityModelFile } from "@/lib/field-ops/load-volunteer-capacity-model";
+import { runCandidateDashboardPreflight } from "@/lib/kelly-agent/tools/candidate-dashboard-preflight-tool";
 
 export const dynamic = "force-dynamic";
 
@@ -69,6 +70,7 @@ export default async function KellyCalendarCockpitPage() {
   const dayPreview = buildDaySegmentPreviews();
   const winScenario = loadKellyWinTargetScenarioFile();
   const volunteerCapacityModel = loadVolunteerCapacityModelFile();
+  const preflight = await runCandidateDashboardPreflight({ weekMondayYmd: wr.mondayYmd });
 
   return (
     <KellyScheduleSettlementDashboard
@@ -87,6 +89,7 @@ export default async function KellyCalendarCockpitPage() {
       approvalQueue={approvalQueue}
       winScenario={winScenario}
       volunteerCapacityModel={volunteerCapacityModel}
+      preflight={preflight}
     />
   );
 }
