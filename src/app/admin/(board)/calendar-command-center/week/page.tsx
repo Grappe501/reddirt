@@ -76,6 +76,14 @@ export default async function CalendarWeekViewPage({ searchParams }: Props) {
         <span className="text-kelly-text/80">Week view (route planner)</span>
       </div>
 
+      <div className="rounded-lg border border-emerald-800/25 bg-emerald-50 px-4 py-2 font-body text-xs text-emerald-950">
+        <span className="font-semibold">Tonight:</span>{" "}
+        <Link href="/admin/calendar-command-center/kelly" className="font-semibold text-emerald-900 underline-offset-2 hover:underline">
+          Schedule settlement mode
+        </Link>{" "}
+        — settle week + weekend routes on the Kelly dashboard without losing map context.
+      </div>
+
       <header className="rounded-lg border border-kelly-text/15 bg-[#f7f2e8] px-5 py-5 shadow-sm">
         <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-text/45">Monday–Sunday board</p>
         <h1 className="mt-2 font-heading text-2xl font-bold text-kelly-text">Week route planner</h1>

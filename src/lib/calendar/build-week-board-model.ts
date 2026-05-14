@@ -42,12 +42,16 @@ export type WeekMapMarker = {
   markerKind?: "public_request" | "standard";
 };
 
-function jitter(id: string, lat: number, lng: number): { lat: number; lng: number } {
+export function jitterLatLng(id: string, lat: number, lng: number): { lat: number; lng: number } {
   let h = 0;
   for (let i = 0; i < id.length; i++) h = (h * 31 + id.charCodeAt(i)) >>> 0;
   const dLat = ((h % 200) - 100) / 50_000;
   const dLng = (((h / 200) >>> 0) % 200 - 100) / 50_000;
   return { lat: lat + dLat, lng: lng + dLng };
+}
+
+function jitter(id: string, lat: number, lng: number): { lat: number; lng: number } {
+  return jitterLatLng(id, lat, lng);
 }
 
 export function buildWeekMapModel(

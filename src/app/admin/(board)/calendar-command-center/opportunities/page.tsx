@@ -20,6 +20,10 @@ export default function CommunityOpportunitiesPage() {
           ← Command center
         </Link>
         {" · "}
+        <Link href="/admin/calendar-command-center/kelly" className="text-kelly-text underline-offset-2 hover:underline">
+          Schedule settlement (Kelly)
+        </Link>
+        {" · "}
         <span className="text-kelly-text/80">Community opportunities + routing (staff)</span>
       </div>
 
