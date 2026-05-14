@@ -1,0 +1,97 @@
+import "server-only";
+
+import { findKellyConfirmedCalendarSource, findKellyTentativeCalendarSource } from "@/lib/calendar/kelly-google-calendar-policy";
+import { loadWeekendRoutePlansFile } from "@/lib/opportunities/load-community-opportunities-data";
+import type { KellyAgentTask } from "@/lib/kelly-agent/agent-context-pack";
+import type { AgentContextPack } from "@/lib/kelly-agent/agent-context-pack";
+import { loadMediaIndexSlice } from "@/lib/kelly-agent/build-agent-context-pack";
+
+export type KellyAgentToolTrace = { tool: string; ms: number };
+
+export type KellyAgentToolBundle = {
+  calendar_context: unknown;
+  route_matrix: unknown;
+  county_facts: unknown;
+  opportunity_graph: unknown;
+  media_retrieval: unknown;
+  google_calendar_sync: unknown;
+  approval_recommendation_stub: unknown;
+};
+
+export async function runKellyAgentTools(
+  task: KellyAgentTask,
+  pack: AgentContextPack,
+  opts: { calendarItemId?: string; repoRoot?: string },
+): Promise<{ tools: KellyAgentToolBundle; trace: KellyAgentToolTrace[] }> {
+  const trace: KellyAgentToolTrace[] = [];
+  const root = opts.repoRoot ?? process.cwd();
+  const t0 = Date.now();
+
+  const calendar_context = {
+    window: pack.calendarWindow,
+    itemCount: Array.isArray(pack.calendarWindow.items) ? pack.calendarWindow.items.length : 0,
+    sampleIds: (pack.calendarWindow.items as { id?: string; title?: string }[])
+      .slice(0, 24)
+      .map((r) => ({ id: r.id, title: r.title })),
+  };
+  trace.push({ tool: "calendar_context", ms: Date.now() - t0 });
+
+  const t1 = Date.now();
+  const route_matrix = pack.routeMatrix ?? {};
+  trace.push({ tool: "route_matrix", ms: Date.now() - t1 });
+
+  const t2 = Date.now();
+  const county_facts = { rows: pack.countyFacts, count: (pack.countyFacts as unknown[]).length };
+  trace.push({ tool: "county_facts", ms: Date.now() - t2 });
+
+  const t3 = Date.now();
+  const weekend = loadWeekendRoutePlansFile();
+  const opportunity_graph = {
+    weekendPlanCount: weekend?.plans?.length ?? 0,
+    topClusters: weekend?.topClusters ?? [],
+    tentativeOpportunityCount: (pack.tentativeOpportunities as unknown[]).length,
+  };
+  trace.push({ tool: "opportunity_graph", ms: Date.now() - t3 });
+
+  const t4 = Date.now();
+  const media_retrieval = { items: await loadMediaIndexSlice(root, 24) };
+  trace.push({ tool: "media_retrieval", ms: Date.now() - t4 });
+
+  const t5 = Date.now();
+  let google_calendar_sync: unknown = { tentative: null, confirmed: null };
+  try {
+    const [tentativeSrc, confirmedSrc] = await Promise.all([
+      findKellyTentativeCalendarSource(),
+      findKellyConfirmedCalendarSource(),
+    ]);
+    google_calendar_sync = {
+      tentativeSourceId: tentativeSrc?.id ?? null,
+      confirmedSourceId: confirmedSrc?.id ?? null,
+      note: "Read-only lane discovery — use existing CLI scripts to sync; this tool does not mutate calendars.",
+    };
+  } catch {
+    google_calendar_sync = { error: "database_unavailable" };
+  }
+  trace.push({ tool: "google_calendar_sync", ms: Date.now() - t5 });
+
+  const t6 = Date.now();
+  const approval_recommendation_stub: unknown = {
+    note: "For per-item AI approval cards, POST /api/admin/calendar-command-center/ai-recommendations with { itemIds }.",
+    taskRequested: task,
+    calendarItemId: opts.calendarItemId ?? null,
+  };
+  trace.push({ tool: "approval_recommendation", ms: Date.now() - t6 });
+
+  return {
+    tools: {
+      calendar_context,
+      route_matrix,
+      county_facts,
+      opportunity_graph,
+      media_retrieval,
+      google_calendar_sync,
+      approval_recommendation_stub,
+    },
+    trace,
+  };
+}

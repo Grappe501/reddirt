@@ -1,0 +1,5 @@
+{
+  "county": "Carroll",
+  "countySeat": "Berryville",
+  "notes": "Populate from county-facts.json pipeline when refreshed."
+}

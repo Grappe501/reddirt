@@ -1,0 +1,3775 @@
+{
+  "version": 1,
+  "entries": {
+    "35.3160,-92.2520|33.0237,-95.1986|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "33.0237,-95.1986",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 13560,
+      "distanceMeters": 372055.8617321224,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:02.745Z"
+    },
+    "35.3160,-92.2520|35.1465,-90.1845|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.1465,-90.1845",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 6900,
+      "distanceMeters": 188725.5623647336,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:02.842Z"
+    },
+    "35.3160,-92.2520|35.5913,-96.9900|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.5913,-96.9900",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 15660,
+      "distanceMeters": 430205.2856693396,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:02.873Z"
+    },
+    "35.3160,-92.2520|34.2284,-92.0032|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "34.2284,-92.0032",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4500,
+      "distanceMeters": 123052.0504051882,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:02.913Z"
+    },
+    "35.3160,-92.2520|35.3725,-96.1686|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.3725,-96.1686",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 12960,
+      "distanceMeters": 355268.16682282515,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:02.941Z"
+    },
+    "35.3160,-92.2520|35.4850,-95.7257|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.4850,-95.7257",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 11520,
+      "distanceMeters": 315392.687373207,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:02.988Z"
+    },
+    "35.3160,-92.2520|34.8088,-96.0957|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "34.8088,-96.0957",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 12900,
+      "distanceMeters": 354333.29857638845,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.033Z"
+    },
+    "35.3160,-92.2520|35.4487,-97.3986|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.4487,-97.3986",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 17040,
+      "distanceMeters": 466757.87178033736,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.078Z"
+    },
+    "35.3160,-92.2520|35.0300,-95.2057|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.0300,-95.2057",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 9840,
+      "distanceMeters": 270337.15062965074,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.127Z"
+    },
+    "35.3160,-92.2520|35.3725,-96.7400|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.3725,-96.7400",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 14820,
+      "distanceMeters": 407078.37884993263,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.175Z"
+    },
+    "35.3160,-92.2520|35.3325,-94.9800|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.3325,-94.9800",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 9000,
+      "distanceMeters": 247491.75144162367,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.203Z"
+    },
+    "35.3160,-92.2520|33.6887,-97.1014|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "33.6887,-97.1014",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 17460,
+      "distanceMeters": 479735.1372251895,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.232Z"
+    },
+    "33.0237,-95.1986|35.1465,-90.1845|2026-07-15|driving": {
+      "originKey": "33.0237,-95.1986",
+      "destKey": "35.1465,-90.1845",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 18900,
+      "distanceMeters": 518491.64568631386,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.277Z"
+    },
+    "33.0237,-95.1986|35.5913,-96.9900|2026-07-15|driving": {
+      "originKey": "33.0237,-95.1986",
+      "destKey": "35.5913,-96.9900",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 12000,
+      "distanceMeters": 329497.8403399643,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.308Z"
+    },
+    "33.0237,-95.1986|34.2284,-92.0032|2026-07-15|driving": {
+      "originKey": "33.0237,-95.1986",
+      "destKey": "34.2284,-92.0032",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 11820,
+      "distanceMeters": 324743.8479467612,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.341Z"
+    },
+    "33.0237,-95.1986|35.3725,-96.1686|2026-07-15|driving": {
+      "originKey": "33.0237,-95.1986",
+      "destKey": "35.3725,-96.1686",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 10080,
+      "distanceMeters": 275980.10695568274,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.388Z"
+    },
+    "33.0237,-95.1986|35.4850,-95.7257|2026-07-15|driving": {
+      "originKey": "33.0237,-95.1986",
+      "destKey": "35.4850,-95.7257",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 10140,
+      "distanceMeters": 277932.22481142305,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.415Z"
+    },
+    "33.0237,-95.1986|34.8088,-96.0957|2026-07-15|driving": {
+      "originKey": "33.0237,-95.1986",
+      "destKey": "34.8088,-96.0957",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 7860,
+      "distanceMeters": 215052.03974341793,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.444Z"
+    },
+    "33.0237,-95.1986|35.4487,-97.3986|2026-07-15|driving": {
+      "originKey": "33.0237,-95.1986",
+      "destKey": "35.4487,-97.3986",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 12300,
+      "distanceMeters": 337038.58885499,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.471Z"
+    },
+    "33.0237,-95.1986|35.0300,-95.2057|2026-07-15|driving": {
+      "originKey": "33.0237,-95.1986",
+      "destKey": "35.0300,-95.2057",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 8160,
+      "distanceMeters": 223085.79249586826,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.499Z"
+    },
+    "33.0237,-95.1986|35.3725,-96.7400|2026-07-15|driving": {
+      "originKey": "33.0237,-95.1986",
+      "destKey": "35.3725,-96.7400",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 10800,
+      "distanceMeters": 297151.8395183926,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.545Z"
+    },
+    "33.0237,-95.1986|35.3325,-94.9800|2026-07-15|driving": {
+      "originKey": "33.0237,-95.1986",
+      "destKey": "35.3325,-94.9800",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 9360,
+      "distanceMeters": 257507.21215276755,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.582Z"
+    },
+    "33.0237,-95.1986|33.6887,-97.1014|2026-07-15|driving": {
+      "originKey": "33.0237,-95.1986",
+      "destKey": "33.6887,-97.1014",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 6960,
+      "distanceMeters": 191573.98053677945,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.616Z"
+    },
+    "35.1465,-90.1845|35.5913,-96.9900|2026-07-15|driving": {
+      "originKey": "35.1465,-90.1845",
+      "destKey": "35.5913,-96.9900",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 22560,
+      "distanceMeters": 618928.83654954,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.648Z"
+    },
+    "35.1465,-90.1845|34.2284,-92.0032|2026-07-15|driving": {
+      "originKey": "35.1465,-90.1845",
+      "destKey": "34.2284,-92.0032",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 7140,
+      "distanceMeters": 195118.77652347536,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.678Z"
+    },
+    "35.1465,-90.1845|35.3725,-96.1686|2026-07-15|driving": {
+      "originKey": "35.1465,-90.1845",
+      "destKey": "35.3725,-96.1686",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 19800,
+      "distanceMeters": 543825.9935274438,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.763Z"
+    },
+    "35.1465,-90.1845|35.4850,-95.7257|2026-07-15|driving": {
+      "originKey": "35.1465,-90.1845",
+      "destKey": "35.4850,-95.7257",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 18360,
+      "distanceMeters": 504109.0918648502,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.792Z"
+    },
+    "35.1465,-90.1845|34.8088,-96.0957|2026-07-15|driving": {
+      "originKey": "35.1465,-90.1845",
+      "destKey": "34.8088,-96.0957",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 19680,
+      "distanceMeters": 539800.975887474,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.823Z"
+    },
+    "35.1465,-90.1845|35.4487,-97.3986|2026-07-15|driving": {
+      "originKey": "35.1465,-90.1845",
+      "destKey": "35.4487,-97.3986",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 23880,
+      "distanceMeters": 655414.6227965509,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.853Z"
+    },
+    "35.1465,-90.1845|35.0300,-95.2057|2026-07-15|driving": {
+      "originKey": "35.1465,-90.1845",
+      "destKey": "35.0300,-95.2057",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 16680,
+      "distanceMeters": 457001.377238647,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.943Z"
+    },
+    "35.1465,-90.1845|35.3725,-96.7400|2026-07-15|driving": {
+      "originKey": "35.1465,-90.1845",
+      "destKey": "35.3725,-96.7400",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 21720,
+      "distanceMeters": 595632.6919830288,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:03.970Z"
+    },
+    "35.1465,-90.1845|35.3325,-94.9800|2026-07-15|driving": {
+      "originKey": "35.1465,-90.1845",
+      "destKey": "35.3325,-94.9800",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 15900,
+      "distanceMeters": 435966.5140415814,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.007Z"
+    },
+    "35.1465,-90.1845|33.6887,-97.1014|2026-07-15|driving": {
+      "originKey": "35.1465,-90.1845",
+      "destKey": "33.6887,-97.1014",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 23880,
+      "distanceMeters": 654702.5943220542,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.037Z"
+    },
+    "35.5913,-96.9900|34.2284,-92.0032|2026-07-15|driving": {
+      "originKey": "35.5913,-96.9900",
+      "destKey": "34.2284,-92.0032",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 17460,
+      "distanceMeters": 479242.56182824005,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.070Z"
+    },
+    "35.5913,-96.9900|35.3725,-96.1686|2026-07-15|driving": {
+      "originKey": "35.5913,-96.9900",
+      "destKey": "35.3725,-96.1686",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2880,
+      "distanceMeters": 78253.07562691465,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.096Z"
+    },
+    "35.5913,-96.9900|35.4850,-95.7257|2026-07-15|driving": {
+      "originKey": "35.5913,-96.9900",
+      "destKey": "35.4850,-95.7257",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4200,
+      "distanceMeters": 115003.41113720092,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.139Z"
+    },
+    "35.5913,-96.9900|34.8088,-96.0957|2026-07-15|driving": {
+      "originKey": "35.5913,-96.9900",
+      "destKey": "34.8088,-96.0957",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4320,
+      "distanceMeters": 119050.96172118989,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.168Z"
+    },
+    "35.5913,-96.9900|35.4487,-97.3986|2026-07-15|driving": {
+      "originKey": "35.5913,-96.9900",
+      "destKey": "35.4487,-97.3986",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1440,
+      "distanceMeters": 40228.873446476864,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.201Z"
+    },
+    "35.5913,-96.9900|35.0300,-95.2057|2026-07-15|driving": {
+      "originKey": "35.5913,-96.9900",
+      "destKey": "35.0300,-95.2057",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 6300,
+      "distanceMeters": 173511.45577059922,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.230Z"
+    },
+    "35.5913,-96.9900|35.3725,-96.7400|2026-07-15|driving": {
+      "originKey": "35.5913,-96.9900",
+      "destKey": "35.3725,-96.7400",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1200,
+      "distanceMeters": 33227.40153114639,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.261Z"
+    },
+    "35.5913,-96.9900|35.3325,-94.9800|2026-07-15|driving": {
+      "originKey": "35.5913,-96.9900",
+      "destKey": "35.3325,-94.9800",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 6720,
+      "distanceMeters": 184298.76516258175,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.291Z"
+    },
+    "35.5913,-96.9900|33.6887,-97.1014|2026-07-15|driving": {
+      "originKey": "35.5913,-96.9900",
+      "destKey": "33.6887,-97.1014",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 7740,
+      "distanceMeters": 211793.76200394754,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.319Z"
+    },
+    "34.2284,-92.0032|35.3725,-96.1686|2026-07-15|driving": {
+      "originKey": "34.2284,-92.0032",
+      "destKey": "35.3725,-96.1686",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 14640,
+      "distanceMeters": 401000.4775506698,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.349Z"
+    },
+    "34.2284,-92.0032|35.4850,-95.7257|2026-07-15|driving": {
+      "originKey": "34.2284,-92.0032",
+      "destKey": "35.4850,-95.7257",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 13380,
+      "distanceMeters": 367243.90856037464,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.379Z"
+    },
+    "34.2284,-92.0032|34.8088,-96.0957|2026-07-15|driving": {
+      "originKey": "34.2284,-92.0032",
+      "destKey": "34.8088,-96.0957",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 13860,
+      "distanceMeters": 380432.5844699895,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.408Z"
+    },
+    "34.2284,-92.0032|35.4487,-97.3986|2026-07-15|driving": {
+      "originKey": "34.2284,-92.0032",
+      "destKey": "35.4487,-97.3986",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 18600,
+      "distanceMeters": 510684.0278881221,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.439Z"
+    },
+    "34.2284,-92.0032|35.0300,-95.2057|2026-07-15|driving": {
+      "originKey": "34.2284,-92.0032",
+      "destKey": "35.0300,-95.2057",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 11160,
+      "distanceMeters": 306258.1786152039,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.466Z"
+    },
+    "34.2284,-92.0032|35.3725,-96.7400|2026-07-15|driving": {
+      "originKey": "34.2284,-92.0032",
+      "destKey": "35.3725,-96.7400",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 16440,
+      "distanceMeters": 450770.3114539774,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.496Z"
+    },
+    "34.2284,-92.0032|35.3325,-94.9800|2026-07-15|driving": {
+      "originKey": "34.2284,-92.0032",
+      "destKey": "35.3325,-94.9800",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 10860,
+      "distanceMeters": 298285.5799126914,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.524Z"
+    },
+    "34.2284,-92.0032|33.6887,-97.1014|2026-07-15|driving": {
+      "originKey": "34.2284,-92.0032",
+      "destKey": "33.6887,-97.1014",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 17280,
+      "distanceMeters": 473969.44112968445,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.553Z"
+    },
+    "35.3725,-96.1686|35.4850,-95.7257|2026-07-15|driving": {
+      "originKey": "35.3725,-96.1686",
+      "destKey": "35.4850,-95.7257",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1560,
+      "distanceMeters": 42030.103207234606,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.583Z"
+    },
+    "35.3725,-96.1686|34.8088,-96.0957|2026-07-15|driving": {
+      "originKey": "35.3725,-96.1686",
+      "destKey": "34.8088,-96.0957",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2280,
+      "distanceMeters": 63035.65052371074,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.615Z"
+    },
+    "35.3725,-96.1686|35.4487,-97.3986|2026-07-15|driving": {
+      "originKey": "35.3725,-96.1686",
+      "destKey": "35.4487,-97.3986",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4080,
+      "distanceMeters": 111791.38550596111,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.650Z"
+    },
+    "35.3725,-96.1686|35.0300,-95.2057|2026-07-15|driving": {
+      "originKey": "35.3725,-96.1686",
+      "destKey": "35.0300,-95.2057",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3480,
+      "distanceMeters": 95415.5006997547,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.678Z"
+    },
+    "35.3725,-96.1686|35.3725,-96.7400|2026-07-15|driving": {
+      "originKey": "35.3725,-96.1686",
+      "destKey": "35.3725,-96.7400",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1860,
+      "distanceMeters": 51810.77438001425,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.707Z"
+    },
+    "35.3725,-96.1686|35.3325,-94.9800|2026-07-15|driving": {
+      "originKey": "35.3725,-96.1686",
+      "destKey": "35.3325,-94.9800",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3960,
+      "distanceMeters": 107884.3322110408,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.735Z"
+    },
+    "35.3725,-96.1686|33.6887,-97.1014|2026-07-15|driving": {
+      "originKey": "35.3725,-96.1686",
+      "destKey": "33.6887,-97.1014",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 7500,
+      "distanceMeters": 205801.1671326994,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.762Z"
+    },
+    "35.4850,-95.7257|34.8088,-96.0957|2026-07-15|driving": {
+      "originKey": "35.4850,-95.7257",
+      "destKey": "34.8088,-96.0957",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3000,
+      "distanceMeters": 82377.5450561345,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.793Z"
+    },
+    "35.4850,-95.7257|35.4487,-97.3986|2026-07-15|driving": {
+      "originKey": "35.4850,-95.7257",
+      "destKey": "35.4487,-97.3986",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 5520,
+      "distanceMeters": 151550.47499871012,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.820Z"
+    },
+    "35.4850,-95.7257|35.0300,-95.2057|2026-07-15|driving": {
+      "originKey": "35.4850,-95.7257",
+      "destKey": "35.0300,-95.2057",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2520,
+      "distanceMeters": 69202.16418834712,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.848Z"
+    },
+    "35.4850,-95.7257|35.3725,-96.7400|2026-07-15|driving": {
+      "originKey": "35.4850,-95.7257",
+      "destKey": "35.3725,-96.7400",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3360,
+      "distanceMeters": 92747.15719029185,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.874Z"
+    },
+    "35.4850,-95.7257|35.3325,-94.9800|2026-07-15|driving": {
+      "originKey": "35.4850,-95.7257",
+      "destKey": "35.3325,-94.9800",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2520,
+      "distanceMeters": 69677.47182390973,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.901Z"
+    },
+    "35.4850,-95.7257|33.6887,-97.1014|2026-07-15|driving": {
+      "originKey": "35.4850,-95.7257",
+      "destKey": "33.6887,-97.1014",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 8580,
+      "distanceMeters": 236115.17643029726,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.929Z"
+    },
+    "34.8088,-96.0957|35.4487,-97.3986|2026-07-15|driving": {
+      "originKey": "34.8088,-96.0957",
+      "destKey": "35.4487,-97.3986",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 5040,
+      "distanceMeters": 138211.50937785028,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.958Z"
+    },
+    "34.8088,-96.0957|35.0300,-95.2057|2026-07-15|driving": {
+      "originKey": "34.8088,-96.0957",
+      "destKey": "35.0300,-95.2057",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3120,
+      "distanceMeters": 84792.99366926175,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:04.987Z"
+    },
+    "34.8088,-96.0957|35.3725,-96.7400|2026-07-15|driving": {
+      "originKey": "34.8088,-96.0957",
+      "destKey": "35.3725,-96.7400",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3120,
+      "distanceMeters": 85824.1329304687,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.014Z"
+    },
+    "34.8088,-96.0957|35.3325,-94.9800|2026-07-15|driving": {
+      "originKey": "34.8088,-96.0957",
+      "destKey": "35.3325,-94.9800",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4260,
+      "distanceMeters": 117052.61888629137,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.043Z"
+    },
+    "34.8088,-96.0957|33.6887,-97.1014|2026-07-15|driving": {
+      "originKey": "34.8088,-96.0957",
+      "destKey": "33.6887,-97.1014",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 5640,
+      "distanceMeters": 155093.75738719048,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.070Z"
+    },
+    "35.4487,-97.3986|35.0300,-95.2057|2026-07-15|driving": {
+      "originKey": "35.4487,-97.3986",
+      "destKey": "35.0300,-95.2057",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 7440,
+      "distanceMeters": 204517.45410216216,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.098Z"
+    },
+    "35.4487,-97.3986|35.3725,-96.7400|2026-07-15|driving": {
+      "originKey": "35.4487,-97.3986",
+      "destKey": "35.3725,-96.7400",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2220,
+      "distanceMeters": 60282.88230265623,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.129Z"
+    },
+    "35.4487,-97.3986|35.3325,-94.9800|2026-07-15|driving": {
+      "originKey": "35.4487,-97.3986",
+      "destKey": "35.3325,-94.9800",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 7980,
+      "distanceMeters": 219615.34258820993,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.159Z"
+    },
+    "35.4487,-97.3986|33.6887,-97.1014|2026-07-15|driving": {
+      "originKey": "35.4487,-97.3986",
+      "destKey": "33.6887,-97.1014",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 7200,
+      "distanceMeters": 197584.886101902,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.191Z"
+    },
+    "35.0300,-95.2057|35.3725,-96.7400|2026-07-15|driving": {
+      "originKey": "35.0300,-95.2057",
+      "destKey": "35.3725,-96.7400",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 5280,
+      "distanceMeters": 144513.3384817781,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.217Z"
+    },
+    "35.0300,-95.2057|35.3325,-94.9800|2026-07-15|driving": {
+      "originKey": "35.0300,-95.2057",
+      "destKey": "35.3325,-94.9800",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1440,
+      "distanceMeters": 39398.22005111564,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.245Z"
+    },
+    "35.0300,-95.2057|33.6887,-97.1014|2026-07-15|driving": {
+      "originKey": "35.0300,-95.2057",
+      "destKey": "33.6887,-97.1014",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 8340,
+      "distanceMeters": 229170.6683590336,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.272Z"
+    },
+    "35.3725,-96.7400|35.3325,-94.9800|2026-07-15|driving": {
+      "originKey": "35.3725,-96.7400",
+      "destKey": "35.3325,-94.9800",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 5820,
+      "distanceMeters": 159676.79237477144,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.301Z"
+    },
+    "35.3725,-96.7400|33.6887,-97.1014|2026-07-15|driving": {
+      "originKey": "35.3725,-96.7400",
+      "destKey": "33.6887,-97.1014",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 6900,
+      "distanceMeters": 190128.8733755034,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.329Z"
+    },
+    "35.3325,-94.9800|33.6887,-97.1014|2026-07-15|driving": {
+      "originKey": "35.3325,-94.9800",
+      "destKey": "33.6887,-97.1014",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 9720,
+      "distanceMeters": 266801.9255435375,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.359Z"
+    },
+    "35.3160,-92.2520|35.8912,-96.7614|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.8912,-96.7614",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 15060,
+      "distanceMeters": 412638.9058769164,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.387Z"
+    },
+    "35.3160,-92.2520|35.8537,-96.1471|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.8537,-96.1471",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 13020,
+      "distanceMeters": 357250.2664579744,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.414Z"
+    },
+    "35.3160,-92.2520|33.6713,-96.5100|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "33.6713,-96.5100",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 15720,
+      "distanceMeters": 430903.10984265665,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.444Z"
+    },
+    "35.3160,-92.2520|33.1337,-95.3243|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "33.1337,-95.3243",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 13560,
+      "distanceMeters": 372343.21963328973,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.473Z"
+    },
+    "35.3160,-92.2520|33.8162,-96.6757|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "33.8162,-96.6757",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 15960,
+      "distanceMeters": 437991.1016282897,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.501Z"
+    },
+    "35.3160,-92.2520|35.3500,-95.0000|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.3500,-95.0000",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 9060,
+      "distanceMeters": 249300.91466966207,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.530Z"
+    },
+    "35.3160,-92.2520|35.3113,-97.2414|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.3113,-97.2414",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 16500,
+      "distanceMeters": 452668.6734949519,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.558Z"
+    },
+    "35.3160,-92.2520|34.7250,-96.0000|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "34.7250,-96.0000",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 12660,
+      "distanceMeters": 347548.8251946404,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.586Z"
+    },
+    "35.8912,-96.7614|35.8537,-96.1471|2026-07-15|driving": {
+      "originKey": "35.8912,-96.7614",
+      "destKey": "35.8537,-96.1471",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2040,
+      "distanceMeters": 55506.23309413072,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.614Z"
+    },
+    "35.8912,-96.7614|33.6713,-96.5100|2026-07-15|driving": {
+      "originKey": "35.8912,-96.7614",
+      "destKey": "33.6713,-96.5100",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 9060,
+      "distanceMeters": 247918.11465138808,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.642Z"
+    },
+    "35.8912,-96.7614|33.1337,-95.3243|2026-07-15|driving": {
+      "originKey": "35.8912,-96.7614",
+      "destKey": "33.1337,-95.3243",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 12180,
+      "distanceMeters": 333686.32171614823,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.671Z"
+    },
+    "35.8912,-96.7614|33.8162,-96.6757|2026-07-15|driving": {
+      "originKey": "35.8912,-96.7614",
+      "destKey": "33.8162,-96.6757",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 8400,
+      "distanceMeters": 230861.96163093744,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.701Z"
+    },
+    "35.8912,-96.7614|35.3500,-95.0000|2026-07-15|driving": {
+      "originKey": "35.8912,-96.7614",
+      "destKey": "35.3500,-95.0000",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 6180,
+      "distanceMeters": 170206.4073501674,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.728Z"
+    },
+    "35.8912,-96.7614|35.3113,-97.2414|2026-07-15|driving": {
+      "originKey": "35.8912,-96.7614",
+      "destKey": "35.3113,-97.2414",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2820,
+      "distanceMeters": 77734.45155772853,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.757Z"
+    },
+    "35.8912,-96.7614|34.7250,-96.0000|2026-07-15|driving": {
+      "originKey": "35.8912,-96.7614",
+      "destKey": "34.7250,-96.0000",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 5340,
+      "distanceMeters": 146937.3559734529,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.787Z"
+    },
+    "35.8537,-96.1471|33.6713,-96.5100|2026-07-15|driving": {
+      "originKey": "35.8537,-96.1471",
+      "destKey": "33.6713,-96.5100",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 8940,
+      "distanceMeters": 244935.46119595633,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.816Z"
+    },
+    "35.8537,-96.1471|33.1337,-95.3243|2026-07-15|driving": {
+      "originKey": "35.8537,-96.1471",
+      "destKey": "33.1337,-95.3243",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 11340,
+      "distanceMeters": 311705.5598931066,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.846Z"
+    },
+    "35.8537,-96.1471|33.8162,-96.6757|2026-07-15|driving": {
+      "originKey": "35.8537,-96.1471",
+      "destKey": "33.8162,-96.6757",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 8460,
+      "distanceMeters": 231637.59275493235,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.875Z"
+    },
+    "35.8537,-96.1471|35.3500,-95.0000|2026-07-15|driving": {
+      "originKey": "35.8537,-96.1471",
+      "destKey": "35.3500,-95.0000",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4320,
+      "distanceMeters": 117872.29853699464,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.906Z"
+    },
+    "35.8537,-96.1471|35.3113,-97.2414|2026-07-15|driving": {
+      "originKey": "35.8537,-96.1471",
+      "destKey": "35.3113,-97.2414",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4200,
+      "distanceMeters": 115894.25526843088,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.940Z"
+    },
+    "35.8537,-96.1471|34.7250,-96.0000|2026-07-15|driving": {
+      "originKey": "35.8537,-96.1471",
+      "destKey": "34.7250,-96.0000",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4620,
+      "distanceMeters": 126219.73640522668,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:05.970Z"
+    },
+    "33.6713,-96.5100|33.1337,-95.3243|2026-07-15|driving": {
+      "originKey": "33.6713,-96.5100",
+      "destKey": "33.1337,-95.3243",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4560,
+      "distanceMeters": 125246.51085321061,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.006Z"
+    },
+    "33.6713,-96.5100|33.8162,-96.6757|2026-07-15|driving": {
+      "originKey": "33.6713,-96.5100",
+      "destKey": "33.8162,-96.6757",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 840,
+      "distanceMeters": 22242.551533695536,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.035Z"
+    },
+    "33.6713,-96.5100|35.3500,-95.0000|2026-07-15|driving": {
+      "originKey": "33.6713,-96.5100",
+      "destKey": "35.3500,-95.0000",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 8460,
+      "distanceMeters": 232344.65451001053,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.063Z"
+    },
+    "33.6713,-96.5100|35.3113,-97.2414|2026-07-15|driving": {
+      "originKey": "33.6713,-96.5100",
+      "destKey": "35.3113,-97.2414",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 7080,
+      "distanceMeters": 194288.1128066676,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.090Z"
+    },
+    "33.6713,-96.5100|34.7250,-96.0000|2026-07-15|driving": {
+      "originKey": "33.6713,-96.5100",
+      "destKey": "34.7250,-96.0000",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4620,
+      "distanceMeters": 126210.36811240627,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.120Z"
+    },
+    "33.1337,-95.3243|33.8162,-96.6757|2026-07-15|driving": {
+      "originKey": "33.1337,-95.3243",
+      "destKey": "33.8162,-96.6757",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 5340,
+      "distanceMeters": 146527.50382524612,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.150Z"
+    },
+    "33.1337,-95.3243|35.3500,-95.0000|2026-07-15|driving": {
+      "originKey": "33.1337,-95.3243",
+      "destKey": "35.3500,-95.0000",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 9060,
+      "distanceMeters": 248231.50867830627,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.184Z"
+    },
+    "33.1337,-95.3243|35.3113,-97.2414|2026-07-15|driving": {
+      "originKey": "33.1337,-95.3243",
+      "destKey": "35.3113,-97.2414",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 10920,
+      "distanceMeters": 299475.7288879181,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.213Z"
+    },
+    "33.1337,-95.3243|34.7250,-96.0000|2026-07-15|driving": {
+      "originKey": "33.1337,-95.3243",
+      "destKey": "34.7250,-96.0000",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 6840,
+      "distanceMeters": 187598.89254560412,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.241Z"
+    },
+    "33.8162,-96.6757|35.3500,-95.0000|2026-07-15|driving": {
+      "originKey": "33.8162,-96.6757",
+      "destKey": "35.3500,-95.0000",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 8340,
+      "distanceMeters": 229380.47990586198,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.270Z"
+    },
+    "33.8162,-96.6757|35.3113,-97.2414|2026-07-15|driving": {
+      "originKey": "33.8162,-96.6757",
+      "destKey": "35.3113,-97.2414",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 6360,
+      "distanceMeters": 174119.43444638964,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.298Z"
+    },
+    "33.8162,-96.6757|34.7250,-96.0000|2026-07-15|driving": {
+      "originKey": "33.8162,-96.6757",
+      "destKey": "34.7250,-96.0000",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4320,
+      "distanceMeters": 118599.80646824138,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.327Z"
+    },
+    "35.3500,-95.0000|35.3113,-97.2414|2026-07-15|driving": {
+      "originKey": "35.3500,-95.0000",
+      "destKey": "35.3113,-97.2414",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 7440,
+      "distanceMeters": 203374.74156866642,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.357Z"
+    },
+    "35.3500,-95.0000|34.7250,-96.0000|2026-07-15|driving": {
+      "originKey": "35.3500,-95.0000",
+      "destKey": "34.7250,-96.0000",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4200,
+      "distanceMeters": 114536.05532056649,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.386Z"
+    },
+    "35.3113,-97.2414|34.7250,-96.0000|2026-07-15|driving": {
+      "originKey": "35.3113,-97.2414",
+      "destKey": "34.7250,-96.0000",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4740,
+      "distanceMeters": 130497.51580512513,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.416Z"
+    },
+    "35.3160,-92.2520|36.3356,-92.3854|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "36.3356,-92.3854",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4140,
+      "distanceMeters": 114010.43724352178,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.444Z"
+    },
+    "35.3160,-92.2520|36.3084,-93.2518|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "36.3084,-93.2518",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 5220,
+      "distanceMeters": 142493.13713007793,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.472Z"
+    },
+    "35.3160,-92.2520|36.2753,-93.6810|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "36.2753,-93.6810",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 6120,
+      "distanceMeters": 167295.8644028154,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.502Z"
+    },
+    "35.3160,-92.2520|36.1520,-93.7366|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "36.1520,-93.7366",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 5940,
+      "distanceMeters": 163084.72581646396,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.532Z"
+    },
+    "35.3160,-92.2520|36.2612,-92.6485|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "36.2612,-92.6485",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4020,
+      "distanceMeters": 111019.35838132838,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.560Z"
+    },
+    "35.3160,-92.2520|35.9200,-93.2180|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.9200,-93.2180",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4020,
+      "distanceMeters": 110159.27537742311,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.593Z"
+    },
+    "35.3160,-92.2520|36.3729,-94.2088|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "36.3729,-94.2088",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 7740,
+      "distanceMeters": 211936.623273588,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.625Z"
+    },
+    "35.3160,-92.2520|36.0626,-94.1574|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "36.0626,-94.1574",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 6960,
+      "distanceMeters": 191053.6575661062,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.655Z"
+    },
+    "36.3356,-92.3854|36.3084,-93.2518|2026-07-15|driving": {
+      "originKey": "36.3356,-92.3854",
+      "destKey": "36.3084,-93.2518",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2820,
+      "distanceMeters": 77679.29036450786,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.696Z"
+    },
+    "36.3356,-92.3854|36.2753,-93.6810|2026-07-15|driving": {
+      "originKey": "36.3356,-92.3854",
+      "destKey": "36.2753,-93.6810",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4260,
+      "distanceMeters": 116289.83750748372,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.725Z"
+    },
+    "36.3356,-92.3854|36.1520,-93.7366|2026-07-15|driving": {
+      "originKey": "36.3356,-92.3854",
+      "destKey": "36.1520,-93.7366",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4500,
+      "distanceMeters": 122881.80070791836,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.751Z"
+    },
+    "36.3356,-92.3854|36.2612,-92.6485|2026-07-15|driving": {
+      "originKey": "36.3356,-92.3854",
+      "destKey": "36.2612,-92.6485",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 900,
+      "distanceMeters": 24987.459058344288,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.779Z"
+    },
+    "36.3356,-92.3854|35.9200,-93.2180|2026-07-15|driving": {
+      "originKey": "36.3356,-92.3854",
+      "destKey": "35.9200,-93.2180",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3180,
+      "distanceMeters": 87904.77573082541,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.807Z"
+    },
+    "36.3356,-92.3854|36.3729,-94.2088|2026-07-15|driving": {
+      "originKey": "36.3356,-92.3854",
+      "destKey": "36.3729,-94.2088",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 5940,
+      "distanceMeters": 163340.751911623,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.839Z"
+    },
+    "36.3356,-92.3854|36.0626,-94.1574|2026-07-15|driving": {
+      "originKey": "36.3356,-92.3854",
+      "destKey": "36.0626,-94.1574",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 5880,
+      "distanceMeters": 161872.44696583107,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.867Z"
+    },
+    "36.3084,-93.2518|36.2753,-93.6810|2026-07-15|driving": {
+      "originKey": "36.3084,-93.2518",
+      "destKey": "36.2753,-93.6810",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1380,
+      "distanceMeters": 38642.48086858582,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.895Z"
+    },
+    "36.3084,-93.2518|36.1520,-93.7366|2026-07-15|driving": {
+      "originKey": "36.3084,-93.2518",
+      "destKey": "36.1520,-93.7366",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1680,
+      "distanceMeters": 46832.86438995634,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.926Z"
+    },
+    "36.3084,-93.2518|36.2612,-92.6485|2026-07-15|driving": {
+      "originKey": "36.3084,-93.2518",
+      "destKey": "36.2612,-92.6485",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1980,
+      "distanceMeters": 54329.35506023424,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.957Z"
+    },
+    "36.3084,-93.2518|35.9200,-93.2180|2026-07-15|driving": {
+      "originKey": "36.3084,-93.2518",
+      "destKey": "35.9200,-93.2180",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1560,
+      "distanceMeters": 43294.70137240562,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:06.994Z"
+    },
+    "36.3084,-93.2518|36.3729,-94.2088|2026-07-15|driving": {
+      "originKey": "36.3084,-93.2518",
+      "destKey": "36.3729,-94.2088",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3120,
+      "distanceMeters": 86016.13347249324,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.026Z"
+    },
+    "36.3084,-93.2518|36.0626,-94.1574|2026-07-15|driving": {
+      "originKey": "36.3084,-93.2518",
+      "destKey": "36.0626,-94.1574",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3120,
+      "distanceMeters": 85746.61901761455,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.057Z"
+    },
+    "36.2753,-93.6810|36.1520,-93.7366|2026-07-15|driving": {
+      "originKey": "36.2753,-93.6810",
+      "destKey": "36.1520,-93.7366",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 600,
+      "distanceMeters": 14589.534140687088,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.086Z"
+    },
+    "36.2753,-93.6810|36.2612,-92.6485|2026-07-15|driving": {
+      "originKey": "36.2753,-93.6810",
+      "destKey": "36.2612,-92.6485",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3360,
+      "distanceMeters": 92578.1161410613,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.114Z"
+    },
+    "36.2753,-93.6810|35.9200,-93.2180|2026-07-15|driving": {
+      "originKey": "36.2753,-93.6810",
+      "destKey": "35.9200,-93.2180",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2100,
+      "distanceMeters": 57370.044934705715,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.140Z"
+    },
+    "36.2753,-93.6810|36.3729,-94.2088|2026-07-15|driving": {
+      "originKey": "36.2753,-93.6810",
+      "destKey": "36.3729,-94.2088",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1740,
+      "distanceMeters": 48513.63552222078,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.170Z"
+    },
+    "36.2753,-93.6810|36.0626,-94.1574|2026-07-15|driving": {
+      "originKey": "36.2753,-93.6810",
+      "destKey": "36.0626,-94.1574",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1800,
+      "distanceMeters": 48868.712023132735,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.200Z"
+    },
+    "36.1520,-93.7366|36.2612,-92.6485|2026-07-15|driving": {
+      "originKey": "36.1520,-93.7366",
+      "destKey": "36.2612,-92.6485",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3600,
+      "distanceMeters": 98378.5398893204,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.228Z"
+    },
+    "36.1520,-93.7366|35.9200,-93.2180|2026-07-15|driving": {
+      "originKey": "36.1520,-93.7366",
+      "destKey": "35.9200,-93.2180",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1920,
+      "distanceMeters": 53291.220835362175,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.259Z"
+    },
+    "36.1520,-93.7366|36.3729,-94.2088|2026-07-15|driving": {
+      "originKey": "36.1520,-93.7366",
+      "destKey": "36.3729,-94.2088",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1800,
+      "distanceMeters": 48946.091359305276,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.288Z"
+    },
+    "36.1520,-93.7366|36.0626,-94.1574|2026-07-15|driving": {
+      "originKey": "36.1520,-93.7366",
+      "destKey": "36.0626,-94.1574",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1440,
+      "distanceMeters": 39088.15543516135,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.317Z"
+    },
+    "36.2612,-92.6485|35.9200,-93.2180|2026-07-15|driving": {
+      "originKey": "36.2612,-92.6485",
+      "destKey": "35.9200,-93.2180",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2340,
+      "distanceMeters": 63702.57425667383,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.344Z"
+    },
+    "36.2612,-92.6485|36.3729,-94.2088|2026-07-15|driving": {
+      "originKey": "36.2612,-92.6485",
+      "destKey": "36.3729,-94.2088",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 5100,
+      "distanceMeters": 140345.0360146993,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.374Z"
+    },
+    "36.2612,-92.6485|36.0626,-94.1574|2026-07-15|driving": {
+      "originKey": "36.2612,-92.6485",
+      "destKey": "36.0626,-94.1574",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4980,
+      "distanceMeters": 137246.04667283958,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.402Z"
+    },
+    "35.9200,-93.2180|36.3729,-94.2088|2026-07-15|driving": {
+      "originKey": "35.9200,-93.2180",
+      "destKey": "36.3729,-94.2088",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3720,
+      "distanceMeters": 102229.01068547832,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.430Z"
+    },
+    "35.9200,-93.2180|36.0626,-94.1574|2026-07-15|driving": {
+      "originKey": "35.9200,-93.2180",
+      "destKey": "36.0626,-94.1574",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3120,
+      "distanceMeters": 85990.6115174777,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.458Z"
+    },
+    "36.3729,-94.2088|36.0626,-94.1574|2026-07-15|driving": {
+      "originKey": "36.3729,-94.2088",
+      "destKey": "36.0626,-94.1574",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1260,
+      "distanceMeters": 34810.53095806619,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.485Z"
+    },
+    "35.3160,-92.2520|33.9963,-97.4529|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "33.9963,-97.4529",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 18120,
+      "distanceMeters": 497751.1801612272,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.511Z"
+    },
+    "35.3160,-92.2520|33.0388,-96.9300|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "33.0388,-96.9300",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 18180,
+      "distanceMeters": 499219.12015621574,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.540Z"
+    },
+    "35.3160,-92.2520|34.5562,-95.2357|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "34.5562,-95.2357",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 10380,
+      "distanceMeters": 284788.95044556493,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.568Z"
+    },
+    "35.3160,-92.2520|35.2963,-97.2243|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.2963,-97.2243",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 16440,
+      "distanceMeters": 451160.58282978006,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.598Z"
+    },
+    "35.3160,-92.2520|34.1300,-95.3200|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "34.1300,-95.3200",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 11280,
+      "distanceMeters": 309837.0346899733,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.625Z"
+    },
+    "35.3160,-92.2520|33.0712,-95.8243|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "33.0712,-95.8243",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 15060,
+      "distanceMeters": 412563.72165553144,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.654Z"
+    },
+    "35.3160,-92.2520|34.0913,-95.2757|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "34.0913,-95.2757",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 11220,
+      "distanceMeters": 308117.78503033915,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.681Z"
+    },
+    "35.3160,-92.2520|34.5037,-93.0552|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "34.5037,-93.0552",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4260,
+      "distanceMeters": 116285.29498734123,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.709Z"
+    },
+    "35.3160,-92.2520|35.9825,-96.2943|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.9825,-96.2943",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 13560,
+      "distanceMeters": 372661.4917135993,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.736Z"
+    },
+    "33.9963,-97.4529|33.0388,-96.9300|2026-07-15|driving": {
+      "originKey": "33.9963,-97.4529",
+      "destKey": "33.0388,-96.9300",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4260,
+      "distanceMeters": 116983.06045540454,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.765Z"
+    },
+    "33.9963,-97.4529|34.5562,-95.2357|2026-07-15|driving": {
+      "originKey": "33.9963,-97.4529",
+      "destKey": "34.5562,-95.2357",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 7740,
+      "distanceMeters": 213018.18932453197,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.796Z"
+    },
+    "33.9963,-97.4529|35.2963,-97.2243|2026-07-15|driving": {
+      "originKey": "33.9963,-97.4529",
+      "destKey": "35.2963,-97.2243",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 5340,
+      "distanceMeters": 146057.63961580358,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.825Z"
+    },
+    "33.9963,-97.4529|34.1300,-95.3200|2026-07-15|driving": {
+      "originKey": "33.9963,-97.4529",
+      "destKey": "34.1300,-95.3200",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 7200,
+      "distanceMeters": 197029.1572989374,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.854Z"
+    },
+    "33.9963,-97.4529|33.0712,-95.8243|2026-07-15|driving": {
+      "originKey": "33.9963,-97.4529",
+      "destKey": "33.0712,-95.8243",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 6660,
+      "distanceMeters": 182655.58663337413,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.881Z"
+    },
+    "33.9963,-97.4529|34.0913,-95.2757|2026-07-15|driving": {
+      "originKey": "33.9963,-97.4529",
+      "destKey": "34.0913,-95.2757",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 7320,
+      "distanceMeters": 200870.10753312672,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.908Z"
+    },
+    "33.9963,-97.4529|34.5037,-93.0552|2026-07-15|driving": {
+      "originKey": "33.9963,-97.4529",
+      "destKey": "34.5037,-93.0552",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 14880,
+      "distanceMeters": 408085.38623538305,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.939Z"
+    },
+    "33.9963,-97.4529|35.9825,-96.2943|2026-07-15|driving": {
+      "originKey": "33.9963,-97.4529",
+      "destKey": "35.9825,-96.2943",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 8940,
+      "distanceMeters": 244777.35533232382,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.969Z"
+    },
+    "33.0388,-96.9300|34.5562,-95.2357|2026-07-15|driving": {
+      "originKey": "33.0388,-96.9300",
+      "destKey": "34.5562,-95.2357",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 8400,
+      "distanceMeters": 230172.39201798764,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:07.998Z"
+    },
+    "33.0388,-96.9300|35.2963,-97.2243|2026-07-15|driving": {
+      "originKey": "33.0388,-96.9300",
+      "destKey": "35.2963,-97.2243",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 9180,
+      "distanceMeters": 252478.02084989107,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.026Z"
+    },
+    "33.0388,-96.9300|34.1300,-95.3200|2026-07-15|driving": {
+      "originKey": "33.0388,-96.9300",
+      "destKey": "34.1300,-95.3200",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 7020,
+      "distanceMeters": 192261.3074723171,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.055Z"
+    },
+    "33.0388,-96.9300|33.0712,-95.8243|2026-07-15|driving": {
+      "originKey": "33.0388,-96.9300",
+      "destKey": "33.0712,-95.8243",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3780,
+      "distanceMeters": 103112.93504645156,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.095Z"
+    },
+    "33.0388,-96.9300|34.0913,-95.2757|2026-07-15|driving": {
+      "originKey": "33.0388,-96.9300",
+      "destKey": "34.0913,-95.2757",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 7020,
+      "distanceMeters": 192842.67371935997,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.154Z"
+    },
+    "33.0388,-96.9300|34.5037,-93.0552|2026-07-15|driving": {
+      "originKey": "33.0388,-96.9300",
+      "destKey": "34.5037,-93.0552",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 14340,
+      "distanceMeters": 393420.31449928443,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.181Z"
+    },
+    "33.0388,-96.9300|35.9825,-96.2943|2026-07-15|driving": {
+      "originKey": "33.0388,-96.9300",
+      "destKey": "35.9825,-96.2943",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 12120,
+      "distanceMeters": 332469.62529280694,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.207Z"
+    },
+    "34.5562,-95.2357|35.2963,-97.2243|2026-07-15|driving": {
+      "originKey": "34.5562,-95.2357",
+      "destKey": "35.2963,-97.2243",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 7260,
+      "distanceMeters": 199087.2279116853,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.239Z"
+    },
+    "34.5562,-95.2357|34.1300,-95.3200|2026-07-15|driving": {
+      "originKey": "34.5562,-95.2357",
+      "destKey": "34.1300,-95.3200",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1740,
+      "distanceMeters": 48024.38297039327,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.268Z"
+    },
+    "34.5562,-95.2357|33.0712,-95.8243|2026-07-15|driving": {
+      "originKey": "34.5562,-95.2357",
+      "destKey": "33.0712,-95.8243",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 6360,
+      "distanceMeters": 173846.03088393848,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.315Z"
+    },
+    "34.5562,-95.2357|34.0913,-95.2757|2026-07-15|driving": {
+      "originKey": "34.5562,-95.2357",
+      "destKey": "34.0913,-95.2757",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1860,
+      "distanceMeters": 51835.953694504045,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.344Z"
+    },
+    "34.5562,-95.2357|34.5037,-93.0552|2026-07-15|driving": {
+      "originKey": "34.5562,-95.2357",
+      "destKey": "34.5037,-93.0552",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 7260,
+      "distanceMeters": 199829.0745734271,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.373Z"
+    },
+    "34.5562,-95.2357|35.9825,-96.2943|2026-07-15|driving": {
+      "originKey": "34.5562,-95.2357",
+      "destKey": "35.9825,-96.2943",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 6780,
+      "distanceMeters": 185433.75450048118,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.402Z"
+    },
+    "35.2963,-97.2243|34.1300,-95.3200|2026-07-15|driving": {
+      "originKey": "35.2963,-97.2243",
+      "destKey": "34.1300,-95.3200",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 7920,
+      "distanceMeters": 217048.85931298014,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.429Z"
+    },
+    "35.2963,-97.2243|33.0712,-95.8243|2026-07-15|driving": {
+      "originKey": "35.2963,-97.2243",
+      "destKey": "33.0712,-95.8243",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 10140,
+      "distanceMeters": 278908.28475892515,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.458Z"
+    },
+    "35.2963,-97.2243|34.0913,-95.2757|2026-07-15|driving": {
+      "originKey": "35.2963,-97.2243",
+      "destKey": "34.0913,-95.2757",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 8100,
+      "distanceMeters": 222904.2673697012,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.485Z"
+    },
+    "35.2963,-97.2243|34.5037,-93.0552|2026-07-15|driving": {
+      "originKey": "35.2963,-97.2243",
+      "destKey": "34.5037,-93.0552",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 14220,
+      "distanceMeters": 390252.91657384025,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.513Z"
+    },
+    "35.2963,-97.2243|35.9825,-96.2943|2026-07-15|driving": {
+      "originKey": "35.2963,-97.2243",
+      "destKey": "35.9825,-96.2943",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4140,
+      "distanceMeters": 113515.17733216684,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.541Z"
+    },
+    "34.1300,-95.3200|33.0712,-95.8243|2026-07-15|driving": {
+      "originKey": "34.1300,-95.3200",
+      "destKey": "33.0712,-95.8243",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4620,
+      "distanceMeters": 126653.04354884101,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.572Z"
+    },
+    "34.1300,-95.3200|34.0913,-95.2757|2026-07-15|driving": {
+      "originKey": "34.1300,-95.3200",
+      "destKey": "34.0913,-95.2757",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 600,
+      "distanceMeters": 5932.022399842572,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.602Z"
+    },
+    "34.1300,-95.3200|34.5037,-93.0552|2026-07-15|driving": {
+      "originKey": "34.1300,-95.3200",
+      "destKey": "34.5037,-93.0552",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 7740,
+      "distanceMeters": 212103.1708297102,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.631Z"
+    },
+    "34.1300,-95.3200|35.9825,-96.2943|2026-07-15|driving": {
+      "originKey": "34.1300,-95.3200",
+      "destKey": "35.9825,-96.2943",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 8160,
+      "distanceMeters": 224263.45087785245,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.659Z"
+    },
+    "33.0712,-95.8243|34.0913,-95.2757|2026-07-15|driving": {
+      "originKey": "33.0712,-95.8243",
+      "destKey": "34.0913,-95.2757",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4500,
+      "distanceMeters": 124282.42726296761,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.688Z"
+    },
+    "33.0712,-95.8243|34.5037,-93.0552|2026-07-15|driving": {
+      "originKey": "33.0712,-95.8243",
+      "destKey": "34.5037,-93.0552",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 10980,
+      "distanceMeters": 301406.10136063525,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.721Z"
+    },
+    "33.0712,-95.8243|35.9825,-96.2943|2026-07-15|driving": {
+      "originKey": "33.0712,-95.8243",
+      "destKey": "35.9825,-96.2943",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 11880,
+      "distanceMeters": 326565.5707350398,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.751Z"
+    },
+    "34.0913,-95.2757|34.5037,-93.0552|2026-07-15|driving": {
+      "originKey": "34.0913,-95.2757",
+      "destKey": "34.5037,-93.0552",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 7620,
+      "distanceMeters": 209065.28750285695,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.779Z"
+    },
+    "34.0913,-95.2757|35.9825,-96.2943|2026-07-15|driving": {
+      "originKey": "34.0913,-95.2757",
+      "destKey": "35.9825,-96.2943",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 8400,
+      "distanceMeters": 229832.1762749022,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.807Z"
+    },
+    "34.5037,-93.0552|35.9825,-96.2943|2026-07-15|driving": {
+      "originKey": "34.5037,-93.0552",
+      "destKey": "35.9825,-96.2943",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 12300,
+      "distanceMeters": 336966.2072686292,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.836Z"
+    },
+    "35.3160,-92.2520|36.2687,-90.9588|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "36.2687,-90.9588",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 5760,
+      "distanceMeters": 157563.3209745764,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.865Z"
+    },
+    "35.3160,-92.2520|36.0606,-90.4973|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "36.0606,-90.4973",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 6540,
+      "distanceMeters": 178792.92266326616,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.895Z"
+    },
+    "35.3160,-92.2520|35.7420,-91.6410|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.7420,-91.6410",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2640,
+      "distanceMeters": 72807.19532447532,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.924Z"
+    },
+    "35.3160,-92.2520|36.3415,-91.5549|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "36.3415,-91.5549",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4740,
+      "distanceMeters": 130200.87421343698,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.956Z"
+    },
+    "35.3160,-92.2520|35.5962,-91.2149|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.5962,-91.2149",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3600,
+      "distanceMeters": 98966.97150121795,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:08.987Z"
+    },
+    "35.3160,-92.2520|36.0040,-91.1140|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "36.0040,-91.1140",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4680,
+      "distanceMeters": 128150.41224071373,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.022Z"
+    },
+    "35.3160,-92.2520|35.9273,-89.9190|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.9273,-89.9190",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 8100,
+      "distanceMeters": 221553.14849985705,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.055Z"
+    },
+    "35.3160,-92.2520|34.4138,-95.0729|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "34.4138,-95.0729",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 10080,
+      "distanceMeters": 276212.17201955826,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.085Z"
+    },
+    "35.3160,-92.2520|36.2612,-91.0376|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "36.2612,-91.0376",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 5520,
+      "distanceMeters": 151802.49087781965,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.114Z"
+    },
+    "35.3160,-92.2520|36.1807,-91.3385|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "36.1807,-91.3385",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4620,
+      "distanceMeters": 126651.55499329061,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.142Z"
+    },
+    "35.3160,-92.2520|35.8423,-90.7043|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.8423,-90.7043",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 5520,
+      "distanceMeters": 151707.42340002162,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.170Z"
+    },
+    "35.3160,-92.2520|36.3837,-91.8210|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "36.3837,-91.8210",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4560,
+      "distanceMeters": 124915.94543204138,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.196Z"
+    },
+    "36.2687,-90.9588|36.0606,-90.4973|2026-07-15|driving": {
+      "originKey": "36.2687,-90.9588",
+      "destKey": "36.0606,-90.4973",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1740,
+      "distanceMeters": 47453.14533362765,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.225Z"
+    },
+    "36.2687,-90.9588|35.7420,-91.6410|2026-07-15|driving": {
+      "originKey": "36.2687,-90.9588",
+      "destKey": "35.7420,-91.6410",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3120,
+      "distanceMeters": 84827.29720008232,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.252Z"
+    },
+    "36.2687,-90.9588|36.3415,-91.5549|2026-07-15|driving": {
+      "originKey": "36.2687,-90.9588",
+      "destKey": "36.3415,-91.5549",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1980,
+      "distanceMeters": 54025.89634448673,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.279Z"
+    },
+    "36.2687,-90.9588|35.5962,-91.2149|2026-07-15|driving": {
+      "originKey": "36.2687,-90.9588",
+      "destKey": "35.5962,-91.2149",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2880,
+      "distanceMeters": 78252.78102341316,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.307Z"
+    },
+    "36.2687,-90.9588|36.0040,-91.1140|2026-07-15|driving": {
+      "originKey": "36.2687,-90.9588",
+      "destKey": "36.0040,-91.1140",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1200,
+      "distanceMeters": 32566.37796986137,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.337Z"
+    },
+    "36.2687,-90.9588|35.9273,-89.9190|2026-07-15|driving": {
+      "originKey": "36.2687,-90.9588",
+      "destKey": "35.9273,-89.9190",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3660,
+      "distanceMeters": 100840.14098236998,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.365Z"
+    },
+    "36.2687,-90.9588|34.4138,-95.0729|2026-07-15|driving": {
+      "originKey": "36.2687,-90.9588",
+      "destKey": "34.4138,-95.0729",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 15540,
+      "distanceMeters": 426313.09157843713,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.392Z"
+    },
+    "36.2687,-90.9588|36.2612,-91.0376|2026-07-15|driving": {
+      "originKey": "36.2687,-90.9588",
+      "destKey": "36.2612,-91.0376",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 600,
+      "distanceMeters": 7113.8962661863125,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.421Z"
+    },
+    "36.2687,-90.9588|36.1807,-91.3385|2026-07-15|driving": {
+      "originKey": "36.2687,-90.9588",
+      "destKey": "36.1807,-91.3385",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1320,
+      "distanceMeters": 35437.4019327919,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.450Z"
+    },
+    "36.2687,-90.9588|35.8423,-90.7043|2026-07-15|driving": {
+      "originKey": "36.2687,-90.9588",
+      "destKey": "35.8423,-90.7043",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1920,
+      "distanceMeters": 52644.59427395953,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.478Z"
+    },
+    "36.2687,-90.9588|36.3837,-91.8210|2026-07-15|driving": {
+      "originKey": "36.2687,-90.9588",
+      "destKey": "36.3837,-91.8210",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2880,
+      "distanceMeters": 78291.2706807583,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.507Z"
+    },
+    "36.0606,-90.4973|35.7420,-91.6410|2026-07-15|driving": {
+      "originKey": "36.0606,-90.4973",
+      "destKey": "35.7420,-91.6410",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3960,
+      "distanceMeters": 108934.82245164581,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.536Z"
+    },
+    "36.0606,-90.4973|36.3415,-91.5549|2026-07-15|driving": {
+      "originKey": "36.0606,-90.4973",
+      "destKey": "36.3415,-91.5549",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3660,
+      "distanceMeters": 99904.55325152253,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.564Z"
+    },
+    "36.0606,-90.4973|35.5962,-91.2149|2026-07-15|driving": {
+      "originKey": "36.0606,-90.4973",
+      "destKey": "35.5962,-91.2149",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3000,
+      "distanceMeters": 82776.04818286534,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.593Z"
+    },
+    "36.0606,-90.4973|36.0040,-91.1140|2026-07-15|driving": {
+      "originKey": "36.0606,-90.4973",
+      "destKey": "36.0040,-91.1140",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2040,
+      "distanceMeters": 55810.62419627176,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.622Z"
+    },
+    "36.0606,-90.4973|35.9273,-89.9190|2026-07-15|driving": {
+      "originKey": "36.0606,-90.4973",
+      "destKey": "35.9273,-89.9190",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1980,
+      "distanceMeters": 54097.15303850214,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.650Z"
+    },
+    "36.0606,-90.4973|34.4138,-95.0729|2026-07-15|driving": {
+      "originKey": "36.0606,-90.4973",
+      "destKey": "34.4138,-95.0729",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 16560,
+      "distanceMeters": 454048.0408234746,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.678Z"
+    },
+    "36.0606,-90.4973|36.2612,-91.0376|2026-07-15|driving": {
+      "originKey": "36.0606,-90.4973",
+      "destKey": "36.2612,-91.0376",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1920,
+      "distanceMeters": 53388.132279287915,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.706Z"
+    },
+    "36.0606,-90.4973|36.1807,-91.3385|2026-07-15|driving": {
+      "originKey": "36.0606,-90.4973",
+      "destKey": "36.1807,-91.3385",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2820,
+      "distanceMeters": 76728.06245857723,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.734Z"
+    },
+    "36.0606,-90.4973|35.8423,-90.7043|2026-07-15|driving": {
+      "originKey": "36.0606,-90.4973",
+      "destKey": "35.8423,-90.7043",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1140,
+      "distanceMeters": 30600.704077389564,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.762Z"
+    },
+    "36.0606,-90.4973|36.3837,-91.8210|2026-07-15|driving": {
+      "originKey": "36.0606,-90.4973",
+      "destKey": "36.3837,-91.8210",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4500,
+      "distanceMeters": 124056.69696731864,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.790Z"
+    },
+    "35.7420,-91.6410|36.3415,-91.5549|2026-07-15|driving": {
+      "originKey": "35.7420,-91.6410",
+      "destKey": "36.3415,-91.5549",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2460,
+      "distanceMeters": 67109.34000635809,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.880Z"
+    },
+    "35.7420,-91.6410|35.5962,-91.2149|2026-07-15|driving": {
+      "originKey": "35.7420,-91.6410",
+      "destKey": "35.5962,-91.2149",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1500,
+      "distanceMeters": 41766.3890344267,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:09.911Z"
+    },
+    "35.7420,-91.6410|36.0040,-91.1140|2026-07-15|driving": {
+      "originKey": "35.7420,-91.6410",
+      "destKey": "36.0040,-91.1140",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2040,
+      "distanceMeters": 55708.96724547049,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.041Z"
+    },
+    "35.7420,-91.6410|35.9273,-89.9190|2026-07-15|driving": {
+      "originKey": "35.7420,-91.6410",
+      "destKey": "35.9273,-89.9190",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 5700,
+      "distanceMeters": 156592.14922031696,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.070Z"
+    },
+    "35.7420,-91.6410|34.4138,-95.0729|2026-07-15|driving": {
+      "originKey": "35.7420,-91.6410",
+      "destKey": "34.4138,-95.0729",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 12600,
+      "distanceMeters": 345429.1574707907,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.097Z"
+    },
+    "35.7420,-91.6410|36.2612,-91.0376|2026-07-15|driving": {
+      "originKey": "35.7420,-91.6410",
+      "destKey": "36.2612,-91.0376",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2880,
+      "distanceMeters": 79241.89371710153,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.154Z"
+    },
+    "35.7420,-91.6410|36.1807,-91.3385|2026-07-15|driving": {
+      "originKey": "35.7420,-91.6410",
+      "destKey": "36.1807,-91.3385",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2040,
+      "distanceMeters": 55864.49028832285,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.228Z"
+    },
+    "35.7420,-91.6410|35.8423,-90.7043|2026-07-15|driving": {
+      "originKey": "35.7420,-91.6410",
+      "destKey": "35.8423,-90.7043",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3120,
+      "distanceMeters": 85218.3540001968,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.255Z"
+    },
+    "35.7420,-91.6410|36.3837,-91.8210|2026-07-15|driving": {
+      "originKey": "35.7420,-91.6410",
+      "destKey": "36.3837,-91.8210",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2640,
+      "distanceMeters": 73165.12717216047,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.286Z"
+    },
+    "36.3415,-91.5549|35.5962,-91.2149|2026-07-15|driving": {
+      "originKey": "36.3415,-91.5549",
+      "destKey": "35.5962,-91.2149",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3240,
+      "distanceMeters": 88341.56674160098,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.316Z"
+    },
+    "36.3415,-91.5549|36.0040,-91.1140|2026-07-15|driving": {
+      "originKey": "36.3415,-91.5549",
+      "destKey": "36.0040,-91.1140",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1980,
+      "distanceMeters": 54539.82075296331,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.343Z"
+    },
+    "36.3415,-91.5549|35.9273,-89.9190|2026-07-15|driving": {
+      "originKey": "36.3415,-91.5549",
+      "destKey": "35.9273,-89.9190",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 5640,
+      "distanceMeters": 153959.84798467503,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.378Z"
+    },
+    "36.3415,-91.5549|34.4138,-95.0729|2026-07-15|driving": {
+      "originKey": "36.3415,-91.5549",
+      "destKey": "34.4138,-95.0729",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 13980,
+      "distanceMeters": 384242.566803738,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.406Z"
+    },
+    "36.3415,-91.5549|36.2612,-91.0376|2026-07-15|driving": {
+      "originKey": "36.3415,-91.5549",
+      "destKey": "36.2612,-91.0376",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1740,
+      "distanceMeters": 47209.126039913885,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.437Z"
+    },
+    "36.3415,-91.5549|36.1807,-91.3385|2026-07-15|driving": {
+      "originKey": "36.3415,-91.5549",
+      "destKey": "36.1807,-91.3385",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 960,
+      "distanceMeters": 26384.67750648859,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.468Z"
+    },
+    "36.3415,-91.5549|35.8423,-90.7043|2026-07-15|driving": {
+      "originKey": "36.3415,-91.5549",
+      "destKey": "35.8423,-90.7043",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3420,
+      "distanceMeters": 94459.14631741976,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.498Z"
+    },
+    "36.3415,-91.5549|36.3837,-91.8210|2026-07-15|driving": {
+      "originKey": "36.3415,-91.5549",
+      "destKey": "36.3837,-91.8210",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 900,
+      "distanceMeters": 24285.079448537763,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.525Z"
+    },
+    "35.5962,-91.2149|36.0040,-91.1140|2026-07-15|driving": {
+      "originKey": "35.5962,-91.2149",
+      "destKey": "36.0040,-91.1140",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1680,
+      "distanceMeters": 46249.32878939637,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.554Z"
+    },
+    "35.5962,-91.2149|35.9273,-89.9190|2026-07-15|driving": {
+      "originKey": "35.5962,-91.2149",
+      "destKey": "35.9273,-89.9190",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4440,
+      "distanceMeters": 122586.48843911849,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.583Z"
+    },
+    "35.5962,-91.2149|34.4138,-95.0729|2026-07-15|driving": {
+      "originKey": "35.5962,-91.2149",
+      "destKey": "34.4138,-95.0729",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 13680,
+      "distanceMeters": 375141.7191714126,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.611Z"
+    },
+    "35.5962,-91.2149|36.2612,-91.0376|2026-07-15|driving": {
+      "originKey": "35.5962,-91.2149",
+      "destKey": "36.2612,-91.0376",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2760,
+      "distanceMeters": 75648.21008778675,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.641Z"
+    },
+    "35.5962,-91.2149|36.1807,-91.3385|2026-07-15|driving": {
+      "originKey": "35.5962,-91.2149",
+      "destKey": "36.1807,-91.3385",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2400,
+      "distanceMeters": 65940.29732627048,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.674Z"
+    },
+    "35.5962,-91.2149|35.8423,-90.7043|2026-07-15|driving": {
+      "originKey": "35.5962,-91.2149",
+      "destKey": "35.8423,-90.7043",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1980,
+      "distanceMeters": 53606.52151384427,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.706Z"
+    },
+    "35.5962,-91.2149|36.3837,-91.8210|2026-07-15|driving": {
+      "originKey": "35.5962,-91.2149",
+      "destKey": "36.3837,-91.8210",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3780,
+      "distanceMeters": 103156.61835559113,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.733Z"
+    },
+    "36.0040,-91.1140|35.9273,-89.9190|2026-07-15|driving": {
+      "originKey": "36.0040,-91.1140",
+      "destKey": "35.9273,-89.9190",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3960,
+      "distanceMeters": 107884.26093006686,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.823Z"
+    },
+    "36.0040,-91.1140|34.4138,-95.0729|2026-07-15|driving": {
+      "originKey": "36.0040,-91.1140",
+      "destKey": "34.4138,-95.0729",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 14580,
+      "distanceMeters": 400741.86277612846,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.853Z"
+    },
+    "36.0040,-91.1140|36.2612,-91.0376|2026-07-15|driving": {
+      "originKey": "36.0040,-91.1140",
+      "destKey": "36.2612,-91.0376",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1080,
+      "distanceMeters": 29410.85969643806,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.880Z"
+    },
+    "36.0040,-91.1140|36.1807,-91.3385|2026-07-15|driving": {
+      "originKey": "36.0040,-91.1140",
+      "destKey": "36.1807,-91.3385",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1020,
+      "distanceMeters": 28159.53054855764,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.908Z"
+    },
+    "36.0040,-91.1140|35.8423,-90.7043|2026-07-15|driving": {
+      "originKey": "36.0040,-91.1140",
+      "destKey": "35.8423,-90.7043",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1500,
+      "distanceMeters": 41040.192553732806,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.964Z"
+    },
+    "36.0040,-91.1140|36.3837,-91.8210|2026-07-15|driving": {
+      "originKey": "36.0040,-91.1140",
+      "destKey": "36.3837,-91.8210",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2760,
+      "distanceMeters": 76208.10859522677,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:10.993Z"
+    },
+    "35.9273,-89.9190|34.4138,-95.0729|2026-07-15|driving": {
+      "originKey": "35.9273,-89.9190",
+      "destKey": "34.4138,-95.0729",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 18120,
+      "distanceMeters": 497694.5838366421,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.024Z"
+    },
+    "35.9273,-89.9190|36.2612,-91.0376|2026-07-15|driving": {
+      "originKey": "35.9273,-89.9190",
+      "destKey": "36.2612,-91.0376",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3900,
+      "distanceMeters": 107144.8260190814,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.052Z"
+    },
+    "35.9273,-89.9190|36.1807,-91.3385|2026-07-15|driving": {
+      "originKey": "35.9273,-89.9190",
+      "destKey": "36.1807,-91.3385",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4740,
+      "distanceMeters": 130681.13355690517,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.079Z"
+    },
+    "35.9273,-89.9190|35.8423,-90.7043|2026-07-15|driving": {
+      "originKey": "35.9273,-89.9190",
+      "destKey": "35.8423,-90.7043",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2580,
+      "distanceMeters": 71375.87905818515,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.108Z"
+    },
+    "35.9273,-89.9190|36.3837,-91.8210|2026-07-15|driving": {
+      "originKey": "35.9273,-89.9190",
+      "destKey": "36.3837,-91.8210",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 6480,
+      "distanceMeters": 178141.07097617927,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.189Z"
+    },
+    "34.4138,-95.0729|36.2612,-91.0376|2026-07-15|driving": {
+      "originKey": "34.4138,-95.0729",
+      "destKey": "36.2612,-91.0376",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 15300,
+      "distanceMeters": 419680.3477424393,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.220Z"
+    },
+    "34.4138,-95.0729|36.1807,-91.3385|2026-07-15|driving": {
+      "originKey": "34.4138,-95.0729",
+      "destKey": "36.1807,-91.3385",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 14280,
+      "distanceMeters": 391693.2347803546,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.248Z"
+    },
+    "34.4138,-95.0729|35.8423,-90.7043|2026-07-15|driving": {
+      "originKey": "34.4138,-95.0729",
+      "destKey": "35.8423,-90.7043",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 15600,
+      "distanceMeters": 427814.6069820809,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.276Z"
+    },
+    "34.4138,-95.0729|36.3837,-91.8210|2026-07-15|driving": {
+      "originKey": "34.4138,-95.0729",
+      "destKey": "36.3837,-91.8210",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 13380,
+      "distanceMeters": 367190.01433628274,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.306Z"
+    },
+    "36.2612,-91.0376|36.1807,-91.3385|2026-07-15|driving": {
+      "originKey": "36.2612,-91.0376",
+      "destKey": "36.1807,-91.3385",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1020,
+      "distanceMeters": 28437.96497047141,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.336Z"
+    },
+    "36.2612,-91.0376|35.8423,-90.7043|2026-07-15|driving": {
+      "originKey": "36.2612,-91.0376",
+      "destKey": "35.8423,-90.7043",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2040,
+      "distanceMeters": 55384.61469051482,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.365Z"
+    },
+    "36.2612,-91.0376|36.3837,-91.8210|2026-07-15|driving": {
+      "originKey": "36.2612,-91.0376",
+      "destKey": "36.3837,-91.8210",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2580,
+      "distanceMeters": 71493.6645445459,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.393Z"
+    },
+    "36.1807,-91.3385|35.8423,-90.7043|2026-07-15|driving": {
+      "originKey": "36.1807,-91.3385",
+      "destKey": "35.8423,-90.7043",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2520,
+      "distanceMeters": 68335.99976155105,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.422Z"
+    },
+    "36.1807,-91.3385|36.3837,-91.8210|2026-07-15|driving": {
+      "originKey": "36.1807,-91.3385",
+      "destKey": "36.3837,-91.8210",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1800,
+      "distanceMeters": 48785.26956151694,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.450Z"
+    },
+    "35.8423,-90.7043|36.3837,-91.8210|2026-07-15|driving": {
+      "originKey": "35.8423,-90.7043",
+      "destKey": "36.3837,-91.8210",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4260,
+      "distanceMeters": 116989.17663691175,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.478Z"
+    },
+    "35.3160,-92.2520|33.6050,-95.8629|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "33.6050,-95.8629",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 13920,
+      "distanceMeters": 381785.4535259078,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.540Z"
+    },
+    "35.3160,-92.2520|35.2470,-91.7335|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.2470,-91.7335",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1740,
+      "distanceMeters": 47686.032572059376,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.568Z"
+    },
+    "35.3160,-92.2520|35.5123,-92.0310|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.5123,-92.0310",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1080,
+      "distanceMeters": 29623.33699205348,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.597Z"
+    },
+    "35.3160,-92.2520|35.8642,-92.1410|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.8642,-92.1410",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2280,
+      "distanceMeters": 61777.85528166529,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.627Z"
+    },
+    "33.6050,-95.8629|35.2470,-91.7335|2026-07-15|driving": {
+      "originKey": "33.6050,-95.8629",
+      "destKey": "35.2470,-91.7335",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 15300,
+      "distanceMeters": 420404.5064164036,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.660Z"
+    },
+    "33.6050,-95.8629|35.5123,-92.0310|2026-07-15|driving": {
+      "originKey": "33.6050,-95.8629",
+      "destKey": "35.5123,-92.0310",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 14940,
+      "distanceMeters": 409959.2506851476,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.689Z"
+    },
+    "33.6050,-95.8629|35.8642,-92.1410|2026-07-15|driving": {
+      "originKey": "33.6050,-95.8629",
+      "destKey": "35.8642,-92.1410",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 15420,
+      "distanceMeters": 422762.00424623437,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.789Z"
+    },
+    "35.2470,-91.7335|35.5123,-92.0310|2026-07-15|driving": {
+      "originKey": "35.2470,-91.7335",
+      "destKey": "35.5123,-92.0310",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1440,
+      "distanceMeters": 39971.439088291314,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.819Z"
+    },
+    "35.2470,-91.7335|35.8642,-92.1410|2026-07-15|driving": {
+      "originKey": "35.2470,-91.7335",
+      "destKey": "35.8642,-92.1410",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2820,
+      "distanceMeters": 77903.13838597295,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.846Z"
+    },
+    "35.5123,-92.0310|35.8642,-92.1410|2026-07-15|driving": {
+      "originKey": "35.5123,-92.0310",
+      "destKey": "35.8642,-92.1410",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1500,
+      "distanceMeters": 40370.89515529199,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.874Z"
+    },
+    "35.3160,-92.2520|33.2671,-93.2395|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "33.2671,-93.2395",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 8940,
+      "distanceMeters": 245220.33844582815,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.903Z"
+    },
+    "35.3160,-92.2520|33.3925,-96.7629|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "33.3925,-96.7629",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 16980,
+      "distanceMeters": 465993.50199053076,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.936Z"
+    },
+    "35.3160,-92.2520|33.8162,-97.2471|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "33.8162,-97.2471",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 17760,
+      "distanceMeters": 486764.44472468155,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:11.966Z"
+    },
+    "35.3160,-92.2520|35.0525,-95.2314|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.0525,-95.2314",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 9900,
+      "distanceMeters": 272340.39943331346,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:12.021Z"
+    },
+    "35.3160,-92.2520|35.1850,-95.3829|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.1850,-95.3829",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 10380,
+      "distanceMeters": 284661.1066774228,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:12.049Z"
+    },
+    "35.3160,-92.2520|33.2076,-92.8346|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "33.2076,-92.8346",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 8760,
+      "distanceMeters": 240477.71545449985,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:12.077Z"
+    },
+    "33.2671,-93.2395|33.3925,-96.7629|2026-07-15|driving": {
+      "originKey": "33.2671,-93.2395",
+      "destKey": "33.3925,-96.7629",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 11940,
+      "distanceMeters": 327621.36194275174,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:12.143Z"
+    },
+    "33.2671,-93.2395|33.8162,-97.2471|2026-07-15|driving": {
+      "originKey": "33.2671,-93.2395",
+      "destKey": "33.8162,-97.2471",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 13740,
+      "distanceMeters": 376385.0163257681,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:12.171Z"
+    },
+    "33.2671,-93.2395|35.0525,-95.2314|2026-07-15|driving": {
+      "originKey": "33.2671,-93.2395",
+      "destKey": "35.0525,-95.2314",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 9840,
+      "distanceMeters": 270179.4005579272,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:12.276Z"
+    },
+    "33.2671,-93.2395|35.1850,-95.3829|2026-07-15|driving": {
+      "originKey": "33.2671,-93.2395",
+      "destKey": "35.1850,-95.3829",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 10560,
+      "distanceMeters": 290347.60641995724,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:12.303Z"
+    },
+    "33.2671,-93.2395|33.2076,-92.8346|2026-07-15|driving": {
+      "originKey": "33.2671,-93.2395",
+      "destKey": "33.2076,-92.8346",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1380,
+      "distanceMeters": 38234.16809733824,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:12.330Z"
+    },
+    "33.3925,-96.7629|33.8162,-97.2471|2026-07-15|driving": {
+      "originKey": "33.3925,-96.7629",
+      "destKey": "33.8162,-97.2471",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2400,
+      "distanceMeters": 65051.82501150117,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:12.356Z"
+    },
+    "33.3925,-96.7629|35.0525,-95.2314|2026-07-15|driving": {
+      "originKey": "33.3925,-96.7629",
+      "destKey": "35.0525,-95.2314",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 8460,
+      "distanceMeters": 232148.76749213104,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:12.385Z"
+    },
+    "33.3925,-96.7629|35.1850,-95.3829|2026-07-15|driving": {
+      "originKey": "33.3925,-96.7629",
+      "destKey": "35.1850,-95.3829",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 8580,
+      "distanceMeters": 236214.40997217642,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:12.412Z"
+    },
+    "33.3925,-96.7629|33.2076,-92.8346|2026-07-15|driving": {
+      "originKey": "33.3925,-96.7629",
+      "destKey": "33.2076,-92.8346",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 13320,
+      "distanceMeters": 365638.9177506419,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:12.441Z"
+    },
+    "33.8162,-97.2471|35.0525,-95.2314|2026-07-15|driving": {
+      "originKey": "33.8162,-97.2471",
+      "destKey": "35.0525,-95.2314",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 8400,
+      "distanceMeters": 230361.49628752779,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:12.508Z"
+    },
+    "33.8162,-97.2471|35.1850,-95.3829|2026-07-15|driving": {
+      "originKey": "33.8162,-97.2471",
+      "destKey": "35.1850,-95.3829",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 8340,
+      "distanceMeters": 228792.80894621255,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:12.540Z"
+    },
+    "33.8162,-97.2471|33.2076,-92.8346|2026-07-15|driving": {
+      "originKey": "33.8162,-97.2471",
+      "destKey": "33.2076,-92.8346",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 15120,
+      "distanceMeters": 414617.36869663786,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:12.569Z"
+    },
+    "35.0525,-95.2314|35.1850,-95.3829|2026-07-15|driving": {
+      "originKey": "35.0525,-95.2314",
+      "destKey": "35.1850,-95.3829",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 720,
+      "distanceMeters": 20168.383914340262,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:12.658Z"
+    },
+    "35.0525,-95.2314|33.2076,-92.8346|2026-07-15|driving": {
+      "originKey": "35.0525,-95.2314",
+      "destKey": "33.2076,-92.8346",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 10980,
+      "distanceMeters": 301233.119994365,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:12.690Z"
+    },
+    "35.1850,-95.3829|33.2076,-92.8346|2026-07-15|driving": {
+      "originKey": "35.1850,-95.3829",
+      "destKey": "33.2076,-92.8346",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 11700,
+      "distanceMeters": 321337.06567898206,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:12.722Z"
+    },
+    "35.3160,-92.2520|33.9862,-97.4414|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "33.9862,-97.4414",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 18120,
+      "distanceMeters": 497109.39605099504,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:12.751Z"
+    },
+    "35.3160,-92.2520|35.5720,-93.7285|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.5720,-93.7285",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4980,
+      "distanceMeters": 136748.10250198777,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:12.899Z"
+    },
+    "35.3160,-92.2520|35.3137,-93.6321|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.3137,-93.6321",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4560,
+      "distanceMeters": 125220.83269483977,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:12.931Z"
+    },
+    "35.3160,-92.2520|35.0020,-93.4110|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.0020,-93.4110",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4020,
+      "distanceMeters": 110996.20610534868,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:12.959Z"
+    },
+    "35.3160,-92.2520|35.5892,-94.2446|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.5892,-94.2446",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 6660,
+      "distanceMeters": 183022.77451300147,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:12.986Z"
+    },
+    "35.3160,-92.2520|35.5023,-93.8452|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.5023,-93.8452",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 5340,
+      "distanceMeters": 145864.96933928307,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.017Z"
+    },
+    "35.3160,-92.2520|35.3859,-94.3986|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.3859,-94.3986",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 7080,
+      "distanceMeters": 194833.24658531547,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.047Z"
+    },
+    "35.3160,-92.2520|35.2784,-93.1338|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.2784,-93.1338",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2940,
+      "distanceMeters": 80135.30941968384,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.074Z"
+    },
+    "35.3160,-92.2520|35.5959,-92.4513|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.5959,-92.4513",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1320,
+      "distanceMeters": 35979.565567375306,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.100Z"
+    },
+    "33.9862,-97.4414|35.5720,-93.7285|2026-07-15|driving": {
+      "originKey": "33.9862,-97.4414",
+      "destKey": "35.5720,-93.7285",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 13920,
+      "distanceMeters": 382167.7002768236,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.129Z"
+    },
+    "33.9862,-97.4414|35.3137,-93.6321|2026-07-15|driving": {
+      "originKey": "33.9862,-97.4414",
+      "destKey": "35.3137,-93.6321",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 13800,
+      "distanceMeters": 378389.9304008025,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.159Z"
+    },
+    "33.9862,-97.4414|35.0020,-93.4110|2026-07-15|driving": {
+      "originKey": "33.9862,-97.4414",
+      "destKey": "35.0020,-93.4110",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 14100,
+      "distanceMeters": 386217.13610997,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.189Z"
+    },
+    "33.9862,-97.4414|35.5892,-94.2446|2026-07-15|driving": {
+      "originKey": "33.9862,-97.4414",
+      "destKey": "35.5892,-94.2446",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 12480,
+      "distanceMeters": 342018.4491842185,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.217Z"
+    },
+    "33.9862,-97.4414|35.5023,-93.8452|2026-07-15|driving": {
+      "originKey": "33.9862,-97.4414",
+      "destKey": "35.5023,-93.8452",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 13440,
+      "distanceMeters": 369268.6794350514,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.246Z"
+    },
+    "33.9862,-97.4414|35.3859,-94.3986|2026-07-15|driving": {
+      "originKey": "33.9862,-97.4414",
+      "destKey": "35.3859,-94.3986",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 11640,
+      "distanceMeters": 318765.2441567093,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.273Z"
+    },
+    "33.9862,-97.4414|35.2784,-93.1338|2026-07-15|driving": {
+      "originKey": "33.9862,-97.4414",
+      "destKey": "35.2784,-93.1338",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 15300,
+      "distanceMeters": 419443.88076597935,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.303Z"
+    },
+    "33.9862,-97.4414|35.5959,-92.4513|2026-07-15|driving": {
+      "originKey": "33.9862,-97.4414",
+      "destKey": "35.5959,-92.4513",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 17820,
+      "distanceMeters": 489498.97282078274,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.332Z"
+    },
+    "35.5720,-93.7285|35.3137,-93.6321|2026-07-15|driving": {
+      "originKey": "35.5720,-93.7285",
+      "destKey": "35.3137,-93.6321",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1080,
+      "distanceMeters": 30019.92235170109,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.424Z"
+    },
+    "35.5720,-93.7285|35.0020,-93.4110|2026-07-15|driving": {
+      "originKey": "35.5720,-93.7285",
+      "destKey": "35.0020,-93.4110",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2520,
+      "distanceMeters": 69624.82671904417,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.454Z"
+    },
+    "35.5720,-93.7285|35.5892,-94.2446|2026-07-15|driving": {
+      "originKey": "35.5720,-93.7285",
+      "destKey": "35.5892,-94.2446",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1680,
+      "distanceMeters": 46712.40802510911,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.487Z"
+    },
+    "35.5720,-93.7285|35.5023,-93.8452|2026-07-15|driving": {
+      "originKey": "35.5720,-93.7285",
+      "destKey": "35.5023,-93.8452",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 600,
+      "distanceMeters": 13098.421809337338,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.520Z"
+    },
+    "35.5720,-93.7285|35.3859,-94.3986|2026-07-15|driving": {
+      "originKey": "35.5720,-93.7285",
+      "destKey": "35.3859,-94.3986",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2340,
+      "distanceMeters": 64108.47633757019,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.550Z"
+    },
+    "35.5720,-93.7285|35.2784,-93.1338|2026-07-15|driving": {
+      "originKey": "35.5720,-93.7285",
+      "destKey": "35.2784,-93.1338",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2280,
+      "distanceMeters": 63003.569480083,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.578Z"
+    },
+    "35.5720,-93.7285|35.5959,-92.4513|2026-07-15|driving": {
+      "originKey": "35.5720,-93.7285",
+      "destKey": "35.5959,-92.4513",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4200,
+      "distanceMeters": 115527.9871237688,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.778Z"
+    },
+    "35.3137,-93.6321|35.0020,-93.4110|2026-07-15|driving": {
+      "originKey": "35.3137,-93.6321",
+      "destKey": "35.0020,-93.4110",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1440,
+      "distanceMeters": 40066.05822668303,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.807Z"
+    },
+    "35.3137,-93.6321|35.5892,-94.2446|2026-07-15|driving": {
+      "originKey": "35.3137,-93.6321",
+      "destKey": "35.5892,-94.2446",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2280,
+      "distanceMeters": 63375.87172690801,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.838Z"
+    },
+    "35.3137,-93.6321|35.5023,-93.8452|2026-07-15|driving": {
+      "originKey": "35.3137,-93.6321",
+      "destKey": "35.5023,-93.8452",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1020,
+      "distanceMeters": 28509.49414752346,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.867Z"
+    },
+    "35.3137,-93.6321|35.3859,-94.3986|2026-07-15|driving": {
+      "originKey": "35.3137,-93.6321",
+      "destKey": "35.3859,-94.3986",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2580,
+      "distanceMeters": 69979.17340386818,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.896Z"
+    },
+    "35.3137,-93.6321|35.2784,-93.1338|2026-07-15|driving": {
+      "originKey": "35.3137,-93.6321",
+      "destKey": "35.2784,-93.1338",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1680,
+      "distanceMeters": 45393.08736831864,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.925Z"
+    },
+    "35.3137,-93.6321|35.5959,-92.4513|2026-07-15|driving": {
+      "originKey": "35.3137,-93.6321",
+      "destKey": "35.5959,-92.4513",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4080,
+      "distanceMeters": 111459.98553571376,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.955Z"
+    },
+    "35.0020,-93.4110|35.5892,-94.2446|2026-07-15|driving": {
+      "originKey": "35.0020,-93.4110",
+      "destKey": "35.5892,-94.2446",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3660,
+      "distanceMeters": 99932.83824083713,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:13.984Z"
+    },
+    "35.0020,-93.4110|35.5023,-93.8452|2026-07-15|driving": {
+      "originKey": "35.0020,-93.4110",
+      "destKey": "35.5023,-93.8452",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2460,
+      "distanceMeters": 68185.45873201649,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.019Z"
+    },
+    "35.0020,-93.4110|35.3859,-94.3986|2026-07-15|driving": {
+      "originKey": "35.0020,-93.4110",
+      "destKey": "35.3859,-94.3986",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3600,
+      "distanceMeters": 99377.01879545195,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.048Z"
+    },
+    "35.0020,-93.4110|35.2784,-93.1338|2026-07-15|driving": {
+      "originKey": "35.0020,-93.4110",
+      "destKey": "35.2784,-93.1338",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1440,
+      "distanceMeters": 39748.1262497345,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.216Z"
+    },
+    "35.0020,-93.4110|35.5959,-92.4513|2026-07-15|driving": {
+      "originKey": "35.0020,-93.4110",
+      "destKey": "35.5959,-92.4513",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3960,
+      "distanceMeters": 109299.06059644562,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.265Z"
+    },
+    "35.5892,-94.2446|35.5023,-93.8452|2026-07-15|driving": {
+      "originKey": "35.5892,-94.2446",
+      "destKey": "35.5023,-93.8452",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1380,
+      "distanceMeters": 37404.905688340536,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.294Z"
+    },
+    "35.5892,-94.2446|35.3859,-94.3986|2026-07-15|driving": {
+      "originKey": "35.5892,-94.2446",
+      "destKey": "35.3859,-94.3986",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 960,
+      "distanceMeters": 26560.06788019027,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.322Z"
+    },
+    "35.5892,-94.2446|35.2784,-93.1338|2026-07-15|driving": {
+      "originKey": "35.5892,-94.2446",
+      "destKey": "35.2784,-93.1338",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3900,
+      "distanceMeters": 106406.29246265074,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.352Z"
+    },
+    "35.5892,-94.2446|35.5959,-92.4513|2026-07-15|driving": {
+      "originKey": "35.5892,-94.2446",
+      "destKey": "35.5959,-92.4513",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 5880,
+      "distanceMeters": 162151.61917462872,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.380Z"
+    },
+    "35.5023,-93.8452|35.3859,-94.3986|2026-07-15|driving": {
+      "originKey": "35.5023,-93.8452",
+      "destKey": "35.3859,-94.3986",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1860,
+      "distanceMeters": 51775.45852328098,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.409Z"
+    },
+    "35.5023,-93.8452|35.2784,-93.1338|2026-07-15|driving": {
+      "originKey": "35.5023,-93.8452",
+      "destKey": "35.2784,-93.1338",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2520,
+      "distanceMeters": 69126.42677736632,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.437Z"
+    },
+    "35.5023,-93.8452|35.5959,-92.4513|2026-07-15|driving": {
+      "originKey": "35.5023,-93.8452",
+      "destKey": "35.5959,-92.4513",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4620,
+      "distanceMeters": 126534.01809622408,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.493Z"
+    },
+    "35.3859,-94.3986|35.2784,-93.1338|2026-07-15|driving": {
+      "originKey": "35.3859,-94.3986",
+      "destKey": "35.2784,-93.1338",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 4200,
+      "distanceMeters": 115355.60886176668,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.521Z"
+    },
+    "35.3859,-94.3986|35.5959,-92.4513|2026-07-15|driving": {
+      "originKey": "35.3859,-94.3986",
+      "destKey": "35.5959,-92.4513",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 6480,
+      "distanceMeters": 177836.9114516312,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.581Z"
+    },
+    "35.2784,-93.1338|35.5959,-92.4513|2026-07-15|driving": {
+      "originKey": "35.2784,-93.1338",
+      "destKey": "35.5959,-92.4513",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2580,
+      "distanceMeters": 71200.78962999955,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.610Z"
+    },
+    "35.3160,-92.2520|33.3888,-95.0443|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "33.3888,-95.0443",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 12180,
+      "distanceMeters": 334084.6389213862,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.645Z"
+    },
+    "35.3160,-92.2520|34.7840,-91.9000|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "34.7840,-91.9000",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2460,
+      "distanceMeters": 67276.29674354673,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.673Z"
+    },
+    "35.3160,-92.2520|35.0476,-92.7938|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.0476,-92.7938",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2100,
+      "distanceMeters": 57578.58358982433,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.727Z"
+    },
+    "35.3160,-92.2520|35.0887,-92.4421|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.0887,-92.4421",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1140,
+      "distanceMeters": 30612.770799417598,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.757Z"
+    },
+    "35.3160,-92.2520|34.7465,-92.2896|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "34.7465,-92.2896",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2340,
+      "distanceMeters": 63417.98229586357,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.801Z"
+    },
+    "35.3160,-92.2520|34.5645,-92.5863|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "34.5645,-92.5863",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3240,
+      "distanceMeters": 88945.42795544013,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.831Z"
+    },
+    "35.3160,-92.2520|35.2506,-91.7365|2026-07-15|driving": {
+      "originKey": "35.3160,-92.2520",
+      "destKey": "35.2506,-91.7365",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1740,
+      "distanceMeters": 47353.13723746265,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.859Z"
+    },
+    "33.3888,-95.0443|34.7840,-91.9000|2026-07-15|driving": {
+      "originKey": "33.3888,-95.0443",
+      "destKey": "34.7840,-91.9000",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 12000,
+      "distanceMeters": 328479.1394511927,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.887Z"
+    },
+    "33.3888,-95.0443|35.0476,-92.7938|2026-07-15|driving": {
+      "originKey": "33.3888,-95.0443",
+      "destKey": "35.0476,-92.7938",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 10080,
+      "distanceMeters": 277188.49155717826,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.915Z"
+    },
+    "33.3888,-95.0443|35.0887,-92.4421|2026-07-15|driving": {
+      "originKey": "33.3888,-95.0443",
+      "destKey": "35.0887,-92.4421",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 11100,
+      "distanceMeters": 304855.6416919292,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.946Z"
+    },
+    "33.3888,-95.0443|34.7465,-92.2896|2026-07-15|driving": {
+      "originKey": "33.3888,-95.0443",
+      "destKey": "34.7465,-92.2896",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 10740,
+      "distanceMeters": 295237.57040808536,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:14.977Z"
+    },
+    "33.3888,-95.0443|34.5645,-92.5863|2026-07-15|driving": {
+      "originKey": "33.3888,-95.0443",
+      "destKey": "34.5645,-92.5863",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 9540,
+      "distanceMeters": 261641.58195418803,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:15.006Z"
+    },
+    "33.3888,-95.0443|35.2506,-91.7365|2026-07-15|driving": {
+      "originKey": "33.3888,-95.0443",
+      "destKey": "35.2506,-91.7365",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 13380,
+      "distanceMeters": 367576.44977199455,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:15.034Z"
+    },
+    "34.7840,-91.9000|35.0476,-92.7938|2026-07-15|driving": {
+      "originKey": "34.7840,-91.9000",
+      "destKey": "35.0476,-92.7938",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3180,
+      "distanceMeters": 86606.29785657271,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:15.060Z"
+    },
+    "34.7840,-91.9000|35.0887,-92.4421|2026-07-15|driving": {
+      "originKey": "34.7840,-91.9000",
+      "destKey": "35.0887,-92.4421",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2160,
+      "distanceMeters": 59915.233414361006,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:15.088Z"
+    },
+    "34.7840,-91.9000|34.7465,-92.2896|2026-07-15|driving": {
+      "originKey": "34.7840,-91.9000",
+      "destKey": "34.7465,-92.2896",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1320,
+      "distanceMeters": 35831.866636066676,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:15.142Z"
+    },
+    "34.7840,-91.9000|34.5645,-92.5863|2026-07-15|driving": {
+      "originKey": "34.7840,-91.9000",
+      "destKey": "34.5645,-92.5863",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2460,
+      "distanceMeters": 67338.61265603277,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:15.175Z"
+    },
+    "34.7840,-91.9000|35.2506,-91.7365|2026-07-15|driving": {
+      "originKey": "34.7840,-91.9000",
+      "destKey": "35.2506,-91.7365",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1980,
+      "distanceMeters": 53977.70249529114,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:15.203Z"
+    },
+    "35.0476,-92.7938|35.0887,-92.4421|2026-07-15|driving": {
+      "originKey": "35.0476,-92.7938",
+      "destKey": "35.0887,-92.4421",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1200,
+      "distanceMeters": 32332.681313823097,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:15.232Z"
+    },
+    "35.0476,-92.7938|34.7465,-92.2896|2026-07-15|driving": {
+      "originKey": "35.0476,-92.7938",
+      "destKey": "34.7465,-92.2896",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2100,
+      "distanceMeters": 56880.46359936546,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:15.260Z"
+    },
+    "35.0476,-92.7938|34.5645,-92.5863|2026-07-15|driving": {
+      "originKey": "35.0476,-92.7938",
+      "destKey": "34.5645,-92.5863",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2100,
+      "distanceMeters": 56961.021023991314,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:15.293Z"
+    },
+    "35.0476,-92.7938|35.2506,-91.7365|2026-07-15|driving": {
+      "originKey": "35.0476,-92.7938",
+      "destKey": "35.2506,-91.7365",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3600,
+      "distanceMeters": 98743.02203946261,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:15.323Z"
+    },
+    "35.0887,-92.4421|34.7465,-92.2896|2026-07-15|driving": {
+      "originKey": "35.0887,-92.4421",
+      "destKey": "34.7465,-92.2896",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1500,
+      "distanceMeters": 40511.794746737854,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:15.370Z"
+    },
+    "35.0887,-92.4421|34.5645,-92.5863|2026-07-15|driving": {
+      "originKey": "35.0887,-92.4421",
+      "destKey": "34.5645,-92.5863",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2160,
+      "distanceMeters": 59755.99312326176,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:15.399Z"
+    },
+    "35.0887,-92.4421|35.2506,-91.7365|2026-07-15|driving": {
+      "originKey": "35.0887,-92.4421",
+      "destKey": "35.2506,-91.7365",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2400,
+      "distanceMeters": 66614.91283250904,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:15.427Z"
+    },
+    "34.7465,-92.2896|34.5645,-92.5863|2026-07-15|driving": {
+      "originKey": "34.7465,-92.2896",
+      "destKey": "34.5645,-92.5863",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 1260,
+      "distanceMeters": 33853.28171889659,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:15.457Z"
+    },
+    "34.7465,-92.2896|35.2506,-91.7365|2026-07-15|driving": {
+      "originKey": "34.7465,-92.2896",
+      "destKey": "35.2506,-91.7365",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 2760,
+      "distanceMeters": 75366.49304393664,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:15.535Z"
+    },
+    "34.5645,-92.5863|35.2506,-91.7365|2026-07-15|driving": {
+      "originKey": "34.5645,-92.5863",
+      "destKey": "35.2506,-91.7365",
+      "dateBucket": "2026-07-15",
+      "mode": "driving",
+      "durationSeconds": 3960,
+      "distanceMeters": 108743.12393917674,
+      "source": "haversine_estimate",
+      "fetchedAt": "2026-05-13T23:41:15.571Z"
+    }
+  }
+}

@@ -7,8 +7,10 @@ import type { CountyBasicsStrip } from "@/lib/calendar/kelly-county-basics";
 import type { KellyItemStagedMetadata } from "@/lib/calendar/kelly-cockpit-staged-metadata";
 import type { AiRecommendationApiItem, AiRecommendationsPostResponse } from "@/lib/calendar/ai-approval-recommendation-types";
 import type { CalendarAlertDto, EnrichedCalendarItem } from "@/lib/calendar/kelly-cockpit-types";
+import type { WeekendRoutePlan } from "@/lib/opportunities/community-opportunity-types";
 import { KellyMobileApprovalEventCard } from "@/components/admin/kelly-calendar-cockpit/KellyMobileApprovalEventCard";
 import { KellyPwaRegister } from "@/components/admin/kelly-calendar-cockpit/KellyPwaRegister";
+import { KellyWeekendRouteStrip } from "@/components/admin/kelly-calendar-cockpit/KellyWeekendRouteStrip";
 
 const TZ = "America/Chicago";
 
@@ -84,6 +86,8 @@ type Props = {
   weekEndYmd: string;
   countyBasicsByItemId: Record<string, CountyBasicsStrip>;
   stagedByItemId: Record<string, KellyItemStagedMetadata>;
+  weekendRoutePlansPreview?: WeekendRoutePlan[];
+  weekendRoutePlanStub?: (formData: FormData) => Promise<void>;
 };
 
 export function KellyMobileCalendarCockpit({
@@ -95,6 +99,8 @@ export function KellyMobileCalendarCockpit({
   weekEndYmd,
   countyBasicsByItemId,
   stagedByItemId,
+  weekendRoutePlansPreview,
+  weekendRoutePlanStub,
 }: Props) {
   const [tab, setTab] = useState<Tab>("today");
   const [aiById, setAiById] = useState<AiRecommendationApiItem[]>([]);
@@ -195,6 +201,9 @@ export function KellyMobileCalendarCockpit({
 
       {tab === "today" ? (
         <div className="space-y-6">
+          {weekendRoutePlansPreview?.length && weekendRoutePlanStub ? (
+            <KellyWeekendRouteStrip plans={weekendRoutePlansPreview} action={weekendRoutePlanStub} />
+          ) : null}
           <section>
             <p className="mb-2 font-heading text-[11px] font-bold uppercase tracking-[0.28em] text-zinc-400">Today</p>
             <div className="space-y-2">

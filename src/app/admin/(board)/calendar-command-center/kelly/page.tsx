@@ -1,4 +1,5 @@
 import { KellyMobileCalendarCockpit } from "@/components/admin/kelly-calendar-cockpit/KellyMobileCalendarCockpit";
+import { weekendRoutePlanStub } from "@/app/admin/calendar-command-center/weekend-route-plan-actions";
 import { buildCountyBasicsStrip, type CountyBasicsStrip } from "@/lib/calendar/kelly-county-basics";
 import { loadKellyItemStagedMap } from "@/lib/calendar/kelly-cockpit-staged-metadata";
 import {
@@ -8,6 +9,7 @@ import {
   travelCalendarDataPresent,
 } from "@/lib/calendar/load-travel-calendar-data";
 import { loadKellyCockpitBundle } from "@/lib/calendar/kelly-cockpit-data";
+import { loadKellyWeekendRoutePreviews } from "@/lib/opportunities/load-community-opportunities-data";
 
 export const dynamic = "force-dynamic";
 
@@ -27,6 +29,8 @@ export default async function KellyCalendarCockpitPage() {
   const facts = loadCountyFactsByKey();
   const touchMap = loadCountyTouchMap();
   const stagedByItemId = loadKellyItemStagedMap();
+  const weekendRoutePlansPreview = loadKellyWeekendRoutePreviews(bundle.todayYmd, 2);
+
   const countyBasicsByItemId: Record<string, CountyBasicsStrip> = {};
   for (const it of bundle.enriched) {
     countyBasicsByItemId[it.id] = buildCountyBasicsStrip(it, { facts, priorities: countyPriorities, touchMap });
@@ -42,6 +46,8 @@ export default async function KellyCalendarCockpitPage() {
       weekEndYmd={bundle.weekEndYmd}
       countyBasicsByItemId={countyBasicsByItemId}
       stagedByItemId={stagedByItemId}
+      weekendRoutePlansPreview={weekendRoutePlansPreview}
+      weekendRoutePlanStub={weekendRoutePlanStub}
     />
   );
 }

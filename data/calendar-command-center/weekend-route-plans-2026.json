@@ -1,0 +1,1386 @@
+{
+  "generatedAt": "2026-05-13T23:44:02.784Z",
+  "topClusters": [
+    "NEA / Jonesboro-Paragould-Blytheville",
+    "Delta / Helena-West Memphis-Marianna",
+    "Southwest / Hope-Texarkana-Ashdown",
+    "Northwest / Fayetteville-Bentonville-Huntsville",
+    "Southeast / Pine Bluff-Monticello-Dumas",
+    "River Valley / Fort Smith-Russellville-Ozark",
+    "South Arkansas / Magnolia-El Dorado-Camden",
+    "Central / Pulaski-Saline-Faulkner-Lonoke-White",
+    "North Central / Mountain Home-Batesville-Heber Springs",
+    "Lincoln County (single-county add-on)",
+    "Mississippi County (single-county add-on)",
+    "Phillips County (single-county add-on)",
+    "Poinsett County (single-county add-on)",
+    "Prairie County (single-county add-on)",
+    "Randolph County (single-county add-on)",
+    "Sevier County (single-county add-on)",
+    "Sharp County (single-county add-on)",
+    "St. Francis County (single-county add-on)",
+    "Woodruff County (single-county add-on)",
+    "Benton County (single-county add-on)"
+  ],
+  "plans": [
+    {
+      "id": "weekend-nea-jonesboro-paragould-blytheville-0",
+      "weekStart": "2026-05-15",
+      "fridayNightOrigin": "Rose Bud, Arkansas",
+      "homeBase": "Rose Bud, Arkansas",
+      "startingLocationMode": "rose_bud",
+      "title": "Weekend cluster: NEA / Jonesboro-Paragould-Blytheville",
+      "countiesCovered": [
+        "Independence",
+        "Jackson",
+        "Lawrence",
+        "Clay",
+        "Greene",
+        "Izard"
+      ],
+      "opportunities": [
+        {
+          "opportunityId": "fair-103fb79dd387a1a730c37df4",
+          "day": "saturday",
+          "recommendedArrival": "2026-05-16T10:00:00-05:00",
+          "recommendedDeparture": "2026-05-16T12:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 44,
+          "travelFromPreviousMiles": 45.2,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-3ec4d6c750c06dc6aaf5bfd1",
+          "day": "saturday",
+          "recommendedArrival": "2026-05-16T16:30:00-05:00",
+          "recommendedDeparture": "2026-05-16T19:00:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 25,
+          "travelFromPreviousMiles": 26,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-ef8a3bf07796f5d116269e4e",
+          "day": "sunday",
+          "recommendedArrival": "2026-05-17T11:00:00-05:00",
+          "recommendedDeparture": "2026-05-17T13:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 28,
+          "travelFromPreviousMiles": 28.7,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-7da0f84811b62d6378c8eab1",
+          "day": "sunday",
+          "recommendedArrival": "2026-05-17T17:00:00-05:00",
+          "recommendedDeparture": "2026-05-17T19:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 20,
+          "travelFromPreviousMiles": 20.2,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-a70db286b628813d5cc0e60d",
+          "day": "monday",
+          "recommendedArrival": "2026-05-18T10:30:00-05:00",
+          "recommendedDeparture": "2026-05-18T13:00:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 29,
+          "travelFromPreviousMiles": 29.5,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-08ce74fb1d33b44953f4f713",
+          "day": "monday",
+          "recommendedArrival": "2026-05-18T16:00:00-05:00",
+          "recommendedDeparture": "2026-05-18T18:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 76,
+          "travelFromPreviousMiles": 62.1,
+          "risk": "low"
+        }
+      ],
+      "overnightStops": [],
+      "totalDriveMinutes": 207,
+      "totalDriveMiles": 212,
+      "countiesTouched": 6,
+      "mustAttendCount": 0,
+      "routeTightness": "comfortable",
+      "staffRecommendation": "approve",
+      "risks": [
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Monday leg present — if return to Rose Bud exceeds ~2 hours after last stop, book overnight or Tuesday morning return.",
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Monday leg present — if return to Rose Bud exceeds ~2 hours after last stop, book overnight or Tuesday morning return."
+      ],
+      "aiSummary": "Weekend cluster covering Independence, Jackson, Lawrence, Clay, Greene, and Izard counties with a total drive time of 207 minutes. The route is comfortable and staff recommends approval."
+    },
+    {
+      "id": "weekend-delta-helena-west-memphis-marianna-1",
+      "weekStart": "2026-05-22",
+      "fridayNightOrigin": "Rose Bud, Arkansas",
+      "homeBase": "Rose Bud, Arkansas",
+      "startingLocationMode": "rose_bud",
+      "title": "Weekend cluster: Delta / Helena-West Memphis-Marianna",
+      "countiesCovered": [
+        "Jefferson",
+        "Crittenden",
+        "Monroe",
+        "Lee",
+        "Desha",
+        "Chicot"
+      ],
+      "opportunities": [
+        {
+          "opportunityId": "fair-094bf1dec2e49e381bf96da9",
+          "day": "saturday",
+          "recommendedArrival": "2026-05-23T10:00:00-05:00",
+          "recommendedDeparture": "2026-05-23T12:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 75,
+          "travelFromPreviousMiles": 76.5,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-b8afd5d67f546816a494f37f",
+          "day": "saturday",
+          "recommendedArrival": "2026-05-23T16:30:00-05:00",
+          "recommendedDeparture": "2026-05-23T19:00:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 134,
+          "travelFromPreviousMiles": 121.2,
+          "risk": "medium"
+        },
+        {
+          "opportunityId": "fair-2aeedb2c0d0ba35568ddc568",
+          "day": "sunday",
+          "recommendedArrival": "2026-05-24T11:00:00-05:00",
+          "recommendedDeparture": "2026-05-24T13:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 321,
+          "travelFromPreviousMiles": 313.3,
+          "risk": "high"
+        },
+        {
+          "opportunityId": "fair-87846d6b2abf7d3bb06e553c",
+          "day": "sunday",
+          "recommendedArrival": "2026-05-24T17:00:00-05:00",
+          "recommendedDeparture": "2026-05-24T19:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 26,
+          "travelFromPreviousMiles": 26.1,
+          "risk": "high"
+        },
+        {
+          "opportunityId": "fair-cc9651c7269ecfc8096b9d5a",
+          "day": "monday",
+          "recommendedArrival": "2026-05-25T10:30:00-05:00",
+          "recommendedDeparture": "2026-05-25T13:00:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 48,
+          "travelFromPreviousMiles": 48.6,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-174f83e4dad458279edc3436",
+          "day": "monday",
+          "recommendedArrival": "2026-05-25T16:00:00-05:00",
+          "recommendedDeparture": "2026-05-25T18:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 215,
+          "travelFromPreviousMiles": 204.8,
+          "risk": "medium"
+        }
+      ],
+      "overnightStops": [],
+      "totalDriveMinutes": 774,
+      "totalDriveMiles": 790,
+      "countiesTouched": 6,
+      "mustAttendCount": 0,
+      "routeTightness": "too_tight",
+      "staffRecommendation": "split_with_surrogate",
+      "risks": [
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Monday leg present — if return to Rose Bud exceeds ~2 hours after last stop, book overnight or Tuesday morning return.",
+        "One or more days exceed ~5 hours windshield time before buffers — split or surrogate.",
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Monday leg present — if return to Rose Bud exceeds ~2 hours after last stop, book overnight or Tuesday morning return.",
+        "One or more days exceed ~5 hours windshield time before buffers — split or surrogate."
+      ],
+      "aiSummary": "Weekend cluster covering Jefferson, Crittenden, Monroe, Lee, Desha, and Chicot counties with a total drive time of 774 minutes. The route is too tight and staff recommends splitting with a surrogate."
+    },
+    {
+      "id": "weekend-southwest-hope-texarkana-ashdown-2",
+      "weekStart": "2026-05-29",
+      "fridayNightOrigin": "Rose Bud, Arkansas",
+      "homeBase": "Rose Bud, Arkansas",
+      "startingLocationMode": "rose_bud",
+      "title": "Weekend cluster: Southwest / Hope-Texarkana-Ashdown",
+      "countiesCovered": [
+        "Howard",
+        "Montgomery",
+        "Pike",
+        "Hot Spring",
+        "Clark",
+        "Lafayette"
+      ],
+      "opportunities": [
+        {
+          "opportunityId": "fair-294510b98087835cad82e452",
+          "day": "saturday",
+          "recommendedArrival": "2026-05-30T10:00:00-05:00",
+          "recommendedDeparture": "2026-05-30T12:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 188,
+          "travelFromPreviousMiles": 177,
+          "risk": "medium"
+        },
+        {
+          "opportunityId": "fair-847cff2a75ce938df6049561",
+          "day": "saturday",
+          "recommendedArrival": "2026-05-30T16:30:00-05:00",
+          "recommendedDeparture": "2026-05-30T19:00:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 29,
+          "travelFromPreviousMiles": 29.8,
+          "risk": "medium"
+        },
+        {
+          "opportunityId": "fair-fc9b80fc6ddcf7dd5cddf15a",
+          "day": "sunday",
+          "recommendedArrival": "2026-05-31T11:00:00-05:00",
+          "recommendedDeparture": "2026-05-31T13:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 77,
+          "travelFromPreviousMiles": 78.7,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-3fcdc5868662c706c98a3d6b",
+          "day": "sunday",
+          "recommendedArrival": "2026-05-31T17:00:00-05:00",
+          "recommendedDeparture": "2026-05-31T19:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 78,
+          "travelFromPreviousMiles": 64.1,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-d88d31f59f44db8b878f8a20",
+          "day": "monday",
+          "recommendedArrival": "2026-06-01T10:30:00-05:00",
+          "recommendedDeparture": "2026-06-01T13:00:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 71,
+          "travelFromPreviousMiles": 72.7,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-9e03993e30d8f62d3e8067dc",
+          "day": "monday",
+          "recommendedArrival": "2026-06-01T16:00:00-05:00",
+          "recommendedDeparture": "2026-06-01T18:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 104,
+          "travelFromPreviousMiles": 90.8,
+          "risk": "low"
+        }
+      ],
+      "overnightStops": [],
+      "totalDriveMinutes": 502,
+      "totalDriveMiles": 513,
+      "countiesTouched": 6,
+      "mustAttendCount": 0,
+      "routeTightness": "too_tight",
+      "staffRecommendation": "split_with_surrogate",
+      "risks": [
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Monday leg present — if return to Rose Bud exceeds ~2 hours after last stop, book overnight or Tuesday morning return.",
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Monday leg present — if return to Rose Bud exceeds ~2 hours after last stop, book overnight or Tuesday morning return."
+      ],
+      "aiSummary": "Weekend cluster covering Howard, Montgomery, Pike, Hot Spring, Clark, and Lafayette counties with a total drive time of 502 minutes. The route is too tight and staff recommends splitting with a surrogate."
+    },
+    {
+      "id": "weekend-northwest-fayetteville-bentonville-huntsville-3",
+      "weekStart": "2026-06-05",
+      "fridayNightOrigin": "Rose Bud, Arkansas",
+      "homeBase": "Rose Bud, Arkansas",
+      "startingLocationMode": "rose_bud",
+      "title": "Weekend cluster: Northwest / Fayetteville-Bentonville-Huntsville",
+      "countiesCovered": [
+        "Marion",
+        "Baxter",
+        "Boone",
+        "Carroll",
+        "Madison",
+        "Newton"
+      ],
+      "opportunities": [
+        {
+          "opportunityId": "fair-157a4f749d58caa668e88451",
+          "day": "saturday",
+          "recommendedArrival": "2026-06-06T10:00:00-05:00",
+          "recommendedDeparture": "2026-06-06T12:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 67,
+          "travelFromPreviousMiles": 69,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-13e645aa239e20936e7aaad9",
+          "day": "saturday",
+          "recommendedArrival": "2026-06-06T16:30:00-05:00",
+          "recommendedDeparture": "2026-06-06T19:00:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 15,
+          "travelFromPreviousMiles": 15.5,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-0fda38cc810912e89c294968",
+          "day": "sunday",
+          "recommendedArrival": "2026-06-07T11:00:00-05:00",
+          "recommendedDeparture": "2026-06-07T13:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 47,
+          "travelFromPreviousMiles": 48.3,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-61021c0729f81e7b9b3b9e1e",
+          "day": "sunday",
+          "recommendedArrival": "2026-06-07T17:00:00-05:00",
+          "recommendedDeparture": "2026-06-07T19:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 38,
+          "travelFromPreviousMiles": 24,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-d4493ea4a9d68141464ac3d7",
+          "day": "monday",
+          "recommendedArrival": "2026-06-08T10:30:00-05:00",
+          "recommendedDeparture": "2026-06-08T13:00:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 10,
+          "travelFromPreviousMiles": 9.1,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-dd3cef345b5f6d95088be298",
+          "day": "monday",
+          "recommendedArrival": "2026-06-08T16:00:00-05:00",
+          "recommendedDeparture": "2026-06-08T18:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 32,
+          "travelFromPreviousMiles": 33.1,
+          "risk": "low"
+        }
+      ],
+      "overnightStops": [],
+      "totalDriveMinutes": 194,
+      "totalDriveMiles": 199,
+      "countiesTouched": 6,
+      "mustAttendCount": 0,
+      "routeTightness": "comfortable",
+      "staffRecommendation": "approve",
+      "risks": [
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Monday leg present — if return to Rose Bud exceeds ~2 hours after last stop, book overnight or Tuesday morning return.",
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Monday leg present — if return to Rose Bud exceeds ~2 hours after last stop, book overnight or Tuesday morning return."
+      ],
+      "aiSummary": "Weekend cluster covering Marion, Baxter, Boone, Carroll, Madison, and Newton counties with a total drive time of 194 minutes. The route is comfortable and staff recommends approval."
+    },
+    {
+      "id": "weekend-southeast-pine-bluff-monticello-dumas-4",
+      "weekStart": "2026-06-12",
+      "fridayNightOrigin": "Rose Bud, Arkansas",
+      "homeBase": "Rose Bud, Arkansas",
+      "startingLocationMode": "rose_bud",
+      "title": "Weekend cluster: Southeast / Pine Bluff-Monticello-Dumas",
+      "countiesCovered": [
+        "Drew",
+        "Bradley",
+        "Ashley",
+        "Dallas",
+        "Calhoun",
+        "Cleveland"
+      ],
+      "opportunities": [
+        {
+          "opportunityId": "fair-ea84f9e21270c59495e4bc45",
+          "day": "saturday",
+          "recommendedArrival": "2026-06-13T10:00:00-05:00",
+          "recommendedDeparture": "2026-06-13T12:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 166,
+          "travelFromPreviousMiles": 154.9,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-002a41c24dedd25a3db818b1",
+          "day": "saturday",
+          "recommendedArrival": "2026-06-13T16:30:00-05:00",
+          "recommendedDeparture": "2026-06-13T19:00:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 72,
+          "travelFromPreviousMiles": 73.2,
+          "risk": "medium"
+        },
+        {
+          "opportunityId": "fair-a9c2bbe56f939da4c7898261",
+          "day": "sunday",
+          "recommendedArrival": "2026-06-14T11:00:00-05:00",
+          "recommendedDeparture": "2026-06-14T13:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 34,
+          "travelFromPreviousMiles": 34.5,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-d5a81997ffd21d8e33295a4a",
+          "day": "sunday",
+          "recommendedArrival": "2026-06-14T17:00:00-05:00",
+          "recommendedDeparture": "2026-06-14T19:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 155,
+          "travelFromPreviousMiles": 143.5,
+          "risk": "medium"
+        },
+        {
+          "opportunityId": "fair-52fc5e4b710c814c75e0bb69",
+          "day": "monday",
+          "recommendedArrival": "2026-06-15T10:30:00-05:00",
+          "recommendedDeparture": "2026-06-15T13:00:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 14,
+          "travelFromPreviousMiles": 13.8,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-04f021239ec63c16627655be",
+          "day": "monday",
+          "recommendedArrival": "2026-06-15T16:00:00-05:00",
+          "recommendedDeparture": "2026-06-15T18:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 76,
+          "travelFromPreviousMiles": 77.8,
+          "risk": "low"
+        }
+      ],
+      "overnightStops": [],
+      "totalDriveMinutes": 487,
+      "totalDriveMiles": 498,
+      "countiesTouched": 6,
+      "mustAttendCount": 0,
+      "routeTightness": "too_tight",
+      "staffRecommendation": "split_with_surrogate",
+      "risks": [
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Monday leg present — if return to Rose Bud exceeds ~2 hours after last stop, book overnight or Tuesday morning return.",
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Monday leg present — if return to Rose Bud exceeds ~2 hours after last stop, book overnight or Tuesday morning return."
+      ],
+      "aiSummary": "Weekend cluster covering Drew, Bradley, Ashley, Dallas, Calhoun, and Cleveland counties with a total drive time of 487 minutes. The route is too tight and staff recommends splitting with a surrogate."
+    },
+    {
+      "id": "weekend-river-valley-fort-smith-russellville-ozark-5",
+      "weekStart": "2026-06-19",
+      "fridayNightOrigin": "Rose Bud, Arkansas",
+      "homeBase": "Rose Bud, Arkansas",
+      "startingLocationMode": "rose_bud",
+      "title": "Weekend cluster: River Valley / Fort Smith-Russellville-Ozark",
+      "countiesCovered": [
+        "Yell",
+        "Logan",
+        "Franklin",
+        "Johnson",
+        "Crawford",
+        "Conway"
+      ],
+      "opportunities": [
+        {
+          "opportunityId": "fair-7d4b1643af8887c9137f0856",
+          "day": "saturday",
+          "recommendedArrival": "2026-06-20T10:00:00-05:00",
+          "recommendedDeparture": "2026-06-20T12:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 67,
+          "travelFromPreviousMiles": 69,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-52630ebefeb7010726bfc0e0",
+          "day": "saturday",
+          "recommendedArrival": "2026-06-20T16:30:00-05:00",
+          "recommendedDeparture": "2026-06-20T19:00:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 24,
+          "travelFromPreviousMiles": 24.9,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-503e2036aa3f1d442448a232",
+          "day": "sunday",
+          "recommendedArrival": "2026-06-21T11:00:00-05:00",
+          "recommendedDeparture": "2026-06-21T13:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 17,
+          "travelFromPreviousMiles": 17.7,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-4a9c883f2aae8c4db18fb12f",
+          "day": "sunday",
+          "recommendedArrival": "2026-06-21T17:00:00-05:00",
+          "recommendedDeparture": "2026-06-21T19:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 10,
+          "travelFromPreviousMiles": 8.1,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-85d27f33244a77c6ebeaf3c8",
+          "day": "monday",
+          "recommendedArrival": "2026-06-22T10:30:00-05:00",
+          "recommendedDeparture": "2026-06-22T13:00:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 28,
+          "travelFromPreviousMiles": 29,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-b27b5a4417284f0afada3d53",
+          "day": "monday",
+          "recommendedArrival": "2026-06-22T16:00:00-05:00",
+          "recommendedDeparture": "2026-06-22T18:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 223,
+          "travelFromPreviousMiles": 212.5,
+          "risk": "medium"
+        }
+      ],
+      "overnightStops": [],
+      "totalDriveMinutes": 354,
+      "totalDriveMiles": 361,
+      "countiesTouched": 6,
+      "mustAttendCount": 0,
+      "routeTightness": "comfortable",
+      "staffRecommendation": "approve",
+      "risks": [
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Monday leg present — if return to Rose Bud exceeds ~2 hours after last stop, book overnight or Tuesday morning return.",
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Monday leg present — if return to Rose Bud exceeds ~2 hours after last stop, book overnight or Tuesday morning return."
+      ],
+      "aiSummary": "Weekend cluster covering Yell, Logan, Franklin, Johnson, Crawford, and Conway counties with a total drive time of 354 minutes. The route is comfortable and staff recommends approval."
+    },
+    {
+      "id": "weekend-south-arkansas-magnolia-el-dorado-camden-6",
+      "weekStart": "2026-06-26",
+      "fridayNightOrigin": "Rose Bud, Arkansas",
+      "homeBase": "Rose Bud, Arkansas",
+      "startingLocationMode": "rose_bud",
+      "title": "Weekend cluster: South Arkansas / Magnolia-El Dorado-Camden",
+      "countiesCovered": [
+        "Union",
+        "Columbia",
+        "Miller",
+        "Nevada",
+        "Little River",
+        "Hempstead"
+      ],
+      "opportunities": [
+        {
+          "opportunityId": "fair-8e31ab602a94385aa9919463",
+          "day": "saturday",
+          "recommendedArrival": "2026-06-27T10:00:00-05:00",
+          "recommendedDeparture": "2026-06-27T12:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 146,
+          "travelFromPreviousMiles": 149.4,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-151ce47f15b74432ab87f13e",
+          "day": "saturday",
+          "recommendedArrival": "2026-06-27T16:30:00-05:00",
+          "recommendedDeparture": "2026-06-27T19:00:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 38,
+          "travelFromPreviousMiles": 23.8,
+          "risk": "medium"
+        },
+        {
+          "opportunityId": "fair-024aadc9b8b03fd64d394c70",
+          "day": "sunday",
+          "recommendedArrival": "2026-06-28T11:00:00-05:00",
+          "recommendedDeparture": "2026-06-28T13:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 179,
+          "travelFromPreviousMiles": 167.9,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-67cc3c414b72663f68984577",
+          "day": "sunday",
+          "recommendedArrival": "2026-06-28T17:00:00-05:00",
+          "recommendedDeparture": "2026-06-28T19:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 12,
+          "travelFromPreviousMiles": 12.5,
+          "risk": "medium"
+        },
+        {
+          "opportunityId": "fair-7b9fd5feee3eb99deeb9317a",
+          "day": "monday",
+          "recommendedArrival": "2026-06-29T10:30:00-05:00",
+          "recommendedDeparture": "2026-06-29T13:00:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 154,
+          "travelFromPreviousMiles": 142.2,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-9838e9403e37aa70bd87dc07",
+          "day": "monday",
+          "recommendedArrival": "2026-06-29T16:00:00-05:00",
+          "recommendedDeparture": "2026-06-29T18:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 40,
+          "travelFromPreviousMiles": 40.4,
+          "risk": "medium"
+        }
+      ],
+      "overnightStops": [],
+      "totalDriveMinutes": 524,
+      "totalDriveMiles": 536,
+      "countiesTouched": 6,
+      "mustAttendCount": 0,
+      "routeTightness": "too_tight",
+      "staffRecommendation": "split_with_surrogate",
+      "risks": [
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Monday leg present — if return to Rose Bud exceeds ~2 hours after last stop, book overnight or Tuesday morning return.",
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Monday leg present — if return to Rose Bud exceeds ~2 hours after last stop, book overnight or Tuesday morning return."
+      ],
+      "aiSummary": "Weekend cluster covering Union, Columbia, Miller, Nevada, Little River, and Hempstead counties with a total drive time of 524 minutes. The route is too tight and staff recommends splitting with a surrogate."
+    },
+    {
+      "id": "weekend-central-pulaski-saline-faulkner-lonoke-white-7",
+      "weekStart": "2026-07-03",
+      "fridayNightOrigin": "Rose Bud, Arkansas",
+      "homeBase": "Rose Bud, Arkansas",
+      "startingLocationMode": "rose_bud",
+      "title": "Weekend cluster: Central / Pulaski-Saline-Faulkner-Lonoke-White",
+      "countiesCovered": [
+        "Faulkner",
+        "Perry",
+        "Pulaski",
+        "Saline",
+        "Lonoke",
+        "Grant"
+      ],
+      "opportunities": [
+        {
+          "opportunityId": "fair-d26e08c6e2b546afc7cecced",
+          "day": "saturday",
+          "recommendedArrival": "2026-07-04T10:00:00-05:00",
+          "recommendedDeparture": "2026-07-04T12:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 19,
+          "travelFromPreviousMiles": 19,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-6dbd3d02b9d26cf4bff95bd6",
+          "day": "saturday",
+          "recommendedArrival": "2026-07-04T16:30:00-05:00",
+          "recommendedDeparture": "2026-07-04T19:00:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 20,
+          "travelFromPreviousMiles": 20.1,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-d9fd39d452ee3912d6ef9617",
+          "day": "sunday",
+          "recommendedArrival": "2026-07-05T11:00:00-05:00",
+          "recommendedDeparture": "2026-07-05T13:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 35,
+          "travelFromPreviousMiles": 35.3,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-4a9e52a60ebbd77e4aa07fa3",
+          "day": "sunday",
+          "recommendedArrival": "2026-07-05T17:00:00-05:00",
+          "recommendedDeparture": "2026-07-05T19:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 21,
+          "travelFromPreviousMiles": 21,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-343e8ec6713e5d2662424ade",
+          "day": "monday",
+          "recommendedArrival": "2026-07-06T10:30:00-05:00",
+          "recommendedDeparture": "2026-07-06T13:00:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 41,
+          "travelFromPreviousMiles": 41.8,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-70f065ad962cdcf6cca83ba5",
+          "day": "monday",
+          "recommendedArrival": "2026-07-06T16:00:00-05:00",
+          "recommendedDeparture": "2026-07-06T18:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 215,
+          "travelFromPreviousMiles": 204.1,
+          "risk": "medium"
+        }
+      ],
+      "overnightStops": [],
+      "totalDriveMinutes": 336,
+      "totalDriveMiles": 341,
+      "countiesTouched": 6,
+      "mustAttendCount": 0,
+      "routeTightness": "comfortable",
+      "staffRecommendation": "approve",
+      "risks": [
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Monday leg present — if return to Rose Bud exceeds ~2 hours after last stop, book overnight or Tuesday morning return.",
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Monday leg present — if return to Rose Bud exceeds ~2 hours after last stop, book overnight or Tuesday morning return."
+      ],
+      "aiSummary": "Weekend cluster covering Faulkner, Perry, Pulaski, Saline, Lonoke, and Grant counties with a total drive time of 336 minutes. The route is comfortable and staff recommends approval."
+    },
+    {
+      "id": "weekend-north-central-mountain-home-batesville-heber-spr-8",
+      "weekStart": "2026-07-10",
+      "fridayNightOrigin": "Rose Bud, Arkansas",
+      "homeBase": "Rose Bud, Arkansas",
+      "startingLocationMode": "rose_bud",
+      "title": "Weekend cluster: North Central / Mountain Home-Batesville-Heber Springs",
+      "countiesCovered": [
+        "Cleburne",
+        "Searcy",
+        "Stone",
+        "Scott"
+      ],
+      "opportunities": [
+        {
+          "opportunityId": "fair-b73d94c6493d8c2ffbe14321",
+          "day": "saturday",
+          "recommendedArrival": "2026-07-11T10:00:00-05:00",
+          "recommendedDeparture": "2026-07-11T12:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 18,
+          "travelFromPreviousMiles": 18.4,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-f9e2777b4905a0a00683104a",
+          "day": "saturday",
+          "recommendedArrival": "2026-07-11T16:30:00-05:00",
+          "recommendedDeparture": "2026-07-11T19:00:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 24,
+          "travelFromPreviousMiles": 24.8,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-09efd237221bdecce36af3cf",
+          "day": "sunday",
+          "recommendedArrival": "2026-07-12T11:00:00-05:00",
+          "recommendedDeparture": "2026-07-12T13:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 47,
+          "travelFromPreviousMiles": 48.4,
+          "risk": "low"
+        },
+        {
+          "opportunityId": "fair-88cd5f5575b0825cadb0ebab",
+          "day": "sunday",
+          "recommendedArrival": "2026-07-12T17:00:00-05:00",
+          "recommendedDeparture": "2026-07-12T19:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 272,
+          "travelFromPreviousMiles": 262.7,
+          "risk": "high"
+        }
+      ],
+      "overnightStops": [],
+      "totalDriveMinutes": 346,
+      "totalDriveMiles": 354,
+      "countiesTouched": 4,
+      "mustAttendCount": 0,
+      "routeTightness": "busy_but_safe",
+      "staffRecommendation": "modify",
+      "risks": [
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "One or more days exceed ~5 hours windshield time before buffers — split or surrogate.",
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "One or more days exceed ~5 hours windshield time before buffers — split or surrogate."
+      ],
+      "aiSummary": "Weekend cluster covering Cleburne, Searcy, Stone, and Scott counties with a total drive time of 346 minutes. The route is busy but safe and staff recommends modification."
+    },
+    {
+      "id": "weekend-lincoln-county-single-county-add-on-9",
+      "weekStart": "2026-07-17",
+      "fridayNightOrigin": "Rose Bud, Arkansas",
+      "homeBase": "Rose Bud, Arkansas",
+      "startingLocationMode": "rose_bud",
+      "title": "Weekend cluster: Lincoln County (single-county add-on)",
+      "countiesCovered": [
+        "Lincoln"
+      ],
+      "opportunities": [
+        {
+          "opportunityId": "fair-ad52713c50777eb46aeb718c",
+          "day": "saturday",
+          "recommendedArrival": "2026-07-18T10:00:00-05:00",
+          "recommendedDeparture": "2026-07-18T12:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 290,
+          "travelFromPreviousMiles": 281.3,
+          "risk": "medium"
+        }
+      ],
+      "overnightStops": [],
+      "totalDriveMinutes": 275,
+      "totalDriveMiles": 281,
+      "countiesTouched": 1,
+      "mustAttendCount": 0,
+      "routeTightness": "comfortable",
+      "staffRecommendation": "approve",
+      "risks": [
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally."
+      ],
+      "aiSummary": "Weekend cluster covering Lincoln county with a total drive time of 275 minutes. The route is comfortable and staff recommends approval."
+    },
+    {
+      "id": "weekend-mississippi-county-single-county-add-on-10",
+      "weekStart": "2026-07-24",
+      "fridayNightOrigin": "Rose Bud, Arkansas",
+      "homeBase": "Rose Bud, Arkansas",
+      "startingLocationMode": "rose_bud",
+      "title": "Weekend cluster: Mississippi County (single-county add-on)",
+      "countiesCovered": [
+        "Mississippi"
+      ],
+      "opportunities": [
+        {
+          "opportunityId": "fair-62d3467a7d811a60b1f680f8",
+          "day": "saturday",
+          "recommendedArrival": "2026-07-25T10:00:00-05:00",
+          "recommendedDeparture": "2026-07-25T12:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 135,
+          "travelFromPreviousMiles": 137.7,
+          "risk": "low"
+        }
+      ],
+      "overnightStops": [],
+      "totalDriveMinutes": 135,
+      "totalDriveMiles": 138,
+      "countiesTouched": 1,
+      "mustAttendCount": 0,
+      "routeTightness": "comfortable",
+      "staffRecommendation": "approve",
+      "risks": [
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally."
+      ],
+      "aiSummary": "Weekend cluster covering Mississippi county with a total drive time of 135 minutes. The route is comfortable and staff recommends approval."
+    },
+    {
+      "id": "weekend-phillips-county-single-county-add-on-11",
+      "weekStart": "2026-07-31",
+      "fridayNightOrigin": "Rose Bud, Arkansas",
+      "homeBase": "Rose Bud, Arkansas",
+      "startingLocationMode": "rose_bud",
+      "title": "Weekend cluster: Phillips County (single-county add-on)",
+      "countiesCovered": [
+        "Phillips"
+      ],
+      "opportunities": [
+        {
+          "opportunityId": "fair-4fac428da500036c9c22239c",
+          "day": "saturday",
+          "recommendedArrival": "2026-08-01T10:00:00-05:00",
+          "recommendedDeparture": "2026-08-01T12:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 230,
+          "travelFromPreviousMiles": 220.2,
+          "risk": "medium"
+        }
+      ],
+      "overnightStops": [],
+      "totalDriveMinutes": 215,
+      "totalDriveMiles": 220,
+      "countiesTouched": 1,
+      "mustAttendCount": 0,
+      "routeTightness": "comfortable",
+      "staffRecommendation": "approve",
+      "risks": [
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally."
+      ],
+      "aiSummary": "Weekend cluster covering Phillips county with a total drive time of 215 minutes. The route is comfortable and staff recommends approval."
+    },
+    {
+      "id": "weekend-poinsett-county-single-county-add-on-12",
+      "weekStart": "2026-08-07",
+      "fridayNightOrigin": "Rose Bud, Arkansas",
+      "homeBase": "Rose Bud, Arkansas",
+      "startingLocationMode": "rose_bud",
+      "title": "Weekend cluster: Poinsett County (single-county add-on)",
+      "countiesCovered": [
+        "Poinsett"
+      ],
+      "opportunities": [
+        {
+          "opportunityId": "fair-7829a2feea90c79f73500f43",
+          "day": "saturday",
+          "recommendedArrival": "2026-08-08T10:00:00-05:00",
+          "recommendedDeparture": "2026-08-08T12:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 183,
+          "travelFromPreviousMiles": 171.6,
+          "risk": "medium"
+        }
+      ],
+      "overnightStops": [],
+      "totalDriveMinutes": 168,
+      "totalDriveMiles": 172,
+      "countiesTouched": 1,
+      "mustAttendCount": 0,
+      "routeTightness": "comfortable",
+      "staffRecommendation": "approve",
+      "risks": [
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally."
+      ],
+      "aiSummary": "Weekend cluster covering Poinsett county with a total drive time of 168 minutes. The route is comfortable and staff recommends approval."
+    },
+    {
+      "id": "weekend-prairie-county-single-county-add-on-13",
+      "weekStart": "2026-08-14",
+      "fridayNightOrigin": "Rose Bud, Arkansas",
+      "homeBase": "Rose Bud, Arkansas",
+      "startingLocationMode": "rose_bud",
+      "title": "Weekend cluster: Prairie County (single-county add-on)",
+      "countiesCovered": [
+        "Prairie"
+      ],
+      "opportunities": [
+        {
+          "opportunityId": "fair-ac7165c13f80cee5ec6313a4",
+          "day": "saturday",
+          "recommendedArrival": "2026-08-15T10:00:00-05:00",
+          "recommendedDeparture": "2026-08-15T12:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 299,
+          "travelFromPreviousMiles": 290,
+          "risk": "medium"
+        }
+      ],
+      "overnightStops": [],
+      "totalDriveMinutes": 284,
+      "totalDriveMiles": 290,
+      "countiesTouched": 1,
+      "mustAttendCount": 0,
+      "routeTightness": "comfortable",
+      "staffRecommendation": "approve",
+      "risks": [
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally."
+      ],
+      "aiSummary": "Weekend cluster covering Prairie county with a total drive time of 284 minutes. The route is comfortable and staff recommends approval."
+    },
+    {
+      "id": "weekend-randolph-county-single-county-add-on-14",
+      "weekStart": "2026-08-21",
+      "fridayNightOrigin": "Rose Bud, Arkansas",
+      "homeBase": "Rose Bud, Arkansas",
+      "startingLocationMode": "rose_bud",
+      "title": "Weekend cluster: Randolph County (single-county add-on)",
+      "countiesCovered": [
+        "Randolph"
+      ],
+      "opportunities": [
+        {
+          "opportunityId": "fair-571afd59db5f2040264c4ac1",
+          "day": "saturday",
+          "recommendedArrival": "2026-08-22T10:00:00-05:00",
+          "recommendedDeparture": "2026-08-22T12:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 92,
+          "travelFromPreviousMiles": 94.3,
+          "risk": "low"
+        }
+      ],
+      "overnightStops": [],
+      "totalDriveMinutes": 92,
+      "totalDriveMiles": 94,
+      "countiesTouched": 1,
+      "mustAttendCount": 0,
+      "routeTightness": "comfortable",
+      "staffRecommendation": "approve",
+      "risks": [
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally."
+      ],
+      "aiSummary": "Weekend cluster covering Randolph county with a total drive time of 92 minutes. The route is comfortable and staff recommends approval."
+    },
+    {
+      "id": "weekend-sevier-county-single-county-add-on-15",
+      "weekStart": "2026-08-28",
+      "fridayNightOrigin": "Rose Bud, Arkansas",
+      "homeBase": "Rose Bud, Arkansas",
+      "startingLocationMode": "rose_bud",
+      "title": "Weekend cluster: Sevier County (single-county add-on)",
+      "countiesCovered": [
+        "Sevier"
+      ],
+      "opportunities": [
+        {
+          "opportunityId": "fair-4ca61962861cf7bf98c0d810",
+          "day": "saturday",
+          "recommendedArrival": "2026-08-29T10:00:00-05:00",
+          "recommendedDeparture": "2026-08-29T12:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 202,
+          "travelFromPreviousMiles": 191.5,
+          "risk": "medium"
+        }
+      ],
+      "overnightStops": [],
+      "totalDriveMinutes": 187,
+      "totalDriveMiles": 191,
+      "countiesTouched": 1,
+      "mustAttendCount": 0,
+      "routeTightness": "comfortable",
+      "staffRecommendation": "approve",
+      "risks": [
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally."
+      ],
+      "aiSummary": "Weekend cluster covering Sevier county with a total drive time of 187 minutes. The route is comfortable and staff recommends approval."
+    },
+    {
+      "id": "weekend-sharp-county-single-county-add-on-16",
+      "weekStart": "2026-09-04",
+      "fridayNightOrigin": "Rose Bud, Arkansas",
+      "homeBase": "Rose Bud, Arkansas",
+      "startingLocationMode": "rose_bud",
+      "title": "Weekend cluster: Sharp County (single-county add-on)",
+      "countiesCovered": [
+        "Sharp"
+      ],
+      "opportunities": [
+        {
+          "opportunityId": "fair-590907ddf0cf13ac650ebfa4",
+          "day": "saturday",
+          "recommendedArrival": "2026-09-05T10:00:00-05:00",
+          "recommendedDeparture": "2026-09-05T12:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 77,
+          "travelFromPreviousMiles": 78.7,
+          "risk": "low"
+        }
+      ],
+      "overnightStops": [],
+      "totalDriveMinutes": 77,
+      "totalDriveMiles": 79,
+      "countiesTouched": 1,
+      "mustAttendCount": 0,
+      "routeTightness": "comfortable",
+      "staffRecommendation": "approve",
+      "risks": [
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally."
+      ],
+      "aiSummary": "Weekend cluster covering Sharp county with a total drive time of 77 minutes. The route is comfortable and staff recommends approval."
+    },
+    {
+      "id": "weekend-st-francis-county-single-county-add-on-17",
+      "weekStart": "2026-09-11",
+      "fridayNightOrigin": "Rose Bud, Arkansas",
+      "homeBase": "Rose Bud, Arkansas",
+      "startingLocationMode": "rose_bud",
+      "title": "Weekend cluster: St. Francis County (single-county add-on)",
+      "countiesCovered": [
+        "St. Francis"
+      ],
+      "opportunities": [
+        {
+          "opportunityId": "fair-be76ae5b2b578417d6ae68ad",
+          "day": "saturday",
+          "recommendedArrival": "2026-09-12T10:00:00-05:00",
+          "recommendedDeparture": "2026-09-12T12:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 179,
+          "travelFromPreviousMiles": 168,
+          "risk": "low"
+        }
+      ],
+      "overnightStops": [],
+      "totalDriveMinutes": 164,
+      "totalDriveMiles": 168,
+      "countiesTouched": 1,
+      "mustAttendCount": 0,
+      "routeTightness": "comfortable",
+      "staffRecommendation": "approve",
+      "risks": [
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally."
+      ],
+      "aiSummary": "Weekend cluster covering St. Francis county with a total drive time of 164 minutes. The route is comfortable and staff recommends approval."
+    },
+    {
+      "id": "weekend-woodruff-county-single-county-add-on-18",
+      "weekStart": "2026-09-18",
+      "fridayNightOrigin": "Rose Bud, Arkansas",
+      "homeBase": "Rose Bud, Arkansas",
+      "startingLocationMode": "rose_bud",
+      "title": "Weekend cluster: Woodruff County (single-county add-on)",
+      "countiesCovered": [
+        "Woodruff"
+      ],
+      "opportunities": [
+        {
+          "opportunityId": "fair-a89a42cb1809ef69ab855cd4",
+          "day": "saturday",
+          "recommendedArrival": "2026-09-19T10:00:00-05:00",
+          "recommendedDeparture": "2026-09-19T12:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 262,
+          "travelFromPreviousMiles": 253,
+          "risk": "medium"
+        }
+      ],
+      "overnightStops": [],
+      "totalDriveMinutes": 247,
+      "totalDriveMiles": 253,
+      "countiesTouched": 1,
+      "mustAttendCount": 0,
+      "routeTightness": "comfortable",
+      "staffRecommendation": "approve",
+      "risks": [
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally."
+      ],
+      "aiSummary": "Weekend cluster covering Woodruff county with a total drive time of 247 minutes. The route is comfortable and staff recommends approval."
+    },
+    {
+      "id": "weekend-benton-county-single-county-add-on-19",
+      "weekStart": "2026-09-25",
+      "fridayNightOrigin": "Rose Bud, Arkansas",
+      "homeBase": "Rose Bud, Arkansas",
+      "startingLocationMode": "rose_bud",
+      "title": "Weekend cluster: Benton County (single-county add-on)",
+      "countiesCovered": [
+        "Benton"
+      ],
+      "opportunities": [
+        {
+          "opportunityId": "fair-f547de299001609800b30d85",
+          "day": "saturday",
+          "recommendedArrival": "2026-09-26T10:00:00-05:00",
+          "recommendedDeparture": "2026-09-26T12:30:00-05:00",
+          "appearanceMinutes": 120,
+          "bufferMinutesBefore": 30,
+          "bufferMinutesAfter": 30,
+          "travelFromPreviousMinutes": 129,
+          "travelFromPreviousMiles": 131.7,
+          "risk": "low"
+        }
+      ],
+      "overnightStops": [],
+      "totalDriveMinutes": 129,
+      "totalDriveMiles": 132,
+      "countiesTouched": 1,
+      "mustAttendCount": 0,
+      "routeTightness": "comfortable",
+      "staffRecommendation": "approve",
+      "risks": [
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally.",
+        "Template times are placeholders until fair and event dates are verified — do not publish as factual schedule.",
+        "Confirm school and fair access with hosts before assigning Kelly personally."
+      ],
+      "aiSummary": "Weekend cluster covering Benton county with a total drive time of 129 minutes. The route is comfortable and staff recommends approval."
+    }
+  ]
+}

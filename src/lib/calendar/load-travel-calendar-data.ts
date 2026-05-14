@@ -64,3 +64,14 @@ export function loadCountyTouchMap(): Map<string, { touches: number; lastYmd: st
   }
   return m;
 }
+
+export function filterCalendarItemsInWindow(
+  items: CampaignCalendarItem[],
+  startMs: number,
+  endExclusiveMs: number,
+): CampaignCalendarItem[] {
+  return items.filter((i) => {
+    const t = new Date(i.start).getTime();
+    return t >= startMs && t < endExclusiveMs;
+  });
+}

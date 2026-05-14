@@ -42,6 +42,18 @@ export default async function CalendarCommandCenterPage() {
           <Link className="font-semibold text-kelly-text underline-offset-2 hover:underline" href="/admin/calendar-command-center/fairs">
             County fairs
           </Link>{" "}
+          ·{" "}
+          <Link className="font-semibold text-kelly-text underline-offset-2 hover:underline" href="/admin/calendar-command-center/opportunities">
+            Opportunities
+          </Link>{" "}
+          ·{" "}
+          <Link className="font-semibold text-kelly-text underline-offset-2 hover:underline" href="/admin/calendar-command-center/week">
+            Week view
+          </Link>{" "}
+          ·{" "}
+          <Link className="font-semibold text-kelly-text underline-offset-2 hover:underline" href="/admin/calendar-command-center/build-status">
+            Build status
+          </Link>{" "}
           · Install shell:{" "}
           <Link className="font-semibold text-kelly-text underline-offset-2 hover:underline" href="/kelly/calendar">
             /kelly/calendar

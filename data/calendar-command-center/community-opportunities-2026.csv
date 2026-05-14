@@ -1,0 +1,318 @@
+id,type,title,county,city,lat,lng,startAt,verificationStatus,campaignValue,scoreTotal,routeCluster,sourceType
+fair-714c3beab11ce211e4cd25c9,county_fair,Arkansas County Fair,Arkansas,,35.3325,-94.97999999999999,,date_not_posted,monitor,39,Delta / Helena-West Memphis-Marianna,manual
+fair-a9c2bbe56f939da4c7898261,county_fair,Ashley County Fair,Ashley,,35.89125,-96.76142857142857,,date_not_posted,high_value,104,Southeast / Pine Bluff-Monticello-Dumas,manual
+fair-13e645aa239e20936e7aaad9,county_fair,Baxter County Fair,Baxter,,36.3356,-92.3854,,date_not_posted,high_value,104,Northwest / Fayetteville-Bentonville-Huntsville,manual
+fair-f547de299001609800b30d85,county_fair,Benton County Fair,Benton,,36.3729,-94.2088,,date_not_posted,good_add_on,79,Northwest / Fayetteville-Bentonville-Huntsville,manual
+fair-0fda38cc810912e89c294968,county_fair,Boone County Fair,Boone,,36.3084,-93.2518,,date_not_posted,high_value,104,Northwest / Fayetteville-Bentonville-Huntsville,manual
+fair-002a41c24dedd25a3db818b1,county_fair,Bradley County Fair,Bradley,,35.85375,-96.14714285714285,,date_not_posted,high_value,104,Southeast / Pine Bluff-Monticello-Dumas,manual
+fair-52fc5e4b710c814c75e0bb69,county_fair,Calhoun County Fair,Calhoun,,33.67125,-96.50999999999999,,date_not_posted,high_value,104,Southeast / Pine Bluff-Monticello-Dumas,manual
+fair-61021c0729f81e7b9b3b9e1e,county_fair,Carroll County Fair,Carroll,,36.2753,-93.681,,date_not_posted,high_value,104,Northwest / Fayetteville-Bentonville-Huntsville,manual
+fair-174f83e4dad458279edc3436,county_fair,Chicot County Fair,Chicot,,33.02375,-95.19857142857143,,date_not_posted,high_value,104,Delta / Helena-West Memphis-Marianna,manual
+fair-d88d31f59f44db8b878f8a20,county_fair,Clark County Fair,Clark,,33.99625,-97.45285714285714,,date_not_posted,high_value,104,Southwest / Hope-Texarkana-Ashdown,manual
+fair-7da0f84811b62d6378c8eab1,county_fair,Clay County Fair,Clay,,36.2687,-90.9588,,date_not_posted,high_value,104,NEA / Jonesboro-Paragould-Blytheville,manual
+fair-b73d94c6493d8c2ffbe14321,county_fair,Cleburne County Fair,Cleburne,,35.5123,-92.031,,date_not_posted,monitor,39,North Central / Mountain Home-Batesville-Heber Springs,manual
+fair-04f021239ec63c16627655be,county_fair,Cleveland County Fair,Cleveland,,33.13375,-95.32428571428571,,date_not_posted,high_value,104,Southeast / Pine Bluff-Monticello-Dumas,manual
+fair-151ce47f15b74432ab87f13e,county_fair,Columbia County Fair,Columbia,,33.2671,-93.2395,,date_not_posted,high_value,104,South Arkansas / Magnolia-El Dorado-Camden,manual
+fair-b27b5a4417284f0afada3d53,county_fair,Conway County Fair,Conway,,33.98625,-97.44142857142856,,date_not_posted,high_value,104,River Valley / Fort Smith-Russellville-Ozark,manual
+fair-48f5859dd6b28dd41ab43a07,county_fair,Craighead County Fair,Craighead,,35.8423,-90.7043,,date_not_posted,good_add_on,79,NEA / Jonesboro-Paragould-Blytheville,manual
+fair-85d27f33244a77c6ebeaf3c8,county_fair,Crawford County Fair,Crawford,,35.5892,-94.2446,,date_not_posted,good_add_on,79,River Valley / Fort Smith-Russellville-Ozark,manual
+fair-b8afd5d67f546816a494f37f,county_fair,Crittenden County Fair,Crittenden,,35.1465,-90.1845,,date_not_posted,high_value,104,Delta / Helena-West Memphis-Marianna,manual
+fair-a37f1c08d41d393ccce52fbd,county_fair,Cross County Fair,Cross,,33.68875,-97.10142857142857,,date_not_posted,monitor,39,Delta / Helena-West Memphis-Marianna,manual
+fair-d5a81997ffd21d8e33295a4a,county_fair,Dallas County Fair,Dallas,,33.81625,-96.67571428571428,,date_not_posted,high_value,104,Southeast / Pine Bluff-Monticello-Dumas,manual
+fair-cc9651c7269ecfc8096b9d5a,county_fair,Desha County Fair,Desha,,35.59125,-96.99,,date_not_posted,high_value,104,Delta / Helena-West Memphis-Marianna,manual
+fair-ea84f9e21270c59495e4bc45,county_fair,Drew County Fair,Drew,,35.35,-95,,date_not_posted,high_value,104,Southeast / Pine Bluff-Monticello-Dumas,manual
+fair-d26e08c6e2b546afc7cecced,county_fair,Faulkner County Fair,Faulkner,,35.0887,-92.4421,,date_not_posted,send_local,58,Central / Pulaski-Saline-Faulkner-Lonoke-White,manual
+fair-503e2036aa3f1d442448a232,county_fair,Franklin County Fair,Franklin,,35.5023,-93.8452,,date_not_posted,good_add_on,79,River Valley / Fort Smith-Russellville-Ozark,manual
+fair-418be1689fc0c6f0d6a144f5,county_fair,Fulton County Fair,Fulton,,36.3837,-91.821,,date_not_posted,monitor,39,NEA / Jonesboro-Paragould-Blytheville,manual
+fair-e7ba6de5e98f2722037522c5,county_fair,Garland County Fair,Garland,,34.5037,-93.0552,,date_not_posted,monitor,39,Southwest / Hope-Texarkana-Ashdown,manual
+fair-70f065ad962cdcf6cca83ba5,county_fair,Grant County Fair,Grant,,33.38875,-95.0442857142857,,date_not_posted,high_value,104,Central / Pulaski-Saline-Faulkner-Lonoke-White,manual
+fair-a70db286b628813d5cc0e60d,county_fair,Greene County Fair,Greene,,36.0606,-90.4973,,date_not_posted,high_value,104,NEA / Jonesboro-Paragould-Blytheville,manual
+fair-9838e9403e37aa70bd87dc07,county_fair,Hempstead County Fair,Hempstead,,33.3925,-96.76285714285714,,date_not_posted,high_value,104,South Arkansas / Magnolia-El Dorado-Camden,manual
+fair-3fcdc5868662c706c98a3d6b,county_fair,Hot Spring County Fair,Hot Spring,,33.03875,-96.92999999999999,,date_not_posted,high_value,104,Southwest / Hope-Texarkana-Ashdown,manual
+fair-294510b98087835cad82e452,county_fair,Howard County Fair,Howard,,34.55625,-95.23571428571428,,date_not_posted,high_value,104,Southwest / Hope-Texarkana-Ashdown,manual
+fair-103fb79dd387a1a730c37df4,county_fair,Independence County Fair,Independence,,35.742,-91.641,,date_not_posted,high_value,104,NEA / Jonesboro-Paragould-Blytheville,manual
+fair-08ce74fb1d33b44953f4f713,county_fair,Izard County Fair,Izard,,36.3415,-91.5549,,date_not_posted,high_value,104,NEA / Jonesboro-Paragould-Blytheville,manual
+fair-3ec4d6c750c06dc6aaf5bfd1,county_fair,Jackson County Fair,Jackson,,35.5962,-91.2149,,date_not_posted,high_value,104,NEA / Jonesboro-Paragould-Blytheville,manual
+fair-094bf1dec2e49e381bf96da9,county_fair,Jefferson County Fair,Jefferson,,34.2284,-92.0032,,date_not_posted,high_value,104,Delta / Helena-West Memphis-Marianna,manual
+fair-4a9c883f2aae8c4db18fb12f,county_fair,Johnson County Fair,Johnson,,35.572,-93.7285,,date_not_posted,high_value,104,River Valley / Fort Smith-Russellville-Ozark,manual
+fair-9e03993e30d8f62d3e8067dc,county_fair,Lafayette County Fair,Lafayette,,35.29625,-97.22428571428571,,date_not_posted,high_value,104,Southwest / Hope-Texarkana-Ashdown,manual
+fair-ef8a3bf07796f5d116269e4e,county_fair,Lawrence County Fair,Lawrence,,36.004,-91.114,,date_not_posted,high_value,104,NEA / Jonesboro-Paragould-Blytheville,manual
+fair-87846d6b2abf7d3bb06e553c,county_fair,Lee County Fair,Lee,,35.3725,-96.16857142857143,,date_not_posted,high_value,104,Delta / Helena-West Memphis-Marianna,manual
+fair-ad52713c50777eb46aeb718c,county_fair,Lincoln County Fair,Lincoln,,35.31125,-97.24142857142857,,date_not_posted,high_value,104,Southeast / Pine Bluff-Monticello-Dumas,manual
+fair-7b9fd5feee3eb99deeb9317a,county_fair,Little River County Fair,Little River,,33.81625,-97.24714285714285,,date_not_posted,high_value,104,South Arkansas / Magnolia-El Dorado-Camden,manual
+fair-52630ebefeb7010726bfc0e0,county_fair,Logan County Fair,Logan,,35.3137,-93.6321,,date_not_posted,high_value,104,River Valley / Fort Smith-Russellville-Ozark,manual
+fair-343e8ec6713e5d2662424ade,county_fair,Lonoke County Fair,Lonoke,,34.784,-91.9,,date_not_posted,high_value,104,Central / Pulaski-Saline-Faulkner-Lonoke-White,manual
+fair-d4493ea4a9d68141464ac3d7,county_fair,Madison County Fair,Madison,,36.152,-93.7366,,date_not_posted,high_value,104,Northwest / Fayetteville-Bentonville-Huntsville,manual
+fair-157a4f749d58caa668e88451,county_fair,Marion County Fair,Marion,,36.2612,-92.6485,,date_not_posted,high_value,104,Northwest / Fayetteville-Bentonville-Huntsville,manual
+fair-024aadc9b8b03fd64d394c70,county_fair,Miller County Fair,Miller,,35.0525,-95.23142857142857,,date_not_posted,high_value,104,South Arkansas / Magnolia-El Dorado-Camden,manual
+fair-62d3467a7d811a60b1f680f8,county_fair,Mississippi County Fair,Mississippi,,35.9273,-89.919,,date_not_posted,high_value,104,NEA / Jonesboro-Paragould-Blytheville,manual
+fair-2aeedb2c0d0ba35568ddc568,county_fair,Monroe County Fair,Monroe,,35.485,-95.72571428571428,,date_not_posted,high_value,104,Delta / Helena-West Memphis-Marianna,manual
+fair-847cff2a75ce938df6049561,county_fair,Montgomery County Fair,Montgomery,,34.13,-95.32,,date_not_posted,high_value,104,Southwest / Hope-Texarkana-Ashdown,manual
+fair-67cc3c414b72663f68984577,county_fair,Nevada County Fair,Nevada,,35.185,-95.38285714285713,,date_not_posted,high_value,104,South Arkansas / Magnolia-El Dorado-Camden,manual
+fair-dd3cef345b5f6d95088be298,county_fair,Newton County Fair,Newton,,35.92,-93.218,,date_not_posted,high_value,104,Northwest / Fayetteville-Bentonville-Huntsville,manual
+fair-81187b27a1f11d856e6e6847,county_fair,Ouachita County Fair,Ouachita,,34.725,-96,,date_not_posted,monitor,39,Southeast / Pine Bluff-Monticello-Dumas,manual
+fair-6dbd3d02b9d26cf4bff95bd6,county_fair,Perry County Fair,Perry,,35.0476,-92.7938,,date_not_posted,high_value,104,Central / Pulaski-Saline-Faulkner-Lonoke-White,manual
+fair-4fac428da500036c9c22239c,county_fair,Phillips County Fair,Phillips,,34.80875,-96.09571428571428,,date_not_posted,high_value,104,Delta / Helena-West Memphis-Marianna,manual
+fair-fc9b80fc6ddcf7dd5cddf15a,county_fair,Pike County Fair,Pike,,33.07125,-95.82428571428571,,date_not_posted,high_value,104,Southwest / Hope-Texarkana-Ashdown,manual
+fair-7829a2feea90c79f73500f43,county_fair,Poinsett County Fair,Poinsett,,34.41375,-95.07285714285713,,date_not_posted,high_value,104,NEA / Jonesboro-Paragould-Blytheville,manual
+fair-cf55c4eacbc50e73007d2342,county_fair,Polk County Fair,Polk,,35.9825,-96.2942857142857,,date_not_posted,monitor,39,Southwest / Hope-Texarkana-Ashdown,manual
+fair-7488da8016f2918085330536,county_fair,Pope County Fair,Pope,,35.2784,-93.1338,,date_not_posted,monitor,39,River Valley / Fort Smith-Russellville-Ozark,manual
+fair-ac7165c13f80cee5ec6313a4,county_fair,Prairie County Fair,Prairie,,35.44875,-97.39857142857143,,date_not_posted,high_value,104,Delta / Helena-West Memphis-Marianna,manual
+fair-d9fd39d452ee3912d6ef9617,county_fair,Pulaski County Fair,Pulaski,,34.7465,-92.2896,,date_not_posted,send_local,58,Central / Pulaski-Saline-Faulkner-Lonoke-White,manual
+fair-571afd59db5f2040264c4ac1,county_fair,Randolph County Fair,Randolph,,36.2612,-91.0376,,date_not_posted,high_value,104,NEA / Jonesboro-Paragould-Blytheville,manual
+fair-4a9e52a60ebbd77e4aa07fa3,county_fair,Saline County Fair,Saline,,34.5645,-92.5863,,date_not_posted,send_local,58,Central / Pulaski-Saline-Faulkner-Lonoke-White,manual
+fair-88cd5f5575b0825cadb0ebab,county_fair,Scott County Fair,Scott,,33.605,-95.86285714285714,,date_not_posted,high_value,104,North Central / Mountain Home-Batesville-Heber Springs,manual
+fair-f9e2777b4905a0a00683104a,county_fair,Searcy County Fair,Searcy,,35.247,-91.7335,,date_not_posted,high_value,104,North Central / Mountain Home-Batesville-Heber Springs,manual
+fair-187ddcd6dc0bb8d5b61c0f88,county_fair,Sebastian County Fair,Sebastian,,35.3859,-94.3986,,date_not_posted,good_add_on,79,River Valley / Fort Smith-Russellville-Ozark,manual
+fair-4ca61962861cf7bf98c0d810,county_fair,Sevier County Fair,Sevier,,34.09125,-95.27571428571429,,date_not_posted,high_value,104,Southwest / Hope-Texarkana-Ashdown,manual
+fair-590907ddf0cf13ac650ebfa4,county_fair,Sharp County Fair,Sharp,,36.1807,-91.3385,,date_not_posted,high_value,104,NEA / Jonesboro-Paragould-Blytheville,manual
+fair-be76ae5b2b578417d6ae68ad,county_fair,St. Francis County Fair,St. Francis,,35.03,-95.20571428571428,,date_not_posted,high_value,104,Delta / Helena-West Memphis-Marianna,manual
+fair-09efd237221bdecce36af3cf,county_fair,Stone County Fair,Stone,,35.8642,-92.141,,date_not_posted,monitor,39,North Central / Mountain Home-Batesville-Heber Springs,manual
+fair-8e31ab602a94385aa9919463,county_fair,Union County Fair,Union,,33.2076,-92.8346,,date_not_posted,high_value,104,South Arkansas / Magnolia-El Dorado-Camden,manual
+fair-997116546e5e84bbfc95d743,county_fair,Van Buren County Fair,Van Buren,,35.5959,-92.4513,,date_not_posted,monitor,39,River Valley / Fort Smith-Russellville-Ozark,manual
+fair-fd9c3decb7992141a70c1a06,county_fair,Washington County Fair,Washington,,36.0626,-94.1574,,date_not_posted,good_add_on,79,Northwest / Fayetteville-Bentonville-Huntsville,manual
+fair-c6d957f78268e5a414b4d80f,county_fair,White County Fair,White,,35.2506,-91.7365,,date_not_posted,monitor,39,Central / Pulaski-Saline-Faulkner-Lonoke-White,manual
+fair-a89a42cb1809ef69ab855cd4,county_fair,Woodruff County Fair,Woodruff,,35.3725,-96.74,,date_not_posted,high_value,104,Delta / Helena-West Memphis-Marianna,manual
+fair-7d4b1643af8887c9137f0856,county_fair,Yell County Fair,Yell,,35.002,-93.411,,date_not_posted,high_value,104,River Valley / Fort Smith-Russellville-Ozark,manual
+ehc-arkansas-stub,extension_homemakers,Arkansas County Extension Homemakers / EHC — verify council calendar,Arkansas,,35.3325,-94.97999999999999,,needs_confirmation,good_add_on,62,,county_extension
+aea-arkansas-stub,aea_meeting,Arkansas County — AEA local / area meeting (verify schedule),Arkansas,,35.3325,-94.97999999999999,,needs_confirmation,high_value,97,,aea
+arta-arkansas-stub,retired_teachers,Arkansas County retired educators unit (ARTA / local) — verify cadence,Arkansas,,35.3325,-94.97999999999999,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-ashley-stub,extension_homemakers,Ashley County Extension Homemakers / EHC — verify council calendar,Ashley,,35.89125,-96.76142857142857,,needs_confirmation,good_add_on,62,,county_extension
+aea-ashley-stub,aea_meeting,Ashley County — AEA local / area meeting (verify schedule),Ashley,,35.89125,-96.76142857142857,,needs_confirmation,high_value,97,,aea
+arta-ashley-stub,retired_teachers,Ashley County retired educators unit (ARTA / local) — verify cadence,Ashley,,35.89125,-96.76142857142857,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-baxter-stub,extension_homemakers,Baxter County Extension Homemakers / EHC — verify council calendar,Baxter,,36.3356,-92.3854,,needs_confirmation,good_add_on,62,,county_extension
+aea-baxter-stub,aea_meeting,Baxter County — AEA local / area meeting (verify schedule),Baxter,,36.3356,-92.3854,,needs_confirmation,high_value,97,,aea
+arta-baxter-stub,retired_teachers,Baxter County retired educators unit (ARTA / local) — verify cadence,Baxter,,36.3356,-92.3854,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-benton-stub,extension_homemakers,Benton County Extension Homemakers / EHC — verify council calendar,Benton,,36.3729,-94.2088,,needs_confirmation,good_add_on,62,,county_extension
+aea-benton-stub,aea_meeting,Benton County — AEA local / area meeting (verify schedule),Benton,,36.3729,-94.2088,,needs_confirmation,high_value,97,,aea
+arta-benton-stub,retired_teachers,Benton County retired educators unit (ARTA / local) — verify cadence,Benton,,36.3729,-94.2088,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-boone-stub,extension_homemakers,Boone County Extension Homemakers / EHC — verify council calendar,Boone,,36.3084,-93.2518,,needs_confirmation,good_add_on,62,,county_extension
+aea-boone-stub,aea_meeting,Boone County — AEA local / area meeting (verify schedule),Boone,,36.3084,-93.2518,,needs_confirmation,high_value,97,,aea
+arta-boone-stub,retired_teachers,Boone County retired educators unit (ARTA / local) — verify cadence,Boone,,36.3084,-93.2518,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-bradley-stub,extension_homemakers,Bradley County Extension Homemakers / EHC — verify council calendar,Bradley,,35.85375,-96.14714285714285,,needs_confirmation,good_add_on,62,,county_extension
+aea-bradley-stub,aea_meeting,Bradley County — AEA local / area meeting (verify schedule),Bradley,,35.85375,-96.14714285714285,,needs_confirmation,high_value,97,,aea
+arta-bradley-stub,retired_teachers,Bradley County retired educators unit (ARTA / local) — verify cadence,Bradley,,35.85375,-96.14714285714285,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-calhoun-stub,extension_homemakers,Calhoun County Extension Homemakers / EHC — verify council calendar,Calhoun,,33.67125,-96.50999999999999,,needs_confirmation,good_add_on,62,,county_extension
+aea-calhoun-stub,aea_meeting,Calhoun County — AEA local / area meeting (verify schedule),Calhoun,,33.67125,-96.50999999999999,,needs_confirmation,high_value,97,,aea
+arta-calhoun-stub,retired_teachers,Calhoun County retired educators unit (ARTA / local) — verify cadence,Calhoun,,33.67125,-96.50999999999999,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-carroll-stub,extension_homemakers,Carroll County Extension Homemakers / EHC — verify council calendar,Carroll,,36.2753,-93.681,,needs_confirmation,good_add_on,62,,county_extension
+aea-carroll-stub,aea_meeting,Carroll County — AEA local / area meeting (verify schedule),Carroll,,36.2753,-93.681,,needs_confirmation,high_value,97,,aea
+arta-carroll-stub,retired_teachers,Carroll County retired educators unit (ARTA / local) — verify cadence,Carroll,,36.2753,-93.681,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-chicot-stub,extension_homemakers,Chicot County Extension Homemakers / EHC — verify council calendar,Chicot,,33.02375,-95.19857142857143,,needs_confirmation,good_add_on,62,,county_extension
+aea-chicot-stub,aea_meeting,Chicot County — AEA local / area meeting (verify schedule),Chicot,,33.02375,-95.19857142857143,,needs_confirmation,high_value,97,,aea
+arta-chicot-stub,retired_teachers,Chicot County retired educators unit (ARTA / local) — verify cadence,Chicot,,33.02375,-95.19857142857143,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-clark-stub,extension_homemakers,Clark County Extension Homemakers / EHC — verify council calendar,Clark,,33.99625,-97.45285714285714,,needs_confirmation,good_add_on,62,,county_extension
+aea-clark-stub,aea_meeting,Clark County — AEA local / area meeting (verify schedule),Clark,,33.99625,-97.45285714285714,,needs_confirmation,high_value,97,,aea
+arta-clark-stub,retired_teachers,Clark County retired educators unit (ARTA / local) — verify cadence,Clark,,33.99625,-97.45285714285714,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-clay-stub,extension_homemakers,Clay County Extension Homemakers / EHC — verify council calendar,Clay,,36.2687,-90.9588,,needs_confirmation,good_add_on,62,,county_extension
+aea-clay-stub,aea_meeting,Clay County — AEA local / area meeting (verify schedule),Clay,,36.2687,-90.9588,,needs_confirmation,high_value,97,,aea
+arta-clay-stub,retired_teachers,Clay County retired educators unit (ARTA / local) — verify cadence,Clay,,36.2687,-90.9588,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-cleburne-stub,extension_homemakers,Cleburne County Extension Homemakers / EHC — verify council calendar,Cleburne,,35.5123,-92.031,,needs_confirmation,good_add_on,62,,county_extension
+aea-cleburne-stub,aea_meeting,Cleburne County — AEA local / area meeting (verify schedule),Cleburne,,35.5123,-92.031,,needs_confirmation,high_value,97,,aea
+arta-cleburne-stub,retired_teachers,Cleburne County retired educators unit (ARTA / local) — verify cadence,Cleburne,,35.5123,-92.031,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-cleveland-stub,extension_homemakers,Cleveland County Extension Homemakers / EHC — verify council calendar,Cleveland,,33.13375,-95.32428571428571,,needs_confirmation,good_add_on,62,,county_extension
+aea-cleveland-stub,aea_meeting,Cleveland County — AEA local / area meeting (verify schedule),Cleveland,,33.13375,-95.32428571428571,,needs_confirmation,high_value,97,,aea
+arta-cleveland-stub,retired_teachers,Cleveland County retired educators unit (ARTA / local) — verify cadence,Cleveland,,33.13375,-95.32428571428571,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-columbia-stub,extension_homemakers,Columbia County Extension Homemakers / EHC — verify council calendar,Columbia,,33.2671,-93.2395,,needs_confirmation,good_add_on,62,,county_extension
+aea-columbia-stub,aea_meeting,Columbia County — AEA local / area meeting (verify schedule),Columbia,,33.2671,-93.2395,,needs_confirmation,high_value,97,,aea
+arta-columbia-stub,retired_teachers,Columbia County retired educators unit (ARTA / local) — verify cadence,Columbia,,33.2671,-93.2395,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-conway-stub,extension_homemakers,Conway County Extension Homemakers / EHC — verify council calendar,Conway,,33.98625,-97.44142857142856,,needs_confirmation,good_add_on,62,,county_extension
+aea-conway-stub,aea_meeting,Conway County — AEA local / area meeting (verify schedule),Conway,,33.98625,-97.44142857142856,,needs_confirmation,high_value,97,,aea
+arta-conway-stub,retired_teachers,Conway County retired educators unit (ARTA / local) — verify cadence,Conway,,33.98625,-97.44142857142856,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-craighead-stub,extension_homemakers,Craighead County Extension Homemakers / EHC — verify council calendar,Craighead,,35.8423,-90.7043,,needs_confirmation,good_add_on,62,,county_extension
+aea-craighead-stub,aea_meeting,Craighead County — AEA local / area meeting (verify schedule),Craighead,,35.8423,-90.7043,,needs_confirmation,high_value,97,,aea
+arta-craighead-stub,retired_teachers,Craighead County retired educators unit (ARTA / local) — verify cadence,Craighead,,35.8423,-90.7043,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-crawford-stub,extension_homemakers,Crawford County Extension Homemakers / EHC — verify council calendar,Crawford,,35.5892,-94.2446,,needs_confirmation,good_add_on,62,,county_extension
+aea-crawford-stub,aea_meeting,Crawford County — AEA local / area meeting (verify schedule),Crawford,,35.5892,-94.2446,,needs_confirmation,high_value,97,,aea
+arta-crawford-stub,retired_teachers,Crawford County retired educators unit (ARTA / local) — verify cadence,Crawford,,35.5892,-94.2446,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-crittenden-stub,extension_homemakers,Crittenden County Extension Homemakers / EHC — verify council calendar,Crittenden,,35.1465,-90.1845,,needs_confirmation,good_add_on,62,,county_extension
+aea-crittenden-stub,aea_meeting,Crittenden County — AEA local / area meeting (verify schedule),Crittenden,,35.1465,-90.1845,,needs_confirmation,high_value,97,,aea
+arta-crittenden-stub,retired_teachers,Crittenden County retired educators unit (ARTA / local) — verify cadence,Crittenden,,35.1465,-90.1845,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-cross-stub,extension_homemakers,Cross County Extension Homemakers / EHC — verify council calendar,Cross,,33.68875,-97.10142857142857,,needs_confirmation,good_add_on,62,,county_extension
+aea-cross-stub,aea_meeting,Cross County — AEA local / area meeting (verify schedule),Cross,,33.68875,-97.10142857142857,,needs_confirmation,high_value,97,,aea
+arta-cross-stub,retired_teachers,Cross County retired educators unit (ARTA / local) — verify cadence,Cross,,33.68875,-97.10142857142857,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-dallas-stub,extension_homemakers,Dallas County Extension Homemakers / EHC — verify council calendar,Dallas,,33.81625,-96.67571428571428,,needs_confirmation,good_add_on,62,,county_extension
+aea-dallas-stub,aea_meeting,Dallas County — AEA local / area meeting (verify schedule),Dallas,,33.81625,-96.67571428571428,,needs_confirmation,high_value,97,,aea
+arta-dallas-stub,retired_teachers,Dallas County retired educators unit (ARTA / local) — verify cadence,Dallas,,33.81625,-96.67571428571428,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-desha-stub,extension_homemakers,Desha County Extension Homemakers / EHC — verify council calendar,Desha,,35.59125,-96.99,,needs_confirmation,good_add_on,62,,county_extension
+aea-desha-stub,aea_meeting,Desha County — AEA local / area meeting (verify schedule),Desha,,35.59125,-96.99,,needs_confirmation,high_value,97,,aea
+arta-desha-stub,retired_teachers,Desha County retired educators unit (ARTA / local) — verify cadence,Desha,,35.59125,-96.99,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-drew-stub,extension_homemakers,Drew County Extension Homemakers / EHC — verify council calendar,Drew,,35.35,-95,,needs_confirmation,good_add_on,62,,county_extension
+aea-drew-stub,aea_meeting,Drew County — AEA local / area meeting (verify schedule),Drew,,35.35,-95,,needs_confirmation,high_value,97,,aea
+arta-drew-stub,retired_teachers,Drew County retired educators unit (ARTA / local) — verify cadence,Drew,,35.35,-95,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-faulkner-stub,extension_homemakers,Faulkner County Extension Homemakers / EHC — verify council calendar,Faulkner,,35.0887,-92.4421,,needs_confirmation,good_add_on,62,,county_extension
+aea-faulkner-stub,aea_meeting,Faulkner County — AEA local / area meeting (verify schedule),Faulkner,,35.0887,-92.4421,,needs_confirmation,high_value,97,,aea
+arta-faulkner-stub,retired_teachers,Faulkner County retired educators unit (ARTA / local) — verify cadence,Faulkner,,35.0887,-92.4421,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-franklin-stub,extension_homemakers,Franklin County Extension Homemakers / EHC — verify council calendar,Franklin,,35.5023,-93.8452,,needs_confirmation,good_add_on,62,,county_extension
+aea-franklin-stub,aea_meeting,Franklin County — AEA local / area meeting (verify schedule),Franklin,,35.5023,-93.8452,,needs_confirmation,high_value,97,,aea
+arta-franklin-stub,retired_teachers,Franklin County retired educators unit (ARTA / local) — verify cadence,Franklin,,35.5023,-93.8452,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-fulton-stub,extension_homemakers,Fulton County Extension Homemakers / EHC — verify council calendar,Fulton,,36.3837,-91.821,,needs_confirmation,good_add_on,62,,county_extension
+aea-fulton-stub,aea_meeting,Fulton County — AEA local / area meeting (verify schedule),Fulton,,36.3837,-91.821,,needs_confirmation,high_value,97,,aea
+arta-fulton-stub,retired_teachers,Fulton County retired educators unit (ARTA / local) — verify cadence,Fulton,,36.3837,-91.821,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-garland-stub,extension_homemakers,Garland County Extension Homemakers / EHC — verify council calendar,Garland,,34.5037,-93.0552,,needs_confirmation,good_add_on,62,,county_extension
+aea-garland-stub,aea_meeting,Garland County — AEA local / area meeting (verify schedule),Garland,,34.5037,-93.0552,,needs_confirmation,high_value,97,,aea
+arta-garland-stub,retired_teachers,Garland County retired educators unit (ARTA / local) — verify cadence,Garland,,34.5037,-93.0552,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-grant-stub,extension_homemakers,Grant County Extension Homemakers / EHC — verify council calendar,Grant,,33.38875,-95.0442857142857,,needs_confirmation,good_add_on,62,,county_extension
+aea-grant-stub,aea_meeting,Grant County — AEA local / area meeting (verify schedule),Grant,,33.38875,-95.0442857142857,,needs_confirmation,high_value,97,,aea
+arta-grant-stub,retired_teachers,Grant County retired educators unit (ARTA / local) — verify cadence,Grant,,33.38875,-95.0442857142857,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-greene-stub,extension_homemakers,Greene County Extension Homemakers / EHC — verify council calendar,Greene,,36.0606,-90.4973,,needs_confirmation,good_add_on,62,,county_extension
+aea-greene-stub,aea_meeting,Greene County — AEA local / area meeting (verify schedule),Greene,,36.0606,-90.4973,,needs_confirmation,high_value,97,,aea
+arta-greene-stub,retired_teachers,Greene County retired educators unit (ARTA / local) — verify cadence,Greene,,36.0606,-90.4973,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-hempstead-stub,extension_homemakers,Hempstead County Extension Homemakers / EHC — verify council calendar,Hempstead,,33.3925,-96.76285714285714,,needs_confirmation,good_add_on,62,,county_extension
+aea-hempstead-stub,aea_meeting,Hempstead County — AEA local / area meeting (verify schedule),Hempstead,,33.3925,-96.76285714285714,,needs_confirmation,high_value,97,,aea
+arta-hempstead-stub,retired_teachers,Hempstead County retired educators unit (ARTA / local) — verify cadence,Hempstead,,33.3925,-96.76285714285714,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-hot-spring-stub,extension_homemakers,Hot Spring County Extension Homemakers / EHC — verify council calendar,Hot Spring,,33.03875,-96.92999999999999,,needs_confirmation,good_add_on,62,,county_extension
+aea-hot-spring-stub,aea_meeting,Hot Spring County — AEA local / area meeting (verify schedule),Hot Spring,,33.03875,-96.92999999999999,,needs_confirmation,high_value,97,,aea
+arta-hot-spring-stub,retired_teachers,Hot Spring County retired educators unit (ARTA / local) — verify cadence,Hot Spring,,33.03875,-96.92999999999999,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-howard-stub,extension_homemakers,Howard County Extension Homemakers / EHC — verify council calendar,Howard,,34.55625,-95.23571428571428,,needs_confirmation,good_add_on,62,,county_extension
+aea-howard-stub,aea_meeting,Howard County — AEA local / area meeting (verify schedule),Howard,,34.55625,-95.23571428571428,,needs_confirmation,high_value,97,,aea
+arta-howard-stub,retired_teachers,Howard County retired educators unit (ARTA / local) — verify cadence,Howard,,34.55625,-95.23571428571428,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-independence-stub,extension_homemakers,Independence County Extension Homemakers / EHC — verify council calendar,Independence,,35.742,-91.641,,needs_confirmation,good_add_on,62,,county_extension
+aea-independence-stub,aea_meeting,Independence County — AEA local / area meeting (verify schedule),Independence,,35.742,-91.641,,needs_confirmation,high_value,97,,aea
+arta-independence-stub,retired_teachers,Independence County retired educators unit (ARTA / local) — verify cadence,Independence,,35.742,-91.641,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-izard-stub,extension_homemakers,Izard County Extension Homemakers / EHC — verify council calendar,Izard,,36.3415,-91.5549,,needs_confirmation,good_add_on,62,,county_extension
+aea-izard-stub,aea_meeting,Izard County — AEA local / area meeting (verify schedule),Izard,,36.3415,-91.5549,,needs_confirmation,high_value,97,,aea
+arta-izard-stub,retired_teachers,Izard County retired educators unit (ARTA / local) — verify cadence,Izard,,36.3415,-91.5549,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-jackson-stub,extension_homemakers,Jackson County Extension Homemakers / EHC — verify council calendar,Jackson,,35.5962,-91.2149,,needs_confirmation,good_add_on,62,,county_extension
+aea-jackson-stub,aea_meeting,Jackson County — AEA local / area meeting (verify schedule),Jackson,,35.5962,-91.2149,,needs_confirmation,high_value,97,,aea
+arta-jackson-stub,retired_teachers,Jackson County retired educators unit (ARTA / local) — verify cadence,Jackson,,35.5962,-91.2149,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-jefferson-stub,extension_homemakers,Jefferson County Extension Homemakers / EHC — verify council calendar,Jefferson,,34.2284,-92.0032,,needs_confirmation,good_add_on,62,,county_extension
+aea-jefferson-stub,aea_meeting,Jefferson County — AEA local / area meeting (verify schedule),Jefferson,,34.2284,-92.0032,,needs_confirmation,high_value,97,,aea
+arta-jefferson-stub,retired_teachers,Jefferson County retired educators unit (ARTA / local) — verify cadence,Jefferson,,34.2284,-92.0032,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-johnson-stub,extension_homemakers,Johnson County Extension Homemakers / EHC — verify council calendar,Johnson,,35.572,-93.7285,,needs_confirmation,good_add_on,62,,county_extension
+aea-johnson-stub,aea_meeting,Johnson County — AEA local / area meeting (verify schedule),Johnson,,35.572,-93.7285,,needs_confirmation,high_value,97,,aea
+arta-johnson-stub,retired_teachers,Johnson County retired educators unit (ARTA / local) — verify cadence,Johnson,,35.572,-93.7285,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-lafayette-stub,extension_homemakers,Lafayette County Extension Homemakers / EHC — verify council calendar,Lafayette,,35.29625,-97.22428571428571,,needs_confirmation,good_add_on,62,,county_extension
+aea-lafayette-stub,aea_meeting,Lafayette County — AEA local / area meeting (verify schedule),Lafayette,,35.29625,-97.22428571428571,,needs_confirmation,high_value,97,,aea
+arta-lafayette-stub,retired_teachers,Lafayette County retired educators unit (ARTA / local) — verify cadence,Lafayette,,35.29625,-97.22428571428571,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-lawrence-stub,extension_homemakers,Lawrence County Extension Homemakers / EHC — verify council calendar,Lawrence,,36.004,-91.114,,needs_confirmation,good_add_on,62,,county_extension
+aea-lawrence-stub,aea_meeting,Lawrence County — AEA local / area meeting (verify schedule),Lawrence,,36.004,-91.114,,needs_confirmation,high_value,97,,aea
+arta-lawrence-stub,retired_teachers,Lawrence County retired educators unit (ARTA / local) — verify cadence,Lawrence,,36.004,-91.114,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-lee-stub,extension_homemakers,Lee County Extension Homemakers / EHC — verify council calendar,Lee,,35.3725,-96.16857142857143,,needs_confirmation,good_add_on,62,,county_extension
+aea-lee-stub,aea_meeting,Lee County — AEA local / area meeting (verify schedule),Lee,,35.3725,-96.16857142857143,,needs_confirmation,high_value,97,,aea
+arta-lee-stub,retired_teachers,Lee County retired educators unit (ARTA / local) — verify cadence,Lee,,35.3725,-96.16857142857143,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-lincoln-stub,extension_homemakers,Lincoln County Extension Homemakers / EHC — verify council calendar,Lincoln,,35.31125,-97.24142857142857,,needs_confirmation,good_add_on,62,,county_extension
+aea-lincoln-stub,aea_meeting,Lincoln County — AEA local / area meeting (verify schedule),Lincoln,,35.31125,-97.24142857142857,,needs_confirmation,high_value,97,,aea
+arta-lincoln-stub,retired_teachers,Lincoln County retired educators unit (ARTA / local) — verify cadence,Lincoln,,35.31125,-97.24142857142857,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-little-river-stub,extension_homemakers,Little River County Extension Homemakers / EHC — verify council calendar,Little River,,33.81625,-97.24714285714285,,needs_confirmation,good_add_on,62,,county_extension
+aea-little-river-stub,aea_meeting,Little River County — AEA local / area meeting (verify schedule),Little River,,33.81625,-97.24714285714285,,needs_confirmation,high_value,97,,aea
+arta-little-river-stub,retired_teachers,Little River County retired educators unit (ARTA / local) — verify cadence,Little River,,33.81625,-97.24714285714285,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-logan-stub,extension_homemakers,Logan County Extension Homemakers / EHC — verify council calendar,Logan,,35.3137,-93.6321,,needs_confirmation,good_add_on,62,,county_extension
+aea-logan-stub,aea_meeting,Logan County — AEA local / area meeting (verify schedule),Logan,,35.3137,-93.6321,,needs_confirmation,high_value,97,,aea
+arta-logan-stub,retired_teachers,Logan County retired educators unit (ARTA / local) — verify cadence,Logan,,35.3137,-93.6321,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-lonoke-stub,extension_homemakers,Lonoke County Extension Homemakers / EHC — verify council calendar,Lonoke,,34.784,-91.9,,needs_confirmation,good_add_on,62,,county_extension
+aea-lonoke-stub,aea_meeting,Lonoke County — AEA local / area meeting (verify schedule),Lonoke,,34.784,-91.9,,needs_confirmation,high_value,97,,aea
+arta-lonoke-stub,retired_teachers,Lonoke County retired educators unit (ARTA / local) — verify cadence,Lonoke,,34.784,-91.9,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-madison-stub,extension_homemakers,Madison County Extension Homemakers / EHC — verify council calendar,Madison,,36.152,-93.7366,,needs_confirmation,good_add_on,62,,county_extension
+aea-madison-stub,aea_meeting,Madison County — AEA local / area meeting (verify schedule),Madison,,36.152,-93.7366,,needs_confirmation,high_value,97,,aea
+arta-madison-stub,retired_teachers,Madison County retired educators unit (ARTA / local) — verify cadence,Madison,,36.152,-93.7366,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-marion-stub,extension_homemakers,Marion County Extension Homemakers / EHC — verify council calendar,Marion,,36.2612,-92.6485,,needs_confirmation,good_add_on,62,,county_extension
+aea-marion-stub,aea_meeting,Marion County — AEA local / area meeting (verify schedule),Marion,,36.2612,-92.6485,,needs_confirmation,high_value,97,,aea
+arta-marion-stub,retired_teachers,Marion County retired educators unit (ARTA / local) — verify cadence,Marion,,36.2612,-92.6485,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-miller-stub,extension_homemakers,Miller County Extension Homemakers / EHC — verify council calendar,Miller,,35.0525,-95.23142857142857,,needs_confirmation,good_add_on,62,,county_extension
+aea-miller-stub,aea_meeting,Miller County — AEA local / area meeting (verify schedule),Miller,,35.0525,-95.23142857142857,,needs_confirmation,high_value,97,,aea
+arta-miller-stub,retired_teachers,Miller County retired educators unit (ARTA / local) — verify cadence,Miller,,35.0525,-95.23142857142857,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-mississippi-stub,extension_homemakers,Mississippi County Extension Homemakers / EHC — verify council calendar,Mississippi,,35.9273,-89.919,,needs_confirmation,good_add_on,62,,county_extension
+aea-mississippi-stub,aea_meeting,Mississippi County — AEA local / area meeting (verify schedule),Mississippi,,35.9273,-89.919,,needs_confirmation,high_value,97,,aea
+arta-mississippi-stub,retired_teachers,Mississippi County retired educators unit (ARTA / local) — verify cadence,Mississippi,,35.9273,-89.919,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-monroe-stub,extension_homemakers,Monroe County Extension Homemakers / EHC — verify council calendar,Monroe,,35.485,-95.72571428571428,,needs_confirmation,good_add_on,62,,county_extension
+aea-monroe-stub,aea_meeting,Monroe County — AEA local / area meeting (verify schedule),Monroe,,35.485,-95.72571428571428,,needs_confirmation,high_value,97,,aea
+arta-monroe-stub,retired_teachers,Monroe County retired educators unit (ARTA / local) — verify cadence,Monroe,,35.485,-95.72571428571428,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-montgomery-stub,extension_homemakers,Montgomery County Extension Homemakers / EHC — verify council calendar,Montgomery,,34.13,-95.32,,needs_confirmation,good_add_on,62,,county_extension
+aea-montgomery-stub,aea_meeting,Montgomery County — AEA local / area meeting (verify schedule),Montgomery,,34.13,-95.32,,needs_confirmation,high_value,97,,aea
+arta-montgomery-stub,retired_teachers,Montgomery County retired educators unit (ARTA / local) — verify cadence,Montgomery,,34.13,-95.32,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-nevada-stub,extension_homemakers,Nevada County Extension Homemakers / EHC — verify council calendar,Nevada,,35.185,-95.38285714285713,,needs_confirmation,good_add_on,62,,county_extension
+aea-nevada-stub,aea_meeting,Nevada County — AEA local / area meeting (verify schedule),Nevada,,35.185,-95.38285714285713,,needs_confirmation,high_value,97,,aea
+arta-nevada-stub,retired_teachers,Nevada County retired educators unit (ARTA / local) — verify cadence,Nevada,,35.185,-95.38285714285713,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-newton-stub,extension_homemakers,Newton County Extension Homemakers / EHC — verify council calendar,Newton,,35.92,-93.218,,needs_confirmation,good_add_on,62,,county_extension
+aea-newton-stub,aea_meeting,Newton County — AEA local / area meeting (verify schedule),Newton,,35.92,-93.218,,needs_confirmation,high_value,97,,aea
+arta-newton-stub,retired_teachers,Newton County retired educators unit (ARTA / local) — verify cadence,Newton,,35.92,-93.218,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-ouachita-stub,extension_homemakers,Ouachita County Extension Homemakers / EHC — verify council calendar,Ouachita,,34.725,-96,,needs_confirmation,good_add_on,62,,county_extension
+aea-ouachita-stub,aea_meeting,Ouachita County — AEA local / area meeting (verify schedule),Ouachita,,34.725,-96,,needs_confirmation,high_value,97,,aea
+arta-ouachita-stub,retired_teachers,Ouachita County retired educators unit (ARTA / local) — verify cadence,Ouachita,,34.725,-96,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-perry-stub,extension_homemakers,Perry County Extension Homemakers / EHC — verify council calendar,Perry,,35.0476,-92.7938,,needs_confirmation,good_add_on,62,,county_extension
+aea-perry-stub,aea_meeting,Perry County — AEA local / area meeting (verify schedule),Perry,,35.0476,-92.7938,,needs_confirmation,high_value,97,,aea
+arta-perry-stub,retired_teachers,Perry County retired educators unit (ARTA / local) — verify cadence,Perry,,35.0476,-92.7938,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-phillips-stub,extension_homemakers,Phillips County Extension Homemakers / EHC — verify council calendar,Phillips,,34.80875,-96.09571428571428,,needs_confirmation,good_add_on,62,,county_extension
+aea-phillips-stub,aea_meeting,Phillips County — AEA local / area meeting (verify schedule),Phillips,,34.80875,-96.09571428571428,,needs_confirmation,high_value,97,,aea
+arta-phillips-stub,retired_teachers,Phillips County retired educators unit (ARTA / local) — verify cadence,Phillips,,34.80875,-96.09571428571428,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-pike-stub,extension_homemakers,Pike County Extension Homemakers / EHC — verify council calendar,Pike,,33.07125,-95.82428571428571,,needs_confirmation,good_add_on,62,,county_extension
+aea-pike-stub,aea_meeting,Pike County — AEA local / area meeting (verify schedule),Pike,,33.07125,-95.82428571428571,,needs_confirmation,high_value,97,,aea
+arta-pike-stub,retired_teachers,Pike County retired educators unit (ARTA / local) — verify cadence,Pike,,33.07125,-95.82428571428571,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-poinsett-stub,extension_homemakers,Poinsett County Extension Homemakers / EHC — verify council calendar,Poinsett,,34.41375,-95.07285714285713,,needs_confirmation,good_add_on,62,,county_extension
+aea-poinsett-stub,aea_meeting,Poinsett County — AEA local / area meeting (verify schedule),Poinsett,,34.41375,-95.07285714285713,,needs_confirmation,high_value,97,,aea
+arta-poinsett-stub,retired_teachers,Poinsett County retired educators unit (ARTA / local) — verify cadence,Poinsett,,34.41375,-95.07285714285713,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-polk-stub,extension_homemakers,Polk County Extension Homemakers / EHC — verify council calendar,Polk,,35.9825,-96.2942857142857,,needs_confirmation,good_add_on,62,,county_extension
+aea-polk-stub,aea_meeting,Polk County — AEA local / area meeting (verify schedule),Polk,,35.9825,-96.2942857142857,,needs_confirmation,high_value,97,,aea
+arta-polk-stub,retired_teachers,Polk County retired educators unit (ARTA / local) — verify cadence,Polk,,35.9825,-96.2942857142857,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-pope-stub,extension_homemakers,Pope County Extension Homemakers / EHC — verify council calendar,Pope,,35.2784,-93.1338,,needs_confirmation,good_add_on,62,,county_extension
+aea-pope-stub,aea_meeting,Pope County — AEA local / area meeting (verify schedule),Pope,,35.2784,-93.1338,,needs_confirmation,high_value,97,,aea
+arta-pope-stub,retired_teachers,Pope County retired educators unit (ARTA / local) — verify cadence,Pope,,35.2784,-93.1338,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-prairie-stub,extension_homemakers,Prairie County Extension Homemakers / EHC — verify council calendar,Prairie,,35.44875,-97.39857142857143,,needs_confirmation,good_add_on,62,,county_extension
+aea-prairie-stub,aea_meeting,Prairie County — AEA local / area meeting (verify schedule),Prairie,,35.44875,-97.39857142857143,,needs_confirmation,high_value,97,,aea
+arta-prairie-stub,retired_teachers,Prairie County retired educators unit (ARTA / local) — verify cadence,Prairie,,35.44875,-97.39857142857143,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-pulaski-stub,extension_homemakers,Pulaski County Extension Homemakers / EHC — verify council calendar,Pulaski,,34.7465,-92.2896,,needs_confirmation,good_add_on,62,,county_extension
+aea-pulaski-stub,aea_meeting,Pulaski County — AEA local / area meeting (verify schedule),Pulaski,,34.7465,-92.2896,,needs_confirmation,high_value,97,,aea
+arta-pulaski-stub,retired_teachers,Pulaski County retired educators unit (ARTA / local) — verify cadence,Pulaski,,34.7465,-92.2896,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-randolph-stub,extension_homemakers,Randolph County Extension Homemakers / EHC — verify council calendar,Randolph,,36.2612,-91.0376,,needs_confirmation,good_add_on,62,,county_extension
+aea-randolph-stub,aea_meeting,Randolph County — AEA local / area meeting (verify schedule),Randolph,,36.2612,-91.0376,,needs_confirmation,high_value,97,,aea
+arta-randolph-stub,retired_teachers,Randolph County retired educators unit (ARTA / local) — verify cadence,Randolph,,36.2612,-91.0376,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-saline-stub,extension_homemakers,Saline County Extension Homemakers / EHC — verify council calendar,Saline,,34.5645,-92.5863,,needs_confirmation,good_add_on,62,,county_extension
+aea-saline-stub,aea_meeting,Saline County — AEA local / area meeting (verify schedule),Saline,,34.5645,-92.5863,,needs_confirmation,high_value,97,,aea
+arta-saline-stub,retired_teachers,Saline County retired educators unit (ARTA / local) — verify cadence,Saline,,34.5645,-92.5863,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-scott-stub,extension_homemakers,Scott County Extension Homemakers / EHC — verify council calendar,Scott,,33.605,-95.86285714285714,,needs_confirmation,good_add_on,62,,county_extension
+aea-scott-stub,aea_meeting,Scott County — AEA local / area meeting (verify schedule),Scott,,33.605,-95.86285714285714,,needs_confirmation,high_value,97,,aea
+arta-scott-stub,retired_teachers,Scott County retired educators unit (ARTA / local) — verify cadence,Scott,,33.605,-95.86285714285714,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-searcy-stub,extension_homemakers,Searcy County Extension Homemakers / EHC — verify council calendar,Searcy,,35.247,-91.7335,,needs_confirmation,good_add_on,62,,county_extension
+aea-searcy-stub,aea_meeting,Searcy County — AEA local / area meeting (verify schedule),Searcy,,35.247,-91.7335,,needs_confirmation,high_value,97,,aea
+arta-searcy-stub,retired_teachers,Searcy County retired educators unit (ARTA / local) — verify cadence,Searcy,,35.247,-91.7335,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-sebastian-stub,extension_homemakers,Sebastian County Extension Homemakers / EHC — verify council calendar,Sebastian,,35.3859,-94.3986,,needs_confirmation,good_add_on,62,,county_extension
+aea-sebastian-stub,aea_meeting,Sebastian County — AEA local / area meeting (verify schedule),Sebastian,,35.3859,-94.3986,,needs_confirmation,high_value,97,,aea
+arta-sebastian-stub,retired_teachers,Sebastian County retired educators unit (ARTA / local) — verify cadence,Sebastian,,35.3859,-94.3986,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-sevier-stub,extension_homemakers,Sevier County Extension Homemakers / EHC — verify council calendar,Sevier,,34.09125,-95.27571428571429,,needs_confirmation,good_add_on,62,,county_extension
+aea-sevier-stub,aea_meeting,Sevier County — AEA local / area meeting (verify schedule),Sevier,,34.09125,-95.27571428571429,,needs_confirmation,high_value,97,,aea
+arta-sevier-stub,retired_teachers,Sevier County retired educators unit (ARTA / local) — verify cadence,Sevier,,34.09125,-95.27571428571429,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-sharp-stub,extension_homemakers,Sharp County Extension Homemakers / EHC — verify council calendar,Sharp,,36.1807,-91.3385,,needs_confirmation,good_add_on,62,,county_extension
+aea-sharp-stub,aea_meeting,Sharp County — AEA local / area meeting (verify schedule),Sharp,,36.1807,-91.3385,,needs_confirmation,high_value,97,,aea
+arta-sharp-stub,retired_teachers,Sharp County retired educators unit (ARTA / local) — verify cadence,Sharp,,36.1807,-91.3385,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-st.-francis-stub,extension_homemakers,St. Francis County Extension Homemakers / EHC — verify council calendar,St. Francis,,35.03,-95.20571428571428,,needs_confirmation,good_add_on,62,,county_extension
+aea-st.-francis-stub,aea_meeting,St. Francis County — AEA local / area meeting (verify schedule),St. Francis,,35.03,-95.20571428571428,,needs_confirmation,high_value,97,,aea
+arta-st.-francis-stub,retired_teachers,St. Francis County retired educators unit (ARTA / local) — verify cadence,St. Francis,,35.03,-95.20571428571428,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-stone-stub,extension_homemakers,Stone County Extension Homemakers / EHC — verify council calendar,Stone,,35.8642,-92.141,,needs_confirmation,good_add_on,62,,county_extension
+aea-stone-stub,aea_meeting,Stone County — AEA local / area meeting (verify schedule),Stone,,35.8642,-92.141,,needs_confirmation,high_value,97,,aea
+arta-stone-stub,retired_teachers,Stone County retired educators unit (ARTA / local) — verify cadence,Stone,,35.8642,-92.141,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-union-stub,extension_homemakers,Union County Extension Homemakers / EHC — verify council calendar,Union,,33.2076,-92.8346,,needs_confirmation,good_add_on,62,,county_extension
+aea-union-stub,aea_meeting,Union County — AEA local / area meeting (verify schedule),Union,,33.2076,-92.8346,,needs_confirmation,high_value,97,,aea
+arta-union-stub,retired_teachers,Union County retired educators unit (ARTA / local) — verify cadence,Union,,33.2076,-92.8346,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-van-buren-stub,extension_homemakers,Van Buren County Extension Homemakers / EHC — verify council calendar,Van Buren,,35.5959,-92.4513,,needs_confirmation,good_add_on,62,,county_extension
+aea-van-buren-stub,aea_meeting,Van Buren County — AEA local / area meeting (verify schedule),Van Buren,,35.5959,-92.4513,,needs_confirmation,high_value,97,,aea
+arta-van-buren-stub,retired_teachers,Van Buren County retired educators unit (ARTA / local) — verify cadence,Van Buren,,35.5959,-92.4513,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-washington-stub,extension_homemakers,Washington County Extension Homemakers / EHC — verify council calendar,Washington,,36.0626,-94.1574,,needs_confirmation,good_add_on,62,,county_extension
+aea-washington-stub,aea_meeting,Washington County — AEA local / area meeting (verify schedule),Washington,,36.0626,-94.1574,,needs_confirmation,high_value,97,,aea
+arta-washington-stub,retired_teachers,Washington County retired educators unit (ARTA / local) — verify cadence,Washington,,36.0626,-94.1574,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-white-stub,extension_homemakers,White County Extension Homemakers / EHC — verify council calendar,White,,35.2506,-91.7365,,needs_confirmation,good_add_on,62,,county_extension
+aea-white-stub,aea_meeting,White County — AEA local / area meeting (verify schedule),White,,35.2506,-91.7365,,needs_confirmation,high_value,97,,aea
+arta-white-stub,retired_teachers,White County retired educators unit (ARTA / local) — verify cadence,White,,35.2506,-91.7365,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-woodruff-stub,extension_homemakers,Woodruff County Extension Homemakers / EHC — verify council calendar,Woodruff,,35.3725,-96.74,,needs_confirmation,good_add_on,62,,county_extension
+aea-woodruff-stub,aea_meeting,Woodruff County — AEA local / area meeting (verify schedule),Woodruff,,35.3725,-96.74,,needs_confirmation,high_value,97,,aea
+arta-woodruff-stub,retired_teachers,Woodruff County retired educators unit (ARTA / local) — verify cadence,Woodruff,,35.3725,-96.74,,needs_confirmation,good_add_on,72,,retired_teachers
+ehc-yell-stub,extension_homemakers,Yell County Extension Homemakers / EHC — verify council calendar,Yell,,35.002,-93.411,,needs_confirmation,good_add_on,62,,county_extension
+aea-yell-stub,aea_meeting,Yell County — AEA local / area meeting (verify schedule),Yell,,35.002,-93.411,,needs_confirmation,high_value,97,,aea
+arta-yell-stub,retired_teachers,Yell County retired educators unit (ARTA / local) — verify cadence,Yell,,35.002,-93.411,,needs_confirmation,good_add_on,72,,retired_teachers
+campus-0-washington,campus_event,University of Arkansas — campus / student life calendar (verify),Washington,Fayetteville,36.0626,-94.1574,,date_not_posted,high_value,110,,campus_calendar
+campus-1-craighead,campus_event,Arkansas State University — campus calendar (verify),Craighead,Jonesboro,35.8423,-90.7043,,date_not_posted,high_value,110,,campus_calendar
+campus-2-faulkner,campus_event,University of Central Arkansas — campus calendar (verify),Faulkner,Conway,35.0887,-92.4421,,date_not_posted,high_value,110,,campus_calendar
+campus-3-pulaski,campus_event,UA Little Rock — campus calendar (verify),Pulaski,Little Rock,34.7465,-92.2896,,date_not_posted,high_value,110,,campus_calendar
+campus-4-jefferson,campus_event,UAPB — campus calendar (verify),Jefferson,Pine Bluff,34.2284,-92.0032,,date_not_posted,high_value,110,,campus_calendar
+campus-5-columbia,campus_event,Southern Arkansas University — campus calendar (verify),Columbia,Magnolia,33.2671,-93.2395,,date_not_posted,high_value,110,,campus_calendar
+campus-6-pope,campus_event,Arkansas Tech University — campus calendar (verify),Pope,Russellville,35.2784,-93.1338,,date_not_posted,high_value,110,,campus_calendar
+campus-7-white,campus_event,Harding University — campus calendar (verify),White,Searcy,35.2506,-91.7365,,date_not_posted,high_value,110,,campus_calendar
+campus-8-independence,campus_event,Lyon College — campus calendar (verify),Independence,Batesville,35.742,-91.641,,date_not_posted,high_value,110,,campus_calendar
+campus-9-clark,campus_event,Ouachita Baptist / Henderson — campus calendars (verify),Clark,Arkadelphia,33.99625,-97.45285714285714,,date_not_posted,high_value,110,,campus_calendar
+campus-10-garland,campus_event,National Park College — events (verify),Garland,Hot Springs,34.5037,-93.0552,,date_not_posted,high_value,110,,campus_calendar
+campus-11-sebastian,campus_event,UAFS — campus calendar (verify),Sebastian,Fort Smith,35.3859,-94.3986,,date_not_posted,high_value,110,,campus_calendar
+fb-target-washington-springdale-fayetteville,high_school_football,Washington County — major 7A Friday matchup corridor (verify AHSAA week + schools),Washington,Fayetteville,36.0626,-94.1574,,needs_confirmation,high_value,101,,aaa_ahsaa
+fb-target-pulaski-central-catholic,high_school_football,Pulaski County — historic rivalry night (verify date + stadium policy),Pulaski,Little Rock,34.7465,-92.2896,,needs_confirmation,high_value,101,,school_athletics
+fb-target-saline-benton-bryant,high_school_football,Saline County — Benton vs Bryant corridor (verify week),Saline,,34.5645,-92.5863,,needs_confirmation,good_add_on,70,,aaa_ahsaa
+fb-target-sebastian-fort-smith-northside,high_school_football,Sebastian County — Fort Smith metro Friday (verify matchup),Sebastian,Fort Smith,35.3859,-94.3986,,needs_confirmation,good_add_on,76,,aaa_ahsaa
+fb-target-jefferson-white-hall-pine-bluff,high_school_football,Jefferson County — Pine Bluff vs White Hall (verify season schedule),Jefferson,Pine Bluff,34.2284,-92.0032,,needs_confirmation,good_add_on,68,,school_athletics

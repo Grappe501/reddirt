@@ -4,6 +4,7 @@ import { CockpitEventActions } from "@/components/admin/kelly-calendar-cockpit/C
 import { findKellyConfirmedCalendarSource, findKellyTentativeCalendarSource } from "@/lib/calendar/kelly-google-calendar-policy";
 import { loadKellyCockpitBundle } from "@/lib/calendar/kelly-cockpit-data";
 import { loadTravelCalendarItems } from "@/lib/calendar/load-travel-calendar-data";
+import { countyVaultCountyRel, countyVaultEventRel } from "@/lib/kelly-agent/county-vault-paths";
 
 export const dynamic = "force-dynamic";
 
@@ -25,6 +26,8 @@ export default async function CalendarCommandCenterEventPage({ params }: Props) 
   ]);
 
   const dd = item.drillDown;
+  const vaultCountyRel = item.county ? countyVaultCountyRel(item.county) : null;
+  const vaultEventRel = item.county ? countyVaultEventRel(item.county, item.title, item.start) : null;
 
   return (
     <div className="mx-auto max-w-3xl space-y-6">
@@ -69,6 +72,34 @@ export default async function CalendarCommandCenterEventPage({ params }: Props) 
           </span>
         </div>
       </header>
+
+      {vaultCountyRel ? (
+        <section className="rounded-lg border border-kelly-text/12 bg-white px-6 py-5 font-body text-sm text-kelly-text/85">
+          <h2 className="font-heading text-sm font-bold uppercase tracking-wide text-kelly-text/55">County vault</h2>
+          <p className="mt-2 text-xs text-kelly-text/70">
+            Repo-relative paths (clone on disk). Large media stays out of git — use metadata + object storage later.
+          </p>
+          <dl className="mt-3 space-y-2 text-xs">
+            <div>
+              <dt className="text-[10px] font-bold uppercase text-kelly-text/45">County folder</dt>
+              <dd>
+                <code className="break-all rounded bg-kelly-wash/80 px-1 py-0.5">{vaultCountyRel}</code>
+              </dd>
+            </div>
+            <div>
+              <dt className="text-[10px] font-bold uppercase text-kelly-text/45">Event folder (slug)</dt>
+              <dd>
+                <code className="break-all rounded bg-kelly-wash/80 px-1 py-0.5">{vaultEventRel}</code>
+              </dd>
+            </div>
+          </dl>
+          <ul className="mt-3 list-inside list-disc text-[11px] text-kelly-text/70">
+            <li>Speech notes, press notes, follow-up: add markdown under the event folder.</li>
+            <li>Photo/video uploads: wire to storage in a later slice (no binaries in git).</li>
+            <li>People met: use <code className="rounded bg-kelly-wash/80 px-1">people-met.json</code> when ready.</li>
+          </ul>
+        </section>
+      ) : null}
 
       <section className="rounded-lg border border-kelly-text/12 bg-white px-6 py-5 font-body text-sm text-kelly-text/85">
         <h2 className="font-heading text-sm font-bold uppercase tracking-wide text-kelly-text/55">Logistics</h2>

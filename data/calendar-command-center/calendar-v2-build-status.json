@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-13T00:00:00.000Z",
+  "tracks": [
+    { "id": "calendar_data", "label": "Calendar data (workbook JSON)", "percent": 72 },
+    { "id": "kelly_cockpit", "label": "Kelly cockpit (mobile + approvals)", "percent": 78 },
+    { "id": "ai_recommendations", "label": "AI recommendations (per-item)", "percent": 70 },
+    { "id": "kelly_agent_tools", "label": "Kelly agent + structured tools + /recommend", "percent": 45 },
+    { "id": "google_sync", "label": "Google Calendar sync (CLI + HQ)", "percent": 60 },
+    { "id": "opportunity_graph", "label": "Opportunity graph (file-staged)", "percent": 55 },
+    { "id": "weekend_routes", "label": "Weekend route planner", "percent": 50 },
+    { "id": "week_routes", "label": "Week View route board", "percent": 40 },
+    { "id": "hour_planner", "label": "Hour planner (buffers + prep blocks)", "percent": 10 },
+    { "id": "map_ui", "label": "Map UI (week + opportunities)", "percent": 42 },
+    { "id": "county_vault", "label": "County vault (filesystem)", "percent": 25 },
+    { "id": "media_ingestion", "label": "Media metadata + ingest script", "percent": 20 },
+    { "id": "deployment_readiness", "label": "Deployment readiness (branch + checks)", "percent": 35 }
+  ],
+  "notes": [
+    "Official site deploys from protected main — use feature branches until typecheck + smoke pass.",
+    "No .env files in git; media binaries stay out of git (metadata only)."
+  ]
+}
