@@ -15,6 +15,7 @@ import { buildCalendarDbHealthReport } from "@/lib/kelly-agent/tools/calendar-db
 import { buildCalendarSyncReadinessReport } from "@/lib/kelly-agent/tools/calendar-sync-readiness-tool";
 import { buildSchedulePersistenceReport } from "@/lib/kelly-agent/tools/schedule-persistence-tool";
 import { buildCalendarSmokeTestReport } from "@/lib/kelly-agent/tools/calendar-smoke-test-tool";
+import { buildEventCoverageGapSummary, buildEventCoveragePlanToolOutput } from "@/lib/kelly-agent/tools/event-coverage-plan-tool";
 
 export type KellyAgentToolTrace = { tool: string; ms: number };
 
@@ -30,6 +31,7 @@ export type KellyAgentToolBundle = {
   volunteer_capacity: unknown;
   gotv_allocation: unknown;
   event_success_playbook: unknown;
+  event_coverage_plan: unknown;
   schedule_readiness: unknown;
   candidate_dashboard_preflight: unknown;
   calendar_db_health: unknown;
@@ -127,6 +129,12 @@ export async function runKellyAgentTools(
   const event_success_playbook = buildEventSuccessPlaybook(event);
   trace.push({ tool: "event_success_playbook", ms: Date.now() - t10 });
 
+  const t10b = Date.now();
+  const event_coverage_plan = opts.calendarItemId
+    ? buildEventCoveragePlanToolOutput(opts.calendarItemId, root) ?? buildEventCoverageGapSummary(root)
+    : buildEventCoverageGapSummary(root);
+  trace.push({ tool: "event_coverage_plan", ms: Date.now() - t10b });
+
   const t11 = Date.now();
   const schedule_readiness = await buildScheduleReadinessReport();
   trace.push({ tool: "schedule_readiness", ms: Date.now() - t11 });
@@ -164,6 +172,7 @@ export async function runKellyAgentTools(
       volunteer_capacity,
       gotv_allocation,
       event_success_playbook,
+      event_coverage_plan,
       schedule_readiness,
       candidate_dashboard_preflight,
       calendar_db_health,

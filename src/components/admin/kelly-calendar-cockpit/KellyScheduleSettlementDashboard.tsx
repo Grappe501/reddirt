@@ -25,6 +25,7 @@ import type { KellyWinTargetScenarioFile } from "@/lib/election-targets/win-targ
 import type { VolunteerCapacityModelFile } from "@/lib/field-ops/volunteer-capacity-types";
 import type { CandidateDashboardPreflightFile } from "@/lib/kelly-agent/tools/candidate-dashboard-preflight-tool";
 import { WinTargetHud } from "@/components/admin/kelly-calendar-cockpit/WinTargetHud";
+import type { CampaignEventCoveragePlan } from "@/lib/calendar/event-coverage-types";
 
 const TZ = "America/Chicago";
 
@@ -57,6 +58,7 @@ type Props = {
   winScenario: KellyWinTargetScenarioFile | null;
   volunteerCapacityModel: VolunteerCapacityModelFile | null;
   preflight: CandidateDashboardPreflightFile;
+  coveragePlans: CampaignEventCoveragePlan[];
   dataSourceMode: "db_backed" | "mixed" | "staged_fallback";
   dataSourceNote: string;
 };
@@ -90,6 +92,7 @@ export function KellyScheduleSettlementDashboard(props: Props) {
     winScenario,
     volunteerCapacityModel,
     preflight,
+    coveragePlans,
     dataSourceMode,
     dataSourceNote,
   } = props;
@@ -198,6 +201,14 @@ export function KellyScheduleSettlementDashboard(props: Props) {
   }, [weekMondayYmd]);
 
   const oppById = useMemo(() => new Map(opportunities.map((o) => [o.id, o])), [opportunities]);
+  const coverageByItemId = useMemo(() => {
+    const map = new Map<string, CampaignEventCoveragePlan>();
+    for (const plan of coveragePlans) {
+      if (plan.calendarItemId) map.set(plan.calendarItemId, plan);
+      map.set(plan.campaignEventId, plan);
+    }
+    return map;
+  }, [coveragePlans]);
   const preflightTone =
     preflight.overallStatus === "green"
       ? {
@@ -614,6 +625,14 @@ export function KellyScheduleSettlementDashboard(props: Props) {
                   <p className="font-body text-[10px] text-zinc-500">
                     {it.county ?? "—"} · {fmt(it.start)} · {it.cardBadge.replace(/_/g, " ")}
                   </p>
+                  {(() => {
+                    const cov = coverageByItemId.get(it.id) ?? (it.sourceId ? coverageByItemId.get(it.sourceId) : undefined);
+                    return cov ? (
+                      <p className="mt-0.5 font-body text-[10px] text-violet-800">
+                        Coverage: {cov.status.replace(/_/g, " ")} · {cov.volunteersNeeded} volunteers · table {cov.tableStatus.replace(/_/g, " ")}
+                      </p>
+                    ) : null;
+                  })()}
                 </div>
                 <div className="flex flex-wrap gap-1">
                   <form action={appendScheduleSettlementDecision}>

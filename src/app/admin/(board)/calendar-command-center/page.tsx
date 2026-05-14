@@ -68,6 +68,10 @@ export default async function CalendarCommandCenterPage() {
             GOTV
           </Link>{" "}
           ·{" "}
+          <Link className="font-semibold text-kelly-text underline-offset-2 hover:underline" href="/admin/calendar-command-center/coverage">
+            Coverage
+          </Link>{" "}
+          ·{" "}
           <Link className="font-semibold text-kelly-text underline-offset-2 hover:underline" href="/admin/calendar-command-center/build-status">
             Build status
           </Link>{" "}

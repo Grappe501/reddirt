@@ -126,6 +126,25 @@
     "status": "file_staged"
   },
   {
+    "id": "event_coverage_plan_v1",
+    "name": "Campaign event coverage plan",
+    "addedAt": "2026-05-14T03:30:00.000Z",
+    "category": "field_operations",
+    "description": "Plans campaign coverage for every calendar event, including when Kelly does not personally attend: local volunteers, county surrogate, table/materials, monitor-only, or staff follow-up. Does not send messages or write Google Calendar.",
+    "inputSources": [
+      "CampaignEvent",
+      "public.counties",
+      "data/calendar-command-center/event-coverage-plans.staged.json"
+    ],
+    "outputUsedBy": [
+      "Kelly agent event_coverage_plan tool",
+      "/admin/calendar-command-center/coverage",
+      "staff coverage planning"
+    ],
+    "humanOverrideRequired": true,
+    "status": "file_staged"
+  },
+  {
     "id": "automation_recommendation_queue_v1",
     "name": "Automation recommendation queue",
     "addedAt": "2026-05-14T00:00:00.000Z",
