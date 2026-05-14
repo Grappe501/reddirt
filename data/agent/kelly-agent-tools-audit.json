@@ -1,0 +1,153 @@
+{
+  "generatedAt": "2026-05-14T04:04:23.394Z",
+  "toolCount": 12,
+  "wiredCount": 11,
+  "ledgerCount": 11,
+  "tools": [
+    {
+      "toolName": "calendar-db-health",
+      "filePath": "src/lib/kelly-agent/tools/calendar-db-health-tool.ts",
+      "exists": true,
+      "exportNames": [
+        "buildCalendarDbHealthReport"
+      ],
+      "wiredIntoRunKellyAgentTools": true,
+      "listedInCapabilityLedger": true,
+      "outputFileExists": false,
+      "humanOverrideDocumented": true
+    },
+    {
+      "toolName": "calendar-smoke-test",
+      "filePath": "src/lib/kelly-agent/tools/calendar-smoke-test-tool.ts",
+      "exists": true,
+      "exportNames": [
+        "buildCalendarSmokeTestReport"
+      ],
+      "wiredIntoRunKellyAgentTools": true,
+      "listedInCapabilityLedger": true,
+      "outputFileExists": false,
+      "humanOverrideDocumented": true
+    },
+    {
+      "toolName": "calendar-sync-readiness",
+      "filePath": "src/lib/kelly-agent/tools/calendar-sync-readiness-tool.ts",
+      "exists": true,
+      "exportNames": [
+        "buildCalendarSyncReadinessReport"
+      ],
+      "wiredIntoRunKellyAgentTools": true,
+      "listedInCapabilityLedger": true,
+      "outputFileExists": false,
+      "humanOverrideDocumented": true
+    },
+    {
+      "toolName": "candidate-dashboard-preflight",
+      "filePath": "src/lib/kelly-agent/tools/candidate-dashboard-preflight-tool.ts",
+      "exists": true,
+      "exportNames": [
+        "runCandidateDashboardPreflight"
+      ],
+      "wiredIntoRunKellyAgentTools": true,
+      "listedInCapabilityLedger": true,
+      "outputFileExists": true,
+      "humanOverrideDocumented": true
+    },
+    {
+      "toolName": "event-coverage-plan",
+      "filePath": "src/lib/kelly-agent/tools/event-coverage-plan-tool.ts",
+      "exists": true,
+      "exportNames": [
+        "buildEventCoverageGapSummary",
+        "buildEventCoveragePlanToolOutput"
+      ],
+      "wiredIntoRunKellyAgentTools": true,
+      "listedInCapabilityLedger": true,
+      "outputFileExists": false,
+      "humanOverrideDocumented": true
+    },
+    {
+      "toolName": "event-staffing-callout",
+      "filePath": "src/lib/kelly-agent/tools/event-staffing-callout-tool.ts",
+      "exists": true,
+      "exportNames": [
+        "buildEventStaffingCalloutToolOutput"
+      ],
+      "wiredIntoRunKellyAgentTools": true,
+      "listedInCapabilityLedger": false,
+      "outputFileExists": false,
+      "humanOverrideDocumented": true
+    },
+    {
+      "toolName": "event-staffing",
+      "filePath": "src/lib/kelly-agent/tools/event-staffing-tool.ts",
+      "exists": true,
+      "exportNames": [
+        "buildEventStaffingToolOutput"
+      ],
+      "wiredIntoRunKellyAgentTools": false,
+      "listedInCapabilityLedger": true,
+      "outputFileExists": false,
+      "humanOverrideDocumented": true
+    },
+    {
+      "toolName": "event-success-playbook",
+      "filePath": "src/lib/kelly-agent/tools/event-success-playbook-tool.ts",
+      "exists": true,
+      "exportNames": [
+        "buildEventSuccessPlaybook"
+      ],
+      "wiredIntoRunKellyAgentTools": true,
+      "listedInCapabilityLedger": true,
+      "outputFileExists": false,
+      "humanOverrideDocumented": true
+    },
+    {
+      "toolName": "schedule-persistence",
+      "filePath": "src/lib/kelly-agent/tools/schedule-persistence-tool.ts",
+      "exists": true,
+      "exportNames": [
+        "buildSchedulePersistenceReport"
+      ],
+      "wiredIntoRunKellyAgentTools": true,
+      "listedInCapabilityLedger": true,
+      "outputFileExists": false,
+      "humanOverrideDocumented": true
+    },
+    {
+      "toolName": "schedule-readiness",
+      "filePath": "src/lib/kelly-agent/tools/schedule-readiness-tool.ts",
+      "exists": true,
+      "exportNames": [
+        "buildScheduleReadinessReport"
+      ],
+      "wiredIntoRunKellyAgentTools": true,
+      "listedInCapabilityLedger": true,
+      "outputFileExists": false,
+      "humanOverrideDocumented": true
+    },
+    {
+      "toolName": "volunteer-capacity",
+      "filePath": "src/lib/kelly-agent/tools/volunteer-capacity-tool.ts",
+      "exists": true,
+      "exportNames": [
+        "loadVolunteerCapacityToolOutput"
+      ],
+      "wiredIntoRunKellyAgentTools": true,
+      "listedInCapabilityLedger": true,
+      "outputFileExists": false,
+      "humanOverrideDocumented": true
+    },
+    {
+      "toolName": "win-target",
+      "filePath": "src/lib/kelly-agent/tools/win-target-tool.ts",
+      "exists": true,
+      "exportNames": [
+        "loadWinTargetToolOutput"
+      ],
+      "wiredIntoRunKellyAgentTools": true,
+      "listedInCapabilityLedger": true,
+      "outputFileExists": false,
+      "humanOverrideDocumented": true
+    }
+  ]
+}

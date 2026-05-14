@@ -1,28 +1,28 @@
 [
   {
-    "id": "calendar_context_tool_v1",
-    "name": "Calendar window context",
+    "id": "schedule_readiness_v1",
+    "name": "Schedule readiness",
     "addedAt": "2026-05-01T00:00:00.000Z",
     "category": "calendar",
-    "description": "Summarizes the current Chicago-week calendar window and sample item ids for the Kelly agent.",
+    "description": "Summarizes the current Chicago-week calendar window, conflicts, staff calls, and decisions needed before Kelly uses the cockpit.",
     "inputSources": ["data/calendar-command-center/calendar-items.normalized.json", "AgentContextPack.calendarWindow"],
-    "outputUsedBy": ["POST /api/admin/kelly-agent/recommend", "Schedule settlement prompts"],
+    "outputUsedBy": ["Kelly agent schedule_readiness tool", "npm run agent:readiness", "/admin/calendar-command-center/kelly"],
     "humanOverrideRequired": true,
     "status": "file_staged"
   },
   {
-    "id": "route_matrix_cache_v1",
+    "id": "route_matrix_v1",
     "name": "Route matrix cache (read-only)",
     "addedAt": "2026-05-01T00:00:00.000Z",
     "category": "routing",
     "description": "Exposes cached drive matrix entry counts for opportunity / route reasoning without calling Google Routes at inference time.",
-    "inputSources": ["data/opportunities/google-route-matrix-cache.json"],
+    "inputSources": ["data/calendar-command-center/route-matrix-cache.json"],
     "outputUsedBy": ["Kelly agent recommend", "Weekend route heuristics"],
     "humanOverrideRequired": true,
     "status": "file_staged"
   },
   {
-    "id": "opportunity_graph_stub_v1",
+    "id": "opportunity_graph_v1",
     "name": "Opportunity graph (weekend plans + op counts)",
     "addedAt": "2026-05-01T00:00:00.000Z",
     "category": "opportunity_graph",
@@ -33,7 +33,7 @@
     "status": "file_staged"
   },
   {
-    "id": "schedule_settlement_ai_v1",
+    "id": "schedule_settlement_v1",
     "name": "Schedule settlement recommendation",
     "addedAt": "2026-05-10T00:00:00.000Z",
     "category": "schedule_settlement",
@@ -204,7 +204,7 @@
     "status": "file_staged"
   },
   {
-    "id": "calendar_db_health_tool_v1",
+    "id": "calendar_db_health_v1",
     "name": "Calendar DB health",
     "addedAt": "2026-05-14T02:15:00.000Z",
     "category": "calendar_intelligence",
@@ -215,7 +215,7 @@
     "status": "db_backed"
   },
   {
-    "id": "calendar_sync_readiness_tool_v1",
+    "id": "calendar_sync_readiness_v1",
     "name": "Calendar sync readiness",
     "addedAt": "2026-05-14T02:15:00.000Z",
     "category": "calendar_intelligence",
@@ -226,7 +226,7 @@
     "status": "db_backed"
   },
   {
-    "id": "schedule_persistence_tool_v1",
+    "id": "schedule_persistence_v1",
     "name": "Schedule persistence",
     "addedAt": "2026-05-14T02:15:00.000Z",
     "category": "calendar_intelligence",
@@ -237,7 +237,7 @@
     "status": "db_backed"
   },
   {
-    "id": "calendar_smoke_test_tool_v1",
+    "id": "calendar_smoke_test_v1",
     "name": "Calendar smoke test",
     "addedAt": "2026-05-14T02:15:00.000Z",
     "category": "calendar_intelligence",
@@ -246,5 +246,59 @@
     "outputUsedBy": ["Kelly agent calendar_smoke_test tool", "operator smoke checklist"],
     "humanOverrideRequired": true,
     "status": "db_backed"
+  },
+  {
+    "id": "county_vault_knowledge_v1",
+    "name": "County vault knowledge",
+    "addedAt": "2026-05-14T04:45:00.000Z",
+    "category": "knowledge",
+    "description": "Indexes county vault markdown and campaign memory snippets for staff-facing county context. Human review required before using facts in public copy.",
+    "inputSources": ["docs/county-vault/**/*.md", "data/agent/kelly-agent-knowledge-index.json"],
+    "outputUsedBy": ["Kelly agent county facts / knowledge retrieval", "npm run agent:knowledge-index"],
+    "humanOverrideRequired": true,
+    "status": "file_staged"
+  },
+  {
+    "id": "media_index_v1",
+    "name": "Media index",
+    "addedAt": "2026-05-14T04:45:00.000Z",
+    "category": "knowledge",
+    "description": "Makes owned and external media metadata available for agent retrieval without exposing private files or publishing automatically.",
+    "inputSources": ["data/media/**/*.json", "campaign media metadata"],
+    "outputUsedBy": ["Kelly agent media_retrieval tool", "media/event folder review"],
+    "humanOverrideRequired": true,
+    "status": "file_staged"
+  },
+  {
+    "id": "missing_data_report_v1",
+    "name": "Agent missing data report",
+    "addedAt": "2026-05-14T04:45:00.000Z",
+    "category": "campaign_manager",
+    "description": "Reports what the Kelly agent does not know yet across county, calendar, Google, volunteer, materials, media, win target, coverage, and field ops lanes.",
+    "inputSources": ["data/calendar-command-center/*.json", "data/election/*.json", "data/field-ops/*.json", "data/agent/*.json"],
+    "outputUsedBy": ["npm run agent:missing-data", "docs/agent/AGENT_MISSING_DATA_REPORT.md", "Kelly Agent Tool Suite"],
+    "humanOverrideRequired": true,
+    "status": "file_staged"
+  },
+  {
+    "id": "agent_tool_suite_self_audit_v1",
+    "name": "Agent tool suite self-audit",
+    "addedAt": "2026-05-14T04:45:00.000Z",
+    "category": "campaign_manager",
+    "description": "The Kelly agent can audit its own tool coverage, missing data, readiness, and operational blockers, then recommend the next highest-value build steps.",
+    "inputSources": [
+      "data/agent/kelly-agent-capabilities.json",
+      "src/lib/kelly-agent/tools/",
+      "data/agent/*-latest.json",
+      "data/calendar-command-center/*.json"
+    ],
+    "outputUsedBy": [
+      "npm run agent:tool-suite",
+      "data/agent/kelly-agent-tool-suite-latest.json",
+      "docs/agent/KELLY_AGENT_TOOL_SUITE_REPORT.md",
+      "/admin/calendar-command-center/build-status"
+    ],
+    "humanOverrideRequired": true,
+    "status": "file_staged"
   }
 ]

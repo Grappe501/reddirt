@@ -1,0 +1,787 @@
+{
+  "generatedAt": "2026-05-14T04:04:36.246Z",
+  "branch": "feature/kelly-schedule-settlement-dashboard",
+  "commit": "c638b8b",
+  "overallStatus": "yellow",
+  "dashboardReadiness": {
+    "status": "yellow",
+    "canKellyUseTonight": true,
+    "canUseForRealDecisions": false,
+    "blockers": [],
+    "warnings": [
+      "Conflict: Bishop Arnold Magnolia; Tabernacle of Faith Wynne at 3 PM",
+      "Conflict: Bishop Arnold magnolia",
+      "Conflict: Tabernacle of faith"
+    ]
+  },
+  "capabilities": [
+    {
+      "id": "schedule_readiness_v1",
+      "name": "Schedule readiness",
+      "category": "calendar",
+      "status": "file_staged",
+      "humanOverrideRequired": true,
+      "inputSources": [
+        "data/calendar-command-center/calendar-items.normalized.json",
+        "AgentContextPack.calendarWindow"
+      ],
+      "outputUsedBy": [
+        "Kelly agent schedule_readiness tool",
+        "npm run agent:readiness",
+        "/admin/calendar-command-center/kelly"
+      ],
+      "health": "green",
+      "notes": "Summarizes the current Chicago-week calendar window, conflicts, staff calls, and decisions needed before Kelly uses the cockpit."
+    },
+    {
+      "id": "route_matrix_v1",
+      "name": "Route matrix cache (read-only)",
+      "category": "routing",
+      "status": "file_staged",
+      "humanOverrideRequired": true,
+      "inputSources": [
+        "data/calendar-command-center/route-matrix-cache.json"
+      ],
+      "outputUsedBy": [
+        "Kelly agent recommend",
+        "Weekend route heuristics"
+      ],
+      "health": "green",
+      "notes": "Exposes cached drive matrix entry counts for opportunity / route reasoning without calling Google Routes at inference time."
+    },
+    {
+      "id": "opportunity_graph_v1",
+      "name": "Opportunity graph (weekend plans + op counts)",
+      "category": "opportunity_graph",
+      "status": "file_staged",
+      "humanOverrideRequired": true,
+      "inputSources": [
+        "data/opportunities/*.json"
+      ],
+      "outputUsedBy": [
+        "Kelly agent recommend",
+        "Settlement dashboard copy"
+      ],
+      "health": "green",
+      "notes": "Lightweight opportunity graph summary from staged JSON (weekend plans + tentative opportunity cap)."
+    },
+    {
+      "id": "schedule_settlement_v1",
+      "name": "Schedule settlement recommendation",
+      "category": "schedule_settlement",
+      "status": "file_staged",
+      "humanOverrideRequired": true,
+      "inputSources": [
+        "Settlement snapshot builders",
+        "Weekend plans JSON"
+      ],
+      "outputUsedBy": [
+        "/admin/calendar-command-center/kelly"
+      ],
+      "health": "green",
+      "notes": "POST /api/admin/kelly-agent/schedule-settlement returns structured settlement guidance with deterministic fallback."
+    },
+    {
+      "id": "county_win_target_model_v1",
+      "name": "County win-target scenario (election math)",
+      "category": "election_math",
+      "status": "file_staged",
+      "humanOverrideRequired": true,
+      "inputSources": [
+        "data/election/arkansas-county-election-history.normalized.json",
+        "data/election/arkansas-voter-registration-goals.normalized.json",
+        "data/calendar-command-center/county-priority-snapshot.json",
+        "data/calendar-command-center/county-facts.json",
+        "src/lib/county/arkansas-county-registry.ts"
+      ],
+      "outputUsedBy": [
+        "Kelly agent win_targets tool",
+        "/admin/calendar-command-center cockpit HUD",
+        "npm run election:targets:build"
+      ],
+      "health": "green",
+      "notes": "Scenario (not prediction) for statewide 50%+1 vs working cushion target, per-county projected turnout, baseline Dem support blend, capacity-weighted vote gain allocation, guardrails, and explainable sub-scores. Human override always."
+    },
+    {
+      "id": "volunteer_capacity_community_coverage_v1",
+      "name": "Volunteer capacity and community coverage (operations)",
+      "category": "field_operations",
+      "status": "file_staged",
+      "humanOverrideRequired": true,
+      "inputSources": [
+        "data/election/kelly-win-target-scenario-v1.json",
+        "data/calendar-command-center/county-priority-snapshot.json",
+        "data/calendar-command-center/community-opportunities-2026.normalized.json",
+        "data/field-ops/volunteer-roster-inputs-v1.json",
+        "data/field-ops/county-acs-context-v1.json"
+      ],
+      "outputUsedBy": [
+        "Kelly agent volunteer_capacity tool",
+        "/admin/calendar-command-center/field-ops",
+        "Candidate dashboard / county brief strips",
+        "npm run fieldops:volunteer-capacity:build"
+      ],
+      "health": "green",
+      "notes": "County-level staffing, guide gaps, house-party host need, follow-up workload, bilingual/access support flags, and staff call prompts from file-staged inputs. Campaign operations only — not automated voter persuasion or demographic targeting."
+    },
+    {
+      "id": "gotv_commitment_allocation_v1",
+      "name": "GOTV commitment allocation",
+      "category": "field_operations",
+      "status": "file_staged",
+      "humanOverrideRequired": true,
+      "inputSources": [
+        "CountyCampaignStats.registrationGoal",
+        "CountyCampaignStats.volunteerTarget",
+        "CountyCampaignStats.volunteerCount",
+        "data/election/kelly-win-target-scenario-v1.json",
+        "data/field-ops/volunteer-capacity-model-v1.json"
+      ],
+      "outputUsedBy": [
+        "/admin/calendar-command-center/gotv",
+        "Kelly agent tools",
+        "Candidate dashboard progress bar"
+      ],
+      "health": "green",
+      "notes": "County-level allocation of the 5,000 opt-in GOTV commitment-card goal with explainable county target percentages, house-party goals, and capacity workload. Not voter-level targeting."
+    },
+    {
+      "id": "event_success_playbook_v1",
+      "name": "Event success playbook",
+      "category": "field_operations",
+      "status": "file_staged",
+      "humanOverrideRequired": true,
+      "inputSources": [
+        "calendar window",
+        "data/field-ops/volunteer-capacity-model-v1.json",
+        "data/field-ops/gotv-commitment-allocation-v1.json"
+      ],
+      "outputUsedBy": [
+        "event drill-down",
+        "Kelly agent event_success_playbook tool"
+      ],
+      "health": "green",
+      "notes": "Prepares staff work for event success: host confirmation, guide coverage, volunteer staffing, commitment-card ask, access support, post-event follow-up, and draft automation tasks. Does not send messages."
+    },
+    {
+      "id": "event_coverage_plan_v1",
+      "name": "Campaign event coverage plan",
+      "category": "field_operations",
+      "status": "file_staged",
+      "humanOverrideRequired": true,
+      "inputSources": [
+        "CampaignEvent",
+        "public.counties",
+        "data/calendar-command-center/event-coverage-plans.staged.json"
+      ],
+      "outputUsedBy": [
+        "Kelly agent event_coverage_plan tool",
+        "/admin/calendar-command-center/coverage",
+        "staff coverage planning"
+      ],
+      "health": "green",
+      "notes": "Plans campaign coverage for every calendar event, including when Kelly does not personally attend: local volunteers, county surrogate, table/materials, monitor-only, or staff follow-up. Does not send messages or write Google Calendar."
+    },
+    {
+      "id": "event_staffing_and_callout_v1",
+      "name": "Event staffing and volunteer callout",
+      "category": "calendar_event_operations",
+      "status": "file_staged",
+      "humanOverrideRequired": true,
+      "inputSources": [
+        "data/calendar-command-center/event-coverage-plans.staged.json",
+        "data/calendar-command-center/event-staffing-plans.staged.json",
+        "data/calendar-command-center/event-volunteer-callouts.staged.json",
+        "data/calendar-command-center/event-volunteer-reminders.staged.json",
+        "data/calendar-command-center/campaign-materials-inventory.json"
+      ],
+      "outputUsedBy": [
+        "Kelly agent event_staffing_and_callout tool",
+        "/admin/calendar-command-center/coverage",
+        "/admin/calendar-command-center/event/[id]"
+      ],
+      "health": "green",
+      "notes": "Read-only calendar operations tool for event staffing roster, volunteer callout drafts, reminder drafts, materials pack lists, and coverage readiness. Human approval required for all outbound contact; SMS disabled."
+    },
+    {
+      "id": "automation_recommendation_queue_v1",
+      "name": "Automation recommendation queue",
+      "category": "field_operations",
+      "status": "file_staged",
+      "humanOverrideRequired": true,
+      "inputSources": [
+        "data/field-ops/automation-recommendations.staged.json",
+        "event_success_playbook_v1"
+      ],
+      "outputUsedBy": [
+        "/admin/calendar-command-center/gotv",
+        "staff review queue"
+      ],
+      "health": "green",
+      "notes": "Staged prepare-only queue for suggested email/SMS/phone/task automations with opt-in, STOP/unsubscribe, consent source, suppression, owner, and human approval gates."
+    },
+    {
+      "id": "candidate_dashboard_preflight_v1",
+      "name": "Candidate dashboard preflight",
+      "category": "field_operations",
+      "status": "file_staged",
+      "humanOverrideRequired": true,
+      "inputSources": [
+        "src/app/admin/(board)/calendar-command-center/*",
+        "data/calendar-command-center/*.json",
+        "data/election/kelly-win-target-scenario-v1.json",
+        "data/field-ops/*.json",
+        "data/agent/kelly-agent-capabilities.json"
+      ],
+      "outputUsedBy": [
+        "/admin/calendar-command-center/kelly top banner",
+        "npm run agent:preflight",
+        "Kelly agent candidate_dashboard_preflight tool"
+      ],
+      "health": "green",
+      "notes": "Readiness inspection for the Kelly cockpit: routes, data files, AI fallback, staged vs DB-backed actions, no-send/no-Google-write posture, and schedule readiness before previewing with Kelly."
+    },
+    {
+      "id": "calendar_db_health_v1",
+      "name": "Calendar DB health",
+      "category": "calendar_intelligence",
+      "status": "db_backed",
+      "humanOverrideRequired": true,
+      "inputSources": [
+        "Prisma _prisma_migrations",
+        "CampaignEvent",
+        "CalendarSource",
+        "KellyCalendarDecision",
+        "LocalCoverageRequest",
+        "CalendarAlert"
+      ],
+      "outputUsedBy": [
+        "Kelly agent calendar_db_health tool",
+        "candidate calendar readiness review"
+      ],
+      "health": "green",
+      "notes": "Checks migration health, core calendar table availability, CampaignEvent count, CalendarSource count, and Kelly cockpit DB readiness."
+    },
+    {
+      "id": "calendar_sync_readiness_v1",
+      "name": "Calendar sync readiness",
+      "category": "calendar_intelligence",
+      "status": "db_backed",
+      "humanOverrideRequired": true,
+      "inputSources": [
+        "CalendarSource",
+        "CampaignEvent sync fields",
+        "KELLY_GOOGLE_ANCHOR_CALENDAR_SOURCE_ID"
+      ],
+      "outputUsedBy": [
+        "Kelly agent calendar_sync_readiness tool",
+        "Google lane smoke checklist"
+      ],
+      "health": "green",
+      "notes": "Checks Google anchor, Tentative and Confirmed CalendarSource rows, refresh token presence, syncEnabled state, last sync, and conflict count."
+    },
+    {
+      "id": "schedule_persistence_v1",
+      "name": "Schedule persistence",
+      "category": "calendar_intelligence",
+      "status": "db_backed",
+      "humanOverrideRequired": true,
+      "inputSources": [
+        "KellyCalendarDecision",
+        "LocalCoverageRequest",
+        "CalendarAlert",
+        "data/calendar-command-center/schedule-settlement-decisions.staged.json"
+      ],
+      "outputUsedBy": [
+        "Kelly agent schedule_persistence tool",
+        "dashboard acceptance review"
+      ],
+      "health": "yellow",
+      "notes": "Reports whether Kelly approvals, local coverage, and route settlement decisions are DB-backed or still file-staged."
+    },
+    {
+      "id": "calendar_smoke_test_v1",
+      "name": "Calendar smoke test",
+      "category": "calendar_intelligence",
+      "status": "db_backed",
+      "humanOverrideRequired": true,
+      "inputSources": [
+        "CampaignEvent",
+        "GoogleCalendarEventRecord",
+        "CalendarSource",
+        "Kelly dashboard"
+      ],
+      "outputUsedBy": [
+        "Kelly agent calendar_smoke_test tool",
+        "operator smoke checklist"
+      ],
+      "health": "green",
+      "notes": "Produces the migration-to-Google smoke checklist for Tentative creation, approval, Confirmed promotion, pullback, dedupe, and dashboard status."
+    },
+    {
+      "id": "county_vault_knowledge_v1",
+      "name": "County vault knowledge",
+      "category": "knowledge",
+      "status": "file_staged",
+      "humanOverrideRequired": true,
+      "inputSources": [
+        "docs/county-vault/**/*.md",
+        "data/agent/kelly-agent-knowledge-index.json"
+      ],
+      "outputUsedBy": [
+        "Kelly agent county facts / knowledge retrieval",
+        "npm run agent:knowledge-index"
+      ],
+      "health": "green",
+      "notes": "Indexes county vault markdown and campaign memory snippets for staff-facing county context. Human review required before using facts in public copy."
+    },
+    {
+      "id": "media_index_v1",
+      "name": "Media index",
+      "category": "knowledge",
+      "status": "file_staged",
+      "humanOverrideRequired": true,
+      "inputSources": [
+        "data/media/**/*.json",
+        "campaign media metadata"
+      ],
+      "outputUsedBy": [
+        "Kelly agent media_retrieval tool",
+        "media/event folder review"
+      ],
+      "health": "green",
+      "notes": "Makes owned and external media metadata available for agent retrieval without exposing private files or publishing automatically."
+    },
+    {
+      "id": "missing_data_report_v1",
+      "name": "Agent missing data report",
+      "category": "campaign_manager",
+      "status": "file_staged",
+      "humanOverrideRequired": true,
+      "inputSources": [
+        "data/calendar-command-center/*.json",
+        "data/election/*.json",
+        "data/field-ops/*.json",
+        "data/agent/*.json"
+      ],
+      "outputUsedBy": [
+        "npm run agent:missing-data",
+        "docs/agent/AGENT_MISSING_DATA_REPORT.md",
+        "Kelly Agent Tool Suite"
+      ],
+      "health": "green",
+      "notes": "Reports what the Kelly agent does not know yet across county, calendar, Google, volunteer, materials, media, win target, coverage, and field ops lanes."
+    },
+    {
+      "id": "agent_tool_suite_self_audit_v1",
+      "name": "Agent tool suite self-audit",
+      "category": "campaign_manager",
+      "status": "file_staged",
+      "humanOverrideRequired": true,
+      "inputSources": [
+        "data/agent/kelly-agent-capabilities.json",
+        "src/lib/kelly-agent/tools/",
+        "data/agent/*-latest.json",
+        "data/calendar-command-center/*.json"
+      ],
+      "outputUsedBy": [
+        "npm run agent:tool-suite",
+        "data/agent/kelly-agent-tool-suite-latest.json",
+        "docs/agent/KELLY_AGENT_TOOL_SUITE_REPORT.md",
+        "/admin/calendar-command-center/build-status"
+      ],
+      "health": "green",
+      "notes": "The Kelly agent can audit its own tool coverage, missing data, readiness, and operational blockers, then recommend the next highest-value build steps."
+    }
+  ],
+  "toolHealth": [
+    {
+      "toolName": "agent:capabilities:validate",
+      "exists": true,
+      "status": "ok",
+      "lastRun": "2026-05-14T04:04:08.957Z"
+    },
+    {
+      "toolName": "agent:knowledge-index",
+      "exists": true,
+      "status": "ok",
+      "lastRun": "2026-05-14T04:04:09.662Z"
+    },
+    {
+      "toolName": "agent:readiness",
+      "exists": true,
+      "status": "ok",
+      "lastRun": "2026-05-14T04:04:11.178Z"
+    },
+    {
+      "toolName": "election:targets:build",
+      "exists": true,
+      "status": "ok",
+      "lastRun": "2026-05-14T04:04:12.508Z"
+    },
+    {
+      "toolName": "fieldops:volunteer-capacity:build",
+      "exists": true,
+      "status": "ok",
+      "lastRun": "2026-05-14T04:04:13.872Z"
+    },
+    {
+      "toolName": "fieldops:gotv-allocation:build",
+      "exists": true,
+      "status": "ok",
+      "lastRun": "2026-05-14T04:04:15.177Z"
+    },
+    {
+      "toolName": "calendar:coverage:build",
+      "exists": true,
+      "status": "ok",
+      "lastRun": "2026-05-14T04:04:16.768Z"
+    },
+    {
+      "toolName": "calendar:county-link-audit",
+      "exists": true,
+      "status": "ok",
+      "lastRun": "2026-05-14T04:04:18.255Z"
+    },
+    {
+      "toolName": "calendar:staffing:build",
+      "exists": true,
+      "status": "ok",
+      "lastRun": "2026-05-14T04:04:19.618Z"
+    },
+    {
+      "toolName": "calendar:callouts:build",
+      "exists": true,
+      "status": "ok",
+      "lastRun": "2026-05-14T04:04:20.933Z"
+    },
+    {
+      "toolName": "calendar:reminders:build",
+      "exists": true,
+      "status": "ok",
+      "lastRun": "2026-05-14T04:04:22.744Z"
+    },
+    {
+      "toolName": "agent:tools:audit",
+      "exists": true,
+      "status": "ok",
+      "lastRun": "2026-05-14T04:04:23.435Z"
+    },
+    {
+      "toolName": "agent:calendar-intel",
+      "exists": true,
+      "status": "ok",
+      "lastRun": "2026-05-14T04:04:24.854Z"
+    },
+    {
+      "toolName": "agent:ops-intel",
+      "exists": true,
+      "status": "ok",
+      "lastRun": "2026-05-14T04:04:25.557Z"
+    },
+    {
+      "toolName": "agent:missing-data",
+      "exists": true,
+      "status": "ok",
+      "lastRun": "2026-05-14T04:04:27.001Z"
+    },
+    {
+      "toolName": "typecheck",
+      "exists": true,
+      "status": "ok",
+      "lastRun": "2026-05-14T04:04:36.246Z"
+    }
+  ],
+  "calendarIntelligence": {
+    "campaignEventsTotal": 251,
+    "campaignEventsWithCounty": 140,
+    "campaignEventsWithoutCounty": 111,
+    "coveragePlansTotal": 251,
+    "eventsNeedingLocalCoverage": 72,
+    "eventsNeedingVolunteerLead": 57,
+    "eventsNeedingTablePermission": 24,
+    "scheduleConflicts": 3,
+    "googleSyncReady": false,
+    "googleSyncBlockers": [
+      "Google OAuth anchor source missing",
+      "Kelly Tentative CalendarSource missing",
+      "Kelly Confirmed CalendarSource missing",
+      "Refresh token missing on anchor/tentative/confirmed source",
+      "Kelly Google source sync not enabled"
+    ]
+  },
+  "operationsIntelligence": {
+    "generatedAt": "2026-05-14T04:04:25.516Z",
+    "statewideTargetContext": {
+      "projectedStatewideVotes": 1507143,
+      "legalTarget50Plus1": 753572,
+      "workingTargetWithCushion": 764876,
+      "statewideBaselineVotes": 561827,
+      "statewideVoteGap": 203049
+    },
+    "statewideGotvCommitmentGoal": 5000,
+    "totalCommitmentGap": 5000,
+    "totalHousePartyGoal": 1034,
+    "totalPhoneBankCapacityHours": 0,
+    "totalPostcardCapacity": 0,
+    "totalVolunteerCapacityNeed": 288,
+    "countiesNeedingLocalGuides": 75,
+    "countiesNeedingAccessSupport": 0,
+    "coverageCapacityGaps": {
+      "eventsNeedingLocalCoverage": 72,
+      "eventsNeedingVolunteerLead": 57,
+      "eventsNeedingTablePermission": 24
+    },
+    "topCountiesNeedingStaffAction": [
+      {
+        "county": "Clark",
+        "localGuideGap": true,
+        "accessSupportNeeded": false,
+        "eventStaffingNeed": 6,
+        "priority": 0
+      },
+      {
+        "county": "Columbia",
+        "localGuideGap": true,
+        "accessSupportNeeded": false,
+        "eventStaffingNeed": 6,
+        "priority": 0
+      },
+      {
+        "county": "Independence",
+        "localGuideGap": true,
+        "accessSupportNeeded": false,
+        "eventStaffingNeed": 6,
+        "priority": 0
+      },
+      {
+        "county": "Jefferson",
+        "localGuideGap": true,
+        "accessSupportNeeded": false,
+        "eventStaffingNeed": 6,
+        "priority": 0
+      },
+      {
+        "county": "Pulaski",
+        "localGuideGap": true,
+        "accessSupportNeeded": false,
+        "eventStaffingNeed": 6,
+        "priority": 0
+      },
+      {
+        "county": "Washington",
+        "localGuideGap": true,
+        "accessSupportNeeded": false,
+        "eventStaffingNeed": 6,
+        "priority": 0
+      },
+      {
+        "county": "Ashley",
+        "localGuideGap": true,
+        "accessSupportNeeded": false,
+        "eventStaffingNeed": 4,
+        "priority": 0
+      },
+      {
+        "county": "Baxter",
+        "localGuideGap": true,
+        "accessSupportNeeded": false,
+        "eventStaffingNeed": 4,
+        "priority": 0
+      },
+      {
+        "county": "Boone",
+        "localGuideGap": true,
+        "accessSupportNeeded": false,
+        "eventStaffingNeed": 4,
+        "priority": 0
+      },
+      {
+        "county": "Bradley",
+        "localGuideGap": true,
+        "accessSupportNeeded": false,
+        "eventStaffingNeed": 4,
+        "priority": 0
+      },
+      {
+        "county": "Calhoun",
+        "localGuideGap": true,
+        "accessSupportNeeded": false,
+        "eventStaffingNeed": 4,
+        "priority": 0
+      },
+      {
+        "county": "Carroll",
+        "localGuideGap": true,
+        "accessSupportNeeded": false,
+        "eventStaffingNeed": 4,
+        "priority": 0
+      },
+      {
+        "county": "Chicot",
+        "localGuideGap": true,
+        "accessSupportNeeded": false,
+        "eventStaffingNeed": 4,
+        "priority": 0
+      },
+      {
+        "county": "Clay",
+        "localGuideGap": true,
+        "accessSupportNeeded": false,
+        "eventStaffingNeed": 4,
+        "priority": 0
+      },
+      {
+        "county": "Cleveland",
+        "localGuideGap": true,
+        "accessSupportNeeded": false,
+        "eventStaffingNeed": 4,
+        "priority": 0
+      }
+    ]
+  },
+  "missingData": [
+    {
+      "area": "materials",
+      "severity": "medium",
+      "item": "Unknown on-hand inventory: push_cards",
+      "recommendedFix": "Count inventory and update campaign-materials-inventory.json."
+    },
+    {
+      "area": "materials",
+      "severity": "medium",
+      "item": "Unknown on-hand inventory: fans",
+      "recommendedFix": "Count inventory and update campaign-materials-inventory.json."
+    },
+    {
+      "area": "materials",
+      "severity": "high",
+      "item": "Unknown on-hand inventory: branded_mints",
+      "recommendedFix": "Count inventory and update campaign-materials-inventory.json."
+    },
+    {
+      "area": "materials",
+      "severity": "medium",
+      "item": "Unknown on-hand inventory: kelly_shirts",
+      "recommendedFix": "Count inventory and update campaign-materials-inventory.json."
+    },
+    {
+      "area": "materials",
+      "severity": "medium",
+      "item": "Unknown on-hand inventory: signup_sheets",
+      "recommendedFix": "Count inventory and update campaign-materials-inventory.json."
+    },
+    {
+      "area": "materials",
+      "severity": "medium",
+      "item": "Unknown on-hand inventory: clipboards",
+      "recommendedFix": "Count inventory and update campaign-materials-inventory.json."
+    },
+    {
+      "area": "materials",
+      "severity": "medium",
+      "item": "Unknown on-hand inventory: pens",
+      "recommendedFix": "Count inventory and update campaign-materials-inventory.json."
+    },
+    {
+      "area": "materials",
+      "severity": "medium",
+      "item": "Unknown on-hand inventory: qr_code_cards",
+      "recommendedFix": "Count inventory and update campaign-materials-inventory.json."
+    },
+    {
+      "area": "coverage",
+      "severity": "high",
+      "item": "57 events missing volunteer lead",
+      "recommendedFix": "Assign volunteer leads or create approved callout queue."
+    },
+    {
+      "area": "coverage",
+      "severity": "high",
+      "item": "24 events missing table permission",
+      "recommendedFix": "Staff table-permission calls and update coverage plan status."
+    },
+    {
+      "area": "volunteer",
+      "severity": "high",
+      "item": "210 events need callout",
+      "recommendedFix": "Review and approve staged volunteer callout drafts."
+    },
+    {
+      "area": "calendar",
+      "severity": "medium",
+      "item": "Campus/football/EHC/AEA context missing",
+      "recommendedFix": "Add source data for campus, football, EHC, and AEA event rules."
+    },
+    {
+      "area": "calendar",
+      "severity": "high",
+      "item": "111 CampaignEvents missing county link",
+      "recommendedFix": "Run county relink review queue; do not auto-link ambiguous rows."
+    },
+    {
+      "area": "calendar",
+      "severity": "medium",
+      "item": "185 CampaignEvents missing location",
+      "recommendedFix": "Add location enrichment/review pass."
+    },
+    {
+      "area": "google",
+      "severity": "high",
+      "item": "Google OAuth anchor source missing",
+      "recommendedFix": "Create/select CalendarSource with refresh token, then run Google lane smoke test."
+    }
+  ],
+  "nextRecommendedBuilds": [
+    {
+      "priority": 1,
+      "title": "Google lane smoke test",
+      "reason": "Google sync readiness is blocked until an OAuth anchor and lane sources are verified.",
+      "expectedImpact": "Moves calendar from preview-only toward live DB-to-Google operations.",
+      "filesToTouch": [
+        "scripts/google-calendar/*",
+        "data/agent/calendar-intelligence-report-latest.json"
+      ]
+    },
+    {
+      "priority": 2,
+      "title": "County relink review queue",
+      "reason": "111 CampaignEvents still lack county links.",
+      "expectedImpact": "Improves routing, coverage assignments, county vault memory, and field operations planning.",
+      "filesToTouch": [
+        "scripts/calendar/audit-campaign-event-county-links.ts",
+        "data/calendar-command-center/county-link-review.staged.json"
+      ]
+    },
+    {
+      "priority": 3,
+      "title": "Staff approval workflow for callouts/reminders",
+      "reason": "Callouts and reminders are staged but not reviewable with approval status changes.",
+      "expectedImpact": "Lets staff safely move from drafts to approved sends later without autonomous outreach.",
+      "filesToTouch": [
+        "src/app/admin/(board)/calendar-command-center/event/[id]/page.tsx",
+        "src/lib/calendar/event-volunteer-callout-types.ts"
+      ]
+    },
+    {
+      "priority": 4,
+      "title": "Materials inventory allocation check",
+      "reason": "Tablecloth and banner uses exceed known physical inventory unless reused across dates.",
+      "expectedImpact": "Prevents overpromising event kits and clarifies pack logistics.",
+      "filesToTouch": [
+        "data/calendar-command-center/campaign-materials-inventory.json",
+        "scripts/calendar/build-event-staffing-plans.ts"
+      ]
+    },
+    {
+      "priority": 5,
+      "title": "Media/event folder readiness",
+      "reason": "Agent media and county memory lanes need file/folder completeness checks.",
+      "expectedImpact": "Makes post-event photo/note capture retrievable for county memory.",
+      "filesToTouch": [
+        "scripts/agent/report-agent-missing-data.ts",
+        "data/media/"
+      ]
+    }
+  ]
+}

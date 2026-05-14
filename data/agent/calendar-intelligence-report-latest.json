@@ -1,0 +1,125 @@
+{
+  "generatedAt": "2026-05-14T04:04:24.172Z",
+  "campaignEvents": {
+    "total": 251,
+    "confirmed": 181,
+    "tentative": 70,
+    "needsReview": 70,
+    "withCounty": 140,
+    "withoutCounty": 111,
+    "missingLocation": 185
+  },
+  "coverage": {
+    "total": 251,
+    "needingLocalCoverage": 72,
+    "needingVolunteerLead": 57,
+    "needingTablePermission": 24,
+    "ready": 158,
+    "notCovering": 26,
+    "materials": {
+      "pushCards": 16575,
+      "fans": 11925,
+      "shirts": 439,
+      "brandedMints": 6200,
+      "fourFootTablecloths": 24,
+      "pullUpBanners": 24,
+      "signupSheets": 495,
+      "clipboards": 234,
+      "pens": 984,
+      "qrCodeCards": 3060,
+      "yardSigns": 48,
+      "voterRegistrationForms": 600
+    }
+  },
+  "staffing": {
+    "total": 251,
+    "needsVolunteerLead": 57,
+    "needsCallout": 210,
+    "fullyStaffed": 41,
+    "totalStaffingGap": 439,
+    "calloutDrafts": 210,
+    "reminderDrafts": 2976
+  },
+  "scheduleConflicts": 3,
+  "preflightStatus": "yellow",
+  "googleSyncReady": false,
+  "googleSyncBlockers": [
+    "Google OAuth anchor source missing",
+    "Kelly Tentative CalendarSource missing",
+    "Kelly Confirmed CalendarSource missing",
+    "Refresh token missing on anchor/tentative/confirmed source",
+    "Kelly Google source sync not enabled"
+  ],
+  "topStaffActions": [
+    {
+      "campaignEventId": "cmp4wsrcu0055499gvprmp0ak",
+      "title": "Kelly's Campaign Huddle",
+      "status": "needs_volunteer_lead",
+      "staffingGap": 1,
+      "notes": "get Kelly attend/hold/decline decision · assign volunteer lead · find local host or county contact · pack shirts · pack push cards/fans/mints · collect post-event notes"
+    },
+    {
+      "campaignEventId": "cmp4wss02005f499g3a8w1q4f",
+      "title": "Black Caucus Christmas Party",
+      "status": "needs_callout",
+      "staffingGap": 2,
+      "notes": "pack shirts · pack push cards/fans/mints · collect post-event notes"
+    },
+    {
+      "campaignEventId": "cmp4wsse7005k499gadodrupc",
+      "title": "Russellville",
+      "status": "needs_callout",
+      "staffingGap": 2,
+      "notes": "pack shirts · pack push cards/fans/mints · collect post-event notes"
+    },
+    {
+      "campaignEventId": "cmp4wsss8005p499g9u0sb5n3",
+      "title": "Koffee with Kelly",
+      "status": "needs_callout",
+      "staffingGap": 2,
+      "notes": "pack shirts · pack push cards/fans/mints · collect post-event notes"
+    },
+    {
+      "campaignEventId": "cmp4wst6g005u499gufrk233b",
+      "title": "NAACP Jacksonville Branch Christmas Party & Meeting",
+      "status": "needs_callout",
+      "staffingGap": 2,
+      "notes": "pack shirts · pack push cards/fans/mints · collect post-event notes"
+    },
+    {
+      "campaignEventId": "cmp4wstyz0064499gu772xu7n",
+      "title": "Lunch in Jonesboro",
+      "status": "needs_callout",
+      "staffingGap": 2,
+      "notes": "pack shirts · pack push cards/fans/mints · collect post-event notes"
+    },
+    {
+      "campaignEventId": "cmp4wstkn005z499gaypwpdhb",
+      "title": "Jonesboro",
+      "status": "needs_callout",
+      "staffingGap": 2,
+      "notes": "pack shirts · pack push cards/fans/mints · collect post-event notes"
+    },
+    {
+      "campaignEventId": "cmp4wsuap0069499g3yhkku12",
+      "title": "Voter Registration Training",
+      "status": "needs_callout",
+      "staffingGap": 2,
+      "notes": "pack shirts · pack push cards/fans/mints · collect post-event notes"
+    },
+    {
+      "campaignEventId": "cmp4wsvcu006o499gx3z2yaa7",
+      "title": "Jacksonville Boys & Girls Club Christmas Event",
+      "status": "needs_volunteer_lead",
+      "staffingGap": 1,
+      "notes": "get Kelly attend/hold/decline decision · assign volunteer lead · find local host or county contact · pack shirts · pack push cards/fans/mints · collect post-event notes"
+    },
+    {
+      "campaignEventId": "cmp4wsvr5006t499g3gdedmx7",
+      "title": "Cross County Dems Meeting",
+      "status": "needs_volunteer_lead",
+      "staffingGap": 2,
+      "notes": "get Kelly attend/hold/decline decision · assign volunteer lead · find local host or county contact · pack shirts · pack push cards/fans/mints · collect post-event notes"
+    }
+  ]
+}

@@ -25,6 +25,15 @@ type KellyAgentCapability = {
   status: "file_staged" | "db_backed" | "live" | "blocked";
 };
 
+type AgentToolSuiteReport = {
+  generatedAt: string;
+  overallStatus: "green" | "yellow" | "red";
+  capabilities: Array<{ id: string; status: string }>;
+  dashboardReadiness: { blockers: string[]; warnings: string[] };
+  missingData: Array<{ severity: string; area: string; item: string }>;
+  nextRecommendedBuilds: Array<{ priority: number; title: string; reason: string; expectedImpact: string }>;
+};
+
 function loadJson<T>(relative: string): T | null {
   const p = path.join(process.cwd(), relative);
   if (!existsSync(p)) return null;
@@ -52,10 +61,24 @@ function loadCapabilities(): KellyAgentCapability[] {
   return raw.capabilities ?? [];
 }
 
+function loadAgentToolSuite(): AgentToolSuiteReport | null {
+  return loadJson<AgentToolSuiteReport>("data/agent/kelly-agent-tool-suite-latest.json");
+}
+
 export default function CalendarV2BuildStatusPage() {
   const data = loadStatus();
   const v3 = loadV3Status();
   const capabilities = loadCapabilities();
+  const suite = loadAgentToolSuite();
+  const suiteCounts = suite
+    ? {
+        total: suite.capabilities.length,
+        live: suite.capabilities.filter((c) => c.status === "live").length,
+        dbBacked: suite.capabilities.filter((c) => c.status === "db_backed").length,
+        fileStaged: suite.capabilities.filter((c) => c.status === "file_staged").length,
+        blocked: suite.capabilities.filter((c) => c.status === "blocked").length,
+      }
+    : null;
 
   return (
     <div className="mx-auto max-w-4xl space-y-8 px-4 py-6">
@@ -74,6 +97,51 @@ export default function CalendarV2BuildStatusPage() {
           V2 JSON tracks the original calendar slice. V3 JSON tracks intelligence + election math. Capabilities ledger lists every Kelly-agent lane; each future pass should append one entry.
         </p>
       </header>
+
+      <section className="rounded-xl border border-kelly-navy/15 bg-white px-4 py-4 shadow-sm">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="font-heading text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-text/45">Kelly Agent Tool Suite</p>
+            <h2 className="mt-1 font-heading text-xl font-bold text-kelly-text">
+              {suite ? suite.overallStatus.toUpperCase() : "Not run yet"}
+            </h2>
+            <p className="mt-1 font-body text-xs text-kelly-text/60">
+              {suite ? `Last run ${suite.generatedAt}` : "Run npm run agent:tool-suite to generate the self-audit report."}
+            </p>
+          </div>
+          {suiteCounts ? (
+            <div className="grid grid-cols-2 gap-2 text-right font-body text-[11px] text-kelly-text/70 sm:grid-cols-5">
+              <span><b>{suiteCounts.total}</b><br />total</span>
+              <span><b>{suiteCounts.live}</b><br />live</span>
+              <span><b>{suiteCounts.dbBacked}</b><br />DB</span>
+              <span><b>{suiteCounts.fileStaged}</b><br />staged</span>
+              <span><b>{suiteCounts.blocked}</b><br />blocked</span>
+            </div>
+          ) : null}
+        </div>
+        {suite ? (
+          <div className="mt-4 grid gap-3 md:grid-cols-3">
+            <div className="rounded-lg border border-kelly-text/10 bg-kelly-wash/40 px-3 py-3">
+              <p className="font-body text-[10px] font-bold uppercase text-kelly-text/50">Top blockers</p>
+              <ul className="mt-2 space-y-1 font-body text-xs text-kelly-text/75">
+                {[...suite.dashboardReadiness.blockers, ...suite.dashboardReadiness.warnings].slice(0, 4).map((b) => <li key={b}>• {b}</li>)}
+              </ul>
+            </div>
+            <div className="rounded-lg border border-kelly-text/10 bg-kelly-wash/40 px-3 py-3">
+              <p className="font-body text-[10px] font-bold uppercase text-kelly-text/50">Missing data</p>
+              <ul className="mt-2 space-y-1 font-body text-xs text-kelly-text/75">
+                {suite.missingData.slice(0, 4).map((m) => <li key={`${m.area}-${m.item}`}>• {m.item}</li>)}
+              </ul>
+            </div>
+            <div className="rounded-lg border border-kelly-text/10 bg-kelly-wash/40 px-3 py-3">
+              <p className="font-body text-[10px] font-bold uppercase text-kelly-text/50">Next builds</p>
+              <ul className="mt-2 space-y-1 font-body text-xs text-kelly-text/75">
+                {suite.nextRecommendedBuilds.slice(0, 4).map((b) => <li key={b.priority}>• {b.title}</li>)}
+              </ul>
+            </div>
+          </div>
+        ) : null}
+      </section>
 
       <section className="rounded-xl border border-emerald-900/20 bg-emerald-950/[0.04] px-4 py-4 shadow-sm">
         <p className="font-heading text-[10px] font-bold uppercase tracking-[0.22em] text-emerald-900/70">Kelly Agent Intelligence Added</p>

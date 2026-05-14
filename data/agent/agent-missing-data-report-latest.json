@@ -1,0 +1,99 @@
+{
+  "generatedAt": "2026-05-14T04:04:26.406Z",
+  "total": 15,
+  "high": 6,
+  "medium": 9,
+  "low": 0,
+  "missingData": [
+    {
+      "area": "materials",
+      "severity": "medium",
+      "item": "Unknown on-hand inventory: push_cards",
+      "recommendedFix": "Count inventory and update campaign-materials-inventory.json."
+    },
+    {
+      "area": "materials",
+      "severity": "medium",
+      "item": "Unknown on-hand inventory: fans",
+      "recommendedFix": "Count inventory and update campaign-materials-inventory.json."
+    },
+    {
+      "area": "materials",
+      "severity": "high",
+      "item": "Unknown on-hand inventory: branded_mints",
+      "recommendedFix": "Count inventory and update campaign-materials-inventory.json."
+    },
+    {
+      "area": "materials",
+      "severity": "medium",
+      "item": "Unknown on-hand inventory: kelly_shirts",
+      "recommendedFix": "Count inventory and update campaign-materials-inventory.json."
+    },
+    {
+      "area": "materials",
+      "severity": "medium",
+      "item": "Unknown on-hand inventory: signup_sheets",
+      "recommendedFix": "Count inventory and update campaign-materials-inventory.json."
+    },
+    {
+      "area": "materials",
+      "severity": "medium",
+      "item": "Unknown on-hand inventory: clipboards",
+      "recommendedFix": "Count inventory and update campaign-materials-inventory.json."
+    },
+    {
+      "area": "materials",
+      "severity": "medium",
+      "item": "Unknown on-hand inventory: pens",
+      "recommendedFix": "Count inventory and update campaign-materials-inventory.json."
+    },
+    {
+      "area": "materials",
+      "severity": "medium",
+      "item": "Unknown on-hand inventory: qr_code_cards",
+      "recommendedFix": "Count inventory and update campaign-materials-inventory.json."
+    },
+    {
+      "area": "coverage",
+      "severity": "high",
+      "item": "57 events missing volunteer lead",
+      "recommendedFix": "Assign volunteer leads or create approved callout queue."
+    },
+    {
+      "area": "coverage",
+      "severity": "high",
+      "item": "24 events missing table permission",
+      "recommendedFix": "Staff table-permission calls and update coverage plan status."
+    },
+    {
+      "area": "volunteer",
+      "severity": "high",
+      "item": "210 events need callout",
+      "recommendedFix": "Review and approve staged volunteer callout drafts."
+    },
+    {
+      "area": "calendar",
+      "severity": "medium",
+      "item": "Campus/football/EHC/AEA context missing",
+      "recommendedFix": "Add source data for campus, football, EHC, and AEA event rules."
+    },
+    {
+      "area": "calendar",
+      "severity": "high",
+      "item": "111 CampaignEvents missing county link",
+      "recommendedFix": "Run county relink review queue; do not auto-link ambiguous rows."
+    },
+    {
+      "area": "calendar",
+      "severity": "medium",
+      "item": "185 CampaignEvents missing location",
+      "recommendedFix": "Add location enrichment/review pass."
+    },
+    {
+      "area": "google",
+      "severity": "high",
+      "item": "Google OAuth anchor source missing",
+      "recommendedFix": "Create/select CalendarSource with refresh token, then run Google lane smoke test."
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "generatedAt": "2026-05-14T04:04:25.516Z",
+  "statewideTargetContext": {
+    "projectedStatewideVotes": 1507143,
+    "legalTarget50Plus1": 753572,
+    "workingTargetWithCushion": 764876,
+    "statewideBaselineVotes": 561827,
+    "statewideVoteGap": 203049
+  },
+  "statewideGotvCommitmentGoal": 5000,
+  "totalCommitmentGap": 5000,
+  "totalHousePartyGoal": 1034,
+  "totalPhoneBankCapacityHours": 0,
+  "totalPostcardCapacity": 0,
+  "totalVolunteerCapacityNeed": 288,
+  "countiesNeedingLocalGuides": 75,
+  "countiesNeedingAccessSupport": 0,
+  "coverageCapacityGaps": {
+    "eventsNeedingLocalCoverage": 72,
+    "eventsNeedingVolunteerLead": 57,
+    "eventsNeedingTablePermission": 24
+  },
+  "topCountiesNeedingStaffAction": [
+    {
+      "county": "Clark",
+      "localGuideGap": true,
+      "accessSupportNeeded": false,
+      "eventStaffingNeed": 6,
+      "priority": 0
+    },
+    {
+      "county": "Columbia",
+      "localGuideGap": true,
+      "accessSupportNeeded": false,
+      "eventStaffingNeed": 6,
+      "priority": 0
+    },
+    {
+      "county": "Independence",
+      "localGuideGap": true,
+      "accessSupportNeeded": false,
+      "eventStaffingNeed": 6,
+      "priority": 0
+    },
+    {
+      "county": "Jefferson",
+      "localGuideGap": true,
+      "accessSupportNeeded": false,
+      "eventStaffingNeed": 6,
+      "priority": 0
+    },
+    {
+      "county": "Pulaski",
+      "localGuideGap": true,
+      "accessSupportNeeded": false,
+      "eventStaffingNeed": 6,
+      "priority": 0
+    },
+    {
+      "county": "Washington",
+      "localGuideGap": true,
+      "accessSupportNeeded": false,
+      "eventStaffingNeed": 6,
+      "priority": 0
+    },
+    {
+      "county": "Ashley",
+      "localGuideGap": true,
+      "accessSupportNeeded": false,
+      "eventStaffingNeed": 4,
+      "priority": 0
+    },
+    {
+      "county": "Baxter",
+      "localGuideGap": true,
+      "accessSupportNeeded": false,
+      "eventStaffingNeed": 4,
+      "priority": 0
+    },
+    {
+      "county": "Boone",
+      "localGuideGap": true,
+      "accessSupportNeeded": false,
+      "eventStaffingNeed": 4,
+      "priority": 0
+    },
+    {
+      "county": "Bradley",
+      "localGuideGap": true,
+      "accessSupportNeeded": false,
+      "eventStaffingNeed": 4,
+      "priority": 0
+    },
+    {
+      "county": "Calhoun",
+      "localGuideGap": true,
+      "accessSupportNeeded": false,
+      "eventStaffingNeed": 4,
+      "priority": 0
+    },
+    {
+      "county": "Carroll",
+      "localGuideGap": true,
+      "accessSupportNeeded": false,
+      "eventStaffingNeed": 4,
+      "priority": 0
+    },
+    {
+      "county": "Chicot",
+      "localGuideGap": true,
+      "accessSupportNeeded": false,
+      "eventStaffingNeed": 4,
+      "priority": 0
+    },
+    {
+      "county": "Clay",
+      "localGuideGap": true,
+      "accessSupportNeeded": false,
+      "eventStaffingNeed": 4,
+      "priority": 0
+    },
+    {
+      "county": "Cleveland",
+      "localGuideGap": true,
+      "accessSupportNeeded": false,
+      "eventStaffingNeed": 4,
+      "priority": 0
+    }
+  ]
+}

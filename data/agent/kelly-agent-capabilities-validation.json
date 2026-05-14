@@ -1,0 +1,131 @@
+{
+  "generatedAt": "2026-05-14T04:04:08.918Z",
+  "ok": true,
+  "capabilityCount": 20,
+  "errors": [],
+  "warnings": [
+    "schedule_persistence_v1: input source may be missing: data/calendar-command-center/schedule-settlement-decisions.staged.json"
+  ],
+  "capabilities": [
+    {
+      "id": "schedule_readiness_v1",
+      "name": "Schedule readiness",
+      "status": "file_staged",
+      "humanOverrideRequired": true
+    },
+    {
+      "id": "route_matrix_v1",
+      "name": "Route matrix cache (read-only)",
+      "status": "file_staged",
+      "humanOverrideRequired": true
+    },
+    {
+      "id": "opportunity_graph_v1",
+      "name": "Opportunity graph (weekend plans + op counts)",
+      "status": "file_staged",
+      "humanOverrideRequired": true
+    },
+    {
+      "id": "schedule_settlement_v1",
+      "name": "Schedule settlement recommendation",
+      "status": "file_staged",
+      "humanOverrideRequired": true
+    },
+    {
+      "id": "county_win_target_model_v1",
+      "name": "County win-target scenario (election math)",
+      "status": "file_staged",
+      "humanOverrideRequired": true
+    },
+    {
+      "id": "volunteer_capacity_community_coverage_v1",
+      "name": "Volunteer capacity and community coverage (operations)",
+      "status": "file_staged",
+      "humanOverrideRequired": true
+    },
+    {
+      "id": "gotv_commitment_allocation_v1",
+      "name": "GOTV commitment allocation",
+      "status": "file_staged",
+      "humanOverrideRequired": true
+    },
+    {
+      "id": "event_success_playbook_v1",
+      "name": "Event success playbook",
+      "status": "file_staged",
+      "humanOverrideRequired": true
+    },
+    {
+      "id": "event_coverage_plan_v1",
+      "name": "Campaign event coverage plan",
+      "status": "file_staged",
+      "humanOverrideRequired": true
+    },
+    {
+      "id": "event_staffing_and_callout_v1",
+      "name": "Event staffing and volunteer callout",
+      "status": "file_staged",
+      "humanOverrideRequired": true
+    },
+    {
+      "id": "automation_recommendation_queue_v1",
+      "name": "Automation recommendation queue",
+      "status": "file_staged",
+      "humanOverrideRequired": true
+    },
+    {
+      "id": "candidate_dashboard_preflight_v1",
+      "name": "Candidate dashboard preflight",
+      "status": "file_staged",
+      "humanOverrideRequired": true
+    },
+    {
+      "id": "calendar_db_health_v1",
+      "name": "Calendar DB health",
+      "status": "db_backed",
+      "humanOverrideRequired": true
+    },
+    {
+      "id": "calendar_sync_readiness_v1",
+      "name": "Calendar sync readiness",
+      "status": "db_backed",
+      "humanOverrideRequired": true
+    },
+    {
+      "id": "schedule_persistence_v1",
+      "name": "Schedule persistence",
+      "status": "db_backed",
+      "humanOverrideRequired": true
+    },
+    {
+      "id": "calendar_smoke_test_v1",
+      "name": "Calendar smoke test",
+      "status": "db_backed",
+      "humanOverrideRequired": true
+    },
+    {
+      "id": "county_vault_knowledge_v1",
+      "name": "County vault knowledge",
+      "status": "file_staged",
+      "humanOverrideRequired": true
+    },
+    {
+      "id": "media_index_v1",
+      "name": "Media index",
+      "status": "file_staged",
+      "humanOverrideRequired": true
+    },
+    {
+      "id": "missing_data_report_v1",
+      "name": "Agent missing data report",
+      "status": "file_staged",
+      "humanOverrideRequired": true
+    },
+    {
+      "id": "agent_tool_suite_self_audit_v1",
+      "name": "Agent tool suite self-audit",
+      "status": "file_staged",
+      "humanOverrideRequired": true
+    }
+  ]
+}
