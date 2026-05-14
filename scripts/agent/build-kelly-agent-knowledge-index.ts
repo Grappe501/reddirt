@@ -3,6 +3,7 @@
  * Run from RedDirt: npx tsx scripts/agent/build-kelly-agent-knowledge-index.ts
  */
 import { mkdir, readdir, readFile, stat, writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -11,6 +12,10 @@ const vaultRoot = path.join(root, "county-vault/arkansas");
 const out = path.join(root, "data/agent/kelly-agent-knowledge-index.json");
 
 type Chunk = { id: string; path: string; county?: string; kind: string; excerpt: string };
+
+function chunkId(relPath: string): string {
+  return createHash("sha256").update(relPath).digest("base64url").slice(0, 24);
+}
 
 async function walkMd(dir: string, acc: string[]): Promise<void> {
   let names: string[];
@@ -42,7 +47,7 @@ async function main() {
     const raw = await readFile(abs, "utf8");
     const excerpt = raw.replace(/\s+/g, " ").trim().slice(0, 420);
     chunks.push({
-      id: Buffer.from(rel).toString("base64url").slice(0, 24),
+      id: chunkId(rel),
       path: rel,
       county,
       kind: "markdown",

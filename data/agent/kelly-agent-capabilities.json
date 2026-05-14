@@ -75,13 +75,13 @@
       "data/calendar-command-center/county-priority-snapshot.json",
       "data/calendar-command-center/community-opportunities-2026.normalized.json",
       "data/field-ops/volunteer-roster-inputs-v1.json",
-      "data/field-ops/county-acs-context-v1.json",
-      "npm run fieldops:volunteer-capacity:build"
+      "data/field-ops/county-acs-context-v1.json"
     ],
     "outputUsedBy": [
       "Kelly agent volunteer_capacity tool",
       "/admin/calendar-command-center/field-ops",
-      "Candidate dashboard / county brief strips"
+      "Candidate dashboard / county brief strips",
+      "npm run fieldops:volunteer-capacity:build"
     ],
     "humanOverrideRequired": true,
     "status": "file_staged"
