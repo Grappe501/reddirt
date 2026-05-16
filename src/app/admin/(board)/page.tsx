@@ -6,6 +6,11 @@ const cards = [
     title: "Kelly Calendar Command Center",
     body: "Candidate cockpit, schedule settlement, coverage plans, event staffing, route planning, GOTV goals, and AI readiness.",
   },
+  {
+    href: "/admin/travel-ledger",
+    title: "Travel Ledger / Reimbursement Wizard",
+    body: "Review campaign travel, calculate mileage, approve reimbursement items, and generate invoices.",
+  },
   { href: "/admin/homepage", title: "Homepage", body: "Hero, sections, quotes, featured rails." },
   { href: "/admin/pages", title: "Page copy", body: "Hero text for belief, movement, and pillar pages." },
   { href: "/admin/blog", title: "Blog / Substack", body: "Sync RSS, feature posts, teasers, placement." },
@@ -49,6 +54,16 @@ export default function AdminDashboardPage() {
             Open three-person field playbook
           </Link>{" "}
           — fractal structure, lane guides, weekly huddles, and step-by-step hosting/social/relational playbooks.
+        </div>
+        <div className="rounded-lg border border-kelly-navy/20 bg-kelly-navy/[0.06] px-4 py-3 font-body text-sm text-kelly-text/85">
+          <strong>Travel Ledger / Reimbursement Wizard:</strong>{" "}
+          <Link
+            className="inline-flex items-center rounded-md bg-kelly-navy px-3 py-1.5 font-semibold text-white underline-offset-2 hover:bg-kelly-slate"
+            href="/admin/travel-ledger"
+          >
+            Open Travel Ledger
+          </Link>{" "}
+          — AI-assisted mileage review, approval workflow, invoices, and audit packet.
         </div>
         <div className="rounded-lg border border-kelly-navy/20 bg-kelly-navy/[0.06] px-4 py-3 font-body text-sm text-kelly-text/85">
           <strong>Kelly Calendar Command Center:</strong>{" "}

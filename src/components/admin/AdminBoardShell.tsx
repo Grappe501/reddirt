@@ -44,6 +44,7 @@ const operationsLinks: { href: string; label: string }[] = [
   { href: "/admin/calendar-command-center/field-ops", label: "Field ops" },
   { href: "/admin/calendar-command-center/build-status", label: "Calendar build status" },
   { href: "/admin/workbench/calendar", label: "Calendar HQ" },
+  { href: "/admin/travel-ledger", label: "Travel Ledger" },
   { href: "/admin/workbench/festivals", label: "Community events feed" },
   { href: "/admin/workbench/social", label: "Social workbench" },
   { href: "/admin/events/community-suggestions", label: "Public event suggestions" },
