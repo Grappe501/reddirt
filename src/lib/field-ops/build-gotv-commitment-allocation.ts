@@ -44,7 +44,7 @@ function largestRemainderRebalance(
   rows: Array<GotvCommitmentAllocationRow & { _raw: number; _minApplied: number }>,
   total: number,
 ): GotvCommitmentAllocationRow[] {
-  let current = rows.reduce((s, r) => s + r.volunteerCommitmentTarget, 0);
+  const current = rows.reduce((s, r) => s + r.volunteerCommitmentTarget, 0);
   if (current < total) {
     const add = total - current;
     const ranked = [...rows].sort((a, b) => b._raw % 1 - (a._raw % 1));
