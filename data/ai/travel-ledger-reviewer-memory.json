@@ -1,0 +1,11 @@
+{
+  "patterns": [
+    {
+      "pattern": "Elaine Williams",
+      "city": "Prescott",
+      "state": "AR",
+      "purpose": "campaign house party",
+      "confidence": "human_confirmed"
+    }
+  ]
+}

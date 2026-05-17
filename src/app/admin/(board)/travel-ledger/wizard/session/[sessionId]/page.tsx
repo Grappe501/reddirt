@@ -16,7 +16,14 @@ import {
   TravelLedgerPageHeader,
   formatMoney,
 } from "../../../components";
+import { buildTripContext } from "@/lib/travel-ledger/ai/trip-resolution-autopilot/build-trip-context";
+import { classifyCampaignTrip } from "@/lib/travel-ledger/ai/trip-resolution-autopilot/campaign-trip-classifier";
+import { computeReadiness } from "@/lib/travel-ledger/ai/trip-resolution-autopilot/autopilot-readiness-score";
+import { extractTitleCity } from "@/lib/travel-ledger/ai/trip-resolution-autopilot/title-city-extractor";
+import { extractTitlePurpose } from "@/lib/travel-ledger/ai/trip-resolution-autopilot/title-purpose-extractor";
+import { selectNextQuestion } from "@/lib/travel-ledger/ai/trip-resolution-autopilot/next-question-selector";
 import { getWizardSession, loadLedgerItems } from "@/lib/travel-ledger/storage";
+import type { TravelLedgerItem } from "@/lib/travel-ledger/types";
 
 export const dynamic = "force-dynamic";
 
@@ -37,7 +44,8 @@ export default async function TravelLedgerWizardSessionPage({
   const percent = session.itemIds.length ? Math.round((session.completedItemIds.length / session.itemIds.length) * 100) : 100;
   const isCampaignTravel = item ? ["campaign_travel", "campaign_meeting", "house_party", "county_event"].includes(item.classification) : false;
   const hasCity = Boolean(item?.travelCities.length);
-  const hasMileage = Boolean(item && item.totalReimbursableMiles > 0 && hasCity);
+  const canReviewCurrentItem = Boolean(item && isCampaignTravel && hasCity);
+  const autopilot = item ? buildWizardAutopilotHint(item, items) : null;
 
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-6">
@@ -61,7 +69,44 @@ export default async function TravelLedgerWizardSessionPage({
             <StatusPill>{item.reviewStatus.replaceAll("_", " ")}</StatusPill>
             <StatusPill>{item.approvalStatus.replaceAll("_", " ")}</StatusPill>
             <StatusPill>{item.classification.replaceAll("_", " ")}</StatusPill>
+            {autopilot?.readiness ? <StatusPill>AI: {autopilot.readiness.replaceAll("_", " ")}</StatusPill> : null}
           </section>
+
+          {autopilot ? (
+            <TravelLedgerCard eyebrow="AI prepares item" title={autopilot.headline} tone="highlight">
+              <p>{autopilot.body}</p>
+              <p className="mt-2 text-xs text-kelly-text/60">Next question: {autopilot.question}</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {autopilot.city ? (
+                  <form action={saveWizardItemPatchAction.bind(null, session.id, item.id)}>
+                    <input type="hidden" name="classification" value="campaign_travel" />
+                    <input type="hidden" name="businessPurpose" value={autopilot.businessPurpose || item.businessPurpose} />
+                    <input type="hidden" name="reviewerNote" value={item.reviewerNote ?? ""} />
+                    <input type="hidden" name="commitIntent" value="city" />
+                    <input type="hidden" name="city1" value={autopilot.city} />
+                    <input type="hidden" name="state1" value={autopilot.state ?? "AR"} />
+                    <PrimaryAdminAction type="submit">Yes, continue</PrimaryAdminAction>
+                  </form>
+                ) : null}
+                <PrimaryAdminAction href="#city-input" variant="secondary">Change city</PrimaryAdminAction>
+                <form action={answerCampaignTripQuestionAction.bind(null, session.id, item.id)}>
+                  <input type="hidden" name="denyReason" value="not campaign-related" />
+                  <PrimaryAdminAction type="submit" name="decision" value="denied" variant="danger">Not a campaign trip</PrimaryAdminAction>
+                </form>
+              </div>
+            </TravelLedgerCard>
+          ) : null}
+
+          {canReviewCurrentItem ? (
+            <section className="flex flex-wrap items-center gap-2 rounded-2xl border border-kelly-navy/15 bg-kelly-wash p-4">
+              <p className="basis-full font-body text-sm font-semibold text-kelly-navy">
+                Ready to move forward? Use these buttons anytime after city/mileage are set.
+              </p>
+              <form action={approveWizardItemAction.bind(null, session.id, item.id)}><PrimaryAdminAction type="submit">Approve & Next</PrimaryAdminAction></form>
+              <form action={skipWizardItemAction.bind(null, session.id, item.id)}><PrimaryAdminAction type="submit" variant="secondary">Save and next</PrimaryAdminAction></form>
+              <form action={markWizardItemNeedsMoreInfoAction.bind(null, session.id, item.id)}><PrimaryAdminAction type="submit" variant="quiet">Needs more info</PrimaryAdminAction></form>
+            </section>
+          ) : null}
 
           {item.classification === "unknown" || item.reviewStatus === "needs_review" ? (
             <TravelLedgerCard eyebrow="AI-guided question" title="Is this a campaign reimbursement trip?" tone="highlight">
@@ -93,6 +138,7 @@ export default async function TravelLedgerWizardSessionPage({
 
           {isCampaignTravel && !hasCity ? (
             <TravelLedgerCard eyebrow="Next answer" title="What city did Kelly travel to?">
+              <div id="city-input" />
               <form action={saveWizardItemPatchAction.bind(null, session.id, item.id)} className="mt-4 grid gap-4">
                 <input type="hidden" name="classification" value="campaign_travel" />
                 <input type="hidden" name="businessPurpose" value={item.businessPurpose} />
@@ -131,7 +177,10 @@ export default async function TravelLedgerWizardSessionPage({
                     Mileage override
                     <input className="rounded-lg border border-kelly-text/15 bg-white px-3 py-2 font-normal" name="driveAroundMilesOverride" placeholder="Override drive-around miles" defaultValue={item.driveAroundMilesOverride ?? ""} />
                   </label>
-                  <PrimaryAdminAction type="submit" variant="secondary">Save Mileage Override</PrimaryAdminAction>
+                  <div className="flex flex-wrap gap-2">
+                    <PrimaryAdminAction type="submit" variant="secondary">Save Mileage Override</PrimaryAdminAction>
+                    <PrimaryAdminAction type="submit" name="commitIntent" value="mileage-next">Save Mileage & Next</PrimaryAdminAction>
+                  </div>
                 </form>
               </TravelLedgerCard>
               <TravelLedgerCard eyebrow="Purpose" title="Campaign purpose">
@@ -152,17 +201,23 @@ export default async function TravelLedgerWizardSessionPage({
                     Reviewer note
                     <textarea className="min-h-20 rounded-lg border border-kelly-text/15 bg-white px-3 py-2 font-normal" name="reviewerNote" defaultValue={item.reviewerNote ?? ""} />
                   </label>
-                  <PrimaryAdminAction type="submit" variant="secondary">Save Purpose / Notes</PrimaryAdminAction>
+                  <div className="flex flex-wrap gap-2">
+                    <PrimaryAdminAction type="submit" variant="secondary">Save Purpose / Notes</PrimaryAdminAction>
+                    <PrimaryAdminAction type="submit" name="commitIntent" value="purpose-next">Save Purpose & Next</PrimaryAdminAction>
+                  </div>
                 </form>
               </TravelLedgerCard>
             </section>
           ) : null}
 
-          {isCampaignTravel && hasMileage ? (
+          {canReviewCurrentItem ? (
             <>
               <ApprovalSummary item={item} />
               <section className="flex flex-wrap gap-2 rounded-2xl border border-kelly-text/10 bg-kelly-page p-4">
-                <form action={approveWizardItemAction.bind(null, session.id, item.id)}><PrimaryAdminAction type="submit">Approve</PrimaryAdminAction></form>
+                <p className="basis-full font-body text-sm text-kelly-text/75">
+                  Done with this stop? Approve, mark it for follow-up, deny it, or save and move to the next item.
+                </p>
+                <form action={approveWizardItemAction.bind(null, session.id, item.id)}><PrimaryAdminAction type="submit">Approve & Next</PrimaryAdminAction></form>
                 <form action={markWizardItemNeedsMoreInfoAction.bind(null, session.id, item.id)}><PrimaryAdminAction type="submit" variant="quiet">Needs more info</PrimaryAdminAction></form>
                 <form action={denyWizardItemAction.bind(null, session.id, item.id)}><PrimaryAdminAction type="submit" variant="danger">Deny / exclude</PrimaryAdminAction></form>
                 <form action={skipWizardItemAction.bind(null, session.id, item.id)}><PrimaryAdminAction type="submit" variant="secondary">Save and next</PrimaryAdminAction></form>
@@ -198,12 +253,51 @@ function CityFields() {
   );
 }
 
+function buildWizardAutopilotHint(item: TravelLedgerItem, items: TravelLedgerItem[]) {
+  if (item.hasManualChanges && item.travelCities.length) return null;
+  const context = buildTripContext(item, items);
+  const titleCityMatch = extractTitleCity(context.title);
+  const purposeExtraction = extractTitlePurpose(context.title, titleCityMatch);
+  const classification = classifyCampaignTrip({
+    title: context.title,
+    titleCityMatch,
+    purposeExtraction,
+    duplicateRisk: context.duplicateCandidates.length > 0,
+  });
+  const readiness = computeReadiness({ classification, titleCityMatch, purposeExtraction });
+  const nextQuestion = selectNextQuestion({ titleCityMatch, purposeExtraction, classification });
+  const city = titleCityMatch.city;
+  const state = titleCityMatch.state ?? "AR";
+  const headline = city
+    ? titleCityMatch.confidence === "high"
+      ? `I found ${city} in the event title.`
+      : `I think this should be ${city}.`
+    : "I could not find a city in the title.";
+  const body = city
+    ? titleCityMatch.confidence === "high"
+      ? `I used ${city}, ${state} for mileage. Source: ${titleCityMatch.source}.`
+      : `I matched "${titleCityMatch.matchedText ?? context.title}" to ${city}, ${state}. Please confirm before approval.`
+    : "What city did Kelly travel to? The wizard will ask for one city only.";
+  return {
+    city,
+    state,
+    headline,
+    body,
+    question: nextQuestion.question,
+    readiness,
+    businessPurpose: purposeExtraction.businessPurpose,
+  };
+}
+
 function savedMessage(saved: string) {
   if (saved === "campaign") return "Campaign travel saved. City is the next required answer.";
   if (saved === "city") return "City saved. Mileage recalculated.";
   if (saved === "mileage") return "Mileage override saved. Reimbursement recalculated and approval reset.";
+  if (saved === "mileage-next") return "Mileage saved. Moving to the next wizard item.";
   if (saved === "purpose") return "Purpose saved. Approval summary updated.";
+  if (saved === "purpose-next") return "Purpose saved. Moving to the next wizard item.";
   if (saved === "approved") return "Trip approved and moved to invoice-ready review.";
   if (saved === "denied") return "Item denied and excluded from invoice.";
+  if (saved === "skipped") return "Item saved and skipped for now. Moving to the next wizard item.";
   return "Changes saved.";
 }
