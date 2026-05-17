@@ -15,6 +15,9 @@ export default async function ComplianceCommandCenterPage() {
       <ComplianceNav />
       <StorageModeNotice />
       <section className="grid gap-4 md:grid-cols-2">
+        <ComplianceCard eyebrow="Coverage" title="Money Movement Center" href="/admin/compliance/money">
+          Intake, classify, stage, review, reconcile, and report every money-in and money-out transaction type.
+        </ComplianceCard>
         <ComplianceCard eyebrow="GoodChange" title="Fundraising import discovery" href="/admin/compliance/imports/goodchange">
           Upload a GoodChange CSV to detect columns, infer contribution fields, flag missing compliance data, and stage rows for review.
           <p className="mt-2 font-semibold">{goodChange.length} analyzed batch(es).</p>
