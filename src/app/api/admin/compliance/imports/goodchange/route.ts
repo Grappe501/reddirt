@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { assertAdminApi } from "@/lib/admin/require-admin";
 import { stageGoodChangeImport } from "@/lib/compliance/imports/stage-goodchange-import";
+import { stageGoodChangeMoneyCoverage } from "@/lib/compliance/money/goodchange-money-coverage";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -23,6 +24,7 @@ export async function POST(request: Request) {
     csvText,
     uploadedByInitials,
   });
+  const moneyCoverage = await stageGoodChangeMoneyCoverage(analysis);
 
-  return NextResponse.json({ analysis }, { status: 201 });
+  return NextResponse.json({ analysis, moneyCoverage }, { status: 201 });
 }
