@@ -19,6 +19,9 @@ export default async function ComplianceCommandCenterPage() {
           Upload a GoodChange CSV to detect columns, infer contribution fields, flag missing compliance data, and stage rows for review.
           <p className="mt-2 font-semibold">{goodChange.length} analyzed batch(es).</p>
         </ComplianceCard>
+        <ComplianceCard eyebrow="Cash" title="Cash Contribution Intake" href="/admin/compliance/cash">
+          Capture cash donations, donor slips, OCR details, and stage records for compliance review.
+        </ComplianceCard>
         <ComplianceCard eyebrow="Bank" title="Monthly bank CSV discovery" href="/admin/compliance/imports/bank">
           Upload a bank CSV to detect date, memo, debit, credit, balance, check number, deposits, fees, transfers, and expenses.
           <p className="mt-2 font-semibold">{bank.length} analyzed batch(es).</p>
