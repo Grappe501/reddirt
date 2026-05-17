@@ -31,7 +31,9 @@ export function CompliancePageHeader({
 export function ComplianceNav() {
   const links = [
     ["Home", basePath],
+    ["Wizard", `${basePath}/wizard`],
     ["Money", `${basePath}/money`],
+    ["Receipts", `${basePath}/receipts`],
     ["Cash", `${basePath}/cash`],
     ["Checks", `${basePath}/checks`],
     ["Vendors", `${basePath}/vendors`],
@@ -40,6 +42,7 @@ export function ComplianceNav() {
     ["GoodChange", `${basePath}/imports/goodchange`],
     ["Bank", `${basePath}/imports/bank`],
     ["Reconciliation", `${basePath}/reconciliation`],
+    ["Rules", `${basePath}/rules`],
     ["Reports", `${basePath}/reports`],
     ["Settings", `${basePath}/settings`],
   ] as const;

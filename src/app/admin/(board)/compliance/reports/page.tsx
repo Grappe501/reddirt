@@ -1,12 +1,15 @@
 import { ComplianceCard, ComplianceNav, CompliancePageHeader } from "../components";
 import { loadCashAuditLog, loadCashDepositBatches, loadStagedCashContributions } from "@/lib/compliance/cash/cash-storage";
+import { auditComplianceRuleCorpus } from "@/lib/compliance/knowledge/compliance-rule-index";
+import { loadComplianceRuleCorpus } from "@/lib/compliance/knowledge/load-compliance-rule-corpus";
 import { buildMoneyCoverageSummary, loadComplianceVendors, loadStagedMoneyMovements } from "@/lib/compliance/money/money-movement-storage";
+import { loadStagedReceipts } from "@/lib/compliance/receipts/receipt-storage";
 import { buildReconciliationAnalysis, loadBankAnalyses, loadGoodChangeAnalyses } from "@/lib/compliance/storage";
 
 export const dynamic = "force-dynamic";
 
 export default async function ComplianceReportsPage() {
-  const [goodChange, bank, reconciliation, cash, cashBatches, cashAuditLog, moneySummary, moneyMovements, vendors] = await Promise.all([
+  const [goodChange, bank, reconciliation, cash, cashBatches, cashAuditLog, moneySummary, moneyMovements, vendors, receipts, corpus] = await Promise.all([
     loadGoodChangeAnalyses(),
     loadBankAnalyses(),
     buildReconciliationAnalysis(),
@@ -16,7 +19,10 @@ export default async function ComplianceReportsPage() {
     buildMoneyCoverageSummary(),
     loadStagedMoneyMovements(),
     loadComplianceVendors(),
+    loadStagedReceipts(),
+    loadComplianceRuleCorpus(),
   ]);
+  const ruleAudit = auditComplianceRuleCorpus(corpus);
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-6">
       <CompliancePageHeader
@@ -49,6 +55,17 @@ export default async function ComplianceReportsPage() {
         <ComplianceCard title="Missing receipt report">{moneySummary.missingReceipts} missing receipt/invoice item(s).</ComplianceCard>
         <ComplianceCard title="Unreconciled bank transaction report">{moneySummary.unreconciledDeposits + moneySummary.unreconciledExpenses} unmatched item(s).</ComplianceCard>
         <ComplianceCard title="Ready-for-ledger report">{moneySummary.readyForFilingCount} ready-for-approval item(s).</ComplianceCard>
+      </section>
+      <section className="grid gap-4 md:grid-cols-3">
+        <ComplianceCard title="Receipt extraction report" href="/admin/compliance/receipts">{receipts.filter((receipt) => receipt.extraction).length} extracted receipt(s).</ComplianceCard>
+        <ComplianceCard title="Receipt review queue report" href="/admin/compliance/receipts/review">{receipts.filter((receipt) => receipt.reviewStatus === "needs_review").length} need review.</ComplianceCard>
+        <ComplianceCard title="Receipt-to-bank reconciliation report">{receipts.filter((receipt) => receipt.reconciliationStatus === "awaiting_bank_match").length} awaiting bank match.</ComplianceCard>
+        <ComplianceCard title="Tip verification report">{receipts.filter((receipt) => receipt.tipStatus === "not_sure").length} unresolved tip question(s).</ComplianceCard>
+        <ComplianceCard title="Vendor spending report">{moneyMovements.filter((movement) => movement.category === "vendor_payment").length} vendor payment(s).</ComplianceCard>
+        <ComplianceCard title="Reimbursement payable report">{moneyMovements.filter((movement) => movement.category === "travel_reimbursement").length} reimbursement item(s).</ComplianceCard>
+        <ComplianceCard title="Filing readiness report">{moneySummary.readyForFilingCount} ready item(s).</ComplianceCard>
+        <ComplianceCard title="Rule coverage report" href="/admin/compliance/rules">{ruleAudit.chunksIndexed} rule chunk(s), {ruleAudit.topicsMissing.length} topic gap(s).</ComplianceCard>
+        <ComplianceCard title="Compliance risk report">{moneySummary.needsReviewCount + receipts.filter((receipt) => receipt.warnings.length).length} review/risk item(s).</ComplianceCard>
       </section>
       <ComplianceCard title="Generated docs">
         <ul className="grid gap-1">

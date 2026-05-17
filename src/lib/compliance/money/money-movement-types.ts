@@ -6,6 +6,7 @@ export type MoneyMovementSource =
   | "check_intake"
   | "bank_csv"
   | "manual_entry"
+  | "receipt_intake"
   | "travel_ledger"
   | "credit_card"
   | "processor_fee"
@@ -23,6 +24,7 @@ export type MoneyMovementCategory =
   | "contribution_refund"
   | "processor_fee"
   | "bank_fee"
+  | "cash_expense"
   | "staff_1099_payment"
   | "vendor_payment"
   | "travel_reimbursement"
@@ -72,6 +74,7 @@ export type StagedMoneyMovement = {
   checkNumber?: string;
   processorTransactionId?: string;
   bankTransactionId?: string;
+  reconciliationStatus?: "awaiting_bank_match" | "possible_match" | "matched" | "ignored" | "needs_review";
 
   description?: string;
   purpose?: string;

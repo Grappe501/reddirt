@@ -80,6 +80,12 @@ data/compliance/money/*.json
 !data/compliance/money/.gitkeep
 data/compliance/money/uploads/*
 !data/compliance/money/uploads/.gitkeep
+data/compliance/receipts/*.json
+!data/compliance/receipts/.gitkeep
+data/compliance/receipts/uploads/*
+!data/compliance/receipts/uploads/.gitkeep
+data/compliance/knowledge/*.json
+!data/compliance/knowledge/.gitkeep
 # Folder-ingest: keep uploads/ in repo but not dropped files
 campaign-media/uploads/*
 !campaign-media/uploads/.gitkeep

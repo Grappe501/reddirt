@@ -1,4 +1,5 @@
 import { ComplianceCard, ComplianceNav, CompliancePageHeader, StorageModeNotice } from "../components";
+import { loadStagedReceipts } from "@/lib/compliance/receipts/receipt-storage";
 import { buildReconciliationAnalysis } from "@/lib/compliance/storage";
 
 export const dynamic = "force-dynamic";
@@ -11,11 +12,13 @@ const coverageMatchTypes = [
   "fee_to_bank_fee",
   "travel_reimbursement_to_bank_payment",
   "staff_payment_to_bank_debit",
+  "receipt_expense_to_bank_debit",
   "manual_match",
 ];
 
 export default async function ComplianceReconciliationPage() {
-  const analysis = await buildReconciliationAnalysis();
+  const [analysis, receipts] = await Promise.all([buildReconciliationAnalysis(), loadStagedReceipts()]);
+  const unmatchedReceipts = receipts.filter((receipt) => receipt.reconciliationStatus === "awaiting_bank_match" && receipt.approvalStatus === "approved");
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-6">
       <CompliancePageHeader
@@ -30,6 +33,18 @@ export default async function ComplianceReconciliationPage() {
         <ComplianceCard title="Medium confidence">{analysis.summary.mediumConfidence} candidate(s)</ComplianceCard>
         <ComplianceCard title="Low confidence">{analysis.summary.lowConfidence} candidate(s)</ComplianceCard>
         <ComplianceCard title="Manual review">{analysis.summary.manualRequired} candidate(s)</ComplianceCard>
+        <ComplianceCard title="Unmatched receipts">{unmatchedReceipts.length} awaiting bank debit</ComplianceCard>
+      </section>
+      <section className="rounded-2xl border border-kelly-text/10 bg-kelly-page p-5">
+        <h2 className="font-heading text-xl font-bold text-kelly-text">Receipt expense bank matching</h2>
+        <div className="mt-3 grid gap-2">
+          {unmatchedReceipts.slice(0, 10).map((receipt) => (
+            <p key={receipt.id} className="rounded-lg border border-kelly-text/10 bg-kelly-wash px-3 py-2 font-body text-sm text-kelly-text/75">
+              {receipt.vendorName ?? "Unknown vendor"} · ${receipt.total.toFixed(2)} · {receipt.receiptDate ?? "date missing"} · match rules: date 0-5 days, exact total, vendor memo, card last four, manual match
+            </p>
+          ))}
+          {!unmatchedReceipts.length ? <p className="font-body text-sm text-kelly-text/70">No approved receipt expenses awaiting bank match yet.</p> : null}
+        </div>
       </section>
       <section className="rounded-2xl border border-kelly-text/10 bg-kelly-page p-5">
         <h2 className="font-heading text-xl font-bold text-kelly-text">Coverage match types</h2>
