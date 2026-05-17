@@ -1,0 +1,16 @@
+{
+  "generatedAt": "2026-05-17T03:34:12.718Z",
+  "goodChangeBatchCount": 0,
+  "bankBatchCount": 0,
+  "candidates": [],
+  "summary": {
+    "highConfidence": 0,
+    "mediumConfidence": 0,
+    "lowConfidence": 0,
+    "manualRequired": 0
+  },
+  "notes": [
+    "Pass 1 preview only; no bank transaction is marked reconciled without human approval.",
+    "Batch-total matching assumes the supplied GoodChange export has a payout/deposit grouping or represents a single payout window."
+  ]
+}

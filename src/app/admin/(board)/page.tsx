@@ -11,6 +11,11 @@ const cards = [
     title: "Travel Ledger / Reimbursement Wizard",
     body: "Review campaign travel, calculate mileage, approve reimbursement items, and generate invoices.",
   },
+  {
+    href: "/admin/compliance",
+    title: "Compliance Command Center",
+    body: "Import fundraising and bank files, reconcile deposits, prepare filing-ready compliance records.",
+  },
   { href: "/admin/homepage", title: "Homepage", body: "Hero, sections, quotes, featured rails." },
   { href: "/admin/pages", title: "Page copy", body: "Hero text for belief, movement, and pillar pages." },
   { href: "/admin/blog", title: "Blog / Substack", body: "Sync RSS, feature posts, teasers, placement." },
@@ -64,6 +69,16 @@ export default function AdminDashboardPage() {
             Open Travel Ledger
           </Link>{" "}
           — AI-assisted mileage review, approval workflow, invoices, and audit packet.
+        </div>
+        <div className="rounded-lg border border-kelly-navy/20 bg-kelly-navy/[0.06] px-4 py-3 font-body text-sm text-kelly-text/85">
+          <strong>Compliance Command Center:</strong>{" "}
+          <Link
+            className="inline-flex items-center rounded-md bg-kelly-navy px-3 py-1.5 font-semibold text-white underline-offset-2 hover:bg-kelly-slate"
+            href="/admin/compliance"
+          >
+            Open Compliance
+          </Link>{" "}
+          — import fundraising and bank files, reconcile deposits, and prepare filing-ready compliance records.
         </div>
         <div className="rounded-lg border border-kelly-navy/20 bg-kelly-navy/[0.06] px-4 py-3 font-body text-sm text-kelly-text/85">
           <strong>Kelly Calendar Command Center:</strong>{" "}

@@ -67,6 +67,11 @@ prisma/*.db-journal
 
 # campaign-owned binary uploads (local / self-hosted; use S3 + keys in production if you migrate)
 data/owned-campaign-media
+# Compliance import uploads and per-upload analyses can contain donor or bank data.
+data/compliance/imports/goodchange/*
+!data/compliance/imports/goodchange/.gitkeep
+data/compliance/imports/bank/*
+!data/compliance/imports/bank/.gitkeep
 # Folder-ingest: keep uploads/ in repo but not dropped files
 campaign-media/uploads/*
 !campaign-media/uploads/.gitkeep
