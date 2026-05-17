@@ -13,6 +13,14 @@ export default async function DocumentationCoveragePage() {
         description="Universal view of missing receipts, W-9s, donor info, bank matches, purposes, cash limits, and unmatched fees."
       />
       <ComplianceNav />
+      <section className="grid gap-4 md:grid-cols-2">
+        <ComplianceCard title="Receipt Intake Wizard" href="/admin/compliance/receipts/new">
+          Upload a receipt, let AI extract details, verify tip/payment/purpose, and stage the documentation.
+        </ComplianceCard>
+        <ComplianceCard title="Receipt Review Queue" href="/admin/compliance/receipts/review">
+          Review missing purpose, tip questions, duplicate warnings, and ready-for-approval receipts.
+        </ComplianceCard>
+      </section>
       <section className="grid gap-4 md:grid-cols-3">
         <ComplianceCard title="Missing receipts">{movements.filter((item) => item.documentationStatus === "missing_receipt" || item.documentationStatus === "missing_invoice").length} item(s)</ComplianceCard>
         <ComplianceCard title="Missing W-9">{vendors.filter((vendor) => vendor.w9Status === "missing" && vendor.likely1099Required).length} vendor(s)</ComplianceCard>

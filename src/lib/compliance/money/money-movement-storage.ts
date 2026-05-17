@@ -153,6 +153,7 @@ function normalizeMoneyMovement(input: MoneyMovementInput, now: string): Omit<St
     checkNumber: clean(input.checkNumber),
     processorTransactionId: clean(input.processorTransactionId),
     bankTransactionId: clean(input.bankTransactionId),
+    reconciliationStatus: input.reconciliationStatus ?? (input.bankTransactionId ? "matched" : input.direction === "neutral" ? "needs_review" : "awaiting_bank_match"),
     description: clean(input.description),
     purpose: clean(input.purpose),
     memo: clean(input.memo),

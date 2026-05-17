@@ -25,6 +25,7 @@ export default async function MoneyMovementCenterPage() {
         <ComplianceCard title="Filing Readiness">{summary.readyForFilingCount} ready-for-approval item(s)</ComplianceCard>
       </section>
       <section className="grid gap-4 md:grid-cols-3">
+        <ComplianceCard title="Receipt Intake Wizard" href="/admin/compliance/receipts/new">Upload a receipt, verify tip/payment/purpose, approve, and stage for bank reconciliation.</ComplianceCard>
         <ComplianceCard title="Check Contributions" href="/admin/compliance/checks/new">Stage check contributions and flag donor/check/deposit gaps.</ComplianceCard>
         <ComplianceCard title="Expense Payments" href="/admin/compliance/expenses/new">Stage vendor, staff, bank fee, processor fee, and reimbursement payments.</ComplianceCard>
         <ComplianceCard title="Vendors / 1099" href="/admin/compliance/vendors">Track W-9, contract, and year-to-date payment coverage.</ComplianceCard>
