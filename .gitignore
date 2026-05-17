@@ -72,6 +72,10 @@ data/compliance/imports/goodchange/*
 !data/compliance/imports/goodchange/.gitkeep
 data/compliance/imports/bank/*
 !data/compliance/imports/bank/.gitkeep
+data/compliance/cash/*.json
+!data/compliance/cash/.gitkeep
+data/compliance/cash/uploads/*
+!data/compliance/cash/uploads/.gitkeep
 # Folder-ingest: keep uploads/ in repo but not dropped files
 campaign-media/uploads/*
 !campaign-media/uploads/.gitkeep

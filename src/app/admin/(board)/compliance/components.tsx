@@ -31,6 +31,7 @@ export function CompliancePageHeader({
 export function ComplianceNav() {
   const links = [
     ["Home", basePath],
+    ["Cash", `${basePath}/cash`],
     ["Imports", `${basePath}/imports`],
     ["GoodChange", `${basePath}/imports/goodchange`],
     ["Bank", `${basePath}/imports/bank`],
