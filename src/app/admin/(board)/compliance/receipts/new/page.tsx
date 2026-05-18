@@ -54,6 +54,9 @@ export default function NewReceiptPage() {
       <CompliancePageHeader eyebrow="Receipt wizard" title="New Receipt Intake" description="Upload a receipt or use manual entry. AI extraction is optional and always requires human verification." />
       <ComplianceNav />
       <StorageModeNotice />
+      <section className="rounded-2xl border border-kelly-text/10 bg-kelly-wash p-4 font-body text-sm text-kelly-text/75">
+        <strong>Flow:</strong> save draft receipt → review extracted fields → verify tip/payment/purpose → approve → stage expense or reimbursement → match to bank.
+      </section>
       <form action={createReceiptAction} className="grid gap-5 rounded-2xl border border-kelly-text/10 bg-kelly-page p-5 font-body text-sm">
         <label className="grid gap-2 font-semibold">Step 1 - Reviewer initials<input className="rounded-xl border p-3" name="createdByInitials" minLength={2} maxLength={3} placeholder="ABC" required /></label>
         <label className="grid gap-2 font-semibold">Step 2 - Upload receipt image/PDF<input className="rounded-xl border p-3" name="receiptFile" type="file" accept="image/*,.pdf" capture="environment" /></label>
@@ -80,7 +83,7 @@ export default function NewReceiptPage() {
           <select className="rounded-xl border p-3" name="category">{["meals","travel","lodging","fuel","printing","postage","event_supplies","office_supplies","software","advertising","fundraising","bank_fee","staff_payment","consulting","other","unknown"].map((category) => <option key={category} value={category}>{category}</option>)}</select>
           <input className="rounded-xl border p-3" name="businessPurpose" placeholder="Campaign business purpose" />
         </section>
-        <button className="rounded-full bg-kelly-navy px-5 py-3 font-bold text-white" type="submit">Save Draft Receipt</button>
+        <button className="rounded-full bg-kelly-navy px-5 py-3 font-bold text-white" type="submit">Save Draft Receipt and Review</button>
       </form>
     </div>
   );

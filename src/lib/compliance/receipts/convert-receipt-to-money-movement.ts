@@ -15,6 +15,10 @@ export async function convertReceiptToMoneyMovement(input: {
   if (receipt.approvalStatus !== "approved" && receipt.reviewStatus !== "approved") {
     throw new Error("Receipt must be approved by a human before money movement conversion.");
   }
+  const blockers = receiptApprovalBlockers(receipt);
+  if (blockers.length) {
+    throw new Error(`Receipt is not ready to stage: ${blockers.join("; ")}`);
+  }
   if (receipt.moneyMovementId) return receipt;
   const movement = await createStagedMoneyMovement({
     source: "receipt_intake",
@@ -76,6 +80,10 @@ export async function approveReceipt(input: { receiptId: string; actorInitials: 
   const receipts = await loadStagedReceipts();
   const receipt = receipts.find((item) => item.id === input.receiptId);
   if (!receipt) throw new Error("Receipt not found.");
+  const blockers = receiptApprovalBlockers(receipt);
+  if (blockers.length) {
+    throw new Error(`Receipt is not ready for approval: ${blockers.join("; ")}`);
+  }
   const next: StagedReceiptExpense = {
     ...receipt,
     reviewStatus: "approved",
@@ -96,6 +104,19 @@ export async function approveReceipt(input: { receiptId: string; actorInitials: 
     createdAt: new Date().toISOString(),
   });
   return next;
+}
+
+export function receiptApprovalBlockers(receipt: StagedReceiptExpense): string[] {
+  return [
+    !receipt.vendorName ? "missing vendor" : undefined,
+    !receipt.receiptDate ? "missing receipt date" : undefined,
+    !receipt.total || receipt.total <= 0 ? "missing total" : undefined,
+    receipt.tipStatus === "not_sure" ? "tip status needs verification" : undefined,
+    receipt.paymentMethod === "unknown" ? "payment method needs verification" : undefined,
+    receipt.category === "unknown" ? "expense category needs review" : undefined,
+    !receipt.businessPurpose ? "missing campaign business purpose" : undefined,
+    !receipt.imagePath && !receipt.extraction ? "missing receipt image or extraction" : undefined,
+  ].filter((blocker): blocker is string => Boolean(blocker));
 }
 
 function mapReceiptCategory(receipt: StagedReceiptExpense, conversionMode?: "expense" | "reimbursement"): MoneyMovementCategory {

@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { ComplianceNav, CompliancePageHeader, StorageModeNotice } from "../../components";
-import { createStagedCashContribution } from "@/lib/compliance/cash/cash-storage";
+import { createStagedCashContribution, saveCashUpload } from "@/lib/compliance/cash/cash-storage";
 import { extractCashSlip } from "@/lib/compliance/cash/extract-cash-slip";
 
 export const dynamic = "force-dynamic";
@@ -10,6 +10,10 @@ export default function NewCashContributionPage() {
     "use server";
     const amount = Number(formData.get("amount") ?? 0);
     const extraction = await extractCashSlip({ enteredAmount: amount });
+    const [billUpload, donorSlipUpload] = await Promise.all([
+      saveOptionalCashEvidence(formData.get("billPhoto"), "bill"),
+      saveOptionalCashEvidence(formData.get("donorSlipPhoto"), "donor-slip"),
+    ]);
     await createStagedCashContribution({
       createdByInitials: String(formData.get("createdByInitials") ?? ""),
       contributionDate: String(formData.get("contributionDate") ?? "") || undefined,
@@ -28,8 +32,8 @@ export default function NewCashContributionPage() {
       idCheckedByInitials: String(formData.get("createdByInitials") ?? ""),
       eventSource: String(formData.get("eventSource") ?? ""),
       notes: String(formData.get("notes") ?? ""),
-      billPhotoPath: fileNote(formData.get("billPhoto")),
-      donorSlipPhotoPath: fileNote(formData.get("donorSlipPhoto")),
+      billPhotoPath: billUpload?.filePath,
+      donorSlipPhotoPath: donorSlipUpload?.filePath,
       ocrExtraction: extraction,
     });
     redirect("/admin/compliance/cash/review");
@@ -44,6 +48,9 @@ export default function NewCashContributionPage() {
       />
       <ComplianceNav />
       <StorageModeNotice />
+      <section className="rounded-2xl border border-kelly-text/10 bg-kelly-wash p-4 font-body text-sm text-kelly-text/75">
+        Evidence photos are stored under ignored local compliance uploads. The review queue decides approval, batching, and conversion.
+      </section>
       <form action={createCashContribution} className="grid gap-5">
         <Step title="1. Reviewer initials">
           <Input name="createdByInitials" label="Who is entering this? Initials" required />
@@ -114,7 +121,7 @@ function FileInput(props: { name: string; label: string }) {
   );
 }
 
-function fileNote(value: FormDataEntryValue | null): string | undefined {
-  if (!(value instanceof File) || !value.name) return undefined;
-  return `not-stored:${value.name}`;
+async function saveOptionalCashEvidence(value: FormDataEntryValue | null, evidenceType: "bill" | "donor-slip") {
+  if (!(value instanceof File) || !value.name || value.size === 0) return undefined;
+  return saveCashUpload({ fileName: value.name, arrayBuffer: await value.arrayBuffer(), evidenceType });
 }
