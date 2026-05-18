@@ -1,0 +1,105 @@
+{
+  "generatedAt": "2026-05-18T18:35:01.965Z",
+  "overall": "yellow",
+  "completionPct": 38,
+  "commercialReadinessPct": 37,
+  "filingReadinessStatus": "red",
+  "legalVerificationPending": true,
+  "checks": [
+    {
+      "id": "rule-corpus-shape",
+      "status": "green",
+      "detail": "Arkansas rule sources catalog present"
+    },
+    {
+      "id": "retrieval-citations",
+      "status": "green",
+      "detail": "42 chunks indexed"
+    },
+    {
+      "id": "rule-topics",
+      "status": "yellow",
+      "detail": "Topics missing coverage: contribution_limits, donor_information, treasurer, transfers, refunds, anonymous_contributions, fundraiser_event_receipts, vendor_documentation"
+    },
+    {
+      "id": "readiness-hard-gates",
+      "status": "yellow",
+      "detail": "8 gates evaluated, 4 blocked"
+    },
+    {
+      "id": "reconciliation-lock-model",
+      "status": "green",
+      "detail": "Lock model file present"
+    },
+    {
+      "id": "filing-export",
+      "status": "green",
+      "detail": "Synthetic filing package generated with draft watermark"
+    },
+    {
+      "id": "storage-health",
+      "status": "yellow",
+      "detail": "Local private storage fallback active. Configure SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, and private bucket."
+    },
+    {
+      "id": "no-secrets-in-repo",
+      "status": "green",
+      "detail": "Verify .env and credentials are not committed; gate does not scan git history."
+    },
+    {
+      "id": "report:reports/compliance/filing-readiness-report.md",
+      "status": "green",
+      "detail": "exists"
+    },
+    {
+      "id": "report:data/compliance/knowledge/compliance-rule-coverage.json",
+      "status": "green",
+      "detail": "exists"
+    },
+    {
+      "id": "route:src/app/admin/(board)/compliance/executive/page.tsx",
+      "status": "green",
+      "detail": "ok"
+    },
+    {
+      "id": "route:src/app/admin/(board)/compliance/rules/page.tsx",
+      "status": "green",
+      "detail": "ok"
+    },
+    {
+      "id": "route:src/app/admin/(board)/compliance/filing-readiness/page.tsx",
+      "status": "green",
+      "detail": "ok"
+    },
+    {
+      "id": "route:src/app/admin/(board)/compliance/filings/page.tsx",
+      "status": "green",
+      "detail": "ok"
+    },
+    {
+      "id": "route:src/app/admin/(board)/compliance/reconciliation/page.tsx",
+      "status": "green",
+      "detail": "ok"
+    },
+    {
+      "id": "route:src/app/admin/(board)/compliance/imports/sample-needed/page.tsx",
+      "status": "green",
+      "detail": "ok"
+    },
+    {
+      "id": "ai-guardrails",
+      "status": "green",
+      "detail": "25 advanced tools registered"
+    }
+  ],
+  "blockers": [
+    "All included money movements approved",
+    "Bank matches approved/locked or overridden",
+    "Required rule topics have official sources",
+    "Filing period / due date verified or overridden",
+    "Missing rule topics: contribution_limits, donor_information, treasurer, transfers, refunds, anonymous_contributions, fundraiser_event_receipts, vendor_documentation",
+    "Storage using local fallback — configure Supabase private bucket for production.",
+    "Compliance DB models not migrated — JSON fallback active."
+  ],
+  "note": "Pending legal verification is expected and does not fail this gate."
+}

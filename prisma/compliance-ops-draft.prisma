@@ -1,0 +1,72 @@
+// DRAFT — not merged into schema.prisma until migration plan approved.
+// See docs/compliance/COMPLIANCE_DB_PERSISTENCE_PLAN.md
+
+model ComplianceMoneyMovement {
+  id              String   @id @default(cuid())
+  movementType    String
+  amountCents     Int
+  occurredAt      DateTime
+  approvalStatus  String   @default("pending")
+  metadataJson    Json?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  @@schema("public")
+}
+
+model ComplianceRuleSourceRecord {
+  id                 String   @id
+  title              String
+  sourceAgency       String
+  url                String?
+  citationLabel      String
+  verificationStatus String
+  retrievedAt        String?
+  topicsJson         Json?
+  reviewedByInitials String?
+  reviewedAt         DateTime?
+  reviewNote         String?
+  @@schema("public")
+}
+
+model ComplianceRuleChunkRecord {
+  id                 String   @id
+  sourceId           String
+  topic              String
+  title              String
+  text               String   @db.Text
+  verificationStatus String
+  citationsJson      Json?
+  retrievedAt        String?
+  @@schema("public")
+}
+
+model ComplianceFilingPackageRecord {
+  id                   String   @id @default(cuid())
+  filingPeriodLabel    String?
+  readinessStatus      String
+  watermark            String
+  generatedByInitials  String
+  packageManifestJson  Json
+  createdAt            DateTime @default(now())
+  @@schema("public")
+}
+
+model ComplianceReconciliationMatchRecord {
+  id            String   @id @default(cuid())
+  status        String
+  lockedAt      DateTime?
+  lockedBy      String?
+  auditJson     Json?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  @@schema("public")
+}
+
+model ComplianceAuditLogRecord {
+  id        String   @id @default(cuid())
+  action    String
+  actor     String?
+  payload   Json?
+  createdAt DateTime @default(now())
+  @@schema("public")
+}

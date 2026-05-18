@@ -10,6 +10,9 @@ export type FilingPeriod = {
   sourceNote: string;
 };
 
+import type { FilingHardGate } from "./hard-gates";
+import type { FilingReadinessGrade } from "./filing-readiness-grade";
+
 export type FilingReadinessReport = {
   id: string;
   generatedAt: string;
@@ -37,4 +40,6 @@ export type FilingReadinessReport = {
     needsLegalReviewTopics: string[];
   };
   humanReviewRequired: true;
+  hardGates?: FilingHardGate[];
+  readinessGrade?: FilingReadinessGrade;
 };

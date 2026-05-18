@@ -5,6 +5,7 @@ import { buildMoneyCoverageSummary } from "../money/money-movement-storage";
 
 export type ComplianceExecutiveScore = {
   score: number;
+  commercialReadinessPct: number;
   status: "green" | "yellow" | "red";
   metrics: Array<{ id: string; label: string; score: number; summary: string }>;
 };
@@ -27,7 +28,8 @@ export async function buildComplianceExecutiveScore(): Promise<ComplianceExecuti
     { id: "filing", label: "Filing readiness", score: readiness.overallStatus === "green" ? 100 : readiness.overallStatus === "yellow" ? 65 : 35, summary: `${readiness.blockers.length} filing blocker(s).` },
   ];
   const score = Math.round(metrics.reduce((total, metric) => total + metric.score, 0) / metrics.length);
-  return { score, status: score >= 85 ? "green" : score >= 60 ? "yellow" : "red", metrics };
+  const commercialReadinessPct = Math.round((score * 0.55) + (readiness.overallStatus === "green" ? 35 : readiness.overallStatus === "yellow" ? 20 : 5));
+  return { score, commercialReadinessPct, status: score >= 85 ? "green" : score >= 60 ? "yellow" : "red", metrics };
 }
 
 function scoreFromGaps(count: number): number {

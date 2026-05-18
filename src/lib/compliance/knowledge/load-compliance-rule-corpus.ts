@@ -1,10 +1,16 @@
-import { readFile } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import type { ComplianceRuleCorpus, ComplianceRuleSource, ComplianceRuleTopic } from "./compliance-rule-types";
 import { chunkComplianceRuleSource } from "./chunk-compliance-rules";
+import { arkansasOfficialRuleSources } from "./arkansas-rule-source-catalog";
+import { applyHumanReviewToSource, arkansasRecordToComplianceSource, mergeArkansasCatalogWithPersisted } from "./merge-arkansas-sources";
+import { loadRuleReviews } from "./rule-reviews-storage";
 
 export const ruleCorpusPath = path.join(process.cwd(), "data", "compliance", "knowledge", "compliance-rule-corpus.json");
 export const ruleCoveragePath = path.join(process.cwd(), "data", "compliance", "knowledge", "compliance-rule-coverage.json");
+export const arkansasSourcesPath = path.join(process.cwd(), "data", "compliance", "knowledge", "sources", "arkansas-rule-sources.json");
+export const rawKnowledgeDir = path.join(process.cwd(), "data", "compliance", "knowledge", "raw");
+export const chunkKnowledgeDir = path.join(process.cwd(), "data", "compliance", "knowledge", "chunks");
 
 export const defaultComplianceRuleSources: ComplianceRuleSource[] = [
   {
@@ -37,13 +43,52 @@ export const defaultComplianceRuleSources: ComplianceRuleSource[] = [
   ...topicPlaceholderSources(),
 ];
 
+export async function loadArkansasSourceCatalog() {
+  try {
+    return JSON.parse(await readFile(arkansasSourcesPath, "utf8")) as ReturnType<typeof mergeArkansasCatalogWithPersisted>;
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") return mergeArkansasCatalogWithPersisted(null);
+    throw error;
+  }
+}
+
+export async function buildComplianceRuleSources(): Promise<ComplianceRuleSource[]> {
+  const [catalog, reviews] = await Promise.all([loadArkansasSourceCatalog(), loadRuleReviews()]);
+  const arkansasSources = catalog.map(arkansasRecordToComplianceSource);
+  const reviewBySource = new Map(reviews.map((review) => [review.sourceId, review]));
+  const merged = [...arkansasSources, ...defaultComplianceRuleSources.filter((source) => !arkansasSources.some((item) => item.id === source.id))];
+  return merged.map((source) => {
+    const review = reviewBySource.get(source.id);
+    if (!review?.reviewedByInitials || review.stale) return source;
+    return applyHumanReviewToSource(source, review.reviewedByInitials, review.reviewedAt);
+  });
+}
+
 export async function buildComplianceRuleCorpus(): Promise<ComplianceRuleCorpus> {
-  const sources = defaultComplianceRuleSources;
+  const sources = await buildComplianceRuleSources();
   const chunks = [];
   for (const source of sources) {
-    if (!source.filePath) continue;
-    const markdown = await readFile(path.join(process.cwd(), source.filePath), "utf8");
-    chunks.push(...chunkComplianceRuleSource(source, markdown));
+    if (source.filePath) {
+      try {
+        const markdown = await readFile(path.join(process.cwd(), source.filePath), "utf8");
+        chunks.push(...chunkComplianceRuleSource(source, markdown));
+      } catch {
+        // placeholder docs may be missing locally
+      }
+    }
+  }
+  try {
+    const rawFiles = await readdir(rawKnowledgeDir);
+    for (const fileName of rawFiles) {
+      if (!fileName.endsWith(".html") && !fileName.endsWith(".txt") && !fileName.endsWith(".md")) continue;
+      const sourceId = fileName.replace(/\.(html|txt|md)$/i, "");
+      const source = sources.find((item) => item.id === sourceId);
+      if (!source) continue;
+      const markdown = await readFile(path.join(rawKnowledgeDir, fileName), "utf8");
+      chunks.push(...chunkComplianceRuleSource(source, markdown));
+    }
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
   }
   return {
     builtAt: new Date().toISOString(),

@@ -67,6 +67,12 @@ export default async function ComplianceCommandCenterPage() {
         <ComplianceCard eyebrow="Rules" title="Rule Coverage" href="/admin/compliance/rules">
           Review Arkansas SOS, Ethics, campaign policy, and rule corpus coverage before relying on filing guidance.
         </ComplianceCard>
+        <ComplianceCard eyebrow="Samples" title="Sample Data Needed" href="/admin/compliance/imports/sample-needed">
+          GoodChange export CSV, bank statement CSV, sanitized sample rows, payout/deposit IDs, fee/gross/net fields, and memo conventions still required for production import tuning.
+        </ComplianceCard>
+        <ComplianceCard eyebrow="Executive" title="Completion dashboard" href="/admin/compliance/executive">
+          Compliance %, commercial readiness, subsystem scores, blockers, and next actions.
+        </ComplianceCard>
       </section>
     </div>
   );

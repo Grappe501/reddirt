@@ -1,5 +1,5 @@
-import { retrieveComplianceRuleChunks } from "../../knowledge/compliance-rule-index";
 import { loadComplianceRuleCorpus } from "../../knowledge/load-compliance-rule-corpus";
+import { searchComplianceRuleCitations } from "../../knowledge/rule-citation-search";
 import type { ComplianceRuleChunk, ComplianceRuleSource } from "../../knowledge/compliance-rule-types";
 
 export type ComplianceRuleRetrievalResult = {
@@ -19,23 +19,29 @@ export async function retrieveComplianceRulesForAI(query: string): Promise<Compl
   if (!corpus) {
     return { status: "needs_rule_verification", chunks: [], warning: "No compliance rule corpus is built. Run compliance:rules:build and verify sources before legal reliance." };
   }
-  const chunks = retrieveComplianceRuleChunks(corpus, query, 6).map((chunk) => {
+  const search = searchComplianceRuleCitations(corpus, query, 6);
+  const chunks = search.chunks.map((chunk) => {
     const source = corpus.sources.find((item) => item.id === chunk.sourceId);
-    const verified = source?.verificationStatus === "verified_authoritative";
+    const humanVerified = source?.verificationStatus === "verified_authoritative" && Boolean(source.reviewedByInitials);
+    const officialLoaded = chunk.verificationStatus === "official_source_loaded";
     return {
       chunk,
       source,
       verificationStatus: source?.verificationStatus,
-      confidence: verified ? "high" as const : source ? "medium" as const : "low" as const,
-      warning: verified ? undefined : "Rule source is not verified authoritative. Human compliance review required before reliance.",
+      confidence: humanVerified ? "high" as const : officialLoaded ? "medium" as const : search.confidence,
+      warning: humanVerified
+        ? undefined
+        : officialLoaded
+          ? "Rule source loaded — citation available. Ready for compliance officer review; not legal certification."
+          : "Rule source needs legal review. AI must not give final legal guidance.",
     };
   });
-  if (!chunks.length || chunks.every((item) => item.verificationStatus !== "verified_authoritative")) {
+  if (!chunks.length || search.legalReviewRequired) {
     return {
       status: "needs_rule_verification",
       chunks,
-      warning: "No verified authoritative source citation found. AI must not give final legal guidance.",
+      warning: search.warning ?? "No verified authoritative source citation found. AI must not give final legal guidance.",
     };
   }
-  return { status: "ok", chunks };
+  return { status: "ok", chunks, warning: search.warning };
 }
