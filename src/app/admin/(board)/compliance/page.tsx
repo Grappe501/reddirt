@@ -33,6 +33,9 @@ export default async function ComplianceCommandCenterPage() {
         <ComplianceCard eyebrow="Tasks" title="Compliance Task Center" href="/admin/compliance/tasks">
           Work every missing donor field, receipt, W-9, bank match, duplicate, rule gap, and filing blocker from one queue.
         </ComplianceCard>
+        <ComplianceCard eyebrow="Approval" title="Lightning Approval Workbench" href="/admin/compliance/approval">
+          Review AI-prepared compliance records one at a time, verify evidence, approve, reject, or request more information.
+        </ComplianceCard>
         <ComplianceCard eyebrow="Filing" title="Filing Packages" href="/admin/compliance/filings">
           Create immutable draft packages with hash manifests, readiness blockers, included records, and document indexes.
         </ComplianceCard>

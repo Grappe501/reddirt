@@ -48,6 +48,7 @@ export function ComplianceNav() {
     ["Mobile", `${basePath}/mobile`],
     ["Amendments", `${basePath}/amendments`],
     ["Rules", `${basePath}/rules`],
+    ["Approval", `${basePath}/approval`],
     ["Reports", `${basePath}/reports`],
     ["Settings", `${basePath}/settings`],
   ] as const;

@@ -54,6 +54,8 @@
     "compliance:qa-tasks": "tsx scripts/compliance/qa-task-center.ts",
     "compliance:qa-mobile": "tsx scripts/compliance/qa-mobile.ts",
     "compliance:qa-approvals": "tsx scripts/compliance/qa-approval-workflow.ts",
+    "compliance:approval:build": "tsx scripts/compliance/build-approval-queue.ts",
+    "compliance:qa-approval": "tsx scripts/compliance/qa-approval-workbench.ts",
     "compliance:qa-storage": "tsx scripts/compliance/qa-storage.ts",
     "compliance:qa-rule-retrieval": "tsx scripts/compliance/qa-rule-retrieval.ts",
     "compliance:qa-full": "tsx scripts/compliance/qa-full.ts",

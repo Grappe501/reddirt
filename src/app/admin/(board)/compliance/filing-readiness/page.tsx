@@ -16,6 +16,9 @@ export default async function FilingReadinessPage() {
         description="A red/yellow/green staging report for staff review. This is not legal certification and always requires human approval."
       />
       <ComplianceNav />
+      <ComplianceCard eyebrow="Approval" title="Lightning Approval Workbench" href="/admin/compliance/approval">
+        Review AI-prepared compliance records one at a time, verify evidence, approve, reject, or request more information.
+      </ComplianceCard>
       <StorageModeNotice />
       <ComplianceCard title={`Overall status: ${report.overallStatus} · Hard gates: ${grade.status}`}>
         <p>Human review required: {report.humanReviewRequired ? "yes" : "no"}</p>

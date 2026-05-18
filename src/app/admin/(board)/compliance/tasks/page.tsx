@@ -12,6 +12,9 @@ export default async function ComplianceTasksPage() {
       <CompliancePageHeader eyebrow="Tasks" title="Compliance Task Center" description="Every missing field, document gap, bank match, rule verification, and filing blocker becomes an operator task." />
       <ComplianceNav />
       <StorageModeNotice />
+      <ComplianceCard eyebrow="Approval" title="Lightning Approval Workbench" href="/admin/compliance/approval">
+        Review AI-prepared compliance records one at a time, verify evidence, approve, reject, or request more information.
+      </ComplianceCard>
       <section className="grid gap-4 md:grid-cols-4">
         <ComplianceCard title="Open tasks">{tasks.length}</ComplianceCard>
         <ComplianceCard title="Urgent">{urgent}</ComplianceCard>
