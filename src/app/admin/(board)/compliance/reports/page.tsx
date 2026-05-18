@@ -1,5 +1,6 @@
 import { ComplianceCard, ComplianceNav, CompliancePageHeader } from "../components";
 import { loadCashAuditLog, loadCashDepositBatches, loadStagedCashContributions } from "@/lib/compliance/cash/cash-storage";
+import { buildFilingReadinessReport } from "@/lib/compliance/filing-readiness/build-filing-readiness-report";
 import { auditComplianceRuleCorpus } from "@/lib/compliance/knowledge/compliance-rule-index";
 import { loadComplianceRuleCorpus } from "@/lib/compliance/knowledge/load-compliance-rule-corpus";
 import { buildMoneyCoverageSummary, loadComplianceVendors, loadStagedMoneyMovements } from "@/lib/compliance/money/money-movement-storage";
@@ -22,7 +23,7 @@ export default async function ComplianceReportsPage() {
     loadStagedReceipts(),
     loadComplianceRuleCorpus(),
   ]);
-  const ruleAudit = auditComplianceRuleCorpus(corpus);
+  const [ruleAudit, filingReadiness] = [auditComplianceRuleCorpus(corpus), await buildFilingReadinessReport()];
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-6">
       <CompliancePageHeader
@@ -63,9 +64,14 @@ export default async function ComplianceReportsPage() {
         <ComplianceCard title="Tip verification report">{receipts.filter((receipt) => receipt.tipStatus === "not_sure").length} unresolved tip question(s).</ComplianceCard>
         <ComplianceCard title="Vendor spending report">{moneyMovements.filter((movement) => movement.category === "vendor_payment").length} vendor payment(s).</ComplianceCard>
         <ComplianceCard title="Reimbursement payable report">{moneyMovements.filter((movement) => movement.category === "travel_reimbursement").length} reimbursement item(s).</ComplianceCard>
-        <ComplianceCard title="Filing readiness report">{moneySummary.readyForFilingCount} ready item(s).</ComplianceCard>
+        <ComplianceCard title="Filing readiness report" href="/admin/compliance/filing-readiness">Overall status: {filingReadiness.overallStatus}. {filingReadiness.blockers.length} blocker(s).</ComplianceCard>
         <ComplianceCard title="Rule coverage report" href="/admin/compliance/rules">{ruleAudit.chunksIndexed} rule chunk(s), {ruleAudit.topicsMissing.length} topic gap(s).</ComplianceCard>
         <ComplianceCard title="Compliance risk report">{moneySummary.needsReviewCount + receipts.filter((receipt) => receipt.warnings.length).length} review/risk item(s).</ComplianceCard>
+        <ComplianceCard title="Missing rule source report" href="/admin/compliance/rules">{ruleAudit.topicCoverage.filter((topic) => topic.status === "missing" || topic.status === "placeholder").length} missing/placeholder topic(s).</ComplianceCard>
+        <ComplianceCard title="Transactions blocking filing report" href="/admin/compliance/filing-readiness">{filingReadiness.sections.filter((section) => section.status === "red").length} red section(s).</ComplianceCard>
+        <ComplianceCard title="Human review required report">Human review required: {filingReadiness.humanReviewRequired ? "yes" : "no"}.</ComplianceCard>
+        <ComplianceCard title="Bank reconciliation blocker report">{filingReadiness.sections.find((section) => section.id === "bank")?.count ?? 0} unmatched item(s).</ComplianceCard>
+        <ComplianceCard title="Missing documentation report">{moneySummary.missingReceipts + receipts.filter((receipt) => receipt.documentationStatus !== "complete").length} documentation gap(s).</ComplianceCard>
       </section>
       <ComplianceCard title="Generated docs">
         <ul className="grid gap-1">

@@ -42,6 +42,8 @@
     "compliance:rules:audit": "tsx scripts/compliance/audit-rule-coverage.ts",
     "compliance:qa-receipts": "tsx scripts/compliance/qa-receipt-intake.ts",
     "compliance:qa-coverage": "tsx scripts/compliance/qa-compliance-coverage.ts",
+    "compliance:qa-rules": "tsx scripts/compliance/qa-rule-coverage.ts",
+    "compliance:qa-filing": "tsx scripts/compliance/qa-filing-readiness.ts",
     "email:command-center:migrate-and-check": "prisma migrate deploy && npm run check",
     "check": "npm run strategy-manual:verify && npm run lint:all && npm run typecheck && npm run build",
     "stack:verify": "node scripts/stack-verify.cjs",

@@ -9,7 +9,7 @@ export function chunkComplianceRuleSource(source: ComplianceRuleSource, markdown
     text: chunk.content,
     topic: inferRuleTopic(`${chunk.title}\n${chunk.content}`),
     citations: [source.url ?? source.filePath ?? source.id],
-    ruleStatus: source.sourceType === "campaign_policy" ? "campaign_policy" : source.verificationStatus === "verified" ? "authoritative" : "needs_legal_review",
+    ruleStatus: source.verificationStatus === "campaign_policy" ? "campaign_policy" : source.verificationStatus === "verified_authoritative" ? "authoritative" : "needs_legal_review",
   }));
 }
 

@@ -1,3 +1,10 @@
+export type ComplianceRuleVerificationStatus =
+  | "verified_authoritative"
+  | "campaign_policy"
+  | "needs_legal_review"
+  | "placeholder"
+  | "missing";
+
 export type ComplianceRuleSource = {
   id: string;
   title: string;
@@ -12,7 +19,8 @@ export type ComplianceRuleSource = {
   retrievedAt?: string;
   effectiveDate?: string;
   verifiedBy?: string;
-  verificationStatus: "unverified" | "verified" | "needs_review";
+  verificationStatus: ComplianceRuleVerificationStatus;
+  topics?: ComplianceRuleTopic[];
 };
 
 export type ComplianceRuleTopic =
@@ -53,8 +61,22 @@ export type ComplianceRuleCoverageAudit = {
   chunksIndexed: number;
   topicsCovered: ComplianceRuleTopic[];
   topicsMissing: ComplianceRuleTopic[];
+  topicCoverage: ComplianceRuleTopicCoverage[];
+  verifiedSources: number;
+  campaignPolicySources: number;
   rulesNeedingVerification: number;
   warning: string;
+};
+
+export type ComplianceRuleTopicCoverage = {
+  topic: ComplianceRuleTopic;
+  label: string;
+  status: ComplianceRuleVerificationStatus;
+  sourceCount: number;
+  chunkCount: number;
+  verified: boolean;
+  lastUpdated?: string;
+  nextAction: string;
 };
 
 export const requiredComplianceRuleTopics: ComplianceRuleTopic[] = [
@@ -72,3 +94,20 @@ export const requiredComplianceRuleTopics: ComplianceRuleTopic[] = [
   "amendment",
   "reimbursement",
 ];
+
+export const complianceRuleTopicLabels: Record<ComplianceRuleTopic, string> = {
+  contribution: "Contribution",
+  expenditure: "Expenditure",
+  cash: "Cash",
+  check: "Check",
+  credit_card: "Credit card",
+  in_kind: "In-kind",
+  loan: "Loan",
+  debt: "Debt",
+  filing_deadline: "Filing deadlines",
+  reporting: "Reporting",
+  recordkeeping: "Recordkeeping",
+  amendment: "Amendment",
+  reimbursement: "Reimbursement",
+  unknown: "Unknown",
+};
