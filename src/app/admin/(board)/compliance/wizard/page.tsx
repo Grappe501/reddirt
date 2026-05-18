@@ -1,4 +1,4 @@
-import { ComplianceCard, ComplianceNav, CompliancePageHeader } from "../components";
+import { ComplianceCard, ComplianceNav, CompliancePageHeader, ComplianceStagedNotice, StorageModeNotice } from "../components";
 
 const options = [
   ["Contribution", "/admin/compliance/money", "Use money movement review or choose cash/check/GoodChange below."],
@@ -14,19 +14,20 @@ const options = [
 
 export default function ComplianceWizardPage() {
   return (
-    <div className="mx-auto flex max-w-6xl flex-col gap-6">
+    <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 pt-6">
       <CompliancePageHeader
         eyebrow="Wizard"
         title="Start Compliance Wizard"
         description="Pick what you are entering. The system will route you to a guided flow and keep legal approval, filing certification, and reconciliation as human actions."
       />
       <ComplianceNav />
-      <section className="rounded-2xl border border-amber-700/20 bg-amber-50 p-4 font-body text-sm text-amber-950">
-        Start with the record type in front of you. Every path saves a staged record first; approval, reconciliation, and filing certification stay human actions.
-      </section>
+      <StorageModeNotice />
+      <ComplianceStagedNotice />
       <section className="grid gap-4 md:grid-cols-2">
         {options.map(([title, href, description]) => (
-          <ComplianceCard key={href} title={title} href={href}>{description}</ComplianceCard>
+          <ComplianceCard key={href} title={title} href={href}>
+            {description}
+          </ComplianceCard>
         ))}
       </section>
     </div>

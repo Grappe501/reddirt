@@ -82,7 +82,7 @@ export async function buildFilingReadinessReport(): Promise<FilingReadinessRepor
       endDate: period.endDate,
       dueDate: period.dueDate,
     },
-    overallStatus: gateSummary.overallStatus === "red" || resolveOverallStatus(sections, blockers) === "red" ? "red" : gateSummary.overallStatus,
+    overallStatus: resolveOverallFilingStatus(gateSummary.overallStatus, grade.status, sections, blockers),
     hardGates,
     readinessGrade: grade,
     blockers: [...new Set(blockers)],
@@ -109,6 +109,18 @@ export async function writeFilingReadinessReport(): Promise<FilingReadinessRepor
 function resolveOverallStatus(sections: FilingReadinessReport["sections"], blockers: string[]): FilingReadinessStatus {
   if (blockers.length || sections.some((section) => section.status === "red")) return "red";
   if (sections.some((section) => section.status === "yellow")) return "yellow";
+  return "green";
+}
+
+function resolveOverallFilingStatus(
+  gateSummaryStatus: FilingReadinessStatus,
+  hardGateGradeStatus: FilingReadinessStatus,
+  sections: FilingReadinessReport["sections"],
+  blockers: string[],
+): FilingReadinessStatus {
+  const sectionStatus = resolveOverallStatus(sections, blockers);
+  if (gateSummaryStatus === "red" || sectionStatus === "red" || hardGateGradeStatus === "red" || blockers.length > 0) return "red";
+  if (gateSummaryStatus === "yellow" || sectionStatus === "yellow" || hardGateGradeStatus === "yellow") return "yellow";
   return "green";
 }
 
