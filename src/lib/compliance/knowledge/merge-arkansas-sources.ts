@@ -45,8 +45,17 @@ export function arkansasRecordToComplianceSource(record: ArkansasRuleSourceRecor
 
 export function mergeArkansasCatalogWithPersisted(persisted: ArkansasRuleSourceRecord[] | null): ArkansasRuleSourceRecord[] {
   const byId = new Map<string, ArkansasRuleSourceRecord>();
-  for (const source of arkansasOfficialRuleSources) byId.set(source.id, source);
-  for (const source of persisted ?? []) byId.set(source.id, { ...byId.get(source.id), ...source });
+  for (const source of persisted ?? []) byId.set(source.id, source);
+  for (const source of arkansasOfficialRuleSources) {
+    const existing = byId.get(source.id);
+    byId.set(source.id, {
+      ...existing,
+      ...source,
+      reviewedByInitials: existing?.reviewedByInitials ?? source.reviewedByInitials,
+      reviewedAt: existing?.reviewedAt ?? source.reviewedAt,
+      reviewNote: existing?.reviewNote ?? source.reviewNote,
+    });
+  }
   return [...byId.values()];
 }
 

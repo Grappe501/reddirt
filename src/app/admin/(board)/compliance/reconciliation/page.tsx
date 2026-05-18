@@ -59,6 +59,21 @@ export default async function ComplianceReconciliationPage() {
           ))}
         </div>
       </section>
+      <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <h2 className="font-heading text-xl font-bold text-[#0f2744]">Saved matches — approve & lock</h2>
+        <div className="mt-3 grid gap-2">
+          {workbench.matches.map((match) => (
+            <article key={match.id} className="rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm">
+              <p className="font-semibold">{match.id} · {match.status} · {match.matchType}</p>
+              <p>Bank ${match.bankAmount?.toFixed(2) ?? "n/a"} · variance {match.variance != null ? `$${match.variance.toFixed(2)}` : "n/a"}</p>
+              <a className="font-semibold text-[#0f2744] underline" href={`/admin/compliance/reconciliation/${match.id}`}>
+                Open match → approve / lock / unlock
+              </a>
+            </article>
+          ))}
+          {!workbench.matches.length ? <p className="text-slate-600">No saved matches yet. QA creates a synthetic match via npm run compliance:qa-reconciliation.</p> : null}
+        </div>
+      </section>
       <section className="rounded-2xl border border-kelly-text/10 bg-kelly-page p-5">
         <h2 className="font-heading text-xl font-bold text-kelly-text">Candidates</h2>
         {analysis.candidates.length ? (

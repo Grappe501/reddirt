@@ -13,8 +13,8 @@ import {
   ignoreBankTransactionMatch,
   markTransferMatch,
   recordVarianceMatch,
-  lockReconciliationMatchAction,
-  unlockReconciliationMatchAction,
+  lockReconciliationMatchAction as lockReconciliationMatchLib,
+  unlockReconciliationMatchAction as unlockReconciliationMatchLib,
 } from "@/lib/compliance/reconciliation/reconciliation-actions";
 
 const execFileAsync = promisify(execFile);
@@ -47,6 +47,17 @@ export async function markRuleSourceReviewedAction(input: { sourceId: string; in
   revalidatePath("/admin/compliance/rules");
 }
 
+export async function markRuleTopicReviewedAction(input: { topic: string; initials: string; note?: string }) {
+  await saveRuleReview({
+    topic: input.topic as import("@/lib/compliance/knowledge/compliance-rule-types").ComplianceRuleTopic,
+    reviewedByInitials: input.initials,
+    reviewedAt: new Date().toISOString(),
+    reviewNote: input.note,
+  });
+  await runNpmScript("compliance:rules:build");
+  revalidatePath("/admin/compliance/rules");
+}
+
 export async function flagRuleSourceStaleAction(sourceId: string) {
   await flagRuleSourceStale(sourceId);
   revalidatePath("/admin/compliance/rules");
@@ -62,13 +73,39 @@ export async function exportRuleCoverageReportAction() {
   return reportPath;
 }
 
-export {
-  approveReconciliationMatch,
-  forceReconciliationMatch,
-  splitReconciliationMatch,
-  ignoreBankTransactionMatch,
-  markTransferMatch,
-  recordVarianceMatch,
-  lockReconciliationMatchAction,
-  unlockReconciliationMatchAction,
-};
+export async function approveReconciliationMatchAction(input: { matchId: string; actorInitials: string; note?: string }) {
+  await approveReconciliationMatch(input);
+  revalidatePath("/admin/compliance/reconciliation");
+  revalidatePath(`/admin/compliance/reconciliation/${input.matchId}`);
+}
+
+export async function forceReconciliationMatchAction(input: { matchId: string; actorInitials: string; note?: string }) {
+  await forceReconciliationMatch(input);
+  revalidatePath("/admin/compliance/reconciliation");
+}
+
+export async function splitReconciliationMatchAction(input: { matchId: string; actorInitials: string; note?: string }) {
+  await splitReconciliationMatch(input);
+  revalidatePath("/admin/compliance/reconciliation");
+}
+
+export async function ignoreBankTransactionMatchAction(input: { matchId: string; actorInitials: string; note?: string }) {
+  await ignoreBankTransactionMatch(input);
+  revalidatePath("/admin/compliance/reconciliation");
+}
+
+export async function recordVarianceMatchAction(input: { matchId: string; actorInitials: string; note?: string }) {
+  await recordVarianceMatch(input);
+  revalidatePath("/admin/compliance/reconciliation");
+}
+
+export async function lockReconciliationMatchAction(input: { matchId: string; actorInitials: string; note?: string }) {
+  await lockReconciliationMatchLib(input);
+  revalidatePath("/admin/compliance/reconciliation");
+  revalidatePath(`/admin/compliance/reconciliation/${input.matchId}`);
+}
+
+export async function unlockReconciliationMatchAction(input: { matchId: string; actorInitials: string; unlockReason: string }) {
+  await unlockReconciliationMatchLib({ matchId: input.matchId, actorInitials: input.actorInitials, unlockReason: input.unlockReason, note: input.unlockReason });
+  revalidatePath("/admin/compliance/reconciliation");
+}

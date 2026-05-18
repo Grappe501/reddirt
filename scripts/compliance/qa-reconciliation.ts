@@ -1,3 +1,7 @@
+import {
+  approveReconciliationMatch,
+  lockReconciliationMatchAction,
+} from "../../src/lib/compliance/reconciliation/reconciliation-actions";
 import { buildReconciliationWorkbench, upsertReconciliationMatch } from "../../src/lib/compliance/reconciliation/reconciliation-workbench-storage";
 
 async function main() {
@@ -16,9 +20,26 @@ async function main() {
     notes: "Synthetic reconciliation shape check.",
   });
   if (match.variance !== 0.5) throw new Error("Variance calculation failed.");
+  await approveReconciliationMatch({ matchId: match.id, actorInitials: "QA", note: "qa-approve" });
+  const locked = await lockReconciliationMatchAction({ matchId: match.id, actorInitials: "QA", note: "qa-lock" });
+  if (locked.status !== "locked") throw new Error("Expected locked status after lock action.");
   const after = await buildReconciliationWorkbench();
-  if (!after.matches.some((item) => item.id === match.id)) throw new Error("Synthetic reconciliation match was not saved.");
-  console.log(JSON.stringify({ status: "ok", beforeMatches: before.matches.length, afterMatches: after.matches.length, variance: match.variance }, null, 2));
+  if (!after.matches.some((item) => item.id === match.id && item.status === "locked")) {
+    throw new Error("Synthetic reconciliation match was not locked.");
+  }
+  console.log(
+    JSON.stringify(
+      {
+        status: "ok",
+        beforeMatches: before.matches.length,
+        afterMatches: after.matches.length,
+        lockedCount: after.lockedCount,
+        variance: match.variance,
+      },
+      null,
+      2,
+    ),
+  );
 }
 
 main().catch((error) => {

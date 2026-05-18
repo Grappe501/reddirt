@@ -86,6 +86,7 @@ data/compliance/receipts/uploads/*
 !data/compliance/receipts/uploads/.gitkeep
 data/compliance/knowledge/*.json
 !data/compliance/knowledge/.gitkeep
+data/compliance/knowledge/rule-reviews.json
 data/compliance/filing-readiness/*.json
 !data/compliance/filing-readiness/.gitkeep
 data/compliance/documents/**

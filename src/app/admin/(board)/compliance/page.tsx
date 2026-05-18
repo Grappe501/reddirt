@@ -16,11 +16,12 @@ import { loadBankAnalyses, loadGoodChangeAnalyses } from "@/lib/compliance/stora
 import { loadApprovalQueues, loadApprovalItems } from "@/lib/compliance/approval/approval-storage";
 import { computeQueueStats } from "@/lib/compliance/approval/load-approval-queue";
 import { APRIL_2026_QUEUE_ID } from "@/lib/compliance/approval/build-approval-queue";
+import { buildApril26ImportStatus } from "@/lib/compliance/imports/april26-import-status";
 
 export const dynamic = "force-dynamic";
 
 export default async function ComplianceCommandCenterPage() {
-  const [goodChange, bank, score, readiness, tasks, queues, items] = await Promise.all([
+  const [goodChange, bank, score, readiness, tasks, queues, items, april26] = await Promise.all([
     loadGoodChangeAnalyses(),
     loadBankAnalyses(),
     buildComplianceExecutiveScore(),
@@ -28,6 +29,7 @@ export default async function ComplianceCommandCenterPage() {
     buildComplianceTasks(),
     loadApprovalQueues(),
     loadApprovalItems(),
+    buildApril26ImportStatus(),
   ]);
   const aprilStats = computeQueueStats(items.filter((item) => item.queueId === APRIL_2026_QUEUE_ID));
   const urgentTasks = tasks.filter((task) => task.priority === "urgent").length;
@@ -48,6 +50,19 @@ export default async function ComplianceCommandCenterPage() {
       <ComplianceNav />
       <StorageModeNotice />
       <ComplianceHeroActions />
+      <ComplianceWarningPanel title="April 2026 import checklist (local folder — not committed)">
+        <ul className="mt-2 grid gap-1 text-sm sm:grid-cols-2">
+          <li>Folder: {april26.folderExists ? "found" : "missing"}</li>
+          <li>GoodChange CSV: {april26.goodChangeCsvFound ? "yes" : "no"} ({april26.goodChangeRows} rows)</li>
+          <li>Bank CSV: {april26.bankCsvFound ? "yes" : "no"}</li>
+          <li>Receipt images: {april26.receiptImagesFound}</li>
+          <li>In-kind pages: {april26.inKindPagesFound}</li>
+          <li>Check images: {april26.checkImagesFound}</li>
+          <li>Needs approval: {april26.stagedNeedingApproval}</li>
+          <li>Needs reconciliation: {april26.stagedNeedingReconciliation}</li>
+        </ul>
+        <p className="mt-2 text-xs opacity-80">Path: {april26.folderPath}</p>
+      </ComplianceWarningPanel>
       <section className="grid gap-4 md:grid-cols-4">
         <ComplianceMetricCard label="Completion" value={`${score.score}%`} tone={score.status === "green" ? "green" : score.status === "yellow" ? "yellow" : "red"} />
         <ComplianceMetricCard label="Commercial readiness" value={`${score.commercialReadinessPct}%`} tone="navy" />
