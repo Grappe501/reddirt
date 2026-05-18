@@ -1,16 +1,22 @@
 import { ComplianceCard, ComplianceNav, CompliancePageHeader } from "../components";
+import { advancedComplianceAITools } from "@/lib/compliance/ai/compliance-agent/advanced-tool-registry";
+import { buildAmendmentCandidates } from "@/lib/compliance/amendments/amendment-assistant";
 import { loadCashAuditLog, loadCashDepositBatches, loadStagedCashContributions } from "@/lib/compliance/cash/cash-storage";
 import { buildFilingReadinessReport } from "@/lib/compliance/filing-readiness/build-filing-readiness-report";
+import { loadFilingSnapshots } from "@/lib/compliance/filings/filing-storage";
 import { auditComplianceRuleCorpus } from "@/lib/compliance/knowledge/compliance-rule-index";
 import { loadComplianceRuleCorpus } from "@/lib/compliance/knowledge/load-compliance-rule-corpus";
 import { buildMoneyCoverageSummary, loadComplianceVendors, loadStagedMoneyMovements } from "@/lib/compliance/money/money-movement-storage";
 import { loadStagedReceipts } from "@/lib/compliance/receipts/receipt-storage";
+import { buildReconciliationWorkbench } from "@/lib/compliance/reconciliation/reconciliation-workbench-storage";
+import { buildComplianceExecutiveScore } from "@/lib/compliance/scoring/compliance-score";
 import { buildReconciliationAnalysis, loadBankAnalyses, loadGoodChangeAnalyses } from "@/lib/compliance/storage";
+import { buildComplianceTasks } from "@/lib/compliance/tasks/build-compliance-tasks";
 
 export const dynamic = "force-dynamic";
 
 export default async function ComplianceReportsPage() {
-  const [goodChange, bank, reconciliation, cash, cashBatches, cashAuditLog, moneySummary, moneyMovements, vendors, receipts, corpus] = await Promise.all([
+  const [goodChange, bank, reconciliation, cash, cashBatches, cashAuditLog, moneySummary, moneyMovements, vendors, receipts, corpus, workbench, tasks, filings, amendments, score] = await Promise.all([
     loadGoodChangeAnalyses(),
     loadBankAnalyses(),
     buildReconciliationAnalysis(),
@@ -22,6 +28,11 @@ export default async function ComplianceReportsPage() {
     loadComplianceVendors(),
     loadStagedReceipts(),
     loadComplianceRuleCorpus(),
+    buildReconciliationWorkbench(),
+    buildComplianceTasks(),
+    loadFilingSnapshots(),
+    buildAmendmentCandidates(),
+    buildComplianceExecutiveScore(),
   ]);
   const [ruleAudit, filingReadiness] = [auditComplianceRuleCorpus(corpus), await buildFilingReadinessReport()];
   return (
@@ -72,6 +83,18 @@ export default async function ComplianceReportsPage() {
         <ComplianceCard title="Human review required report">Human review required: {filingReadiness.humanReviewRequired ? "yes" : "no"}.</ComplianceCard>
         <ComplianceCard title="Bank reconciliation blocker report">{filingReadiness.sections.find((section) => section.id === "bank")?.count ?? 0} unmatched item(s).</ComplianceCard>
         <ComplianceCard title="Missing documentation report">{moneySummary.missingReceipts + receipts.filter((receipt) => receipt.documentationStatus !== "complete").length} documentation gap(s).</ComplianceCard>
+        <ComplianceCard title="Task aging report" href="/admin/compliance/tasks">{tasks.length} open generated task(s).</ComplianceCard>
+        <ComplianceCard title="Audit log summary report">{cashAuditLog.length} cash audit event(s); money/receipt audit surfaces available in detail queues.</ComplianceCard>
+        <ComplianceCard title="Monthly compliance score">{score.score}/100 · {score.status}</ComplianceCard>
+        <ComplianceCard title="Executive dashboard packet" href="/admin/compliance">Score, readiness, tasks, filings, reconciliation, and rule coverage.</ComplianceCard>
+        <ComplianceCard title="Unreconciled transactions" href="/admin/compliance/reconciliation">{workbench.unmatchedBankTransactions.length + workbench.unmatchedMoneyMovements.length} unmatched transaction(s).</ComplianceCard>
+        <ComplianceCard title="Contributions by source">{moneyMovements.filter((movement) => movement.direction === "in").length} contribution/money-in movement(s).</ComplianceCard>
+        <ComplianceCard title="Expenses by category">{new Set(moneyMovements.filter((movement) => movement.direction === "out").map((movement) => movement.category)).size} expense categor(ies).</ComplianceCard>
+        <ComplianceCard title="GoodChange net vs bank">{reconciliation.candidates.length} GoodChange-bank candidate(s).</ComplianceCard>
+        <ComplianceCard title="Duplicate candidates">{receipts.filter((receipt) => receipt.warnings.some((warning) => warning.toLowerCase().includes("duplicate"))).length} duplicate warning(s).</ComplianceCard>
+        <ComplianceCard title="Amendment candidates" href="/admin/compliance/amendments">{amendments.length} candidate(s).</ComplianceCard>
+        <ComplianceCard title="Filing export packages" href="/admin/compliance/filings">{filings.length} package(s).</ComplianceCard>
+        <ComplianceCard title="AI tool suite">{advancedComplianceAITools.length} guarded AI tool definitions.</ComplianceCard>
       </section>
       <ComplianceCard title="Generated docs">
         <ul className="grid gap-1">

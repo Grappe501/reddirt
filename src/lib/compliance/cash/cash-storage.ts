@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { defaultCashContributionPolicy } from "./cash-policy";
@@ -11,6 +12,7 @@ import type {
 } from "./types";
 
 const CASH_DIR = path.join(process.cwd(), "data", "compliance", "cash");
+const CASH_UPLOADS_DIR = path.join(CASH_DIR, "uploads");
 const CONTRIBUTIONS_PATH = path.join(CASH_DIR, "staged-cash-contributions.json");
 const AUDIT_LOG_PATH = path.join(CASH_DIR, "cash-intake-audit-log.json");
 const BATCHES_PATH = path.join(CASH_DIR, "cash-deposit-batches.json");
@@ -47,6 +49,25 @@ export async function loadCashDepositBatches(): Promise<CashDepositBatch[]> {
 
 export async function saveCashDepositBatches(batches: CashDepositBatch[]): Promise<void> {
   await writeJson(BATCHES_PATH, batches);
+}
+
+export async function saveCashUpload(input: {
+  fileName: string;
+  arrayBuffer: ArrayBuffer;
+  evidenceType: "bill" | "donor-slip";
+}): Promise<{ filePath: string; fileHash: string; sourceFileName: string }> {
+  await mkdir(CASH_UPLOADS_DIR, { recursive: true });
+  const bytes = Buffer.from(input.arrayBuffer);
+  const fileHash = createHash("sha256").update(bytes).digest("hex");
+  const safeName = input.fileName.toLowerCase().replace(/[^a-z0-9.]+/g, "-").replace(/^-|-$/g, "").slice(0, 80) || "cash-evidence";
+  const fileName = `${input.evidenceType}-${Date.now()}-${safeName}`;
+  const absolutePath = path.join(CASH_UPLOADS_DIR, fileName);
+  await writeFile(absolutePath, bytes);
+  return {
+    filePath: path.relative(process.cwd(), absolutePath).replace(/\\/g, "/"),
+    fileHash,
+    sourceFileName: input.fileName,
+  };
 }
 
 export async function createStagedCashContribution(input: CashIntakeInput): Promise<StagedCashContribution> {

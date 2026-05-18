@@ -88,6 +88,14 @@ data/compliance/knowledge/*.json
 !data/compliance/knowledge/.gitkeep
 data/compliance/filing-readiness/*.json
 !data/compliance/filing-readiness/.gitkeep
+data/compliance/documents/**
+!data/compliance/documents/.gitkeep
+data/compliance/approvals/*.json
+!data/compliance/approvals/.gitkeep
+data/compliance/reconciliation/*.json
+!data/compliance/reconciliation/.gitkeep
+data/compliance/filings/*.json
+!data/compliance/filings/.gitkeep
 reports/compliance/filing-readiness-report.md
 # Folder-ingest: keep uploads/ in repo but not dropped files
 campaign-media/uploads/*

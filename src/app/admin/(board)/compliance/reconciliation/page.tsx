@@ -1,4 +1,5 @@
 import { ComplianceCard, ComplianceNav, CompliancePageHeader, StorageModeNotice } from "../components";
+import { buildReconciliationWorkbench } from "@/lib/compliance/reconciliation/reconciliation-workbench-storage";
 import { loadStagedReceipts } from "@/lib/compliance/receipts/receipt-storage";
 import { buildReconciliationAnalysis } from "@/lib/compliance/storage";
 
@@ -17,7 +18,7 @@ const coverageMatchTypes = [
 ];
 
 export default async function ComplianceReconciliationPage() {
-  const [analysis, receipts] = await Promise.all([buildReconciliationAnalysis(), loadStagedReceipts()]);
+  const [analysis, receipts, workbench] = await Promise.all([buildReconciliationAnalysis(), loadStagedReceipts(), buildReconciliationWorkbench()]);
   const unmatchedReceipts = receipts.filter((receipt) => receipt.reconciliationStatus === "awaiting_bank_match" && receipt.approvalStatus === "approved");
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-6">
@@ -34,6 +35,10 @@ export default async function ComplianceReconciliationPage() {
         <ComplianceCard title="Low confidence">{analysis.summary.lowConfidence} candidate(s)</ComplianceCard>
         <ComplianceCard title="Manual review">{analysis.summary.manualRequired} candidate(s)</ComplianceCard>
         <ComplianceCard title="Unmatched receipts">{unmatchedReceipts.length} awaiting bank debit</ComplianceCard>
+        <ComplianceCard title="Saved matches">{workbench.matches.length} saved</ComplianceCard>
+        <ComplianceCard title="Locked matches">{workbench.lockedCount} locked</ComplianceCard>
+        <ComplianceCard title="Unmatched bank">{workbench.unmatchedBankTransactions.length} transaction(s)</ComplianceCard>
+        <ComplianceCard title="Unmatched ledger">{workbench.unmatchedMoneyMovements.length} movement(s)</ComplianceCard>
       </section>
       <section className="rounded-2xl border border-kelly-text/10 bg-kelly-page p-5">
         <h2 className="font-heading text-xl font-bold text-kelly-text">Receipt expense bank matching</h2>
@@ -63,6 +68,7 @@ export default async function ComplianceReconciliationPage() {
                 <p className="font-semibold text-kelly-text">{candidate.matchType} · {candidate.confidence}</p>
                 <p className="mt-1">{candidate.explanation}</p>
                 <p className="mt-1">Bank amount: ${candidate.bankAmount.toFixed(2)} · GoodChange net: {candidate.goodChangeNetTotal?.toFixed(2) ?? "n/a"}</p>
+                <a className="mt-2 inline-block text-kelly-navy underline" href={`/admin/compliance/reconciliation/${candidate.id}`}>Review match detail</a>
               </article>
             ))}
           </div>

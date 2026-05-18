@@ -1,4 +1,4 @@
-import { approveReceipt, convertReceiptToMoneyMovement } from "../../src/lib/compliance/receipts/convert-receipt-to-money-movement";
+import { approveReceipt, convertReceiptToMoneyMovement, receiptApprovalBlockers } from "../../src/lib/compliance/receipts/convert-receipt-to-money-movement";
 import { createStagedReceipt } from "../../src/lib/compliance/receipts/receipt-storage";
 
 async function main() {
@@ -16,9 +16,26 @@ async function main() {
     category: "meals",
     businessPurpose: "Synthetic campaign meal during county travel day.",
     sourceFileName: "synthetic-receipt.txt",
+    extraction: {
+      vendorName: "Synthetic Receipt Vendor",
+      receiptDate: "2026-05-17",
+      subtotal: 20,
+      tax: 2,
+      tip: 3,
+      total: 25,
+      paymentMethod: "campaign_card",
+      cardLastFour: "4242",
+      suggestedCategory: "meals",
+      suggestedPurpose: "Synthetic campaign meal during county travel day.",
+      confidence: "high",
+      missingFields: [],
+      warnings: [],
+      humanReviewRequired: true,
+    },
   });
   if (draft.approvalStatus !== "not_approved") throw new Error("Unapproved receipt should not be approved.");
   if (draft.moneyMovementId) throw new Error("Unapproved receipt should not create money movement.");
+  if (receiptApprovalBlockers(draft).length) throw new Error("Synthetic receipt should be approval-ready.");
   const approved = await approveReceipt({ receiptId: draft.id, actorInitials: "QA" });
   const converted = await convertReceiptToMoneyMovement({ receiptId: approved.id, actorInitials: "QA" });
   if (!converted.moneyMovementId) throw new Error("Approved receipt did not create money movement.");
