@@ -8,6 +8,8 @@ import { loadComplianceRuleCorpus } from "../knowledge/load-compliance-rule-corp
 import { buildRuleCoverageGate } from "./rule-coverage-gate";
 import { buildTransactionReadinessSections } from "./filing-readiness-checks";
 import { getCurrentFilingPeriod } from "./arkansas-filing-periods";
+import { evaluateFilingHardGates, filingHardGateSummary } from "./hard-gates";
+import { gradeFilingReadiness } from "./filing-readiness-grade";
 import type { FilingReadinessReport, FilingReadinessStatus } from "./filing-readiness-types";
 
 export const filingReadinessJsonPath = path.join(process.cwd(), "data", "compliance", "filing-readiness", "latest.json");
@@ -50,13 +52,26 @@ export async function buildFilingReadinessReport(): Promise<FilingReadinessRepor
     summary: `${period.label}: ${period.startDate} to ${period.endDate}${period.dueDate ? `, due ${period.dueDate}` : ", due date not verified"}.`,
     nextAction: period.sourceNote,
   });
+  const hardGates = await evaluateFilingHardGates();
+  const gateSummary = filingHardGateSummary(hardGates);
+  const grade = gradeFilingReadiness(hardGates);
+  sections.push({
+    id: "hard-gates",
+    label: "Filing hard gates",
+    status: grade.status,
+    summary: `${grade.passedGates}/${grade.totalGates} passed · ${grade.label}`,
+    count: hardGates.filter((gate) => gate.status === "blocked").length,
+    nextAction: "Resolve blocked gates or enter authorized overrides with initials and reason.",
+  });
   const blockers = [
     ...ruleGate.blockers,
-    ...sections.filter((section) => section.status === "red").map((section) => `${section.label}: ${section.summary}`),
+    ...gateSummary.blockers,
+    ...sections.filter((section) => section.status === "red" && section.id !== "hard-gates").map((section) => `${section.label}: ${section.summary}`),
   ];
   const warnings = [
     ...ruleGate.warnings,
-    ...sections.filter((section) => section.status === "yellow").map((section) => `${section.label}: ${section.summary}`),
+    ...gateSummary.warnings,
+    ...sections.filter((section) => section.status === "yellow" && section.id !== "hard-gates").map((section) => `${section.label}: ${section.summary}`),
   ];
   return {
     id: `filing-readiness-${Date.now()}`,
@@ -67,7 +82,9 @@ export async function buildFilingReadinessReport(): Promise<FilingReadinessRepor
       endDate: period.endDate,
       dueDate: period.dueDate,
     },
-    overallStatus: resolveOverallStatus(sections, blockers),
+    overallStatus: resolveOverallFilingStatus(gateSummary.overallStatus, grade.status, sections, blockers),
+    hardGates,
+    readinessGrade: grade,
     blockers: [...new Set(blockers)],
     warnings: [...new Set(warnings)],
     sections,
@@ -92,6 +109,18 @@ export async function writeFilingReadinessReport(): Promise<FilingReadinessRepor
 function resolveOverallStatus(sections: FilingReadinessReport["sections"], blockers: string[]): FilingReadinessStatus {
   if (blockers.length || sections.some((section) => section.status === "red")) return "red";
   if (sections.some((section) => section.status === "yellow")) return "yellow";
+  return "green";
+}
+
+function resolveOverallFilingStatus(
+  gateSummaryStatus: FilingReadinessStatus,
+  hardGateGradeStatus: FilingReadinessStatus,
+  sections: FilingReadinessReport["sections"],
+  blockers: string[],
+): FilingReadinessStatus {
+  const sectionStatus = resolveOverallStatus(sections, blockers);
+  if (gateSummaryStatus === "red" || sectionStatus === "red" || hardGateGradeStatus === "red" || blockers.length > 0) return "red";
+  if (gateSummaryStatus === "yellow" || sectionStatus === "yellow" || hardGateGradeStatus === "yellow") return "yellow";
   return "green";
 }
 

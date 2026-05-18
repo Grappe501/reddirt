@@ -100,14 +100,14 @@ async function saveDocumentMetadata(metadata: ComplianceDocumentMetadata[]): Pro
   await writeFile(METADATA_PATH, `${JSON.stringify(metadata, null, 2)}\n`, "utf8");
 }
 
-function getSupabaseStorageClient(): SupabaseClient | null {
+export function getSupabaseStorageClient(): SupabaseClient | null {
   const url = process.env.SUPABASE_URL?.trim() || process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
   if (!url || !key) return null;
   return createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
 }
 
-function getComplianceBucketName(): string {
+export function getComplianceBucketName(): string {
   return process.env.SUPABASE_COMPLIANCE_BUCKET?.trim() || "compliance-private";
 }
 

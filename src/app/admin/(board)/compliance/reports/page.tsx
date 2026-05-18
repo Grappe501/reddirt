@@ -12,6 +12,9 @@ import { buildReconciliationWorkbench } from "@/lib/compliance/reconciliation/re
 import { buildComplianceExecutiveScore } from "@/lib/compliance/scoring/compliance-score";
 import { buildReconciliationAnalysis, loadBankAnalyses, loadGoodChangeAnalyses } from "@/lib/compliance/storage";
 import { buildComplianceTasks } from "@/lib/compliance/tasks/build-compliance-tasks";
+import { loadApprovalAuditLog, loadApprovalItems, loadApprovalQueues } from "@/lib/compliance/approval/approval-storage";
+import { computeQueueStats, getBatchEligibleItems } from "@/lib/compliance/approval/load-approval-queue";
+import { APRIL_2026_QUEUE_ID } from "@/lib/compliance/approval/build-approval-queue";
 
 export const dynamic = "force-dynamic";
 
@@ -34,7 +37,15 @@ export default async function ComplianceReportsPage() {
     buildAmendmentCandidates(),
     buildComplianceExecutiveScore(),
   ]);
-  const [ruleAudit, filingReadiness] = [auditComplianceRuleCorpus(corpus), await buildFilingReadinessReport()];
+  const [ruleAudit, filingReadiness, approvalQueues, approvalItems, approvalAudit] = [
+    auditComplianceRuleCorpus(corpus),
+    await buildFilingReadinessReport(),
+    await loadApprovalQueues(),
+    await loadApprovalItems(),
+    await loadApprovalAuditLog(),
+  ];
+  const aprilStats = computeQueueStats(approvalItems.filter((item) => item.queueId === APRIL_2026_QUEUE_ID));
+  const batchEligible = await getBatchEligibleItems(APRIL_2026_QUEUE_ID);
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-6">
       <CompliancePageHeader
@@ -43,6 +54,18 @@ export default async function ComplianceReportsPage() {
         description="Generated discovery reports and exact missing inputs for the Pass 2 compliance build script."
       />
       <ComplianceNav />
+      <ComplianceCard eyebrow="Approval" title="Lightning Approval Workbench" href="/admin/compliance/approval">
+        Review AI-prepared compliance records one at a time, verify evidence, approve, reject, or request more information.
+      </ComplianceCard>
+      <section className="grid gap-4 md:grid-cols-3">
+        <ComplianceCard title="Approval queue summary" href="/admin/compliance/approval">{approvalQueues.length} queue(s) · {aprilStats.remaining} remaining in April review.</ComplianceCard>
+        <ComplianceCard title="Approval action history" href="/admin/compliance/approval/history">{approvalAudit.length} audit event(s).</ComplianceCard>
+        <ComplianceCard title="High-risk approval items" href="/admin/compliance/approval">{aprilStats.highRisk} high-risk item(s).</ComplianceCard>
+        <ComplianceCard title="Needs info report" href="/admin/compliance/approval">{aprilStats.needsInfo} needs-info decision(s).</ComplianceCard>
+        <ComplianceCard title="Batch approval report" href="/admin/compliance/approval/batch">{batchEligible.length} batch-eligible low-risk item(s).</ComplianceCard>
+        <ComplianceCard title="Approval overrides report">{approvalAudit.filter((entry) => entry.action === "override_approve").length} override(s).</ComplianceCard>
+        <ComplianceCard title="Source update pending report">{approvalItems.filter((item) => item.sourceUpdatePending).length} source update pending.</ComplianceCard>
+      </section>
       <section className="grid gap-4 md:grid-cols-3">
         <ComplianceCard title="GoodChange analyzer">{goodChange.length ? `${goodChange.length} batch(es) analyzed.` : "Sample CSV needed for exact columns and rows."}</ComplianceCard>
         <ComplianceCard title="Bank analyzer">{bank.length ? `${bank.length} batch(es) analyzed.` : "Sample bank CSV needed for exact columns and rows."}</ComplianceCard>

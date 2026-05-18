@@ -92,11 +92,21 @@ data/compliance/documents/**
 !data/compliance/documents/.gitkeep
 data/compliance/approvals/*.json
 !data/compliance/approvals/.gitkeep
+data/compliance/approval/*.json
+!data/compliance/approval/.gitkeep
 data/compliance/reconciliation/*.json
 !data/compliance/reconciliation/.gitkeep
 data/compliance/filings/*.json
 !data/compliance/filings/.gitkeep
+data/compliance/filings/exports/**
+!data/compliance/filings/exports/.gitkeep
+data/compliance/imports/**/*.csv
+data/compliance/imports/**/*.xlsx
+data/compliance/imports/**/*.xls
+data/compliance/bank/**/*.csv
 reports/compliance/filing-readiness-report.md
+reports/compliance/**/*
+!reports/compliance/.gitkeep
 # Folder-ingest: keep uploads/ in repo but not dropped files
 campaign-media/uploads/*
 !campaign-media/uploads/.gitkeep

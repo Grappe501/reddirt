@@ -3,8 +3,10 @@ import { buildComplianceExecutiveScore } from "../../src/lib/compliance/scoring/
 import { buildComplianceTasks } from "../../src/lib/compliance/tasks/build-compliance-tasks";
 import { buildReconciliationWorkbench } from "../../src/lib/compliance/reconciliation/reconciliation-workbench-storage";
 import { buildFilingReadinessReport } from "../../src/lib/compliance/filing-readiness/build-filing-readiness-report";
+import { execSync } from "node:child_process";
 
 async function main() {
+  execSync("npm run compliance:qa-approval", { stdio: "inherit" });
   const [score, tasks, reconciliation, readiness] = await Promise.all([
     buildComplianceExecutiveScore(),
     buildComplianceTasks(),
