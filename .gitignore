@@ -99,6 +99,9 @@ data/compliance/tasks/*.json
 !data/compliance/tasks/.gitkeep
 data/compliance/reports/*.json
 !data/compliance/reports/.gitkeep
+data/compliance/ai/*.json
+!data/compliance/ai/.gitkeep
+!data/compliance/ai/brain-snapshot.template.json
 data/compliance/reconciliation/*.json
 !data/compliance/reconciliation/.gitkeep
 data/compliance/filings/*.json

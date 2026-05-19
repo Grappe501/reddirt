@@ -1,6 +1,10 @@
 # Compliance AI thread handoff
 
-Run `npm run compliance:ai-thread-handoff` for live JSON status.
+Run `npm run compliance:ai-thread-handoff` for live JSON status.  
+Run `npm run compliance:ai-brain` for full brain snapshot + `COMPLIANCE_AI_BRAIN_BRIEF.md`.
+
+**Command center:** `/admin/compliance/command-center`  
+**State of build:** `COMPLIANCE_STATE_OF_BUILD.md` · **Completion plan:** `COMPLIANCE_COMPLETION_PLAN.md` · **AI model:** `COMPLIANCE_AI_OPERATING_MODEL.md`
 
 ## Active lane
 

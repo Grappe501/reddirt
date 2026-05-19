@@ -33,6 +33,7 @@ export function CompliancePageHeader({
 export function ComplianceNav() {
   const links = [
     ["Home", basePath],
+    ["Command center", `${basePath}/command-center`],
     ["Wizard", `${basePath}/wizard`],
     ["Approval", `${basePath}/approval`],
     ["April26", `${basePath}/april26`],
