@@ -83,5 +83,5 @@ Filing remains **red** (rules, approval, storage, DB gates) — honest; `bank-cs
 - **Do not commit:** `data/compliance/imports/bank/*.analysis.json`, `data/compliance/tasks/*.json`, raw bank CSV, donor exports  
 - **Commit:** code, docs, regenerated briefs (AI JSON gitignored)  
 
-**New commit:** _(filled after push)_  
-**Pushed to GitHub:** _(filled after push)_
+**New commit:** `532dc97`  
+**Pushed to GitHub:** yes (`origin main`)
