@@ -67,6 +67,8 @@
     "compliance:operator-review-export-v2": "tsx scripts/compliance/operator-review-export-v2.ts",
     "compliance:bank:qa": "tsx scripts/compliance/bank-qa.ts",
     "compliance:source-truth-audit": "tsx scripts/compliance/source-truth-audit.ts",
+    "compliance:april-expenditure-inventory": "tsx scripts/compliance/april-expenditure-inventory.ts",
+    "compliance:april-expenditure-inventory:qa": "tsx scripts/compliance/april-expenditure-inventory-qa.ts",
     "compliance:filing-impact": "tsx scripts/compliance/filing-impact.ts",
     "compliance:queue-unlock-report": "tsx scripts/compliance/queue-unlock-report.ts",
     "compliance:reconciliation-review-report": "tsx scripts/compliance/reconciliation-review-report.ts",

@@ -24,6 +24,7 @@ import { buildBankReconciliationRehearsal } from "@/lib/compliance/imports/bank-
 import { buildBankCsvOperatorGuide } from "@/lib/compliance/imports/bank-csv-operator-state";
 import { buildReconciliationProgress } from "@/lib/compliance/reconciliation/build-reconciliation-progress";
 import { ComplianceAiOrchestratorPanel } from "./ai-orchestrator-panel";
+import { AprilExpenditureInventoryPanel } from "./april-expenditure-inventory-panel";
 
 export const dynamic = "force-dynamic";
 
@@ -69,6 +70,7 @@ export default async function ComplianceAiCommandCenterPage() {
       <ComplianceStatusLanguage status={launchStatus} score={expert.launchReadinessScore} whyNotReady={whyNotReady} />
 
       <ComplianceAiOrchestratorPanel />
+      <AprilExpenditureInventoryPanel />
 
       {topAction ? (
         <ComplianceDoThisNext

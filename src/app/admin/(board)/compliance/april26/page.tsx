@@ -11,6 +11,7 @@ import { buildBankReconciliationRehearsal } from "@/lib/compliance/imports/bank-
 import { buildBankCsvOperatorGuide } from "@/lib/compliance/imports/bank-csv-operator-state";
 import { ComplianceDoThisNext, ComplianceWhatThisMeans } from "../compliance-ux";
 import { rebuildApprovalQueuesAction } from "../approval/actions";
+import { AprilExpenditureInventoryPanel } from "../command-center/april-expenditure-inventory-panel";
 
 export const dynamic = "force-dynamic";
 
@@ -57,6 +58,7 @@ export default async function April26ImportPage() {
           </ul>
         ) : null}
       </ComplianceWhatThisMeans>
+      <AprilExpenditureInventoryPanel />
       <ComplianceCard title="Bank source status">
         <p className="text-sm font-semibold text-[#0f2744]">{bankGuide.headline}</p>
         <p className="mt-2 text-sm">{bank.operatorSummary}</p>

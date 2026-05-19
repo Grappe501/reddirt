@@ -1,7 +1,7 @@
 # Compliance AI brain brief
 
-Generated: 2026-05-19T21:26:33.186Z  
-Commit: d47d472  
+Generated: 2026-05-19T22:48:07.541Z  
+Commit: 9ead0eb  
 Command center: /admin/compliance/command-center
 
 > Human review required — not legal certification. Green only when source-backed.
@@ -9,7 +9,7 @@ Command center: /admin/compliance/command-center
 ## Launch status
 
 - **Overall:** rehearsal_ready (25% checklist)
-- **Filing:** red (8 blockers)
+- **Filing:** red (10 blockers)
 - **Open queue:** 221 · Batch eligible: 0
 - **Bank CSV:** present
 - **Rule topics unverified:** 24

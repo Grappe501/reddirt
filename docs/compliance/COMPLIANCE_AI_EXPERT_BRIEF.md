@@ -1,7 +1,7 @@
 # Compliance AI expert brief
 
-Generated: 2026-05-19T22:06:38.921Z  
-Commit: 1a2acf4  
+Generated: 2026-05-19T22:48:08.884Z  
+Commit: 9ead0eb  
 Overall completion: **57%** across 35 areas
 
 > Not legal advice. Human review required. Green only when source-backed.
