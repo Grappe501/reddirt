@@ -86,6 +86,24 @@ Each blocker on filing readiness has a `greenCondition` tied to **source-backed*
 | `compliance:ai-risk-report` | Risks only |
 | `compliance:ai-launch-readiness` | Launch checklist score |
 | `compliance:ai-brain:qa` | Schema validation |
+| `compliance:ai-expert` | Expert snapshot + coaches + completion progress |
+| `compliance:ai-expert:qa` | Expert artifact schema validation |
+| `compliance:ai-progress-chart` | `completion-progress.json` + progress matrix doc |
+| `compliance:ai-operator-coach` | Step-by-step operator workflow |
+| `compliance:ai-filing-coach` | Filing blocker coach |
+| `compliance:ai-rule-coach` | Arkansas rule topic coach |
+| `compliance:ai-reconciliation-coach` | Bank recon coach |
+| `compliance:ai-ux-audit` | Route UX audit JSON |
+| `compliance:ai-market-plan` | Market readiness summary |
+
+## Expert v2 (guided operator)
+
+The expert layer adds **why** and **step-by-step coaches** on top of the brain snapshot. It must:
+
+- Explain blockers in plain English  
+- Lead with one next action (command center)  
+- Distinguish automate vs human vs Steve vs source file  
+- Never certify legal compliance  
 
 ## Related
 

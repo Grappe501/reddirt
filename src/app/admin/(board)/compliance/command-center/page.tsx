@@ -1,6 +1,5 @@
 import Link from "next/link";
 import {
-  ComplianceActionButton,
   ComplianceCard,
   ComplianceMetricCard,
   ComplianceNav,
@@ -9,58 +8,90 @@ import {
   ComplianceWarningPanel,
   StorageModeNotice,
 } from "../components";
-import { buildComplianceBrainSnapshot, buildComplianceNextActions, buildComplianceRiskReport } from "@/lib/compliance/ai/brain/build-compliance-brain";
+import {
+  ComplianceDoThisNext,
+  CompliancePhaseIndicator,
+  ComplianceProgressByArea,
+  ComplianceRouteCardGrid,
+  ComplianceStatusLanguage,
+  ComplianceWhatThisMeans,
+  type LaunchStatusLabel,
+} from "../compliance-ux";
+import { buildComplianceExpertBundle } from "@/lib/compliance/ai/expert/build-compliance-expert";
+import { buildComplianceUxAudit } from "@/lib/compliance/ai/expert/build-ux-audit";
 
 export const dynamic = "force-dynamic";
 
+function launchLabel(overall: string): LaunchStatusLabel {
+  if (overall === "launch_ready") return "launch_ready";
+  if (overall === "rehearsal_ready") return "rehearsal_ready";
+  return "not_ready";
+}
+
 export default async function ComplianceAiCommandCenterPage() {
-  const snapshot = await buildComplianceBrainSnapshot();
-  const nextActions = buildComplianceNextActions(snapshot);
-  const risks = buildComplianceRiskReport(snapshot).filter((r) => r.severity === "critical" || r.severity === "high").slice(0, 6);
-  const launchTone =
-    snapshot.launchReadiness.overall === "launch_ready" ? "green" : snapshot.launchReadiness.overall === "rehearsal_ready" ? "yellow" : "red";
+  const { brain, expert, progress, operatorCoach } = await buildComplianceExpertBundle();
+  const ux = buildComplianceUxAudit();
+  const topAction = expert.top5Now[0];
+  const whyNotReady = brain.launchReadiness.checklist.filter((c) => !c.passed && c.requiredForLaunch).map((c) => c.label);
+  const launchStatus = launchLabel(expert.launchOverall);
+  const filingTone = brain.filing.overall === "green" ? "green" : brain.filing.overall === "yellow" ? "yellow" : "red";
 
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 pb-12 pt-6">
       <CompliancePageHeader
-        eyebrow="AI operating brain"
+        eyebrow="Mission control"
         title="Compliance command center"
-        description="Source-backed launch status, risks, and next actions. No donor names or private task data on this page. Regenerate: npm run compliance:ai-brain"
+        description="Your home base for campaign compliance. Plain language first — technical detail in expandable sections. No donor names on this page."
         actions={
-          <ComplianceActionButton href="/admin/compliance/filing-readiness" label="Can we file?" />
+          <Link href="/admin/compliance/filing-readiness" className="rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-bold text-[#0f2744]">
+            Can we file?
+          </Link>
         }
       />
       <ComplianceNav />
       <StorageModeNotice />
+
+      <ComplianceStatusLanguage status={launchStatus} score={expert.launchReadinessScore} whyNotReady={whyNotReady} />
+
+      {topAction ? (
+        <ComplianceDoThisNext
+          title={topAction.title}
+          description={topAction.description}
+          href={topAction.href ?? "/admin/compliance/april26"}
+          actionLabel="Start this step"
+          secondaryHref="/admin/compliance/approval/april-2026-compliance-review"
+          secondaryLabel="Open April queue"
+        />
+      ) : null}
+
+      <CompliancePhaseIndicator currentPhase={brain.source.bankCsv === "missing" ? 1 : brain.filing.overall === "red" ? 5 : 8} />
+
       <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <ComplianceMetricCard label="Launch readiness" value={`${snapshot.launchReadiness.launchReadinessScore}%`} tone={launchTone} />
-        <ComplianceMetricCard label="Filing" value={snapshot.filing.overall} tone={snapshot.filing.overall === "green" ? "green" : snapshot.filing.overall === "yellow" ? "yellow" : "red"} />
-        <ComplianceMetricCard label="Open queue" value={snapshot.queue.openItems} tone={snapshot.queue.openItems ? "yellow" : "green"} />
-        <ComplianceMetricCard label="Batch eligible" value={snapshot.queue.batchEligible} tone={snapshot.queue.batchEligible ? "green" : "neutral"} />
-        <ComplianceMetricCard label="Rule review items" value={snapshot.queue.ruleReviewItems} tone={snapshot.queue.ruleReviewItems ? "yellow" : "green"} />
-        <ComplianceMetricCard label="Filing blockers" value={snapshot.filing.blockerCount} tone={snapshot.filing.blockerCount ? "red" : "green"} />
-        <ComplianceMetricCard label="Bank CSV" value={snapshot.source.bankCsv} tone={snapshot.source.bankCsv === "present" ? "green" : "red"} />
-        <ComplianceMetricCard label="Storage" value={snapshot.storage.mode} tone={snapshot.storage.ready ? "green" : "yellow"} />
+        <ComplianceMetricCard label="Overall completion" value={`${progress.overallPercentComplete}%`} tone={progress.overallPercentComplete >= 70 ? "yellow" : "red"} />
+        <ComplianceMetricCard label="Filing" value={brain.filing.overall} tone={filingTone} />
+        <ComplianceMetricCard label="Open queue" value={brain.queue.openItems} tone={brain.queue.openItems ? "yellow" : "green"} />
+        <ComplianceMetricCard label="QA score" value={brain.launchReadiness.qaFullScore ?? "—"} tone={brain.launchReadiness.qaFullStatus ?? "neutral"} />
+        <ComplianceMetricCard label="Batch eligible" value={brain.queue.batchEligible} tone="neutral" />
+        <ComplianceMetricCard label="Rule review" value={brain.queue.ruleReviewItems} tone={brain.queue.ruleReviewItems ? "yellow" : "green"} />
+        <ComplianceMetricCard label="Bank CSV" value={brain.source.bankCsv} tone={brain.source.bankCsv === "present" ? "green" : "red"} />
+        <ComplianceMetricCard label="Storage" value={brain.storage.mode} tone={brain.storage.ready ? "green" : "yellow"} />
       </section>
-      <ComplianceWarningPanel title="Next human action" tone="amber">
-        <p className="text-sm">{snapshot.recommendedNextHumanAction}</p>
-        <p className="mt-2 text-xs text-slate-600">AI: {snapshot.recommendedNextAiAction}</p>
-      </ComplianceWarningPanel>
-      <section className="flex flex-wrap gap-2">
-        <ComplianceStatusBadge label={`Commit ${snapshot.commitBase}`} tone="neutral" />
-        <ComplianceStatusBadge label={`DB ${snapshot.dbMigration.migrated ? "migrated" : "json"}`} tone="neutral" />
-        <ComplianceStatusBadge label={`Rules ${snapshot.rules.unverifiedTopicCount} unverified`} tone={snapshot.rules.unverifiedTopicCount ? "yellow" : "green"} />
-      </section>
+
       <div className="grid gap-4 lg:grid-cols-2">
-        <ComplianceCard title="Top next actions">
-          <ol className="list-decimal space-y-2 pl-5 text-sm">
-            {nextActions.slice(0, 8).map((a) => (
-              <li key={a.id}>
-                <span className="font-semibold">{a.title}</span> — {a.owner}
-                {a.href ? (
+        <ComplianceCard title="Progress by area (lowest first)">
+          <ComplianceProgressByArea areas={progress.areas.map((a) => ({ area: a.area, percentComplete: a.percentComplete, status: a.status }))} />
+          <p className="mt-3 text-xs text-slate-500">Full matrix: docs/compliance/COMPLIANCE_PROGRESS_MATRIX.md</p>
+        </ComplianceCard>
+        <ComplianceCard title="AI operator coach">
+          <p className="text-sm">{operatorCoach.summary}</p>
+          <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm">
+            {operatorCoach.steps.slice(0, 4).map((s) => (
+              <li key={s.step}>
+                <span className="font-semibold">{s.title}</span> — {s.why}
+                {s.href ? (
                   <>
                     {" "}
-                    <Link href={a.href} className="text-[#0f2744] underline">
+                    <Link href={s.href} className="underline">
                       open
                     </Link>
                   </>
@@ -68,74 +99,68 @@ export default async function ComplianceAiCommandCenterPage() {
               </li>
             ))}
           </ol>
-        </ComplianceCard>
-        <ComplianceCard title="Top risks">
-          <ul className="list-disc space-y-2 pl-5 text-sm">
-            {risks.map((r) => (
-              <li key={r.id}>
-                <span className="font-mono text-xs uppercase">{r.severity}</span> {r.title}
-              </li>
-            ))}
-          </ul>
+          <p className="mt-2 text-xs text-slate-500">Regenerate coaches: npm run compliance:ai-expert</p>
         </ComplianceCard>
       </div>
-      <ComplianceCard title="Source status (April26)">
-        <ul className="grid gap-1 text-sm sm:grid-cols-2">
-          <li>Folder: {snapshot.source.april26FolderExists ? "yes" : "no"}</li>
-          <li>GoodChange: {snapshot.source.goodChangeCsv}</li>
-          <li>Bank: {snapshot.source.bankCsv}</li>
-          <li>Receipts: {snapshot.source.receiptImages}</li>
-          <li>Checks: {snapshot.source.checkImages}</li>
-          <li>Recon blockers: {snapshot.source.reconciliationBlockers}</li>
-        </ul>
-        <ComplianceActionButton href="/admin/compliance/april26" label="April26 desk" variant="secondary" />
-      </ComplianceCard>
-      <ComplianceCard title="Filing blockers (summary)">
-        <ul className="space-y-2 text-sm">
-          {snapshot.filing.blockers.slice(0, 8).map((b) => (
-            <li key={b.id}>
-              <Link href={b.href} className="font-semibold text-[#0f2744] underline">
-                {b.label}
-              </Link>{" "}
-              — {b.severity} · {b.greenCondition}
+
+      <ComplianceWhatThisMeans title="What filing red means">
+        <p>
+          Filing <strong>red</strong> means the system will not treat the committee as ready to export a filing package. QA scripts can still pass while status stays red — that is intentional honesty.
+        </p>
+        <p className="mt-2">
+          {brain.filing.blockerCount} blocker(s) must meet each green condition on the filing readiness page. Human sign-off is always required; this is not legal certification.
+        </p>
+      </ComplianceWhatThisMeans>
+
+      <ComplianceCard title="Top blockers (plain English)">
+        <ul className="space-y-3 text-sm">
+          {expert.blockerExplanations.slice(0, 6).map((b) => (
+            <li key={b.id} className="rounded-lg border border-slate-100 bg-slate-50 p-3">
+              <p className="font-semibold text-[#0f2744]">{b.plainEnglish}</p>
+              <p className="mt-1 text-slate-600">{b.whyItBlocks}</p>
+              <p className="mt-1 text-xs text-slate-500">Clear by: {b.howToClear}</p>
             </li>
           ))}
         </ul>
       </ComplianceCard>
-      <ComplianceCard title="Key pages">
-        <div className="flex flex-wrap gap-2">
-          {[
-            ["/admin/compliance/approval", "Approval"],
-            ["/admin/compliance/approval/april-2026-compliance-review", "April queue"],
-            ["/admin/compliance/approval/batch", "Batch readiness"],
-            ["/admin/compliance/reconciliation", "Reconciliation"],
-            ["/admin/compliance/rules", "Rules"],
-            ["/admin/compliance/settings#storage-setup", "Storage"],
-            ["/admin/compliance/tasks", "Tasks"],
-          ].map(([href, label]) => (
-            <Link key={href} href={href} className="rounded-full border border-slate-200 px-3 py-1 text-xs font-semibold hover:bg-slate-50">
-              {label}
-            </Link>
+
+      <ComplianceCard title="Launch checklist">
+        <ul className="space-y-1 text-sm">
+          {brain.launchReadiness.checklist.map((c) => (
+            <li key={c.id} className="flex items-center gap-2">
+              <ComplianceStatusBadge label={c.passed ? "pass" : "fail"} tone={c.passed ? "green" : "red"} />
+              {c.label}
+            </li>
           ))}
-        </div>
+        </ul>
       </ComplianceCard>
-      <ComplianceCard title="AI brain outputs (local, gitignored JSON)">
-        <p className="text-sm text-slate-600">
-          <code>data/compliance/ai/brain-snapshot.json</code> · <code>next-actions.json</code> · <code>risk-report.json</code> ·{" "}
-          <code>launch-readiness.json</code>
-        </p>
-        <p className="mt-2 text-sm">
-          Brief: <code>docs/compliance/COMPLIANCE_AI_BRAIN_BRIEF.md</code> · State:{" "}
-          <code>docs/compliance/COMPLIANCE_STATE_OF_BUILD.md</code>
-        </p>
-      </ComplianceCard>
-      <ComplianceWarningPanel title="Unsafe — never automate" tone="red">
-        <ul className="mt-2 list-disc pl-5 text-sm">
-          {snapshot.unsafeActions.map((u) => (
+
+      <ComplianceRouteCardGrid
+        cards={[
+          { href: "/admin/compliance/april26", title: "April26 desk", description: "Sources + bank rehearsal" },
+          { href: "/admin/compliance/approval/april-2026-compliance-review", title: "April queue", description: `${brain.queue.openItems} open items` },
+          { href: "/admin/compliance/approval/batch", title: "Batch readiness", description: `${brain.queue.batchEligible} eligible` },
+          { href: "/admin/compliance/reconciliation", title: "Reconciliation", description: "Match bank to payouts" },
+          { href: "/admin/compliance/rules", title: "Rules", description: `${brain.rules.unverifiedTopicCount} topics to review` },
+          { href: "/admin/compliance/filing-readiness", title: "Filing readiness", description: `Status ${brain.filing.overall}` },
+        ]}
+      />
+
+      <ComplianceWarningPanel title="Never automate" tone="red">
+        <ul className="list-disc pl-5 text-sm">
+          {expert.mustNotDo.slice(0, 6).map((u) => (
             <li key={u}>{u.replace(/_/g, " ")}</li>
           ))}
         </ul>
       </ComplianceWarningPanel>
+
+      <ComplianceWhatThisMeans title="Technical / AI outputs">
+        <p className="font-mono text-xs">
+          data/compliance/ai/expert-snapshot.json · completion-progress.json · *-coach.json · ux-audit.json
+        </p>
+        <p className="mt-2 text-xs">Commit {brain.commitBase} · UX audit routes: {ux.routes.length}</p>
+        <p className="mt-1 text-xs">npm run compliance:ai-expert · compliance:ai-brain · compliance:ai-thread-handoff</p>
+      </ComplianceWhatThisMeans>
     </div>
   );
 }

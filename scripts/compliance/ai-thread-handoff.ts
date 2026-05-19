@@ -15,6 +15,8 @@ import {
   buildComplianceRiskReport,
 } from "../../src/lib/compliance/ai/brain/build-compliance-brain";
 import { UNSAFE_COMPLIANCE_ACTIONS } from "../../src/lib/compliance/ai/brain/compliance-brain-types";
+import { buildComplianceExpertSnapshot } from "../../src/lib/compliance/ai/expert/build-compliance-expert";
+import { buildCompletionProgress } from "../../src/lib/compliance/ai/expert/build-completion-progress";
 import { execSync } from "node:child_process";
 
 function gitShortHead(): string {
@@ -37,8 +39,12 @@ async function main() {
     buildBatchReadinessReport(APRIL_2026_QUEUE_ID, aprilItemsAll),
     buildComplianceBrainSnapshot(),
   ]);
-  const nextActions = buildComplianceNextActions(brain);
-  const risks = buildComplianceRiskReport(brain);
+  const [nextActions, risks, expert, progress] = await Promise.all([
+    Promise.resolve(buildComplianceNextActions(brain)),
+    Promise.resolve(buildComplianceRiskReport(brain)),
+    buildComplianceExpertSnapshot(brain),
+    Promise.resolve(buildCompletionProgress(brain)),
+  ]);
   const aprilItems = items.filter((i) => i.queueId === APRIL_2026_QUEUE_ID);
   const open = aprilItems.filter((i) => ["queued", "needs_review", "ready", "reopened"].includes(i.status));
   const blocked = aprilItems.filter((i) => i.blockers.length > 0);
@@ -56,7 +62,12 @@ async function main() {
         completionPlanDoc: "docs/compliance/COMPLIANCE_COMPLETION_PLAN.md",
         aiOperatingModelDoc: "docs/compliance/COMPLIANCE_AI_OPERATING_MODEL.md",
         aiBrainBriefDoc: "docs/compliance/COMPLIANCE_AI_BRAIN_BRIEF.md",
+        aiExpertBriefDoc: "docs/compliance/COMPLIANCE_AI_EXPERT_BRIEF.md",
+        progressMatrixDoc: "docs/compliance/COMPLIANCE_PROGRESS_MATRIX.md",
+        marketReadinessDoc: "docs/compliance/COMPLIANCE_MARKET_READINESS_PLAN.md",
         brainSnapshotPath: "data/compliance/ai/brain-snapshot.json",
+        expertSnapshotPath: "data/compliance/ai/expert-snapshot.json",
+        completionProgressPath: "data/compliance/ai/completion-progress.json",
         april26,
         approval: {
           queues: queues.length,
@@ -83,6 +94,13 @@ async function main() {
           topRisks: risks.filter((r) => r.severity === "critical" || r.severity === "high").slice(0, 5).map((r) => ({ id: r.id, severity: r.severity, title: r.title })),
           unsafeActions: UNSAFE_COMPLIANCE_ACTIONS,
         },
+        aiExpert: {
+          overallPercentComplete: progress.overallPercentComplete,
+          launchOverall: expert.launchOverall,
+          nextBestWorkflow: expert.nextBestWorkflow,
+          top5Now: expert.top5Now.slice(0, 3).map((a) => a.title),
+          mustNotDo: expert.mustNotDo.slice(0, 5),
+        },
         keyRoutes: [
           "/admin/compliance",
           "/admin/compliance/command-center",
@@ -96,6 +114,8 @@ async function main() {
           "/admin/compliance/rules",
         ],
         validationCommands: [
+          "npm run compliance:ai-expert",
+          "npm run compliance:ai-expert:qa",
           "npm run compliance:ai-brain",
           "npm run compliance:ai-brain:qa",
           "npm run compliance:approval:build",

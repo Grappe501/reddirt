@@ -1,7 +1,7 @@
 # Compliance AI brain brief
 
-Generated: 2026-05-19T18:25:25.537Z  
-Commit: 64375b5  
+Generated: 2026-05-19T18:50:58.583Z  
+Commit: 3c6754b  
 Command center: /admin/compliance/command-center
 
 > Human review required — not legal certification. Green only when source-backed.

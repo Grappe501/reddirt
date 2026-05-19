@@ -8,6 +8,7 @@ import {
   ComplianceWarningPanel,
   StorageModeNotice,
 } from "../components";
+import { ComplianceDoThisNext, ComplianceWhatThisMeans } from "../compliance-ux";
 import { buildFilingBlockerBurnDown } from "@/lib/compliance/filing-readiness/filing-blocker-burn-down";
 import { buildFilingReadinessReport } from "@/lib/compliance/filing-readiness/build-filing-readiness-report";
 import { evaluateFilingHardGates } from "@/lib/compliance/filing-readiness/hard-gates";
@@ -30,6 +31,21 @@ export default async function FilingReadinessPage() {
         description="A red/yellow/green staging report for staff review. This is not legal certification and always requires human approval."
       />
       <ComplianceNav />
+      {burnDown.blockers[0] ? (
+        <ComplianceDoThisNext
+          title={burnDown.blockers[0].label}
+          description={burnDown.blockers[0].nextAction}
+          href={burnDown.blockers[0].href}
+          actionLabel="Fix this blocker"
+          secondaryHref="/admin/compliance/command-center"
+          secondaryLabel="Command center"
+        />
+      ) : null}
+      <ComplianceWhatThisMeans>
+        <p>
+          <strong>Red</strong> means at least one source-backed gate failed. <strong>Yellow</strong> means caution. <strong>Green</strong> means system checks passed — a compliance officer must still review before filing. This page is not legal certification.
+        </p>
+      </ComplianceWhatThisMeans>
       <ComplianceCard eyebrow="Approval" title="Lightning Approval Workbench" href="/admin/compliance/approval">
         Review AI-prepared compliance records one at a time, verify evidence, approve, reject, or request more information.
       </ComplianceCard>
