@@ -59,6 +59,13 @@ export default async function April26ImportPage() {
         ) : null}
       </ComplianceWhatThisMeans>
       <AprilExpenditureInventoryPanel />
+      <ComplianceCard title="Standing by to audit — definitive checklist">
+        <p className="text-sm text-slate-700">
+          Open <strong>docs/compliance/COMPLIANCE_APRIL_AUDIT_CHECKLIST.md</strong> (or run{" "}
+          <code className="rounded bg-slate-100 px-1">npm run compliance:april-audit-checklist</code>). Part A = every check record with{" "}
+          <strong>what we have</strong> vs <strong>what we need</strong>. Part B = every April bank debit the same way.
+        </p>
+      </ComplianceCard>
       <ComplianceCard title="Bank source status">
         <p className="text-sm font-semibold text-[#0f2744]">{bankGuide.headline}</p>
         <p className="mt-2 text-sm">{bank.operatorSummary}</p>

@@ -1,6 +1,6 @@
 # Compliance AI orchestrator brief
 
-Generated: 2026-05-19T22:31:33.706Z · Commit: `f48b109`
+Generated: 2026-05-19T23:22:51.695Z · Commit: `39e3441`
 
 ## Program summary
 
