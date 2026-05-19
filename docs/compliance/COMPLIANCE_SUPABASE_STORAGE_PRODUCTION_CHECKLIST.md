@@ -27,7 +27,10 @@ Tied to `/admin/compliance/settings#storage-setup`. Local QA works with `local_p
 ```bash
 npm run compliance:qa-storage
 npm run compliance:storage:check
+npm run compliance:storage-preflight
 ```
+
+`compliance:storage-preflight` prints JSON: mode (`local_private` vs supabase), env presence, bucket probe, RLS manual flag, and confirms evidence is not public-by-default.
 
 Expect `local_private` locally without env; `ready: true` only when bucket probe passes in staging.
 

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ComplianceNav, CompliancePageHeader } from "../../components";
 import { buildApprovalBurnDownReport } from "@/lib/compliance/approval/approval-burn-down";
+import { buildOperatorReviewRowsV2, summarizeBurnDownV2, BURN_DOWN_START_ORDER } from "@/lib/compliance/approval/approval-burn-down-v2";
 import {
   filterQueueItems,
   getBestNextQueueItem,
@@ -34,6 +35,9 @@ export default async function ApprovalQueueDashboardPage({
   ).length;
   const blockedCount = items.filter((item) => item.blockers.length > 0).length;
   const burnDown = buildApprovalBurnDownReport(items);
+  const rowsV2 = await buildOperatorReviewRowsV2(items, queueId);
+  const summaryV2 = summarizeBurnDownV2(rowsV2);
+  const startHere = BURN_DOWN_START_ORDER.filter((key) => (summaryV2[key] ?? 0) > 0);
 
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-6 pb-12">
@@ -76,6 +80,15 @@ export default async function ApprovalQueueDashboardPage({
         <Link href={`/admin/compliance/approval/batch?queueId=${queueId}`} className="mt-3 inline-block text-sm font-semibold text-[#0f2744] underline">
           Batch readiness report →
         </Link>
+        <p className="mt-4 text-sm font-bold text-[#0f2744]">Where to start</p>
+        <ol className="mt-1 list-decimal pl-5 text-sm">
+          {startHere.map((key) => (
+            <li key={key}>
+              {key.replace(/_/g, " ")} ({summaryV2[key]}) — filter or export v2
+            </li>
+          ))}
+        </ol>
+        <p className="mt-2 text-xs text-slate-600">Run: npm run compliance:operator-review-export-v2 (redacted, no donor names)</p>
       </section>
       {stats.remaining === 0 ? (
         <section className="rounded-2xl border border-emerald-200 bg-emerald-50 p-6">

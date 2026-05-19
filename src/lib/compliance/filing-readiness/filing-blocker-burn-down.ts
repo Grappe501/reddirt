@@ -8,6 +8,8 @@ import { loadComplianceRuleCorpus } from "../knowledge/load-compliance-rule-corp
 
 export type FilingBlockerCategory = "approval" | "reconciliation" | "source" | "storage" | "db" | "rules";
 
+export type FilingBlockerSeverity = "critical" | "high" | "medium" | "low";
+
 export type FilingBlockerTask = {
   id: string;
   label: string;
@@ -17,6 +19,14 @@ export type FilingBlockerTask = {
   href: string;
   category: FilingBlockerCategory;
   leverage: "high" | "medium" | "low";
+  severity: FilingBlockerSeverity;
+  operatorFixableToday: boolean;
+  greenCondition: string;
+  sourceDependency: boolean;
+  queueDependency: boolean;
+  reconciliationDependency: boolean;
+  storageDependency: boolean;
+  dbDependency: boolean;
 };
 
 export type FilingGreenPath = {
@@ -37,8 +47,22 @@ export async function buildFilingBlockerBurnDown(): Promise<FilingGreenPath> {
   const unapproved = items.filter((item) => ["queued", "needs_review", "ready", "reopened"].includes(item.status)).length;
   const tasks: FilingBlockerTask[] = [];
 
-  if (ruleAudit.topicCoverage.some((t) => !t.verified)) {
+  const push = (task: Omit<FilingBlockerTask, "severity" | "operatorFixableToday" | "greenCondition" | "sourceDependency" | "queueDependency" | "reconciliationDependency" | "storageDependency" | "dbDependency"> & Partial<Pick<FilingBlockerTask, "severity" | "operatorFixableToday" | "greenCondition" | "sourceDependency" | "queueDependency" | "reconciliationDependency" | "storageDependency" | "dbDependency">>) => {
     tasks.push({
+      severity: task.severity ?? "high",
+      operatorFixableToday: task.operatorFixableToday ?? true,
+      greenCondition: task.greenCondition ?? "Condition resolved in source-backed workflow.",
+      sourceDependency: task.sourceDependency ?? false,
+      queueDependency: task.queueDependency ?? false,
+      reconciliationDependency: task.reconciliationDependency ?? false,
+      storageDependency: task.storageDependency ?? false,
+      dbDependency: task.dbDependency ?? false,
+      ...task,
+    });
+  };
+
+  if (ruleAudit.topicCoverage.some((t) => !t.verified)) {
+    push({
       id: "rules",
       label: "Rule verification missing",
       count: ruleAudit.topicCoverage.filter((t) => !t.verified).length,
@@ -47,10 +71,14 @@ export async function buildFilingBlockerBurnDown(): Promise<FilingGreenPath> {
       href: "/admin/compliance/rules",
       category: "rules",
       leverage: "high",
+      severity: "critical",
+      operatorFixableToday: true,
+      greenCondition: "All required rule topics marked reviewed with initials on Rules page.",
+      queueDependency: true,
     });
   }
   if (!april26.bankCsvFound) {
-    tasks.push({
+    push({
       id: "bank-csv",
       label: "Bank CSV missing",
       count: 1,
@@ -59,10 +87,15 @@ export async function buildFilingBlockerBurnDown(): Promise<FilingGreenPath> {
       href: "/admin/compliance/april26",
       category: "source",
       leverage: "high",
+      severity: "critical",
+      operatorFixableToday: true,
+      greenCondition: "bank-april-2026.csv validates and reconciliation rehearsal passes.",
+      sourceDependency: true,
+      reconciliationDependency: true,
     });
   }
   if (unapproved > 0) {
-    tasks.push({
+    push({
       id: "approval",
       label: "Unapproved records",
       count: unapproved,
@@ -71,10 +104,14 @@ export async function buildFilingBlockerBurnDown(): Promise<FilingGreenPath> {
       href: "/admin/compliance/approval/april-2026-compliance-review",
       category: "approval",
       leverage: "high",
+      severity: "high",
+      operatorFixableToday: true,
+      greenCondition: "Open approval items reach approved/needs-info/rejected terminal states.",
+      queueDependency: true,
     });
   }
   if (april26.stagedNeedingReconciliation > 0) {
-    tasks.push({
+    push({
       id: "recon",
       label: "Unreconciled records",
       count: april26.stagedNeedingReconciliation,
@@ -83,11 +120,16 @@ export async function buildFilingBlockerBurnDown(): Promise<FilingGreenPath> {
       href: "/admin/compliance/reconciliation",
       category: "reconciliation",
       leverage: "high",
+      severity: "high",
+      operatorFixableToday: april26.bankCsvFound,
+      greenCondition: "Matches approved or locked; unmatched bank/payout lists empty.",
+      reconciliationDependency: true,
+      sourceDependency: true,
     });
   }
   const docBlockers = report.blockers.filter((b) => /document|receipt|w-9|w9/i.test(b));
   if (docBlockers.length) {
-    tasks.push({
+    push({
       id: "docs",
       label: "Missing documentation",
       count: docBlockers.length,
@@ -96,10 +138,14 @@ export async function buildFilingBlockerBurnDown(): Promise<FilingGreenPath> {
       href: "/admin/compliance/receipts",
       category: "source",
       leverage: "medium",
+      severity: "medium",
+      operatorFixableToday: true,
+      greenCondition: "Documentation gaps cleared in staged records.",
+      sourceDependency: true,
     });
   }
   if (!storage.ready) {
-    tasks.push({
+    push({
       id: "storage",
       label: "Storage not production-ready",
       count: 1,
@@ -108,10 +154,14 @@ export async function buildFilingBlockerBurnDown(): Promise<FilingGreenPath> {
       href: "/admin/compliance/settings#storage-setup",
       category: "storage",
       leverage: "medium",
+      severity: "medium",
+      operatorFixableToday: false,
+      greenCondition: "Storage health probe reports ready with RLS verified flag.",
+      storageDependency: true,
     });
   }
   if (process.env.COMPLIANCE_DB_MIGRATED !== "true") {
-    tasks.push({
+    push({
       id: "db",
       label: "DB persistence not production-ready",
       count: 1,
@@ -120,11 +170,15 @@ export async function buildFilingBlockerBurnDown(): Promise<FilingGreenPath> {
       href: "/admin/compliance/settings",
       category: "db",
       leverage: "low",
+      severity: "low",
+      operatorFixableToday: false,
+      greenCondition: "Steve-approved migration + COMPLIANCE_DB_MIGRATED=true after backfill.",
+      dbDependency: true,
     });
   }
 
   for (const gate of hardGates.filter((g) => g.blocking && g.status !== "passed")) {
-    tasks.push({
+    push({
       id: `gate-${gate.id}`,
       label: gate.label,
       count: 1,
@@ -133,6 +187,10 @@ export async function buildFilingBlockerBurnDown(): Promise<FilingGreenPath> {
       href: "/admin/compliance/filing-readiness",
       category: "approval",
       leverage: "high",
+      severity: "critical",
+      operatorFixableToday: gate.id !== "storage",
+      greenCondition: `Hard gate "${gate.label}" passes or authorized override with initials.`,
+      queueDependency: true,
     });
   }
 

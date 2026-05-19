@@ -73,9 +73,19 @@ export default async function FilingReadinessPage() {
               <div>
                 <p className="font-heading text-lg font-bold text-[#0f2744]">{task.label}</p>
                 <p className="text-sm text-slate-600">
-                  Count: {task.count} · Role: {task.role} · {task.category} · leverage: {task.leverage}
+                  {task.severity} · {task.category} · {task.role} · leverage {task.leverage}
+                  {task.operatorFixableToday ? " · fixable today" : " · needs tech/Steve"}
                 </p>
                 <p className="mt-2 text-sm">{task.nextAction}</p>
+                <p className="mt-2 text-xs text-slate-600">
+                  <strong>Turns green when:</strong> {task.greenCondition}
+                </p>
+                <p className="mt-1 text-xs text-slate-500">
+                  Deps:{" "}
+                  {[task.sourceDependency && "source", task.queueDependency && "queue", task.reconciliationDependency && "recon", task.storageDependency && "storage", task.dbDependency && "db"]
+                    .filter(Boolean)
+                    .join(", ") || "none"}
+                </p>
               </div>
               <Link href={task.href} className="rounded-full bg-[#0f2744] px-4 py-2 text-sm font-bold text-white">
                 Open

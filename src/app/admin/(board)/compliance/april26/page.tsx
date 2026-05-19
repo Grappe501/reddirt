@@ -8,12 +8,13 @@ import {
   ComplianceWarningPanel,
 } from "../components";
 import { buildApril26ImportStatus } from "@/lib/compliance/imports/april26-import-status";
+import { buildBankReconciliationRehearsal } from "@/lib/compliance/imports/bank-reconciliation-rehearsal";
 import { rebuildApprovalQueuesAction } from "../approval/actions";
 
 export const dynamic = "force-dynamic";
 
 export default async function April26ImportPage() {
-  const status = await buildApril26ImportStatus();
+  const [status, rehearsal] = await Promise.all([buildApril26ImportStatus(), buildBankReconciliationRehearsal()]);
   const bank = status.bankReadiness;
 
   return (
@@ -82,6 +83,30 @@ export default async function April26ImportPage() {
         ) : (
           <p className="mt-2 text-sm text-slate-600">No issues once file is present and valid.</p>
         )}
+        {rehearsal.columnDiagnostics.headers.length ? (
+          <p className="mt-2 text-xs text-slate-600">Detected columns: {rehearsal.columnDiagnostics.headers.join(", ")}</p>
+        ) : null}
+      </ComplianceCard>
+      <ComplianceCard title="Reconciliation rehearsal (source-backed)">
+        <p className="text-sm">
+          High-confidence: {rehearsal.highConfidence.length} · Ambiguous: {rehearsal.ambiguous.length} · Unmatched bank:{" "}
+          {rehearsal.unmatchedBank.length} · Unmatched payouts: {rehearsal.unmatchedPayouts.length}
+        </p>
+        <p className="mt-2 text-sm font-semibold text-[#0f2744]">What to fix next</p>
+        <ul className="mt-1 list-disc pl-5 text-sm">
+          {rehearsal.operatorNextSteps.map((step) => (
+            <li key={step}>{step}</li>
+          ))}
+        </ul>
+        {rehearsal.highConfidence.length ? (
+          <ul className="mt-3 max-h-40 overflow-y-auto text-xs">
+            {rehearsal.highConfidence.slice(0, 8).map((m) => (
+              <li key={`${m.bankRowNumber}-${m.payoutKey}`}>
+                Row {m.bankRowNumber} ${m.bankAmount.toFixed(2)} → payout {m.payoutKey.slice(0, 12)}… ({m.confidenceReason})
+              </li>
+            ))}
+          </ul>
+        ) : null}
       </ComplianceCard>
       <p className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 font-mono text-xs text-slate-700">{status.folderPath}</p>
       <div className="flex flex-wrap gap-3">

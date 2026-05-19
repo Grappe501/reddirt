@@ -34,6 +34,7 @@ export default async function ComplianceSettingsPage() {
           — production checklist: <code>docs/compliance/COMPLIANCE_SUPABASE_STORAGE_PRODUCTION_CHECKLIST.md</code> · setup:{" "}
           <code>docs/compliance/SUPABASE_PRIVATE_STORAGE_SETUP.md</code> (env vars never committed).
         </p>
+        <p className="mt-2 text-sm font-mono text-slate-700">CLI: npm run compliance:storage-preflight</p>
       </ComplianceWarningPanel>
       <section className="grid gap-4 md:grid-cols-2">
         <ComplianceCard title="GoodChange storage">Analyses under <code>data/compliance/imports/goodchange</code> (gitignored).</ComplianceCard>
