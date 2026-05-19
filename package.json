@@ -80,6 +80,8 @@
     "compliance:ai-completion-forecast": "tsx scripts/compliance/ai-completion-forecast.ts",
     "compliance:ai-focus-brief": "tsx scripts/compliance/ai-focus-brief.ts",
     "compliance:hardening-audit": "tsx scripts/compliance/hardening-audit.ts",
+    "compliance:extract-april-checks": "tsx scripts/compliance/extract-april-checks.ts",
+    "compliance:export-april-checks-csv": "tsx scripts/compliance/export-april-checks-csv.ts",
     "compliance:filing-impact": "tsx scripts/compliance/filing-impact.ts",
     "compliance:queue-unlock-report": "tsx scripts/compliance/queue-unlock-report.ts",
     "compliance:reconciliation-review-report": "tsx scripts/compliance/reconciliation-review-report.ts",

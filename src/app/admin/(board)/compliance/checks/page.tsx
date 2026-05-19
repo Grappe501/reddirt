@@ -15,6 +15,9 @@ export default async function ChecksPage() {
       <ComplianceNav />
       <section className="grid gap-4 md:grid-cols-3">
         <ComplianceCard title="New Check Contribution" href="/admin/compliance/checks/new">Enter contributor, check, donor, and deposit details.</ComplianceCard>
+        <ComplianceCard title="SOS copy board (April checks)" href="/admin/compliance/checks/sos-entry">
+          Extract check fields and copy one-by-one into Arkansas SOS individual entry.
+        </ComplianceCard>
         <ComplianceCard title="Review Checks" href="/admin/compliance/checks/review">{checks.length} staged check contribution(s).</ComplianceCard>
         <ComplianceCard title="Bank Reconciliation" href="/admin/compliance/reconciliation">Match check deposits to bank CSV credits later.</ComplianceCard>
       </section>

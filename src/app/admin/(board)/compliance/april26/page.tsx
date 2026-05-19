@@ -59,6 +59,9 @@ export default async function April26ImportPage() {
         ) : null}
       </ComplianceWhatThisMeans>
       <AprilExpenditureInventoryPanel />
+      <ComplianceCard title="SOS copy board — April checks" href="/admin/compliance/checks/sos-entry">
+        Extract each check image and copy fields one-by-one into Arkansas SOS (individual entries, not bulk upload).
+      </ComplianceCard>
       <ComplianceCard title="Standing by to audit — definitive checklist">
         <p className="text-sm text-slate-700">
           Open <strong>docs/compliance/COMPLIANCE_APRIL_AUDIT_CHECKLIST.md</strong> (or run{" "}
