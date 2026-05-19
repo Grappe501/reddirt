@@ -1,6 +1,7 @@
 import { access, readdir } from "node:fs/promises";
 import path from "node:path";
 import { getApril26Dir, loadApril26GoodChangeRows, listApril26ImageFiles } from "../approval/april26-source";
+import { evaluateBankCsvReadiness, type BankCsvReadiness } from "./bank-csv-readiness";
 import { loadApprovalItems } from "../approval/approval-storage";
 import { loadReconciliationMatches } from "../reconciliation/reconciliation-workbench-storage";
 import { APRIL_2026_QUEUE_ID } from "../approval/build-approval-queue";
@@ -26,6 +27,7 @@ export type April26ImportStatus = {
   reconciliationBlockers: number;
   stagedNeedingApproval: number;
   stagedNeedingReconciliation: number;
+  bankReadiness: BankCsvReadiness;
 };
 
 async function fileExists(filePath: string): Promise<boolean> {
@@ -81,7 +83,9 @@ export async function buildApril26ImportStatus(): Promise<April26ImportStatus> {
     ["queued", "needs_review", "ready", "reopened"].includes(item.status),
   ).length;
   const stagedNeedingReconciliation = matches.filter((match) => match.status !== "locked" && match.status !== "ignored").length;
-  const reconciliationBlockers = !bank.found ? 1 + stagedNeedingReconciliation : stagedNeedingReconciliation;
+  const bankReadiness = await evaluateBankCsvReadiness();
+  const reconciliationBlockers =
+    !bankReadiness.readyForReconciliation ? 1 + stagedNeedingReconciliation : stagedNeedingReconciliation;
   const stagedContributions = aprilItems.filter((item) =>
     ["goodchange_contribution", "check_contribution", "in_kind_contribution", "cash_contribution"].includes(item.source),
   ).length;
@@ -108,5 +112,6 @@ export async function buildApril26ImportStatus(): Promise<April26ImportStatus> {
     reconciliationBlockers,
     stagedNeedingApproval,
     stagedNeedingReconciliation,
+    bankReadiness,
   };
 }

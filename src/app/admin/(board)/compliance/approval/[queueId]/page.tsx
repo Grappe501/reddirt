@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ComplianceNav, CompliancePageHeader } from "../../components";
+import { buildApprovalBurnDownReport } from "@/lib/compliance/approval/approval-burn-down";
 import {
   filterQueueItems,
   getBestNextQueueItem,
@@ -32,6 +33,7 @@ export default async function ApprovalQueueDashboardPage({
     (item) => !item.blockers.length && !item.missingFields.length && item.evidence.length > 0,
   ).length;
   const blockedCount = items.filter((item) => item.blockers.length > 0).length;
+  const burnDown = buildApprovalBurnDownReport(items);
 
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-6 pb-12">
@@ -51,6 +53,30 @@ export default async function ApprovalQueueDashboardPage({
         }
       />
       <ComplianceNav />
+      <section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+        <h2 className="font-heading text-lg font-bold text-[#0f2744]">Burn-down summary</h2>
+        <p className="mt-1 text-sm text-slate-600">{burnDown.openCount} open · {burnDown.ruleReviewCount} rule review · {burnDown.confidenceBelow98} below 98% confidence</p>
+        {burnDown.nextBest ? (
+          <div className="mt-3 rounded-lg bg-slate-50 p-3 text-sm">
+            <p className="font-semibold">Next best: {burnDown.nextBest.scoreSummary}</p>
+            <ul className="mt-1 list-disc pl-5">
+              {burnDown.nextBest.reasons.map((r) => (
+                <li key={r}>{r}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+        <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+          {burnDown.groups.slice(0, 6).map((g) => (
+            <li key={g.key} className="rounded-lg border border-slate-100 p-2 text-sm">
+              <span className="font-bold">{g.label}</span> ({g.count}) — {g.fixHint}
+            </li>
+          ))}
+        </ul>
+        <Link href={`/admin/compliance/approval/batch?queueId=${queueId}`} className="mt-3 inline-block text-sm font-semibold text-[#0f2744] underline">
+          Batch readiness report →
+        </Link>
+      </section>
       {stats.remaining === 0 ? (
         <section className="rounded-2xl border border-emerald-200 bg-emerald-50 p-6">
           <h2 className="font-heading text-xl font-bold text-emerald-950">Queue complete</h2>

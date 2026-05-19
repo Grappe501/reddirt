@@ -73,6 +73,7 @@ export async function getBatchEligibleItems(queueId: string): Promise<ApprovalIt
       && !item.missingFields.length
       && item.evidence.length > 0
       && !item.sourceUpdatePending
+      && item.source !== "rule_review"
       && REMAINING.includes(item.status),
   );
 }

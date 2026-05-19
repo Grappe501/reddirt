@@ -81,6 +81,9 @@ async function finalizeDecision(
   const existing = await getApprovalItem(itemId);
   if (!existing) throw new Error("Item not found");
   const guards = evaluateApprovalGuards(existing, { overrideReason });
+  if ((status === "approved" || status === "approved_with_changes") && existing.source === "rule_review" && !overrideReason?.trim()) {
+    throw new Error("Rule review items cannot be approved without override reason documenting topic review on Rules page.");
+  }
   if ((status === "approved" || status === "approved_with_changes") && !guards.canApprove) {
     throw new Error("Cannot approve yet. Required fields are missing.");
   }
@@ -161,6 +164,9 @@ export async function approveBatch(itemIds: string[], actorInitials: string, aud
   for (const itemId of itemIds) {
     const item = await getApprovalItem(itemId);
     if (!item) continue;
+    if (item.source === "rule_review") {
+      throw new Error(`Item ${itemId} is a rule review item — batch approval is not allowed.`);
+    }
     if (item.confidenceScore < 98 || item.riskLevel !== "low" || item.blockers.length) {
       throw new Error(`Item ${itemId} is not eligible for batch approval.`);
     }

@@ -47,6 +47,10 @@ Steps per entity: read JSON → validate schema → upsert DB → compare counts
 - [ ] RLS/storage verified for documents
 - [ ] Netlify env vars set (no secrets in repo)
 
+## Preflight packet
+
+See `docs/compliance/COMPLIANCE_DB_MIGRATION_PREFLIGHT.md` for Steve approval checklist.
+
 ## Do not
 
 - Reorder or edit applied migrations

@@ -42,6 +42,12 @@ export default async function ApprovalBatchPage({
         <ComplianceCard title="Close to eligible">{report.closeToEligible}</ComplianceCard>
         <ComplianceCard title="Ineligible (open)">{report.ineligible}</ComplianceCard>
       </section>
+      <ComplianceWarningPanel title="Safety gates (unchanged)">
+        <p className="text-sm">
+          Batch requires confidence ≥ 98%, low risk, evidence, no blockers, no source-update pending.{" "}
+          <strong>Rule review items are never batch-eligible.</strong>
+        </p>
+      </ComplianceWarningPanel>
       {report.eligible === 0 ? (
         <ComplianceWarningPanel title="Why no batch eligible items?">
           <ul className="mt-2 list-disc pl-5">

@@ -6,6 +6,8 @@ import { evaluateFilingHardGates } from "./hard-gates";
 import { auditComplianceRuleCorpus } from "../knowledge/compliance-rule-index";
 import { loadComplianceRuleCorpus } from "../knowledge/load-compliance-rule-corpus";
 
+export type FilingBlockerCategory = "approval" | "reconciliation" | "source" | "storage" | "db" | "rules";
+
 export type FilingBlockerTask = {
   id: string;
   label: string;
@@ -13,6 +15,8 @@ export type FilingBlockerTask = {
   role: string;
   nextAction: string;
   href: string;
+  category: FilingBlockerCategory;
+  leverage: "high" | "medium" | "low";
 };
 
 export type FilingGreenPath = {
@@ -41,6 +45,8 @@ export async function buildFilingBlockerBurnDown(): Promise<FilingGreenPath> {
       role: "Compliance officer",
       nextAction: "Review each topic with official sources — source reviewed for campaign workflow, not legal certification.",
       href: "/admin/compliance/rules",
+      category: "rules",
+      leverage: "high",
     });
   }
   if (!april26.bankCsvFound) {
@@ -51,6 +57,8 @@ export async function buildFilingBlockerBurnDown(): Promise<FilingGreenPath> {
       role: "Treasurer",
       nextAction: `Add bank-april-2026.csv to ${april26.folderPath} (date, amount, memo; credits positive).`,
       href: "/admin/compliance/april26",
+      category: "source",
+      leverage: "high",
     });
   }
   if (unapproved > 0) {
@@ -61,6 +69,8 @@ export async function buildFilingBlockerBurnDown(): Promise<FilingGreenPath> {
       role: "Compliance reviewer",
       nextAction: "Work Lightning Approval queue — high risk first, then ready items.",
       href: "/admin/compliance/approval/april-2026-compliance-review",
+      category: "approval",
+      leverage: "high",
     });
   }
   if (april26.stagedNeedingReconciliation > 0) {
@@ -71,6 +81,8 @@ export async function buildFilingBlockerBurnDown(): Promise<FilingGreenPath> {
       role: "Treasurer",
       nextAction: "Approve or lock bank matches in reconciliation workbench.",
       href: "/admin/compliance/reconciliation",
+      category: "reconciliation",
+      leverage: "high",
     });
   }
   const docBlockers = report.blockers.filter((b) => /document|receipt|w-9|w9/i.test(b));
@@ -82,6 +94,8 @@ export async function buildFilingBlockerBurnDown(): Promise<FilingGreenPath> {
       role: "Field staff / Treasurer",
       nextAction: "Complete receipts, W-9s, and vendor documentation.",
       href: "/admin/compliance/receipts",
+      category: "source",
+      leverage: "medium",
     });
   }
   if (!storage.ready) {
@@ -91,7 +105,9 @@ export async function buildFilingBlockerBurnDown(): Promise<FilingGreenPath> {
       count: 1,
       role: "Technical operator",
       nextAction: "Configure Supabase private bucket and verify RLS.",
-      href: "/admin/compliance/settings",
+      href: "/admin/compliance/settings#storage-setup",
+      category: "storage",
+      leverage: "medium",
     });
   }
   if (process.env.COMPLIANCE_DB_MIGRATED !== "true") {
@@ -102,6 +118,8 @@ export async function buildFilingBlockerBurnDown(): Promise<FilingGreenPath> {
       role: "Technical operator",
       nextAction: "Follow COMPLIANCE_DB_MIGRATION_EXECUTION_PLAN.md before cutover.",
       href: "/admin/compliance/settings",
+      category: "db",
+      leverage: "low",
     });
   }
 
@@ -113,6 +131,8 @@ export async function buildFilingBlockerBurnDown(): Promise<FilingGreenPath> {
       role: "Compliance officer",
       nextAction: gate.explanation,
       href: "/admin/compliance/filing-readiness",
+      category: "approval",
+      leverage: "high",
     });
   }
 

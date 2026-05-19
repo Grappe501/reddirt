@@ -73,7 +73,7 @@ export default async function FilingReadinessPage() {
               <div>
                 <p className="font-heading text-lg font-bold text-[#0f2744]">{task.label}</p>
                 <p className="text-sm text-slate-600">
-                  Count: {task.count} · Role: {task.role}
+                  Count: {task.count} · Role: {task.role} · {task.category} · leverage: {task.leverage}
                 </p>
                 <p className="mt-2 text-sm">{task.nextAction}</p>
               </div>

@@ -20,7 +20,7 @@ export type BatchReadinessReport = {
   nearEligible: Array<{ id: string; title: string; fixes: string[] }>;
 };
 
-function reasonsForItem(item: ApprovalItem): BatchIneligibilityReason[] {
+export function reasonsForItem(item: ApprovalItem): BatchIneligibilityReason[] {
   const reasons: BatchIneligibilityReason[] = [];
   if (!["queued", "needs_review", "ready", "reopened"].includes(item.status)) reasons.push("not_open_status");
   if (item.confidenceScore < 98) reasons.push("confidence_low");

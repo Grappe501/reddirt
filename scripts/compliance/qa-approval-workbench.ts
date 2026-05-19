@@ -39,6 +39,14 @@ async function main() {
   if (highRisk && eligible.some((item) => item.id === highRisk.id)) {
     throw new Error("Batch approval must reject high-risk items");
   }
+  const ruleReview = items.find((item) => item.source === "rule_review");
+  if (ruleReview && eligible.some((item) => item.id === ruleReview.id)) {
+    throw new Error("Rule review items must not be batch-eligible");
+  }
+  if (ruleReview) {
+    const ruleGuards = evaluateApprovalGuards(ruleReview);
+    if (ruleGuards.canApprove) throw new Error("Rule review must require override/topic review before approve");
+  }
 
   const lowRisk = eligible[0] ?? items.find((item) => item.riskLevel === "low" && !item.blockers.length && item.evidence.length);
   if (lowRisk) {

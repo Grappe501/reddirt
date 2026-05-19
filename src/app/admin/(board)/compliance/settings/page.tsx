@@ -31,7 +31,8 @@ export default async function ComplianceSettingsPage() {
           <a href="#storage-setup" className="font-semibold text-[#0f2744] underline">
             View Supabase Storage Setup
           </a>{" "}
-          — full checklist in <code>docs/compliance/SUPABASE_PRIVATE_STORAGE_SETUP.md</code> (env vars never committed).
+          — production checklist: <code>docs/compliance/COMPLIANCE_SUPABASE_STORAGE_PRODUCTION_CHECKLIST.md</code> · setup:{" "}
+          <code>docs/compliance/SUPABASE_PRIVATE_STORAGE_SETUP.md</code> (env vars never committed).
         </p>
       </ComplianceWarningPanel>
       <section className="grid gap-4 md:grid-cols-2">

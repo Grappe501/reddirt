@@ -4,6 +4,8 @@ import { useCallback, useEffect, useMemo, useState, useTransition } from "react"
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { ApprovalItem, ApprovalQueueStats } from "@/lib/compliance/approval/approval-types";
+import type { NextItemExplanation } from "@/lib/compliance/approval/approval-burn-down";
+import type { RuleReviewContext } from "@/lib/compliance/approval/rule-review-context";
 import { evaluateApprovalGuards } from "@/lib/compliance/approval/approval-guards";
 import { decisionAction, saveFieldEditsAction } from "./actions";
 
@@ -14,9 +16,11 @@ type Props = {
   total: number;
   stats: ApprovalQueueStats;
   prevItemId?: string;
+  nextBestExplanation?: NextItemExplanation | null;
+  ruleReview?: RuleReviewContext | null;
 };
 
-export function LightningApprovalWorkbench({ queueId, item, position, total, prevItemId }: Props) {
+export function LightningApprovalWorkbench({ queueId, item, position, total, prevItemId, nextBestExplanation, ruleReview }: Props) {
   const router = useRouter();
   const [pending, start] = useTransition();
   const [initials, setInitials] = useState("");
@@ -177,6 +181,30 @@ export function LightningApprovalWorkbench({ queueId, item, position, total, pre
         </section>
 
         <section className="flex flex-col overflow-y-auto rounded-2xl border border-kelly-text/10 bg-white p-4 shadow-sm">
+          {ruleReview ? (
+            <div className="mb-3 rounded-lg border border-amber-400 bg-amber-50 p-4 text-sm text-amber-950">
+              <p className="font-bold">Rule review — human required</p>
+              <p className="mt-1">Topic: {ruleReview.topicLabel}</p>
+              <p className="mt-1">{ruleReview.whyHumanReview}</p>
+              <p className="mt-2 font-semibold">Suggested action</p>
+              <p>{ruleReview.suggestedAction}</p>
+              {ruleReview.missingEvidence.length ? <p className="mt-2">Missing: {ruleReview.missingEvidence.join("; ")}</p> : null}
+              <p className="mt-2 text-xs">Batch approval: not allowed. Affects filing readiness: yes.</p>
+              <Link href="/admin/compliance/rules" className="mt-2 inline-block font-bold underline">
+                Open rules dashboard
+              </Link>
+            </div>
+          ) : null}
+          {nextBestExplanation ? (
+            <div className="mb-3 rounded-lg border border-[#0f2744]/20 bg-slate-50 p-3 text-xs">
+              <p className="font-bold text-[#0f2744]">Why this is next best</p>
+              <ul className="mt-1 list-disc pl-4">
+                {nextBestExplanation.reasons.map((r) => (
+                  <li key={r}>{r}</li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
           <div className="rounded-xl bg-kelly-wash p-4">
             <p className="text-xs font-bold uppercase text-kelly-slate">AI summary (not legal certification)</p>
             <p className="mt-2 text-sm leading-relaxed">{item.aiSummary}</p>
