@@ -22,7 +22,23 @@ export async function loadGoodChangeAnalyses(): Promise<GoodChangeImportAnalysis
 }
 
 export async function loadBankAnalyses(): Promise<BankImportAnalysis[]> {
-  return readAnalysisFiles<BankImportAnalysis>(BANK_DIR);
+  const fromDir = await readAnalysisFiles<BankImportAnalysis>(BANK_DIR);
+  const fromAggregate = await readBankAnalysesFromAggregate();
+  const byBatchId = new Map<string, BankImportAnalysis>();
+  for (const analysis of [...fromAggregate, ...fromDir]) {
+    byBatchId.set(analysis.batch.id, analysis);
+  }
+  return [...byBatchId.values()];
+}
+
+async function readBankAnalysesFromAggregate(): Promise<BankImportAnalysis[]> {
+  const bankPath = path.join(ANALYSIS_DIR, "bank-import-analysis.json");
+  try {
+    const raw = JSON.parse(await readFile(bankPath, "utf8")) as { batches?: BankImportAnalysis[] };
+    return Array.isArray(raw.batches) ? raw.batches : [];
+  } catch {
+    return [];
+  }
 }
 
 export async function buildReconciliationAnalysis(): Promise<ReconciliationAnalysis> {

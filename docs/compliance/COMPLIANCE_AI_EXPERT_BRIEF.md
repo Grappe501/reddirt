@@ -1,44 +1,43 @@
 # Compliance AI expert brief
 
-Generated: 2026-05-19T19:12:46.372Z  
-Commit: e5b13cb  
-Overall completion: **51%** across 35 areas
+Generated: 2026-05-19T21:26:34.669Z  
+Commit: d47d472  
+Overall completion: **57%** across 35 areas
 
 > Not legal advice. Human review required. Green only when source-backed.
 
 ## Launch
 
-- **Status:** not_ready (13% checklist)
+- **Status:** rehearsal_ready (25% checklist)
 
 ## Top 5 now
 
-1. **Add bank-april-2026.csv** (treasurer) — Treasurer export at H:\SOSWebsite\Compliance\April26\bank-april-2026.csv. Then npm run compliance:bank:qa
+1. **Review unmatched bank lines** (operator) — 10 unmatched bank transaction(s).
 2. **Review unverified rule topics** (human) — 24 topic(s) on Rules page — not legal certification.
-3. **Burn down approval queue** (operator) — 134 open; start: rule_review, filing_task_dependency, low_confidence
+3. **Burn down approval queue** (operator) — 221 open; start: rule_review, source_update_pending, filing_task_dependency, low_confidence
 4. **Configure production storage** (steve) — Local private storage fallback active. Configure SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, and private bucket.
 5. **DB migration (Steve approval)** (steve) — Steve approval + backup + rehearsal before cutover
 
 ## Top 5 risks
 
-- **critical** Bank CSV missing
 - **critical** Filing readiness red
 - **critical** PII in git or exports
 - **critical** Automated fake compliance green
 - **high** Zero batch-eligible items
+- **high** Rule review items require human topic review
 
 ## Next best workflow
 
-Work the April queue (134 open). Start with rule review items, then near-eligible confidence fixes. Never batch rule_review.
+Work the April queue (221 open). Start with rule review items, then near-eligible confidence fixes. Never batch rule_review.
 
 ## Next human / AI
 
-- **Human:** Add bank CSV at H:\SOSWebsite\Compliance\April26\bank-april-2026.csv
+- **Human:** Work approval queue (221 open) starting with: rule_review, source_update_pending, filing_task_dependency, low_confidence
 - **AI:** Run compliance:ai-expert and guide operator through operator-coach steps; never auto-approve.
 
 ## What would make filing green
 
 - All required rule topics marked reviewed with initials on Rules page.
-- bank-april-2026.csv validates and reconciliation rehearsal passes.
 - Open approval items reach approved/needs-info/rejected terminal states.
 - Storage health probe reports ready with RLS verified flag.
 - Steve-approved migration + COMPLIANCE_DB_MIGRATED=true after backfill.

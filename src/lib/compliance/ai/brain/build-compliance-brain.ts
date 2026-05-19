@@ -63,7 +63,13 @@ export async function buildComplianceBrainSnapshot(): Promise<ComplianceBrainSna
   const summaryV2 = summarizeBurnDownV2(rowsV2);
   const bank = april26.bankReadiness;
 
-  const bankCsvStatus = !bank.found ? "missing" : bank.readyForReconciliation ? "present" : "invalid";
+  const bankCsvStatus = bank.canSatisfyBankRequirement
+    ? "present"
+    : bank.databaseTransactionCount > 0 || bank.primarySource === "database_chunks"
+      ? "invalid"
+      : bank.found
+        ? "invalid"
+        : "missing";
 
   const launchReadiness = buildLaunchReadiness({
     filingOverall: filingReport.overallStatus,
@@ -192,7 +198,7 @@ function buildLaunchReadiness(input: {
 }): ComplianceLaunchReadiness {
   const checks = [
     { id: "sources_april26", label: "April26 folder + GoodChange CSV", passed: true, requiredForLaunch: true },
-    { id: "bank_csv", label: "Bank CSV validated", passed: input.bankReady, requiredForLaunch: true },
+    { id: "bank_csv", label: "Bank source validated (file or import chunks)", passed: input.bankReady, requiredForLaunch: true },
     { id: "filing_green", label: "Filing readiness green (source-backed)", passed: input.filingOverall === "green", requiredForLaunch: true },
     { id: "queue_clear", label: "Approval queue reviewed", passed: input.openItems === 0, requiredForLaunch: true },
     { id: "rules_topics", label: "Rule topics reviewed", passed: input.ruleTopicsUnverified === 0, requiredForLaunch: true },
@@ -223,14 +229,17 @@ function buildLaunchReadiness(input: {
 export function buildComplianceNextActions(snapshot: ComplianceBrainSnapshot): ComplianceNextAction[] {
   const actions: ComplianceNextAction[] = [];
 
-  if (snapshot.source.bankCsv === "missing") {
+  if (snapshot.source.bankCsv === "missing" || snapshot.source.bankCsv === "invalid") {
     actions.push({
       id: "add-bank-csv",
       priority: 1,
-      title: "Add bank-april-2026.csv",
-      description: `Treasurer export at ${snapshot.source.bankCsvExpectedPath}. Then npm run compliance:bank:qa`,
+      title: snapshot.source.bankCsv === "invalid" ? "Validate bank import chunks" : "Add bank source",
+      description:
+        snapshot.source.bankCsv === "invalid"
+          ? "Bank data may exist in imports/bank chunks but failed validation. Run compliance:source-truth-audit."
+          : `Treasurer CSV at ${snapshot.source.bankCsvExpectedPath} or admin bank import. Then npm run compliance:bank:qa`,
       href: "/admin/compliance/april26",
-      command: "npm run compliance:bank:qa",
+      command: "npm run compliance:source-truth-audit",
       owner: "treasurer",
       phase: 1,
       blockedBy: [],
@@ -246,7 +255,7 @@ export function buildComplianceNextActions(snapshot: ComplianceBrainSnapshot): C
       href: "/admin/compliance/reconciliation",
       owner: "operator",
       phase: 2,
-      blockedBy: snapshot.source.bankCsv === "missing" ? ["add-bank-csv"] : [],
+      blockedBy: snapshot.source.bankCsv === "missing" || snapshot.source.bankCsv === "invalid" ? ["add-bank-csv"] : [],
     });
   }
 
@@ -313,7 +322,7 @@ export function buildComplianceNextActions(snapshot: ComplianceBrainSnapshot): C
     href: "/admin/compliance/command-center",
     owner: "operator",
     phase: 8,
-    blockedBy: snapshot.source.bankCsv === "missing" ? ["add-bank-csv"] : [],
+    blockedBy: snapshot.source.bankCsv === "missing" || snapshot.source.bankCsv === "invalid" ? ["add-bank-csv"] : [],
   });
 
   return actions.sort((a, b) => a.priority - b.priority);
@@ -323,10 +332,13 @@ export function buildComplianceRiskReport(snapshot: ComplianceBrainSnapshot): Co
   const risks: ComplianceRisk[] = [
     {
       id: "bank-missing",
-      severity: snapshot.source.bankCsv === "missing" ? "critical" : "low",
-      title: "Bank CSV missing",
-      description: "Cannot complete source-backed bank reconciliation rehearsal.",
-      mitigation: "Add real treasurer export; run compliance:bank:qa",
+      severity: snapshot.source.bankCsv === "missing" || snapshot.source.bankCsv === "invalid" ? "critical" : "low",
+      title: snapshot.source.bankCsv === "invalid" ? "Bank source not valid" : "Bank source missing",
+      description:
+        snapshot.source.bankCsv === "invalid"
+          ? "Bank chunks or file present but not usable for reconciliation."
+          : "Cannot complete source-backed bank reconciliation rehearsal.",
+      mitigation: "Run compliance:source-truth-audit; add CSV or admin bank import",
       owner: "treasurer",
     },
     {

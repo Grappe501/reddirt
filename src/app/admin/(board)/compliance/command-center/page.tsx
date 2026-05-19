@@ -85,7 +85,11 @@ export default async function ComplianceAiCommandCenterPage() {
         <ComplianceMetricCard label="QA score" value={brain.launchReadiness.qaFullScore ?? "—"} tone={brain.launchReadiness.qaFullStatus ?? "neutral"} />
         <ComplianceMetricCard label="Batch eligible" value={brain.queue.batchEligible} tone="neutral" />
         <ComplianceMetricCard label="Rule review" value={brain.queue.ruleReviewItems} tone={brain.queue.ruleReviewItems ? "yellow" : "green"} />
-        <ComplianceMetricCard label="Bank CSV" value={brain.source.bankCsv} tone={brain.source.bankCsv === "present" ? "green" : "red"} />
+        <ComplianceMetricCard
+          label="Bank source"
+          value={brain.source.bankCsv}
+          tone={brain.source.bankCsv === "present" ? "green" : brain.source.bankCsv === "invalid" ? "yellow" : "red"}
+        />
         <ComplianceMetricCard label="Storage" value={brain.storage.mode} tone={brain.storage.ready ? "green" : "yellow"} />
       </section>
 
@@ -124,8 +128,13 @@ export default async function ComplianceAiCommandCenterPage() {
         </p>
       </ComplianceWhatThisMeans>
 
-      <ComplianceCard title={`Bank CSV — ${bankGuide.state.replace(/_/g, " ")}`}>
+      <ComplianceCard title={`Bank source — ${bankGuide.state.replace(/_/g, " ")}`}>
         <p className="text-sm font-semibold">{bankGuide.headline}</p>
+        <p className="mt-1 text-sm text-slate-600">{april26.bankReadiness.operatorSummary}</p>
+        <p className="mt-2 text-xs text-slate-500">
+          Type: {bankGuide.sourceType} · Status: {bankGuide.reconciliationStatus} · DB chunks:{" "}
+          {april26.bankReadiness.databaseTransactionCount} · Valid credits: {april26.bankReadiness.validRowCount}
+        </p>
         <p className="mt-1 text-sm text-slate-600">{bankGuide.nextAction}</p>
         <Link href={bankGuide.href} className="mt-2 inline-block text-sm font-bold text-[#0f2744] underline">
           April26 desk

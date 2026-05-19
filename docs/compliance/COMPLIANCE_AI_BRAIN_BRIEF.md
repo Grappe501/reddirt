@@ -1,22 +1,22 @@
 # Compliance AI brain brief
 
-Generated: 2026-05-19T18:50:58.583Z  
-Commit: 3c6754b  
+Generated: 2026-05-19T21:26:33.186Z  
+Commit: d47d472  
 Command center: /admin/compliance/command-center
 
 > Human review required — not legal certification. Green only when source-backed.
 
 ## Launch status
 
-- **Overall:** not_ready (13% checklist)
-- **Filing:** red (9 blockers)
-- **Open queue:** 133 · Batch eligible: 0
-- **Bank CSV:** missing
+- **Overall:** rehearsal_ready (25% checklist)
+- **Filing:** red (8 blockers)
+- **Open queue:** 221 · Batch eligible: 0
+- **Bank CSV:** present
 - **Rule topics unverified:** 24
 
 ## Recommended next human action
 
-Add bank CSV at H:\SOSWebsite\Compliance\April26\bank-april-2026.csv
+Work approval queue (221 open) starting with: rule_review, source_update_pending, filing_task_dependency, low_confidence
 
 ## Recommended next AI action
 
@@ -24,19 +24,19 @@ Run compliance:ai-brain and compliance:ai-daily-brief; surface next-actions and 
 
 ## Top next actions
 
-1. **Add bank-april-2026.csv** (treasurer) — Treasurer export at H:\SOSWebsite\Compliance\April26\bank-april-2026.csv. Then npm run compliance:bank:qa
+1. **Review unmatched bank lines** (operator) — 10 unmatched bank transaction(s).
 2. **Review unverified rule topics** (human) — 24 topic(s) on Rules page — not legal certification.
-3. **Burn down approval queue** (operator) — 133 open; start: rule_review, source_update_pending, filing_task_dependency, low_confidence
+3. **Burn down approval queue** (operator) — 221 open; start: rule_review, source_update_pending, filing_task_dependency, low_confidence
 4. **Configure production storage** (steve) — Local private storage fallback active. Configure SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, and private bucket.
 5. **DB migration (Steve approval)** (steve) — Steve approval + backup + rehearsal before cutover
 
 ## Top risks
 
-- **critical** Bank CSV missing: Add real treasurer export; run compliance:bank:qa
 - **critical** Filing readiness red: Resolve blockers on filing readiness page; source-backed only
 - **critical** PII in git or exports: Redacted exports only; gitignore tasks JSON
 - **critical** Automated fake compliance green: Use AI brain; never bypass gates
 - **high** Zero batch-eligible items: Fix fields/evidence; never batch rule_review
+- **high** Rule review items require human topic review: Rules page review + per-item override if approving
 
 ## Unsafe actions (never automate)
 

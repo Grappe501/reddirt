@@ -12,10 +12,11 @@ Run `npm run compliance:ai-market-plan` and `npm run compliance:ai-launch-readin
 
 | Metric | Typical current value |
 |--------|----------------------|
-| Launch checklist | ~13% (`not_ready`) |
-| Overall area completion | ~45–55% (heuristic) |
+| Launch checklist | ~25% (`rehearsal_ready`) |
+| Overall area completion | ~57% (heuristic) |
 | qa-full | 66 yellow |
 | Filing | red |
+| Bank source | present (file or chunks) |
 
 ## Blockers by stage
 
@@ -24,12 +25,12 @@ Run `npm run compliance:ai-market-plan` and `npm run compliance:ai-launch-readin
 - [ ] Command center loads with plain-English status  
 - [ ] April26 desk shows source inventory  
 - [ ] Approval workbench demo item (sanitized)  
-- **Blocker:** Bank CSV missing — recon demo incomplete  
+- **Blocker:** Reconciliation matches need treasurer review (ambiguous/unmatched)  
 - **Blocker:** 133 open items — looks “unfinished” (honest)
 
 ### Operator use (daily campaign operations)
 
-- [ ] Bank CSV present  
+- [x] Bank source validated (CSV file or import chunks)  
 - [ ] Operator coach workflow followed  
 - [ ] Burn-down export drives work  
 - [ ] Rules topics reviewed  

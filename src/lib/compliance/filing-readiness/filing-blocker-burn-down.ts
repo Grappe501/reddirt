@@ -78,18 +78,22 @@ export async function buildFilingBlockerBurnDown(): Promise<FilingGreenPath> {
     });
   }
   if (!april26.bankCsvFound) {
+    const bank = april26.bankReadiness;
+    const chunksOnly = bank.databaseTransactionCount > 0 && !bank.canSatisfyBankRequirement;
     push({
       id: "bank-csv",
-      label: "Bank CSV missing",
+      label: chunksOnly ? "Bank source not yet valid" : "Bank source missing",
       count: 1,
       role: "Treasurer",
-      nextAction: `Add bank-april-2026.csv to ${april26.folderPath} (date, amount, memo; credits positive).`,
+      nextAction: chunksOnly
+        ? bank.operatorSummary
+        : `Add bank-april-2026.csv to ${april26.folderPath} or import bank statement via admin bank import.`,
       href: "/admin/compliance/april26",
       category: "source",
       leverage: "high",
       severity: "critical",
       operatorFixableToday: true,
-      greenCondition: "bank-april-2026.csv validates and reconciliation rehearsal passes.",
+      greenCondition: "Validated bank credits (file or import chunks) and reconciliation rehearsal passes.",
       sourceDependency: true,
       reconciliationDependency: true,
     });

@@ -29,7 +29,7 @@ The compliance AI is the **operating brain** — it leads prioritization and ins
 
 ## What requires source files
 
-- **Bank CSV** — treasurer export; never invented  
+- **Bank credits** — treasurer export CSV **or** validated rows in `data/compliance/imports/bank/*.analysis.json` (admin import). A missing `bank-april-2026.csv` file does **not** mean bank data is absent if chunks exist.  
 - GoodChange CSV, receipt/check images on disk  
 - Ethics workbook if used  
 - Real donor/bank data stays out of git  

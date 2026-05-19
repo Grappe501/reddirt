@@ -19,7 +19,27 @@ export type BankCsvParseResult = {
   issues: Array<{ code: string; message: string; row?: number }>;
 };
 
-const REQUIRED = ["date", "amount", "memo"];
+const STRICT_REQUIRED = ["date", "amount", "memo"];
+
+function resolveHeaderKeys(headers: string[]): {
+  dateKey: string | null;
+  amountKey: string | null;
+  memoKey: string | null;
+  strict: boolean;
+} {
+  const has = (name: string) => headers.includes(name);
+  const dateKey = has("date")
+    ? "date"
+    : headers.find((h) => /^(posted date|transaction date|post date)$/.test(h)) ?? null;
+  const amountKey = has("amount") ? "amount" : headers.find((h) => /^transaction amount$/.test(h)) ?? null;
+  const memoKey = has("memo")
+    ? "memo"
+    : has("description")
+      ? "description"
+      : headers.find((h) => /^(details|payee|transaction description)$/.test(h)) ?? null;
+  const strict = STRICT_REQUIRED.every((h) => has(h));
+  return { dateKey, amountKey, memoKey, strict };
+}
 
 export function parseCsvLine(line: string): string[] {
   const cells: string[] = [];
@@ -57,25 +77,29 @@ export function normalizeDate(raw: string): string | null {
   return new Date(parsed).toISOString().slice(0, 10);
 }
 
-export async function parseApril26BankCsv(): Promise<BankCsvParseResult> {
-  const expectedPath = path.join(getApril26Dir(), "bank-april-2026.csv");
+export async function parseBankCsvAtPath(filePath: string): Promise<BankCsvParseResult> {
   const issues: BankCsvParseResult["issues"] = [];
   try {
-    const text = await readFile(expectedPath, "utf8");
+    const text = await readFile(filePath, "utf8");
     const lines = text.replace(/^\uFEFF/, "").split(/\r?\n/).filter((line) => line.trim());
     if (!lines.length) {
-      return { expectedPath, found: true, headers: [], columnMap: {}, rows: [], issues: [{ code: "empty_file", message: "Bank CSV is empty." }] };
+      return { expectedPath: filePath, found: true, headers: [], columnMap: {}, rows: [], issues: [{ code: "empty_file", message: "Bank CSV is empty." }] };
     }
     const headers = parseCsvLine(lines[0]).map((h) => h.toLowerCase());
     const columnMap: Record<string, string> = {};
     headers.forEach((h, i) => {
       columnMap[h] = parseCsvLine(lines[0])[i] ?? h;
     });
-    const missing = REQUIRED.filter((h) => !headers.includes(h));
-    if (missing.length) {
+    const { dateKey, amountKey, memoKey, strict } = resolveHeaderKeys(headers);
+    if (!dateKey || !amountKey) {
       issues.push({
         code: "header_mismatch",
-        message: `Missing columns: ${missing.join(", ")}. Found: ${headers.join(", ")}`,
+        message: `Missing date or amount columns. Found: ${headers.join(", ")}`,
+      });
+    } else if (!strict && !memoKey) {
+      issues.push({
+        code: "header_mismatch",
+        message: `Missing memo/description column. Found: ${headers.join(", ")}`,
       });
     }
     const rows: ParsedBankRow[] = [];
@@ -91,17 +115,21 @@ export async function parseApril26BankCsv(): Promise<BankCsvParseResult> {
       headers.forEach((header, index) => {
         record[header] = cells[index] ?? "";
       });
-      const amount = parseAmount(record.amount ?? "");
+      const amountRaw = amountKey ? record[amountKey] ?? "" : "";
+      if (!amountRaw.trim()) {
+        continue;
+      }
+      const amount = parseAmount(amountRaw);
       if (amount == null) {
         issues.push({ code: "invalid_amount", message: `Invalid amount at row ${i + 1}`, row: i + 1 });
         continue;
       }
-      const normalizedDate = normalizeDate(record.date ?? "");
+      const normalizedDate = normalizeDate(dateKey ? record[dateKey] ?? "" : "");
       if (!normalizedDate) {
         issues.push({ code: "invalid_date", message: `Invalid date at row ${i + 1}`, row: i + 1 });
         continue;
       }
-      const memo = (record.memo ?? "").trim();
+      const memo = (memoKey ? record[memoKey] ?? "" : "").trim();
       if (memo) {
         const count = (memoSeen.get(memo) ?? 0) + 1;
         memoSeen.set(memo, count);
@@ -111,21 +139,26 @@ export async function parseApril26BankCsv(): Promise<BankCsvParseResult> {
       }
       rows.push({
         rowNumber: i + 1,
-        date: record.date ?? "",
+        date: dateKey ? record[dateKey] ?? "" : "",
         amount,
         memo,
         normalizedDate,
       });
     }
-    return { expectedPath, found: true, headers, columnMap, rows, issues };
+    return { expectedPath: filePath, found: true, headers, columnMap, rows, issues };
   } catch {
     return {
-      expectedPath,
+      expectedPath: filePath,
       found: false,
       headers: [],
       columnMap: {},
       rows: [],
-      issues: [{ code: "file_missing", message: `Expected ${expectedPath}` }],
+      issues: [{ code: "file_missing", message: `Cannot read ${filePath}` }],
     };
   }
+}
+
+export async function parseApril26BankCsv(): Promise<BankCsvParseResult> {
+  const expectedPath = path.join(getApril26Dir(), "bank-april-2026.csv");
+  return parseBankCsvAtPath(expectedPath);
 }

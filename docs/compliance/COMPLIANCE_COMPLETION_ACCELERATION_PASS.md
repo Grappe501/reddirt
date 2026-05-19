@@ -3,7 +3,7 @@
 ## Commits
 
 - **Base:** `e5b13cb` — Expand compliance expert tooling and command center UX
-- **Pass:** Accelerate compliance completion readiness (this commit)
+- **Pass:** `d47d472` — Accelerate compliance completion readiness
 
 ## What changed
 

@@ -5,7 +5,6 @@ import {
   ComplianceMetricCard,
   ComplianceNav,
   CompliancePageHeader,
-  ComplianceWarningPanel,
 } from "../components";
 import { buildApril26ImportStatus } from "@/lib/compliance/imports/april26-import-status";
 import { buildBankReconciliationRehearsal } from "@/lib/compliance/imports/bank-reconciliation-rehearsal";
@@ -58,35 +57,60 @@ export default async function April26ImportPage() {
           </ul>
         ) : null}
       </ComplianceWhatThisMeans>
-      {!bank.readyForReconciliation ? (
-        <ComplianceWarningPanel title="Bank CSV required to complete reconciliation" tone="red">
-          <p className="font-semibold">Expected file:</p>
-          <p className="mt-1 font-mono text-xs break-all">{bank.expectedPath}</p>
-          <p className="mt-3 text-sm">Headers: date, amount, memo — credits positive.</p>
-          {bank.issues.length ? (
-            <ul className="mt-3 list-disc pl-5 text-sm">
-              {bank.issues.map((issue) => (
-                <li key={`${issue.code}-${issue.row ?? 0}`}>{issue.message}</li>
-              ))}
-            </ul>
-          ) : null}
-        </ComplianceWarningPanel>
-      ) : (
-        <ComplianceWarningPanel title="Bank CSV validated" tone="amber">
-          <p>{bank.reconciliationHint}</p>
-          <p className="mt-2 text-sm">
-            Valid rows: {bank.validRowCount} · Duplicates flagged: {bank.duplicateMemoCount}
+      <ComplianceCard title="Bank source status">
+        <p className="text-sm font-semibold text-[#0f2744]">{bankGuide.headline}</p>
+        <p className="mt-2 text-sm">{bank.operatorSummary}</p>
+        <dl className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
+          <div>
+            <dt className="text-slate-500">Source type</dt>
+            <dd className="font-mono">{bankGuide.sourceType}</dd>
+          </div>
+          <div>
+            <dt className="text-slate-500">Reconciliation status</dt>
+            <dd className="font-mono">{bank.reconciliationStatus}</dd>
+          </div>
+          <div>
+            <dt className="text-slate-500">File rows</dt>
+            <dd>{bank.rowCount}</dd>
+          </div>
+          <div>
+            <dt className="text-slate-500">Database chunks</dt>
+            <dd>
+              {bank.databaseBatchCount} batch(es) · {bank.databaseTransactionCount} txn(s)
+            </dd>
+          </div>
+          <div>
+            <dt className="text-slate-500">Valid credits</dt>
+            <dd>{bank.validRowCount}</dd>
+          </div>
+          <div>
+            <dt className="text-slate-500">Can reconcile</dt>
+            <dd>{bank.readyForReconciliation ? "yes" : "no"}</dd>
+          </div>
+        </dl>
+        {!bank.readyForReconciliation ? (
+          <div className="mt-4 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm">
+            <p className="font-semibold">Next action</p>
+            <p className="mt-1">{bankGuide.nextAction}</p>
+            <p className="mt-2 font-mono text-xs break-all">Optional file: {bank.expectedPath}</p>
+          </div>
+        ) : (
+          <p className="mt-4 text-sm">
+            <Link href="/admin/compliance/reconciliation" className="font-semibold underline">
+              Open reconciliation workbench
+            </Link>
           </p>
-          <Link href="/admin/compliance/reconciliation" className="mt-2 inline-block font-semibold underline">
-            Open reconciliation workbench
-          </Link>
-        </ComplianceWarningPanel>
-      )}
+        )}
+      </ComplianceCard>
       <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <ComplianceMetricCard label="Folder" value={status.folderExists ? "found" : "missing"} tone={status.folderExists ? "green" : "red"} />
         <ComplianceMetricCard label="GoodChange CSV" value={status.goodChangeCsvFound ? "yes" : "no"} tone={status.goodChangeCsvFound ? "green" : "red"} />
         <ComplianceMetricCard label="Ethics workbook" value={status.ethicsWorkbookFound ? "yes" : "no"} tone={status.ethicsWorkbookFound ? "green" : "yellow"} />
-        <ComplianceMetricCard label="Bank CSV" value={bank.found ? "yes" : "no"} tone={bank.readyForReconciliation ? "green" : "red"} />
+        <ComplianceMetricCard
+          label="Bank source"
+          value={bank.canSatisfyBankRequirement ? "ready" : bank.databaseTransactionCount > 0 ? "chunks" : "missing"}
+          tone={bank.readyForReconciliation ? "green" : bank.databaseTransactionCount > 0 ? "yellow" : "red"}
+        />
         <ComplianceMetricCard label="Check images" value={status.checkImagesFound} tone="navy" />
         <ComplianceMetricCard label="Receipt images" value={status.receiptImagesFound} tone="navy" />
         <ComplianceMetricCard label="In-kind images" value={status.inKindPagesFound} tone="navy" />

@@ -1,6 +1,7 @@
 import { loadApril26GoodChangeRows } from "../approval/april26-source";
+import { resolveBankSource, type BankReconciliationStatus } from "../april26/bank-source-adapter";
 import { evaluateBankCsvReadiness } from "./bank-csv-readiness";
-import { parseApril26BankCsv, type ParsedBankRow } from "./bank-csv-parse";
+import type { ParsedBankRow } from "./bank-csv-parse";
 
 export type MatchConfidence = "high" | "ambiguous" | "unmatched";
 
@@ -17,6 +18,8 @@ export type ReconciliationMatchCandidate = {
 
 export type BankReconciliationRehearsal = {
   bankReadiness: Awaited<ReturnType<typeof evaluateBankCsvReadiness>>;
+  sourceStatus: BankReconciliationStatus;
+  primarySource: Awaited<ReturnType<typeof evaluateBankCsvReadiness>>["primarySource"];
   parseIssues: Array<{ code: string; message: string; row?: number }>;
   columnDiagnostics: { headers: string[]; columnMap: Record<string, string> };
   creditRows: number;
@@ -117,14 +120,23 @@ function matchBankToPayouts(bankRows: ParsedBankRow[], payouts: PayoutBatch[]): 
 
 export async function buildBankReconciliationRehearsal(): Promise<BankReconciliationRehearsal> {
   const bankReadiness = await evaluateBankCsvReadiness();
-  const parsed = await parseApril26BankCsv();
+  const source = await resolveBankSource();
   const operatorNextSteps: string[] = [];
+  const bankRows: ParsedBankRow[] = source.normalizedRows;
 
-  if (!parsed.found) {
-    operatorNextSteps.push("Add bank-april-2026.csv to April26 folder (date, amount, memo).");
+  if (!source.canSatisfyBankRequirement) {
+    if (source.databaseTransactionCount > 0 && !source.fileFound) {
+      operatorNextSteps.push(source.operatorSummary);
+    } else if (source.primarySource === "none") {
+      operatorNextSteps.push("Add bank-april-2026.csv or import bank statement via admin bank import.");
+    } else {
+      operatorNextSteps.push("Fix bank source validation issues before reconciliation.");
+    }
     return {
       bankReadiness,
-      parseIssues: parsed.issues,
+      sourceStatus: source.reconciliationStatus,
+      primarySource: source.primarySource,
+      parseIssues: source.validationIssues,
       columnDiagnostics: { headers: [], columnMap: {} },
       creditRows: 0,
       unmatchedBank: [],
@@ -136,8 +148,8 @@ export async function buildBankReconciliationRehearsal(): Promise<BankReconcilia
     };
   }
 
-  if (parsed.issues.length) {
-    operatorNextSteps.push("Fix bank CSV schema/row issues listed below, then re-run rehearsal.");
+  if (source.validationIssues.length) {
+    operatorNextSteps.push("Review non-blocking validation warnings on bank source.");
   }
 
   let goodChangeRows: Record<string, string>[] = [];
@@ -148,7 +160,7 @@ export async function buildBankReconciliationRehearsal(): Promise<BankReconcilia
   }
 
   const payouts = buildPayoutBatches(goodChangeRows);
-  const { highConfidence, ambiguous, unmatchedBank, matchedPayoutKeys } = matchBankToPayouts(parsed.rows, payouts);
+  const { highConfidence, ambiguous, unmatchedBank, matchedPayoutKeys } = matchBankToPayouts(bankRows, payouts);
   const unmatchedPayouts = payouts.filter((p) => !matchedPayoutKeys.has(p.payoutKey));
 
   if (highConfidence.length) {
@@ -167,14 +179,16 @@ export async function buildBankReconciliationRehearsal(): Promise<BankReconcilia
     operatorNextSteps.push("Run reconciliation workbench approve/lock flow for suggested matches.");
   }
 
-  const readyForRehearsal =
-    bankReadiness.readyForReconciliation && parsed.rows.length > 0 && !parsed.issues.some((i) => i.code === "header_mismatch");
+  const headerBlocked = source.validationIssues.some((i) => i.code === "header_mismatch");
+  const readyForRehearsal = bankReadiness.readyForReconciliation && bankRows.length > 0 && !headerBlocked;
 
   return {
     bankReadiness,
-    parseIssues: [...parsed.issues, ...bankReadiness.issues.map((i) => ({ code: i.code, message: i.message, row: i.row }))],
-    columnDiagnostics: { headers: parsed.headers, columnMap: parsed.columnMap },
-    creditRows: parsed.rows.filter((r) => r.amount > 0).length,
+    sourceStatus: readyForRehearsal ? "reconciliation_active" : source.reconciliationStatus,
+    primarySource: source.primarySource,
+    parseIssues: [...source.validationIssues, ...bankReadiness.issues.map((i) => ({ code: i.code, message: i.message, row: i.row }))],
+    columnDiagnostics: { headers: [], columnMap: {} },
+    creditRows: bankRows.filter((r) => r.amount > 0).length,
     unmatchedBank,
     unmatchedPayouts,
     highConfidence,

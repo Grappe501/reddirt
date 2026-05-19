@@ -88,7 +88,8 @@ export async function buildDeployReadinessReport(): Promise<DeployReadinessRepor
   });
 
   const productionBlockers = [
-    ...(bankGuide.state === "missing" ? ["Bank CSV missing"] : []),
+    ...(bankGuide.state === "missing" ? ["Bank source missing"] : []),
+    ...(bankGuide.state === "database_only" ? ["Bank chunks need validation"] : []),
     ...(brain.filing.overall === "red" ? ["Filing red — expected until source-backed green"] : []),
     ...(!brain.storage.ready ? ["Production storage not ready"] : []),
     "Operator Netlify checklist not signed",

@@ -40,9 +40,17 @@ export function buildCompletionProgress(snapshot: ComplianceBrainSnapshot): Comp
     area({
       area: "Source intake",
       percentComplete: Math.round((gcPct + bankPct) / 2),
-      status: s.bankCsv === "missing" ? "blocked" : "in_progress",
-      blockers: s.bankCsv === "missing" ? ["Bank CSV missing"] : [],
-      immediateActions: ["Add bank-april-2026.csv", "Confirm April26 folder inventory"],
+      status: s.bankCsv === "missing" || s.bankCsv === "invalid" ? "blocked" : "in_progress",
+      blockers:
+        s.bankCsv === "missing"
+          ? ["Bank source missing (file or import chunks)"]
+          : s.bankCsv === "invalid"
+            ? ["Bank chunks or file need validation"]
+            : [],
+      immediateActions:
+        s.bankCsv === "invalid"
+          ? ["Run compliance:source-truth-audit", "Fix bank import validation"]
+          : ["Add bank-april-2026.csv or admin bank import", "Confirm April26 folder inventory"],
       completionActions: ["All April26 sources validated", "bank:qa ok", "april26:qa ok"],
       launchCriticality: "critical",
       owner: "treasurer",
@@ -54,7 +62,11 @@ export function buildCompletionProgress(snapshot: ComplianceBrainSnapshot): Comp
       area: "April26 import desk",
       percentComplete: s.april26FolderExists && s.goodChangeCsv === "present" ? 80 : 30,
       status: s.april26FolderExists ? "in_progress" : "blocked",
-      blockers: !s.april26FolderExists ? ["April26 folder missing"] : s.bankCsv === "missing" ? ["Bank CSV missing"] : [],
+      blockers: !s.april26FolderExists
+        ? ["April26 folder missing"]
+        : s.bankCsv === "missing" || s.bankCsv === "invalid"
+          ? ["Bank source not ready"]
+          : [],
       immediateActions: ["Open April26 desk", "Review rehearsal counts"],
       completionActions: ["Bank validated on desk", "Reconciliation rehearsal run"],
       launchCriticality: "critical",
@@ -64,11 +76,19 @@ export function buildCompletionProgress(snapshot: ComplianceBrainSnapshot): Comp
       relatedDocs: ["COMPLIANCE_OPERATOR_LAUNCH_REHEARSAL.md"],
     }),
     area({
-      area: "Bank CSV",
+      area: "Bank source",
       percentComplete: bankPct,
-      status: s.bankCsv === "present" ? "complete" : "blocked",
-      blockers: s.bankCsv === "missing" ? [`Missing file at ${s.bankCsvExpectedPath}`] : [],
-      immediateActions: ["Treasurer adds bank-april-2026.csv"],
+      status: s.bankCsv === "present" ? "complete" : s.bankCsv === "invalid" ? "in_progress" : "blocked",
+      blockers:
+        s.bankCsv === "missing"
+          ? [`No usable bank at ${s.bankCsvExpectedPath} or imports/bank`]
+          : s.bankCsv === "invalid"
+            ? ["Import chunks or CSV present but not valid for reconciliation"]
+            : [],
+      immediateActions:
+        s.bankCsv === "invalid"
+          ? ["Run compliance:source-truth-audit", "Fix staged bank rows"]
+          : ["Treasurer adds bank-april-2026.csv or imports via admin bank import"],
       completionActions: ["compliance:bank:qa status ok", "readyForReconciliation true"],
       launchCriticality: "critical",
       owner: "treasurer",
@@ -119,7 +139,12 @@ export function buildCompletionProgress(snapshot: ComplianceBrainSnapshot): Comp
       area: "Reconciliation",
       percentComplete: s.bankCsv === "present" ? 50 : 25,
       status: s.reconciliationBlockers ? "blocked" : "in_progress",
-      blockers: s.bankCsv === "missing" ? ["Bank CSV required"] : s.reconciliationBlockers ? [`${s.reconciliationBlockers} blocker(s)`] : [],
+      blockers:
+        s.bankCsv === "missing" || s.bankCsv === "invalid"
+          ? ["Validated bank source required"]
+          : s.reconciliationBlockers
+            ? [`${s.reconciliationBlockers} blocker(s)`]
+            : [],
       immediateActions: ["Run bank rehearsal", "Open reconciliation workbench"],
       completionActions: ["Unmatched lists resolved or accepted with notes"],
       launchCriticality: "critical",

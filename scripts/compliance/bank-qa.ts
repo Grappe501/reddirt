@@ -8,10 +8,17 @@ async function main() {
     ambiguous: rehearsal.ambiguous.length,
     highConfidence: rehearsal.highConfidence.length,
   });
+  const br = rehearsal.bankReadiness;
   const result = {
-    status: rehearsal.bankReadiness.found ? "ok" : "missing_file",
+    status: br.canSatisfyBankRequirement ? "reconciliation_ready" : br.databaseTransactionCount > 0 ? "database_source_available" : br.found ? "file_source_available" : "missing_file_only",
+    sourceStatus: rehearsal.sourceStatus,
+    primarySource: rehearsal.primarySource,
+    canSatisfyBankRequirement: br.canSatisfyBankRequirement,
+    databaseTransactionCount: br.databaseTransactionCount,
     operatorState: guide.state,
+    operatorStateSourceType: guide.sourceType,
     operatorHeadline: guide.headline,
+    operatorSummary: br.operatorSummary,
     readyForRehearsal: rehearsal.readyForRehearsal,
     creditRows: rehearsal.creditRows,
     highConfidenceMatches: rehearsal.highConfidence.length,
@@ -22,7 +29,7 @@ async function main() {
     operatorNextSteps: rehearsal.operatorNextSteps,
   };
   console.log(JSON.stringify(result, null, 2));
-  if (!rehearsal.bankReadiness.found) process.exit(0);
+  if (!br.canSatisfyBankRequirement && !br.databaseTransactionCount) process.exit(0);
   if (rehearsal.parseIssues.some((i) => i.code === "header_mismatch")) process.exit(1);
 }
 

@@ -4,7 +4,7 @@ Fastest path to higher readiness. Run `npm run compliance:ai-expert` after each 
 
 | # | Action | Command / page | Expected impact | Owner |
 |---|--------|----------------|-----------------|-------|
-| 1 | Add bank CSV | `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` then `npm run compliance:bank:qa` | Unblocks recon + filing path; +15–20% launch checklist | Treasurer |
+| 1 | Validate bank source | `npm run compliance:source-truth-audit` then `npm run compliance:bank:qa` — CSV at `Compliance/April26/bank-april-2026.csv` **or** admin bank import chunks | Confirms file vs database provenance; unlocks recon when valid | Treasurer |
 | 2 | Open command center daily | `/admin/compliance/command-center` | Single source of truth; reduces confusion | Operator |
 | 3 | Run operator smoke test | `COMPLIANCE_OPERATOR_SMOKE_TEST.md` | Catches broken routes before demo | Operator |
 | 4 | Review 3 rule topics | `/admin/compliance/rules` + `compliance:rule-topic-packet` | Reduces rule_review blockers | Human |

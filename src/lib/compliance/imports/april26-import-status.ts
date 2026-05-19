@@ -44,7 +44,13 @@ async function findBankCsv(dir: string): Promise<{ found: boolean; path: string 
   if (await fileExists(expected)) return { found: true, path: expected };
   try {
     const entries = await readdir(dir, { withFileTypes: true });
-    const match = entries.find((entry) => entry.isFile() && /\.csv$/i.test(entry.name) && /bank|statement|checking/i.test(entry.name));
+    const match = entries.find(
+      (entry) =>
+        entry.isFile() &&
+        /\.csv$/i.test(entry.name) &&
+        /bank|statement|checking|ledger|download/i.test(entry.name) &&
+        !/transactions_Apr/i.test(entry.name),
+    );
     if (match) return { found: true, path: path.join(dir, match.name) };
   } catch {
     /* ignore */
@@ -96,7 +102,7 @@ export async function buildApril26ImportStatus(): Promise<April26ImportStatus> {
     folderExists,
     goodChangeCsvFound,
     ethicsWorkbookFound: Boolean(ethicsWorkbookFound),
-    bankCsvFound: bank.found,
+    bankCsvFound: bankReadiness.canSatisfyBankRequirement,
     bankCsvExpectedPath: bank.path,
     receiptImagesFound,
     inKindPagesFound,
