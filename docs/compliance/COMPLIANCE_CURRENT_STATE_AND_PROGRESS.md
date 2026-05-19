@@ -1,6 +1,6 @@
 # Compliance current state and progress
 
-Generated: 2026-05-19T23:23:14.734Z · Commit: `39e3441`
+Generated: 2026-05-19T23:40:41.436Z · Commit: `dd6bf7a`
 
 **Overall completion:** 57% · **Filing:** red · **QA full:** yellow
 

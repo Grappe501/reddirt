@@ -1,6 +1,6 @@
 # Compliance AI Completion Engine brief
 
-Generated: 2026-05-19T23:23:14.730Z · Commit: `39e3441`
+Generated: 2026-05-19T23:40:41.430Z · Commit: `dd6bf7a`
 
 ## In 30 seconds
 

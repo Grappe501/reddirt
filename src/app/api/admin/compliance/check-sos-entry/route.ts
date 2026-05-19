@@ -3,7 +3,9 @@ import { assertAdminApi } from "@/lib/admin/require-admin";
 import {
   buildAprilCheckSosWorkbook,
   extractAprilCheckSosEntry,
+  importAprilCheckSosWorkbook,
   updateAprilCheckSosEntry,
+  type AprilCheckSosWorkbook,
 } from "@/lib/compliance/checks/april-check-sos-workbook";
 import type { CheckSosFieldKey } from "@/lib/compliance/checks/check-sos-field-catalog";
 
@@ -52,6 +54,14 @@ export async function POST(request: Request) {
   if (body.action === "extract_all") {
     const workbook = await buildAprilCheckSosWorkbook({ extract: true });
     return NextResponse.json(workbook);
+  }
+  if (body.action === "import_workbook") {
+    const workbook = (body as { workbook?: AprilCheckSosWorkbook }).workbook;
+    if (!workbook?.entries?.length) {
+      return NextResponse.json({ error: "workbook with entries required" }, { status: 400 });
+    }
+    const saved = await importAprilCheckSosWorkbook(workbook);
+    return NextResponse.json(saved);
   }
   return NextResponse.json({ error: "Unknown action" }, { status: 400 });
 }

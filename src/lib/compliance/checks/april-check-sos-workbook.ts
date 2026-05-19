@@ -225,3 +225,41 @@ function csvEscape(value: string): string {
 export function getAprilCheckSosStorePath(): string {
   return STORE_PATH;
 }
+
+export async function importAprilCheckSosWorkbook(workbook: AprilCheckSosWorkbook): Promise<AprilCheckSosWorkbook> {
+  const normalized: AprilCheckSosWorkbook = {
+    ...workbook,
+    generatedAt: workbook.generatedAt || new Date().toISOString(),
+    entries: workbook.entries ?? [],
+  };
+  await saveAprilCheckSosWorkbook(normalized);
+  return normalized;
+}
+
+export async function getApril26ChecksStatus(): Promise<{
+  april26Dir: string;
+  folderExists: boolean;
+  checkImageCount: number;
+  workbookEntryCount: number;
+  storeExists: boolean;
+}> {
+  const { april26FolderExists, getApril26Dir } = await import("../approval/april26-source");
+  const folderExists = await april26FolderExists();
+  const dir = getApril26Dir();
+  const images = dedupeAprilCheckImages(await listApril26ImageFiles());
+  const store = await loadAprilCheckSosWorkbook();
+  let storeExists = false;
+  try {
+    await readFile(STORE_PATH);
+    storeExists = true;
+  } catch {
+    storeExists = false;
+  }
+  return {
+    april26Dir: dir,
+    folderExists,
+    checkImageCount: images.length,
+    workbookEntryCount: store?.entries.length ?? 0,
+    storeExists,
+  };
+}

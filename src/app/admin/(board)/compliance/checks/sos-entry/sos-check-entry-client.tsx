@@ -38,7 +38,13 @@ function CopyField({ label, hint, value, onChange }: { label: string; hint: stri
   );
 }
 
-export function SosCheckEntryClient({ initialWorkbook }: { initialWorkbook: AprilCheckSosWorkbook }) {
+export function SosCheckEntryClient({
+  initialWorkbook,
+  imagesAvailable = true,
+}: {
+  initialWorkbook: AprilCheckSosWorkbook;
+  imagesAvailable?: boolean;
+}) {
   const [workbook, setWorkbook] = useState(initialWorkbook);
   const [selectedId, setSelectedId] = useState(initialWorkbook.entries[0]?.id ?? "");
   const [busy, setBusy] = useState(false);
@@ -155,11 +161,17 @@ export function SosCheckEntryClient({ initialWorkbook }: { initialWorkbook: Apri
           <div className="grid gap-4 lg:grid-cols-2">
             <div className="rounded-2xl border border-slate-200 bg-white p-3">
               <p className="text-xs font-bold uppercase text-slate-500">Check image</p>
-              <img
-                src={`/api/admin/compliance/april26-image?rel=${encodeURIComponent(selected.imageRelativePath)}`}
-                alt={selected.imageFileName}
-                className="mt-2 max-h-[420px] w-full rounded-lg object-contain bg-slate-100"
-              />
+              {imagesAvailable ? (
+                <img
+                  src={`/api/admin/compliance/april26-image?rel=${encodeURIComponent(selected.imageRelativePath)}`}
+                  alt={selected.imageFileName}
+                  className="mt-2 max-h-[420px] w-full rounded-lg object-contain bg-slate-100"
+                />
+              ) : (
+                <p className="mt-2 rounded-lg bg-slate-100 p-4 text-sm text-slate-600">
+                  Image not on this server. Use local dev with April26, or verify from your physical check.
+                </p>
+              )}
               <p className="mt-2 break-all font-mono text-xs text-slate-500">{selected.imageRelativePath}</p>
             </div>
             <div className="space-y-3">
