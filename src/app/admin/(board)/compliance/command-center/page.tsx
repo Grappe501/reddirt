@@ -19,6 +19,9 @@ import {
 } from "../compliance-ux";
 import { buildComplianceExpertBundle } from "@/lib/compliance/ai/expert/build-compliance-expert";
 import { buildComplianceUxAudit } from "@/lib/compliance/ai/expert/build-ux-audit";
+import { buildApril26ImportStatus } from "@/lib/compliance/imports/april26-import-status";
+import { buildBankReconciliationRehearsal } from "@/lib/compliance/imports/bank-reconciliation-rehearsal";
+import { buildBankCsvOperatorGuide } from "@/lib/compliance/imports/bank-csv-operator-state";
 
 export const dynamic = "force-dynamic";
 
@@ -29,7 +32,16 @@ function launchLabel(overall: string): LaunchStatusLabel {
 }
 
 export default async function ComplianceAiCommandCenterPage() {
-  const { brain, expert, progress, operatorCoach } = await buildComplianceExpertBundle();
+  const [{ brain, expert, progress, operatorCoach }, april26, rehearsal] = await Promise.all([
+    buildComplianceExpertBundle(),
+    buildApril26ImportStatus(),
+    buildBankReconciliationRehearsal(),
+  ]);
+  const bankGuide = buildBankCsvOperatorGuide(april26.bankReadiness, {
+    unmatchedBank: rehearsal.unmatchedBank.length,
+    ambiguous: rehearsal.ambiguous.length,
+    highConfidence: rehearsal.highConfidence.length,
+  });
   const ux = buildComplianceUxAudit();
   const topAction = expert.top5Now[0];
   const whyNotReady = brain.launchReadiness.checklist.filter((c) => !c.passed && c.requiredForLaunch).map((c) => c.label);
@@ -111,6 +123,14 @@ export default async function ComplianceAiCommandCenterPage() {
           {brain.filing.blockerCount} blocker(s) must meet each green condition on the filing readiness page. Human sign-off is always required; this is not legal certification.
         </p>
       </ComplianceWhatThisMeans>
+
+      <ComplianceCard title={`Bank CSV — ${bankGuide.state.replace(/_/g, " ")}`}>
+        <p className="text-sm font-semibold">{bankGuide.headline}</p>
+        <p className="mt-1 text-sm text-slate-600">{bankGuide.nextAction}</p>
+        <Link href={bankGuide.href} className="mt-2 inline-block text-sm font-bold text-[#0f2744] underline">
+          April26 desk
+        </Link>
+      </ComplianceCard>
 
       <ComplianceCard title="Top blockers (plain English)">
         <ul className="space-y-3 text-sm">

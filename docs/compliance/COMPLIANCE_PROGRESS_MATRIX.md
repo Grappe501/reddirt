@@ -1,6 +1,6 @@
 # Compliance progress matrix
 
-Generated: 2026-05-19T18:50:43.977Z · Commit: 3c6754b · **Overall: 51%**
+Generated: 2026-05-19T19:22:10.091Z · Commit: e5b13cb · **Overall: 52%**
 
 > Regenerate live metrics: `npm run compliance:ai-progress-chart` and `npm run compliance:ai-expert`. Percentages are heuristic — honest status beats fake green.
 
@@ -14,7 +14,7 @@ Generated: 2026-05-19T18:50:43.977Z · Commit: 3c6754b · **Overall: 51%**
 | Ethics workbook | Optional source present or waived by pol | not_started | 10 | Partial | — | Add workbook if campaign uses it | Optional source present or waived by policy | Add workbook if campaign uses it | human | low |
 | Reconciliation | Unmatched lists resolved or accepted wit | blocked | 25 | Partial | — | Run bank rehearsal | Unmatched lists resolved or accepted with notes | Run bank rehearsal | treasurer | critical |
 | Approval queues | Open count 0 or documented exceptions | in_progress | 5 | Partial | 133 open items | Start burn-down: rule_review | Open count 0 or documented exceptions | Start burn-down: rule_review | operator | critical |
-| Workbench review | Each item approved/needs_info/rejected w | in_progress | 70 | Partial | 133 items need per-item human decision | Use Review next best item | Each item approved/needs_info/rejected with initia | Use Review next best item | operator | critical |
+| Workbench review | Each item approved/needs_info/rejected w | in_progress | 78 | Partial | 133 items need per-item human decision | Use Review next best item | Each item approved/needs_info/rejected with initia | Use Review next best item | operator | critical |
 | Batch approval | Batch page shows eligible >0 for safe it | in_progress | 40 | Partial | Batch eligible 0 by design until confidence ≥98% and no rule_review | Fix fields/evidence on near-eligible items | Batch page shows eligible >0 for safe items only | Fix fields/evidence on near-eligible items | operator | medium |
 | Rule review | Per-item approve with override only afte | in_progress | 35 | Partial | 44 rule_review queue items | Review topics on Rules page first | Per-item approve with override only after topic re | Review topics on Rules page first | human | critical |
 | Rule topic packet | unverifiedCount 0 | in_progress | 28 | Partial | 24 unverified topics | npm run compliance:rule-topic-packet | unverifiedCount 0 | npm run compliance:rule-topic-packet | human | high |
@@ -28,19 +28,19 @@ Generated: 2026-05-19T18:50:43.977Z · Commit: 3c6754b · **Overall: 51%**
 | AI risk register | Critical risks have mitigations | in_progress | 85 | Core built | In progress | compliance:ai-risk-report | Critical risks have mitigations | compliance:ai-risk-report | ai_assist | high |
 | AI launch readiness | Checklist 100% for launch_ready | blocked | 13 | Partial | — | compliance:ai-launch-readiness | Checklist 100% for launch_ready | compliance:ai-launch-readiness | ai_assist | critical |
 | AI handoff | New threads get full context | in_progress | 90 | Core built | In progress | compliance:ai-thread-handoff | New threads get full context | compliance:ai-thread-handoff | ai_assist | medium |
-| Command center | Operator uses CC as home base without tr | in_progress | 75 | Partial | Mission control UX pass in progress | Open command center daily | Operator uses CC as home base without training | Open command center daily | operator | critical |
+| Command center | Operator uses CC as home base without tr | in_progress | 88 | Core built | Operator rehearsal and Netlify verify pending | Open command center daily | Operator uses CC as home base without training | Open command center daily | operator | critical |
 | Operator exports | Burn-down export drives daily work | in_progress | 85 | Core built | In progress | operator-review-export-v2 | Burn-down export drives daily work | operator-review-export-v2 | operator | high |
 | Operator smoke test | All smoke steps pass in browser | in_progress | 60 | Partial | Not run on production yet | Walk COMPLIANCE_OPERATOR_SMOKE_TEST.md locally | All smoke steps pass in browser | Walk COMPLIANCE_OPERATOR_SMOKE_TEST.md locally | operator | high |
 | Launch rehearsal | Pass/fail checklist complete | in_progress | 55 | Partial | Bank CSV missing | COMPLIANCE_OPERATOR_LAUNCH_REHEARSAL.md | Pass/fail checklist complete | COMPLIANCE_OPERATOR_LAUNCH_REHEARSAL.md | operator | critical |
 | Netlify production verification | Checklist signed after deploy | not_started | 10 | Partial | — | COMPLIANCE_NETLIFY_PRODUCTION_VERIFY.md | Checklist signed after deploy | COMPLIANCE_NETLIFY_PRODUCTION_VERIFY.md | operator | critical |
-| UI/UX clarity | UX plan implemented per route | in_progress | 55 | Partial | Tables still dense on queue page | Use shared What this means / Do this next panels | UX plan implemented per route | Use shared What this means / Do this next panels | engineering | high |
+| UI/UX clarity | UX plan implemented per route | in_progress | 70 | Partial | Tables still dense on queue page | Use shared What this means / Do this next panels | UX plan implemented per route | Use shared What this means / Do this next panels | engineering | high |
 | Accessibility | WCAG spot-check on compliance routes | not_started | 40 | Partial | — | Nav aria-label present | WCAG spot-check on compliance routes | Nav aria-label present | engineering | medium |
 | Audit trail | Export audit log for filing period | in_progress | 70 | Partial | In progress | Verify initials on approvals | Export audit log for filing period | Verify initials on approvals | operator | high |
 | Security/privacy | No PII in repo or public exports | in_progress | 75 | Partial | Production RLS not verified | Confirm gitignore for tasks JSON | No PII in repo or public exports | Confirm gitignore for tasks JSON | steve | critical |
 | Documentation | All phases documented with exit criteria | in_progress | 88 | Core built | In progress | Keep STATE_OF_BUILD current | All phases documented with exit criteria | Keep STATE_OF_BUILD current | engineering | high |
 | QA automation | qa-full green when real gates pass | in_progress | 82 | Core built | qa-full yellow 66 | npm run compliance:qa-full | qa-full green when real gates pass | npm run compliance:qa-full | engineering | high |
 | Market readiness | Demo + operator + filing + public launch | blocked | 13 | Partial | — | COMPLIANCE_MARKET_READINESS_PLAN.md | Demo + operator + filing + public launch gates | COMPLIANCE_MARKET_READINESS_PLAN.md | human | critical |
-| AI expert v2 | Expert QA passes | in_progress | 75 | Partial | Coaches need live bank data to be fully actionable | npm run compliance:ai-expert | Expert QA passes; Operators use coach steps daily | npm run compliance:ai-expert | ai_assist | high |
+| AI expert v2 | Expert QA passes | in_progress | 85 | Core built | Coaches need live bank data to be fully actionable | npm run compliance:ai-expert | Expert QA passes; Operators use coach steps daily | npm run compliance:ai-expert | ai_assist | high |
 
 ## Top 10 risks (program)
 

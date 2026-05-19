@@ -33,7 +33,7 @@ export function buildCompletionProgress(snapshot: ComplianceBrainSnapshot): Comp
   const storagePct = st.ready ? 100 : st.mode === "local_private" ? 45 : 20;
   const aiBrainPct = 85;
   const aiExpertPct = 75;
-  const uxPct = 55;
+  const uxPct = 70;
   const marketPct = launch.launchReadinessScore;
 
   const areas: CompletionProgressArea[] = [
@@ -143,7 +143,7 @@ export function buildCompletionProgress(snapshot: ComplianceBrainSnapshot): Comp
     }),
     area({
       area: "Workbench review",
-      percentComplete: 70,
+      percentComplete: 78,
       status: "in_progress",
       blockers: ["133 items need per-item human decision"],
       immediateActions: ["Use Review next best item"],
@@ -321,9 +321,9 @@ export function buildCompletionProgress(snapshot: ComplianceBrainSnapshot): Comp
     }),
     area({
       area: "Command center",
-      percentComplete: 75,
+      percentComplete: 88,
       status: "in_progress",
-      blockers: ["Mission control UX pass in progress"],
+      blockers: ["Operator rehearsal and Netlify verify pending"],
       immediateActions: ["Open command center daily"],
       completionActions: ["Operator uses CC as home base without training"],
       launchCriticality: "critical",
@@ -458,7 +458,7 @@ export function buildCompletionProgress(snapshot: ComplianceBrainSnapshot): Comp
     }),
     area({
       area: "AI expert v2",
-      percentComplete: aiExpertPct,
+      percentComplete: 85,
       status: "in_progress",
       blockers: ["Coaches need live bank data to be fully actionable"],
       immediateActions: ["npm run compliance:ai-expert"],

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ComplianceNav, CompliancePageHeader } from "../../components";
+import { ComplianceNextBestAction, ComplianceQuickFilterBar, ComplianceWhatThisMeans } from "../../compliance-ux";
 import { buildApprovalBurnDownReport } from "@/lib/compliance/approval/approval-burn-down";
 import { buildOperatorReviewRowsV2, summarizeBurnDownV2, BURN_DOWN_START_ORDER } from "@/lib/compliance/approval/approval-burn-down-v2";
 import {
@@ -38,6 +39,8 @@ export default async function ApprovalQueueDashboardPage({
   const rowsV2 = await buildOperatorReviewRowsV2(items, queueId);
   const summaryV2 = summarizeBurnDownV2(rowsV2);
   const startHere = BURN_DOWN_START_ORDER.filter((key) => (summaryV2[key] ?? 0) > 0);
+  const quickFilterKeys = ["rule_review", "low_confidence", "source_update_pending", "near_eligible", "filing_impact"] as const;
+  const quickCounts = Object.fromEntries(quickFilterKeys.map((k) => [k, filterQueueItems(items, k).length])) as Record<string, number>;
 
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-6 pb-12">
@@ -57,6 +60,21 @@ export default async function ApprovalQueueDashboardPage({
         }
       />
       <ComplianceNav />
+      {nextItem ? (
+        <ComplianceNextBestAction
+          title="Review next best item"
+          description={burnDown.nextBest?.scoreSummary ?? "Highest leverage open item for this queue."}
+          href={`/admin/compliance/approval/${queueId}/item/${nextItem.id}`}
+          actionLabel="Open workbench"
+          secondaryHref="/admin/compliance/command-center"
+          secondaryLabel="Command center"
+        />
+      ) : null}
+      <ComplianceWhatThisMeans>
+        Use quick filters below to burn down by category. rule_review items need Rules page review first — never batch approve. Run{" "}
+        <code className="text-xs">npm run compliance:queue-burndown</code> for a redacted review list with impact labels.
+      </ComplianceWhatThisMeans>
+      <ComplianceQuickFilterBar queueId={queueId} filterKey={filterKey} counts={quickCounts} />
       <section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
         <h2 className="font-heading text-lg font-bold text-[#0f2744]">Burn-down summary</h2>
         <p className="mt-1 text-sm text-slate-600">{burnDown.openCount} open · {burnDown.ruleReviewCount} rule review · {burnDown.confidenceBelow98} below 98% confidence</p>

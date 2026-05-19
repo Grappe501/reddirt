@@ -159,6 +159,159 @@ export function ComplianceProgressByArea({
   );
 }
 
+/** @alias ComplianceDoThisNext */
+export const ComplianceNextBestAction = ComplianceDoThisNext;
+
+export function ComplianceStepGuide({
+  steps,
+  currentStep,
+}: {
+  steps: { id: string; title: string; description: string; status: "done" | "current" | "upcoming" | "blocked" }[];
+  currentStep: string;
+}) {
+  return (
+    <ol className="space-y-2">
+      {steps.map((step, index) => {
+        const isCurrent = step.id === currentStep;
+        const tone =
+          step.status === "done"
+            ? "border-emerald-200 bg-emerald-50"
+            : step.status === "blocked"
+              ? "border-red-200 bg-red-50"
+              : isCurrent
+                ? "border-[#0f2744] bg-[#0f2744]/5"
+                : "border-slate-200 bg-white";
+        return (
+          <li key={step.id} className={`rounded-xl border p-3 ${tone}`}>
+            <p className="text-xs font-bold uppercase text-slate-500">
+              Step {index + 1} {isCurrent ? "· you are here" : ""}
+            </p>
+            <p className="font-heading font-bold text-[#0f2744]">{step.title}</p>
+            <p className="mt-1 text-sm text-slate-600">{step.description}</p>
+          </li>
+        );
+      })}
+    </ol>
+  );
+}
+
+export function CompliancePlainEnglishBlocker({
+  title,
+  whyItMatters,
+  howToClear,
+  href,
+}: {
+  title: string;
+  whyItMatters: string;
+  howToClear: string;
+  href?: string;
+}) {
+  return (
+    <article className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+      <p className="font-heading font-bold text-[#0f2744]">{title}</p>
+      <p className="mt-2 text-sm">
+        <strong>Why this matters:</strong> {whyItMatters}
+      </p>
+      <p className="mt-1 text-sm text-slate-600">
+        <strong>How to clear:</strong> {howToClear}
+      </p>
+      {href ? (
+        <Link href={href} className="mt-2 inline-block text-sm font-semibold text-[#0f2744] underline">
+          Open related page
+        </Link>
+      ) : null}
+    </article>
+  );
+}
+
+export function ComplianceSafeActionBadge({ safe }: { safe: boolean }) {
+  return (
+    <ComplianceStatusBadge
+      label={safe ? "Safe to proceed with review" : "Human review required"}
+      tone={safe ? "green" : "yellow"}
+    />
+  );
+}
+
+export function ComplianceRouteCard({ href, title, description }: { href: string; title: string; description: string }) {
+  return (
+    <Link href={href} className="block rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:border-[#0f2744]/30">
+      <p className="font-heading font-bold text-[#0f2744]">{title}</p>
+      <p className="mt-1 text-xs text-slate-600">{description}</p>
+    </Link>
+  );
+}
+
+export function ComplianceOperatorChecklistPanel({ steps }: { steps: string[] }) {
+  return (
+    <section className="rounded-2xl border border-[#0f2744]/20 bg-[#0f2744] p-5 text-white">
+      <h2 className="font-heading text-lg font-bold">Operator checklist</h2>
+      <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm text-slate-100">
+        {steps.map((step) => (
+          <li key={step}>{step}</li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
+export function ComplianceEvidenceStatus({ count, required }: { count: number; required?: boolean }) {
+  const tone = count > 0 ? "green" : required !== false ? "red" : "yellow";
+  const label = count > 0 ? `${count} evidence linked` : "No evidence linked";
+  return <ComplianceStatusBadge label={label} tone={tone} />;
+}
+
+export function ComplianceProgressMatrixCard({
+  overallPercent,
+  areas,
+}: {
+  overallPercent: number;
+  areas: { area: string; percentComplete: number }[];
+}) {
+  return (
+    <section className="rounded-2xl border border-slate-200 bg-white p-4">
+      <div className="flex items-center justify-between">
+        <p className="font-heading font-bold text-[#0f2744]">Program completion</p>
+        <span className="text-2xl font-bold">{overallPercent}%</span>
+      </div>
+      <ComplianceProgressByArea areas={areas.map((a) => ({ ...a, status: "" }))} />
+    </section>
+  );
+}
+
+export function ComplianceQuickFilterBar({
+  queueId,
+  filterKey,
+  counts,
+}: {
+  queueId: string;
+  filterKey: string;
+  counts: Record<string, number>;
+}) {
+  const filters = [
+    ["rule_review", "Rule review"],
+    ["low_confidence", "Low confidence"],
+    ["source_update_pending", "Source pending"],
+    ["near_eligible", "Near eligible"],
+    ["filing_impact", "Filing impact"],
+  ] as const;
+  return (
+    <div className="flex flex-wrap gap-2">
+      {filters.map(([key, label]) => (
+        <Link
+          key={key}
+          href={`/admin/compliance/approval/${queueId}?filter=${key}`}
+          className={`rounded-full px-3 py-1.5 text-xs font-semibold ${
+            filterKey === key ? "bg-[#0f2744] text-white" : "border border-slate-200 bg-white text-slate-700"
+          }`}
+        >
+          {label} ({counts[key] ?? 0})
+        </Link>
+      ))}
+    </div>
+  );
+}
+
 export function ComplianceRouteCardGrid({
   cards,
 }: {

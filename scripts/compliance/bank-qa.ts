@@ -1,9 +1,17 @@
 import { buildBankReconciliationRehearsal } from "../../src/lib/compliance/imports/bank-reconciliation-rehearsal";
+import { buildBankCsvOperatorGuide } from "../../src/lib/compliance/imports/bank-csv-operator-state";
 
 async function main() {
   const rehearsal = await buildBankReconciliationRehearsal();
+  const guide = buildBankCsvOperatorGuide(rehearsal.bankReadiness, {
+    unmatchedBank: rehearsal.unmatchedBank.length,
+    ambiguous: rehearsal.ambiguous.length,
+    highConfidence: rehearsal.highConfidence.length,
+  });
   const result = {
     status: rehearsal.bankReadiness.found ? "ok" : "missing_file",
+    operatorState: guide.state,
+    operatorHeadline: guide.headline,
     readyForRehearsal: rehearsal.readyForRehearsal,
     creditRows: rehearsal.creditRows,
     highConfidenceMatches: rehearsal.highConfidence.length,

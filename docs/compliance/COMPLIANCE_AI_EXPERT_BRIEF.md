@@ -1,7 +1,7 @@
 # Compliance AI expert brief
 
-Generated: 2026-05-19T18:50:42.479Z  
-Commit: 3c6754b  
+Generated: 2026-05-19T19:12:46.372Z  
+Commit: e5b13cb  
 Overall completion: **51%** across 35 areas
 
 > Not legal advice. Human review required. Green only when source-backed.
@@ -14,7 +14,7 @@ Overall completion: **51%** across 35 areas
 
 1. **Add bank-april-2026.csv** (treasurer) — Treasurer export at H:\SOSWebsite\Compliance\April26\bank-april-2026.csv. Then npm run compliance:bank:qa
 2. **Review unverified rule topics** (human) — 24 topic(s) on Rules page — not legal certification.
-3. **Burn down approval queue** (operator) — 133 open; start: rule_review, source_update_pending, filing_task_dependency, low_confidence
+3. **Burn down approval queue** (operator) — 134 open; start: rule_review, filing_task_dependency, low_confidence
 4. **Configure production storage** (steve) — Local private storage fallback active. Configure SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, and private bucket.
 5. **DB migration (Steve approval)** (steve) — Steve approval + backup + rehearsal before cutover
 
@@ -28,7 +28,7 @@ Overall completion: **51%** across 35 areas
 
 ## Next best workflow
 
-Work the April queue (133 open). Start with rule review items, then near-eligible confidence fixes. Never batch rule_review.
+Work the April queue (134 open). Start with rule review items, then near-eligible confidence fixes. Never batch rule_review.
 
 ## Next human / AI
 

@@ -9,6 +9,8 @@ import {
 } from "../components";
 import { buildApril26ImportStatus } from "@/lib/compliance/imports/april26-import-status";
 import { buildBankReconciliationRehearsal } from "@/lib/compliance/imports/bank-reconciliation-rehearsal";
+import { buildBankCsvOperatorGuide } from "@/lib/compliance/imports/bank-csv-operator-state";
+import { ComplianceDoThisNext, ComplianceWhatThisMeans } from "../compliance-ux";
 import { rebuildApprovalQueuesAction } from "../approval/actions";
 
 export const dynamic = "force-dynamic";
@@ -16,6 +18,11 @@ export const dynamic = "force-dynamic";
 export default async function April26ImportPage() {
   const [status, rehearsal] = await Promise.all([buildApril26ImportStatus(), buildBankReconciliationRehearsal()]);
   const bank = status.bankReadiness;
+  const bankGuide = buildBankCsvOperatorGuide(bank, {
+    unmatchedBank: rehearsal.unmatchedBank.length,
+    ambiguous: rehearsal.ambiguous.length,
+    highConfidence: rehearsal.highConfidence.length,
+  });
 
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-6 pb-12">
@@ -32,6 +39,25 @@ export default async function April26ImportPage() {
         }
       />
       <ComplianceNav />
+      <ComplianceDoThisNext
+        title={bankGuide.headline}
+        description={bankGuide.nextAction}
+        href={bankGuide.href}
+        actionLabel="Take action"
+        secondaryHref="/admin/compliance/command-center"
+        secondaryLabel="Command center"
+      />
+      <ComplianceWhatThisMeans title="Bank CSV status explained">
+        <p>{bankGuide.meaning}</p>
+        <p className="mt-2 font-mono text-xs">State: {bankGuide.state} · Command: {bankGuide.command}</p>
+        {bankGuide.issueSummary.length ? (
+          <ul className="mt-2 list-disc pl-5">
+            {bankGuide.issueSummary.map((line) => (
+              <li key={line}>{line}</li>
+            ))}
+          </ul>
+        ) : null}
+      </ComplianceWhatThisMeans>
       {!bank.readyForReconciliation ? (
         <ComplianceWarningPanel title="Bank CSV required to complete reconciliation" tone="red">
           <p className="font-semibold">Expected file:</p>

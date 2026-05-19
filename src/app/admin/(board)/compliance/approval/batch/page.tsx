@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ComplianceCard, ComplianceNav, CompliancePageHeader, ComplianceWarningPanel } from "../../components";
+import { ComplianceWhatThisMeans } from "../../compliance-ux";
 import { APRIL_2026_QUEUE_ID } from "@/lib/compliance/approval/build-approval-queue";
 import { buildBatchReadinessReport } from "@/lib/compliance/approval/batch-readiness";
 import { getBatchEligibleItems, getQueueItems } from "@/lib/compliance/approval/load-approval-queue";
@@ -37,6 +38,13 @@ export default async function ApprovalBatchPage({
         description="Strict low-risk batch only. Human initials and audit note required. Not legal certification."
       />
       <ComplianceNav />
+      <ComplianceWhatThisMeans title="Why zero batch eligible is normal">
+        <p>
+          Batch is intentionally strict: confidence ≥ 98%, low risk, evidence present, no blockers, no source-update pending.{" "}
+          <strong>Rule review items are never batch-eligible.</strong> Zero eligible does not mean the app is broken — it means safety gates are working.
+        </p>
+        <p className="mt-2">Use near-eligible list below or filter the April queue by &quot;Near batch eligible&quot;.</p>
+      </ComplianceWhatThisMeans>
       <section className="grid gap-3 sm:grid-cols-3">
         <ComplianceCard title="Eligible now">{report.eligible}</ComplianceCard>
         <ComplianceCard title="Close to eligible">{report.closeToEligible}</ComplianceCard>

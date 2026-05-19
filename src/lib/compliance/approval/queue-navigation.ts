@@ -14,6 +14,10 @@ export const QUEUE_FILTER_OPTIONS = [
   ["in_kind", "In-kind"],
   ["rule_review", "Rule review"],
   ["filing_tasks", "Filing tasks"],
+  ["low_confidence", "Low confidence (<98%)"],
+  ["source_update_pending", "Source update pending"],
+  ["near_eligible", "Near batch eligible"],
+  ["filing_impact", "Filing impact"],
 ] as const;
 
 export type QueueFilterKey = (typeof QUEUE_FILTER_OPTIONS)[number][0];
@@ -60,6 +64,28 @@ export function filterQueueItems(items: ApprovalItem[], filterKey: string): Appr
       );
     case "high_risk":
       return items.filter((item) => item.riskLevel === "high" || item.riskLevel === "blocked");
+    case "low_confidence":
+      return items.filter((item) => item.confidenceScore < 98 && ["queued", "needs_review", "ready", "reopened"].includes(item.status));
+    case "source_update_pending":
+      return items.filter((item) => item.sourceUpdatePending === true);
+    case "near_eligible":
+      return items.filter(
+        (item) =>
+          ["queued", "needs_review", "ready", "reopened"].includes(item.status) &&
+          item.source !== "rule_review" &&
+          item.confidenceScore >= 90 &&
+          item.confidenceScore < 98 &&
+          item.evidence.length > 0 &&
+          !item.blockers.length,
+      );
+    case "filing_impact":
+      return items.filter(
+        (item) =>
+          item.source === "rule_review" ||
+          item.source === "filing_task" ||
+          item.source === "goodchange_contribution" ||
+          item.source === "receipt_expense",
+      );
     default:
       if (filterKey in SOURCE_GROUPS) {
         const sources = SOURCE_GROUPS[filterKey];

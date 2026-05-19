@@ -36,6 +36,9 @@ export default async function ApprovalHubPage() {
         }
       />
       <ComplianceNav />
+      <ComplianceCard title="Command center (start here)" href="/admin/compliance/command-center" highlight>
+        Mission control for launch status, bank CSV, and your single next action.
+      </ComplianceCard>
       <ComplianceOperatorChecklist steps={OPERATOR_STEPS} />
       <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <ComplianceCard title="Start review" href={primary ? `/admin/compliance/approval/${APRIL_2026_QUEUE_ID}` : undefined}>

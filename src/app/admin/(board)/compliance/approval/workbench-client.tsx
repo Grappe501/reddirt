@@ -8,6 +8,7 @@ import type { NextItemExplanation } from "@/lib/compliance/approval/approval-bur
 import type { RuleReviewContext } from "@/lib/compliance/approval/rule-review-context";
 import { evaluateApprovalGuards } from "@/lib/compliance/approval/approval-guards";
 import { decisionAction, saveFieldEditsAction } from "./actions";
+import { ComplianceWorkbenchStepper } from "./workbench-stepper";
 
 type Props = {
   queueId: string;
@@ -181,6 +182,12 @@ export function LightningApprovalWorkbench({ queueId, item, position, total, pre
         </section>
 
         <section className="flex flex-col overflow-y-auto rounded-2xl border border-kelly-text/10 bg-white p-4 shadow-sm">
+          <ComplianceWorkbenchStepper
+            item={item}
+            ruleReview={ruleReview}
+            canApprove={guards.canApprove}
+            hasOverride={Boolean(overrideReason.trim())}
+          />
           {ruleReview ? (
             <div className="mb-3 rounded-lg border border-amber-400 bg-amber-50 p-4 text-sm text-amber-950">
               <p className="font-bold">Rule review — human required</p>
