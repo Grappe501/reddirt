@@ -24,7 +24,8 @@ export function LightningApprovalWorkbench({ queueId, item, position, total, pre
   const [showShortcuts, setShowShortcuts] = useState(false);
   const [dirty, setDirty] = useState<Record<string, string | number | boolean | null>>({});
   const [voiceLog, setVoiceLog] = useState<string[]>([]);
-  const guards = useMemo(() => evaluateApprovalGuards(item), [item]);
+  const [overrideReason, setOverrideReason] = useState("");
+  const guards = useMemo(() => evaluateApprovalGuards(item, { overrideReason }), [item, overrideReason]);
   const progress = total ? Math.round((position / total) * 100) : 0;
 
   const fieldValue = useCallback(
@@ -47,8 +48,14 @@ export function LightningApprovalWorkbench({ queueId, item, position, total, pre
         return;
       }
       if ((decision === "approve" || decision === "approve_with_changes") && !guards.canApprove) {
-        window.alert("Cannot approve yet. Required fields are missing.");
-        return;
+        if (!overrideReason.trim()) {
+          window.alert("Cannot approve yet. Resolve blockers or enter an override reason with initials.");
+          return;
+        }
+        if (!note.trim()) {
+          window.alert("Override requires a note for the audit log.");
+          return;
+        }
       }
       start(() =>
         decisionAction({
@@ -56,12 +63,12 @@ export function LightningApprovalWorkbench({ queueId, item, position, total, pre
           queueId,
           decision,
           initials,
-          note: note || undefined,
+          note: note || overrideReason || undefined,
           edits: Object.keys(dirty).length ? dirty : undefined,
         }),
       );
     },
-    [dirty, guards.canApprove, initials, item.id, note, queueId],
+    [dirty, guards.canApprove, initials, item.id, note, overrideReason, queueId],
   );
 
   useEffect(() => {
@@ -178,13 +185,32 @@ export function LightningApprovalWorkbench({ queueId, item, position, total, pre
             </p>
           </div>
 
-          {item.blockers.length ? (
+          {item.sourceUpdatePending ? (
+            <p className="mt-3 rounded-lg border border-amber-300 bg-amber-50 p-3 text-sm font-semibold text-amber-950">
+              Source update pending — decision is on workbench; upstream write may still be queued.
+            </p>
+          ) : null}
+          {guards.blockers.length ? (
             <div className="mt-3 rounded-lg border border-red-300 bg-red-50 p-3 text-sm text-red-900">
               <p className="font-bold">Approval blocked</p>
-              {item.blockers.map((blocker) => (
+              {guards.blockers.map((blocker) => (
                 <p key={blocker}>{blocker}</p>
               ))}
             </div>
+          ) : null}
+          <div className="mt-3 rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm">
+            <p className="font-bold">What happens when you approve?</p>
+            <ul className="mt-1 list-disc pl-5">
+              <li>Item marked approved; source updated if supported.</li>
+              <li>May help filing readiness after other gates pass.</li>
+              <li>Stays unreconciled until bank match approved.</li>
+            </ul>
+          </div>
+          {guards.overrideAllowed ? (
+            <label className="mt-3 block text-sm">
+              <span className="font-semibold">Override reason</span>
+              <input className="mt-1 w-full rounded-lg border px-3 py-2" value={overrideReason} onChange={(e) => setOverrideReason(e.target.value)} />
+            </label>
           ) : null}
 
           <div className="mt-4 grid gap-3">

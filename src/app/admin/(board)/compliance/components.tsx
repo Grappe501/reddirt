@@ -35,6 +35,7 @@ export function ComplianceNav() {
     ["Home", basePath],
     ["Wizard", `${basePath}/wizard`],
     ["Approval", `${basePath}/approval`],
+    ["April26", `${basePath}/april26`],
     ["Tasks", `${basePath}/tasks`],
     ["Money", `${basePath}/money`],
     ["Receipts", `${basePath}/receipts`],
@@ -145,10 +146,10 @@ export function ComplianceEmptyState({ title, description, href, actionLabel }: 
   );
 }
 
-export function ComplianceWarningPanel({ title, children, tone = "amber" }: { title: string; children: ReactNode; tone?: "amber" | "red" }) {
+export function ComplianceWarningPanel({ title, children, tone = "amber", id }: { title: string; children: ReactNode; tone?: "amber" | "red"; id?: string }) {
   const className = tone === "red" ? "border-red-300 bg-red-50 text-red-950" : "border-amber-300 bg-amber-50 text-amber-950";
   return (
-    <div className={`rounded-2xl border px-4 py-3 font-body text-sm ${className}`}>
+    <div id={id} className={`rounded-2xl border px-4 py-3 font-body text-sm ${className}`}>
       <p className="font-bold">{title}</p>
       <div className="mt-1 leading-relaxed">{children}</div>
     </div>
@@ -187,6 +188,19 @@ export function StorageModeNotice() {
     <ComplianceWarningPanel title="Storage mode: JSON fallback (needs setup for production DB)">
       Operational data lives under <code className="rounded bg-white/60 px-1">data/compliance</code>. Uploaded CSVs, receipts, and donor JSON are gitignored. Records here are <strong>staged, not filed</strong> until human approval and export gates pass.
     </ComplianceWarningPanel>
+  );
+}
+
+export function ComplianceOperatorChecklist({ steps }: { steps: string[] }) {
+  return (
+    <section className="rounded-2xl border border-[#0f2744]/20 bg-[#0f2744] p-5 text-white shadow-sm">
+      <h2 className="font-heading text-lg font-bold">Operator checklist</h2>
+      <ol className="mt-3 list-decimal space-y-2 pl-5 font-body text-sm leading-relaxed text-slate-100">
+        {steps.map((step) => (
+          <li key={step}>{step}</li>
+        ))}
+      </ol>
+    </section>
   );
 }
 

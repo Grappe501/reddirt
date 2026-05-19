@@ -5,9 +5,10 @@ import { buildMoneyCoverageSummary, loadComplianceVendors, loadStagedMoneyMoveme
 import { loadStagedReceipts } from "../receipts/receipt-storage";
 import { loadStagedCashContributions } from "../cash/cash-storage";
 import type { ComplianceTask } from "./compliance-task-types";
+import { loadApprovalNeedsInfoTasks } from "./approval-needs-info-storage";
 
 export async function buildComplianceTasks(): Promise<ComplianceTask[]> {
-  const [readiness, corpus, summary, movements, vendors, receipts, cash] = await Promise.all([
+  const [readiness, corpus, summary, movements, vendors, receipts, cash, approvalNeedsInfo] = await Promise.all([
     buildFilingReadinessReport(),
     loadComplianceRuleCorpus(),
     buildMoneyCoverageSummary(),
@@ -15,6 +16,7 @@ export async function buildComplianceTasks(): Promise<ComplianceTask[]> {
     loadComplianceVendors(),
     loadStagedReceipts(),
     loadStagedCashContributions(),
+    loadApprovalNeedsInfoTasks(),
   ]);
   const now = new Date().toISOString();
   const ruleAudit = auditComplianceRuleCorpus(corpus);
@@ -42,6 +44,9 @@ export async function buildComplianceTasks(): Promise<ComplianceTask[]> {
   }
   if (summary.missingReceipts > 0) {
     tasks.push(task("missing-doc-summary", "missing_receipt", "Missing documentation summary", "high", now, [{ label: "Reports", href: "/admin/compliance/reports", recordId: "missing-docs" }], `${summary.missingReceipts} missing receipt/invoice item(s).`));
+  }
+  for (const approvalTask of approvalNeedsInfo) {
+    tasks.push(approvalTask);
   }
   return tasks;
 }

@@ -95,6 +95,8 @@ data/compliance/approvals/*.json
 !data/compliance/approvals/.gitkeep
 data/compliance/approval/*.json
 !data/compliance/approval/.gitkeep
+data/compliance/tasks/*.json
+!data/compliance/tasks/.gitkeep
 data/compliance/reconciliation/*.json
 !data/compliance/reconciliation/.gitkeep
 data/compliance/filings/*.json

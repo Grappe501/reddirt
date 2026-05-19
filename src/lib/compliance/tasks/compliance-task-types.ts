@@ -8,7 +8,8 @@ export type ComplianceTaskType =
   | "over_cash_threshold"
   | "rule_verification_required"
   | "filing_blocker"
-  | "amendment_candidate";
+  | "amendment_candidate"
+  | "approval_needs_info";
 
 export type ComplianceTask = {
   id: string;

@@ -1,5 +1,10 @@
 import type { ApprovalItem, ApprovalItemStatus, ApprovalQueue, ApprovalQueueStats } from "./approval-types";
 import { getApprovalQueue, getQueueItems, loadApprovalItems, loadApprovalQueues } from "./approval-storage";
+import { pickBestNextItem } from "./queue-navigation";
+
+export { filterQueueItems, sortQueueItems, pickBestNextItem, QUEUE_FILTER_OPTIONS, QUEUE_SORT_OPTIONS } from "./queue-navigation";
+export type { QueueFilterKey, QueueSortKey } from "./queue-navigation";
+export { getQueueItems } from "./approval-storage";
 
 const REVIEWED: ApprovalItemStatus[] = ["approved", "approved_with_changes", "needs_info", "rejected", "duplicate", "skipped"];
 const REMAINING: ApprovalItemStatus[] = ["queued", "needs_review", "ready", "reopened"];
@@ -37,9 +42,14 @@ export async function getNextQueueItem(queueId: string, currentItemId?: string, 
   let items = await getQueueItems(queueId);
   if (filter) items = items.filter(filter);
   items = items.filter((item) => REMAINING.includes(item.status)).sort((a, b) => a.sortOrder - b.sortOrder);
-  if (!currentItemId) return items[0] ?? null;
+  if (!currentItemId) return pickBestNextItem(items) ?? items[0] ?? null;
   const index = items.findIndex((item) => item.id === currentItemId);
   return items[index + 1] ?? null;
+}
+
+export async function getBestNextQueueItem(queueId: string): Promise<ApprovalItem | null> {
+  const items = await getQueueItems(queueId);
+  return pickBestNextItem(items.filter((item) => REMAINING.includes(item.status)));
 }
 
 export async function getPreviousQueueItem(queueId: string, currentItemId: string): Promise<ApprovalItem | null> {
@@ -51,25 +61,6 @@ export async function getPreviousQueueItem(queueId: string, currentItemId: strin
 
 export async function listAllQueues(): Promise<ApprovalQueue[]> {
   return loadApprovalQueues();
-}
-
-export function filterQueueItems(items: ApprovalItem[], filterKey: string): ApprovalItem[] {
-  switch (filterKey) {
-    case "ready":
-      return items.filter((item) => item.status === "ready" || (item.riskLevel === "low" && !item.missingFields.length));
-    case "high_risk":
-      return items.filter((item) => item.riskLevel === "high" || item.riskLevel === "blocked");
-    case "needs_info":
-      return items.filter((item) => item.status === "needs_info");
-    case "missing_fields":
-      return items.filter((item) => item.missingFields.length > 0);
-    case "no_evidence":
-      return items.filter((item) => !item.evidence.length);
-    case "duplicates":
-      return items.filter((item) => item.status === "duplicate" || item.aiRecommendation === "duplicate");
-    default:
-      return items;
-  }
 }
 
 export async function getBatchEligibleItems(queueId: string): Promise<ApprovalItem[]> {

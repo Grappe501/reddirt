@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   ComplianceCard,
   ComplianceMetricCard,
@@ -7,6 +8,7 @@ import {
   ComplianceWarningPanel,
   StorageModeNotice,
 } from "../components";
+import { buildFilingBlockerBurnDown } from "@/lib/compliance/filing-readiness/filing-blocker-burn-down";
 import { buildFilingReadinessReport } from "@/lib/compliance/filing-readiness/build-filing-readiness-report";
 import { evaluateFilingHardGates } from "@/lib/compliance/filing-readiness/hard-gates";
 import { gradeFilingReadiness } from "@/lib/compliance/filing-readiness/filing-readiness-grade";
@@ -14,7 +16,11 @@ import { gradeFilingReadiness } from "@/lib/compliance/filing-readiness/filing-r
 export const dynamic = "force-dynamic";
 
 export default async function FilingReadinessPage() {
-  const [report, hardGates] = await Promise.all([buildFilingReadinessReport(), evaluateFilingHardGates()]);
+  const [report, hardGates, burnDown] = await Promise.all([
+    buildFilingReadinessReport(),
+    evaluateFilingHardGates(),
+    buildFilingBlockerBurnDown(),
+  ]);
   const grade = gradeFilingReadiness(hardGates);
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 pt-6">
@@ -52,6 +58,32 @@ export default async function FilingReadinessPage() {
         <p>Hard gate score: {grade.score}/100 — {grade.label}</p>
         <p>{report.overallStatus === "green" && grade.status === "green" ? "System checks passed — ready for compliance officer review (not legal certification)." : "Resolve blocked gates or enter authorized overrides with initials and reason before export."}</p>
       </ComplianceCard>
+      <ComplianceCard title="What would make us green?">
+        <ul className="list-disc space-y-1 pl-5 text-sm">
+          {burnDown.whatWouldMakeGreen.map((line) => (
+            <li key={line}>{line}</li>
+          ))}
+        </ul>
+      </ComplianceCard>
+      <section className="grid gap-3">
+        <h2 className="font-heading text-xl font-bold text-[#0f2744]">Blocker burn-down</h2>
+        {burnDown.blockers.map((task) => (
+          <article key={task.id} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <p className="font-heading text-lg font-bold text-[#0f2744]">{task.label}</p>
+                <p className="text-sm text-slate-600">
+                  Count: {task.count} · Role: {task.role}
+                </p>
+                <p className="mt-2 text-sm">{task.nextAction}</p>
+              </div>
+              <Link href={task.href} className="rounded-full bg-[#0f2744] px-4 py-2 text-sm font-bold text-white">
+                Open
+              </Link>
+            </div>
+          </article>
+        ))}
+      </section>
       <section className="grid gap-4 md:grid-cols-2">
         {hardGates.map((gate) => (
           <ComplianceCard key={gate.id} title={gate.label}>

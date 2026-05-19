@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ComplianceCard, ComplianceNav, CompliancePageHeader, ComplianceMetricCard, ComplianceWarningPanel, StorageModeNotice } from "../components";
 import { getCurrentFilingPeriod } from "@/lib/compliance/filing-readiness/arkansas-filing-periods";
 import { checkComplianceStorageHealth } from "@/lib/compliance/storage/storage-health";
@@ -22,14 +21,17 @@ export default async function ComplianceSettingsPage() {
         <ComplianceMetricCard label="Local fallback" value={storage.localFallbackActive ? "active" : "off"} tone={storage.localFallbackActive ? "yellow" : "green"} />
         <ComplianceMetricCard label="RLS verified" value={storage.rlsConfiguredManual ? "yes" : "not verified"} tone={storage.rlsConfiguredManual ? "green" : "yellow"} />
       </section>
-      <ComplianceWarningPanel title="Storage status">
+      <ComplianceWarningPanel title="Storage status" id="storage-setup">
         <p>{storage.summary}</p>
         <ul className="mt-2 list-disc pl-5 text-sm">
           <li>Bucket reachable: {storage.bucketReachable ? "yes" : "no"}</li>
           <li>Signed URLs: {storage.signedUrlCapable ? "yes" : "no (use server download)"}</li>
         </ul>
         <p className="mt-3 text-sm">
-          See <code>docs/compliance/SUPABASE_PRIVATE_STORAGE_SETUP.md</code> for bucket name, env vars, RLS SQL, and Netlify checklist.
+          <a href="#storage-setup" className="font-semibold text-[#0f2744] underline">
+            View Supabase Storage Setup
+          </a>{" "}
+          — full checklist in <code>docs/compliance/SUPABASE_PRIVATE_STORAGE_SETUP.md</code> (env vars never committed).
         </p>
       </ComplianceWarningPanel>
       <section className="grid gap-4 md:grid-cols-2">
