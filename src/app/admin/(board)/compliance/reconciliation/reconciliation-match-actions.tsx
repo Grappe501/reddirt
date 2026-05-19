@@ -21,7 +21,7 @@ export function ReconciliationMatchActions({ matchId, status }: { matchId: strin
 
   const note = () => window.prompt("Note (optional):") ?? undefined;
 
-  const run = (action: (input: { matchId: string; actorInitials: string; note?: string; unlockReason?: string }) => Promise<unknown>) => {
+  const run = (action: (input: { matchId: string; actorInitials: string; note?: string; unlockReason?: string }) => Promise<void>) => {
     const actorInitials = initials();
     if (!actorInitials) return;
     start(() => action({ matchId, actorInitials, note: note() }));
