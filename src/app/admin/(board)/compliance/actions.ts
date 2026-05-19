@@ -54,8 +54,12 @@ export async function markRuleTopicReviewedAction(input: { topic: string; initia
     reviewedAt: new Date().toISOString(),
     reviewNote: input.note,
   });
+  const { syncRuleReviewQueueAfterTopicReview } = await import("@/lib/compliance/knowledge/build-rule-review-workflow");
+  await syncRuleReviewQueueAfterTopicReview(input.topic);
   await runNpmScript("compliance:rules:build");
   revalidatePath("/admin/compliance/rules");
+  revalidatePath("/admin/compliance/approval/april-2026-compliance-review");
+  revalidatePath("/admin/compliance/command-center");
 }
 
 export async function flagRuleSourceStaleAction(sourceId: string) {
@@ -108,4 +112,38 @@ export async function lockReconciliationMatchAction(input: { matchId: string; ac
 export async function unlockReconciliationMatchAction(input: { matchId: string; actorInitials: string; unlockReason: string }) {
   await unlockReconciliationMatchLib({ matchId: input.matchId, actorInitials: input.actorInitials, unlockReason: input.unlockReason, note: input.unlockReason });
   revalidatePath("/admin/compliance/reconciliation");
+}
+
+export async function createReconciliationDraftAction(input: {
+  bankRowNumber: number;
+  payoutKey?: string;
+  bankAmount: number;
+  ledgerAmount?: number;
+  actorInitials: string;
+  note?: string;
+  resolutionKind: "high_confidence" | "ambiguous_pick" | "unmatched_investigate";
+}) {
+  const { createReconciliationDraftFromRehearsal } = await import("@/lib/compliance/reconciliation/reconciliation-review-actions");
+  const { matchId } = await createReconciliationDraftFromRehearsal(input);
+  revalidatePath("/admin/compliance/reconciliation");
+  revalidatePath(`/admin/compliance/reconciliation/${matchId}`);
+  revalidatePath("/admin/compliance/command-center");
+}
+
+export async function resolveAmbiguousReconciliationAction(input: {
+  bankRowNumber: number;
+  payoutKey: string;
+  bankAmount: number;
+  ledgerAmount: number;
+  actorInitials: string;
+  note?: string;
+}) {
+  const { createReconciliationDraftFromRehearsal } = await import("@/lib/compliance/reconciliation/reconciliation-review-actions");
+  const { matchId } = await createReconciliationDraftFromRehearsal({
+    ...input,
+    resolutionKind: "ambiguous_pick",
+  });
+  revalidatePath("/admin/compliance/reconciliation");
+  revalidatePath(`/admin/compliance/reconciliation/${matchId}`);
+  revalidatePath("/admin/compliance/command-center");
 }

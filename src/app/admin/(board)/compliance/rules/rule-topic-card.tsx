@@ -21,7 +21,7 @@ export function RuleTopicCard({ topic, sources, chunks, topicReviewed }: Props) 
         : "border-amber-300 bg-amber-50";
 
   return (
-    <article className={`rounded-2xl border p-4 ${tone}`}>
+    <article id={`topic-${topic.topic}`} className={`rounded-2xl border p-4 ${tone}`}>
       <div className="flex flex-wrap items-start justify-between gap-2">
         <h3 className="font-heading text-lg font-bold text-[#0f2744]">{topic.label}</h3>
         <span className="rounded-full bg-white px-2 py-0.5 text-xs font-bold uppercase">{topic.status.replace(/_/g, " ")}</span>

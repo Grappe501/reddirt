@@ -22,6 +22,7 @@ import { buildComplianceUxAudit } from "@/lib/compliance/ai/expert/build-ux-audi
 import { buildApril26ImportStatus } from "@/lib/compliance/imports/april26-import-status";
 import { buildBankReconciliationRehearsal } from "@/lib/compliance/imports/bank-reconciliation-rehearsal";
 import { buildBankCsvOperatorGuide } from "@/lib/compliance/imports/bank-csv-operator-state";
+import { buildReconciliationProgress } from "@/lib/compliance/reconciliation/build-reconciliation-progress";
 
 export const dynamic = "force-dynamic";
 
@@ -32,10 +33,11 @@ function launchLabel(overall: string): LaunchStatusLabel {
 }
 
 export default async function ComplianceAiCommandCenterPage() {
-  const [{ brain, expert, progress, operatorCoach }, april26, rehearsal] = await Promise.all([
+  const [{ brain, expert, progress, operatorCoach }, april26, rehearsal, reconProgress] = await Promise.all([
     buildComplianceExpertBundle(),
     buildApril26ImportStatus(),
     buildBankReconciliationRehearsal(),
+    buildReconciliationProgress(),
   ]);
   const bankGuide = buildBankCsvOperatorGuide(april26.bankReadiness, {
     unmatchedBank: rehearsal.unmatchedBank.length,
@@ -138,6 +140,39 @@ export default async function ComplianceAiCommandCenterPage() {
         <p className="mt-1 text-sm text-slate-600">{bankGuide.nextAction}</p>
         <Link href={bankGuide.href} className="mt-2 inline-block text-sm font-bold text-[#0f2744] underline">
           April26 desk
+        </Link>
+      </ComplianceCard>
+
+      <ComplianceCard title="Reconciliation progress">
+        <p className="text-sm">{reconProgress.summary}</p>
+        <dl className="mt-3 grid gap-2 text-sm sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <dt className="text-slate-500">Reviewed</dt>
+            <dd className="font-bold">{reconProgress.percentReviewed}%</dd>
+          </div>
+          <div>
+            <dt className="text-slate-500">Ambiguous</dt>
+            <dd>
+              {reconProgress.ambiguousWithDraft}/{reconProgress.ambiguousTotal} drafted
+            </dd>
+          </div>
+          <div>
+            <dt className="text-slate-500">Unmatched</dt>
+            <dd>
+              {reconProgress.unmatchedWithDraft}/{reconProgress.unmatchedTotal} drafted
+            </dd>
+          </div>
+          <div>
+            <dt className="text-slate-500">Locked</dt>
+            <dd>{reconProgress.lockedMatches}</dd>
+          </div>
+        </dl>
+        <p className="mt-2 text-xs text-slate-500">
+          Rehearsal: {rehearsal.highConfidence.length} high · {rehearsal.ambiguous.length} ambiguous rows · {rehearsal.unmatchedBank.length}{" "}
+          unmatched — treasurer picks; no auto-resolve.
+        </p>
+        <Link href={reconProgress.nextHref} className="mt-2 inline-block text-sm font-bold text-[#0f2744] underline">
+          Open reconciliation workbench
         </Link>
       </ComplianceCard>
 

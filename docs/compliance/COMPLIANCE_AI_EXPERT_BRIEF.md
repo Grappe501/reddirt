@@ -1,7 +1,7 @@
 # Compliance AI expert brief
 
-Generated: 2026-05-19T21:26:34.669Z  
-Commit: d47d472  
+Generated: 2026-05-19T22:06:38.921Z  
+Commit: 1a2acf4  
 Overall completion: **57%** across 35 areas
 
 > Not legal advice. Human review required. Green only when source-backed.
@@ -39,6 +39,8 @@ Work the April queue (221 open). Start with rule review items, then near-eligibl
 
 - All required rule topics marked reviewed with initials on Rules page.
 - Open approval items reach approved/needs-info/rejected terminal states.
+- All rehearsal items have drafts; matches approved or locked; treasurer documented exceptions.
+- All rule_review topics marked reviewed with initials; queue items resolved individually.
 - Storage health probe reports ready with RLS verified flag.
 - Steve-approved migration + COMPLIANCE_DB_MIGRATED=true after backfill.
 - Hard gate "Required rule topics have official sources" passes or authorized override with initials.

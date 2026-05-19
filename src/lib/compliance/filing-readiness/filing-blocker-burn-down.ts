@@ -1,4 +1,6 @@
 import { buildApril26ImportStatus } from "../imports/april26-import-status";
+import { buildReconciliationProgress } from "../reconciliation/build-reconciliation-progress";
+import { buildRuleReviewWorkflow } from "../knowledge/build-rule-review-workflow";
 import { loadApprovalItems } from "../approval/approval-storage";
 import { checkComplianceStorageHealth } from "../storage/storage-health";
 import { buildFilingReadinessReport } from "./build-filing-readiness-report";
@@ -35,13 +37,15 @@ export type FilingGreenPath = {
 };
 
 export async function buildFilingBlockerBurnDown(): Promise<FilingGreenPath> {
-  const [report, hardGates, april26, storage, corpus, items] = await Promise.all([
+  const [report, hardGates, april26, storage, corpus, items, reconProgress, ruleWorkflow] = await Promise.all([
     buildFilingReadinessReport(),
     evaluateFilingHardGates(),
     buildApril26ImportStatus(),
     checkComplianceStorageHealth(),
     loadComplianceRuleCorpus(),
     loadApprovalItems(),
+    buildReconciliationProgress(),
+    buildRuleReviewWorkflow(),
   ]);
   const ruleAudit = auditComplianceRuleCorpus(corpus);
   const unapproved = items.filter((item) => ["queued", "needs_review", "ready", "reopened"].includes(item.status)).length;
@@ -114,7 +118,23 @@ export async function buildFilingBlockerBurnDown(): Promise<FilingGreenPath> {
       queueDependency: true,
     });
   }
-  if (april26.stagedNeedingReconciliation > 0) {
+  if (reconProgress.remainingReviewItems > 0 && reconProgress.readyForReview) {
+    push({
+      id: "recon-review",
+      label: "Bank credits need treasurer review",
+      count: reconProgress.remainingReviewItems,
+      role: "Treasurer",
+      nextAction: `Resolve ${reconProgress.ambiguousTotal} ambiguous and ${reconProgress.unmatchedTotal} unmatched credits on reconciliation workbench (pick payout or investigation draft).`,
+      href: "/admin/compliance/reconciliation",
+      category: "reconciliation",
+      leverage: "high",
+      severity: "high",
+      operatorFixableToday: true,
+      greenCondition: "All rehearsal items have drafts; matches approved or locked; treasurer documented exceptions.",
+      reconciliationDependency: true,
+      sourceDependency: true,
+    });
+  } else if (april26.stagedNeedingReconciliation > 0) {
     push({
       id: "recon",
       label: "Unreconciled records",
@@ -129,6 +149,22 @@ export async function buildFilingBlockerBurnDown(): Promise<FilingGreenPath> {
       greenCondition: "Matches approved or locked; unmatched bank/payout lists empty.",
       reconciliationDependency: true,
       sourceDependency: true,
+    });
+  }
+  if (ruleWorkflow.topicsPendingReview > 0) {
+    push({
+      id: "rule-review-topics",
+      label: "Rule topics awaiting officer review",
+      count: ruleWorkflow.topicsPendingReview,
+      role: "Compliance officer",
+      nextAction: "Use Rules page workflow — mark each topic reviewed, then approve queue items individually (no batch).",
+      href: "/admin/compliance/rules",
+      category: "rules",
+      leverage: "high",
+      severity: "high",
+      operatorFixableToday: true,
+      greenCondition: "All rule_review topics marked reviewed with initials; queue items resolved individually.",
+      queueDependency: true,
     });
   }
   const docBlockers = report.blockers.filter((b) => /document|receipt|w-9|w9/i.test(b));

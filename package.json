@@ -69,6 +69,8 @@
     "compliance:source-truth-audit": "tsx scripts/compliance/source-truth-audit.ts",
     "compliance:filing-impact": "tsx scripts/compliance/filing-impact.ts",
     "compliance:queue-unlock-report": "tsx scripts/compliance/queue-unlock-report.ts",
+    "compliance:reconciliation-review-report": "tsx scripts/compliance/reconciliation-review-report.ts",
+    "compliance:rule-resolution-report": "tsx scripts/compliance/rule-resolution-report.ts",
     "compliance:rule-topic-packet": "tsx scripts/compliance/build-rule-topic-packet.ts",
     "compliance:storage-preflight": "tsx scripts/compliance/storage-preflight.ts",
     "compliance:ai-brain": "tsx scripts/compliance/ai-brain.ts",

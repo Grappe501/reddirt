@@ -4,10 +4,12 @@ import { loadComplianceRuleCorpus } from "@/lib/compliance/knowledge/load-compli
 import { loadRuleReviews } from "@/lib/compliance/knowledge/rule-reviews-storage";
 import { RuleDashboardActions } from "./rule-dashboard-actions";
 import { RuleTopicCard } from "./rule-topic-card";
+import { RuleReviewWorkflowPanel } from "./rule-review-workflow-panel";
 
 export const dynamic = "force-dynamic";
 
-export default async function ComplianceRulesPage() {
+export default async function ComplianceRulesPage({ searchParams }: { searchParams: Promise<{ focus?: string }> }) {
+  const { focus } = await searchParams;
   const [corpus, reviews] = await Promise.all([loadComplianceRuleCorpus(), loadRuleReviews()]);
   const audit = await auditComplianceRuleCorpusAsync(corpus);
   const sourceIds = corpus?.sources.map((source) => source.id) ?? [];
@@ -22,6 +24,7 @@ export default async function ComplianceRulesPage() {
       <ComplianceNav />
       <StorageModeNotice />
       <RuleDashboardActions sourceIds={sourceIds} />
+      <RuleReviewWorkflowPanel focusTopicId={focus} />
       <ComplianceWarningPanel title="Corpus status" tone="amber">
         {audit.warning}
       </ComplianceWarningPanel>
