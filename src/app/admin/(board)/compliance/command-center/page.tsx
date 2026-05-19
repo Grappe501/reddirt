@@ -23,6 +23,7 @@ import { buildApril26ImportStatus } from "@/lib/compliance/imports/april26-impor
 import { buildBankReconciliationRehearsal } from "@/lib/compliance/imports/bank-reconciliation-rehearsal";
 import { buildBankCsvOperatorGuide } from "@/lib/compliance/imports/bank-csv-operator-state";
 import { buildReconciliationProgress } from "@/lib/compliance/reconciliation/build-reconciliation-progress";
+import { ComplianceAiOrchestratorPanel } from "./ai-orchestrator-panel";
 
 export const dynamic = "force-dynamic";
 
@@ -66,6 +67,8 @@ export default async function ComplianceAiCommandCenterPage() {
       <StorageModeNotice />
 
       <ComplianceStatusLanguage status={launchStatus} score={expert.launchReadinessScore} whyNotReady={whyNotReady} />
+
+      <ComplianceAiOrchestratorPanel />
 
       {topAction ? (
         <ComplianceDoThisNext
