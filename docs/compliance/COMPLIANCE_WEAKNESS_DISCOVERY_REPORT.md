@@ -1,5 +1,5 @@
 # Compliance weakness discovery report
-Generated: 2026-05-19T23:40:41.436Z · Commit: `dd6bf7a`
+Generated: 2026-05-20T03:54:13.297Z · Commit: `ad4f8b4`
 ## Severity summary
 | Critical | High | Medium | Low | Info |
 | ---: | ---: | ---: | ---: | ---: |

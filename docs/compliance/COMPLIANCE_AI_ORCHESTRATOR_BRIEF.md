@@ -1,6 +1,6 @@
 # Compliance AI orchestrator brief
 
-Generated: 2026-05-19T23:22:51.695Z · Commit: `39e3441`
+Generated: 2026-05-20T03:54:14.573Z · Commit: `ad4f8b4`
 
 ## Program summary
 
@@ -27,7 +27,7 @@ Highest priority safe action: 12 rehearsal item(s) block honest reconciliation c
 
 ## Changes since last pass
 
-- (none)
+- commit: 39e3441 → ad4f8b4 (new)
 
 ## Unsafe shortcuts (never automate)
 

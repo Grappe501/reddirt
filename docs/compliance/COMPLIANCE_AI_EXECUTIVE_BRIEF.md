@@ -1,6 +1,6 @@
 # Compliance executive brief (operator-safe)
 
-Generated: 2026-05-19T23:22:51.695Z · Commit: `39e3441`
+Generated: 2026-05-20T03:54:14.573Z · Commit: `ad4f8b4`
 
 | Metric | Value |
 |--------|-------|

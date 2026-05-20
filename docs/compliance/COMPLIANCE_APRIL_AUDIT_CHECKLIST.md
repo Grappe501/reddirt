@@ -1,6 +1,6 @@
 # April 2026 audit checklist — checks and expenditures
 
-Generated: 2026-05-20T02:15:17.639Z
+Generated: 2026-05-20T03:54:01.920Z
 
 > **Standing by to audit.** Use this list against physical checks and your bank statement (`bank-april-2026.csv` locally).
 > Mark each row after review. **Do not invent** amounts, payees, or addresses.

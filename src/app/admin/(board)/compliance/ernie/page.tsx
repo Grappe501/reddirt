@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ComplianceCard, ComplianceNav, CompliancePageHeader, ComplianceStatusBadge } from "../components";
 import { ComplianceDoThisNext, ComplianceWhatThisMeans } from "../compliance-ux";
 import { buildErnieWorkflowSnapshot } from "@/lib/compliance/audit/build-ernie-workflow";
+import { buildIntelligencePackage } from "@/lib/compliance/ai/intelligence/build-intelligence-package";
 
 export const dynamic = "force-dynamic";
 
@@ -13,7 +14,9 @@ function statusTone(status: string): "green" | "yellow" | "red" | "neutral" {
 }
 
 export default async function ErnieWorkflowPage() {
-  const snapshot = await buildErnieWorkflowSnapshot();
+  const [snapshot, intelligence] = await Promise.all([buildErnieWorkflowSnapshot(), buildIntelligencePackage()]);
+  const ernieToday = intelligence.workRouter.queues.ernie ?? [];
+  const snap = intelligence.snapshot;
 
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-6 pb-12">
@@ -32,6 +35,45 @@ export default async function ErnieWorkflowPage() {
         }
       />
       <ComplianceNav />
+
+      <section className="rounded-2xl border border-emerald-800/30 bg-emerald-50/50 p-5">
+        <h2 className="font-heading text-lg font-bold text-[#0f2744]">Today&apos;s Ernie tasks (AI router)</h2>
+        <p className="mt-1 text-sm text-slate-600">
+          Checks {snap.checkWorkbench.readyForSos}/{snap.checkWorkbench.totalChecks} SOS-ready · In-kind {snap.inKind.auctionRows} lines ·{" "}
+          {snap.inventory.missingAddresses} address gaps · Filing {snap.filingStatus}
+        </p>
+        <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm">
+          {ernieToday.length === 0 ? (
+            <li>Run <code className="rounded bg-white px-1">npm run compliance:ai-intelligence</code> to refresh.</li>
+          ) : (
+            ernieToday.map((t) => (
+              <li key={t.id}>
+                <span className="font-semibold">{t.title}</span>
+                {" — "}
+                <Link href={t.route} className="underline">
+                  open
+                </Link>
+                <p className="text-xs text-slate-500">Done: {t.doneCondition}</p>
+              </li>
+            ))
+          )}
+        </ol>
+        <div className="mt-4 flex flex-wrap gap-3 text-sm">
+          <Link href="/admin/compliance/checks/sos-entry" className="font-bold text-[#0f2744] underline">
+            Check extraction (SOS board)
+          </Link>
+          <Link href="/admin/compliance/in-kind/ozark-auction" className="font-bold text-[#0f2744] underline">
+            In-kind workflow
+          </Link>
+          <Link
+            href="/admin/compliance/approval/april-2026-compliance-review?filter=in_kind"
+            className="font-bold text-[#0f2744] underline"
+          >
+            In-kind photos (3)
+          </Link>
+        </div>
+      </section>
+
       <ComplianceDoThisNext
         title="Complete the April audit spreadsheet first"
         description={snapshot.avoidGenericQueue.message}

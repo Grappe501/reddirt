@@ -26,6 +26,7 @@ import { buildReconciliationProgress } from "@/lib/compliance/reconciliation/bui
 import { ComplianceAiOrchestratorPanel } from "./ai-orchestrator-panel";
 import { AprilExpenditureInventoryPanel } from "./april-expenditure-inventory-panel";
 import { ComplianceCompletionEnginePanel } from "./completion-engine-panel";
+import { ComplianceIntelligenceCenterPanel } from "./intelligence-center-panel";
 
 export const dynamic = "force-dynamic";
 
@@ -86,6 +87,7 @@ export default async function ComplianceAiCommandCenterPage() {
         </div>
       </section>
 
+      <ComplianceIntelligenceCenterPanel />
       <ComplianceCompletionEnginePanel />
       <ComplianceAiOrchestratorPanel />
       <AprilExpenditureInventoryPanel />
