@@ -162,17 +162,54 @@ export function LightningApprovalWorkbench({ queueId, item, position, total, pre
           <h2 className="font-heading text-lg font-bold">Evidence</h2>
           {item.evidence.length ? (
             <div className="mt-4 space-y-3">
-              {item.evidence.map((evidence) => (
-                <article key={evidence.id} className="rounded-xl border border-kelly-text/10 p-3">
-                  <p className="text-xs font-bold uppercase text-kelly-slate">{evidence.type.replace(/_/g, " ")}</p>
-                  <p className="font-semibold">{evidence.title}</p>
-                  {evidence.summary ? <p className="text-sm text-kelly-text/70">{evidence.summary}</p> : null}
-                  {evidence.path ? <p className="mt-1 font-mono text-xs break-all">{evidence.path}</p> : null}
-                  {evidence.textPreview ? (
-                    <pre className="mt-2 max-h-48 overflow-auto rounded-lg bg-kelly-wash p-2 text-xs whitespace-pre-wrap">{evidence.textPreview}</pre>
-                  ) : null}
-                </article>
-              ))}
+              {item.evidence.map((evidence) => {
+                const isApril26Image =
+                  evidence.path &&
+                  /\.(jpe?g|png|heic|webp)$/i.test(evidence.path) &&
+                  !evidence.path.includes("..");
+                return (
+                  <article key={evidence.id} className="rounded-xl border border-kelly-text/10 p-3">
+                    <p className="text-xs font-bold uppercase text-kelly-slate">{evidence.type.replace(/_/g, " ")}</p>
+                    <p className="font-semibold">{evidence.title}</p>
+                    {evidence.summary ? <p className="text-sm text-kelly-text/70">{evidence.summary}</p> : null}
+                    {isApril26Image ? (
+                      <a
+                        href={`/api/admin/compliance/april26-image?rel=${encodeURIComponent(evidence.path!)}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-3 block"
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={`/api/admin/compliance/april26-image?rel=${encodeURIComponent(evidence.path!)}`}
+                          alt={evidence.title}
+                          className="max-h-[min(70vh,520px)] w-full rounded-lg border border-kelly-text/10 object-contain bg-kelly-wash"
+                        />
+                      </a>
+                    ) : null}
+                    {evidence.path ? <p className="mt-1 font-mono text-xs break-all">{evidence.path}</p> : null}
+                    {item.source === "in_kind_contribution" && isApril26Image ? (
+                      <Link
+                        href="/admin/compliance/in-kind/ozark-auction"
+                        className="mt-2 inline-block text-sm font-bold text-kelly-navy underline"
+                      >
+                        Open Ozark Forward auction spreadsheet (all line items)
+                      </Link>
+                    ) : null}
+                    {item.source === "check_contribution" ? (
+                      <Link
+                        href="/admin/compliance/checks/sos-entry"
+                        className="mt-2 inline-block text-sm font-bold text-kelly-navy underline"
+                      >
+                        Open SOS check copy board
+                      </Link>
+                    ) : null}
+                    {evidence.textPreview ? (
+                      <pre className="mt-2 max-h-48 overflow-auto rounded-lg bg-kelly-wash p-2 text-xs whitespace-pre-wrap">{evidence.textPreview}</pre>
+                    ) : null}
+                  </article>
+                );
+              })}
             </div>
           ) : (
             <p className="mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm font-semibold text-red-900">

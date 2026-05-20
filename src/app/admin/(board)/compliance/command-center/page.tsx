@@ -70,20 +70,34 @@ export default async function ComplianceAiCommandCenterPage() {
 
       <ComplianceStatusLanguage status={launchStatus} score={expert.launchReadinessScore} whyNotReady={whyNotReady} />
 
+      <section className="rounded-2xl border-2 border-[#0f2744] bg-white p-5 shadow-sm">
+        <h2 className="font-heading text-xl font-bold text-[#0f2744]">Start here</h2>
+        <p className="mt-2 text-sm text-slate-700">
+          Complete the <strong>April audit spreadsheet</strong> and check extraction before clearing the generic approval
+          queue ({brain.queue.openItems} open items, 0 batch-eligible).
+        </p>
+        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <StartHereCard title="Ernie workflow" href="/admin/compliance/ernie" primary />
+          <StartHereCard title="Treasurer workflow" href="/admin/compliance/reconciliation" />
+          <StartHereCard title="Operator / April26" href="/admin/compliance/april26" />
+          <StartHereCard title="Steve / settings" href="/admin/compliance/settings" />
+          <StartHereCard title="Rules human review" href="/admin/compliance/rules" />
+          <StartHereCard title="AI command center" href="/admin/compliance/command-center" />
+        </div>
+      </section>
+
       <ComplianceCompletionEnginePanel />
       <ComplianceAiOrchestratorPanel />
       <AprilExpenditureInventoryPanel />
 
-      {topAction ? (
-        <ComplianceDoThisNext
-          title={topAction.title}
-          description={topAction.description}
-          href={topAction.href ?? "/admin/compliance/april26"}
-          actionLabel="Start this step"
-          secondaryHref="/admin/compliance/approval/april-2026-compliance-review"
-          secondaryLabel="Open April queue"
-        />
-      ) : null}
+      <ComplianceDoThisNext
+        title="Complete the April audit spreadsheet and check extraction"
+        description="Use Ernie workflow and SOS check board before the generic approval queue. Regenerate: npm run compliance:april-audit-spreadsheet"
+        href="/admin/compliance/ernie"
+        actionLabel="Open Ernie workflow"
+        secondaryHref="/admin/compliance/checks/sos-entry"
+        secondaryLabel="SOS check board"
+      />
 
       <CompliancePhaseIndicator currentPhase={brain.source.bankCsv === "missing" ? 1 : brain.filing.overall === "red" ? 5 : 8} />
 
@@ -233,5 +247,18 @@ export default async function ComplianceAiCommandCenterPage() {
         <p className="mt-1 text-xs">npm run compliance:ai-expert · compliance:ai-brain · compliance:ai-thread-handoff</p>
       </ComplianceWhatThisMeans>
     </div>
+  );
+}
+
+function StartHereCard({ title, href, primary }: { title: string; href: string; primary?: boolean }) {
+  return (
+    <Link
+      href={href}
+      className={`rounded-xl border px-4 py-3 text-sm font-bold transition ${
+        primary ? "border-[#0f2744] bg-[#0f2744] text-white" : "border-slate-200 bg-slate-50 text-[#0f2744] hover:bg-white"
+      }`}
+    >
+      {title}
+    </Link>
   );
 }

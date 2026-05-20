@@ -32,6 +32,7 @@ export function CompliancePageHeader({
 
 export function ComplianceNav() {
   const links = [
+    ["Ernie (start)", `${basePath}/ernie`],
     ["Command center", `${basePath}/command-center`],
     ["Hub", basePath],
     ["Wizard", `${basePath}/wizard`],
@@ -42,6 +43,7 @@ export function ComplianceNav() {
     ["Receipts", `${basePath}/receipts`],
     ["Cash", `${basePath}/cash`],
     ["Checks", `${basePath}/checks`],
+    ["In-kind auction", `${basePath}/in-kind/ozark-auction`],
     ["Reconcile", `${basePath}/reconciliation`],
     ["Can we file?", `${basePath}/filing-readiness`],
     ["Filings", `${basePath}/filings`],

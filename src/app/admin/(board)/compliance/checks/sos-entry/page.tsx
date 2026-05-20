@@ -2,6 +2,7 @@ import { ComplianceNav, CompliancePageHeader, StorageModeNotice } from "../../co
 import { buildAprilCheckSosWorkbook, getApril26ChecksStatus } from "@/lib/compliance/checks/april-check-sos-workbook.server";
 import { isOpenAIConfigured } from "@/lib/openai/client";
 import { SosCheckEntryShell } from "./sos-check-entry-shell";
+import { SosCheckAuditPanel } from "./sos-check-audit-panel";
 
 export const dynamic = "force-dynamic";
 
@@ -32,6 +33,7 @@ export default async function SosCheckEntryPage() {
           <code className="rounded bg-white px-1">.env.local</code> and restart <code className="rounded bg-white px-1">npm run dev</code>.
         </div>
       ) : null}
+      <SosCheckAuditPanel workbook={workbook} />
       <SosCheckEntryShell
         initialWorkbook={workbook}
         april26Dir={status.april26Dir}
