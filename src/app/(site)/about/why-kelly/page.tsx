@@ -7,6 +7,7 @@ import { pageMeta } from "@/lib/seo/metadata";
 import { whyKellyPageCopy } from "@/content/about/why-kelly-page";
 import { BiographyDiscoveryLink } from "@/components/biography/BiographyDiscoveryLink";
 import { showPublicBiographyManuscript } from "@/config/public-biography-depth";
+export const dynamic = "force-dynamic";
 
 const c = whyKellyPageCopy;
 

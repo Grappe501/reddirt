@@ -1,6 +1,6 @@
 import { writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
-import { buildAprilCheckSosWorkbook, workbookToCsv } from "../../src/lib/compliance/checks/april-check-sos-workbook";
+import { buildAprilCheckSosWorkbook, workbookToCsv } from "../../src/lib/compliance/checks/april-check-sos-workbook.server";
 
 async function main() {
   const workbook = await buildAprilCheckSosWorkbook();

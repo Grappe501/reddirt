@@ -5,6 +5,7 @@ import { ContentContainer } from "@/components/layout/ContentContainer";
 import { StoryCard } from "@/components/blocks/StoryCard";
 import { listPublicBlogPosts, toBlogCard } from "@/lib/content/blog-public";
 import { pageMeta } from "@/lib/seo/metadata";
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = pageMeta({
   title: "Writing",

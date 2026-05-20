@@ -11,6 +11,7 @@ import { BiographyReaderProgress } from "@/components/biography/BiographyReaderP
 import { BiographyEarnedAskSection } from "@/components/biography/BiographyEarnedAskSection";
 import { BiographyChapterToc } from "@/components/biography/BiographyChapterToc";
 import { cn } from "@/lib/utils";
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   if (!showPublicBiographyManuscript()) {

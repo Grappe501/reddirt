@@ -12,6 +12,7 @@
     "dev:prepare": "prisma generate && prisma migrate deploy",
     "dev:full": "node scripts/launch-dev.cjs",
     "build": "next build",
+    "build:clean": "node scripts/clean-next-build.cjs && next build",
     "start": "next start",
     "lint": "next lint",
     "lint:all": "next lint",

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { AprilCheckSosWorkbook } from "@/lib/compliance/checks/april-check-sos-workbook";
+import type { AprilCheckSosWorkbook } from "@/lib/compliance/checks/april-check-sos-types";
 import { SosCheckEntryClient } from "./sos-check-entry-client";
 import { SosCheckEntryToolbar } from "./sos-check-entry-toolbar";
 
@@ -10,11 +10,13 @@ export function SosCheckEntryShell({
   april26Dir,
   folderExists,
   checkImageCount,
+  openAiConfigured,
 }: {
   initialWorkbook: AprilCheckSosWorkbook;
   april26Dir: string;
   folderExists: boolean;
   checkImageCount: number;
+  openAiConfigured: boolean;
 }) {
   const [workbook, setWorkbook] = useState(initialWorkbook);
 
@@ -28,7 +30,12 @@ export function SosCheckEntryShell({
           setWorkbook(w);
         }}
       />
-      <SosCheckEntryClient initialWorkbook={workbook} imagesAvailable={folderExists} key={workbook.generatedAt} />
+      <SosCheckEntryClient
+        initialWorkbook={workbook}
+        imagesAvailable={folderExists}
+        openAiConfigured={openAiConfigured}
+        key={workbook.generatedAt}
+      />
     </>
   );
 }

@@ -8,6 +8,8 @@ import { articleMeta } from "@/lib/seo/metadata";
 import { getPublicBlogPostBySlug, toBlogCard } from "@/lib/content/blog-public";
 import { prisma } from "@/lib/db";
 import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
+export const dynamic = "force-dynamic";
+export const dynamicParams = true;
 
 type Props = { params: Promise<{ slug: string }> };
 

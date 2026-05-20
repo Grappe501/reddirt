@@ -23,3 +23,12 @@ export const checkExtractionSchema = z.object({
 });
 
 export type CheckExtraction = z.infer<typeof checkExtractionSchema>;
+
+/** One photo may contain several physical checks — vision returns each separately. */
+export const checkImageExtractionSchema = z.object({
+  checks: z.array(checkExtractionSchema),
+  imageWarnings: z.array(z.string()).optional(),
+  estimatedCheckCount: z.number().int().positive().optional(),
+});
+
+export type CheckImageExtraction = z.infer<typeof checkImageExtractionSchema>;

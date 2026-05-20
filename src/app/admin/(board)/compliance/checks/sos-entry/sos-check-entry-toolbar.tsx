@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import type { AprilCheckSosWorkbook } from "@/lib/compliance/checks/april-check-sos-workbook";
+import type { AprilCheckSosWorkbook } from "@/lib/compliance/checks/april-check-sos-types";
 
 type Props = {
   april26Dir: string;

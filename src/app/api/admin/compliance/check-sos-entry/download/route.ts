@@ -4,7 +4,7 @@ import {
   buildAprilCheckSosWorkbook,
   loadAprilCheckSosWorkbook,
   workbookToCsv,
-} from "@/lib/compliance/checks/april-check-sos-workbook";
+} from "@/lib/compliance/checks/april-check-sos-workbook.server";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";

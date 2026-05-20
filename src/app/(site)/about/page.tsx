@@ -15,6 +15,7 @@ import { TalkBusinessKellySection } from "@/components/about/TalkBusinessKellySe
 import { AboutBiographyDrilldown } from "@/components/about/AboutBiographyDrilldown";
 import { showPublicBiographyManuscript } from "@/config/public-biography-depth";
 import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = pageMeta({
   title: "Meet Kelly — full story",

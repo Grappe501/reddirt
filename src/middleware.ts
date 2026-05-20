@@ -1,21 +1,14 @@
 import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
 import { updateSession } from "@/utils/supabase/middleware";
 
 /**
  * 1) Refresh Supabase Auth cookies when `NEXT_PUBLIC_SUPABASE_*` is set (`@supabase/ssr`).
  * 2) Pass `x-pathname` on the request (set inside `updateSession` when Supabase env is absent; always set when Supabase runs).
- * 3) Block misconfigured admin (no ADMIN_SECRET) except /admin/login.
+ *
+ * Admin `ADMIN_SECRET` gating lives in Node layouts/actions (`requireAdminPage`, `adminLoginAction`) — not here.
+ * Edge middleware cannot rely on `.env.local` server-only vars (see Next.js edge env limitations).
  */
 export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-
-  if (pathname.startsWith("/admin") && !pathname.startsWith("/admin/login")) {
-    if (!process.env.ADMIN_SECRET?.trim()) {
-      return NextResponse.redirect(new URL("/admin/login?error=config", request.url));
-    }
-  }
-
   return updateSession(request);
 }
 

@@ -16,6 +16,8 @@ import {
   type KellyAboutSlug,
 } from "@/content/about/kelly-about-chapters";
 import { pageMeta } from "@/lib/seo/metadata";
+export const dynamic = "force-dynamic";
+export const dynamicParams = true;
 
 type PageProps = { params: Promise<{ slug: string }> };
 

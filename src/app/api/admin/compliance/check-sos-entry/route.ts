@@ -1,12 +1,14 @@
 import { NextResponse } from "next/server";
 import { assertAdminApi } from "@/lib/admin/require-admin";
 import {
+  addManualCheckOnImage,
   buildAprilCheckSosWorkbook,
   extractAprilCheckSosEntry,
+  extractAprilCheckSosImage,
   importAprilCheckSosWorkbook,
   updateAprilCheckSosEntry,
-  type AprilCheckSosWorkbook,
-} from "@/lib/compliance/checks/april-check-sos-workbook";
+} from "@/lib/compliance/checks/april-check-sos-workbook.server";
+import type { AprilCheckSosWorkbook } from "@/lib/compliance/checks/april-check-sos-types";
 import type { CheckSosFieldKey } from "@/lib/compliance/checks/check-sos-field-catalog";
 
 export const runtime = "nodejs";
@@ -41,10 +43,20 @@ export async function PATCH(request: Request) {
 export async function POST(request: Request) {
   const unauthorized = await assertAdminApi();
   if (unauthorized) return unauthorized;
-  const body = (await request.json()) as { action: string; id?: string };
+  const body = (await request.json()) as { action: string; id?: string; imageRelativePath?: string };
+  if (body.action === "extract_image" && body.imageRelativePath) {
+    const result = await extractAprilCheckSosImage(body.imageRelativePath);
+    if (!result) return NextResponse.json({ error: "Image not found" }, { status: 404 });
+    return NextResponse.json(result);
+  }
   if (body.action === "extract" && body.id) {
     const entry = await extractAprilCheckSosEntry(body.id);
     if (!entry) return NextResponse.json({ error: "Not found" }, { status: 404 });
+    return NextResponse.json({ entry });
+  }
+  if (body.action === "add_check" && body.imageRelativePath) {
+    const entry = await addManualCheckOnImage(body.imageRelativePath);
+    if (!entry) return NextResponse.json({ error: "Image not found" }, { status: 404 });
     return NextResponse.json({ entry });
   }
   if (body.action === "rebuild") {
