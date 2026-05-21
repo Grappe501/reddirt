@@ -9,6 +9,7 @@ import { resolveCountyFromText } from "@/lib/volunteer-intake/resolve-county";
 import type { PublicSchedulingAssistantResult } from "@/lib/kelly-agent/public-scheduling-agent";
 import type { ScheduleCampaignEventBody } from "@/lib/forms/public-schedule-schema";
 import { estimatePublicScheduleRouteMiles } from "@/lib/calendar/public-schedule-route-estimate";
+import { bridgeWebsiteIntakeToLedger } from "@/lib/campaign-events/intake/intake-ledger-bridge";
 
 const DATA_DIR = path.join(process.cwd(), "data", "calendar-command-center");
 const STAGED_FILE = path.join(DATA_DIR, "public-schedule-requests.staged.json");
@@ -76,6 +77,10 @@ export type PersistPublicScheduleDbResult = {
   userId: string;
   workflowIntakeId: string;
   eventRequestId: string;
+  campaignEventLedgerRecordId: string;
+  ledgerCreated: boolean;
+  ledgerDuplicateRisk: boolean;
+  ledgerScheduleConflict: boolean;
 };
 
 export async function persistPublicScheduleToDatabase(input: {
@@ -188,11 +193,24 @@ export async function persistPublicScheduleToDatabase(input: {
     },
   });
 
+  const bridge = await bridgeWebsiteIntakeToLedger({
+    body,
+    assistant,
+    routeImpactMilesEstimate,
+    workflowIntakeId: intake.id,
+    eventRequestId: eventRequest.id,
+    submissionId: submission.id,
+  });
+
   return {
     submissionId: submission.id,
     userId: user.id,
     workflowIntakeId: intake.id,
     eventRequestId: eventRequest.id,
+    campaignEventLedgerRecordId: bridge.recordId,
+    ledgerCreated: bridge.created,
+    ledgerDuplicateRisk: bridge.duplicateRisk,
+    ledgerScheduleConflict: bridge.scheduleConflict,
   };
 }
 

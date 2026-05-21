@@ -14,7 +14,7 @@ This is the **live control board**. Update at the end of every sprint slice.
 |--------|------|--------|----------------|----------------------------|
 | 0 | Master system map | **Complete** | N/A | N/A |
 | 1 | Reimbursement go-live | **Complete** | ~92% | ~72% |
-| 2 | Intake → ledger bridge | **Next** | — | — |
+| 2 | Intake → ledger bridge | **Complete** | ~85% | ~70% |
 | 3 | Google Calendar truth | Partial (read/scaffold) | ~40% | ~25% |
 | 4 | Approval package email | Scaffold only | ~30% | ~10% |
 | 5 | Official GCal promote | Blocked | — | — |
@@ -86,21 +86,22 @@ This is the **live control board**. Update at the end of every sprint slice.
 
 ## Sprint 2 — Website intake → ledger bridge
 
-**Problem:** `POST /api/forms/schedule-campaign-event` → `WorkflowIntake` + `EventRequest`. **Does not** create `CampaignEventLedgerRecord` with `entrySource: WEBSITE_ENTRY`.
+**Status:** **Complete** (May 2026 pass).
 
-**Build**
+**Delivered**
 
-- Bridge intake → ledger row; `createdFromSource` / `entrySource` = `WEBSITE_ENTRY`
-- Tentative lane placement
-- Visible in workbench + month review
-- Approval package preview for intake rows
-- Preserve intake metadata on `factCard`
+- `bridgeWebsiteIntakeToLedger` on public schedule persist (idempotent `website_entry:{workflowIntakeId}`)
+- Synthetic calendar + workbench load for `WEBSITE_ENTRY` rows
+- Deterministic inference + duplicate/conflict assist (`factCard._intake`)
+- Month review modes: `website_intake_only`, `needs_intake_review`, `duplicate_risk`, `intake_conflict`
+- Workbench filters + badges; `IntakeAiSummaryCard` on event review
+- Dashboard intake queue stats (candidate + CM)
+- `npm run campaign-events:test-intake-bridge`
+- Docs: `SPRINT2_INTAKE_TRACE.md`, `WEBSITE_INTAKE_LEDGER_BRIDGE.md`, `TENTATIVE_EVENT_WORKFLOW.md`, `EVENT_OS_INTAKE_AI_WORKFLOW.md`
 
-**Schema ready:** `CampaignEventLedgerCreatedFrom.WEBSITE_ENTRY` exists in `prisma/schema.prisma`.
+**Not built (by design):** GCal write, approval email send, legacy intake backfill automation.
 
-**Shadow today:** `public-schedule-shadow-items.ts` shows WorkflowIntake on calendar command center — not ledger.
-
-**Success:** Public event request appears in Campaign Events Workbench and Month Review Wizard.
+**Success:** Public event request → tentative ledger row → workbench / month review / travel (excluded from finalized reimbursement until approved).
 
 ---
 

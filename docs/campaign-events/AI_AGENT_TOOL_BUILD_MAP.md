@@ -56,11 +56,17 @@ Tools below are **named in the master build plan**. Map to catalog `id` for impl
 
 | Planned agent | Catalog id | Status | Build action |
 |---------------|------------|--------|--------------|
-| Intake classifier | `intake-classify-type` | functional | Extend for `WEBSITE_ENTRY` payloads |
-| Missing-info detector | `fc-missing-gaps` | functional | Run on bridged ledger rows |
-| Duplicate tentative event detector | `intake-dedupe`, `conf-schedule` | partial | Include intake source key in dedupe |
-| Intake-to-ledger mapper | `intake-website-tentative` | **idea** | **Implement** — core Sprint 2 deliverable |
-| Approval package builder | `appr-package-build` | partial | Trigger on bridge create |
+| Intake-to-ledger bridge | `intake-to-ledger-bridge` | **functional** | `intake-ledger-bridge.ts` on persist |
+| Intake duplicate detector | `intake-duplicate-detector` | **functional** | `_intake.duplicateRisk` |
+| Intake conflict detector | `intake-conflict-detector` | **functional** | `_intake.scheduleConflict` |
+| Tentative event router | `tentative-event-router` | **functional** | `calendar-lane.ts` + `TENTATIVE_CALENDAR` |
+| Intake summary builder | `intake-summary-builder` | **functional** | `intake-inference.ts` |
+| Tentative review assistant | `tentative-review-assistant` | **functional** | `IntakeAiSummaryCard.tsx` |
+| Website intake normalizer | `website-intake-normalizer` | **functional** | fact card seed from form |
+| Schedule risk scanner | `schedule-risk-scanner` | **partial** | assistant flags + overlap |
+| Intake classifier | `intake-classify-type` | functional | Used in bridge inference |
+| Missing-info detector | `fc-missing-gaps` | functional | `inferred.missingFields` |
+| Approval package builder | `appr-package-build` | partial | Existing scaffold; intake rows eligible |
 
 ---
 

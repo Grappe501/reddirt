@@ -121,6 +121,37 @@ export function CampaignManagerOpsDashboard({
         </div>
       </DashboardSection>
 
+      <DashboardSection title="Website intake queue">
+        <DashboardStatGrid>
+          <StatCard
+            label="Website intake volume"
+            value={snapshot.websiteIntakeCount}
+            href={`/admin/campaign-events/review?month=${period}&mode=website_intake_only`}
+          />
+          <StatCard
+            label="Tentative (website)"
+            value={snapshot.tentativeWebsiteCount}
+            href={`/admin/campaign-events/review?month=${period}&mode=tentative_only`}
+          />
+          <StatCard
+            label="Unresolved duplicates"
+            value={snapshot.duplicateRiskCount}
+            href={`/admin/campaign-events/review?month=${period}&mode=duplicate_risk`}
+          />
+          <StatCard
+            label="Unresolved conflicts"
+            value={snapshot.intakeConflictCount}
+            href={`/admin/campaign-events/review?month=${period}&mode=intake_conflict`}
+          />
+        </DashboardStatGrid>
+        <p className="mt-2 font-body text-xs text-kelly-text/55">
+          Public schedule form → WorkflowIntake → CampaignEventLedgerRecord (tentative).{" "}
+          <Link href="/schedule" className="underline">
+            Public form
+          </Link>
+        </p>
+      </DashboardSection>
+
       <DashboardSection title="Approval queue">
         <DashboardStatGrid>
           <StatCard label="Pending candidate decision" value={snapshot.pendingApprovals} href={reviewHref} />

@@ -2,6 +2,7 @@ import { CAMPAIGN_EVENT_REIMBURSEMENT_RATE_USD_PER_MILE, REIMBURSEMENT_CANDIDATE
 import {
   buildTravelLines,
   computeTravelTotals,
+  isReimbursementEligible,
   isTravelReportCandidate,
   travelLinesToCsv,
 } from "../travel-report/travel-report-logic";
@@ -100,7 +101,7 @@ export function buildOfficialReimbursementReport(rows: WorkbenchEventRow[], mont
   const allTravel = buildTravelLines(rows);
 
   const approvedLines: OfficialReimbursementLine[] = allTravel
-    .filter((l) => l.rawDecision === "approved" && l.miles != null && l.miles > 0)
+    .filter((l) => l.rawDecision === "approved" && l.miles != null && l.miles > 0 && isReimbursementEligible(l.row))
     .map((l) => ({
       ...l,
       purpose: l.title,

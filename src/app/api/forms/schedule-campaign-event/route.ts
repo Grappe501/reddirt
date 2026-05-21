@@ -71,6 +71,10 @@ export async function POST(req: Request) {
       submissionId: persist.result.submissionId,
       workflowIntakeId: persist.result.workflowIntakeId,
       eventRequestId: persist.result.eventRequestId,
+      campaignEventLedgerRecordId: persist.result.campaignEventLedgerRecordId,
+      ledgerCreated: persist.result.ledgerCreated,
+      ledgerDuplicateRisk: persist.result.ledgerDuplicateRisk,
+      ledgerScheduleConflict: persist.result.ledgerScheduleConflict,
       publicAssistant,
     });
   }

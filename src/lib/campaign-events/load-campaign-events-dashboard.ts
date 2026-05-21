@@ -55,6 +55,11 @@ export type CampaignEventsDashboardSnapshot = {
     travelReview: number;
     hotWashPending: number;
   };
+  websiteIntakeCount: number;
+  tentativeWebsiteCount: number;
+  duplicateRiskCount: number;
+  intakeConflictCount: number;
+  needsIntakeReviewCount: number;
 };
 
 function todayYmdChicago(): string {
@@ -102,6 +107,11 @@ export function buildCampaignEventsDashboardSnapshot(
   let missingInfo = 0;
   let travelReview = 0;
   let hotWashPending = 0;
+  let websiteIntakeCount = 0;
+  let tentativeWebsiteCount = 0;
+  let duplicateRiskCount = 0;
+  let intakeConflictCount = 0;
+  let needsIntakeReviewCount = 0;
 
   const approvalInbox: ApprovalInboxItem[] = [];
 
@@ -130,6 +140,14 @@ export function buildCampaignEventsDashboardSnapshot(
     if (needsTravelReview(row)) travelReview++;
 
     if (row.rawDecision === "approved" && row.dateYmd < todayYmd) hotWashPending++;
+
+    if (row.isWebsiteIntake) {
+      websiteIntakeCount++;
+      if (row.rawEventStatus === "TENTATIVE") tentativeWebsiteCount++;
+      if (row.duplicateRisk) duplicateRiskCount++;
+      if (row.intakeScheduleConflict) intakeConflictCount++;
+      if (row.intakeNeedsReview) needsIntakeReviewCount++;
+    }
 
     if (isPendingApproval(row) || row.rawEventStatus === "TENTATIVE") {
       approvalInbox.push({
@@ -188,6 +206,11 @@ export function buildCampaignEventsDashboardSnapshot(
       travelReview,
       hotWashPending,
     },
+    websiteIntakeCount,
+    tentativeWebsiteCount,
+    duplicateRiskCount,
+    intakeConflictCount,
+    needsIntakeReviewCount,
   };
 }
 

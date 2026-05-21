@@ -61,6 +61,7 @@
     "campaign-events:seed-may": "tsx scripts/seed-may-campaign-events.ts",
     "campaign-events:seed-month": "tsx scripts/seed-campaign-events-month.ts",
     "campaign-events:verify-travel-queues": "tsx scripts/verify-travel-reimbursement-queues.ts",
+    "campaign-events:test-intake-bridge": "tsx scripts/test-intake-ledger-bridge.ts",
     "compliance:april26:qa": "tsx scripts/compliance/qa-april26-ingest.ts",
     "compliance:approval:build": "tsx scripts/compliance/build-approval-queue.ts",
     "compliance:qa-approval": "tsx scripts/compliance/qa-approval-workbench.ts",

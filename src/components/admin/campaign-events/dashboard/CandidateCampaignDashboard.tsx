@@ -37,6 +37,32 @@ export function CandidateCampaignDashboard({
         </Link>
       </div>
 
+      <DashboardSection title="Website intake & tentative events">
+        <DashboardStatGrid>
+          <StatCard
+            label="Website requests (ledger)"
+            value={snapshot.websiteIntakeCount}
+            href={`/admin/campaign-events/workbench?period=${period}`}
+            hint="Tentative Event OS rows"
+          />
+          <StatCard
+            label="Needs intake review"
+            value={snapshot.needsIntakeReviewCount}
+            href={`/admin/campaign-events/review?month=${period}&mode=needs_intake_review&autostart=1`}
+          />
+          <StatCard
+            label="Duplicate risk"
+            value={snapshot.duplicateRiskCount}
+            href={`/admin/campaign-events/review?month=${period}&mode=duplicate_risk`}
+          />
+          <StatCard
+            label="Schedule conflicts"
+            value={snapshot.intakeConflictCount}
+            href={`/admin/campaign-events/review?month=${period}&mode=intake_conflict`}
+          />
+        </DashboardStatGrid>
+      </DashboardSection>
+
       <DashboardSection title="Pending approvals">
         <DashboardStatGrid>
           <StatCard label="Needs decision" value={snapshot.pendingApprovals} href={reviewHref} hint="Approve · deny · hold" />
