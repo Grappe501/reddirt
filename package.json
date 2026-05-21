@@ -63,6 +63,7 @@
     "campaign-events:verify-travel-queues": "tsx scripts/verify-travel-reimbursement-queues.ts",
     "campaign-events:test-intake-bridge": "tsx scripts/test-intake-ledger-bridge.ts",
     "campaign-events:verify-calendar-sync": "tsx scripts/verify-calendar-sync-truth.ts",
+    "campaign-events:test-approval-email": "tsx scripts/test-approval-email.ts",
     "compliance:april26:qa": "tsx scripts/compliance/qa-april26-ingest.ts",
     "compliance:approval:build": "tsx scripts/compliance/build-approval-queue.ts",
     "compliance:qa-approval": "tsx scripts/compliance/qa-approval-workbench.ts",

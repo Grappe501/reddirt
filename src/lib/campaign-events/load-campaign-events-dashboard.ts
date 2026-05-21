@@ -20,6 +20,8 @@ export type DashboardUpcomingEvent = {
   decisionLabel: string | null;
 };
 
+export type ApprovalInboxPackageStatus = "not_sent" | "drafted" | "skipped_disabled" | "sent" | "failed";
+
 export type ApprovalInboxItem = {
   recordId: string;
   title: string;
@@ -28,6 +30,10 @@ export type ApprovalInboxItem = {
   status: string;
   reviewStatus: string;
   packagePreviewUrl: string;
+  packageStatus: ApprovalInboxPackageStatus;
+  lastSentAt: string | null;
+  awaitingCandidate: boolean;
+  emailSubject: string | null;
 };
 
 export type CampaignEventsDashboardSnapshot = {
@@ -152,6 +158,8 @@ export function buildCampaignEventsDashboardSnapshot(
     }
 
     if (isPendingApproval(row) || row.rawEventStatus === "TENTATIVE") {
+      const lastLog = row.approvalEmailLastLog;
+      const packageStatus: ApprovalInboxPackageStatus = lastLog?.status ?? "not_sent";
       approvalInbox.push({
         recordId: row.recordId,
         title: row.calendar.title,
@@ -160,6 +168,10 @@ export function buildCampaignEventsDashboardSnapshot(
         status: row.eventStatus,
         reviewStatus: row.reviewStatus,
         packagePreviewUrl: `/admin/campaign-calendar/approval-package/${row.recordId}`,
+        packageStatus,
+        lastSentAt: lastLog?.sentAt ?? null,
+        awaitingCandidate: isPendingApproval(row) && packageStatus !== "sent",
+        emailSubject: lastLog?.subject ?? null,
       });
     }
   }

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { CalendarSurfaceRow } from "@/lib/campaign-events/load-campaign-calendar-events";
 import type { FactCardSection } from "@/lib/campaign-events/types";
-import { buildApprovalPackage } from "@/lib/campaign-events/approval-package";
+import type { ApprovalPackagePayload } from "@/lib/campaign-events/approval-package";
 import { APPROVAL_STATUS_LABELS } from "@/lib/campaign-events/approval-timeline";
 import { COMMUNICATION_NOTE_TYPE_LABELS, type EventCommunicationNoteType } from "@/lib/campaign-events/event-communication";
 import { AUTOMATION_NEEDS_FUTURE } from "@/lib/campaign-events/review-meta";
@@ -57,6 +57,7 @@ export function EventDrilldownClient({
   hotWashNotes = {},
   fromTravel = false,
   returnMonth,
+  approvalPackage,
 }: {
   row: CalendarSurfaceRow;
   mediaItems?: HotWashMediaRecord[];
@@ -64,6 +65,7 @@ export function EventDrilldownClient({
   hotWashNotes?: HotWashNotes;
   fromTravel?: boolean;
   returnMonth?: string;
+  approvalPackage?: ApprovalPackagePayload;
 }) {
   const router = useRouter();
   const [tab, setTab] = useState<TabId>("overview");
@@ -71,7 +73,7 @@ export function EventDrilldownClient({
   const [pending, startTransition] = useTransition();
   const [noteBody, setNoteBody] = useState("");
   const [noteType, setNoteType] = useState<EventCommunicationNoteType>("internal");
-  const pkg = buildApprovalPackage(row);
+  const pkg = approvalPackage;
 
   const section = (id: string) => row.sections.find((s) => s.id === id);
 
@@ -124,7 +126,10 @@ export function EventDrilldownClient({
           <button type="button" className="rounded-full bg-kelly-navy px-4 py-2 font-body text-sm font-bold text-white" onClick={() => setReviewOpen(true)}>
             Review with AI
           </button>
-          <Link href={pkg.links.packagePreviewUrl} className="rounded-full border border-kelly-navy/30 px-4 py-2 font-body text-sm font-bold text-kelly-navy">
+          <Link
+            href={pkg?.links.packagePreviewUrl ?? `/admin/campaign-calendar/approval-package/${row.recordId}`}
+            className="rounded-full border border-kelly-navy/30 px-4 py-2 font-body text-sm font-bold text-kelly-navy"
+          >
             Approval package preview
           </Link>
           <Link href="/admin/campaign-calendar/timeline" className="rounded-full border px-4 py-2 font-body text-sm font-bold">
@@ -178,7 +183,7 @@ export function EventDrilldownClient({
               </p>
             ))}
           </div>
-          <ApprovalPackagePreviewPanel payload={pkg} compact />
+          {pkg ? <ApprovalPackagePreviewPanel payload={pkg} recordId={row.recordId} compact /> : null}
         </div>
       )}
 
@@ -217,7 +222,7 @@ export function EventDrilldownClient({
               </li>
             ))}
           </ol>
-          <ApprovalPackagePreviewPanel payload={pkg} />
+          {pkg ? <ApprovalPackagePreviewPanel payload={pkg} recordId={row.recordId} /> : null}
         </div>
       )}
 

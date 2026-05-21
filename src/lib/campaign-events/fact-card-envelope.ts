@@ -48,7 +48,7 @@ export function serializeFactCardEnvelope(envelope: CampaignEventFactCardEnvelop
 }
 
 /** Keys on factCard JSON that are not part of the core envelope spread (preserve on ledger updates). */
-const PRESERVED_FACT_CARD_KEYS = ["_hotWash", "_intake", "_calendarSync"] as const;
+const PRESERVED_FACT_CARD_KEYS = ["_hotWash", "_intake", "_calendarSync", "_approvalEmailLog"] as const;
 
 export function withPreservedFactCardExtensions(next: object, previousRaw: unknown): object {
   const n = { ...(next as Record<string, unknown>) };

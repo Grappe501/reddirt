@@ -156,8 +156,10 @@ export function CandidateCampaignDashboard({
         </DashboardStatGrid>
       </DashboardSection>
 
-      <DashboardSection title="Approval package inbox (scaffold)">
-        <p className="mb-3 font-body text-xs text-kelly-text/55">Future approval emails will appear here. Preview packages per event — not sent.</p>
+      <DashboardSection title="Approval package inbox">
+        <p className="mb-3 font-body text-xs text-kelly-text/55">
+          Package send status from ledger email log. Email transport is gated by EMAIL_SEND_ENABLED.
+        </p>
         {snapshot.approvalInbox.length ? (
           <ul className="space-y-2 font-body text-sm">
             {snapshot.approvalInbox.map((item) => (
@@ -167,9 +169,14 @@ export function CandidateCampaignDashboard({
                   <span className="ml-2 text-xs text-kelly-text/55">
                     {item.dateYmd} {item.timeLabel}
                   </span>
+                  <p className="mt-1 text-xs text-kelly-text/55">
+                    Package: <strong>{item.packageStatus.replaceAll("_", " ")}</strong>
+                    {item.lastSentAt ? ` · sent ${new Date(item.lastSentAt).toLocaleString()}` : ""}
+                    {item.awaitingCandidate ? " · awaiting candidate" : ""}
+                  </p>
                 </div>
                 <Link href={item.packagePreviewUrl} className="text-xs font-bold text-kelly-navy underline">
-                  Preview package
+                  {item.packageStatus === "sent" ? "View / resend" : "Preview / send"}
                 </Link>
               </li>
             ))}

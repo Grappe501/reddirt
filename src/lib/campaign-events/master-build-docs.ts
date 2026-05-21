@@ -12,9 +12,9 @@ export const CAMPAIGN_OS_MASTER_BUILD_DOCS = [
 ] as const;
 
 export const CAMPAIGN_OS_CURRENT_SPRINT = {
-  number: 3,
-  name: "Google Calendar truth layer",
-  statusDoc: "BUILD_SPRINT_STATUS.md#sprint-3--google-calendar-truth-layer",
+  number: 4,
+  name: "Approval package email workflow",
+  statusDoc: "BUILD_SPRINT_STATUS.md#sprint-4--approval-package-email",
 } as const;
 
 export function masterBuildDocPath(file: string): string {

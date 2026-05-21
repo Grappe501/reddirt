@@ -1,7 +1,7 @@
 # Build Sprint Status
 
 **Lane:** `RedDirt/`  
-**Last updated:** Sprint 0 (May 2026)  
+**Last updated:** Sprint 4 (May 2026)  
 **Companion:** [`MASTER_CAMPAIGN_OS_ROADMAP.md`](./MASTER_CAMPAIGN_OS_ROADMAP.md)
 
 This is the **live control board**. Update at the end of every sprint slice.
@@ -16,7 +16,7 @@ This is the **live control board**. Update at the end of every sprint slice.
 | 1 | Reimbursement go-live | **Complete** | ~92% | ~72% |
 | 2 | Intake → ledger bridge | **Complete** | ~85% | ~70% |
 | 3 | Google Calendar truth | **Complete** | ~80% | ~55% |
-| 4 | Approval package email | Scaffold only | ~30% | ~10% |
+| 4 | Approval package email | **Complete** (gated send) | ~75% | ~50% |
 | 5 | Official GCal promote | Blocked | — | — |
 | 6 | Event planning drilldown | Partial | ~50% | ~35% |
 | 7 | Hot wash + media intel | Partial | ~40% | ~20% |
@@ -117,7 +117,8 @@ This is the **live control board**. Update at the end of every sprint slice.
 - Workbench / drilldown / campaign calendar alerts + sync filters
 - Candidate + CM dashboard sync summary cards
 - CLI instructions (read-only): `calendar:google:sync-kelly`, `campaign-events:seed-month`
-- `npm run campaign-events:verify-calendar-sync`
+- `npm run campaign-events:verify-calendar-sync
+npm run campaign-events:test-approval-email -- --dry-run`
 - Docs: `SPRINT3_GOOGLE_CALENDAR_TRACE.md`, `GOOGLE_CALENDAR_TRUTH_LAYER.md`, `CALENDAR_SYNC_OPERATOR_GUIDE.md`, `TENTATIVE_OFFICIAL_CALENDAR_READINESS.md`
 
 **Not built:** Google write/promote from ledger UI, server-side auto-sync button, auto ledger upsert from GCal ingest.
@@ -128,17 +129,25 @@ This is the **live control board**. Update at the end of every sprint slice.
 
 ## Sprint 4 — Approval package automation
 
-**Build**
+**Status:** **Complete** (May 2026 pass). Gated SendGrid send, HTML+text template, JSON approval tokens, public `/campaign-events/approval/[token]`, operator send panel, `_approvalEmailLog` audit, dashboard inbox status, dry-run script.
 
-- Email to `kelly@kellygrappe.com`, `grappe4arkansas@gmail.com` (configured)
-- Secure approve / deny / hold links
-- Real candidate + CM dashboard inbox
-- Decision writes to ledger `factCard._review`
-- Send gated by `EMAIL_SEND_ENABLED`
+**Delivered**
 
-**Today:** `buildApprovalPackage()` preview; `ApprovalRecipientsBanner`; drafts on record; **no send**.
+| Item | State |
+|------|-------|
+| `approval-email/*` transport + template + tokens | ✅ |
+| `EMAIL_SEND_ENABLED` gate (default off) | ✅ |
+| Operator send / resend / dry-run / test-to-self | ✅ |
+| Token approve / deny / hold / request_info → ledger | ✅ |
+| Google Calendar write on approval | ❌ by design (Sprint 5) |
+| CM email send | ❌ not configured |
+| Reply-by-email | ❌ future |
 
-**Success:** Candidate/CM approve or hold from secure workflow.
+**Docs:** `SPRINT4_EMAIL_TRACE.md`, `APPROVAL_PACKAGE_EMAIL_WORKFLOW.md`, `APPROVAL_TOKEN_SECURITY.md`, `CANDIDATE_APPROVAL_INBOX.md`
+
+**Commands:** `npm run campaign-events:test-approval-email -- --dry-run`
+
+**Success:** With send enabled + SendGrid env, operator sends package; candidate uses secure links; decisions land on ledger only.
 
 ---
 

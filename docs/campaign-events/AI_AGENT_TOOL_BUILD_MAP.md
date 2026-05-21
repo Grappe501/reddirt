@@ -92,13 +92,15 @@ Tools below are **named in the master build plan**. Map to catalog `id` for impl
 
 | Planned agent | Catalog id | Status | Build action |
 |---------------|------------|--------|--------------|
-| Approval summary writer | `appr-package-build` | partial | Email body generator (draft only until send on) |
-| Missing-info email drafter | `email-draft-scaffold` | partial | Tie to approval package gaps |
-| Decision parser scaffold | `appr-parse-reply` | idea | MIME parser stub + human audit UI |
-| Approval risk checker | `conf-schedule` + inference | partial | Package risk section |
-| Hold/deny reason summarizer | `appr-month-wizard` | functional | Post-decision summary on factCard |
+| Approval summary writer | `appr-package-build` | **functional** | `approval-email-assist.ts` subject + summary |
+| Approval package email send | `appr-email-send` | **functional** (gated) | `approval-email-send.ts` + `EMAIL_SEND_ENABLED` |
+| Token decision links | `appr-token-review` | **functional** | `/campaign-events/approval/[token]` |
+| Missing-info email drafter | `email-draft-scaffold` | partial | Host drafts; approval uses package template |
+| Decision parser scaffold | `appr-parse-reply` | idea | Future reply-by-email — not built |
+| Approval risk checker | `conf-schedule` + inference | partial | Package conflicts section |
+| Hold/deny reason summarizer | `appr-month-wizard` | functional | Post-decision on factCard |
 
-**Gated:** `appr-email-send` (idea) — enable only with `EMAIL_SEND_ENABLED`.
+**Ops:** `npm run campaign-events:test-approval-email -- --dry-run` · Docs: `APPROVAL_PACKAGE_EMAIL_WORKFLOW.md`
 
 ---
 

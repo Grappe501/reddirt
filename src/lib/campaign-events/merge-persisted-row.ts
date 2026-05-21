@@ -21,6 +21,7 @@ import {
   type LedgerCalendarTruthStatus,
 } from "./calendar-sync/calendar-sync-truth-types";
 import type { LedgerCalendarSyncMeta } from "./calendar-sync/calendar-sync-meta";
+import { latestApprovalEmailLog, parseApprovalEmailLog } from "./approval-email/approval-email-log";
 import { decisionLabel } from "./review-meta";
 import { resolveDefaultTravelOrigin } from "./travel-origin";
 import type { CampaignEventLedgerRow } from "./types";
@@ -39,6 +40,7 @@ export type PersistedMarchEventRow = CampaignEventLedgerRow & {
   persistedMissingCount: number;
   decisionLabel: string | null;
   requestInfoStatus: string | null;
+  approvalEmailLastLog: import("./approval-email/approval-email-log").ApprovalEmailLogEntry | null;
 };
 
 /** Workbench row — persisted ledger + filter/sort fields (any period). */
@@ -120,6 +122,7 @@ export function mergePersistedMarchRow(
     });
   });
 
+  const approvalEmailLastLog = latestApprovalEmailLog(parseApprovalEmailLog(record.factCard));
   const intakeMeta = parseIntakeMetaFromFactCard(record.factCard);
   const conflicts = detectEventConflicts(calendar, allCalendar, record.eventStatus);
   const workHours = base.workHours;
@@ -183,6 +186,7 @@ export function mergePersistedMarchRow(
     sourceCalendarId: record.calendarSourceId,
     decisionLabel: decisionLabel(envelope.review.decision),
     requestInfoStatus: envelope.review.requestInfoStatus ?? null,
+    approvalEmailLastLog,
     startAtMs: record.startAt.getTime(),
     timeLabel: formatCompactTime(calendar.start, calendar.allDay),
     rawEventStatus: record.eventStatus,
