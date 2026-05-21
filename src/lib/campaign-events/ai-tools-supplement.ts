@@ -4,6 +4,7 @@
 import type { AiToolEntry, AiToolLifecycle } from "./ai-tools-master-catalog";
 import { SPRINT4_APPROVAL_EMAIL_CATALOG_ENTRIES } from "./ai-tools/sprint4-approval-email-tools";
 import { SPRINT5_PROMOTION_CATALOG_ENTRIES } from "../calendar-promotion/sprint5-promotion-tools";
+import { GLOBAL_AGENT_ORCHESTRATION_CATALOG_ENTRIES } from "./sprint-global-agent-tools";
 
 const S = (s: AiToolEntry["status"]) => s;
 
@@ -109,6 +110,7 @@ export const SUPPLEMENT_TOOLS_BY_LIFECYCLE: Record<string, AiToolEntry[]> = {
   ],
   sprint4_approval_email: SPRINT4_APPROVAL_EMAIL_CATALOG_ENTRIES,
   sprint5_calendar_promotion: SPRINT5_PROMOTION_CATALOG_ENTRIES,
+  global_agent_orchestration: GLOBAL_AGENT_ORCHESTRATION_CATALOG_ENTRIES,
 };
 
 const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
@@ -123,6 +125,12 @@ const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
     order: 26,
     title: "Sprint 5 — Google Calendar promotion",
     tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.sprint5_calendar_promotion ?? [],
+  },
+  {
+    id: "global_agent_orchestration",
+    order: 27,
+    title: "Global — All-knowing agent orchestration",
+    tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.global_agent_orchestration ?? [],
   },
 ];
 

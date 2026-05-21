@@ -17,6 +17,7 @@ import { AI_AGENT_RUNBOOK } from "@/lib/campaign-events/ai-agent-runbook";
 import type { AiToolStatus } from "@/lib/campaign-events/ai-tools-master-catalog";
 import type { EnrichedAiTool } from "@/lib/campaign-events/ai-tools-operational-meta";
 import { MasterBuildDocsBanner } from "@/components/admin/campaign-events/MasterBuildDocsBanner";
+import { GlobalAgentInventoryLinks } from "@/components/admin/campaign-events/GlobalAgentInventoryLinks";
 
 const STATUS_STYLE: Record<AiToolStatus, string> = {
   idea: "bg-kelly-wash text-kelly-text/60",
@@ -544,6 +545,7 @@ export function AiToolsCommandCenter() {
   return (
     <div className="space-y-6">
       <MasterBuildDocsBanner />
+      <GlobalAgentInventoryLinks />
       <section className="rounded-2xl border border-kelly-navy/20 bg-kelly-navy/[0.04] p-5 font-body text-sm">
         <p>
           <strong>Operational AI Agent Tool System</strong> — {snap.counts.total} tools across {snap.lifecycles.length} lifecycles

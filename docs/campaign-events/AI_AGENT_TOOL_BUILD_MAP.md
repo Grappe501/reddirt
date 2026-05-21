@@ -8,6 +8,19 @@
 
 ---
 
+## Global / All-Knowing Agent (SOSWebsite-wide inventory)
+
+| Artifact | Path |
+|----------|------|
+| Full inventory | [`GLOBAL_AI_AGENT_TOOL_INVENTORY.md`](./GLOBAL_AI_AGENT_TOOL_INVENTORY.md) |
+| Architecture | [`ALL_KNOWING_CAMPAIGN_AGENT_ARCHITECTURE.md`](./ALL_KNOWING_CAMPAIGN_AGENT_ARCHITECTURE.md) |
+| Learning roadmap | [`AI_AGENT_OBSERVATION_AND_LEARNING_ROADMAP.md`](./AI_AGENT_OBSERVATION_AND_LEARNING_ROADMAP.md) |
+| Master registry v0 | `src/lib/agents/master-tool-registry/` |
+| Global tools (20) | `src/lib/campaign-events/ai-tools/sprint-global-agent-tools.ts` |
+| Hub | `/admin/ai-command-center` |
+
+---
+
 ## Catalog snapshot (code-grounded)
 
 | Metric | Value |

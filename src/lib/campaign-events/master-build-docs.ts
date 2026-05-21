@@ -11,6 +11,9 @@ export const CAMPAIGN_OS_MASTER_BUILD_DOCS = [
   { id: "sprint4-ai", label: "Sprint 4 AI toolchain", file: "SPRINT4_AI_TOOLCHAIN.md" },
   { id: "sprint5-ai", label: "Sprint 5 GCal promotion", file: "SPRINT5_AI_TOOLCHAIN.md" },
   { id: "sprint5-promo", label: "GCal promotion workflow", file: "GOOGLE_CALENDAR_PROMOTION_WORKFLOW.md" },
+  { id: "global-inventory", label: "Global AI agent inventory", file: "GLOBAL_AI_AGENT_TOOL_INVENTORY.md" },
+  { id: "all-knowing-arch", label: "All-knowing agent architecture", file: "ALL_KNOWING_CAMPAIGN_AGENT_ARCHITECTURE.md" },
+  { id: "agent-learning", label: "Agent observation & learning", file: "AI_AGENT_OBSERVATION_AND_LEARNING_ROADMAP.md" },
   { id: "deps", label: "System dependency graph", file: "SYSTEM_DEPENDENCY_GRAPH.md" },
 ] as const;
 
