@@ -14,6 +14,7 @@ Read in order before proposing build work:
 2) RedDirt/docs/BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md (PROTO-2 + DIV-OPS-1/2)
 3) RedDirt/docs/DIVISION_MASTER_REGISTRY.md
 4) RedDirt/docs/PROJECT_MASTER_MAP.md
+5) Campaign OS master build (Sprint 0–10): RedDirt/docs/campaign-events/MASTER_CAMPAIGN_OS_ROADMAP.md · BUILD_SPRINT_STATUS.md · AI_AGENT_TOOL_BUILD_MAP.md · SYSTEM_DEPENDENCY_GRAPH.md
 
 Return format for implementation passes: IMPLEMENTED, FILES, BUILD PROGRESS UPDATE, BLUEPRINT PROGRESS UPDATE, BUILD STEERING DECISION (target division + reason), DIVISION STATUS UPDATE, DRIFT CHECK, CHECKS — as defined in §0.2 of THREAD_HANDOFF_MASTER_MAP.md.
 
@@ -28,6 +29,7 @@ Quality gate from RedDirt/: npm run check. No deletes of production data, no uns
 2. [BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md)
 3. [DIVISION_MASTER_REGISTRY.md](./DIVISION_MASTER_REGISTRY.md)
 4. [PROJECT_MASTER_MAP.md](./PROJECT_MASTER_MAP.md)
+5. Campaign OS: [MASTER_CAMPAIGN_OS_ROADMAP.md](./campaign-events/MASTER_CAMPAIGN_OS_ROADMAP.md) · [BUILD_SPRINT_STATUS.md](./campaign-events/BUILD_SPRINT_STATUS.md)
 
 ---
 
