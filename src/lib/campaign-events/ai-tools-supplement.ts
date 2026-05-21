@@ -2,6 +2,7 @@
  * Additional tools merged into master catalog (operational command center expansion).
  */
 import type { AiToolEntry, AiToolLifecycle } from "./ai-tools-master-catalog";
+import { SPRINT4_APPROVAL_EMAIL_CATALOG_ENTRIES } from "./ai-tools/sprint4-approval-email-tools";
 
 const S = (s: AiToolEntry["status"]) => s;
 
@@ -105,13 +106,26 @@ export const SUPPLEMENT_TOOLS_BY_LIFECYCLE: Record<string, AiToolEntry[]> = {
   saas_client_dashboard: [
     t("saas_client_dashboard", { id: "saas-planner-scaffold", name: "Franklin planner scaffolding", purpose: "Day/agenda planner notes panel.", status: S("scaffolded"), priority: "P2", trigger: "Calendar day/agenda", reads: "day events", writes: "localStorage", humanApprovalRequired: false, guardrails: "Client-only notes", futureRoute: "FranklinPlannerScaffold" }),
   ],
+  sprint4_approval_email: SPRINT4_APPROVAL_EMAIL_CATALOG_ENTRIES,
 };
 
+const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
+  {
+    id: "sprint4_approval_email",
+    order: 25,
+    title: "Sprint 4 — Approval email toolchain",
+    tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.sprint4_approval_email ?? [],
+  },
+];
+
 export function mergeSupplementIntoLifecycles(lifecycles: AiToolLifecycle[]): AiToolLifecycle[] {
-  return lifecycles.map((lc) => {
+  const merged = lifecycles.map((lc) => {
     const extra = SUPPLEMENT_TOOLS_BY_LIFECYCLE[lc.id] ?? [];
     const existingIds = new Set(lc.tools.map((x) => x.id));
-    const merged = [...lc.tools, ...extra.filter((x) => !existingIds.has(x.id))];
-    return { ...lc, tools: merged };
+    const added = extra.filter((x) => !existingIds.has(x.id));
+    return { ...lc, tools: [...lc.tools, ...added] };
   });
+  const existingIds = new Set(merged.map((lc) => lc.id));
+  const appended = SUPPLEMENT_ONLY_LIFECYCLES.filter((lc) => !existingIds.has(lc.id));
+  return [...merged, ...appended].sort((a, b) => a.order - b.order);
 }

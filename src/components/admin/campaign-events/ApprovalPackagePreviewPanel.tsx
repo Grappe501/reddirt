@@ -5,16 +5,20 @@ import type { ApprovalPackagePayload } from "@/lib/campaign-events/approval-pack
 import { APPROVAL_STATUS_LABELS } from "@/lib/campaign-events/approval-timeline";
 import { ApprovalRecipientsBanner } from "./ApprovalRecipientsBanner";
 import { ApprovalPackageSendPanel } from "./ApprovalPackageSendPanel";
+import { AiObservationsPanel } from "./AiObservationsPanel";
 import { EMAIL_SEND_DISABLED_NOTICE } from "@/lib/campaign-events/approval-recipients";
+import type { AiObservationEntry } from "@/lib/campaign-events/ai-tools/observations";
 
 export function ApprovalPackagePreviewPanel({
   payload,
   recordId,
   compact,
+  observations = [],
 }: {
   payload: ApprovalPackagePayload;
   recordId?: string;
   compact?: boolean;
+  observations?: AiObservationEntry[];
 }) {
   const sendNotice = payload.emailConfig.disabledReason ?? EMAIL_SEND_DISABLED_NOTICE;
 
@@ -129,6 +133,7 @@ export function ApprovalPackagePreviewPanel({
       </p>
 
       {recordId ? <ApprovalPackageSendPanel recordId={recordId} payload={payload} /> : null}
+      {!compact && recordId ? <AiObservationsPanel observations={observations} compact /> : null}
     </section>
   );
 }

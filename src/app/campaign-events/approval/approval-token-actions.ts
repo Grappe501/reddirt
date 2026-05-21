@@ -8,6 +8,11 @@ import {
   markApprovalTokenUsed,
   type ApprovalTokenAction,
 } from "@/lib/campaign-events/approval-email/approval-token-store";
+import {
+  decisionEventForAction,
+  recordApprovalObservation,
+} from "@/lib/campaign-events/ai-tools/record-approval-observation";
+import { assertApprovalPathNoGoogleWrite } from "@/lib/campaign-events/ai-tools/sprint4-tool-helpers";
 
 function mapTokenActionToDecision(action: ApprovalTokenAction): CampaignEventDecision | null {
   switch (action) {
@@ -41,10 +46,20 @@ export async function applyApprovalTokenDecisionAction(
     return { ok: false, error: "Review links cannot submit decisions from this page." };
   }
 
+  assertApprovalPathNoGoogleWrite("approval-token-decision");
   await applyReviewDecision(token.recordId, decision, {
     note,
     actor: `approval-token:${token.action}`,
   });
+  const decisionEvent = decisionEventForAction(token.action);
+  if (decisionEvent) {
+    await recordApprovalObservation({
+      recordId: token.recordId,
+      toolId: "approval-action-writer",
+      event: decisionEvent,
+      actor: `approval-token:${token.action}`,
+    });
+  }
 
   if (token.action !== "review") {
     await markApprovalTokenUsed(tokenId);

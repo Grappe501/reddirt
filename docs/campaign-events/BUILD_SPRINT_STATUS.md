@@ -16,7 +16,7 @@ This is the **live control board**. Update at the end of every sprint slice.
 | 1 | Reimbursement go-live | **Complete** | ~92% | ~72% |
 | 2 | Intake → ledger bridge | **Complete** | ~85% | ~70% |
 | 3 | Google Calendar truth | **Complete** | ~80% | ~55% |
-| 4 | Approval package email | **Complete** (gated send) | ~75% | ~50% |
+| 4 | Approval package email + 4A AI tools | **Complete** (gated send + toolchain) | ~85% | ~55% |
 | 5 | Official GCal promote | Blocked | — | — |
 | 6 | Event planning drilldown | Partial | ~50% | ~35% |
 | 7 | Hot wash + media intel | Partial | ~40% | ~20% |
@@ -129,7 +129,28 @@ npm run campaign-events:test-approval-email -- --dry-run`
 
 ## Sprint 4 — Approval package automation
 
-**Status:** **Complete** (May 2026 pass). Gated SendGrid send, HTML+text template, JSON approval tokens, public `/campaign-events/approval/[token]`, operator send panel, `_approvalEmailLog` audit, dashboard inbox status, dry-run script.
+**Status:** **Complete** (May 2026). Product email workflow + **Sprint 4A AI tool foundation** (15 V1 contracts, observations, command center tab).
+
+## Sprint 4A — Approval email AI tool foundation
+
+**Status:** **Complete** (May 2026 pass).
+
+| Deliverable | State |
+|-------------|-------|
+| `ai-tools/tool-contract.ts` standard shape | ✅ |
+| `ai-tools/observations.ts` + `_aiObservations` persist | ✅ |
+| 15 Sprint 4 V1 tool contracts + catalog lifecycle | ✅ |
+| `/admin/campaign-events/ai-tools` Sprint 4 tab + pipeline | ✅ |
+| Observation hooks on send/preview/token/decision | ✅ |
+| `SPRINT4_AI_TOOLCHAIN.md` + human-control rules | ✅ |
+
+**Build rule (all future sprints):** feature + V1 tool + observation + V2 path + human guardrail — see `CAMPAIGN_OS_SPRINT_BUILD_RULE` in `master-build-docs.ts`.
+
+---
+
+### Sprint 4 product (email)
+
+Gated SendGrid send, HTML+text template, JSON approval tokens, public `/campaign-events/approval/[token]`, operator send panel, `_approvalEmailLog` audit, dashboard inbox status, dry-run script.
 
 **Delivered**
 
@@ -143,7 +164,7 @@ npm run campaign-events:test-approval-email -- --dry-run`
 | CM email send | ❌ not configured |
 | Reply-by-email | ❌ future |
 
-**Docs:** `SPRINT4_EMAIL_TRACE.md`, `APPROVAL_PACKAGE_EMAIL_WORKFLOW.md`, `APPROVAL_TOKEN_SECURITY.md`, `CANDIDATE_APPROVAL_INBOX.md`
+**Docs:** `SPRINT4_EMAIL_TRACE.md`, `SPRINT4_AI_TOOLCHAIN.md`, `APPROVAL_PACKAGE_EMAIL_WORKFLOW.md`, `APPROVAL_TOKEN_SECURITY.md`, `CANDIDATE_APPROVAL_INBOX.md`
 
 **Commands:** `npm run campaign-events:test-approval-email -- --dry-run`
 

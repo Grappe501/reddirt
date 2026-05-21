@@ -6,6 +6,7 @@ import {
   loadApprovalEmailContext,
   mapTokenLinksForPayload,
 } from "@/lib/campaign-events/approval-email/load-approval-email-context";
+import { loadAiObservationsForRecord } from "@/lib/campaign-events/ai-tools/observations-persist";
 import { loadCalendarEventDrilldown, serializeCalendarRows } from "@/lib/campaign-events/load-campaign-calendar-events";
 
 export const dynamic = "force-dynamic";
@@ -19,7 +20,10 @@ export default async function ApprovalPackagePreviewPage({
   const loaded = await loadCalendarEventDrilldown(recordId);
   if (!loaded) notFound();
   const [row] = serializeCalendarRows([loaded.row]);
-  const ctx = await loadApprovalEmailContext(recordId);
+  const [ctx, observations] = await Promise.all([
+    loadApprovalEmailContext(recordId),
+    loadAiObservationsForRecord(recordId),
+  ]);
   const payload = buildApprovalPackageWithLogs(row, ctx.logs, mapTokenLinksForPayload(ctx));
 
   return (
@@ -33,7 +37,7 @@ export default async function ApprovalPackagePreviewPage({
           Gated email send — disabled until EMAIL_SEND_ENABLED and provider env are set.
         </p>
       </div>
-      <ApprovalPackagePreviewPanel payload={payload} recordId={recordId} />
+      <ApprovalPackagePreviewPanel payload={payload} recordId={recordId} observations={observations} />
     </div>
   );
 }

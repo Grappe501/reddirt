@@ -11,6 +11,7 @@ import { buildApprovalPackage, buildApprovalPackageWithLogs } from "@/lib/campai
 import { getApprovalEmailConfig } from "@/lib/campaign-events/approval-email/approval-email-config";
 import { buildApprovalEmailBodies } from "@/lib/campaign-events/approval-email/approval-email-template";
 import { buildApprovalEmailAssist } from "@/lib/campaign-events/approval-email/approval-email-assist";
+import { recordApprovalObservation } from "@/lib/campaign-events/ai-tools/record-approval-observation";
 
 function revalidateSurfaces(recordId: string) {
   revalidatePath("/admin/campaign-events/workbench");
@@ -27,6 +28,12 @@ export async function loadApprovalPackageBundleAction(recordId: string) {
   const ctx = await loadApprovalEmailContext(recordId);
   const tokenLinks = mapTokenLinksForPayload(ctx);
   const payload = buildApprovalPackageWithLogs(loaded.row, ctx.logs, tokenLinks);
+  await recordApprovalObservation({
+    recordId,
+    toolId: "approval-inbox-router",
+    event: "approval_package_previewed",
+    actor: "admin",
+  });
   return {
     ok: true as const,
     payload,
@@ -59,6 +66,19 @@ export async function sendApprovalPackageEmailAction(
     createdBy: options?.testToSelf ? "operator-test" : "admin",
     testToSelf: options?.testToSelf,
   });
+  await recordApprovalObservation({
+    recordId,
+    toolId: result.status === "sent" ? "approval-send-audit-logger" : "approval-send-guard",
+    event:
+      result.status === "sent"
+        ? "approval_email_sent"
+        : result.status === "skipped_disabled"
+          ? "approval_email_send_blocked"
+          : result.status === "failed"
+            ? "approval_email_send_failed"
+            : "approval_email_dry_run",
+    actor: "admin",
+  });
   revalidateSurfaces(recordId);
   return { ok: true as const, result };
 }
@@ -77,6 +97,12 @@ export async function previewApprovalEmailBodiesAction(recordId: string) {
     requestInfo: `${config.baseUrl}/campaign-events/approval/(token)`,
   };
   const bodies = buildApprovalEmailBodies({ payload, assist, links: placeholderLinks });
+  await recordApprovalObservation({
+    recordId,
+    toolId: "approval-email-template-builder",
+    event: "approval_email_generated",
+    actor: "admin",
+  });
   return {
     ok: true as const,
     subject: assist.subject,
@@ -93,6 +119,12 @@ export async function dryRunApprovalEmailAction(recordId: string) {
     row: loaded.row,
     createdBy: "dry-run",
     dryRun: true,
+  });
+  await recordApprovalObservation({
+    recordId,
+    toolId: "approval-send-audit-logger",
+    event: "approval_email_dry_run",
+    actor: "dry-run",
   });
   return { ok: true as const, result };
 }

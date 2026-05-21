@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import type { CalendarSurfaceRow } from "@/lib/campaign-events/load-campaign-calendar-events";
 import type { FactCardSection } from "@/lib/campaign-events/types";
 import type { ApprovalPackagePayload } from "@/lib/campaign-events/approval-package";
+import type { AiObservationEntry } from "@/lib/campaign-events/ai-tools/observations";
 import { APPROVAL_STATUS_LABELS } from "@/lib/campaign-events/approval-timeline";
 import { COMMUNICATION_NOTE_TYPE_LABELS, type EventCommunicationNoteType } from "@/lib/campaign-events/event-communication";
 import { AUTOMATION_NEEDS_FUTURE } from "@/lib/campaign-events/review-meta";
@@ -58,6 +59,7 @@ export function EventDrilldownClient({
   fromTravel = false,
   returnMonth,
   approvalPackage,
+  approvalObservations = [],
 }: {
   row: CalendarSurfaceRow;
   mediaItems?: HotWashMediaRecord[];
@@ -66,6 +68,7 @@ export function EventDrilldownClient({
   fromTravel?: boolean;
   returnMonth?: string;
   approvalPackage?: ApprovalPackagePayload;
+  approvalObservations?: AiObservationEntry[];
 }) {
   const router = useRouter();
   const [tab, setTab] = useState<TabId>("overview");
@@ -183,7 +186,9 @@ export function EventDrilldownClient({
               </p>
             ))}
           </div>
-          {pkg ? <ApprovalPackagePreviewPanel payload={pkg} recordId={row.recordId} compact /> : null}
+          {pkg ? (
+            <ApprovalPackagePreviewPanel payload={pkg} recordId={row.recordId} compact observations={approvalObservations} />
+          ) : null}
         </div>
       )}
 
@@ -222,7 +227,9 @@ export function EventDrilldownClient({
               </li>
             ))}
           </ol>
-          {pkg ? <ApprovalPackagePreviewPanel payload={pkg} recordId={row.recordId} /> : null}
+          {pkg ? (
+            <ApprovalPackagePreviewPanel payload={pkg} recordId={row.recordId} observations={approvalObservations} />
+          ) : null}
         </div>
       )}
 

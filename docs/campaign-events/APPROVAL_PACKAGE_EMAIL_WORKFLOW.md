@@ -4,6 +4,12 @@
 
 Operators build an approval package from ledger + calendar truth, preview email bodies, and optionally send to configured candidate recipients. Recipients use tokenized links to review and record decisions on **`CampaignEventLedgerRecord` only** — no Google Calendar write.
 
+## Human control (AI)
+
+- AI may **suggest, draft, summarize, score, and route** via deterministic tools (`SPRINT4_AI_TOOLCHAIN.md`).
+- AI may **not** send email, approve, deny, hold, promote Google Calendar, or post financial transactions without explicit human action.
+- Observations append to `factCard._aiObservations` for future V2 learning — no analytics backend yet.
+
 ## Enable sending
 
 1. Set `EMAIL_SEND_ENABLED=true`

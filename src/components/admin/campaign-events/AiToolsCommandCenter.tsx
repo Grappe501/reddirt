@@ -5,10 +5,12 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   buildCommandCenterSnapshot,
+  getSprint4Contract,
   getToolById,
   supplementToolCount,
   type CommandCenterSnapshot,
 } from "@/lib/campaign-events/ai-tools-command-center";
+import { Sprint4ApprovalToolchainSection } from "@/components/admin/campaign-events/Sprint4ApprovalToolchainSection";
 import { AI_AGENT_RUNBOOK } from "@/lib/campaign-events/ai-agent-runbook";
 import type { AiToolStatus } from "@/lib/campaign-events/ai-tools-master-catalog";
 import type { EnrichedAiTool } from "@/lib/campaign-events/ai-tools-operational-meta";
@@ -21,7 +23,7 @@ const STATUS_STYLE: Record<AiToolStatus, string> = {
   functional: "bg-emerald-50 text-emerald-900",
 };
 
-type TabId = "dashboard" | "runbook" | "matrix" | "catalog";
+type TabId = "dashboard" | "sprint4" | "runbook" | "matrix" | "catalog";
 
 function ProgressBar({ label, value, max = 100 }: { label: string; value: number; max?: number }) {
   const pct = Math.min(100, Math.round((value / max) * 100));
@@ -64,7 +66,15 @@ function ToolChip({ tool, onSelect }: { tool: EnrichedAiTool; onSelect: (id: str
   );
 }
 
-function ToolDetailDrawer({ tool, onClose }: { tool: EnrichedAiTool; onClose: () => void }) {
+function ToolDetailDrawer({
+  tool,
+  contract,
+  onClose,
+}: {
+  tool: EnrichedAiTool;
+  contract?: ReturnType<typeof getSprint4Contract>;
+  onClose: () => void;
+}) {
   return (
     <div className="fixed inset-0 z-50 flex justify-end bg-black/30" role="dialog" aria-modal="true">
       <button type="button" className="flex-1" aria-label="Close" onClick={onClose} />
@@ -160,6 +170,22 @@ function ToolDetailDrawer({ tool, onClose }: { tool: EnrichedAiTool; onClose: ()
               ))}
             </ul>
           </section>
+          {contract ? (
+            <section className="rounded-xl border border-kelly-navy/20 bg-kelly-navy/[0.04] p-3 text-xs space-y-2">
+              <p>
+                <strong>Sprint {contract.sprint}</strong> · {contract.version} · risk {contract.riskLevel}
+              </p>
+              <p>
+                <strong>Helper:</strong> {contract.deterministicHelperPath}
+              </p>
+              <p>
+                <strong>Observations:</strong> {contract.observationEvents.join(", ") || "—"}
+              </p>
+              <p>
+                <strong>V2 path:</strong> {contract.futureAutomationPath}
+              </p>
+            </section>
+          ) : null}
           <section className="rounded-xl border border-kelly-navy/20 bg-kelly-navy/[0.04] p-3 text-xs">
             <p>
               <strong>Catalog reads/writes:</strong> {tool.reads} → {tool.writes}
@@ -506,6 +532,7 @@ export function AiToolsCommandCenter() {
 
   const tabs: { id: TabId; label: string }[] = [
     { id: "dashboard", label: "Command center" },
+    { id: "sprint4", label: "Sprint 4 email" },
     { id: "runbook", label: "Agent runbook" },
     { id: "matrix", label: "Capability matrix" },
     { id: "catalog", label: "Full catalog" },
@@ -551,11 +578,14 @@ export function AiToolsCommandCenter() {
       </nav>
 
       {tab === "dashboard" && <DashboardTab snap={snap} onSelect={openTool} />}
+      {tab === "sprint4" && <Sprint4ApprovalToolchainSection snap={snap} onSelect={openTool} />}
       {tab === "runbook" && <RunbookTab onSelect={openTool} />}
       {tab === "matrix" && <CapabilityMatrix tools={snap.tools} onSelect={openTool} />}
       {tab === "catalog" && <CatalogTab snap={snap} onSelect={openTool} />}
 
-      {selectedTool ? <ToolDetailDrawer tool={selectedTool} onClose={closeTool} /> : null}
+      {selectedTool ? (
+        <ToolDetailDrawer tool={selectedTool} contract={getSprint4Contract(snap, selectedTool.id)} onClose={closeTool} />
+      ) : null}
     </div>
   );
 }

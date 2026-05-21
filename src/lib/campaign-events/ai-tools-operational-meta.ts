@@ -1,4 +1,6 @@
 import type { AiToolEntry, AiToolStatus } from "./ai-tools-master-catalog";
+import { getContractById } from "./ai-tools/tool-contract";
+import { SPRINT4_APPROVAL_EMAIL_TOOL_CONTRACTS } from "./ai-tools/sprint4-approval-email-tools";
 
 export type AiToolOperationalMeta = {
   implementationFiles: string[];
@@ -231,8 +233,24 @@ export const TOOL_OPERATIONAL_META: Record<string, Partial<AiToolOperationalMeta
   },
 };
 
+function sprint4OperationalOverride(tool: AiToolEntry): Partial<AiToolOperationalMeta> | undefined {
+  const c = getContractById(SPRINT4_APPROVAL_EMAIL_TOOL_CONTRACTS, tool.id);
+  if (!c) return undefined;
+  return {
+    implementationFiles: [c.deterministicHelperPath],
+    relatedRoutes: c.routesUsingTool,
+    inputData: c.inputs,
+    outputData: c.outputs,
+    availableNow: c.currentStatus === "functional" || c.currentStatus === "partial",
+    blocksAutomation:
+      c.humanApprovalRequired || c.riskLevel === "blocked" || /no send|no gcal|human/i.test(c.guardrails),
+    nextBuildStep: c.futureAutomationPath,
+    testChecklist: c.testChecklist,
+  };
+}
+
 export function deriveOperationalMeta(tool: AiToolEntry): AiToolOperationalMeta {
-  const override = TOOL_OPERATIONAL_META[tool.id];
+  const override = TOOL_OPERATIONAL_META[tool.id] ?? sprint4OperationalOverride(tool);
   const blocksFromGuard = AUTOMATION_BLOCK_KEYWORDS.test(tool.guardrails);
   const blocksFromStatus =
     tool.status === "idea" &&

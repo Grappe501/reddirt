@@ -88,19 +88,31 @@ Tools below are **named in the master build plan**. Map to catalog `id` for impl
 
 ---
 
-### Sprint 4 — Approval package automation
+### Sprint 4 / 4A — Approval package + AI toolchain
 
-| Planned agent | Catalog id | Status | Build action |
-|---------------|------------|--------|--------------|
-| Approval summary writer | `appr-package-build` | **functional** | `approval-email-assist.ts` subject + summary |
-| Approval package email send | `appr-email-send` | **functional** (gated) | `approval-email-send.ts` + `EMAIL_SEND_ENABLED` |
-| Token decision links | `appr-token-review` | **functional** | `/campaign-events/approval/[token]` |
-| Missing-info email drafter | `email-draft-scaffold` | partial | Host drafts; approval uses package template |
-| Decision parser scaffold | `appr-parse-reply` | idea | Future reply-by-email — not built |
-| Approval risk checker | `conf-schedule` + inference | partial | Package conflicts section |
-| Hold/deny reason summarizer | `appr-month-wizard` | functional | Post-decision on factCard |
+**15 V1 tools** in lifecycle `sprint4_approval_email` — contracts in `src/lib/campaign-events/ai-tools/sprint4-approval-email-tools.ts`.
 
-**Ops:** `npm run campaign-events:test-approval-email -- --dry-run` · Docs: `APPROVAL_PACKAGE_EMAIL_WORKFLOW.md`
+| Tool id | Status |
+|---------|--------|
+| `email-architecture-tracer` | functional |
+| `approval-email-config-checker` | functional |
+| `approval-email-template-builder` | functional |
+| `approval-email-subject-writer` | functional |
+| `approval-email-summary-writer` | functional |
+| `approval-token-builder` | functional |
+| `approval-token-validator` | functional |
+| `approval-action-writer` | functional |
+| `approval-send-guard` | functional |
+| `approval-send-audit-logger` | functional |
+| `approval-inbox-router` | functional |
+| `approval-email-risk-scanner` | functional |
+| `approval-followup-recommender` | scaffolded |
+| `approval-human-review-gate` | functional |
+| `approval-google-write-blocker` | functional |
+
+Legacy catalog ids (`appr-package-build`, `appr-email-send`) remain; Sprint 4 ids are canonical for automation.
+
+**Ops:** `npm run campaign-events:test-approval-email -- --dry-run` · Docs: `SPRINT4_AI_TOOLCHAIN.md`, `APPROVAL_PACKAGE_EMAIL_WORKFLOW.md`
 
 ---
 

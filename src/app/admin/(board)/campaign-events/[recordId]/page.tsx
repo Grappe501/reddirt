@@ -6,6 +6,7 @@ import {
   loadApprovalEmailContext,
   mapTokenLinksForPayload,
 } from "@/lib/campaign-events/approval-email/load-approval-email-context";
+import { loadAiObservationsForRecord } from "@/lib/campaign-events/ai-tools/observations-persist";
 import { loadCalendarEventDrilldown, serializeCalendarRows } from "@/lib/campaign-events/load-campaign-calendar-events";
 import { loadEventMediaBundle } from "@/lib/campaign-events/media/media-storage";
 
@@ -23,16 +24,18 @@ export default async function CampaignEventDrilldownPage({
   const loaded = await loadCalendarEventDrilldown(recordId);
   if (!loaded) notFound();
   const [row] = serializeCalendarRows([loaded.row]);
-  const [mediaBundle, hotWashNotes, emailCtx] = await Promise.all([
+  const [mediaBundle, hotWashNotes, emailCtx, observations] = await Promise.all([
     loadEventMediaBundle(recordId),
     loadHotWashNotes(recordId),
     loadApprovalEmailContext(recordId),
+    loadAiObservationsForRecord(recordId),
   ]);
   const approvalPackage = buildApprovalPackageWithLogs(row, emailCtx.logs, mapTokenLinksForPayload(emailCtx));
   return (
     <EventDrilldownClient
       row={row}
       approvalPackage={approvalPackage}
+      approvalObservations={observations}
       mediaItems={mediaBundle.items}
       mediaByUploader={mediaBundle.byUploader}
       hotWashNotes={hotWashNotes}

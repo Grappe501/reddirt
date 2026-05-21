@@ -22,6 +22,17 @@ RedDirt becomes a **fully integrated AI-driven campaign operating system** where
 
 **Doctrine:** Build the system that builds the system. Safe tracks in touched files (types, hooks, empty states) — no silent behavior changes.
 
+**Sprint build rule (from Sprint 4A):** Every major objective must ship together:
+
+1. Product feature  
+2. V1 AI agent tool (`tool-contract.ts` + catalog entry)  
+3. Deterministic helper where practical  
+4. Observation event(s) on `factCard._aiObservations`  
+5. Documented V2 automation pathway  
+6. Human guardrail — AI may not send, approve, deny, promote GCal, or post financial transactions without explicit human action  
+
+See `SPRINT4_AI_TOOLCHAIN.md` and `/admin/campaign-events/ai-tools` → **Sprint 4 email** tab.
+
 ---
 
 ## Seven pillars (dependency order)

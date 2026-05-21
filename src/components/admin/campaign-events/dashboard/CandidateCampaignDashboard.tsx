@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { CampaignEventsDashboardSnapshot } from "@/lib/campaign-events/load-campaign-events-dashboard";
+import { AiObservationsPanel } from "@/components/admin/campaign-events/AiObservationsPanel";
 import { ApprovalRecipientsBanner } from "@/components/admin/campaign-events/ApprovalRecipientsBanner";
 import { MonthlyTravelSummaryCard } from "@/components/admin/campaign-events/MonthlyTravelSummaryCard";
 import { ReimbursementMonthCards } from "@/components/admin/campaign-events/travel-reimbursement/ReimbursementMonthCards";
@@ -160,6 +161,7 @@ export function CandidateCampaignDashboard({
         <p className="mb-3 font-body text-xs text-kelly-text/55">
           Package send status from ledger email log. Email transport is gated by EMAIL_SEND_ENABLED.
         </p>
+        <AiObservationsPanel observations={[]} compact />
         {snapshot.approvalInbox.length ? (
           <ul className="space-y-2 font-body text-sm">
             {snapshot.approvalInbox.map((item) => (

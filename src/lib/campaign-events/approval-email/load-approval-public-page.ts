@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { loadCalendarEventDrilldown } from "../load-campaign-calendar-events";
 import { buildApprovalPackageWithLogs } from "../approval-package";
 import { getApprovalTokenById, type ApprovalPackageToken } from "./approval-token-store";
+import { recordApprovalObservation } from "../ai-tools/record-approval-observation";
 import { loadApprovalEmailContext, mapTokenLinksForPayload } from "./load-approval-email-context";
 
 export type ApprovalPublicPageData = {
@@ -25,6 +26,14 @@ export async function loadApprovalPublicPage(tokenId: string): Promise<ApprovalP
 
   const canDecide =
     token.status === "active" && token.action !== "review" && !loaded.row.rawDecision;
+
+  await recordApprovalObservation({
+    recordId: token.recordId,
+    toolId: "approval-token-validator",
+    event: "token_opened",
+    actor: "recipient",
+    meta: { action: token.action, tokenStatus: token.status },
+  });
 
   return { token, payload, canDecide };
 }
