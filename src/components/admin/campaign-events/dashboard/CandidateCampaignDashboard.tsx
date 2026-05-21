@@ -92,6 +92,26 @@ export function CandidateCampaignDashboard({
         </DashboardStatGrid>
       </DashboardSection>
 
+      <DashboardSection title="Calendar promotion (human-controlled)">
+        <DashboardStatGrid>
+          <StatCard
+            label="Ready · tentative GCal"
+            value={snapshot.promotionReadyTentative}
+            href={`/admin/campaign-events/calendar-promotion?month=${period}`}
+          />
+          <StatCard
+            label="Ready · official GCal"
+            value={snapshot.promotionReadyOfficial}
+            href={`/admin/campaign-events/calendar-promotion?month=${period}`}
+          />
+          <StatCard label="Promotion failed" value={snapshot.promotionFailed} href={`/admin/campaign-events/calendar-promotion?month=${period}`} />
+          <StatCard label="Promotion blocked" value={snapshot.promotionBlocked} href={`/admin/campaign-events/calendar-promotion?month=${period}`} />
+        </DashboardStatGrid>
+        <p className="mt-2 font-body text-xs text-kelly-text/55">
+          Writes require GOOGLE_CALENDAR_WRITE_ENABLED and explicit operator Promote click — no autonomous AI calendar writes.
+        </p>
+      </DashboardSection>
+
       <DashboardSection title="Pending approvals">
         <DashboardStatGrid>
           <StatCard label="Needs decision" value={snapshot.pendingApprovals} href={reviewHref} hint="Approve · deny · hold" />

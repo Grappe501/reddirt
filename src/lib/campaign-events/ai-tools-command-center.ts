@@ -1,6 +1,8 @@
 import { AI_TOOL_LIFECYCLES } from "./ai-tools-master-catalog";
 import { buildSprint4ApprovalPipeline, type Sprint4PipelineStage } from "./ai-tools/sprint4-pipeline";
+import { buildSprint5CalendarPromotionPipeline, type Sprint5PipelineStage } from "./ai-tools/sprint5-pipeline";
 import { SPRINT4_APPROVAL_EMAIL_TOOL_CONTRACTS } from "./ai-tools/sprint4-approval-email-tools";
+import { SPRINT5_PROMOTION_TOOL_CONTRACTS } from "./calendar-promotion/sprint5-promotion-tools";
 import { CAMPAIGN_AI_HUMAN_CONTROL_RULES, type CampaignAiToolContract } from "./ai-tools/tool-contract";
 import { mergeSupplementIntoLifecycles, SUPPLEMENT_TOOLS_BY_LIFECYCLE } from "./ai-tools-supplement";
 import {
@@ -29,6 +31,12 @@ export type CommandCenterSnapshot = {
     pipeline: Sprint4PipelineStage[];
     humanControlRules: readonly string[];
     toolCountBeforeSupplement: number;
+  };
+  sprint5: {
+    contracts: CampaignAiToolContract[];
+    tools: EnrichedAiTool[];
+    pipeline: Sprint5PipelineStage[];
+    humanControlRules: readonly string[];
   };
 };
 
@@ -88,6 +96,7 @@ export function buildCommandCenterSnapshot(): CommandCenterSnapshot {
   };
 
   const sprint4Tools = tools.filter((t) => t.lifecycleId === "sprint4_approval_email");
+  const sprint5Tools = tools.filter((t) => t.lifecycleId === "sprint5_calendar_promotion");
   const toolCountBeforeSupplement =
     tools.length - Object.values(SUPPLEMENT_TOOLS_BY_LIFECYCLE).flat().length + (SUPPLEMENT_TOOLS_BY_LIFECYCLE.sprint4_approval_email?.length ?? 0);
 
@@ -110,11 +119,38 @@ export function buildCommandCenterSnapshot(): CommandCenterSnapshot {
       humanControlRules: CAMPAIGN_AI_HUMAN_CONTROL_RULES,
       toolCountBeforeSupplement: Math.max(0, tools.length - sprint4Tools.length),
     },
+    sprint5: {
+      contracts: SPRINT5_PROMOTION_TOOL_CONTRACTS,
+      tools: sprint5Tools,
+      pipeline: buildSprint5CalendarPromotionPipeline(),
+      humanControlRules: CAMPAIGN_AI_HUMAN_CONTROL_RULES,
+    },
   };
 }
 
 export function getSprint4Contract(snapshot: CommandCenterSnapshot, toolId: string) {
   return snapshot.sprint4.contracts.find((c) => c.id === toolId);
+}
+
+export function getSprint5Contract(snapshot: CommandCenterSnapshot, toolId: string) {
+  return snapshot.sprint5.contracts.find((c) => c.id === toolId);
+}
+
+export function getSprintLifecycleContract(snapshot: CommandCenterSnapshot, toolId: string) {
+  return getSprint4Contract(snapshot, toolId) ?? getSprint5Contract(snapshot, toolId);
+}
+
+export function filterSprint5Tools(
+  tools: EnrichedAiTool[],
+  filter: { automationBlocked?: boolean; observationEnabled?: boolean },
+): EnrichedAiTool[] {
+  let list = tools.filter((t) => t.lifecycleId === "sprint5_calendar_promotion");
+  if (filter.automationBlocked === true) list = list.filter((t) => t.blocksAutomation);
+  if (filter.observationEnabled) {
+    const obsIds = new Set(SPRINT5_PROMOTION_TOOL_CONTRACTS.filter((c) => c.observationEvents.length > 0).map((c) => c.id));
+    list = list.filter((t) => obsIds.has(t.id));
+  }
+  return list;
 }
 
 export function filterSprint4Tools(

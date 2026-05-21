@@ -18,6 +18,15 @@ const EVENT_LABELS: Record<string, string> = {
   ai_summary_edited: "Summary edited",
   operator_overrode_recommendation: "Operator override",
   ai_tool_invoked: "Tool invoked",
+  promotion_attempted: "Promotion attempted",
+  promotion_blocked: "Promotion blocked",
+  promotion_succeeded: "Promotion succeeded",
+  promotion_failed: "Promotion failed",
+  tentative_promoted: "Tentative promoted",
+  official_promoted: "Official promoted",
+  duplicate_detected: "Duplicate detected",
+  operator_overrode_warning: "Operator override",
+  payload_edited: "Payload edited",
 };
 
 export function AiObservationsPanel({

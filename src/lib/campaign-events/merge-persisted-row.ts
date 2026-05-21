@@ -22,6 +22,8 @@ import {
 } from "./calendar-sync/calendar-sync-truth-types";
 import type { LedgerCalendarSyncMeta } from "./calendar-sync/calendar-sync-meta";
 import { latestApprovalEmailLog, parseApprovalEmailLog } from "./approval-email/approval-email-log";
+import { derivePromotionStatus, parsePromotionMeta } from "./calendar-promotion/promotion-meta";
+import type { CalendarPromotionStatus } from "./calendar-promotion/promotion-types";
 import { decisionLabel } from "./review-meta";
 import { resolveDefaultTravelOrigin } from "./travel-origin";
 import type { CampaignEventLedgerRow } from "./types";
@@ -41,6 +43,7 @@ export type PersistedMarchEventRow = CampaignEventLedgerRow & {
   decisionLabel: string | null;
   requestInfoStatus: string | null;
   approvalEmailLastLog: import("./approval-email/approval-email-log").ApprovalEmailLogEntry | null;
+  promotionStatus: CalendarPromotionStatus;
 };
 
 /** Workbench row — persisted ledger + filter/sort fields (any period). */
@@ -123,6 +126,7 @@ export function mergePersistedMarchRow(
   });
 
   const approvalEmailLastLog = latestApprovalEmailLog(parseApprovalEmailLog(record.factCard));
+  const promotionMeta = parsePromotionMeta(record.factCard);
   const intakeMeta = parseIntakeMetaFromFactCard(record.factCard);
   const conflicts = detectEventConflicts(calendar, allCalendar, record.eventStatus);
   const workHours = base.workHours;
@@ -168,7 +172,7 @@ export function mergePersistedMarchRow(
         showWriteDisabled: true,
       };
 
-  return {
+  const rowOut: WorkbenchEventRow = {
     ...base,
     recordId: record.id,
     factCard,
@@ -216,5 +220,8 @@ export function mergePersistedMarchRow(
     calendarTruthTone: TRUTH_STATUS_TONE[syncResolution.truthStatus],
     calendarSync: syncResolution,
     calendarWriteDisabled: syncResolution.showWriteDisabled,
+    promotionStatus: "TENTATIVE_INTERNAL",
   };
+  rowOut.promotionStatus = derivePromotionStatus(record, rowOut, promotionMeta);
+  return rowOut;
 }

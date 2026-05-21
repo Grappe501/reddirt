@@ -20,6 +20,8 @@ import type { HotWashMediaRecord } from "@/lib/campaign-events/media/hot-wash-me
 import type { HotWashNotes } from "@/lib/campaign-events/hot-wash-notes";
 import { reimbursementHref, travelLogHref } from "@/lib/campaign-events/travel-reimbursement/travel-reimbursement-links";
 import { CalendarSyncTruthPanel } from "./CalendarSyncTruthPanel";
+import { PromotionAuditPanel } from "./PromotionAuditPanel";
+import type { PromotionAuditEntry } from "@/lib/campaign-events/calendar-promotion/promotion-audit";
 
 const TABS = [
   "overview",
@@ -60,6 +62,7 @@ export function EventDrilldownClient({
   returnMonth,
   approvalPackage,
   approvalObservations = [],
+  promotionAuditEntries = [],
 }: {
   row: CalendarSurfaceRow;
   mediaItems?: HotWashMediaRecord[];
@@ -69,6 +72,7 @@ export function EventDrilldownClient({
   returnMonth?: string;
   approvalPackage?: ApprovalPackagePayload;
   approvalObservations?: AiObservationEntry[];
+  promotionAuditEntries?: PromotionAuditEntry[];
 }) {
   const router = useRouter();
   const [tab, setTab] = useState<TabId>("overview");
@@ -141,6 +145,12 @@ export function EventDrilldownClient({
           <Link href="/admin/campaign-events/workbench" className="rounded-full border px-4 py-2 font-body text-sm font-bold">
             Workbench
           </Link>
+          <Link
+            href={`/admin/campaign-events/calendar-promotion?month=${month}`}
+            className="rounded-full border border-kelly-navy/30 px-4 py-2 font-body text-sm font-bold text-kelly-navy"
+          >
+            Promote to GCal
+          </Link>
         </div>
         <dl className="mt-4 grid gap-2 font-body text-sm sm:grid-cols-3">
           <div>
@@ -174,6 +184,7 @@ export function EventDrilldownClient({
       {tab === "overview" && (
         <div className="grid gap-4 lg:grid-cols-2">
           <CalendarSyncTruthPanel row={row} />
+          <PromotionAuditPanel entries={promotionAuditEntries} />
           <div className="rounded-2xl border border-kelly-text/10 bg-kelly-page p-4 font-body text-sm">
             <h2 className="font-heading font-bold">Operational snapshot</h2>
             <p className="mt-2">Decision: {row.decisionLabel ?? "Pending"}</p>

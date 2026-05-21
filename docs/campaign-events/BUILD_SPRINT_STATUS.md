@@ -1,7 +1,7 @@
 # Build Sprint Status
 
 **Lane:** `RedDirt/`  
-**Last updated:** Sprint 4 (May 2026)  
+**Last updated:** Sprint 5 (May 2026)  
 **Companion:** [`MASTER_CAMPAIGN_OS_ROADMAP.md`](./MASTER_CAMPAIGN_OS_ROADMAP.md)
 
 This is the **live control board**. Update at the end of every sprint slice.
@@ -17,7 +17,7 @@ This is the **live control board**. Update at the end of every sprint slice.
 | 2 | Intake → ledger bridge | **Complete** | ~85% | ~70% |
 | 3 | Google Calendar truth | **Complete** | ~80% | ~55% |
 | 4 | Approval package email + 4A AI tools | **Complete** (gated send + toolchain) | ~85% | ~55% |
-| 5 | Official GCal promote | Blocked | — | — |
+| 5 | Controlled GCal promotion (human + gated write) | **Complete** (dry-run default; live gated) | ~75% | ~45% |
 | 6 | Event planning drilldown | Partial | ~50% | ~35% |
 | 7 | Hot wash + media intel | Partial | ~40% | ~20% |
 | 8 | FIN / compliance bridge | Not started | — | — |
@@ -172,13 +172,34 @@ Gated SendGrid send, HTML+text template, JSON approval tokens, public `/campaign
 
 ---
 
-## Sprint 5 — Approval → official Google Calendar
+## Sprint 5 — Controlled Google Calendar promotion
 
-**Depends on:** Sprint 3 + 4.
+**Status:** **Complete** (May 2026). First Event OS write lane; human click only.
 
-**Build:** Approved tentative → official GCal; denied/hold retained; `googleEventUrl`; human confirm before write.
+**Depends on:** Sprint 3 (sync truth) + Sprint 4 (approval, write blocker on approve path).
 
-**Success:** Approved events on official campaign calendar with audit trail.
+**Delivered**
+
+| Area | Path / route | State |
+|------|--------------|-------|
+| Write trace doc | `SPRINT5_GOOGLE_WRITE_TRACE.md` | ✅ |
+| Promotion workflow docs | `GOOGLE_CALENDAR_PROMOTION_WORKFLOW.md`, `TENTATIVE_OFFICIAL_PROMOTION_RULES.md`, `GOOGLE_PROMOTION_SAFETY.md` | ✅ |
+| Lane model + meta | `calendar-promotion/promotion-meta.ts`, `promotion-types.ts` | ✅ factCard `_calendarPromotion` |
+| Readiness checker | `promotion-readiness.ts` | ✅ READY / WARNING / BLOCKED |
+| Payload preview | `build-google-payload.ts` + workbench UI | ✅ |
+| Safe write | `promote-ledger-event.ts` + `GOOGLE_CALENDAR_WRITE_ENABLED` | ✅ gated |
+| Workbench | `/admin/campaign-events/calendar-promotion` | ✅ |
+| Audit + observations | `promotion-audit.ts`, `record-promotion-observation.ts` | ✅ |
+| AI toolchain (15 tools) | `sprint5-promotion-tools.ts`, AI tab Sprint 5 | ✅ |
+| Dashboard visibility | candidate + CM promotion stat cards | ✅ |
+
+**Commands:** `npm run campaign-events:test-calendar-promotion -- --dry-run`
+
+**Live writes:** Set `GOOGLE_CALENDAR_WRITE_ENABLED=true` and healthy Kelly tentative/official `CalendarSource` OAuth. Use staging calendars first.
+
+**Not built (by design):** background promotion, autonomous AI writes, reply-by-email promote, tentative→official dedupe on Google.
+
+**Success:** Operator reviews readiness + payload, explicitly promotes to tentative or official, audit + sync surfaces update, failures retry safely.
 
 ---
 

@@ -7,6 +7,7 @@ import {
   mapTokenLinksForPayload,
 } from "@/lib/campaign-events/approval-email/load-approval-email-context";
 import { loadAiObservationsForRecord } from "@/lib/campaign-events/ai-tools/observations-persist";
+import { parsePromotionAuditLog } from "@/lib/campaign-events/calendar-promotion/promotion-audit";
 import { loadCalendarEventDrilldown, serializeCalendarRows } from "@/lib/campaign-events/load-campaign-calendar-events";
 import { loadEventMediaBundle } from "@/lib/campaign-events/media/media-storage";
 
@@ -31,11 +32,13 @@ export default async function CampaignEventDrilldownPage({
     loadAiObservationsForRecord(recordId),
   ]);
   const approvalPackage = buildApprovalPackageWithLogs(row, emailCtx.logs, mapTokenLinksForPayload(emailCtx));
+  const promotionAudit = parsePromotionAuditLog(loaded.record.factCard);
   return (
     <EventDrilldownClient
       row={row}
       approvalPackage={approvalPackage}
       approvalObservations={observations}
+      promotionAuditEntries={promotionAudit}
       mediaItems={mediaBundle.items}
       mediaByUploader={mediaBundle.byUploader}
       hotWashNotes={hotWashNotes}

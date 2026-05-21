@@ -41,6 +41,7 @@ export function CampaignEventsNav() {
     ["Month readiness", `${campaignEventsBasePath}/month-readiness?month=2026-04`],
     ["Month review", `${campaignEventsBasePath}/review?month=2026-03&mode=chronological`],
     ["Calendar sync", `${campaignEventsBasePath}/calendar-sync`],
+    ["Calendar promotion", `${campaignEventsBasePath}/calendar-promotion`],
     ["Workbench", `${campaignEventsBasePath}/workbench`],
     ["March 2026 ledger", `${campaignEventsBasePath}/march-2026`],
     ["Travel ledger (mileage)", "/admin/travel-ledger"],

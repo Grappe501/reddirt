@@ -67,6 +67,10 @@ export type CampaignEventsDashboardSnapshot = {
   duplicateRiskCount: number;
   intakeConflictCount: number;
   needsIntakeReviewCount: number;
+  promotionReadyTentative: number;
+  promotionReadyOfficial: number;
+  promotionFailed: number;
+  promotionBlocked: number;
   calendarSync?: Awaited<ReturnType<typeof summarizeCalendarSyncForPeriod>>;
 };
 
@@ -120,6 +124,10 @@ export function buildCampaignEventsDashboardSnapshot(
   let duplicateRiskCount = 0;
   let intakeConflictCount = 0;
   let needsIntakeReviewCount = 0;
+  let promotionReadyTentative = 0;
+  let promotionReadyOfficial = 0;
+  let promotionFailed = 0;
+  let promotionBlocked = 0;
 
   const approvalInbox: ApprovalInboxItem[] = [];
 
@@ -156,6 +164,11 @@ export function buildCampaignEventsDashboardSnapshot(
       if (row.intakeScheduleConflict) intakeConflictCount++;
       if (row.intakeNeedsReview) needsIntakeReviewCount++;
     }
+
+    if (row.promotionStatus === "READY_FOR_TENTATIVE_PROMOTION") promotionReadyTentative++;
+    if (row.promotionStatus === "READY_FOR_OFFICIAL_PROMOTION") promotionReadyOfficial++;
+    if (row.promotionStatus === "PROMOTION_FAILED") promotionFailed++;
+    if (row.promotionStatus === "PROMOTION_BLOCKED" || row.promotionStatus === "PROMOTION_CONFLICT") promotionBlocked++;
 
     if (isPendingApproval(row) || row.rawEventStatus === "TENTATIVE") {
       const lastLog = row.approvalEmailLastLog;
@@ -225,6 +238,10 @@ export function buildCampaignEventsDashboardSnapshot(
     duplicateRiskCount,
     intakeConflictCount,
     needsIntakeReviewCount,
+    promotionReadyTentative,
+    promotionReadyOfficial,
+    promotionFailed,
+    promotionBlocked,
   };
 }
 

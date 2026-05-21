@@ -14,7 +14,16 @@ export type ApprovalObservationEvent =
   | "ai_summary_accepted"
   | "ai_summary_edited"
   | "operator_overrode_recommendation"
-  | "ai_tool_invoked";
+  | "ai_tool_invoked"
+  | "promotion_attempted"
+  | "promotion_blocked"
+  | "promotion_succeeded"
+  | "promotion_failed"
+  | "payload_edited"
+  | "operator_overrode_warning"
+  | "duplicate_detected"
+  | "tentative_promoted"
+  | "official_promoted";
 
 export type AiObservationEntry = {
   id: string;

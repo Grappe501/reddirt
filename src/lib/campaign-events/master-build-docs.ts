@@ -9,6 +9,8 @@ export const CAMPAIGN_OS_MASTER_BUILD_DOCS = [
   { id: "sprint-status", label: "Build sprint status", file: "BUILD_SPRINT_STATUS.md" },
   { id: "ai-map", label: "AI agent tool build map", file: "AI_AGENT_TOOL_BUILD_MAP.md" },
   { id: "sprint4-ai", label: "Sprint 4 AI toolchain", file: "SPRINT4_AI_TOOLCHAIN.md" },
+  { id: "sprint5-ai", label: "Sprint 5 GCal promotion", file: "SPRINT5_AI_TOOLCHAIN.md" },
+  { id: "sprint5-promo", label: "GCal promotion workflow", file: "GOOGLE_CALENDAR_PROMOTION_WORKFLOW.md" },
   { id: "deps", label: "System dependency graph", file: "SYSTEM_DEPENDENCY_GRAPH.md" },
 ] as const;
 

@@ -24,12 +24,20 @@ export default async function CampaignEventsCalendarSyncPage({ searchParams }: P
         title="Calendar sync dashboard"
         description="Read-only inventory of Google Calendar connection, normalized JSON freshness, and per-ledger-row sync truth. No Google writes from this page."
         actions={
-          <Link
-            href={`/admin/campaign-events/workbench?month=${month}`}
-            className="inline-flex rounded-full bg-kelly-navy px-4 py-2 font-body text-sm font-bold text-white"
-          >
-            Workbench ({month})
-          </Link>
+          <>
+            <Link
+              href={`/admin/campaign-events/calendar-promotion?month=${month}`}
+              className="inline-flex rounded-full border border-kelly-navy/30 px-4 py-2 font-body text-sm font-bold text-kelly-navy"
+            >
+              Promotion workbench
+            </Link>
+            <Link
+              href={`/admin/campaign-events/workbench?month=${month}`}
+              className="inline-flex rounded-full bg-kelly-navy px-4 py-2 font-body text-sm font-bold text-white"
+            >
+              Workbench ({month})
+            </Link>
+          </>
         }
       />
       <CampaignEventsNav />

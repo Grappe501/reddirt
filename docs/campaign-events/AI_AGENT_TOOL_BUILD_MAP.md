@@ -116,14 +116,29 @@ Legacy catalog ids (`appr-package-build`, `appr-email-send`) remain; Sprint 4 id
 
 ---
 
-### Sprint 5 — Official GCal promote
+### Sprint 5 — Controlled GCal promotion (canonical V1 ids)
 
-| Planned agent | Catalog id | Status | Build action |
-|---------------|------------|--------|--------------|
-| Promotion eligibility checker | `appr-promote-official` | idea | Pre-flight blockers list |
-| Google Calendar payload builder | `intake-gcal-read` | partial | Outbound payload builder (no auto POST) |
-| Conflict-before-promote checker | `conf-schedule` | functional | Run before promote confirm modal |
-| Calendar write audit agent | *(new)* `gcal-write-audit` | idea | Log to `EventSyncLog` / factCard |
+| Tool id | Status | Helper / route |
+|---------|--------|----------------|
+| `promotion-readiness-checker` | functional | `promotion-readiness.ts` |
+| `tentative-calendar-router` | functional | Kelly tentative source |
+| `official-calendar-router` | functional | Kelly confirmed source |
+| `promotion-conflict-scanner` | partial | readiness + row conflicts |
+| `google-payload-builder` | functional | `build-google-payload.ts` |
+| `google-write-guard` | functional | `promotion-config.ts` |
+| `promotion-audit-logger` | functional | `_calendarPromotionLog` |
+| `promotion-risk-summary-writer` | partial | `sprint5-tool-helpers.ts` |
+| `promotion-retry-handler` | partial | promote + workbench retry |
+| `promotion-human-review-gate` | functional | workbench Promote buttons |
+| `duplicate-google-event-detector` | partial | heuristics v1 |
+| `calendar-lane-health-checker` | functional | OAuth + source readiness |
+| `promotion-observation-recorder` | functional | `_aiObservations` |
+| `official-calendar-safety-blocker` | functional | blocks unhealthy official writes |
+| `google-write-status-summarizer` | partial | dashboards + workbench |
+
+**Ops:** `npm run campaign-events:test-calendar-promotion -- --dry-run` · Docs: `SPRINT5_AI_TOOLCHAIN.md`, `SPRINT5_GOOGLE_WRITE_TRACE.md`
+
+Legacy catalog `appr-promote-official` remains idea — use Sprint 5 ids above for automation.
 
 ---
 

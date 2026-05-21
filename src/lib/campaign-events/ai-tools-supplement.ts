@@ -3,6 +3,7 @@
  */
 import type { AiToolEntry, AiToolLifecycle } from "./ai-tools-master-catalog";
 import { SPRINT4_APPROVAL_EMAIL_CATALOG_ENTRIES } from "./ai-tools/sprint4-approval-email-tools";
+import { SPRINT5_PROMOTION_CATALOG_ENTRIES } from "../calendar-promotion/sprint5-promotion-tools";
 
 const S = (s: AiToolEntry["status"]) => s;
 
@@ -107,6 +108,7 @@ export const SUPPLEMENT_TOOLS_BY_LIFECYCLE: Record<string, AiToolEntry[]> = {
     t("saas_client_dashboard", { id: "saas-planner-scaffold", name: "Franklin planner scaffolding", purpose: "Day/agenda planner notes panel.", status: S("scaffolded"), priority: "P2", trigger: "Calendar day/agenda", reads: "day events", writes: "localStorage", humanApprovalRequired: false, guardrails: "Client-only notes", futureRoute: "FranklinPlannerScaffold" }),
   ],
   sprint4_approval_email: SPRINT4_APPROVAL_EMAIL_CATALOG_ENTRIES,
+  sprint5_calendar_promotion: SPRINT5_PROMOTION_CATALOG_ENTRIES,
 };
 
 const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
@@ -115,6 +117,12 @@ const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
     order: 25,
     title: "Sprint 4 — Approval email toolchain",
     tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.sprint4_approval_email ?? [],
+  },
+  {
+    id: "sprint5_calendar_promotion",
+    order: 26,
+    title: "Sprint 5 — Google Calendar promotion",
+    tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.sprint5_calendar_promotion ?? [],
   },
 ];
 

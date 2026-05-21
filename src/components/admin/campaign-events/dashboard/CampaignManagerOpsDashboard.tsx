@@ -73,6 +73,30 @@ export function CampaignManagerOpsDashboard({
       </DashboardSection>
       ) : null}
 
+      <DashboardSection title="Calendar promotion queue">
+        <DashboardStatGrid>
+          <StatCard
+            label="Ready tentative"
+            value={snapshot.promotionReadyTentative}
+            href={`/admin/campaign-events/calendar-promotion?month=${period}`}
+          />
+          <StatCard
+            label="Ready official"
+            value={snapshot.promotionReadyOfficial}
+            href={`/admin/campaign-events/calendar-promotion?month=${period}`}
+          />
+          <StatCard label="Failed" value={snapshot.promotionFailed} href={`/admin/campaign-events/calendar-promotion?month=${period}`} />
+          <StatCard
+            label="Blocked / conflict"
+            value={snapshot.promotionBlocked}
+            href={`/admin/campaign-events/calendar-promotion?month=${period}`}
+          />
+        </DashboardStatGrid>
+        <Link href={`/admin/campaign-events/calendar-promotion?month=${period}`} className="mt-2 inline-block text-sm font-bold text-kelly-navy underline">
+          Open promotion workbench
+        </Link>
+      </DashboardSection>
+
       <DashboardSection title="Event operations command center">
         <div className="flex flex-wrap gap-2 font-body text-sm">
           <Link href="/admin/campaign-events/workbench" className="rounded-full bg-kelly-navy px-4 py-2 font-bold text-white">

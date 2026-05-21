@@ -6,11 +6,13 @@ import { useRouter, useSearchParams } from "next/navigation";
 import {
   buildCommandCenterSnapshot,
   getSprint4Contract,
+  getSprintLifecycleContract,
   getToolById,
   supplementToolCount,
   type CommandCenterSnapshot,
 } from "@/lib/campaign-events/ai-tools-command-center";
 import { Sprint4ApprovalToolchainSection } from "@/components/admin/campaign-events/Sprint4ApprovalToolchainSection";
+import { Sprint5CalendarPromotionSection } from "@/components/admin/campaign-events/Sprint5CalendarPromotionSection";
 import { AI_AGENT_RUNBOOK } from "@/lib/campaign-events/ai-agent-runbook";
 import type { AiToolStatus } from "@/lib/campaign-events/ai-tools-master-catalog";
 import type { EnrichedAiTool } from "@/lib/campaign-events/ai-tools-operational-meta";
@@ -23,7 +25,7 @@ const STATUS_STYLE: Record<AiToolStatus, string> = {
   functional: "bg-emerald-50 text-emerald-900",
 };
 
-type TabId = "dashboard" | "sprint4" | "runbook" | "matrix" | "catalog";
+type TabId = "dashboard" | "sprint4" | "sprint5" | "runbook" | "matrix" | "catalog";
 
 function ProgressBar({ label, value, max = 100 }: { label: string; value: number; max?: number }) {
   const pct = Math.min(100, Math.round((value / max) * 100));
@@ -72,7 +74,7 @@ function ToolDetailDrawer({
   onClose,
 }: {
   tool: EnrichedAiTool;
-  contract?: ReturnType<typeof getSprint4Contract>;
+  contract?: ReturnType<typeof getSprintLifecycleContract>;
   onClose: () => void;
 }) {
   return (
@@ -533,6 +535,7 @@ export function AiToolsCommandCenter() {
   const tabs: { id: TabId; label: string }[] = [
     { id: "dashboard", label: "Command center" },
     { id: "sprint4", label: "Sprint 4 email" },
+    { id: "sprint5", label: "Sprint 5 GCal" },
     { id: "runbook", label: "Agent runbook" },
     { id: "matrix", label: "Capability matrix" },
     { id: "catalog", label: "Full catalog" },
@@ -579,12 +582,13 @@ export function AiToolsCommandCenter() {
 
       {tab === "dashboard" && <DashboardTab snap={snap} onSelect={openTool} />}
       {tab === "sprint4" && <Sprint4ApprovalToolchainSection snap={snap} onSelect={openTool} />}
+      {tab === "sprint5" && <Sprint5CalendarPromotionSection snap={snap} onSelect={openTool} />}
       {tab === "runbook" && <RunbookTab onSelect={openTool} />}
       {tab === "matrix" && <CapabilityMatrix tools={snap.tools} onSelect={openTool} />}
       {tab === "catalog" && <CatalogTab snap={snap} onSelect={openTool} />}
 
       {selectedTool ? (
-        <ToolDetailDrawer tool={selectedTool} contract={getSprint4Contract(snap, selectedTool.id)} onClose={closeTool} />
+        <ToolDetailDrawer tool={selectedTool} contract={getSprintLifecycleContract(snap, selectedTool.id)} onClose={closeTool} />
       ) : null}
     </div>
   );
