@@ -9,6 +9,18 @@ import type { ApprovalTimelineEntry } from "./approval-timeline";
 import type { EventCommunicationEntry } from "./event-communication";
 import { resolveCalendarLanes, type CalendarLaneResolution } from "./calendar-lane";
 import { parseIntakeMetaFromFactCard } from "./intake/intake-meta";
+import {
+  buildCalendarSyncContext,
+  lookupGoogleRecordForLedger,
+  resolveLedgerCalendarSync,
+  type CalendarSyncContext,
+} from "./calendar-sync/resolve-ledger-calendar-sync";
+import {
+  TRUTH_STATUS_LABELS,
+  TRUTH_STATUS_TONE,
+  type LedgerCalendarTruthStatus,
+} from "./calendar-sync/calendar-sync-truth-types";
+import type { LedgerCalendarSyncMeta } from "./calendar-sync/calendar-sync-meta";
 import { decisionLabel } from "./review-meta";
 import { resolveDefaultTravelOrigin } from "./travel-origin";
 import type { CampaignEventLedgerRow } from "./types";
@@ -53,7 +65,14 @@ export type WorkbenchEventRow = PersistedMarchEventRow & {
   intakeScheduleConflict: boolean;
   intakeSummary: string | null;
   intakeRecommendedAction: string | null;
+  calendarTruthStatus: LedgerCalendarTruthStatus;
+  calendarTruthLabel: string;
+  calendarTruthTone: "neutral" | "amber" | "green" | "red" | "navy" | "slate";
+  calendarSync: LedgerCalendarSyncMeta;
+  calendarWriteDisabled: boolean;
 };
+
+export { buildCalendarSyncContext, type CalendarSyncContext };
 
 const TZ = "America/Chicago";
 
@@ -68,6 +87,7 @@ export function mergePersistedMarchRow(
   record: CampaignEventLedgerRecord,
   calendar: CampaignCalendarItem,
   allCalendar: CampaignCalendarItem[],
+  syncCtx?: CalendarSyncContext,
 ): WorkbenchEventRow {
   const base = buildCampaignEventLedgerRow(calendar, allCalendar);
   const envelope = parseFactCardEnvelope(record.factCard);
@@ -105,6 +125,45 @@ export function mergePersistedMarchRow(
   const workHours = base.workHours;
   const intakeConflict = intakeMeta?.scheduleConflict ?? false;
   const intakeDuplicate = intakeMeta?.duplicateRisk ?? false;
+
+  const googleRecord = syncCtx ? lookupGoogleRecordForLedger(record, calendar, syncCtx) : null;
+  const syncResolution = syncCtx
+    ? resolveLedgerCalendarSync({
+        record,
+        calendar,
+        googleRecord,
+        jsonFreshness: syncCtx.jsonFreshness,
+      })
+    : {
+        version: 1 as const,
+        truthStatus: "NOT_LINKED" as LedgerCalendarTruthStatus,
+        matchedBy: "none" as const,
+        googleEventId: record.googleEventId,
+        googleCalendarId: null,
+        googleEventUrl: record.googleEventUrl,
+        sourceCalendarName: record.sourceCalendarName,
+        prismaGoogleSyncStatus: record.googleSyncStatus,
+        lastGoogleSeenAt: null,
+        lastLedgerUpdatedAt: record.updatedAt.toISOString(),
+        normalizedJsonSourceAt: null,
+        syncWarning: null,
+        syncError: null,
+        writeEnabled: false as const,
+        computedAt: new Date().toISOString(),
+        match: {
+          matchedBy: "none" as const,
+          googleEventId: record.googleEventId,
+          googleCalendarId: null,
+          googleEventUrl: record.googleEventUrl,
+          lastGoogleSeenAt: null,
+          syncWarning: null,
+          syncError: null,
+          titleMismatch: false,
+          startMismatch: false,
+        },
+        badgeLabel: "not linked",
+        showWriteDisabled: true,
+      };
 
   return {
     ...base,
@@ -148,5 +207,10 @@ export function mergePersistedMarchRow(
     intakeScheduleConflict: intakeConflict,
     intakeSummary: intakeMeta?.intakeSummary ?? null,
     intakeRecommendedAction: intakeMeta?.recommendedNextAction ?? null,
+    calendarTruthStatus: syncResolution.truthStatus,
+    calendarTruthLabel: TRUTH_STATUS_LABELS[syncResolution.truthStatus],
+    calendarTruthTone: TRUTH_STATUS_TONE[syncResolution.truthStatus],
+    calendarSync: syncResolution,
+    calendarWriteDisabled: syncResolution.showWriteDisabled,
   };
 }

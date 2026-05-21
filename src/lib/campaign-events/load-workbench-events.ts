@@ -1,6 +1,6 @@
 import { MARCH_2026_LEDGER_PERIOD } from "./constants";
 import { loadNormalizedCalendarItems } from "./load-march-events";
-import { mergePersistedMarchRow, type WorkbenchEventRow } from "./merge-persisted-row";
+import { buildCalendarSyncContext, mergePersistedMarchRow, type WorkbenchEventRow } from "./merge-persisted-row";
 import { ensureCampaignEventRecordsForPeriod, listCampaignEventRecordsByPeriod } from "./persistence/records";
 import { buildWebsiteIntakeCalendarItem } from "./intake/website-intake-calendar";
 
@@ -15,6 +15,7 @@ export type WorkbenchLoadResult = {
   period: string;
   rows: WorkbenchEventRow[];
   seed: { scanned: number; created: number; updated: number };
+  jsonFreshness: import("./calendar-sync/normalized-json-freshness").NormalizedJsonFreshness;
 };
 
 export async function loadCampaignEventsWorkbench(
@@ -35,16 +36,17 @@ export async function loadCampaignEventsWorkbench(
     }
   }
   const allForPeers = [...all, ...syntheticById.values()];
+  const syncCtx = await buildCalendarSyncContext(period);
 
   const rows: WorkbenchEventRow[] = [];
   for (const record of records) {
     const calendar = calendarById.get(record.calendarSourceId) ?? syntheticById.get(record.calendarSourceId);
     if (!calendar) continue;
-    rows.push(mergePersistedMarchRow(record, calendar, allForPeers));
+    rows.push(mergePersistedMarchRow(record, calendar, allForPeers, syncCtx));
   }
 
   rows.sort((a, b) => a.startAtMs - b.startAtMs || a.calendar.title.localeCompare(b.calendar.title));
-  return { period, rows, seed };
+  return { period, rows, seed, jsonFreshness: syncCtx.jsonFreshness };
 }
 
 export function serializeWorkbenchRows(rows: WorkbenchEventRow[]): WorkbenchEventRow[] {

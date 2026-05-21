@@ -74,11 +74,17 @@ Tools below are **named in the master build plan**. Map to catalog `id` for impl
 
 | Planned agent | Catalog id | Status | Build action |
 |---------------|------------|--------|--------------|
-| Calendar freshness monitor | `intake-gcal-read` | partial | Add `googleLastSyncedAt` stale thresholds |
-| Duplicate calendar detector | `intake-dedupe` | partial | Compare GCal id + ledger `calendarSourceId` |
-| Tentative/official lane advisor | `appr-promote-official` | idea | Deterministic lane advisor (no write) |
-| Conflict detector | `conf-schedule`, `conf-work-hours` | functional | Feed sync preview |
-| Sync risk checker | *(new)* `gcal-sync-risk` | idea | Catalog entry + read-only report |
+| GCal read status checker | `gcal-read-status-checker` | **functional** | `resolve-ledger-calendar-sync.ts` |
+| GCal ledger match assistant | `gcal-ledger-match-assistant` | **functional** | `match-calendar-truth-to-ledger.ts` |
+| Normalized JSON freshness monitor | `normalized-json-freshness-monitor` | **functional** | `normalized-json-freshness.ts` |
+| Website-only event router | `website-only-event-router` | **functional** | truth `WEBSITE_ENTRY_ONLY` |
+| Imported-only event router | `imported-only-event-router` | **functional** | truth `IMPORTED_FROM_NORMALIZED_JSON` |
+| Stale calendar warning agent | `stale-calendar-warning-agent` | **functional** | workbench banner + dashboard |
+| Tentative calendar readiness | `tentative-calendar-readiness-checker` | **partial** | lane + truth status |
+| Official calendar readiness | `official-calendar-readiness-checker` | **partial** | lane + truth status |
+| Calendar sync command advisor | `calendar-sync-command-advisor` | **functional** | calendar-sync dashboard CLI block |
+| Conflict detector | `conf-schedule`, `conf-work-hours` | functional | GCal title/date conflict |
+| Calendar freshness monitor | `intake-gcal-read` | partial | Extended via truth layer |
 
 ---
 

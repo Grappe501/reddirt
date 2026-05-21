@@ -11,6 +11,7 @@ import {
   type WorkbenchFilters,
   type WorkbenchSortKey,
 } from "@/lib/campaign-events/workbench-query";
+import { LEDGER_CALENDAR_TRUTH_STATUSES, TRUTH_STATUS_LABELS } from "@/lib/campaign-events/calendar-sync/calendar-sync-truth-types";
 import { EventReviewModal } from "./EventReviewModal";
 import { ApprovalPackageScaffold } from "./ApprovalPackageScaffold";
 import Link from "next/link";
@@ -25,7 +26,7 @@ function formatTs(iso: string | null): string {
   }
 }
 
-function Badge({ children, tone = "neutral" }: { children: React.ReactNode; tone?: "neutral" | "amber" | "green" | "red" | "navy" }) {
+function Badge({ children, tone = "neutral" }: { children: React.ReactNode; tone?: "neutral" | "amber" | "green" | "red" | "navy" | "slate" }) {
   const cls =
     tone === "navy"
       ? "border-kelly-navy/25 bg-kelly-navy/10 text-kelly-navy"
@@ -35,20 +36,30 @@ function Badge({ children, tone = "neutral" }: { children: React.ReactNode; tone
           ? "border-emerald-700/25 bg-emerald-50 text-emerald-900"
           : tone === "red"
             ? "border-red-800/25 bg-red-50 text-red-900"
-            : "border-kelly-text/10 bg-kelly-wash text-kelly-text/70";
+            : tone === "slate"
+              ? "border-kelly-text/15 bg-kelly-wash text-kelly-text/60"
+              : "border-kelly-text/10 bg-kelly-wash text-kelly-text/70";
   return <span className={`whitespace-nowrap rounded-full border px-2 py-0.5 font-body text-[10px] font-bold uppercase tracking-wide ${cls}`}>{children}</span>;
 }
 
 export function CampaignEventsWorkbench({
   initialRows,
   period,
+  initialSyncFilter,
 }: {
   initialRows: WorkbenchEventRow[];
   period: string;
+  initialSyncFilter?: string;
 }) {
   const router = useRouter();
   const [rows, setRows] = useState(initialRows);
-  const [filters, setFilters] = useState<WorkbenchFilters>(DEFAULT_WORKBENCH_FILTERS);
+  const [filters, setFilters] = useState<WorkbenchFilters>(() => ({
+    ...DEFAULT_WORKBENCH_FILTERS,
+    calendarTruthStatus:
+      initialSyncFilter && LEDGER_CALENDAR_TRUTH_STATUSES.includes(initialSyncFilter as (typeof LEDGER_CALENDAR_TRUTH_STATUSES)[number])
+        ? initialSyncFilter
+        : "",
+  }));
   const [sortKey, setSortKey] = useState<WorkbenchSortKey>("date_asc");
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [reviewRecordId, setReviewRecordId] = useState<string | null>(null);
@@ -103,6 +114,12 @@ export function CampaignEventsWorkbench({
           <p className="font-heading text-2xl font-bold text-kelly-navy">{selectedIds.size} selected</p>
         </div>
         <div className="mt-4 flex flex-wrap gap-2">
+          <Link
+            href={`/admin/campaign-events/calendar-sync?month=${period}`}
+            className="rounded-full border border-kelly-navy/30 px-4 py-2 font-body text-xs font-bold text-kelly-navy"
+          >
+            Calendar sync truth
+          </Link>
           <Link
             href={`/admin/campaign-events/review?month=${period}&mode=chronological`}
             className="rounded-full bg-kelly-navy px-4 py-2 font-body text-xs font-bold text-white"
@@ -188,6 +205,25 @@ export function CampaignEventsWorkbench({
           <Toggle label="Needs intake review" checked={filters.needsIntakeReviewOnly} onChange={(v) => patchFilter("needsIntakeReviewOnly", v)} />
           <Toggle label="Duplicate risk" checked={filters.duplicateRiskOnly} onChange={(v) => patchFilter("duplicateRiskOnly", v)} />
           <Toggle label="Intake conflict" checked={filters.intakeConflictOnly} onChange={(v) => patchFilter("intakeConflictOnly", v)} />
+          <Toggle label="Google matched" checked={filters.googleMatchedOnly} onChange={(v) => patchFilter("googleMatchedOnly", v)} />
+          <Toggle label="Imported JSON only" checked={filters.importedJsonOnly} onChange={(v) => patchFilter("importedJsonOnly", v)} />
+          <Toggle label="Stale calendar" checked={filters.staleCalendarOnly} onChange={(v) => patchFilter("staleCalendarOnly", v)} />
+          <Toggle label="Not linked" checked={filters.notLinkedOnly} onChange={(v) => patchFilter("notLinkedOnly", v)} />
+          <label className="grid gap-1 font-body text-xs">
+            Sync truth
+            <select
+              className="rounded-lg border border-kelly-text/15 px-2 py-1.5"
+              value={filters.calendarTruthStatus}
+              onChange={(e) => patchFilter("calendarTruthStatus", e.target.value)}
+            >
+              <option value="">All</option>
+              {LEDGER_CALENDAR_TRUTH_STATUSES.map((s) => (
+                <option key={s} value={s}>
+                  {TRUTH_STATUS_LABELS[s]}
+                </option>
+              ))}
+            </select>
+          </label>
           <button type="button" className="font-bold text-kelly-navy underline" onClick={() => setFilters(DEFAULT_WORKBENCH_FILTERS)}>
             Clear filters
           </button>
@@ -270,6 +306,8 @@ export function CampaignEventsWorkbench({
                     {row.duplicateRisk ? <Badge tone="red">Dup risk</Badge> : null}
                     {row.hasWorkHoursWarning ? <Badge tone="amber">Work</Badge> : null}
                     {row.hasConflictWarning ? <Badge tone="red">Conflict</Badge> : null}
+                    <Badge tone={row.calendarTruthTone}>{row.calendarTruthLabel}</Badge>
+                    {row.calendarWriteDisabled ? <Badge tone="slate">Write off</Badge> : null}
                   </div>
                 </td>
                 <td className="max-w-[140px] truncate px-2 py-2 text-xs" title={row.travelLine}>

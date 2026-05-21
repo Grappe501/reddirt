@@ -1,6 +1,7 @@
 import { formatInTimeZone } from "date-fns-tz";
 import { MARCH_2026_LEDGER_PERIOD } from "./constants";
 import { loadCampaignEventsWorkbench } from "./load-workbench-events";
+import { summarizeCalendarSyncForPeriod } from "./calendar-sync/load-calendar-sync-dashboard";
 import type { WorkbenchEventRow } from "./merge-persisted-row";
 import { buildTravelLines, computeTravelTotals } from "./travel-report/travel-report-logic";
 import type { TravelReportTotals } from "./travel-report/travel-report-types";
@@ -60,6 +61,7 @@ export type CampaignEventsDashboardSnapshot = {
   duplicateRiskCount: number;
   intakeConflictCount: number;
   needsIntakeReviewCount: number;
+  calendarSync?: Awaited<ReturnType<typeof summarizeCalendarSyncForPeriod>>;
 };
 
 function todayYmdChicago(): string {
@@ -216,6 +218,7 @@ export function buildCampaignEventsDashboardSnapshot(
 
 export async function loadCampaignEventsDashboard(period: string = MARCH_2026_LEDGER_PERIOD) {
   const { rows, period: loadedPeriod } = await loadCampaignEventsWorkbench({ period });
-  const snapshot = buildCampaignEventsDashboardSnapshot(rows, loadedPeriod);
+  const calendarSync = await summarizeCalendarSyncForPeriod(loadedPeriod);
+  const snapshot = { ...buildCampaignEventsDashboardSnapshot(rows, loadedPeriod), calendarSync };
   return { snapshot, rows };
 }

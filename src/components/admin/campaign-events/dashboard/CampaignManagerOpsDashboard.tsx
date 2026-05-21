@@ -45,6 +45,34 @@ export function CampaignManagerOpsDashboard({
 
       <ReimbursementMonthCards title="Travel reimbursement workflow" summaries={reimbursementSummaries} />
 
+      {snapshot.calendarSync ? (
+      <DashboardSection title="Calendar sync (read-only)">
+        <DashboardStatGrid>
+          <StatCard
+            label="Sync dashboard"
+            value={snapshot.calendarSync.googleMatched + snapshot.calendarSync.importedOnly}
+            href={`/admin/campaign-events/calendar-sync?month=${period}`}
+            hint="Matched + imported JSON"
+          />
+          <StatCard label="Stale rows" value={snapshot.calendarSync.stale} href={`/admin/campaign-events/calendar-sync?month=${period}`} />
+          <StatCard
+            label="GCal conflicts"
+            value={snapshot.calendarSync.conflicts}
+            href={`/admin/campaign-events/workbench?month=${period}&sync=GOOGLE_READ_CONFLICT`}
+          />
+          <StatCard
+            label="OAuth ready"
+            value={snapshot.calendarSync.googleConfigured ? 1 : 0}
+            href="/admin/calendar-command-center/google-setup"
+            hint={snapshot.calendarSync.googleConfigured ? "Configured" : "Not configured"}
+          />
+        </DashboardStatGrid>
+        {snapshot.calendarSync.jsonStale ? (
+          <p className="mt-2 font-body text-xs text-amber-900">Normalized JSON may be stale — see calendar sync dashboard for refresh commands.</p>
+        ) : null}
+      </DashboardSection>
+      ) : null}
+
       <DashboardSection title="Event operations command center">
         <div className="flex flex-wrap gap-2 font-body text-sm">
           <Link href="/admin/campaign-events/workbench" className="rounded-full bg-kelly-navy px-4 py-2 font-bold text-white">

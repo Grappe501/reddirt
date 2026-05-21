@@ -12,9 +12,9 @@ export const CAMPAIGN_OS_MASTER_BUILD_DOCS = [
 ] as const;
 
 export const CAMPAIGN_OS_CURRENT_SPRINT = {
-  number: 2,
-  name: "Website intake → ledger bridge",
-  statusDoc: "BUILD_SPRINT_STATUS.md#sprint-2--website-intake--ledger-bridge",
+  number: 3,
+  name: "Google Calendar truth layer",
+  statusDoc: "BUILD_SPRINT_STATUS.md#sprint-3--google-calendar-truth-layer",
 } as const;
 
 export function masterBuildDocPath(file: string): string {

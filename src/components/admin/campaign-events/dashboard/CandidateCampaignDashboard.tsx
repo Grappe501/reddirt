@@ -28,6 +28,34 @@ export function CandidateCampaignDashboard({
 
       <ReimbursementMonthCards title="Travel reimbursement (March · April · May MTD)" summaries={reimbursementSummaries} />
 
+      {snapshot.calendarSync ? (
+      <DashboardSection title="Calendar sync truth">
+        <DashboardStatGrid>
+          <StatCard
+            label="Google matched"
+            value={snapshot.calendarSync.googleMatched}
+            href={`/admin/campaign-events/calendar-sync?month=${period}`}
+          />
+          <StatCard
+            label="Imported JSON only"
+            value={snapshot.calendarSync.importedOnly}
+            href={`/admin/campaign-events/workbench?month=${period}&sync=IMPORTED_FROM_NORMALIZED_JSON`}
+          />
+          <StatCard
+            label="Stale / conflict"
+            value={snapshot.calendarSync.stale + snapshot.calendarSync.conflicts}
+            href={`/admin/campaign-events/calendar-sync?month=${period}`}
+            hint={snapshot.calendarSync.jsonStale ? "Normalized JSON stale" : undefined}
+          />
+          <StatCard
+            label="Not linked"
+            value={snapshot.calendarSync.notLinked}
+            href={`/admin/campaign-events/workbench?month=${period}&sync=NOT_LINKED`}
+          />
+        </DashboardStatGrid>
+      </DashboardSection>
+      ) : null}
+
       <div className="flex flex-wrap gap-2 font-body text-sm">
         <Link
           href={`/admin/campaign-events/month-readiness?month=${period}`}

@@ -15,7 +15,7 @@ This is the **live control board**. Update at the end of every sprint slice.
 | 0 | Master system map | **Complete** | N/A | N/A |
 | 1 | Reimbursement go-live | **Complete** | ~92% | ~72% |
 | 2 | Intake → ledger bridge | **Complete** | ~85% | ~70% |
-| 3 | Google Calendar truth | Partial (read/scaffold) | ~40% | ~25% |
+| 3 | Google Calendar truth | **Complete** | ~80% | ~55% |
 | 4 | Approval package email | Scaffold only | ~30% | ~10% |
 | 5 | Official GCal promote | Blocked | — | — |
 | 6 | Event planning drilldown | Partial | ~50% | ~35% |
@@ -107,19 +107,22 @@ This is the **live control board**. Update at the end of every sprint slice.
 
 ## Sprint 3 — Google Calendar truth layer
 
-**Problem:** Event OS still depends heavily on normalized JSON seed; GCal not fully ledger-integrated.
+**Status:** **Complete** (May 2026 pass).
 
-**Build**
+**Delivered**
 
-- Live/scheduled read → ledger upsert
-- Per-event `googleSyncStatus`, stale warning
-- Tentative + official calendar ID fields populated when known
-- Manual “Sync now” (admin)
-- **No** automatic write without human approval
+- Ledger calendar truth model + `matchCalendarTruthToLedger`
+- `/admin/campaign-events/calendar-sync` operator dashboard
+- Normalized JSON freshness (mtime, months, stale warnings)
+- Workbench / drilldown / campaign calendar alerts + sync filters
+- Candidate + CM dashboard sync summary cards
+- CLI instructions (read-only): `calendar:google:sync-kelly`, `campaign-events:seed-month`
+- `npm run campaign-events:verify-calendar-sync`
+- Docs: `SPRINT3_GOOGLE_CALENDAR_TRACE.md`, `GOOGLE_CALENDAR_TRUTH_LAYER.md`, `CALENDAR_SYNC_OPERATOR_GUIDE.md`, `TENTATIVE_OFFICIAL_CALENDAR_READINESS.md`
 
-**Existing:** `GoogleCalendarEventRecord`, `/api/calendar/google/*`, `intake-gcal-read` tool (partial).
+**Not built:** Google write/promote from ledger UI, server-side auto-sync button, auto ledger upsert from GCal ingest.
 
-**Success:** Campaign Event OS not dependent **only** on normalized JSON.
+**Success:** Operators see website vs JSON vs Google matched/stale/conflict per row and know safe refresh commands.
 
 ---
 

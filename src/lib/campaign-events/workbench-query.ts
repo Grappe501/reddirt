@@ -27,6 +27,11 @@ export type WorkbenchFilters = {
   needsIntakeReviewOnly: boolean;
   duplicateRiskOnly: boolean;
   intakeConflictOnly: boolean;
+  calendarTruthStatus: string;
+  googleMatchedOnly: boolean;
+  importedJsonOnly: boolean;
+  staleCalendarOnly: boolean;
+  notLinkedOnly: boolean;
 };
 
 export const DEFAULT_WORKBENCH_FILTERS: WorkbenchFilters = {
@@ -47,6 +52,11 @@ export const DEFAULT_WORKBENCH_FILTERS: WorkbenchFilters = {
   needsIntakeReviewOnly: false,
   duplicateRiskOnly: false,
   intakeConflictOnly: false,
+  calendarTruthStatus: "",
+  googleMatchedOnly: false,
+  importedJsonOnly: false,
+  staleCalendarOnly: false,
+  notLinkedOnly: false,
 };
 
 export function filterWorkbenchRows(rows: WorkbenchEventRow[], filters: WorkbenchFilters): WorkbenchEventRow[] {
@@ -69,6 +79,11 @@ export function filterWorkbenchRows(rows: WorkbenchEventRow[], filters: Workbenc
     if (filters.needsIntakeReviewOnly && !row.intakeNeedsReview) return false;
     if (filters.duplicateRiskOnly && !row.duplicateRisk) return false;
     if (filters.intakeConflictOnly && !row.intakeScheduleConflict) return false;
+    if (filters.calendarTruthStatus && row.calendarTruthStatus !== filters.calendarTruthStatus) return false;
+    if (filters.googleMatchedOnly && row.calendarTruthStatus !== "GOOGLE_READ_MATCHED") return false;
+    if (filters.importedJsonOnly && row.calendarTruthStatus !== "IMPORTED_FROM_NORMALIZED_JSON") return false;
+    if (filters.staleCalendarOnly && row.calendarTruthStatus !== "GOOGLE_READ_STALE") return false;
+    if (filters.notLinkedOnly && row.calendarTruthStatus !== "NOT_LINKED") return false;
     return true;
   });
 }
