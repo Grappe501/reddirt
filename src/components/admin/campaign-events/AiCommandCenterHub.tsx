@@ -9,10 +9,15 @@ import { CAMPAIGN_AI_HUMAN_CONTROL_RULES } from "@/lib/campaign-events/ai-tools/
 import { USER_UX_EVENT_LABELS } from "@/lib/agents/user-intelligence/user-observations";
 import { AgentNextActionPanel } from "@/components/admin/campaign-events/AgentNextActionPanel";
 import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
+import { AgentCommandPalette } from "@/components/agents/AgentCommandPalette";
 import { AiCommandCenterDisclosure } from "@/components/admin/campaign-events/AiCommandCenterDisclosure";
+import { loadRuntimeAudit } from "@/lib/agents/runtime/runtime-audit";
+import { SPRINT3_AGENT_TOOL_CONTRACTS } from "@/lib/campaign-events/ai-tools/sprint-agent-intelligence-3-tools";
+import { summarizeAskKellyAdapter } from "@/lib/agents/adapters/ask-kelly-adapter";
+import { summarizeKellyAgentAdapter } from "@/lib/agents/adapters/kelly-agent-adapter";
 import { DEFAULT_WRITING_PROFILE } from "@/lib/agents/writing-agent/writing-profile";
 
-const AGENT_READINESS_PCT = 78;
+const AGENT_READINESS_PCT = 86;
 
 export async function AiCommandCenterHub() {
   const counts = countMasterRegistryByStatus();
@@ -31,12 +36,12 @@ export async function AiCommandCenterHub() {
     <AgentObservationTracker role="operator" pathname="/admin/ai-command-center" period={snapshot.period}>
       <div className="mx-auto flex max-w-[1100px] flex-col gap-6 pb-16 font-body">
         <header className="rounded-3xl border border-kelly-navy/20 bg-kelly-navy/[0.05] p-8">
-          <p className="text-xs font-bold uppercase tracking-wider text-kelly-slate">Agent Intelligence Sprint 2</p>
-          <h1 className="mt-2 font-heading text-3xl font-bold text-kelly-navy">All-knowing agent command center</h1>
-          <p className="mt-3 max-w-2xl text-sm text-kelly-text/75">
-            Live observation, cross-domain context, friction detection, and memory planning — human-controlled. Readiness
-            ~{AGENT_READINESS_PCT}%.
-          </p>
+        <p className="text-xs font-bold uppercase tracking-wider text-kelly-slate">Agent Intelligence Sprint 3</p>
+        <h1 className="mt-2 font-heading text-3xl font-bold text-kelly-navy">All-knowing agent command center</h1>
+        <p className="mt-3 max-w-2xl text-sm text-kelly-text/75">
+          Unified runtime + safe tool router — plain-language requests route to workflows without autonomous high-risk
+          actions. Readiness ~{AGENT_READINESS_PCT}%.
+        </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
               href="/admin/campaign-events/ai-tools"
@@ -50,9 +55,20 @@ export async function AiCommandCenterHub() {
           </div>
         </header>
 
-        <AgentNextActionPanel actions={bundle.nextActions} />
+      <AgentCommandPalette role="operator" pathname="/admin/ai-command-center" period={snapshot.period} />
 
-        <AiCommandCenterDisclosure id="observations" title="Live observations" defaultOpen>
+      <AgentNextActionPanel actions={bundle.nextActions} />
+
+      <AiCommandCenterDisclosure id="runtime" title="Runtime audit" defaultOpen={false}>
+        <p className="text-xs">{loadRuntimeAudit().length} exchanges logged · Sprint 3 tools: {SPRINT3_AGENT_TOOL_CONTRACTS.length}</p>
+        <Link href="/admin/ai-command-center/memory-review" className="mt-2 inline-block text-xs font-bold text-kelly-navy underline">
+          Memory review queue →
+        </Link>
+        <p className="mt-2 text-[10px] text-kelly-text/50">{summarizeAskKellyAdapter()}</p>
+        <p className="text-[10px] text-kelly-text/50">{summarizeKellyAgentAdapter()}</p>
+      </AiCommandCenterDisclosure>
+
+      <AiCommandCenterDisclosure id="observations" title="Live observations" defaultOpen>
           <p className="text-xs text-kelly-text/65">
             {bundle.observations.length} total · {bundle.recent.length} recent · append-only JSON (metadata only).
           </p>

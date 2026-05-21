@@ -10,6 +10,7 @@ import { parseReviewMonth } from "@/lib/campaign-events/month-review/month-revie
 import { CampaignEventsMonthNav } from "@/components/admin/campaign-events/CampaignEventsMonthNav";
 import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
 import { MicrocopyHint } from "@/components/admin/campaign-events/MicrocopyHint";
+import { AgentCommandPalette } from "@/components/agents/AgentCommandPalette";
 
 export const dynamic = "force-dynamic";
 
@@ -86,6 +87,7 @@ export default async function CampaignEventsWorkbenchPage({ searchParams }: Prop
       <p className="font-body text-xs text-kelly-text/60">
         <MicrocopyHint term="duplicate_risk" role="campaign_manager" /> · <MicrocopyHint term="website_intake" role="campaign_manager" />
       </p>
+      <AgentCommandPalette role="campaign_manager" pathname="/admin/campaign-events/workbench" period={period} compact />
 
       <InfoBanner tone={jsonFreshness.isStale ? "amber" : "default"}>
         <strong>CE-LEDGER-3 workbench.</strong> Period {period}: {rows.length} records ({seed.updated} synced on load). Normalized JSON:{" "}

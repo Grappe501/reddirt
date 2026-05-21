@@ -6,6 +6,7 @@ import { MonthlyTravelSummaryCard } from "@/components/admin/campaign-events/Mon
 import { ReimbursementMonthCards } from "@/components/admin/campaign-events/travel-reimbursement/ReimbursementMonthCards";
 import type { ReimbursementMonthSummary } from "@/lib/campaign-events/travel-reimbursement/load-reimbursement-summaries";
 import { AgentNextActionPanel } from "@/components/admin/campaign-events/AgentNextActionPanel";
+import { AgentCommandPalette } from "@/components/agents/AgentCommandPalette";
 import type { NextActionResult } from "@/lib/agents/user-intelligence/next-action-engine";
 import { CampaignDashboardShell, DashboardSection, DashboardStatGrid, StatCard } from "./CampaignDashboardShell";
 
@@ -31,6 +32,7 @@ export function CandidateCampaignDashboard({
     >
       <ApprovalRecipientsBanner />
 
+      <AgentCommandPalette role="candidate" pathname="/admin/candidate-dashboard" period={period} compact />
       {nextActions ? <AgentNextActionPanel actions={nextActions} compact /> : null}
 
       <ReimbursementMonthCards title="Travel reimbursement (March · April · May MTD)" summaries={reimbursementSummaries} />

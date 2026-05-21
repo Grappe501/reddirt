@@ -153,9 +153,40 @@ From `CAMPAIGN_AI_HUMAN_CONTROL_RULES` + `ai-agent-brain-map.md`:
 
 **Future:** merge hub + operational into one command center UI with domain tabs.
 
+**Sprint 3 (May 2026):** `campaign-agent-runtime.ts` unifies intent → context bundle → safe tool router → operator response. `AgentCommandPalette` is the primary human entry point; `ask-kelly-adapter` and `kelly-agent-adapter` expose legacy surfaces as registry-aware read bridges without autonomous execution.
+
 ---
 
-## 9. Related docs
+## 9. Unified runtime (Sprint 3)
+
+```mermaid
+flowchart LR
+  MSG[Plain-language request]
+  IC[intent-classifier]
+  CTX[load-agent-intelligence-bundle]
+  TR[tool-router + execution-guard]
+  PL[tool-planner]
+  RB[agent-response-builder]
+  AUD[runtime-audit.json]
+  MEM[memory-review queue]
+
+  MSG --> IC --> CTX --> TR --> PL --> RB
+  RB --> AUD
+  PL --> MEM
+```
+
+| Output | Purpose |
+|--------|---------|
+| `interpretedIntent` | domain, task, risk, route hint |
+| `selectedTools` / `blockedActions` | registry-safe recommendations |
+| `nextLinks` | operator navigation |
+| `memoryCandidates` | human review before durable memory |
+
+**Not in Sprint 3:** LLM tool loop, vector memory write, autonomous sends/writes.
+
+---
+
+## 10. Related docs
 
 - [`GLOBAL_AI_AGENT_TOOL_INVENTORY.md`](./GLOBAL_AI_AGENT_TOOL_INVENTORY.md)
 - [`AI_AGENT_OBSERVATION_AND_LEARNING_ROADMAP.md`](./AI_AGENT_OBSERVATION_AND_LEARNING_ROADMAP.md)

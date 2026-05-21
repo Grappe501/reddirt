@@ -13,6 +13,7 @@ import {
   AGENT_SYSTEM_INTELLIGENCE_CATALOG,
 } from "./ai-tools/sprint-agent-intelligence-tools";
 import { SPRINT2_AGENT_CATALOG_ENTRIES } from "./ai-tools/sprint-agent-intelligence-2-tools";
+import { SPRINT3_AGENT_CATALOG_ENTRIES } from "./ai-tools/sprint-agent-intelligence-3-tools";
 
 const S = (s: AiToolEntry["status"]) => s;
 
@@ -125,6 +126,7 @@ export const SUPPLEMENT_TOOLS_BY_LIFECYCLE: Record<string, AiToolEntry[]> = {
   agent_campaign_intelligence: AGENT_CAMPAIGN_INTELLIGENCE_CATALOG,
   agent_system_intelligence: AGENT_SYSTEM_INTELLIGENCE_CATALOG,
   agent_intelligence_sprint2: SPRINT2_AGENT_CATALOG_ENTRIES,
+  agent_intelligence_sprint3: SPRINT3_AGENT_CATALOG_ENTRIES,
 };
 
 const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
@@ -181,6 +183,12 @@ const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
     order: 33,
     title: "Agent Intelligence Sprint 2 — Live orchestration",
     tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.agent_intelligence_sprint2 ?? [],
+  },
+  {
+    id: "agent_intelligence_sprint3",
+    order: 34,
+    title: "Agent Intelligence Sprint 3 — Unified runtime",
+    tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.agent_intelligence_sprint3 ?? [],
   },
 ];
 

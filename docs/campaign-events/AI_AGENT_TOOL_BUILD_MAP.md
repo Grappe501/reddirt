@@ -24,6 +24,24 @@
 | Command center doc | [`ALL_KNOWING_AGENT_COMMAND_CENTER.md`](./ALL_KNOWING_AGENT_COMMAND_CENTER.md) |
 | Sprint 1 contracts | `src/lib/campaign-events/ai-tools/sprint-agent-intelligence-tools.ts` (**35 tools**) |
 | Sprint 2 contracts | `src/lib/campaign-events/ai-tools/sprint-agent-intelligence-2-tools.ts` (**15 tools**) |
+| Sprint 3 contracts | `src/lib/campaign-events/ai-tools/sprint-agent-intelligence-3-tools.ts` (**16 tools**) |
+| Unified runtime | `src/lib/agents/runtime/` + `npm run agents:test-runtime` |
+
+---
+
+## Agent Intelligence Sprint 3
+
+| Component | Path | Status |
+|-----------|------|--------|
+| Unified runtime | `campaign-agent-runtime.ts` | functional V1 |
+| Intent classifier | `intent-classifier.ts` | deterministic V1 |
+| Safe tool router | `tool-router.ts` + `tool-execution-guard.ts` | functional V1 |
+| Command palette | `AgentCommandPalette.tsx` | functional V1 |
+| Ask Kelly / Kelly Agent bridge | `src/lib/agents/adapters/*` | partial (registry map, no rewrite) |
+| Memory review | `/admin/ai-command-center/memory-review` | functional JSON queue |
+| Runtime audit | `data/campaign-events/agent-runtime-audit.json` | functional append-only |
+
+**Human control:** palette and runtime recommend/route only; high-risk intents blocked or flagged for approval.
 
 ---
 
@@ -46,7 +64,7 @@
 | Metric | Value |
 |--------|-------|
 | Lifecycle groups | 22 |
-| Tools (master + supplement + agent intel, deduped) | ~239 |
+| Tools (master + supplement + agent intel, deduped) | ~255 |
 | Status: **functional** | ~31 |
 | Status: **partial** | ~37 |
 | Status: **scaffolded** | ~18 |

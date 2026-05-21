@@ -10,6 +10,7 @@ import { AgentNextActionPanel } from "@/components/admin/campaign-events/AgentNe
 import { loadNextActionsForPage } from "@/lib/agents/user-intelligence/load-next-actions";
 import { loadCampaignEventsDashboard } from "@/lib/campaign-events/load-campaign-events-dashboard";
 import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
+import { AgentCommandPalette } from "@/components/agents/AgentCommandPalette";
 
 export const dynamic = "force-dynamic";
 
@@ -46,6 +47,7 @@ export default async function OfficialReimbursementPage({ searchParams }: Props)
           {" · "}
           <MicrocopyHint term="approval_package" role="treasurer" />
         </p>
+        <AgentCommandPalette role="treasurer" pathname="/admin/campaign-events/reimbursement" period={period} compact />
         <AgentNextActionPanel actions={nextActions} compact />
       </div>
       <OfficialReimbursementReportView report={statusContext.report} statusContext={serializedContext} />

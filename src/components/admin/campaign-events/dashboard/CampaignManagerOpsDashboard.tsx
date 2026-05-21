@@ -7,6 +7,7 @@ import { ReimbursementMonthCards } from "@/components/admin/campaign-events/trav
 import type { ReimbursementMonthSummary } from "@/lib/campaign-events/travel-reimbursement/load-reimbursement-summaries";
 import { REIMBURSEMENT_STATUS_LABELS } from "@/lib/campaign-events/travel-reimbursement/reimbursement-month-status-shared";
 import { AgentNextActionPanel } from "@/components/admin/campaign-events/AgentNextActionPanel";
+import { AgentCommandPalette } from "@/components/agents/AgentCommandPalette";
 import type { CampaignGap } from "@/lib/agents/campaign-intelligence/campaign-gap-analyzer";
 import type { NextActionResult } from "@/lib/agents/user-intelligence/next-action-engine";
 import type { WorkflowFrictionSignal } from "@/lib/agents/user-intelligence/workflow-friction-detector";
@@ -47,6 +48,7 @@ export function CampaignManagerOpsDashboard({
     >
       <ApprovalRecipientsBanner compact />
 
+      <AgentCommandPalette role="campaign_manager" pathname="/admin/campaign-manager-dashboard" period={period} />
       {nextActions ? <AgentNextActionPanel actions={nextActions} /> : null}
 
       {gapHighlight ? (

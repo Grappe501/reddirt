@@ -20,6 +20,7 @@ This is the **live control board**. Update at the end of every sprint slice.
 | 5 | Controlled GCal promotion (human + gated write) | **Complete** (dry-run default; live gated) | ~75% | ~45% |
 | 5A | Agent Intelligence 1 (user anticipation + writing) | **Complete** (V1 deterministic) | ~70% | ~50% |
 | 5B | Agent Intelligence 2 (live observation + orchestration) | **Complete** (V1 functional) | ~78% | ~55% |
+| 5C | Agent Intelligence 3 (unified runtime + safe tool router) | **Complete** (V1 deterministic) | ~86% | ~58% |
 | 6 | Event planning drilldown | Partial | ~50% | ~35% |
 | 7 | Hot wash + media intel | Partial | ~40% | ~20% |
 | 8 | FIN / compliance bridge | Not started | — | — |

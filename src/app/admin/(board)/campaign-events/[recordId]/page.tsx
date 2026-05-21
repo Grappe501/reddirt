@@ -11,6 +11,7 @@ import { parsePromotionAuditLog } from "@/lib/campaign-events/calendar-promotion
 import { loadCalendarEventDrilldown, serializeCalendarRows } from "@/lib/campaign-events/load-campaign-calendar-events";
 import { loadEventMediaBundle } from "@/lib/campaign-events/media/media-storage";
 import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
+import { AgentCommandPalette } from "@/components/agents/AgentCommandPalette";
 
 export const dynamic = "force-dynamic";
 
@@ -41,6 +42,15 @@ export default async function CampaignEventDrilldownPage({
       period={sp.month ?? loaded.record.period}
       recordId={recordId}
     >
+    <div className="mx-auto max-w-[1100px] px-4 pt-4">
+      <AgentCommandPalette
+        role="campaign_manager"
+        pathname={`/admin/campaign-events/${recordId}`}
+        period={sp.month ?? loaded.record.period}
+        eventRecordId={recordId}
+        compact
+      />
+    </div>
     <EventDrilldownClient
       row={row}
       approvalPackage={approvalPackage}

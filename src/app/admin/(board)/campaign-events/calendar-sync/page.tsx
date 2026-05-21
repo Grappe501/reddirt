@@ -12,6 +12,7 @@ import { loadNextActionsForPage } from "@/lib/agents/user-intelligence/load-next
 import { AgentNextActionPanel } from "@/components/admin/campaign-events/AgentNextActionPanel";
 import { loadCampaignEventsDashboard } from "@/lib/campaign-events/load-campaign-events-dashboard";
 import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
+import { AgentCommandPalette } from "@/components/agents/AgentCommandPalette";
 
 export const dynamic = "force-dynamic";
 
@@ -60,6 +61,7 @@ export default async function CampaignEventsCalendarSyncPage({ searchParams }: P
         {" · "}
         <MicrocopyHint term="calendar_promotion" role="campaign_manager" />
       </p>
+      <AgentCommandPalette role="campaign_manager" pathname="/admin/campaign-events/calendar-sync" period={month} compact />
       <AgentNextActionPanel actions={nextActions} compact />
       <CalendarSyncDashboard snapshot={snapshot} />
     </div>

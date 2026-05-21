@@ -234,6 +234,20 @@
 
 ---
 
+## Agent Intelligence Sprint 3 (May 2026)
+
+| Domain | Count | Status |
+|--------|-------|--------|
+| Unified runtime (`agent_intelligence_sprint3`) | **16** | functional V1 |
+
+**Runtime:** `src/lib/agents/runtime/` — intent classifier, tool router/guard, planner, response builder, audit logger, page-aware prompts.
+
+**UI:** `AgentCommandPalette` on command center, CM/candidate dashboards, workbench, reimbursement, calendar-sync, event drilldown; memory review at `/admin/ai-command-center/memory-review`.
+
+**Test:** `npm run agents:test-runtime`
+
+---
+
 ## Agent Intelligence Sprint 2 (May 2026)
 
 | Domain | Count | Status |
@@ -260,4 +274,4 @@
 
 ---
 
-*Last updated: Agent Intelligence Sprint 1 (May 2026).*
+*Last updated: Agent Intelligence Sprint 3 (May 2026).*
