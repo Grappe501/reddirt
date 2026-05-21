@@ -1,8 +1,9 @@
 import type { AiToolEntry, AiToolStatus } from "./ai-tools-master-catalog";
 import { getContractById } from "./ai-tools/tool-contract";
 import { SPRINT4_APPROVAL_EMAIL_TOOL_CONTRACTS } from "./ai-tools/sprint4-approval-email-tools";
-import { SPRINT5_PROMOTION_TOOL_CONTRACTS } from "../calendar-promotion/sprint5-promotion-tools";
+import { SPRINT5_PROMOTION_TOOL_CONTRACTS } from "./calendar-promotion/sprint5-promotion-tools";
 import { GLOBAL_AGENT_ORCHESTRATION_TOOL_CONTRACTS } from "./ai-tools/sprint-global-agent-tools";
+import { AGENT_INTELLIGENCE_TOOL_CONTRACTS } from "./ai-tools/sprint-agent-intelligence-tools";
 
 export type AiToolOperationalMeta = {
   implementationFiles: string[];
@@ -239,7 +240,8 @@ function sprint4OperationalOverride(tool: AiToolEntry): Partial<AiToolOperationa
   const c =
     getContractById(SPRINT4_APPROVAL_EMAIL_TOOL_CONTRACTS, tool.id) ??
     getContractById(SPRINT5_PROMOTION_TOOL_CONTRACTS, tool.id) ??
-    getContractById(GLOBAL_AGENT_ORCHESTRATION_TOOL_CONTRACTS, tool.id);
+    getContractById(GLOBAL_AGENT_ORCHESTRATION_TOOL_CONTRACTS, tool.id) ??
+    getContractById(AGENT_INTELLIGENCE_TOOL_CONTRACTS, tool.id);
   if (!c) return undefined;
   return {
     implementationFiles: [c.deterministicHelperPath],

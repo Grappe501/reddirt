@@ -18,6 +18,25 @@
 | Master registry v0 | `src/lib/agents/master-tool-registry/` |
 | Global tools (20) | `src/lib/campaign-events/ai-tools/sprint-global-agent-tools.ts` |
 | Hub | `/admin/ai-command-center` |
+| User intelligence arch | [`USER_INTELLIGENCE_AGENT_ARCHITECTURE.md`](./USER_INTELLIGENCE_AGENT_ARCHITECTURE.md) |
+| Writing agent arch | [`WRITING_AGENT_ARCHITECTURE.md`](./WRITING_AGENT_ARCHITECTURE.md) |
+| UX / pathways | [`UX_PSYCHOLOGY_AND_PATHWAY_TOOLS.md`](./UX_PSYCHOLOGY_AND_PATHWAY_TOOLS.md) |
+| Command center doc | [`ALL_KNOWING_AGENT_COMMAND_CENTER.md`](./ALL_KNOWING_AGENT_COMMAND_CENTER.md) |
+| Sprint 1 contracts | `src/lib/campaign-events/ai-tools/sprint-agent-intelligence-tools.ts` (**35 tools**) |
+
+---
+
+## Agent Intelligence Sprint 1
+
+| Lane | Catalog lifecycle ids | Count |
+|------|----------------------|-------|
+| User intelligence | `agent_user_intelligence` | 5 |
+| Writing agent | `agent_writing` | 9 |
+| UX psychology | `agent_ux_intelligence` | 9 |
+| Campaign intelligence | `agent_campaign_intelligence` | 6 |
+| System intelligence | `agent_system_intelligence` | 6 |
+
+**Runtime (V1):** `next-action-engine.ts`, `campaign-gap-analyzer.ts`, `microcopy-registry.ts`, `writing-suggestion-builder.ts` — deterministic only.
 
 ---
 
@@ -26,7 +45,7 @@
 | Metric | Value |
 |--------|-------|
 | Lifecycle groups | 22 |
-| Tools (master + supplement, deduped) | ~100 |
+| Tools (master + supplement + agent intel, deduped) | ~175 |
 | Status: **functional** | ~31 |
 | Status: **partial** | ~37 |
 | Status: **scaffolded** | ~18 |

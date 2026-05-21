@@ -4,6 +4,13 @@
 
 ---
 
+## Agent Intelligence Sprint 1 (May 2026)
+
+- **22 UX events** in `user-observations.ts` — global log at `data/campaign-events/user-observations.json`
+- **Union type** `AiObservationEvent` on ledger `factCard._aiObservations`
+- **Writing style log** at `data/campaign-events/writing-style-observations.json`
+- Panel labels in `AiObservationsPanel` for common UX events
+
 ## 1. Signals to capture (V1 — partial today)
 
 | Signal | Source today | Storage today | V2 target |

@@ -1,3 +1,5 @@
+import type { UserUxObservationEvent } from "@/lib/agents/user-intelligence/user-observations";
+
 export type ApprovalObservationEvent =
   | "approval_package_previewed"
   | "approval_email_generated"
@@ -25,10 +27,12 @@ export type ApprovalObservationEvent =
   | "tentative_promoted"
   | "official_promoted";
 
+export type AiObservationEvent = ApprovalObservationEvent | UserUxObservationEvent;
+
 export type AiObservationEntry = {
   id: string;
   toolId: string;
-  event: ApprovalObservationEvent;
+  event: AiObservationEvent;
   recordId: string | null;
   at: string;
   actor: string;

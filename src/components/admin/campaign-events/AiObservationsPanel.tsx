@@ -27,6 +27,13 @@ const EVENT_LABELS: Record<string, string> = {
   duplicate_detected: "Duplicate detected",
   operator_overrode_warning: "Operator override",
   payload_edited: "Payload edited",
+  page_viewed: "Page viewed",
+  dashboard_card_clicked: "Card clicked",
+  suggestion_accepted: "Suggestion accepted",
+  suggestion_rejected: "Suggestion rejected",
+  help_hover_opened: "Help opened",
+  drilldown_opened: "Drilldown opened",
+  abandoned_flow: "Flow abandoned",
 };
 
 export function AiObservationsPanel({

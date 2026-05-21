@@ -5,14 +5,18 @@ import { ApprovalRecipientsBanner } from "@/components/admin/campaign-events/App
 import { MonthlyTravelSummaryCard } from "@/components/admin/campaign-events/MonthlyTravelSummaryCard";
 import { ReimbursementMonthCards } from "@/components/admin/campaign-events/travel-reimbursement/ReimbursementMonthCards";
 import type { ReimbursementMonthSummary } from "@/lib/campaign-events/travel-reimbursement/load-reimbursement-summaries";
+import { AgentNextActionPanel } from "@/components/admin/campaign-events/AgentNextActionPanel";
+import type { NextActionResult } from "@/lib/agents/user-intelligence/next-action-engine";
 import { CampaignDashboardShell, DashboardSection, DashboardStatGrid, StatCard } from "./CampaignDashboardShell";
 
 export function CandidateCampaignDashboard({
   snapshot,
   reimbursementSummaries,
+  nextActions,
 }: {
   snapshot: CampaignEventsDashboardSnapshot;
   reimbursementSummaries?: ReimbursementMonthSummary[];
+  nextActions?: NextActionResult;
 }) {
   const { period } = snapshot;
   const reviewHref = `/admin/campaign-events/review?month=${period}&mode=chronological`;
@@ -26,6 +30,8 @@ export function CandidateCampaignDashboard({
       description="Pending event approvals, monthly travel totals, upcoming calendar, and approval-package inbox. Admin-authenticated surface for Kelly and operators — no emails are sent from this page."
     >
       <ApprovalRecipientsBanner />
+
+      {nextActions ? <AgentNextActionPanel actions={nextActions} compact /> : null}
 
       <ReimbursementMonthCards title="Travel reimbursement (March · April · May MTD)" summaries={reimbursementSummaries} />
 

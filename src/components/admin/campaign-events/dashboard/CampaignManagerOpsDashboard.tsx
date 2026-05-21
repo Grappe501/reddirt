@@ -6,6 +6,9 @@ import { MonthlyTravelSummaryCard } from "@/components/admin/campaign-events/Mon
 import { ReimbursementMonthCards } from "@/components/admin/campaign-events/travel-reimbursement/ReimbursementMonthCards";
 import type { ReimbursementMonthSummary } from "@/lib/campaign-events/travel-reimbursement/load-reimbursement-summaries";
 import { REIMBURSEMENT_STATUS_LABELS } from "@/lib/campaign-events/travel-reimbursement/reimbursement-month-status";
+import { AgentNextActionPanel } from "@/components/admin/campaign-events/AgentNextActionPanel";
+import type { CampaignGap } from "@/lib/agents/campaign-intelligence/campaign-gap-analyzer";
+import type { NextActionResult } from "@/lib/agents/user-intelligence/next-action-engine";
 import { CampaignDashboardShell, DashboardSection, DashboardStatGrid, StatCard } from "./CampaignDashboardShell";
 
 const AUTOMATION_SCAFFOLDS = [
@@ -19,9 +22,13 @@ const AUTOMATION_SCAFFOLDS = [
 export function CampaignManagerOpsDashboard({
   snapshot,
   reimbursementSummaries,
+  nextActions,
+  gapHighlight,
 }: {
   snapshot: CampaignEventsDashboardSnapshot;
   reimbursementSummaries?: ReimbursementMonthSummary[];
+  nextActions?: NextActionResult;
+  gapHighlight?: CampaignGap;
 }) {
   const { period } = snapshot;
   const monthSummary = reimbursementSummaries?.find((s) => s.month === period);
@@ -35,6 +42,17 @@ export function CampaignManagerOpsDashboard({
       description="Event operations, travel ledger snapshot, approval queues, and calendar health for the March pilot period. Orchestration hub links — email send remains disabled."
     >
       <ApprovalRecipientsBanner compact />
+
+      {nextActions ? <AgentNextActionPanel actions={nextActions} /> : null}
+
+      {gapHighlight ? (
+        <section className="rounded-2xl border border-amber-600/20 bg-amber-50/70 px-4 py-3 font-body text-xs text-amber-950">
+          <strong>Gap:</strong> {gapHighlight.title} — {gapHighlight.recommendedAction}{" "}
+          <Link href="/admin/ai-command-center" className="font-bold underline">
+            AI command center
+          </Link>
+        </section>
+      ) : null}
 
       <Link
         href={`/admin/campaign-events/month-readiness?month=${period}`}

@@ -50,7 +50,8 @@ See `SPRINT4_AI_TOOLCHAIN.md` and `/admin/campaign-events/ai-tools` → **Sprint
 | Pillar | Primary models / stores | Operator home |
 |--------|-------------------------|---------------|
 | DB truth | `CampaignEventLedgerRecord`, `WorkflowIntake`, `EventRequest`, `FinancialTransaction`, … | Prisma + `database-table-inventory.md` |
-| AI tools | Catalog only (no autonomous send) | `/admin/campaign-events/ai-tools` |
+| AI tools | Catalog only (no autonomous send) | `/admin/campaign-events/ai-tools`, `/admin/ai-command-center` |
+| Agent intelligence | User anticipation, writing voice, UX pathways (V1 deterministic) | `src/lib/agents/*`, Sprint 1 tools |
 | Calendar OS | Ledger + `GoogleCalendarEventRecord`, `CalendarSource` | `/admin/campaign-calendar/*`, workbench |
 | Travel / compliance | Ledger `factCard`, `data/compliance/*`, legacy `data/travel-ledger/` | travel-log → review → report → reimbursement |
 | Dashboards | Read models over ledger + open work | `/admin/candidate-dashboard`, `/admin/campaign-manager-dashboard` |

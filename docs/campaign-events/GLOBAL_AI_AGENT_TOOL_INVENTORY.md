@@ -234,4 +234,20 @@
 
 ---
 
-*Last updated: global inventory pass (post–Sprint 5).*
+## Agent Intelligence Sprint 1 (May 2026)
+
+| Domain | Code | Tools | Status |
+|--------|------|-------|--------|
+| User intelligence | `src/lib/agents/user-intelligence/` | 5 contracts | scaffolded V1 |
+| Writing agent | `src/lib/agents/writing-agent/` | 9 contracts | scaffolded V1 |
+| UX intelligence | `src/lib/agents/ux-intelligence/` | 9 contracts | scaffolded V1 |
+| Campaign intelligence | `src/lib/agents/campaign-intelligence/` | 6 contracts | deterministic V1 |
+| System intelligence | `sprint-agent-intelligence-tools.ts` | 6 contracts | scaffolded V1 |
+| **Total new contracts** | `sprint-agent-intelligence-tools.ts` | **35** | catalog + registry |
+
+**Hub:** `/admin/ai-command-center` (`AiCommandCenterHub.tsx`)  
+**Observations:** `user-observations.ts` + extended `AiObservationEvent` union
+
+---
+
+*Last updated: Agent Intelligence Sprint 1 (May 2026).*

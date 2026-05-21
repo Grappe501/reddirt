@@ -14,6 +14,9 @@ export const CAMPAIGN_OS_MASTER_BUILD_DOCS = [
   { id: "global-inventory", label: "Global AI agent inventory", file: "GLOBAL_AI_AGENT_TOOL_INVENTORY.md" },
   { id: "all-knowing-arch", label: "All-knowing agent architecture", file: "ALL_KNOWING_CAMPAIGN_AGENT_ARCHITECTURE.md" },
   { id: "agent-learning", label: "Agent observation & learning", file: "AI_AGENT_OBSERVATION_AND_LEARNING_ROADMAP.md" },
+  { id: "user-intel-arch", label: "User intelligence architecture", file: "USER_INTELLIGENCE_AGENT_ARCHITECTURE.md" },
+  { id: "writing-agent-arch", label: "Writing agent architecture", file: "WRITING_AGENT_ARCHITECTURE.md" },
+  { id: "ai-command-center-doc", label: "AI command center", file: "ALL_KNOWING_AGENT_COMMAND_CENTER.md" },
   { id: "deps", label: "System dependency graph", file: "SYSTEM_DEPENDENCY_GRAPH.md" },
 ] as const;
 

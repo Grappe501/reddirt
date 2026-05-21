@@ -3,6 +3,8 @@ import { CampaignEventsMonthNav } from "@/components/admin/campaign-events/Campa
 import { loadCampaignEventsDashboard } from "@/lib/campaign-events/load-campaign-events-dashboard";
 import { loadReimbursementMonthSummaries } from "@/lib/campaign-events/travel-reimbursement/load-reimbursement-summaries";
 import { parseReviewMonth } from "@/lib/campaign-events/month-review/month-review-types";
+import { loadNextActionsForPage } from "@/lib/agents/user-intelligence/load-next-actions";
+import { analyzeCampaignGaps } from "@/lib/agents/campaign-intelligence/campaign-gap-analyzer";
 
 export const dynamic = "force-dynamic";
 
@@ -15,12 +17,24 @@ export default async function CampaignManagerDashboardPage({ searchParams }: Pro
     loadCampaignEventsDashboard(month),
     loadReimbursementMonthSummaries(),
   ]);
+  const nextActions = loadNextActionsForPage({
+    role: "campaign_manager",
+    pathname: "/admin/campaign-manager-dashboard",
+    period: month,
+    snapshot,
+  });
+  const gapAnalysis = analyzeCampaignGaps({ snapshot });
   return (
     <>
       <div className="mx-auto max-w-[1200px] px-0">
         <CampaignEventsMonthNav activeMonth={month} basePath="campaign-manager-dashboard" />
       </div>
-      <CampaignManagerOpsDashboard snapshot={snapshot} reimbursementSummaries={reimbursementSummaries} />
+      <CampaignManagerOpsDashboard
+        snapshot={snapshot}
+        reimbursementSummaries={reimbursementSummaries}
+        nextActions={nextActions}
+        gapHighlight={gapAnalysis.highestImpact}
+      />
     </>
   );
 }

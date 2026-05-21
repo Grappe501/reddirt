@@ -7,6 +7,10 @@ import {
 import { loadCalendarSyncDashboard } from "@/lib/campaign-events/calendar-sync/load-calendar-sync-dashboard";
 import { parseReviewMonth } from "@/lib/campaign-events/month-review/month-review-types";
 import { CampaignEventsMonthNav } from "@/components/admin/campaign-events/CampaignEventsMonthNav";
+import { MicrocopyHint } from "@/components/admin/campaign-events/MicrocopyHint";
+import { loadNextActionsForPage } from "@/lib/agents/user-intelligence/load-next-actions";
+import { AgentNextActionPanel } from "@/components/admin/campaign-events/AgentNextActionPanel";
+import { loadCampaignEventsDashboard } from "@/lib/campaign-events/load-campaign-events-dashboard";
 
 export const dynamic = "force-dynamic";
 
@@ -16,6 +20,13 @@ export default async function CampaignEventsCalendarSyncPage({ searchParams }: P
   const sp = await searchParams;
   const month = parseReviewMonth(sp.month);
   const snapshot = await loadCalendarSyncDashboard(month);
+  const { snapshot: dashSnap } = await loadCampaignEventsDashboard(month);
+  const nextActions = loadNextActionsForPage({
+    role: "campaign_manager",
+    pathname: "/admin/campaign-events/calendar-sync",
+    period: month,
+    snapshot: dashSnap,
+  });
 
   return (
     <div className="mx-auto flex max-w-[1200px] flex-col gap-6 pb-12">
@@ -42,6 +53,12 @@ export default async function CampaignEventsCalendarSyncPage({ searchParams }: P
       />
       <CampaignEventsNav />
       <CampaignEventsMonthNav activeMonth={month} basePath="workbench" />
+      <p className="font-body text-xs">
+        <MicrocopyHint term="sync_stale" role="campaign_manager" />
+        {" · "}
+        <MicrocopyHint term="calendar_promotion" role="campaign_manager" />
+      </p>
+      <AgentNextActionPanel actions={nextActions} compact />
       <CalendarSyncDashboard snapshot={snapshot} />
     </div>
   );

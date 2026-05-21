@@ -6,6 +6,7 @@
 import { AI_TOOL_LIFECYCLES } from "@/lib/campaign-events/ai-tools-master-catalog";
 import { mergeSupplementIntoLifecycles } from "@/lib/campaign-events/ai-tools-supplement";
 import { GLOBAL_AGENT_ORCHESTRATION_CATALOG_ENTRIES } from "@/lib/campaign-events/ai-tools/sprint-global-agent-tools";
+import { AGENT_INTELLIGENCE_ALL_CATALOG_ENTRIES } from "@/lib/campaign-events/ai-tools/sprint-agent-intelligence-tools";
 import type { MasterToolRegistryEntry } from "./types";
 
 export { MASTER_TOOL_REGISTRY_VERSION } from "./types";
@@ -39,12 +40,13 @@ function catalogToRegistry(): MasterToolRegistryEntry[] {
       });
     }
   }
-  for (const tool of GLOBAL_AGENT_ORCHESTRATION_CATALOG_ENTRIES) {
+  const agentIntel = [...GLOBAL_AGENT_ORCHESTRATION_CATALOG_ENTRIES, ...AGENT_INTELLIGENCE_ALL_CATALOG_ENTRIES];
+  for (const tool of agentIntel) {
     if (out.some((x) => x.id === tool.id)) continue;
     out.push({
       id: tool.id,
       name: tool.name,
-      domain: "global_orchestration",
+        domain: mapAgentIntelDomain(tool.lifecycleId),
       app: "RedDirt",
       sourcePath: tool.futureRoute,
       purpose: tool.purpose,
@@ -64,6 +66,15 @@ function catalogToRegistry(): MasterToolRegistryEntry[] {
     });
   }
   return out;
+}
+
+function mapAgentIntelDomain(lifecycleId: string): MasterToolRegistryEntry["domain"] {
+  if (lifecycleId.startsWith("agent_user")) return "global_orchestration";
+  if (lifecycleId.startsWith("agent_writing")) return "global_orchestration";
+  if (lifecycleId.startsWith("agent_ux")) return "global_orchestration";
+  if (lifecycleId.startsWith("agent_campaign")) return "global_orchestration";
+  if (lifecycleId.startsWith("agent_system")) return "global_orchestration";
+  return "global_orchestration";
 }
 
 function mapSprintLifecycle(id: string): MasterToolRegistryEntry["domain"] {

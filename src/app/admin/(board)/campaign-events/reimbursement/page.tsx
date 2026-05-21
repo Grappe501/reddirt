@@ -5,6 +5,10 @@ import { CampaignEventsNav, CampaignEventsPageHeader } from "@/app/admin/(board)
 import { loadCampaignEventsWorkbench } from "@/lib/campaign-events/load-workbench-events";
 import { loadReimbursementMonthStatusContext } from "@/lib/campaign-events/travel-reimbursement/reimbursement-month-status";
 import { parseReviewMonth } from "@/lib/campaign-events/month-review/month-review-types";
+import { MicrocopyHint } from "@/components/admin/campaign-events/MicrocopyHint";
+import { AgentNextActionPanel } from "@/components/admin/campaign-events/AgentNextActionPanel";
+import { loadNextActionsForPage } from "@/lib/agents/user-intelligence/load-next-actions";
+import { loadCampaignEventsDashboard } from "@/lib/campaign-events/load-campaign-events-dashboard";
 
 export const dynamic = "force-dynamic";
 
@@ -16,6 +20,13 @@ export default async function OfficialReimbursementPage({ searchParams }: Props)
   const { rows, period } = await loadCampaignEventsWorkbench({ period: month });
   const statusContext = await loadReimbursementMonthStatusContext(rows, period);
   const serializedContext = JSON.parse(JSON.stringify(statusContext));
+  const { snapshot } = await loadCampaignEventsDashboard(period);
+  const nextActions = loadNextActionsForPage({
+    role: "treasurer",
+    pathname: "/admin/campaign-events/reimbursement",
+    period,
+    snapshot,
+  });
 
   return (
     <div className="mx-auto flex max-w-[1100px] flex-col gap-6 pb-12">
@@ -28,6 +39,12 @@ export default async function OfficialReimbursementPage({ searchParams }: Props)
         <CampaignEventsNav />
         <TravelReimbursementWorkflowNav month={period} active="reimbursement" />
         <TravelReimbursementMonthNav activeMonth={period} activeBase="reimbursement" />
+        <p className="font-body text-xs text-kelly-text/65">
+          <MicrocopyHint term="reimbursement" role="treasurer" />
+          {" · "}
+          <MicrocopyHint term="approval_package" role="treasurer" />
+        </p>
+        <AgentNextActionPanel actions={nextActions} compact />
       </div>
       <OfficialReimbursementReportView report={statusContext.report} statusContext={serializedContext} />
     </div>

@@ -3,8 +3,15 @@
  */
 import type { AiToolEntry, AiToolLifecycle } from "./ai-tools-master-catalog";
 import { SPRINT4_APPROVAL_EMAIL_CATALOG_ENTRIES } from "./ai-tools/sprint4-approval-email-tools";
-import { SPRINT5_PROMOTION_CATALOG_ENTRIES } from "../calendar-promotion/sprint5-promotion-tools";
-import { GLOBAL_AGENT_ORCHESTRATION_CATALOG_ENTRIES } from "./sprint-global-agent-tools";
+import { SPRINT5_PROMOTION_CATALOG_ENTRIES } from "./calendar-promotion/sprint5-promotion-tools";
+import { GLOBAL_AGENT_ORCHESTRATION_CATALOG_ENTRIES } from "./ai-tools/sprint-global-agent-tools";
+import {
+  AGENT_USER_INTELLIGENCE_CATALOG,
+  AGENT_WRITING_CATALOG,
+  AGENT_UX_CATALOG,
+  AGENT_CAMPAIGN_INTELLIGENCE_CATALOG,
+  AGENT_SYSTEM_INTELLIGENCE_CATALOG,
+} from "./ai-tools/sprint-agent-intelligence-tools";
 
 const S = (s: AiToolEntry["status"]) => s;
 
@@ -111,6 +118,11 @@ export const SUPPLEMENT_TOOLS_BY_LIFECYCLE: Record<string, AiToolEntry[]> = {
   sprint4_approval_email: SPRINT4_APPROVAL_EMAIL_CATALOG_ENTRIES,
   sprint5_calendar_promotion: SPRINT5_PROMOTION_CATALOG_ENTRIES,
   global_agent_orchestration: GLOBAL_AGENT_ORCHESTRATION_CATALOG_ENTRIES,
+  agent_user_intelligence: AGENT_USER_INTELLIGENCE_CATALOG,
+  agent_writing: AGENT_WRITING_CATALOG,
+  agent_ux_intelligence: AGENT_UX_CATALOG,
+  agent_campaign_intelligence: AGENT_CAMPAIGN_INTELLIGENCE_CATALOG,
+  agent_system_intelligence: AGENT_SYSTEM_INTELLIGENCE_CATALOG,
 };
 
 const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
@@ -131,6 +143,36 @@ const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
     order: 27,
     title: "Global — All-knowing agent orchestration",
     tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.global_agent_orchestration ?? [],
+  },
+  {
+    id: "agent_user_intelligence",
+    order: 28,
+    title: "Agent Intelligence — User anticipation",
+    tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.agent_user_intelligence ?? [],
+  },
+  {
+    id: "agent_writing",
+    order: 29,
+    title: "Agent Intelligence — Writing agent",
+    tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.agent_writing ?? [],
+  },
+  {
+    id: "agent_ux_intelligence",
+    order: 30,
+    title: "Agent Intelligence — UX psychology",
+    tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.agent_ux_intelligence ?? [],
+  },
+  {
+    id: "agent_campaign_intelligence",
+    order: 31,
+    title: "Agent Intelligence — Campaign gaps",
+    tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.agent_campaign_intelligence ?? [],
+  },
+  {
+    id: "agent_system_intelligence",
+    order: 32,
+    title: "Agent Intelligence — System orchestration",
+    tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.agent_system_intelligence ?? [],
   },
 ];
 

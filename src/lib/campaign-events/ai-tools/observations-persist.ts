@@ -3,7 +3,7 @@ import "server-only";
 import { randomBytes } from "node:crypto";
 import { prisma } from "@/lib/db";
 import { parseFactCardEnvelope, serializeFactCardEnvelope, withPreservedFactCardExtensions } from "../fact-card-envelope";
-import type { AiObservationEntry, ApprovalObservationEvent } from "./observations";
+import type { AiObservationEntry, AiObservationEvent } from "./observations";
 import { parseAiObservations } from "./observations";
 
 function newObservationId(): string {
@@ -13,7 +13,7 @@ function newObservationId(): string {
 export async function appendAiObservation(input: {
   recordId?: string | null;
   toolId: string;
-  event: ApprovalObservationEvent;
+  event: AiObservationEvent;
   actor?: string;
   meta?: Record<string, string | number | boolean | null>;
 }): Promise<AiObservationEntry> {
