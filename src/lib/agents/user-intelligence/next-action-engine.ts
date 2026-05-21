@@ -1,9 +1,12 @@
 import type { CampaignEventsDashboardSnapshot } from "@/lib/campaign-events/load-campaign-events-dashboard";
+import type { AgentDomain } from "../orchestration/cross-domain-context-composer";
 import type { CampaignUserRole } from "./user-personas";
 import { getUserPersona } from "./user-personas";
 import type { UserObservationEntry } from "./user-observations";
 
 export type NextActionUrgency = "now" | "today" | "this_week" | "when_ready";
+
+export type NextActionCategory = "review" | "fix" | "approve" | "print" | "sync" | "promote" | "learn" | "build";
 
 export type NextActionRecommendation = {
   id: string;
@@ -12,6 +15,7 @@ export type NextActionRecommendation = {
   href: string;
   urgency: NextActionUrgency;
   confidence: "high" | "medium" | "low";
+  category: NextActionCategory;
   primary?: boolean;
 };
 
@@ -21,6 +25,7 @@ export type NextActionResult = {
   secondary: NextActionRecommendation[];
   calmSummary: string;
   avoidOverwhelmNote: string;
+  sprintAwareNote?: string;
 };
 
 export type NextActionEngineInput = {
@@ -31,18 +36,48 @@ export type NextActionEngineInput = {
   recentObservations?: UserObservationEntry[];
   readinessScore?: number | null;
   syncStale?: boolean;
+  crossDomain?: { activeDomain: AgentDomain; blockers: string[] };
 };
 
 function rec(
   partial: Omit<NextActionRecommendation, "id"> & { id?: string },
 ): NextActionRecommendation {
-  return { id: partial.id ?? `na_${partial.title.slice(0, 12).replace(/\W/g, "_")}`, ...partial };
+  return {
+    category: partial.category ?? "review",
+    id: partial.id ?? `na_${partial.title.slice(0, 12).replace(/\W/g, "_")}`,
+    ...partial,
+  };
+}
+
+function observationBoost(
+  candidates: NextActionRecommendation[],
+  recent: UserObservationEntry[] | undefined,
+  pathname: string,
+): NextActionRecommendation[] {
+  if (!recent?.length) return candidates;
+  const clicks = recent.filter((o) => o.event === "next_action_clicked" || o.event === "dashboard_card_clicked");
+  const rejected = recent.filter((o) => o.event === "suggestion_rejected").map((o) => o.meta?.actionId).filter(Boolean);
+  const onPath = recent.filter((o) => o.pathname === pathname);
+
+  return candidates
+    .map((c) => {
+      let score = c.primary ? 10 : 0;
+      if (c.urgency === "now") score += 5;
+      if (c.confidence === "high") score += 3;
+      if (clicks.some((o) => o.meta?.href === c.href || o.meta?.actionId === c.id)) score += 4;
+      if (rejected.includes(c.id)) score -= 8;
+      if (onPath.some((o) => o.event === "flow_abandoned" && c.category === "review")) score += 2;
+      return { c, score };
+    })
+    .sort((a, b) => b.score - a.score)
+    .map(({ c }) => c);
 }
 
 export function buildNextActions(input: NextActionEngineInput): NextActionResult {
   const persona = getUserPersona(input.role);
   const s = input.snapshot;
   const period = input.period;
+  const recent = input.recentObservations;
   const candidates: NextActionRecommendation[] = [];
 
   if (s) {
@@ -54,6 +89,7 @@ export function buildNextActions(input: NextActionEngineInput): NextActionResult
           href: `/admin/campaign-events/review?month=${period}&mode=chronological`,
           urgency: "now",
           confidence: "high",
+          category: "approve",
           primary: true,
         }),
       );
@@ -66,6 +102,7 @@ export function buildNextActions(input: NextActionEngineInput): NextActionResult
           href: `/admin/campaign-events/${s.upcoming[0].recordId}`,
           urgency: "today",
           confidence: "medium",
+          category: "review",
         }),
       );
     }
@@ -75,9 +112,10 @@ export function buildNextActions(input: NextActionEngineInput): NextActionResult
           rec({
             title: `Clear ${s.actionItems.travelReview} travel review row(s)`,
             why: "Mileage and reimbursement depend on complete travel data.",
-            href: `/admin/campaign-events/travel-report?month=${period}`,
+            href: `/admin/campaign-events/review?month=${period}&mode=travel_needs_approval&autostart=1`,
             urgency: "today",
             confidence: "high",
+            category: "review",
             primary: true,
           }),
         );
@@ -90,6 +128,7 @@ export function buildNextActions(input: NextActionEngineInput): NextActionResult
             href: `/admin/campaign-events/review?month=${period}&mode=needs_intake_review&autostart=1`,
             urgency: "today",
             confidence: "high",
+            category: "review",
           }),
         );
       }
@@ -104,6 +143,7 @@ export function buildNextActions(input: NextActionEngineInput): NextActionResult
             href: `/admin/campaign-events/calendar-promotion?month=${period}`,
             urgency: "this_week",
             confidence: "medium",
+            category: "promote",
           }),
         );
       }
@@ -115,6 +155,7 @@ export function buildNextActions(input: NextActionEngineInput): NextActionResult
             href: `/admin/campaign-events/calendar-sync?month=${period}`,
             urgency: "today",
             confidence: "high",
+            category: "sync",
             primary: !candidates.some((c) => c.primary),
           }),
         );
@@ -127,22 +168,44 @@ export function buildNextActions(input: NextActionEngineInput): NextActionResult
             href: `/admin/campaign-events/review?month=${period}&mode=intake_conflict`,
             urgency: "today",
             confidence: "medium",
+            category: "fix",
           }),
         );
       }
     }
     if (input.role === "treasurer" || input.pathname.includes("reimbursement")) {
+      const ready = input.crossDomain?.blockers.length === 0 && s.actionItems.travelReview === 0;
       candidates.push(
         rec({
-          title: `Print or export ${period} reimbursement request`,
-          why: "Official reimbursement packet is the treasurer-facing deliverable.",
-          href: `/admin/campaign-events/reimbursement?month=${period}`,
-          urgency: "this_week",
-          confidence: "high",
+          title: ready
+            ? `Print or export ${period} reimbursement request`
+            : `Complete travel approvals before ${period} reimbursement print`,
+          why: ready
+            ? "Official reimbursement packet is the treasurer-facing deliverable."
+            : "Print/download before ready causes rework — clear travel queue first.",
+          href: ready
+            ? `/admin/campaign-events/reimbursement?month=${period}`
+            : `/admin/campaign-events/review?month=${period}&mode=travel_needs_approval&autostart=1`,
+          urgency: ready ? "this_week" : "today",
+          confidence: ready ? "high" : "medium",
+          category: ready ? "print" : "approve",
           primary: true,
         }),
       );
     }
+  }
+
+  if (recent?.some((o) => o.event === "no_results_search")) {
+    candidates.push(
+      rec({
+        title: "Open month readiness (clear filters)",
+        why: "Recent search had no results — readiness dashboard shows gaps by category.",
+        href: `/admin/campaign-events/month-readiness?month=${period}`,
+        urgency: "today",
+        confidence: "medium",
+        category: "learn",
+      }),
+    );
   }
 
   if (input.role === "new_admin_user") {
@@ -153,6 +216,7 @@ export function buildNextActions(input: NextActionEngineInput): NextActionResult
         href: `/admin/campaign-manager-dashboard?month=${period}`,
         urgency: "now",
         confidence: "high",
+        category: "learn",
         primary: true,
       }),
       rec({
@@ -161,6 +225,7 @@ export function buildNextActions(input: NextActionEngineInput): NextActionResult
         href: `/admin/campaign-events/month-readiness?month=${period}`,
         urgency: "today",
         confidence: "high",
+        category: "learn",
       }),
       rec({
         title: "Use Month Review speed mode",
@@ -168,6 +233,7 @@ export function buildNextActions(input: NextActionEngineInput): NextActionResult
         href: `/admin/campaign-events/review?month=${period}&mode=chronological&autostart=1`,
         urgency: "when_ready",
         confidence: "medium",
+        category: "review",
       }),
     );
   }
@@ -175,11 +241,12 @@ export function buildNextActions(input: NextActionEngineInput): NextActionResult
   if (input.role === "operator" && input.pathname.includes("ai-command-center")) {
     candidates.push(
       rec({
-        title: "Review campaign gap analyzer output",
-        why: "Highest-impact build/ops gap for Agent Intelligence sprints.",
-        href: "/admin/ai-command-center#gaps",
+        title: "Review live observations and friction",
+        why: "Sprint 2 orchestration — behavior signals drive memory candidates.",
+        href: "/admin/ai-command-center#observations",
         urgency: "today",
         confidence: "medium",
+        category: "learn",
         primary: true,
       }),
     );
@@ -193,25 +260,33 @@ export function buildNextActions(input: NextActionEngineInput): NextActionResult
         href: `/admin/campaign-events/workbench?month=${period}`,
         urgency: "when_ready",
         confidence: "low",
+        category: "review",
         primary: true,
       }),
     );
   }
 
-  const primary = candidates.find((c) => c.primary) ?? candidates[0];
-  const secondary = candidates.filter((c) => c.id !== primary.id).slice(0, persona.nextActionStyle === "one_primary" ? 2 : 4);
+  const ranked = observationBoost(candidates, recent, input.pathname);
+  const primary = ranked.find((c) => c.primary) ?? ranked[0];
+  const maxSecondary = persona.informationDensity === "low" ? 2 : persona.nextActionStyle === "one_primary" ? 2 : 4;
+  const secondary = ranked.filter((c) => c.id !== primary.id).slice(0, maxSecondary);
 
-  const maxSecondary = persona.informationDensity === "low" ? 2 : 4;
   const calmSummary =
     persona.nextActionStyle === "one_primary"
       ? `Focus on: ${primary.title}`
-      : `${primary.title} — plus ${Math.min(secondary.length, maxSecondary)} optional step(s).`;
+      : `${primary.title} — plus ${secondary.length} optional step(s).`;
+
+  const sprintAwareNote =
+    input.crossDomain?.blockers.length
+      ? `Agent Intelligence Sprint 2: ${input.crossDomain.blockers.length} cross-domain blocker(s) detected.`
+      : "Agent Intelligence Sprint 2: observations improving recommendations.";
 
   return {
     role: input.role,
     primary: { ...primary, primary: true },
-    secondary: secondary.slice(0, maxSecondary),
+    secondary,
     calmSummary,
     avoidOverwhelmNote: persona.doNotOverwhelmRules[0] ?? "Show fewer actions when possible.",
+    sprintAwareNote,
   };
 }

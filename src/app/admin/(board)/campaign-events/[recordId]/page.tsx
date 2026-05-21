@@ -10,6 +10,7 @@ import { loadAiObservationsForRecord } from "@/lib/campaign-events/ai-tools/obse
 import { parsePromotionAuditLog } from "@/lib/campaign-events/calendar-promotion/promotion-audit";
 import { loadCalendarEventDrilldown, serializeCalendarRows } from "@/lib/campaign-events/load-campaign-calendar-events";
 import { loadEventMediaBundle } from "@/lib/campaign-events/media/media-storage";
+import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
 
 export const dynamic = "force-dynamic";
 
@@ -34,6 +35,12 @@ export default async function CampaignEventDrilldownPage({
   const approvalPackage = buildApprovalPackageWithLogs(row, emailCtx.logs, mapTokenLinksForPayload(emailCtx));
   const promotionAudit = parsePromotionAuditLog(loaded.record.factCard);
   return (
+    <AgentObservationTracker
+      role="campaign_manager"
+      pathname={`/admin/campaign-events/${recordId}`}
+      period={sp.month ?? loaded.record.period}
+      recordId={recordId}
+    >
     <EventDrilldownClient
       row={row}
       approvalPackage={approvalPackage}
@@ -45,5 +52,6 @@ export default async function CampaignEventDrilldownPage({
       fromTravel={sp.from === "travel"}
       returnMonth={sp.month ?? undefined}
     />
+    </AgentObservationTracker>
   );
 }

@@ -6,8 +6,8 @@ import {
   markReimbursementMonthReadyAction,
   reopenReimbursementMonthDraftAction,
 } from "@/app/admin/(board)/campaign-events/reimbursement-actions";
-import type { ReimbursementMonthStatusContext } from "@/lib/campaign-events/travel-reimbursement/reimbursement-month-status";
-import { REIMBURSEMENT_STATUS_LABELS } from "@/lib/campaign-events/travel-reimbursement/reimbursement-month-status";
+import type { ReimbursementMonthStatusContext } from "@/lib/campaign-events/travel-reimbursement/reimbursement-month-status-shared";
+import { REIMBURSEMENT_STATUS_LABELS } from "@/lib/campaign-events/travel-reimbursement/reimbursement-month-status-shared";
 
 const STATUS_STYLE: Record<string, string> = {
   draft: "border-amber-700/30 bg-amber-50 text-amber-950",

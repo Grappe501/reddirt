@@ -23,3 +23,9 @@ candidate · host · volunteer · compliance · operator · public
 ## Human gate
 
 All sends and publishes require explicit operator approval.
+
+## Sprint 2 — observation hooks
+
+- `writing-observation-capture.ts` + `recordWritingObservationAction`
+- Client: `trackWritingObservation()` from `useWritingObservation.ts`
+- Logs metadata only (text type, audience, edit flags) — not full bodies

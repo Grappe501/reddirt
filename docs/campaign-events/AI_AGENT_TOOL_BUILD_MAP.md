@@ -23,6 +23,7 @@
 | UX / pathways | [`UX_PSYCHOLOGY_AND_PATHWAY_TOOLS.md`](./UX_PSYCHOLOGY_AND_PATHWAY_TOOLS.md) |
 | Command center doc | [`ALL_KNOWING_AGENT_COMMAND_CENTER.md`](./ALL_KNOWING_AGENT_COMMAND_CENTER.md) |
 | Sprint 1 contracts | `src/lib/campaign-events/ai-tools/sprint-agent-intelligence-tools.ts` (**35 tools**) |
+| Sprint 2 contracts | `src/lib/campaign-events/ai-tools/sprint-agent-intelligence-2-tools.ts` (**15 tools**) |
 
 ---
 
@@ -45,7 +46,7 @@
 | Metric | Value |
 |--------|-------|
 | Lifecycle groups | 22 |
-| Tools (master + supplement + agent intel, deduped) | ~175 |
+| Tools (master + supplement + agent intel, deduped) | ~239 |
 | Status: **functional** | ~31 |
 | Status: **partial** | ~37 |
 | Status: **scaffolded** | ~18 |

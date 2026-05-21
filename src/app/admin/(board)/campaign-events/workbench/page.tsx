@@ -8,6 +8,8 @@ import {
 import { loadCampaignEventsWorkbench, serializeWorkbenchRows } from "@/lib/campaign-events/load-workbench-events";
 import { parseReviewMonth } from "@/lib/campaign-events/month-review/month-review-types";
 import { CampaignEventsMonthNav } from "@/components/admin/campaign-events/CampaignEventsMonthNav";
+import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
+import { MicrocopyHint } from "@/components/admin/campaign-events/MicrocopyHint";
 
 export const dynamic = "force-dynamic";
 
@@ -20,6 +22,7 @@ export default async function CampaignEventsWorkbenchPage({ searchParams }: Prop
   const serialized = serializeWorkbenchRows(rows);
 
   return (
+    <AgentObservationTracker role="campaign_manager" pathname="/admin/campaign-events/workbench" period={period}>
     <div className="mx-auto flex max-w-[1400px] flex-col gap-6 pb-12">
       <CampaignEventsPageHeader
         eyebrow="Campaign operations · batch review"
@@ -80,6 +83,9 @@ export default async function CampaignEventsWorkbenchPage({ searchParams }: Prop
       />
       <CampaignEventsNav />
       <CampaignEventsMonthNav activeMonth={period} basePath="workbench" />
+      <p className="font-body text-xs text-kelly-text/60">
+        <MicrocopyHint term="duplicate_risk" role="campaign_manager" /> · <MicrocopyHint term="website_intake" role="campaign_manager" />
+      </p>
 
       <InfoBanner tone={jsonFreshness.isStale ? "amber" : "default"}>
         <strong>CE-LEDGER-3 workbench.</strong> Period {period}: {rows.length} records ({seed.updated} synced on load). Normalized JSON:{" "}
@@ -93,5 +99,6 @@ export default async function CampaignEventsWorkbenchPage({ searchParams }: Prop
 
       <CampaignEventsWorkbench initialRows={serialized} period={period} initialSyncFilter={sp.sync} />
     </div>
+    </AgentObservationTracker>
   );
 }

@@ -9,7 +9,7 @@ import {
 import {
   REIMBURSEMENT_STATUS_LABELS,
   type ReimbursementMonthStatusContext,
-} from "@/lib/campaign-events/travel-reimbursement/reimbursement-month-status";
+} from "@/lib/campaign-events/travel-reimbursement/reimbursement-month-status-shared";
 import { eventEditHref, reviewHref } from "@/lib/campaign-events/travel-reimbursement/travel-reimbursement-links";
 import {
   REIMBURSEMENT_CAMPAIGN_NAME,
@@ -18,6 +18,7 @@ import {
 import { ReimbursementMonthChecklist } from "./ReimbursementMonthChecklist";
 import { ReimbursementStatusPanel } from "./ReimbursementStatusPanel";
 import { TravelCorrectionAssist } from "./TravelCorrectionAssist";
+import { useAgentObservation } from "@/components/agents/AgentObservationTracker";
 
 function fmtUsd(n: number) {
   return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(n);
@@ -48,10 +49,15 @@ export function OfficialReimbursementReportView({
   report: Report;
   statusContext: ReimbursementMonthStatusContext;
 }) {
-  const print = () => window.print();
+  const { track } = useAgentObservation();
+  const print = () => {
+    track("print_clicked", { month: report.month, reimbursementStatus: statusContext.effectiveStatus });
+    window.print();
+  };
   const effectiveStatus = statusContext.effectiveStatus;
 
   const downloadCsv = () => {
+    track("download_clicked", { format: "csv", month: report.month });
     const blob = new Blob([reimbursementReportToCsv(report)], { type: "text/csv;charset=utf-8" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -62,6 +68,7 @@ export function OfficialReimbursementReportView({
   };
 
   const downloadJson = () => {
+    track("download_clicked", { format: "json", month: report.month });
     const blob = new Blob([reimbursementReportToJson(report)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");

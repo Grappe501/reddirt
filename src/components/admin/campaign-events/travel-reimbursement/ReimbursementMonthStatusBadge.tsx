@@ -1,6 +1,8 @@
 import Link from "next/link";
-import { REIMBURSEMENT_STATUS_LABELS } from "@/lib/campaign-events/travel-reimbursement/reimbursement-month-status";
-import type { ReimbursementMonthStatusValue } from "@/lib/campaign-events/travel-reimbursement/reimbursement-month-status-store";
+import {
+  REIMBURSEMENT_STATUS_LABELS,
+  type ReimbursementMonthStatusValue,
+} from "@/lib/campaign-events/travel-reimbursement/reimbursement-month-status-shared";
 import { reimbursementHref } from "@/lib/campaign-events/travel-reimbursement/travel-reimbursement-links";
 
 const STATUS_STYLE: Record<ReimbursementMonthStatusValue, string> = {

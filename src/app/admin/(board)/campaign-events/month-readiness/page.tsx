@@ -12,6 +12,7 @@ import { APRIL_2026_LEDGER_PERIOD } from "@/lib/campaign-events/constants";
 import { MicrocopyHint } from "@/components/admin/campaign-events/MicrocopyHint";
 import { loadNextActionsForPage } from "@/lib/agents/user-intelligence/load-next-actions";
 import { AgentNextActionPanel } from "@/components/admin/campaign-events/AgentNextActionPanel";
+import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
 
 export const dynamic = "force-dynamic";
 
@@ -30,6 +31,7 @@ export default async function CampaignMonthReadinessPage({ searchParams }: Props
   });
 
   return (
+    <AgentObservationTracker role="campaign_manager" pathname="/admin/campaign-events/month-readiness" period={period}>
     <div className="mx-auto flex max-w-[1100px] flex-col gap-6 pb-12">
       <CampaignEventsPageHeader
         eyebrow="Campaign operations · month close"
@@ -66,5 +68,6 @@ export default async function CampaignMonthReadinessPage({ searchParams }: Props
       <MonthReadinessQuickActions actions={quickActions} period={period} />
       <MonthReadinessDashboard snapshot={snapshot} />
     </div>
+    </AgentObservationTracker>
   );
 }

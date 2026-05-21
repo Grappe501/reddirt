@@ -11,6 +11,35 @@
 - **Writing style log** at `data/campaign-events/writing-style-observations.json`
 - Panel labels in `AiObservationsPanel` for common UX events
 
+## Agent Intelligence Sprint 2 (May 2026) — live capture
+
+### What is logged
+
+- Event name, role, pathname, optional `recordId`, optional `toolId`, safe `meta` keys (alphanumeric, max 200 chars/value)
+- Admin session required (`recordAgentObservationAction`)
+- Append-only file: `data/campaign-events/user-observations.json` (cap 500 entries)
+
+### What is NOT logged
+
+- Full email bodies, phone numbers, SSN, or arbitrary freeform PII
+- Meta keys containing `email`, `phone`, or `ssn`
+- External/public analytics — internal admin only
+
+### Writing observations
+
+- Metadata in `data/campaign-events/writing-style-observations.json` (cap 200)
+- Optional snippet hint max 80 chars — no full drafts by default
+
+### Clear / disable
+
+- Delete or trim JSON files under `data/campaign-events/` to reset
+- Remove `AgentObservationTracker` from a page to stop capture there
+- Future: `AGENT_OBSERVATIONS_ENABLED=false` env (not wired yet)
+
+### Test
+
+`npm run agents:test-observations` — dry-run append + context/friction/memory summary
+
 ## 1. Signals to capture (V1 — partial today)
 
 | Signal | Source today | Storage today | V2 target |

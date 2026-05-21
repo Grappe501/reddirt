@@ -8,6 +8,7 @@ import { loadCampaignEventsWorkbench, serializeWorkbenchRows } from "@/lib/campa
 import { parseReviewMonth } from "@/lib/campaign-events/month-review/month-review-types";
 import { parseTravelLogFilter } from "@/lib/campaign-events/travel-reimbursement/travel-reimbursement-links";
 import { countNormalizedItemsForPeriod } from "@/lib/campaign-events/persistence/seed-period";
+import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
 
 export const dynamic = "force-dynamic";
 
@@ -22,6 +23,7 @@ export default async function TentativeTravelLogPage({ searchParams }: Props) {
   const jsonCount = await countNormalizedItemsForPeriod(period);
 
   return (
+    <AgentObservationTracker role="campaign_manager" pathname="/admin/campaign-events/travel-log" period={period}>
     <div className="mx-auto flex max-w-[1500px] flex-col gap-6 pb-12">
       <CampaignEventsPageHeader
         eyebrow="Travel reimbursement · step 1"
@@ -40,5 +42,6 @@ export default async function TentativeTravelLogPage({ searchParams }: Props) {
       ) : null}
       <TentativeTravelLog initialRows={serializeWorkbenchRows(rows)} initialMonth={period} initialFilter={filter} />
     </div>
+    </AgentObservationTracker>
   );
 }

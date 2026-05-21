@@ -1,3 +1,5 @@
+import "server-only";
+
 import { createJsonRepository } from "@/lib/compliance/persistence/compliance-repository";
 
 export type ReimbursementMonthStatusValue = "draft" | "needs_review" | "ready" | "finalized";

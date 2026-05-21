@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { LEDGER_PERIOD_QUICK_LINKS } from "@/lib/campaign-events/constants";
-import { REIMBURSEMENT_STATUS_LABELS } from "@/lib/campaign-events/travel-reimbursement/reimbursement-month-status";
+import { REIMBURSEMENT_STATUS_LABELS } from "@/lib/campaign-events/travel-reimbursement/reimbursement-month-status-shared";
 import type { ReimbursementMonthSummary } from "@/lib/campaign-events/travel-reimbursement/load-reimbursement-summaries";
 import { monthLabel } from "@/lib/campaign-events/travel-reimbursement/travel-reimbursement-links";
 

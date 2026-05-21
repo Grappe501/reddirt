@@ -2,6 +2,8 @@ import Link from "next/link";
 import { CalendarPromotionWorkbench } from "@/components/admin/campaign-events/CalendarPromotionWorkbench";
 import { CampaignEventsNav, CampaignEventsPageHeader } from "@/app/admin/(board)/campaign-events/components";
 import { loadPromotionWorkbench } from "@/lib/campaign-events/calendar-promotion/load-promotion-workbench";
+import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
+import { MicrocopyHint } from "@/components/admin/campaign-events/MicrocopyHint";
 
 export const dynamic = "force-dynamic";
 
@@ -15,6 +17,7 @@ export default async function CalendarPromotionPage({
   const snapshot = await loadPromotionWorkbench(period);
 
   return (
+    <AgentObservationTracker role="campaign_manager" pathname="/admin/campaign-events/calendar-promotion" period={period}>
     <div className="mx-auto flex max-w-[1400px] flex-col gap-6 pb-12">
       <CampaignEventsPageHeader
         eyebrow="Campaign operating system · Sprint 5"
@@ -32,7 +35,12 @@ export default async function CalendarPromotionPage({
         }
       />
       <CampaignEventsNav />
+      <p className="font-body text-xs">
+        <MicrocopyHint term="google_write_disabled" role="campaign_manager" /> ·{" "}
+        <MicrocopyHint term="promotion_readiness" role="campaign_manager" />
+      </p>
       <CalendarPromotionWorkbench snapshot={snapshot} />
     </div>
+    </AgentObservationTracker>
   );
 }

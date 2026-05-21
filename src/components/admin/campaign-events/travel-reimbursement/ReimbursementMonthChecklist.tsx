@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { buildReimbursementMonthChecklist } from "@/lib/campaign-events/travel-reimbursement/reimbursement-checklist";
-import type { ReimbursementMonthStatusContext } from "@/lib/campaign-events/travel-reimbursement/reimbursement-month-status";
+import type { ReimbursementMonthStatusContext } from "@/lib/campaign-events/travel-reimbursement/reimbursement-month-status-shared";
 
 export function ReimbursementMonthChecklist({ ctx }: { ctx: ReimbursementMonthStatusContext }) {
   const items = buildReimbursementMonthChecklist(ctx);

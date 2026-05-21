@@ -234,6 +234,16 @@
 
 ---
 
+## Agent Intelligence Sprint 2 (May 2026)
+
+| Domain | Count | Status |
+|--------|-------|--------|
+| Live orchestration (`agent_intelligence_sprint2`) | **15** | functional/partial V1 |
+
+**Runtime:** `AgentObservationTracker`, `cross-domain-context-composer`, `workflow-friction-detector`, `agent-memory-write-planner`, next-action V2
+
+---
+
 ## Agent Intelligence Sprint 1 (May 2026)
 
 | Domain | Code | Tools | Status |

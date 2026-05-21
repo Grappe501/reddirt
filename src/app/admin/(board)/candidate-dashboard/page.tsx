@@ -4,6 +4,7 @@ import { loadCampaignEventsDashboard } from "@/lib/campaign-events/load-campaign
 import { loadReimbursementMonthSummaries } from "@/lib/campaign-events/travel-reimbursement/load-reimbursement-summaries";
 import { parseReviewMonth } from "@/lib/campaign-events/month-review/month-review-types";
 import { loadNextActionsForPage } from "@/lib/agents/user-intelligence/load-next-actions";
+import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
 
 export const dynamic = "force-dynamic";
 
@@ -23,7 +24,11 @@ export default async function CandidateDashboardPage({ searchParams }: Props) {
     snapshot,
   });
   return (
-    <>
+    <AgentObservationTracker
+      role="candidate"
+      pathname="/admin/candidate-dashboard"
+      period={month}
+    >
       <div className="mx-auto max-w-[1200px] px-0">
         <CampaignEventsMonthNav activeMonth={month} basePath="candidate-dashboard" />
       </div>
@@ -32,6 +37,6 @@ export default async function CandidateDashboardPage({ searchParams }: Props) {
         reimbursementSummaries={reimbursementSummaries}
         nextActions={nextActions}
       />
-    </>
+    </AgentObservationTracker>
   );
 }

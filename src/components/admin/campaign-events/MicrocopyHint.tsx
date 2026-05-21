@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { getMicrocopy, type MicrocopyTerm } from "@/lib/agents/ux-intelligence/microcopy-registry";
 import type { CampaignUserRole } from "@/lib/agents/user-intelligence/user-personas";
+import { useAgentObservation } from "@/components/agents/AgentObservationTracker";
 
 export function MicrocopyHint({
   term,
@@ -14,6 +15,7 @@ export function MicrocopyHint({
   label?: string;
 }) {
   const [open, setOpen] = useState(false);
+  const { track } = useAgentObservation();
   const entry = getMicrocopy(term, role);
   if (!entry) return null;
 
@@ -24,7 +26,12 @@ export function MicrocopyHint({
         type="button"
         className="rounded-full border border-kelly-text/20 px-1.5 py-0.5 text-[10px] font-bold text-kelly-navy"
         aria-expanded={open}
-        onClick={() => setOpen((o) => !o)}
+        onClick={() => {
+          setOpen((o) => {
+            if (!o) track("help_hover_opened", { term });
+            return !o;
+          });
+        }}
         title="Explain this term"
       >
         ?

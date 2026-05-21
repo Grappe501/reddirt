@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "event": "page_viewed",
+    "actor": "test-script",
+    "role": "operator",
+    "pathname": "/admin/ai-command-center",
+    "recordId": null,
+    "meta": {
+      "dryRun": true,
+      "sprint": 2
+    },
+    "id": "uxo_mpg2f7kw",
+    "at": "2026-05-21T22:31:36.224Z"
+  }
+]

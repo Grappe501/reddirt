@@ -5,10 +5,12 @@ import { ApprovalRecipientsBanner } from "@/components/admin/campaign-events/App
 import { MonthlyTravelSummaryCard } from "@/components/admin/campaign-events/MonthlyTravelSummaryCard";
 import { ReimbursementMonthCards } from "@/components/admin/campaign-events/travel-reimbursement/ReimbursementMonthCards";
 import type { ReimbursementMonthSummary } from "@/lib/campaign-events/travel-reimbursement/load-reimbursement-summaries";
-import { REIMBURSEMENT_STATUS_LABELS } from "@/lib/campaign-events/travel-reimbursement/reimbursement-month-status";
+import { REIMBURSEMENT_STATUS_LABELS } from "@/lib/campaign-events/travel-reimbursement/reimbursement-month-status-shared";
 import { AgentNextActionPanel } from "@/components/admin/campaign-events/AgentNextActionPanel";
 import type { CampaignGap } from "@/lib/agents/campaign-intelligence/campaign-gap-analyzer";
 import type { NextActionResult } from "@/lib/agents/user-intelligence/next-action-engine";
+import type { WorkflowFrictionSignal } from "@/lib/agents/user-intelligence/workflow-friction-detector";
+import { MicrocopyHint } from "@/components/admin/campaign-events/MicrocopyHint";
 import { CampaignDashboardShell, DashboardSection, DashboardStatGrid, StatCard } from "./CampaignDashboardShell";
 
 const AUTOMATION_SCAFFOLDS = [
@@ -24,11 +26,13 @@ export function CampaignManagerOpsDashboard({
   reimbursementSummaries,
   nextActions,
   gapHighlight,
+  frictionTop,
 }: {
   snapshot: CampaignEventsDashboardSnapshot;
   reimbursementSummaries?: ReimbursementMonthSummary[];
   nextActions?: NextActionResult;
   gapHighlight?: CampaignGap;
+  frictionTop?: WorkflowFrictionSignal[];
 }) {
   const { period } = snapshot;
   const monthSummary = reimbursementSummaries?.find((s) => s.month === period);
@@ -51,6 +55,13 @@ export function CampaignManagerOpsDashboard({
           <Link href="/admin/ai-command-center" className="font-bold underline">
             AI command center
           </Link>
+        </section>
+      ) : null}
+
+      {frictionTop && frictionTop.length > 0 ? (
+        <section className="rounded-2xl border border-orange-200/40 bg-orange-50/60 px-4 py-3 font-body text-xs text-orange-950">
+          <strong>Friction:</strong> {frictionTop[0].frictionType} — {frictionTop[0].suggestedNextAction}{" "}
+          <MicrocopyHint term="ai_observation" role="campaign_manager" />
         </section>
       ) : null}
 

@@ -4,18 +4,23 @@ import path from "node:path";
 /** Internal UX / workflow observations — not external analytics. */
 export type UserUxObservationEvent =
   | "page_viewed"
+  | "next_action_clicked"
   | "dashboard_card_clicked"
   | "filter_used"
   | "review_queue_started"
   | "suggestion_accepted"
   | "suggestion_rejected"
   | "field_overridden"
+  | "correction_started"
   | "help_hover_opened"
   | "drilldown_opened"
   | "abandoned_flow"
+  | "flow_abandoned"
   | "print_clicked"
   | "download_clicked"
   | "approval_decision_made"
+  | "promotion_previewed"
+  | "promotion_attempted"
   | "correction_requested"
   | "search_used"
   | "no_results_search"
@@ -84,15 +89,20 @@ export function appendGlobalUserObservation(
 
 export const USER_UX_EVENT_LABELS: Record<UserUxObservationEvent, string> = {
   page_viewed: "Page viewed",
+  next_action_clicked: "Next action clicked",
   dashboard_card_clicked: "Dashboard card clicked",
   filter_used: "Filter used",
   review_queue_started: "Review queue started",
   suggestion_accepted: "Suggestion accepted",
   suggestion_rejected: "Suggestion rejected",
   field_overridden: "Field overridden",
+  correction_started: "Correction started",
   help_hover_opened: "Help opened",
   drilldown_opened: "Drilldown opened",
   abandoned_flow: "Flow abandoned",
+  flow_abandoned: "Flow abandoned",
+  promotion_previewed: "Promotion previewed",
+  promotion_attempted: "Promotion attempted",
   print_clicked: "Print clicked",
   download_clicked: "Download clicked",
   approval_decision_made: "Approval decision",

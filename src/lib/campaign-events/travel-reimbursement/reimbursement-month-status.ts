@@ -1,3 +1,5 @@
+import "server-only";
+
 import type { WorkbenchEventRow } from "../merge-persisted-row";
 import { buildOfficialReimbursementReport, type OfficialReimbursementReport } from "./reimbursement-report";
 import {
@@ -5,24 +7,20 @@ import {
   saveReimbursementMonthRecord,
   type ReimbursementMonthStatusHistoryEntry,
   type ReimbursementMonthStatusRecord,
-  type ReimbursementMonthStatusValue,
 } from "./reimbursement-month-status-store";
+import { verifyTravelReimbursementQueues } from "./queue-verification";
+import type {
+  ReimbursementMonthStatusContext,
+  ReimbursementMonthStatusValue,
+} from "./reimbursement-month-status-shared";
 
-export type { ReimbursementMonthStatusValue } from "./reimbursement-month-status-store";
-import { verifyTravelReimbursementQueues, type TravelQueueVerification } from "./queue-verification";
-
-export type ReimbursementMonthStatusContext = {
-  month: string;
-  computedStatus: ReimbursementMonthStatusValue;
-  effectiveStatus: ReimbursementMonthStatusValue;
-  stored: ReimbursementMonthStatusRecord | null;
-  queues: TravelQueueVerification;
-  report: OfficialReimbursementReport;
-  blockingFinalize: string[];
-  canMarkReady: boolean;
-  canFinalize: boolean;
-  canReopen: boolean;
-};
+export type {
+  ReimbursementMonthStatusContext,
+  ReimbursementMonthStatusValue,
+  ReimbursementMonthStatusRecord,
+  ReimbursementMonthStatusHistoryEntry,
+} from "./reimbursement-month-status-shared";
+export { REIMBURSEMENT_STATUS_LABELS } from "./reimbursement-month-status-shared";
 
 function nowIso() {
   return new Date().toISOString();
@@ -183,9 +181,3 @@ export async function reopenReimbursementMonthDraft(
   return record;
 }
 
-export const REIMBURSEMENT_STATUS_LABELS: Record<ReimbursementMonthStatusValue, string> = {
-  draft: "Draft",
-  needs_review: "Needs review",
-  ready: "Ready",
-  finalized: "Finalized",
-};

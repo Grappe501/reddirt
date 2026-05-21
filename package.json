@@ -65,6 +65,7 @@
     "campaign-events:verify-calendar-sync": "tsx scripts/verify-calendar-sync-truth.ts",
     "campaign-events:test-approval-email": "tsx scripts/test-approval-email.ts",
     "campaign-events:test-calendar-promotion": "tsx scripts/test-calendar-promotion.ts",
+    "agents:test-observations": "tsx scripts/test-agent-observations.ts",
     "compliance:april26:qa": "tsx scripts/compliance/qa-april26-ingest.ts",
     "compliance:approval:build": "tsx scripts/compliance/build-approval-queue.ts",
     "compliance:qa-approval": "tsx scripts/compliance/qa-approval-workbench.ts",

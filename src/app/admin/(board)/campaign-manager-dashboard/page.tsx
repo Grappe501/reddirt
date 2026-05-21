@@ -5,6 +5,9 @@ import { loadReimbursementMonthSummaries } from "@/lib/campaign-events/travel-re
 import { parseReviewMonth } from "@/lib/campaign-events/month-review/month-review-types";
 import { loadNextActionsForPage } from "@/lib/agents/user-intelligence/load-next-actions";
 import { analyzeCampaignGaps } from "@/lib/agents/campaign-intelligence/campaign-gap-analyzer";
+import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
+import { loadGlobalUserObservations } from "@/lib/agents/user-intelligence/user-observations";
+import { detectWorkflowFriction } from "@/lib/agents/user-intelligence/workflow-friction-detector";
 
 export const dynamic = "force-dynamic";
 
@@ -24,8 +27,13 @@ export default async function CampaignManagerDashboardPage({ searchParams }: Pro
     snapshot,
   });
   const gapAnalysis = analyzeCampaignGaps({ snapshot });
+  const frictionTop = detectWorkflowFriction(loadGlobalUserObservations()).slice(0, 2);
   return (
-    <>
+    <AgentObservationTracker
+      role="campaign_manager"
+      pathname="/admin/campaign-manager-dashboard"
+      period={month}
+    >
       <div className="mx-auto max-w-[1200px] px-0">
         <CampaignEventsMonthNav activeMonth={month} basePath="campaign-manager-dashboard" />
       </div>
@@ -34,7 +42,8 @@ export default async function CampaignManagerDashboardPage({ searchParams }: Pro
         reimbursementSummaries={reimbursementSummaries}
         nextActions={nextActions}
         gapHighlight={gapAnalysis.highestImpact}
+        frictionTop={frictionTop}
       />
-    </>
+    </AgentObservationTracker>
   );
 }

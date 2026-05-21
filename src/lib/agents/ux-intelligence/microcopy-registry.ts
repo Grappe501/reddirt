@@ -14,7 +14,21 @@ export type MicrocopyTerm =
   | "readiness_score"
   | "hot_wash"
   | "run_of_show"
-  | "approval_package";
+  | "approval_package"
+  | "token_approval"
+  | "google_write_disabled"
+  | "tentative_calendar"
+  | "official_calendar"
+  | "promotion_readiness"
+  | "approval_inbox"
+  | "reimbursement_finalized"
+  | "travel_appendix"
+  | "website_intake"
+  | "duplicate_risk"
+  | "conflict_risk"
+  | "ai_observation"
+  | "memory_candidate"
+  | "human_approval_gate";
 
 export type MicrocopyEntry = {
   term: MicrocopyTerm;
@@ -105,6 +119,78 @@ const ENTRIES: MicrocopyEntry[] = [
     shortTooltip: "Candidate approval email package",
     expanded: "Summary + links for Kelly to approve, hold, or deny. Send is gated by EMAIL_SEND_ENABLED.",
     relatedAction: { label: "Approval package", href: "/admin/campaign-calendar/approval-package" },
+  },
+  {
+    term: "token_approval",
+    shortTooltip: "Link-based approval (no login)",
+    expanded: "Candidate may approve via signed token link — still human decision, not automated.",
+  },
+  {
+    term: "google_write_disabled",
+    shortTooltip: "Google writes off by default",
+    expanded: "Calendar promotion dry-run or env gate — no silent GCal create/update.",
+    relatedAction: { label: "Promotion workbench", href: "/admin/campaign-events/calendar-promotion" },
+  },
+  {
+    term: "tentative_calendar",
+    shortTooltip: "Kelly tentative Google lane",
+    expanded: "Proposed events may appear on tentative calendar only after explicit promotion.",
+  },
+  {
+    term: "official_calendar",
+    shortTooltip: "Kelly official Google lane",
+    expanded: "Approved events may promote to official calendar — human Promote + gates.",
+  },
+  {
+    term: "promotion_readiness",
+    shortTooltip: "READY / WARNING / BLOCKED",
+    expanded: "Deterministic checks before any Google write — fix blockers first.",
+  },
+  {
+    term: "approval_inbox",
+    shortTooltip: "Packages awaiting candidate/operator",
+    expanded: "Approval packages queue — does not auto-send email.",
+  },
+  {
+    term: "reimbursement_finalized",
+    shortTooltip: "Month packet locked",
+    expanded: "Finalized months need reopen draft before corrections.",
+  },
+  {
+    term: "travel_appendix",
+    shortTooltip: "Non-reimbursed travel lines",
+    expanded: "Denied, personal, hold, and pending lines listed separately from approved totals.",
+  },
+  {
+    term: "website_intake",
+    shortTooltip: "Public form → ledger bridge",
+    expanded: "Website schedule submissions create tentative ledger rows — operator reviews before promotion.",
+  },
+  {
+    term: "duplicate_risk",
+    shortTooltip: "Possible duplicate event",
+    expanded: "Title/date/host similarity flagged — confirm before approving.",
+  },
+  {
+    term: "conflict_risk",
+    shortTooltip: "Schedule overlap warning",
+    expanded: "Overlapping events flagged — resolve before calendar promotion.",
+  },
+  {
+    term: "ai_observation",
+    shortTooltip: "Internal UX signal",
+    expanded: "Append-only operator telemetry — metadata only, not external analytics.",
+    relatedAction: { label: "AI command center", href: "/admin/ai-command-center#observations" },
+  },
+  {
+    term: "memory_candidate",
+    shortTooltip: "Possible future memory",
+    expanded: "Planner suggests storage — human review before permanent memory.",
+  },
+  {
+    term: "human_approval_gate",
+    shortTooltip: "Human must confirm",
+    expanded: "AI may suggest; operator must click to send, promote, approve, or post.",
   },
 ];
 

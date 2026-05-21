@@ -9,6 +9,7 @@ import { MicrocopyHint } from "@/components/admin/campaign-events/MicrocopyHint"
 import { AgentNextActionPanel } from "@/components/admin/campaign-events/AgentNextActionPanel";
 import { loadNextActionsForPage } from "@/lib/agents/user-intelligence/load-next-actions";
 import { loadCampaignEventsDashboard } from "@/lib/campaign-events/load-campaign-events-dashboard";
+import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
 
 export const dynamic = "force-dynamic";
 
@@ -29,6 +30,7 @@ export default async function OfficialReimbursementPage({ searchParams }: Props)
   });
 
   return (
+    <AgentObservationTracker role="treasurer" pathname="/admin/campaign-events/reimbursement" period={period}>
     <div className="mx-auto flex max-w-[1100px] flex-col gap-6 pb-12">
       <div className="print:hidden">
         <CampaignEventsPageHeader
@@ -48,5 +50,6 @@ export default async function OfficialReimbursementPage({ searchParams }: Props)
       </div>
       <OfficialReimbursementReportView report={statusContext.report} statusContext={serializedContext} />
     </div>
+    </AgentObservationTracker>
   );
 }

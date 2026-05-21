@@ -11,6 +11,7 @@ import { MicrocopyHint } from "@/components/admin/campaign-events/MicrocopyHint"
 import { loadNextActionsForPage } from "@/lib/agents/user-intelligence/load-next-actions";
 import { AgentNextActionPanel } from "@/components/admin/campaign-events/AgentNextActionPanel";
 import { loadCampaignEventsDashboard } from "@/lib/campaign-events/load-campaign-events-dashboard";
+import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
 
 export const dynamic = "force-dynamic";
 
@@ -29,6 +30,7 @@ export default async function CampaignEventsCalendarSyncPage({ searchParams }: P
   });
 
   return (
+    <AgentObservationTracker role="campaign_manager" pathname="/admin/campaign-events/calendar-sync" period={month}>
     <div className="mx-auto flex max-w-[1200px] flex-col gap-6 pb-12">
       <CampaignEventsPageHeader
         eyebrow="Campaign Event OS · calendar truth"
@@ -61,5 +63,6 @@ export default async function CampaignEventsCalendarSyncPage({ searchParams }: P
       <AgentNextActionPanel actions={nextActions} compact />
       <CalendarSyncDashboard snapshot={snapshot} />
     </div>
+    </AgentObservationTracker>
   );
 }
