@@ -25,11 +25,12 @@ One polished **Kelly Grappe for SOS** operating system where every role sees the
 | 7 | **Event planning polish** | Execution sheet + workbook demo-ready | Sprint 6 functional |
 | 8 | **Hot wash / county memory V2** | Stronger memory signals, no fake ML | Sprint 7 V1 |
 | 9 | **Finance / compliance hardening** | Treasurer + filing readiness | Sprint 8; FIN-1 V2 |
-| 10 | **AI OS control maturity** | Gap → ticket → supervised build | 8A + tool-builder roadmap |
-| 11 | **Communications engine** | Contacts, outreach, nurture | Sprint 12 — not started |
-| 12 | **County workbench bridge** | Field manager + county priorities | Integration packet |
-| 13 | **Long-term memory** | Approved memory + pattern mining | Partial (7 + 5B) |
-| 14 | **SaaS** | Multi-tenant product | **After** Kelly presentation-ready |
+| 10 | **AI OS control maturity** | Gap → ticket → supervised build | Functional — feeds orchestration |
+| 11 | **Communications engine** | Contacts, outreach, nurture | **V2 functional** — Comms Intelligence sprint |
+| 12 | **County workbench bridge** | Field manager + county priorities | **V2 functional** — county command center |
+| **13** | **Campaign Orchestration Intelligence** | **Unified campaign brain** | **Phase 1 plan complete** — Phase 2 loader next |
+| 14 | **Long-term memory** | Approved memory + pattern mining | Partial — `ORCHESTRATION_MEMORY_MODEL.md` |
+| 15 | **SaaS** | Multi-tenant product | **After** Kelly presentation-ready |
 
 ---
 
@@ -68,7 +69,7 @@ One polished **Kelly Grappe for SOS** operating system where every role sees the
 ```text
 Stability → Deploy → Reimbursement truth → Dashboard polish
        → Training/unlocks → Copilots → Module render
-       → Comms/county (packet) → Memory V2 → SaaS (later)
+       → Comms/county (done) → Orchestration layer (Phase 2+) → Memory V2 → SaaS (later)
 ```
 
 ---

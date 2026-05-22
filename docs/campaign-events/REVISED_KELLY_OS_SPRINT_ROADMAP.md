@@ -4,6 +4,20 @@
 
 **Pause:** Multi-tenant productization until Kelly presentation-ready.
 
+**Next major build:** **Campaign Orchestration Intelligence Layer** — see `ORCHESTRATION_BUILD_ROADMAP.md` (Phase 1 ✅ planning; **Phase 2** recommended next).
+
+---
+
+## Phase O — Orchestration intelligence (NEW)
+
+| Phase | Focus | Status |
+|-------|--------|--------|
+| O1 | Inventory, architecture, 39 tool contracts, skeleton | ✅ Planning sprint |
+| O2 | Live CampaignState + reasoning API | ⬜ Next |
+| O3 | Cross-domain workflow packages | ⬜ |
+| O4 | Command center orchestration panel | ⬜ |
+| O5–O8 | Role delivery, memory, dashboards, demo | ⬜ |
+
 ---
 
 ## Phase A — Stability gate (immediate)

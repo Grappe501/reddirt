@@ -1,6 +1,39 @@
 # Kelly OS Build Status
 
-## Latest: Communications Intelligence V2
+## Latest: Campaign Orchestration Intelligence — Master Plan (Sprint 16)
+
+| Item | Status |
+|------|--------|
+| Intelligence inventory | **Complete** — `ORCHESTRATION_INTELLIGENCE_INVENTORY.md` |
+| 8-layer architecture | **Complete** — `CAMPAIGN_ORCHESTRATION_INTELLIGENCE_ARCHITECTURE.md` |
+| 20-domain map | **Complete** — `ORCHESTRATION_DOMAIN_MAP.md` |
+| CampaignState model (types + skeleton) | **Complete** |
+| Signal loader plan + partial impl | **Partial** — graceful degradation |
+| Reasoning engine V1 (deterministic) | **Partial** |
+| Workflow templates (6) | **Complete** (plan) |
+| Orchestration tool contracts (39) | **Registered** — `campaign_orchestration_intelligence` |
+| Memory + training plans | **Complete** (docs) |
+| Build roadmap Phases 1–8 | **Complete** |
+| `agents:test-orchestration-plan` | **Run on commit** |
+
+**Next milestone:** Phase 2 — live CampaignState from signals + API route.
+
+**Docs:** `ORCHESTRATION_BUILD_ROADMAP.md` · `ORCHESTRATION_MEMORY_MODEL.md` · `ORCHESTRATION_TRAINING_AND_COPILOT_PLAN.md`
+
+---
+
+## Prior: Email OS Agent Tool Suite
+
+| Item | Status |
+|------|--------|
+| Email OS suite lifecycle (`email_os_suite`) | **Registered** (~58 tools) |
+| Deterministic helpers + agent router | **Functional** |
+| ECC / SendGrid / inbox / comms bridge tools | **Catalogged** |
+| `agents:test-email-os-suite` | **PASS** |
+
+---
+
+## Prior: Communications Intelligence V2
 
 | Item | Status |
 |------|--------|

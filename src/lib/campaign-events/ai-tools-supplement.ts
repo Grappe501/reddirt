@@ -28,7 +28,9 @@ import { SPRINT_COUNTY_INTELLIGENCE_CATALOG_ENTRIES } from "./ai-tools/sprint-co
 import { SPRINT_COUNTY_INTELLIGENCE_V2_CATALOG_ENTRIES } from "./ai-tools/sprint-county-intelligence-v2-tools";
 import { SPRINT_COMMUNICATIONS_CATALOG_ENTRIES } from "./ai-tools/sprint-communications-tools";
 import { SPRINT_COMMUNICATIONS_INTELLIGENCE_V2_CATALOG_ENTRIES } from "./ai-tools/sprint-communications-intelligence-v2-tools";
+import { SPRINT_EMAIL_OS_AGENT_CATALOG_ENTRIES } from "./ai-tools/sprint-email-os-agent-tools";
 import { SPRINT_VOLUNTEER_CATALOG_ENTRIES } from "./ai-tools/sprint-volunteer-tools";
+import { ORCHESTRATION_INTELLIGENCE_CATALOG_ENTRIES } from "./ai-tools/sprint-orchestration-intelligence-tools";
 
 const S = (s: AiToolEntry["status"]) => s;
 
@@ -160,7 +162,9 @@ export const SUPPLEMENT_TOOLS_BY_LIFECYCLE: Record<string, AiToolEntry[]> = {
     ...SPRINT_COMMUNICATIONS_CATALOG_ENTRIES,
     ...SPRINT_COMMUNICATIONS_INTELLIGENCE_V2_CATALOG_ENTRIES,
   ],
+  email_os_suite: SPRINT_EMAIL_OS_AGENT_CATALOG_ENTRIES,
   volunteer_system: SPRINT_VOLUNTEER_CATALOG_ENTRIES,
+  campaign_orchestration_intelligence: ORCHESTRATION_INTELLIGENCE_CATALOG_ENTRIES,
 };
 
 const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
@@ -301,6 +305,18 @@ const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
     order: 45,
     title: "Volunteer OS — statewide grassroots V1",
     tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.volunteer_system ?? [],
+  },
+  {
+    id: "email_os_suite",
+    order: 46,
+    title: "Email OS Agent Suite — ECC, SendGrid, inbox, comms intelligence",
+    tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.email_os_suite ?? [],
+  },
+  {
+    id: "campaign_orchestration_intelligence",
+    order: 47,
+    title: "Campaign Orchestration Intelligence — cross-domain campaign brain",
+    tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.campaign_orchestration_intelligence ?? [],
   },
 ];
 

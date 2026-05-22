@@ -8,6 +8,20 @@
 
 ---
 
+## Campaign Orchestration Intelligence (Sprint 16 — NEXT MAJOR MILESTONE)
+
+| Artifact | Path |
+|----------|------|
+| Inventory (16 systems) | [`ORCHESTRATION_INTELLIGENCE_INVENTORY.md`](./ORCHESTRATION_INTELLIGENCE_INVENTORY.md) |
+| Architecture (8 layers) | [`CAMPAIGN_ORCHESTRATION_INTELLIGENCE_ARCHITECTURE.md`](./CAMPAIGN_ORCHESTRATION_INTELLIGENCE_ARCHITECTURE.md) |
+| Domain map (20 domains) | [`ORCHESTRATION_DOMAIN_MAP.md`](./ORCHESTRATION_DOMAIN_MAP.md) |
+| Build roadmap | [`ORCHESTRATION_BUILD_ROADMAP.md`](./ORCHESTRATION_BUILD_ROADMAP.md) |
+| Tool contracts (**39**) | `src/lib/agents/orchestration/orchestration-tool-contracts.ts` |
+| Lifecycle id | `campaign_orchestration_intelligence` |
+| Test | `npm run agents:test-orchestration-plan` |
+
+---
+
 ## Global / All-Knowing Agent (SOSWebsite-wide inventory)
 
 | Artifact | Path |
@@ -246,7 +260,8 @@ Legacy catalog `appr-promote-official` remains idea — use Sprint 5 ids above f
 | Memory | `src/lib/communications/memory/` | functional |
 | Intelligence dashboard | `/admin/communications/intelligence` | functional |
 | Message Studio | `/admin/communications/studio` | functional V1 |
-| Tools V2 (38) | `sprint-communications-intelligence-v2-tools.ts` | functional |
+| Tools V2 (41) | `sprint-communications-intelligence-v2-tools.ts` | functional |
+| Email OS Suite (66) | `sprint-email-os-agent-tools.ts` | functional |
 
 **Docs:** `COMMUNICATIONS_INTELLIGENCE_SYSTEM.md`, `RELATIONSHIP_INTELLIGENCE_GRAPH.md`, `COMMUNICATION_SEQUENCE_ENGINE.md`
 

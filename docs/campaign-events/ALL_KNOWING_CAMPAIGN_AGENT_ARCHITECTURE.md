@@ -2,6 +2,8 @@
 
 **Status:** Design + inventory pass (May 2026). **No** autonomous writes, sends, or compliance certifications.
 
+**May 2026 update:** **Campaign Orchestration Intelligence Layer** is the next evolution of this architecture — cross-domain reasoning above the tool registry. See [`CAMPAIGN_ORCHESTRATION_INTELLIGENCE_ARCHITECTURE.md`](./CAMPAIGN_ORCHESTRATION_INTELLIGENCE_ARCHITECTURE.md).
+
 ---
 
 ## 1. North star
@@ -29,8 +31,9 @@ flowchart TB
   end
 
   subgraph orchestration [Orchestration layer]
+    COI["Campaign Orchestration Intelligence — diagnosis + workflows"]
     RTR["global-agent-router"]
-    CTX["context composers"]
+    CTX["context composers + CampaignState"]
     GATE["human-approval-gate-enforcer"]
     OSCTL["Agent OS Control Layer — observe/plan/prepare"]
   end

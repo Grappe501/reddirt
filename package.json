@@ -89,6 +89,8 @@
     "communications:test-intelligence": "tsx scripts/test-communications-intelligence.ts",
     "communications:test-relationships": "tsx scripts/test-communications-relationships.ts",
     "communications:test-writing-orchestration": "tsx scripts/test-communications-writing-orchestration.ts",
+    "agents:test-email-os-suite": "tsx scripts/test-email-os-agent-tools.ts",
+    "agents:test-orchestration-plan": "tsx scripts/test-orchestration-plan.ts",
     "campaign-events:test-volunteer-system": "tsx scripts/test-volunteer-system.ts",
     "compliance:april26:qa": "tsx scripts/compliance/qa-april26-ingest.ts",
     "compliance:approval:build": "tsx scripts/compliance/build-approval-queue.ts",
