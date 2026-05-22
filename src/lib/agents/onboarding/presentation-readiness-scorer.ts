@@ -19,8 +19,8 @@ export function scorePresentationReadiness(snapshot?: CampaignEventsDashboardSna
     gaps.push("Calendar sync stale banner visible");
     score -= 8;
   }
-  if (snapshot?.needsMileageReview) {
-    gaps.push("Mileage queue open — treasurer story needs context");
+  if (snapshot?.actionItems?.travelReview && snapshot.actionItems.travelReview > 0) {
+    gaps.push("Travel review queue open — treasurer story needs context");
     score -= 4;
   }
 
