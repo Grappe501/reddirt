@@ -72,6 +72,7 @@
     "agents:test-observations": "tsx scripts/test-agent-observations.ts",
     "agents:test-runtime": "tsx scripts/test-agent-runtime.ts",
     "agents:test-os-control": "tsx scripts/test-agent-os-control.ts",
+    "agents:test-dashboard-nav": "tsx scripts/test-dashboard-navigation-os.ts",
     "compliance:april26:qa": "tsx scripts/compliance/qa-april26-ingest.ts",
     "compliance:approval:build": "tsx scripts/compliance/build-approval-queue.ts",
     "compliance:qa-approval": "tsx scripts/compliance/qa-approval-workbench.ts",

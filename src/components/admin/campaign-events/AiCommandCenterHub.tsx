@@ -23,6 +23,10 @@ import { SPRINT8_CAMPAIGN_FINANCE_TOOL_CONTRACTS } from "@/lib/campaign-events/a
 import { loadOsControlBundle } from "@/lib/agents/os-control/load-os-control-bundle";
 import { CampaignOsControlPanel } from "./CampaignOsControlPanel";
 import { AGENT_OS_CONTROL_TOOL_CONTRACTS } from "@/lib/campaign-events/ai-tools/sprint-agent-os-control-tools";
+import { SPRINT9_DASHBOARD_NAV_TOOL_CONTRACTS } from "@/lib/campaign-events/ai-tools/sprint-dashboard-nav-9-tools";
+import { ExecutiveSummaryStrip } from "@/components/admin/navigation/ExecutiveSummaryStrip";
+import { WorkflowGuidanceCards } from "@/components/admin/navigation/WorkflowGuidanceCards";
+import { loadDashboardNavigationBundle } from "@/lib/dashboard-orchestration/load-dashboard-navigation-bundle";
 
 const AGENT_READINESS_PCT = 86;
 
@@ -45,6 +49,11 @@ export async function AiCommandCenterHub() {
   const osControl = await loadOsControlBundle(snapshot.period);
   const osControlSerialized = JSON.parse(JSON.stringify(osControl)) as typeof osControl;
   const osControlTools = AGENT_OS_CONTROL_TOOL_CONTRACTS.length;
+  const sprint9Tools = SPRINT9_DASHBOARD_NAV_TOOL_CONTRACTS.length;
+  const navBundle = await loadDashboardNavigationBundle(snapshot.period, {
+    pathname: "/admin/ai-command-center",
+    surface: "command_center",
+  });
 
   return (
     <AgentObservationTracker role="operator" pathname="/admin/ai-command-center" period={snapshot.period}>
@@ -68,6 +77,9 @@ export async function AiCommandCenterHub() {
             </Link>
           </div>
         </header>
+
+      <ExecutiveSummaryStrip summary={navBundle.executiveSummary} />
+      <WorkflowGuidanceCards cards={navBundle.guidanceCards} />
 
       <AgentCommandPalette role="operator" pathname="/admin/ai-command-center" period={snapshot.period} />
 

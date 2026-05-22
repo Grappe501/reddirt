@@ -3,6 +3,10 @@ import type { ReactNode } from "react";
 import { adminLogoutAction } from "@/app/admin/actions";
 import { CampaignPaidForBar } from "@/components/layout/CampaignPaidForBar";
 import { getCountyWorkbenchPortalUrl } from "@/lib/county/county-workbench-portal-url";
+import { CampaignOsNavRail } from "@/components/admin/navigation/CampaignOsNavRail";
+import { GlobalAiCommandPalette } from "@/components/admin/navigation/GlobalAiCommandPalette";
+import { OperatorContextProvider } from "@/components/admin/navigation/OperatorContextProvider";
+import type { CampaignOsNavGroup } from "@/lib/dashboard-orchestration/campaign-os-nav-config";
 
 const siteLinks: { href: string; label: string }[] = [
   { href: "/admin/content", label: "Overview" },
@@ -13,196 +17,117 @@ const siteLinks: { href: string; label: string }[] = [
   { href: "/admin/explainers", label: "Explainers" },
   { href: "/admin/media", label: "Media" },
   { href: "/admin/owned-media", label: "Owned media" },
-  { href: "/admin/owned-media/grid", label: "Media library grid" },
-  { href: "/admin/owned-media/batches", label: "Media ingest batches" },
   { href: "/admin/counties", label: "Counties" },
-  { href: "/admin/county-profiles", label: "County profiles" },
   { href: "/admin/county-intelligence", label: "County intel" },
-  { href: "/admin/organizing-intelligence", label: "Organizing intelligence (OIS)" },
-  { href: "/admin/blog", label: "Blog sync" },
   { href: "/admin/settings", label: "Settings" },
 ];
 
-const operationsLinks: { href: string; label: string }[] = [
-  { href: "/admin/ask-kelly", label: "Ask Kelly / onboarding" },
-  { href: "/admin/campaign-strategy", label: "Campaign strategy" },
-  { href: "/admin/workbench", label: "Campaign workbench" },
-  { href: "/admin/workbench/email-command-center", label: "Communication Command Center" },
-  { href: "/admin/workbench/ask-kelly-beta", label: "Ask Kelly (beta) triage" },
-  { href: "/admin/candidate-briefs", label: "Candidate briefs" },
-  { href: "/admin/style-guide", label: "Style & content hub" },
-  { href: "/admin/campaign-ops/community-equity", label: "Community equity outreach" },
-  { href: "/admin/intelligence", label: "Opposition intelligence (INTEL-3)" },
-  { href: "/admin/media-monitor", label: "Press monitor" },
-  { href: "/admin/workbench/comms", label: "Comms hub" },
-  { href: "/admin/narrative-distribution", label: "Narrative distribution" },
-  { href: "/admin/calendar-command-center", label: "Kelly Calendar Command Center" },
-  { href: "/admin/calendar-command-center/kelly", label: "Kelly candidate cockpit" },
-  { href: "/admin/calendar-command-center/week", label: "Calendar week view" },
-  { href: "/admin/calendar-command-center/coverage", label: "Event coverage + staffing" },
-  { href: "/admin/calendar-command-center/gotv", label: "GOTV goals" },
-  { href: "/admin/calendar-command-center/field-ops", label: "Field ops" },
-  { href: "/admin/calendar-command-center/build-status", label: "Calendar build status" },
-  { href: "/admin/workbench/calendar", label: "Calendar HQ" },
-  { href: "/admin/campaign-calendar/timeline", label: "Campaign calendar" },
-  { href: "/admin/campaign-events/workbench", label: "Campaign events workbench" },
-  { href: "/admin/campaign-events/review?month=2026-03&mode=chronological", label: "Month event review" },
-  { href: "/admin/ai-command-center", label: "AI command center (hub)" },
-  { href: "/admin/campaign-events/ai-tools", label: "Event AI tool package" },
-  { href: "/admin/campaign-events/travel-report?month=2026-03", label: "Monthly travel report" },
-  { href: "/admin/candidate-dashboard", label: "Candidate dashboard" },
-  { href: "/admin/campaign-manager-dashboard", label: "Campaign manager dashboard" },
-  { href: "/admin/campaign-events/month-readiness?month=2026-04", label: "April month readiness" },
-  { href: "/admin/campaign-events/march-2026", label: "March event ledger" },
-  { href: "/admin/travel-ledger", label: "Travel Ledger" },
-  { href: "/admin/workbench/festivals", label: "Community events feed" },
-  { href: "/admin/workbench/social", label: "Social workbench" },
-  { href: "/admin/events/community-suggestions", label: "Public event suggestions" },
-  { href: "/admin/events", label: "Events" },
-  { href: "/admin/tasks", label: "Tasks" },
-  { href: "/admin/asks", label: "Volunteer asks" },
-  { href: "/admin/volunteers/intake", label: "Volunteer sheet intake" },
-  { href: "/admin/relational-contacts", label: "Relational contacts (REL-2)" },
-  { href: "/admin/field-playbook", label: "Field plan (3-person model)" },
-  { href: "/admin/gotv", label: "GOTV" },
-  { href: "/admin/compliance-documents", label: "Compliance documents" },
-  { href: "/admin/financial-transactions", label: "Financial transactions (ledger)" },
-  { href: "/admin/budgets", label: "Budget plans (BUDGET-2)" },
-];
-
-const orchestratorLinks: { href: string; label: string }[] = [
-  { href: "/admin/orchestrator", label: "Command center" },
+const legacyOpsLinks: { href: string; label: string }[] = [
+  { href: "/admin/workbench", label: "Campaign workbench (UWR)" },
+  { href: "/admin/calendar-command-center", label: "Legacy calendar command center" },
+  { href: "/admin/travel-ledger", label: "Travel ledger (legacy)" },
+  { href: "/admin/orchestrator", label: "Orchestrator hub" },
   { href: "/admin/inbox", label: "Inbox" },
-  { href: "/admin/review-queue", label: "Review queue" },
-  { href: "/admin/feed", label: "Live feed" },
-  { href: "/admin/content-graph", label: "Content graph" },
-  { href: "/admin/distribution", label: "Distribution" },
-  { href: "/admin/platforms", label: "Platforms" },
-  { href: "/admin/settings/platforms", label: "Platform settings" },
-  { href: "/admin/media-library", label: "Media library" },
-  { href: "/admin/insights", label: "Insights" },
-  { href: "/admin/voter-import", label: "Voter file" },
 ];
 
-export function AdminBoardShell({ children }: { children: ReactNode }) {
+export function AdminBoardShell({
+  children,
+  campaignOsNavGroups,
+  campaignOsNavBadges = {},
+  activeMonth = "2026-03",
+  currentPathname = "/admin",
+}: {
+  children: ReactNode;
+  campaignOsNavGroups?: CampaignOsNavGroup[];
+  campaignOsNavBadges?: Record<string, number>;
+  activeMonth?: string;
+  currentPathname?: string;
+}) {
   const countyPortal = getCountyWorkbenchPortalUrl();
+  const showCampaignOs = Boolean(campaignOsNavGroups?.length);
 
   return (
-    <div className="flex min-h-screen bg-transparent text-kelly-text">
-      <aside className="flex w-[min(100%,280px)] flex-col border-r border-kelly-text/15 bg-kelly-text text-kelly-page">
-        <div className="border-b border-kelly-page/10 px-5 py-6">
-          <p className="font-body text-[10px] font-bold uppercase tracking-[0.28em] text-kelly-page/55">
-            Campaign site admin
-          </p>
-          <p className="mt-2 font-heading text-lg font-bold leading-tight">Content command center</p>
-          <p className="mt-2 font-body text-xs leading-relaxed text-kelly-page/65">
-            Site copy, media, and public-content orchestration — not movement ops dashboards.
-          </p>
-        </div>
-        <nav className="flex flex-1 flex-col gap-4 overflow-y-auto px-3 py-4" aria-label="Admin">
-          <div>
-            <p className="px-3 pb-1 font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-page/45">
-              Campaign operations
+    <OperatorContextProvider defaultMonth={activeMonth}>
+      <div className="flex min-h-screen bg-transparent text-kelly-text">
+        <aside className="flex w-[min(100%,300px)] flex-col border-r border-kelly-text/15 bg-kelly-text text-kelly-page">
+          <div className="border-b border-kelly-page/10 px-5 py-6">
+            <p className="font-body text-[10px] font-bold uppercase tracking-[0.28em] text-kelly-page/55">
+              Kelly Campaign OS
             </p>
-            <div className="flex flex-col gap-0.5">
-              {operationsLinks.map((l) => (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  className="rounded-md px-3 py-2.5 font-body text-sm font-medium text-kelly-page/90 transition hover:bg-kelly-page/10 hover:text-kelly-page"
-                >
-                  {l.label}
-                </Link>
-              ))}
-            </div>
+            <p className="mt-2 font-heading text-lg font-bold leading-tight">Operational command</p>
+            <p className="mt-2 font-body text-xs leading-relaxed text-kelly-page/65">
+              Unified navigation · AI command palette (Ctrl+K) · calm workflow routing.
+            </p>
           </div>
-          <div>
-            <p className="px-3 pb-1 font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-page/45">
-              Site content
-            </p>
-            <div className="flex flex-col gap-0.5">
-              {siteLinks.map((l) => (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  className="rounded-md px-3 py-2.5 font-body text-sm font-medium text-kelly-page/85 transition hover:bg-kelly-page/10 hover:text-kelly-page"
-                >
-                  {l.label}
-                </Link>
-              ))}
+          <nav className="flex flex-1 flex-col gap-3 overflow-y-auto px-3 py-4" aria-label="Campaign OS">
+            {showCampaignOs ? (
+              <CampaignOsNavRail groups={campaignOsNavGroups!} badges={campaignOsNavBadges} />
+            ) : null}
+            <div>
+              <p className="px-3 pb-1 font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-page/45">
+                Legacy & site
+              </p>
+              <div className="flex flex-col gap-0.5">
+                {legacyOpsLinks.map((l) => (
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    className="rounded-md px-3 py-2 font-body text-sm font-medium text-kelly-page/80 transition hover:bg-kelly-page/10 hover:text-kelly-page"
+                  >
+                    {l.label}
+                  </Link>
+                ))}
+              </div>
             </div>
-            {countyPortal ? (
-              <div className="mt-2 border-t border-kelly-page/10 pt-2">
-                <p className="px-3 pb-1 font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-page/45">
-                  County portal
-                </p>
+            <div>
+              <p className="px-3 pb-1 font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-page/45">
+                Site content
+              </p>
+              <div className="flex flex-col gap-0.5">
+                {siteLinks.map((l) => (
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    className="rounded-md px-3 py-2.5 font-body text-sm font-medium text-kelly-page/85 transition hover:bg-kelly-page/10 hover:text-kelly-page"
+                  >
+                    {l.label}
+                  </Link>
+                ))}
+              </div>
+              {countyPortal ? (
                 <a
                   href={`${countyPortal}/counties`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block rounded-md px-3 py-2.5 font-body text-sm font-medium text-kelly-page/90 transition hover:bg-kelly-page/10 hover:text-kelly-page"
+                  className="mt-2 block rounded-md px-3 py-2.5 font-body text-sm font-medium text-kelly-page/90 transition hover:bg-kelly-page/10"
                 >
-                  Coordination hub (live) ↗
+                  County portal ↗
                 </a>
-                <a
-                  href={`${countyPortal}/counties/regions/central-arkansas`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block rounded-md px-3 py-2.5 font-body text-sm font-medium text-kelly-page/90 transition hover:bg-kelly-page/10 hover:text-kelly-page"
-                >
-                  Central region · workbench ↗
-                </a>
-                <a
-                  href={`${countyPortal}/regions`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block rounded-md px-3 py-2.5 font-body text-sm font-medium text-kelly-page/90 transition hover:bg-kelly-page/10 hover:text-kelly-page"
-                >
-                  Arkansas regions (map) ↗
-                </a>
-              </div>
-            ) : null}
-          </div>
-          <div>
-            <p className="px-3 pb-1 font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-page/45">
-              Orchestrator
-            </p>
-            <div className="flex flex-col gap-0.5">
-              {orchestratorLinks.map((l) => (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  className="rounded-md px-3 py-2.5 font-body text-sm font-medium text-kelly-page/85 transition hover:bg-kelly-page/10 hover:text-kelly-page"
-                >
-                  {l.label}
-                </Link>
-              ))}
+              ) : null}
             </div>
+          </nav>
+          <div className="border-t border-kelly-page/10 p-4">
+            <form action={adminLogoutAction}>
+              <button
+                type="submit"
+                className="w-full rounded-md border border-kelly-page/25 px-3 py-2 font-body text-xs font-semibold uppercase tracking-wider text-kelly-page/90 transition hover:bg-kelly-page/10"
+              >
+                Sign out
+              </button>
+            </form>
+            <p className="mt-3 text-center font-body text-[10px] text-kelly-page/50">
+              Press <kbd className="rounded border border-kelly-page/30 px-1">Ctrl+K</kbd> for command palette
+            </p>
           </div>
-        </nav>
-        <div className="border-t border-kelly-page/10 p-4">
-          <form action={adminLogoutAction}>
-            <button
-              type="submit"
-              className="w-full rounded-md border border-kelly-page/25 px-3 py-2 font-body text-xs font-semibold uppercase tracking-wider text-kelly-page/90 transition hover:bg-kelly-page/10"
-            >
-              Sign out
-            </button>
-          </form>
-          <Link
-            href="/"
-            className="mt-3 block text-center font-body text-xs text-kelly-page/55 underline-offset-2 hover:text-kelly-page hover:underline"
-          >
-            View public site
-          </Link>
-        </div>
-      </aside>
-      <div className="flex min-h-screen flex-1 flex-col">
-        <main className="flex-1 px-6 py-10 lg:px-12 lg:py-12">{children}</main>
-        <div className="border-t border-kelly-text/10 bg-kelly-wash px-6 py-3 lg:px-12">
-          <CampaignPaidForBar variant="light" />
+        </aside>
+        <div className="flex min-h-screen flex-1 flex-col">
+          <main className="flex-1 px-6 py-8 lg:px-10 lg:py-10">{children}</main>
+          <div className="border-t border-kelly-text/10 bg-kelly-wash px-6 py-3 lg:px-10">
+            <CampaignPaidForBar variant="light" />
+          </div>
         </div>
       </div>
-    </div>
+      <GlobalAiCommandPalette role="operator" pathname={currentPathname} period={activeMonth} />
+    </OperatorContextProvider>
   );
 }

@@ -9,6 +9,10 @@ import { AgentNextActionPanel } from "@/components/admin/campaign-events/AgentNe
 import { AgentCommandPalette } from "@/components/agents/AgentCommandPalette";
 import type { NextActionResult } from "@/lib/agents/user-intelligence/next-action-engine";
 import { CampaignDashboardShell, DashboardSection, DashboardStatGrid, StatCard } from "./CampaignDashboardShell";
+import { ExecutiveSummaryStrip } from "@/components/admin/navigation/ExecutiveSummaryStrip";
+import { WorkflowGuidanceCards } from "@/components/admin/navigation/WorkflowGuidanceCards";
+import type { ExecutiveSummary } from "@/lib/dashboard-orchestration/executive-summary-builder";
+import type { WorkflowGuidanceCard } from "@/lib/dashboard-orchestration/workflow-guidance-generator";
 import { CandidateFinanceOverview } from "../finance/CandidateFinanceOverview";
 import type { CampaignFinanceSnapshot } from "@/lib/campaign-events/finance/load-campaign-finance-snapshot";
 
@@ -17,11 +21,15 @@ export function CandidateCampaignDashboard({
   reimbursementSummaries,
   financeSnapshot,
   nextActions,
+  executiveSummary,
+  guidanceCards,
 }: {
   snapshot: CampaignEventsDashboardSnapshot;
   reimbursementSummaries?: ReimbursementMonthSummary[];
   financeSnapshot?: CampaignFinanceSnapshot;
   nextActions?: NextActionResult;
+  executiveSummary?: ExecutiveSummary;
+  guidanceCards?: WorkflowGuidanceCard[];
 }) {
   const { period } = snapshot;
   const reviewHref = `/admin/campaign-events/review?month=${period}&mode=chronological`;
@@ -35,6 +43,9 @@ export function CandidateCampaignDashboard({
       description="Pending event approvals, monthly travel totals, upcoming calendar, and approval-package inbox. Admin-authenticated surface for Kelly and operators — no emails are sent from this page."
     >
       <ApprovalRecipientsBanner />
+
+      {executiveSummary ? <ExecutiveSummaryStrip summary={executiveSummary} /> : null}
+      {guidanceCards?.length ? <WorkflowGuidanceCards cards={guidanceCards} /> : null}
 
       <AgentCommandPalette role="candidate" pathname="/admin/candidate-dashboard" period={period} compact />
       {nextActions ? <AgentNextActionPanel actions={nextActions} compact /> : null}

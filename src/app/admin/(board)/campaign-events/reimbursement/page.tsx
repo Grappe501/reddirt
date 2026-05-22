@@ -17,6 +17,9 @@ import { AgentObservationTracker } from "@/components/agents/AgentObservationTra
 import { AgentCommandPalette } from "@/components/agents/AgentCommandPalette";
 import { TreasurerReadinessPanel } from "@/components/admin/campaign-events/finance/TreasurerReadinessPanel";
 import { loadCampaignFinanceSnapshot } from "@/lib/campaign-events/finance/load-campaign-finance-snapshot";
+import { ExecutiveSummaryStrip } from "@/components/admin/navigation/ExecutiveSummaryStrip";
+import { WorkflowGuidanceCards } from "@/components/admin/navigation/WorkflowGuidanceCards";
+import { loadDashboardNavigationBundle } from "@/lib/dashboard-orchestration/load-dashboard-navigation-bundle";
 
 export const dynamic = "force-dynamic";
 
@@ -48,12 +51,21 @@ export default async function OfficialReimbursementPage({ searchParams }: Props)
   const serializedOps = JSON.parse(JSON.stringify(operations));
   const { snapshot } = await loadCampaignEventsDashboard(period);
   const financeSnapshot = await loadCampaignFinanceSnapshot(period);
-  const nextActions = loadNextActionsForPage({
-    role: "treasurer",
-    pathname: "/admin/campaign-events/reimbursement",
-    period,
-    snapshot,
-  });
+  const [nextActions, navBundle] = await Promise.all([
+    Promise.resolve(
+      loadNextActionsForPage({
+        role: "treasurer",
+        pathname: "/admin/campaign-events/reimbursement",
+        period,
+        snapshot,
+      }),
+    ),
+    loadDashboardNavigationBundle(period, {
+      role: "campaign_manager",
+      pathname: "/admin/campaign-events/reimbursement",
+      surface: "reimbursement",
+    }),
+  ]);
 
   return (
     <AgentObservationTracker role="treasurer" pathname="/admin/campaign-events/reimbursement" period={period}>
@@ -72,6 +84,8 @@ export default async function OfficialReimbursementPage({ searchParams }: Props)
           {" · "}
           <MicrocopyHint term="approval_package" role="treasurer" />
         </p>
+        <ExecutiveSummaryStrip summary={navBundle.executiveSummary} />
+        <WorkflowGuidanceCards cards={navBundle.guidanceCards} />
         <AgentCommandPalette role="treasurer" pathname="/admin/campaign-events/reimbursement" period={period} compact />
         <AgentNextActionPanel actions={nextActions} compact />
       </div>

@@ -6,6 +6,7 @@ import { loadCampaignFinanceSnapshot } from "@/lib/campaign-events/finance/load-
 import { parseReviewMonth } from "@/lib/campaign-events/month-review/month-review-types";
 import { loadNextActionsForPage } from "@/lib/agents/user-intelligence/load-next-actions";
 import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
+import { loadDashboardNavigationBundle } from "@/lib/dashboard-orchestration/load-dashboard-navigation-bundle";
 
 export const dynamic = "force-dynamic";
 
@@ -14,10 +15,15 @@ type Props = { searchParams: Promise<{ month?: string }> };
 export default async function CandidateDashboardPage({ searchParams }: Props) {
   const sp = await searchParams;
   const month = parseReviewMonth(sp.month);
-  const [{ snapshot }, reimbursementSummaries, financeSnapshot] = await Promise.all([
+  const [{ snapshot }, reimbursementSummaries, financeSnapshot, navBundle] = await Promise.all([
     loadCampaignEventsDashboard(month),
     loadReimbursementMonthSummaries(),
     loadCampaignFinanceSnapshot(month),
+    loadDashboardNavigationBundle(month, {
+      role: "candidate",
+      pathname: "/admin/candidate-dashboard",
+      surface: "candidate_dashboard",
+    }),
   ]);
   const nextActions = loadNextActionsForPage({
     role: "candidate",
@@ -39,6 +45,8 @@ export default async function CandidateDashboardPage({ searchParams }: Props) {
         reimbursementSummaries={reimbursementSummaries}
         financeSnapshot={JSON.parse(JSON.stringify(financeSnapshot))}
         nextActions={nextActions}
+        executiveSummary={navBundle.executiveSummary}
+        guidanceCards={navBundle.guidanceCards}
       />
     </AgentObservationTracker>
   );

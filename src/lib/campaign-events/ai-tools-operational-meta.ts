@@ -10,6 +10,7 @@ import { SPRINT6_EVENT_PLANNING_TOOL_CONTRACTS } from "./ai-tools/sprint-event-p
 import { SPRINT7_EVENT_INTELLIGENCE_TOOL_CONTRACTS } from "./ai-tools/sprint-event-intelligence-7-tools";
 import { SPRINT8_CAMPAIGN_FINANCE_TOOL_CONTRACTS } from "./ai-tools/sprint-campaign-finance-8-tools";
 import { AGENT_OS_CONTROL_TOOL_CONTRACTS } from "./ai-tools/sprint-agent-os-control-tools";
+import { SPRINT9_DASHBOARD_NAV_TOOL_CONTRACTS } from "./ai-tools/sprint-dashboard-nav-9-tools";
 
 export type AiToolOperationalMeta = {
   implementationFiles: string[];
@@ -253,7 +254,8 @@ function sprint4OperationalOverride(tool: AiToolEntry): Partial<AiToolOperationa
     getContractById(SPRINT6_EVENT_PLANNING_TOOL_CONTRACTS, tool.id) ??
     getContractById(SPRINT7_EVENT_INTELLIGENCE_TOOL_CONTRACTS, tool.id) ??
     getContractById(SPRINT8_CAMPAIGN_FINANCE_TOOL_CONTRACTS, tool.id) ??
-    getContractById(AGENT_OS_CONTROL_TOOL_CONTRACTS, tool.id);
+    getContractById(AGENT_OS_CONTROL_TOOL_CONTRACTS, tool.id) ??
+    getContractById(SPRINT9_DASHBOARD_NAV_TOOL_CONTRACTS, tool.id);
   if (!c) return undefined;
   return {
     implementationFiles: [c.deterministicHelperPath],

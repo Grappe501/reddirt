@@ -18,6 +18,7 @@ import { SPRINT6_EVENT_PLANNING_CATALOG_ENTRIES } from "./ai-tools/sprint-event-
 import { SPRINT7_EVENT_INTELLIGENCE_CATALOG_ENTRIES } from "./ai-tools/sprint-event-intelligence-7-tools";
 import { SPRINT8_CAMPAIGN_FINANCE_CATALOG_ENTRIES } from "./ai-tools/sprint-campaign-finance-8-tools";
 import { AGENT_OS_CONTROL_CATALOG_ENTRIES } from "./ai-tools/sprint-agent-os-control-tools";
+import { SPRINT9_DASHBOARD_NAV_CATALOG_ENTRIES } from "./ai-tools/sprint-dashboard-nav-9-tools";
 
 const S = (s: AiToolEntry["status"]) => s;
 
@@ -135,6 +136,7 @@ export const SUPPLEMENT_TOOLS_BY_LIFECYCLE: Record<string, AiToolEntry[]> = {
   event_intelligence_sprint7: SPRINT7_EVENT_INTELLIGENCE_CATALOG_ENTRIES,
   campaign_finance_sprint8: SPRINT8_CAMPAIGN_FINANCE_CATALOG_ENTRIES,
   agent_os_control: AGENT_OS_CONTROL_CATALOG_ENTRIES,
+  dashboard_nav_sprint9: SPRINT9_DASHBOARD_NAV_CATALOG_ENTRIES,
 };
 
 const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
@@ -221,6 +223,12 @@ const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
     order: 38,
     title: "Agent OS Control Layer — supervised operating loop",
     tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.agent_os_control ?? [],
+  },
+  {
+    id: "dashboard_nav_sprint9",
+    order: 39,
+    title: "Sprint 9 — Dashboard & navigation operating system",
+    tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.dashboard_nav_sprint9 ?? [],
   },
 ];
 

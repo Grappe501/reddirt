@@ -25,8 +25,14 @@ This is the **live control board**. Update at the end of every sprint slice.
 | 7 | Hot wash intelligence + county memory | **Complete** (V1 deterministic) | ~82% | ~58% |
 | 8 | Finance + compliance operations | **Complete** (V1 deterministic) | ~85% | ~62% |
 | 8A | Agent OS Control Layer | **Complete** (V1 supervised loop) | ~88% | ~65% |
-| 9 | Dashboard + nav polish | Partial | ~55% | ~40% |
-| 10 | Client productization | Not started | — | — |
+| 9 | Dashboard + navigation OS | **Complete** (V1 calm UX) | ~82% | ~58% |
+| 10 | Client productization + SaaS | Not started | — | — |
+| 11 | Full AI orchestration (delta) | **Partial** (8A shipped core loop) | ~74% | ~50% |
+| 12 | Communications + relationships | Not started | — | — |
+| 13 | County OS integration | Not started (packet required) | — | — |
+| 14 | Compliance + finance automation | Partial (Sprint 8 base) | ~70% | ~45% |
+| 15 | Learning memory engine | Partial (Sprint 7 base) | ~65% | ~40% |
+| 16 | All-knowing campaign agent | Vision / partial runtime | ~76% | — |
 
 **AI catalog maturity (whole repo catalog):** ~65% average points — see `buildCommandCenterSnapshot()`; not the same as Sprint 1 reimbursement readiness.
 
@@ -284,13 +290,17 @@ Gated SendGrid send, HTML+text template, JSON approval tokens, public `/campaign
 
 ---
 
-## Sprint 9 — Dashboard + navigation polish
+## Sprint 9 — Dashboard + navigation operating system
 
-**Build:** Single Campaign OS command center; simplify nav; current-month defaults; edge-to-edge candidate/CM views; treasurer scaffold; mobile-friendly; dedupe routes.
+**Status:** **Complete** (May 2026).
 
-**Today:** Candidate + CM dashboards exist with month query params; main hub still `/admin/workbench`.
+**Delivered:** Unified Campaign OS left rail (`AdminBoardShell`), workflow-group nav, global Ctrl+K palette, operator context session (localStorage), workflow router V1, adaptive dashboard orchestrator, cognitive load analyzer, executive summary strips, workflow guidance cards, 20 Sprint 9 AI tools.
 
-**Success:** Non-technical CM can run the system without guidance.
+**Docs:** `DASHBOARD_NAVIGATION_OPERATING_SYSTEM.md`, `OPERATOR_COGNITIVE_LOAD_SYSTEM.md`, `AI_WORKFLOW_GUIDANCE_ENGINE.md`, `COMMAND_PALETTE_OPERATING_MODEL.md`
+
+**Test:** `npm run agents:test-dashboard-nav`
+
+**Success:** Operators land on summary-first surfaces with unified nav and plain-language routing; focus mode reduces clutter.
 
 ---
 
@@ -299,6 +309,21 @@ Gated SendGrid send, HTML+text template, JSON approval tokens, public `/campaign
 **Build:** Client config, branding, role portals, external dashboard, deployment checklist, demo seed, onboarding, SaaS docs.
 
 **Success:** Sellable campaign service, not only Kelly internal OS.
+
+---
+
+## Sprints 11–16 (backlog)
+
+Canonical scope: [`REMAINING_CAMPAIGN_OS_SPRINTS.md`](./REMAINING_CAMPAIGN_OS_SPRINTS.md).
+
+| Sprint | Focus | Repo note |
+|--------|-------|-----------|
+| 11 | AI orchestration layer | **Do not rebuild 8A** — extend cross-domain orchestration |
+| 12 | Comms + relationship engine | EmailWorkflowItem + new workbench |
+| 13 | County OS integration | `countyWorkbench/` via integration packet only |
+| 14 | Compliance + finance automation | Builds on Sprint 8 treasurer / audit paths |
+| 15 | Learning memory engine | Builds on Sprint 7 county memory + blueprints |
+| 16 | All-knowing agent | Convergence; human-gated execution |
 
 ---
 

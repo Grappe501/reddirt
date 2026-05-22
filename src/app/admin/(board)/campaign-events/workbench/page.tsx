@@ -11,6 +11,9 @@ import { CampaignEventsMonthNav } from "@/components/admin/campaign-events/Campa
 import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
 import { MicrocopyHint } from "@/components/admin/campaign-events/MicrocopyHint";
 import { AgentCommandPalette } from "@/components/agents/AgentCommandPalette";
+import { ExecutiveSummaryStrip } from "@/components/admin/navigation/ExecutiveSummaryStrip";
+import { WorkflowGuidanceCards } from "@/components/admin/navigation/WorkflowGuidanceCards";
+import { loadDashboardNavigationBundle } from "@/lib/dashboard-orchestration/load-dashboard-navigation-bundle";
 
 export const dynamic = "force-dynamic";
 
@@ -21,6 +24,10 @@ export default async function CampaignEventsWorkbenchPage({ searchParams }: Prop
   const month = parseReviewMonth(sp.month);
   const { period, rows, seed, jsonFreshness } = await loadCampaignEventsWorkbench({ period: month });
   const serialized = serializeWorkbenchRows(rows);
+  const navBundle = await loadDashboardNavigationBundle(period, {
+    pathname: "/admin/campaign-events/workbench",
+    surface: "workbench",
+  });
 
   return (
     <AgentObservationTracker role="campaign_manager" pathname="/admin/campaign-events/workbench" period={period}>
@@ -87,6 +94,8 @@ export default async function CampaignEventsWorkbenchPage({ searchParams }: Prop
       <p className="font-body text-xs text-kelly-text/60">
         <MicrocopyHint term="duplicate_risk" role="campaign_manager" /> · <MicrocopyHint term="website_intake" role="campaign_manager" />
       </p>
+      <ExecutiveSummaryStrip summary={navBundle.executiveSummary} />
+      <WorkflowGuidanceCards cards={navBundle.guidanceCards} />
       <AgentCommandPalette role="campaign_manager" pathname="/admin/campaign-events/workbench" period={period} compact />
 
       <InfoBanner tone={jsonFreshness.isStale ? "amber" : "default"}>

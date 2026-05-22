@@ -68,7 +68,17 @@ export type UserUxObservationEvent =
   | "agent_recommendation_ignored"
   | "system_blocker_detected"
   | "system_health_changed"
-  | "domain_handoff_recommended";
+  | "domain_handoff_recommended"
+  | "dashboard_focus_changed"
+  | "workflow_reentry_detected"
+  | "operator_overwhelm_detected"
+  | "navigation_shortcut_used"
+  | "ai_command_palette_used"
+  | "workflow_guidance_followed"
+  | "workflow_guidance_ignored"
+  | "dashboard_card_collapsed"
+  | "dashboard_card_expanded"
+  | "operator_focus_mode_entered";
 
 export type UserObservationEntry = {
   id: string;
@@ -192,4 +202,14 @@ export const USER_UX_EVENT_LABELS: Record<UserUxObservationEvent, string> = {
   system_blocker_detected: "System blocker detected",
   system_health_changed: "System health changed",
   domain_handoff_recommended: "Domain handoff recommended",
+  dashboard_focus_changed: "Dashboard focus changed",
+  workflow_reentry_detected: "Workflow reentry detected",
+  operator_overwhelm_detected: "Operator overwhelm detected",
+  navigation_shortcut_used: "Navigation shortcut used",
+  ai_command_palette_used: "AI command palette used",
+  workflow_guidance_followed: "Workflow guidance followed",
+  workflow_guidance_ignored: "Workflow guidance ignored",
+  dashboard_card_collapsed: "Dashboard card collapsed",
+  dashboard_card_expanded: "Dashboard card expanded",
+  operator_focus_mode_entered: "Operator focus mode entered",
 };

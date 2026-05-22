@@ -60,23 +60,31 @@ See `SPRINT4_AI_TOOLCHAIN.md` and `/admin/campaign-events/ai-tools` → **Sprint
 
 ---
 
-## Sprint map (0–10)
+## Sprint map (0–16)
 
-| Sprint | Name | Readiness (honest) | Success criterion |
-|--------|------|-------------------|-------------------|
+| Sprint | Name | Status | Success criterion |
+|--------|------|--------|-------------------|
 | **0** | Master system map + build control | **Complete** | Four docs in `docs/campaign-events/` |
-| **1** | Reimbursement go-live completion | Demo ~80%, paid ~45% | Clean March/April/May MTD reimbursement packets |
-| **2** | Website intake → ledger bridge | Gap: intake ≠ ledger | Public schedule appears in workbench / month review |
-| **3** | Google Calendar truth layer | Partial read; no approved write | Ledger sync status; manual sync; stale warnings |
-| **4** | Approval package automation | Package preview only; send gated | Secure approve/deny/hold; inbox on dashboards |
-| **5** | Approval → official GCal | Blocked on 3+4 | Human-confirmed promote; `googleEventUrl` saved |
-| **6** | Event planning full drilldown | Partial drilldown | Run of show, materials, briefings, execution sheet |
-| **7** | Hot wash + media intelligence | Admin queue exists; public upload future | Searchable event/county memory after approval |
-| **8** | Finance / FIN-1 / compliance bridge | FIN-1 list exists; no reimb bridge | Reimbursement → `FinancialTransaction` + audit trail |
-| **9** | Dashboard + navigation polish | Dashboards scaffolded | One command center; CM can run without guide |
-| **10** | Market / client productization | Internal Kelly only today | Sellable multi-tenant campaign service |
+| **1** | Reimbursement go-live | **Complete** | Clean month reimbursement packets |
+| **2** | Website intake → ledger bridge | **Complete** | Public schedule in workbench / month review |
+| **3** | Google Calendar truth layer | **Complete** | Sync visibility; gated write path |
+| **4** | Approval package + routing | **Complete** | Secure approve/deny/hold; inbox on dashboards |
+| **5** | GCal promotion workbench | **Complete** | Human-confirmed promote; `googleEventUrl` saved |
+| **6** | Event planning drilldown | **Complete** | Run of show, materials, briefings, execution sheet |
+| **7** | Hot wash + county memory | **Complete** | Event/county memory + learning loop |
+| **8** | Finance + compliance ops | **Complete** | Event finance, reimbursement ops, treasurer surfaces |
+| **8A** | Agent OS Control Layer | **Complete** | Supervised observe → plan → prepare → gate |
+| **9** | Dashboard + navigation OS | **Complete** (~82% UX) | Unified nav; executive summaries; global palette |
+| **10** | Client productization + SaaS | Not started | Multi-tenant deployable campaign platform |
+| **11** | Full AI orchestration (delta) | Partial (8A core) | Cross-domain orchestration; do not rebuild 8A |
+| **12** | Communications + relationships | Not started | Unified comms workbench + relationship memory |
+| **13** | County OS integration | Not started | RedDirt + countyWorkbench via integration packet |
+| **14** | Compliance + finance automation | Partial | Treasurer workspace; filing prep; audit exports |
+| **15** | Learning memory engine | Partial (7 base) | Organizational memory + evolving recommendations |
+| **16** | All-knowing campaign agent | Vision | Conversational OS; human-supervised convergence |
 
 Detail per sprint: [`BUILD_SPRINT_STATUS.md`](./BUILD_SPRINT_STATUS.md).  
+Remaining scope (9–16): [`REMAINING_CAMPAIGN_OS_SPRINTS.md`](./REMAINING_CAMPAIGN_OS_SPRINTS.md).  
 AI tool mapping: [`AI_AGENT_TOOL_BUILD_MAP.md`](./AI_AGENT_TOOL_BUILD_MAP.md).  
 Dependencies: [`SYSTEM_DEPENDENCY_GRAPH.md`](./SYSTEM_DEPENDENCY_GRAPH.md).
 

@@ -15,6 +15,12 @@ import { MicrocopyHint } from "@/components/admin/campaign-events/MicrocopyHint"
 import { CampaignDashboardShell, DashboardSection, DashboardStatGrid, StatCard } from "./CampaignDashboardShell";
 import { CampaignManagerFinancePanel } from "../finance/CampaignManagerFinancePanel";
 import type { CampaignFinanceSnapshot } from "@/lib/campaign-events/finance/load-campaign-finance-snapshot";
+import { ExecutiveSummaryStrip } from "@/components/admin/navigation/ExecutiveSummaryStrip";
+import { WorkflowGuidanceCards } from "@/components/admin/navigation/WorkflowGuidanceCards";
+import type { ExecutiveSummary } from "@/lib/dashboard-orchestration/executive-summary-builder";
+import type { WorkflowGuidanceCard } from "@/lib/dashboard-orchestration/workflow-guidance-generator";
+import type { AdaptiveDashboardPlan } from "@/lib/dashboard-orchestration/adaptive-dashboard-orchestrator";
+import { isCardCollapsed } from "@/lib/dashboard-orchestration/adaptive-dashboard-orchestrator";
 
 const AUTOMATION_SCAFFOLDS = [
   { label: "Approval emails", status: "Scaffold — recipients configured", href: "/admin/campaign-events/ai-tools" },
@@ -31,6 +37,9 @@ export function CampaignManagerOpsDashboard({
   nextActions,
   gapHighlight,
   frictionTop,
+  executiveSummary,
+  guidanceCards,
+  adaptivePlan,
 }: {
   snapshot: CampaignEventsDashboardSnapshot;
   reimbursementSummaries?: ReimbursementMonthSummary[];
@@ -38,6 +47,9 @@ export function CampaignManagerOpsDashboard({
   nextActions?: NextActionResult;
   gapHighlight?: CampaignGap;
   frictionTop?: WorkflowFrictionSignal[];
+  executiveSummary?: ExecutiveSummary;
+  guidanceCards?: WorkflowGuidanceCard[];
+  adaptivePlan?: AdaptiveDashboardPlan;
 }) {
   const { period } = snapshot;
   const monthSummary = reimbursementSummaries?.find((s) => s.month === period);
@@ -51,6 +63,9 @@ export function CampaignManagerOpsDashboard({
       description="Event operations, travel ledger snapshot, approval queues, and calendar health for the March pilot period. Orchestration hub links — email send remains disabled."
     >
       <ApprovalRecipientsBanner compact />
+
+      {executiveSummary ? <ExecutiveSummaryStrip summary={executiveSummary} /> : null}
+      {guidanceCards?.length ? <WorkflowGuidanceCards cards={guidanceCards} /> : null}
 
       <AgentCommandPalette role="campaign_manager" pathname="/admin/campaign-manager-dashboard" period={period} />
       {nextActions ? <AgentNextActionPanel actions={nextActions} /> : null}
@@ -268,6 +283,7 @@ export function CampaignManagerOpsDashboard({
         </DashboardStatGrid>
       </DashboardSection>
 
+      {adaptivePlan && !isCardCollapsed(adaptivePlan, "automation_scaffolds") ? (
       <DashboardSection title="Automation readiness (scaffold)">
         <ul className="space-y-2 font-body text-sm">
           {AUTOMATION_SCAFFOLDS.map((a) => (
@@ -280,6 +296,7 @@ export function CampaignManagerOpsDashboard({
           ))}
         </ul>
       </DashboardSection>
+      ) : null}
     </CampaignDashboardShell>
   );
 }

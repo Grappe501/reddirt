@@ -9,6 +9,7 @@ import { analyzeCampaignGaps } from "@/lib/agents/campaign-intelligence/campaign
 import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
 import { loadGlobalUserObservations } from "@/lib/agents/user-intelligence/user-observations";
 import { detectWorkflowFriction } from "@/lib/agents/user-intelligence/workflow-friction-detector";
+import { loadDashboardNavigationBundle } from "@/lib/dashboard-orchestration/load-dashboard-navigation-bundle";
 
 export const dynamic = "force-dynamic";
 
@@ -17,9 +18,15 @@ type Props = { searchParams: Promise<{ month?: string }> };
 export default async function CampaignManagerDashboardPage({ searchParams }: Props) {
   const sp = await searchParams;
   const month = parseReviewMonth(sp.month);
-  const [{ snapshot }, reimbursementSummaries] = await Promise.all([
+  const [{ snapshot }, reimbursementSummaries, financeSnapshot, navBundle] = await Promise.all([
     loadCampaignEventsDashboard(month),
     loadReimbursementMonthSummaries(),
+    loadCampaignFinanceSnapshot(month),
+    loadDashboardNavigationBundle(month, {
+      role: "campaign_manager",
+      pathname: "/admin/campaign-manager-dashboard",
+      surface: "campaign_manager_dashboard",
+    }),
   ]);
   const nextActions = loadNextActionsForPage({
     role: "campaign_manager",
@@ -45,6 +52,9 @@ export default async function CampaignManagerDashboardPage({ searchParams }: Pro
         nextActions={nextActions}
         gapHighlight={gapAnalysis.highestImpact}
         frictionTop={frictionTop}
+        executiveSummary={navBundle.executiveSummary}
+        guidanceCards={navBundle.guidanceCards}
+        adaptivePlan={navBundle.adaptivePlan}
       />
     </AgentObservationTracker>
   );
