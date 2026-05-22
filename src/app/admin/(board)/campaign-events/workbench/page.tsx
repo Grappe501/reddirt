@@ -16,6 +16,7 @@ import { WorkflowGuidanceCards } from "@/components/admin/navigation/WorkflowGui
 import { loadDashboardNavigationBundle } from "@/lib/dashboard-orchestration/load-dashboard-navigation-bundle";
 import { composeCountyDashboardContext } from "@/lib/agents/county-intelligence/county-intelligence-engine";
 import { CountyIntelligencePanel } from "@/components/admin/county-intelligence/CountyIntelligencePanel";
+import { CampaignGuidanceStrip } from "@/components/admin/guidance/CampaignGuidanceStrip";
 
 export const dynamic = "force-dynamic";
 
@@ -35,6 +36,7 @@ export default async function CampaignEventsWorkbenchPage({ searchParams }: Prop
   return (
     <AgentObservationTracker role="campaign_manager" pathname="/admin/campaign-events/workbench" period={period}>
     <div className="mx-auto flex max-w-[1400px] flex-col gap-6 pb-12">
+      <CampaignGuidanceStrip role="campaign_manager" pathname="/admin/campaign-events/workbench" pageLabel="Workbench" compact />
       <CampaignEventsPageHeader
         eyebrow="Campaign operations · batch review"
         title="Campaign Events Workbench"

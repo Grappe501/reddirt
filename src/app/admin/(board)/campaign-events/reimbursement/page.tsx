@@ -20,6 +20,7 @@ import { loadCampaignFinanceSnapshot } from "@/lib/campaign-events/finance/load-
 import { ExecutiveSummaryStrip } from "@/components/admin/navigation/ExecutiveSummaryStrip";
 import { WorkflowGuidanceCards } from "@/components/admin/navigation/WorkflowGuidanceCards";
 import { loadDashboardNavigationBundle } from "@/lib/dashboard-orchestration/load-dashboard-navigation-bundle";
+import { CampaignGuidanceStrip } from "@/components/admin/guidance/CampaignGuidanceStrip";
 
 export const dynamic = "force-dynamic";
 
@@ -79,6 +80,7 @@ export default async function OfficialReimbursementPage({ searchParams }: Props)
         <CampaignEventsNav />
         <TravelReimbursementWorkflowNav month={period} active="reimbursement" />
         <TravelReimbursementMonthNav activeMonth={period} activeBase="reimbursement" />
+        <CampaignGuidanceStrip role="treasurer" pathname="/admin/campaign-events/reimbursement" pageLabel="Reimbursement" compact />
         <p className="font-body text-xs text-kelly-muted">
           <MicrocopyHint term="reimbursement" role="treasurer" />
           {" · "}

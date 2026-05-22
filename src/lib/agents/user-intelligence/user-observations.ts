@@ -101,7 +101,21 @@ export type UserUxObservationEvent =
   | "volunteer_no_show_logged"
   | "volunteer_thanked"
   | "volunteer_recruited_friend"
-  | "volunteer_power_of_five_started";
+  | "volunteer_power_of_five_started"
+  | "training_module_started"
+  | "training_module_completed"
+  | "training_path_recommended"
+  | "dashboard_module_added"
+  | "dashboard_module_removed"
+  | "dashboard_blueprint_saved"
+  | "role_copilot_opened"
+  | "role_copilot_task_started"
+  | "role_level_unlocked"
+  | "tool_gap_detected"
+  | "tool_build_ticket_created"
+  | "tool_build_ticket_accepted"
+  | "onboarding_role_selected"
+  | "onboarding_first_task_started";
 
 export type UserObservationEntry = {
   id: string;
@@ -258,4 +272,18 @@ export const USER_UX_EVENT_LABELS: Record<UserUxObservationEvent, string> = {
   volunteer_thanked: "Volunteer thanked",
   volunteer_recruited_friend: "Volunteer recruited friend",
   volunteer_power_of_five_started: "Volunteer Power of 5 started",
+  training_module_started: "Training module started",
+  training_module_completed: "Training module completed",
+  training_path_recommended: "Training path recommended",
+  dashboard_module_added: "Dashboard module added",
+  dashboard_module_removed: "Dashboard module removed",
+  dashboard_blueprint_saved: "Dashboard blueprint saved",
+  role_copilot_opened: "Role copilot opened",
+  role_copilot_task_started: "Role copilot task started",
+  role_level_unlocked: "Role level unlocked",
+  tool_gap_detected: "Tool gap detected",
+  tool_build_ticket_created: "Tool build ticket created",
+  tool_build_ticket_accepted: "Tool build ticket accepted",
+  onboarding_role_selected: "Onboarding role selected",
+  onboarding_first_task_started: "Onboarding first task started",
 };

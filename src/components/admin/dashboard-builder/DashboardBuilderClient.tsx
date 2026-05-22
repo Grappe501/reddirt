@@ -53,9 +53,14 @@ export function DashboardBuilderClient() {
           Produces a <strong>safe blueprint</strong> from the component registry — not arbitrary code. Human-supervised,
           Kelly SOS only.
         </p>
-        <Link href="/admin/ai-command-center" className="mt-3 inline-block text-xs font-bold text-kelly-navy underline">
-          ← Command center
-        </Link>
+        <div className="mt-3 flex flex-wrap gap-3">
+          <Link href="/admin/ai-command-center" className="text-xs font-bold text-kelly-navy underline">
+            ← Command center
+          </Link>
+          <Link href="/admin/ai-command-center/dashboard-builder/preview" className="text-xs font-bold text-kelly-navy underline">
+            Module preview →
+          </Link>
+        </div>
       </header>
 
       <section className="space-y-4 rounded-2xl border border-kelly-text/10 bg-kelly-page p-5">

@@ -12,6 +12,7 @@ import { detectWorkflowFriction } from "@/lib/agents/user-intelligence/workflow-
 import { loadDashboardNavigationBundle } from "@/lib/dashboard-orchestration/load-dashboard-navigation-bundle";
 import { composeCountyDashboardContext } from "@/lib/agents/county-intelligence/county-intelligence-engine";
 import { loadVolunteerSystemBundle } from "@/lib/campaign-events/volunteers/load-volunteer-bundle";
+import { CampaignGuidanceStrip } from "@/components/admin/guidance/CampaignGuidanceStrip";
 
 export const dynamic = "force-dynamic";
 
@@ -48,6 +49,9 @@ export default async function CampaignManagerDashboardPage({ searchParams }: Pro
     >
       <div className="mx-auto max-w-[1200px] px-0">
         <CampaignEventsMonthNav activeMonth={month} basePath="campaign-manager-dashboard" />
+      </div>
+      <div className="mx-auto max-w-[1200px] px-4 pb-2">
+        <CampaignGuidanceStrip role="campaign_manager" pathname="/admin/campaign-manager-dashboard" pageLabel="CM dashboard" compact />
       </div>
       <CampaignManagerOpsDashboard
         countyStatewide={countyStatewide}

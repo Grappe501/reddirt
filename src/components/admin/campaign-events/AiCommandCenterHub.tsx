@@ -42,6 +42,7 @@ import { loadCommunicationsBundle } from "@/lib/campaign-events/communications/l
 import { CommunicationsCommandCenterPanel } from "@/components/admin/campaign-events/CommunicationsCommandCenterPanel";
 import { loadVolunteerSystemBundle } from "@/lib/campaign-events/volunteers/load-volunteer-bundle";
 import { VolunteerIntelligencePanel } from "@/components/admin/volunteers/VolunteerIntelligencePanel";
+import { KellyOsIntelligencePanels } from "@/components/admin/campaign-events/KellyOsIntelligencePanels";
 
 const AGENT_READINESS_PCT = 86;
 
@@ -125,6 +126,8 @@ export async function AiCommandCenterHub() {
         </header>
 
       <KellyOsCompletionPlanPanel presentationScore={presentation.score} presentationLabel={presentation.label} />
+
+      <KellyOsIntelligencePanels presentationScore={presentation.score} presentationLabel={presentation.label} />
 
       <CommunicationsCommandCenterPanel bundle={communicationsBundle} />
 

@@ -10,6 +10,7 @@ import { loadDashboardNavigationBundle } from "@/lib/dashboard-orchestration/loa
 import { composeCountyDashboardContext } from "@/lib/agents/county-intelligence/county-intelligence-engine";
 import { loadVolunteerSystemBundle } from "@/lib/campaign-events/volunteers/load-volunteer-bundle";
 import { VolunteerIntelligencePanel } from "@/components/admin/volunteers/VolunteerIntelligencePanel";
+import { CampaignGuidanceStrip } from "@/components/admin/guidance/CampaignGuidanceStrip";
 
 export const dynamic = "force-dynamic";
 
@@ -44,6 +45,9 @@ export default async function CandidateDashboardPage({ searchParams }: Props) {
     >
       <div className="mx-auto max-w-[1200px] px-0">
         <CampaignEventsMonthNav activeMonth={month} basePath="candidate-dashboard" />
+      </div>
+      <div className="mx-auto max-w-[1200px] px-4 pb-2">
+        <CampaignGuidanceStrip role="candidate" pathname="/admin/candidate-dashboard" pageLabel="Candidate dashboard" compact />
       </div>
       <div className="mx-auto max-w-[1200px] px-4 pb-4">
         <VolunteerIntelligencePanel bundle={volunteerBundle} />
