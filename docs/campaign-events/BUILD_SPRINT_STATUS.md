@@ -1,10 +1,10 @@
 # Build Sprint Status
 
 **Lane:** `RedDirt/`  
-**Last updated:** Agent OS Control Layer pass (May 2026)  
-**Companion:** [`MASTER_CAMPAIGN_OS_ROADMAP.md`](./MASTER_CAMPAIGN_OS_ROADMAP.md)
+**Last updated:** Kelly OS planning audit (May 2026)  
+**Companion:** [`MASTER_CAMPAIGN_OS_ROADMAP.md`](./MASTER_CAMPAIGN_OS_ROADMAP.md) · [`REVISED_KELLY_OS_SPRINT_ROADMAP.md`](./REVISED_KELLY_OS_SPRINT_ROADMAP.md)
 
-This is the **live control board**. Update at the end of every sprint slice.
+This is the **live control board**. Update at the end of every sprint slice. **Full audit:** [`FULL_SPRINT_STATUS_REVIEW.md`](./FULL_SPRINT_STATUS_REVIEW.md).
 
 ---
 
@@ -28,7 +28,8 @@ This is the **live control board**. Update at the end of every sprint slice.
 | 9 | Dashboard + navigation OS | **Complete** (V1 calm UX) | ~82% | ~58% |
 | 10 | Multi-campaign SaaS + campaign intelligence | **Complete** (scaffold paused) | ~78% | ~52% |
 | 10.5 | Single-campaign hardening + dashboard builder | **Complete** | ~85% | ~62% |
-| 11 | Full AI orchestration (delta) | **Partial** (8A shipped core loop) | ~74% | ~50% |
+| 11 | Kelly OS planning audit (training/copilots/tool-builder) | **Complete** (docs + contract stubs) | N/A | N/A |
+| 11b | Full AI orchestration (delta) | **Partial** (8A shipped core loop) | ~74% | ~50% |
 | 12 | Communications + relationships | Not started | — | — |
 | 13 | County OS integration | Not started (packet required) | — | — |
 | 14 | Compliance + finance automation | Partial (Sprint 8 base) | ~70% | ~45% |
@@ -365,5 +366,13 @@ Days 4–7 compression safe: <yes|no + why>
 
 ## Cross-links
 
+- **Sprint audit:** [`FULL_SPRINT_STATUS_REVIEW.md`](./FULL_SPRINT_STATUS_REVIEW.md)
+- **Kelly completion plan:** [`KELLY_SINGLE_CAMPAIGN_OS_COMPLETION_PLAN.md`](./KELLY_SINGLE_CAMPAIGN_OS_COMPLETION_PLAN.md)
+- **Revised execution order:** [`REVISED_KELLY_OS_SPRINT_ROADMAP.md`](./REVISED_KELLY_OS_SPRINT_ROADMAP.md)
+- Training: [`CAMPAIGN_OS_TRAINING_LAYER.md`](./CAMPAIGN_OS_TRAINING_LAYER.md)
+- Copilots: [`ROLE_COPILOT_EXPANSION_PLAN.md`](./ROLE_COPILOT_EXPANSION_PLAN.md)
+- Progression: [`ROLE_PROGRESS_LEVELS_AND_UNLOCKS.md`](./ROLE_PROGRESS_LEVELS_AND_UNLOCKS.md)
+- Dashboard modules: [`DASHBOARD_MODULE_SYSTEM.md`](./DASHBOARD_MODULE_SYSTEM.md)
+- Tool builder: [`AI_TOOL_BUILDER_INTELLIGENCE_ROADMAP.md`](./AI_TOOL_BUILDER_INTELLIGENCE_ROADMAP.md)
 - Dependency graph: [`SYSTEM_DEPENDENCY_GRAPH.md`](./SYSTEM_DEPENDENCY_GRAPH.md)
 - AI tools per sprint: [`AI_AGENT_TOOL_BUILD_MAP.md`](./AI_AGENT_TOOL_BUILD_MAP.md)

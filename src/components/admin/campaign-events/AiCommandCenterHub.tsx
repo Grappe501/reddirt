@@ -34,6 +34,7 @@ import { SPRINT_SINGLE_CAMPAIGN_HARDENING_TOOL_CONTRACTS } from "@/lib/campaign-
 import { scorePresentationReadiness } from "@/lib/agents/onboarding/presentation-readiness-scorer";
 import { KELLY_CAMPAIGN_OS_TAGLINE } from "@/lib/campaign-tenancy/single-campaign-mode";
 import { appendGlobalUserObservation } from "@/lib/agents/user-intelligence/user-observations";
+import { KellyOsCompletionPlanPanel } from "@/components/admin/campaign-events/KellyOsCompletionPlanPanel";
 
 const AGENT_READINESS_PCT = 86;
 
@@ -111,6 +112,8 @@ export async function AiCommandCenterHub() {
             Intelligence + OS control ({osControlTools}) + dashboard builder ({hardeningTools}) · human-gated only
           </p>
         </header>
+
+      <KellyOsCompletionPlanPanel presentationScore={presentation.score} presentationLabel={presentation.label} />
 
       <CampaignIntelligenceV3Panel ctx={unified} />
 

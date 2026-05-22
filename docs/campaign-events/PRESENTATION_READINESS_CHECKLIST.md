@@ -14,10 +14,23 @@
 
 `scorePresentationReadiness()` in command center — target **≥82** for `demo_ready`.
 
-## Netlify
+## Netlify / CI (feature branch proof)
 
-- Run lane tests before merge to `main`
-- Repo-wide `typecheck` may still fail on unrelated lanes — do not claim green CI without verification
+Verified on `feature/kelly-schedule-settlement-dashboard` @ `1be16b0` (local, May 2026):
+
+| Gate | Result |
+|------|--------|
+| `npm run typecheck` | Pass (0 errors) |
+| `npm run lint` | Pass (warnings only) |
+| `npm run build` | Pass (~6 min) |
+| `agents:test-single-campaign-hardening` | Pass |
+| `agents:test-dashboard-nav` | Pass |
+| `agents:test-sprint-10` | Pass |
+
+`npm run check` = strategy-manual + lint + typecheck + build — run before merging to `main`.
+
+**Main branch** was not re-verified in this pass; merge only after `check` on the merge result.
+
 - Set `NEXT_PUBLIC_CAMPAIGN_OS_DEV_TENANCY` only in local dev (never production demo)
 
 ## Paused (do not deepen)

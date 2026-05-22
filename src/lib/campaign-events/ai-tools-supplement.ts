@@ -21,6 +21,7 @@ import { AGENT_OS_CONTROL_CATALOG_ENTRIES } from "./ai-tools/sprint-agent-os-con
 import { SPRINT9_DASHBOARD_NAV_CATALOG_ENTRIES } from "./ai-tools/sprint-dashboard-nav-9-tools";
 import { SPRINT10_CAMPAIGN_INTELLIGENCE_CATALOG_ENTRIES } from "./ai-tools/sprint-10-campaign-intelligence-tools";
 import { SPRINT_SINGLE_CAMPAIGN_HARDENING_CATALOG_ENTRIES } from "./ai-tools/sprint-single-campaign-hardening-tools";
+import { SPRINT_KELLY_OS_PLANNING_CATALOG_ENTRIES } from "./ai-tools/sprint-kelly-os-planning-tools";
 
 const S = (s: AiToolEntry["status"]) => s;
 
@@ -245,6 +246,12 @@ const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
     order: 41,
     title: "Single-campaign OS hardening + dashboard builder",
     tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.single_campaign_hardening ?? [],
+  },
+  {
+    id: "kelly_os_planning",
+    order: 42,
+    title: "Kelly OS planning — training, copilots, progression (stubs)",
+    tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.kelly_os_planning ?? [],
   },
 ];
 
