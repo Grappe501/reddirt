@@ -58,7 +58,17 @@ export type UserUxObservationEvent =
   | "receipt_missing_detected"
   | "finance_risk_detected"
   | "treasurer_review_requested"
-  | "campaign_spend_pattern_detected";
+  | "campaign_spend_pattern_detected"
+  | "os_state_snapshot_viewed"
+  | "agent_workflow_plan_generated"
+  | "agent_action_prepared"
+  | "gated_action_presented"
+  | "human_gate_required"
+  | "agent_recommendation_followed"
+  | "agent_recommendation_ignored"
+  | "system_blocker_detected"
+  | "system_health_changed"
+  | "domain_handoff_recommended";
 
 export type UserObservationEntry = {
   id: string;
@@ -172,4 +182,14 @@ export const USER_UX_EVENT_LABELS: Record<UserUxObservationEvent, string> = {
   finance_risk_detected: "Finance risk detected",
   treasurer_review_requested: "Treasurer review requested",
   campaign_spend_pattern_detected: "Campaign spend pattern detected",
+  os_state_snapshot_viewed: "OS state snapshot viewed",
+  agent_workflow_plan_generated: "Agent workflow plan generated",
+  agent_action_prepared: "Agent action prepared",
+  gated_action_presented: "Gated action presented",
+  human_gate_required: "Human gate required",
+  agent_recommendation_followed: "Agent recommendation followed",
+  agent_recommendation_ignored: "Agent recommendation ignored",
+  system_blocker_detected: "System blocker detected",
+  system_health_changed: "System health changed",
+  domain_handoff_recommended: "Domain handoff recommended",
 };

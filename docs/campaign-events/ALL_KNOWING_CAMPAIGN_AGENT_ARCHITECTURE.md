@@ -32,6 +32,7 @@ flowchart TB
     RTR["global-agent-router"]
     CTX["context composers"]
     GATE["human-approval-gate-enforcer"]
+    OSCTL["Agent OS Control Layer — observe/plan/prepare"]
   end
 
   subgraph registry [Master tool registry]

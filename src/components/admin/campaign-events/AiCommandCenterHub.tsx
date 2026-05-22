@@ -20,6 +20,9 @@ import { loadCampaignLearningSnapshot } from "@/lib/campaign-events/hot-wash-int
 import { SPRINT7_EVENT_INTELLIGENCE_TOOL_CONTRACTS } from "@/lib/campaign-events/ai-tools/sprint-event-intelligence-7-tools";
 import { loadCampaignFinanceSnapshot } from "@/lib/campaign-events/finance/load-campaign-finance-snapshot";
 import { SPRINT8_CAMPAIGN_FINANCE_TOOL_CONTRACTS } from "@/lib/campaign-events/ai-tools/sprint-campaign-finance-8-tools";
+import { loadOsControlBundle } from "@/lib/agents/os-control/load-os-control-bundle";
+import { CampaignOsControlPanel } from "./CampaignOsControlPanel";
+import { AGENT_OS_CONTROL_TOOL_CONTRACTS } from "@/lib/campaign-events/ai-tools/sprint-agent-os-control-tools";
 
 const AGENT_READINESS_PCT = 86;
 
@@ -39,16 +42,19 @@ export async function AiCommandCenterHub() {
   const sprint1Tools = AGENT_INTELLIGENCE_TOOL_CONTRACTS.length;
   const sprint7Tools = SPRINT7_EVENT_INTELLIGENCE_TOOL_CONTRACTS.length;
   const sprint8Tools = SPRINT8_CAMPAIGN_FINANCE_TOOL_CONTRACTS.length;
+  const osControl = await loadOsControlBundle(snapshot.period);
+  const osControlSerialized = JSON.parse(JSON.stringify(osControl)) as typeof osControl;
+  const osControlTools = AGENT_OS_CONTROL_TOOL_CONTRACTS.length;
 
   return (
     <AgentObservationTracker role="operator" pathname="/admin/ai-command-center" period={snapshot.period}>
       <div className="mx-auto flex max-w-[1100px] flex-col gap-6 pb-16 font-body">
         <header className="rounded-3xl border border-kelly-navy/20 bg-kelly-navy/[0.05] p-8">
-        <p className="text-xs font-bold uppercase tracking-wider text-kelly-slate">Agent Intelligence Sprint 3</p>
+        <p className="text-xs font-bold uppercase tracking-wider text-kelly-slate">Agent OS Control Layer + Intelligence Sprint 3</p>
         <h1 className="mt-2 font-heading text-3xl font-bold text-kelly-navy">All-knowing agent command center</h1>
         <p className="mt-3 max-w-2xl text-sm text-kelly-text/75">
-          Unified runtime + safe tool router — plain-language requests route to workflows without autonomous high-risk
-          actions. Readiness ~{AGENT_READINESS_PCT}%.
+          Supervised operating loop: observe system health, plan workflows, prepare gated packages ({osControlTools} control tools).
+          Runtime router blocks unsafe execution. Readiness ~{AGENT_READINESS_PCT}%.
         </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
@@ -66,6 +72,8 @@ export async function AiCommandCenterHub() {
       <AgentCommandPalette role="operator" pathname="/admin/ai-command-center" period={snapshot.period} />
 
       <AgentNextActionPanel actions={bundle.nextActions} />
+
+      <CampaignOsControlPanel bundle={osControlSerialized} />
 
       <AiCommandCenterDisclosure id="runtime" title="Runtime audit" defaultOpen={false}>
         <p className="text-xs">{loadRuntimeAudit().length} exchanges logged · Sprint 3 tools: {SPRINT3_AGENT_TOOL_CONTRACTS.length}</p>

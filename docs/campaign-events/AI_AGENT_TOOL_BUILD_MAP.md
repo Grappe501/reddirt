@@ -236,6 +236,22 @@ Legacy catalog `appr-promote-official` remains idea — use Sprint 5 ids above f
 
 ---
 
+### Agent OS Control Layer (May 2026)
+
+| Component | Path | Status |
+|-----------|------|--------|
+| State snapshot | `campaign-os-state-snapshot.ts` | functional |
+| Workflow planner | `os-workflow-planner.ts` | functional |
+| Action preparer | `agent-action-preparer.ts` | functional |
+| Gate matrix | `human-approval-gate-matrix.ts` | functional |
+| Tool readiness | `tool-execution-readiness.ts` | functional |
+| Command center | `CampaignOsControlPanel.tsx` | functional |
+| Tools (15) | `sprint-agent-os-control-tools.ts` | functional |
+
+**Test:** `npm run agents:test-os-control`
+
+---
+
 ### Sprint 8 — Finance + compliance operations (May 2026)
 
 | Component | Path | Status |

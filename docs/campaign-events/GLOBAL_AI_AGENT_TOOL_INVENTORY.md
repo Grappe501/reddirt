@@ -24,6 +24,8 @@
 **Folders searched:** `RedDirt/`, `countyWorkbench/`, `ajax/`, `phatlip/`, `sos-public/`, `kelly-travel-reimbursement/`, root docs.  
 **Not primary (duplicate forks):** `RedDirt-main-travel-ledger/`, `RedDirt-receipts-push/` — mirror older copies; treat `RedDirt/` as canonical.
 
+**Agent OS Control Layer (May 2026):** 15 tools in `sprint-agent-os-control-tools.ts` — orchestration over all sprint catalogs; UI at `/admin/ai-command-center`. See `AGENT_OS_CONTROL_LAYER.md`.
+
 ---
 
 ## Inventory legend

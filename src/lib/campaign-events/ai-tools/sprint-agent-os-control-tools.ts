@@ -1,0 +1,43 @@
+import { contractToCatalogEntry, type CampaignAiToolContract } from "./tool-contract";
+import type { AiToolEntry } from "../ai-tools-master-catalog";
+
+const SPRINT = 0;
+const L = "agent_os_control" as const;
+const OS = "src/lib/agents/os-control/";
+const ROUTE = ["/admin/ai-command-center"] as const;
+
+function c(partial: Omit<CampaignAiToolContract, "sprint" | "lifecycle" | "version">): CampaignAiToolContract {
+  return { sprint: SPRINT, lifecycle: L, version: "v1", priority: "P0", ...partial };
+}
+
+export const OBS_OS_CONTROL = [
+  "os_state_snapshot_viewed",
+  "agent_workflow_plan_generated",
+  "agent_action_prepared",
+  "gated_action_presented",
+  "human_gate_required",
+  "system_blocker_detected",
+  "system_health_changed",
+  "domain_handoff_recommended",
+] as const;
+
+const TOOLS: CampaignAiToolContract[] = [
+  c({ id: "campaign-os-state-observer", name: "Campaign OS state observer", purpose: "Gather cross-domain operating snapshot.", currentStatus: "functional", trigger: "Command center load", inputs: "period", outputs: "CampaignOsStateSnapshot", readsFrom: "ledger, finance, learning", writesTo: "—", humanApprovalRequired: false, riskLevel: "low", guardrails: "Read-only", deterministicHelperPath: `${OS}campaign-os-state-snapshot.ts`, routesUsingTool: [...ROUTE], observationEvents: ["os_state_snapshot_viewed"], futureAutomationPath: "", testChecklist: [] }),
+  c({ id: "campaign-os-health-scorer", name: "Campaign OS health scorer", purpose: "Score 0-100 from blockers.", currentStatus: "functional", trigger: "Snapshot build", inputs: "blockers", outputs: "systemHealthScore", readsFrom: "snapshot", writesTo: "—", humanApprovalRequired: false, riskLevel: "low", guardrails: "", deterministicHelperPath: `${OS}campaign-os-state-snapshot.ts`, routesUsingTool: [...ROUTE], observationEvents: ["system_health_changed"], futureAutomationPath: "", testChecklist: [] }),
+  c({ id: "campaign-os-workflow-planner", name: "Campaign OS workflow planner", purpose: "Rank multi-step operating plans.", currentStatus: "functional", trigger: "After snapshot", inputs: "CampaignOsStateSnapshot", outputs: "OsWorkflowPlan[]", readsFrom: "snapshot", writesTo: "—", humanApprovalRequired: false, riskLevel: "low", guardrails: "Plans only", deterministicHelperPath: `${OS}os-workflow-planner.ts`, routesUsingTool: [...ROUTE], observationEvents: ["agent_workflow_plan_generated"], futureAutomationPath: "", testChecklist: [] }),
+  c({ id: "agent-action-preparer", name: "Agent action preparer", purpose: "Prepare gated action packages.", currentStatus: "functional", trigger: "Control layer", inputs: "state + plans", outputs: "PreparedAgentAction[]", readsFrom: "snapshot", writesTo: "—", humanApprovalRequired: true, riskLevel: "medium", guardrails: "prepared_only", deterministicHelperPath: `${OS}agent-action-preparer.ts`, routesUsingTool: [...ROUTE], observationEvents: ["agent_action_prepared", "gated_action_presented"], futureAutomationPath: "", testChecklist: [] }),
+  c({ id: "human-approval-gate-matrix", name: "Human approval gate matrix", purpose: "Expose safe/gated/forbidden matrix.", currentStatus: "functional", trigger: "Command center", inputs: "—", outputs: "HumanApprovalGate[]", readsFrom: "matrix", writesTo: "—", humanApprovalRequired: false, riskLevel: "low", guardrails: "", deterministicHelperPath: `${OS}human-approval-gate-matrix.ts`, routesUsingTool: [...ROUTE], observationEvents: ["human_gate_required"], futureAutomationPath: "", testChecklist: [] }),
+  c({ id: "tool-execution-readiness-checker", name: "Tool execution readiness checker", purpose: "Map catalog tools to canExecute.", currentStatus: "functional", trigger: "Control panel", inputs: "master registry", outputs: "ToolExecutionReadiness[]", readsFrom: "registry", writesTo: "—", humanApprovalRequired: false, riskLevel: "low", guardrails: "", deterministicHelperPath: `${OS}tool-execution-readiness.ts`, routesUsingTool: [...ROUTE], observationEvents: [], futureAutomationPath: "", testChecklist: [] }),
+  c({ id: "gated-action-router", name: "Gated action router", purpose: "Route prepared actions to human review routes.", currentStatus: "functional", trigger: "Prepare action", inputs: "actionType", outputs: "reviewRoute", readsFrom: "gates", writesTo: "—", humanApprovalRequired: true, riskLevel: "medium", guardrails: "No execute", deterministicHelperPath: `${OS}agent-action-preparer.ts`, routesUsingTool: [...ROUTE], observationEvents: ["gated_action_presented"], futureAutomationPath: "", testChecklist: [] }),
+  c({ id: "operating-blocker-detector", name: "Operating blocker detector", purpose: "Aggregate activeBlockers from domains.", currentStatus: "functional", trigger: "Snapshot", inputs: "dashboard + queues", outputs: "blockers[]", readsFrom: "workbench", writesTo: "—", humanApprovalRequired: false, riskLevel: "low", guardrails: "", deterministicHelperPath: `${OS}campaign-os-state-snapshot.ts`, routesUsingTool: [...ROUTE], observationEvents: ["system_blocker_detected"], futureAutomationPath: "", testChecklist: [] }),
+  c({ id: "workflow-priority-ranker", name: "Workflow priority ranker", purpose: "Sort workflow plans by priority.", currentStatus: "functional", trigger: "Planner", inputs: "OsWorkflowPlan[]", outputs: "ranked", readsFrom: "plans", writesTo: "—", humanApprovalRequired: false, riskLevel: "low", guardrails: "", deterministicHelperPath: `${OS}os-workflow-planner.ts`, routesUsingTool: [...ROUTE], observationEvents: [], futureAutomationPath: "", testChecklist: [] }),
+  c({ id: "system-health-summary-writer", name: "System health summary writer", purpose: "Plain-language health + workflow line.", currentStatus: "functional", trigger: "Snapshot", inputs: "state", outputs: "summary text", readsFrom: "snapshot", writesTo: "—", humanApprovalRequired: false, riskLevel: "low", guardrails: "", deterministicHelperPath: `${OS}campaign-os-state-snapshot.ts`, routesUsingTool: [...ROUTE], observationEvents: [], futureAutomationPath: "", testChecklist: [] }),
+  c({ id: "prepared-action-review-builder", name: "Prepared action review builder", purpose: "Format prepared actions for UI.", currentStatus: "functional", trigger: "Control panel", inputs: "PreparedAgentAction[]", outputs: "UI cards", readsFrom: "preparer", writesTo: "—", humanApprovalRequired: false, riskLevel: "low", guardrails: "", deterministicHelperPath: `${OS}agent-action-preparer.ts`, routesUsingTool: [...ROUTE], observationEvents: [], futureAutomationPath: "", testChecklist: [] }),
+  c({ id: "agent-audit-loop-writer", name: "Agent audit loop writer", purpose: "Append runtime audit + observations.", currentStatus: "functional", trigger: "Control load", inputs: "runtime audit", outputs: "audit rows", readsFrom: "runtime-audit.json", writesTo: "audit append", humanApprovalRequired: false, riskLevel: "low", guardrails: "No PII", deterministicHelperPath: "src/lib/agents/runtime/runtime-audit.ts", routesUsingTool: [...ROUTE], observationEvents: [], futureAutomationPath: "", testChecklist: [] }),
+  c({ id: "campaign-os-autonomy-boundary-enforcer", name: "Campaign OS autonomy boundary enforcer", purpose: "Block forbidden action execution.", currentStatus: "functional", trigger: "Runtime router", inputs: "actionId", outputs: "allowed boolean", readsFrom: "gate matrix", writesTo: "—", humanApprovalRequired: false, riskLevel: "high", guardrails: "Deny forbidden", deterministicHelperPath: `${OS}human-approval-gate-matrix.ts`, routesUsingTool: [...ROUTE], observationEvents: ["human_gate_required"], futureAutomationPath: "", testChecklist: [] }),
+  c({ id: "domain-handoff-planner", name: "Domain handoff planner", purpose: "Recommend cross-domain handoffs.", currentStatus: "functional", trigger: "domainsNeedingAttention", inputs: "domains[]", outputs: "handoff routes", readsFrom: "snapshot", writesTo: "—", humanApprovalRequired: false, riskLevel: "low", guardrails: "", deterministicHelperPath: `${OS}os-workflow-planner.ts`, routesUsingTool: [...ROUTE], observationEvents: ["domain_handoff_recommended"], futureAutomationPath: "", testChecklist: [] }),
+  c({ id: "all-system-next-move-recommender", name: "All-system next move recommender", purpose: "Top 3 plans + prepared actions.", currentStatus: "functional", trigger: "Command center", inputs: "bundle", outputs: "topMoves", readsFrom: "load-os-control-bundle", writesTo: "—", humanApprovalRequired: false, riskLevel: "low", guardrails: "", deterministicHelperPath: `${OS}load-os-control-bundle.ts`, routesUsingTool: [...ROUTE], observationEvents: [], futureAutomationPath: "", testChecklist: [] }),
+];
+
+export const AGENT_OS_CONTROL_TOOL_CONTRACTS = TOOLS;
+export const AGENT_OS_CONTROL_CATALOG_ENTRIES: AiToolEntry[] = TOOLS.map(contractToCatalogEntry);

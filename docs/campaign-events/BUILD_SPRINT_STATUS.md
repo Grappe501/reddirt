@@ -1,7 +1,7 @@
 # Build Sprint Status
 
 **Lane:** `RedDirt/`  
-**Last updated:** Sprint 8 (May 2026)  
+**Last updated:** Agent OS Control Layer pass (May 2026)  
 **Companion:** [`MASTER_CAMPAIGN_OS_ROADMAP.md`](./MASTER_CAMPAIGN_OS_ROADMAP.md)
 
 This is the **live control board**. Update at the end of every sprint slice.
@@ -24,6 +24,7 @@ This is the **live control board**. Update at the end of every sprint slice.
 | 6 | Event planning drilldown | **Complete** (V1 workbook) | ~78% | ~55% |
 | 7 | Hot wash intelligence + county memory | **Complete** (V1 deterministic) | ~82% | ~58% |
 | 8 | Finance + compliance operations | **Complete** (V1 deterministic) | ~85% | ~62% |
+| 8A | Agent OS Control Layer | **Complete** (V1 supervised loop) | ~88% | ~65% |
 | 9 | Dashboard + nav polish | Partial | ~55% | ~40% |
 | 10 | Client productization | Not started | — | — |
 
@@ -268,6 +269,18 @@ Gated SendGrid send, HTML+text template, JSON approval tokens, public `/campaign
 **Test:** `npm run campaign-events:test-finance-operations`
 
 **Success:** Events, travel, receipts, and month reimbursement share one audit-ready finance intelligence layer.
+
+---
+
+## Agent OS Control Layer pass (pre–Sprint 9)
+
+**Status:** **Complete** (May 2026).
+
+**Delivered:** `src/lib/agents/os-control/*`, command center panel, 15 control tools, observation events, `npm run agents:test-os-control`.
+
+**Docs:** `AGENT_OS_CONTROL_LAYER.md`, `CAMPAIGN_OS_AUTONOMY_BOUNDARIES.md`
+
+**Success:** Agent observes OS health, plans workflows, prepares gated packages — humans execute high-risk actions.
 
 ---
 
