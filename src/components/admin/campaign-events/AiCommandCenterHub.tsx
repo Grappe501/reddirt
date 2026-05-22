@@ -30,6 +30,9 @@ import { loadDashboardNavigationBundle } from "@/lib/dashboard-orchestration/loa
 import { assembleUnifiedCampaignContext } from "@/lib/agents/campaign-intelligence/unified-campaign-context-assembler";
 import { CampaignIntelligenceV3Panel } from "@/components/admin/campaign-intelligence/CampaignIntelligenceV3Panel";
 import { SPRINT10_CAMPAIGN_INTELLIGENCE_TOOL_CONTRACTS } from "@/lib/campaign-events/ai-tools/sprint-10-campaign-intelligence-tools";
+import { SPRINT_SINGLE_CAMPAIGN_HARDENING_TOOL_CONTRACTS } from "@/lib/campaign-events/ai-tools/sprint-single-campaign-hardening-tools";
+import { scorePresentationReadiness } from "@/lib/agents/onboarding/presentation-readiness-scorer";
+import { KELLY_CAMPAIGN_OS_TAGLINE } from "@/lib/campaign-tenancy/single-campaign-mode";
 import { appendGlobalUserObservation } from "@/lib/agents/user-intelligence/user-observations";
 
 const AGENT_READINESS_PCT = 86;
@@ -56,6 +59,8 @@ export async function AiCommandCenterHub() {
   const sprint9Tools = SPRINT9_DASHBOARD_NAV_TOOL_CONTRACTS.length;
   const sprint10Tools = SPRINT10_CAMPAIGN_INTELLIGENCE_TOOL_CONTRACTS.length;
   const unified = await assembleUnifiedCampaignContext({ period: snapshot.period, pathname: "/admin/ai-command-center" });
+  const presentation = scorePresentationReadiness(snapshot);
+  const hardeningTools = SPRINT_SINGLE_CAMPAIGN_HARDENING_TOOL_CONTRACTS.length;
   const navBundle = await loadDashboardNavigationBundle(snapshot.period, {
     pathname: "/admin/ai-command-center",
     surface: "command_center",
@@ -82,23 +87,29 @@ export async function AiCommandCenterHub() {
     <AgentObservationTracker role="operator" pathname="/admin/ai-command-center" period={snapshot.period}>
       <div className="mx-auto flex max-w-[1100px] flex-col gap-6 pb-16 font-body">
         <header className="rounded-3xl border border-kelly-navy/20 bg-kelly-navy/[0.05] p-8">
-        <p className="text-xs font-bold uppercase tracking-wider text-kelly-slate">Command Center V3 · Sprint 10 intelligence</p>
-        <h1 className="mt-2 font-heading text-3xl font-bold text-kelly-navy">Campaign operating intelligence</h1>
+        <p className="text-xs font-bold uppercase tracking-wider text-kelly-slate">{KELLY_CAMPAIGN_OS_TAGLINE}</p>
+        <h1 className="mt-2 font-heading text-3xl font-bold text-kelly-navy">Kelly Campaign OS — command center</h1>
         <p className="mt-3 max-w-2xl text-sm text-kelly-text/75">
-          Unified context for {unified.tenantDisplayName}: strategic, finance, learning, operator psychology ({sprint10Tools} Sprint 10 tools).
-          OS control layer: {osControlTools} tools · human-gated execution.
+          Strategic intelligence, supervised workflows, and on-demand dashboard blueprints for Kelly SOS.
+          Presentation readiness: <strong>{presentation.score}/100</strong> ({presentation.label}).
         </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <Link
-              href="/admin/campaign-events/ai-tools"
-              className="rounded-full bg-kelly-navy px-5 py-2 text-sm font-bold text-white"
-            >
-              Full catalog ({counts.total})
+            <Link href="/admin/onboarding" className="rounded-full bg-kelly-navy px-5 py-2 text-sm font-bold text-white">
+              New user onboarding
+            </Link>
+            <Link href="/admin/ai-command-center/dashboard-builder" className="rounded-full border border-kelly-navy/30 px-5 py-2 text-sm font-bold text-kelly-navy">
+              Dashboard builder
+            </Link>
+            <Link href="/admin/campaign-events/ai-tools" className="rounded-full border px-5 py-2 text-sm font-bold">
+              Tool catalog ({counts.total})
             </Link>
             <Link href="/admin/campaign-manager-dashboard?month=2026-04" className="rounded-full border px-5 py-2 text-sm font-bold">
               CM dashboard
             </Link>
           </div>
+          <p className="mt-3 text-[10px] text-kelly-text/50">
+            Intelligence + OS control ({osControlTools}) + dashboard builder ({hardeningTools}) · human-gated only
+          </p>
         </header>
 
       <CampaignIntelligenceV3Panel ctx={unified} />

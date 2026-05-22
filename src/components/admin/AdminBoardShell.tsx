@@ -7,9 +7,11 @@ import { CampaignOsNavRail } from "@/components/admin/navigation/CampaignOsNavRa
 import { GlobalAiCommandPalette } from "@/components/admin/navigation/GlobalAiCommandPalette";
 import { OperatorContextProvider } from "@/components/admin/navigation/OperatorContextProvider";
 import type { CampaignOsNavGroup } from "@/lib/dashboard-orchestration/campaign-os-nav-config";
+import { KellySingleCampaignBadge } from "@/components/admin/campaign-tenancy/KellySingleCampaignBadge";
 import { GlobalCampaignSwitcher } from "@/components/admin/campaign-tenancy/GlobalCampaignSwitcher";
 import { CampaignBrandingStyles } from "@/components/admin/campaign-tenancy/CampaignBrandingStyles";
 import type { CampaignBranding, CampaignTenant } from "@/lib/campaign-tenancy/types";
+import { showDevTenancyUi, KELLY_CAMPAIGN_OS_TAGLINE } from "@/lib/campaign-tenancy/single-campaign-mode";
 
 const siteLinks: { href: string; label: string }[] = [
   { href: "/admin/content", label: "Overview" },
@@ -67,13 +69,15 @@ export function AdminBoardShell({
               Kelly Campaign OS
             </p>
             <p className="mt-2 font-heading text-lg font-bold leading-tight">Operational command</p>
-            <p className="mt-2 font-body text-xs leading-relaxed text-kelly-page/65">
-              Unified navigation · AI command palette (Ctrl+K) · calm workflow routing.
-            </p>
+            <p className="mt-2 font-body text-xs leading-relaxed text-kelly-page/65">{KELLY_CAMPAIGN_OS_TAGLINE}</p>
           </div>
           <nav className="flex flex-1 flex-col gap-3 overflow-y-auto px-3 py-4" aria-label="Campaign OS">
-            {tenants.length > 0 ? (
-              <GlobalCampaignSwitcher tenants={tenants} activeTenantId={activeTenantId} branding={tenantBranding} />
+            <KellySingleCampaignBadge />
+            {showDevTenancyUi() && tenants.length > 1 ? (
+              <details className="mx-3 text-[10px] text-kelly-page/50">
+                <summary className="cursor-pointer font-bold uppercase tracking-wider">Developer · tenancy</summary>
+                <GlobalCampaignSwitcher tenants={tenants} activeTenantId={activeTenantId} branding={tenantBranding} />
+              </details>
             ) : null}
             {showCampaignOs ? (
               <CampaignOsNavRail groups={campaignOsNavGroups!} badges={campaignOsNavBadges} />

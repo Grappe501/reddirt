@@ -23,6 +23,7 @@ export function buildCampaignOsNavGroups(activeMonth = "2026-03"): CampaignOsNav
       id: "today",
       label: "Today",
       links: [
+        { href: "/admin/onboarding", label: "New here? Start" },
         { href: "/admin/ai-command-center", label: "Command center" },
         { href: `/admin/campaign-manager-dashboard?month=${month}`, label: "CM dashboard", roles: ["campaign_manager", "operator"] },
         { href: `/admin/candidate-dashboard?month=${month}`, label: "Candidate dashboard", roles: ["candidate"] },
@@ -119,8 +120,8 @@ export function buildCampaignOsNavGroups(activeMonth = "2026-03"): CampaignOsNav
       links: [
         { href: "/admin/ai-command-center", label: "Agent runtime hub" },
         { href: "/admin/ai-command-center/memory-review", label: "Memory review" },
-        { href: "/admin/campaign-onboarding", label: "Campaign onboarding" },
-        { href: "/admin/campaign-portals", label: "Client portals" },
+        { href: "/admin/onboarding", label: "New user onboarding" },
+        { href: "/admin/ai-command-center/dashboard-builder", label: "Dashboard builder" },
       ],
     },
     {

@@ -5,11 +5,17 @@ import {
   getTenantContext,
   listTenantsForUser,
 } from "./campaign-tenant-store";
+import { showDevTenancyUi, KELLY_SOS_TENANT_ID } from "./single-campaign-mode";
 
 export async function resolveActiveCampaignTenant(userId = "admin") {
   const jar = await cookies();
-  const fromCookie = jar.get(ACTIVE_TENANT_COOKIE)?.value?.trim();
   const available = listTenantsForUser(userId);
+  if (!showDevTenancyUi()) {
+    const ctx = getTenantContext(KELLY_SOS_TENANT_ID);
+    if (!ctx) throw new Error("Kelly SOS tenant missing from store");
+    return { tenantId: KELLY_SOS_TENANT_ID, ...ctx, available };
+  }
+  const fromCookie = jar.get(ACTIVE_TENANT_COOKIE)?.value?.trim();
   const tenantId =
     fromCookie && available.some((t) => t.id === fromCookie) ? fromCookie : available[0]?.id ?? DEFAULT_TENANT_ID;
   const ctx = getTenantContext(tenantId);

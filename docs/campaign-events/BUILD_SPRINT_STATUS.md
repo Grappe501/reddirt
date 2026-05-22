@@ -26,7 +26,8 @@ This is the **live control board**. Update at the end of every sprint slice.
 | 8 | Finance + compliance operations | **Complete** (V1 deterministic) | ~85% | ~62% |
 | 8A | Agent OS Control Layer | **Complete** (V1 supervised loop) | ~88% | ~65% |
 | 9 | Dashboard + navigation OS | **Complete** (V1 calm UX) | ~82% | ~58% |
-| 10 | Multi-campaign SaaS + campaign intelligence | **Complete** (V1 foundation) | ~78% | ~52% |
+| 10 | Multi-campaign SaaS + campaign intelligence | **Complete** (scaffold paused) | ~78% | ~52% |
+| 10.5 | Single-campaign hardening + dashboard builder | **Complete** | ~85% | ~62% |
 | 11 | Full AI orchestration (delta) | **Partial** (8A shipped core loop) | ~74% | ~50% |
 | 12 | Communications + relationships | Not started | — | — |
 | 13 | County OS integration | Not started (packet required) | — | — |

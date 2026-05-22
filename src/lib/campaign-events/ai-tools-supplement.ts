@@ -20,6 +20,7 @@ import { SPRINT8_CAMPAIGN_FINANCE_CATALOG_ENTRIES } from "./ai-tools/sprint-camp
 import { AGENT_OS_CONTROL_CATALOG_ENTRIES } from "./ai-tools/sprint-agent-os-control-tools";
 import { SPRINT9_DASHBOARD_NAV_CATALOG_ENTRIES } from "./ai-tools/sprint-dashboard-nav-9-tools";
 import { SPRINT10_CAMPAIGN_INTELLIGENCE_CATALOG_ENTRIES } from "./ai-tools/sprint-10-campaign-intelligence-tools";
+import { SPRINT_SINGLE_CAMPAIGN_HARDENING_CATALOG_ENTRIES } from "./ai-tools/sprint-single-campaign-hardening-tools";
 
 const S = (s: AiToolEntry["status"]) => s;
 
@@ -139,6 +140,7 @@ export const SUPPLEMENT_TOOLS_BY_LIFECYCLE: Record<string, AiToolEntry[]> = {
   agent_os_control: AGENT_OS_CONTROL_CATALOG_ENTRIES,
   dashboard_nav_sprint9: SPRINT9_DASHBOARD_NAV_CATALOG_ENTRIES,
   campaign_intelligence_sprint10: SPRINT10_CAMPAIGN_INTELLIGENCE_CATALOG_ENTRIES,
+  single_campaign_hardening: SPRINT_SINGLE_CAMPAIGN_HARDENING_CATALOG_ENTRIES,
 };
 
 const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
@@ -237,6 +239,12 @@ const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
     order: 40,
     title: "Sprint 10 — Multi-campaign SaaS + campaign intelligence",
     tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.campaign_intelligence_sprint10 ?? [],
+  },
+  {
+    id: "single_campaign_hardening",
+    order: 41,
+    title: "Single-campaign OS hardening + dashboard builder",
+    tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.single_campaign_hardening ?? [],
   },
 ];
 
