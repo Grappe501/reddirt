@@ -18,3 +18,15 @@ Each copilot includes mission, focus, first/daily/weekly tasks, training module 
 - `getRoleAllowedModules(role, level)` — progression + training unlocks (guidance only)
 
 Human gates unchanged: no autonomous email, calendar write, approvals, or finance post.
+
+## Tool-backed intelligence (V2)
+
+- **Engine:** `copilot-intelligence-engine.ts` → `CopilotIntelligenceBrief`
+- **Task packages:** `copilot-task-package-builder.ts`
+- **Readiness:** `copilot-readiness-scorer.ts`
+- **Safe routes:** `copilot-safe-action-router.ts`
+- **Role rules:** `role-copilot-intelligence-rules.ts`
+- **UI:** `/admin/ai-command-center/copilots`
+- **Tools:** 35 contracts in `kelly_os_copilot_tooling` lifecycle
+
+See `COPILOT_TOOLING_STATUS.md`.

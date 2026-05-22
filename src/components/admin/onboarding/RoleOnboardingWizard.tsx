@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import {
   completeRoleOnboarding,
@@ -8,6 +8,8 @@ import {
   type OnboardingRoleId,
   type RoleOnboardingProfile,
 } from "@/lib/agents/onboarding/role-onboarding-engine";
+import { buildCopilotIntelligenceBrief } from "@/lib/agents/role-copilots/copilot-intelligence-engine";
+import { CopilotBriefCard } from "@/components/admin/copilots/CopilotBriefCard";
 
 export function RoleOnboardingWizard() {
   const [step, setStep] = useState(0);
@@ -26,6 +28,14 @@ export function RoleOnboardingWizard() {
   });
   const [role, setRole] = useState<OnboardingRoleId>("campaign_manager");
   const [result, setResult] = useState<ReturnType<typeof completeRoleOnboarding> | null>(null);
+
+  const resultBrief = useMemo(
+    () =>
+      result
+        ? buildCopilotIntelligenceBrief({ role: result.copilotRole, skillLevel: "beginner" })
+        : null,
+    [result],
+  );
 
   const finish = () => {
     setResult(completeRoleOnboarding(profile, role));
@@ -150,6 +160,7 @@ export function RoleOnboardingWizard() {
           </ul>
           <h3 className="text-xs font-bold uppercase">Training path</h3>
           <p className="text-xs text-kelly-muted">{result.trainingPath.moduleIds.slice(0, 5).join(" · ")}</p>
+          {resultBrief ? <CopilotBriefCard brief={resultBrief} compact /> : null}
           <div className="flex flex-wrap gap-2">
             <Link href={`/admin/training?role=${result.copilotRole}`} className="rounded-full bg-kelly-navy px-4 py-2 text-xs font-bold text-white">Training center</Link>
             <Link href="/admin/ai-command-center/dashboard-builder/preview" className="rounded-full border px-4 py-2 text-xs font-bold">Dashboard preview</Link>

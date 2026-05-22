@@ -115,7 +115,17 @@ export type UserUxObservationEvent =
   | "tool_build_ticket_created"
   | "tool_build_ticket_accepted"
   | "onboarding_role_selected"
-  | "onboarding_first_task_started";
+  | "onboarding_first_task_started"
+  | "copilot_brief_viewed"
+  | "copilot_task_package_created"
+  | "copilot_task_started"
+  | "copilot_task_completed"
+  | "copilot_training_recommended"
+  | "copilot_escalation_recommended"
+  | "copilot_risk_warning_shown"
+  | "copilot_safe_action_clicked"
+  | "copilot_dashboard_module_recommended"
+  | "copilot_tool_gap_detected";
 
 export type UserObservationEntry = {
   id: string;
@@ -286,4 +296,14 @@ export const USER_UX_EVENT_LABELS: Record<UserUxObservationEvent, string> = {
   tool_build_ticket_accepted: "Tool build ticket accepted",
   onboarding_role_selected: "Onboarding role selected",
   onboarding_first_task_started: "Onboarding first task started",
+  copilot_brief_viewed: "Copilot brief viewed",
+  copilot_task_package_created: "Copilot task package created",
+  copilot_task_started: "Copilot task started",
+  copilot_task_completed: "Copilot task completed",
+  copilot_training_recommended: "Copilot training recommended",
+  copilot_escalation_recommended: "Copilot escalation recommended",
+  copilot_risk_warning_shown: "Copilot risk warning shown",
+  copilot_safe_action_clicked: "Copilot safe action clicked",
+  copilot_dashboard_module_recommended: "Copilot dashboard module recommended",
+  copilot_tool_gap_detected: "Copilot tool gap detected",
 };

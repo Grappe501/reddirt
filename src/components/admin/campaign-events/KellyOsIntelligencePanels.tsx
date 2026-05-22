@@ -33,9 +33,14 @@ export function KellyOsIntelligencePanels({ presentationScore, presentationLabel
             </li>
           ))}
         </ul>
-        <Link href="/admin/training" className="mt-2 inline-block text-xs font-bold text-kelly-navy underline">
-          Training center →
-        </Link>
+        <div className="mt-2 flex gap-3">
+          <Link href="/admin/ai-command-center/copilots" className="text-xs font-bold text-kelly-navy underline">
+            Copilot command center →
+          </Link>
+          <Link href="/admin/training" className="text-xs font-bold text-kelly-navy underline">
+            Training center →
+          </Link>
+        </div>
       </AiCommandCenterDisclosure>
 
       <AiCommandCenterDisclosure title={`Training progress (${moduleCount} modules)`}>

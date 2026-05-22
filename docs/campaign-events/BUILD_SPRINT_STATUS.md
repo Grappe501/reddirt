@@ -1,3 +1,19 @@
+# Kelly OS Build Status
+
+## Latest: AI Copilot Tooling Expansion
+
+| Item | Status |
+|------|--------|
+| Copilot intelligence engine | **Functional** |
+| Task package builder | **Functional** |
+| Readiness scorer (6 dimensions) | **Functional** |
+| 35 copilot tool contracts | **Registered** |
+| `/admin/ai-command-center/copilots` | **Live** |
+| Guidance strip → intelligence brief | **Wired** |
+| Test `agents:test-copilot-tooling` | **PASS** |
+
+---
+
 # Kelly OS Intelligence Sprint — Build Status
 
 **Sprint:** Intelligence, Training, Copilot, Dashboard Module  

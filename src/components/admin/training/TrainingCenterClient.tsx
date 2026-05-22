@@ -15,6 +15,8 @@ import {
 import { getUnlockedDashboardModules } from "@/lib/agents/training/training-unlock-engine";
 import { buildProgressionSummary } from "@/lib/agents/progression/progression-summary";
 import { recommendNextTrainingModule } from "@/lib/agents/training/training-recommendation-engine";
+import { buildCopilotIntelligenceBrief } from "@/lib/agents/role-copilots/copilot-intelligence-engine";
+import { CopilotBriefCard } from "@/components/admin/copilots/CopilotBriefCard";
 
 const ROLES = listRoleCopilotIds();
 
@@ -46,7 +48,15 @@ export function TrainingCenterClient({ initialRole }: { initialRole?: string }) 
   const next = useMemo(() => recommendNextTrainingModule(role, progress.completedModuleIds), [role, progress.completedModuleIds]);
   const unlocked = useMemo(() => getUnlockedDashboardModules(progress.completedModuleIds), [progress.completedModuleIds]);
   const progression = useMemo(() => buildProgressionSummary(role, progress.completedModuleIds), [role, progress.completedModuleIds]);
-  const copilot = getRoleCopilot(role);
+  const intelBrief = useMemo(
+    () =>
+      buildCopilotIntelligenceBrief({
+        role,
+        skillLevel: "beginner",
+        completedTrainingIds: progress.completedModuleIds,
+      }),
+    [role, progress.completedModuleIds],
+  );
 
   const persist = useCallback(
     (nextProgress: typeof progress) => {
@@ -126,13 +136,7 @@ export function TrainingCenterClient({ initialRole }: { initialRole?: string }) 
         </button>
       </section>
 
-      {copilot ? (
-        <section className="rounded-2xl border border-kelly-navy/15 bg-kelly-navy/[0.04] p-4 text-sm">
-          <p className="text-xs font-bold uppercase text-kelly-slate">Role copilot</p>
-          <p className="mt-1 text-kelly-navy">{copilot.mission}</p>
-          <p className="mt-2 text-xs text-kelly-muted">Escalation: {copilot.escalationPath}</p>
-        </section>
-      ) : null}
+      <CopilotBriefCard brief={intelBrief} compact />
 
       <section className="rounded-2xl border bg-kelly-page p-4">
         <h2 className="text-xs font-bold uppercase text-kelly-slate">Recommended path</h2>

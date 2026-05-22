@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useMemo } from "react";
-import { buildRoleCopilotBrief } from "@/lib/agents/role-copilots/role-copilot-engine";
+import { buildCopilotIntelligenceBrief } from "@/lib/agents/role-copilots/copilot-intelligence-engine";
 import type { RoleCopilotId } from "@/lib/agents/role-copilots/role-copilot-types";
 import { recommendTrainingForPathname } from "@/lib/agents/training/training-recommendation-engine";
 
@@ -14,7 +14,10 @@ type Props = {
 };
 
 export function CampaignGuidanceStrip({ role = "campaign_manager", pathname = "", pageLabel, compact }: Props) {
-  const brief = useMemo(() => buildRoleCopilotBrief(role), [role]);
+  const intel = useMemo(
+    () => buildCopilotIntelligenceBrief({ role, pathname, skillLevel: "intermediate" }),
+    [role, pathname],
+  );
   const training = useMemo(
     () => (pathname ? recommendTrainingForPathname(pathname, role) : null),
     [pathname, role],
@@ -24,8 +27,11 @@ export function CampaignGuidanceStrip({ role = "campaign_manager", pathname = ""
     return (
       <div className="flex flex-wrap items-center gap-2 rounded-xl border border-kelly-navy/10 bg-kelly-navy/[0.03] px-3 py-2 text-xs text-kelly-muted">
         <span>
-          <strong className="text-kelly-navy">Copilot:</strong> {brief.focusToday[0] ?? brief.mission.slice(0, 60)}
+          <strong className="text-kelly-navy">Copilot:</strong> {intel.recommendedNextTask.title}
         </span>
+        <Link href={`/admin/ai-command-center/copilots?role=${role}`} className="font-bold text-kelly-navy underline">
+          Copilot
+        </Link>
         <Link href={`/admin/training?role=${role}`} className="font-bold text-kelly-navy underline">
           Training
         </Link>
@@ -39,7 +45,10 @@ export function CampaignGuidanceStrip({ role = "campaign_manager", pathname = ""
         {pageLabel ? `Help · ${pageLabel}` : "Need help with this?"}
       </p>
       <p className="mt-1 text-kelly-navy">
-        <strong>Your copilot says:</strong> {brief.mission}
+        <strong>Your copilot says:</strong> {intel.snapshot.mission}
+      </p>
+      <p className="mt-1 text-xs text-kelly-muted">
+        <strong>Next task:</strong> {intel.recommendedNextTask.title} (~{intel.recommendedNextTask.estimatedMinutes} min)
       </p>
       {training ? (
         <p className="mt-2 text-xs text-kelly-muted">
