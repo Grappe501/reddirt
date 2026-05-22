@@ -334,6 +334,16 @@ Update runbook stage notes when a sprint closes.
 
 ---
 
+## Sprint 14 — Volunteer OS (25 tools)
+
+| Contract file | `src/lib/campaign-events/ai-tools/sprint-volunteer-tools.ts` |
+| Lifecycle | `volunteer_system` (order 45) |
+| Hub | `/admin/volunteers` |
+| Test | `npm run campaign-events:test-volunteer-system` |
+| Docs | `VOLUNTEER_MANAGEMENT_SYSTEM.md`, `VOLUNTEER_COPILOTS.md` |
+
+---
+
 ## Maintenance checklist
 
 After each sprint:

@@ -4,7 +4,7 @@ import type { AiToolEntry } from "../ai-tools-master-catalog";
 const SPRINT = 13;
 const L = "communications_system" as const;
 const CM = "src/lib/campaign-events/communications/";
-const ROUTES = ["/admin/communications", "/admin/workbench/email-command-center", "/admin/ai-command-center"] as const;
+const ROUTES: string[] = ["/admin/communications", "/admin/workbench/email-command-center", "/admin/ai-command-center"];
 
 function c(partial: Omit<CampaignAiToolContract, "sprint" | "lifecycle" | "version">): CampaignAiToolContract {
   return { sprint: SPRINT, lifecycle: L, version: "v1", priority: "P0", ...partial };

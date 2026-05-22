@@ -49,12 +49,13 @@
 
 | Sprint slice | Deliverables |
 |--------------|--------------|
+| D0 | **Done:** Communications V1 (`/admin/communications`, readiness, 25 tools) |
 | D1 | Contact graph scaffold + host follow-up workbench |
 | D2 | Outreach templates (human send) |
-| D3 | Volunteer nurture queue |
+| D3 | **Done (V1):** Volunteer OS command center + training + draft comms |
 | D4 | Coalition tracking (manual V1) |
 
-**Was:** Sprint 12 in old map
+**Was:** Sprint 12–13 in old map
 
 ---
 

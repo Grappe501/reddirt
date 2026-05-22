@@ -11,6 +11,7 @@ import { loadGlobalUserObservations } from "@/lib/agents/user-intelligence/user-
 import { detectWorkflowFriction } from "@/lib/agents/user-intelligence/workflow-friction-detector";
 import { loadDashboardNavigationBundle } from "@/lib/dashboard-orchestration/load-dashboard-navigation-bundle";
 import { composeCountyDashboardContext } from "@/lib/agents/county-intelligence/county-intelligence-engine";
+import { loadVolunteerSystemBundle } from "@/lib/campaign-events/volunteers/load-volunteer-bundle";
 
 export const dynamic = "force-dynamic";
 
@@ -38,6 +39,7 @@ export default async function CampaignManagerDashboardPage({ searchParams }: Pro
   const gapAnalysis = analyzeCampaignGaps({ snapshot });
   const frictionTop = detectWorkflowFriction(loadGlobalUserObservations()).slice(0, 2);
   const countyStatewide = composeCountyDashboardContext();
+  const volunteerBundle = loadVolunteerSystemBundle();
   return (
     <AgentObservationTracker
       role="campaign_manager"
@@ -58,6 +60,7 @@ export default async function CampaignManagerDashboardPage({ searchParams }: Pro
         executiveSummary={navBundle.executiveSummary}
         guidanceCards={navBundle.guidanceCards}
         adaptivePlan={navBundle.adaptivePlan}
+        volunteerBundle={volunteerBundle}
       />
     </AgentObservationTracker>
   );

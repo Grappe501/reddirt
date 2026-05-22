@@ -20,6 +20,7 @@ import { AgentObservationTracker } from "@/components/agents/AgentObservationTra
 import { AgentCommandPalette } from "@/components/agents/AgentCommandPalette";
 import { loadEventCountyContext } from "@/lib/agents/county-intelligence/county-event-strategy";
 import { analyzeCountyHotWashImpact } from "@/lib/agents/county-intelligence/county-hotwash-impact";
+import { loadEventVolunteerContext } from "@/lib/campaign-events/volunteers/load-event-volunteer-context";
 
 export const dynamic = "force-dynamic";
 
@@ -51,6 +52,7 @@ export default async function CampaignEventDrilldownPage({
   const financeDocuments = await listFinanceDocumentsForEvent(recordId);
   const countyContext = loadEventCountyContext(row.county);
   const rel = hotWashIntelligence?.relationships;
+  const volunteerContext = loadEventVolunteerContext(row);
   const hotWashCountyImpact = analyzeCountyHotWashImpact({
     countyName: row.county,
     volunteersRecruited: rel?.volunteerProspects?.trim() ? 1 : 0,
@@ -93,6 +95,7 @@ export default async function CampaignEventDrilldownPage({
       returnMonth={sp.month ?? undefined}
       countyContext={countyContext ? JSON.parse(JSON.stringify(countyContext)) : null}
       hotWashCountyImpact={hotWashCountyImpact ? JSON.parse(JSON.stringify(hotWashCountyImpact)) : null}
+      volunteerContext={JSON.parse(JSON.stringify(volunteerContext))}
     />
     </AgentObservationTracker>
   );

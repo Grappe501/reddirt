@@ -91,6 +91,16 @@ export function buildCampaignOsNavGroups(activeMonth = "2026-03"): CampaignOsNav
       ],
     },
     {
+      id: "volunteers",
+      label: "Volunteers",
+      links: [
+        { href: "/admin/volunteers", label: "Volunteer command center" },
+        { href: "/admin/volunteers/intake", label: "Signup sheet intake" },
+        { href: "/admin/relational-contacts", label: "Relational CRM" },
+        { href: "/admin/asks", label: "Volunteer asks" },
+      ],
+    },
+    {
       id: "communications",
       label: "Communications",
       links: [

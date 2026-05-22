@@ -1,0 +1,51 @@
+[
+  {
+    "id": "vol_sample_001",
+    "firstName": "Sample",
+    "lastName": "Volunteer",
+    "email": "sample.volunteer@example.test",
+    "phone": "",
+    "city": "Little Rock",
+    "county": "pulaski",
+    "zip": "72201",
+    "source": "campaign_os_test",
+    "consentStatus": "explicit",
+    "communicationPreferences": [
+      "email"
+    ],
+    "skills": [
+      "check_in",
+      "event_setup"
+    ],
+    "interests": [
+      "events",
+      "voter_registration"
+    ],
+    "availability": [
+      {
+        "day": "sat",
+        "period": "morning"
+      }
+    ],
+    "preferredTasks": [
+      "check-in table"
+    ],
+    "trainingCompleted": [
+      "campaign-basics"
+    ],
+    "trainingNeeded": [
+      "canvassing-basics"
+    ],
+    "assignedEvents": [],
+    "assignedTasks": [],
+    "reliabilityScore": 72,
+    "leadershipPotential": "medium",
+    "progressLevel": "event_volunteer_l2",
+    "tags": [
+      "test",
+      "sample"
+    ],
+    "createdAt": "2026-05-22T05:41:58.533Z",
+    "updatedAt": "2026-05-22T05:41:58.534Z"
+  }
+]

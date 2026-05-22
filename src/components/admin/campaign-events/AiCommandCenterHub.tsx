@@ -40,6 +40,8 @@ import { CountyIntelligencePanel } from "@/components/admin/county-intelligence/
 import { buildPowerOfFiveBriefing } from "@/lib/agents/county-intelligence/power-of-five-engine";
 import { loadCommunicationsBundle } from "@/lib/campaign-events/communications/load-communications-bundle";
 import { CommunicationsCommandCenterPanel } from "@/components/admin/campaign-events/CommunicationsCommandCenterPanel";
+import { loadVolunteerSystemBundle } from "@/lib/campaign-events/volunteers/load-volunteer-bundle";
+import { VolunteerIntelligencePanel } from "@/components/admin/volunteers/VolunteerIntelligencePanel";
 
 const AGENT_READINESS_PCT = 86;
 
@@ -70,6 +72,7 @@ export async function AiCommandCenterHub() {
   const countyStatewide = composeCountyDashboardContext();
   const powerOfFiveBrief = buildPowerOfFiveBriefing();
   const communicationsBundle = loadCommunicationsBundle();
+  const volunteerBundle = loadVolunteerSystemBundle();
   const navBundle = await loadDashboardNavigationBundle(snapshot.period, {
     pathname: "/admin/ai-command-center",
     surface: "command_center",
@@ -124,6 +127,8 @@ export async function AiCommandCenterHub() {
       <KellyOsCompletionPlanPanel presentationScore={presentation.score} presentationLabel={presentation.label} />
 
       <CommunicationsCommandCenterPanel bundle={communicationsBundle} />
+
+      <VolunteerIntelligencePanel bundle={volunteerBundle} />
 
       <CountyIntelligencePanel statewide={countyStatewide} />
       <section className="rounded-2xl border border-kelly-text/10 bg-kelly-page/60 p-4">

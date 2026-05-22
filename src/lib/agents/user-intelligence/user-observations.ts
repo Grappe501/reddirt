@@ -89,7 +89,19 @@ export type UserUxObservationEvent =
   | "campaign_energy_shift_detected"
   | "resource_inefficiency_detected"
   | "coalition_growth_detected"
-  | "executive_briefing_generated";
+  | "executive_briefing_generated"
+  | "volunteer_created"
+  | "volunteer_training_started"
+  | "volunteer_training_completed"
+  | "volunteer_assignment_recommended"
+  | "volunteer_assignment_accepted"
+  | "volunteer_assignment_declined"
+  | "volunteer_followup_needed"
+  | "volunteer_leadership_flagged"
+  | "volunteer_no_show_logged"
+  | "volunteer_thanked"
+  | "volunteer_recruited_friend"
+  | "volunteer_power_of_five_started";
 
 export type UserObservationEntry = {
   id: string;
@@ -234,4 +246,16 @@ export const USER_UX_EVENT_LABELS: Record<UserUxObservationEvent, string> = {
   resource_inefficiency_detected: "Resource inefficiency detected",
   coalition_growth_detected: "Coalition growth detected",
   executive_briefing_generated: "Executive briefing generated",
+  volunteer_created: "Volunteer profile created",
+  volunteer_training_started: "Volunteer training started",
+  volunteer_training_completed: "Volunteer training completed",
+  volunteer_assignment_recommended: "Volunteer assignment recommended",
+  volunteer_assignment_accepted: "Volunteer assignment accepted",
+  volunteer_assignment_declined: "Volunteer assignment declined",
+  volunteer_followup_needed: "Volunteer follow-up needed",
+  volunteer_leadership_flagged: "Volunteer leadership flagged",
+  volunteer_no_show_logged: "Volunteer no-show logged",
+  volunteer_thanked: "Volunteer thanked",
+  volunteer_recruited_friend: "Volunteer recruited friend",
+  volunteer_power_of_five_started: "Volunteer Power of 5 started",
 };

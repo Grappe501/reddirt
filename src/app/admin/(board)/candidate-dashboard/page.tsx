@@ -8,6 +8,8 @@ import { loadNextActionsForPage } from "@/lib/agents/user-intelligence/load-next
 import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
 import { loadDashboardNavigationBundle } from "@/lib/dashboard-orchestration/load-dashboard-navigation-bundle";
 import { composeCountyDashboardContext } from "@/lib/agents/county-intelligence/county-intelligence-engine";
+import { loadVolunteerSystemBundle } from "@/lib/campaign-events/volunteers/load-volunteer-bundle";
+import { VolunteerIntelligencePanel } from "@/components/admin/volunteers/VolunteerIntelligencePanel";
 
 export const dynamic = "force-dynamic";
 
@@ -33,6 +35,7 @@ export default async function CandidateDashboardPage({ searchParams }: Props) {
     snapshot,
   });
   const countyStatewide = composeCountyDashboardContext();
+  const volunteerBundle = loadVolunteerSystemBundle();
   return (
     <AgentObservationTracker
       role="candidate"
@@ -41,6 +44,9 @@ export default async function CandidateDashboardPage({ searchParams }: Props) {
     >
       <div className="mx-auto max-w-[1200px] px-0">
         <CampaignEventsMonthNav activeMonth={month} basePath="candidate-dashboard" />
+      </div>
+      <div className="mx-auto max-w-[1200px] px-4 pb-4">
+        <VolunteerIntelligencePanel bundle={volunteerBundle} />
       </div>
       <CandidateCampaignDashboard
         countyStatewide={countyStatewide}

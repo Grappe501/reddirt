@@ -30,8 +30,9 @@ This is the **live control board**. Update at the end of every sprint slice. **F
 | 10.5 | Single-campaign hardening + dashboard builder | **Complete** | ~85% | ~62% |
 | 11 | Kelly OS planning audit (training/copilots/tool-builder) | **Complete** (docs + contract stubs) | N/A | N/A |
 | 12 | County intelligence — countyWorkbench bridge | **Complete** (V1 read-only) | ~75% | ~55% |
+| 13 | Communications system V1 | **Complete** (command center + gates) | ~55% | ~40% |
+| 14 | Volunteer OS statewide V1 | **Complete** (JSON + command center) | ~50% | ~35% |
 | 11b | Full AI orchestration (delta) | **Partial** (8A shipped core loop) | ~74% | ~50% |
-| 12 | Communications + relationships | Not started | — | — |
 | 13 | County OS integration | Not started (packet required) | — | — |
 | 14 | Compliance + finance automation | Partial (Sprint 8 base) | ~70% | ~45% |
 | 15 | Learning memory engine | Partial (Sprint 7 base) | ~65% | ~40% |

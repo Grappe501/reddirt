@@ -32,6 +32,8 @@ import { EventCountyIntelligenceCard } from "@/components/admin/county-intellige
 import { HotWashCountyImpactPanel } from "@/components/admin/county-intelligence/HotWashCountyImpactPanel";
 import type { CountyIntelligenceSummary } from "@/lib/agents/county-intelligence/county-kpi-types";
 import type { CountyHotWashImpactAnalysis } from "@/lib/agents/county-intelligence/county-hotwash-impact";
+import { EventVolunteerPlanningPanel } from "@/components/admin/volunteers/EventVolunteerPlanningPanel";
+import type { EventVolunteerContext } from "@/lib/campaign-events/volunteers/load-event-volunteer-context";
 
 const TABS = [
   "overview",
@@ -79,6 +81,7 @@ export function EventDrilldownClient({
   promotionAuditEntries = [],
   countyContext = null,
   hotWashCountyImpact = null,
+  volunteerContext = null,
 }: {
   row: CalendarSurfaceRow;
   initialPlanning: EventPlanningData;
@@ -95,6 +98,7 @@ export function EventDrilldownClient({
   promotionAuditEntries?: PromotionAuditEntry[];
   countyContext?: CountyIntelligenceSummary | null;
   hotWashCountyImpact?: CountyHotWashImpactAnalysis | null;
+  volunteerContext?: EventVolunteerContext | null;
 }) {
   const router = useRouter();
   const [tab, setTab] = useState<TabId | "planning">("planning");
@@ -167,7 +171,10 @@ export function EventDrilldownClient({
       </nav>
 
       {tab === "planning" ? (
-        <EventPlanningWorkbook row={row} initialPlanning={initialPlanning} returnMonth={returnMonth} />
+        <>
+          {volunteerContext ? <EventVolunteerPlanningPanel context={volunteerContext} /> : null}
+          <EventPlanningWorkbook row={row} initialPlanning={initialPlanning} returnMonth={returnMonth} />
+        </>
       ) : null}
 
       {tab !== "planning" && tab === "overview" && (

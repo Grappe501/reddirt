@@ -19,6 +19,7 @@ import { CandidateFinanceOverview } from "../finance/CandidateFinanceOverview";
 import type { CampaignFinanceSnapshot } from "@/lib/campaign-events/finance/load-campaign-finance-snapshot";
 
 export function CandidateCampaignDashboard({
+  countyStatewide,
   snapshot,
   reimbursementSummaries,
   financeSnapshot,

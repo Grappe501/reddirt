@@ -24,6 +24,7 @@ import { SPRINT_SINGLE_CAMPAIGN_HARDENING_CATALOG_ENTRIES } from "./ai-tools/spr
 import { SPRINT_KELLY_OS_PLANNING_CATALOG_ENTRIES } from "./ai-tools/sprint-kelly-os-planning-tools";
 import { SPRINT_COUNTY_INTELLIGENCE_CATALOG_ENTRIES } from "./ai-tools/sprint-county-intelligence-tools";
 import { SPRINT_COMMUNICATIONS_CATALOG_ENTRIES } from "./ai-tools/sprint-communications-tools";
+import { SPRINT_VOLUNTEER_CATALOG_ENTRIES } from "./ai-tools/sprint-volunteer-tools";
 
 const S = (s: AiToolEntry["status"]) => s;
 
@@ -147,6 +148,7 @@ export const SUPPLEMENT_TOOLS_BY_LIFECYCLE: Record<string, AiToolEntry[]> = {
   kelly_os_planning: SPRINT_KELLY_OS_PLANNING_CATALOG_ENTRIES,
   county_intelligence_bridge: SPRINT_COUNTY_INTELLIGENCE_CATALOG_ENTRIES,
   communications_system: SPRINT_COMMUNICATIONS_CATALOG_ENTRIES,
+  volunteer_system: SPRINT_VOLUNTEER_CATALOG_ENTRIES,
 };
 
 const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
@@ -269,6 +271,12 @@ const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
     order: 44,
     title: "Communications system — email & contacts V1",
     tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.communications_system ?? [],
+  },
+  {
+    id: "volunteer_system",
+    order: 45,
+    title: "Volunteer OS — statewide grassroots V1",
+    tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.volunteer_system ?? [],
   },
 ];
 

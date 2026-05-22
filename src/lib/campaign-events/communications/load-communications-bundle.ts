@@ -34,7 +34,7 @@ export function loadCommunicationsBundle(): CommunicationsBundle {
     store,
     templates,
     risks,
-    volunteerWorkflowReadiness: readiness.sendGrid.testSendPossible ? "partial" : "scaffolded",
+    volunteerWorkflowReadiness: readiness.safety.testSendPossible ? "partial" : "scaffolded",
     teamWorkflowReadiness: "partial",
     massEmailStatus: "blocked",
   };
