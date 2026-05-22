@@ -58,10 +58,10 @@ export default async function AdminBlogPage({ searchParams }: Props) {
           <li key={p.id} className="flex flex-col gap-2 px-5 py-4 md:flex-row md:items-center md:justify-between">
             <div>
               <p className="font-heading text-base font-bold text-kelly-text">{p.title}</p>
-              <p className="font-mono text-xs text-kelly-text/55">
+              <p className="font-mono text-xs text-kelly-muted">
                 {p.slug} · {p.displayMode.replace(/_/g, " ").toLowerCase()}
               </p>
-              <p className="mt-1 text-xs text-kelly-text/50">
+              <p className="mt-1 text-xs text-kelly-subtle">
                 {p.hidden ? "Hidden" : "Visible"} · {p.featured ? "Featured" : "Standard"} ·{" "}
                 {p.showOnHomepage ? "Homepage rail" : "Not on homepage"} ·{" "}
                 {p.showOnBlogLanding ? "Blog index" : "Off blog index"}
@@ -74,12 +74,12 @@ export default async function AdminBlogPage({ searchParams }: Props) {
         ))}
       </ul>
       {posts.length === 0 ? (
-        <p className="mt-6 rounded-lg border border-dashed border-kelly-text/25 bg-white/60 p-6 text-center text-sm text-kelly-text/65">
+        <p className="mt-6 rounded-lg border border-dashed border-kelly-text/25 bg-white/60 p-6 text-center text-sm text-kelly-muted">
           No posts yet. Configure a feed URL and run sync.
         </p>
       ) : null}
 
-      <p className="mt-10 font-body text-xs text-kelly-text/50">
+      <p className="mt-10 font-body text-xs text-kelly-subtle">
         Display modes:{" "}
         {Object.values(BlogDisplayMode)
           .map((m) => m.replace(/_/g, " "))

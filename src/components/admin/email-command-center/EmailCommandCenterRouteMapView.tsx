@@ -187,7 +187,7 @@ export function EmailCommandCenterRouteMapView() {
         <Link href={`${ECC}/readiness/hosted-db`} className="text-xs font-bold text-violet-800 hover:underline">
           Hosted DB assistant
         </Link>
-        <Link href={`${ECC}/send-execution`} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={`${ECC}/send-execution`} className="text-xs text-kelly-muted hover:underline">
           Send execution governance
         </Link>
       </div>
@@ -226,7 +226,7 @@ export function EmailCommandCenterRouteMapView() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-kelly-text/55">Route cards</h2>
+        <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-kelly-muted">Route cards</h2>
         <div className="grid gap-2 md:grid-cols-2">
           {ROUTE_CARDS.map((r) => (
             <article
@@ -243,7 +243,7 @@ export function EmailCommandCenterRouteMapView() {
                     <Link href="/admin/workbench/email-queue" className="font-bold underline">
                       /admin/workbench/email-queue
                     </Link>
-                    <span className="text-kelly-text/70"> → /admin/workbench/email-queue/[id]</span>
+                    <span className="text-kelly-muted"> → /admin/workbench/email-queue/[id]</span>
                   </>
                 ) : (
                   <Link href={r.path} className="font-bold underline">
@@ -279,7 +279,7 @@ export function EmailCommandCenterRouteMapView() {
       </section>
 
       <section className="rounded-lg border border-kelly-text/12 bg-white/95 p-3">
-        <h2 className="font-heading text-xs font-bold uppercase text-kelly-text/55">1. Inbound email flow</h2>
+        <h2 className="font-heading text-xs font-bold uppercase text-kelly-muted">1. Inbound email flow</h2>
         <p className="mt-2 font-body text-[11px] text-kelly-text/85">
           <Link href={`${ECC}/gmail`} className="font-semibold underline">
             Gmail
@@ -309,11 +309,11 @@ export function EmailCommandCenterRouteMapView() {
             Message Studio
           </Link>
         </p>
-        <p className="mt-1 text-[10px] text-kelly-text/65">Bodies stay in Gmail until a future governed ingest packet.</p>
+        <p className="mt-1 text-[10px] text-kelly-muted">Bodies stay in Gmail until a future governed ingest packet.</p>
       </section>
 
       <section className="rounded-lg border border-kelly-text/12 bg-white/95 p-3">
-        <h2 className="font-heading text-xs font-bold uppercase text-kelly-text/55">2. Contact list flow</h2>
+        <h2 className="font-heading text-xs font-bold uppercase text-kelly-muted">2. Contact list flow</h2>
         <p className="mt-2 font-body text-[11px] text-kelly-text/85">
           <Link href={`${ECC}/imports`} className="font-semibold underline">
             CSV Import
@@ -331,26 +331,26 @@ export function EmailCommandCenterRouteMapView() {
             Message Studio
           </Link>
         </p>
-        <p className="mt-1 text-[10px] text-kelly-text/65">No SendGrid sync on this path; production DB gate still operator-run.</p>
+        <p className="mt-1 text-[10px] text-kelly-muted">No SendGrid sync on this path; production DB gate still operator-run.</p>
       </section>
 
       <section className="rounded-lg border border-kelly-text/12 bg-white/95 p-3">
-        <h2 className="font-heading text-xs font-bold uppercase text-kelly-text/55">3. Broadcast future flow</h2>
+        <h2 className="font-heading text-xs font-bold uppercase text-kelly-muted">3. Broadcast future flow</h2>
         <p className="mt-2 font-body text-[11px] text-kelly-text/85">
-          Audience Studio → <span className="text-kelly-text/55">SendGrid contact sync (future)</span> → Message Studio →
+          Audience Studio → <span className="text-kelly-muted">SendGrid contact sync (future)</span> → Message Studio →
           Approval →{" "}
           <Link href={`${ECC}/send-execution`} className="font-semibold underline">
             Send Execution Governance
           </Link>{" "}
-          (doctrine) → <span className="text-kelly-text/55">Provider execution (future)</span> → Analytics
+          (doctrine) → <span className="text-kelly-muted">Provider execution (future)</span> → Analytics
         </p>
-        <p className="mt-1 text-[10px] text-kelly-text/65">
+        <p className="mt-1 text-[10px] text-kelly-muted">
           Middle steps are <strong>not shipped</strong> in this lane — map shows intent only.
         </p>
       </section>
 
       <section className="rounded-lg border border-kelly-text/12 bg-white/95 p-3">
-        <h2 className="font-heading text-xs font-bold uppercase text-kelly-text/55">4. Event / suppression flow</h2>
+        <h2 className="font-heading text-xs font-bold uppercase text-kelly-muted">4. Event / suppression flow</h2>
         <p className="mt-2 font-body text-[11px] text-kelly-text/85">
           SendGrid webhook (<code className="text-[9px]">POST /api/sendgrid/events</code>) → SendGridEvent / SendGridSuppression
           tables →{" "}
@@ -359,7 +359,7 @@ export function EmailCommandCenterRouteMapView() {
           </Link>{" "}
           → future send gate (honor suppressions)
         </p>
-        <p className="mt-1 text-[10px] text-kelly-text/65">Signed webhooks in production; env verification key required.</p>
+        <p className="mt-1 text-[10px] text-kelly-muted">Signed webhooks in production; env verification key required.</p>
       </section>
     </div>
   );

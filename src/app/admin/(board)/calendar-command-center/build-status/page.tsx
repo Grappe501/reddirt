@@ -82,16 +82,20 @@ export default function CalendarV2BuildStatusPage() {
 
   return (
     <div className="mx-auto max-w-4xl space-y-8 px-4 py-6">
-      <div className="font-body text-xs text-kelly-text/60">
+      <div className="font-body text-xs text-kelly-muted">
         <Link href="/admin/calendar-command-center" className="text-kelly-text underline-offset-2 hover:underline">
           ← Command center
         </Link>
         {" · "}
         <span className="text-kelly-text/80">Build status · V2 + V3</span>
+        {" · "}
+        <Link href="/admin/calendar-command-center/google-setup" className="text-kelly-text underline-offset-2 hover:underline">
+          Google setup
+        </Link>
       </div>
 
       <header className="rounded-lg border border-kelly-text/15 bg-[#f7f2e8] px-5 py-5 shadow-sm">
-        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-text/45">Progress</p>
+        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">Progress</p>
         <h1 className="mt-2 font-heading text-2xl font-bold text-kelly-text">Kelly calendar + agent slice</h1>
         <p className="mt-2 font-body text-sm text-kelly-text/75">
           V2 JSON tracks the original calendar slice. V3 JSON tracks intelligence + election math. Capabilities ledger lists every Kelly-agent lane; each future pass should append one entry.
@@ -101,16 +105,16 @@ export default function CalendarV2BuildStatusPage() {
       <section className="rounded-xl border border-kelly-navy/15 bg-white px-4 py-4 shadow-sm">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
-            <p className="font-heading text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-text/45">Kelly Agent Tool Suite</p>
+            <p className="font-heading text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">Kelly Agent Tool Suite</p>
             <h2 className="mt-1 font-heading text-xl font-bold text-kelly-text">
               {suite ? suite.overallStatus.toUpperCase() : "Not run yet"}
             </h2>
-            <p className="mt-1 font-body text-xs text-kelly-text/60">
+            <p className="mt-1 font-body text-xs text-kelly-muted">
               {suite ? `Last run ${suite.generatedAt}` : "Run npm run agent:tool-suite to generate the self-audit report."}
             </p>
           </div>
           {suiteCounts ? (
-            <div className="grid grid-cols-2 gap-2 text-right font-body text-[11px] text-kelly-text/70 sm:grid-cols-5">
+            <div className="grid grid-cols-2 gap-2 text-right font-body text-[11px] text-kelly-muted sm:grid-cols-5">
               <span><b>{suiteCounts.total}</b><br />total</span>
               <span><b>{suiteCounts.live}</b><br />live</span>
               <span><b>{suiteCounts.dbBacked}</b><br />DB</span>
@@ -122,19 +126,19 @@ export default function CalendarV2BuildStatusPage() {
         {suite ? (
           <div className="mt-4 grid gap-3 md:grid-cols-3">
             <div className="rounded-lg border border-kelly-text/10 bg-kelly-wash/40 px-3 py-3">
-              <p className="font-body text-[10px] font-bold uppercase text-kelly-text/50">Top blockers</p>
+              <p className="font-body text-[10px] font-bold uppercase text-kelly-subtle">Top blockers</p>
               <ul className="mt-2 space-y-1 font-body text-xs text-kelly-text/75">
                 {[...suite.dashboardReadiness.blockers, ...suite.dashboardReadiness.warnings].slice(0, 4).map((b) => <li key={b}>• {b}</li>)}
               </ul>
             </div>
             <div className="rounded-lg border border-kelly-text/10 bg-kelly-wash/40 px-3 py-3">
-              <p className="font-body text-[10px] font-bold uppercase text-kelly-text/50">Missing data</p>
+              <p className="font-body text-[10px] font-bold uppercase text-kelly-subtle">Missing data</p>
               <ul className="mt-2 space-y-1 font-body text-xs text-kelly-text/75">
                 {suite.missingData.slice(0, 4).map((m) => <li key={`${m.area}-${m.item}`}>• {m.item}</li>)}
               </ul>
             </div>
             <div className="rounded-lg border border-kelly-text/10 bg-kelly-wash/40 px-3 py-3">
-              <p className="font-body text-[10px] font-bold uppercase text-kelly-text/50">Next builds</p>
+              <p className="font-body text-[10px] font-bold uppercase text-kelly-subtle">Next builds</p>
               <ul className="mt-2 space-y-1 font-body text-xs text-kelly-text/75">
                 {suite.nextRecommendedBuilds.slice(0, 4).map((b) => <li key={b.priority}>• {b.title}</li>)}
               </ul>
@@ -156,18 +160,18 @@ export default function CalendarV2BuildStatusPage() {
               <li key={c.id} className="rounded-lg border border-kelly-text/10 bg-white px-3 py-3">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <p className="font-heading text-sm font-bold text-kelly-text">{c.name}</p>
-                  <span className="rounded-full bg-kelly-wash px-2 py-0.5 font-body text-[9px] font-bold uppercase text-kelly-text/70">
+                  <span className="rounded-full bg-kelly-wash px-2 py-0.5 font-body text-[9px] font-bold uppercase text-kelly-muted">
                     {c.status.replace(/_/g, " ")}
                   </span>
                 </div>
-                <p className="mt-1 font-body text-[11px] text-kelly-text/70">{c.description}</p>
-                <p className="mt-1 font-body text-[10px] text-kelly-text/55">
+                <p className="mt-1 font-body text-[11px] text-kelly-muted">{c.description}</p>
+                <p className="mt-1 font-body text-[10px] text-kelly-muted">
                   <span className="font-semibold">Category:</span> {c.category}
                   {c.humanOverrideRequired ? (
                     <span className="ml-2 font-semibold text-emerald-900">Human override required</span>
                   ) : null}
                 </p>
-                <p className="mt-1 font-body text-[10px] text-kelly-text/55">
+                <p className="mt-1 font-body text-[10px] text-kelly-muted">
                   <span className="font-semibold">Inputs:</span> {c.inputSources.slice(0, 4).join(" · ")}
                   {c.inputSources.length > 4 ? " …" : ""}
                 </p>
@@ -182,13 +186,13 @@ export default function CalendarV2BuildStatusPage() {
       ) : (
         <section className="space-y-3">
           <h2 className="font-heading text-lg font-bold text-kelly-text">Calendar V2 tracks</h2>
-          <p className="font-body text-xs text-kelly-text/60">Updated {data.updatedAt}</p>
+          <p className="font-body text-xs text-kelly-muted">Updated {data.updatedAt}</p>
           <ul className="space-y-3">
             {data.tracks.map((t) => (
               <li key={t.id} className="rounded-lg border border-kelly-text/12 bg-white px-4 py-3">
                 <div className="flex items-center justify-between gap-2">
                   <p className="font-body text-sm font-semibold text-kelly-text">{t.label}</p>
-                  <p className="font-body text-xs text-kelly-text/60">{t.percent}%</p>
+                  <p className="font-body text-xs text-kelly-muted">{t.percent}%</p>
                 </div>
                 <div className="mt-2 h-2 overflow-hidden rounded-full bg-kelly-wash">
                   <div className="h-full rounded-full bg-emerald-700/90" style={{ width: `${Math.min(100, Math.max(0, t.percent))}%` }} />
@@ -213,13 +217,13 @@ export default function CalendarV2BuildStatusPage() {
       ) : (
         <section className="space-y-3">
           <h2 className="font-heading text-lg font-bold text-kelly-text">V3 intelligence tracks</h2>
-          <p className="font-body text-xs text-kelly-text/60">Updated {v3.updatedAt}</p>
+          <p className="font-body text-xs text-kelly-muted">Updated {v3.updatedAt}</p>
           <ul className="space-y-3">
             {v3.tracks.map((t) => (
               <li key={t.id} className="rounded-lg border border-kelly-navy/15 bg-kelly-navy/[0.03] px-4 py-3">
                 <div className="flex items-center justify-between gap-2">
                   <p className="font-body text-sm font-semibold text-kelly-text">{t.label}</p>
-                  <p className="font-body text-xs text-kelly-text/60">{t.percent}%</p>
+                  <p className="font-body text-xs text-kelly-muted">{t.percent}%</p>
                 </div>
                 <div className="mt-2 h-2 overflow-hidden rounded-full bg-kelly-wash">
                   <div className="h-full rounded-full bg-kelly-navy/80" style={{ width: `${Math.min(100, Math.max(0, t.percent))}%` }} />

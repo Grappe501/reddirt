@@ -137,7 +137,7 @@ export function CandidateCampaignDashboard({
           <StatCard label="Promotion failed" value={snapshot.promotionFailed} href={`/admin/campaign-events/calendar-promotion?month=${period}`} />
           <StatCard label="Promotion blocked" value={snapshot.promotionBlocked} href={`/admin/campaign-events/calendar-promotion?month=${period}`} />
         </DashboardStatGrid>
-        <p className="mt-2 font-body text-xs text-kelly-text/55">
+        <p className="mt-2 font-body text-xs text-kelly-muted">
           Writes require GOOGLE_CALENDAR_WRITE_ENABLED and explicit operator Promote click — no autonomous AI calendar writes.
         </p>
       </DashboardSection>
@@ -170,20 +170,20 @@ export function CandidateCampaignDashboard({
                   <Link href={`/admin/campaign-events/${e.recordId}`} className="font-semibold text-kelly-navy underline">
                     {e.title}
                   </Link>
-                  <p className="text-xs text-kelly-text/60">
+                  <p className="text-xs text-kelly-muted">
                     {e.dateYmd} · {e.timeLabel}
                     {e.city ? ` · ${e.city}` : ""}
                     {e.county ? ` · ${e.county}` : ""}
                   </p>
                 </div>
-                <span className="text-xs text-kelly-text/55">
+                <span className="text-xs text-kelly-muted">
                   {e.status} · {e.decisionLabel ?? "pending"}
                 </span>
               </li>
             ))}
           </ul>
         ) : (
-          <p className="font-body text-sm text-kelly-text/55">No events in the next 14 days from today ({snapshot.todayYmd}). Open the full calendar for March ledger items.</p>
+          <p className="font-body text-sm text-kelly-muted">No events in the next 14 days from today ({snapshot.todayYmd}). Open the full calendar for March ledger items.</p>
         )}
         <div className="mt-4 flex flex-wrap gap-2 text-sm">
           <Link href="/admin/campaign-calendar/timeline" className="font-semibold text-kelly-navy underline">
@@ -208,7 +208,7 @@ export function CandidateCampaignDashboard({
       </DashboardSection>
 
       <DashboardSection title="Approval package inbox">
-        <p className="mb-3 font-body text-xs text-kelly-text/55">
+        <p className="mb-3 font-body text-xs text-kelly-muted">
           Package send status from ledger email log. Email transport is gated by EMAIL_SEND_ENABLED.
         </p>
         <AiObservationsPanel observations={[]} compact />
@@ -218,10 +218,10 @@ export function CandidateCampaignDashboard({
               <li key={item.recordId} className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-kelly-text/10 px-3 py-2">
                 <div>
                   <strong>{item.title}</strong>
-                  <span className="ml-2 text-xs text-kelly-text/55">
+                  <span className="ml-2 text-xs text-kelly-muted">
                     {item.dateYmd} {item.timeLabel}
                   </span>
-                  <p className="mt-1 text-xs text-kelly-text/55">
+                  <p className="mt-1 text-xs text-kelly-muted">
                     Package: <strong>{item.packageStatus.replaceAll("_", " ")}</strong>
                     {item.lastSentAt ? ` · sent ${new Date(item.lastSentAt).toLocaleString()}` : ""}
                     {item.awaitingCandidate ? " · awaiting candidate" : ""}
@@ -234,7 +234,7 @@ export function CandidateCampaignDashboard({
             ))}
           </ul>
         ) : (
-          <p className="text-sm text-kelly-text/55">No pending packages in queue.</p>
+          <p className="text-sm text-kelly-muted">No pending packages in queue.</p>
         )}
       </DashboardSection>
     </CampaignDashboardShell>

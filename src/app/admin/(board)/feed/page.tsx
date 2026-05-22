@@ -36,7 +36,7 @@ export default async function AdminLiveFeedPage() {
                 {row.title?.slice(0, 100) ?? row.id}
               </Link>
             </p>
-            <p className="mt-1 text-xs text-kelly-text/60">
+            <p className="mt-1 text-xs text-kelly-muted">
               {platformLabel(row.sourcePlatform)} · {sourceTypeLabel(row.sourceType)} · {row.reviewStatus} · synced{" "}
               {row.syncTimestamp.toLocaleString()}
               {row.publishedAt ? ` · published ${row.publishedAt.toLocaleString()}` : ""}
@@ -44,7 +44,7 @@ export default async function AdminLiveFeedPage() {
           </li>
         ))}
       </ol>
-      {items.length === 0 ? <p className="mt-10 text-sm text-kelly-text/55">No items yet.</p> : null}
+      {items.length === 0 ? <p className="mt-10 text-sm text-kelly-muted">No items yet.</p> : null}
     </div>
   );
 }

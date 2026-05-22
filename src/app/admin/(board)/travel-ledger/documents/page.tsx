@@ -38,7 +38,7 @@ export default async function TravelLedgerDocumentsPage() {
               {requiredDocuments.map((document) => (
                 <li key={document} className="flex items-center justify-between rounded-lg border border-kelly-text/10 bg-kelly-wash px-3 py-2">
                   <span>{document}</span>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/50">{invoices.length ? "draft" : "waiting"}</span>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-kelly-subtle">{invoices.length ? "draft" : "waiting"}</span>
                 </li>
               ))}
             </ul>

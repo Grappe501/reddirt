@@ -17,7 +17,7 @@ export default async function CommsWorkbenchMediaListPage() {
           ← Comms operations
         </Link>
       </div>
-      <p className="mt-1 max-w-2xl font-body text-sm text-kelly-text/70">
+      <p className="mt-1 max-w-2xl font-body text-sm text-kelly-muted">
         Read-only PR / media tracking rows from the Comms Workbench graph.
       </p>
       <div className="mt-3">

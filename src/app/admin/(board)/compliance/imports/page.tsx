@@ -14,6 +14,9 @@ export default function ComplianceImportsPage() {
         <ComplianceCard title="GoodChange CSV" href="/admin/compliance/imports/goodchange">
           Analyze fundraising exports for donor identity, amount, fee, net, refund, recurring, and missing compliance fields.
         </ComplianceCard>
+        <ComplianceCard title="April 2026 package" href="/admin/compliance/april26">
+          Full April26 folder ingest — GoodChange, Ethics workbook, images, payout expectations, and reconciliation blockers.
+        </ComplianceCard>
         <ComplianceCard title="Bank CSV" href="/admin/compliance/imports/bank">
           Analyze monthly bank exports for dates, memo text, debit/credit columns, balance, check numbers, deposits, fees, and transfers.
         </ComplianceCard>

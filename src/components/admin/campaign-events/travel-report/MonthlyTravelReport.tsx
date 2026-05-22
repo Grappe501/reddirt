@@ -69,7 +69,7 @@ export function MonthlyTravelReport({
         <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-slate">Deterministic report summary</p>
         <p className="mt-2 text-base leading-relaxed">{summary.narrative}</p>
         {summary.bullets.length ? (
-          <ul className="mt-3 list-disc pl-5 text-sm text-kelly-text/70">
+          <ul className="mt-3 list-disc pl-5 text-sm text-kelly-muted">
             {summary.bullets.map((b) => (
               <li key={b}>{b}</li>
             ))}
@@ -200,7 +200,7 @@ export function MonthlyTravelReport({
               <td className="p-3 text-right">
                 {new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(summary.totals.totalReimbursement)}
               </td>
-              <td colSpan={2} className="p-3 text-xs font-normal text-kelly-text/65">
+              <td colSpan={2} className="p-3 text-xs font-normal text-kelly-muted">
                 Approved: {summary.totals.approvedMiles.toFixed(1)} mi ·{" "}
                 {new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(summary.totals.approvedReimbursement)} · Needs review:{" "}
                 {summary.totals.needsReviewCount}
@@ -209,7 +209,7 @@ export function MonthlyTravelReport({
           </tfoot>
         </table>
         {!filtered.length ? (
-          <p className="p-6 text-center font-body text-sm text-kelly-text/55">No travel rows match this filter for {month}.</p>
+          <p className="p-6 text-center font-body text-sm text-kelly-muted">No travel rows match this filter for {month}.</p>
         ) : null}
       </div>
     </div>

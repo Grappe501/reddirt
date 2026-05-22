@@ -99,7 +99,7 @@ export function OpportunitiesShell({
       {tab === "weekend_routes" ? (
         <div id="weekend-routes" className="space-y-3">
           {plans.length === 0 ? (
-            <p className="font-body text-sm text-kelly-text/70">Run `npm run opportunities:plan-weekends` to generate weekend-route-plans-2026.json.</p>
+            <p className="font-body text-sm text-kelly-muted">Run `npm run opportunities:plan-weekends` to generate weekend-route-plans-2026.json.</p>
           ) : (
             plans.map((p) => (
               <div key={p.id} className="rounded-lg border border-kelly-text/12 bg-white px-3 py-3 font-body text-xs text-kelly-text">
@@ -107,7 +107,7 @@ export function OpportunitiesShell({
                 <p className="mt-1 text-kelly-text/75">
                   {p.weekStart} · drive ~{p.totalDriveMinutes}m · {p.routeTightness} · staff: {p.staffRecommendation}
                 </p>
-                <ul className="mt-2 list-inside list-disc text-[11px] text-kelly-text/70">
+                <ul className="mt-2 list-inside list-disc text-[11px] text-kelly-muted">
                   {p.opportunities.map((s) => (
                     <li key={`${p.id}-${s.opportunityId}-${s.recommendedArrival}`}>
                       {s.day}: {s.opportunityId} · arr {s.recommendedArrival}
@@ -124,7 +124,7 @@ export function OpportunitiesShell({
         <div className="overflow-x-auto rounded-lg border border-kelly-text/12 bg-white">
           <table className="min-w-full border-collapse font-body text-xs text-kelly-text">
             <thead>
-              <tr className="border-b border-kelly-text/15 bg-kelly-wash/50 text-left text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">
+              <tr className="border-b border-kelly-text/15 bg-kelly-wash/50 text-left text-[10px] font-bold uppercase tracking-wide text-kelly-muted">
                 <th className="px-2 py-2">County</th>
                 <th className="px-2 py-2">Title</th>
                 <th className="px-2 py-2">Type</th>
@@ -149,7 +149,7 @@ export function OpportunitiesShell({
             </tbody>
           </table>
           {filtered.length > 400 ? (
-            <p className="border-t border-kelly-text/10 px-2 py-2 font-body text-[10px] text-kelly-text/60">
+            <p className="border-t border-kelly-text/10 px-2 py-2 font-body text-[10px] text-kelly-muted">
               Showing first 400 rows in this tab — narrow with filters in a later pass.
             </p>
           ) : null}

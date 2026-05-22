@@ -10,7 +10,7 @@ import {
 } from "@/lib/comms/broadcast-queries";
 import { CommunicationCampaignType } from "@prisma/client";
 
-const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
+const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-muted";
 const defAudience = `{
   "countyIds": [],
   "tagKeys": [],
@@ -118,7 +118,7 @@ export default async function NewBroadcastPage() {
             rows={8}
             className="mt-0.5 w-full border border-kelly-text/15 bg-white p-0.5 font-mono text-[9px]"
           />
-          <p className="mt-0.5 text-[9px] text-kelly-text/50">
+          <p className="mt-0.5 text-[9px] text-kelly-subtle">
             Counties: {counties.length} in DB. Tags: {tags.map((t) => t.key).join(", ") || "none seeded"}.
             Set <code className="font-mono">eventIdForSignups</code> to an event id for attendee-only sends.
           </p>

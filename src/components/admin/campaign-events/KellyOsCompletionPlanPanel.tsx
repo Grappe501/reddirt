@@ -19,7 +19,7 @@ export function KellyOsCompletionPlanPanel({
       <h2 id="kelly-os-plan-heading" className="mt-1 font-heading text-lg font-bold text-kelly-navy">
         Sprint audit · training · copilots (planning)
       </h2>
-      <p className="mt-2 text-xs text-kelly-text/70">
+      <p className="mt-2 text-xs text-kelly-muted">
         Feature building paused. Next work: stability gate → training layer → dashboard modules → copilots. SaaS expansion
         deferred until Kelly presentation-ready ({presentationScore}/100 · {presentationLabel}).
       </p>
@@ -41,7 +41,7 @@ export function KellyOsCompletionPlanPanel({
           <dd>Volunteer, intern, field manager, social, communications lead</dd>
         </div>
       </dl>
-      <p className="mt-3 text-[10px] text-kelly-text/50">
+      <p className="mt-3 text-[10px] text-kelly-subtle">
         Docs: <code className="text-[10px]">RedDirt/docs/campaign-events/FULL_SPRINT_STATUS_REVIEW.md</code>,{" "}
         <code className="text-[10px]">KELLY_SINGLE_CAMPAIGN_OS_COMPLETION_PLAN.md</code>,{" "}
         <code className="text-[10px]">REVISED_KELLY_OS_SPRINT_ROADMAP.md</code>

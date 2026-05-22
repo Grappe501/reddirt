@@ -58,7 +58,7 @@ export default async function AdminDistributionPage({ searchParams }: Props) {
                     {item.title ?? "(untitled)"}
                   </Link>
                 </h2>
-                <p className="mt-1 font-body text-xs text-kelly-text/55">
+                <p className="mt-1 font-body text-xs text-kelly-muted">
                   {platformLabel(item.sourcePlatform)} · {sourceTypeLabel(item.sourceType)} · {item.reviewStatus}
                 </p>
               </div>
@@ -95,12 +95,12 @@ export default async function AdminDistributionPage({ searchParams }: Props) {
                 <input type="checkbox" name="editorialSeed" defaultChecked={item.editorialSeed} />
                 Editorial follow-up seed
               </label>
-              <label className="flex items-center gap-2 font-body text-sm text-kelly-text/60">
+              <label className="flex items-center gap-2 font-body text-sm text-kelly-muted">
                 <input type="checkbox" name="publishCandidate" defaultChecked={item.publishCandidate} />
                 Publish candidate (outbound — not enabled)
               </label>
               <label className="md:col-span-2 block text-sm">
-                <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Notes</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Notes</span>
                 <textarea
                   name="notes"
                   rows={2}
@@ -109,7 +109,7 @@ export default async function AdminDistributionPage({ searchParams }: Props) {
                 />
               </label>
               <label className="md:col-span-2 block text-sm">
-                <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Editor initials</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Editor initials</span>
                 <input
                   name="editor"
                   className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 font-body text-sm"
@@ -130,7 +130,7 @@ export default async function AdminDistributionPage({ searchParams }: Props) {
       </div>
 
       {items.length === 0 ? (
-        <p className="mt-10 text-center text-sm text-kelly-text/55">
+        <p className="mt-10 text-center text-sm text-kelly-muted">
           No reviewed items yet. Clear the review queue first.
         </p>
       ) : null}

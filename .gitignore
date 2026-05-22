@@ -67,6 +67,9 @@ prisma/*.db-journal
 
 # campaign-owned binary uploads (local / self-hosted; use S3 + keys in production if you migrate)
 data/owned-campaign-media
+# Hot Wash event media (binaries + media-index.json — may contain captions/PII)
+data/campaign-events/media/**
+!data/campaign-events/media/.gitkeep
 # Compliance import uploads and per-upload analyses can contain donor or bank data.
 data/compliance/imports/goodchange/*
 !data/compliance/imports/goodchange/.gitkeep
@@ -96,6 +99,8 @@ data/compliance/approval/*.json
 !data/compliance/approval/.gitkeep
 data/compliance/reconciliation/*.json
 !data/compliance/reconciliation/.gitkeep
+data/compliance/april26/*
+!data/compliance/april26/.gitkeep
 data/compliance/filings/*.json
 !data/compliance/filings/.gitkeep
 data/compliance/filings/exports/**

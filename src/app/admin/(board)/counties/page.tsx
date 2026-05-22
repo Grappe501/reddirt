@@ -13,7 +13,7 @@ export default async function AdminCountiesPage() {
   return (
     <div>
       <h1 className="font-heading text-2xl font-bold text-kelly-text">County command — master workbench</h1>
-      <p className="mt-2 max-w-3xl text-sm text-kelly-text/70">
+      <p className="mt-2 max-w-3xl text-sm text-kelly-muted">
         All <strong>75</strong> Arkansas counties in this database power the{" "}
         <strong>Kelly SOS public</strong> county index at{" "}
         <Link href="/counties" className="font-semibold text-kelly-navy hover:underline" target="_blank" rel="noreferrer">
@@ -66,7 +66,7 @@ export default async function AdminCountiesPage() {
         </div>
       )}
 
-      <p className="mt-4 max-w-3xl text-sm text-kelly-text/70">
+      <p className="mt-4 max-w-3xl text-sm text-kelly-muted">
         <strong>CMS</strong> links in the grid open this admin editor; add DB rows for missing counties with{" "}
         <code className="rounded bg-kelly-text/5 px-1">npx prisma db seed</code> from the RedDirt folder (or create rows in Prisma) so
         every county can carry metrics and copy.

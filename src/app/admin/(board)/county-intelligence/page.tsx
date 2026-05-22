@@ -36,11 +36,11 @@ export default async function CountyIntelligencePage() {
   return (
     <div className="mx-auto max-w-5xl text-kelly-text">
       <header className="mb-6 border-b border-kelly-text/10 pb-4">
-        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-text/45">
+        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">
           COUNTY-INTEL-2 · Workbench
         </p>
         <h1 className="font-heading text-2xl font-bold">County intelligence (default: Pope)</h1>
-        <p className="mt-2 max-w-3xl text-sm text-kelly-text/70">
+        <p className="mt-2 max-w-3xl text-sm text-kelly-muted">
           <strong>Aggregate only</strong> — no individual persuasion labels, no public voter tables. For classic profile math, see{" "}
           <Link href="/admin/county-profiles" className="text-kelly-slate underline">County profiles</Link>. For GOTV read models, see{" "}
           <Link href="/admin/gotv" className="text-kelly-slate underline">GOTV</Link>.
@@ -49,22 +49,22 @@ export default async function CountyIntelligencePage() {
 
       <div className="mb-4 grid gap-2 sm:grid-cols-2">
         <div className={card}>
-          <p className="text-xs font-bold text-kelly-text/55">50K statewide (planning sum)</p>
+          <p className="text-xs font-bold text-kelly-muted">50K statewide (planning sum)</p>
           <p className="text-lg font-bold">{regS.observedNetNew ?? "—"} / {regS.goal}</p>
-          <p className="text-xs text-kelly-text/60">{regS.missingDataNotes[0] ?? "—"}</p>
+          <p className="text-xs text-kelly-muted">{regS.missingDataNotes[0] ?? "—"}</p>
         </div>
         <div className={card}>
-          <p className="text-xs font-bold text-kelly-text/55">Pope “fair share” of 50K</p>
+          <p className="text-xs font-bold text-kelly-muted">Pope “fair share” of 50K</p>
           <p className="text-lg font-bold">{regGoal.impliedCountyContribution ?? "—"}</p>
-          <p className="text-xs text-kelly-text/60">Registration latest: {regGoal.countyRegistrationLatest ?? "—"}</p>
+          <p className="text-xs text-kelly-muted">Registration latest: {regGoal.countyRegistrationLatest ?? "—"}</p>
         </div>
         <div className={card}>
-          <p className="text-xs font-bold text-kelly-text/55">File-based reg KPI (Pope)</p>
+          <p className="text-xs font-bold text-kelly-muted">File-based reg KPI (Pope)</p>
           <p className="text-sm">Net: {regC.netNewRegistrations ?? "—"}</p>
-          <p className="text-xs text-kelly-text/60">{regC.source}</p>
+          <p className="text-xs text-kelly-muted">{regC.source}</p>
         </div>
         <div className={card}>
-          <p className="text-xs font-bold text-kelly-text/55">Win # (DB anchor)</p>
+          <p className="text-xs font-bold text-kelly-muted">Win # (DB anchor)</p>
           <p className="text-lg font-bold">{wn?.value ?? "—"}</p>
         </div>
       </div>

@@ -6,17 +6,17 @@ import type { CommsExecutionDashboardData } from "@/lib/comms-workbench/dto";
 import { MAX_COMMS_SEND_OPERATOR_RETRIES } from "@/lib/comms-workbench/send-retry-policy";
 import { formatCommsFieldLabel } from "@/lib/comms-workbench/ui-labels";
 
-const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
+const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-muted";
 const card = "rounded-md border border-kelly-text/10 bg-white p-3 shadow-sm min-w-0";
-const empty = "rounded border border-dashed border-kelly-text/20 bg-kelly-page/50 px-3 py-4 text-center font-body text-sm text-kelly-text/60";
+const empty = "rounded border border-dashed border-kelly-text/20 bg-kelly-page/50 px-3 py-4 text-center font-body text-sm text-kelly-muted";
 const kpi = "rounded border border-kelly-text/10 bg-kelly-page/30 px-2.5 py-2 text-center";
 
 function ExecutionSummaryCard({ label, value, hint }: { label: string; value: number; hint?: string }) {
   return (
     <div className={kpi}>
-      <p className="font-heading text-[9px] font-bold uppercase tracking-wider text-kelly-text/50">{label}</p>
+      <p className="font-heading text-[9px] font-bold uppercase tracking-wider text-kelly-subtle">{label}</p>
       <p className="mt-0.5 font-mono text-xl font-bold text-kelly-text">{value}</p>
-      {hint ? <p className="mt-0.5 text-[10px] text-kelly-text/50">{hint}</p> : null}
+      {hint ? <p className="mt-0.5 text-[10px] text-kelly-subtle">{hint}</p> : null}
     </div>
   );
 }
@@ -29,7 +29,7 @@ export function CommsExecutionDashboardSection({ ex }: { ex: CommsExecutionDashb
     <div className="space-y-4">
       <div>
         <h2 className={h2}>Send execution</h2>
-        <p className="mt-0.5 max-w-2xl font-body text-xs text-kelly-text/65">
+        <p className="mt-0.5 max-w-2xl font-body text-xs text-kelly-muted">
           Queue and delivery state across all message plans. Use this to see failures and in-flight work without opening each plan.
         </p>
       </div>
@@ -69,7 +69,7 @@ export function CommsExecutionDashboardSection({ ex }: { ex: CommsExecutionDashb
           </div>
 
           {inFlight === 0 && ex.failedCount === 0 && ex.recentFailedSends.length === 0 ? (
-            <p className="text-xs text-kelly-text/60">No queued or sending messages right now. No recent failures in this window.</p>
+            <p className="text-xs text-kelly-muted">No queued or sending messages right now. No recent failures in this window.</p>
           ) : null}
         </>
       )}
@@ -107,7 +107,7 @@ export function CommsExecutionDashboardSection({ ex }: { ex: CommsExecutionDashb
                     >
                       {s.planTitle}
                     </Link>
-                    <time className="text-[10px] text-kelly-text/50" dateTime={s.updatedAt}>
+                    <time className="text-[10px] text-kelly-subtle" dateTime={s.updatedAt}>
                       {new Date(s.updatedAt).toLocaleString()}
                     </time>
                   </div>
@@ -139,7 +139,7 @@ export function CommsExecutionDashboardSection({ ex }: { ex: CommsExecutionDashb
                     >
                       {a.planTitle}
                     </Link>
-                    <time className="text-[10px] text-kelly-text/50" dateTime={a.updatedAt}>
+                    <time className="text-[10px] text-kelly-subtle" dateTime={a.updatedAt}>
                       {new Date(a.updatedAt).toLocaleString()}
                     </time>
                   </div>
@@ -167,7 +167,7 @@ export function CommsExecutionDashboardSection({ ex }: { ex: CommsExecutionDashb
                   >
                     {p.planTitle}
                   </Link>
-                  <p className="mt-0.5 flex flex-wrap items-center gap-1.5 text-[10px] text-kelly-text/55">
+                  <p className="mt-0.5 flex flex-wrap items-center gap-1.5 text-[10px] text-kelly-muted">
                     <CommsStatusBadge segment="plan" status={p.planStatus} />
                     <span>· {formatCommsFieldLabel(p.objective)}</span>
                   </p>

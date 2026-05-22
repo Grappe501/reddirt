@@ -17,7 +17,7 @@ export default function AdminInsightsPlaceholderPage() {
         </Link>
         . Orch stores normalized items and optional metrics JSON for future reporting—never raw voter rows in this shell.
       </p>
-      <p className="mt-6 font-body text-sm text-kelly-text/60">No charts in this deployment path—intake and routing first.</p>
+      <p className="mt-6 font-body text-sm text-kelly-muted">No charts in this deployment path—intake and routing first.</p>
     </div>
   );
 }

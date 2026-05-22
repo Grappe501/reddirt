@@ -42,7 +42,7 @@ export default async function CalendarCommandCenterEventPage({ params }: Props) 
 
   return (
     <div className="mx-auto max-w-3xl space-y-6">
-      <div className="font-body text-xs text-kelly-text/60">
+      <div className="font-body text-xs text-kelly-muted">
         <Link href="/admin/calendar-command-center" className="text-kelly-text underline-offset-2 hover:underline">
           ← Command center
         </Link>
@@ -57,11 +57,11 @@ export default async function CalendarCommandCenterEventPage({ params }: Props) 
       </div>
 
       <header className="rounded-lg border border-kelly-text/15 bg-[#f7f2e8] px-6 py-6 shadow-sm">
-        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-text/45">
+        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">
           Event drill-down (staging data)
         </p>
         <h1 className="mt-2 font-heading text-2xl font-bold text-kelly-text">{item.title}</h1>
-        <p className="mt-2 font-body text-sm text-kelly-text/70">
+        <p className="mt-2 font-body text-sm text-kelly-muted">
           {item.allDay
             ? `All day · ${new Date(item.start).toLocaleDateString("en-US", { timeZone: "America/Chicago", weekday: "long", month: "long", day: "numeric", year: "numeric" })}`
             : `${new Date(item.start).toLocaleString("en-US", { timeZone: "America/Chicago" })} — ${item.end ? new Date(item.end).toLocaleString("en-US", { timeZone: "America/Chicago" }) : ""}`}
@@ -86,25 +86,25 @@ export default async function CalendarCommandCenterEventPage({ params }: Props) 
 
       {vaultCountyRel ? (
         <section className="rounded-lg border border-kelly-text/12 bg-white px-6 py-5 font-body text-sm text-kelly-text/85">
-          <h2 className="font-heading text-sm font-bold uppercase tracking-wide text-kelly-text/55">County vault</h2>
-          <p className="mt-2 text-xs text-kelly-text/70">
+          <h2 className="font-heading text-sm font-bold uppercase tracking-wide text-kelly-muted">County vault</h2>
+          <p className="mt-2 text-xs text-kelly-muted">
             Repo-relative paths (clone on disk). Large media stays out of git — use metadata + object storage later.
           </p>
           <dl className="mt-3 space-y-2 text-xs">
             <div>
-              <dt className="text-[10px] font-bold uppercase text-kelly-text/45">County folder</dt>
+              <dt className="text-[10px] font-bold uppercase text-kelly-subtle">County folder</dt>
               <dd>
                 <code className="break-all rounded bg-kelly-wash/80 px-1 py-0.5">{vaultCountyRel}</code>
               </dd>
             </div>
             <div>
-              <dt className="text-[10px] font-bold uppercase text-kelly-text/45">Event folder (slug)</dt>
+              <dt className="text-[10px] font-bold uppercase text-kelly-subtle">Event folder (slug)</dt>
               <dd>
                 <code className="break-all rounded bg-kelly-wash/80 px-1 py-0.5">{vaultEventRel}</code>
               </dd>
             </div>
           </dl>
-          <ul className="mt-3 list-inside list-disc text-[11px] text-kelly-text/70">
+          <ul className="mt-3 list-inside list-disc text-[11px] text-kelly-muted">
             <li>Speech notes, press notes, follow-up: add markdown under the event folder.</li>
             <li>Photo/video uploads: wire to storage in a later slice (no binaries in git).</li>
             <li>People met: use <code className="rounded bg-kelly-wash/80 px-1">people-met.json</code> when ready.</li>
@@ -113,33 +113,33 @@ export default async function CalendarCommandCenterEventPage({ params }: Props) 
       ) : null}
 
       <section className="rounded-lg border border-kelly-text/12 bg-white px-6 py-5 font-body text-sm text-kelly-text/85">
-        <h2 className="font-heading text-sm font-bold uppercase tracking-wide text-kelly-text/55">Logistics</h2>
+        <h2 className="font-heading text-sm font-bold uppercase tracking-wide text-kelly-muted">Logistics</h2>
         <dl className="mt-3 grid gap-2 sm:grid-cols-2">
           <div>
-            <dt className="text-[10px] font-bold uppercase text-kelly-text/45">County</dt>
+            <dt className="text-[10px] font-bold uppercase text-kelly-subtle">County</dt>
             <dd>{item.county ?? "—"}</dd>
           </div>
           <div>
-            <dt className="text-[10px] font-bold uppercase text-kelly-text/45">Location</dt>
+            <dt className="text-[10px] font-bold uppercase text-kelly-subtle">Location</dt>
             <dd className="break-words">{item.location ?? "—"}</dd>
           </div>
           <div>
-            <dt className="text-[10px] font-bold uppercase text-kelly-text/45">County touch</dt>
+            <dt className="text-[10px] font-bold uppercase text-kelly-subtle">County touch</dt>
             <dd>{item.countyTouchCounts ? "Counts toward county touch (per workbook rules)" : "Does not count"}</dd>
           </div>
           <div>
-            <dt className="text-[10px] font-bold uppercase text-kelly-text/45">Verification</dt>
+            <dt className="text-[10px] font-bold uppercase text-kelly-subtle">Verification</dt>
             <dd>Confidence {Math.round(item.verificationConfidence * 100)}%</dd>
           </div>
           {item.priorityTier ? (
             <div>
-              <dt className="text-[10px] font-bold uppercase text-kelly-text/45">Priority tier</dt>
+              <dt className="text-[10px] font-bold uppercase text-kelly-subtle">Priority tier</dt>
               <dd>{item.priorityTier}</dd>
             </div>
           ) : null}
           {item.overnightRequired ? (
             <div>
-              <dt className="text-[10px] font-bold uppercase text-kelly-text/45">Overnight</dt>
+              <dt className="text-[10px] font-bold uppercase text-kelly-subtle">Overnight</dt>
               <dd>{item.overnightCity ?? "Yes (see notes)"}</dd>
             </div>
           ) : null}
@@ -147,22 +147,22 @@ export default async function CalendarCommandCenterEventPage({ params }: Props) 
       </section>
 
       <section className="rounded-lg border border-kelly-text/12 bg-white px-6 py-5 font-body text-sm text-kelly-text/85">
-        <h2 className="font-heading text-sm font-bold uppercase tracking-wide text-kelly-text/55">Roles & contacts</h2>
+        <h2 className="font-heading text-sm font-bold uppercase tracking-wide text-kelly-muted">Roles & contacts</h2>
         <dl className="mt-3 space-y-2">
           <div>
-            <dt className="text-[10px] font-bold uppercase text-kelly-text/45">Kelly&apos;s role</dt>
+            <dt className="text-[10px] font-bold uppercase text-kelly-subtle">Kelly&apos;s role</dt>
             <dd>{dd?.kellyRole ?? "— (fill when promoting to CampaignEvent)"}</dd>
           </div>
           <div>
-            <dt className="text-[10px] font-bold uppercase text-kelly-text/45">Host</dt>
+            <dt className="text-[10px] font-bold uppercase text-kelly-subtle">Host</dt>
             <dd>{dd?.host ?? "—"}</dd>
           </div>
           <div>
-            <dt className="text-[10px] font-bold uppercase text-kelly-text/45">Contacts</dt>
+            <dt className="text-[10px] font-bold uppercase text-kelly-subtle">Contacts</dt>
             <dd>{dd?.contacts ?? "—"}</dd>
           </div>
           <div>
-            <dt className="text-[10px] font-bold uppercase text-kelly-text/45">Spreadsheet context</dt>
+            <dt className="text-[10px] font-bold uppercase text-kelly-subtle">Spreadsheet context</dt>
             <dd>
               {dd?.spreadsheetTab ?? "—"}
               {dd?.rowHint ? ` · ${dd.rowHint}` : ""}
@@ -170,7 +170,7 @@ export default async function CalendarCommandCenterEventPage({ params }: Props) 
           </div>
           {dd?.matchedDb ? (
             <div>
-              <dt className="text-[10px] font-bold uppercase text-kelly-text/45">DB link</dt>
+              <dt className="text-[10px] font-bold uppercase text-kelly-subtle">DB link</dt>
               <dd>
                 {dd.matchedDb.kind} <code className="text-xs">{dd.matchedDb.id}</code>
                 {dd.matchedDb.matchReason ? ` — ${dd.matchedDb.matchReason}` : ""}
@@ -205,7 +205,7 @@ export default async function CalendarCommandCenterEventPage({ params }: Props) 
       <EventSuccessPlaybookPanel playbook={eventSuccessPlaybook} />
 
       <section className="rounded-lg border border-kelly-text/12 bg-white px-6 py-5 font-body text-sm text-kelly-text/85">
-        <h2 className="font-heading text-sm font-bold uppercase tracking-wide text-kelly-text/55">Coverage plan</h2>
+        <h2 className="font-heading text-sm font-bold uppercase tracking-wide text-kelly-muted">Coverage plan</h2>
         {coveragePlan ? (
           <div className="mt-3 space-y-3">
             <div className="grid gap-2 sm:grid-cols-2">
@@ -214,15 +214,15 @@ export default async function CalendarCommandCenterEventPage({ params }: Props) 
               <p><span className="font-semibold">Volunteers needed:</span> {coveragePlan.volunteersNeeded}</p>
               <p><span className="font-semibold">Table:</span> {coveragePlan.tableNeeded ? coveragePlan.tableStatus.replace(/_/g, " ") : "not needed"}</p>
             </div>
-            <p className="text-xs text-kelly-text/65">{coveragePlan.notes}</p>
+            <p className="text-xs text-kelly-muted">{coveragePlan.notes}</p>
           </div>
         ) : (
-          <p className="mt-2 text-kelly-text/60">No staged coverage plan found. Run <code>npm run calendar:coverage:build</code>.</p>
+          <p className="mt-2 text-kelly-muted">No staged coverage plan found. Run <code>npm run calendar:coverage:build</code>.</p>
         )}
       </section>
 
       <section className="rounded-lg border border-kelly-text/12 bg-white px-6 py-5 font-body text-sm text-kelly-text/85">
-        <h2 className="font-heading text-sm font-bold uppercase tracking-wide text-kelly-text/55">Event staffing</h2>
+        <h2 className="font-heading text-sm font-bold uppercase tracking-wide text-kelly-muted">Event staffing</h2>
         {staffingPlan ? (
           <div className="mt-3 space-y-3">
             <div className="grid gap-2 sm:grid-cols-3">
@@ -230,27 +230,27 @@ export default async function CalendarCommandCenterEventPage({ params }: Props) 
               <p><span className="font-semibold">Confirmed:</span> {staffingPlan.volunteersConfirmed}/{staffingPlan.volunteersNeeded}</p>
               <p><span className="font-semibold">Gap:</span> {staffingPlan.staffingGap}</p>
             </div>
-            <p className="text-xs text-kelly-text/65">Wear: {staffingPlan.whatToWear.join(", ")} · Bring: {staffingPlan.whatToBring.join(", ")}</p>
+            <p className="text-xs text-kelly-muted">Wear: {staffingPlan.whatToWear.join(", ")} · Bring: {staffingPlan.whatToBring.join(", ")}</p>
             <ul className="space-y-2">
               {staffAssignments.map((a) => (
                 <li key={a.id} className="rounded border border-kelly-text/10 bg-kelly-page/60 px-3 py-2">
                   <div className="flex flex-wrap justify-between gap-2">
                     <span className="font-semibold">{a.role.replace(/_/g, " ")}</span>
-                    <span className="text-xs text-kelly-text/55">{a.status.replace(/_/g, " ")}</span>
+                    <span className="text-xs text-kelly-muted">{a.status.replace(/_/g, " ")}</span>
                   </div>
-                  <p className="mt-1 text-xs text-kelly-text/70">{a.name ?? "Unassigned"}{a.arrivalTime ? ` · arrive ${a.arrivalTime}` : ""}</p>
-                  {a.notes ? <p className="mt-1 text-xs text-kelly-text/60">{a.notes}</p> : null}
+                  <p className="mt-1 text-xs text-kelly-muted">{a.name ?? "Unassigned"}{a.arrivalTime ? ` · arrive ${a.arrivalTime}` : ""}</p>
+                  {a.notes ? <p className="mt-1 text-xs text-kelly-muted">{a.notes}</p> : null}
                 </li>
               ))}
             </ul>
           </div>
         ) : (
-          <p className="mt-2 text-kelly-text/60">No staged staffing roster yet. Run <code>npm run calendar:staffing:build</code>.</p>
+          <p className="mt-2 text-kelly-muted">No staged staffing roster yet. Run <code>npm run calendar:staffing:build</code>.</p>
         )}
       </section>
 
       <section className="rounded-lg border border-kelly-text/12 bg-white px-6 py-5 font-body text-sm text-kelly-text/85">
-        <h2 className="font-heading text-sm font-bold uppercase tracking-wide text-kelly-text/55">Volunteer callout draft</h2>
+        <h2 className="font-heading text-sm font-bold uppercase tracking-wide text-kelly-muted">Volunteer callout draft</h2>
         {callout ? (
           <div className="mt-3 space-y-2">
             <p><span className="font-semibold">Status:</span> {callout.status.replace(/_/g, " ")}</p>
@@ -260,28 +260,28 @@ export default async function CalendarCommandCenterEventPage({ params }: Props) 
             <p className="text-xs font-semibold text-amber-900">Human approval required. SMS disabled. No send happens here.</p>
           </div>
         ) : (
-          <p className="mt-2 text-kelly-text/60">No volunteer callout needed or no staged callout yet.</p>
+          <p className="mt-2 text-kelly-muted">No volunteer callout needed or no staged callout yet.</p>
         )}
       </section>
 
       <section className="rounded-lg border border-kelly-text/12 bg-white px-6 py-5 font-body text-sm text-kelly-text/85">
-        <h2 className="font-heading text-sm font-bold uppercase tracking-wide text-kelly-text/55">Reminder schedule</h2>
+        <h2 className="font-heading text-sm font-bold uppercase tracking-wide text-kelly-muted">Reminder schedule</h2>
         {reminders.length ? (
           <ul className="mt-3 grid gap-2 sm:grid-cols-2">
             {reminders.slice(0, 12).map((r) => (
               <li key={r.id} className="rounded border border-kelly-text/10 bg-kelly-page/60 px-3 py-2">
                 <p className="font-semibold">{r.timing.replace(/_/g, " ")}</p>
-                <p className="text-xs text-kelly-text/60">{r.status.replace(/_/g, " ")} · {r.channel}</p>
+                <p className="text-xs text-kelly-muted">{r.status.replace(/_/g, " ")} · {r.channel}</p>
               </li>
             ))}
           </ul>
         ) : (
-          <p className="mt-2 text-kelly-text/60">No reminder drafts staged yet.</p>
+          <p className="mt-2 text-kelly-muted">No reminder drafts staged yet.</p>
         )}
       </section>
 
       <section className="rounded-lg border border-kelly-text/12 bg-white px-6 py-5 font-body text-sm text-kelly-text/85">
-        <h2 className="font-heading text-sm font-bold uppercase tracking-wide text-kelly-text/55">Materials pack list & staff tasks</h2>
+        <h2 className="font-heading text-sm font-bold uppercase tracking-wide text-kelly-muted">Materials pack list & staff tasks</h2>
         {coveragePlan ? (
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
             <ul className="list-inside list-disc text-xs">
@@ -324,7 +324,7 @@ export default async function CalendarCommandCenterEventPage({ params }: Props) 
 
       {item.notes ? (
         <section className="rounded-lg border border-kelly-text/12 bg-kelly-wash/50 px-6 py-5 font-body text-sm leading-relaxed text-kelly-text/85">
-          <h2 className="font-heading text-sm font-bold uppercase tracking-wide text-kelly-text/55">Notes</h2>
+          <h2 className="font-heading text-sm font-bold uppercase tracking-wide text-kelly-muted">Notes</h2>
           <p className="mt-2 whitespace-pre-wrap">{item.notes}</p>
         </section>
       ) : null}

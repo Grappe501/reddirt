@@ -38,7 +38,7 @@ export default async function MoneyMovementCenterPage() {
               {movement.category} · {movement.direction} · ${movement.amount.toFixed(2)} · {movement.name ?? "unnamed"} · {movement.reviewStatus}
             </p>
           ))}
-          {!movements.length ? <p className="font-body text-sm text-kelly-text/70">No staged money movements yet.</p> : null}
+          {!movements.length ? <p className="font-body text-sm text-kelly-muted">No staged money movements yet.</p> : null}
         </div>
       </section>
     </div>

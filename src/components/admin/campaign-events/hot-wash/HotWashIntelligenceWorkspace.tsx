@@ -59,7 +59,7 @@ export function HotWashIntelligenceWorkspace({
     <div className="flex flex-col gap-4">
       <header className="rounded-2xl border border-kelly-navy/20 bg-kelly-navy/[0.04] p-5">
         <p className="text-[10px] font-bold uppercase tracking-widest text-kelly-slate">Post-event intelligence review</p>
-        <p className="mt-2 font-body text-sm text-kelly-text/70">
+        <p className="mt-2 font-body text-sm text-kelly-muted">
           Reflect, capture lessons, and feed county memory. Nothing publishes automatically — complete review runs the
           learning loop (county memory + optional blueprint).
         </p>
@@ -200,7 +200,7 @@ export function HotWashIntelligenceWorkspace({
             Preview county memory ({row.county})
           </button>
         ) : null}
-        {countyPreview ? <p className="mt-1 text-xs text-kelly-text/60">{countyPreview}</p> : null}
+        {countyPreview ? <p className="mt-1 text-xs text-kelly-muted">{countyPreview}</p> : null}
       </PlanningSection>
 
       <PlanningSection

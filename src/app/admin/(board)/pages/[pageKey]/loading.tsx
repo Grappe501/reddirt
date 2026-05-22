@@ -7,7 +7,7 @@ export default function AdminPageKeyLoading() {
       aria-busy="true"
     >
       <p className="font-body text-sm text-kelly-slate">Loading editor…</p>
-      <p className="mt-1 font-body text-xs text-kelly-text/50">Preparing the page hero editor.</p>
+      <p className="mt-1 font-body text-xs text-kelly-subtle">Preparing the page hero editor.</p>
     </div>
   );
 }

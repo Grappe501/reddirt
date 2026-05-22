@@ -26,19 +26,19 @@ export default async function EmailCommandCenterProfilesPage() {
         >
           ← Communication Command Center
         </Link>
-        <Link href="/admin/workbench/email-queue" className="text-xs text-kelly-text/60 hover:underline">
+        <Link href="/admin/workbench/email-queue" className="text-xs text-kelly-muted hover:underline">
           Email queue
         </Link>
-        <Link href="/admin/workbench/email-command-center/audiences" className="text-xs text-kelly-text/60 hover:underline">
+        <Link href="/admin/workbench/email-command-center/audiences" className="text-xs text-kelly-muted hover:underline">
           Audience Studio
         </Link>
-        <Link href="/admin/workbench/email-command-center/analytics" className="text-xs text-kelly-text/60 hover:underline">
+        <Link href="/admin/workbench/email-command-center/analytics" className="text-xs text-kelly-muted hover:underline">
           Analytics
         </Link>
-        <Link href="/admin/workbench/email-command-center/map" className="text-xs text-kelly-text/60 hover:underline">
+        <Link href="/admin/workbench/email-command-center/map" className="text-xs text-kelly-muted hover:underline">
           Route map
         </Link>
-        <Link href="/admin/workbench/email-command-center/readiness" className="text-xs text-kelly-text/60 hover:underline">
+        <Link href="/admin/workbench/email-command-center/readiness" className="text-xs text-kelly-muted hover:underline">
           Readiness
         </Link>
       </div>
@@ -136,7 +136,7 @@ export default async function EmailCommandCenterProfilesPage() {
               <li key={f.id} className="rounded border border-kelly-text/8 bg-kelly-page/30 px-2 py-1">
                 <span className="font-semibold">{f.factKey}</span>: {f.factValue.slice(0, 280)}
                 {f.factValue.length > 280 ? "…" : ""}
-                <span className="block text-[9px] text-kelly-text/50">
+                <span className="block text-[9px] text-kelly-subtle">
                   Profile {f.profileId}
                   {f.approvedAt ? ` · ${f.approvedAt.toISOString()}` : ""}
                 </span>

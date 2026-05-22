@@ -16,7 +16,7 @@ import {
 export const dynamic = "force-dynamic";
 
 const card = "rounded-lg border border-kelly-text/12 bg-white/90 px-3 py-2 text-[11px] shadow-sm";
-const h2 = "font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/55";
+const h2 = "font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-muted";
 
 type Props = { searchParams: Promise<Record<string, string | undefined>> };
 
@@ -108,7 +108,7 @@ export default async function CommunicationIntelligencePage({ searchParams }: Pr
 
       <section className={card}>
         <p className={h2}>Gmail ingest</p>
-        <p className="mt-1 text-[10px] text-kelly-text/70">
+        <p className="mt-1 text-[10px] text-kelly-muted">
           Defaults: last ~2y window, max {500} messages, metadata/snippet. Over {500} messages requires phrase{" "}
           <code className="text-[9px]">{COMMUNICATION_INGEST_CONFIRM_PHRASE.gmailHistory}</code>. Full bodies require{" "}
           <code className="text-[9px]">{COMMUNICATION_INGEST_CONFIRM_PHRASE.gmailFullBody}</code> in the second phrase field.
@@ -200,7 +200,7 @@ export default async function CommunicationIntelligencePage({ searchParams }: Pr
 
       <section className={card}>
         <p className={h2}>Google Contacts (People API)</p>
-        <p className="mt-1 text-[10px] text-kelly-text/70">
+        <p className="mt-1 text-[10px] text-kelly-muted">
           Uses the same staff OAuth client as Gmail; requires People scopes on the linked account. Over 1000 contacts requires{" "}
           <code className="text-[9px]">{COMMUNICATION_INGEST_CONFIRM_PHRASE.googleContacts}</code>.
         </p>
@@ -228,7 +228,7 @@ export default async function CommunicationIntelligencePage({ searchParams }: Pr
 
       <section className={card}>
         <p className={h2}>Google Calendar ingest (read-only list)</p>
-        <p className="mt-1 text-[10px] text-kelly-text/70">
+        <p className="mt-1 text-[10px] text-kelly-muted">
           Select an existing Calendar HQ source. Does not call events.insert/update. Over 500 events requires{" "}
           <code className="text-[9px]">{COMMUNICATION_INGEST_CONFIRM_PHRASE.calendarHistory}</code>. Private events default to redacted summary/description unless you check private details.
         </p>
@@ -296,7 +296,7 @@ export default async function CommunicationIntelligencePage({ searchParams }: Pr
       <section className={card}>
         <p className={h2}>Match review queue</p>
         {matchRows.length === 0 ? (
-          <p className="mt-1 text-[10px] text-kelly-text/60">No pending candidates.</p>
+          <p className="mt-1 text-[10px] text-kelly-muted">No pending candidates.</p>
         ) : (
           <ul className="mt-2 space-y-2">
             {matchRows.map((m) => (
@@ -304,7 +304,7 @@ export default async function CommunicationIntelligencePage({ searchParams }: Pr
                 <p className="font-bold text-kelly-navy">
                   {m.communicationIdentity.displayName ?? m.communicationIdentity.normalizedEmail ?? m.communicationIdentity.id}
                 </p>
-                <p className="text-kelly-text/70">
+                <p className="text-kelly-muted">
                   → {m.targetType} <span className="font-mono">{m.targetId}</span> · confidence {m.confidence}
                 </p>
                 <div className="mt-1 flex flex-wrap gap-2">

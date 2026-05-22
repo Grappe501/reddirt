@@ -68,29 +68,29 @@ export default async function AdminRelationalContactDetailPage({ params }: Props
           ← All contacts
         </Link>
       </div>
-      <p className="mt-2 text-sm text-kelly-text/70">Id · {contact.id}</p>
+      <p className="mt-2 text-sm text-kelly-muted">Id · {contact.id}</p>
 
       <section className="mt-8 space-y-2 rounded-card border border-kelly-text/10 bg-kelly-page p-6">
         <h2 className="font-heading text-lg font-bold">Basics</h2>
         <dl className="grid grid-cols-1 gap-2 text-sm sm:grid-cols-2">
           <div>
-            <dt className="text-xs font-semibold uppercase text-kelly-text/55">Owner</dt>
+            <dt className="text-xs font-semibold uppercase text-kelly-muted">Owner</dt>
             <dd>{contact.owner.email}</dd>
           </div>
           <div>
-            <dt className="text-xs font-semibold uppercase text-kelly-text/55">Names</dt>
+            <dt className="text-xs font-semibold uppercase text-kelly-muted">Names</dt>
             <dd>
               {[contact.firstName, contact.lastName].filter(Boolean).join(" ") || "—"}
             </dd>
           </div>
           <div>
-            <dt className="text-xs font-semibold uppercase text-kelly-text/55">Phone / email</dt>
+            <dt className="text-xs font-semibold uppercase text-kelly-muted">Phone / email</dt>
             <dd>
               {contact.phone ?? "—"} · {contact.email ?? "—"}
             </dd>
           </div>
           <div>
-            <dt className="text-xs font-semibold uppercase text-kelly-text/55">County / field</dt>
+            <dt className="text-xs font-semibold uppercase text-kelly-muted">County / field</dt>
             <dd>
               {contact.county ? `${contact.county.displayName} (${contact.county.slug})` : "—"} ·{" "}
               {contact.fieldUnit ? contact.fieldUnit.name : "—"}
@@ -104,16 +104,16 @@ export default async function AdminRelationalContactDetailPage({ params }: Props
         <div className="space-y-2 rounded-card border border-kelly-text/10 p-6">
           <h2 className="font-heading text-lg font-bold">Relationship &amp; match</h2>
           <p className="text-sm">
-            <span className="text-kelly-text/60">Relationship:</span> {contact.relationshipType}{" "}
+            <span className="text-kelly-muted">Relationship:</span> {contact.relationshipType}{" "}
             {contact.relationshipCloseness ? ` / ${contact.relationshipCloseness}` : ""}
           </p>
           <p className="text-sm">
-            <span className="text-kelly-text/60">Match:</span> {contact.matchStatus}{" "}
+            <span className="text-kelly-muted">Match:</span> {contact.matchStatus}{" "}
             {contact.matchConfidence ? `· ${contact.matchConfidence}` : ""}
           </p>
           {contact.notes ? (
             <p className="mt-2 text-sm text-kelly-text/85">
-              <span className="text-kelly-text/60">Notes:</span> {contact.notes}
+              <span className="text-kelly-muted">Notes:</span> {contact.notes}
             </p>
           ) : null}
           {contact.metadataJson != null ? (
@@ -132,7 +132,7 @@ export default async function AdminRelationalContactDetailPage({ params }: Props
         <h2 className="font-heading text-lg font-bold">Voter match</h2>
         {contact.matchedVoterRecord ? (
           <p className="text-sm">
-            <span className="text-kelly-text/60">Matched record:</span>{" "}
+            <span className="text-kelly-muted">Matched record:</span>{" "}
             <Link
               className="text-kelly-navy underline-offset-2 hover:underline"
               href={`/admin/voters/${contact.matchedVoterRecord.id}/model`}
@@ -142,11 +142,11 @@ export default async function AdminRelationalContactDetailPage({ params }: Props
             ({contact.matchedVoterRecord.countySlug})
           </p>
         ) : (
-          <p className="text-sm text-kelly-text/70">No matched voter file row.</p>
+          <p className="text-sm text-kelly-muted">No matched voter file row.</p>
         )}
         {suggestions.length > 0 ? (
           <div className="mt-4">
-            <p className="text-xs font-semibold uppercase text-kelly-text/55">Read-only suggestions (not applied)</p>
+            <p className="text-xs font-semibold uppercase text-kelly-muted">Read-only suggestions (not applied)</p>
             <ul className="mt-2 space-y-1 text-sm">
               {suggestions.map((s) => (
                 <li key={s.voterRecordId} className="font-mono text-xs text-kelly-text/85">
@@ -157,21 +157,21 @@ export default async function AdminRelationalContactDetailPage({ params }: Props
             </ul>
           </div>
         ) : (
-          <p className="mt-2 text-xs text-kelly-text/55">No conservative filename matches to show (or missing name/county/phone signals).</p>
+          <p className="mt-2 text-xs text-kelly-muted">No conservative filename matches to show (or missing name/county/phone signals).</p>
         )}
       </section>
 
       <section className="mt-6 space-y-2 rounded-card border border-kelly-text/10 p-6">
         <h2 className="font-heading text-lg font-bold">Linked interactions</h2>
         {contact.voterInteractions.length === 0 ? (
-          <p className="text-sm text-kelly-text/70">None</p>
+          <p className="text-sm text-kelly-muted">None</p>
         ) : (
           <ul className="space-y-2 text-sm">
             {contact.voterInteractions.map((i) => (
               <li key={i.id} className="border-b border-kelly-text/10 pb-2">
                 {i.interactionType} · {i.interactionChannel} · {i.interactionDate.toISOString().slice(0, 10)}
                 {i.contactedBy ? ` · by ${i.contactedBy.email}` : ""}
-                {i.notes ? <span className="mt-1 block text-xs text-kelly-text/70">{i.notes}</span> : null}
+                {i.notes ? <span className="mt-1 block text-xs text-kelly-muted">{i.notes}</span> : null}
               </li>
             ))}
           </ul>
@@ -181,7 +181,7 @@ export default async function AdminRelationalContactDetailPage({ params }: Props
       <section className="mt-6 space-y-2 rounded-card border border-kelly-text/10 p-6">
         <h2 className="font-heading text-lg font-bold">Linked signals</h2>
         {contact.voterSignals.length === 0 ? (
-          <p className="text-sm text-kelly-text/70">None</p>
+          <p className="text-sm text-kelly-muted">None</p>
         ) : (
           <ul className="space-y-2 text-sm">
             {contact.voterSignals.map((s) => (

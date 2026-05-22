@@ -68,7 +68,7 @@ export default async function EmailContactImportBatchPage({ params }: Props) {
         >
           ← All imports
         </Link>
-        <Link href="/admin/workbench/email-command-center" className="text-xs text-kelly-text/60 hover:underline">
+        <Link href="/admin/workbench/email-command-center" className="text-xs text-kelly-muted hover:underline">
           Command Center
         </Link>
       </div>
@@ -88,30 +88,30 @@ export default async function EmailContactImportBatchPage({ params }: Props) {
       </header>
 
       <section className="rounded-lg border border-kelly-text/12 bg-white/95 px-3 py-2 shadow-sm">
-        <h2 className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">Validation summary</h2>
+        <h2 className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-muted">Validation summary</h2>
         <dl className="mt-2 grid gap-1 font-body text-[11px] sm:grid-cols-2 lg:grid-cols-3">
           <div>
-            <dt className="text-kelly-text/55">Row count</dt>
+            <dt className="text-kelly-muted">Row count</dt>
             <dd className="font-bold tabular-nums">{batch.rowCount}</dd>
           </div>
           <div>
-            <dt className="text-kelly-text/55">Valid (incl. existing match)</dt>
+            <dt className="text-kelly-muted">Valid (incl. existing match)</dt>
             <dd className="font-bold tabular-nums">{batch.validRowCount ?? "—"}</dd>
           </div>
           <div>
-            <dt className="text-kelly-text/55">Invalid</dt>
+            <dt className="text-kelly-muted">Invalid</dt>
             <dd className="font-bold tabular-nums">{batch.invalidRowCount ?? "—"}</dd>
           </div>
           <div>
-            <dt className="text-kelly-text/55">Duplicates (in-batch)</dt>
+            <dt className="text-kelly-muted">Duplicates (in-batch)</dt>
             <dd className="font-bold tabular-nums">{batch.duplicateRowCount ?? "—"}</dd>
           </div>
           <div>
-            <dt className="text-kelly-text/55">Existing profile matches</dt>
+            <dt className="text-kelly-muted">Existing profile matches</dt>
             <dd className="font-bold tabular-nums">{batch.existingProfileMatchCount ?? "—"}</dd>
           </div>
           <div>
-            <dt className="text-kelly-text/55">Consent warnings (rows)</dt>
+            <dt className="text-kelly-muted">Consent warnings (rows)</dt>
             <dd className="font-bold tabular-nums">{batch.consentWarningCount ?? "—"}</dd>
           </div>
         </dl>
@@ -174,10 +174,10 @@ export default async function EmailContactImportBatchPage({ params }: Props) {
       </section>
 
       <section className="rounded-lg border border-kelly-text/10 bg-kelly-page/40 px-3 py-2">
-        <h2 className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">Recent decisions</h2>
+        <h2 className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-muted">Recent decisions</h2>
         <ul className="mt-1 space-y-1 font-body text-[10px] text-kelly-text/85">
           {batch.decisions.length === 0 ? (
-            <li className="text-kelly-text/55">None yet.</li>
+            <li className="text-kelly-muted">None yet.</li>
           ) : (
             batch.decisions.map((d) => (
               <li key={d.id}>
@@ -194,7 +194,7 @@ export default async function EmailContactImportBatchPage({ params }: Props) {
         <div className="max-h-[480px] overflow-auto rounded-lg border border-kelly-text/12 bg-white/95">
           <table className="min-w-full border-collapse font-body text-[10px]">
             <thead className="sticky top-0 z-10 bg-kelly-page/95">
-              <tr className="border-b border-kelly-text/10 text-left font-bold uppercase tracking-wide text-kelly-text/55">
+              <tr className="border-b border-kelly-text/10 text-left font-bold uppercase tracking-wide text-kelly-muted">
                 <th className="px-1.5 py-1">#</th>
                 <th className="px-1.5 py-1">Email</th>
                 <th className="px-1.5 py-1">Name</th>
@@ -217,7 +217,7 @@ export default async function EmailContactImportBatchPage({ params }: Props) {
                   .join(" · ");
                 return (
                   <tr key={r.id} className="border-b border-kelly-text/6 align-top">
-                    <td className="px-1.5 py-1 tabular-nums text-kelly-text/60">{r.rowNumber}</td>
+                    <td className="px-1.5 py-1 tabular-nums text-kelly-muted">{r.rowNumber}</td>
                     <td className="px-1.5 py-1 font-mono text-[9px]">{r.normalizedEmail ?? "—"}</td>
                     <td className="px-1.5 py-1">{displayName}</td>
                     <td className="px-1.5 py-1">{loc}</td>

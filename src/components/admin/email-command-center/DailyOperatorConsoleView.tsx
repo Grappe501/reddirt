@@ -20,7 +20,7 @@ import type { EmailCommandCenterSnapshot } from "@/lib/email-command-center/read
 
 const card =
   "rounded-lg border border-kelly-text/12 bg-gradient-to-b from-white/95 to-kelly-page/90 px-3 py-2 shadow-sm";
-const h3 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/50";
+const h3 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-subtle";
 
 /** EMAIL-AUTOMATION-POLICY-DETAILS-1.0 — alert first, then warn; cap for Daily strip. */
 function topAutomationPolicyWarnings(policies: AutomationPolicyEvalRow[], limit: number): AutomationPolicyEvalRow[] {
@@ -52,7 +52,7 @@ function PriorityCard({
     >
       <p className={h3}>{title}</p>
       <p className="mt-1 font-heading text-2xl font-bold tabular-nums text-kelly-navy">{value}</p>
-      {sub ? <p className="mt-0.5 font-body text-[10px] text-kelly-text/65">{sub}</p> : null}
+      {sub ? <p className="mt-0.5 font-body text-[10px] text-kelly-muted">{sub}</p> : null}
     </Link>
   );
 }
@@ -309,7 +309,7 @@ export function DailyOperatorConsoleView({ snapshot }: Props) {
             Governed handoff
           </span>
         </div>
-        <p className="font-body text-[10px] text-kelly-text/70">
+        <p className="font-body text-[10px] text-kelly-muted">
           EMAIL-DAILY-OPERATOR-CONSOLE-1.0 + <strong>EMAIL-AUTOMATION-POLICY-DETAILS-1.0</strong> (top 3 policy warn/alert strip) —{" "}
           <strong>no demo mode</strong>,{" "}
           <code className="rounded bg-kelly-page px-0.5 text-[9px]">EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM</code> unchanged. Shared
@@ -382,7 +382,7 @@ export function DailyOperatorConsoleView({ snapshot }: Props) {
 
       <section className="space-y-2">
         <h2 className={h3}>Today&apos;s priorities</h2>
-        <p className="font-body text-[10px] text-kelly-text/65">
+        <p className="font-body text-[10px] text-kelly-muted">
           From <code className="text-[9px]">getEmailCommandCenterSnapshot</code> (shared draft counts) plus this browser&apos;s
           Message Studio local drafts (localStorage only).
         </p>

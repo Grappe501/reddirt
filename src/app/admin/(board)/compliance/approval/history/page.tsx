@@ -70,7 +70,7 @@ export default async function ApprovalHistoryPage() {
             </article>
           );
         })}
-        {!log.length ? <p className="text-sm text-kelly-text/70">No approval actions logged yet.</p> : null}
+        {!log.length ? <p className="text-sm text-kelly-muted">No approval actions logged yet.</p> : null}
       </section>
       <Link href="/admin/compliance/approval" className="text-sm font-semibold text-kelly-navy underline">
         ← Approval hub

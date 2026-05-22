@@ -158,7 +158,7 @@ export function MonthReviewWizard({
     return (
       <section className="rounded-3xl border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]">
         <h2 className="font-heading text-xl font-bold">{travelReimbursement ? "Travel approval setup" : "Review setup"}</h2>
-        <p className="mt-2 font-body text-sm text-kelly-text/70">
+        <p className="mt-2 font-body text-sm text-kelly-muted">
           Choose month and queue order. Period loaded: <strong>{initialPeriod}</strong> ({rows.length} events).
           {dateRange.start || dateRange.end ? (
             <>
@@ -222,7 +222,7 @@ export function MonthReviewWizard({
           </p>
         ) : null}
 
-        <p className="mt-4 font-body text-xs text-kelly-text/55">
+        <p className="mt-4 font-body text-xs text-kelly-muted">
           Queue preview: <strong>{buildMonthReviewQueue(rows, mode, focus, dateRange).length}</strong> events in {MONTH_REVIEW_MODE_LABELS[mode]}
           {focus ? ` · ${MONTH_REVIEW_FOCUS_LABELS[focus]}` : ""} order.
         </p>
@@ -281,9 +281,9 @@ export function MonthReviewWizard({
           <span className="font-bold text-kelly-navy">
             Event {index + 1} of {queue.length}
           </span>
-          <span className="text-kelly-text/50">· {MONTH_REVIEW_MODE_LABELS[mode]}</span>
-          <span className="text-kelly-text/50">· {month}</span>
-          {focus ? <span className="text-kelly-text/50">· {MONTH_REVIEW_FOCUS_LABELS[focus]}</span> : null}
+          <span className="text-kelly-subtle">· {MONTH_REVIEW_MODE_LABELS[mode]}</span>
+          <span className="text-kelly-subtle">· {month}</span>
+          {focus ? <span className="text-kelly-subtle">· {MONTH_REVIEW_FOCUS_LABELS[focus]}</span> : null}
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <label className="flex items-center gap-1 text-xs">

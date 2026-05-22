@@ -8,7 +8,7 @@ import type { EmailCommandCenterSnapshot } from "@/lib/email-command-center/read
 const ECC = "/admin/workbench/email-command-center";
 const QUEUE = "/admin/workbench/email-queue";
 const card = "rounded-lg border border-kelly-text/12 bg-gradient-to-b from-white/95 to-kelly-page/90 px-3 py-2.5 shadow-sm";
-const h3 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/50";
+const h3 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-subtle";
 
 type ReadinessScores = {
   inboxReadiness: number;
@@ -111,7 +111,7 @@ function DrillTable({
 }) {
   if (!rows.length) {
     return (
-      <p className="mt-1 rounded border border-kelly-text/10 bg-kelly-fog/40 px-2 py-1.5 font-body text-[10px] text-kelly-text/70">
+      <p className="mt-1 rounded border border-kelly-text/10 bg-kelly-fog/40 px-2 py-1.5 font-body text-[10px] text-kelly-muted">
         {emptyNote}
       </p>
     );
@@ -119,7 +119,7 @@ function DrillTable({
   return (
     <div className="mt-1 max-h-48 overflow-auto rounded border border-kelly-text/10">
       <table className="w-full text-left font-mono text-[9px] text-kelly-navy">
-        <thead className="sticky top-0 bg-kelly-fog/95 text-kelly-text/60">
+        <thead className="sticky top-0 bg-kelly-fog/95 text-kelly-muted">
           <tr>
             <th className="px-1 py-1">Updated (UTC)</th>
             <th className="px-1 py-1">Status</th>
@@ -204,7 +204,7 @@ export function AnalyticsOperatorDrilldownPanels({ snapshot, drilldown }: Analyt
   return (
     <div className="space-y-4">
       <nav className="rounded-lg border border-kelly-text/10 bg-kelly-fog/50 px-3 py-2 font-body text-[11px] text-kelly-navy">
-        <span className="font-bold uppercase tracking-wide text-kelly-text/55">Drilldowns</span>
+        <span className="font-bold uppercase tracking-wide text-kelly-muted">Drilldowns</span>
         <span className="mx-1 text-kelly-text/40">·</span>
         <a href="#analytics-readiness-scores" className="font-semibold text-kelly-forest underline">
           Scores
@@ -241,7 +241,7 @@ export function AnalyticsOperatorDrilldownPanels({ snapshot, drilldown }: Analyt
 
       <section id="analytics-readiness-scores" className={`${card} scroll-mt-20`}>
         <h2 className={h3}>Readiness scores (heuristic)</h2>
-        <p className="mt-1 font-body text-[10px] text-kelly-text/70">
+        <p className="mt-1 font-body text-[10px] text-kelly-muted">
           EMAIL-ANALYTICS-DRILLDOWN-1.0 — derived from this page&apos;s snapshot only. Not legal or deliverability certification; use
           for triage ordering.
         </p>
@@ -256,7 +256,7 @@ export function AnalyticsOperatorDrilldownPanels({ snapshot, drilldown }: Analyt
 
       <section className={card}>
         <h2 className={h3}>Cross-surface attention (read-only samples)</h2>
-        <p className="mt-1 text-[10px] text-kelly-text/70">
+        <p className="mt-1 text-[10px] text-kelly-muted">
           Latest failed governed sends, stale queue rows, final-approval queue, import approvals, failed Marketing
           contact syncs, and unreconciled webhook events — each deep-links to its owning route.
         </p>
@@ -265,42 +265,42 @@ export function AnalyticsOperatorDrilldownPanels({ snapshot, drilldown }: Analyt
         ) : null}
         <div className="mt-3 space-y-3">
           <div>
-            <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/55">Latest failed send executions</p>
+            <p className="font-heading text-[9px] font-bold uppercase text-kelly-muted">Latest failed send executions</p>
             <DrillTable
               rows={dd.latestFailedSendExecutions}
               emptyNote="No FAILED / PREFLIGHT_FAILED / PARTIAL_FAILURE rows in the last fetched window."
             />
           </div>
           <div>
-            <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/55">Stale queue items (7d+ without update, not closed)</p>
+            <p className="font-heading text-[9px] font-bold uppercase text-kelly-muted">Stale queue items (7d+ without update, not closed)</p>
             <DrillTable
               rows={dd.staleQueueItems}
               emptyNote="No stale open items — or queue tables unavailable."
             />
           </div>
           <div>
-            <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/55">Pending final approval (send executions)</p>
+            <p className="font-heading text-[9px] font-bold uppercase text-kelly-muted">Pending final approval (send executions)</p>
             <DrillTable
               rows={dd.pendingFinalApprovalExecutions}
               emptyNote="No executions waiting in READY_FOR_FINAL_APPROVAL."
             />
           </div>
           <div>
-            <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/55">Pending import approvals</p>
+            <p className="font-heading text-[9px] font-bold uppercase text-kelly-muted">Pending import approvals</p>
             <DrillTable
               rows={dd.pendingImportApprovals}
               emptyNote="No batches in VALIDATED / READY_FOR_APPROVAL."
             />
           </div>
           <div>
-            <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/55">Failed contact sync runs</p>
+            <p className="font-heading text-[9px] font-bold uppercase text-kelly-muted">Failed contact sync runs</p>
             <DrillTable
               rows={dd.failedContactSyncRuns}
               emptyNote="No FAILED SendGridContactSyncRun rows."
             />
           </div>
           <div>
-            <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/55">Unreconciled SendGrid events (sample)</p>
+            <p className="font-heading text-[9px] font-bold uppercase text-kelly-muted">Unreconciled SendGrid events (sample)</p>
             <DrillTable
               rows={dd.unreconciledSendGridEvents}
               emptyNote="All recent sampled events already carry eccReconciliation metadata — or no events ingested."
@@ -330,7 +330,7 @@ export function AnalyticsOperatorDrilldownPanels({ snapshot, drilldown }: Analyt
             { label: "Stale (7d+) count", value: ah.itemsNotUpdatedIn7DaysCount },
           ].map((x) => (
             <div key={x.label} className="rounded-md border border-kelly-text/10 bg-white/90 px-2 py-2">
-              <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/55">{x.label}</p>
+              <p className="font-heading text-[9px] font-bold uppercase text-kelly-muted">{x.label}</p>
               <p className="mt-0.5 font-heading text-xl font-bold tabular-nums">{x.value}</p>
             </div>
           ))}
@@ -358,7 +358,7 @@ export function AnalyticsOperatorDrilldownPanels({ snapshot, drilldown }: Analyt
             { label: "Approved for send governance", value: ms.approvedForSendGovernance },
           ].map((x) => (
             <div key={x.label} className="rounded-md border border-kelly-text/10 bg-white/90 px-2 py-2">
-              <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/55">{x.label}</p>
+              <p className="font-heading text-[9px] font-bold uppercase text-kelly-muted">{x.label}</p>
               <p className="mt-0.5 font-heading text-xl font-bold tabular-nums">{x.value}</p>
             </div>
           ))}
@@ -386,7 +386,7 @@ export function AnalyticsOperatorDrilldownPanels({ snapshot, drilldown }: Analyt
             { label: "Failed / partial", value: se.failedCount + se.partialFailureCount },
           ].map((x) => (
             <div key={x.label} className="rounded-md border border-kelly-text/10 bg-white/90 px-2 py-2">
-              <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/55">{x.label}</p>
+              <p className="font-heading text-[9px] font-bold uppercase text-kelly-muted">{x.label}</p>
               <p className="mt-0.5 font-heading text-xl font-bold tabular-nums">{x.value}</p>
             </div>
           ))}
@@ -414,7 +414,7 @@ export function AnalyticsOperatorDrilldownPanels({ snapshot, drilldown }: Analyt
             { label: "Σ warnings (non-archived)", value: sc.sumWarningCountNonArchived },
           ].map((x) => (
             <div key={x.label} className="rounded-md border border-kelly-text/10 bg-white/90 px-2 py-2">
-              <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/55">{x.label}</p>
+              <p className="font-heading text-[9px] font-bold uppercase text-kelly-muted">{x.label}</p>
               <p className="mt-0.5 font-heading text-xl font-bold tabular-nums">{x.value}</p>
             </div>
           ))}
@@ -462,7 +462,7 @@ export function AnalyticsOperatorDrilldownPanels({ snapshot, drilldown }: Analyt
       >
         <div className="mt-2 max-h-56 overflow-auto rounded border border-kelly-text/10">
           <table className="w-full text-left font-body text-[10px] text-kelly-navy">
-            <thead className="sticky top-0 bg-kelly-fog/95 text-kelly-text/60">
+            <thead className="sticky top-0 bg-kelly-fog/95 text-kelly-muted">
               <tr>
                 <th className="px-1 py-1">Policy</th>
                 <th className="px-1 py-1">Status</th>
@@ -524,7 +524,7 @@ export function AnalyticsOperatorDrilldownPanels({ snapshot, drilldown }: Analyt
 
       <section className={card}>
         <h2 className={h3}>Audience + import drill-through (counts)</h2>
-        <p className="mt-1 text-[10px] text-kelly-text/70">
+        <p className="mt-1 text-[10px] text-kelly-muted">
           Same numbers as lower sections — kept for operators who start from Audience / import posture.
         </p>
         <div className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
@@ -532,28 +532,28 @@ export function AnalyticsOperatorDrilldownPanels({ snapshot, drilldown }: Analyt
             href={au.path}
             className="rounded-md border border-kelly-text/10 bg-white/90 px-2 py-2 hover:border-kelly-forest/30"
           >
-            <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/55">Active audiences</p>
+            <p className="font-heading text-[9px] font-bold uppercase text-kelly-muted">Active audiences</p>
             <p className="mt-0.5 font-heading text-xl font-bold tabular-nums">{au.activeAudienceDefinitions}</p>
           </Link>
           <Link
             href={au.path}
             className="rounded-md border border-kelly-text/10 bg-white/90 px-2 py-2 hover:border-kelly-forest/30"
           >
-            <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/55">Approved triples</p>
+            <p className="font-heading text-[9px] font-bold uppercase text-kelly-muted">Approved triples</p>
             <p className="mt-0.5 font-heading text-xl font-bold tabular-nums">{au.buildingBlockApprovedTriples}</p>
           </Link>
           <Link
             href={ci.path}
             className="rounded-md border border-kelly-text/10 bg-white/90 px-2 py-2 hover:border-kelly-forest/30"
           >
-            <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/55">Import pending approval</p>
+            <p className="font-heading text-[9px] font-bold uppercase text-kelly-muted">Import pending approval</p>
             <p className="mt-0.5 font-heading text-xl font-bold tabular-nums">{ci.pendingApprovalCount}</p>
           </Link>
           <Link
             href={ci.path}
             className="rounded-md border border-kelly-text/10 bg-white/90 px-2 py-2 hover:border-kelly-forest/30"
           >
-            <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/55">Open import batches</p>
+            <p className="font-heading text-[9px] font-bold uppercase text-kelly-muted">Open import batches</p>
             <p className="mt-0.5 font-heading text-xl font-bold tabular-nums">{ci.openImportBatchCount}</p>
           </Link>
         </div>

@@ -93,7 +93,7 @@ export default async function ApprovalQueueDashboardPage({
               <p className="font-semibold">{item.title}</p>
               <span className="text-xs uppercase">{item.status} · {item.riskLevel}</span>
             </div>
-            {item.amount != null ? <p className="text-sm text-kelly-text/70">${item.amount.toFixed(2)}</p> : null}
+            {item.amount != null ? <p className="text-sm text-kelly-muted">${item.amount.toFixed(2)}</p> : null}
             {item.blockers.length ? <p className="text-xs text-red-800">Approval blocked: {item.blockers[0]}</p> : null}
           </Link>
         ))}

@@ -223,7 +223,7 @@ export default async function OwnedMediaGridPage({ searchParams }: Props) {
     <div className="mx-auto max-w-[1920px] px-2 pb-8 pt-2 md:px-4">
       <div className="border-b border-kelly-text/10 pb-3">
         <h1 className="font-heading text-2xl font-bold text-kelly-text">Media Center</h1>
-        <p className="mt-1 max-w-3xl font-body text-sm text-kelly-text/70">
+        <p className="mt-1 max-w-3xl font-body text-sm text-kelly-muted">
           Campaign digital asset manager — <strong>one `OwnedMediaAsset` spine</strong>, Lightroom-style triage, safe previews
           only (no raw paths).
         </p>
@@ -297,7 +297,7 @@ export default async function OwnedMediaGridPage({ searchParams }: Props) {
           {view === "list" ? (
             <div className="mt-4 overflow-x-auto rounded-md border border-kelly-text/10">
               <table className="w-full min-w-[48rem] border-collapse text-left text-xs">
-                <thead className="border-b border-kelly-text/10 bg-kelly-text/[0.04] font-semibold text-kelly-text/70">
+                <thead className="border-b border-kelly-text/10 bg-kelly-text/[0.04] font-semibold text-kelly-muted">
                   <tr>
                     <th className="w-8 p-2">
                       <span className="sr-only">Select</span>
@@ -327,7 +327,7 @@ export default async function OwnedMediaGridPage({ searchParams }: Props) {
                               // eslint-disable-next-line @next/next/no-img-element
                               <img src={getOwnedFilePublicPath(a.id)} alt="" className="h-10 w-full object-cover" />
                             ) : (
-                              <div className="flex h-10 items-center justify-center text-[8px] text-kelly-text/50">—</div>
+                              <div className="flex h-10 items-center justify-center text-[8px] text-kelly-subtle">—</div>
                             )}
                           </Link>
                         </td>
@@ -341,7 +341,7 @@ export default async function OwnedMediaGridPage({ searchParams }: Props) {
                         <td className="p-2">{a.pickStatus}</td>
                         <td className="p-2">{a.rating ?? "—"}</td>
                         <td className="p-2">{a.hasTranscript ? "Y" : "N"}</td>
-                        <td className="p-2 text-kelly-text/60">
+                        <td className="p-2 text-kelly-muted">
                           {new Date(a.createdAt).toLocaleDateString()}
                         </td>
                       </tr>
@@ -381,8 +381,8 @@ export default async function OwnedMediaGridPage({ searchParams }: Props) {
                           <img src={src} alt="" className="h-full w-full object-cover" loading="lazy" />
                         ) : (
                           <div className="flex h-full w-full flex-col items-center justify-center p-1 text-center">
-                            <span className="font-mono text-[9px] font-bold uppercase text-kelly-text/70">{a.kind}</span>
-                            {isHeic ? <span className="mt-0.5 text-[8px] text-kelly-text/50">HEIC — open file</span> : null}
+                            <span className="font-mono text-[9px] font-bold uppercase text-kelly-muted">{a.kind}</span>
+                            {isHeic ? <span className="mt-0.5 text-[8px] text-kelly-subtle">HEIC — open file</span> : null}
                           </div>
                         )}
                       </div>
@@ -397,7 +397,7 @@ export default async function OwnedMediaGridPage({ searchParams }: Props) {
                         </p>
                         {a.colorLabel && a.colorLabel !== "NONE" ? (
                           <span
-                            className="mt-0.5 inline-block rounded px-0.5 text-[7px] font-bold uppercase text-kelly-text/60"
+                            className="mt-0.5 inline-block rounded px-0.5 text-[7px] font-bold uppercase text-kelly-muted"
                             title="Color label"
                           >
                             {a.colorLabel}
@@ -417,7 +417,7 @@ export default async function OwnedMediaGridPage({ searchParams }: Props) {
           )}
 
           {assets.length === 0 ? (
-            <p className="mt-8 rounded-lg border border-dashed border-kelly-text/20 p-8 text-center text-sm text-kelly-text/60">
+            <p className="mt-8 rounded-lg border border-dashed border-kelly-text/20 p-8 text-center text-sm text-kelly-muted">
               No assets match. Clear filters or run folder ingest:{" "}
               <code className="rounded bg-kelly-text/5 px-1 text-xs">npm run ingest:campaign-info-folder</code>
             </p>

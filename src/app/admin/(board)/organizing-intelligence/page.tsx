@@ -8,7 +8,7 @@ export default function AdminOrganizingIntelligencePlaceholderPage() {
   return (
     <div>
       <h1 className="font-heading text-2xl font-bold text-kelly-text">Organizing intelligence — operator hub</h1>
-      <p className="mt-2 max-w-3xl text-sm text-kelly-text/70">
+      <p className="mt-2 max-w-3xl text-sm text-kelly-muted">
         This route is a <strong>placeholder</strong> for campaign-side OIS tooling (queues, exports, QA) that complements the public{" "}
         <Link href="/organizing-intelligence" className="font-semibold text-kelly-navy underline" target="_blank" rel="noreferrer">
           organizing intelligence

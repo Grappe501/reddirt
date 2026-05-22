@@ -18,7 +18,7 @@ export function AgentNextActionPanel({ actions, compact }: { actions: NextAction
       <div className="flex flex-wrap items-start justify-between gap-2">
         <div>
           <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-slate">Recommended next</p>
-          <p className="mt-1 text-xs text-kelly-text/60">{actions.calmSummary}</p>
+          <p className="mt-1 text-xs text-kelly-muted">{actions.calmSummary}</p>
         </div>
         <button
           type="button"
@@ -37,8 +37,8 @@ export function AgentNextActionPanel({ actions, compact }: { actions: NextAction
         >
           {actions.primary.title}
         </Link>
-        <p className="mt-1 text-xs text-kelly-text/70">{actions.primary.why}</p>
-        <p className="mt-2 text-[10px] font-semibold text-kelly-text/50">
+        <p className="mt-1 text-xs text-kelly-muted">{actions.primary.why}</p>
+        <p className="mt-2 text-[10px] font-semibold text-kelly-subtle">
           {actions.primary.category} · {actions.primary.urgency.replaceAll("_", " ")} · confidence{" "}
           {actions.primary.confidence}
         </p>
@@ -55,7 +55,7 @@ export function AgentNextActionPanel({ actions, compact }: { actions: NextAction
               >
                 {s.title}
               </Link>
-              <p className="mt-0.5 text-kelly-text/55">{s.why}</p>
+              <p className="mt-0.5 text-kelly-muted">{s.why}</p>
             </li>
           ))}
         </ul>
@@ -64,7 +64,7 @@ export function AgentNextActionPanel({ actions, compact }: { actions: NextAction
       {actions.sprintAwareNote ? (
         <p className="mt-2 text-[10px] text-kelly-slate/70">{actions.sprintAwareNote}</p>
       ) : null}
-      <p className="mt-3 text-[10px] text-kelly-text/45">{actions.avoidOverwhelmNote}</p>
+      <p className="mt-3 text-[10px] text-kelly-subtle">{actions.avoidOverwhelmNote}</p>
     </section>
   );
 }

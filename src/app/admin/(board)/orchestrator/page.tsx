@@ -80,16 +80,16 @@ export default async function AdminOrchestratorHomePage() {
 
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
-          <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-text/50">Awaiting review</p>
+          <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-subtle">Awaiting review</p>
           <p className="mt-2 font-heading text-3xl font-bold text-kelly-navy">{pendingCount}</p>
         </div>
         <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
-          <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-text/50">Routed to site</p>
+          <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-subtle">Routed to site</p>
           <p className="mt-2 font-heading text-3xl font-bold text-kelly-text">{featuredVisible}</p>
-          <p className="mt-1 font-body text-xs text-kelly-text/55">Campaign trail or homepage rail</p>
+          <p className="mt-1 font-body text-xs text-kelly-muted">Campaign trail or homepage rail</p>
         </div>
         <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)] sm:col-span-2">
-          <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-text/50">Inbound by platform</p>
+          <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-subtle">Inbound by platform</p>
           <ul className="mt-3 space-y-1 font-body text-sm text-kelly-text/80">
             {Object.values(ContentPlatform).map((p) => (
               <li key={p} className="flex justify-between gap-4">
@@ -108,7 +108,7 @@ export default async function AdminOrchestratorHomePage() {
             <li key={c.id} className="flex flex-wrap items-center justify-between gap-3 py-3 first:pt-0 last:pb-0">
               <div>
                 <p className="font-semibold text-kelly-text">{c.accountName ?? c.platform}</p>
-                <p className="text-xs text-kelly-text/55">
+                <p className="text-xs text-kelly-muted">
                   {healthLabel(c.status)}
                   {c.lastSyncedAt
                     ? ` · Last sync ${c.lastSyncedAt.toLocaleString()}`
@@ -117,7 +117,7 @@ export default async function AdminOrchestratorHomePage() {
                       : ""}
                 </p>
               </div>
-              <span className="rounded-full bg-kelly-text/8 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-kelly-text/70">
+              <span className="rounded-full bg-kelly-text/8 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-kelly-muted">
                 {c.platform}
               </span>
             </li>
@@ -154,13 +154,13 @@ export default async function AdminOrchestratorHomePage() {
                 <Link href={`/admin/inbox/${row.id}`} className="font-semibold text-kelly-navy hover:underline">
                   {row.title?.slice(0, 80) ?? row.id}
                 </Link>
-                <span className="text-kelly-text/55">
+                <span className="text-kelly-muted">
                   {" "}
                   · {row.sourcePlatform} · {row.reviewStatus} · {row.syncTimestamp.toLocaleString()}
                 </span>
               </li>
             ))}
-            {recentItems.length === 0 ? <li className="text-kelly-text/55">No inbound items yet.</li> : null}
+            {recentItems.length === 0 ? <li className="text-kelly-muted">No inbound items yet.</li> : null}
           </ul>
         </div>
         <div>
@@ -169,14 +169,14 @@ export default async function AdminOrchestratorHomePage() {
             {recentDecisions.map((d) => (
               <li key={d.id}>
                 <span className="font-semibold">{d.status}</span>
-                <span className="text-kelly-text/55">
+                <span className="text-kelly-muted">
                   {" "}
                   → {d.destination} · {d.inboundItem.title?.slice(0, 60) ?? d.inboundItemId} ·{" "}
                   {d.createdAt.toLocaleString()}
                 </span>
               </li>
             ))}
-            {recentDecisions.length === 0 ? <li className="text-kelly-text/55">No audit trail yet.</li> : null}
+            {recentDecisions.length === 0 ? <li className="text-kelly-muted">No audit trail yet.</li> : null}
           </ul>
         </div>
       </div>

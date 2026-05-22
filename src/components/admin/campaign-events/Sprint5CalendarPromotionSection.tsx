@@ -8,7 +8,7 @@ import type { AiToolStatus } from "@/lib/campaign-events/ai-tools-master-catalog
 import type { EnrichedAiTool } from "@/lib/campaign-events/ai-tools-operational-meta";
 
 const STATUS_STYLE: Record<AiToolStatus, string> = {
-  idea: "bg-kelly-wash text-kelly-text/60",
+  idea: "bg-kelly-wash text-kelly-muted",
   scaffolded: "bg-amber-50 text-amber-950",
   partial: "bg-kelly-navy/10 text-kelly-navy",
   functional: "bg-emerald-50 text-emerald-900",
@@ -32,10 +32,10 @@ export function Sprint5CalendarPromotionSection({
     <div className="space-y-6">
       <section className="rounded-2xl border border-kelly-navy/25 bg-kelly-navy/[0.06] p-5 font-body text-sm">
         <h2 className="font-heading text-lg font-bold text-kelly-navy">Sprint 5 Calendar Promotion Toolchain</h2>
-        <p className="mt-2 text-kelly-text/70">
+        <p className="mt-2 text-kelly-muted">
           {snap.sprint5.tools.length} V1 tools for controlled Google Calendar promotion. AI may summarize and warn — only operators click Promote.
         </p>
-        <ul className="mt-3 list-inside list-disc text-xs text-kelly-text/65">
+        <ul className="mt-3 list-inside list-disc text-xs text-kelly-muted">
           {snap.sprint5.humanControlRules.map((r) => (
             <li key={r}>{r}</li>
           ))}
@@ -52,7 +52,7 @@ export function Sprint5CalendarPromotionSection({
         <ol className="mt-3 space-y-2">
           {snap.sprint5.pipeline.map((stage) => (
             <li key={stage.order} className="flex flex-wrap items-center gap-2 rounded-lg border border-kelly-text/10 px-3 py-2 text-sm">
-              <span className="font-mono text-xs text-kelly-text/45">{stage.order}.</span>
+              <span className="font-mono text-xs text-kelly-subtle">{stage.order}.</span>
               <span className="font-semibold">{stage.label}</span>
               <button type="button" className="font-mono text-xs text-kelly-navy underline" onClick={() => onSelect(stage.toolId)}>
                 {stage.toolId}
@@ -90,7 +90,7 @@ export function Sprint5CalendarPromotionSection({
                   </span>
                   {tool.name}
                   {contract?.observationEvents.length ? (
-                    <span className="ml-1 text-[10px] text-kelly-text/45">· obs</span>
+                    <span className="ml-1 text-[10px] text-kelly-subtle">· obs</span>
                   ) : null}
                 </button>
               </li>

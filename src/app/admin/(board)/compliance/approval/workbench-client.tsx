@@ -130,7 +130,7 @@ export function LightningApprovalWorkbench({ queueId, item, position, total, pre
               Item {position} of {total}
             </p>
             <h1 className="font-heading text-2xl font-bold text-kelly-text">{item.title}</h1>
-            {item.subtitle ? <p className="text-sm text-kelly-text/70">{item.subtitle}</p> : null}
+            {item.subtitle ? <p className="text-sm text-kelly-muted">{item.subtitle}</p> : null}
           </div>
           <div className="flex flex-wrap items-center gap-2">
             <span className="rounded-full bg-kelly-wash px-3 py-1 text-xs font-semibold">Confidence {item.confidenceScore}%</span>
@@ -154,7 +154,7 @@ export function LightningApprovalWorkbench({ queueId, item, position, total, pre
                 <article key={evidence.id} className="rounded-xl border border-kelly-text/10 p-3">
                   <p className="text-xs font-bold uppercase text-kelly-slate">{evidence.type.replace(/_/g, " ")}</p>
                   <p className="font-semibold">{evidence.title}</p>
-                  {evidence.summary ? <p className="text-sm text-kelly-text/70">{evidence.summary}</p> : null}
+                  {evidence.summary ? <p className="text-sm text-kelly-muted">{evidence.summary}</p> : null}
                   {evidence.path ? <p className="mt-1 font-mono text-xs break-all">{evidence.path}</p> : null}
                   {evidence.textPreview ? (
                     <pre className="mt-2 max-h-48 overflow-auto rounded-lg bg-kelly-wash p-2 text-xs whitespace-pre-wrap">{evidence.textPreview}</pre>

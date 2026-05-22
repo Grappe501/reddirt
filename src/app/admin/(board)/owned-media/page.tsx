@@ -86,11 +86,11 @@ export default async function AdminOwnedMediaPage({ searchParams }: Props) {
 
       <form action={uploadOwnedMediaAction} className="mt-8 space-y-4 rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]" encType="multipart/form-data">
         <h2 className="font-heading text-lg font-bold text-kelly-text">Upload</h2>
-        <p className="text-xs text-kelly-text/60">
+        <p className="text-xs text-kelly-muted">
           Max size defaults to 2GB (cap 4GB; override with OWNED_MEDIA_MAX_BYTES).
         </p>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">File</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">File</span>
           <input
             name="file"
             type="file"
@@ -99,12 +99,12 @@ export default async function AdminOwnedMediaPage({ searchParams }: Props) {
           />
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Title</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Title</span>
           <input name="title" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" placeholder="Optional — defaults to filename" />
         </label>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Kind</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Kind</span>
             <select name="kind" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               {Object.values(OwnedMediaKind).map((k) => (
                 <option key={k} value={k}>
@@ -114,7 +114,7 @@ export default async function AdminOwnedMediaPage({ searchParams }: Props) {
             </select>
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Role</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Role</span>
             <select name="role" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               {Object.values(OwnedMediaRole).map((k) => (
                 <option key={k} value={k}>
@@ -125,40 +125,40 @@ export default async function AdminOwnedMediaPage({ searchParams }: Props) {
           </label>
         </div>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Description</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Description</span>
           <textarea name="description" rows={2} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <div className="grid gap-4 md:grid-cols-3">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Event date</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Event date</span>
             <input name="eventDate" type="date" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">County slug</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">County slug</span>
             <input name="countySlug" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" placeholder="e.g. pulaski" />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">FIPS</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">FIPS</span>
             <input name="countyFips" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" placeholder="05051" />
           </label>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">City</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">City</span>
             <input name="city" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Speaker</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Speaker</span>
             <input name="speakerName" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Issue tags (comma)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Issue tags (comma)</span>
             <input name="issueTags" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" placeholder="labor, education" />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Source type</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Source type</span>
             <select name="sourceType" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               {Object.values(OwnedMediaSourceType).map((s) => (
                 <option key={s} value={s}>
@@ -170,16 +170,16 @@ export default async function AdminOwnedMediaPage({ searchParams }: Props) {
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Campaign phase</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Campaign phase</span>
             <input name="campaignPhase" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Content series</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Content series</span>
             <input name="contentSeries" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
         </div>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Editor / uploader (label)</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Editor / uploader (label)</span>
           <input name="createdBy" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" placeholder="Free text; no user accounts in this app yet" />
         </label>
         <button type="submit" className="rounded-btn bg-kelly-navy px-5 py-2.5 text-sm font-bold text-kelly-page">
@@ -190,12 +190,12 @@ export default async function AdminOwnedMediaPage({ searchParams }: Props) {
       <div className="mt-10 grid gap-6 rounded-card border border-kelly-text/10 bg-kelly-page p-6 md:grid-cols-2">
         <form action={bulkUpdateOwnedMediaByIngestBatchAction} className="space-y-3 text-sm">
           <h2 className="font-heading text-base font-bold text-kelly-text">Bulk: by ingest batch</h2>
-          <p className="text-xs text-kelly-text/60">
+          <p className="text-xs text-kelly-muted">
             Updates every asset that shares a folder / device `MediaIngestBatch` (from `npm run ingest:folder`). Finance rows
             should stay private until reviewed.
           </p>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Batch</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Batch</span>
             <select name="mediaIngestBatchId" required className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               <option value="">— choose batch —</option>
               {batches.map((b) => (
@@ -206,7 +206,7 @@ export default async function AdminOwnedMediaPage({ searchParams }: Props) {
             </select>
           </label>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Review status</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Review status</span>
             <select name="reviewStatus" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" defaultValue="APPROVED">
               {Object.values(OwnedMediaReviewStatus).map((s) => (
                 <option key={s} value={s}>
@@ -225,7 +225,7 @@ export default async function AdminOwnedMediaPage({ searchParams }: Props) {
         </form>
         <form action={bulkUpdateOwnedMediaByIdsAction} className="space-y-3 text-sm">
           <h2 className="font-heading text-base font-bold text-kelly-text">Bulk: by asset IDs</h2>
-          <p className="text-xs text-kelly-text/60">One ID per line or comma-separated (from the list below).</p>
+          <p className="text-xs text-kelly-muted">One ID per line or comma-separated (from the list below).</p>
           <textarea
             name="ids"
             rows={5}
@@ -234,7 +234,7 @@ export default async function AdminOwnedMediaPage({ searchParams }: Props) {
             className="w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 font-mono text-xs"
           />
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Review status</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Review status</span>
             <select name="reviewStatus" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" defaultValue="APPROVED">
               {Object.values(OwnedMediaReviewStatus).map((s) => (
                 <option key={s} value={s}>
@@ -254,7 +254,7 @@ export default async function AdminOwnedMediaPage({ searchParams }: Props) {
       </div>
 
       <div className="mt-10 flex flex-wrap items-center gap-2 text-xs">
-        <span className="font-semibold text-kelly-text/55">Filters</span>
+        <span className="font-semibold text-kelly-muted">Filters</span>
         <Link
           href="/admin/owned-media"
           className={`rounded-full px-3 py-1 ${!kindFilter && !statusFilter && !countyFilter ? "bg-kelly-text text-kelly-page" : "border border-kelly-text/20 text-kelly-text"}`}
@@ -291,15 +291,15 @@ export default async function AdminOwnedMediaPage({ searchParams }: Props) {
                   <Link href={`/admin/owned-media/${a.id}`} className="font-heading text-base font-semibold text-kelly-slate hover:underline">
                     {a.title}
                   </Link>
-                  <span className="font-mono text-[10px] text-kelly-text/45">{a.id}</span>
+                  <span className="font-mono text-[10px] text-kelly-subtle">{a.id}</span>
                 </div>
-                <p className="mt-1 font-body text-xs text-kelly-text/65">
+                <p className="mt-1 font-body text-xs text-kelly-muted">
                   {a.kind} · {a.role} · {a.reviewStatus}
                   {a.transcriptJobStatus && a.transcriptJobStatus !== TranscriptionJobStatus.NOT_REQUESTED
                     ? ` · ASR: ${a.transcriptJobStatus}`
                     : ""}
                 </p>
-                <p className="mt-1 font-mono text-[11px] text-kelly-text/55">
+                <p className="mt-1 font-mono text-[11px] text-kelly-muted">
                   T: {a._count.transcripts} · Quotes: {a._count.quoteCandidates} · {a.fileSizeBytes} bytes · {a.storageKey}
                 </p>
                 <a href={hrefFile} className="mt-1 inline-block text-xs text-kelly-slate underline" target="_blank" rel="noreferrer">
@@ -310,7 +310,7 @@ export default async function AdminOwnedMediaPage({ searchParams }: Props) {
           })}
         </ul>
         {assets.length === 0 ? (
-          <p className="mt-4 rounded-lg border border-dashed border-kelly-text/20 p-6 text-center text-sm text-kelly-text/60">
+          <p className="mt-4 rounded-lg border border-dashed border-kelly-text/20 p-6 text-center text-sm text-kelly-muted">
             No campaign-owned assets yet. Upload a file to create the first row.
           </p>
         ) : null}

@@ -71,7 +71,7 @@ export function CockpitEventActions({
 
   return (
     <section className="mt-8 rounded-lg border border-kelly-text/12 bg-white px-4 py-4">
-      <p className="font-heading text-xs font-bold uppercase tracking-wide text-kelly-text/50">Kelly actions</p>
+      <p className="font-heading text-xs font-bold uppercase tracking-wide text-kelly-subtle">Kelly actions</p>
       {msg ? <p className="mt-2 font-body text-xs text-rose-700">{msg}</p> : null}
 
       <div className="mt-3 flex flex-wrap gap-2">
@@ -139,7 +139,7 @@ export function CockpitEventActions({
         </button>
       </div>
 
-      <label className="mt-4 block font-body text-xs font-semibold text-kelly-text/70">
+      <label className="mt-4 block font-body text-xs font-semibold text-kelly-muted">
         Notes (also used for Ask staff)
         <textarea
           value={notes}
@@ -150,7 +150,7 @@ export function CockpitEventActions({
       </label>
 
       <div className="mt-3 grid gap-3 sm:grid-cols-2">
-        <label className="font-body text-xs font-semibold text-kelly-text/70">
+        <label className="font-body text-xs font-semibold text-kelly-muted">
           Hold reason
           <select
             value={holdReason}
@@ -164,7 +164,7 @@ export function CockpitEventActions({
             ))}
           </select>
         </label>
-        <label className="font-body text-xs font-semibold text-kelly-text/70">
+        <label className="font-body text-xs font-semibold text-kelly-muted">
           Reject reason (required)
           <input
             value={rejectReason}
@@ -178,11 +178,11 @@ export function CockpitEventActions({
         <div className="mt-4 rounded border border-kelly-text/15 bg-kelly-wash/40 p-3">
           <p className="font-body text-xs font-bold text-kelly-text">Quick modify request</p>
           <div className="mt-2 grid gap-2 sm:grid-cols-2">
-            <label className="font-body text-[11px] text-kelly-text/70">
+            <label className="font-body text-[11px] text-kelly-muted">
               New date (optional)
               <input type="date" id="mod-date" className="mt-1 w-full rounded border px-2 py-1 text-sm" />
             </label>
-            <label className="font-body text-[11px] text-kelly-text/70">
+            <label className="font-body text-[11px] text-kelly-muted">
               Time note
               <input id="mod-time" placeholder="e.g. move 1h earlier" className="mt-1 w-full rounded border px-2 py-1 text-sm" />
             </label>
@@ -254,20 +254,20 @@ export function CockpitEventActions({
         </div>
       ) : null}
 
-      <p className="mt-4 font-body text-[10px] text-kelly-text/50">
+      <p className="mt-4 font-body text-[10px] text-kelly-subtle">
         SMS, email digests, and push are gated until env + opt-in are configured — in-app alerts first.
       </p>
 
       <div className="mt-8 border-t border-kelly-text/10 pt-5">
-        <p className="font-heading text-xs font-bold uppercase tracking-wide text-kelly-text/50">Kelly Google lanes (staff)</p>
+        <p className="font-heading text-xs font-bold uppercase tracking-wide text-kelly-subtle">Kelly Google lanes (staff)</p>
         {laneMeta ? (
           <dl className="mt-2 grid gap-1 font-body text-[11px] text-kelly-text/75">
             <div>
-              <dt className="font-bold text-kelly-text/50">Tentative source id</dt>
+              <dt className="font-bold text-kelly-subtle">Tentative source id</dt>
               <dd className="break-all font-mono text-[10px]">{laneMeta.tentativeSourceId ?? "— (run calendar:google:ensure)"}</dd>
             </div>
             <div>
-              <dt className="font-bold text-kelly-text/50">Confirmed source id</dt>
+              <dt className="font-bold text-kelly-subtle">Confirmed source id</dt>
               <dd className="break-all font-mono text-[10px]">{laneMeta.confirmedSourceId ?? "—"}</dd>
             </div>
           </dl>
@@ -275,28 +275,28 @@ export function CockpitEventActions({
         {kellyGoogle ? (
           <dl className="mt-3 grid gap-1 font-body text-[11px] text-kelly-text/75">
             <div>
-              <dt className="font-bold text-kelly-text/50">Lane</dt>
+              <dt className="font-bold text-kelly-subtle">Lane</dt>
               <dd className="uppercase">{kellyGoogle.lane}</dd>
             </div>
             <div>
-              <dt className="font-bold text-kelly-text/50">Google event id</dt>
+              <dt className="font-bold text-kelly-subtle">Google event id</dt>
               <dd className="break-all font-mono text-[10px]">{kellyGoogle.googleEventId ?? "—"}</dd>
             </div>
             <div>
-              <dt className="font-bold text-kelly-text/50">iCalUID</dt>
+              <dt className="font-bold text-kelly-subtle">iCalUID</dt>
               <dd className="break-all font-mono text-[10px]">{kellyGoogle.iCalUID ?? "—"}</dd>
             </div>
             <div>
-              <dt className="font-bold text-kelly-text/50">Staff sync status</dt>
+              <dt className="font-bold text-kelly-subtle">Staff sync status</dt>
               <dd>{kellyGoogle.staffExactStatus}</dd>
             </div>
             <div>
-              <dt className="font-bold text-kelly-text/50">Campaign event</dt>
+              <dt className="font-bold text-kelly-subtle">Campaign event</dt>
               <dd className="break-all font-mono text-[10px]">{kellyGoogle.campaignEventId}</dd>
             </div>
           </dl>
         ) : (
-          <p className="mt-2 font-body text-[11px] text-kelly-text/55">Promote to CampaignEvent to see Google ids here.</p>
+          <p className="mt-2 font-body text-[11px] text-kelly-muted">Promote to CampaignEvent to see Google ids here.</p>
         )}
         <div className="mt-3 flex flex-wrap gap-2">
           <button

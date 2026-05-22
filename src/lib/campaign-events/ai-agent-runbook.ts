@@ -1,0 +1,161 @@
+/**
+ * Agent runbook — event/travel operating process stages.
+ */
+
+export type RunbookStage = {
+  id: string;
+  order: number;
+  title: string;
+  agentGoal: string;
+  toolsUsed: string[];
+  dataNeeded: string[];
+  expectedHumanDecision: string;
+  failureStates: string[];
+  nextAction: string;
+};
+
+export const AI_AGENT_RUNBOOK: RunbookStage[] = [
+  {
+    id: "calendar_intake",
+    order: 1,
+    title: "Calendar intake",
+    agentGoal: "Import and classify calendar rows into the campaign ledger without losing edits.",
+    toolsUsed: ["intake-normalized-json", "intake-classify-type", "intake-dedupe", "intake-dup-cal-id"],
+    dataNeeded: ["calendar-items.normalized.json", "CampaignEventLedgerRecord.period"],
+    expectedHumanDecision: "Confirm seed month; do not re-seed if factCard edited in place.",
+    failureStates: ["Duplicate calendar id in JSON", "Missing calendar row for record"],
+    nextAction: "Open workbench for period; run month readiness.",
+  },
+  {
+    id: "tentative_review",
+    order: 2,
+    title: "Tentative event review",
+    agentGoal: "Prepare approval package and queue for candidate/CM decision.",
+    toolsUsed: ["appr-package-build", "appr-summary-build", "fc-infer-assumptions"],
+    dataNeeded: ["Ledger row", "factCard", "approval recipients config"],
+    expectedHumanDecision: "Approve, deny, hold, or request confirmation per event.",
+    failureStates: ["Email send attempted before enabled", "Bulk approve without review"],
+    nextAction: "Month review wizard or workbench highlight.",
+  },
+  {
+    id: "conflict_detection",
+    order: 3,
+    title: "Conflict detection",
+    agentGoal: "Surface schedule and work-hours conflicts before approval.",
+    toolsUsed: ["conf-schedule", "conf-work-hours", "conf-travel-route-sanity"],
+    dataNeeded: ["All items in time window", "Central time start/end"],
+    expectedHumanDecision: "Hold or reschedule; record decision on row.",
+    failureStates: ["Double-booked slots", "Employer hours overlap ignored"],
+    nextAction: "Review queue mode=conflicts.",
+  },
+  {
+    id: "geo_inference",
+    order: 4,
+    title: "City / county / ZIP inference",
+    agentGoal: "Fill missing geography using deterministic inference and human accept.",
+    toolsUsed: ["cri-city-county-assist", "fc-venue-memory", "cri-infer-county", "fc-zip-county"],
+    dataNeeded: ["Title", "location", "notes", "ARKANSAS_COUNTY_REGISTRY"],
+    expectedHumanDecision: "Accept or edit city/county/ZIP; never silent overwrite.",
+    failureStates: ["Wrong county from alias", "Missing city on travel events"],
+    nextAction: "Readiness quick card → missing city/county queues.",
+  },
+  {
+    id: "travel_mileage",
+    order: 5,
+    title: "Travel / mileage calculation",
+    agentGoal: "Apply origin rules and compute reimbursable mileage.",
+    toolsUsed: ["mr-origin-rule", "mr-mileage-assist", "mr-rt-miles", "mr-reimburse-dollar"],
+    dataNeeded: ["Destination city", "Event date", "Rate constant"],
+    expectedHumanDecision: "Accept estimate or override miles; Save & recalculate.",
+    failureStates: ["No destination city", "calculateCityRoute failure"],
+    nextAction: "focus=missing_mileage queue; travel report verify.",
+  },
+  {
+    id: "approval_package",
+    order: 6,
+    title: "Approval package generation",
+    agentGoal: "Assemble candidate-ready summary (preview only until email enabled).",
+    toolsUsed: ["appr-package-build", "appr-summary-build"],
+    dataNeeded: ["ApprovalPackagePayload", "candidateApprovalTo emails"],
+    expectedHumanDecision: "Candidate/CM reviews package; decision in review wizard.",
+    failureStates: ["Package sent without approval gate", "Wrong recipients"],
+    nextAction: "Preview at /admin/campaign-calendar/approval-package/[id].",
+  },
+  {
+    id: "candidate_cm_decision",
+    order: 7,
+    title: "Candidate / CM decision",
+    agentGoal: "Record formal decision on each event; retain denied rows.",
+    toolsUsed: ["appr-month-wizard", "saas-candidate-view", "saas-cm-view"],
+    dataNeeded: ["Period rows", "_review.decision"],
+    expectedHumanDecision: "Per-event approve/deny/hold with optional note.",
+    failureStates: ["Unreviewed events at month close", "Deleted denied rows"],
+    nextAction: "unreviewed_only queue; dashboards.",
+  },
+  {
+    id: "host_prep",
+    order: 8,
+    title: "Host prep",
+    agentGoal: "Guide host logistics after approval (portal future).",
+    toolsUsed: ["host-house-mg", "host-worksheet", "email-draft-scaffold"],
+    dataNeeded: ["Host contact", "House M&G intel"],
+    expectedHumanDecision: "Operator sends request-info email when enabled.",
+    failureStates: ["Host portal not live", "No host email on file"],
+    nextAction: "Email scaffold; host worksheet scaffold.",
+  },
+  {
+    id: "run_of_show",
+    order: 9,
+    title: "Run of show",
+    agentGoal: "Timeline for setup, speaking, teardown.",
+    toolsUsed: ["ros-template", "ros-generate"],
+    dataNeeded: ["factCard.when", "event type"],
+    expectedHumanDecision: "CM confirms ROS before event day.",
+    failureStates: ["Empty ROS on day-of"],
+    nextAction: "Drilldown run_of_show tab.",
+  },
+  {
+    id: "event_execution",
+    order: 10,
+    title: "Event execution",
+    agentGoal: "Day-of operations via calendar views and briefs.",
+    toolsUsed: ["cb-cockpit", "saas-planner-scaffold", "cri-county-link"],
+    dataNeeded: ["Official calendar lane", "Day agenda"],
+    expectedHumanDecision: "Candidate attends per role; deviations noted in comms thread.",
+    failureStates: ["Last-minute cancel not recorded"],
+    nextAction: "Campaign calendar day/agenda views.",
+  },
+  {
+    id: "hot_wash",
+    order: 11,
+    title: "Hot wash",
+    agentGoal: "Capture post-event lessons.",
+    toolsUsed: ["hw-post-form", "hw-post-learning", "hw-event-success"],
+    dataNeeded: ["Post-event notes", "hot_wash section"],
+    expectedHumanDecision: "Operator fills hot wash within 7 days.",
+    failureStates: ["No hot wash on past approved events"],
+    nextAction: "Drilldown hot_wash tab.",
+  },
+  {
+    id: "reimbursement_report",
+    order: 12,
+    title: "Reimbursement report",
+    agentGoal: "Monthly travel lines and totals for treasurer review.",
+    toolsUsed: ["tl-month-report", "rpt-travel-summarizer", "rpt-csv-export"],
+    dataNeeded: ["Approved mileage rows", "Period filter"],
+    expectedHumanDecision: "Treasurer accepts report; anomalies investigated.",
+    failureStates: ["Unapproved reimbursement in totals", "PDF not ready"],
+    nextAction: "/admin/campaign-events/travel-report?month=YYYY-MM.",
+  },
+  {
+    id: "compliance_handoff",
+    order: 13,
+    title: "Compliance handoff",
+    agentGoal: "Hand off closed month to compliance module (future FIN bridge).",
+    toolsUsed: ["comp-handoff-checker", "rpt-month-readiness", "comp-audit-trail"],
+    dataNeeded: ["Readiness ≥ gate", "Travel CSV", "Decision audit"],
+    expectedHumanDecision: "Compliance officer sign-off before May seed.",
+    failureStates: ["FIN-1 not connected", "Missing receipts"],
+    nextAction: "Month readiness page; compliance docs only.",
+  },
+];

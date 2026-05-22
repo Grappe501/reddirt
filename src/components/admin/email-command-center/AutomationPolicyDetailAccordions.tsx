@@ -97,7 +97,7 @@ export function AutomationPolicyDetailAccordions({ policies }: AutomationPolicyD
             </summary>
             <ExplainDl spec={spec} />
             <div className="mt-2 rounded border border-kelly-text/10 bg-kelly-fog/50 px-2 py-1.5">
-              <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/55">Current evaluation</p>
+              <p className="font-heading text-[9px] font-bold uppercase text-kelly-muted">Current evaluation</p>
               <p className="mt-0.5 font-mono text-[9px] text-kelly-navy">{p.detailSafe}</p>
               <p className="mt-1 text-[10px] text-kelly-text/88">{p.recommendedActionSafe}</p>
             </div>
@@ -108,10 +108,10 @@ export function AutomationPolicyDetailAccordions({ policies }: AutomationPolicyD
                   Open linked surface
                 </Link>
               ) : (
-                <span className="text-kelly-text/65">No deep link for this state — stay on Automation Studio.</span>
+                <span className="text-kelly-muted">No deep link for this state — stay on Automation Studio.</span>
               )}
               {" · "}
-              <a href="#automation-policy-top" className="text-kelly-text/70 underline">
+              <a href="#automation-policy-top" className="text-kelly-muted underline">
                 Back to top
               </a>
             </p>

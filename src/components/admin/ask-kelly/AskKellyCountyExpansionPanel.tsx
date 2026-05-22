@@ -47,7 +47,7 @@ export function AskKellyCountyExpansionPanel() {
                 className="flex items-center justify-between gap-2 rounded-md border border-kelly-text/10 bg-[var(--color-surface-elevated)] px-2.5 py-1.5"
               >
                 <span className="font-body text-xs font-semibold text-kelly-text">{name}</span>
-                <span className="shrink-0 rounded bg-kelly-text/8 px-1.5 py-0.5 font-body text-[9px] font-bold uppercase tracking-wide text-kelly-text/65">
+                <span className="shrink-0 rounded bg-kelly-text/8 px-1.5 py-0.5 font-body text-[9px] font-bold uppercase tracking-wide text-kelly-muted">
                   Planned
                 </span>
               </li>
@@ -56,7 +56,7 @@ export function AskKellyCountyExpansionPanel() {
         </div>
       </div>
 
-      <p className="mt-4 font-body text-[11px] leading-relaxed text-kelly-text/65">{p.staffNote}</p>
+      <p className="mt-4 font-body text-[11px] leading-relaxed text-kelly-muted">{p.staffNote}</p>
       <p className="mt-3">
         <Link
           href={p.adminIntelLink.href}

@@ -14,7 +14,7 @@ import {
 import { computeEventExecutionReadiness, isTaskOpen } from "@/lib/calendar/event-readiness";
 import type { CalendarHqEventDetail } from "@/lib/calendar/hq-data";
 
-const h2 = "font-heading text-[9px] font-bold uppercase tracking-wider text-kelly-text/50";
+const h2 = "font-heading text-[9px] font-bold uppercase tracking-wider text-kelly-subtle";
 
 type ExecutionReadiness = ReturnType<typeof computeEventExecutionReadiness>;
 
@@ -59,7 +59,7 @@ export function EventTaskWorkflowSection({
           >
             {readiness.label} · {readiness.score0to100}/100
           </span>
-          <span className="text-[8px] text-kelly-text/55">
+          <span className="text-[8px] text-kelly-muted">
             Blockers {readiness.blockerCount} · Overdue {readiness.overdueCount}
           </span>
         </div>
@@ -71,7 +71,7 @@ export function EventTaskWorkflowSection({
       <div>
         <p className={h2}>Workflow templates</p>
         {workflowRuns.length > 0 ? (
-          <ul className="mt-0.5 text-[8px] text-kelly-text/65">
+          <ul className="mt-0.5 text-[8px] text-kelly-muted">
             {workflowRuns.map((r) => (
               <li key={r.id}>
                 {r.workflowTemplate.title} · {r.status}
@@ -79,7 +79,7 @@ export function EventTaskWorkflowSection({
             ))}
           </ul>
         ) : (
-          <p className="mt-0.5 text-[8px] text-kelly-text/45">No workflow pack applied yet.</p>
+          <p className="mt-0.5 text-[8px] text-kelly-subtle">No workflow pack applied yet.</p>
         )}
         {!terminal ? (
           <form action={applyEventWorkflowTemplateAction} className="mt-1 flex flex-col gap-0.5">
@@ -135,7 +135,7 @@ export function EventTaskWorkflowSection({
               .slice(0, 6)
               .map((t) => (
                 <li key={t.id}>
-                  {t.title} {t.dueAt ? <span className="text-kelly-text/50">· was {t.dueAt.toLocaleString()}</span> : null}
+                  {t.title} {t.dueAt ? <span className="text-kelly-subtle">· was {t.dueAt.toLocaleString()}</span> : null}
                 </li>
               ))}
           </ul>
@@ -154,7 +154,7 @@ export function EventTaskWorkflowSection({
                 {t.title}
                 {t.blocksReadiness ? <span className="ml-1 text-[7px] text-rose-800">· blocks</span> : null}
               </div>
-              <div className="text-kelly-text/50">
+              <div className="text-kelly-subtle">
                 {t.status}
                 {t.taskType ? ` · ${t.taskType}` : ""}
                 {t.dueAt ? ` · due ${t.dueAt.toLocaleString()}` : ""}
@@ -209,7 +209,7 @@ export function EventTaskWorkflowSection({
               required
             />
             <div className="grid grid-cols-2 gap-0.5">
-              <label className="text-[7px] text-kelly-text/45">
+              <label className="text-[7px] text-kelly-subtle">
                 Type
                 <select name="taskType" defaultValue={CampaignTaskType.PREP} className="mt-0.5 w-full border text-[7px]">
                   {Object.values(CampaignTaskType).map((x) => (
@@ -219,7 +219,7 @@ export function EventTaskWorkflowSection({
                   ))}
                 </select>
               </label>
-              <label className="text-[7px] text-kelly-text/45">
+              <label className="text-[7px] text-kelly-subtle">
                 Priority
                 <select name="priority" defaultValue={CampaignTaskPriority.MEDIUM} className="mt-0.5 w-full border text-[7px]">
                   {Object.values(CampaignTaskPriority).map((x) => (
@@ -230,7 +230,7 @@ export function EventTaskWorkflowSection({
                 </select>
               </label>
             </div>
-            <label className="text-[7px] text-kelly-text/45">
+            <label className="text-[7px] text-kelly-subtle">
               Due offset (minutes from event start, negative = before)
               <input
                 name="dueOffsetMinutes"
@@ -239,7 +239,7 @@ export function EventTaskWorkflowSection({
                 defaultValue={-1440}
               />
             </label>
-            <label className="flex items-center gap-1 text-[7px] text-kelly-text/55">
+            <label className="flex items-center gap-1 text-[7px] text-kelly-muted">
               <input type="checkbox" name="blocksReadiness" className="h-2.5 w-2.5" />
               Blocks readiness when open
             </label>

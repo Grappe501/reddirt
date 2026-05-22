@@ -60,7 +60,7 @@ function TriageLoading() {
       aria-busy="true"
     >
       <p className="font-body text-sm text-kelly-slate">Loading…</p>
-      <p className="mt-1 font-body text-xs text-kelly-text/50">Fetching Ask Kelly beta feedback from the database.</p>
+      <p className="mt-1 font-body text-xs text-kelly-subtle">Fetching Ask Kelly beta feedback from the database.</p>
     </div>
   );
 }
@@ -94,7 +94,7 @@ async function AskKellyTriageTable() {
           <span className="font-semibold text-kelly-ink">No feedback yet.</span> When beta testers submit feedback, it will appear
           here.
         </p>
-        <p className="mt-2 font-body text-xs text-kelly-text/60">Nothing is wrong—this list starts empty until the first submission.</p>
+        <p className="mt-2 font-body text-xs text-kelly-muted">Nothing is wrong—this list starts empty until the first submission.</p>
       </div>
     );
   }
@@ -104,12 +104,12 @@ async function AskKellyTriageTable() {
       <table className="w-full min-w-[600px] border-collapse text-left font-body text-sm">
         <thead>
           <tr className="border-b border-kelly-text/10 bg-kelly-fog/60">
-            <th className="p-2.5 text-[10px] font-bold uppercase tracking-wider text-kelly-text/50">Title</th>
-            <th className="p-2.5 text-[10px] font-bold uppercase tracking-wider text-kelly-text/50">Category</th>
-            <th className="p-2.5 text-[10px] font-bold uppercase tracking-wider text-kelly-text/50">Status</th>
-            <th className="p-2.5 text-[10px] font-bold uppercase tracking-wider text-kelly-text/50">Submitted</th>
-            <th className="p-2.5 text-[10px] font-bold uppercase tracking-wider text-kelly-text/50">Page</th>
-            <th className="p-2.5 text-[10px] font-bold uppercase tracking-wider text-kelly-text/50">Owner / authority</th>
+            <th className="p-2.5 text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Title</th>
+            <th className="p-2.5 text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Category</th>
+            <th className="p-2.5 text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Status</th>
+            <th className="p-2.5 text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Submitted</th>
+            <th className="p-2.5 text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Page</th>
+            <th className="p-2.5 text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Owner / authority</th>
           </tr>
         </thead>
         <tbody>

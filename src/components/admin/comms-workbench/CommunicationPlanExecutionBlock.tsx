@@ -2,8 +2,8 @@ import { COMMS_PLAN_SECTION } from "@/lib/comms-workbench/comms-nav";
 import type { CommunicationPlanExecutionSummary } from "@/lib/comms-workbench/dto";
 import { formatCommsFieldLabel } from "@/lib/comms-workbench/ui-labels";
 
-const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
-const empty = "mt-1 rounded border border-dashed border-kelly-text/15 bg-kelly-page/50 px-3 py-2 text-sm text-kelly-text/60";
+const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-muted";
+const empty = "mt-1 rounded border border-dashed border-kelly-text/15 bg-kelly-page/50 px-3 py-2 text-sm text-kelly-muted";
 
 type Props = {
   summary: CommunicationPlanExecutionSummary;
@@ -22,7 +22,7 @@ export function CommunicationPlanExecutionBlock({ summary }: Props) {
   return (
     <section id={COMMS_PLAN_SECTION.execution} className="rounded-md border border-kelly-text/10 bg-white p-3 shadow-sm">
       <h2 className={h2}>Execution intelligence</h2>
-      <p className="mt-0.5 font-body text-xs text-kelly-text/65">
+      <p className="mt-0.5 font-body text-xs text-kelly-muted">
         Delivery and outcome summary for this plan. Counts are from tracked sends; reason lines come from normalized outcome
         data (not raw provider payloads).
       </p>
@@ -41,7 +41,7 @@ export function CommunicationPlanExecutionBlock({ summary }: Props) {
           <p className="mt-0.5 font-mono text-lg font-semibold text-kelly-text">
             {summary.sentCount + summary.partiallySentCount}
             {summary.partiallySentCount > 0 ? (
-              <span className="ml-1 text-xs font-normal text-kelly-text/60">({summary.partiallySentCount} partial)</span>
+              <span className="ml-1 text-xs font-normal text-kelly-muted">({summary.partiallySentCount} partial)</span>
             ) : null}
           </p>
         </li>
@@ -107,7 +107,7 @@ export function CommunicationPlanExecutionBlock({ summary }: Props) {
                   <span className="text-xs text-kelly-text/75">
                     {formatCommsFieldLabel(o.channel)} · {formatCommsFieldLabel(o.status)}
                   </span>
-                  <time className="text-[10px] text-kelly-text/50" dateTime={o.updatedAt}>
+                  <time className="text-[10px] text-kelly-subtle" dateTime={o.updatedAt}>
                     {new Date(o.updatedAt).toLocaleString()}
                   </time>
                 </div>

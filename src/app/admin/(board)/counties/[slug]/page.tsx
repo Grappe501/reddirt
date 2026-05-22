@@ -37,7 +37,7 @@ export default async function AdminCountyEditPage({ params, searchParams }: Prop
         <p className="mb-6 rounded-lg border border-emerald-600/30 bg-emerald-50 px-3 py-2 text-sm text-emerald-900">Saved.</p>
       ) : null}
       <h1 className="font-heading text-2xl font-bold text-kelly-text">{c.displayName}</h1>
-      <p className="mt-1 text-xs text-kelly-text/55">
+      <p className="mt-1 text-xs text-kelly-muted">
         Slug: {c.slug} · FIPS: {c.fips}
       </p>
 
@@ -298,11 +298,11 @@ export default async function AdminCountyEditPage({ params, searchParams }: Prop
 
         <section>
           <h2 className="font-heading text-lg font-bold text-kelly-text">Elected officials (read-only in this form)</h2>
-          <p className="mt-1 text-sm text-kelly-text/70">
+          <p className="mt-1 text-sm text-kelly-muted">
             {c.elected.length} row(s) in the database. Approve in Prisma/CSV import for now; public page shows only
             APPROVED.
           </p>
-          <ul className="mt-2 space-y-1 font-mono text-xs text-kelly-text/70">
+          <ul className="mt-2 space-y-1 font-mono text-xs text-kelly-muted">
             {c.elected.map((o) => (
               <li key={o.id}>
                 {o.jurisdiction} · {o.officeTitle} — {o.name} ({o.reviewStatus})

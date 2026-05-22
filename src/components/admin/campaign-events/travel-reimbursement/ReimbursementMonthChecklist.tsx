@@ -28,7 +28,7 @@ export function ReimbursementMonthChecklist({ ctx }: { ctx: ReimbursementMonthSt
               <p className="font-semibold">
                 {item.status === "complete" ? "✓" : "○"} {item.label}
               </p>
-              {item.detail ? <p className="mt-0.5 text-xs text-kelly-text/60">{item.detail}</p> : null}
+              {item.detail ? <p className="mt-0.5 text-xs text-kelly-muted">{item.detail}</p> : null}
             </div>
             {item.href && item.status === "needs_attention" ? (
               <Link href={item.href} className="text-xs font-bold text-kelly-navy underline">

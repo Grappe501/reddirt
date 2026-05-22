@@ -31,7 +31,7 @@ function Field({
 }) {
   return (
     <label className="grid gap-1 font-body text-sm">
-      <span className="flex items-center gap-2 text-xs font-semibold text-kelly-text/60">
+      <span className="flex items-center gap-2 text-xs font-semibold text-kelly-muted">
         {label}
         {inferred ? (
           <span className="rounded bg-kelly-navy/10 px-1.5 py-0.5 text-[10px] font-bold uppercase text-kelly-navy">AI guess</span>
@@ -42,7 +42,7 @@ function Field({
         value={value}
         onChange={(e) => onChange(e.target.value)}
       />
-      {helper ? <span className="text-xs text-kelly-text/45">{helper}</span> : null}
+      {helper ? <span className="text-xs text-kelly-subtle">{helper}</span> : null}
     </label>
   );
 }
@@ -122,7 +122,7 @@ export function EventReviewModal({ recordId, onClose }: { recordId: string; onCl
               <div>
                 <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-slate">One event · independent review</p>
                 <h2 className="font-heading text-2xl font-bold text-kelly-text">{bundle.snapshot.originalTitle}</h2>
-                <p className="mt-1 font-body text-sm text-kelly-text/65">
+                <p className="mt-1 font-body text-sm text-kelly-muted">
                   {bundle.snapshot.startAt}
                   {bundle.snapshot.endAt ? ` – ${bundle.snapshot.endAt}` : ""}
                   {bundle.snapshot.allDay ? " · All day" : ""}
@@ -140,36 +140,36 @@ export function EventReviewModal({ recordId, onClose }: { recordId: string; onCl
               <h3 className="font-heading text-sm font-bold uppercase tracking-wider text-kelly-slate">Source calendar snapshot</h3>
               <dl className="mt-3 grid gap-2 font-body text-sm sm:grid-cols-2">
                 <div>
-                  <dt className="text-xs text-kelly-text/50">Location</dt>
+                  <dt className="text-xs text-kelly-subtle">Location</dt>
                   <dd>{bundle.snapshot.originalLocation || "—"}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs text-kelly-text/50">Notes</dt>
+                  <dt className="text-xs text-kelly-subtle">Notes</dt>
                   <dd>{bundle.snapshot.originalNotes || "—"}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs text-kelly-text/50">Calendar ID</dt>
+                  <dt className="text-xs text-kelly-subtle">Calendar ID</dt>
                   <dd className="break-all text-xs">{bundle.snapshot.calendarSourceId}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs text-kelly-text/50">Google event ID</dt>
+                  <dt className="text-xs text-kelly-subtle">Google event ID</dt>
                   <dd className="break-all text-xs">{bundle.snapshot.googleEventId || "—"}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs text-kelly-text/50">Status</dt>
+                  <dt className="text-xs text-kelly-subtle">Status</dt>
                   <dd>
                     {bundle.snapshot.eventStatus} · {bundle.snapshot.reviewStatus}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-xs text-kelly-text/50">Missing fields (core)</dt>
+                  <dt className="text-xs text-kelly-subtle">Missing fields (core)</dt>
                   <dd>{bundle.inference.missingRequired.length} flagged</dd>
                 </div>
               </dl>
             </section>
 
             <SectionToggle id="assumptions" title="AI assumptions (deterministic)" open={openSection} setOpen={setOpenSection}>
-              <p className="mb-3 font-body text-xs text-kelly-text/55">
+              <p className="mb-3 font-body text-xs text-kelly-muted">
                 Inferred from this entry only — not bulk. Accept into fields with Reset to AI Guess or edit manually below.
               </p>
               <ul className="grid gap-2">
@@ -178,13 +178,13 @@ export function EventReviewModal({ recordId, onClose }: { recordId: string; onCl
                     <span>
                       <strong>{a.label}:</strong> {a.value}
                     </span>
-                    <span className="text-xs text-kelly-text/50">
+                    <span className="text-xs text-kelly-subtle">
                       {a.confidence} · {a.source}
                     </span>
                   </li>
                 ))}
               </ul>
-              <p className="mt-2 font-body text-xs text-kelly-text/55">
+              <p className="mt-2 font-body text-xs text-kelly-muted">
                 Nature: <strong>{bundle.inference.eventNature}</strong> — {bundle.inference.eventNatureReason}
               </p>
               {bundle.inference.workHoursWarning.show ? (
@@ -198,7 +198,7 @@ export function EventReviewModal({ recordId, onClose }: { recordId: string; onCl
                 </p>
               ))}
               {bundle.inference.missingRequired.length ? (
-                <ul className="mt-3 list-disc pl-5 font-body text-xs text-kelly-text/60">
+                <ul className="mt-3 list-disc pl-5 font-body text-xs text-kelly-muted">
                   {bundle.inference.missingRequired.map((m) => (
                     <li key={m}>{m}</li>
                   ))}
@@ -231,12 +231,12 @@ export function EventReviewModal({ recordId, onClose }: { recordId: string; onCl
             </SectionToggle>
 
             <SectionToggle id="local" title="Known local context" open={openSection} setOpen={setOpenSection}>
-              <p className="font-body text-sm text-kelly-text/70">
+              <p className="font-body text-sm text-kelly-muted">
                 {bundle.localContext.city || bundle.localContext.county
                   ? `Area: ${[bundle.localContext.city, bundle.localContext.county].filter(Boolean).join(", ")}`
                   : "No city/county on file yet."}
               </p>
-              <p className="mt-2 rounded-lg border border-dashed border-kelly-text/20 px-3 py-4 text-center font-body text-sm text-kelly-text/50">
+              <p className="mt-2 rounded-lg border border-dashed border-kelly-text/20 px-3 py-4 text-center font-body text-sm text-kelly-subtle">
                 No local contacts connected yet.
               </p>
             </SectionToggle>
@@ -252,7 +252,7 @@ export function EventReviewModal({ recordId, onClose }: { recordId: string; onCl
                 <Field label="Campaign purpose" value={form.campaignPurpose} onChange={(v) => patch("campaignPurpose", v)} />
                 <Field label="Candidate role" value={form.candidateRole} onChange={(v) => patch("candidateRole", v)} />
                 <label className="grid gap-1 font-body text-sm">
-                  <span className="text-xs font-semibold text-kelly-text/60">Kelly attendance</span>
+                  <span className="text-xs font-semibold text-kelly-muted">Kelly attendance</span>
                   <select
                     className="rounded-lg border border-kelly-text/15 px-3 py-2"
                     value={form.kellyAttendanceMode}
@@ -280,7 +280,7 @@ export function EventReviewModal({ recordId, onClose }: { recordId: string; onCl
                 <Field label="Reimbursement amount" value={form.reimbursementAmount} onChange={(v) => patch("reimbursementAmount", v)} />
               </div>
               <label className="mt-3 grid gap-1 font-body text-sm">
-                <span className="text-xs font-semibold text-kelly-text/60">Operator notes</span>
+                <span className="text-xs font-semibold text-kelly-muted">Operator notes</span>
                 <textarea
                   className="min-h-[80px] rounded-lg border border-kelly-text/15 px-3 py-2"
                   value={form.operatorNotes}
@@ -290,8 +290,8 @@ export function EventReviewModal({ recordId, onClose }: { recordId: string; onCl
             </SectionToggle>
 
             <details className="mt-4 rounded-xl border border-kelly-text/10 bg-kelly-wash px-3 py-2">
-              <summary className="cursor-pointer font-body text-xs font-semibold text-kelly-text/55">Future automation needs (not built)</summary>
-              <ul className="mt-2 list-disc pl-5 font-body text-xs text-kelly-text/55">
+              <summary className="cursor-pointer font-body text-xs font-semibold text-kelly-muted">Future automation needs (not built)</summary>
+              <ul className="mt-2 list-disc pl-5 font-body text-xs text-kelly-muted">
                 {AUTOMATION_NEEDS_FUTURE.map((item) => (
                   <li key={item}>{item.replaceAll("_", " ")}</li>
                 ))}

@@ -4,7 +4,7 @@ import type { EmailCommandCenterSnapshot } from "@/lib/email-command-center/read
 
 const card =
   "rounded-lg border border-kelly-text/12 bg-gradient-to-b from-white/95 to-kelly-page/90 px-3 py-2.5 shadow-sm";
-const h3 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/50";
+const h3 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-subtle";
 
 function boolChip(ok: boolean, yes = "Ready", no = "Needs setup") {
   return (
@@ -221,7 +221,7 @@ export function EmailCommandCenterTodayView({
             <li>SendGrid mail test env: {se.sendGridMailTestReady ? "Ready" : "Needs setup"}</li>
             <li>Broadcast env (incl. ASM): {se.sendGridMailBroadcastReady ? "Ready" : "Needs setup"}</li>
           </ul>
-          <p className="text-[10px] text-kelly-text/70">Send a test only from Send execution after preflight.</p>
+          <p className="text-[10px] text-kelly-muted">Send a test only from Send execution after preflight.</p>
         </CardShell>
 
         <CardShell title="5. Send today">
@@ -252,7 +252,7 @@ export function EmailCommandCenterTodayView({
               Open send console
             </Link>
           </div>
-          <p className="text-[9px] text-kelly-text/60">
+          <p className="text-[9px] text-kelly-muted">
             Pause / resume: stop before final approval; there is no mid-flight pause once provider send starts.
           </p>
         </CardShell>

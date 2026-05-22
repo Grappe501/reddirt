@@ -7,7 +7,7 @@ import { evaluateAutomationPoliciesNowAction } from "@/app/admin/automation-poli
 const ECC = "/admin/workbench/email-command-center";
 const card =
   "rounded-lg border border-kelly-text/12 bg-gradient-to-b from-white/95 to-kelly-page/90 px-3 py-2.5 shadow-sm";
-const h3 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/50";
+const h3 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-subtle";
 const badge =
   "rounded-full border border-kelly-text/15 bg-white/90 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-kelly-slate";
 const cell = "border border-kelly-text/10 bg-white/80 px-2 py-1.5 font-body text-[10px] text-kelly-text/90";
@@ -238,28 +238,28 @@ export function AutomationStudioView({ snapshot, evalNotice }: AutomationStudioV
         <Link href={ECC} className="rounded border border-kelly-text/15 bg-white px-2 py-0.5 text-xs font-semibold text-kelly-slate">
           ← Communication Command Center
         </Link>
-        <Link href={`${ECC}/message-studio`} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={`${ECC}/message-studio`} className="text-xs text-kelly-muted hover:underline">
           Message Studio
         </Link>
-        <Link href="/admin/workbench/email-queue" className="text-xs text-kelly-text/60 hover:underline">
+        <Link href="/admin/workbench/email-queue" className="text-xs text-kelly-muted hover:underline">
           Email queue
         </Link>
-        <Link href={`${ECC}/audiences`} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={`${ECC}/audiences`} className="text-xs text-kelly-muted hover:underline">
           Audience Studio
         </Link>
-        <Link href={`${ECC}/sendgrid`} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={`${ECC}/sendgrid`} className="text-xs text-kelly-muted hover:underline">
           SendGrid Foundation
         </Link>
-        <Link href={`${ECC}/analytics`} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={`${ECC}/analytics`} className="text-xs text-kelly-muted hover:underline">
           Analytics &amp; Deliverability
         </Link>
-        <Link href={`${ECC}/map`} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={`${ECC}/map`} className="text-xs text-kelly-muted hover:underline">
           Route map
         </Link>
-        <Link href={`${ECC}/readiness`} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={`${ECC}/readiness`} className="text-xs text-kelly-muted hover:underline">
           Readiness
         </Link>
-        <Link href={`${ECC}/send-execution`} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={`${ECC}/send-execution`} className="text-xs text-kelly-muted hover:underline">
           Send execution governance
         </Link>
       </div>

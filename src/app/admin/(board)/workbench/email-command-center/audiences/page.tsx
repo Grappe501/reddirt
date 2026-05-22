@@ -82,10 +82,10 @@ export default async function EmailAudienceStudioPage({
         >
           ← Communication Command Center
         </Link>
-        <Link href="/admin/workbench/email-command-center/profiles" className="text-xs text-kelly-text/60 hover:underline">
+        <Link href="/admin/workbench/email-command-center/profiles" className="text-xs text-kelly-muted hover:underline">
           Profile &amp; hint review
         </Link>
-        <Link href="/admin/workbench/email-queue" className="text-xs text-kelly-text/60 hover:underline">
+        <Link href="/admin/workbench/email-queue" className="text-xs text-kelly-muted hover:underline">
           Email queue
         </Link>
         <Link
@@ -94,13 +94,13 @@ export default async function EmailAudienceStudioPage({
         >
           Message Studio
         </Link>
-        <Link href="/admin/workbench/email-command-center/analytics" className="text-xs text-kelly-text/60 hover:underline">
+        <Link href="/admin/workbench/email-command-center/analytics" className="text-xs text-kelly-muted hover:underline">
           Analytics &amp; Deliverability
         </Link>
-        <Link href="/admin/workbench/email-command-center/map" className="text-xs text-kelly-text/60 hover:underline">
+        <Link href="/admin/workbench/email-command-center/map" className="text-xs text-kelly-muted hover:underline">
           Route map
         </Link>
-        <Link href="/admin/workbench/email-command-center/readiness" className="text-xs text-kelly-text/60 hover:underline">
+        <Link href="/admin/workbench/email-command-center/readiness" className="text-xs text-kelly-muted hover:underline">
           Readiness
         </Link>
         <Link
@@ -111,7 +111,7 @@ export default async function EmailAudienceStudioPage({
         </Link>
         <Link
           href="/admin/workbench/email-command-center/send-execution"
-          className="text-xs text-kelly-text/60 hover:underline"
+          className="text-xs text-kelly-muted hover:underline"
         >
           Send execution governance
         </Link>
@@ -131,7 +131,7 @@ export default async function EmailAudienceStudioPage({
           >
             Prepare message for an audience
           </Link>
-          <span className="ml-2 font-body text-[10px] text-kelly-text/65">
+          <span className="ml-2 font-body text-[10px] text-kelly-muted">
             Opens Message Studio — add <span className="font-mono">?audienceDefinitionId=…</span> from a saved definition
             row below when you want the chip prefilled.
           </span>
@@ -276,13 +276,13 @@ export default async function EmailAudienceStudioPage({
                               </Link>
                             </>
                           ) : (
-                            <span className="text-kelly-text/60"> · sync not SYNCED yet</span>
+                            <span className="text-kelly-muted"> · sync not SYNCED yet</span>
                           )}
                         </>
                       ) : d.status === "DRAFT" ? (
                         <>
                           {" "}
-                          <span className="text-kelly-text/65">Preview and activate from Saved definitions below.</span>
+                          <span className="text-kelly-muted">Preview and activate from Saved definitions below.</span>
                         </>
                       ) : null}
                     </li>
@@ -333,13 +333,13 @@ export default async function EmailAudienceStudioPage({
 
       <section className="rounded-lg border border-kelly-text/10 bg-white/90 p-3">
         <h2 className="font-heading text-sm font-bold text-kelly-navy">Audience building blocks</h2>
-        <p className="mt-1 text-[10px] text-kelly-text/70">
+        <p className="mt-1 text-[10px] text-kelly-muted">
           Grouped signals from approved facts, pending suggestions (separate), and hint labels. Use approved facts for
           safest previews.
         </p>
         <div className="mt-2 max-h-72 overflow-auto rounded border border-kelly-text/10">
           <table className="w-full text-left text-[10px]">
-            <thead className="sticky top-0 bg-kelly-fog/80 text-kelly-text/70">
+            <thead className="sticky top-0 bg-kelly-fog/80 text-kelly-muted">
               <tr>
                 <th className="px-2 py-1">Kind</th>
                 <th className="px-2 py-1">Key / label</th>
@@ -380,7 +380,7 @@ export default async function EmailAudienceStudioPage({
 
       <section className="rounded-lg border border-kelly-text/10 bg-white/90 p-3">
         <h2 className="font-heading text-sm font-bold text-kelly-navy">Suggested clusters</h2>
-        <p className="mt-1 text-[10px] text-kelly-text/70">
+        <p className="mt-1 text-[10px] text-kelly-muted">
           Approved hint labels and recurring fact key/value pairs (count ≥ 2 fact rows). Heuristic only.
         </p>
         <ul className="mt-2 space-y-1 text-[11px] text-kelly-text/85">
@@ -414,7 +414,7 @@ export default async function EmailAudienceStudioPage({
 
       <section id="audience-manual-draft" className="rounded-lg border border-kelly-text/10 bg-white/90 p-3">
         <h2 className="font-heading text-sm font-bold text-kelly-navy">Save draft audience definition</h2>
-        <p className="mb-2 text-[10px] text-kelly-text/70">
+        <p className="mb-2 text-[10px] text-kelly-muted">
           Persists <code className="text-[9px]">criteriaJson</code> for operators — still no SendGrid sync.
         </p>
         <form action={createDraftEmailAudienceDefinitionAction} className="grid gap-2 sm:grid-cols-2">
@@ -479,7 +479,7 @@ export default async function EmailAudienceStudioPage({
                     </span>
                   ) : null}
                 </p>
-                <p className="text-[10px] text-kelly-text/60">Updated {d.updatedAt.toISOString()}</p>
+                <p className="text-[10px] text-kelly-muted">Updated {d.updatedAt.toISOString()}</p>
                 {d.status === "DRAFT" ? (
                   <div className="mt-1 flex flex-wrap items-center gap-2">
                     <form action={previewSavedEmailAudienceDefinitionAction} className="inline">
@@ -536,7 +536,7 @@ export default async function EmailAudienceStudioPage({
                         Prepare send execution
                       </Link>
                     ) : (
-                      <span className="text-[10px] text-kelly-text/60">
+                      <span className="text-[10px] text-kelly-muted">
                         Send Execution link appears after a <strong>SYNCED</strong> contact sync run.
                       </span>
                     )}
@@ -552,10 +552,10 @@ export default async function EmailAudienceStudioPage({
                   </div>
                 ) : null}
                 {d.status === "ARCHIVED" ? (
-                  <p className="mt-1 text-[10px] text-kelly-text/55">Archived — restore by creating a new draft if criteria change.</p>
+                  <p className="mt-1 text-[10px] text-kelly-muted">Archived — restore by creating a new draft if criteria change.</p>
                 ) : null}
                 {d.status !== "ARCHIVED" ? (
-                  <p className="mt-1 text-[9px] text-kelly-text/60">
+                  <p className="mt-1 text-[9px] text-kelly-muted">
                     Use approved audience criteria in Message Studio — turn on <strong>Audience definition context</strong>{" "}
                     in Campaign Voice to guide tone and frames.
                   </p>
@@ -582,7 +582,7 @@ export default async function EmailAudienceStudioPage({
 
       <section className="rounded-lg border border-kelly-text/10 bg-white/90 p-3">
         <h2 className="font-heading text-sm font-bold text-kelly-navy">Workflow source type reference</h2>
-        <p className="text-[10px] text-kelly-text/70">Valid values for preview filter `workflowSourceType`:</p>
+        <p className="text-[10px] text-kelly-muted">Valid values for preview filter `workflowSourceType`:</p>
         <p className="mt-1 font-mono text-[10px] text-kelly-text/80">{sourceTypes.join(", ")}</p>
       </section>
     </div>

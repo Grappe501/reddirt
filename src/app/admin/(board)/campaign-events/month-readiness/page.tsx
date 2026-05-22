@@ -53,7 +53,7 @@ export default async function CampaignMonthReadinessPage({ searchParams }: Props
       />
       <CampaignEventsNav />
       <CampaignEventsMonthNav activeMonth={period} basePath="workbench" />
-      <p className="font-body text-xs text-kelly-text/65">
+      <p className="font-body text-xs text-kelly-muted">
         <MicrocopyHint term="readiness_score" role="campaign_manager" label="Readiness score" />
       </p>
       <AgentNextActionPanel actions={nextActions} compact />

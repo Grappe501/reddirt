@@ -37,8 +37,8 @@ function Badge({ children, tone = "neutral" }: { children: React.ReactNode; tone
           : tone === "red"
             ? "border-red-800/25 bg-red-50 text-red-900"
             : tone === "slate"
-              ? "border-kelly-text/15 bg-kelly-wash text-kelly-text/60"
-              : "border-kelly-text/10 bg-kelly-wash text-kelly-text/70";
+              ? "border-kelly-text/15 bg-kelly-wash text-kelly-muted"
+              : "border-kelly-text/10 bg-kelly-wash text-kelly-muted";
   return <span className={`whitespace-nowrap rounded-full border px-2 py-0.5 font-body text-[10px] font-bold uppercase tracking-wide ${cls}`}>{children}</span>;
 }
 
@@ -107,7 +107,7 @@ export function CampaignEventsWorkbench({
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-slate">Batch review queue</p>
-            <p className="mt-1 font-body text-sm text-kelly-text/70">
+            <p className="mt-1 font-body text-sm text-kelly-muted">
               Period <strong>{period}</strong> · Showing {filtered.length} of {rows.length} events
             </p>
           </div>
@@ -234,7 +234,7 @@ export function CampaignEventsWorkbench({
 
       <div className="overflow-x-auto rounded-2xl border border-kelly-text/10 bg-kelly-page shadow-[var(--shadow-soft)]">
         <table className="min-w-[1200px] w-full text-left font-body text-sm">
-          <thead className="border-b border-kelly-text/10 bg-kelly-wash text-xs uppercase tracking-wider text-kelly-text/50">
+          <thead className="border-b border-kelly-text/10 bg-kelly-wash text-xs uppercase tracking-wider text-kelly-subtle">
             <tr>
               <th className="px-2 py-3">
                 <input
@@ -316,7 +316,7 @@ export function CampaignEventsWorkbench({
                 <td className="px-2 py-2">{row.roundTripMiles != null ? row.roundTripMiles.toFixed(1) : "—"}</td>
                 <td className="px-2 py-2">{row.reimbursementDisplay ?? "—"}</td>
                 <td className="px-2 py-2">{row.persistedMissingCount}</td>
-                <td className="whitespace-nowrap px-2 py-2 text-xs text-kelly-text/55">{formatTs(row.lastReviewedAt)}</td>
+                <td className="whitespace-nowrap px-2 py-2 text-xs text-kelly-muted">{formatTs(row.lastReviewedAt)}</td>
                 <td className="px-3 py-2">
                   <div className="flex flex-col gap-1">
                     <button
@@ -339,7 +339,7 @@ export function CampaignEventsWorkbench({
           </tbody>
         </table>
         {!filtered.length ? (
-          <p className="p-6 text-center font-body text-sm text-kelly-text/55">No events match filters.</p>
+          <p className="p-6 text-center font-body text-sm text-kelly-muted">No events match filters.</p>
         ) : null}
       </div>
 

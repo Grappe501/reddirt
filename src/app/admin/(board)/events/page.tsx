@@ -39,7 +39,7 @@ export default async function AdminEventsPage() {
           </p>
         </div>
       ) : (
-        <p className="mt-4 text-xs text-kelly-text/50">
+        <p className="mt-4 text-xs text-kelly-subtle">
           <Link href="/admin/events/community-suggestions" className="text-kelly-slate underline">
             Public event suggestions
           </Link>{" "}
@@ -54,11 +54,11 @@ export default async function AdminEventsPage() {
         <h2 className="font-heading text-lg font-bold text-kelly-text">New event</h2>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Title</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Title</span>
             <input name="title" required className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Type</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Type</span>
             <select name="eventType" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               {Object.values(CampaignEventType).map((t) => (
                 <option key={t} value={t}>
@@ -70,21 +70,21 @@ export default async function AdminEventsPage() {
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Start (local)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Start (local)</span>
             <input name="startAt" type="datetime-local" required className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">End (local)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">End (local)</span>
             <input name="endAt" type="datetime-local" required className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
         </div>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Description</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Description</span>
           <textarea name="description" rows={3} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">County (optional)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">County (optional)</span>
             <select name="countyId" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               <option value="">—</option>
               {counties.map((c) => (
@@ -95,17 +95,17 @@ export default async function AdminEventsPage() {
             </select>
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Location name</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Location name</span>
             <input name="locationName" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
         </div>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Address</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Address</span>
           <input name="address" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Visibility</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Visibility</span>
             <select name="visibility" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               {Object.values(CampaignEventVisibility).map((v) => (
                 <option key={v} value={v}>
@@ -115,7 +115,7 @@ export default async function AdminEventsPage() {
             </select>
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Status</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Status</span>
             <select name="status" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               {Object.values(CampaignEventStatus).map((s) => (
                 <option key={s} value={s}>
@@ -125,7 +125,7 @@ export default async function AdminEventsPage() {
             </select>
           </label>
         </div>
-        <p className="text-xs text-kelly-text/50">
+        <p className="text-xs text-kelly-subtle">
           Role keys for templates: {CAMPAIGN_ROLE_KEYS.map((k) => formatRoleLabel(k)).join(" · ")}
         </p>
         <button type="submit" className="rounded-btn bg-kelly-navy px-5 py-2.5 text-sm font-bold text-kelly-page">
@@ -141,7 +141,7 @@ export default async function AdminEventsPage() {
               <Link href={`/admin/events/${e.id}`} className="font-heading text-base font-semibold text-kelly-slate hover:underline">
                 {e.title}
               </Link>
-              <p className="mt-1 text-xs text-kelly-text/60">
+              <p className="mt-1 text-xs text-kelly-muted">
                 {e.eventType} · {e.status} · {e.startAt.toLocaleString()}
                 {e.county ? ` · ${e.county.displayName}` : ""}
               </p>

@@ -15,7 +15,7 @@ export default function CommunityOpportunitiesPage() {
 
   return (
     <div className="mx-auto max-w-7xl space-y-4 px-4 py-6">
-      <div className="font-body text-xs text-kelly-text/60">
+      <div className="font-body text-xs text-kelly-muted">
         <Link href="/admin/calendar-command-center" className="text-kelly-text underline-offset-2 hover:underline">
           ← Command center
         </Link>
@@ -28,7 +28,7 @@ export default function CommunityOpportunitiesPage() {
       </div>
 
       <header className="rounded-lg border border-kelly-text/15 bg-[#f7f2e8] px-5 py-5 shadow-sm">
-        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-text/45">Statewide opportunity engine</p>
+        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">Statewide opportunity engine</p>
         <h1 className="mt-2 font-heading text-2xl font-bold text-kelly-text">Where should Kelly be?</h1>
         <p className="mt-2 max-w-3xl font-body text-sm text-kelly-text/75">
           File-staged pipeline: <code className="rounded bg-white/80 px-1">opportunities:scrape</code>,{" "}

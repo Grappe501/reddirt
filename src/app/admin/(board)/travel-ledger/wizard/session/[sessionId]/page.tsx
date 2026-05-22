@@ -75,7 +75,7 @@ export default async function TravelLedgerWizardSessionPage({
           {autopilot ? (
             <TravelLedgerCard eyebrow="AI prepares item" title={autopilot.headline} tone="highlight">
               <p>{autopilot.body}</p>
-              <p className="mt-2 text-xs text-kelly-text/60">Next question: {autopilot.question}</p>
+              <p className="mt-2 text-xs text-kelly-muted">Next question: {autopilot.question}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {autopilot.city ? (
                   <form action={saveWizardItemPatchAction.bind(null, session.id, item.id)}>

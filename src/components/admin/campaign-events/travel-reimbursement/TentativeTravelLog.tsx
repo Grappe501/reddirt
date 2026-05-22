@@ -67,7 +67,7 @@ export function TentativeTravelLog({
     return (
       <section className="rounded-2xl border border-dashed border-amber-700/30 bg-amber-50/50 p-8 text-center font-body text-sm">
         <p className="font-heading text-lg font-bold text-amber-950">No calendar rows found for this month</p>
-        <p className="mt-2 text-kelly-text/70">
+        <p className="mt-2 text-kelly-muted">
           If May (or another month) has no rows in <code className="text-xs">calendar-items.normalized.json</code>, the log stays
           empty — we do not fabricate events. Run{" "}
           <code className="text-xs">npm run campaign-events:seed-month -- {month}</code> after JSON is updated.
@@ -88,7 +88,7 @@ export function TentativeTravelLog({
           </Link>
           .
         </p>
-        <p className="mt-2 text-xs text-kelly-text/55">
+        <p className="mt-2 text-xs text-kelly-muted">
           {totals.lineCount} travel candidates · {totals.needsReviewCount} need approval · {fmtUsd(totals.totalReimbursement)} estimated
         </p>
       </section>
@@ -164,14 +164,14 @@ export function TentativeTravelLog({
                 <td className="p-2 whitespace-nowrap">
                   {l.dateYmd}
                   <br />
-                  <span className="text-kelly-text/45">{l.dayOfWeek}</span>
+                  <span className="text-kelly-subtle">{l.dayOfWeek}</span>
                 </td>
                 <td className="p-2">{l.timeLabel}</td>
                 <td className="p-2 font-semibold max-w-[200px]">{l.title}</td>
                 <td className="p-2">{l.city || "—"}</td>
                 <td className="p-2">{l.county || "—"}</td>
                 <td className="p-2">{l.zip || "—"}</td>
-                <td className="p-2 text-kelly-text/70">
+                <td className="p-2 text-kelly-muted">
                   {l.origin} → {l.destination}
                 </td>
                 <td className="p-2">{l.miles ?? "—"}</td>
@@ -189,7 +189,7 @@ export function TentativeTravelLog({
                     {l.travelStatus}
                   </span>
                 </td>
-                <td className="p-2 text-kelly-text/55">{l.missingFields.join(", ") || "—"}</td>
+                <td className="p-2 text-kelly-muted">{l.missingFields.join(", ") || "—"}</td>
                 <td className="p-2 print:hidden">
                   <Link href={l.editHref} className="font-bold text-kelly-navy underline">
                     Edit / correct
@@ -199,7 +199,7 @@ export function TentativeTravelLog({
             ))}
           </tbody>
         </table>
-        <p className="border-t border-kelly-text/10 px-4 py-2 text-xs text-kelly-text/50">{lines.length} rows shown</p>
+        <p className="border-t border-kelly-text/10 px-4 py-2 text-xs text-kelly-subtle">{lines.length} rows shown</p>
       </div>
     </div>
   );

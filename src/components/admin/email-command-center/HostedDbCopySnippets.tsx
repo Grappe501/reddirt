@@ -59,7 +59,7 @@ function CopyRow({ snippet }: { snippet: Snippet }) {
         </button>
       </div>
       <pre className="mt-1 overflow-x-auto whitespace-pre-wrap break-all font-mono text-[9px] text-kelly-text/90">{snippet.text}</pre>
-      {snippet.note ? <p className="mt-1 font-body text-[9px] text-kelly-text/70">{snippet.note}</p> : null}
+      {snippet.note ? <p className="mt-1 font-body text-[9px] text-kelly-muted">{snippet.note}</p> : null}
     </div>
   );
 }
@@ -78,7 +78,7 @@ export function HostedDbCopySnippets() {
 
   return (
     <div className="space-y-2">
-      <p className="font-heading text-[10px] font-bold uppercase text-kelly-text/55">One-click copy (no secrets)</p>
+      <p className="font-heading text-[10px] font-bold uppercase text-kelly-muted">One-click copy (no secrets)</p>
       <div className="grid gap-2 sm:grid-cols-1 md:grid-cols-3">
         {SNIPPETS.map((s) => (
           <CopyRow key={s.id} snippet={s} />

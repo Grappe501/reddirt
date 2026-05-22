@@ -54,6 +54,9 @@ export default async function ComplianceReportsPage() {
         description="Generated discovery reports and exact missing inputs for the Pass 2 compliance build script."
       />
       <ComplianceNav />
+      <ComplianceCard eyebrow="April 2026" title="April26 reports" href="/admin/compliance/reports/april26">
+        Ingest summary, payout expectations, OCR reports, bank blocker, and filing impact.
+      </ComplianceCard>
       <ComplianceCard eyebrow="Approval" title="Lightning Approval Workbench" href="/admin/compliance/approval">
         Review AI-prepared compliance records one at a time, verify evidence, approve, reject, or request more information.
       </ComplianceCard>

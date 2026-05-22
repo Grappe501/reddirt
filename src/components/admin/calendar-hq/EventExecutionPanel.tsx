@@ -23,7 +23,7 @@ import { GoogleCalendarSyncBlock } from "./GoogleCalendarSyncBlock";
 import { EventTaskWorkflowSection } from "./EventTaskWorkflowSection";
 import { computeEventExecutionReadiness } from "@/lib/calendar/event-readiness";
 
-const h2 = "font-heading text-[9px] font-bold uppercase tracking-wider text-kelly-text/50";
+const h2 = "font-heading text-[9px] font-bold uppercase tracking-wider text-kelly-subtle";
 
 type ExecutionReadiness = ReturnType<typeof computeEventExecutionReadiness>;
 
@@ -72,9 +72,9 @@ export function EventExecutionPanel({
   return (
     <div className="flex h-full min-h-0 flex-col">
       <div className="shrink-0 border-b border-kelly-text/10 bg-kelly-text/5 px-2 py-1.5">
-        <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">Execution / selection</p>
+        <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-muted">Execution / selection</p>
         <p className="line-clamp-2 font-heading text-sm font-bold text-kelly-text">{detail.title}</p>
-        <p className="text-[10px] text-kelly-text/60">
+        <p className="text-[10px] text-kelly-muted">
           {detail.startAt.toLocaleString()} → {detail.endAt.toLocaleString()} · {detail.timezone}
         </p>
         <div className="mt-1 flex flex-wrap items-center gap-1">
@@ -96,19 +96,19 @@ export function EventExecutionPanel({
             <span className="rounded border border-amber-800/50 bg-amber-50/80 px-1.5 text-[9px] font-bold text-amber-900">Big rock</span>
           ) : null}
         </div>
-        <p className="mt-1 text-[9px] text-kelly-text/55">
+        <p className="mt-1 text-[9px] text-kelly-muted">
           Owner: {detail.ownerUser ? detail.ownerUser.name || detail.ownerUser.email : "—"} · {visShort[detail.visibility]}{" "}
           {detail.eventWorkflowState === "PUBLISHED" && detail.isPublicOnWebsite ? "· On public site" : "· Not on public site"}{" "}
           · {detail.signups.length} signups · {detail.tasks.length} tasks
         </p>
-        <p className="mt-0.5 text-[8px] text-kelly-text/45">
+        <p className="mt-0.5 text-[8px] text-kelly-subtle">
           Comms {String(detail.commsReadiness)} · Staffing {String(detail.staffingReadiness)} · Prep {String(detail.prepReadiness)} · F/U {String(detail.followupReadiness)}
         </p>
         <div className="mt-1 flex items-baseline justify-between border-t border-kelly-text/10 pt-1">
           <p className={h2}>Health</p>
           <p className="font-heading text-lg font-bold text-kelly-text">
             {health.score0to100}
-            <span className="text-[10px] font-normal text-kelly-text/50">/100</span>
+            <span className="text-[10px] font-normal text-kelly-subtle">/100</span>
           </p>
         </div>
         {health.factors.length > 0 ? (
@@ -118,7 +118,7 @@ export function EventExecutionPanel({
             ))}
           </ul>
         ) : null}
-        <p className="mt-1 text-[9px] text-kelly-text/45">
+        <p className="mt-1 text-[9px] text-kelly-subtle">
           {pendingPrep > 0 ? `${pendingPrep} checklist item(s) open —` : "Checklists in shape —"}{" "}
           <Link className="text-kelly-slate underline" href={`/admin/events/${detail.id}`}>
             open full event
@@ -203,7 +203,7 @@ export function EventExecutionPanel({
                 ] as const
               ).map(([field, value]) => (
                 <label key={field} className="block text-[8px]">
-                  <span className="text-kelly-text/45">{field.replace("Readiness", "")}</span>
+                  <span className="text-kelly-subtle">{field.replace("Readiness", "")}</span>
                   <select
                     name={field}
                     defaultValue={String(value ?? "UNKNOWN")}
@@ -249,7 +249,7 @@ export function EventExecutionPanel({
             </p>
           ) : null}
           {detail.stageChangeLogs[0] ? (
-            <p className="mt-1 text-[8px] text-kelly-text/55">
+            <p className="mt-1 text-[8px] text-kelly-muted">
               Last change: {detail.stageChangeLogs[0]!.createdAt.toLocaleString()} —{" "}
               {detail.stageChangeLogs[0]!.fromState != null
                 ? `${EVENT_STAGE_LABEL[detail.stageChangeLogs[0]!.fromState!]} → `
@@ -260,22 +260,22 @@ export function EventExecutionPanel({
             <p className="mt-1 text-[8px] text-kelly-text/40">No stage history yet (new event).</p>
           )}
           {detail.eventApprovals[0] ? (
-            <p className="mt-0.5 text-[8px] text-kelly-text/60">
+            <p className="mt-0.5 text-[8px] text-kelly-muted">
               Latest approval row: {detail.eventApprovals[0]!.state}
               {detail.eventApprovals[0]!.note ? ` — ${detail.eventApprovals[0]!.note}` : ""}
             </p>
           ) : null}
           {detail.approvedAt ? (
-            <p className="text-[8px] text-kelly-text/50">
+            <p className="text-[8px] text-kelly-subtle">
               Approved {detail.approvedAt.toLocaleString()}
               {detail.approvedByUser ? ` · ${detail.approvedByUser.name || detail.approvedByUser.email}` : ""}
             </p>
           ) : null}
           {detail.submittedForReviewAt ? (
-            <p className="text-[8px] text-kelly-text/50">Submitted for review {detail.submittedForReviewAt.toLocaleString()}</p>
+            <p className="text-[8px] text-kelly-subtle">Submitted for review {detail.submittedForReviewAt.toLocaleString()}</p>
           ) : null}
           {detail.completedAt ? (
-            <p className="text-[8px] text-kelly-text/50">Completed (lifecycle) {detail.completedAt.toLocaleString()}</p>
+            <p className="text-[8px] text-kelly-subtle">Completed (lifecycle) {detail.completedAt.toLocaleString()}</p>
           ) : null}
 
           {detail.eventWorkflowState === "DRAFT" ? (
@@ -362,9 +362,9 @@ export function EventExecutionPanel({
             </div>
           ) : null}
           {detail.eventWorkflowState === "CANCELED" || detail.eventWorkflowState === "COMPLETED" ? (
-            <p className="mt-1 text-[8px] text-kelly-text/50">No further stage transitions. Edit details on the full event page if policy allows.</p>
+            <p className="mt-1 text-[8px] text-kelly-subtle">No further stage transitions. Edit details on the full event page if policy allows.</p>
           ) : null}
-          <details className="mt-1.5 text-[8px] text-kelly-text/45">
+          <details className="mt-1.5 text-[8px] text-kelly-subtle">
             <summary className="cursor-pointer font-bold">Emergency legacy setter</summary>
             <p className="mb-0.5">Use only for repair; most moves should use the buttons above. Draft → Public is blocked.</p>
             <form action={setEventWorkflowStateAction} className="mt-0.5 space-y-0.5">
@@ -387,7 +387,7 @@ export function EventExecutionPanel({
             {detail.stageChangeLogs.length === 0 ? <li className="text-kelly-text/40">—</li> : null}
             {detail.stageChangeLogs.map((log) => (
               <li key={log.id} className="border-l-2 border-kelly-text/15 pl-1">
-                <span className="text-kelly-text/45">{log.createdAt.toLocaleString()}</span>{" "}
+                <span className="text-kelly-subtle">{log.createdAt.toLocaleString()}</span>{" "}
                 {log.fromState != null ? (
                   <span>
                     {EVENT_STAGE_LABEL[log.fromState]} → {EVENT_STAGE_LABEL[log.toState]}
@@ -395,8 +395,8 @@ export function EventExecutionPanel({
                 ) : (
                   <span>{EVENT_STAGE_LABEL[log.toState]}</span>
                 )}
-                {log.actor ? <span className="text-kelly-text/50"> · {log.actor.name || log.actor.email}</span> : null}
-                {log.note ? <span className="block text-kelly-text/60">“{log.note}”</span> : null}
+                {log.actor ? <span className="text-kelly-subtle"> · {log.actor.name || log.actor.email}</span> : null}
+                {log.note ? <span className="block text-kelly-muted">“{log.note}”</span> : null}
               </li>
             ))}
           </ul>

@@ -27,7 +27,7 @@ export default async function AdminMediaPage({ searchParams }: Props) {
       </p>
 
       <div className="mt-6 flex flex-wrap gap-2 font-body text-xs">
-        <span className="self-center font-semibold text-kelly-text/55">Filter:</span>
+        <span className="self-center font-semibold text-kelly-muted">Filter:</span>
         <Link
           href="/admin/media"
           className={`rounded-full px-3 py-1 ${!kindFilter && !tagFilter ? "bg-kelly-text text-kelly-page" : "border border-kelly-text/20 text-kelly-text"}`}
@@ -51,47 +51,47 @@ export default async function AdminMediaPage({ searchParams }: Props) {
       <form action={createMediaAssetAction} className="mt-8 space-y-4 rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]">
         <h2 className="font-heading text-lg font-bold text-kelly-text">Register asset</h2>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Kind</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Kind</span>
           <select name="kind" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
             <option value="IMAGE">Image URL</option>
             <option value="VIDEO_EMBED">Video embed URL (YouTube/Vimeo page URL or iframe src)</option>
           </select>
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">URL</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">URL</span>
           <input name="url" required className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 font-mono text-sm" placeholder="https://..." />
         </label>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Width (px, optional)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Width (px, optional)</span>
             <input name="width" type="number" min={1} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Height (px, optional)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Height (px, optional)</span>
             <input name="height" type="number" min={1} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Alt text</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Alt text</span>
             <input name="alt" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Tags (comma-separated)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Tags (comma-separated)</span>
             <input name="tags" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" placeholder="homepage, hero, story" />
           </label>
         </div>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Caption</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Caption</span>
           <textarea name="caption" rows={2} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Usage notes</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Usage notes</span>
           <textarea name="usageNotes" rows={2} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">
               Origin platform (connector lineage)
             </span>
             <select
@@ -107,7 +107,7 @@ export default async function AdminMediaPage({ searchParams }: Props) {
             </select>
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">
               External id (e.g. video id)
             </span>
             <input
@@ -117,7 +117,7 @@ export default async function AdminMediaPage({ searchParams }: Props) {
             />
           </label>
         </div>
-        <p className="font-body text-xs text-kelly-text/55">
+        <p className="font-body text-xs text-kelly-muted">
           Tag filter in URL: <code className="rounded bg-kelly-text/5 px-1">/admin/media?tag=hero</code> (substring match).
         </p>
         <button type="submit" className="rounded-btn bg-kelly-navy px-5 py-2.5 text-sm font-bold text-kelly-page">
@@ -135,7 +135,7 @@ export default async function AdminMediaPage({ searchParams }: Props) {
             <article key={a.id} className="overflow-hidden rounded-card border border-kelly-text/10 bg-kelly-page shadow-[var(--shadow-soft)]">
               {a.kind === "VIDEO_EMBED" ? (
                 <div className="flex aspect-video w-full items-center justify-center bg-kelly-text/15 px-4">
-                  <p className="text-center font-body text-sm font-semibold text-kelly-text/70">Video embed</p>
+                  <p className="text-center font-body text-sm font-semibold text-kelly-muted">Video embed</p>
                 </div>
               ) : (
                 <div className="aspect-video w-full overflow-hidden bg-kelly-text/10">
@@ -144,15 +144,15 @@ export default async function AdminMediaPage({ searchParams }: Props) {
                 </div>
               )}
               <div className="space-y-2 p-4">
-                <p className="font-mono text-[10px] text-kelly-text/50">
+                <p className="font-mono text-[10px] text-kelly-subtle">
                   {a.id} · {a.kind}
                   {a.width && a.height ? ` · ${a.width}×${a.height}` : ""}
                 </p>
                 <p className="break-all font-body text-xs text-kelly-text/80">{a.url}</p>
-                {a.alt ? <p className="font-body text-sm text-kelly-text/70">Alt: {a.alt}</p> : null}
-                {a.caption ? <p className="font-body text-sm text-kelly-text/70">Caption: {a.caption}</p> : null}
+                {a.alt ? <p className="font-body text-sm text-kelly-muted">Alt: {a.alt}</p> : null}
+                {a.caption ? <p className="font-body text-sm text-kelly-muted">Caption: {a.caption}</p> : null}
                 {a.tags.length ? (
-                  <p className="font-body text-xs text-kelly-text/55">Tags: {a.tags.join(", ")}</p>
+                  <p className="font-body text-xs text-kelly-muted">Tags: {a.tags.join(", ")}</p>
                 ) : null}
                 {a.originPlatform || a.originExternalId ? (
                   <p className="font-body text-xs text-kelly-slate">
@@ -165,7 +165,7 @@ export default async function AdminMediaPage({ searchParams }: Props) {
           ))}
         </div>
         {assets.length === 0 ? (
-          <p className="mt-6 rounded-lg border border-dashed border-kelly-text/20 bg-white/50 p-6 text-center text-sm text-kelly-text/60">
+          <p className="mt-6 rounded-lg border border-dashed border-kelly-text/20 bg-white/50 p-6 text-center text-sm text-kelly-muted">
             No assets match this filter. Register a URL or clear filters.
           </p>
         ) : null}

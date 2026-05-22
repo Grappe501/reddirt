@@ -243,7 +243,7 @@ export function MessageStudioCampaignPanels({
     <div className="space-y-3">
       <section className="rounded border border-kelly-navy/20 bg-kelly-fog/40 p-2">
         <h3 className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-navy">Campaign Voice</h3>
-        <p className="mt-1 text-[9px] text-kelly-text/70">
+        <p className="mt-1 text-[9px] text-kelly-muted">
           EMAIL-MESSAGE-STUDIO-CAMPAIGN-VOICE-1.2 + EMAIL-CAMPAIGN-VOICE-SOURCE-READINESS-1.0 — production operator drafting.
           Registry lists repo paths and posture only; semantic RAG requires separate ingest per{" "}
           <code className="rounded bg-white/80 px-0.5 text-[8px]">src/lib/openai/README.md</code>. No web scraping; no
@@ -337,8 +337,8 @@ export function MessageStudioCampaignPanels({
         </div>
 
         <div className="mt-2 rounded border border-kelly-text/10 bg-white/80 p-2">
-          <p className="text-[9px] font-bold uppercase text-kelly-text/55">Source context (what the draft should lean on)</p>
-          <p className="mt-0.5 text-[9px] text-kelly-text/65">
+          <p className="text-[9px] font-bold uppercase text-kelly-muted">Source context (what the draft should lean on)</p>
+          <p className="mt-0.5 text-[9px] text-kelly-muted">
             Toggle what you have reviewed elsewhere. AI and checklists treat unchecked items as thin context.
           </p>
           <ul className="mt-1 grid gap-1 sm:grid-cols-2">
@@ -369,7 +369,7 @@ export function MessageStudioCampaignPanels({
 
         <div className="mt-2 grid gap-2 sm:grid-cols-2">
           <div className="rounded border border-kelly-text/10 bg-white/90 p-2">
-            <p className="text-[9px] font-bold uppercase text-kelly-text/55">Voice principles</p>
+            <p className="text-[9px] font-bold uppercase text-kelly-muted">Voice principles</p>
             <ul className="mt-1 max-h-28 list-inside list-disc space-y-0.5 overflow-y-auto text-[9px] text-kelly-text/80">
               {CAMPAIGN_VOICE_PRINCIPLES.map((p) => (
                 <li key={p.slice(0, 48)}>{p}</li>
@@ -450,8 +450,8 @@ export function MessageStudioCampaignPanels({
         </div>
 
         <div className="mt-2 rounded border border-kelly-text/12 bg-white/95 p-2">
-          <p className="text-[9px] font-bold uppercase text-kelly-text/60">Operator paste templates</p>
-          <p className="mt-0.5 text-[8px] text-kelly-text/70">
+          <p className="text-[9px] font-bold uppercase text-kelly-muted">Operator paste templates</p>
+          <p className="mt-0.5 text-[8px] text-kelly-muted">
             Copy a scaffold into your audience note or compliance notes, then replace bracketed lines with approved
             facts only — do not invent campaign claims.
           </p>
@@ -478,7 +478,7 @@ export function MessageStudioCampaignPanels({
         </div>
 
         <div className="mt-2 rounded border border-kelly-text/10 bg-white/90 p-2">
-          <p className="text-[9px] font-bold uppercase text-kelly-text/55">Compliance reminders</p>
+          <p className="text-[9px] font-bold uppercase text-kelly-muted">Compliance reminders</p>
           <ul className="mt-1 list-inside list-disc text-[9px] text-kelly-text/80">
             {COMPLIANCE_GUARDRAILS.map((c) => (
               <li key={c.slice(0, 40)}>{c}</li>
@@ -507,7 +507,7 @@ export function MessageStudioCampaignPanels({
 
       <section className="rounded border border-kelly-text/12 bg-white/95 p-2">
         <h3 className="font-heading text-[10px] font-bold uppercase text-kelly-navy">Draft Quality Review (advisory)</h3>
-        <p className="mt-1 text-[9px] text-kelly-text/70">
+        <p className="mt-1 text-[9px] text-kelly-muted">
           Readiness:{" "}
           <span className="font-bold text-kelly-navy">
             {tier === "needs_work"
@@ -601,8 +601,8 @@ export function MessageStudioCampaignPanels({
         ) : null}
 
         <div className="mt-2">
-          <p className="text-[9px] font-bold uppercase text-kelly-text/55">Revision tools</p>
-          <p className="text-[9px] text-kelly-text/65">Uses current body + Campaign Voice. Subject-lines / CTA modes return structured suggestions.</p>
+          <p className="text-[9px] font-bold uppercase text-kelly-muted">Revision tools</p>
+          <p className="text-[9px] text-kelly-muted">Uses current body + Campaign Voice. Subject-lines / CTA modes return structured suggestions.</p>
           <div className="mt-1 flex flex-wrap gap-1">
             {revisionButtons.map((b) => (
               <button

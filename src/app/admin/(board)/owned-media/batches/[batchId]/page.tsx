@@ -81,12 +81,12 @@ export default async function MediaIngestBatchDetailPage({ params, searchParams 
           </Link>
         </div>
         <h1 className="mt-2 font-heading text-2xl font-bold text-kelly-text">Review batch</h1>
-        <p className="mt-1 font-mono text-xs text-kelly-text/50">{batch.id}</p>
+        <p className="mt-1 font-mono text-xs text-kelly-subtle">{batch.id}</p>
         <p className="mt-1 text-sm text-kelly-text/75">
           <strong>{batch.sourceType}</strong> · {batch.sourceLabel} · {batch._count.assets} total assets
         </p>
         {batch.ingestPath ? (
-          <p className="mt-0.5 break-all font-mono text-[10px] text-kelly-text/45">{batch.ingestPath}</p>
+          <p className="mt-0.5 break-all font-mono text-[10px] text-kelly-subtle">{batch.ingestPath}</p>
         ) : null}
         {sp.bulk || sp.reviewed ? (
           <p className="mt-2 rounded-md border border-emerald-600/20 bg-emerald-50/80 px-3 py-2 text-sm text-emerald-900">Updated.</p>
@@ -95,12 +95,12 @@ export default async function MediaIngestBatchDetailPage({ params, searchParams 
 
       <section className="rounded-card border border-kelly-text/10 bg-kelly-page p-4 shadow-[var(--shadow-soft)] sm:p-6">
         <h2 className="font-heading text-base font-bold text-kelly-text">Bulk actions (this batch)</h2>
-        <p className="mt-1 text-xs text-kelly-text/60">Applies to every asset in this batch, ignoring filters above.</p>
+        <p className="mt-1 text-xs text-kelly-muted">Applies to every asset in this batch, ignoring filters above.</p>
         <form action={bulkUpdateOwnedMediaByIngestBatchExtendedAction} className="mt-4 space-y-4">
           <input type="hidden" name="mediaIngestBatchId" value={batchId} />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <label className="block text-sm">
-              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Review</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Review</span>
               <select name="reviewStatus" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
                 {Object.values(OwnedMediaReviewStatus).map((k) => (
                   <option key={k} value={k}>
@@ -110,7 +110,7 @@ export default async function MediaIngestBatchDetailPage({ params, searchParams 
               </select>
             </label>
             <label className="block text-sm">
-              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Public</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Public</span>
               <select name="isPublic" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
                 <option value="false">Private</option>
                 <option value="true">Public (still needs review policy)</option>
@@ -125,11 +125,11 @@ export default async function MediaIngestBatchDetailPage({ params, searchParams 
               </label>
               <div className="mt-2 grid gap-2 sm:grid-cols-2">
                 <label className="block text-sm">
-                  <span className="text-xs text-kelly-text/55">County slug</span>
+                  <span className="text-xs text-kelly-muted">County slug</span>
                   <input name="countySlug" className="mt-1 w-full rounded border border-kelly-text/15 bg-white px-2 py-1 text-sm" />
                 </label>
                 <label className="block text-sm">
-                  <span className="text-xs text-kelly-text/55">FIPS</span>
+                  <span className="text-xs text-kelly-muted">FIPS</span>
                   <input name="countyFips" className="mt-1 w-full rounded border border-kelly-text/15 bg-white px-2 py-1 text-sm" />
                 </label>
               </div>
@@ -140,7 +140,7 @@ export default async function MediaIngestBatchDetailPage({ params, searchParams 
                 <span>Link to campaign event</span>
               </label>
               <label className="mt-2 block text-sm">
-                <span className="text-xs text-kelly-text/55">Event</span>
+                <span className="text-xs text-kelly-muted">Event</span>
                 <select name="linkedCampaignEventId" className="mt-1 w-full rounded border border-kelly-text/15 bg-white px-2 py-1 text-sm">
                   <option value="">— None —</option>
                   <option value="__clear__">— Clear event link —</option>
@@ -174,7 +174,7 @@ export default async function MediaIngestBatchDetailPage({ params, searchParams 
         />
       </Suspense>
 
-      <p className="text-sm text-kelly-text/60">
+      <p className="text-sm text-kelly-muted">
         Showing {assets.length} asset{assets.length === 1 ? "" : "s"} (max 500) with current filters.
       </p>
 
@@ -196,14 +196,14 @@ export default async function MediaIngestBatchDetailPage({ params, searchParams 
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={thumb} alt="" className="h-full w-full object-contain" />
                 ) : (
-                  <div className="flex h-full items-center justify-center p-4 text-center text-xs text-kelly-text/60">
+                  <div className="flex h-full items-center justify-center p-4 text-center text-xs text-kelly-muted">
                     {a.kind} · {a.fileName}
                   </div>
                 )}
               </Link>
               <div className="flex flex-1 flex-col gap-2 p-3 text-xs">
                 <p className="line-clamp-2 font-medium text-kelly-text">{a.title}</p>
-                <p className="font-mono text-[10px] text-kelly-text/45">{a.reviewStatus} · {a.isPublic ? "public" : "private"}</p>
+                <p className="font-mono text-[10px] text-kelly-subtle">{a.reviewStatus} · {a.isPublic ? "public" : "private"}</p>
                 <div className="mt-auto flex flex-wrap gap-1">
                   <form action={quickReviewOwnedMediaAction} className="contents">
                     <input type="hidden" name="id" value={a.id} />

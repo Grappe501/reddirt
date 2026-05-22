@@ -16,7 +16,7 @@ export default async function BudgetPlansListPage({
     <div className="max-w-5xl text-kelly-text">
       <p className="font-body text-xs font-bold uppercase tracking-[0.2em] text-kelly-navy/80">Foundation · BUDGET-2</p>
       <h1 className="mt-2 font-heading text-3xl font-bold">Budget plans</h1>
-      <p className="mt-2 max-w-2xl font-body text-sm text-kelly-text/70">
+      <p className="mt-2 max-w-2xl font-body text-sm text-kelly-muted">
         Internal <strong>planned vs actual</strong> view. Plans and lines are <strong>not</strong> the ledger (
         <Link href="/admin/financial-transactions" className="underline">
           financial transactions
@@ -33,28 +33,28 @@ export default async function BudgetPlansListPage({
 
       <section className="mt-8 rounded border border-kelly-text/10 bg-kelly-page p-4">
         <h2 className="font-heading text-lg font-bold">Create plan</h2>
-        <p className="mt-1 text-xs text-kelly-text/60">Draft by default. Activating or changing an active plan is human / SOP — not enforced here.</p>
+        <p className="mt-1 text-xs text-kelly-muted">Draft by default. Activating or changing an active plan is human / SOP — not enforced here.</p>
         <form action={createBudgetPlanAction} className="mt-4 grid max-w-xl gap-3 font-body text-sm">
           <label className="grid gap-1">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Name</span>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-kelly-muted">Name</span>
             <input name="name" required className="rounded border border-kelly-text/20 px-2 py-1.5" placeholder="e.g. General Q2" />
           </label>
           <label className="grid gap-1">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Period label</span>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-kelly-muted">Period label</span>
             <input name="periodLabel" required className="rounded border border-kelly-text/20 px-2 py-1.5" placeholder="e.g. Apr–Jun 2026" />
           </label>
           <div className="grid gap-3 sm:grid-cols-2">
             <label className="grid gap-1">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Start (optional)</span>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-kelly-muted">Start (optional)</span>
               <input type="date" name="startDate" className="rounded border border-kelly-text/20 px-2 py-1.5" />
             </label>
             <label className="grid gap-1">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">End (optional)</span>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-kelly-muted">End (optional)</span>
               <input type="date" name="endDate" className="rounded border border-kelly-text/20 px-2 py-1.5" />
             </label>
           </div>
           <label className="grid gap-1">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Status</span>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-kelly-muted">Status</span>
             <select name="status" className="rounded border border-kelly-text/20 px-2 py-1.5" defaultValue="DRAFT">
               <option value="DRAFT">DRAFT</option>
               <option value="ACTIVE">ACTIVE</option>
@@ -62,7 +62,7 @@ export default async function BudgetPlansListPage({
             </select>
           </label>
           <label className="grid gap-1">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Notes</span>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-kelly-muted">Notes</span>
             <textarea name="notes" rows={2} className="rounded border border-kelly-text/20 px-2 py-1.5" />
           </label>
           <button type="submit" className="mt-1 w-fit rounded bg-kelly-text px-4 py-2 text-kelly-page">
@@ -74,7 +74,7 @@ export default async function BudgetPlansListPage({
       <section className="mt-10">
         <h2 className="font-heading text-lg font-bold">All plans</h2>
         {plans.length === 0 ? (
-          <p className="mt-3 text-sm text-kelly-text/60">No budget plans yet.</p>
+          <p className="mt-3 text-sm text-kelly-muted">No budget plans yet.</p>
         ) : (
           <ul className="mt-3 divide-y divide-kelly-text/10 rounded border border-kelly-text/10 bg-kelly-page">
             {plans.map((p) => (
@@ -83,11 +83,11 @@ export default async function BudgetPlansListPage({
                   <Link href={`/admin/budgets/${p.id}`} className="font-heading font-semibold text-kelly-text underline">
                     {p.name}
                   </Link>
-                  <p className="text-xs text-kelly-text/60">
+                  <p className="text-xs text-kelly-muted">
                     {p.periodLabel} · {p.status} · {p._count.lines} line(s)
                   </p>
                 </div>
-                <span className="text-[10px] uppercase tracking-wider text-kelly-text/45">{p.id.slice(0, 8)}…</span>
+                <span className="text-[10px] uppercase tracking-wider text-kelly-subtle">{p.id.slice(0, 8)}…</span>
               </li>
             ))}
           </ul>

@@ -71,7 +71,7 @@ export async function EmailQueueContactProfilePanel({ itemId }: { itemId: string
   return (
     <div className="mt-2 space-y-2 rounded border border-kelly-text/10 bg-kelly-page/40 p-2">
       <h2 className="font-heading text-sm font-bold text-kelly-text">Contact / Profile Intelligence</h2>
-      <p className="text-[10px] leading-snug text-kelly-text/70">
+      <p className="text-[10px] leading-snug text-kelly-muted">
         <span className="font-semibold text-kelly-text">EMAIL-CONTACT-PROFILE-GRAPH-1.0</span> — facts require
         operator approval. Approved rows live on <code className="text-[9px]">EmailContactProfileFact</code> only;
         User/VolunteerProfile are not auto-updated here. Audience hints do <strong>not</strong> create SendGrid segments
@@ -86,7 +86,7 @@ export async function EmailQueueContactProfilePanel({ itemId }: { itemId: string
       ) : null}
 
       <div className="rounded border border-kelly-text/10 bg-white/80 px-2 py-1.5 text-[11px]">
-        <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">Profile row</p>
+        <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-muted">Profile row</p>
         {profile ? (
           <ul className="mt-1 space-y-0.5 text-kelly-text/85">
             <li>
@@ -108,7 +108,7 @@ export async function EmailQueueContactProfilePanel({ itemId }: { itemId: string
             </li>
           </ul>
         ) : (
-          <p className="mt-1 text-kelly-text/60">
+          <p className="mt-1 text-kelly-muted">
             No Email Contact Profile linked yet. Run <strong>Generate suggestions from AI analysis</strong> to create
             and link a profile row from this queue item.
           </p>
@@ -130,12 +130,12 @@ export async function EmailQueueContactProfilePanel({ itemId }: { itemId: string
       </div>
 
       <div>
-        <p className="text-[10px] text-kelly-text/60">
+        <p className="text-[10px] text-kelly-muted">
           Source limitations (AI envelope): see <strong>AI Email Intelligence</strong> panel above.
         </p>
         <GenerateProfileSuggestionsFromAiButton itemId={itemId} disabled={!hasAiOutput} />
         {!hasAiOutput ? (
-          <p className="mt-1 text-[10px] text-kelly-text/55">
+          <p className="mt-1 text-[10px] text-kelly-muted">
             Run OpenAI email analysis first to stage profile/audience rows from stored output.
           </p>
         ) : null}
@@ -146,7 +146,7 @@ export async function EmailQueueContactProfilePanel({ itemId }: { itemId: string
           <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-forest/90">
             Profile intelligence 2.0 preview (not staged)
           </p>
-          <p className="mt-0.5 text-[10px] text-kelly-text/70">
+          <p className="mt-0.5 text-[10px] text-kelly-muted">
             Deterministic recompute from queue fields + stored AI output — same family as staged rows after you click generate.
             Evidence labels are advisory; approve only after operator verification.
           </p>
@@ -154,14 +154,14 @@ export async function EmailQueueContactProfilePanel({ itemId }: { itemId: string
             {profileIntelPreview.map((row, i) => (
               <li key={i} className="rounded border border-kelly-text/10 bg-white/90 px-2 py-1.5 text-[10px] text-kelly-text/85">
                 <p className="font-semibold text-kelly-navy">{row.suggestedFact}</p>
-                <p className="mt-0.5 text-[9px] text-kelly-text/60">
+                <p className="mt-0.5 text-[9px] text-kelly-muted">
                   {row.factType} · conf {row.confidence.toFixed(2)} · risk {row.riskLevel} · {row.sourceType}
                   {row.needsHumanReview ? " · needs review" : ""}
                 </p>
-                <p className="mt-1 text-[9px] text-kelly-text/70">
+                <p className="mt-1 text-[9px] text-kelly-muted">
                   <span className="font-semibold">Why:</span> {row.whySuggested}
                 </p>
-                <p className="mt-0.5 font-mono text-[9px] text-kelly-text/65">{row.evidenceText.slice(0, 360)}</p>
+                <p className="mt-0.5 font-mono text-[9px] text-kelly-muted">{row.evidenceText.slice(0, 360)}</p>
                 {row.shouldNotStoreReason ? (
                   <p className="mt-1 rounded bg-rose-50/90 px-1.5 py-0.5 text-[9px] text-rose-950">
                     Do not store: {row.shouldNotStoreReason}
@@ -174,7 +174,7 @@ export async function EmailQueueContactProfilePanel({ itemId }: { itemId: string
       ) : null}
 
       <div>
-        <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">
+        <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-muted">
           Profile fact suggestions
         </p>
         <ProfileFactSuggestionsList
@@ -193,7 +193,7 @@ export async function EmailQueueContactProfilePanel({ itemId }: { itemId: string
       </div>
 
       <div>
-        <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">
+        <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-muted">
           Approved profile facts
         </p>
         {facts.length ? (
@@ -206,12 +206,12 @@ export async function EmailQueueContactProfilePanel({ itemId }: { itemId: string
             ))}
           </ul>
         ) : (
-          <p className="text-[11px] text-kelly-text/55">No approved facts on this profile yet.</p>
+          <p className="text-[11px] text-kelly-muted">No approved facts on this profile yet.</p>
         )}
       </div>
 
       <div>
-        <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">
+        <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-muted">
           Audience hints (not segments)
         </p>
         <ProfileAudienceHintsList

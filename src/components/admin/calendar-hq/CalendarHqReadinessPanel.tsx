@@ -35,7 +35,7 @@ export async function CalendarHqReadinessPanel() {
   return (
     <section className="border-b border-kelly-text/10 bg-kelly-fog/30 px-2 py-2 md:px-3">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <h2 className="font-heading text-[9px] font-bold uppercase tracking-wider text-kelly-text/50">Calendar readiness</h2>
+        <h2 className="font-heading text-[9px] font-bold uppercase tracking-wider text-kelly-subtle">Calendar readiness</h2>
         <Link href="/admin/workbench/calendar/requests" className="text-[10px] font-bold text-kelly-forest underline">
           Open requests ({pipe.newCount} new · {pipe.followUpCount} follow-up · {pipe.draftedCount} converted)
         </Link>
@@ -59,7 +59,7 @@ export async function CalendarHqReadinessPanel() {
             <li>Converted: {lite.convertedCount}</li>
             {pipe.allEventLikeCount > 0 ? <li>All in scan: {pipe.allEventLikeCount}</li> : null}
           </ul>
-          {lite.intakeCountNote ? <p className="mt-1 text-[9px] text-kelly-text/55">{lite.intakeCountNote}</p> : null}
+          {lite.intakeCountNote ? <p className="mt-1 text-[9px] text-kelly-muted">{lite.intakeCountNote}</p> : null}
         </div>
         <div className={box}>
           <p className="font-bold text-kelly-navy">Google Calendar</p>
@@ -74,10 +74,10 @@ export async function CalendarHqReadinessPanel() {
             <code className="text-[9px]">GOOGLE_CALENDAR_AUTO_PUBLISH_PUBLIC_FACING</code>:{" "}
             {lite.googleAutoPublishPublicFacingEnabled ? "enabled" : "off"} — {writePolicyLabel}
           </p>
-          <p className="mt-1 text-[9px] text-kelly-text/60">No one-click Google write is exposed here.</p>
+          <p className="mt-1 text-[9px] text-kelly-muted">No one-click Google write is exposed here.</p>
         </div>
       </div>
-      <p className="mt-2 text-[9px] text-kelly-text/55">
+      <p className="mt-2 text-[9px] text-kelly-muted">
         Next:{" "}
         {pipe.newCount > 0 ? (
           <Link href="/admin/workbench/calendar/requests" className="font-semibold text-kelly-forest underline">

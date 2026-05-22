@@ -29,7 +29,7 @@ function QueueSection({
             <li key={e.row.recordId} className="flex flex-wrap items-center justify-between gap-2 rounded-lg border px-3 py-2">
               <div>
                 <strong>{e.row.calendar.title}</strong>
-                <span className="ml-2 text-xs text-kelly-text/55">
+                <span className="ml-2 text-xs text-kelly-muted">
                   {e.row.dateYmd} · {e.promotionStatus.replaceAll("_", " ")}
                 </span>
               </div>
@@ -45,7 +45,7 @@ function QueueSection({
           ))}
         </ul>
       ) : (
-        <p className="mt-2 text-sm text-kelly-text/55">None in this queue.</p>
+        <p className="mt-2 text-sm text-kelly-muted">None in this queue.</p>
       )}
     </section>
   );
@@ -100,7 +100,7 @@ export function CalendarPromotionWorkbench({ snapshot }: { snapshot: PromotionWo
     <div className="space-y-6">
       <section className="rounded-2xl border border-kelly-navy/25 bg-kelly-navy/[0.06] p-5 font-body text-sm">
         <h2 className="font-heading text-lg font-bold text-kelly-navy">Google Calendar promotion (human-controlled)</h2>
-        <p className="mt-2 text-kelly-text/70">
+        <p className="mt-2 text-kelly-muted">
           First controlled write surface for Event OS. Writes require{" "}
           <code className="text-xs">GOOGLE_CALENDAR_WRITE_ENABLED=true</code> plus Kelly tentative/official CalendarSource OAuth.
         </p>
@@ -161,7 +161,7 @@ export function CalendarPromotionWorkbench({ snapshot }: { snapshot: PromotionWo
               ) : null}
             </>
           ) : (
-            <p className="mt-2 text-kelly-text/55">{pending ? "Loading preview…" : "Select an event to preview."}</p>
+            <p className="mt-2 text-kelly-muted">{pending ? "Loading preview…" : "Select an event to preview."}</p>
           )}
           <div className="mt-4 flex flex-wrap gap-2">
             <button

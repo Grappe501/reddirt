@@ -27,7 +27,7 @@ export function RunEmailWorkflowInterpretationButton({ itemId }: { itemId: strin
       }}
     >
       <input type="hidden" name="itemId" value={itemId} />
-      <p className="mb-1 font-body text-[10px] text-kelly-text/60">
+      <p className="mb-1 font-body text-[10px] text-kelly-muted">
         Runs deterministic E-2A heuristics (no AI). Fills empty summary fields by default. Optional overwrites
         require checking the boxes. Does not send mail or auto-approve.
       </p>

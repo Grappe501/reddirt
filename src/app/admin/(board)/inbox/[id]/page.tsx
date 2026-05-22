@@ -46,7 +46,7 @@ export default async function AdminInboundDetailPage({ params, searchParams }: P
       ) : null}
 
       <h1 className="mt-6 font-heading text-3xl font-bold text-kelly-text">{item.title ?? "(untitled)"}</h1>
-      <p className="mt-2 font-body text-sm text-kelly-text/70">
+      <p className="mt-2 font-body text-sm text-kelly-muted">
         {platformLabel(item.sourcePlatform)} · {sourceTypeLabel(item.sourceType)} · {item.reviewStatus}
       </p>
       {item.canonicalUrl ? (
@@ -77,7 +77,7 @@ export default async function AdminInboundDetailPage({ params, searchParams }: P
         <form action={updateInboundReviewAction} className="mt-4 space-y-4">
           <input type="hidden" name="id" value={item.id} />
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Status</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Status</span>
             <select
               name="reviewStatus"
               defaultValue={item.reviewStatus}
@@ -91,11 +91,11 @@ export default async function AdminInboundDetailPage({ params, searchParams }: P
             </select>
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Notes</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Notes</span>
             <textarea name="notes" rows={3} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 font-body text-sm" />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Editor</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Editor</span>
             <input name="editor" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 font-body text-sm" />
           </label>
           <button type="submit" className="rounded-btn bg-kelly-navy px-5 py-2.5 text-sm font-bold text-kelly-page">
@@ -109,7 +109,7 @@ export default async function AdminInboundDetailPage({ params, searchParams }: P
         className="mt-10 rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]"
       >
         <h2 className="font-heading text-lg font-bold text-kelly-text">Distribution</h2>
-        <p className="mt-2 font-body text-xs text-kelly-text/60">
+        <p className="mt-2 font-body text-xs text-kelly-muted">
           Approve via review first; routing to the public site works best when status is Reviewed or Featured.
         </p>
         <form action={updateInboundDistributionAction} className="mt-4 grid gap-3 md:grid-cols-2">
@@ -134,16 +134,16 @@ export default async function AdminInboundDetailPage({ params, searchParams }: P
             <input type="checkbox" name="editorialSeed" defaultChecked={item.editorialSeed} />
             Editorial seed
           </label>
-          <label className="flex items-center gap-2 text-sm text-kelly-text/60">
+          <label className="flex items-center gap-2 text-sm text-kelly-muted">
             <input type="checkbox" name="publishCandidate" defaultChecked={item.publishCandidate} />
             Publish candidate (future)
           </label>
           <label className="md:col-span-2 block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Notes</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Notes</span>
             <textarea name="notes" rows={2} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="md:col-span-2 block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Editor</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Editor</span>
             <input name="editor" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <div className="md:col-span-2">
@@ -156,14 +156,14 @@ export default async function AdminInboundDetailPage({ params, searchParams }: P
 
       <section className="mt-10 rounded-card border border-kelly-text/10 bg-white p-6 shadow-[var(--shadow-soft)]">
         <h2 className="font-heading text-lg font-bold text-kelly-text">Content hub tagging</h2>
-        <p className="mt-2 font-body text-xs text-kelly-text/60">
+        <p className="mt-2 font-body text-xs text-kelly-muted">
           Used for themed video grouping, future filters, and inbound memory. Substack-linked rows also update the synced post
           when you save here.
         </p>
         <form action={updateInboundHubMetaAction} className="mt-4 space-y-4">
           <input type="hidden" name="id" value={item.id} />
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Content kind</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Content kind</span>
             <select name="contentKind" defaultValue={item.contentKind ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               <option value="">— Unset —</option>
               {Object.values(ContentHubKind).map((k) => (
@@ -174,7 +174,7 @@ export default async function AdminInboundDetailPage({ params, searchParams }: P
             </select>
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Issue tags (comma)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Issue tags (comma)</span>
             <input
               name="issueTags"
               defaultValue={item.issueTags.join(", ")}
@@ -183,7 +183,7 @@ export default async function AdminInboundDetailPage({ params, searchParams }: P
           </label>
           <div className="grid gap-4 md:grid-cols-2">
             <label className="block text-sm">
-              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">County slug</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">County slug</span>
               <input
                 name="countySlug"
                 defaultValue={item.countySlug ?? ""}
@@ -191,7 +191,7 @@ export default async function AdminInboundDetailPage({ params, searchParams }: P
               />
             </label>
             <label className="block text-sm">
-              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">County FIPS</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">County FIPS</span>
               <input
                 name="countyFips"
                 defaultValue={item.countyFips ?? ""}
@@ -199,12 +199,12 @@ export default async function AdminInboundDetailPage({ params, searchParams }: P
               />
             </label>
             <label className="block text-sm md:col-span-2">
-              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">City</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">City</span>
               <input name="city" defaultValue={item.city ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
             </label>
           </div>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Campaign phase</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Campaign phase</span>
             <input
               name="campaignPhase"
               defaultValue={item.campaignPhase ?? ""}
@@ -212,7 +212,7 @@ export default async function AdminInboundDetailPage({ params, searchParams }: P
             />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Content series (e.g. why_im_running)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Content series (e.g. why_im_running)</span>
             <input
               name="contentSeries"
               defaultValue={item.contentSeries ?? ""}
@@ -220,7 +220,7 @@ export default async function AdminInboundDetailPage({ params, searchParams }: P
             />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Playlist id</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Playlist id</span>
             <input
               name="playlistId"
               defaultValue={item.playlistId ?? ""}
@@ -228,7 +228,7 @@ export default async function AdminInboundDetailPage({ params, searchParams }: P
             />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Featured weight</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Featured weight</span>
             <input
               name="featuredWeight"
               type="number"
@@ -276,7 +276,7 @@ export default async function AdminInboundDetailPage({ params, searchParams }: P
             <li key={d.id}>
               <span className="font-semibold">{d.status}</span> → {d.destination}
               {d.notes ? ` — ${d.notes}` : ""}{" "}
-              <span className="text-xs text-kelly-text/55">({d.createdAt.toLocaleString()})</span>
+              <span className="text-xs text-kelly-muted">({d.createdAt.toLocaleString()})</span>
             </li>
           ))}
         </ul>

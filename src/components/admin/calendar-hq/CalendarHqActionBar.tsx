@@ -38,7 +38,7 @@ export function CalendarHqActionBar({
   };
   return (
     <div className="flex flex-wrap items-center gap-1 border-b border-kelly-text/10 bg-kelly-text/[0.06] px-2 py-1.5 md:px-3">
-      <span className="text-[8px] font-bold uppercase tracking-wider text-kelly-text/45">Actions</span>
+      <span className="text-[8px] font-bold uppercase tracking-wider text-kelly-subtle">Actions</span>
       <Link href="/admin/events" className={btn}>
         New event
       </Link>

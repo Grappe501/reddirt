@@ -25,7 +25,7 @@ export default async function CheckReviewPage() {
             <p className="mt-1">{item.warnings.join(" ") || "Ready for review."}</p>
           </article>
         ))}
-        {!checks.length ? <p className="font-body text-sm text-kelly-text/70">No staged check contributions yet.</p> : null}
+        {!checks.length ? <p className="font-body text-sm text-kelly-muted">No staged check contributions yet.</p> : null}
       </section>
     </div>
   );

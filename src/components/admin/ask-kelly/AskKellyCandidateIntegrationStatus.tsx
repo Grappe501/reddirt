@@ -9,7 +9,7 @@ function toneBadge(tone: "codepath" | "external" | "oauth"): { label: string; cl
     case "oauth":
       return { label: "OAuth", className: "bg-kelly-blue/12 text-kelly-navy/90" };
     case "external":
-      return { label: "Outside stack", className: "bg-kelly-text/10 text-kelly-text/70" };
+      return { label: "Outside stack", className: "bg-kelly-text/10 text-kelly-muted" };
     default:
       return { label: "", className: "" };
   }

@@ -17,7 +17,7 @@ import { formatCommsFieldLabel } from "@/lib/comms-workbench/ui-labels";
 
 const VARIANT_TYPES = Object.values(CommunicationVariantType);
 
-const label = "mb-0.5 block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
+const label = "mb-0.5 block text-[10px] font-bold uppercase tracking-wider text-kelly-muted";
 const input = "w-full rounded border border-kelly-text/15 bg-white px-2 py-1.5 text-sm text-kelly-text";
 const h3 = "font-heading text-xs font-bold text-kelly-text";
 const subCard = "rounded border border-kelly-text/10 bg-kelly-page/40 p-3";
@@ -57,10 +57,10 @@ export function CommsPlanVariantsPanel({ planId, drafts }: Props) {
   if (drafts.length === 0) {
     return (
       <div className="space-y-2">
-        <p className="rounded border border-dashed border-kelly-text/15 bg-kelly-page/50 px-3 py-3 text-sm text-kelly-text/60">
+        <p className="rounded border border-dashed border-kelly-text/15 bg-kelly-page/50 px-3 py-3 text-sm text-kelly-muted">
           Add at least one message draft before creating audience or channel variants.
         </p>
-        <p className="text-[10px] text-kelly-text/45">plan: {planId}</p>
+        <p className="text-[10px] text-kelly-subtle">plan: {planId}</p>
       </div>
     );
   }
@@ -73,14 +73,14 @@ export function CommsPlanVariantsPanel({ planId, drafts }: Props) {
         </p>
       ) : null}
 
-      <p className="text-[10px] leading-relaxed text-kelly-text/55">
-        <strong className="text-kelly-text/70">Draft vs variant:</strong> the draft is the authored message. Each variant is a
+      <p className="text-[10px] leading-relaxed text-kelly-muted">
+        <strong className="text-kelly-muted">Draft vs variant:</strong> the draft is the authored message. Each variant is a
         targeting/derivation row (audience, channel override, copy tweaks). Empty override fields mean “use the base draft” at
         read time—no merge engine in this packet.
       </p>
 
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <p className="text-[10px] text-kelly-text/50">
+        <p className="text-[10px] text-kelly-subtle">
           {variantCount} variant{variantCount === 1 ? "" : "s"} across {drafts.length} draft{drafts.length === 1 ? "" : "s"}.
         </p>
         <button
@@ -115,9 +115,9 @@ export function CommsPlanVariantsPanel({ planId, drafts }: Props) {
             <p className={h3}>
               Base draft: {draftLabel(d)} · {formatCommsFieldLabel(d.channel)}
             </p>
-            <p className="mt-0.5 font-mono text-[10px] text-kelly-text/45">{d.id}</p>
+            <p className="mt-0.5 font-mono text-[10px] text-kelly-subtle">{d.id}</p>
             {d.variants.length === 0 ? (
-              <p className="mt-2 text-xs text-kelly-text/55">{COMMS_EMPTY.noVariants}</p>
+              <p className="mt-2 text-xs text-kelly-muted">{COMMS_EMPTY.noVariants}</p>
             ) : (
               <ul className="mt-2 space-y-3">
                 {d.variants.map((v) => (
@@ -297,11 +297,11 @@ function VariantEditCard({
             <span>{formatCommsFieldLabel(v.variantType)}</span>
             <CommsStatusBadge segment="variant" status={v.status} />
           </p>
-          <p className="text-[10px] text-kelly-text/55">
+          <p className="text-[10px] text-kelly-muted">
             Target: {v.targetSegmentLabel?.trim() || "—"}{" "}
             {v.targetSegmentId ? <span className="font-mono">· id: {v.targetSegmentId}</span> : null}
           </p>
-          <p className="text-[10px] text-kelly-text/55">
+          <p className="text-[10px] text-kelly-muted">
             Effective channel: {effectiveChannel(draft, v)} {" · "}Overrides: {overrideSummary(v)}
           </p>
         </div>
@@ -354,7 +354,7 @@ function VariantEditCard({
                 </option>
               ))}
             </select>
-            <p className="mt-0.5 text-[10px] text-kelly-text/45">Status and review are managed in the review panel above.</p>
+            <p className="mt-0.5 text-[10px] text-kelly-subtle">Status and review are managed in the review panel above.</p>
           </div>
           <div className="grid gap-2 sm:grid-cols-2">
             <div>

@@ -25,7 +25,7 @@ export default async function VendorsPage() {
             <strong className="text-kelly-text">{vendor.name}</strong> · {vendor.entityType} · W-9 {vendor.w9Status} · YTD ${vendor.ytdPaid.toFixed(2)}
           </a>
         ))}
-        {!vendors.length ? <p className="font-body text-sm text-kelly-text/70">No compliance vendors yet.</p> : null}
+        {!vendors.length ? <p className="font-body text-sm text-kelly-muted">No compliance vendors yet.</p> : null}
       </section>
     </div>
   );

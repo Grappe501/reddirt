@@ -28,7 +28,7 @@ export default async function MediaIngestBatchesPage({ searchParams }: Props) {
           ← Campaign-owned media
         </Link>
         <h1 className="mt-2 font-heading text-2xl font-bold text-kelly-text">Media ingest batches</h1>
-        <p className="mt-1 text-sm text-kelly-text/70">
+        <p className="mt-1 text-sm text-kelly-muted">
           Folder and device import sessions. Open a batch to review assets, apply tags, and run bulk actions.
         </p>
         {sp.error ? (
@@ -45,12 +45,12 @@ export default async function MediaIngestBatchesPage({ searchParams }: Props) {
             >
               <div>
                 <p className="font-heading text-sm font-bold text-kelly-text">
-                  {b.sourceLabel} <span className="font-mono font-normal text-kelly-text/50">· {b.id}</span>
+                  {b.sourceLabel} <span className="font-mono font-normal text-kelly-subtle">· {b.id}</span>
                 </p>
-                <p className="mt-0.5 text-xs text-kelly-text/60">
+                <p className="mt-0.5 text-xs text-kelly-muted">
                   {b.sourceType} · {b._count.assets} assets · {b.startedAt.toLocaleString()}
                 </p>
-                {b.ingestPath ? <p className="mt-0.5 break-all font-mono text-[10px] text-kelly-text/45">{b.ingestPath}</p> : null}
+                {b.ingestPath ? <p className="mt-0.5 break-all font-mono text-[10px] text-kelly-subtle">{b.ingestPath}</p> : null}
               </div>
               <div className="flex shrink-0 items-center gap-2">
                 <span
@@ -61,7 +61,7 @@ export default async function MediaIngestBatchesPage({ searchParams }: Props) {
                   {b.status}
                 </span>
                 {b.finishedAt ? (
-                  <span className="text-xs text-kelly-text/50">done {b.finishedAt.toLocaleString()}</span>
+                  <span className="text-xs text-kelly-subtle">done {b.finishedAt.toLocaleString()}</span>
                 ) : null}
               </div>
             </Link>
@@ -70,7 +70,7 @@ export default async function MediaIngestBatchesPage({ searchParams }: Props) {
       </ul>
 
       {batches.length === 0 ? (
-        <p className="rounded-md border border-kelly-text/10 bg-white/60 px-4 py-6 text-sm text-kelly-text/70">
+        <p className="rounded-md border border-kelly-text/10 bg-white/60 px-4 py-6 text-sm text-kelly-muted">
           No batches yet. Run <code className="rounded bg-kelly-text/5 px-1">npm run ingest:device</code> or{" "}
           <code className="rounded bg-kelly-text/5 px-1">npm run ingest:folder</code> to create one.
         </p>

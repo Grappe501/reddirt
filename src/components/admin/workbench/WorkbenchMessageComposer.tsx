@@ -144,7 +144,7 @@ export function WorkbenchMessageComposer(p: Props) {
             type="button"
             onClick={() => setMode("SMS")}
             className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${
-              mode === "SMS" ? "bg-kelly-text text-kelly-page" : "bg-white/60 text-kelly-text/70"
+              mode === "SMS" ? "bg-kelly-text text-kelly-page" : "bg-white/60 text-kelly-muted"
             }`}
           >
             SMS
@@ -155,7 +155,7 @@ export function WorkbenchMessageComposer(p: Props) {
             type="button"
             onClick={() => setMode("EMAIL")}
             className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${
-              mode === "EMAIL" ? "bg-kelly-text text-kelly-page" : "bg-white/60 text-kelly-text/70"
+              mode === "EMAIL" ? "bg-kelly-text text-kelly-page" : "bg-white/60 text-kelly-muted"
             }`}
           >
             SendGrid
@@ -166,14 +166,14 @@ export function WorkbenchMessageComposer(p: Props) {
             type="button"
             onClick={() => setMode("GMAIL")}
             className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${
-              mode === "GMAIL" ? "bg-kelly-muted text-kelly-page" : "bg-white/60 text-kelly-text/70"
+              mode === "GMAIL" ? "bg-kelly-muted text-kelly-page" : "bg-white/60 text-kelly-muted"
             }`}
             title="Human email via your connected Gmail/Workspace (not for broadcasts)"
           >
             Gmail
           </button>
         ) : null}
-        <span className="ml-auto text-[10px] text-kelly-text/50">
+        <span className="ml-auto text-[10px] text-kelly-subtle">
           {mode === "SMS" && !p.canSms ? "Add phone to thread" : null}
           {(mode === "EMAIL" || mode === "GMAIL") && !p.canEmail ? "Add email to thread" : null}
           {mode === "SMS" && p.smsBlocked ? ` · ${p.smsBlocked}` : null}
@@ -201,7 +201,7 @@ export function WorkbenchMessageComposer(p: Props) {
         aria-label="Message body"
       />
       {mode === "SMS" ? (
-        <p className="mt-0.5 text-[10px] text-kelly-text/45">
+        <p className="mt-0.5 text-[10px] text-kelly-subtle">
           {body.length} / 2000 · long SMS may split into multiple segments
         </p>
       ) : null}

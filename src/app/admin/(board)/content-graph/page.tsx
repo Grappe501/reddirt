@@ -23,7 +23,7 @@ export default async function AdminContentGraphPage() {
 
       <div className="mt-10 grid gap-6 sm:grid-cols-2">
         <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]">
-          <h2 className="font-heading text-sm font-bold uppercase tracking-wider text-kelly-text/55">By platform</h2>
+          <h2 className="font-heading text-sm font-bold uppercase tracking-wider text-kelly-muted">By platform</h2>
           <ul className="mt-4 space-y-2 font-body text-sm">
             {Object.values(ContentPlatform).map((p) => {
               const row = byPlatform.find((b) => b.sourcePlatform === p);
@@ -37,7 +37,7 @@ export default async function AdminContentGraphPage() {
           </ul>
         </div>
         <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]">
-          <h2 className="font-heading text-sm font-bold uppercase tracking-wider text-kelly-text/55">By review status</h2>
+          <h2 className="font-heading text-sm font-bold uppercase tracking-wider text-kelly-muted">By review status</h2>
           <ul className="mt-4 space-y-2 font-body text-sm">
             {Object.values(InboundReviewStatus).map((s) => {
               const row = byStatus.find((b) => b.reviewStatus === s);
@@ -53,7 +53,7 @@ export default async function AdminContentGraphPage() {
       </div>
 
       <div className="mt-8 rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]">
-        <h2 className="font-heading text-sm font-bold uppercase tracking-wider text-kelly-text/55">Routing buckets</h2>
+        <h2 className="font-heading text-sm font-bold uppercase tracking-wider text-kelly-muted">Routing buckets</h2>
         <ul className="mt-4 space-y-2 font-body text-sm text-kelly-text/85">
           <li className="flex justify-between">
             <span>Audit decisions logged</span>
@@ -74,7 +74,7 @@ export default async function AdminContentGraphPage() {
         </ul>
       </div>
 
-      <p className="mt-8 font-body text-sm text-kelly-text/60">
+      <p className="mt-8 font-body text-sm text-kelly-muted">
         See <code className="rounded bg-kelly-text/10 px-1.5 py-0.5 text-xs">docs/content-graph.md</code> in the repo
         for the full model narrative.
       </p>

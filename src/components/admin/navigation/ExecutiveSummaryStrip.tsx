@@ -3,14 +3,11 @@ import type { ExecutiveSummary } from "@/lib/dashboard-orchestration/executive-s
 
 export function ExecutiveSummaryStrip({ summary }: { summary: ExecutiveSummary }) {
   return (
-    <section
-      className="rounded-2xl border border-kelly-navy/15 bg-gradient-to-br from-kelly-navy/[0.04] to-kelly-page p-5 font-body shadow-[var(--shadow-soft)]"
-      aria-label="Executive summary"
-    >
-      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-kelly-slate">Executive summary</p>
+    <section className="os-card border-kelly-navy/15 bg-gradient-to-br from-kelly-navy/[0.05] to-[var(--color-surface-elevated)] p-5" aria-label="Executive summary">
+      <p className="os-eyebrow">Executive summary</p>
       <h2 className="mt-1 font-heading text-lg font-bold text-kelly-navy">{summary.headline}</h2>
-      <p className="mt-2 text-xs leading-relaxed text-kelly-text/70">{summary.aiExplanation}</p>
-      <p className="mt-1 text-[10px] italic text-kelly-text/50">{summary.calmNote}</p>
+      <p className="mt-2 os-body-muted text-xs">{summary.aiExplanation}</p>
+      <p className="mt-1 text-xs italic text-kelly-subtle">{summary.calmNote}</p>
 
       <div className="mt-4 grid gap-3 sm:grid-cols-3">
         <SummaryColumn title="What matters" items={summary.whatMatters} tone="neutral" />
@@ -21,14 +18,11 @@ export function ExecutiveSummaryStrip({ summary }: { summary: ExecutiveSummary }
       {summary.topNextMove ? (
         <div className="mt-4 flex flex-wrap items-center gap-3 rounded-xl border border-kelly-navy/20 bg-kelly-page px-4 py-3">
           <div className="min-w-0 flex-1">
-            <p className="text-[10px] font-bold uppercase text-kelly-slate">Top next move</p>
+            <p className="os-stat-label">Top next move</p>
             <p className="text-sm font-bold text-kelly-navy">{summary.topNextMove.label}</p>
-            <p className="text-xs text-kelly-text/60">{summary.topNextMove.why}</p>
+            <p className="os-stat-hint">{summary.topNextMove.why}</p>
           </div>
-          <Link
-            href={summary.topNextMove.href}
-            className="shrink-0 rounded-full bg-kelly-navy px-4 py-2 text-xs font-bold text-white"
-          >
+          <Link href={summary.topNextMove.href} className="shrink-0 rounded-full bg-kelly-navy px-4 py-2 text-xs font-bold text-kelly-inverse">
             Go →
           </Link>
         </div>
@@ -49,12 +43,12 @@ function SummaryColumn({
   emptyLabel?: string;
 }) {
   const border =
-    tone === "warn" ? "border-amber-200/60" : tone === "ok" ? "border-emerald-200/50" : "border-kelly-text/10";
+    tone === "warn" ? "border-amber-300/70" : tone === "ok" ? "border-emerald-300/60" : "border-kelly-border";
   return (
-    <div className={`rounded-xl border ${border} bg-kelly-page/80 p-3`}>
-      <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-slate">{title}</p>
-      <ul className="mt-2 space-y-1 text-xs text-kelly-text/75">
-        {items.length === 0 ? <li className="text-kelly-text/45">{emptyLabel}</li> : null}
+    <div className={`rounded-xl border ${border} bg-kelly-page p-3`}>
+      <p className="os-stat-label">{title}</p>
+      <ul className="mt-2 space-y-1 text-xs text-kelly-muted">
+        {items.length === 0 ? <li className="text-kelly-subtle">{emptyLabel}</li> : null}
         {items.map((item) => (
           <li key={item}>• {item}</li>
         ))}

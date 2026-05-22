@@ -27,7 +27,7 @@ export function TravelReimbursementWorkflowNav({
             key={s.key}
             href={href}
             className={`rounded-full px-3 py-1.5 font-body text-xs font-bold ${
-              isActive ? "bg-kelly-navy text-white" : "border border-kelly-text/15 bg-kelly-page text-kelly-text/70"
+              isActive ? "bg-kelly-navy text-white" : "border border-kelly-text/15 bg-kelly-page text-kelly-muted"
             }`}
           >
             {s.label}

@@ -126,7 +126,7 @@ export default async function GmailCalendarOperatorProofPage() {
           <li>Write a short redacted note for the runbook (no secrets, no tokens).</li>
         </ol>
         <p className="mt-3 font-body text-[11px] text-kelly-text/75">{p.nextRecommendedStep}</p>
-        <p className="mt-2 font-body text-[10px] text-kelly-text/65">
+        <p className="mt-2 font-body text-[10px] text-kelly-muted">
           Staff guide: <span className="font-medium">docs/gmail-calendar-operator-proof.md</span>
         </p>
       </section>

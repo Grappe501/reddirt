@@ -41,7 +41,7 @@ export default async function ReceiptDetailPage({ params }: Params) {
         <h2 className="font-heading text-xl font-bold text-kelly-text">Audit trail</h2>
         <div className="mt-3 grid gap-2">
           {entries.map((entry) => <p key={entry.id} className="font-body text-sm text-kelly-text/75">{entry.createdAt} · {entry.actorInitials} · {entry.action} · {entry.note ?? ""}</p>)}
-          {!entries.length ? <p className="font-body text-sm text-kelly-text/70">No audit entries found.</p> : null}
+          {!entries.length ? <p className="font-body text-sm text-kelly-muted">No audit entries found.</p> : null}
         </div>
       </section>
     </div>

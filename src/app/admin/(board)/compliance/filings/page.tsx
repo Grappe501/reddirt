@@ -22,7 +22,7 @@ export default async function ComplianceFilingsPage() {
             Status: {filing.status}. Records: {filing.includedRecordIds.length}. Package hash: {filing.packageHash.slice(0, 16)}...
           </ComplianceCard>
         ))}
-        {!filings.length ? <p className="font-body text-sm text-kelly-text/70">No filing packages yet.</p> : null}
+        {!filings.length ? <p className="font-body text-sm text-kelly-muted">No filing packages yet.</p> : null}
       </section>
     </div>
   );

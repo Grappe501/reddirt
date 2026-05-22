@@ -29,8 +29,8 @@ export default function AdminCandidateBriefsPage() {
               className="block rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-sm transition hover:border-kelly-navy/20"
             >
               <h2 className="font-heading text-lg font-bold text-kelly-text">{b.title}</h2>
-              <p className="mt-1 font-body text-sm text-kelly-text/70">{b.subtitle}</p>
-              <p className="mt-2 font-mono text-[10px] text-kelly-text/45">{b.sourceFile}</p>
+              <p className="mt-1 font-body text-sm text-kelly-muted">{b.subtitle}</p>
+              <p className="mt-2 font-mono text-[10px] text-kelly-subtle">{b.sourceFile}</p>
             </Link>
           </li>
         ))}

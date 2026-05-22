@@ -36,7 +36,7 @@ export function TravelCorrectionAssist({
       >
         Recalculate mileage queue
       </Link>
-      <p className="w-full font-body text-[11px] text-kelly-text/55 print:hidden">
+      <p className="w-full font-body text-[11px] text-kelly-muted print:hidden">
         Saves update the internal campaign ledger only. Google Calendar write-back is not enabled yet.
       </p>
     </div>

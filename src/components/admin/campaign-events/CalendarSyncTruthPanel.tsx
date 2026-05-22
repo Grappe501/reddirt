@@ -13,9 +13,9 @@ function toneClass(tone: WorkbenchEventRow["calendarTruthTone"]): string {
     case "red":
       return "border-red-800/25 bg-red-50 text-red-900";
     case "slate":
-      return "border-kelly-text/15 bg-kelly-wash text-kelly-text/70";
+      return "border-kelly-text/15 bg-kelly-wash text-kelly-muted";
     default:
-      return "border-kelly-text/10 bg-kelly-page text-kelly-text/65";
+      return "border-kelly-text/10 bg-kelly-page text-kelly-muted";
   }
 }
 
@@ -28,40 +28,40 @@ export function CalendarSyncTruthPanel({ row }: { row: WorkbenchEventRow }) {
           {row.calendarTruthLabel}
         </span>
         {row.calendarWriteDisabled ? (
-          <span className="rounded-full border border-kelly-text/15 px-2 py-0.5 text-[10px] font-bold uppercase text-kelly-text/50">
+          <span className="rounded-full border border-kelly-text/15 px-2 py-0.5 text-[10px] font-bold uppercase text-kelly-subtle">
             Write disabled
           </span>
         ) : null}
       </div>
       <dl className="mt-3 grid gap-2 text-xs sm:grid-cols-2">
         <div>
-          <dt className="text-kelly-text/50">Matched by</dt>
+          <dt className="text-kelly-subtle">Matched by</dt>
           <dd className="font-mono">{sync.matchedBy}</dd>
         </div>
         <div>
-          <dt className="text-kelly-text/50">Prisma googleSyncStatus</dt>
+          <dt className="text-kelly-subtle">Prisma googleSyncStatus</dt>
           <dd>{sync.prismaGoogleSyncStatus ?? "—"}</dd>
         </div>
         <div>
-          <dt className="text-kelly-text/50">Google event id</dt>
+          <dt className="text-kelly-subtle">Google event id</dt>
           <dd className="break-all font-mono">{sync.googleEventId ?? "—"}</dd>
         </div>
         <div>
-          <dt className="text-kelly-text/50">Last Google seen</dt>
+          <dt className="text-kelly-subtle">Last Google seen</dt>
           <dd>{sync.lastGoogleSeenAt ? new Date(sync.lastGoogleSeenAt).toLocaleString() : "—"}</dd>
         </div>
         <div>
-          <dt className="text-kelly-text/50">Normalized JSON file</dt>
+          <dt className="text-kelly-subtle">Normalized JSON file</dt>
           <dd>{sync.normalizedJsonSourceAt ? new Date(sync.normalizedJsonSourceAt).toLocaleString() : "—"}</dd>
         </div>
         <div>
-          <dt className="text-kelly-text/50">Ledger updated</dt>
+          <dt className="text-kelly-subtle">Ledger updated</dt>
           <dd>{new Date(sync.lastLedgerUpdatedAt).toLocaleString()}</dd>
         </div>
       </dl>
       {sync.syncWarning ? <p className="mt-2 text-xs text-amber-900">{sync.syncWarning}</p> : null}
       {sync.syncError ? <p className="mt-2 text-xs text-red-900">{sync.syncError}</p> : null}
-      <p className="mt-3 text-[10px] text-kelly-text/50">
+      <p className="mt-3 text-[10px] text-kelly-subtle">
         Truth is computed at load time (read-only).{" "}
         <Link href="/admin/campaign-events/calendar-sync" className="font-semibold text-kelly-navy underline">
           Calendar sync dashboard →

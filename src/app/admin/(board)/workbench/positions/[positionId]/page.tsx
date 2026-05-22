@@ -42,21 +42,21 @@ export default async function PositionWorkbenchDetailPage({ params }: Props) {
           Seats
         </Link>
         <h1 className="mt-2 font-heading text-2xl font-bold text-kelly-text">{summary.displayName}</h1>
-        <p className="mt-1 text-[11px] text-kelly-text/55">Position id: {summary.positionId}</p>
+        <p className="mt-1 text-[11px] text-kelly-muted">Position id: {summary.positionId}</p>
         {summary.parent ? (
-          <p className="mt-1 text-sm text-kelly-text/70">
+          <p className="mt-1 text-sm text-kelly-muted">
             Reports to: <span className="font-medium text-kelly-text">{summary.parent.displayName}</span> (
             {summary.parent.id})
           </p>
         ) : (
-          <p className="mt-1 text-sm text-kelly-text/70">Root role (no parent in tree).</p>
+          <p className="mt-1 text-sm text-kelly-muted">Root role (no parent in tree).</p>
         )}
         <p className="mt-2 text-sm text-kelly-text/75">
           <span className="font-semibold">Inbox support:</span> {summary.supportLevel}
           {cfg ? ` — ${cfg.heuristicNote}` : " — no v1 heuristics; linked tools below."}
         </p>
         <section className="mt-3 rounded border border-kelly-text/15 bg-kelly-muted/10 p-3 text-sm text-kelly-text/80">
-          <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-text/50">Seat (SEAT-1) · occupancy</p>
+          <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Seat (SEAT-1) · occupancy</p>
           <p className="mt-1">
             {seat.displayUser ? (
               <>
@@ -81,7 +81,7 @@ export default async function PositionWorkbenchDetailPage({ params }: Props) {
               </>
             )}
           </p>
-          <p className="mt-1 text-xs text-kelly-text/55">
+          <p className="mt-1 text-xs text-kelly-muted">
             Staffing only; assign in{" "}
             <Link href="/admin/workbench/seats" className="font-semibold text-kelly-slate hover:underline">
               Position seats
@@ -91,8 +91,8 @@ export default async function PositionWorkbenchDetailPage({ params }: Props) {
         </section>
 
         <section className="mt-2 rounded border border-slate-300/30 bg-kelly-page/80 p-3 text-sm text-kelly-text/85">
-          <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-text/50">ASSIGN-2 — seat vs assignment (read-only)</p>
-          <p className="mt-1 text-xs text-kelly-text/60">
+          <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">ASSIGN-2 — seat vs assignment (read-only)</p>
+          <p className="mt-1 text-xs text-kelly-muted">
             Compares the position&apos;s v1 heuristic slice to the seat occupant. Mismatch = assigned user on a row
             other than the current occupant — signal only, no auto-rebind.
           </p>
@@ -131,7 +131,7 @@ export default async function PositionWorkbenchDetailPage({ params }: Props) {
                 {row.escalationLabel ? (
                   <span className="ml-1 text-xs text-amber-900">· {row.escalationLabel}</span>
                 ) : null}
-                <span className="ml-1 text-xs text-kelly-text/45">· {row.statusLabel}</span>
+                <span className="ml-1 text-xs text-kelly-subtle">· {row.statusLabel}</span>
               </li>
             ))}
           </ul>
@@ -139,9 +139,9 @@ export default async function PositionWorkbenchDetailPage({ params }: Props) {
       ) : null}
 
       <section className="rounded-card border border-kelly-text/10 bg-kelly-page p-4">
-        <h2 className="font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Open work (v1 UWR-1)</h2>
+        <h2 className="font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-muted">Open work (v1 UWR-1)</h2>
         {inbox.length === 0 ? (
-          <p className="mt-2 text-sm text-kelly-text/60">
+          <p className="mt-2 text-sm text-kelly-muted">
             No rows in this position&apos;s v1 heuristics, or no open items right now. Other tools may still have work.
           </p>
         ) : (
@@ -151,11 +151,11 @@ export default async function PositionWorkbenchDetailPage({ params }: Props) {
                 key={`${row.source}-${row.id}`}
                 className="border-b border-kelly-text/5 pb-1.5 last:border-0"
               >
-                <span className="text-[10px] font-semibold uppercase text-kelly-text/45">{row.source}</span>{" "}
+                <span className="text-[10px] font-semibold uppercase text-kelly-subtle">{row.source}</span>{" "}
                 <Link href={row.href} className="font-medium text-kelly-slate hover:underline">
                   {row.summaryLine}
                 </Link>
-                <span className="text-xs text-kelly-text/45"> · {row.statusLabel}</span>
+                <span className="text-xs text-kelly-subtle"> · {row.statusLabel}</span>
                 <a
                   href={row.workbenchRouteHint}
                   className="ml-2 text-[10px] font-semibold text-kelly-slate hover:underline"
@@ -169,9 +169,9 @@ export default async function PositionWorkbenchDetailPage({ params }: Props) {
       </section>
 
       <section className="rounded-card border border-kelly-text/10 bg-kelly-page p-4">
-        <h2 className="font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Linked tools</h2>
+        <h2 className="font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-muted">Linked tools</h2>
         {summary.includedDestinations.length === 0 ? (
-          <p className="mt-1 text-sm text-kelly-text/60">No route hints in `POSITION_TREE` for this seat yet.</p>
+          <p className="mt-1 text-sm text-kelly-muted">No route hints in `POSITION_TREE` for this seat yet.</p>
         ) : (
           <ul className="mt-2 flex flex-wrap gap-2 text-sm">
             {summary.includedDestinations.map((href) => (
@@ -188,8 +188,8 @@ export default async function PositionWorkbenchDetailPage({ params }: Props) {
         )}
       </section>
 
-      <section className="rounded border border-dashed border-kelly-text/20 p-3 text-[11px] text-kelly-text/55">
-        <p className="font-semibold text-kelly-text/70">Guidance, training, AI</p>
+      <section className="rounded border border-dashed border-kelly-text/20 p-3 text-[11px] text-kelly-muted">
+        <p className="font-semibold text-kelly-muted">Guidance, training, AI</p>
         <p className="mt-1">
           Placeholder for future TALENT / ALIGN-1 / BRAIN-1 content. WB-CORE-1 does not load models or show hidden scores.
         </p>

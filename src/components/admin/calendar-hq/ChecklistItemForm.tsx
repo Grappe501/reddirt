@@ -23,7 +23,7 @@ export function ChecklistItemForm({
         aria-pressed={item.done}
         title="Mark done / undo"
       />
-      <span className={item.done ? "text-kelly-text/50 line-through" : "text-kelly-text/90"}>{item.label}</span>
+      <span className={item.done ? "text-kelly-subtle line-through" : "text-kelly-text/90"}>{item.label}</span>
     </form>
   );
 }

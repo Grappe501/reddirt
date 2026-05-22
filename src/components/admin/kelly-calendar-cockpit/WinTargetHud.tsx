@@ -87,7 +87,7 @@ export function WinTargetCountyCards({
   const top = [...scenario.counties].sort((a, b) => b.targetVoteGain - a.targetVoteGain).slice(0, 8);
   return (
     <div className="rounded-lg border border-kelly-text/12 bg-white/95 px-3 py-3 shadow-sm">
-      <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/45">County targets (top gain)</p>
+      <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-subtle">County targets (top gain)</p>
       <ul className="mt-2 divide-y divide-kelly-text/10">
         {top.map((c) => {
           const p = pri.get(c.county);
@@ -96,11 +96,11 @@ export function WinTargetCountyCards({
             <li key={c.county} className="flex flex-wrap items-start justify-between gap-2 py-2 font-body text-[11px] text-kelly-text/85">
               <div>
                 <p className="font-bold text-kelly-text">{c.county}</p>
-                <p className="text-kelly-text/60">
+                <p className="text-kelly-muted">
                   Gain {c.targetVoteGain.toLocaleString()} · cap {c.countyCapacityScore.toFixed(2)} · {c.confidence}{" "}
                   {c.missingData.length ? `· flags ${c.missingData.length}` : ""}
                 </p>
-                <p className="mt-0.5 text-[10px] text-kelly-text/55">
+                <p className="mt-0.5 text-[10px] text-kelly-muted">
                   Touches Nov 1→ {p?.pastTouchesSinceNov1 ?? "—"} · Next {p?.nextScheduledAnchor ? p.nextScheduledAnchor.slice(0, 42) : "—"}
                 </p>
                 {v ? (
@@ -110,7 +110,7 @@ export function WinTargetCountyCards({
                   </p>
                 ) : null}
               </div>
-              <span className="rounded-full border border-kelly-text/15 bg-kelly-wash px-2 py-0.5 text-[9px] font-bold uppercase text-kelly-text/70">
+              <span className="rounded-full border border-kelly-text/15 bg-kelly-wash px-2 py-0.5 text-[9px] font-bold uppercase text-kelly-muted">
                 {c.dashboardLabel.replace(/_/g, " ")}
               </span>
             </li>

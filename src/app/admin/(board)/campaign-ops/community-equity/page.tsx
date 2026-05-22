@@ -45,7 +45,7 @@ export default function CommunityEquityOpsPage() {
             plan
           </li>
         </ul>
-        <p className="mt-3 text-xs text-kelly-text/55">
+        <p className="mt-3 text-xs text-kelly-muted">
           Numbers are organizing targets, not census claims. Segment and model with counsel and the data lead.
         </p>
       </section>
@@ -118,7 +118,7 @@ export default function CommunityEquityOpsPage() {
         </p>
       </section>
 
-      <section className="mt-6 text-sm text-kelly-text/70">
+      <section className="mt-6 text-sm text-kelly-muted">
         <h2 className="font-heading text-base font-bold text-kelly-text">Related</h2>
         <ul className="mt-2 list-inside list-disc">
           <li>

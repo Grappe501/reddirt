@@ -116,10 +116,10 @@ export function EmailWorkflowOperatorControls({ itemId, status, isAssigned }: Pr
       </div>
 
       <div>
-        <p className="mb-1 text-[10px] font-bold uppercase text-kelly-text/50">Quick queue actions</p>
+        <p className="mb-1 text-[10px] font-bold uppercase text-kelly-subtle">Quick queue actions</p>
         <div className="flex flex-wrap gap-1.5">
           {quickTargets.length === 0 ? (
-            <p className="text-xs text-kelly-text/55">No quick transitions available from this status.</p>
+            <p className="text-xs text-kelly-muted">No quick transitions available from this status.</p>
           ) : (
             quickTargets.map((s) => (
               <StatusButton key={s} status={s} pending={pending} onClick={(next) => start(() => runTransition(next))} />
@@ -130,7 +130,7 @@ export function EmailWorkflowOperatorControls({ itemId, status, isAssigned }: Pr
 
       {additionalTargets.length > 0 ? (
         <div>
-          <p className="mb-1 text-[10px] font-bold uppercase text-kelly-text/50">Additional manual transitions</p>
+          <p className="mb-1 text-[10px] font-bold uppercase text-kelly-subtle">Additional manual transitions</p>
           <div className="flex flex-wrap gap-1.5">
             {additionalTargets.map((s) => (
               <StatusButton key={s} status={s} pending={pending} onClick={(next) => start(() => runTransition(next))} />

@@ -49,7 +49,7 @@ export function DashboardBuilderClient() {
       <header className="rounded-3xl border border-kelly-navy/15 bg-kelly-navy/[0.04] p-6">
         <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-slate">Kelly Campaign OS</p>
         <h1 className="mt-1 font-heading text-2xl font-bold text-kelly-navy">On-demand dashboard builder</h1>
-        <p className="mt-2 text-sm text-kelly-text/70">
+        <p className="mt-2 text-sm text-kelly-muted">
           Produces a <strong>safe blueprint</strong> from the component registry — not arbitrary code. Human-supervised,
           Kelly SOS only.
         </p>
@@ -111,7 +111,7 @@ export function DashboardBuilderClient() {
       {blueprint ? (
         <section className="space-y-4 rounded-2xl border border-kelly-navy/20 bg-kelly-page p-5">
           <h2 className="font-heading text-lg font-bold text-kelly-navy">{blueprint.title}</h2>
-          <p className="text-xs text-kelly-text/65">{blueprint.request.naturalLanguageSummary}</p>
+          <p className="text-xs text-kelly-muted">{blueprint.request.naturalLanguageSummary}</p>
           {blueprint.humanSupervisorRequired ? (
             <p className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-950">
               Human supervisor recommended for this role.
@@ -123,7 +123,7 @@ export function DashboardBuilderClient() {
             {blueprint.blocks.map((b) => (
               <article key={b.id} className={`rounded-xl border p-4 ${b.emphasis === "primary" ? "border-kelly-navy/25 bg-kelly-navy/[0.03]" : "border-kelly-text/10"}`}>
                 <p className="font-bold text-kelly-navy">{b.title}</p>
-                <p className="mt-1 text-xs text-kelly-text/70">{b.purpose}</p>
+                <p className="mt-1 text-xs text-kelly-muted">{b.purpose}</p>
                 <p className="mt-2 text-[10px] text-kelly-slate">{b.aiExplanation}</p>
                 <ul className="mt-2 flex flex-wrap gap-2">
                   {b.routeLinks.map((l) => (
@@ -141,7 +141,7 @@ export function DashboardBuilderClient() {
           {blueprint.missingCapabilities.length ? (
             <div>
               <h3 className="text-xs font-bold uppercase text-kelly-slate">Missing capabilities</h3>
-              <ul className="mt-1 text-xs text-kelly-text/65">
+              <ul className="mt-1 text-xs text-kelly-muted">
                 {blueprint.missingCapabilities.map((m) => (
                   <li key={m}>• {m}</li>
                 ))}
@@ -153,7 +153,7 @@ export function DashboardBuilderClient() {
             <button type="button" onClick={saveLocal} className="rounded-full border px-4 py-2 text-xs font-bold">
               Save blueprint locally
             </button>
-            {savedKey ? <span className="text-[10px] text-kelly-text/45">Key: {savedKey}</span> : null}
+            {savedKey ? <span className="text-[10px] text-kelly-subtle">Key: {savedKey}</span> : null}
           </div>
         </section>
       ) : null}

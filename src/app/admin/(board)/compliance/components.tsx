@@ -17,12 +17,12 @@ export function CompliancePageHeader({
   actions?: ReactNode;
 }) {
   return (
-    <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-      <p className="font-body text-xs font-bold uppercase tracking-[0.22em] text-slate-500">{eyebrow}</p>
+    <section className="os-hero">
+      <p className="os-eyebrow">{eyebrow}</p>
       <div className="mt-3 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <h1 className="font-heading text-3xl font-bold text-[#0f2744]">{title}</h1>
-          <p className="mt-3 max-w-3xl font-body text-sm leading-relaxed text-slate-700">{description}</p>
+          <h1 className="font-heading text-3xl font-bold text-kelly-navy">{title}</h1>
+          <p className="mt-3 max-w-3xl os-body-muted">{description}</p>
         </div>
         {actions ? <div className="flex flex-wrap gap-2">{actions}</div> : null}
       </div>
@@ -44,18 +44,15 @@ export function ComplianceNav() {
     ["Can we file?", `${basePath}/filing-readiness`],
     ["Filings", `${basePath}/filings`],
     ["Rules", `${basePath}/rules`],
+    ["April26", `${basePath}/april26`],
     ["Reports", `${basePath}/reports`],
     ["Mobile", `${basePath}/mobile`],
     ["Settings", `${basePath}/settings`],
   ] as const;
   return (
-    <nav className="flex flex-wrap gap-2 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm" aria-label="Compliance">
+    <nav className="os-card flex flex-wrap gap-2 p-3" aria-label="Compliance">
       {links.map(([label, href]) => (
-        <Link
-          key={href}
-          href={href}
-          className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 font-body text-xs font-semibold text-slate-700 transition hover:border-[#0f2744]/40 hover:bg-white hover:text-[#0f2744]"
-        >
+        <Link key={href} href={href} className="os-chip hover:border-kelly-navy/30">
           {label}
         </Link>
       ))}
@@ -78,15 +75,17 @@ export function ComplianceCard({
 }) {
   const content = (
     <article
-      className={`h-full rounded-2xl border p-5 shadow-sm ${
-        highlight ? "border-[#0f2744]/30 bg-[#0f2744] text-white" : "border-slate-200 bg-white"
+      className={`h-full rounded-2xl border p-5 shadow-[var(--shadow-soft)] ${
+        highlight ? "border-kelly-navy/30 bg-kelly-navy text-kelly-inverse" : "border-kelly-border bg-[var(--color-surface-elevated)]"
       }`}
     >
       {eyebrow ? (
-        <p className={`font-body text-[11px] font-bold uppercase tracking-[0.2em] ${highlight ? "text-slate-200" : "text-slate-500"}`}>{eyebrow}</p>
+        <p className={`font-body text-[11px] font-bold uppercase tracking-[0.2em] ${highlight ? "text-kelly-inverse-soft" : "text-kelly-subtle"}`}>
+          {eyebrow}
+        </p>
       ) : null}
-      <h2 className={`mt-1 font-heading text-xl font-bold ${highlight ? "text-white" : "text-[#0f2744]"}`}>{title}</h2>
-      <div className={`mt-3 font-body text-sm leading-relaxed ${highlight ? "text-slate-100" : "text-slate-700"}`}>{children}</div>
+      <h2 className={`mt-1 font-heading text-xl font-bold ${highlight ? "text-kelly-inverse" : "text-kelly-navy"}`}>{title}</h2>
+      <div className={`mt-3 font-body text-sm leading-relaxed ${highlight ? "text-kelly-inverse-soft" : "text-kelly-muted"}`}>{children}</div>
     </article>
   );
 
@@ -101,17 +100,17 @@ export function ComplianceCard({
 export function ComplianceMetricCard({ label, value, tone = "neutral" }: { label: string; value: string | number; tone?: ComplianceStatusTone }) {
   const toneClass =
     tone === "green"
-      ? "border-emerald-200 bg-emerald-50 text-emerald-950"
+      ? "border-emerald-300 bg-emerald-50 text-emerald-950"
       : tone === "yellow"
-        ? "border-amber-200 bg-amber-50 text-amber-950"
+        ? "border-amber-300 bg-amber-50 text-amber-950"
         : tone === "red"
-          ? "border-red-200 bg-red-50 text-red-950"
+          ? "border-red-300 bg-red-50 text-red-950"
           : tone === "navy"
-            ? "border-[#0f2744]/20 bg-white text-[#0f2744]"
-            : "border-slate-200 bg-white text-slate-900";
+            ? "border-kelly-navy/20 bg-[var(--color-surface-elevated)] text-kelly-navy"
+            : "border-kelly-border bg-[var(--color-surface-elevated)] text-kelly-text";
   return (
     <div className={`rounded-xl border p-4 ${toneClass}`}>
-      <p className="text-xs font-bold uppercase tracking-wide opacity-80">{label}</p>
+      <p className="text-xs font-bold uppercase tracking-wide text-kelly-subtle">{label}</p>
       <p className="mt-1 font-heading text-2xl font-bold">{value}</p>
     </div>
   );
@@ -126,18 +125,18 @@ export function ComplianceStatusBadge({ label, tone }: { label: string; tone: Co
         : tone === "red"
           ? "bg-red-100 text-red-900"
           : tone === "navy"
-            ? "bg-[#0f2744] text-white"
-            : "bg-slate-100 text-slate-800";
+            ? "bg-kelly-navy text-kelly-inverse"
+            : "bg-kelly-mist text-kelly-navy";
   return <span className={`inline-flex rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wide ${className}`}>{label}</span>;
 }
 
 export function ComplianceEmptyState({ title, description, href, actionLabel }: { title: string; description: string; href?: string; actionLabel?: string }) {
   return (
-    <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center">
-      <h3 className="font-heading text-lg font-bold text-[#0f2744]">{title}</h3>
-      <p className="mx-auto mt-2 max-w-md text-sm text-slate-600">{description}</p>
+    <div className="rounded-2xl border border-dashed border-kelly-border bg-[var(--color-surface-elevated)] p-8 text-center">
+      <h3 className="font-heading text-lg font-bold text-kelly-navy">{title}</h3>
+      <p className="mx-auto mt-2 max-w-md os-body-muted">{description}</p>
       {href && actionLabel ? (
-        <Link href={href} className="mt-4 inline-flex rounded-full bg-[#0f2744] px-5 py-2.5 text-sm font-bold text-white">
+        <Link href={href} className="mt-4 inline-flex rounded-full bg-kelly-navy px-5 py-2.5 text-sm font-bold text-kelly-inverse">
           {actionLabel}
         </Link>
       ) : null}
@@ -170,10 +169,10 @@ export function ComplianceActionButton({
 }) {
   const className =
     variant === "primary"
-      ? "rounded-full bg-[#0f2744] px-5 py-2.5 text-sm font-bold text-white hover:bg-[#163a61]"
+      ? "rounded-full bg-kelly-navy px-5 py-2.5 text-sm font-bold text-kelly-inverse hover:bg-kelly-blue"
       : variant === "danger"
         ? "rounded-full border border-red-700 px-5 py-2.5 text-sm font-bold text-red-900"
-        : "rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-bold text-[#0f2744]";
+        : "rounded-full border border-kelly-border bg-[var(--color-surface-elevated)] px-5 py-2.5 text-sm font-bold text-kelly-navy";
   if (href) return <Link href={href} className={`inline-flex ${className}`}>{label}</Link>;
   return (
     <button type={type} onClick={onClick} className={className}>
@@ -185,14 +184,14 @@ export function ComplianceActionButton({
 export function StorageModeNotice() {
   return (
     <ComplianceWarningPanel title="Storage mode: JSON fallback (needs setup for production DB)">
-      Operational data lives under <code className="rounded bg-white/60 px-1">data/compliance</code>. Uploaded CSVs, receipts, and donor JSON are gitignored. Records here are <strong>staged, not filed</strong> until human approval and export gates pass.
+      Operational data lives under <code className="rounded bg-white/80 px-1 text-kelly-navy">data/compliance</code>. Uploaded CSVs, receipts, and donor JSON are gitignored. Records here are <strong>staged, not filed</strong> until human approval and export gates pass.
     </ComplianceWarningPanel>
   );
 }
 
 export function ComplianceStagedNotice() {
   return (
-    <p className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-2 text-xs font-semibold text-slate-700">
+    <p className="rounded-xl border border-kelly-border bg-kelly-mist px-4 py-2 text-xs font-semibold text-kelly-navy">
       Staged for review — not filed. Treasurer/compliance officer approval required. Not legal certification.
     </p>
   );

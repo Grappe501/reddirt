@@ -31,7 +31,7 @@ export function RoleOnboardingWizard() {
       <header className="rounded-3xl border border-kelly-navy/15 bg-kelly-page p-6">
         <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-slate">Kelly Campaign OS</p>
         <h1 className="mt-1 font-heading text-2xl font-bold text-kelly-navy">Welcome — role onboarding</h1>
-        <p className="mt-2 text-sm text-kelly-text/65">We will place you in the right lane, recommend a dashboard blueprint, and your first three tasks.</p>
+        <p className="mt-2 text-sm text-kelly-muted">We will place you in the right lane, recommend a dashboard blueprint, and your first three tasks.</p>
       </header>
 
       {step === 0 && (
@@ -87,7 +87,7 @@ export function RoleOnboardingWizard() {
       {step === 4 && (
         <section className="space-y-3 rounded-2xl border bg-kelly-page p-5">
           <p className="text-xs font-bold">5–6. Safe boundaries (automatic)</p>
-          <p className="text-xs text-kelly-text/65">You should NOT send emails, promote Google Calendar, or post financial transactions without a supervisor.</p>
+          <p className="text-xs text-kelly-muted">You should NOT send emails, promote Google Calendar, or post financial transactions without a supervisor.</p>
           <button type="button" className="rounded-full bg-kelly-navy px-4 py-2 text-xs font-bold text-white" onClick={finish}>
             See recommendations
           </button>

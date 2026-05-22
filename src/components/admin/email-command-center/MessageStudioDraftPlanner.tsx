@@ -317,7 +317,7 @@ export function MessageStudioDraftPlanner({
 
   if (!hydrated) {
     return (
-      <div className="rounded-lg border border-kelly-text/12 bg-white/95 p-3 font-body text-[11px] text-kelly-text/70">
+      <div className="rounded-lg border border-kelly-text/12 bg-white/95 p-3 font-body text-[11px] text-kelly-muted">
         Loading local draft library…
       </div>
     );
@@ -338,10 +338,10 @@ export function MessageStudioDraftPlanner({
           {lastSavedAt ? (
             <>
               <span className="font-bold">Saved locally</span>
-              <span className="text-kelly-text/70"> · {formatShort(lastSavedAt)}</span>
+              <span className="text-kelly-muted"> · {formatShort(lastSavedAt)}</span>
             </>
           ) : (
-            <span className="text-kelly-text/60">Autosave on edit</span>
+            <span className="text-kelly-muted">Autosave on edit</span>
           )}
         </div>
       </div>
@@ -382,7 +382,7 @@ export function MessageStudioDraftPlanner({
         urlContext.audienceDefinitionId ||
         urlContext.importBatchId) && (
         <div className="mt-2 flex flex-wrap gap-1.5" role="status">
-          <span className="font-heading text-[9px] font-bold uppercase text-kelly-text/55">URL context</span>
+          <span className="font-heading text-[9px] font-bold uppercase text-kelly-muted">URL context</span>
           {urlContext.source === "emailWorkflowItem" && queryId ? (
             <span className="rounded border border-kelly-forest/30 bg-emerald-50/80 px-2 py-0.5 text-[9px] font-semibold text-emerald-950">
               From queue item · id <span className="font-mono">{queryId}</span>
@@ -409,7 +409,7 @@ export function MessageStudioDraftPlanner({
       <div className="mt-3 space-y-3">
       <div className="grid gap-3 xl:grid-cols-[minmax(200px,240px)_minmax(0,1fr)_minmax(280px,340px)]">
         <aside className="rounded border border-kelly-text/10 bg-kelly-page/40 p-2">
-          <p className="font-heading text-[10px] font-bold uppercase text-kelly-text/55">Draft library</p>
+          <p className="font-heading text-[10px] font-bold uppercase text-kelly-muted">Draft library</p>
           <p className="mt-1 font-body text-[10px] text-kelly-navy">
             <span className="font-bold tabular-nums">{drafts.length}</span> local draft{drafts.length === 1 ? "" : "s"}
           </p>
@@ -426,7 +426,7 @@ export function MessageStudioDraftPlanner({
                   }`}
                 >
                   <span className="line-clamp-2">{d.title.trim() || "Untitled"}</span>
-                  <span className="mt-0.5 block text-[9px] text-kelly-text/55">
+                  <span className="mt-0.5 block text-[9px] text-kelly-muted">
                     {formatShort(d.updatedAt)} · {d.draftType || "—"} · {d.approvalStatus.replace(/_/g, " ")}
                   </span>
                 </button>
@@ -535,7 +535,7 @@ export function MessageStudioDraftPlanner({
                   <input
                     readOnly
                     value={activeDraft.tone}
-                    className="mt-0.5 w-full cursor-not-allowed rounded border border-kelly-text/10 bg-kelly-page/50 px-2 py-1 text-[11px] text-kelly-text/70"
+                    className="mt-0.5 w-full cursor-not-allowed rounded border border-kelly-text/10 bg-kelly-page/50 px-2 py-1 text-[11px] text-kelly-muted"
                     title="Change tone in the Campaign Voice panel"
                   />
                 </label>
@@ -616,7 +616,7 @@ export function MessageStudioDraftPlanner({
                   />
                 </label>
                 <fieldset className="sm:col-span-2 rounded border border-kelly-text/10 px-2 py-2">
-                  <legend className="px-1 text-[9px] font-bold uppercase text-kelly-text/55">Source context (editable)</legend>
+                  <legend className="px-1 text-[9px] font-bold uppercase text-kelly-muted">Source context (editable)</legend>
                   <div className="grid gap-2 sm:grid-cols-2">
                     <label className="text-[10px] text-kelly-text/80">
                       source
@@ -689,7 +689,7 @@ export function MessageStudioDraftPlanner({
                   />
                 </label>
                 {activeDraft.contentBlocksUsed.length > 0 ? (
-                  <p className="sm:col-span-2 text-[10px] text-kelly-text/70">
+                  <p className="sm:col-span-2 text-[10px] text-kelly-muted">
                     Blocks used in this draft:{" "}
                     <span className="font-semibold text-kelly-navy">{activeDraft.contentBlocksUsed.join(", ")}</span>
                   </p>
@@ -697,8 +697,8 @@ export function MessageStudioDraftPlanner({
               </div>
 
               <div className="rounded border border-kelly-text/10 bg-kelly-page/30 p-2">
-                <p className="font-heading text-[10px] font-bold uppercase text-kelly-text/55">Content blocks</p>
-                <p className="mt-1 text-[9px] text-kelly-text/65">Insert appends to body; Copy puts block text on clipboard.</p>
+                <p className="font-heading text-[10px] font-bold uppercase text-kelly-muted">Content blocks</p>
+                <p className="mt-1 text-[9px] text-kelly-muted">Insert appends to body; Copy puts block text on clipboard.</p>
                 <ul className="mt-2 grid gap-2 sm:grid-cols-2">
                   {MESSAGE_STUDIO_CONTENT_BLOCKS.map((b) => (
                     <li key={b.title} className="rounded border border-kelly-text/10 bg-white/90 px-2 py-1.5">
@@ -726,7 +726,7 @@ export function MessageStudioDraftPlanner({
               </div>
             </>
           ) : (
-            <p className="text-[11px] text-kelly-text/70">Select or create a draft.</p>
+            <p className="text-[11px] text-kelly-muted">Select or create a draft.</p>
           )}
         </div>
 

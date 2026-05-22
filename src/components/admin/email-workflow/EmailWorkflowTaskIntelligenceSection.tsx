@@ -31,15 +31,15 @@ function TaskCard({ task }: { task: EmailTaskIntelligenceTaskRow }) {
       </p>
       <p className="mt-0.5 text-[9px] leading-snug text-kelly-text/85">{task.contextSummary}</p>
       {task.dependencies.length ? (
-        <p className="mt-0.5 text-[9px] text-kelly-text/70">
+        <p className="mt-0.5 text-[9px] text-kelly-muted">
           <span className="font-semibold">Dependencies:</span> {task.dependencies.join(" · ")}
         </p>
       ) : null}
-      <p className="mt-0.5 text-[9px] text-kelly-text/70">
+      <p className="mt-0.5 text-[9px] text-kelly-muted">
         <span className="font-semibold">Calendar relevance:</span> {task.calendarRelevance || "none"}{" "}
-        <span className="text-kelly-text/55">(operator-only — no calendar API from RedDirt)</span>
+        <span className="text-kelly-muted">(operator-only — no calendar API from RedDirt)</span>
       </p>
-      <p className="mt-0.5 text-[9px] text-kelly-text/70">
+      <p className="mt-0.5 text-[9px] text-kelly-muted">
         <span className="font-semibold">Flags:</span> draft {task.emailDraftNeeded ? "yes" : "no"} · profile update{" "}
         {task.profileUpdateSuggested ? "suggested" : "no"} · audience hint {task.audienceHintSuggested ? "yes" : "no"}
       </p>
@@ -121,7 +121,7 @@ export function EmailWorkflowTaskIntelligenceSection({
         </button>
       </form>
       {stored?.generatedAt ? (
-        <p className="text-[9px] text-kelly-text/55">
+        <p className="text-[9px] text-kelly-muted">
           Last run: <span className="font-semibold">{stored.generatedAt}</span>
           {stored.promptVersion ? (
             <>
@@ -156,9 +156,9 @@ export function EmailWorkflowTaskIntelligenceSection({
           </ol>
         </div>
       ) : stored && !stored.lastErrorSafe ? (
-        <p className="text-[11px] text-kelly-text/60">No tasks parsed — re-run generation or check model output shape.</p>
+        <p className="text-[11px] text-kelly-muted">No tasks parsed — re-run generation or check model output shape.</p>
       ) : !stored ? (
-        <p className="text-[11px] text-kelly-text/55">No task intelligence stored yet — generate when OpenAI is configured.</p>
+        <p className="text-[11px] text-kelly-muted">No task intelligence stored yet — generate when OpenAI is configured.</p>
       ) : null}
 
       {exportPayload ? (

@@ -99,7 +99,7 @@ export default function AdminDashboardPage() {
               className="block h-full rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)] transition hover:-translate-y-0.5 hover:border-kelly-navy/25"
             >
               <h2 className="font-heading text-lg font-bold text-kelly-text">{c.title}</h2>
-              <p className="mt-2 font-body text-sm leading-relaxed text-kelly-text/70">{c.body}</p>
+              <p className="mt-2 font-body text-sm leading-relaxed text-kelly-muted">{c.body}</p>
             </Link>
           </li>
         ))}

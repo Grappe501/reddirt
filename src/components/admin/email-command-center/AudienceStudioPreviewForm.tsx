@@ -26,7 +26,7 @@ export function AudienceStudioPreviewForm() {
   return (
     <div id="audience-preview" className="space-y-2 rounded-lg border border-kelly-text/12 bg-white/90 p-3">
       <h2 className="font-heading text-sm font-bold text-kelly-navy">Draft audience preview</h2>
-      <p className="text-[10px] text-kelly-text/70">
+      <p className="text-[10px] text-kelly-muted">
         Filters AND together. Default universe uses <strong>ACTIVE</strong> approved profile facts only. No send; preview
         rows are masked. A preview audit row is written to <code className="text-[9px]">EmailAudiencePreviewRun</code>.
       </p>

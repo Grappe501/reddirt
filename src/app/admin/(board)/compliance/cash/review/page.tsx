@@ -57,7 +57,7 @@ export default async function CashReviewPage() {
                     <button name="action" value="rejected" className="rounded-full border border-red-900 px-3 py-2 font-bold text-red-900">Reject</button>
                   </form>
                 </article>
-              )) : <p className="font-body text-sm text-kelly-text/65">No items in this bucket.</p>}
+              )) : <p className="font-body text-sm text-kelly-muted">No items in this bucket.</p>}
             </div>
           </div>
         ))}

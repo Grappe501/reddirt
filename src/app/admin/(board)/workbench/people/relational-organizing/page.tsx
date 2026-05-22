@@ -65,10 +65,10 @@ export default function RelationalOrganizingPreviewPage() {
           ].map((title) => (
             <div
               key={title}
-              className="rounded-lg border border-dashed border-kelly-text/20 bg-kelly-page/25 p-3 text-center font-body text-xs text-kelly-text/70"
+              className="rounded-lg border border-dashed border-kelly-text/20 bg-kelly-page/25 p-3 text-center font-body text-xs text-kelly-muted"
             >
               {title}
-              <div className="mt-1 text-[10px] text-kelly-text/55">Not active yet</div>
+              <div className="mt-1 text-[10px] text-kelly-muted">Not active yet</div>
             </div>
           ))}
         </div>

@@ -7,7 +7,7 @@ export function CampaignIntelligenceV3Panel({ ctx }: { ctx: UnifiedCampaignConte
       <header>
         <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-slate">AI Command Center V3</p>
         <h2 className="mt-1 font-heading text-xl font-bold text-kelly-navy">Campaign operating intelligence</h2>
-        <p className="mt-2 text-sm text-kelly-text/70">{ctx.situationSummary}</p>
+        <p className="mt-2 text-sm text-kelly-muted">{ctx.situationSummary}</p>
         <p className="mt-3 text-xs text-kelly-slate">
           Tenant: <strong>{ctx.tenantDisplayName}</strong> · Period {ctx.period} · Readiness{" "}
           <span className="font-bold text-kelly-navy">{ctx.campaignReadinessIndex}</span>/100
@@ -54,7 +54,7 @@ export function CampaignIntelligenceV3Panel({ ctx }: { ctx: UnifiedCampaignConte
       <div className="rounded-2xl border border-kelly-text/10 bg-kelly-page p-4">
         <h3 className="text-xs font-bold uppercase text-kelly-slate">Executive briefing</h3>
         <p className="mt-2 whitespace-pre-wrap text-xs leading-relaxed text-kelly-text/80">{ctx.operator.dailyStrategicBriefing}</p>
-        <p className="mt-2 text-[10px] text-kelly-text/50">Depth: {ctx.operator.explanationDepth} · {ctx.operator.specializationHint}</p>
+        <p className="mt-2 text-[10px] text-kelly-subtle">Depth: {ctx.operator.explanationDepth} · {ctx.operator.specializationHint}</p>
       </div>
 
       <div>
@@ -72,7 +72,7 @@ export function CampaignIntelligenceV3Panel({ ctx }: { ctx: UnifiedCampaignConte
 
       <details className="rounded-xl border border-kelly-text/10 bg-kelly-wash p-3 text-xs">
         <summary className="cursor-pointer font-bold text-kelly-navy">Memory synthesis (human-reviewable)</summary>
-        <ul className="mt-2 space-y-1 text-kelly-text/70">
+        <ul className="mt-2 space-y-1 text-kelly-muted">
           <li>{ctx.memory.campaignInstinctLine}</li>
           <li>{ctx.memory.operatorMemoryLine}</li>
           <li>{ctx.memory.strategicMemoryLine}</li>
@@ -98,7 +98,7 @@ function MetricCard({
     <div className={`rounded-xl border p-3 ${warn ? "border-amber-300 bg-amber-50/80" : "border-kelly-text/10 bg-kelly-page"}`}>
       <p className="text-[10px] font-bold uppercase text-kelly-slate">{label}</p>
       <p className="mt-1 font-heading text-2xl font-bold text-kelly-navy">{value}</p>
-      <p className="text-[10px] text-kelly-text/50">{hint}</p>
+      <p className="text-[10px] text-kelly-subtle">{hint}</p>
     </div>
   );
 }

@@ -156,7 +156,7 @@ export function MessageStudioSharedDraftsPanel({
         >
           Save current local draft to shared drafts
         </button>
-        <p className="w-full font-body text-[9px] text-kelly-text/70">
+        <p className="w-full font-body text-[9px] text-kelly-muted">
           This creates a shared campaign draft. It still cannot send.
         </p>
       </div>
@@ -170,7 +170,7 @@ export function MessageStudioSharedDraftsPanel({
       {activeDraft?.linkedServerDraftId ? (
         <div className="mt-3 space-y-2 rounded border border-violet-300/50 bg-white/95 p-2">
           <p className="font-heading text-[10px] font-bold uppercase text-violet-950">Linked shared draft</p>
-          <p className="font-body text-[9px] text-kelly-text/70">
+          <p className="font-body text-[9px] text-kelly-muted">
             Server id <span className="font-mono">{activeDraft.linkedServerDraftId}</span> — update persists to the database
             for all operators (no send).
           </p>
@@ -225,7 +225,7 @@ export function MessageStudioSharedDraftsPanel({
             >
               Save revision
             </button>
-            <p className="mt-1 font-body text-[9px] text-kelly-text/65">Revision is for review history only.</p>
+            <p className="mt-1 font-body text-[9px] text-kelly-muted">Revision is for review history only.</p>
           </div>
         </div>
       ) : null}

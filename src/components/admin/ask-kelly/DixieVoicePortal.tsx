@@ -203,7 +203,7 @@ export function DixieVoicePortal() {
   if (!hydrated || speechSupported === null) {
     return (
       <div className="mt-8 rounded-xl border border-kelly-text/12 bg-kelly-fog/30 p-5">
-        <p className="font-body text-sm text-kelly-text/70">Loading voice options…</p>
+        <p className="font-body text-sm text-kelly-muted">Loading voice options…</p>
       </div>
     );
   }
@@ -264,7 +264,7 @@ export function DixieVoicePortal() {
           </button>
         )}
         <span
-          className={cn("font-body text-sm font-medium", capturing ? "text-kelly-navy" : "text-kelly-text/65")}
+          className={cn("font-body text-sm font-medium", capturing ? "text-kelly-navy" : "text-kelly-muted")}
           aria-live="polite"
         >
           {phase === "off"
@@ -278,7 +278,7 @@ export function DixieVoicePortal() {
       <div className="mt-6">
         <label
           htmlFor="dixie-voice-review"
-          className="font-body text-xs font-semibold uppercase tracking-wide text-kelly-text/60"
+          className="font-body text-xs font-semibold uppercase tracking-wide text-kelly-muted"
         >
           Review (copy into Ask Kelly)
         </label>
@@ -290,7 +290,7 @@ export function DixieVoicePortal() {
           className="mt-2 w-full resize-y rounded-md border border-kelly-text/15 bg-white px-3 py-2 font-body text-sm text-kelly-ink shadow-inner outline-none ring-kelly-navy/25 focus:border-kelly-navy/40 focus:ring-2"
           placeholder="Spoken text appears here after you say the wake word and end with “go.” Edit before you copy."
         />
-        <p className="mt-2 font-body text-xs text-kelly-text/60">
+        <p className="mt-2 font-body text-xs text-kelly-muted">
           Open the public site, use Ask Kelly in the corner, and paste this text if it matches what you want to ask.
         </p>
       </div>

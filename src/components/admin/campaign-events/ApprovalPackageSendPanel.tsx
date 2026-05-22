@@ -62,7 +62,7 @@ export function ApprovalPackageSendPanel({
   return (
     <section className="mt-4 rounded-xl border border-kelly-navy/20 bg-kelly-page p-4 font-body text-sm">
       <h3 className="font-heading text-sm font-bold uppercase tracking-wider text-kelly-slate">Email send</h3>
-      <p className="mt-2 text-xs text-kelly-text/65">
+      <p className="mt-2 text-xs text-kelly-muted">
         To: <strong>{payload.candidateApprovalTo}</strong>
         {emailConfig.fromEmail ? ` · From: ${emailConfig.fromEmail}` : ""}
       </p>

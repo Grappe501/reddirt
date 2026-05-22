@@ -36,7 +36,7 @@ export function VolunteerFollowUpPanel({ followUp }: Props) {
         {emptyCard("Volunteer asks", "Who offered rides, turf, or hosting.")}
         {emptyCard("County or team handoffs", "When someone should move to another lead.")}
       </div>
-      <p className="mt-3 font-body text-[11px] text-kelly-text/70">{followUp.nextStep}</p>
+      <p className="mt-3 font-body text-[11px] text-kelly-muted">{followUp.nextStep}</p>
     </section>
   );
 }

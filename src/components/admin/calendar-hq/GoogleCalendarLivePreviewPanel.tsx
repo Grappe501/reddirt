@@ -60,7 +60,7 @@ export function GoogleCalendarLivePreviewPanel(p: Props) {
       </p>
 
       <div className="mt-2 rounded border border-kelly-text/10 bg-white/90 px-2 py-1.5">
-        <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/50">Configuration (names only)</p>
+        <p className="font-heading text-[9px] font-bold uppercase text-kelly-subtle">Configuration (names only)</p>
         <ul className="mt-1 space-y-0.5 font-body text-[9px] text-kelly-navy">
           {preview.envRows.map((row) => (
             <li key={row.label} className="flex flex-wrap gap-1">
@@ -72,7 +72,7 @@ export function GoogleCalendarLivePreviewPanel(p: Props) {
       </div>
 
       <div className="mt-2 rounded border border-kelly-text/10 bg-white/90 px-2 py-1.5">
-        <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/50">Calendar sources (database)</p>
+        <p className="font-heading text-[9px] font-bold uppercase text-kelly-subtle">Calendar sources (database)</p>
         {preview.kind === "no_sources" ? (
           <p className="mt-1 font-body text-[10px] text-amber-950">No CalendarSource rows yet — add sources in your database seed or admin flows.</p>
         ) : (
@@ -89,22 +89,22 @@ export function GoogleCalendarLivePreviewPanel(p: Props) {
                         {s.displayName || s.label}
                       </Link>
                     ) : (
-                      <span className="font-bold text-kelly-text/70">{s.displayName || s.label}</span>
+                      <span className="font-bold text-kelly-muted">{s.displayName || s.label}</span>
                     )}
-                    <span className="text-kelly-text/50">· {s.eventCount} events in DB</span>
+                    <span className="text-kelly-subtle">· {s.eventCount} events in DB</span>
                     {s.hasOAuthRefreshToken ? (
                       <span className="text-emerald-800">· OAuth</span>
                     ) : (
                       <span className="text-rose-800">· no refresh token</span>
                     )}
                   </div>
-                  <div className="font-mono text-[8px] text-kelly-text/55">cal: {s.externalCalendarId}</div>
+                  <div className="font-mono text-[8px] text-kelly-muted">cal: {s.externalCalendarId}</div>
                 </li>
               ))}
           </ul>
         )}
         {"sources" in preview && preview.sources.some((s) => s.hasOAuthRefreshToken) ? (
-          <p className="mt-1 font-body text-[8px] text-kelly-text/60">Click a source with OAuth to preview that calendar.</p>
+          <p className="mt-1 font-body text-[8px] text-kelly-muted">Click a source with OAuth to preview that calendar.</p>
         ) : null}
       </div>
 
@@ -191,7 +191,7 @@ function PreviewBody({
             {preview.events.map((ev) => (
               <li key={ev.id ?? ev.startLabel} className="rounded border border-kelly-text/8 bg-white/80 px-1 py-0.5">
                 <div className="font-semibold">{ev.summary}</div>
-                <div className="text-kelly-text/70">
+                <div className="text-kelly-muted">
                   {ev.startLabel} → {ev.endLabel}
                 </div>
                 {ev.htmlLink ? (
@@ -220,11 +220,11 @@ function CalendarListSnippet({ rows }: { rows: { id: string | null | undefined; 
   if (rows.length === 0) return null;
   return (
     <div>
-      <p className="font-heading text-[8px] font-bold uppercase text-kelly-text/45">Calendars visible to this account (sample)</p>
+      <p className="font-heading text-[8px] font-bold uppercase text-kelly-subtle">Calendars visible to this account (sample)</p>
       <ul className="mt-0.5 max-h-20 overflow-y-auto font-mono text-[8px] text-kelly-text/75">
         {rows.map((c) => (
           <li key={c.id ?? c.summary ?? "?"}>
-            {c.summary ?? "(untitled)"} <span className="text-kelly-text/45">· {c.id}</span>
+            {c.summary ?? "(untitled)"} <span className="text-kelly-subtle">· {c.id}</span>
           </li>
         ))}
       </ul>

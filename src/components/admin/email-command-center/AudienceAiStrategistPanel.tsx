@@ -76,7 +76,7 @@ export function AudienceAiStrategistPanel(props: {
             Generate strategy
           </button>
           {!canRun ? (
-            <p className="mt-1 text-[9px] text-kelly-text/60">Enter a clearer goal so the strategist can anchor recommendations.</p>
+            <p className="mt-1 text-[9px] text-kelly-muted">Enter a clearer goal so the strategist can anchor recommendations.</p>
           ) : null}
         </div>
       </div>
@@ -84,15 +84,15 @@ export function AudienceAiStrategistPanel(props: {
       {report ? (
         <div className="mt-4 space-y-3 rounded border border-kelly-text/10 bg-white/90 p-2 text-[11px] text-kelly-text/90">
           <div>
-            <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">Suggested audiences</p>
+            <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-muted">Suggested audiences</p>
             <ul className="mt-1 space-y-2">
               {report.suggestedAudiences.map((s, i) => (
                 <li key={i} className="rounded border border-kelly-text/8 bg-kelly-page/40 px-2 py-1">
                   <p className="font-semibold text-kelly-navy">{s.suggestedName}</p>
                   <p className="text-[10px] text-kelly-text/75">{s.rationale}</p>
-                  <p className="mt-1 font-mono text-[9px] text-kelly-text/70">{JSON.stringify(s.criteria)}</p>
+                  <p className="mt-1 font-mono text-[9px] text-kelly-muted">{JSON.stringify(s.criteria)}</p>
                   {s.requiredFacts.length ? (
-                    <p className="mt-1 text-[9px] text-kelly-text/65">
+                    <p className="mt-1 text-[9px] text-kelly-muted">
                       <span className="font-semibold">Required facts:</span>{" "}
                       {s.requiredFacts.map((r) => `${r.factKey}=${r.factValue.slice(0, 80)}`).join(" · ")}
                     </p>
@@ -103,7 +103,7 @@ export function AudienceAiStrategistPanel(props: {
           </div>
 
           <div>
-            <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">Rationale</p>
+            <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-muted">Rationale</p>
             <ul className="mt-1 list-inside list-disc text-[10px] text-kelly-text/80">
               {report.primaryRationale.map((line, i) => (
                 <li key={i}>{line}</li>
@@ -112,7 +112,7 @@ export function AudienceAiStrategistPanel(props: {
           </div>
 
           <div>
-            <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">Required facts (primary)</p>
+            <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-muted">Required facts (primary)</p>
             <ul className="mt-1 space-y-0.5 text-[10px]">
               {report.requiredFacts.length ? (
                 report.requiredFacts.map((r, i) => (
@@ -121,13 +121,13 @@ export function AudienceAiStrategistPanel(props: {
                   </li>
                 ))
               ) : (
-                <li className="text-kelly-text/60">None inferred — strengthen approved graph first.</li>
+                <li className="text-kelly-muted">None inferred — strengthen approved graph first.</li>
               )}
             </ul>
           </div>
 
           <div>
-            <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">
+            <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-muted">
               Excluded / suppression considerations
             </p>
             <ul className="mt-1 list-inside list-disc text-[10px] text-kelly-text/80">
@@ -138,7 +138,7 @@ export function AudienceAiStrategistPanel(props: {
           </div>
 
           <div>
-            <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">Suggested message frames</p>
+            <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-muted">Suggested message frames</p>
             <ul className="mt-1 list-inside list-decimal text-[10px] text-kelly-text/80">
               {report.suggestedMessageAngles.map((x, i) => (
                 <li key={i}>{x}</li>
@@ -171,7 +171,7 @@ export function AudienceAiStrategistPanel(props: {
 
           {report.clusterRecommendations.filter((c) => c.safeForPlanning).length ? (
             <div>
-              <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">
+              <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-muted">
                 Safe cluster hints (non-sensitive)
               </p>
               <ul className="mt-1 space-y-1 text-[10px]">
@@ -190,7 +190,7 @@ export function AudienceAiStrategistPanel(props: {
           {primaryCriteriaJson ? (
             <div className="border-t border-kelly-text/10 pt-2">
               <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-navy">Create draft from primary criteria</p>
-              <p className="mt-1 text-[9px] text-kelly-text/70">
+              <p className="mt-1 text-[9px] text-kelly-muted">
                 Uses the existing server action — you must name the draft explicitly. Criteria JSON is prefilled from the primary
                 suggestion only. Or use the{" "}
                 <Link href="#audience-manual-draft" className="font-bold text-kelly-forest underline">

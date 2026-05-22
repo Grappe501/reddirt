@@ -18,7 +18,9 @@ export const COMPLIANCE_ROUTE_REGISTRY = [
   "/admin/compliance/reconciliation",
   "/admin/compliance/rules",
   "/admin/compliance/filing-readiness",
+  "/admin/compliance/april26",
   "/admin/compliance/reports",
+  "/admin/compliance/reports/april26",
   "/admin/compliance/mobile",
   "/admin/compliance/settings",
 ] as const;

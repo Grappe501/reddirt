@@ -94,7 +94,7 @@ export function AskKellyCandidateCommunicationBoard() {
                     {c.actionLabel}
                   </Link>
                 ) : (
-                  <span className="inline-flex min-h-[44px] items-center font-body text-xs font-medium text-kelly-text/55 sm:min-h-0">
+                  <span className="inline-flex min-h-[44px] items-center font-body text-xs font-medium text-kelly-muted sm:min-h-0">
                     {c.actionLabel}
                   </span>
                 )}

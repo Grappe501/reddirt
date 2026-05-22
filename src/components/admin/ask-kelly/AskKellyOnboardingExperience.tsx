@@ -144,7 +144,7 @@ export function AskKellyOnboardingExperience() {
         <div className={cn(variant === "hero" ? "p-8 sm:p-10" : "p-6 sm:p-7")}>{children}</div>
         {(unlocked || done) && (
           <div className="border-t border-kelly-text/10 px-6 py-2.5 sm:px-7">
-            <p className="font-body text-[11px] font-semibold uppercase tracking-wide text-kelly-text/55">
+            <p className="font-body text-[11px] font-semibold uppercase tracking-wide text-kelly-muted">
               {done ? (
                 <>
                   Stage {stageId} — <span className="text-kelly-navy">Unlocked</span>
@@ -160,7 +160,7 @@ export function AskKellyOnboardingExperience() {
   };
 
   const lockHint = (
-    <p className="font-body text-sm text-kelly-text/55">Finish the previous step on this walkthrough to use actions here.</p>
+    <p className="font-body text-sm text-kelly-muted">Finish the previous step on this walkthrough to use actions here.</p>
   );
 
   const p = ASK_KELLY_PORTAL;
@@ -185,7 +185,7 @@ export function AskKellyOnboardingExperience() {
               aria-valuemax={100}
             />
           </div>
-          <p className="font-body text-xs text-kelly-text/60">Walkthrough progress is stored only in this browser—not on the server.</p>
+          <p className="font-body text-xs text-kelly-muted">Walkthrough progress is stored only in this browser—not on the server.</p>
 
           <div className="flex flex-wrap gap-3 pt-1">
             <button
@@ -312,7 +312,7 @@ export function AskKellyOnboardingExperience() {
                 className={cn(
                   "rounded-md px-4 py-2.5 font-body text-sm font-bold transition",
                   completedStages.includes(2)
-                    ? "cursor-default border border-kelly-text/15 bg-transparent text-kelly-text/60"
+                    ? "cursor-default border border-kelly-text/15 bg-transparent text-kelly-muted"
                     : "bg-kelly-navy text-white hover:bg-kelly-navy/90",
                 )}
                 onClick={() => markComplete(2)}
@@ -358,7 +358,7 @@ export function AskKellyOnboardingExperience() {
                   className={cn(
                     "rounded-md border px-4 py-2.5 font-body text-sm font-semibold transition",
                     completedStages.includes(3)
-                      ? "cursor-default border-kelly-text/12 text-kelly-text/50"
+                      ? "cursor-default border-kelly-text/12 text-kelly-subtle"
                       : "border-kelly-text/20 hover:border-kelly-gold/35",
                   )}
                   onClick={() => markComplete(3)}
@@ -397,7 +397,7 @@ export function AskKellyOnboardingExperience() {
                   className={cn(
                     "rounded-md border px-4 py-2.5 font-body text-sm font-semibold transition",
                     completedStages.includes(4)
-                      ? "cursor-default border-kelly-text/12 text-kelly-text/50"
+                      ? "cursor-default border-kelly-text/12 text-kelly-subtle"
                       : "border-kelly-text/20 hover:border-kelly-gold/35",
                   )}
                   onClick={() => markComplete(4)}
@@ -436,7 +436,7 @@ export function AskKellyOnboardingExperience() {
                   className={cn(
                     "rounded-md border px-4 py-2.5 font-body text-sm font-semibold transition",
                     completedStages.includes(5)
-                      ? "cursor-default border-kelly-text/12 text-kelly-text/50"
+                      ? "cursor-default border-kelly-text/12 text-kelly-subtle"
                       : "border-kelly-text/20 hover:border-kelly-gold/35",
                   )}
                   onClick={() => markComplete(5)}
@@ -458,7 +458,7 @@ export function AskKellyOnboardingExperience() {
               </p>
             ))}
           </div>
-          <p className="mt-4 font-body text-xs text-kelly-text/65">{ASK_KELLY_VOICE_ASSIST_ADMIN_NOTE}</p>
+          <p className="mt-4 font-body text-xs text-kelly-muted">{ASK_KELLY_VOICE_ASSIST_ADMIN_NOTE}</p>
           <div className="mt-6">
             <AskKellyReadAloudButton text={ASK_KELLY_PORTAL_STAGE6_READ_ALOUD} />
           </div>
@@ -472,7 +472,7 @@ export function AskKellyOnboardingExperience() {
                 className={cn(
                   "rounded-md px-4 py-2.5 font-body text-sm font-bold transition",
                   completedStages.includes(6)
-                    ? "cursor-default border border-kelly-text/15 bg-transparent text-kelly-text/60"
+                    ? "cursor-default border border-kelly-text/15 bg-transparent text-kelly-muted"
                     : "bg-kelly-navy text-white hover:bg-kelly-navy/90",
                 )}
                 onClick={() => markComplete(6)}
@@ -513,7 +513,7 @@ export function AskKellyOnboardingExperience() {
                   {p.stage7.ctaGuide}
                 </Link>
               </div>
-              <p className="mt-4 font-body text-xs text-kelly-text/60">
+              <p className="mt-4 font-body text-xs text-kelly-muted">
                 Open the public homepage, then open the site guide in the corner to ask where features live—in your own words.
               </p>
               <button

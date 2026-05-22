@@ -17,8 +17,8 @@ export function UnifiedOpenWorkSection({ items }: { items: UnifiedOpenWorkItem[]
       className="border-b border-kelly-text/10 bg-kelly-page/60 px-2 py-2 md:px-3"
       aria-label="Unified open work, read only"
     >
-      <h2 className="font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Unified open work</h2>
-      <p className="mt-0.5 max-w-3xl text-[10px] text-kelly-text/55">
+      <h2 className="font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-muted">Unified open work</h2>
+      <p className="mt-0.5 max-w-3xl text-[10px] text-kelly-muted">
         UWR-1 triage slice (unassigned + escalated email). Sources: email workflow, workflow intake, campaign task — not
         every domain.
       </p>
@@ -31,7 +31,7 @@ export function UnifiedOpenWorkSection({ items }: { items: UnifiedOpenWorkItem[]
               className="flex min-w-0 items-start justify-between gap-2 rounded border border-kelly-text/8 bg-kelly-page/95 px-1.5 py-1 text-[11px] leading-tight"
             >
               <div className="min-w-0">
-                <span className="text-[9px] font-semibold uppercase tracking-tight text-kelly-text/50" title={b.hint}>
+                <span className="text-[9px] font-semibold uppercase tracking-tight text-kelly-subtle" title={b.hint}>
                   {b.label}
                 </span>
                 {row.escalationLabel ? (
@@ -41,7 +41,7 @@ export function UnifiedOpenWorkSection({ items }: { items: UnifiedOpenWorkItem[]
                 <Link href={row.href} className="font-medium text-kelly-slate [overflow-wrap:anywhere] hover:underline">
                   {row.summaryLine}
                 </Link>{" "}
-                <span className="whitespace-nowrap text-kelly-text/45">· {row.statusLabel}</span>
+                <span className="whitespace-nowrap text-kelly-subtle">· {row.statusLabel}</span>
               </div>
               <Link
                 href={row.workbenchRouteHint}

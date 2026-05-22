@@ -73,6 +73,7 @@
     "agents:test-runtime": "tsx scripts/test-agent-runtime.ts",
     "agents:test-os-control": "tsx scripts/test-agent-os-control.ts",
     "agents:test-dashboard-nav": "tsx scripts/test-dashboard-navigation-os.ts",
+    "agents:verify-campaign-os-nav": "tsx scripts/verify-campaign-os-nav-routes.ts",
     "agents:test-sprint-10": "tsx scripts/test-sprint-10-campaign-platform.ts",
     "agents:test-single-campaign-hardening": "tsx scripts/test-single-campaign-hardening.ts",
     "agents:test-county-intelligence": "tsx scripts/test-county-intelligence.ts",

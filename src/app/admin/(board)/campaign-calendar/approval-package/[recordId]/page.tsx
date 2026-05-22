@@ -33,7 +33,7 @@ export default async function ApprovalPackagePreviewPage({
           ← Event drilldown
         </Link>
         <h1 className="mt-2 font-heading text-2xl font-bold">Approval package preview</h1>
-        <p className="font-body text-sm text-kelly-text/65">
+        <p className="font-body text-sm text-kelly-muted">
           Gated email send — disabled until EMAIL_SEND_ENABLED and provider env are set.
         </p>
       </div>

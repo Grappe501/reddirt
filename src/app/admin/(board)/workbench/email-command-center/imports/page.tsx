@@ -30,10 +30,10 @@ export default async function EmailContactImportsPage({
         >
           ← Communication Command Center
         </Link>
-        <Link href="/admin/workbench/email-command-center/profiles" className="text-xs text-kelly-text/60 hover:underline">
+        <Link href="/admin/workbench/email-command-center/profiles" className="text-xs text-kelly-muted hover:underline">
           Profile review
         </Link>
-        <Link href="/admin/workbench/email-command-center/audiences" className="text-xs text-kelly-text/60 hover:underline">
+        <Link href="/admin/workbench/email-command-center/audiences" className="text-xs text-kelly-muted hover:underline">
           Audience Studio
         </Link>
         <Link
@@ -42,7 +42,7 @@ export default async function EmailContactImportsPage({
         >
           Message Studio
         </Link>
-        <Link href="/admin/workbench/email-command-center/analytics" className="text-xs text-kelly-text/60 hover:underline">
+        <Link href="/admin/workbench/email-command-center/analytics" className="text-xs text-kelly-muted hover:underline">
           Analytics
         </Link>
       </div>
@@ -139,7 +139,7 @@ export default async function EmailContactImportsPage({
         <div className="overflow-x-auto rounded-lg border border-kelly-text/12 bg-white/95">
           <table className="min-w-full border-collapse font-body text-[11px]">
             <thead>
-              <tr className="border-b border-kelly-text/10 bg-kelly-page/80 text-left text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">
+              <tr className="border-b border-kelly-text/10 bg-kelly-page/80 text-left text-[10px] font-bold uppercase tracking-wide text-kelly-muted">
                 <th className="px-2 py-1.5">Name</th>
                 <th className="px-2 py-1.5">Status</th>
                 <th className="px-2 py-1.5">Rows</th>
@@ -191,7 +191,7 @@ export default async function EmailContactImportsPage({
                     <td className="px-2 py-1.5 tabular-nums">{b.duplicateRowCount ?? "—"}</td>
                     <td className="px-2 py-1.5 tabular-nums">{b.existingProfileMatchCount ?? "—"}</td>
                     <td className="px-2 py-1.5 tabular-nums">{b.consentWarningCount ?? "—"}</td>
-                    <td className="px-2 py-1.5 text-kelly-text/70">{b.createdAt.toISOString().slice(0, 10)}</td>
+                    <td className="px-2 py-1.5 text-kelly-muted">{b.createdAt.toISOString().slice(0, 10)}</td>
                   </tr>
                 ))
               )}

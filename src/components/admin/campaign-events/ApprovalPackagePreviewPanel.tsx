@@ -30,17 +30,17 @@ export function ApprovalPackagePreviewPanel({
       {!compact ? (
         <div className="mt-3 space-y-2">
           <ApprovalRecipientsBanner compact />
-          <p className="font-body text-xs text-kelly-text/55">{sendNotice}</p>
-          <p className="font-mono text-xs text-kelly-text/65">Package To: {payload.candidateApprovalTo}</p>
+          <p className="font-body text-xs text-kelly-muted">{sendNotice}</p>
+          <p className="font-mono text-xs text-kelly-muted">Package To: {payload.candidateApprovalTo}</p>
         </div>
       ) : (
-        <p className="mt-1 font-body text-xs text-kelly-text/55">To: {payload.candidateApprovalTo}</p>
+        <p className="mt-1 font-body text-xs text-kelly-muted">To: {payload.candidateApprovalTo}</p>
       )}
 
       <div className={`mt-3 grid gap-3 ${compact ? "" : "lg:grid-cols-2"}`}>
         <div className="rounded-xl border border-kelly-text/10 bg-kelly-page p-3 font-body text-sm">
           <strong>{payload.eventSummary.title}</strong>
-          <p className="mt-1 text-kelly-text/70">
+          <p className="mt-1 text-kelly-muted">
             {payload.eventSummary.dateYmd} {payload.eventSummary.timeLabel}
           </p>
           <p className="mt-1 text-xs">
@@ -128,7 +128,7 @@ export function ApprovalPackagePreviewPanel({
             </a>
           </>
         ) : (
-          <span className="text-kelly-text/45"> · {payload.links.secureTokenPlaceholder}</span>
+          <span className="text-kelly-subtle"> · {payload.links.secureTokenPlaceholder}</span>
         )}
       </p>
 

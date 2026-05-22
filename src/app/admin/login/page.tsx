@@ -23,11 +23,11 @@ export default async function AdminLoginPage({ searchParams }: Props) {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-kelly-text px-4 py-16 text-kelly-page">
       <div className="w-full max-w-md rounded-card border border-kelly-page/15 bg-kelly-page/[0.07] p-8 shadow-2xl backdrop-blur-sm">
-        <p className="font-body text-[10px] font-bold uppercase tracking-[0.28em] text-kelly-page/50">
+        <p className="font-body text-[10px] font-bold uppercase tracking-[0.28em] text-kelly-inverse-muted">
           Kelly Grappe campaign
         </p>
         <h1 className="mt-3 font-heading text-2xl font-bold">Content board</h1>
-        <p className="mt-3 font-body text-sm leading-relaxed text-kelly-page/75">
+        <p className="mt-3 font-body text-sm leading-relaxed text-kelly-inverse-soft">
           Sign in with the shared admin passphrase. This area manages public website content and Substack sync
           only.
         </p>
@@ -46,14 +46,14 @@ export default async function AdminLoginPage({ searchParams }: Props) {
         ) : null}
 
         {!configured ? (
-          <p className="mt-6 font-body text-xs text-kelly-page/55">
+          <p className="mt-6 font-body text-xs text-kelly-inverse-muted">
             Login is disabled until <code className="rounded bg-kelly-text/40 px-1">ADMIN_SECRET</code> is set.
           </p>
         ) : (
           <form action={adminLoginAction} className="mt-6 space-y-4">
             <input type="hidden" name="redirectTo" value={redirectTo} />
             <label className="block">
-              <span className="font-body text-xs font-semibold uppercase tracking-wider text-kelly-page/60">
+              <span className="font-body text-xs font-semibold uppercase tracking-wider text-kelly-inverse-muted">
                 Passphrase
               </span>
               <input
@@ -73,7 +73,7 @@ export default async function AdminLoginPage({ searchParams }: Props) {
           </form>
         )}
 
-        <p className="mt-8 text-center font-body text-xs text-kelly-page/45">
+        <p className="mt-8 text-center font-body text-xs text-kelly-inverse-muted">
           <Link href="/" className="underline-offset-2 hover:text-kelly-page hover:underline">
             Back to site
           </Link>

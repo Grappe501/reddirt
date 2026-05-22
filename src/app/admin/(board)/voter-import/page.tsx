@@ -36,12 +36,12 @@ export default async function AdminVoterImportPage() {
         <pre className="mt-2 overflow-x-auto rounded-lg border border-kelly-text/10 bg-kelly-wash p-3 text-xs text-kelly-text">
           npm run voter-file:import -- --file path/to/voters.csv --as-of 2026-01-15
         </pre>
-        <p className="mt-2 font-body text-xs text-kelly-text/60">
+        <p className="mt-2 font-body text-xs text-kelly-muted">
           Defaults: UTF-8, header row, delimiters auto-detected. Columns: VOTER_ID, COUNTY_FIPS, REGISTRATION_DATE (env
           overrides: VOTER_FILE_COL_*). See <code className="rounded bg-kelly-text/5 px-1">src/lib/voter-file/sos-voter-csv.ts</code>{" "}
           for the full spec.
         </p>
-        <p className="mt-2 font-body text-xs text-kelly-text/60">
+        <p className="mt-2 font-body text-xs text-kelly-muted">
           <code className="rounded bg-kelly-text/5 px-1">npm run voter-file:import -- --help</code> for options.
         </p>
       </section>
@@ -49,7 +49,7 @@ export default async function AdminVoterImportPage() {
       <section className="mt-8">
         <h2 className="font-heading text-lg font-bold text-kelly-text">Recent snapshots</h2>
         {snapshots.length === 0 ? (
-          <p className="mt-2 text-sm text-kelly-text/60">No snapshots yet.</p>
+          <p className="mt-2 text-sm text-kelly-muted">No snapshots yet.</p>
         ) : (
           <ul className="mt-4 space-y-3" role="list">
             {snapshots.map((s) => (
@@ -59,13 +59,13 @@ export default async function AdminVoterImportPage() {
               >
                 <p className="font-semibold text-kelly-text">
                   {s.fileAsOfDate.toLocaleDateString()} · {s.status}
-                  {s.sourceFilename ? <span className="font-normal text-kelly-text/70"> — {s.sourceFilename}</span> : null}
+                  {s.sourceFilename ? <span className="font-normal text-kelly-muted"> — {s.sourceFilename}</span> : null}
                 </p>
-                <p className="mt-1 text-xs text-kelly-text/60">
+                <p className="mt-1 text-xs text-kelly-muted">
                   id {s.id} · imported {s.importedAt.toLocaleString()} · rows {s.rowCountProcessed ?? "—"}
                 </p>
                 {s.sourceFileHash ? (
-                  <p className="mt-0.5 font-mono text-[10px] text-kelly-text/50">sha256 {s.sourceFileHash}</p>
+                  <p className="mt-0.5 font-mono text-[10px] text-kelly-subtle">sha256 {s.sourceFileHash}</p>
                 ) : null}
                 {s.errorMessage ? <p className="mt-1 text-xs text-kelly-navy/90">{s.errorMessage}</p> : null}
                 {s.operatorNotes ? (

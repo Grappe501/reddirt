@@ -3,7 +3,7 @@ import { COMMS_PLAN_SECTION, commsPlanPath } from "@/lib/comms-workbench/comms-n
 import type { CommunicationPlanDetail } from "@/lib/comms-workbench/dto";
 
 const card = "rounded-md border border-kelly-text/10 bg-amber-50/35 p-3 shadow-sm";
-const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
+const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-muted";
 
 export function PlanDetailAttentionBlock({ plan }: { plan: CommunicationPlanDetail }) {
   const { review, sendSummary, opsSummary } = plan;

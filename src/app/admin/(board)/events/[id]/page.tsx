@@ -36,13 +36,13 @@ export default async function AdminEventDetailPage({ params }: Props) {
 
   return (
     <div className="mx-auto max-w-4xl">
-      <p className="font-body text-xs text-kelly-text/55">
+      <p className="font-body text-xs text-kelly-muted">
         <Link href="/admin/events" className="text-kelly-slate hover:underline">
           ← Events
         </Link>
       </p>
       <h1 className="mt-2 font-heading text-3xl font-bold text-kelly-text">{event.title}</h1>
-      <p className="mt-1 font-mono text-xs text-kelly-text/45">{event.slug}</p>
+      <p className="mt-1 font-mono text-xs text-kelly-subtle">{event.slug}</p>
 
       <p className="mt-3">
         <Link
@@ -51,7 +51,7 @@ export default async function AdminEventDetailPage({ params }: Props) {
         >
           Create comms plan from this event
         </Link>
-        <span className="ml-2 font-body text-xs text-kelly-text/50">
+        <span className="ml-2 font-body text-xs text-kelly-subtle">
           Pre-fills a CommunicationPlan with this event as provenance.
         </span>
       </p>
@@ -63,12 +63,12 @@ export default async function AdminEventDetailPage({ params }: Props) {
         <input type="hidden" name="id" value={event.id} />
         <h2 className="font-heading text-lg font-bold text-kelly-text">Edit event</h2>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Title</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Title</span>
           <input name="title" defaultValue={event.title} required className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Type</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Type</span>
             <select name="eventType" defaultValue={event.eventType} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               {Object.values(CampaignEventType).map((t) => (
                 <option key={t} value={t}>
@@ -78,7 +78,7 @@ export default async function AdminEventDetailPage({ params }: Props) {
             </select>
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">County</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">County</span>
             <select name="countyId" defaultValue={event.countyId ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               <option value="">—</option>
               {counties.map((c) => (
@@ -91,31 +91,31 @@ export default async function AdminEventDetailPage({ params }: Props) {
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Start</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Start</span>
             <input name="startAt" type="datetime-local" defaultValue={startLocal} required className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">End</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">End</span>
             <input name="endAt" type="datetime-local" defaultValue={endLocal} required className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
         </div>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Description</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Description</span>
           <textarea name="description" rows={3} defaultValue={event.description ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Location</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Location</span>
             <input name="locationName" defaultValue={event.locationName ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Address</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Address</span>
             <input name="address" defaultValue={event.address ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Visibility</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Visibility</span>
             <select name="visibility" defaultValue={event.visibility} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               {Object.values(CampaignEventVisibility).map((v) => (
                 <option key={v} value={v}>
@@ -125,7 +125,7 @@ export default async function AdminEventDetailPage({ params }: Props) {
             </select>
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Status</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Status</span>
             <select name="status" defaultValue={event.status} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               {Object.values(CampaignEventStatus).map((s) => (
                 <option key={s} value={s}>
@@ -136,7 +136,7 @@ export default async function AdminEventDetailPage({ params }: Props) {
           </label>
         </div>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Notes (internal)</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Notes (internal)</span>
           <textarea name="notes" rows={2} defaultValue={event.notes ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <button type="submit" className="rounded-btn bg-kelly-navy px-5 py-2.5 text-sm font-bold text-kelly-page">
@@ -148,12 +148,12 @@ export default async function AdminEventDetailPage({ params }: Props) {
         <h2 className="font-heading text-lg font-bold text-kelly-text">Tasks for this event</h2>
         <ul className="mt-3 space-y-2 text-sm">
           {event.tasks.length === 0 ? (
-            <li className="text-kelly-text/55">No tasks yet (workflows create them on create/signup).</li>
+            <li className="text-kelly-muted">No tasks yet (workflows create them on create/signup).</li>
           ) : (
             event.tasks.map((t) => (
               <li key={t.id} className="rounded-md border border-kelly-text/10 bg-white/70 px-3 py-2">
                 <span className="font-medium">{t.title}</span>
-                <span className="ml-2 text-xs text-kelly-text/55">
+                <span className="ml-2 text-xs text-kelly-muted">
                   {t.status} {t.dueAt ? `· due ${t.dueAt.toLocaleString()}` : ""}
                 </span>
               </li>
@@ -166,7 +166,7 @@ export default async function AdminEventDetailPage({ params }: Props) {
         <h2 className="font-heading text-lg font-bold text-kelly-text">Workflow history</h2>
         <ul className="mt-3 space-y-2 text-sm">
           {workflowRuns.length === 0 ? (
-            <li className="text-kelly-text/55">No workflow runs linked yet.</li>
+            <li className="text-kelly-muted">No workflow runs linked yet.</li>
           ) : (
             workflowRuns.map((r) => (
               <li key={r.id} className="font-mono text-xs">

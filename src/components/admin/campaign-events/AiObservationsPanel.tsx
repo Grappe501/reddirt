@@ -53,13 +53,13 @@ export function AiObservationsPanel({
           {latest.map((o) => (
             <li key={o.id}>
               <span className="font-semibold">{EVENT_LABELS[o.event] ?? o.event}</span>
-              <span className="text-kelly-text/45"> · {o.toolId}</span>
+              <span className="text-kelly-subtle"> · {o.toolId}</span>
               <span className="text-kelly-text/40"> · {new Date(o.at).toLocaleString()}</span>
             </li>
           ))}
         </ul>
       ) : (
-        <p className="mt-2 text-xs text-kelly-text/55">
+        <p className="mt-2 text-xs text-kelly-muted">
           No observations yet. This will help the AI improve approval workflows.
         </p>
       )}

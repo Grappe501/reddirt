@@ -33,7 +33,7 @@ export function VolunteerIntelligencePanel({ bundle }: { bundle: VolunteerSystem
         </div>
       </dl>
       {bundle.recommendedActions[0] ? (
-        <p className="mt-2 text-[10px] text-kelly-text/55">Next: {bundle.recommendedActions[0]}</p>
+        <p className="mt-2 text-[10px] text-kelly-muted">Next: {bundle.recommendedActions[0]}</p>
       ) : null}
       <Link href="/admin/volunteers" className="mt-3 inline-block text-xs font-bold text-kelly-navy underline">
         Open volunteer command center →

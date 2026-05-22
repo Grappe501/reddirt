@@ -98,7 +98,7 @@ export function CommunicationsCommandCenterClient({ bundle }: { bundle: Communic
           </div>
         </dl>
         {r.sendGrid.notes.length ? (
-          <ul className="mt-2 list-inside list-disc text-[10px] text-kelly-text/60">
+          <ul className="mt-2 list-inside list-disc text-[10px] text-kelly-muted">
             {r.sendGrid.notes.map((n) => (
               <li key={n}>{n}</li>
             ))}
@@ -112,8 +112,8 @@ export function CommunicationsCommandCenterClient({ bundle }: { bundle: Communic
           {bundle.sources.map((s) => (
             <li key={s.id} className="rounded border border-kelly-text/10 px-3 py-2">
               <span className="font-bold">{s.label}</span>
-              <span className="text-kelly-text/50"> · {s.lane} · {s.importReadiness}</span>
-              <p className="text-[10px] text-kelly-text/55">{s.recommendedMapping}</p>
+              <span className="text-kelly-subtle"> · {s.lane} · {s.importReadiness}</span>
+              <p className="text-[10px] text-kelly-muted">{s.recommendedMapping}</p>
             </li>
           ))}
         </ul>
@@ -121,7 +121,7 @@ export function CommunicationsCommandCenterClient({ bundle }: { bundle: Communic
 
       <section className="rounded-2xl border border-kelly-text/10 p-5">
         <h2 className="font-heading text-lg font-bold text-kelly-navy">3. Contacts & lists (V1 JSON)</h2>
-        <p className="text-xs text-kelly-text/60">
+        <p className="text-xs text-kelly-muted">
           Local session preview — persist via import/ECC for production. Suppressed: {suppressedCount}
         </p>
         <div className="mt-3 flex flex-wrap gap-2">
@@ -163,12 +163,12 @@ export function CommunicationsCommandCenterClient({ bundle }: { bundle: Communic
           ))}
         </ul>
         {lists.length ? (
-          <p className="mt-2 text-[10px] text-kelly-text/55">
+          <p className="mt-2 text-[10px] text-kelly-muted">
             Lists: {lists.map((l) => `${l.name} (${l.contactIds.length})`).join(" · ")}
           </p>
         ) : null}
         {segments.length ? (
-          <p className="text-[10px] text-kelly-text/55">Segments: {segments.map((s) => s.name).join(" · ")}</p>
+          <p className="text-[10px] text-kelly-muted">Segments: {segments.map((s) => s.name).join(" · ")}</p>
         ) : null}
       </section>
 
@@ -178,12 +178,12 @@ export function CommunicationsCommandCenterClient({ bundle }: { bundle: Communic
           {bundle.templates.map((t) => (
             <li key={t.id} className="rounded border border-kelly-text/10 px-3 py-2">
               <span className="font-bold">{t.name}</span>
-              <span className="text-kelly-text/50">
+              <span className="text-kelly-subtle">
                 {" "}
                 · {t.workflowType} · {t.riskLevel} · {t.status}
                 {t.unsubscribeRequired ? " · unsub required" : ""}
               </span>
-              <p className="text-[10px] text-kelly-text/55">Subject: {t.subject}</p>
+              <p className="text-[10px] text-kelly-muted">Subject: {t.subject}</p>
             </li>
           ))}
         </ul>
@@ -199,7 +199,7 @@ export function CommunicationsCommandCenterClient({ bundle }: { bundle: Communic
             <li key={x}>{x}</li>
           ))}
         </ul>
-        <p className="mt-3 text-[10px] text-kelly-text/55">
+        <p className="mt-3 text-[10px] text-kelly-muted">
           Volunteer workflow: {bundle.volunteerWorkflowReadiness} · Team workflow: {bundle.teamWorkflowReadiness}
         </p>
       </section>

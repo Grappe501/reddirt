@@ -46,19 +46,19 @@ export async function EmailWorkflowAiIntelligencePanel({
   return (
     <div className="mt-2 space-y-2 rounded border border-kelly-text/10 bg-kelly-page/45 p-2">
       <h2 className="font-heading text-sm font-bold text-kelly-text">AI Email Intelligence</h2>
-      <p className="text-[10px] leading-snug text-kelly-text/70">
+      <p className="text-[10px] leading-snug text-kelly-muted">
         <span className="font-semibold text-kelly-text">EMAIL-AI-INTELLIGENCE-1.0</span> — advisory only. OpenAI does
         not send email, does not approve queue moves, and does not update profiles or audiences automatically.
       </p>
 
       <div className="rounded border border-kelly-text/10 bg-white/75 px-2 py-1.5">
-        <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">Readiness</p>
+        <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-muted">Readiness</p>
         <ul className="mt-1 list-inside list-disc space-y-0.5 text-[11px] text-kelly-text/85">
           <li>
             OpenAI Email Intelligence:{" "}
             <strong className="text-kelly-text">{readiness.configured ? "configured" : "not configured"}</strong>
             {!readiness.configured ? (
-              <span className="text-kelly-text/65"> — set OPENAI_API_KEY in the environment (name only here).</span>
+              <span className="text-kelly-muted"> — set OPENAI_API_KEY in the environment (name only here).</span>
             ) : null}
           </li>
           <li>
@@ -83,14 +83,14 @@ export async function EmailWorkflowAiIntelligencePanel({
           this bridge. Analysis may be limited because only queue fields and provenance are available.
         </p>
       ) : (
-        <p className="text-[10px] text-kelly-text/60">
+        <p className="text-[10px] text-kelly-muted">
           Analysis uses EmailWorkflowItem row fields and safe JSON provenance only — not Gmail message bodies in this
           lane.
         </p>
       )}
 
       {limitedContext && out ? (
-        <p className="text-[10px] text-kelly-text/70">
+        <p className="text-[10px] text-kelly-muted">
           Analysis may be limited because only metadata and queue summaries are available.
         </p>
       ) : null}
@@ -99,7 +99,7 @@ export async function EmailWorkflowAiIntelligencePanel({
 
       {stored ? (
         <div className="space-y-2 border-t border-kelly-text/10 pt-2">
-          <p className="text-[10px] text-kelly-text/55">
+          <p className="text-[10px] text-kelly-muted">
             Last run: <span className="font-semibold text-kelly-text/75">{stored.generatedAt}</span>
             {stored.promptVersion ? (
               <>
@@ -109,8 +109,8 @@ export async function EmailWorkflowAiIntelligencePanel({
             ) : null}
           </p>
           {stored.inputSourceSummary ? (
-            <p className="text-[10px] text-kelly-text/60">
-              <span className="font-semibold text-kelly-text/70">Input summary:</span> {stored.inputSourceSummary}
+            <p className="text-[10px] text-kelly-muted">
+              <span className="font-semibold text-kelly-muted">Input summary:</span> {stored.inputSourceSummary}
             </p>
           ) : null}
 
@@ -159,7 +159,7 @@ export async function EmailWorkflowAiIntelligencePanel({
 
               <div>
                 <p className="font-semibold text-kelly-text">Reply draft (advisory — not sent)</p>
-                <p className="text-[10px] text-kelly-text/60">Tone: {out.replyDraftTone || "—"}</p>
+                <p className="text-[10px] text-kelly-muted">Tone: {out.replyDraftTone || "—"}</p>
                 <p className="mt-1 text-[9px] text-amber-950/90">
                   Treat as <strong>suggested language</strong> unless a line clearly restates queue summaries — compare
                   with <strong>source-backed observations</strong> below.
@@ -284,7 +284,7 @@ export async function EmailWorkflowAiIntelligencePanel({
               ) : null}
 
               {(out.sourceLimitations.length || out.missingContext.length) > 0 ? (
-                <div className="text-[10px] text-kelly-text/70">
+                <div className="text-[10px] text-kelly-muted">
                   {out.sourceLimitations.length ? (
                     <p>
                       <span className="font-semibold text-kelly-text/80">Source limitations:</span>{" "}
@@ -300,7 +300,7 @@ export async function EmailWorkflowAiIntelligencePanel({
                 </div>
               ) : null}
 
-              <p className="text-[9px] text-kelly-text/55">
+              <p className="text-[9px] text-kelly-muted">
                 bodyWasAvailable: {String(out.bodyWasAvailable)} · shouldSendAutomatically:{" "}
                 {String(out.shouldSendAutomatically)} · canSendFromQueue: {String(out.canSendFromQueue)}
               </p>
@@ -308,11 +308,11 @@ export async function EmailWorkflowAiIntelligencePanel({
           ) : null}
         </div>
       ) : (
-        <p className="text-[11px] text-kelly-text/55">No AI analysis stored yet — run analysis above when configured.</p>
+        <p className="text-[11px] text-kelly-muted">No AI analysis stored yet — run analysis above when configured.</p>
       )}
 
-      <details className="text-[10px] text-kelly-text/55">
-        <summary className="cursor-pointer font-semibold text-kelly-text/60">Policy summary</summary>
+      <details className="text-[10px] text-kelly-muted">
+        <summary className="cursor-pointer font-semibold text-kelly-muted">Policy summary</summary>
         <ul className="mt-1 list-inside list-disc space-y-0.5">
           {policy.map((x) => (
             <li key={x}>{x}</li>

@@ -28,7 +28,7 @@ export default async function WorkbenchFestivalsPage({ searchParams }: Props) {
     <div className="min-w-0 p-2 md:p-4">
       <div className="border-b border-kelly-text/10 pb-3">
         <h1 className="font-heading text-lg font-bold text-kelly-text md:text-xl">Community events (ingest review)</h1>
-        <p className="mt-1 font-body text-[11px] text-kelly-text/70">
+        <p className="mt-1 font-body text-[11px] text-kelly-muted">
           Approve rows you trust: sets <code className="rounded bg-kelly-text/5 px-1">reviewStatus = APPROVED</code> and{" "}
           <code className="rounded bg-kelly-text/5 px-1">isVisibleOnSite = true</code> for the public feed on the campaign
           trail and suggested events. Use <strong>Public form</strong> to see submissions from the Movement /events page.
@@ -88,7 +88,7 @@ export default async function WorkbenchFestivalsPage({ searchParams }: Props) {
         ))}
       </div>
 
-      <p className="mt-2 font-body text-[10px] text-kelly-text/55">Source</p>
+      <p className="mt-2 font-body text-[10px] text-kelly-muted">Source</p>
       <div className="mt-1 flex flex-wrap gap-1">
         {(
           [

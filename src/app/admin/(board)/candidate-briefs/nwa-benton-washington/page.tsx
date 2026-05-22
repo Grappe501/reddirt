@@ -18,7 +18,7 @@ export default async function NwaBentonWashingtonBriefPage() {
     <div className="mx-auto max-w-5xl px-0">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
         <div>
-          <p className="font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/50">Candidate brief</p>
+          <p className="font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Candidate brief</p>
           <h1 className="font-heading text-2xl font-bold text-kelly-text">NWA — Benton & Washington</h1>
         </div>
         <Link
@@ -28,7 +28,7 @@ export default async function NwaBentonWashingtonBriefPage() {
           ← All candidate briefs
         </Link>
       </div>
-      <p className="mb-3 font-mono text-[10px] text-kelly-text/50">
+      <p className="mb-3 font-mono text-[10px] text-kelly-subtle">
         Source: <code className="rounded bg-kelly-text/5 px-1">{REL_PATH}</code> · print target ≤3 pages · internal only
       </p>
       <div className="max-h-[min(75vh,700px)] overflow-y-auto rounded-xl border border-kelly-text/10 bg-kelly-page shadow-inner">

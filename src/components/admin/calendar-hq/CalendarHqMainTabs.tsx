@@ -3,7 +3,7 @@ import { calendarFiltersToSearchParams, type CalendarHqFilters } from "@/lib/cal
 import { addWeeks, DEFAULT_CAMPAIGN_TZ } from "@/lib/calendar/weekly-time";
 
 const tabCls = (on: boolean) =>
-  `rounded px-1.5 py-0.5 text-[9px] font-bold uppercase ${on ? "bg-kelly-text text-kelly-page" : "bg-white text-kelly-text/70"}`;
+  `rounded px-1.5 py-0.5 text-[9px] font-bold uppercase ${on ? "bg-kelly-text text-kelly-page" : "bg-white text-kelly-muted"}`;
 
 export function CalendarHqMainTabs({
   filters,
@@ -106,7 +106,7 @@ export function CalendarHqMonthNav({
 
   return (
     <div className="space-y-1 border-b border-kelly-text/10 py-1.5">
-      <p className="text-[7px] font-bold uppercase text-kelly-text/45">Navigator</p>
+      <p className="text-[7px] font-bold uppercase text-kelly-subtle">Navigator</p>
       <p className="text-[9px] font-bold text-kelly-text/80">{label}</p>
       <div className="flex flex-wrap gap-0.5 text-[8px]">
         <Link className="rounded border border-kelly-text/15 bg-white px-1 py-0.5" href={`/admin/workbench/calendar?${weekHref(addWeeks(weekKey, -1))}`}>

@@ -76,7 +76,8 @@ export async function answerCampaignTripQuestionAction(sessionId: string, itemId
 
 export async function saveWizardItemPatchAction(sessionId: string, itemId: string, formData: FormData) {
   const cities = parseCitiesFromForm(formData);
-  const commitIntent = String(formData.get("commitIntent") ?? "changes");
+  const commitIntentValues = formData.getAll("commitIntent");
+  const commitIntent = String(commitIntentValues.at(-1) ?? "changes");
   await updateTravelLedgerItem(
     itemId,
     async (item, session) => {
@@ -93,6 +94,9 @@ export async function saveWizardItemPatchAction(sessionId: string, itemId: strin
     },
     { sessionId, action: "wizard_item_saved", note: "Wizard item saved and recalculated." },
   );
+  if (commitIntent.endsWith("-next")) {
+    await markWizardItem(sessionId, itemId, "skippedItemIds");
+  }
   revalidateTravelLedger();
   redirect(`${basePath}/wizard/session/${sessionId}?saved=${encodeURIComponent(commitIntent)}`);
 }

@@ -20,7 +20,7 @@ export function GlobalCampaignSwitcher({
 
   return (
     <div className="mx-3 mb-3 rounded-xl border border-kelly-page/15 bg-kelly-page/5 p-3">
-      <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-kelly-page/45">Active campaign</p>
+      <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-kelly-inverse-muted">Active campaign</p>
       <div className="mt-2 flex items-center gap-2">
         <span
           className="h-8 w-8 shrink-0 rounded-full border border-kelly-page/20"
@@ -29,7 +29,7 @@ export function GlobalCampaignSwitcher({
         />
         <div className="min-w-0 flex-1">
           <p className="truncate text-sm font-bold text-kelly-page">{active?.displayName ?? "Campaign"}</p>
-          <p className="truncate text-[10px] text-kelly-page/55">{active?.geography ?? active?.archetype}</p>
+          <p className="truncate text-[10px] text-kelly-inverse-muted">{active?.geography ?? active?.archetype}</p>
         </div>
       </div>
       <select
@@ -50,7 +50,7 @@ export function GlobalCampaignSwitcher({
           </option>
         ))}
       </select>
-      <p className="mt-1 text-[9px] text-kelly-page/40">AI agent uses this campaign context</p>
+      <p className="mt-1 text-[9px] text-kelly-inverse-muted">AI agent uses this campaign context</p>
     </div>
   );
 }

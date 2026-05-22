@@ -86,7 +86,7 @@ function SuggestionRow({
   return (
     <li className="rounded border border-kelly-text/10 bg-white px-2 py-1 text-[11px] text-kelly-text/85">
       <p>{factValue}</p>
-      <div className="mt-0.5 flex flex-wrap gap-1 text-[9px] text-kelly-text/55">
+      <div className="mt-0.5 flex flex-wrap gap-1 text-[9px] text-kelly-muted">
         <span>{status}</span>
         {suggestionType ? <span>· {suggestionType}</span> : null}
         {factKey ? <span>· {factKey}</span> : null}
@@ -95,9 +95,9 @@ function SuggestionRow({
       {pi2 ? (
         <div className="mt-1 space-y-1 rounded border border-kelly-text/8 bg-kelly-page/40 px-1.5 py-1 text-[10px] text-kelly-text/80">
           <p>
-            <span className="font-semibold text-kelly-text/70">Why suggested:</span> {pi2.whySuggested}
+            <span className="font-semibold text-kelly-muted">Why suggested:</span> {pi2.whySuggested}
           </p>
-          <p className="font-mono text-[9px] text-kelly-text/70">
+          <p className="font-mono text-[9px] text-kelly-muted">
             <span className="font-sans font-semibold">Evidence:</span> {pi2.evidenceText.slice(0, 600)}
             {pi2.evidenceText.length > 600 ? "…" : ""}
           </p>
@@ -112,7 +112,7 @@ function SuggestionRow({
           ) : null}
         </div>
       ) : rationale ? (
-        <p className="mt-1 whitespace-pre-wrap text-[9px] text-kelly-text/60">{rationale.slice(0, 800)}</p>
+        <p className="mt-1 whitespace-pre-wrap text-[9px] text-kelly-muted">{rationale.slice(0, 800)}</p>
       ) : null}
       {isPending ? (
         <div className="mt-1 flex flex-wrap gap-1">
@@ -188,7 +188,7 @@ function HintRow({
   return (
     <li className="rounded border border-kelly-text/10 bg-white px-2 py-1 text-[11px] text-kelly-text/85">
       <p>{label}</p>
-      <div className="mt-0.5 flex flex-wrap gap-1 text-[9px] text-kelly-text/55">
+      <div className="mt-0.5 flex flex-wrap gap-1 text-[9px] text-kelly-muted">
         <span>{status}</span>
         {hintType ? <span>· {hintType}</span> : null}
         {confidence != null ? <span>· conf {confidence.toFixed(2)}</span> : null}
@@ -196,9 +196,9 @@ function HintRow({
       {hi2 ? (
         <div className="mt-1 space-y-1 rounded border border-kelly-text/8 bg-kelly-page/40 px-1.5 py-1 text-[10px] text-kelly-text/80">
           <p>
-            <span className="font-semibold text-kelly-text/70">Why suggested:</span> {hi2.whySuggested}
+            <span className="font-semibold text-kelly-muted">Why suggested:</span> {hi2.whySuggested}
           </p>
-          <p className="font-mono text-[9px] text-kelly-text/70">
+          <p className="font-mono text-[9px] text-kelly-muted">
             <span className="font-sans font-semibold">Evidence:</span> {hi2.evidenceText.slice(0, 600)}
             {hi2.evidenceText.length > 600 ? "…" : ""}
           </p>
@@ -213,7 +213,7 @@ function HintRow({
           ) : null}
         </div>
       ) : rationale ? (
-        <p className="mt-1 whitespace-pre-wrap text-[9px] text-kelly-text/60">{rationale.slice(0, 800)}</p>
+        <p className="mt-1 whitespace-pre-wrap text-[9px] text-kelly-muted">{rationale.slice(0, 800)}</p>
       ) : null}
       {isPending ? (
         <div className="mt-1 flex flex-wrap gap-1">
@@ -265,7 +265,7 @@ export function ProfileFactSuggestionsList(props: {
   suggestions: ProfileFactSuggestionListItem[];
 }) {
   if (!props.suggestions.length) {
-    return <p className="text-[11px] text-kelly-text/55">No suggestions yet for this queue item.</p>;
+    return <p className="text-[11px] text-kelly-muted">No suggestions yet for this queue item.</p>;
   }
   return (
     <ul className="mt-1 space-y-1">
@@ -293,7 +293,7 @@ export function ProfileAudienceHintsList(props: {
   hints: ProfileAudienceHintListItem[];
 }) {
   if (!props.hints.length) {
-    return <p className="text-[11px] text-kelly-text/55">No audience hints staged.</p>;
+    return <p className="text-[11px] text-kelly-muted">No audience hints staged.</p>;
   }
   return (
     <ul className="mt-1 space-y-1">

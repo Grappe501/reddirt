@@ -66,11 +66,11 @@ export default async function OppositionIntelligenceAdminPage() {
   return (
     <div className="mx-auto max-w-5xl text-kelly-text">
       <header className="mb-6 border-b border-kelly-text/10 pb-4">
-        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-text/45">
+        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">
           Campaign intelligence
         </p>
         <h1 className="font-heading text-2xl font-bold">Opposition intelligence</h1>
-        <p className="mt-2 max-w-3xl font-body text-sm leading-relaxed text-kelly-text/70">
+        <p className="mt-2 max-w-3xl font-body text-sm leading-relaxed text-kelly-muted">
           Source-backed internal intelligence only. Human review required before external use. No automated scraping,
           publication, or AI conclusions in this surface — see{" "}
           <Link href="/admin/media-monitor" className="text-kelly-slate underline">
@@ -82,36 +82,36 @@ export default async function OppositionIntelligenceAdminPage() {
 
       <div className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <div className={card}>
-          <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-text/50">Entities</p>
+          <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Entities</p>
           <p className="mt-1 font-heading text-2xl font-bold">{entities.length}</p>
-          <p className="mt-1 text-xs text-kelly-text/60">Listed below (max 200)</p>
+          <p className="mt-1 text-xs text-kelly-muted">Listed below (max 200)</p>
         </div>
         <div className={card}>
-          <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-text/50">Sources</p>
+          <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Sources</p>
           <p className="mt-1 font-heading text-2xl font-bold">{sourceTotal}</p>
-          <p className="mt-1 text-xs text-kelly-text/60">In review queue: {sourcesInReview}</p>
+          <p className="mt-1 text-xs text-kelly-muted">In review queue: {sourcesInReview}</p>
         </div>
         <div className={card}>
-          <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-text/50">Intel rows in review</p>
+          <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Intel rows in review</p>
           <p className="mt-1 font-heading text-2xl font-bold">{recordReviewQueue}</p>
-          <p className="mt-1 text-xs text-kelly-text/60">DRAFT + NEEDS_REVIEW (all record tables)</p>
+          <p className="mt-1 text-xs text-kelly-muted">DRAFT + NEEDS_REVIEW (all record tables)</p>
         </div>
         <div className={card}>
-          <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-text/50">INTEL-3</p>
-          <p className="mt-1 font-mono text-xs leading-relaxed text-kelly-text/70">
+          <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">INTEL-3</p>
+          <p className="mt-1 font-mono text-xs leading-relaxed text-kelly-muted">
             Schema + helpers; INTEL-4 = parsers; INTEL-5 = analysis UI.
           </p>
         </div>
       </div>
 
       <section className="mb-8">
-        <h2 className="mb-2 font-heading text-sm font-bold uppercase tracking-wider text-kelly-text/55">
+        <h2 className="mb-2 font-heading text-sm font-bold uppercase tracking-wider text-kelly-muted">
           Entities by type
         </h2>
         <div className={`${card} overflow-x-auto`}>
           <table className="w-full border-collapse text-left text-xs">
             <thead>
-              <tr className="border-b border-kelly-text/10 text-kelly-text/55">
+              <tr className="border-b border-kelly-text/10 text-kelly-muted">
                 <th className="py-1.5 pr-3 font-semibold">Type</th>
                 <th className="py-1.5 font-semibold">Count</th>
               </tr>
@@ -129,7 +129,7 @@ export default async function OppositionIntelligenceAdminPage() {
       </section>
 
       <section className="mb-8">
-        <h2 className="mb-2 font-heading text-sm font-bold uppercase tracking-wider text-kelly-text/55">
+        <h2 className="mb-2 font-heading text-sm font-bold uppercase tracking-wider text-kelly-muted">
           Review queue by record kind (DRAFT / NEEDS_REVIEW)
         </h2>
         <ul className={`${card} grid gap-1 font-mono text-xs sm:grid-cols-2`}>
@@ -145,14 +145,14 @@ export default async function OppositionIntelligenceAdminPage() {
       </section>
 
       <section>
-        <h2 className="mb-2 font-heading text-sm font-bold uppercase tracking-wider text-kelly-text/55">Entity list</h2>
+        <h2 className="mb-2 font-heading text-sm font-bold uppercase tracking-wider text-kelly-muted">Entity list</h2>
         {entities.length === 0 ? (
           <p className={card}>No opposition entities yet. Use Prisma Studio or INTEL-3 helpers to add rows.</p>
         ) : (
           <div className={`${card} overflow-x-auto p-0`}>
             <table className="w-full border-collapse text-left text-xs">
               <thead>
-                <tr className="border-b border-kelly-text/10 bg-kelly-text/[0.03] text-kelly-text/55">
+                <tr className="border-b border-kelly-text/10 bg-kelly-text/[0.03] text-kelly-muted">
                   <th className="px-3 py-2 font-semibold">Name</th>
                   <th className="px-3 py-2 font-semibold">Type</th>
                   <th className="px-3 py-2 font-semibold">Updated</th>
@@ -163,7 +163,7 @@ export default async function OppositionIntelligenceAdminPage() {
                   <tr key={e.id} className="border-b border-kelly-text/5">
                     <td className="px-3 py-2 font-medium">{e.name}</td>
                     <td className="px-3 py-2 font-mono text-kelly-text/75">{e.type}</td>
-                    <td className="px-3 py-2 font-mono text-kelly-text/60">{e.updatedAt.toISOString()}</td>
+                    <td className="px-3 py-2 font-mono text-kelly-muted">{e.updatedAt.toISOString()}</td>
                   </tr>
                 ))}
               </tbody>

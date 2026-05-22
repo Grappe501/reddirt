@@ -93,7 +93,7 @@ export function KellyApprovalQueue({ items }: Props) {
   return (
     <div className="rounded-lg border border-kelly-text/12 bg-white shadow-sm">
       <div className="border-b border-kelly-text/10 px-3 py-2">
-        <p className="font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/50">Approval queue</p>
+        <p className="font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Approval queue</p>
         <input
           value={q}
           onChange={(e) => setQ(e.target.value)}
@@ -112,13 +112,13 @@ export function KellyApprovalQueue({ items }: Props) {
                 >
                   {it.title}
                 </Link>
-                <p className="mt-0.5 font-body text-[10px] text-kelly-text/55">
+                <p className="mt-0.5 font-body text-[10px] text-kelly-muted">
                   {it.county ?? "—"} · {new Date(it.start).toLocaleString("en-US", { timeZone: "America/Chicago" })}
                 </p>
                 {(() => {
                   const row = aiMap.get(it.id);
                   return row?.recommendation?.headline ? (
-                    <p className="mt-1 line-clamp-2 font-body text-[10px] text-kelly-text/70">AI: {row.recommendation.headline}</p>
+                    <p className="mt-1 line-clamp-2 font-body text-[10px] text-kelly-muted">AI: {row.recommendation.headline}</p>
                   ) : null;
                 })()}
               </div>

@@ -31,7 +31,7 @@ export default async function ComplianceDocumentsPage({ searchParams }: Props) {
         Governance · COMP-2
       </p>
       <h1 className="mt-2 font-heading text-3xl font-bold">Compliance documents</h1>
-      <p className="mt-2 max-w-2xl font-body text-sm text-kelly-text/70">
+      <p className="mt-2 max-w-2xl font-body text-sm text-kelly-muted">
         Uploads are stored on the campaign file store and listed here for staff.{" "}
         <strong>Uploaded ≠ trusted for AI</strong> until a reviewer marks &quot;Approved for AI reference&quot; (RAG / index
         wiring is a later packet; see <code className="text-xs">docs/compliance-document-ingest-foundation.md</code> in the
@@ -66,15 +66,15 @@ export default async function ComplianceDocumentsPage({ searchParams }: Props) {
       >
         <h2 className="font-heading text-lg font-bold">Upload a document</h2>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">File</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">File</span>
           <input name="file" type="file" required className="mt-1 w-full text-sm" />
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Title</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Title</span>
           <input name="title" type="text" className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm" />
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Document type</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Document type</span>
           <select
             name="documentType"
             className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm"
@@ -89,7 +89,7 @@ export default async function ComplianceDocumentsPage({ searchParams }: Props) {
         </label>
         <div className="grid gap-4 sm:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Reporting period (text)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Reporting period (text)</span>
             <input
               name="reportingPeriod"
               type="text"
@@ -98,12 +98,12 @@ export default async function ComplianceDocumentsPage({ searchParams }: Props) {
             />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Period / document date</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Period / document date</span>
             <input name="periodDate" type="date" className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm" />
           </label>
         </div>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Notes</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Notes</span>
           <textarea name="notes" rows={3} className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm" />
         </label>
         <label className="flex items-start gap-2 text-sm">
@@ -121,14 +121,14 @@ export default async function ComplianceDocumentsPage({ searchParams }: Props) {
       <div className="mt-10">
         <h2 className="font-heading text-lg font-bold">Recent uploads</h2>
         {rows.length === 0 ? (
-          <p className="mt-2 text-sm text-kelly-text/60">No documents yet.</p>
+          <p className="mt-2 text-sm text-kelly-muted">No documents yet.</p>
         ) : (
           <ul className="mt-3 divide-y divide-kelly-text/10 rounded border border-kelly-text/10 bg-kelly-page">
             {rows.map((r) => (
               <li key={r.id} className="flex flex-col gap-2 p-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p className="font-medium">{r.title}</p>
-                  <p className="text-xs text-kelly-text/60">
+                  <p className="text-xs text-kelly-muted">
                     {complianceDocumentTypeLabel[r.documentType]} · {r.fileName} ·{" "}
                     {r.approvedForAiReference ? (
                       <span className="text-emerald-800">AI ref OK</span>
@@ -137,7 +137,7 @@ export default async function ComplianceDocumentsPage({ searchParams }: Props) {
                     )}
                   </p>
                   {r.reportingPeriod || r.periodDate ? (
-                    <p className="text-xs text-kelly-text/50">
+                    <p className="text-xs text-kelly-subtle">
                       {r.reportingPeriod}
                       {r.reportingPeriod && r.periodDate ? " · " : ""}
                       {r.periodDate ? r.periodDate.toISOString().slice(0, 10) : ""}

@@ -4,13 +4,13 @@ import type { MediaOutreachListItem } from "@/lib/comms-workbench/dto";
 import { getMediaOutreachStatusDisplay, commsStatusBadgeClass } from "@/lib/comms-workbench/status-display";
 import { formatCommsFieldLabel } from "@/lib/comms-workbench/ui-labels";
 
-const th = "border-b border-kelly-text/10 px-2 py-1.5 text-left font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
+const th = "border-b border-kelly-text/10 px-2 py-1.5 text-left font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-muted";
 const td = "border-b border-kelly-text/5 px-2 py-2 text-sm";
 
 export function MediaOutreachListTable({ items }: { items: MediaOutreachListItem[] }) {
   if (items.length === 0) {
     return (
-      <p className="rounded border border-dashed border-kelly-text/20 bg-kelly-page/50 px-4 py-8 text-center font-body text-sm text-kelly-text/65">
+      <p className="rounded border border-dashed border-kelly-text/20 bg-kelly-page/50 px-4 py-8 text-center font-body text-sm text-kelly-muted">
         No media outreach items yet. PR tracking will appear here when rows exist in the workbench graph.
       </p>
     );
@@ -46,14 +46,14 @@ export function MediaOutreachListTable({ items }: { items: MediaOutreachListItem
               <td className={td}>{m.urgency ? formatCommsFieldLabel(m.urgency) : "—"}</td>
               <td className={`${td} text-xs`}>
                 {m.outletName ?? "—"}
-                {m.contactName ? <span className="block text-kelly-text/55">{m.contactName}</span> : null}
+                {m.contactName ? <span className="block text-kelly-muted">{m.contactName}</span> : null}
               </td>
               <td className={`${td} text-xs`}>
                 {m.linkedPlanTitle ? <span>Plan: {m.linkedPlanTitle}</span> : null}
                 {m.linkedIntakeTitle ? <span className="mt-0.5 block">Intake: {m.linkedIntakeTitle}</span> : null}
                 {!m.linkedPlanTitle && !m.linkedIntakeTitle ? "—" : null}
               </td>
-              <td className={`${td} text-[10px] text-kelly-text/60`}>
+              <td className={`${td} text-[10px] text-kelly-muted`}>
                 <time dateTime={m.updatedAt}>{new Date(m.updatedAt).toLocaleString()}</time>
               </td>
             </tr>

@@ -26,14 +26,14 @@ export function PromotionAuditPanel({
           {latest.map((e) => (
             <li key={e.id}>
               <span className="font-semibold">{ACTION_LABELS[e.action] ?? e.action}</span>
-              <span className="text-kelly-text/45"> · {e.targetLane}</span>
+              <span className="text-kelly-subtle"> · {e.targetLane}</span>
               <span className="text-kelly-text/40"> · {new Date(e.at).toLocaleString()}</span>
-              {e.message ? <span className="block text-kelly-text/55">{e.message}</span> : null}
+              {e.message ? <span className="block text-kelly-muted">{e.message}</span> : null}
             </li>
           ))}
         </ul>
       ) : (
-        <p className="mt-2 text-xs text-kelly-text/55">No promotion attempts logged yet.</p>
+        <p className="mt-2 text-xs text-kelly-muted">No promotion attempts logged yet.</p>
       )}
     </section>
   );

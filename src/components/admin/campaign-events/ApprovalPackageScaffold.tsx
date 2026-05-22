@@ -29,7 +29,7 @@ export function ApprovalPackageScaffold({ row }: { row: WorkbenchEventRow | null
 
   if (!row) {
     return (
-      <section className="rounded-2xl border border-dashed border-kelly-text/20 bg-kelly-wash p-6 text-center font-body text-sm text-kelly-text/55">
+      <section className="rounded-2xl border border-dashed border-kelly-text/20 bg-kelly-wash p-6 text-center font-body text-sm text-kelly-muted">
         Select an event to preview the approval email package (send gated by config).
       </section>
     );
@@ -37,7 +37,7 @@ export function ApprovalPackageScaffold({ row }: { row: WorkbenchEventRow | null
 
   if (loading && !payload) {
     return (
-      <section className="rounded-2xl border border-kelly-text/10 bg-kelly-wash p-6 text-center font-body text-sm text-kelly-text/55">
+      <section className="rounded-2xl border border-kelly-text/10 bg-kelly-wash p-6 text-center font-body text-sm text-kelly-muted">
         Loading approval package…
       </section>
     );
@@ -45,7 +45,7 @@ export function ApprovalPackageScaffold({ row }: { row: WorkbenchEventRow | null
 
   if (!payload) {
     return (
-      <section className="rounded-2xl border border-kelly-text/10 bg-kelly-wash p-6 text-center font-body text-sm text-kelly-text/55">
+      <section className="rounded-2xl border border-kelly-text/10 bg-kelly-wash p-6 text-center font-body text-sm text-kelly-muted">
         Could not load approval package for this event.
       </section>
     );

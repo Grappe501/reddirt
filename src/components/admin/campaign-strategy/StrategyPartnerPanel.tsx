@@ -100,7 +100,7 @@ export function StrategyPartnerPanel() {
         </label>
       </div>
 
-      <p className="mt-2 font-body text-[11px] text-kelly-text/60">
+      <p className="mt-2 font-body text-[11px] text-kelly-muted">
         Retrieval bias: <span className="font-medium text-kelly-text/75">{scopeLabel}</span>
       </p>
 
@@ -109,7 +109,7 @@ export function StrategyPartnerPanel() {
         aria-live="polite"
       >
         {history.length === 0 ? (
-          <p className="text-kelly-text/50">No messages yet.</p>
+          <p className="text-kelly-subtle">No messages yet.</p>
         ) : (
           <ul className="space-y-3">
             {history.map((t, i) => (

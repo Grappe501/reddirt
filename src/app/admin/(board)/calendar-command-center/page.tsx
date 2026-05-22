@@ -40,7 +40,7 @@ export default async function CalendarCommandCenterPage() {
         </div>
       ) : null}
 
-      <div className="flex flex-wrap items-center justify-between gap-2 font-body text-xs text-kelly-text/70">
+      <div className="flex flex-wrap items-center justify-between gap-2 font-body text-xs text-kelly-muted">
         <p>
           <span className="font-semibold text-kelly-text">Kelly Calendar Cockpit</span> — desktop board + approval
           queue. Phone view:{" "}
@@ -74,6 +74,10 @@ export default async function CalendarCommandCenterPage() {
           ·{" "}
           <Link className="font-semibold text-kelly-text underline-offset-2 hover:underline" href="/admin/calendar-command-center/build-status">
             Build status
+          </Link>{" "}
+          ·{" "}
+          <Link className="font-semibold text-kelly-text underline-offset-2 hover:underline" href="/admin/calendar-command-center/google-setup">
+            Google setup
           </Link>{" "}
           · Install shell:{" "}
           <Link className="font-semibold text-kelly-text underline-offset-2 hover:underline" href="/kelly/calendar">

@@ -36,7 +36,7 @@ function ChecklistSection({
 }) {
   return (
     <section className="rounded-lg border border-kelly-text/12 bg-white/95 p-3 shadow-sm">
-      <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-kelly-text/55">{title}</h2>
+      <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-kelly-muted">{title}</h2>
       <ul className="mt-2 space-y-3">
         {rows.map((r) => (
           <li key={r.label} className="rounded border border-kelly-text/10 bg-kelly-page/40 px-2 py-2">
@@ -127,10 +127,10 @@ export function EmailCommandCenterReadinessView({
         <Link href={`${ECC}/map`} className="text-xs font-bold text-kelly-forest hover:underline">
           Route map
         </Link>
-        <Link href={`${ECC}/analytics`} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={`${ECC}/analytics`} className="text-xs text-kelly-muted hover:underline">
           Analytics
         </Link>
-        <Link href={`${ECC}/send-execution`} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={`${ECC}/send-execution`} className="text-xs text-kelly-muted hover:underline">
           Send execution governance
         </Link>
         <Link href={`${ECC}/readiness/hosted-db`} className="text-xs font-bold text-violet-800 hover:underline">
@@ -231,7 +231,7 @@ export function EmailCommandCenterReadinessView({
             {governedTestSendAvailable ? "Test send path: available" : "Test send path: blocked — fix items in red above"}
           </span>
         </div>
-        <p className="mt-2 font-body text-[10px] text-kelly-text/70">
+        <p className="mt-2 font-body text-[10px] text-kelly-muted">
           Do not use diagnostics <code className="text-[9px]">sandbox-send</code> for inbox proof — it keeps SendGrid sandbox mode on
           and does not deliver. Docs: docs/email-command-center-launch-hardening.md (queue vs Send execution).
         </p>

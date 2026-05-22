@@ -130,14 +130,14 @@ function DraftCard({
   return (
     <li className="rounded border border-violet-200/70 bg-white/95 p-2 shadow-sm">
       <p className="font-heading text-[11px] font-bold text-kelly-navy">{row.title || "Untitled"}</p>
-      <p className="mt-0.5 text-[9px] text-kelly-text/65">
+      <p className="mt-0.5 text-[9px] text-kelly-muted">
         Type: <span className="font-semibold">{row.draftType || "—"}</span>
       </p>
-      <p className="text-[9px] text-kelly-text/70">Updated {formatShort(row.updatedAt)}</p>
-      <p className="text-[9px] text-kelly-text/70">Owner: {row.createdByLabel ?? "—"}</p>
-      <p className="text-[9px] text-kelly-text/70">Reviewer: {row.assignedReviewerLabel ?? "—"}</p>
+      <p className="text-[9px] text-kelly-muted">Updated {formatShort(row.updatedAt)}</p>
+      <p className="text-[9px] text-kelly-muted">Owner: {row.createdByLabel ?? "—"}</p>
+      <p className="text-[9px] text-kelly-muted">Reviewer: {row.assignedReviewerLabel ?? "—"}</p>
       {row.reviewedByLabel ? (
-        <p className="text-[9px] text-kelly-text/70">Governance sign-off: {row.reviewedByLabel}</p>
+        <p className="text-[9px] text-kelly-muted">Governance sign-off: {row.reviewedByLabel}</p>
       ) : null}
 
       <div className="mt-2 flex flex-wrap gap-1">
@@ -363,7 +363,7 @@ export function MessageStudioSharedDraftReviewQueue({ rows, onOpenDraft, pending
               </p>
               <ul className="mt-2 max-h-[min(320px,42vh)] space-y-2 overflow-y-auto pr-0.5">
                 {list.length === 0 ? (
-                  <li className="rounded border border-dashed border-violet-200/80 bg-white/60 px-2 py-2 text-[9px] text-kelly-text/65">
+                  <li className="rounded border border-dashed border-violet-200/80 bg-white/60 px-2 py-2 text-[9px] text-kelly-muted">
                     Nothing in this lane with current filters.
                     {status === "NEEDS_REVIEW" ? " Move a draft here from Draft or update status after editorial." : null}
                   </li>
@@ -385,7 +385,7 @@ export function MessageStudioSharedDraftReviewQueue({ rows, onOpenDraft, pending
         })}
       </div>
 
-      <p className="mt-3 font-body text-[9px] text-kelly-text/60">
+      <p className="mt-3 font-body text-[9px] text-kelly-muted">
         Send packet opens the anchor on this page — load the draft first so the builder reflects the right copy. Send execution
         links to <strong>#ops</strong> with <code className="text-[9px]">draftId</code> prefilled when approved.
       </p>

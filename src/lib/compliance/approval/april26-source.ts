@@ -3,10 +3,10 @@ import { readdir, stat } from "node:fs/promises";
 import path from "node:path";
 import type { ApprovalEvidence, ApprovalField, ApprovalItemSource } from "./approval-types";
 
-const APRIL26_DIR = path.resolve(process.cwd(), "..", "Compliance", "April26");
+import { getApril26Dir as resolveApril26Dir, GOODCHANGE_CSV_NAME } from "../april26/paths";
 
 export function getApril26Dir(): string {
-  return process.env.COMPLIANCE_APRIL26_DIR?.trim() || APRIL26_DIR;
+  return resolveApril26Dir();
 }
 
 export type April26GoodChangeRow = Record<string, string>;
@@ -34,8 +34,7 @@ function parseCsvLine(line: string): string[] {
 
 export async function loadApril26GoodChangeRows(): Promise<April26GoodChangeRow[]> {
   const dir = getApril26Dir();
-  const csvName = "_Committee to Elect Kelly Grappe_transactions_Apr 1, 2026_Apr 30, 2026_.csv";
-  const csvPath = path.join(dir, csvName);
+  const csvPath = path.join(dir, GOODCHANGE_CSV_NAME);
   const text = await readFile(csvPath, "utf8");
   const lines = text.replace(/^\uFEFF/, "").split(/\r?\n/).filter((line) => line.trim());
   if (!lines.length) return [];

@@ -94,16 +94,16 @@ export default async function CalendarRequestsPage({ searchParams }: Props) {
               <span className="rounded bg-kelly-fog px-1 text-[9px] font-bold uppercase text-kelly-slate">{r.status}</span>
               <span className="rounded bg-violet-50 px-1 text-[9px] font-bold text-violet-950">{getCalendarRequestKindLabel(r.kind)}</span>
               <span className="font-semibold text-kelly-navy">{r.title ?? "Request"}</span>
-              <span className="text-[9px] text-kelly-text/50">{r.source}</span>
+              <span className="text-[9px] text-kelly-subtle">{r.source}</span>
             </div>
-            <p className="mt-0.5 text-[10px] text-kelly-text/65">
+            <p className="mt-0.5 text-[10px] text-kelly-muted">
               {r.requesterName ?? "—"} · {r.requesterEmail ?? "—"} · {r.requesterPhone ?? "—"}
             </p>
-            <p className="mt-0.5 text-[10px] text-kelly-text/70">
+            <p className="mt-0.5 text-[10px] text-kelly-muted">
               Community: {r.structuredSummary.community ?? "—"} · type: {r.structuredSummary.gatheringType ?? "—"} · timing:{" "}
               {r.structuredSummary.preferredTiming ?? "—"}
             </p>
-            <p className="mt-0.5 text-[9px] text-kelly-text/55">
+            <p className="mt-0.5 text-[9px] text-kelly-muted">
               Created {r.createdAt.toISOString()} · county: {r.countyName ?? r.countyId ?? "—"}
             </p>
             {r.notesExcerpt ? (
@@ -118,7 +118,7 @@ export default async function CalendarRequestsPage({ searchParams }: Props) {
                 >
                   {r.linkedEventTitle ?? r.linkedEventId.slice(0, 8)}
                 </Link>{" "}
-                <span className="text-kelly-text/50">({r.linkedEventWorkflowState})</span>
+                <span className="text-kelly-subtle">({r.linkedEventWorkflowState})</span>
               </p>
             ) : null}
             <div className="mt-2 flex flex-wrap gap-2">
@@ -155,7 +155,7 @@ export default async function CalendarRequestsPage({ searchParams }: Props) {
         ))}
       </ul>
       {visible.length === 0 ? (
-        <p className="text-[11px] text-kelly-text/60">No matching event-like intakes for this filter.</p>
+        <p className="text-[11px] text-kelly-muted">No matching event-like intakes for this filter.</p>
       ) : null}
     </div>
   );

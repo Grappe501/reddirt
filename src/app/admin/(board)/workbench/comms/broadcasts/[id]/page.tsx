@@ -18,7 +18,7 @@ import {
   CommunicationCampaignType,
 } from "@prisma/client";
 
-const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
+const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-muted";
 const defAudience = (raw: object) => JSON.stringify(raw, null, 2);
 
 type Props = { params: Promise<{ id: string }> };
@@ -58,7 +58,7 @@ export default async function BroadcastDetailPage({ params }: Props) {
         <Link href="/admin/workbench/comms/broadcasts">← Campaigns</Link>
       </p>
       <h1 className="mt-1 font-heading text-lg font-bold text-kelly-text">{c2.name}</h1>
-      <p className="font-mono text-[9px] text-kelly-text/50">{c2.id}</p>
+      <p className="font-mono text-[9px] text-kelly-subtle">{c2.id}</p>
       {c2.automationStatus !== "NONE" || c2.orchestrationIdempotencyKey ? (
         <p className="mt-0.5 rounded border border-amber-200/80 bg-amber-50/50 px-1 py-0.5 text-[9px] text-amber-950/80">
           <span className="font-bold">Orchestration:</span> {c2.automationStatus}
@@ -69,7 +69,7 @@ export default async function BroadcastDetailPage({ params }: Props) {
         </p>
       ) : null}
       {c2.event ? (
-        <p className="text-[10px] text-kelly-text/70">
+        <p className="text-[10px] text-kelly-muted">
           Event: {c2.event.title} · {c2.event.eventWorkflowState} · {c2.event.startAt.toLocaleString()}
         </p>
       ) : null}
@@ -117,14 +117,14 @@ export default async function BroadcastDetailPage({ params }: Props) {
       </div>
 
       <div className="mt-2 space-y-0.5 border border-kelly-text/10 bg-amber-50/40 p-1.5 text-[9px] text-kelly-text/80">
-        <p className="font-bold uppercase text-kelly-text/55">Send health</p>
+        <p className="font-bold uppercase text-kelly-muted">Send health</p>
         <p>
-          <span className="text-kelly-text/55">Lock until:</span>{" "}
+          <span className="text-kelly-muted">Lock until:</span>{" "}
           {c2.processingLockUntil ? c2.processingLockUntil.toLocaleString() : "—"}{" "}
-          <span className="text-kelly-text/55">· Last run:</span> {c2.lastProcessedAt ? c2.lastProcessedAt.toLocaleString() : "—"}
+          <span className="text-kelly-muted">· Last run:</span> {c2.lastProcessedAt ? c2.lastProcessedAt.toLocaleString() : "—"}
         </p>
         <p>
-          <span className="text-kelly-text/55">Batch progress (pending in queue):</span> {pendingCount} of{" "}
+          <span className="text-kelly-muted">Batch progress (pending in queue):</span> {pendingCount} of{" "}
           {c2.totalRecipients} rows ·{" "}
           {c2.status === CommunicationCampaignStatus.SENDING
             ? "worker active—cron or “Run batch now” will drain pending rows"
@@ -137,7 +137,7 @@ export default async function BroadcastDetailPage({ params }: Props) {
         ) : null}
         {lastFail ? (
           <p>
-            <span className="text-kelly-text/55">Last failure at:</span> {lastFail.failedAt?.toLocaleString() ?? "—"}{" "}
+            <span className="text-kelly-muted">Last failure at:</span> {lastFail.failedAt?.toLocaleString() ?? "—"}{" "}
             {lastFail.lastError ? `· ${lastFail.lastError}` : ""}
           </p>
         ) : null}
@@ -219,7 +219,7 @@ export default async function BroadcastDetailPage({ params }: Props) {
         </form>
         <form action={queueBroadcastCampaignAction} className="flex flex-wrap items-end gap-0.5">
           <input type="hidden" name="id" value={c2.id} />
-          <label className="text-[8px] text-kelly-text/55">
+          <label className="text-[8px] text-kelly-muted">
             Schedule
             <input name="scheduledAt" type="datetime-local" className="ml-0.5 border border-kelly-text/15 bg-white text-[8px]" />
           </label>
@@ -283,7 +283,7 @@ export default async function BroadcastDetailPage({ params }: Props) {
             </div>
           ))
         ) : (
-          <p className="p-1 text-kelly-text/50">No failed/bounced rows.</p>
+          <p className="p-1 text-kelly-subtle">No failed/bounced rows.</p>
         )}
       </div>
 
@@ -297,7 +297,7 @@ export default async function BroadcastDetailPage({ params }: Props) {
             {r.lastError ? `· ${r.lastError}` : ""}
           </div>
         ))}
-        {recipients.length === 0 ? <p className="p-1 text-kelly-text/50">No rows — queue the campaign to seed.</p> : null}
+        {recipients.length === 0 ? <p className="p-1 text-kelly-subtle">No rows — queue the campaign to seed.</p> : null}
       </div>
     </div>
   );

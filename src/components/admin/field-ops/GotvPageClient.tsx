@@ -68,12 +68,12 @@ export function GotvPageClient({
             <h2 className="font-heading text-2xl font-bold text-kelly-text">
               {allocation.statewide.currentCommitments.toLocaleString()} / {allocation.statewide.commitmentGoal.toLocaleString()}
             </h2>
-            <p className="font-body text-xs text-kelly-text/70">
+            <p className="font-body text-xs text-kelly-muted">
               Gap {allocation.statewide.commitmentGap.toLocaleString()} · estimated relational coverage{" "}
               {allocation.statewide.estimatedRelationalCoverage.toLocaleString()} people
             </p>
           </div>
-          <p className="font-body text-xs text-kelly-text/60">Message: “{allocation.commitmentMessage}”</p>
+          <p className="font-body text-xs text-kelly-muted">Message: “{allocation.commitmentMessage}”</p>
         </div>
         <div className="mt-3 h-3 overflow-hidden rounded-full bg-white">
           <div className="h-full rounded-full bg-emerald-700" style={{ width: `${currentPct}%` }} />
@@ -102,10 +102,10 @@ export function GotvPageClient({
             {stagedCards.map((c) => (
               <li key={c.id} className="py-2">
                 <p className="font-semibold">{c.name} · {c.county} · {c.zip}</p>
-                <p className="text-kelly-text/60">Opt-ins: email={String(c.optInEmail)} sms={String(c.optInSms)} phone={String(c.optInPhone)} · ways: {c.waysToHelp.join(", ") || "—"}</p>
+                <p className="text-kelly-muted">Opt-ins: email={String(c.optInEmail)} sms={String(c.optInSms)} phone={String(c.optInPhone)} · ways: {c.waysToHelp.join(", ") || "—"}</p>
               </li>
             ))}
-            {stagedCards.length === 0 ? <li className="py-2 text-kelly-text/50">No staged fallback cards on disk.</li> : null}
+            {stagedCards.length === 0 ? <li className="py-2 text-kelly-subtle">No staged fallback cards on disk.</li> : null}
           </ul>
         </section>
       ) : active === "automation" ? (
@@ -115,7 +115,7 @@ export function GotvPageClient({
             Prepare-only queue: every email/SMS/phone item must show opt-in, STOP/unsubscribe support, source of consent,
             human approval, suppression-list check, and owner before any future sending integration.
           </div>
-          <p className="mt-3 font-body text-xs text-kelly-text/65">
+          <p className="mt-3 font-body text-xs text-kelly-muted">
             Source file: <code className="rounded bg-kelly-wash px-1">data/field-ops/automation-recommendations.staged.json</code>
           </p>
         </section>
@@ -123,7 +123,7 @@ export function GotvPageClient({
         <div className="overflow-x-auto rounded-lg border border-kelly-text/12 bg-white shadow-sm">
           <table className="min-w-[1180px] w-full border-collapse font-body text-[11px] text-kelly-text">
             <thead>
-              <tr className="border-b border-kelly-text/10 bg-kelly-wash/50 text-left text-[9px] font-bold uppercase tracking-wide text-kelly-text/55">
+              <tr className="border-b border-kelly-text/10 bg-kelly-wash/50 text-left text-[9px] font-bold uppercase tracking-wide text-kelly-muted">
                 <th className="px-2 py-2">County</th>
                 <th className="px-2 py-2">Target</th>
                 <th className="px-2 py-2">Current</th>
@@ -147,7 +147,7 @@ export function GotvPageClient({
                   <td className="px-2 py-2 tabular-nums">{r.currentCommitments ?? "—"}</td>
                   <td className="px-2 py-2 tabular-nums">{r.commitmentGap}</td>
                   <td className="px-2 py-2 tabular-nums font-semibold text-emerald-800">{r.countyVolunteerNeedPct.toFixed(2)}%</td>
-                  <td className="max-w-[360px] px-2 py-2 text-[10px] text-kelly-text/65">{r.countyVolunteerNeedFormula}</td>
+                  <td className="max-w-[360px] px-2 py-2 text-[10px] text-kelly-muted">{r.countyVolunteerNeedFormula}</td>
                   <td className="px-2 py-2 tabular-nums">{r.housePartyGoal}</td>
                   <td className="px-2 py-2 tabular-nums">{r.estimatedRelationalCoverage}</td>
                   <td className="px-2 py-2 tabular-nums">{r.phoneBankCapacityHours}</td>

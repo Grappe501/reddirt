@@ -23,7 +23,7 @@ export function PlanDetailInPageNav({ planId }: { planId: string }) {
       className="flex flex-wrap gap-1.5 border-b border-kelly-text/8 pb-2"
       aria-label="On this plan"
     >
-      <span className="w-full text-[10px] font-bold uppercase tracking-wider text-kelly-text/50">On this page</span>
+      <span className="w-full text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">On this page</span>
       {items.map((it) => (
         <Link key={it.id} href={commsPlanPath(planId, it.id)} className={linkCls} prefetch={false}>
           {it.label}

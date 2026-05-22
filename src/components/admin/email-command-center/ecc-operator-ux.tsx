@@ -326,7 +326,7 @@ export function EccOperatorPageChrome({
         <Link href={`${ECC_BASE}/readiness`} className="text-[11px] font-semibold text-kelly-forest hover:underline">
           Readiness
         </Link>
-        <Link href={`${ECC_BASE}/map`} className="text-[11px] text-kelly-text/60 hover:underline">
+        <Link href={`${ECC_BASE}/map`} className="text-[11px] text-kelly-muted hover:underline">
           Route map
         </Link>
       </div>

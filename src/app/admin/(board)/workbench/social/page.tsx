@@ -15,7 +15,7 @@ import {
 } from "@/lib/conversation-monitoring/conversation-monitoring-queries";
 import { prisma } from "@/lib/db";
 
-const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
+const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-muted";
 
 export default async function WorkbenchSocialPage() {
   const [summary, items, accounts, convSummary, convItems, convClusters, convOpps, countyOptions] = await Promise.all([
@@ -48,7 +48,7 @@ export default async function WorkbenchSocialPage() {
             All tasks
           </Link>
         </div>
-        <p className="font-body text-[10px] text-kelly-text/55">
+        <p className="font-body text-[10px] text-kelly-muted">
           DB snapshot: {summary.inPipeline} in pipeline · {summary.inReview} in review · {summary.published} published
         </p>
       </div>
@@ -69,7 +69,7 @@ export default async function WorkbenchSocialPage() {
 
       <div className="mt-4 border-t border-kelly-text/10 pt-3" id="social-create-form">
         <h2 className="font-heading text-sm font-bold text-kelly-text">Add another work item</h2>
-        <p className="mt-0.5 font-body text-xs text-kelly-text/60">
+        <p className="mt-0.5 font-body text-xs text-kelly-muted">
           New rows appear in the workbench after save (use queue refresh in the app or re-open the page). The command view above is the primary editor
           for <code className="rounded bg-kelly-text/5 px-0.5">SocialContentItem</code>, variants, and linked tasks.
         </p>

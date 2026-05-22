@@ -54,7 +54,7 @@ export function WeekViewMap({
   return (
     <div className="space-y-2">
       {winTargetLegend ? (
-        <p className="font-body text-[10px] text-kelly-text/65">
+        <p className="font-body text-[10px] text-kelly-muted">
           Pin halo (teal→gold) encodes modeled <span className="font-semibold">target vote gain</span> for that county this week — advisory scenario only.
         </p>
       ) : null}

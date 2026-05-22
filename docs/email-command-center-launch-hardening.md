@@ -71,9 +71,9 @@
 ## No-send doctrine (summary)
 
 - Queue status **APPROVED** ≠ provider send approval.  
-- **No** `messages.send` / mass ESP execution from Email Command Center UI in this slice.  
+- **No** queue-item `messages.send`, Gmail send-from-queue, or automation-triggered ESP execution from Email Command Center UI.  
 - **No** automation **activation** from Automation Studio (shell only).  
-- **Send Execution Governance** is **doctrine only** — not a send console.  
+- **Send Execution** is the only governed SendGrid execution rail: doctrine plus `#ops` forms for preflight, one-recipient test send, final approval, and typed-confirmed broadcast.  
 - **Send Packet** is a **review artifact** (export/copy) — not a campaign or Gmail action.
 
 ---

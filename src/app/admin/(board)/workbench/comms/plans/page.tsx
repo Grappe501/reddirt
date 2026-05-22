@@ -40,7 +40,7 @@ export default async function CommsWorkbenchPlansListPage({ searchParams }: Prop
           </Link>
         </div>
       </div>
-      <p className="mt-1 max-w-2xl font-body text-sm text-kelly-text/70">
+      <p className="mt-1 max-w-2xl font-body text-sm text-kelly-muted">
         Communication plans in the new workbench graph. Open a row for drafts, sends, and provenance.
       </p>
 

@@ -372,27 +372,27 @@ export function MessageStudioEditorialReviewPanel({ activeDraft, patchActive, op
         </p>
         <dl className="mt-2 grid gap-1 text-[10px] text-kelly-navy sm:grid-cols-2">
           <div>
-            <dt className="font-semibold text-kelly-text/60">Title</dt>
+            <dt className="font-semibold text-kelly-muted">Title</dt>
             <dd>{activeDraft.title.trim() || "—"}</dd>
           </div>
           <div>
-            <dt className="font-semibold text-kelly-text/60">Draft type</dt>
+            <dt className="font-semibold text-kelly-muted">Draft type</dt>
             <dd>{activeDraft.draftType.trim() || "—"}</dd>
           </div>
           <div>
-            <dt className="font-semibold text-kelly-text/60">Approval status (draft)</dt>
+            <dt className="font-semibold text-kelly-muted">Approval status (draft)</dt>
             <dd>{activeDraft.approvalStatus.replace(/_/g, " ")}</dd>
           </div>
           <div>
-            <dt className="font-semibold text-kelly-text/60">Readiness tier</dt>
+            <dt className="font-semibold text-kelly-muted">Readiness tier</dt>
             <dd className="font-bold">{tierLabel(tier)}</dd>
           </div>
           <div className="sm:col-span-2">
-            <dt className="font-semibold text-kelly-text/60">Future send rail (inferred)</dt>
+            <dt className="font-semibold text-kelly-muted">Future send rail (inferred)</dt>
             <dd>{inferFutureSendRail(activeDraft.draftType)}</dd>
           </div>
           <div className="sm:col-span-2">
-            <dt className="font-semibold text-kelly-text/60">Blockers / next checks</dt>
+            <dt className="font-semibold text-kelly-muted">Blockers / next checks</dt>
             <dd>
               <ul className="mt-0.5 list-inside list-disc text-[9px]">
                 {blockers.map((b) => (

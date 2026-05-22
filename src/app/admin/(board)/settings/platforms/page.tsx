@@ -38,7 +38,7 @@ export default function AdminPlatformSettingsPage() {
 
       <div className="mt-10 overflow-x-auto rounded-card border border-kelly-text/10 bg-white shadow-[var(--shadow-soft)]">
         <table className="min-w-full divide-y divide-kelly-text/10 font-body text-sm">
-          <thead className="bg-kelly-text/[0.04] text-left text-xs font-bold uppercase tracking-wider text-kelly-text/55">
+          <thead className="bg-kelly-text/[0.04] text-left text-xs font-bold uppercase tracking-wider text-kelly-muted">
             <tr>
               <th className="px-4 py-3">Platform</th>
               <th className="px-4 py-3">Environment</th>
@@ -50,7 +50,7 @@ export default function AdminPlatformSettingsPage() {
               <tr key={r.env}>
                 <td className="px-4 py-3 font-semibold">{r.platforms}</td>
                 <td className="px-4 py-3 font-mono text-xs text-kelly-text/75">{r.env}</td>
-                <td className="px-4 py-3 text-xs text-kelly-text/70">{r.note}</td>
+                <td className="px-4 py-3 text-xs text-kelly-muted">{r.note}</td>
               </tr>
             ))}
           </tbody>

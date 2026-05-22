@@ -64,7 +64,7 @@ export default function AdminStyleGuideHubPage() {
 
       <section className="mt-8" id="comms">
         <h2 className="font-heading text-lg font-bold text-kelly-text">Comms &amp; public intake (ops)</h2>
-        <p className="mt-2 text-sm text-kelly-text/70">
+        <p className="mt-2 text-sm text-kelly-muted">
           Full runbook: <code className="text-xs">docs/KELLY_SOS_COMMS_READINESS.md</code> — workbench, webhooks, 24h follow-up
           expectations on form success, and what happens when API keys are missing.
         </p>
@@ -88,11 +88,11 @@ export default function AdminStyleGuideHubPage() {
                 )}
               </div>
               {"file" in item && (
-                <p className="mt-1 font-mono text-[11px] text-kelly-text/55">
+                <p className="mt-1 font-mono text-[11px] text-kelly-muted">
                   {item.file}
                 </p>
               )}
-              <p className="mt-1 text-kelly-text/70">{item.note}</p>
+              <p className="mt-1 text-kelly-muted">{item.note}</p>
             </li>
           ))}
         </ul>
@@ -109,13 +109,13 @@ export default function AdminStyleGuideHubPage() {
         </ul>
       </section>
 
-      <section className="mt-8 rounded-md border border-kelly-text/10 bg-kelly-text/[0.03] px-4 py-3 text-sm text-kelly-text/70">
+      <section className="mt-8 rounded-md border border-kelly-text/10 bg-kelly-text/[0.03] px-4 py-3 text-sm text-kelly-muted">
         <strong className="text-kelly-text">Bilingual (future):</strong> see workspace{" "}
         <code className="text-xs">HISPANIC_SPANISH_LOCALE_LAYER_PLAN.md</code> (repo root) for the Spanish toggle layer; glossary
         and <code className="text-xs">es-US</code> copy review before shipping voter-facing legal lines.
       </section>
 
-      <p className="mt-6 text-xs text-kelly-text/50">
+      <p className="mt-6 text-xs text-kelly-subtle">
         Repo pointer (if mirrored): <span className="font-mono">{REPO}</span> — match branch to your deploy.
       </p>
     </div>

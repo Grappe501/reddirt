@@ -16,7 +16,7 @@ export default function MemoryReviewPage() {
           ← AI command center
         </Link>
         <h1 className="mt-2 font-heading text-2xl font-bold">Memory review queue</h1>
-        <p className="mt-2 text-sm text-kelly-text/70">
+        <p className="mt-2 text-sm text-kelly-muted">
           Human reviews memory candidates before durable agent knowledge. JSON only — no vector DB in V1.
         </p>
       </header>
@@ -24,7 +24,7 @@ export default function MemoryReviewPage() {
       <section className="rounded-2xl border border-kelly-text/10 bg-kelly-page p-4 text-xs">
         <h2 className="font-bold">Recent runtime audits</h2>
         {audit.length === 0 ? (
-          <p className="mt-2 text-kelly-text/50">No audits yet — use Ask the Campaign Agent on any tracked page.</p>
+          <p className="mt-2 text-kelly-subtle">No audits yet — use Ask the Campaign Agent on any tracked page.</p>
         ) : (
           <ul className="mt-2 space-y-1">
             {audit.map((a) => (

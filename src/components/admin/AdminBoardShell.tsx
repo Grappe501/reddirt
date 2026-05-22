@@ -63,18 +63,16 @@ export function AdminBoardShell({
         <CampaignBrandingStyles primaryColor={tenantBranding.primaryColor} accentColor={tenantBranding.accentColor} />
       ) : null}
       <div className="flex min-h-screen bg-transparent text-kelly-text">
-        <aside className="flex w-[min(100%,300px)] flex-col border-r border-kelly-text/15 bg-kelly-text text-kelly-page">
-          <div className="border-b border-kelly-page/10 px-5 py-6">
-            <p className="font-body text-[10px] font-bold uppercase tracking-[0.28em] text-kelly-page/55">
-              Kelly Campaign OS
-            </p>
-            <p className="mt-2 font-heading text-lg font-bold leading-tight">Operational command</p>
-            <p className="mt-2 font-body text-xs leading-relaxed text-kelly-page/65">{KELLY_CAMPAIGN_OS_TAGLINE}</p>
+        <aside className="flex w-[min(100%,300px)] flex-col border-r border-[var(--border-on-navy)] bg-kelly-text text-kelly-inverse">
+          <div className="border-b border-[var(--border-on-navy)] px-5 py-6">
+            <p className="os-eyebrow-inverse tracking-[0.28em]">Kelly Campaign OS</p>
+            <p className="mt-2 font-heading text-lg font-bold leading-tight text-kelly-inverse">Operational command</p>
+            <p className="mt-2 font-body text-xs leading-relaxed text-kelly-inverse-soft">{KELLY_CAMPAIGN_OS_TAGLINE}</p>
           </div>
           <nav className="flex flex-1 flex-col gap-3 overflow-y-auto px-3 py-4" aria-label="Campaign OS">
             <KellySingleCampaignBadge />
             {showDevTenancyUi() && tenants.length > 1 ? (
-              <details className="mx-3 text-[10px] text-kelly-page/50">
+              <details className="mx-3 text-[10px] text-kelly-inverse-muted">
                 <summary className="cursor-pointer font-bold uppercase tracking-wider">Developer · tenancy</summary>
                 <GlobalCampaignSwitcher tenants={tenants} activeTenantId={activeTenantId} branding={tenantBranding} />
               </details>
@@ -83,15 +81,13 @@ export function AdminBoardShell({
               <CampaignOsNavRail groups={campaignOsNavGroups!} badges={campaignOsNavBadges} />
             ) : null}
             <div>
-              <p className="px-3 pb-1 font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-page/45">
-                Legacy & site
-              </p>
+              <p className="os-nav-group-label">Legacy & site</p>
               <div className="flex flex-col gap-0.5">
                 {legacyOpsLinks.map((l) => (
                   <Link
                     key={l.href}
                     href={l.href}
-                    className="rounded-md px-3 py-2 font-body text-sm font-medium text-kelly-page/80 transition hover:bg-kelly-page/10 hover:text-kelly-page"
+                    className="os-nav-link"
                   >
                     {l.label}
                   </Link>
@@ -99,15 +95,13 @@ export function AdminBoardShell({
               </div>
             </div>
             <div>
-              <p className="px-3 pb-1 font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-page/45">
-                Site content
-              </p>
+              <p className="os-nav-group-label">Site content</p>
               <div className="flex flex-col gap-0.5">
                 {siteLinks.map((l) => (
                   <Link
                     key={l.href}
                     href={l.href}
-                    className="rounded-md px-3 py-2.5 font-body text-sm font-medium text-kelly-page/85 transition hover:bg-kelly-page/10 hover:text-kelly-page"
+                    className="os-nav-link py-2.5"
                   >
                     {l.label}
                   </Link>
@@ -118,30 +112,30 @@ export function AdminBoardShell({
                   href={`${countyPortal}/counties`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-2 block rounded-md px-3 py-2.5 font-body text-sm font-medium text-kelly-page/90 transition hover:bg-kelly-page/10"
+                  className="mt-2 block rounded-md px-3 py-2.5 font-body text-sm font-medium text-kelly-inverse transition hover:bg-kelly-page/10"
                 >
                   County portal ↗
                 </a>
               ) : null}
             </div>
           </nav>
-          <div className="border-t border-kelly-page/10 p-4">
+          <div className="border-t border-[var(--border-on-navy)] p-4">
             <form action={adminLogoutAction}>
               <button
                 type="submit"
-                className="w-full rounded-md border border-kelly-page/25 px-3 py-2 font-body text-xs font-semibold uppercase tracking-wider text-kelly-page/90 transition hover:bg-kelly-page/10"
+                className="w-full rounded-md border border-[var(--border-on-navy)] px-3 py-2 font-body text-xs font-semibold uppercase tracking-wider text-kelly-inverse transition hover:bg-white/10"
               >
                 Sign out
               </button>
             </form>
-            <p className="mt-3 text-center font-body text-[10px] text-kelly-page/50">
-              Press <kbd className="rounded border border-kelly-page/30 px-1">Ctrl+K</kbd> for command palette
+            <p className="mt-3 text-center font-body text-[10px] text-kelly-inverse-muted">
+              Press <kbd className="rounded border border-[var(--border-on-navy)] px-1 text-kelly-inverse-soft">Ctrl+K</kbd> for command palette
             </p>
           </div>
         </aside>
-        <div className="flex min-h-screen flex-1 flex-col">
+        <div className="flex min-h-screen flex-1 flex-col os-admin-canvas">
           <main className="flex-1 px-6 py-8 lg:px-10 lg:py-10">{children}</main>
-          <div className="border-t border-kelly-text/10 bg-kelly-wash px-6 py-3 lg:px-10">
+          <div className="border-t border-kelly-border bg-kelly-wash px-6 py-3 lg:px-10">
             <CampaignPaidForBar variant="light" />
           </div>
         </div>

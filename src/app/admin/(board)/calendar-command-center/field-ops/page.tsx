@@ -13,7 +13,7 @@ export default async function FieldOpsPage({ searchParams }: Props) {
 
   return (
     <div className="mx-auto max-w-7xl space-y-5 px-4 py-6">
-      <div className="font-body text-xs text-kelly-text/60">
+      <div className="font-body text-xs text-kelly-muted">
         <Link href="/admin/calendar-command-center" className="text-kelly-text underline-offset-2 hover:underline">
           ← Command center
         </Link>
@@ -26,7 +26,7 @@ export default async function FieldOpsPage({ searchParams }: Props) {
       </div>
 
       <header className="rounded-lg border border-kelly-text/15 bg-[#f7f2e8] px-5 py-5 shadow-sm">
-        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-text/45">V3 · Field ops</p>
+        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">V3 · Field ops</p>
         <h1 className="mt-2 font-heading text-2xl font-bold text-kelly-text">Volunteer capacity & community coverage</h1>
         <p className="mt-2 max-w-3xl font-body text-sm text-kelly-text/75">
           Logistics, accessibility, and volunteer workload — not automated voter persuasion. Refresh JSON after running{" "}

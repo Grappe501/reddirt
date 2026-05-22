@@ -4,7 +4,7 @@ import type { MediaOutreachDetail } from "@/lib/comms-workbench/dto";
 import { getMediaOutreachStatusDisplay, commsStatusBadgeClass } from "@/lib/comms-workbench/status-display";
 import { formatCommsFieldLabel } from "@/lib/comms-workbench/ui-labels";
 
-const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
+const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-muted";
 const card = "rounded-md border border-kelly-text/10 bg-white p-3";
 
 export function MediaOutreachDetailView({ item }: { item: MediaOutreachDetail }) {
@@ -55,7 +55,7 @@ export function MediaOutreachDetailView({ item }: { item: MediaOutreachDetail })
             {item.linkedWorkflowIntake ? (
               <span>
                 {item.linkedWorkflowIntake.title ?? "Intake"}{" "}
-                <span className="text-xs text-kelly-text/55">({formatCommsFieldLabel(item.linkedWorkflowIntake.status)})</span>
+                <span className="text-xs text-kelly-muted">({formatCommsFieldLabel(item.linkedWorkflowIntake.status)})</span>
               </span>
             ) : (
               "—"

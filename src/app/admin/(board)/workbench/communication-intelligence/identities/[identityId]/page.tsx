@@ -45,7 +45,7 @@ export default async function CommunicationIdentityDetailPage({ params }: Props)
       </Link>
       <header>
         <h1 className="font-heading text-lg font-bold text-kelly-navy">{identity.displayName ?? identity.normalizedEmail ?? identity.id}</h1>
-        <p className="text-[10px] text-kelly-text/70">
+        <p className="text-[10px] text-kelly-muted">
           Review status: <strong>{identity.reviewStatus}</strong> · normalized email: {identity.normalizedEmail ?? "—"}
         </p>
       </header>
@@ -55,11 +55,11 @@ export default async function CommunicationIdentityDetailPage({ params }: Props)
           <Link href="/admin/workbench/email-command-center/profiles" className="font-bold text-kelly-forest underline">
             {identity.emailContactProfile.displayName ?? identity.emailContactProfile.primaryEmail}
           </Link>{" "}
-          <span className="font-mono text-[9px] text-kelly-text/55">id {identity.emailContactProfile.id}</span>{" "}
-          <span className="text-[9px] text-kelly-text/55">(open profiles list — no send)</span>
+          <span className="font-mono text-[9px] text-kelly-muted">id {identity.emailContactProfile.id}</span>{" "}
+          <span className="text-[9px] text-kelly-muted">(open profiles list — no send)</span>
         </p>
       ) : (
-        <p className="text-kelly-text/70">No EmailContactProfile linked yet.</p>
+        <p className="text-kelly-muted">No EmailContactProfile linked yet.</p>
       )}
       <div className="flex flex-wrap gap-2">
         <form action={markCommunicationIdentityNeedsReviewAction}>
@@ -76,7 +76,7 @@ export default async function CommunicationIdentityDetailPage({ params }: Props)
         </form>
       </div>
       <section className="rounded border border-kelly-text/10 bg-white/90 p-2">
-        <p className="font-heading text-[10px] font-bold uppercase text-kelly-text/55">Signals (not audience-approved)</p>
+        <p className="font-heading text-[10px] font-bold uppercase text-kelly-muted">Signals (not audience-approved)</p>
         <ul className="mt-1 list-inside list-disc text-[10px]">
           {identity.signals.map((s) => (
             <li key={s.id}>
@@ -87,7 +87,7 @@ export default async function CommunicationIdentityDetailPage({ params }: Props)
         </ul>
       </section>
       <section className="rounded border border-kelly-text/10 bg-white/90 p-2">
-        <p className="font-heading text-[10px] font-bold uppercase text-kelly-text/55">Gmail touchpoints</p>
+        <p className="font-heading text-[10px] font-bold uppercase text-kelly-muted">Gmail touchpoints</p>
         <ul className="mt-1 space-y-1 text-[10px]">
           {gmailParts.map((p) => (
             <li key={p.id}>
@@ -97,7 +97,7 @@ export default async function CommunicationIdentityDetailPage({ params }: Props)
         </ul>
       </section>
       <section className="rounded border border-kelly-text/10 bg-white/90 p-2">
-        <p className="font-heading text-[10px] font-bold uppercase text-kelly-text/55">Calendar touchpoints</p>
+        <p className="font-heading text-[10px] font-bold uppercase text-kelly-muted">Calendar touchpoints</p>
         <ul className="mt-1 space-y-1 text-[10px]">
           {calParts.map((p) => (
             <li key={p.id}>
@@ -108,7 +108,7 @@ export default async function CommunicationIdentityDetailPage({ params }: Props)
         </ul>
       </section>
       <section className="rounded border border-kelly-text/10 bg-white/90 p-2">
-        <p className="font-heading text-[10px] font-bold uppercase text-kelly-text/55">Match candidates</p>
+        <p className="font-heading text-[10px] font-bold uppercase text-kelly-muted">Match candidates</p>
         <ul className="mt-1 list-inside list-disc text-[10px]">
           {identity.matchCandidates.map((m) => (
             <li key={m.id}>

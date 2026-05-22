@@ -33,7 +33,7 @@ export function ReimbursementOperationsPanel({
   return (
     <section className="rounded-2xl border border-kelly-navy/15 bg-kelly-page p-5 print:hidden">
       <p className="text-[10px] font-bold uppercase tracking-widest text-kelly-slate">Reimbursement operations (Sprint 8)</p>
-      <p className="mt-2 font-body text-sm text-kelly-text/70">
+      <p className="mt-2 font-body text-sm text-kelly-muted">
         Extended pipeline alongside legacy month status ({statusContext.effectiveStatus}). Packet builder groups travel, receipts, and audit notes.
       </p>
       <div className="mt-4 flex flex-wrap items-center gap-2">
@@ -75,7 +75,7 @@ export function ReimbursementOperationsPanel({
         </ul>
       ) : null}
       {operations?.lastPacket ? (
-        <p className="mt-2 font-body text-[11px] text-kelly-text/55">
+        <p className="mt-2 font-body text-[11px] text-kelly-muted">
           Last packet: {operations.lastPacket.travelLineCount} travel lines · {operations.lastPacket.receiptCount} receipts ·{" "}
           {new Date(operations.lastPacket.generatedAt).toLocaleString()}
         </p>

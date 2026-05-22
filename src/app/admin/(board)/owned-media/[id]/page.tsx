@@ -121,7 +121,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
           ) : null}
         </div>
         <h1 className="mt-2 font-heading text-2xl font-bold text-kelly-text">{asset.title}</h1>
-        <p className="mt-1 font-mono text-[11px] text-kelly-text/50">{asset.id}</p>
+        <p className="mt-1 font-mono text-[11px] text-kelly-subtle">{asset.id}</p>
         {sp.uploaded || sp.saved || sp.transcript || sp.quote || sp.note || sp.reviewed ? (
           <p className="mt-2 rounded-md border border-emerald-600/20 bg-emerald-50/80 px-3 py-2 text-sm text-emerald-900">Saved.</p>
         ) : null}
@@ -188,7 +188,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
           Open file
         </a>
         {asset.thumbPublicUrl ? (
-          <p className="mt-1 text-xs text-kelly-text/60">
+          <p className="mt-1 text-xs text-kelly-muted">
             Thumbnail:{" "}
             <a href={asset.thumbPublicUrl} className="text-kelly-slate underline" target="_blank" rel="noreferrer">
               preview
@@ -196,7 +196,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
           </p>
         ) : null}
         <div className="mt-4 rounded-md border border-kelly-text/10 bg-white/60 p-4 text-sm text-kelly-text/80">
-          <h3 className="font-body text-xs font-bold uppercase tracking-wider text-kelly-text/55">Ingest &amp; storage</h3>
+          <h3 className="font-body text-xs font-bold uppercase tracking-wider text-kelly-muted">Ingest &amp; storage</h3>
           <p className="mt-1 font-mono text-[11px]">storageBackend: {asset.storageBackend}</p>
           <p className="mt-0.5 break-all font-mono text-[11px]">storageKey: {asset.storageKey}</p>
           {asset.publicUrl ? (
@@ -213,19 +213,19 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
           ) : null}
         </div>
         <div className="mt-4 rounded-md border border-amber-200/50 bg-amber-50/40 p-4 text-sm text-kelly-text/85">
-          <h3 className="font-body text-xs font-bold uppercase tracking-wider text-kelly-text/55">Geo snapshot (read-only)</h3>
+          <h3 className="font-body text-xs font-bold uppercase tracking-wider text-kelly-muted">Geo snapshot (read-only)</h3>
           <p className="text-xs">
             <strong>needsGeoReview:</strong> {String(asset.needsGeoReview)} · <strong>source:</strong> {asset.geoSource} ·
             {asset.geoConfidence != null ? ` confidence: ${asset.geoConfidence}` : " confidence: —"}
           </p>
-          <p className="text-xs text-kelly-text/65">
+          <p className="text-xs text-kelly-muted">
             Edit location fields in the form below. Check &quot;Confirm location…&quot; to mark <code className="rounded bg-amber-100/80 px-1">MANUAL</code> and
             clear the review flag for public county use. Raw extraction stays in <strong>metadata.json</strong>.
           </p>
         </div>
         {asset.uploaderName || asset.uploaderEmail || asset.consentCampaignUse != null ? (
           <div className="mt-4 rounded-md border border-kelly-text/10 p-3 text-sm">
-            <h3 className="font-body text-xs font-bold uppercase tracking-wider text-kelly-text/55">Supporter (future)</h3>
+            <h3 className="font-body text-xs font-bold uppercase tracking-wider text-kelly-muted">Supporter (future)</h3>
             <p>
               {asset.uploaderName ?? "—"} · {asset.uploaderEmail ?? "—"} · consent: {String(asset.consentCampaignUse)}
             </p>
@@ -233,7 +233,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
         ) : null}
         {asset.metadataJson != null ? (
           <div className="mt-4">
-            <h3 className="font-body text-xs font-bold uppercase tracking-wider text-kelly-text/55">metadata.json (raw)</h3>
+            <h3 className="font-body text-xs font-bold uppercase tracking-wider text-kelly-muted">metadata.json (raw)</h3>
             <pre className="mt-1 max-h-48 overflow-auto rounded border border-kelly-text/10 bg-white/80 p-2 font-mono text-[10px] text-kelly-text/80">
               {JSON.stringify(asset.metadataJson, null, 2)}
             </pre>
@@ -245,24 +245,24 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
         <h2 className="font-heading text-lg font-bold text-kelly-text">Metadata</h2>
         <input type="hidden" name="id" value={asset.id} />
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Title</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Title</span>
           <input name="title" required defaultValue={asset.title} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Description</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Description</span>
           <textarea name="description" rows={3} defaultValue={asset.description ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Operator notes (internal)</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Operator notes (internal)</span>
           <textarea name="operatorNotes" rows={2} defaultValue={asset.operatorNotes ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Caption draft</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Caption draft</span>
           <textarea name="captionDraft" rows={2} defaultValue={asset.captionDraft ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Shoot date override</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Shoot date override</span>
             <input
               name="shootDateOverride"
               type="datetime-local"
@@ -271,7 +271,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
             />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Linked campaign event</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Linked campaign event</span>
             <select name="linkedCampaignEventId" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" defaultValue={asset.linkedCampaignEventId ?? ""}>
               <option value="">— None —</option>
               {events.map((e) => (
@@ -284,7 +284,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Kind</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Kind</span>
             <select name="kind" defaultValue={asset.kind} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               {Object.values(OwnedMediaKind).map((k) => (
                 <option key={k} value={k}>
@@ -294,7 +294,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
             </select>
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Role</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Role</span>
             <select name="role" defaultValue={asset.role} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               {Object.values(OwnedMediaRole).map((k) => (
                 <option key={k} value={k}>
@@ -306,7 +306,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Event date (editorial)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Event date (editorial)</span>
             <input
               name="eventDate"
               type="date"
@@ -315,7 +315,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
             />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Captured (device/EXIF)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Captured (device/EXIF)</span>
             <input
               name="capturedAt"
               type="date"
@@ -324,7 +324,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
             />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Duration (sec)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Duration (sec)</span>
             <input
               name="durationSeconds"
               type="number"
@@ -334,7 +334,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
             />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Source type</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Source type</span>
             <select name="sourceType" defaultValue={asset.sourceType} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               {Object.values(OwnedMediaSourceType).map((k) => (
                 <option key={k} value={k}>
@@ -346,7 +346,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">GPS latitude</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">GPS latitude</span>
             <input
               name="gpsLat"
               type="text"
@@ -357,7 +357,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
             />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">GPS longitude</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">GPS longitude</span>
             <input
               name="gpsLng"
               type="text"
@@ -370,21 +370,21 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
         </div>
         <div className="grid gap-4 md:grid-cols-3">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">County slug</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">County slug</span>
             <input name="countySlug" defaultValue={asset.countySlug ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">FIPS</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">FIPS</span>
             <input name="countyFips" defaultValue={asset.countyFips ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">City</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">City</span>
             <input name="city" defaultValue={asset.city ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Geo source</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Geo source</span>
             <select name="geoSource" defaultValue={asset.geoSource} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               {Object.values(GeoMetadataSource).map((g) => (
                 <option key={g} value={g}>
@@ -394,7 +394,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
             </select>
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Geo confidence (0–1)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Geo confidence (0–1)</span>
             <input
               name="geoConfidence"
               type="text"
@@ -420,26 +420,26 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
           </label>
         </div>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Issue tags (comma)</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Issue tags (comma)</span>
           <input name="issueTags" defaultValue={asset.issueTags.join(", ")} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Campaign phase</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Campaign phase</span>
             <input name="campaignPhase" defaultValue={asset.campaignPhase ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Content series</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Content series</span>
             <input name="contentSeries" defaultValue={asset.contentSeries ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
         </div>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Speaker</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Speaker</span>
           <input name="speakerName" defaultValue={asset.speakerName ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Review</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Review</span>
             <select name="reviewStatus" defaultValue={asset.reviewStatus} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               {Object.values(OwnedMediaReviewStatus).map((k) => (
                 <option key={k} value={k}>
@@ -454,10 +454,10 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
           </label>
         </div>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Editor label</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Editor label</span>
           <input name="createdBy" defaultValue={asset.createdBy ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
-        <p className="text-xs text-kelly-text/55">
+        <p className="text-xs text-kelly-muted">
           Storage: {asset.storageKey} · {asset.mimeType} · job {asset.transcriptJobStatus}
           {asset.transcriptionLastError ? ` — ${asset.transcriptionLastError}` : ""}
         </p>
@@ -468,13 +468,13 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
 
       <section className="rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]">
         <h2 className="font-heading text-lg font-bold text-kelly-text">Field notes and recall</h2>
-        <p className="mt-1 text-sm text-kelly-text/70">
+        <p className="mt-1 text-sm text-kelly-muted">
           Structured context for search and storytelling (separate from the public description). Searchable notes can feed assistant recall later.
         </p>
         <ul className="mt-4 space-y-4">
           {asset.annotations.map((a) => (
             <li key={a.id} className="border-t border-kelly-text/10 pt-3 first:border-0 first:pt-0">
-              <p className="font-mono text-[10px] text-kelly-text/45">
+              <p className="font-mono text-[10px] text-kelly-subtle">
                 {a.noteType} · {a.isSearchable ? "searchable" : "hidden from search"}{" "}
                 · {a.createdAt.toLocaleString()}
               </p>
@@ -495,7 +495,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
           {batchIdForNav ? <input type="hidden" name="returnBatchId" value={batchIdForNav} /> : null}
           <div className="grid gap-2 md:grid-cols-2">
             <label className="block text-sm">
-              <span className="text-xs text-kelly-text/55">Type</span>
+              <span className="text-xs text-kelly-muted">Type</span>
               <select name="noteType" className="mt-1 w-full rounded border border-kelly-text/15 bg-white px-2 py-1 text-sm">
                 {Object.values(OwnedMediaNoteType).map((k) => (
                   <option key={k} value={k}>
@@ -510,7 +510,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
             </label>
           </div>
           <label className="block text-sm">
-            <span className="text-xs text-kelly-text/55">Note</span>
+            <span className="text-xs text-kelly-muted">Note</span>
             <textarea name="noteText" required rows={3} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <button type="submit" className="rounded-btn bg-kelly-navy px-4 py-2 text-sm font-bold text-kelly-page">
@@ -521,7 +521,7 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
 
       <section className="rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]">
         <h2 className="font-heading text-lg font-bold text-kelly-text">Transcription pipeline</h2>
-        <p className="mt-2 text-sm text-kelly-text/70">
+        <p className="mt-2 text-sm text-kelly-muted">
           Provider: stub (fails closed until you wire an ASR in <code className="rounded bg-kelly-text/5 px-1">get-provider.ts</code>). Add human
           transcripts below; they stay separate from the original file.
         </p>
@@ -542,9 +542,9 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
         <ul className="mt-4 space-y-4">
           {asset.transcripts.map((t) => (
             <li key={t.id} className="border-t border-kelly-text/10 pt-4 first:border-0 first:pt-0">
-              <p className="font-mono text-[10px] text-kelly-text/45">{t.id}</p>
+              <p className="font-mono text-[10px] text-kelly-subtle">{t.id}</p>
               <p className="mt-1 whitespace-pre-wrap text-sm text-kelly-text/85">{t.transcriptText}</p>
-              <p className="mt-1 text-xs text-kelly-text/55">
+              <p className="mt-1 text-xs text-kelly-muted">
                 {t.source} · {t.reviewStatus}
                 {t.language ? ` · ${t.language}` : ""}
               </p>
@@ -576,12 +576,12 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
           <h3 className="font-body text-sm font-bold text-kelly-text">Add transcript (human or import)</h3>
           <input type="hidden" name="ownedMediaId" value={asset.id} />
           <label className="block text-sm">
-            <span className="text-xs text-kelly-text/55">Text</span>
+            <span className="text-xs text-kelly-muted">Text</span>
             <textarea name="transcriptText" required rows={4} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <div className="grid gap-2 md:grid-cols-3">
             <label className="text-sm">
-              <span className="text-xs text-kelly-text/55">Source</span>
+              <span className="text-xs text-kelly-muted">Source</span>
               <select name="transcriptSource" className="mt-1 w-full rounded border border-kelly-text/15 bg-white px-2 py-1 text-sm">
                 {Object.values(TranscriptSource).map((k) => (
                   <option key={k} value={k}>
@@ -591,11 +591,11 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
               </select>
             </label>
             <label className="text-sm">
-              <span className="text-xs text-kelly-text/55">Language</span>
+              <span className="text-xs text-kelly-muted">Language</span>
               <input name="language" className="mt-1 w-full rounded border border-kelly-text/15 bg-white px-2 py-1 text-sm" placeholder="en" />
             </label>
             <label className="text-sm">
-              <span className="text-xs text-kelly-text/55">Review</span>
+              <span className="text-xs text-kelly-muted">Review</span>
               <select name="transcriptReviewStatus" className="mt-1 w-full rounded border border-kelly-text/15 bg-white px-2 py-1 text-sm">
                 {Object.values(TranscriptReviewStatus).map((k) => (
                   <option key={k} value={k}>
@@ -614,9 +614,9 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
         <ul className="mt-4 space-y-4">
           {asset.quoteCandidates.map((q) => (
             <li key={q.id} className="border-t border-kelly-text/10 pt-4 first:border-0 first:pt-0">
-              <p className="font-mono text-[10px] text-kelly-text/45">{q.id}</p>
+              <p className="font-mono text-[10px] text-kelly-subtle">{q.id}</p>
               <p className="mt-1 text-sm text-kelly-text/90">{q.quoteText}</p>
-              <p className="text-xs text-kelly-text/55">
+              <p className="text-xs text-kelly-muted">
                 {q.quoteType} · {q.reviewStatus}
                 {q.startSeconds != null ? ` · ${q.startSeconds}s` : ""}
                 {q.endSeconds != null ? `–${q.endSeconds}s` : ""}
@@ -649,11 +649,11 @@ export default async function AdminOwnedMediaDetailPage({ params, searchParams }
           <h3 className="font-body text-sm font-bold text-kelly-text">Add quote</h3>
           <input type="hidden" name="ownedMediaId" value={asset.id} />
           <label className="block text-sm">
-            <span className="text-xs text-kelly-text/55">Quote</span>
+            <span className="text-xs text-kelly-muted">Quote</span>
             <textarea name="quoteText" required rows={2} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block text-sm">
-            <span className="text-xs text-kelly-text/55">Link to transcript (optional)</span>
+            <span className="text-xs text-kelly-muted">Link to transcript (optional)</span>
             <select name="transcriptId" className="mt-1 w-full rounded border border-kelly-text/15 bg-white px-2 py-1 text-sm">
               <option value="">—</option>
               {asset.transcripts.map((t) => (

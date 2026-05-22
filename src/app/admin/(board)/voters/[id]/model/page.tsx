@@ -86,23 +86,23 @@ export default async function AdminVoterModelDetailPage({ params }: { params: Pr
         <h2 className="font-heading text-lg font-semibold text-kelly-text">Identity</h2>
         <dl className="mt-3 grid gap-2 text-sm text-kelly-text/90 sm:grid-cols-2">
           <div>
-            <dt className="text-kelly-text/55">Name</dt>
+            <dt className="text-kelly-muted">Name</dt>
             <dd>{name}</dd>
           </div>
           <div>
-            <dt className="text-kelly-text/55">Voter file key</dt>
+            <dt className="text-kelly-muted">Voter file key</dt>
             <dd className="font-mono text-xs">{profile.voter.voterFileKey}</dd>
           </div>
           <div>
-            <dt className="text-kelly-text/55">County</dt>
+            <dt className="text-kelly-muted">County</dt>
             <dd>{profile.voter.countySlug}</dd>
           </div>
           <div>
-            <dt className="text-kelly-text/55">Precinct</dt>
+            <dt className="text-kelly-muted">Precinct</dt>
             <dd>{profile.voter.precinct ?? "—"}</dd>
           </div>
           <div>
-            <dt className="text-kelly-text/55">In latest completed file</dt>
+            <dt className="text-kelly-muted">In latest completed file</dt>
             <dd>{profile.voter.inLatestCompletedFile ? "yes" : "no"}</dd>
           </div>
         </dl>
@@ -111,12 +111,12 @@ export default async function AdminVoterModelDetailPage({ params }: { params: Pr
       <section className="mt-6 space-y-4">
         <div>
           <h2 className="font-heading text-lg font-semibold text-kelly-text">Relational organizing</h2>
-          <p className="mt-1 text-xs text-kelly-text/60">
+          <p className="mt-1 text-xs text-kelly-muted">
             REL-2 + Power of 5 context when this voter is matched to a relational contact. Shown only in admin — never on public pages.
           </p>
         </div>
         {relationalLinks.length === 0 ? (
-          <p className="rounded-card border border-kelly-text/10 bg-kelly-page p-4 text-sm text-kelly-text/70">
+          <p className="rounded-card border border-kelly-text/10 bg-kelly-page p-4 text-sm text-kelly-muted">
             No relational contact matched to this voter file row. Link a REL-2 record from the contact detail page when appropriate.
           </p>
         ) : (
@@ -144,20 +144,20 @@ export default async function AdminVoterModelDetailPage({ params }: { params: Pr
             <li>Model version: {profile.currentClassification.modelVersion}</li>
             {profile.currentClassification.sourceSummary ? (
               <li className="list-none pl-0">
-                <span className="text-kelly-text/55">Summary: </span>
+                <span className="text-kelly-muted">Summary: </span>
                 {profile.currentClassification.sourceSummary}
               </li>
             ) : null}
           </ul>
         ) : (
-          <p className="mt-3 text-sm text-kelly-text/60">No current classification row.</p>
+          <p className="mt-3 text-sm text-kelly-muted">No current classification row.</p>
         )}
       </section>
 
       <section className="mt-6 rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
         <h2 className="font-heading text-lg font-semibold text-kelly-text">Signals by kind</h2>
         {Object.keys(profile.signalCountByKind).length === 0 ? (
-          <p className="mt-3 text-sm text-kelly-text/60">No signals for this voter.</p>
+          <p className="mt-3 text-sm text-kelly-muted">No signals for this voter.</p>
         ) : (
           <ul className="mt-3 space-y-1 text-sm text-kelly-text/90">
             {Object.entries(profile.signalCountByKind).map(([kind, n]) => (
@@ -190,14 +190,14 @@ export default async function AdminVoterModelDetailPage({ params }: { params: Pr
             {profile.latestVotePlan.updatedAt.toLocaleString()}
           </p>
         ) : (
-          <p className="mt-3 text-sm text-kelly-text/60">No vote plan row.</p>
+          <p className="mt-3 text-sm text-kelly-muted">No vote plan row.</p>
         )}
       </section>
 
       <section className="mt-6 rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
         <h2 className="font-heading text-lg font-semibold text-kelly-text">Interactions ({interactions.length})</h2>
         {interactions.length === 0 ? (
-          <p className="mt-3 text-sm text-kelly-text/60">No logged interactions.</p>
+          <p className="mt-3 text-sm text-kelly-muted">No logged interactions.</p>
         ) : (
           <ul className="mt-3 max-h-96 space-y-3 overflow-y-auto text-sm text-kelly-text/90">
             {interactions.map((i) => (
@@ -205,7 +205,7 @@ export default async function AdminVoterModelDetailPage({ params }: { params: Pr
                 <p className="font-medium text-kelly-text">
                   {i.interactionType} · {i.interactionChannel}
                 </p>
-                <p className="text-xs text-kelly-text/65">{i.interactionDate.toLocaleString()}</p>
+                <p className="text-xs text-kelly-muted">{i.interactionDate.toLocaleString()}</p>
                 {i.supportLevel ? (
                   <p className="mt-1 text-xs">
                     Support recorded: <span className="font-medium">{i.supportLevel}</span>

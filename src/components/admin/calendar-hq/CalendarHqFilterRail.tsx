@@ -2,7 +2,7 @@ import Link from "next/link";
 import { CampaignEventType, EventWorkflowState, type CalendarSourceType } from "@prisma/client";
 import { calendarFiltersToSearchParams, type CalendarHqFilters } from "@/lib/calendar/hq-filters";
 
-const h = "text-[7px] font-bold uppercase text-kelly-text/45";
+const h = "text-[7px] font-bold uppercase text-kelly-subtle";
 const linkBase = "block rounded border border-kelly-text/10 bg-white px-1.5 py-0.5 text-[9px] text-kelly-text hover:border-kelly-navy/25";
 const active = "border-kelly-navy/40 bg-amber-50/50 font-bold";
 
@@ -65,7 +65,7 @@ export function CalendarHqFilterRail({
 
   return (
     <div className="flex max-h-[min(78vh,920px)] flex-col gap-2 overflow-y-auto border-b border-kelly-text/10 bg-kelly-wash/30 p-2 text-[10px] xl:border-b-0 xl:border-r">
-      <p className="font-heading text-[9px] font-bold uppercase tracking-wide text-kelly-text/60">Filters</p>
+      <p className="font-heading text-[9px] font-bold uppercase tracking-wide text-kelly-muted">Filters</p>
       <Link href={`/admin/workbench/calendar?${qo(clear)}`} className={`${linkBase} text-center`}>
         Clear all
       </Link>

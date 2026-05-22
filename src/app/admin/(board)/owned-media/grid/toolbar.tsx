@@ -118,7 +118,7 @@ export function OwnedMediaGridToolbar(props: Props) {
     <div className="mt-2 space-y-3">
       <form method="get" action="/admin/owned-media/grid" className="flex flex-wrap items-end gap-2">
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Search</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-muted">Search</span>
           <input
             name="q"
             defaultValue={defaultQ}
@@ -127,7 +127,7 @@ export function OwnedMediaGridToolbar(props: Props) {
           />
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Tag</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-muted">Tag</span>
           <input
             name="tag"
             defaultValue={tag ?? ""}
@@ -136,7 +136,7 @@ export function OwnedMediaGridToolbar(props: Props) {
           />
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Ingest</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-muted">Ingest</span>
           <select
             name="batch"
             defaultValue={batch ?? ""}
@@ -151,7 +151,7 @@ export function OwnedMediaGridToolbar(props: Props) {
           </select>
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">County</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-muted">County</span>
           <select
             name="county"
             defaultValue={countyId ?? ""}
@@ -166,7 +166,7 @@ export function OwnedMediaGridToolbar(props: Props) {
           </select>
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Event</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-muted">Event</span>
           <select
             name="event"
             defaultValue={campaignEventId ?? ""}
@@ -182,7 +182,7 @@ export function OwnedMediaGridToolbar(props: Props) {
           </select>
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Kind</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-muted">Kind</span>
           <select
             name="kind"
             defaultValue={kind ?? ""}
@@ -197,7 +197,7 @@ export function OwnedMediaGridToolbar(props: Props) {
           </select>
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Source</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-muted">Source</span>
           <select
             name="src"
             defaultValue={sourceType ?? ""}
@@ -222,7 +222,7 @@ export function OwnedMediaGridToolbar(props: Props) {
           </select>
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Transcript</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-muted">Transcript</span>
           <select name="tr" defaultValue={tr === true ? "1" : tr === false ? "0" : ""} className="mt-0.5 rounded-md border border-kelly-text/15 bg-white px-2 py-1.5 text-xs">
             <option value="">Any</option>
             <option value="1">Has</option>
@@ -230,7 +230,7 @@ export function OwnedMediaGridToolbar(props: Props) {
           </select>
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Press</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-muted">Press</span>
           <select
             name="apPress"
             defaultValue={approvedForPress ? "1" : ""}
@@ -241,7 +241,7 @@ export function OwnedMediaGridToolbar(props: Props) {
           </select>
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Site</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-muted">Site</span>
           <select
             name="apSite"
             defaultValue={approvedForPublicSite ? "1" : ""}
@@ -252,7 +252,7 @@ export function OwnedMediaGridToolbar(props: Props) {
           </select>
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Reviewed</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-muted">Reviewed</span>
           <select
             name="reviewed"
             defaultValue={isReviewed === true ? "1" : isReviewed === false ? "0" : ""}
@@ -264,7 +264,7 @@ export function OwnedMediaGridToolbar(props: Props) {
           </select>
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">From</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-muted">From</span>
           <input
             name="df"
             type="date"
@@ -273,7 +273,7 @@ export function OwnedMediaGridToolbar(props: Props) {
           />
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">To</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-muted">To</span>
           <input
             name="dt"
             type="date"
@@ -282,7 +282,7 @@ export function OwnedMediaGridToolbar(props: Props) {
           />
         </label>
         <label className="font-body text-sm">
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Date on</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-kelly-muted">Date on</span>
           <select
             name="dateField"
             defaultValue={dateFieldIsCreated ? "created" : "captured"}
@@ -346,7 +346,7 @@ export function OwnedMediaGridToolbar(props: Props) {
         <MediaCenterSelectAllOnPage pageIds={pageAssetIds} />
       </form>
 
-      <div className="flex flex-wrap items-center gap-2 text-kelly-text/70">
+      <div className="flex flex-wrap items-center gap-2 text-kelly-muted">
         <span className="font-body text-xs">Matching: {resultCount} (max 500) ·</span>
         {(
           [
@@ -398,7 +398,7 @@ export function OwnedMediaGridToolbar(props: Props) {
             key={s}
             href={gridHref(buildSearchParams({ sort: s, inspect: "" }, { ...base, inspect: undefined }))}
             className={`rounded px-1.5 py-0.5 text-[10px] font-semibold ${
-              sort === s ? "bg-kelly-slate/15 text-kelly-slate" : "text-kelly-text/60 hover:underline"
+              sort === s ? "bg-kelly-slate/15 text-kelly-slate" : "text-kelly-muted hover:underline"
             }`}
             scroll={false}
           >

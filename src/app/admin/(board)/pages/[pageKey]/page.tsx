@@ -15,10 +15,10 @@ export default async function AdminPageKeyEditorPage({ params, searchParams }: P
   return (
     <div className="mx-auto max-w-xl">
       <h1 className="font-heading text-2xl font-bold capitalize text-kelly-text">{pageKey.replace(/-/g, " ")}</h1>
-      <p className="mt-2 font-body text-sm text-kelly-text/70">
+      <p className="mt-2 font-body text-sm text-kelly-muted">
         Hero text only (database) · public path: <span className="font-mono">/{pageKey}</span>
       </p>
-      <p className="mt-1 font-body text-xs text-kelly-text/60">
+      <p className="mt-1 font-body text-xs text-kelly-muted">
         Final authority for what goes live: Kelly. Staff can help you find this screen; nothing here auto-pulls from Ask Kelly feedback.
       </p>
 

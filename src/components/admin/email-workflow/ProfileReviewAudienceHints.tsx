@@ -94,7 +94,7 @@ export function ProfileReviewAudienceHints({ hints }: { hints: HintRow[] }) {
           </button>
         ))}
         {f.size ? (
-          <button type="button" className="text-[10px] text-kelly-text/60 underline" onClick={() => setF(new Set())}>
+          <button type="button" className="text-[10px] text-kelly-muted underline" onClick={() => setF(new Set())}>
             Clear
           </button>
         ) : null}
@@ -103,7 +103,7 @@ export function ProfileReviewAudienceHints({ hints }: { hints: HintRow[] }) {
         {filtered.map((h) => (
           <li key={h.id} className="rounded border border-kelly-text/10 bg-kelly-page/40 p-2">
             <p className="text-[11px] font-semibold text-kelly-navy">{h.label}</p>
-            <p className="text-[10px] text-kelly-text/60">
+            <p className="text-[10px] text-kelly-muted">
               Item:{" "}
               <Link className="underline" href={`/admin/workbench/email-queue/${h.emailWorkflowItemId}`}>
                 {h.emailWorkflowItem.title ?? h.emailWorkflowItem.whatSummary ?? h.emailWorkflowItemId}

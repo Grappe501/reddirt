@@ -53,9 +53,9 @@ export function MediaCenterWorkbenchAttach({ ownedMediaId, approvedForSocial, co
 
   return (
     <div className="mt-3 space-y-2 border-t border-kelly-text/10 pt-3">
-      <h4 className="font-body text-[10px] font-bold uppercase tracking-wider text-kelly-text/50">Social workbench</h4>
-      <p className="text-[10px] text-kelly-text/55">Paste a work item id, then pick a ref purpose. Same spine as <code className="rounded bg-kelly-text/5 px-0.5">SocialContentMediaRef</code>.</p>
-      <label className="block font-body text-[10px] text-kelly-text/70">
+      <h4 className="font-body text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Social workbench</h4>
+      <p className="text-[10px] text-kelly-muted">Paste a work item id, then pick a ref purpose. Same spine as <code className="rounded bg-kelly-text/5 px-0.5">SocialContentMediaRef</code>.</p>
+      <label className="block font-body text-[10px] text-kelly-muted">
         SocialContentItem id
         <input
           value={workId}
@@ -90,7 +90,7 @@ export function MediaCenterWorkbenchAttach({ ownedMediaId, approvedForSocial, co
       </p>
       {msg ? <p className="text-[10px] text-kelly-slate">{msg}</p> : null}
       {collections.length > 0 ? (
-        <p className="text-[9px] text-kelly-text/50">
+        <p className="text-[9px] text-kelly-subtle">
           Collections: use the sidebar or the collection picker in triage. Smart rule evaluation: TODO.
         </p>
       ) : null}

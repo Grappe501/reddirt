@@ -7,7 +7,7 @@ import { getCommunicationIntelligenceSnapshot } from "@/lib/communications/intel
 export const dynamic = "force-dynamic";
 
 const card = "rounded-lg border border-kelly-text/12 bg-white/90 px-3 py-2 shadow-sm";
-const h2 = "font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/55";
+const h2 = "font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-muted";
 
 export default async function WorkbenchCockpitPage() {
   const snap = await getCockpitSnapshot();
@@ -44,7 +44,7 @@ export default async function WorkbenchCockpitPage() {
               <Link href={a.href} className="font-bold text-kelly-forest underline">
                 {a.label}
               </Link>
-              <p className="text-[10px] text-kelly-text/70">{a.why}</p>
+              <p className="text-[10px] text-kelly-muted">{a.why}</p>
             </li>
           ))}
         </ol>
@@ -60,7 +60,7 @@ export default async function WorkbenchCockpitPage() {
             <li>Identities needing review: {intel.identityNeedsReview}</li>
             <li>Pending profile matches: {intel.pendingMatchCandidates}</li>
           </ul>
-          <p className="mt-2 text-[10px] text-kelly-text/60">
+          <p className="mt-2 text-[10px] text-kelly-muted">
             <Link href="/admin/workbench/communication-intelligence" className="font-bold text-kelly-forest underline">
               Open Communication Intelligence Center
             </Link>{" "}
@@ -79,7 +79,7 @@ export default async function WorkbenchCockpitPage() {
           <li>READY_FOR_TEST: {snap.email.sendExecution.readyForTestCount}</li>
           <li>Volunteer ACTIVE audiences: {snap.email.volunteerActiveAudienceCount}</li>
         </ul>
-        <p className="mt-2 text-[10px] text-kelly-text/60">
+        <p className="mt-2 text-[10px] text-kelly-muted">
           Blocker summary: follow <Link href="/admin/workbench/email-command-center/launch-room">Launch Room next step</Link>.
         </p>
       </section>
@@ -168,7 +168,7 @@ export default async function WorkbenchCockpitPage() {
         </div>
       </section>
 
-      <p className="text-[10px] text-kelly-text/65">
+      <p className="text-[10px] text-kelly-muted">
         Cockpit uses bounded email/calendar snapshots plus the email workflow queue summary — open Email Command Center for the full ECC aggregate.
       </p>
     </div>

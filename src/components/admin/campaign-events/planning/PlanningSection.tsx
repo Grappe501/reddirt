@@ -35,7 +35,7 @@ export function PlanningSection({
               </span>
             ) : null}
           </p>
-          {subtitle ? <p className="mt-1 font-body text-xs text-kelly-text/55">{subtitle}</p> : null}
+          {subtitle ? <p className="mt-1 font-body text-xs text-kelly-muted">{subtitle}</p> : null}
         </div>
         <span className="shrink-0 text-sm text-kelly-slate">{open ? "−" : "+"}</span>
       </button>
@@ -65,8 +65,8 @@ export function Field({
   const cls = "mt-1 w-full rounded-lg border border-kelly-text/15 bg-kelly-wash/30 px-3 py-2 font-body text-sm";
   return (
     <label className="block font-body text-sm">
-      <span className="text-xs font-semibold text-kelly-text/55">{label}</span>
-      {hint ? <span className="ml-1 text-[10px] text-kelly-text/45">{hint}</span> : null}
+      <span className="text-xs font-semibold text-kelly-muted">{label}</span>
+      {hint ? <span className="ml-1 text-[10px] text-kelly-subtle">{hint}</span> : null}
       {multiline ? (
         <textarea className={cls} rows={3} value={value} onChange={(e) => onChange(e.target.value)} />
       ) : (

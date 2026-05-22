@@ -46,7 +46,7 @@ export function MediaCenterSidebar({ basePath, preserved, activeHint, collection
   const p = { ...preserved };
   return (
     <aside className="w-full shrink-0 border-r border-kelly-text/10 bg-kelly-page/80 pb-4 pr-2 pt-1 md:w-56">
-      <h2 className="mb-2 px-2 font-body text-[10px] font-bold uppercase tracking-wider text-kelly-text/45">Library</h2>
+      <h2 className="mb-2 px-2 font-body text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Library</h2>
       <nav className="space-y-0.5" aria-label="Media center views">
         <p className="px-2 pb-1 font-body text-[9px] font-bold uppercase tracking-wide text-kelly-text/40">Smart views</p>
         <Link
@@ -170,7 +170,7 @@ export function MediaCenterSidebar({ basePath, preserved, activeHint, collection
 
       {collections.length > 0 ? (
         <>
-          <h2 className="mb-2 mt-5 px-2 font-body text-[10px] font-bold uppercase tracking-wider text-kelly-text/45">
+          <h2 className="mb-2 mt-5 px-2 font-body text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">
             Collections
           </h2>
           <nav className="space-y-0.5">
@@ -185,12 +185,12 @@ export function MediaCenterSidebar({ basePath, preserved, activeHint, collection
         </>
       ) : null}
 
-      <h2 className="mb-2 mt-5 px-2 font-body text-[10px] font-bold uppercase tracking-wider text-kelly-text/45">
+      <h2 className="mb-2 mt-5 px-2 font-body text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">
         Import batches
       </h2>
       <nav className="max-h-48 space-y-0.5 overflow-y-auto">
         {batches.length === 0 ? (
-          <p className="px-2 text-xs text-kelly-text/50">No batches yet</p>
+          <p className="px-2 text-xs text-kelly-subtle">No batches yet</p>
         ) : (
           batches.map((b) => (
             <Link

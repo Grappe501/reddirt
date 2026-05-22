@@ -25,7 +25,7 @@ export default function ArkansasCountyFairsPage() {
 
   return (
     <div className="mx-auto max-w-7xl space-y-4 px-4 py-6">
-      <div className="font-body text-xs text-kelly-text/60">
+      <div className="font-body text-xs text-kelly-muted">
         <Link href="/admin/calendar-command-center" className="text-kelly-text underline-offset-2 hover:underline">
           ← Command center
         </Link>
@@ -34,7 +34,7 @@ export default function ArkansasCountyFairsPage() {
       </div>
 
       <header className="rounded-lg border border-kelly-text/15 bg-[#f7f2e8] px-5 py-5 shadow-sm">
-        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-text/45">Arkansas county fairs 2026</p>
+        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">Arkansas county fairs 2026</p>
         <h1 className="mt-2 font-heading text-2xl font-bold text-kelly-text">Statewide fair audit + routing</h1>
         <p className="mt-2 max-w-3xl font-body text-sm text-kelly-text/75">
           Data from <code className="rounded bg-white/80 px-1">npm run fairs:arkansas:scrape</code>,{" "}
@@ -64,7 +64,7 @@ export default function ArkansasCountyFairsPage() {
         <div className="overflow-x-auto rounded-lg border border-kelly-text/12 bg-white">
           <table className="min-w-full border-collapse font-body text-xs text-kelly-text">
             <thead>
-              <tr className="border-b border-kelly-text/15 bg-kelly-wash/50 text-left text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">
+              <tr className="border-b border-kelly-text/15 bg-kelly-wash/50 text-left text-[10px] font-bold uppercase tracking-wide text-kelly-muted">
                 <th className="px-2 py-2">County</th>
                 <th className="px-2 py-2">Fair</th>
                 <th className="px-2 py-2">Dates</th>

@@ -5,7 +5,7 @@ import { DashboardSection, DashboardStatGrid, StatCard } from "../dashboard/Camp
 export function CandidateFinanceOverview({ snapshot, month }: { snapshot: CampaignFinanceSnapshot; month: string }) {
   return (
     <DashboardSection title="Financial overview">
-      <p className="mb-3 font-body text-xs text-kelly-text/60">
+      <p className="mb-3 font-body text-xs text-kelly-muted">
         Reimbursement pipeline: <strong>{snapshot.pipelineLabel}</strong> · Documentation health for {month}
       </p>
       <DashboardStatGrid>

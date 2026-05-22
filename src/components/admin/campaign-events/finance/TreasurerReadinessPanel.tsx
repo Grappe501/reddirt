@@ -8,7 +8,7 @@ export function TreasurerReadinessPanel({ snapshot }: { snapshot: CampaignFinanc
       <p className={`mt-2 font-heading text-lg font-bold ${exportReady ? "text-emerald-900" : "text-amber-900"}`}>
         {exportReady ? "Export-ready (operator verify)" : "Gaps remain before export"}
       </p>
-      <ul className="mt-3 space-y-1 font-body text-xs text-kelly-text/70">
+      <ul className="mt-3 space-y-1 font-body text-xs text-kelly-muted">
         <li>Unresolved reimbursements: {snapshot.pendingApprovals} pending travel approval(s)</li>
         <li>Receipt gaps: {snapshot.pendingReceipts} pending document(s)</li>
         <li>Report quality: {snapshot.exceptionCount} exception flag(s)</li>

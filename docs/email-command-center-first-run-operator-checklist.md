@@ -34,8 +34,8 @@
 14. **Use Campaign Voice** — frames / source layers; optional **Generate** only if **`OPENAI_API_KEY`** is set server-side — advisory output only.  
 15. **Complete Editorial Review** — status, owner, claim/source + compliance checklists; note advisory readiness tier.  
 16. **Build Send Packet** — `#send-packet-builder`: completeness + checklists; copy or export JSON/txt; optional snapshot to draft.  
-17. **Open Send Execution Governance** — `/admin/workbench/email-command-center/send-execution` — **doctrine only**; confirm **Send packet prepared** and **Shared draft saved / reviewed** rows if present.  
-18. **Confirm no send buttons exist** on ECC routes above (no broadcast, no Gmail send-from-queue, no queue dispatch).  
+17. **Open Send Execution** — `/admin/workbench/email-command-center/send-execution#ops` — confirm doctrine plus governed `#ops` console; do not run test/final send unless the responsible operator is present and the launch gates are green.  
+18. **Confirm no ungated send buttons exist** on ECC routes above (no Gmail send-from-queue, no queue dispatch, no automation-triggered send; SendGrid send exists only through Send Execution gates).  
 19. **Open Analytics** — `/admin/workbench/email-command-center/analytics` — read-only readiness.  
 20. **Open Automation** — `/admin/workbench/email-command-center/automation` — **no** activation controls.  
 21. **Run** `npm run check` **from `RedDirt/`** — lint + typecheck + build; fix or hand off if this step fails before declaring the machine “green.”

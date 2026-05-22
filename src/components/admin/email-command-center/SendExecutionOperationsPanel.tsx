@@ -21,7 +21,7 @@ import type { EmailSendExecution, EmailSendRecipient, MessageStudioDraftStatus }
 
 const card =
   "rounded-lg border border-kelly-text/12 bg-gradient-to-b from-white/95 to-kelly-page/90 px-3 py-2.5 shadow-sm";
-const h3 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/50";
+const h3 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-subtle";
 
 type AudienceOption = { id: string; name: string; status: string };
 type SyncRunOption = { id: string; audienceDefinitionId: string | null; candidateCount: number; createdAt: string };
@@ -146,7 +146,7 @@ export function SendExecutionOperationsPanel({
           requires status <code className="text-[9px]">FINAL_APPROVED</code> and typing{" "}
           <code className="text-[9px]">{EMAIL_SEND_FINAL_CONFIRMATION_PHRASE}</code> exactly.
         </p>
-        <p className="mt-1 font-body text-[10px] text-kelly-text/70">
+        <p className="mt-1 font-body text-[10px] text-kelly-muted">
           Snapshot: executions tracked {se.dbReachable ? "live" : "unavailable"} on this DB.{" "}
           <code className="text-[9px]">EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM</code> ={" "}
           <strong>{String(snapshot.governance.canSendFromEmailWorkflowItem)}</strong> (unchanged).
@@ -180,10 +180,10 @@ export function SendExecutionOperationsPanel({
 
       <section className={card}>
         <h2 className={h3}>1. Execution list</h2>
-        <p className="mt-1 font-body text-[10px] text-kelly-text/70">Open an execution to run preflight, test send, approvals, and final send.</p>
+        <p className="mt-1 font-body text-[10px] text-kelly-muted">Open an execution to run preflight, test send, approvals, and final send.</p>
         <div className="mt-2 max-h-72 overflow-auto rounded border border-kelly-text/10">
           <table className="w-full border-collapse text-left font-body text-[10px]">
-            <thead className="sticky top-0 bg-kelly-fog/90 text-[9px] uppercase text-kelly-text/60">
+            <thead className="sticky top-0 bg-kelly-fog/90 text-[9px] uppercase text-kelly-muted">
               <tr>
                 <th className="border-b border-kelly-text/10 px-2 py-1">Status</th>
                 <th className="border-b border-kelly-text/10 px-2 py-1">Type</th>
@@ -217,7 +217,7 @@ export function SendExecutionOperationsPanel({
                     <td className="px-2 py-1.5 tabular-nums text-kelly-text/75">
                       cand {ex.candidateRecipientCount} · sup {ex.suppressedRecipientCount} · final {ex.finalRecipientCount}
                     </td>
-                    <td className="px-2 py-1.5 text-[9px] text-kelly-text/65">{ex.updatedAt.toISOString().slice(0, 16)}</td>
+                    <td className="px-2 py-1.5 text-[9px] text-kelly-muted">{ex.updatedAt.toISOString().slice(0, 16)}</td>
                     <td className="px-2 py-1.5">
                       <Link
                         href={`/admin/workbench/email-command-center/send-execution?id=${encodeURIComponent(ex.id)}#ops`}
@@ -363,7 +363,7 @@ export function SendExecutionOperationsPanel({
             </form>
             <ul className="mt-2 space-y-2 rounded border border-kelly-text/10 bg-white/80 p-2 font-body text-[10px]">
               {preflightRows.length === 0 ? (
-                <li className="text-kelly-text/60">No preflight record yet — run preflight.</li>
+                <li className="text-kelly-muted">No preflight record yet — run preflight.</li>
               ) : (
                 preflightRows.map((c) => (
                   <li key={c.id} className={`rounded border px-2 py-1 ${c.ok ? "border-emerald-200/80 text-emerald-950" : "border-rose-200/90 text-rose-950"}`}>
@@ -385,7 +385,7 @@ export function SendExecutionOperationsPanel({
             </ul>
             {recipientBreakdown ? (
               <div className="mt-2 rounded border border-kelly-text/10 bg-kelly-page/40 px-2 py-2 font-body text-[10px] text-kelly-navy">
-                <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/55">Recipient breakdown (preflight scan)</p>
+                <p className="font-heading text-[9px] font-bold uppercase text-kelly-muted">Recipient breakdown (preflight scan)</p>
                 <ul className="mt-1 grid gap-0.5 sm:grid-cols-2">
                   <li>
                     Audience matched profiles: <span className="font-bold tabular-nums">{recipientBreakdown.audienceMatchedProfiles}</span>
@@ -409,7 +409,7 @@ export function SendExecutionOperationsPanel({
               </div>
             ) : null}
             <CopyPreflightSummaryButton text={preflightExportText} />
-            <p className="mt-2 font-body text-[10px] text-kelly-text/70">
+            <p className="mt-2 font-body text-[10px] text-kelly-muted">
               DB counts (execution row): candidate {detail.candidateRecipientCount} · suppressed {detail.suppressedRecipientCount} · final{" "}
               {detail.finalRecipientCount}
               {detail.errorSafe ? (
@@ -581,7 +581,7 @@ export function SendExecutionOperationsPanel({
             <h2 className={h3}>Recipient audit (snapshot)</h2>
             <div className="mt-1 max-h-48 overflow-auto rounded border border-kelly-text/10 font-mono text-[9px]">
               <table className="w-full text-left">
-                <thead className="bg-kelly-fog/80 text-kelly-text/60">
+                <thead className="bg-kelly-fog/80 text-kelly-muted">
                   <tr>
                     <th className="px-1 py-0.5">Email</th>
                     <th className="px-1 py-0.5">Status</th>
@@ -597,15 +597,15 @@ export function SendExecutionOperationsPanel({
                 </tbody>
               </table>
               {detail.recipients.length > 200 ? (
-                <p className="p-1 text-[9px] text-kelly-text/60">Showing first 200 rows.</p>
+                <p className="p-1 text-[9px] text-kelly-muted">Showing first 200 rows.</p>
               ) : null}
             </div>
           </section>
         </>
       ) : query.id ? (
-        <p className="font-body text-[11px] text-kelly-text/70">Execution not found for this id.</p>
+        <p className="font-body text-[11px] text-kelly-muted">Execution not found for this id.</p>
       ) : (
-        <p className="font-body text-[11px] text-kelly-text/70">Select an execution from the list (Manage) to run preflight and sends.</p>
+        <p className="font-body text-[11px] text-kelly-muted">Select an execution from the list (Manage) to run preflight and sends.</p>
       )}
     </div>
   );

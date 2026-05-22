@@ -39,7 +39,7 @@ type WorkbenchLane = "all" | "calendar" | "orchestration";
 
 const card =
   "rounded-md border border-kelly-text/10 bg-kelly-page px-2 py-1.5 shadow-sm min-w-0";
-const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
+const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-muted";
 const breakOut = "-mx-6 -mt-10 -mb-10 w-[calc(100%+3rem)] max-w-[calc(100vw-280px-3rem)] min-w-0 px-0 pt-0 pb-6 lg:-mx-12 lg:mt-0 lg:mb-0 lg:w-[calc(100%+6rem)] lg:max-w-none";
 
 function workbenchQ(opts: { county?: string | null; thread?: string | null; lane?: WorkbenchLane }) {
@@ -284,7 +284,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
         <div className="flex flex-col gap-1.5 md:flex-row md:items-center md:justify-between">
           <div>
             <h1 className="font-heading text-lg font-bold text-kelly-text md:text-xl">Campaign workbench</h1>
-            <p className="font-body text-[11px] text-kelly-text/65">
+            <p className="font-body text-[11px] text-kelly-muted">
               Communications · {new Date().toLocaleString()}. Dense layout for full HD; side rails stack on small screens.
             </p>
           </div>
@@ -438,7 +438,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
       <CampaignManagerDashboardBands snapshot={truthSnapshot} />
 
       <details className="mx-2 mb-1 rounded border border-kelly-text/10 bg-kelly-page/90 px-2 py-1 md:mx-3">
-        <summary className="cursor-pointer font-body text-[10px] font-semibold text-kelly-text/70">
+        <summary className="cursor-pointer font-body text-[10px] font-semibold text-kelly-muted">
           BRAIN-OPS-2 / BRAIN-OPS-3 truth snapshot (read-only)
         </summary>
         <div className="mt-1 space-y-1.5">
@@ -476,7 +476,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
               {JSON.stringify(truthSnapshot.governance, null, 2)}
             </pre>
           </div>
-          <p className="font-mono text-[8px] text-kelly-text/50">generatedAt: {truthSnapshot.generatedAt.toISOString()}</p>
+          <p className="font-mono text-[8px] text-kelly-subtle">generatedAt: {truthSnapshot.generatedAt.toISOString()}</p>
         </div>
       </details>
 
@@ -589,7 +589,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
             <p className={h2}>
               {lane === "orchestration" ? "Automation shells + threads" : "Priority queue + threads"}
             </p>
-            <p className="mt-0.5 font-body text-[10px] text-kelly-text/55">
+            <p className="mt-0.5 font-body text-[10px] text-kelly-muted">
               {lane === "orchestration"
                 ? "Event-linked auto campaigns (not sent) first; then recent threads."
                 : "Queue first, then unread, then recency."}
@@ -597,7 +597,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
           </div>
           <ul className="min-h-0 flex-1 overflow-y-auto p-1 text-[11px]">
             {combinedRail.length === 0 ? (
-              <li className="px-1 text-kelly-text/55">No items yet. Create a thread below.</li>
+              <li className="px-1 text-kelly-muted">No items yet. Create a thread below.</li>
             ) : (
               combinedRail.map((row) => (
                 <li key={row.id}>
@@ -612,7 +612,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                     <span className={`block truncate font-medium ${row.urgent ? "text-kelly-navy" : "text-kelly-text"}`}>
                       {row.label}
                     </span>
-                    <span className="text-[9px] text-kelly-text/50">{row.sub}</span>
+                    <span className="text-[9px] text-kelly-subtle">{row.sub}</span>
                   </Link>
                 </li>
               ))
@@ -661,7 +661,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
               <div className="flex flex-wrap items-baseline justify-between gap-1 border-b border-kelly-text/10 px-2 py-1">
                 <div>
                   <h2 className="font-heading text-sm font-bold text-kelly-text">Active thread</h2>
-                  <p className="font-mono text-[10px] text-kelly-text/70">
+                  <p className="font-mono text-[10px] text-kelly-muted">
                     {active.primaryPhone ?? "—"} · {active.primaryEmail ?? "—"} · {active.id.slice(0, 12)}…
                   </p>
                 </div>
@@ -685,7 +685,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                     ) : null}
                   </div>
                 ) : (
-                  <p className="text-kelly-text/50">No summary yet. Use the button below the composer.</p>
+                  <p className="text-kelly-subtle">No summary yet. Use the button below the composer.</p>
                 )}
                 <form action={refreshThreadAiInsightAction} className="mt-1">
                   <input type="hidden" name="threadId" value={active.id} />
@@ -698,7 +698,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                   </button>
                 </form>
                 {active.nextActionDueAt ? (
-                  <p className="mt-0.5 text-[9px] text-kelly-text/55">
+                  <p className="mt-0.5 text-[9px] text-kelly-muted">
                     Staff due: {active.nextActionDueAt.toLocaleString()}
                   </p>
                 ) : null}
@@ -711,7 +711,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                       m.direction === "INBOUND" ? "border-kelly-muted bg-kelly-page/30" : "border-kelly-navy/30 bg-white/50"
                     }`}
                   >
-                    <span className="text-kelly-text/45">
+                    <span className="text-kelly-subtle">
                       {m.channel} {m.provider} {m.direction} {m.deliveryStatus}{" "}
                       {m.createdAt.toLocaleString()}
                     </span>
@@ -732,7 +732,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                 gmailSendAs={staffGmail?.sendAsEmail ?? null}
                 gmailReplyAnchorId={lastGmailOut?.id ?? null}
               />
-              <p className="mt-0.5 px-2 text-[9px] text-kelly-text/50">
+              <p className="mt-0.5 px-2 text-[9px] text-kelly-subtle">
                 {staffGmail ? (
                   <span>
                     Staff Gmail: <span className="font-mono">{staffGmail.sendAsEmail}</span>
@@ -750,7 +750,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
               </p>
             </>
           ) : (
-            <div className="p-3 font-body text-xs text-kelly-text/60">
+            <div className="p-3 font-body text-xs text-kelly-muted">
               {threadNotFound && !badThreadParam ? (
                 <p className="mb-2 rounded border border-amber-200/80 bg-amber-50/80 px-2 py-1 text-amber-950">
                   Thread not found (id may have been deleted or pasted incorrectly).{" "}
@@ -789,23 +789,23 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
               </div>
               <div className="min-h-0 flex-1 space-y-1 overflow-y-auto p-1.5 text-[11px]">
                 <p>
-                  <span className="text-kelly-text/45">Status:</span> {active.threadStatus} · u/{active.unreadCount} · p/
+                  <span className="text-kelly-subtle">Status:</span> {active.threadStatus} · u/{active.unreadCount} · p/
                   {active.priorityScore}
                 </p>
                 {active.assignedRoleKey ? (
                   <p>
-                    <span className="text-kelly-text/45">Target role:</span> {formatRoleLabel(active.assignedRoleKey)}
+                    <span className="text-kelly-subtle">Target role:</span> {formatRoleLabel(active.assignedRoleKey)}
                   </p>
                 ) : null}
                 {active.user ? (
                   <p>
-                    <span className="text-kelly-text/45">User:</span> {active.user.name ?? active.user.email}
+                    <span className="text-kelly-subtle">User:</span> {active.user.name ?? active.user.email}
                     {active.user.phone ? <span className="ml-1 font-mono">· {active.user.phone}</span> : null}
                   </p>
                 ) : null}
                 {active.user?.linkedVoterRecord ? (
                   <p>
-                    <span className="text-kelly-text/45">Voter file:</span> {active.user.linkedVoterRecord.countySlug}{" "}
+                    <span className="text-kelly-subtle">Voter file:</span> {active.user.linkedVoterRecord.countySlug}{" "}
                     {[active.user.linkedVoterRecord.firstName, active.user.linkedVoterRecord.lastName]
                       .filter(Boolean)
                       .join(" ") || "—"}
@@ -814,7 +814,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                 ) : null}
                 {active.volunteerProfile ? (
                   <p>
-                    <span className="text-kelly-text/45">Volunteer:</span>{" "}
+                    <span className="text-kelly-subtle">Volunteer:</span>{" "}
                     {active.volunteerProfile.user.name ?? active.volunteerProfile.user.email}
                     {active.volunteerProfile.user.phone ? (
                       <span className="ml-1 font-mono">· {active.volunteerProfile.user.phone}</span>
@@ -823,7 +823,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                 ) : null}
                 {active.county ? (
                   <p>
-                    <span className="text-kelly-text/45">County:</span> {active.county.displayName}
+                    <span className="text-kelly-subtle">County:</span> {active.county.displayName}
                   </p>
                 ) : null}
                 {active.tagAssignments.length ? (
@@ -838,12 +838,12 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                     ))}
                   </ul>
                 ) : (
-                  <p className="text-[10px] text-kelly-text/50">No tags (seed CommunicationTag + assign later).</p>
+                  <p className="text-[10px] text-kelly-subtle">No tags (seed CommunicationTag + assign later).</p>
                 )}
 
                 <div className="mt-1 space-y-0.5 border-t border-kelly-text/10 pt-1">
-                  <p className="text-[9px] font-bold uppercase text-kelly-text/45">Contact compliance</p>
-                  <p className="text-[9px] text-kelly-text/55">
+                  <p className="text-[9px] font-bold uppercase text-kelly-subtle">Contact compliance</p>
+                  <p className="text-[9px] text-kelly-muted">
                     Email: {effPref?.emailOptInStatus ?? "—"} · SMS: {effPref?.smsOptInStatus ?? "—"}{" "}
                     {effPref?.globalUnsubscribeAt ? "· global email unsub" : ""}
                     {effPref?.smsOptOutAt ? "· SMS opt-out at " + effPref.smsOptOutAt.toLocaleString() : ""}
@@ -851,7 +851,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                   <form action={updateContactPreferenceFromWorkbenchAction} className="grid gap-0.5">
                     <input type="hidden" name="threadId" value={active.id} />
                     <div className="flex flex-wrap gap-1">
-                      <label className="text-[9px] text-kelly-text/45">
+                      <label className="text-[9px] text-kelly-subtle">
                         Email
                         <select
                           name="emailOptInStatus"
@@ -865,7 +865,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                           ))}
                         </select>
                       </label>
-                      <label className="text-[9px] text-kelly-text/45">
+                      <label className="text-[9px] text-kelly-subtle">
                         SMS
                         <select
                           name="smsOptInStatus"
@@ -880,7 +880,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                         </select>
                       </label>
                     </div>
-                    <label className="flex items-center gap-0.5 text-[9px] text-kelly-text/55">
+                    <label className="flex items-center gap-0.5 text-[9px] text-kelly-muted">
                       <input type="checkbox" name="globalUnsubscribe" defaultChecked={Boolean(effPref?.globalUnsubscribeAt)} />
                       Global email unsubscribe
                     </label>
@@ -892,7 +892,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
 
                 <form action={updateCommunicationThreadAction} className="mt-1 space-y-0.5 border-t border-kelly-text/10 pt-1">
                   <input type="hidden" name="threadId" value={active.id} />
-                  <label className="block text-[9px] text-kelly-text/45">Thread status</label>
+                  <label className="block text-[9px] text-kelly-subtle">Thread status</label>
                   <select
                     name="threadStatus"
                     defaultValue={active.threadStatus}
@@ -904,21 +904,21 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                       </option>
                     ))}
                   </select>
-                  <label className="mt-0.5 block text-[9px] text-kelly-text/45">Assign role (text key)</label>
+                  <label className="mt-0.5 block text-[9px] text-kelly-subtle">Assign role (text key)</label>
                   <input
                     name="assignedRoleKey"
                     defaultValue={active.assignedRoleKey ?? ""}
                     placeholder="e.g. volunteer_coordinator"
                     className="w-full border border-kelly-text/15 bg-white px-0.5 text-[10px]"
                   />
-                  <label className="mt-0.5 block text-[9px] text-kelly-text/45">Notes</label>
+                  <label className="mt-0.5 block text-[9px] text-kelly-subtle">Notes</label>
                   <textarea
                     name="notes"
                     rows={3}
                     defaultValue={active.notes ?? ""}
                     className="w-full border border-kelly-text/15 bg-white p-0.5 text-[10px]"
                   />
-                  <label className="mt-0.5 block text-[9px] text-kelly-text/45">Next action due (staff)</label>
+                  <label className="mt-0.5 block text-[9px] text-kelly-subtle">Next action due (staff)</label>
                   <input
                     name="nextActionDueAt"
                     type="datetime-local"
@@ -939,7 +939,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                   </button>
                 </form>
                 <form action={createScheduledSmsReminderAction} className="mt-1 border-t border-kelly-text/10 pt-1">
-                  <p className="text-[9px] font-bold uppercase text-kelly-text/45">Schedule reminder (queue row)</p>
+                  <p className="text-[9px] font-bold uppercase text-kelly-subtle">Schedule reminder (queue row)</p>
                   <input type="hidden" name="threadId" value={active.id} />
                   <input
                     name="scheduledAt"
@@ -953,14 +953,14 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
                     Add to queue
                   </button>
                 </form>
-                <div className="border-t border-kelly-text/10 pt-1 text-[9px] text-kelly-text/45">
+                <div className="border-t border-kelly-text/10 pt-1 text-[9px] text-kelly-subtle">
                   <p className="font-bold uppercase">Ops snapshot (read-only here)</p>
                   <p>Upcoming: {data.upcomingEvents[0]?.title ?? "—"}</p>
                 </div>
               </div>
             </>
           ) : (
-            <div className="p-2 font-body text-[11px] text-kelly-text/55">Select a thread to see supporter context and notes.</div>
+            <div className="p-2 font-body text-[11px] text-kelly-muted">Select a thread to see supporter context and notes.</div>
           )}
         </aside>
       </div>
@@ -970,7 +970,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
           <h2 className="font-heading text-xs font-bold text-kelly-text">Tasks due today</h2>
           <ul className="mt-0.5 max-h-28 overflow-y-auto text-[10px]">
             {data.tasksDueToday.length === 0 ? (
-              <li className="text-kelly-text/55">None</li>
+              <li className="text-kelly-muted">None</li>
             ) : (
               data.tasksDueToday.map((t) => (
                 <li key={t.id} className="truncate border-b border-kelly-text/5 py-0.5">
@@ -984,7 +984,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
           <h2 className="font-heading text-xs font-bold text-kelly-text">Upcoming events</h2>
           <ul className="mt-0.5 max-h-28 overflow-y-auto text-[10px]">
             {data.upcomingEvents.length === 0 ? (
-              <li className="text-kelly-text/55">None</li>
+              <li className="text-kelly-muted">None</li>
             ) : (
               data.upcomingEvents.map((e) => (
                 <li key={e.id} className="truncate">
@@ -1015,7 +1015,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
         </div>
         <div className={card}>
           <h2 className="font-heading text-xs font-bold text-kelly-text">Earned media (press)</h2>
-          <p className="mt-0.5 text-[10px] leading-snug text-kelly-text/70">
+          <p className="mt-0.5 text-[10px] leading-snug text-kelly-muted">
             New today: <strong>{pressMonitor.mentionsToday}</strong> · Editorials/op-eds:{" "}
             <strong>{pressMonitor.editorialsOpinion}</strong> · TV rows: <strong>{pressMonitor.tvMentions}</strong> ·
             Amplify flagged: <strong>{pressMonitor.needsAmplification}</strong>
@@ -1040,7 +1040,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
         </div>
         <div className={card}>
           <h2 className="font-heading text-xs font-bold text-kelly-text">Strategy & coordination</h2>
-          <p className="mt-0.5 text-[10px] text-kelly-text/60">
+          <p className="mt-0.5 text-[10px] text-kelly-muted">
             <Link href="/admin/candidate-briefs" className="font-semibold text-kelly-slate hover:underline">
               Candidate briefs
             </Link>
@@ -1060,7 +1060,7 @@ export default async function AdminWorkbenchPage({ searchParams }: Props) {
           </p>
           <ul className="mt-0.5 max-h-20 overflow-y-auto text-[10px]">
             {adminStrategyRefs.length === 0 ? (
-              <li className="text-kelly-text/50">None ingested yet</li>
+              <li className="text-kelly-subtle">None ingested yet</li>
             ) : (
               adminStrategyRefs.map((a) => (
                 <li key={a.id} className="truncate border-b border-kelly-text/5 py-0.5">

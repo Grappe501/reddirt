@@ -26,6 +26,9 @@ export default async function ApprovalHubPage() {
         }
       />
       <ComplianceNav />
+      <ComplianceCard title="April 2026 review" href="/admin/compliance/april26">
+        April26 dashboard — contributions, expenses, images, payout batches, and workbench links.
+      </ComplianceCard>
       <section className="grid gap-4 md:grid-cols-3">
         <ComplianceCard title="Start review" href={primary ? `/admin/compliance/approval/${APRIL_2026_QUEUE_ID}` : undefined}>
           {primaryStats
@@ -59,7 +62,7 @@ async function QueueRow({ queueId, label, description, count }: { queueId: strin
     <article className="flex flex-col gap-2 rounded-2xl border border-kelly-text/10 bg-kelly-page p-4 md:flex-row md:items-center md:justify-between">
       <div>
         <h2 className="font-heading text-lg font-bold">{label}</h2>
-        <p className="text-sm text-kelly-text/70">{description}</p>
+        <p className="text-sm text-kelly-muted">{description}</p>
         <p className="mt-1 text-xs text-kelly-slate">
           {count} items · {stats.remaining} remaining · {stats.highRisk} high risk
         </p>

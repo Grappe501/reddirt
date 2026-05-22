@@ -11,7 +11,7 @@ import { MessageStudioCampaignMemoryPanel } from "@/components/admin/email-comma
 const badge =
   "rounded-full border border-kelly-text/15 bg-white/90 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-kelly-slate";
 const card = "rounded-lg border border-kelly-text/12 bg-white/95 p-3 shadow-sm";
-const h3 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/50";
+const h3 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-subtle";
 
 const DRAFT_TYPES: {
   title: string;
@@ -156,30 +156,30 @@ export function MessageStudioView({
         >
           ← Communication Command Center
         </Link>
-        <Link href="/admin/workbench/email-queue" className="text-xs text-kelly-text/60 hover:underline">
+        <Link href="/admin/workbench/email-queue" className="text-xs text-kelly-muted hover:underline">
           Email queue
         </Link>
-        <Link href="/admin/workbench/email-command-center/audiences" className="text-xs text-kelly-text/60 hover:underline">
+        <Link href="/admin/workbench/email-command-center/audiences" className="text-xs text-kelly-muted hover:underline">
           Audience Studio
         </Link>
-        <Link href="/admin/workbench/email-command-center/imports" className="text-xs text-kelly-text/60 hover:underline">
+        <Link href="/admin/workbench/email-command-center/imports" className="text-xs text-kelly-muted hover:underline">
           Contact imports
         </Link>
-        <Link href="/admin/workbench/email-command-center/automation" className="text-xs text-kelly-text/60 hover:underline">
+        <Link href="/admin/workbench/email-command-center/automation" className="text-xs text-kelly-muted hover:underline">
           Automation Studio
         </Link>
-        <Link href="/admin/workbench/email-command-center/analytics" className="text-xs text-kelly-text/60 hover:underline">
+        <Link href="/admin/workbench/email-command-center/analytics" className="text-xs text-kelly-muted hover:underline">
           Analytics
         </Link>
-        <Link href="/admin/workbench/email-command-center/map" className="text-xs text-kelly-text/60 hover:underline">
+        <Link href="/admin/workbench/email-command-center/map" className="text-xs text-kelly-muted hover:underline">
           Route map
         </Link>
-        <Link href="/admin/workbench/email-command-center/readiness" className="text-xs text-kelly-text/60 hover:underline">
+        <Link href="/admin/workbench/email-command-center/readiness" className="text-xs text-kelly-muted hover:underline">
           Readiness
         </Link>
         <Link
           href="/admin/workbench/email-command-center/send-execution"
-          className="text-xs text-kelly-text/60 hover:underline"
+          className="text-xs text-kelly-muted hover:underline"
         >
           Send execution governance
         </Link>
@@ -233,7 +233,7 @@ export function MessageStudioView({
             · <span className="font-mono text-[9px]">{audienceStrategySummary.definitionId}</span>
           </p>
           <div className="mt-2">
-            <p className="text-[9px] font-bold uppercase tracking-wide text-kelly-text/55">Criteria summary</p>
+            <p className="text-[9px] font-bold uppercase tracking-wide text-kelly-muted">Criteria summary</p>
             <ul className="mt-0.5 list-inside list-disc text-[10px] text-kelly-text/80">
               {audienceStrategySummary.criteriaSummaryLines.map((line, i) => (
                 <li key={i}>{line}</li>
@@ -241,7 +241,7 @@ export function MessageStudioView({
             </ul>
           </div>
           <div className="mt-2">
-            <p className="text-[9px] font-bold uppercase tracking-wide text-kelly-text/55">Strategist angles (deterministic)</p>
+            <p className="text-[9px] font-bold uppercase tracking-wide text-kelly-muted">Strategist angles (deterministic)</p>
             <ul className="mt-0.5 list-inside list-decimal text-[10px] text-kelly-text/85">
               {audienceStrategySummary.strategistBullets.map((b, i) => (
                 <li key={i}>{b}</li>
@@ -261,7 +261,7 @@ export function MessageStudioView({
           <p className="mt-2 text-[10px] text-kelly-text/75">
             <span className="font-semibold">Next step:</span> {audienceStrategySummary.recommendedNextStep}
           </p>
-          <p className="mt-1 text-[9px] text-kelly-text/60">
+          <p className="mt-1 text-[9px] text-kelly-muted">
             EMAIL-AI-AUDIENCE-STRATEGIST-1.0 — advisory only; toggle <strong>Audience definition context</strong> in Campaign Voice
             when drafting; no auto-send.
           </p>
@@ -353,7 +353,7 @@ export function MessageStudioView({
                 {" · "}
                 <span className="font-semibold text-kelly-text">Approval:</span> {d.approval}
               </p>
-              <p className="mt-1 text-[9px] text-kelly-text/65">
+              <p className="mt-1 text-[9px] text-kelly-muted">
                 Future send rail: <span className="font-mono">{d.futureRail}</span>
               </p>
             </div>
@@ -385,7 +385,7 @@ export function MessageStudioView({
 
       <section className={card}>
         <h2 className={h3}>D. Content block reference ({MESSAGE_STUDIO_CONTENT_BLOCKS.length} blocks)</h2>
-        <p className="mt-1 text-[10px] text-kelly-text/70">
+        <p className="mt-1 text-[10px] text-kelly-muted">
           The <strong>draft workspace</strong> above includes <strong>Insert into body</strong> and <strong>Copy block</strong>{" "}
           for each block. This list is read-only reference only.
         </p>
@@ -440,7 +440,7 @@ export function MessageStudioView({
             </span>
           ))}
         </div>
-        <p className="mt-2 text-[10px] text-kelly-text/70">
+        <p className="mt-2 text-[10px] text-kelly-muted">
           Queue approvals today are <strong>workflow state</strong> only — not provider sends. Message Studio extends the
           planning story without changing <code className="text-[9px]">EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM</code>.
         </p>

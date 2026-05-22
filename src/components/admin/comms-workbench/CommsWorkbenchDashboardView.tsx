@@ -9,8 +9,8 @@ import { getPlanStatusDisplay } from "@/lib/comms-workbench/status-display";
 import { formatCommsFieldLabel } from "@/lib/comms-workbench/ui-labels";
 
 const card = "rounded-md border border-kelly-text/10 bg-white p-3 shadow-sm min-w-0";
-const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
-const empty = "rounded border border-dashed border-kelly-text/20 bg-kelly-page/50 px-3 py-4 text-center font-body text-sm text-kelly-text/60";
+const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-muted";
+const empty = "rounded border border-dashed border-kelly-text/20 bg-kelly-page/50 px-3 py-4 text-center font-body text-sm text-kelly-muted";
 
 function PlanRowLinks({ title, items }: { title: string; items: CommunicationPlanListItem[] }) {
   if (items.length === 0) {
@@ -30,7 +30,7 @@ function PlanRowLinks({ title, items }: { title: string; items: CommunicationPla
             <Link href={commsPlanPath(p.id)} className="font-semibold text-kelly-slate hover:underline">
               {p.title}
             </Link>
-            <span className="flex flex-wrap items-center justify-end gap-1.5 text-[10px] text-kelly-text/50">
+            <span className="flex flex-wrap items-center justify-end gap-1.5 text-[10px] text-kelly-subtle">
               <CommsStatusBadge segment="plan" status={p.status} />
               <span>· {formatCommsFieldLabel(p.objective)}</span>
             </span>
@@ -59,7 +59,7 @@ function MediaRowLinks({ title, items }: { title: string; items: MediaOutreachLi
             <Link href={commsMediaPath(m.id)} className="font-semibold text-kelly-slate hover:underline">
               {m.title}
             </Link>
-            <span className="text-[10px] text-kelly-text/50">
+            <span className="text-[10px] text-kelly-subtle">
               {formatCommsFieldLabel(m.status)} {m.urgency ? `· ${formatCommsFieldLabel(m.urgency)}` : ""}
             </span>
           </li>
@@ -87,7 +87,7 @@ export function CommsWorkbenchDashboardView({ data }: { data: CommsWorkbenchDash
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h1 className="font-heading text-xl font-bold text-kelly-text">Comms operations</h1>
-          <p className="mt-1 max-w-2xl font-body text-sm text-kelly-text/70">
+          <p className="mt-1 max-w-2xl font-body text-sm text-kelly-muted">
             Message plans, drafts, and provenance in the new workbench graph. Queue and send execution rollups are shown below. Legacy
             threads and broadcasts stay on their existing tools — see the bottom of the page.
           </p>
@@ -95,7 +95,7 @@ export function CommsWorkbenchDashboardView({ data }: { data: CommsWorkbenchDash
         <div className={`${card} max-w-sm shrink-0`}>
           <p className={h2}>Plan status snapshot</p>
           <p className="mt-1 font-body text-2xl font-bold text-kelly-text">{total}</p>
-          <p className="text-xs text-kelly-text/55">Total communication plans in the graph.</p>
+          <p className="text-xs text-kelly-muted">Total communication plans in the graph.</p>
           <p className="mt-2">
             <Link
               href={COMMS_APP_PATHS.plansNew}
@@ -105,7 +105,7 @@ export function CommsWorkbenchDashboardView({ data }: { data: CommsWorkbenchDash
             </Link>
           </p>
           {total === 0 ? (
-            <p className="mt-2 text-xs text-kelly-text/60">No plans yet—use &quot;New message plan&quot; to create one.</p>
+            <p className="mt-2 text-xs text-kelly-muted">No plans yet—use &quot;New message plan&quot; to create one.</p>
           ) : (
             <ul className="mt-2 max-h-28 space-y-0.5 overflow-y-auto text-[11px] text-kelly-text/75">
               {Object.entries(byStatus).map(([k, n]) =>
@@ -158,7 +158,7 @@ export function CommsWorkbenchDashboardView({ data }: { data: CommsWorkbenchDash
                 <Link href={commsPlanPath(p.id)} className="font-semibold text-kelly-slate hover:underline">
                   {p.title}
                 </Link>
-                <time className="text-[10px] text-kelly-text/50" dateTime={p.updatedAt}>
+                <time className="text-[10px] text-kelly-subtle" dateTime={p.updatedAt}>
                   {new Date(p.updatedAt).toLocaleString()}
                 </time>
               </li>

@@ -127,7 +127,7 @@ export function PrimaryAdminAction({
 
 export function StatusPill({ children }: { children: ReactNode }) {
   return (
-    <span className="rounded-full border border-kelly-text/10 bg-kelly-wash px-2.5 py-1 font-body text-xs font-semibold text-kelly-text/70">
+    <span className="rounded-full border border-kelly-text/10 bg-kelly-wash px-2.5 py-1 font-body text-xs font-semibold text-kelly-muted">
       {children}
     </span>
   );

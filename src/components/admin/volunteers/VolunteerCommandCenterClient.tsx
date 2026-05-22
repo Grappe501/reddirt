@@ -89,7 +89,7 @@ export function VolunteerCommandCenterClient({
           <div><dt className="font-bold">Follow-up needed</dt><dd>{bundle.followUpNeeded}</dd></div>
           <div><dt className="font-bold">Training modules</dt><dd>{bundle.modulesAvailable}</dd></div>
         </dl>
-        <p className="mt-2 text-[10px] text-kelly-text/55">Power of 5: {bundle.powerOfFiveSummary}</p>
+        <p className="mt-2 text-[10px] text-kelly-muted">Power of 5: {bundle.powerOfFiveSummary}</p>
       </section>
 
       <section className="rounded-2xl border p-5">
@@ -105,7 +105,7 @@ export function VolunteerCommandCenterClient({
 
       <section className="rounded-2xl border p-5">
         <h2 className="font-heading text-lg font-bold text-kelly-navy">5–9. County · events · P5 · follow-up · leaders</h2>
-        <p className="mt-2 text-xs text-kelly-text/70">
+        <p className="mt-2 text-xs text-kelly-muted">
           County intelligence bridge feeds gaps. Event staffing wired on event drilldown. Prisma REL-2 and signup intake remain
           authoritative for production CRM when DB is up.
         </p>
@@ -120,7 +120,7 @@ export function VolunteerCommandCenterClient({
           {VOLUNTEER_COPILOTS.slice(0, 4).map((cp) => (
             <li key={cp.id} className="rounded-lg border border-kelly-text/10 p-3 text-xs">
               <p className="font-bold text-kelly-navy">{cp.title}</p>
-              <p className="mt-1 text-kelly-text/65">{cp.mission}</p>
+              <p className="mt-1 text-kelly-muted">{cp.mission}</p>
             </li>
           ))}
         </ul>
@@ -147,7 +147,7 @@ export function VolunteerCommandCenterClient({
               </Link>
             </li>
           ))}
-          {filtered.length === 0 ? <li className="py-4 text-kelly-text/55">No volunteers yet — add below or use intake.</li> : null}
+          {filtered.length === 0 ? <li className="py-4 text-kelly-muted">No volunteers yet — add below or use intake.</li> : null}
         </ul>
       </section>
 
@@ -167,12 +167,12 @@ export function VolunteerCommandCenterClient({
             {pending ? "Saving…" : "Add volunteer"}
           </button>
         </div>
-        <p className="mt-2 text-[10px] text-kelly-text/55">Import CSV scaffold — use ECC import for bulk; consent review required.</p>
+        <p className="mt-2 text-[10px] text-kelly-muted">Import CSV scaffold — use ECC import for bulk; consent review required.</p>
       </section>
 
       <section className="rounded-2xl border p-5">
         <h2 className="font-heading text-lg font-bold text-kelly-navy">Training modules ({VOLUNTEER_TRAINING_MODULES.length})</h2>
-        <ul className="mt-2 max-h-40 overflow-y-auto text-[10px] text-kelly-text/70">
+        <ul className="mt-2 max-h-40 overflow-y-auto text-[10px] text-kelly-muted">
           {VOLUNTEER_TRAINING_MODULES.map((m) => (
             <li key={m.id}>
               {m.title} · {m.estimatedMinutes}m · {m.difficulty}

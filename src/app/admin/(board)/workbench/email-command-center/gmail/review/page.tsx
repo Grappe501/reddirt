@@ -67,7 +67,7 @@ export default async function GmailReviewPage({ searchParams }: Props) {
       </div>
 
       <section className="rounded-lg border border-kelly-text/12 bg-white/90 p-3">
-        <h2 className="font-heading text-[10px] font-bold uppercase text-kelly-text/50">Database / migration readiness</h2>
+        <h2 className="font-heading text-[10px] font-bold uppercase text-kelly-subtle">Database / migration readiness</h2>
         <ul className="mt-2 list-inside list-disc font-body text-[11px] text-kelly-text">
           <li>
             <span className="font-bold">DATABASE_URL present:</span> {dbConfigured ? "yes" : "no"}
@@ -76,7 +76,7 @@ export default async function GmailReviewPage({ searchParams }: Props) {
             <span className="font-bold">DB reachable + StaffGmailAccount.gmailSyncState column:</span>{" "}
             {migration.ok ? "ok" : `not verified — ${migration.messageSafe}`}
           </li>
-          <li className="text-kelly-text/70">
+          <li className="text-kelly-muted">
             <code className="text-[10px]">npm run check</code> does not apply migrations; use{" "}
             <code className="text-[10px]">npx prisma migrate deploy</code> where appropriate.
           </li>
@@ -109,7 +109,7 @@ export default async function GmailReviewPage({ searchParams }: Props) {
       ) : null}
 
       <section className="rounded-lg border border-kelly-text/12 bg-white/90 p-3">
-        <h2 className="font-heading text-[10px] font-bold uppercase text-kelly-text/50">Gmail connection</h2>
+        <h2 className="font-heading text-[10px] font-bold uppercase text-kelly-subtle">Gmail connection</h2>
         <p className="mt-1 font-body text-[11px] text-kelly-text">
           <span className="font-bold">Phase:</span>{" "}
           {!snap.oauth.isConfigured
@@ -132,7 +132,7 @@ export default async function GmailReviewPage({ searchParams }: Props) {
             </div>
           </dl>
         ) : null}
-        <p className="mt-2 font-body text-[10px] text-kelly-text/65">
+        <p className="mt-2 font-body text-[10px] text-kelly-muted">
           Run <strong>safe metadata sync</strong> on the{" "}
           <Link href="/admin/workbench/email-command-center/gmail" className="font-bold underline">
             Gmail monitor
@@ -142,7 +142,7 @@ export default async function GmailReviewPage({ searchParams }: Props) {
       </section>
 
       <section className="rounded-lg border border-kelly-text/12 bg-kelly-fog/40 p-3">
-        <h2 className="font-heading text-[10px] font-bold uppercase text-kelly-text/50">Scope posture</h2>
+        <h2 className="font-heading text-[10px] font-bold uppercase text-kelly-subtle">Scope posture</h2>
         <p className="mt-1 font-body text-[11px] text-kelly-text/85">
           <span className="font-bold">Monitor (default):</span>{" "}
           <code className="text-[10px]">{snap.scopePosture.monitorScopes[0]}</code>
@@ -153,7 +153,7 @@ export default async function GmailReviewPage({ searchParams }: Props) {
           <code className="text-[10px]">GMAIL_OAUTH_INCLUDE_SEND_FOR_WORKBENCH=true</code>
           {snap.scopePosture.composerSendRequestedViaEnv ? " (enabled)." : " (off)."}
         </p>
-        <h3 className="mt-2 font-heading text-[10px] font-bold uppercase text-kelly-text/45">Requested scopes (new consent)</h3>
+        <h3 className="mt-2 font-heading text-[10px] font-bold uppercase text-kelly-subtle">Requested scopes (new consent)</h3>
         <ul className="mt-1 list-inside list-decimal font-mono text-[10px] text-kelly-text/85">
           {snap.requestedScopes.map((s) => (
             <li key={s}>{s}</li>
@@ -162,7 +162,7 @@ export default async function GmailReviewPage({ searchParams }: Props) {
       </section>
 
       <section className="rounded-lg border border-kelly-text/12 bg-kelly-page p-3">
-        <h2 className="font-heading text-[10px] font-bold uppercase text-kelly-text/50">Recent INBOX metadata (max 25)</h2>
+        <h2 className="font-heading text-[10px] font-bold uppercase text-kelly-subtle">Recent INBOX metadata (max 25)</h2>
 
         {!actor ? (
           <p className="mt-2 font-body text-[11px] text-amber-900">Resolve admin actor email to load Gmail review.</p>
@@ -183,7 +183,7 @@ export default async function GmailReviewPage({ searchParams }: Props) {
                   INBOX may have no recent metadata rows yet, sync may not have run, or Gmail returned an empty page for this
                   query window.
                 </p>
-                <p className="mt-2 font-semibold text-[10px] uppercase tracking-wide text-kelly-text/60">What to do next</p>
+                <p className="mt-2 font-semibold text-[10px] uppercase tracking-wide text-kelly-muted">What to do next</p>
                 <ul className="mt-1 list-inside list-disc text-[10px] text-kelly-text/85">
                   <li>
                     Run <strong>safe metadata sync</strong> on the{" "}
@@ -216,7 +216,7 @@ export default async function GmailReviewPage({ searchParams }: Props) {
                   <div className="flex flex-wrap items-start justify-between gap-2">
                     <div className="min-w-0 flex-1 space-y-1">
                       <p className="font-heading text-xs font-bold text-kelly-navy">
-                        {item.subject.trim() ? item.subject : <span className="text-kelly-text/55">(No subject)</span>}
+                        {item.subject.trim() ? item.subject : <span className="text-kelly-muted">(No subject)</span>}
                       </p>
                       <p className="font-body text-[11px] text-kelly-text">
                         <span className="font-bold">From:</span> {item.fromLabel}
@@ -224,7 +224,7 @@ export default async function GmailReviewPage({ searchParams }: Props) {
                       <p className="font-body text-[10px] text-kelly-text/75">
                         <span className="font-bold">Date:</span> {item.date}
                       </p>
-                      <p className="font-body text-[10px] text-kelly-text/70">
+                      <p className="font-body text-[10px] text-kelly-muted">
                         <span className="font-bold">Labels:</span> {item.labels.length ? item.labels.join(", ") : "—"}
                       </p>
                       {item.warningFlags.length ? (
@@ -234,12 +234,12 @@ export default async function GmailReviewPage({ searchParams }: Props) {
                           ))}
                         </ul>
                       ) : (
-                        <p className="font-body text-[10px] text-kelly-text/55">No warning flags from headers.</p>
+                        <p className="font-body text-[10px] text-kelly-muted">No warning flags from headers.</p>
                       )}
-                      <p className="font-body text-[10px] text-kelly-text/65">
+                      <p className="font-body text-[10px] text-kelly-muted">
                         <span className="font-bold">Proposed title:</span> {item.safeQueueTitle}
                       </p>
-                      <p className="font-body text-[10px] text-kelly-text/65">
+                      <p className="font-body text-[10px] text-kelly-muted">
                         <span className="font-bold">Proposed reason line:</span> {item.safeQueueReason}
                       </p>
                     </div>

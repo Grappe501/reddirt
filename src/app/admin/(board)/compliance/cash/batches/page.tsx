@@ -30,7 +30,7 @@ export default async function CashBatchesPage() {
       <ComplianceNav />
       <form action={createBatch} className="rounded-2xl border border-kelly-text/10 bg-kelly-page p-5">
         <h2 className="font-heading text-xl font-bold text-kelly-text">Create batch</h2>
-        <p className="mt-2 font-body text-sm text-kelly-text/70">Approved unbatched contributions: {batchable.length}</p>
+        <p className="mt-2 font-body text-sm text-kelly-muted">Approved unbatched contributions: {batchable.length}</p>
         <input type="hidden" name="contributionIds" value={batchable.map((item) => item.id).join(",")} />
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
           <Input name="preparedByInitials" label="Prepared by initials" required />

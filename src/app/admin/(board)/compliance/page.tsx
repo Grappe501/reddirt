@@ -82,6 +82,9 @@ export default async function ComplianceCommandCenterPage() {
         <ComplianceCard eyebrow="Reconciliation" title="Bank matching workspace" href="/admin/compliance/reconciliation">
           Match GoodChange payouts, receipts, cash, and checks to bank lines before locking.
         </ComplianceCard>
+        <ComplianceCard eyebrow="April 2026" title="April26 compliance ingest" href="/admin/compliance/april26" highlight>
+          GoodChange CSV, Ethics workbook, receipt/check images, payout batches, and bank CSV blocker status.
+        </ComplianceCard>
         <ComplianceCard eyebrow="GoodChange" title="Fundraising import" href="/admin/compliance/imports/goodchange">
           {goodChange.length} analyzed batch(es). Stage rows, then approve in the workbench.
         </ComplianceCard>

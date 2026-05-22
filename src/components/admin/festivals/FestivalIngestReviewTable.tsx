@@ -34,7 +34,7 @@ function SourceCell({ r }: { r: FestivalIngestAdminRow }) {
             Submitter link
           </a>
         ) : (
-          <span className="mt-0.5 block text-kelly-text/55">(no public URL)</span>
+          <span className="mt-0.5 block text-kelly-muted">(no public URL)</span>
         )}
       </div>
     );
@@ -70,7 +70,7 @@ export function FestivalIngestReviewTable({ rows, formRedirectBase }: Props) {
         <tbody>
           {rows.length === 0 ? (
             <tr>
-              <td colSpan={8} className="p-4 text-center text-kelly-text/55">
+              <td colSpan={8} className="p-4 text-center text-kelly-muted">
                 No rows for this filter.
               </td>
             </tr>
@@ -80,13 +80,13 @@ export function FestivalIngestReviewTable({ rows, formRedirectBase }: Props) {
                 <td className="p-1.5 font-mono text-[10px] text-kelly-text/85">
                   {fmt(r.startAt)}
                   <br />
-                  <span className="text-kelly-text/50">→ {fmt(r.endAt)}</span>
+                  <span className="text-kelly-subtle">→ {fmt(r.endAt)}</span>
                 </td>
                 <td className="p-1.5 font-medium text-kelly-text">{r.name}</td>
                 <td className="p-1.5 text-kelly-text/80">
                   {r.city ? `${r.city}` : "—"}
                   {r.county ? (
-                    <span className="text-kelly-text/55">
+                    <span className="text-kelly-muted">
                       <br />({r.county.displayName})
                     </span>
                   ) : null}
@@ -95,7 +95,7 @@ export function FestivalIngestReviewTable({ rows, formRedirectBase }: Props) {
                   {r.submitterName || r.submitterEmail ? (
                     <>
                       {r.submitterName ? <span className="block font-medium text-kelly-text">{r.submitterName}</span> : null}
-                      {r.submitterEmail ? <span className="text-kelly-text/65">{r.submitterEmail}</span> : null}
+                      {r.submitterEmail ? <span className="text-kelly-muted">{r.submitterEmail}</span> : null}
                     </>
                   ) : (
                     "—"

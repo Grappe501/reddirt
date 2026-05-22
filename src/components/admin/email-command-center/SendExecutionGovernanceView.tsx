@@ -7,7 +7,7 @@ const ECC = "/admin/workbench/email-command-center";
 const badge =
   "rounded-full border border-kelly-text/15 bg-white/90 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-kelly-slate";
 const card = "rounded-lg border border-kelly-text/12 bg-gradient-to-b from-white/95 to-kelly-page/90 px-3 py-2.5 shadow-sm";
-const h3 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/50";
+const h3 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-subtle";
 
 type GateStatus = "ready" | "partial" | "blocked" | "future";
 
@@ -271,25 +271,25 @@ export function SendExecutionGovernanceView({ snapshot }: SendExecutionGovernanc
         <Link href={ECC} className="rounded border border-kelly-text/15 bg-white px-2 py-0.5 text-xs font-semibold text-kelly-slate">
           ← Communication Command Center
         </Link>
-        <Link href={`${ECC}/message-studio`} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={`${ECC}/message-studio`} className="text-xs text-kelly-muted hover:underline">
           Message Studio
         </Link>
-        <Link href={`${ECC}/analytics`} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={`${ECC}/analytics`} className="text-xs text-kelly-muted hover:underline">
           Analytics
         </Link>
-        <Link href={`${ECC}/sendgrid`} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={`${ECC}/sendgrid`} className="text-xs text-kelly-muted hover:underline">
           SendGrid Foundation
         </Link>
-        <Link href={`${ECC}/audiences`} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={`${ECC}/audiences`} className="text-xs text-kelly-muted hover:underline">
           Audience Studio
         </Link>
-        <Link href={`${ECC}/automation`} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={`${ECC}/automation`} className="text-xs text-kelly-muted hover:underline">
           Automation Studio
         </Link>
-        <Link href={`${ECC}/map`} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={`${ECC}/map`} className="text-xs text-kelly-muted hover:underline">
           Route map
         </Link>
-        <Link href={`${ECC}/readiness`} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={`${ECC}/readiness`} className="text-xs text-kelly-muted hover:underline">
           Readiness
         </Link>
       </div>
@@ -325,7 +325,7 @@ export function SendExecutionGovernanceView({ snapshot }: SendExecutionGovernanc
           <span className={badge}>Governed execution console</span>
           <span className={badge}>Human final approval</span>
         </div>
-        <p className="font-body text-[10px] text-kelly-text/70">
+        <p className="font-body text-[10px] text-kelly-muted">
           <code className="text-[9px]">EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM</code> ={" "}
           <strong>{String(canSend)}</strong> — queue triage never implies provider send permission.
         </p>
@@ -399,7 +399,7 @@ export function SendExecutionGovernanceView({ snapshot }: SendExecutionGovernanc
 
       <section className={card}>
         <h2 className={h3}>Pre-send checklist</h2>
-        <p className="mt-1 font-body text-[10px] text-kelly-text/70">
+        <p className="mt-1 font-body text-[10px] text-kelly-muted">
           Rows are posture for tonight — statuses are not persisted; operators update reality in linked routes + CLIs.
         </p>
         <ul className="mt-2 divide-y divide-kelly-text/10 rounded border border-kelly-text/10">
@@ -460,7 +460,7 @@ Governed SendGrid execution  ← operator console (#ops) on this route
     ↓
 Analytics (events, bounces, complaints)`}
         </pre>
-        <p className="mt-2 font-body text-[10px] text-kelly-text/70">
+        <p className="mt-2 font-body text-[10px] text-kelly-muted">
           No branch on this page triggers execution — tree is for operator training and steering only.
         </p>
       </section>
@@ -489,7 +489,7 @@ Analytics (events, bounces, complaints)`}
         <div className="mt-2 overflow-x-auto">
           <table className="w-full min-w-[280px] border-collapse font-body text-[10px]">
             <thead>
-              <tr className="border-b border-kelly-text/15 text-left text-kelly-text/60">
+              <tr className="border-b border-kelly-text/15 text-left text-kelly-muted">
                 <th className="py-1 pr-2 font-heading font-bold uppercase">Role</th>
                 <th className="py-1 font-heading font-bold uppercase">Scope</th>
               </tr>

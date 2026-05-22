@@ -20,7 +20,7 @@ import {
 import type { EmailWorkflowListFilters } from "@/lib/email-workflow/types";
 import { getEmailCommandCenterSnapshot } from "@/lib/email-command-center/read-model";
 
-const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
+const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-muted";
 
 type Props = {
   searchParams: Promise<{
@@ -90,7 +90,7 @@ export default async function EmailWorkflowQueuePage({ searchParams }: Props) {
             ← Workbench
           </Link>
         </div>
-        <p className="max-w-prose font-body text-[10px] text-kelly-text/55">
+        <p className="max-w-prose font-body text-[10px] text-kelly-muted">
           Email workflow queue (E-1). All items are review-first; there is no auto-send or auto-approval from this engine.
         </p>
       </div>
@@ -131,7 +131,7 @@ export default async function EmailWorkflowQueuePage({ searchParams }: Props) {
       </div>
 
       <form className="mb-3 grid gap-1.5 rounded border border-kelly-text/10 bg-white/70 p-2 sm:grid-cols-2 xl:grid-cols-6">
-        <label className="text-[10px] font-bold uppercase text-kelly-text/55">
+        <label className="text-[10px] font-bold uppercase text-kelly-muted">
           Status
           <select name="status" defaultValue={status ?? ""} className="mt-0.5 w-full border border-kelly-text/15 bg-white px-1 py-1 text-xs">
             <option value="">All</option>
@@ -142,7 +142,7 @@ export default async function EmailWorkflowQueuePage({ searchParams }: Props) {
             ))}
           </select>
         </label>
-        <label className="text-[10px] font-bold uppercase text-kelly-text/55">
+        <label className="text-[10px] font-bold uppercase text-kelly-muted">
           Priority
           <select name="priority" defaultValue={priority ?? ""} className="mt-0.5 w-full border border-kelly-text/15 bg-white px-1 py-1 text-xs">
             <option value="">All</option>
@@ -153,7 +153,7 @@ export default async function EmailWorkflowQueuePage({ searchParams }: Props) {
             ))}
           </select>
         </label>
-        <label className="text-[10px] font-bold uppercase text-kelly-text/55">
+        <label className="text-[10px] font-bold uppercase text-kelly-muted">
           Source
           <select name="sourceType" defaultValue={sourceType ?? ""} className="mt-0.5 w-full border border-kelly-text/15 bg-white px-1 py-1 text-xs">
             <option value="">All</option>
@@ -164,7 +164,7 @@ export default async function EmailWorkflowQueuePage({ searchParams }: Props) {
             ))}
           </select>
         </label>
-        <label className="text-[10px] font-bold uppercase text-kelly-text/55">
+        <label className="text-[10px] font-bold uppercase text-kelly-muted">
           Escalation
           <select
             name="escalationLevel"
@@ -179,7 +179,7 @@ export default async function EmailWorkflowQueuePage({ searchParams }: Props) {
             ))}
           </select>
         </label>
-        <label className="text-[10px] font-bold uppercase text-kelly-text/55">
+        <label className="text-[10px] font-bold uppercase text-kelly-muted">
           Spam
           <select
             name="spamDisposition"
@@ -194,7 +194,7 @@ export default async function EmailWorkflowQueuePage({ searchParams }: Props) {
             ))}
           </select>
         </label>
-        <label className="text-[10px] font-bold uppercase text-kelly-text/55">
+        <label className="text-[10px] font-bold uppercase text-kelly-muted">
           Assignment
           <select name="assignee" defaultValue={assignee ?? ""} className="mt-0.5 w-full border border-kelly-text/15 bg-white px-1 py-1 text-xs">
             <option value="">All</option>
@@ -215,7 +215,7 @@ export default async function EmailWorkflowQueuePage({ searchParams }: Props) {
       <div className="overflow-x-auto border-b border-kelly-text/10">
         <table className="w-full min-w-[900px] border-collapse font-body text-xs">
           <thead>
-            <tr className="border-b border-kelly-text/10 text-left text-[10px] font-bold uppercase text-kelly-text/50">
+            <tr className="border-b border-kelly-text/10 text-left text-[10px] font-bold uppercase text-kelly-subtle">
               <th className="p-1.5">Status / priority</th>
               <th className="p-1.5">Who / what / why (summary)</th>
               <th className="p-1.5">Impact / recommended</th>
@@ -226,7 +226,7 @@ export default async function EmailWorkflowQueuePage({ searchParams }: Props) {
           <tbody>
             {items.length === 0 ? (
               <tr>
-                <td colSpan={5} className="p-3 text-kelly-text/60">
+                <td colSpan={5} className="p-3 text-kelly-muted">
                   No email workflow items yet. Use the form below to add a manual item, or connect triggers in a later
                   packet.
                 </td>
@@ -246,7 +246,7 @@ export default async function EmailWorkflowQueuePage({ searchParams }: Props) {
                       <Link href={`/admin/workbench/email-queue/${r.id}`} className="font-semibold text-kelly-slate hover:underline">
                         {EMAIL_WORKFLOW_STATUS_LABELS[r.status]}
                       </Link>
-                      <div className="mt-0.5 flex flex-wrap items-center gap-1 text-[10px] text-kelly-text/55">
+                      <div className="mt-0.5 flex flex-wrap items-center gap-1 text-[10px] text-kelly-muted">
                         <WorkbenchPill variant={r.escalationLevel === "HIGH" || r.escalationLevel === "CRITICAL" ? "warn" : "accent"}>
                           {r.priority}
                         </WorkbenchPill>
@@ -255,14 +255,14 @@ export default async function EmailWorkflowQueuePage({ searchParams }: Props) {
                     </td>
                     <td className="p-1.5">
                       <div className="line-clamp-2 font-medium text-kelly-text">{r.whoSummary || r.title || "—"}</div>
-                      <div className="line-clamp-2 text-kelly-text/70">{r.whatSummary}</div>
-                      <div className="line-clamp-2 text-[10px] text-kelly-text/60">{r.whySummary}</div>
+                      <div className="line-clamp-2 text-kelly-muted">{r.whatSummary}</div>
+                      <div className="line-clamp-2 text-[10px] text-kelly-muted">{r.whySummary}</div>
                     </td>
                     <td className="p-1.5">
                       <div className="line-clamp-2 text-kelly-text/80">{r.impactSummary}</div>
-                      <div className="line-clamp-2 text-[10px] text-kelly-text/55">{r.recommendedResponseSummary}</div>
+                      <div className="line-clamp-2 text-[10px] text-kelly-muted">{r.recommendedResponseSummary}</div>
                     </td>
-                    <td className="p-1.5 text-[10px] text-kelly-text/65">
+                    <td className="p-1.5 text-[10px] text-kelly-muted">
                       <div className="font-semibold text-kelly-text/80">
                         {r.assignedTo ? r.assignedTo.nameLabel ?? r.assignedTo.email : "Unassigned"}
                       </div>
@@ -271,7 +271,7 @@ export default async function EmailWorkflowQueuePage({ searchParams }: Props) {
                       </div>
                       {r.linkHints.planTitle ? <div>Plan: {r.linkHints.planTitle}</div> : null}
                     </td>
-                    <td className="p-1.5 text-[10px] text-kelly-text/55">
+                    <td className="p-1.5 text-[10px] text-kelly-muted">
                       <div>{r.occurredAt ? `Occurred ${r.occurredAt.slice(0, 16).replace("T", " ")}` : "Occurred —"}</div>
                       <div>Updated {r.updatedAt.slice(0, 16).replace("T", " ")}</div>
                     </td>
@@ -279,7 +279,7 @@ export default async function EmailWorkflowQueuePage({ searchParams }: Props) {
                 ))}
                 {remaining.length > 0 ? (
                   <tr>
-                    <td colSpan={5} className="bg-white px-1.5 py-1 text-[10px] font-bold uppercase text-kelly-text/55">
+                    <td colSpan={5} className="bg-white px-1.5 py-1 text-[10px] font-bold uppercase text-kelly-muted">
                       Other queue items ({remaining.length})
                     </td>
                   </tr>
@@ -290,27 +290,27 @@ export default async function EmailWorkflowQueuePage({ searchParams }: Props) {
                     <Link href={`/admin/workbench/email-queue/${r.id}`} className="font-semibold text-kelly-slate hover:underline">
                       {EMAIL_WORKFLOW_STATUS_LABELS[r.status]}
                     </Link>
-                    <div className="mt-0.5 text-[10px] text-kelly-text/55">
+                    <div className="mt-0.5 text-[10px] text-kelly-muted">
                       {r.priority} · esc {r.escalationLevel} · {r.spamDisposition}
                     </div>
                   </td>
                   <td className="p-1.5">
                     <div className="line-clamp-2 font-medium text-kelly-text">{r.whoSummary || r.title || "—"}</div>
-                    <div className="line-clamp-2 text-kelly-text/70">{r.whatSummary}</div>
-                    <div className="line-clamp-2 text-[10px] text-kelly-text/60">{r.whySummary}</div>
+                    <div className="line-clamp-2 text-kelly-muted">{r.whatSummary}</div>
+                    <div className="line-clamp-2 text-[10px] text-kelly-muted">{r.whySummary}</div>
                   </td>
                   <td className="p-1.5">
                     <div className="line-clamp-2 text-kelly-text/80">{r.impactSummary}</div>
-                    <div className="line-clamp-2 text-[10px] text-kelly-text/55">{r.recommendedResponseSummary}</div>
+                    <div className="line-clamp-2 text-[10px] text-kelly-muted">{r.recommendedResponseSummary}</div>
                   </td>
-                  <td className="p-1.5 text-[10px] text-kelly-text/65">
+                  <td className="p-1.5 text-[10px] text-kelly-muted">
                     <div className="font-semibold text-kelly-text/80">
                       {r.assignedTo ? r.assignedTo.nameLabel ?? r.assignedTo.email : "Unassigned"}
                     </div>
                     <div>{r.sourceType} / {r.triggerType}</div>
                     {r.linkHints.planTitle ? <div>Plan: {r.linkHints.planTitle}</div> : null}
                   </td>
-                  <td className="p-1.5 text-[10px] text-kelly-text/55">
+                  <td className="p-1.5 text-[10px] text-kelly-muted">
                     <div>{r.occurredAt ? `Occurred ${r.occurredAt.slice(0, 16).replace("T", " ")}` : "Occurred —"}</div>
                     <div>Updated {r.updatedAt.slice(0, 16).replace("T", " ")}</div>
                   </td>
@@ -324,7 +324,7 @@ export default async function EmailWorkflowQueuePage({ searchParams }: Props) {
 
       <div className="mt-4 border-t border-kelly-text/10 pt-3" id="create-manual">
         <h2 className="font-heading text-sm font-bold text-kelly-text">Add a manual queue item</h2>
-        <p className="mt-0.5 font-body text-xs text-kelly-text/60">
+        <p className="mt-0.5 font-body text-xs text-kelly-muted">
           Manual rows use source <code className="rounded bg-kelly-text/5 px-0.5">MANUAL</code> and land in the queue for
           operator review. Linked threads and sends can be added when integrating triggers.
         </p>

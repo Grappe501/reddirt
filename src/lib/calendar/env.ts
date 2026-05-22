@@ -16,6 +16,7 @@ function calendarCred(value: string | undefined): string {
 
 /** Google Calendar OAuth + API — set in `.env` (never commit secrets). */
 export function getGoogleCalendarEnv() {
+  const explicitRedirectUri = calendarCred(process.env.GOOGLE_CALENDAR_REDIRECT_URI);
   const clientId =
     calendarCred(process.env.GOOGLE_CALENDAR_CLIENT_ID) ||
     calendarCred(process.env.GOOGLE_GMAIL_CLIENT_ID) ||
@@ -30,9 +31,9 @@ export function getGoogleCalendarEnv() {
     clientId,
     clientSecret,
     redirectUri:
-      process.env.GOOGLE_CALENDAR_REDIRECT_URI?.trim() ??
+      explicitRedirectUri ||
       (process.env.NEXT_PUBLIC_SITE_URL
-        ? `${process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "")}/api/calendar/google/callback`
+        ? `${process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "")}/api/admin/google-calendar/oauth/callback`
         : ""),
   };
 }

@@ -14,8 +14,8 @@ import { getMediaOutreachStatusDisplay, commsStatusBadgeClass } from "@/lib/comm
 import { formatCommsFieldLabel } from "@/lib/comms-workbench/ui-labels";
 
 const card = "rounded-md border border-kelly-text/10 bg-white p-3 shadow-sm";
-const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
-const empty = "rounded border border-dashed border-kelly-text/15 bg-kelly-page/50 px-3 py-3 text-sm text-kelly-text/60";
+const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-muted";
+const empty = "rounded border border-dashed border-kelly-text/15 bg-kelly-page/50 px-3 py-3 text-sm text-kelly-muted";
 
 function SourceBlock({ plan }: { plan: CommunicationPlanDetail }) {
   const { source } = plan;
@@ -25,19 +25,19 @@ function SourceBlock({ plan }: { plan: CommunicationPlanDetail }) {
   return (
     <div className="space-y-2">
       {source.sourceType ? (
-        <p className="text-xs text-kelly-text/70">
+        <p className="text-xs text-kelly-muted">
           <span className="font-semibold">Recorded source type:</span> {source.sourceType}
         </p>
       ) : null}
       <ul className="space-y-1.5">
         {source.all.map((r) => (
           <li key={r.id} className="rounded border border-kelly-text/8 bg-kelly-page/30 px-2 py-1.5 text-sm">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-kelly-text/45">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">
               {formatCommsFieldLabel(r.kind)}
             </span>
             <p className="font-medium text-kelly-text">{r.sourceLabel}</p>
-            {r.sourceSubtitle ? <p className="text-xs text-kelly-text/65">{r.sourceSubtitle}</p> : null}
-            <p className="text-[10px] text-kelly-text/45">id: {r.id}</p>
+            {r.sourceSubtitle ? <p className="text-xs text-kelly-muted">{r.sourceSubtitle}</p> : null}
+            <p className="text-[10px] text-kelly-subtle">id: {r.id}</p>
           </li>
         ))}
       </ul>
@@ -83,7 +83,7 @@ export function CommunicationPlanDetailView({ plan }: { plan: CommunicationPlanD
             <p className="mt-0.5">{plan.approvedAt ? new Date(plan.approvedAt).toLocaleString() : "—"}</p>
           </div>
         </div>
-        <p className="mt-2 max-w-2xl text-[11px] text-kelly-text/55">
+        <p className="mt-2 max-w-2xl text-[11px] text-kelly-muted">
           Plan “approved” is separate from a draft/variant “approved” (copy) and a send “sent” (delivery). This page walks the full
           lifecycle: source → review → drafts/variants → planned sends → execution.
         </p>
@@ -95,7 +95,7 @@ export function CommunicationPlanDetailView({ plan }: { plan: CommunicationPlanD
 
       <section id={COMMS_PLAN_SECTION.source} className={card}>
         <h2 className={h2}>Source provenance</h2>
-        <p className="mb-1 text-xs text-kelly-text/60">Why this plan exists in the workbench: linked intakes, tasks, events, or social content.</p>
+        <p className="mb-1 text-xs text-kelly-muted">Why this plan exists in the workbench: linked intakes, tasks, events, or social content.</p>
         <div className="mt-1">
           <SourceBlock plan={plan} />
         </div>
@@ -103,7 +103,7 @@ export function CommunicationPlanDetailView({ plan }: { plan: CommunicationPlanD
 
       <section id={COMMS_PLAN_SECTION.review} className={card}>
         <h2 className={h2}>Review summary</h2>
-        <p className="mb-1 text-xs text-kelly-text/60">
+        <p className="mb-1 text-xs text-kelly-muted">
           Copy review state for drafts and variants. Assets must be approved before they appear in planned sends.
         </p>
         <ul className="mt-1 grid grid-cols-1 gap-1 text-sm sm:grid-cols-2">
@@ -116,7 +116,7 @@ export function CommunicationPlanDetailView({ plan }: { plan: CommunicationPlanD
           <li>Last review request: {plan.review.latestReviewRequestedAt ? new Date(plan.review.latestReviewRequestedAt).toLocaleString() : "—"}</li>
           <li>Last reviewed: {plan.review.latestReviewedAt ? new Date(plan.review.latestReviewedAt).toLocaleString() : "—"}</li>
         </ul>
-        <p className="mt-2 text-xs text-kelly-text/55">
+        <p className="mt-2 text-xs text-kelly-muted">
           <Link className="font-semibold text-kelly-slate" href={commsPlanPath(plan.id, COMMS_PLAN_SECTION.drafts)}>
             Jump to drafts
           </Link>{" "}
@@ -130,7 +130,7 @@ export function CommunicationPlanDetailView({ plan }: { plan: CommunicationPlanD
 
       <section id={COMMS_PLAN_SECTION.sendSummary} className={card}>
         <h2 className={h2}>Send summary (tracked)</h2>
-        <p className="mb-1 text-xs text-kelly-text/60">Planned and tracked sends for this plan (planning + execution states).</p>
+        <p className="mb-1 text-xs text-kelly-muted">Planned and tracked sends for this plan (planning + execution states).</p>
         <ul className="mt-1 grid grid-cols-2 gap-1 text-sm sm:grid-cols-3">
           <li>Total: {plan.sendSummary.sendCount}</li>
           <li>Queued: {plan.sendSummary.queuedCount}</li>
@@ -140,7 +140,7 @@ export function CommunicationPlanDetailView({ plan }: { plan: CommunicationPlanD
           <li>Next scheduled: {plan.sendSummary.nextScheduledAt ? new Date(plan.sendSummary.nextScheduledAt).toLocaleString() : "—"}</li>
           <li>Last sent: {plan.sendSummary.lastSentAt ? new Date(plan.sendSummary.lastSentAt).toLocaleString() : "—"}</li>
         </ul>
-        <p className="mt-2 text-xs text-kelly-text/55">
+        <p className="mt-2 text-xs text-kelly-muted">
           <Link className="font-semibold text-kelly-slate" href={commsPlanPath(plan.id, COMMS_PLAN_SECTION.sends)}>
             Open planned sends
           </Link>{" "}
@@ -152,9 +152,9 @@ export function CommunicationPlanDetailView({ plan }: { plan: CommunicationPlanD
 
       <section id={COMMS_PLAN_SECTION.drafts} className={card}>
         <h2 className={h2}>
-          Drafts <span className="font-mono text-kelly-text/50">({plan.draftCount})</span>
+          Drafts <span className="font-mono text-kelly-subtle">({plan.draftCount})</span>
         </h2>
-        <p className="mb-2 text-xs text-kelly-text/60">
+        <p className="mb-2 text-xs text-kelly-muted">
           Base copy per channel. Approve a draft before creating planned sends for it. Use variants for segments without rewriting the
           base.
         </p>
@@ -163,9 +163,9 @@ export function CommunicationPlanDetailView({ plan }: { plan: CommunicationPlanD
 
       <section id={COMMS_PLAN_SECTION.variants} className={card}>
         <h2 className={h2}>
-          Variants <span className="font-mono text-kelly-text/50">({plan.variantCount})</span>
+          Variants <span className="font-mono text-kelly-subtle">({plan.variantCount})</span>
         </h2>
-        <p className="mb-2 text-xs text-kelly-text/60">
+        <p className="mb-2 text-xs text-kelly-muted">
           Audience- or channel-specific rows. Empty overrides mean “inherit the base draft” for that field.
         </p>
         <CommsPlanVariantsPanel planId={plan.id} drafts={plan.drafts} />
@@ -173,9 +173,9 @@ export function CommunicationPlanDetailView({ plan }: { plan: CommunicationPlanD
 
       <section id={COMMS_PLAN_SECTION.segments} className={card}>
         <h2 className={h2}>
-          Plan audience segments <span className="font-mono text-kelly-text/50">({plan.audienceSegments.length})</span>
+          Plan audience segments <span className="font-mono text-kelly-subtle">({plan.audienceSegments.length})</span>
         </h2>
-        <p className="mb-2 text-xs text-kelly-text/60">
+        <p className="mb-2 text-xs text-kelly-muted">
           Campaign-local reusable groups (distinct from broadcast audience segments). Static segments have manual members;
           dynamic segments store rules only — they are not evaluated in this release.
         </p>
@@ -184,9 +184,9 @@ export function CommunicationPlanDetailView({ plan }: { plan: CommunicationPlanD
 
       <section id={COMMS_PLAN_SECTION.sends} className={card}>
         <h2 className={h2}>
-          Planned sends <span className="font-mono text-kelly-text/50">({plan.sends.length})</span>
+          Planned sends <span className="font-mono text-kelly-subtle">({plan.sends.length})</span>
         </h2>
-        <p className="mb-2 text-xs text-kelly-text/60">
+        <p className="mb-2 text-xs text-kelly-muted">
           Choose an approved draft or variant, set schedule, then queue for delivery. Outcomes and webhooks are summarized in
           execution intelligence (no raw provider payloads in this view).
         </p>
@@ -195,7 +195,7 @@ export function CommunicationPlanDetailView({ plan }: { plan: CommunicationPlanD
 
       <section id={COMMS_PLAN_SECTION.media} className={card}>
         <h2 className={h2}>
-          Media outreach linked here <span className="font-mono text-kelly-text/50">({plan.mediaOutreach.length})</span>
+          Media outreach linked here <span className="font-mono text-kelly-subtle">({plan.mediaOutreach.length})</span>
         </h2>
         {plan.mediaOutreach.length === 0 ? (
           <p className={`mt-1 ${empty}`}>{COMMS_EMPTY.noMedia}</p>
@@ -216,7 +216,7 @@ export function CommunicationPlanDetailView({ plan }: { plan: CommunicationPlanD
             })}
           </ul>
         )}
-        <p className="mt-2 text-xs text-kelly-text/55">
+        <p className="mt-2 text-xs text-kelly-muted">
           <Link href={COMMS_APP_PATHS.media} className="font-semibold text-kelly-slate">
             Media workbench
           </Link>{" "}

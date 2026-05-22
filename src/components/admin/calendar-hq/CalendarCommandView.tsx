@@ -13,14 +13,14 @@ import { computeEventExecutionReadiness } from "@/lib/calendar/event-readiness";
 import { EVENT_STAGE_LABEL } from "@/lib/calendar/event-lifecycle";
 import { buildEventCommsChips } from "@/lib/calendar/event-comms-surface";
 
-const h2 = "font-heading text-[9px] font-bold uppercase tracking-wider text-kelly-text/50";
+const h2 = "font-heading text-[9px] font-bold uppercase tracking-wider text-kelly-subtle";
 const card = "rounded border border-kelly-text/10 bg-kelly-page px-1.5 py-1 text-left text-[10px] shadow-sm min-w-0";
 
 const QStyle: Record<string, string> = {
   Q1: "bg-red-800/20 text-red-900 border-red-800/30",
   Q2: "bg-kelly-success/20 text-kelly-success/95 border-kelly-success/40",
   Q3: "bg-amber-200/50 text-amber-950 border-amber-800/30",
-  Q4: "bg-kelly-text/10 text-kelly-text/70 border-kelly-text/20",
+  Q4: "bg-kelly-text/10 text-kelly-muted border-kelly-text/20",
 };
 
 type WeekEvent = CampaignEvent & {
@@ -158,7 +158,7 @@ export async function CalendarCommandView({
           <h2 className="font-heading text-lg font-bold leading-tight text-kelly-text md:text-xl">
             {weekRangeLabel}
           </h2>
-          <p className="mt-0.5 max-w-3xl text-[10px] text-kelly-text/60">
+          <p className="mt-0.5 max-w-3xl text-[10px] text-kelly-muted">
             Mission-led execution. Big rocks, matrix quadrants, and event intelligence — same data model as Google sync.
           </p>
         </div>
@@ -193,7 +193,7 @@ export async function CalendarCommandView({
               key={v}
               href={calUrl(filters, weekKey, matrixQ, previewQ, { view: v })}
               className={`rounded px-2 py-0.5 text-[10px] font-bold uppercase ${
-                (viewMode === v || (v === "week" && (viewMode === "command" || viewMode === "week"))) ? "bg-kelly-text text-kelly-page" : "bg-white text-kelly-text/70"
+                (viewMode === v || (v === "week" && (viewMode === "command" || viewMode === "week"))) ? "bg-kelly-text text-kelly-page" : "bg-white text-kelly-muted"
               }`}
             >
               {label}
@@ -266,7 +266,7 @@ export async function CalendarCommandView({
 
           <div className="shrink-0 border-b border-kelly-text/10 p-2 md:px-3">
             <p className={h2}>Big rocks (3–5 protected priorities)</p>
-            <p className="text-[9px] text-kelly-text/50">Pinned in the week before low-quadrant noise. Link an event to show as a protected block in the grid.</p>
+            <p className="text-[9px] text-kelly-subtle">Pinned in the week before low-quadrant noise. Link an event to show as a protected block in the grid.</p>
             <ul className="mt-1 flex flex-wrap gap-1.5">
               {plan.bigRocks.map((r) => (
                 <li
@@ -334,9 +334,9 @@ export async function CalendarCommandView({
                 </div>
               </div>
             ) : (
-              <p className="text-[9px] text-kelly-text/50">No events in week — set quadrant on events to see the mix.</p>
+              <p className="text-[9px] text-kelly-subtle">No events in week — set quadrant on events to see the mix.</p>
             )}
-            <p className="mt-1 text-[9px] text-kelly-text/50">
+            <p className="mt-1 text-[9px] text-kelly-subtle">
               Filter grid:{" "}
               {(["ALL", "Q1", "Q2", "Q3", "Q4"] as const).map((qk) => (
                 <Link
@@ -413,7 +413,7 @@ export async function CalendarCommandView({
                   <div key={ymd} className="flex min-w-0 flex-col border-l border-kelly-text/10 bg-white/90 first:border-l-0">
                     <div className="sticky top-0 border-b border-kelly-text/10 bg-kelly-text/90 px-1 py-0.5 text-center">
                       <p className="text-[9px] font-bold text-kelly-page">{dayName}</p>
-                      <p className="text-[8px] text-kelly-page/80">{ymd}</p>
+                      <p className="text-[8px] text-kelly-inverse-soft">{ymd}</p>
                     </div>
                     <ul className="space-y-0.5 p-0.5">
                       {list.map((e) => {
@@ -459,7 +459,7 @@ export async function CalendarCommandView({
                                 </span>
                               ))}
                               {atR ? <span className="mr-0.5 text-[7px] font-bold text-rose-800">RISK</span> : null}
-                              <span className="text-kelly-text/45">{timeShort(e.startAt)}</span>{" "}
+                              <span className="text-kelly-subtle">{timeShort(e.startAt)}</span>{" "}
                               <span className={`inline-block rounded border px-0.5 text-[8px] font-bold ${QStyle[e.timeMatrixQuadrant]}`}>
                                 {e.timeMatrixQuadrant}
                               </span>
@@ -482,7 +482,7 @@ export async function CalendarCommandView({
                       <input type="hidden" name="returnSearch" value={draftReturnSearch} />
                       <input type="hidden" name="ymd" value={ymd} />
                       <input type="hidden" name="weekKey" value={weekKey} />
-                      <button type="submit" className="w-full rounded border border-dashed border-kelly-text/25 py-0.5 text-[8px] font-bold text-kelly-text/70 hover:border-kelly-navy/30">
+                      <button type="submit" className="w-full rounded border border-dashed border-kelly-text/25 py-0.5 text-[8px] font-bold text-kelly-muted hover:border-kelly-navy/30">
                         + Draft slot
                       </button>
                     </form>
@@ -514,7 +514,7 @@ export async function CalendarCommandView({
               assignUsers={assignUsers}
             />
           ) : (
-            <div className="p-2 text-[10px] text-kelly-text/55">
+            <div className="p-2 text-[10px] text-kelly-muted">
               <p className="font-heading text-xs font-bold text-kelly-text">No event selected</p>
               <p className="mt-1">Select an event in the week grid to load prep, comms, staffing, and follow-up.</p>
             </div>

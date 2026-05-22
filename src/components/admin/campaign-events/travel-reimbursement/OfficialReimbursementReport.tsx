@@ -31,7 +31,7 @@ const STATUS_STYLE: Record<string, string> = {
   needs_review: "border-orange-700/30 bg-orange-50 text-orange-950",
   ready: "border-emerald-700/30 bg-emerald-50 text-emerald-950",
   finalized: "border-kelly-navy/30 bg-kelly-navy/10 text-kelly-navy",
-  empty: "border-kelly-text/20 bg-kelly-wash text-kelly-text/60",
+  empty: "border-kelly-text/20 bg-kelly-wash text-kelly-muted",
 };
 
 const APPENDIX_GROUP_ORDER = [
@@ -86,7 +86,7 @@ export function OfficialReimbursementReportView({
     return (
       <section className="rounded-2xl border border-dashed p-8 text-center font-body text-sm">
         <p className="font-heading text-lg font-bold">No travel data for {report.monthLabel}</p>
-        <p className="mt-2 text-kelly-text/65">{report.statusNote}</p>
+        <p className="mt-2 text-kelly-muted">{report.statusNote}</p>
       </section>
     );
   }
@@ -135,7 +135,7 @@ export function OfficialReimbursementReportView({
             Download audit JSON
           </button>
           <span
-            className="cursor-not-allowed rounded-full border px-4 py-2 text-sm font-bold text-kelly-text/45"
+            className="cursor-not-allowed rounded-full border px-4 py-2 text-sm font-bold text-kelly-subtle"
             title="Server PDF not built — use Print official request"
           >
             PDF export coming next
@@ -189,8 +189,8 @@ export function OfficialReimbursementReportView({
                 <dd>{statusContext.stored?.reviewedBy ?? "—"}</dd>
               </div>
             </dl>
-            <p className="mt-3 font-body text-xs text-kelly-text/70">{report.statusNote}</p>
-            <p className="mt-2 font-body text-[10px] text-kelly-text/50 print:block">
+            <p className="mt-3 font-body text-xs text-kelly-muted">{report.statusNote}</p>
+            <p className="mt-2 font-body text-[10px] text-kelly-subtle print:block">
               Paid for by Kelly Grappe for Secretary of State. Internal campaign ledger — not a FIN-1 filing packet.
             </p>
           </header>
@@ -199,19 +199,19 @@ export function OfficialReimbursementReportView({
             <h2 className="font-heading text-sm font-bold uppercase tracking-wider text-kelly-slate">Totals</h2>
             <dl className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
               <div>
-                <dt className="text-xs text-kelly-text/55">Approved reimbursable events</dt>
+                <dt className="text-xs text-kelly-muted">Approved reimbursable events</dt>
                 <dd className="font-bold">{report.totals.approvedEventCount}</dd>
               </div>
               <div>
-                <dt className="text-xs text-kelly-text/55">Total miles</dt>
+                <dt className="text-xs text-kelly-muted">Total miles</dt>
                 <dd className="font-bold">{report.totals.totalMiles.toFixed(1)}</dd>
               </div>
               <div>
-                <dt className="text-xs text-kelly-text/55">Total reimbursement</dt>
+                <dt className="text-xs text-kelly-muted">Total reimbursement</dt>
                 <dd className="font-bold text-lg">{fmtUsd(report.totals.totalReimbursement)}</dd>
               </div>
               <div>
-                <dt className="text-xs text-kelly-text/55">Excluded / needs review</dt>
+                <dt className="text-xs text-kelly-muted">Excluded / needs review</dt>
                 <dd className="font-bold">
                   {report.totals.excludedCount} excluded · {report.totals.needsReviewCount} need attention
                 </dd>
@@ -250,7 +250,7 @@ export function OfficialReimbursementReportView({
                       <td className="p-2 text-right">{l.miles?.toFixed(1)}</td>
                       <td className="p-2 text-right">${l.rate.toFixed(2)}</td>
                       <td className="p-2 text-right font-semibold">{l.reimbursement != null ? fmtUsd(l.reimbursement) : "—"}</td>
-                      <td className="p-2 max-w-[120px] text-kelly-text/60">{l.notes || "—"}</td>
+                      <td className="p-2 max-w-[120px] text-kelly-muted">{l.notes || "—"}</td>
                       <td className="p-2 print:hidden">
                         <Link href={eventEditHref(l.recordId, report.month)} className="font-bold text-kelly-navy underline">
                           Edit
@@ -277,7 +277,7 @@ export function OfficialReimbursementReportView({
           {appendixGroups.length > 0 ? (
             <section className="break-before-page">
               <h2 className="font-heading text-lg font-bold">Appendix — excluded from reimbursement total</h2>
-              <p className="mt-1 font-body text-xs text-kelly-text/55">
+              <p className="mt-1 font-body text-xs text-kelly-muted">
                 Retained for audit. Personal, duplicate, denied, and pending rows are not included in the total above.
               </p>
               {appendixGroups.map((group) => (
@@ -317,17 +317,17 @@ export function OfficialReimbursementReportView({
               <p className="font-body text-xs font-bold uppercase text-kelly-slate">Candidate signature</p>
               <div className="mt-10 border-b-2 border-kelly-text/50" />
               <p className="mt-2 font-body text-sm">{REIMBURSEMENT_CANDIDATE_NAME}</p>
-              <p className="font-body text-xs text-kelly-text/55">Date: _______________</p>
+              <p className="font-body text-xs text-kelly-muted">Date: _______________</p>
             </div>
             <div>
               <p className="font-body text-xs font-bold uppercase text-kelly-slate">Campaign manager / treasurer review</p>
               <div className="mt-10 border-b-2 border-kelly-text/50" />
               <p className="mt-2 font-body text-sm">Reviewed by: _______________</p>
-              <p className="font-body text-xs text-kelly-text/55">Date: _______________</p>
+              <p className="font-body text-xs text-kelly-muted">Date: _______________</p>
             </div>
           </section>
 
-          <footer className="border-t border-kelly-text/15 pt-4 font-body text-[10px] text-kelly-text/45">
+          <footer className="border-t border-kelly-text/15 pt-4 font-body text-[10px] text-kelly-subtle">
             Paid for by Kelly Grappe for Secretary of State · Generated from Campaign Event Ledger · {report.month} ·
             Print date {new Date().toISOString().slice(0, 10)}
           </footer>

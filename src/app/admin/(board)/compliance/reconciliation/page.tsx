@@ -28,6 +28,9 @@ export default async function ComplianceReconciliationPage() {
         description="Preview deterministic matches across GoodChange, cash, checks, fees, expenses, travel reimbursements, staff payments, and manual review. No match is final without human approval."
       />
       <ComplianceNav />
+      <ComplianceCard title="April 2026 reconciliation" href="/admin/compliance/april26">
+        GoodChange payout batches, bank CSV status, and April26 reconciliation candidates.
+      </ComplianceCard>
       <StorageModeNotice />
       <section className="grid gap-4 md:grid-cols-4">
         <ComplianceCard title="High confidence">{analysis.summary.highConfidence} candidate(s)</ComplianceCard>
@@ -48,14 +51,14 @@ export default async function ComplianceReconciliationPage() {
               {receipt.vendorName ?? "Unknown vendor"} · ${receipt.total.toFixed(2)} · {receipt.receiptDate ?? "date missing"} · match rules: date 0-5 days, exact total, vendor memo, card last four, manual match
             </p>
           ))}
-          {!unmatchedReceipts.length ? <p className="font-body text-sm text-kelly-text/70">No approved receipt expenses awaiting bank match yet.</p> : null}
+          {!unmatchedReceipts.length ? <p className="font-body text-sm text-kelly-muted">No approved receipt expenses awaiting bank match yet.</p> : null}
         </div>
       </section>
       <section className="rounded-2xl border border-kelly-text/10 bg-kelly-page p-5">
         <h2 className="font-heading text-xl font-bold text-kelly-text">Coverage match types</h2>
         <div className="mt-3 flex flex-wrap gap-2">
           {coverageMatchTypes.map((type) => (
-            <span key={type} className="rounded-full border border-kelly-text/10 bg-kelly-wash px-3 py-1 font-body text-xs font-semibold text-kelly-text/70">{type}</span>
+            <span key={type} className="rounded-full border border-kelly-text/10 bg-kelly-wash px-3 py-1 font-body text-xs font-semibold text-kelly-muted">{type}</span>
           ))}
         </div>
       </section>

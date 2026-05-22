@@ -198,7 +198,7 @@ export function CampaignManagerOpsDashboard({
             Month status:{" "}
             <strong>{REIMBURSEMENT_STATUS_LABELS[monthSummary.effectiveStatus]}</strong>
             {" · "}
-            <span className="text-kelly-text/65">{monthSummary.nextAction}</span>
+            <span className="text-kelly-muted">{monthSummary.nextAction}</span>
           </p>
         ) : null}
         <DashboardStatGrid>
@@ -258,7 +258,7 @@ export function CampaignManagerOpsDashboard({
             href={`/admin/campaign-events/review?month=${period}&mode=intake_conflict`}
           />
         </DashboardStatGrid>
-        <p className="mt-2 font-body text-xs text-kelly-text/55">
+        <p className="mt-2 font-body text-xs text-kelly-muted">
           Public schedule form → WorkflowIntake → CampaignEventLedgerRecord (tentative).{" "}
           <Link href="/schedule" className="underline">
             Public form
@@ -273,7 +273,7 @@ export function CampaignManagerOpsDashboard({
           <StatCard label="Holds" value={snapshot.holds} href={reviewHref} />
           <StatCard label="Denials (retained)" value={snapshot.denials} href="/admin/campaign-events/workbench" />
         </DashboardStatGrid>
-        <p className="mt-3 font-body text-xs text-kelly-text/55">
+        <p className="mt-3 font-body text-xs text-kelly-muted">
           Campaign manager email not configured — candidate packages default to Kelly addresses. {EMAIL_SEND_DISABLED_NOTICE}
         </p>
         <Link href="/admin/candidate-dashboard" className="mt-2 inline-block text-sm font-semibold text-kelly-navy underline">
@@ -301,7 +301,7 @@ export function CampaignManagerOpsDashboard({
               <Link href={a.href} className="font-semibold text-kelly-navy underline">
                 {a.label}
               </Link>
-              <span className="text-xs text-kelly-text/55">{a.status}</span>
+              <span className="text-xs text-kelly-muted">{a.status}</span>
             </li>
           ))}
         </ul>

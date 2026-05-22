@@ -50,7 +50,7 @@ export default async function AdminSettingsPage({ searchParams }: Props) {
             Trigger sync from server
           </button>
         </form>
-        <p className="font-body text-xs text-kelly-text/55">
+        <p className="font-body text-xs text-kelly-muted">
           {/* TODO: scheduled sync — wire a cron (e.g. Vercel cron, GitHub Action, or worker) to POST an authenticated sync endpoint on an interval. */}
           Scheduled sync is not wired in this pass. Add a cron job that hits a protected sync route when you are ready.
         </p>
@@ -73,7 +73,7 @@ export default async function AdminSettingsPage({ searchParams }: Props) {
       <form action={saveSiteSettingsAction} className="mt-8 space-y-4 rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]">
         <h2 className="font-heading text-lg font-bold text-kelly-text">Stored settings</h2>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Substack RSS URL (optional if env set)</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Substack RSS URL (optional if env set)</span>
           <input
             name="substackFeedUrl"
             defaultValue={settings?.substackFeedUrl ?? ""}
@@ -82,7 +82,7 @@ export default async function AdminSettingsPage({ searchParams }: Props) {
           />
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Canonical site URL note</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Canonical site URL note</span>
           <textarea
             name="canonicalSiteUrlNote"
             rows={2}
@@ -92,7 +92,7 @@ export default async function AdminSettingsPage({ searchParams }: Props) {
           />
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Admin / integration notes</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Admin / integration notes</span>
           <textarea
             name="adminNotes"
             rows={4}

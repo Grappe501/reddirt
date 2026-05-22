@@ -38,7 +38,7 @@ export function CreateSocialItemForm() {
       }}
     >
       {err ? <p className="text-xs text-red-800">{err}</p> : null}
-      <label className="text-[10px] font-bold uppercase text-kelly-text/45">Title</label>
+      <label className="text-[10px] font-bold uppercase text-kelly-subtle">Title</label>
       <input
         name="title"
         required
@@ -47,7 +47,7 @@ export function CreateSocialItemForm() {
         placeholder="e.g. Host rally recap — NWA"
         autoComplete="off"
       />
-      <label className="text-[10px] font-bold uppercase text-kelly-text/45">Kind</label>
+      <label className="text-[10px] font-bold uppercase text-kelly-subtle">Kind</label>
       <select name="kind" className="border border-kelly-text/15 bg-white px-1 py-0.5 text-sm" defaultValue={SocialContentKind.OTHER}>
         {KIND_OPTIONS.map((k) => (
           <option key={k.v} value={k.v}>
@@ -55,7 +55,7 @@ export function CreateSocialItemForm() {
           </option>
         ))}
       </select>
-      <label className="text-[10px] font-bold uppercase text-kelly-text/45">Default copy (optional)</label>
+      <label className="text-[10px] font-bold uppercase text-kelly-subtle">Default copy (optional)</label>
       <textarea
         name="bodyCopy"
         rows={3}

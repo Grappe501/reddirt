@@ -12,7 +12,7 @@ const ECC = "/admin/workbench/email-command-center";
 const SEND_EXECUTION = `${ECC}/send-execution`;
 const card =
   "rounded-lg border border-kelly-text/12 bg-gradient-to-b from-white/95 to-kelly-page/90 px-3 py-2.5 shadow-sm";
-const h3 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/50";
+const h3 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-subtle";
 const badge =
   "rounded-full border border-kelly-text/15 bg-white/90 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-kelly-slate";
 
@@ -33,13 +33,13 @@ function CheckRow({ label, ok, note }: { label: string; ok: boolean | "manual"; 
       : ok === "manual"
         ? "text-amber-900"
         : ok === false
-          ? "text-kelly-text/70"
-          : "text-kelly-text/55";
+          ? "text-kelly-muted"
+          : "text-kelly-muted";
   return (
     <li className="flex flex-wrap items-baseline justify-between gap-2 border-b border-kelly-text/8 py-1.5 font-body text-[11px] text-kelly-text/90 last:border-0">
       <span className="font-semibold text-kelly-navy">{label}</span>
       <span className={`shrink-0 text-[10px] font-bold uppercase ${cls}`}>{labelText}</span>
-      {note ? <span className="w-full text-[10px] text-kelly-text/65">{note}</span> : null}
+      {note ? <span className="w-full text-[10px] text-kelly-muted">{note}</span> : null}
     </li>
   );
 }
@@ -85,28 +85,28 @@ export function AnalyticsDeliverabilityView({
         <Link href={ECC} className="rounded border border-kelly-text/15 bg-white px-2 py-0.5 text-xs font-semibold text-kelly-slate">
           ← Communication Command Center
         </Link>
-        <Link href={`${ECC}/sendgrid`} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={`${ECC}/sendgrid`} className="text-xs text-kelly-muted hover:underline">
           SendGrid Foundation
         </Link>
-        <Link href={`${ECC}/audiences`} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={`${ECC}/audiences`} className="text-xs text-kelly-muted hover:underline">
           Audience Studio
         </Link>
-        <Link href={`${ECC}/imports`} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={`${ECC}/imports`} className="text-xs text-kelly-muted hover:underline">
           Contact imports
         </Link>
-        <Link href={`${ECC}/automation`} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={`${ECC}/automation`} className="text-xs text-kelly-muted hover:underline">
           Automation Studio
         </Link>
-        <Link href={`${ECC}/message-studio`} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={`${ECC}/message-studio`} className="text-xs text-kelly-muted hover:underline">
           Message Studio
         </Link>
-        <Link href={`${ECC}/map`} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={`${ECC}/map`} className="text-xs text-kelly-muted hover:underline">
           Route map
         </Link>
-        <Link href={SEND_EXECUTION} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={SEND_EXECUTION} className="text-xs text-kelly-muted hover:underline">
           Send execution governance
         </Link>
-        <Link href={`${ECC}/readiness`} className="text-xs text-kelly-text/60 hover:underline">
+        <Link href={`${ECC}/readiness`} className="text-xs text-kelly-muted hover:underline">
           Readiness
         </Link>
       </div>
@@ -213,7 +213,7 @@ export function AnalyticsDeliverabilityView({
 
       <section id="contact-sync-health" className={`${card} scroll-mt-20`}>
         <h2 className={h3}>SendGrid contact sync — health summary</h2>
-        <p className="mt-1 font-body text-[10px] text-kelly-text/70">
+        <p className="mt-1 font-body text-[10px] text-kelly-muted">
           EMAIL-SENDGRID-SYNC-RECONCILIATION-POLISH-1.0 — snapshot from <code className="text-[9px]">SendGridContactSyncRun</code> only. Σ suppression / warnings sum{" "}
           <strong>non-archived</strong> run rows (preview pipeline; not SendGrid Marketing API totals). <strong>No sends.</strong>
         </p>
@@ -285,7 +285,7 @@ export function AnalyticsDeliverabilityView({
 
       <section id="send-execution-preflight" className={`${card} scroll-mt-20`}>
         <h2 className={h3}>Send execution analytics</h2>
-        <p className="mt-1 font-body text-[10px] text-kelly-text/70">
+        <p className="mt-1 font-body text-[10px] text-kelly-muted">
           EMAIL-SEND-EXECUTION-1.0 — Postgres counts only.{" "}
           <strong>EMAIL-SENDGRID-EVENT-RECIPIENT-RECONCILIATION-1.0</strong> (below) links webhook{" "}
           <code className="text-[9px]">SendGridEvent</code> rows to <code className="text-[9px]">EmailSendRecipient</code> for
@@ -361,10 +361,10 @@ export function AnalyticsDeliverabilityView({
               <Stat href="#reconciliation" label="Spam report events (rows)" value={sgr.spamEventsApprox} />
             </div>
             <div className="mt-3 rounded border border-kelly-text/10 bg-kelly-page/50 px-2 py-2">
-              <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/55">EmailSendRecipient status (all executions)</p>
+              <p className="font-heading text-[9px] font-bold uppercase text-kelly-muted">EmailSendRecipient status (all executions)</p>
               <ul className="mt-1 flex flex-wrap gap-2 font-mono text-[9px] text-kelly-navy">
                 {Object.entries(sgr.recipientByStatus).length === 0 ? (
-                  <li className="text-kelly-text/60">No recipient rows yet.</li>
+                  <li className="text-kelly-muted">No recipient rows yet.</li>
                 ) : (
                   Object.entries(sgr.recipientByStatus).map(([k, v]) => (
                     <li key={k} className="rounded border border-kelly-text/10 bg-white/90 px-1.5 py-0.5">
@@ -397,7 +397,7 @@ export function AnalyticsDeliverabilityView({
             </div>
             <div className="mt-3 max-h-56 overflow-auto rounded border border-kelly-text/10">
               <table className="w-full text-left font-mono text-[9px] text-kelly-navy">
-                <thead className="sticky top-0 bg-kelly-fog/90 text-kelly-text/60">
+                <thead className="sticky top-0 bg-kelly-fog/90 text-kelly-muted">
                   <tr>
                     <th className="px-1 py-1">When (UTC)</th>
                     <th className="px-1 py-1">Type</th>
@@ -435,7 +435,7 @@ export function AnalyticsDeliverabilityView({
 
       <section className={card}>
         <h2 className={h3}>SendGrid deliverability foundation</h2>
-        <p className="mt-1 font-body text-[10px] text-kelly-text/70">Env presence only — never values. Table counts require applied migrations + healthy DB.</p>
+        <p className="mt-1 font-body text-[10px] text-kelly-muted">Env presence only — never values. Table counts require applied migrations + healthy DB.</p>
         <ul className="mt-2 space-y-1 font-body text-[11px] text-kelly-text/90">
           <li>
             <strong>SENDGRID_API_KEY</strong> configured:{" "}
@@ -488,13 +488,13 @@ export function AnalyticsDeliverabilityView({
             </ul>
           </div>
         ) : (
-          <p className="mt-3 text-[10px] text-kelly-text/60">
+          <p className="mt-3 text-[10px] text-kelly-muted">
             No suppression-type breakdown (empty table or DB unreachable). Events still route through{" "}
             <code className="text-[10px]">POST /api/sendgrid/events</code> when configured.
           </p>
         )}
         <div className="mt-3 rounded border border-kelly-text/12 bg-kelly-fog/40 px-2 py-2">
-          <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/55">Domain authentication (manual)</p>
+          <p className="font-heading text-[9px] font-bold uppercase text-kelly-muted">Domain authentication (manual)</p>
           <ul className="mt-1 list-inside list-disc text-[10px] text-kelly-text/85">
             <li>Confirm SPF/DKIM/DMARC in SendGrid + DNS host — not inferred from this app.</li>
             <li>Link tracking and click domain settings remain operator choices in SendGrid.</li>
@@ -566,9 +566,9 @@ function Stat({
       href={href}
       className="rounded-md border border-kelly-text/10 bg-white/90 px-2 py-2 transition hover:border-kelly-forest/30"
     >
-      <p className="font-heading text-[9px] font-bold uppercase tracking-wide text-kelly-text/55">{label}</p>
+      <p className="font-heading text-[9px] font-bold uppercase tracking-wide text-kelly-muted">{label}</p>
       <p className="mt-0.5 font-heading text-xl font-bold tabular-nums text-kelly-navy">{value}</p>
-      {sub ? <p className="mt-0.5 text-[9px] text-kelly-text/65">{sub}</p> : null}
+      {sub ? <p className="mt-0.5 text-[9px] text-kelly-muted">{sub}</p> : null}
     </Link>
   );
 }

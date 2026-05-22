@@ -30,7 +30,7 @@ export default async function AdminAsksPage() {
         <textarea name="description" rows={2} placeholder="Description" className="w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         <div className="grid gap-3 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold text-kelly-text/55">Type</span>
+            <span className="text-xs font-semibold text-kelly-muted">Type</span>
             <select name="askType" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               {Object.values(VolunteerAskType).map((t) => (
                 <option key={t} value={t}>
@@ -40,7 +40,7 @@ export default async function AdminAsksPage() {
             </select>
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold text-kelly-text/55">Status</span>
+            <span className="text-xs font-semibold text-kelly-muted">Status</span>
             <select name="status" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
               {Object.values(VolunteerAskStatus).map((s) => (
                 <option key={s} value={s}>
@@ -51,7 +51,7 @@ export default async function AdminAsksPage() {
           </label>
         </div>
         <label className="block text-sm">
-          <span className="text-xs font-semibold text-kelly-text/55">Event (optional)</span>
+          <span className="text-xs font-semibold text-kelly-muted">Event (optional)</span>
           <select name="eventId" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
             <option value="">—</option>
             {events.map((e) => (
@@ -62,7 +62,7 @@ export default async function AdminAsksPage() {
           </select>
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold text-kelly-text/55">County (optional)</span>
+          <span className="text-xs font-semibold text-kelly-muted">County (optional)</span>
           <select name="countyId" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
             <option value="">—</option>
             {counties.map((c) => (
@@ -84,7 +84,7 @@ export default async function AdminAsksPage() {
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="font-heading text-base font-semibold text-kelly-text">{a.title}</p>
-                <p className="text-xs text-kelly-text/55">
+                <p className="text-xs text-kelly-muted">
                   {a.askType} · priority {a.priority}
                 </p>
               </div>
@@ -105,7 +105,7 @@ export default async function AdminAsksPage() {
           </li>
         ))}
       </ul>
-      {asks.length === 0 ? <p className="mt-4 text-sm text-kelly-text/55">No asks yet.</p> : null}
+      {asks.length === 0 ? <p className="mt-4 text-sm text-kelly-muted">No asks yet.</p> : null}
     </div>
   );
 }

@@ -39,7 +39,7 @@ export function BroadcastAudiencePreview(p: Props) {
       >
         {pending ? "…" : "Preview audience"}
       </button>
-      {out ? <p className="text-[9px] text-kelly-text/70">{out}</p> : null}
+      {out ? <p className="text-[9px] text-kelly-muted">{out}</p> : null}
     </div>
   );
 }

@@ -26,7 +26,7 @@ export default async function AdminEditorialPage() {
           return (
             <li key={piece.slug} className="rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
               <p className="font-heading text-lg font-bold text-kelly-text">{piece.title}</p>
-              <p className="mt-1 font-mono text-xs text-kelly-text/55">{piece.slug}</p>
+              <p className="mt-1 font-mono text-xs text-kelly-muted">{piece.slug}</p>
               <details className="mt-4">
                 <summary className="cursor-pointer font-body text-sm font-semibold text-kelly-navy">Edit overrides</summary>
                 <form action={saveContentOverrideAction} className="mt-4 space-y-3 border-t border-kelly-text/10 pt-4">
@@ -41,15 +41,15 @@ export default async function AdminEditorialPage() {
                     Featured
                   </label>
                   <label className="block text-sm">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Teaser</span>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Teaser</span>
                     <textarea name="teaserOverride" rows={2} defaultValue={o?.teaserOverride ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
                   </label>
                   <label className="block text-sm">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Summary override</span>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Summary override</span>
                     <textarea name="summaryOverride" rows={2} defaultValue={o?.summaryOverride ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
                   </label>
                   <label className="block text-sm">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Hero media</span>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Hero media</span>
                     <select name="heroMediaId" defaultValue={o?.heroMediaId ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
                       <option value="">— Default —</option>
                       {media.map((m) => (
@@ -67,7 +67,7 @@ export default async function AdminEditorialPage() {
                   <form action={clearContentOverrideAction} className="mt-3">
                     <input type="hidden" name="collection" value={ContentCollection.EDITORIAL} />
                     <input type="hidden" name="slug" value={piece.slug} />
-                    <button type="submit" className="text-xs font-semibold text-kelly-text/55 underline">
+                    <button type="submit" className="text-xs font-semibold text-kelly-muted underline">
                       Clear override
                     </button>
                   </form>

@@ -39,7 +39,7 @@ function statusBadge(status: string) {
     needs_review: "bg-kelly-navy/10 text-kelly-navy",
     published: "bg-emerald-50 text-emerald-900",
   };
-  return map[status] ?? "bg-kelly-wash text-kelly-text/60";
+  return map[status] ?? "bg-kelly-wash text-kelly-muted";
 }
 
 function MediaThumb({ item }: { item: HotWashMediaRecord }) {
@@ -128,7 +128,7 @@ export function HotWashMediaSection({
           </Link>{" "}
           promotes them to the county archive.
         </p>
-        <p className="mt-2 text-xs text-kelly-text/55">
+        <p className="mt-2 text-xs text-kelly-muted">
           Storage: <code className="rounded bg-white/60 px-1">data/campaign-events/media/&#123;county&#125;/&#123;date&#125;/&#123;event&#125;/pending/&#123;uploader&#125;/</code>
         </p>
       </section>
@@ -137,7 +137,7 @@ export function HotWashMediaSection({
 
       <section className="rounded-2xl border border-dashed border-kelly-navy/30 bg-kelly-page p-4">
         <h2 className="font-heading text-base font-bold">Admin upload</h2>
-        <p className="mt-1 font-body text-xs text-kelly-text/55">
+        <p className="mt-1 font-body text-xs text-kelly-muted">
           Accepts image/*, video/*, audio/*, .pdf, .doc, .docx, .txt, .md — stored pending until CM approval.
         </p>
         <form onSubmit={onUpload} className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -174,7 +174,7 @@ export function HotWashMediaSection({
               <div className="flex items-start justify-between gap-2">
                 <div>
                   <h3 className="font-heading text-sm font-bold">{panel.title}</h3>
-                  <p className="text-[11px] text-kelly-text/50">{panel.hint}</p>
+                  <p className="text-[11px] text-kelly-subtle">{panel.hint}</p>
                 </div>
                 <span className="rounded-full bg-kelly-wash px-2 py-0.5 text-xs font-bold">{panelCounts[panel.id] ?? 0}</span>
               </div>
@@ -189,21 +189,21 @@ export function HotWashMediaSection({
               ) : null}
               <ul className="mt-3 space-y-2">
                 {items.length === 0 ? (
-                  <li className="text-xs text-kelly-text/45">No items — use admin upload above.</li>
+                  <li className="text-xs text-kelly-subtle">No items — use admin upload above.</li>
                 ) : (
                   items.slice(0, 6).map((item) => (
                     <li key={item.id} className="flex items-center gap-2 rounded-lg border border-kelly-text/10 px-2 py-1.5">
                       <MediaThumb item={item} />
                       <div className="min-w-0 flex-1">
                         <p className="truncate text-xs font-semibold">{item.originalFilename}</p>
-                        <p className="text-[10px] text-kelly-text/50">
+                        <p className="text-[10px] text-kelly-subtle">
                           {item.uploaderName} · <span className={`rounded px-1 font-bold uppercase ${statusBadge(item.approvalStatus)}`}>{item.approvalStatus}</span>
                         </p>
                       </div>
                     </li>
                   ))
                 )}
-                {items.length > 6 ? <li className="text-[10px] text-kelly-text/45">+{items.length - 6} more</li> : null}
+                {items.length > 6 ? <li className="text-[10px] text-kelly-subtle">+{items.length - 6} more</li> : null}
               </ul>
             </section>
           );
@@ -212,7 +212,7 @@ export function HotWashMediaSection({
 
       <section className="rounded-2xl border border-kelly-text/10 bg-kelly-wash/50 p-4">
         <h2 className="font-heading text-sm font-bold uppercase tracking-wider text-kelly-slate">Future: transcription &amp; AI memory</h2>
-        <p className="mt-2 font-body text-xs text-kelly-text/60">
+        <p className="mt-2 font-body text-xs text-kelly-muted">
           Per-file pipeline fields exist in metadata (`transcriptionStatus`, `chunkingStatus`). Actions below are scaffolded for a later pass.
         </p>
         <div className="mt-3 flex flex-wrap gap-2">

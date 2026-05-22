@@ -52,7 +52,7 @@ export function MediaBatchFilterBar({ batchId, current }: Props) {
   return (
     <section className="rounded-lg border border-kelly-text/10 bg-white/70 p-4 text-sm text-kelly-text">
       <h3 className="font-heading text-sm font-bold text-kelly-text">Filter</h3>
-      <p className="mt-1 text-xs text-kelly-text/55">Narrow the grid; bulk actions still affect the full batch.</p>
+      <p className="mt-1 text-xs text-kelly-muted">Narrow the grid; bulk actions still affect the full batch.</p>
       <div className="mt-3 flex flex-wrap items-end gap-3">
         <label className="text-xs">
           Type

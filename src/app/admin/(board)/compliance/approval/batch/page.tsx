@@ -53,7 +53,7 @@ export default async function ApprovalBatchPage({
             ))}
           </ul>
         ) : (
-          <p className="mt-4 text-sm text-kelly-text/70">No items eligible for batch approval in this queue.</p>
+          <p className="mt-4 text-sm text-kelly-muted">No items eligible for batch approval in this queue.</p>
         )}
         <label className="mt-4 block text-sm">
           <span className="font-semibold">Initials *</span>

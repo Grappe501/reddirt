@@ -24,19 +24,19 @@ export function EventVolunteerPlanningPanel({ context }: { context: EventVolunte
         </div>
       </dl>
       {context.gapWarning ? <p className="mt-2 text-xs font-bold text-amber-800">{context.gapWarning}</p> : null}
-      <p className="mt-2 text-[10px] text-kelly-text/55">Roles: {context.rolesSuggested.join(", ")} · Reminders: {context.reminderStatus}</p>
+      <p className="mt-2 text-[10px] text-kelly-muted">Roles: {context.rolesSuggested.join(", ")} · Reminders: {context.reminderStatus}</p>
       {context.recommendations.length > 0 ? (
         <ul className="mt-3 space-y-2 text-[10px]">
           {context.recommendations.slice(0, 5).map((r) => (
             <li key={`${r.volunteerId}-${r.role}`} className="rounded border border-kelly-text/10 p-2">
               <span className="font-bold">{r.displayName}</span> — {r.role} (score {Math.round(r.score)})
-              <span className="block text-kelly-text/55">{r.reasons.join(" · ")}</span>
+              <span className="block text-kelly-muted">{r.reasons.join(" · ")}</span>
               <span className="block text-amber-800">Human approval required — not auto-assigned</span>
             </li>
           ))}
         </ul>
       ) : (
-        <p className="mt-2 text-xs text-kelly-text/55">No recommendations — add volunteers in command center or sync from intake.</p>
+        <p className="mt-2 text-xs text-kelly-muted">No recommendations — add volunteers in command center or sync from intake.</p>
       )}
     </section>
   );

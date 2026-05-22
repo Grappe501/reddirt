@@ -27,7 +27,7 @@ export function ReimbursementMonthCards({
   return (
     <section className="rounded-2xl border border-kelly-navy/20 bg-kelly-navy/[0.04] p-5">
       <h2 className="font-heading text-base font-bold">{title}</h2>
-      <p className="mt-1 font-body text-xs text-kelly-text/60">
+      <p className="mt-1 font-body text-xs text-kelly-muted">
         Tentative log → approve travel → official print request ·{" "}
         <Link href="/admin/campaign-events/reimbursement?month=2026-05" className="font-semibold text-kelly-navy underline">
           open reimbursement
@@ -46,7 +46,7 @@ export function ReimbursementMonthCards({
                 </span>
               </div>
               {s ? (
-                <p className="mt-2 text-xs text-kelly-text/60">
+                <p className="mt-2 text-xs text-kelly-muted">
                   {s.approvedCount} approved · {fmtUsd(s.totalReimbursement)}
                   {s.needsApproval > 0 ? ` · ${s.needsApproval} need approval` : ""}
                 </p>

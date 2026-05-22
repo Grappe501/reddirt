@@ -8,9 +8,9 @@ import { createCommsPlanAudienceSegmentAction } from "@/app/admin/contact-engage
 import { commsPlanSegmentPath } from "@/lib/comms-workbench/comms-nav";
 import type { CommsPlanAudienceSegmentListItem } from "@/lib/contact-engagement/dto";
 
-const label = "mb-0.5 block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
+const label = "mb-0.5 block text-[10px] font-bold uppercase tracking-wider text-kelly-muted";
 const input = "w-full rounded border border-kelly-text/15 bg-white px-2 py-1.5 text-sm text-kelly-text";
-const empty = "rounded border border-dashed border-kelly-text/15 bg-kelly-page/50 px-3 py-3 text-sm text-kelly-text/60";
+const empty = "rounded border border-dashed border-kelly-text/15 bg-kelly-page/50 px-3 py-3 text-sm text-kelly-muted";
 
 const DEFAULT_DYNAMIC_RULE = `{
   "version": "1",
@@ -95,7 +95,7 @@ export function CommsPlanSegmentsPanel({ planId, segments }: Props) {
       </div>
       {open ? (
         <form onSubmit={onCreate} className="max-w-xl space-y-2 rounded border border-kelly-text/10 bg-kelly-page/20 p-3">
-          <p className="text-[10px] text-kelly-text/55">
+          <p className="text-[10px] text-kelly-muted">
             Static = manual members. Dynamic = rules stored only (not evaluated yet).
           </p>
           <div>
@@ -154,13 +154,13 @@ export function CommsPlanSegmentsPanel({ planId, segments }: Props) {
                 >
                   {s.name}
                 </Link>
-                <span className="ml-2 text-[10px] text-kelly-text/50">
+                <span className="ml-2 text-[10px] text-kelly-subtle">
                   {s.status} · {s.isDynamic ? "Dynamic" : "Not dynamic"} · {s.segmentType}
                 </span>
                 {s.isDynamic ? (
                   <span className="ml-1 text-[10px] font-semibold text-amber-800">Membership unevaluated</span>
                 ) : (
-                  <span className="ml-1 text-[10px] text-kelly-text/45">
+                  <span className="ml-1 text-[10px] text-kelly-subtle">
                     Members: {s.memberCount != null ? s.memberCount : "—"} ({s.memberCountNote})
                   </span>
                 )}

@@ -22,7 +22,9 @@ export type CampaignCalendarEventType =
   | "travel"
   | "overnight"
   | "personal_admin"
-  | "virtual_statewide";
+  | "virtual_statewide"
+  /** Low-stress supporter-hosted gatherings (cross-aisle welcome; in-person or Zoom). */
+  | "house_meet_greet";
 
 export type CampaignCalendarStatus =
   | "confirmed"

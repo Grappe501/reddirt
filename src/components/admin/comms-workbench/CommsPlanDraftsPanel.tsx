@@ -17,7 +17,7 @@ import { formatCommsFieldLabel } from "@/lib/comms-workbench/ui-labels";
 const TONE_OPTIONS = Object.values(SocialMessageToneMode);
 const TACTIC_OPTIONS = Object.values(SocialMessageTacticMode);
 
-const label = "mb-0.5 block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
+const label = "mb-0.5 block text-[10px] font-bold uppercase tracking-wider text-kelly-muted";
 const input = "w-full rounded border border-kelly-text/15 bg-white px-2 py-1.5 text-sm text-kelly-text";
 const h3 = "font-heading text-xs font-bold text-kelly-text";
 const subCard = "rounded border border-kelly-text/10 bg-kelly-page/30 p-2";
@@ -55,7 +55,7 @@ export function CommsPlanDraftsPanel({ planId, drafts: initialDrafts }: Props) {
       ) : null}
 
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <h2 className="font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Drafts (edit)</h2>
+        <h2 className="font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-muted">Drafts (edit)</h2>
         <button
           type="button"
           onClick={() => {
@@ -69,7 +69,7 @@ export function CommsPlanDraftsPanel({ planId, drafts: initialDrafts }: Props) {
       </div>
 
       {initialDrafts.length > 0 ? (
-        <p className="text-[10px] text-kelly-text/50">
+        <p className="text-[10px] text-kelly-subtle">
           Primary = one per channel. Marking a draft primary clears primary on other drafts in the same channel.
         </p>
       ) : null}
@@ -90,7 +90,7 @@ export function CommsPlanDraftsPanel({ planId, drafts: initialDrafts }: Props) {
       ) : null}
 
       {initialDrafts.length === 0 && !showAdd ? (
-        <p className="rounded border border-dashed border-kelly-text/15 bg-kelly-page/50 px-3 py-3 text-sm text-kelly-text/60">
+        <p className="rounded border border-dashed border-kelly-text/15 bg-kelly-page/50 px-3 py-3 text-sm text-kelly-muted">
           {COMMS_EMPTY.noDrafts} Select <span className="font-semibold">Add draft</span> when you are ready.
         </p>
       ) : null}
@@ -114,7 +114,7 @@ export function CommsPlanDraftsPanel({ planId, drafts: initialDrafts }: Props) {
                 }`}
               >
                 {d.title?.trim() || formatCommsFieldLabel(d.channel)}
-                <span className="ml-1 text-[10px] text-kelly-text/45">
+                <span className="ml-1 text-[10px] text-kelly-subtle">
                   {formatCommsFieldLabel(d.channel)} {d.isPrimary ? "· primary" : ""}
                 </span>
               </button>
@@ -125,7 +125,7 @@ export function CommsPlanDraftsPanel({ planId, drafts: initialDrafts }: Props) {
 
       {editing ? (
         <div className={subCard}>
-          <p className="mb-1 text-[10px] text-kelly-text/50">Editing draft · {editing.id}</p>
+          <p className="mb-1 text-[10px] text-kelly-subtle">Editing draft · {editing.id}</p>
           <CommsWorkbenchReviewBlock
             kind="draft"
             entityId={editing.id}
@@ -150,13 +150,13 @@ export function CommsPlanDraftsPanel({ planId, drafts: initialDrafts }: Props) {
             onError={setError}
           />
           <div className="mt-2 rounded border border-kelly-text/8 bg-white/50 p-2 text-xs text-kelly-text/75">
-            <p className="text-[10px] font-bold uppercase text-kelly-text/45">Read-only preview</p>
+            <p className="text-[10px] font-bold uppercase text-kelly-subtle">Read-only preview</p>
             {showEmailFields(editing.channel) && editing.subjectLine ? (
               <p className="mt-0.5 font-medium">Subject: {editing.subjectLine}</p>
             ) : null}
             <p className="mt-1 max-h-24 overflow-y-auto whitespace-pre-wrap">{editing.bodyCopy || "—"}</p>
             {editing.shortCopy ? (
-              <p className="mt-1 text-kelly-text/60">
+              <p className="mt-1 text-kelly-muted">
                 <span className="font-semibold">Short: </span>
                 {editing.shortCopy}
               </p>
@@ -425,7 +425,7 @@ function EditDraftForm({
         tone={draft.messageToneMode ?? ""}
         tactic={draft.messageTacticMode ?? ""}
       />
-      <p className="text-[10px] text-kelly-text/55">
+      <p className="text-[10px] text-kelly-muted">
         Status and review lifecycle are controlled with the <strong>Review</strong> panel above (request, approve, reject, request
         changes).
       </p>

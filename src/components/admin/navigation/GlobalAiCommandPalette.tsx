@@ -107,7 +107,7 @@ export function GlobalAiCommandPalette({
             onClick={(e) => e.stopPropagation()}
           >
             <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-slate">Campaign OS command palette</p>
-            <p className="mt-1 text-xs text-kelly-text/55">
+            <p className="mt-1 text-xs text-kelly-muted">
               Plain language → routes, blockers, summaries. No autonomous sends or writes.
             </p>
             <form
@@ -148,7 +148,7 @@ export function GlobalAiCommandPalette({
               ))}
             </div>
             {session.commandPaletteHistory.length > 0 ? (
-              <p className="mt-3 text-[10px] text-kelly-text/45">
+              <p className="mt-3 text-[10px] text-kelly-subtle">
                 Recent: {session.commandPaletteHistory.slice(0, 3).join(" · ")}
               </p>
             ) : null}

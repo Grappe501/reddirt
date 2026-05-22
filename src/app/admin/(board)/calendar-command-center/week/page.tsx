@@ -69,7 +69,7 @@ export default async function CalendarWeekViewPage({ searchParams }: Props) {
 
   return (
     <div className="mx-auto max-w-7xl space-y-4 px-4 py-6">
-      <div className="font-body text-xs text-kelly-text/60">
+      <div className="font-body text-xs text-kelly-muted">
         <Link href="/admin/calendar-command-center" className="text-kelly-text underline-offset-2 hover:underline">
           ← Command center
         </Link>
@@ -90,7 +90,7 @@ export default async function CalendarWeekViewPage({ searchParams }: Props) {
       </div>
 
       <header className="rounded-lg border border-kelly-text/15 bg-[#f7f2e8] px-5 py-5 shadow-sm">
-        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-text/45">Monday–Sunday board</p>
+        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">Monday–Sunday board</p>
         <h1 className="mt-2 font-heading text-2xl font-bold text-kelly-text">Week route planner</h1>
         <p className="mt-2 max-w-3xl font-body text-sm text-kelly-text/75">
           Map uses county-seat centroids when the workbook row has no coordinates. Kelly agent tools (calendar, route matrix,

@@ -82,7 +82,7 @@ export function FieldOpsPageClient({
           <span className="font-semibold text-kelly-text">Operations only</span> — coverage, logistics, accessibility for public
           engagement, and volunteer workload. Not automated voter targeting or persuasion scoring. Assumptions below are editable planning defaults.
         </p>
-        <pre className="mt-2 max-h-32 overflow-auto rounded border border-kelly-text/10 bg-white/90 p-2 text-[10px] text-kelly-text/70">
+        <pre className="mt-2 max-h-32 overflow-auto rounded border border-kelly-text/10 bg-white/90 p-2 text-[10px] text-kelly-muted">
           {JSON.stringify(model.assumptions, null, 2)}
         </pre>
       </div>
@@ -113,7 +113,7 @@ export function FieldOpsPageClient({
       <div className="overflow-x-auto rounded-lg border border-kelly-text/12 bg-white shadow-sm">
         <table className="min-w-[960px] w-full border-collapse font-body text-[11px] text-kelly-text">
           <thead>
-            <tr className="border-b border-kelly-text/10 bg-kelly-wash/50 text-left text-[9px] font-bold uppercase tracking-wide text-kelly-text/55">
+            <tr className="border-b border-kelly-text/10 bg-kelly-wash/50 text-left text-[9px] font-bold uppercase tracking-wide text-kelly-muted">
               <th className="px-2 py-2">County</th>
               <th className="px-2 py-2">Event staff</th>
               <th className="px-2 py-2">Hosts</th>
@@ -151,7 +151,7 @@ export function FieldOpsPageClient({
         </table>
       </div>
 
-      <p className="font-body text-[10px] text-kelly-text/55">
+      <p className="font-body text-[10px] text-kelly-muted">
         Reference: <code className="rounded bg-kelly-wash px-1">docs/field-ops/VOLUNTEER_CAPACITY_MODEL_V1.md</code>
       </p>
     </div>

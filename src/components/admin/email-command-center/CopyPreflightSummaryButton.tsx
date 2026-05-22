@@ -21,7 +21,7 @@ export function CopyPreflightSummaryButton({ text, label = "Copy preflight summa
       >
         {label}
       </button>
-      {hint ? <span className="font-body text-[9px] text-kelly-text/70">{hint}</span> : null}
+      {hint ? <span className="font-body text-[9px] text-kelly-muted">{hint}</span> : null}
     </div>
   );
 }

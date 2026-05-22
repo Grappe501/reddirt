@@ -130,7 +130,7 @@ function EventCard({ e, column, toWeekEvent }: { e: RibbonEvent; column: RibbonB
       <Link href={`/admin/workbench/calendar?${toWeekEvent(e.id)}`} className="block">
         <span className="line-clamp-2 text-[9px] font-semibold text-kelly-slate">{e.title}</span>
         <span className="mt-0.5 block text-[7px] font-mono text-kelly-text/40">{String(e.eventType as CampaignEventType).replaceAll("_", " ")}</span>
-        <span className="mt-0.5 block text-[8px] text-kelly-text/55">
+        <span className="mt-0.5 block text-[8px] text-kelly-muted">
           {e.startAt.toLocaleString("en-US", {
             timeZone: DEFAULT_CAMPAIGN_TZ,
             month: "short",
@@ -140,10 +140,10 @@ function EventCard({ e, column, toWeekEvent }: { e: RibbonEvent; column: RibbonB
           })}{" "}
           {e.county ? `· ${e.county.displayName}` : "· (no co.)"}
         </span>
-        <span className="mt-0.5 block text-[7px] text-kelly-text/50">
+        <span className="mt-0.5 block text-[7px] text-kelly-subtle">
           {v} · {onPublicSite ? "on site" : "not on site"} · {owner}
         </span>
-        <span className="mt-0.5 block text-[7px] text-kelly-text/45" title="Comms / Staff / Prep / Follow-up">
+        <span className="mt-0.5 block text-[7px] text-kelly-subtle" title="Comms / Staff / Prep / Follow-up">
           C{readyDot(e.commsReadiness)} S{readyDot(e.staffingReadiness)} P{readyDot(e.prepReadiness)} F{readyDot(e.followupReadiness)}
         </span>
       </Link>
@@ -199,7 +199,7 @@ export async function CalendarApprovalBoard({
           </Link>
         </div>
       </div>
-      <p className="mb-2 text-[9px] text-kelly-text/55">
+      <p className="mb-2 text-[9px] text-kelly-muted">
         Governed stages ({Object.values(EVENT_STAGE_LABEL).join(" · ")}). {weekKey} — cards show county, type, owner, visibility, and readiness. Quick actions use defaults; add notes in the
         event panel.
       </p>
@@ -208,7 +208,7 @@ export async function CalendarApprovalBoard({
           <div key={state} className="flex min-h-0 min-w-0 flex-col overflow-hidden rounded border border-kelly-text/10 bg-kelly-page/40">
             <p className="shrink-0 border-b border-kelly-text/10 bg-kelly-text px-1.5 py-1 text-center text-[9px] font-bold text-kelly-page">
               {RIBBON_LABEL[state]}{" "}
-              <span className="text-kelly-page/50">({ribbon[state].length})</span>
+              <span className="text-kelly-inverse-muted">({ribbon[state].length})</span>
             </p>
             <ul className="min-h-0 flex-1 space-y-1 overflow-y-auto p-0.5">
               {ribbon[state].map((e) => (

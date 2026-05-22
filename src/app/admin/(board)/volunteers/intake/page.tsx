@@ -27,7 +27,7 @@ export default async function VolunteerIntakeListPage({ searchParams }: Props) {
           Link a campaign-owned image or PDF, run AI extraction (review every row), match to the voter file when name/phone
           columns exist in imports, then approve into users and volunteer profiles.
         </p>
-        <p className="mt-2 text-sm text-kelly-text/60">
+        <p className="mt-2 text-sm text-kelly-muted">
           Pending review rows (all documents): <strong>{pendingRows}</strong>
         </p>
         {sp.error ? (
@@ -39,13 +39,13 @@ export default async function VolunteerIntakeListPage({ searchParams }: Props) {
 
       <section className="rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]">
         <h2 className="font-heading text-lg font-bold text-kelly-text">Start from owned media</h2>
-        <p className="mt-1 text-xs text-kelly-text/60">
+        <p className="mt-1 text-xs text-kelly-muted">
           Upload the sheet in <Link href="/admin/owned-media" className="text-kelly-slate underline">Owned media</Link>{" "}
           first, then paste the asset id here.
         </p>
         <form action={createSignupDocumentFromOwnedMediaAction} className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-end">
           <label className="block flex-1 text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Owned media id</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Owned media id</span>
             <input
               name="ownedMediaId"
               required
@@ -70,10 +70,10 @@ export default async function VolunteerIntakeListPage({ searchParams }: Props) {
               >
                 <div>
                   <p className="font-medium text-kelly-text">{d.ownedMedia.title}</p>
-                  <p className="text-xs text-kelly-text/55">
+                  <p className="text-xs text-kelly-muted">
                     {d.status} · {d._count.entries} rows · {d.ownedMedia.mimeType}
                   </p>
-                  <p className="font-mono text-[10px] text-kelly-text/45">{d.id}</p>
+                  <p className="font-mono text-[10px] text-kelly-subtle">{d.id}</p>
                 </div>
                 <span className="mt-2 text-xs font-semibold text-kelly-slate sm:mt-0">Open →</span>
               </Link>
@@ -81,7 +81,7 @@ export default async function VolunteerIntakeListPage({ searchParams }: Props) {
           ))}
         </ul>
         {docs.length === 0 ? (
-          <p className="rounded-md border border-kelly-text/10 bg-white/60 px-4 py-6 text-sm text-kelly-text/70">No intake documents yet.</p>
+          <p className="rounded-md border border-kelly-text/10 bg-white/60 px-4 py-6 text-sm text-kelly-muted">No intake documents yet.</p>
         ) : null}
       </section>
     </div>

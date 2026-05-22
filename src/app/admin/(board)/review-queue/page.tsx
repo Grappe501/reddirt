@@ -38,7 +38,7 @@ export default async function AdminReviewQueuePage() {
                 <Link href={`/admin/inbox/${row.id}`} className="font-heading text-lg font-bold text-kelly-navy hover:underline">
                   {row.title ?? "(untitled)"}
                 </Link>
-                <p className="mt-1 font-body text-xs text-kelly-text/55">
+                <p className="mt-1 font-body text-xs text-kelly-muted">
                   {platformLabel(row.sourcePlatform)} · {sourceTypeLabel(row.sourceType)} ·{" "}
                   {(row.publishedAt ?? row.syncTimestamp).toLocaleString()}
                 </p>
@@ -57,7 +57,7 @@ export default async function AdminReviewQueuePage() {
         ))}
       </ul>
       {items.length === 0 ? (
-        <p className="mt-10 text-center font-body text-sm text-kelly-text/55">Queue is clear.</p>
+        <p className="mt-10 text-center font-body text-sm text-kelly-muted">Queue is clear.</p>
       ) : null}
     </div>
   );

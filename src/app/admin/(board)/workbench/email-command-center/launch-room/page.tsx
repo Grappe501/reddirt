@@ -6,10 +6,69 @@ import { getEmailCommandCenterSnapshot } from "@/lib/email-command-center/read-m
 export const dynamic = "force-dynamic";
 
 const card = "rounded-lg border border-kelly-text/12 bg-white/90 px-3 py-2 shadow-sm";
-const h2 = "font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/55";
+const h2 = "font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-muted";
+const yes = "rounded bg-emerald-100 px-1.5 py-0.5 text-[9px] font-bold uppercase text-emerald-900";
+const no = "rounded bg-rose-100 px-1.5 py-0.5 text-[9px] font-bold uppercase text-rose-950";
+const wait = "rounded bg-amber-100 px-1.5 py-0.5 text-[9px] font-bold uppercase text-amber-950";
+
+function GateRow({
+  label,
+  ok,
+  detail,
+  href,
+  action,
+}: {
+  label: string;
+  ok: boolean;
+  detail: string;
+  href?: string;
+  action?: string;
+}) {
+  return (
+    <li className="rounded border border-kelly-text/10 bg-white/80 px-2 py-1.5">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <span className="font-heading text-[11px] font-bold text-kelly-navy">{label}</span>
+        <span className={ok ? yes : no}>{ok ? "green" : "blocked"}</span>
+      </div>
+      <p className="mt-1 font-body text-[10px] leading-snug text-kelly-text/80">{detail}</p>
+      {href || action ? (
+        <p className="mt-1 font-body text-[10px]">
+          {href ? (
+            <Link href={href} className="font-bold text-kelly-forest underline">
+              {action ?? "Open"}
+            </Link>
+          ) : (
+            <span className="font-semibold text-kelly-muted">{action}</span>
+          )}
+        </p>
+      ) : null}
+    </li>
+  );
+}
 
 export default async function EmailLaunchRoomPage() {
   const [snap, ecc] = await Promise.all([getEmailLaunchRoomSnapshot(), getEmailCommandCenterSnapshot()]);
+  const hostedDbLikely = ecc.operatorGate.databaseUrlHostKind === "hostname";
+  const hostedDbGreen = hostedDbLikely && snap.hostedDbProofOk && ecc.operatorGate.governedSendExecutionDbReady;
+  const audienceGreen = snap.audienceActiveCount > 0;
+  const syncGreen = snap.latestSyncRuns.some((run) => run.status === "SYNCED");
+  const draftGreen = snap.governance.approvedDraftCount > 0;
+  const testReady = snap.sendExecution.readyForTestCount > 0;
+  const finalApproved = snap.sendExecution.finalApprovedCount > 0;
+  const sendgridTestEnvGreen =
+    snap.sendGridEnv.sendgridApiKeyPresent &&
+    snap.sendGridEnv.sendgridFromEmailPresent &&
+    snap.sendGridEnv.sendgridFromNamePresent;
+  const broadcastEnvGreen = snap.sendGridMail.broadcastAllowed;
+  const finalSendReady =
+    hostedDbGreen &&
+    audienceGreen &&
+    syncGreen &&
+    draftGreen &&
+    broadcastEnvGreen &&
+    finalApproved;
+  const operatorPresentRequired =
+    "Operator must be present for test send/final broadcast. Do not send while unattended; final broadcast still requires the exact typed phrase SEND APPROVED.";
 
   return (
     <div className="min-w-0 max-w-5xl space-y-4">
@@ -39,9 +98,98 @@ export default async function EmailLaunchRoomPage() {
       <header>
         <h1 className="font-heading text-xl font-bold text-kelly-navy">Email Launch Room</h1>
         <p className="mt-1 max-w-3xl font-body text-sm text-kelly-text/85">
-          Read-only operator runbook for the governed <strong>SendGrid broadcast</strong> path. This page does not send, sync, approve, or mutate data — it only summarizes status and deep-links to governed tools.
+          Production go/no-go board for the governed <strong>SendGrid broadcast</strong> path. This page does not send,
+          sync, approve, or mutate data — it tells the operator what is green, what is blocked, and where to fix it.
         </p>
       </header>
+
+      <section className={`${card} ${finalSendReady ? "border-emerald-400/60 bg-emerald-50/80" : "border-amber-400/60 bg-amber-50/85"}`}>
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className={h2}>Launch decision</p>
+            <p className={`mt-1 font-heading text-lg font-bold ${finalSendReady ? "text-emerald-950" : "text-amber-950"}`}>
+              {finalSendReady ? "Ready for operator final-send checkpoint" : "Not ready for final broadcast"}
+            </p>
+            <p className="mt-1 max-w-3xl font-body text-[11px] leading-snug text-kelly-text/85">
+              {finalSendReady
+                ? "All dashboard gates are green. The operator still must be present, verify the test, and type SEND APPROVED in Send Execution."
+                : "Use the gate list below. A local green does not equal hosted production green, and no broadcast should happen until every blocked row is resolved."}
+            </p>
+          </div>
+          <span className={finalSendReady ? yes : wait}>{finalSendReady ? "go checkpoint" : "hold"}</span>
+        </div>
+        <p className="mt-2 rounded border border-kelly-text/10 bg-white/75 px-2 py-1 font-body text-[10px] font-semibold text-kelly-navy">
+          {operatorPresentRequired}
+        </p>
+      </section>
+
+      <section className={card}>
+        <p className={h2}>Production launch gates</p>
+        <ul className="mt-2 grid gap-2 md:grid-cols-2">
+          <GateRow
+            label="Hosted DB and migrations"
+            ok={hostedDbGreen}
+            detail={
+              hostedDbLikely
+                ? `Host shape is production-like and proof says: ${snap.hostedDbProofOk ? "OK" : "not green"}. Send-execution tables: ${ecc.operatorGate.governedSendExecutionDbReady ? "ready" : "not verified"}.`
+                : "This environment is loopback/local. Do not treat these counts as production readiness."
+            }
+            href="/admin/workbench/email-command-center/readiness/hosted-db"
+            action="Open hosted DB assistant"
+          />
+          <GateRow
+            label="SendGrid identity and test env"
+            ok={sendgridTestEnvGreen}
+            detail={`API key: ${snap.sendGridEnv.sendgridApiKeyPresent ? "set" : "missing"}; from email/name: ${
+              snap.sendGridEnv.sendgridFromEmailPresent && snap.sendGridEnv.sendgridFromNamePresent ? "set" : "missing"
+            }.`}
+            href="/admin/workbench/email-command-center/readiness"
+            action="Open readiness"
+          />
+          <GateRow
+            label="Broadcast compliance env"
+            ok={broadcastEnvGreen}
+            detail={`ASM / unsubscribe group: ${snap.asmConfigured ? "set" : "missing"}. Required for final broadcast; not required for one-recipient test send.`}
+            href="/admin/workbench/email-command-center/readiness"
+            action="Review SendGrid env"
+          />
+          <GateRow
+            label="Active audience"
+            ok={audienceGreen}
+            detail={`ACTIVE audiences: ${snap.audienceActiveCount}; volunteer-related ACTIVE: ${snap.volunteerActiveAudienceCount}.`}
+            href="/admin/workbench/email-command-center/audiences"
+            action="Open Audience Studio"
+          />
+          <GateRow
+            label="SYNCED SendGrid contact run"
+            ok={syncGreen}
+            detail={`Recent synced run present: ${syncGreen ? "yes" : "no"}. SYNCED means contacts only; it is not an email send.`}
+            href="/admin/workbench/email-command-center/sendgrid#contact-sync"
+            action="Open SendGrid sync"
+          />
+          <GateRow
+            label="Approved Message Studio draft"
+            ok={draftGreen}
+            detail={`APPROVED_FOR_SEND_GOVERNANCE drafts: ${snap.governance.approvedDraftCount}; drafts needing governance: ${snap.governance.draftsNeedingGovernanceCount}.`}
+            href="/admin/workbench/email-command-center/message-studio#shared-drafts"
+            action="Open Message Studio"
+          />
+          <GateRow
+            label="Preflight / test status"
+            ok={testReady || snap.sendExecution.testSentCount > 0 || snap.sendExecution.readyForFinalApprovalCount > 0 || finalApproved}
+            detail={`READY_FOR_TEST: ${snap.sendExecution.readyForTestCount}; TEST_SENT: ${snap.sendExecution.testSentCount}; READY_FOR_FINAL: ${snap.sendExecution.readyForFinalApprovalCount}.`}
+            href="/admin/workbench/email-command-center/send-execution#ops"
+            action="Open Send Execution"
+          />
+          <GateRow
+            label="Final approval"
+            ok={finalApproved}
+            detail={`FINAL_APPROVED executions: ${snap.sendExecution.finalApprovedCount}. Final send is still blocked until typed confirmation by a present operator.`}
+            href="/admin/workbench/email-command-center/send-execution#ops"
+            action="Open final approval"
+          />
+        </ul>
+      </section>
 
       <section className={`${card} border-emerald-300/50 bg-emerald-50/60`}>
         <p className={h2}>Operator next step</p>
@@ -146,7 +294,7 @@ export default async function EmailLaunchRoomPage() {
           <li>SENT: {snap.sendExecution.sentCount}</li>
           <li>FAILED: {snap.sendExecution.failedCount}</li>
         </ul>
-        <p className="mt-2 text-[10px] text-kelly-text/60">Latest executions (updated):</p>
+        <p className="mt-2 text-[10px] text-kelly-muted">Latest executions (updated):</p>
         <ul className="font-mono text-[9px] text-kelly-text/75">
           {snap.latestExecutions.map((e) => (
             <li key={e.id}>
@@ -162,7 +310,7 @@ export default async function EmailLaunchRoomPage() {
           Local SendGridSuppression rows (approx): {snap.suppressionCount}. Last webhook row stored at:{" "}
           {snap.lastSendGridEventCreatedAt ? snap.lastSendGridEventCreatedAt.toISOString() : "—"}.
         </p>
-        <p className="mt-1 text-[10px] text-kelly-text/65">Send Execution preflight remains authoritative for overlap, consent, and import gates.</p>
+        <p className="mt-1 text-[10px] text-kelly-muted">Send Execution preflight remains authoritative for overlap, consent, and import gates.</p>
       </section>
 
       <section className={card}>
@@ -170,7 +318,7 @@ export default async function EmailLaunchRoomPage() {
         <p className={`text-[11px] ${snap.hostedDbProofOk ? "text-emerald-900" : "text-amber-950"}`}>
           {snap.hostedDbProofOk ? "Proof summary reports OK for this environment." : "Proof not green — review Readiness / hosted DB assistant."}
         </p>
-        <p className="mt-1 text-[10px] text-kelly-text/70">{snap.hostedDbProofNote}</p>
+        <p className="mt-1 text-[10px] text-kelly-muted">{snap.hostedDbProofNote}</p>
       </section>
 
       <section className={card}>
@@ -184,7 +332,7 @@ export default async function EmailLaunchRoomPage() {
         </ul>
       </section>
 
-      <p className="text-[10px] text-kelly-text/60">
+      <p className="text-[10px] text-kelly-muted">
         Launch Room uses a bounded email snapshot plus small Prisma slices — open Readiness or the main Command Center for the full ECC read-model.
       </p>
     </div>

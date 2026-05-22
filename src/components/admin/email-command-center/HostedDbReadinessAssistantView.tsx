@@ -19,7 +19,7 @@ function yesNo(v: boolean) {
 function Row({ k, v }: { k: string; v: ReactNode }) {
   return (
     <tr className="border-b border-kelly-text/10 align-top">
-      <th className="py-1.5 pr-2 text-left font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/60">{k}</th>
+      <th className="py-1.5 pr-2 text-left font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-muted">{k}</th>
       <td className="py-1.5 font-body text-[11px] text-kelly-navy">{v}</td>
     </tr>
   );
@@ -98,7 +98,7 @@ export function HostedDbReadinessAssistantView({
           <Link href={`${ECC}/readiness/hosted-db`} className="text-xs font-bold text-violet-800 underline">
             Open full-page hosted DB assistant
           </Link>
-          <span className="text-[10px] text-kelly-text/50">· bookmark-friendly</span>
+          <span className="text-[10px] text-kelly-subtle">· bookmark-friendly</span>
         </div>
       )}
 
@@ -215,7 +215,7 @@ export function HostedDbReadinessAssistantView({
       <HostedDbCopySnippets />
 
       <section className="rounded-lg border border-kelly-text/12 bg-white/95 p-3">
-        <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-kelly-text/55">Gate chain (operator shell)</h2>
+        <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-kelly-muted">Gate chain (operator shell)</h2>
         <ol className="mt-2 list-inside list-decimal space-y-1 font-body text-[11px] text-kelly-navy/95">
           <li>
             <code className="text-[10px]">{gate.dbDiagnoseCliHint}</code> — safe classification + hints

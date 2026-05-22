@@ -95,7 +95,7 @@ export default async function EmailSandboxProofPage() {
           <li>Review the result together before any wider send is discussed.</li>
         </ol>
         <p className="mt-3 font-body text-[11px] text-kelly-text/75">{r.nextRecommendedStep}</p>
-        <p className="mt-2 font-body text-[10px] text-kelly-text/60">
+        <p className="mt-2 font-body text-[10px] text-kelly-muted">
           Staff guide: <span className="font-medium">docs/email-sandbox-send-proof.md</span>
         </p>
       </section>

@@ -82,11 +82,11 @@ export default async function MediaMonitorPage({ searchParams }: Props) {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 text-kelly-text">
       <header className="mb-6 border-b border-kelly-text/10 pb-4">
-        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-text/45">
+        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">
           Campaign intelligence
         </p>
         <h1 className="font-heading text-2xl font-bold">Press monitor</h1>
-        <p className="mt-2 max-w-3xl font-body text-sm leading-relaxed text-kelly-text/70">
+        <p className="mt-2 max-w-3xl font-body text-sm leading-relaxed text-kelly-muted">
           Earned-media mentions from the Arkansas registry (RSS-first, robots-aware). Approve items for the public{" "}
           <Link href="/press-coverage" className="text-kelly-slate underline">
             Press coverage
@@ -95,7 +95,7 @@ export default async function MediaMonitorPage({ searchParams }: Props) {
           <code className="rounded bg-kelly-text/5 px-1 text-xs">GET /api/cron/media-monitor?key=…</code>.
         </p>
         {lastRun ? (
-          <p className="mt-2 font-mono text-[11px] text-kelly-text/55">
+          <p className="mt-2 font-mono text-[11px] text-kelly-muted">
             Last run: {lastRun.startedAt.toISOString()} · inserted {lastRun.itemsInserted} · updated {lastRun.itemsUpdated}{" "}
             · discovered {lastRun.itemsDiscovered}
             {lastRun.error ? ` · error: ${lastRun.error}` : ""}
@@ -106,7 +106,7 @@ export default async function MediaMonitorPage({ searchParams }: Props) {
       </header>
 
       <div className={`mb-4 flex flex-wrap gap-2 ${card}`}>
-        <span className="text-[10px] font-bold uppercase text-kelly-text/45">Filters</span>
+        <span className="text-[10px] font-bold uppercase text-kelly-subtle">Filters</span>
         <FilterLink href={`/admin/media-monitor${q({ source: null })}`} active={!sourceSlug}>
           All sources
         </FilterLink>
@@ -148,7 +148,7 @@ export default async function MediaMonitorPage({ searchParams }: Props) {
 
       <div className="overflow-x-auto rounded-md border border-kelly-text/10 bg-white">
         <table className="w-full min-w-[880px] border-collapse text-left text-[11px]">
-          <thead className="border-b border-kelly-text/10 bg-kelly-page/80 font-bold uppercase tracking-wider text-kelly-text/55">
+          <thead className="border-b border-kelly-text/10 bg-kelly-page/80 font-bold uppercase tracking-wider text-kelly-muted">
             <tr>
               <th className="p-2">Published</th>
               <th className="p-2">Outlet</th>
@@ -160,19 +160,19 @@ export default async function MediaMonitorPage({ searchParams }: Props) {
           <tbody>
             {mentions.length === 0 ? (
               <tr>
-                <td colSpan={5} className="p-6 text-kelly-text/55">
+                <td colSpan={5} className="p-6 text-kelly-muted">
                   No mentions match. Run ingestion, or widen filters.
                 </td>
               </tr>
             ) : (
               mentions.map((m) => (
                 <tr key={m.id} className="border-b border-kelly-text/5 align-top">
-                  <td className="p-2 font-mono text-[10px] text-kelly-text/70">
+                  <td className="p-2 font-mono text-[10px] text-kelly-muted">
                     {m.publishedAt ? m.publishedAt.toISOString().slice(0, 10) : "—"}
                   </td>
                   <td className="p-2">
                     <div className="font-semibold">{m.source.name}</div>
-                    <div className="text-[10px] text-kelly-text/50">{m.sourceType}</div>
+                    <div className="text-[10px] text-kelly-subtle">{m.sourceType}</div>
                   </td>
                   <td className="p-2 max-w-[280px]">
                     <a
@@ -184,16 +184,16 @@ export default async function MediaMonitorPage({ searchParams }: Props) {
                       {m.title}
                     </a>
                     {m.summary ? (
-                      <p className="mt-1 line-clamp-3 text-[10px] leading-snug text-kelly-text/65">{m.summary}</p>
+                      <p className="mt-1 line-clamp-3 text-[10px] leading-snug text-kelly-muted">{m.summary}</p>
                     ) : null}
-                    <p className="mt-1 text-[9px] text-kelly-text/45">
+                    <p className="mt-1 text-[9px] text-kelly-subtle">
                       {m.transcriptMissing ? "Transcript n/a · " : ""}
                       {m.fullText ? "Full text captured" : "Link + snippet only"}
                     </p>
                   </td>
                   <td className="p-2 text-[10px]">
                     <div>{m.matchTier}</div>
-                    <div className="text-kelly-text/55">{m.mentionType}</div>
+                    <div className="text-kelly-muted">{m.mentionType}</div>
                     {m.confidenceScore != null ? <div>score {m.confidenceScore.toFixed(2)}</div> : null}
                   </td>
                   <td className="p-2 min-w-[200px]">
@@ -238,7 +238,7 @@ export default async function MediaMonitorPage({ searchParams }: Props) {
                         />
                         Surrogate
                       </label>
-                      <label className="mt-1 block text-[9px] text-kelly-text/45">County</label>
+                      <label className="mt-1 block text-[9px] text-kelly-subtle">County</label>
                       <select
                         name="relatedCountyId"
                         defaultValue={m.relatedCountyId ?? ""}
@@ -251,7 +251,7 @@ export default async function MediaMonitorPage({ searchParams }: Props) {
                           </option>
                         ))}
                       </select>
-                      <label className="mt-1 block text-[9px] text-kelly-text/45">Event</label>
+                      <label className="mt-1 block text-[9px] text-kelly-subtle">Event</label>
                       <select
                         name="relatedEventId"
                         defaultValue={m.relatedEventId ?? ""}
@@ -264,7 +264,7 @@ export default async function MediaMonitorPage({ searchParams }: Props) {
                           </option>
                         ))}
                       </select>
-                      <label className="mt-1 block text-[9px] text-kelly-text/45">Campaign summary</label>
+                      <label className="mt-1 block text-[9px] text-kelly-subtle">Campaign summary</label>
                       <textarea
                         name="campaignSummary"
                         rows={2}

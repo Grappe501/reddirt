@@ -37,6 +37,7 @@ export function buildCampaignOsNavGroups(activeMonth = "2026-03"): CampaignOsNav
         { href: "/admin/campaign-calendar/timeline", label: "Campaign timeline" },
         { href: `/admin/campaign-calendar/month?month=${month}`, label: "Month grid" },
         { href: `/admin/campaign-events/calendar-sync?month=${month}`, label: "Sync dashboard", badgeKey: "sync" },
+        { href: "/admin/campaign-events/calendar-promotion", label: "Calendar promotion" },
         { href: "/admin/calendar-command-center/kelly", label: "Kelly cockpit" },
       ],
     },
@@ -55,6 +56,7 @@ export function buildCampaignOsNavGroups(activeMonth = "2026-03"): CampaignOsNav
       links: [
         { href: `/admin/campaign-events/workbench?month=${month}`, label: "Workbench queue" },
         { href: `/admin/campaign-events/travel-log?month=${month}`, label: "Travel log" },
+        { href: `/admin/campaign-events/review?month=${month}&mode=travel_needs_approval`, label: "Travel approvals", badgeKey: "travel" },
       ],
     },
     {

@@ -271,7 +271,7 @@ export function PageHeroEditor({ pageKey, initial, showSaved }: Props) {
 
       <div className="rounded-lg border border-kelly-gold/30 bg-kelly-fog/50 px-4 py-3 text-sm text-kelly-text/90">
         <p className="font-body leading-relaxed">{compact ? KELLY_HERO_WELCOME_COMPACT : KELLY_HERO_WELCOME}</p>
-        <p className="mt-2 text-xs text-kelly-text/70">{KELLY_ASK_KELLY_NOT_LINKED}</p>
+        <p className="mt-2 text-xs text-kelly-muted">{KELLY_ASK_KELLY_NOT_LINKED}</p>
         <div className="mt-2 flex flex-wrap gap-2">
           <button
             type="button"
@@ -289,7 +289,7 @@ export function PageHeroEditor({ pageKey, initial, showSaved }: Props) {
         </details>
       </div>
 
-      <p className="font-body text-xs text-kelly-text/55">
+      <p className="font-body text-xs text-kelly-muted">
         Step {step === "edit" ? "1" : step === "review" ? "2" : "3"} of 3:{" "}
         {step === "edit" ? "Edit" : step === "review" ? "Review summary" : "Final confirmation"}
       </p>
@@ -310,7 +310,7 @@ export function PageHeroEditor({ pageKey, initial, showSaved }: Props) {
             return (
               <div key={key} className="mb-6 last:mb-0">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">{h.shortLabel}</span>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">{h.shortLabel}</span>
                 </div>
                 {isEarly ? (
                   <div className="mt-2 rounded-md border border-kelly-text/10 bg-kelly-fog/40 px-3 py-2 text-xs leading-relaxed text-kelly-text/90">
@@ -395,7 +395,7 @@ export function PageHeroEditor({ pageKey, initial, showSaved }: Props) {
             >
               Review change
             </button>
-            <span className="text-xs text-kelly-text/50">
+            <span className="text-xs text-kelly-subtle">
               {heroRecovery.status === "pending"
                 ? "Use Restore or Discard on the draft banner above first."
                 : "Next you’ll see current vs. new, then a final check before any save."}
@@ -412,38 +412,38 @@ export function PageHeroEditor({ pageKey, initial, showSaved }: Props) {
                   Page: <span className="font-mono font-semibold text-kelly-text">/{pageKey}</span> · {heroImpactBlurb(pageKey, publicPath)}{" "}
                   <span className="font-medium">Nothing is saved until step 3.</span>
                 </p>
-                <p className="mt-2 text-xs font-medium uppercase tracking-wide text-kelly-text/50">Hero text — current → new</p>
+                <p className="mt-2 text-xs font-medium uppercase tracking-wide text-kelly-subtle">Hero text — current → new</p>
                 <dl className="mt-3 space-y-3 text-sm">
                   <div className="rounded-md border border-kelly-text/10 bg-kelly-fog/30 px-3 py-2">
-                    <dt className="text-xs font-semibold uppercase text-kelly-text/50">Eyebrow</dt>
+                    <dt className="text-xs font-semibold uppercase text-kelly-subtle">Eyebrow</dt>
                     <dd className="mt-1 text-kelly-text/80">
-                      <span className="text-kelly-text/55">Current: </span>
+                      <span className="text-kelly-muted">Current: </span>
                       {displayField(currentEyebrow)}
                     </dd>
                     <dd className="mt-0.5 text-kelly-text">
-                      <span className="text-kelly-text/55">New: </span>
+                      <span className="text-kelly-muted">New: </span>
                       {displayField(eyebrow)}
                     </dd>
                   </div>
                   <div className="rounded-md border border-kelly-text/10 bg-kelly-fog/30 px-3 py-2">
-                    <dt className="text-xs font-semibold uppercase text-kelly-text/50">Title</dt>
+                    <dt className="text-xs font-semibold uppercase text-kelly-subtle">Title</dt>
                     <dd className="mt-1 text-kelly-text/80">
-                      <span className="text-kelly-text/55">Current: </span>
+                      <span className="text-kelly-muted">Current: </span>
                       {displayField(currentTitle)}
                     </dd>
                     <dd className="mt-0.5 text-kelly-text">
-                      <span className="text-kelly-text/55">New: </span>
+                      <span className="text-kelly-muted">New: </span>
                       {displayField(title)}
                     </dd>
                   </div>
                   <div className="rounded-md border border-kelly-text/10 bg-kelly-fog/30 px-3 py-2">
-                    <dt className="text-xs font-semibold uppercase text-kelly-text/50">Subtitle</dt>
+                    <dt className="text-xs font-semibold uppercase text-kelly-subtle">Subtitle</dt>
                     <dd className="mt-1 whitespace-pre-wrap text-kelly-text/80">
-                      <span className="text-kelly-text/55">Current: </span>
+                      <span className="text-kelly-muted">Current: </span>
                       {displayField(currentSubtitle)}
                     </dd>
                     <dd className="mt-0.5 whitespace-pre-wrap text-kelly-text">
-                      <span className="text-kelly-text/55">New: </span>
+                      <span className="text-kelly-muted">New: </span>
                       {displayField(subtitle)}
                     </dd>
                   </div>
@@ -468,23 +468,23 @@ export function PageHeroEditor({ pageKey, initial, showSaved }: Props) {
             ) : (
               <>
                 <h2 className="font-heading text-lg font-bold text-kelly-navy">Final confirmation</h2>
-                <p className="mt-1 font-mono text-xs text-kelly-text/70">
+                <p className="mt-1 font-mono text-xs text-kelly-muted">
                   Page key: <span className="font-semibold text-kelly-text">/{pageKey}</span>
                 </p>
                 <p className="mt-3 text-sm text-kelly-text/85">{KELLY_HERO_WHY_DOUBLE_CONFIRM}</p>
                 <p className="mt-2 text-sm font-medium text-kelly-navy">This is the only step that writes to the database and updates the public hero.</p>
-                <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-kelly-text/50">Review summary</p>
+                <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-kelly-subtle">Review summary</p>
                 <ul className="mt-1 space-y-2 text-sm text-kelly-text/90">
                   <li>
-                    <span className="text-kelly-text/55">Eyebrow: </span>
+                    <span className="text-kelly-muted">Eyebrow: </span>
                     {displayField(currentEyebrow)} <span className="text-kelly-text/40">→</span> {displayField(eyebrow)}
                   </li>
                   <li>
-                    <span className="text-kelly-text/55">Title: </span>
+                    <span className="text-kelly-muted">Title: </span>
                     {displayField(currentTitle)} <span className="text-kelly-text/40">→</span> {displayField(title)}
                   </li>
                   <li className="whitespace-pre-wrap">
-                    <span className="text-kelly-text/55">Subtitle: </span>
+                    <span className="text-kelly-muted">Subtitle: </span>
                     {displayField(currentSubtitle)} <span className="text-kelly-text/40">→</span> {displayField(subtitle)}
                   </li>
                 </ul>
@@ -515,7 +515,7 @@ export function PageHeroEditor({ pageKey, initial, showSaved }: Props) {
       </form>
 
       {step === "edit" && (
-        <p className="text-center text-xs text-kelly-text/50">
+        <p className="text-center text-xs text-kelly-subtle">
           <Link href="/admin/pages" className="font-semibold text-kelly-slate hover:underline">
             ← All page copy
           </Link>

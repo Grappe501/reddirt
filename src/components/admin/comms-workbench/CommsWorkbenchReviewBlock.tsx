@@ -85,7 +85,7 @@ export function CommsWorkbenchReviewBlock(props: Props) {
     <div className="mt-2 space-y-2 rounded border border-kelly-text/10 bg-amber-50/40 p-2 text-sm">
       {error ? <p className="text-xs text-red-800">{error}</p> : null}
       <div className="flex flex-wrap items-center gap-1.5 text-xs text-kelly-text">
-        <span className="font-bold text-kelly-text/70">Review</span>
+        <span className="font-bold text-kelly-muted">Review</span>
         {kind === "draft" ? (
           <CommsStatusBadge segment="draft" status={status} />
         ) : (
@@ -103,12 +103,12 @@ export function CommsWorkbenchReviewBlock(props: Props) {
         ) : null}
       </div>
       {props.reviewRequestedAt ? (
-        <p className="text-[10px] text-kelly-text/65">
+        <p className="text-[10px] text-kelly-muted">
           Requested {new Date(props.reviewRequestedAt).toLocaleString()} · {name(props.reviewRequestedBy)}
         </p>
       ) : null}
       {props.reviewedAt ? (
-        <p className="text-[10px] text-kelly-text/65">
+        <p className="text-[10px] text-kelly-muted">
           Last review {new Date(props.reviewedAt).toLocaleString()} · {name(props.reviewedBy)}
         </p>
       ) : null}
@@ -121,7 +121,7 @@ export function CommsWorkbenchReviewBlock(props: Props) {
 
       {kind === "draft" && (status === "DRAFT" || status === "REJECTED") ? (
         <div className="border-t border-kelly-text/10 pt-2">
-          <p className="text-[10px] font-bold uppercase text-kelly-text/50">Request review</p>
+          <p className="text-[10px] font-bold uppercase text-kelly-subtle">Request review</p>
           <textarea
             className={noteInput}
             rows={2}
@@ -155,9 +155,9 @@ export function CommsWorkbenchReviewBlock(props: Props) {
 
       {kind === "draft" && status === "READY_FOR_REVIEW" ? (
         <div className="space-y-2 border-t border-kelly-text/10 pt-2">
-          <p className="text-[10px] font-bold uppercase text-kelly-text/50">Reviewer actions</p>
+          <p className="text-[10px] font-bold uppercase text-kelly-subtle">Reviewer actions</p>
           <div>
-            <span className="text-[10px] text-kelly-text/50">Approve (optional note)</span>
+            <span className="text-[10px] text-kelly-subtle">Approve (optional note)</span>
             <textarea className={noteInput} rows={1} value={apprNote} onChange={(e) => setApprNote(e.target.value)} disabled={disabled} />
             <button
               type="button"
@@ -178,7 +178,7 @@ export function CommsWorkbenchReviewBlock(props: Props) {
             </button>
           </div>
           <div>
-            <span className="text-[10px] text-kelly-text/50">Reject (note required)</span>
+            <span className="text-[10px] text-kelly-subtle">Reject (note required)</span>
             <textarea className={noteInput} rows={2} value={rejNote} onChange={(e) => setRejNote(e.target.value)} disabled={disabled} required />
             <button
               type="button"
@@ -200,7 +200,7 @@ export function CommsWorkbenchReviewBlock(props: Props) {
             </button>
           </div>
           <div>
-            <span className="text-[10px] text-kelly-text/50">Request changes (note required)</span>
+            <span className="text-[10px] text-kelly-subtle">Request changes (note required)</span>
             <textarea className={noteInput} rows={2} value={chgNote} onChange={(e) => setChgNote(e.target.value)} disabled={disabled} required />
             <button
               type="button"
@@ -226,7 +226,7 @@ export function CommsWorkbenchReviewBlock(props: Props) {
 
       {kind === "variant" && (status === "DRAFT" || status === "REJECTED") ? (
         <div className="border-t border-kelly-text/10 pt-2">
-          <p className="text-[10px] font-bold uppercase text-kelly-text/50">Request review</p>
+          <p className="text-[10px] font-bold uppercase text-kelly-subtle">Request review</p>
           <textarea
             className={noteInput}
             rows={2}
@@ -259,14 +259,14 @@ export function CommsWorkbenchReviewBlock(props: Props) {
       ) : null}
 
       {(kind === "draft" && status === "ARCHIVED") || (kind === "variant" && status === "ARCHIVED") ? (
-        <p className="border-t border-kelly-text/10 pt-2 text-[10px] text-kelly-text/55">Archived in this workbench. Open a new draft or variant if you need a fresh review cycle.</p>
+        <p className="border-t border-kelly-text/10 pt-2 text-[10px] text-kelly-muted">Archived in this workbench. Open a new draft or variant if you need a fresh review cycle.</p>
       ) : null}
 
       {kind === "variant" && variantInReview(status) ? (
         <div className="space-y-2 border-t border-kelly-text/10 pt-2">
-          <p className="text-[10px] font-bold uppercase text-kelly-text/50">Reviewer actions</p>
+          <p className="text-[10px] font-bold uppercase text-kelly-subtle">Reviewer actions</p>
           <div>
-            <span className="text-[10px] text-kelly-text/50">Approve (optional note)</span>
+            <span className="text-[10px] text-kelly-subtle">Approve (optional note)</span>
             <textarea className={noteInput} rows={1} value={apprNote} onChange={(e) => setApprNote(e.target.value)} disabled={disabled} />
             <button
               type="button"
@@ -290,7 +290,7 @@ export function CommsWorkbenchReviewBlock(props: Props) {
             </button>
           </div>
           <div>
-            <span className="text-[10px] text-kelly-text/50">Reject (note required)</span>
+            <span className="text-[10px] text-kelly-subtle">Reject (note required)</span>
             <textarea className={noteInput} rows={2} value={rejNote} onChange={(e) => setRejNote(e.target.value)} disabled={disabled} />
             <button
               type="button"
@@ -312,7 +312,7 @@ export function CommsWorkbenchReviewBlock(props: Props) {
             </button>
           </div>
           <div>
-            <span className="text-[10px] text-kelly-text/50">Request changes (note required)</span>
+            <span className="text-[10px] text-kelly-subtle">Request changes (note required)</span>
             <textarea className={noteInput} rows={2} value={chgNote} onChange={(e) => setChgNote(e.target.value)} disabled={disabled} />
             <button
               type="button"

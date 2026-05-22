@@ -119,7 +119,7 @@ export async function AiCommandCenterHub() {
               CM dashboard
             </Link>
           </div>
-          <p className="mt-3 text-[10px] text-kelly-text/50">
+          <p className="mt-3 text-[10px] text-kelly-subtle">
             Intelligence + OS control ({osControlTools}) + dashboard builder ({hardeningTools}) · human-gated only
           </p>
         </header>
@@ -133,9 +133,9 @@ export async function AiCommandCenterHub() {
       <CountyIntelligencePanel statewide={countyStatewide} />
       <section className="rounded-2xl border border-kelly-text/10 bg-kelly-page/60 p-4">
         <p className="text-xs font-bold text-kelly-navy">Power of 5 · statewide</p>
-        <p className="mt-1 text-xs text-kelly-text/70">{powerOfFiveBrief.narrative}</p>
+        <p className="mt-1 text-xs text-kelly-muted">{powerOfFiveBrief.narrative}</p>
         {powerOfFiveBrief.topGaps.length > 0 ? (
-          <ul className="mt-2 text-[10px] text-kelly-text/60">
+          <ul className="mt-2 text-[10px] text-kelly-muted">
             {powerOfFiveBrief.topGaps.slice(0, 5).map((g) => (
               <li key={g.countySlug}>
                 {g.countyName}: gap {g.gap?.toLocaleString() ?? "planning"} ({g.priority})
@@ -161,17 +161,17 @@ export async function AiCommandCenterHub() {
         <Link href="/admin/ai-command-center/memory-review" className="mt-2 inline-block text-xs font-bold text-kelly-navy underline">
           Memory review queue →
         </Link>
-        <p className="mt-2 text-[10px] text-kelly-text/50">{summarizeAskKellyAdapter()}</p>
-        <p className="text-[10px] text-kelly-text/50">{summarizeKellyAgentAdapter()}</p>
+        <p className="mt-2 text-[10px] text-kelly-subtle">{summarizeAskKellyAdapter()}</p>
+        <p className="text-[10px] text-kelly-subtle">{summarizeKellyAgentAdapter()}</p>
       </AiCommandCenterDisclosure>
 
       <AiCommandCenterDisclosure id="observations" title="Live observations" defaultOpen>
-          <p className="text-xs text-kelly-text/65">
+          <p className="text-xs text-kelly-muted">
             {bundle.observations.length} total · {bundle.recent.length} recent · append-only JSON (metadata only).
           </p>
           <ul className="mt-3 max-h-48 space-y-1 overflow-y-auto text-xs">
             {bundle.recent.length === 0 ? (
-              <li className="text-kelly-text/50">No observations yet — use tracked dashboards to generate signals.</li>
+              <li className="text-kelly-subtle">No observations yet — use tracked dashboards to generate signals.</li>
             ) : (
               bundle.recent
                 .slice()
@@ -179,8 +179,8 @@ export async function AiCommandCenterHub() {
                 .map((o) => (
                   <li key={o.id} className="rounded border border-kelly-text/10 px-2 py-1">
                     <span className="font-semibold">{USER_UX_EVENT_LABELS[o.event] ?? o.event}</span>
-                    <span className="text-kelly-text/50"> · {o.role}</span>
-                    {o.pathname ? <span className="text-kelly-text/45"> · {o.pathname}</span> : null}
+                    <span className="text-kelly-subtle"> · {o.role}</span>
+                    {o.pathname ? <span className="text-kelly-subtle"> · {o.pathname}</span> : null}
                   </li>
                 ))
             )}
@@ -188,7 +188,7 @@ export async function AiCommandCenterHub() {
         </AiCommandCenterDisclosure>
 
         <AiCommandCenterDisclosure id="learning" title="Campaign learning loop (Sprint 7)" defaultOpen>
-          <p className="text-xs text-kelly-text/65">
+          <p className="text-xs text-kelly-muted">
             County memory · event blueprints · messaging/issue trends from completed hot washes.
           </p>
           <dl className="mt-3 grid gap-2 text-xs sm:grid-cols-2">
@@ -224,11 +224,11 @@ export async function AiCommandCenterHub() {
               <span className="font-bold">Recurring blockers:</span> {learning.recurringBlockers.join(" · ")}
             </p>
           ) : null}
-          <p className="mt-2 text-[10px] text-kelly-text/45">Sprint 7 tools: {sprint7Tools} · Complete hot wash on an event to feed memory.</p>
+          <p className="mt-2 text-[10px] text-kelly-subtle">Sprint 7 tools: {sprint7Tools} · Complete hot wash on an event to feed memory.</p>
         </AiCommandCenterDisclosure>
 
         <AiCommandCenterDisclosure id="finance" title="Finance intelligence (Sprint 8)" defaultOpen>
-          <p className="text-xs text-kelly-text/65">Reimbursement pipeline · documentation health · county spend.</p>
+          <p className="text-xs text-kelly-muted">Reimbursement pipeline · documentation health · county spend.</p>
           <dl className="mt-3 grid gap-2 text-xs sm:grid-cols-2">
             <div>
               <dt className="font-bold">Pipeline</dt>
@@ -257,7 +257,7 @@ export async function AiCommandCenterHub() {
               <span className="font-bold">County spend:</span> {finance.countySpendNotes.join(" · ")}
             </p>
           ) : null}
-          <p className="mt-2 text-[10px] text-kelly-text/45">Sprint 8 finance tools: {sprint8Tools}</p>
+          <p className="mt-2 text-[10px] text-kelly-subtle">Sprint 8 finance tools: {sprint8Tools}</p>
         </AiCommandCenterDisclosure>
 
         <AiCommandCenterDisclosure id="bottlenecks" title="Current bottlenecks" defaultOpen>
@@ -270,21 +270,21 @@ export async function AiCommandCenterHub() {
               ))}
             </ul>
           ) : (
-            <p className="mt-2 text-xs text-kelly-text/55">No cross-domain blockers from snapshot.</p>
+            <p className="mt-2 text-xs text-kelly-muted">No cross-domain blockers from snapshot.</p>
           )}
         </AiCommandCenterDisclosure>
 
         <AiCommandCenterDisclosure id="memory" title="Memory candidates" defaultOpen={false}>
           {bundle.memoryCandidates.length === 0 ? (
-            <p className="text-xs text-kelly-text/55">None flagged — high-risk memory always requires review.</p>
+            <p className="text-xs text-kelly-muted">None flagged — high-risk memory always requires review.</p>
           ) : (
             <ul className="space-y-2 text-xs">
               {bundle.memoryCandidates.map((m, i) => (
                 <li key={i} className="rounded border px-3 py-2">
                   <span className="font-bold">{m.memoryType}</span> · risk {m.riskLevel}
                   {m.requiresHumanReview ? " · needs review" : ""}
-                  <p className="mt-1 text-kelly-text/60">{m.reason}</p>
-                  <p className="text-[10px] text-kelly-text/45">→ {m.suggestedStorageTarget}</p>
+                  <p className="mt-1 text-kelly-muted">{m.reason}</p>
+                  <p className="text-[10px] text-kelly-subtle">→ {m.suggestedStorageTarget}</p>
                 </li>
               ))}
             </ul>
@@ -297,19 +297,19 @@ export async function AiCommandCenterHub() {
             Active: <strong>{bundle.crossDomain.activeDomain}</strong> · Related:{" "}
             {bundle.crossDomain.relatedDomains.join(", ")} · Confidence: {bundle.crossDomain.confidence}
           </p>
-          <p className="mt-2 text-xs text-kelly-text/60">Tools likely needed: {bundle.crossDomain.toolsLikelyNeeded.join(", ") || "—"}</p>
+          <p className="mt-2 text-xs text-kelly-muted">Tools likely needed: {bundle.crossDomain.toolsLikelyNeeded.join(", ") || "—"}</p>
         </AiCommandCenterDisclosure>
 
         <AiCommandCenterDisclosure id="friction" title="Workflow friction" defaultOpen={false}>
           {bundle.friction.length === 0 ? (
-            <p className="text-xs text-kelly-text/55">No friction patterns detected yet.</p>
+            <p className="text-xs text-kelly-muted">No friction patterns detected yet.</p>
           ) : (
             <ul className="space-y-2 text-xs">
               {bundle.friction.map((f) => (
                 <li key={`${f.frictionType}-${f.affectedRoute}`} className="rounded border border-orange-200/50 bg-orange-50/50 px-3 py-2">
                   <span className="font-bold">{f.frictionType}</span> ({f.severity}) ×{f.occurrenceCount}
                   <p className="mt-1">{f.suggestedUxFix}</p>
-                  <p className="text-[10px] text-kelly-text/50">Tool: {f.suggestedAiTool}</p>
+                  <p className="text-[10px] text-kelly-subtle">Tool: {f.suggestedAiTool}</p>
                 </li>
               ))}
             </ul>
@@ -352,7 +352,7 @@ export async function AiCommandCenterHub() {
         </AiCommandCenterDisclosure>
 
         <AiCommandCenterDisclosure id="ux" title="UX simplification opportunities" defaultOpen={false}>
-          <ul className="list-inside list-disc text-xs text-kelly-text/70">
+          <ul className="list-inside list-disc text-xs text-kelly-muted">
             <li>Expand MicrocopyHint on workbench filters and promotion workbench</li>
             <li>Surface travel queue count on reimbursement before print</li>
             <li>Reduce duplicate page visits via stronger primary next action</li>
@@ -373,10 +373,10 @@ export async function AiCommandCenterHub() {
 
         <section className="rounded-2xl border border-kelly-text/10 bg-kelly-page p-5 text-xs">
           <p className="font-bold">Writing profile (V1)</p>
-          <p className="mt-1 text-kelly-text/60">
+          <p className="mt-1 text-kelly-muted">
             {DEFAULT_WRITING_PROFILE.preferredTone} — observation hooks on edit surfaces (metadata only).
           </p>
-          <p className="mt-2 text-kelly-text/45">
+          <p className="mt-2 text-kelly-subtle">
             Privacy: see AI_AGENT_OBSERVATION_AND_LEARNING_ROADMAP.md · test: npm run agents:test-observations
           </p>
         </section>

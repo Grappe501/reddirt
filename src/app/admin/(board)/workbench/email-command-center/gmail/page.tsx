@@ -168,7 +168,7 @@ export default async function GmailMonitorPage({ searchParams }: Props) {
       </div>
 
       <section className="rounded-lg border border-kelly-text/12 bg-white/90 p-3">
-        <h2 className="font-heading text-[10px] font-bold uppercase text-kelly-text/50">OAuth environment</h2>
+        <h2 className="font-heading text-[10px] font-bold uppercase text-kelly-subtle">OAuth environment</h2>
         <div className="mt-2 flex flex-wrap gap-1.5">
           {badge(snap.oauth.present.clientId, "Client ID", "Missing client ID")}
           {badge(snap.oauth.present.clientSecret, "Client secret", "Missing client secret")}
@@ -193,7 +193,7 @@ export default async function GmailMonitorPage({ searchParams }: Props) {
       </section>
 
       <section className="rounded-lg border border-kelly-text/12 bg-kelly-fog/40 p-3">
-        <h2 className="font-heading text-[10px] font-bold uppercase text-kelly-text/50">Scope posture</h2>
+        <h2 className="font-heading text-[10px] font-bold uppercase text-kelly-subtle">Scope posture</h2>
         <p className="mt-1 font-body text-[11px] text-kelly-text/85">
           <span className="font-bold">Monitor (default):</span>{" "}
           <code className="text-[10px]">{snap.scopePosture.monitorScopes[0]}</code>
@@ -204,13 +204,13 @@ export default async function GmailMonitorPage({ searchParams }: Props) {
           <code className="text-[10px]">GMAIL_OAUTH_INCLUDE_SEND_FOR_WORKBENCH=true</code> before OAuth
           {snap.scopePosture.composerSendRequestedViaEnv ? " (currently enabled)." : " (currently off)."}
         </p>
-        <p className="mt-1 font-body text-[10px] text-kelly-text/60">
+        <p className="mt-1 font-body text-[10px] text-kelly-muted">
           Monitoring and this sync action do not use send scope. EmailWorkflowItem never sends via Gmail.
         </p>
       </section>
 
       <section className="rounded-lg border border-kelly-text/12 bg-white/90 p-3">
-        <h2 className="font-heading text-[10px] font-bold uppercase text-kelly-text/50">Connection phase</h2>
+        <h2 className="font-heading text-[10px] font-bold uppercase text-kelly-subtle">Connection phase</h2>
         <p className="mt-1 font-body text-sm font-semibold text-kelly-navy">
           {phase === "env_incomplete" && "Incomplete OAuth environment"}
           {phase === "needs_actor" && "Admin actor not resolved — set ADMIN_ACTOR_USER_EMAIL"}
@@ -220,7 +220,7 @@ export default async function GmailMonitorPage({ searchParams }: Props) {
       </section>
 
       <section className="rounded-lg border border-kelly-text/12 bg-white/90 p-3">
-        <h2 className="font-heading text-[10px] font-bold uppercase text-kelly-text/50">
+        <h2 className="font-heading text-[10px] font-bold uppercase text-kelly-subtle">
           Requested scopes (new consent)
         </h2>
         <ul className="mt-2 list-inside list-decimal font-mono text-[10px] text-kelly-text/85">
@@ -233,7 +233,7 @@ export default async function GmailMonitorPage({ searchParams }: Props) {
       {snap.staffRow ? (
         <>
           <section className="rounded-lg border border-kelly-text/12 bg-white/90 p-3">
-            <h2 className="font-heading text-[10px] font-bold uppercase text-kelly-text/50">Staff Gmail link</h2>
+            <h2 className="font-heading text-[10px] font-bold uppercase text-kelly-subtle">Staff Gmail link</h2>
             <div className="mt-2 grid gap-1 font-body text-[11px] text-kelly-text">
               <div>
                 <span className="font-bold">Active:</span> {snap.staffRow.isActive ? "yes" : "no"}
@@ -269,7 +269,7 @@ export default async function GmailMonitorPage({ searchParams }: Props) {
                   <span className="font-bold">Last row error:</span> {snap.staffRow.lastError.slice(0, 500)}
                 </div>
               ) : null}
-              <div className="text-[10px] text-kelly-text/55">Row updated: {snap.staffRow.updatedAtIso}</div>
+              <div className="text-[10px] text-kelly-muted">Row updated: {snap.staffRow.updatedAtIso}</div>
             </div>
           </section>
 
@@ -357,7 +357,7 @@ export default async function GmailMonitorPage({ searchParams }: Props) {
                 >
                   Run safe metadata sync
                 </button>
-                <span className="font-body text-[10px] text-kelly-text/65">
+                <span className="font-body text-[10px] text-kelly-muted">
                   INBOX · max 25 · METADATA headers only · no bodies · no queue rows
                 </span>
               </form>
@@ -367,10 +367,10 @@ export default async function GmailMonitorPage({ searchParams }: Props) {
       ) : null}
 
       <section className="rounded-lg border border-kelly-text/12 bg-kelly-page p-3">
-        <h2 className="font-heading text-[10px] font-bold uppercase text-kelly-text/50">
+        <h2 className="font-heading text-[10px] font-bold uppercase text-kelly-subtle">
           Gmail push watch (users.watch)
         </h2>
-        <p className="mt-1 font-body text-[10px] text-kelly-text/65">
+        <p className="mt-1 font-body text-[10px] text-kelly-muted">
           Registers Gmail push notifications to your Pub/Sub topic. Does not read bodies, send mail, or create queue
           items. Renew before expiry (Google limit ~7 days; daily renewal recommended).
         </p>
@@ -476,7 +476,7 @@ export default async function GmailMonitorPage({ searchParams }: Props) {
                 Process pending history preview
               </button>
             </form>
-            <span className="font-body text-[10px] text-kelly-text/60">
+            <span className="font-body text-[10px] text-kelly-muted">
               History preview uses lastHistoryId · on 404 run metadata sync first · capped pages server-side
             </span>
           </div>

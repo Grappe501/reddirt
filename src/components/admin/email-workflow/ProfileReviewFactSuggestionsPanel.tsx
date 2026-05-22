@@ -144,7 +144,7 @@ export function ProfileReviewFactSuggestionsPanel({ suggestions }: { suggestions
 
   if (!suggestions.length) {
     return (
-      <p className="text-[11px] text-kelly-text/55" role="status">
+      <p className="text-[11px] text-kelly-muted" role="status">
         No pending profile fact suggestions.
       </p>
     );
@@ -170,14 +170,14 @@ export function ProfileReviewFactSuggestionsPanel({ suggestions }: { suggestions
         {active.size ? (
           <button
             type="button"
-            className="rounded-full border border-kelly-text/20 px-2 py-0.5 text-[10px] text-kelly-text/70"
+            className="rounded-full border border-kelly-text/20 px-2 py-0.5 text-[10px] text-kelly-muted"
             onClick={() => setActive(new Set())}
           >
             Clear filters
           </button>
         ) : null}
       </div>
-      <p className="text-[10px] text-kelly-text/60">
+      <p className="text-[10px] text-kelly-muted">
         EMAIL-AI-PROFILE-INTELLIGENCE-2.0 — suggestions are grouped by risk and review posture. Evidence and “why suggested” come from
         staged metadata; operators must still approve — nothing auto-writes to canonical profiles.
       </p>
@@ -206,7 +206,7 @@ export function ProfileReviewFactSuggestionsPanel({ suggestions }: { suggestions
                         ) : null}
                       </>
                     ) : (
-                      <span className="rounded bg-kelly-fog/80 px-1 py-0.5 text-kelly-text/70">legacy row (no v2 metadata)</span>
+                      <span className="rounded bg-kelly-fog/80 px-1 py-0.5 text-kelly-muted">legacy row (no v2 metadata)</span>
                     )}
                   </div>
                   {pi2?.shouldNotStoreReason ? (
@@ -216,9 +216,9 @@ export function ProfileReviewFactSuggestionsPanel({ suggestions }: { suggestions
                   ) : null}
                   {pi2 ? (
                     <>
-                      <p className="mt-2 text-[10px] font-semibold text-kelly-text/70">Why suggested</p>
+                      <p className="mt-2 text-[10px] font-semibold text-kelly-muted">Why suggested</p>
                       <p className="text-[10px] text-kelly-text/85">{pi2.whySuggested}</p>
-                      <p className="mt-2 text-[10px] font-semibold text-kelly-text/70">Evidence (source-labeled)</p>
+                      <p className="mt-2 text-[10px] font-semibold text-kelly-muted">Evidence (source-labeled)</p>
                       <p className="whitespace-pre-wrap rounded bg-kelly-page/50 px-2 py-1 font-mono text-[10px] text-kelly-text/80">
                         {pi2.evidenceText || "—"}
                       </p>
@@ -226,7 +226,7 @@ export function ProfileReviewFactSuggestionsPanel({ suggestions }: { suggestions
                   ) : row.rationale ? (
                     <p className="mt-2 whitespace-pre-wrap text-[10px] text-kelly-text/75">{row.rationale}</p>
                   ) : null}
-                  <p className="mt-2 text-[10px] text-kelly-text/60">
+                  <p className="mt-2 text-[10px] text-kelly-muted">
                     Item:{" "}
                     <Link className="font-semibold underline" href={`/admin/workbench/email-queue/${row.emailWorkflowItemId}`}>
                       {row.emailWorkflowItem.title ?? row.emailWorkflowItem.whatSummary ?? row.emailWorkflowItemId}
@@ -235,7 +235,7 @@ export function ProfileReviewFactSuggestionsPanel({ suggestions }: { suggestions
                     {row.emailWorkflowItem.status}
                   </p>
                   {row.profile ? (
-                    <p className="text-[10px] text-kelly-text/55">
+                    <p className="text-[10px] text-kelly-muted">
                       Profile: {row.profile.displayName ?? "—"} · {row.profile.primaryEmail ?? "no email hint"}
                     </p>
                   ) : null}

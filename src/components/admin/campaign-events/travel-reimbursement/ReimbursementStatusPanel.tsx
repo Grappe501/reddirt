@@ -56,13 +56,13 @@ export function ReimbursementStatusPanel({ ctx }: { ctx: ReimbursementMonthStatu
               {REIMBURSEMENT_STATUS_LABELS[ctx.effectiveStatus]}
             </span>
             {ctx.computedStatus !== ctx.effectiveStatus ? (
-              <span className="font-body text-xs text-kelly-text/50">
+              <span className="font-body text-xs text-kelly-subtle">
                 Computed: {REIMBURSEMENT_STATUS_LABELS[ctx.computedStatus]}
               </span>
             ) : null}
           </p>
           {ctx.stored?.finalizedAt ? (
-            <p className="mt-1 font-body text-xs text-kelly-text/55">
+            <p className="mt-1 font-body text-xs text-kelly-muted">
               Finalized {ctx.stored.finalizedAt.slice(0, 10)} by {ctx.stored.finalizedBy ?? "operator"}
             </p>
           ) : null}

@@ -39,9 +39,9 @@ export function WeekViewBoard(props: {
     <div className="space-y-5">
       <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-kelly-text/12 bg-[#f7f2e8] px-4 py-3 font-body text-xs text-kelly-text">
         <div>
-          <p className="font-heading text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-text/45">Week of</p>
+          <p className="font-heading text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">Week of</p>
           <p className="text-sm font-bold text-kelly-text">{mondayYmd} (Mon–Sun, America/Chicago)</p>
-          <p className="mt-1 text-kelly-text/70">
+          <p className="mt-1 text-kelly-muted">
             {itemCount} items · tightness: <span className="font-semibold">{routeTightness.replace(/_/g, " ")}</span>
             {overnightCities.length ? (
               <>
@@ -75,12 +75,12 @@ export function WeekViewBoard(props: {
       <div className="grid gap-4 lg:grid-cols-7">
         {days.map((d) => (
           <div key={d.ymd} className="flex min-h-[220px] flex-col rounded-lg border border-kelly-text/12 bg-white p-2 shadow-sm">
-            <p className="border-b border-kelly-text/10 pb-1 font-heading text-[11px] font-bold uppercase text-kelly-text/55">
+            <p className="border-b border-kelly-text/10 pb-1 font-heading text-[11px] font-bold uppercase text-kelly-muted">
               {d.weekday.slice(0, 3)} · {d.ymd.slice(5)}
             </p>
             <div className="mt-2 flex-1 space-y-2 overflow-y-auto">
               {d.items.length === 0 ? (
-                <p className="font-body text-[10px] text-kelly-text/45">—</p>
+                <p className="font-body text-[10px] text-kelly-subtle">—</p>
               ) : (
                 d.items.map((it: CampaignCalendarItem) => {
                   const isPublic = it.source === "public_schedule_request";
@@ -101,16 +101,16 @@ export function WeekViewBoard(props: {
                       </span>
                     ) : null}
                     <span className="mt-0.5 block text-kelly-text/85">{it.title}</span>
-                    <span className="mt-0.5 block text-[9px] uppercase text-kelly-text/50">{it.calendarStatus}</span>
+                    <span className="mt-0.5 block text-[9px] uppercase text-kelly-subtle">{it.calendarStatus}</span>
                     {isPublic && it.notes ? (
-                      <span className="mt-0.5 block text-[9px] text-kelly-text/60">{it.notes}</span>
+                      <span className="mt-0.5 block text-[9px] text-kelly-muted">{it.notes}</span>
                     ) : null}
                   </Link>
                   );
                 })
               )}
             </div>
-            <div className="mt-2 space-y-1 border-t border-dashed border-kelly-text/15 pt-2 font-body text-[9px] text-kelly-text/50">
+            <div className="mt-2 space-y-1 border-t border-dashed border-kelly-text/15 pt-2 font-body text-[9px] text-kelly-subtle">
               <p>Meal / gas buffers: staff blocks (Hour View next)</p>
             </div>
           </div>
@@ -139,7 +139,7 @@ export function WeekViewBoard(props: {
             Send pieces local
           </button>
         </form>
-        <p className="w-full font-body text-[10px] text-kelly-text/55">
+        <p className="w-full font-body text-[10px] text-kelly-muted">
           Tentative / Confirmed Google pushes stay behind existing HQ flows — these buttons revalidate only until wired.
         </p>
       </div>

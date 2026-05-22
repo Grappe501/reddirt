@@ -81,7 +81,7 @@ export function EventFinancialOperationsWorkspace({
     <div className="flex flex-col gap-4">
       <header className="rounded-2xl border border-kelly-navy/20 bg-kelly-navy/[0.04] p-5">
         <p className="text-[10px] font-bold uppercase tracking-widest text-kelly-slate">Financial operations</p>
-        <p className="mt-2 font-body text-sm text-kelly-text/70">
+        <p className="mt-2 font-body text-sm text-kelly-muted">
           Campaign-native finance traceability — budget, expenses, receipts, and compliance readiness. Not general bookkeeping;
           human-gated saves only.
         </p>
@@ -176,7 +176,7 @@ export function EventFinancialOperationsWorkspace({
       </PlanningSection>
 
       <PlanningSection title="3. Receipt tracking" defaultOpen={false}>
-        <p className="mb-2 font-body text-xs text-kelly-text/60">Travel line: {row.travelLine}</p>
+        <p className="mb-2 font-body text-xs text-kelly-muted">Travel line: {row.travelLine}</p>
         <input ref={fileRef} type="file" className="font-body text-xs" accept="image/*,.pdf" />
         <button type="button" disabled={pending} className="ml-2 rounded-full border px-3 py-1 text-xs font-bold" onClick={uploadReceipt}>
           Upload receipt

@@ -25,7 +25,7 @@ export function CommunicationsCommandCenterPanel({ bundle }: { bundle: Communica
           <dd className="text-amber-800">{bundle.massEmailStatus}</dd>
         </div>
       </dl>
-      {bundle.risks[0] ? <p className="mt-2 text-[10px] text-kelly-text/55">Top risk: {bundle.risks[0]}</p> : null}
+      {bundle.risks[0] ? <p className="mt-2 text-[10px] text-kelly-muted">Top risk: {bundle.risks[0]}</p> : null}
       <Link href="/admin/communications" className="mt-3 inline-block text-xs font-bold text-kelly-navy underline">
         Open communications center →
       </Link>

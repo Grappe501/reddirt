@@ -61,7 +61,7 @@ export function ApprovalTokenPublicClient({
     <main className="mx-auto max-w-xl px-6 py-12 font-body">
       <p className="text-xs font-bold uppercase tracking-wider text-kelly-slate">Kelly Grappe for Secretary of State</p>
       <h1 className="mt-2 font-heading text-2xl font-bold">{ACTION_LABELS[token.action] ?? "Event approval"}</h1>
-      <p className="mt-2 text-sm text-kelly-text/70">
+      <p className="mt-2 text-sm text-kelly-muted">
         <strong>{payload.eventSummary.title}</strong> · {payload.eventSummary.dateYmd} {payload.eventSummary.timeLabel}
       </p>
 
@@ -70,7 +70,7 @@ export function ApprovalTokenPublicClient({
         <p className="mt-2 text-xs text-amber-900">{payload.emailAssist.missingInfoLanguage}</p>
         <p className="mt-2 text-xs">{payload.emailAssist.riskNote}</p>
         <p className="mt-3 text-sm font-semibold">{payload.emailAssist.recommendedAction}</p>
-        <p className="mt-3 text-xs text-kelly-text/55">Google Calendar promotion is not enabled yet.</p>
+        <p className="mt-3 text-xs text-kelly-muted">Google Calendar promotion is not enabled yet.</p>
       </section>
 
       {canDecide ? (
@@ -115,10 +115,10 @@ export function ApprovalTokenPublicClient({
               Request info
             </a>
           ) : null}
-          <p className="w-full text-xs text-kelly-text/55">Each link records your decision on the campaign ledger only — not Google Calendar.</p>
+          <p className="w-full text-xs text-kelly-muted">Each link records your decision on the campaign ledger only — not Google Calendar.</p>
         </div>
       ) : (
-        <p className="mt-6 text-sm text-kelly-text/65">
+        <p className="mt-6 text-sm text-kelly-muted">
           {token.status === "used"
             ? "This decision link was already used."
             : token.action === "review"
@@ -127,7 +127,7 @@ export function ApprovalTokenPublicClient({
         </p>
       )}
 
-      <p className="mt-10 text-center text-[10px] text-kelly-text/45">Paid for by Kelly Grappe for Secretary of State</p>
+      <p className="mt-10 text-center text-[10px] text-kelly-subtle">Paid for by Kelly Grappe for Secretary of State</p>
     </main>
   );
 }

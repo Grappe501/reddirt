@@ -62,7 +62,7 @@ export default async function ReceiptReviewPage() {
             </article>
           );
         })}
-        {!receipts.length ? <p className="font-body text-sm text-kelly-text/70">No staged receipts yet.</p> : null}
+        {!receipts.length ? <p className="font-body text-sm text-kelly-muted">No staged receipts yet.</p> : null}
       </section>
     </div>
   );

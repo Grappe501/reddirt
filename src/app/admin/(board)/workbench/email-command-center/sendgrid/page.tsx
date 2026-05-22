@@ -116,15 +116,15 @@ export default async function SendGridFoundationPage({
         >
           ← Communication Command Center
         </Link>
-        <Link href="/admin/workbench/email-command-center/audiences" className="text-xs text-kelly-text/60 hover:underline">
+        <Link href="/admin/workbench/email-command-center/audiences" className="text-xs text-kelly-muted hover:underline">
           Audience Studio
         </Link>
-        <Link href="/admin/workbench/email-command-center/analytics" className="text-xs text-kelly-text/60 hover:underline">
+        <Link href="/admin/workbench/email-command-center/analytics" className="text-xs text-kelly-muted hover:underline">
           Analytics &amp; Deliverability
         </Link>
         <Link
           href="/admin/workbench/email-command-center/send-execution"
-          className="text-xs text-kelly-text/60 hover:underline"
+          className="text-xs text-kelly-muted hover:underline"
         >
           Send execution governance
         </Link>
@@ -233,42 +233,42 @@ export default async function SendGridFoundationPage({
 
       <section className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
         <div className="rounded-lg border border-kelly-text/10 bg-white/90 p-3">
-          <p className="font-heading text-[10px] font-bold uppercase text-kelly-text/50">API key</p>
+          <p className="font-heading text-[10px] font-bold uppercase text-kelly-subtle">API key</p>
           <p className="mt-1 font-heading text-lg font-bold text-kelly-navy">{snap.env.sendgridApiKeyPresent ? "Set" : "Missing"}</p>
-          <p className="mt-0.5 font-body text-[10px] text-kelly-text/65">Env name only: SENDGRID_API_KEY</p>
+          <p className="mt-0.5 font-body text-[10px] text-kelly-muted">Env name only: SENDGRID_API_KEY</p>
         </div>
         <div className="rounded-lg border border-kelly-text/10 bg-white/90 p-3">
-          <p className="font-heading text-[10px] font-bold uppercase text-kelly-text/50">From identity</p>
+          <p className="font-heading text-[10px] font-bold uppercase text-kelly-subtle">From identity</p>
           <p className="mt-1 font-heading text-lg font-bold text-kelly-navy">
             {snap.readiness.fromIdentityReady ? "Ready" : "Incomplete"}
           </p>
-          <p className="mt-0.5 font-body text-[10px] text-kelly-text/65">SENDGRID_FROM_EMAIL, SENDGRID_FROM_NAME</p>
+          <p className="mt-0.5 font-body text-[10px] text-kelly-muted">SENDGRID_FROM_EMAIL, SENDGRID_FROM_NAME</p>
         </div>
         <div className="rounded-lg border border-kelly-text/10 bg-white/90 p-3">
-          <p className="font-heading text-[10px] font-bold uppercase text-kelly-text/50">Webhook verification</p>
+          <p className="font-heading text-[10px] font-bold uppercase text-kelly-subtle">Webhook verification</p>
           <p className="mt-1 font-heading text-lg font-bold text-kelly-navy">
             {snap.readiness.webhookVerificationReady ? "Configured" : "Missing"}
           </p>
-          <p className="mt-0.5 font-body text-[10px] text-kelly-text/65">
+          <p className="mt-0.5 font-body text-[10px] text-kelly-muted">
             SENDGRID_WEBHOOK_VERIFICATION_KEY or SENDGRID_WEBHOOK_PUBLIC_KEY (PEM)
           </p>
         </div>
         <div className="rounded-lg border border-kelly-text/10 bg-kelly-page/50 p-3">
-          <p className="font-heading text-[10px] font-bold uppercase text-kelly-text/50">Event webhook route</p>
+          <p className="font-heading text-[10px] font-bold uppercase text-kelly-subtle">Event webhook route</p>
           <p className="mt-1 font-mono text-[10px] font-bold text-kelly-navy">{snap.webhook.eventWebhookPath}</p>
-          <p className="mt-0.5 font-body text-[10px] text-kelly-text/65">POST only · configure URL in SendGrid Event Webhook settings.</p>
+          <p className="mt-0.5 font-body text-[10px] text-kelly-muted">POST only · configure URL in SendGrid Event Webhook settings.</p>
         </div>
         <div className="rounded-lg border border-kelly-text/10 bg-kelly-page/50 p-3">
-          <p className="font-heading text-[10px] font-bold uppercase text-kelly-text/50">Domain authentication</p>
+          <p className="font-heading text-[10px] font-bold uppercase text-kelly-subtle">Domain authentication</p>
           <p className="mt-1 font-heading text-sm font-bold text-kelly-navy">Manual checklist</p>
-          <p className="mt-0.5 font-body text-[10px] text-kelly-text/65">
+          <p className="mt-0.5 font-body text-[10px] text-kelly-muted">
             Complete sender authentication in SendGrid; this app does not auto-verify DNS without a governed packet.
           </p>
         </div>
         <div className="rounded-lg border border-kelly-text/10 bg-kelly-page/50 p-3">
-          <p className="font-heading text-[10px] font-bold uppercase text-kelly-text/50">Comms legacy webhook</p>
+          <p className="font-heading text-[10px] font-bold uppercase text-kelly-subtle">Comms legacy webhook</p>
           <p className="mt-1 font-mono text-[10px] text-kelly-navy">{snap.webhook.legacyCommsWebhookPath}</p>
-          <p className="mt-0.5 font-body text-[10px] text-kelly-text/65">Workbench path unchanged — separate from Email OS foundation intake.</p>
+          <p className="mt-0.5 font-body text-[10px] text-kelly-muted">Workbench path unchanged — separate from Email OS foundation intake.</p>
         </div>
       </section>
 
@@ -279,9 +279,9 @@ export default async function SendGridFoundationPage({
         {sc.dbReachable ? (
           <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
             <div className="rounded border border-kelly-text/10 bg-kelly-page/60 px-2 py-2">
-              <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/50">Preview runs</p>
+              <p className="font-heading text-[9px] font-bold uppercase text-kelly-subtle">Preview runs</p>
               <p className="mt-0.5 font-heading text-xl font-bold tabular-nums text-kelly-navy">{sc.runsPreviewedCount}</p>
-              <p className="font-body text-[9px] text-kelly-text/65">Status PREVIEWED</p>
+              <p className="font-body text-[9px] text-kelly-muted">Status PREVIEWED</p>
             </div>
             <div className="rounded border border-amber-200/80 bg-amber-50/70 px-2 py-2">
               <p className="font-heading text-[9px] font-bold uppercase text-amber-900/80">Approved · awaiting upsert</p>
@@ -299,22 +299,22 @@ export default async function SendGridFoundationPage({
               <p className="font-body text-[9px] text-rose-950/85">Review safeError in resultJson</p>
             </div>
             <div className="rounded border border-kelly-text/10 bg-kelly-fog/50 px-2 py-2">
-              <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/50">Archived</p>
+              <p className="font-heading text-[9px] font-bold uppercase text-kelly-subtle">Archived</p>
               <p className="mt-0.5 font-heading text-xl font-bold tabular-nums text-kelly-navy">{sc.runsArchivedCount}</p>
-              <p className="font-body text-[9px] text-kelly-text/65">Historical rows only</p>
+              <p className="font-body text-[9px] text-kelly-muted">Historical rows only</p>
             </div>
             <div className="rounded border border-kelly-text/10 bg-white/90 px-2 py-2 sm:col-span-2 lg:col-span-1">
-              <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/50">Suppression exclusions (Σ non-archived)</p>
+              <p className="font-heading text-[9px] font-bold uppercase text-kelly-subtle">Suppression exclusions (Σ non-archived)</p>
               <p className="mt-0.5 font-heading text-xl font-bold tabular-nums text-kelly-navy">{sc.sumExcludedSuppressedNonArchived}</p>
-              <p className="font-body text-[9px] text-kelly-text/65">Per-run preview counts summed locally</p>
+              <p className="font-body text-[9px] text-kelly-muted">Per-run preview counts summed locally</p>
             </div>
             <div className="rounded border border-kelly-text/10 bg-white/90 px-2 py-2 sm:col-span-2 lg:col-span-2">
-              <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/50">Consent / source warnings (Σ non-archived)</p>
+              <p className="font-heading text-[9px] font-bold uppercase text-kelly-subtle">Consent / source warnings (Σ non-archived)</p>
               <p className="mt-0.5 font-heading text-xl font-bold tabular-nums text-kelly-navy">{sc.sumWarningCountNonArchived}</p>
-              <p className="font-body text-[9px] text-kelly-text/65">From preview pipeline — operator must still judge consent posture</p>
+              <p className="font-body text-[9px] text-kelly-muted">From preview pipeline — operator must still judge consent posture</p>
             </div>
             <div className="rounded border border-kelly-navy/15 bg-kelly-fog/40 px-2 py-2 sm:col-span-2 lg:col-span-3">
-              <p className="font-heading text-[9px] font-bold uppercase text-kelly-text/50">Latest successful sync</p>
+              <p className="font-heading text-[9px] font-bold uppercase text-kelly-subtle">Latest successful sync</p>
               <p className="mt-0.5 font-body text-[10px] text-kelly-navy">
                 {sc.latestSyncedAtIso ? sc.latestSyncedAtIso.slice(0, 19) : "—"} UTC
                 {sc.latestSyncedProviderStatus ? (
@@ -368,7 +368,7 @@ export default async function SendGridFoundationPage({
             ) : null}
           </ul>
         ) : (
-          <p className="mt-2 text-[10px] text-kelly-text/70">Readiness unavailable — check database connectivity.</p>
+          <p className="mt-2 text-[10px] text-kelly-muted">Readiness unavailable — check database connectivity.</p>
         )}
         {syncReadiness?.warnings?.length ? (
           <div className="mt-2 rounded border border-amber-200/80 bg-amber-50/80 px-2 py-2 text-[10px] text-amber-950">
@@ -395,8 +395,8 @@ export default async function SendGridFoundationPage({
 
         <div className="mt-3 grid gap-2 lg:grid-cols-2">
           <div className="rounded border border-kelly-text/10 bg-kelly-page/50 p-2">
-            <p className="font-heading text-[10px] font-bold text-kelly-text/55">Record preview run (operator action)</p>
-            <p className="mt-1 text-[9px] text-kelly-text/70">
+            <p className="font-heading text-[10px] font-bold text-kelly-muted">Record preview run (operator action)</p>
+            <p className="mt-1 text-[9px] text-kelly-muted">
               Choose an <span className="font-bold">ACTIVE</span> audience from Audience Studio. This writes{" "}
               <code className="text-[9px]">SendGridContactSyncRun</code> only.
             </p>
@@ -419,7 +419,7 @@ export default async function SendGridFoundationPage({
             </form>
           </div>
           <div className="rounded border border-kelly-text/10 bg-kelly-page/50 p-2">
-            <p className="font-heading text-[10px] font-bold text-kelly-text/55">Recent sync runs</p>
+            <p className="font-heading text-[10px] font-bold text-kelly-muted">Recent sync runs</p>
             <ul className="mt-1 max-h-72 space-y-2 overflow-auto font-mono text-[9px] text-kelly-text/85">
               {syncRuns.map((r) => (
                 <li
@@ -438,14 +438,14 @@ export default async function SendGridFoundationPage({
                     {r.id.slice(-8)}
                   </div>
                   {r.syncedAt ? (
-                    <div className="text-[8px] text-kelly-text/65">syncedAt: {r.syncedAt.toISOString()}</div>
+                    <div className="text-[8px] text-kelly-muted">syncedAt: {r.syncedAt.toISOString()}</div>
                   ) : null}
                   {safeProviderJobTail(r.resultJson) ? (
-                    <div className="text-[8px] text-kelly-text/70">
+                    <div className="text-[8px] text-kelly-muted">
                       Provider job tail: <span className="font-bold">{safeProviderJobTail(r.resultJson)}</span>
                     </div>
                   ) : null}
-                  <div className="text-[8px] text-kelly-text/70">{summarizeRunResultJson(r.status, r.resultJson)}</div>
+                  <div className="text-[8px] text-kelly-muted">{summarizeRunResultJson(r.status, r.resultJson)}</div>
                   {r.status === "APPROVED" ? (
                     <form action={executeSendGridContactSyncRunAction} className="mt-1">
                       <input type="hidden" name="runId" value={r.id} />
@@ -484,7 +484,7 @@ export default async function SendGridFoundationPage({
               ))}
             </ul>
             {!syncRuns.length && snap.dbReachable ? (
-              <p className="mt-1 text-[9px] text-kelly-text/65">No runs yet — save a preview for an ACTIVE audience.</p>
+              <p className="mt-1 text-[9px] text-kelly-muted">No runs yet — save a preview for an ACTIVE audience.</p>
             ) : null}
           </div>
         </div>
@@ -530,10 +530,10 @@ export default async function SendGridFoundationPage({
                   </button>
                 </form>
               ) : (
-                <p className="text-[9px] text-kelly-text/60">Execute appears when the latest run for this audience is APPROVED.</p>
+                <p className="text-[9px] text-kelly-muted">Execute appears when the latest run for this audience is APPROVED.</p>
               )}
             </div>
-            <p className="mt-1 text-[9px] text-kelly-text/60">
+            <p className="mt-1 text-[9px] text-kelly-muted">
               Approve targets the newest run row for this audience. Execute runs suppression re-check + Marketing Contacts PUT
               for eligible emails only.
             </p>
@@ -543,12 +543,12 @@ export default async function SendGridFoundationPage({
 
       <section className="rounded-lg border border-kelly-text/10 bg-white/90 p-3">
         <h2 className="font-heading text-sm font-bold text-kelly-navy">Audience sync readiness (planning)</h2>
-        <p className="mt-1 font-body text-[10px] text-kelly-text/70">
+        <p className="mt-1 font-body text-[10px] text-kelly-muted">
           All audiences remain <strong>not synced</strong> to SendGrid in this packet — status reflects preview posture only.
         </p>
         <div className="mt-2 max-h-64 overflow-auto rounded border border-kelly-text/10">
           <table className="w-full text-left text-[10px]">
-            <thead className="sticky top-0 bg-kelly-fog/80 text-kelly-text/70">
+            <thead className="sticky top-0 bg-kelly-fog/80 text-kelly-muted">
               <tr>
                 <th className="px-2 py-1">Audience</th>
                 <th className="px-2 py-1">Status</th>
@@ -606,7 +606,7 @@ export default async function SendGridFoundationPage({
               <li key={n}>{n}</li>
             ))}
           </ul>
-          <p className="mt-2 font-heading text-[10px] font-bold text-kelly-text/60">Redacted sample rows</p>
+          <p className="mt-2 font-heading text-[10px] font-bold text-kelly-muted">Redacted sample rows</p>
           <ul className="mt-1 space-y-0.5 font-mono text-[9px] text-kelly-text/75">
             {exportPreview.sampleRows.map((r) => (
               <li key={r.profileId}>
@@ -622,7 +622,7 @@ export default async function SendGridFoundationPage({
       {payloadPreview ? (
         <section className="rounded-lg border border-kelly-text/10 bg-white/90 p-3">
           <h2 className="font-heading text-sm font-bold text-kelly-navy">SendGrid payload shape (dry JSON)</h2>
-          <p className="mt-1 font-body text-[10px] text-kelly-text/70">{payloadPreview.description}</p>
+          <p className="mt-1 font-body text-[10px] text-kelly-muted">{payloadPreview.description}</p>
           <pre className="mt-2 max-h-56 overflow-auto rounded border border-kelly-text/10 bg-kelly-page/60 p-2 font-mono text-[9px] leading-snug text-kelly-navy">
             {JSON.stringify(payloadPreview.payload, null, 2)}
           </pre>
@@ -632,7 +632,7 @@ export default async function SendGridFoundationPage({
       <section className="grid gap-2 lg:grid-cols-2">
         <div className="rounded-lg border border-kelly-text/10 bg-white/90 p-3">
           <h2 className="font-heading text-sm font-bold text-kelly-navy">Webhook event health</h2>
-          <p className="mt-1 font-body text-[10px] text-kelly-text/70">
+          <p className="mt-1 font-body text-[10px] text-kelly-muted">
             Recent rows in <code className="text-[9px]">SendGridEvent</code> (newest first).
           </p>
           <ul className="mt-2 max-h-52 space-y-1 overflow-auto font-mono text-[9px] text-kelly-text/85">

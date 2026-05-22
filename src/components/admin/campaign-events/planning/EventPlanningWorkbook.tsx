@@ -102,7 +102,7 @@ export function EventPlanningWorkbook({
       <header className="rounded-3xl border border-kelly-navy/20 bg-gradient-to-br from-kelly-navy/[0.06] to-kelly-page p-6">
         <p className="text-[10px] font-bold uppercase tracking-widest text-kelly-slate">Event planning workbook</p>
         <h1 className="mt-2 font-heading text-2xl font-bold text-kelly-navy md:text-3xl">{row.calendar.title}</h1>
-        <p className="mt-2 font-body text-sm text-kelly-text/70">
+        <p className="mt-2 font-body text-sm text-kelly-muted">
           {row.dateYmd} · {row.timeLabel} · {row.classificationLabel}
           {row.county ? (
             <>
@@ -131,7 +131,7 @@ export function EventPlanningWorkbook({
         <div className="rounded-2xl border-2 border-kelly-navy/25 bg-white p-4 lg:col-span-1">
           <p className="text-[10px] font-bold uppercase text-kelly-slate">Planning readiness</p>
           <p className="mt-2 font-heading text-4xl font-bold text-kelly-navy">{readiness.scorePercent}%</p>
-          <p className="font-body text-sm font-semibold text-kelly-text/70">{readiness.bandLabel}</p>
+          <p className="font-body text-sm font-semibold text-kelly-muted">{readiness.bandLabel}</p>
           {readiness.blockers.length ? (
             <ul className="mt-3 list-disc pl-4 font-body text-xs text-amber-950">
               {readiness.blockers.map((b) => (
@@ -173,43 +173,43 @@ export function EventPlanningWorkbook({
       >
         <dl className="grid gap-3 font-body text-sm sm:grid-cols-2">
           <div>
-            <dt className="text-xs text-kelly-text/50">Date / time</dt>
+            <dt className="text-xs text-kelly-subtle">Date / time</dt>
             <dd className="font-semibold">
               {row.dateYmd} · {row.timeLabel}
             </dd>
           </div>
           <div>
-            <dt className="text-xs text-kelly-text/50">Status</dt>
+            <dt className="text-xs text-kelly-subtle">Status</dt>
             <dd>{row.rawEventStatus}</dd>
           </div>
           <div>
-            <dt className="text-xs text-kelly-text/50">City / county</dt>
+            <dt className="text-xs text-kelly-subtle">City / county</dt>
             <dd>
               {row.likelyCity ?? "—"} / {row.county ?? "—"}
             </dd>
           </div>
           <div>
-            <dt className="text-xs text-kelly-text/50">Host</dt>
+            <dt className="text-xs text-kelly-subtle">Host</dt>
             <dd>{row.factCard.who.hostName ?? "—"}</dd>
           </div>
           <div>
-            <dt className="text-xs text-kelly-text/50">Location</dt>
+            <dt className="text-xs text-kelly-subtle">Location</dt>
             <dd>{row.factCard.where.venueName ?? row.calendar.location ?? "—"}</dd>
           </div>
           <div>
-            <dt className="text-xs text-kelly-text/50">Candidate role</dt>
+            <dt className="text-xs text-kelly-subtle">Candidate role</dt>
             <dd>{row.factCard.what.candidateRole ?? "—"}</dd>
           </div>
           <div>
-            <dt className="text-xs text-kelly-text/50">Approval</dt>
+            <dt className="text-xs text-kelly-subtle">Approval</dt>
             <dd>{row.decisionLabel ?? "Pending"}</dd>
           </div>
           <div>
-            <dt className="text-xs text-kelly-text/50">Calendar sync</dt>
+            <dt className="text-xs text-kelly-subtle">Calendar sync</dt>
             <dd>{row.calendarTruthLabel}</dd>
           </div>
           <div className="sm:col-span-2">
-            <dt className="text-xs text-kelly-text/50">Travel</dt>
+            <dt className="text-xs text-kelly-subtle">Travel</dt>
             <dd>{row.travelLine}</dd>
           </div>
         </dl>
@@ -595,7 +595,7 @@ export function EventPlanningWorkbook({
         </Link>
       </PlanningSection>
 
-      <p className="font-body text-[11px] text-kelly-text/45 print:hidden">
+      <p className="font-body text-[11px] text-kelly-subtle print:hidden">
         Saves write to the campaign event ledger only. High-risk actions (email send, calendar write, approval decisions) stay on
         their gated screens.
       </p>

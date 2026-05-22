@@ -6,7 +6,7 @@ import { updateEventCommsStatusFieldsAction, recordEventCommsMilestoneAction, en
 import type { CalendarHqEventDetail } from "@/lib/calendar/hq-data";
 import { EventCommsDraftsClient } from "./EventCommsDraftsClient";
 
-const h2 = "font-heading text-[9px] font-bold uppercase tracking-wider text-kelly-text/50";
+const h2 = "font-heading text-[9px] font-bold uppercase tracking-wider text-kelly-subtle";
 
 function lastSentLine(e: {
   lastReminderSentAt: Date | null;
@@ -28,18 +28,18 @@ export function EventCommsPanelServer({ detail }: { detail: CalendarHqEventDetai
   return (
     <div>
       <p className={h2}>Communications (calendar)</p>
-      <p className="mt-0.5 text-[8px] text-kelly-text/55">
+      <p className="mt-0.5 text-[8px] text-kelly-muted">
         Stage mode: <span className="font-bold text-kelly-text/80">{mode}</span> · Comms badge:{" "}
         <span className="font-mono text-[8px]">{String(detail.commsReadiness)}</span> · plan / attendee / F/U:{" "}
         {String(detail.reminderPlanStatus)} / {String(detail.attendeeCommsStatus)} / {String(detail.followupCommsStatus)}
       </p>
-      <p className="mt-0.5 text-[8px] text-kelly-text/60">Next comm due: {detail.nextReminderDueAt ? detail.nextReminderDueAt.toLocaleString() : "— (set below or publish)"}</p>
-      <p className="text-[8px] text-kelly-text/50">Last: {lastSentLine(detail)}</p>
-      <p className="mt-0.5 text-[8px] text-kelly-text/55">
+      <p className="mt-0.5 text-[8px] text-kelly-muted">Next comm due: {detail.nextReminderDueAt ? detail.nextReminderDueAt.toLocaleString() : "— (set below or publish)"}</p>
+      <p className="text-[8px] text-kelly-subtle">Last: {lastSentLine(detail)}</p>
+      <p className="mt-0.5 text-[8px] text-kelly-muted">
         Audience: {rsvpN} signups{detail.publicSummary ? " · has public blurb" : ""} · {detail.visibility} visibility
       </p>
       {detail.commsQueueItems.length > 0 ? (
-        <ul className="mt-0.5 max-h-20 overflow-y-auto text-[7px] text-kelly-text/60">
+        <ul className="mt-0.5 max-h-20 overflow-y-auto text-[7px] text-kelly-muted">
           {detail.commsQueueItems.map((q) => (
             <li key={q.id}>
               {q.actionType}
@@ -62,7 +62,7 @@ export function EventCommsPanelServer({ detail }: { detail: CalendarHqEventDetai
 
       {isOpenAIConfigured() ? (
         <>
-          <p className="mt-1 text-[7px] font-bold uppercase text-kelly-text/45">AI drafts (OpenAI)</p>
+          <p className="mt-1 text-[7px] font-bold uppercase text-kelly-subtle">AI drafts (OpenAI)</p>
           <EventCommsDraftsClient eventId={detail.id} />
         </>
       ) : (
@@ -118,7 +118,7 @@ export function EventCommsPanelServer({ detail }: { detail: CalendarHqEventDetai
             </label>
           ))}
         </div>
-        <label className="text-[7px] text-kelly-text/50">
+        <label className="text-[7px] text-kelly-subtle">
           Next reminder due (local)
           <input
             type="datetime-local"

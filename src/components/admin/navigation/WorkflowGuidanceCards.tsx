@@ -23,10 +23,10 @@ export function WorkflowGuidanceCards({ cards }: { cards: WorkflowGuidanceCard[]
                 {card.riskLevel} · {card.aiConfidence}
               </span>
             </div>
-            <p className="mt-2 text-xs text-kelly-text/70">
+            <p className="mt-2 text-xs text-kelly-muted">
               <strong>Why:</strong> {card.whyItMatters}
             </p>
-            <p className="mt-1 text-xs text-kelly-text/60">
+            <p className="mt-1 text-xs text-kelly-muted">
               <strong>Next:</strong> {card.nextStep} · ~{card.estimatedMinutes} min
             </p>
             <div className="mt-3 flex flex-wrap gap-2">

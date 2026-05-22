@@ -72,12 +72,12 @@ export default async function AdminPlatformsPage({ searchParams }: Props) {
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
                   <h2 className="font-heading text-xl font-bold text-kelly-text">{c.accountName ?? c.platform}</h2>
-                  <p className="mt-1 font-body text-xs text-kelly-text/60">
+                  <p className="mt-1 font-body text-xs text-kelly-muted">
                     Status: <strong>{c.status}</strong> · Mode: {modeLabel(configured, c.status)} · Inbound items:{" "}
                     <strong>{count}</strong>
                   </p>
                   {c.lastSyncedAt ? (
-                    <p className="mt-1 font-body text-xs text-kelly-text/55">
+                    <p className="mt-1 font-body text-xs text-kelly-muted">
                       Last sync: {c.lastSyncedAt.toLocaleString()}
                     </p>
                   ) : null}
@@ -97,7 +97,7 @@ export default async function AdminPlatformsPage({ searchParams }: Props) {
                     Run sync
                   </button>
                   {c.platform !== ContentPlatform.SUBSTACK && !configured ? (
-                    <span className="max-w-[12rem] text-[10px] text-kelly-text/50">
+                    <span className="max-w-[12rem] text-[10px] text-kelly-subtle">
                       Configure env vars before syncing.
                     </span>
                   ) : null}
@@ -108,7 +108,7 @@ export default async function AdminPlatformsPage({ searchParams }: Props) {
         })}
       </ul>
 
-      <p className="mt-10 font-body text-xs text-kelly-text/55">
+      <p className="mt-10 font-body text-xs text-kelly-muted">
         Substack sync also remains available from{" "}
         <Link href="/admin/blog" className="text-kelly-navy hover:underline">
           Blog sync

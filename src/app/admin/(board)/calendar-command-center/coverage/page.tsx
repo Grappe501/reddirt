@@ -27,7 +27,7 @@ const TABS: Array<{ id: CoverageTabId; label: string; filter: (p: CampaignEventC
 type Props = { searchParams: Promise<{ tab?: string }> };
 
 function badge(label: string) {
-  return <span className="rounded-full border border-kelly-text/15 bg-kelly-wash px-2 py-0.5 text-[9px] font-bold uppercase text-kelly-text/70">{label}</span>;
+  return <span className="rounded-full border border-kelly-text/15 bg-kelly-wash px-2 py-0.5 text-[9px] font-bold uppercase text-kelly-muted">{label}</span>;
 }
 
 export default async function CoveragePage({ searchParams }: Props) {
@@ -46,14 +46,14 @@ export default async function CoveragePage({ searchParams }: Props) {
 
   return (
     <div className="mx-auto max-w-7xl space-y-5 px-4 py-6">
-      <div className="font-body text-xs text-kelly-text/60">
+      <div className="font-body text-xs text-kelly-muted">
         <Link href="/admin/calendar-command-center" className="text-kelly-text underline-offset-2 hover:underline">← Command center</Link>
         {" · "}
         <span>Campaign coverage</span>
       </div>
 
       <header className="rounded-lg border border-kelly-text/15 bg-[#f7f2e8] px-5 py-5 shadow-sm">
-        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-text/45">Staff coverage layer</p>
+        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">Staff coverage layer</p>
         <h1 className="mt-2 font-heading text-2xl font-bold text-kelly-text">How does the campaign cover every event?</h1>
         <p className="mt-2 max-w-3xl font-body text-sm text-kelly-text/75">
           This is a staff page, not a Kelly-facing flood. It turns each calendar event into a coverage plan: candidate, local volunteers,
@@ -68,14 +68,14 @@ export default async function CoveragePage({ searchParams }: Props) {
       ) : (
         <>
           <section className="grid gap-3 sm:grid-cols-3 lg:grid-cols-6">
-            <div className="rounded-lg border bg-white px-3 py-3"><p className="text-[10px] uppercase text-kelly-text/50">Plans</p><p className="font-heading text-xl font-bold">{file.stats.total}</p></div>
-            <div className="rounded-lg border bg-white px-3 py-3"><p className="text-[10px] uppercase text-kelly-text/50">Local coverage</p><p className="font-heading text-xl font-bold">{file.stats.needsLocalCoverage}</p></div>
-            <div className="rounded-lg border bg-white px-3 py-3"><p className="text-[10px] uppercase text-kelly-text/50">Volunteer lead</p><p className="font-heading text-xl font-bold">{file.stats.needsVolunteerLead}</p></div>
-            <div className="rounded-lg border bg-white px-3 py-3"><p className="text-[10px] uppercase text-kelly-text/50">Table permission</p><p className="font-heading text-xl font-bold">{file.stats.needsTablePermission}</p></div>
-            <div className="rounded-lg border bg-white px-3 py-3"><p className="text-[10px] uppercase text-kelly-text/50">Push cards</p><p className="font-heading text-xl font-bold">{file.stats.materials.pushCards}</p></div>
-            <div className="rounded-lg border bg-white px-3 py-3"><p className="text-[10px] uppercase text-kelly-text/50">Fans / shirts</p><p className="font-heading text-xl font-bold">{file.stats.materials.fans} / {file.stats.materials.shirts}</p></div>
-            <div className="rounded-lg border bg-white px-3 py-3"><p className="text-[10px] uppercase text-kelly-text/50">Mints</p><p className="font-heading text-xl font-bold">{file.stats.materials.brandedMints}</p></div>
-            <div className="rounded-lg border bg-white px-3 py-3"><p className="text-[10px] uppercase text-kelly-text/50">Tablecloths / banners</p><p className="font-heading text-xl font-bold">{file.stats.materials.fourFootTablecloths} / {file.stats.materials.pullUpBanners}</p></div>
+            <div className="rounded-lg border bg-white px-3 py-3"><p className="text-[10px] uppercase text-kelly-subtle">Plans</p><p className="font-heading text-xl font-bold">{file.stats.total}</p></div>
+            <div className="rounded-lg border bg-white px-3 py-3"><p className="text-[10px] uppercase text-kelly-subtle">Local coverage</p><p className="font-heading text-xl font-bold">{file.stats.needsLocalCoverage}</p></div>
+            <div className="rounded-lg border bg-white px-3 py-3"><p className="text-[10px] uppercase text-kelly-subtle">Volunteer lead</p><p className="font-heading text-xl font-bold">{file.stats.needsVolunteerLead}</p></div>
+            <div className="rounded-lg border bg-white px-3 py-3"><p className="text-[10px] uppercase text-kelly-subtle">Table permission</p><p className="font-heading text-xl font-bold">{file.stats.needsTablePermission}</p></div>
+            <div className="rounded-lg border bg-white px-3 py-3"><p className="text-[10px] uppercase text-kelly-subtle">Push cards</p><p className="font-heading text-xl font-bold">{file.stats.materials.pushCards}</p></div>
+            <div className="rounded-lg border bg-white px-3 py-3"><p className="text-[10px] uppercase text-kelly-subtle">Fans / shirts</p><p className="font-heading text-xl font-bold">{file.stats.materials.fans} / {file.stats.materials.shirts}</p></div>
+            <div className="rounded-lg border bg-white px-3 py-3"><p className="text-[10px] uppercase text-kelly-subtle">Mints</p><p className="font-heading text-xl font-bold">{file.stats.materials.brandedMints}</p></div>
+            <div className="rounded-lg border bg-white px-3 py-3"><p className="text-[10px] uppercase text-kelly-subtle">Tablecloths / banners</p><p className="font-heading text-xl font-bold">{file.stats.materials.fourFootTablecloths} / {file.stats.materials.pullUpBanners}</p></div>
           </section>
 
           <nav className="flex flex-wrap gap-2 border-b border-kelly-text/10 pb-2">
@@ -88,7 +88,7 @@ export default async function CoveragePage({ searchParams }: Props) {
 
           <div className="overflow-x-auto rounded-lg border border-kelly-text/12 bg-white">
             <table className="min-w-[1100px] w-full border-collapse font-body text-[11px] text-kelly-text">
-              <thead className="bg-kelly-wash/50 text-left text-[9px] uppercase tracking-wide text-kelly-text/55">
+              <thead className="bg-kelly-wash/50 text-left text-[9px] uppercase tracking-wide text-kelly-muted">
                 <tr>
                   <th className="px-2 py-2">Event</th>
                   <th className="px-2 py-2">Coverage</th>
@@ -112,7 +112,7 @@ export default async function CoveragePage({ searchParams }: Props) {
                         {p.status === "ready" ? badge("Ready") : null}
                       </div>
                     </td>
-                    <td className="px-2 py-2">{p.coverageMode.replace(/_/g, " ")}<br /><span className="text-kelly-text/55">{p.candidateDecision.replace(/_/g, " ")}</span></td>
+                    <td className="px-2 py-2">{p.coverageMode.replace(/_/g, " ")}<br /><span className="text-kelly-muted">{p.candidateDecision.replace(/_/g, " ")}</span></td>
                     <td className="px-2 py-2">
                       {p.volunteersNeeded} needed · {staffByEvent.get(p.campaignEventId)?.volunteersConfirmed ?? 0} confirmed<br />
                       gap {staffByEvent.get(p.campaignEventId)?.staffingGap ?? p.volunteersNeeded} · {p.shirtsNeeded} shirts
@@ -125,7 +125,7 @@ export default async function CoveragePage({ searchParams }: Props) {
                     <td className="max-w-[340px] px-2 py-2">
                       {p.staffNextActions.slice(0, 3).join(" · ")}
                       <br />
-                      <span className="text-kelly-text/55">
+                      <span className="text-kelly-muted">
                         Staffing: {staffByEvent.get(p.campaignEventId)?.status?.replace(/_/g, " ") ?? "not built"} · callout: {calloutByEvent.get(p.campaignEventId)?.status ?? "—"} · reminders {remindersByEvent.get(p.campaignEventId) ?? 0}
                       </span>
                     </td>

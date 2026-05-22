@@ -34,7 +34,7 @@ export default async function CommsWorkbenchPlanDetailPage({ params }: Props) {
             </Link>
           </div>
         </div>
-        <p className="text-[11px] text-kelly-text/55">
+        <p className="text-[11px] text-kelly-muted">
           <Link className="font-semibold text-kelly-slate" href={commsPlanPath(id, COMMS_PLAN_SECTION.execution)}>
             Jump to execution
           </Link>{" "}

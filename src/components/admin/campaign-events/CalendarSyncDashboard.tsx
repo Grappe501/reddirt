@@ -36,7 +36,7 @@ export function CalendarSyncDashboard({ snapshot }: { snapshot: CalendarSyncDash
           <p className="mt-2">
             OAuth configured: <strong>{snapshot.googleConfigured ? "Yes" : "No"}</strong>
           </p>
-          <ul className="mt-2 list-inside list-disc text-xs text-kelly-text/65">
+          <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
             <li>Client ID: {snapshot.googleEnv.hasClientId ? "set" : "missing"}</li>
             <li>Client secret: {snapshot.googleEnv.hasClientSecret ? "set" : "missing"}</li>
             <li>Redirect URI: {snapshot.googleEnv.hasRedirectUri ? "set" : "missing"}</li>
@@ -106,13 +106,13 @@ export function CalendarSyncDashboard({ snapshot }: { snapshot: CalendarSyncDash
 
       <section className="rounded-2xl border border-kelly-text/10 bg-kelly-page p-4">
         <h2 className="font-heading text-sm font-bold uppercase tracking-wider text-kelly-slate">Read-only refresh commands</h2>
-        <p className="mt-1 text-xs text-kelly-text/60">Run from <code>RedDirt/</code> on an operator machine with DB + Google OAuth configured.</p>
+        <p className="mt-1 text-xs text-kelly-muted">Run from <code>RedDirt/</code> on an operator machine with DB + Google OAuth configured.</p>
         <ul className="mt-3 space-y-3">
           {snapshot.readOnlyCommands.map((c) => (
             <li key={c.command} className="rounded-lg border border-kelly-text/10 bg-kelly-wash px-3 py-2">
               <p className="font-semibold text-kelly-navy">{c.label}</p>
               <code className="mt-1 block text-xs">{c.command}</code>
-              <p className="mt-1 text-xs text-kelly-text/55">{c.note}</p>
+              <p className="mt-1 text-xs text-kelly-muted">{c.note}</p>
             </li>
           ))}
         </ul>
@@ -139,7 +139,7 @@ function LaneCard({
 }) {
   if (!lane) {
     return (
-      <div className="rounded-lg border border-dashed border-kelly-text/20 p-3 text-xs text-kelly-text/55">
+      <div className="rounded-lg border border-dashed border-kelly-text/20 p-3 text-xs text-kelly-muted">
         {label}: not configured — run <code>npm run calendar:google:ensure</code>
       </div>
     );

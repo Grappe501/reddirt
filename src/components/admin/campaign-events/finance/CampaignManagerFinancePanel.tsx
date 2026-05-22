@@ -7,19 +7,19 @@ export function CampaignManagerFinancePanel({ snapshot, month }: { snapshot: Cam
     <DashboardSection title="Campaign finance operations">
       <dl className="grid gap-3 font-body text-sm sm:grid-cols-2">
         <div>
-          <dt className="text-xs text-kelly-text/50">Month pipeline</dt>
+          <dt className="text-xs text-kelly-subtle">Month pipeline</dt>
           <dd className="font-bold">{snapshot.pipelineLabel}</dd>
         </div>
         <div>
-          <dt className="text-xs text-kelly-text/50">Finance exceptions</dt>
+          <dt className="text-xs text-kelly-subtle">Finance exceptions</dt>
           <dd className="font-bold">{snapshot.exceptionCount}</dd>
         </div>
         <div>
-          <dt className="text-xs text-kelly-text/50">Missing mileage rows</dt>
+          <dt className="text-xs text-kelly-subtle">Missing mileage rows</dt>
           <dd>{snapshot.missingMileage}</dd>
         </div>
         <div>
-          <dt className="text-xs text-kelly-text/50">Receipts pending</dt>
+          <dt className="text-xs text-kelly-subtle">Receipts pending</dt>
           <dd>{snapshot.pendingReceipts}</dd>
         </div>
       </dl>

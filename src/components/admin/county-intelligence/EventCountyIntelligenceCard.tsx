@@ -40,7 +40,7 @@ export function EventCountyIntelligenceCard({ context }: { context: CountyIntell
 
       <div className="mt-3">
         <p className="text-xs font-bold text-kelly-navy">What Kelly should emphasize</p>
-        <ul className="mt-1 list-inside list-disc text-xs text-kelly-text/70">
+        <ul className="mt-1 list-inside list-disc text-xs text-kelly-muted">
           {context.kellyTalkingPoints.map((t) => (
             <li key={t}>{t}</li>
           ))}

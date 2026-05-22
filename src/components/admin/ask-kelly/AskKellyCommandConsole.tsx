@@ -332,7 +332,7 @@ export function AskKellyCommandConsole({ children }: { children: ReactNode }) {
         >
           <div>
             <p className="font-heading text-sm font-bold text-kelly-navy">Ask Kelly</p>
-            <p className="font-body text-xs text-kelly-text/70">Candidate onboarding — compact</p>
+            <p className="font-body text-xs text-kelly-muted">Candidate onboarding — compact</p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
             <button
@@ -351,7 +351,7 @@ export function AskKellyCommandConsole({ children }: { children: ReactNode }) {
             </button>
           </div>
         </div>
-        <p className="mt-2 font-body text-xs text-kelly-text/60">{WORKSPACE_HINT}</p>
+        <p className="mt-2 font-body text-xs text-kelly-muted">{WORKSPACE_HINT}</p>
         <div className="mt-8 space-y-10">{children}</div>
       </div>
     );

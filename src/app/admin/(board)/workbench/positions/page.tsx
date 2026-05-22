@@ -33,7 +33,7 @@ export default function PositionWorkbenchesIndexPage() {
                 className="block rounded-lg border border-kelly-text/10 bg-kelly-page px-4 py-3 shadow-sm transition hover:border-kelly-text/25"
               >
                 <p className="font-medium text-kelly-slate">{n.displayName}</p>
-                <p className="text-[10px] text-kelly-text/50">
+                <p className="text-[10px] text-kelly-subtle">
                   {n.id} · {badge}
                 </p>
               </Link>

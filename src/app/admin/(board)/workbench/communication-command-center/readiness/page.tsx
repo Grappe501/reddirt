@@ -132,7 +132,7 @@ export default async function CommunicationCommandCenterReadinessPage() {
       </section>
 
       <section className="rounded-lg border border-kelly-text/12 bg-white/95 p-3 shadow-sm">
-        <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-kelly-text/55">Database (hosted check)</h2>
+        <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-kelly-muted">Database (hosted check)</h2>
         <div className="mt-2">
           {row("Reachable", readiness.database.reachable)}
           {row("Live campaign database contract satisfied", readiness.database.productionCanonical)}
@@ -140,14 +140,14 @@ export default async function CommunicationCommandCenterReadinessPage() {
       </section>
 
       <section className="rounded-lg border border-kelly-text/12 bg-white/95 p-3 shadow-sm">
-        <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-kelly-text/55">Core tables present</h2>
+        <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-kelly-muted">Core tables present</h2>
         <div className="mt-2">
           {COMMUNICATION_COMMAND_CENTER_TABLE_KEYS.map((k) => row(COMMUNICATION_COMMAND_CENTER_TABLE_LABELS[k], readiness.tables[k]))}
         </div>
       </section>
 
       <section className="rounded-lg border border-kelly-text/12 bg-white/95 p-3 shadow-sm">
-        <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-kelly-text/55">API routes present (bundle)</h2>
+        <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-kelly-muted">API routes present (bundle)</h2>
         <div className="mt-2">
           {COMMUNICATION_COMMAND_CENTER_ROUTE_KEYS.map((k) =>
             row(COMMUNICATION_COMMAND_CENTER_ROUTE_LABELS[k], readiness.routes[k]),
@@ -156,8 +156,8 @@ export default async function CommunicationCommandCenterReadinessPage() {
       </section>
 
       <section className="rounded-lg border border-kelly-text/12 bg-white/95 p-3 shadow-sm">
-        <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-kelly-text/55">Safety posture</h2>
-        <p className="mb-1 font-body text-[10px] text-kelly-text/70">
+        <h2 className="font-heading text-xs font-bold uppercase tracking-wide text-kelly-muted">Safety posture</h2>
+        <p className="mb-1 font-body text-[10px] text-kelly-muted">
           Green means the safe, default campaign posture. If something shows “Unlocked,” treat it as a deliberate headquarters
           decision — not the default for launch.
         </p>
@@ -176,7 +176,7 @@ export default async function CommunicationCommandCenterReadinessPage() {
       <section className="rounded-lg border border-kelly-text/10 bg-kelly-page/50 p-3">
         <h2 className="font-heading text-xs font-bold uppercase text-kelly-navy">Next recommended step</h2>
         <p className="mt-1 font-body text-sm text-kelly-text/90">{readiness.nextRecommendedStep}</p>
-        <p className="mt-2 font-body text-[10px] text-kelly-text/65">
+        <p className="mt-2 font-body text-[10px] text-kelly-muted">
           Staff reference: <span className="font-medium">docs/communication-command-center-readiness.md</span> (in the repo).
         </p>
       </section>

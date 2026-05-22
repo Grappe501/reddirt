@@ -14,7 +14,7 @@ export function CampaignOsControlPanel({ bundle }: { bundle: OsControlBundle }) 
   return (
     <section className="rounded-3xl border-2 border-kelly-navy/25 bg-gradient-to-b from-kelly-navy/[0.06] to-kelly-page p-6">
       <p className="text-[10px] font-bold uppercase tracking-widest text-kelly-slate">Campaign OS Control Layer</p>
-      <p className="mt-1 font-body text-sm text-kelly-text/70">
+      <p className="mt-1 font-body text-sm text-kelly-muted">
         Observe → interpret → plan → recommend → prepare → human approve → execute (gated) → audit → learn
       </p>
 
@@ -26,7 +26,7 @@ export function CampaignOsControlPanel({ bundle }: { bundle: OsControlBundle }) 
         <div className="min-w-[200px] flex-1 font-body text-sm">
           <p className="font-bold text-kelly-navy">Recommended workflow</p>
           <p className="text-kelly-text/75">{state.recommendedWorkflow}</p>
-          <p className="mt-2 text-xs text-kelly-text/55">Period {state.period} · {state.domainsNeedingAttention.join(", ") || "all domains steady"}</p>
+          <p className="mt-2 text-xs text-kelly-muted">Period {state.period} · {state.domainsNeedingAttention.join(", ") || "all domains steady"}</p>
         </div>
       </div>
 
@@ -48,7 +48,7 @@ export function CampaignOsControlPanel({ bundle }: { bundle: OsControlBundle }) 
                 <p className="font-bold text-kelly-navy">
                   {i + 1}. {plan.title}
                 </p>
-                <p className="mt-1 text-xs text-kelly-text/60">{plan.expectedOutcome}</p>
+                <p className="mt-1 text-xs text-kelly-muted">{plan.expectedOutcome}</p>
                 <Link href={plan.steps[0]?.route ?? "#"} className="mt-2 inline-block text-xs font-bold underline">
                   Start → {plan.steps[0]?.title}
                 </Link>
@@ -62,10 +62,10 @@ export function CampaignOsControlPanel({ bundle }: { bundle: OsControlBundle }) 
             {preparedActions.map((a) => (
               <li key={a.id} className="rounded-lg border border-kelly-text/10 px-3 py-2">
                 <p className="font-bold">{a.title}</p>
-                <p className="text-kelly-text/60">{a.preview}</p>
+                <p className="text-kelly-muted">{a.preview}</p>
                 <p className="mt-1">
                   <span className="rounded bg-kelly-navy/10 px-1.5 py-0.5 font-mono text-[10px]">{a.executionStatus}</span>
-                  <span className="ml-2 text-kelly-text/50">{a.humanApprovalLabel}</span>
+                  <span className="ml-2 text-kelly-subtle">{a.humanApprovalLabel}</span>
                 </p>
                 <Link href={a.reviewRoute} className="mt-1 inline-block font-bold text-kelly-navy underline">
                   Review route →
@@ -80,7 +80,7 @@ export function CampaignOsControlPanel({ bundle }: { bundle: OsControlBundle }) 
         <div className="grid gap-3 sm:grid-cols-3 font-body text-[11px]">
           <div>
             <p className="font-bold text-emerald-900">Safe ({bundle.gatesSafe.length})</p>
-            <ul className="mt-1 list-inside list-disc text-kelly-text/65">
+            <ul className="mt-1 list-inside list-disc text-kelly-muted">
               {bundle.gatesSafe.slice(0, 5).map((g) => (
                 <li key={g.actionId}>{g.label}</li>
               ))}
@@ -88,7 +88,7 @@ export function CampaignOsControlPanel({ bundle }: { bundle: OsControlBundle }) 
           </div>
           <div>
             <p className="font-bold text-amber-900">Gated ({gatesGated.length})</p>
-            <ul className="mt-1 list-inside list-disc text-kelly-text/65">
+            <ul className="mt-1 list-inside list-disc text-kelly-muted">
               {gatesGated.slice(0, 6).map((g) => (
                 <li key={g.actionId}>{g.label}</li>
               ))}
@@ -96,7 +96,7 @@ export function CampaignOsControlPanel({ bundle }: { bundle: OsControlBundle }) 
           </div>
           <div>
             <p className="font-bold text-red-900">Forbidden ({gatesForbidden.length})</p>
-            <ul className="mt-1 list-inside list-disc text-kelly-text/65">
+            <ul className="mt-1 list-inside list-disc text-kelly-muted">
               {gatesForbidden.map((g) => (
                 <li key={g.actionId}>{g.label}</li>
               ))}
@@ -106,7 +106,7 @@ export function CampaignOsControlPanel({ bundle }: { bundle: OsControlBundle }) 
       </AiCommandCenterDisclosure>
 
       <AiCommandCenterDisclosure id="tool-readiness" title="Tool execution readiness (sample)" defaultOpen={false}>
-        <p className="text-xs text-kelly-text/60">
+        <p className="text-xs text-kelly-muted">
           Can execute: {toolBands.canExecute} · Prepare-only: {toolBands.canPrepareOnly} · With blockers: {toolBands.blocked}
         </p>
         <ul className="mt-2 max-h-40 overflow-y-auto font-mono text-[10px]">
@@ -120,7 +120,7 @@ export function CampaignOsControlPanel({ bundle }: { bundle: OsControlBundle }) 
 
       <AiCommandCenterDisclosure id="audit" title="Recent agent audits" defaultOpen={false}>
         {recentAudits.length === 0 ? (
-          <p className="text-xs text-kelly-text/55">No runtime audits yet — use command palette to generate.</p>
+          <p className="text-xs text-kelly-muted">No runtime audits yet — use command palette to generate.</p>
         ) : (
           <ul className="space-y-1 font-body text-[11px]">
             {recentAudits.map((a) => (
@@ -132,7 +132,7 @@ export function CampaignOsControlPanel({ bundle }: { bundle: OsControlBundle }) 
         )}
       </AiCommandCenterDisclosure>
 
-      <p className="mt-4 font-body text-[10px] text-kelly-text/45">
+      <p className="mt-4 font-body text-[10px] text-kelly-subtle">
         Docs: AGENT_OS_CONTROL_LAYER.md · CAMPAIGN_OS_AUTONOMY_BOUNDARIES.md · test: npm run agents:test-os-control
       </p>
     </section>

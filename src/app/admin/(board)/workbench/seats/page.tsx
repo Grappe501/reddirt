@@ -36,7 +36,7 @@ export default async function PositionSeatsPage() {
       </div>
 
       <section className="rounded-card border border-kelly-text/10 bg-kelly-page p-4 text-sm text-kelly-text/85">
-        <h2 className="font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">Summary</h2>
+        <h2 className="font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-muted">Summary</h2>
         <ul className="mt-2 grid gap-1 sm:grid-cols-2">
           <li>Total positions: {summary.totalPositions}</li>
           <li>Persisted seat rows: {summary.withDbRow}</li>
@@ -49,7 +49,7 @@ export default async function PositionSeatsPage() {
             {riskyHoles.join(", ")}
           </p>
         ) : null}
-        <p className="mt-2 text-xs text-kelly-text/55">
+        <p className="mt-2 text-xs text-kelly-muted">
           High-load and workload signals are <strong>not</strong> in SEAT-1. See <code>docs/delegation-and-coverage-foundation.md</code>
           / future packets.
         </p>
@@ -58,7 +58,7 @@ export default async function PositionSeatsPage() {
       <div className="overflow-x-auto rounded-card border border-kelly-text/10">
         <table className="w-full min-w-[640px] border-collapse text-left text-sm">
           <thead>
-            <tr className="border-b border-kelly-text/10 bg-kelly-muted/20 text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">
+            <tr className="border-b border-kelly-text/10 bg-kelly-muted/20 text-[10px] font-bold uppercase tracking-wider text-kelly-muted">
               <th className="p-2">Position</th>
               <th className="p-2">Effective</th>
               <th className="p-2">User</th>
@@ -73,7 +73,7 @@ export default async function PositionSeatsPage() {
                 <td className="p-2 font-medium text-kelly-text">
                   {s.position.displayName}
                   <br />
-                  <span className="text-[10px] text-kelly-text/45">{s.position.id}</span>
+                  <span className="text-[10px] text-kelly-subtle">{s.position.id}</span>
                 </td>
                 <td className="p-2 text-kelly-text/80">{s.effectiveStatus}</td>
                 <td className="p-2 text-kelly-text/80">
@@ -81,18 +81,18 @@ export default async function PositionSeatsPage() {
                     <span>
                       {s.displayUser.name ?? s.displayUser.email}
                       <br />
-                      <span className="text-[10px] text-kelly-text/45">{s.displayUser.email}</span>
+                      <span className="text-[10px] text-kelly-subtle">{s.displayUser.email}</span>
                     </span>
                   ) : (
-                    <span className="text-kelly-text/50">—</span>
+                    <span className="text-kelly-subtle">—</span>
                   )}
                   {s.record?.status === "ACTING" && s.actingForPositionKey ? (
-                    <span className="ml-1 block text-[10px] text-kelly-text/45">
+                    <span className="ml-1 block text-[10px] text-kelly-subtle">
                       acting for: {s.actingForPositionKey}
                     </span>
                   ) : null}
                 </td>
-                <td className="p-2 text-xs text-kelly-text/60">{s.rollUpTo ?? "—"}</td>
+                <td className="p-2 text-xs text-kelly-muted">{s.rollUpTo ?? "—"}</td>
                 <td className="p-2">
                   <a
                     href={`/admin/workbench/positions/${s.position.id}`}
@@ -104,7 +104,7 @@ export default async function PositionSeatsPage() {
                 <td className="p-2 align-top">
                   <form action={setPositionSeatState} className="flex flex-col gap-1.5 text-xs">
                     <input type="hidden" name="positionKey" value={s.position.id} />
-                    <label className="text-kelly-text/50">
+                    <label className="text-kelly-subtle">
                       User
                       <select
                         name="userId"
@@ -119,7 +119,7 @@ export default async function PositionSeatsPage() {
                         ))}
                       </select>
                     </label>
-                    <label className="text-kelly-text/50">
+                    <label className="text-kelly-subtle">
                       Status
                       <select
                         name="status"
@@ -140,7 +140,7 @@ export default async function PositionSeatsPage() {
                         ))}
                       </select>
                     </label>
-                    <label className="text-kelly-text/50">
+                    <label className="text-kelly-subtle">
                       Acting for (position id, if acting)
                       <input
                         name="actingForPositionKey"

@@ -126,7 +126,7 @@ export function EventDrilldownClient({
       {fromTravel && month ? (
         <section className="rounded-2xl border border-kelly-navy/25 bg-kelly-navy/[0.06] p-4 font-body text-sm">
           <p className="font-bold text-kelly-navy">Travel reimbursement correction</p>
-          <p className="mt-1 text-kelly-text/70">
+          <p className="mt-1 text-kelly-muted">
             Edits here update the internal campaign ledger. Google Calendar sync is not enabled yet.
           </p>
           <div className="mt-3 flex flex-wrap gap-3 text-xs font-bold">
@@ -147,7 +147,7 @@ export function EventDrilldownClient({
         <button
           type="button"
           onClick={() => setTab("planning")}
-          className={`rounded-full px-3 py-1.5 font-body text-xs font-bold ${tab === "planning" ? "bg-kelly-navy text-white" : "text-kelly-text/70"}`}
+          className={`rounded-full px-3 py-1.5 font-body text-xs font-bold ${tab === "planning" ? "bg-kelly-navy text-white" : "text-kelly-muted"}`}
         >
           Planning workbook
         </button>
@@ -156,7 +156,7 @@ export function EventDrilldownClient({
             key={id}
             type="button"
             onClick={() => setTab(id)}
-            className={`rounded-full px-3 py-1.5 font-body text-xs font-bold ${tab === id ? "bg-kelly-navy text-white" : "text-kelly-text/70"}`}
+            className={`rounded-full px-3 py-1.5 font-body text-xs font-bold ${tab === id ? "bg-kelly-navy text-white" : "text-kelly-muted"}`}
           >
             {TAB_LABELS[id]}
           </button>
@@ -206,7 +206,7 @@ export function EventDrilldownClient({
       )}
 
       {tab !== "planning" && tab === "run_of_show" && (
-        <p className="font-body text-sm text-kelly-text/60">Run of show lives in the Planning workbook tab.</p>
+        <p className="font-body text-sm text-kelly-muted">Run of show lives in the Planning workbook tab.</p>
       )}
       {tab !== "planning" && tab === "hot_wash" && (
         <>
@@ -229,7 +229,7 @@ export function EventDrilldownClient({
       {tab !== "planning" && tab === "team_notes" && (
         <div className="rounded-2xl border border-kelly-text/10 bg-kelly-page p-4 font-body text-sm">
           <p>{row.factCard.why.campaignPurpose || "No team notes on fact card yet."}</p>
-          <p className="mt-2 text-kelly-text/55">Use Communication tab for threaded notes by role.</p>
+          <p className="mt-2 text-kelly-muted">Use Communication tab for threaded notes by role.</p>
         </div>
       )}
 
@@ -239,7 +239,7 @@ export function EventDrilldownClient({
             {row.approvalTimeline.map((t) => (
               <li key={t.status} className="flex items-center gap-3 rounded-lg border border-kelly-text/10 px-3 py-2 font-body text-sm">
                 <span className="font-bold">{APPROVAL_STATUS_LABELS[t.status]}</span>
-                {t.at ? <span className="text-xs text-kelly-text/50">{new Date(t.at).toLocaleString()}</span> : <span className="text-xs text-kelly-text/40">Pending</span>}
+                {t.at ? <span className="text-xs text-kelly-subtle">{new Date(t.at).toLocaleString()}</span> : <span className="text-xs text-kelly-text/40">Pending</span>}
               </li>
             ))}
           </ol>
@@ -253,7 +253,7 @@ export function EventDrilldownClient({
         <div className="space-y-4">
           <ul className="space-y-2">
             {row.communicationThread.length === 0 ? (
-              <li className="font-body text-sm text-kelly-text/55">No notes yet — foundation for host, CM, candidate, and volunteer threads.</li>
+              <li className="font-body text-sm text-kelly-muted">No notes yet — foundation for host, CM, candidate, and volunteer threads.</li>
             ) : (
               row.communicationThread.map((n) => (
                 <li key={n.id} className="rounded-lg border border-kelly-text/10 px-3 py-2 font-body text-sm">
@@ -283,7 +283,7 @@ export function EventDrilldownClient({
       )}
 
       {tab !== "planning" && tab === "attachments" && (
-        <div className="rounded-2xl border border-dashed border-kelly-text/20 p-8 text-center font-body text-sm text-kelly-text/55">
+        <div className="rounded-2xl border border-dashed border-kelly-text/20 p-8 text-center font-body text-sm text-kelly-muted">
           Attachments placeholder — receipts, run-of-show PDFs, and host agreements will land here (not receipts system yet).
         </div>
       )}
@@ -291,7 +291,7 @@ export function EventDrilldownClient({
       {tab !== "planning" && tab === "automation" && (
         <ul className="grid gap-2 font-body text-sm">
           {AUTOMATION_NEEDS_FUTURE.map((a) => (
-            <li key={a} className="rounded-lg border border-kelly-text/10 px-3 py-2 text-kelly-text/60">
+            <li key={a} className="rounded-lg border border-kelly-text/10 px-3 py-2 text-kelly-muted">
               {a.replaceAll("_", " ")} — planned
             </li>
           ))}
@@ -327,11 +327,11 @@ function PlaceholderOrFields({
     <div className="rounded-2xl border border-kelly-text/10 bg-kelly-page p-4">
       <h2 className="font-heading font-bold">{title}</h2>
       {extra}
-      {placeholder && !s?.fields?.length ? <p className="mt-2 font-body text-sm text-kelly-text/55">{placeholder}</p> : null}
+      {placeholder && !s?.fields?.length ? <p className="mt-2 font-body text-sm text-kelly-muted">{placeholder}</p> : null}
       <dl className="mt-3 grid gap-2 sm:grid-cols-2 font-body text-sm">
         {s?.fields?.map((f) => (
           <div key={f.label}>
-            <dt className="text-xs text-kelly-text/50">{f.label}</dt>
+            <dt className="text-xs text-kelly-subtle">{f.label}</dt>
             <dd>{f.value || (f.status === "missing" ? "—" : "")}</dd>
           </div>
         ))}

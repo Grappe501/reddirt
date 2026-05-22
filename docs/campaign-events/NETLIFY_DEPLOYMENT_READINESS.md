@@ -197,7 +197,7 @@ Public smoke: `/`, `/privacy`, `/get-involved` — see `docs/NETLIFY_FIRST_DEPLO
 | Check | Result |
 |-------|--------|
 | `npm run typecheck` | Clean |
-| `npm run build` | Clean (~8 min local) |
+| `npm run build` | Clean (~11 min local; `globals.css` os-* classes must not use `@apply` with opacity on CSS-var colors) |
 | Prisma validate | Valid |
 | `dev:prepare` | Applied `20260521140000_campaign_tenancy_foundation` on local hosted DB |
 | Feature branch HEAD | `f79fc58` Volunteer OS foundation (+ this doc when committed) |

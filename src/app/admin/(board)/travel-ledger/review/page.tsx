@@ -18,7 +18,7 @@ export default async function TravelLedgerReviewPage() {
       <TravelLedgerCard eyebrow="Ledger items" title={`${items.length} reimbursement items`}>
         <div className="overflow-x-auto">
           <table className="min-w-full text-left font-body text-sm">
-            <thead className="text-xs uppercase tracking-wider text-kelly-text/50">
+            <thead className="text-xs uppercase tracking-wider text-kelly-subtle">
               <tr>
                 <th className="px-3 py-2">Date</th>
                 <th className="px-3 py-2">Trip</th>

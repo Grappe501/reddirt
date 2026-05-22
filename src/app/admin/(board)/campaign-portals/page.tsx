@@ -22,7 +22,7 @@ export default async function CampaignPortalsPage() {
         <header className="rounded-3xl border border-kelly-text/10 bg-kelly-page p-6">
           <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-slate">Sprint 10 · Client portals</p>
           <h1 className="mt-1 font-heading text-2xl font-bold text-kelly-navy">Hosted portal architecture</h1>
-          <p className="mt-2 text-sm text-kelly-text/65">
+          <p className="mt-2 text-sm text-kelly-muted">
             Scaffold for multi-campaign hosted surfaces — full auth overhaul deferred. Active tenant:{" "}
             <strong>{tenant.displayName}</strong>
           </p>
@@ -43,14 +43,14 @@ export default async function CampaignPortalsPage() {
               >
                 <div>
                   <p className="font-bold text-kelly-navy">{p.label}</p>
-                  <p className="text-xs text-kelly-text/55">{p.status}</p>
+                  <p className="text-xs text-kelly-muted">{p.status}</p>
                 </div>
                 {enabled ? (
                   <Link href={p.href} className="text-xs font-bold text-kelly-navy underline">
                     Open →
                   </Link>
                 ) : (
-                  <span className="text-xs text-kelly-text/45">Disabled for tenant</span>
+                  <span className="text-xs text-kelly-subtle">Disabled for tenant</span>
                 )}
               </li>
             );

@@ -16,14 +16,19 @@
   --color-primary: var(--kelly-official-navy);
   --color-text-primary: #12124a;
   --color-bg: #f4f7fc;
-  --color-secondary: #3d4d72;
+  /** Body secondary — WCAG-friendly on white/wash (no opacity stacking). */
+  --color-secondary: #2e3d5c;
+  --text-subtle-on-light: #364272;
+  --text-on-navy: #f2f5fc;
+  --text-subtle-on-navy: #c5d2ea;
+  --text-soft-on-navy: #9eb4d8;
   --color-success: #4a6b55;
   --color-accent: var(--kelly-official-gold);
 
   /* Layering — navy / blue / mist (no legacy warm-field names) */
   --kelly-deep: #07074a;
   --kelly-blue: #0a0a7a;
-  --kelly-slate: #45518c;
+  --kelly-slate: #364272;
   --kelly-gold-soft: #e0b56a;
   --kelly-mist: #dce8f5;
   --kelly-fog: #e8f0fa;
@@ -34,7 +39,9 @@
   --kelly-band-wash: #e4edf7;
 
   --color-surface-elevated: #ffffff;
-  --color-border-subtle: rgba(0, 0, 102, 0.1);
+  --color-border-subtle: rgba(0, 0, 102, 0.16);
+  --border-ui: var(--color-border-subtle);
+  --border-on-navy: rgba(255, 255, 255, 0.2);
 
   --max-content-width: 1280px;
   --section-padding-y: clamp(3rem, 6vw, 5.5rem);
@@ -88,10 +95,16 @@ html.dark {
   color-scheme: dark;
 
   --color-text-primary: #e8eaf6;
-  --color-secondary: #9aa8d4;
+  --color-secondary: #b4c0e4;
+  --text-subtle-on-light: #a8b6dc;
+  --text-on-navy: #f0f3fb;
+  --text-subtle-on-navy: #c8d4eb;
+  --text-soft-on-navy: #9aaed4;
   --color-bg: #0b0e22;
   --color-success: #5c8f6c;
-  --color-border-subtle: rgba(232, 196, 122, 0.14);
+  --color-border-subtle: rgba(232, 196, 122, 0.22);
+  --border-ui: var(--color-border-subtle);
+  --border-on-navy: rgba(255, 255, 255, 0.14);
   --color-surface-elevated: #141a32;
 
   --kelly-deep: #03051a;
@@ -252,6 +265,75 @@ html.dark {
       right: -30%;
       background: rgba(10, 10, 122, 0.1);
     }
+  }
+
+  /* Campaign OS / admin — contrast-safe primitives (solid tokens, not opacity-muted text) */
+  .os-eyebrow {
+    @apply font-body text-xs font-bold uppercase tracking-[0.22em] text-kelly-subtle;
+  }
+  .os-eyebrow-inverse {
+    @apply font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-inverse-muted;
+  }
+  .os-body {
+    @apply font-body text-sm leading-relaxed text-kelly-text;
+  }
+  .os-body-muted {
+    @apply font-body text-sm leading-relaxed text-kelly-muted;
+  }
+  .os-hint {
+    @apply font-body text-xs leading-relaxed text-kelly-subtle;
+  }
+  .os-card {
+    @apply rounded-2xl border border-kelly-border bg-[var(--color-surface-elevated)] shadow-[var(--shadow-soft)];
+  }
+  .os-hero {
+    @apply rounded-3xl border bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)];
+    border-color: var(--border-strong);
+  }
+  .os-link {
+    @apply font-semibold text-kelly-navy underline underline-offset-2 transition;
+    text-decoration-color: rgba(0, 0, 102, 0.35);
+  }
+  .os-link:hover {
+    text-decoration-color: var(--kelly-official-navy);
+  }
+  .os-link-inverse {
+    @apply font-semibold text-kelly-inverse underline underline-offset-2 transition;
+    text-decoration-color: rgba(255, 255, 255, 0.4);
+  }
+  .os-link-inverse:hover {
+    text-decoration-color: rgba(255, 255, 255, 0.7);
+  }
+  .os-nav-group-label {
+    @apply px-3 pb-1 font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-inverse-muted;
+  }
+  .os-nav-link {
+    @apply rounded-md px-3 py-2 font-body text-sm font-medium text-kelly-inverse-soft transition;
+  }
+  .os-nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-on-navy);
+  }
+  .os-nav-link-active {
+    @apply rounded-md px-3 py-2 font-body text-sm font-semibold text-kelly-inverse;
+    background-color: rgba(255, 255, 255, 0.14);
+  }
+  .os-chip {
+    @apply inline-flex items-center rounded-full border border-kelly-border bg-kelly-page px-3 py-1 font-body text-xs font-semibold text-kelly-navy;
+  }
+  .os-chip-active {
+    @apply border bg-kelly-navy text-kelly-inverse;
+    border-color: rgba(0, 0, 102, 0.25);
+  }
+  .os-stat-label {
+    @apply font-body text-[10px] font-bold uppercase tracking-wider text-kelly-subtle;
+  }
+  .os-stat-hint {
+    @apply font-body text-xs text-kelly-muted;
+  }
+  .os-admin-canvas {
+    @apply min-h-full text-kelly-text;
+    background: linear-gradient(180deg, var(--color-bg) 0%, var(--kelly-band-wash) 100%);
   }
 }
 

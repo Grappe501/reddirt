@@ -20,7 +20,7 @@ export default async function ComplianceAmendmentsPage() {
             Filing: {candidate.filingId}. Record: {candidate.recordId}. {candidate.draftAmendmentExplanation}
           </ComplianceCard>
         ))}
-        {!candidates.length ? <p className="font-body text-sm text-kelly-text/70">No amendment candidates detected.</p> : null}
+        {!candidates.length ? <p className="font-body text-sm text-kelly-muted">No amendment candidates detected.</p> : null}
       </section>
     </div>
   );

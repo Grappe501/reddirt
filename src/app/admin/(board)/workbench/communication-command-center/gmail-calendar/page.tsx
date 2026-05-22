@@ -108,7 +108,7 @@ export default async function GmailCalendarOAuthProofPage() {
           <li>Contact imports: {r.safety.contactImportApproved ? "Unlocked — review" : "Locked"}</li>
           <li>Automation workers: {r.safety.automationWorkersApproved ? "Unlocked — review" : "Locked"}</li>
         </ul>
-        <p className="mt-2 font-body text-[10px] text-kelly-text/65">
+        <p className="mt-2 font-body text-[10px] text-kelly-muted">
           Staff guide: <span className="font-medium">docs/gmail-calendar-oauth-proof.md</span>
         </p>
       </section>

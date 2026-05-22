@@ -31,7 +31,7 @@ export default async function AdminRelationalContactsPage({ searchParams }: Prop
         Field / organizing · REL-2
       </p>
       <h1 className="mt-2 font-heading text-3xl font-bold">Relational contacts</h1>
-      <p className="mt-2 max-w-2xl font-body text-sm text-kelly-text/70">
+      <p className="mt-2 max-w-2xl font-body text-sm text-kelly-muted">
         Human-entered network for volunteers (power-of-5 + relational organizing). Rows are <strong>not</strong> vote
         totals or automatic supporter classifications. Voter file matches are optional and review-driven.
       </p>
@@ -69,7 +69,7 @@ export default async function AdminRelationalContactsPage({ searchParams }: Prop
         <h2 className="font-heading text-lg font-bold">Create (minimal)</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Owner user email *</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Owner user email *</span>
             <input
               name="ownerEmail"
               type="email"
@@ -78,7 +78,7 @@ export default async function AdminRelationalContactsPage({ searchParams }: Prop
             />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Display name *</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Display name *</span>
             <input
               name="displayName"
               type="text"
@@ -89,26 +89,26 @@ export default async function AdminRelationalContactsPage({ searchParams }: Prop
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">First name</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">First name</span>
             <input name="firstName" type="text" className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm" />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Last name</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Last name</span>
             <input name="lastName" type="text" className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm" />
           </label>
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Phone</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Phone</span>
             <input name="phone" type="text" className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm" />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Email</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Email</span>
             <input name="email" type="email" className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm" />
           </label>
         </div>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">County (slug, optional)</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">County (slug, optional)</span>
           <input
             name="countySlug"
             type="text"
@@ -117,7 +117,7 @@ export default async function AdminRelationalContactsPage({ searchParams }: Prop
           />
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Relationship type</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Relationship type</span>
           <select
             name="relationshipType"
             className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm"
@@ -131,7 +131,7 @@ export default async function AdminRelationalContactsPage({ searchParams }: Prop
           </select>
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Organizing status</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Organizing status</span>
           <select
             name="organizingStatus"
             className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm"
@@ -146,7 +146,7 @@ export default async function AdminRelationalContactsPage({ searchParams }: Prop
           </select>
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Match status</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Match status</span>
           <select
             name="matchStatus"
             className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm"
@@ -166,7 +166,7 @@ export default async function AdminRelationalContactsPage({ searchParams }: Prop
             Core five
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Slot 1–5</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Slot 1–5</span>
             <input
               name="powerOfFiveSlot"
               type="number"
@@ -177,7 +177,7 @@ export default async function AdminRelationalContactsPage({ searchParams }: Prop
           </label>
         </div>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Notes</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Notes</span>
           <textarea name="notes" rows={3} className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm" />
         </label>
         <button
@@ -191,7 +191,7 @@ export default async function AdminRelationalContactsPage({ searchParams }: Prop
       <h2 className="mt-12 font-heading text-lg font-bold">All contacts (latest 200)</h2>
       <div className="mt-4 overflow-x-auto rounded-card border border-kelly-text/10">
         <table className="w-full min-w-[720px] border-collapse text-left text-sm">
-          <thead className="bg-kelly-text/5 font-body text-xs font-semibold uppercase tracking-wider text-kelly-text/70">
+          <thead className="bg-kelly-text/5 font-body text-xs font-semibold uppercase tracking-wider text-kelly-muted">
             <tr>
               <th className="px-3 py-2">Owner</th>
               <th className="px-3 py-2">Display</th>
@@ -224,7 +224,7 @@ export default async function AdminRelationalContactsPage({ searchParams }: Prop
             ))}
             {rows.length === 0 ? (
               <tr>
-                <td colSpan={7} className="px-3 py-6 text-center text-kelly-text/60">
+                <td colSpan={7} className="px-3 py-6 text-center text-kelly-muted">
                   No relational contacts yet.
                 </td>
               </tr>

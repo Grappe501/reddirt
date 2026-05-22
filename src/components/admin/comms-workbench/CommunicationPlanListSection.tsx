@@ -9,8 +9,8 @@ import {
   COMMUNICATION_PLAN_STATUSES,
 } from "@/lib/comms-workbench/constants";
 
-const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
-const th = "border-b border-kelly-text/10 px-2 py-1.5 text-left font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
+const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-muted";
+const th = "border-b border-kelly-text/10 px-2 py-1.5 text-left font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-muted";
 const td = "border-b border-kelly-text/5 px-2 py-2 align-top text-sm";
 
 /** Merge filter keys; pass `null` in overrides to remove a key from the query string. */
@@ -109,7 +109,7 @@ export function CommunicationPlanListToolbar({
 export function CommunicationPlanListTable({ items }: { items: CommunicationPlanListItem[] }) {
   if (items.length === 0) {
     return (
-      <p className="rounded border border-dashed border-kelly-text/20 bg-kelly-page/50 px-4 py-8 text-center font-body text-sm text-kelly-text/65">
+      <p className="rounded border border-dashed border-kelly-text/20 bg-kelly-page/50 px-4 py-8 text-center font-body text-sm text-kelly-muted">
         {COMMS_EMPTY.noPlans}{" "}
         <Link className="font-semibold text-kelly-slate" href={COMMS_APP_PATHS.plansNew}>
           New message plan
@@ -150,7 +150,7 @@ export function CommunicationPlanListTable({ items }: { items: CommunicationPlan
                   {p.title}
                 </Link>
                 {p.source.primary ? (
-                  <p className="mt-0.5 text-[10px] text-kelly-text/55">
+                  <p className="mt-0.5 text-[10px] text-kelly-muted">
                     Source: {p.source.primary.sourceLabel}
                     {p.source.all.length > 1 ? ` (+${p.source.all.length - 1})` : ""}
                   </p>
@@ -164,13 +164,13 @@ export function CommunicationPlanListTable({ items }: { items: CommunicationPlan
               <td className={`${td} text-xs`}>
                 {p.owner?.nameLabel ?? p.owner?.email ?? "—"}
                 {p.requester ? (
-                  <span className="block text-[10px] text-kelly-text/45">Req: {p.requester.nameLabel ?? p.requester.email}</span>
+                  <span className="block text-[10px] text-kelly-subtle">Req: {p.requester.nameLabel ?? p.requester.email}</span>
                 ) : null}
               </td>
               <td className={`${td} font-mono text-[11px]`}>
                 D {p.draftCount} · V {p.variantCount} · S {p.sendCount}
                 {p.sendCount > 0 ? (
-                  <span className="mt-0.5 block text-kelly-text/70" title="Queued for send / sent / failed / sending (tracked sends)">
+                  <span className="mt-0.5 block text-kelly-muted" title="Queued for send / sent / failed / sending (tracked sends)">
                     Queued {p.sendRollup.queuedCount} · sent {p.sendRollup.sentCount}
                     {p.sendRollup.failedCount > 0 ? (
                       <span className="ml-1 font-semibold text-rose-800">· failed {p.sendRollup.failedCount}</span>
@@ -187,14 +187,14 @@ export function CommunicationPlanListTable({ items }: { items: CommunicationPlan
                 ) : (
                   "—"
                 )}
-                <span className="block text-kelly-text/50">
+                <span className="block text-kelly-subtle">
                   D ✓{p.review.approvedDraftCount} · ✗{p.review.rejectedDraftCount}
                 </span>
-                <span className="block text-kelly-text/50">
+                <span className="block text-kelly-subtle">
                   V ✓{p.review.approvedVariantCount} · ✗{p.review.rejectedVariantCount}
                 </span>
               </td>
-              <td className={`${td} text-[10px] text-kelly-text/60`}>
+              <td className={`${td} text-[10px] text-kelly-muted`}>
                 <time dateTime={p.updatedAt}>{new Date(p.updatedAt).toLocaleString()}</time>
                 {p.scheduledAt ? (
                   <span className="mt-0.5 block">Sched: {new Date(p.scheduledAt).toLocaleString()}</span>

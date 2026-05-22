@@ -307,7 +307,7 @@ export function FranklinCalendarCommandCenter({
           </label>
 
           <p className={`text-[10px] font-bold uppercase tracking-wider ${franklin.accent}`}>Workflow (preview)</p>
-          <p className="text-[11px] leading-relaxed text-kelly-text/70">
+          <p className="text-[11px] leading-relaxed text-kelly-muted">
             Approve / hold / reject will attach to `CampaignEvent` workflow in a follow-up slice. Use Calendar HQ for
             live workflow today.
           </p>
@@ -333,7 +333,7 @@ export function FranklinCalendarCommandCenter({
                   →
                 </button>
               </div>
-              <div className="grid grid-cols-7 gap-px bg-[#2a1d12]/15 font-body text-[10px] font-bold uppercase tracking-wide text-kelly-text/55">
+              <div className="grid grid-cols-7 gap-px bg-[#2a1d12]/15 font-body text-[10px] font-bold uppercase tracking-wide text-kelly-muted">
                 {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((d) => (
                   <div key={d} className="bg-[#f0e8dc] px-1 py-2 text-center">
                     {d}
@@ -369,7 +369,7 @@ export function FranklinCalendarCommandCenter({
                             </Link>
                           ))}
                           {(itemsByDay.get(cell.ymd) ?? []).length > 3 ? (
-                            <p className="text-[9px] text-kelly-text/50">+{(itemsByDay.get(cell.ymd) ?? []).length - 3}</p>
+                            <p className="text-[9px] text-kelly-subtle">+{(itemsByDay.get(cell.ymd) ?? []).length - 3}</p>
                           ) : null}
                         </div>
                       </>
@@ -392,7 +392,7 @@ export function FranklinCalendarCommandCenter({
                 </button>
                 <p className="font-heading text-sm font-bold">
                   Week of {weekStart}{" "}
-                  <span className="font-body text-xs font-normal text-kelly-text/60">(Central)</span>
+                  <span className="font-body text-xs font-normal text-kelly-muted">(Central)</span>
                 </p>
                 <button
                   type="button"
@@ -405,7 +405,7 @@ export function FranklinCalendarCommandCenter({
               <div className="grid grid-cols-7 gap-2">
                 {weekDays.map((d) => (
                   <div key={d} className={`rounded border ${franklin.rule} bg-[#faf6ef] p-2`}>
-                    <p className="font-body text-[10px] font-bold uppercase text-kelly-text/50">
+                    <p className="font-body text-[10px] font-bold uppercase text-kelly-subtle">
                       {weekdayShort(new Date(`${d}T12:00:00Z`))}
                     </p>
                     <p className="font-heading text-sm font-bold">{d.slice(5)}</p>
@@ -464,7 +464,7 @@ export function FranklinCalendarCommandCenter({
                         >
                           {it.title}
                         </Link>
-                        <p className="mt-1 font-body text-xs text-kelly-text/65">
+                        <p className="mt-1 font-body text-xs text-kelly-muted">
                           {it.allDay ? "All day" : `${new Date(it.start).toLocaleTimeString("en-US", { timeZone: TZ })}`}
                           {it.county ? ` · ${it.county}` : ""}
                         </p>
@@ -488,12 +488,12 @@ export function FranklinCalendarCommandCenter({
                   onChange={(e) => setAnchorYmd(e.target.value)}
                   className="rounded border border-kelly-text/25 bg-white px-2 py-1 font-body text-sm"
                 />
-                <p className="font-body text-xs text-kelly-text/60">Hourly grid (timed items only)</p>
+                <p className="font-body text-xs text-kelly-muted">Hourly grid (timed items only)</p>
               </div>
               <div className={`relative rounded border ${franklin.rule} bg-[#fffef9]`}>
                 {hourRows.map((h) => (
                   <div key={h} className={`grid grid-cols-[56px_1fr] border-b ${franklin.rule} min-h-[40px]`}>
-                    <div className="border-r border-[#c9a227]/25 bg-[#f3ece0] px-1 py-1 text-right font-body text-[10px] font-semibold text-kelly-text/60">
+                    <div className="border-r border-[#c9a227]/25 bg-[#f3ece0] px-1 py-1 text-right font-body text-[10px] font-semibold text-kelly-muted">
                       {h > 12 ? h - 12 : h === 0 ? 12 : h}
                       {h >= 12 ? "p" : "a"}m
                     </div>
@@ -520,7 +520,7 @@ export function FranklinCalendarCommandCenter({
             <div className="max-h-[560px] overflow-auto rounded border border-kelly-text/15 bg-white/90">
               <table className="w-full border-collapse font-body text-xs">
                 <thead className="sticky top-0 bg-[#f3ece0]">
-                  <tr className="text-left text-[10px] font-bold uppercase tracking-wide text-kelly-text/60">
+                  <tr className="text-left text-[10px] font-bold uppercase tracking-wide text-kelly-muted">
                     <th className="border-b border-kelly-text/10 px-2 py-2">County</th>
                     <th className="border-b border-kelly-text/10 px-2 py-2">Tier</th>
                     <th className="border-b border-kelly-text/10 px-2 py-2">Score</th>
@@ -556,7 +556,7 @@ export function FranklinCalendarCommandCenter({
           Showing {filtered.length} of {items.length} items · County priority rows: {countyPriorities.length}
         </div>
       ) : (
-        <div className="border-t border-kelly-text/10 px-3 py-2 font-body text-[10px] text-kelly-text/55">
+        <div className="border-t border-kelly-text/10 px-3 py-2 font-body text-[10px] text-kelly-muted">
           {filtered.length} of {items.length} shown
         </div>
       )}

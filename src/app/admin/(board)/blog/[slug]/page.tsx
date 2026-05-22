@@ -23,7 +23,7 @@ export default async function AdminBlogPostPage({ params, searchParams }: Props)
         ← All posts
       </Link>
       <h1 className="mt-4 font-heading text-2xl font-bold text-kelly-text">{post.title}</h1>
-      <p className="mt-2 break-all font-mono text-xs text-kelly-text/55">{post.canonicalUrl}</p>
+      <p className="mt-2 break-all font-mono text-xs text-kelly-muted">{post.canonicalUrl}</p>
       {sp.saved ? (
         <p className="mt-4 rounded-lg border border-kelly-success/35 bg-kelly-success/10 px-3 py-2 text-sm">Saved.</p>
       ) : null}
@@ -51,7 +51,7 @@ export default async function AdminBlogPostPage({ params, searchParams }: Props)
           Pin for homepage “From the Road” preview
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Content hub kind</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Content hub kind</span>
           <select name="contentKind" defaultValue={post.contentKind ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
             <option value="">— Default (story) —</option>
             {Object.values(ContentHubKind).map((k) => (
@@ -62,41 +62,41 @@ export default async function AdminBlogPostPage({ params, searchParams }: Props)
           </select>
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Issue tags (comma)</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Issue tags (comma)</span>
           <input name="issueTags" defaultValue={post.issueTags.join(", ")} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">County slug</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">County slug</span>
             <input name="countySlug" defaultValue={post.countySlug ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">County FIPS (optional)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">County FIPS (optional)</span>
             <input name="countyFips" defaultValue={post.countyFips ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block text-sm md:col-span-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">City</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">City</span>
             <input name="city" defaultValue={post.city ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
         </div>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Campaign phase (optional)</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Campaign phase (optional)</span>
           <input name="campaignPhase" defaultValue={post.campaignPhase ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Content series slug (e.g. on_the_road)</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Content series slug (e.g. on_the_road)</span>
           <input name="contentSeries" defaultValue={post.contentSeries ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 font-mono text-sm" />
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Playlist id (optional)</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Playlist id (optional)</span>
           <input name="playlistId" defaultValue={post.playlistId ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 font-mono text-sm" />
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Display priority / featured weight</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Display priority / featured weight</span>
           <input name="featuredWeight" type="number" defaultValue={post.featuredWeight ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Display mode</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Display mode</span>
           <select name="displayMode" defaultValue={post.displayMode} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
             {Object.values(BlogDisplayMode).map((m) => (
               <option key={m} value={m}>
@@ -106,19 +106,19 @@ export default async function AdminBlogPostPage({ params, searchParams }: Props)
           </select>
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Teaser override</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Teaser override</span>
           <textarea name="teaserOverride" rows={3} defaultValue={post.teaserOverride ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Local categories (comma)</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Local categories (comma)</span>
           <input name="localCategories" defaultValue={post.localCategories.join(", ")} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Local tags (comma)</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Local tags (comma)</span>
           <input name="localTags" defaultValue={post.localTags.join(", ")} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Hero media override</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Hero media override</span>
           <select name="heroMediaId" defaultValue={post.heroMediaId ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
             <option value="">— Use RSS / default image —</option>
             {media.map((m) => (

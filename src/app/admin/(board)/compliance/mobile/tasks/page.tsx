@@ -18,7 +18,7 @@ export default async function MobileTasksPage() {
           {task.relatedRecordLinks[0] ? <Link className="mt-3 inline-block rounded-full bg-kelly-navy px-4 py-2 font-bold text-white" href={task.relatedRecordLinks[0].href}>Open</Link> : null}
         </article>
       ))}
-      {!tasks.length ? <p className="font-body text-sm text-kelly-text/70">No mobile tasks right now.</p> : null}
+      {!tasks.length ? <p className="font-body text-sm text-kelly-muted">No mobile tasks right now.</p> : null}
     </div>
   );
 }

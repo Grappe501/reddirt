@@ -18,7 +18,7 @@ export default function WorkbenchError({
     <div className="mx-auto max-w-lg p-4">
       <h1 className="font-heading text-lg font-bold text-kelly-text">Campaign workbench</h1>
       <p className="mt-2 font-body text-sm text-red-800">Something went wrong loading this view.</p>
-      <p className="mt-1 font-mono text-xs text-kelly-text/60">{error.message || "Error"}</p>
+      <p className="mt-1 font-mono text-xs text-kelly-muted">{error.message || "Error"}</p>
       <div className="mt-4 flex flex-wrap gap-2">
         <button
           type="button"

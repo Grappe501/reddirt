@@ -38,7 +38,7 @@ export default async function AdminHomepagePage({ searchParams }: Props) {
         <fieldset className="space-y-4 rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]">
           <legend className="font-heading text-lg font-bold text-kelly-text">Hero</legend>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Eyebrow</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Eyebrow</span>
             <input
               name="hero_eyebrow"
               defaultValue={hero.eyebrow}
@@ -47,7 +47,7 @@ export default async function AdminHomepagePage({ searchParams }: Props) {
           </label>
           <div className="grid gap-4 md:grid-cols-3">
             <label className="block md:col-span-3">
-              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Title (before accent)</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Title (before accent)</span>
               <input
                 name="hero_title_before"
                 defaultValue={hero.titleBefore}
@@ -55,7 +55,7 @@ export default async function AdminHomepagePage({ searchParams }: Props) {
               />
             </label>
             <label className="block">
-              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Accent (red)</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Accent (red)</span>
               <input
                 name="hero_title_accent"
                 defaultValue={hero.titleAccent}
@@ -63,7 +63,7 @@ export default async function AdminHomepagePage({ searchParams }: Props) {
               />
             </label>
             <label className="block md:col-span-2">
-              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Title (final line)</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Title (final line)</span>
               <input
                 name="hero_title_after"
                 defaultValue={hero.titleAfter}
@@ -72,7 +72,7 @@ export default async function AdminHomepagePage({ searchParams }: Props) {
             </label>
           </div>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Subtitle</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Subtitle</span>
             <textarea
               name="hero_subtitle"
               rows={4}
@@ -82,7 +82,7 @@ export default async function AdminHomepagePage({ searchParams }: Props) {
           </label>
           <div className="grid gap-4 md:grid-cols-2">
             <label className="block">
-              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Primary CTA label</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Primary CTA label</span>
               <input
                 name="hero_cta_primary_label"
                 defaultValue={hero.ctaPrimaryLabel}
@@ -90,7 +90,7 @@ export default async function AdminHomepagePage({ searchParams }: Props) {
               />
             </label>
             <label className="block">
-              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Primary CTA href</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Primary CTA href</span>
               <input
                 name="hero_cta_primary_href"
                 defaultValue={hero.ctaPrimaryHref}
@@ -98,7 +98,7 @@ export default async function AdminHomepagePage({ searchParams }: Props) {
               />
             </label>
             <label className="block">
-              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Secondary CTA label</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Secondary CTA label</span>
               <input
                 name="hero_cta_secondary_label"
                 defaultValue={hero.ctaSecondaryLabel}
@@ -106,7 +106,7 @@ export default async function AdminHomepagePage({ searchParams }: Props) {
               />
             </label>
             <label className="block">
-              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Secondary CTA href</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Secondary CTA href</span>
               <input
                 name="hero_cta_secondary_href"
                 defaultValue={hero.ctaSecondaryHref}
@@ -119,7 +119,7 @@ export default async function AdminHomepagePage({ searchParams }: Props) {
         <fieldset className="space-y-4 rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]">
           <legend className="font-heading text-lg font-bold text-kelly-text">Sections</legend>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Order (one id per line)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Order (one id per line)</span>
             <textarea
               name="section_order"
               rows={6}
@@ -127,7 +127,7 @@ export default async function AdminHomepagePage({ searchParams }: Props) {
               className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 font-mono text-xs"
             />
           </label>
-          <p className="font-body text-xs text-kelly-text/55">Ids: {HOMEPAGE_SECTION_IDS.join(", ")}</p>
+          <p className="font-body text-xs text-kelly-muted">Ids: {HOMEPAGE_SECTION_IDS.join(", ")}</p>
           <div className="grid gap-2 sm:grid-cols-2">
             {HOMEPAGE_SECTION_IDS.map((id) => {
               const hit = sectionOrder.find((s) => s.id === id);
@@ -145,7 +145,7 @@ export default async function AdminHomepagePage({ searchParams }: Props) {
         <fieldset className="space-y-4 rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]">
           <legend className="font-heading text-lg font-bold text-kelly-text">Featured slugs</legend>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Story slugs (comma-separated)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Story slugs (comma-separated)</span>
             <input
               name="featured_story_slugs"
               defaultValue={merged.featuredStorySlugs.join(", ")}
@@ -153,7 +153,7 @@ export default async function AdminHomepagePage({ searchParams }: Props) {
             />
           </label>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Editorial slugs (homepage rail)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Editorial slugs (homepage rail)</span>
             <input
               name="featured_editorial_slugs"
               defaultValue={merged.featuredEditorialSlugs.join(", ")}
@@ -161,7 +161,7 @@ export default async function AdminHomepagePage({ searchParams }: Props) {
             />
           </label>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Notebook / Substack slugs</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Notebook / Substack slugs</span>
             <input
               name="featured_synced_slugs"
               defaultValue={merged.featuredSyncedPostSlugs.join(", ")}
@@ -169,7 +169,7 @@ export default async function AdminHomepagePage({ searchParams }: Props) {
             />
           </label>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Explainer slugs</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Explainer slugs</span>
             <input
               name="featured_explainer_slugs"
               defaultValue={merged.featuredExplainerSlugs.join(", ")}
@@ -177,7 +177,7 @@ export default async function AdminHomepagePage({ searchParams }: Props) {
             />
           </label>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">
               Featured homepage video — inbound row id (YouTube)
             </span>
             <input
@@ -186,7 +186,7 @@ export default async function AdminHomepagePage({ searchParams }: Props) {
               className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 font-mono text-sm"
               placeholder="cuid from Admin → Inbox (YouTube item)"
             />
-            <span className="mt-1 block font-body text-xs text-kelly-text/55">
+            <span className="mt-1 block font-body text-xs text-kelly-muted">
               Optional. When set, homepage, campaign trail, and understand use this clip first. Leave empty to fall back to a featured
               or latest reviewed YouTube inbound row.
             </span>
@@ -196,19 +196,19 @@ export default async function AdminHomepagePage({ searchParams }: Props) {
         <fieldset className="space-y-4 rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]">
           <legend className="font-heading text-lg font-bold text-kelly-text">Direct democracy band (visual column)</legend>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Kicker</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Kicker</span>
             <input name="sd_kicker" defaultValue={sd?.kicker ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Title</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Title</span>
             <input name="sd_title" defaultValue={sd?.title ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Body</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Body</span>
             <textarea name="sd_body" rows={3} defaultValue={sd?.body ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Bullets (one per line)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Bullets (one per line)</span>
             <textarea name="sd_bullets" rows={4} defaultValue={sdBullets} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 font-mono text-xs" />
           </label>
         </fieldset>
@@ -218,19 +218,19 @@ export default async function AdminHomepagePage({ searchParams }: Props) {
             Secondary feature band (visual column · homepage section <code className="text-xs">labor</code>)
           </legend>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Kicker</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Kicker</span>
             <input name="sl_kicker" defaultValue={sl?.kicker ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Title</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Title</span>
             <input name="sl_title" defaultValue={sl?.title ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Body</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Body</span>
             <textarea name="sl_body" rows={3} defaultValue={sl?.body ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Card lines (one per line)</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Card lines (one per line)</span>
             <textarea name="sl_bullets" rows={4} defaultValue={slBullets} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 font-mono text-xs" />
           </label>
         </fieldset>
@@ -238,15 +238,15 @@ export default async function AdminHomepagePage({ searchParams }: Props) {
         <fieldset className="space-y-4 rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]">
           <legend className="font-heading text-lg font-bold text-kelly-text">Arkansas band</legend>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Intro paragraph</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Intro paragraph</span>
             <textarea name="ark_intro" rows={3} defaultValue={ab?.intro ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Quote</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Quote</span>
             <textarea name="ark_quote" rows={2} defaultValue={ab?.quote ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Attribution</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Attribution</span>
             <input name="ark_attr" defaultValue={ab?.attribution ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
         </fieldset>
@@ -254,11 +254,11 @@ export default async function AdminHomepagePage({ searchParams }: Props) {
         <fieldset className="space-y-4 rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]">
           <legend className="font-heading text-lg font-bold text-kelly-text">Quote band</legend>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Quote</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Quote</span>
             <textarea name="quote_text" rows={3} defaultValue={quoteBand.quote} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Attribution</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Attribution</span>
             <input name="quote_attr" defaultValue={quoteBand.attribution} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
         </fieldset>
@@ -266,32 +266,32 @@ export default async function AdminHomepagePage({ searchParams }: Props) {
         <fieldset className="space-y-4 rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)]">
           <legend className="font-heading text-lg font-bold text-kelly-text">Final CTA</legend>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Eyebrow</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Eyebrow</span>
             <input name="final_eyebrow" defaultValue={finalCta.eyebrow} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Title</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Title</span>
             <input name="final_title" defaultValue={finalCta.title} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Description</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Description</span>
             <textarea name="final_description" rows={3} defaultValue={finalCta.description} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <div className="grid gap-4 md:grid-cols-2">
             <label className="block">
-              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Primary label</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Primary label</span>
               <input name="final_primary_label" defaultValue={finalCta.primaryLabel} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
             </label>
             <label className="block">
-              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Primary href</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Primary href</span>
               <input name="final_primary_href" defaultValue={finalCta.primaryHref} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
             </label>
             <label className="block">
-              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Secondary label</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Secondary label</span>
               <input name="final_secondary_label" defaultValue={finalCta.secondaryLabel} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
             </label>
             <label className="block">
-              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Secondary href</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Secondary href</span>
               <input name="final_secondary_href" defaultValue={finalCta.secondaryHref} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
             </label>
           </div>

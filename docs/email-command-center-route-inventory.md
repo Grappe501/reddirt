@@ -14,9 +14,9 @@ This document inventories **admin workbench** routes that belong to the **Email 
 | **Partial** | Route is real but depends on credentials, manual steps, or future execution packets. |
 | **Future** | Documented intent only; execution or automation not shipped on this surface. |
 
-**Governance (all rows):** **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** remains **`false`** — no SendGrid broadcast send, no Gmail send-from-queue, no auto-reply from **`EmailWorkflowItem`**. Optional workbench Gmail send scope is **separate** from email-workflow execution.
+**Governance (all rows):** **`EMAIL_WORKFLOW_CAN_SEND_FROM_ITEM`** remains **`false`** — no Gmail send-from-queue, no auto-reply from **`EmailWorkflowItem`**, and no queue-triggered SendGrid send. Optional workbench Gmail send scope is **separate** from email-workflow execution. SendGrid broadcast exists only through the governed Send Execution `#ops` rail after preflight, test, final approval, and typed confirmation.
 
-**Launch posture:** ECC is **operator-complete, execution-gated** — Daily + cockpit + Message Studio + governance are safe for daily triage and drafting; provider execution and automation activation remain **future** packets. Heuristic **`npm run email:no-send-scan`** is a sanity aid, not a security proof.
+**Launch posture:** ECC is **operator-complete, execution-gated** — Daily + cockpit + Message Studio + governance are safe for daily triage and drafting; provider execution is restricted to the governed Send Execution rail, while queue sends and automation activation remain **future** packets. Heuristic **`npm run email:no-send-scan`** is a sanity aid, not a security proof.
 
 **EMAIL-COMMAND-CENTER-OPERATOR-UX-POLISH-1.0:** Major ECC routes (Daily, Message Studio, Send Execution, Analytics, Automation, SendGrid, Audiences, Imports, Email queue) include a shared **next actions** strip, **status chips** (Live / Local-only / Hosted not verified / No-send / Requires approval / Future), **Back to Daily Operator Console**, and **blocked-because** hints where env or DB posture gaps matter — still **no** sends.
 

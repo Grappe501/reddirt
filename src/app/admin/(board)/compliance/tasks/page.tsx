@@ -38,7 +38,7 @@ export default async function ComplianceTasksPage() {
             </div>
           </article>
         ))}
-        {!tasks.length ? <p className="font-body text-sm text-kelly-text/70">No compliance tasks generated.</p> : null}
+        {!tasks.length ? <p className="font-body text-sm text-kelly-muted">No compliance tasks generated.</p> : null}
       </section>
     </div>
   );

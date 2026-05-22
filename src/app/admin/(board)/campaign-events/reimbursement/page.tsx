@@ -79,7 +79,7 @@ export default async function OfficialReimbursementPage({ searchParams }: Props)
         <CampaignEventsNav />
         <TravelReimbursementWorkflowNav month={period} active="reimbursement" />
         <TravelReimbursementMonthNav activeMonth={period} activeBase="reimbursement" />
-        <p className="font-body text-xs text-kelly-text/65">
+        <p className="font-body text-xs text-kelly-muted">
           <MicrocopyHint term="reimbursement" role="treasurer" />
           {" · "}
           <MicrocopyHint term="approval_package" role="treasurer" />

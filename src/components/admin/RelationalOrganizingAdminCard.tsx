@@ -32,42 +32,42 @@ export function RelationalOrganizingAdminCard({ row, showRelationalContactLink }
           </Link>
         ) : null}
       </div>
-      <p className="mt-1 text-[11px] text-kelly-text/50">
+      <p className="mt-1 text-[11px] text-kelly-subtle">
         Admin-only fields. Organizer identity and pipeline stages are not shown on public pages.
       </p>
       <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
         <div className="sm:col-span-2">
-          <dt className="text-xs font-semibold uppercase tracking-wide text-kelly-text/55">Who invited them</dt>
+          <dt className="text-xs font-semibold uppercase tracking-wide text-kelly-muted">Who invited them</dt>
           <dd className="mt-0.5 text-kelly-text/90">
             <span className="font-medium text-kelly-text">{row.invitedBy.label}</span>
-            <span className="ml-2 font-mono text-[11px] text-kelly-text/45">user {row.invitedBy.userId.slice(0, 8)}…</span>
+            <span className="ml-2 font-mono text-[11px] text-kelly-subtle">user {row.invitedBy.userId.slice(0, 8)}…</span>
           </dd>
-          <p className="mt-1 text-xs text-kelly-text/55">
+          <p className="mt-1 text-xs text-kelly-muted">
             Volunteer who owns this REL-2 row (brought the contact into the relational network).
           </p>
         </div>
         <div>
-          <dt className="text-xs font-semibold uppercase tracking-wide text-kelly-text/55">Team assignment</dt>
+          <dt className="text-xs font-semibold uppercase tracking-wide text-kelly-muted">Team assignment</dt>
           <dd className="mt-0.5 text-kelly-text/90">{row.teamAssignment ?? "— (no field unit)"}</dd>
         </div>
         <div>
-          <dt className="text-xs font-semibold uppercase tracking-wide text-kelly-text/55">Pipeline stage</dt>
+          <dt className="text-xs font-semibold uppercase tracking-wide text-kelly-muted">Pipeline stage</dt>
           <dd className="mt-0.5 font-medium text-kelly-text">{row.pipelineStage}</dd>
           <p className="mt-0.5 font-mono text-[10px] text-kelly-text/40">{row.organizingStatusRaw}</p>
         </div>
         <div className="sm:col-span-2">
-          <dt className="text-xs font-semibold uppercase tracking-wide text-kelly-text/55">Activity</dt>
+          <dt className="text-xs font-semibold uppercase tracking-wide text-kelly-muted">Activity</dt>
           <dd className="mt-0.5 space-y-1 text-kelly-text/90">
             <p>
-              <span className="text-kelly-text/55">Last contacted: </span>
+              <span className="text-kelly-muted">Last contacted: </span>
               {fmtDate(row.activity.lastContactedAt)}
             </p>
             <p>
-              <span className="text-kelly-text/55">Next follow-up: </span>
+              <span className="text-kelly-muted">Next follow-up: </span>
               {fmtDate(row.activity.nextFollowUpAt)}
             </p>
             <p>
-              <span className="text-kelly-text/55">Logged touches (REL-linked): </span>
+              <span className="text-kelly-muted">Logged touches (REL-linked): </span>
               {row.activity.loggedTouchCount}
             </p>
             {row.activity.latestTouch ? (
@@ -76,12 +76,12 @@ export function RelationalOrganizingAdminCard({ row, showRelationalContactLink }
                 {row.activity.latestTouch.interactionDate.toLocaleString()}
               </p>
             ) : (
-              <p className="text-xs text-kelly-text/55">No REL-linked interactions yet.</p>
+              <p className="text-xs text-kelly-muted">No REL-linked interactions yet.</p>
             )}
           </dd>
         </div>
         <div className="sm:col-span-2 border-t border-kelly-text/10 pt-3">
-          <dt className="text-xs font-semibold uppercase tracking-wide text-kelly-text/55">Power of 5</dt>
+          <dt className="text-xs font-semibold uppercase tracking-wide text-kelly-muted">Power of 5</dt>
           <dd className="mt-0.5 text-kelly-text/90">
             Core five: {row.powerOfFive.isCoreFive ? "yes" : "no"}
             {row.powerOfFive.slot != null ? ` · slot ${row.powerOfFive.slot}` : ""}

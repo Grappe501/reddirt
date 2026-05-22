@@ -4,7 +4,7 @@ import type { EmailCommandCenterSnapshot } from "@/lib/email-command-center/read
 
 const card =
   "rounded-lg border border-kelly-text/12 bg-gradient-to-b from-white/95 to-kelly-page/90 px-3 py-2.5 shadow-sm";
-const h3 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/50";
+const h3 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-subtle";
 const pill =
   "rounded-full border border-kelly-text/15 bg-white/80 px-2 py-0.5 text-[9px] font-semibold text-kelly-slate";
 
@@ -64,7 +64,7 @@ function StatusCard({
     >
       <p className={h3}>{title}</p>
       <p className="mt-1 font-heading text-2xl font-bold tabular-nums text-kelly-navy">{value}</p>
-      {sub ? <p className="mt-0.5 font-body text-[10px] text-kelly-text/60">{sub}</p> : null}
+      {sub ? <p className="mt-0.5 font-body text-[10px] text-kelly-muted">{sub}</p> : null}
     </Link>
   );
 }
@@ -145,10 +145,10 @@ function IntegrationColumn({
               <li key={x}>{x}</li>
             ))
           ) : (
-            <li className="list-none text-kelly-text/50">—</li>
+            <li className="list-none text-kelly-subtle">—</li>
           )}
         </ul>
-        <p className="mt-1 font-body text-[10px] text-kelly-text/70">
+        <p className="mt-1 font-body text-[10px] text-kelly-muted">
           <span className="font-bold">Planned next:</span> {nextPacket}
         </p>
         <p className="rounded border border-kelly-forest/20 bg-kelly-fog/40 px-2 py-1 font-body text-[10px] text-kelly-navy">
@@ -348,13 +348,14 @@ export function EmailCommandCenterContent({
         className="rounded-lg border border-kelly-navy/25 bg-kelly-fog/40 px-3 py-2 font-body text-[11px] text-kelly-navy"
         role="note"
       >
-        <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-navy/80">Blocked today — send step</p>
+        <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-navy/80">Send posture today</p>
         <p className="mt-1 leading-snug">
-          No Gmail send-from-queue. SendGrid Mail API only via{" "}
+          No Gmail send-from-queue and no queue-item provider send. SendGrid Mail API is available only via the governed{" "}
           <Link href={`${SEND_EXECUTION_GOVERNANCE_PATH}#ops`} className="font-bold text-kelly-forest underline">
             Send Execution (#ops)
           </Link>{" "}
-          after explicit operator submits — read the governance sections above for checklist + doctrine.
+          path after active audience, synced contacts, approved draft + send packet, preflight, test send, final approval, and typed
+          confirmation.
         </p>
       </div>
 
@@ -438,12 +439,12 @@ export function EmailCommandCenterContent({
       <div className="rounded-lg border border-kelly-text/15 bg-white/90 px-3 py-2 font-body text-[11px] text-kelly-navy shadow-sm">
         <div className="flex flex-wrap items-start justify-between gap-2">
           <div className="min-w-0">
-            <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/60">Contact import</p>
+            <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-muted">Contact import</p>
             <p className="mt-1 font-semibold">{og.contactImportStatusLabel}</p>
             <p className="mt-0.5 text-[10px] text-kelly-text/80">
               Next step: <span className="font-mono">{og.contactImportNextPacket}</span>
             </p>
-            <p className="mt-1 text-[10px] text-kelly-text/70">
+            <p className="mt-1 text-[10px] text-kelly-muted">
               Readiness doc (repo): <span className="font-mono">{og.readinessDocRepoPath}</span>
             </p>
             {og.localContactImportDbVerified ? (
@@ -457,7 +458,7 @@ export function EmailCommandCenterContent({
                 Import readiness stays generic until workspace updates and import counts succeed on the database this app uses.
               </p>
             )}
-            <p className="mt-1 text-[10px] text-kelly-text/70">
+            <p className="mt-1 text-[10px] text-kelly-muted">
               <strong>SendGrid:</strong> foundation + webhook intake exist; <strong>no</strong> list sync or broadcast send
               in this lane. Plan copy in{" "}
               <Link href={MESSAGE_STUDIO_PATH} className="font-semibold text-kelly-forest underline">
@@ -495,11 +496,11 @@ export function EmailCommandCenterContent({
                     <Link href={`${ci.path}/${b.id}`} className="font-semibold underline">
                       {b.name}
                     </Link>{" "}
-                    <span className="text-kelly-text/55">· {b.status}</span>
+                    <span className="text-kelly-muted">· {b.status}</span>
                   </li>
                 ))
               ) : (
-                <li className="text-kelly-text/50">None yet</li>
+                <li className="text-kelly-subtle">None yet</li>
               )}
             </ul>
           </div>
@@ -629,7 +630,7 @@ export function EmailCommandCenterContent({
                 {g.currentActorHasActiveStaffGmail ? "Reconnect Gmail" : "Connect Gmail"}
               </Link>
             ) : null}
-            <span className="font-body text-[10px] text-kelly-text/60">
+            <span className="font-body text-[10px] text-kelly-muted">
               {g.commandSurfacePhase === "env_incomplete" && "OAuth env incomplete — see Gmail monitor for variable names."}
               {g.commandSurfacePhase === "needs_actor" && "Set ADMIN_ACTOR_USER_EMAIL User for connect flows."}
               {g.commandSurfacePhase === "ready_to_connect" && "OAuth ready — connect when you are."}
@@ -718,11 +719,11 @@ export function EmailCommandCenterContent({
           <div className="flex flex-wrap items-start justify-between gap-2">
             <div>
               <p className={h3}>Staff surface — Send execution governance</p>
-              <p className="mt-1 font-heading text-base font-bold text-kelly-navy">Future send rails + gates (review mode)</p>
+              <p className="mt-1 font-heading text-base font-bold text-kelly-navy">Governed SendGrid execution rails</p>
               <p className="mt-1 max-w-3xl font-body text-[11px] text-kelly-text/85">
                 Gmail vs SendGrid rails, pre-send checklist, suppression doctrine, approval roles, and decision tree.{" "}
-                <strong>No provider send APIs</strong> on the upper cards; live sending stays blocked until headquarters enables the
-                governed send lane.
+                The upper cards are doctrine; the <strong>#ops</strong> console is the explicit SendGrid path for preflight,
+                one-recipient test send, final approval, and typed-confirmed broadcast.
               </p>
             </div>
             <span className="rounded-full border border-kelly-navy/30 bg-white px-2 py-0.5 text-[9px] font-bold uppercase text-kelly-navy">
@@ -734,7 +735,7 @@ export function EmailCommandCenterContent({
 
       <section className="space-y-2">
         <h2 className={h3}>Tonight&apos;s staff path</h2>
-        <p className="font-body text-[10px] text-kelly-text/65">
+        <p className="font-body text-[10px] text-kelly-muted">
           Suggested sequencing for tonight — each step stays non-destructive and send-free unless a future governed release
           explicitly turns on execution.
         </p>
@@ -901,7 +902,7 @@ export function EmailCommandCenterContent({
             sub="Future sync targets — not synced in this release"
           />
         </div>
-        <p className="font-body text-[10px] text-kelly-text/55">
+        <p className="font-body text-[10px] text-kelly-muted">
           Total in queue filter (all statuses): <span className="font-semibold text-kelly-text">{q.total}</span>
           {" · "}
           Assigned items (computed): <span className="font-semibold text-kelly-text">{a.assignedCount}</span>
@@ -1071,10 +1072,10 @@ export function EmailCommandCenterContent({
           <PipelineStep label="Approval" state="partial" note="Queue approvals are not provider sends — governance copy on queue." />
           <PipelineStep
             label="Send (SendGrid / Gmail)"
-            state={sendgridConfiguredForSend ? "blocked_future" : "blocked_credentials"}
+            state={sendgridConfiguredForSend ? "partial" : "blocked_credentials"}
             note={
               sendgridConfiguredForSend
-                ? "Env hints OK; execution still gated — open Send Execution Governance for doctrine (no APIs on that route)."
+                ? "SendGrid env hints OK; final execution is still gated through Send Execution #ops, not the queue."
                 : "SendGrid from-address/key not both set — see readiness panel."
             }
             href={SEND_EXECUTION_GOVERNANCE_PATH}
@@ -1090,15 +1091,9 @@ export function EmailCommandCenterContent({
         <div className="rounded-md border border-kelly-text/10 bg-kelly-page/50 px-2 py-2">
           <p className={h3}>Coming next (not tonight)</p>
           <ul className="mt-1 list-inside list-disc font-body text-[10px] text-kelly-text/80">
-            <li>
-              <Link href={SEND_EXECUTION_GOVERNANCE_PATH} className="font-semibold underline">
-                Send Execution Governance
-              </Link>{" "}
-              shell is live tonight — provider execution still future.
-            </li>
-            <li>Governed SendGrid broadcast execution + contact sync (explicit headquarters approval).</li>
+            <li>Queue-triggered email send and Gmail send-from-queue remain future governed releases.</li>
+            <li>Automation-triggered sends, background workers, and AI auto-send remain blocked.</li>
             <li>Gmail human send rail from queue (separate approval + OAuth scopes).</li>
-            <li>Message Studio server persistence — shared draft review tied to audiences and queue items (future release).</li>
             <li>Hosted Postgres verification — staff-run CLI checks when infra returns to the steering queue.</li>
           </ul>
         </div>
@@ -1113,7 +1108,7 @@ export function EmailCommandCenterContent({
           >
             Open email queue
           </Link>
-          <span className="self-center font-body text-[10px] text-kelly-text/60">
+          <span className="self-center font-body text-[10px] text-kelly-muted">
             AI analysis: open any item → AI Email Intelligence (advisory).
           </span>
           <Link
@@ -1123,7 +1118,7 @@ export function EmailCommandCenterContent({
             New manual item (form on queue page)
           </Link>
         </div>
-        <p className="font-body text-[10px] text-kelly-text/65">
+        <p className="font-body text-[10px] text-kelly-muted">
           Filters:{" "}
           <Link className="underline" href="/admin/workbench/email-queue?assignee=unassigned">
             Unassigned
@@ -1201,7 +1196,7 @@ export function EmailCommandCenterContent({
             </li>
           ))}
         </ul>
-        <p className="mt-2 font-body text-[10px] text-kelly-text/60">
+        <p className="mt-2 font-body text-[10px] text-kelly-muted">
           Gmail sync, SendGrid contact sync at scale, structured send execution, and higher automation tiers remain roadmap
           items — queue OpenAI analysis is manual/advisory only. For the full staff-facing map (still no activation), open{" "}
           <Link href={AUTOMATION_STUDIO_PATH} className="font-bold text-kelly-forest underline">
@@ -1213,7 +1208,7 @@ export function EmailCommandCenterContent({
 
       <section className={`${card} space-y-2`}>
         <h2 className={h3}>Command Center routes (status)</h2>
-        <p className="font-body text-[10px] text-kelly-text/65">
+        <p className="font-body text-[10px] text-kelly-muted">
           Automation and Analytics are visibility shells — governance and counts, not activation.
         </p>
         <ul className="grid gap-1.5 sm:grid-cols-2 lg:grid-cols-3">
@@ -1250,7 +1245,7 @@ export function EmailCommandCenterContent({
             {
               name: "Send Execution Governance",
               path: SEND_EXECUTION_GOVERNANCE_PATH,
-              status: "Live — doctrine map, no provider send",
+              status: "Live — doctrine + governed #ops SendGrid console",
             },
           ].map((r) => (
             <li key={r.path} className="rounded border border-kelly-text/10 bg-white/80 px-2 py-1.5">

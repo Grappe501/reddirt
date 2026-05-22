@@ -29,7 +29,7 @@ export function VolunteerProfileClient({
         <h1 className="font-heading text-2xl font-bold text-kelly-navy">
           {profile.firstName} {profile.lastName}
         </h1>
-        <p className="mt-1 text-sm text-kelly-text/70">
+        <p className="mt-1 text-sm text-kelly-muted">
           {profile.email} · {profile.county ?? "County TBD"} · Source: {profile.source}
         </p>
         <p className="mt-2 text-xs">

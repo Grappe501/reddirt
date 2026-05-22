@@ -2,7 +2,7 @@ import Link from "next/link";
 import { listRecentCampaigns } from "@/lib/comms/broadcast-queries";
 import { CommunicationCampaignAutomationStatus, CommunicationCampaignStatus } from "@prisma/client";
 
-const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
+const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-muted";
 const cell = "border-b border-kelly-text/10 px-1 py-0.5 text-[10px]";
 
 function stColor(s: CommunicationCampaignStatus) {
@@ -25,7 +25,7 @@ export default async function BroadcastsListPage() {
           New campaign
         </Link>
       </div>
-      <p className="mt-0.5 font-body text-xs text-kelly-text/65">
+      <p className="mt-0.5 font-body text-xs text-kelly-muted">
         Tier 2: audience resolution, opt-in / suppression, queue worker (`GET /api/cron/comms-broadcasts?key=…`), same Twilio + SendGrid rails as 1:1
         workbench.
       </p>
@@ -45,7 +45,7 @@ export default async function BroadcastsListPage() {
           <tbody>
             {list.length === 0 ? (
               <tr>
-                <td colSpan={7} className={cell + " text-kelly-text/50"}>
+                <td colSpan={7} className={cell + " text-kelly-subtle"}>
                   No campaigns yet.{" "}
                   <Link className="text-kelly-slate" href="/admin/workbench/comms/broadcasts/new">
                     Create one
@@ -61,23 +61,23 @@ export default async function BroadcastsListPage() {
                       {c.name}
                     </Link>
                   </td>
-                  <td className={cell + " text-[9px] text-kelly-text/70"}>
+                  <td className={cell + " text-[9px] text-kelly-muted"}>
                     {c.automationStatus === CommunicationCampaignAutomationStatus.SHELL ? "shell" : "—"}
                   </td>
                   <td className={cell + " " + stColor(c.status)}>{c.status}</td>
-                  <td className={cell + " text-kelly-text/70"}>{c.campaignType}</td>
+                  <td className={cell + " text-kelly-muted"}>{c.campaignType}</td>
                   <td className={cell + " font-mono"}>{c.totalRecipients}</td>
                   <td className={cell + " font-mono"}>
                     {c.sentCount} / {c.deliveredCount} / {c.failedCount}
                   </td>
-                  <td className={cell + " text-kelly-text/55"}>{c.updatedAt.toLocaleString()}</td>
+                  <td className={cell + " text-kelly-muted"}>{c.updatedAt.toLocaleString()}</td>
                 </tr>
               ))
             )}
           </tbody>
         </table>
       </div>
-      <p className="mt-2 text-[9px] text-kelly-text/45">
+      <p className="mt-2 text-[9px] text-kelly-subtle">
         Cron: set <code className="font-mono">COMMS_BROADCAST_CRON_SECRET</code> and poll every minute in production.
       </p>
     </div>

@@ -94,7 +94,7 @@ export default async function CampaignEventsWorkbenchPage({ searchParams }: Prop
       />
       <CampaignEventsNav />
       <CampaignEventsMonthNav activeMonth={period} basePath="workbench" />
-      <p className="font-body text-xs text-kelly-text/60">
+      <p className="font-body text-xs text-kelly-muted">
         <MicrocopyHint term="duplicate_risk" role="campaign_manager" /> · <MicrocopyHint term="website_intake" role="campaign_manager" />
       </p>
       <ExecutiveSummaryStrip summary={navBundle.executiveSummary} />

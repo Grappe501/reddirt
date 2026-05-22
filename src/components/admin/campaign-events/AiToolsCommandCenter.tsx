@@ -20,7 +20,7 @@ import { MasterBuildDocsBanner } from "@/components/admin/campaign-events/Master
 import { GlobalAgentInventoryLinks } from "@/components/admin/campaign-events/GlobalAgentInventoryLinks";
 
 const STATUS_STYLE: Record<AiToolStatus, string> = {
-  idea: "bg-kelly-wash text-kelly-text/60",
+  idea: "bg-kelly-wash text-kelly-muted",
   scaffolded: "bg-amber-50 text-amber-950",
   partial: "bg-kelly-navy/10 text-kelly-navy",
   functional: "bg-emerald-50 text-emerald-900",
@@ -48,7 +48,7 @@ function StatCard({ label, value, sub }: { label: string; value: string | number
     <div className="rounded-xl border border-kelly-text/10 bg-kelly-page px-4 py-3">
       <p className="font-body text-[10px] font-bold uppercase tracking-wider text-kelly-slate">{label}</p>
       <p className="font-heading text-2xl font-bold text-kelly-text">{value}</p>
-      {sub ? <p className="mt-0.5 font-body text-xs text-kelly-text/55">{sub}</p> : null}
+      {sub ? <p className="mt-0.5 font-body text-xs text-kelly-muted">{sub}</p> : null}
     </div>
   );
 }
@@ -64,7 +64,7 @@ function ToolChip({ tool, onSelect }: { tool: EnrichedAiTool; onSelect: (id: str
         {tool.status}
       </span>
       <span className="font-semibold">{tool.name}</span>
-      <span className="ml-1 text-kelly-text/45">({tool.priority})</span>
+      <span className="ml-1 text-kelly-subtle">({tool.priority})</span>
     </button>
   );
 }
@@ -87,7 +87,7 @@ function ToolDetailDrawer({
             <div>
               <p className="font-body text-xs font-bold uppercase text-kelly-slate">{tool.lifecycleTitle}</p>
               <h2 className="font-heading text-xl font-bold">{tool.name}</h2>
-              <p className="mt-1 font-mono text-[11px] text-kelly-text/50">{tool.id}</p>
+              <p className="mt-1 font-mono text-[11px] text-kelly-subtle">{tool.id}</p>
             </div>
             <button type="button" onClick={onClose} className="rounded-full border px-3 py-1 text-xs font-bold">
               Close
@@ -136,7 +136,7 @@ function ToolDetailDrawer({
           {tool.implementationFiles.length > 0 ? (
             <section>
               <h3 className="text-xs font-bold uppercase text-kelly-slate">Implementation files</h3>
-              <ul className="mt-1 list-inside list-disc font-mono text-[11px] text-kelly-text/70">
+              <ul className="mt-1 list-inside list-disc font-mono text-[11px] text-kelly-muted">
                 {tool.implementationFiles.map((f) => (
                   <li key={f}>{f}</li>
                 ))}
@@ -154,7 +154,7 @@ function ToolDetailDrawer({
                     </Link>
                   </li>
                 ) : (
-                  <li key={r} className="font-mono text-xs text-kelly-text/65">
+                  <li key={r} className="font-mono text-xs text-kelly-muted">
                     {r}
                   </li>
                 ),
@@ -249,18 +249,18 @@ function CapabilityMatrix({ tools, onSelect }: { tools: EnrichedAiTool[]; onSele
                     {t.name}
                   </button>
                 </td>
-                <td className="p-2 text-kelly-text/60">{t.lifecycleTitle}</td>
+                <td className="p-2 text-kelly-muted">{t.lifecycleTitle}</td>
                 <td className="p-2">
                   <span className={`rounded-full px-1.5 py-0.5 font-bold uppercase ${STATUS_STYLE[t.status]}`}>{t.status}</span>
                 </td>
                 <td className="p-2 font-bold">{t.priority}</td>
-                <td className="p-2 text-kelly-text/65 max-w-[120px]">{t.trigger}</td>
-                <td className="p-2 text-kelly-text/65 max-w-[140px]">{t.reads}</td>
-                <td className="p-2 text-kelly-text/65 max-w-[140px]">{t.writes}</td>
+                <td className="p-2 text-kelly-muted max-w-[120px]">{t.trigger}</td>
+                <td className="p-2 text-kelly-muted max-w-[140px]">{t.reads}</td>
+                <td className="p-2 text-kelly-muted max-w-[140px]">{t.writes}</td>
                 <td className="p-2">{t.humanApprovalRequired ? "Yes" : "—"}</td>
                 <td className="p-2">{t.availableNow ? "✓" : "—"}</td>
                 <td className="p-2">{t.blocksAutomation ? "Yes" : "—"}</td>
-                <td className="p-2 text-kelly-text/55 max-w-[160px] truncate" title={t.futureRoute}>
+                <td className="p-2 text-kelly-muted max-w-[160px] truncate" title={t.futureRoute}>
                   {t.futureRoute}
                 </td>
               </tr>
@@ -268,7 +268,7 @@ function CapabilityMatrix({ tools, onSelect }: { tools: EnrichedAiTool[]; onSele
           </tbody>
         </table>
       </div>
-      <p className="border-t border-kelly-text/10 px-4 py-2 text-xs text-kelly-text/50">{filtered.length} tools shown</p>
+      <p className="border-t border-kelly-text/10 px-4 py-2 text-xs text-kelly-subtle">{filtered.length} tools shown</p>
     </section>
   );
 }
@@ -290,7 +290,7 @@ function DashboardTab({ snap, onSelect }: { snap: CommandCenterSnapshot; onSelec
         <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-slate">Tool system readiness</p>
         <div className="mt-2 flex flex-wrap items-end gap-4">
           <p className="font-heading text-5xl font-bold text-kelly-navy">{snap.readinessScore}%</p>
-          <p className="font-body text-sm text-kelly-text/70 max-w-md">
+          <p className="font-body text-sm text-kelly-muted max-w-md">
             Weighted maturity across {snap.counts.total} tools (master + {supplementToolCount()} supplement). Functional = 100pts,
             partial = 65, scaffolded = 30, idea = 5.
           </p>
@@ -329,7 +329,7 @@ function DashboardTab({ snap, onSelect }: { snap: CommandCenterSnapshot; onSelec
                 <button type="button" className="font-heading text-sm font-bold text-kelly-navy underline" onClick={() => onSelect(rec.tool.id)}>
                   {rec.tool.name}
                 </button>
-                <p className="mt-1 font-body text-xs text-kelly-text/65">{rec.rationale}</p>
+                <p className="mt-1 font-body text-xs text-kelly-muted">{rec.rationale}</p>
               </div>
               <span className={`rounded-full px-2 py-0.5 text-[10px] font-bold uppercase ${STATUS_STYLE[rec.tool.status]}`}>{rec.tool.status}</span>
             </li>
@@ -345,7 +345,7 @@ function DashboardTab({ snap, onSelect }: { snap: CommandCenterSnapshot; onSelec
               <ToolChip key={t.id} tool={t} onSelect={onSelect} />
             ))}
             {snap.functionalNow.length > 24 ? (
-              <p className="text-xs text-kelly-text/50">+{snap.functionalNow.length - 24} more in catalog tab</p>
+              <p className="text-xs text-kelly-subtle">+{snap.functionalNow.length - 24} more in catalog tab</p>
             ) : null}
           </div>
         </section>
@@ -384,7 +384,7 @@ function DashboardTab({ snap, onSelect }: { snap: CommandCenterSnapshot; onSelec
             return (
               <div key={lifecycle.id} className="rounded-xl border border-kelly-text/10 px-3 py-2 font-body text-xs">
                 <p className="font-semibold">{lifecycle.title}</p>
-                <p className="text-kelly-text/55">
+                <p className="text-kelly-muted">
                   {tools.length} tools · {fn} functional
                 </p>
               </div>
@@ -399,7 +399,7 @@ function DashboardTab({ snap, onSelect }: { snap: CommandCenterSnapshot; onSelec
 function RunbookTab({ onSelect }: { onSelect: (id: string) => void }) {
   return (
     <div className="space-y-4">
-      <p className="font-body text-sm text-kelly-text/70">
+      <p className="font-body text-sm text-kelly-muted">
         Agent runbook for event/travel — each stage lists goals, tools, human decisions, failures, and next actions. Click a tool id to
         open detail.
       </p>
@@ -487,7 +487,7 @@ function CatalogTab({ snap, onSelect }: { snap: CommandCenterSnapshot; onSelect:
       {filteredLifecycles.map(({ lifecycle, tools }) => (
         <section key={lifecycle.id} className="rounded-2xl border border-kelly-text/10 bg-kelly-page overflow-hidden">
           <h2 className="border-b border-kelly-text/10 bg-kelly-wash px-4 py-3 font-heading text-base font-bold">
-            {lifecycle.title} <span className="text-kelly-text/45">({tools.length})</span>
+            {lifecycle.title} <span className="text-kelly-subtle">({tools.length})</span>
           </h2>
           <ul className="divide-y divide-kelly-text/5">
             {tools.map((t) => (
@@ -565,7 +565,7 @@ export function AiToolsCommandCenter() {
           <Link href="/admin/campaign-events/workbench" className="underline">
             Workbench
           </Link>
-          <span className="text-kelly-text/55">Docs: RedDirt/docs/campaign-events/AI_AGENT_OPERATIONAL_TOOL_SYSTEM.md</span>
+          <span className="text-kelly-muted">Docs: RedDirt/docs/campaign-events/AI_AGENT_OPERATIONAL_TOOL_SYSTEM.md</span>
         </p>
       </section>
 
@@ -575,7 +575,7 @@ export function AiToolsCommandCenter() {
             key={t.id}
             type="button"
             onClick={() => setTab(t.id)}
-            className={`rounded-full px-4 py-2 font-body text-sm font-bold ${tab === t.id ? "bg-kelly-navy text-white" : "border border-kelly-text/15 text-kelly-text/70"}`}
+            className={`rounded-full px-4 py-2 font-body text-sm font-bold ${tab === t.id ? "bg-kelly-navy text-white" : "border border-kelly-text/15 text-kelly-muted"}`}
           >
             {t.label}
           </button>

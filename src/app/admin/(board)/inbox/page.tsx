@@ -86,7 +86,7 @@ export default async function AdminInboxPage({ searchParams }: Props) {
         className="mt-8 grid gap-4 rounded-card border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)] sm:grid-cols-3"
       >
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Platform</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Platform</span>
           <select
             name="platform"
             defaultValue={platform ?? ""}
@@ -101,7 +101,7 @@ export default async function AdminInboxPage({ searchParams }: Props) {
           </select>
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Content type</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Content type</span>
           <select
             name="sourceType"
             defaultValue={sourceType ?? ""}
@@ -116,7 +116,7 @@ export default async function AdminInboxPage({ searchParams }: Props) {
           </select>
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Review status</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Review status</span>
           <select
             name="reviewStatus"
             defaultValue={reviewStatus ?? ""}
@@ -142,7 +142,7 @@ export default async function AdminInboxPage({ searchParams }: Props) {
 
       <div className="mt-8 overflow-x-auto rounded-card border border-kelly-text/10 bg-white shadow-[var(--shadow-soft)]">
         <table className="min-w-full divide-y divide-kelly-text/10 font-body text-sm">
-          <thead className="bg-kelly-text/[0.04] text-left text-xs font-bold uppercase tracking-wider text-kelly-text/55">
+          <thead className="bg-kelly-text/[0.04] text-left text-xs font-bold uppercase tracking-wider text-kelly-muted">
             <tr>
               <th className="px-4 py-3">Title</th>
               <th className="px-4 py-3">Source</th>
@@ -160,7 +160,7 @@ export default async function AdminInboxPage({ searchParams }: Props) {
                     {row.title?.slice(0, 72) ?? "(untitled)"}
                   </Link>
                   {row.excerpt ? (
-                    <p className="mt-1 line-clamp-2 text-xs text-kelly-text/60">{row.excerpt}</p>
+                    <p className="mt-1 line-clamp-2 text-xs text-kelly-muted">{row.excerpt}</p>
                   ) : null}
                 </td>
                 <td className="px-4 py-3">{platformLabel(row.sourcePlatform)}</td>
@@ -171,7 +171,7 @@ export default async function AdminInboxPage({ searchParams }: Props) {
                   {row.visibleOnHomepageRail ? "Home " : ""}
                   {!row.visibleOnUpdatesPage && !row.visibleOnHomepageRail ? "—" : ""}
                 </td>
-                <td className="px-4 py-3 text-xs text-kelly-text/65">
+                <td className="px-4 py-3 text-xs text-kelly-muted">
                   {(row.publishedAt ?? row.syncTimestamp).toLocaleDateString()}
                 </td>
               </tr>
@@ -179,7 +179,7 @@ export default async function AdminInboxPage({ searchParams }: Props) {
           </tbody>
         </table>
         {items.length === 0 ? (
-          <p className="p-6 text-center text-sm text-kelly-text/55">No items match these filters.</p>
+          <p className="p-6 text-center text-sm text-kelly-muted">No items match these filters.</p>
         ) : null}
       </div>
     </div>

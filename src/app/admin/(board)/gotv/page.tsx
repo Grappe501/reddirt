@@ -66,7 +66,7 @@ export default async function AdminGotvPage({ searchParams }: Props) {
         Field / turnout · GOTV-1 + GOTV-2
       </p>
       <h1 className="mt-2 font-heading text-3xl font-bold">GOTV priority (read-only)</h1>
-      <p className="mt-2 max-w-3xl font-body text-sm text-kelly-text/70">
+      <p className="mt-2 max-w-3xl font-body text-sm text-kelly-muted">
         Operational view from the voter file, relational links, and logged interactions.{" "}
         <strong>No</strong> vote prediction, <strong>no</strong> automated outreach, <strong>no</strong> support
         scores. Relational contacts are people in the organizing graph — not vote totals.
@@ -90,7 +90,7 @@ export default async function AdminGotvPage({ searchParams }: Props) {
         className="mt-8 grid gap-4 rounded-card border border-kelly-text/10 bg-kelly-page p-6 shadow-[var(--shadow-soft)] sm:grid-cols-2 lg:grid-cols-4"
       >
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">County</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">County</span>
           <select
             name="countyId"
             defaultValue={countyId ?? ""}
@@ -105,7 +105,7 @@ export default async function AdminGotvPage({ searchParams }: Props) {
           </select>
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Precinct (exact)</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Precinct (exact)</span>
           <input
             name="precinct"
             type="text"
@@ -115,7 +115,7 @@ export default async function AdminGotvPage({ searchParams }: Props) {
           />
         </label>
         <label className="block text-sm sm:col-span-2 lg:col-span-2">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Field unit</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Field unit</span>
           <select
             name="fieldUnitId"
             defaultValue={fieldUnitId ?? ""}
@@ -147,30 +147,30 @@ export default async function AdminGotvPage({ searchParams }: Props) {
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-4">
-          <p className="text-xs font-bold uppercase tracking-wider text-kelly-text/50">Voters in scope</p>
+          <p className="text-xs font-bold uppercase tracking-wider text-kelly-subtle">Voters in scope</p>
           <p className="mt-1 font-heading text-2xl font-bold">{summary.totalVotersInScope}</p>
         </div>
         <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-4">
-          <p className="text-xs font-bold uppercase tracking-wider text-kelly-text/50">With relational link</p>
+          <p className="text-xs font-bold uppercase tracking-wider text-kelly-subtle">With relational link</p>
           <p className="mt-1 font-heading text-2xl font-bold">{summary.votersWithRelationalConnection}</p>
         </div>
         <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-4">
-          <p className="text-xs font-bold uppercase tracking-wider text-kelly-text/50">Recent interaction</p>
+          <p className="text-xs font-bold uppercase tracking-wider text-kelly-subtle">Recent interaction</p>
           <p className="mt-1 font-heading text-2xl font-bold">{summary.votersWithRecentInteraction}</p>
-          <p className="mt-1 text-xs text-kelly-text/55">
+          <p className="mt-1 text-xs text-kelly-muted">
             Window: {summary.recentInteractionDays} days (rolling)
           </p>
         </div>
         <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-4">
-          <p className="text-xs font-bold uppercase tracking-wider text-kelly-text/50">Without recent interaction</p>
+          <p className="text-xs font-bold uppercase tracking-wider text-kelly-subtle">Without recent interaction</p>
           <p className="mt-1 font-heading text-2xl font-bold">{summary.votersWithoutRecentInteraction}</p>
         </div>
         <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-4">
-          <p className="text-xs font-bold uppercase tracking-wider text-kelly-text/50">Total interactions (scope)</p>
+          <p className="text-xs font-bold uppercase tracking-wider text-kelly-subtle">Total interactions (scope)</p>
           <p className="mt-1 font-heading text-2xl font-bold">{summary.totalInteractions}</p>
         </div>
         <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-4">
-          <p className="text-xs font-bold uppercase tracking-wider text-kelly-text/50">Last interaction (scope)</p>
+          <p className="text-xs font-bold uppercase tracking-wider text-kelly-subtle">Last interaction (scope)</p>
           <p className="mt-1 font-mono text-sm">
             {summary.lastInteractionAt
               ? summary.lastInteractionAt.toISOString().slice(0, 10)
@@ -183,12 +183,12 @@ export default async function AdminGotvPage({ searchParams }: Props) {
         <h2 id="gotv-contact-plan-review-heading" className="font-heading text-xl font-bold">
           Contact Plan Review
         </h2>
-        <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-kelly-text/50">GOTV-2</p>
-        <p className="mt-1 text-sm text-kelly-text/65">
+        <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-kelly-subtle">GOTV-2</p>
+        <p className="mt-1 text-sm text-kelly-muted">
           Mutually exclusive buckets for operator preview. Counts cover the full filtered universe; tables sample up to
           50 rows per bucket from the first 450 voters loaded (sorted by county + voter key).
         </p>
-        <ul className="mt-2 list-inside list-disc text-xs text-kelly-text/55">
+        <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
           {planReview.notes.map((n) => (
             <li key={n}>{n}</li>
           ))}
@@ -196,10 +196,10 @@ export default async function AdminGotvPage({ searchParams }: Props) {
         <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {planReview.buckets.map((b) => (
             <div key={b.key} className="rounded-card border border-kelly-text/10 bg-kelly-page p-4">
-              <p className="text-xs font-bold uppercase tracking-wider text-kelly-text/50">{b.label}</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-kelly-subtle">{b.label}</p>
               <p className="mt-1 font-heading text-2xl font-bold tabular-nums">{b.count}</p>
-              <p className="mt-1 text-xs text-kelly-text/60">{b.description}</p>
-              <p className="mt-2 font-mono text-[10px] text-kelly-text/45">{b.key}</p>
+              <p className="mt-1 text-xs text-kelly-muted">{b.description}</p>
+              <p className="mt-2 font-mono text-[10px] text-kelly-subtle">{b.key}</p>
             </div>
           ))}
         </div>
@@ -208,7 +208,7 @@ export default async function AdminGotvPage({ searchParams }: Props) {
           <summary className="cursor-pointer font-body text-sm font-semibold text-kelly-text">
             CSV preview (read-only, copy to clipboard) — {contactPlanCsvPreview.split("\n").length - 1} data rows
           </summary>
-          <p className="mt-2 text-xs text-kelly-text/60">
+          <p className="mt-2 text-xs text-kelly-muted">
             Same rows as the tables below, one line per row; includes bucket and semicolon-joined reason codes. No
             server export, no queue, no assignment.
           </p>
@@ -221,7 +221,7 @@ export default async function AdminGotvPage({ searchParams }: Props) {
           <div key={`table-${b.key}`} className="mt-8">
             <h3 className="font-heading text-lg font-bold">
               {b.label}{" "}
-              <span className="font-mono text-sm font-normal text-kelly-text/50">
+              <span className="font-mono text-sm font-normal text-kelly-subtle">
                 ({b.rows.length} shown / {b.count} in universe)
               </span>
             </h3>
@@ -242,7 +242,7 @@ export default async function AdminGotvPage({ searchParams }: Props) {
                 <tbody>
                   {b.rows.length === 0 ? (
                     <tr>
-                      <td colSpan={8} className="px-3 py-6 text-center text-kelly-text/55">
+                      <td colSpan={8} className="px-3 py-6 text-center text-kelly-muted">
                         No rows in this sample.
                       </td>
                     </tr>
@@ -250,14 +250,14 @@ export default async function AdminGotvPage({ searchParams }: Props) {
                     b.rows.map((r) => (
                       <tr key={`${b.key}-${r.voterRecordId}`} className="border-b border-kelly-text/5">
                         <td className="px-3 py-2 align-top">
-                          <div className="font-mono text-xs text-kelly-text/70">{r.voterFileKey}</div>
+                          <div className="font-mono text-xs text-kelly-muted">{r.voterFileKey}</div>
                           <div>{r.voterName}</div>
                         </td>
                         <td className="px-3 py-2 align-top font-mono text-xs text-kelly-text/80">{r.countyId}</td>
                         <td className="px-3 py-2 align-top text-xs">
                           {r.countySlug}
                           {r.precinct ? ` · p${r.precinct}` : ""}
-                          {r.city ? <span className="block text-kelly-text/70">{r.city}</span> : null}
+                          {r.city ? <span className="block text-kelly-muted">{r.city}</span> : null}
                         </td>
                         <td className="px-3 py-2 align-top tabular-nums">{r.relationalContactCount}</td>
                         <td className="px-3 py-2 align-top tabular-nums">{r.interactionCount}</td>
@@ -290,7 +290,7 @@ export default async function AdminGotvPage({ searchParams }: Props) {
 
       <section className="mt-10">
         <h2 className="font-heading text-xl font-bold">Contact plan preview (GOTV-1 overlapping buckets)</h2>
-        <p className="mt-1 text-sm text-kelly-text/65">
+        <p className="mt-1 text-sm text-kelly-muted">
           Suggested buckets for discussion — {planPreview.notes[0]}
         </p>
         <ul className="mt-4 space-y-3">
@@ -301,9 +301,9 @@ export default async function AdminGotvPage({ searchParams }: Props) {
             >
               <div>
                 <p className="font-semibold">
-                  {b.label} <span className="font-mono text-xs text-kelly-text/50">({b.key})</span>
+                  {b.label} <span className="font-mono text-xs text-kelly-subtle">({b.key})</span>
                 </p>
-                <p className="text-sm text-kelly-text/65">{b.description}</p>
+                <p className="text-sm text-kelly-muted">{b.description}</p>
               </div>
               <p className="font-heading text-2xl font-bold tabular-nums">{b.count}</p>
             </li>
@@ -313,7 +313,7 @@ export default async function AdminGotvPage({ searchParams }: Props) {
 
       <section className="mt-10">
         <h2 className="font-heading text-xl font-bold">Priority universe (up to 150 rows)</h2>
-        <p className="mt-1 text-sm text-kelly-text/65">
+        <p className="mt-1 text-sm text-kelly-muted">
           Sorted for operations: needs touch before recently contacted; then relational before cold.
         </p>
         <div className="mt-4 overflow-x-auto rounded-card border border-kelly-text/10">
@@ -332,7 +332,7 @@ export default async function AdminGotvPage({ searchParams }: Props) {
             <tbody>
               {rows.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="px-3 py-8 text-center text-kelly-text/60">
+                  <td colSpan={7} className="px-3 py-8 text-center text-kelly-muted">
                     No voters in this scope (try clearing filters or loading voter file + activity).
                   </td>
                 </tr>
@@ -340,7 +340,7 @@ export default async function AdminGotvPage({ searchParams }: Props) {
                 rows.map((r) => (
                   <tr key={r.voterRecordId} className="border-b border-kelly-text/5">
                     <td className="px-3 py-2 align-top">
-                      <div className="font-mono text-xs text-kelly-text/70">{r.voterFileKey}</div>
+                      <div className="font-mono text-xs text-kelly-muted">{r.voterFileKey}</div>
                       <div>
                         {[r.firstName, r.lastName].filter(Boolean).join(" ") || "—"}
                       </div>
@@ -348,7 +348,7 @@ export default async function AdminGotvPage({ searchParams }: Props) {
                     <td className="px-3 py-2 align-top text-xs">
                       {r.countySlug}
                       {r.precinct ? ` · p${r.precinct}` : ""}
-                      {r.city ? <span className="block text-kelly-text/70">{r.city}</span> : null}
+                      {r.city ? <span className="block text-kelly-muted">{r.city}</span> : null}
                     </td>
                     <td className="px-3 py-2 align-top tabular-nums">{r.relationalContactCount}</td>
                     <td className="px-3 py-2 align-top tabular-nums">{r.interactionCount}</td>
@@ -387,14 +387,14 @@ export default async function AdminGotvPage({ searchParams }: Props) {
           </table>
         </div>
         {formAction ? (
-          <p className="mt-3 text-xs text-kelly-text/55">
+          <p className="mt-3 text-xs text-kelly-muted">
             Pagination not enabled on this view; reduce scope with filters. Query:{" "}
             <span className="font-mono">{formAction || "/admin/gotv"}</span>
           </p>
         ) : null}
       </section>
 
-      <p className="mt-10 text-xs text-kelly-text/50">
+      <p className="mt-10 text-xs text-kelly-subtle">
         <strong>CSV</strong>: read-only preview is in Contact Plan Review above. A governed download or outbound sheet
         rail can ship with <strong>GOTV-3+</strong> if product requires it.
       </p>

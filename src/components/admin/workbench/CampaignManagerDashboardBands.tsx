@@ -9,8 +9,8 @@ import type { TruthClassId } from "@/lib/campaign-engine/truth";
 export const CM2_PACKET = "CM-2" as const;
 
 const bandBox = "rounded-md border border-kelly-text/10 bg-kelly-page/90 px-2 py-1.5 shadow-sm";
-const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
-const h3 = "font-heading text-[9px] font-bold uppercase tracking-wide text-kelly-text/45";
+const h2 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-muted";
+const h3 = "font-heading text-[9px] font-bold uppercase tracking-wide text-kelly-subtle";
 
 type Props = { snapshot: TruthSnapshot };
 
@@ -142,9 +142,9 @@ export function CampaignManagerDashboardBands({ snapshot }: Props) {
     <div className="mx-2 mb-2 space-y-2 md:mx-3">
       <section className={bandBox} aria-label="Truth and health">
         <p className={h2}>Truth + health (BRAIN-OPS snapshot)</p>
-        <p className="mt-0.5 font-body text-[9px] text-kelly-text/55">
+        <p className="mt-0.5 font-body text-[9px] text-kelly-muted">
           Generated {snapshot.generatedAt.toISOString()} · read-only aggregate ·{" "}
-          <span className="font-semibold text-kelly-text/70">CM-2</span>
+          <span className="font-semibold text-kelly-muted">CM-2</span>
         </p>
         <div className="mt-1.5 grid gap-1 sm:grid-cols-2 lg:grid-cols-3">
           {TRUTH_KEYS.map((k) => {
@@ -159,7 +159,7 @@ export function CampaignManagerDashboardBands({ snapshot }: Props) {
                   <span className={statusStyle(m.status)}>{m.status}</span>
                 </div>
                 <p className="mt-0.5 text-kelly-text/75">{m.note}</p>
-                <p className="mt-0.5 font-mono text-[8px] text-kelly-text/50">{truthClassHint(m.truthClass)}</p>
+                <p className="mt-0.5 font-mono text-[8px] text-kelly-subtle">{truthClassHint(m.truthClass)}</p>
               </div>
             );
           })}
@@ -182,7 +182,7 @@ export function CampaignManagerDashboardBands({ snapshot }: Props) {
             <div key={label}>
               <p className={h3}>{label}</p>
               {items.length === 0 ? (
-                <p className="font-body text-[10px] text-kelly-text/45">None in this group.</p>
+                <p className="font-body text-[10px] text-kelly-subtle">None in this group.</p>
               ) : (
                 <ul className="list-inside list-disc font-body text-[10px] text-kelly-text/80">
                   {items.map((t) => (
@@ -201,7 +201,7 @@ export function CampaignManagerDashboardBands({ snapshot }: Props) {
           <div>
             <p className={h3}>Review required</p>
             {snapshot.governance.reviewRequired.length === 0 ? (
-              <p className="font-body text-[10px] text-kelly-text/45">None listed.</p>
+              <p className="font-body text-[10px] text-kelly-subtle">None listed.</p>
             ) : (
               <ul className="list-inside list-disc font-body text-[10px] text-amber-950">
                 {snapshot.governance.reviewRequired.map((t) => (
@@ -221,7 +221,7 @@ export function CampaignManagerDashboardBands({ snapshot }: Props) {
           <div>
             <p className={h3}>Blocked</p>
             {snapshot.governance.blocked.length === 0 ? (
-              <p className="font-body text-[10px] text-kelly-text/45">None listed (empty is normal).</p>
+              <p className="font-body text-[10px] text-kelly-subtle">None listed (empty is normal).</p>
             ) : (
               <ul className="list-inside list-disc font-body text-[10px] text-red-900">
                 {snapshot.governance.blocked.map((t) => (
@@ -235,14 +235,14 @@ export function CampaignManagerDashboardBands({ snapshot }: Props) {
 
       <section className={bandBox} aria-label="Division command grid">
         <p className={h2}>Division command grid (thin)</p>
-        <p className="mt-0.5 font-body text-[9px] text-kelly-text/55">
+        <p className="mt-0.5 font-body text-[9px] text-kelly-muted">
           Maturity from <code className="rounded bg-kelly-text/5 px-0.5">system-maturity-map.md</code>; open-work lines
           use global UWR-2 counts, not per-seat roll-ups.
         </p>
         <div className="mt-1 overflow-x-auto">
           <table className="w-full min-w-[520px] border-collapse font-body text-[10px]">
             <thead>
-              <tr className="border-b border-kelly-text/15 text-left text-[9px] uppercase text-kelly-text/50">
+              <tr className="border-b border-kelly-text/15 text-left text-[9px] uppercase text-kelly-subtle">
                 <th className="py-1 pr-2 font-semibold">Division</th>
                 <th className="py-1 pr-2 font-semibold">Maturity</th>
                 <th className="py-1 pr-2 font-semibold">Open work hint</th>
@@ -256,9 +256,9 @@ export function CampaignManagerDashboardBands({ snapshot }: Props) {
                   <td className="py-1 pr-2 font-semibold text-kelly-text">{d.division}</td>
                   <td className="py-1 pr-2 text-kelly-text/75">{d.maturity}</td>
                   <td className="py-1 pr-2 text-kelly-text/80">
-                    {d.openWorkLine ?? <span className="text-kelly-text/45">—</span>}
+                    {d.openWorkLine ?? <span className="text-kelly-subtle">—</span>}
                   </td>
-                  <td className="py-1 pr-2 text-kelly-text/70">{d.gapNote}</td>
+                  <td className="py-1 pr-2 text-kelly-muted">{d.gapNote}</td>
                   <td className="py-1">
                     <Link href={d.primaryHref} className="font-semibold text-kelly-slate hover:underline">
                       {d.linkLabel}

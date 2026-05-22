@@ -150,15 +150,17 @@ export async function updateTravelLedgerItem(
 }
 
 export async function applyRoute(item: TravelLedgerItem, cities: TravelCity[], driveAroundMilesOverride?: number): Promise<TravelLedgerItem> {
+  const settings = await loadTravelLedgerSettings();
   const route = await calculateCityRoute({
     itemId: item.id,
     date: item.date,
     cities,
-    mileageRate: item.mileageRate,
+    mileageRate: settings.mileageRate,
     driveAroundMilesOverride,
   });
   return {
     ...item,
+    mileageRate: settings.mileageRate,
     travelCities: route.travelCities,
     routeText: route.routeText,
     baseRoundTripMiles: route.baseRoundTripMiles,

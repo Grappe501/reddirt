@@ -58,34 +58,34 @@ export default async function CommunicationIntelligenceSearchPage({ searchParams
           Search
         </button>
       </form>
-      {!safe ? <p className="text-[10px] text-kelly-text/60">Enter 2–120 characters.</p> : null}
+      {!safe ? <p className="text-[10px] text-kelly-muted">Enter 2–120 characters.</p> : null}
       {safe ? (
         <>
           <section>
-            <p className="font-heading text-[10px] font-bold uppercase text-kelly-text/55">Identities</p>
+            <p className="font-heading text-[10px] font-bold uppercase text-kelly-muted">Identities</p>
             <ul className="mt-1 space-y-1">
               {identities.map((i) => (
                 <li key={i.id}>
                   <Link href={`/admin/workbench/communication-intelligence/identities/${i.id}`} className="font-bold text-kelly-forest underline">
                     {i.displayName ?? i.normalizedEmail}
                   </Link>{" "}
-                  <span className="text-[9px] text-kelly-text/55">{i.reviewStatus}</span>
+                  <span className="text-[9px] text-kelly-muted">{i.reviewStatus}</span>
                 </li>
               ))}
             </ul>
           </section>
           <section>
-            <p className="font-heading text-[10px] font-bold uppercase text-kelly-text/55">Gmail (subject/snippet)</p>
+            <p className="font-heading text-[10px] font-bold uppercase text-kelly-muted">Gmail (subject/snippet)</p>
             <ul className="mt-1 space-y-1 text-[10px]">
               {gmailRows.map((g) => (
                 <li key={g.id}>
-                  {g.subject ?? "(no subject)"} — <span className="text-kelly-text/65">{g.snippet?.slice(0, 120) ?? ""}</span>
+                  {g.subject ?? "(no subject)"} — <span className="text-kelly-muted">{g.snippet?.slice(0, 120) ?? ""}</span>
                 </li>
               ))}
             </ul>
           </section>
           <section>
-            <p className="font-heading text-[10px] font-bold uppercase text-kelly-text/55">Imported calendar</p>
+            <p className="font-heading text-[10px] font-bold uppercase text-kelly-muted">Imported calendar</p>
             <ul className="mt-1 space-y-1 text-[10px]">
               {calRows.map((c) => (
                 <li key={c.id}>

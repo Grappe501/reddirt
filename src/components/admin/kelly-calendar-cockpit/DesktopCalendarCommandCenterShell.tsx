@@ -73,7 +73,7 @@ export function DesktopCalendarCommandCenterShell({
         <div className="min-w-0 space-y-4">
           <TravelConflictBanner items={enriched} />
           <div className="rounded-lg border border-kelly-text/10 bg-kelly-wash/40 px-3 py-2">
-            <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/45">
+            <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-subtle">
               County priority strip
             </p>
             <div className="mt-2 flex flex-wrap gap-1.5">
@@ -93,7 +93,7 @@ export function DesktopCalendarCommandCenterShell({
             countyPriorities={countyPriorities}
           />
           <div className="rounded-lg border border-kelly-text/10 bg-white/90 px-3 py-2">
-            <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-text/45">
+            <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-kelly-subtle">
               Travel / overnight
             </p>
             <ul className="mt-1 max-h-40 list-inside list-disc overflow-auto font-body text-[11px] text-kelly-text/75">
@@ -104,7 +104,7 @@ export function DesktopCalendarCommandCenterShell({
                   </a>
                 </li>
               ))}
-              {travel.length === 0 ? <li className="list-none text-kelly-text/50">No travel rows in current filters.</li> : null}
+              {travel.length === 0 ? <li className="list-none text-kelly-subtle">No travel rows in current filters.</li> : null}
             </ul>
           </div>
         </div>

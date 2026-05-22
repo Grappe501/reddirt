@@ -62,8 +62,8 @@ export default async function VolunteerIntakeDocumentPage({ params, searchParams
           ← Intake list
         </Link>
         <h1 className="mt-2 font-heading text-2xl font-bold text-kelly-text">{doc.ownedMedia.title}</h1>
-        <p className="font-mono text-[11px] text-kelly-text/50">{doc.id}</p>
-        <p className="mt-1 text-sm text-kelly-text/70">
+        <p className="font-mono text-[11px] text-kelly-subtle">{doc.id}</p>
+        <p className="mt-1 text-sm text-kelly-muted">
           Status: <strong>{doc.status}</strong> · Voter roll rows: <strong>{voterRollCount}</strong> (
           <strong>{voterWithNames}</strong> with first+last from file)
         </p>
@@ -94,13 +94,13 @@ export default async function VolunteerIntakeDocumentPage({ params, searchParams
 
       <section className="grid gap-6 lg:grid-cols-2">
         <div className="rounded-card border border-kelly-text/10 bg-kelly-page p-4 shadow-sm">
-          <h2 className="font-heading text-sm font-bold uppercase tracking-wider text-kelly-text/55">Original sheet</h2>
+          <h2 className="font-heading text-sm font-bold uppercase tracking-wider text-kelly-muted">Original sheet</h2>
           <div className="mt-3 max-h-[min(70vh,560px)] overflow-auto rounded-md border border-kelly-text/10 bg-kelly-text/5 p-2">
             {isImage ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img src={fileUrl} alt="" className="mx-auto max-h-[520px] w-auto object-contain" />
             ) : (
-              <p className="text-sm text-kelly-text/70">
+              <p className="text-sm text-kelly-muted">
                 Preview: <a href={fileUrl} className="text-kelly-slate underline" target="_blank" rel="noreferrer">
                   Open file
                 </a>{" "}
@@ -116,11 +116,11 @@ export default async function VolunteerIntakeDocumentPage({ params, searchParams
             >
               Run / re-run extraction
             </button>
-            <p className="mt-2 text-xs text-kelly-text/55">Re-run replaces entries for a new extraction pass (pending rows rematched).</p>
+            <p className="mt-2 text-xs text-kelly-muted">Re-run replaces entries for a new extraction pass (pending rows rematched).</p>
           </form>
         </div>
         <div className="rounded-card border border-kelly-text/10 bg-white/80 p-4 text-sm text-kelly-text/80">
-          <h2 className="font-heading text-sm font-bold uppercase tracking-wider text-kelly-text/55">Latest extraction</h2>
+          <h2 className="font-heading text-sm font-bold uppercase tracking-wider text-kelly-muted">Latest extraction</h2>
           {doc.lastExtraction ? (
             <>
               <p className="mt-2">
@@ -128,14 +128,14 @@ export default async function VolunteerIntakeDocumentPage({ params, searchParams
                 {doc.lastExtraction.avgConfidence != null ? doc.lastExtraction.avgConfidence.toFixed(2) : "—"}
               </p>
               {doc.lastExtraction.rawOcrText ? (
-                <pre className="mt-2 max-h-48 overflow-auto rounded border border-kelly-text/10 bg-white p-2 font-mono text-[10px] text-kelly-text/70">
+                <pre className="mt-2 max-h-48 overflow-auto rounded border border-kelly-text/10 bg-white p-2 font-mono text-[10px] text-kelly-muted">
                   {doc.lastExtraction.rawOcrText.slice(0, 4000)}
                   {doc.lastExtraction.rawOcrText.length > 4000 ? "…" : ""}
                 </pre>
               ) : null}
             </>
           ) : (
-            <p className="mt-2 text-kelly-text/60">No extraction yet.</p>
+            <p className="mt-2 text-kelly-muted">No extraction yet.</p>
           )}
         </div>
       </section>
@@ -153,10 +153,10 @@ export default async function VolunteerIntakeDocumentPage({ params, searchParams
           >
             <div className="flex flex-wrap items-start justify-between gap-2">
               <div>
-                <p className="font-mono text-[10px] text-kelly-text/45">
+                <p className="font-mono text-[10px] text-kelly-subtle">
                   Row {e.rowIndex} · {e.id} · OCR confidence: {e.confidenceScore != null ? e.confidenceScore.toFixed(2) : "—"}
                 </p>
-                <p className="mt-1 text-xs text-kelly-text/60">
+                <p className="mt-1 text-xs text-kelly-muted">
                   Status: <strong>{e.approvalStatus}</strong>
                   {e.decidedAt ? ` · ${e.decidedAt.toLocaleString()}` : ""}
                 </p>
@@ -165,13 +165,13 @@ export default async function VolunteerIntakeDocumentPage({ params, searchParams
 
             <div className="mt-4 grid gap-4 lg:grid-cols-2">
               <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-kelly-text/55">Raw line</p>
+                <p className="text-xs font-bold uppercase tracking-wider text-kelly-muted">Raw line</p>
                 <p className="mt-1 whitespace-pre-wrap rounded border border-kelly-text/10 bg-white p-2 text-sm">{e.rawRowText}</p>
               </div>
               <form action={updateSignupEntryAction} className="space-y-2">
                 <input type="hidden" name="entryId" value={e.id} />
                 <input type="hidden" name="documentId" value={documentId} />
-                <p className="text-xs font-bold uppercase tracking-wider text-kelly-text/55">Normalized (editable)</p>
+                <p className="text-xs font-bold uppercase tracking-wider text-kelly-muted">Normalized (editable)</p>
                 <div className="grid gap-2 sm:grid-cols-2">
                   <label className="text-xs">
                     First
@@ -209,9 +209,9 @@ export default async function VolunteerIntakeDocumentPage({ params, searchParams
             </div>
 
             <div className="mt-4">
-              <p className="text-xs font-bold uppercase tracking-wider text-kelly-text/55">Voter matches (heuristic)</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-kelly-muted">Voter matches (heuristic)</p>
               {e.matchCandidates.length === 0 ? (
-                <p className="mt-1 text-sm text-kelly-text/60">
+                <p className="mt-1 text-sm text-kelly-muted">
                   No candidates. Add county or phone on the row, ensure voter file has matching name fields, or pick a voter id
                   manually below.
                 </p>
@@ -283,7 +283,7 @@ export default async function VolunteerIntakeDocumentPage({ params, searchParams
           </article>
         ))}
         {doc.entries.length === 0 ? (
-          <p className="text-sm text-kelly-text/60">No rows yet. Run extraction.</p>
+          <p className="text-sm text-kelly-muted">No rows yet. Run extraction.</p>
         ) : null}
       </section>
     </div>

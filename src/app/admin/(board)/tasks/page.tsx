@@ -31,7 +31,7 @@ export default async function AdminTasksPage() {
         <input name="title" required placeholder="Title" className="w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         <textarea name="description" rows={2} placeholder="Description (optional)" className="w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Link to event (optional)</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Link to event (optional)</span>
           <select name="eventId" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
             <option value="">—</option>
             {events.map((e) => (
@@ -42,7 +42,7 @@ export default async function AdminTasksPage() {
           </select>
         </label>
         <label className="block text-sm">
-          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-text/55">Due (optional)</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Due (optional)</span>
           <input name="dueAt" type="datetime-local" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
         </label>
         <button type="submit" className="rounded-btn bg-kelly-navy px-5 py-2.5 text-sm font-bold text-kelly-page">
@@ -53,7 +53,7 @@ export default async function AdminTasksPage() {
       <div className="mt-10 overflow-x-auto">
         <table className="w-full min-w-[640px] border-collapse text-left text-sm">
           <thead>
-            <tr className="border-b border-kelly-text/15 text-xs uppercase tracking-wider text-kelly-text/55">
+            <tr className="border-b border-kelly-text/15 text-xs uppercase tracking-wider text-kelly-muted">
               <th className="py-2 pr-2">Task</th>
               <th className="py-2 pr-2">Event</th>
               <th className="py-2 pr-2">Due</th>
@@ -67,7 +67,7 @@ export default async function AdminTasksPage() {
                 <td className="py-2 pr-2 align-top">
                   <span className="font-medium text-kelly-text">{t.title}</span>
                   {t.assignedRole ? (
-                    <span className="ml-1 text-xs text-kelly-text/50">({formatRoleLabel(t.assignedRole)})</span>
+                    <span className="ml-1 text-xs text-kelly-subtle">({formatRoleLabel(t.assignedRole)})</span>
                   ) : null}
                 </td>
                 <td className="py-2 pr-2 align-top text-xs">
@@ -79,7 +79,7 @@ export default async function AdminTasksPage() {
                     "—"
                   )}
                 </td>
-                <td className="py-2 pr-2 align-top text-xs text-kelly-text/70">{t.dueAt ? t.dueAt.toLocaleString() : "—"}</td>
+                <td className="py-2 pr-2 align-top text-xs text-kelly-muted">{t.dueAt ? t.dueAt.toLocaleString() : "—"}</td>
                 <td className="py-2 pr-2 align-top text-xs">
                   <Link
                     href={`/admin/workbench/comms/plans/new?taskId=${t.id}`}
@@ -108,10 +108,10 @@ export default async function AdminTasksPage() {
             ))}
           </tbody>
         </table>
-        {tasks.length === 0 ? <p className="mt-4 text-sm text-kelly-text/55">No tasks yet.</p> : null}
+        {tasks.length === 0 ? <p className="mt-4 text-sm text-kelly-muted">No tasks yet.</p> : null}
       </div>
 
-      <p className="mt-6 text-xs text-kelly-text/50">
+      <p className="mt-6 text-xs text-kelly-subtle">
         Role target keys: {CAMPAIGN_ROLE_KEYS.join(", ")}
       </p>
     </div>

@@ -48,7 +48,7 @@ export function CampaignOnboardingWizard() {
       <header>
         <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-slate">Sprint 10 · SaaS</p>
         <h1 className="mt-1 font-heading text-2xl font-bold text-kelly-navy">Campaign onboarding</h1>
-        <p className="mt-2 text-sm text-kelly-text/65">Creates an isolated tenant config — human-reviewed, no auto-deploy.</p>
+        <p className="mt-2 text-sm text-kelly-muted">Creates an isolated tenant config — human-reviewed, no auto-deploy.</p>
       </header>
 
       {step === 0 ? (

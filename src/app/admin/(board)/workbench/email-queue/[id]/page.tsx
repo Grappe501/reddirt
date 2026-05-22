@@ -20,7 +20,7 @@ type Props = { params: Promise<{ id: string }> };
 
 const dt = "font-body text-sm text-kelly-text/85";
 const dd = "mt-0.5 font-body text-sm text-kelly-text";
-const h3 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
+const h3 = "font-heading text-[10px] font-bold uppercase tracking-wider text-kelly-muted";
 
 function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
@@ -63,15 +63,15 @@ export default async function EmailWorkflowQueueDetailPage({ params }: Props) {
           >
             ← Email queue
           </Link>
-          <Link href="/admin/workbench" className="text-xs text-kelly-text/60 hover:underline">
+          <Link href="/admin/workbench" className="text-xs text-kelly-muted hover:underline">
             Workbench
           </Link>
         </div>
         <div className="flex flex-wrap items-center gap-1.5">
           <WorkbenchPill variant={statusPillVariant(d.status)}>{d.status}</WorkbenchPill>
           <WorkbenchPill variant="neutral">{d.priority}</WorkbenchPill>
-          <span className="text-[10px] text-kelly-text/45">esc {d.escalationLevel}</span>
-          <span className="text-[10px] text-kelly-text/45">{d.spamDisposition}</span>
+          <span className="text-[10px] text-kelly-subtle">esc {d.escalationLevel}</span>
+          <span className="text-[10px] text-kelly-subtle">{d.spamDisposition}</span>
         </div>
       </div>
 
@@ -84,7 +84,7 @@ export default async function EmailWorkflowQueueDetailPage({ params }: Props) {
         ) : null}
       </div>
       {d.queueReason ? (
-        <p className="mt-1 font-body text-xs text-kelly-text/70">Queue: {d.queueReason}</p>
+        <p className="mt-1 font-body text-xs text-kelly-muted">Queue: {d.queueReason}</p>
       ) : null}
 
       <div className="mt-3 space-y-2 rounded border border-kelly-text/10 bg-kelly-page/40 p-2">
@@ -112,7 +112,7 @@ export default async function EmailWorkflowQueueDetailPage({ params }: Props) {
             {d.needsDeescalation ? "Yes" : "No"}
           </p>
         </div>
-        <p className="text-[11px] text-kelly-text/70">{EMAIL_WORKFLOW_STATUS_MEANINGS[d.status]}</p>
+        <p className="text-[11px] text-kelly-muted">{EMAIL_WORKFLOW_STATUS_MEANINGS[d.status]}</p>
         <EmailWorkflowOperatorControls itemId={d.id} status={d.status} isAssigned={Boolean(d.assignedTo)} />
         <p className="mt-2 text-[11px] text-kelly-text/80">
           <Link
@@ -121,7 +121,7 @@ export default async function EmailWorkflowQueueDetailPage({ params }: Props) {
           >
             Prepare draft in Message Studio
           </Link>{" "}
-          <span className="text-kelly-text/60">
+          <span className="text-kelly-muted">
             — opens Message Studio with source/id chips only (no body in the URL). After queue AI review, paste or
             summarize vetted context; toggle <strong>Queue item context</strong> in Campaign Voice when guiding AI.
           </span>
@@ -152,8 +152,8 @@ export default async function EmailWorkflowQueueDetailPage({ params }: Props) {
 
       <div className="mt-2 space-y-2">
         <div className="rounded border border-kelly-text/10 bg-kelly-page/50 px-2 py-1">
-          <p className="text-[10px] text-kelly-text/55">
-            Queue-first: interpretation fills <strong className="font-semibold text-kelly-text/70">empty</strong> fields and
+          <p className="text-[10px] text-kelly-muted">
+            Queue-first: interpretation fills <strong className="font-semibold text-kelly-muted">empty</strong> fields and
             respects non-default triage unless you force overwrite. No send execution or auto-approval.
           </p>
         </div>
@@ -162,7 +162,7 @@ export default async function EmailWorkflowQueueDetailPage({ params }: Props) {
 
       <div className="mt-2 divide-y divide-kelly-text/10">
         <Section title="Row fields (manual and/or interpretation)">
-          <p className="mb-2 text-[10px] text-kelly-text/50">
+          <p className="mb-2 text-[10px] text-kelly-subtle">
             Stored on <code className="rounded bg-kelly-text/5 px-0.5">EmailWorkflowItem</code> — may be edited manually
             or filled by the last interpretation run (where not protected).
           </p>
@@ -179,7 +179,7 @@ export default async function EmailWorkflowQueueDetailPage({ params }: Props) {
               <dt className={dt}>When</dt>
               <dd className={dd}>
                 {d.whenSummary ?? "—"}
-                {d.occurredAt ? <span className="ml-1 text-[10px] text-kelly-text/50">({d.occurredAt})</span> : null}
+                {d.occurredAt ? <span className="ml-1 text-[10px] text-kelly-subtle">({d.occurredAt})</span> : null}
               </dd>
             </div>
             <div>
@@ -209,15 +209,15 @@ export default async function EmailWorkflowQueueDetailPage({ params }: Props) {
           {interpretation != null && typeof interpretation === "object" ? (
             <>
               <EmailWorkflowInterpretationProvenancePanel data={interpretation} />
-              <details className="mt-2 text-[10px] text-kelly-text/55">
-                <summary className="cursor-pointer font-semibold text-kelly-text/60">Raw interpretation JSON</summary>
+              <details className="mt-2 text-[10px] text-kelly-muted">
+                <summary className="cursor-pointer font-semibold text-kelly-muted">Raw interpretation JSON</summary>
                 <pre className="mt-1 max-h-40 overflow-auto rounded border border-kelly-text/10 bg-white p-2 text-kelly-text/80">
                   {JSON.stringify(interpretation, null, 2)}
                 </pre>
               </details>
             </>
           ) : (
-            <p className="text-xs text-kelly-text/55">No interpretation has been written yet. Use “Run interpretation” above.</p>
+            <p className="text-xs text-kelly-muted">No interpretation has been written yet. Use “Run interpretation” above.</p>
           )}
         </Section>
 
@@ -226,20 +226,20 @@ export default async function EmailWorkflowQueueDetailPage({ params }: Props) {
             Intent: {d.intent} · tone: {d.tone} · sentiment: {d.sentiment ?? "—"} · de-escalation:{" "}
             {d.needsDeescalation ? "yes" : "no"}
           </p>
-          <p className="mt-1 text-xs text-kelly-text/65">Spam: {d.spamDisposition} · score: {d.spamScore != null ? String(d.spamScore) : "—"}</p>
+          <p className="mt-1 text-xs text-kelly-muted">Spam: {d.spamDisposition} · score: {d.spamScore != null ? String(d.spamScore) : "—"}</p>
         </Section>
 
         <Section title="Review metadata">
           <p className={dt}>
             Created {d.createdAt} · updated {d.updatedAt}
           </p>
-          <p className="mt-1 text-xs text-kelly-text/70">
+          <p className="mt-1 text-xs text-kelly-muted">
             Reviewer: {d.reviewedBy ? d.reviewedBy.nameLabel ?? d.reviewedBy.email : "—"} · at {d.reviewedAt ?? "—"}
           </p>
         </Section>
 
         <Section title="Source links (linked records)">
-          <p className="mb-1 text-[10px] text-kelly-text/50">
+          <p className="mb-1 text-[10px] text-kelly-subtle">
             Read-only pointers for cross-navigation; use these to route work to the right approved execution surface.
           </p>
           <ul className="list-inside list-disc space-y-0.5 text-sm text-kelly-text/80">
@@ -286,7 +286,7 @@ export default async function EmailWorkflowQueueDetailPage({ params }: Props) {
             !l.socialContentItem &&
             !l.comsPlanAudienceSegment &&
             !l.communicationMessage ? (
-              <li className="list-none text-kelly-text/55">No linked records on this item.</li>
+              <li className="list-none text-kelly-muted">No linked records on this item.</li>
             ) : null}
           </ul>
         </Section>

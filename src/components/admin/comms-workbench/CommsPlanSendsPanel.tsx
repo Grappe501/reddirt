@@ -29,7 +29,7 @@ import { formatCommsOperatorRetryStateLine, formatCommsOutcomeSummaryLine } from
 import { PLANNING_COMMUNICATION_SEND_STATUSES } from "@/lib/comms-workbench/send-schemas";
 import { formatCommsFieldLabel } from "@/lib/comms-workbench/ui-labels";
 
-const label = "mb-0.5 block text-[10px] font-bold uppercase tracking-wider text-kelly-text/55";
+const label = "mb-0.5 block text-[10px] font-bold uppercase tracking-wider text-kelly-muted";
 const input = "w-full rounded border border-kelly-text/15 bg-white px-2 py-1.5 text-sm text-kelly-text";
 const btnPrimary =
   "rounded border border-kelly-slate/30 bg-kelly-slate/10 px-2 py-1 text-xs font-semibold text-kelly-slate disabled:cursor-not-allowed disabled:opacity-50";
@@ -231,11 +231,11 @@ export function CommsPlanSendsPanel({ planId, sends: initialSends, drafts, opsSu
           Run next queued in this plan
         </button>
         {noQueueToRun ? (
-          <span className="text-[10px] text-kelly-text/50">{COMMS_EMPTY.noQueuedToRun}</span>
+          <span className="text-[10px] text-kelly-subtle">{COMMS_EMPTY.noQueuedToRun}</span>
         ) : null}
       </div>
 
-      <p className="text-xs text-kelly-text/70">
+      <p className="text-xs text-kelly-muted">
         A planned send is created from <span className="font-semibold">one approved</span> draft or variant. Use{" "}
         <span className="font-semibold">Queue for execution</span> to mark a send as ready, then <span className="font-semibold">Run
         execution</span> to deliver via the configured provider for <span className="font-semibold">EMAIL</span> and{" "}
@@ -288,7 +288,7 @@ export function CommsPlanSendsPanel({ planId, sends: initialSends, drafts, opsSu
                 </option>
               ))}
             </select>
-            <p className="mt-0.5 text-[10px] text-kelly-text/45">Prefilled from the asset; adjust only if the plan needs a different label.</p>
+            <p className="mt-0.5 text-[10px] text-kelly-subtle">Prefilled from the asset; adjust only if the plan needs a different label.</p>
           </div>
           <div>
             <span className={label}>Send type (optional)</span>
@@ -327,7 +327,7 @@ export function CommsPlanSendsPanel({ planId, sends: initialSends, drafts, opsSu
               onChange={(e) => setCSchedule(e.target.value)}
               disabled={isPending}
             />
-            <p className="mt-0.5 text-[10px] text-kelly-text/45">
+            <p className="mt-0.5 text-[10px] text-kelly-subtle">
               Leave empty for a planning DRAFT send. A future time becomes SCHEDULED.
             </p>
           </div>
@@ -340,7 +340,7 @@ export function CommsPlanSendsPanel({ planId, sends: initialSends, drafts, opsSu
         >
           {isPending ? "…" : "Create planned send"}
         </button>
-        {cannotCreate ? <p className="text-[10px] text-kelly-text/50">{COMMS_EMPTY.cannotCreateSend}</p> : null}
+        {cannotCreate ? <p className="text-[10px] text-kelly-subtle">{COMMS_EMPTY.cannotCreateSend}</p> : null}
       </form>
 
       {opsSummary.hasExecutionFailures ? (
@@ -352,7 +352,7 @@ export function CommsPlanSendsPanel({ planId, sends: initialSends, drafts, opsSu
       ) : null}
 
       {initialSends.length === 0 ? (
-        <p className="rounded border border-dashed border-kelly-text/15 bg-kelly-page/50 px-3 py-3 text-sm text-kelly-text/60">
+        <p className="rounded border border-dashed border-kelly-text/15 bg-kelly-page/50 px-3 py-3 text-sm text-kelly-muted">
           {COMMS_EMPTY.noSends}
         </p>
       ) : (
@@ -366,7 +366,7 @@ export function CommsPlanSendsPanel({ planId, sends: initialSends, drafts, opsSu
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <p className="font-semibold text-kelly-text">
                     {s.sourceKind === "variant" ? "Variant" : "Draft"} — {s.draftTitle?.trim() || "—"}
-                    {s.variantLabel ? <span className="ml-1 text-xs font-normal text-kelly-text/70">({s.variantLabel})</span> : null}
+                    {s.variantLabel ? <span className="ml-1 text-xs font-normal text-kelly-muted">({s.variantLabel})</span> : null}
                   </p>
                   <div className="flex flex-wrap items-center gap-1.5">
                     {s.status === CommunicationSendStatus.QUEUED ? (
@@ -381,7 +381,7 @@ export function CommsPlanSendsPanel({ planId, sends: initialSends, drafts, opsSu
                   </div>
                 </div>
                 {s.queuedAt ? (
-                  <p className="text-[10px] text-kelly-text/55">
+                  <p className="text-[10px] text-kelly-muted">
                     Queued for execution: {new Date(s.queuedAt).toLocaleString()}
                     {s.queuedBy
                       ? ` · by ${(s.queuedBy.nameLabel ?? s.queuedBy.email) || s.queuedBy.email}`
@@ -394,23 +394,23 @@ export function CommsPlanSendsPanel({ planId, sends: initialSends, drafts, opsSu
                     intended a different channel.
                   </p>
                 ) : null}
-                <p className="text-xs text-kelly-text/65">
+                <p className="text-xs text-kelly-muted">
                   {formatCommsFieldLabel(s.channel)}
                   {s.sendType ? ` · ${formatCommsFieldLabel(s.sendType)}` : ""}
                   {s.targetSegmentId ? ` · segment ${s.targetSegmentId}` : ""}
                 </p>
-                <p className="text-xs text-kelly-text/55">
+                <p className="text-xs text-kelly-muted">
                   Scheduled: {s.scheduledAt ? new Date(s.scheduledAt).toLocaleString() : "—"} · Sent:{" "}
                   {s.sentAt ? new Date(s.sentAt).toLocaleString() : "—"}
                 </p>
                 {s.providerMessageId ? (
-                  <p className="text-[10px] text-kelly-text/50" title="Provider message id">
+                  <p className="text-[10px] text-kelly-subtle" title="Provider message id">
                     Provider: {s.providerMessageId}
                   </p>
                 ) : null}
-                {outcomeLine ? <p className="text-[10px] text-kelly-text/50">Outcome: {outcomeLine}</p> : null}
+                {outcomeLine ? <p className="text-[10px] text-kelly-subtle">Outcome: {outcomeLine}</p> : null}
                 {s.status === CommunicationSendStatus.FAILED || s.retryCount > 0 ? (
-                  <p className="text-[10px] text-kelly-text/55" title="Packet 12A operator retry policy">
+                  <p className="text-[10px] text-kelly-muted" title="Packet 12A operator retry policy">
                     {formatCommsOperatorRetryStateLine(s.operatorRetry)}
                   </p>
                 ) : null}
@@ -621,7 +621,7 @@ function EditSendForm({
 
   return (
     <form onSubmit={submit} className="mt-2 space-y-2 border-t border-kelly-text/8 pt-2">
-      <p className="text-[10px] font-bold uppercase text-kelly-text/45">Source asset is fixed; only plan fields are editable.</p>
+      <p className="text-[10px] font-bold uppercase text-kelly-subtle">Source asset is fixed; only plan fields are editable.</p>
       <div className="grid gap-2 sm:grid-cols-2">
         <div>
           <span className={label}>Status</span>
@@ -659,7 +659,7 @@ function EditSendForm({
           onChange={(e) => setSchedule(e.target.value)}
           disabled={disabled}
         />
-        <p className="text-[10px] text-kelly-text/45">Clear to store an unscheduled DRAFT (status will move to DRAFT if needed).</p>
+        <p className="text-[10px] text-kelly-subtle">Clear to store an unscheduled DRAFT (status will move to DRAFT if needed).</p>
       </div>
       <div>
         <span className={label}>Target segment id</span>

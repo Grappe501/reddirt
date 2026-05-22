@@ -26,7 +26,7 @@ export default async function VendorDetailPage({ params }: Params) {
         <h2 className="font-heading text-xl font-bold text-kelly-text">Matched staged payments</h2>
         <div className="mt-3 grid gap-2">
           {payments.map((payment) => <p key={payment.id} className="font-body text-sm text-kelly-text/75">{payment.category} · ${payment.amount.toFixed(2)} · {payment.reviewStatus}</p>)}
-          {!payments.length ? <p className="font-body text-sm text-kelly-text/70">No staged payments matched by exact name yet.</p> : null}
+          {!payments.length ? <p className="font-body text-sm text-kelly-muted">No staged payments matched by exact name yet.</p> : null}
         </div>
       </section>
     </div>
