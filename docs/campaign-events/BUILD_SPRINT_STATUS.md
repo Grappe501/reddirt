@@ -1,7 +1,7 @@
 # Build Sprint Status
 
 **Lane:** `RedDirt/`  
-**Last updated:** Sprint 5 (May 2026)  
+**Last updated:** Sprint 7 (May 2026)  
 **Companion:** [`MASTER_CAMPAIGN_OS_ROADMAP.md`](./MASTER_CAMPAIGN_OS_ROADMAP.md)
 
 This is the **live control board**. Update at the end of every sprint slice.
@@ -22,7 +22,7 @@ This is the **live control board**. Update at the end of every sprint slice.
 | 5B | Agent Intelligence 2 (live observation + orchestration) | **Complete** (V1 functional) | ~78% | ~55% |
 | 5C | Agent Intelligence 3 (unified runtime + safe tool router) | **Complete** (V1 deterministic) | ~86% | ~58% |
 | 6 | Event planning drilldown | **Complete** (V1 workbook) | ~78% | ~55% |
-| 7 | Hot wash + media intel | Partial | ~40% | ~20% |
+| 7 | Hot wash intelligence + county memory | **Complete** (V1 deterministic) | ~82% | ~58% |
 | 8 | FIN / compliance bridge | Not started | — | — |
 | 9 | Dashboard + nav polish | Partial | ~55% | ~40% |
 | 10 | Client productization | Not started | — | — |
@@ -224,13 +224,29 @@ Gated SendGrid send, HTML+text template, JSON approval tokens, public `/campaign
 
 ---
 
-## Sprint 7 — Hot wash + media intelligence
+## Sprint 7 — Hot wash intelligence + county memory
 
-**Today:** `/admin/campaign-events/media-approval`; owned media models; upload token route scaffold.
+**Status:** **Complete** (May 2026, V1 deterministic).
 
-**Build:** Public upload link, host/volunteer flow, transcription, chunking, event/county memory, metadata enrichment.
+**Delivered:**
 
-**Success:** Approved media becomes searchable campaign intelligence.
+| Artifact | Path |
+|----------|------|
+| Intelligence workspace | `HotWashIntelligenceWorkspace.tsx` |
+| Persist | `factCard._hotWashIntelligence` + legacy `_hotWash` sync |
+| County memory | `data/campaign-events/county-memory/` |
+| Event blueprints | `data/campaign-events/event-blueprints/blueprints.json` |
+| Learning loop | `campaign-learning-loop.ts` |
+| Media metadata scaffolds | `HotWashMediaIntelligenceMeta` on upload + loop |
+| Tools (20) | `sprint-event-intelligence-7-tools.ts` |
+| Command center feed | `AiCommandCenterHub` learning disclosure |
+| Docs | `HOT_WASH_INTELLIGENCE_SYSTEM.md`, `COUNTY_MEMORY_ENGINE.md`, `EVENT_BLUEPRINT_SYSTEM.md`, `CAMPAIGN_LEARNING_LOOP.md` |
+
+**Test:** `npm run campaign-events:test-hot-wash-intelligence`
+
+**V2 (not this sprint):** Real transcription/OCR, vector chunking, public host upload polish.
+
+**Success:** Completing hot wash feeds county memory and optional blueprints; command center shows learning trends.
 
 ---
 

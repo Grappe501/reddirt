@@ -216,18 +216,23 @@ Legacy catalog `appr-promote-official` remains idea — use Sprint 5 ids above f
 
 ---
 
-### Sprint 7 — Hot wash + media
+### Sprint 7 — Hot wash intelligence + county memory (May 2026)
 
-| Planned agent | Catalog id | Status | Build action |
-|---------------|------------|--------|--------------|
-| Speech transcriber | hot_wash lifecycle | idea | OwnedMediaTranscript pipeline |
-| Quote extractor | OwnedMediaQuoteCandidate | partial schema | Wire after ingest |
-| Event memory builder | `hot-wash-event-memory` (supplement) | idea | Chunk → SearchChunk or dedicated store |
-| County memory builder | county intel tools | partial | Post-approval archive |
-| Media approval assistant | media-approval route | partial | Queue AI assist (advisory) |
-| Post-event learning extractor | `hot-wash-learning` (supplement) | idea | After approval only |
+| Component | Path | Status |
+|-----------|------|--------|
+| Intelligence workspace | `hot-wash/HotWashIntelligenceWorkspace.tsx` | functional V1 |
+| Persist | `factCard._hotWashIntelligence` | functional |
+| County memory | `county-memory/` JSON store | functional additive |
+| Event blueprints | `event-blueprints/blueprint-store.ts` | functional V1 |
+| Learning loop | `campaign-learning-loop.ts` | functional |
+| Tools | `sprint-event-intelligence-7-tools.ts` (**20**) | functional / planned (speech-quote) |
+| Observations | `user-observations.ts` Sprint 7 events | functional |
 
-**Docs:** `HOT_WASH_*` in `docs/campaign-events/`.
+**Docs:** `HOT_WASH_INTELLIGENCE_SYSTEM.md`, `COUNTY_MEMORY_ENGINE.md`, `EVENT_BLUEPRINT_SYSTEM.md`, `CAMPAIGN_LEARNING_LOOP.md`
+
+**Test:** `npm run campaign-events:test-hot-wash-intelligence`
+
+**V2:** Whisper transcription, OCR, face detection, vector chunking — scaffolds only in V1.
 
 ---
 

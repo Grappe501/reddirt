@@ -16,6 +16,8 @@ import { SPRINT3_AGENT_TOOL_CONTRACTS } from "@/lib/campaign-events/ai-tools/spr
 import { summarizeAskKellyAdapter } from "@/lib/agents/adapters/ask-kelly-adapter";
 import { summarizeKellyAgentAdapter } from "@/lib/agents/adapters/kelly-agent-adapter";
 import { DEFAULT_WRITING_PROFILE } from "@/lib/agents/writing-agent/writing-profile";
+import { loadCampaignLearningSnapshot } from "@/lib/campaign-events/hot-wash-intelligence/load-campaign-learning-snapshot";
+import { SPRINT7_EVENT_INTELLIGENCE_TOOL_CONTRACTS } from "@/lib/campaign-events/ai-tools/sprint-event-intelligence-7-tools";
 
 const AGENT_READINESS_PCT = 86;
 
@@ -29,8 +31,10 @@ export async function AiCommandCenterHub() {
     snapshot,
   });
   const gaps = analyzeCampaignGaps({ snapshot, readinessScore: null });
+  const learning = await loadCampaignLearningSnapshot();
   const sprint2Tools = SPRINT2_AGENT_TOOL_CONTRACTS.length;
   const sprint1Tools = AGENT_INTELLIGENCE_TOOL_CONTRACTS.length;
+  const sprint7Tools = SPRINT7_EVENT_INTELLIGENCE_TOOL_CONTRACTS.length;
 
   return (
     <AgentObservationTracker role="operator" pathname="/admin/ai-command-center" period={snapshot.period}>
@@ -88,6 +92,46 @@ export async function AiCommandCenterHub() {
                 ))
             )}
           </ul>
+        </AiCommandCenterDisclosure>
+
+        <AiCommandCenterDisclosure id="learning" title="Campaign learning loop (Sprint 7)" defaultOpen>
+          <p className="text-xs text-kelly-text/65">
+            County memory · event blueprints · messaging/issue trends from completed hot washes.
+          </p>
+          <dl className="mt-3 grid gap-2 text-xs sm:grid-cols-2">
+            <div>
+              <dt className="font-bold">Counties with signals</dt>
+              <dd>{learning.countyCount}</dd>
+            </div>
+            <div>
+              <dt className="font-bold">Event blueprints</dt>
+              <dd>{learning.blueprintCount}</dd>
+            </div>
+            <div>
+              <dt className="font-bold">Volunteer signals (rollup)</dt>
+              <dd>{learning.volunteerSignals}</dd>
+            </div>
+            <div>
+              <dt className="font-bold">Donor signals (rollup)</dt>
+              <dd>{learning.donorSignals}</dd>
+            </div>
+          </dl>
+          {learning.topIssues.length ? (
+            <p className="mt-2 text-xs">
+              <span className="font-bold">Top issues:</span> {learning.topIssues.slice(0, 5).join(" · ")}
+            </p>
+          ) : null}
+          {learning.topFormats.length ? (
+            <p className="mt-1 text-xs">
+              <span className="font-bold">Strongest formats:</span> {learning.topFormats.slice(0, 4).join(" · ")}
+            </p>
+          ) : null}
+          {learning.recurringBlockers.length ? (
+            <p className="mt-1 text-xs text-amber-900">
+              <span className="font-bold">Recurring blockers:</span> {learning.recurringBlockers.join(" · ")}
+            </p>
+          ) : null}
+          <p className="mt-2 text-[10px] text-kelly-text/45">Sprint 7 tools: {sprint7Tools} · Complete hot wash on an event to feed memory.</p>
         </AiCommandCenterDisclosure>
 
         <AiCommandCenterDisclosure id="bottlenecks" title="Current bottlenecks" defaultOpen>

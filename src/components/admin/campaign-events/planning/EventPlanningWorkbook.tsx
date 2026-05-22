@@ -160,6 +160,16 @@ export function EventPlanningWorkbook({
         subtitle="Status, location, approval, calendar, and travel at a glance."
         defaultOpen
         complete={planning.sectionCompleted.overview}
+        footer={
+          <button
+            type="button"
+            disabled={pending}
+            className="rounded-full bg-kelly-navy px-4 py-2 text-xs font-bold text-white"
+            onClick={() => save(planning, "overview")}
+          >
+            Mark overview reviewed
+          </button>
+        }
       >
         <dl className="grid gap-3 font-body text-sm sm:grid-cols-2">
           <div>
@@ -213,22 +223,37 @@ export function EventPlanningWorkbook({
         <div className="mt-4">
           <CalendarSyncTruthPanel row={row} />
         </div>
-        footer={
-          <button
-            type="button"
-            disabled={pending}
-            className="rounded-full bg-kelly-navy px-4 py-2 text-xs font-bold text-white"
-            onClick={() => save(planning, "overview")}
-          >
-            Mark overview reviewed
-          </button>
-        }
-      />
+      </PlanningSection>
 
       <PlanningSection
         title="2. Run of show"
         subtitle="Timeline — add, edit, reorder. Generate a draft from the fact card first."
         complete={planning.sectionCompleted.run_of_show}
+        footer={
+          <>
+            <button
+              type="button"
+              disabled={pending}
+              className="rounded-full border px-4 py-2 text-xs font-bold"
+              onClick={() =>
+                runAi(async () => {
+                  const res = await generateRunOfShowAction(row.recordId, planning);
+                  return { planning: res.planning };
+                })
+              }
+            >
+              Generate draft
+            </button>
+            <button
+              type="button"
+              disabled={pending}
+              className="rounded-full bg-kelly-navy px-4 py-2 text-xs font-bold text-white"
+              onClick={() => save(planning, "run_of_show")}
+            >
+              Save run of show
+            </button>
+          </>
+        }
       >
         {rosGaps.length ? <p className="mb-2 text-xs text-amber-900">{rosGaps.join(" · ")}</p> : null}
         <div className="overflow-x-auto">
@@ -366,6 +391,12 @@ export function EventPlanningWorkbook({
         >
           + Add row
         </button>
+      </PlanningSection>
+
+      <PlanningSection
+        title="3. Materials / pack list"
+        subtitle="Mark needed, packed, or not needed."
+        complete={planning.sectionCompleted.materials}
         footer={
           <>
             <button
@@ -374,26 +405,19 @@ export function EventPlanningWorkbook({
               className="rounded-full border px-4 py-2 text-xs font-bold"
               onClick={() =>
                 runAi(async () => {
-                  const res = await generateRunOfShowAction(row.recordId, planning);
+                  const res = await generatePackListAction(row.recordId, planning);
                   return { planning: res.planning };
                 })
               }
             >
-              Generate draft
+              Generate from event
             </button>
-            <button
-              type="button"
-              disabled={pending}
-              className="rounded-full bg-kelly-navy px-4 py-2 text-xs font-bold text-white"
-              onClick={() => save(planning, "run_of_show")}
-            >
-              Save run of show
+            <button type="button" disabled={pending} className="rounded-full bg-kelly-navy px-4 py-2 text-xs font-bold text-white" onClick={() => save(planning, "materials")}>
+              Save pack list
             </button>
           </>
         }
-      />
-
-      <PlanningSection title="3. Materials / pack list" subtitle="Mark needed, packed, or not needed." complete={planning.sectionCompleted.materials}>
+      >
         <ul className="grid gap-2">
           {planning.packList.map((item, idx) => (
             <li key={item.id} className="flex flex-wrap items-center gap-2 rounded-lg border border-kelly-text/10 p-2">
@@ -424,38 +448,12 @@ export function EventPlanningWorkbook({
             </li>
           ))}
         </ul>
-        footer={
-          <>
-            <button
-              type="button"
-              disabled={pending}
-              className="rounded-full border px-4 py-2 text-xs font-bold"
-              onClick={() =>
-                runAi(async () => {
-                  const res = await generatePackListAction(row.recordId, planning);
-                  return { planning: res.planning };
-                })
-              }
-            >
-              Generate from event
-            </button>
-            <button type="button" disabled={pending} className="rounded-full bg-kelly-navy px-4 py-2 text-xs font-bold text-white" onClick={() => save(planning, "materials")}>
-              Save pack list
-            </button>
-          </>
-        }
-      />
+      </PlanningSection>
 
-      <PlanningSection title="4. Volunteer plan" subtitle="Headcount, roles, captain, meetup — reminders are scaffold only." complete={planning.sectionCompleted.volunteers}>
-        <div className="grid gap-3 sm:grid-cols-2">
-          <Field label="Volunteers needed?" value={planning.volunteerPlan.volunteersNeeded} onChange={(v) => setPlanning((p) => ({ ...p, volunteerPlan: { ...p.volunteerPlan, volunteersNeeded: v } }))} />
-          <Field label="Number needed" value={planning.volunteerPlan.numberNeeded} onChange={(v) => setPlanning((p) => ({ ...p, volunteerPlan: { ...p.volunteerPlan, numberNeeded: v } }))} />
-          <Field label="Roles" value={planning.volunteerPlan.roles} onChange={(v) => setPlanning((p) => ({ ...p, volunteerPlan: { ...p.volunteerPlan, roles: v } }))} multiline />
-          <Field label="Volunteer captain" value={planning.volunteerPlan.volunteerCaptain} onChange={(v) => setPlanning((p) => ({ ...p, volunteerPlan: { ...p.volunteerPlan, volunteerCaptain: v } }))} />
-          <Field label="Arrival time" value={planning.volunteerPlan.arrivalTime} onChange={(v) => setPlanning((p) => ({ ...p, volunteerPlan: { ...p.volunteerPlan, arrivalTime: v } }))} />
-          <Field label="Meetup location" value={planning.volunteerPlan.meetupLocation} onChange={(v) => setPlanning((p) => ({ ...p, volunteerPlan: { ...p.volunteerPlan, meetupLocation: v } }))} />
-          <Field label="Reminder status" value={planning.volunteerPlan.reminderStatus} onChange={(v) => setPlanning((p) => ({ ...p, volunteerPlan: { ...p.volunteerPlan, reminderStatus: v } }))} hint="Scaffold — no SMS sent" />
-        </div>
+      <PlanningSection
+        title="4. Volunteer plan"
+        subtitle="Headcount, roles, captain, meetup — reminders are scaffold only."
+        complete={planning.sectionCompleted.volunteers}
         footer={
           <>
             <button type="button" disabled={pending} className="rounded-full border px-4 py-2 text-xs font-bold" onClick={() => runAi(async () => ({ planning: (await seedVolunteerPlanAction(row.recordId, planning)).planning }))}>
@@ -466,9 +464,33 @@ export function EventPlanningWorkbook({
             </button>
           </>
         }
-      />
+      >
+        <div className="grid gap-3 sm:grid-cols-2">
+          <Field label="Volunteers needed?" value={planning.volunteerPlan.volunteersNeeded} onChange={(v) => setPlanning((p) => ({ ...p, volunteerPlan: { ...p.volunteerPlan, volunteersNeeded: v } }))} />
+          <Field label="Number needed" value={planning.volunteerPlan.numberNeeded} onChange={(v) => setPlanning((p) => ({ ...p, volunteerPlan: { ...p.volunteerPlan, numberNeeded: v } }))} />
+          <Field label="Roles" value={planning.volunteerPlan.roles} onChange={(v) => setPlanning((p) => ({ ...p, volunteerPlan: { ...p.volunteerPlan, roles: v } }))} multiline />
+          <Field label="Volunteer captain" value={planning.volunteerPlan.volunteerCaptain} onChange={(v) => setPlanning((p) => ({ ...p, volunteerPlan: { ...p.volunteerPlan, volunteerCaptain: v } }))} />
+          <Field label="Arrival time" value={planning.volunteerPlan.arrivalTime} onChange={(v) => setPlanning((p) => ({ ...p, volunteerPlan: { ...p.volunteerPlan, arrivalTime: v } }))} />
+          <Field label="Meetup location" value={planning.volunteerPlan.meetupLocation} onChange={(v) => setPlanning((p) => ({ ...p, volunteerPlan: { ...p.volunteerPlan, meetupLocation: v } }))} />
+          <Field label="Reminder status" value={planning.volunteerPlan.reminderStatus} onChange={(v) => setPlanning((p) => ({ ...p, volunteerPlan: { ...p.volunteerPlan, reminderStatus: v } }))} hint="Scaffold — no SMS sent" />
+        </div>
+      </PlanningSection>
 
-      <PlanningSection title="5. Contacts" subtitle="Host, venue, CM, media, emergency." complete={planning.sectionCompleted.contacts}>
+      <PlanningSection
+        title="5. Contacts"
+        subtitle="Host, venue, CM, media, emergency."
+        complete={planning.sectionCompleted.contacts}
+        footer={
+          <>
+            <button type="button" disabled={pending} className="rounded-full border px-4 py-2 text-xs font-bold" onClick={() => runAi(async () => ({ planning: (await seedContactsAction(row.recordId, planning)).planning }))}>
+              Pull from fact card
+            </button>
+            <button type="button" disabled={pending} className="rounded-full bg-kelly-navy px-4 py-2 text-xs font-bold text-white" onClick={() => save(planning, "contacts")}>
+              Save contacts
+            </button>
+          </>
+        }
+      >
         {contactGaps.length ? <p className="mb-2 text-xs text-amber-900">Gaps: {contactGaps.join(" · ")}</p> : null}
         <div className="grid gap-3 sm:grid-cols-2">
           {(
@@ -491,28 +513,12 @@ export function EventPlanningWorkbook({
             />
           ))}
         </div>
-        footer={
-          <>
-            <button type="button" disabled={pending} className="rounded-full border px-4 py-2 text-xs font-bold" onClick={() => runAi(async () => ({ planning: (await seedContactsAction(row.recordId, planning)).planning }))}>
-              Pull from fact card
-            </button>
-            <button type="button" disabled={pending} className="rounded-full bg-kelly-navy px-4 py-2 text-xs font-bold text-white" onClick={() => save(planning, "contacts")}>
-              Save contacts
-            </button>
-          </>
-        }
-      />
+      </PlanningSection>
 
-      <PlanningSection title="6. Candidate brief" subtitle="For Kelly — generate then edit before sharing." complete={planning.sectionCompleted.candidate_brief}>
-        <div className="grid gap-3">
-          <Field label="Summary" value={planning.candidateBrief.summary} onChange={(v) => setPlanning((p) => ({ ...p, candidateBrief: { ...p.candidateBrief, summary: v } }))} multiline />
-          <Field label="Talking points" value={planning.candidateBrief.talkingPoints} onChange={(v) => setPlanning((p) => ({ ...p, candidateBrief: { ...p.candidateBrief, talkingPoints: v } }))} multiline />
-          <Field label="People to know" value={planning.candidateBrief.peopleToKnow} onChange={(v) => setPlanning((p) => ({ ...p, candidateBrief: { ...p.candidateBrief, peopleToKnow: v } }))} />
-          <Field label="Strategic purpose" value={planning.candidateBrief.strategicPurpose} onChange={(v) => setPlanning((p) => ({ ...p, candidateBrief: { ...p.candidateBrief, strategicPurpose: v } }))} multiline />
-          <Field label="Travel notes" value={planning.candidateBrief.travelNotes} onChange={(v) => setPlanning((p) => ({ ...p, candidateBrief: { ...p.candidateBrief, travelNotes: v } }))} />
-          <Field label="Timing notes" value={planning.candidateBrief.timingNotes} onChange={(v) => setPlanning((p) => ({ ...p, candidateBrief: { ...p.candidateBrief, timingNotes: v } }))} multiline />
-          <Field label="Risks / watchouts" value={planning.candidateBrief.risks} onChange={(v) => setPlanning((p) => ({ ...p, candidateBrief: { ...p.candidateBrief, risks: v } }))} multiline />
-        </div>
+      <PlanningSection
+        title="6. Candidate brief"
+        subtitle="For Kelly — generate then edit before sharing."
+        complete={planning.sectionCompleted.candidate_brief}
         footer={
           <>
             <button type="button" disabled={pending} className="rounded-full border px-4 py-2 text-xs font-bold" onClick={() => runAi(async () => ({ planning: (await generateCandidateBriefAction(row.recordId, planning)).planning }))}>
@@ -523,9 +529,33 @@ export function EventPlanningWorkbook({
             </button>
           </>
         }
-      />
+      >
+        <div className="grid gap-3">
+          <Field label="Summary" value={planning.candidateBrief.summary} onChange={(v) => setPlanning((p) => ({ ...p, candidateBrief: { ...p.candidateBrief, summary: v } }))} multiline />
+          <Field label="Talking points" value={planning.candidateBrief.talkingPoints} onChange={(v) => setPlanning((p) => ({ ...p, candidateBrief: { ...p.candidateBrief, talkingPoints: v } }))} multiline />
+          <Field label="People to know" value={planning.candidateBrief.peopleToKnow} onChange={(v) => setPlanning((p) => ({ ...p, candidateBrief: { ...p.candidateBrief, peopleToKnow: v } }))} />
+          <Field label="Strategic purpose" value={planning.candidateBrief.strategicPurpose} onChange={(v) => setPlanning((p) => ({ ...p, candidateBrief: { ...p.candidateBrief, strategicPurpose: v } }))} multiline />
+          <Field label="Travel notes" value={planning.candidateBrief.travelNotes} onChange={(v) => setPlanning((p) => ({ ...p, candidateBrief: { ...p.candidateBrief, travelNotes: v } }))} />
+          <Field label="Timing notes" value={planning.candidateBrief.timingNotes} onChange={(v) => setPlanning((p) => ({ ...p, candidateBrief: { ...p.candidateBrief, timingNotes: v } }))} multiline />
+          <Field label="Risks / watchouts" value={planning.candidateBrief.risks} onChange={(v) => setPlanning((p) => ({ ...p, candidateBrief: { ...p.candidateBrief, risks: v } }))} multiline />
+        </div>
+      </PlanningSection>
 
-      <PlanningSection title="7. Campaign manager brief" subtitle="Logistics, owners, deadlines — human-controlled." complete={planning.sectionCompleted.cm_brief}>
+      <PlanningSection
+        title="7. Campaign manager brief"
+        subtitle="Logistics, owners, deadlines — human-controlled."
+        complete={planning.sectionCompleted.cm_brief}
+        footer={
+          <>
+            <button type="button" disabled={pending} className="rounded-full border px-4 py-2 text-xs font-bold" onClick={() => runAi(async () => ({ planning: (await generateCmBriefAction(row.recordId, planning)).planning }))}>
+              Generate CM brief
+            </button>
+            <button type="button" disabled={pending} className="rounded-full bg-kelly-navy px-4 py-2 text-xs font-bold text-white" onClick={() => save(planning, "cm_brief")}>
+              Save CM brief
+            </button>
+          </>
+        }
+      >
         <div className="grid gap-3">
           <Field label="Logistics summary" value={planning.cmBrief.logisticsSummary} onChange={(v) => setPlanning((p) => ({ ...p, cmBrief: { ...p.cmBrief, logisticsSummary: v } }))} multiline />
           <Field label="Missing items" value={planning.cmBrief.missingItems} onChange={(v) => setPlanning((p) => ({ ...p, cmBrief: { ...p.cmBrief, missingItems: v } }))} multiline />
@@ -541,19 +571,18 @@ export function EventPlanningWorkbook({
             ))}
           </ul>
         ) : null}
-        footer={
-          <>
-            <button type="button" disabled={pending} className="rounded-full border px-4 py-2 text-xs font-bold" onClick={() => runAi(async () => ({ planning: (await generateCmBriefAction(row.recordId, planning)).planning }))}>
-              Generate CM brief
-            </button>
-            <button type="button" disabled={pending} className="rounded-full bg-kelly-navy px-4 py-2 text-xs font-bold text-white" onClick={() => save(planning, "cm_brief")}>
-              Save CM brief
-            </button>
-          </>
-        }
-      />
+      </PlanningSection>
 
-      <PlanningSection title="8. Cost / budget" subtitle="Estimates and reimbursement link — not FIN-1 posting." complete={planning.sectionCompleted.budget}>
+      <PlanningSection
+        title="8. Cost / budget"
+        subtitle="Estimates and reimbursement link — not FIN-1 posting."
+        complete={planning.sectionCompleted.budget}
+        footer={
+          <button type="button" disabled={pending} className="rounded-full bg-kelly-navy px-4 py-2 text-xs font-bold text-white" onClick={() => save(planning, "budget")}>
+            Save budget notes
+          </button>
+        }
+      >
         <div className="grid gap-3">
           <Field label="Estimated costs" value={planning.budget.estimatedCosts} onChange={(v) => setPlanning((p) => ({ ...p, budget: { ...p.budget, estimatedCosts: v } }))} multiline />
           <Field label="Actual costs" value={planning.budget.actualCosts} onChange={(v) => setPlanning((p) => ({ ...p, budget: { ...p.budget, actualCosts: v } }))} multiline />
@@ -564,12 +593,7 @@ export function EventPlanningWorkbook({
         <Link href={reimbursementHref(month)} className="mt-2 inline-block text-xs font-bold text-kelly-navy underline">
           Open {month} reimbursement report →
         </Link>
-        footer={
-          <button type="button" disabled={pending} className="rounded-full bg-kelly-navy px-4 py-2 text-xs font-bold text-white" onClick={() => save(planning, "budget")}>
-            Save budget notes
-          </button>
-        }
-      />
+      </PlanningSection>
 
       <p className="font-body text-[11px] text-kelly-text/45 print:hidden">
         Saves write to the campaign event ledger only. High-risk actions (email send, calendar write, approval decisions) stay on

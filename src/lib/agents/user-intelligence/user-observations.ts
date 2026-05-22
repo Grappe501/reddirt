@@ -38,7 +38,17 @@ export type UserUxObservationEvent =
   | "cm_brief_generated"
   | "planning_section_completed"
   | "planning_blocker_resolved"
-  | "planning_readiness_improved";
+  | "planning_readiness_improved"
+  | "hotwash_completed"
+  | "county_signal_detected"
+  | "event_blueprint_created"
+  | "relationship_opportunity_detected"
+  | "followup_task_generated"
+  | "messaging_signal_detected"
+  | "county_memory_updated"
+  | "event_pattern_detected"
+  | "strategic_signal_detected"
+  | "successful_event_logged";
 
 export type UserObservationEntry = {
   id: string;
@@ -132,4 +142,14 @@ export const USER_UX_EVENT_LABELS: Record<UserUxObservationEvent, string> = {
   planning_section_completed: "Planning section completed",
   planning_blocker_resolved: "Planning blocker resolved",
   planning_readiness_improved: "Planning readiness improved",
+  hotwash_completed: "Hot wash completed",
+  county_signal_detected: "County signal detected",
+  event_blueprint_created: "Event blueprint created",
+  relationship_opportunity_detected: "Relationship opportunity detected",
+  followup_task_generated: "Follow-up task generated",
+  messaging_signal_detected: "Messaging signal detected",
+  county_memory_updated: "County memory updated",
+  event_pattern_detected: "Event pattern detected",
+  strategic_signal_detected: "Strategic signal detected",
+  successful_event_logged: "Successful event logged",
 };

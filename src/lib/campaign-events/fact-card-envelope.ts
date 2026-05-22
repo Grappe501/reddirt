@@ -57,6 +57,7 @@ const PRESERVED_FACT_CARD_KEYS = [
   "_calendarPromotion",
   "_calendarPromotionLog",
   "_eventPlanning",
+  "_hotWashIntelligence",
 ] as const;
 
 export function withPreservedFactCardExtensions(next: object, previousRaw: unknown): object {

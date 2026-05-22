@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { EventDrilldownClient } from "@/components/admin/campaign-events/EventDrilldownClient";
 import { loadHotWashNotes } from "@/lib/campaign-events/hot-wash-notes";
+import { loadHotWashIntelligence } from "@/lib/campaign-events/hot-wash-intelligence/hot-wash-intelligence-persist";
 import { buildApprovalPackageWithLogs } from "@/lib/campaign-events/approval-package";
 import {
   loadApprovalEmailContext,
@@ -29,9 +30,10 @@ export default async function CampaignEventDrilldownPage({
   const loaded = await loadCalendarEventDrilldown(recordId);
   if (!loaded) notFound();
   const [row] = serializeCalendarRows([loaded.row]);
-  const [mediaBundle, hotWashNotes, emailCtx, observations] = await Promise.all([
+  const [mediaBundle, hotWashNotes, hotWashIntelligence, emailCtx, observations] = await Promise.all([
     loadEventMediaBundle(recordId),
     loadHotWashNotes(recordId),
+    loadHotWashIntelligence(recordId),
     loadApprovalEmailContext(recordId),
     loadAiObservationsForRecord(recordId),
   ]);
@@ -64,6 +66,7 @@ export default async function CampaignEventDrilldownPage({
       mediaItems={mediaBundle.items}
       mediaByUploader={mediaBundle.byUploader}
       hotWashNotes={hotWashNotes}
+      hotWashIntelligence={JSON.parse(JSON.stringify(hotWashIntelligence))}
       fromTravel={sp.from === "travel"}
       returnMonth={sp.month ?? undefined}
     />

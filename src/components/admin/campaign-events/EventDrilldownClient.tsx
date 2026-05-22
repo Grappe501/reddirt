@@ -18,6 +18,7 @@ import { ApprovalPackagePreviewPanel } from "./ApprovalPackagePreviewPanel";
 import { HotWashMediaSection } from "./hot-wash/HotWashMediaSection";
 import type { HotWashMediaRecord } from "@/lib/campaign-events/media/hot-wash-media-types";
 import type { HotWashNotes } from "@/lib/campaign-events/hot-wash-notes";
+import type { HotWashIntelligenceData } from "@/lib/campaign-events/hot-wash-intelligence/hot-wash-intelligence-types";
 import { reimbursementHref, travelLogHref } from "@/lib/campaign-events/travel-reimbursement/travel-reimbursement-links";
 import { CalendarSyncTruthPanel } from "./CalendarSyncTruthPanel";
 import { PromotionAuditPanel } from "./PromotionAuditPanel";
@@ -57,9 +58,11 @@ const TAB_LABELS: Record<TabId, string> = {
 
 export function EventDrilldownClient({
   row,
+  initialPlanning,
   mediaItems = [],
   mediaByUploader = [],
   hotWashNotes = {},
+  hotWashIntelligence,
   fromTravel = false,
   returnMonth,
   approvalPackage,
@@ -71,6 +74,7 @@ export function EventDrilldownClient({
   mediaItems?: HotWashMediaRecord[];
   mediaByUploader?: Array<{ uploaderName: string; uploaderEmail: string; uploads: HotWashMediaRecord[] }>;
   hotWashNotes?: HotWashNotes;
+  hotWashIntelligence: HotWashIntelligenceData;
   fromTravel?: boolean;
   returnMonth?: string;
   approvalPackage?: ApprovalPackagePayload;
@@ -185,11 +189,13 @@ export function EventDrilldownClient({
       {tab !== "planning" && tab === "hot_wash" && (
         <HotWashMediaSection
           recordId={row.recordId}
+          row={row}
           eventTitle={row.calendar.title}
           countyLabel={row.county}
           mediaItems={mediaItems}
           byUploader={mediaByUploader}
           hotWashNotes={hotWashNotes}
+          hotWashIntelligence={hotWashIntelligence}
         />
       )}
       {tab !== "planning" && tab === "costs" && (
