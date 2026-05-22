@@ -25,6 +25,9 @@ import { PromotionAuditPanel } from "./PromotionAuditPanel";
 import type { PromotionAuditEntry } from "@/lib/campaign-events/calendar-promotion/promotion-audit";
 import type { EventPlanningData } from "@/lib/campaign-events/event-planning/event-planning-types";
 import { EventPlanningWorkbook } from "./planning/EventPlanningWorkbook";
+import type { EventFinanceData } from "@/lib/campaign-events/finance/finance-types";
+import type { FinanceDocumentRecord } from "@/lib/campaign-events/finance/finance-document-types";
+import { EventFinancialOperationsWorkspace } from "./finance/EventFinancialOperationsWorkspace";
 
 const TABS = [
   "overview",
@@ -48,7 +51,7 @@ const TAB_LABELS: Record<TabId, string> = {
   travel: "Travel",
   run_of_show: "Run of Show",
   hot_wash: "Hot Wash",
-  costs: "Costs / Budget",
+  costs: "Financial Ops",
   team_notes: "Team Notes",
   approval: "Approval History",
   communication: "Communication",
@@ -63,6 +66,8 @@ export function EventDrilldownClient({
   mediaByUploader = [],
   hotWashNotes = {},
   hotWashIntelligence,
+  initialFinance,
+  financeDocuments = [],
   fromTravel = false,
   returnMonth,
   approvalPackage,
@@ -75,6 +80,8 @@ export function EventDrilldownClient({
   mediaByUploader?: Array<{ uploaderName: string; uploaderEmail: string; uploads: HotWashMediaRecord[] }>;
   hotWashNotes?: HotWashNotes;
   hotWashIntelligence: HotWashIntelligenceData;
+  initialFinance: EventFinanceData;
+  financeDocuments?: FinanceDocumentRecord[];
   fromTravel?: boolean;
   returnMonth?: string;
   approvalPackage?: ApprovalPackagePayload;
@@ -199,7 +206,7 @@ export function EventDrilldownClient({
         />
       )}
       {tab !== "planning" && tab === "costs" && (
-        <p className="font-body text-sm text-kelly-text/60">Cost / budget lives in the Planning workbook tab.</p>
+        <EventFinancialOperationsWorkspace row={row} initial={initialFinance} documents={financeDocuments} />
       )}
       {tab !== "planning" && tab === "team_notes" && (
         <div className="rounded-2xl border border-kelly-text/10 bg-kelly-page p-4 font-body text-sm">

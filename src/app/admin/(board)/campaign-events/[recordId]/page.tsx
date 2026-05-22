@@ -13,6 +13,9 @@ import { loadCalendarEventDrilldown, serializeCalendarRows } from "@/lib/campaig
 import { loadEventPlanning } from "@/lib/campaign-events/event-planning/event-planning-persist";
 import { mergePlanningFromRow } from "@/lib/campaign-events/event-planning/event-planning-helpers";
 import { loadEventMediaBundle } from "@/lib/campaign-events/media/media-storage";
+import { loadEventFinance } from "@/lib/campaign-events/finance/finance-persist";
+import { enrichEventFinanceFromRow } from "@/lib/campaign-events/finance/finance-helpers";
+import { listFinanceDocumentsForEvent } from "@/lib/campaign-events/finance/finance-document-store";
 import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
 import { AgentCommandPalette } from "@/components/agents/AgentCommandPalette";
 
@@ -41,6 +44,9 @@ export default async function CampaignEventDrilldownPage({
   const promotionAudit = parsePromotionAuditLog(loaded.record.factCard);
   const planningRaw = await loadEventPlanning(recordId);
   const initialPlanning = mergePlanningFromRow(loaded.row, planningRaw);
+  const financeRaw = await loadEventFinance(recordId);
+  const initialFinance = await enrichEventFinanceFromRow(row, financeRaw);
+  const financeDocuments = await listFinanceDocumentsForEvent(recordId);
   return (
     <AgentObservationTracker
       role="campaign_manager"
@@ -67,6 +73,8 @@ export default async function CampaignEventDrilldownPage({
       mediaByUploader={mediaBundle.byUploader}
       hotWashNotes={hotWashNotes}
       hotWashIntelligence={JSON.parse(JSON.stringify(hotWashIntelligence))}
+      initialFinance={JSON.parse(JSON.stringify(initialFinance))}
+      financeDocuments={JSON.parse(JSON.stringify(financeDocuments))}
       fromTravel={sp.from === "travel"}
       returnMonth={sp.month ?? undefined}
     />

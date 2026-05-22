@@ -15,7 +15,7 @@ RedDirt becomes a **fully integrated AI-driven campaign operating system** where
 1. **Database truth** — Prisma/Postgres is canonical for operational state.
 2. **AI agent tools** — advisory, catalogued, human-gated (`/admin/campaign-events/ai-tools`).
 3. **Calendar / event workflow** — `CampaignEventLedgerRecord` + lanes (tentative → official).
-4. **Travel / reimbursement / compliance** — month workflows → FIN/compliance bridge (Sprint 8).
+4. **Travel / reimbursement / compliance** — finance operations engine live (Sprint 8); FIN-1 mapper V2.
 5. **Candidate + campaign manager dashboards** — decision and readiness surfaces.
 6. **Public intake / host / volunteer** — forms → intake → ledger (Sprint 2).
 7. **Market-ready client product** — tenant config, branding, onboarding (Sprint 10).

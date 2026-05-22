@@ -19,6 +19,8 @@ import { ReimbursementMonthChecklist } from "./ReimbursementMonthChecklist";
 import { ReimbursementStatusPanel } from "./ReimbursementStatusPanel";
 import { TravelCorrectionAssist } from "./TravelCorrectionAssist";
 import { useAgentObservation } from "@/components/agents/AgentObservationTracker";
+import { ReimbursementOperationsPanel } from "@/components/admin/campaign-events/finance/ReimbursementOperationsPanel";
+import type { ReimbursementMonthOperations } from "@/lib/campaign-events/finance/reimbursement-operations-types";
 
 function fmtUsd(n: number) {
   return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(n);
@@ -45,9 +47,11 @@ const APPENDIX_GROUP_ORDER = [
 export function OfficialReimbursementReportView({
   report,
   statusContext,
+  operations = null,
 }: {
   report: Report;
   statusContext: ReimbursementMonthStatusContext;
+  operations?: ReimbursementMonthOperations | null;
 }) {
   const { track } = useAgentObservation();
   const print = () => {
@@ -116,6 +120,7 @@ export function OfficialReimbursementReportView({
 
       <div className="flex flex-col gap-6">
         <ReimbursementStatusPanel ctx={statusContext} />
+        <ReimbursementOperationsPanel month={report.month} statusContext={statusContext} operations={operations} />
         <ReimbursementMonthChecklist ctx={statusContext} />
         <TravelCorrectionAssist month={report.month} />
 

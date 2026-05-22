@@ -18,6 +18,8 @@ import { summarizeKellyAgentAdapter } from "@/lib/agents/adapters/kelly-agent-ad
 import { DEFAULT_WRITING_PROFILE } from "@/lib/agents/writing-agent/writing-profile";
 import { loadCampaignLearningSnapshot } from "@/lib/campaign-events/hot-wash-intelligence/load-campaign-learning-snapshot";
 import { SPRINT7_EVENT_INTELLIGENCE_TOOL_CONTRACTS } from "@/lib/campaign-events/ai-tools/sprint-event-intelligence-7-tools";
+import { loadCampaignFinanceSnapshot } from "@/lib/campaign-events/finance/load-campaign-finance-snapshot";
+import { SPRINT8_CAMPAIGN_FINANCE_TOOL_CONTRACTS } from "@/lib/campaign-events/ai-tools/sprint-campaign-finance-8-tools";
 
 const AGENT_READINESS_PCT = 86;
 
@@ -32,9 +34,11 @@ export async function AiCommandCenterHub() {
   });
   const gaps = analyzeCampaignGaps({ snapshot, readinessScore: null });
   const learning = await loadCampaignLearningSnapshot();
+  const finance = await loadCampaignFinanceSnapshot(snapshot.period);
   const sprint2Tools = SPRINT2_AGENT_TOOL_CONTRACTS.length;
   const sprint1Tools = AGENT_INTELLIGENCE_TOOL_CONTRACTS.length;
   const sprint7Tools = SPRINT7_EVENT_INTELLIGENCE_TOOL_CONTRACTS.length;
+  const sprint8Tools = SPRINT8_CAMPAIGN_FINANCE_TOOL_CONTRACTS.length;
 
   return (
     <AgentObservationTracker role="operator" pathname="/admin/ai-command-center" period={snapshot.period}>
@@ -132,6 +136,39 @@ export async function AiCommandCenterHub() {
             </p>
           ) : null}
           <p className="mt-2 text-[10px] text-kelly-text/45">Sprint 7 tools: {sprint7Tools} · Complete hot wash on an event to feed memory.</p>
+        </AiCommandCenterDisclosure>
+
+        <AiCommandCenterDisclosure id="finance" title="Finance intelligence (Sprint 8)" defaultOpen>
+          <p className="text-xs text-kelly-text/65">Reimbursement pipeline · documentation health · county spend.</p>
+          <dl className="mt-3 grid gap-2 text-xs sm:grid-cols-2">
+            <div>
+              <dt className="font-bold">Pipeline</dt>
+              <dd>{finance.pipelineLabel}</dd>
+            </div>
+            <div>
+              <dt className="font-bold">Approved reimbursement</dt>
+              <dd>${finance.approvedReimbursement.toFixed(2)}</dd>
+            </div>
+            <div>
+              <dt className="font-bold">Pending receipts</dt>
+              <dd>{finance.pendingReceipts}</dd>
+            </div>
+            <div>
+              <dt className="font-bold">Exception flags</dt>
+              <dd>{finance.exceptionCount}</dd>
+            </div>
+          </dl>
+          {finance.topBlockers.length ? (
+            <p className="mt-2 text-xs text-amber-900">
+              <span className="font-bold">Blockers:</span> {finance.topBlockers.join(" · ")}
+            </p>
+          ) : null}
+          {finance.countySpendNotes.length ? (
+            <p className="mt-1 text-xs">
+              <span className="font-bold">County spend:</span> {finance.countySpendNotes.join(" · ")}
+            </p>
+          ) : null}
+          <p className="mt-2 text-[10px] text-kelly-text/45">Sprint 8 finance tools: {sprint8Tools}</p>
         </AiCommandCenterDisclosure>
 
         <AiCommandCenterDisclosure id="bottlenecks" title="Current bottlenecks" defaultOpen>

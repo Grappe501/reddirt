@@ -9,14 +9,18 @@ import { AgentNextActionPanel } from "@/components/admin/campaign-events/AgentNe
 import { AgentCommandPalette } from "@/components/agents/AgentCommandPalette";
 import type { NextActionResult } from "@/lib/agents/user-intelligence/next-action-engine";
 import { CampaignDashboardShell, DashboardSection, DashboardStatGrid, StatCard } from "./CampaignDashboardShell";
+import { CandidateFinanceOverview } from "../finance/CandidateFinanceOverview";
+import type { CampaignFinanceSnapshot } from "@/lib/campaign-events/finance/load-campaign-finance-snapshot";
 
 export function CandidateCampaignDashboard({
   snapshot,
   reimbursementSummaries,
+  financeSnapshot,
   nextActions,
 }: {
   snapshot: CampaignEventsDashboardSnapshot;
   reimbursementSummaries?: ReimbursementMonthSummary[];
+  financeSnapshot?: CampaignFinanceSnapshot;
   nextActions?: NextActionResult;
 }) {
   const { period } = snapshot;
@@ -36,6 +40,8 @@ export function CandidateCampaignDashboard({
       {nextActions ? <AgentNextActionPanel actions={nextActions} compact /> : null}
 
       <ReimbursementMonthCards title="Travel reimbursement (March · April · May MTD)" summaries={reimbursementSummaries} />
+
+      {financeSnapshot ? <CandidateFinanceOverview snapshot={financeSnapshot} month={period} /> : null}
 
       {snapshot.calendarSync ? (
       <DashboardSection title="Calendar sync truth">

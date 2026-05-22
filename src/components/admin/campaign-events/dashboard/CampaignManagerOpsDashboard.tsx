@@ -13,6 +13,8 @@ import type { NextActionResult } from "@/lib/agents/user-intelligence/next-actio
 import type { WorkflowFrictionSignal } from "@/lib/agents/user-intelligence/workflow-friction-detector";
 import { MicrocopyHint } from "@/components/admin/campaign-events/MicrocopyHint";
 import { CampaignDashboardShell, DashboardSection, DashboardStatGrid, StatCard } from "./CampaignDashboardShell";
+import { CampaignManagerFinancePanel } from "../finance/CampaignManagerFinancePanel";
+import type { CampaignFinanceSnapshot } from "@/lib/campaign-events/finance/load-campaign-finance-snapshot";
 
 const AUTOMATION_SCAFFOLDS = [
   { label: "Approval emails", status: "Scaffold — recipients configured", href: "/admin/campaign-events/ai-tools" },
@@ -25,12 +27,14 @@ const AUTOMATION_SCAFFOLDS = [
 export function CampaignManagerOpsDashboard({
   snapshot,
   reimbursementSummaries,
+  financeSnapshot,
   nextActions,
   gapHighlight,
   frictionTop,
 }: {
   snapshot: CampaignEventsDashboardSnapshot;
   reimbursementSummaries?: ReimbursementMonthSummary[];
+  financeSnapshot?: CampaignFinanceSnapshot;
   nextActions?: NextActionResult;
   gapHighlight?: CampaignGap;
   frictionTop?: WorkflowFrictionSignal[];
@@ -75,6 +79,8 @@ export function CampaignManagerOpsDashboard({
       </Link>
 
       <ReimbursementMonthCards title="Travel reimbursement workflow" summaries={reimbursementSummaries} />
+
+      {financeSnapshot ? <CampaignManagerFinancePanel snapshot={financeSnapshot} month={period} /> : null}
 
       {snapshot.calendarSync ? (
       <DashboardSection title="Calendar sync (read-only)">

@@ -11,6 +11,7 @@ import { SPRINT2_AGENT_CATALOG_ENTRIES } from "@/lib/campaign-events/ai-tools/sp
 import { SPRINT3_AGENT_CATALOG_ENTRIES } from "@/lib/campaign-events/ai-tools/sprint-agent-intelligence-3-tools";
 import { SPRINT6_EVENT_PLANNING_CATALOG_ENTRIES } from "@/lib/campaign-events/ai-tools/sprint-event-planning-6-tools";
 import { SPRINT7_EVENT_INTELLIGENCE_CATALOG_ENTRIES } from "@/lib/campaign-events/ai-tools/sprint-event-intelligence-7-tools";
+import { SPRINT8_CAMPAIGN_FINANCE_CATALOG_ENTRIES } from "@/lib/campaign-events/ai-tools/sprint-campaign-finance-8-tools";
 import type { MasterToolRegistryEntry } from "./types";
 
 export { MASTER_TOOL_REGISTRY_VERSION } from "./types";
@@ -51,6 +52,7 @@ function catalogToRegistry(): MasterToolRegistryEntry[] {
     ...SPRINT3_AGENT_CATALOG_ENTRIES,
     ...SPRINT6_EVENT_PLANNING_CATALOG_ENTRIES,
     ...SPRINT7_EVENT_INTELLIGENCE_CATALOG_ENTRIES,
+    ...SPRINT8_CAMPAIGN_FINANCE_CATALOG_ENTRIES,
   ];
   for (const tool of agentIntel) {
     if (out.some((x) => x.id === tool.id)) continue;

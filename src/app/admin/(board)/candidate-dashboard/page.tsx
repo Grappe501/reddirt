@@ -2,6 +2,7 @@ import { CandidateCampaignDashboard } from "@/components/admin/campaign-events/d
 import { CampaignEventsMonthNav } from "@/components/admin/campaign-events/CampaignEventsMonthNav";
 import { loadCampaignEventsDashboard } from "@/lib/campaign-events/load-campaign-events-dashboard";
 import { loadReimbursementMonthSummaries } from "@/lib/campaign-events/travel-reimbursement/load-reimbursement-summaries";
+import { loadCampaignFinanceSnapshot } from "@/lib/campaign-events/finance/load-campaign-finance-snapshot";
 import { parseReviewMonth } from "@/lib/campaign-events/month-review/month-review-types";
 import { loadNextActionsForPage } from "@/lib/agents/user-intelligence/load-next-actions";
 import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
@@ -13,9 +14,10 @@ type Props = { searchParams: Promise<{ month?: string }> };
 export default async function CandidateDashboardPage({ searchParams }: Props) {
   const sp = await searchParams;
   const month = parseReviewMonth(sp.month);
-  const [{ snapshot }, reimbursementSummaries] = await Promise.all([
+  const [{ snapshot }, reimbursementSummaries, financeSnapshot] = await Promise.all([
     loadCampaignEventsDashboard(month),
     loadReimbursementMonthSummaries(),
+    loadCampaignFinanceSnapshot(month),
   ]);
   const nextActions = loadNextActionsForPage({
     role: "candidate",
@@ -35,6 +37,7 @@ export default async function CandidateDashboardPage({ searchParams }: Props) {
       <CandidateCampaignDashboard
         snapshot={snapshot}
         reimbursementSummaries={reimbursementSummaries}
+        financeSnapshot={JSON.parse(JSON.stringify(financeSnapshot))}
         nextActions={nextActions}
       />
     </AgentObservationTracker>

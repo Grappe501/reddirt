@@ -48,7 +48,17 @@ export type UserUxObservationEvent =
   | "county_memory_updated"
   | "event_pattern_detected"
   | "strategic_signal_detected"
-  | "successful_event_logged";
+  | "successful_event_logged"
+  | "receipt_uploaded"
+  | "reimbursement_completed"
+  | "expense_flagged"
+  | "compliance_warning_detected"
+  | "financial_gap_detected"
+  | "audit_packet_generated"
+  | "receipt_missing_detected"
+  | "finance_risk_detected"
+  | "treasurer_review_requested"
+  | "campaign_spend_pattern_detected";
 
 export type UserObservationEntry = {
   id: string;
@@ -152,4 +162,14 @@ export const USER_UX_EVENT_LABELS: Record<UserUxObservationEvent, string> = {
   event_pattern_detected: "Event pattern detected",
   strategic_signal_detected: "Strategic signal detected",
   successful_event_logged: "Successful event logged",
+  receipt_uploaded: "Receipt uploaded",
+  reimbursement_completed: "Reimbursement completed",
+  expense_flagged: "Expense flagged",
+  compliance_warning_detected: "Compliance warning detected",
+  financial_gap_detected: "Financial gap detected",
+  audit_packet_generated: "Audit packet generated",
+  receipt_missing_detected: "Receipt missing detected",
+  finance_risk_detected: "Finance risk detected",
+  treasurer_review_requested: "Treasurer review requested",
+  campaign_spend_pattern_detected: "Campaign spend pattern detected",
 };

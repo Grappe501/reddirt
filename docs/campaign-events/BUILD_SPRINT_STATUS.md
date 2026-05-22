@@ -1,7 +1,7 @@
 # Build Sprint Status
 
 **Lane:** `RedDirt/`  
-**Last updated:** Sprint 7 (May 2026)  
+**Last updated:** Sprint 8 (May 2026)  
 **Companion:** [`MASTER_CAMPAIGN_OS_ROADMAP.md`](./MASTER_CAMPAIGN_OS_ROADMAP.md)
 
 This is the **live control board**. Update at the end of every sprint slice.
@@ -23,7 +23,7 @@ This is the **live control board**. Update at the end of every sprint slice.
 | 5C | Agent Intelligence 3 (unified runtime + safe tool router) | **Complete** (V1 deterministic) | ~86% | ~58% |
 | 6 | Event planning drilldown | **Complete** (V1 workbook) | ~78% | ~55% |
 | 7 | Hot wash intelligence + county memory | **Complete** (V1 deterministic) | ~82% | ~58% |
-| 8 | FIN / compliance bridge | Not started | — | — |
+| 8 | Finance + compliance operations | **Complete** (V1 deterministic) | ~85% | ~62% |
 | 9 | Dashboard + nav polish | Partial | ~55% | ~40% |
 | 10 | Client productization | Not started | — | — |
 
@@ -250,13 +250,24 @@ Gated SendGrid send, HTML+text template, JSON approval tokens, public `/campaign
 
 ---
 
-## Sprint 8 — Finance / FIN-1 / compliance bridge
+## Sprint 8 — Finance + compliance operations
 
-**Today:** `FinancialTransaction` + `/admin/financial-transactions` read-only; compliance JSON under `data/compliance/`.
+**Status:** **Complete** (May 2026, V1 deterministic). FIN-1 auto-post remains V2.
 
-**Build:** Approved reimbursement → draft transaction; packet export; receipt/event link; treasurer review; audit trail.
+**Delivered:**
 
-**Success:** Travel reimbursement is official campaign finance data.
+| Artifact | Path |
+|----------|------|
+| Event financial ops | `EventFinancialOperationsWorkspace.tsx`, `_eventFinance` |
+| Document pipeline | `data/campaign-events/finance/`, `finance-document-store.ts` |
+| Reimbursement ops | `ReimbursementOperationsPanel`, pipeline + packet + audit |
+| Dashboards | Candidate + CM finance panels, treasurer readiness |
+| Tools (20) | `sprint-campaign-finance-8-tools.ts` |
+| Docs | `CAMPAIGN_FINANCE_OPERATING_SYSTEM.md`, `REIMBURSEMENT_OPERATIONS_ENGINE.md`, etc. |
+
+**Test:** `npm run campaign-events:test-finance-operations`
+
+**Success:** Events, travel, receipts, and month reimbursement share one audit-ready finance intelligence layer.
 
 ---
 

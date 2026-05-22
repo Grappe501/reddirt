@@ -2,6 +2,7 @@ import { CampaignManagerOpsDashboard } from "@/components/admin/campaign-events/
 import { CampaignEventsMonthNav } from "@/components/admin/campaign-events/CampaignEventsMonthNav";
 import { loadCampaignEventsDashboard } from "@/lib/campaign-events/load-campaign-events-dashboard";
 import { loadReimbursementMonthSummaries } from "@/lib/campaign-events/travel-reimbursement/load-reimbursement-summaries";
+import { loadCampaignFinanceSnapshot } from "@/lib/campaign-events/finance/load-campaign-finance-snapshot";
 import { parseReviewMonth } from "@/lib/campaign-events/month-review/month-review-types";
 import { loadNextActionsForPage } from "@/lib/agents/user-intelligence/load-next-actions";
 import { analyzeCampaignGaps } from "@/lib/agents/campaign-intelligence/campaign-gap-analyzer";
@@ -40,6 +41,7 @@ export default async function CampaignManagerDashboardPage({ searchParams }: Pro
       <CampaignManagerOpsDashboard
         snapshot={snapshot}
         reimbursementSummaries={reimbursementSummaries}
+        financeSnapshot={JSON.parse(JSON.stringify(financeSnapshot))}
         nextActions={nextActions}
         gapHighlight={gapAnalysis.highestImpact}
         frictionTop={frictionTop}

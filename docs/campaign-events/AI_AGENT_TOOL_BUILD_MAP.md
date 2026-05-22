@@ -236,12 +236,25 @@ Legacy catalog `appr-promote-official` remains idea — use Sprint 5 ids above f
 
 ---
 
-### Sprint 8 — Finance / compliance
+### Sprint 8 — Finance + compliance operations (May 2026)
+
+| Component | Path | Status |
+|-----------|------|--------|
+| Event financial ops | `finance/EventFinancialOperationsWorkspace.tsx` | functional V1 |
+| Reimbursement ops | `ReimbursementOperationsPanel.tsx` | functional V1 |
+| Document pipeline | `finance-document-store.ts` | functional (no OCR) |
+| Tools (20) | `sprint-campaign-finance-8-tools.ts` | functional / partial |
+
+**Test:** `npm run campaign-events:test-finance-operations`
+
+**V2:** FIN-1 mapper, OCR, automated filing export.
+
+### Sprint 8 — Finance / compliance (legacy matrix)
 
 | Planned agent | Catalog id | Status | Build action |
 |---------------|------------|--------|--------------|
 | Compliance category suggester | compliance lifecycle | idea | Map to `FinancialTransaction` categories |
-| Reimbursement-to-FIN mapper | `tl-event-link` | idea | **Core Sprint 8** |
+| Reimbursement-to-FIN mapper | `tl-event-link` | idea | **V2 after Sprint 8 ops** |
 | Receipt matcher | compliance/receipts JSON + FIN | idea | Link `ComplianceDocument` |
 | Audit packet builder | compliance exports | idea | Align `data/compliance/` exports |
 | Finance anomaly detector | `mr-reimburse-dollar` | functional | Cross-check ledger vs FIN rows |
