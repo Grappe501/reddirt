@@ -27,6 +27,7 @@ import { SPRINT_COPILOT_TOOLING_CATALOG_ENTRIES } from "./ai-tools/sprint-copilo
 import { SPRINT_COUNTY_INTELLIGENCE_CATALOG_ENTRIES } from "./ai-tools/sprint-county-intelligence-tools";
 import { SPRINT_COUNTY_INTELLIGENCE_V2_CATALOG_ENTRIES } from "./ai-tools/sprint-county-intelligence-v2-tools";
 import { SPRINT_COMMUNICATIONS_CATALOG_ENTRIES } from "./ai-tools/sprint-communications-tools";
+import { SPRINT_COMMUNICATIONS_INTELLIGENCE_V2_CATALOG_ENTRIES } from "./ai-tools/sprint-communications-intelligence-v2-tools";
 import { SPRINT_VOLUNTEER_CATALOG_ENTRIES } from "./ai-tools/sprint-volunteer-tools";
 
 const S = (s: AiToolEntry["status"]) => s;
@@ -155,7 +156,10 @@ export const SUPPLEMENT_TOOLS_BY_LIFECYCLE: Record<string, AiToolEntry[]> = {
     ...SPRINT_COUNTY_INTELLIGENCE_CATALOG_ENTRIES,
     ...SPRINT_COUNTY_INTELLIGENCE_V2_CATALOG_ENTRIES,
   ],
-  communications_system: SPRINT_COMMUNICATIONS_CATALOG_ENTRIES,
+  communications_system: [
+    ...SPRINT_COMMUNICATIONS_CATALOG_ENTRIES,
+    ...SPRINT_COMMUNICATIONS_INTELLIGENCE_V2_CATALOG_ENTRIES,
+  ],
   volunteer_system: SPRINT_VOLUNTEER_CATALOG_ENTRIES,
 };
 

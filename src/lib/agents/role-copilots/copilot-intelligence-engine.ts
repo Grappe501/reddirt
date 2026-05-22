@@ -16,6 +16,7 @@ import {
 import { scoreCopilotReadiness, describeModuleLock } from "./copilot-readiness-scorer";
 import { getRoleIntelligenceToolIds, getRoleRiskWarnings } from "./role-copilot-intelligence-rules";
 import { mergeCountyIntoCopilotBriefLite } from "@/lib/agents/county-intelligence/county-copilot-brief-merge-lite";
+import { mergeCommunicationsIntoCopilotBriefLite } from "@/lib/communications/communications-copilot-brief-merge-lite";
 import { getRoleCopilot } from "./role-copilot-registry";
 import type { CopilotSkillLevel, RoleCopilotId } from "./role-copilot-types";
 
@@ -96,7 +97,7 @@ export function buildCopilotIntelligenceBrief(input: CopilotIntelligenceInput): 
     "candidate",
     "campaign_manager",
   ];
-  const baseBrief = {
+  let brief: CopilotIntelligenceBrief = {
     snapshot,
     campaignContext,
     recommendedNextTask,
@@ -113,9 +114,20 @@ export function buildCopilotIntelligenceBrief(input: CopilotIntelligenceInput): 
   };
 
   if (COUNTY_ROLES.includes(input.role)) {
-    return mergeCountyIntoCopilotBriefLite(input.role, baseBrief);
+    brief = mergeCountyIntoCopilotBriefLite(input.role, brief);
   }
-  return baseBrief;
+  const COMMS_ROLES: RoleCopilotId[] = [
+    "communications_lead",
+    "volunteer_coordinator",
+    "county_lead",
+    "host",
+    "candidate",
+    "campaign_manager",
+  ];
+  if (COMMS_ROLES.includes(input.role)) {
+    brief = mergeCommunicationsIntoCopilotBriefLite(input.role, brief);
+  }
+  return brief;
 }
 
 export function buildCopilotIntelligenceBriefForRoute(

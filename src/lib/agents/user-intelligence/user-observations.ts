@@ -134,7 +134,21 @@ export type UserUxObservationEvent =
   | "county_training_completed"
   | "county_event_recommendation_followed"
   | "county_power_of_five_plan_created"
-  | "county_followup_plan_created";
+  | "county_followup_plan_created"
+  | "communication_sequence_created"
+  | "communication_sequence_completed"
+  | "communication_gap_detected"
+  | "volunteer_outreach_recommended"
+  | "host_followup_recommended"
+  | "county_message_generated"
+  | "message_studio_opened"
+  | "draft_generated"
+  | "draft_modified"
+  | "template_applied"
+  | "relationship_warning_generated"
+  | "burnout_warning_generated"
+  | "followup_overdue_detected"
+  | "communications_priority_viewed";
 
 export type UserObservationEntry = {
   id: string;
@@ -324,4 +338,18 @@ export const USER_UX_EVENT_LABELS: Record<UserUxObservationEvent, string> = {
   county_event_recommendation_followed: "County event recommendation followed",
   county_power_of_five_plan_created: "County Power of 5 plan created",
   county_followup_plan_created: "County follow-up plan created",
+  communication_sequence_created: "Communication sequence created",
+  communication_sequence_completed: "Communication sequence completed",
+  communication_gap_detected: "Communication gap detected",
+  volunteer_outreach_recommended: "Volunteer outreach recommended",
+  host_followup_recommended: "Host follow-up recommended",
+  county_message_generated: "County message generated",
+  message_studio_opened: "Message Studio opened",
+  draft_generated: "Draft generated",
+  draft_modified: "Draft modified",
+  template_applied: "Template applied",
+  relationship_warning_generated: "Relationship warning generated",
+  burnout_warning_generated: "Burnout warning generated",
+  followup_overdue_detected: "Follow-up overdue detected",
+  communications_priority_viewed: "Communications priority viewed",
 };

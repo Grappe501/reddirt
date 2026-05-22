@@ -1,6 +1,23 @@
 # Kelly OS Build Status
 
-## Latest: County Intelligence V2 + Copilot Application Pass
+## Latest: Communications Intelligence V2
+
+| Item | Status |
+|------|--------|
+| Relationship intelligence graph | **Functional** |
+| 12 communications copilots | **Functional** |
+| Sequence + cadence engine | **Functional** |
+| Writing orchestration | **Functional** |
+| `/admin/communications/intelligence` | **Live** |
+| Message Studio V1 | **Live** (no send button) |
+| Communications AI tools V2 (38) | **Registered** |
+| County comms bridge | **Functional** |
+| Training modules (11 V2) | **Registered** |
+| Tests × 3 + typecheck/build | **Run on push** |
+
+---
+
+## Prior: County Intelligence V2 + Copilot Application Pass
 
 | Item | Status |
 |------|--------|

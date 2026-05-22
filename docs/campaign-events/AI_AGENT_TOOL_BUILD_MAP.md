@@ -236,6 +236,24 @@ Legacy catalog `appr-promote-official` remains idea — use Sprint 5 ids above f
 
 ---
 
+### Communications Intelligence V2 (May 2026)
+
+| Component | Path | Status |
+|-----------|------|--------|
+| Relationship graph | `src/lib/communications/relationship-intelligence/` | functional |
+| Sequences | `src/lib/communications/sequences/` | functional |
+| Writing orchestration | `src/lib/communications/writing-orchestration/` | functional |
+| Memory | `src/lib/communications/memory/` | functional |
+| Intelligence dashboard | `/admin/communications/intelligence` | functional |
+| Message Studio | `/admin/communications/studio` | functional V1 |
+| Tools V2 (38) | `sprint-communications-intelligence-v2-tools.ts` | functional |
+
+**Docs:** `COMMUNICATIONS_INTELLIGENCE_SYSTEM.md`, `RELATIONSHIP_INTELLIGENCE_GRAPH.md`, `COMMUNICATION_SEQUENCE_ENGINE.md`
+
+**Tests:** `communications:test-intelligence`, `communications:test-relationships`, `communications:test-writing-orchestration`
+
+---
+
 ### County Intelligence Bridge V1 + V2 (May 2026)
 
 | Component | Path | Status |

@@ -74,6 +74,12 @@ export function CommunicationsCommandCenterClient({ bundle }: { bundle: Communic
           <Link href="/admin/campaign-events/ai-tools" className="rounded-full border px-4 py-2 text-xs font-bold">
             Comms AI tools
           </Link>
+          <Link href="/admin/communications/intelligence" className="rounded-full border border-kelly-navy/25 px-4 py-2 text-xs font-bold text-kelly-navy">
+            Communications intelligence
+          </Link>
+          <Link href="/admin/communications/studio" className="rounded-full border border-kelly-navy/25 px-4 py-2 text-xs font-bold text-kelly-navy">
+            Message Studio
+          </Link>
         </div>
       </header>
 
