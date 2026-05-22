@@ -1,10 +1,22 @@
 /**
- * Master orchestration signal loader — Phase 2 will wire live domain bundles.
- * V1: graceful degradation; missing domains become blockers, never throws.
+ * Master orchestration signal loader — Phase 2A live intake.
+ * Graceful degradation: missing source → blocker + sourceHealth, never throw.
  */
 
+import { composeCountyDashboardContext } from "@/lib/agents/county-intelligence/county-intelligence-engine";
+import { composeCrossDomainContext } from "@/lib/agents/orchestration/cross-domain-context-composer";
+import { loadToolBuildQueue } from "@/lib/agents/tool-builder/tool-builder-queue";
+import { loadGlobalUserObservations } from "@/lib/agents/user-intelligence/user-observations";
+import type { CampaignUserRole } from "@/lib/agents/user-intelligence/user-personas";
+import { buildEmailProviderReadinessReport } from "@/lib/campaign-events/communications/email-provider-readiness";
+import { runEmailOsMassSendGuard } from "@/lib/campaign-events/ai-tools/email-os-tool-helpers";
+import { loadCampaignEventsDashboard } from "@/lib/campaign-events/load-campaign-events-dashboard";
+import { composeCommunicationsIntelligenceContext } from "@/lib/communications/communications-intelligence-engine";
+import { buildToolExecutionReadinessSummary } from "@/lib/agents/os-control/tool-execution-readiness";
 import type { CampaignState } from "./campaign-state-types";
-import { buildSkeletonCampaignState } from "./campaign-state-types";
+import { buildCampaignStateFromSignals } from "./build-campaign-state-from-signals";
+import type { OrchestrationSourceHealth } from "./orchestration-source-health";
+import { sourceHealthFromSlice } from "./orchestration-source-health";
 
 export type OrchestrationSignalSlice<T> = {
   domain: string;
@@ -20,6 +32,25 @@ export type OrchestrationSignalBundle = {
   errors: string[];
 };
 
+export type OrchestrationSignalsResult = {
+  bundle: OrchestrationSignalBundle;
+  sourceHealth: OrchestrationSourceHealth[];
+  state: CampaignState;
+};
+
+const SOURCE_LABELS: Record<string, string> = {
+  os_control: "OS control bundle",
+  unified_context: "Unified campaign context",
+  county: "County intelligence V2",
+  communications: "Communications intelligence V2",
+  observations: "User observations",
+  tool_builder: "Tool-builder queue",
+  cross_domain: "Cross-domain context",
+  events_dashboard: "Campaign events dashboard",
+  email_os: "Email OS / ECC readiness",
+  tool_registry: "Tool execution readiness",
+};
+
 async function loadSlice<T>(
   domain: string,
   loader: () => Promise<T>,
@@ -33,12 +64,23 @@ async function loadSlice<T>(
   }
 }
 
-/** Planned loaders (Phase 2+) — stubs return null until wired. */
+function syncSlice<T>(domain: string, loader: () => T): OrchestrationSignalSlice<T> {
+  try {
+    const data = loader();
+    return { domain, ok: true, data };
+  } catch (e) {
+    const message = e instanceof Error ? e.message : String(e);
+    return { domain, ok: false, data: null, error: message };
+  }
+}
+
 export async function loadCampaignOrchestrationSignals(
   period = "2026-04",
-  options?: { includeOsControl?: boolean },
-): Promise<{ bundle: OrchestrationSignalBundle; state: CampaignState }> {
+  options?: { includeOsControl?: boolean; pathname?: string; role?: CampaignUserRole },
+): Promise<OrchestrationSignalsResult> {
   const includeOs = options?.includeOsControl !== false;
+  const pathname = options?.pathname ?? "/admin/ai-command-center";
+  const role = options?.role ?? "campaign_manager";
   const slices: OrchestrationSignalSlice<unknown>[] = [];
 
   if (includeOs) {
@@ -50,73 +92,68 @@ export async function loadCampaignOrchestrationSignals(
     );
   }
 
+  const eventsSlice = await loadSlice("events_dashboard", () => loadCampaignEventsDashboard(period));
+  slices.push(eventsSlice);
+
   slices.push(
     await loadSlice("unified_context", async () => {
       const { assembleUnifiedCampaignContext } = await import(
         "@/lib/agents/campaign-intelligence/unified-campaign-context-assembler"
       );
-      return assembleUnifiedCampaignContext({ period });
+      return assembleUnifiedCampaignContext({ period, pathname });
     }),
-    await loadSlice("county", async () => {
-      const { composeCountyDashboardContext } = await import(
-        "@/lib/agents/county-intelligence/county-intelligence-engine"
-      );
-      return composeCountyDashboardContext();
+    syncSlice("county", () => composeCountyDashboardContext()),
+    syncSlice("communications", () => composeCommunicationsIntelligenceContext()),
+    syncSlice("observations", () => loadGlobalUserObservations().slice(-50)),
+    syncSlice("tool_builder", () => loadToolBuildQueue()),
+    syncSlice("email_os", () => {
+      const readiness = buildEmailProviderReadinessReport();
+      const guard = runEmailOsMassSendGuard(500);
+      return {
+        sendEnabled: readiness.approvalEmail.sendEnabled,
+        sendGridConfigured: readiness.sendGrid.apiKeyConfigured,
+        massSendBlocked: !guard.allowed,
+        generatedAt: new Date().toISOString(),
+      };
     }),
-    await loadSlice("communications", async () => {
-      const { composeCommunicationsIntelligenceContext } = await import(
-        "@/lib/communications/communications-intelligence-engine"
-      );
-      return composeCommunicationsIntelligenceContext();
-    }),
-    await loadSlice("observations", async () => {
-      const { loadGlobalUserObservations } = await import("@/lib/agents/user-intelligence/user-observations");
-      return loadGlobalUserObservations().slice(-50);
-    }),
-    await loadSlice("tool_builder", async () => {
-      const { loadToolBuildQueue } = await import("@/lib/agents/tool-builder/tool-builder-queue");
-      return loadToolBuildQueue();
-    }),
+    syncSlice("tool_registry", () => buildToolExecutionReadinessSummary(15)),
+  );
+
+  const eventsDash = eventsSlice.ok ? eventsSlice.data : null;
+
+  slices.push(
+    syncSlice("cross_domain", () =>
+      composeCrossDomainContext({
+        role,
+        pathname,
+        period,
+        snapshot: eventsDash?.snapshot ?? null,
+        syncStale: eventsDash?.snapshot?.calendarSync?.jsonStale,
+        recentObservations: loadGlobalUserObservations().slice(-24),
+      }),
+    ),
+  );
+
+  const sourceHealth: OrchestrationSourceHealth[] = slices.map((s) =>
+    sourceHealthFromSlice(
+      s.domain,
+      SOURCE_LABELS[s.domain] ?? s.domain,
+      s.ok,
+      s.data,
+      s.error,
+      [`src/lib/agents/orchestration/load-campaign-orchestration-signals.ts#${s.domain}`],
+    ),
   );
 
   const errors = slices.filter((s) => !s.ok).map((s) => `${s.domain}: ${s.error ?? "failed"}`);
-  const state = buildSkeletonCampaignState(period);
-  state.signalLoadErrors = errors;
-  if (errors.length) {
-    state.activeBlockers.push({
-      id: "signal-load-partial",
-      domainId: "campaign_management",
-      severity: "P1",
-      message: `Partial signal load (${errors.length} domain(s) failed)`,
-    });
-  }
-
-  const osSlice = slices.find((s) => s.domain === "os_control" && s.ok);
-  if (osSlice?.data && typeof osSlice.data === "object" && osSlice.data !== null && "state" in osSlice.data) {
-    const os = osSlice.data as { state: { systemHealthScore?: number; activeBlockers?: { message: string }[] } };
-    if (typeof os.state.systemHealthScore === "number") {
-      state.operationalReadiness = os.state.systemHealthScore;
-      state.overallHealth = os.state.systemHealthScore >= 80 ? "strong" : os.state.systemHealthScore >= 60 ? "stable" : "weak";
-    }
-    if (Array.isArray(os.state.activeBlockers)) {
-      for (const b of os.state.activeBlockers.slice(0, 5)) {
-        state.activeBlockers.push({
-          id: `os-${state.activeBlockers.length}`,
-          domainId: "campaign_management",
-          severity: "P1",
-          message: b.message,
-        });
-      }
-    }
-  }
-
-  state.observationSummary =
-    errors.length === 0
-      ? `Signals loaded for period ${period} (${slices.length} domains).`
-      : `Signals partial: ${slices.filter((s) => s.ok).length}/${slices.length} OK.`;
-
-  return {
-    bundle: { period, loadedAt: new Date().toISOString(), slices, errors },
-    state,
+  const bundle: OrchestrationSignalBundle = {
+    period,
+    loadedAt: new Date().toISOString(),
+    slices,
+    errors,
   };
+
+  const state = buildCampaignStateFromSignals(bundle, sourceHealth);
+
+  return { bundle, sourceHealth, state };
 }

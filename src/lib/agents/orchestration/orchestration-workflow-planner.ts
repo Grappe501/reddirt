@@ -2,7 +2,7 @@
  * Cross-domain workflow planner — deterministic workflow chains V1.
  */
 
-import type { CampaignDomainId } from "./campaign-state-types";
+import type { CampaignDomainId, CampaignState } from "./campaign-state-types";
 import type { OrchestrationDiagnosis } from "./orchestration-reasoning-engine";
 
 export type OrchestrationWorkflowStep = {
@@ -23,6 +23,68 @@ export type OrchestrationWorkflowPlan = {
   steps: OrchestrationWorkflowStep[];
   readinessScore: number;
   blockers: string[];
+  triggerCondition: string;
+  recommendedOwner: string;
+  requiredHumanApproval: boolean;
+  doneWhenCriteria: string[];
+};
+
+export type OrchestrationWorkflow = OrchestrationWorkflowPlan & {
+  activated: boolean;
+  blockedBy: string[];
+};
+
+type WorkflowMeta = {
+  triggerCondition: string;
+  recommendedOwner: string;
+  requiredHumanApproval: boolean;
+  doneWhenCriteria: string[];
+  shouldActivate: (state: CampaignState) => boolean;
+};
+
+const WORKFLOW_META: Record<string, WorkflowMeta> = {
+  "close-month-reimbursement": {
+    triggerCondition: "Reimbursement score < 80 or status needs_review",
+    recommendedOwner: "treasurer",
+    requiredHumanApproval: true,
+    doneWhenCriteria: ["Travel queue clear", "Mileage complete", "Treasurer packet print-ready"],
+    shouldActivate: (s) => s.reimbursementReadiness.score < 80 || s.reimbursementReadiness.band !== "strong",
+  },
+  "prepare-county-visit": {
+    triggerCondition: "Event readiness < 75 or pending approvals > 0",
+    recommendedOwner: "field_manager",
+    requiredHumanApproval: true,
+    doneWhenCriteria: ["County brief complete", "Event drilldown saved", "Volunteer staffing assigned"],
+    shouldActivate: (s) => s.eventReadiness.score < 75 || s.calendarEventPressure.pendingApprovals > 0,
+  },
+  "activate-weak-county": {
+    triggerCondition: "County health not strong or weak counties > 0",
+    recommendedOwner: "county_lead",
+    requiredHumanApproval: true,
+    doneWhenCriteria: ["Gap analysis reviewed", "Power of 5 plan drafted", "Event proposal queued"],
+    shouldActivate: (s) => s.countyHealth.band !== "strong" || s.countyIntelligenceSummary.weakCountyCount > 0,
+  },
+  "run-house-party-program": {
+    triggerCondition: "Host domain score < 65 (optional activation)",
+    recommendedOwner: "field_manager",
+    requiredHumanApproval: true,
+    doneWhenCriteria: ["Host confirmed", "Invite list reviewed", "Post-event follow-up drafted"],
+    shouldActivate: (s) => s.domainStatuses.host.score < 65,
+  },
+  "launch-volunteer-push": {
+    triggerCondition: "Volunteer health not strong or at-risk volunteers > 0",
+    recommendedOwner: "volunteer_coordinator",
+    requiredHumanApproval: true,
+    doneWhenCriteria: ["Segments defined", "ECC drafts prepared", "Training modules assigned"],
+    shouldActivate: (s) => s.volunteerHealth.band !== "strong" || s.commsReadiness.volunteerAtRisk > 0,
+  },
+  "campaign-manager-daily": {
+    triggerCondition: "Always recommended each operating day",
+    recommendedOwner: "campaign_manager",
+    requiredHumanApproval: false,
+    doneWhenCriteria: ["P0 blockers triaged", "Top 3 moves delegated", "Risk warnings reviewed"],
+    shouldActivate: () => true,
+  },
 };
 
 export const ORCHESTRATION_WORKFLOW_TEMPLATES: Record<string, OrchestrationWorkflowPlan> = {
@@ -32,6 +94,10 @@ export const ORCHESTRATION_WORKFLOW_TEMPLATES: Record<string, OrchestrationWorkf
     purpose: "Travel approvals → mileage fixes → finance packet → treasurer review → print/export",
     readinessScore: 0,
     blockers: [],
+    triggerCondition: WORKFLOW_META["close-month-reimbursement"].triggerCondition,
+    recommendedOwner: "treasurer",
+    requiredHumanApproval: true,
+    doneWhenCriteria: WORKFLOW_META["close-month-reimbursement"].doneWhenCriteria,
     steps: [
       { id: "s1", title: "Clear travel approval queue", domainId: "approvals", route: "/admin/campaign-events/review", ownerRole: "campaign_manager", humanGate: "review" },
       { id: "s2", title: "Fix mileage / ledger gaps", domainId: "travel", route: "/admin/campaign-events/travel", ownerRole: "operator", humanGate: "review", dependsOn: ["s1"] },
@@ -45,6 +111,10 @@ export const ORCHESTRATION_WORKFLOW_TEMPLATES: Record<string, OrchestrationWorkf
     purpose: "County briefing → event planning → volunteers → communications → candidate talking points → hot wash setup",
     readinessScore: 0,
     blockers: [],
+    triggerCondition: WORKFLOW_META["prepare-county-visit"].triggerCondition,
+    recommendedOwner: "field_manager",
+    requiredHumanApproval: true,
+    doneWhenCriteria: WORKFLOW_META["prepare-county-visit"].doneWhenCriteria,
     steps: [
       { id: "s1", title: "County intelligence briefing", domainId: "county", route: "/admin/county-intelligence", ownerRole: "field_manager", humanGate: "none" },
       { id: "s2", title: "Event planning drilldown", domainId: "event_planning", route: "/admin/campaign-events/workbench", ownerRole: "campaign_manager", humanGate: "review", dependsOn: ["s1"] },
@@ -60,6 +130,10 @@ export const ORCHESTRATION_WORKFLOW_TEMPLATES: Record<string, OrchestrationWorkf
     purpose: "Gap analysis → volunteer recruitment → Power of 5 → event proposal → comms package",
     readinessScore: 0,
     blockers: [],
+    triggerCondition: WORKFLOW_META["activate-weak-county"].triggerCondition,
+    recommendedOwner: "county_lead",
+    requiredHumanApproval: true,
+    doneWhenCriteria: WORKFLOW_META["activate-weak-county"].doneWhenCriteria,
     steps: [
       { id: "s1", title: "County gap analysis", domainId: "county", route: "/admin/county-intelligence", ownerRole: "county_lead", humanGate: "none" },
       { id: "s2", title: "Volunteer recruitment segment", domainId: "volunteer", route: "/admin/volunteers", ownerRole: "volunteer_coordinator", humanGate: "review", dependsOn: ["s1"] },
@@ -74,6 +148,10 @@ export const ORCHESTRATION_WORKFLOW_TEMPLATES: Record<string, OrchestrationWorkf
     purpose: "Host onboarding → invite list → volunteer staffing → candidate briefing → post-event follow-up",
     readinessScore: 0,
     blockers: [],
+    triggerCondition: WORKFLOW_META["run-house-party-program"].triggerCondition,
+    recommendedOwner: "field_manager",
+    requiredHumanApproval: true,
+    doneWhenCriteria: WORKFLOW_META["run-house-party-program"].doneWhenCriteria,
     steps: [
       { id: "s1", title: "Host onboarding", domainId: "host", route: "/admin/campaign-events/workbench", ownerRole: "field_manager", humanGate: "review" },
       { id: "s2", title: "Invite list review", domainId: "communications", route: "/admin/communications", ownerRole: "communications_lead", humanGate: "review", dependsOn: ["s1"] },
@@ -88,6 +166,10 @@ export const ORCHESTRATION_WORKFLOW_TEMPLATES: Record<string, OrchestrationWorkf
     purpose: "Segments → email drafts → training → county targeting → assignment queue",
     readinessScore: 0,
     blockers: [],
+    triggerCondition: WORKFLOW_META["launch-volunteer-push"].triggerCondition,
+    recommendedOwner: "volunteer_coordinator",
+    requiredHumanApproval: true,
+    doneWhenCriteria: WORKFLOW_META["launch-volunteer-push"].doneWhenCriteria,
     steps: [
       { id: "s1", title: "Volunteer segments", domainId: "volunteer", route: "/admin/volunteers", ownerRole: "volunteer_coordinator", humanGate: "none" },
       { id: "s2", title: "Email drafts (ECC)", domainId: "communications", route: "/admin/workbench/email-command-center", ownerRole: "communications_lead", humanGate: "review", dependsOn: ["s1"] },
@@ -102,6 +184,10 @@ export const ORCHESTRATION_WORKFLOW_TEMPLATES: Record<string, OrchestrationWorkf
     purpose: "OS health → blockers → top 3 moves → delegation → risk warnings",
     readinessScore: 0,
     blockers: [],
+    triggerCondition: WORKFLOW_META["campaign-manager-daily"].triggerCondition,
+    recommendedOwner: "campaign_manager",
+    requiredHumanApproval: false,
+    doneWhenCriteria: WORKFLOW_META["campaign-manager-daily"].doneWhenCriteria,
     steps: [
       { id: "s1", title: "OS health snapshot", domainId: "campaign_management", route: "/admin/ai-command-center", ownerRole: "campaign_manager", humanGate: "none" },
       { id: "s2", title: "Clear P0 blockers", domainId: "campaign_management", route: "/admin/ai-command-center", ownerRole: "campaign_manager", humanGate: "review", dependsOn: ["s1"] },
@@ -111,9 +197,7 @@ export const ORCHESTRATION_WORKFLOW_TEMPLATES: Record<string, OrchestrationWorkf
   },
 };
 
-export function buildOrchestrationWorkflowPlans(
-  diagnosis: OrchestrationDiagnosis,
-): OrchestrationWorkflowPlan[] {
+export function buildOrchestrationWorkflowPlans(diagnosis: OrchestrationDiagnosis): OrchestrationWorkflowPlan[] {
   return diagnosis.workflowRecommendations
     .map((id) => ORCHESTRATION_WORKFLOW_TEMPLATES[id])
     .filter((p): p is OrchestrationWorkflowPlan => Boolean(p));
@@ -126,4 +210,24 @@ export function scoreWorkflowReadiness(plan: OrchestrationWorkflowPlan, openBloc
     readinessScore: Math.max(0, 100 - penalty),
     blockers: openBlockerCount > 0 ? [`${openBlockerCount} active campaign blocker(s)`] : [],
   };
+}
+
+export function activateWorkflowsFromState(state: CampaignState, diagnosis: OrchestrationDiagnosis): OrchestrationWorkflow[] {
+  const blockerCount = state.activeBlockers.length;
+  const ids = [...new Set(diagnosis.workflowRecommendations)];
+
+  return ids
+    .map((id) => {
+      const template = ORCHESTRATION_WORKFLOW_TEMPLATES[id];
+      const meta = WORKFLOW_META[id];
+      if (!template || !meta) return null;
+      if (!meta.shouldActivate(state)) return null;
+      const scored = scoreWorkflowReadiness(template, blockerCount);
+      const blockedBy = state.activeBlockers
+        .filter((b) => b.severity === "P0" || b.severity === "P1")
+        .slice(0, 4)
+        .map((b) => b.message);
+      return { ...scored, activated: true, blockedBy };
+    })
+    .filter((w): w is OrchestrationWorkflow => w !== null);
 }

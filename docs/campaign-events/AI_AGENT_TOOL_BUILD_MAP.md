@@ -19,6 +19,9 @@
 | Tool contracts (**39**) | `src/lib/agents/orchestration/orchestration-tool-contracts.ts` |
 | Lifecycle id | `campaign_orchestration_intelligence` |
 | Test | `npm run agents:test-orchestration-plan` |
+| Live state test | `npm run agents:test-orchestration-state` |
+| Live API | `GET /api/agents/orchestration-state` |
+| Agent protocol | `docs/ERNIE_CAMPAIGN_OS_WORK_PROTOCOL.md` |
 
 ---
 

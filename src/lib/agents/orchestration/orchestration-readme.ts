@@ -5,7 +5,7 @@
 
 export const ORCHESTRATION_LAYER_README = {
   name: "Campaign Orchestration Intelligence Layer",
-  version: "v1-plan",
+  version: "v2-live",
   northStar:
     "One coordinated campaign brain that reasons across county, volunteer, communications, events, finance, training, dashboards, and memory.",
   coreQuestion: "How does this improve the AI's understanding of the entire campaign?",

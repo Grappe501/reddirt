@@ -10,9 +10,8 @@
 | Phase | Focus | Progress |
 |-------|--------|----------|
 | **1** | Inventory + architecture + tool contracts | `[██████████] 100%` ← **this sprint** |
-| **2** | CampaignState loader + reasoning engine | `[███░░░░░░░] 30%` |
-| **3** | Workflow planner + action packages | `[███░░░░░░░] 30%` |
-| **4** | AI command center orchestration panel | `[██░░░░░░░░] 20%` |
+| **2** | CampaignState loader + reasoning API | `[████████░░] 85%` ← **Phase 2A done** |
+| **2B** | Command center orchestration panel | `[██░░░░░░░░] 20%` |
 | **5** | Role-specific orchestration delivery | `[██░░░░░░░░] 20%` |
 | **6** | Memory review + learning loop | `[██░░░░░░░░] 20%` |
 | **7** | Dashboard adaptation + workspaces | `[█░░░░░░░░░] 10%` |
@@ -52,40 +51,35 @@
 
 ---
 
-## Phase 2 — CampaignState loader + reasoning (RECOMMENDED NEXT)
+## Phase 2 — CampaignState loader + reasoning ✅ (Phase 2A)
 
 **Goals**
 
-- `loadCampaignOrchestrationSignals` populates real domain slices
-- Map OS snapshot → `CampaignState` fields
-- County/comms/volunteer health bands from live data
-- Wire diagnosis to command center API route
+- `loadCampaignOrchestrationSignals` populates real domain slices ✅
+- Map OS snapshot → `CampaignState` fields ✅
+- County/comms/volunteer health bands from live data ✅
+- API route `/api/agents/orchestration-state` ✅
 
 **Files**
 
-- `load-campaign-orchestration-signals.ts` (expand)
-- `campaign-state-types.ts` (builder from bundle)
-- New: `build-campaign-state-from-signals.ts`
-- API: `src/app/api/agents/orchestration-state/route.ts`
+- `load-campaign-orchestration-signals.ts` ✅
+- `build-campaign-state-from-signals.ts` ✅
+- `build-orchestration-payload.ts` ✅
+- `api/agents/orchestration-state/route.ts` ✅
 
 **Tests**
 
-- Extend `test-orchestration-plan` with optional live signal test
-- `agents:test-os-control` regression
-
-**Risks**
-
-- County workbench missing in CI → keep graceful degradation
-- Bundle size on client → **server-only** route
+- `agents:test-orchestration-state` ✅
+- `agents:test-orchestration-plan` ✅
 
 **Done when**
 
-- API returns non-skeleton state in dev with workbench present
-- Diagnosis lists real P0 blockers from OS control
+- API returns live/degraded CampaignState in dev ✅
+- Diagnosis lists blockers + top 3 moves ✅
 
 ---
 
-## Phase 3 — Workflow planner + action packages
+## Phase 2B — Command center panel (RECOMMENDED NEXT)
 
 **Goals**
 

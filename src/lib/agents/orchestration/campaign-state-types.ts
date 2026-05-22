@@ -1,9 +1,10 @@
 /**
  * Master CampaignState model — Campaign Orchestration Intelligence Layer.
- * V1: types + skeleton builder only; loaders populate in Phase 2.
  */
 
 export type CampaignHealthBand = "critical" | "weak" | "stable" | "strong";
+
+export type CampaignOperatingMode = "live" | "degraded" | "skeleton";
 
 export type CampaignDomainId =
   | "campaign_management"
@@ -88,10 +89,15 @@ export type MemoryCandidateRef = {
 export type CampaignState = {
   generatedAt: string;
   currentPeriod: string;
+  isLive: boolean;
+  operatingMode: CampaignOperatingMode;
+  executiveSummary: string;
+  confidenceLevel: "high" | "medium" | "low";
   overallHealth: CampaignHealthBand;
   operationalReadiness: number;
   candidateReadiness: number;
   campaignManagerReadiness: number;
+  domainStatuses: Record<CampaignDomainId, DomainHealthSlice>;
   countyHealth: DomainHealthSlice;
   volunteerHealth: DomainHealthSlice;
   communicationsHealth: DomainHealthSlice;
@@ -101,6 +107,37 @@ export type CampaignState = {
   complianceReadiness: DomainHealthSlice;
   trainingHealth: DomainHealthSlice;
   dashboardHealth: DomainHealthSlice;
+  countyIntelligenceSummary: {
+    bridgeAvailable: boolean;
+    weakCountyCount: number;
+    topAttentionCount: number;
+    heatListTop: string[];
+  };
+  commsReadiness: {
+    massEmailBlocked: boolean;
+    bottleneckCount: number;
+    volunteerAtRisk: number;
+  };
+  emailEccReadiness: {
+    sendEnabled: boolean;
+    sendGridConfigured: boolean;
+    massSendBlocked: boolean;
+  };
+  calendarEventPressure: {
+    pendingApprovals: number;
+    syncStale: boolean;
+    promotionReady: number;
+  };
+  financeComplianceWarnings: string[];
+  memoryObservationSummary: {
+    recentObservationCount: number;
+    frictionSignals: number;
+    pendingToolTickets: number;
+  };
+  toolCoverage: {
+    readySources: number;
+    degradedSources: number;
+  };
   systemRisk: "low" | "medium" | "high";
   activeBlockers: CampaignBlocker[];
   activeOpportunities: CampaignOpportunity[];
@@ -126,7 +163,30 @@ export function emptyDomainSlice(domainId: CampaignDomainId, summary = "Signal n
   return { domainId, band: "weak", score: 0, summary, blockers: [], opportunities: [] };
 }
 
-/** Deterministic skeleton for tests and Phase 1 UI mocks. */
+const EMPTY_DOMAIN_STATUSES = (): Record<CampaignDomainId, DomainHealthSlice> => ({
+  campaign_management: emptyDomainSlice("campaign_management"),
+  candidate: emptyDomainSlice("candidate"),
+  calendar: emptyDomainSlice("calendar"),
+  event_planning: emptyDomainSlice("event_planning"),
+  approvals: emptyDomainSlice("approvals"),
+  travel: emptyDomainSlice("travel"),
+  reimbursement: emptyDomainSlice("reimbursement"),
+  finance: emptyDomainSlice("finance"),
+  compliance: emptyDomainSlice("compliance"),
+  county: emptyDomainSlice("county"),
+  field: emptyDomainSlice("field"),
+  volunteer: emptyDomainSlice("volunteer"),
+  communications: emptyDomainSlice("communications"),
+  social_media: emptyDomainSlice("social_media"),
+  host: emptyDomainSlice("host"),
+  hot_wash: emptyDomainSlice("hot_wash"),
+  training: emptyDomainSlice("training"),
+  dashboard_ux: emptyDomainSlice("dashboard_ux"),
+  memory: emptyDomainSlice("memory"),
+  tool_builder: emptyDomainSlice("tool_builder"),
+});
+
+/** Deterministic skeleton for tests when signals unavailable. */
 export function buildSkeletonCampaignState(period = "2026-04"): CampaignState {
   const now = new Date().toISOString();
   const county = emptyDomainSlice("county", "County signals pending full loader");
@@ -135,10 +195,15 @@ export function buildSkeletonCampaignState(period = "2026-04"): CampaignState {
   return {
     generatedAt: now,
     currentPeriod: period,
+    isLive: false,
+    operatingMode: "skeleton",
+    executiveSummary: "Skeleton state — orchestration signals not loaded",
+    confidenceLevel: "low",
     overallHealth: "stable",
     operationalReadiness: 72,
     candidateReadiness: 68,
     campaignManagerReadiness: 75,
+    domainStatuses: EMPTY_DOMAIN_STATUSES(),
     countyHealth: county,
     volunteerHealth: volunteer,
     communicationsHealth: comms,
@@ -148,6 +213,13 @@ export function buildSkeletonCampaignState(period = "2026-04"): CampaignState {
     complianceReadiness: emptyDomainSlice("compliance"),
     trainingHealth: emptyDomainSlice("training"),
     dashboardHealth: emptyDomainSlice("dashboard_ux"),
+    countyIntelligenceSummary: { bridgeAvailable: false, weakCountyCount: 0, topAttentionCount: 0, heatListTop: [] },
+    commsReadiness: { massEmailBlocked: true, bottleneckCount: 0, volunteerAtRisk: 0 },
+    emailEccReadiness: { sendEnabled: false, sendGridConfigured: false, massSendBlocked: true },
+    calendarEventPressure: { pendingApprovals: 0, syncStale: false, promotionReady: 0 },
+    financeComplianceWarnings: [],
+    memoryObservationSummary: { recentObservationCount: 0, frictionSignals: 0, pendingToolTickets: 0 },
+    toolCoverage: { readySources: 0, degradedSources: 0 },
     systemRisk: "medium",
     activeBlockers: [
       {

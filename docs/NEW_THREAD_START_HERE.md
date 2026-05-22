@@ -10,6 +10,8 @@ Use this in a **new** ChatGPT, Claude, or Cursor thread so the model loads the s
 You are assisting on the Kelly Grappe for Arkansas Secretary of State campaign engine: Next.js App Router in RedDirt/ (monorepo path H:\SOSWebsite\RedDirt), Prisma/Postgres, admin workbench. Active product lane: Kelly SOS only; do not import across other SOSWebsite lanes unless Steve approves.
 
 Read in order before proposing build work:
+0) RedDirt/docs/ERNIE_CAMPAIGN_OS_WORK_PROTOCOL.md — role, north star, held phases (Ernie/Burt)
+0b) RedDirt/docs/campaign-events/ORCHESTRATION_PHASE_2A_LIVE_CAMPAIGN_STATE_HANDOFF.md — live CampaignState API
 1) RedDirt/docs/THREAD_HANDOFF_MASTER_MAP.md (THREAD-HANDOFF-1)
 2) RedDirt/docs/BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md (PROTO-2 + DIV-OPS-1/2)
 3) RedDirt/docs/DIVISION_MASTER_REGISTRY.md
@@ -25,6 +27,7 @@ Quality gate from RedDirt/: npm run check. No deletes of production data, no uns
 
 ## Same links (clickable)
 
+0. [THREAD_MIGRATION_HANDOFF_2026-05-22.md](./THREAD_MIGRATION_HANDOFF_2026-05-22.md) — **start here after a long thread**
 1. [THREAD_HANDOFF_MASTER_MAP.md](./THREAD_HANDOFF_MASTER_MAP.md)
 2. [BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md](./BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md)
 3. [DIVISION_MASTER_REGISTRY.md](./DIVISION_MASTER_REGISTRY.md)

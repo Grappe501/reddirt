@@ -1,6 +1,24 @@
 # Kelly OS Build Status
 
-## Latest: Campaign Orchestration Intelligence — Master Plan (Sprint 16)
+## Latest: Campaign Orchestration Intelligence — Phase 2A Live CampaignState
+
+| Item | Status |
+|------|--------|
+| Live CampaignState builder | **Functional** — `build-campaign-state-from-signals.ts` |
+| Signal loader (10 sources + sourceHealth) | **Functional** |
+| `GET /api/agents/orchestration-state` | **Live** |
+| Deterministic reasoning + top 3 moves | **Functional** |
+| Workflow activation from state | **Functional** (6 templates) |
+| Safety gate on every payload | **Functional** |
+| `agents:test-orchestration-state` | **PASS** |
+| Ernie work protocol | **`docs/ERNIE_CAMPAIGN_OS_WORK_PROTOCOL.md`** |
+
+**Handoff:** `ORCHESTRATION_PHASE_2A_LIVE_CAMPAIGN_STATE_HANDOFF.md`  
+**Next:** Command center orchestration panel (Phase 4 UI)
+
+---
+
+## Prior: Campaign Orchestration Intelligence — Master Plan (Sprint 16)
 
 | Item | Status |
 |------|--------|
