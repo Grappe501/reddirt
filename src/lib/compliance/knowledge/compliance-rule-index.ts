@@ -33,9 +33,15 @@ export function auditComplianceRuleCorpus(corpus: ComplianceRuleCorpus | null, r
 
 export function buildTopicCoverage(corpus: ComplianceRuleCorpus | null, reviews?: Awaited<ReturnType<typeof loadRuleReviews>>): ComplianceRuleTopicCoverage[] {
   return requiredComplianceRuleTopics.map((topic) => {
-    const sources = corpus?.sources.filter((source) => source.topics?.includes(topic)) ?? [];
-    const chunks = corpus?.chunks.filter((chunk) => chunk.topic === topic || chunk.subtopics?.includes(topic) || sources.some((source) => source.id === chunk.sourceId)) ?? [];
-    const status = resolveTopicStatus(sources, reviews);
+    const chunks = corpus?.chunks.filter((chunk) => chunk.topic === topic || chunk.subtopics?.includes(topic)) ?? [];
+    const sources =
+      corpus?.sources.filter(
+        (source) =>
+          source.topics?.includes(topic)
+          || chunks.some((chunk) => chunk.sourceId === source.id),
+      ) ?? [];
+    const topicReview = reviews?.find((review) => review.topic === topic && !review.stale);
+    const status = topicReview ? "verified_authoritative" as const : resolveTopicStatus(sources, reviews);
     const lastUpdated = [...sources.map((source) => source.effectiveDate ?? source.retrievedAt).filter(Boolean)].sort().at(-1);
     const hasOfficialSource = sources.some((source) =>
       source.verificationStatus === "official_link_verified"

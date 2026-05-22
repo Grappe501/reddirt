@@ -1,75 +1,64 @@
-# Burt Final Compliance Hardening Report
+# Burt final compliance hardening report
 
-Status: release-candidate foundation  
-Scope: RedDirt Compliance Command Center  
-Generated: 2026-05-18  
+**Baseline main commits:** `0c4e372` (RC merge) · `d2de19d` (blocker burn-down)  
+**Date:** 2026-05-18
 
-## Architecture Summary
+## Merge status (PR #1)
 
-The Compliance Command Center now covers intake, staging, review, reconciliation foundations, rule coverage, filing readiness, task generation, filing package snapshots, mobile candidate views, approval-chain records, private document storage abstraction, amendment detection, guarded AI tools, reporting, scoring, and SaaS blueprinting.
+- GitHub PR #1 (`feature/kelly-schedule-settlement-dashboard` → `main`) is **MERGED**.
+- `505b3a0` (compliance RC) is an ancestor of `origin/main`.
+- Conflict resolution preserved `224f4c9` main history and integrated feature-branch compliance work via merge `0c4e372`.
+- No unrelated email/calendar/travel edits were included in compliance commits.
 
-The system still intentionally blocks legal filing certification until authoritative Arkansas rule sources are verified and human approval chains are complete.
+## Strict release gate vs feature-complete
 
-## Strengths
+Under the **strict release gate**, completion % is **lower** than a casual “feature built” estimate because the gate counts:
 
-- Broad money movement coverage for contributions, expenses, reimbursements, vendors, fees, cash, checks, receipts, GoodChange, and bank CSVs.
-- Staged-first architecture prevents unreviewed records from silently becoming filing records.
-- Private-data paths remain ignored by git.
-- Filing readiness and rule coverage clearly say when legal/compliance verification is required.
-- AI tools are modeled with confidence, missing data, warnings, next action, citations, and human approval guardrails.
-- Filing packages include hash manifests and immutable snapshot scaffolding.
+- Human treasurer approval chain
+- Bank match locks
+- Official rule topic sources (not placeholders)
+- Supabase private storage (not local JSON fallback)
+- DB persistence (not JSON lane)
 
-## Weaknesses
+**Feature-complete** means routes, wizards, approval workbench, reconciliation actions, and QA scripts exist. **Filing-certified** still requires officer review, locked reconciliation, and authoritative rule verification.
 
-- JSON fallback storage is not a production database.
-- Rule source verification is incomplete and not filing-certified.
-- Reconciliation mutation UI is foundational; final lock/approve workflows still need treasurer policy.
-- Filing exports are package foundations, not jurisdiction-ready form exports.
-- Supabase Storage support is present as an abstraction but needs bucket/RLS setup and staging verification.
+## Official baseline (run from `RedDirt` lane with deps)
 
-## Remaining Risks
+Re-run after deploy:
 
-- Legal risk if operators treat placeholder/needs-review rules as authoritative.
-- Data risk if production uses local fallback instead of private object storage.
-- Filing risk if unreconciled or unapproved records are manually overridden without policy.
-- Commercial risk until multi-tenant auth, tenant scoping, billing, and RLS are implemented.
+```bash
+npm run compliance:qa-release
+```
 
-## Completion Percentages
+Typical current outputs:
 
-- Intake coverage: 86%
-- Receipt wizard: 88%
-- Cash/check intake: 82%
-- Money movement model: 82%
-- Reconciliation foundation: 62%
-- Document storage foundation: 60%
-- Filing package engine: 58%
-- Task center: 72%
-- Mobile candidate experience: 55%
-- Approval workflow foundation: 58%
-- Amendment assistant: 48%
-- Rule knowledge core: 62%
-- AI tool suite: 68%
-- Reporting suite: 78%
-- Executive scoring: 72%
-- SaaS architecture: 65%
+| Metric | Value |
+|--------|-------|
+| Executive / completion % | ~59% |
+| Commercial readiness % | ~37% |
+| Filing readiness | red |
+| Release gate | yellow/red (blockers listed) |
+| Reconciliation locked | 1+ after `compliance:qa-reconciliation` |
 
-Overall compliance command center: 76%
+## Blocker burn-down in `d2de19d`
 
-## Readiness
+- Catalog URL fixes (AEC, SOS, ArkLeg reference); catalog wins over stale persisted link status
+- Topic coverage links sources via chunks; placeholder sources for all required topics
+- Officer review cards on `/admin/compliance/rules` (per topic + per source)
+- Storage status on `/admin/compliance/settings`
+- April26 import checklist on compliance home
+- Reconciliation approve/lock/unlock UI + QA locks synthetic match
+- Supabase setup doc expanded (Netlify checklist, RLS, health)
 
-- Beta readiness: 82%
-- Commercial launch readiness: 54%
-- Filing certification readiness: blocked until rules, approvals, reconciliation, and export templates are verified.
+## Remaining blockers
 
-## Recommended Next 10 Upgrades
+1. Manual PDF downloads (Campaign Finance Manual, CAR-RCFD-1) — `manual_needed`
+2. Supabase env not set on Netlify (local fallback active)
+3. Filing hard gates (money approved, treasurer chain, period verification)
+4. Human legal review on rule topics (officer initials workflow available)
+5. Production April26 import + approval queue rebuild on server
+6. Some AEC/SOS URLs may still fail automated verify-links (re-run after deploy)
 
-1. Move staged records, approvals, tasks, filings, and reconciliation matches into tenant-scoped database tables.
-2. Configure private Supabase Storage bucket with RLS and signed URL route handlers.
-3. Verify Arkansas rule corpus with counsel/treasurer and mark authoritative sources.
-4. Build reconciliation mutation buttons with approval and lock workflow.
-5. Add edit-in-place review pages for money movements and receipts.
-6. Create jurisdiction-specific filing CSV/form templates.
-7. Add role-based access control for staff, treasurer, candidate, compliance officer, and auditor.
-8. Add tenant model and subscription boundaries.
-9. Add immutable append-only audit ledger and exportable audit packets.
-10. Run staged/prod smoke with real environment names only, no secret values in logs.
+## Netlify
+
+Push to `origin/main` triggers deploy. Compliance pages are dynamic; JSON data is gitignored — rebuild queues and imports on production after deploy.

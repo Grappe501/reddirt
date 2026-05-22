@@ -9,6 +9,7 @@ import {
 } from "./approval-storage";
 import type { ApprovalAuditEntry, ApprovalItem, ApprovalItemStatus } from "./approval-types";
 import { getNextQueueItem } from "./load-approval-queue";
+import { upsertApprovalNeedsInfoTask } from "../tasks/approval-needs-info-storage";
 
 function initials(value: string): string {
   return value.trim().toUpperCase().slice(0, 8) || "UNK";
@@ -80,6 +81,9 @@ async function finalizeDecision(
   const existing = await getApprovalItem(itemId);
   if (!existing) throw new Error("Item not found");
   const guards = evaluateApprovalGuards(existing, { overrideReason });
+  if ((status === "approved" || status === "approved_with_changes") && existing.source === "rule_review" && !overrideReason?.trim()) {
+    throw new Error("Rule review items cannot be approved without override reason documenting topic review on Rules page.");
+  }
   if ((status === "approved" || status === "approved_with_changes") && !guards.canApprove) {
     throw new Error("Cannot approve yet. Required fields are missing.");
   }
@@ -117,7 +121,16 @@ export async function approveItemWithChanges(itemId: string, actorInitials: stri
 }
 
 export async function markNeedsInfo(itemId: string, actorInitials: string, note?: string) {
-  return finalizeDecision(itemId, "needs_info", "needs_info", actorInitials, note);
+  const result = await finalizeDecision(itemId, "needs_info", "needs_info", actorInitials, note);
+  await upsertApprovalNeedsInfoTask({
+    approvalItemId: result.item.id,
+    queueId: result.item.queueId,
+    title: `Needs info: ${result.item.title}`,
+    note,
+    requestedInfo: note?.trim() || "Operator requested additional documentation or fields.",
+    priority: result.item.riskLevel === "high" ? "urgent" : "high",
+  });
+  return result;
 }
 
 export async function rejectItem(itemId: string, actorInitials: string, reason: string) {
@@ -151,6 +164,9 @@ export async function approveBatch(itemIds: string[], actorInitials: string, aud
   for (const itemId of itemIds) {
     const item = await getApprovalItem(itemId);
     if (!item) continue;
+    if (item.source === "rule_review") {
+      throw new Error(`Item ${itemId} is a rule review item — batch approval is not allowed.`);
+    }
     if (item.confidenceScore < 98 || item.riskLevel !== "low" || item.blockers.length) {
       throw new Error(`Item ${itemId} is not eligible for batch approval.`);
     }

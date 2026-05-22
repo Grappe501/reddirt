@@ -1,0 +1,307 @@
+import type { buildCompletionContext } from "./build-completion-context";
+import type { RolePlan } from "./completion-engine-types";
+import { ORCHESTRATOR_UNSAFE_SHORTCUTS } from "../orchestrator/orchestrator-types";
+
+type Ctx = Awaited<ReturnType<typeof buildCompletionContext>>;
+
+const UNSAFE = ORCHESTRATOR_UNSAFE_SHORTCUTS.map((s) => s.replace(/_/g, " "));
+
+function plan(role: string, tasks: RolePlan["nextFive"]): RolePlan {
+  return { role, nextFive: tasks };
+}
+
+export function buildWorkSequencer(ctx: Ctx): { roles: RolePlan[] } {
+  const { inventory, recon, rules, orchestrator, brain } = ctx;
+  const nba = orchestrator.snapshot.nextBestAction;
+
+  const roles: RolePlan[] = [
+    plan("Treasurer", [
+      {
+        title: "Audit April checks vs Part A of audit checklist",
+        why: `${inventory.summary.unmatchedUploadedChecks} checks need human pairing`,
+        route: "/admin/compliance/april26",
+        command: "npm run compliance:april-audit-checklist",
+        expectedImpact: "Definitive have/need per check",
+        unsafeShortcuts: UNSAFE.filter((s) => /match|approve|address/.test(s)),
+        completionDefinition: "Every check row marked reviewed or deferred with note",
+      },
+      {
+        title: "Audit April ledger Part B vs bank CSV",
+        why: `${inventory.summary.unmatchedLedgerExpenditures} expenditures lack documentation`,
+        route: "/admin/compliance/april26",
+        command: "npm run compliance:april-audit-checklist",
+        expectedImpact: "Receipt/check linked or categorized",
+        unsafeShortcuts: ["auto match uncertain", "invent vendor"],
+        completionDefinition: "Each debit has receipt or confirmed card expense",
+      },
+      ...(recon.remainingReviewItems > 0
+        ? [
+            {
+              title: nba.action.title,
+              why: "Blocks reconciliation lock",
+              route: nba.action.href ?? "/admin/compliance/reconciliation",
+              command: nba.action.command ?? null,
+              expectedImpact: "Unlocks filing path",
+              unsafeShortcuts: ["auto resolve ambiguous"],
+              completionDefinition: "All credits matched or investigation draft",
+            },
+          ]
+        : []),
+      {
+        title: "Verify production bank on Netlify",
+        why: "Local CSV ≠ production",
+        route: "/admin/compliance/imports/bank",
+        command: "npm run compliance:source-truth-audit",
+        expectedImpact: "Production rehearsal valid",
+        unsafeShortcuts: ["assume bank present"],
+        completionDefinition: "Bank chunks validated on production",
+      },
+      {
+        title: "Confirm exact matches (8) against source",
+        why: "System exact still needs human sign-off",
+        route: "/admin/compliance/april26",
+        command: "npm run compliance:april-expenditure-inventory",
+        expectedImpact: "Prevents wrong pairings",
+        unsafeShortcuts: ["skip verify"],
+        completionDefinition: "All exact matches signed in audit notes",
+      },
+    ].slice(0, 5)),
+    plan("Operator", [
+      {
+        title: "Attach receipts for unmatched POS debits",
+        why: "Card expenses dominate unmatched ledger",
+        route: "/admin/compliance/receipts",
+        command: null,
+        expectedImpact: "Documentation for expenditures",
+        unsafeShortcuts: ["invent amounts"],
+        completionDefinition: "Receipt staged per unmatched debit where applicable",
+      },
+      {
+        title: "Run vision/manual entry on check images",
+        why: "Many check images lack amount/date",
+        route: "/admin/compliance/approval/april-2026-compliance-review",
+        command: "npm run compliance:build-approval-queue",
+        expectedImpact: "Checks move from image-only to reviewable",
+        unsafeShortcuts: ["guess payee"],
+        completionDefinition: "Fields entered from physical check",
+      },
+      {
+        title: "Queue burndown — safest categories first",
+        why: `${brain.queue.openItems} open items`,
+        route: "/admin/compliance/approval/april-2026-compliance-review",
+        command: "npm run compliance:queue-burndown",
+        expectedImpact: "Reduces open queue",
+        unsafeShortcuts: ["batch rule review"],
+        completionDefinition: "10+ items approved with evidence",
+      },
+      {
+        title: "Collect vendor addresses after payee confirmed",
+        why: `${inventory.summary.missingAddressCount} flags`,
+        route: "/admin/compliance/vendors",
+        command: null,
+        expectedImpact: "Address-complete vendors",
+        unsafeShortcuts: ["invent address"],
+        completionDefinition: "W-9 or invoice address on vendor record",
+      },
+      {
+        title: "Re-run expenditure inventory after updates",
+        why: "Keeps audit list current",
+        route: "/admin/compliance/command-center",
+        command: "npm run compliance:april-expenditure-inventory",
+        expectedImpact: "Updated counts in command center",
+        unsafeShortcuts: [],
+        completionDefinition: "Inventory regenerated; gaps reduced",
+      },
+    ]),
+    plan("Compliance officer", [
+      {
+        title: `Review ${rules.topicsPendingReview} rule topics`,
+        why: "Gates rule_review queue",
+        route: "/admin/compliance/rules",
+        command: "npm run compliance:rule-resolution-report",
+        expectedImpact: "Queue items unlock to needs_review",
+        unsafeShortcuts: ["batch approve rule review"],
+        completionDefinition: "Topics marked reviewed with notes",
+      },
+      {
+        title: "Review filing blockers honestly",
+        why: `Filing ${brain.filing.overall}`,
+        route: "/admin/compliance/filing-readiness",
+        command: "npm run compliance:qa-filing",
+        expectedImpact: "Clear filing path",
+        unsafeShortcuts: ["fake filing green"],
+        completionDefinition: "Each blocker has owner and date",
+      },
+      {
+        title: "Read weakness discovery report",
+        why: "Single view of all weak points",
+        route: "/admin/compliance/command-center",
+        command: "npm run compliance:weakness-discovery",
+        expectedImpact: "Prioritized remediation",
+        unsafeShortcuts: [],
+        completionDefinition: "Top critical weaknesses assigned",
+      },
+      {
+        title: "Verify hardening audit",
+        why: "Privacy and gate protections",
+        route: null,
+        command: "npm run compliance:hardening-audit",
+        expectedImpact: "No PII in committed docs",
+        unsafeShortcuts: ["commit bank csv"],
+        completionDefinition: "Hardening audit pass or documented exceptions",
+      },
+      {
+        title: "Sign operator launch rehearsal",
+        why: "Launch gate",
+        route: "/admin/compliance/command-center",
+        command: "npm run compliance:deploy-readiness",
+        expectedImpact: "Deploy confidence",
+        unsafeShortcuts: [],
+        completionDefinition: "Checklist signed in operator doc",
+      },
+    ]),
+    plan("Steve", [
+      {
+        title: "Supabase storage + RLS",
+        why: "Production evidence protection",
+        route: null,
+        command: "npm run compliance:storage-preflight",
+        expectedImpact: "storage.ready true",
+        unsafeShortcuts: ["public buckets"],
+        completionDefinition: "RLS policies applied and tested",
+      },
+      {
+        title: "Approve DB migration when ready",
+        why: "JSON still authoritative",
+        route: null,
+        command: null,
+        expectedImpact: "DB path available",
+        unsafeShortcuts: ["migrate without backup"],
+        completionDefinition: "Migration applied in controlled window",
+      },
+      {
+        title: "Review deploy-readiness output",
+        why: "Netlify push gate",
+        route: null,
+        command: "npm run compliance:deploy-readiness",
+        expectedImpact: "Safe deploy",
+        unsafeShortcuts: [],
+        completionDefinition: "Production blockers acknowledged",
+      },
+      {
+        title: "Integration packet if cross-lane needed",
+        why: "Lane isolation rule",
+        route: null,
+        command: null,
+        expectedImpact: "No accidental cross-imports",
+        unsafeShortcuts: ["cross-lane import"],
+        completionDefinition: "Explicit approval for any integration",
+      },
+      {
+        title: "COMPLIANCE_VENDOR_ADDRESS_COMPLETION_PLAN review",
+        why: "72 address flags upcoming pass",
+        route: "/admin/compliance/vendors",
+        command: null,
+        expectedImpact: "Vendor model approved",
+        unsafeShortcuts: [],
+        completionDefinition: "Plan approved for operator execution",
+      },
+    ]),
+    plan("AI", [
+      {
+        title: "Regenerate completion engine daily",
+        why: "Keeps critical path current",
+        route: "/admin/compliance/command-center",
+        command: "npm run compliance:ai-completion-engine",
+        expectedImpact: "Fresh NBA and blocker graph",
+        unsafeShortcuts: UNSAFE.slice(0, 4),
+        completionDefinition: "Artifacts fresh; QA pass",
+      },
+      {
+        title: "Run april-audit-checklist before human audit",
+        why: "Definitive have/need tables",
+        route: null,
+        command: "npm run compliance:april-audit-checklist",
+        expectedImpact: "Operator-ready list",
+        unsafeShortcuts: ["invent data in reports"],
+        completionDefinition: "MD checklist matches inventory",
+      },
+      {
+        title: "Orchestrator + decision guard",
+        why: "Prevents unsafe automation",
+        route: null,
+        command: "npm run compliance:ai-orchestrator:qa",
+        expectedImpact: "Guards enforced",
+        unsafeShortcuts: [],
+        completionDefinition: "allGuardsPassed true where expected",
+      },
+      {
+        title: "Weakness discovery after major imports",
+        why: "Surfaces new gaps",
+        route: null,
+        command: "npm run compliance:weakness-discovery",
+        expectedImpact: "Updated weakness counts",
+        unsafeShortcuts: [],
+        completionDefinition: "Report reflects new counts",
+      },
+      {
+        title: "Never auto-match uncertain checks",
+        why: "Treasurer audit standing by",
+        route: null,
+        command: null,
+        expectedImpact: "Compliance safety",
+        unsafeShortcuts: ["auto match", "auto approve"],
+        completionDefinition: "Only exact/likely flagged, not resolved",
+      },
+    ]),
+    plan("Engineer", [
+      {
+        title: "Fix qa-full yellow items",
+        why: "Launch confidence",
+        route: null,
+        command: "npm run compliance:qa-full",
+        expectedImpact: "QA green",
+        unsafeShortcuts: ["lower thresholds"],
+        completionDefinition: "qa-full green",
+      },
+      {
+        title: "Command center completion panel accuracy",
+        why: "30-second operator clarity",
+        route: "/admin/compliance/command-center",
+        command: "npm run build",
+        expectedImpact: "Single completion home",
+        unsafeShortcuts: [],
+        completionDefinition: "Panel matches latest engine JSON",
+      },
+      {
+        title: "Hardening audit fixes",
+        why: "PII and gitignore",
+        route: null,
+        command: "npm run compliance:hardening-audit",
+        expectedImpact: "No leaks in docs",
+        unsafeShortcuts: ["commit sensitive json"],
+        completionDefinition: "Hardening pass",
+      },
+      {
+        title: "Vendor route (future pass)",
+        why: "Address completion bridge",
+        route: "/admin/compliance/vendors",
+        command: null,
+        expectedImpact: "Vendor memory",
+        unsafeShortcuts: [],
+        completionDefinition: "Plan implemented per COMPLIANCE_VENDOR_ADDRESS_COMPLETION_PLAN",
+      },
+      {
+        title: "typecheck + build before push",
+        why: "Netlify deploy",
+        route: null,
+        command: "npm run build",
+        expectedImpact: "Deploy succeeds",
+        unsafeShortcuts: ["skip hooks"],
+        completionDefinition: "CI green",
+      },
+    ]),
+  ];
+
+  return { roles };
+}

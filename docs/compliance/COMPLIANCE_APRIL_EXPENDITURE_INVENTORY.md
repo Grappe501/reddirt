@@ -1,0 +1,1512 @@
+# April 2026 expenditure and check inventory
+Generated: 2026-05-19T23:22:50.176Z
+Commit: `39e3441`
+> Identification only — no addresses or vendors invented. Compare to physical/source files.
+## Summary
+| Metric | Count |
+| --- | ---: |
+| Uploaded checks / check records | 44 |
+| April ledger expenditures | 56 |
+| Exact matches | 8 |
+| Likely matches | 0 |
+| Unmatched uploaded | 36 |
+| Unmatched ledger | 48 |
+| Missing address flags | 72 |
+| Ambiguous match groups | 0 |
+## 1. Uploaded checks inventory
+### img-Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1380.HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `IMG_1380.HEIC` / chunk `Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1380.HEIC`
+- Evidence: image_on_disk
+- Address present: no
+- Missing: amount, date, payee, address
+- Confidence: none
+### img-Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1381.HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `IMG_1381.HEIC` / chunk `Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1381.HEIC`
+- Evidence: image_on_disk
+- Address present: no
+- Missing: amount, date, payee, address
+- Confidence: none
+### img-Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1382.HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `IMG_1382.HEIC` / chunk `Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1382.HEIC`
+- Evidence: image_on_disk
+- Address present: no
+- Missing: amount, date, payee, address
+- Confidence: none
+### img-Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1383.HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `IMG_1383.HEIC` / chunk `Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1383.HEIC`
+- Evidence: image_on_disk
+- Address present: no
+- Missing: amount, date, payee, address
+- Confidence: none
+### img-Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1384.HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `IMG_1384.HEIC` / chunk `Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1384.HEIC`
+- Evidence: image_on_disk
+- Address present: no
+- Missing: amount, date, payee, address
+- Confidence: none
+### img-Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1385.HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `IMG_1385.HEIC` / chunk `Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1385.HEIC`
+- Evidence: image_on_disk
+- Address present: no
+- Missing: amount, date, payee, address
+- Confidence: none
+### img-Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1927.HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `IMG_1927.HEIC` / chunk `Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1927.HEIC`
+- Evidence: image_on_disk
+- Address present: no
+- Missing: amount, date, payee, address
+- Confidence: none
+### approval-appr-april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1380-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1380.HEIC` / chunk `april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1380-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1381-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1381.HEIC` / chunk `april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1381-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1382-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1382.HEIC` / chunk `april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1382-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1383-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1383.HEIC` / chunk `april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1383-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1384-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1384.HEIC` / chunk `april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1384-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1385-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1385.HEIC` / chunk `april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1385-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1927-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1927.HEIC` / chunk `april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1927-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1816-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Receipts April 2026-20260518T171841Z-3-001/Receipts April 2026/IMG_1816.HEIC` / chunk `april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1816-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1817-1-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Receipts April 2026-20260518T171841Z-3-001/Receipts April 2026/IMG_1817(1).HEIC` / chunk `april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1817-1-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1817-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Receipts April 2026-20260518T171841Z-3-001/Receipts April 2026/IMG_1817.HEIC` / chunk `april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1817-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1818-1-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Receipts April 2026-20260518T171841Z-3-001/Receipts April 2026/IMG_1818(1).HEIC` / chunk `april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1818-1-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1818-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Receipts April 2026-20260518T171841Z-3-001/Receipts April 2026/IMG_1818.HEIC` / chunk `april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1818-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1819-1-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Receipts April 2026-20260518T171841Z-3-001/Receipts April 2026/IMG_1819(1).HEIC` / chunk `april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1819-1-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1819-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Receipts April 2026-20260518T171841Z-3-001/Receipts April 2026/IMG_1819.HEIC` / chunk `april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1819-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1820-1-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Receipts April 2026-20260518T171841Z-3-001/Receipts April 2026/IMG_1820(1).HEIC` / chunk `april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1820-1-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1820-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Receipts April 2026-20260518T171841Z-3-001/Receipts April 2026/IMG_1820.HEIC` / chunk `april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1820-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1821-1-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Receipts April 2026-20260518T171841Z-3-001/Receipts April 2026/IMG_1821(1).HEIC` / chunk `april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1821-1-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1821-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Receipts April 2026-20260518T171841Z-3-001/Receipts April 2026/IMG_1821.HEIC` / chunk `april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1821-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1822-1-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Receipts April 2026-20260518T171841Z-3-001/Receipts April 2026/IMG_1822(1).HEIC` / chunk `april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1822-1-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1822-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Receipts April 2026-20260518T171841Z-3-001/Receipts April 2026/IMG_1822.HEIC` / chunk `april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1822-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1823-1-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Receipts April 2026-20260518T171841Z-3-001/Receipts April 2026/IMG_1823(1).HEIC` / chunk `april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1823-1-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1823-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Receipts April 2026-20260518T171841Z-3-001/Receipts April 2026/IMG_1823.HEIC` / chunk `april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1823-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1824-1-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Receipts April 2026-20260518T171841Z-3-001/Receipts April 2026/IMG_1824(1).HEIC` / chunk `april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1824-1-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1824-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Receipts April 2026-20260518T171841Z-3-001/Receipts April 2026/IMG_1824.HEIC` / chunk `april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1824-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1825-1-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Receipts April 2026-20260518T171841Z-3-001/Receipts April 2026/IMG_1825(1).HEIC` / chunk `april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1825-1-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1825-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Receipts April 2026-20260518T171841Z-3-001/Receipts April 2026/IMG_1825.HEIC` / chunk `april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1825-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1826-1-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Receipts April 2026-20260518T171841Z-3-001/Receipts April 2026/IMG_1826(1).HEIC` / chunk `april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1826-1-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1826-HEIC
+- Check #: —
+- Date: —
+- Payee/vendor: —
+- Amount: —
+- Memo: —
+- Source: `Receipts April 2026-20260518T171841Z-3-001/Receipts April 2026/IMG_1826.HEIC` / chunk `april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1826-HEIC`
+- Evidence: approval_evidence_linked
+- Address present: no
+- Missing: —
+- Confidence: high
+### bank-staged-bank-20260519212554-bank-april-2026-csv-row-37
+- Check #: 115
+- Date: 04/21/2026
+- Payee/vendor: Check
+- Amount: $50.00
+- Memo: Check
+- Source: `bank-import-bank-20260519212554-bank-april-2026-csv` / chunk `bank-20260519212554-bank-april-2026-csv-row-37`
+- Evidence: unmatched
+- Address present: no
+- Missing: address
+- Confidence: medium
+### bank-staged-bank-20260519212554-bank-april-2026-csv-row-41
+- Check #: 158
+- Date: 04/20/2026
+- Payee/vendor: Check
+- Amount: $300.00
+- Memo: Check
+- Source: `bank-import-bank-20260519212554-bank-april-2026-csv` / chunk `bank-20260519212554-bank-april-2026-csv-row-41`
+- Evidence: unmatched
+- Address present: no
+- Missing: address
+- Confidence: medium
+### bank-staged-bank-20260519212554-bank-april-2026-csv-row-42
+- Check #: 114
+- Date: 04/20/2026
+- Payee/vendor: Check
+- Amount: $22.76
+- Memo: Check
+- Source: `bank-import-bank-20260519212554-bank-april-2026-csv` / chunk `bank-20260519212554-bank-april-2026-csv-row-42`
+- Evidence: unmatched
+- Address present: no
+- Missing: address
+- Confidence: medium
+### bank-staged-bank-20260519212554-bank-april-2026-csv-row-53
+- Check #: 112
+- Date: 04/15/2026
+- Payee/vendor: Check
+- Amount: $527.79
+- Memo: Check
+- Source: `bank-import-bank-20260519212554-bank-april-2026-csv` / chunk `bank-20260519212554-bank-april-2026-csv-row-53`
+- Evidence: unmatched
+- Address present: no
+- Missing: address
+- Confidence: medium
+### bank-staged-bank-20260519212554-bank-april-2026-csv-row-57
+- Check #: 157
+- Date: 04/14/2026
+- Payee/vendor: Check
+- Amount: $20.00
+- Memo: Check
+- Source: `bank-import-bank-20260519212554-bank-april-2026-csv` / chunk `bank-20260519212554-bank-april-2026-csv-row-57`
+- Evidence: unmatched
+- Address present: no
+- Missing: address
+- Confidence: medium
+### bank-staged-bank-20260519212554-bank-april-2026-csv-row-78
+- Check #: 150
+- Date: 04/08/2026
+- Payee/vendor: Check
+- Amount: $1250.00
+- Memo: Check
+- Source: `bank-import-bank-20260519212554-bank-april-2026-csv` / chunk `bank-20260519212554-bank-april-2026-csv-row-78`
+- Evidence: unmatched
+- Address present: no
+- Missing: address
+- Confidence: medium
+### bank-staged-bank-20260519212554-bank-april-2026-csv-row-79
+- Check #: 152
+- Date: 04/08/2026
+- Payee/vendor: On-Us Check
+- Amount: $2267.10
+- Memo: On-Us Check
+- Source: `bank-import-bank-20260519212554-bank-april-2026-csv` / chunk `bank-20260519212554-bank-april-2026-csv-row-79`
+- Evidence: unmatched
+- Address present: no
+- Missing: address
+- Confidence: medium
+### bank-staged-bank-20260519212554-bank-april-2026-csv-row-85
+- Check #: 139
+- Date: 04/02/2026
+- Payee/vendor: Check
+- Amount: $90.00
+- Memo: Check
+- Source: `bank-import-bank-20260519212554-bank-april-2026-csv` / chunk `bank-20260519212554-bank-april-2026-csv-row-85`
+- Evidence: unmatched
+- Address present: no
+- Missing: address
+- Confidence: medium
+### bank-staged-bank-20260519212554-bank-april-2026-csv-row-87
+- Check #: 147
+- Date: 04/01/2026
+- Payee/vendor: Check
+- Amount: $100.00
+- Memo: Check
+- Source: `bank-import-bank-20260519212554-bank-april-2026-csv` / chunk `bank-20260519212554-bank-april-2026-csv-row-87`
+- Evidence: unmatched
+- Address present: no
+- Missing: address
+- Confidence: medium
+## 2. April bank ledger expenditures
+### ledger-file-file-row-3
+- Date: 2026-04-30
+- Ref/check: —
+- Description: POS Purchase MCDONALD'S F11164 2214 N REYNOLDS BRYANT AR *****3739 04/30 7:42
+- Amount: $15.83
+- Memo/category: — / —
+- Possible vendor: MCDONALD'S F11164 2214 N REYNOLDS BRYANT
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 3
+### ledger-file-file-row-4
+- Date: 2026-04-30
+- Ref/check: —
+- Description: POS Purchase SQ *CAPACHI'S COFFEE + Hot Springs AR *****3739 04/29 01:32
+- Amount: $10.33
+- Memo/category: — / —
+- Possible vendor: SQ *CAPACHI'S COFFEE + Hot Springs
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 4
+### ledger-file-file-row-5
+- Date: 2026-04-30
+- Ref/check: —
+- Description: POS Purchase SQ *CAPACHI'S COFFEE + Hot Springs AR *****3739 04/29 01:32
+- Amount: $6.63
+- Memo/category: — / —
+- Possible vendor: SQ *CAPACHI'S COFFEE + Hot Springs
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 5
+### ledger-file-file-row-7
+- Date: 2026-04-29
+- Ref/check: —
+- Description: POS Purchase ACMESOURCE/OFFICEHUB ARLINGTON TN *****3739 04/28 21:34
+- Amount: $159.10
+- Memo/category: — / —
+- Possible vendor: ACMESOURCE/OFFICEHUB ARLINGTON
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 7
+### ledger-file-file-row-10
+- Date: 2026-04-28
+- Ref/check: —
+- Description: POS Purchase Love's #0779 Inside 67 MALVERN AR *****3739 04/28 18:19
+- Amount: $30.61
+- Memo/category: — / —
+- Possible vendor: Love's #0779 Inside 67 MALVERN
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 10
+### ledger-file-file-row-11
+- Date: 2026-04-28
+- Ref/check: —
+- Description: POS Purchase NAACP JAX* NAACP JAX A JACKSONVILLE AR *****3739 04/27 22:34
+- Amount: $137.95
+- Memo/category: — / —
+- Possible vendor: NAACP JAX* NAACP JAX A JACKSONVILLE
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 11
+### ledger-file-file-row-12
+- Date: 2026-04-28
+- Ref/check: —
+- Description: POS Purchase MO205 HARRISON AR *****3739 04/27 20:38
+- Amount: $28.17
+- Memo/category: — / —
+- Possible vendor: MO205 HARRISON
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 12
+### ledger-file-file-row-13
+- Date: 2026-04-28
+- Ref/check: —
+- Description: POS Purchase TST*FEED AND FOLLY Fayetteville AR *****3739 04/27 09:56
+- Amount: $64.10
+- Memo/category: — / —
+- Possible vendor: TST*FEED AND FOLLY Fayetteville
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 13
+### ledger-file-file-row-15
+- Date: 2026-04-27
+- Ref/check: —
+- Description: POS Purchase WHOLEFDS FAY #10596 3425 N COLLEGE AVE STE FAYETTEVILLE AR *****3739 04/26 17:33
+- Amount: $107.94
+- Memo/category: — / —
+- Possible vendor: WHOLEFDS FAY #10596 3425 N COLLEGE AVE STE FAYETTEVILLE
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 15
+### ledger-file-file-row-16
+- Date: 2026-04-27
+- Ref/check: —
+- Description: POS Purchase MCDONALD'S F10667 450 HWY 65 N CONWAY AR *****3739 04/26 10:38
+- Amount: $15.17
+- Memo/category: — / —
+- Possible vendor: MCDONALD'S F10667 450 HWY 65 N CONWAY
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 16
+### ledger-file-file-row-17
+- Date: 2026-04-27
+- Ref/check: —
+- Description: POS Purchase LW* ARKANSAS DEMOCRATI LITTLE ROCK AR *****3739 04/25 21:02
+- Amount: $80.00
+- Memo/category: — / —
+- Possible vendor: LW* ARKANSAS DEMOCRATI LITTLE ROCK
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 17
+### ledger-file-file-row-18
+- Date: 2026-04-27
+- Ref/check: —
+- Description: POS Purchase HAMPTON INNS RUSSELLVI RUSSELLVILLE AR *****3739 04/25 09:59
+- Amount: $192.98
+- Memo/category: — / —
+- Possible vendor: HAMPTON INNS RUSSELLVI RUSSELLVILLE
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 18
+### ledger-file-file-row-19
+- Date: 2026-04-27
+- Ref/check: —
+- Description: POS Purchase AIRBNB * HMEJS22YQ3 4158005959 CA *****3739 04/25 05:37
+- Amount: $103.58
+- Memo/category: — / —
+- Possible vendor: AIRBNB * HMEJS22YQ3 4158005959
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 19
+### ledger-file-file-row-20
+- Date: 2026-04-27
+- Ref/check: —
+- Description: POS Purchase FREDDY'S 43-0013 2220 E MAIN ST RUSSELLVILLE AR *****3739 04/24 21:36
+- Amount: $11.43
+- Memo/category: — / —
+- Possible vendor: FREDDY'S 43-0013 2220 E MAIN ST RUSSELLVILLE
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 20
+### ledger-file-file-row-22
+- Date: 2026-04-24
+- Ref/check: —
+- Description: POS Purchase KROGER #624 RUSSELLVILLE AR *****3739 04/23 21:23
+- Amount: $38.68
+- Memo/category: — / —
+- Possible vendor: KROGER #624 RUSSELLVILLE
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 22
+### ledger-file-file-row-23
+- Date: 2026-04-24
+- Ref/check: —
+- Description: POS Purchase STICKER MULE AMSTERDAM NY *****3739 04/23 10:39
+- Amount: $180.68
+- Memo/category: — / —
+- Possible vendor: STICKER MULE AMSTERDAM
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 23
+### ledger-file-file-row-24
+- Date: 2026-04-24
+- Ref/check: —
+- Description: POS Purchase COLTON S STEAKHOUS MORRILTON AR *****3739 04/23 10:39
+- Amount: $66.00
+- Memo/category: — / —
+- Possible vendor: COLTON S STEAKHOUS MORRILTON
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 24
+### ledger-file-file-row-27
+- Date: 2026-04-23
+- Ref/check: —
+- Description: POS Purchase CLEVERBRIDGE INC. CBI*FLI GROW.CLEVERBRIDGE.COM/ CHICAGO IL *****3739 04/23 05:07
+- Amount: $26.00
+- Memo/category: — / —
+- Possible vendor: CLEVERBRIDGE INC. CBI*FLI GROW.CLEVERBRIDGE.COM/ CHICAGO
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 27
+### ledger-file-file-row-37
+- Date: 2026-04-21
+- Ref/check: 115
+- Description: Check
+- Amount: $50.00
+- Memo/category: — / —
+- Possible vendor: Check
+- Matched check: yes
+- Matched source: `bank-staged-bank-20260519212554-bank-april-2026-csv-row-37`
+- Address present: no
+- Missing: —
+- Reconciliation: matched_uploaded_check
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 37
+### ledger-file-file-row-38
+- Date: 2026-04-21
+- Ref/check: —
+- Description: POS Purchase DD *DOORDASH CHILISGRI SAN FRANCISCO CA *****3739 04/20 08:52
+- Amount: $40.06
+- Memo/category: — / —
+- Possible vendor: DD *DOORDASH CHILISGRI SAN FRANCISCO
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 38
+### ledger-file-file-row-41
+- Date: 2026-04-20
+- Ref/check: 158
+- Description: Check
+- Amount: $300.00
+- Memo/category: — / —
+- Possible vendor: Check
+- Matched check: yes
+- Matched source: `bank-staged-bank-20260519212554-bank-april-2026-csv-row-41`
+- Address present: no
+- Missing: —
+- Reconciliation: matched_uploaded_check
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 41
+### ledger-file-file-row-42
+- Date: 2026-04-20
+- Ref/check: 114
+- Description: Check
+- Amount: $22.76
+- Memo/category: — / —
+- Possible vendor: Check
+- Matched check: yes
+- Matched source: `bank-staged-bank-20260519212554-bank-april-2026-csv-row-42`
+- Address present: no
+- Missing: —
+- Reconciliation: matched_uploaded_check
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 42
+### ledger-file-file-row-43
+- Date: 2026-04-20
+- Ref/check: —
+- Description: POS Purchase AIRBNB * HMESDCHZNM 4158005959 CA *****3739 04/20 04:32
+- Amount: $136.38
+- Memo/category: — / —
+- Possible vendor: AIRBNB * HMESDCHZNM 4158005959
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 43
+### ledger-file-file-row-44
+- Date: 2026-04-20
+- Ref/check: —
+- Description: POS Purchase THE GAS SPOT #10 MT. PLEASANT AR *****3739 04/18 09:09
+- Amount: $15.35
+- Memo/category: — / —
+- Possible vendor: THE GAS SPOT #10 MT. PLEASANT
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 44
+### ledger-file-file-row-45
+- Date: 2026-04-20
+- Ref/check: —
+- Description: POS Purchase DAIRY QUEEN #44464 SHERWOOD AR *****3739 04/17 02:38
+- Amount: $12.91
+- Memo/category: — / —
+- Possible vendor: DAIRY QUEEN #44464 SHERWOOD
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 45
+### ledger-file-file-row-47
+- Date: 2026-04-17
+- Ref/check: —
+- Description: POS Purchase Mailchimp Atlanta GA *****3739 04/17 09:35
+- Amount: $20.00
+- Memo/category: — / —
+- Possible vendor: Mailchimp Atlanta
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 47
+### ledger-file-file-row-50
+- Date: 2026-04-16
+- Ref/check: —
+- Description: POS Purchase AMAZON.COM*BS2BT2J82 AMAZON.COM SEATTLE WA *****3739 04/16 :03
+- Amount: $19.43
+- Memo/category: — / —
+- Possible vendor: AMAZON.COM*BS2BT2J82 AMAZON.COM SEATTLE
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 50
+### ledger-file-file-row-53
+- Date: 2026-04-15
+- Ref/check: 112
+- Description: Check
+- Amount: $527.79
+- Memo/category: — / —
+- Possible vendor: Check
+- Matched check: yes
+- Matched source: `bank-staged-bank-20260519212554-bank-april-2026-csv-row-53`
+- Address present: no
+- Missing: —
+- Reconciliation: matched_uploaded_check
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 53
+### ledger-file-file-row-54
+- Date: 2026-04-15
+- Ref/check: —
+- Description: Overdraft Funds Paid Charge # 112
+- Amount: $30.00
+- Memo/category: — / —
+- Possible vendor: Overdraft Funds Paid Charge # 112
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 54
+### ledger-file-file-row-55
+- Date: 2026-04-15
+- Ref/check: —
+- Description: POS Purchase OFFICE DEPOT #234 N LITTLE ROCK AR *****3739 04/14 09:42
+- Amount: $36.12
+- Memo/category: — / —
+- Possible vendor: OFFICE DEPOT #234 N LITTLE ROCK
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 55
+### ledger-file-file-row-57
+- Date: 2026-04-14
+- Ref/check: 157
+- Description: Check
+- Amount: $20.00
+- Memo/category: — / —
+- Possible vendor: Check
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 57
+### ledger-file-file-row-58
+- Date: 2026-04-14
+- Ref/check: —
+- Description: POS Purchase OFFICE DEPOT #234 4000 MCCAIN BLVD N LITTLE ROCK AR *****3739 4/14 11:54
+- Amount: $83.41
+- Memo/category: — / —
+- Possible vendor: OFFICE DEPOT #234 4000 MCCAIN BLVD N LITTLE ROCK
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 58
+### ledger-file-file-row-60
+- Date: 2026-04-13
+- Ref/check: —
+- Description: POS Purchase DOLLAR GENERAL # 'S 12240 DG 122405958 HWY 36 W ROSE BUD AR *****3739 04/12 19:47
+- Amount: $14.33
+- Memo/category: — / —
+- Possible vendor: DOLLAR GENERAL # 'S 12240 DG 122405958 HWY 36 W ROSE BUD
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 60
+### ledger-file-file-row-61
+- Date: 2026-04-13
+- Ref/check: —
+- Description: POS Purchase DOLLAR GENERAL # 'S 12240 DG 122405958 HWY 36 W ROSE BUD AR *****3739 04/12 19:46
+- Amount: $28.67
+- Memo/category: — / —
+- Possible vendor: DOLLAR GENERAL # 'S 12240 DG 122405958 HWY 36 W ROSE BUD
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 61
+### ledger-file-file-row-62
+- Date: 2026-04-13
+- Ref/check: —
+- Description: POS Purchase MCDONALD'S F26633 3101 ALBERT PIKE ROAD HOT SPRINGS AR *****3739 04/12 14:08
+- Amount: $19.97
+- Memo/category: — / —
+- Possible vendor: MCDONALD'S F26633 3101 ALBERT PIKE ROAD HOT SPRINGS
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 62
+### ledger-file-file-row-63
+- Date: 2026-04-13
+- Ref/check: —
+- Description: POS Purchase AIRBNB * HM4H3KJAQX 4158005959 CA *****3739 04/12 13:42
+- Amount: $250.22
+- Memo/category: — / —
+- Possible vendor: AIRBNB * HM4H3KJAQX 4158005959
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 63
+### ledger-file-file-row-64
+- Date: 2026-04-13
+- Ref/check: —
+- Description: POS Purchase SQ *OUACHITA COFFEE ROAST SQUARE PURCHASE MENA AR *****3739 04/12 1:57
+- Amount: $134.77
+- Memo/category: — / —
+- Possible vendor: SQ *OUACHITA COFFEE ROAST SQUARE PURCHASE MENA
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 64
+### ledger-file-file-row-65
+- Date: 2026-04-13
+- Ref/check: —
+- Description: POS Purchase DOLLAR-GENERAL #0397 DG 397617 ALBERT PIKE HOT SPRINGS AR *****3739 04/10 20:45
+- Amount: $54.79
+- Memo/category: — / —
+- Possible vendor: DOLLAR-GENERAL #0397 DG 397617 ALBERT PIKE HOT SPRINGS
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 65
+### ledger-file-file-row-66
+- Date: 2026-04-13
+- Ref/check: —
+- Description: POS Purchase LUCKYS CAFE PINE BLUFF AR *****3739 04/10 09:57
+- Amount: $37.00
+- Memo/category: — / —
+- Possible vendor: LUCKYS CAFE PINE BLUFF
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 66
+### ledger-file-file-row-67
+- Date: 2026-04-13
+- Ref/check: —
+- Description: POS Purchase HAMPTON INN & SUITES P PINE BLUFF AR *****3739 04/09 13:36
+- Amount: $122.71
+- Memo/category: — / —
+- Possible vendor: HAMPTON INN & SUITES P PINE BLUFF
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 67
+### ledger-file-file-row-69
+- Date: 2026-04-10
+- Ref/check: —
+- Description: POS Purchase MCDONALD'S F32191 2819 SOUTH OLIVE ST PINE BLUFF AR *****3739 4/10 15:51
+- Amount: $17.66
+- Memo/category: — / —
+- Possible vendor: MCDONALD'S F32191 2819 SOUTH OLIVE ST PINE BLUFF
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 69
+### ledger-file-file-row-70
+- Date: 2026-04-10
+- Ref/check: —
+- Description: POS Purchase WENDY'S 44 1631 E HARDING ST MORRILTON AR *****3739 04/09 21:39
+- Amount: $32.62
+- Memo/category: — / —
+- Possible vendor: WENDY'S 44 1631 E HARDING ST MORRILTON
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 70
+### ledger-file-file-row-71
+- Date: 2026-04-10
+- Ref/check: —
+- Description: POS Purchase LW* PROGRESSIVE ARKANS LITTLE ROCK AR *****3739 04/09 07:00
+- Amount: $35.00
+- Memo/category: — / —
+- Possible vendor: LW* PROGRESSIVE ARKANS LITTLE ROCK
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 71
+### ledger-file-file-row-72
+- Date: 2026-04-10
+- Ref/check: —
+- Description: POS Purchase BLUE DIAMOND CAFE MORRILTON AR *****3739 04/08 20:57
+- Amount: $18.14
+- Memo/category: — / —
+- Possible vendor: BLUE DIAMOND CAFE MORRILTON
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 72
+### ledger-file-file-row-74
+- Date: 2026-04-09
+- Ref/check: —
+- Description: POS Purchase SHELL SERVICE S RUSSELLVILLE AR *****3739 04/09 17:32
+- Amount: $12.72
+- Memo/category: — / —
+- Possible vendor: SHELL SERVICE S RUSSELLVILLE
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 74
+### ledger-file-file-row-75
+- Date: 2026-04-09
+- Ref/check: —
+- Description: POS Purchase AIRBNB * HMMFAWM5HC 4158005959 CA *****3739 04/09 04:32
+- Amount: $125.62
+- Memo/category: — / —
+- Possible vendor: AIRBNB * HMMFAWM5HC 4158005959
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 75
+### ledger-file-file-row-76
+- Date: 2026-04-09
+- Ref/check: —
+- Description: POS Purchase AIRBNB * HMMFAWM5HC 4158005959 CA *****3739 04/08 13:36
+- Amount: $125.62
+- Memo/category: — / —
+- Possible vendor: AIRBNB * HMMFAWM5HC 4158005959
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 76
+### ledger-file-file-row-78
+- Date: 2026-04-08
+- Ref/check: 150
+- Description: Check
+- Amount: $1250.00
+- Memo/category: — / —
+- Possible vendor: Check
+- Matched check: yes
+- Matched source: `bank-staged-bank-20260519212554-bank-april-2026-csv-row-78`
+- Address present: no
+- Missing: —
+- Reconciliation: matched_uploaded_check
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 78
+### ledger-file-file-row-79
+- Date: 2026-04-08
+- Ref/check: 152
+- Description: On-Us Check
+- Amount: $2267.10
+- Memo/category: — / —
+- Possible vendor: On-Us Check
+- Matched check: yes
+- Matched source: `bank-staged-bank-20260519212554-bank-april-2026-csv-row-79`
+- Address present: no
+- Missing: —
+- Reconciliation: matched_uploaded_check
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 79
+### ledger-file-file-row-81
+- Date: 2026-04-07
+- Ref/check: —
+- Description: POS Purchase BULLDOG RESTAURANT BALD KNOB AR *****3739 04/06 22:26
+- Amount: $27.55
+- Memo/category: — / —
+- Possible vendor: BULLDOG RESTAURANT BALD KNOB
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 81
+### ledger-file-file-row-82
+- Date: 2026-04-07
+- Ref/check: —
+- Description: POS Purchase ACMESOURCE/OFFICEHUB ARLINGTON TN *****3739 04/06 21:34
+- Amount: $791.69
+- Memo/category: — / —
+- Possible vendor: ACMESOURCE/OFFICEHUB ARLINGTON
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 82
+### ledger-file-file-row-83
+- Date: 2026-04-07
+- Ref/check: —
+- Description: POS Purchase WALMART.COM 8009256278 702 SW 8TH ST BENTONVILLE AR *****3739 4/05 21:57
+- Amount: $70.81
+- Memo/category: — / —
+- Possible vendor: WALMART.COM 8009256278 702 SW 8TH ST BENTONVILLE
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 83
+### ledger-file-file-row-85
+- Date: 2026-04-02
+- Ref/check: 139
+- Description: Check
+- Amount: $90.00
+- Memo/category: — / —
+- Possible vendor: Check
+- Matched check: yes
+- Matched source: `bank-staged-bank-20260519212554-bank-april-2026-csv-row-85`
+- Address present: no
+- Missing: —
+- Reconciliation: matched_uploaded_check
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 85
+### ledger-file-file-row-87
+- Date: 2026-04-01
+- Ref/check: 147
+- Description: Check
+- Amount: $100.00
+- Memo/category: — / —
+- Possible vendor: Check
+- Matched check: yes
+- Matched source: `bank-staged-bank-20260519212554-bank-april-2026-csv-row-87`
+- Address present: no
+- Missing: —
+- Reconciliation: matched_uploaded_check
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 87
+### ledger-file-file-row-88
+- Date: 2026-04-01
+- Ref/check: —
+- Description: POS Purchase GOOGLE *WORKSPACE.KELLYGR GOOGLE *WORKSPACE.KELLY MOUNTAIN VIEW CA *****3739 04/01 06:22
+- Amount: $33.60
+- Memo/category: — / —
+- Possible vendor: GOOGLE *WORKSPACE.KELLYGR GOOGLE *WORKSPACE.KELLY MOUNTAIN VIEW
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 88
+### ledger-file-file-row-89
+- Date: 2026-04-01
+- Ref/check: —
+- Description: POS Purchase LAS PLAYITAS MEXICAN R ROSE BUD AR *****3739 03/31 10:17
+- Amount: $28.92
+- Memo/category: — / —
+- Possible vendor: LAS PLAYITAS MEXICAN R ROSE BUD
+- Matched check: no
+- Address present: no
+- Missing: —
+- Reconciliation: unreviewed
+- Provenance: `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` row 89
+## 3. Match table
+- **exact**: uploaded=bank-staged-bank-20260519212554-bank-april-2026-csv-row-37 ledger=ledger-file-file-row-37 — Amount, date window, and check/ref number align
+- **exact**: uploaded=bank-staged-bank-20260519212554-bank-april-2026-csv-row-41 ledger=ledger-file-file-row-41 — Amount, date window, and check/ref number align
+- **exact**: uploaded=bank-staged-bank-20260519212554-bank-april-2026-csv-row-42 ledger=ledger-file-file-row-42 — Amount, date window, and check/ref number align
+- **exact**: uploaded=bank-staged-bank-20260519212554-bank-april-2026-csv-row-53 ledger=ledger-file-file-row-53 — Amount, date window, and check/ref number align
+- **duplicate**: uploaded=bank-staged-bank-20260519212554-bank-april-2026-csv-row-57 ledger=— — 2 exact ledger matches — manual review required
+- **exact**: uploaded=bank-staged-bank-20260519212554-bank-april-2026-csv-row-78 ledger=ledger-file-file-row-78 — Amount, date window, and check/ref number align
+- **exact**: uploaded=bank-staged-bank-20260519212554-bank-april-2026-csv-row-79 ledger=ledger-file-file-row-79 — Amount, date window, and check/ref number align
+- **exact**: uploaded=bank-staged-bank-20260519212554-bank-april-2026-csv-row-85 ledger=ledger-file-file-row-85 — Amount, date window, and check/ref number align
+- **exact**: uploaded=bank-staged-bank-20260519212554-bank-april-2026-csv-row-87 ledger=ledger-file-file-row-87 — Amount, date window, and check/ref number align
+- **unmatched_uploaded**: uploaded=img-Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1380.HEIC ledger=— — Check image only — may be contribution deposit
+- **unmatched_uploaded**: uploaded=img-Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1381.HEIC ledger=— — Check image only — may be contribution deposit
+- **unmatched_uploaded**: uploaded=img-Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1382.HEIC ledger=— — Check image only — may be contribution deposit
+- **unmatched_uploaded**: uploaded=img-Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1383.HEIC ledger=— — Check image only — may be contribution deposit
+- **unmatched_uploaded**: uploaded=img-Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1384.HEIC ledger=— — Check image only — may be contribution deposit
+- **unmatched_uploaded**: uploaded=img-Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1385.HEIC ledger=— — Check image only — may be contribution deposit
+- **unmatched_uploaded**: uploaded=img-Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1927.HEIC ledger=— — Check image only — may be contribution deposit
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1380-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1381-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1382-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1383-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1384-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1385-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1927-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1816-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1817-1-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1817-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1818-1-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1818-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1819-1-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1819-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1820-1-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1820-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1821-1-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1821-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1822-1-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1822-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1823-1-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1823-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1824-1-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1824-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1825-1-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1825-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1826-1-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1826-HEIC ledger=— — No ledger expenditure paired
+- **unmatched_uploaded**: uploaded=bank-staged-bank-20260519212554-bank-april-2026-csv-row-57 ledger=— — No ledger expenditure paired
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-3 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-4 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-5 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-7 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-10 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-11 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-12 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-13 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-15 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-16 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-17 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-18 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-19 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-20 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-22 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-23 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-24 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-27 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-38 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-43 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-44 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-45 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-47 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-50 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-54 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-55 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-57 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-58 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-60 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-61 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-62 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-63 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-64 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-65 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-66 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-67 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-69 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-70 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-71 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-72 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-74 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-75 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-76 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-81 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-82 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-83 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-88 — April bank debit with no uploaded check/receipt pairing
+- **unmatched_ledger**: uploaded=— ledger=ledger-file-file-row-89 — April bank debit with no uploaded check/receipt pairing
+## 4. Address gap list
+- **(check image — payee unknown)** · $? · ? · check — · source `Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1380.HEIC` · Expenditure or contribution documentation may require payee address when identified · status: not_extracted
+- **(check image — payee unknown)** · $? · ? · check — · source `Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1381.HEIC` · Expenditure or contribution documentation may require payee address when identified · status: not_extracted
+- **(check image — payee unknown)** · $? · ? · check — · source `Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1382.HEIC` · Expenditure or contribution documentation may require payee address when identified · status: not_extracted
+- **(check image — payee unknown)** · $? · ? · check — · source `Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1383.HEIC` · Expenditure or contribution documentation may require payee address when identified · status: not_extracted
+- **(check image — payee unknown)** · $? · ? · check — · source `Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1384.HEIC` · Expenditure or contribution documentation may require payee address when identified · status: not_extracted
+- **(check image — payee unknown)** · $? · ? · check — · source `Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1385.HEIC` · Expenditure or contribution documentation may require payee address when identified · status: not_extracted
+- **(check image — payee unknown)** · $? · ? · check — · source `Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1927.HEIC` · Expenditure or contribution documentation may require payee address when identified · status: not_extracted
+- **Check** · $50.00 · 04/21/2026 · check 115 · source `bank-import-bank-20260519212554-bank-april-2026-csv` · Vendor/payee address missing for expenditure reporting · status: missing
+- **Check** · $300.00 · 04/20/2026 · check 158 · source `bank-import-bank-20260519212554-bank-april-2026-csv` · Vendor/payee address missing for expenditure reporting · status: missing
+- **Check** · $22.76 · 04/20/2026 · check 114 · source `bank-import-bank-20260519212554-bank-april-2026-csv` · Vendor/payee address missing for expenditure reporting · status: missing
+- **Check** · $527.79 · 04/15/2026 · check 112 · source `bank-import-bank-20260519212554-bank-april-2026-csv` · Vendor/payee address missing for expenditure reporting · status: missing
+- **Check** · $20.00 · 04/14/2026 · check 157 · source `bank-import-bank-20260519212554-bank-april-2026-csv` · Vendor/payee address missing for expenditure reporting · status: missing
+- **Check** · $1250.00 · 04/08/2026 · check 150 · source `bank-import-bank-20260519212554-bank-april-2026-csv` · Vendor/payee address missing for expenditure reporting · status: missing
+- **On-Us Check** · $2267.10 · 04/08/2026 · check 152 · source `bank-import-bank-20260519212554-bank-april-2026-csv` · Vendor/payee address missing for expenditure reporting · status: missing
+- **Check** · $90.00 · 04/02/2026 · check 139 · source `bank-import-bank-20260519212554-bank-april-2026-csv` · Vendor/payee address missing for expenditure reporting · status: missing
+- **Check** · $100.00 · 04/01/2026 · check 147 · source `bank-import-bank-20260519212554-bank-april-2026-csv` · Vendor/payee address missing for expenditure reporting · status: missing
+- **MCDONALD'S F11164 2214 N REYNOLDS BRYANT** · $15.83 · 2026-04-30 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **SQ *CAPACHI'S COFFEE + Hot Springs** · $10.33 · 2026-04-30 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **SQ *CAPACHI'S COFFEE + Hot Springs** · $6.63 · 2026-04-30 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **ACMESOURCE/OFFICEHUB ARLINGTON** · $159.10 · 2026-04-29 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **Love's #0779 Inside 67 MALVERN** · $30.61 · 2026-04-28 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **NAACP JAX* NAACP JAX A JACKSONVILLE** · $137.95 · 2026-04-28 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **MO205 HARRISON** · $28.17 · 2026-04-28 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **TST*FEED AND FOLLY Fayetteville** · $64.10 · 2026-04-28 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **WHOLEFDS FAY #10596 3425 N COLLEGE AVE STE FAYETTEVILLE** · $107.94 · 2026-04-27 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **MCDONALD'S F10667 450 HWY 65 N CONWAY** · $15.17 · 2026-04-27 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **LW* ARKANSAS DEMOCRATI LITTLE ROCK** · $80.00 · 2026-04-27 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **HAMPTON INNS RUSSELLVI RUSSELLVILLE** · $192.98 · 2026-04-27 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **AIRBNB * HMEJS22YQ3 4158005959** · $103.58 · 2026-04-27 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **FREDDY'S 43-0013 2220 E MAIN ST RUSSELLVILLE** · $11.43 · 2026-04-27 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **KROGER #624 RUSSELLVILLE** · $38.68 · 2026-04-24 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **STICKER MULE AMSTERDAM** · $180.68 · 2026-04-24 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **COLTON S STEAKHOUS MORRILTON** · $66.00 · 2026-04-24 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **CLEVERBRIDGE INC. CBI*FLI GROW.CLEVERBRIDGE.COM/ CHICAGO** · $26.00 · 2026-04-23 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **Check** · $50.00 · 2026-04-21 · check 115 · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **DD *DOORDASH CHILISGRI SAN FRANCISCO** · $40.06 · 2026-04-21 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **Check** · $300.00 · 2026-04-20 · check 158 · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **Check** · $22.76 · 2026-04-20 · check 114 · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **AIRBNB * HMESDCHZNM 4158005959** · $136.38 · 2026-04-20 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **THE GAS SPOT #10 MT. PLEASANT** · $15.35 · 2026-04-20 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **DAIRY QUEEN #44464 SHERWOOD** · $12.91 · 2026-04-20 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **Mailchimp Atlanta** · $20.00 · 2026-04-17 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **AMAZON.COM*BS2BT2J82 AMAZON.COM SEATTLE** · $19.43 · 2026-04-16 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **Check** · $527.79 · 2026-04-15 · check 112 · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **Overdraft Funds Paid Charge # 112** · $30.00 · 2026-04-15 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **OFFICE DEPOT #234 N LITTLE ROCK** · $36.12 · 2026-04-15 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **Check** · $20.00 · 2026-04-14 · check 157 · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **OFFICE DEPOT #234 4000 MCCAIN BLVD N LITTLE ROCK** · $83.41 · 2026-04-14 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **DOLLAR GENERAL # 'S 12240 DG 122405958 HWY 36 W ROSE BUD** · $14.33 · 2026-04-13 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **DOLLAR GENERAL # 'S 12240 DG 122405958 HWY 36 W ROSE BUD** · $28.67 · 2026-04-13 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **MCDONALD'S F26633 3101 ALBERT PIKE ROAD HOT SPRINGS** · $19.97 · 2026-04-13 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **AIRBNB * HM4H3KJAQX 4158005959** · $250.22 · 2026-04-13 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **SQ *OUACHITA COFFEE ROAST SQUARE PURCHASE MENA** · $134.77 · 2026-04-13 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **DOLLAR-GENERAL #0397 DG 397617 ALBERT PIKE HOT SPRINGS** · $54.79 · 2026-04-13 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **LUCKYS CAFE PINE BLUFF** · $37.00 · 2026-04-13 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **HAMPTON INN & SUITES P PINE BLUFF** · $122.71 · 2026-04-13 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **MCDONALD'S F32191 2819 SOUTH OLIVE ST PINE BLUFF** · $17.66 · 2026-04-10 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **WENDY'S 44 1631 E HARDING ST MORRILTON** · $32.62 · 2026-04-10 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **LW* PROGRESSIVE ARKANS LITTLE ROCK** · $35.00 · 2026-04-10 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **BLUE DIAMOND CAFE MORRILTON** · $18.14 · 2026-04-10 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **SHELL SERVICE S RUSSELLVILLE** · $12.72 · 2026-04-09 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **AIRBNB * HMMFAWM5HC 4158005959** · $125.62 · 2026-04-09 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **AIRBNB * HMMFAWM5HC 4158005959** · $125.62 · 2026-04-09 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **Check** · $1250.00 · 2026-04-08 · check 150 · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **On-Us Check** · $2267.10 · 2026-04-08 · check 152 · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **BULLDOG RESTAURANT BALD KNOB** · $27.55 · 2026-04-07 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **ACMESOURCE/OFFICEHUB ARLINGTON** · $791.69 · 2026-04-07 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **WALMART.COM 8009256278 702 SW 8TH ST BENTONVILLE** · $70.81 · 2026-04-07 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **Check** · $90.00 · 2026-04-02 · check 139 · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **Check** · $100.00 · 2026-04-01 · check 147 · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **GOOGLE *WORKSPACE.KELLYGR GOOGLE *WORKSPACE.KELLY MOUNTAIN VIEW** · $33.60 · 2026-04-01 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+- **LAS PLAYITAS MEXICAN R ROSE BUD** · $28.92 · 2026-04-01 · check — · source `H:\SOSWebsite\Compliance\April26\bank-april-2026.csv` · Ledger expenditure without vendor address on file · status: ledger_only
+## 5. Operator review list
+- [confirm_check_exists] Confirm check image: IMG_1380.HEIC
+- [confirm_check_exists] Confirm check image: IMG_1381.HEIC
+- [confirm_check_exists] Confirm check image: IMG_1382.HEIC
+- [confirm_check_exists] Confirm check image: IMG_1383.HEIC
+- [confirm_check_exists] Confirm check image: IMG_1384.HEIC
+- [confirm_check_exists] Confirm check image: IMG_1385.HEIC
+- [confirm_check_exists] Confirm check image: IMG_1927.HEIC
+- [find_address] Find address for (check image — payee unknown)
+- [find_address] Find address for (check image — payee unknown)
+- [find_address] Find address for (check image — payee unknown)
+- [find_address] Find address for (check image — payee unknown)
+- [find_address] Find address for (check image — payee unknown)
+- [find_address] Find address for (check image — payee unknown)
+- [find_address] Find address for (check image — payee unknown)
+- [find_address] Find address for Check ($50.00)
+- [find_address] Find address for Check ($300.00)
+- [find_address] Find address for Check ($22.76)
+- [find_address] Find address for Check ($527.79)
+- [find_address] Find address for Check ($20.00)
+- [find_address] Find address for Check ($1250.00)
+- [find_address] Find address for On-Us Check ($2267.10)
+- [find_address] Find address for Check ($90.00)
+- [find_address] Find address for Check ($100.00)
+- [find_address] Find address for MCDONALD'S F11164 2214 N REYNOLDS BRYANT ($15.83)
+- [find_address] Find address for SQ *CAPACHI'S COFFEE + Hot Springs ($10.33)
+- [find_address] Find address for SQ *CAPACHI'S COFFEE + Hot Springs ($6.63)
+- [find_address] Find address for ACMESOURCE/OFFICEHUB ARLINGTON ($159.10)
+- [find_address] Find address for Love's #0779 Inside 67 MALVERN ($30.61)
+- [find_address] Find address for NAACP JAX* NAACP JAX A JACKSONVILLE ($137.95)
+- [find_address] Find address for MO205 HARRISON ($28.17)
+- [find_address] Find address for TST*FEED AND FOLLY Fayetteville ($64.10)
+- [find_address] Find address for WHOLEFDS FAY #10596 3425 N COLLEGE AVE STE FAYETTEVILLE ($107.94)
+- [find_address] Find address for MCDONALD'S F10667 450 HWY 65 N CONWAY ($15.17)
+- [find_address] Find address for LW* ARKANSAS DEMOCRATI LITTLE ROCK ($80.00)
+- [find_address] Find address for HAMPTON INNS RUSSELLVI RUSSELLVILLE ($192.98)
+- [find_address] Find address for AIRBNB * HMEJS22YQ3 4158005959 ($103.58)
+- [find_address] Find address for FREDDY'S 43-0013 2220 E MAIN ST RUSSELLVILLE ($11.43)
+- [find_address] Find address for KROGER #624 RUSSELLVILLE ($38.68)
+- [find_address] Find address for STICKER MULE AMSTERDAM ($180.68)
+- [find_address] Find address for COLTON S STEAKHOUS MORRILTON ($66.00)
+- [find_address] Find address for CLEVERBRIDGE INC. CBI*FLI GROW.CLEVERBRIDGE.COM/ CHICAGO ($26.00)
+- [find_address] Find address for Check ($50.00)
+- [find_address] Find address for DD *DOORDASH CHILISGRI SAN FRANCISCO ($40.06)
+- [find_address] Find address for Check ($300.00)
+- [find_address] Find address for Check ($22.76)
+- [find_address] Find address for AIRBNB * HMESDCHZNM 4158005959 ($136.38)
+- [find_address] Find address for THE GAS SPOT #10 MT. PLEASANT ($15.35)
+- [find_address] Find address for DAIRY QUEEN #44464 SHERWOOD ($12.91)
+- [find_address] Find address for Mailchimp Atlanta ($20.00)
+- [find_address] Find address for AMAZON.COM*BS2BT2J82 AMAZON.COM SEATTLE ($19.43)
+- [find_address] Find address for Check ($527.79)
+- [find_address] Find address for Overdraft Funds Paid Charge # 112 ($30.00)
+- [find_address] Find address for OFFICE DEPOT #234 N LITTLE ROCK ($36.12)
+- [find_address] Find address for Check ($20.00)
+- [find_address] Find address for OFFICE DEPOT #234 4000 MCCAIN BLVD N LITTLE ROCK ($83.41)
+- [find_address] Find address for DOLLAR GENERAL # 'S 12240 DG 122405958 HWY 36 W ROSE BUD ($14.33)
+- [find_address] Find address for DOLLAR GENERAL # 'S 12240 DG 122405958 HWY 36 W ROSE BUD ($28.67)
+- [find_address] Find address for MCDONALD'S F26633 3101 ALBERT PIKE ROAD HOT SPRINGS ($19.97)
+- [find_address] Find address for AIRBNB * HM4H3KJAQX 4158005959 ($250.22)
+- [find_address] Find address for SQ *OUACHITA COFFEE ROAST SQUARE PURCHASE MENA ($134.77)
+- [find_address] Find address for DOLLAR-GENERAL #0397 DG 397617 ALBERT PIKE HOT SPRINGS ($54.79)
+- [find_address] Find address for LUCKYS CAFE PINE BLUFF ($37.00)
+- [find_address] Find address for HAMPTON INN & SUITES P PINE BLUFF ($122.71)
+- [find_address] Find address for MCDONALD'S F32191 2819 SOUTH OLIVE ST PINE BLUFF ($17.66)
+- [find_address] Find address for WENDY'S 44 1631 E HARDING ST MORRILTON ($32.62)
+- [find_address] Find address for LW* PROGRESSIVE ARKANS LITTLE ROCK ($35.00)
+- [find_address] Find address for BLUE DIAMOND CAFE MORRILTON ($18.14)
+- [find_address] Find address for SHELL SERVICE S RUSSELLVILLE ($12.72)
+- [find_address] Find address for AIRBNB * HMMFAWM5HC 4158005959 ($125.62)
+- [find_address] Find address for AIRBNB * HMMFAWM5HC 4158005959 ($125.62)
+- [find_address] Find address for Check ($1250.00)
+- [find_address] Find address for On-Us Check ($2267.10)
+- [find_address] Find address for BULLDOG RESTAURANT BALD KNOB ($27.55)
+- [find_address] Find address for ACMESOURCE/OFFICEHUB ARLINGTON ($791.69)
+- [find_address] Find address for WALMART.COM 8009256278 702 SW 8TH ST BENTONVILLE ($70.81)
+- [find_address] Find address for Check ($90.00)
+- [find_address] Find address for Check ($100.00)
+- [find_address] Find address for GOOGLE *WORKSPACE.KELLYGR GOOGLE *WORKSPACE.KELLY MOUNTAIN VIEW ($33.60)
+- [find_address] Find address for LAS PLAYITAS MEXICAN R ROSE BUD ($28.92)
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-3
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-4
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-5
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-7
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-10
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-11
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-12
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-13
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-15
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-16
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-17
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-18
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-19
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-20
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-22
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-23
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-24
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-27
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-38
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-43
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-44
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-45
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-47
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-50
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-54
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-55
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-57
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-58
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-60
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-61
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-62
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-63
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-64
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-65
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-66
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-67
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-69
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-70
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-71
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-72
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-74
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-75
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-76
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-81
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-82
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-83
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-88
+- [resolve_unmatched_ledger] Resolve unmatched ledger line ledger-file-file-row-89
+- [resolve_unmatched_check] Uploaded check not on ledger: img-Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1380.HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: img-Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1381.HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: img-Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1382.HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: img-Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1383.HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: img-Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1384.HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: img-Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1385.HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: img-Checks donations -20260518T171913Z-3-001/Checks donations/IMG_1927.HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1380-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1381-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1382-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1383-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1384-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1385-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Checks-donations-20260518T171913Z-3-001-Checks-donations-IMG-1927-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1816-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1817-1-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1817-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1818-1-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1818-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1819-1-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1819-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1820-1-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1820-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1821-1-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1821-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1822-1-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1822-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1823-1-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1823-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1824-1-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1824-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1825-1-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1825-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1826-1-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: approval-appr-april26-img-Receipts-April-2026-20260518T171841Z-3-001-Receipts-April-2026-IMG-1826-HEIC
+- [resolve_unmatched_check] Uploaded check not on ledger: bank-staged-bank-20260519212554-bank-april-2026-csv-row-57

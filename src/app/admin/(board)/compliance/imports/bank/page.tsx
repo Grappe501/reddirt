@@ -37,6 +37,17 @@ export default function BankImportPage() {
       />
       <ComplianceNav />
       <StorageModeNotice />
+      <div className="rounded-2xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950">
+        <p className="font-semibold">Netlify / production</p>
+        <p className="mt-1">
+          Uploads write to <code className="text-xs">data/compliance/imports/bank/*.analysis.json</code> on the server filesystem. On Netlify this is{" "}
+          <strong>ephemeral per deploy</strong> unless you use a persistent volume or post-import backup. After each deploy, re-import the bank CSV or restore
+          gitignored analysis files from secure backup.
+        </p>
+        <p className="mt-2 text-xs">
+          See <code>docs/compliance/COMPLIANCE_NETLIFY_BANK_IMPORT.md</code>. April26 folder CSV (if configured on host) is an alternate file-backed source.
+        </p>
+      </div>
       <form action={submit} className="rounded-2xl border border-kelly-text/10 bg-kelly-page p-5 shadow-[var(--shadow-soft)]">
         <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-end">
           <label className="font-body text-sm font-semibold text-kelly-text">

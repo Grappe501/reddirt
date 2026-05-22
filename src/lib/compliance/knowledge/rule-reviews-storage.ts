@@ -1,8 +1,10 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import type { ComplianceRuleTopic } from "./compliance-rule-types";
 
 export type ComplianceRuleReviewRecord = {
-  sourceId: string;
+  sourceId?: string;
+  topic?: ComplianceRuleTopic;
   reviewedByInitials: string;
   reviewedAt: string;
   reviewNote?: string;
@@ -21,9 +23,14 @@ export async function loadRuleReviews(): Promise<ComplianceRuleReviewRecord[]> {
   }
 }
 
+function reviewKey(record: ComplianceRuleReviewRecord): string {
+  return record.topic ? `topic:${record.topic}` : `source:${record.sourceId ?? ""}`;
+}
+
 export async function saveRuleReview(record: ComplianceRuleReviewRecord): Promise<void> {
   const reviews = await loadRuleReviews();
-  const next = [...reviews.filter((item) => item.sourceId !== record.sourceId), record];
+  const key = reviewKey(record);
+  const next = [...reviews.filter((item) => reviewKey(item) !== key), record];
   await mkdir(path.dirname(REVIEWS_PATH), { recursive: true });
   await writeFile(REVIEWS_PATH, `${JSON.stringify(next, null, 2)}\n`, "utf8");
 }

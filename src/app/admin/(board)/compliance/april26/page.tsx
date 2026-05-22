@@ -1,127 +1,184 @@
 import Link from "next/link";
 import {
+  ComplianceActionButton,
   ComplianceCard,
+  ComplianceMetricCard,
   ComplianceNav,
   CompliancePageHeader,
-  ComplianceStatusBadge,
-  ComplianceWarningPanel,
 } from "../components";
-import { APRIL_2026_QUEUE_ID } from "@/lib/compliance/approval/build-approval-queue";
-import { loadApril26Dashboard } from "@/lib/compliance/april26/load-april26-dashboard";
+import { buildApril26ImportStatus } from "@/lib/compliance/imports/april26-import-status";
+import { buildBankReconciliationRehearsal } from "@/lib/compliance/imports/bank-reconciliation-rehearsal";
+import { buildBankCsvOperatorGuide } from "@/lib/compliance/imports/bank-csv-operator-state";
+import { ComplianceDoThisNext, ComplianceWhatThisMeans } from "../compliance-ux";
+import { rebuildApprovalQueuesAction } from "../approval/actions";
+import { AprilExpenditureInventoryPanel } from "../command-center/april-expenditure-inventory-panel";
 
 export const dynamic = "force-dynamic";
 
-const REVIEW_LINKS = [
-  { label: "Review Contributions", href: `/admin/compliance/approval/${APRIL_2026_QUEUE_ID}?filter=goodchange` },
-  { label: "Review Expenses", href: "/admin/compliance/money" },
-  { label: "Review Receipts", href: "/admin/compliance/receipts/review" },
-  { label: "Review Checks/Cash", href: "/admin/compliance/checks/review" },
-  { label: "Review In-Kind", href: `/admin/compliance/approval/${APRIL_2026_QUEUE_ID}` },
-  { label: "Review Payout Batches", href: "/admin/compliance/reconciliation" },
-  { label: "Open Lightning Approval Workbench", href: `/admin/compliance/approval/${APRIL_2026_QUEUE_ID}` },
-] as const;
-
-export default async function April26CompliancePage() {
-  const data = await loadApril26Dashboard();
-  const summary = data.summary;
+export default async function April26ImportPage() {
+  const [status, rehearsal] = await Promise.all([buildApril26ImportStatus(), buildBankReconciliationRehearsal()]);
+  const bank = status.bankReadiness;
+  const bankGuide = buildBankCsvOperatorGuide(bank, {
+    unmatchedBank: rehearsal.unmatchedBank.length,
+    ambiguous: rehearsal.ambiguous.length,
+    highConfidence: rehearsal.highConfidence.length,
+  });
 
   return (
-    <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 pt-6">
+    <div className="mx-auto flex max-w-6xl flex-col gap-6 pb-12">
       <CompliancePageHeader
         eyebrow="April 2026"
-        title="April26 Compliance Dashboard"
-        description="Authoritative RedDirt interface for April 2026 ingest, review, reconciliation, and filing readiness. All AI extractions are draft; treasurer/counsel approval required before filing."
+        title="April26 import status"
+        description="Operator view of staged April 2026 compliance sources on disk. Staged for review — not filed. Not legal certification."
         actions={
-          <Link href="/admin/compliance" className="rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700">
-            Command Center
-          </Link>
+          <form action={rebuildApprovalQueuesAction}>
+            <button type="submit" className="rounded-full bg-[#0f2744] px-5 py-2.5 text-sm font-bold text-white">
+              Rebuild approval queues
+            </button>
+          </form>
         }
       />
       <ComplianceNav />
-
-      {!data.bankCsvPresent ? (
-        <ComplianceWarningPanel title="Bank CSV required to complete reconciliation" tone="red">
-          <p className="mt-2 font-body text-sm text-slate-700">
-            Expected file: <code className="text-xs">{data.bankCsvPath}</code>
-          </p>
-          <p className="mt-2 font-body text-sm text-slate-700">
-            Required headers: <strong>date, amount, memo</strong> (credits positive). Deposit matching and payout reconciliation stay blocked until this file is added and ingest is re-run.
-          </p>
-        </ComplianceWarningPanel>
-      ) : (
-        <ComplianceWarningPanel title="Bank CSV detected" tone="amber">
-          <p className="mt-2 font-body text-sm text-slate-700">
-            Bank file present. Re-run <code className="text-xs">npm run compliance:april26:ingest</code> after updates, then reconcile in the workbench.
-          </p>
-        </ComplianceWarningPanel>
-      )}
-
-      <section className="flex flex-wrap gap-2">
-        {REVIEW_LINKS.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className="rounded-full bg-[#0f2744] px-4 py-2 font-body text-xs font-bold text-white"
-          >
-            {link.label}
-          </Link>
-        ))}
-      </section>
-
-      <section className="grid gap-4 md:grid-cols-3">
-        <ComplianceMetric label="GoodChange rows" value={String(summary?.goodChangeRows ?? "—")} />
-        <ComplianceMetric label="Contributions staged" value={String(summary?.contributionsStaged ?? data.aprilMovements.contributions)} />
-        <ComplianceMetric label="Expenses staged" value={String(summary?.expensesStaged ?? data.aprilMovements.expenses)} />
-        <ComplianceMetric label="Receipt images" value={String(summary?.receiptImageCount ?? data.inventory.receiptImageCount)} />
-        <ComplianceMetric label="Check images" value={String(summary?.checkImageCount ?? data.inventory.checkImageCount)} />
-        <ComplianceMetric label="In-kind images" value={String(summary?.inKindImageCount ?? data.inventory.inKindImageCount)} />
-        <ComplianceMetric label="AI chunks" value={String(summary?.aiChunkCount ?? data.chunks.count)} />
-        <ComplianceMetric label="Payout batches" value={String(summary?.payoutBatchCount ?? data.payoutBatches.length)} />
-        <ComplianceMetric label="Approval remaining" value={String(data.approval.stats.remaining)} />
-      </section>
-
-      <section className="flex flex-wrap gap-2">
-        <ComplianceStatusBadge label={summary ? "Ingest complete" : "Run ingest"} tone={summary ? "green" : "yellow"} />
-        <ComplianceStatusBadge label={`Bank CSV: ${data.bankCsvPresent ? "present" : "missing"}`} tone={data.bankCsvPresent ? "green" : "red"} />
-        <ComplianceStatusBadge label={`Vision: ${summary?.visionEnabled ? "on" : "dry/skipped"}`} tone="neutral" />
-        <ComplianceStatusBadge label={`${data.registrySummary.total} source docs`} tone="neutral" />
-      </section>
-
-      <section className="grid gap-4 md:grid-cols-2">
-        <ComplianceCard eyebrow="Ingest" title="Source inventory" href="/admin/compliance/imports">
-          Folder: {data.inventory.sourceDir}. GoodChange CSV {data.inventory.goodChangeCsvFound ? "found" : "missing"}; Ethics workbook{" "}
-          {data.inventory.ethicsWorkbookFound ? "found" : "missing"}.
-        </ComplianceCard>
-        <ComplianceCard eyebrow="Reports" title="April26 reports" href="/admin/compliance/reports/april26">
-          Ingest summary, payout expectations, OCR reports, reconciliation candidates, filing impact.
-        </ComplianceCard>
-        <ComplianceCard eyebrow="Reconciliation" title="Reconciliation workspace" href="/admin/compliance/reconciliation">
-          {data.workbench.unmatchedBank} unmatched bank lines · {data.workbench.unmatchedMoney} unmatched money movements · {data.reconciliationCandidates.length}{" "}
-          candidates from April26 ingest.
-        </ComplianceCard>
-        <ComplianceCard eyebrow="Approval" title={data.approval.queueLabel} href={`/admin/compliance/approval/${APRIL_2026_QUEUE_ID}`}>
-          {data.approval.stats.remaining} item(s) need review. Human approval required before filing export.
-        </ComplianceCard>
-      </section>
-
-      {data.reconciliationBlockers.length ? (
-        <ComplianceWarningPanel title="Reconciliation blockers" tone="amber">
-          <ul className="mt-2 list-disc space-y-1 pl-5 font-body text-sm text-slate-700">
-            {data.reconciliationBlockers.map((blocker) => (
-              <li key={blocker}>{blocker}</li>
+      <ComplianceDoThisNext
+        title={bankGuide.headline}
+        description={bankGuide.nextAction}
+        href={bankGuide.href}
+        actionLabel="Take action"
+        secondaryHref="/admin/compliance/command-center"
+        secondaryLabel="Command center"
+      />
+      <ComplianceWhatThisMeans title="Bank CSV status explained">
+        <p>{bankGuide.meaning}</p>
+        <p className="mt-2 font-mono text-xs">State: {bankGuide.state} · Command: {bankGuide.command}</p>
+        {bankGuide.issueSummary.length ? (
+          <ul className="mt-2 list-disc pl-5">
+            {bankGuide.issueSummary.map((line) => (
+              <li key={line}>{line}</li>
             ))}
           </ul>
-        </ComplianceWarningPanel>
-      ) : null}
-    </div>
-  );
-}
-
-function ComplianceMetric({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-      <p className="font-body text-xs font-bold uppercase tracking-wide text-slate-500">{label}</p>
-      <p className="mt-2 font-heading text-2xl font-bold text-[#0f2744]">{value}</p>
+        ) : null}
+      </ComplianceWhatThisMeans>
+      <AprilExpenditureInventoryPanel />
+      <ComplianceCard title="SOS copy board — April checks" href="/admin/compliance/checks/sos-entry">
+        Extract each check image and copy fields one-by-one into Arkansas SOS (individual entries, not bulk upload).
+      </ComplianceCard>
+      <ComplianceCard title="Ozark Forward auction — in-kind line items" href="/admin/compliance/in-kind/ozark-auction">
+        49 auction donation rows from three att.* photos — spreadsheet view and CSV download for SOS in-kind entry.
+      </ComplianceCard>
+      <ComplianceCard title="Standing by to audit — definitive checklist">
+        <p className="text-sm text-slate-700">
+          Open <strong>docs/compliance/COMPLIANCE_APRIL_AUDIT_CHECKLIST.md</strong> (or run{" "}
+          <code className="rounded bg-slate-100 px-1">npm run compliance:april-audit-checklist</code>). Part A = every check record with{" "}
+          <strong>what we have</strong> vs <strong>what we need</strong>. Part B = every April bank debit the same way.
+        </p>
+      </ComplianceCard>
+      <ComplianceCard title="Bank source status">
+        <p className="text-sm font-semibold text-[#0f2744]">{bankGuide.headline}</p>
+        <p className="mt-2 text-sm">{bank.operatorSummary}</p>
+        <dl className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
+          <div>
+            <dt className="text-slate-500">Source type</dt>
+            <dd className="font-mono">{bankGuide.sourceType}</dd>
+          </div>
+          <div>
+            <dt className="text-slate-500">Reconciliation status</dt>
+            <dd className="font-mono">{bank.reconciliationStatus}</dd>
+          </div>
+          <div>
+            <dt className="text-slate-500">File rows</dt>
+            <dd>{bank.rowCount}</dd>
+          </div>
+          <div>
+            <dt className="text-slate-500">Database chunks</dt>
+            <dd>
+              {bank.databaseBatchCount} batch(es) · {bank.databaseTransactionCount} txn(s)
+            </dd>
+          </div>
+          <div>
+            <dt className="text-slate-500">Valid credits</dt>
+            <dd>{bank.validRowCount}</dd>
+          </div>
+          <div>
+            <dt className="text-slate-500">Can reconcile</dt>
+            <dd>{bank.readyForReconciliation ? "yes" : "no"}</dd>
+          </div>
+        </dl>
+        {!bank.readyForReconciliation ? (
+          <div className="mt-4 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm">
+            <p className="font-semibold">Next action</p>
+            <p className="mt-1">{bankGuide.nextAction}</p>
+            <p className="mt-2 font-mono text-xs break-all">Optional file: {bank.expectedPath}</p>
+          </div>
+        ) : (
+          <p className="mt-4 text-sm">
+            <Link href="/admin/compliance/reconciliation" className="font-semibold underline">
+              Open reconciliation workbench
+            </Link>
+          </p>
+        )}
+      </ComplianceCard>
+      <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <ComplianceMetricCard label="Folder" value={status.folderExists ? "found" : "missing"} tone={status.folderExists ? "green" : "red"} />
+        <ComplianceMetricCard label="GoodChange CSV" value={status.goodChangeCsvFound ? "yes" : "no"} tone={status.goodChangeCsvFound ? "green" : "red"} />
+        <ComplianceMetricCard label="Ethics workbook" value={status.ethicsWorkbookFound ? "yes" : "no"} tone={status.ethicsWorkbookFound ? "green" : "yellow"} />
+        <ComplianceMetricCard
+          label="Bank source"
+          value={bank.canSatisfyBankRequirement ? "ready" : bank.databaseTransactionCount > 0 ? "chunks" : "missing"}
+          tone={bank.readyForReconciliation ? "green" : bank.databaseTransactionCount > 0 ? "yellow" : "red"}
+        />
+        <ComplianceMetricCard label="Check images" value={status.checkImagesFound} tone="navy" />
+        <ComplianceMetricCard label="Receipt images" value={status.receiptImagesFound} tone="navy" />
+        <ComplianceMetricCard label="In-kind images" value={status.inKindPagesFound} tone="navy" />
+        <ComplianceMetricCard label="Payout batches" value={status.payoutBatches} tone="navy" />
+        <ComplianceMetricCard label="Staged contributions" value={status.stagedContributions} tone="navy" />
+        <ComplianceMetricCard label="Staged expenses" value={status.stagedExpenses} tone="navy" />
+        <ComplianceMetricCard label="Approval queue items" value={status.approvalQueueItems} tone="yellow" />
+        <ComplianceMetricCard label="Reconciliation blockers" value={status.reconciliationBlockers} tone={status.reconciliationBlockers ? "red" : "green"} />
+      </section>
+      <ComplianceCard title="Bank CSV readiness checks">
+        <p className="text-sm">{bank.reconciliationHint}</p>
+        {bank.issues.length ? (
+          <ul className="mt-2 list-disc pl-5 text-sm">
+            {bank.issues.map((issue) => (
+              <li key={`${issue.code}-${issue.message}`}>
+                <span className="font-mono text-xs">{issue.code}</span> — {issue.message}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="mt-2 text-sm text-slate-600">No issues once file is present and valid.</p>
+        )}
+        {rehearsal.columnDiagnostics.headers.length ? (
+          <p className="mt-2 text-xs text-slate-600">Detected columns: {rehearsal.columnDiagnostics.headers.join(", ")}</p>
+        ) : null}
+      </ComplianceCard>
+      <ComplianceCard title="Reconciliation rehearsal (source-backed)">
+        <p className="text-sm">
+          High-confidence: {rehearsal.highConfidence.length} · Ambiguous: {rehearsal.ambiguous.length} · Unmatched bank:{" "}
+          {rehearsal.unmatchedBank.length} · Unmatched payouts: {rehearsal.unmatchedPayouts.length}
+        </p>
+        <p className="mt-2 text-sm font-semibold text-[#0f2744]">What to fix next</p>
+        <ul className="mt-1 list-disc pl-5 text-sm">
+          {rehearsal.operatorNextSteps.map((step) => (
+            <li key={step}>{step}</li>
+          ))}
+        </ul>
+        {rehearsal.highConfidence.length ? (
+          <ul className="mt-3 max-h-40 overflow-y-auto text-xs">
+            {rehearsal.highConfidence.slice(0, 8).map((m) => (
+              <li key={`${m.bankRowNumber}-${m.payoutKey}`}>
+                Row {m.bankRowNumber} ${m.bankAmount.toFixed(2)} → payout {m.payoutKey.slice(0, 12)}… ({m.confidenceReason})
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </ComplianceCard>
+      <p className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 font-mono text-xs text-slate-700">{status.folderPath}</p>
+      <div className="flex flex-wrap gap-3">
+        <ComplianceActionButton href="/admin/compliance/approval/april-2026-compliance-review" label="Open April queue" />
+        <ComplianceActionButton href="/admin/compliance/reconciliation" label="Reconciliation" variant="secondary" />
+        <ComplianceActionButton href="/admin/compliance/filing-readiness" label="Filing readiness" variant="secondary" />
+      </div>
     </div>
   );
 }

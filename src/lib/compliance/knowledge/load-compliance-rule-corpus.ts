@@ -98,7 +98,29 @@ export async function buildComplianceRuleCorpus(): Promise<ComplianceRuleCorpus>
 }
 
 function topicPlaceholderSources(): ComplianceRuleSource[] {
-  const topics: ComplianceRuleTopic[] = ["expenditure", "cash", "check", "credit_card", "in_kind", "loan", "debt", "reporting", "amendment", "reimbursement", "filing_deadline", "recordkeeping", "contribution"];
+  const topics: ComplianceRuleTopic[] = [
+    "expenditure",
+    "cash",
+    "check",
+    "credit_card",
+    "in_kind",
+    "loan",
+    "debt",
+    "reporting",
+    "amendment",
+    "reimbursement",
+    "filing_deadline",
+    "recordkeeping",
+    "contribution",
+    "contribution_limits",
+    "donor_information",
+    "treasurer",
+    "transfers",
+    "refunds",
+    "anonymous_contributions",
+    "fundraiser_event_receipts",
+    "vendor_documentation",
+  ];
   return topics.map((topic) => ({
     id: `placeholder-${topic}`,
     title: `Placeholder rule source: ${topic}`,

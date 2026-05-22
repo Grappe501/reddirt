@@ -89,6 +89,7 @@ data/compliance/receipts/uploads/*
 !data/compliance/receipts/uploads/.gitkeep
 data/compliance/knowledge/*.json
 !data/compliance/knowledge/.gitkeep
+data/compliance/knowledge/rule-reviews.json
 data/compliance/filing-readiness/*.json
 !data/compliance/filing-readiness/.gitkeep
 data/compliance/documents/**
@@ -97,6 +98,16 @@ data/compliance/approvals/*.json
 !data/compliance/approvals/.gitkeep
 data/compliance/approval/*.json
 !data/compliance/approval/.gitkeep
+data/compliance/tasks/*.json
+!data/compliance/tasks/.gitkeep
+data/compliance/reports/*.json
+!data/compliance/reports/.gitkeep
+data/compliance/checks/*.json
+data/compliance/checks/*.csv
+!data/compliance/checks/.gitkeep
+data/compliance/ai/*.json
+!data/compliance/ai/.gitkeep
+!data/compliance/ai/brain-snapshot.template.json
 data/compliance/reconciliation/*.json
 !data/compliance/reconciliation/.gitkeep
 data/compliance/april26/*

@@ -13,6 +13,8 @@ import {
 } from "@/content/biography/biography-config";
 import { canAccessBiographyDeepDive } from "@/lib/biographyAccess";
 import { pageMeta } from "@/lib/seo/metadata";
+export const dynamic = "force-dynamic";
+export const dynamicParams = true;
 
 type PageProps = { params: Promise<{ slug: string }> };
 

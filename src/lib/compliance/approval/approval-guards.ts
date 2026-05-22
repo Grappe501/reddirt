@@ -30,6 +30,11 @@ export function evaluateApprovalGuards(item: ApprovalItem, overrides?: { overrid
   if (item.sourceUpdatePending) {
     warnings.push("Source record update path pending — approval recorded on workbench only.");
   }
+  if (item.source === "rule_review") {
+    blockers.push(
+      "Rule topic must be reviewed on /admin/compliance/rules before approval. Source reviewed for campaign workflow — not legal certification.",
+    );
+  }
 
   const overrideAllowed = blockers.length > 0;
   const canApprove = blockers.length === 0 || Boolean(overrides?.overrideReason?.trim());

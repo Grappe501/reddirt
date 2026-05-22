@@ -16,20 +16,22 @@
 
 ## Netlify / CI (feature branch proof)
 
-Verified on `feature/kelly-schedule-settlement-dashboard` @ `1be16b0` (local, May 2026):
+Verified on `feature/kelly-schedule-settlement-dashboard` @ `e24177c` (local, May 2026):
 
 | Gate | Result |
 |------|--------|
 | `npm run typecheck` | Pass (0 errors) |
 | `npm run lint` | Pass (warnings only) |
-| `npm run build` | Pass (~6 min) |
+| `npm run build` | Pass (~11 min; `globals.css` os-* PostCSS-safe) |
+| `npm run strategy-manual:verify` | Pass |
 | `agents:test-single-campaign-hardening` | Pass |
-| `agents:test-dashboard-nav` | Pass |
+| `agents:test-dashboard-nav` | Pass (43 nav links) |
 | `agents:test-sprint-10` | Pass |
+| `agents:verify-campaign-os-nav` | Pass |
 
 `npm run check` = strategy-manual + lint + typecheck + build — run before merging to `main`.
 
-**Main branch** was not re-verified in this pass; merge only after `check` on the merge result.
+**Main branch** merge: run full gate table on `main` after merge; push only when green. Netlify deploy from `main` not verified in-repo until post-push.
 
 - Set `NEXT_PUBLIC_CAMPAIGN_OS_DEV_TENANCY` only in local dev (never production demo)
 

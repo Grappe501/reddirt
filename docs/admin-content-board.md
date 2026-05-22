@@ -14,7 +14,7 @@ This codebase uses a **deliberately simple, env-based guard** until a full ident
 
 **Production:** rotate `ADMIN_SECRET` if it leaks; prefer HTTPS-only cookies (already `secure` in production). **Not suitable** for multi-tenant or untrusted networks without upgrading to real auth.
 
-If `ADMIN_SECRET` is missing, middleware sends admin traffic (except `/admin/login`) to the login screen with a configuration error.
+If `ADMIN_SECRET` is missing, `(board)` routes redirect to `/admin/login?error=config`. After changing `.env.local`, restart `npm run dev` so Next.js reloads env vars.
 
 ## What you can edit
 
