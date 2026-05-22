@@ -3,6 +3,8 @@ import type { WorkbenchEventRow } from "../merge-persisted-row";
 import { parseFactCardEnvelope } from "../fact-card-envelope";
 import type { CalendarPromotionStatus, LedgerCalendarPromotionMeta, PromotionTargetLane } from "./promotion-types";
 
+export type { LedgerCalendarPromotionMeta } from "./promotion-types";
+
 export function emptyPromotionMeta(): LedgerCalendarPromotionMeta {
   return {
     version: 1,

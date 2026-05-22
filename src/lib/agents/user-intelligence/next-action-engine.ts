@@ -43,9 +43,9 @@ function rec(
   partial: Omit<NextActionRecommendation, "id"> & { id?: string },
 ): NextActionRecommendation {
   return {
-    category: partial.category ?? "review",
-    id: partial.id ?? `na_${partial.title.slice(0, 12).replace(/\W/g, "_")}`,
     ...partial,
+    id: partial.id ?? `na_${partial.title.slice(0, 12).replace(/\W/g, "_")}`,
+    category: partial.category ?? "review",
   };
 }
 

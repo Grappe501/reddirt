@@ -58,7 +58,11 @@ export function ReimbursementOperationsPanel({
           type="button"
           disabled={pending}
           className="rounded-full bg-kelly-navy px-4 py-2 text-xs font-bold text-white"
-          onClick={() => startTransition(async () => await generateReimbursementPacketAction(month))}
+          onClick={() =>
+            startTransition(async () => {
+              await generateReimbursementPacketAction(month);
+            })
+          }
         >
           Build audit packet
         </button>

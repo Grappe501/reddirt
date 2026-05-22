@@ -38,8 +38,8 @@ function basicReadiness(
   record: { factCard: unknown; entrySource: string },
   row: {
     rawDecision: string | null;
-    likelyCity: string | null;
-    county: string | null;
+    likelyCity?: string | null;
+    county?: string | null;
     hasConflictWarning: boolean;
     duplicateRisk: boolean;
   },

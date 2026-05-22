@@ -1,3 +1,5 @@
+import "server-only";
+
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
 import type { EventBlueprint, EventBlueprintIndex, EventBlueprintType } from "./blueprint-types";

@@ -98,7 +98,7 @@ export function generatePackList(row: CalendarSurfaceRow): EventPlanningData["pa
   if (fc.volunteerSignupSheets?.trim()) mark("volunteer_signup", "needed");
   if (fc.speakingSlot?.trim()) mark("speech_notes", "needed", fc.speakingSlot);
   if (!fc.marketingTable?.trim()) mark("tablecloth", "not_needed");
-  if (row.classification === "virtual") {
+  if (row.classification === "virtual_statewide") {
     for (const i of list) {
       if (["signs", "banner", "tablecloth", "weather_gear"].includes(i.key)) i.status = "not_needed";
     }
@@ -234,7 +234,11 @@ export function scanEventRisks(row: CalendarSurfaceRow, planning: EventPlanningD
   if (row.hasConflictWarning) risks.push("Schedule conflict flagged");
   if (row.hasWorkHoursWarning) risks.push("Work-hours warning");
   if (!row.rawDecision || row.rawDecision === "hold") risks.push("Travel/approval decision not finalized");
-  if (row.calendarTruthStatus === "stale" || row.calendarTruthStatus === "missing_google") {
+  if (
+    row.calendarTruthStatus === "GOOGLE_READ_STALE" ||
+    row.calendarTruthStatus === "NOT_LINKED" ||
+    row.calendarTruthStatus === "WEBSITE_ENTRY_ONLY"
+  ) {
     risks.push("Calendar sync stale or missing");
   }
   risks.push(...outdoorWeatherRisk(row));

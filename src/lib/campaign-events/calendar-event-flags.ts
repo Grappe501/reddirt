@@ -6,7 +6,7 @@ import type { CampaignEventLedgerRecord } from "@prisma/client";
 export type CalendarEventAlert = {
   key: string;
   label: string;
-  tone: "red" | "amber" | "blue" | "slate";
+  tone: "red" | "amber" | "blue" | "slate" | "navy" | "green";
 };
 
 export type CalendarEventSurfaceMeta = {

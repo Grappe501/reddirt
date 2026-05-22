@@ -30,11 +30,13 @@ export function routePaletteQuery(
   if (q.includes("reimbursement") || q.includes("reimburse") || q.includes("mileage")) {
     const blockers: string[] = [];
     if (snapshot?.needsMileageReview) blockers.push("Mileage review queue not clear");
-    if ((snapshot?.actionItems?.travelReview ?? 0) > 0) {
-      blockers.push(`${snapshot.actionItems.travelReview} travel review row(s)`);
+    const travelReview = snapshot?.actionItems?.travelReview ?? 0;
+    if (travelReview > 0) {
+      blockers.push(`${travelReview} travel review row(s)`);
     }
-    if ((snapshot?.pendingApprovals ?? 0) > 0) {
-      blockers.push(`${snapshot.pendingApprovals} pending approval(s)`);
+    const pendingApprovals = snapshot?.pendingApprovals ?? 0;
+    if (pendingApprovals > 0) {
+      blockers.push(`${pendingApprovals} pending approval(s)`);
     }
     const readiness =
       blockers.length === 0 ? "Likely printable — verify travel decisions on page" : "Not print-ready until blockers cleared";

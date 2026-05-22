@@ -71,6 +71,8 @@ export type CampaignEventsDashboardSnapshot = {
   promotionReadyOfficial: number;
   promotionFailed: number;
   promotionBlocked: number;
+  /** True when travel/mileage rows need operator review (alias for actionItems.travelReview > 0). */
+  needsMileageReview: boolean;
   calendarSync?: Awaited<ReturnType<typeof summarizeCalendarSyncForPeriod>>;
 };
 
@@ -242,6 +244,7 @@ export function buildCampaignEventsDashboardSnapshot(
     promotionReadyOfficial,
     promotionFailed,
     promotionBlocked,
+    needsMileageReview: travelReview > 0,
   };
 }
 

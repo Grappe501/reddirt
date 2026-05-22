@@ -6,8 +6,8 @@ import { loadCalendarEventDrilldown, serializeCalendarRows } from "@/lib/campaig
 import {
   buildHotWashExecutiveSummary,
   extractTopFindings,
-  persistBlueprintFromEvent,
 } from "@/lib/campaign-events/hot-wash-intelligence/event-intelligence-helpers";
+import { persistBlueprintFromEvent } from "@/lib/campaign-events/hot-wash-intelligence/event-intelligence-persist";
 import { runCampaignLearningLoop } from "@/lib/campaign-events/hot-wash-intelligence/campaign-learning-loop";
 import {
   intelligenceToLegacyNotes,

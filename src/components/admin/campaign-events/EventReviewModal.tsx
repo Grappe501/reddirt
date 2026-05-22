@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import type { EventReviewBundle } from "@/lib/campaign-events/persistence/review-bundle";
 import type { EventReviewFormState } from "@/lib/campaign-events/review-form";
+import type { KellyAttendanceModeValue } from "@/lib/campaign-events/fact-card-data";
 import type { CampaignEventDecision } from "@/lib/campaign-events/review-meta";
 import { AUTOMATION_NEEDS_FUTURE } from "@/lib/campaign-events/review-meta";
 import {
@@ -255,7 +256,7 @@ export function EventReviewModal({ recordId, onClose }: { recordId: string; onCl
                   <select
                     className="rounded-lg border border-kelly-text/15 px-3 py-2"
                     value={form.kellyAttendanceMode}
-                    onChange={(e) => patch("kellyAttendanceMode", e.target.value)}
+                    onChange={(e) => patch("kellyAttendanceMode", e.target.value as KellyAttendanceModeValue)}
                   >
                     {["in_person", "zoom", "not_attending", "unknown"].map((v) => (
                       <option key={v} value={v}>

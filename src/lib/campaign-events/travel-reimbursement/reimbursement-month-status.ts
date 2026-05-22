@@ -8,7 +8,7 @@ import {
   type ReimbursementMonthStatusHistoryEntry,
   type ReimbursementMonthStatusRecord,
 } from "./reimbursement-month-status-store";
-import { verifyTravelReimbursementQueues } from "./queue-verification";
+import { verifyTravelReimbursementQueues, type TravelQueueVerification } from "./queue-verification";
 import type {
   ReimbursementMonthStatusContext,
   ReimbursementMonthStatusValue,

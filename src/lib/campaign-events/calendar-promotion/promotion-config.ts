@@ -27,10 +27,10 @@ export async function getCalendarPromotionConfig(): Promise<CalendarPromotionCon
 
   const tentative = await findKellyTentativeCalendarSource();
   const official = await findKellyConfirmedCalendarSource();
-  const hasOauth = (s: { oauthJson: unknown } | null) => {
+  const hasOauth = (s: { oauthJson: unknown; syncEnabled?: boolean } | null) => {
     if (!s) return false;
     const o = (s.oauthJson ?? {}) as { refresh_token?: string };
-    return Boolean(o.refresh_token) && s.syncEnabled;
+    return Boolean(o.refresh_token) && (s.syncEnabled ?? true);
   };
   const tentativeSourceReady = hasOauth(tentative);
   const officialSourceReady = hasOauth(official);

@@ -2,7 +2,6 @@ import type { CalendarSurfaceRow } from "../load-campaign-calendar-events";
 import type { HotWashMediaRecord } from "../media/hot-wash-media-types";
 import type { HotWashIntelligenceData } from "./hot-wash-intelligence-types";
 import type { EventBlueprint, EventBlueprintType } from "../event-blueprints/blueprint-types";
-import { upsertBlueprint } from "../event-blueprints/blueprint-store";
 
 export function scoreEventEnergy(intel: HotWashIntelligenceData): { score: number; label: string } {
   const e = intel.outcome.energyScore?.trim();
@@ -93,13 +92,6 @@ export function generateEventBlueprint(row: CalendarSurfaceRow, intel: HotWashIn
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   };
-  return bp;
-}
-
-export async function persistBlueprintFromEvent(row: CalendarSurfaceRow, intel: HotWashIntelligenceData): Promise<EventBlueprint | null> {
-  const bp = generateEventBlueprint(row, intel);
-  if (!bp) return null;
-  await upsertBlueprint(bp);
   return bp;
 }
 

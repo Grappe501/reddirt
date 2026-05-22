@@ -185,7 +185,7 @@ function PaletteResultPanel({
 }: {
   result: PaletteQueryResult;
   onClose: () => void;
-  track: (event: string, meta?: Record<string, string | number | boolean | null>) => void;
+  track: ReturnType<typeof useAgentObservation>["track"];
 }) {
   return (
     <div className="mt-4 space-y-2 rounded-xl border border-kelly-navy/20 bg-kelly-navy/[0.03] p-3 text-xs">

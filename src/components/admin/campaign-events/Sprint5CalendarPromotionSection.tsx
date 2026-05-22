@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import type { CommandCenterSnapshot } from "@/lib/campaign-events/ai-tools-command-center";
 import { filterSprint5Tools, getSprint5Contract } from "@/lib/campaign-events/ai-tools-command-center";
@@ -40,9 +41,9 @@ export function Sprint5CalendarPromotionSection({
           ))}
         </ul>
         <p className="mt-3 text-xs">
-          <a href="/admin/campaign-events/calendar-promotion" className="font-bold text-kelly-navy underline">
+          <Link href="/admin/campaign-events/calendar-promotion" className="font-bold text-kelly-navy underline">
             Open promotion workbench →
-          </a>
+          </Link>
         </p>
       </section>
 

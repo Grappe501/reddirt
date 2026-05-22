@@ -1,7 +1,8 @@
 import type { CalendarSurfaceRow } from "../load-campaign-calendar-events";
 import type { HotWashIntelligenceData } from "./hot-wash-intelligence-types";
 import { applyHotWashToCountyMemory } from "../county-memory/county-memory-builder";
-import { persistBlueprintFromEvent, isSuccessfulEvent } from "./event-intelligence-helpers";
+import { isSuccessfulEvent } from "./event-intelligence-helpers";
+import { persistBlueprintFromEvent } from "./event-intelligence-persist";
 import { listMediaForEvent, upsertMediaRecord } from "../media/media-index";
 import { scaffoldMediaIntelligenceMeta } from "./event-intelligence-helpers";
 
