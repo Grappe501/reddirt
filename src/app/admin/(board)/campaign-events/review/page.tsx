@@ -63,6 +63,13 @@ export default async function CampaignEventMonthReviewPage({ searchParams }: Pro
       />
       <CampaignEventsNav />
       {travelReimbursement ? <TravelReimbursementWorkflowNav month={period} active="review" /> : null}
+      {travelReimbursement ? (
+        <p className="rounded-xl border border-kelly-navy/20 bg-kelly-navy/[0.04] px-4 py-3 font-body text-sm text-kelly-text/80">
+          <strong className="text-kelly-navy">Travel approval:</strong> Fix city, county, and mileage if needed →{" "}
+          <strong>Save &amp; recalculate</strong> → Approve, Deny, or Hold. Approved events leave this queue and appear on
+          the official reimbursement report.
+        </p>
+      ) : null}
       <TravelReimbursementMonthNav activeMonth={period} activeBase="review" />
       <MonthReviewWizard
         initialRows={serializeWorkbenchRows(rows)}

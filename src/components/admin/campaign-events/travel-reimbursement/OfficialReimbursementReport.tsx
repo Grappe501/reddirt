@@ -107,8 +107,9 @@ export function OfficialReimbursementReportView({
             font-size: 10pt;
           }
           .print\\:hidden { display: none !important; }
-          .reimbursement-print-table { font-size: 9pt; }
-          .reimbursement-print-table th, .reimbursement-print-table td { padding: 4px 6px; }
+          .reimbursement-print-table { font-size: 9pt; line-height: 1.35; }
+          .reimbursement-print-table th, .reimbursement-print-table td { padding: 4px 6px; vertical-align: top; }
+          .reimbursement-print-purpose { max-width: 2.4in; word-break: break-word; }
           .break-before-page { break-before: page; page-break-before: always; }
         }
       `}</style>
@@ -236,7 +237,7 @@ export function OfficialReimbursementReportView({
                   {report.approvedLines.map((l) => (
                     <tr key={l.recordId} className="border-t border-kelly-text/10">
                       <td className="p-2 whitespace-nowrap">{l.dateYmd}</td>
-                      <td className="p-2 font-semibold">{l.purpose}</td>
+                      <td className="reimbursement-print-purpose p-2 font-semibold">{l.purpose}</td>
                       <td className="p-2">{l.city}</td>
                       <td className="p-2">{l.county}</td>
                       <td className="p-2">{l.origin}</td>

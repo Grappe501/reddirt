@@ -19,7 +19,7 @@ export function TravelReimbursementWorkflowNav({
       {STEPS.map((s) => {
         const href =
           s.path === "review"
-            ? `/admin/campaign-events/review?month=${month}&mode=travel_needs_approval`
+            ? `/admin/campaign-events/review?month=${month}&mode=travel_needs_approval&autostart=1`
             : `/admin/campaign-events/${s.path}?month=${month}`;
         const isActive = s.path === active || (s.path === "review" && active === "review");
         return (
