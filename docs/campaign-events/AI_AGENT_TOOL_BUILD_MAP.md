@@ -64,7 +64,7 @@
 | Metric | Value |
 |--------|-------|
 | Lifecycle groups | 22 |
-| Tools (master + supplement + agent intel, deduped) | ~255 |
+| Tools (master + supplement + agent intel, deduped) | ~269 |
 | Status: **functional** | ~31 |
 | Status: **partial** | ~37 |
 | Status: **scaffolded** | ~18 |
@@ -193,7 +193,17 @@ Legacy catalog `appr-promote-official` remains idea — use Sprint 5 ids above f
 
 ---
 
-### Sprint 6 — Event planning drilldown
+### Sprint 6 — Event planning drilldown (May 2026)
+
+| Component | Path | Status |
+|-----------|------|--------|
+| Planning workbook | `EventPlanningWorkbook.tsx` | functional V1 |
+| Persist | `factCard._eventPlanning` | functional |
+| Tools | `sprint-event-planning-6-tools.ts` (**15**) | functional/partial |
+
+---
+
+### Sprint 6 — Event planning drilldown (legacy matrix)
 
 | Planned agent | Catalog id | Status | Build action |
 |---------------|------------|--------|--------------|

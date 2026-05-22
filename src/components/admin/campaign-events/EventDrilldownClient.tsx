@@ -22,6 +22,8 @@ import { reimbursementHref, travelLogHref } from "@/lib/campaign-events/travel-r
 import { CalendarSyncTruthPanel } from "./CalendarSyncTruthPanel";
 import { PromotionAuditPanel } from "./PromotionAuditPanel";
 import type { PromotionAuditEntry } from "@/lib/campaign-events/calendar-promotion/promotion-audit";
+import type { EventPlanningData } from "@/lib/campaign-events/event-planning/event-planning-types";
+import { EventPlanningWorkbook } from "./planning/EventPlanningWorkbook";
 
 const TABS = [
   "overview",
@@ -65,6 +67,7 @@ export function EventDrilldownClient({
   promotionAuditEntries = [],
 }: {
   row: CalendarSurfaceRow;
+  initialPlanning: EventPlanningData;
   mediaItems?: HotWashMediaRecord[];
   mediaByUploader?: Array<{ uploaderName: string; uploaderEmail: string; uploads: HotWashMediaRecord[] }>;
   hotWashNotes?: HotWashNotes;
@@ -75,7 +78,7 @@ export function EventDrilldownClient({
   promotionAuditEntries?: PromotionAuditEntry[];
 }) {
   const router = useRouter();
-  const [tab, setTab] = useState<TabId>("overview");
+  const [tab, setTab] = useState<TabId | "planning">("planning");
   const [reviewOpen, setReviewOpen] = useState(false);
   const [pending, startTransition] = useTransition();
   const [noteBody, setNoteBody] = useState("");
@@ -117,58 +120,14 @@ export function EventDrilldownClient({
         </section>
       ) : null}
 
-      <header className="rounded-3xl border border-kelly-text/10 bg-kelly-page p-6">
-        <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-slate">Event operations home</p>
-        <h1 className="mt-2 font-heading text-3xl font-bold">{row.calendar.title}</h1>
-        <p className="mt-2 font-body text-sm text-kelly-text/70">
-          {row.dateYmd} · {row.timeLabel} · {row.classificationLabel}
-          {row.county ? (
-            <>
-              {" "}
-              · <CountyWorkbenchLink countyLabel={row.county} />
-            </>
-          ) : null}
-        </p>
-        <div className="mt-4 flex flex-wrap gap-2">
-          <button type="button" className="rounded-full bg-kelly-navy px-4 py-2 font-body text-sm font-bold text-white" onClick={() => setReviewOpen(true)}>
-            Review with AI
-          </button>
-          <Link
-            href={pkg?.links.packagePreviewUrl ?? `/admin/campaign-calendar/approval-package/${row.recordId}`}
-            className="rounded-full border border-kelly-navy/30 px-4 py-2 font-body text-sm font-bold text-kelly-navy"
-          >
-            Approval package preview
-          </Link>
-          <Link href="/admin/campaign-calendar/timeline" className="rounded-full border px-4 py-2 font-body text-sm font-bold">
-            Calendar
-          </Link>
-          <Link href="/admin/campaign-events/workbench" className="rounded-full border px-4 py-2 font-body text-sm font-bold">
-            Workbench
-          </Link>
-          <Link
-            href={`/admin/campaign-events/calendar-promotion?month=${month}`}
-            className="rounded-full border border-kelly-navy/30 px-4 py-2 font-body text-sm font-bold text-kelly-navy"
-          >
-            Promote to GCal
-          </Link>
-        </div>
-        <dl className="mt-4 grid gap-2 font-body text-sm sm:grid-cols-3">
-          <div>
-            <dt className="text-xs text-kelly-text/50">Source calendar</dt>
-            <dd>{row.lanes.sourceLabel}</dd>
-          </div>
-          <div>
-            <dt className="text-xs text-kelly-text/50">Target calendar</dt>
-            <dd>{row.lanes.targetLabel}</dd>
-          </div>
-          <div>
-            <dt className="text-xs text-kelly-text/50">Promotion</dt>
-            <dd>{row.lanes.promotionEligible ? "Eligible" : row.lanes.promotionBlockers.join("; ") || "Not yet"}</dd>
-          </div>
-        </dl>
-      </header>
-
-      <nav className="flex flex-wrap gap-1 rounded-2xl border border-kelly-text/10 bg-kelly-wash p-2">
+      <nav className="flex flex-wrap gap-1 rounded-2xl border border-kelly-text/10 bg-kelly-wash p-2 print:hidden">
+        <button
+          type="button"
+          onClick={() => setTab("planning")}
+          className={`rounded-full px-3 py-1.5 font-body text-xs font-bold ${tab === "planning" ? "bg-kelly-navy text-white" : "text-kelly-text/70"}`}
+        >
+          Planning workbook
+        </button>
         {TABS.map((id) => (
           <button
             key={id}
@@ -179,9 +138,20 @@ export function EventDrilldownClient({
             {TAB_LABELS[id]}
           </button>
         ))}
+        <button
+          type="button"
+          className="ml-auto rounded-full border border-kelly-navy/30 px-3 py-1.5 font-body text-xs font-bold text-kelly-navy"
+          onClick={() => setReviewOpen(true)}
+        >
+          Quick review
+        </button>
       </nav>
 
-      {tab === "overview" && (
+      {tab === "planning" ? (
+        <EventPlanningWorkbook row={row} initialPlanning={initialPlanning} returnMonth={returnMonth} />
+      ) : null}
+
+      {tab !== "planning" && tab === "overview" && (
         <div className="grid gap-4 lg:grid-cols-2">
           <CalendarSyncTruthPanel row={row} />
           <PromotionAuditPanel entries={promotionAuditEntries} />
@@ -203,14 +173,16 @@ export function EventDrilldownClient({
         </div>
       )}
 
-      {tab === "fact_card" && <CampaignEventCard row={row} />}
+      {tab !== "planning" && tab === "fact_card" && <CampaignEventCard row={row} />}
 
-      {tab === "travel" && (
+      {tab !== "planning" && tab === "travel" && (
         <PlaceholderOrFields title="Travel" section={section("travel")} extra={<p className="font-body text-sm">{row.travelLine}</p>} />
       )}
 
-      {tab === "run_of_show" && <PlaceholderOrFields title="Run of Show" section={section("run_of_show")} placeholder="Run-of-show timing will link to setup, speaking, and departure slots." />}
-      {tab === "hot_wash" && (
+      {tab !== "planning" && tab === "run_of_show" && (
+        <p className="font-body text-sm text-kelly-text/60">Run of show lives in the Planning workbook tab.</p>
+      )}
+      {tab !== "planning" && tab === "hot_wash" && (
         <HotWashMediaSection
           recordId={row.recordId}
           eventTitle={row.calendar.title}
@@ -220,15 +192,17 @@ export function EventDrilldownClient({
           hotWashNotes={hotWashNotes}
         />
       )}
-      {tab === "costs" && <PlaceholderOrFields title="Costs / Budget" section={section("cost_budget")} placeholder="FIN-1 bridge not connected — budget lines stay manual." />}
-      {tab === "team_notes" && (
+      {tab !== "planning" && tab === "costs" && (
+        <p className="font-body text-sm text-kelly-text/60">Cost / budget lives in the Planning workbook tab.</p>
+      )}
+      {tab !== "planning" && tab === "team_notes" && (
         <div className="rounded-2xl border border-kelly-text/10 bg-kelly-page p-4 font-body text-sm">
           <p>{row.factCard.why.campaignPurpose || "No team notes on fact card yet."}</p>
           <p className="mt-2 text-kelly-text/55">Use Communication tab for threaded notes by role.</p>
         </div>
       )}
 
-      {tab === "approval" && (
+      {tab !== "planning" && tab === "approval" && (
         <div className="space-y-4">
           <ol className="space-y-2">
             {row.approvalTimeline.map((t) => (
@@ -244,7 +218,7 @@ export function EventDrilldownClient({
         </div>
       )}
 
-      {tab === "communication" && (
+      {tab !== "planning" && tab === "communication" && (
         <div className="space-y-4">
           <ul className="space-y-2">
             {row.communicationThread.length === 0 ? (
@@ -277,13 +251,13 @@ export function EventDrilldownClient({
         </div>
       )}
 
-      {tab === "attachments" && (
+      {tab !== "planning" && tab === "attachments" && (
         <div className="rounded-2xl border border-dashed border-kelly-text/20 p-8 text-center font-body text-sm text-kelly-text/55">
           Attachments placeholder — receipts, run-of-show PDFs, and host agreements will land here (not receipts system yet).
         </div>
       )}
 
-      {tab === "automation" && (
+      {tab !== "planning" && tab === "automation" && (
         <ul className="grid gap-2 font-body text-sm">
           {AUTOMATION_NEEDS_FUTURE.map((a) => (
             <li key={a} className="rounded-lg border border-kelly-text/10 px-3 py-2 text-kelly-text/60">

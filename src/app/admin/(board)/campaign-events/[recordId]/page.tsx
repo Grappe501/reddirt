@@ -9,6 +9,8 @@ import {
 import { loadAiObservationsForRecord } from "@/lib/campaign-events/ai-tools/observations-persist";
 import { parsePromotionAuditLog } from "@/lib/campaign-events/calendar-promotion/promotion-audit";
 import { loadCalendarEventDrilldown, serializeCalendarRows } from "@/lib/campaign-events/load-campaign-calendar-events";
+import { loadEventPlanning } from "@/lib/campaign-events/event-planning/event-planning-persist";
+import { mergePlanningFromRow } from "@/lib/campaign-events/event-planning/event-planning-helpers";
 import { loadEventMediaBundle } from "@/lib/campaign-events/media/media-storage";
 import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
 import { AgentCommandPalette } from "@/components/agents/AgentCommandPalette";
@@ -35,6 +37,8 @@ export default async function CampaignEventDrilldownPage({
   ]);
   const approvalPackage = buildApprovalPackageWithLogs(row, emailCtx.logs, mapTokenLinksForPayload(emailCtx));
   const promotionAudit = parsePromotionAuditLog(loaded.record.factCard);
+  const planningRaw = await loadEventPlanning(recordId);
+  const initialPlanning = mergePlanningFromRow(loaded.row, planningRaw);
   return (
     <AgentObservationTracker
       role="campaign_manager"
@@ -53,6 +57,7 @@ export default async function CampaignEventDrilldownPage({
     </div>
     <EventDrilldownClient
       row={row}
+      initialPlanning={JSON.parse(JSON.stringify(initialPlanning))}
       approvalPackage={approvalPackage}
       approvalObservations={observations}
       promotionAuditEntries={promotionAudit}

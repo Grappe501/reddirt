@@ -62,6 +62,7 @@
     "campaign-events:seed-month": "tsx scripts/seed-campaign-events-month.ts",
     "campaign-events:verify-travel-queues": "tsx scripts/verify-travel-reimbursement-queues.ts",
     "campaign-events:test-march-flow": "tsx scripts/test-march-approval-flow.ts",
+    "campaign-events:test-planning-drilldown": "tsx scripts/test-event-planning-drilldown.ts",
     "campaign-events:test-intake-bridge": "tsx scripts/test-intake-ledger-bridge.ts",
     "campaign-events:verify-calendar-sync": "tsx scripts/verify-calendar-sync-truth.ts",
     "campaign-events:test-approval-email": "tsx scripts/test-approval-email.ts",

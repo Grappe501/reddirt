@@ -21,7 +21,7 @@ This is the **live control board**. Update at the end of every sprint slice.
 | 5A | Agent Intelligence 1 (user anticipation + writing) | **Complete** (V1 deterministic) | ~70% | ~50% |
 | 5B | Agent Intelligence 2 (live observation + orchestration) | **Complete** (V1 functional) | ~78% | ~55% |
 | 5C | Agent Intelligence 3 (unified runtime + safe tool router) | **Complete** (V1 deterministic) | ~86% | ~58% |
-| 6 | Event planning drilldown | Partial | ~50% | ~35% |
+| 6 | Event planning drilldown | **Complete** (V1 workbook) | ~78% | ~55% |
 | 7 | Hot wash + media intel | Partial | ~40% | ~20% |
 | 8 | FIN / compliance bridge | Not started | — | — |
 | 9 | Dashboard + nav polish | Partial | ~55% | ~40% |
@@ -208,11 +208,19 @@ Gated SendGrid send, HTML+text template, JSON approval tokens, public `/campaign
 
 ## Sprint 6 — Event planning full drilldown
 
-**Build:** Run of show, materials, volunteer plan, cost/budget, contacts, maps, candidate/CM briefings, one-page execution sheet.
+**Build:** Planning workbook on `[recordId]` — overview, run of show, pack list, volunteers, contacts, candidate/CM briefs, budget, readiness score.
 
-**Today:** Drilldown `[recordId]` partial; inference functional; some tabs placeholder.
+**Delivered (May 2026):**
 
-**Success:** Every event has a complete operational command page.
+| Artifact | Path |
+|----------|------|
+| Types + persist | `src/lib/campaign-events/event-planning/` |
+| Workbook UI | `src/components/admin/campaign-events/planning/EventPlanningWorkbook.tsx` |
+| Server actions | `src/app/admin/(board)/campaign-events/event-planning-actions.ts` |
+| Tools (15) | `sprint-event-planning-6-tools.ts` |
+| Docs | `EVENT_PLANNING_DRILLDOWN_WORKFLOW.md`, `RUN_OF_SHOW_SYSTEM.md`, `EVENT_BRIEFING_AGENT_TOOLS.md` |
+
+**Success:** Operator can open one event and build a complete operational plan with human-controlled saves and deterministic AI assists.
 
 ---
 

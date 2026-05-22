@@ -30,7 +30,15 @@ export type UserUxObservationEvent =
   | "user_used_plain_language_request"
   | "user_requested_more_detail"
   | "user_collapsed_section"
-  | "user_expanded_section";
+  | "user_expanded_section"
+  | "run_of_show_created"
+  | "pack_list_updated"
+  | "volunteer_plan_updated"
+  | "candidate_brief_generated"
+  | "cm_brief_generated"
+  | "planning_section_completed"
+  | "planning_blocker_resolved"
+  | "planning_readiness_improved";
 
 export type UserObservationEntry = {
   id: string;
@@ -116,4 +124,12 @@ export const USER_UX_EVENT_LABELS: Record<UserUxObservationEvent, string> = {
   user_requested_more_detail: "More detail requested",
   user_collapsed_section: "Section collapsed",
   user_expanded_section: "Section expanded",
+  run_of_show_created: "Run of show created",
+  pack_list_updated: "Pack list updated",
+  volunteer_plan_updated: "Volunteer plan updated",
+  candidate_brief_generated: "Candidate brief generated",
+  cm_brief_generated: "CM brief generated",
+  planning_section_completed: "Planning section completed",
+  planning_blocker_resolved: "Planning blocker resolved",
+  planning_readiness_improved: "Planning readiness improved",
 };
