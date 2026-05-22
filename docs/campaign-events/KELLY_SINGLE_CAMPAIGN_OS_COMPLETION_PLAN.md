@@ -28,8 +28,8 @@ One polished **Kelly Grappe for SOS** operating system where every role sees the
 | 10 | **AI OS control maturity** | Gap → ticket → supervised build | Functional — feeds orchestration |
 | 11 | **Communications engine** | Contacts, outreach, nurture | **V2 functional** — Comms Intelligence sprint |
 | 12 | **County workbench bridge** | Field manager + county priorities | **V2 functional** — county command center |
-| **13** | **Campaign Orchestration Intelligence** | **Unified campaign brain** | **Phase 2A live** — CampaignState API |
-| 14 | **Long-term memory** | Approved memory + pattern mining | Partial — `ORCHESTRATION_MEMORY_MODEL.md` |
+| **13** | **Campaign Orchestration Intelligence** | **Unified campaign brain** | **Phase 3A live** — knowledge graph + lessons engine |
+| 14 | **Long-term memory** | Approved memory + pattern mining | **Phase 3A functional** — `orchestration/knowledge/` |
 | 15 | **SaaS** | Multi-tenant product | **After** Kelly presentation-ready |
 
 ---

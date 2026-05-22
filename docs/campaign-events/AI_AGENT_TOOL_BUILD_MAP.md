@@ -25,6 +25,20 @@
 
 ---
 
+## Campaign Knowledge Graph + Lessons (Sprint 17 — Phase 3A)
+
+| Artifact | Path |
+|----------|------|
+| Module | `src/lib/agents/orchestration/knowledge/` |
+| Handoff | [`ORCHESTRATION_PHASE_3A_KNOWLEDGE_GRAPH_LESSONS_HANDOFF.md`](./ORCHESTRATION_PHASE_3A_KNOWLEDGE_GRAPH_LESSONS_HANDOFF.md) |
+| Tool contracts (**20**) | `src/lib/campaign-events/ai-tools/sprint-campaign-knowledge-tools.ts` |
+| Lifecycle id | `campaign_knowledge_graph` |
+| Test | `npm run agents:test-campaign-knowledge` |
+| Read-only API | `GET /api/agents/campaign-knowledge-state` |
+| CampaignState field | `campaignState.knowledge` |
+
+---
+
 ## Global / All-Knowing Agent (SOSWebsite-wide inventory)
 
 | Artifact | Path |

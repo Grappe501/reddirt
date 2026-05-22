@@ -124,6 +124,7 @@ export function buildCampaignOsNavGroups(activeMonth = "2026-03"): CampaignOsNav
       id: "intelligence",
       label: "Intelligence",
       links: [
+        { href: "/admin/orchestration", label: "Orchestration" },
         { href: "/admin/ai-command-center", label: "AI command center" },
         { href: "/admin/campaign-events/ai-tools", label: "AI tool catalog" },
         { href: "/admin/intelligence", label: "Opposition intel" },
@@ -133,6 +134,7 @@ export function buildCampaignOsNavGroups(activeMonth = "2026-03"): CampaignOsNav
       id: "ai_agent",
       label: "AI Agent",
       links: [
+        { href: "/admin/orchestration", label: "Orchestration command center" },
         { href: "/admin/ai-command-center", label: "Agent runtime hub" },
         { href: "/admin/ai-command-center/memory-review", label: "Memory review" },
         { href: "/admin/onboarding", label: "New user onboarding" },
@@ -157,6 +159,7 @@ export function isCampaignOsPath(pathname: string): boolean {
     pathname.startsWith("/admin/candidate-dashboard") ||
     pathname.startsWith("/admin/campaign-manager-dashboard") ||
     pathname.startsWith("/admin/ai-command-center") ||
+    pathname.startsWith("/admin/orchestration") ||
     pathname.startsWith("/admin/campaign-events") ||
     pathname.startsWith("/admin/campaign-calendar")
   );

@@ -31,6 +31,7 @@ import { SPRINT_COMMUNICATIONS_INTELLIGENCE_V2_CATALOG_ENTRIES } from "./ai-tool
 import { SPRINT_EMAIL_OS_AGENT_CATALOG_ENTRIES } from "./ai-tools/sprint-email-os-agent-tools";
 import { SPRINT_VOLUNTEER_CATALOG_ENTRIES } from "./ai-tools/sprint-volunteer-tools";
 import { ORCHESTRATION_INTELLIGENCE_CATALOG_ENTRIES } from "./ai-tools/sprint-orchestration-intelligence-tools";
+import { CAMPAIGN_KNOWLEDGE_CATALOG_ENTRIES } from "./ai-tools/sprint-campaign-knowledge-tools";
 
 const S = (s: AiToolEntry["status"]) => s;
 
@@ -165,6 +166,7 @@ export const SUPPLEMENT_TOOLS_BY_LIFECYCLE: Record<string, AiToolEntry[]> = {
   email_os_suite: SPRINT_EMAIL_OS_AGENT_CATALOG_ENTRIES,
   volunteer_system: SPRINT_VOLUNTEER_CATALOG_ENTRIES,
   campaign_orchestration_intelligence: ORCHESTRATION_INTELLIGENCE_CATALOG_ENTRIES,
+  campaign_knowledge_graph: CAMPAIGN_KNOWLEDGE_CATALOG_ENTRIES,
 };
 
 const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
@@ -317,6 +319,12 @@ const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
     order: 47,
     title: "Campaign Orchestration Intelligence — cross-domain campaign brain",
     tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.campaign_orchestration_intelligence ?? [],
+  },
+  {
+    id: "campaign_knowledge_graph",
+    order: 48,
+    title: "Campaign Knowledge Graph + Lessons Engine — living campaign memory",
+    tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.campaign_knowledge_graph ?? [],
   },
 ];
 

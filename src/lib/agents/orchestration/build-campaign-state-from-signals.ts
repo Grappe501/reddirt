@@ -25,6 +25,11 @@ import {
 import { gatesByRisk } from "@/lib/agents/os-control/human-approval-gate-matrix";
 import type { UserObservationEntry } from "@/lib/agents/user-intelligence/user-observations";
 import type { ToolBuildTicket } from "@/lib/agents/tool-builder/tool-builder-types";
+import type { CampaignKnowledgeMemorySlice } from "@/lib/agents/campaign-knowledge/campaign-knowledge-memory-types";
+import { emptyKnowledgeMemorySlice } from "@/lib/agents/campaign-knowledge/campaign-knowledge-memory-types";
+import type { CampaignKnowledgeSummary } from "@/lib/agents/orchestration/knowledge/campaign-knowledge-types";
+import { emptyCampaignKnowledgeSummary } from "@/lib/agents/orchestration/knowledge/campaign-knowledge-types";
+import { knowledgeSummaryToMemorySlice } from "@/lib/agents/orchestration/knowledge/knowledge-memory-adapter";
 
 function scoreToBand(score: number): CampaignHealthBand {
   if (score >= 80) return "strong";
@@ -49,7 +54,9 @@ function blocker(id: string, domainId: CampaignDomainId, severity: CampaignBlock
 export function buildCampaignStateFromSignals(
   bundle: OrchestrationSignalBundle,
   sourceHealth: OrchestrationSourceHealth[],
+  knowledge: CampaignKnowledgeSummary = emptyCampaignKnowledgeSummary(),
 ): CampaignState {
+  const knowledgeMemory = knowledgeSummaryToMemorySlice(knowledge);
   const period = bundle.period;
   const now = bundle.loadedAt;
   const os = getSliceData<OsControlBundle>(bundle, "os_control");
@@ -264,10 +271,17 @@ export function buildCampaignStateFromSignals(
     (o) => o.event === "flow_abandoned" || o.event === "abandoned_flow" || o.event === "no_results_search",
   ).length;
 
-  const memoryCandidates: MemoryCandidateRef[] =
-    frictionSignals >= 3
+  const memoryCandidates: MemoryCandidateRef[] = [
+    ...(frictionSignals >= 3
       ? [{ id: "friction-pattern", type: "workflow_friction", summary: "Repeated UX friction detected in observation stream", requiresApproval: true }]
-      : [];
+      : []),
+    ...knowledgeMemory.strongestLessons.slice(0, 3).map((l) => ({
+      id: l.id,
+      type: "campaign_lesson",
+      summary: l.summary,
+      requiresApproval: true,
+    })),
+  ];
 
   const operatingMode: CampaignState["operatingMode"] =
     degradedCount === 0 && isLive ? "live" : degradedCount > 0 && isLive ? "degraded" : "skeleton";
@@ -374,7 +388,9 @@ export function buildCampaignStateFromSignals(
     humanGates,
     preparedActions,
     memoryCandidates,
-    observationSummary: `${observations.length} observations · ${frictionSignals} friction signals · ${sourceHealth.filter((s) => s.status === "ready").length}/${sourceHealth.length} sources ready`,
+    observationSummary: `${observations.length} observations · ${frictionSignals} friction · ${knowledgeMemory.entityCount} graph entities · ${sourceHealth.filter((s) => s.status === "ready").length}/${sourceHealth.length} sources ready`,
     signalLoadErrors: bundle.errors,
+    knowledge,
+    knowledgeMemory,
   };
 }

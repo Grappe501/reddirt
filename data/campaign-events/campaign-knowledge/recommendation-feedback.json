@@ -1,0 +1,24 @@
+{
+  "records": [
+    {
+      "id": "recfb_mph38mhh",
+      "recordedAt": "2026-05-22T15:42:14.741Z",
+      "recommendationId": "test-top-move-smoke",
+      "recommendationKind": "top_move",
+      "title": "Smoke test recommendation",
+      "domainId": "campaign_management",
+      "period": "2026-04",
+      "status": "accepted"
+    },
+    {
+      "id": "recfb_mph3nple",
+      "recordedAt": "2026-05-22T15:53:58.610Z",
+      "recommendationId": "test-knowledge-phase-3a",
+      "recommendationKind": "top_move",
+      "title": "Refresh county intelligence",
+      "domainId": "county",
+      "period": "2026-04",
+      "status": "accepted"
+    }
+  ]
+}

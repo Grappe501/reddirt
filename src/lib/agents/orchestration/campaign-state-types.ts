@@ -2,6 +2,11 @@
  * Master CampaignState model — Campaign Orchestration Intelligence Layer.
  */
 
+import type { CampaignKnowledgeMemorySlice } from "@/lib/agents/campaign-knowledge/campaign-knowledge-memory-types";
+import { emptyKnowledgeMemorySlice } from "@/lib/agents/campaign-knowledge/campaign-knowledge-memory-types";
+import type { CampaignKnowledgeSummary } from "@/lib/agents/orchestration/knowledge/campaign-knowledge-types";
+import { emptyCampaignKnowledgeSummary } from "@/lib/agents/orchestration/knowledge/campaign-knowledge-types";
+
 export type CampaignHealthBand = "critical" | "weak" | "stable" | "strong";
 
 export type CampaignOperatingMode = "live" | "degraded" | "skeleton";
@@ -157,6 +162,10 @@ export type CampaignState = {
   memoryCandidates: MemoryCandidateRef[];
   observationSummary: string;
   signalLoadErrors: string[];
+  /** Phase 3A — living campaign memory summary. */
+  knowledge: CampaignKnowledgeSummary;
+  /** @deprecated Use knowledge — kept for backward-compatible UI/helpers. */
+  knowledgeMemory: CampaignKnowledgeMemorySlice;
 };
 
 export function emptyDomainSlice(domainId: CampaignDomainId, summary = "Signal not loaded"): DomainHealthSlice {
@@ -247,5 +256,7 @@ export function buildSkeletonCampaignState(period = "2026-04"): CampaignState {
     memoryCandidates: [],
     observationSummary: "Skeleton state — run Phase 2 signal loader for live diagnosis.",
     signalLoadErrors: [],
+    knowledge: emptyCampaignKnowledgeSummary(),
+    knowledgeMemory: emptyKnowledgeMemorySlice(),
   };
 }

@@ -1,0 +1,872 @@
+{
+  "generatedAt": "2026-05-22T15:54:34.909Z",
+  "period": "2026-04",
+  "nodes": [
+    {
+      "id": "obs:page_viewed:2026-05-21T22:31:36_224Z:_admin_ai-command-center",
+      "kind": "observation",
+      "label": "page viewed",
+      "domainId": "campaign_management",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-21T22:31:36.224Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:page_viewed:2026-05-21T22:51:45_171Z:_admin_ai-command-center",
+      "kind": "observation",
+      "label": "page viewed",
+      "domainId": "campaign_management",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-21T22:51:45.171Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:next_action_clicked:2026-05-21T22:51:51_861Z:_admin_ai-command-center",
+      "kind": "observation",
+      "label": "next action clicked",
+      "domainId": "campaign_management",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-21T22:51:51.861Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:page_viewed:2026-05-22T00:15:01_620Z:_admin_campaign-events_month-readiness",
+      "kind": "observation",
+      "label": "page viewed",
+      "domainId": "event_planning",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T00:15:01.620Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:page_viewed:2026-05-22T00:15:40_676Z:_admin_campaign-events_workbench",
+      "kind": "observation",
+      "label": "page viewed",
+      "domainId": "event_planning",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T00:15:40.676Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:page_viewed:2026-05-22T00:15:59_770Z:_admin_campaign-events_review",
+      "kind": "observation",
+      "label": "page viewed",
+      "domainId": "event_planning",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T00:15:59.770Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:page_viewed:2026-05-22T00:22:47_835Z:_admin_campaign-events_review",
+      "kind": "observation",
+      "label": "page viewed",
+      "domainId": "event_planning",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T00:22:47.835Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:page_viewed:2026-05-22T00:24:40_582Z:_admin_campaign-events_reimbursement",
+      "kind": "observation",
+      "label": "page viewed",
+      "domainId": "finance",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T00:24:40.582Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:next_action_clicked:2026-05-22T00:24:45_575Z:_admin_campaign-events_reimbursement",
+      "kind": "observation",
+      "label": "next action clicked",
+      "domainId": "finance",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T00:24:45.575Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:review_queue_started:2026-05-22T00:25:10_316Z:_admin_campaign-events_review",
+      "kind": "observation",
+      "label": "review queue started",
+      "domainId": "event_planning",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T00:25:10.316Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:page_viewed:2026-05-22T00:25:10_854Z:_admin_campaign-events_review",
+      "kind": "observation",
+      "label": "page viewed",
+      "domainId": "event_planning",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T00:25:10.854Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:review_queue_started:2026-05-22T00:25:11_187Z:_admin_campaign-events_review",
+      "kind": "observation",
+      "label": "review queue started",
+      "domainId": "event_planning",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T00:25:11.187Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:page_viewed:2026-05-22T00:49:38_079Z:_admin_campaign-events_reimbursement",
+      "kind": "observation",
+      "label": "page viewed",
+      "domainId": "finance",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T00:49:38.079Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:review_queue_started:2026-05-22T00:49:59_691Z:_admin_campaign-events_review",
+      "kind": "observation",
+      "label": "review queue started",
+      "domainId": "event_planning",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T00:49:59.691Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:page_viewed:2026-05-22T00:49:59_873Z:_admin_campaign-events_review",
+      "kind": "observation",
+      "label": "page viewed",
+      "domainId": "event_planning",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T00:49:59.873Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:review_queue_started:2026-05-22T00:50:00_055Z:_admin_campaign-events_review",
+      "kind": "observation",
+      "label": "review queue started",
+      "domainId": "event_planning",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T00:50:00.055Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:page_viewed:2026-05-22T01:11:09_405Z:_admin_campaign-events_travel-log",
+      "kind": "observation",
+      "label": "page viewed",
+      "domainId": "event_planning",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T01:11:09.405Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:review_queue_started:2026-05-22T01:12:03_113Z:_admin_campaign-events_review",
+      "kind": "observation",
+      "label": "review queue started",
+      "domainId": "event_planning",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T01:12:03.113Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:page_viewed:2026-05-22T01:12:03_408Z:_admin_campaign-events_review",
+      "kind": "observation",
+      "label": "page viewed",
+      "domainId": "event_planning",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T01:12:03.408Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:page_viewed:2026-05-22T01:26:46_505Z:_admin_campaign-events_reimbursement",
+      "kind": "observation",
+      "label": "page viewed",
+      "domainId": "finance",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T01:26:46.505Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:page_viewed:2026-05-22T01:27:03_937Z:_admin_campaign-events_reimbursement",
+      "kind": "observation",
+      "label": "page viewed",
+      "domainId": "finance",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T01:27:03.937Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:page_viewed:2026-05-22T06:20:10_851Z:_admin_ai-command-center",
+      "kind": "observation",
+      "label": "page viewed",
+      "domainId": "campaign_management",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T06:20:10.851Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:os_state_snapshot_viewed:2026-05-22T06:23:35_536Z:_admin_ai-command-center",
+      "kind": "observation",
+      "label": "os state snapshot viewed",
+      "domainId": "campaign_management",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T06:23:35.536Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:agent_workflow_plan_generated:2026-05-22T06:23:35_549Z:_admin_ai-command-center",
+      "kind": "observation",
+      "label": "agent workflow plan generated",
+      "domainId": "campaign_management",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T06:23:35.549Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:agent_action_prepared:2026-05-22T06:23:35_558Z:_admin_ai-command-center",
+      "kind": "observation",
+      "label": "agent action prepared",
+      "domainId": "campaign_management",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T06:23:35.558Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:system_blocker_detected:2026-05-22T06:23:35_568Z:_admin_ai-command-center",
+      "kind": "observation",
+      "label": "system blocker detected",
+      "domainId": "campaign_management",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T06:23:35.568Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:executive_briefing_generated:2026-05-22T06:24:31_199Z:_admin_ai-command-center",
+      "kind": "observation",
+      "label": "executive briefing generated",
+      "domainId": "campaign_management",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T06:24:31.199Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:candidate_overload_detected:2026-05-22T06:24:31_208Z:_admin_ai-command-center",
+      "kind": "observation",
+      "label": "candidate overload detected",
+      "domainId": "campaign_management",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T06:24:31.208Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:operator_fatigue_detected:2026-05-22T06:24:31_216Z:_admin_ai-command-center",
+      "kind": "observation",
+      "label": "operator fatigue detected",
+      "domainId": "campaign_management",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T06:24:31.216Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:strategic_gap_detected:2026-05-22T06:24:31_224Z:_admin_ai-command-center",
+      "kind": "observation",
+      "label": "strategic gap detected",
+      "domainId": "campaign_management",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T06:24:31.224Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:page_viewed:2026-05-22T07:32:09_024Z:_admin_ai-command-center",
+      "kind": "observation",
+      "label": "page viewed",
+      "domainId": "campaign_management",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T07:32:09.024Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:os_state_snapshot_viewed:2026-05-22T07:47:07_872Z:_admin_ai-command-center",
+      "kind": "observation",
+      "label": "os state snapshot viewed",
+      "domainId": "campaign_management",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T07:47:07.872Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:agent_workflow_plan_generated:2026-05-22T07:47:07_881Z:_admin_ai-command-center",
+      "kind": "observation",
+      "label": "agent workflow plan generated",
+      "domainId": "campaign_management",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T07:47:07.881Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:agent_action_prepared:2026-05-22T07:47:07_889Z:_admin_ai-command-center",
+      "kind": "observation",
+      "label": "agent action prepared",
+      "domainId": "campaign_management",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T07:47:07.889Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "obs:system_blocker_detected:2026-05-22T07:47:07_897Z:_admin_ai-command-center",
+      "kind": "observation",
+      "label": "system blocker detected",
+      "domainId": "campaign_management",
+      "sourceSystem": "user-observations",
+      "freshnessAt": "2026-05-22T07:47:07.897Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "county:arkansas",
+      "kind": "county",
+      "label": "Arkansas County",
+      "domainId": "county",
+      "sourceSystem": "county-intelligence",
+      "freshnessAt": "2026-05-22T15:43:33.661Z",
+      "confidence": 7,
+      "metadata": {}
+    },
+    {
+      "id": "county:ashley",
+      "kind": "county",
+      "label": "Ashley County",
+      "domainId": "county",
+      "sourceSystem": "county-intelligence",
+      "freshnessAt": "2026-05-22T15:43:33.661Z",
+      "confidence": 7,
+      "metadata": {}
+    },
+    {
+      "id": "county:baxter",
+      "kind": "county",
+      "label": "Baxter County",
+      "domainId": "county",
+      "sourceSystem": "county-intelligence",
+      "freshnessAt": "2026-05-22T15:43:33.661Z",
+      "confidence": 7,
+      "metadata": {}
+    },
+    {
+      "id": "county:benton",
+      "kind": "county",
+      "label": "Benton County",
+      "domainId": "county",
+      "sourceSystem": "county-intelligence",
+      "freshnessAt": "2026-05-22T15:43:33.661Z",
+      "confidence": 7,
+      "metadata": {}
+    },
+    {
+      "id": "county:boone",
+      "kind": "county",
+      "label": "Boone County",
+      "domainId": "county",
+      "sourceSystem": "county-intelligence",
+      "freshnessAt": "2026-05-22T15:43:33.661Z",
+      "confidence": 7,
+      "metadata": {}
+    },
+    {
+      "id": "county:bradley",
+      "kind": "county",
+      "label": "Bradley County",
+      "domainId": "county",
+      "sourceSystem": "county-intelligence",
+      "freshnessAt": "2026-05-22T15:43:33.661Z",
+      "confidence": 7,
+      "metadata": {}
+    },
+    {
+      "id": "county:calhoun",
+      "kind": "county",
+      "label": "Calhoun County",
+      "domainId": "county",
+      "sourceSystem": "county-intelligence",
+      "freshnessAt": "2026-05-22T15:43:33.661Z",
+      "confidence": 7,
+      "metadata": {}
+    },
+    {
+      "id": "county:carroll",
+      "kind": "county",
+      "label": "Carroll County",
+      "domainId": "county",
+      "sourceSystem": "county-intelligence",
+      "freshnessAt": "2026-05-22T15:43:33.661Z",
+      "confidence": 7,
+      "metadata": {}
+    },
+    {
+      "id": "county-opp:pulaski",
+      "kind": "county",
+      "label": "Pulaski County (momentum)",
+      "domainId": "county",
+      "sourceSystem": "county-intelligence",
+      "freshnessAt": "2026-05-22T15:43:33.661Z",
+      "confidence": 72,
+      "metadata": {}
+    },
+    {
+      "id": "county-opp:washington",
+      "kind": "county",
+      "label": "Washington County (momentum)",
+      "domainId": "county",
+      "sourceSystem": "county-intelligence",
+      "freshnessAt": "2026-05-22T15:43:33.661Z",
+      "confidence": 72,
+      "metadata": {}
+    },
+    {
+      "id": "county-opp:benton",
+      "kind": "county",
+      "label": "Benton County (momentum)",
+      "domainId": "county",
+      "sourceSystem": "county-intelligence",
+      "freshnessAt": "2026-05-22T15:43:33.661Z",
+      "confidence": 72,
+      "metadata": {}
+    },
+    {
+      "id": "county-opp:faulkner",
+      "kind": "county",
+      "label": "Faulkner County (momentum)",
+      "domainId": "county",
+      "sourceSystem": "county-intelligence",
+      "freshnessAt": "2026-05-22T15:43:33.661Z",
+      "confidence": 72,
+      "metadata": {}
+    },
+    {
+      "id": "county-opp:saline",
+      "kind": "county",
+      "label": "Saline County (momentum)",
+      "domainId": "county",
+      "sourceSystem": "county-intelligence",
+      "freshnessAt": "2026-05-22T15:43:33.661Z",
+      "confidence": 72,
+      "metadata": {}
+    },
+    {
+      "id": "blocker:orch-degraded-sources",
+      "kind": "blocker",
+      "label": "2 orchestration signal source(s) degraded or missing",
+      "domainId": "campaign_management",
+      "sourceSystem": "orch-degraded-sources",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 80,
+      "metadata": {}
+    },
+    {
+      "id": "blocker:xd-b-0",
+      "kind": "blocker",
+      "label": "36 pending approval(s)",
+      "domainId": "event_planning",
+      "sourceSystem": "xd-b-0",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 80,
+      "metadata": {}
+    },
+    {
+      "id": "blocker:xd-b-1",
+      "kind": "blocker",
+      "label": "36 travel review row(s)",
+      "domainId": "event_planning",
+      "sourceSystem": "xd-b-1",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 80,
+      "metadata": {}
+    },
+    {
+      "id": "blocker:xd-b-2",
+      "kind": "blocker",
+      "label": "Mileage review queue not clear",
+      "domainId": "event_planning",
+      "sourceSystem": "xd-b-2",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 80,
+      "metadata": {}
+    },
+    {
+      "id": "blocker:xd-b-3",
+      "kind": "blocker",
+      "label": "Calendar sync stale",
+      "domainId": "event_planning",
+      "sourceSystem": "xd-b-3",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 80,
+      "metadata": {}
+    },
+    {
+      "id": "blocker:comms-b-0",
+      "kind": "blocker",
+      "label": "Unsubscribe ASM group missing — broadcast unsafe",
+      "domainId": "communications",
+      "sourceSystem": "orchestration",
+      "freshnessAt": "2026-05-22T15:43:33.662Z",
+      "confidence": 75,
+      "metadata": {}
+    },
+    {
+      "id": "blocker:comms-b-1",
+      "kind": "blocker",
+      "label": "Approval email send disabled (EMAIL_SEND_ENABLED)",
+      "domainId": "communications",
+      "sourceSystem": "orchestration",
+      "freshnessAt": "2026-05-22T15:43:33.662Z",
+      "confidence": 75,
+      "metadata": {}
+    },
+    {
+      "id": "blocker:comms-b-2",
+      "kind": "blocker",
+      "label": "No suppressions in V1 JSON store yet — use ECC SendGridSuppression for production",
+      "domainId": "communications",
+      "sourceSystem": "orchestration",
+      "freshnessAt": "2026-05-22T15:43:33.662Z",
+      "confidence": 75,
+      "metadata": {}
+    },
+    {
+      "id": "opportunity:county-momentum",
+      "kind": "observation",
+      "label": "10 counties show momentum opportunity",
+      "domainId": "county",
+      "sourceSystem": "county-momentum",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 85,
+      "metadata": {}
+    },
+    {
+      "id": "domain:campaign_management",
+      "kind": "observation",
+      "label": "campaign management",
+      "domainId": "campaign_management",
+      "sourceSystem": "domain:campaign_management",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 65,
+      "metadata": {}
+    },
+    {
+      "id": "domain:candidate",
+      "kind": "observation",
+      "label": "candidate",
+      "domainId": "candidate",
+      "sourceSystem": "domain:candidate",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 68,
+      "metadata": {}
+    },
+    {
+      "id": "domain:calendar",
+      "kind": "observation",
+      "label": "calendar",
+      "domainId": "calendar",
+      "sourceSystem": "domain:calendar",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 75,
+      "metadata": {}
+    },
+    {
+      "id": "domain:event_planning",
+      "kind": "observation",
+      "label": "event planning",
+      "domainId": "event_planning",
+      "sourceSystem": "domain:event_planning",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 90,
+      "metadata": {}
+    },
+    {
+      "id": "domain:approvals",
+      "kind": "observation",
+      "label": "approvals",
+      "domainId": "approvals",
+      "sourceSystem": "domain:approvals",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 82,
+      "metadata": {}
+    },
+    {
+      "id": "domain:travel",
+      "kind": "observation",
+      "label": "travel",
+      "domainId": "travel",
+      "sourceSystem": "domain:travel",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 78,
+      "metadata": {}
+    },
+    {
+      "id": "domain:reimbursement",
+      "kind": "observation",
+      "label": "reimbursement",
+      "domainId": "reimbursement",
+      "sourceSystem": "domain:reimbursement",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "domain:finance",
+      "kind": "observation",
+      "label": "finance",
+      "domainId": "finance",
+      "sourceSystem": "domain:finance",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 90,
+      "metadata": {}
+    },
+    {
+      "id": "domain:compliance",
+      "kind": "observation",
+      "label": "compliance",
+      "domainId": "compliance",
+      "sourceSystem": "domain:compliance",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 85,
+      "metadata": {}
+    },
+    {
+      "id": "domain:county",
+      "kind": "observation",
+      "label": "county",
+      "domainId": "county",
+      "sourceSystem": "domain:county",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 35,
+      "metadata": {}
+    },
+    {
+      "id": "risk:weak-county",
+      "kind": "observation",
+      "label": "Weak county",
+      "domainId": "county",
+      "sourceSystem": "domain:county",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 78,
+      "metadata": {}
+    },
+    {
+      "id": "domain:field",
+      "kind": "observation",
+      "label": "field",
+      "domainId": "field",
+      "sourceSystem": "domain:field",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 35,
+      "metadata": {}
+    },
+    {
+      "id": "risk:weak-field",
+      "kind": "observation",
+      "label": "Weak field",
+      "domainId": "field",
+      "sourceSystem": "domain:field",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 78,
+      "metadata": {}
+    },
+    {
+      "id": "domain:volunteer",
+      "kind": "observation",
+      "label": "volunteer",
+      "domainId": "volunteer",
+      "sourceSystem": "domain:volunteer",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 78,
+      "metadata": {}
+    },
+    {
+      "id": "domain:communications",
+      "kind": "observation",
+      "label": "communications",
+      "domainId": "communications",
+      "sourceSystem": "domain:communications",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 58,
+      "metadata": {}
+    },
+    {
+      "id": "risk:weak-communications",
+      "kind": "observation",
+      "label": "Weak communications",
+      "domainId": "communications",
+      "sourceSystem": "domain:communications",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 78,
+      "metadata": {}
+    },
+    {
+      "id": "domain:social_media",
+      "kind": "observation",
+      "label": "social media",
+      "domainId": "social_media",
+      "sourceSystem": "domain:social_media",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 60,
+      "metadata": {}
+    },
+    {
+      "id": "domain:host",
+      "kind": "observation",
+      "label": "host",
+      "domainId": "host",
+      "sourceSystem": "domain:host",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 58,
+      "metadata": {}
+    },
+    {
+      "id": "risk:weak-host",
+      "kind": "observation",
+      "label": "Weak host",
+      "domainId": "host",
+      "sourceSystem": "domain:host",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 78,
+      "metadata": {}
+    },
+    {
+      "id": "domain:hot_wash",
+      "kind": "observation",
+      "label": "hot wash",
+      "domainId": "hot_wash",
+      "sourceSystem": "domain:hot_wash",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 72,
+      "metadata": {}
+    },
+    {
+      "id": "domain:training",
+      "kind": "observation",
+      "label": "training",
+      "domainId": "training",
+      "sourceSystem": "domain:training",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "domain:dashboard_ux",
+      "kind": "observation",
+      "label": "dashboard ux",
+      "domainId": "dashboard_ux",
+      "sourceSystem": "domain:dashboard_ux",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 55,
+      "metadata": {}
+    },
+    {
+      "id": "risk:weak-dashboard_ux",
+      "kind": "observation",
+      "label": "Weak dashboard ux",
+      "domainId": "dashboard_ux",
+      "sourceSystem": "domain:dashboard_ux",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 78,
+      "metadata": {}
+    },
+    {
+      "id": "domain:memory",
+      "kind": "observation",
+      "label": "memory",
+      "domainId": "memory",
+      "sourceSystem": "domain:memory",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 68,
+      "metadata": {}
+    },
+    {
+      "id": "domain:tool_builder",
+      "kind": "observation",
+      "label": "tool builder",
+      "domainId": "tool_builder",
+      "sourceSystem": "domain:tool_builder",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 75,
+      "metadata": {}
+    },
+    {
+      "id": "county:arkansas-county",
+      "kind": "county",
+      "label": "Arkansas County",
+      "domainId": "county",
+      "sourceSystem": "county-intelligence",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 72,
+      "metadata": {}
+    },
+    {
+      "id": "county:ashley-county",
+      "kind": "county",
+      "label": "Ashley County",
+      "domainId": "county",
+      "sourceSystem": "county-intelligence",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 72,
+      "metadata": {}
+    },
+    {
+      "id": "county:baxter-county",
+      "kind": "county",
+      "label": "Baxter County",
+      "domainId": "county",
+      "sourceSystem": "county-intelligence",
+      "freshnessAt": "2026-05-22T15:54:16.452Z",
+      "confidence": 72,
+      "metadata": {}
+    }
+  ],
+  "edges": [],
+  "summary": {
+    "nodeCount": 85,
+    "edgeCount": 0,
+    "byKind": {
+      "observation": 61,
+      "county": 16,
+      "blocker": 8
+    },
+    "underInformedKinds": [
+      "person",
+      "event",
+      "message",
+      "lesson"
+    ]
+  }
+}

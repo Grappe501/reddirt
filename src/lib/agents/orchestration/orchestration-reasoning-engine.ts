@@ -108,7 +108,11 @@ export function runOrchestrationReasoning(state: CampaignState): OrchestrationDi
   };
 
   for (const b of topBlockers.filter((x) => x.severity === "P0" || x.severity === "P1").slice(0, 2)) {
-    addMove(b.message, "Clearing this blocker restores cross-domain operating rhythm.", b.suggestedRoute, b.severity, b.domainId);
+    const relatedGap = state.knowledge.knowledgeGaps.find((g) => g.domains.includes(b.domainId));
+    const why = relatedGap
+      ? `${relatedGap.summary} — clearing this blocker restores cross-domain rhythm.`
+      : "Clearing this blocker restores cross-domain operating rhythm.";
+    addMove(b.message, why, b.suggestedRoute, b.severity, b.domainId);
   }
   for (const a of state.urgentActions.slice(0, 1)) {
     addMove(a.title, "OS control flagged this as urgent for the current period.", a.route, a.priority, a.domainId);
@@ -129,6 +133,38 @@ export function runOrchestrationReasoning(state: CampaignState): OrchestrationDi
     );
   }
 
+  for (const gap of state.knowledge.knowledgeGaps.slice(0, 1)) {
+    if (topMoves.length >= 3) break;
+    addMove(
+      gap.title,
+      gap.whyItMatters,
+      gap.domains.includes("county") ? "/admin/county-intelligence" : "/admin/orchestration",
+      "P1",
+      gap.domains[0] ?? "campaign_management",
+    );
+  }
+
+  for (const lesson of state.knowledge.recurringBlockers.slice(0, 1)) {
+    if (topMoves.length >= 3) break;
+    addMove(
+      lesson.title,
+      lesson.whyItMatters,
+      "/admin/orchestration",
+      "P1",
+      lesson.domains[0] ?? "campaign_management",
+    );
+  }
+
+  if (state.knowledge.graphHealth.missingSources.length > 0 && topMoves.length < 3) {
+    addMove(
+      `Restore degraded signal sources (${state.knowledge.graphHealth.missingSources.length})`,
+      state.knowledge.knowledgeGaps[0]?.summary ?? "Knowledge graph has blind spots from missing sources.",
+      "/admin/orchestration",
+      "P1",
+      "campaign_management",
+    );
+  }
+
   const perDomainDiagnosis: OrchestrationDomainDiagnosis[] = Object.values(state.domainStatuses).map((d) => ({
     domainId: d.domainId,
     summary: d.summary,
@@ -139,8 +175,11 @@ export function runOrchestrationReasoning(state: CampaignState): OrchestrationDi
   const executiveSummary = [
     state.executiveSummary,
     topBlockers.length ? `${topBlockers.length} active blocker(s).` : "No P0/P1 blockers.",
+    state.knowledge.graphHealth.lessonCount ? `${state.knowledge.graphHealth.lessonCount} campaign lesson(s) in memory.` : "",
     topMoves.length ? `Top move: ${topMoves[0].title}.` : "Review workflow recommendations.",
-  ].join(" ");
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return {
     headline:

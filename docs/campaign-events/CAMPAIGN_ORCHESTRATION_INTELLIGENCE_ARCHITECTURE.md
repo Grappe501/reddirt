@@ -32,7 +32,27 @@ Every future tool must answer:
 
 **Loader:** `load-campaign-orchestration-signals.ts` — graceful degradation; failed domain → blocker row, not throw.
 
-**Progress:** `[██████░░░░] 60%` plan + partial loader
+**Progress:** `[████████░░] 85%` Phase 3A knowledge graph live
+
+**Phase 3A module:** `src/lib/agents/orchestration/knowledge/`  
+**API:** `GET /api/agents/campaign-knowledge-state`  
+**Test:** `npm run agents:test-campaign-knowledge`
+
+---
+
+### 7. Learning layer (Phase 3A)
+
+| Component | Module |
+|-----------|--------|
+| Knowledge graph builder | `knowledge/campaign-knowledge-graph.ts` |
+| Observation intake | `knowledge/campaign-observation-intake.ts` |
+| Lessons engine | `knowledge/campaign-lessons-engine.ts` |
+| Recommendation feedback | `knowledge/campaign-recommendation-feedback.ts` |
+| CampaignState merge | `knowledge/campaign-knowledge-state.ts` |
+
+**CampaignState field:** `knowledge` — graphHealth, strongestLessons, knowledgeGaps, recurringBlockers, recommendationFeedbackSummary
+
+**Progress:** `[████████░░] 85%` functional V1
 
 ---
 

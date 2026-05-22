@@ -1,6 +1,30 @@
 # Kelly OS Build Status
 
-## Latest: Campaign Orchestration Intelligence — Phase 2A Live CampaignState
+## Latest: Campaign Knowledge Graph + Lessons Engine — Phase 3A
+
+| Item | Status |
+|------|--------|
+| Canonical module `orchestration/knowledge/` | **Functional** |
+| Campaign knowledge types (entity, edge, observation, lesson, feedback) | **Complete** |
+| Deterministic graph builder from CampaignState | **Functional** |
+| Observation intake + prohibited content filter | **Functional** |
+| Lessons engine + knowledge gaps as first-class output | **Functional** |
+| Recommendation feedback loop (store) | **Functional** |
+| `CampaignState.knowledge` summary | **Live** |
+| `GET /api/agents/campaign-knowledge-state` | **Live** (read-only) |
+| Orchestration panel **Campaign Knowledge + Lessons** | **Functional** |
+| Tool lifecycle `campaign_knowledge_graph` (20 tools) | **Registered** |
+| `agents:test-campaign-knowledge` | **PASS** |
+| `typecheck` | **PASS** |
+| `npx prisma migrate status` | **PASS** (no new migrations) |
+| `npm run build` | **OOM on agent machine** — retry locally with heap increase |
+
+**Handoff:** `ORCHESTRATION_PHASE_3A_KNOWLEDGE_GRAPH_LESSONS_HANDOFF.md`  
+**Next:** Phase 3B — recommendation feedback UI + lesson approval
+
+---
+
+## Prior: Campaign Orchestration Intelligence — Phase 2A Live CampaignState
 
 | Item | Status |
 |------|--------|

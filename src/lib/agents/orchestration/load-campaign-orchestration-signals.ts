@@ -15,6 +15,8 @@ import { composeCommunicationsIntelligenceContext } from "@/lib/communications/c
 import { buildToolExecutionReadinessSummary } from "@/lib/agents/os-control/tool-execution-readiness";
 import type { CampaignState } from "./campaign-state-types";
 import { buildCampaignStateFromSignals } from "./build-campaign-state-from-signals";
+import { buildCampaignKnowledgeLayer } from "@/lib/agents/orchestration/knowledge/campaign-knowledge-state";
+import { emptyCampaignKnowledgeSummary } from "@/lib/agents/orchestration/knowledge/campaign-knowledge-types";
 import type { OrchestrationSourceHealth } from "./orchestration-source-health";
 import { sourceHealthFromSlice } from "./orchestration-source-health";
 
@@ -49,6 +51,7 @@ const SOURCE_LABELS: Record<string, string> = {
   events_dashboard: "Campaign events dashboard",
   email_os: "Email OS / ECC readiness",
   tool_registry: "Tool execution readiness",
+  campaign_knowledge: "Campaign knowledge graph + lessons",
 };
 
 async function loadSlice<T>(
@@ -153,7 +156,28 @@ export async function loadCampaignOrchestrationSignals(
     errors,
   };
 
-  const state = buildCampaignStateFromSignals(bundle, sourceHealth);
+  let knowledge = emptyCampaignKnowledgeSummary();
+  const prelim = buildCampaignStateFromSignals(bundle, sourceHealth, knowledge);
+  try {
+    const kb = await buildCampaignKnowledgeLayer(prelim, sourceHealth, period, { persistGraph: true });
+    knowledge = kb.summary;
+    sourceHealth.push({
+      sourceId: "campaign_knowledge",
+      label: SOURCE_LABELS.campaign_knowledge,
+      status: kb.graph.graphHealth.entityCount > 0 ? "ready" : "degraded",
+      freshness: kb.graph.generatedAt,
+      detail: `${kb.graph.graphHealth.entityCount} entities · ${kb.graph.graphHealth.lessonCount} lessons · confidence ${kb.graph.graphHealth.confidence}`,
+    });
+  } catch (e) {
+    sourceHealth.push({
+      sourceId: "campaign_knowledge",
+      label: SOURCE_LABELS.campaign_knowledge,
+      status: "error",
+      detail: e instanceof Error ? e.message : "knowledge load failed",
+    });
+  }
+
+  const state = buildCampaignStateFromSignals(bundle, sourceHealth, knowledge);
 
   return { bundle, sourceHealth, state };
 }

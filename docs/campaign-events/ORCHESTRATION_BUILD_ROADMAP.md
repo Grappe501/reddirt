@@ -10,8 +10,10 @@
 | Phase | Focus | Progress |
 |-------|--------|----------|
 | **1** | Inventory + architecture + tool contracts | `[██████████] 100%` ← **this sprint** |
-| **2** | CampaignState loader + reasoning API | `[████████░░] 85%` ← **Phase 2A done** |
-| **2B** | Command center orchestration panel | `[██░░░░░░░░] 20%` |
+| **2** | CampaignState loader + reasoning API | `[██████████] 100%` ← **Phase 2A done** |
+| **2B** | Command center orchestration panel | `[████████░░] 85%` |
+| **3A** | Knowledge graph + lessons engine | `[████████░░] 85%` ← **this phase** |
+| **3B** | Recommendation feedback + lesson approval UI | `[░░░░░░░░░░] 0%` |
 | **5** | Role-specific orchestration delivery | `[██░░░░░░░░] 20%` |
 | **6** | Memory review + learning loop | `[██░░░░░░░░] 20%` |
 | **7** | Dashboard adaptation + workspaces | `[█░░░░░░░░░] 10%` |
@@ -76,6 +78,35 @@
 
 - API returns live/degraded CampaignState in dev ✅
 - Diagnosis lists blockers + top 3 moves ✅
+
+---
+
+## Phase 3A — Knowledge graph + lessons engine ✅ (functional)
+
+**Goals**
+
+- Campaign entity graph (people, counties, events, observations, blockers, …) ✅
+- Observation intake from staff signals ✅
+- Lessons engine with confidence, freshness, usefulness ✅
+- Recommendation feedback loop (store) ✅
+- `CampaignState.knowledgeMemory` integration ✅
+
+**Files**
+
+- `src/lib/agents/campaign-knowledge/*`
+- `sprint-campaign-knowledge-tools.ts`
+- `OrchestrationKnowledgeMemoryPanel.tsx`
+- `PHASE_3A_KNOWLEDGE_GRAPH_HANDOFF.md`
+
+**Tests**
+
+- `agents:test-campaign-knowledge` ✅
+- `agents:test-orchestration-state` (knowledgeMemory assert) ✅
+
+**Done when**
+
+- Orchestration panel shows lessons, patterns, confidence gaps ✅
+- Graph persists under `data/campaign-events/campaign-knowledge/` ✅
 
 ---
 

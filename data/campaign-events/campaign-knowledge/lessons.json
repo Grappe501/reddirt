@@ -1,0 +1,164 @@
+{
+  "lessons": [
+    {
+      "id": "lesson_mph38mf3",
+      "createdAt": "2026-05-22T15:42:14.655Z",
+      "updatedAt": "2026-05-22T15:42:14.655Z",
+      "title": "Arkansas County: County profile still shell depth in countyWorkbenc",
+      "summary": "County profile still shell depth in countyWorkbench; Low dashboard field completion — source intake needed; No connected full CountyProfile module; No state-aligned planning target row",
+      "domainId": "county",
+      "lessonType": "county",
+      "confidence": "medium",
+      "freshness": "fresh",
+      "usefulnessScore": 58,
+      "sourceKind": "county_intelligence",
+      "sourceRef": "arkansas",
+      "countySlug": "arkansas",
+      "linkedEntityIds": [
+        "county:arkansas"
+      ],
+      "requiresHumanApproval": true,
+      "status": "proposed"
+    },
+    {
+      "id": "lesson_mph38mfs",
+      "createdAt": "2026-05-22T15:42:14.680Z",
+      "updatedAt": "2026-05-22T15:42:14.680Z",
+      "title": "Ashley County: County profile still shell depth in countyWorkbenc",
+      "summary": "County profile still shell depth in countyWorkbench; Low dashboard field completion — source intake needed; No connected full CountyProfile module",
+      "domainId": "county",
+      "lessonType": "county",
+      "confidence": "medium",
+      "freshness": "fresh",
+      "usefulnessScore": 58,
+      "sourceKind": "county_intelligence",
+      "sourceRef": "ashley",
+      "countySlug": "ashley",
+      "linkedEntityIds": [
+        "county:ashley"
+      ],
+      "requiresHumanApproval": true,
+      "status": "proposed"
+    },
+    {
+      "id": "lesson_mph38mg1",
+      "createdAt": "2026-05-22T15:42:14.689Z",
+      "updatedAt": "2026-05-22T15:42:14.689Z",
+      "title": "Baxter County: County profile still shell depth in countyWorkbenc",
+      "summary": "County profile still shell depth in countyWorkbench; Low dashboard field completion — source intake needed; No connected full CountyProfile module",
+      "domainId": "county",
+      "lessonType": "county",
+      "confidence": "medium",
+      "freshness": "fresh",
+      "usefulnessScore": 58,
+      "sourceKind": "county_intelligence",
+      "sourceRef": "baxter",
+      "countySlug": "baxter",
+      "linkedEntityIds": [
+        "county:baxter"
+      ],
+      "requiresHumanApproval": true,
+      "status": "proposed"
+    },
+    {
+      "id": "lesson_mph38mg8",
+      "createdAt": "2026-05-22T15:42:14.696Z",
+      "updatedAt": "2026-05-22T15:42:14.696Z",
+      "title": "Benton County: County profile still shell depth in countyWorkbenc",
+      "summary": "County profile still shell depth in countyWorkbench; Low dashboard field completion — source intake needed; No connected full CountyProfile module; 5 full-profile QA warnings",
+      "domainId": "county",
+      "lessonType": "county",
+      "confidence": "medium",
+      "freshness": "fresh",
+      "usefulnessScore": 58,
+      "sourceKind": "county_intelligence",
+      "sourceRef": "benton",
+      "countySlug": "benton",
+      "linkedEntityIds": [
+        "county:benton"
+      ],
+      "requiresHumanApproval": true,
+      "status": "proposed"
+    },
+    {
+      "id": "lesson_mph38mgh",
+      "createdAt": "2026-05-22T15:42:14.705Z",
+      "updatedAt": "2026-05-22T15:42:14.705Z",
+      "title": "Boone County: County profile still shell depth in countyWorkbenc",
+      "summary": "County profile still shell depth in countyWorkbench; Low dashboard field completion — source intake needed; No connected full CountyProfile module",
+      "domainId": "county",
+      "lessonType": "county",
+      "confidence": "medium",
+      "freshness": "fresh",
+      "usefulnessScore": 58,
+      "sourceKind": "county_intelligence",
+      "sourceRef": "boone",
+      "countySlug": "boone",
+      "linkedEntityIds": [
+        "county:boone"
+      ],
+      "requiresHumanApproval": true,
+      "status": "proposed"
+    },
+    {
+      "id": "lesson_mph38mgq",
+      "createdAt": "2026-05-22T15:42:14.714Z",
+      "updatedAt": "2026-05-22T15:42:14.714Z",
+      "title": "Bradley County: County profile still shell depth in countyWorkbenc",
+      "summary": "County profile still shell depth in countyWorkbench; Low dashboard field completion — source intake needed; No connected full CountyProfile module",
+      "domainId": "county",
+      "lessonType": "county",
+      "confidence": "medium",
+      "freshness": "fresh",
+      "usefulnessScore": 58,
+      "sourceKind": "county_intelligence",
+      "sourceRef": "bradley",
+      "countySlug": "bradley",
+      "linkedEntityIds": [
+        "county:bradley"
+      ],
+      "requiresHumanApproval": true,
+      "status": "proposed"
+    },
+    {
+      "id": "lesson_mph38mgy",
+      "createdAt": "2026-05-22T15:42:14.722Z",
+      "updatedAt": "2026-05-22T15:42:14.722Z",
+      "title": "Calhoun County: County profile still shell depth in countyWorkbenc",
+      "summary": "County profile still shell depth in countyWorkbench; Low dashboard field completion — source intake needed; No connected full CountyProfile module",
+      "domainId": "county",
+      "lessonType": "county",
+      "confidence": "medium",
+      "freshness": "fresh",
+      "usefulnessScore": 58,
+      "sourceKind": "county_intelligence",
+      "sourceRef": "calhoun",
+      "countySlug": "calhoun",
+      "linkedEntityIds": [
+        "county:calhoun"
+      ],
+      "requiresHumanApproval": true,
+      "status": "proposed"
+    },
+    {
+      "id": "lesson_mph38mh5",
+      "createdAt": "2026-05-22T15:42:14.729Z",
+      "updatedAt": "2026-05-22T15:42:14.729Z",
+      "title": "Carroll County: County profile still shell depth in countyWorkbenc",
+      "summary": "County profile still shell depth in countyWorkbench; Low dashboard field completion — source intake needed; No connected full CountyProfile module",
+      "domainId": "county",
+      "lessonType": "county",
+      "confidence": "medium",
+      "freshness": "fresh",
+      "usefulnessScore": 58,
+      "sourceKind": "county_intelligence",
+      "sourceRef": "carroll",
+      "countySlug": "carroll",
+      "linkedEntityIds": [
+        "county:carroll"
+      ],
+      "requiresHumanApproval": true,
+      "status": "proposed"
+    }
+  ]
+}
