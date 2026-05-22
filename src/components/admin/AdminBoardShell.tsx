@@ -7,6 +7,9 @@ import { CampaignOsNavRail } from "@/components/admin/navigation/CampaignOsNavRa
 import { GlobalAiCommandPalette } from "@/components/admin/navigation/GlobalAiCommandPalette";
 import { OperatorContextProvider } from "@/components/admin/navigation/OperatorContextProvider";
 import type { CampaignOsNavGroup } from "@/lib/dashboard-orchestration/campaign-os-nav-config";
+import { GlobalCampaignSwitcher } from "@/components/admin/campaign-tenancy/GlobalCampaignSwitcher";
+import { CampaignBrandingStyles } from "@/components/admin/campaign-tenancy/CampaignBrandingStyles";
+import type { CampaignBranding, CampaignTenant } from "@/lib/campaign-tenancy/types";
 
 const siteLinks: { href: string; label: string }[] = [
   { href: "/admin/content", label: "Overview" },
@@ -36,18 +39,27 @@ export function AdminBoardShell({
   campaignOsNavBadges = {},
   activeMonth = "2026-03",
   currentPathname = "/admin",
+  tenants = [],
+  activeTenantId = "kelly-sos-2026",
+  tenantBranding,
 }: {
   children: ReactNode;
   campaignOsNavGroups?: CampaignOsNavGroup[];
   campaignOsNavBadges?: Record<string, number>;
   activeMonth?: string;
   currentPathname?: string;
+  tenants?: CampaignTenant[];
+  activeTenantId?: string;
+  tenantBranding?: CampaignBranding | null;
 }) {
   const countyPortal = getCountyWorkbenchPortalUrl();
   const showCampaignOs = Boolean(campaignOsNavGroups?.length);
 
   return (
     <OperatorContextProvider defaultMonth={activeMonth}>
+      {tenantBranding ? (
+        <CampaignBrandingStyles primaryColor={tenantBranding.primaryColor} accentColor={tenantBranding.accentColor} />
+      ) : null}
       <div className="flex min-h-screen bg-transparent text-kelly-text">
         <aside className="flex w-[min(100%,300px)] flex-col border-r border-kelly-text/15 bg-kelly-text text-kelly-page">
           <div className="border-b border-kelly-page/10 px-5 py-6">
@@ -60,6 +72,9 @@ export function AdminBoardShell({
             </p>
           </div>
           <nav className="flex flex-1 flex-col gap-3 overflow-y-auto px-3 py-4" aria-label="Campaign OS">
+            {tenants.length > 0 ? (
+              <GlobalCampaignSwitcher tenants={tenants} activeTenantId={activeTenantId} branding={tenantBranding} />
+            ) : null}
             {showCampaignOs ? (
               <CampaignOsNavRail groups={campaignOsNavGroups!} badges={campaignOsNavBadges} />
             ) : null}

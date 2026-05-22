@@ -19,6 +19,7 @@ import { SPRINT7_EVENT_INTELLIGENCE_CATALOG_ENTRIES } from "./ai-tools/sprint-ev
 import { SPRINT8_CAMPAIGN_FINANCE_CATALOG_ENTRIES } from "./ai-tools/sprint-campaign-finance-8-tools";
 import { AGENT_OS_CONTROL_CATALOG_ENTRIES } from "./ai-tools/sprint-agent-os-control-tools";
 import { SPRINT9_DASHBOARD_NAV_CATALOG_ENTRIES } from "./ai-tools/sprint-dashboard-nav-9-tools";
+import { SPRINT10_CAMPAIGN_INTELLIGENCE_CATALOG_ENTRIES } from "./ai-tools/sprint-10-campaign-intelligence-tools";
 
 const S = (s: AiToolEntry["status"]) => s;
 
@@ -137,6 +138,7 @@ export const SUPPLEMENT_TOOLS_BY_LIFECYCLE: Record<string, AiToolEntry[]> = {
   campaign_finance_sprint8: SPRINT8_CAMPAIGN_FINANCE_CATALOG_ENTRIES,
   agent_os_control: AGENT_OS_CONTROL_CATALOG_ENTRIES,
   dashboard_nav_sprint9: SPRINT9_DASHBOARD_NAV_CATALOG_ENTRIES,
+  campaign_intelligence_sprint10: SPRINT10_CAMPAIGN_INTELLIGENCE_CATALOG_ENTRIES,
 };
 
 const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
@@ -229,6 +231,12 @@ const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
     order: 39,
     title: "Sprint 9 — Dashboard & navigation operating system",
     tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.dashboard_nav_sprint9 ?? [],
+  },
+  {
+    id: "campaign_intelligence_sprint10",
+    order: 40,
+    title: "Sprint 10 — Multi-campaign SaaS + campaign intelligence",
+    tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.campaign_intelligence_sprint10 ?? [],
   },
 ];
 

@@ -1,5 +1,3 @@
-import "server-only";
-
 import { loadCampaignEventsDashboard } from "@/lib/campaign-events/load-campaign-events-dashboard";
 import { loadGlobalUserObservations } from "@/lib/agents/user-intelligence/user-observations";
 import { buildCampaignOsNavGroups } from "./campaign-os-nav-config";

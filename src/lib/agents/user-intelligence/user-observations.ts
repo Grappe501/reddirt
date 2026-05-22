@@ -78,7 +78,18 @@ export type UserUxObservationEvent =
   | "workflow_guidance_ignored"
   | "dashboard_card_collapsed"
   | "dashboard_card_expanded"
-  | "operator_focus_mode_entered";
+  | "operator_focus_mode_entered"
+  | "campaign_momentum_changed"
+  | "candidate_overload_detected"
+  | "workflow_prediction_triggered"
+  | "operator_fatigue_detected"
+  | "strategic_gap_detected"
+  | "county_under_engaged"
+  | "event_success_pattern_detected"
+  | "campaign_energy_shift_detected"
+  | "resource_inefficiency_detected"
+  | "coalition_growth_detected"
+  | "executive_briefing_generated";
 
 export type UserObservationEntry = {
   id: string;
@@ -212,4 +223,15 @@ export const USER_UX_EVENT_LABELS: Record<UserUxObservationEvent, string> = {
   dashboard_card_collapsed: "Dashboard card collapsed",
   dashboard_card_expanded: "Dashboard card expanded",
   operator_focus_mode_entered: "Operator focus mode entered",
+  campaign_momentum_changed: "Campaign momentum changed",
+  candidate_overload_detected: "Candidate overload detected",
+  workflow_prediction_triggered: "Workflow prediction triggered",
+  operator_fatigue_detected: "Operator fatigue detected",
+  strategic_gap_detected: "Strategic gap detected",
+  county_under_engaged: "County under-engaged",
+  event_success_pattern_detected: "Event success pattern detected",
+  campaign_energy_shift_detected: "Campaign energy shift detected",
+  resource_inefficiency_detected: "Resource inefficiency detected",
+  coalition_growth_detected: "Coalition growth detected",
+  executive_briefing_generated: "Executive briefing generated",
 };

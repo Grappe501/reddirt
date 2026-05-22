@@ -5,6 +5,7 @@ import { KellyCalendarCockpitChrome } from "@/components/admin/kelly-calendar-co
 import { requireAdminPage } from "@/lib/admin/require-admin";
 import { loadDashboardNavigationBundle } from "@/lib/dashboard-orchestration/load-dashboard-navigation-bundle";
 import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
+import { resolveActiveCampaignTenant } from "@/lib/campaign-tenancy/resolve-active-tenant";
 
 export const dynamic = "force-dynamic";
 
@@ -14,10 +15,13 @@ export default async function AdminBoardLayout({ children }: { children: ReactNo
   if (path.startsWith("/admin/calendar-command-center/kelly")) {
     return <KellyCalendarCockpitChrome>{children}</KellyCalendarCockpitChrome>;
   }
-  const navBundle = await loadDashboardNavigationBundle("2026-03", {
-    pathname: path || "/admin",
-    surface: "command_center",
-  });
+  const [navBundle, tenantCtx] = await Promise.all([
+    loadDashboardNavigationBundle("2026-03", {
+      pathname: path || "/admin",
+      surface: "command_center",
+    }),
+    resolveActiveCampaignTenant(),
+  ]);
   return (
     <AgentObservationTracker role="operator" pathname={path || "/admin"} period={navBundle.period}>
       <AdminBoardShell
@@ -25,6 +29,9 @@ export default async function AdminBoardLayout({ children }: { children: ReactNo
         campaignOsNavBadges={navBundle.navBadges}
         activeMonth={navBundle.period}
         currentPathname={path || "/admin"}
+        tenants={tenantCtx.available}
+        activeTenantId={tenantCtx.tenantId}
+        tenantBranding={tenantCtx.branding}
       >
         {children}
       </AdminBoardShell>

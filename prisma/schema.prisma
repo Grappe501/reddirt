@@ -6917,3 +6917,203 @@ model KellyCalendarPromotion {
   @@index([campaignEventId])
   @@schema("public")
 }
+
+// --- Campaign Event Ledger (March fact cards; additive CE-LEDGER-1) ---
+
+enum CampaignEventLedgerCreatedFrom {
+  NORMALIZED_CALENDAR
+  WEBSITE_ENTRY
+  GOOGLE_CALENDAR
+  MANUAL_ADMIN
+  IMPORT
+
+  @@schema("public")
+}
+
+enum CampaignEventLedgerEventStatus {
+  TENTATIVE
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+  NEEDS_REVIEW
+
+  @@schema("public")
+}
+
+enum CampaignEventLedgerCalendarStatus {
+  TENTATIVE_CALENDAR
+  OFFICIAL_CALENDAR
+  UNSYNCED
+  IMPORTED_ONLY
+
+  @@schema("public")
+}
+
+enum CampaignEventLedgerReviewStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  NEEDS_INFO
+  READY
+
+  @@schema("public")
+}
+
+enum CampaignEventLedgerGoogleSyncStatus {
+  NOT_LINKED
+  PENDING
+  SYNCED
+  ERROR
+
+  @@schema("public")
+}
+
+enum CampaignEventKellyAttendanceMode {
+  IN_PERSON
+  ZOOM
+  NOT_ATTENDING
+  UNKNOWN
+
+  @@schema("public")
+}
+
+/// Durable Campaign Event Fact Card row — calendar import + editable operations fields (CE-LEDGER-1).
+model CampaignEventLedgerRecord {
+  id                    String                              @id @default(cuid())
+  /// Ledger month bucket, e.g. `2026-03`.
+  period                String
+  /// Stable upsert key: `normalized_calendar:{calendarItemId}`.
+  sourceKey             String                              @unique
+  calendarSourceId      String                              @unique
+  googleEventId           String?                             @unique
+  sourceCalendarName      String?
+  createdFromSource       CampaignEventLedgerCreatedFrom    @default(NORMALIZED_CALENDAR)
+  entrySource             CampaignEventLedgerCreatedFrom      @default(NORMALIZED_CALENDAR)
+  originalTitle           String
+  originalNotes           String?                             @db.Text
+  originalLocation        String?                             @db.Text
+  startAt                 DateTime
+  endAt                   DateTime?
+  allDay                  Boolean                             @default(false)
+  eventStatus             CampaignEventLedgerEventStatus      @default(NEEDS_REVIEW)
+  calendarStatus          CampaignEventLedgerCalendarStatus   @default(IMPORTED_ONLY)
+  reviewStatus            CampaignEventLedgerReviewStatus     @default(NOT_STARTED)
+  tentativeCalendarId     String?
+  officialCalendarId      String?
+  googleSyncStatus        CampaignEventLedgerGoogleSyncStatus @default(NOT_LINKED)
+  googleLastSyncedAt      DateTime?
+  googleEventUrl          String?
+  /// Denormalized list-view fields (updated on fact-card save).
+  displayCity             String?
+  displayEventType        String?
+  roundTripMiles          Decimal?                            @db.Decimal(10, 1)
+  reimbursementAmount     Decimal?                            @db.Decimal(12, 2)
+  factCard                Json
+  createdAt               DateTime                            @default(now())
+  updatedAt               DateTime                            @updatedAt
+
+  @@index([period, startAt])
+  @@index([eventStatus, startAt])
+  @@index([googleSyncStatus])
+  @@schema("public")
+}
+
+// --- Sprint 10: multi-campaign tenancy (foundation) ---
+
+enum CampaignArchetype {
+  CANDIDATE_CAMPAIGN
+  PAC
+  COUNTY_PARTY
+  ADVOCACY_ORG
+  BALLOT_ISSUE
+
+  @@schema("public")
+}
+
+enum CampaignTenantRole {
+  OWNER
+  ADMIN
+  CAMPAIGN_MANAGER
+  TREASURER
+  OPERATOR
+  VOLUNTEER
+  VIEWER
+
+  @@schema("public")
+}
+
+model CampaignTenant {
+  id            String           @id @default(cuid())
+  slug          String           @unique
+  displayName   String
+  archetype     CampaignArchetype
+  electionType  String?
+  geography     String?
+  timelineStart DateTime?
+  timelineEnd   DateTime?
+  staffSizeBand String?
+  budgetLevel   String?
+  isActive      Boolean          @default(true)
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+
+  memberships   CampaignMembership[]
+  settings      CampaignSettings?
+  branding      CampaignBranding?
+  featureFlags  CampaignFeatureFlags?
+
+  @@index([isActive, updatedAt])
+  @@schema("public")
+}
+
+model CampaignMembership {
+  id        String             @id @default(cuid())
+  tenantId  String
+  tenant    CampaignTenant     @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  userId    String
+  role      CampaignTenantRole
+  createdAt DateTime           @default(now())
+
+  @@unique([tenantId, userId])
+  @@index([userId])
+  @@schema("public")
+}
+
+model CampaignSettings {
+  tenantId            String         @id
+  tenant              CampaignTenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  prioritiesJson      Json           @default("[]")
+  fieldGoalsJson      Json           @default("[]")
+  communicationGoalsJson Json        @default("[]")
+  complianceNeedsJson Json           @default("[]")
+  defaultReviewMonth  String?
+  updatedAt           DateTime       @updatedAt
+
+  @@schema("public")
+}
+
+model CampaignBranding {
+  tenantId       String         @id
+  tenant         CampaignTenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  logoUrl        String?
+  primaryColor   String         @default("#1a365d")
+  accentColor    String         @default("#c9a227")
+  domainScaffold String?
+  updatedAt      DateTime       @updatedAt
+
+  @@schema("public")
+}
+
+model CampaignFeatureFlags {
+  tenantId               String         @id
+  tenant                 CampaignTenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  reimbursementPortal    Boolean        @default(true)
+  eventIntakePortal      Boolean        @default(true)
+  volunteerPortal        Boolean        @default(true)
+  coalitionPortal        Boolean        @default(false)
+  hotWashIntelligence    Boolean        @default(true)
+  financeIntelligenceV2  Boolean        @default(true)
+  strategicIntelligence  Boolean        @default(true)
+  updatedAt              DateTime       @updatedAt
+
+  @@schema("public")
+}

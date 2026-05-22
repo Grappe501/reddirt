@@ -1,0 +1,106 @@
+{
+  "tenants": [
+    {
+      "id": "kelly-sos-2026",
+      "slug": "kelly-grappe-sos",
+      "displayName": "Kelly Grappe for SOS",
+      "archetype": "candidate_campaign",
+      "electionType": "statewide_primary_general",
+      "geography": "Arkansas statewide",
+      "timelineStart": "2026-01-01",
+      "timelineEnd": "2026-11-03",
+      "staffSizeBand": "small_core_plus_field",
+      "budgetLevel": "medium_statewide",
+      "isActive": true,
+      "createdAt": "2026-01-15T00:00:00.000Z",
+      "updatedAt": "2026-05-21T00:00:00.000Z"
+    },
+    {
+      "id": "demo-county-party",
+      "slug": "demo-county-democratic-party",
+      "displayName": "Demo County Party (sandbox)",
+      "archetype": "county_party",
+      "electionType": "local_coordination",
+      "geography": "Single county",
+      "timelineStart": "2026-03-01",
+      "timelineEnd": "2026-11-03",
+      "staffSizeBand": "volunteer_led",
+      "budgetLevel": "low",
+      "isActive": true,
+      "createdAt": "2026-05-21T00:00:00.000Z",
+      "updatedAt": "2026-05-21T00:00:00.000Z"
+    }
+  ],
+  "memberships": [
+    {
+      "id": "mem-kelly-admin",
+      "tenantId": "kelly-sos-2026",
+      "userId": "admin",
+      "role": "owner",
+      "createdAt": "2026-01-15T00:00:00.000Z"
+    },
+    {
+      "id": "mem-demo-admin",
+      "tenantId": "demo-county-party",
+      "userId": "admin",
+      "role": "admin",
+      "createdAt": "2026-05-21T00:00:00.000Z"
+    }
+  ],
+  "settings": [
+    {
+      "tenantId": "kelly-sos-2026",
+      "priorities": ["statewide_visibility", "county_organizing", "travel_compliance", "earned_media"],
+      "fieldGoals": ["county_chairs_engaged", "weekly_public_events", "volunteer_shift_fill"],
+      "communicationGoals": ["authentic_storytelling", "local_press", "email_growth"],
+      "complianceNeeds": ["mileage_reimbursement", "finance_reporting", "approval_gates"],
+      "defaultReviewMonth": "2026-03"
+    },
+    {
+      "tenantId": "demo-county-party",
+      "priorities": ["local_events", "volunteer_recruitment"],
+      "fieldGoals": ["precinct_captains"],
+      "communicationGoals": ["newsletter"],
+      "complianceNeeds": ["basic_disclosure"],
+      "defaultReviewMonth": "2026-04"
+    }
+  ],
+  "branding": [
+    {
+      "tenantId": "kelly-sos-2026",
+      "logoUrl": null,
+      "primaryColor": "#1a365d",
+      "accentColor": "#c9a227",
+      "domainScaffold": "kelly.example-campaign-os.net"
+    },
+    {
+      "tenantId": "demo-county-party",
+      "logoUrl": null,
+      "primaryColor": "#2d3748",
+      "accentColor": "#48bb78",
+      "domainScaffold": "demo-county.example-campaign-os.net"
+    }
+  ],
+  "featureFlags": [
+    {
+      "tenantId": "kelly-sos-2026",
+      "reimbursementPortal": true,
+      "eventIntakePortal": true,
+      "volunteerPortal": true,
+      "coalitionPortal": false,
+      "hotWashIntelligence": true,
+      "financeIntelligenceV2": true,
+      "strategicIntelligence": true
+    },
+    {
+      "tenantId": "demo-county-party",
+      "reimbursementPortal": false,
+      "eventIntakePortal": true,
+      "volunteerPortal": true,
+      "coalitionPortal": true,
+      "hotWashIntelligence": false,
+      "financeIntelligenceV2": false,
+      "strategicIntelligence": true
+    }
+  ]
+}

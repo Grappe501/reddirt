@@ -26,7 +26,7 @@ This is the **live control board**. Update at the end of every sprint slice.
 | 8 | Finance + compliance operations | **Complete** (V1 deterministic) | ~85% | ~62% |
 | 8A | Agent OS Control Layer | **Complete** (V1 supervised loop) | ~88% | ~65% |
 | 9 | Dashboard + navigation OS | **Complete** (V1 calm UX) | ~82% | ~58% |
-| 10 | Client productization + SaaS | Not started | — | — |
+| 10 | Multi-campaign SaaS + campaign intelligence | **Complete** (V1 foundation) | ~78% | ~52% |
 | 11 | Full AI orchestration (delta) | **Partial** (8A shipped core loop) | ~74% | ~50% |
 | 12 | Communications + relationships | Not started | — | — |
 | 13 | County OS integration | Not started (packet required) | — | — |
@@ -304,11 +304,17 @@ Gated SendGrid send, HTML+text template, JSON approval tokens, public `/campaign
 
 ---
 
-## Sprint 10 — Market / client productization
+## Sprint 10 — Multi-campaign SaaS + campaign intelligence
 
-**Build:** Client config, branding, role portals, external dashboard, deployment checklist, demo seed, onboarding, SaaS docs.
+**Status:** **Complete** (May 2026).
 
-**Success:** Sellable campaign service, not only Kelly internal OS.
+**Delivered:** Tenancy JSON + Prisma schema, campaign switcher, onboarding wizard, portal scaffold, white-label CSS vars, strategic intelligence engine, learning/finance/operator V2, unified context assembler, memory synthesizer, psychology intelligence, Command Center V3, 40 Sprint 10 AI tools.
+
+**Docs:** `MULTI_CAMPAIGN_SAAS_ARCHITECTURE.md`, `CAMPAIGN_STRATEGIC_INTELLIGENCE_ENGINE.md`, `ALL_KNOWING_CAMPAIGN_AGENT_FOUNDATIONS.md`, `CAMPAIGN_MEMORY_EVOLUTION.md`, `AI_AGENT_PSYCHOLOGY_AND_UX_INTELLIGENCE.md`
+
+**Test:** `npm run agents:test-sprint-10`
+
+**Success:** Agent behaves as campaign operating intelligence (strategist + ops chief) while remaining human-gated; tenants switch without breaking Kelly workflows.
 
 ---
 

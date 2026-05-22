@@ -119,6 +119,8 @@ export function buildCampaignOsNavGroups(activeMonth = "2026-03"): CampaignOsNav
       links: [
         { href: "/admin/ai-command-center", label: "Agent runtime hub" },
         { href: "/admin/ai-command-center/memory-review", label: "Memory review" },
+        { href: "/admin/campaign-onboarding", label: "Campaign onboarding" },
+        { href: "/admin/campaign-portals", label: "Client portals" },
       ],
     },
     {
