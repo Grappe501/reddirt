@@ -118,14 +118,6 @@ export default async function ComplianceReconciliationPage() {
         </div>
       </ComplianceCard>
       <section className="rounded-2xl border border-kelly-border bg-kelly-page p-5">
-        <h2 className="font-heading text-xl font-bold text-kelly-text">Coverage match types</h2>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {coverageMatchTypes.map((type) => (
-            <span key={type} className="rounded-full border border-kelly-border bg-kelly-wash px-3 py-1 font-body text-xs font-semibold text-kelly-muted">{type}</span>
-          ))}
-        </div>
-      </section>
-      <section className="rounded-2xl border border-kelly-border bg-kelly-page p-5">
         <h2 className="font-heading text-xl font-bold text-kelly-text">Candidates</h2>
         {analysis.candidates.length ? (
           <div className="mt-4 grid gap-3">
