@@ -28,6 +28,10 @@ import { EventPlanningWorkbook } from "./planning/EventPlanningWorkbook";
 import type { EventFinanceData } from "@/lib/campaign-events/finance/finance-types";
 import type { FinanceDocumentRecord } from "@/lib/campaign-events/finance/finance-document-types";
 import { EventFinancialOperationsWorkspace } from "./finance/EventFinancialOperationsWorkspace";
+import { EventCountyIntelligenceCard } from "@/components/admin/county-intelligence/EventCountyIntelligenceCard";
+import { HotWashCountyImpactPanel } from "@/components/admin/county-intelligence/HotWashCountyImpactPanel";
+import type { CountyIntelligenceSummary } from "@/lib/agents/county-intelligence/county-kpi-types";
+import type { CountyHotWashImpactAnalysis } from "@/lib/agents/county-intelligence/county-hotwash-impact";
 
 const TABS = [
   "overview",
@@ -73,6 +77,8 @@ export function EventDrilldownClient({
   approvalPackage,
   approvalObservations = [],
   promotionAuditEntries = [],
+  countyContext = null,
+  hotWashCountyImpact = null,
 }: {
   row: CalendarSurfaceRow;
   initialPlanning: EventPlanningData;
@@ -87,6 +93,8 @@ export function EventDrilldownClient({
   approvalPackage?: ApprovalPackagePayload;
   approvalObservations?: AiObservationEntry[];
   promotionAuditEntries?: PromotionAuditEntry[];
+  countyContext?: CountyIntelligenceSummary | null;
+  hotWashCountyImpact?: CountyHotWashImpactAnalysis | null;
 }) {
   const router = useRouter();
   const [tab, setTab] = useState<TabId | "planning">("planning");
@@ -194,6 +202,8 @@ export function EventDrilldownClient({
         <p className="font-body text-sm text-kelly-text/60">Run of show lives in the Planning workbook tab.</p>
       )}
       {tab !== "planning" && tab === "hot_wash" && (
+        <>
+          {hotWashCountyImpact ? <HotWashCountyImpactPanel impact={hotWashCountyImpact} /> : null}
         <HotWashMediaSection
           recordId={row.recordId}
           row={row}
@@ -204,6 +214,7 @@ export function EventDrilldownClient({
           hotWashNotes={hotWashNotes}
           hotWashIntelligence={hotWashIntelligence}
         />
+        </>
       )}
       {tab !== "planning" && tab === "costs" && (
         <EventFinancialOperationsWorkspace row={row} initial={initialFinance} documents={financeDocuments} />

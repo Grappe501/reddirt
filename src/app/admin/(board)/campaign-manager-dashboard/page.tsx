@@ -10,6 +10,7 @@ import { AgentObservationTracker } from "@/components/agents/AgentObservationTra
 import { loadGlobalUserObservations } from "@/lib/agents/user-intelligence/user-observations";
 import { detectWorkflowFriction } from "@/lib/agents/user-intelligence/workflow-friction-detector";
 import { loadDashboardNavigationBundle } from "@/lib/dashboard-orchestration/load-dashboard-navigation-bundle";
+import { composeCountyDashboardContext } from "@/lib/agents/county-intelligence/county-intelligence-engine";
 
 export const dynamic = "force-dynamic";
 
@@ -36,6 +37,7 @@ export default async function CampaignManagerDashboardPage({ searchParams }: Pro
   });
   const gapAnalysis = analyzeCampaignGaps({ snapshot });
   const frictionTop = detectWorkflowFriction(loadGlobalUserObservations()).slice(0, 2);
+  const countyStatewide = composeCountyDashboardContext();
   return (
     <AgentObservationTracker
       role="campaign_manager"
@@ -46,6 +48,7 @@ export default async function CampaignManagerDashboardPage({ searchParams }: Pro
         <CampaignEventsMonthNav activeMonth={month} basePath="campaign-manager-dashboard" />
       </div>
       <CampaignManagerOpsDashboard
+        countyStatewide={countyStatewide}
         snapshot={snapshot}
         reimbursementSummaries={reimbursementSummaries}
         financeSnapshot={JSON.parse(JSON.stringify(financeSnapshot))}

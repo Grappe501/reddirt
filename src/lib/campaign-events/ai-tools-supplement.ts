@@ -22,6 +22,7 @@ import { SPRINT9_DASHBOARD_NAV_CATALOG_ENTRIES } from "./ai-tools/sprint-dashboa
 import { SPRINT10_CAMPAIGN_INTELLIGENCE_CATALOG_ENTRIES } from "./ai-tools/sprint-10-campaign-intelligence-tools";
 import { SPRINT_SINGLE_CAMPAIGN_HARDENING_CATALOG_ENTRIES } from "./ai-tools/sprint-single-campaign-hardening-tools";
 import { SPRINT_KELLY_OS_PLANNING_CATALOG_ENTRIES } from "./ai-tools/sprint-kelly-os-planning-tools";
+import { SPRINT_COUNTY_INTELLIGENCE_CATALOG_ENTRIES } from "./ai-tools/sprint-county-intelligence-tools";
 
 const S = (s: AiToolEntry["status"]) => s;
 
@@ -142,6 +143,8 @@ export const SUPPLEMENT_TOOLS_BY_LIFECYCLE: Record<string, AiToolEntry[]> = {
   dashboard_nav_sprint9: SPRINT9_DASHBOARD_NAV_CATALOG_ENTRIES,
   campaign_intelligence_sprint10: SPRINT10_CAMPAIGN_INTELLIGENCE_CATALOG_ENTRIES,
   single_campaign_hardening: SPRINT_SINGLE_CAMPAIGN_HARDENING_CATALOG_ENTRIES,
+  kelly_os_planning: SPRINT_KELLY_OS_PLANNING_CATALOG_ENTRIES,
+  county_intelligence_bridge: SPRINT_COUNTY_INTELLIGENCE_CATALOG_ENTRIES,
 };
 
 const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
@@ -252,6 +255,12 @@ const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
     order: 42,
     title: "Kelly OS planning — training, copilots, progression (stubs)",
     tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.kelly_os_planning ?? [],
+  },
+  {
+    id: "county_intelligence_bridge",
+    order: 43,
+    title: "County intelligence — countyWorkbench bridge",
+    tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.county_intelligence_bridge ?? [],
   },
 ];
 

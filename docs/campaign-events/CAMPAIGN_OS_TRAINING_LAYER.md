@@ -55,6 +55,14 @@
 
 All roles in onboarding engine plus: volunteer, intern, field manager, social media, communications lead.
 
+### County intelligence modules (new)
+
+1. How to read a county dashboard (`/counties/[slug]/dashboard-v2`)  
+2. County goals in event planning (`COUNTY_DATA_TO_EVENT_PLANNING.md`)  
+3. Power of 5 statewide + county gaps (`POWER_OF_FIVE_INTELLIGENCE.md`)  
+4. Weak county signals (readiness score + shell depth)  
+5. Post-event county memory (hot wash impact + enricher)  
+
 **Routing:** `available-time-router` picks pace (light / standard / intensive). `role-training-path-builder` orders modules. `onboarding-readiness-scorer` gates dashboard complexity (`simple-mode-dashboard-builder` vs advanced).
 
 ---

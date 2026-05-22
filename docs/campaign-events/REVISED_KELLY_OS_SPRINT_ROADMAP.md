@@ -62,9 +62,10 @@
 
 | Sprint slice | Deliverables |
 |--------------|--------------|
-| E1 | countyWorkbench integration packet |
-| E2 | Field manager dashboard + county priorities |
-| E3 | Volunteer/county memory V2 (structured fields) |
+| E1 | **Done (V1):** Read-only countyWorkbench adapter + KPI engine + UI panels |
+| E2 | Connect governance registration goals + refresh exports on schedule |
+| E3 | Field manager dashboard + county priorities (copilot surfaces) |
+| E4 | Volunteer/county memory V2 with workbench-enriched lines |
 
 ---
 

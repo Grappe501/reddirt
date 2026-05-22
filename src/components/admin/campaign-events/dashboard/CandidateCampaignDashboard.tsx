@@ -11,6 +11,8 @@ import type { NextActionResult } from "@/lib/agents/user-intelligence/next-actio
 import { CampaignDashboardShell, DashboardSection, DashboardStatGrid, StatCard } from "./CampaignDashboardShell";
 import { ExecutiveSummaryStrip } from "@/components/admin/navigation/ExecutiveSummaryStrip";
 import { WorkflowGuidanceCards } from "@/components/admin/navigation/WorkflowGuidanceCards";
+import { CountyIntelligencePanel } from "@/components/admin/county-intelligence/CountyIntelligencePanel";
+import type { StatewideCountyIntelligence } from "@/lib/agents/county-intelligence/county-kpi-types";
 import type { ExecutiveSummary } from "@/lib/dashboard-orchestration/executive-summary-builder";
 import type { WorkflowGuidanceCard } from "@/lib/dashboard-orchestration/workflow-guidance-generator";
 import { CandidateFinanceOverview } from "../finance/CandidateFinanceOverview";
@@ -24,6 +26,7 @@ export function CandidateCampaignDashboard({
   executiveSummary,
   guidanceCards,
 }: {
+  countyStatewide?: StatewideCountyIntelligence;
   snapshot: CampaignEventsDashboardSnapshot;
   reimbursementSummaries?: ReimbursementMonthSummary[];
   financeSnapshot?: CampaignFinanceSnapshot;
@@ -46,6 +49,7 @@ export function CandidateCampaignDashboard({
 
       {executiveSummary ? <ExecutiveSummaryStrip summary={executiveSummary} /> : null}
       {guidanceCards?.length ? <WorkflowGuidanceCards cards={guidanceCards} /> : null}
+      {countyStatewide ? <CountyIntelligencePanel statewide={countyStatewide} compact /> : null}
 
       <AgentCommandPalette role="candidate" pathname="/admin/candidate-dashboard" period={period} compact />
       {nextActions ? <AgentNextActionPanel actions={nextActions} compact /> : null}

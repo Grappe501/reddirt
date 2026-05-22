@@ -18,6 +18,8 @@ import { enrichEventFinanceFromRow } from "@/lib/campaign-events/finance/finance
 import { listFinanceDocumentsForEvent } from "@/lib/campaign-events/finance/finance-document-store";
 import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
 import { AgentCommandPalette } from "@/components/agents/AgentCommandPalette";
+import { loadEventCountyContext } from "@/lib/agents/county-intelligence/county-event-strategy";
+import { analyzeCountyHotWashImpact } from "@/lib/agents/county-intelligence/county-hotwash-impact";
 
 export const dynamic = "force-dynamic";
 
@@ -47,6 +49,18 @@ export default async function CampaignEventDrilldownPage({
   const financeRaw = await loadEventFinance(recordId);
   const initialFinance = await enrichEventFinanceFromRow(row, financeRaw);
   const financeDocuments = await listFinanceDocumentsForEvent(recordId);
+  const countyContext = loadEventCountyContext(row.county);
+  const rel = hotWashIntelligence?.relationships;
+  const hotWashCountyImpact = analyzeCountyHotWashImpact({
+    countyName: row.county,
+    volunteersRecruited: rel?.volunteerProspects?.trim() ? 1 : 0,
+    leadersIdentified: rel?.newLeadersMet?.trim() ? 1 : 0,
+    registrationActions: 0,
+    relationalContacts: rel?.coalitionOpportunities?.trim() ? 1 : 0,
+    attendeeEstimate: hotWashIntelligence?.outcome?.attendanceEstimate
+      ? Number.parseInt(hotWashIntelligence.outcome.attendanceEstimate, 10) || undefined
+      : undefined,
+  });
   return (
     <AgentObservationTracker
       role="campaign_manager"
@@ -77,6 +91,8 @@ export default async function CampaignEventDrilldownPage({
       financeDocuments={JSON.parse(JSON.stringify(financeDocuments))}
       fromTravel={sp.from === "travel"}
       returnMonth={sp.month ?? undefined}
+      countyContext={countyContext ? JSON.parse(JSON.stringify(countyContext)) : null}
+      hotWashCountyImpact={hotWashCountyImpact ? JSON.parse(JSON.stringify(hotWashCountyImpact)) : null}
     />
     </AgentObservationTracker>
   );

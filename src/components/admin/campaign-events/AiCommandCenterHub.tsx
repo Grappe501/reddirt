@@ -35,6 +35,9 @@ import { scorePresentationReadiness } from "@/lib/agents/onboarding/presentation
 import { KELLY_CAMPAIGN_OS_TAGLINE } from "@/lib/campaign-tenancy/single-campaign-mode";
 import { appendGlobalUserObservation } from "@/lib/agents/user-intelligence/user-observations";
 import { KellyOsCompletionPlanPanel } from "@/components/admin/campaign-events/KellyOsCompletionPlanPanel";
+import { composeCountyDashboardContext } from "@/lib/agents/county-intelligence/county-intelligence-engine";
+import { CountyIntelligencePanel } from "@/components/admin/county-intelligence/CountyIntelligencePanel";
+import { buildPowerOfFiveBriefing } from "@/lib/agents/county-intelligence/power-of-five-engine";
 
 const AGENT_READINESS_PCT = 86;
 
@@ -62,6 +65,8 @@ export async function AiCommandCenterHub() {
   const unified = await assembleUnifiedCampaignContext({ period: snapshot.period, pathname: "/admin/ai-command-center" });
   const presentation = scorePresentationReadiness(snapshot);
   const hardeningTools = SPRINT_SINGLE_CAMPAIGN_HARDENING_TOOL_CONTRACTS.length;
+  const countyStatewide = composeCountyDashboardContext();
+  const powerOfFiveBrief = buildPowerOfFiveBriefing();
   const navBundle = await loadDashboardNavigationBundle(snapshot.period, {
     pathname: "/admin/ai-command-center",
     surface: "command_center",
@@ -114,6 +119,21 @@ export async function AiCommandCenterHub() {
         </header>
 
       <KellyOsCompletionPlanPanel presentationScore={presentation.score} presentationLabel={presentation.label} />
+
+      <CountyIntelligencePanel statewide={countyStatewide} />
+      <section className="rounded-2xl border border-kelly-text/10 bg-kelly-page/60 p-4">
+        <p className="text-xs font-bold text-kelly-navy">Power of 5 · statewide</p>
+        <p className="mt-1 text-xs text-kelly-text/70">{powerOfFiveBrief.narrative}</p>
+        {powerOfFiveBrief.topGaps.length > 0 ? (
+          <ul className="mt-2 text-[10px] text-kelly-text/60">
+            {powerOfFiveBrief.topGaps.slice(0, 5).map((g) => (
+              <li key={g.countySlug}>
+                {g.countyName}: gap {g.gap?.toLocaleString() ?? "planning"} ({g.priority})
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </section>
 
       <CampaignIntelligenceV3Panel ctx={unified} />
 

@@ -58,6 +58,20 @@ Each copilot defines:
 
 ---
 
+## County intelligence training (all field roles)
+
+Add modules (see `CAMPAIGN_OS_TRAINING_LAYER.md`):
+
+- How to read a county dashboard (countyWorkbench dashboard-v2)  
+- How to use county goals in event planning (EventCountyIntelligenceCard)  
+- How Power of 5 works (`POWER_OF_FIVE_INTELLIGENCE.md`)  
+- How to identify county weaknesses (readiness + coverage)  
+- How to use county data after an event (hot wash impact panel)  
+
+Copilots **field-manager**, **volunteer**, **intern**, **campaign-manager**, and **candidate** should call `composeCountyDashboardContext()` / `buildCountyActionPlan()` in V2 surfaces.
+
+---
+
 ## Field manager copilot
 
 | Item | Detail |

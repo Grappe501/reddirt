@@ -29,6 +29,7 @@ This is the **live control board**. Update at the end of every sprint slice. **F
 | 10 | Multi-campaign SaaS + campaign intelligence | **Complete** (scaffold paused) | ~78% | ~52% |
 | 10.5 | Single-campaign hardening + dashboard builder | **Complete** | ~85% | ~62% |
 | 11 | Kelly OS planning audit (training/copilots/tool-builder) | **Complete** (docs + contract stubs) | N/A | N/A |
+| 12 | County intelligence — countyWorkbench bridge | **Complete** (V1 read-only) | ~75% | ~55% |
 | 11b | Full AI orchestration (delta) | **Partial** (8A shipped core loop) | ~74% | ~50% |
 | 12 | Communications + relationships | Not started | — | — |
 | 13 | County OS integration | Not started (packet required) | — | — |
@@ -374,5 +375,6 @@ Days 4–7 compression safe: <yes|no + why>
 - Progression: [`ROLE_PROGRESS_LEVELS_AND_UNLOCKS.md`](./ROLE_PROGRESS_LEVELS_AND_UNLOCKS.md)
 - Dashboard modules: [`DASHBOARD_MODULE_SYSTEM.md`](./DASHBOARD_MODULE_SYSTEM.md)
 - Tool builder: [`AI_TOOL_BUILDER_INTELLIGENCE_ROADMAP.md`](./AI_TOOL_BUILDER_INTELLIGENCE_ROADMAP.md)
+- County workbench: [`COUNTY_WORKBENCH_DEEP_INVENTORY.md`](./COUNTY_WORKBENCH_DEEP_INVENTORY.md), [`COUNTY_INTELLIGENCE_ENGINE.md`](./COUNTY_INTELLIGENCE_ENGINE.md)
 - Dependency graph: [`SYSTEM_DEPENDENCY_GRAPH.md`](./SYSTEM_DEPENDENCY_GRAPH.md)
 - AI tools per sprint: [`AI_AGENT_TOOL_BUILD_MAP.md`](./AI_AGENT_TOOL_BUILD_MAP.md)

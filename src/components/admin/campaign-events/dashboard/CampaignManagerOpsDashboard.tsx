@@ -21,6 +21,8 @@ import type { ExecutiveSummary } from "@/lib/dashboard-orchestration/executive-s
 import type { WorkflowGuidanceCard } from "@/lib/dashboard-orchestration/workflow-guidance-generator";
 import type { AdaptiveDashboardPlan } from "@/lib/dashboard-orchestration/adaptive-dashboard-orchestrator";
 import { isCardCollapsed } from "@/lib/dashboard-orchestration/adaptive-dashboard-orchestrator";
+import { CountyIntelligencePanel } from "@/components/admin/county-intelligence/CountyIntelligencePanel";
+import type { StatewideCountyIntelligence } from "@/lib/agents/county-intelligence/county-kpi-types";
 
 const AUTOMATION_SCAFFOLDS = [
   { label: "Approval emails", status: "Scaffold — recipients configured", href: "/admin/campaign-events/ai-tools" },
@@ -31,6 +33,7 @@ const AUTOMATION_SCAFFOLDS = [
 ] as const;
 
 export function CampaignManagerOpsDashboard({
+  countyStatewide,
   snapshot,
   reimbursementSummaries,
   financeSnapshot,
@@ -41,6 +44,7 @@ export function CampaignManagerOpsDashboard({
   guidanceCards,
   adaptivePlan,
 }: {
+  countyStatewide?: StatewideCountyIntelligence;
   snapshot: CampaignEventsDashboardSnapshot;
   reimbursementSummaries?: ReimbursementMonthSummary[];
   financeSnapshot?: CampaignFinanceSnapshot;
@@ -66,6 +70,7 @@ export function CampaignManagerOpsDashboard({
 
       {executiveSummary ? <ExecutiveSummaryStrip summary={executiveSummary} /> : null}
       {guidanceCards?.length ? <WorkflowGuidanceCards cards={guidanceCards} /> : null}
+      {countyStatewide ? <CountyIntelligencePanel statewide={countyStatewide} compact /> : null}
 
       <AgentCommandPalette role="campaign_manager" pathname="/admin/campaign-manager-dashboard" period={period} />
       {nextActions ? <AgentNextActionPanel actions={nextActions} /> : null}

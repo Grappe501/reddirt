@@ -7,6 +7,7 @@ import { parseReviewMonth } from "@/lib/campaign-events/month-review/month-revie
 import { loadNextActionsForPage } from "@/lib/agents/user-intelligence/load-next-actions";
 import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
 import { loadDashboardNavigationBundle } from "@/lib/dashboard-orchestration/load-dashboard-navigation-bundle";
+import { composeCountyDashboardContext } from "@/lib/agents/county-intelligence/county-intelligence-engine";
 
 export const dynamic = "force-dynamic";
 
@@ -31,6 +32,7 @@ export default async function CandidateDashboardPage({ searchParams }: Props) {
     period: month,
     snapshot,
   });
+  const countyStatewide = composeCountyDashboardContext();
   return (
     <AgentObservationTracker
       role="candidate"
@@ -41,6 +43,7 @@ export default async function CandidateDashboardPage({ searchParams }: Props) {
         <CampaignEventsMonthNav activeMonth={month} basePath="candidate-dashboard" />
       </div>
       <CandidateCampaignDashboard
+        countyStatewide={countyStatewide}
         snapshot={snapshot}
         reimbursementSummaries={reimbursementSummaries}
         financeSnapshot={JSON.parse(JSON.stringify(financeSnapshot))}
