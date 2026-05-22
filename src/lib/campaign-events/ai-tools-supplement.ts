@@ -23,6 +23,7 @@ import { SPRINT10_CAMPAIGN_INTELLIGENCE_CATALOG_ENTRIES } from "./ai-tools/sprin
 import { SPRINT_SINGLE_CAMPAIGN_HARDENING_CATALOG_ENTRIES } from "./ai-tools/sprint-single-campaign-hardening-tools";
 import { SPRINT_KELLY_OS_PLANNING_CATALOG_ENTRIES } from "./ai-tools/sprint-kelly-os-planning-tools";
 import { SPRINT_COUNTY_INTELLIGENCE_CATALOG_ENTRIES } from "./ai-tools/sprint-county-intelligence-tools";
+import { SPRINT_COMMUNICATIONS_CATALOG_ENTRIES } from "./ai-tools/sprint-communications-tools";
 
 const S = (s: AiToolEntry["status"]) => s;
 
@@ -145,6 +146,7 @@ export const SUPPLEMENT_TOOLS_BY_LIFECYCLE: Record<string, AiToolEntry[]> = {
   single_campaign_hardening: SPRINT_SINGLE_CAMPAIGN_HARDENING_CATALOG_ENTRIES,
   kelly_os_planning: SPRINT_KELLY_OS_PLANNING_CATALOG_ENTRIES,
   county_intelligence_bridge: SPRINT_COUNTY_INTELLIGENCE_CATALOG_ENTRIES,
+  communications_system: SPRINT_COMMUNICATIONS_CATALOG_ENTRIES,
 };
 
 const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
@@ -261,6 +263,12 @@ const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
     order: 43,
     title: "County intelligence — countyWorkbench bridge",
     tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.county_intelligence_bridge ?? [],
+  },
+  {
+    id: "communications_system",
+    order: 44,
+    title: "Communications system — email & contacts V1",
+    tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.communications_system ?? [],
   },
 ];
 

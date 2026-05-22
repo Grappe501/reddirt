@@ -76,6 +76,8 @@
     "agents:test-sprint-10": "tsx scripts/test-sprint-10-campaign-platform.ts",
     "agents:test-single-campaign-hardening": "tsx scripts/test-single-campaign-hardening.ts",
     "agents:test-county-intelligence": "tsx scripts/test-county-intelligence.ts",
+    "campaign-events:test-email-readiness": "tsx scripts/test-email-readiness.ts",
+    "campaign-events:test-communications": "tsx scripts/test-communications.ts",
     "compliance:april26:qa": "tsx scripts/compliance/qa-april26-ingest.ts",
     "compliance:approval:build": "tsx scripts/compliance/build-approval-queue.ts",
     "compliance:qa-approval": "tsx scripts/compliance/qa-approval-workbench.ts",

@@ -1,0 +1,121 @@
+[
+  {
+    "id": "tpl-approval-package",
+    "name": "Approval package (candidate)",
+    "audience": "candidate",
+    "subject": "Approval needed: {{eventTitle}} — {{month}}",
+    "previewText": "Secure links to approve, hold, or request info.",
+    "body": "Hi {{recipientName}},\n\nPlease review the attached approval package for {{eventTitle}}.\n\n{{approvalLinks}}\n\n— Kelly Campaign OS",
+    "variables": [
+      "recipientName",
+      "eventTitle",
+      "month",
+      "approvalLinks"
+    ],
+    "requiredApprovals": [
+      "campaign_manager",
+      "operator"
+    ],
+    "riskLevel": "medium",
+    "unsubscribeRequired": false,
+    "status": "ready",
+    "workflowType": "approval_package"
+  },
+  {
+    "id": "tpl-volunteer-welcome",
+    "name": "Volunteer welcome",
+    "audience": "volunteers",
+    "subject": "Welcome to the Kelly Grappe for SOS team",
+    "previewText": "Your first steps and training links.",
+    "body": "Thank you for volunteering.\n\nNext: complete onboarding at {{onboardingUrl}}.\n\n— Team Kelly",
+    "variables": [
+      "onboardingUrl"
+    ],
+    "requiredApprovals": [
+      "volunteer_coordinator",
+      "operator"
+    ],
+    "riskLevel": "low",
+    "unsubscribeRequired": true,
+    "status": "draft",
+    "workflowType": "volunteer"
+  },
+  {
+    "id": "tpl-host-followup",
+    "name": "Host follow-up",
+    "audience": "hosts",
+    "subject": "Thank you for hosting — next steps",
+    "previewText": "Post-event follow-up and materials.",
+    "body": "Thank you for hosting {{eventTitle}}.\n\n{{followUpBullets}}\n\n— Kelly Campaign",
+    "variables": [
+      "eventTitle",
+      "followUpBullets"
+    ],
+    "requiredApprovals": [
+      "communications_lead"
+    ],
+    "riskLevel": "medium",
+    "unsubscribeRequired": true,
+    "status": "draft",
+    "workflowType": "host_followup"
+  },
+  {
+    "id": "tpl-team-daily-brief",
+    "name": "Campaign team daily briefing",
+    "audience": "campaign_team",
+    "subject": "Kelly SOS ops brief — {{date}}",
+    "previewText": "Approvals, finance, county priorities.",
+    "body": "{{executiveSummary}}\n\nOpen command center: {{commandCenterUrl}}",
+    "variables": [
+      "date",
+      "executiveSummary",
+      "commandCenterUrl"
+    ],
+    "requiredApprovals": [
+      "campaign_manager"
+    ],
+    "riskLevel": "low",
+    "unsubscribeRequired": false,
+    "status": "draft",
+    "workflowType": "campaign_team"
+  },
+  {
+    "id": "tpl-power-of-five",
+    "name": "Power of 5 outreach",
+    "audience": "volunteers",
+    "subject": "Bring five people into the movement",
+    "previewText": "Relational organizing ask for {{countyName}}.",
+    "body": "We're building relational capacity in {{countyName}}.\n\nGoal: {{powerOfFiveGoal}} contacts.\n\n{{ask}}\n\n— Field team",
+    "variables": [
+      "countyName",
+      "powerOfFiveGoal",
+      "ask"
+    ],
+    "requiredApprovals": [
+      "field_manager",
+      "operator"
+    ],
+    "riskLevel": "medium",
+    "unsubscribeRequired": true,
+    "status": "draft",
+    "workflowType": "power_of_five"
+  },
+  {
+    "id": "tpl-newsletter-blocked",
+    "name": "All-contact update (BLOCKED default)",
+    "audience": "all_contacts",
+    "subject": "[DRAFT ONLY] Statewide campaign update",
+    "previewText": "Mass send requires explicit operator approval.",
+    "body": "This template is draft-only until mass-email safety checklist is complete.",
+    "variables": [],
+    "requiredApprovals": [
+      "candidate",
+      "campaign_manager",
+      "operator"
+    ],
+    "riskLevel": "high",
+    "unsubscribeRequired": true,
+    "status": "draft",
+    "workflowType": "newsletter"
+  }
+]

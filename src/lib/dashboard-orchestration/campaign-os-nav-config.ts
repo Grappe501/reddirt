@@ -94,6 +94,7 @@ export function buildCampaignOsNavGroups(activeMonth = "2026-03"): CampaignOsNav
       id: "communications",
       label: "Communications",
       links: [
+        { href: "/admin/communications", label: "Communications center" },
         { href: "/admin/workbench/email-command-center", label: "Email command center" },
         { href: "/admin/workbench/comms", label: "Comms hub" },
       ],

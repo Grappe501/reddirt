@@ -1,0 +1,9 @@
+[
+  {
+    "id": "seg-volunteers",
+    "name": "All volunteers (demo)",
+    "description": "roleTag=volunteer — wire to ECC audience in V2",
+    "filter": { "roleTag": "volunteer" },
+    "createdAt": "2026-05-21T00:00:00.000Z"
+  }
+]
