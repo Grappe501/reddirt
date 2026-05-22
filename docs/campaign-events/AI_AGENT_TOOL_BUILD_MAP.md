@@ -236,6 +236,24 @@ Legacy catalog `appr-promote-official` remains idea — use Sprint 5 ids above f
 
 ---
 
+### County Intelligence Bridge V1 + V2 (May 2026)
+
+| Component | Path | Status |
+|-----------|------|--------|
+| Workbench adapter | `county-intelligence/county-workbench-adapter.ts` | functional read-only |
+| Action packages | `county-action-package-builder.ts` | functional |
+| Copilot applications | `county-copilot-applications.ts` | functional |
+| Command center | `/admin/county-intelligence` | functional |
+| Tools V1 (20) | `sprint-county-intelligence-tools.ts` | functional |
+| Tools V2 (15) | `sprint-county-intelligence-v2-tools.ts` | functional |
+| Lifecycle | `county_intelligence_bridge` | 35 tools merged in supplement |
+
+**Docs:** `COUNTY_INTELLIGENCE_ENGINE.md`, `COUNTY_COPILOT_APPLICATIONS.md`, `COUNTY_ACTION_PACKAGE_SYSTEM.md`
+
+**Tests:** `agents:test-county-intelligence`, `agents:test-county-copilots`
+
+---
+
 ### Agent OS Control Layer (May 2026)
 
 | Component | Path | Status |

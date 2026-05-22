@@ -21,7 +21,23 @@ UI panels + event/hot wash helpers
 - `StatewideCountyIntelligence` — heat list, weak/opportunity counties  
 - `CountyIntelligenceSummary` — event drilldown “why here”  
 - `CountyActionPlan` — per-county prioritized actions  
-- `CountyHotWashImpactAnalysis` — post-event vs goals  
+- `CountyActionPackage` — operator task package (V2)  
+- `CountyHotWashImpactV2` — post-event vs goals + next county action  
+- `FieldManagerDailyCountyPlan` — daily statewide field guidance  
+
+## V2 surfaces
+
+- `/admin/county-intelligence` — statewide command center (`CountyCommandCenterPanel`)
+- Copilots — `county-copilot-applications.ts` merged into role copilot briefs
+- Event drilldown — `EventCountyPlanningGuidance` on planning tab
+- Hot wash — `analyzeCountyHotWashImpactV2`
+
+## Related docs
+
+- [`COUNTY_COPILOT_APPLICATIONS.md`](./COUNTY_COPILOT_APPLICATIONS.md)
+- [`COUNTY_ACTION_PACKAGE_SYSTEM.md`](./COUNTY_ACTION_PACKAGE_SYSTEM.md)
+- [`COUNTY_TRAINING_MODULES.md`](./COUNTY_TRAINING_MODULES.md)
+- [`COUNTY_DASHBOARD_MODULES.md`](./COUNTY_DASHBOARD_MODULES.md)
 
 ## Human gates
 
@@ -29,6 +45,7 @@ UI panels + event/hot wash helpers
 - No voter file writes  
 - County memory enrichment is **advisory** until human save  
 
-## Test
+## Tests
 
-`npm run agents:test-county-intelligence`
+- `npm run agents:test-county-intelligence` (V1 bridge, 20 tools)
+- `npm run agents:test-county-copilots` (V2 packages, copilots, 15 tools, modules)

@@ -25,6 +25,7 @@ import { SPRINT_KELLY_OS_PLANNING_CATALOG_ENTRIES } from "./ai-tools/sprint-kell
 import { SPRINT_KELLY_INTELLIGENCE_CATALOG_ENTRIES } from "./ai-tools/sprint-kelly-intelligence-tools";
 import { SPRINT_COPILOT_TOOLING_CATALOG_ENTRIES } from "./ai-tools/sprint-copilot-tooling-tools";
 import { SPRINT_COUNTY_INTELLIGENCE_CATALOG_ENTRIES } from "./ai-tools/sprint-county-intelligence-tools";
+import { SPRINT_COUNTY_INTELLIGENCE_V2_CATALOG_ENTRIES } from "./ai-tools/sprint-county-intelligence-v2-tools";
 import { SPRINT_COMMUNICATIONS_CATALOG_ENTRIES } from "./ai-tools/sprint-communications-tools";
 import { SPRINT_VOLUNTEER_CATALOG_ENTRIES } from "./ai-tools/sprint-volunteer-tools";
 
@@ -150,7 +151,10 @@ export const SUPPLEMENT_TOOLS_BY_LIFECYCLE: Record<string, AiToolEntry[]> = {
   kelly_os_planning: SPRINT_KELLY_OS_PLANNING_CATALOG_ENTRIES,
   kelly_os_intelligence: SPRINT_KELLY_INTELLIGENCE_CATALOG_ENTRIES,
   kelly_os_copilot_tooling: SPRINT_COPILOT_TOOLING_CATALOG_ENTRIES,
-  county_intelligence_bridge: SPRINT_COUNTY_INTELLIGENCE_CATALOG_ENTRIES,
+  county_intelligence_bridge: [
+    ...SPRINT_COUNTY_INTELLIGENCE_CATALOG_ENTRIES,
+    ...SPRINT_COUNTY_INTELLIGENCE_V2_CATALOG_ENTRIES,
+  ],
   communications_system: SPRINT_COMMUNICATIONS_CATALOG_ENTRIES,
   volunteer_system: SPRINT_VOLUNTEER_CATALOG_ENTRIES,
 };

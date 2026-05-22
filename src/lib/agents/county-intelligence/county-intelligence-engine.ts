@@ -95,6 +95,28 @@ export function identifyWeakCounties(limit = 10): CountyNormalizedKpi[] {
     .slice(0, limit);
 }
 
+/** Flags when a county crosses into critical attention band (read-only). */
+export function detectCountyPriorityShift(countySlug: string): {
+  countySlug: string;
+  shifted: boolean;
+  reason: string;
+  readinessScore: number | null;
+} {
+  const kpi = loadCountyKpis(countySlug);
+  if (!kpi) {
+    return { countySlug, shifted: false, reason: "County not in bridge", readinessScore: null };
+  }
+  const shifted = kpi.countyReadinessScore < 40 || kpi.topWeaknesses.length >= 2;
+  return {
+    countySlug,
+    shifted,
+    readinessScore: kpi.countyReadinessScore,
+    reason: shifted
+      ? `Priority attention: readiness ${kpi.countyReadinessScore}/100 or ${kpi.topWeaknesses.length} weaknesses`
+      : `Stable band: readiness ${kpi.countyReadinessScore}/100`,
+  };
+}
+
 export function identifyMomentumCounties(limit = 10): CountyNormalizedKpi[] {
   return [...rankCountyPriorities()]
     .sort((a, b) => b.fieldStrengthScore + b.persuasionOpportunityScore - (a.fieldStrengthScore + a.persuasionOpportunityScore))

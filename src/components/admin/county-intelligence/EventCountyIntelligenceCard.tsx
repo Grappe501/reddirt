@@ -1,17 +1,67 @@
 import Link from "next/link";
 import type { CountyIntelligenceSummary } from "@/lib/agents/county-intelligence/county-kpi-types";
+import type { EventCountyPlanningGuidance } from "@/lib/agents/county-intelligence/county-kpi-types";
+import { buildEventCountyPlanningGuidance } from "@/lib/agents/county-intelligence/county-event-strategy";
 
-export function EventCountyIntelligenceCard({ context }: { context: CountyIntelligenceSummary }) {
+export function EventCountyIntelligenceCard({
+  context,
+  planning,
+}: {
+  context: CountyIntelligenceSummary;
+  planning?: EventCountyPlanningGuidance | null;
+}) {
   const { county } = context;
+  const guide = planning ?? buildEventCountyPlanningGuidance(county.countyName);
+
   return (
     <section className="rounded-2xl border border-kelly-navy/15 bg-kelly-navy/[0.03] p-5">
       <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-slate">County intelligence · {county.countyName}</p>
-      <h3 className="mt-1 font-heading text-base font-bold text-kelly-navy">Why this event here</h3>
+      <h3 className="mt-1 font-heading text-base font-bold text-kelly-navy">Why this county matters</h3>
       <ul className="mt-2 list-inside list-disc text-xs text-kelly-text/75">
-        {context.whyHere.map((line) => (
+        {(guide?.whyCountyMatters ?? context.whyHere).map((line) => (
           <li key={line}>{line}</li>
         ))}
       </ul>
+
+      {guide ? (
+        <>
+          <h4 className="mt-4 text-xs font-bold text-kelly-navy">What this event should accomplish</h4>
+          <ul className="mt-1 list-inside list-disc text-xs text-kelly-muted">
+            {guide.eventPurpose.map((p) => (
+              <li key={p}>{p}</li>
+            ))}
+          </ul>
+          <h4 className="mt-3 text-xs font-bold text-kelly-navy">Power of 5 ask</h4>
+          <ul className="mt-1 list-inside list-disc text-xs text-kelly-muted">
+            {guide.powerOfFiveAsk.map((p) => (
+              <li key={p}>{p}</li>
+            ))}
+          </ul>
+          <h4 className="mt-3 text-xs font-bold text-kelly-navy">Volunteer recruitment ask</h4>
+          <ul className="mt-1 list-inside list-disc text-xs text-kelly-muted">
+            {guide.volunteerRecruitmentAsk.map((p) => (
+              <li key={p}>{p}</li>
+            ))}
+          </ul>
+          <h4 className="mt-3 text-xs font-bold text-kelly-navy">Candidate: say / listen</h4>
+          <ul className="mt-1 list-inside list-disc text-xs text-kelly-muted">
+            {guide.candidateTalkingPoints.map((p) => (
+              <li key={`s-${p}`}>{p}</li>
+            ))}
+            {guide.candidateListeningPoints.map((p) => (
+              <li key={`l-${p}`} className="italic">
+                Listen: {p}
+              </li>
+            ))}
+          </ul>
+          <h4 className="mt-3 text-xs font-bold text-kelly-navy">Suggested follow-up</h4>
+          <ul className="mt-1 list-inside list-disc text-xs text-kelly-muted">
+            {guide.suggestedFollowUp.map((p) => (
+              <li key={p}>{p}</li>
+            ))}
+          </ul>
+        </>
+      ) : null}
 
       <dl className="mt-4 grid gap-2 text-xs sm:grid-cols-2">
         <div>
@@ -32,27 +82,15 @@ export function EventCountyIntelligenceCard({ context }: { context: CountyIntell
         </div>
       </dl>
 
-      {county.topWeaknesses.length ? (
-        <p className="mt-3 text-xs">
-          <span className="font-bold">Weaknesses:</span> {county.topWeaknesses.join(" · ")}
-        </p>
-      ) : null}
-
-      <div className="mt-3">
-        <p className="text-xs font-bold text-kelly-navy">What Kelly should emphasize</p>
-        <ul className="mt-1 list-inside list-disc text-xs text-kelly-muted">
-          {context.kellyTalkingPoints.map((t) => (
-            <li key={t}>{t}</li>
-          ))}
-        </ul>
-      </div>
-
       <div className="mt-3 flex flex-wrap gap-2">
-        {county.sourceLinks.slice(0, 3).map((l) => (
+        {(guide?.routes ?? county.sourceLinks).slice(0, 4).map((l) => (
           <Link key={l.href} href={l.href} className="rounded-full border border-kelly-navy/20 px-3 py-1 text-[10px] font-bold text-kelly-navy">
             {l.label}
           </Link>
         ))}
+        <Link href="/admin/county-intelligence" className="rounded-full bg-kelly-navy px-3 py-1 text-[10px] font-bold text-white">
+          County command center
+        </Link>
       </div>
     </section>
   );

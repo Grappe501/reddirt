@@ -125,7 +125,16 @@ export type UserUxObservationEvent =
   | "copilot_risk_warning_shown"
   | "copilot_safe_action_clicked"
   | "copilot_dashboard_module_recommended"
-  | "copilot_tool_gap_detected";
+  | "copilot_tool_gap_detected"
+  | "county_action_package_created"
+  | "county_priority_viewed"
+  | "county_copilot_recommendation_followed"
+  | "county_copilot_recommendation_ignored"
+  | "county_training_started"
+  | "county_training_completed"
+  | "county_event_recommendation_followed"
+  | "county_power_of_five_plan_created"
+  | "county_followup_plan_created";
 
 export type UserObservationEntry = {
   id: string;
@@ -306,4 +315,13 @@ export const USER_UX_EVENT_LABELS: Record<UserUxObservationEvent, string> = {
   copilot_safe_action_clicked: "Copilot safe action clicked",
   copilot_dashboard_module_recommended: "Copilot dashboard module recommended",
   copilot_tool_gap_detected: "Copilot tool gap detected",
+  county_action_package_created: "County action package created",
+  county_priority_viewed: "County priority viewed",
+  county_copilot_recommendation_followed: "County copilot recommendation followed",
+  county_copilot_recommendation_ignored: "County copilot recommendation ignored",
+  county_training_started: "County training started",
+  county_training_completed: "County training completed",
+  county_event_recommendation_followed: "County event recommendation followed",
+  county_power_of_five_plan_created: "County Power of 5 plan created",
+  county_followup_plan_created: "County follow-up plan created",
 };

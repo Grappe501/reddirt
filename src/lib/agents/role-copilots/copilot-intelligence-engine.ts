@@ -15,8 +15,9 @@ import {
 } from "./copilot-task-package-builder";
 import { scoreCopilotReadiness, describeModuleLock } from "./copilot-readiness-scorer";
 import { getRoleIntelligenceToolIds, getRoleRiskWarnings } from "./role-copilot-intelligence-rules";
+import { mergeCountyIntoCopilotBriefLite } from "@/lib/agents/county-intelligence/county-copilot-brief-merge-lite";
 import { getRoleCopilot } from "./role-copilot-registry";
-import type { CopilotSkillLevel } from "./role-copilot-types";
+import type { CopilotSkillLevel, RoleCopilotId } from "./role-copilot-types";
 
 export function buildCopilotIntelligenceBrief(input: CopilotIntelligenceInput): CopilotIntelligenceBrief {
   const skillLevel: CopilotSkillLevel = input.skillLevel ?? "beginner";
@@ -86,7 +87,16 @@ export function buildCopilotIntelligenceBrief(input: CopilotIntelligenceInput): 
 
   const safeActionLinks = routeCopilotSafeActions(input.role, month).slice(0, 8);
 
-  return {
+  const COUNTY_ROLES: RoleCopilotId[] = [
+    "field_manager",
+    "county_lead",
+    "volunteer_coordinator",
+    "intern",
+    "communications_lead",
+    "candidate",
+    "campaign_manager",
+  ];
+  const baseBrief = {
     snapshot,
     campaignContext,
     recommendedNextTask,
@@ -101,6 +111,11 @@ export function buildCopilotIntelligenceBrief(input: CopilotIntelligenceInput): 
     toolIds: getRoleIntelligenceToolIds(input.role),
     generatedAt: new Date().toISOString(),
   };
+
+  if (COUNTY_ROLES.includes(input.role)) {
+    return mergeCountyIntoCopilotBriefLite(input.role, baseBrief);
+  }
+  return baseBrief;
 }
 
 export function buildCopilotIntelligenceBriefForRoute(

@@ -20,7 +20,17 @@ export type DashboardBlockId =
   | "command_palette"
   | "recent_activity"
   | "executive_summary"
-  | "print_download_actions";
+  | "print_download_actions"
+  | "county_priority_list"
+  | "county_action_package"
+  | "county_power_of_five_gaps"
+  | "county_registration_progress"
+  | "county_volunteer_gap"
+  | "county_event_recommendation"
+  | "county_comms_prompt"
+  | "candidate_county_briefing"
+  | "intern_county_tasks"
+  | "field_manager_county_plan";
 
 export type DashboardBlockDefinition = {
   id: DashboardBlockId;
@@ -278,6 +288,126 @@ export const DASHBOARD_COMPONENT_REGISTRY: DashboardBlockDefinition[] = [
     emptyState: "Clear blockers before print.",
     aiExplanation: "Final mile for treasurer workflow.",
     safetyNotes: "Human initiates print.",
+  },
+  {
+    id: "county_priority_list",
+    title: "County priority list",
+    purpose: "Top weak counties needing field attention.",
+    readsFrom: "county-intelligence-engine identifyWeakCounties",
+    requiredRoles: ["campaign_manager", "county_lead", "operator"],
+    riskLevel: "low",
+    routeLinks: [{ label: "County command center", href: "/admin/county-intelligence" }],
+    emptyState: "Bridge countyWorkbench for priorities.",
+    aiExplanation: "Guides where to organize next.",
+    safetyNotes: "Read-only workbench bridge.",
+  },
+  {
+    id: "county_action_package",
+    title: "County action package",
+    purpose: "Per-county operational package with tasks and routes.",
+    readsFrom: "county-action-package-builder",
+    requiredRoles: ["campaign_manager", "county_lead", "operator"],
+    riskLevel: "low",
+    routeLinks: [{ label: "County command center", href: "/admin/county-intelligence" }],
+    emptyState: "Select a county slug.",
+    aiExplanation: "Turns KPIs into operator tasks.",
+    safetyNotes: "Human executes — no auto outreach.",
+  },
+  {
+    id: "county_power_of_five_gaps",
+    title: "Power of 5 gaps",
+    purpose: "Relational organizing gaps by county.",
+    readsFrom: "power-of-five-engine",
+    requiredRoles: ["campaign_manager", "county_lead", "operator"],
+    riskLevel: "low",
+    routeLinks: [{ label: "County intel", href: "/admin/county-intelligence" }],
+    emptyState: "No P5 goals connected.",
+    aiExplanation: "Drives post-event asks.",
+    safetyNotes: "Planning proxy until governance sheet.",
+  },
+  {
+    id: "county_registration_progress",
+    title: "Registration target progress",
+    purpose: "County registration planning targets.",
+    readsFrom: "county-workbench-adapter",
+    requiredRoles: ["campaign_manager", "county_lead", "operator"],
+    riskLevel: "low",
+    routeLinks: [{ label: "County command center", href: "/admin/county-intelligence" }],
+    emptyState: "Goals pending connection.",
+    aiExplanation: "50K statewide planning context.",
+    safetyNotes: "Aggregate only.",
+  },
+  {
+    id: "county_volunteer_gap",
+    title: "County volunteer gap",
+    purpose: "Counties needing volunteer recruitment.",
+    readsFrom: "county-copilot-applications",
+    requiredRoles: ["volunteer_coordinator", "campaign_manager"],
+    riskLevel: "low",
+    routeLinks: [{ label: "Volunteers", href: "/admin/volunteers" }],
+    emptyState: "No gaps detected.",
+    aiExplanation: "Staff before promoting events.",
+    safetyNotes: "No mass SMS.",
+  },
+  {
+    id: "county_event_recommendation",
+    title: "County event recommendation",
+    purpose: "Where to plan the next county-tagged event.",
+    readsFrom: "recommendCountyEventsForPeriod",
+    requiredRoles: ["campaign_manager", "county_lead", "operator"],
+    riskLevel: "low",
+    routeLinks: [{ label: "Workbench", href: "/admin/campaign-events/workbench?month=2026-03" }],
+    emptyState: "No weak counties flagged.",
+    aiExplanation: "House parties in low-readiness counties.",
+    safetyNotes: "Human schedules event.",
+  },
+  {
+    id: "county_comms_prompt",
+    title: "County communications prompt",
+    purpose: "Draft angles for county-specific messaging.",
+    readsFrom: "county-action-package-builder",
+    requiredRoles: ["operator", "campaign_manager"],
+    riskLevel: "medium",
+    routeLinks: [{ label: "Communications", href: "/admin/communications" }],
+    emptyState: "Pick a county focus.",
+    aiExplanation: "Draft only — audience safety gate.",
+    safetyNotes: "EMAIL_SEND_ENABLED required for send.",
+  },
+  {
+    id: "candidate_county_briefing",
+    title: "Candidate county briefing",
+    purpose: "Talking points before county events.",
+    readsFrom: "buildCountyIntelligenceSummary",
+    requiredRoles: ["candidate", "campaign_manager"],
+    riskLevel: "low",
+    routeLinks: [{ label: "Candidate dashboard", href: "/admin/candidate-dashboard" }],
+    emptyState: "County not resolved.",
+    aiExplanation: "Calm briefing — fatigue protection.",
+    safetyNotes: "No overwhelm mode.",
+  },
+  {
+    id: "intern_county_tasks",
+    title: "Intern county tasks",
+    purpose: "Safe supervised county research tasks.",
+    readsFrom: "county-action-package-builder internTaskList",
+    requiredRoles: ["new_admin_user", "operator"],
+    riskLevel: "low",
+    routeLinks: [{ label: "County command center", href: "/admin/county-intelligence" }],
+    emptyState: "Assign supervisor first.",
+    aiExplanation: "No voter export or outreach.",
+    safetyNotes: "Supervisor sign-off.",
+  },
+  {
+    id: "field_manager_county_plan",
+    title: "Field manager county plan",
+    purpose: "Daily statewide field plan from county intel.",
+    readsFrom: "buildFieldManagerDailyCountyPlan",
+    requiredRoles: ["campaign_manager", "county_lead", "operator"],
+    riskLevel: "low",
+    routeLinks: [{ label: "County command center", href: "/admin/county-intelligence" }],
+    emptyState: "Load county bridge.",
+    aiExplanation: "Top weak counties + PO5 + volunteers.",
+    safetyNotes: "Guidance not permissions.",
   },
 ];
 

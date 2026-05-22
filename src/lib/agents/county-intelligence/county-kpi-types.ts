@@ -85,3 +85,56 @@ export type PowerOfFiveCountySummary = {
   recommendations: string[];
   source: CountyKpiSource;
 };
+
+export type CountyActionPackageType =
+  | "county_recovery"
+  | "county_growth"
+  | "event_preparation"
+  | "power_of_five_push"
+  | "volunteer_recruitment"
+  | "candidate_visit"
+  | "post_event_followup";
+
+export type CountyActionPackage = {
+  id: string;
+  type: CountyActionPackageType;
+  countySlug: string;
+  countyName: string;
+  countySummary: string;
+  topGoals: string[];
+  topGaps: string[];
+  powerOfFiveTarget: string;
+  registrationTarget: string;
+  volunteerNeed: string;
+  eventRecommendation: string;
+  communicationsRecommendation: string;
+  fieldTaskList: string[];
+  internTaskList: string[];
+  candidateTalkingPoints: string[];
+  followUpPlan: string[];
+  routesToOpen: { label: string; href: string }[];
+  priority: CountyActionPlan["priority"];
+  generatedAt: string;
+};
+
+export type FieldManagerDailyCountyPlan = {
+  date: string;
+  topWeakCounties: { slug: string; name: string; reason: string }[];
+  dailyFieldTasks: string[];
+  powerOfFiveFocus: string[];
+  volunteerGaps: string[];
+  eventRecommendations: string[];
+  routes: { label: string; href: string }[];
+};
+
+export type EventCountyPlanningGuidance = {
+  countyName: string;
+  whyCountyMatters: string[];
+  eventPurpose: string[];
+  powerOfFiveAsk: string[];
+  volunteerRecruitmentAsk: string[];
+  suggestedFollowUp: string[];
+  candidateTalkingPoints: string[];
+  candidateListeningPoints: string[];
+  routes: { label: string; href: string }[];
+};

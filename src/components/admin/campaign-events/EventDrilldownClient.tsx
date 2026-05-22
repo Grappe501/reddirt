@@ -31,7 +31,7 @@ import { EventFinancialOperationsWorkspace } from "./finance/EventFinancialOpera
 import { EventCountyIntelligenceCard } from "@/components/admin/county-intelligence/EventCountyIntelligenceCard";
 import { HotWashCountyImpactPanel } from "@/components/admin/county-intelligence/HotWashCountyImpactPanel";
 import type { CountyIntelligenceSummary } from "@/lib/agents/county-intelligence/county-kpi-types";
-import type { CountyHotWashImpactAnalysis } from "@/lib/agents/county-intelligence/county-hotwash-impact";
+import type { CountyHotWashImpactV2 } from "@/lib/agents/county-intelligence/county-hotwash-impact";
 import { EventVolunteerPlanningPanel } from "@/components/admin/volunteers/EventVolunteerPlanningPanel";
 import type { EventVolunteerContext } from "@/lib/campaign-events/volunteers/load-event-volunteer-context";
 
@@ -97,7 +97,7 @@ export function EventDrilldownClient({
   approvalObservations?: AiObservationEntry[];
   promotionAuditEntries?: PromotionAuditEntry[];
   countyContext?: CountyIntelligenceSummary | null;
-  hotWashCountyImpact?: CountyHotWashImpactAnalysis | null;
+  hotWashCountyImpact?: CountyHotWashImpactV2 | null;
   volunteerContext?: EventVolunteerContext | null;
 }) {
   const router = useRouter();

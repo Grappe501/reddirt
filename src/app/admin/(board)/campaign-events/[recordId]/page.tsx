@@ -19,7 +19,7 @@ import { listFinanceDocumentsForEvent } from "@/lib/campaign-events/finance/fina
 import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
 import { AgentCommandPalette } from "@/components/agents/AgentCommandPalette";
 import { loadEventCountyContext } from "@/lib/agents/county-intelligence/county-event-strategy";
-import { analyzeCountyHotWashImpact } from "@/lib/agents/county-intelligence/county-hotwash-impact";
+import { analyzeCountyHotWashImpactV2 } from "@/lib/agents/county-intelligence/county-hotwash-impact";
 import { loadEventVolunteerContext } from "@/lib/campaign-events/volunteers/load-event-volunteer-context";
 
 export const dynamic = "force-dynamic";
@@ -53,7 +53,7 @@ export default async function CampaignEventDrilldownPage({
   const countyContext = loadEventCountyContext(row.county);
   const rel = hotWashIntelligence?.relationships;
   const volunteerContext = loadEventVolunteerContext(row);
-  const hotWashCountyImpact = analyzeCountyHotWashImpact({
+  const hotWashCountyImpact = analyzeCountyHotWashImpactV2({
     countyName: row.county,
     volunteersRecruited: rel?.volunteerProspects?.trim() ? 1 : 0,
     leadersIdentified: rel?.newLeadersMet?.trim() ? 1 : 0,

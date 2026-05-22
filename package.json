@@ -78,6 +78,7 @@
     "agents:test-sprint-10": "tsx scripts/test-sprint-10-campaign-platform.ts",
     "agents:test-single-campaign-hardening": "tsx scripts/test-single-campaign-hardening.ts",
     "agents:test-county-intelligence": "tsx scripts/test-county-intelligence.ts",
+    "agents:test-county-copilots": "tsx scripts/test-county-copilots.ts",
     "agents:test-training-layer": "tsx scripts/test-training-layer.ts",
     "agents:test-role-copilots": "tsx scripts/test-role-copilots.ts",
     "agents:test-dashboard-modules": "tsx scripts/test-dashboard-modules.ts",

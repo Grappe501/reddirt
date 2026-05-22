@@ -1,6 +1,23 @@
 # Kelly OS Build Status
 
-## Latest: AI Copilot Tooling Expansion
+## Latest: County Intelligence V2 + Copilot Application Pass
+
+| Item | Status |
+|------|--------|
+| County action package builder | **Functional** |
+| Copilot county merge (6 roles) | **Functional** |
+| `/admin/county-intelligence` command center | **Functional** |
+| County dashboard blocks (10) | **Registered** |
+| County training modules (10 V2) | **Registered** |
+| County AI tools V2 (15) | **Registered** (35 total in lifecycle) |
+| Hot wash impact V2 | **Functional** |
+| Event planning county guidance | **Functional** |
+| Observations (10 county events) | **Registered** |
+| `agents:test-county-copilots` | **Run on push** |
+
+---
+
+## Prior: AI Copilot Tooling Expansion
 
 | Item | Status |
 |------|--------|
