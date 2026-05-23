@@ -18,6 +18,8 @@ import {
   type OrchestrationLearningInsight,
 } from "./orchestration-learning-insights";
 import { buildSkeletonCampaignState } from "./campaign-state-types";
+import { buildAgentToolingState, emptyAgentToolingState } from "./tooling/agent-tooling-state";
+import type { AgentToolingState } from "./tooling/agent-tooling-types";
 
 export type OrchestrationSafetyPayload = {
   humanGateRequired: true;
@@ -47,6 +49,7 @@ export type OrchestrationStatePayload = {
   sourceHealth: OrchestrationSourceHealth[];
   safety: OrchestrationSafetyPayload;
   learningInsights: OrchestrationLearningInsight;
+  agentTooling: AgentToolingState;
   errors?: string[];
 };
 
@@ -110,9 +113,16 @@ export function normalizeOrchestrationPayload(
       knowsSummary: "",
       unknownSummary: "",
     },
+    agentTooling: emptyAgentToolingState(),
     ...(partial.errors?.length ? { errors: partial.errors } : {}),
   };
   base.learningInsights = buildOrchestrationLearningInsights(base);
+  if (partial.agentTooling) {
+    base.agentTooling = partial.agentTooling;
+    base.campaignState = { ...base.campaignState, agentTooling: partial.agentTooling };
+  } else if (base.campaignState.agentTooling?.registryToolCount) {
+    base.agentTooling = base.campaignState.agentTooling;
+  }
   return base;
 }
 
@@ -126,22 +136,38 @@ export async function buildOrchestrationStatePayload(
 
   const { state, sourceHealth, bundle } = await loadCampaignOrchestrationSignals(period, { pathname, role });
   const diagnosis = runOrchestrationReasoning(state);
-  const recommendedWorkflows = activateWorkflowsFromState(state, diagnosis);
+  const agentTooling = buildAgentToolingState({ state, sourceHealth, diagnosis, role, period });
+  const enrichedDiagnosis = {
+    ...diagnosis,
+    toolBuildGaps: [
+      ...(agentTooling.bestNextToolForCampaignState
+        ? [`Best next tool: ${agentTooling.bestNextToolForCampaignState.title} — ${agentTooling.bestNextToolForCampaignState.whyNow}`]
+        : []),
+      ...agentTooling.coverageByDomain
+        .filter((c) => c.coverageStatus === "weak" || c.coverageStatus === "missing")
+        .slice(0, 2)
+        .map((c) => `${c.domainLabel} tool coverage ${c.coverageStatus} — build: ${c.recommendedNextTool}`),
+      ...diagnosis.toolBuildGaps,
+    ].slice(0, 8),
+  };
+  const campaignState = { ...state, agentTooling };
+  const recommendedWorkflows = activateWorkflowsFromState(campaignState, enrichedDiagnosis);
   const partialErrors = bundle.errors.length > 0 ? bundle.errors : undefined;
 
   return normalizeOrchestrationPayload({
-    ok: state.operatingMode !== "skeleton",
-    generatedAt: state.generatedAt,
+    ok: campaignState.operatingMode !== "skeleton",
+    generatedAt: campaignState.generatedAt,
     meta,
-    campaignState: state,
-    diagnosis,
+    campaignState,
+    diagnosis: enrichedDiagnosis,
     recommendedWorkflows,
-    blockers: diagnosis.topBlockers,
-    opportunities: diagnosis.topOpportunities,
-    risks: diagnosis.topRisks,
-    topMoves: diagnosis.topMoves,
+    blockers: enrichedDiagnosis.topBlockers,
+    opportunities: enrichedDiagnosis.topOpportunities,
+    risks: enrichedDiagnosis.topRisks,
+    topMoves: enrichedDiagnosis.topMoves,
     sourceHealth,
     safety: buildSafety(),
+    agentTooling,
     ...(partialErrors ? { errors: partialErrors } : {}),
   });
 }

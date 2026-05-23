@@ -56,6 +56,27 @@ Every future tool must answer:
 
 ---
 
+### 8. Agent tooling brain (Phase 4A)
+
+| Component | Module |
+|-----------|--------|
+| Unified registry | `tooling/agent-tool-registry.ts` |
+| Tool selector | `tooling/agent-tool-selector.ts` |
+| Tool sequencer | `tooling/agent-tool-sequencer.ts` |
+| Action prep | `tooling/agent-action-prep.ts` |
+| Safety engine | `tooling/agent-tool-safety.ts` |
+| Coverage analysis | `tooling/agent-tool-coverage.ts` |
+| State builder | `tooling/agent-tooling-state.ts` |
+
+**CampaignState field:** `agentTooling` — topRecommendedTools, sequences, preparedActions, coverageByDomain, safetySummary
+
+**API:** `GET /api/agents/orchestration-tooling-state`  
+**Test:** `npm run agents:test-agent-tooling-brain`
+
+**Progress:** `[████████░░] 85%` functional V1
+
+---
+
 ### 2. Context layer
 
 | Composer | Output |

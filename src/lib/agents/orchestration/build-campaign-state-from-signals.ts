@@ -30,6 +30,7 @@ import { emptyKnowledgeMemorySlice } from "@/lib/agents/campaign-knowledge/campa
 import type { CampaignKnowledgeSummary } from "@/lib/agents/orchestration/knowledge/campaign-knowledge-types";
 import { emptyCampaignKnowledgeSummary } from "@/lib/agents/orchestration/knowledge/campaign-knowledge-types";
 import { knowledgeSummaryToMemorySlice } from "@/lib/agents/orchestration/knowledge/knowledge-memory-adapter";
+import { emptyAgentToolingState } from "@/lib/agents/orchestration/tooling/agent-tooling-types";
 
 function scoreToBand(score: number): CampaignHealthBand {
   if (score >= 80) return "strong";
@@ -392,5 +393,6 @@ export function buildCampaignStateFromSignals(
     signalLoadErrors: bundle.errors,
     knowledge,
     knowledgeMemory,
+    agentTooling: emptyAgentToolingState(),
   };
 }

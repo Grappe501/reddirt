@@ -39,7 +39,18 @@
 
 ---
 
-## Global / All-Knowing Agent (SOSWebsite-wide inventory)
+## AI Agent Tooling Brain (Phase 4A)
+
+| Artifact | Path |
+|----------|------|
+| Module | `src/lib/agents/orchestration/tooling/` |
+| Handoff | [`ORCHESTRATION_PHASE_4A_AGENT_TOOLING_BRAIN_HANDOFF.md`](./ORCHESTRATION_PHASE_4A_AGENT_TOOLING_BRAIN_HANDOFF.md) |
+| Unified registry | `agent-tool-registry.ts` — 737 tools typical |
+| Test | `npm run agents:test-agent-tooling-brain` |
+| Read-only API | `GET /api/agents/orchestration-tooling-state` |
+| CampaignState field | `campaignState.agentTooling` |
+
+---
 
 | Artifact | Path |
 |----------|------|

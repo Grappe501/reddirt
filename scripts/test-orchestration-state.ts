@@ -30,6 +30,7 @@ async function main() {
 
   console.log("  knowledge entities:", payload.campaignState.knowledge.graphHealth.entityCount);
   console.log("  knowledge lessons:", payload.campaignState.knowledge.graphHealth.lessonCount);
+  console.log("  agent tooling registry:", payload.campaignState.agentTooling.registryToolCount);
 
   const hasSourceHealth = payload.sourceHealth.every((s) => ["ready", "degraded", "missing", "error"].includes(s.status));
   const hasSafety =
@@ -44,10 +45,11 @@ async function main() {
   const hasMeta = payload.meta?.period === "2026-04";
 
   const hasKnowledge = payload.campaignState.knowledge != null && typeof payload.campaignState.knowledge.graphHealth.entityCount === "number";
-  const ok = hasSourceHealth && hasSafety && hasMoves && hasWorkflows && hasState && massBlocked && payload.safety.safetyCheckOk && liveOrDegraded && hasMeta && payload.learningInsights != null && hasKnowledge;
+  const hasAgentTooling = payload.agentTooling != null && payload.agentTooling.registryToolCount > 0;
+  const ok = hasSourceHealth && hasSafety && hasMoves && hasWorkflows && hasState && massBlocked && payload.safety.safetyCheckOk && liveOrDegraded && hasMeta && payload.learningInsights != null && hasKnowledge && hasAgentTooling;
 
   if (!ok) {
-    console.error("FAIL", { hasSourceHealth, hasSafety, hasMoves, hasWorkflows, massBlocked, hasKnowledge });
+    console.error("FAIL", { hasSourceHealth, hasSafety, hasMoves, hasWorkflows, massBlocked, hasKnowledge, hasAgentTooling });
     process.exit(1);
   }
   console.log("OK — live CampaignState payload built with safety gates");

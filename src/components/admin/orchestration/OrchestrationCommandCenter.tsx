@@ -8,6 +8,7 @@ import { OrchestrationWorkflowPanel } from "./OrchestrationWorkflowPanel";
 import { OrchestrationDomainStatusGrid } from "./OrchestrationDomainStatusGrid";
 import { OrchestrationLearningPanel } from "./OrchestrationLearningPanel";
 import { OrchestrationKnowledgeMemoryPanel } from "./OrchestrationKnowledgeMemoryPanel";
+import { OrchestrationAgentToolingPanel } from "./OrchestrationAgentToolingPanel";
 import { OrchestrationSafetyGateCard } from "./OrchestrationSafetyGateCard";
 
 export function OrchestrationCommandCenter({ payload }: { payload: OrchestrationStatePayload }) {
@@ -61,8 +62,12 @@ export function OrchestrationCommandCenter({ payload }: { payload: Orchestration
             AI command center
           </Link>
           {" · "}
-          <Link href="/api/agents/orchestration-state" className="font-bold text-kelly-navy underline">
-            JSON API
+          <Link href="/api/agents/campaign-knowledge-state" className="font-bold text-kelly-navy underline">
+            Knowledge API
+          </Link>
+          {" · "}
+          <Link href="/api/agents/orchestration-tooling-state" className="font-bold text-kelly-navy underline">
+            Tooling API
           </Link>
         </p>
       </header>
@@ -93,6 +98,7 @@ export function OrchestrationCommandCenter({ payload }: { payload: Orchestration
 
       <OrchestrationDomainStatusGrid campaignState={campaignState} sourceHealth={sourceHealth} />
       <OrchestrationKnowledgeMemoryPanel knowledge={campaignState.knowledge} />
+      <OrchestrationAgentToolingPanel tooling={payload.agentTooling} />
       <OrchestrationLearningPanel insights={payload.learningInsights} />
       <OrchestrationSafetyGateCard safety={payload.safety} />
     </div>

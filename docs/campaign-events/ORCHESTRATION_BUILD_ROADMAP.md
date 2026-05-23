@@ -1,7 +1,6 @@
 # Orchestration build roadmap
 
 **Milestone:** Campaign Orchestration Intelligence Layer  
-**First implementation phase recommended:** **Phase 2** (after this planning commit)
 
 ---
 
@@ -9,15 +8,18 @@
 
 | Phase | Focus | Progress |
 |-------|--------|----------|
-| **1** | Inventory + architecture + tool contracts | `[██████████] 100%` ← **this sprint** |
-| **2** | CampaignState loader + reasoning API | `[██████████] 100%` ← **Phase 2A done** |
+| **1** | Inventory + architecture + tool contracts | `[██████████] 100%` |
+| **2** | CampaignState loader + reasoning API | `[██████████] 100%` |
 | **2B** | Command center orchestration panel | `[████████░░] 85%` |
-| **3A** | Knowledge graph + lessons engine | `[████████░░] 85%` ← **this phase** |
+| **3A** | Knowledge graph + lessons engine | `[████████░░] 85%` |
 | **3B** | Recommendation feedback + lesson approval UI | `[░░░░░░░░░░] 0%` |
+| **4A** | AI Agent Tooling Brain | `[████████░░] 85%` ← **this phase** |
+| **4B** | Tool outcome feedback + role-scoped UI | `[░░░░░░░░░░] 0%` |
 | **5** | Role-specific orchestration delivery | `[██░░░░░░░░] 20%` |
 | **6** | Memory review + learning loop | `[██░░░░░░░░] 20%` |
 | **7** | Dashboard adaptation + workspaces | `[█░░░░░░░░░] 10%` |
 | **8** | Presentation / demo polish | `[█░░░░░░░░░] 10%` |
+
 
 ---
 
@@ -35,7 +37,7 @@
 **Files**
 
 - `docs/campaign-events/ORCHESTRATION_*.md` (6 docs)
-- `src/lib/agents/orchestration/*`
+- `src/lib/agents/orchestration/`*
 - `sprint-orchestration-intelligence-tools.ts`
 - `scripts/test-orchestration-plan.ts`
 
@@ -93,7 +95,7 @@
 
 **Files**
 
-- `src/lib/agents/campaign-knowledge/*`
+- `src/lib/agents/campaign-knowledge/`*
 - `sprint-campaign-knowledge-tools.ts`
 - `OrchestrationKnowledgeMemoryPanel.tsx`
 - `PHASE_3A_KNOWLEDGE_GRAPH_HANDOFF.md`
@@ -107,6 +109,35 @@
 
 - Orchestration panel shows lessons, patterns, confidence gaps ✅
 - Graph persists under `data/campaign-events/campaign-knowledge/` ✅
+
+---
+
+## Phase 4A — AI Agent Tooling Brain ✅ (functional)
+
+**Goals**
+
+- Unified tool registry with `improvesCampaignUnderstandingHow` on every tool ✅
+- Deterministic selector + sequencer ✅
+- Safe action prep (non-executable default) ✅
+- Safety classifier + prohibited types ✅
+- Coverage analysis for all 20 domains ✅
+- `CampaignState.agentTooling` + dashboard panel ✅
+
+**Files**
+
+- `src/lib/agents/orchestration/tooling/*`
+- `OrchestrationAgentToolingPanel.tsx`
+- `ORCHESTRATION_PHASE_4A_AGENT_TOOLING_BRAIN_HANDOFF.md`
+
+**Tests**
+
+- `agents:test-agent-tooling-brain` ✅
+- `agents:test-orchestration-state` (agentTooling assert) ✅
+
+**Done when**
+
+- Orchestration panel shows recommended tools, sequences, prepared actions ✅
+- API `/api/agents/orchestration-tooling-state` read-only ✅
 
 ---
 
@@ -192,7 +223,7 @@
 **Files**
 
 - `agent-memory-write-planner.ts` integration
-- Training modules `orch-*`
+- Training modules `orch-`*
 
 ---
 

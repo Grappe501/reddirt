@@ -1,6 +1,26 @@
 # Kelly OS Build Status
 
-## Latest: Campaign Knowledge Graph + Lessons Engine — Phase 3A
+## Latest: AI Agent Tooling Brain — Phase 4A
+
+| Item | Status |
+|------|--------|
+| Module `orchestration/tooling/` | **Functional** |
+| Unified tool registry (737 tools) | **Live** |
+| Tool selector + sequencer | **Functional** |
+| Safe action prep (non-executable default) | **Functional** |
+| Safety classifier + prohibited types | **Functional** |
+| Coverage analysis (20 domains) | **Functional** |
+| `CampaignState.agentTooling` | **Live** |
+| `GET /api/agents/orchestration-tooling-state` | **Live** (read-only) |
+| Dashboard **AI Agent Tooling Brain** panel | **Functional** |
+| `agents:test-agent-tooling-brain` | **PASS** |
+
+**Handoff:** `ORCHESTRATION_PHASE_4A_AGENT_TOOLING_BRAIN_HANDOFF.md`  
+**Next:** Phase 4B — tool outcome feedback + role-scoped tooling UI
+
+---
+
+## Prior: Campaign Knowledge Graph + Lessons Engine — Phase 3A
 
 | Item | Status |
 |------|--------|

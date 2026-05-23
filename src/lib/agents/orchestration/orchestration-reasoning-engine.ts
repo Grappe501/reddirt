@@ -172,6 +172,17 @@ export function runOrchestrationReasoning(state: CampaignState): OrchestrationDi
     score: d.score,
   }));
 
+  if (topMoves.length < 3 && state.agentTooling?.bestNextToolForCampaignState) {
+    const best = state.agentTooling.bestNextToolForCampaignState;
+    addMove(
+      `Run tool: ${best.title}`,
+      best.whyNow,
+      undefined,
+      best.urgency,
+      best.domain,
+    );
+  }
+
   const executiveSummary = [
     state.executiveSummary,
     topBlockers.length ? `${topBlockers.length} active blocker(s).` : "No P0/P1 blockers.",

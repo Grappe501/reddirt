@@ -6,6 +6,8 @@ import type { CampaignKnowledgeMemorySlice } from "@/lib/agents/campaign-knowled
 import { emptyKnowledgeMemorySlice } from "@/lib/agents/campaign-knowledge/campaign-knowledge-memory-types";
 import type { CampaignKnowledgeSummary } from "@/lib/agents/orchestration/knowledge/campaign-knowledge-types";
 import { emptyCampaignKnowledgeSummary } from "@/lib/agents/orchestration/knowledge/campaign-knowledge-types";
+import type { AgentToolingState } from "@/lib/agents/orchestration/tooling/agent-tooling-types";
+import { emptyAgentToolingState } from "@/lib/agents/orchestration/tooling/agent-tooling-types";
 
 export type CampaignHealthBand = "critical" | "weak" | "stable" | "strong";
 
@@ -166,6 +168,8 @@ export type CampaignState = {
   knowledge: CampaignKnowledgeSummary;
   /** @deprecated Use knowledge — kept for backward-compatible UI/helpers. */
   knowledgeMemory: CampaignKnowledgeMemorySlice;
+  /** Phase 4A — AI agent tooling brain summary. */
+  agentTooling: AgentToolingState;
 };
 
 export function emptyDomainSlice(domainId: CampaignDomainId, summary = "Signal not loaded"): DomainHealthSlice {
@@ -258,5 +262,6 @@ export function buildSkeletonCampaignState(period = "2026-04"): CampaignState {
     signalLoadErrors: [],
     knowledge: emptyCampaignKnowledgeSummary(),
     knowledgeMemory: emptyKnowledgeMemorySlice(),
+    agentTooling: emptyAgentToolingState(),
   };
 }
