@@ -76,8 +76,6 @@
 | Read-only API | `GET /api/agents/cross-domain-orchestration-state` |
 | CampaignState field | `campaignState.crossDomainOrchestration` |
 | Dashboard | `/admin/orchestration` — Cross-Domain Agent Orchestrator |
-| Sections | 18 campaign sections |
-| Playbooks | County activation, comms-to-field, event intelligence, CM daily, compliance-safe ops, deployment readiness |
 
 ---
 

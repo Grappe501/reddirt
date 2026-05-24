@@ -12,7 +12,7 @@
 | **2** | CampaignState loader + reasoning API | `[██████████] 100%` |
 | **2B** | Command center orchestration panel | `[████████░░] 85%` |
 | **3A** | Knowledge graph + lessons engine | `[████████░░] 85%` |
-| **3B** | Recommendation feedback + lesson approval UI | `[████████░░] 85%` |
+| **3B** | Recommendation feedback + lesson approval UI | `[████████░░] 85%` ← **this phase** |
 | **4A** | AI Agent Tooling Brain | `[████████░░] 85%` |
 | **4B** | Cross-domain agent tool orchestrator | `[████████░░] 85%` ← **this phase** |
 | **5** | Role-specific orchestration delivery | `[██░░░░░░░░] 20%` |
@@ -175,12 +175,13 @@
 
 **Goals**
 
-- Canonical campaign section map across 18 major sections ✅
-- Dependency graph showing section leverage, blocked sections, and warnings ✅
-- Tool router that selects tools by section/domain and identifies section focus ✅
-- Six cross-domain playbooks with human-gated action packets ✅
-- Learning hooks for what the AI should capture after packet review ✅
-- `CampaignState.crossDomainOrchestration` + dashboard + read-only API ✅
+- Canonical campaign section map across 18 sections ✅
+- Deterministic cross-domain dependency graph ✅
+- Tool router by section/domain/dependency ✅
+- Cross-domain playbook engine ✅
+- Non-executing action packets ✅
+- Structured learning hooks for every playbook ✅
+- `CampaignState.crossDomainOrchestration` + dashboard panel ✅
 
 **Files**
 
@@ -192,12 +193,11 @@
 **Tests**
 
 - `agents:test-cross-domain-orchestrator` ✅
-- `agents:test-orchestration-state` (crossDomainOrchestration assert) ✅
 
 **Done when**
 
-- Command center shows recommended section focus, playbooks, packets, hooks, and safety gates ✅
-- All packets remain non-executing and human-gated ✅
+- Command center shows section focus, dependency warnings, playbooks, packets, hooks, and safety gates ✅
+- All packets remain preparation-only with no unsafe execution controls ✅
 
 ---
 

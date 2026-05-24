@@ -108,7 +108,7 @@ Every future tool must answer:
 | Learning hooks | `cross-domain/cross-domain-learning-hooks.ts` |
 | State builder | `cross-domain/cross-domain-orchestration-state.ts` |
 
-**CampaignState field:** `crossDomainOrchestration` — sectionMap, dependencyGraph, recommendedSectionFocus, playbooks, actionPackets, learningHooks, sectionCoverage, safetySummary
+**CampaignState field:** `crossDomainOrchestration` — sectionMap, dependencyGraph, recommendedSectionFocus, playbooks, actionPackets, learningHooks, safetySummary
 
 **API:** `GET /api/agents/cross-domain-orchestration-state`  
 **Test:** `npm run agents:test-cross-domain-orchestrator`

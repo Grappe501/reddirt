@@ -43,11 +43,12 @@ Hot Wash → County → Memory              (strategy router)
 Training → Dashboard UX                 (unlock router)
 Communications → Volunteer              (retention router)
 County → Calendar                       (event proposals, tentative only)
+Section map → Dependency graph → Tool router → Playbooks → Action packets (Phase 4B)
 ```
 
-**Phase 4B live:** `src/lib/agents/orchestration/cross-domain/` adds a campaign section map above these 20 domains. Sections include executive command, county intelligence, communications, Email OS/ECC, events/calendar, volunteer/field, finance/reimbursement, compliance, content/media, donor/fundraising, scheduling, research/strategy, Ask Kelly, tool builder, training/copilots, memory/observations, public site, and deployment readiness.
+**Phase 4B implementation:** `src/lib/agents/orchestration/cross-domain/`
 
-**CampaignState field:** `crossDomainOrchestration`
+Canonical sections: executive_command, county_intelligence, communications, email_os_ecc, events_calendar, volunteer_field, finance_reimbursement, compliance, content_media, donor_fundraising, scheduling, research_strategy, ask_kelly, tool_builder, training_copilots, memory_observations, public_site, deployment_readiness.
 
 ---
 

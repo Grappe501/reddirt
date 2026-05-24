@@ -80,8 +80,8 @@ export function runOrchestrationReasoning(state: CampaignState): OrchestrationDi
   if (state.feedbackLoop.feedbackHealth.failedCount > 0) {
     topRisks.push("Feedback loop shows failed recommendations — avoid repeating those patterns without correction.");
   }
-  for (const warning of state.crossDomainOrchestration.dependencyGraph.dependencyWarnings.slice(0, 2)) {
-    topRisks.push(warning);
+  if (state.crossDomainOrchestration.dependencyGraph.dependencyWarnings.length > 0) {
+    topRisks.push(state.crossDomainOrchestration.dependencyGraph.dependencyWarnings[0]);
   }
 
   const workflowRecommendations: string[] = ["campaign-manager-daily"];
@@ -153,6 +153,17 @@ export function runOrchestrationReasoning(state: CampaignState): OrchestrationDi
     );
   }
 
+  if (state.crossDomainOrchestration.recommendedSectionFocus && topMoves.length < 3) {
+    const focus = state.crossDomainOrchestration.recommendedSectionFocus;
+    addMove(
+      `Focus ${focus.label}`,
+      focus.whyNeedsAttention,
+      "/admin/orchestration",
+      focus.health === "blocked" ? "P0" : focus.health === "weak" ? "P1" : "P2",
+      focus.recommendedTools[0]?.domain ?? "campaign_management",
+    );
+  }
+
   for (const lesson of state.knowledge.recurringBlockers.slice(0, 1)) {
     if (topMoves.length >= 3) break;
     addMove(
@@ -181,17 +192,6 @@ export function runOrchestrationReasoning(state: CampaignState): OrchestrationDi
       "/admin/orchestration",
       "P1",
       "memory",
-    );
-  }
-
-  if (state.crossDomainOrchestration.recommendedSectionFocus && topMoves.length < 3) {
-    const focus = state.crossDomainOrchestration.recommendedSectionFocus;
-    addMove(
-      `Focus ${focus.label}`,
-      `${focus.summary} This section unlocks ${focus.affectedSections.length} downstream section(s).`,
-      "/admin/orchestration",
-      focus.urgency,
-      focus.recommendedTools[0]?.domain ?? "campaign_management",
     );
   }
 

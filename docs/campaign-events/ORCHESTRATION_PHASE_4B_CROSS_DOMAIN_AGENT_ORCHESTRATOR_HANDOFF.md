@@ -9,14 +9,14 @@
 
 ## What was built
 
-Phase 4B upgrades the agent from isolated tool recommendations to section-aware cross-domain orchestration. The AI now understands major campaign sections, dependencies between them, which tools apply, which packets should be prepared, and what should be learned after human review.
+Phase 4B upgrades the agent from isolated tool recommendation to cross-section orchestration. The agent now maps campaign sections, understands dependencies, routes tools by section/domain, prepares cross-domain playbooks, creates non-executing action packets, and defines learning hooks for human feedback afterward.
 
 | Piece | Status |
 |-------|--------|
 | Campaign section map | ✅ |
-| Dependency graph | ✅ |
-| Cross-domain tool router | ✅ |
-| Playbook engine | ✅ |
+| Cross-domain dependency graph | ✅ |
+| Section-aware tool router | ✅ |
+| Required playbooks | ✅ |
 | Non-executing action packets | ✅ |
 | Learning hooks | ✅ |
 | `CampaignState.crossDomainOrchestration` | ✅ |
@@ -34,89 +34,60 @@ Phase 4B upgrades the agent from isolated tool recommendations to section-aware 
 
 | File | Role |
 |------|------|
-| `cross-domain-orchestrator-types.ts` | Canonical section, graph, playbook, packet, hook, state types |
+| `cross-domain-orchestrator-types.ts` | Canonical types |
 | `campaign-section-map.ts` | 18-section campaign map |
-| `cross-domain-dependency-graph.ts` | Section nodes, edges, warnings, high-leverage sections |
-| `cross-domain-tool-router.ts` | Section-aware tool selection and focus recommendation |
-| `cross-domain-playbook-engine.ts` | Six deterministic cross-domain playbooks |
-| `cross-domain-action-packets.ts` | Human-gated non-executing packets |
-| `cross-domain-learning-hooks.ts` | Structured prompts for feedback/lessons |
+| `cross-domain-dependency-graph.ts` | Section nodes, edges, warnings |
+| `cross-domain-tool-router.ts` | Section tool diagnosis and recommendations |
+| `cross-domain-playbook-engine.ts` | Required cross-domain playbooks |
+| `cross-domain-action-packets.ts` | Preparation-only action packets |
+| `cross-domain-learning-hooks.ts` | Structured after-action learning prompts |
 | `cross-domain-orchestration-state.ts` | State builder |
 | `cross-domain-readme.ts` | Module orientation |
 
 ### Integration
 
 - `campaign-state-types.ts` — adds `crossDomainOrchestration`
-- `build-campaign-state-from-signals.ts` — skeleton state support
-- `build-orchestration-payload.ts` — builds and returns cross-domain state
-- `orchestration-reasoning-engine.ts` — uses dependency warnings and section focus
-- `OrchestrationCrossDomainPanel.tsx` — dashboard panel
-- `OrchestrationCommandCenter.tsx` — panel/API link
+- `build-campaign-state-from-signals.ts` — default empty cross-domain state
+- `build-orchestration-payload.ts` — builds and exposes cross-domain state
+- `orchestration-reasoning-engine.ts` — uses section focus and dependency warnings
 - `src/app/api/agents/cross-domain-orchestration-state/route.ts`
+- `OrchestrationCrossDomainPanel.tsx`
+- `OrchestrationCommandCenter.tsx`
 - `scripts/test-cross-domain-orchestrator.ts`
-- `package.json` — `agents:test-cross-domain-orchestrator`
+- `package.json`
 
 ---
 
 ## Campaign section map
 
-18 canonical sections:
+Canonical sections:
 
-- executive_command
-- county_intelligence
-- communications
-- email_os_ecc
-- events_calendar
-- volunteer_field
-- finance_reimbursement
-- compliance
-- content_media
-- donor_fundraising
-- scheduling
-- research_strategy
-- ask_kelly
-- tool_builder
-- training_copilots
-- memory_observations
-- public_site
-- deployment_readiness
+executive_command, county_intelligence, communications, email_os_ecc, events_calendar, volunteer_field, finance_reimbursement, compliance, content_media, donor_fundraising, scheduling, research_strategy, ask_kelly, tool_builder, training_copilots, memory_observations, public_site, deployment_readiness.
 
-Each section defines domains, routes, source paths, tools, dependencies, source health IDs, CampaignState fields, entity types, human owners, restricted actions, and how it improves campaign understanding.
+Each section defines mission, owned domains, routes/APIs/source paths, primary/related tools, upstream/downstream dependencies, source health IDs, CampaignState fields, graph entity types, owners, restricted actions, and how it improves campaign understanding.
 
 ---
 
 ## Dependency graph
 
-The graph models how sections affect each other, including:
+The graph builds deterministic section nodes and edges, including:
 
-- County intelligence → events, volunteer, comms, content, fundraising
-- Communications → Email OS/ECC, volunteer field, public narrative
-- Events/calendar → county intelligence, volunteer, content/media, memory
-- Finance/reimbursement → compliance and executive command
-- Memory/observations → research strategy and tool builder
-- Deployment readiness → public site and executive command
-
-Outputs:
-
-- nodes
-- edges
-- weakSections
-- blockedSections
-- highLeverageSections
-- dependencyWarnings
+- County intelligence unlocks events, volunteer/field, comms, content, fundraising.
+- Communications depends on and unlocks Email OS/ECC and volunteer activation.
+- Events feed county, comms, content/media, and memory observations.
+- Finance/reimbursement requires compliance review.
+- Memory/feedback informs research, strategy, and tool builder.
+- Deployment readiness blocks public/admin shipping confidence.
 
 ---
 
 ## Tool router
 
-The router takes CampaignState, sourceHealth, agentTooling, role, period, and optional requested section.
+The router uses CampaignState, source health, section ownership, dependencies, and the unified agent tool registry to produce:
 
-It returns:
-
-- section diagnoses
+- section diagnosis
 - recommended tools by section
-- blocked tools
-- missing tools
+- blocked/missing tools
 - human approval gates
 - expected learning outputs
 - recommended section focus
@@ -127,50 +98,34 @@ It returns:
 
 Required playbooks implemented:
 
-1. County Activation Playbook
-2. Comms-to-Field Mobilization Playbook
-3. Event Intelligence Playbook
-4. Campaign Manager Daily Command Playbook
-5. Compliance-Safe Operations Playbook
-6. Deployment Readiness Playbook
+- County Activation Playbook
+- Comms-to-Field Mobilization Playbook
+- Event Intelligence Playbook
+- Campaign Manager Daily Command Playbook
+- Compliance-Safe Operations Playbook
+- Deployment Readiness Playbook
 
-All are preparation only and human-gated.
+All playbooks prepare review packets only. They never send, submit, export, write calendar, post finance, or mutate production state.
 
 ---
 
-## Action packet model
+## Action packets
 
-Each packet includes:
+Action packets are the future unit of work for the command center. Each includes playbook, sections, owner, why now, evidence, prepared actions, human approvals, blockers, risks, CampaignState improvement, expected lessons, done-when, and safety summary.
 
-- id/title/playbookId
-- sections
-- summary and whyNow
-- recommendedOwner
-- sourceEvidence
-- preparedActions
-- humanApprovalsRequired
-- blockedBy and risks
-- expectedCampaignStateImprovement
-- expectedLessons
-- doneWhen
-- safetySummary with `canExecuteNow: false`
+Every packet has:
 
-Packets are intended as future command-center units of work.
+```typescript
+canExecuteNow: false
+autoExecutionDisabled: true
+humanGateRequired: true
+```
 
 ---
 
 ## Learning hooks
 
-Every playbook produces structured learning hooks such as:
-
-- Did the county event improve volunteer activation?
-- Did email prep clear ECC gates?
-- Did event hot wash produce an approved lesson?
-- Did the daily command packet pick the actual highest-leverage section?
-- Did compliance review block or revise operations?
-- Did deployment verification prove the OS safe to ship?
-
-Hooks suggest observations and lessons but do not approve sensitive memory.
+Every playbook emits structured hooks asking what happened afterward, whether humans accepted/rejected/corrected the packet, and what lesson should be suggested. Sensitive/strategic hooks require approval before memory promotion.
 
 ---
 
@@ -181,20 +136,16 @@ campaignState.crossDomainOrchestration = {
   sectionMap,
   dependencyGraph,
   recommendedSectionFocus,
+  sectionDiagnoses,
   playbooks,
   actionPackets,
   learningHooks,
   sectionCoverage,
   safetySummary,
-  summary,
 }
 ```
 
-Reasoning now uses:
-
-- dependency warnings as risks
-- recommended section focus as a possible top move
-- feedback confidence as a cross-domain confidence limiter
+Reasoning now can surface section focus and dependency warnings in top risks/moves.
 
 ---
 
@@ -202,25 +153,17 @@ Reasoning now uses:
 
 `/admin/orchestration` → **Cross-Domain Agent Orchestrator**
 
-Shows:
+Shows recommended section focus, dependency warnings, high-leverage sections, playbooks, action packets, learning hooks, and safety gates.
 
-- Recommended section focus
-- Dependency warnings
-- High-leverage and blocked sections
-- Cross-domain playbooks
-- Action packets
-- Learning hooks
-- Safety gates
-
-No unsafe execution buttons are exposed.
+No unsafe execution controls.
 
 ---
 
-## API
+## API route
 
 `GET /api/agents/cross-domain-orchestration-state`
 
-Read-only. Returns section map summary, dependency graph, recommended focus, playbooks, action packets, learning hooks, and safety summary.
+Read-only. Returns section map summary, dependency graph, recommended section focus, playbooks, action packets, learning hooks, and safety summary.
 
 ---
 
@@ -228,8 +171,7 @@ Read-only. Returns section map summary, dependency graph, recommended focus, pla
 
 | Command | Result |
 |---------|--------|
-| `npm run agents:test-cross-domain-orchestrator` | PASS |
-| `npm run typecheck` | PASS during implementation |
+| `npm run agents:test-cross-domain-orchestrator` | PASS during implementation |
 
 Final full run required before commit:
 
@@ -249,25 +191,25 @@ npx prisma migrate status
 
 ## Migration status
 
-No migration required.
+No migration required. Phase 4B is typed orchestration state, read-only API, and dashboard presentation.
 
 ---
 
 ## Known blockers
 
-- Action packets are display/preparation V1; no dedicated packet review workbench yet.
-- Section map is deterministic and curated; it does not yet learn new sections dynamically.
-- API is read-only; marking packets for review can be layered onto the feedback store later.
+- Action packets do not yet have a dedicated review queue beyond dashboard display.
+- Section permissions are advisory V1; future work can filter packets by role.
+- Route health inside Deployment Readiness playbook is packet metadata, not a live crawler yet.
 
 ---
 
 ## Next recommended sprint
 
-**Phase 5 — Role-scoped orchestration delivery and packet review workflow**
+Role-scoped packet review and outcome capture:
 
-- Filter packets by role and safety.
-- Add packet review status using the feedback store.
-- Turn packet completion into recommendation outcomes and lesson approvals.
+- Mark cross-domain packets accepted/rejected/completed/failed directly into Phase 3B feedback store.
+- Add role-filtered packet review views.
+- Convert packet outcomes into more precise lessons and tool build tickets.
 
 ---
 
@@ -277,6 +219,6 @@ No migration required.
 - No Google Calendar write
 - No finance post or reimbursement submit
 - No voter/contact export
-- No production mutation
 - No sensitive memory auto-approval
-- All action packets have `canExecuteNow: false`
+- No direct production mutation
+- Packets are preparation-only and human-gated

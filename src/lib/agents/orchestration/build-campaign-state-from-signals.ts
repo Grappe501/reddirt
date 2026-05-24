@@ -33,6 +33,7 @@ import { knowledgeSummaryToMemorySlice } from "@/lib/agents/orchestration/knowle
 import { emptyAgentToolingState } from "@/lib/agents/orchestration/tooling/agent-tooling-types";
 import type { FeedbackLoopState } from "@/lib/agents/orchestration/feedback/orchestration-feedback-types";
 import { emptyFeedbackLoopState } from "@/lib/agents/orchestration/feedback/orchestration-feedback-types";
+import type { CrossDomainOrchestrationState } from "@/lib/agents/orchestration/cross-domain/cross-domain-orchestrator-types";
 import { emptyCrossDomainOrchestrationState } from "@/lib/agents/orchestration/cross-domain/cross-domain-orchestrator-types";
 
 function scoreToBand(score: number): CampaignHealthBand {
@@ -60,6 +61,7 @@ export function buildCampaignStateFromSignals(
   sourceHealth: OrchestrationSourceHealth[],
   knowledge: CampaignKnowledgeSummary = emptyCampaignKnowledgeSummary(),
   feedbackLoop: FeedbackLoopState = emptyFeedbackLoopState(),
+  crossDomainOrchestration: CrossDomainOrchestrationState = emptyCrossDomainOrchestrationState(),
 ): CampaignState {
   const knowledgeMemory = knowledgeSummaryToMemorySlice(knowledge);
   const period = bundle.period;
@@ -399,6 +401,6 @@ export function buildCampaignStateFromSignals(
     knowledgeMemory,
     agentTooling: emptyAgentToolingState(),
     feedbackLoop,
-    crossDomainOrchestration: emptyCrossDomainOrchestrationState(),
+    crossDomainOrchestration,
   };
 }

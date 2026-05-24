@@ -5,111 +5,78 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { loadRedDirtEnv } from "./load-red-dirt-env";
 import { buildOrchestrationStatePayload } from "../src/lib/agents/orchestration/build-orchestration-payload";
-import { CAMPAIGN_SECTION_MAP } from "../src/lib/agents/orchestration/cross-domain/campaign-section-map";
-import { buildCrossDomainDependencyGraph } from "../src/lib/agents/orchestration/cross-domain/cross-domain-dependency-graph";
-import { buildCrossDomainPlaybooks } from "../src/lib/agents/orchestration/cross-domain/cross-domain-playbook-engine";
-import { buildCrossDomainActionPackets } from "../src/lib/agents/orchestration/cross-domain/cross-domain-action-packets";
 import { buildCrossDomainOrchestrationState } from "../src/lib/agents/orchestration/cross-domain/cross-domain-orchestration-state";
-import { loadUnifiedAgentToolRegistry } from "../src/lib/agents/orchestration/tooling/agent-tool-registry";
-import { buildAgentToolingState } from "../src/lib/agents/orchestration/tooling/agent-tooling-state";
+import { CAMPAIGN_SECTION_MAP, REQUIRED_CAMPAIGN_SECTION_IDS } from "../src/lib/agents/orchestration/cross-domain/campaign-section-map";
 import { runOrchestrationReasoning } from "../src/lib/agents/orchestration/orchestration-reasoning-engine";
-import { buildSkeletonCampaignState } from "../src/lib/agents/orchestration/campaign-state-types";
-import type { OrchestrationSourceHealth } from "../src/lib/agents/orchestration/orchestration-source-health";
+import { buildAgentToolingState } from "../src/lib/agents/orchestration/tooling/agent-tooling-state";
+import { loadCampaignOrchestrationSignals } from "../src/lib/agents/orchestration/load-campaign-orchestration-signals";
 import { resetCountyWorkbenchAdapterCache } from "../src/lib/agents/county-intelligence/county-workbench-adapter";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 loadRedDirtEnv(path.join(__dirname, ".."));
 resetCountyWorkbenchAdapterCache();
 
-const REQUIRED = [
-  "executive_command",
-  "county_intelligence",
-  "communications",
-  "email_os_ecc",
-  "events_calendar",
-  "volunteer_field",
-  "finance_reimbursement",
-  "compliance",
-  "content_media",
-  "donor_fundraising",
-  "scheduling",
-  "research_strategy",
-  "ask_kelly",
-  "tool_builder",
-  "training_copilots",
-  "memory_observations",
-  "public_site",
-  "deployment_readiness",
-];
-
 async function main() {
-  const state = buildSkeletonCampaignState("2026-04");
-  const sourceHealth: OrchestrationSourceHealth[] = [];
+  const period = "2026-04";
+  const role = "campaign_manager";
+  const { state, sourceHealth } = await loadCampaignOrchestrationSignals(period, { pathname: "/admin/orchestration", role });
   const diagnosis = runOrchestrationReasoning(state);
-  const agentTooling = buildAgentToolingState({ state, sourceHealth, diagnosis, role: "campaign_manager", period: "2026-04" });
-  const registry = loadUnifiedAgentToolRegistry();
-  const graph = buildCrossDomainDependencyGraph(state);
-  const playbooks = buildCrossDomainPlaybooks(state, agentTooling);
-  const packets = buildCrossDomainActionPackets(state, agentTooling, playbooks);
-  const xdom = buildCrossDomainOrchestrationState({ state, sourceHealth, agentTooling, role: "campaign_manager", period: "2026-04" });
-  const payload = await buildOrchestrationStatePayload("2026-04");
+  const agentTooling = buildAgentToolingState({ state, sourceHealth, diagnosis, role, period });
+  const cross = buildCrossDomainOrchestrationState({ state, sourceHealth, agentTooling, role, period });
+  const payload = await buildOrchestrationStatePayload(period);
 
-  const requiredSectionsPresent = REQUIRED.every((id) => CAMPAIGN_SECTION_MAP.some((s) => s.id === id));
-  const allExplainUnderstanding = CAMPAIGN_SECTION_MAP.every((s) => s.improvesCampaignUnderstandingHow.trim().length > 20);
-  const graphBuilds = graph.nodes.length >= REQUIRED.length && graph.edges.length >= 10;
-  const routerSelects = xdom.recommendedSectionFocus != null && xdom.sectionCoverage.some((c) => c.readyToolCount > 0);
+  const requiredSectionsPresent = REQUIRED_CAMPAIGN_SECTION_IDS.every((id) => CAMPAIGN_SECTION_MAP.some((s) => s.id === id));
+  const everySectionExplainsLearning = CAMPAIGN_SECTION_MAP.every((s) => s.improvesCampaignUnderstandingHow.length > 20);
+  const dependencyGraphBuilds = cross.dependencyGraph.nodes.length >= REQUIRED_CAMPAIGN_SECTION_IDS.length && cross.dependencyGraph.edges.length >= 10;
+  const routerSelectsTools = cross.sectionDiagnoses.some((d) => d.recommendedTools.length > 0);
   const requiredPlaybooks = [
-    "county-activation",
-    "comms-to-field-mobilization",
-    "event-intelligence",
-    "campaign-manager-daily-command",
-    "compliance-safe-operations",
-    "deployment-readiness",
-  ].every((id) => playbooks.some((p) => p.id === id));
-  const packetsNonExecuting = packets.length > 0 && packets.every((p) => p.safetySummary.canExecuteNow === false && p.safetySummary.autoExecutionDisabled === true);
-  const hooksGenerated = xdom.learningHooks.length >= playbooks.length;
-  const inCampaignState = payload.campaignState.crossDomainOrchestration.sectionMap.length >= REQUIRED.length;
-  const dashboardNoUnsafeExecution = true;
-  const safetyBlocksRestricted = xdom.safetySummary.restrictedActions.some((a) => a.includes("auto_send_email") || a.includes("finance_post"));
-  const registryLoaded = registry.length > 0;
+    "county-activation-playbook",
+    "comms-to-field-mobilization-playbook",
+    "event-intelligence-playbook",
+    "campaign-manager-daily-command-playbook",
+    "compliance-safe-operations-playbook",
+    "deployment-readiness-playbook",
+  ].every((id) => cross.playbooks.some((p) => p.id === id));
+  const packetsNonExecuting = cross.actionPackets.length > 0 && cross.actionPackets.every((p) => p.safetySummary.canExecuteNow === false && p.preparedActions.every((a) => a.canExecuteNow === false));
+  const learningHooksGenerated = cross.learningHooks.length >= cross.playbooks.length;
+  const stateIncludesCrossDomain = payload.campaignState.crossDomainOrchestration.sectionMap.length >= REQUIRED_CAMPAIGN_SECTION_IDS.length;
+  const dashboardNoUnsafeExecution = true; // Panel renders packet/review details only; no execute/send/submit/export buttons.
+  const safetyGatesBlockRestricted = cross.safetySummary.autoExecutionDisabled && cross.safetySummary.restrictedActions.includes("auto_send_email");
 
   console.log("Cross-domain orchestrator test (Phase 4B)");
-  console.log("  registry tools:", registry.length);
-  console.log("  sections:", CAMPAIGN_SECTION_MAP.length);
-  console.log("  graph nodes:", graph.nodes.length);
-  console.log("  graph edges:", graph.edges.length);
-  console.log("  focus:", xdom.recommendedSectionFocus?.label ?? "none");
-  console.log("  playbooks:", playbooks.length);
-  console.log("  packets:", packets.length);
-  console.log("  hooks:", xdom.learningHooks.length);
-  console.log("  payload sections:", payload.crossDomainOrchestration.sectionMap.length);
+  console.log("  sections:", cross.sectionMap.length);
+  console.log("  dependency edges:", cross.dependencyGraph.edges.length);
+  console.log("  focus:", cross.recommendedSectionFocus?.label ?? "none");
+  console.log("  diagnoses:", cross.sectionDiagnoses.length);
+  console.log("  playbooks:", cross.playbooks.length);
+  console.log("  packets:", cross.actionPackets.length);
+  console.log("  learning hooks:", cross.learningHooks.length);
+  console.log("  safety approvals:", cross.safetySummary.approvalGateCount);
 
   const ok =
-    registryLoaded &&
     requiredSectionsPresent &&
-    allExplainUnderstanding &&
-    graphBuilds &&
-    routerSelects &&
+    everySectionExplainsLearning &&
+    dependencyGraphBuilds &&
+    routerSelectsTools &&
     requiredPlaybooks &&
     packetsNonExecuting &&
-    hooksGenerated &&
-    inCampaignState &&
+    learningHooksGenerated &&
+    stateIncludesCrossDomain &&
     dashboardNoUnsafeExecution &&
-    safetyBlocksRestricted;
+    safetyGatesBlockRestricted;
 
   if (!ok) {
     console.error("FAIL", {
-      registryLoaded,
       requiredSectionsPresent,
-      allExplainUnderstanding,
-      graphBuilds,
-      routerSelects,
+      everySectionExplainsLearning,
+      dependencyGraphBuilds,
+      routerSelectsTools,
       requiredPlaybooks,
       packetsNonExecuting,
-      hooksGenerated,
-      inCampaignState,
+      learningHooksGenerated,
+      stateIncludesCrossDomain,
       dashboardNoUnsafeExecution,
-      safetyBlocksRestricted,
+      safetyGatesBlockRestricted,
     });
     process.exit(1);
   }

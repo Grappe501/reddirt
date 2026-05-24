@@ -5,10 +5,10 @@
 | Item | Status |
 |------|--------|
 | Module `orchestration/cross-domain/` | **Functional** |
-| Campaign section map (18 sections) | **Live** |
+| Campaign section map (18 sections) | **Complete** |
 | Dependency graph | **Functional** |
-| Section-aware tool router | **Functional** |
-| Cross-domain playbook engine | **Functional** |
+| Section tool router | **Functional** |
+| Cross-domain playbooks | **Functional** |
 | Non-executing action packets | **Functional** |
 | Learning hooks | **Functional** |
 | `CampaignState.crossDomainOrchestration` | **Live** |
@@ -17,7 +17,7 @@
 | `agents:test-cross-domain-orchestrator` | **PASS** |
 
 **Handoff:** `ORCHESTRATION_PHASE_4B_CROSS_DOMAIN_AGENT_ORCHESTRATOR_HANDOFF.md`  
-**Next:** Phase 5 — role-scoped orchestration delivery and packet review workflow
+**Next:** Role-scoped packet review and deeper outcome capture
 
 ---
 

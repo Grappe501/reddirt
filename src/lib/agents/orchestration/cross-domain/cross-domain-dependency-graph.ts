@@ -1,87 +1,142 @@
 import type { CampaignState } from "../campaign-state-types";
-import type { CampaignSectionEdge, CampaignSectionId, CampaignSectionNode, CrossDomainDependencyGraph } from "./cross-domain-orchestrator-types";
-import { CAMPAIGN_SECTION_MAP } from "./campaign-section-map";
+import type { OrchestrationSourceHealth } from "../orchestration-source-health";
+import type {
+  CampaignSection,
+  CampaignSectionEdge,
+  CampaignSectionId,
+  CampaignSectionNode,
+  CrossDomainDependencyGraph,
+} from "./cross-domain-orchestrator-types";
 
-const STATIC_EDGES: CampaignSectionEdge[] = [
-  { from: "county_intelligence", to: "events_calendar", relationship: "unlocks", strength: "high", whyItMatters: "County gaps identify where events should happen." },
-  { from: "county_intelligence", to: "communications", relationship: "informs", strength: "high", whyItMatters: "County context changes message priority and local proof." },
-  { from: "county_intelligence", to: "volunteer_field", relationship: "unlocks", strength: "high", whyItMatters: "Field work depends on county priorities." },
-  { from: "county_intelligence", to: "content_media", relationship: "informs", strength: "medium", whyItMatters: "Local stories feed content and media packets." },
-  { from: "communications", to: "email_os_ecc", relationship: "unlocks", strength: "high", whyItMatters: "Email OS should not prepare outreach without comms readiness." },
-  { from: "communications", to: "volunteer_field", relationship: "unlocks", strength: "medium", whyItMatters: "Comms follow-up activates volunteers and event attendance." },
-  { from: "events_calendar", to: "county_intelligence", relationship: "informs", strength: "medium", whyItMatters: "Event outcomes refresh county intelligence." },
-  { from: "events_calendar", to: "volunteer_field", relationship: "unlocks", strength: "high", whyItMatters: "Events create volunteer staffing needs." },
-  { from: "events_calendar", to: "content_media", relationship: "unlocks", strength: "medium", whyItMatters: "Events produce recap and earned media material." },
-  { from: "finance_reimbursement", to: "compliance", relationship: "requires_review", strength: "high", whyItMatters: "Finance and reimbursement artifacts affect compliance posture." },
-  { from: "compliance", to: "communications", relationship: "blocks", strength: "medium", whyItMatters: "Compliance risk can block fundraising or public claims." },
-  { from: "memory_observations", to: "research_strategy", relationship: "informs", strength: "high", whyItMatters: "Approved lessons improve future strategic recommendations." },
-  { from: "memory_observations", to: "tool_builder", relationship: "informs", strength: "medium", whyItMatters: "Repeated observations become tool-builder tickets." },
-  { from: "tool_builder", to: "deployment_readiness", relationship: "depends_on", strength: "medium", whyItMatters: "New tool work must pass the release gate before use." },
-  { from: "deployment_readiness", to: "public_site", relationship: "blocks", strength: "high", whyItMatters: "Public/admin changes should not ship without build and migration confirmation." },
-  { from: "executive_command", to: "memory_observations", relationship: "informs", strength: "high", whyItMatters: "Human feedback turns recommendations into lessons." },
-];
-
-function nodeHealth(sectionId: CampaignSectionId, state: CampaignState): CampaignSectionNode["health"] {
-  const section = CAMPAIGN_SECTION_MAP.find((s) => s.id === sectionId);
-  const domains = section?.ownedDomains ?? [];
-  const domainSlices = domains.map((d) => state.domainStatuses[d]).filter(Boolean);
-  if (sectionId === "email_os_ecc" && !state.emailEccReadiness.sendEnabled) return "blocked";
-  if (sectionId === "deployment_readiness" && state.signalLoadErrors.length > 0) return "weak";
-  if (domains.some((d) => state.activeBlockers.some((b) => b.domainId === d && (b.severity === "P0" || b.severity === "P1")))) return "blocked";
-  if (domainSlices.some((d) => d.band === "critical" || d.band === "weak")) return "weak";
-  if (domainSlices.every((d) => d.band === "strong")) return "strong";
-  return "stable";
+function sectionHealth(section: CampaignSection, state: CampaignState, sourceHealth: OrchestrationSourceHealth[]): CampaignSectionNode["health"] {
+  const domains = section.ownedDomains.map((d) => state.domainStatuses[d]?.band).filter(Boolean);
+  const degradedSource = sourceHealth.some((s) => section.sourceHealthIds.includes(s.sourceId) && (s.status === "error" || s.status === "missing"));
+  if (degradedSource) return "blocked";
+  if (domains.includes("critical")) return "blocked";
+  if (domains.includes("weak")) return "weak";
+  if (domains.includes("stable")) return "stable";
+  return "strong";
 }
 
-function leverageScore(sectionId: CampaignSectionId, state: CampaignState): number {
-  const outgoing = STATIC_EDGES.filter((e) => e.from === sectionId).length;
-  const section = CAMPAIGN_SECTION_MAP.find((s) => s.id === sectionId);
-  const weakDomainBoost = section?.ownedDomains.filter((d) => state.weakDomains.includes(d)).length ?? 0;
-  const blockerBoost = section?.ownedDomains.filter((d) => state.activeBlockers.some((b) => b.domainId === d)).length ?? 0;
-  return outgoing * 10 + weakDomainBoost * 15 + blockerBoost * 20;
+function explicitEdges(): CampaignSectionEdge[] {
+  return [
+    {
+      from: "county_intelligence",
+      to: "events_calendar",
+      relationship: "unlocks",
+      whyItMatters: "County posture determines where events should happen and what local prep is missing.",
+      evidence: ["county intelligence affects events"],
+    },
+    {
+      from: "county_intelligence",
+      to: "volunteer_field",
+      relationship: "unlocks",
+      whyItMatters: "Field and volunteer work should follow county priority, weak counties, and Power of 5 gaps.",
+      evidence: ["county intelligence affects volunteer and field"],
+    },
+    {
+      from: "communications",
+      to: "email_os_ecc",
+      relationship: "depends_on",
+      whyItMatters: "Email OS should only prepare sends after comms readiness and message context are understood.",
+      evidence: ["comms readiness affects email"],
+    },
+    {
+      from: "events_calendar",
+      to: "memory_observations",
+      relationship: "informs",
+      whyItMatters: "Events create hot wash notes, county memory, and reusable lessons.",
+      evidence: ["events affect observations and lessons"],
+    },
+    {
+      from: "finance_reimbursement",
+      to: "compliance",
+      relationship: "requires_review",
+      whyItMatters: "Finance and reimbursement issues become compliance risks if documentation is incomplete.",
+      evidence: ["finance affects compliance"],
+    },
+    {
+      from: "memory_observations",
+      to: "tool_builder",
+      relationship: "informs",
+      whyItMatters: "Repeated friction and feedback become tool build tickets.",
+      evidence: ["feedback loop affects tool selection"],
+    },
+    {
+      from: "deployment_readiness",
+      to: "public_site",
+      relationship: "blocks",
+      whyItMatters: "Public/admin changes should not ship without test, typecheck, build, and migration confidence.",
+      evidence: ["deployment readiness affects whether changes are safe to ship"],
+    },
+  ];
 }
 
-export function buildCrossDomainDependencyGraph(state: CampaignState): CrossDomainDependencyGraph {
-  const nodes: CampaignSectionNode[] = CAMPAIGN_SECTION_MAP.map((section) => {
-    const health = nodeHealth(section.id, state);
-    const blocking = state.activeBlockers.find((b) => section.ownedDomains.includes(b.domainId));
-    return {
-      id: section.id,
-      label: section.label,
-      health,
-      leverageScore: leverageScore(section.id, state),
-      ownedDomains: section.ownedDomains,
-      summary: blocking ? blocking.message : section.mission,
-    };
-  });
+export function buildCrossDomainDependencyGraph(input: {
+  sections: CampaignSection[];
+  state: CampaignState;
+  sourceHealth: OrchestrationSourceHealth[];
+}): CrossDomainDependencyGraph {
+  const nodes: CampaignSectionNode[] = input.sections.map((section) => ({
+    id: section.id,
+    label: section.label,
+    domains: section.ownedDomains,
+    health: sectionHealth(section, input.state, input.sourceHealth),
+    routePaths: section.routePaths,
+    toolCount: section.primaryTools.length + section.relatedTools.length,
+    ownerRoles: section.humanOwners,
+  }));
+
+  const edges: CampaignSectionEdge[] = [...explicitEdges()];
+  for (const section of input.sections) {
+    for (const dep of section.upstreamDependencies) {
+      edges.push({
+        from: dep,
+        to: section.id,
+        relationship: "depends_on",
+        whyItMatters: `${section.label} depends on ${dep.replaceAll("_", " ")} context before the agent should prepare action.`,
+        evidence: [`${section.id}.upstreamDependencies`],
+      });
+    }
+    for (const dep of section.downstreamDependencies) {
+      edges.push({
+        from: section.id,
+        to: dep,
+        relationship: "unlocks",
+        whyItMatters: `${section.label} can improve ${dep.replaceAll("_", " ")} when its signals are fresh.`,
+        evidence: [`${section.id}.downstreamDependencies`],
+      });
+    }
+  }
 
   const weakSections = nodes.filter((n) => n.health === "weak").map((n) => n.id);
   const blockedSections = nodes.filter((n) => n.health === "blocked").map((n) => n.id);
-  const highLeverageSections = [...nodes].sort((a, b) => b.leverageScore - a.leverageScore).slice(0, 5).map((n) => n.id);
-  const dependencyWarnings: string[] = [];
+  const highLeverageSections = nodes
+    .map((n) => ({ id: n.id, outs: edges.filter((e) => e.from === n.id).length }))
+    .sort((a, b) => b.outs - a.outs)
+    .slice(0, 6)
+    .map((n) => n.id);
 
-  if (weakSections.includes("county_intelligence")) {
-    dependencyWarnings.push("County intelligence is weak, which can reduce event, volunteer, comms, content, and fundraising quality.");
+  const dependencyWarnings: string[] = [];
+  for (const blocked of blockedSections) {
+    const affected = edges.filter((e) => e.from === blocked).map((e) => e.to);
+    if (affected.length) {
+      dependencyWarnings.push(`${blocked.replaceAll("_", " ")} is blocked and affects ${affected.slice(0, 4).join(", ")}.`);
+    }
   }
-  if (blockedSections.includes("communications") || blockedSections.includes("email_os_ecc")) {
-    dependencyWarnings.push("Comms readiness is blocking field mobilization and public narrative preparation.");
+  if (input.state.feedbackLoop.feedbackHealth.ignoredCount > 0) {
+    dependencyWarnings.push("Feedback is stale or ignored in places, so recommendation confidence should stay conservative.");
   }
-  if (weakSections.includes("finance_reimbursement") || blockedSections.includes("compliance")) {
-    dependencyWarnings.push("Finance/reimbursement or compliance weakness requires human-only review before operational push.");
-  }
-  if (state.feedbackLoop.feedbackHealth.confidence === "low") {
-    dependencyWarnings.push("Feedback is stale or thin, so recommendation confidence should stay conservative.");
-  }
-  if (state.signalLoadErrors.length > 0) {
-    dependencyWarnings.push("Deployment/source readiness has degraded signals; verify build/check health before shipping.");
+  if (input.state.emailEccReadiness.massSendBlocked) {
+    dependencyWarnings.push("Email/ECC remains human-gated; comms-to-field sequences can prepare but not send.");
   }
 
   return {
     nodes,
-    edges: STATIC_EDGES,
+    edges: edges.filter((e, idx, arr) => arr.findIndex((x) => x.from === e.from && x.to === e.to && x.relationship === e.relationship) === idx),
     weakSections,
     blockedSections,
-    highLeverageSections,
+    highLeverageSections: [...new Set(highLeverageSections as CampaignSectionId[])],
     dependencyWarnings,
   };
 }

@@ -176,7 +176,7 @@ export type CampaignState = {
   agentTooling: AgentToolingState;
   /** Phase 3B — human feedback + lesson approval learning loop. */
   feedbackLoop: FeedbackLoopState;
-  /** Phase 4B — section-aware cross-domain agent tool orchestrator. */
+  /** Phase 4B — cross-domain section/tool/playbook orchestrator. */
   crossDomainOrchestration: CrossDomainOrchestrationState;
 };
 

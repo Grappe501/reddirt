@@ -1,16 +1,15 @@
 export const CROSS_DOMAIN_ORCHESTRATOR_README = {
-  id: "cross_domain_agent_tool_orchestrator",
+  id: "cross_domain_agent_orchestrator",
   phase: "4B",
   purpose:
-    "Section-aware orchestrator that maps campaign sections, dependencies, tools, playbooks, packets, and learning hooks into CampaignState.",
-  module: "src/lib/agents/orchestration/cross-domain/",
-  stateField: "campaignState.crossDomainOrchestration",
+    "Route campaign attention across sections, select section-aware tools, prepare cross-domain playbooks, and define learning hooks without execution.",
+  modulePath: "src/lib/agents/orchestration/cross-domain/",
+  campaignStateField: "crossDomainOrchestration",
   api: "/api/agents/cross-domain-orchestration-state",
-  dashboard: "/admin/orchestration#cross-domain-agent-orchestrator",
   safety: [
-    "Preparation only",
-    "No send/SMS/calendar write/finance post/reimbursement submit/export",
-    "Every packet has canExecuteNow false",
-    "Learning hooks suggest observations/lessons but never approve sensitive memory",
+    "Action packets are preparation-only",
+    "canExecuteNow is always false",
+    "No email/SMS/calendar/finance/export/production mutation",
+    "Every packet includes human approvals and learning hooks",
   ],
 } as const;

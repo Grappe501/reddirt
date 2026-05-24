@@ -1,10 +1,11 @@
 /**
  * Cross-Domain Agent Tool Orchestrator — canonical types (Phase 4B).
- * The orchestrator prepares section-aware packets only; it never executes campaign actions.
+ * This layer turns isolated tools into human-gated cross-section campaign packets.
  */
 
 import type { CampaignDomainId } from "../campaign-state-types";
 import type { AgentToolRecommendation, AgentToolSafetyLevel, PreparedAgentAction } from "../tooling/agent-tooling-types";
+import type { OrchestrationSourceHealth } from "../orchestration-source-health";
 
 export type CampaignSectionId =
   | "executive_command"
@@ -26,7 +27,7 @@ export type CampaignSectionId =
   | "public_site"
   | "deployment_readiness";
 
-export type CampaignSectionMapEntry = {
+export type CampaignSection = {
   id: CampaignSectionId;
   label: string;
   mission: string;
@@ -49,18 +50,19 @@ export type CampaignSectionMapEntry = {
 export type CampaignSectionNode = {
   id: CampaignSectionId;
   label: string;
+  domains: CampaignDomainId[];
   health: "strong" | "stable" | "weak" | "blocked";
-  leverageScore: number;
-  summary: string;
-  ownedDomains: CampaignDomainId[];
+  routePaths: string[];
+  toolCount: number;
+  ownerRoles: string[];
 };
 
 export type CampaignSectionEdge = {
   from: CampaignSectionId;
   to: CampaignSectionId;
-  relationship: "unlocks" | "depends_on" | "informs" | "blocks" | "requires_review";
+  relationship: "depends_on" | "unlocks" | "blocks" | "informs" | "requires_review";
   whyItMatters: string;
-  strength: "high" | "medium" | "low";
+  evidence: string[];
 };
 
 export type CrossDomainDependencyGraph = {
@@ -72,54 +74,65 @@ export type CrossDomainDependencyGraph = {
   dependencyWarnings: string[];
 };
 
-export type SectionDiagnosis = {
+export type SectionToolDiagnosis = {
   sectionId: CampaignSectionId;
   label: string;
-  urgency: "P0" | "P1" | "P2";
-  confidence: "high" | "medium" | "low";
-  summary: string;
+  health: CampaignSectionNode["health"];
+  whyNeedsAttention: string;
   affectedSections: CampaignSectionId[];
   recommendedTools: AgentToolRecommendation[];
   blockedTools: string[];
-  missingTools: AgentToolRecommendation[];
+  missingTools: string[];
   humanApprovalGates: string[];
   expectedLearningOutputs: CrossDomainLearningHook[];
 };
 
-export type CrossDomainRouterResult = {
-  sectionDiagnoses: SectionDiagnosis[];
-  recommendedToolsBySection: Record<CampaignSectionId, AgentToolRecommendation[]>;
-  crossSectionSequences: CrossDomainPlaybook[];
-  blockedTools: string[];
-  missingTools: AgentToolRecommendation[];
-  humanApprovalGates: string[];
-  expectedLearningOutputs: CrossDomainLearningHook[];
-  recommendedSectionFocus: SectionDiagnosis | null;
+export type CrossDomainLearningHook = {
+  id: string;
+  playbookId: string;
+  sectionId: CampaignSectionId;
+  prompt: string;
+  expectedObservationType: "recommendation_feedback" | "workflow_outcome" | "event_hot_wash" | "human_decision" | "tool_usage_signal";
+  suggestedLessonType:
+    | "what_worked"
+    | "what_failed"
+    | "county_learning"
+    | "message_learning"
+    | "event_learning"
+    | "workflow_learning"
+    | "tool_learning"
+    | "strategic_warning"
+    | "strategic_opportunity";
+  requiresApproval: boolean;
+  sensitivity: "public" | "internal" | "strategic" | "sensitive";
+  improvesCampaignUnderstandingHow: string;
 };
 
 export type CrossDomainPlaybookStep = {
   order: number;
   sectionId: CampaignSectionId;
-  toolId: string;
+  toolIds: string[];
   title: string;
   purpose: string;
+  output: string;
   safety: AgentToolSafetyLevel;
   humanGateRequired: boolean;
-  expectedOutput: string;
 };
 
 export type CrossDomainPlaybook = {
   id: string;
   title: string;
   summary: string;
-  sections: CampaignSectionId[];
   trigger: string;
+  sections: CampaignSectionId[];
+  domains: CampaignDomainId[];
   steps: CrossDomainPlaybookStep[];
-  outputPacketTitle: string;
-  expectedOutcome: string;
-  humanGateRequired: true;
+  outputs: string[];
+  humanReviewChecklist: string[];
   safetyNotes: string[];
-  learningHookIds: string[];
+  expectedCampaignStateImprovement: string;
+  expectedLessons: string[];
+  learningHooks: CrossDomainLearningHook[];
 };
 
 export type CrossDomainActionPacket = {
@@ -139,51 +152,42 @@ export type CrossDomainActionPacket = {
   expectedLessons: string[];
   doneWhen: string;
   safetySummary: {
-    autoExecutionDisabled: true;
     canExecuteNow: false;
+    autoExecutionDisabled: true;
     restrictedActions: string[];
+    humanGateRequired: true;
   };
   createdAt: string;
-};
-
-export type CrossDomainLearningHook = {
-  id: string;
-  playbookId: string;
-  packetId?: string;
-  sectionId: CampaignSectionId;
-  prompt: string;
-  expectedObservationType: "recommendation_feedback" | "workflow_outcome" | "event_hot_wash" | "human_decision" | "tool_usage_signal";
-  suggestedLessonType: "what_worked" | "what_failed" | "emerging_pattern" | "county_learning" | "message_learning" | "workflow_learning" | "knowledge_gap";
-  requiresApproval: boolean;
-  sensitivity: "public" | "internal" | "strategic" | "sensitive";
-  updatesCampaignStateFields: string[];
 };
 
 export type CrossDomainSectionCoverage = {
   sectionId: CampaignSectionId;
   readyToolCount: number;
+  plannedToolCount: number;
   blockedToolCount: number;
   coverageStatus: "strong" | "adequate" | "weak" | "missing";
-  bestNextTool?: string;
+  recommendedNextTool: string;
 };
 
 export type CrossDomainSafetySummary = {
   autoExecutionDisabled: true;
+  packetsArePreparationOnly: true;
   humanGateRequired: true;
-  packetCount: number;
   restrictedActions: string[];
-  unsafeExecutionButtonsExposed: false;
+  approvalGateCount: number;
 };
 
 export type CrossDomainOrchestrationState = {
-  sectionMap: CampaignSectionMapEntry[];
+  sectionMap: CampaignSection[];
   dependencyGraph: CrossDomainDependencyGraph;
-  recommendedSectionFocus: SectionDiagnosis | null;
+  recommendedSectionFocus: SectionToolDiagnosis | null;
+  sectionDiagnoses: SectionToolDiagnosis[];
   playbooks: CrossDomainPlaybook[];
   actionPackets: CrossDomainActionPacket[];
   learningHooks: CrossDomainLearningHook[];
   sectionCoverage: CrossDomainSectionCoverage[];
   safetySummary: CrossDomainSafetySummary;
+  sourceHealth: OrchestrationSourceHealth[];
   summary: string;
 };
 
@@ -199,17 +203,19 @@ export function emptyCrossDomainOrchestrationState(): CrossDomainOrchestrationSt
       dependencyWarnings: [],
     },
     recommendedSectionFocus: null,
+    sectionDiagnoses: [],
     playbooks: [],
     actionPackets: [],
     learningHooks: [],
     sectionCoverage: [],
     safetySummary: {
       autoExecutionDisabled: true,
+      packetsArePreparationOnly: true,
       humanGateRequired: true,
-      packetCount: 0,
       restrictedActions: [],
-      unsafeExecutionButtonsExposed: false,
+      approvalGateCount: 0,
     },
+    sourceHealth: [],
     summary: "Cross-domain agent orchestrator not loaded.",
   };
 }

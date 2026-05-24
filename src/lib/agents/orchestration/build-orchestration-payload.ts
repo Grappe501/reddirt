@@ -147,14 +147,12 @@ export async function buildOrchestrationStatePayload(
   const { state, sourceHealth, bundle } = await loadCampaignOrchestrationSignals(period, { pathname, role });
   const diagnosis = runOrchestrationReasoning(state);
   const agentTooling = buildAgentToolingState({ state, sourceHealth, diagnosis, role, period });
-  const crossDomainOrchestration = buildCrossDomainOrchestrationState({ state: { ...state, agentTooling }, sourceHealth, agentTooling, role, period });
+  const crossDomainOrchestration = buildCrossDomainOrchestrationState({ state, sourceHealth, agentTooling, role, period });
   const enrichedDiagnosis = {
     ...diagnosis,
     toolBuildGaps: [
       ...(crossDomainOrchestration.recommendedSectionFocus
-        ? [
-            `Cross-domain focus: ${crossDomainOrchestration.recommendedSectionFocus.label} — ${crossDomainOrchestration.recommendedSectionFocus.summary}`,
-          ]
+        ? [`Section focus: ${crossDomainOrchestration.recommendedSectionFocus.label} — ${crossDomainOrchestration.recommendedSectionFocus.whyNeedsAttention}`]
         : []),
       ...(agentTooling.bestNextToolForCampaignState
         ? [`Best next tool: ${agentTooling.bestNextToolForCampaignState.title} — ${agentTooling.bestNextToolForCampaignState.whyNow}`]

@@ -71,10 +71,6 @@ export function OrchestrationCommandCenter({ payload }: { payload: Orchestration
           <Link href="/api/agents/orchestration-tooling-state" className="font-bold text-kelly-navy underline">
             Tooling API
           </Link>
-          {" · "}
-          <Link href="/api/agents/cross-domain-orchestration-state" className="font-bold text-kelly-navy underline">
-            Cross-domain API
-          </Link>
         </p>
       </header>
 
