@@ -10,6 +10,7 @@ import { OrchestrationLearningPanel } from "./OrchestrationLearningPanel";
 import { OrchestrationKnowledgeMemoryPanel } from "./OrchestrationKnowledgeMemoryPanel";
 import { OrchestrationAgentToolingPanel } from "./OrchestrationAgentToolingPanel";
 import { OrchestrationFeedbackLoopPanel } from "./OrchestrationFeedbackLoopPanel";
+import { OrchestrationCrossDomainPanel } from "./OrchestrationCrossDomainPanel";
 import { OrchestrationSafetyGateCard } from "./OrchestrationSafetyGateCard";
 
 export function OrchestrationCommandCenter({ payload }: { payload: OrchestrationStatePayload }) {
@@ -70,6 +71,10 @@ export function OrchestrationCommandCenter({ payload }: { payload: Orchestration
           <Link href="/api/agents/orchestration-tooling-state" className="font-bold text-kelly-navy underline">
             Tooling API
           </Link>
+          {" · "}
+          <Link href="/api/agents/cross-domain-orchestration-state" className="font-bold text-kelly-navy underline">
+            Cross-domain API
+          </Link>
         </p>
       </header>
 
@@ -101,6 +106,7 @@ export function OrchestrationCommandCenter({ payload }: { payload: Orchestration
       <OrchestrationKnowledgeMemoryPanel knowledge={campaignState.knowledge} />
       <OrchestrationAgentToolingPanel tooling={payload.agentTooling} />
       <OrchestrationFeedbackLoopPanel payload={payload} />
+      <OrchestrationCrossDomainPanel state={payload.crossDomainOrchestration} />
       <OrchestrationLearningPanel insights={payload.learningInsights} />
       <OrchestrationSafetyGateCard safety={payload.safety} />
     </div>

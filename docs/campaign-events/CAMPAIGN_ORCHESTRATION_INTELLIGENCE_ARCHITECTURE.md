@@ -96,6 +96,27 @@ Every future tool must answer:
 
 ---
 
+### 10. Cross-domain agent tool orchestrator (Phase 4B)
+
+| Component | Module |
+|-----------|--------|
+| Section map | `cross-domain/campaign-section-map.ts` |
+| Dependency graph | `cross-domain/cross-domain-dependency-graph.ts` |
+| Tool router | `cross-domain/cross-domain-tool-router.ts` |
+| Playbook engine | `cross-domain/cross-domain-playbook-engine.ts` |
+| Action packets | `cross-domain/cross-domain-action-packets.ts` |
+| Learning hooks | `cross-domain/cross-domain-learning-hooks.ts` |
+| State builder | `cross-domain/cross-domain-orchestration-state.ts` |
+
+**CampaignState field:** `crossDomainOrchestration` — sectionMap, dependencyGraph, recommendedSectionFocus, playbooks, actionPackets, learningHooks, sectionCoverage, safetySummary
+
+**API:** `GET /api/agents/cross-domain-orchestration-state`  
+**Test:** `npm run agents:test-cross-domain-orchestrator`
+
+**Progress:** `[████████░░] 85%` functional V1
+
+---
+
 ### 2. Context layer
 
 | Composer | Output |

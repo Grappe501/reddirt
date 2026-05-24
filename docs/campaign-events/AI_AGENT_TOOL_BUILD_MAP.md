@@ -66,6 +66,21 @@
 
 ---
 
+## Cross-Domain Agent Tool Orchestrator (Phase 4B)
+
+| Artifact | Path |
+|----------|------|
+| Module | `src/lib/agents/orchestration/cross-domain/` |
+| Handoff | [`ORCHESTRATION_PHASE_4B_CROSS_DOMAIN_AGENT_ORCHESTRATOR_HANDOFF.md`](./ORCHESTRATION_PHASE_4B_CROSS_DOMAIN_AGENT_ORCHESTRATOR_HANDOFF.md) |
+| Test | `npm run agents:test-cross-domain-orchestrator` |
+| Read-only API | `GET /api/agents/cross-domain-orchestration-state` |
+| CampaignState field | `campaignState.crossDomainOrchestration` |
+| Dashboard | `/admin/orchestration` — Cross-Domain Agent Orchestrator |
+| Sections | 18 campaign sections |
+| Playbooks | County activation, comms-to-field, event intelligence, CM daily, compliance-safe ops, deployment readiness |
+
+---
+
 | Artifact | Path |
 |----------|------|
 | Full inventory | [`GLOBAL_AI_AGENT_TOOL_INVENTORY.md`](./GLOBAL_AI_AGENT_TOOL_INVENTORY.md) |

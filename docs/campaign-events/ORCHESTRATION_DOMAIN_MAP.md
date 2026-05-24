@@ -45,6 +45,10 @@ Communications → Volunteer              (retention router)
 County → Calendar                       (event proposals, tentative only)
 ```
 
+**Phase 4B live:** `src/lib/agents/orchestration/cross-domain/` adds a campaign section map above these 20 domains. Sections include executive command, county intelligence, communications, Email OS/ECC, events/calendar, volunteer/field, finance/reimbursement, compliance, content/media, donor/fundraising, scheduling, research/strategy, Ask Kelly, tool builder, training/copilots, memory/observations, public site, and deployment readiness.
+
+**CampaignState field:** `crossDomainOrchestration`
+
 ---
 
 ## Observation prefixes by domain

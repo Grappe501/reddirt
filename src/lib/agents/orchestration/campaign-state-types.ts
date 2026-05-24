@@ -10,6 +10,8 @@ import type { AgentToolingState } from "@/lib/agents/orchestration/tooling/agent
 import { emptyAgentToolingState } from "@/lib/agents/orchestration/tooling/agent-tooling-types";
 import type { FeedbackLoopState } from "@/lib/agents/orchestration/feedback/orchestration-feedback-types";
 import { emptyFeedbackLoopState } from "@/lib/agents/orchestration/feedback/orchestration-feedback-types";
+import type { CrossDomainOrchestrationState } from "@/lib/agents/orchestration/cross-domain/cross-domain-orchestrator-types";
+import { emptyCrossDomainOrchestrationState } from "@/lib/agents/orchestration/cross-domain/cross-domain-orchestrator-types";
 
 export type CampaignHealthBand = "critical" | "weak" | "stable" | "strong";
 
@@ -174,6 +176,8 @@ export type CampaignState = {
   agentTooling: AgentToolingState;
   /** Phase 3B — human feedback + lesson approval learning loop. */
   feedbackLoop: FeedbackLoopState;
+  /** Phase 4B — section-aware cross-domain agent tool orchestrator. */
+  crossDomainOrchestration: CrossDomainOrchestrationState;
 };
 
 export function emptyDomainSlice(domainId: CampaignDomainId, summary = "Signal not loaded"): DomainHealthSlice {
@@ -268,5 +272,6 @@ export function buildSkeletonCampaignState(period = "2026-04"): CampaignState {
     knowledgeMemory: emptyKnowledgeMemorySlice(),
     agentTooling: emptyAgentToolingState(),
     feedbackLoop: emptyFeedbackLoopState(),
+    crossDomainOrchestration: emptyCrossDomainOrchestrationState(),
   };
 }

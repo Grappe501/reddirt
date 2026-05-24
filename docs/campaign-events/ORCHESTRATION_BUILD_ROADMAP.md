@@ -12,9 +12,9 @@
 | **2** | CampaignState loader + reasoning API | `[██████████] 100%` |
 | **2B** | Command center orchestration panel | `[████████░░] 85%` |
 | **3A** | Knowledge graph + lessons engine | `[████████░░] 85%` |
-| **3B** | Recommendation feedback + lesson approval UI | `[████████░░] 85%` ← **this phase** |
+| **3B** | Recommendation feedback + lesson approval UI | `[████████░░] 85%` |
 | **4A** | AI Agent Tooling Brain | `[████████░░] 85%` |
-| **4B** | Tool outcome feedback + role-scoped UI | `[░░░░░░░░░░] 0%` |
+| **4B** | Cross-domain agent tool orchestrator | `[████████░░] 85%` ← **this phase** |
 | **5** | Role-specific orchestration delivery | `[██░░░░░░░░] 20%` |
 | **6** | Memory review + learning loop | `[██░░░░░░░░] 20%` |
 | **7** | Dashboard adaptation + workspaces | `[█░░░░░░░░░] 10%` |
@@ -168,6 +168,36 @@
 
 - Orchestration panel shows recommended tools, sequences, prepared actions ✅
 - API `/api/agents/orchestration-tooling-state` read-only ✅
+
+---
+
+## Phase 4B — Cross-Domain Agent Tool Orchestrator ✅ (functional)
+
+**Goals**
+
+- Canonical campaign section map across 18 major sections ✅
+- Dependency graph showing section leverage, blocked sections, and warnings ✅
+- Tool router that selects tools by section/domain and identifies section focus ✅
+- Six cross-domain playbooks with human-gated action packets ✅
+- Learning hooks for what the AI should capture after packet review ✅
+- `CampaignState.crossDomainOrchestration` + dashboard + read-only API ✅
+
+**Files**
+
+- `src/lib/agents/orchestration/cross-domain/*`
+- `src/app/api/agents/cross-domain-orchestration-state/route.ts`
+- `OrchestrationCrossDomainPanel.tsx`
+- `ORCHESTRATION_PHASE_4B_CROSS_DOMAIN_AGENT_ORCHESTRATOR_HANDOFF.md`
+
+**Tests**
+
+- `agents:test-cross-domain-orchestrator` ✅
+- `agents:test-orchestration-state` (crossDomainOrchestration assert) ✅
+
+**Done when**
+
+- Command center shows recommended section focus, playbooks, packets, hooks, and safety gates ✅
+- All packets remain non-executing and human-gated ✅
 
 ---
 

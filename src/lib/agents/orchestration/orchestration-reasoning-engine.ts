@@ -80,6 +80,9 @@ export function runOrchestrationReasoning(state: CampaignState): OrchestrationDi
   if (state.feedbackLoop.feedbackHealth.failedCount > 0) {
     topRisks.push("Feedback loop shows failed recommendations — avoid repeating those patterns without correction.");
   }
+  for (const warning of state.crossDomainOrchestration.dependencyGraph.dependencyWarnings.slice(0, 2)) {
+    topRisks.push(warning);
+  }
 
   const workflowRecommendations: string[] = ["campaign-manager-daily"];
 
@@ -181,6 +184,17 @@ export function runOrchestrationReasoning(state: CampaignState): OrchestrationDi
     );
   }
 
+  if (state.crossDomainOrchestration.recommendedSectionFocus && topMoves.length < 3) {
+    const focus = state.crossDomainOrchestration.recommendedSectionFocus;
+    addMove(
+      `Focus ${focus.label}`,
+      `${focus.summary} This section unlocks ${focus.affectedSections.length} downstream section(s).`,
+      "/admin/orchestration",
+      focus.urgency,
+      focus.recommendedTools[0]?.domain ?? "campaign_management",
+    );
+  }
+
   for (const pattern of state.feedbackLoop.failedPatterns.slice(0, 1)) {
     if (topMoves.length >= 3) break;
     addMove(
@@ -215,6 +229,7 @@ export function runOrchestrationReasoning(state: CampaignState): OrchestrationDi
     topBlockers.length ? `${topBlockers.length} active blocker(s).` : "No P0/P1 blockers.",
     state.knowledge.graphHealth.lessonCount ? `${state.knowledge.graphHealth.lessonCount} campaign lesson(s) in memory.` : "",
     state.feedbackLoop.feedbackHealth.confidence !== "low" ? `Feedback loop confidence ${state.feedbackLoop.feedbackHealth.confidence}.` : "",
+    state.crossDomainOrchestration.recommendedSectionFocus ? `Section focus: ${state.crossDomainOrchestration.recommendedSectionFocus.label}.` : "",
     topMoves.length ? `Top move: ${topMoves[0].title}.` : "Review workflow recommendations.",
   ]
     .filter(Boolean)

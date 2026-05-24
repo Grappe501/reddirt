@@ -20,6 +20,8 @@ import {
 import { buildSkeletonCampaignState } from "./campaign-state-types";
 import { buildAgentToolingState, emptyAgentToolingState } from "./tooling/agent-tooling-state";
 import type { AgentToolingState } from "./tooling/agent-tooling-types";
+import { buildCrossDomainOrchestrationState, emptyCrossDomainOrchestrationState } from "./cross-domain/cross-domain-orchestration-state";
+import type { CrossDomainOrchestrationState } from "./cross-domain/cross-domain-orchestrator-types";
 
 export type OrchestrationSafetyPayload = {
   humanGateRequired: true;
@@ -50,6 +52,7 @@ export type OrchestrationStatePayload = {
   safety: OrchestrationSafetyPayload;
   learningInsights: OrchestrationLearningInsight;
   agentTooling: AgentToolingState;
+  crossDomainOrchestration: CrossDomainOrchestrationState;
   errors?: string[];
 };
 
@@ -114,6 +117,7 @@ export function normalizeOrchestrationPayload(
       unknownSummary: "",
     },
     agentTooling: emptyAgentToolingState(),
+    crossDomainOrchestration: emptyCrossDomainOrchestrationState(),
     ...(partial.errors?.length ? { errors: partial.errors } : {}),
   };
   base.learningInsights = buildOrchestrationLearningInsights(base);
@@ -122,6 +126,12 @@ export function normalizeOrchestrationPayload(
     base.campaignState = { ...base.campaignState, agentTooling: partial.agentTooling };
   } else if (base.campaignState.agentTooling?.registryToolCount) {
     base.agentTooling = base.campaignState.agentTooling;
+  }
+  if (partial.crossDomainOrchestration) {
+    base.crossDomainOrchestration = partial.crossDomainOrchestration;
+    base.campaignState = { ...base.campaignState, crossDomainOrchestration: partial.crossDomainOrchestration };
+  } else if (base.campaignState.crossDomainOrchestration?.sectionMap.length) {
+    base.crossDomainOrchestration = base.campaignState.crossDomainOrchestration;
   }
   return base;
 }
@@ -137,9 +147,15 @@ export async function buildOrchestrationStatePayload(
   const { state, sourceHealth, bundle } = await loadCampaignOrchestrationSignals(period, { pathname, role });
   const diagnosis = runOrchestrationReasoning(state);
   const agentTooling = buildAgentToolingState({ state, sourceHealth, diagnosis, role, period });
+  const crossDomainOrchestration = buildCrossDomainOrchestrationState({ state: { ...state, agentTooling }, sourceHealth, agentTooling, role, period });
   const enrichedDiagnosis = {
     ...diagnosis,
     toolBuildGaps: [
+      ...(crossDomainOrchestration.recommendedSectionFocus
+        ? [
+            `Cross-domain focus: ${crossDomainOrchestration.recommendedSectionFocus.label} — ${crossDomainOrchestration.recommendedSectionFocus.summary}`,
+          ]
+        : []),
       ...(agentTooling.bestNextToolForCampaignState
         ? [`Best next tool: ${agentTooling.bestNextToolForCampaignState.title} — ${agentTooling.bestNextToolForCampaignState.whyNow}`]
         : []),
@@ -150,7 +166,7 @@ export async function buildOrchestrationStatePayload(
       ...diagnosis.toolBuildGaps,
     ].slice(0, 8),
   };
-  const campaignState = { ...state, agentTooling };
+  const campaignState = { ...state, agentTooling, crossDomainOrchestration };
   const recommendedWorkflows = activateWorkflowsFromState(campaignState, enrichedDiagnosis);
   const partialErrors = bundle.errors.length > 0 ? bundle.errors : undefined;
 
@@ -168,6 +184,7 @@ export async function buildOrchestrationStatePayload(
     sourceHealth,
     safety: buildSafety(),
     agentTooling,
+    crossDomainOrchestration,
     ...(partialErrors ? { errors: partialErrors } : {}),
   });
 }

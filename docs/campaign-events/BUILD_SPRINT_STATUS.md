@@ -1,6 +1,27 @@
 # Kelly OS Build Status
 
-## Latest: Feedback + Lesson Approval Loop — Phase 3B
+## Latest: Cross-Domain Agent Tool Orchestrator — Phase 4B
+
+| Item | Status |
+|------|--------|
+| Module `orchestration/cross-domain/` | **Functional** |
+| Campaign section map (18 sections) | **Live** |
+| Dependency graph | **Functional** |
+| Section-aware tool router | **Functional** |
+| Cross-domain playbook engine | **Functional** |
+| Non-executing action packets | **Functional** |
+| Learning hooks | **Functional** |
+| `CampaignState.crossDomainOrchestration` | **Live** |
+| `GET /api/agents/cross-domain-orchestration-state` | **Live** (read-only) |
+| Dashboard **Cross-Domain Agent Orchestrator** panel | **Functional** |
+| `agents:test-cross-domain-orchestrator` | **PASS** |
+
+**Handoff:** `ORCHESTRATION_PHASE_4B_CROSS_DOMAIN_AGENT_ORCHESTRATOR_HANDOFF.md`  
+**Next:** Phase 5 — role-scoped orchestration delivery and packet review workflow
+
+---
+
+## Prior: Feedback + Lesson Approval Loop — Phase 3B
 
 | Item | Status |
 |------|--------|
