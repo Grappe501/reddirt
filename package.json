@@ -96,6 +96,8 @@
     "agents:test-agent-tooling-brain": "tsx scripts/test-agent-tooling-brain.ts",
     "agents:test-orchestration-feedback-loop": "tsx scripts/test-orchestration-feedback-loop.ts",
     "agents:test-cross-domain-orchestrator": "tsx scripts/test-cross-domain-orchestrator.ts",
+    "agents:test-continuous-optimization": "tsx scripts/test-continuous-optimization.ts",
+    "agents:test-role-copilot-network": "tsx scripts/test-role-copilot-network.ts",
     "campaign-events:test-volunteer-system": "tsx scripts/test-volunteer-system.ts",
     "compliance:april26:qa": "tsx scripts/compliance/qa-april26-ingest.ts",
     "compliance:approval:build": "tsx scripts/compliance/build-approval-queue.ts",

@@ -11,6 +11,7 @@ import { OrchestrationKnowledgeMemoryPanel } from "./OrchestrationKnowledgeMemor
 import { OrchestrationAgentToolingPanel } from "./OrchestrationAgentToolingPanel";
 import { OrchestrationFeedbackLoopPanel } from "./OrchestrationFeedbackLoopPanel";
 import { OrchestrationCrossDomainPanel } from "./OrchestrationCrossDomainPanel";
+import { OrchestrationRoleCopilotPanel } from "./OrchestrationRoleCopilotPanel";
 import { OrchestrationSafetyGateCard } from "./OrchestrationSafetyGateCard";
 
 export function OrchestrationCommandCenter({ payload }: { payload: OrchestrationStatePayload }) {
@@ -103,6 +104,7 @@ export function OrchestrationCommandCenter({ payload }: { payload: Orchestration
       <OrchestrationAgentToolingPanel tooling={payload.agentTooling} />
       <OrchestrationFeedbackLoopPanel payload={payload} />
       <OrchestrationCrossDomainPanel state={payload.crossDomainOrchestration} />
+      <OrchestrationRoleCopilotPanel state={payload.campaignState.roleCopilots} />
       <OrchestrationLearningPanel insights={payload.learningInsights} />
       <OrchestrationSafetyGateCard safety={payload.safety} />
     </div>

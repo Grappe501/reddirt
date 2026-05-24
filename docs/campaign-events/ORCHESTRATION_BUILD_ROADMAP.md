@@ -15,7 +15,8 @@
 | **3B** | Recommendation feedback + lesson approval UI | `[████████░░] 85%` ← **this phase** |
 | **4A** | AI Agent Tooling Brain | `[████████░░] 85%` |
 | **4B** | Cross-domain agent tool orchestrator | `[████████░░] 85%` ← **this phase** |
-| **5** | Role-specific orchestration delivery | `[██░░░░░░░░] 20%` |
+| **4D** | Role Copilot Orchestration Network | `[████████░░] 85%` ← **this phase** |
+| **5** | Role-specific orchestration delivery | `[███████░░░] 70%` |
 | **6** | Memory review + learning loop | `[██░░░░░░░░] 20%` |
 | **7** | Dashboard adaptation + workspaces | `[█░░░░░░░░░] 10%` |
 | **8** | Presentation / demo polish | `[█░░░░░░░░░] 10%` |
@@ -198,6 +199,35 @@
 
 - Command center shows section focus, dependency warnings, playbooks, packets, hooks, and safety gates ✅
 - All packets remain preparation-only with no unsafe execution controls ✅
+
+---
+
+## Phase 4D — Role Copilot Orchestration Network ✅ (functional)
+
+**Goals**
+
+- Canonical 15-role campaign registry ✅
+- Role briefings from CampaignState ✅
+- Role tool router with approval gates ✅
+- Non-executing role workflow planner ✅
+- Role training model + learning prompts ✅
+- `CampaignState.roleCopilots` + dashboard panel ✅
+
+**Files**
+
+- `src/lib/agents/orchestration/role-copilots/*`
+- `src/app/api/agents/role-copilot-state/route.ts`
+- `OrchestrationRoleCopilotPanel.tsx`
+- `ORCHESTRATION_PHASE_4D_ROLE_COPILOT_NETWORK_HANDOFF.md`
+
+**Tests**
+
+- `agents:test-role-copilot-network` ✅
+
+**Done when**
+
+- Command center shows role briefings, tools, workflows, training, learning prompts, and approval boundaries ✅
+- Role workflows remain preparation-only with no unsafe execution controls ✅
 
 ---
 

@@ -82,6 +82,19 @@ Orchestration slice:
 
 ---
 
+## Phase 4D live — Role Copilot Orchestration Network
+
+`src/lib/agents/orchestration/role-copilots/` now creates CampaignState-aware role briefings, role tool routes, non-executing workflows, training plans, and learning prompts.
+
+**CampaignState field:** `roleCopilots`  
+**API:** `GET /api/agents/role-copilot-state?role=campaign_manager&period=2026-04`  
+**Dashboard:** `/admin/orchestration` → Role Copilot Network  
+**Test:** `npm run agents:test-role-copilot-network`
+
+Roles covered: campaign manager, candidate, communications director, field director, volunteer coordinator, finance director, compliance lead, scheduler, county lead, digital director, research director, data director, content director, event lead, operations lead.
+
+---
+
 ## Anti-patterns (teach explicitly)
 
 - Running tools without reading **campaign diagnosis**

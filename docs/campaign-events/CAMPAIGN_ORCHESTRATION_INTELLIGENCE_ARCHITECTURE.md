@@ -117,6 +117,27 @@ Every future tool must answer:
 
 ---
 
+### 11. Role Copilot Orchestration Network (Phase 4D)
+
+| Component | Module |
+|-----------|--------|
+| Role registry | `role-copilots/campaign-role-registry.ts` |
+| Briefing engine | `role-copilots/role-briefing-engine.ts` |
+| Tool router | `role-copilots/role-tool-router.ts` |
+| Workflow planner | `role-copilots/role-workflow-planner.ts` |
+| Training engine | `role-copilots/role-training-engine.ts` |
+| Learning prompts | `role-copilots/role-learning-prompts.ts` |
+| State builder | `role-copilots/role-copilot-state.ts` |
+
+**CampaignState field:** `roleCopilots` — roles, activeRoleBriefing, roleBriefings, roleToolRoutes, roleWorkflows, roleTraining, roleLearningPrompts
+
+**API:** `GET /api/agents/role-copilot-state`  
+**Test:** `npm run agents:test-role-copilot-network`
+
+**Progress:** `[████████░░] 85%` functional V1
+
+---
+
 ### 2. Context layer
 
 | Composer | Output |

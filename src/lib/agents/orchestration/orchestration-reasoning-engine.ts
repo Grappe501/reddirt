@@ -83,6 +83,9 @@ export function runOrchestrationReasoning(state: CampaignState): OrchestrationDi
   if (state.crossDomainOrchestration.dependencyGraph.dependencyWarnings.length > 0) {
     topRisks.push(state.crossDomainOrchestration.dependencyGraph.dependencyWarnings[0]);
   }
+  if (state.roleCopilots.activeRoleBriefing?.pendingApprovals.length) {
+    topRisks.push(`Role copilot pending approvals: ${state.roleCopilots.activeRoleBriefing.pendingApprovals[0]}`);
+  }
 
   const workflowRecommendations: string[] = ["campaign-manager-daily"];
 
@@ -224,12 +227,24 @@ export function runOrchestrationReasoning(state: CampaignState): OrchestrationDi
     );
   }
 
+  if (state.roleCopilots.activeRoleBriefing && topMoves.length < 3) {
+    const briefing = state.roleCopilots.activeRoleBriefing;
+    addMove(
+      `Brief ${briefing.role.label}`,
+      briefing.topPriorities[0] ?? briefing.executiveSummary,
+      "/admin/orchestration",
+      "P2",
+      briefing.role.ownedDomains[0] ?? "campaign_management",
+    );
+  }
+
   const executiveSummary = [
     state.executiveSummary,
     topBlockers.length ? `${topBlockers.length} active blocker(s).` : "No P0/P1 blockers.",
     state.knowledge.graphHealth.lessonCount ? `${state.knowledge.graphHealth.lessonCount} campaign lesson(s) in memory.` : "",
     state.feedbackLoop.feedbackHealth.confidence !== "low" ? `Feedback loop confidence ${state.feedbackLoop.feedbackHealth.confidence}.` : "",
     state.crossDomainOrchestration.recommendedSectionFocus ? `Section focus: ${state.crossDomainOrchestration.recommendedSectionFocus.label}.` : "",
+    state.roleCopilots.activeRoleBriefing ? `Active role: ${state.roleCopilots.activeRoleBriefing.role.label}.` : "",
     topMoves.length ? `Top move: ${topMoves[0].title}.` : "Review workflow recommendations.",
   ]
     .filter(Boolean)

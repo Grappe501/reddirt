@@ -1,6 +1,27 @@
 # Kelly OS Build Status
 
-## Latest: Cross-Domain Agent Tool Orchestrator — Phase 4B
+## Latest: Role Copilot Orchestration Network — Phase 4D
+
+| Item | Status |
+|------|--------|
+| Module `orchestration/role-copilots/` | **Functional** |
+| Campaign role registry (15 roles) | **Complete** |
+| Role briefing engine | **Functional** |
+| Role tool router | **Functional** |
+| Role workflow planner | **Functional** |
+| Role training model | **Functional** |
+| Role learning prompts | **Functional** |
+| `CampaignState.roleCopilots` | **Live** |
+| `GET /api/agents/role-copilot-state` | **Live** (read-only) |
+| Dashboard **Role Copilot Network** panel | **Functional** |
+| `agents:test-role-copilot-network` | **PASS** |
+
+**Handoff:** `ORCHESTRATION_PHASE_4D_ROLE_COPILOT_NETWORK_HANDOFF.md`  
+**Next:** Role-scoped packet review and richer outcome capture
+
+---
+
+## Prior: Cross-Domain Agent Tool Orchestrator — Phase 4B
 
 | Item | Status |
 |------|--------|

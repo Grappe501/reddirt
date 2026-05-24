@@ -22,6 +22,8 @@ import { buildAgentToolingState, emptyAgentToolingState } from "./tooling/agent-
 import type { AgentToolingState } from "./tooling/agent-tooling-types";
 import { buildCrossDomainOrchestrationState, emptyCrossDomainOrchestrationState } from "./cross-domain/cross-domain-orchestration-state";
 import type { CrossDomainOrchestrationState } from "./cross-domain/cross-domain-orchestrator-types";
+import { buildRoleCopilotNetworkState, emptyRoleCopilotNetworkState } from "./role-copilots/role-copilot-state";
+import type { RoleCopilotNetworkState } from "./role-copilots/role-copilot-types";
 
 export type OrchestrationSafetyPayload = {
   humanGateRequired: true;
@@ -53,6 +55,7 @@ export type OrchestrationStatePayload = {
   learningInsights: OrchestrationLearningInsight;
   agentTooling: AgentToolingState;
   crossDomainOrchestration: CrossDomainOrchestrationState;
+  roleCopilots: RoleCopilotNetworkState;
   errors?: string[];
 };
 
@@ -118,6 +121,7 @@ export function normalizeOrchestrationPayload(
     },
     agentTooling: emptyAgentToolingState(),
     crossDomainOrchestration: emptyCrossDomainOrchestrationState(),
+    roleCopilots: emptyRoleCopilotNetworkState(),
     ...(partial.errors?.length ? { errors: partial.errors } : {}),
   };
   base.learningInsights = buildOrchestrationLearningInsights(base);
@@ -132,6 +136,12 @@ export function normalizeOrchestrationPayload(
     base.campaignState = { ...base.campaignState, crossDomainOrchestration: partial.crossDomainOrchestration };
   } else if (base.campaignState.crossDomainOrchestration?.sectionMap.length) {
     base.crossDomainOrchestration = base.campaignState.crossDomainOrchestration;
+  }
+  if (partial.roleCopilots) {
+    base.roleCopilots = partial.roleCopilots;
+    base.campaignState = { ...base.campaignState, roleCopilots: partial.roleCopilots };
+  } else if (base.campaignState.roleCopilots?.roles.length) {
+    base.roleCopilots = base.campaignState.roleCopilots;
   }
   return base;
 }
@@ -148,9 +158,13 @@ export async function buildOrchestrationStatePayload(
   const diagnosis = runOrchestrationReasoning(state);
   const agentTooling = buildAgentToolingState({ state, sourceHealth, diagnosis, role, period });
   const crossDomainOrchestration = buildCrossDomainOrchestrationState({ state, sourceHealth, agentTooling, role, period });
+  const roleCopilots = buildRoleCopilotNetworkState({ state, agentTooling, crossDomainOrchestration });
   const enrichedDiagnosis = {
     ...diagnosis,
     toolBuildGaps: [
+      ...(roleCopilots.activeRoleBriefing
+        ? [`Role briefing: ${roleCopilots.activeRoleBriefing.role.label} — ${roleCopilots.activeRoleBriefing.topPriorities[0] ?? "review role plan"}`]
+        : []),
       ...(crossDomainOrchestration.recommendedSectionFocus
         ? [`Section focus: ${crossDomainOrchestration.recommendedSectionFocus.label} — ${crossDomainOrchestration.recommendedSectionFocus.whyNeedsAttention}`]
         : []),
@@ -164,7 +178,7 @@ export async function buildOrchestrationStatePayload(
       ...diagnosis.toolBuildGaps,
     ].slice(0, 8),
   };
-  const campaignState = { ...state, agentTooling, crossDomainOrchestration };
+  const campaignState = { ...state, agentTooling, crossDomainOrchestration, roleCopilots };
   const recommendedWorkflows = activateWorkflowsFromState(campaignState, enrichedDiagnosis);
   const partialErrors = bundle.errors.length > 0 ? bundle.errors : undefined;
 
@@ -183,6 +197,7 @@ export async function buildOrchestrationStatePayload(
     safety: buildSafety(),
     agentTooling,
     crossDomainOrchestration,
+    roleCopilots,
     ...(partialErrors ? { errors: partialErrors } : {}),
   });
 }

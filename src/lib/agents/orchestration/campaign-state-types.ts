@@ -12,6 +12,8 @@ import type { FeedbackLoopState } from "@/lib/agents/orchestration/feedback/orch
 import { emptyFeedbackLoopState } from "@/lib/agents/orchestration/feedback/orchestration-feedback-types";
 import type { CrossDomainOrchestrationState } from "@/lib/agents/orchestration/cross-domain/cross-domain-orchestrator-types";
 import { emptyCrossDomainOrchestrationState } from "@/lib/agents/orchestration/cross-domain/cross-domain-orchestrator-types";
+import type { RoleCopilotNetworkState } from "@/lib/agents/orchestration/role-copilots/role-copilot-types";
+import { emptyRoleCopilotNetworkState } from "@/lib/agents/orchestration/role-copilots/role-copilot-types";
 
 export type CampaignHealthBand = "critical" | "weak" | "stable" | "strong";
 
@@ -178,6 +180,8 @@ export type CampaignState = {
   feedbackLoop: FeedbackLoopState;
   /** Phase 4B — cross-domain section/tool/playbook orchestrator. */
   crossDomainOrchestration: CrossDomainOrchestrationState;
+  /** Phase 4D — role-specific copilot orchestration network. */
+  roleCopilots: RoleCopilotNetworkState;
 };
 
 export function emptyDomainSlice(domainId: CampaignDomainId, summary = "Signal not loaded"): DomainHealthSlice {
@@ -273,5 +277,6 @@ export function buildSkeletonCampaignState(period = "2026-04"): CampaignState {
     agentTooling: emptyAgentToolingState(),
     feedbackLoop: emptyFeedbackLoopState(),
     crossDomainOrchestration: emptyCrossDomainOrchestrationState(),
+    roleCopilots: emptyRoleCopilotNetworkState(),
   };
 }

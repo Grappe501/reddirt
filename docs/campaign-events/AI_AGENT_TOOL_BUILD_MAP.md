@@ -79,6 +79,19 @@
 
 ---
 
+## Role Copilot Orchestration Network (Phase 4D)
+
+| Artifact | Path |
+|----------|------|
+| Module | `src/lib/agents/orchestration/role-copilots/` |
+| Handoff | [`ORCHESTRATION_PHASE_4D_ROLE_COPILOT_NETWORK_HANDOFF.md`](./ORCHESTRATION_PHASE_4D_ROLE_COPILOT_NETWORK_HANDOFF.md) |
+| Test | `npm run agents:test-role-copilot-network` |
+| Read-only API | `GET /api/agents/role-copilot-state` |
+| CampaignState field | `campaignState.roleCopilots` |
+| Dashboard | `/admin/orchestration` — Role Copilot Network |
+
+---
+
 | Artifact | Path |
 |----------|------|
 | Full inventory | [`GLOBAL_AI_AGENT_TOOL_INVENTORY.md`](./GLOBAL_AI_AGENT_TOOL_INVENTORY.md) |

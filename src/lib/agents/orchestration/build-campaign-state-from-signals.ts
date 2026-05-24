@@ -35,6 +35,8 @@ import type { FeedbackLoopState } from "@/lib/agents/orchestration/feedback/orch
 import { emptyFeedbackLoopState } from "@/lib/agents/orchestration/feedback/orchestration-feedback-types";
 import type { CrossDomainOrchestrationState } from "@/lib/agents/orchestration/cross-domain/cross-domain-orchestrator-types";
 import { emptyCrossDomainOrchestrationState } from "@/lib/agents/orchestration/cross-domain/cross-domain-orchestrator-types";
+import type { RoleCopilotNetworkState } from "@/lib/agents/orchestration/role-copilots/role-copilot-types";
+import { emptyRoleCopilotNetworkState } from "@/lib/agents/orchestration/role-copilots/role-copilot-types";
 
 function scoreToBand(score: number): CampaignHealthBand {
   if (score >= 80) return "strong";
@@ -62,6 +64,7 @@ export function buildCampaignStateFromSignals(
   knowledge: CampaignKnowledgeSummary = emptyCampaignKnowledgeSummary(),
   feedbackLoop: FeedbackLoopState = emptyFeedbackLoopState(),
   crossDomainOrchestration: CrossDomainOrchestrationState = emptyCrossDomainOrchestrationState(),
+  roleCopilots: RoleCopilotNetworkState = emptyRoleCopilotNetworkState(),
 ): CampaignState {
   const knowledgeMemory = knowledgeSummaryToMemorySlice(knowledge);
   const period = bundle.period;
@@ -402,5 +405,6 @@ export function buildCampaignStateFromSignals(
     agentTooling: emptyAgentToolingState(),
     feedbackLoop,
     crossDomainOrchestration,
+    roleCopilots,
   };
 }
