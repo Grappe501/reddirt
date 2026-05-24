@@ -17,6 +17,7 @@ import type { CampaignState } from "./campaign-state-types";
 import { buildCampaignStateFromSignals } from "./build-campaign-state-from-signals";
 import { buildCampaignKnowledgeLayer } from "@/lib/agents/orchestration/knowledge/campaign-knowledge-state";
 import { emptyCampaignKnowledgeSummary } from "@/lib/agents/orchestration/knowledge/campaign-knowledge-types";
+import { buildFeedbackLoopState } from "@/lib/agents/orchestration/feedback/feedback-learning-engine";
 import type { OrchestrationSourceHealth } from "./orchestration-source-health";
 import { sourceHealthFromSlice } from "./orchestration-source-health";
 
@@ -157,7 +158,8 @@ export async function loadCampaignOrchestrationSignals(
   };
 
   let knowledge = emptyCampaignKnowledgeSummary();
-  const prelim = buildCampaignStateFromSignals(bundle, sourceHealth, knowledge);
+  const feedbackLoop = buildFeedbackLoopState();
+  const prelim = buildCampaignStateFromSignals(bundle, sourceHealth, knowledge, feedbackLoop);
   try {
     const kb = await buildCampaignKnowledgeLayer(prelim, sourceHealth, period, { persistGraph: true });
     knowledge = kb.summary;
@@ -177,7 +179,7 @@ export async function loadCampaignOrchestrationSignals(
     });
   }
 
-  const state = buildCampaignStateFromSignals(bundle, sourceHealth, knowledge);
+  const state = buildCampaignStateFromSignals(bundle, sourceHealth, knowledge, feedbackLoop);
 
   return { bundle, sourceHealth, state };
 }

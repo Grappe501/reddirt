@@ -71,11 +71,13 @@ Signals (observations + hot wash + friction + CampaignState)
     → orchestration/knowledge/campaign-observation-intake
     → orchestration/knowledge/campaign-knowledge-graph
     → orchestration/knowledge/campaign-lessons-engine
+    → orchestration/feedback (human outcomes + lesson approvals)
     → CampaignState.knowledge (human review for sensitive/strategic)
     → next orchestration reasoning (Phase 3A live)
 ```
 
 **Phase 3A live:** `src/lib/agents/orchestration/knowledge/`  
+**Phase 3B live:** `src/lib/agents/orchestration/feedback/`  
 **Handoff:** `ORCHESTRATION_PHASE_3A_KNOWLEDGE_GRAPH_LESSONS_HANDOFF.md`
 
 ---
@@ -86,7 +88,7 @@ Signals (observations + hot wash + friction + CampaignState)
 - `orchestration-observation-miner`
 - `hotwash-to-county-strategy-router`
 
-**Progress:** `[████████░░] 75%` model defined; **Phase 3A knowledge graph live**
+**Progress:** `[█████████░] 90%` model defined; **Phase 3B feedback loop live**
 
 ---
 

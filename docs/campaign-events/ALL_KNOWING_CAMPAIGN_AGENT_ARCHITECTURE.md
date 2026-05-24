@@ -2,7 +2,7 @@
 
 **Status:** Design + inventory pass (May 2026). **No** autonomous writes, sends, or compliance certifications.
 
-**May 2026 update:** **Campaign Orchestration Intelligence Layer** is the next evolution of this architecture — cross-domain reasoning above the tool registry. **Phase 3A** adds the campaign knowledge graph + lessons engine (`src/lib/agents/orchestration/knowledge/`). **Phase 4A** adds the AI Agent Tooling Brain (`src/lib/agents/orchestration/tooling/`). See [`ORCHESTRATION_PHASE_4A_AGENT_TOOLING_BRAIN_HANDOFF.md`](./ORCHESTRATION_PHASE_4A_AGENT_TOOLING_BRAIN_HANDOFF.md).
+**May 2026 update:** **Campaign Orchestration Intelligence Layer** is the next evolution of this architecture — cross-domain reasoning above the tool registry. **Phase 3A** adds the campaign knowledge graph + lessons engine (`src/lib/agents/orchestration/knowledge/`). **Phase 3B** adds the human feedback + lesson approval loop (`src/lib/agents/orchestration/feedback/`). **Phase 4A** adds the AI Agent Tooling Brain (`src/lib/agents/orchestration/tooling/`). See [`ORCHESTRATION_PHASE_3B_FEEDBACK_LESSON_APPROVAL_HANDOFF.md`](./ORCHESTRATION_PHASE_3B_FEEDBACK_LESSON_APPROVAL_HANDOFF.md).
 
 ---
 

@@ -4,7 +4,13 @@
 
 import type { CampaignState } from "../campaign-state-types";
 import type { OrchestrationSourceHealth } from "../orchestration-source-health";
-import type { CampaignKnowledgeGraphResult, CampaignKnowledgeSummary, CampaignLesson, CampaignObservation } from "./campaign-knowledge-types";
+import type {
+  CampaignKnowledgeGraphResult,
+  CampaignKnowledgeSummary,
+  CampaignLesson,
+  CampaignObservation,
+  RecommendationFeedback,
+} from "./campaign-knowledge-types";
 import { emptyCampaignKnowledgeSummary } from "./campaign-knowledge-types";
 import { buildCampaignKnowledgeGraph, legacyNodesToEntities } from "./campaign-knowledge-graph";
 import { intakeFromUserObservationEntries, mergeObservations } from "./campaign-observation-intake";
@@ -18,6 +24,25 @@ import { loadRecommendationFeedback, summarizeRecommendationFeedback } from "./c
 import { loadGlobalUserObservations } from "@/lib/agents/user-intelligence/user-observations";
 import { loadCampaignEntityGraph, saveCampaignEntityGraph, upsertEntityNodes } from "@/lib/agents/campaign-knowledge/campaign-entity-graph-store";
 import { loadCampaignLessons as loadLegacyLessons } from "@/lib/agents/campaign-knowledge/campaign-lessons-store";
+import {
+  knowledgeEdgesFromFeedback,
+  knowledgeEntitiesFromFeedback,
+  lessonsFromRecommendationOutcomes,
+  observationsFromRecommendationOutcomes,
+} from "@/lib/agents/orchestration/feedback/feedback-learning-engine";
+import { loadLessonApprovals, seedLessonApprovalSuggestions } from "@/lib/agents/orchestration/feedback/lesson-approval-service";
+import { loadRecommendationOutcomes } from "@/lib/agents/orchestration/feedback/recommendation-feedback-service";
+import type { RecommendationOutcomeStatus } from "@/lib/agents/orchestration/feedback/orchestration-feedback-types";
+
+function feedbackStatusFromOutcome(status: RecommendationOutcomeStatus): RecommendationFeedback["status"] {
+  if (status === "needs_revision") return "failed";
+  if (status === "proposed") return "proposed";
+  if (status === "accepted") return "accepted";
+  if (status === "rejected") return "rejected";
+  if (status === "ignored") return "ignored";
+  if (status === "completed") return "completed";
+  return "failed";
+}
 
 function legacyLessonsToCanonical(
   lessons: ReturnType<typeof loadLegacyLessons>,
@@ -64,7 +89,13 @@ export async function buildCampaignKnowledgeLayer(
   period = "2026-04",
   options?: { persistGraph?: boolean },
 ): Promise<CampaignKnowledgeBuildResult> {
-  const observations = mergeObservations(intakeFromUserObservationEntries(loadGlobalUserObservations().slice(-50)));
+  const outcomes = loadRecommendationOutcomes();
+  const approvals = loadLessonApprovals();
+  const feedbackObservations = observationsFromRecommendationOutcomes(outcomes);
+  const observations = mergeObservations(
+    intakeFromUserObservationEntries(loadGlobalUserObservations().slice(-50)),
+    feedbackObservations,
+  );
 
   let hotWashObservations = observations;
   try {
@@ -110,7 +141,23 @@ export async function buildCampaignKnowledgeLayer(
   const persistedGraph = loadCampaignEntityGraph();
   const persistedEntities = persistedGraph ? legacyNodesToEntities(persistedGraph.nodes) : [];
   const persistedLessons = legacyLessonsToCanonical(loadLegacyLessons());
-  const feedback = loadRecommendationFeedback();
+  const feedback: RecommendationFeedback[] = [
+    ...loadRecommendationFeedback(),
+    ...outcomes.map((o) => ({
+      recommendationId: o.recommendationId,
+      title: o.recommendationTitle,
+      domain: o.domain,
+      county: o.county,
+      ownerRole: o.ownerRole,
+      proposedAt: o.proposedAt,
+      status: feedbackStatusFromOutcome(o.status),
+      outcomeSummary: o.outcomeSummary,
+      successScore: o.successScore,
+      humanFeedback: o.humanFeedback,
+      lessonsProduced: o.producedLessonIds,
+      updatedAt: o.decidedAt ?? o.proposedAt,
+    })),
+  ];
 
   let graph = buildCampaignKnowledgeGraph({
     state,
@@ -118,12 +165,14 @@ export async function buildCampaignKnowledgeLayer(
     observations: hotWashObservations,
     lessons: persistedLessons,
     recommendationFeedback: feedback,
-    persistedEntities,
-    persistedEdges: [],
+    persistedEntities: [...persistedEntities, ...knowledgeEntitiesFromFeedback(outcomes, approvals)],
+    persistedEdges: knowledgeEdgesFromFeedback(outcomes, approvals),
   });
 
-  const allLessons = generateCampaignLessons({ state, sourceHealth, graph, persistedLessons });
+  const feedbackLessons = lessonsFromRecommendationOutcomes(outcomes);
+  const allLessons = generateCampaignLessons({ state, sourceHealth, graph, persistedLessons: [...persistedLessons, ...feedbackLessons] });
   graph = { ...graph, lessons: allLessons };
+  seedLessonApprovalSuggestions(allLessons);
 
   if (options?.persistGraph !== false && graph.entities.length > 0) {
     const legacyNodes = graph.entities.slice(-200).map((e) => ({

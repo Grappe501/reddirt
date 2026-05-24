@@ -1,6 +1,26 @@
 # Kelly OS Build Status
 
-## Latest: AI Agent Tooling Brain — Phase 4A
+## Latest: Feedback + Lesson Approval Loop — Phase 3B
+
+| Item | Status |
+|------|--------|
+| Module `orchestration/feedback/` | **Functional** |
+| Recommendation outcome store | **Functional** — JSON |
+| Lesson approval store | **Functional** — JSON |
+| Feedback safety validation | **Functional** |
+| `CampaignState.feedbackLoop` | **Live** |
+| Knowledge graph feedback observations/edges | **Live** |
+| `GET/POST /api/agents/orchestration-feedback` | **Live** |
+| `GET/POST /api/agents/lesson-approvals` | **Live** |
+| Dashboard **Feedback + Lesson Approval Loop** panel | **Functional** |
+| `agents:test-orchestration-feedback-loop` | **PASS** |
+
+**Handoff:** `ORCHESTRATION_PHASE_3B_FEEDBACK_LESSON_APPROVAL_HANDOFF.md`  
+**Next:** Phase 4B — tool outcome feedback + role-scoped tooling UI
+
+---
+
+## Prior: AI Agent Tooling Brain — Phase 4A
 
 | Item | Status |
 |------|--------|

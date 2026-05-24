@@ -77,6 +77,25 @@ Every future tool must answer:
 
 ---
 
+### 9. Feedback + lesson approval loop (Phase 3B)
+
+| Component | Module |
+|-----------|--------|
+| Recommendation outcomes | `feedback/recommendation-feedback-service.ts` |
+| Lesson approvals | `feedback/lesson-approval-service.ts` |
+| Learning engine | `feedback/feedback-learning-engine.ts` |
+| Safety validation | `feedback/feedback-safety.ts` |
+| Dashboard controls | `OrchestrationFeedbackLoopPanel.tsx` |
+
+**CampaignState field:** `feedbackLoop` — recentOutcomes, pendingLessonApprovals, approvedLessons, ignoredRecommendations, failedPatterns, feedbackHealth
+
+**APIs:** `GET/POST /api/agents/orchestration-feedback`, `GET/POST /api/agents/lesson-approvals`  
+**Test:** `npm run agents:test-orchestration-feedback-loop`
+
+**Progress:** `[████████░░] 85%` functional V1
+
+---
+
 ### 2. Context layer
 
 | Composer | Output |

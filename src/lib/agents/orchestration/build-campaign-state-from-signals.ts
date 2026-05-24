@@ -31,6 +31,8 @@ import type { CampaignKnowledgeSummary } from "@/lib/agents/orchestration/knowle
 import { emptyCampaignKnowledgeSummary } from "@/lib/agents/orchestration/knowledge/campaign-knowledge-types";
 import { knowledgeSummaryToMemorySlice } from "@/lib/agents/orchestration/knowledge/knowledge-memory-adapter";
 import { emptyAgentToolingState } from "@/lib/agents/orchestration/tooling/agent-tooling-types";
+import type { FeedbackLoopState } from "@/lib/agents/orchestration/feedback/orchestration-feedback-types";
+import { emptyFeedbackLoopState } from "@/lib/agents/orchestration/feedback/orchestration-feedback-types";
 
 function scoreToBand(score: number): CampaignHealthBand {
   if (score >= 80) return "strong";
@@ -56,6 +58,7 @@ export function buildCampaignStateFromSignals(
   bundle: OrchestrationSignalBundle,
   sourceHealth: OrchestrationSourceHealth[],
   knowledge: CampaignKnowledgeSummary = emptyCampaignKnowledgeSummary(),
+  feedbackLoop: FeedbackLoopState = emptyFeedbackLoopState(),
 ): CampaignState {
   const knowledgeMemory = knowledgeSummaryToMemorySlice(knowledge);
   const period = bundle.period;
@@ -394,5 +397,6 @@ export function buildCampaignStateFromSignals(
     knowledge,
     knowledgeMemory,
     agentTooling: emptyAgentToolingState(),
+    feedbackLoop,
   };
 }

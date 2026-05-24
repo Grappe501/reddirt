@@ -39,6 +39,20 @@
 
 ---
 
+## Feedback + Lesson Approval Loop (Phase 3B)
+
+| Artifact | Path |
+|----------|------|
+| Module | `src/lib/agents/orchestration/feedback/` |
+| Handoff | [`ORCHESTRATION_PHASE_3B_FEEDBACK_LESSON_APPROVAL_HANDOFF.md`](./ORCHESTRATION_PHASE_3B_FEEDBACK_LESSON_APPROVAL_HANDOFF.md) |
+| Test | `npm run agents:test-orchestration-feedback-loop` |
+| Feedback API | `GET/POST /api/agents/orchestration-feedback` |
+| Lesson approval API | `GET/POST /api/agents/lesson-approvals` |
+| CampaignState field | `campaignState.feedbackLoop` |
+| Dashboard | `/admin/orchestration` — Feedback + Lesson Approval Loop |
+
+---
+
 ## AI Agent Tooling Brain (Phase 4A)
 
 | Artifact | Path |

@@ -46,6 +46,8 @@ export type CampaignKnowledgeRelationship =
   | "generated_recommendation"
   | "accepted_recommendation"
   | "rejected_recommendation"
+  | "lesson_approved"
+  | "lesson_rejected"
   | "completed_workflow"
   | "failed_workflow"
   | "improved_domain"

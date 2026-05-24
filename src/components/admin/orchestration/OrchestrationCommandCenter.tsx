@@ -9,6 +9,7 @@ import { OrchestrationDomainStatusGrid } from "./OrchestrationDomainStatusGrid";
 import { OrchestrationLearningPanel } from "./OrchestrationLearningPanel";
 import { OrchestrationKnowledgeMemoryPanel } from "./OrchestrationKnowledgeMemoryPanel";
 import { OrchestrationAgentToolingPanel } from "./OrchestrationAgentToolingPanel";
+import { OrchestrationFeedbackLoopPanel } from "./OrchestrationFeedbackLoopPanel";
 import { OrchestrationSafetyGateCard } from "./OrchestrationSafetyGateCard";
 
 export function OrchestrationCommandCenter({ payload }: { payload: OrchestrationStatePayload }) {
@@ -99,6 +100,7 @@ export function OrchestrationCommandCenter({ payload }: { payload: Orchestration
       <OrchestrationDomainStatusGrid campaignState={campaignState} sourceHealth={sourceHealth} />
       <OrchestrationKnowledgeMemoryPanel knowledge={campaignState.knowledge} />
       <OrchestrationAgentToolingPanel tooling={payload.agentTooling} />
+      <OrchestrationFeedbackLoopPanel payload={payload} />
       <OrchestrationLearningPanel insights={payload.learningInsights} />
       <OrchestrationSafetyGateCard safety={payload.safety} />
     </div>

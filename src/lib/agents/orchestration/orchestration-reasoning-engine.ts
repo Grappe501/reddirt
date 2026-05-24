@@ -74,6 +74,12 @@ export function runOrchestrationReasoning(state: CampaignState): OrchestrationDi
   if (state.financeComplianceWarnings.length > 0) {
     topRisks.push(state.financeComplianceWarnings[0]);
   }
+  if (state.feedbackLoop.feedbackHealth.ignoredCount >= 3) {
+    topRisks.push("Adoption risk: multiple AI recommendations were ignored — ask humans what context is missing.");
+  }
+  if (state.feedbackLoop.feedbackHealth.failedCount > 0) {
+    topRisks.push("Feedback loop shows failed recommendations — avoid repeating those patterns without correction.");
+  }
 
   const workflowRecommendations: string[] = ["campaign-manager-daily"];
 
@@ -165,6 +171,27 @@ export function runOrchestrationReasoning(state: CampaignState): OrchestrationDi
     );
   }
 
+  if (state.feedbackLoop.pendingLessonApprovals.length > 0 && topMoves.length < 3) {
+    addMove(
+      `Review ${state.feedbackLoop.pendingLessonApprovals.length} pending lesson approval(s)`,
+      "Approving or rejecting lessons teaches the AI which campaign memory is trustworthy.",
+      "/admin/orchestration",
+      "P1",
+      "memory",
+    );
+  }
+
+  for (const pattern of state.feedbackLoop.failedPatterns.slice(0, 1)) {
+    if (topMoves.length >= 3) break;
+    addMove(
+      `Correct failed ${pattern.source.replaceAll("_", " ")} pattern`,
+      pattern.summary,
+      "/admin/orchestration",
+      "P1",
+      pattern.domain,
+    );
+  }
+
   const perDomainDiagnosis: OrchestrationDomainDiagnosis[] = Object.values(state.domainStatuses).map((d) => ({
     domainId: d.domainId,
     summary: d.summary,
@@ -187,6 +214,7 @@ export function runOrchestrationReasoning(state: CampaignState): OrchestrationDi
     state.executiveSummary,
     topBlockers.length ? `${topBlockers.length} active blocker(s).` : "No P0/P1 blockers.",
     state.knowledge.graphHealth.lessonCount ? `${state.knowledge.graphHealth.lessonCount} campaign lesson(s) in memory.` : "",
+    state.feedbackLoop.feedbackHealth.confidence !== "low" ? `Feedback loop confidence ${state.feedbackLoop.feedbackHealth.confidence}.` : "",
     topMoves.length ? `Top move: ${topMoves[0].title}.` : "Review workflow recommendations.",
   ]
     .filter(Boolean)

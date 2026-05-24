@@ -12,8 +12,8 @@
 | **2** | CampaignState loader + reasoning API | `[██████████] 100%` |
 | **2B** | Command center orchestration panel | `[████████░░] 85%` |
 | **3A** | Knowledge graph + lessons engine | `[████████░░] 85%` |
-| **3B** | Recommendation feedback + lesson approval UI | `[░░░░░░░░░░] 0%` |
-| **4A** | AI Agent Tooling Brain | `[████████░░] 85%` ← **this phase** |
+| **3B** | Recommendation feedback + lesson approval UI | `[████████░░] 85%` ← **this phase** |
+| **4A** | AI Agent Tooling Brain | `[████████░░] 85%` |
 | **4B** | Tool outcome feedback + role-scoped UI | `[░░░░░░░░░░] 0%` |
 | **5** | Role-specific orchestration delivery | `[██░░░░░░░░] 20%` |
 | **6** | Memory review + learning loop | `[██░░░░░░░░] 20%` |
@@ -109,6 +109,36 @@
 
 - Orchestration panel shows lessons, patterns, confidence gaps ✅
 - Graph persists under `data/campaign-events/campaign-knowledge/` ✅
+
+---
+
+## Phase 3B — Feedback + Lesson Approval Loop ✅ (functional)
+
+**Goals**
+
+- Record accepted/rejected/ignored/completed/failed/needs revision recommendation outcomes ✅
+- Approve/reject/archive/expire suggested lessons ✅
+- Produce feedback-derived observations, lessons, and graph edges ✅
+- Add `CampaignState.feedbackLoop` and reasoning adoption-risk handling ✅
+- Dashboard controls write only feedback/approval records ✅
+
+**Files**
+
+- `src/lib/agents/orchestration/feedback/*`
+- `src/app/api/agents/orchestration-feedback/route.ts`
+- `src/app/api/agents/lesson-approvals/route.ts`
+- `OrchestrationFeedbackLoopPanel.tsx`
+- `ORCHESTRATION_PHASE_3B_FEEDBACK_LESSON_APPROVAL_HANDOFF.md`
+
+**Tests**
+
+- `agents:test-orchestration-feedback-loop` ✅
+- `agents:test-orchestration-state` (feedbackLoop assert) ✅
+
+**Done when**
+
+- Humans can mark outcomes and lesson approvals without execution controls ✅
+- Feedback appears in CampaignState, payload, reasoning, and graph ✅
 
 ---
 
