@@ -1,0 +1,831 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-26T16:21:03.175Z",
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "travelPriorityScore": 78,
+      "travelBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "travelPriorityScore": 49,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "travelPriorityScore": 44,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "travelPriorityScore": 62,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "travelPriorityScore": 56,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "travelPriorityScore": 73,
+      "travelBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "travelPriorityScore": 49,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "travelPriorityScore": 66,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "travelPriorityScore": 83,
+      "travelBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "travelPriorityScore": 54,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "travelPriorityScore": 50,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "travelPriorityScore": 44,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "travelPriorityScore": 61,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "travelPriorityScore": 78,
+      "travelBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "travelPriorityScore": 54,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "travelPriorityScore": 71,
+      "travelBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "travelPriorityScore": 65,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "travelPriorityScore": 38,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "travelPriorityScore": 55,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "travelPriorityScore": 49,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "travelPriorityScore": 66,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "travelPriorityScore": 42,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "travelPriorityScore": 59,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "travelPriorityScore": 77,
+      "travelBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "travelPriorityScore": 47,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "travelPriorityScore": 43,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "travelPriorityScore": 60,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "travelPriorityScore": 54,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "travelPriorityScore": 72,
+      "travelBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "travelPriorityScore": 47,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "travelPriorityScore": 65,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "travelPriorityScore": 82,
+      "travelBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "travelPriorityScore": 53,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "travelPriorityScore": 48,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "travelPriorityScore": 66,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "travelPriorityScore": 60,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "travelPriorityScore": 77,
+      "travelBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "travelPriorityScore": 53,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "travelPriorityScore": 70,
+      "travelBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "travelPriorityScore": 87,
+      "travelBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "travelPriorityScore": 36,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "travelPriorityScore": 54,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "travelPriorityScore": 48,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "travelPriorityScore": 65,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "travelPriorityScore": 82,
+      "travelBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "travelPriorityScore": 58,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "travelPriorityScore": 75,
+      "travelBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "travelPriorityScore": 46,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "travelPriorityScore": 42,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "travelPriorityScore": 59,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "travelPriorityScore": 53,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "travelPriorityScore": 70,
+      "travelBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "travelPriorityScore": 46,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "travelPriorityScore": 63,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "travelPriorityScore": 81,
+      "travelBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "travelPriorityScore": 51,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "travelPriorityScore": 47,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "travelPriorityScore": 64,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "travelPriorityScore": 58,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "travelPriorityScore": 76,
+      "travelBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "travelPriorityScore": 51,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "travelPriorityScore": 69,
+      "travelBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "travelPriorityScore": 86,
+      "travelBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "travelPriorityScore": 57,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "travelPriorityScore": 52,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "travelPriorityScore": 46,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "travelPriorityScore": 64,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "travelPriorityScore": 81,
+      "travelBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "travelPriorityScore": 57,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "travelPriorityScore": 74,
+      "travelBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "travelPriorityScore": 45,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "travelPriorityScore": 40,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "travelPriorityScore": 58,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "travelPriorityScore": 52,
+      "travelBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "travelPriorityScore": 69,
+      "travelBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    }
+  ]
+}

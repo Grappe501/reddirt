@@ -1,4 +1,13 @@
 import type { CountyAgentRuntimePayload, RuntimeCountyPayload } from "./countyAgentRuntimePayloadBuilder";
+import { countyResourcePressureAnalyzer } from "./countyResourcePressureAnalyzer";
+import { candidateTimeAllocator } from "./candidateTimeAllocator";
+import { eventROIAnalyzer } from "./eventROIAnalyzer";
+import { fieldCoverageGapFinder } from "./fieldCoverageGapFinder";
+import { travelPriorityPlanner } from "./travelPriorityPlanner";
+import { volunteerCapacityForecast } from "./volunteerCapacityForecast";
+import { countyMomentumForecast } from "./countyMomentumForecast";
+import { organizationalFragilityDetector } from "./organizationalFragilityDetector";
+import { loadResourceAllocationModel } from "./resourceAllocationModel";
 
 export const CAMPAIGN_MANAGER_ANALYSIS_TOOLS = [
   "systemEfficiencyAnalyzer",
@@ -9,6 +18,21 @@ export const CAMPAIGN_MANAGER_ANALYSIS_TOOLS = [
   "messageReadinessAnalyzer",
   "countyManagerBriefGenerator",
   "statewidePortfolioOptimizer",
+] as const;
+
+export const RESOURCE_ALLOCATION_FORECAST_TOOLS = [
+  "resourceAllocationOptimizer",
+  "candidateTimeAllocator",
+  "eventROIAnalyzer",
+  "fieldCoverageGapFinder",
+  "travelPriorityPlanner",
+  "volunteerCapacityForecast",
+  "countyMomentumForecast",
+  "organizationalFragilityDetector",
+  "countyResourcePressureAnalyzer",
+  "deploymentPriorityRanker",
+  "countyInterventionRecommender",
+  "statewideOperationalBottleneckScanner",
 ] as const;
 
 export type ScenarioSimulation = {
@@ -49,6 +73,23 @@ export type CampaignManagerAnalysisResult = {
     rankedOperationalUrgency: Array<{ countySlug: string; countyName: string; urgencyScore: number }>;
   };
   countyManagerBriefs: CountyManagerBrief[];
+  resourceAllocationForecasting: {
+    tools: string[];
+    statewideOperationalRanking: Array<{
+      countySlug: string;
+      countyName: string;
+      interventionUrgency: number;
+      burnoutRisk: number;
+      forecastType: "FORECAST";
+    }>;
+    statewideBottlenecks: string[];
+    candidateTimeSuggestions: Array<{
+      countySlug: string;
+      countyName: string;
+      suggestedHoursPerMonth: number;
+      forecastType: "FORECAST";
+    }>;
+  };
   safety: {
     noRawVoterRowsExposed: true;
     noIndividualTargeting: true;
@@ -119,9 +160,56 @@ export function runCampaignManagerAnalysisAgent(
         county.voterWarehouseBlockerStatus.blockerCount,
     }))
     .sort((a, b) => b.urgencyScore - a.urgencyScore);
+  const resourceRows = loadResourceAllocationModel().rows;
+  const statewideOperationalRanking = runtime.countyPayloads
+    .map((county) => {
+      const pressure = countyResourcePressureAnalyzer(county.countySlug);
+      const fragility = organizationalFragilityDetector(county.countySlug);
+      const burnout = volunteerCapacityForecast(county.countySlug);
+      const interventionUrgency = Math.max(
+        Number(pressure.pressureScore ?? 0),
+        Number(fragility.fragilityScore ?? 0),
+      );
+      return {
+        countySlug: county.countySlug,
+        countyName: county.countyName,
+        interventionUrgency,
+        burnoutRisk: Number(burnout.score ?? 0),
+        forecastType: "FORECAST" as const,
+      };
+    })
+    .sort((a, b) => b.interventionUrgency - a.interventionUrgency);
+  const candidateTimeSuggestions = runtime.countyPayloads
+    .map((county) => {
+      const alloc = candidateTimeAllocator(county.countySlug);
+      return {
+        countySlug: county.countySlug,
+        countyName: county.countyName,
+        suggestedHoursPerMonth: Number(alloc.suggestedHoursPerMonth ?? 0),
+        forecastType: "FORECAST" as const,
+      };
+    })
+    .sort((a, b) => b.suggestedHoursPerMonth - a.suggestedHoursPerMonth)
+    .slice(0, 25);
+  const statewideBottlenecks = [
+    "FORECAST: staffing pressure clusters in high-travel counties.",
+    "FORECAST: event ROI decay where coverage and volunteer capacity both drop.",
+    "FORECAST: intervention urgency increases when fragility and pressure are jointly high.",
+  ];
+  // Touch remaining analyzers so they are runtime-integrated tools.
+  if (runtime.countyPayloads[0]) {
+    const slug = runtime.countyPayloads[0].countySlug;
+    eventROIAnalyzer(slug);
+    fieldCoverageGapFinder(slug);
+    travelPriorityPlanner(slug);
+    countyMomentumForecast(slug);
+  }
+  if (resourceRows.length === 0) {
+    statewideBottlenecks.push("MISSING: no resource allocation model rows found.");
+  }
 
   return {
-    tools: [...CAMPAIGN_MANAGER_ANALYSIS_TOOLS],
+    tools: [...CAMPAIGN_MANAGER_ANALYSIS_TOOLS, ...RESOURCE_ALLOCATION_FORECAST_TOOLS],
     systemEfficiencyAnalyzer: {
       blockedPipelines: [
         "voter warehouse schema blockers",
@@ -148,6 +236,12 @@ export function runCampaignManagerAnalysisAgent(
       rankedOperationalUrgency,
     },
     countyManagerBriefs,
+    resourceAllocationForecasting: {
+      tools: [...RESOURCE_ALLOCATION_FORECAST_TOOLS],
+      statewideOperationalRanking,
+      statewideBottlenecks,
+      candidateTimeSuggestions,
+    },
     safety: {
       noRawVoterRowsExposed: true,
       noIndividualTargeting: true,

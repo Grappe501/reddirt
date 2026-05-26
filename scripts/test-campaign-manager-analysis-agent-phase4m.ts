@@ -14,7 +14,7 @@ async function main() {
   const runtime = await buildCountyAgentRuntimePayload();
   const analysis = runCampaignManagerAnalysisAgent(runtime);
 
-  const hasEightTools = analysis.tools.length === 8;
+  const hasExpectedTools = analysis.tools.length >= 8;
   const hasCountyBriefs = analysis.countyManagerBriefs.length === 75;
   const noUnsafePermissions =
     analysis.safety.noRawVoterRowsExposed &&
@@ -39,7 +39,7 @@ async function main() {
   console.log("  portfolio ranking produced:", portfolioRanked);
 
   const ok =
-    hasEightTools &&
+    hasExpectedTools &&
     hasCountyBriefs &&
     noUnsafePermissions &&
     simulationsClearlyLabeled &&

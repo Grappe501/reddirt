@@ -11,6 +11,7 @@
     "Readiness gates",
     "County intelligence",
     "County institutional memory",
+    "County resource operations layer",
     "Voter warehouse schema readiness",
     "Registration snapshot template/import",
     "County win pathway formula",
@@ -32,6 +33,14 @@
     "countyRelationshipGraph": "data/county-memory/county-relationship-graph.json",
     "regionalInfluenceMap": "data/county-memory/regional-influence-map.json",
     "countyMemoryReadiness": "data/audit/county-memory-readiness-table.json"
+    ,
+    "resourceAllocationModel": "data/resource-allocation/resource-allocation-model.json",
+    "candidateTimeAllocation": "data/resource-allocation/candidate-time-allocation.json",
+    "fieldCoverageReadiness": "data/resource-allocation/field-coverage-readiness.json",
+    "countyResourcePressure": "data/resource-allocation/county-resource-pressure-table.json",
+    "eventROIModel": "data/resource-allocation/event-roi-model.json",
+    "travelPriorityMap": "data/resource-allocation/travel-priority-map.json",
+    "resourceAllocationReadiness": "data/audit/resource-allocation-readiness-table.json"
   },
   "gates": {
     "strategyGeneration": "strategySafeToGenerate === YES",

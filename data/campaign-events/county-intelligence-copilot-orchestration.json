@@ -3,7 +3,7 @@
   "copilotId": "countyIntelligenceCopilot",
   "lane": "County Workbench",
   "mode": "READ_ONLY_ANALYSIS_UNTIL_READY",
-  "phase": "4N",
+  "phase": "4O",
   "toolGroups": {
     "volunteerIntelligence": [
       "volunteerRosterSummary",
@@ -104,6 +104,20 @@
       "crossCountyTrendAnalyzer",
       "sharedIssueDetector",
       "institutionalMemoryGapExplainer"
+    ],
+    "countyResourceOperationsLayer": [
+      "resourceAllocationOptimizer",
+      "candidateTimeAllocator",
+      "eventROIAnalyzer",
+      "fieldCoverageGapFinder",
+      "travelPriorityPlanner",
+      "volunteerCapacityForecast",
+      "countyMomentumForecast",
+      "organizationalFragilityDetector",
+      "countyResourcePressureAnalyzer",
+      "deploymentPriorityRanker",
+      "countyInterventionRecommender",
+      "statewideOperationalBottleneckScanner"
     ]
   },
   "executionPolicy": {
@@ -138,7 +152,14 @@
     "data/county-memory/county-event-outcomes.json",
     "data/county-memory/county-relationship-graph.json",
     "data/county-memory/regional-influence-map.json",
-    "data/audit/county-memory-readiness-table.json"
+    "data/audit/county-memory-readiness-table.json",
+    "data/resource-allocation/resource-allocation-model.json",
+    "data/resource-allocation/candidate-time-allocation.json",
+    "data/resource-allocation/field-coverage-readiness.json",
+    "data/resource-allocation/county-resource-pressure-table.json",
+    "data/resource-allocation/event-roi-model.json",
+    "data/resource-allocation/travel-priority-map.json",
+    "data/audit/resource-allocation-readiness-table.json"
   ]
 }
 

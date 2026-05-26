@@ -4,6 +4,7 @@ import {
   type CountyAgentRuntimeContext,
 } from "./countyAgentRuntimeContext";
 import { buildCountyInstitutionalMemoryBrief } from "./countyMemoryBriefBuilder";
+import { resourceAllocationBriefBuilder } from "./resourceAllocationBriefBuilder";
 
 type CountySummaryBrief = {
   countySlug?: string;
@@ -75,6 +76,16 @@ export type RuntimeCountyPayload = {
     confidenceScore: number | null;
     memoryGaps: string[];
     nextSafeDataActions: string[];
+  };
+  resourceOperations: {
+    operationalHealth: number;
+    resourcePressure: number;
+    volunteerCapacity: number;
+    travelBurden: number;
+    staffingGaps: number;
+    eventROISummary: string;
+    interventionUrgencyScore: number;
+    operationalConfidenceScore: number;
   };
 };
 
@@ -220,6 +231,8 @@ function buildCountyPayload(
   if (memoryRow?.memoryTimeline !== "PRESENT") {
     nextBestDataActions.push("Capture county institutional memory timeline and source notes.");
   }
+  const resourceBrief = resourceAllocationBriefBuilder(county.slug);
+  nextBestDataActions.push(...resourceBrief.recommendedSafeOperatorActions.slice(0, 2));
 
   return {
     countySlug: county.slug,
@@ -276,6 +289,16 @@ function buildCountyPayload(
       confidenceScore: memoryBrief.confidenceScore,
       memoryGaps: memoryBrief.memoryGaps,
       nextSafeDataActions: memoryBrief.nextSafeDataActions,
+    },
+    resourceOperations: {
+      operationalHealth: resourceBrief.operationalHealth,
+      resourcePressure: resourceBrief.resourcePressure,
+      volunteerCapacity: resourceBrief.volunteerCapacity,
+      travelBurden: resourceBrief.travelBurden,
+      staffingGaps: resourceBrief.staffingGaps,
+      eventROISummary: resourceBrief.eventROISummary,
+      interventionUrgencyScore: resourceBrief.interventionUrgency.score,
+      operationalConfidenceScore: resourceBrief.operationalConfidenceScore,
     },
   };
 }

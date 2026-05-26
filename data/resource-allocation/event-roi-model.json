@@ -1,0 +1,831 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-26T16:21:03.175Z",
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "eventROI": 44,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "eventROI": 31,
+      "roiBand": "LOW",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "eventROI": 18,
+      "roiBand": "LOW",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "eventROI": 75,
+      "roiBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "eventROI": 62,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "eventROI": 49,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "eventROI": 66,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "eventROI": 53,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "eventROI": 40,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "eventROI": 27,
+      "roiBand": "LOW",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "eventROI": 34,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "eventROI": 71,
+      "roiBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "eventROI": 58,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "eventROI": 45,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "eventROI": 62,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "eventROI": 49,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "eventROI": 36,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "eventROI": 23,
+      "roiBand": "LOW",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "eventROI": 80,
+      "roiBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "eventROI": 67,
+      "roiBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "eventROI": 54,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "eventROI": 71,
+      "roiBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "eventROI": 58,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "eventROI": 45,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "eventROI": 32,
+      "roiBand": "LOW",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "eventROI": 19,
+      "roiBand": "LOW",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "eventROI": 76,
+      "roiBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "eventROI": 63,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "eventROI": 50,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "eventROI": 67,
+      "roiBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "eventROI": 54,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "eventROI": 41,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "eventROI": 28,
+      "roiBand": "LOW",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "eventROI": 35,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "eventROI": 72,
+      "roiBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "eventROI": 59,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "eventROI": 46,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "eventROI": 63,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "eventROI": 50,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "eventROI": 37,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "eventROI": 24,
+      "roiBand": "LOW",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "eventROI": 81,
+      "roiBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "eventROI": 68,
+      "roiBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "eventROI": 55,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "eventROI": 42,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "eventROI": 59,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "eventROI": 46,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "eventROI": 33,
+      "roiBand": "LOW",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "eventROI": 20,
+      "roiBand": "LOW",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "eventROI": 77,
+      "roiBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "eventROI": 64,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "eventROI": 51,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "eventROI": 68,
+      "roiBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "eventROI": 55,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "eventROI": 42,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "eventROI": 29,
+      "roiBand": "LOW",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "eventROI": 36,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "eventROI": 73,
+      "roiBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "eventROI": 60,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "eventROI": 47,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "eventROI": 64,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "eventROI": 51,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "eventROI": 38,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "eventROI": 25,
+      "roiBand": "LOW",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "eventROI": 57,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "eventROI": 69,
+      "roiBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "eventROI": 56,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "eventROI": 43,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "eventROI": 60,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "eventROI": 47,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "eventROI": 34,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "eventROI": 21,
+      "roiBand": "LOW",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "eventROI": 78,
+      "roiBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "eventROI": 65,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "eventROI": 52,
+      "roiBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    }
+  ]
+}

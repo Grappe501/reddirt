@@ -96,6 +96,7 @@
     "agents:test-county-ai-agent-runtime-payload-phase4l1": "tsx scripts/test-county-ai-agent-runtime-payload-phase4l1.ts",
     "agents:test-campaign-manager-analysis-agent-phase4m": "tsx scripts/test-campaign-manager-analysis-agent-phase4m.ts",
     "agents:test-county-institutional-memory-phase4n": "tsx scripts/test-county-institutional-memory-phase4n.ts",
+    "agents:test-resource-allocation-forecasting-phase4o": "tsx scripts/test-resource-allocation-forecasting-phase4o.ts",
     "agents:test-campaign-knowledge": "tsx scripts/test-campaign-knowledge.ts",
     "agents:test-agent-tooling-brain": "tsx scripts/test-agent-tooling-brain.ts",
     "agents:test-orchestration-feedback-loop": "tsx scripts/test-orchestration-feedback-loop.ts",

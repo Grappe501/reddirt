@@ -1,0 +1,906 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-26T16:21:03.175Z",
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 43,
+      "staffingGapScore": 72,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "coverageStatus": "MISSING",
+      "fieldCoverageScore": 30,
+      "staffingGapScore": 85,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "coverageStatus": "MISSING",
+      "fieldCoverageScore": 17,
+      "staffingGapScore": 28,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 79,
+      "staffingGapScore": 41,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 66,
+      "staffingGapScore": 54,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 53,
+      "staffingGapScore": 67,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 65,
+      "staffingGapScore": 50,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 52,
+      "staffingGapScore": 63,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 39,
+      "staffingGapScore": 76,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "coverageStatus": "MISSING",
+      "fieldCoverageScore": 26,
+      "staffingGapScore": 89,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "coverageStatus": "MISSING",
+      "fieldCoverageScore": 13,
+      "staffingGapScore": 32,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 75,
+      "staffingGapScore": 45,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 62,
+      "staffingGapScore": 58,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 49,
+      "staffingGapScore": 71,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 61,
+      "staffingGapScore": 54,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 48,
+      "staffingGapScore": 67,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 35,
+      "staffingGapScore": 80,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "coverageStatus": "MISSING",
+      "fieldCoverageScore": 22,
+      "staffingGapScore": 23,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 84,
+      "staffingGapScore": 36,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 71,
+      "staffingGapScore": 49,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 58,
+      "staffingGapScore": 62,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 70,
+      "staffingGapScore": 45,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 57,
+      "staffingGapScore": 58,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 44,
+      "staffingGapScore": 71,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "coverageStatus": "MISSING",
+      "fieldCoverageScore": 31,
+      "staffingGapScore": 84,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "coverageStatus": "MISSING",
+      "fieldCoverageScore": 18,
+      "staffingGapScore": 27,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 80,
+      "staffingGapScore": 40,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 67,
+      "staffingGapScore": 53,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 54,
+      "staffingGapScore": 66,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 66,
+      "staffingGapScore": 49,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 53,
+      "staffingGapScore": 62,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 40,
+      "staffingGapScore": 75,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "coverageStatus": "MISSING",
+      "fieldCoverageScore": 27,
+      "staffingGapScore": 88,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "coverageStatus": "MISSING",
+      "fieldCoverageScore": 14,
+      "staffingGapScore": 31,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 76,
+      "staffingGapScore": 44,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 63,
+      "staffingGapScore": 57,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 50,
+      "staffingGapScore": 70,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 62,
+      "staffingGapScore": 53,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 49,
+      "staffingGapScore": 66,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 36,
+      "staffingGapScore": 79,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "coverageStatus": "MISSING",
+      "fieldCoverageScore": 23,
+      "staffingGapScore": 22,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 85,
+      "staffingGapScore": 35,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 72,
+      "staffingGapScore": 48,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 59,
+      "staffingGapScore": 61,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 46,
+      "staffingGapScore": 74,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 58,
+      "staffingGapScore": 57,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 45,
+      "staffingGapScore": 70,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "coverageStatus": "MISSING",
+      "fieldCoverageScore": 32,
+      "staffingGapScore": 83,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "coverageStatus": "MISSING",
+      "fieldCoverageScore": 19,
+      "staffingGapScore": 26,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 81,
+      "staffingGapScore": 39,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 68,
+      "staffingGapScore": 52,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 55,
+      "staffingGapScore": 65,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 67,
+      "staffingGapScore": 48,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 54,
+      "staffingGapScore": 61,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 41,
+      "staffingGapScore": 74,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "coverageStatus": "MISSING",
+      "fieldCoverageScore": 28,
+      "staffingGapScore": 87,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "coverageStatus": "MISSING",
+      "fieldCoverageScore": 15,
+      "staffingGapScore": 30,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 77,
+      "staffingGapScore": 43,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 64,
+      "staffingGapScore": 56,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 51,
+      "staffingGapScore": 69,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 63,
+      "staffingGapScore": 52,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 50,
+      "staffingGapScore": 65,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 37,
+      "staffingGapScore": 78,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "coverageStatus": "MISSING",
+      "fieldCoverageScore": 24,
+      "staffingGapScore": 21,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "coverageStatus": "MISSING",
+      "fieldCoverageScore": 11,
+      "staffingGapScore": 34,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 73,
+      "staffingGapScore": 47,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 60,
+      "staffingGapScore": 60,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 47,
+      "staffingGapScore": 73,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 59,
+      "staffingGapScore": 56,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 46,
+      "staffingGapScore": 69,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "coverageStatus": "MISSING",
+      "fieldCoverageScore": 33,
+      "staffingGapScore": 82,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "coverageStatus": "MISSING",
+      "fieldCoverageScore": 20,
+      "staffingGapScore": 25,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 82,
+      "staffingGapScore": 38,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "coverageStatus": "PRESENT",
+      "fieldCoverageScore": 69,
+      "staffingGapScore": 51,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "coverageStatus": "NEEDS_REVIEW",
+      "fieldCoverageScore": 56,
+      "staffingGapScore": 64,
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    }
+  ]
+}

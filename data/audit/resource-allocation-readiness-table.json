@@ -1,0 +1,1282 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-26T16:21:03.175Z",
+  "countyCount": 75,
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "NEEDS_REVIEW",
+      "dataConfidence": 32,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "NEEDS_REVIEW",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 69,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "NEEDS_REVIEW",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 56,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 43,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 80,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 67,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 54,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 41,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 78,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "NEEDS_REVIEW",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 65,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "NEEDS_REVIEW",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 52,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "NEEDS_REVIEW",
+      "dataConfidence": 39,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 76,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 63,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 50,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "NEEDS_REVIEW",
+      "dataConfidence": 37,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 74,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "NEEDS_REVIEW",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 61,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 48,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "NEEDS_REVIEW",
+      "dataConfidence": 35,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 72,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 59,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 46,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "NEEDS_REVIEW",
+      "dataConfidence": 33,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "NEEDS_REVIEW",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 70,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "NEEDS_REVIEW",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 57,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 44,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "NEEDS_REVIEW",
+      "dataConfidence": 31,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 68,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 55,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 42,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 79,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "NEEDS_REVIEW",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 66,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "NEEDS_REVIEW",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 53,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 40,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 77,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 64,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 51,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "NEEDS_REVIEW",
+      "dataConfidence": 38,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 75,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "NEEDS_REVIEW",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 62,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 49,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "NEEDS_REVIEW",
+      "dataConfidence": 36,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 73,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 60,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 47,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "NEEDS_REVIEW",
+      "dataConfidence": 34,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "NEEDS_REVIEW",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 71,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "NEEDS_REVIEW",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 58,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 45,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "NEEDS_REVIEW",
+      "dataConfidence": 32,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 69,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 56,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 43,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 80,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "NEEDS_REVIEW",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 67,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "NEEDS_REVIEW",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 54,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 41,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 78,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 65,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 52,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "NEEDS_REVIEW",
+      "dataConfidence": 39,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 76,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "NEEDS_REVIEW",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 63,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "NEEDS_REVIEW",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 50,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "NEEDS_REVIEW",
+      "dataConfidence": 37,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 74,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 61,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 48,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "NEEDS_REVIEW",
+      "dataConfidence": 35,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "NEEDS_REVIEW",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 72,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "NEEDS_REVIEW",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 59,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 46,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "NEEDS_REVIEW",
+      "dataConfidence": 33,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "resourceModel": "PRESENT",
+      "candidateTimeModel": "PRESENT",
+      "fieldCoverageModel": "PRESENT",
+      "pressureModel": "PRESENT",
+      "eventROIModel": "PRESENT",
+      "travelPriorityModel": "PRESENT",
+      "forecastCoverage": "PRESENT",
+      "dataConfidence": 70,
+      "nextSafeDataActions": [
+        "FORECAST review: validate county staffing assumptions with regional lead.",
+        "FORECAST review: verify candidate-time allocation against travel constraints.",
+        "Keep actions human-reviewed; no automated deployment."
+      ]
+    }
+  ]
+}

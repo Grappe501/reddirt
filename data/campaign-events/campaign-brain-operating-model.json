@@ -33,11 +33,17 @@
       "id": "countyInstitutionalMemory",
       "label": "County institutional memory",
       "description": "County memory timeline, event outcomes, regional influence, and cross-county relationship context (read-only)."
+    },
+    {
+      "id": "countyResourceOperationsLayer",
+      "label": "County resource operations layer",
+      "description": "Read-only operational forecasting for staffing/resource pressure and intervention urgency."
     }
   ],
   "agents": {
     "countyIntelligenceCopilot": { "phase": "4N", "mode": "READ_ONLY_ANALYSIS_UNTIL_READY" },
-    "countyInstitutionalMemory": { "phase": "4N", "mode": "READ_ONLY_CONTEXT_LAYER" }
+    "countyInstitutionalMemory": { "phase": "4N", "mode": "READ_ONLY_CONTEXT_LAYER" },
+    "countyResourceOperationsLayer": { "phase": "4O", "mode": "READ_ONLY_OPERATIONAL_FORECASTING" }
   },
   "foundationRequirements": [
     "data/civic/source-registry.json",
@@ -52,6 +58,13 @@
     "data/county-memory/county-relationship-graph.json",
     "data/county-memory/regional-influence-map.json",
     "data/audit/county-memory-readiness-table.json",
+    "data/resource-allocation/resource-allocation-model.json",
+    "data/resource-allocation/candidate-time-allocation.json",
+    "data/resource-allocation/field-coverage-readiness.json",
+    "data/resource-allocation/county-resource-pressure-table.json",
+    "data/resource-allocation/event-roi-model.json",
+    "data/resource-allocation/travel-priority-map.json",
+    "data/audit/resource-allocation-readiness-table.json",
     "strategy gate enforced"
   ],
   "didNotBuild": ["automations", "final_county_strategy_packets"]

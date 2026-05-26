@@ -97,23 +97,30 @@ export function OrchestrationCountyAgentRuntimePanel({
               <th className="px-2 py-1 text-left">Voter metrics</th>
               <th className="px-2 py-1 text-left">Map</th>
               <th className="px-2 py-1 text-left">Institutional memory</th>
+              <th className="px-2 py-1 text-left">Resource pressure</th>
+              <th className="px-2 py-1 text-left">Intervention urgency</th>
               <th className="px-2 py-1 text-left">Strategy gate</th>
               <th className="px-2 py-1 text-left">Automation gate</th>
             </tr>
           </thead>
           <tbody>
-            {runtime.statewideDashboard.rows.map((row) => (
-              <tr key={row.countySlug} className="border-t">
-                <td className="px-2 py-1">{row.countyName}</td>
-                <td className="px-2 py-1">{row.briefAvailable ? "YES" : "NO"}</td>
-                <td className="px-2 py-1">{row.winPathwayReady ? "YES" : "NO"}</td>
-                <td className="px-2 py-1">{row.voterMetricsReady ? "YES" : "NO"}</td>
-                <td className="px-2 py-1">{row.mapReady ? "YES" : "NO"}</td>
-                <td className="px-2 py-1">{row.institutionalMemory}</td>
-                <td className="px-2 py-1">{row.strategyGate}</td>
-                <td className="px-2 py-1">{row.automationGate}</td>
-              </tr>
-            ))}
+            {runtime.statewideDashboard.rows.map((row) => {
+              const county = runtime.countyPayloads.find((x) => x.countySlug === row.countySlug);
+              return (
+                <tr key={row.countySlug} className="border-t">
+                  <td className="px-2 py-1">{row.countyName}</td>
+                  <td className="px-2 py-1">{row.briefAvailable ? "YES" : "NO"}</td>
+                  <td className="px-2 py-1">{row.winPathwayReady ? "YES" : "NO"}</td>
+                  <td className="px-2 py-1">{row.voterMetricsReady ? "YES" : "NO"}</td>
+                  <td className="px-2 py-1">{row.mapReady ? "YES" : "NO"}</td>
+                  <td className="px-2 py-1">{row.institutionalMemory}</td>
+                  <td className="px-2 py-1">{county?.resourceOperations.resourcePressure ?? "-"}</td>
+                  <td className="px-2 py-1">{county?.resourceOperations.interventionUrgencyScore ?? "-"}</td>
+                  <td className="px-2 py-1">{row.strategyGate}</td>
+                  <td className="px-2 py-1">{row.automationGate}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

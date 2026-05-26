@@ -8,6 +8,15 @@ import type {
   CountyRelationshipGraphFile,
   RegionalInfluenceMapFile,
 } from "./countyMemoryTypes";
+import type {
+  CandidateTimeAllocationFile,
+  CountyResourcePressureFile,
+  EventROIModelFile,
+  FieldCoverageReadinessFile,
+  ResourceAllocationModelFile,
+  ResourceAllocationReadinessFile,
+  TravelPriorityMapFile,
+} from "./resourceAllocationTypes";
 
 type JsonRecord = Record<string, unknown>;
 
@@ -74,6 +83,15 @@ export type CountyAgentRuntimeContext = {
     relationshipGraph: CountyRelationshipGraphFile;
     regionalInfluenceMap: RegionalInfluenceMapFile;
     readinessTable: CountyMemoryReadinessTable;
+  };
+  resourceAllocation: {
+    allocationModel: ResourceAllocationModelFile;
+    candidateTimeAllocation: CandidateTimeAllocationFile;
+    fieldCoverageReadiness: FieldCoverageReadinessFile;
+    countyResourcePressure: CountyResourcePressureFile;
+    eventROIModel: EventROIModelFile;
+    travelPriorityMap: TravelPriorityMapFile;
+    readinessTable: ResourceAllocationReadinessFile;
   };
 };
 
@@ -202,6 +220,27 @@ export async function loadCountyAgentRuntimeContext(): Promise<CountyAgentRuntim
   const countyMemoryReadinessTable = readJsonFile<CountyMemoryReadinessTable>(
     "data/audit/county-memory-readiness-table.json",
   );
+  const resourceAllocationModel = readJsonFile<ResourceAllocationModelFile>(
+    "data/resource-allocation/resource-allocation-model.json",
+  );
+  const candidateTimeAllocation = readJsonFile<CandidateTimeAllocationFile>(
+    "data/resource-allocation/candidate-time-allocation.json",
+  );
+  const fieldCoverageReadiness = readJsonFile<FieldCoverageReadinessFile>(
+    "data/resource-allocation/field-coverage-readiness.json",
+  );
+  const countyResourcePressure = readJsonFile<CountyResourcePressureFile>(
+    "data/resource-allocation/county-resource-pressure-table.json",
+  );
+  const eventROIModel = readJsonFile<EventROIModelFile>(
+    "data/resource-allocation/event-roi-model.json",
+  );
+  const travelPriorityMap = readJsonFile<TravelPriorityMapFile>(
+    "data/resource-allocation/travel-priority-map.json",
+  );
+  const resourceAllocationReadiness = readJsonFile<ResourceAllocationReadinessFile>(
+    "data/audit/resource-allocation-readiness-table.json",
+  );
 
   return {
     countyIntelligenceOrchestration,
@@ -230,6 +269,15 @@ export async function loadCountyAgentRuntimeContext(): Promise<CountyAgentRuntim
       relationshipGraph: countyRelationshipGraph,
       regionalInfluenceMap,
       readinessTable: countyMemoryReadinessTable,
+    },
+    resourceAllocation: {
+      allocationModel: resourceAllocationModel,
+      candidateTimeAllocation,
+      fieldCoverageReadiness,
+      countyResourcePressure,
+      eventROIModel,
+      travelPriorityMap,
+      readinessTable: resourceAllocationReadiness,
     },
   };
 }

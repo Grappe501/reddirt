@@ -1,0 +1,831 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-26T16:21:03.175Z",
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "pressureScore": 67,
+      "pressureBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "pressureScore": 55,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "pressureScore": 43,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "pressureScore": 59,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "pressureScore": 60,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "pressureScore": 63,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "pressureScore": 54,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "pressureScore": 56,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "pressureScore": 72,
+      "pressureBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "pressureScore": 59,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "pressureScore": 48,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "pressureScore": 50,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "pressureScore": 52,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "pressureScore": 68,
+      "pressureBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "pressureScore": 58,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "pressureScore": 61,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "pressureScore": 63,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "pressureScore": 37,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "pressureScore": 53,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "pressureScore": 54,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "pressureScore": 57,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "pressureScore": 48,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "pressureScore": 63,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "pressureScore": 66,
+      "pressureBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "pressureScore": 67,
+      "pressureBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "pressureScore": 42,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "pressureScore": 58,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "pressureScore": 59,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "pressureScore": 62,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "pressureScore": 52,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "pressureScore": 68,
+      "pressureBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "pressureScore": 71,
+      "pressureBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "pressureScore": 58,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "pressureScore": 47,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "pressureScore": 62,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "pressureScore": 64,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "pressureScore": 67,
+      "pressureBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "pressureScore": 57,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "pressureScore": 60,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "pressureScore": 75,
+      "pressureBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "pressureScore": 36,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "pressureScore": 52,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "pressureScore": 53,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "pressureScore": 56,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "pressureScore": 71,
+      "pressureBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "pressureScore": 62,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "pressureScore": 65,
+      "pressureBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "pressureScore": 66,
+      "pressureBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "pressureScore": 41,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "pressureScore": 56,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "pressureScore": 58,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "pressureScore": 61,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "pressureScore": 51,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "pressureScore": 67,
+      "pressureBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "pressureScore": 69,
+      "pressureBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "pressureScore": 57,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "pressureScore": 46,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "pressureScore": 61,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "pressureScore": 63,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "pressureScore": 65,
+      "pressureBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "pressureScore": 56,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "pressureScore": 59,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "pressureScore": 74,
+      "pressureBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "pressureScore": 48,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "pressureScore": 50,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "pressureScore": 52,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "pressureScore": 55,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "pressureScore": 70,
+      "pressureBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "pressureScore": 61,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "pressureScore": 63,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "pressureScore": 65,
+      "pressureBand": "HIGH",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "pressureScore": 40,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "pressureScore": 55,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "pressureScore": 57,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "pressureScore": 59,
+      "pressureBand": "MEDIUM",
+      "sourceLayers": [
+        "data/resource-allocation/resource-allocation-model.json",
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/county-strategy-readiness-table.json"
+      ]
+    }
+  ]
+}
