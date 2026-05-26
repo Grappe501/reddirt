@@ -23,7 +23,7 @@ export function OrchestrationCountyAgentRuntimePanel({
   if (!runtime) {
     return (
       <section className="rounded-2xl border border-amber-300 bg-amber-50 p-5">
-        <h2 className="text-sm font-bold text-kelly-navy">County AI Agent Runtime Payload (4L.1 / 4N)</h2>
+        <h2 className="text-sm font-bold text-kelly-navy">County AI Agent Runtime Payload (4L.1 / 4P)</h2>
         <p className="mt-2 text-sm text-amber-900">
           Runtime payload unavailable. Registry wiring exists, but runtime consumer could not load.
         </p>
@@ -35,9 +35,9 @@ export function OrchestrationCountyAgentRuntimePanel({
 
   return (
     <section className="rounded-2xl border border-indigo-900/15 bg-gradient-to-br from-indigo-50/30 to-white p-5">
-      <h2 className="text-sm font-bold text-kelly-navy">County AI Agent Runtime Payload (4L.1 / 4N)</h2>
+      <h2 className="text-sm font-bold text-kelly-navy">County AI Agent Runtime Payload (4L.1 / 4P)</h2>
       <p className="mt-1 text-xs text-kelly-muted">
-        Runtime-aware county payload with full operating-system context and county institutional memory (read-only; no automation).
+        Runtime-aware county payload with full operating-system context, institutional memory, resource operations, and public narrative signals (read-only; no automation).
       </p>
 
       <dl className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-4">
@@ -58,6 +58,7 @@ export function OrchestrationCountyAgentRuntimePanel({
             <li>Schema blocker status + registration ops status</li>
             <li>Win pathway inputs/readiness + landing page sections</li>
             <li>Institutional memory timeline, issue gaps, and regional relationship context</li>
+            <li>Public narrative issue volatility and messaging readiness confidence</li>
           </ul>
         </div>
         <div className="rounded-lg border bg-white p-3">
@@ -68,7 +69,7 @@ export function OrchestrationCountyAgentRuntimePanel({
               : "No county-level strategy blockers detected."}
           </p>
           <p className="mt-2 text-xs text-kelly-muted">
-            Warehouse blockers and institutional memory gaps are reflected per-county.
+            Warehouse blockers, institutional memory gaps, and narrative LOW_CONFIDENCE states are reflected per-county.
           </p>
         </div>
         <div className="rounded-lg border bg-white p-3">
@@ -99,6 +100,9 @@ export function OrchestrationCountyAgentRuntimePanel({
               <th className="px-2 py-1 text-left">Institutional memory</th>
               <th className="px-2 py-1 text-left">Resource pressure</th>
               <th className="px-2 py-1 text-left">Intervention urgency</th>
+              <th className="px-2 py-1 text-left">Top public issue</th>
+              <th className="px-2 py-1 text-left">Narrative confidence</th>
+              <th className="px-2 py-1 text-left">Messaging readiness</th>
               <th className="px-2 py-1 text-left">Strategy gate</th>
               <th className="px-2 py-1 text-left">Automation gate</th>
             </tr>
@@ -116,6 +120,9 @@ export function OrchestrationCountyAgentRuntimePanel({
                   <td className="px-2 py-1">{row.institutionalMemory}</td>
                   <td className="px-2 py-1">{county?.resourceOperations.resourcePressure ?? "-"}</td>
                   <td className="px-2 py-1">{county?.resourceOperations.interventionUrgencyScore ?? "-"}</td>
+                  <td className="px-2 py-1">{county?.publicNarrative.topPublicIssues[0] ?? "-"}</td>
+                  <td className="px-2 py-1">{county?.publicNarrative.narrativeConfidenceScore ?? "-"}</td>
+                  <td className="px-2 py-1">{county?.publicNarrative.messagingReadinessStatus ?? "-"}</td>
                   <td className="px-2 py-1">{row.strategyGate}</td>
                   <td className="px-2 py-1">{row.automationGate}</td>
                 </tr>

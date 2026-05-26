@@ -8,6 +8,7 @@ import { volunteerCapacityForecast } from "./volunteerCapacityForecast";
 import { countyMomentumForecast } from "./countyMomentumForecast";
 import { organizationalFragilityDetector } from "./organizationalFragilityDetector";
 import { loadResourceAllocationModel } from "./resourceAllocationModel";
+import { publicNarrativeBriefBuilder } from "./publicNarrativeBriefBuilder";
 
 export const CAMPAIGN_MANAGER_ANALYSIS_TOOLS = [
   "systemEfficiencyAnalyzer",
@@ -33,6 +34,23 @@ export const RESOURCE_ALLOCATION_FORECAST_TOOLS = [
   "deploymentPriorityRanker",
   "countyInterventionRecommender",
   "statewideOperationalBottleneckScanner",
+] as const;
+
+export const PUBLIC_NARRATIVE_INTELLIGENCE_TOOLS = [
+  "issueSignalTracker",
+  "countyConcernAnalyzer",
+  "publicNarrativeMonitor",
+  "recurringIssueTracker",
+  "localIssueHeatmap",
+  "regionalNarrativeAnalyzer",
+  "earnedMediaOpportunityFinder",
+  "publicMeetingSignalReader",
+  "civicSentimentSummaryBuilder",
+  "messagingReadinessAnalyzer",
+  "narrativeGapExplainer",
+  "issueClusterExplorer",
+  "countyNarrativeComparisonTool",
+  "publicNarrativeTrendAnalyzer",
 ] as const;
 
 export type ScenarioSimulation = {
@@ -89,6 +107,18 @@ export type CampaignManagerAnalysisResult = {
       suggestedHoursPerMonth: number;
       forecastType: "FORECAST";
     }>;
+  };
+  publicNarrativeIntelligence: {
+    tools: string[];
+    countyComparisons: Array<{
+      countySlug: string;
+      countyName: string;
+      topIssue: string;
+      volatility: number;
+      confidence: number;
+      signalKind: "SIGNAL" | "TREND";
+    }>;
+    statewideNarrativeTrends: string[];
   };
   safety: {
     noRawVoterRowsExposed: true;
@@ -209,7 +239,11 @@ export function runCampaignManagerAnalysisAgent(
   }
 
   return {
-    tools: [...CAMPAIGN_MANAGER_ANALYSIS_TOOLS, ...RESOURCE_ALLOCATION_FORECAST_TOOLS],
+    tools: [
+      ...CAMPAIGN_MANAGER_ANALYSIS_TOOLS,
+      ...RESOURCE_ALLOCATION_FORECAST_TOOLS,
+      ...PUBLIC_NARRATIVE_INTELLIGENCE_TOOLS,
+    ],
     systemEfficiencyAnalyzer: {
       blockedPipelines: [
         "voter warehouse schema blockers",
@@ -241,6 +275,24 @@ export function runCampaignManagerAnalysisAgent(
       statewideOperationalRanking,
       statewideBottlenecks,
       candidateTimeSuggestions,
+    },
+    publicNarrativeIntelligence: {
+      tools: [...PUBLIC_NARRATIVE_INTELLIGENCE_TOOLS],
+      countyComparisons: runtime.countyPayloads.slice(0, 75).map((county) => {
+        const brief = publicNarrativeBriefBuilder(county.countySlug);
+        return {
+          countySlug: county.countySlug,
+          countyName: county.countyName,
+          topIssue: brief.topPublicIssues[0] ?? "MISSING",
+          volatility: brief.issueVolatility,
+          confidence: brief.narrativeConfidenceScore,
+          signalKind: brief.signalKind,
+        };
+      }),
+      statewideNarrativeTrends: [
+        "TREND: issue volatility and meeting pressure are clustered in several counties.",
+        "SIGNAL: earned-media opportunity readiness varies by county confidence levels.",
+      ],
     },
     safety: {
       noRawVoterRowsExposed: true,

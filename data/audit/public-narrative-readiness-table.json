@@ -1,0 +1,1282 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-26T17:02:56.584Z",
+  "countyCount": 75,
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "issueSignals": "LOW_CONFIDENCE",
+      "issueClusters": "LOW_CONFIDENCE",
+      "regionalNarrative": "LOW_CONFIDENCE",
+      "earnedMedia": "LOW_CONFIDENCE",
+      "civicSentiment": "LOW_CONFIDENCE",
+      "publicMeetingSignals": "LOW_CONFIDENCE",
+      "messagingReadiness": "MISSING",
+      "narrativeConfidenceScore": 85,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 81,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 77,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 73,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 69,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "LOW_CONFIDENCE",
+      "narrativeConfidenceScore": 65,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "LOW_CONFIDENCE",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 61,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "LOW_CONFIDENCE",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 57,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "issueSignals": "LOW_CONFIDENCE",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 53,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "LOW_CONFIDENCE",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 49,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "LOW_CONFIDENCE",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "LOW_CONFIDENCE",
+      "narrativeConfidenceScore": 45,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "LOW_CONFIDENCE",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 41,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "LOW_CONFIDENCE",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "MISSING",
+      "narrativeConfidenceScore": 37,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 33,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "LOW_CONFIDENCE",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 29,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "LOW_CONFIDENCE",
+      "narrativeConfidenceScore": 85,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "issueSignals": "LOW_CONFIDENCE",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 81,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 77,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "LOW_CONFIDENCE",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "LOW_CONFIDENCE",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 73,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 69,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "LOW_CONFIDENCE",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "LOW_CONFIDENCE",
+      "narrativeConfidenceScore": 65,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "LOW_CONFIDENCE",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 61,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "LOW_CONFIDENCE",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 57,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 53,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "issueSignals": "LOW_CONFIDENCE",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "LOW_CONFIDENCE",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "MISSING",
+      "narrativeConfidenceScore": 49,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "LOW_CONFIDENCE",
+      "narrativeConfidenceScore": 45,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 41,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "LOW_CONFIDENCE",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 37,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "LOW_CONFIDENCE",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 33,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 29,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "LOW_CONFIDENCE",
+      "civicSentiment": "LOW_CONFIDENCE",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "LOW_CONFIDENCE",
+      "narrativeConfidenceScore": 85,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 81,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "issueSignals": "LOW_CONFIDENCE",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 77,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "LOW_CONFIDENCE",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 73,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 69,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "LOW_CONFIDENCE",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "LOW_CONFIDENCE",
+      "narrativeConfidenceScore": 65,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "LOW_CONFIDENCE",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "LOW_CONFIDENCE",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "MISSING",
+      "narrativeConfidenceScore": 61,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 57,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 53,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 49,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "issueSignals": "LOW_CONFIDENCE",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "LOW_CONFIDENCE",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "LOW_CONFIDENCE",
+      "narrativeConfidenceScore": 45,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 41,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "LOW_CONFIDENCE",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "LOW_CONFIDENCE",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 37,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 33,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "LOW_CONFIDENCE",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 29,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "LOW_CONFIDENCE",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "LOW_CONFIDENCE",
+      "narrativeConfidenceScore": 85,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 81,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 77,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "issueSignals": "LOW_CONFIDENCE",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "LOW_CONFIDENCE",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "MISSING",
+      "narrativeConfidenceScore": 73,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "LOW_CONFIDENCE",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 69,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "LOW_CONFIDENCE",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "LOW_CONFIDENCE",
+      "narrativeConfidenceScore": 65,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 61,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 57,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 53,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "LOW_CONFIDENCE",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "LOW_CONFIDENCE",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 49,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "LOW_CONFIDENCE",
+      "messagingReadiness": "LOW_CONFIDENCE",
+      "narrativeConfidenceScore": 45,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "issueSignals": "LOW_CONFIDENCE",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "LOW_CONFIDENCE",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 41,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 37,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 33,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 29,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "LOW_CONFIDENCE",
+      "civicSentiment": "LOW_CONFIDENCE",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "MISSING",
+      "narrativeConfidenceScore": 85,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 81,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 77,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "LOW_CONFIDENCE",
+      "regionalNarrative": "LOW_CONFIDENCE",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 73,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "issueSignals": "LOW_CONFIDENCE",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 69,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "LOW_CONFIDENCE",
+      "narrativeConfidenceScore": 65,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "LOW_CONFIDENCE",
+      "publicMeetingSignals": "LOW_CONFIDENCE",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 61,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 57,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 53,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 49,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "LOW_CONFIDENCE",
+      "earnedMedia": "LOW_CONFIDENCE",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "LOW_CONFIDENCE",
+      "narrativeConfidenceScore": 45,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 41,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "issueSignals": "LOW_CONFIDENCE",
+      "issueClusters": "LOW_CONFIDENCE",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "LOW_CONFIDENCE",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "MISSING",
+      "narrativeConfidenceScore": 37,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 33,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "issueSignals": "PRESENT",
+      "issueClusters": "PRESENT",
+      "regionalNarrative": "PRESENT",
+      "earnedMedia": "PRESENT",
+      "civicSentiment": "PRESENT",
+      "publicMeetingSignals": "PRESENT",
+      "messagingReadiness": "PRESENT",
+      "narrativeConfidenceScore": 29,
+      "nextSafeDataActions": [
+        "Review public issue trend confidence with county comms lead.",
+        "Validate earned-media opportunities against public calendar context.",
+        "Keep outputs aggregate; no individualized persuasion plans."
+      ]
+    }
+  ]
+}

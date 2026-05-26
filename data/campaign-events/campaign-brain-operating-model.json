@@ -38,12 +38,18 @@
       "id": "countyResourceOperationsLayer",
       "label": "County resource operations layer",
       "description": "Read-only operational forecasting for staffing/resource pressure and intervention urgency."
+    },
+    {
+      "id": "publicNarrativeIntelligenceLayer",
+      "label": "Public narrative intelligence layer",
+      "description": "Read-only aggregate public issue and narrative analysis for messaging readiness and earned-media opportunities."
     }
   ],
   "agents": {
-    "countyIntelligenceCopilot": { "phase": "4N", "mode": "READ_ONLY_ANALYSIS_UNTIL_READY" },
+    "countyIntelligenceCopilot": { "phase": "4P", "mode": "READ_ONLY_ANALYSIS_UNTIL_READY" },
     "countyInstitutionalMemory": { "phase": "4N", "mode": "READ_ONLY_CONTEXT_LAYER" },
-    "countyResourceOperationsLayer": { "phase": "4O", "mode": "READ_ONLY_OPERATIONAL_FORECASTING" }
+    "countyResourceOperationsLayer": { "phase": "4O", "mode": "READ_ONLY_OPERATIONAL_FORECASTING" },
+    "publicNarrativeIntelligenceLayer": { "phase": "4P", "mode": "READ_ONLY_PUBLIC_SIGNAL_ANALYSIS" }
   },
   "foundationRequirements": [
     "data/civic/source-registry.json",
@@ -65,6 +71,13 @@
     "data/resource-allocation/event-roi-model.json",
     "data/resource-allocation/travel-priority-map.json",
     "data/audit/resource-allocation-readiness-table.json",
+    "data/public-narrative/public-issue-signal-registry.json",
+    "data/public-narrative/county-issue-clusters.json",
+    "data/public-narrative/regional-narrative-map.json",
+    "data/public-narrative/earned-media-opportunities.json",
+    "data/public-narrative/civic-sentiment-summary.json",
+    "data/public-narrative/public-meeting-watchlist.json",
+    "data/audit/public-narrative-readiness-table.json",
     "strategy gate enforced"
   ],
   "didNotBuild": ["automations", "final_county_strategy_packets"]

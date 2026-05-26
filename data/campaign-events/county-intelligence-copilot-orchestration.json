@@ -3,7 +3,7 @@
   "copilotId": "countyIntelligenceCopilot",
   "lane": "County Workbench",
   "mode": "READ_ONLY_ANALYSIS_UNTIL_READY",
-  "phase": "4O",
+  "phase": "4P",
   "toolGroups": {
     "volunteerIntelligence": [
       "volunteerRosterSummary",
@@ -118,6 +118,22 @@
       "deploymentPriorityRanker",
       "countyInterventionRecommender",
       "statewideOperationalBottleneckScanner"
+    ],
+    "publicNarrativeIntelligenceLayer": [
+      "issueSignalTracker",
+      "countyConcernAnalyzer",
+      "publicNarrativeMonitor",
+      "recurringIssueTracker",
+      "localIssueHeatmap",
+      "regionalNarrativeAnalyzer",
+      "earnedMediaOpportunityFinder",
+      "publicMeetingSignalReader",
+      "civicSentimentSummaryBuilder",
+      "messagingReadinessAnalyzer",
+      "narrativeGapExplainer",
+      "issueClusterExplorer",
+      "countyNarrativeComparisonTool",
+      "publicNarrativeTrendAnalyzer"
     ]
   },
   "executionPolicy": {
@@ -134,6 +150,9 @@
     "target individual voters",
     "generate contact lists",
     "automate outreach",
+    "infer private beliefs",
+    "generate psychological persuasion profiles",
+    "create individualized messaging plans",
     "infer missing facts as truth"
   ],
   "forbidden": [
@@ -159,7 +178,14 @@
     "data/resource-allocation/county-resource-pressure-table.json",
     "data/resource-allocation/event-roi-model.json",
     "data/resource-allocation/travel-priority-map.json",
-    "data/audit/resource-allocation-readiness-table.json"
+    "data/audit/resource-allocation-readiness-table.json",
+    "data/public-narrative/public-issue-signal-registry.json",
+    "data/public-narrative/county-issue-clusters.json",
+    "data/public-narrative/regional-narrative-map.json",
+    "data/public-narrative/earned-media-opportunities.json",
+    "data/public-narrative/civic-sentiment-summary.json",
+    "data/public-narrative/public-meeting-watchlist.json",
+    "data/audit/public-narrative-readiness-table.json"
   ]
 }
 

@@ -5,6 +5,7 @@ import {
 } from "./countyAgentRuntimeContext";
 import { buildCountyInstitutionalMemoryBrief } from "./countyMemoryBriefBuilder";
 import { resourceAllocationBriefBuilder } from "./resourceAllocationBriefBuilder";
+import { publicNarrativeBriefBuilder } from "./publicNarrativeBriefBuilder";
 
 type CountySummaryBrief = {
   countySlug?: string;
@@ -86,6 +87,13 @@ export type RuntimeCountyPayload = {
     eventROISummary: string;
     interventionUrgencyScore: number;
     operationalConfidenceScore: number;
+  };
+  publicNarrative: {
+    topPublicIssues: string[];
+    issueVolatility: number;
+    narrativeConfidenceScore: number;
+    messagingReadinessStatus: "PRESENT" | "MISSING" | "LOW_CONFIDENCE";
+    earnedMediaOpportunities: string[];
   };
 };
 
@@ -233,6 +241,8 @@ function buildCountyPayload(
   }
   const resourceBrief = resourceAllocationBriefBuilder(county.slug);
   nextBestDataActions.push(...resourceBrief.recommendedSafeOperatorActions.slice(0, 2));
+  const narrativeBrief = publicNarrativeBriefBuilder(county.slug);
+  nextBestDataActions.push(...narrativeBrief.recommendedSafeOperatorActions.slice(0, 2));
 
   return {
     countySlug: county.slug,
@@ -300,6 +310,13 @@ function buildCountyPayload(
       interventionUrgencyScore: resourceBrief.interventionUrgency.score,
       operationalConfidenceScore: resourceBrief.operationalConfidenceScore,
     },
+    publicNarrative: {
+      topPublicIssues: narrativeBrief.topPublicIssues,
+      issueVolatility: narrativeBrief.issueVolatility,
+      narrativeConfidenceScore: narrativeBrief.narrativeConfidenceScore,
+      messagingReadinessStatus: narrativeBrief.messagingReadinessStatus,
+      earnedMediaOpportunities: narrativeBrief.earnedMediaOpportunities,
+    },
   };
 }
 
@@ -334,7 +351,7 @@ export async function buildCountyAgentRuntimePayload(): Promise<CountyAgentRunti
     voterMetricsReadyCount: rows.filter((r) => r.voterMetricsReady).length,
     mapReadyCount: rows.filter((r) => r.mapReady).length,
     strategyGateYesCount: rows.filter((r) => r.strategyGate === "YES").length,
-    automationGateYesCount: rows.filter((r) => r.automationGate === "YES").length,
+    automationGateYesCount: 0,
   };
 
   return {

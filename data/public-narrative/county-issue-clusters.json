@@ -1,0 +1,906 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-26T17:02:56.584Z",
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "clusterId": "cluster-1",
+      "topIssues": [
+        "cost of living",
+        "health care access"
+      ],
+      "volatility": 90,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "clusterId": "cluster-2",
+      "topIssues": [
+        "roads and infrastructure",
+        "local jobs"
+      ],
+      "volatility": 81,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "clusterId": "cluster-3",
+      "topIssues": [
+        "public schools",
+        "rural broadband"
+      ],
+      "volatility": 72,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "clusterId": "cluster-4",
+      "topIssues": [
+        "health care access",
+        "public safety"
+      ],
+      "volatility": 63,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "clusterId": "cluster-5",
+      "topIssues": [
+        "local jobs",
+        "water and utilities"
+      ],
+      "volatility": 54,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "clusterId": "cluster-6",
+      "topIssues": [
+        "rural broadband",
+        "housing affordability"
+      ],
+      "volatility": 45,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "clusterId": "cluster-7",
+      "topIssues": [
+        "public safety",
+        "small business support"
+      ],
+      "volatility": 36,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "clusterId": "cluster-8",
+      "topIssues": [
+        "water and utilities",
+        "cost of living"
+      ],
+      "volatility": 27,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "clusterId": "cluster-1",
+      "topIssues": [
+        "housing affordability",
+        "roads and infrastructure"
+      ],
+      "volatility": 18,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "clusterId": "cluster-2",
+      "topIssues": [
+        "small business support",
+        "public schools"
+      ],
+      "volatility": 84,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "clusterId": "cluster-3",
+      "topIssues": [
+        "cost of living",
+        "health care access"
+      ],
+      "volatility": 75,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "clusterId": "cluster-4",
+      "topIssues": [
+        "roads and infrastructure",
+        "local jobs"
+      ],
+      "volatility": 66,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "clusterId": "cluster-5",
+      "topIssues": [
+        "public schools",
+        "rural broadband"
+      ],
+      "volatility": 57,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "clusterId": "cluster-6",
+      "topIssues": [
+        "health care access",
+        "public safety"
+      ],
+      "volatility": 48,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "clusterId": "cluster-7",
+      "topIssues": [
+        "local jobs",
+        "water and utilities"
+      ],
+      "volatility": 39,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "clusterId": "cluster-8",
+      "topIssues": [
+        "rural broadband",
+        "housing affordability"
+      ],
+      "volatility": 30,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "clusterId": "cluster-1",
+      "topIssues": [
+        "public safety",
+        "small business support"
+      ],
+      "volatility": 21,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "clusterId": "cluster-2",
+      "topIssues": [
+        "water and utilities",
+        "cost of living"
+      ],
+      "volatility": 87,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "clusterId": "cluster-3",
+      "topIssues": [
+        "housing affordability",
+        "roads and infrastructure"
+      ],
+      "volatility": 78,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "clusterId": "cluster-4",
+      "topIssues": [
+        "small business support",
+        "public schools"
+      ],
+      "volatility": 69,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "clusterId": "cluster-5",
+      "topIssues": [
+        "cost of living",
+        "health care access"
+      ],
+      "volatility": 60,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "clusterId": "cluster-6",
+      "topIssues": [
+        "roads and infrastructure",
+        "local jobs"
+      ],
+      "volatility": 51,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "clusterId": "cluster-7",
+      "topIssues": [
+        "public schools",
+        "rural broadband"
+      ],
+      "volatility": 42,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "clusterId": "cluster-8",
+      "topIssues": [
+        "health care access",
+        "public safety"
+      ],
+      "volatility": 33,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "clusterId": "cluster-1",
+      "topIssues": [
+        "local jobs",
+        "water and utilities"
+      ],
+      "volatility": 24,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "clusterId": "cluster-2",
+      "topIssues": [
+        "rural broadband",
+        "housing affordability"
+      ],
+      "volatility": 90,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "clusterId": "cluster-3",
+      "topIssues": [
+        "public safety",
+        "small business support"
+      ],
+      "volatility": 81,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "clusterId": "cluster-4",
+      "topIssues": [
+        "water and utilities",
+        "cost of living"
+      ],
+      "volatility": 72,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "clusterId": "cluster-5",
+      "topIssues": [
+        "housing affordability",
+        "roads and infrastructure"
+      ],
+      "volatility": 63,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "clusterId": "cluster-6",
+      "topIssues": [
+        "small business support",
+        "public schools"
+      ],
+      "volatility": 54,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "clusterId": "cluster-7",
+      "topIssues": [
+        "cost of living",
+        "health care access"
+      ],
+      "volatility": 45,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "clusterId": "cluster-8",
+      "topIssues": [
+        "roads and infrastructure",
+        "local jobs"
+      ],
+      "volatility": 36,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "clusterId": "cluster-1",
+      "topIssues": [
+        "public schools",
+        "rural broadband"
+      ],
+      "volatility": 27,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "clusterId": "cluster-2",
+      "topIssues": [
+        "health care access",
+        "public safety"
+      ],
+      "volatility": 18,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "clusterId": "cluster-3",
+      "topIssues": [
+        "local jobs",
+        "water and utilities"
+      ],
+      "volatility": 84,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "clusterId": "cluster-4",
+      "topIssues": [
+        "rural broadband",
+        "housing affordability"
+      ],
+      "volatility": 75,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "clusterId": "cluster-5",
+      "topIssues": [
+        "public safety",
+        "small business support"
+      ],
+      "volatility": 66,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "clusterId": "cluster-6",
+      "topIssues": [
+        "water and utilities",
+        "cost of living"
+      ],
+      "volatility": 57,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "clusterId": "cluster-7",
+      "topIssues": [
+        "housing affordability",
+        "roads and infrastructure"
+      ],
+      "volatility": 48,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "clusterId": "cluster-8",
+      "topIssues": [
+        "small business support",
+        "public schools"
+      ],
+      "volatility": 39,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "clusterId": "cluster-1",
+      "topIssues": [
+        "cost of living",
+        "health care access"
+      ],
+      "volatility": 30,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "clusterId": "cluster-2",
+      "topIssues": [
+        "roads and infrastructure",
+        "local jobs"
+      ],
+      "volatility": 21,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "clusterId": "cluster-3",
+      "topIssues": [
+        "public schools",
+        "rural broadband"
+      ],
+      "volatility": 87,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "clusterId": "cluster-4",
+      "topIssues": [
+        "health care access",
+        "public safety"
+      ],
+      "volatility": 78,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "clusterId": "cluster-5",
+      "topIssues": [
+        "local jobs",
+        "water and utilities"
+      ],
+      "volatility": 69,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "clusterId": "cluster-6",
+      "topIssues": [
+        "rural broadband",
+        "housing affordability"
+      ],
+      "volatility": 60,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "clusterId": "cluster-7",
+      "topIssues": [
+        "public safety",
+        "small business support"
+      ],
+      "volatility": 51,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "clusterId": "cluster-8",
+      "topIssues": [
+        "water and utilities",
+        "cost of living"
+      ],
+      "volatility": 42,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "clusterId": "cluster-1",
+      "topIssues": [
+        "housing affordability",
+        "roads and infrastructure"
+      ],
+      "volatility": 33,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "clusterId": "cluster-2",
+      "topIssues": [
+        "small business support",
+        "public schools"
+      ],
+      "volatility": 24,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "clusterId": "cluster-3",
+      "topIssues": [
+        "cost of living",
+        "health care access"
+      ],
+      "volatility": 90,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "clusterId": "cluster-4",
+      "topIssues": [
+        "roads and infrastructure",
+        "local jobs"
+      ],
+      "volatility": 81,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "clusterId": "cluster-5",
+      "topIssues": [
+        "public schools",
+        "rural broadband"
+      ],
+      "volatility": 72,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "clusterId": "cluster-6",
+      "topIssues": [
+        "health care access",
+        "public safety"
+      ],
+      "volatility": 63,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "clusterId": "cluster-7",
+      "topIssues": [
+        "local jobs",
+        "water and utilities"
+      ],
+      "volatility": 54,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "clusterId": "cluster-8",
+      "topIssues": [
+        "rural broadband",
+        "housing affordability"
+      ],
+      "volatility": 45,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "clusterId": "cluster-1",
+      "topIssues": [
+        "public safety",
+        "small business support"
+      ],
+      "volatility": 36,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "clusterId": "cluster-2",
+      "topIssues": [
+        "water and utilities",
+        "cost of living"
+      ],
+      "volatility": 27,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "clusterId": "cluster-3",
+      "topIssues": [
+        "housing affordability",
+        "roads and infrastructure"
+      ],
+      "volatility": 18,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "clusterId": "cluster-4",
+      "topIssues": [
+        "small business support",
+        "public schools"
+      ],
+      "volatility": 84,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "clusterId": "cluster-5",
+      "topIssues": [
+        "cost of living",
+        "health care access"
+      ],
+      "volatility": 75,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "clusterId": "cluster-6",
+      "topIssues": [
+        "roads and infrastructure",
+        "local jobs"
+      ],
+      "volatility": 66,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "clusterId": "cluster-7",
+      "topIssues": [
+        "public schools",
+        "rural broadband"
+      ],
+      "volatility": 57,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "clusterId": "cluster-8",
+      "topIssues": [
+        "health care access",
+        "public safety"
+      ],
+      "volatility": 48,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "clusterId": "cluster-1",
+      "topIssues": [
+        "local jobs",
+        "water and utilities"
+      ],
+      "volatility": 39,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "clusterId": "cluster-2",
+      "topIssues": [
+        "rural broadband",
+        "housing affordability"
+      ],
+      "volatility": 30,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "clusterId": "cluster-3",
+      "topIssues": [
+        "public safety",
+        "small business support"
+      ],
+      "volatility": 21,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "clusterId": "cluster-4",
+      "topIssues": [
+        "water and utilities",
+        "cost of living"
+      ],
+      "volatility": 87,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "clusterId": "cluster-5",
+      "topIssues": [
+        "housing affordability",
+        "roads and infrastructure"
+      ],
+      "volatility": 78,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "clusterId": "cluster-6",
+      "topIssues": [
+        "small business support",
+        "public schools"
+      ],
+      "volatility": 69,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "clusterId": "cluster-7",
+      "topIssues": [
+        "cost of living",
+        "health care access"
+      ],
+      "volatility": 60,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "clusterId": "cluster-8",
+      "topIssues": [
+        "roads and infrastructure",
+        "local jobs"
+      ],
+      "volatility": 51,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "clusterId": "cluster-1",
+      "topIssues": [
+        "public schools",
+        "rural broadband"
+      ],
+      "volatility": 42,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "clusterId": "cluster-2",
+      "topIssues": [
+        "health care access",
+        "public safety"
+      ],
+      "volatility": 33,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "clusterId": "cluster-3",
+      "topIssues": [
+        "local jobs",
+        "water and utilities"
+      ],
+      "volatility": 24,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    }
+  ]
+}

@@ -1,0 +1,3381 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-26T17:02:56.584Z",
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "sourceCategory": "public_news",
+      "issueCategory": "roads and infrastructure",
+      "signalKind": "TREND",
+      "frequencyScore": 85,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "public schools",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 72,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "sourceCategory": "public_news",
+      "issueCategory": "health care access",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 59,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "sourceCategory": "public_news",
+      "issueCategory": "housing affordability",
+      "signalKind": "TREND",
+      "frequencyScore": 78,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "small business support",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 65,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "sourceCategory": "public_news",
+      "issueCategory": "cost of living",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 52,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "sourceCategory": "public_news",
+      "issueCategory": "rural broadband",
+      "signalKind": "TREND",
+      "frequencyScore": 71,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "public safety",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 58,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "sourceCategory": "public_news",
+      "issueCategory": "water and utilities",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 45,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public schools",
+      "signalKind": "TREND",
+      "frequencyScore": 64,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "health care access",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 51,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "sourceCategory": "public_news",
+      "issueCategory": "local jobs",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 38,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "sourceCategory": "public_news",
+      "issueCategory": "small business support",
+      "signalKind": "TREND",
+      "frequencyScore": 57,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "cost of living",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 44,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "sourceCategory": "public_news",
+      "issueCategory": "roads and infrastructure",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 31,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public safety",
+      "signalKind": "TREND",
+      "frequencyScore": 50,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "water and utilities",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 37,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "sourceCategory": "public_news",
+      "issueCategory": "housing affordability",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 24,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "sourceCategory": "public_news",
+      "issueCategory": "health care access",
+      "signalKind": "TREND",
+      "frequencyScore": 43,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "local jobs",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 30,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "sourceCategory": "public_news",
+      "issueCategory": "rural broadband",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 17,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "sourceCategory": "public_news",
+      "issueCategory": "cost of living",
+      "signalKind": "TREND",
+      "frequencyScore": 36,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "roads and infrastructure",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 23,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public schools",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 80,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "sourceCategory": "public_news",
+      "issueCategory": "water and utilities",
+      "signalKind": "TREND",
+      "frequencyScore": 29,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "housing affordability",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 16,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "sourceCategory": "public_news",
+      "issueCategory": "small business support",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 73,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "sourceCategory": "public_news",
+      "issueCategory": "local jobs",
+      "signalKind": "TREND",
+      "frequencyScore": 22,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "rural broadband",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 79,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public safety",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 66,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "sourceCategory": "public_news",
+      "issueCategory": "roads and infrastructure",
+      "signalKind": "TREND",
+      "frequencyScore": 85,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "public schools",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 72,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "sourceCategory": "public_news",
+      "issueCategory": "health care access",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 59,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "sourceCategory": "public_news",
+      "issueCategory": "housing affordability",
+      "signalKind": "TREND",
+      "frequencyScore": 78,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "small business support",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 65,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "sourceCategory": "public_news",
+      "issueCategory": "cost of living",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 52,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "sourceCategory": "public_news",
+      "issueCategory": "rural broadband",
+      "signalKind": "TREND",
+      "frequencyScore": 71,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "public safety",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 58,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "sourceCategory": "public_news",
+      "issueCategory": "water and utilities",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 45,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public schools",
+      "signalKind": "TREND",
+      "frequencyScore": 64,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "health care access",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 51,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "sourceCategory": "public_news",
+      "issueCategory": "local jobs",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 38,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "sourceCategory": "public_news",
+      "issueCategory": "small business support",
+      "signalKind": "TREND",
+      "frequencyScore": 57,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "cost of living",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 44,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "sourceCategory": "public_news",
+      "issueCategory": "roads and infrastructure",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 31,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public safety",
+      "signalKind": "TREND",
+      "frequencyScore": 50,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "water and utilities",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 37,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "sourceCategory": "public_news",
+      "issueCategory": "housing affordability",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 24,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "sourceCategory": "public_news",
+      "issueCategory": "health care access",
+      "signalKind": "TREND",
+      "frequencyScore": 43,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "local jobs",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 30,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "sourceCategory": "public_news",
+      "issueCategory": "rural broadband",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 17,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "sourceCategory": "public_news",
+      "issueCategory": "cost of living",
+      "signalKind": "TREND",
+      "frequencyScore": 36,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "roads and infrastructure",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 23,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public schools",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 80,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "sourceCategory": "public_news",
+      "issueCategory": "water and utilities",
+      "signalKind": "TREND",
+      "frequencyScore": 29,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "housing affordability",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 16,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "sourceCategory": "public_news",
+      "issueCategory": "small business support",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 73,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "sourceCategory": "public_news",
+      "issueCategory": "local jobs",
+      "signalKind": "TREND",
+      "frequencyScore": 22,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "rural broadband",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 79,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public safety",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 66,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "sourceCategory": "public_news",
+      "issueCategory": "roads and infrastructure",
+      "signalKind": "TREND",
+      "frequencyScore": 85,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "public schools",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 72,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "sourceCategory": "public_news",
+      "issueCategory": "health care access",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 59,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "sourceCategory": "public_news",
+      "issueCategory": "housing affordability",
+      "signalKind": "TREND",
+      "frequencyScore": 78,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "small business support",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 65,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "sourceCategory": "public_news",
+      "issueCategory": "cost of living",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 52,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "sourceCategory": "public_news",
+      "issueCategory": "rural broadband",
+      "signalKind": "TREND",
+      "frequencyScore": 71,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "public safety",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 58,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "sourceCategory": "public_news",
+      "issueCategory": "water and utilities",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 45,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public schools",
+      "signalKind": "TREND",
+      "frequencyScore": 64,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "health care access",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 51,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "sourceCategory": "public_news",
+      "issueCategory": "local jobs",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 38,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "sourceCategory": "public_news",
+      "issueCategory": "small business support",
+      "signalKind": "TREND",
+      "frequencyScore": 57,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "cost of living",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 44,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "sourceCategory": "public_news",
+      "issueCategory": "roads and infrastructure",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 31,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public safety",
+      "signalKind": "TREND",
+      "frequencyScore": 50,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "water and utilities",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 37,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "sourceCategory": "public_news",
+      "issueCategory": "housing affordability",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 24,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "sourceCategory": "public_news",
+      "issueCategory": "health care access",
+      "signalKind": "TREND",
+      "frequencyScore": 43,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "local jobs",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 30,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "sourceCategory": "public_news",
+      "issueCategory": "rural broadband",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 17,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "sourceCategory": "public_news",
+      "issueCategory": "cost of living",
+      "signalKind": "TREND",
+      "frequencyScore": 36,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "roads and infrastructure",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 23,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public schools",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 80,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "sourceCategory": "public_news",
+      "issueCategory": "water and utilities",
+      "signalKind": "TREND",
+      "frequencyScore": 29,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "housing affordability",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 16,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "sourceCategory": "public_news",
+      "issueCategory": "small business support",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 73,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "sourceCategory": "public_news",
+      "issueCategory": "local jobs",
+      "signalKind": "TREND",
+      "frequencyScore": 22,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "rural broadband",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 79,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public safety",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 66,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "sourceCategory": "public_news",
+      "issueCategory": "roads and infrastructure",
+      "signalKind": "TREND",
+      "frequencyScore": 85,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "public schools",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 72,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "sourceCategory": "public_news",
+      "issueCategory": "health care access",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 59,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "sourceCategory": "public_news",
+      "issueCategory": "housing affordability",
+      "signalKind": "TREND",
+      "frequencyScore": 78,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "small business support",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 65,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "sourceCategory": "public_news",
+      "issueCategory": "cost of living",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 52,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "sourceCategory": "public_news",
+      "issueCategory": "rural broadband",
+      "signalKind": "TREND",
+      "frequencyScore": 71,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "public safety",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 58,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "sourceCategory": "public_news",
+      "issueCategory": "water and utilities",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 45,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public schools",
+      "signalKind": "TREND",
+      "frequencyScore": 64,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "health care access",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 51,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "sourceCategory": "public_news",
+      "issueCategory": "local jobs",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 38,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "sourceCategory": "public_news",
+      "issueCategory": "small business support",
+      "signalKind": "TREND",
+      "frequencyScore": 57,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "cost of living",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 44,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "sourceCategory": "public_news",
+      "issueCategory": "roads and infrastructure",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 31,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public safety",
+      "signalKind": "TREND",
+      "frequencyScore": 50,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "water and utilities",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 37,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "sourceCategory": "public_news",
+      "issueCategory": "housing affordability",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 24,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "sourceCategory": "public_news",
+      "issueCategory": "health care access",
+      "signalKind": "TREND",
+      "frequencyScore": 43,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "local jobs",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 30,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "sourceCategory": "public_news",
+      "issueCategory": "rural broadband",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 17,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "sourceCategory": "public_news",
+      "issueCategory": "cost of living",
+      "signalKind": "TREND",
+      "frequencyScore": 36,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "roads and infrastructure",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 23,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public schools",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 80,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "sourceCategory": "public_news",
+      "issueCategory": "water and utilities",
+      "signalKind": "TREND",
+      "frequencyScore": 29,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "housing affordability",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 16,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "sourceCategory": "public_news",
+      "issueCategory": "small business support",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 73,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "sourceCategory": "public_news",
+      "issueCategory": "local jobs",
+      "signalKind": "TREND",
+      "frequencyScore": 22,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "rural broadband",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 79,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public safety",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 66,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "sourceCategory": "public_news",
+      "issueCategory": "roads and infrastructure",
+      "signalKind": "TREND",
+      "frequencyScore": 85,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "public schools",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 72,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "sourceCategory": "public_news",
+      "issueCategory": "health care access",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 59,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "sourceCategory": "public_news",
+      "issueCategory": "housing affordability",
+      "signalKind": "TREND",
+      "frequencyScore": 78,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "small business support",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 65,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "sourceCategory": "public_news",
+      "issueCategory": "cost of living",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 52,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "sourceCategory": "public_news",
+      "issueCategory": "rural broadband",
+      "signalKind": "TREND",
+      "frequencyScore": 71,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "public safety",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 58,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "sourceCategory": "public_news",
+      "issueCategory": "water and utilities",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 45,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public schools",
+      "signalKind": "TREND",
+      "frequencyScore": 64,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "health care access",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 51,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "sourceCategory": "public_news",
+      "issueCategory": "local jobs",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 38,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "sourceCategory": "public_news",
+      "issueCategory": "small business support",
+      "signalKind": "TREND",
+      "frequencyScore": 57,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "cost of living",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 44,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "sourceCategory": "public_news",
+      "issueCategory": "roads and infrastructure",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 31,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public safety",
+      "signalKind": "TREND",
+      "frequencyScore": 50,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "water and utilities",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 37,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "sourceCategory": "public_news",
+      "issueCategory": "housing affordability",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 24,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "sourceCategory": "public_news",
+      "issueCategory": "health care access",
+      "signalKind": "TREND",
+      "frequencyScore": 43,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "local jobs",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 30,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "sourceCategory": "public_news",
+      "issueCategory": "rural broadband",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 17,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "sourceCategory": "public_news",
+      "issueCategory": "cost of living",
+      "signalKind": "TREND",
+      "frequencyScore": 36,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "roads and infrastructure",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 23,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public schools",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 80,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "sourceCategory": "public_news",
+      "issueCategory": "water and utilities",
+      "signalKind": "TREND",
+      "frequencyScore": 29,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "housing affordability",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 16,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "sourceCategory": "public_news",
+      "issueCategory": "small business support",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 73,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "sourceCategory": "public_news",
+      "issueCategory": "local jobs",
+      "signalKind": "TREND",
+      "frequencyScore": 22,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "rural broadband",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 79,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public safety",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 66,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "sourceCategory": "public_news",
+      "issueCategory": "roads and infrastructure",
+      "signalKind": "TREND",
+      "frequencyScore": 85,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "public schools",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 72,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "sourceCategory": "public_news",
+      "issueCategory": "health care access",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 59,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "sourceCategory": "public_news",
+      "issueCategory": "housing affordability",
+      "signalKind": "TREND",
+      "frequencyScore": 78,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "small business support",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 65,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "sourceCategory": "public_news",
+      "issueCategory": "cost of living",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 52,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "sourceCategory": "public_news",
+      "issueCategory": "rural broadband",
+      "signalKind": "TREND",
+      "frequencyScore": 71,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "public safety",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 58,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "sourceCategory": "public_news",
+      "issueCategory": "water and utilities",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 45,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public schools",
+      "signalKind": "TREND",
+      "frequencyScore": 64,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "health care access",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 51,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "sourceCategory": "public_news",
+      "issueCategory": "local jobs",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 38,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "sourceCategory": "public_news",
+      "issueCategory": "small business support",
+      "signalKind": "TREND",
+      "frequencyScore": 57,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "cost of living",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 44,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "sourceCategory": "public_news",
+      "issueCategory": "roads and infrastructure",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 31,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public safety",
+      "signalKind": "TREND",
+      "frequencyScore": 50,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "water and utilities",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 37,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "sourceCategory": "public_news",
+      "issueCategory": "housing affordability",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 24,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "sourceCategory": "public_news",
+      "issueCategory": "health care access",
+      "signalKind": "TREND",
+      "frequencyScore": 43,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "local jobs",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 30,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "sourceCategory": "public_news",
+      "issueCategory": "rural broadband",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 17,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "sourceCategory": "public_news",
+      "issueCategory": "cost of living",
+      "signalKind": "TREND",
+      "frequencyScore": 36,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "roads and infrastructure",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 23,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public schools",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 80,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "sourceCategory": "public_news",
+      "issueCategory": "water and utilities",
+      "signalKind": "TREND",
+      "frequencyScore": 29,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "housing affordability",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 16,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "sourceCategory": "public_news",
+      "issueCategory": "small business support",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 73,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "sourceCategory": "public_news",
+      "issueCategory": "local jobs",
+      "signalKind": "TREND",
+      "frequencyScore": 22,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "rural broadband",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 79,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public safety",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 66,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "sourceCategory": "public_news",
+      "issueCategory": "roads and infrastructure",
+      "signalKind": "TREND",
+      "frequencyScore": 85,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "public schools",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 72,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "sourceCategory": "public_news",
+      "issueCategory": "health care access",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 59,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "sourceCategory": "public_news",
+      "issueCategory": "housing affordability",
+      "signalKind": "TREND",
+      "frequencyScore": 78,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "small business support",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 65,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "sourceCategory": "public_news",
+      "issueCategory": "cost of living",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 52,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "sourceCategory": "public_news",
+      "issueCategory": "rural broadband",
+      "signalKind": "TREND",
+      "frequencyScore": 71,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "public safety",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 58,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "sourceCategory": "public_news",
+      "issueCategory": "water and utilities",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 45,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public schools",
+      "signalKind": "TREND",
+      "frequencyScore": 64,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "health care access",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 51,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "sourceCategory": "public_news",
+      "issueCategory": "local jobs",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 38,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "sourceCategory": "public_news",
+      "issueCategory": "small business support",
+      "signalKind": "TREND",
+      "frequencyScore": 57,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "cost of living",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 44,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "sourceCategory": "public_news",
+      "issueCategory": "roads and infrastructure",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 31,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public safety",
+      "signalKind": "TREND",
+      "frequencyScore": 50,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "water and utilities",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 37,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "sourceCategory": "public_news",
+      "issueCategory": "housing affordability",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 24,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "sourceCategory": "public_news",
+      "issueCategory": "health care access",
+      "signalKind": "TREND",
+      "frequencyScore": 43,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "local jobs",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 30,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "sourceCategory": "public_news",
+      "issueCategory": "rural broadband",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 17,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "sourceCategory": "public_news",
+      "issueCategory": "cost of living",
+      "signalKind": "TREND",
+      "frequencyScore": 36,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "roads and infrastructure",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 23,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public schools",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 80,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "sourceCategory": "public_news",
+      "issueCategory": "water and utilities",
+      "signalKind": "TREND",
+      "frequencyScore": 29,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "housing affordability",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 16,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "sourceCategory": "public_news",
+      "issueCategory": "small business support",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 73,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "sourceCategory": "public_news",
+      "issueCategory": "local jobs",
+      "signalKind": "TREND",
+      "frequencyScore": 22,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "rural broadband",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 79,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public safety",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 66,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "sourceCategory": "public_news",
+      "issueCategory": "roads and infrastructure",
+      "signalKind": "TREND",
+      "frequencyScore": 85,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "public schools",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 72,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "sourceCategory": "public_news",
+      "issueCategory": "health care access",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 59,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "sourceCategory": "public_news",
+      "issueCategory": "housing affordability",
+      "signalKind": "TREND",
+      "frequencyScore": 78,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "small business support",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 65,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "sourceCategory": "public_news",
+      "issueCategory": "cost of living",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 52,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "sourceCategory": "public_news",
+      "issueCategory": "rural broadband",
+      "signalKind": "TREND",
+      "frequencyScore": 71,
+      "confidence": "PRESENT",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "public safety",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 58,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "sourceCategory": "public_news",
+      "issueCategory": "water and utilities",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 45,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "sourceCategory": "public_news",
+      "issueCategory": "public schools",
+      "signalKind": "TREND",
+      "frequencyScore": 64,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "health care access",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 51,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "sourceCategory": "public_news",
+      "issueCategory": "local jobs",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 38,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "sourceCategory": "public_news",
+      "issueCategory": "small business support",
+      "signalKind": "TREND",
+      "frequencyScore": 57,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "sourceCategory": "public_meetings",
+      "issueCategory": "cost of living",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 44,
+      "confidence": "LOW_CONFIDENCE",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "sourceCategory": "public_news",
+      "issueCategory": "roads and infrastructure",
+      "signalKind": "SIGNAL",
+      "frequencyScore": 31,
+      "confidence": "MISSING",
+      "sourceLayers": [
+        "public news trends",
+        "public meeting agendas",
+        "public civic indicators",
+        "county event activity"
+      ]
+    }
+  ]
+}

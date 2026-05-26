@@ -1,0 +1,606 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-26T17:02:56.584Z",
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around cost of living.",
+      "readinessScore": 88,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around roads and infrastructure.",
+      "readinessScore": 82,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around public schools.",
+      "readinessScore": 76,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around health care access.",
+      "readinessScore": 70,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around local jobs.",
+      "readinessScore": 64,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around rural broadband.",
+      "readinessScore": 58,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around public safety.",
+      "readinessScore": 52,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around water and utilities.",
+      "readinessScore": 46,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around housing affordability.",
+      "readinessScore": 40,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around small business support.",
+      "readinessScore": 34,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around cost of living.",
+      "readinessScore": 28,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around roads and infrastructure.",
+      "readinessScore": 22,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around public schools.",
+      "readinessScore": 86,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around health care access.",
+      "readinessScore": 80,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around local jobs.",
+      "readinessScore": 74,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around rural broadband.",
+      "readinessScore": 68,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around public safety.",
+      "readinessScore": 62,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around water and utilities.",
+      "readinessScore": 56,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around housing affordability.",
+      "readinessScore": 50,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around small business support.",
+      "readinessScore": 44,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around cost of living.",
+      "readinessScore": 38,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around roads and infrastructure.",
+      "readinessScore": 32,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around public schools.",
+      "readinessScore": 26,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around health care access.",
+      "readinessScore": 20,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around local jobs.",
+      "readinessScore": 84,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around rural broadband.",
+      "readinessScore": 78,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around public safety.",
+      "readinessScore": 72,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around water and utilities.",
+      "readinessScore": 66,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around housing affordability.",
+      "readinessScore": 60,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around small business support.",
+      "readinessScore": 54,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around cost of living.",
+      "readinessScore": 48,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around roads and infrastructure.",
+      "readinessScore": 42,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around public schools.",
+      "readinessScore": 36,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around health care access.",
+      "readinessScore": 30,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around local jobs.",
+      "readinessScore": 24,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around rural broadband.",
+      "readinessScore": 88,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around public safety.",
+      "readinessScore": 82,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around water and utilities.",
+      "readinessScore": 76,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around housing affordability.",
+      "readinessScore": 70,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around small business support.",
+      "readinessScore": 64,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around cost of living.",
+      "readinessScore": 58,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around roads and infrastructure.",
+      "readinessScore": 52,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around public schools.",
+      "readinessScore": 46,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around health care access.",
+      "readinessScore": 40,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around local jobs.",
+      "readinessScore": 34,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around rural broadband.",
+      "readinessScore": 28,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around public safety.",
+      "readinessScore": 22,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around water and utilities.",
+      "readinessScore": 86,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around housing affordability.",
+      "readinessScore": 80,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around small business support.",
+      "readinessScore": 74,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around cost of living.",
+      "readinessScore": 68,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around roads and infrastructure.",
+      "readinessScore": 62,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around public schools.",
+      "readinessScore": 56,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around health care access.",
+      "readinessScore": 50,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around local jobs.",
+      "readinessScore": 44,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around rural broadband.",
+      "readinessScore": 38,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around public safety.",
+      "readinessScore": 32,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around water and utilities.",
+      "readinessScore": 26,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around housing affordability.",
+      "readinessScore": 20,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around small business support.",
+      "readinessScore": 84,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around cost of living.",
+      "readinessScore": 78,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around roads and infrastructure.",
+      "readinessScore": 72,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around public schools.",
+      "readinessScore": 66,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around health care access.",
+      "readinessScore": 60,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around local jobs.",
+      "readinessScore": 54,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around rural broadband.",
+      "readinessScore": 48,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around public safety.",
+      "readinessScore": 42,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around water and utilities.",
+      "readinessScore": 36,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around housing affordability.",
+      "readinessScore": 30,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around small business support.",
+      "readinessScore": 24,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around cost of living.",
+      "readinessScore": 88,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around roads and infrastructure.",
+      "readinessScore": 82,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around public schools.",
+      "readinessScore": 76,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around health care access.",
+      "readinessScore": 70,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "opportunity": "SIGNAL: local press + civic forum opportunity around local jobs.",
+      "readinessScore": 64,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    }
+  ]
+}

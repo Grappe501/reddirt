@@ -1,0 +1,831 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-26T17:02:56.584Z",
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on cost of living.",
+        "SIGNAL: city council discussion trend on roads and infrastructure."
+      ],
+      "pressureScore": 85,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on roads and infrastructure.",
+        "SIGNAL: city council discussion trend on public schools."
+      ],
+      "pressureScore": 77,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on public schools.",
+        "SIGNAL: city council discussion trend on health care access."
+      ],
+      "pressureScore": 69,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on health care access.",
+        "SIGNAL: city council discussion trend on local jobs."
+      ],
+      "pressureScore": 61,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on local jobs.",
+        "SIGNAL: city council discussion trend on rural broadband."
+      ],
+      "pressureScore": 53,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on rural broadband.",
+        "SIGNAL: city council discussion trend on public safety."
+      ],
+      "pressureScore": 45,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on public safety.",
+        "SIGNAL: city council discussion trend on water and utilities."
+      ],
+      "pressureScore": 37,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on water and utilities.",
+        "SIGNAL: city council discussion trend on housing affordability."
+      ],
+      "pressureScore": 29,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on housing affordability.",
+        "SIGNAL: city council discussion trend on small business support."
+      ],
+      "pressureScore": 21,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on small business support.",
+        "SIGNAL: city council discussion trend on cost of living."
+      ],
+      "pressureScore": 83,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on cost of living.",
+        "SIGNAL: city council discussion trend on roads and infrastructure."
+      ],
+      "pressureScore": 75,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on roads and infrastructure.",
+        "SIGNAL: city council discussion trend on public schools."
+      ],
+      "pressureScore": 67,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on public schools.",
+        "SIGNAL: city council discussion trend on health care access."
+      ],
+      "pressureScore": 59,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on health care access.",
+        "SIGNAL: city council discussion trend on local jobs."
+      ],
+      "pressureScore": 51,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on local jobs.",
+        "SIGNAL: city council discussion trend on rural broadband."
+      ],
+      "pressureScore": 43,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on rural broadband.",
+        "SIGNAL: city council discussion trend on public safety."
+      ],
+      "pressureScore": 35,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on public safety.",
+        "SIGNAL: city council discussion trend on water and utilities."
+      ],
+      "pressureScore": 27,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on water and utilities.",
+        "SIGNAL: city council discussion trend on housing affordability."
+      ],
+      "pressureScore": 19,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on housing affordability.",
+        "SIGNAL: city council discussion trend on small business support."
+      ],
+      "pressureScore": 81,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on small business support.",
+        "SIGNAL: city council discussion trend on cost of living."
+      ],
+      "pressureScore": 73,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on cost of living.",
+        "SIGNAL: city council discussion trend on roads and infrastructure."
+      ],
+      "pressureScore": 65,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on roads and infrastructure.",
+        "SIGNAL: city council discussion trend on public schools."
+      ],
+      "pressureScore": 57,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on public schools.",
+        "SIGNAL: city council discussion trend on health care access."
+      ],
+      "pressureScore": 49,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on health care access.",
+        "SIGNAL: city council discussion trend on local jobs."
+      ],
+      "pressureScore": 41,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on local jobs.",
+        "SIGNAL: city council discussion trend on rural broadband."
+      ],
+      "pressureScore": 33,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on rural broadband.",
+        "SIGNAL: city council discussion trend on public safety."
+      ],
+      "pressureScore": 25,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on public safety.",
+        "SIGNAL: city council discussion trend on water and utilities."
+      ],
+      "pressureScore": 17,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on water and utilities.",
+        "SIGNAL: city council discussion trend on housing affordability."
+      ],
+      "pressureScore": 79,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on housing affordability.",
+        "SIGNAL: city council discussion trend on small business support."
+      ],
+      "pressureScore": 71,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on small business support.",
+        "SIGNAL: city council discussion trend on cost of living."
+      ],
+      "pressureScore": 63,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on cost of living.",
+        "SIGNAL: city council discussion trend on roads and infrastructure."
+      ],
+      "pressureScore": 55,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on roads and infrastructure.",
+        "SIGNAL: city council discussion trend on public schools."
+      ],
+      "pressureScore": 47,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on public schools.",
+        "SIGNAL: city council discussion trend on health care access."
+      ],
+      "pressureScore": 39,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on health care access.",
+        "SIGNAL: city council discussion trend on local jobs."
+      ],
+      "pressureScore": 31,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on local jobs.",
+        "SIGNAL: city council discussion trend on rural broadband."
+      ],
+      "pressureScore": 23,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on rural broadband.",
+        "SIGNAL: city council discussion trend on public safety."
+      ],
+      "pressureScore": 85,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on public safety.",
+        "SIGNAL: city council discussion trend on water and utilities."
+      ],
+      "pressureScore": 77,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on water and utilities.",
+        "SIGNAL: city council discussion trend on housing affordability."
+      ],
+      "pressureScore": 69,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on housing affordability.",
+        "SIGNAL: city council discussion trend on small business support."
+      ],
+      "pressureScore": 61,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on small business support.",
+        "SIGNAL: city council discussion trend on cost of living."
+      ],
+      "pressureScore": 53,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on cost of living.",
+        "SIGNAL: city council discussion trend on roads and infrastructure."
+      ],
+      "pressureScore": 45,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on roads and infrastructure.",
+        "SIGNAL: city council discussion trend on public schools."
+      ],
+      "pressureScore": 37,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on public schools.",
+        "SIGNAL: city council discussion trend on health care access."
+      ],
+      "pressureScore": 29,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on health care access.",
+        "SIGNAL: city council discussion trend on local jobs."
+      ],
+      "pressureScore": 21,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on local jobs.",
+        "SIGNAL: city council discussion trend on rural broadband."
+      ],
+      "pressureScore": 83,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on rural broadband.",
+        "SIGNAL: city council discussion trend on public safety."
+      ],
+      "pressureScore": 75,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on public safety.",
+        "SIGNAL: city council discussion trend on water and utilities."
+      ],
+      "pressureScore": 67,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on water and utilities.",
+        "SIGNAL: city council discussion trend on housing affordability."
+      ],
+      "pressureScore": 59,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on housing affordability.",
+        "SIGNAL: city council discussion trend on small business support."
+      ],
+      "pressureScore": 51,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on small business support.",
+        "SIGNAL: city council discussion trend on cost of living."
+      ],
+      "pressureScore": 43,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on cost of living.",
+        "SIGNAL: city council discussion trend on roads and infrastructure."
+      ],
+      "pressureScore": 35,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on roads and infrastructure.",
+        "SIGNAL: city council discussion trend on public schools."
+      ],
+      "pressureScore": 27,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on public schools.",
+        "SIGNAL: city council discussion trend on health care access."
+      ],
+      "pressureScore": 19,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on health care access.",
+        "SIGNAL: city council discussion trend on local jobs."
+      ],
+      "pressureScore": 81,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on local jobs.",
+        "SIGNAL: city council discussion trend on rural broadband."
+      ],
+      "pressureScore": 73,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on rural broadband.",
+        "SIGNAL: city council discussion trend on public safety."
+      ],
+      "pressureScore": 65,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on public safety.",
+        "SIGNAL: city council discussion trend on water and utilities."
+      ],
+      "pressureScore": 57,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on water and utilities.",
+        "SIGNAL: city council discussion trend on housing affordability."
+      ],
+      "pressureScore": 49,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on housing affordability.",
+        "SIGNAL: city council discussion trend on small business support."
+      ],
+      "pressureScore": 41,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on small business support.",
+        "SIGNAL: city council discussion trend on cost of living."
+      ],
+      "pressureScore": 33,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on cost of living.",
+        "SIGNAL: city council discussion trend on roads and infrastructure."
+      ],
+      "pressureScore": 25,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on roads and infrastructure.",
+        "SIGNAL: city council discussion trend on public schools."
+      ],
+      "pressureScore": 17,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on public schools.",
+        "SIGNAL: city council discussion trend on health care access."
+      ],
+      "pressureScore": 79,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on health care access.",
+        "SIGNAL: city council discussion trend on local jobs."
+      ],
+      "pressureScore": 71,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on local jobs.",
+        "SIGNAL: city council discussion trend on rural broadband."
+      ],
+      "pressureScore": 63,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on rural broadband.",
+        "SIGNAL: city council discussion trend on public safety."
+      ],
+      "pressureScore": 55,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on public safety.",
+        "SIGNAL: city council discussion trend on water and utilities."
+      ],
+      "pressureScore": 47,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on water and utilities.",
+        "SIGNAL: city council discussion trend on housing affordability."
+      ],
+      "pressureScore": 39,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on housing affordability.",
+        "SIGNAL: city council discussion trend on small business support."
+      ],
+      "pressureScore": 31,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on small business support.",
+        "SIGNAL: city council discussion trend on cost of living."
+      ],
+      "pressureScore": 23,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on cost of living.",
+        "SIGNAL: city council discussion trend on roads and infrastructure."
+      ],
+      "pressureScore": 85,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on roads and infrastructure.",
+        "SIGNAL: city council discussion trend on public schools."
+      ],
+      "pressureScore": 77,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on public schools.",
+        "SIGNAL: city council discussion trend on health care access."
+      ],
+      "pressureScore": 69,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on health care access.",
+        "SIGNAL: city council discussion trend on local jobs."
+      ],
+      "pressureScore": 61,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "watchItems": [
+        "SIGNAL: upcoming county agenda item on local jobs.",
+        "SIGNAL: city council discussion trend on rural broadband."
+      ],
+      "pressureScore": 53,
+      "confidence": "PRESENT",
+      "signalKind": "SIGNAL"
+    }
+  ]
+}

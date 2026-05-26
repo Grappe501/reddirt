@@ -1,0 +1,681 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-26T17:02:56.584Z",
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 90,
+      "volatility": 80,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 85,
+      "volatility": 73,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 80,
+      "volatility": 66,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 75,
+      "volatility": 59,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 70,
+      "volatility": 52,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 65,
+      "volatility": 45,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 60,
+      "volatility": 38,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 55,
+      "volatility": 31,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 50,
+      "volatility": 24,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 45,
+      "volatility": 17,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 40,
+      "volatility": 80,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 35,
+      "volatility": 73,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 30,
+      "volatility": 66,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 25,
+      "volatility": 59,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 20,
+      "volatility": 52,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 15,
+      "volatility": 45,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 90,
+      "volatility": 38,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 85,
+      "volatility": 31,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 80,
+      "volatility": 24,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 75,
+      "volatility": 17,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 70,
+      "volatility": 80,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 65,
+      "volatility": 73,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 60,
+      "volatility": 66,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 55,
+      "volatility": 59,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 50,
+      "volatility": 52,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 45,
+      "volatility": 45,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 40,
+      "volatility": 38,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 35,
+      "volatility": 31,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 30,
+      "volatility": 24,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 25,
+      "volatility": 17,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 20,
+      "volatility": 80,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 15,
+      "volatility": 73,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 90,
+      "volatility": 66,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 85,
+      "volatility": 59,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 80,
+      "volatility": 52,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 75,
+      "volatility": 45,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 70,
+      "volatility": 38,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 65,
+      "volatility": 31,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 60,
+      "volatility": 24,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 55,
+      "volatility": 17,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 50,
+      "volatility": 80,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 45,
+      "volatility": 73,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 40,
+      "volatility": 66,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 35,
+      "volatility": 59,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 30,
+      "volatility": 52,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 25,
+      "volatility": 45,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 20,
+      "volatility": 38,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 15,
+      "volatility": 31,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 90,
+      "volatility": 24,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 85,
+      "volatility": 17,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 80,
+      "volatility": 80,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 75,
+      "volatility": 73,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 70,
+      "volatility": 66,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 65,
+      "volatility": 59,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 60,
+      "volatility": 52,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 55,
+      "volatility": 45,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 50,
+      "volatility": 38,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 45,
+      "volatility": 31,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 40,
+      "volatility": 24,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 35,
+      "volatility": 17,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 30,
+      "volatility": 80,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 25,
+      "volatility": 73,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 20,
+      "volatility": 66,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 15,
+      "volatility": 59,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 90,
+      "volatility": 52,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 85,
+      "volatility": 45,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 80,
+      "volatility": 38,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 75,
+      "volatility": 31,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 70,
+      "volatility": 24,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 65,
+      "volatility": 17,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 60,
+      "volatility": 80,
+      "confidence": "LOW_CONFIDENCE",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 55,
+      "volatility": 73,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "civicSentiment": "MIXED",
+      "engagementScore": 50,
+      "volatility": 66,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "civicSentiment": "POSITIVE",
+      "engagementScore": 45,
+      "volatility": 59,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "civicSentiment": "NEGATIVE",
+      "engagementScore": 40,
+      "volatility": 52,
+      "confidence": "PRESENT",
+      "signalKind": "TREND"
+    }
+  ]
+}

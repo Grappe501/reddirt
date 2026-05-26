@@ -17,6 +17,15 @@ import type {
   ResourceAllocationReadinessFile,
   TravelPriorityMapFile,
 } from "./resourceAllocationTypes";
+import type {
+  CivicSentimentSummaryFile,
+  CountyIssueClustersFile,
+  EarnedMediaOpportunitiesFile,
+  PublicIssueSignalRegistryFile,
+  PublicMeetingWatchlistFile,
+  PublicNarrativeReadinessFile,
+  RegionalNarrativeMapFile,
+} from "./publicNarrativeTypes";
 
 type JsonRecord = Record<string, unknown>;
 
@@ -92,6 +101,15 @@ export type CountyAgentRuntimeContext = {
     eventROIModel: EventROIModelFile;
     travelPriorityMap: TravelPriorityMapFile;
     readinessTable: ResourceAllocationReadinessFile;
+  };
+  publicNarrative: {
+    issueSignalRegistry: PublicIssueSignalRegistryFile;
+    countyIssueClusters: CountyIssueClustersFile;
+    regionalNarrativeMap: RegionalNarrativeMapFile;
+    earnedMediaOpportunities: EarnedMediaOpportunitiesFile;
+    civicSentimentSummary: CivicSentimentSummaryFile;
+    publicMeetingWatchlist: PublicMeetingWatchlistFile;
+    readinessTable: PublicNarrativeReadinessFile;
   };
 };
 
@@ -241,6 +259,27 @@ export async function loadCountyAgentRuntimeContext(): Promise<CountyAgentRuntim
   const resourceAllocationReadiness = readJsonFile<ResourceAllocationReadinessFile>(
     "data/audit/resource-allocation-readiness-table.json",
   );
+  const issueSignalRegistry = readJsonFile<PublicIssueSignalRegistryFile>(
+    "data/public-narrative/public-issue-signal-registry.json",
+  );
+  const countyIssueClusters = readJsonFile<CountyIssueClustersFile>(
+    "data/public-narrative/county-issue-clusters.json",
+  );
+  const regionalNarrativeMap = readJsonFile<RegionalNarrativeMapFile>(
+    "data/public-narrative/regional-narrative-map.json",
+  );
+  const earnedMediaOpportunities = readJsonFile<EarnedMediaOpportunitiesFile>(
+    "data/public-narrative/earned-media-opportunities.json",
+  );
+  const civicSentimentSummary = readJsonFile<CivicSentimentSummaryFile>(
+    "data/public-narrative/civic-sentiment-summary.json",
+  );
+  const publicMeetingWatchlist = readJsonFile<PublicMeetingWatchlistFile>(
+    "data/public-narrative/public-meeting-watchlist.json",
+  );
+  const publicNarrativeReadiness = readJsonFile<PublicNarrativeReadinessFile>(
+    "data/audit/public-narrative-readiness-table.json",
+  );
 
   return {
     countyIntelligenceOrchestration,
@@ -278,6 +317,15 @@ export async function loadCountyAgentRuntimeContext(): Promise<CountyAgentRuntim
       eventROIModel,
       travelPriorityMap,
       readinessTable: resourceAllocationReadiness,
+    },
+    publicNarrative: {
+      issueSignalRegistry,
+      countyIssueClusters,
+      regionalNarrativeMap,
+      earnedMediaOpportunities,
+      civicSentimentSummary,
+      publicMeetingWatchlist,
+      readinessTable: publicNarrativeReadiness,
     },
   };
 }

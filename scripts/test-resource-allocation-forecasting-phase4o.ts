@@ -16,7 +16,7 @@ async function main() {
   const analysis = runCampaignManagerAnalysisAgent(runtime);
 
   const has75Rows = readiness.rows.length === ARKANSAS_COUNTY_REGISTRY.length;
-  const tools = (COUNTY_INTELLIGENCE_COPILOT_ORCHESTRATION.toolGroups as Record<string, string[]>)
+  const tools = (COUNTY_INTELLIGENCE_COPILOT_ORCHESTRATION.toolGroups as Record<string, readonly string[]>)
     .countyResourceOperationsLayer;
   const toolsRegistered = tools?.length === 12;
   const statewideRankingBuilds =
