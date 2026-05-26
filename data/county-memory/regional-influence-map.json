@@ -1,0 +1,169 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-26T14:31:40.193Z",
+  "rows": [
+    {
+      "regionId": "northwest",
+      "regionLabel": "Northwest (NWA & Ozarks gateway)",
+      "counties": [
+        "benton-county",
+        "carroll-county",
+        "madison-county",
+        "washington-county"
+      ],
+      "dominantIssueSignals": [
+        "NEEDS_REVIEW"
+      ],
+      "relationshipSignalStrength": 15,
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "regionId": "north_central",
+      "regionLabel": "North Central (River Valley & Boston Mountains)",
+      "counties": [
+        "baxter-county",
+        "boone-county",
+        "cleburne-county",
+        "fulton-county",
+        "independence-county",
+        "izard-county",
+        "johnson-county",
+        "marion-county",
+        "newton-county",
+        "searcy-county",
+        "sharp-county",
+        "stone-county",
+        "van-buren-county",
+        "white-county"
+      ],
+      "dominantIssueSignals": [
+        "NEEDS_REVIEW"
+      ],
+      "relationshipSignalStrength": 15,
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "regionId": "northeast",
+      "regionLabel": "Northeast (Upper Delta & Crowley’s Ridge)",
+      "counties": [
+        "clay-county",
+        "craighead-county",
+        "crittenden-county",
+        "cross-county",
+        "greene-county",
+        "jackson-county",
+        "lawrence-county",
+        "mississippi-county",
+        "poinsett-county",
+        "randolph-county",
+        "st-francis-county",
+        "woodruff-county"
+      ],
+      "dominantIssueSignals": [
+        "NEEDS_REVIEW"
+      ],
+      "relationshipSignalStrength": 15,
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "regionId": "central",
+      "regionLabel": "Central (incl. Little Rock & I-30 corridor)",
+      "counties": [
+        "conway-county",
+        "faulkner-county",
+        "grant-county",
+        "lonoke-county",
+        "perry-county",
+        "pope-county",
+        "prairie-county",
+        "pulaski-county",
+        "saline-county"
+      ],
+      "dominantIssueSignals": [
+        "NEEDS_REVIEW"
+      ],
+      "relationshipSignalStrength": 15,
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "regionId": "west_central",
+      "regionLabel": "West Central (Ouachitas & Hot Springs–Fort Smith)",
+      "counties": [
+        "crawford-county",
+        "franklin-county",
+        "garland-county",
+        "hot-spring-county",
+        "logan-county",
+        "montgomery-county",
+        "polk-county",
+        "scott-county",
+        "sebastian-county",
+        "yell-county"
+      ],
+      "dominantIssueSignals": [
+        "NEEDS_REVIEW"
+      ],
+      "relationshipSignalStrength": 15,
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "regionId": "southwest",
+      "regionLabel": "Southwest (Texarkana, timber, and hill country)",
+      "counties": [
+        "hempstead-county",
+        "howard-county",
+        "lafayette-county",
+        "little-river-county",
+        "miller-county",
+        "pike-county",
+        "sevier-county"
+      ],
+      "dominantIssueSignals": [
+        "NEEDS_REVIEW"
+      ],
+      "relationshipSignalStrength": 15,
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "regionId": "southeast",
+      "regionLabel": "Southeast (Delta, Pine Bluff, and river counties)",
+      "counties": [
+        "arkansas-county",
+        "chicot-county",
+        "desha-county",
+        "drew-county",
+        "jefferson-county",
+        "lee-county",
+        "monroe-county",
+        "phillips-county"
+      ],
+      "dominantIssueSignals": [
+        "NEEDS_REVIEW"
+      ],
+      "relationshipSignalStrength": 15,
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "regionId": "south",
+      "regionLabel": "South (southern timber & oil belt)",
+      "counties": [
+        "ashley-county",
+        "bradley-county",
+        "calhoun-county",
+        "clark-county",
+        "cleveland-county",
+        "columbia-county",
+        "dallas-county",
+        "lincoln-county",
+        "nevada-county",
+        "ouachita-county",
+        "union-county"
+      ],
+      "dominantIssueSignals": [
+        "NEEDS_REVIEW"
+      ],
+      "relationshipSignalStrength": 15,
+      "status": "NEEDS_REVIEW"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "version": 2,
+  "mapId": "campaignBrainOperatingSystem",
+  "label": "Campaign Brain Operating System Map",
+  "rule": "UNIFICATION_BEFORE_AUTOMATION",
+  "flow": [
+    "Campaign Brain",
+    "Mission",
+    "Goals",
+    "Canonical data",
+    "Readiness gates",
+    "County intelligence",
+    "County institutional memory",
+    "Voter warehouse schema readiness",
+    "Registration snapshot template/import",
+    "County win pathway formula",
+    "County summary brief builder",
+    "Field needs",
+    "Comms needs",
+    "Events/calendar",
+    "Volunteer capacity",
+    "Strategy eligibility",
+    "Automation eligibility"
+  ],
+  "canonicalArtifacts": {
+    "voterWarehouseSchemaReadiness": "data/audit/voter-warehouse-schema-readiness.json",
+    "registrationSnapshotTemplate": "data/import-templates/voter-registration-snapshot-template.csv",
+    "countyWinPathwayInputs": "data/audit/county-win-pathway-inputs.json",
+    "countyLandingOrchestrationContract": "data/campaign-events/county-landing-page-orchestration-contract.json",
+    "countyMemoryIndex": "data/county-memory/county-memory-index.json",
+    "countyEventOutcomes": "data/county-memory/county-event-outcomes.json",
+    "countyRelationshipGraph": "data/county-memory/county-relationship-graph.json",
+    "regionalInfluenceMap": "data/county-memory/regional-influence-map.json",
+    "countyMemoryReadiness": "data/audit/county-memory-readiness-table.json"
+  },
+  "gates": {
+    "strategyGeneration": "strategySafeToGenerate === YES",
+    "automationExecution": "Phase 4G foundationReady && strategy gate YES — not built in 4G",
+    "registrationSnapshotImport": "unknown FIPS rejected && all 75 counties present before write"
+  }
+}
+

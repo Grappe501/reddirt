@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "forbidden": [
+    "contact targeting list export",
+    "strategy generation while gate is NO"
+  ]
+}
+

@@ -1,0 +1,756 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-26T14:31:40.193Z",
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "eventId": "arkansas-county-missing",
+      "eventTitle": "Arkansas County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "ashley-county",
+      "eventId": "ashley-county-missing",
+      "eventTitle": "Ashley County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "baxter-county",
+      "eventId": "baxter-county-missing",
+      "eventTitle": "Baxter County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "benton-county",
+      "eventId": "benton-county-missing",
+      "eventTitle": "Benton County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "boone-county",
+      "eventId": "boone-county-missing",
+      "eventTitle": "Boone County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "bradley-county",
+      "eventId": "bradley-county-missing",
+      "eventTitle": "Bradley County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "calhoun-county",
+      "eventId": "calhoun-county-missing",
+      "eventTitle": "Calhoun County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "carroll-county",
+      "eventId": "carroll-county-missing",
+      "eventTitle": "Carroll County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "chicot-county",
+      "eventId": "chicot-county-missing",
+      "eventTitle": "Chicot County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "clark-county",
+      "eventId": "clark-county-missing",
+      "eventTitle": "Clark County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "clay-county",
+      "eventId": "clay-county-missing",
+      "eventTitle": "Clay County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "cleburne-county",
+      "eventId": "cleburne-county-missing",
+      "eventTitle": "Cleburne County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "cleveland-county",
+      "eventId": "cleveland-county-missing",
+      "eventTitle": "Cleveland County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "columbia-county",
+      "eventId": "columbia-county-missing",
+      "eventTitle": "Columbia County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "conway-county",
+      "eventId": "conway-county-missing",
+      "eventTitle": "Conway County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "craighead-county",
+      "eventId": "craighead-county-missing",
+      "eventTitle": "Craighead County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "crawford-county",
+      "eventId": "crawford-county-missing",
+      "eventTitle": "Crawford County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "crittenden-county",
+      "eventId": "crittenden-county-missing",
+      "eventTitle": "Crittenden County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "cross-county",
+      "eventId": "cross-county-missing",
+      "eventTitle": "Cross County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "dallas-county",
+      "eventId": "dallas-county-missing",
+      "eventTitle": "Dallas County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "desha-county",
+      "eventId": "desha-county-missing",
+      "eventTitle": "Desha County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "drew-county",
+      "eventId": "drew-county-missing",
+      "eventTitle": "Drew County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "faulkner-county",
+      "eventId": "faulkner-county-missing",
+      "eventTitle": "Faulkner County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "franklin-county",
+      "eventId": "franklin-county-missing",
+      "eventTitle": "Franklin County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "fulton-county",
+      "eventId": "fulton-county-missing",
+      "eventTitle": "Fulton County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "garland-county",
+      "eventId": "garland-county-missing",
+      "eventTitle": "Garland County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "grant-county",
+      "eventId": "grant-county-missing",
+      "eventTitle": "Grant County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "greene-county",
+      "eventId": "greene-county-missing",
+      "eventTitle": "Greene County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "hempstead-county",
+      "eventId": "hempstead-county-missing",
+      "eventTitle": "Hempstead County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "eventId": "hot-spring-county-missing",
+      "eventTitle": "Hot Spring County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "howard-county",
+      "eventId": "howard-county-missing",
+      "eventTitle": "Howard County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "independence-county",
+      "eventId": "independence-county-missing",
+      "eventTitle": "Independence County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "izard-county",
+      "eventId": "izard-county-missing",
+      "eventTitle": "Izard County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "jackson-county",
+      "eventId": "jackson-county-missing",
+      "eventTitle": "Jackson County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "jefferson-county",
+      "eventId": "jefferson-county-missing",
+      "eventTitle": "Jefferson County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "johnson-county",
+      "eventId": "johnson-county-missing",
+      "eventTitle": "Johnson County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "lafayette-county",
+      "eventId": "lafayette-county-missing",
+      "eventTitle": "Lafayette County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "lawrence-county",
+      "eventId": "lawrence-county-missing",
+      "eventTitle": "Lawrence County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "lee-county",
+      "eventId": "lee-county-missing",
+      "eventTitle": "Lee County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "lincoln-county",
+      "eventId": "lincoln-county-missing",
+      "eventTitle": "Lincoln County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "little-river-county",
+      "eventId": "little-river-county-missing",
+      "eventTitle": "Little River County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "logan-county",
+      "eventId": "logan-county-missing",
+      "eventTitle": "Logan County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "lonoke-county",
+      "eventId": "lonoke-county-missing",
+      "eventTitle": "Lonoke County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "madison-county",
+      "eventId": "madison-county-missing",
+      "eventTitle": "Madison County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "marion-county",
+      "eventId": "marion-county-missing",
+      "eventTitle": "Marion County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "miller-county",
+      "eventId": "miller-county-missing",
+      "eventTitle": "Miller County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "mississippi-county",
+      "eventId": "mississippi-county-missing",
+      "eventTitle": "Mississippi County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "monroe-county",
+      "eventId": "monroe-county-missing",
+      "eventTitle": "Monroe County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "montgomery-county",
+      "eventId": "montgomery-county-missing",
+      "eventTitle": "Montgomery County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "nevada-county",
+      "eventId": "nevada-county-missing",
+      "eventTitle": "Nevada County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "newton-county",
+      "eventId": "newton-county-missing",
+      "eventTitle": "Newton County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "ouachita-county",
+      "eventId": "ouachita-county-missing",
+      "eventTitle": "Ouachita County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "perry-county",
+      "eventId": "perry-county-missing",
+      "eventTitle": "Perry County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "phillips-county",
+      "eventId": "phillips-county-missing",
+      "eventTitle": "Phillips County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "pike-county",
+      "eventId": "pike-county-missing",
+      "eventTitle": "Pike County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "poinsett-county",
+      "eventId": "poinsett-county-missing",
+      "eventTitle": "Poinsett County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "polk-county",
+      "eventId": "polk-county-missing",
+      "eventTitle": "Polk County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "pope-county",
+      "eventId": "pope-county-missing",
+      "eventTitle": "Pope County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "prairie-county",
+      "eventId": "prairie-county-missing",
+      "eventTitle": "Prairie County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "pulaski-county",
+      "eventId": "pulaski-county-missing",
+      "eventTitle": "Pulaski County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "randolph-county",
+      "eventId": "randolph-county-missing",
+      "eventTitle": "Randolph County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "st-francis-county",
+      "eventId": "st-francis-county-missing",
+      "eventTitle": "St. Francis County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "saline-county",
+      "eventId": "saline-county-missing",
+      "eventTitle": "Saline County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "scott-county",
+      "eventId": "scott-county-missing",
+      "eventTitle": "Scott County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "searcy-county",
+      "eventId": "searcy-county-missing",
+      "eventTitle": "Searcy County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "sebastian-county",
+      "eventId": "sebastian-county-missing",
+      "eventTitle": "Sebastian County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "sevier-county",
+      "eventId": "sevier-county-missing",
+      "eventTitle": "Sevier County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "sharp-county",
+      "eventId": "sharp-county-missing",
+      "eventTitle": "Sharp County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "stone-county",
+      "eventId": "stone-county-missing",
+      "eventTitle": "Stone County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "union-county",
+      "eventId": "union-county-missing",
+      "eventTitle": "Union County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "van-buren-county",
+      "eventId": "van-buren-county-missing",
+      "eventTitle": "Van Buren County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "washington-county",
+      "eventId": "washington-county-missing",
+      "eventTitle": "Washington County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "white-county",
+      "eventId": "white-county-missing",
+      "eventTitle": "White County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "woodruff-county",
+      "eventId": "woodruff-county-missing",
+      "eventTitle": "Woodruff County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    },
+    {
+      "countySlug": "yell-county",
+      "eventId": "yell-county-missing",
+      "eventTitle": "Yell County memory missing",
+      "outcomeSummary": "No county event outcome records yet.",
+      "outcomeType": "needs_review",
+      "eventDate": null,
+      "status": "MISSING",
+      "source": "data/campaign-events/county-memory/*.json"
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "version": 2,
+  "copilotId": "countyIntelligenceCopilot",
+  "lane": "County Workbench",
+  "mode": "READ_ONLY_ANALYSIS_UNTIL_READY",
+  "phase": "4N",
+  "toolGroups": {
+    "volunteerIntelligence": [
+      "volunteerRosterSummary",
+      "volunteerCapacityAnalyzer",
+      "countyCaptainNeedsDetector",
+      "volunteerFollowupRecommender",
+      "signupSourceAnalyzer"
+    ],
+    "messagingIntelligence": [
+      "countyMessageThemeReader",
+      "publicIssueSignalReader",
+      "messageRiskChecker",
+      "audienceSegmentMapper",
+      "approvedTalkingPointMatcher"
+    ],
+    "statisticsIntelligence": [
+      "voterRegistrationFactReader",
+      "electionBaselineAnalyzer",
+      "turnoutGapAnalyzer",
+      "voteGainScenarioExplainer",
+      "countyTrendSummary"
+    ],
+    "strengthsWeaknesses": [
+      "countyStrengthDetector",
+      "countyWeaknessDetector",
+      "opportunityFinder",
+      "threatRiskScanner",
+      "confidenceScoreCalculator"
+    ],
+    "campaignNeeds": [
+      "countyNeedsRanker",
+      "dataGapPrioritizer",
+      "fieldCapacityNeeds",
+      "commsNeeds",
+      "eventNeeds",
+      "leadershipNeeds"
+    ],
+    "calendarEvents": [
+      "countyEventReader",
+      "eventCoverageAnalyzer",
+      "calendarGapFinder",
+      "upcomingDeadlineReader",
+      "eventFollowupRecommender"
+    ],
+    "strategyGuardrails": [
+      "strategyReadinessGatekeeper",
+      "strategyDraftPermissionChecker",
+      "sourceCitationBuilder",
+      "missingCanonBlocker",
+      "humanApprovalRequirementChecker"
+    ],
+    "civicGeographic": [
+      "censusProfileReader",
+      "blsLaborMarketReader",
+      "socioeconomicRiskScanner",
+      "cityProfileReader",
+      "precinctProfileReader",
+      "mapBoundaryInspector",
+      "demographicShiftAnalyzer",
+      "countyCityComparisonTool",
+      "precinctOpportunityScanner",
+      "sourceConfidenceExplainer"
+    ],
+    "voterFile": [
+      "voterFileCoverageInspector",
+      "precinctVoterProfileReader",
+      "voterRegistrationTrendAnalyzer",
+      "voterDensityHeatmapBuilder",
+      "voterGeocodeQualityChecker",
+      "voterSegmentSummaryTool",
+      "voterDataPrivacyGuard",
+      "voterFileFieldDictionaryReader",
+      "voterFileGapExplainer",
+      "voterMapLayerBuilder",
+      "voterFileChunkLocator",
+      "voterSegmentModelReader",
+      "voterHistoryPatternAnalyzer",
+      "voterContactListPermissionGate"
+    ],
+    "mapGeospatial": [
+      "precinctBoundaryInspector",
+      "geocodeCoverageAnalyzer",
+      "voterDensityMapReadinessChecker",
+      "precinctDataGapExplainer",
+      "countyMapLayerBuilder",
+      "cityMapLayerBuilder",
+      "precinctMapLayerBuilder",
+      "heatMapPermissionGate"
+    ],
+    "countyInstitutionalMemory": [
+      "countyMemoryTimeline",
+      "countyPoliticalCultureProfile",
+      "eventOutcomeAnalyzer",
+      "recurringIssueTracker",
+      "localInfluenceMap",
+      "countyRelationshipGraphReader",
+      "regionalInfluenceAnalyzer",
+      "crossCountyTrendAnalyzer",
+      "sharedIssueDetector",
+      "institutionalMemoryGapExplainer"
+    ]
+  },
+  "executionPolicy": {
+    "readOnly": true,
+    "strategyGenerationRequiresGateYes": true,
+    "automationEnabled": false
+  },
+  "cannot": [
+    "invent missing goals",
+    "promote scenario estimates",
+    "mutate RedDirt canon",
+    "write to sister lanes",
+    "create final strategy while gate is NO",
+    "target individual voters",
+    "generate contact lists",
+    "automate outreach",
+    "infer missing facts as truth"
+  ],
+  "forbidden": [
+    "infer registration goals",
+    "promote scenario vote targets to canon",
+    "generate county strategy when readiness gate is NO",
+    "mutate RedDirt canon",
+    "write sister-lane data"
+  ],
+  "dataSources": [
+    "data/audit/voter-warehouse-schema-readiness.json",
+    "data/import-templates/voter-registration-snapshot-template.csv",
+    "data/audit/county-win-pathway-inputs.json",
+    "data/campaign-events/county-landing-page-orchestration-contract.json",
+    "data/county-memory/county-memory-index.json",
+    "data/county-memory/county-event-outcomes.json",
+    "data/county-memory/county-relationship-graph.json",
+    "data/county-memory/regional-influence-map.json",
+    "data/audit/county-memory-readiness-table.json"
+  ]
+}
+

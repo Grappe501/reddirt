@@ -1,0 +1,59 @@
+{
+  "version": 2,
+  "modelId": "campaignBrain",
+  "label": "Campaign Brain",
+  "rule": "UNIFICATION_BEFORE_AUTOMATION",
+  "operatingStack": [
+    {
+      "id": "mission",
+      "label": "Mission",
+      "description": "Kelly SOS statewide organizing mission — human-owned; not inferred by agents."
+    },
+    {
+      "id": "goals",
+      "label": "Goals",
+      "description": "Registration, relational, turnout, and vote targets — LOCKED canon or SCENARIO_ESTIMATE only."
+    },
+    {
+      "id": "canonicalData",
+      "label": "Canonical data",
+      "description": "CountyCampaignStats, ElectionCountyResult, governed exports — RedDirt Prisma + audit JSON."
+    },
+    {
+      "id": "readinessGates",
+      "label": "Readiness gates",
+      "description": "strategySafeToGenerate, geography readiness, automation eligibility."
+    },
+    {
+      "id": "countyIntelligence",
+      "label": "County intelligence",
+      "description": "countyIntelligenceCopilot — read-only readiness-gated analysis."
+    },
+    {
+      "id": "countyInstitutionalMemory",
+      "label": "County institutional memory",
+      "description": "County memory timeline, event outcomes, regional influence, and cross-county relationship context (read-only)."
+    }
+  ],
+  "agents": {
+    "countyIntelligenceCopilot": { "phase": "4N", "mode": "READ_ONLY_ANALYSIS_UNTIL_READY" },
+    "countyInstitutionalMemory": { "phase": "4N", "mode": "READ_ONLY_CONTEXT_LAYER" }
+  },
+  "foundationRequirements": [
+    "data/civic/source-registry.json",
+    "data/civic/geography-index.json",
+    "data/audit/civic-data-readiness-table.json",
+    "data/audit/voter-warehouse-schema-readiness.json",
+    "data/import-templates/voter-registration-snapshot-template.csv",
+    "data/audit/county-win-pathway-inputs.json",
+    "data/campaign-events/county-landing-page-orchestration-contract.json",
+    "data/county-memory/county-memory-index.json",
+    "data/county-memory/county-event-outcomes.json",
+    "data/county-memory/county-relationship-graph.json",
+    "data/county-memory/regional-influence-map.json",
+    "data/audit/county-memory-readiness-table.json",
+    "strategy gate enforced"
+  ],
+  "didNotBuild": ["automations", "final_county_strategy_packets"]
+}
+

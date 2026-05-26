@@ -13,6 +13,8 @@ import { OrchestrationFeedbackLoopPanel } from "./OrchestrationFeedbackLoopPanel
 import { OrchestrationCrossDomainPanel } from "./OrchestrationCrossDomainPanel";
 import { OrchestrationRoleCopilotPanel } from "./OrchestrationRoleCopilotPanel";
 import { OrchestrationSafetyGateCard } from "./OrchestrationSafetyGateCard";
+import { OrchestrationCountyAgentRuntimePanel } from "./OrchestrationCountyAgentRuntimePanel";
+import { OrchestrationCampaignManagerAnalysisPanel } from "./OrchestrationCampaignManagerAnalysisPanel";
 
 export function OrchestrationCommandCenter({ payload }: { payload: OrchestrationStatePayload }) {
   const { campaignState, meta, sourceHealth } = payload;
@@ -102,6 +104,8 @@ export function OrchestrationCommandCenter({ payload }: { payload: Orchestration
       <OrchestrationDomainStatusGrid campaignState={campaignState} sourceHealth={sourceHealth} />
       <OrchestrationKnowledgeMemoryPanel knowledge={campaignState.knowledge} />
       <OrchestrationAgentToolingPanel tooling={payload.agentTooling} />
+      <OrchestrationCountyAgentRuntimePanel runtime={payload.countyAgentRuntime} />
+      <OrchestrationCampaignManagerAnalysisPanel analysis={payload.campaignManagerAnalysis} />
       <OrchestrationFeedbackLoopPanel payload={payload} />
       <OrchestrationCrossDomainPanel state={payload.crossDomainOrchestration} />
       <OrchestrationRoleCopilotPanel state={payload.campaignState.roleCopilots} />

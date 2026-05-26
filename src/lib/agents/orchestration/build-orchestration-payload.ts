@@ -24,6 +24,14 @@ import { buildCrossDomainOrchestrationState, emptyCrossDomainOrchestrationState 
 import type { CrossDomainOrchestrationState } from "./cross-domain/cross-domain-orchestrator-types";
 import { buildRoleCopilotNetworkState, emptyRoleCopilotNetworkState } from "./role-copilots/role-copilot-state";
 import type { RoleCopilotNetworkState } from "./role-copilots/role-copilot-types";
+import {
+  buildCountyAgentRuntimePayload,
+  type CountyAgentRuntimePayload,
+} from "@/lib/agents/county-intelligence/countyAgentRuntimePayloadBuilder";
+import {
+  runCampaignManagerAnalysisAgent,
+  type CampaignManagerAnalysisResult,
+} from "@/lib/agents/county-intelligence/campaignManagerAnalysisAgent";
 
 export type OrchestrationSafetyPayload = {
   humanGateRequired: true;
@@ -56,6 +64,8 @@ export type OrchestrationStatePayload = {
   agentTooling: AgentToolingState;
   crossDomainOrchestration: CrossDomainOrchestrationState;
   roleCopilots: RoleCopilotNetworkState;
+  countyAgentRuntime: CountyAgentRuntimePayload | null;
+  campaignManagerAnalysis: CampaignManagerAnalysisResult | null;
   errors?: string[];
 };
 
@@ -122,6 +132,8 @@ export function normalizeOrchestrationPayload(
     agentTooling: emptyAgentToolingState(),
     crossDomainOrchestration: emptyCrossDomainOrchestrationState(),
     roleCopilots: emptyRoleCopilotNetworkState(),
+    countyAgentRuntime: null,
+    campaignManagerAnalysis: null,
     ...(partial.errors?.length ? { errors: partial.errors } : {}),
   };
   base.learningInsights = buildOrchestrationLearningInsights(base);
@@ -142,6 +154,12 @@ export function normalizeOrchestrationPayload(
     base.campaignState = { ...base.campaignState, roleCopilots: partial.roleCopilots };
   } else if (base.campaignState.roleCopilots?.roles.length) {
     base.roleCopilots = base.campaignState.roleCopilots;
+  }
+  if (partial.countyAgentRuntime) {
+    base.countyAgentRuntime = partial.countyAgentRuntime;
+  }
+  if (partial.campaignManagerAnalysis) {
+    base.campaignManagerAnalysis = partial.campaignManagerAnalysis;
   }
   return base;
 }
@@ -181,6 +199,20 @@ export async function buildOrchestrationStatePayload(
   const campaignState = { ...state, agentTooling, crossDomainOrchestration, roleCopilots };
   const recommendedWorkflows = activateWorkflowsFromState(campaignState, enrichedDiagnosis);
   const partialErrors = bundle.errors.length > 0 ? bundle.errors : undefined;
+  let countyAgentRuntime: CountyAgentRuntimePayload | null = null;
+  try {
+    countyAgentRuntime = await buildCountyAgentRuntimePayload();
+  } catch {
+    countyAgentRuntime = null;
+  }
+  let campaignManagerAnalysis: CampaignManagerAnalysisResult | null = null;
+  try {
+    if (countyAgentRuntime) {
+      campaignManagerAnalysis = runCampaignManagerAnalysisAgent(countyAgentRuntime);
+    }
+  } catch {
+    campaignManagerAnalysis = null;
+  }
 
   return normalizeOrchestrationPayload({
     ok: campaignState.operatingMode !== "skeleton",
@@ -198,6 +230,8 @@ export async function buildOrchestrationStatePayload(
     agentTooling,
     crossDomainOrchestration,
     roleCopilots,
+    countyAgentRuntime,
+    campaignManagerAnalysis,
     ...(partialErrors ? { errors: partialErrors } : {}),
   });
 }
