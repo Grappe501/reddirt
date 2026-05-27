@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { loadKimHammerWorkbench } from "@/lib/opposition/kimHammerWorkbench";
+import { loadKimHammerProfileWorkbench } from "@/lib/opposition/kimHammerProfileWorkbench";
 
 const card = "rounded-md border border-kelly-text/10 bg-kelly-page px-3 py-2 text-sm";
 
 export default async function KimHammerCommandCenterPage() {
   const data = loadKimHammerWorkbench();
+  const profile = loadKimHammerProfileWorkbench();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -60,12 +62,38 @@ export default async function KimHammerCommandCenterPage() {
         <div className="rounded-xl border border-kelly-text/10 bg-white p-4">
           <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Open Sections</h2>
           <div className="mt-2 flex flex-col gap-2 text-xs">
+            <Link href="/admin/intelligence/kim-hammer/profile" className="rounded border px-2 py-1 font-semibold text-kelly-navy">Candidate profile</Link>
+            <Link href="/admin/intelligence/kim-hammer/electoral-history" className="rounded border px-2 py-1 font-semibold text-kelly-navy">Electoral history</Link>
+            <Link href="/admin/intelligence/kim-hammer/media-footprint" className="rounded border px-2 py-1 font-semibold text-kelly-navy">Media footprint</Link>
+            <Link href="/admin/intelligence/kim-hammer/public-timeline" className="rounded border px-2 py-1 font-semibold text-kelly-navy">Public timeline</Link>
+            <Link href="/admin/intelligence/kim-hammer/public-controversies" className="rounded border px-2 py-1 font-semibold text-kelly-navy">Public controversies</Link>
+            <Link href="/admin/intelligence/kim-hammer/contrast-vs-kelly" className="rounded border px-2 py-1 font-semibold text-kelly-navy">Contrast vs Kelly (placeholder)</Link>
             <Link href="/admin/intelligence/kim-hammer/debate-prep" className="rounded border px-2 py-1 font-semibold text-kelly-navy">Debate prep</Link>
             <Link href="/admin/intelligence/kim-hammer/claims-review" className="rounded border px-2 py-1 font-semibold text-kelly-navy">Claims review</Link>
             <Link href="/admin/intelligence/kim-hammer/themes" className="rounded border px-2 py-1 font-semibold text-kelly-navy">Themes</Link>
             <Link href="/admin/intelligence/kim-hammer/timeline" className="rounded border px-2 py-1 font-semibold text-kelly-navy">Timeline</Link>
             <Link href="/admin/intelligence/kim-hammer/research-gaps" className="rounded border px-2 py-1 font-semibold text-kelly-navy">Research gaps</Link>
           </div>
+        </div>
+      </section>
+
+      <section className="mb-6 grid gap-4 lg:grid-cols-2">
+        <div className="rounded-xl border border-kelly-text/10 bg-white p-4">
+          <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Candidate Profile Snapshot</h2>
+          <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
+            {profile.profileHighlights.map((x) => (
+              <li key={x}>{x}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="rounded-xl border border-kelly-text/10 bg-white p-4">
+          <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Research Confidence + Open Gaps</h2>
+          <p className="mt-1 text-xs text-kelly-muted">Confidence baseline: MEDIUM (official + campaign + media mixed evidence set).</p>
+          <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
+            {profile.biography.openGaps.slice(0, 4).map((gap) => (
+              <li key={gap}>{gap}</li>
+            ))}
+          </ul>
         </div>
       </section>
 

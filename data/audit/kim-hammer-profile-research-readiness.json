@@ -1,0 +1,42 @@
+{
+  "generatedAt": "2026-05-27T00:35:00.000Z",
+  "phase": "KH-1",
+  "rows": [
+    {
+      "artifact": "data/opposition/kim-hammer-profile/kim-hammer-biography.json",
+      "status": "PRESENT",
+      "notes": "Biography fields sourced and evidence-labeled."
+    },
+    {
+      "artifact": "data/opposition/kim-hammer-profile/kim-hammer-electoral-history.json",
+      "status": "PRESENT",
+      "notes": "Required races included; unresolved totals marked MISSING."
+    },
+    {
+      "artifact": "data/opposition/kim-hammer-profile/kim-hammer-public-timeline.json",
+      "status": "PRESENT",
+      "notes": "Timeline events include evidence status and confidence."
+    },
+    {
+      "artifact": "data/opposition/kim-hammer-profile/kim-hammer-media-footprint.json",
+      "status": "PRESENT",
+      "notes": "Primary media channels indexed."
+    },
+    {
+      "artifact": "data/opposition/kim-hammer-profile/kim-hammer-public-controversies.json",
+      "status": "PRESENT",
+      "notes": "Controversy items include at least one source and status labels."
+    },
+    {
+      "artifact": "data/opposition/kim-hammer-profile/kim-hammer-source-index.json",
+      "status": "PRESENT",
+      "notes": "Source catalog assembled."
+    }
+  ],
+  "summary": {
+    "presentCount": 6,
+    "missingCount": 0,
+    "needsReviewCount": 6
+  }
+}
+

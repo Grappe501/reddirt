@@ -1,0 +1,58 @@
+{
+  "generatedAt": "2026-05-27T00:35:00.000Z",
+  "channels": [
+    {
+      "type": "campaign_website",
+      "label": "Hammer for Arkansas",
+      "url": "https://www.hammerforarkansas.com/",
+      "sourceConfidence": "HIGH",
+      "evidenceStatus": "VERIFIED_FACT"
+    },
+    {
+      "type": "campaign_issue_page",
+      "label": "Election Security page",
+      "url": "https://www.hammerforarkansas.com/election-security/",
+      "sourceConfidence": "HIGH",
+      "evidenceStatus": "VERIFIED_FACT"
+    },
+    {
+      "type": "official_legislative_profile",
+      "label": "Arkansas Senate profile",
+      "url": "https://senate.arkansas.gov/senators/576/",
+      "sourceConfidence": "HIGH",
+      "evidenceStatus": "VERIFIED_FACT"
+    },
+    {
+      "type": "legislative_member_page",
+      "label": "Arkleg legislator detail",
+      "url": "https://arkleg.state.ar.us/Legislators/Detail?ddBienniumSession=2025%2F2025R&member=K.+Hammer",
+      "sourceConfidence": "HIGH",
+      "evidenceStatus": "VERIFIED_FACT"
+    },
+    {
+      "type": "news_coverage",
+      "label": "Arkansas Advocate runoff coverage",
+      "url": "https://arkansasadvocate.com/2026/03/31/hammer-has-early-lead-over-norris-in-republican-runoff-for-arkansas-secretary-of-state/",
+      "sourceConfidence": "MEDIUM",
+      "evidenceStatus": "REPORTED_CLAIM"
+    },
+    {
+      "type": "news_coverage",
+      "label": "KATV runoff coverage",
+      "url": "https://katv.com/news/hammer-brings-the-hammer-kim-hammer-wins-arkansas-secretary-of-state-runoff",
+      "sourceConfidence": "MEDIUM",
+      "evidenceStatus": "REPORTED_CLAIM"
+    }
+  ],
+  "counts": {
+    "totalChannels": 6,
+    "campaignPagesCaptured": 3,
+    "newsItemsIndexed": 2
+  },
+  "openGaps": [
+    "Public Facebook/X/YouTube archive pass not complete.",
+    "Radio show and podcast inventory needs additional source indexing.",
+    "Debate video clips and transcript timestamps are incomplete."
+  ]
+}
+

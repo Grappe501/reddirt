@@ -1,0 +1,68 @@
+{
+  "generatedAt": "2026-05-27T00:35:00.000Z",
+  "items": [
+    {
+      "id": "covid_public_health_lawsuit_2020",
+      "title": "COVID public-health lawsuit participation",
+      "summary": "Public reports list Kim Hammer among GOP lawmakers involved in litigation challenging emergency directives.",
+      "supporterOrSubjectExplanation": "Coverage frames the lawsuit around limits on executive emergency authority and agency directives.",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "confidence": "MEDIUM",
+      "sources": [
+        "https://talkbusiness.net/2020/09/lawsuit-filed-to-halt-health-directives-governors-emergency-actions/"
+      ]
+    },
+    {
+      "id": "facebook_political_war_post_2021",
+      "title": "Deleted Facebook post using 'political war' language",
+      "summary": "Press reports cite and quote a removed post describing Democrats as enemies and calling for political war.",
+      "supporterOrSubjectExplanation": "Framed in reporting as response to impeachment and partisan conflict context.",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "confidence": "MEDIUM",
+      "sources": [
+        "https://arktimes.com/arkansas-blog/2021/01/16/sen-kim-hammer-declares-war-on-democrats-in-now-removed-facebook-post"
+      ]
+    },
+    {
+      "id": "costco_liquor_permit_objection_2021",
+      "title": "Costco liquor permit objection",
+      "summary": "Coverage reports objection to permit request and concerns about existing outlet saturation; permit later approved by ABC board.",
+      "supporterOrSubjectExplanation": "Reported rationale focused on retail concentration and local suitability concerns.",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "confidence": "MEDIUM",
+      "sources": [
+        "https://arktimes.com/news/2021/06/16/alcoholic-beverage-control-approves-permit-for-costco-liquor-store"
+      ]
+    },
+    {
+      "id": "gop_runoff_dynamics_2026",
+      "title": "2026 GOP runoff dynamics",
+      "summary": "Public reporting characterizes SOS runoff as close and politically charged with narrow margin outcome.",
+      "supporterOrSubjectExplanation": "Post-runoff statements framed around unity and moving into general election.",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "confidence": "MEDIUM",
+      "sources": [
+        "https://arkansasadvocate.com/2026/03/31/hammer-has-early-lead-over-norris-in-republican-runoff-for-arkansas-secretary-of-state/",
+        "https://katv.com/news/hammer-brings-the-hammer-kim-hammer-wins-arkansas-secretary-of-state-runoff"
+      ]
+    },
+    {
+      "id": "election_law_restriction_criticisms",
+      "title": "Election-law restriction criticism pattern",
+      "summary": "Multiple public stories characterize legislative package as adding constraints in election and petition processes.",
+      "supporterOrSubjectExplanation": "Supporter framing emphasizes election integrity, fraud prevention, and constitutional process protections.",
+      "evidenceStatus": "INTERPRETATION",
+      "confidence": "MEDIUM",
+      "sources": [
+        "https://www.hammerforarkansas.com/election-security/",
+        "data/opposition/kim-hammer-election-record-bill-index.json"
+      ]
+    }
+  ],
+  "safetyNotes": [
+    "No private address or family targeting content included.",
+    "No motive claims presented as verified fact.",
+    "All controversy items require follow-up sourcing before external publication."
+  ]
+}
+

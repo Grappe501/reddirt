@@ -1,0 +1,110 @@
+{
+  "generatedAt": "2026-05-27T00:35:00.000Z",
+  "sources": [
+    {
+      "id": "campaign_home",
+      "category": "campaign_website",
+      "url": "https://www.hammerforarkansas.com/",
+      "confidence": "HIGH",
+      "usedFor": [
+        "public brand",
+        "campaign messaging",
+        "website capture"
+      ]
+    },
+    {
+      "id": "campaign_about",
+      "category": "campaign_website",
+      "url": "https://www.hammerforarkansas.com/about/",
+      "confidence": "HIGH",
+      "usedFor": [
+        "biography",
+        "offices held",
+        "committee references",
+        "public ministry references"
+      ]
+    },
+    {
+      "id": "campaign_election_security",
+      "category": "campaign_website",
+      "url": "https://www.hammerforarkansas.com/election-security/",
+      "confidence": "HIGH",
+      "usedFor": [
+        "issue framing",
+        "campaign values language",
+        "public claims indexing"
+      ]
+    },
+    {
+      "id": "senate_profile",
+      "category": "official_government",
+      "url": "https://senate.arkansas.gov/senators/576/",
+      "confidence": "HIGH",
+      "usedFor": [
+        "official biography",
+        "occupation",
+        "committees",
+        "district context"
+      ]
+    },
+    {
+      "id": "arkleg_profile",
+      "category": "official_government",
+      "url": "https://arkleg.state.ar.us/Legislators/Detail?ddBienniumSession=2025%2F2025R&member=K.+Hammer",
+      "confidence": "HIGH",
+      "usedFor": [
+        "public service timeline",
+        "official occupation listing"
+      ]
+    },
+    {
+      "id": "ballotpedia_profile",
+      "category": "election_reference",
+      "url": "https://ballotpedia.org/Kim_Hammer",
+      "confidence": "MEDIUM",
+      "usedFor": [
+        "election history rows",
+        "runoff references",
+        "campaign finance summary references"
+      ]
+    },
+    {
+      "id": "arkansas_advocate_runoff",
+      "category": "news",
+      "url": "https://arkansasadvocate.com/2026/03/31/hammer-has-early-lead-over-norris-in-republican-runoff-for-arkansas-secretary-of-state/",
+      "confidence": "MEDIUM",
+      "usedFor": [
+        "runoff dynamics",
+        "public quote context"
+      ]
+    },
+    {
+      "id": "arktimes_facebook_post",
+      "category": "news",
+      "url": "https://arktimes.com/arkansas-blog/2021/01/16/sen-kim-hammer-declares-war-on-democrats-in-now-removed-facebook-post",
+      "confidence": "MEDIUM",
+      "usedFor": [
+        "public controversies"
+      ]
+    },
+    {
+      "id": "talk_business_covid_lawsuit",
+      "category": "news",
+      "url": "https://talkbusiness.net/2020/09/lawsuit-filed-to-halt-health-directives-governors-emergency-actions/",
+      "confidence": "MEDIUM",
+      "usedFor": [
+        "public controversies"
+      ]
+    },
+    {
+      "id": "arktimes_costco",
+      "category": "news",
+      "url": "https://arktimes.com/news/2021/06/16/alcoholic-beverage-control-approves-permit-for-costco-liquor-store",
+      "confidence": "MEDIUM",
+      "usedFor": [
+        "public controversies"
+      ]
+    }
+  ]
+}
+

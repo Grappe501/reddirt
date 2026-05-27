@@ -1,0 +1,78 @@
+{
+  "generatedAt": "2026-05-27T00:35:00.000Z",
+  "events": [
+    {
+      "year": 2011,
+      "label": "Entered Arkansas House service",
+      "description": "Public service listing shows House terms beginning 2011 cycle.",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sources": [
+        "https://arkleg.state.ar.us/Legislators/Detail?ddBienniumSession=2025%2F2025R&member=K.+Hammer"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "year": 2018,
+      "label": "Elected to Arkansas Senate",
+      "description": "Public biography states election to Senate in 2018 after House service.",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sources": [
+        "https://senate.arkansas.gov/senators/576/",
+        "https://www.hammerforarkansas.com/about/"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "year": 2020,
+      "label": "COVID public-health lawsuit participation",
+      "description": "Public coverage reports participation among GOP lawmakers in lawsuit challenging pandemic directives.",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "sources": [
+        "https://talkbusiness.net/2020/09/lawsuit-filed-to-halt-health-directives-governors-emergency-actions/"
+      ],
+      "confidence": "MEDIUM"
+    },
+    {
+      "year": 2021,
+      "label": "Deleted 'political war' Facebook post coverage",
+      "description": "Press reports quote removed post and resulting criticism.",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "sources": [
+        "https://arktimes.com/arkansas-blog/2021/01/16/sen-kim-hammer-declares-war-on-democrats-in-now-removed-facebook-post"
+      ],
+      "confidence": "MEDIUM"
+    },
+    {
+      "year": 2021,
+      "label": "Costco liquor permit objection coverage",
+      "description": "Public reporting indicates objection and later permit approval reversal by ABC board.",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "sources": [
+        "https://arktimes.com/news/2021/06/16/alcoholic-beverage-control-approves-permit-for-costco-liquor-store"
+      ],
+      "confidence": "MEDIUM"
+    },
+    {
+      "year": 2025,
+      "label": "Election-law bill cluster",
+      "description": "Election-law bill packet shows multiple enacted acts tied to sponsorship.",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sources": [
+        "data/opposition/kim-hammer-election-record-bill-index.json"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "year": 2026,
+      "label": "Won GOP runoff for Secretary of State nomination",
+      "description": "Public media and election reporting indicate narrow runoff win and progression to general election.",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "sources": [
+        "https://arkansasadvocate.com/2026/03/31/hammer-has-early-lead-over-norris-in-republican-runoff-for-arkansas-secretary-of-state/",
+        "https://katv.com/news/hammer-brings-the-hammer-kim-hammer-wins-arkansas-secretary-of-state-runoff"
+      ],
+      "confidence": "MEDIUM"
+    }
+  ]
+}
+

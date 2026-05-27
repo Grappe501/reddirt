@@ -1,0 +1,89 @@
+{
+  "generatedAt": "2026-05-27T00:35:00.000Z",
+  "subject": "Kim Hammer",
+  "records": [
+    {
+      "field": "fullPublicName",
+      "value": "Kim Davin Hammer",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "sourceConfidence": "MEDIUM",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Kim_Hammer"
+      ]
+    },
+    {
+      "field": "dateOfBirth",
+      "value": "1958-08-11",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "sourceConfidence": "MEDIUM",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Kim_Hammer"
+      ]
+    },
+    {
+      "field": "birthplace",
+      "value": "Damascus, Arkansas",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "sourceConfidence": "MEDIUM",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Kim_Hammer"
+      ]
+    },
+    {
+      "field": "publicResidenceArea",
+      "value": "Benton / Saline County area",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH",
+      "sources": [
+        "https://senate.arkansas.gov/senators/576/",
+        "https://www.hammerforarkansas.com/about/"
+      ]
+    },
+    {
+      "field": "occupation",
+      "value": "Pastor, retired hospice chaplain",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH",
+      "sources": [
+        "https://senate.arkansas.gov/senators/576/",
+        "https://arkleg.state.ar.us/Legislators/Detail?ddBienniumSession=2025%2F2025R&member=K.+Hammer"
+      ]
+    },
+    {
+      "field": "ministryRole",
+      "value": "Pastor of Saline Missionary Baptist Church in Tull (publicly stated biography)",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH",
+      "sources": [
+        "https://senate.arkansas.gov/senators/576/",
+        "https://www.hammerforarkansas.com/about/"
+      ]
+    },
+    {
+      "field": "politicalBrandSummary",
+      "value": "Election-integrity-focused conservative legislative candidate for Secretary of State.",
+      "evidenceStatus": "INTERPRETATION",
+      "sourceConfidence": "HIGH",
+      "sources": [
+        "https://www.hammerforarkansas.com/",
+        "https://www.hammerforarkansas.com/election-security/"
+      ]
+    },
+    {
+      "field": "familyReferences",
+      "value": "Public biography references spouse and children only; no private details stored.",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH",
+      "sources": [
+        "https://senate.arkansas.gov/senators/576/",
+        "https://www.hammerforarkansas.com/about/"
+      ]
+    }
+  ],
+  "openGaps": [
+    "Official campaign or legislative source confirming date of birth is still needed.",
+    "Education history needs official source confirmation.",
+    "Public awards/recognition inventory is incomplete."
+  ]
+}
+

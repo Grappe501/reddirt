@@ -1,0 +1,160 @@
+{
+  "generatedAt": "2026-05-27T00:35:00.000Z",
+  "rows": [
+    {
+      "year": 2010,
+      "office": "Arkansas House of Representatives",
+      "district": "District 28",
+      "stage": "general",
+      "opponents": [
+        "Barbara Nix"
+      ],
+      "votes": {
+        "Kim Hammer": 5531,
+        "Barbara Nix": 4451
+      },
+      "percentages": {
+        "Kim Hammer": 55.4,
+        "Barbara Nix": 44.6
+      },
+      "result": "won",
+      "marginVotes": 1080,
+      "source": "https://ballotpedia.org/Kim_Hammer",
+      "confidence": "MEDIUM",
+      "evidenceStatus": "REPORTED_CLAIM"
+    },
+    {
+      "year": 2012,
+      "office": "Arkansas House of Representatives",
+      "district": "District 28",
+      "stage": "general",
+      "opponents": [
+        "Barbara Nix"
+      ],
+      "votes": {
+        "Kim Hammer": 6161,
+        "Barbara Nix": 4485
+      },
+      "percentages": {
+        "Kim Hammer": 57.9,
+        "Barbara Nix": 42.1
+      },
+      "result": "won",
+      "marginVotes": 1676,
+      "source": "https://ballotpedia.org/Arkansas_House_of_Representatives_District_28",
+      "confidence": "MEDIUM",
+      "evidenceStatus": "REPORTED_CLAIM"
+    },
+    {
+      "year": 2014,
+      "office": "Arkansas House of Representatives",
+      "district": "District 28",
+      "stage": "general",
+      "opponents": [],
+      "votes": "MISSING",
+      "percentages": "MISSING",
+      "result": "won_unopposed",
+      "marginVotes": "MISSING",
+      "source": "https://ballotpedia.org/Kim_Hammer",
+      "confidence": "MEDIUM",
+      "evidenceStatus": "REPORTED_CLAIM"
+    },
+    {
+      "year": 2016,
+      "office": "Arkansas House of Representatives",
+      "district": "District 28",
+      "stage": "general",
+      "opponents": [],
+      "votes": "MISSING",
+      "percentages": "MISSING",
+      "result": "won_unopposed",
+      "marginVotes": "MISSING",
+      "source": "https://ballotpedia.org/Kim_Hammer",
+      "confidence": "MEDIUM",
+      "evidenceStatus": "REPORTED_CLAIM"
+    },
+    {
+      "year": 2018,
+      "office": "Arkansas State Senate",
+      "district": "District 33",
+      "stage": "general",
+      "opponents": [
+        "Melissa Fults"
+      ],
+      "votes": {
+        "Kim Hammer": 23014
+      },
+      "percentages": {
+        "Kim Hammer": 68.3
+      },
+      "result": "won",
+      "marginVotes": "MISSING",
+      "source": "https://ballotpedia.org/Kim_Hammer",
+      "confidence": "MEDIUM",
+      "evidenceStatus": "REPORTED_CLAIM"
+    },
+    {
+      "year": 2022,
+      "office": "Arkansas State Senate",
+      "district": "District 16",
+      "stage": "general",
+      "opponents": [
+        "Jaron Salazar"
+      ],
+      "votes": {
+        "Kim Hammer": 20738
+      },
+      "percentages": {
+        "Kim Hammer": 75.7
+      },
+      "result": "won",
+      "marginVotes": "MISSING",
+      "source": "https://ballotpedia.org/Kim_Hammer",
+      "confidence": "MEDIUM",
+      "evidenceStatus": "REPORTED_CLAIM"
+    },
+    {
+      "year": 2026,
+      "office": "Arkansas Secretary of State",
+      "district": "Statewide",
+      "stage": "republican_primary",
+      "opponents": [
+        "Bryan Norris",
+        "Cathy Hardin Harrison"
+      ],
+      "votes": "MISSING",
+      "percentages": "MISSING",
+      "result": "advanced_to_runoff",
+      "marginVotes": "MISSING",
+      "source": "https://ballotpedia.org/Kim_Hammer",
+      "confidence": "MEDIUM",
+      "evidenceStatus": "REPORTED_CLAIM"
+    },
+    {
+      "year": 2026,
+      "office": "Arkansas Secretary of State",
+      "district": "Statewide",
+      "stage": "republican_runoff",
+      "opponents": [
+        "Bryan Norris"
+      ],
+      "votes": {
+        "totalVotes": 80977
+      },
+      "percentages": {
+        "Kim Hammer": 50.6
+      },
+      "result": "won",
+      "marginVotes": 918,
+      "source": "https://arkansasadvocate.com/2026/03/31/hammer-has-early-lead-over-norris-in-republican-runoff-for-arkansas-secretary-of-state/",
+      "confidence": "MEDIUM",
+      "evidenceStatus": "REPORTED_CLAIM"
+    }
+  ],
+  "openGaps": [
+    "Official Arkansas Secretary of State certified result links should be added for each race.",
+    "County-level or precinct geography breakout is incomplete.",
+    "Turnout context is partial and not normalized across cycles."
+  ]
+}
+
