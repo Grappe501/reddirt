@@ -105,6 +105,8 @@ export function OrchestrationCountyAgentRuntimePanel({
               <th className="px-2 py-1 text-left">Messaging readiness</th>
               <th className="px-2 py-1 text-left">Simulation confidence</th>
               <th className="px-2 py-1 text-left">Top simulation</th>
+              <th className="px-2 py-1 text-left">Coordination confidence</th>
+              <th className="px-2 py-1 text-left">Executive urgency</th>
               <th className="px-2 py-1 text-left">Strategy gate</th>
               <th className="px-2 py-1 text-left">Automation gate</th>
             </tr>
@@ -127,6 +129,8 @@ export function OrchestrationCountyAgentRuntimePanel({
                   <td className="px-2 py-1">{county?.publicNarrative.messagingReadinessStatus ?? "-"}</td>
                   <td className="px-2 py-1">{county?.simulations.confidenceScore ?? "-"}</td>
                   <td className="px-2 py-1">{county?.simulations.topScenarioCard ?? "-"}</td>
+                  <td className="px-2 py-1">{county?.campaignBrainCoordination.coordinationConfidence ?? "-"}</td>
+                  <td className="px-2 py-1">{county?.campaignBrainCoordination.executiveUrgency ?? "-"}</td>
                   <td className="px-2 py-1">{row.strategyGate}</td>
                   <td className="px-2 py-1">{row.automationGate}</td>
                 </tr>

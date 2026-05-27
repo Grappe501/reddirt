@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-27T03:11:45.763Z",
+  "policies": [
+    {
+      "policyId": "safety-no-targeting",
+      "description": "Block voter targeting and contact list generation across all agents.",
+      "blockedActions": [
+        "target voters",
+        "contact list",
+        "microtargeting"
+      ],
+      "appliesToAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ]
+    },
+    {
+      "policyId": "safety-no-autonomous-execution",
+      "description": "Block autonomous campaign execution, outreach, and strategy generation.",
+      "blockedActions": [
+        "autonomously execute",
+        "automate outreach",
+        "autonomous strategy"
+      ],
+      "appliesToAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ]
+    }
+  ]
+}

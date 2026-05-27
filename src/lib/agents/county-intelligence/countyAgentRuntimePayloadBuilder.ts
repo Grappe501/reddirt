@@ -7,6 +7,7 @@ import { buildCountyInstitutionalMemoryBrief } from "./countyMemoryBriefBuilder"
 import { resourceAllocationBriefBuilder } from "./resourceAllocationBriefBuilder";
 import { publicNarrativeBriefBuilder } from "./publicNarrativeBriefBuilder";
 import { simulationBriefBuilder } from "./simulationBriefBuilder";
+import { executiveCoordinationBriefBuilder } from "./executiveCoordinationBriefBuilder";
 
 type CountySummaryBrief = {
   countySlug?: string;
@@ -102,6 +103,14 @@ export type RuntimeCountyPayload = {
     topScenarioCard: string;
     readinessTrajectory: string;
     interventionImpactEstimate: string;
+  };
+  campaignBrainCoordination: {
+    activeCopilots: string[];
+    coordinationConfidence: number;
+    executiveUrgency: number;
+    operationalConflicts: string[];
+    blockedCapabilities: string[];
+    requiredHumanApprovals: string[];
   };
 };
 
@@ -253,6 +262,8 @@ function buildCountyPayload(
   nextBestDataActions.push(...narrativeBrief.recommendedSafeOperatorActions.slice(0, 2));
   const simulationBrief = simulationBriefBuilder(county.slug);
   nextBestDataActions.push(...simulationBrief.recommendedSafeOperatorActions.slice(0, 2));
+  const coordinationBrief = executiveCoordinationBriefBuilder(county.slug);
+  nextBestDataActions.push(...coordinationBrief.requiredHumanApprovals.slice(0, 2));
 
   return {
     countySlug: county.slug,
@@ -333,6 +344,14 @@ function buildCountyPayload(
       topScenarioCard: simulationBrief.scenarioCards[0] ?? "MISSING",
       readinessTrajectory: simulationBrief.readinessTrajectory,
       interventionImpactEstimate: simulationBrief.interventionImpactEstimate,
+    },
+    campaignBrainCoordination: {
+      activeCopilots: coordinationBrief.activeCopilots,
+      coordinationConfidence: coordinationBrief.coordinationConfidence,
+      executiveUrgency: coordinationBrief.executiveUrgency,
+      operationalConflicts: coordinationBrief.operationalConflicts,
+      blockedCapabilities: coordinationBrief.blockedCapabilities,
+      requiredHumanApprovals: coordinationBrief.requiredHumanApprovals,
     },
   };
 }

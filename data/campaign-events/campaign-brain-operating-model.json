@@ -48,14 +48,20 @@
       "id": "simulationScenarioEngine",
       "label": "Simulation scenario engine",
       "description": "Governed read-only operational scenario modeling, pathway sensitivity analysis, and intervention impact forecasting."
+    },
+    {
+      "id": "multiAgentCampaignBrain",
+      "label": "Multi-agent campaign brain",
+      "description": "Read-only coordinated synthesis layer aligning specialized copilots for statewide readiness fusion and executive coordination."
     }
   ],
   "agents": {
-    "countyIntelligenceCopilot": { "phase": "4Q", "mode": "READ_ONLY_ANALYSIS_UNTIL_READY" },
+    "countyIntelligenceCopilot": { "phase": "4R", "mode": "READ_ONLY_ANALYSIS_UNTIL_READY" },
     "countyInstitutionalMemory": { "phase": "4N", "mode": "READ_ONLY_CONTEXT_LAYER" },
     "countyResourceOperationsLayer": { "phase": "4O", "mode": "READ_ONLY_OPERATIONAL_FORECASTING" },
     "publicNarrativeIntelligenceLayer": { "phase": "4P", "mode": "READ_ONLY_PUBLIC_SIGNAL_ANALYSIS" },
-    "simulationScenarioEngine": { "phase": "4Q", "mode": "READ_ONLY_MODELING_AND_FORECASTING" }
+    "simulationScenarioEngine": { "phase": "4Q", "mode": "READ_ONLY_MODELING_AND_FORECASTING" },
+    "multiAgentCampaignBrain": { "phase": "4R", "mode": "READ_ONLY_COORDINATED_SYNTHESIS" }
   },
   "foundationRequirements": [
     "data/civic/source-registry.json",
@@ -92,6 +98,14 @@
     "data/simulations/event-impact-scenarios.json",
     "data/simulations/turnout-sensitivity-models.json",
     "data/audit/simulation-engine-readiness-table.json",
+    "data/multi-agent/campaign-brain-agent-registry.json",
+    "data/multi-agent/agent-capability-map.json",
+    "data/multi-agent/agent-runtime-coordination-map.json",
+    "data/multi-agent/agent-dependency-graph.json",
+    "data/multi-agent/agent-safety-policy-map.json",
+    "data/multi-agent/agent-runtime-state-table.json",
+    "data/multi-agent/cross-agent-insight-stream.json",
+    "data/audit/multi-agent-coordination-readiness-table.json",
     "strategy gate enforced"
   ],
   "didNotBuild": ["automations", "final_county_strategy_packets"]

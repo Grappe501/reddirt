@@ -35,6 +35,7 @@ async function main() {
   const memoryTools = asStringArray(toolGroups.countyInstitutionalMemory);
   const publicNarrativeTools = asStringArray(toolGroups.publicNarrativeIntelligenceLayer);
   const simulationTools = asStringArray(toolGroups.simulationScenarioEngine);
+  const multiAgentTools = asStringArray(toolGroups.multiAgentCampaignBrain);
 
   const hasSchemaReadinessInput = asStringArray(asRecord(copilot).dataSources).includes(
     "data/audit/voter-warehouse-schema-readiness.json",
@@ -66,6 +67,11 @@ async function main() {
     simulationTools.includes("countyScenarioSimulator") &&
     simulationTools.includes("statewideScenarioRankingTool") &&
     simulationTools.includes("scenarioRiskAnalyzer");
+  const hasMultiAgentGroup =
+    multiAgentTools.length === 15 &&
+    multiAgentTools.includes("campaignBrainSynthesisEngine") &&
+    multiAgentTools.includes("statewideInterventionCoordinator") &&
+    multiAgentTools.includes("executiveCoordinationBriefBuilder");
 
   const flow = asStringArray(map.flow);
   const has4LFlowNodes =
@@ -76,6 +82,7 @@ async function main() {
   const has4NFlowNode = flow.includes("County institutional memory");
   const has4PFlowNode = flow.includes("Public narrative intelligence layer");
   const has4QFlowNode = flow.includes("Simulation scenario engine");
+  const has4RFlowNode = flow.includes("Multi-agent campaign brain");
 
   const artifacts = asRecord(map.canonicalArtifacts);
   const has4LArtifacts =
@@ -108,6 +115,15 @@ async function main() {
     artifacts.eventImpactScenarios === "data/simulations/event-impact-scenarios.json" &&
     artifacts.turnoutSensitivityModels === "data/simulations/turnout-sensitivity-models.json" &&
     artifacts.simulationEngineReadiness === "data/audit/simulation-engine-readiness-table.json";
+  const has4RArtifacts =
+    artifacts.campaignBrainAgentRegistry === "data/multi-agent/campaign-brain-agent-registry.json" &&
+    artifacts.agentCapabilityMap === "data/multi-agent/agent-capability-map.json" &&
+    artifacts.agentRuntimeCoordinationMap === "data/multi-agent/agent-runtime-coordination-map.json" &&
+    artifacts.agentDependencyGraph === "data/multi-agent/agent-dependency-graph.json" &&
+    artifacts.agentSafetyPolicyMap === "data/multi-agent/agent-safety-policy-map.json" &&
+    artifacts.agentRuntimeStateTable === "data/multi-agent/agent-runtime-state-table.json" &&
+    artifacts.crossAgentInsightStream === "data/multi-agent/cross-agent-insight-stream.json" &&
+    artifacts.multiAgentCoordinationReadiness === "data/audit/multi-agent-coordination-readiness-table.json";
 
   const automationStillBlocked =
     asRecord(copilot.executionPolicy).automationEnabled === false &&
@@ -122,6 +138,9 @@ async function main() {
   const modelHas4Q = asStringArray(model.foundationRequirements).includes(
     "data/audit/simulation-engine-readiness-table.json",
   );
+  const modelHas4R = asStringArray(model.foundationRequirements).includes(
+    "data/audit/multi-agent-coordination-readiness-table.json",
+  );
 
   const ok =
     hasSchemaReadinessInput &&
@@ -132,17 +151,21 @@ async function main() {
     hasMemoryGroup &&
     hasPublicNarrativeGroup &&
     hasSimulationGroup &&
+    hasMultiAgentGroup &&
     has4LFlowNodes &&
     has4NFlowNode &&
     has4PFlowNode &&
     has4QFlowNode &&
+    has4RFlowNode &&
     has4LArtifacts &&
     has4NArtifacts &&
     has4PArtifacts &&
     has4QArtifacts &&
+    has4RArtifacts &&
     modelHas4N &&
     modelHas4P &&
     modelHas4Q &&
+    modelHas4R &&
     automationStillBlocked;
 
   console.log("Phase 4L/4N orchestration checks");
@@ -154,17 +177,21 @@ async function main() {
   console.log("  memory tool group wired:", hasMemoryGroup);
   console.log("  public narrative tool group wired:", hasPublicNarrativeGroup);
   console.log("  simulation tool group wired:", hasSimulationGroup);
+  console.log("  multi-agent tool group wired:", hasMultiAgentGroup);
   console.log("  campaign brain 4L flow nodes:", has4LFlowNodes);
   console.log("  campaign brain 4N flow node:", has4NFlowNode);
   console.log("  campaign brain 4P flow node:", has4PFlowNode);
   console.log("  campaign brain 4Q flow node:", has4QFlowNode);
+  console.log("  campaign brain 4R flow node:", has4RFlowNode);
   console.log("  campaign brain 4L artifacts:", has4LArtifacts);
   console.log("  campaign brain 4N artifacts:", has4NArtifacts);
   console.log("  campaign brain 4P artifacts:", has4PArtifacts);
   console.log("  campaign brain 4Q artifacts:", has4QArtifacts);
+  console.log("  campaign brain 4R artifacts:", has4RArtifacts);
   console.log("  model includes 4N foundations:", modelHas4N);
   console.log("  model includes 4P foundations:", modelHas4P);
   console.log("  model includes 4Q foundations:", modelHas4Q);
+  console.log("  model includes 4R foundations:", modelHas4R);
   console.log("  automation remains blocked:", automationStillBlocked);
 
   if (!ok) process.exit(1);

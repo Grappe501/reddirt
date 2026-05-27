@@ -1,0 +1,1321 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-27T03:11:45.763Z",
+  "countyCount": 75,
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "LOW_CONFIDENCE",
+      "runtimeCoordinationReady": "LOW_CONFIDENCE",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "LOW_CONFIDENCE",
+      "coordinationConfidence": 84,
+      "conflictsSurfaced": true,
+      "missingCoverage": [
+        "simulation assumptions",
+        "volunteer pipeline confidence"
+      ],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 80,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 76,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 72,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 68,
+      "conflictsSurfaced": true,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 64,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 60,
+      "conflictsSurfaced": false,
+      "missingCoverage": [
+        "simulation assumptions",
+        "volunteer pipeline confidence"
+      ],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 56,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 52,
+      "conflictsSurfaced": true,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "LOW_CONFIDENCE",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 48,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "LOW_CONFIDENCE",
+      "coordinationConfidence": 44,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "LOW_CONFIDENCE",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 40,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 36,
+      "conflictsSurfaced": true,
+      "missingCoverage": [
+        "simulation assumptions",
+        "volunteer pipeline confidence"
+      ],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 32,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 28,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 84,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 80,
+      "conflictsSurfaced": true,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 76,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "LOW_CONFIDENCE",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 72,
+      "conflictsSurfaced": false,
+      "missingCoverage": [
+        "simulation assumptions",
+        "volunteer pipeline confidence"
+      ],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 68,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "LOW_CONFIDENCE",
+      "coordinationConfidence": 64,
+      "conflictsSurfaced": true,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 60,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "LOW_CONFIDENCE",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 56,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 52,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 48,
+      "conflictsSurfaced": true,
+      "missingCoverage": [
+        "simulation assumptions",
+        "volunteer pipeline confidence"
+      ],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 44,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 40,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "LOW_CONFIDENCE",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 36,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 32,
+      "conflictsSurfaced": true,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 28,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "LOW_CONFIDENCE",
+      "coordinationConfidence": 84,
+      "conflictsSurfaced": false,
+      "missingCoverage": [
+        "simulation assumptions",
+        "volunteer pipeline confidence"
+      ],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 80,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 76,
+      "conflictsSurfaced": true,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "LOW_CONFIDENCE",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 72,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 68,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 64,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "LOW_CONFIDENCE",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 60,
+      "conflictsSurfaced": true,
+      "missingCoverage": [
+        "simulation assumptions",
+        "volunteer pipeline confidence"
+      ],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 56,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 52,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 48,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "LOW_CONFIDENCE",
+      "coordinationConfidence": 44,
+      "conflictsSurfaced": true,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 40,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 36,
+      "conflictsSurfaced": false,
+      "missingCoverage": [
+        "simulation assumptions",
+        "volunteer pipeline confidence"
+      ],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 32,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "LOW_CONFIDENCE",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 28,
+      "conflictsSurfaced": true,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "LOW_CONFIDENCE",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 84,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 80,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 76,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 72,
+      "conflictsSurfaced": true,
+      "missingCoverage": [
+        "simulation assumptions",
+        "volunteer pipeline confidence"
+      ],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 68,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "LOW_CONFIDENCE",
+      "coordinationConfidence": 64,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 60,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 56,
+      "conflictsSurfaced": true,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 52,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "LOW_CONFIDENCE",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 48,
+      "conflictsSurfaced": false,
+      "missingCoverage": [
+        "simulation assumptions",
+        "volunteer pipeline confidence"
+      ],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "LOW_CONFIDENCE",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 44,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 40,
+      "conflictsSurfaced": true,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 36,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 32,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 28,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "LOW_CONFIDENCE",
+      "coordinationConfidence": 84,
+      "conflictsSurfaced": true,
+      "missingCoverage": [
+        "simulation assumptions",
+        "volunteer pipeline confidence"
+      ],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 80,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 76,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "LOW_CONFIDENCE",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 72,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 68,
+      "conflictsSurfaced": true,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 64,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "LOW_CONFIDENCE",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 60,
+      "conflictsSurfaced": false,
+      "missingCoverage": [
+        "simulation assumptions",
+        "volunteer pipeline confidence"
+      ],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 56,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 52,
+      "conflictsSurfaced": true,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 48,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "LOW_CONFIDENCE",
+      "coordinationConfidence": 44,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 40,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "LOW_CONFIDENCE",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 36,
+      "conflictsSurfaced": true,
+      "missingCoverage": [
+        "simulation assumptions",
+        "volunteer pipeline confidence"
+      ],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 32,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "registryReady": "PRESENT",
+      "capabilityMapReady": "PRESENT",
+      "dependencyGraphReady": "PRESENT",
+      "runtimeCoordinationReady": "PRESENT",
+      "safetyPolicyReady": "PRESENT",
+      "insightStreamReady": "PRESENT",
+      "coordinationConfidence": 28,
+      "conflictsSurfaced": false,
+      "missingCoverage": [],
+      "requiredHumanApprovals": [
+        "Human review required before converting synthesis into execution plans.",
+        "Human approval required for statewide intervention prioritization changes."
+      ]
+    }
+  ]
+}

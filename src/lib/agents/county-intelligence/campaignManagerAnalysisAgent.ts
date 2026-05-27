@@ -10,6 +10,7 @@ import { organizationalFragilityDetector } from "./organizationalFragilityDetect
 import { loadResourceAllocationModel } from "./resourceAllocationModel";
 import { publicNarrativeBriefBuilder } from "./publicNarrativeBriefBuilder";
 import { simulationBriefBuilder } from "./simulationBriefBuilder";
+import { statewideInterventionCoordinator } from "./statewideInterventionCoordinator";
 
 export const CAMPAIGN_MANAGER_ANALYSIS_TOOLS = [
   "systemEfficiencyAnalyzer",
@@ -70,6 +71,24 @@ export const SIMULATION_SCENARIO_ENGINE_TOOLS = [
   "statewideScenarioRankingTool",
   "simulationGapExplainer",
   "scenarioRiskAnalyzer",
+] as const;
+
+export const MULTI_AGENT_COORDINATION_TOOLS = [
+  "campaignBrainSynthesisEngine",
+  "crossAgentInsightAggregator",
+  "statewideInterventionCoordinator",
+  "crossAgentConflictResolver",
+  "executivePriorityRanker",
+  "operationalRiskFusionAnalyzer",
+  "statewideReadinessSynthesizer",
+  "crossDomainTrendAnalyzer",
+  "campaignBrainHealthInspector",
+  "agentSafetyGatekeeper",
+  "agentDependencyInspector",
+  "coordinationGapExplainer",
+  "statewideResourceConflictAnalyzer",
+  "statewideNarrativeAlignmentAnalyzer",
+  "executiveCoordinationBriefBuilder",
 ] as const;
 
 export type ScenarioSimulation = {
@@ -149,6 +168,18 @@ export type CampaignManagerAnalysisResult = {
       label: "SCENARIO" | "FORECAST" | "MODEL";
     }>;
     statewideModeledBottlenecks: string[];
+  };
+  multiAgentCoordination: {
+    tools: string[];
+    activeCopilots: string[];
+    statewideSynthesisBrief: string[];
+    executiveUrgencyRanking: Array<{
+      countySlug: string;
+      countyName: string;
+      executiveUrgency: number;
+      coordinationConfidence: number;
+    }>;
+    blockedAutomationMatrix: string[];
   };
   safety: {
     noRawVoterRowsExposed: true;
@@ -274,6 +305,7 @@ export function runCampaignManagerAnalysisAgent(
       ...RESOURCE_ALLOCATION_FORECAST_TOOLS,
       ...PUBLIC_NARRATIVE_INTELLIGENCE_TOOLS,
       ...SIMULATION_SCENARIO_ENGINE_TOOLS,
+      ...MULTI_AGENT_COORDINATION_TOOLS,
     ],
     systemEfficiencyAnalyzer: {
       blockedPipelines: [
@@ -341,6 +373,33 @@ export function runCampaignManagerAnalysisAgent(
       statewideModeledBottlenecks: [
         "MODEL: readiness trajectories are constrained by low-confidence simulation assumptions in several counties.",
         "FORECAST: intervention timing sensitivity increases where turnout and registration projections diverge.",
+      ],
+    },
+    multiAgentCoordination: {
+      tools: [...MULTI_AGENT_COORDINATION_TOOLS],
+      activeCopilots: [
+        "County Intelligence Copilot",
+        "Institutional Memory Copilot",
+        "Resource Allocation Copilot",
+        "Public Narrative Copilot",
+        "Simulation Scenario Copilot",
+        "Civic/Demographic Copilot",
+        "Voter Metrics Copilot",
+        "Events & Calendar Copilot",
+        "Volunteer Operations Copilot",
+        "Compliance & Risk Copilot",
+        "Executive Coordination Copilot",
+      ],
+      statewideSynthesisBrief: [
+        "SYNTHESIS: cross-agent readiness coordination highlights counties with elevated operational and narrative pressure.",
+        "SYNTHESIS: simulation confidence and compliance gating jointly shape executive intervention priorities.",
+      ],
+      executiveUrgencyRanking: statewideInterventionCoordinator().rankedInterventions.slice(0, 75),
+      blockedAutomationMatrix: [
+        "No autonomous campaign execution.",
+        "No autonomous outreach.",
+        "No autonomous resource allocation.",
+        "No autonomous final strategy execution.",
       ],
     },
     safety: {

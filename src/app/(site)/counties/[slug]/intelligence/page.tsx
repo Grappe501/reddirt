@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ARKANSAS_COUNTY_REGISTRY } from "@/lib/county/arkansas-county-registry";
 import { publicNarrativeBriefBuilder } from "@/lib/agents/county-intelligence/publicNarrativeBriefBuilder";
 import { simulationBriefBuilder } from "@/lib/agents/county-intelligence/simulationBriefBuilder";
+import { executiveCoordinationBriefBuilder } from "@/lib/agents/county-intelligence/executiveCoordinationBriefBuilder";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -25,6 +26,7 @@ export default async function CountyPublicNarrativeIntelligencePage({ params }: 
   if (!county) notFound();
   const brief = publicNarrativeBriefBuilder(slug);
   const simulation = simulationBriefBuilder(slug);
+  const coordination = executiveCoordinationBriefBuilder(slug);
 
   return (
     <main className="mx-auto max-w-5xl space-y-6 px-4 py-8">
@@ -123,6 +125,26 @@ export default async function CountyPublicNarrativeIntelligencePage({ params }: 
         <p className="mt-1 text-sm text-kelly-text">{simulation.readinessTrajectory}</p>
         <p className="mt-1 text-sm text-kelly-text">{simulation.interventionImpactEstimate}</p>
         <p className="mt-2 text-sm text-kelly-text">Confidence score: {simulation.confidenceScore}</p>
+      </section>
+
+      <section className="rounded-xl border bg-white p-4">
+        <h2 className="text-sm font-bold uppercase text-kelly-muted">Campaign Brain Coordination</h2>
+        <p className="mt-2 text-sm text-kelly-text">{coordination.synthesizedCountyStatus}</p>
+        <p className="mt-1 text-sm text-kelly-text">
+          Coordination confidence {coordination.coordinationConfidence} · executive urgency {coordination.executiveUrgency}
+        </p>
+        <h3 className="mt-3 text-xs font-bold uppercase text-kelly-muted">Active copilots</h3>
+        <ul className="mt-1 list-inside list-disc text-sm text-kelly-text">
+          {coordination.activeCopilots.slice(0, 8).map((x, i) => (
+            <li key={i}>{x}</li>
+          ))}
+        </ul>
+        <h3 className="mt-3 text-xs font-bold uppercase text-kelly-muted">Operational conflicts</h3>
+        <ul className="mt-1 list-inside list-disc text-sm text-kelly-text">
+          {(coordination.operationalConflicts.length > 0 ? coordination.operationalConflicts : ["No major conflicts surfaced."]).map((x, i) => (
+            <li key={i}>{x}</li>
+          ))}
+        </ul>
       </section>
     </main>
   );

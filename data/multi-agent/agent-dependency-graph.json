@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-27T03:11:45.763Z",
+  "nodes": [
+    {
+      "id": "countyIntelligenceCopilot",
+      "label": "County Intelligence Copilot"
+    },
+    {
+      "id": "institutionalMemoryCopilot",
+      "label": "Institutional Memory Copilot"
+    },
+    {
+      "id": "resourceAllocationCopilot",
+      "label": "Resource Allocation Copilot"
+    },
+    {
+      "id": "publicNarrativeCopilot",
+      "label": "Public Narrative Copilot"
+    },
+    {
+      "id": "simulationScenarioCopilot",
+      "label": "Simulation Scenario Copilot"
+    },
+    {
+      "id": "civicDemographicCopilot",
+      "label": "Civic/Demographic Copilot"
+    },
+    {
+      "id": "voterMetricsCopilot",
+      "label": "Voter Metrics Copilot"
+    },
+    {
+      "id": "eventsCalendarCopilot",
+      "label": "Events & Calendar Copilot"
+    },
+    {
+      "id": "volunteerOperationsCopilot",
+      "label": "Volunteer Operations Copilot"
+    },
+    {
+      "id": "complianceRiskCopilot",
+      "label": "Compliance & Risk Copilot"
+    },
+    {
+      "id": "executiveCoordinationCopilot",
+      "label": "Executive Coordination Copilot"
+    }
+  ],
+  "edges": [
+    {
+      "from": "countyIntelligenceCopilot",
+      "to": "institutionalMemoryCopilot",
+      "dependency": "historical context",
+      "status": "PRESENT"
+    },
+    {
+      "from": "countyIntelligenceCopilot",
+      "to": "resourceAllocationCopilot",
+      "dependency": "operations pressure",
+      "status": "PRESENT"
+    },
+    {
+      "from": "countyIntelligenceCopilot",
+      "to": "publicNarrativeCopilot",
+      "dependency": "narrative readiness",
+      "status": "PRESENT"
+    },
+    {
+      "from": "countyIntelligenceCopilot",
+      "to": "simulationScenarioCopilot",
+      "dependency": "modeled trajectories",
+      "status": "PRESENT"
+    },
+    {
+      "from": "executiveCoordinationCopilot",
+      "to": "complianceRiskCopilot",
+      "dependency": "safety gating",
+      "status": "PRESENT"
+    },
+    {
+      "from": "executiveCoordinationCopilot",
+      "to": "volunteerOperationsCopilot",
+      "dependency": "capacity constraints",
+      "status": "LOW_CONFIDENCE"
+    }
+  ]
+}

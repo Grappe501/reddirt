@@ -1,0 +1,1669 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-27T03:11:45.763Z",
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 86,
+      "synthesizedReadiness": 82,
+      "blockedCapabilities": [
+        "MISSING simulation assumptions",
+        "LOW_CONFIDENCE narrative alignment"
+      ]
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 83,
+      "synthesizedReadiness": 78,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 80,
+      "synthesizedReadiness": 74,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 77,
+      "synthesizedReadiness": 70,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 74,
+      "synthesizedReadiness": 66,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 71,
+      "synthesizedReadiness": 62,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 68,
+      "synthesizedReadiness": 58,
+      "blockedCapabilities": [
+        "MISSING simulation assumptions",
+        "LOW_CONFIDENCE narrative alignment"
+      ]
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 65,
+      "synthesizedReadiness": 54,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 62,
+      "synthesizedReadiness": 50,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 59,
+      "synthesizedReadiness": 46,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 56,
+      "synthesizedReadiness": 42,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 53,
+      "synthesizedReadiness": 38,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 50,
+      "synthesizedReadiness": 34,
+      "blockedCapabilities": [
+        "MISSING simulation assumptions",
+        "LOW_CONFIDENCE narrative alignment"
+      ]
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 47,
+      "synthesizedReadiness": 30,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 44,
+      "synthesizedReadiness": 26,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 41,
+      "synthesizedReadiness": 80,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 38,
+      "synthesizedReadiness": 76,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 35,
+      "synthesizedReadiness": 72,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 32,
+      "synthesizedReadiness": 68,
+      "blockedCapabilities": [
+        "MISSING simulation assumptions",
+        "LOW_CONFIDENCE narrative alignment"
+      ]
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 29,
+      "synthesizedReadiness": 64,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 86,
+      "synthesizedReadiness": 60,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 83,
+      "synthesizedReadiness": 56,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 80,
+      "synthesizedReadiness": 52,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 77,
+      "synthesizedReadiness": 48,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 74,
+      "synthesizedReadiness": 44,
+      "blockedCapabilities": [
+        "MISSING simulation assumptions",
+        "LOW_CONFIDENCE narrative alignment"
+      ]
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 71,
+      "synthesizedReadiness": 40,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 68,
+      "synthesizedReadiness": 36,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 65,
+      "synthesizedReadiness": 32,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 62,
+      "synthesizedReadiness": 28,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 59,
+      "synthesizedReadiness": 82,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 56,
+      "synthesizedReadiness": 78,
+      "blockedCapabilities": [
+        "MISSING simulation assumptions",
+        "LOW_CONFIDENCE narrative alignment"
+      ]
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 53,
+      "synthesizedReadiness": 74,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 50,
+      "synthesizedReadiness": 70,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 47,
+      "synthesizedReadiness": 66,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 44,
+      "synthesizedReadiness": 62,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 41,
+      "synthesizedReadiness": 58,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 38,
+      "synthesizedReadiness": 54,
+      "blockedCapabilities": [
+        "MISSING simulation assumptions",
+        "LOW_CONFIDENCE narrative alignment"
+      ]
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 35,
+      "synthesizedReadiness": 50,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 32,
+      "synthesizedReadiness": 46,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 29,
+      "synthesizedReadiness": 42,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 86,
+      "synthesizedReadiness": 38,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 83,
+      "synthesizedReadiness": 34,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 80,
+      "synthesizedReadiness": 30,
+      "blockedCapabilities": [
+        "MISSING simulation assumptions",
+        "LOW_CONFIDENCE narrative alignment"
+      ]
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 77,
+      "synthesizedReadiness": 26,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 74,
+      "synthesizedReadiness": 80,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 71,
+      "synthesizedReadiness": 76,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 68,
+      "synthesizedReadiness": 72,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 65,
+      "synthesizedReadiness": 68,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 62,
+      "synthesizedReadiness": 64,
+      "blockedCapabilities": [
+        "MISSING simulation assumptions",
+        "LOW_CONFIDENCE narrative alignment"
+      ]
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 59,
+      "synthesizedReadiness": 60,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 56,
+      "synthesizedReadiness": 56,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 53,
+      "synthesizedReadiness": 52,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 50,
+      "synthesizedReadiness": 48,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 47,
+      "synthesizedReadiness": 44,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 44,
+      "synthesizedReadiness": 40,
+      "blockedCapabilities": [
+        "MISSING simulation assumptions",
+        "LOW_CONFIDENCE narrative alignment"
+      ]
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 41,
+      "synthesizedReadiness": 36,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 38,
+      "synthesizedReadiness": 32,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 35,
+      "synthesizedReadiness": 28,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 32,
+      "synthesizedReadiness": 82,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 29,
+      "synthesizedReadiness": 78,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 86,
+      "synthesizedReadiness": 74,
+      "blockedCapabilities": [
+        "MISSING simulation assumptions",
+        "LOW_CONFIDENCE narrative alignment"
+      ]
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 83,
+      "synthesizedReadiness": 70,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 80,
+      "synthesizedReadiness": 66,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 77,
+      "synthesizedReadiness": 62,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 74,
+      "synthesizedReadiness": 58,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 71,
+      "synthesizedReadiness": 54,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 68,
+      "synthesizedReadiness": 50,
+      "blockedCapabilities": [
+        "MISSING simulation assumptions",
+        "LOW_CONFIDENCE narrative alignment"
+      ]
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 65,
+      "synthesizedReadiness": 46,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 62,
+      "synthesizedReadiness": 42,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 59,
+      "synthesizedReadiness": 38,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 56,
+      "synthesizedReadiness": 34,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 53,
+      "synthesizedReadiness": 30,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 50,
+      "synthesizedReadiness": 26,
+      "blockedCapabilities": [
+        "MISSING simulation assumptions",
+        "LOW_CONFIDENCE narrative alignment"
+      ]
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 47,
+      "synthesizedReadiness": 80,
+      "blockedCapabilities": [
+        "none"
+      ]
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "participatingAgents": [
+        "countyIntelligenceCopilot",
+        "institutionalMemoryCopilot",
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot",
+        "simulationScenarioCopilot",
+        "civicDemographicCopilot",
+        "voterMetricsCopilot",
+        "eventsCalendarCopilot",
+        "volunteerOperationsCopilot",
+        "complianceRiskCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "coordinationConfidence": 44,
+      "synthesizedReadiness": 76,
+      "blockedCapabilities": [
+        "none"
+      ]
+    }
+  ]
+}

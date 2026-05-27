@@ -1,0 +1,237 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-27T03:11:45.763Z",
+  "rows": [
+    {
+      "agentId": "countyIntelligenceCopilot",
+      "can": [
+        "coordinate aggregate intelligence",
+        "synthesize readiness and conflict signals",
+        "recommend safe human-reviewed priorities"
+      ],
+      "cannot": [
+        "autonomously execute campaign actions",
+        "target voters",
+        "generate contact lists",
+        "automate outreach",
+        "autonomously allocate resources",
+        "bypass safety gates"
+      ],
+      "safetyConstraints": [
+        "No raw voter exposure",
+        "No autonomous strategy execution",
+        "No autonomous outreach"
+      ]
+    },
+    {
+      "agentId": "institutionalMemoryCopilot",
+      "can": [
+        "coordinate aggregate intelligence",
+        "synthesize readiness and conflict signals",
+        "recommend safe human-reviewed priorities"
+      ],
+      "cannot": [
+        "autonomously execute campaign actions",
+        "target voters",
+        "generate contact lists",
+        "automate outreach",
+        "autonomously allocate resources",
+        "bypass safety gates"
+      ],
+      "safetyConstraints": [
+        "No raw voter exposure",
+        "No autonomous strategy execution",
+        "No autonomous outreach"
+      ]
+    },
+    {
+      "agentId": "resourceAllocationCopilot",
+      "can": [
+        "coordinate aggregate intelligence",
+        "synthesize readiness and conflict signals",
+        "recommend safe human-reviewed priorities"
+      ],
+      "cannot": [
+        "autonomously execute campaign actions",
+        "target voters",
+        "generate contact lists",
+        "automate outreach",
+        "autonomously allocate resources",
+        "bypass safety gates"
+      ],
+      "safetyConstraints": [
+        "No raw voter exposure",
+        "No autonomous strategy execution",
+        "No autonomous outreach"
+      ]
+    },
+    {
+      "agentId": "publicNarrativeCopilot",
+      "can": [
+        "coordinate aggregate intelligence",
+        "synthesize readiness and conflict signals",
+        "recommend safe human-reviewed priorities"
+      ],
+      "cannot": [
+        "autonomously execute campaign actions",
+        "target voters",
+        "generate contact lists",
+        "automate outreach",
+        "autonomously allocate resources",
+        "bypass safety gates"
+      ],
+      "safetyConstraints": [
+        "No raw voter exposure",
+        "No autonomous strategy execution",
+        "No autonomous outreach"
+      ]
+    },
+    {
+      "agentId": "simulationScenarioCopilot",
+      "can": [
+        "coordinate aggregate intelligence",
+        "synthesize readiness and conflict signals",
+        "recommend safe human-reviewed priorities"
+      ],
+      "cannot": [
+        "autonomously execute campaign actions",
+        "target voters",
+        "generate contact lists",
+        "automate outreach",
+        "autonomously allocate resources",
+        "bypass safety gates"
+      ],
+      "safetyConstraints": [
+        "No raw voter exposure",
+        "No autonomous strategy execution",
+        "No autonomous outreach"
+      ]
+    },
+    {
+      "agentId": "civicDemographicCopilot",
+      "can": [
+        "coordinate aggregate intelligence",
+        "synthesize readiness and conflict signals",
+        "recommend safe human-reviewed priorities"
+      ],
+      "cannot": [
+        "autonomously execute campaign actions",
+        "target voters",
+        "generate contact lists",
+        "automate outreach",
+        "autonomously allocate resources",
+        "bypass safety gates"
+      ],
+      "safetyConstraints": [
+        "No raw voter exposure",
+        "No autonomous strategy execution",
+        "No autonomous outreach"
+      ]
+    },
+    {
+      "agentId": "voterMetricsCopilot",
+      "can": [
+        "coordinate aggregate intelligence",
+        "synthesize readiness and conflict signals",
+        "recommend safe human-reviewed priorities"
+      ],
+      "cannot": [
+        "autonomously execute campaign actions",
+        "target voters",
+        "generate contact lists",
+        "automate outreach",
+        "autonomously allocate resources",
+        "bypass safety gates"
+      ],
+      "safetyConstraints": [
+        "No raw voter exposure",
+        "No autonomous strategy execution",
+        "No autonomous outreach"
+      ]
+    },
+    {
+      "agentId": "eventsCalendarCopilot",
+      "can": [
+        "coordinate aggregate intelligence",
+        "synthesize readiness and conflict signals",
+        "recommend safe human-reviewed priorities"
+      ],
+      "cannot": [
+        "autonomously execute campaign actions",
+        "target voters",
+        "generate contact lists",
+        "automate outreach",
+        "autonomously allocate resources",
+        "bypass safety gates"
+      ],
+      "safetyConstraints": [
+        "No raw voter exposure",
+        "No autonomous strategy execution",
+        "No autonomous outreach"
+      ]
+    },
+    {
+      "agentId": "volunteerOperationsCopilot",
+      "can": [
+        "coordinate aggregate intelligence",
+        "synthesize readiness and conflict signals",
+        "recommend safe human-reviewed priorities"
+      ],
+      "cannot": [
+        "autonomously execute campaign actions",
+        "target voters",
+        "generate contact lists",
+        "automate outreach",
+        "autonomously allocate resources",
+        "bypass safety gates"
+      ],
+      "safetyConstraints": [
+        "No raw voter exposure",
+        "No autonomous strategy execution",
+        "No autonomous outreach"
+      ]
+    },
+    {
+      "agentId": "complianceRiskCopilot",
+      "can": [
+        "coordinate aggregate intelligence",
+        "synthesize readiness and conflict signals",
+        "recommend safe human-reviewed priorities"
+      ],
+      "cannot": [
+        "autonomously execute campaign actions",
+        "target voters",
+        "generate contact lists",
+        "automate outreach",
+        "autonomously allocate resources",
+        "bypass safety gates"
+      ],
+      "safetyConstraints": [
+        "No raw voter exposure",
+        "No autonomous strategy execution",
+        "No autonomous outreach"
+      ]
+    },
+    {
+      "agentId": "executiveCoordinationCopilot",
+      "can": [
+        "coordinate aggregate intelligence",
+        "synthesize readiness and conflict signals",
+        "recommend safe human-reviewed priorities"
+      ],
+      "cannot": [
+        "autonomously execute campaign actions",
+        "target voters",
+        "generate contact lists",
+        "automate outreach",
+        "autonomously allocate resources",
+        "bypass safety gates"
+      ],
+      "safetyConstraints": [
+        "No raw voter exposure",
+        "No autonomous strategy execution",
+        "No autonomous outreach"
+      ]
+    }
+  ]
+}

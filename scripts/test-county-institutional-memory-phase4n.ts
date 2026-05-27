@@ -57,7 +57,7 @@ async function main() {
     (county) =>
       !county.nextBestDataActions.some((action) => /address|phone|email|voter id|contact list/i.test(action)),
   );
-  const orchestrationIncludes4N = ["4N", "4O", "4P", "4Q"].includes(String(orchestration.phase ?? ""));
+  const orchestrationIncludes4N = ["4N", "4O", "4P", "4Q", "4R"].includes(String(orchestration.phase ?? ""));
   const noUnsafePermissions =
     orchestration.executionPolicy?.automationEnabled === false &&
     (orchestration.cannot ?? []).some((x) => x.includes("generate contact lists")) &&

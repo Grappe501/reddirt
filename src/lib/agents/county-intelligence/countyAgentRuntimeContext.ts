@@ -36,6 +36,16 @@ import type {
   StatewideScenarioMatrixFile,
   TurnoutSensitivityModelsFile,
 } from "./simulationEngineTypes";
+import type {
+  AgentCapabilityMapFile,
+  AgentDependencyGraphFile,
+  AgentRuntimeCoordinationMapFile,
+  AgentRuntimeStateTableFile,
+  AgentSafetyPolicyMapFile,
+  CampaignBrainAgentRegistryFile,
+  CrossAgentInsightStreamFile,
+  MultiAgentCoordinationReadinessFile,
+} from "./multiAgentTypes";
 
 type JsonRecord = Record<string, unknown>;
 
@@ -130,6 +140,16 @@ export type CountyAgentRuntimeContext = {
     eventImpactScenarios: EventImpactScenariosFile;
     turnoutSensitivityModels: TurnoutSensitivityModelsFile;
     readinessTable: SimulationEngineReadinessFile;
+  };
+  multiAgent: {
+    agentRegistry: CampaignBrainAgentRegistryFile;
+    capabilityMap: AgentCapabilityMapFile;
+    runtimeCoordinationMap: AgentRuntimeCoordinationMapFile;
+    dependencyGraph: AgentDependencyGraphFile;
+    safetyPolicyMap: AgentSafetyPolicyMapFile;
+    runtimeStateTable: AgentRuntimeStateTableFile;
+    insightStream: CrossAgentInsightStreamFile;
+    readinessTable: MultiAgentCoordinationReadinessFile;
   };
 };
 
@@ -324,6 +344,30 @@ export async function loadCountyAgentRuntimeContext(): Promise<CountyAgentRuntim
   const simulationReadiness = readJsonFile<SimulationEngineReadinessFile>(
     "data/audit/simulation-engine-readiness-table.json",
   );
+  const multiAgentRegistry = readJsonFile<CampaignBrainAgentRegistryFile>(
+    "data/multi-agent/campaign-brain-agent-registry.json",
+  );
+  const multiAgentCapabilityMap = readJsonFile<AgentCapabilityMapFile>(
+    "data/multi-agent/agent-capability-map.json",
+  );
+  const multiAgentRuntimeCoordinationMap = readJsonFile<AgentRuntimeCoordinationMapFile>(
+    "data/multi-agent/agent-runtime-coordination-map.json",
+  );
+  const multiAgentDependencyGraph = readJsonFile<AgentDependencyGraphFile>(
+    "data/multi-agent/agent-dependency-graph.json",
+  );
+  const multiAgentSafetyPolicyMap = readJsonFile<AgentSafetyPolicyMapFile>(
+    "data/multi-agent/agent-safety-policy-map.json",
+  );
+  const multiAgentRuntimeStateTable = readJsonFile<AgentRuntimeStateTableFile>(
+    "data/multi-agent/agent-runtime-state-table.json",
+  );
+  const multiAgentInsightStream = readJsonFile<CrossAgentInsightStreamFile>(
+    "data/multi-agent/cross-agent-insight-stream.json",
+  );
+  const multiAgentReadiness = readJsonFile<MultiAgentCoordinationReadinessFile>(
+    "data/audit/multi-agent-coordination-readiness-table.json",
+  );
 
   return {
     countyIntelligenceOrchestration,
@@ -380,6 +424,16 @@ export async function loadCountyAgentRuntimeContext(): Promise<CountyAgentRuntim
       eventImpactScenarios,
       turnoutSensitivityModels,
       readinessTable: simulationReadiness,
+    },
+    multiAgent: {
+      agentRegistry: multiAgentRegistry,
+      capabilityMap: multiAgentCapabilityMap,
+      runtimeCoordinationMap: multiAgentRuntimeCoordinationMap,
+      dependencyGraph: multiAgentDependencyGraph,
+      safetyPolicyMap: multiAgentSafetyPolicyMap,
+      runtimeStateTable: multiAgentRuntimeStateTable,
+      insightStream: multiAgentInsightStream,
+      readinessTable: multiAgentReadiness,
     },
   };
 }

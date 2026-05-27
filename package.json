@@ -99,6 +99,7 @@
     "agents:test-resource-allocation-forecasting-phase4o": "tsx scripts/test-resource-allocation-forecasting-phase4o.ts",
     "agents:test-public-narrative-intelligence-phase4p": "tsx scripts/test-public-narrative-intelligence-phase4p.ts",
     "agents:test-simulation-scenario-engine-phase4q": "tsx scripts/test-simulation-scenario-engine-phase4q.ts",
+    "agents:test-multi-agent-coordination-phase4r": "tsx scripts/test-multi-agent-coordination-phase4r.ts",
     "agents:test-campaign-knowledge": "tsx scripts/test-campaign-knowledge.ts",
     "agents:test-agent-tooling-brain": "tsx scripts/test-agent-tooling-brain.ts",
     "agents:test-orchestration-feedback-loop": "tsx scripts/test-orchestration-feedback-loop.ts",

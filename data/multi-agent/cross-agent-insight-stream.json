@@ -1,0 +1,1656 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-27T03:11:45.763Z",
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 82,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 80,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 79,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 78,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 76,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 76,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 73,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 74,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 70,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 72,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 67,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 70,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 64,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 68,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 61,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 66,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 58,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 64,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 55,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 62,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 52,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 60,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 49,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 58,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 46,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 56,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 43,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 54,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 40,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 52,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 37,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 50,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 34,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 48,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 31,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 46,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 28,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 44,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 25,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 42,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 80,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 40,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 77,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 38,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 74,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 36,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 71,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 34,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 68,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 32,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 65,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 30,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 62,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 28,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 59,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 26,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 56,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 79,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 53,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 77,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 50,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 75,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 47,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 73,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 44,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 71,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 41,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 69,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 38,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 67,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 35,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 65,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 32,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 63,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 29,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 61,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 26,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 59,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 81,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 57,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 78,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 55,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 75,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 53,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 72,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 51,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 69,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 49,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 66,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 47,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 63,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 45,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 60,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 43,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 57,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 41,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 54,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 39,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 51,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 37,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 48,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 35,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 45,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 33,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 42,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 31,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 39,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 29,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 36,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 27,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 33,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 80,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 30,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 78,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 27,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 76,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 82,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 74,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 79,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 72,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 76,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 70,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 73,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 68,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 70,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 66,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 67,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 64,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 64,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 62,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 61,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 60,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 58,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 58,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 55,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 56,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 52,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 54,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 49,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 52,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 46,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 50,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 43,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 48,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 40,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 46,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 37,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 44,
+      "label": "MODEL"
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "insight": "TREND: operations pressure and narrative volatility are jointly elevated.",
+      "sourceAgents": [
+        "resourceAllocationCopilot",
+        "publicNarrativeCopilot"
+      ],
+      "confidenceScore": 34,
+      "label": "TREND"
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "insight": "MODEL: simulation trajectory indicates intervention timing sensitivity.",
+      "sourceAgents": [
+        "simulationScenarioCopilot",
+        "executiveCoordinationCopilot"
+      ],
+      "confidenceScore": 42,
+      "label": "MODEL"
+    }
+  ]
+}

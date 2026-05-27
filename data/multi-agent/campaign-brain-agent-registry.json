@@ -1,0 +1,204 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-27T03:11:45.763Z",
+  "agents": [
+    {
+      "agentId": "countyIntelligenceCopilot",
+      "label": "County Intelligence Copilot",
+      "mode": "READ_ONLY_COORDINATED_SYNTHESIS",
+      "active": true,
+      "confidenceScore": 90,
+      "sourceLayers": [
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "limitations": [
+        "No autonomous campaign execution.",
+        "No voter targeting or contact list generation.",
+        "No autonomous outreach or final strategy execution."
+      ]
+    },
+    {
+      "agentId": "institutionalMemoryCopilot",
+      "label": "Institutional Memory Copilot",
+      "mode": "READ_ONLY_CONTEXT_LAYER",
+      "active": true,
+      "confidenceScore": 86,
+      "sourceLayers": [
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "limitations": [
+        "No autonomous campaign execution.",
+        "No voter targeting or contact list generation.",
+        "No autonomous outreach or final strategy execution."
+      ]
+    },
+    {
+      "agentId": "resourceAllocationCopilot",
+      "label": "Resource Allocation Copilot",
+      "mode": "READ_ONLY_OPERATIONAL_FORECASTING",
+      "active": true,
+      "confidenceScore": 82,
+      "sourceLayers": [
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "limitations": [
+        "No autonomous campaign execution.",
+        "No voter targeting or contact list generation.",
+        "No autonomous outreach or final strategy execution."
+      ]
+    },
+    {
+      "agentId": "publicNarrativeCopilot",
+      "label": "Public Narrative Copilot",
+      "mode": "READ_ONLY_PUBLIC_SIGNAL_ANALYSIS",
+      "active": true,
+      "confidenceScore": 78,
+      "sourceLayers": [
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "limitations": [
+        "No autonomous campaign execution.",
+        "No voter targeting or contact list generation.",
+        "No autonomous outreach or final strategy execution."
+      ]
+    },
+    {
+      "agentId": "simulationScenarioCopilot",
+      "label": "Simulation Scenario Copilot",
+      "mode": "READ_ONLY_MODELING_AND_FORECASTING",
+      "active": true,
+      "confidenceScore": 74,
+      "sourceLayers": [
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "limitations": [
+        "No autonomous campaign execution.",
+        "No voter targeting or contact list generation.",
+        "No autonomous outreach or final strategy execution."
+      ]
+    },
+    {
+      "agentId": "civicDemographicCopilot",
+      "label": "Civic/Demographic Copilot",
+      "mode": "READ_ONLY_CONTEXT_LAYER",
+      "active": true,
+      "confidenceScore": 70,
+      "sourceLayers": [
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "limitations": [
+        "No autonomous campaign execution.",
+        "No voter targeting or contact list generation.",
+        "No autonomous outreach or final strategy execution."
+      ]
+    },
+    {
+      "agentId": "voterMetricsCopilot",
+      "label": "Voter Metrics Copilot",
+      "mode": "READ_ONLY_CONTEXT_LAYER",
+      "active": true,
+      "confidenceScore": 66,
+      "sourceLayers": [
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "limitations": [
+        "No autonomous campaign execution.",
+        "No voter targeting or contact list generation.",
+        "No autonomous outreach or final strategy execution."
+      ]
+    },
+    {
+      "agentId": "eventsCalendarCopilot",
+      "label": "Events & Calendar Copilot",
+      "mode": "READ_ONLY_CONTEXT_LAYER",
+      "active": true,
+      "confidenceScore": 62,
+      "sourceLayers": [
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "limitations": [
+        "No autonomous campaign execution.",
+        "No voter targeting or contact list generation.",
+        "No autonomous outreach or final strategy execution."
+      ]
+    },
+    {
+      "agentId": "volunteerOperationsCopilot",
+      "label": "Volunteer Operations Copilot",
+      "mode": "READ_ONLY_OPERATIONAL_FORECASTING",
+      "active": true,
+      "confidenceScore": 58,
+      "sourceLayers": [
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "limitations": [
+        "No autonomous campaign execution.",
+        "No voter targeting or contact list generation.",
+        "No autonomous outreach or final strategy execution."
+      ]
+    },
+    {
+      "agentId": "complianceRiskCopilot",
+      "label": "Compliance & Risk Copilot",
+      "mode": "READ_ONLY_COORDINATED_SYNTHESIS",
+      "active": true,
+      "confidenceScore": 54,
+      "sourceLayers": [
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "limitations": [
+        "No autonomous campaign execution.",
+        "No voter targeting or contact list generation.",
+        "No autonomous outreach or final strategy execution."
+      ]
+    },
+    {
+      "agentId": "executiveCoordinationCopilot",
+      "label": "Executive Coordination Copilot",
+      "mode": "READ_ONLY_COORDINATED_SYNTHESIS",
+      "active": true,
+      "confidenceScore": 50,
+      "sourceLayers": [
+        "data/audit/county-memory-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "limitations": [
+        "No autonomous campaign execution.",
+        "No voter targeting or contact list generation.",
+        "No autonomous outreach or final strategy execution."
+      ]
+    }
+  ]
+}

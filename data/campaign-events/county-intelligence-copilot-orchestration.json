@@ -3,7 +3,7 @@
   "copilotId": "countyIntelligenceCopilot",
   "lane": "County Workbench",
   "mode": "READ_ONLY_ANALYSIS_UNTIL_READY",
-  "phase": "4Q",
+  "phase": "4R",
   "toolGroups": {
     "volunteerIntelligence": [
       "volunteerRosterSummary",
@@ -151,6 +151,23 @@
       "statewideScenarioRankingTool",
       "simulationGapExplainer",
       "scenarioRiskAnalyzer"
+    ],
+    "multiAgentCampaignBrain": [
+      "campaignBrainSynthesisEngine",
+      "crossAgentInsightAggregator",
+      "statewideInterventionCoordinator",
+      "crossAgentConflictResolver",
+      "executivePriorityRanker",
+      "operationalRiskFusionAnalyzer",
+      "statewideReadinessSynthesizer",
+      "crossDomainTrendAnalyzer",
+      "campaignBrainHealthInspector",
+      "agentSafetyGatekeeper",
+      "agentDependencyInspector",
+      "coordinationGapExplainer",
+      "statewideResourceConflictAnalyzer",
+      "statewideNarrativeAlignmentAnalyzer",
+      "executiveCoordinationBriefBuilder"
     ]
   },
   "executionPolicy": {
@@ -173,6 +190,10 @@
     "represent scenarios as canon truth",
     "autonomously execute campaign strategy",
     "produce individualized persuasion models",
+    "autonomously execute campaign actions",
+    "autonomously allocate money/resources",
+    "autonomously generate final campaign strategy",
+    "bypass safety gates",
     "infer missing facts as truth"
   ],
   "forbidden": [
@@ -213,7 +234,15 @@
     "data/simulations/resource-impact-models.json",
     "data/simulations/event-impact-scenarios.json",
     "data/simulations/turnout-sensitivity-models.json",
-    "data/audit/simulation-engine-readiness-table.json"
+    "data/audit/simulation-engine-readiness-table.json",
+    "data/multi-agent/campaign-brain-agent-registry.json",
+    "data/multi-agent/agent-capability-map.json",
+    "data/multi-agent/agent-runtime-coordination-map.json",
+    "data/multi-agent/agent-dependency-graph.json",
+    "data/multi-agent/agent-safety-policy-map.json",
+    "data/multi-agent/agent-runtime-state-table.json",
+    "data/multi-agent/cross-agent-insight-stream.json",
+    "data/audit/multi-agent-coordination-readiness-table.json"
   ]
 }
 
