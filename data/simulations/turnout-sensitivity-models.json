@@ -1,0 +1,1056 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-26T18:45:04.216Z",
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "baselineTurnout": 44,
+      "projectedTurnout": 42,
+      "turnoutDelta": -2,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 81,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "baselineTurnout": 45,
+      "projectedTurnout": 44,
+      "turnoutDelta": -1,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 75,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "baselineTurnout": 46,
+      "projectedTurnout": 46,
+      "turnoutDelta": 0,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 69,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "baselineTurnout": 47,
+      "projectedTurnout": 48,
+      "turnoutDelta": 1,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 63,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "baselineTurnout": 48,
+      "projectedTurnout": 50,
+      "turnoutDelta": 2,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 57,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "baselineTurnout": 49,
+      "projectedTurnout": 52,
+      "turnoutDelta": 3,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 51,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "baselineTurnout": 50,
+      "projectedTurnout": 54,
+      "turnoutDelta": 4,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 45,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "baselineTurnout": 51,
+      "projectedTurnout": 49,
+      "turnoutDelta": -2,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 39,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "baselineTurnout": 52,
+      "projectedTurnout": 51,
+      "turnoutDelta": -1,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 33,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "baselineTurnout": 53,
+      "projectedTurnout": 53,
+      "turnoutDelta": 0,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 27,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "baselineTurnout": 54,
+      "projectedTurnout": 55,
+      "turnoutDelta": 1,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 79,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "baselineTurnout": 44,
+      "projectedTurnout": 46,
+      "turnoutDelta": 2,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 73,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "baselineTurnout": 45,
+      "projectedTurnout": 48,
+      "turnoutDelta": 3,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 67,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "baselineTurnout": 46,
+      "projectedTurnout": 50,
+      "turnoutDelta": 4,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 61,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "baselineTurnout": 47,
+      "projectedTurnout": 45,
+      "turnoutDelta": -2,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 55,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "baselineTurnout": 48,
+      "projectedTurnout": 47,
+      "turnoutDelta": -1,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 49,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "baselineTurnout": 49,
+      "projectedTurnout": 49,
+      "turnoutDelta": 0,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 43,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "baselineTurnout": 50,
+      "projectedTurnout": 51,
+      "turnoutDelta": 1,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 37,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "baselineTurnout": 51,
+      "projectedTurnout": 53,
+      "turnoutDelta": 2,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 31,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "baselineTurnout": 52,
+      "projectedTurnout": 55,
+      "turnoutDelta": 3,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 25,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "baselineTurnout": 53,
+      "projectedTurnout": 57,
+      "turnoutDelta": 4,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 77,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "baselineTurnout": 54,
+      "projectedTurnout": 52,
+      "turnoutDelta": -2,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 71,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "baselineTurnout": 44,
+      "projectedTurnout": 43,
+      "turnoutDelta": -1,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 65,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "baselineTurnout": 45,
+      "projectedTurnout": 45,
+      "turnoutDelta": 0,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 59,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "baselineTurnout": 46,
+      "projectedTurnout": 47,
+      "turnoutDelta": 1,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 53,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "baselineTurnout": 47,
+      "projectedTurnout": 49,
+      "turnoutDelta": 2,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 47,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "baselineTurnout": 48,
+      "projectedTurnout": 51,
+      "turnoutDelta": 3,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 41,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "baselineTurnout": 49,
+      "projectedTurnout": 53,
+      "turnoutDelta": 4,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 35,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "baselineTurnout": 50,
+      "projectedTurnout": 48,
+      "turnoutDelta": -2,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 29,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "baselineTurnout": 51,
+      "projectedTurnout": 50,
+      "turnoutDelta": -1,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 81,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "baselineTurnout": 52,
+      "projectedTurnout": 52,
+      "turnoutDelta": 0,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 75,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "baselineTurnout": 53,
+      "projectedTurnout": 54,
+      "turnoutDelta": 1,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 69,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "baselineTurnout": 54,
+      "projectedTurnout": 56,
+      "turnoutDelta": 2,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 63,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "baselineTurnout": 44,
+      "projectedTurnout": 47,
+      "turnoutDelta": 3,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 57,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "baselineTurnout": 45,
+      "projectedTurnout": 49,
+      "turnoutDelta": 4,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 51,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "baselineTurnout": 46,
+      "projectedTurnout": 44,
+      "turnoutDelta": -2,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 45,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "baselineTurnout": 47,
+      "projectedTurnout": 46,
+      "turnoutDelta": -1,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 39,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "baselineTurnout": 48,
+      "projectedTurnout": 48,
+      "turnoutDelta": 0,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 33,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "baselineTurnout": 49,
+      "projectedTurnout": 50,
+      "turnoutDelta": 1,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 27,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "baselineTurnout": 50,
+      "projectedTurnout": 52,
+      "turnoutDelta": 2,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 79,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "baselineTurnout": 51,
+      "projectedTurnout": 54,
+      "turnoutDelta": 3,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 73,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "baselineTurnout": 52,
+      "projectedTurnout": 56,
+      "turnoutDelta": 4,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 67,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "baselineTurnout": 53,
+      "projectedTurnout": 51,
+      "turnoutDelta": -2,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 61,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "baselineTurnout": 54,
+      "projectedTurnout": 53,
+      "turnoutDelta": -1,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 55,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "baselineTurnout": 44,
+      "projectedTurnout": 44,
+      "turnoutDelta": 0,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 49,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "baselineTurnout": 45,
+      "projectedTurnout": 46,
+      "turnoutDelta": 1,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 43,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "baselineTurnout": 46,
+      "projectedTurnout": 48,
+      "turnoutDelta": 2,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 37,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "baselineTurnout": 47,
+      "projectedTurnout": 50,
+      "turnoutDelta": 3,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 31,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "baselineTurnout": 48,
+      "projectedTurnout": 52,
+      "turnoutDelta": 4,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 25,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "baselineTurnout": 49,
+      "projectedTurnout": 47,
+      "turnoutDelta": -2,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 77,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "baselineTurnout": 50,
+      "projectedTurnout": 49,
+      "turnoutDelta": -1,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 71,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "baselineTurnout": 51,
+      "projectedTurnout": 51,
+      "turnoutDelta": 0,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 65,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "baselineTurnout": 52,
+      "projectedTurnout": 53,
+      "turnoutDelta": 1,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 59,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "baselineTurnout": 53,
+      "projectedTurnout": 55,
+      "turnoutDelta": 2,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 53,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "baselineTurnout": 54,
+      "projectedTurnout": 57,
+      "turnoutDelta": 3,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 47,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "baselineTurnout": 44,
+      "projectedTurnout": 48,
+      "turnoutDelta": 4,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 41,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "baselineTurnout": 45,
+      "projectedTurnout": 43,
+      "turnoutDelta": -2,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 35,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "baselineTurnout": 46,
+      "projectedTurnout": 45,
+      "turnoutDelta": -1,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 29,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "baselineTurnout": 47,
+      "projectedTurnout": 47,
+      "turnoutDelta": 0,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 81,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "baselineTurnout": 48,
+      "projectedTurnout": 49,
+      "turnoutDelta": 1,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 75,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "baselineTurnout": 49,
+      "projectedTurnout": 51,
+      "turnoutDelta": 2,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 69,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "baselineTurnout": 50,
+      "projectedTurnout": 53,
+      "turnoutDelta": 3,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 63,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "baselineTurnout": 51,
+      "projectedTurnout": 55,
+      "turnoutDelta": 4,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 57,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "baselineTurnout": 52,
+      "projectedTurnout": 50,
+      "turnoutDelta": -2,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 51,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "baselineTurnout": 53,
+      "projectedTurnout": 52,
+      "turnoutDelta": -1,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 45,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "baselineTurnout": 54,
+      "projectedTurnout": 54,
+      "turnoutDelta": 0,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 39,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "baselineTurnout": 44,
+      "projectedTurnout": 45,
+      "turnoutDelta": 1,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 33,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "baselineTurnout": 45,
+      "projectedTurnout": 47,
+      "turnoutDelta": 2,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 27,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "baselineTurnout": 46,
+      "projectedTurnout": 49,
+      "turnoutDelta": 3,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 79,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "baselineTurnout": 47,
+      "projectedTurnout": 51,
+      "turnoutDelta": 4,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 73,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "baselineTurnout": 48,
+      "projectedTurnout": 46,
+      "turnoutDelta": -2,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 67,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "baselineTurnout": 49,
+      "projectedTurnout": 48,
+      "turnoutDelta": -1,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 61,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "baselineTurnout": 50,
+      "projectedTurnout": 50,
+      "turnoutDelta": 0,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 55,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "baselineTurnout": 51,
+      "projectedTurnout": 52,
+      "turnoutDelta": 1,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 49,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "baselineTurnout": 52,
+      "projectedTurnout": 54,
+      "turnoutDelta": 2,
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "FORECAST assumes turnout elasticity within historical aggregate ranges.",
+        "FORECAST does not imply guaranteed outcomes."
+      ],
+      "confidenceScore": 43,
+      "status": "LOW_CONFIDENCE"
+    }
+  ]
+}

@@ -1,0 +1,1056 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-26T18:45:04.216Z",
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "baselineRegistrations": 1200,
+      "projectedRegistrations": 1236,
+      "growthPercent": 3,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 84,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "baselineRegistrations": 1240,
+      "projectedRegistrations": 1290,
+      "growthPercent": 4,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 78,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "baselineRegistrations": 1280,
+      "projectedRegistrations": 1344,
+      "growthPercent": 5,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 72,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "baselineRegistrations": 1320,
+      "projectedRegistrations": 1399,
+      "growthPercent": 6,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 66,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "baselineRegistrations": 1360,
+      "projectedRegistrations": 1455,
+      "growthPercent": 7,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 60,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "baselineRegistrations": 1400,
+      "projectedRegistrations": 1512,
+      "growthPercent": 8,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 54,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "baselineRegistrations": 1440,
+      "projectedRegistrations": 1570,
+      "growthPercent": 9,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 48,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "baselineRegistrations": 1480,
+      "projectedRegistrations": 1628,
+      "growthPercent": 10,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 42,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "baselineRegistrations": 1520,
+      "projectedRegistrations": 1687,
+      "growthPercent": 11,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 36,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "baselineRegistrations": 1560,
+      "projectedRegistrations": 1607,
+      "growthPercent": 3,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 30,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "baselineRegistrations": 1600,
+      "projectedRegistrations": 1664,
+      "growthPercent": 4,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 84,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "baselineRegistrations": 1640,
+      "projectedRegistrations": 1722,
+      "growthPercent": 5,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 78,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "baselineRegistrations": 1680,
+      "projectedRegistrations": 1781,
+      "growthPercent": 6,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 72,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "baselineRegistrations": 1720,
+      "projectedRegistrations": 1840,
+      "growthPercent": 7,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 66,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "baselineRegistrations": 1760,
+      "projectedRegistrations": 1901,
+      "growthPercent": 8,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 60,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "baselineRegistrations": 1800,
+      "projectedRegistrations": 1962,
+      "growthPercent": 9,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 54,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "baselineRegistrations": 1840,
+      "projectedRegistrations": 2024,
+      "growthPercent": 10,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 48,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "baselineRegistrations": 1880,
+      "projectedRegistrations": 2087,
+      "growthPercent": 11,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 42,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "baselineRegistrations": 1920,
+      "projectedRegistrations": 1978,
+      "growthPercent": 3,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 36,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "baselineRegistrations": 1960,
+      "projectedRegistrations": 2038,
+      "growthPercent": 4,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 30,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "baselineRegistrations": 2000,
+      "projectedRegistrations": 2100,
+      "growthPercent": 5,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 84,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "baselineRegistrations": 2040,
+      "projectedRegistrations": 2162,
+      "growthPercent": 6,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 78,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "baselineRegistrations": 2080,
+      "projectedRegistrations": 2226,
+      "growthPercent": 7,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 72,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "baselineRegistrations": 2120,
+      "projectedRegistrations": 2290,
+      "growthPercent": 8,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 66,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "baselineRegistrations": 2160,
+      "projectedRegistrations": 2354,
+      "growthPercent": 9,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 60,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "baselineRegistrations": 2200,
+      "projectedRegistrations": 2420,
+      "growthPercent": 10,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 54,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "baselineRegistrations": 2240,
+      "projectedRegistrations": 2486,
+      "growthPercent": 11,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 48,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "baselineRegistrations": 2280,
+      "projectedRegistrations": 2348,
+      "growthPercent": 3,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 42,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "baselineRegistrations": 2320,
+      "projectedRegistrations": 2413,
+      "growthPercent": 4,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 36,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "baselineRegistrations": 2360,
+      "projectedRegistrations": 2478,
+      "growthPercent": 5,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 30,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "baselineRegistrations": 2400,
+      "projectedRegistrations": 2544,
+      "growthPercent": 6,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 84,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "baselineRegistrations": 2440,
+      "projectedRegistrations": 2611,
+      "growthPercent": 7,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 78,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "baselineRegistrations": 2480,
+      "projectedRegistrations": 2678,
+      "growthPercent": 8,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 72,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "baselineRegistrations": 2520,
+      "projectedRegistrations": 2747,
+      "growthPercent": 9,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 66,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "baselineRegistrations": 2560,
+      "projectedRegistrations": 2816,
+      "growthPercent": 10,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 60,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "baselineRegistrations": 2600,
+      "projectedRegistrations": 2886,
+      "growthPercent": 11,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 54,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "baselineRegistrations": 2640,
+      "projectedRegistrations": 2719,
+      "growthPercent": 3,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 48,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "baselineRegistrations": 2680,
+      "projectedRegistrations": 2787,
+      "growthPercent": 4,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 42,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "baselineRegistrations": 2720,
+      "projectedRegistrations": 2856,
+      "growthPercent": 5,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 36,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "baselineRegistrations": 2760,
+      "projectedRegistrations": 2926,
+      "growthPercent": 6,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 30,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "baselineRegistrations": 2800,
+      "projectedRegistrations": 2996,
+      "growthPercent": 7,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 84,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "baselineRegistrations": 2840,
+      "projectedRegistrations": 3067,
+      "growthPercent": 8,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 78,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "baselineRegistrations": 2880,
+      "projectedRegistrations": 3139,
+      "growthPercent": 9,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 72,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "baselineRegistrations": 2920,
+      "projectedRegistrations": 3212,
+      "growthPercent": 10,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 66,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "baselineRegistrations": 2960,
+      "projectedRegistrations": 3286,
+      "growthPercent": 11,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 60,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "baselineRegistrations": 3000,
+      "projectedRegistrations": 3090,
+      "growthPercent": 3,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 54,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "baselineRegistrations": 3040,
+      "projectedRegistrations": 3162,
+      "growthPercent": 4,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 48,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "baselineRegistrations": 3080,
+      "projectedRegistrations": 3234,
+      "growthPercent": 5,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 42,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "baselineRegistrations": 3120,
+      "projectedRegistrations": 3307,
+      "growthPercent": 6,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 36,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "baselineRegistrations": 3160,
+      "projectedRegistrations": 3381,
+      "growthPercent": 7,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 30,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "baselineRegistrations": 3200,
+      "projectedRegistrations": 3456,
+      "growthPercent": 8,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 84,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "baselineRegistrations": 3240,
+      "projectedRegistrations": 3532,
+      "growthPercent": 9,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 78,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "baselineRegistrations": 3280,
+      "projectedRegistrations": 3608,
+      "growthPercent": 10,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 72,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "baselineRegistrations": 3320,
+      "projectedRegistrations": 3685,
+      "growthPercent": 11,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 66,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "baselineRegistrations": 3360,
+      "projectedRegistrations": 3461,
+      "growthPercent": 3,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 60,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "baselineRegistrations": 3400,
+      "projectedRegistrations": 3536,
+      "growthPercent": 4,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 54,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "baselineRegistrations": 3440,
+      "projectedRegistrations": 3612,
+      "growthPercent": 5,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 48,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "baselineRegistrations": 3480,
+      "projectedRegistrations": 3689,
+      "growthPercent": 6,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 42,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "baselineRegistrations": 3520,
+      "projectedRegistrations": 3766,
+      "growthPercent": 7,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 36,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "baselineRegistrations": 3560,
+      "projectedRegistrations": 3845,
+      "growthPercent": 8,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 30,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "baselineRegistrations": 3600,
+      "projectedRegistrations": 3924,
+      "growthPercent": 9,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 84,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "baselineRegistrations": 3640,
+      "projectedRegistrations": 4004,
+      "growthPercent": 10,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 78,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "baselineRegistrations": 3680,
+      "projectedRegistrations": 4085,
+      "growthPercent": 11,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 72,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "baselineRegistrations": 3720,
+      "projectedRegistrations": 3832,
+      "growthPercent": 3,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 66,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "baselineRegistrations": 3760,
+      "projectedRegistrations": 3910,
+      "growthPercent": 4,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 60,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "baselineRegistrations": 3800,
+      "projectedRegistrations": 3990,
+      "growthPercent": 5,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 54,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "baselineRegistrations": 3840,
+      "projectedRegistrations": 4070,
+      "growthPercent": 6,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 48,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "baselineRegistrations": 3880,
+      "projectedRegistrations": 4152,
+      "growthPercent": 7,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 42,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "baselineRegistrations": 3920,
+      "projectedRegistrations": 4234,
+      "growthPercent": 8,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 36,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "baselineRegistrations": 3960,
+      "projectedRegistrations": 4316,
+      "growthPercent": 9,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 30,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "baselineRegistrations": 4000,
+      "projectedRegistrations": 4400,
+      "growthPercent": 10,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 84,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "baselineRegistrations": 4040,
+      "projectedRegistrations": 4484,
+      "growthPercent": 11,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 78,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "baselineRegistrations": 4080,
+      "projectedRegistrations": 4202,
+      "growthPercent": 3,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 72,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "baselineRegistrations": 4120,
+      "projectedRegistrations": 4285,
+      "growthPercent": 4,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 66,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "baselineRegistrations": 4160,
+      "projectedRegistrations": 4368,
+      "growthPercent": 5,
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "SCENARIO assumes stable aggregate registration trend inputs.",
+        "SCENARIO excludes any individualized persuasion intervention."
+      ],
+      "confidenceScore": 60,
+      "status": "LOW_CONFIDENCE"
+    }
+  ]
+}

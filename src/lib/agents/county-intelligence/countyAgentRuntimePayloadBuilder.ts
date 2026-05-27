@@ -6,6 +6,7 @@ import {
 import { buildCountyInstitutionalMemoryBrief } from "./countyMemoryBriefBuilder";
 import { resourceAllocationBriefBuilder } from "./resourceAllocationBriefBuilder";
 import { publicNarrativeBriefBuilder } from "./publicNarrativeBriefBuilder";
+import { simulationBriefBuilder } from "./simulationBriefBuilder";
 
 type CountySummaryBrief = {
   countySlug?: string;
@@ -94,6 +95,13 @@ export type RuntimeCountyPayload = {
     narrativeConfidenceScore: number;
     messagingReadinessStatus: "PRESENT" | "MISSING" | "LOW_CONFIDENCE";
     earnedMediaOpportunities: string[];
+  };
+  simulations: {
+    confidenceScore: number;
+    assumptionsCount: number;
+    topScenarioCard: string;
+    readinessTrajectory: string;
+    interventionImpactEstimate: string;
   };
 };
 
@@ -243,6 +251,8 @@ function buildCountyPayload(
   nextBestDataActions.push(...resourceBrief.recommendedSafeOperatorActions.slice(0, 2));
   const narrativeBrief = publicNarrativeBriefBuilder(county.slug);
   nextBestDataActions.push(...narrativeBrief.recommendedSafeOperatorActions.slice(0, 2));
+  const simulationBrief = simulationBriefBuilder(county.slug);
+  nextBestDataActions.push(...simulationBrief.recommendedSafeOperatorActions.slice(0, 2));
 
   return {
     countySlug: county.slug,
@@ -316,6 +326,13 @@ function buildCountyPayload(
       narrativeConfidenceScore: narrativeBrief.narrativeConfidenceScore,
       messagingReadinessStatus: narrativeBrief.messagingReadinessStatus,
       earnedMediaOpportunities: narrativeBrief.earnedMediaOpportunities,
+    },
+    simulations: {
+      confidenceScore: simulationBrief.confidenceScore,
+      assumptionsCount: simulationBrief.simulationAssumptions.length,
+      topScenarioCard: simulationBrief.scenarioCards[0] ?? "MISSING",
+      readinessTrajectory: simulationBrief.readinessTrajectory,
+      interventionImpactEstimate: simulationBrief.interventionImpactEstimate,
     },
   };
 }

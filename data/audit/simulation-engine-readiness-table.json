@@ -1,0 +1,1357 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-26T18:45:04.216Z",
+  "countyCount": 75,
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 82,
+      "assumptionsPresent": false,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 78,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 74,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 70,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 66,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 62,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 58,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "LOW_CONFIDENCE",
+      "eventImpact": "LOW_CONFIDENCE",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 54,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "LOW_CONFIDENCE",
+      "eventImpact": "LOW_CONFIDENCE",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 50,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "LOW_CONFIDENCE",
+      "eventImpact": "LOW_CONFIDENCE",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 46,
+      "assumptionsPresent": false,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "LOW_CONFIDENCE",
+      "eventImpact": "LOW_CONFIDENCE",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 42,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "scenarioRegistry": "MISSING",
+      "statewideMatrix": "MISSING",
+      "pathwaySensitivity": "MISSING",
+      "registrationScenarios": "MISSING",
+      "resourceImpact": "MISSING",
+      "eventImpact": "MISSING",
+      "turnoutSensitivity": "MISSING",
+      "simulationConfidence": 38,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "scenarioRegistry": "MISSING",
+      "statewideMatrix": "MISSING",
+      "pathwaySensitivity": "MISSING",
+      "registrationScenarios": "MISSING",
+      "resourceImpact": "MISSING",
+      "eventImpact": "MISSING",
+      "turnoutSensitivity": "MISSING",
+      "simulationConfidence": 34,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "scenarioRegistry": "MISSING",
+      "statewideMatrix": "MISSING",
+      "pathwaySensitivity": "MISSING",
+      "registrationScenarios": "MISSING",
+      "resourceImpact": "MISSING",
+      "eventImpact": "MISSING",
+      "turnoutSensitivity": "MISSING",
+      "simulationConfidence": 30,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 82,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 78,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 74,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 70,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 66,
+      "assumptionsPresent": false,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 62,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 58,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "LOW_CONFIDENCE",
+      "eventImpact": "LOW_CONFIDENCE",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 54,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "LOW_CONFIDENCE",
+      "eventImpact": "LOW_CONFIDENCE",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 50,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "LOW_CONFIDENCE",
+      "eventImpact": "LOW_CONFIDENCE",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 46,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "LOW_CONFIDENCE",
+      "eventImpact": "LOW_CONFIDENCE",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 42,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "scenarioRegistry": "MISSING",
+      "statewideMatrix": "MISSING",
+      "pathwaySensitivity": "MISSING",
+      "registrationScenarios": "MISSING",
+      "resourceImpact": "MISSING",
+      "eventImpact": "MISSING",
+      "turnoutSensitivity": "MISSING",
+      "simulationConfidence": 38,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "scenarioRegistry": "MISSING",
+      "statewideMatrix": "MISSING",
+      "pathwaySensitivity": "MISSING",
+      "registrationScenarios": "MISSING",
+      "resourceImpact": "MISSING",
+      "eventImpact": "MISSING",
+      "turnoutSensitivity": "MISSING",
+      "simulationConfidence": 34,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "scenarioRegistry": "MISSING",
+      "statewideMatrix": "MISSING",
+      "pathwaySensitivity": "MISSING",
+      "registrationScenarios": "MISSING",
+      "resourceImpact": "MISSING",
+      "eventImpact": "MISSING",
+      "turnoutSensitivity": "MISSING",
+      "simulationConfidence": 30,
+      "assumptionsPresent": false,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 82,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 78,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 74,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 70,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 66,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 62,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 58,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "LOW_CONFIDENCE",
+      "eventImpact": "LOW_CONFIDENCE",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 54,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "LOW_CONFIDENCE",
+      "eventImpact": "LOW_CONFIDENCE",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 50,
+      "assumptionsPresent": false,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "LOW_CONFIDENCE",
+      "eventImpact": "LOW_CONFIDENCE",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 46,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "LOW_CONFIDENCE",
+      "eventImpact": "LOW_CONFIDENCE",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 42,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "scenarioRegistry": "MISSING",
+      "statewideMatrix": "MISSING",
+      "pathwaySensitivity": "MISSING",
+      "registrationScenarios": "MISSING",
+      "resourceImpact": "MISSING",
+      "eventImpact": "MISSING",
+      "turnoutSensitivity": "MISSING",
+      "simulationConfidence": 38,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "scenarioRegistry": "MISSING",
+      "statewideMatrix": "MISSING",
+      "pathwaySensitivity": "MISSING",
+      "registrationScenarios": "MISSING",
+      "resourceImpact": "MISSING",
+      "eventImpact": "MISSING",
+      "turnoutSensitivity": "MISSING",
+      "simulationConfidence": 34,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "scenarioRegistry": "MISSING",
+      "statewideMatrix": "MISSING",
+      "pathwaySensitivity": "MISSING",
+      "registrationScenarios": "MISSING",
+      "resourceImpact": "MISSING",
+      "eventImpact": "MISSING",
+      "turnoutSensitivity": "MISSING",
+      "simulationConfidence": 30,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 82,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 78,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 74,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 70,
+      "assumptionsPresent": false,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 66,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 62,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 58,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "LOW_CONFIDENCE",
+      "eventImpact": "LOW_CONFIDENCE",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 54,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "LOW_CONFIDENCE",
+      "eventImpact": "LOW_CONFIDENCE",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 50,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "LOW_CONFIDENCE",
+      "eventImpact": "LOW_CONFIDENCE",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 46,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "LOW_CONFIDENCE",
+      "eventImpact": "LOW_CONFIDENCE",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 42,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "scenarioRegistry": "MISSING",
+      "statewideMatrix": "MISSING",
+      "pathwaySensitivity": "MISSING",
+      "registrationScenarios": "MISSING",
+      "resourceImpact": "MISSING",
+      "eventImpact": "MISSING",
+      "turnoutSensitivity": "MISSING",
+      "simulationConfidence": 38,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "scenarioRegistry": "MISSING",
+      "statewideMatrix": "MISSING",
+      "pathwaySensitivity": "MISSING",
+      "registrationScenarios": "MISSING",
+      "resourceImpact": "MISSING",
+      "eventImpact": "MISSING",
+      "turnoutSensitivity": "MISSING",
+      "simulationConfidence": 34,
+      "assumptionsPresent": false,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "scenarioRegistry": "MISSING",
+      "statewideMatrix": "MISSING",
+      "pathwaySensitivity": "MISSING",
+      "registrationScenarios": "MISSING",
+      "resourceImpact": "MISSING",
+      "eventImpact": "MISSING",
+      "turnoutSensitivity": "MISSING",
+      "simulationConfidence": 30,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 82,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 78,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 74,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 70,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 66,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 62,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 58,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "LOW_CONFIDENCE",
+      "eventImpact": "LOW_CONFIDENCE",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 54,
+      "assumptionsPresent": false,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "LOW_CONFIDENCE",
+      "eventImpact": "LOW_CONFIDENCE",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 50,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "LOW_CONFIDENCE",
+      "eventImpact": "LOW_CONFIDENCE",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 46,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "scenarioRegistry": "LOW_CONFIDENCE",
+      "statewideMatrix": "LOW_CONFIDENCE",
+      "pathwaySensitivity": "LOW_CONFIDENCE",
+      "registrationScenarios": "LOW_CONFIDENCE",
+      "resourceImpact": "LOW_CONFIDENCE",
+      "eventImpact": "LOW_CONFIDENCE",
+      "turnoutSensitivity": "LOW_CONFIDENCE",
+      "simulationConfidence": 42,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "scenarioRegistry": "MISSING",
+      "statewideMatrix": "MISSING",
+      "pathwaySensitivity": "MISSING",
+      "registrationScenarios": "MISSING",
+      "resourceImpact": "MISSING",
+      "eventImpact": "MISSING",
+      "turnoutSensitivity": "MISSING",
+      "simulationConfidence": 38,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "scenarioRegistry": "MISSING",
+      "statewideMatrix": "MISSING",
+      "pathwaySensitivity": "MISSING",
+      "registrationScenarios": "MISSING",
+      "resourceImpact": "MISSING",
+      "eventImpact": "MISSING",
+      "turnoutSensitivity": "MISSING",
+      "simulationConfidence": 34,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "scenarioRegistry": "MISSING",
+      "statewideMatrix": "MISSING",
+      "pathwaySensitivity": "MISSING",
+      "registrationScenarios": "MISSING",
+      "resourceImpact": "MISSING",
+      "eventImpact": "MISSING",
+      "turnoutSensitivity": "MISSING",
+      "simulationConfidence": 30,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 82,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 78,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 74,
+      "assumptionsPresent": false,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 70,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "scenarioRegistry": "PRESENT",
+      "statewideMatrix": "PRESENT",
+      "pathwaySensitivity": "PRESENT",
+      "registrationScenarios": "PRESENT",
+      "resourceImpact": "PRESENT",
+      "eventImpact": "PRESENT",
+      "turnoutSensitivity": "PRESENT",
+      "simulationConfidence": 66,
+      "assumptionsPresent": true,
+      "nextSafeModelingActions": [
+        "Validate scenario assumptions with county operations leads.",
+        "Keep modeled values separate from canonical campaign facts.",
+        "Treat low-confidence scenarios as planning prompts only."
+      ]
+    }
+  ]
+}

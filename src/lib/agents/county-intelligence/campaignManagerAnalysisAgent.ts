@@ -9,6 +9,7 @@ import { countyMomentumForecast } from "./countyMomentumForecast";
 import { organizationalFragilityDetector } from "./organizationalFragilityDetector";
 import { loadResourceAllocationModel } from "./resourceAllocationModel";
 import { publicNarrativeBriefBuilder } from "./publicNarrativeBriefBuilder";
+import { simulationBriefBuilder } from "./simulationBriefBuilder";
 
 export const CAMPAIGN_MANAGER_ANALYSIS_TOOLS = [
   "systemEfficiencyAnalyzer",
@@ -51,6 +52,24 @@ export const PUBLIC_NARRATIVE_INTELLIGENCE_TOOLS = [
   "issueClusterExplorer",
   "countyNarrativeComparisonTool",
   "publicNarrativeTrendAnalyzer",
+] as const;
+
+export const SIMULATION_SCENARIO_ENGINE_TOOLS = [
+  "countyScenarioSimulator",
+  "statewideScenarioExplorer",
+  "pathwaySensitivityAnalyzer",
+  "registrationGrowthProjector",
+  "turnoutSensitivityAnalyzer",
+  "resourceImpactModeler",
+  "eventImpactScenarioModeler",
+  "operationalTradeoffAnalyzer",
+  "simulationConfidenceScorer",
+  "readinessTrajectoryProjector",
+  "interventionImpactEstimator",
+  "countyScenarioComparisonTool",
+  "statewideScenarioRankingTool",
+  "simulationGapExplainer",
+  "scenarioRiskAnalyzer",
 ] as const;
 
 export type ScenarioSimulation = {
@@ -119,6 +138,17 @@ export type CampaignManagerAnalysisResult = {
       signalKind: "SIGNAL" | "TREND";
     }>;
     statewideNarrativeTrends: string[];
+  };
+  simulationScenarioEngine: {
+    tools: string[];
+    countyScenarioRankings: Array<{
+      countySlug: string;
+      countyName: string;
+      confidenceScore: number;
+      scenarioRisk: "LOW" | "MEDIUM" | "HIGH";
+      label: "SCENARIO" | "FORECAST" | "MODEL";
+    }>;
+    statewideModeledBottlenecks: string[];
   };
   safety: {
     noRawVoterRowsExposed: true;
@@ -243,6 +273,7 @@ export function runCampaignManagerAnalysisAgent(
       ...CAMPAIGN_MANAGER_ANALYSIS_TOOLS,
       ...RESOURCE_ALLOCATION_FORECAST_TOOLS,
       ...PUBLIC_NARRATIVE_INTELLIGENCE_TOOLS,
+      ...SIMULATION_SCENARIO_ENGINE_TOOLS,
     ],
     systemEfficiencyAnalyzer: {
       blockedPipelines: [
@@ -292,6 +323,24 @@ export function runCampaignManagerAnalysisAgent(
       statewideNarrativeTrends: [
         "TREND: issue volatility and meeting pressure are clustered in several counties.",
         "SIGNAL: earned-media opportunity readiness varies by county confidence levels.",
+      ],
+    },
+    simulationScenarioEngine: {
+      tools: [...SIMULATION_SCENARIO_ENGINE_TOOLS],
+      countyScenarioRankings: runtime.countyPayloads.map((county) => {
+        const brief = simulationBriefBuilder(county.countySlug);
+        return {
+          countySlug: county.countySlug,
+          countyName: county.countyName,
+          confidenceScore: brief.confidenceScore,
+          scenarioRisk:
+            brief.confidenceScore >= 70 ? "LOW" : brief.confidenceScore >= 45 ? "MEDIUM" : "HIGH",
+          label: "MODEL" as const,
+        };
+      }).sort((a, b) => b.confidenceScore - a.confidenceScore),
+      statewideModeledBottlenecks: [
+        "MODEL: readiness trajectories are constrained by low-confidence simulation assumptions in several counties.",
+        "FORECAST: intervention timing sensitivity increases where turnout and registration projections diverge.",
       ],
     },
     safety: {

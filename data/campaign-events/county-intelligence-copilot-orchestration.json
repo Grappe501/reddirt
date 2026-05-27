@@ -3,7 +3,7 @@
   "copilotId": "countyIntelligenceCopilot",
   "lane": "County Workbench",
   "mode": "READ_ONLY_ANALYSIS_UNTIL_READY",
-  "phase": "4P",
+  "phase": "4Q",
   "toolGroups": {
     "volunteerIntelligence": [
       "volunteerRosterSummary",
@@ -134,6 +134,23 @@
       "issueClusterExplorer",
       "countyNarrativeComparisonTool",
       "publicNarrativeTrendAnalyzer"
+    ],
+    "simulationScenarioEngine": [
+      "countyScenarioSimulator",
+      "statewideScenarioExplorer",
+      "pathwaySensitivityAnalyzer",
+      "registrationGrowthProjector",
+      "turnoutSensitivityAnalyzer",
+      "resourceImpactModeler",
+      "eventImpactScenarioModeler",
+      "operationalTradeoffAnalyzer",
+      "simulationConfidenceScorer",
+      "readinessTrajectoryProjector",
+      "interventionImpactEstimator",
+      "countyScenarioComparisonTool",
+      "statewideScenarioRankingTool",
+      "simulationGapExplainer",
+      "scenarioRiskAnalyzer"
     ]
   },
   "executionPolicy": {
@@ -153,6 +170,9 @@
     "infer private beliefs",
     "generate psychological persuasion profiles",
     "create individualized messaging plans",
+    "represent scenarios as canon truth",
+    "autonomously execute campaign strategy",
+    "produce individualized persuasion models",
     "infer missing facts as truth"
   ],
   "forbidden": [
@@ -185,7 +205,15 @@
     "data/public-narrative/earned-media-opportunities.json",
     "data/public-narrative/civic-sentiment-summary.json",
     "data/public-narrative/public-meeting-watchlist.json",
-    "data/audit/public-narrative-readiness-table.json"
+    "data/audit/public-narrative-readiness-table.json",
+    "data/simulations/county-scenario-registry.json",
+    "data/simulations/statewide-scenario-matrix.json",
+    "data/simulations/pathway-sensitivity-model.json",
+    "data/simulations/registration-growth-scenarios.json",
+    "data/simulations/resource-impact-models.json",
+    "data/simulations/event-impact-scenarios.json",
+    "data/simulations/turnout-sensitivity-models.json",
+    "data/audit/simulation-engine-readiness-table.json"
   ]
 }
 

@@ -26,6 +26,16 @@ import type {
   PublicNarrativeReadinessFile,
   RegionalNarrativeMapFile,
 } from "./publicNarrativeTypes";
+import type {
+  CountyScenarioRegistryFile,
+  EventImpactScenariosFile,
+  PathwaySensitivityModelFile,
+  RegistrationGrowthScenariosFile,
+  ResourceImpactModelsFile,
+  SimulationEngineReadinessFile,
+  StatewideScenarioMatrixFile,
+  TurnoutSensitivityModelsFile,
+} from "./simulationEngineTypes";
 
 type JsonRecord = Record<string, unknown>;
 
@@ -110,6 +120,16 @@ export type CountyAgentRuntimeContext = {
     civicSentimentSummary: CivicSentimentSummaryFile;
     publicMeetingWatchlist: PublicMeetingWatchlistFile;
     readinessTable: PublicNarrativeReadinessFile;
+  };
+  simulations: {
+    countyScenarioRegistry: CountyScenarioRegistryFile;
+    statewideScenarioMatrix: StatewideScenarioMatrixFile;
+    pathwaySensitivityModel: PathwaySensitivityModelFile;
+    registrationGrowthScenarios: RegistrationGrowthScenariosFile;
+    resourceImpactModels: ResourceImpactModelsFile;
+    eventImpactScenarios: EventImpactScenariosFile;
+    turnoutSensitivityModels: TurnoutSensitivityModelsFile;
+    readinessTable: SimulationEngineReadinessFile;
   };
 };
 
@@ -280,6 +300,30 @@ export async function loadCountyAgentRuntimeContext(): Promise<CountyAgentRuntim
   const publicNarrativeReadiness = readJsonFile<PublicNarrativeReadinessFile>(
     "data/audit/public-narrative-readiness-table.json",
   );
+  const countyScenarioRegistry = readJsonFile<CountyScenarioRegistryFile>(
+    "data/simulations/county-scenario-registry.json",
+  );
+  const statewideScenarioMatrix = readJsonFile<StatewideScenarioMatrixFile>(
+    "data/simulations/statewide-scenario-matrix.json",
+  );
+  const pathwaySensitivityModel = readJsonFile<PathwaySensitivityModelFile>(
+    "data/simulations/pathway-sensitivity-model.json",
+  );
+  const registrationGrowthScenarios = readJsonFile<RegistrationGrowthScenariosFile>(
+    "data/simulations/registration-growth-scenarios.json",
+  );
+  const resourceImpactModels = readJsonFile<ResourceImpactModelsFile>(
+    "data/simulations/resource-impact-models.json",
+  );
+  const eventImpactScenarios = readJsonFile<EventImpactScenariosFile>(
+    "data/simulations/event-impact-scenarios.json",
+  );
+  const turnoutSensitivityModels = readJsonFile<TurnoutSensitivityModelsFile>(
+    "data/simulations/turnout-sensitivity-models.json",
+  );
+  const simulationReadiness = readJsonFile<SimulationEngineReadinessFile>(
+    "data/audit/simulation-engine-readiness-table.json",
+  );
 
   return {
     countyIntelligenceOrchestration,
@@ -326,6 +370,16 @@ export async function loadCountyAgentRuntimeContext(): Promise<CountyAgentRuntim
       civicSentimentSummary,
       publicMeetingWatchlist,
       readinessTable: publicNarrativeReadiness,
+    },
+    simulations: {
+      countyScenarioRegistry,
+      statewideScenarioMatrix,
+      pathwaySensitivityModel,
+      registrationGrowthScenarios,
+      resourceImpactModels,
+      eventImpactScenarios,
+      turnoutSensitivityModels,
+      readinessTable: simulationReadiness,
     },
   };
 }

@@ -49,6 +49,27 @@ export function OrchestrationCampaignManagerAnalysisPanel({
 
       <div className="mt-4 grid gap-4 lg:grid-cols-2">
         <div className="rounded-lg border bg-white p-3">
+          <h3 className="text-xs font-bold uppercase text-kelly-muted">Simulation scenario engine (4Q)</h3>
+          <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
+            {analysis.simulationScenarioEngine.countyScenarioRankings.slice(0, 5).map((x) => (
+              <li key={x.countySlug}>
+                {x.countyName} — confidence {x.confidenceScore} · risk {x.scenarioRisk} ({x.label})
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="rounded-lg border bg-white p-3">
+          <h3 className="text-xs font-bold uppercase text-kelly-muted">Statewide modeled bottlenecks</h3>
+          <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
+            {analysis.simulationScenarioEngine.statewideModeledBottlenecks.map((x, i) => (
+              <li key={i}>{x}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="mt-4 grid gap-4 lg:grid-cols-2">
+        <div className="rounded-lg border bg-white p-3">
           <h3 className="text-xs font-bold uppercase text-kelly-muted">Public narrative & issues (4P)</h3>
           <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
             {analysis.publicNarrativeIntelligence.countyComparisons.slice(0, 5).map((x) => (

@@ -1,0 +1,4281 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-26T18:45:04.216Z",
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "scenarioId": "registration-scenario-1",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Arkansas County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 90,
+      "readinessImpact": 80,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "scenarioId": "turnout-scenario-1",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Arkansas County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 79,
+      "readinessImpact": 71,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "scenarioId": "operations-scenario-1",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Arkansas County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 68,
+      "readinessImpact": 62,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "scenarioId": "registration-scenario-2",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Ashley County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 85,
+      "readinessImpact": 73,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "scenarioId": "turnout-scenario-2",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Ashley County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 74,
+      "readinessImpact": 64,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "scenarioId": "operations-scenario-2",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Ashley County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 63,
+      "readinessImpact": 55,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "scenarioId": "registration-scenario-3",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Baxter County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 80,
+      "readinessImpact": 66,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "scenarioId": "turnout-scenario-3",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Baxter County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 69,
+      "readinessImpact": 57,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "scenarioId": "operations-scenario-3",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Baxter County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 58,
+      "readinessImpact": 48,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "scenarioId": "registration-scenario-4",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Benton County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 75,
+      "readinessImpact": 59,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "scenarioId": "turnout-scenario-4",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Benton County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 64,
+      "readinessImpact": 50,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "scenarioId": "operations-scenario-4",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Benton County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 53,
+      "readinessImpact": 41,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "scenarioId": "registration-scenario-1",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Boone County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 70,
+      "readinessImpact": 52,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "scenarioId": "turnout-scenario-1",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Boone County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 59,
+      "readinessImpact": 43,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "scenarioId": "operations-scenario-1",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Boone County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 48,
+      "readinessImpact": 34,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "scenarioId": "registration-scenario-2",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Bradley County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 65,
+      "readinessImpact": 45,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "scenarioId": "turnout-scenario-2",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Bradley County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 54,
+      "readinessImpact": 36,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "scenarioId": "operations-scenario-2",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Bradley County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 43,
+      "readinessImpact": 27,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "scenarioId": "registration-scenario-3",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Calhoun County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 60,
+      "readinessImpact": 38,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "scenarioId": "turnout-scenario-3",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Calhoun County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 49,
+      "readinessImpact": 29,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "scenarioId": "operations-scenario-3",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Calhoun County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 38,
+      "readinessImpact": 20,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "scenarioId": "registration-scenario-4",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Carroll County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 55,
+      "readinessImpact": 31,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "scenarioId": "turnout-scenario-4",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Carroll County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 44,
+      "readinessImpact": 22,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "scenarioId": "operations-scenario-4",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Carroll County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 33,
+      "readinessImpact": 78,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "scenarioId": "registration-scenario-1",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Chicot County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 50,
+      "readinessImpact": 24,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "scenarioId": "turnout-scenario-1",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Chicot County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 39,
+      "readinessImpact": 80,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "scenarioId": "operations-scenario-1",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Chicot County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 28,
+      "readinessImpact": 71,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "scenarioId": "registration-scenario-2",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Clark County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 45,
+      "readinessImpact": 17,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "scenarioId": "turnout-scenario-2",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Clark County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 34,
+      "readinessImpact": 73,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "scenarioId": "operations-scenario-2",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Clark County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 23,
+      "readinessImpact": 64,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "scenarioId": "registration-scenario-3",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Clay County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 40,
+      "readinessImpact": 75,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "scenarioId": "turnout-scenario-3",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Clay County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 29,
+      "readinessImpact": 66,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "scenarioId": "operations-scenario-3",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Clay County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 88,
+      "readinessImpact": 57,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "scenarioId": "registration-scenario-4",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Cleburne County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 35,
+      "readinessImpact": 68,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "scenarioId": "turnout-scenario-4",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Cleburne County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 24,
+      "readinessImpact": 59,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "scenarioId": "operations-scenario-4",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Cleburne County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 83,
+      "readinessImpact": 50,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "scenarioId": "registration-scenario-1",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Cleveland County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 30,
+      "readinessImpact": 61,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "scenarioId": "turnout-scenario-1",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Cleveland County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 89,
+      "readinessImpact": 52,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "scenarioId": "operations-scenario-1",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Cleveland County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 78,
+      "readinessImpact": 43,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "scenarioId": "registration-scenario-2",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Columbia County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 25,
+      "readinessImpact": 54,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "scenarioId": "turnout-scenario-2",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Columbia County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 84,
+      "readinessImpact": 45,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "scenarioId": "operations-scenario-2",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Columbia County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 73,
+      "readinessImpact": 36,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "scenarioId": "registration-scenario-3",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Conway County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 90,
+      "readinessImpact": 47,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "scenarioId": "turnout-scenario-3",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Conway County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 79,
+      "readinessImpact": 38,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "scenarioId": "operations-scenario-3",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Conway County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 68,
+      "readinessImpact": 29,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "scenarioId": "registration-scenario-4",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Craighead County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 85,
+      "readinessImpact": 40,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "scenarioId": "turnout-scenario-4",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Craighead County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 74,
+      "readinessImpact": 31,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "scenarioId": "operations-scenario-4",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Craighead County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 63,
+      "readinessImpact": 22,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "scenarioId": "registration-scenario-1",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Crawford County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 80,
+      "readinessImpact": 33,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "scenarioId": "turnout-scenario-1",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Crawford County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 69,
+      "readinessImpact": 24,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "scenarioId": "operations-scenario-1",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Crawford County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 58,
+      "readinessImpact": 80,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "scenarioId": "registration-scenario-2",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Crittenden County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 75,
+      "readinessImpact": 26,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "scenarioId": "turnout-scenario-2",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Crittenden County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 64,
+      "readinessImpact": 17,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "scenarioId": "operations-scenario-2",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Crittenden County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 53,
+      "readinessImpact": 73,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "scenarioId": "registration-scenario-3",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Cross County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 70,
+      "readinessImpact": 19,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "scenarioId": "turnout-scenario-3",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Cross County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 59,
+      "readinessImpact": 75,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "scenarioId": "operations-scenario-3",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Cross County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 48,
+      "readinessImpact": 66,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "scenarioId": "registration-scenario-4",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Dallas County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 65,
+      "readinessImpact": 77,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "scenarioId": "turnout-scenario-4",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Dallas County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 54,
+      "readinessImpact": 68,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "scenarioId": "operations-scenario-4",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Dallas County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 43,
+      "readinessImpact": 59,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "scenarioId": "registration-scenario-1",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Desha County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 60,
+      "readinessImpact": 70,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "scenarioId": "turnout-scenario-1",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Desha County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 49,
+      "readinessImpact": 61,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "scenarioId": "operations-scenario-1",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Desha County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 38,
+      "readinessImpact": 52,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "scenarioId": "registration-scenario-2",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Drew County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 55,
+      "readinessImpact": 63,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "scenarioId": "turnout-scenario-2",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Drew County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 44,
+      "readinessImpact": 54,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "scenarioId": "operations-scenario-2",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Drew County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 33,
+      "readinessImpact": 45,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "scenarioId": "registration-scenario-3",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Faulkner County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 50,
+      "readinessImpact": 56,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "scenarioId": "turnout-scenario-3",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Faulkner County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 39,
+      "readinessImpact": 47,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "scenarioId": "operations-scenario-3",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Faulkner County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 28,
+      "readinessImpact": 38,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "scenarioId": "registration-scenario-4",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Franklin County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 45,
+      "readinessImpact": 49,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "scenarioId": "turnout-scenario-4",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Franklin County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 34,
+      "readinessImpact": 40,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "scenarioId": "operations-scenario-4",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Franklin County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 23,
+      "readinessImpact": 31,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "scenarioId": "registration-scenario-1",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Fulton County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 40,
+      "readinessImpact": 42,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "scenarioId": "turnout-scenario-1",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Fulton County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 29,
+      "readinessImpact": 33,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "scenarioId": "operations-scenario-1",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Fulton County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 88,
+      "readinessImpact": 24,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "scenarioId": "registration-scenario-2",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Garland County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 35,
+      "readinessImpact": 35,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "scenarioId": "turnout-scenario-2",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Garland County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 24,
+      "readinessImpact": 26,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "scenarioId": "operations-scenario-2",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Garland County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 83,
+      "readinessImpact": 17,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "scenarioId": "registration-scenario-3",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Grant County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 30,
+      "readinessImpact": 28,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "scenarioId": "turnout-scenario-3",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Grant County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 89,
+      "readinessImpact": 19,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "scenarioId": "operations-scenario-3",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Grant County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 78,
+      "readinessImpact": 75,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "scenarioId": "registration-scenario-4",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Greene County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 25,
+      "readinessImpact": 21,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "scenarioId": "turnout-scenario-4",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Greene County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 84,
+      "readinessImpact": 77,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "scenarioId": "operations-scenario-4",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Greene County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 73,
+      "readinessImpact": 68,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "scenarioId": "registration-scenario-1",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Hempstead County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 90,
+      "readinessImpact": 79,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "scenarioId": "turnout-scenario-1",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Hempstead County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 79,
+      "readinessImpact": 70,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "scenarioId": "operations-scenario-1",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Hempstead County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 68,
+      "readinessImpact": 61,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "scenarioId": "registration-scenario-2",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Hot Spring County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 85,
+      "readinessImpact": 72,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "scenarioId": "turnout-scenario-2",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Hot Spring County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 74,
+      "readinessImpact": 63,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "scenarioId": "operations-scenario-2",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Hot Spring County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 63,
+      "readinessImpact": 54,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "scenarioId": "registration-scenario-3",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Howard County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 80,
+      "readinessImpact": 65,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "scenarioId": "turnout-scenario-3",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Howard County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 69,
+      "readinessImpact": 56,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "scenarioId": "operations-scenario-3",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Howard County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 58,
+      "readinessImpact": 47,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "scenarioId": "registration-scenario-4",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Independence County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 75,
+      "readinessImpact": 58,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "scenarioId": "turnout-scenario-4",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Independence County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 64,
+      "readinessImpact": 49,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "scenarioId": "operations-scenario-4",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Independence County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 53,
+      "readinessImpact": 40,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "scenarioId": "registration-scenario-1",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Izard County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 70,
+      "readinessImpact": 51,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "scenarioId": "turnout-scenario-1",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Izard County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 59,
+      "readinessImpact": 42,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "scenarioId": "operations-scenario-1",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Izard County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 48,
+      "readinessImpact": 33,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "scenarioId": "registration-scenario-2",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Jackson County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 65,
+      "readinessImpact": 44,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "scenarioId": "turnout-scenario-2",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Jackson County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 54,
+      "readinessImpact": 35,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "scenarioId": "operations-scenario-2",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Jackson County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 43,
+      "readinessImpact": 26,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "scenarioId": "registration-scenario-3",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Jefferson County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 60,
+      "readinessImpact": 37,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "scenarioId": "turnout-scenario-3",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Jefferson County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 49,
+      "readinessImpact": 28,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "scenarioId": "operations-scenario-3",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Jefferson County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 38,
+      "readinessImpact": 19,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "scenarioId": "registration-scenario-4",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Johnson County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 55,
+      "readinessImpact": 30,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "scenarioId": "turnout-scenario-4",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Johnson County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 44,
+      "readinessImpact": 21,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "scenarioId": "operations-scenario-4",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Johnson County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 33,
+      "readinessImpact": 77,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "scenarioId": "registration-scenario-1",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Lafayette County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 50,
+      "readinessImpact": 23,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "scenarioId": "turnout-scenario-1",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Lafayette County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 39,
+      "readinessImpact": 79,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "scenarioId": "operations-scenario-1",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Lafayette County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 28,
+      "readinessImpact": 70,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "scenarioId": "registration-scenario-2",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Lawrence County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 45,
+      "readinessImpact": 16,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "scenarioId": "turnout-scenario-2",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Lawrence County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 34,
+      "readinessImpact": 72,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "scenarioId": "operations-scenario-2",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Lawrence County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 23,
+      "readinessImpact": 63,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "scenarioId": "registration-scenario-3",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Lee County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 40,
+      "readinessImpact": 74,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "scenarioId": "turnout-scenario-3",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Lee County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 29,
+      "readinessImpact": 65,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "scenarioId": "operations-scenario-3",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Lee County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 88,
+      "readinessImpact": 56,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "scenarioId": "registration-scenario-4",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Lincoln County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 35,
+      "readinessImpact": 67,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "scenarioId": "turnout-scenario-4",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Lincoln County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 24,
+      "readinessImpact": 58,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "scenarioId": "operations-scenario-4",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Lincoln County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 83,
+      "readinessImpact": 49,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "scenarioId": "registration-scenario-1",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Little River County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 30,
+      "readinessImpact": 60,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "scenarioId": "turnout-scenario-1",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Little River County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 89,
+      "readinessImpact": 51,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "scenarioId": "operations-scenario-1",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Little River County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 78,
+      "readinessImpact": 42,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "scenarioId": "registration-scenario-2",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Logan County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 25,
+      "readinessImpact": 53,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "scenarioId": "turnout-scenario-2",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Logan County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 84,
+      "readinessImpact": 44,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "scenarioId": "operations-scenario-2",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Logan County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 73,
+      "readinessImpact": 35,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "scenarioId": "registration-scenario-3",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Lonoke County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 90,
+      "readinessImpact": 46,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "scenarioId": "turnout-scenario-3",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Lonoke County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 79,
+      "readinessImpact": 37,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "scenarioId": "operations-scenario-3",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Lonoke County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 68,
+      "readinessImpact": 28,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "scenarioId": "registration-scenario-4",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Madison County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 85,
+      "readinessImpact": 39,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "scenarioId": "turnout-scenario-4",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Madison County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 74,
+      "readinessImpact": 30,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "scenarioId": "operations-scenario-4",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Madison County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 63,
+      "readinessImpact": 21,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "scenarioId": "registration-scenario-1",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Marion County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 80,
+      "readinessImpact": 32,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "scenarioId": "turnout-scenario-1",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Marion County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 69,
+      "readinessImpact": 23,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "scenarioId": "operations-scenario-1",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Marion County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 58,
+      "readinessImpact": 79,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "scenarioId": "registration-scenario-2",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Miller County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 75,
+      "readinessImpact": 25,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "scenarioId": "turnout-scenario-2",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Miller County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 64,
+      "readinessImpact": 16,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "scenarioId": "operations-scenario-2",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Miller County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 53,
+      "readinessImpact": 72,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "scenarioId": "registration-scenario-3",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Mississippi County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 70,
+      "readinessImpact": 18,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "scenarioId": "turnout-scenario-3",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Mississippi County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 59,
+      "readinessImpact": 74,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "scenarioId": "operations-scenario-3",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Mississippi County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 48,
+      "readinessImpact": 65,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "scenarioId": "registration-scenario-4",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Monroe County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 65,
+      "readinessImpact": 76,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "scenarioId": "turnout-scenario-4",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Monroe County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 54,
+      "readinessImpact": 67,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "scenarioId": "operations-scenario-4",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Monroe County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 43,
+      "readinessImpact": 58,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "scenarioId": "registration-scenario-1",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Montgomery County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 60,
+      "readinessImpact": 69,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "scenarioId": "turnout-scenario-1",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Montgomery County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 49,
+      "readinessImpact": 60,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "scenarioId": "operations-scenario-1",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Montgomery County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 38,
+      "readinessImpact": 51,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "scenarioId": "registration-scenario-2",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Nevada County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 55,
+      "readinessImpact": 62,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "scenarioId": "turnout-scenario-2",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Nevada County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 44,
+      "readinessImpact": 53,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "scenarioId": "operations-scenario-2",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Nevada County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 33,
+      "readinessImpact": 44,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "scenarioId": "registration-scenario-3",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Newton County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 50,
+      "readinessImpact": 55,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "scenarioId": "turnout-scenario-3",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Newton County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 39,
+      "readinessImpact": 46,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "scenarioId": "operations-scenario-3",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Newton County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 28,
+      "readinessImpact": 37,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "scenarioId": "registration-scenario-4",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Ouachita County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 45,
+      "readinessImpact": 48,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "scenarioId": "turnout-scenario-4",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Ouachita County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 34,
+      "readinessImpact": 39,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "scenarioId": "operations-scenario-4",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Ouachita County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 23,
+      "readinessImpact": 30,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "scenarioId": "registration-scenario-1",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Perry County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 40,
+      "readinessImpact": 41,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "scenarioId": "turnout-scenario-1",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Perry County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 29,
+      "readinessImpact": 32,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "scenarioId": "operations-scenario-1",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Perry County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 88,
+      "readinessImpact": 23,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "scenarioId": "registration-scenario-2",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Phillips County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 35,
+      "readinessImpact": 34,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "scenarioId": "turnout-scenario-2",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Phillips County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 24,
+      "readinessImpact": 25,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "scenarioId": "operations-scenario-2",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Phillips County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 83,
+      "readinessImpact": 16,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "scenarioId": "registration-scenario-3",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Pike County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 30,
+      "readinessImpact": 27,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "scenarioId": "turnout-scenario-3",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Pike County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 89,
+      "readinessImpact": 18,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "scenarioId": "operations-scenario-3",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Pike County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 78,
+      "readinessImpact": 74,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "scenarioId": "registration-scenario-4",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Poinsett County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 25,
+      "readinessImpact": 20,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "scenarioId": "turnout-scenario-4",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Poinsett County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 84,
+      "readinessImpact": 76,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "scenarioId": "operations-scenario-4",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Poinsett County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 73,
+      "readinessImpact": 67,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "scenarioId": "registration-scenario-1",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Polk County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 90,
+      "readinessImpact": 78,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "scenarioId": "turnout-scenario-1",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Polk County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 79,
+      "readinessImpact": 69,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "scenarioId": "operations-scenario-1",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Polk County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 68,
+      "readinessImpact": 60,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "scenarioId": "registration-scenario-2",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Pope County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 85,
+      "readinessImpact": 71,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "scenarioId": "turnout-scenario-2",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Pope County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 74,
+      "readinessImpact": 62,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "scenarioId": "operations-scenario-2",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Pope County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 63,
+      "readinessImpact": 53,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "scenarioId": "registration-scenario-3",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Prairie County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 80,
+      "readinessImpact": 64,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "scenarioId": "turnout-scenario-3",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Prairie County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 69,
+      "readinessImpact": 55,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "scenarioId": "operations-scenario-3",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Prairie County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 58,
+      "readinessImpact": 46,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "scenarioId": "registration-scenario-4",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Pulaski County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 75,
+      "readinessImpact": 57,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "scenarioId": "turnout-scenario-4",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Pulaski County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 64,
+      "readinessImpact": 48,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "scenarioId": "operations-scenario-4",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Pulaski County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 53,
+      "readinessImpact": 39,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "scenarioId": "registration-scenario-1",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Randolph County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 70,
+      "readinessImpact": 50,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "scenarioId": "turnout-scenario-1",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Randolph County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 59,
+      "readinessImpact": 41,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "scenarioId": "operations-scenario-1",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Randolph County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 48,
+      "readinessImpact": 32,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "scenarioId": "registration-scenario-2",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for St. Francis County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 65,
+      "readinessImpact": 43,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "scenarioId": "turnout-scenario-2",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for St. Francis County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 54,
+      "readinessImpact": 34,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "scenarioId": "operations-scenario-2",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for St. Francis County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 43,
+      "readinessImpact": 25,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "scenarioId": "registration-scenario-3",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Saline County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 60,
+      "readinessImpact": 36,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "scenarioId": "turnout-scenario-3",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Saline County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 49,
+      "readinessImpact": 27,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "scenarioId": "operations-scenario-3",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Saline County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 38,
+      "readinessImpact": 18,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "scenarioId": "registration-scenario-4",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Scott County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 55,
+      "readinessImpact": 29,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "scenarioId": "turnout-scenario-4",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Scott County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 44,
+      "readinessImpact": 20,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "scenarioId": "operations-scenario-4",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Scott County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 33,
+      "readinessImpact": 76,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "scenarioId": "registration-scenario-1",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Searcy County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 50,
+      "readinessImpact": 22,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "scenarioId": "turnout-scenario-1",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Searcy County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 39,
+      "readinessImpact": 78,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "scenarioId": "operations-scenario-1",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Searcy County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 28,
+      "readinessImpact": 69,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "scenarioId": "registration-scenario-2",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Sebastian County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 45,
+      "readinessImpact": 80,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "scenarioId": "turnout-scenario-2",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Sebastian County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 34,
+      "readinessImpact": 71,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "scenarioId": "operations-scenario-2",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Sebastian County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 23,
+      "readinessImpact": 62,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "scenarioId": "registration-scenario-3",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Sevier County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 40,
+      "readinessImpact": 73,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "scenarioId": "turnout-scenario-3",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Sevier County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 29,
+      "readinessImpact": 64,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "scenarioId": "operations-scenario-3",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Sevier County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 88,
+      "readinessImpact": 55,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "scenarioId": "registration-scenario-4",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Sharp County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 35,
+      "readinessImpact": 66,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "scenarioId": "turnout-scenario-4",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Sharp County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 24,
+      "readinessImpact": 57,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "scenarioId": "operations-scenario-4",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Sharp County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 83,
+      "readinessImpact": 48,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "scenarioId": "registration-scenario-1",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Stone County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 30,
+      "readinessImpact": 59,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "scenarioId": "turnout-scenario-1",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Stone County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 89,
+      "readinessImpact": 50,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "scenarioId": "operations-scenario-1",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Stone County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 78,
+      "readinessImpact": 41,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "scenarioId": "registration-scenario-2",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Union County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 25,
+      "readinessImpact": 52,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "scenarioId": "turnout-scenario-2",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Union County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 84,
+      "readinessImpact": 43,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "scenarioId": "operations-scenario-2",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Union County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 73,
+      "readinessImpact": 34,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "scenarioId": "registration-scenario-3",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Van Buren County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 90,
+      "readinessImpact": 45,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "scenarioId": "turnout-scenario-3",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Van Buren County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 79,
+      "readinessImpact": 36,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "scenarioId": "operations-scenario-3",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Van Buren County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 68,
+      "readinessImpact": 27,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "scenarioId": "registration-scenario-4",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Washington County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 85,
+      "readinessImpact": 38,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "scenarioId": "turnout-scenario-4",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Washington County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 74,
+      "readinessImpact": 29,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "scenarioId": "operations-scenario-4",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Washington County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 63,
+      "readinessImpact": 20,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "scenarioId": "registration-scenario-1",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for White County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 80,
+      "readinessImpact": 31,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "scenarioId": "turnout-scenario-1",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for White County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 69,
+      "readinessImpact": 22,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "scenarioId": "operations-scenario-1",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for White County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 58,
+      "readinessImpact": 78,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "scenarioId": "registration-scenario-2",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Woodruff County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 75,
+      "readinessImpact": 24,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "scenarioId": "turnout-scenario-2",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Woodruff County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 64,
+      "readinessImpact": 80,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "scenarioId": "operations-scenario-2",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Woodruff County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 53,
+      "readinessImpact": 71,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "scenarioId": "registration-scenario-3",
+      "scenarioLabel": "SCENARIO",
+      "assumptions": [
+        "Assumption 1: aggregate baseline remains stable for Yell County.",
+        "Assumption 2: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 70,
+      "readinessImpact": 17,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "scenarioId": "turnout-scenario-3",
+      "scenarioLabel": "FORECAST",
+      "assumptions": [
+        "Assumption 2: aggregate baseline remains stable for Yell County.",
+        "Assumption 3: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 59,
+      "readinessImpact": 73,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "scenarioId": "operations-scenario-3",
+      "scenarioLabel": "MODEL",
+      "assumptions": [
+        "Assumption 3: aggregate baseline remains stable for Yell County.",
+        "Assumption 4: no individualized targeting inputs are used."
+      ],
+      "sourceLayers": [
+        "data/audit/county-strategy-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/voter-file-readiness-table.json"
+      ],
+      "confidenceScore": 48,
+      "readinessImpact": 64,
+      "status": "LOW_CONFIDENCE"
+    }
+  ]
+}

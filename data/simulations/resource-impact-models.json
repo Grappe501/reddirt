@@ -1,0 +1,756 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-26T18:45:04.216Z",
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "staffingAdjustment": -2,
+      "volunteerAdjustment": -3,
+      "projectedOperationalImpact": 72,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 83,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "staffingAdjustment": -1,
+      "volunteerAdjustment": -2,
+      "projectedOperationalImpact": 68,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 78,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "staffingAdjustment": 0,
+      "volunteerAdjustment": -1,
+      "projectedOperationalImpact": 64,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 73,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "staffingAdjustment": 1,
+      "volunteerAdjustment": 0,
+      "projectedOperationalImpact": 60,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 68,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "staffingAdjustment": 2,
+      "volunteerAdjustment": 1,
+      "projectedOperationalImpact": 56,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 63,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "staffingAdjustment": -2,
+      "volunteerAdjustment": 2,
+      "projectedOperationalImpact": 52,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 58,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "staffingAdjustment": -1,
+      "volunteerAdjustment": 3,
+      "projectedOperationalImpact": 48,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 53,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "staffingAdjustment": 0,
+      "volunteerAdjustment": -3,
+      "projectedOperationalImpact": 44,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 48,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "staffingAdjustment": 1,
+      "volunteerAdjustment": -2,
+      "projectedOperationalImpact": 40,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 43,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "staffingAdjustment": 2,
+      "volunteerAdjustment": -1,
+      "projectedOperationalImpact": 36,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 38,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "staffingAdjustment": -2,
+      "volunteerAdjustment": 0,
+      "projectedOperationalImpact": 32,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 33,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "staffingAdjustment": -1,
+      "volunteerAdjustment": 1,
+      "projectedOperationalImpact": 28,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 28,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "staffingAdjustment": 0,
+      "volunteerAdjustment": 2,
+      "projectedOperationalImpact": 24,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 81,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "staffingAdjustment": 1,
+      "volunteerAdjustment": 3,
+      "projectedOperationalImpact": 20,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 76,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "staffingAdjustment": 2,
+      "volunteerAdjustment": -3,
+      "projectedOperationalImpact": 16,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 71,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "staffingAdjustment": -2,
+      "volunteerAdjustment": -2,
+      "projectedOperationalImpact": 69,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 66,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "staffingAdjustment": -1,
+      "volunteerAdjustment": -1,
+      "projectedOperationalImpact": 65,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 61,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "staffingAdjustment": 0,
+      "volunteerAdjustment": 0,
+      "projectedOperationalImpact": 61,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 56,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "staffingAdjustment": 1,
+      "volunteerAdjustment": 1,
+      "projectedOperationalImpact": 57,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 51,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "staffingAdjustment": 2,
+      "volunteerAdjustment": 2,
+      "projectedOperationalImpact": 53,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 46,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "staffingAdjustment": -2,
+      "volunteerAdjustment": 3,
+      "projectedOperationalImpact": 49,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 41,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "staffingAdjustment": -1,
+      "volunteerAdjustment": -3,
+      "projectedOperationalImpact": 45,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 36,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "staffingAdjustment": 0,
+      "volunteerAdjustment": -2,
+      "projectedOperationalImpact": 41,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 31,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "staffingAdjustment": 1,
+      "volunteerAdjustment": -1,
+      "projectedOperationalImpact": 37,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 26,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "staffingAdjustment": 2,
+      "volunteerAdjustment": 0,
+      "projectedOperationalImpact": 33,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 79,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "staffingAdjustment": -2,
+      "volunteerAdjustment": 1,
+      "projectedOperationalImpact": 29,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 74,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "staffingAdjustment": -1,
+      "volunteerAdjustment": 2,
+      "projectedOperationalImpact": 25,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 69,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "staffingAdjustment": 0,
+      "volunteerAdjustment": 3,
+      "projectedOperationalImpact": 21,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 64,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "staffingAdjustment": 1,
+      "volunteerAdjustment": -3,
+      "projectedOperationalImpact": 17,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 59,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "staffingAdjustment": 2,
+      "volunteerAdjustment": -2,
+      "projectedOperationalImpact": 70,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 54,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "staffingAdjustment": -2,
+      "volunteerAdjustment": -1,
+      "projectedOperationalImpact": 66,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 49,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "staffingAdjustment": -1,
+      "volunteerAdjustment": 0,
+      "projectedOperationalImpact": 62,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 44,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "staffingAdjustment": 0,
+      "volunteerAdjustment": 1,
+      "projectedOperationalImpact": 58,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 39,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "staffingAdjustment": 1,
+      "volunteerAdjustment": 2,
+      "projectedOperationalImpact": 54,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 34,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "staffingAdjustment": 2,
+      "volunteerAdjustment": 3,
+      "projectedOperationalImpact": 50,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 29,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "staffingAdjustment": -2,
+      "volunteerAdjustment": -3,
+      "projectedOperationalImpact": 46,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 82,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "staffingAdjustment": -1,
+      "volunteerAdjustment": -2,
+      "projectedOperationalImpact": 42,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 77,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "staffingAdjustment": 0,
+      "volunteerAdjustment": -1,
+      "projectedOperationalImpact": 38,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 72,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "staffingAdjustment": 1,
+      "volunteerAdjustment": 0,
+      "projectedOperationalImpact": 34,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 67,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "staffingAdjustment": 2,
+      "volunteerAdjustment": 1,
+      "projectedOperationalImpact": 30,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 62,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "staffingAdjustment": -2,
+      "volunteerAdjustment": 2,
+      "projectedOperationalImpact": 26,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 57,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "staffingAdjustment": -1,
+      "volunteerAdjustment": 3,
+      "projectedOperationalImpact": 22,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 52,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "staffingAdjustment": 0,
+      "volunteerAdjustment": -3,
+      "projectedOperationalImpact": 18,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 47,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "staffingAdjustment": 1,
+      "volunteerAdjustment": -2,
+      "projectedOperationalImpact": 71,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 42,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "staffingAdjustment": 2,
+      "volunteerAdjustment": -1,
+      "projectedOperationalImpact": 67,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 37,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "staffingAdjustment": -2,
+      "volunteerAdjustment": 0,
+      "projectedOperationalImpact": 63,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 32,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "staffingAdjustment": -1,
+      "volunteerAdjustment": 1,
+      "projectedOperationalImpact": 59,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 27,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "staffingAdjustment": 0,
+      "volunteerAdjustment": 2,
+      "projectedOperationalImpact": 55,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 80,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "staffingAdjustment": 1,
+      "volunteerAdjustment": 3,
+      "projectedOperationalImpact": 51,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 75,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "staffingAdjustment": 2,
+      "volunteerAdjustment": -3,
+      "projectedOperationalImpact": 47,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 70,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "staffingAdjustment": -2,
+      "volunteerAdjustment": -2,
+      "projectedOperationalImpact": 43,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 65,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "staffingAdjustment": -1,
+      "volunteerAdjustment": -1,
+      "projectedOperationalImpact": 39,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 60,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "staffingAdjustment": 0,
+      "volunteerAdjustment": 0,
+      "projectedOperationalImpact": 35,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 55,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "staffingAdjustment": 1,
+      "volunteerAdjustment": 1,
+      "projectedOperationalImpact": 31,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 50,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "staffingAdjustment": 2,
+      "volunteerAdjustment": 2,
+      "projectedOperationalImpact": 27,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 45,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "staffingAdjustment": -2,
+      "volunteerAdjustment": 3,
+      "projectedOperationalImpact": 23,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 40,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "staffingAdjustment": -1,
+      "volunteerAdjustment": -3,
+      "projectedOperationalImpact": 19,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 35,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "staffingAdjustment": 0,
+      "volunteerAdjustment": -2,
+      "projectedOperationalImpact": 72,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 30,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "staffingAdjustment": 1,
+      "volunteerAdjustment": -1,
+      "projectedOperationalImpact": 68,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 83,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "staffingAdjustment": 2,
+      "volunteerAdjustment": 0,
+      "projectedOperationalImpact": 64,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 78,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "staffingAdjustment": -2,
+      "volunteerAdjustment": 1,
+      "projectedOperationalImpact": 60,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 73,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "staffingAdjustment": -1,
+      "volunteerAdjustment": 2,
+      "projectedOperationalImpact": 56,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 68,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "staffingAdjustment": 0,
+      "volunteerAdjustment": 3,
+      "projectedOperationalImpact": 52,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 63,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "staffingAdjustment": 1,
+      "volunteerAdjustment": -3,
+      "projectedOperationalImpact": 48,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 58,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "staffingAdjustment": 2,
+      "volunteerAdjustment": -2,
+      "projectedOperationalImpact": 44,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 53,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "staffingAdjustment": -2,
+      "volunteerAdjustment": -1,
+      "projectedOperationalImpact": 40,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 48,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "staffingAdjustment": -1,
+      "volunteerAdjustment": 0,
+      "projectedOperationalImpact": 36,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 43,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "staffingAdjustment": 0,
+      "volunteerAdjustment": 1,
+      "projectedOperationalImpact": 32,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 38,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "staffingAdjustment": 1,
+      "volunteerAdjustment": 2,
+      "projectedOperationalImpact": 28,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 33,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "staffingAdjustment": 2,
+      "volunteerAdjustment": 3,
+      "projectedOperationalImpact": 24,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 28,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "staffingAdjustment": -2,
+      "volunteerAdjustment": -3,
+      "projectedOperationalImpact": 20,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 81,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "staffingAdjustment": -1,
+      "volunteerAdjustment": -2,
+      "projectedOperationalImpact": 16,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 76,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "staffingAdjustment": 0,
+      "volunteerAdjustment": -1,
+      "projectedOperationalImpact": 69,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 71,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "staffingAdjustment": 1,
+      "volunteerAdjustment": 0,
+      "projectedOperationalImpact": 65,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 66,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "staffingAdjustment": 2,
+      "volunteerAdjustment": 1,
+      "projectedOperationalImpact": 61,
+      "scenarioLabel": "MODEL",
+      "confidenceScore": 61,
+      "status": "LOW_CONFIDENCE"
+    }
+  ]
+}

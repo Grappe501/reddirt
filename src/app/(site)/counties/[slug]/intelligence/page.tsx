@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ARKANSAS_COUNTY_REGISTRY } from "@/lib/county/arkansas-county-registry";
 import { publicNarrativeBriefBuilder } from "@/lib/agents/county-intelligence/publicNarrativeBriefBuilder";
+import { simulationBriefBuilder } from "@/lib/agents/county-intelligence/simulationBriefBuilder";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -23,6 +24,7 @@ export default async function CountyPublicNarrativeIntelligencePage({ params }: 
   const county = ARKANSAS_COUNTY_REGISTRY.find((x) => x.slug === slug);
   if (!county) notFound();
   const brief = publicNarrativeBriefBuilder(slug);
+  const simulation = simulationBriefBuilder(slug);
 
   return (
     <main className="mx-auto max-w-5xl space-y-6 px-4 py-8">
@@ -104,6 +106,23 @@ export default async function CountyPublicNarrativeIntelligencePage({ params }: 
             <li key={i}>{row}</li>
           ))}
         </ul>
+      </section>
+
+      <section className="rounded-xl border bg-white p-4">
+        <h2 className="text-sm font-bold uppercase text-kelly-muted">Simulations & Forecasts</h2>
+        <p className="mt-2 text-sm text-kelly-text">
+          SCENARIO/MODEL/FORECAST outputs only; assumptions are explicit and non-canonical.
+        </p>
+        <ul className="mt-2 list-inside list-disc text-sm text-kelly-text">
+          {simulation.scenarioCards.slice(0, 5).map((row, i) => (
+            <li key={i}>{row}</li>
+          ))}
+        </ul>
+        <p className="mt-2 text-sm text-kelly-text">{simulation.registrationProjection}</p>
+        <p className="mt-1 text-sm text-kelly-text">{simulation.turnoutScenario}</p>
+        <p className="mt-1 text-sm text-kelly-text">{simulation.readinessTrajectory}</p>
+        <p className="mt-1 text-sm text-kelly-text">{simulation.interventionImpactEstimate}</p>
+        <p className="mt-2 text-sm text-kelly-text">Confidence score: {simulation.confidenceScore}</p>
       </section>
     </main>
   );

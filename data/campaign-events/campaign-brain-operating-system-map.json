@@ -13,6 +13,7 @@
     "County institutional memory",
     "County resource operations layer",
     "Public narrative intelligence layer",
+    "Simulation scenario engine",
     "Voter warehouse schema readiness",
     "Registration snapshot template/import",
     "County win pathway formula",
@@ -48,7 +49,15 @@
     "earnedMediaOpportunities": "data/public-narrative/earned-media-opportunities.json",
     "civicSentimentSummary": "data/public-narrative/civic-sentiment-summary.json",
     "publicMeetingWatchlist": "data/public-narrative/public-meeting-watchlist.json",
-    "publicNarrativeReadiness": "data/audit/public-narrative-readiness-table.json"
+    "publicNarrativeReadiness": "data/audit/public-narrative-readiness-table.json",
+    "countyScenarioRegistry": "data/simulations/county-scenario-registry.json",
+    "statewideScenarioMatrix": "data/simulations/statewide-scenario-matrix.json",
+    "pathwaySensitivityModel": "data/simulations/pathway-sensitivity-model.json",
+    "registrationGrowthScenarios": "data/simulations/registration-growth-scenarios.json",
+    "resourceImpactModels": "data/simulations/resource-impact-models.json",
+    "eventImpactScenarios": "data/simulations/event-impact-scenarios.json",
+    "turnoutSensitivityModels": "data/simulations/turnout-sensitivity-models.json",
+    "simulationEngineReadiness": "data/audit/simulation-engine-readiness-table.json"
   },
   "gates": {
     "strategyGeneration": "strategySafeToGenerate === YES",
