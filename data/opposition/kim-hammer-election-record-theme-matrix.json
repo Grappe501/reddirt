@@ -1,0 +1,60 @@
+{
+  "generatedAt": "2026-05-27T04:52:35.411Z",
+  "themes": {
+    "direct_democracy_ballot_initiatives": [
+      "HB1222",
+      "SB207",
+      "SB208",
+      "SB210",
+      "SB211",
+      "SB551",
+      "SB584"
+    ],
+    "petition_gathering": [
+      "HB1222",
+      "SB207",
+      "SB208",
+      "SB210",
+      "SB211",
+      "SB551",
+      "SB584"
+    ],
+    "county_election_administration": [
+      "SB294",
+      "SB296",
+      "HB1457"
+    ],
+    "voter_registration": [],
+    "absentee_voting": [
+      "SB299"
+    ],
+    "ballot_access": [
+      "HB1222",
+      "HB1707",
+      "SB210",
+      "HB1457"
+    ],
+    "election_enforcement": [
+      "HB1693",
+      "SB291",
+      "SB294",
+      "HB1464"
+    ],
+    "voting_equipment_paper_ballots": [
+      "HB1487",
+      "SB250"
+    ],
+    "secretary_of_state_duties": [
+      "HB1707"
+    ],
+    "poll_watchers_election_observers": [
+      "HB1457"
+    ],
+    "write_ins_candidate_access": [
+      "HB1707"
+    ]
+  },
+  "notes": [
+    "Theme assignments are title-informed and require bill-text confirmation for legal precision."
+  ]
+}

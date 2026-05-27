@@ -1,0 +1,199 @@
+{
+  "generatedAt": "2026-05-27T04:52:35.411Z",
+  "rows": [
+    {
+      "year": "2023",
+      "billOrAct": "HB1457 / Act 444",
+      "whatChanged": "TO ESTABLISH THE ARKANSAS POLL WATCHERS BILL OF RIGHTS ACT OF 2023; TO AMEND THE LAW CONCERNING POLL WATCHERS; AND TO AMEND THE LAW CONCERNING ELECTION PROCEDURES.",
+      "hammerRole": "sponsor",
+      "impactCategory": [
+        "county_election_administration",
+        "ballot_access",
+        "poll_watchers_election_observers"
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "year": "2023",
+      "billOrAct": "HB1464 / Act 295",
+      "whatChanged": "TO AMEND THE LAW CONCERNING COMPLAINTS OF ELECTION LAW VIOLATIONS; AND TO AMEND THE LAW CONCERNING THE STATE BOARD OF ELECTION COMMISSIONERS.",
+      "hammerRole": "sponsor",
+      "impactCategory": [
+        "election_enforcement"
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "year": "2023",
+      "billOrAct": "HB1487 / Act 329",
+      "whatChanged": "TO CREATE THE BALLOT SECURITY ACT OF 2023; AND TO AMEND ELECTION LAW CONCERNING THE HANDLING OF ELECTION BALLOTS.",
+      "hammerRole": "sponsor",
+      "impactCategory": [
+        "voting_equipment_paper_ballots"
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "year": "2023",
+      "billOrAct": "SB250 / Act 350",
+      "whatChanged": "TO AMEND THE LAW CONCERNING PAPER BALLOTS; TO AMEND THE LAW CONCERNING MARKING AND COUNTING PAPER BALLOTS; TO AMEND THE LAW CONCERNING THE DECLARATION OF ELECTION RESULTS; AND TO DECLARE AN EMERGENCY.",
+      "hammerRole": "sponsor",
+      "impactCategory": [
+        "voting_equipment_paper_ballots"
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "year": "2025",
+      "billOrAct": "HB1222 / Act 154",
+      "whatChanged": "TO REQUIRE THE ATTORNEY GENERAL TO REVIEW BALLOT TITLES FOR CONFLICTS WITH THE UNITED STATES CONSTITUTION AND FEDERAL STATUTES; AND TO PROHIBIT THE SUBMISSION OF CONFLICTING INITIATIVE PETITIONS AND REFERENDUM PETITIONS.",
+      "hammerRole": "sponsor",
+      "impactCategory": [
+        "direct_democracy_ballot_initiatives",
+        "petition_gathering",
+        "ballot_access"
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "year": "2025",
+      "billOrAct": "HB1693 / Act 458",
+      "whatChanged": "TO AMEND THE LAW CONCERNING DAMAGED OR DEFECTIVE BALLOTS; AND TO ALLOW THE STATE BOARD OF ELECTION COMMISSIONERS TO PROMULGATE RULES REGARDING THE DUPLICATION OF DAMAGED OR DEFECTIVE BALLOTS.",
+      "hammerRole": "sponsor",
+      "impactCategory": [
+        "election_enforcement"
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "year": "2025",
+      "billOrAct": "HB1707 / Act 524",
+      "whatChanged": "TO REQUIRE CERTAIN CANDIDATES TO FILE REPORTS WITH THE SECRETARY OF STATE; TO AMEND PORTIONS OF INITIATED ACT 1 OF 1996; AND TO DECLARE AN EMERGENCY.",
+      "hammerRole": "sponsor",
+      "impactCategory": [
+        "ballot_access",
+        "secretary_of_state_duties",
+        "write_ins_candidate_access"
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "year": "2025",
+      "billOrAct": "HB1837 / Act 999",
+      "whatChanged": "TO AMEND THE LAW CONCERNING DISCLOSURE FOR MATTERS REFERRED TO VOTERS; AND TO BAN FOREIGN FUNDING FOR BALLOT MEASURES; TO AMEND PORTIONS OF THE ARKANSAS CODE THAT RESULTED FROM INITIATED ACT 1 OF 1996.",
+      "hammerRole": "sponsor",
+      "impactCategory": [
+        "unclassified_election_topic"
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "year": "2025",
+      "billOrAct": "SB207 / Act 218",
+      "whatChanged": "TO AMEND THE LAW CONCERNING INITIATIVE AND REFERENDUM PETITIONS; TO REQUIRE A CANVASSER TO DISCLOSE THAT PETITION FRAUD IS A CRIMINAL OFFENSE; AND TO DECLARE AN EMERGENCY.",
+      "hammerRole": "sponsor",
+      "impactCategory": [
+        "direct_democracy_ballot_initiatives",
+        "petition_gathering"
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "year": "2025",
+      "billOrAct": "SB208 / Act 240",
+      "whatChanged": "TO AMEND THE LAW CONCERNING INITIATIVE AND REFERENDUM PETITIONS; TO VIEW A CANVASSER TO REQUEST PHOTO IDENTIFICATION BEFORE OBTAINING A SIGNATURE; AND TO DECLARE AN EMERGENCY.",
+      "hammerRole": "sponsor",
+      "impactCategory": [
+        "direct_democracy_ballot_initiatives",
+        "petition_gathering"
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "year": "2025",
+      "billOrAct": "SB210 / Act 274",
+      "whatChanged": "TO REQUIRE THE SIGNER TO READ THE BALLOT TITLE OF THE PETITION IN THE PRESENCE OF A CANVASSER; AND TO DECLARE AN EMERGENCY.",
+      "hammerRole": "sponsor",
+      "impactCategory": [
+        "direct_democracy_ballot_initiatives",
+        "petition_gathering",
+        "ballot_access"
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "year": "2025",
+      "billOrAct": "SB211 / Act 241",
+      "whatChanged": "TO AMEND THE LAW CONCERNING INITIATIVE PETITIONS AND REFERENDUM PETITIONS; TO REQUIRE A CANVASSER TO SUBMIT AN AFFIDAVIT BEFORE SIGNATURES CAN BE COUNTED; AND TO DECLARE AN EMERGENCY.",
+      "hammerRole": "sponsor",
+      "impactCategory": [
+        "direct_democracy_ballot_initiatives",
+        "petition_gathering"
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "year": "2025",
+      "billOrAct": "SB291 / Act 279",
+      "whatChanged": "TO AMEND THE LAW CONCERNING COMPLAINTS OF ELECTION LAW VIOLATIONS; AND TO AMEND THE DEADLINES FOR COMPLAINTS OF ELECTION LAW VIOLATIONS.",
+      "hammerRole": "sponsor",
+      "impactCategory": [
+        "election_enforcement"
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "year": "2025",
+      "billOrAct": "SB294 / Act 280",
+      "whatChanged": "TO AMEND THE LAW CONCERNING ELECTION AUDITS; AND TO ALLOW THE STATE BOARD OF ELECTION COMMISSIONERS TO AUDIT A COUNTY IN THE PRECEDING ELECTION IN CERTAIN CIRCUMSTANCES.",
+      "hammerRole": "sponsor",
+      "impactCategory": [
+        "county_election_administration",
+        "election_enforcement"
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "year": "2025",
+      "billOrAct": "SB296 / Act 282",
+      "whatChanged": "TO AMEND THE LAW CONCERNING THE DESIGNATION OF AN EARLY VOTING LOCATION BY THE COUNTY CLERK.",
+      "hammerRole": "sponsor",
+      "impactCategory": [
+        "county_election_administration"
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "year": "2025",
+      "billOrAct": "SB299 / Act 403",
+      "whatChanged": "TO REQUIRE A STAFF MEMBER TO WITNESS AN ADMINISTRATOR ASSISTING A RESIDENT OF A LONG-TERM RESIDENTIAL CARE FACILITY WITH ABSENTEE VOTING.",
+      "hammerRole": "sponsor",
+      "impactCategory": [
+        "absentee_voting"
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "year": "2025",
+      "billOrAct": "SB551 / Act 764",
+      "whatChanged": "TO AMEND THE LAW CONCERNING CANVASSING FOR A PETITION FOR A LOCAL OPTION ELECTION.",
+      "hammerRole": "sponsor",
+      "impactCategory": [
+        "direct_democracy_ballot_initiatives",
+        "petition_gathering"
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "year": "2025",
+      "billOrAct": "SB584 / Act 768",
+      "whatChanged": "TO AMEND THE LAW CONCERNING LOCAL INITIATIVE AND REFERENDUM PETITIONS.",
+      "hammerRole": "sponsor",
+      "impactCategory": [
+        "direct_democracy_ballot_initiatives",
+        "petition_gathering"
+      ],
+      "sourceConfidence": "HIGH"
+    }
+  ]
+}
