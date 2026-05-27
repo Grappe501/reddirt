@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { findKimHammerBill } from "@/lib/opposition/kimHammerWorkbench";
+import { loadKimHammerKh2Workbench } from "@/lib/opposition/kimHammerKh2Workbench";
 
 type Props = {
   params: Promise<{ billNumber: string }>;
@@ -9,7 +10,12 @@ type Props = {
 export default async function KimHammerBillDetailPage({ params }: Props) {
   const { billNumber } = await params;
   const bill = findKimHammerBill(billNumber);
+  const kh2 = loadKimHammerKh2Workbench();
   if (!bill) notFound();
+
+  const debateProfileEntry = kh2.debateProfile.entries.find((entry) =>
+    entry.supportingFacts.some((fact) => fact.toUpperCase().includes(bill.billNumber.toUpperCase())),
+  );
 
   return (
     <div className="mx-auto max-w-6xl text-kelly-text">
@@ -104,6 +110,7 @@ export default async function KimHammerBillDetailPage({ params }: Props) {
           <li>Response frame: agree with integrity goals, then test whether county support and access were preserved.</li>
           <li>Bridge line: Election integrity and participation should work together under transparent rules.</li>
           <li>Risky wording to avoid: motive claims without source evidence.</li>
+          {debateProfileEntry ? <li>KH-2 profile anchor: {debateProfileEntry.bridgeLine}</li> : null}
         </ul>
       </section>
 

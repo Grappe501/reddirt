@@ -1,7 +1,9 @@
 import { loadKimHammerWorkbench } from "@/lib/opposition/kimHammerWorkbench";
+import { loadKimHammerKh2Workbench } from "@/lib/opposition/kimHammerKh2Workbench";
 
 export default async function KimHammerResearchGapsPage() {
   const data = loadKimHammerWorkbench();
+  const kh2 = loadKimHammerKh2Workbench();
 
   const gapRows = [
     "act text review",
@@ -28,6 +30,11 @@ export default async function KimHammerResearchGapsPage() {
           {gapRows.map((gap) => (
             <li key={gap}>{gap}</li>
           ))}
+          {kh2.intelligenceGaps.gaps
+            .filter((gap) => gap.priority === "HIGH")
+            .map((gap) => (
+              <li key={gap.id}>{gap.description}</li>
+            ))}
         </ul>
       </section>
 

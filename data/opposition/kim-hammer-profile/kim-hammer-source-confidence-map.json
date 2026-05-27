@@ -1,0 +1,45 @@
+{
+  "generatedAt": "2026-05-27T01:20:00.000Z",
+  "sourceConfidence": [
+    {
+      "sourceCategory": "official_government",
+      "confidence": "HIGH",
+      "examples": [
+        "https://senate.arkansas.gov/senators/576/",
+        "https://arkleg.state.ar.us/Legislators/Detail?ddBienniumSession=2025%2F2025R&member=K.+Hammer"
+      ]
+    },
+    {
+      "sourceCategory": "campaign_website",
+      "confidence": "HIGH",
+      "examples": [
+        "https://www.hammerforarkansas.com/",
+        "https://www.hammerforarkansas.com/election-security/"
+      ]
+    },
+    {
+      "sourceCategory": "internal_curated_packet",
+      "confidence": "HIGH",
+      "examples": [
+        "data/opposition/kim-hammer-election-record-bill-index.json",
+        "data/opposition/kim-hammer-election-record-theme-matrix.json"
+      ]
+    },
+    {
+      "sourceCategory": "media_reporting",
+      "confidence": "MEDIUM",
+      "examples": [
+        "https://arkansasadvocate.com/2026/03/31/hammer-has-early-lead-over-norris-in-republican-runoff-for-arkansas-secretary-of-state/",
+        "https://arktimes.com/arkansas-blog/2021/01/16/sen-kim-hammer-declares-war-on-democrats-in-now-removed-facebook-post"
+      ]
+    },
+    {
+      "sourceCategory": "aggregator_reference",
+      "confidence": "MEDIUM",
+      "examples": [
+        "https://ballotpedia.org/Kim_Hammer"
+      ]
+    }
+  ]
+}
+

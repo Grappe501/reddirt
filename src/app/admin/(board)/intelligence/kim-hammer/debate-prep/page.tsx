@@ -1,7 +1,9 @@
 import { loadKimHammerWorkbench } from "@/lib/opposition/kimHammerWorkbench";
+import { loadKimHammerKh2Workbench } from "@/lib/opposition/kimHammerKh2Workbench";
 
 export default async function KimHammerDebatePrepPage() {
   const data = loadKimHammerWorkbench();
+  const kh2 = loadKimHammerKh2Workbench();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -35,6 +37,17 @@ export default async function KimHammerDebatePrepPage() {
             <li>Protect participation and direct democracy while maintaining integrity.</li>
           </ul>
         </div>
+      </section>
+
+      <section className="mb-4 rounded-xl border border-kelly-text/10 bg-white p-4">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Likely Hammer Arguments + Evidence He May Cite</h2>
+        <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
+          {kh2.likelyArguments.arguments.map((arg) => (
+            <li key={arg.id}>
+              {arg.argument} (anchors: {arg.sourceAnchors.slice(0, 2).join(" | ")})
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section className="mb-4 grid gap-4 lg:grid-cols-2">

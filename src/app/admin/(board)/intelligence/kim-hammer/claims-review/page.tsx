@@ -1,7 +1,9 @@
 import { loadKimHammerWorkbench } from "@/lib/opposition/kimHammerWorkbench";
+import { loadKimHammerKh2Workbench } from "@/lib/opposition/kimHammerKh2Workbench";
 
 export default async function KimHammerClaimsReviewPage() {
   const data = loadKimHammerWorkbench();
+  const kh2 = loadKimHammerKh2Workbench();
 
   return (
     <div className="mx-auto max-w-6xl text-kelly-text">
@@ -72,6 +74,17 @@ export default async function KimHammerClaimsReviewPage() {
             </tbody>
           </table>
         </div>
+      </section>
+
+      <section className="mt-4 rounded-xl border border-kelly-text/10 bg-white p-4">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Public Claims Index (KH-2)</h2>
+        <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
+          {kh2.publicClaims.claims.map((claim) => (
+            <li key={claim.claimId}>
+              {claim.statement} ({claim.evidenceStatus}; {claim.sourceConfidence})
+            </li>
+          ))}
+        </ul>
       </section>
     </div>
   );

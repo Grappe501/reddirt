@@ -1,0 +1,46 @@
+{
+  "generatedAt": "2026-05-27T01:20:00.000Z",
+  "strengths": [
+    {
+      "id": "experience_long_tenure",
+      "strength": "Long tenure and office familiarity",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH",
+      "sources": [
+        "https://senate.arkansas.gov/senators/576/",
+        "https://www.hammerforarkansas.com/about/"
+      ]
+    },
+    {
+      "id": "election_law_specialization",
+      "strength": "Election-law specialization narrative",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH",
+      "sources": [
+        "https://www.hammerforarkansas.com/election-security/",
+        "data/opposition/kim-hammer-election-record-bill-index.json"
+      ]
+    },
+    {
+      "id": "gop_base_alignment",
+      "strength": "Strong GOP alignment and base messaging consistency",
+      "evidenceStatus": "INTERPRETATION",
+      "sourceConfidence": "MEDIUM",
+      "sources": [
+        "https://www.hammerforarkansas.com/",
+        "https://arkansasadvocate.com/2026/03/31/hammer-has-early-lead-over-norris-in-republican-runoff-for-arkansas-secretary-of-state/"
+      ]
+    },
+    {
+      "id": "pastoral_community_identity",
+      "strength": "Public pastoral/community identity",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH",
+      "sources": [
+        "https://senate.arkansas.gov/senators/576/",
+        "https://www.hammerforarkansas.com/about/"
+      ]
+    }
+  ]
+}
+

@@ -1,0 +1,50 @@
+{
+  "generatedAt": "2026-05-27T01:20:00.000Z",
+  "candidateFrame": {
+    "primary": "Security-first election administration",
+    "secondary": "Experience and institutional stewardship",
+    "evidenceStatus": "INTERPRETATION",
+    "sourceConfidence": "HIGH"
+  },
+  "messageThemes": [
+    {
+      "theme": "election integrity and security",
+      "strength": "HIGH",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sources": [
+        "https://www.hammerforarkansas.com/",
+        "https://www.hammerforarkansas.com/election-security/"
+      ]
+    },
+    {
+      "theme": "institutional experience",
+      "strength": "HIGH",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sources": [
+        "https://www.hammerforarkansas.com/about/",
+        "https://senate.arkansas.gov/senators/576/"
+      ]
+    },
+    {
+      "theme": "county and election-official coordination",
+      "strength": "MEDIUM",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "sources": [
+        "https://www.hammerforarkansas.com/2025/01/06/state-senator-kim-hammer-announces-campaign-for-arkansas-secretary-of-state/"
+      ]
+    }
+  ],
+  "riskyMessagingAreas": [
+    {
+      "risk": "Overreliance on security-only framing without county burden context.",
+      "evidenceStatus": "INTERPRETATION",
+      "sourceConfidence": "MEDIUM"
+    },
+    {
+      "risk": "High-conflict rhetorical coverage can create tone vulnerability if raised in debates.",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "sourceConfidence": "MEDIUM"
+    }
+  ]
+}
+

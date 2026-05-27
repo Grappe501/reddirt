@@ -1,0 +1,78 @@
+{
+  "generatedAt": "2026-05-27T01:20:00.000Z",
+  "rebuttals": [
+    {
+      "prompt": "election integrity",
+      "agreeWhereValid": "Election security matters and lawful votes must be protected.",
+      "contrastMethod": "Security should not come at the expense of participation confidence or county capacity.",
+      "kellyBridge": "Trust and transparency make integrity stronger, not weaker.",
+      "sourceCategory": "campaign_website + bill_record_packet",
+      "evidenceStatus": "INTERPRETATION"
+    },
+    {
+      "prompt": "experience",
+      "agreeWhereValid": "Institutional knowledge has value.",
+      "contrastMethod": "Voters should compare not only years served, but administration philosophy and county service model.",
+      "kellyBridge": "The office should serve people and counties with calm competence.",
+      "sourceCategory": "official_bio + campaign_profile",
+      "evidenceStatus": "INTERPRETATION"
+    },
+    {
+      "prompt": "security",
+      "agreeWhereValid": "Secure systems are essential.",
+      "contrastMethod": "Security should be paired with transparent, understandable, and practical implementation.",
+      "kellyBridge": "Integrity and participation work best together.",
+      "sourceCategory": "campaign_issue_page",
+      "evidenceStatus": "INTERPRETATION"
+    },
+    {
+      "prompt": "uniformity",
+      "agreeWhereValid": "Baseline standards matter.",
+      "contrastMethod": "Uniformity should still account for real county implementation constraints.",
+      "kellyBridge": "State standards and county support must move together.",
+      "sourceCategory": "message_guidance + county_impact_questions",
+      "evidenceStatus": "RESEARCH_QUESTION"
+    },
+    {
+      "prompt": "accountability",
+      "agreeWhereValid": "Accountability is a core election value.",
+      "contrastMethod": "Accountability includes clarity, transparency, and public trust, not only restriction.",
+      "kellyBridge": "Our office can enforce rules while building confidence, not fear.",
+      "sourceCategory": "campaign_statement + claims_review",
+      "evidenceStatus": "INTERPRETATION"
+    },
+    {
+      "prompt": "fraud prevention",
+      "agreeWhereValid": "Fraud prevention is important.",
+      "contrastMethod": "Anti-fraud policy should be evidence-driven and avoid unnecessary voter or county burden.",
+      "kellyBridge": "We protect elections by being both secure and accessible.",
+      "sourceCategory": "bill_packet + research_gaps",
+      "evidenceStatus": "INTERPRETATION"
+    },
+    {
+      "prompt": "I know the office",
+      "agreeWhereValid": "Experience in state government can help.",
+      "contrastMethod": "Office leadership is also about temperament, trust, and service execution.",
+      "kellyBridge": "Arkansans deserve a calm, competent, county-first SOS office.",
+      "sourceCategory": "official_profile + campaign_frame",
+      "evidenceStatus": "INTERPRETATION"
+    },
+    {
+      "prompt": "Democrats want weaker elections",
+      "agreeWhereValid": "Election security should never be weak.",
+      "contrastMethod": "The issue is not weaker or stronger elections; it is trustworthy, transparent, and fair administration.",
+      "kellyBridge": "This office should call balls and strikes for every Arkansas voter.",
+      "sourceCategory": "campaign_rhetoric_coverage",
+      "evidenceStatus": "INTERPRETATION"
+    },
+    {
+      "prompt": "petition rules prevent fraud",
+      "agreeWhereValid": "Fraud safeguards are valid.",
+      "contrastMethod": "Petition safeguards should not unintentionally block lawful citizen participation.",
+      "kellyBridge": "We can protect process integrity and preserve direct democracy access.",
+      "sourceCategory": "bill_packet + direct_democracy_theme",
+      "evidenceStatus": "INTERPRETATION"
+    }
+  ]
+}
+

@@ -1,0 +1,57 @@
+{
+  "generatedAt": "2026-05-27T01:20:00.000Z",
+  "repeatedPhrases": [
+    {
+      "phrase": "election integrity",
+      "occurrences": 7,
+      "evidenceStatus": "VERIFIED_FACT"
+    },
+    {
+      "phrase": "#1 in the nation",
+      "occurrences": 3,
+      "evidenceStatus": "VERIFIED_FACT"
+    },
+    {
+      "phrase": "most secure place to vote",
+      "occurrences": 2,
+      "evidenceStatus": "VERIFIED_FACT"
+    },
+    {
+      "phrase": "work with counties",
+      "occurrences": 2,
+      "evidenceStatus": "VERIFIED_FACT"
+    }
+  ],
+  "campaignFrameSummary": {
+    "label": "security-first election administration",
+    "evidenceStatus": "INTERPRETATION",
+    "sourceConfidence": "HIGH"
+  },
+  "valuesLanguage": [
+    "trust",
+    "transparency",
+    "security",
+    "confidence",
+    "integrity",
+    "will of the people"
+  ],
+  "policyPromises": [
+    "Implement and enforce election-law changes.",
+    "Coordinate with legislature, state election board, and county officials.",
+    "Maintain election-security ranking framing.",
+    "Reduce bureaucracy and red tape in SOS-related business functions."
+  ],
+  "contrastImplications": [
+    {
+      "pattern": "control/regulation emphasis",
+      "evidenceStatus": "INTERPRETATION",
+      "sourceConfidence": "MEDIUM"
+    },
+    {
+      "pattern": "integrity-first framing versus participation-first framing",
+      "evidenceStatus": "INTERPRETATION",
+      "sourceConfidence": "MEDIUM"
+    }
+  ]
+}
+

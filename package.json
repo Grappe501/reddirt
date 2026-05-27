@@ -105,6 +105,7 @@
     "agents:test-kim-hammer-election-record-research": "tsx scripts/test-kim-hammer-election-record-research.ts",
     "agents:test-kim-hammer-profile-research": "tsx scripts/test-kim-hammer-profile-research.ts",
     "agents:test-opposition-workbench-debate-prep": "tsx scripts/test-opposition-workbench-debate-prep.ts",
+    "agents:test-kim-hammer-contrast-debate-profile": "tsx scripts/test-kim-hammer-contrast-debate-profile.ts",
     "agents:test-campaign-knowledge": "tsx scripts/test-campaign-knowledge.ts",
     "agents:test-agent-tooling-brain": "tsx scripts/test-agent-tooling-brain.ts",
     "agents:test-orchestration-feedback-loop": "tsx scripts/test-orchestration-feedback-loop.ts",

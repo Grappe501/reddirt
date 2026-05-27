@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-05-27T01:20:00.000Z",
+  "contrastFrames": [
+    {
+      "frame": "control_vs_trust",
+      "hammerPositionSummary": "Security-first and regulation-forward election administration rhetoric.",
+      "kellyContrast": "Trust-first transparency and public confidence with clear, fair process.",
+      "evidenceStatus": "INTERPRETATION",
+      "sources": [
+        "https://www.hammerforarkansas.com/election-security/",
+        "data/opposition/kim-hammer-profile/website/kim-hammer-website-message-index.json"
+      ],
+      "sourceConfidence": "MEDIUM"
+    },
+    {
+      "frame": "regulation_vs_service",
+      "hammerPositionSummary": "Campaign emphasizes legal controls and process enforcement.",
+      "kellyContrast": "County-support and service-centered administration while preserving integrity.",
+      "evidenceStatus": "INTERPRETATION",
+      "sources": [
+        "data/opposition/kim-hammer-election-record-bill-index.json",
+        "docs/opposition/KIM_HAMMER_ELECTION_RECORD_MESSAGE_GUIDANCE.md"
+      ],
+      "sourceConfidence": "MEDIUM"
+    },
+    {
+      "frame": "culture_conflict_vs_competence",
+      "hammerPositionSummary": "Public record includes high-conflict rhetoric coverage and hardline election framing.",
+      "kellyContrast": "Calm, competent, balls-and-strikes administration focused on trust and service.",
+      "evidenceStatus": "INTERPRETATION",
+      "sources": [
+        "https://arktimes.com/arkansas-blog/2021/01/16/sen-kim-hammer-declares-war-on-democrats-in-now-removed-facebook-post",
+        "data/opposition/kim-hammer-profile/kim-hammer-public-controversies.json"
+      ],
+      "sourceConfidence": "MEDIUM"
+    }
+  ]
+}
+

@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-05-27T01:20:00.000Z",
+  "claims": [
+    {
+      "claim": "Arkansas is #1 in the nation for election integrity.",
+      "source": "https://www.hammerforarkansas.com/",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "factCheckStatus": "NEEDS_REVIEW",
+      "notes": "Campaign references external ranking source; should verify exact methodology and date."
+    },
+    {
+      "claim": "Election acts listed by campaign materially increased election security.",
+      "source": "https://www.hammerforarkansas.com/election-security/",
+      "evidenceStatus": "INTERPRETATION",
+      "factCheckStatus": "NEEDS_REVIEW",
+      "notes": "Act list is public; policy-effect conclusions require independent evidence."
+    },
+    {
+      "claim": "Campaign will coordinate with counties and state election bodies as SOS.",
+      "source": "https://www.hammerforarkansas.com/2025/01/06/state-senator-kim-hammer-announces-campaign-for-arkansas-secretary-of-state/",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "factCheckStatus": "VERIFIABLE_AS_CAMPAIGN_POSITION",
+      "notes": "Valid as campaign pledge language."
+    }
+  ]
+}
+

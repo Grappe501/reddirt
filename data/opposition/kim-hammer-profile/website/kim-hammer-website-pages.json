@@ -1,0 +1,303 @@
+{
+  "generatedAt": "2026-05-27T01:20:00.000Z",
+  "pages": [
+    {
+      "url": "https://www.hammerforarkansas.com/",
+      "pageTitle": "Senator Kim Hammer for Secretary of State",
+      "capturedAt": "2026-05-27T01:20:00.000Z",
+      "rawText": "Senator Kim Hammer for Secretary of State #1 in the Nation for Election Integrity. As Secretary of State, he says he will implement election laws and keep Arkansas secure for voting. Paid for by Hammer for Secretary of State.",
+      "headings": [
+        "#1 in the Nation for Election Integrity"
+      ],
+      "claims": [
+        "Arkansas is #1 in the nation for election integrity.",
+        "Campaign states SOS implementation will follow legislature and executive orders."
+      ],
+      "repeatedPhrases": [
+        "#1 in the Nation for Election Integrity",
+        "most secure place to vote"
+      ],
+      "policyPromises": [
+        "Implement election laws passed by the legislature.",
+        "Maintain Arkansas as secure voting jurisdiction."
+      ],
+      "valuesLanguage": [
+        "trust",
+        "secure",
+        "integrity"
+      ],
+      "electionOrSosClaims": [
+        "Voters can trust Arkansas remains secure place to vote."
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "url": "https://www.hammerforarkansas.com/about/",
+      "pageTitle": "Meet Kim",
+      "capturedAt": "2026-05-27T01:20:00.000Z",
+      "rawText": "Biography page states Senate election in 2018 after House service, committee assignments, legislative accomplishments, public ministry and hospice background, and Benton/Saline area context.",
+      "headings": [
+        "Meet Kim"
+      ],
+      "claims": [
+        "Served in House for eight years and elected to Senate in 2018.",
+        "Lists committee assignments and legislative activity."
+      ],
+      "repeatedPhrases": [
+        "Senator Hammer",
+        "Secretary of State"
+      ],
+      "policyPromises": [
+        "Legislative and administrative service framing."
+      ],
+      "valuesLanguage": [
+        "service",
+        "integrity"
+      ],
+      "electionOrSosClaims": [
+        "Election and SOS-related legislation highlighted as qualifications."
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "url": "https://www.hammerforarkansas.com/election-security/",
+      "pageTitle": "Election Security",
+      "capturedAt": "2026-05-27T01:20:00.000Z",
+      "rawText": "Issue page describes campaign election-integrity framing, lists acts and policy outcomes, and positions against outside influence. Includes SOS campaign promises tied to election-security enforcement and county coordination.",
+      "headings": [
+        "Election Security"
+      ],
+      "claims": [
+        "Campaign claims election legislation made Arkansas most secure in nation.",
+        "Lists acts 218, 240, 241, 273, 274, 154, 973, 974, 350, 728 as reforms."
+      ],
+      "repeatedPhrases": [
+        "election integrity",
+        "most secure",
+        "standing strong"
+      ],
+      "policyPromises": [
+        "Continue election-law strengthening.",
+        "Coordinate with State Board and counties."
+      ],
+      "valuesLanguage": [
+        "integrity",
+        "transparency",
+        "security",
+        "confidence"
+      ],
+      "electionOrSosClaims": [
+        "As Secretary of State, continue strengthening election laws.",
+        "Maintain top election-security ranking."
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "url": "https://www.hammerforarkansas.com/issues/",
+      "pageTitle": "Issues",
+      "capturedAt": "2026-05-27T01:20:00.000Z",
+      "rawText": "Issues landing page is sparse and primarily routes to election security, news, volunteer, and donation pages.",
+      "headings": [
+        "Issues"
+      ],
+      "claims": [],
+      "repeatedPhrases": [
+        "Paid for by Hammer for Secretary of State"
+      ],
+      "policyPromises": [],
+      "valuesLanguage": [],
+      "electionOrSosClaims": [],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "url": "https://www.hammerforarkansas.com/news/",
+      "pageTitle": "News",
+      "capturedAt": "2026-05-27T01:20:00.000Z",
+      "rawText": "News index page links to election-integrity statement and campaign launch announcement.",
+      "headings": [
+        "News"
+      ],
+      "claims": [
+        "Campaign references Arkansas election-integrity ranking.",
+        "Campaign launch announcement included."
+      ],
+      "repeatedPhrases": [
+        "election integrity",
+        "Secretary of State"
+      ],
+      "policyPromises": [
+        "Election process confidence and security commitments."
+      ],
+      "valuesLanguage": [
+        "fairness",
+        "transparency",
+        "integrity"
+      ],
+      "electionOrSosClaims": [
+        "Secretary of State campaign messaging tied to election administration."
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "url": "https://www.hammerforarkansas.com/volunteer/",
+      "pageTitle": "Volunteer",
+      "capturedAt": "2026-05-27T01:20:00.000Z",
+      "rawText": "Volunteer intake form requesting contact and location data; includes disclaimer and campaign attribution.",
+      "headings": [
+        "Volunteer"
+      ],
+      "claims": [],
+      "repeatedPhrases": [
+        "Paid for by Hammer for Secretary of State"
+      ],
+      "policyPromises": [],
+      "valuesLanguage": [
+        "campaign participation"
+      ],
+      "electionOrSosClaims": [],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "url": "https://www.hammerforarkansas.com/privacy/",
+      "pageTitle": "Privacy Policy",
+      "capturedAt": "2026-05-27T01:20:00.000Z",
+      "rawText": "Privacy policy covers data collection, cookies, disclosures, and child privacy. States data is not sold.",
+      "headings": [
+        "Privacy Policy"
+      ],
+      "claims": [
+        "Campaign states data will not be sold."
+      ],
+      "repeatedPhrases": [
+        "Privacy Policy"
+      ],
+      "policyPromises": [
+        "Data handling and disclosure commitments."
+      ],
+      "valuesLanguage": [
+        "privacy",
+        "security"
+      ],
+      "electionOrSosClaims": [],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "url": "https://www.hammerforarkansas.com/terms/",
+      "pageTitle": "Terms & Conditions",
+      "capturedAt": "2026-05-27T01:20:00.000Z",
+      "rawText": "Terms page covers recurring campaign SMS and donation message consent and opt-out language.",
+      "headings": [
+        "Terms & Conditions"
+      ],
+      "claims": [],
+      "repeatedPhrases": [
+        "Terms & Conditions"
+      ],
+      "policyPromises": [],
+      "valuesLanguage": [
+        "consent",
+        "support"
+      ],
+      "electionOrSosClaims": [],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "url": "https://www.hammerforarkansas.com/2025/01/06/state-senator-kim-hammer-announces-campaign-for-arkansas-secretary-of-state/",
+      "pageTitle": "Campaign Announcement",
+      "capturedAt": "2026-05-27T01:20:00.000Z",
+      "rawText": "Campaign announcement describes SOS candidacy, election-reform leadership, county clerk/election commissioner coordination, and business/commercial licensing priorities.",
+      "headings": [
+        "State Senator Kim Hammer Announces Campaign for Arkansas Secretary of State"
+      ],
+      "claims": [
+        "Campaign says legislative election reform helped Arkansas become top state for integrity/security.",
+        "Campaign references business endorsements and bureaucracy reduction goals."
+      ],
+      "repeatedPhrases": [
+        "serve Arkansans",
+        "Secretary of State"
+      ],
+      "policyPromises": [
+        "Work with legislative and administrative branches.",
+        "Support county election administration confidence.",
+        "Reduce bureaucracy and red tape for business."
+      ],
+      "valuesLanguage": [
+        "service",
+        "confidence",
+        "integrity"
+      ],
+      "electionOrSosClaims": [
+        "Will coordinate with county clerks and election commissioners.",
+        "Will preserve capitol grounds integrity and safety."
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "url": "https://www.hammerforarkansas.com/2025/06/11/arkansas-leads-the-way-in-election-integrity-a-commitment-to-fairness-and-transparency/",
+      "pageTitle": "Election Integrity Op-Ed",
+      "capturedAt": "2026-05-27T01:20:00.000Z",
+      "rawText": "Long-form argument for election integrity reforms, historical framing, and SOS platform positioning around transparent, secure election administration.",
+      "headings": [
+        "Arkansas Leads the Way in Election Integrity: A Commitment to Fairness and Transparency"
+      ],
+      "claims": [
+        "Election integrity is central to constitutional legitimacy.",
+        "Campaign cites Heritage ranking and act package as evidence of state security.",
+        "Campaign identifies modern threats and need for continued refinement."
+      ],
+      "repeatedPhrases": [
+        "election integrity",
+        "confidence",
+        "security",
+        "transparency"
+      ],
+      "policyPromises": [
+        "Continue election-law strengthening as SOS.",
+        "Work with legislature, governor, state board, and counties."
+      ],
+      "valuesLanguage": [
+        "fairness",
+        "transparency",
+        "security",
+        "confidence",
+        "will of the people"
+      ],
+      "electionOrSosClaims": [
+        "Maintaining high election-security ranking.",
+        "Ensuring legal votes count and only legal votes counted."
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "url": "https://www.hammerforarkansas.com/2025/06/03/secretary-of-state-candidate-senator-kim-hammer-releases-statement-on-arkansas-rank-as-1-in-the-nation-for-election-integrity/",
+      "pageTitle": "Ranking Statement",
+      "capturedAt": "2026-05-27T01:20:00.000Z",
+      "rawText": "Statement cites Heritage election scorecard ranking and links campaign platform to election administration priorities.",
+      "headings": [
+        "Secretary of State Candidate Senator Kim Hammer Releases Statement on Arkansas’ Rank as #1 in the Nation for Election Integrity"
+      ],
+      "claims": [
+        "Campaign says legislation made Arkansas #1 for election safety/security."
+      ],
+      "repeatedPhrases": [
+        "#1 in the nation",
+        "election integrity",
+        "state's rank at the very top"
+      ],
+      "policyPromises": [
+        "Work with legislature, state board, and counties to keep ranking."
+      ],
+      "valuesLanguage": [
+        "confidence",
+        "integrity",
+        "security"
+      ],
+      "electionOrSosClaims": [
+        "As SOS, keep election-security standards and rankings high."
+      ],
+      "sourceConfidence": "HIGH"
+    }
+  ]
+}
+

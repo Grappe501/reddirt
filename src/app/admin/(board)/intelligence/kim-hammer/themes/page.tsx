@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { loadKimHammerWorkbench } from "@/lib/opposition/kimHammerWorkbench";
+import { loadKimHammerKh2Workbench } from "@/lib/opposition/kimHammerKh2Workbench";
 
 export default async function KimHammerThemesPage() {
   const data = loadKimHammerWorkbench();
+  const kh2 = loadKimHammerKh2Workbench();
 
   return (
     <div className="mx-auto max-w-6xl text-kelly-text">
@@ -19,6 +21,9 @@ export default async function KimHammerThemesPage() {
             <p className="mt-1 text-xs text-kelly-muted">Risk level: {billIds.length >= 4 ? "HIGH" : billIds.length > 0 ? "MEDIUM" : "LOW"}</p>
             <p className="mt-1 text-xs text-kelly-muted">Debate use: Build one sourced contrast question per top bill.</p>
             <p className="mt-1 text-xs text-kelly-muted">Research gaps: Pull act text + implementation evidence for county impact.</p>
+            <p className="mt-1 text-xs text-kelly-muted">
+              Contrast implication: {kh2.websiteMessageIndex.contrastImplications[0]?.pattern ?? "NEEDS_REVIEW"}.
+            </p>
             <div className="mt-2 flex flex-wrap gap-2">
               {billIds.map((billId) => (
                 <Link

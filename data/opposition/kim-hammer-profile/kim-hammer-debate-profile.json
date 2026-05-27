@@ -1,0 +1,38 @@
+{
+  "generatedAt": "2026-05-27T01:20:00.000Z",
+  "entries": [
+    {
+      "topic": "election_integrity",
+      "likelyHammerArgument": "Security reforms are needed to prevent fraud and preserve trust.",
+      "kellyResponseFrame": "Agree on integrity goals, then ensure methods preserve transparency, county support, and participation.",
+      "supportingFacts": [
+        "Election-law bill packet demonstrates repeated process restrictions.",
+        "Claims review flags where effects still need implementation evidence."
+      ],
+      "bridgeLine": "Election integrity and participation should work together through fair, transparent administration.",
+      "riskyPhrasingToAvoid": "Do not accuse motive without source evidence.",
+      "practiceQuestion": "How do you protect election security without creating barriers for lawful voters?",
+      "answer30": "Integrity matters, and so does trust. We can secure elections while making sure rules are transparent, workable for counties, and fair to voters.",
+      "answer60": "I support strong election integrity. The key is method: transparent implementation, county support, and voter confidence together. When rules are too burdensome or unclear, trust declines. My approach keeps standards high and service grounded for every Arkansas county.",
+      "evidenceStatus": "INTERPRETATION",
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "topic": "experience_and_office_readiness",
+      "likelyHammerArgument": "Long service means readiness to manage SOS responsibilities.",
+      "kellyResponseFrame": "Respect experience while contrasting office philosophy: service, de-politicized administration, and county partnership.",
+      "supportingFacts": [
+        "Public profiles confirm long tenure and committee roles.",
+        "Runoff competitiveness suggests room for philosophy contrast."
+      ],
+      "bridgeLine": "This office should be a balls-and-strikes service office, not a conflict office.",
+      "riskyPhrasingToAvoid": "Do not dismiss tenure as inherently bad.",
+      "practiceQuestion": "Why should voters choose your approach over someone with longer time in office?",
+      "answer30": "Experience matters, but so does approach. I will run this office with calm, trust, and practical support for counties and voters.",
+      "answer60": "Arkansans deserve both competence and confidence. This office should be transparent, non-political in administration, and county-focused. I respect public service experience, but my commitment is to pair integrity with participation and trust in every county.",
+      "evidenceStatus": "INTERPRETATION",
+      "sourceConfidence": "MEDIUM"
+    }
+  ]
+}
+

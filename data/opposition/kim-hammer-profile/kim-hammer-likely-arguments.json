@@ -1,0 +1,40 @@
+{
+  "generatedAt": "2026-05-27T01:20:00.000Z",
+  "arguments": [
+    {
+      "id": "election_integrity",
+      "argument": "Election integrity and security reforms are necessary to maintain trust.",
+      "evidenceHeMayCite": [
+        "Campaign election security page act list",
+        "Heritage ranking references in campaign messaging"
+      ],
+      "sourceAnchors": [
+        "https://www.hammerforarkansas.com/election-security/",
+        "https://www.hammerforarkansas.com/2025/06/03/secretary-of-state-candidate-senator-kim-hammer-releases-statement-on-arkansas-rank-as-1-in-the-nation-for-election-integrity/"
+      ]
+    },
+    {
+      "id": "experience",
+      "argument": "Long legislative tenure and committee leadership prepare him for SOS operations.",
+      "evidenceHeMayCite": [
+        "House and Senate service years",
+        "Committee chair roles"
+      ],
+      "sourceAnchors": [
+        "https://senate.arkansas.gov/senators/576/",
+        "https://www.hammerforarkansas.com/about/"
+      ]
+    },
+    {
+      "id": "uniformity_security_accountability",
+      "argument": "Uniform statewide procedures and stricter controls improve election accountability.",
+      "evidenceHeMayCite": [
+        "Act references on canvassing, absentee, poll-zone restrictions, and counting procedures"
+      ],
+      "sourceAnchors": [
+        "data/opposition/kim-hammer-election-record-bill-index.json"
+      ]
+    }
+  ]
+}
+

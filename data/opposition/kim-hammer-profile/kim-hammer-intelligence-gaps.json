@@ -1,0 +1,60 @@
+{
+  "generatedAt": "2026-05-27T01:20:00.000Z",
+  "gaps": [
+    {
+      "id": "missing_roll_calls",
+      "priority": "HIGH",
+      "description": "Missing full roll-call records for major election-law votes.",
+      "evidenceStatus": "NEEDS_REVIEW"
+    },
+    {
+      "id": "missing_committee_testimony",
+      "priority": "HIGH",
+      "description": "Committee testimony and quote extraction are incomplete.",
+      "evidenceStatus": "NEEDS_REVIEW"
+    },
+    {
+      "id": "missing_fiscal_notes",
+      "priority": "HIGH",
+      "description": "Fiscal note review remains incomplete across top-priority bills.",
+      "evidenceStatus": "NEEDS_REVIEW"
+    },
+    {
+      "id": "county_clerk_reactions",
+      "priority": "MEDIUM",
+      "description": "Public county clerk implementation reactions are not fully indexed.",
+      "evidenceStatus": "NEEDS_REVIEW"
+    },
+    {
+      "id": "direct_democracy_advocate_reactions",
+      "priority": "MEDIUM",
+      "description": "Public direct-democracy advocate responses need more source depth.",
+      "evidenceStatus": "NEEDS_REVIEW"
+    },
+    {
+      "id": "social_video_archive",
+      "priority": "MEDIUM",
+      "description": "Public social/video archive ingestion is partial.",
+      "evidenceStatus": "NEEDS_REVIEW"
+    },
+    {
+      "id": "campaign_finance_summary",
+      "priority": "MEDIUM",
+      "description": "Campaign finance trend summary should be normalized to official disclosures.",
+      "evidenceStatus": "NEEDS_REVIEW"
+    },
+    {
+      "id": "county_electoral_geography",
+      "priority": "HIGH",
+      "description": "County-by-county electoral strength/weakness map is incomplete.",
+      "evidenceStatus": "NEEDS_REVIEW"
+    },
+    {
+      "id": "debate_clip_library",
+      "priority": "MEDIUM",
+      "description": "Debate clip archive and timestamped evidence locker needs expansion.",
+      "evidenceStatus": "NEEDS_REVIEW"
+    }
+  ]
+}
+

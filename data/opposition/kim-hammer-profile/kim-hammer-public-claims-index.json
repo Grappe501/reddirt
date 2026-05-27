@@ -1,0 +1,33 @@
+{
+  "generatedAt": "2026-05-27T01:20:00.000Z",
+  "claims": [
+    {
+      "claimId": "claim_rank_1_integrity",
+      "statement": "Arkansas is #1 in election integrity/safest elections.",
+      "source": "campaign website pages and statements",
+      "sourceUrl": "https://www.hammerforarkansas.com/",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "sourceConfidence": "MEDIUM",
+      "notes": "Ranking source cited by campaign; independent verification recommended."
+    },
+    {
+      "claimId": "claim_election_law_record",
+      "statement": "Campaign claims authored/sponsored election-integrity legislation package.",
+      "source": "campaign election security page + internal bill index packet",
+      "sourceUrl": "https://www.hammerforarkansas.com/election-security/",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH",
+      "notes": "Bill packet can verify many act references and sponsorship metadata."
+    },
+    {
+      "claimId": "claim_county_coordination",
+      "statement": "As SOS, will work with county clerks and election commissioners.",
+      "source": "campaign announcement statement",
+      "sourceUrl": "https://www.hammerforarkansas.com/2025/01/06/state-senator-kim-hammer-announces-campaign-for-arkansas-secretary-of-state/",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "sourceConfidence": "HIGH",
+      "notes": "Valid as stated campaign pledge."
+    }
+  ]
+}
+
