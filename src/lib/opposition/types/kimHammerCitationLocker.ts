@@ -65,6 +65,18 @@ export type KimHammerCitationLockerFile = {
   claimLinks: KimHammerCitationClaimLink[];
 };
 
+export type KimHammerCitationLockerSummary = {
+  generatedAt: string;
+  totalCitations: number;
+  totalSources: number;
+  totalClaimLinks: number;
+  reviewStatusCounts: Record<KimHammerCitationReviewStatus, number>;
+  sourceHealthCounts: Record<KimHammerSourceHealthStatus, number>;
+  staleOrBlockedCount: number;
+  narrativeLinkedCount: number;
+  taskOriginCount: number;
+};
+
 export const KIM_HAMMER_CITATION_REVIEW_STATUSES: KimHammerCitationReviewStatus[] = [
   "DRAFT",
   "NEEDS_REVIEW",

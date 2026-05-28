@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { filterNarrativeUsageAnalytics } from "@/lib/opposition/kimHammerNarrativeUsageAnalytics";
+import { filterNarrativeUsageAnalytics } from "@/lib/opposition/kimHammerClientFilters";
 import type {
   KimHammerNarrativeUsageAnalyticsIndex,
   KimHammerNarrativeUsageAnalyticsRecord,

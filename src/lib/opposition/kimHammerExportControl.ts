@@ -116,15 +116,7 @@ export function nextKimHammerPacketVersion(repoRoot?: string): string {
   return `${major}.${minor}.${patch}`;
 }
 
-export type KimHammerExportControlSummary = {
-  generatedAt: string;
-  totalExports: number;
-  latestExportAt: string | null;
-  latestPacketVersion: string | null;
-  exportReadyClaimCount: number;
-  scopedExports: Record<string, number>;
-  formatCounts: Record<string, number>;
-};
+export type KimHammerExportControlSummary = import("@/lib/opposition/types/kimHammerExportControl").KimHammerExportControlSummary;
 
 export function summarizeKimHammerExportControl(repoRoot?: string): KimHammerExportControlSummary {
   const history = loadKimHammerExportHistory(repoRoot);

@@ -1,12 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import {
-  filterKimHammerAuditTimeline,
-  type KimHammerAuditEntryKind,
-  type KimHammerAuditTimeline,
-  type KimHammerUnifiedAuditEntry,
-} from "@/lib/opposition/kimHammerAuditBrowser";
+import { filterKimHammerAuditTimeline } from "@/lib/opposition/kimHammerClientFilters";
+import type {
+  KimHammerAuditEntryKind,
+  KimHammerAuditTimeline,
+  KimHammerUnifiedAuditEntry,
+} from "@/lib/opposition/types/kimHammerAuditBrowser";
 
 type KimHammerAuditLogBrowserProps = {
   timeline: KimHammerAuditTimeline;

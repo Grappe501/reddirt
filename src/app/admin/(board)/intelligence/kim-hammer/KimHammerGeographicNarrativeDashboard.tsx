@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { filterGeographicCountyStates } from "@/lib/opposition/kimHammerGeographicNarrativeState";
+import { filterGeographicCountyStates } from "@/lib/opposition/kimHammerClientFilters";
 import type {
   KimHammerGeographicCountyState,
   KimHammerGeographicNarrativeIndex,

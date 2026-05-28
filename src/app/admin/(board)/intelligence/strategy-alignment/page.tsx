@@ -1,9 +1,13 @@
 import Link from "next/link";
-import { computeStrategicAlignment } from "@/lib/intelligence/campaignStrategicAlignment";
+import {
+  computeStrategicAlignment,
+  loadCampaignStrategicDoctrineRegistry,
+} from "@/lib/intelligence/campaignStrategicAlignment";
 import { StrategyAlignmentDashboard } from "./StrategyAlignmentDashboard";
 
 export default async function StrategyAlignmentPage() {
   const index = computeStrategicAlignment();
+  const doctrineRegistry = loadCampaignStrategicDoctrineRegistry();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -35,7 +39,7 @@ export default async function StrategyAlignmentPage() {
         </div>
       </header>
 
-      <StrategyAlignmentDashboard index={index} />
+      <StrategyAlignmentDashboard index={index} doctrineRegistry={doctrineRegistry} />
     </div>
   );
 }

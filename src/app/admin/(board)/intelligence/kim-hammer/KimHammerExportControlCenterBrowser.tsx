@@ -6,8 +6,10 @@ import { useMemo, useState, useTransition } from "react";
 import { recordKimHammerExportAction } from "./export-actions";
 import {
   filterExportHistoryEntries,
-  type KimHammerExportControlSummary,
-} from "@/lib/opposition/kimHammerExportControl";
+} from "@/lib/opposition/kimHammerClientFilters";
+import type {
+  KimHammerExportControlSummary,
+} from "@/lib/opposition/types/kimHammerExportControl";
 import type {
   KimHammerExportFormat,
   KimHammerExportHistoryFile,

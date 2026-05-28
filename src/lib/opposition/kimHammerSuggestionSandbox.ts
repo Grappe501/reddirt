@@ -44,16 +44,7 @@ export function loadKimHammerAiSuggestionSandbox(
   );
 }
 
-export type KimHammerSuggestionSandboxSummary = {
-  generatedAt: string;
-  totalSuggestions: number;
-  pendingCount: number;
-  acceptedCount: number;
-  dismissedCount: number;
-  deferredCount: number;
-  typeCounts: Record<KimHammerSuggestionType, number>;
-  agentCounts: Record<string, number>;
-};
+export type KimHammerSuggestionSandboxSummary = import("@/lib/opposition/types/kimHammerAiSuggestion").KimHammerSuggestionSandboxSummary;
 
 export function summarizeKimHammerSuggestionSandbox(
   repoRoot?: string,

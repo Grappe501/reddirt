@@ -10,8 +10,8 @@ import {
 import {
   claimLinksForCitation,
   filterCitationCards,
-  type KimHammerCitationLockerSummary,
-} from "@/lib/opposition/kimHammerCitationLocker";
+} from "@/lib/opposition/kimHammerClientFilters";
+import type { KimHammerCitationLockerSummary } from "@/lib/opposition/types/kimHammerCitationLocker";
 import type {
   KimHammerCitationCard,
   KimHammerCitationLockerFile,

@@ -6,9 +6,10 @@ import { useMemo, useState, useTransition } from "react";
 import { updateKimHammerSuggestionDispositionAction } from "./suggestion-actions";
 import {
   filterKimHammerSuggestions,
-  type KimHammerSuggestionSandboxSummary,
-} from "@/lib/opposition/kimHammerSuggestionSandbox";
-import { resolveAiSuggestionDoctrineContext } from "@/lib/intelligence/campaignStrategicAlignment";
+} from "@/lib/opposition/kimHammerClientFilters";
+import type { KimHammerSuggestionDoctrineContextMap } from "@/lib/opposition/kimHammerClientFilters";
+import type { CampaignAiSuggestionDoctrineContext } from "@/lib/intelligence/types/campaignStrategicAlignment";
+import type { KimHammerSuggestionSandboxSummary } from "@/lib/opposition/types/kimHammerAiSuggestion";
 import {
   getAllowedKimHammerSuggestionTransitions,
   KIM_HAMMER_SUGGESTION_STATUSES,
@@ -25,6 +26,7 @@ type KimHammerAiSuggestionSandboxBrowserProps = {
   sandbox: KimHammerAiSuggestionSandboxFile;
   summary: KimHammerSuggestionSandboxSummary;
   liveCandidateCount: number;
+  doctrineContexts: KimHammerSuggestionDoctrineContextMap;
 };
 
 const typeBadge: Record<KimHammerSuggestionType, string> = {
@@ -44,7 +46,13 @@ const statusBadge: Record<KimHammerSuggestionStatus, string> = {
   DEFERRED: "bg-amber-50 text-amber-900",
 };
 
-function SuggestionCard({ suggestion }: { suggestion: KimHammerAiSuggestion }) {
+function SuggestionCard({
+  suggestion,
+  doctrineContext,
+}: {
+  suggestion: KimHammerAiSuggestion;
+  doctrineContext: CampaignAiSuggestionDoctrineContext;
+}) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const [operator, setOperator] = useState("");
@@ -56,7 +64,6 @@ function SuggestionCard({ suggestion }: { suggestion: KimHammerAiSuggestion }) {
   const [error, setError] = useState<string | null>(null);
 
   const allowed = getAllowedKimHammerSuggestionTransitions(suggestion.status);
-  const doctrineContext = resolveAiSuggestionDoctrineContext(suggestion);
 
   function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -207,6 +214,7 @@ export function KimHammerAiSuggestionSandboxBrowser({
   sandbox,
   summary,
   liveCandidateCount,
+  doctrineContexts,
 }: KimHammerAiSuggestionSandboxBrowserProps) {
   const [statusFilter, setStatusFilter] = useState<KimHammerSuggestionStatus | "ALL">("PENDING");
   const [typeFilter, setTypeFilter] = useState<KimHammerSuggestionType | "ALL">("ALL");
@@ -308,7 +316,19 @@ export function KimHammerAiSuggestionSandboxBrowser({
       ) : (
         <section className="space-y-3">
           {filtered.map((suggestion) => (
-            <SuggestionCard key={suggestion.id} suggestion={suggestion} />
+            <SuggestionCard
+              key={suggestion.id}
+              suggestion={suggestion}
+              doctrineContext={
+                doctrineContexts[suggestion.id] ?? {
+                  suggestionId: suggestion.id,
+                  doctrineSignal: "NONE",
+                  warnings: [],
+                  matchedDoctrineIds: [],
+                  nonAuthoritative: true,
+                }
+              }
+            />
           ))}
         </section>
       )}

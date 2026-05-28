@@ -4,9 +4,9 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
   filterStrategicAlignments,
-  loadCampaignStrategicDoctrineRegistry,
-} from "@/lib/intelligence/campaignStrategicAlignment";
+} from "@/lib/intelligence/intelligenceClientFilters";
 import type {
+  CampaignStrategicDoctrineRegistryFile,
   CampaignNarrativeDoctrineAlignment,
   CampaignStrategicAlignmentIndex,
   CampaignStrategicAlignmentSignal,
@@ -15,6 +15,7 @@ import { CAMPAIGN_STRATEGIC_ALIGNMENT_SIGNALS } from "@/lib/intelligence/types/c
 
 type StrategyAlignmentDashboardProps = {
   index: CampaignStrategicAlignmentIndex;
+  doctrineRegistry: CampaignStrategicDoctrineRegistryFile;
 };
 
 const signalBadge: Record<CampaignStrategicAlignmentSignal, string> = {
@@ -87,8 +88,8 @@ function AlignmentCard({ row }: { row: CampaignNarrativeDoctrineAlignment }) {
   );
 }
 
-export function StrategyAlignmentDashboard({ index }: StrategyAlignmentDashboardProps) {
-  const registry = loadCampaignStrategicDoctrineRegistry();
+export function StrategyAlignmentDashboard({ index, doctrineRegistry }: StrategyAlignmentDashboardProps) {
+  const registry = doctrineRegistry;
   const [signalFilter, setSignalFilter] = useState<CampaignStrategicAlignmentSignal | "ALL">("ALL");
   const [narrativeQuery, setNarrativeQuery] = useState("");
 

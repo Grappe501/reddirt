@@ -49,6 +49,17 @@ export type KimHammerAiSuggestionSandboxFile = {
   suggestions: KimHammerAiSuggestion[];
 };
 
+export type KimHammerSuggestionSandboxSummary = {
+  generatedAt: string;
+  totalSuggestions: number;
+  pendingCount: number;
+  acceptedCount: number;
+  dismissedCount: number;
+  deferredCount: number;
+  typeCounts: Record<KimHammerSuggestionType, number>;
+  agentCounts: Record<string, number>;
+};
+
 export const KIM_HAMMER_SUGGESTION_STATUSES: KimHammerSuggestionStatus[] = [
   "PENDING",
   "ACCEPTED",

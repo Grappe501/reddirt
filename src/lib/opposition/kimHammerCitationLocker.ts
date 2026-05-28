@@ -75,17 +75,7 @@ export function loadKimHammerCitationLocker(
   return { ...locker, citations };
 }
 
-export type KimHammerCitationLockerSummary = {
-  generatedAt: string;
-  totalCitations: number;
-  totalSources: number;
-  totalClaimLinks: number;
-  reviewStatusCounts: Record<KimHammerCitationReviewStatus, number>;
-  sourceHealthCounts: Record<KimHammerSourceHealthStatus, number>;
-  staleOrBlockedCount: number;
-  narrativeLinkedCount: number;
-  taskOriginCount: number;
-};
+export type KimHammerCitationLockerSummary = import("@/lib/opposition/types/kimHammerCitationLocker").KimHammerCitationLockerSummary;
 
 export function summarizeKimHammerCitationLocker(
   repoRoot?: string,

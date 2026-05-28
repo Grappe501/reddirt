@@ -54,3 +54,13 @@ export const KIM_HAMMER_EXPORT_SCOPES: KimHammerExportScope[] = [
   "COUNTY",
   "INTERNAL_DRY_RUN",
 ];
+
+export type KimHammerExportControlSummary = {
+  generatedAt: string;
+  totalExports: number;
+  latestExportAt: string | null;
+  latestPacketVersion: string | null;
+  exportReadyClaimCount: number;
+  scopedExports: Record<string, number>;
+  formatCounts: Record<string, number>;
+};

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { filterKimHammerNarrativeStates } from "@/lib/opposition/kimHammerNarrativeState";
+import { filterKimHammerNarrativeStates } from "@/lib/opposition/kimHammerClientFilters";
 import type {
   KimHammerNarrativeReadinessBand,
   KimHammerNarrativeStateIndex,
