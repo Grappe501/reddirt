@@ -13,7 +13,7 @@ export default async function KimHammerWebsiteIntelligencePage() {
         <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
           {data.websiteMessageIndex.repeatedPhrases.map((item) => (
             <li key={item.phrase}>
-              "{item.phrase}" ({item.occurrences})
+              &ldquo;{item.phrase}&rdquo; ({item.occurrences})
             </li>
           ))}
         </ul>

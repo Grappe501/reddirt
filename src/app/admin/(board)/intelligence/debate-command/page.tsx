@@ -27,7 +27,7 @@ export default async function DebateCommandCenterPage() {
       </header>
 
       <section className="mb-6">
-        <h2 className="mb-3 text-sm font-bold uppercase tracking-wider text-kelly-navy">A) Today's Priorities</h2>
+        <h2 className="mb-3 text-sm font-bold uppercase tracking-wider text-kelly-navy">A) Today&apos;s Priorities</h2>
         <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
           {state.todayPriorities.map((item) => (
             <article key={item.title} className={card}>
@@ -65,7 +65,7 @@ export default async function DebateCommandCenterPage() {
         </article>
 
         <article className={`${card} lg:col-span-2`}>
-          <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">D) Today's Opponent Intelligence</h2>
+          <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">D) Today&apos;s Opponent Intelligence</h2>
           <p className="mt-1 text-xs text-kelly-muted">
             Latest messaging and narrative shifts feeding live debate prep.
           </p>
@@ -92,13 +92,13 @@ export default async function DebateCommandCenterPage() {
 
       <section className="mb-6 grid gap-4 lg:grid-cols-2">
         <article className={card}>
-          <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">E) Today's Drill</h2>
+          <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">E) Today&apos;s Drill</h2>
           <p className="mt-1 text-xs text-kelly-muted">
             One-click launch for moderator + reporter + hostile follow-up + rebuttal pivots.
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             <Link href="/admin/intelligence/kim-hammer/debate-prep" className="rounded border border-kelly-navy/30 bg-kelly-navy px-3 py-1 text-xs font-bold text-white">
-              Start today's debate drill
+              Start today&apos;s debate drill
             </Link>
             <Link href="/admin/intelligence/kim-hammer/research-gaps" className="rounded border px-3 py-1 text-xs font-semibold text-kelly-navy">
               View intelligence gaps
