@@ -7,7 +7,7 @@ import {
 import {
   buildKimHammerDebateExportMarkdown,
   buildKimHammerDebateExportPayload,
-} from "@/app/api/opposition/kim-hammer/debate-export/route";
+} from "@/lib/opposition/kimHammerDebateExport";
 import {
   canExportClaim,
   getSafetyBlockers,

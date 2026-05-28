@@ -9,7 +9,7 @@ import path from "node:path";
 import {
   buildKimHammerDebateExportMarkdown,
   buildKimHammerDebateExportPayload,
-} from "@/app/api/opposition/kim-hammer/debate-export/route";
+} from "@/lib/opposition/kimHammerDebateExport";
 import { canExportClaim, loadKimHammerEvidenceIndex } from "@/lib/opposition/kimHammerEvidenceIndex";
 import {
   buildKimHammerExportLineage,

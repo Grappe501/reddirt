@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
-import { buildKimHammerDebateExportPayload } from "@/app/api/opposition/kim-hammer/debate-export/route";
+import { buildKimHammerDebateExportPayload } from "@/lib/opposition/kimHammerDebateExport";
 import {
   citationsForClaim,
   loadKimHammerCitationLocker,
