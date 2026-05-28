@@ -190,7 +190,7 @@ export async function runPublicMediaIntakePass(
 
   const skipLog: Array<{ sourceId: string; reason: string }> = [];
   const results: FeedFetchResult[] = [];
-  let allIncoming: PublicMediaIntakeFinding[] = [];
+  const allIncoming: PublicMediaIntakeFinding[] = [];
 
   for (const source of approved) {
     const skip = shouldSkipSource(source);

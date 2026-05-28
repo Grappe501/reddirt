@@ -125,7 +125,7 @@ async function executeIntakeRun(
   const skippedSources: Array<{ sourceId: string; reason: string }> = [];
   const errors: Array<{ sourceId: string; error: string }> = [];
   let fetchedSourceCount = 0;
-  let allIncoming: PublicMediaIntakeFinding[] = [];
+  const allIncoming: PublicMediaIntakeFinding[] = [];
 
   const eligibleIds = new Set(resolveFetchEligibleSources(repoRoot).map((row) => row.sourceId));
   const approved = loadApprovedMediaSources(repoRoot);
